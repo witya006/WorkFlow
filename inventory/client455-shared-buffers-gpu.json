@@ -1,0 +1,89 @@
+{
+  "scope": "Own shared-buffer source+test-only COM capture;actual HALD3D9 managed buffers and4synthetic indexed draws;not full Character renderer/normal model loader",
+  "architecture": "x86",
+  "exe": "work/b9/dd91358b/gpu001/buffer-probe.exe",
+  "exe_sha256": "dd91358be3e867e88019a573919f214933f2a7838cf6c2b3dd79178899d69da0",
+  "entry_rva": "0x7f70",
+  "native": {
+    "status": "PASS",
+    "checks": 159173,
+    "capture_pool_types": 3,
+    "real_files": 12,
+    "model_parts": 393,
+    "gpu_draws": 4,
+    "gpu_model_parts": 393,
+    "gpu_model_uploads": 276
+  },
+  "output": "work/b9/dd91358b/gpu001/result.json",
+  "output_sha256": "7375595e8b159712f215b47f3a7704be5c854a544da8b8e43bb9bc7181710b32",
+  "source_sha256": {
+    "client455_shared_buffers.cpp": "2fb50422b2f8ca982ac921479119f83423c51c274f62b704ad071909501530b0",
+    "client455_shared_buffers.h": "0787f17ab3250f8f3b311fee52a1770e2f2a76e63cd470b340bd685bc5082183",
+    "test_client455_shared_buffers.cpp": "81d86fb546e56213194953697a3c990df10b4b4c1489e80b0db863eb97ed405c",
+    "client455_mesh_runtime.h": "35f5395568691b4ba212c9f2ea1ebc87fd93b55465f34a3a7bac730daf4c48cb",
+    "client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
+    "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f"
+  },
+  "build_report_sha256": "addb6935557100ae3905bd915c99eb0f79440e9b1e78966eda8c134568e7ae00",
+  "reference_report_sha256": "b3f919529d5473fac5dfbb3dce8410c7ddaa92be9c1df45de72181bdd69cbce2",
+  "mesh_inputs": [
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_001.msh",
+      "sha256": "3ac6020a3afaf9fd1d3696dc51689a6c87987fca6e98973c37c021102947f737"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_002.msh",
+      "sha256": "c95134888ad1bcbb71b303bcbbbd6ca111fed10d0a5dbffc4db320206573f387"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_003.msh",
+      "sha256": "2cc916df13d9ed6f3622feefeb44b123374d8226fe76f66261371cda3c40fa95"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_004.msh",
+      "sha256": "f3711bf1e8b7e805148ee2014fab4c048c5aa9d4b77fe391e60123feb737442e"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_005.msh",
+      "sha256": "dfaec5bde2e846f10f6b00e583312eedc86fb2a0361090431095d0f802b9acfe"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_006.msh",
+      "sha256": "49da124dfd1d997c89fd54840339603376beb9224a05f8d81c21b8986a2e23cb"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_007.msh",
+      "sha256": "de8866e3ecad850784c72ede9b65d25604b5938877bb58daf035a7cc8a157199"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_008.msh",
+      "sha256": "65fbc1b5b76312dec08674b99a6d7f42fd50d1d72fd339d3040a9105e15afffb"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_009.msh",
+      "sha256": "92587f9459355feb039aad60e5d3a0bb3a9cdfb420365525f3bd9b566b9ea3a9"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_010.msh",
+      "sha256": "a85c20bc0bfa84f01f6a4328a8977d2ccddcc8d7a841d96a8a5e5ea1abd65cce"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_011.msh",
+      "sha256": "abe7cfdbb3332f386125dea2599173575ad5b38cf435caf03ac487ad154a9ec1"
+    },
+    {
+      "file": "work/client-reference/character-models/mesh08-native/sample_012.msh",
+      "sha256": "6e4a8f40ec87fae93b3aa6472ce0de6e8e4b3666c347534d9e661595da10670f"
+    }
+  ],
+  "frames": [
+    {
+      "file": "work/b9/dd91358b/gpu001/frame-36.bmp",
+      "sha256": "f2eb8fd2335336ae5038018eb3dc6431bbbcec94f7af17eb8120bc2c7657e2cd"
+    },
+    {
+      "file": "work/b9/dd91358b/gpu001/frame-64.bmp",
+      "sha256": "b543cfdc7bf9006a0cc45e42fa95e4375f501b556052ac1a6a988bffd690ffed"
+    }
+  ]
+}

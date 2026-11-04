@@ -1,5 +1,5 @@
 {
-  "scope": "Static shared GPU contract research only;source implementation/native GPU test still pending",
+  "scope": "Static shared GPU contract research;source/native runtime evidence recorded separately",
   "references": [
     {
       "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
@@ -59,6 +59,60 @@
           "rva": "0x53e220",
           "bytes": 80,
           "sha256": "3abd039c53e567573472d1b2b2a2c5f99dee6b4116ed83a8927961f89ffcaa29"
+        },
+        {
+          "name": "construct_vertex36",
+          "rva": "0x1dfcb0",
+          "bytes": 41,
+          "sha256": "a6a7cb43e91b4a23bc40ee446e37da90fc537ad803991a9a62e9b935181a15c7"
+        },
+        {
+          "name": "destroy_vertex36",
+          "rva": "0x1dfce0",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "construct_vertex64",
+          "rva": "0x1dfd40",
+          "bytes": 41,
+          "sha256": "bfb292878d2f51c334950f8ed6b84456967f48b5cc750ef4a03ba737b10c62bd"
+        },
+        {
+          "name": "destroy_vertex64",
+          "rva": "0x1dfd70",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "construct_indices",
+          "rva": "0x1dfdd0",
+          "bytes": 41,
+          "sha256": "619af086099f47d4d71ab04e10b78d9baafa181d87ac1f6c4083f006e7b750b0"
+        },
+        {
+          "name": "destroy_indices",
+          "rva": "0x1dfe00",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "renderer_ctor",
+          "rva": "0x1dfb70",
+          "bytes": 205,
+          "sha256": "292a5fef5ce19a5ebeaf77914006a822d983e202a410ad4b16834c776085d990"
+        },
+        {
+          "name": "renderer_dtor",
+          "rva": "0x5228a0",
+          "bytes": 343,
+          "sha256": "9a9ab6a8a5363005d818e6eb88f53da43def9b7375b40b80f36ea37224687225"
+        },
+        {
+          "name": "renderer_set_device",
+          "rva": "0x520590",
+          "bytes": 214,
+          "sha256": "852a2834c95d0b18ebd4baa6a56e615ede71beaede9804268d1c6d773a3c8d01"
         },
         {
           "name": "mesh08_upload_rebase",
@@ -128,6 +182,60 @@
           "sha256": "3abd039c53e567573472d1b2b2a2c5f99dee6b4116ed83a8927961f89ffcaa29"
         },
         {
+          "name": "construct_vertex36",
+          "rva": "0x1dfcb0",
+          "bytes": 41,
+          "sha256": "a6a7cb43e91b4a23bc40ee446e37da90fc537ad803991a9a62e9b935181a15c7"
+        },
+        {
+          "name": "destroy_vertex36",
+          "rva": "0x1dfce0",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "construct_vertex64",
+          "rva": "0x1dfd40",
+          "bytes": 41,
+          "sha256": "bfb292878d2f51c334950f8ed6b84456967f48b5cc750ef4a03ba737b10c62bd"
+        },
+        {
+          "name": "destroy_vertex64",
+          "rva": "0x1dfd70",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "construct_indices",
+          "rva": "0x1dfdd0",
+          "bytes": 41,
+          "sha256": "619af086099f47d4d71ab04e10b78d9baafa181d87ac1f6c4083f006e7b750b0"
+        },
+        {
+          "name": "destroy_indices",
+          "rva": "0x1dfe00",
+          "bytes": 86,
+          "sha256": "57f4c99d200fd590e7c82564f55acbd763ec0b34b28438a25f4f72bdd3ac0b60"
+        },
+        {
+          "name": "renderer_ctor",
+          "rva": "0x1dfb70",
+          "bytes": 205,
+          "sha256": "292a5fef5ce19a5ebeaf77914006a822d983e202a410ad4b16834c776085d990"
+        },
+        {
+          "name": "renderer_dtor",
+          "rva": "0x5228a0",
+          "bytes": 343,
+          "sha256": "9a9ab6a8a5363005d818e6eb88f53da43def9b7375b40b80f36ea37224687225"
+        },
+        {
+          "name": "renderer_set_device",
+          "rva": "0x520590",
+          "bytes": 214,
+          "sha256": "852a2834c95d0b18ebd4baa6a56e615ede71beaede9804268d1c6d773a3c8d01"
+        },
+        {
           "name": "mesh08_upload_rebase",
           "rva": "0x523590",
           "bytes": 122,
@@ -147,6 +255,18 @@
     "vertex_block_bytes": 2300000,
     "index_block_bytes": 1000000,
     "allocation_failure_sentinel": 1025,
+    "pool_bytes": 8200,
+    "renderer_pool_offsets": {
+      "vertex64": 8928,
+      "vertex36": 17128,
+      "indices": 25328
+    },
+    "lifecycle": [
+      "Three constructors memset all8200bytes0",
+      "Three destructors release eachnonnull slot in ascending0..1023;do not zero pointers/used/device or decrement accounting",
+      "Renderer ctor invokes pool ctors at8928/17128/25328;SetDevice writes borrowed device into eachpool;no AddRef in this routine",
+      "Renderer dtor releases indices,vertex36,vertex64 inthatorder,ascending slots;other shaders/textures/subobjects separate"
+    ],
     "vertex36_create": {
       "bytes": 2300000,
       "usage": 8,
@@ -181,10 +301,10 @@
     }
   },
   "unknowns": [
-    "Buffer owner constructor/clear/destructor/reset andopaque DWORD meaning",
+    "Full renderer reset/device-loss policy andopaque DWORD meaning;pool ctor/dtor final states confirmed",
     "Exact complete64byte vertex declaration/shader use;FVF282alone does not prove it",
     "Full normal loader publication/failure cleanup/animation/skin/draw domains",
-    "Overflow/OOM/zero-size/invalid-state failure equivalence;unsigned wrap confirmed but physical safe domain not yet selected"
+    "OOM/unmasked/unchecked invalid-state failure equivalence;synthetic capture checks wrap/zero-size,not all physical unsafe behavior"
   ],
-  "evidence": "artifacts/character-gpu455 cacheddecompiles/allocator-insns/gpu-loader-insns/gpu-xrefs;session10003798closed/save;no inputEXE run"
+  "evidence": "artifacts/character-gpu455 cacheddecompiles/allocator-insns/gpu-loader-insns/gpu-xrefs/owner-life/owner-dtor;10003798 andb58f27c1closed/save;no inputEXE run"
 }

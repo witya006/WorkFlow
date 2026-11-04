@@ -141,6 +141,12 @@ research/client455-mesh-runtime-source.md. Проверка матричной D
 full device reset/unwind/private ABI/malformed/OOM/locale области ещё открыты.
 research/client455-character-textures.md;client455-texture*.json. Не считать
 приёмкой всего Character или renderer.
+SharedGPUsourceunit:159173checks standalone/fullclient,12real files/393parts,
+276nonzero-indexGPUuploads и117zero-indexskips. Capture bytes/failure/counter tests,
+4physical synthetic indexed draws/rollover,COM/Dmalloc0.18ref bodies equalbothpins.
+Это не полный shader/skin/animation/draw coverage:lab POSITIONT/COLOR declaration
+не подменяет455declaration. Normal full model-loader/ownership ещё открыты.
+research/client455-shared-buffers.md;inventory/client455-shared-buffers*.json.
 Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 

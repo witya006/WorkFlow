@@ -1,0 +1,69 @@
+{
+  "lab": {
+    "exe_sha256": "ea3b3dc91b372a75737717df79c59ef42862063982301bf9d67a65873fef1ca5",
+    "entry_rva": "0x85d5",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructVertexPool",
+        "rva": "0x2ed150"
+      },
+      {
+        "symbol": "_RF455_ConstructIndexPool",
+        "rva": "0x2ed130"
+      },
+      {
+        "symbol": "_RF455_DestroyVertexPool",
+        "rva": "0x2ed1a0"
+      },
+      {
+        "symbol": "_RF455_DestroyIndexPool",
+        "rva": "0x2ed170"
+      },
+      {
+        "symbol": "_RF455_UploadVertices36",
+        "rva": "0x2ed740"
+      },
+      {
+        "symbol": "_RF455_UploadVertices64",
+        "rva": "0x2ed770"
+      },
+      {
+        "symbol": "_RF455_UploadIndices",
+        "rva": "0x2ed2d0"
+      },
+      {
+        "symbol": "_RF455_BindVertices36",
+        "rva": "0x2ed070"
+      },
+      {
+        "symbol": "_RF455_BindVertices64",
+        "rva": "0x2ed0d0"
+      },
+      {
+        "symbol": "_RF455_BindIndices",
+        "rva": "0x2ed020"
+      },
+      {
+        "symbol": "_RF455_RebaseMesh08Indices",
+        "rva": "0x2ed1d0"
+      },
+      {
+        "symbol": "_RF455_UploadMesh08Gpu",
+        "rva": "0x2ed3e0"
+      }
+    ],
+    "library_sha256": "69ed1ceed85d87351a92eb8da607dcefca97290a2e49e561d5118184eb5dedbd",
+    "scope": "Own source dependency andlab calls;normal full model dispatch/animation/renderer integration remains open"
+  },
+  "normal": {
+    "exe_sha256": "716268e192fe2c56b27e2617ea827b3148a84a6fb4e0c00dcedd44fd5cba3a72",
+    "entry_rva": "0x1bc4b0",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [],
+    "library_sha256": "69ed1ceed85d87351a92eb8da607dcefca97290a2e49e561d5118184eb5dedbd",
+    "scope": "Own source dependency andlab calls;normal full model dispatch/animation/renderer integration remains open"
+  }
+}

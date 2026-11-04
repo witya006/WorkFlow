@@ -172,6 +172,18 @@ foreach ($property in $texture.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_TEXTURE=ON'
 $arguments += "-DRF_CLIENT_455_TEXTURE_LIBRARY=$textureLibrary"
+$buffers = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-shared-buffers-build.json') -Raw | ConvertFrom-Json
+$bufferGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-shared-buffers-gpu.json') -Raw | ConvertFrom-Json
+$bufferLibrary = Join-Path $workspace $buffers.library
+if ($bufferGpu.native.status -ne 'PASS' -or $bufferGpu.native.gpu_draws -ne 4 -or $bufferGpu.native.model_parts -ne 393 -or
+    $bufferGpu.native.gpu_model_uploads -ne 276 -or
+    (Get-FileHash -LiteralPath $bufferLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $buffers.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-shared-buffers-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $bufferGpu.build_report_sha256) { throw '455 shared buffer native/GPU proof missing or stale.' }
+foreach ($property in $buffers.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 shared buffer source proof stale.' }
+}
+$arguments += '-DRF_CLIENT_455_SHARED_BUFFERS=ON'
+$arguments += "-DRF_CLIENT_455_SHARED_BUFFERS_LIBRARY=$bufferLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -263,6 +275,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shared_buffers.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shared_buffers.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_texture.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_texture.py }

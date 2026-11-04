@@ -84,6 +84,13 @@ RFS/DDS/lookup/cache/load/delete,actual pinned D3DX9_36+HALD3D9.24body ranges с
 Normal model-loader ещё legacy;shared buffers/animation/full Character GPU открыты.
 research/client455-character-textures.md. Следующий unit93E000/93E180/index rebase/
 publication/release,затем normal dispatch. M6/M6F/M7/M9 незакрыты.
+Следом sharedGPU sourceunit готов:18pinned bodies,8200byte pools/ctor/Release-only
+dtor/first-fit1024/upload36+64+INDEX16/bind/rebase/MESH08GPUfragment.158336CPU/
+159173HALchecks standalone/full-client,12files/393parts:276real uploads,
+117zero-index skips.4synthetic indexed draws,COM/Dmalloc0. Normal full loader,
+owning publication/destructor/unwind,skeleton/skinning/shaders ещё открыты.
+research/client455-shared-buffers.md. Следующий unit —owning model lifecycle и
+normal dispatch;полныйM6/M6F/M7/M9 не закрыт.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.

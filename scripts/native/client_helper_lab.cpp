@@ -188,8 +188,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_TEXTURE)
 #include "client_texture_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_SHARED_BUFFERS)
+#include "client_shared_buffers_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_SHARED_BUFFERS)
+    if (!std::strcmp(command,"--rf-shared-buffers-scenario")) ExitProcess(sharedBufferScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_TEXTURE)
     if (!std::strcmp(command,"--rf-texture-scenario")) ExitProcess(textureScenarioProbe());
 #endif

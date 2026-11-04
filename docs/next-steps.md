@@ -67,9 +67,9 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Продолжить Character455 сactual TextureManager934120/934A20 иprovider933DE0;
-   затем
-   shared GPU buffers/index rebase/publication/release иD3D9buffer/render consumers.
+1. Продолжить Character455 сowning model array publication/release/failure unwind
+   иnormal loader dispatch;затем full skeleton/transforms/skinning/shaders.
+   TextureManager иsharedGPU source units уже готовы вописанном ниже domain.
    Framing готов:858real files/12090meshes прошли lossless roundtrip;
    6304native checks/12samples/393parts/1309guarded truncations standalone/full-client.
    7Python tests прошли. Не повторять corpus audit без изменения inputs/parser.
@@ -92,9 +92,12 @@ R3X checks.703weather regression checks прошли на текущем lab.286
    ещё legacy;следующий source unit shared buffers93E000/93E180,index rebase,
    publication/release/unwind иD3D9consumer,затем normal dispatch/animation.
    research/client455-character-textures.md;не повторять закрытый texture reverse.
-   SharedGPU static contract уже закреплён:9bodies+upload fragment equalbothpins;
-   research/client455-shared-buffers.md. Реализация/physical buffer tests впереди.
-   Уточнитьowner lifecycle/opaque8192;не принимать93DDF0/93DDE0 заconstructor.
+   SharedGPU source готов:18bodies+upload fragment equalbothpins;8200byte ctor/
+   Release-onlydtor,upload36/64/INDEX16,bind/rebase/callerfragment. Native158336CPU/
+   159173HALchecks standalone/full-client,12files/393parts;276parts реальноGPU,
+   117indexCount0 skip.4syntheticdraws/rollover,COM/Dmalloc0. Normal full loader
+   ещё legacy. research/client455-shared-buffers.md. Не повторять15poolfunctions;
+   ownerreset/opaque8192/полные shader/animation/failure domains остаются открыты.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -140,8 +143,10 @@ Character textures:audit_client455_texture.py;test_character_texture.py;
 build_client455_texture.py;probe_client455_texture.py [--gpu];после full build
 verify_client455_texture.py [--lab];probe_client455_texture_client.py.
 Fresh short work/t9 cwd нужен для точного RFS path guard;fixtures master не менять.
-SharedGPU audit:audit_client455_shared_buffers.py;после него lifecycle/source/native
-tests ещё необходимы. Report static-only,не приёмка рендера.
+SharedGPU:audit_client455_shared_buffers.py;build_client455_shared_buffers.py;
+probe_client455_shared_buffers.py [--gpu];после full build
+verify_client455_shared_buffers.py [--lab];probe_client455_shared_buffers_client.py.
+Текущая GPU regression inventory/client455-shared-buffers-graphics-regression.json.
 Текущая GPU regression inventory/client455-texture-graphics-regression.json:69checks.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle

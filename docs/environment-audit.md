@@ -1,5 +1,10 @@
 # Аудит окружения — 04.11.2026
 
+Следующее дополнение05.11:source sharedVB36/VB64/INDEX16 работает втомжеHALD3D9;
+159173nativechecks standalone/fullclient,12files/393parts/276real uploads,
+4syntheticindexed draws,COM/Dmalloc0. Зависимости/установки не менялись.
+Full Character shaders/normal loader ещё открыты. research/client455-shared-buffers.md.
+
 Дополнение05.11: physical Character texture source работает с pinned x86
 D3DX9_36 иHALD3D9 через отдельную TU внутри полного client lab.8440checks,
 68texture pairs/137renders/97material parts,COM/Dmalloc0;новый SDK неустанавливался,
