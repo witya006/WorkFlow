@@ -40,27 +40,31 @@ try:
         json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"server": server.get("serverInfo"), "tool_count": len(tools)}, indent=2), flush=True)
     if not args.catalog_only:
-        paths = json.loads((ROOT / "config/paths.json").read_text(encoding="utf-8"))
-        source = Path(paths["legacy_source"]) / "RF Server Side/RF_Server/RF_Bin/LoginServerSR.exe"
-        work = ROOT / "work/ida-mcp-smoke"
+        target=json.loads((ROOT/'config/client-target.json').read_text(encoding='utf-8'))
+        source=ROOT/'work/client-reference/reference-backup/RF_Online.bin'
+        source_idb=source.with_suffix('.bin.i64')
+        work = ROOT / "work/ida-mcp-smoke/client455"
         work.mkdir(parents=True, exist_ok=True)
         binary = work / source.name
         digest = hashlib.sha256(source.read_bytes()).hexdigest()
+        if digest!=target['secondary_reference']['sha256']:raise RuntimeError('Pinned455 smoke input changed')
         if binary.exists() and hashlib.sha256(binary.read_bytes()).hexdigest() != digest:
             raise RuntimeError("Existing smoke input differs; refusing to overwrite it")
         if not binary.exists():
             shutil.copy2(source, binary)
+        cached=binary.with_suffix('.bin.i64')
+        if not cached.exists():shutil.copyfile(source_idb,cached)
         print("Opening working copy through MCP...", flush=True)
-        opened = client.call("idb_open", {"input_path": str(binary), "mode": "force_headless"})
+        opened = client.call("idb_open", {"input_path": str(cached), "mode": "force_headless", "run_auto_analysis":False,"build_caches":False,"init_hexrays":True})
         if not opened.get("success"):
             raise RuntimeError(opened)
         database = opened["session"]["session_id"]
         health = client.call("server_health", {"database": database})
-        listed = client.call("list_funcs", {"database": database, "queries": {"count": 0}})
+        listed = client.call("list_funcs", {"database": database, "queries": {"count": 10}})
         pages = listed["result"] if isinstance(listed, dict) else listed
         functions = pages[0]["data"]
-        if not functions or pages[0].get("next_offset") is not None:
-            raise RuntimeError("Function listing is empty or incomplete")
+        if not functions:
+            raise RuntimeError("Function listing is empty")
         sample = None
         for function in functions:
             size = function.get("size", 0)
@@ -75,7 +79,8 @@ try:
         result = {"observed_at_utc": datetime.now(timezone.utc).isoformat(), "success": True,
                   "input_path": str(binary), "input_sha256": digest,
                   "used_registered_codex_config": args.configured,
-                  "open": opened, "health": health, "function_count": len(functions),
+                  "open": opened, "health": health, "listed_function_count": len(functions),
+                  "function_listing_scope":"first10,page only;not total function count","next_offset":pages[0].get('next_offset'),
                   "functions": functions, "sample": sample,
                   "sample_rva": hex(int(sample["function"]["addr"], 0) - int(health["imagebase"], 0))}
         closed = client.call("idb_close", {"database": database, "save": True})

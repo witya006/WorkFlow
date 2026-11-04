@@ -112,6 +112,16 @@ loader ещё legacy,новые unused APIs stripped. Не повторять te
 Raw artifacts/character-texture455,отчёты inventory/client455-texture*.json,
 research/client455-character-textures.md. Private allocator/STL ABI,logger/cache
 teardown/reset,malformed/OOM/nonASCII/unsafe format-string domains открыты.
+Следующий sharedGPU contract уже исследован:9full bodies+MESH08upload fragment
+совпали в обоих pins. First-fit1024,VB2300000/IB1000000,device+8196,
+used+4096,Lockflags0,UnlockHRESULTignored,output=capacity*slot+used. indexCount0
+пропускаетобаuploads;callerигнорируетreturn иWORDrebase сохраняется. Source/native
+GPU buffer tests покаНЕготовы. Начатьсowner lifecycle/allocator implementations,
+неперечитыватьэти9functions. research/client455-shared-buffers.md иinventory/
+client455-shared-buffers-reference.json. Owned10003798closed/save.
+Configured MCP probe переведён наcopied client455IDB;66tools,10functionpage,
+decompile/close2fa6d05a проверены. Restricted workercode2 устраняется тойже
+escalation,непереустановкой. Серверныйsmoke input больше не используется.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.

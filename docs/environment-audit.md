@@ -5,6 +5,10 @@ D3DX9_36 иHALD3D9 через отдельную TU внутри полного 
 68texture pairs/137renders/97material parts,COM/Dmalloc0;новый SDK неустанавливался,
 d3d9.h из WindowsSDK10.0.26100.0/shared. Полный client/Character GPU ещё открыт.
 research/client455-character-textures.md;inventory/client455-texture*.json.
+IDA configured stdio повторно проверен в user context:66tools,страница10client
+functions,декомпиляция/close-save. Probe теперь client-only IDB,без server smoke.
+Native MCP также работает. Restricted workercode2 исчезает при привычной
+escalation;переустановка не нужна. docs/ida-mcp.md.
 
 Дата по Asia/Yakutsk. Машинные отчёты используют UTC. Это снимок состояния,
 а не непрерывный мониторинг. Работы выполнены в `E:\RFOnlineTrash\Source\WorkFlow`.
