@@ -21,6 +21,7 @@ class Helper:
 
     @property
     def legacy_name(self):
+        """Canonical 31-byte lowercase name (455; old goto skipped later strlwr)."""
         return self.name.lower()[:31]
 
 

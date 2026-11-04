@@ -1,5 +1,243 @@
 [
   {
+    "file": "work/client-build/source/R3Engine/2ndclass/extdummy.cpp",
+    "original_sha256": "2356c51f5a9853ddfb9bb01632928b664f7b6eb34e2dd31d2bdea32d1facf589",
+    "input_sha256": "2356c51f5a9853ddfb9bb01632928b664f7b6eb34e2dd31d2bdea32d1facf589",
+    "patched_sha256": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
+    "build_option": "RF_CLIENT_455_HELPER_LOADER",
+    "legacy_branch_preserved": true,
+    "reason": "455 resets count on missing input, lowercases every next-record token, and supports interior flag 4. Other legacy parser behavior remains.",
+    "binary_evidence": [
+      {
+        "input": "current",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "loader_va": "0x90bbf0",
+        "loader_rva": "0x50bbf0",
+        "loader_size": 1318,
+        "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+        "instructions": [
+          {
+            "va": "0x90bc23",
+            "rva": "0x50bc23",
+            "file_offset": "0x50b023",
+            "bytes": "8945040f84d1040000"
+          },
+          {
+            "va": "0x90bcc0",
+            "rva": "0x50bcc0",
+            "file_offset": "0x50b0c0",
+            "bytes": "8d54241452e8e9c60f00"
+          },
+          {
+            "va": "0x90bef2",
+            "rva": "0x50bef2",
+            "file_offset": "0x50b2f2",
+            "bytes": "834c082004"
+          },
+          {
+            "va": "0x90c088",
+            "rva": "0x50c088",
+            "file_offset": "0x50b488",
+            "bytes": "3bc80f8230fcffff"
+          },
+          {
+            "va": "0xb39f08",
+            "rva": "0x739f08",
+            "file_offset": "0x738708",
+            "bytes": "2d696e746572696f7200"
+          },
+          {
+            "va": "0xb38568",
+            "rva": "0x738568",
+            "file_offset": "0x736d68",
+            "bytes": "4558542e73707400"
+          },
+          {
+            "va": "0x8eaa7f",
+            "rva": "0x4eaa7f",
+            "file_offset": "0x4e9e7f",
+            "bytes": "8db300020000508bcee863110200"
+          }
+        ]
+      },
+      {
+        "input": "reference-backup",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "loader_va": "0x90bbf0",
+        "loader_rva": "0x50bbf0",
+        "loader_size": 1318,
+        "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+        "instructions": [
+          {
+            "va": "0x90bc23",
+            "rva": "0x50bc23",
+            "file_offset": "0x50b023",
+            "bytes": "8945040f84d1040000"
+          },
+          {
+            "va": "0x90bcc0",
+            "rva": "0x50bcc0",
+            "file_offset": "0x50b0c0",
+            "bytes": "8d54241452e8e9c60f00"
+          },
+          {
+            "va": "0x90bef2",
+            "rva": "0x50bef2",
+            "file_offset": "0x50b2f2",
+            "bytes": "834c082004"
+          },
+          {
+            "va": "0x90c088",
+            "rva": "0x50c088",
+            "file_offset": "0x50b488",
+            "bytes": "3bc80f8230fcffff"
+          },
+          {
+            "va": "0xb39f08",
+            "rva": "0x739f08",
+            "file_offset": "0x738708",
+            "bytes": "2d696e746572696f7200"
+          },
+          {
+            "va": "0xb38568",
+            "rva": "0x738568",
+            "file_offset": "0x736d68",
+            "bytes": "4558542e73707400"
+          },
+          {
+            "va": "0x8eaa7f",
+            "rva": "0x4eaa7f",
+            "file_offset": "0x4e9e7f",
+            "bytes": "8db300020000508bcee863110200"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "work/client-build/source/R3Engine/2ndclass/extdummy.h",
+    "original_sha256": "7299816a1df3fa953809ef1363bab0ad03ea1a41bcb6b299338480022f94a2fd",
+    "input_sha256": "7299816a1df3fa953809ef1363bab0ad03ea1a41bcb6b299338480022f94a2fd",
+    "patched_sha256": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
+    "build_option": "RF_CLIENT_455_HELPER_LOADER",
+    "legacy_branch_preserved": true,
+    "reason": "455 resets count on missing input, lowercases every next-record token, and supports interior flag 4. Other legacy parser behavior remains.",
+    "binary_evidence": [
+      {
+        "input": "current",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "loader_va": "0x90bbf0",
+        "loader_rva": "0x50bbf0",
+        "loader_size": 1318,
+        "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+        "instructions": [
+          {
+            "va": "0x90bc23",
+            "rva": "0x50bc23",
+            "file_offset": "0x50b023",
+            "bytes": "8945040f84d1040000"
+          },
+          {
+            "va": "0x90bcc0",
+            "rva": "0x50bcc0",
+            "file_offset": "0x50b0c0",
+            "bytes": "8d54241452e8e9c60f00"
+          },
+          {
+            "va": "0x90bef2",
+            "rva": "0x50bef2",
+            "file_offset": "0x50b2f2",
+            "bytes": "834c082004"
+          },
+          {
+            "va": "0x90c088",
+            "rva": "0x50c088",
+            "file_offset": "0x50b488",
+            "bytes": "3bc80f8230fcffff"
+          },
+          {
+            "va": "0xb39f08",
+            "rva": "0x739f08",
+            "file_offset": "0x738708",
+            "bytes": "2d696e746572696f7200"
+          },
+          {
+            "va": "0xb38568",
+            "rva": "0x738568",
+            "file_offset": "0x736d68",
+            "bytes": "4558542e73707400"
+          },
+          {
+            "va": "0x8eaa7f",
+            "rva": "0x4eaa7f",
+            "file_offset": "0x4e9e7f",
+            "bytes": "8db300020000508bcee863110200"
+          }
+        ]
+      },
+      {
+        "input": "reference-backup",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "loader_va": "0x90bbf0",
+        "loader_rva": "0x50bbf0",
+        "loader_size": 1318,
+        "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+        "instructions": [
+          {
+            "va": "0x90bc23",
+            "rva": "0x50bc23",
+            "file_offset": "0x50b023",
+            "bytes": "8945040f84d1040000"
+          },
+          {
+            "va": "0x90bcc0",
+            "rva": "0x50bcc0",
+            "file_offset": "0x50b0c0",
+            "bytes": "8d54241452e8e9c60f00"
+          },
+          {
+            "va": "0x90bef2",
+            "rva": "0x50bef2",
+            "file_offset": "0x50b2f2",
+            "bytes": "834c082004"
+          },
+          {
+            "va": "0x90c088",
+            "rva": "0x50c088",
+            "file_offset": "0x50b488",
+            "bytes": "3bc80f8230fcffff"
+          },
+          {
+            "va": "0xb39f08",
+            "rva": "0x739f08",
+            "file_offset": "0x738708",
+            "bytes": "2d696e746572696f7200"
+          },
+          {
+            "va": "0xb38568",
+            "rva": "0x738568",
+            "file_offset": "0x736d68",
+            "bytes": "4558542e73707400"
+          },
+          {
+            "va": "0x8eaa7f",
+            "rva": "0x4eaa7f",
+            "file_offset": "0x4e9e7f",
+            "bytes": "8db300020000508bcee863110200"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "file": "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
     "original_sha256": "1ae9cd1d7d7cf2e85b3857cdbb62531b60ce038b2d252833cf30e3f18c46e529",
     "input_sha256": "1ae9cd1d7d7cf2e85b3857cdbb62531b60ce038b2d252833cf30e3f18c46e529",

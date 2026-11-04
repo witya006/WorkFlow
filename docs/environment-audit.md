@@ -23,10 +23,15 @@ R3Engine собран под VS 2026 x86 с двумя успешными чис
 
 Статический аудит сборки завершён: 14 DSP / 14 DSW, 41 конфигурация, 832 SOURCE,
 6 отсутствующих записей в CameraExporter/R3MapExp. Все 180 C++ клиента уже компилируются
-с диагностическим восстановленным Character.h. JPEG 6b/Miles подключены. Остались
+с диагностическим восстановленным Character.h. JPEG 6b/Miles подключены.
 Получена полная diagnostic RF_Online.bin и успешная чистая пересборка, unresolved нет.
 Выбранные 455 ветки имеют отдельные flags/ledger, исходные legacy branches сохранены.
 Это не проверка запуска/полного поведения 455. Подробности research/client-first-build.md.
+Последующее M5: helper loader455 найден, три отличия перенесены отдельным flag.
+Обычная ревизия собрана, отдельный own lab entry полного проекта выполнил загрузку
+140 реальных файлов/97 543 записей и CPU transforms/bbox;12 fixtures,2 546 779 checks,
+4 import-parser tests. В lab игровые DLL отложены и не загружались. Обычный игровой
+запуск/LoadLevel и x87 reference parity не проверены. research/client-helper455-runtime.md.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).

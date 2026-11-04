@@ -31,12 +31,16 @@ def without_timestamps(data):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--label',required=True,choices=['initial','clean'])
+    parser.add_argument('--label',required=True)
     args = parser.parse_args()
+    if not re.fullmatch('[a-z0-9][a-z0-9-]{0,39}',args.label):
+        raise ValueError('Snapshot labels must be short lowercase names, not paths')
     build = WS/'work/client-build/build-character-diagnostic'
     result = json.loads((WS/'inventory/client-character-diagnostic.json').read_text(encoding='utf-8'))
     if result['build_exit'] or result['unresolved_symbols'] or result['generated_objects']!=180:
         raise ValueError('The complete client build is not successful')
+    if result['build_settings'].get('RF_CLIENT_HELPER_LAB')=='ON':
+        raise ValueError('Normal client snapshots cannot contain the helper-lab entry')
     exe = build/'Release/RF_Online.bin'
     data = exe.read_bytes()
     image = pe(data)

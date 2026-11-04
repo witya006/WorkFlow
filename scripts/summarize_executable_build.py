@@ -3,6 +3,7 @@ import argparse
 import collections
 import json
 import re
+import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -49,6 +50,11 @@ def main():
             m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY|JPEG_LIBRARY_DIR|CHARACTER_REFERENCE_LIBRARY|CHARACTER_STDIO_ADAPTER_LIBRARY|CHARACTER_RECOVERED_MANAGERS_LIBRARY|CHARACTER_EXCEPTIONS_LIBRARY|CHARACTER_SETTERS_LIBRARY|CLIENT_455_DRAW_ARGUMENTS|CLIENT_455_EFFECT_LOG|CLIENT_455_EFFECT_LOG_LIBRARY|CLIENT_455_LOBBY_TRANSITION|DIAGNOSTIC_DEFER_LIBRARIES)):[^=]+=(.*)', line)
             if m:
                 settings[m[1]] = m[2]
+    if cache.exists():
+        for line in cache.read_text(encoding='utf-8').splitlines():
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB)):[^=]+=(.*)',line)
+            if m:
+                settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
               'error_counts': dict(collections.Counter(x['code'] for x in errors)),
@@ -61,6 +67,13 @@ def main():
               'build_dir': args.build_dir, 'log': args.log,
               'build_settings': settings,
               'scope': 'Client-only compile diagnostic. No input EXE execution; compilation does not prove behavior.'}
+    if settings.get('RF_CLIENT_HELPER_LAB')=='ON' and args.build_exit==0:
+        inputs=['scripts/native/client_helper_lab.cpp',
+                'work/client-build/source/R3Engine/2ndclass/extdummy.cpp',
+                'work/client-build/source/R3Engine/2ndclass/extdummy.h',
+                args.build_dir+'/Release/RF_Online.bin']
+        report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        report['scope']='Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.'
     (WS / args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['build_exit', 'error_counts', 'generated_objects']}, ensure_ascii=True))
 

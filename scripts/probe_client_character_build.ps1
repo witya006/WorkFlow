@@ -1,4 +1,4 @@
-param([switch]$CleanRebuild)
+param([switch]$CleanRebuild, [switch]$HelperLab)
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path -Parent $PSScriptRoot
 $behavior = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client-behavior-patches.json') -Raw | ConvertFrom-Json
@@ -9,6 +9,7 @@ $verified = Get-Content -LiteralPath (Join-Path $workspace 'inventory/msvc-verif
 $cmake = Join-Path $verified.installation_path 'Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe'
 $source = Join-Path $workspace 'work/client-build'
 $build = Join-Path $source 'build-character-diagnostic'
+if ($HelperLab) { $build = Join-Path $source 'build-helper-lab' }
 $recovered = Join-Path $workspace 'work/recovered/character-legacy'
 $contract = Get-Content -LiteralPath (Join-Path $workspace 'inventory/character-header-recovery.json') -Raw | ConvertFrom-Json
 if ($contract.native_verification.compile_exit -ne 0 -or $contract.client_global_diagnostic.compile_exit -ne 0) {
@@ -19,6 +20,7 @@ if ((Get-FileHash -LiteralPath (Join-Path $recovered 'include/Character.h') -Alg
     throw 'Recovered header or compatibility shim changed since the preflight check.'
 }
 $logs = Join-Path $workspace 'artifacts/client-character-diagnostic'
+if ($HelperLab) { $logs = Join-Path $workspace 'artifacts/client-helper-lab' }
 $dx = Get-Content -LiteralPath (Join-Path $workspace 'inventory/directx81b-sdk.json') -Raw | ConvertFrom-Json
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
 $arguments = @('-S', $source, '-B', $build, '-G', 'Visual Studio 18 2026', '-A', 'Win32', '-T', 'v145', '-DCMAKE_SYSTEM_VERSION=10.0.26100.0',
@@ -39,6 +41,9 @@ $arguments += '-DRF_CLIENT_455_EFFECT_LOG=ON'
 $arguments += "-DRF_CLIENT_455_EFFECT_LOG_LIBRARY=$loggerLibrary"
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_LOBBY_TRANSITION' })) { throw '455 lobby transition evidence/selection is missing.' }
 $arguments += '-DRF_CLIENT_455_LOBBY_TRANSITION=ON'
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_HELPER_LOADER' })) { throw '455 helper-loader evidence/selection is missing.' }
+$arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
+$arguments += "-DRF_CLIENT_HELPER_LAB=$(if ($HelperLab) { 'ON' } else { 'OFF' })"
 $jpeg = Get-Content -LiteralPath (Join-Path $workspace 'inventory/jpeg6b-build.json') -Raw | ConvertFrom-Json
 $jpegLibrary = Join-Path $workspace $jpeg.library
 if ((Get-FileHash -LiteralPath $jpegLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $jpeg.library_sha256) { throw 'JPEG archive changed since verification.' }
@@ -90,6 +95,10 @@ $buildArguments = @('--build',$build,'--config','Release','--target','RF_Online'
 if ($CleanRebuild) { $buildArguments += '--clean-first' }
 & $cmake @buildArguments *> (Join-Path $logs 'build.txt')
 $result = $LASTEXITCODE
-& (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-character-diagnostic/build.txt --build-dir work/client-build/build-character-diagnostic --output inventory/client-character-diagnostic.json --max-details 80
+if ($HelperLab) {
+    & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-helper-lab/build.txt --build-dir work/client-build/build-helper-lab --output inventory/client-helper-lab-build.json --max-details 80
+} else {
+    & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-character-diagnostic/build.txt --build-dir work/client-build/build-character-diagnostic --output inventory/client-character-diagnostic.json --max-details 80
+}
 Write-Output "Diagnostic RF_Online build exit: $result"
 exit $result

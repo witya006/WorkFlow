@@ -1,0 +1,1666 @@
+{
+  "complete_real_sample_audit": true,
+  "real_files": 140,
+  "fixtures": 12,
+  "helpers_including_fixtures": 97819,
+  "checks": 2546779,
+  "exe": "work/client-helper-lab/RF_Online.bin",
+  "exe_sha256": "7f5d7be0679cce3c92eff3f6ec176c99b444c67758805731f415cb6493df0b5a",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "entry_rva": "0x9ade",
+  "direct_imports": [
+    "kernel32.dll",
+    "user32.dll",
+    "gdi32.dll",
+    "comdlg32.dll",
+    "advapi32.dll",
+    "d3d8.dll",
+    "dinput8.dll",
+    "winmm.dll",
+    "ws2_32.dll",
+    "imm32.dll"
+  ],
+  "delayed_imports": [
+    "mss32.dll",
+    "abuse.dll",
+    "adv.dll",
+    "pdll.dll"
+  ],
+  "lab_source_sha256": "6156fd65c19360a93b16779178bf2afe630e1d3fa7b10271ba526ba6ad7b4b85",
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "loader_va": "0x90bbf0",
+      "loader_rva": "0x50bbf0",
+      "loader_size": 1318,
+      "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+      "instructions": [
+        {
+          "va": "0x90bc23",
+          "rva": "0x50bc23",
+          "file_offset": "0x50b023",
+          "bytes": "8945040f84d1040000"
+        },
+        {
+          "va": "0x90bcc0",
+          "rva": "0x50bcc0",
+          "file_offset": "0x50b0c0",
+          "bytes": "8d54241452e8e9c60f00"
+        },
+        {
+          "va": "0x90bef2",
+          "rva": "0x50bef2",
+          "file_offset": "0x50b2f2",
+          "bytes": "834c082004"
+        },
+        {
+          "va": "0x90c088",
+          "rva": "0x50c088",
+          "file_offset": "0x50b488",
+          "bytes": "3bc80f8230fcffff"
+        },
+        {
+          "va": "0xb39f08",
+          "rva": "0x739f08",
+          "file_offset": "0x738708",
+          "bytes": "2d696e746572696f7200"
+        },
+        {
+          "va": "0xb38568",
+          "rva": "0x738568",
+          "file_offset": "0x736d68",
+          "bytes": "4558542e73707400"
+        },
+        {
+          "va": "0x8eaa7f",
+          "rva": "0x4eaa7f",
+          "file_offset": "0x4e9e7f",
+          "bytes": "8db300020000508bcee863110200"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "loader_va": "0x90bbf0",
+      "loader_rva": "0x50bbf0",
+      "loader_size": 1318,
+      "loader_sha256": "a8c404bd7b22e72091b8f34453cb224ad11f14d0ab71074bcc19618051df27a4",
+      "instructions": [
+        {
+          "va": "0x90bc23",
+          "rva": "0x50bc23",
+          "file_offset": "0x50b023",
+          "bytes": "8945040f84d1040000"
+        },
+        {
+          "va": "0x90bcc0",
+          "rva": "0x50bcc0",
+          "file_offset": "0x50b0c0",
+          "bytes": "8d54241452e8e9c60f00"
+        },
+        {
+          "va": "0x90bef2",
+          "rva": "0x50bef2",
+          "file_offset": "0x50b2f2",
+          "bytes": "834c082004"
+        },
+        {
+          "va": "0x90c088",
+          "rva": "0x50c088",
+          "file_offset": "0x50b488",
+          "bytes": "3bc80f8230fcffff"
+        },
+        {
+          "va": "0xb39f08",
+          "rva": "0x739f08",
+          "file_offset": "0x738708",
+          "bytes": "2d696e746572696f7200"
+        },
+        {
+          "va": "0xb38568",
+          "rva": "0x738568",
+          "file_offset": "0x736d68",
+          "bytes": "4558542e73707400"
+        },
+        {
+          "va": "0x8eaa7f",
+          "rva": "0x4eaa7f",
+          "file_offset": "0x4e9e7f",
+          "bytes": "8db300020000508bcee863110200"
+        }
+      ]
+    }
+  ],
+  "max_world_local_error": 0.001953125,
+  "probe_point_classified_outside": 0,
+  "cases": [
+    {
+      "case": "fixtures/capacity-0",
+      "path": null,
+      "sha256": "96e62a2e49e6ccf05d3133be93800491b6c0d17d940d1b79dd0eb9bde2f9a95f",
+      "bytes": 62,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "fixtures/capacity-1",
+      "path": null,
+      "sha256": "68d40f75cd8f071190deac32449a7c40c4cda978a20e81d23e5fc3465cbe361f",
+      "bytes": 169,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "37518b58169a207b86cbc80cec2d488faa7ced296539b377152e65c5b6fb0e2b"
+    },
+    {
+      "case": "fixtures/capacity-15",
+      "path": null,
+      "sha256": "b8e9545d1324745ce16d85769b008ae88a1692ca29840eca6c318a767ad6e77d",
+      "bytes": 1667,
+      "helpers": 15,
+      "native_checks": 37,
+      "comparison_checks": 376,
+      "output_sha256": "2e40947ed594a7461285516c8e2f57fe64a04fa9c2f777b55626a1dc66f75ec0"
+    },
+    {
+      "case": "fixtures/capacity-16",
+      "path": null,
+      "sha256": "a453dc925cca671c4ba67d339f65eeef29ee1529d5a46531fd3b7743df318ca2",
+      "bytes": 1774,
+      "helpers": 16,
+      "native_checks": 38,
+      "comparison_checks": 401,
+      "output_sha256": "f72082a9bc642b24d26511e3fbe4172d1874fa50965a066924c645f32e364f02"
+    },
+    {
+      "case": "fixtures/capacity-17",
+      "path": null,
+      "sha256": "4a19087dd0f7fe17b5eab099469131d6648fff314136dc5644ff4e95380fea1d",
+      "bytes": 1881,
+      "helpers": 17,
+      "native_checks": 39,
+      "comparison_checks": 426,
+      "output_sha256": "e619658bc15568dcfd3fd8efecf6c3f130168af3a23a386b91980a99f3329b55"
+    },
+    {
+      "case": "fixtures/capacity-47",
+      "path": null,
+      "sha256": "042b6105ca9c703028e8ff370068d9aeb3138e5b7df696ecaba21bcb3f7d246e",
+      "bytes": 5091,
+      "helpers": 47,
+      "native_checks": 69,
+      "comparison_checks": 1176,
+      "output_sha256": "58fec9a4e6eab1843419a3707e94440f4e45f3feb3729869efde13efd413c0d0"
+    },
+    {
+      "case": "fixtures/capacity-48",
+      "path": null,
+      "sha256": "d4d778efc02ce342de4413861e77cc91298661dc72f52ffdcf9dc5371e354435",
+      "bytes": 5198,
+      "helpers": 48,
+      "native_checks": 70,
+      "comparison_checks": 1201,
+      "output_sha256": "8074722498ff32eb29d2f09029c85db78e1e07a5457c4ef565e176703ca60a27"
+    },
+    {
+      "case": "fixtures/capacity-49",
+      "path": null,
+      "sha256": "d6d59970a5383a5c8d96acbf26d019efdcb40b22734fc418630ed690d13d6ff3",
+      "bytes": 5305,
+      "helpers": 49,
+      "native_checks": 71,
+      "comparison_checks": 1226,
+      "output_sha256": "a9222c5e8517228e56786ebc486c04bbbe63b939e61f92f87de698ea5df2b46b"
+    },
+    {
+      "case": "fixtures/capacity-80",
+      "path": null,
+      "sha256": "b69210e0fe4c21ba6a05feec048a9e1c9c9778298eef37d8b96b630a31b16708",
+      "bytes": 8622,
+      "helpers": 80,
+      "native_checks": 102,
+      "comparison_checks": 2001,
+      "output_sha256": "ec2e7708430b8e9246de23ff06bd118faab2af7f2d63b77f33eebdc3bbfae2ab"
+    },
+    {
+      "case": "fixtures/options-and-defaults",
+      "path": null,
+      "sha256": "1b2d5a0c975fc36353b88f0e0253e49803636e7166898a89cb1eea9f9b40e1f6",
+      "bytes": 318,
+      "helpers": 3,
+      "native_checks": 36,
+      "comparison_checks": 54,
+      "output_sha256": "17540b8a0fafc0852c4edab47cfb507d02b47158538967b0f18116552276abd9"
+    },
+    {
+      "case": "fixtures/no-begin",
+      "path": null,
+      "sha256": "cffdfea117a91c2e8d30b9e2971fd9450173722af7597d5f7f5f96492a5187e3",
+      "bytes": 20,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "696473b677ac38608452d8a193bbb28585d8e2e190a6635e1a2e5c552bfbee09"
+    },
+    {
+      "case": "fixtures/empty-input",
+      "path": null,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "696473b677ac38608452d8a193bbb28585d8e2e190a6635e1a2e5c552bfbee09"
+    },
+    {
+      "case": "real/000",
+      "path": "Map/Cauldron01/Cauldron01.spt",
+      "sha256": "1321219f0797f6a56101a05da62c9f6a663e7bdac4617de0b478307fd63e646b",
+      "bytes": 128540,
+      "helpers": 610,
+      "native_checks": 632,
+      "comparison_checks": 15251,
+      "output_sha256": "21a43fe184a5b722a4e0969129f023dbb0fba03acf422686b127f22b1f2fb927"
+    },
+    {
+      "case": "real/001",
+      "path": "Map/Cauldron01_Ch2/Cauldron01_Ch2.spt",
+      "sha256": "fc6cf1eec168b69c44a71ebdc4531fc1e6f6ebf695390a9046dfd19c8adbc927",
+      "bytes": 121881,
+      "helpers": 579,
+      "native_checks": 601,
+      "comparison_checks": 14476,
+      "output_sha256": "aaa53e3e62b3aeae72c2830a547f73f296dd67f82eb86974174a670eaae647d2"
+    },
+    {
+      "case": "real/002",
+      "path": "Map/Cauldron01_Ch2/Cauldron01_Ch2EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/003",
+      "path": "Map/Cauldron01_Ch2/Cauldron01EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/004",
+      "path": "Map/Cauldron01_Ch3/Cauldron01_Ch3.spt",
+      "sha256": "fc6cf1eec168b69c44a71ebdc4531fc1e6f6ebf695390a9046dfd19c8adbc927",
+      "bytes": 121881,
+      "helpers": 579,
+      "native_checks": 601,
+      "comparison_checks": 14476,
+      "output_sha256": "aaa53e3e62b3aeae72c2830a547f73f296dd67f82eb86974174a670eaae647d2"
+    },
+    {
+      "case": "real/005",
+      "path": "Map/Cauldron01_Ch3/Cauldron01_Ch3EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/006",
+      "path": "Map/Cauldron01_Ch3/Cauldron01EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/007",
+      "path": "Map/Cauldron01_Pr1/Cauldron01_Pr1.spt",
+      "sha256": "fc6cf1eec168b69c44a71ebdc4531fc1e6f6ebf695390a9046dfd19c8adbc927",
+      "bytes": 121881,
+      "helpers": 579,
+      "native_checks": 601,
+      "comparison_checks": 14476,
+      "output_sha256": "aaa53e3e62b3aeae72c2830a547f73f296dd67f82eb86974174a670eaae647d2"
+    },
+    {
+      "case": "real/008",
+      "path": "Map/Cauldron01_Pr1/Cauldron01_Pr1EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/009",
+      "path": "Map/Cauldron01_Pr2/Cauldron01_Pr2.spt",
+      "sha256": "fc6cf1eec168b69c44a71ebdc4531fc1e6f6ebf695390a9046dfd19c8adbc927",
+      "bytes": 121881,
+      "helpers": 579,
+      "native_checks": 601,
+      "comparison_checks": 14476,
+      "output_sha256": "aaa53e3e62b3aeae72c2830a547f73f296dd67f82eb86974174a670eaae647d2"
+    },
+    {
+      "case": "real/010",
+      "path": "Map/Cauldron01_Pr2/Cauldron01_Pr2EXT.spt",
+      "sha256": "d4689472ad3fdc4f3614c9d548be2cf371b2b1527201d1cadaa84ff3bfc83e25",
+      "bytes": 72,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/011",
+      "path": "Map/Cauldron_TowerA/Cauldron_TowerA.spt",
+      "sha256": "d76496df503552cd9ada447dcfdbc1e6743f439eb105cd72aca27f13325d710a",
+      "bytes": 1130,
+      "helpers": 5,
+      "native_checks": 27,
+      "comparison_checks": 126,
+      "output_sha256": "f797efc751e04a67dd0313c2e8fff33dfedde4f79963239f6a142a2ef5764cc2"
+    },
+    {
+      "case": "real/012",
+      "path": "Map/Cauldron_TowerB/Cauldron_TowerB.spt",
+      "sha256": "c9878ee3fc8b44f0dbde78a279520ffc1aa7d8e8da95b341131215400ccb4101",
+      "bytes": 1132,
+      "helpers": 5,
+      "native_checks": 27,
+      "comparison_checks": 126,
+      "output_sha256": "f2453aae2154651518fc959b54fe4020e7483819558694ded61b10c317bc3f11"
+    },
+    {
+      "case": "real/013",
+      "path": "Map/Cauldron_TowerC/Cauldron_TowerC.spt",
+      "sha256": "8ad6136546ca71969fe17d635e4de105411256674a690e75459c90f304699729",
+      "bytes": 1132,
+      "helpers": 5,
+      "native_checks": 27,
+      "comparison_checks": 126,
+      "output_sha256": "0f922f1b3d119071ffc8efb6f3fb8a6f77e4895d9dbca186899b51e78a7fe3e7"
+    },
+    {
+      "case": "real/014",
+      "path": "Map/cora/Cora.spt",
+      "sha256": "f2837eb5e8088411e26bbdcb02447a11a74427b59306dd360d09c1cec6d1fff4",
+      "bytes": 2809,
+      "helpers": 13,
+      "native_checks": 35,
+      "comparison_checks": 326,
+      "output_sha256": "4a3d312e1c6f4af4338c5bc77dd43179c5aedc9ae16f0b765dab75eca00e387c"
+    },
+    {
+      "case": "real/015",
+      "path": "Map/Cora2/_Cora2EXT.spt",
+      "sha256": "72afcc139d29ca4153e3fa65771ff9205bf37030a230e5171dc889e725f5c094",
+      "bytes": 6505,
+      "helpers": 32,
+      "native_checks": 54,
+      "comparison_checks": 801,
+      "output_sha256": "ac8064352b4c020edfb14a16ff30b7d993e9bb3028ed0f231078498f418909dc"
+    },
+    {
+      "case": "real/016",
+      "path": "Map/Cora2/Cora2.spt",
+      "sha256": "53195b5b1f13a5b2ae4d4db59c5f8786a6da237bc913ffcc2789f5b802e117ae",
+      "bytes": 97923,
+      "helpers": 464,
+      "native_checks": 486,
+      "comparison_checks": 11601,
+      "output_sha256": "b366182d36c6cbe3a770904550f71587905293184e1367a956ea6dcefecae42d"
+    },
+    {
+      "case": "real/017",
+      "path": "Map/Cora2/Cora2_EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/018",
+      "path": "Map/Cora2/Cora2EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/019",
+      "path": "Map/Cora2_Ch2/Cora2_Ch2.spt",
+      "sha256": "e04511a80fe90b3de8ca5b7f4e00c3ee34a6d60d47f053eb133f118aa02b652a",
+      "bytes": 91521,
+      "helpers": 434,
+      "native_checks": 456,
+      "comparison_checks": 10851,
+      "output_sha256": "97bf7595689bdacd171c8b392ca31405a5b4441fd8e72c0af96a03eca8ac8ab8"
+    },
+    {
+      "case": "real/020",
+      "path": "Map/Cora2_Ch2/Cora2_Ch2_EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/021",
+      "path": "Map/Cora2_Ch2/Cora2_Ch2EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/022",
+      "path": "Map/Cora2_Ch3/Cora2_Ch3.spt",
+      "sha256": "e04511a80fe90b3de8ca5b7f4e00c3ee34a6d60d47f053eb133f118aa02b652a",
+      "bytes": 91521,
+      "helpers": 434,
+      "native_checks": 456,
+      "comparison_checks": 10851,
+      "output_sha256": "97bf7595689bdacd171c8b392ca31405a5b4441fd8e72c0af96a03eca8ac8ab8"
+    },
+    {
+      "case": "real/023",
+      "path": "Map/Cora2_Ch3/Cora2_Ch3_EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/024",
+      "path": "Map/Cora2_Ch3/Cora2_Ch3EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/025",
+      "path": "Map/Cora2_Pr1/Cora2_Pr1.spt",
+      "sha256": "e04511a80fe90b3de8ca5b7f4e00c3ee34a6d60d47f053eb133f118aa02b652a",
+      "bytes": 91521,
+      "helpers": 434,
+      "native_checks": 456,
+      "comparison_checks": 10851,
+      "output_sha256": "97bf7595689bdacd171c8b392ca31405a5b4441fd8e72c0af96a03eca8ac8ab8"
+    },
+    {
+      "case": "real/026",
+      "path": "Map/Cora2_Pr1/Cora2_Pr1_EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/027",
+      "path": "Map/Cora2_Pr1/Cora2_Pr1EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/028",
+      "path": "Map/Cora2_Pr2/Cora2_Pr2.spt",
+      "sha256": "e04511a80fe90b3de8ca5b7f4e00c3ee34a6d60d47f053eb133f118aa02b652a",
+      "bytes": 91521,
+      "helpers": 434,
+      "native_checks": 456,
+      "comparison_checks": 10851,
+      "output_sha256": "97bf7595689bdacd171c8b392ca31405a5b4441fd8e72c0af96a03eca8ac8ab8"
+    },
+    {
+      "case": "real/029",
+      "path": "Map/Cora2_Pr2/Cora2_Pr2_EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/030",
+      "path": "Map/Cora2_Pr2/Cora2_Pr2EXT.spt",
+      "sha256": "8b01792c19b2bbb919094e3911678f89eff47d017fc26d39f556a892ef0ee272",
+      "bytes": 290,
+      "helpers": 1,
+      "native_checks": 23,
+      "comparison_checks": 26,
+      "output_sha256": "1acba726600baebf6a488a9ee811ab58ed68d4ed376e244d4453aafdec5cc7f3"
+    },
+    {
+      "case": "real/031",
+      "path": "Map/Dungeon03/dungeon03.spt",
+      "sha256": "8721050ebf075a0fa23b639843899f171450eadfb3cf001df96c43d1daf34fb0",
+      "bytes": 8628,
+      "helpers": 40,
+      "native_checks": 62,
+      "comparison_checks": 1001,
+      "output_sha256": "c81490354d9e3ebcc264e3c3f7310e7711904fc6712769384f657f8b896a096c"
+    },
+    {
+      "case": "real/032",
+      "path": "Map/Dungeon04/Dungeon04.spt",
+      "sha256": "13fbae8576e3568c41c0eb96727e3b363b86a2be09836af682f8b298f43df537",
+      "bytes": 4707,
+      "helpers": 22,
+      "native_checks": 44,
+      "comparison_checks": 551,
+      "output_sha256": "4485a589ea866c12effcefb1faa9037a9a9560820f4766c17a9750a2a8b6748f"
+    },
+    {
+      "case": "real/033",
+      "path": "Map/Dungeon05/dungeon05.spt",
+      "sha256": "8f1d0e70fed7f4ab948d6d9ddc893e17028a16fce6daac1e6c5dbd9c03d78df1",
+      "bytes": 165907,
+      "helpers": 794,
+      "native_checks": 816,
+      "comparison_checks": 19851,
+      "output_sha256": "e98d7ae1f801eb05fc5e5e4835c4f9abed67f6baa112ad2bfa3163fdf6c55097"
+    },
+    {
+      "case": "real/034",
+      "path": "Map/Dungeon05_Ch2/dungeon05_Ch2.spt",
+      "sha256": "8f1d0e70fed7f4ab948d6d9ddc893e17028a16fce6daac1e6c5dbd9c03d78df1",
+      "bytes": 165907,
+      "helpers": 794,
+      "native_checks": 816,
+      "comparison_checks": 19851,
+      "output_sha256": "e98d7ae1f801eb05fc5e5e4835c4f9abed67f6baa112ad2bfa3163fdf6c55097"
+    },
+    {
+      "case": "real/035",
+      "path": "Map/Dungeon05_Ch3/dungeon05_Ch3.spt",
+      "sha256": "8f1d0e70fed7f4ab948d6d9ddc893e17028a16fce6daac1e6c5dbd9c03d78df1",
+      "bytes": 165907,
+      "helpers": 794,
+      "native_checks": 816,
+      "comparison_checks": 19851,
+      "output_sha256": "e98d7ae1f801eb05fc5e5e4835c4f9abed67f6baa112ad2bfa3163fdf6c55097"
+    },
+    {
+      "case": "real/036",
+      "path": "Map/Dungeon05_Pr1/dungeon05_Pr1.spt",
+      "sha256": "8f1d0e70fed7f4ab948d6d9ddc893e17028a16fce6daac1e6c5dbd9c03d78df1",
+      "bytes": 165907,
+      "helpers": 794,
+      "native_checks": 816,
+      "comparison_checks": 19851,
+      "output_sha256": "e98d7ae1f801eb05fc5e5e4835c4f9abed67f6baa112ad2bfa3163fdf6c55097"
+    },
+    {
+      "case": "real/037",
+      "path": "Map/Dungeon05_Pr2/dungeon05_Pr2.spt",
+      "sha256": "8f1d0e70fed7f4ab948d6d9ddc893e17028a16fce6daac1e6c5dbd9c03d78df1",
+      "bytes": 165907,
+      "helpers": 794,
+      "native_checks": 816,
+      "comparison_checks": 19851,
+      "output_sha256": "e98d7ae1f801eb05fc5e5e4835c4f9abed67f6baa112ad2bfa3163fdf6c55097"
+    },
+    {
+      "case": "real/038",
+      "path": "Map/Dungeon06/Dungeon06.spt",
+      "sha256": "b14ad9e135c2fa629a4365a1fb283eca3166ba964287b0405ebab9621e853f8a",
+      "bytes": 289519,
+      "helpers": 1385,
+      "native_checks": 1407,
+      "comparison_checks": 34626,
+      "output_sha256": "8d3d5ee1b9e12f89cd4b12540d703fd911781f3e004e8a24cbb6daa30dc2f65b"
+    },
+    {
+      "case": "real/039",
+      "path": "Map/Dungeon06_Ch2/Dungeon06_Ch2.spt",
+      "sha256": "b14ad9e135c2fa629a4365a1fb283eca3166ba964287b0405ebab9621e853f8a",
+      "bytes": 289519,
+      "helpers": 1385,
+      "native_checks": 1407,
+      "comparison_checks": 34626,
+      "output_sha256": "8d3d5ee1b9e12f89cd4b12540d703fd911781f3e004e8a24cbb6daa30dc2f65b"
+    },
+    {
+      "case": "real/040",
+      "path": "Map/Dungeon06_Ch3/Dungeon06_Ch3.spt",
+      "sha256": "b14ad9e135c2fa629a4365a1fb283eca3166ba964287b0405ebab9621e853f8a",
+      "bytes": 289519,
+      "helpers": 1385,
+      "native_checks": 1407,
+      "comparison_checks": 34626,
+      "output_sha256": "8d3d5ee1b9e12f89cd4b12540d703fd911781f3e004e8a24cbb6daa30dc2f65b"
+    },
+    {
+      "case": "real/041",
+      "path": "Map/Dungeon06_Pr1/Dungeon06_Pr1.spt",
+      "sha256": "b14ad9e135c2fa629a4365a1fb283eca3166ba964287b0405ebab9621e853f8a",
+      "bytes": 289519,
+      "helpers": 1385,
+      "native_checks": 1407,
+      "comparison_checks": 34626,
+      "output_sha256": "8d3d5ee1b9e12f89cd4b12540d703fd911781f3e004e8a24cbb6daa30dc2f65b"
+    },
+    {
+      "case": "real/042",
+      "path": "Map/Dungeon06_Pr2/Dungeon06_Pr2.spt",
+      "sha256": "b14ad9e135c2fa629a4365a1fb283eca3166ba964287b0405ebab9621e853f8a",
+      "bytes": 289519,
+      "helpers": 1385,
+      "native_checks": 1407,
+      "comparison_checks": 34626,
+      "output_sha256": "8d3d5ee1b9e12f89cd4b12540d703fd911781f3e004e8a24cbb6daa30dc2f65b"
+    },
+    {
+      "case": "real/043",
+      "path": "Map/Elan/Elan.spt",
+      "sha256": "1157063484534972c4bb0be01cb669a4222f66c9e208da69b1b2e73a37ca0cec",
+      "bytes": 75977,
+      "helpers": 364,
+      "native_checks": 386,
+      "comparison_checks": 9101,
+      "output_sha256": "4692e29a49542e0ec672ae8c69c824abd1aac2f821d9645867d6faad892522a6"
+    },
+    {
+      "case": "real/044",
+      "path": "Map/Elan_Ch2/Elan_Ch2.spt",
+      "sha256": "27ff0fad5a5e8dd6511b6e3bd8cb9d6261274d507ea6cde7a75eb81c42c41663",
+      "bytes": 70368,
+      "helpers": 337,
+      "native_checks": 359,
+      "comparison_checks": 8426,
+      "output_sha256": "4083c5b242ad74ad510ac9dba537301389dd890965ae4789ff744db54b5d8fe2"
+    },
+    {
+      "case": "real/045",
+      "path": "Map/Elan_Ch3/Elan_Ch3.spt",
+      "sha256": "27ff0fad5a5e8dd6511b6e3bd8cb9d6261274d507ea6cde7a75eb81c42c41663",
+      "bytes": 70368,
+      "helpers": 337,
+      "native_checks": 359,
+      "comparison_checks": 8426,
+      "output_sha256": "4083c5b242ad74ad510ac9dba537301389dd890965ae4789ff744db54b5d8fe2"
+    },
+    {
+      "case": "real/046",
+      "path": "Map/Elan_Pr1/Elan_Pr1.spt",
+      "sha256": "27ff0fad5a5e8dd6511b6e3bd8cb9d6261274d507ea6cde7a75eb81c42c41663",
+      "bytes": 70368,
+      "helpers": 337,
+      "native_checks": 359,
+      "comparison_checks": 8426,
+      "output_sha256": "4083c5b242ad74ad510ac9dba537301389dd890965ae4789ff744db54b5d8fe2"
+    },
+    {
+      "case": "real/047",
+      "path": "Map/Elan_Pr2/Elan_Pr2.spt",
+      "sha256": "27ff0fad5a5e8dd6511b6e3bd8cb9d6261274d507ea6cde7a75eb81c42c41663",
+      "bytes": 70368,
+      "helpers": 337,
+      "native_checks": 359,
+      "comparison_checks": 8426,
+      "output_sha256": "4083c5b242ad74ad510ac9dba537301389dd890965ae4789ff744db54b5d8fe2"
+    },
+    {
+      "case": "real/048",
+      "path": "Map/Exile_Land/Exile_Land.spt",
+      "sha256": "f38cbb4b106d843ff74483ea0e898e74a361af33c7f9112adcfb9614f4e521f2",
+      "bytes": 206238,
+      "helpers": 975,
+      "native_checks": 997,
+      "comparison_checks": 24376,
+      "output_sha256": "b5c2ae11c302946fc388c886fdee579f2725415434e08f0f3dc94b35eea07643"
+    },
+    {
+      "case": "real/049",
+      "path": "Map/Exile_Land_Ch2/Exile_Land_Ch2.spt",
+      "sha256": "14efecb096bc84bd47ee873e74a4de974351ec4606f7598c1a89f5d32d905278",
+      "bytes": 195758,
+      "helpers": 926,
+      "native_checks": 948,
+      "comparison_checks": 23151,
+      "output_sha256": "4504fcb1c6b7f21eab231c65a4b09b74af84659f85528956dd1a6b21d66c5e25"
+    },
+    {
+      "case": "real/050",
+      "path": "Map/Exile_Land_Ch3/Exile_Land_Ch3.spt",
+      "sha256": "14efecb096bc84bd47ee873e74a4de974351ec4606f7598c1a89f5d32d905278",
+      "bytes": 195758,
+      "helpers": 926,
+      "native_checks": 948,
+      "comparison_checks": 23151,
+      "output_sha256": "4504fcb1c6b7f21eab231c65a4b09b74af84659f85528956dd1a6b21d66c5e25"
+    },
+    {
+      "case": "real/051",
+      "path": "Map/Exile_Land_Pr1/Exile_Land_Pr1.spt",
+      "sha256": "14efecb096bc84bd47ee873e74a4de974351ec4606f7598c1a89f5d32d905278",
+      "bytes": 195758,
+      "helpers": 926,
+      "native_checks": 948,
+      "comparison_checks": 23151,
+      "output_sha256": "4504fcb1c6b7f21eab231c65a4b09b74af84659f85528956dd1a6b21d66c5e25"
+    },
+    {
+      "case": "real/052",
+      "path": "Map/Exile_Land_Pr2/Exile_Land_Pr2.spt",
+      "sha256": "14efecb096bc84bd47ee873e74a4de974351ec4606f7598c1a89f5d32d905278",
+      "bytes": 195758,
+      "helpers": 926,
+      "native_checks": 948,
+      "comparison_checks": 23151,
+      "output_sha256": "4504fcb1c6b7f21eab231c65a4b09b74af84659f85528956dd1a6b21d66c5e25"
+    },
+    {
+      "case": "real/053",
+      "path": "Map/Feisil_Sectia/Feisil_Sectia.spt",
+      "sha256": "d794179e4fa201bc7e28ebff56f0fb1a941a459bac22ed67fec2b92fcfab321e",
+      "bytes": 477,
+      "helpers": 2,
+      "native_checks": 24,
+      "comparison_checks": 51,
+      "output_sha256": "555c75c0e937bea94cbc092f677d44cf147ccef5016021a2b736a26e13756dcc"
+    },
+    {
+      "case": "real/054",
+      "path": "Map/Forrest03A/Forrest03A.spt",
+      "sha256": "8a43b7b7840967cb55586b151aabb0db7c21aa2fbf547858b5ad56dc255fc220",
+      "bytes": 58501,
+      "helpers": 279,
+      "native_checks": 301,
+      "comparison_checks": 6976,
+      "output_sha256": "536adfe8546da1f0ce8c5a53421794ea71b01179f8a5c304b7ab2c271b7abd8e"
+    },
+    {
+      "case": "real/055",
+      "path": "Map/Forrest03A_Ch2/Forrest03A_Ch2.spt",
+      "sha256": "a077e37ee1707d19924264cfe9f58c8429c56d6eed5874a1c32635409bed3e56",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "fa2196e25832c7166e67d7016ee2d97acd076e12406368c770c5680e5919ece9"
+    },
+    {
+      "case": "real/056",
+      "path": "Map/Forrest03A_Ch3/Forrest03A_Ch3.spt",
+      "sha256": "a077e37ee1707d19924264cfe9f58c8429c56d6eed5874a1c32635409bed3e56",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "fa2196e25832c7166e67d7016ee2d97acd076e12406368c770c5680e5919ece9"
+    },
+    {
+      "case": "real/057",
+      "path": "Map/Forrest03A_Pr1/Forrest03A_Pr1.spt",
+      "sha256": "a077e37ee1707d19924264cfe9f58c8429c56d6eed5874a1c32635409bed3e56",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "fa2196e25832c7166e67d7016ee2d97acd076e12406368c770c5680e5919ece9"
+    },
+    {
+      "case": "real/058",
+      "path": "Map/Forrest03A_Pr2/Forrest03A_Pr2.spt",
+      "sha256": "a077e37ee1707d19924264cfe9f58c8429c56d6eed5874a1c32635409bed3e56",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "fa2196e25832c7166e67d7016ee2d97acd076e12406368c770c5680e5919ece9"
+    },
+    {
+      "case": "real/059",
+      "path": "Map/Forrest03B/Forrest03B.spt",
+      "sha256": "87358428a8ceaa3d909d6291c83907048a1189a9941385a3230f699f75fdb8b2",
+      "bytes": 58502,
+      "helpers": 279,
+      "native_checks": 301,
+      "comparison_checks": 6976,
+      "output_sha256": "5d90ad6b8b61682dcd36e82257515ae1b8e991762153cfb5ef5ab6da7f94d0ca"
+    },
+    {
+      "case": "real/060",
+      "path": "Map/Forrest03B/test.spt",
+      "sha256": "92dfbc19803385f6bda9155b037f7f1c238e273ae9a390f5118506a6c6bad8ee",
+      "bytes": 50735,
+      "helpers": 242,
+      "native_checks": 264,
+      "comparison_checks": 6051,
+      "output_sha256": "79336a9052ea819e5e392f979b054f7cde033eec919fc26800d2ebd5758c2660"
+    },
+    {
+      "case": "real/061",
+      "path": "Map/Forrest03B_Ch2/Forrest03B_Ch2.spt",
+      "sha256": "37a5f5c451fa55d37ac4d9ff90f50a6e0ec54db601fb27d05fac08f3faa442f5",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "efadcda547bd27fe2ab6d1356b6965d263ab7204ddf221964f8d382828027cf7"
+    },
+    {
+      "case": "real/062",
+      "path": "Map/Forrest03B_Ch2/test.spt",
+      "sha256": "92dfbc19803385f6bda9155b037f7f1c238e273ae9a390f5118506a6c6bad8ee",
+      "bytes": 50735,
+      "helpers": 242,
+      "native_checks": 264,
+      "comparison_checks": 6051,
+      "output_sha256": "79336a9052ea819e5e392f979b054f7cde033eec919fc26800d2ebd5758c2660"
+    },
+    {
+      "case": "real/063",
+      "path": "Map/Forrest03B_Ch3/Forrest03B_Ch3.spt",
+      "sha256": "37a5f5c451fa55d37ac4d9ff90f50a6e0ec54db601fb27d05fac08f3faa442f5",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "efadcda547bd27fe2ab6d1356b6965d263ab7204ddf221964f8d382828027cf7"
+    },
+    {
+      "case": "real/064",
+      "path": "Map/Forrest03B_Ch3/test.spt",
+      "sha256": "92dfbc19803385f6bda9155b037f7f1c238e273ae9a390f5118506a6c6bad8ee",
+      "bytes": 50735,
+      "helpers": 242,
+      "native_checks": 264,
+      "comparison_checks": 6051,
+      "output_sha256": "79336a9052ea819e5e392f979b054f7cde033eec919fc26800d2ebd5758c2660"
+    },
+    {
+      "case": "real/065",
+      "path": "Map/Forrest03B_Pr1/Forrest03B_Pr1.spt",
+      "sha256": "37a5f5c451fa55d37ac4d9ff90f50a6e0ec54db601fb27d05fac08f3faa442f5",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "efadcda547bd27fe2ab6d1356b6965d263ab7204ddf221964f8d382828027cf7"
+    },
+    {
+      "case": "real/066",
+      "path": "Map/Forrest03B_Pr1/test.spt",
+      "sha256": "92dfbc19803385f6bda9155b037f7f1c238e273ae9a390f5118506a6c6bad8ee",
+      "bytes": 50735,
+      "helpers": 242,
+      "native_checks": 264,
+      "comparison_checks": 6051,
+      "output_sha256": "79336a9052ea819e5e392f979b054f7cde033eec919fc26800d2ebd5758c2660"
+    },
+    {
+      "case": "real/067",
+      "path": "Map/Forrest03B_Pr2/Forrest03B_Pr2.spt",
+      "sha256": "37a5f5c451fa55d37ac4d9ff90f50a6e0ec54db601fb27d05fac08f3faa442f5",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "efadcda547bd27fe2ab6d1356b6965d263ab7204ddf221964f8d382828027cf7"
+    },
+    {
+      "case": "real/068",
+      "path": "Map/Forrest03B_Pr2/test.spt",
+      "sha256": "92dfbc19803385f6bda9155b037f7f1c238e273ae9a390f5118506a6c6bad8ee",
+      "bytes": 50735,
+      "helpers": 242,
+      "native_checks": 264,
+      "comparison_checks": 6051,
+      "output_sha256": "79336a9052ea819e5e392f979b054f7cde033eec919fc26800d2ebd5758c2660"
+    },
+    {
+      "case": "real/069",
+      "path": "Map/Forrest03C/Forrest03C.spt",
+      "sha256": "7a0cdca38faf3d487135572f137f85e0723a73456361a8c1f703d2d0f797d06e",
+      "bytes": 58500,
+      "helpers": 279,
+      "native_checks": 301,
+      "comparison_checks": 6976,
+      "output_sha256": "dd5fe7f8e2d0d3713e64a2769126a3d9988624807459bc38e2d4890f13c0eea5"
+    },
+    {
+      "case": "real/070",
+      "path": "Map/Forrest03C_Ch2/Forrest03C_Ch2.spt",
+      "sha256": "96135d4a382a9f8e19e66128ca998085aca6100d19f5b9a011a9ff11a34f7605",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "6e4bcaf6c324da61dca9136e8bd7d1444375a44741a7fd2f0cebecb9a72bd6ac"
+    },
+    {
+      "case": "real/071",
+      "path": "Map/Forrest03C_Ch3/Forrest03C_Ch3.spt",
+      "sha256": "96135d4a382a9f8e19e66128ca998085aca6100d19f5b9a011a9ff11a34f7605",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "6e4bcaf6c324da61dca9136e8bd7d1444375a44741a7fd2f0cebecb9a72bd6ac"
+    },
+    {
+      "case": "real/072",
+      "path": "Map/Forrest03C_Pr1/Forrest03C_Pr1.spt",
+      "sha256": "96135d4a382a9f8e19e66128ca998085aca6100d19f5b9a011a9ff11a34f7605",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "6e4bcaf6c324da61dca9136e8bd7d1444375a44741a7fd2f0cebecb9a72bd6ac"
+    },
+    {
+      "case": "real/073",
+      "path": "Map/Forrest03C_Pr2/Forrest03C_Pr2.spt",
+      "sha256": "96135d4a382a9f8e19e66128ca998085aca6100d19f5b9a011a9ff11a34f7605",
+      "bytes": 55906,
+      "helpers": 267,
+      "native_checks": 289,
+      "comparison_checks": 6676,
+      "output_sha256": "6e4bcaf6c324da61dca9136e8bd7d1444375a44741a7fd2f0cebecb9a72bd6ac"
+    },
+    {
+      "case": "real/074",
+      "path": "Map/Medicallab/Medicallab.spt",
+      "sha256": "7ec7d1f5ca49d492477c155a5f0c6f2054a7bff4dd1767530bb70414cf5002d2",
+      "bytes": 66136,
+      "helpers": 314,
+      "native_checks": 336,
+      "comparison_checks": 7851,
+      "output_sha256": "eac8153288c482a769ee05a93e07989d8102ee99a4c765445b029e4f14376a93"
+    },
+    {
+      "case": "real/075",
+      "path": "Map/Medicallab2/Medicallab2.spt",
+      "sha256": "cdc074e17702d3c8d0f2c9a569dc76a46bff2f840fe25e426df5cca6d73a68b8",
+      "bytes": 66718,
+      "helpers": 317,
+      "native_checks": 339,
+      "comparison_checks": 7926,
+      "output_sha256": "fc9d019e0dd9deb288dd928b74dd254147dec072ae8f3ddcf44a07c104197347"
+    },
+    {
+      "case": "real/076",
+      "path": "Map/Medicallab2_Ch2/Medicallab2_Ch2.spt",
+      "sha256": "ec4edf858578040cbe0fd86c86bd0a893891148671aa246f6a26c15d0d9022f2",
+      "bytes": 59339,
+      "helpers": 282,
+      "native_checks": 304,
+      "comparison_checks": 7051,
+      "output_sha256": "cef708bdabf06a47bb0a44afb013c77af2f3fdf894e9c967147f1b5dd612bb78"
+    },
+    {
+      "case": "real/077",
+      "path": "Map/Medicallab2_Ch3/Medicallab2_Ch3.spt",
+      "sha256": "ec4edf858578040cbe0fd86c86bd0a893891148671aa246f6a26c15d0d9022f2",
+      "bytes": 59339,
+      "helpers": 282,
+      "native_checks": 304,
+      "comparison_checks": 7051,
+      "output_sha256": "cef708bdabf06a47bb0a44afb013c77af2f3fdf894e9c967147f1b5dd612bb78"
+    },
+    {
+      "case": "real/078",
+      "path": "Map/Medicallab2_Pr1/Medicallab2_Pr1.spt",
+      "sha256": "ec4edf858578040cbe0fd86c86bd0a893891148671aa246f6a26c15d0d9022f2",
+      "bytes": 59339,
+      "helpers": 282,
+      "native_checks": 304,
+      "comparison_checks": 7051,
+      "output_sha256": "cef708bdabf06a47bb0a44afb013c77af2f3fdf894e9c967147f1b5dd612bb78"
+    },
+    {
+      "case": "real/079",
+      "path": "Map/Medicallab2_Pr2/Medicallab2_Pr2.spt",
+      "sha256": "ec4edf858578040cbe0fd86c86bd0a893891148671aa246f6a26c15d0d9022f2",
+      "bytes": 59339,
+      "helpers": 282,
+      "native_checks": 304,
+      "comparison_checks": 7051,
+      "output_sha256": "cef708bdabf06a47bb0a44afb013c77af2f3fdf894e9c967147f1b5dd612bb78"
+    },
+    {
+      "case": "real/080",
+      "path": "Map/Medicallab_Ch2/Medicallab_Ch2.spt",
+      "sha256": "8feb44d22b828be2a9fe8cb35a51260c878ab13afeb000e36f5b19c3de5488ad",
+      "bytes": 66136,
+      "helpers": 314,
+      "native_checks": 336,
+      "comparison_checks": 7851,
+      "output_sha256": "9069d0a55da95a86fa91073a771ff468cc3bebd0469e8ada6f6bc91557246e1b"
+    },
+    {
+      "case": "real/081",
+      "path": "Map/Medicallab_Ch3/Medicallab_Ch3.spt",
+      "sha256": "8feb44d22b828be2a9fe8cb35a51260c878ab13afeb000e36f5b19c3de5488ad",
+      "bytes": 66136,
+      "helpers": 314,
+      "native_checks": 336,
+      "comparison_checks": 7851,
+      "output_sha256": "9069d0a55da95a86fa91073a771ff468cc3bebd0469e8ada6f6bc91557246e1b"
+    },
+    {
+      "case": "real/082",
+      "path": "Map/Medicallab_Pr1/Medicallab_Pr1.spt",
+      "sha256": "8feb44d22b828be2a9fe8cb35a51260c878ab13afeb000e36f5b19c3de5488ad",
+      "bytes": 66136,
+      "helpers": 314,
+      "native_checks": 336,
+      "comparison_checks": 7851,
+      "output_sha256": "9069d0a55da95a86fa91073a771ff468cc3bebd0469e8ada6f6bc91557246e1b"
+    },
+    {
+      "case": "real/083",
+      "path": "Map/Medicallab_Pr2/Medicallab_Pr2.spt",
+      "sha256": "8feb44d22b828be2a9fe8cb35a51260c878ab13afeb000e36f5b19c3de5488ad",
+      "bytes": 66136,
+      "helpers": 314,
+      "native_checks": 336,
+      "comparison_checks": 7851,
+      "output_sha256": "9069d0a55da95a86fa91073a771ff468cc3bebd0469e8ada6f6bc91557246e1b"
+    },
+    {
+      "case": "real/084",
+      "path": "Map/Mountain_Beast/Mountain_Beast.spt",
+      "sha256": "41ff99a038797776aa30c6c344e77d96a7b93667deb40104d88dae7213ee8b70",
+      "bytes": 160376,
+      "helpers": 760,
+      "native_checks": 782,
+      "comparison_checks": 19001,
+      "output_sha256": "9a5b9507105b807448bdff1086dbab0ef91d8fbdaf4f94b38ac1e010fe223248"
+    },
+    {
+      "case": "real/085",
+      "path": "Map/Mountain_Beast_Ch2/Mountain_Beast_Ch2.spt",
+      "sha256": "c98bd7db3fcdeb3a1ce5a84b6248556111e00a821303c924d037329df47b039a",
+      "bytes": 136360,
+      "helpers": 646,
+      "native_checks": 668,
+      "comparison_checks": 16151,
+      "output_sha256": "6ec40709c9b8d79102f2168db61d9d2725e5529bc96873d267b0a16c6896fdb4"
+    },
+    {
+      "case": "real/086",
+      "path": "Map/Mountain_Beast_Ch3/Mountain_Beast_Ch3.spt",
+      "sha256": "c98bd7db3fcdeb3a1ce5a84b6248556111e00a821303c924d037329df47b039a",
+      "bytes": 136360,
+      "helpers": 646,
+      "native_checks": 668,
+      "comparison_checks": 16151,
+      "output_sha256": "6ec40709c9b8d79102f2168db61d9d2725e5529bc96873d267b0a16c6896fdb4"
+    },
+    {
+      "case": "real/087",
+      "path": "Map/Mountain_Beast_Pr1/Mountain_Beast_Pr1.spt",
+      "sha256": "c98bd7db3fcdeb3a1ce5a84b6248556111e00a821303c924d037329df47b039a",
+      "bytes": 136360,
+      "helpers": 646,
+      "native_checks": 668,
+      "comparison_checks": 16151,
+      "output_sha256": "6ec40709c9b8d79102f2168db61d9d2725e5529bc96873d267b0a16c6896fdb4"
+    },
+    {
+      "case": "real/088",
+      "path": "Map/Mountain_Beast_Pr2/Mountain_Beast_Pr2.spt",
+      "sha256": "c98bd7db3fcdeb3a1ce5a84b6248556111e00a821303c924d037329df47b039a",
+      "bytes": 136360,
+      "helpers": 646,
+      "native_checks": 668,
+      "comparison_checks": 16151,
+      "output_sha256": "6ec40709c9b8d79102f2168db61d9d2725e5529bc96873d267b0a16c6896fdb4"
+    },
+    {
+      "case": "real/089",
+      "path": "Map/mustion_disel/Mustion_Disel.spt",
+      "sha256": "980c17e2890958a2592fce0aede8cb719e2ad724c120ce45af3908a411bac024",
+      "bytes": 1766,
+      "helpers": 8,
+      "native_checks": 30,
+      "comparison_checks": 201,
+      "output_sha256": "90ca464ec1d5f72c99b4cf817534ad179cda5584d38f04518fee31f1aa73bd8a"
+    },
+    {
+      "case": "real/090",
+      "path": "Map/neutralA/NeutralA.spt",
+      "sha256": "d33864d6c7182a103869469c5f336bfaf2f567529cc1d9e5adf71fe8e71f4f0e",
+      "bytes": 270555,
+      "helpers": 1265,
+      "native_checks": 1287,
+      "comparison_checks": 31626,
+      "output_sha256": "994b14de697f86bb227101b1020a84534939cb397f8318eb976201df08ae4921"
+    },
+    {
+      "case": "real/091",
+      "path": "Map/neutralAS1/NeutralAS1.spt",
+      "sha256": "09e4c7513ecde1838f3907864c1b82da7d0f05362ffa7709f35c66ac023e09d3",
+      "bytes": 206853,
+      "helpers": 966,
+      "native_checks": 988,
+      "comparison_checks": 24151,
+      "output_sha256": "6d36c319828b907f9b1826d73d0820a98fcca46b24b1dc4cc98c19e5b24f1539"
+    },
+    {
+      "case": "real/092",
+      "path": "Map/neutralAS2/NeutralAS2.spt",
+      "sha256": "41693f8ae8ed35c2b04f215e6aa1c0e69d6bcdff6503df7aad8ca91dfea5aaa6",
+      "bytes": 448331,
+      "helpers": 2063,
+      "native_checks": 2085,
+      "comparison_checks": 51576,
+      "output_sha256": "92c57805995ffc46ff1fea357a8a2ae058e5968b66a2abad1c2af90fabeaa13a"
+    },
+    {
+      "case": "real/093",
+      "path": "Map/neutralB/neutralB.spt",
+      "sha256": "5feadecabdedd57fbbca196dfdb673befba495a0ab8929e4d3dae5109edcc524",
+      "bytes": 208153,
+      "helpers": 976,
+      "native_checks": 998,
+      "comparison_checks": 24401,
+      "output_sha256": "cd914fc246a4b27dfa9a1d4af7b5cba32eb8dc83df72c8646ab054460a283493"
+    },
+    {
+      "case": "real/094",
+      "path": "Map/neutralBS1/NeutralBS1.spt",
+      "sha256": "670757968b4d260d116041abbcf3c5fdb2e2096818ba9087a4bd889b0236c00d",
+      "bytes": 386451,
+      "helpers": 1780,
+      "native_checks": 1802,
+      "comparison_checks": 44501,
+      "output_sha256": "6a8b28052bf3f5183cd63832cc69caa109d3a153d85c78bb01043cf0ada0dc75"
+    },
+    {
+      "case": "real/095",
+      "path": "Map/neutralBS2/NeutralBS2.spt",
+      "sha256": "6521627621111cef6db1369cc61e10e6242107b0ae622ccbffcac0acc5b8fa5e",
+      "bytes": 334240,
+      "helpers": 1536,
+      "native_checks": 1558,
+      "comparison_checks": 38401,
+      "output_sha256": "07114b99a1723d9261459469dbf87bd27b6ebd3e1a66c1835fd7b7b3e1ef5fb3"
+    },
+    {
+      "case": "real/096",
+      "path": "Map/neutralC/neutralC.spt",
+      "sha256": "f71ad474d76ec0c4d2e5a99d0902c59077556d4357ed10775608882b9b886933",
+      "bytes": 291606,
+      "helpers": 1363,
+      "native_checks": 1385,
+      "comparison_checks": 34076,
+      "output_sha256": "da65b23079bc37406663137a800fcc4f47002d9f7def27d69a51fd3382e0d977"
+    },
+    {
+      "case": "real/097",
+      "path": "Map/neutralCS1/NeutralCS1.spt",
+      "sha256": "13227a2a6f73bc3a63e46652ac38f8fea8decece5545d9ba967b7d091b5a908d",
+      "bytes": 401167,
+      "helpers": 1829,
+      "native_checks": 1851,
+      "comparison_checks": 45726,
+      "output_sha256": "43e4121fb2fae46386607827846aac94ca5d6f92b94c11bacd3c6f59e02099df"
+    },
+    {
+      "case": "real/098",
+      "path": "Map/neutralCS2/NeutralCS2.spt",
+      "sha256": "473e2dceb2116a7a7167dba472d0a7eb0e81db44dde23865ff0308b6fd748191",
+      "bytes": 347584,
+      "helpers": 1595,
+      "native_checks": 1617,
+      "comparison_checks": 39876,
+      "output_sha256": "b8f437a43e43ca04ae9ed631fd89a6f7d1304363ef17bf81f14efb3989c55bf5"
+    },
+    {
+      "case": "real/099",
+      "path": "Map/Platform01/Platform01.spt",
+      "sha256": "be3dd274c54472018f8ed1235f1635874de1ca1b25f087d39a8713a3a92b2a9e",
+      "bytes": 431816,
+      "helpers": 2005,
+      "native_checks": 2027,
+      "comparison_checks": 50126,
+      "output_sha256": "cdee82c1ad0de72d5ae393523edaa6819291fb338c2a1c255fd3c4d9f9cf201b"
+    },
+    {
+      "case": "real/100",
+      "path": "Map/Platform01/Platform01__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/101",
+      "path": "Map/Platform01_Ch2/Platform01__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/102",
+      "path": "Map/Platform01_Ch2/Platform01_Ch2.spt",
+      "sha256": "d47d77c7b44e72fe0395bd4674fc3813a57dd189a7f2a5c857c1f712858642d4",
+      "bytes": 428186,
+      "helpers": 1988,
+      "native_checks": 2010,
+      "comparison_checks": 49701,
+      "output_sha256": "d9c795f56afa95620e844c0fa4b58327ee6c785d3349455ec36b8e5fddb417ae"
+    },
+    {
+      "case": "real/103",
+      "path": "Map/Platform01_Ch3/Platform01__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/104",
+      "path": "Map/Platform01_Ch3/Platform01_Ch3.spt",
+      "sha256": "d47d77c7b44e72fe0395bd4674fc3813a57dd189a7f2a5c857c1f712858642d4",
+      "bytes": 428186,
+      "helpers": 1988,
+      "native_checks": 2010,
+      "comparison_checks": 49701,
+      "output_sha256": "d9c795f56afa95620e844c0fa4b58327ee6c785d3349455ec36b8e5fddb417ae"
+    },
+    {
+      "case": "real/105",
+      "path": "Map/Platform01_Pr1/Platform01__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/106",
+      "path": "Map/Platform01_Pr1/Platform01_Pr1.spt",
+      "sha256": "d47d77c7b44e72fe0395bd4674fc3813a57dd189a7f2a5c857c1f712858642d4",
+      "bytes": 428186,
+      "helpers": 1988,
+      "native_checks": 2010,
+      "comparison_checks": 49701,
+      "output_sha256": "d9c795f56afa95620e844c0fa4b58327ee6c785d3349455ec36b8e5fddb417ae"
+    },
+    {
+      "case": "real/107",
+      "path": "Map/Platform01_Pr2/Platform01__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/108",
+      "path": "Map/Platform01_Pr2/Platform01_Pr2.spt",
+      "sha256": "d47d77c7b44e72fe0395bd4674fc3813a57dd189a7f2a5c857c1f712858642d4",
+      "bytes": 428186,
+      "helpers": 1988,
+      "native_checks": 2010,
+      "comparison_checks": 49701,
+      "output_sha256": "d9c795f56afa95620e844c0fa4b58327ee6c785d3349455ec36b8e5fddb417ae"
+    },
+    {
+      "case": "real/109",
+      "path": "Map/Platform02/Platform02.spt",
+      "sha256": "79f85a7570bff41e9a6749bf765f168d155b37d1d645a7a716f18f4c2abfa243",
+      "bytes": 344424,
+      "helpers": 1641,
+      "native_checks": 1663,
+      "comparison_checks": 41026,
+      "output_sha256": "3b74c5a90f2d0c16cd901b2927a291594ec0c58c8ca2213acc9893d699d72bd7"
+    },
+    {
+      "case": "real/110",
+      "path": "Map/Platform02/Platform02__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/111",
+      "path": "Map/Platform02_Ch2/Platform02_Ch2.spt",
+      "sha256": "8768fcb715e57be34ef53cdf334da1a3a57813bc15140a36779616e2240e033b",
+      "bytes": 344424,
+      "helpers": 1641,
+      "native_checks": 1663,
+      "comparison_checks": 41026,
+      "output_sha256": "0ecbd3f5e5f508c7609d7792571cc5776e2b66c79786c7510f62fec3b8783993"
+    },
+    {
+      "case": "real/112",
+      "path": "Map/Platform02_Ch2/Platform02_Ch2__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/113",
+      "path": "Map/Platform02_Ch3/Platform02_Ch3.spt",
+      "sha256": "b167b1fa900e5ab89a86d7cc8ff13bb992cb4064cf8c9b048693e4a7e5ab8446",
+      "bytes": 344424,
+      "helpers": 1641,
+      "native_checks": 1663,
+      "comparison_checks": 41026,
+      "output_sha256": "f758513c951de91f8ace03b2369863f0b03722417d0f2f62679a5a4b4af1673b"
+    },
+    {
+      "case": "real/114",
+      "path": "Map/Platform02_Ch3/Platform02_Ch3__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/115",
+      "path": "Map/Platform02_Pr1/Platform02_Pr1.spt",
+      "sha256": "40cc7345d4b59ba9da9af5ccdf249274e2772b6f38039b779647329d063656ec",
+      "bytes": 344424,
+      "helpers": 1641,
+      "native_checks": 1663,
+      "comparison_checks": 41026,
+      "output_sha256": "dc8b9be58ca6c6f6f6130ea2dcbfa1954ac7621e8b55a796e288de2e3ad13bd8"
+    },
+    {
+      "case": "real/116",
+      "path": "Map/Platform02_Pr1/Platform02_Pr1__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/117",
+      "path": "Map/Platform02_Pr2/Platform02_Pr2.spt",
+      "sha256": "3406356730820d87873bac945cb5cec488ccf11c68bc2081ee252926924dc8a7",
+      "bytes": 344424,
+      "helpers": 1641,
+      "native_checks": 1663,
+      "comparison_checks": 41026,
+      "output_sha256": "f91402886f7d4c7b7b4aba5b4160e20256ff6f14183badc6804f81ab4600fd5c"
+    },
+    {
+      "case": "real/118",
+      "path": "Map/Platform02_Pr2/Platform02_Pr2__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/119",
+      "path": "Map/Platform03/Platform03.spt",
+      "sha256": "982824da6e0797bb0233efd60d12556d600154d93800210680a9c902656b2d97",
+      "bytes": 203181,
+      "helpers": 976,
+      "native_checks": 998,
+      "comparison_checks": 24401,
+      "output_sha256": "6ac6a1a076ae82c68d62f4209f4d3ff48420d3b5e6a574241c8b564d11408b61"
+    },
+    {
+      "case": "real/120",
+      "path": "Map/Platform03/Platform03__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/121",
+      "path": "Map/Platform04/Platform04.spt",
+      "sha256": "4f66525c1b1db13a471a8d233ae77875ee17d800e97120960debecf49b0de218",
+      "bytes": 379269,
+      "helpers": 1823,
+      "native_checks": 1845,
+      "comparison_checks": 45576,
+      "output_sha256": "51ec96d314c072c3cbc14fb44fc626dd3d4b7914f306e83322a52a722822eafe"
+    },
+    {
+      "case": "real/122",
+      "path": "Map/Platform04/Platform04__.spt",
+      "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6",
+      "bytes": 429349,
+      "helpers": 1993,
+      "native_checks": 2015,
+      "comparison_checks": 49826,
+      "output_sha256": "ba53562ba7710217acab34fc0e019476677a1214264dfde5ef3038d0924c7273"
+    },
+    {
+      "case": "real/123",
+      "path": "Map/resources/resources.spt",
+      "sha256": "b8b006809a1bf83ca701aff8d5c737dfb8ed9cd5d6fa3c6827fd4dd1f25a7a4b",
+      "bytes": 107550,
+      "helpers": 500,
+      "native_checks": 522,
+      "comparison_checks": 12501,
+      "output_sha256": "d7854dff87c5c19601f968942f9142c31c9b10260d79cd841e090f3a9a1c9e82"
+    },
+    {
+      "case": "real/124",
+      "path": "Map/Sette/_setteEXT.spt",
+      "sha256": "66e33224132f1e9ea31a9cf445ae7c8c99c7b3d80a585e318e7110816af465f8",
+      "bytes": 1394,
+      "helpers": 6,
+      "native_checks": 28,
+      "comparison_checks": 151,
+      "output_sha256": "88f6de0566f91569143fd4a277b0b6884f7d46b5ca5f53119eb033d665c5e082"
+    },
+    {
+      "case": "real/125",
+      "path": "Map/Sette/Sette.spt",
+      "sha256": "5965a73c1abf064ddf2b742c37530632d9faab52cc9fce650c45a0868e1471f2",
+      "bytes": 64033,
+      "helpers": 303,
+      "native_checks": 325,
+      "comparison_checks": 7576,
+      "output_sha256": "7aa128e90fc501dc66d7e069427f6ca2846f78260bcc716445e34041dc766dd2"
+    },
+    {
+      "case": "real/126",
+      "path": "Map/Sette/setteEXT.spt",
+      "sha256": "13e36b0b69f00c92607ab9e14b1c9c75f7dc013bbffc617bd1d5141ae9d4b12f",
+      "bytes": 75,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/127",
+      "path": "Map/Sette_Ch2/Sette_Ch2.spt",
+      "sha256": "4aa010972e22188e293c22052c8882f3889eeca8f1fc7a22b37b424ed2e04e04",
+      "bytes": 55921,
+      "helpers": 264,
+      "native_checks": 286,
+      "comparison_checks": 6601,
+      "output_sha256": "5afbc83d7342206cce47ae10670a755ac62bef5d90e6e2dc924832cfd74b6e3b"
+    },
+    {
+      "case": "real/128",
+      "path": "Map/Sette_Ch2/sette_Ch2EXT.spt",
+      "sha256": "13e36b0b69f00c92607ab9e14b1c9c75f7dc013bbffc617bd1d5141ae9d4b12f",
+      "bytes": 75,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/129",
+      "path": "Map/Sette_Ch3/Sette_Ch3.spt",
+      "sha256": "4aa010972e22188e293c22052c8882f3889eeca8f1fc7a22b37b424ed2e04e04",
+      "bytes": 55921,
+      "helpers": 264,
+      "native_checks": 286,
+      "comparison_checks": 6601,
+      "output_sha256": "5afbc83d7342206cce47ae10670a755ac62bef5d90e6e2dc924832cfd74b6e3b"
+    },
+    {
+      "case": "real/130",
+      "path": "Map/Sette_Ch3/sette_Ch3EXT.spt",
+      "sha256": "13e36b0b69f00c92607ab9e14b1c9c75f7dc013bbffc617bd1d5141ae9d4b12f",
+      "bytes": 75,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/131",
+      "path": "Map/Sette_Pr1/Sette_Pr1.spt",
+      "sha256": "4aa010972e22188e293c22052c8882f3889eeca8f1fc7a22b37b424ed2e04e04",
+      "bytes": 55921,
+      "helpers": 264,
+      "native_checks": 286,
+      "comparison_checks": 6601,
+      "output_sha256": "5afbc83d7342206cce47ae10670a755ac62bef5d90e6e2dc924832cfd74b6e3b"
+    },
+    {
+      "case": "real/132",
+      "path": "Map/Sette_Pr1/sette_Pr1EXT.spt",
+      "sha256": "13e36b0b69f00c92607ab9e14b1c9c75f7dc013bbffc617bd1d5141ae9d4b12f",
+      "bytes": 75,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/133",
+      "path": "Map/Sette_Pr2/Sette_Pr2.spt",
+      "sha256": "4aa010972e22188e293c22052c8882f3889eeca8f1fc7a22b37b424ed2e04e04",
+      "bytes": 55921,
+      "helpers": 264,
+      "native_checks": 286,
+      "comparison_checks": 6601,
+      "output_sha256": "5afbc83d7342206cce47ae10670a755ac62bef5d90e6e2dc924832cfd74b6e3b"
+    },
+    {
+      "case": "real/134",
+      "path": "Map/Sette_Pr2/sette_Pr2EXT.spt",
+      "sha256": "13e36b0b69f00c92607ab9e14b1c9c75f7dc013bbffc617bd1d5141ae9d4b12f",
+      "bytes": 75,
+      "helpers": 0,
+      "native_checks": 22,
+      "comparison_checks": 1,
+      "output_sha256": "7fcbb5d79735984a33d4c3db5871b3db63e1cb3994e3fa2ff97b63c42c043f54"
+    },
+    {
+      "case": "real/135",
+      "path": "Map/Wounded_Land/Wounded_Land.spt",
+      "sha256": "e886069e22ee39674e152c5f7a5341fb428f1dcc40c801d088f59eaa50de4a93",
+      "bytes": 144661,
+      "helpers": 684,
+      "native_checks": 706,
+      "comparison_checks": 17101,
+      "output_sha256": "2ef075cd79660dc393d41de48ac172f461367ebed40b2bb16d50c603e7320470"
+    },
+    {
+      "case": "real/136",
+      "path": "Map/Wounded_Land_Ch2/Wounded_Land_Ch2.spt",
+      "sha256": "9284e081fb6d3f266c622065178340979bca3aa9e00f9c5552fb1bef541fd16d",
+      "bytes": 136251,
+      "helpers": 645,
+      "native_checks": 667,
+      "comparison_checks": 16126,
+      "output_sha256": "9830cd5367d327dd1fc5f96804419e6aedc969567b1a3bce11f5810945af06e1"
+    },
+    {
+      "case": "real/137",
+      "path": "Map/Wounded_Land_Ch3/Wounded_Land_Ch3.spt",
+      "sha256": "9284e081fb6d3f266c622065178340979bca3aa9e00f9c5552fb1bef541fd16d",
+      "bytes": 136251,
+      "helpers": 645,
+      "native_checks": 667,
+      "comparison_checks": 16126,
+      "output_sha256": "9830cd5367d327dd1fc5f96804419e6aedc969567b1a3bce11f5810945af06e1"
+    },
+    {
+      "case": "real/138",
+      "path": "Map/Wounded_Land_Pr1/Wounded_Land_Pr1.spt",
+      "sha256": "9284e081fb6d3f266c622065178340979bca3aa9e00f9c5552fb1bef541fd16d",
+      "bytes": 136251,
+      "helpers": 645,
+      "native_checks": 667,
+      "comparison_checks": 16126,
+      "output_sha256": "9830cd5367d327dd1fc5f96804419e6aedc969567b1a3bce11f5810945af06e1"
+    },
+    {
+      "case": "real/139",
+      "path": "Map/Wounded_Land_Pr2/Wounded_Land_Pr2.spt",
+      "sha256": "9284e081fb6d3f266c622065178340979bca3aa9e00f9c5552fb1bef541fd16d",
+      "bytes": 136251,
+      "helpers": 645,
+      "native_checks": 667,
+      "comparison_checks": 16126,
+      "output_sha256": "9830cd5367d327dd1fc5f96804419e6aedc969567b1a3bce11f5810945af06e1"
+    }
+  ],
+  "limits": "Own full-project CPU-only laboratory entry, not normal LoadLevel/GPU/network startup. Original input EXEs/DLLs not executed. Reference comparison is instruction-level/static; x87 numerical parity, OOM, unsafe malformed inputs, non-ASCII locale and complete map path not established."
+}

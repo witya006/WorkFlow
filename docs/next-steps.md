@@ -13,22 +13,30 @@ DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, ru
 Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
 Документ research/client-first-build.md; inventory/client-first-build.json.
 
-Сохранены 11 compiler-only patches и 4 отдельных selectable behavior patches:
-DrawCharacter scale/scroll, EffectLog455, login success->lobby. Их инструкции сверены
+Сохранены 11 compiler-only patches и 6 отдельных selectable behavior files:
+DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455.
+Их инструкции сверены
 по обоим pinned PE, исходные ветки сохранены. _DEVELOPER_ и /FORCE не включены;
 CheckFiles/SendLog не заменены пустыми functions. По исследованным reference callers
 455 не вызывает их в этих двух местах. Не делать вывод об остальных file checks.
 
-## Следующий результат: M5
+## M5 в работе: получена native CPU-проверка helper данных
 
-1. Найти loader 455 helper-only SPT и подтвердить чтение/использование данных:
-   имена, bbox, матрица/инверсия, координаты, options/defaults/error behavior.
-   Не переносить имена старых функций по одному совпадению строки.
-2. Использовать pinned real samples из inventory/helper-spt-verification.json.
-   M3 уже проверил 140 файлов/97 543 записи round trip. Не повторять без причины.
-3. Подготовить изолированный запуск/пробу именно восстановленного клиента, связать
-   sample с runtime-результатом. Для native lab сначала проверить DLL startup и
-   среду данных. Не считать отдельный Python parser или standalone loader всей M5.
+Loader455 VA0x90BBF0 найден, весь body/инструкции сверены в обоих pinned PE.
+Три отличия перенесены отдельным flag: missing-input count reset, lowercase каждой
+записи, interior4. research/client-helper455-runtime.md; inventory/client-features.json.
+Полный проект с own lab entry загрузил 140 файлов/97 543 записи и 12 fixtures.
+Проверены raw fields, ненулевые coordinate transforms, inverse, bbox/list/release.
+2 546 779 native/comparison checks, 4 import-parser tests. Игровые DLL не загружались.
+Обычная ревизия также собрана: 2 436 608 bytes, entry RVA0x1BAA10, snapshot helper455.
+Обычный запуск игры/LoadLevel/GPU/network НЕ выполнен; M5 пока не закрыт.
+
+1. Сравнить численные math contracts с 455; текущая native binary32 проверка
+   не доказывает совпадение с x87 rounding эталона. Max local roundtrip error .001953125.
+2. Проверить полный путь использования EXT helpers. 455 после LoadExtDummy передаёт
+   owner в BSP+744; старый клиент этой связи не содержит. Найти фактический consumer.
+3. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
+   malformed paths/locale/OOM пока не закрыты. Не исправлять quirks по догадке.
 4. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
    coverage, M7 — закрепление сборки, затем M9. Не закрывать цель по одному EXE.
 
@@ -41,17 +49,21 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 ## Команды текущего дерева
 
 Обычная повторная сборка: scripts/probe_client_character_build.ps1.
+Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
+Lab использует отдельные build-helper-lab/logs/reports, нормальный target не запускается.
 Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
 Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем
 проверенные dependency builders по manifests. Не пересобирать неизменённые helpers.
 Если меняется Character header: prepare_character_header.py -> check_character_header.py
 -> build_character_setters.py -> build_character_managers.py -> probe_character_effect_loaders.py.
 Logger: build_client455_effect_log.py -> apply_client_effect_log455.py.
-Behavior branches: apply_client_draw455.py / apply_client_lobby455.py -> prepare_client_build.py
+Behavior branches: apply_client_draw455.py / apply_client_lobby455.py /
+apply_client_helper455.py -> prepare_client_build.py
 -> diagnostic build -> verify_client_draw455.py / verify_client_coff.py.
 
-audit_client_executable.py --label initial/clean сохраняет неизменяемые первые snapshots;
-он откажется перезаписывать их другой сборкой. Для будущего revision нужен новый snapshot.
+audit_client_executable.py --label NAME сохраняет immutable snapshot нормальной сборки;
+initial/clean/helper455 уже заняты, перезапись другой сборкой запрещена. Для новой
+ревизии выбрать новое короткое имя. Lab entry таким snapshot не принимается.
 Все Python scripts запускать через scripts/Invoke-Python.ps1.
 
 ## Ограничения проверок

@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "scope": "Initial client-only feature registry, not a complete inventory or a completion percentage",
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "features": [
+    {
+      "id": "DATA-SPT-001",
+      "description": "Helper loader: record fields, options, names, growth and missing-file count reset",
+      "status": "implemented",
+      "verification": "partial; native lab and static instruction comparison",
+      "reference": {"va": "0x90bbf0", "rva": "0x50bbf0", "size": 1318},
+      "implementation": "work/client-build/source/R3Engine/2ndclass/extdummy.cpp",
+      "option": "RF_CLIENT_455_HELPER_LOADER",
+      "evidence": ["inventory/client-behavior-patches.json", "inventory/client-helper-runtime.json", "research/client-helper455-runtime.md"],
+      "scenarios": ["140 pinned real files, 97543 records", "12 own fixtures", "capacity 0,1,15,16,17,47,48,49,80", "uppercase/truncated/empty names", "music/interior/fog/id and option order", "missing input after successful load", "empty input and no script_begin", "flag filtering, index clamping and explicit release"],
+      "gaps": ["unsafe malformed inputs", "OOM", "non-ASCII locale/decimal conversion parity", "repeat successful-load lifecycle", "normal map selection/use"]
+    },
+    {
+      "id": "WORLD-HELPER-002",
+      "description": "Helper matrices, coordinate transformations and local inclusive bbox",
+      "status": "implemented",
+      "verification": "partial; native binary32 outputs and independent scalar calculation; reference execution not compared",
+      "reference": [
+        {"va": "0x8bfbc0", "rva": "0x4bfbc0", "role": "inverse"},
+        {"va": "0x8c0980", "rva": "0x4c0980", "role": "transform"},
+        {"va": "0x8bbe60", "rva": "0x4bbe60", "role": "inclusive bbox"},
+        {"va": "0x90ba90", "rva": "0x50ba90", "role": "helper bbox query"}
+      ],
+      "implementation": ["work/client-build/source/R3Engine/common/r3math.cpp", "work/client-build/source/R3Engine/2ndclass/extdummy.cpp"],
+      "evidence": ["inventory/client-helper-runtime.json", "research/client-helper455-runtime.md"],
+      "scenarios": ["nonzero interior local point -> world -> local", "outside point classification", "matrix times inverse identity tolerance", "invalid index preserves output", "missing node_tm keeps inverse zero"],
+      "gaps": ["exact x87 rounding vs modern scalar code", "singular/NaN behavior", "full affine-threshold boundary parity"]
+    },
+    {
+      "id": "WORLD-HELPER-003",
+      "description": "Level EXT.spt load and additional helper-owner pointer passed to BSP",
+      "status": "described",
+      "verification": "static caller confirmed; new BSP consumer unknown",
+      "reference": {"load_va": "0x8eaa88", "load_rva": "0x4eaa88", "bind_va": "0x8eaa93", "bind_rva": "0x4eaa93", "owner_offset": 512, "bsp_field_offset": 744},
+      "implementation": "work/client-build/source/R3Engine/2ndclass/level.cpp",
+      "evidence": ["research/client-helper455-runtime.md"],
+      "scenarios": ["normal LoadLevel constructs EXT.spt filename"],
+      "gaps": ["identify actual BSP pointer consumer", "restore required behavior in source", "normal LoadLevel runtime", "interior/fog integration"]
+    }
+  ],
+  "remaining_areas": "All other acceptance areas in docs/client-acceptance.md remain open; successful helper lab is not M5/M9 completion"
+}

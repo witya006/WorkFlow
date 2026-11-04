@@ -31,7 +31,12 @@ SetTexPath/SetMipMap восстановлены; 18 дополнительных
 455 draw аргументы подключены отдельным flag/ledger; legacy SetEffect bridge проверен.
 455 map/36-grade эффекты ещё не перенесены. Character inline/CRT
 ещё не закрыты. research/character-effects-and-exceptions.md.
-Следующая работа — M5, загрузка/использование данных 455 и сверка с reference.
+M5 в работе: loader455 VA0x90BBF0/RVA0x50BBF0 найден; count reset, lowercase каждой
+записи и interior4 перенесены отдельным flag. Own lab entry полного проекта загрузил
+140 файлов/97 543 записи, использовал ненулевые координаты и bbox. 12 fixtures /
+2 546 779 checks прошли;4 import-parser tests. Обычная ревизия также собрана.
+Остаются полный LoadLevel/BSP consumer и точное сравнение с x87 reference; M5 не закрыт.
+research/client-helper455-runtime.md; inventory/client-features.json.
 
 ## Этапы
 

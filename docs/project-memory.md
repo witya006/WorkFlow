@@ -22,12 +22,14 @@ M8 не требуется. Компиляция, запуск и частичн
   recovered Character header и адаптированной CharacterMR. Pure legacy branches OFF
   не объявлены восстановленными; canonical optimized Release и весь runtime ещё открыты.
   Не выдавать сборочный результат за полноту клиента или завершение M9.
-- M5: следующий результат — реальная загрузка/использование выбранных данных 455
-  восстановленным клиентом и сопоставление с reference. Пока не выполнен.
+- M5 В РАБОТЕ: loader455 найден, три отличия перенесены. Full-project own lab entry
+  загрузил 140 реальных файлов/97 543 записи, использовал ненулевые координаты/bbox;
+  12 fixtures/2 546 779 checks и 4 import-parser tests прошли. Обычный LoadLevel,
+  BSP consumer и x87 parity ещё не проверены; M5 пока не закрыт.
 
 ## Артефакт первой сборки
 
-work/client-build/build-character-diagnostic/Release/RF_Online.bin, 2 436 608 bytes,
+Первая историческая версия (snapshot artifacts/client-first-build/clean), 2 436 608 bytes,
 x86 Windows GUI, base 0x400000, entry RVA 0x1BA9E0. Clean SHA-256:
 0b4c768fc4f52b26035c48cf900f67553392407d0372e23bb528333d2a87cf91.
 Снимки initial/clean в ignored artifacts/client-first-build. Различаются только
@@ -35,6 +37,15 @@ COFF timestamp и timestamp debug directory; после исключения э�
 все остальные байты равны. Не заявлять raw bit-exact EXE. Все 284 modern COFF x86 /MT.
 13 direct DLL providers найдены; recursive loader/runtime не проверены. EXE не запускался.
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
+
+Текущая обычная ревизия с helper455: work/client-build/build-character-diagnostic/
+Release/RF_Online.bin, 2 436 608 bytes, entry RVA0x1BAA10, SHA256
+cf6cd16e348453dfeb478cfa06947acdb3749332ca102cc78991f43f8f120f1d.
+Snapshot helper455 сохранён отдельно. Обычный EXE не запускался, 284 objects /MT проверены.
+Own lab EXE SHA7f5d7be0679cce3c92eff3f6ec176c99b444c67758805731f415cb6493df0b5a,
+entry RVA0x9ADE, находится work/client-helper-lab/RF_Online.bin. Только этот вариант
+исполнялся с --rf-helper-probe. Game DLLs delayed и GetModuleHandle подтвердил отсутствие
+их загрузки; normal GPU/network/startup/teardown не выполнялись.
 
 ## Эталон и инструменты
 
@@ -52,10 +63,10 @@ GoMMO stdio audit работает; это не разрешение Install/pub
 ## Сборка и источники доказательств
 
 492 копии client/R3Engine под work/client-build/source. 11 byte-preserving compiler
-patches: inventory/client-source-patches.json; не менять кодировки. Ещё 4 behavior
-patches (draw2/logger1/login1) имеют отдельный ledger client-behavior-patches.json.
+patches: inventory/client-source-patches.json; не менять кодировки. Ещё 6 behavior
+files (draw2/logger1/login1/helper2) имеют отдельный ledger client-behavior-patches.json.
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
-CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION по умолчанию
+CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER по умолчанию
 OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
 CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
@@ -97,8 +108,12 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M5: начать с helper-only SPT. Сначала найти соответствующий loader 455 и его семантику,
-потом проверить реальный клиентский путь. Старый CExtDummy::LoadExtDummy находится
-R3Engine/2ndclass/extdummy.cpp; InitR3Engine/WinMain пока не запускались. Не считать
-Python parser или изолированный loader полной M5 интеграцией. Все runtime/feature gaps
+M5: найти фактический consumer связи helper owner -> BSP+744, сравнить math contracts
+с x87 455 и проверить полный LoadLevel path. Loader VA0x90BBF0/RVA0x50BBF0 подтверждён
+на обоих PE, новые flags/нормализация/missing reset перенесены. Старый goto обходил
+strlwr последующих имён; прежнее описание M3 уточнено. 23 из 140 samples имеют имя
+EXT.spt (48 records); не все они автоматически выбраны картой. Ненулевые native
+coordinate probes: max roundtrip error .001953125, interior points все внутри bbox.
+Точное x87 rounding/полные error rules не доказаны. research/client-helper455-runtime.md,
+inventory/client-features.json. Не повторять неизменённые 140 native tests без причины.
 M6/M6F и критерии M9 остаются открыты. Подробные команды — docs/next-steps.md.

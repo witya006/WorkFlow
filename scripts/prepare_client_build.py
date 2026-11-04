@@ -96,6 +96,10 @@ get_target_property(RF_ENGINE_INCLUDES R3Engine INCLUDE_DIRECTORIES)
 add_library(R3EngineClientMT STATIC EXCLUDE_FROM_ALL ${RF_ENGINE_SOURCES})
 target_include_directories(R3EngineClientMT PRIVATE ${RF_ENGINE_INCLUDES})
 target_compile_definitions(R3EngineClientMT PRIVATE WIN32 NDEBUG _MBCS _LIB)
+option(RF_CLIENT_455_HELPER_LOADER "Select verified 455 helper-loader behavior" OFF)
+if(RF_CLIENT_455_HELPER_LOADER)
+  target_compile_definitions(R3EngineClientMT PUBLIC RF_CLIENT_455_HELPER_LOADER)
+endif()
 target_link_libraries(R3EngineClientMT PUBLIC "${R3}/mss32.lib")
 target_compile_options(R3EngineClientMT PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:/W3>" "$<$<COMPILE_LANGUAGE:CXX>:/EHsc>" "$<$<COMPILE_LANGUAGE:CXX>:/Zc:forScope->" "$<$<COMPILE_LANGUAGE:CXX>:/MP4>")
 set_target_properties(R3EngineClientMT PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
@@ -129,6 +133,17 @@ add_executable(RF_Online WIN32 EXCLUDE_FROM_ALL
 target_include_directories(RF_Online PRIVATE
   "${RFC}" "${R3}" "${R3}/extension" "${R3}/1stclass" "${R3}/2ndclass"
   "${R3}/common" "${R3}/d3d/include")
+option(RF_CLIENT_HELPER_LAB "Diagnostic helper-only entry in the full client; no normal game startup" OFF)
+if(RF_CLIENT_HELPER_LAB)
+  target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp")
+  target_compile_definitions(RF_Online PRIVATE WinMain=RFOriginalWinMain RF_CLIENT_HELPER_LAB)
+  target_link_options(RF_Online PRIVATE "/INCLUDE:_RFOriginalWinMain@16")
+  # Original game DLL code is not needed by this CPU-only diagnostic entry.
+  target_link_libraries(RF_Online PRIVATE delayimp.lib)
+  foreach(RF_LAB_DELAY_DLL IN ITEMS mss32.dll ABuse.dll Adv.dll PDLL.dll)
+    target_link_options(RF_Online PRIVATE "/DELAYLOAD:${RF_LAB_DELAY_DLL}")
+  endforeach()
+endif()
 if(RF_RECOVERED_CHARACTER_INCLUDE)
   target_include_directories(RF_Online BEFORE PRIVATE "${RF_RECOVERED_CHARACTER_INCLUDE}")
 endif()
