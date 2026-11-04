@@ -134,6 +134,13 @@ Constructor final state/header/matrix/material-request kernels source готов
 закреплённаяD3DX9_36;texture callbacks вtests scripted. Arbitrary matrix bitproof,
 actual TextureManager/sharedGPU/destructor/full loader остаются открытыми.
 research/client455-mesh-runtime-source.md. Проверка матричной DLL не закрывает D3D9renderer.
+Последующее: реальный source Character RFS/DDS/TextureManager backend прошёл
+8440checks standalone/full-client,80profiles/68texturepairs/all mip contents/
+137renders,97real material parts/59bindings,COM/Dmalloc0;9Python tests.
+Это выбранный texture domain. Normal model-loader,shared buffers,skinning/draw,
+full device reset/unwind/private ABI/malformed/OOM/locale области ещё открыты.
+research/client455-character-textures.md;client455-texture*.json. Не считать
+приёмкой всего Character или renderer.
 Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 

@@ -16,7 +16,8 @@ from probe_client_helpers import import_names
 
 def main():
     build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'))
-    if build['build_exit'] or build['generated_objects']!=181 or build['build_settings'].get('RF_CLIENT_455_WEATHER')!='ON':
+    expected_objects=182 if build['build_settings'].get('RF_CLIENT_455_TEXTURE')=='ON' else 181
+    if build['build_exit'] or build['generated_objects']!=expected_objects or build['build_settings'].get('RF_CLIENT_455_WEATHER')!='ON':
         raise ValueError('Successful weather-enabled full client lab required')
     for key in ['lab_input_sha256','weather_input_sha256']:
         if key not in build: raise ValueError('Weather build hashes missing')

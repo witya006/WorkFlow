@@ -83,8 +83,15 @@ R3X checks.703weather regression checks прошли на текущем lab.286
    Constructor/header/matrices/material request flow sourceготовы:14562checks/
    12real files/393parts/12FP modes standalone/full-client,actual D3DX9_36 matrices,
    scriptedtexture backend тольковtests.8material traces;all858files/12090headers
-   провереныдлястрок/matrixdomains. ActualTextureManager/sharedGPU/normaldispatch
-   открыты. Не повторять этотreverse/headercensus. research/client455-mesh-runtime-source.md.
+   провереныдлястрок/matrixdomains. Не повторять этотreverse/headercensus.
+   research/client455-mesh-runtime-source.md.
+   PhysicalTextureManager/RFS/DDS backend теперь source:24matching bodies,9Python
+   tests,333CPU/8440GPU checks standalone/full-client,80profiles/68texturepairs/
+   137renders,97real material parts/59bindings,COM/Dmalloc0. Lookup/alias/duplicates/
+   growth/negative cache/RFCfallback иcube orphan сохранены. Normal model-loader
+   ещё legacy;следующий source unit shared buffers93E000/93E180,index rebase,
+   publication/release/unwind иD3D9consumer,затем normal dispatch/animation.
+   research/client455-character-textures.md;не повторять закрытый texture reverse.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -126,6 +133,11 @@ MESH08: build_client455_mesh08.py; verify_client_mesh08.py [--lab]; probe_client
 probe_client455_mesh_bindings.py. Пары: audit_mesh08_bone_pairs.py (повтор при изменении входов).
 Mesh CPU runtime:build_client455_mesh_runtime.py;verify_client455_mesh_runtime.py [--lab];
 probe_client455_mesh_runtime.py. D3DX9provider закреплён SHA;его1ULP quirks сохранять.
+Character textures:audit_client455_texture.py;test_character_texture.py;
+build_client455_texture.py;probe_client455_texture.py [--gpu];после full build
+verify_client455_texture.py [--lab];probe_client455_texture_client.py.
+Fresh short work/t9 cwd нужен для точного RFS path guard;fixtures master не менять.
+Текущая GPU regression inventory/client455-texture-graphics-regression.json:69checks.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
 --level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).

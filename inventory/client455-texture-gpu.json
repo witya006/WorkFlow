@@ -1,0 +1,36 @@
+{
+  "scope": "Own source x86/MT Character texture probe;actual D3DX9_36 and HALD3D9;no reference EXE execution/normal model-loader integration/full client acceptance",
+  "exe_sha256": "8f8e1d000b4c9e9d88732c350994568c6eac4a2cc2bc0c55e1e3727292b7fb86",
+  "entry_rva": "0xb540",
+  "architecture": "x86",
+  "source_sha256": {
+    "client455_character_rfs.cpp": "41cddac35d1c4e4f73d5a3c3822fd60f40290c4d9244df90bbb9ec9c5ced117e",
+    "client455_character_rfs.h": "08765ee00f072e4c1b66e7d5b4167ce8f6aaa92a9516d525652a07c35e5b1415",
+    "client455_character_dds_key.h": "851e2a9a595f6c46baa31042e3a0f7e7855d18c3565fb8d0e966e1c2fbf6966b",
+    "client455_texture.cpp": "014d45afe446f0c89b3a636ad5e831e127708342ffca50c53a285238a739f6fa",
+    "client455_texture.h": "0f4d16d2c52a98425db9729ff32fb517cf276b4d2f699ef956302cf1f7517378",
+    "client455_mesh_runtime.h": "35f5395568691b4ba212c9f2ea1ebc87fd93b55465f34a3a7bac730daf4c48cb",
+    "client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
+    "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f",
+    "test_client455_texture.cpp": "6535d89e9d4b3d24fa3d0e7ee119d80e4d6da3a1ee53661d7bcd8a1c551825cc"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 8440,
+    "dds_profiles": 80,
+    "gpu_texture_pairs": 68,
+    "render_cases": 137,
+    "material_parts": 97,
+    "material_texture_bindings": 59,
+    "cube_orphans_observed_and_released": 1,
+    "memory_calls": 129,
+    "file_calls": 37
+  },
+  "output": "work/t9/8f8e1d00/gpu001/result.json",
+  "output_sha256": "fc3afa566e4872222a786f4fd37f65ded10ef2317af5df8a54a1afa34c627f87",
+  "fixture_manifest_sha256": "02fef8176f6c0e6e7025d3323bcfe156cc0730cba996f51f973ec33575bf4ecb",
+  "dll_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "build_report_sha256": "d42898392278f2f52b2ead52809bc11bde9119d57a38a1687f5f4783f0268fc1",
+  "frame": "work/t9/8f8e1d00/gpu001/checker.bmp",
+  "frame_sha256": "e5b32219dc16c2243096b12a7de3aaf3dda8039b76e2c5d50059bb860c3cc69c"
+}

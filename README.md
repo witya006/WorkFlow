@@ -11,6 +11,11 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
+Последний source участок M6: Character texture backend RFS/DDS/cache наactual
+D3D9,8440checks standalone/full-client,68texture pairs/137renders/97material parts.
+Normal model-loader ещё legacy;M6/M6F/M7/M9 открыты. Следующий этап — shared
+Character GPU buffers иnormal model dispatch. research/client455-character-textures.md.
+
 Получена первая полная диагностическая сборка RF_Online.bin и успешная чистая
 пересборка. Это старая база с выбранными подтверждёнными участками 455, а не готовый
 клиент 455. Результат/границы: research/client-first-build.md.

@@ -782,10 +782,86 @@
         "8special names/repeatedflags andinvalid name/path/argument/singular input owned errors"
       ],
       "gaps": [
-        "PhysicalTextureManager/cache/DDS-RFC-RFT loading/shared GPU buffers/index rebase/full model dispatch/owning subobject methods/destructor not integrated",
-        "Material callbacks scripted only in tests;production backend mandatory,none provided by this unit",
+        "Normal full model dispatch/shared GPU buffers/index rebase/owning subobject methods/destructor not integrated;physical texture source backend tracked by CHARACTER455-TEXTURE-016",
+        "This unit tests material requests withscripted callbacks;actual backend separately verified by CHARACTER455-TEXTURE-016",
         "Arbitrary matrix bit-equivalence/full condition domains/CPU-dispatch variation remain unproven;provider pinned toDLLSHA",
         "Own malformed/singular errors differ fromreference unchecked failures;unmasked FP/OOM/non-ASCII CRT locale/failure unwind remain open"
+      ]
+    },
+    {
+      "id": "CHARACTER455-TEXTURE-016",
+      "description": "Source Character RFS/DDS preparation/TextureManager known fields andreal D3D9 texture creation,including reference cache/mip/fallback/cube quirks",
+      "status": "implemented",
+      "verification": "9Python tests;333CPU/8440GPU checks standalone/fullclient;80DDSprofiles/68successful actualD3DX9 texture pairs/all mip contents/137renders;97MESH08parts/59positive material bindings;COM/Dmalloc0. Normal full model-loader not integrated.",
+      "reference": [
+        {
+          "rva": "0x1dfc40",
+          "role": "manager ctor"
+        },
+        {
+          "rva": "0x534120",
+          "role": "lookup"
+        },
+        {
+          "rva": "0x534a20",
+          "role": "AddTexture"
+        },
+        {
+          "rva": "0x533de0",
+          "role": "file provider"
+        },
+        {
+          "rva": "0x533800",
+          "role": "DDS upload/cube orphan"
+        },
+        {
+          "rva": "0x5336c0",
+          "role": "mip skip"
+        },
+        {
+          "rva": "0x535090",
+          "role": "path normalization"
+        },
+        {
+          "rva": "0x5379e0",
+          "role": "RFS index"
+        },
+        {
+          "rva": "0x5382b0",
+          "role": "RFS open"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_character_rfs.cpp",
+        "scripts/native/client455_character_rfs.h",
+        "scripts/native/client455_texture.cpp",
+        "scripts/native/client455_texture.h",
+        "scripts/native/client455_character_dds_key.h"
+      ],
+      "option": "RF_CLIENT_455_TEXTURE",
+      "evidence": [
+        "inventory/character-texture-inputs.json",
+        "inventory/client455-texture-reference.json",
+        "inventory/client455-texture-build.json",
+        "inventory/client455-texture-cpu.json",
+        "inventory/client455-texture-gpu.json",
+        "inventory/client455-texture-link.json",
+        "inventory/client455-texture-client.json",
+        "inventory/client455-texture-graphics-regression.json",
+        "research/client455-character-textures.md"
+      ],
+      "scenarios": [
+        "RFS first duplicates,negativecache,emptyinfo,first missing DATAstop,path dropping;13real archive members+3looseDDS",
+        "Independent Python prepared bytes/80profiles;all source mip contents vsdirect pinned D3DX9_36;RGB frames and four BMP quadrants",
+        "Real managed COM growth50/alias/pathduplicates/exact delete/cumulative accounting/Clear capacity/Init retained vector",
+        "RFCfallback1mip/FFFFFFFFcolorKey;missing/empty cubeFlag preservation;real cube orphan observed+released bytest wrapper",
+        "3real MESH08models/97parts→source material requests→actual texture cache/D3D9objects;59positive IDs"
+      ],
+      "gaps": [
+        "Normal model-loader/shared GPU/skeleton/animation/skinning/draw/publication/destructor not integrated",
+        "Known manager field layout only;private allocator/STL ABI/logger/global cache teardown/device reset lifecycle open",
+        "Bounded malformed errors/percent rejection differ fromunchecked ref;OOM/nonASCII locale/unsafe failures not equivalent",
+        "Fixture model/texture pairing andsmall texture corpus not full asset-selection or all RFS census;no original EXE execution/full dual-client behavior comparison"
       ]
     }
   ],

@@ -77,6 +77,13 @@ Constructor/header/matrices/material-request kernels455 теперь source:1456
 12real files/393parts/12FP modes standalone/full-client. Матрицы используютpinned
 D3DX9_36 сегоreciprocal quirks;texture provider вtests scripted. Физический
 TextureManager/sharedGPU/normal loader ещё открыты. research/client455-mesh-runtime-source.md.
+Следом physical Character texture backend восстановлен source ввыбранном domain:
+RFS/DDS/lookup/cache/load/delete,actual pinned D3DX9_36+HALD3D9.24body ranges совпали
+собоими PE;9Python/333CPU/8440GPU checks standalone/full-client,80DDSprofiles,
+68successful texture pairs/137renders,97material parts/59bindings,COM/Dmalloc0.
+Normal model-loader ещё legacy;shared buffers/animation/full Character GPU открыты.
+research/client455-character-textures.md. Следующий unit93E000/93E180/index rebase/
+publication/release,затем normal dispatch. M6/M6F/M7/M9 незакрыты.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.

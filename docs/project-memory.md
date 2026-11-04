@@ -63,11 +63,11 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-6f486f1f4ef950d207d9fd9cba9d2e647d7538954185c39adfeec7d5c9316a0b.
-Snapshot mesh455-header-material;предыдущие revisions сохранены. Обычный EXE
+898ee05ee5aed2490c793dd13dbf29f3d41a41205badf4d504f363a82cf14151.
+Snapshot character455-textures;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA f55fdb172661cbcfdf131aa3d7a0ddba1413b2039151ff866c88f78f2a3c42cb,
-size4585984,entryRVA0x828D; snapshot work/client455-mesh-runtime-lab/f55fdb172661cbcf/RF_Online.bin.
+Own lab EXE SHA ed8315fab2308743db54df96940a5fcf4103b5f8d681e3c29d324d0dc323d79b,
+size4697088,entryRVA0x85B7; snapshot work/t9/ed8315fa/client001/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
@@ -95,8 +95,23 @@ Native algebraic invariants +synthetic bitgolden;неполный arbitrary matr
 858files/12090headers исследованы поfrozen offsets:8659primary empty,3431DDS/backslash,
 0nonfinite/nonaffine/zero numeric3x3det/unterminated/nonASCII/% strings. Это domain
 audit,неfull matrix condition proof. НЕ повторять header census без изменения inputs.
-Actual TextureManager/sharedGPU/loader/destructor/normaldispatch ещё открыты.
+Actual TextureManager backend теперь source;sharedGPU/loader/destructor/normaldispatch открыты.
 research/client455-mesh-runtime-source.md;inventory/client455-mesh-runtime*.json.
+Следующий source unit завершён в выбранном texture domain: Character RFS index/cache,
+DDS XOR/mip/repair и288byte TextureManager known fields.24body ranges совпали по
+обоим pinned455PE,3imports ведут вactual D3DX9_36. Источники client455_texture.cpp/
+client455_character_rfs.cpp,optionRF_CLIENT_455_TEXTURE. Native333CPU/8440GPU checks,
+80DDSprofiles,68successful actualD3DX texture pairs/all mip contents,137renders,
+3real MESH08models/97parts/59positive material bindings. Реальный cube orphan+null
+return сохранён;test wrapper освобождает orphan только после наблюдения.9Python tests.
+Полный lab даёт теже8440checks,COM/Dmalloc0,gameDLLs отсутствуют. Все предыдущие
+scoped regressions иPlatform01/device69checks прошли;frameSHA сохранены. Normal
+loader ещё legacy,новые unused APIs stripped. Не повторять texture reverse/corpus
+без новых inputs;не считать full Character GPU/455acceptance. Next:shared buffers
+93E000/93E180,index rebase/publication/owning release,затем normal model dispatch.
+Raw artifacts/character-texture455,отчёты inventory/client455-texture*.json,
+research/client455-character-textures.md. Private allocator/STL ABI,logger/cache
+teardown/reset,malformed/OOM/nonASCII/unsafe format-string domains открыты.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.

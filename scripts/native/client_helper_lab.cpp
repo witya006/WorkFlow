@@ -185,8 +185,14 @@ static int mapTimeScenarioProbe() {
 #include "client_mesh_runtime_lab.inc"
 #endif
 
+#if defined(RF_CLIENT_455_TEXTURE)
+#include "client_texture_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_TEXTURE)
+    if (!std::strcmp(command,"--rf-texture-scenario")) ExitProcess(textureScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_MESH_RUNTIME)
     if (!std::strcmp(command,"--rf-mesh-runtime-scenario")) ExitProcess(meshRuntimeScenarioProbe());
 #endif

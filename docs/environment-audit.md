@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение05.11: physical Character texture source работает с pinned x86
+D3DX9_36 иHALD3D9 через отдельную TU внутри полного client lab.8440checks,
+68texture pairs/137renders/97material parts,COM/Dmalloc0;новый SDK неустанавливался,
+d3d9.h из WindowsSDK10.0.26100.0/shared. Полный client/Character GPU ещё открыт.
+research/client455-character-textures.md;inventory/client455-texture*.json.
+
 Дата по Asia/Yakutsk. Машинные отчёты используют UTC. Это снимок состояния,
 а не непрерывный мониторинг. Работы выполнены в `E:\RFOnlineTrash\Source\WorkFlow`.
 
