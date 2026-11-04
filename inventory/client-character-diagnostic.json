@@ -1,17 +1,15 @@
 {
-  "checked_at_utc": "2026-11-04T06:34:47.280307+00:00",
+  "checked_at_utc": "2026-11-04T07:22:24.728170+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
   "build_exit": 1,
   "error_counts": {
-    "LNK2019": 13,
+    "LNK2019": 11,
     "LNK2001": 6,
     "LNK1120": 1
   },
   "unresolved_symbols": [
-    "??0AnimationManager@@QAE@XZ",
-    "??0CObjectManager@@QAE@XZ",
     "??0ChInterface@@QAE@XZ",
     "?CheckFiles@@YAPADXZ",
     "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z",
@@ -24,7 +22,7 @@
     "?_Xlen@std@@YAXXZ",
     "?_Xran@std@@YAXXZ"
   ],
-  "distinct_diagnostics_total": 20,
+  "distinct_diagnostics_total": 18,
   "distinct_diagnostics": [
     {
       "file": "cresobject.obj ",
@@ -80,20 +78,6 @@
       "line": null,
       "code": "LNK2019",
       "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall CRender::SetMipMap(unsigned long)\" (?SetMipMap@CRender@@QAEXK@Z) в функции \"protected: virtual int __thiscall CGP_LogIn::LoadData(void)\" (?LoadData@CGP_LogIn@@MAEHXZ).",
-      "count": 1
-    },
-    {
-      "file": "global.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall CObjectManager::CObjectManager(void)\" (??0CObjectManager@@QAE@XZ) в функции \"public: int __thiscall CUnityBoneMgr::Create(void)\" (?Create@CUnityBoneMgr@@QAEHXZ).",
-      "count": 1
-    },
-    {
-      "file": "global.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall AnimationManager::AnimationManager(void)\" (??0AnimationManager@@QAE@XZ) в функции \"public: int __thiscall CUnityAniMgr::Create(void)\" (?Create@CUnityAniMgr@@QAEHXZ).",
       "count": 1
     },
     {
@@ -163,7 +147,7 @@
       "file": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-build\\build-character-diagnostic\\Release\\RF_Online.bin ",
       "line": null,
       "code": "LNK1120",
-      "message": "неразрешенных внешних элементов: 13",
+      "message": "неразрешенных внешних элементов: 11",
       "count": 1
     }
   ],
@@ -172,6 +156,7 @@
   "build_dir": "work/client-build/build-character-diagnostic",
   "log": "artifacts/client-character-diagnostic/build.txt",
   "build_settings": {
+    "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
     "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
     "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
     "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",

@@ -73,7 +73,12 @@
 
 ## Следующий шаг
 
-Последняя редакция /Goal: завершить движок/закрепление эталона и сообщить при начале
+Новая активная /Goal (после завершённой ограниченной цели): довести проект до M9.
+Пользователь уточнил: M9 — финальная приёмка клиента 455 без модернизации графики.
+Критерии docs/client-acceptance.md и M6F/M7, M8 не требуется. Продолжать с M4,
+не завершать цель по первой сборке/запуску/частичному участку. Сообщить после приёмки M9.
+
+Предыдущая ограниченная /Goal: завершить движок/закрепление эталона и сообщить при начале
 пункта 4 «Получить сборку клиента». Она заменила предыдущий ориентир до M5.
 Критерии этой /Goal выполнены: две свежие чистые сборки, совпали runtime sections/
 relocations всех 58 x86 объектов; 492 входа целы. Оба исходных бинарника/копии совпали
@@ -107,9 +112,9 @@ headers; baseline/progressive golden decodes побайтово точны. Mile
 живая маршрутизация не менялась. Все 11 патчей сохраняют bytes/кодировки и timestamps
 при повторе; генераторы тоже не переписывают идентичные файлы.
 
-Diagnostic link теперь явно берёт неизменённый CharacterMR и адресно откладывает
-CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 13 unique
-undefined symbols: 3 constructors, 6 inline/short APIs, _Xlen/_Xran, CheckFiles, SendLog.
+Diagnostic link берёт отдельную stdio-adapted копию CharacterMR и адресно откладывает
+CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 11 unique
+undefined symbols: ChInterface constructor, 6 inline/short APIs, _Xlen/_Xran, CheckFiles, SendLog.
 Проверки целостности/логирования не отключались. Парсер LNK исправлен, 3 теста прошли.
 
 Native CRT probe: Character EffectList loader читает FILE+12 &0x10; modern EOF даёт
@@ -119,14 +124,23 @@ flags=0x2049 и старый тест false. Classic msvcrt даёт 0x19 и tru
 Адаптер 8 stream API создан: source scripts/native/character_legacy_stdio.*, 1828 native
 проверок на собственных fixtures и 3 теста COFF прошли. Только undefined имена в 10 копиях
 объектов перенаправлены, инструкции/релокации и оригинал сохранены. Diagnostic link
-использует отдельный CharacterMR-stdio.lib + adapter lib, 13 gaps сохраняются.
-Следующий шаг при продолжении M4 — проверить сами старые загрузчики/контейнеры, затем
-реальные constructors/inline/std helpers и CheckFiles/SendLog. Полной runtime ABI
+использует отдельный CharacterMR-stdio.lib + adapter lib. CObjectManager constructor
+восстановлен по inlined stores member_06.obj; native harness прошёл 1296 проверок
+реальных старых SDK операций на unloaded objects (259 добавлений). Test-only _Xlen/_Xran
+fail tripwires отсутствуют в product library; modern STL fixture types не используются.
+AnimationManager: собственный empty-vector constructor + реальный Init (+16=0,+20=1).
+Оригинальный inline ctor не найден, undocumented singleton assignment не добавлялся.
+1806 дополнительных проверок real SDK регистрации/поиска/удаления по ID/destruction,
+всего 3102. DeleteAnimation(name) имеет предполагаемую UAF по decompile, не проверен.
+Header: 61 layout assertions, 165 signatures по-прежнему совпадают.
+research/character-managers.md, inventory/character-managers.json; 11 link gaps.
+Следующий шаг при продолжении M4 — проверить старые загрузчики, продолжить
+constructors/inline/std helpers и CheckFiles/SendLog. Полной runtime ABI
 проверки ещё нет. research/character-stdio-adapter.md; character-stdio-adapter.json.
 Все собственные IDA-сессии закрыты. Серверы не менялись.
 В 455 подтверждён D3D9, восстановлены 2 GPU layouts; это не CPU ABI старой D3D8 библиотеки.
-Дополнительных материалов у пользователя нет. M5 ещё не начат; текущая /Goal заканчивается
-на уже пройденном начале пункта 4, согласно её последней редакции.
+Дополнительных материалов у пользователя нет. M5 ещё не начат; новая /Goal заканчивается
+финальной приёмкой M9 без модернизации графики.
 Полный хеш-манифест ресурсов и атрибуция версии ещё открыты.
 
 ## Неизвестное

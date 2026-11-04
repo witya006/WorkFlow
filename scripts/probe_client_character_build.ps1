@@ -38,6 +38,14 @@ if (Test-Path -LiteralPath $stdioReport) {
     $arguments += "-DRF_CHARACTER_STDIO_ADAPTER_LIBRARY=$adapterLibrary"
 }
 $arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
+$managerReport = Join-Path $workspace 'inventory/character-managers.json'
+if (Test-Path -LiteralPath $managerReport) {
+    $manager = Get-Content -LiteralPath $managerReport -Raw | ConvertFrom-Json
+    $managerLibrary = Join-Path $workspace $manager.library
+    if ((Get-FileHash -LiteralPath $managerLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manager.library_sha256 -or
+        $contract.header_sha256 -ne $manager.header_sha256) { throw 'Recovered manager/header changed since runtime verification.' }
+    $arguments += "-DRF_CHARACTER_RECOVERED_MANAGERS_LIBRARY=$managerLibrary"
+}
 $arguments += '-DRF_DIAGNOSTIC_DEFER_LIBRARIES=CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib'
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logs 'configure.txt') -Tail 15; exit $LASTEXITCODE }

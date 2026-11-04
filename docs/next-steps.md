@@ -4,10 +4,10 @@
 [аудит входов](build-audit.md). Решение о первой сборке LoginServer отозвано.
 Конечная цель: исходники RF_Online.bin с полным функционалом и поведением эталона 455.
 Вести реестр покрытия по [client-acceptance.md](client-acceptance.md).
-Последняя редакция /Goal: закончить движок/закрепление эталона и сообщить при начале
-пункта 4 «Получить сборку клиента». Она заменяет предыдущий ориентир до M5.
-Эта точка уже достигнута; доказательства research/goal-checkpoint.md.
-Следующие действия M4 ниже сохранены для дальнейшей работы над проектом.
+Активная /Goal: довести клиент до M9 и сообщить о готовности. По ответу пользователя
+M9 — финальная приёмка клиента 455 без модернизации графики. Критерии client-acceptance.md;
+M8 (графика) не является условием этой цели. Предыдущая ограниченная цель до начала
+пункта 4 выполнена; доказательства research/goal-checkpoint.md.
 
 ## Завершено после начала переноса
 
@@ -25,23 +25,27 @@
    Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
    JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
    26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
-   В diagnostic link остались 13 уникальных символов; вызовы CheckFiles/SendLog сохранены.
+   В diagnostic link остались 11 уникальных символов; вызовы CheckFiles/SendLog сохранены.
    Следующий шаг — адаптация старого FILE/CRT: native тест подтвердил несовместимость
    прямого EOF доступа CharacterMR с UCRT, classic CRT прошёл этот конкретный тест.
    Адаптер 8 stream API готов: 1828 собственных native проверок и 3 теста COFF прошли,
-   но сами старые загрузчики ещё не runtime-проверены. Проверить компонент с адаптером,
-   затем реализовать конструкторы/inline и std helpers. research/character-stdio-adapter.md.
+   но сами старые загрузчики ещё не runtime-проверены. CObjectManager constructor
+   восстановлен; AnimationManager получил empty-state constructor + настоящий Init.
+   3102 native проверки настоящих SDK функций прошли на незагруженных записях.
+   AnimationManager original inline constructor не найден, singleton side effects
+   не доказаны. Продолжить constructors/inline/std helpers;
+   research/character-managers.md и research/character-stdio-adapter.md.
    Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
    У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
    неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.
-   207 тел функций уже кешированы; 30 проверок инструкций, 56 layout assertions,
+   207 тел функций уже кешированы; 30 проверок инструкций, 61 layout assertions,
    165 публичных сигнатур проверены. Подробности research/character-library.md.
    Дополнительных SDK/PDB у пользователя нет, не ожидать их. Серверные render-типы
    целевым поиском не найдены. Из 455 доступны отдельные D3D9 GPU layouts и import .lib;
    они не доказывают совместимость CPU классов старой D3D8 CharacterMR.
 3. Не объявлять M4 завершённым по одной сборке движка. Нужен RF_Online.bin.
-4. Последняя /Goal выполнена по критерию уведомления о начале пункта 4; полный M4/M5
-   остаются будущими этапами проекта.
+4. После M4 продолжать M5/M6/M6F/M7 до финальной приёмки M9. Не считать компиляцию,
+   запуск или частично восстановленное поведение завершением активной /Goal.
 
 Сборка движка: prepare_client_build.py → apply_client_port_patches.py →
 prepare_dx8_sdk.ps1 → build_client_engine.ps1 -DirectXInclude <overlay> -CleanRebuild.

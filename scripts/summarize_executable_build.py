@@ -46,7 +46,7 @@ def main():
     settings = {}
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY|JPEG_LIBRARY_DIR|CHARACTER_REFERENCE_LIBRARY|CHARACTER_STDIO_ADAPTER_LIBRARY|DIAGNOSTIC_DEFER_LIBRARIES)):[^=]+=(.*)', line)
+            m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY|JPEG_LIBRARY_DIR|CHARACTER_REFERENCE_LIBRARY|CHARACTER_STDIO_ADAPTER_LIBRARY|CHARACTER_RECOVERED_MANAGERS_LIBRARY|DIAGNOSTIC_DEFER_LIBRARIES)):[^=]+=(.*)', line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',

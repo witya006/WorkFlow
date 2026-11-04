@@ -121,7 +121,7 @@ MAXPARTICLE=3 и MAX_PATTERN_SIZE=9 проверены по циклам/сра�
 хеши и смещения — inventory/character-legacy-layouts.json.
 
 scripts/prepare_character_header.py генерирует Character.h в ignored work/.
-scripts/check_character_header.py проверил 56 layout assertions и decorated names 165
+scripts/check_character_header.py проверил 61 layout assertions и decorated names 165
 адресуемых публичных функций. Данные, непубличные методы и конструкторы/деструкторы
 этим адресным тестом не проверяются. Права доступа сохранены: MSVC кодирует их в имени.
 CHMEMORYINFO описан как семь DWORD: texture size/count, vertex size/count, animation
@@ -136,8 +136,11 @@ CRender/ChInterface размером 776 в реконструкции покр�
 sizeof оригинального ChInterface сверх этого диапазона ещё не доказан.
 Современные std::vector не подставлены вместо старого хранения. STL/CRT/исключения
 VC6 и передачи STL объектов требуют отдельной проверки. Компиляция этого не доказывает.
-JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 13 уникальных
+JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 11 уникальных
 символов, полный список — inventory/client-character-diagnostic.json.
 Native тест подтвердил несовместимость прямого FILE EOF доступа CharacterMR с UCRT;
-classic CRT прошёл лишь этот частный тест. Адаптация ещё не реализована, SDK не готов.
-Доказательства и следующий шаг — research/client-dependencies-m4.md.
+Classic CRT adapter уже реализован и проверен на собственных fixtures, старые
+загрузчики ещё не проверены. CObjectManager и AnimationManager construction подключены,
+3102 native проверки реальных SDK операций на unloaded records прошли; пределы и
+AnimationManager invariant reconstruction — research/character-managers.md.
+SDK не готов. Остальное — research/client-dependencies-m4.md.

@@ -1,12 +1,12 @@
 {
   "library_sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8",
   "header": "work/recovered/character-legacy/include/Character.h",
-  "header_sha256": "e22738f3c7314b5602b0d3fd2d344b3d5a6e382e685d2fb28d7ffe6326380e33",
+  "header_sha256": "b3f53e831eae97f839447e0f1428164a8e9c4bfaed0b8628ba59e1637ec04df5",
   "public_contracts_input_sha256": "f134de4abdb6c9cb6e3c0e770c37b471997be402a82c27609c054612a61d1262",
   "status": "incomplete diagnostic interface; not production-ready",
-  "layout_assertions": 56,
+  "layout_assertions": 61,
   "unimplemented_inline_api": [
-    "CObjectManager/AnimationManager/TextureManager/CMeshManager/CRender/ChInterface constructors",
+    "TextureManager/CMeshManager/CRender/ChInterface constructors",
     "SetMipMap",
     "GetShadow",
     "SetTexPath",
@@ -16,7 +16,7 @@
   "unverified": [
     "Full layout of API-only classes remains missing",
     "Names inferred from source use need final instruction cross-check",
-    "No successful whole-client compile/link; no runtime compatibility claimed",
+    "Whole-client linking and complete runtime compatibility remain unverified",
     "Old STL ABI must not cross into modern STL objects",
     "CRender/ChInterface tail and total sizes inferred from observed accesses; validate initialization"
   ],
@@ -192,7 +192,7 @@
       "?UnSetState@CRender@@QAEXXZ",
       "?_R3CalculateTime@@YAXXZ"
     ],
-    "probe_obj_sha256": "aabf93ce5de9fdc34c10ed02a22a6daa4943e23f7454cb07174c2ae649b0f0ba",
+    "probe_obj_sha256": "5b1714b7b00e2097341d09e28f593dce2dfab23a9512fbba3a053a83326d2213",
     "executed": false
   },
   "client_global_diagnostic": {

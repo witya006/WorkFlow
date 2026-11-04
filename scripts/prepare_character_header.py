@@ -64,7 +64,7 @@ FIELDS = {
     CHARACTEROBJECT** legacy_capacity;
     DWORD legacy_next_id;
     char legacy_name[128];
-    CObjectManager(); // Inline constructor not yet recovered.
+    CObjectManager(); // Defined in the recovered manager library.
 ''',
     'AnimationManager': '''
     unsigned char unknown_000[4];
@@ -73,7 +73,7 @@ FIELDS = {
     ChAnimation** legacy_capacity;
     DWORD unknown_010;
     DWORD legacy_next_id;
-    AnimationManager(); // Inline constructor not yet recovered.
+    AnimationManager(); // Reconstructed empty state + supplied Init().
 ''',
     'TextureManager': '''
     IDirect3DDevice8* legacy_device;
@@ -212,7 +212,9 @@ bool IsHaveMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
                              'm_BefMatLocal': 624, 'm_ParticleID': 876, 'm_Entity': 924, 'm_Alpha': 952}),
         'ChAnimation': (280, {'m_Load': 0, 'm_Name': 4, 'm_Ident': 260, 'm_pExtra': 276}),
         'CObjectManager': (148, {'legacy_begin': 4, 'legacy_end': 8, 'legacy_capacity': 12, 'legacy_next_id': 16, 'legacy_name': 20}),
-        'AnimationManager': (24, {}), 'TextureManager': (160, {'legacy_path': 28}),
+        'AnimationManager': (24, {'legacy_begin': 4, 'legacy_end': 8, 'legacy_capacity': 12,
+                                'unknown_010': 16, 'legacy_next_id': 20}),
+        'TextureManager': (160, {'legacy_path': 28}),
         'CMeshManager': (16, {}),
         'CRender': (776, {'legacy_meshes': 112, 'legacy_bones': 260, 'm_TM': 408,
                           'legacy_parts': 568, 'legacy_shadow': 692, 'legacy_shadow_surface': 772}),
@@ -234,12 +236,12 @@ bool IsHaveMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
               'public_contracts_input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
               'status': 'incomplete diagnostic interface; not production-ready',
               'layout_assertions': sum(1+len(fields) for _, fields in asserts.values()),
-              'unimplemented_inline_api': ['CObjectManager/AnimationManager/TextureManager/CMeshManager/CRender/ChInterface constructors',
+              'unimplemented_inline_api': ['TextureManager/CMeshManager/CRender/ChInterface constructors',
                    'SetMipMap', 'GetShadow', 'SetTexPath', 'EffectList::SetEffect',
                    'DrawCharacter/DrawCharacterShadow/LoadRealData/SetMeshEffect/IsHaveMeshEffect shortened overloads'],
               'unverified': ['Full layout of API-only classes remains missing',
                    'Names inferred from source use need final instruction cross-check',
-                   'No successful whole-client compile/link; no runtime compatibility claimed',
+                   'Whole-client linking and complete runtime compatibility remain unverified',
                    'Old STL ABI must not cross into modern STL objects',
                    'CRender/ChInterface tail and total sizes inferred from observed accesses; validate initialization'],
               'method_declarations': sum(len(x) for x in methods.values()), 'free_declarations': len(free)}
