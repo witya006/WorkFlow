@@ -15,13 +15,15 @@
 M1 выполнен: R3Engine.lib, две чистые пересборки, все 58 объектов x86.
 M2: бинарный эталон закреплён по SHA-256, различия текущего клиента/backup исследованы.
 M3 выполнен для helper-only SPT: 140 файлов, 97 543 объекта, round trip и 7 тестов.
-M4 начат: цель RF_Online из 180 C++ исходников, полная сборка ещё не получена.
+M4: первая полная diagnostic RF_Online.bin из 180 C++ и чистая пересборка успешны.
+Это сборочный результат старой базы с выбранными 455 ветками; runtime и canonical
+optimized Release не проверены. research/client-first-build.md.
 Предыдущая /Goal до начала пункта 4 выполнена (research/goal-checkpoint.md).
 Новая активная /Goal — M9: финальная приёмка клиента 455 без модернизации графики.
 M8 остаётся отдельным необязательным этапом и не блокирует M9.
 Все 180 C++ уже компилируются в диагностической конфигурации с восстановленными
 объявлениями Character. Настоящий /MT движок собран отдельно; 238 COFF x86 /MT проверены.
-JPEG 6b/Miles подключены; diagnostic link оставляет 2 символа (CheckFiles/SendLog). CObjectManager
+JPEG 6b/Miles подключены; diagnostic link успешен, unresolved symbols нет. CObjectManager
 constructor восстановлен, AnimationManager сконструирован через empty state + Init;
 реальные SDK операции и empty renderer construction прошли 3630 native проверок.
 SetTexPath/SetMipMap восстановлены; 18 дополнительных ABI проверок. Два старых загрузчика прошли
@@ -29,6 +31,7 @@ SetTexPath/SetMipMap восстановлены; 18 дополнительных
 455 draw аргументы подключены отдельным flag/ledger; legacy SetEffect bridge проверен.
 455 map/36-grade эффекты ещё не перенесены. Character inline/CRT
 ещё не закрыты. research/character-effects-and-exceptions.md.
+Следующая работа — M5, загрузка/использование данных 455 и сверка с reference.
 
 ## Этапы
 

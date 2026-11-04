@@ -24,8 +24,9 @@ R3Engine собран под VS 2026 x86 с двумя успешными чис
 Статический аудит сборки завершён: 14 DSP / 14 DSW, 41 конфигурация, 832 SOURCE,
 6 отсутствующих записей в CameraExporter/R3MapExp. Все 180 C++ клиента уже компилируются
 с диагностическим восстановленным Character.h. JPEG 6b/Miles подключены. Остались
-2 undefined symbols (CheckFiles/SendLog); адаптер FILE проверен на реальных текстовых/
-бинарном загрузчиках и применении эффекта к двум мешам без GPU.
+Получена полная diagnostic RF_Online.bin и успешная чистая пересборка, unresolved нет.
+Выбранные 455 ветки имеют отдельные flags/ledger, исходные legacy branches сохранены.
+Это не проверка запуска/полного поведения 455. Подробности research/client-first-build.md.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).
@@ -264,7 +265,7 @@ M4: 207 определений Character кешированы, 30 операнд
 Отдельно собран настоящий /MT R3EngineMT.lib; 180+58 COFF x86 /MT проверены.
 LNK2038 устранён корректной сборкой, genuine DX8 .lib подключены. JPEG 6b /MT прошёл
 28 ABI сравнений и 2 точных golden decodes; 26 Miles импортов есть в 455 DLL.
-Проверены 284 x86 /MT объекта. Diagnostic link оставляет 2 уникальных символа.
+Проверены 284 x86 /MT объекта. Diagnostic link и clean rebuild успешны.
 Native собственный тест подтвердил: старый FILE EOF доступ Character не работает с UCRT;
 classic CRT прошёл только этот частный тест. RF_Online.bin нет, input EXE/DLL не запускались.
 research/client-dependencies-m4.md и client-port-m4.md;
@@ -277,14 +278,17 @@ character-header-recovery.json. Четыре проверки COFF прошли.
 constructor восстановлен; AnimationManager
 получил empty-vector constructor + реальный Init. 3102 проверки реальных SDK операций
 на unloaded records прошли. Реальные _Xlen/_Xran /MT exceptions прошли 770 сравнений
-с classic system exports; aliases в тестах удалены. Остаются 2 link gaps.
+с classic system exports; aliases в тестах удалены. Link gaps в выбранной сборке закрыты.
 Полный Character unwind/loaded data/render не проверен. Header: 67 layout assertions.
 research/character-effects-and-exceptions.md.
 Новое: SetTexPath/SetMipMap и empty renderer construction восстановлены; 18 ABI
 byte checks, 8 instances/136 part managers, всего 3630 combined native checks прошли.
 Последующее продолжение: 455 DrawCharacter calls под отдельным flag/ledger,
 bounded legacy SetEffect bridge и 59 native checks с CPU mesh effect application.
-Остаются 2 gaps: CheckFiles и SendLog. 455 map/36-grade effect behavior ещё не перенесён.
+Последующее продолжение: 455 logging и success->lobby edge перенесены отдельными
+flags с сохранением legacy bodies. Нет заглушек CheckFiles/SendLog или _DEVELOPER_ bypass.
+Native logger 14 cases/66 checks; полная сборка и clean прошли. 455 map/36-grade
+effect behavior ещё не перенесён. research/client-first-build.md.
 research/client-draw-and-legacy-effects.md.
 Конструкторы используют реальные SDK Init, но исходный inline/sizeof не доказан.
 research/character-setters-and-construction.md и inventory/character-setters.json.

@@ -1,93 +1,64 @@
 # Ближайшие действия — только клиент
 
-Обновлено 2026-11-04. [Память](project-memory.md), [дорожная карта](roadmap.md),
-[аудит входов](build-audit.md). Решение о первой сборке LoginServer отозвано.
-Конечная цель: исходники RF_Online.bin с полным функционалом и поведением эталона 455.
-Вести реестр покрытия по [client-acceptance.md](client-acceptance.md).
-Активная /Goal: довести клиент до M9 и сообщить о готовности. По ответу пользователя
-M9 — финальная приёмка клиента 455 без модернизации графики. Критерии client-acceptance.md;
-M8 (графика) не является условием этой цели. Предыдущая ограниченная цель до начала
-пункта 4 выполнена; доказательства research/goal-checkpoint.md.
+Обновлено 2026-11-04. /Goal — M9: финальная приёмка клиента 455 без модернизации графики.
+Критерии docs/client-acceptance.md; M8 не требуется. Серверы/БД не разрабатывать.
+Серверные исходники — только read-only reference. Оригинальные EXE не запускать.
 
-## Завершено после начала переноса
+## Полученный сборочный результат M4
 
-- M1: R3Engine.lib получена под VS 2026 x86, две чистые пересборки прошли.
-- DirectX 8.1b SDK проверен по архивному хешу и подписи Microsoft, извлечён в local/.
-- M2: два бинарника сохранены в work/client-reference, все различия локализованы.
-  Эталон — текущий пользовательский RF_Online.bin; config/client-target.json.
-- Хеши/патчи/детали: research/client-port-m1.md и research/client-reference.md.
+RF_Online.bin успешно скомпилирован/слинкован и чисто пересобран под VS2026 x86.
+Размер 2 436 608, entry RVA 0x1BA9E0. Два результата различаются только двумя timestamp
+DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, runtime не проверен.
+Это diagnostic /Od build старой базы с selected455 branches, а не готовый клиент 455.
+Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
+Документ research/client-first-build.md; inventory/client-first-build.json.
 
-## Следующий результат: M4
+Сохранены 11 compiler-only patches и 4 отдельных selectable behavior patches:
+DrawCharacter scale/scroll, EffectLog455, login success->lobby. Их инструкции сверены
+по обоим pinned PE, исходные ветки сохранены. _DEVELOPER_ и /FORCE не включены;
+CheckFiles/SendLog не заменены пустыми functions. По исследованным reference callers
+455 не вызывает их в этих двух местах. Не делать вывод об остальных file checks.
 
-1. M3 завершён для helper-only SPT: 140 файлов, 97 543 объекта, 7 тестов и round trip.
-   Спецификация и границы — research/helper-spt-format.md.
-2. M4: все 180 C++ клиента компилируются с диагностическим восстановленным Character.h.
-   Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
-   JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
-   26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
-   В diagnostic link остались 2 уникальных символа: CheckFiles/SendLog; вызовы сохранены.
-   Прямой EOF доступ CharacterMR несовместим с UCRT; classic FILE изолирован адаптером.
-   Адаптер 8 stream API готов: 1828 собственных native проверок и 3 теста COFF прошли,
-   Pattern/Item/EffectList/binary Effect loader проверены отдельно: 59 native checks
-   на valid synthetic fixtures, включая применение particle ID к двум мешам без GPU.
-   По инструкциям обоих 455 восстановлен default=0 для двух mesh-effect API.
-   _Xlen/_Xran реализованы реальными exceptions, 770 native сравнений с classic exports.
-   CObjectManager constructor
-   восстановлен; AnimationManager получил empty-state constructor + настоящий Init.
-   Всего 3630 native проверок настоящих SDK функций и восстановленной конструкции:
-   8 empty renderer instances, 136 part managers, unloaded object/animation records.
-   AnimationManager original inline constructor не найден, singleton side effects
-   не доказаны. Test-only exception aliases удалены, native компоненты проходят
-   с настоящей exception library. Конструкторы TextureManager/CMeshManager/CRender/
-   ChInterface реконструированы через empty states + real Init; оригинальный inline
-   ctor/полный sizeof не доказаны. SetTexPath/SetMipMap сверены с инструкциями обоих PE,
-   18 guarded ABI checks и вызовы на constructed objects прошли.
-   DrawCharacter: оба source calls теперь имеют отдельную selectable 455 ветку
-   m_fScale/scroll=0; CNpc подтверждён по RTTI/asm, native object refs проверены.
-   11 compiler patches и 2 behavior patches ведутся раздельно. Diagnostic flag ON,
-   default project flag OFF; оба старых коротких вызова сохранены в выключенной ветке.
-   SetEffect: bounded legacy table bridge реально применяет эффект через старый SDK.
-   Это не завершение 455 map/36-grade переноса; original inline/bad inputs неизвестны.
-   Найден 455 EffectLog (5/10 MB, flag, без прямого SendLog). Проверить reachability
-   clear routine 0x7DF1B0; не предполагать atexit. Затем восстановить reference logging
-   flow и исследовать CheckFiles, не отключать их ради линковки.
-   research/client-draw-and-legacy-effects.md.
-   Подробности research/character-setters-and-construction.md.
-   research/character-effects-and-exceptions.md, character-managers.md,
-   character-stdio-adapter.md. Полный runtime/exception unwind Character не проверен.
-   Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
-   У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
-   неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.
-   207 тел функций уже кешированы; 30 проверок инструкций, 67 layout assertions,
-   165 публичных сигнатур проверены. Подробности research/character-library.md.
-   Дополнительных SDK/PDB у пользователя нет, не ожидать их. Серверные render-типы
-   целевым поиском не найдены. Из 455 доступны отдельные D3D9 GPU layouts и import .lib;
-   они не доказывают совместимость CPU классов старой D3D8 CharacterMR.
-3. Не объявлять M4 завершённым по одной сборке движка. Нужен RF_Online.bin.
-4. После M4 продолжать M5/M6/M6F/M7 до финальной приёмки M9. Не считать компиляцию,
-   запуск или частично восстановленное поведение завершением активной /Goal.
+## Следующий результат: M5
 
-Сборка движка: prepare_client_build.py → apply_client_port_patches.py →
-prepare_dx8_sdk.ps1 → build_client_engine.ps1 -DirectXInclude <overlay> -CleanRebuild.
+1. Найти loader 455 helper-only SPT и подтвердить чтение/использование данных:
+   имена, bbox, матрица/инверсия, координаты, options/defaults/error behavior.
+   Не переносить имена старых функций по одному совпадению строки.
+2. Использовать pinned real samples из inventory/helper-spt-verification.json.
+   M3 уже проверил 140 файлов/97 543 записи round trip. Не повторять без причины.
+3. Подготовить изолированный запуск/пробу именно восстановленного клиента, связать
+   sample с runtime-результатом. Для native lab сначала проверить DLL startup и
+   среду данных. Не считать отдельный Python parser или standalone loader всей M5.
+4. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
+   coverage, M7 — закрепление сборки, затем M9. Не закрывать цель по одному EXE.
 
-Текущие Character проверки при изменении header: prepare_character_header.py →
-check_character_header.py → build_character_setters.py → build_character_managers.py →
-probe_character_effect_loaders.py → probe_client_character_build.ps1.
-Exception/stdio библиотеки переиспользовать по проверенным хешам, не пересобирать без причины.
-455 draw branch: apply_client_draw455.py → prepare_client_build.py → diagnostic build →
-verify_client_draw455.py. Отдельный ledger inventory/client-behavior-patches.json.
+Известные дальнейшие gaps: D3D8 база против D3D9 reference; legacy EffectList9grades
+против 455 map/36; полные Character sources/layouts/constructors/exception unwind;
+реальная инициализация blend pointer+160; recursion CLevel::GetFrustumNormalPlane;
+полный resource manifest; всё UI/сеть/игровые действия ещё не проверено.
+Clear routine effect log0x7DF1B0 не привязывать к atexit по догадке.
 
-## Восстановление клиента
+## Команды текущего дерева
 
-- Закрыть Character.h, CharacterMD/CharacterR и сторонние .lib, include/link/CRT.
-- Цель последующей полной сборки — RF_Online; сборка движка не считается её заменой.
-- Развернуть реестр возможностей эталона: сценарии, ожидаемое поведение,
-  подтверждения и расхождения с восстанавливаемым клиентом.
-- Выбрать один формат с клиентским загрузчиком и реальными образцами; описать,
-  реализовать и проверить парсер, затем интегрировать в восстановленный клиент.
+Обычная повторная сборка: scripts/probe_client_character_build.ps1.
+Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
+Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем
+проверенные dependency builders по manifests. Не пересобирать неизменённые helpers.
+Если меняется Character header: prepare_character_header.py -> check_character_header.py
+-> build_character_setters.py -> build_character_managers.py -> probe_character_effect_loaders.py.
+Logger: build_client455_effect_log.py -> apply_client_effect_log455.py.
+Behavior branches: apply_client_draw455.py / apply_client_lobby455.py -> prepare_client_build.py
+-> diagnostic build -> verify_client_draw455.py / verify_client_coff.py.
 
-Проверки сетевого поведения относятся только к клиентским пакетам и состояниям.
-Разработка серверов, восстановление БД и серверной логики в план не входят.
-Серверные исходники разрешено читать как справочник, без сборки и изменений;
-относящиеся к клиенту выводы проверять по эталону 455.
-Современный toolchain теперь доступен; остаются зависимости и перенос клиентского кода.
+audit_client_executable.py --label initial/clean сохраняет неизменяемые первые snapshots;
+он откажется перезаписывать их другой сборкой. Для будущего revision нужен новый snapshot.
+Все Python scripts запускать через scripts/Invoke-Python.ps1.
+
+## Ограничения проверок
+
+Character header 67 assertions/165 native refs; manager/empty renderer 3630 checks,
+leaf setters 18, actual effect loaders 59, stdio 1828+3 COFF tests, exceptions 770,
+logger 14 cases/66 checks. Это ограниченные component tests, не доказательство общего
+соответствия 455. Old SDK loaders/exception paths не сертифицированы полностью.
+Дополнительных SDK/PDB у пользователя нет; не ожидать их. Raw analysis — artifacts/,
+source copies/IDB/large files — work/, Git — scripts/docs/small evidence only.

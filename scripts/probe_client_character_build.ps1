@@ -1,3 +1,4 @@
+param([switch]$CleanRebuild)
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path -Parent $PSScriptRoot
 $behavior = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client-behavior-patches.json') -Raw | ConvertFrom-Json
@@ -26,6 +27,18 @@ $arguments = @('-S', $source, '-B', $build, '-G', 'Visual Studio 18 2026', '-A',
     "-DRF_RECOVERED_CHARACTER_INCLUDE=$(Join-Path $recovered 'include')",
     "-DRF_CHARACTER_STD_DIAGNOSTIC=$(Join-Path $recovered 'diagnostic_std.hpp')",
     '-DRF_CLIENT_455_DRAW_ARGUMENTS=ON')
+$logger = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-effect-log.json') -Raw | ConvertFrom-Json
+$loggerLibrary = Join-Path $workspace $logger.library
+if ((Get-FileHash -LiteralPath $loggerLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $logger.library_sha256 -or
+    $logger.cases.Count -ne 14 -or $logger.native_checks -lt 66) { throw '455 effect logger verification is stale or incomplete.' }
+foreach ($property in $logger.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 effect logger source changed since verification.' }
+}
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_EFFECT_LOG' -and $_.implementation_library_sha256 -eq $logger.library_sha256 })) { throw '455 effect logger source selection is missing or stale.' }
+$arguments += '-DRF_CLIENT_455_EFFECT_LOG=ON'
+$arguments += "-DRF_CLIENT_455_EFFECT_LOG_LIBRARY=$loggerLibrary"
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_LOBBY_TRANSITION' })) { throw '455 lobby transition evidence/selection is missing.' }
+$arguments += '-DRF_CLIENT_455_LOBBY_TRANSITION=ON'
 $jpeg = Get-Content -LiteralPath (Join-Path $workspace 'inventory/jpeg6b-build.json') -Raw | ConvertFrom-Json
 $jpegLibrary = Join-Path $workspace $jpeg.library
 if ((Get-FileHash -LiteralPath $jpegLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $jpeg.library_sha256) { throw 'JPEG archive changed since verification.' }
@@ -73,7 +86,9 @@ if (Test-Path -LiteralPath $settersReport) {
 }
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logs 'configure.txt') -Tail 15; exit $LASTEXITCODE }
-& $cmake --build $build --config Release --target RF_Online --parallel 4 *> (Join-Path $logs 'build.txt')
+$buildArguments = @('--build',$build,'--config','Release','--target','RF_Online','--parallel','4')
+if ($CleanRebuild) { $buildArguments += '--clean-first' }
+& $cmake @buildArguments *> (Join-Path $logs 'build.txt')
 $result = $LASTEXITCODE
 & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-character-diagnostic/build.txt --build-dir work/client-build/build-character-diagnostic --output inventory/client-character-diagnostic.json --max-details 80
 Write-Output "Diagnostic RF_Online build exit: $result"

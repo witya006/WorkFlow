@@ -60,6 +60,18 @@ def patched(data, before, after):
     return data[:start]+replacement+data[end:]
 
 
+def merge_behavior_manifest(updates):
+    path = WS/'inventory/client-behavior-patches.json'
+    existing = json.loads(path.read_text(encoding='utf-8')) if path.exists() else []
+    records = {entry['file']:entry for entry in existing}
+    if len(records) != len(existing):
+        raise ValueError('Duplicate behavior patch entries')
+    records.update({entry['file']:entry for entry in updates})
+    data = json.dumps(sorted(records.values(),key=lambda item:item['file']),indent=2)+'\n'
+    if not path.exists() or path.read_text(encoding='utf-8') != data:
+        path.write_text(data,encoding='utf-8')
+
+
 def main():
     facts = binary_evidence()
     paths = json.loads((WS/'config/paths.json').read_text(encoding='utf-8'))
@@ -82,7 +94,7 @@ def main():
             'build_option':'RF_CLIENT_455_DRAW_ARGUMENTS','legacy_branch_preserved':True,
             'reason':'455 passes object m_fScale and zero scroll; no invented legacy default arguments.',
             'binary_evidence':facts})
-    (WS/'inventory/client-behavior-patches.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    merge_behavior_manifest(report)
     print('PASS: two byte-preserving, selectable 455 draw argument patches; both pinned PEs checked.')
 
 

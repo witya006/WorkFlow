@@ -1,41 +1,13 @@
 {
-  "checked_at_utc": "2026-11-04T08:24:36.046273+00:00",
+  "checked_at_utc": "2026-11-04T08:52:28.659399+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
-  "build_exit": 1,
-  "error_counts": {
-    "LNK2019": 2,
-    "LNK1120": 1
-  },
-  "unresolved_symbols": [
-    "?CheckFiles@@YAPADXZ",
-    "?SendLog@@YA_NXZ"
-  ],
-  "distinct_diagnostics_total": 3,
-  "distinct_diagnostics": [
-    {
-      "file": "cgp_login.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"char * __cdecl CheckFiles(void)\" (?CheckFiles@@YAPADXZ) в функции \"protected: virtual int __thiscall CGP_LogIn::LoadData(void)\" (?LoadData@CGP_LogIn@@MAEHXZ).",
-      "count": 1
-    },
-    {
-      "file": "effectutil.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"bool __cdecl SendLog(void)\" (?SendLog@@YA_NXZ) в функции \"void __cdecl EffectLog(char *)\" (?EffectLog@@YAXPAD@Z).",
-      "count": 1
-    },
-    {
-      "file": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-build\\build-character-diagnostic\\Release\\RF_Online.bin ",
-      "line": null,
-      "code": "LNK1120",
-      "message": "неразрешенных внешних элементов: 2",
-      "count": 1
-    }
-  ],
+  "build_exit": 0,
+  "error_counts": {},
+  "unresolved_symbols": [],
+  "distinct_diagnostics_total": 0,
+  "distinct_diagnostics": [],
   "details_omitted": 0,
   "generated_objects": 180,
   "build_dir": "work/client-build/build-character-diagnostic",
@@ -48,6 +20,9 @@
     "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
     "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
     "RF_CLIENT_455_DRAW_ARGUMENTS": "ON",
+    "RF_CLIENT_455_EFFECT_LOG": "ON",
+    "RF_CLIENT_455_EFFECT_LOG_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+    "RF_CLIENT_455_LOBBY_TRANSITION": "ON",
     "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
     "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
     "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",

@@ -3,17 +3,33 @@
   "objects": [
     {
       "object": "work/client-build/build-character-diagnostic/RF_Online.dir/Release/cresobject.obj",
-      "sha256": "5a0ea7b1c5202f3cde8ae2a6178395363bb7592c2495f1b929828aaf3fd57834",
+      "sha256": "f14a5f3ae71b1cd2f1e760b510e03c46b24cc8b2cbb91d1c6fcabad6b1883d36",
       "full_reference": "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@QAMMMM@Z",
       "missing_short_reference_absent": true
     },
     {
       "object": "work/client-build/build-character-diagnostic/RF_Online.dir/Release/cnpc.obj",
-      "sha256": "cb91e7d269f1ea7a81b1b6398f391ea2c8ddda193da4bc111647f2cb1bebfebe",
+      "sha256": "36f76f54860983473117703c64820b6c59ae6f9a84ea599e030c0205bdbc69ce",
       "full_reference": "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@QAMMMM@Z",
       "missing_short_reference_absent": true
     }
   ],
-  "patch_manifest_sha256": "6c7553e820d04d0daefbfa2ea5e04c446c35ec4f686536af4eeb56d86754ec7d",
+  "other_reference_selections": [
+    {
+      "object": "work/client-build/build-character-diagnostic/RF_Online.dir/Release/effectutil.obj",
+      "sha256": "70c7b35aa4f9ed03593bb407d57b103f7660777ad3406c88220dea1a55c4d188",
+      "option": "RF_CLIENT_455_EFFECT_LOG",
+      "obsolete_reference_absent": "?SendLog@@YA_NXZ"
+    },
+    {
+      "object": "work/client-build/build-character-diagnostic/RF_Online.dir/Release/cgp_login.obj",
+      "sha256": "05bc61a9b563528ad3abc5666b67db85e51b171dfb8b8a378f59dca5b859e033",
+      "option": "RF_CLIENT_455_LOBBY_TRANSITION",
+      "obsolete_reference_absent": "?CheckFiles@@YAPADXZ"
+    }
+  ],
+  "developer_mode": false,
+  "forced_link": false,
+  "patch_manifest_sha256": "b5c72329821e62b260eef9e0c7051f125c332010f4dc8bbb2b824aa2e23a1771",
   "limit": "Compiled reference selection and static 455 argument evidence; no GPU runtime or full render equivalence claimed."
 }

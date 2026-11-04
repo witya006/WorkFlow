@@ -30,6 +30,8 @@ def main():
     paths = json.loads((WS / 'config/paths.json').read_text(encoding='utf-8'))
     source_root = Path(paths['legacy_source']) / 'R3Engine'
     report = []
+    behavior_path = WS/'inventory/client-behavior-patches.json'
+    behaviors = {x['file']:x for x in json.loads(behavior_path.read_text(encoding='utf-8'))} if behavior_path.exists() else {}
     for name, edits in PATCHES.items():
         original = (Path(paths['legacy_source']) / 'RF Client Side' / name) if name.startswith('RF_Client/') else source_root / name
         old = original.read_bytes()
@@ -53,9 +55,14 @@ def main():
             new = new.replace(before, after, 1)
         dst = WS / 'work/client-build/source' / name
         current = dst.read_bytes()
-        if current not in (old, new):
+        behavior = behaviors.get(dst.relative_to(WS).as_posix())
+        recognized_overlay = (behavior is not None
+            and behavior['original_sha256']==hashlib.sha256(old).hexdigest()
+            and behavior['input_sha256']==hashlib.sha256(new).hexdigest()
+            and behavior['patched_sha256']==hashlib.sha256(current).hexdigest())
+        if current not in (old, new) and not recognized_overlay:
             raise ValueError(f'Preserving unexpected local edits: {dst}')
-        if current != new:
+        if current != new and not recognized_overlay:
             dst.write_bytes(new)
         report.append({'file': dst.relative_to(WS).as_posix(), 'original_sha256': hashlib.sha256(old).hexdigest(),
                        'patched_sha256': hashlib.sha256(new).hexdigest(), 'changes': len(edits),

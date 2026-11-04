@@ -50,7 +50,13 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 Статусы: обнаружено → описано → реализовано → проверено; отдельно блокировано/неизвестно.
 Намеренные исправления особенностей эталона согласовывать отдельно от восстановления.
 
-## Известные открытые вопросы после M4 compile
+## Известные открытые вопросы после первой сборки
+
+RF_Online.bin получен и чисто пересобран в diagnostic configuration: /Od, reconstructed
+Character interface/адаптированная библиотека и отдельные подтверждённые 455 branches.
+EXE не запускался. Pure legacy OFF configurations и canonical optimized Release
+не объявлены готовыми. Это сборочный результат M4, не финальная приёмка 455.
+research/client-first-build.md; inventory/client-first-build.json.
 
 - Восстановленный Character.h обеспечивает компиляцию; конструкторы, inline/default
   arguments и runtime ABI старой STL/CRT не проверены. research/character-library.md.
@@ -66,6 +72,9 @@ x86, image base 0x400000. Backup — вторичный материал; раз
   с тем же именем. Не исправлено; поведение/эквивалент в 455 ещё не установлены.
 - _NEW_UI_ нужен текущим исходным классам предметов и включён для современной сборки;
   этим не подтверждено соответствие старого UI эталону 455.
+- Логирование 455 проверено на 14 own cases/66 checks; lifecycle clear routine неизвестен.
+  Success->lobby edge не содержит древнего CheckFiles, но остальные integrity/resource
+  checks и полная login sequence ещё требуют аудита. Не считать их покрытыми.
 
 ## Приёмка
 
