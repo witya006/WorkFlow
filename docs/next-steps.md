@@ -7,11 +7,17 @@
 
 ## Следующий результат: сборка клиентской зависимости
 
+Начато: 492 файла клиента/движка скопированы и проверены, CMake configure прошёл.
+Первая компиляция дала 12 COFF x86 объектов; итог exit 1. Теперь ближайшая задача —
+DirectX 8 headers и C2065/C7732 (область видимости i в common/cjcache и commonutil).
+Базовый результат: [первая сборка](../research/client-port-first-build.md).
+Команды: Invoke-Python.ps1 scripts/prepare_client_build.py, затем build_client_engine.ps1.
+
 Основная среда — VS 2026 Professional 18.11.3 / MSVC 14.51.36231 / Windows SDK
 10.0.26100.0 / CMake 4.3.1-msvc1. Собственный Win32 x86 smoke собран и запущен.
 VC6 не требуется для начала; использовать только при доказанной необходимости.
 
-1. Проверить R3Engine - Win32 RTMovie Release: фактические макросы, include-цепочки,
+1. Продолжить проверку R3Engine - Win32 RTMovie Release: фактические макросы, include-цепочки,
    CRT и внешние SDK. Название конфигурации не доказывает наличие макроса RTMOVIE.
 2. Создать современный проект/CMake для R3Engine под установленный MSVC x86;
    проверить пригодный DirectX SDK. Сохранить исходные макросы/CRT как предмет анализа.

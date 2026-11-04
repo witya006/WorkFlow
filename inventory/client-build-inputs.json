@@ -1,0 +1,2496 @@
+{
+  "scope": "Client and R3Engine only. No server files copied or changed.",
+  "selected_legacy_config": "R3Engine - Win32 RTMovie Release",
+  "legacy_cpp_directives": [
+    {
+      "line": 134,
+      "directive": "# PROP Use_MFC 0",
+      "config": "R3Engine - Win32 RTMovie Release"
+    },
+    {
+      "line": 140,
+      "directive": "# ADD CPP /nologo /W3 /GX /O2 /I \".\\Extension\" /I \".\\1stClass\" /I \".\\2ndClass\" /I \".\\Common\" /I \".\\D3d\\include\" /D \"WIN32\" /D \"NDEBUG\" /D \"_MBCS\" /D \"_LIB\" /YX /FD /c",
+      "config": "R3Engine - Win32 RTMovie Release"
+    },
+    {
+      "line": 142,
+      "directive": "# ADD RSC /l 0x412 /d \"NDEBUG\"",
+      "config": "R3Engine - Win32 RTMovie Release"
+    },
+    {
+      "line": 145,
+      "directive": "# ADD BSC32 /nologo",
+      "config": "R3Engine - Win32 RTMovie Release"
+    },
+    {
+      "line": 148,
+      "directive": "# ADD LIB32 /nologo /out:\"R3Engine.lib\"",
+      "config": "R3Engine - Win32 RTMovie Release"
+    }
+  ],
+  "translation_units": 58,
+  "resource_units": 1,
+  "cmake_sha256": "24b21c549cae8c548b6f641f0bd52de82b368cae4d4a6cb617febbf0ef2febe1",
+  "files": [
+    {
+      "original": "R3Engine/R3Engine/1stclass/animation.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/animation.cpp",
+      "sha256": "13cdd0f2cd311816aec9bdf50ff831776be607981d009a2b23f3baf01b5f0296"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/animation.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/animation.h",
+      "sha256": "c9a456c00713a24aabe0ae8070f9ec690aeec07aa96c68b27a4073b780744c92"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/bsp.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/bsp.cpp",
+      "sha256": "8c8e9e6397edab789ff25b55da168a017767129d61e5764193d0929843432c49"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/collision.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/collision.cpp",
+      "sha256": "af462fc691c4d17a7109a8a141552c22e8af141a142215e384111fddb64c15fd"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/collision.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/collision.h",
+      "sha256": "bd42978610323660d7e7a46c6fd8b6938021fa0e73be3d7e387634a44d731c45"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/core.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/core.cpp",
+      "sha256": "7e7b0ac629bc406d36cec3bb062e68c22f79144d8c6cbc31c0a38eb17578c8a2"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/core.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/core.h",
+      "sha256": "80b07d015464282767981d1ed5b02186b0b779c1952bb3c9123cab10db9f323e"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/cpathfinder.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/cpathfinder.cpp",
+      "sha256": "bcfeec1699a8ed9e9fce82489f7717f034538dd6cbf2d458e66379fb0e79f261"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/cpathfinder.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/cpathfinder.h",
+      "sha256": "75dfadd7fc6a7f9742f359861e6bb83722f50afa18190c5272345dc36fa9a1a3"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/entity.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/entity.cpp",
+      "sha256": "c82dcbba98b12baa438713d8dc27129bfb6fc7610f2f61670eac3160b64da6d5"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/entity.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/entity.h",
+      "sha256": "918f6ec4c91d00a972d541ac78cc53cf576648047aa3cce1f2af8f7590c90002"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/multilayer.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/multilayer.cpp",
+      "sha256": "72f657fc6ba7c6ccbd3fd0cdcaef764bcab61ed7c94bf248c3befc79f2fabae1"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/multilayer.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/multilayer.h",
+      "sha256": "425e9a357edc1fa69d01cd06ba5da58a1f555020fa283a7f87830319afea7847"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/procedural.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/procedural.cpp",
+      "sha256": "aabfa177544a4fe14abec19c10a58c04f7fb86dff7d467173963b093f9e584d1"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/procedural.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/procedural.h",
+      "sha256": "8596b8363a8090f3cfe504dd8618919979f988285e5357f67ec95e1fffd0dd69"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3alpha.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3alpha.cpp",
+      "sha256": "e136a16a98f33c356078e1548329942da6fee1ef5fbd60f1bfdecf7dd3e29c07"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3alpha.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3alpha.h",
+      "sha256": "35c564f9ec9060dada3e810dde670572559304486e5bcbcbcb3b15140394870d"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3bsp.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3bsp.h",
+      "sha256": "8e43ae5b21b06b2f9c1dce706612001b14e90dd8a86c360b2135c4be1b586aed"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3d3d8.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3d3d8.cpp",
+      "sha256": "872da702ee4437766919827f87466e08107470c1ada02edced6a0943fa193c32"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3d3d8.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3d3d8.h",
+      "sha256": "53cdcaf65d66cb0ec506d723b97d685df50ccfbb875c8180411e9be2e4d62023"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3d3dtex.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp",
+      "sha256": "4193359bb36dce67d1f78b0cae29ff682650b08fb19b3f3ac685f4cd99ffe290"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3d3dtex.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3d3dtex.h",
+      "sha256": "bef8b03bffaae3fdbc361f92242556c29afbbd90030395a52c946a3016daed7e"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3lightmap.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3lightmap.cpp",
+      "sha256": "2f4c7dc3fde667815cea4582a39fbeecf56ef30ceef7e0fc5e1f064767967fa4"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3lightmap.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3lightmap.h",
+      "sha256": "8958bde154617c35b04e716ac3772794cc6948d2b2454fec9dd9004ef47b78e7"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3material.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3material.cpp",
+      "sha256": "7d1a706f04f5e1c05daa5cb0c2481631f63841f712c00236aa934b5951df7866"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3material.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3material.h",
+      "sha256": "ae437207810a370fbc4f348affde84293e72aa03bd6d239003657912a88b5f9a"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3particle.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3particle.cpp",
+      "sha256": "cbb3a73dbadec2c2abe7ac603c3382d8133dfab9b09e3dc8437ff25ac9761fbc"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3particle.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3particle.h",
+      "sha256": "c0ccf0e66f5a025b0d57179aa72a7176b73063f8321b32635e2b1721d347570f"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3render.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3render.cpp",
+      "sha256": "4355b71ab6c73fdd6bff01449cd0f737b8bc5d3d985d2ad6997292712217e51f"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3render.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3render.h",
+      "sha256": "f84aee66dba02eaf0df05336c7cd8905c5105b041818fa92e879e26a0de03449"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3vertexbuffer.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3vertexbuffer.cpp",
+      "sha256": "c65beba7e12a159df425470d753e0c4191677d2c65c502e88829bbf3ba0006b1"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3vertexbuffer.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3vertexbuffer.h",
+      "sha256": "8386afa7198169944cee32e57d35279abe67911a467a898f54a22088bc5e5cc1"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3vertexshader.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3vertexshader.cpp",
+      "sha256": "a7b233593867a8f2d033a0856ed03b11aa9c2929b287fb4990281187d6292df2"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/r3vertexshader.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/r3vertexshader.h",
+      "sha256": "e79ead1cbb85cb67029e4042eb409672dfb5db42062a49af376ce71732be139d"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/renderentity.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/renderentity.cpp",
+      "sha256": "1d5321f772127dce3ce14aaed021d109d55fb8b3a2056a38a312fd7c01077f1d"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/renderflag.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/renderflag.cpp",
+      "sha256": "792b7124d24b7c64c4c79cb87fcb53793982a5465967ac22eb8d84979a620f6a"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/renderflag.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/renderflag.h",
+      "sha256": "e5cef27664d64c8fade6a2b145e239a050e12fbda305f59be5b245cef1ba3326"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/renderparticle.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/renderparticle.cpp",
+      "sha256": "79addc91f1de3f308793d6a4b79439ded9d93202919ab521c4dc3916f812e4be"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/renderparticle.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/renderparticle.h",
+      "sha256": "5355c28f97cf8a4340a19d7e73c23f3eb3e958b16be11ce3480dfdceb57ed6bd"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/skybox.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/skybox.cpp",
+      "sha256": "774cc32949c593e9fa7449c216c32e0fe65e1c3a1328751f502d0677e7dc6f99"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/skybox.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/skybox.h",
+      "sha256": "f2de2b9685c69c191c2754b4dbac86ad0cebdb7b5163813d24e32b148b9e08b3"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/soundentity.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/soundentity.cpp",
+      "sha256": "b6c314251c51f4171cafa6cc131917359be2a4ee66cc4d32bb51cb76f4deb7ae"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/soundentity.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/soundentity.h",
+      "sha256": "96f175ec82ecdaed6f00e5e2329e736096bfd05a6ceebd6de6c61f8e22a477eb"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/specialparticle.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/specialparticle.cpp",
+      "sha256": "8a81430bb82ef662db5e8215d4285e2c19ece66f4b3f06976cbddd429976490a"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/specialparticle.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/specialparticle.h",
+      "sha256": "562b23f6bbf435ddeefe18603b258a9b148d1ee143e2b522ed5671d34233347d"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/toolcollision.cpp",
+      "copy": "work/client-build/source/R3Engine/1stclass/toolcollision.cpp",
+      "sha256": "bef175efe7b804bc4ca69e3bbc273ce005f5a9626bc75b1d6a10cc912a7b8b40"
+    },
+    {
+      "original": "R3Engine/R3Engine/1stclass/toolcollision.h",
+      "copy": "work/client-build/source/R3Engine/1stclass/toolcollision.h",
+      "sha256": "41379eb0e123a4f6e938d73496c3419a786b7034d9c9522f3c892e4270ed8b2b"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/2dsprite.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/2dsprite.cpp",
+      "sha256": "9da67ec11db1c99596a872ddc565d279b6bc34cf343518a8d337d759321eb947"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/2dsprite.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/2dsprite.h",
+      "sha256": "af68326b2808c90284aa2fe453814dea70d1c2e16d885f4e4b9398505f44dcdb"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/anicamera.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/anicamera.cpp",
+      "sha256": "b8370cabc324e8c88502e0ab74552ed9483295e612c30d9c93f6fb49e3075507"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/anicamera.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/anicamera.h",
+      "sha256": "9f940a7f3afa96380a8edde4101079db49150812f690a584ddcb4b8a7fc7f3be"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/console.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/console.cpp",
+      "sha256": "09a0a002b7877127e34d279a68d4ad3b2a4c30190f477a11d6a2657e7becd791"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/console.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/console.h",
+      "sha256": "1fd3b18b2adf092a65c73cafe993bb00f3e1dc975e184da85a1a6eb39fdc0e76"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/extdummy.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/extdummy.cpp",
+      "sha256": "2356c51f5a9853ddfb9bb01632928b664f7b6eb34e2dd31d2bdea32d1facf589"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/extdummy.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/extdummy.h",
+      "sha256": "7299816a1df3fa953809ef1363bab0ad03ea1a41bcb6b299338480022f94a2fd"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/level.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/level.cpp",
+      "sha256": "e8f0ed74d0de4d1459bc281865007f25173b2b14544b07e486464b593e1c5493"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/level.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/level.h",
+      "sha256": "e9b8bc126e790d81d3edb71fe726975f2d8cd0b42fc6c428eecefe6b12fd075d"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/movecamera.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/movecamera.cpp",
+      "sha256": "b4aadabc9763f73a20e469c881ed99b3a21d1fd14b6f9071d99cc06a6b1db0f9"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/movecamera.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/movecamera.h",
+      "sha256": "9ca9da7e64f5b2edc7b01c89ace52a9a5d0a1386723e3904885ae4d9d2ff1d83"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3d3dapp.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3d3dapp.cpp",
+      "sha256": "d3fb5866d58c2722bf9a8e7c8481190a496d562fe7007ba2b622dfb0daee7303"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3d3dapp.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3d3dapp.h",
+      "sha256": "4048bffb9c33eeacd64415ba69dc267f50041182e67329766037a92fbfe13853"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3d3dwrapper.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3d3dwrapper.cpp",
+      "sha256": "730b90f268cd0803fd8da8807cb6ce8592f6a4b53bc050d76a3b7d9a80dfe40c"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3d3dwrapper.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3d3dwrapper.h",
+      "sha256": "a04891ded930bf6df97d3378021b006e7afdd21ae43c96ef5c9d7741dfc8ae11"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3enginekernel.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3enginekernel.cpp",
+      "sha256": "7fc82f58fc8a00ece170e4226b9f29a52c5611801e69c3c3d89d30fa44898844"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3enginekernel.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3enginekernel.h",
+      "sha256": "b9ab0be0e48d5d388f3858a4479d9261af1de802a0b820587cfd21931e70aece"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3font.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3font.cpp",
+      "sha256": "7a2ada08cbb5db7825b7212931a944c796620963b96be76fb9ab6a2bdc20ef06"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3font.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3font.h",
+      "sha256": "cb0a40fda772ebc62441f8b19b66b70da4960780430012a9c3a495ae13a2489d"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3move.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3move.cpp",
+      "sha256": "f61c56865c9b5643d6cb9a6cfc47be61f9ad22d25f73eed59528cf55e86b67af"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3move.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3move.h",
+      "sha256": "5eed7347e5aacec3b4623cc4e628b4013aed51c90896b7dcbe2588b3d4863d0a"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3sound.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3sound.cpp",
+      "sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3sound.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3sound.h",
+      "sha256": "ef098d36cb26317dbaa338c26d2111021034642f148dfa1deb3c15f095561598"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3text.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3text.cpp",
+      "sha256": "f9f7da8fd47c3843edcb6acdde544e3a63135164fb9857a261595a76eb656929"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3text.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3text.h",
+      "sha256": "7fab5414fdab315c5c1ddc5ea7aed432eff047290d1481ed5fbfca90f65ea1e6"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3util.cpp",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3util.cpp",
+      "sha256": "8a51bc4409165452067ffa378d3ae75a932dbd44242e152e63c1c4011020643d"
+    },
+    {
+      "original": "R3Engine/R3Engine/2ndclass/r3util.h",
+      "copy": "work/client-build/source/R3Engine/2ndclass/r3util.h",
+      "sha256": "4b40f3dfb89360a6280a085643193810bebfd51d89098f49021c28174c88ebf4"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/b_sort.cpp",
+      "copy": "work/client-build/source/R3Engine/common/b_sort.cpp",
+      "sha256": "8b3b790cf581cdb74ab7bcac204754fa60ec7d3c4ba6c164adbb5613db85b357"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/b_sort.h",
+      "copy": "work/client-build/source/R3Engine/common/b_sort.h",
+      "sha256": "6e389badd02f147b588b1ccb0f219ab0cc3da149b00352947677d84f65b8d5e6"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/c_vector.h",
+      "copy": "work/client-build/source/R3Engine/common/c_vector.h",
+      "sha256": "4400b22ca41824c166fe723e0f9cee95c77b3e75da0a5a1b2149e981ebe32ed5"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/cjcache.cpp",
+      "copy": "work/client-build/source/R3Engine/common/cjcache.cpp",
+      "sha256": "e8b20b073b61d31614237e2ad7212ff437dc17257375e1ec8808692d9b41f772"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/cjcache.h",
+      "copy": "work/client-build/source/R3Engine/common/cjcache.h",
+      "sha256": "878fd19923f51934719badd67a833634b125ebc0e465334a940b41e6914dc686"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/commonutil.cpp",
+      "copy": "work/client-build/source/R3Engine/common/commonutil.cpp",
+      "sha256": "b40b63f80317c13bcfd627731d8cbb744740e5344b8132edec528911d080ac91"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/commonutil.h",
+      "copy": "work/client-build/source/R3Engine/common/commonutil.h",
+      "sha256": "7a7c5b051178fe17fa07cdee63b9cd97b022152083d5e7118eb9bc372e820741"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jconfig.h",
+      "copy": "work/client-build/source/R3Engine/common/jconfig.h",
+      "sha256": "d38ba117c2a33fcebb66ebbee373605f9af9ac89b032de0252868648b06ecf09"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jerror.cpp",
+      "copy": "work/client-build/source/R3Engine/common/jerror.cpp",
+      "sha256": "97d78148deb50c7ca40e2afbb198087b78d580ed065b54f7856493b44aa969ba"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jerror.h",
+      "copy": "work/client-build/source/R3Engine/common/jerror.h",
+      "sha256": "6ba7d7a6ec08682d7acf82e932f7c9c0cecc3ed763473f40da74ae9e290e704c"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jmalloc.cpp",
+      "copy": "work/client-build/source/R3Engine/common/jmalloc.cpp",
+      "sha256": "20c7f0e202e1e4e4e0ad84427fdf46395a2c48bc9fa6288cb4238d09e3e0027b"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jmalloc.h",
+      "copy": "work/client-build/source/R3Engine/common/jmalloc.h",
+      "sha256": "41308e47ef6a19c523f283f691ff00a4c471846caec52ee1fb37806da6969aa4"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jmorecfg.h",
+      "copy": "work/client-build/source/R3Engine/common/jmorecfg.h",
+      "sha256": "edd672deea6298543e3e03dbd80099b3aafbada96951a00c923f8397a2f8a586"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jpegfile.cpp",
+      "copy": "work/client-build/source/R3Engine/common/jpegfile.cpp",
+      "sha256": "17909e9a6ae6f80b2516dbf2bba57e3452a67fad733b1c95467ca73420227c75"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jpegfile.h",
+      "copy": "work/client-build/source/R3Engine/common/jpegfile.h",
+      "sha256": "a5985919ff495252ef2900a3fde0db5fe5bd59c115e233a8714b14d922be45cf"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/jpeglib.h",
+      "copy": "work/client-build/source/R3Engine/common/jpeglib.h",
+      "sha256": "b34b3d9897820302cc23ba60217157f75e03db8c537a7d4703ff0bc8c9fc048b"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3dinput.cpp",
+      "copy": "work/client-build/source/R3Engine/common/r3dinput.cpp",
+      "sha256": "bacf62153182aa32f0d2860214fa27e7a63e61dbc326fed3627880a691f7bc07"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3dinput.h",
+      "copy": "work/client-build/source/R3Engine/common/r3dinput.h",
+      "sha256": "0968b9280e2d31da87f329184c6405380e56e2a3e762e8077827e9117394691f"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3input.cpp",
+      "copy": "work/client-build/source/R3Engine/common/r3input.cpp",
+      "sha256": "b6eb338484342a7ff1a7d3efc0f3166153a285e2da51e50eb9c9b53e76d34020"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3input.h",
+      "copy": "work/client-build/source/R3Engine/common/r3input.h",
+      "sha256": "4e363882af0b7d71e4881db035c095a4cc1b51de8190ab778f8bde4c22957e85"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3math.cpp",
+      "copy": "work/client-build/source/R3Engine/common/r3math.cpp",
+      "sha256": "67b4f2961a30a2e317c0a0124eceea1efed4b691cfa4cf98e9f14fa5e3fc53d7"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3math.h",
+      "copy": "work/client-build/source/R3Engine/common/r3math.h",
+      "sha256": "d14066ae6df50927d7c5cb39e2ff3c9d5d088a9626cd870f5853f8af7b5bd62e"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3profiler.cpp",
+      "copy": "work/client-build/source/R3Engine/common/r3profiler.cpp",
+      "sha256": "ef23f9fe2a408ca2f238ff79a9b91b1f145a904f5848e14597bc33c3a728562f"
+    },
+    {
+      "original": "R3Engine/R3Engine/common/r3profiler.h",
+      "copy": "work/client-build/source/R3Engine/common/r3profiler.h",
+      "sha256": "c81e4dcb55ae3db4fe5bddfdfb224f86fbe1ab17a1543b0244ae71c84c595995"
+    },
+    {
+      "original": "R3Engine/R3Engine/d3d/d3dutil.cpp",
+      "copy": "work/client-build/source/R3Engine/d3d/d3dutil.cpp",
+      "sha256": "34d33c1eac82bffe12c6ec5b9b4111d0b6c158babb71a458d432f126e2bad4b9"
+    },
+    {
+      "original": "R3Engine/R3Engine/d3d/dxutil.cpp",
+      "copy": "work/client-build/source/R3Engine/d3d/dxutil.cpp",
+      "sha256": "ed27b72154d911203331d6d00ace780c7304e814b07e0968684a151ed64e420c"
+    },
+    {
+      "original": "R3Engine/R3Engine/d3d/include/d3dutil.h",
+      "copy": "work/client-build/source/R3Engine/d3d/include/d3dutil.h",
+      "sha256": "7078743733d702b63053cda8c5132d5a33c34cd325b03f0027f80bcbb6068ca4"
+    },
+    {
+      "original": "R3Engine/R3Engine/d3d/include/dxutil.h",
+      "copy": "work/client-build/source/R3Engine/d3d/include/dxutil.h",
+      "sha256": "d49f356984a91a201120e7bde0c30799e9ab87c008041846968b097257a2da4e"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/characterobj.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/characterobj.cpp",
+      "sha256": "b17bd2c6b1a268288c733bb93005ed6f30d7ca07cb1796dbfb7733256eb15654"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/characterobj.h",
+      "copy": "work/client-build/source/R3Engine/extension/characterobj.h",
+      "sha256": "ddd867c071b16dc2fc451922ce31aecefc0241b7e9c20726b5d699fe1f8936d8"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/cmagicscript.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/cmagicscript.cpp",
+      "sha256": "df73b0e1fa4c59949d8079191a4edc087a6409fa6972ffaee2c761e0fafd0032"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/cmagicscript.h",
+      "copy": "work/client-build/source/R3Engine/extension/cmagicscript.h",
+      "sha256": "c82e4f2fc0b4eb232a39c5bd1eac5ed95398888c302758158213a92d39df1d1c"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/collisionutil.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/collisionutil.cpp",
+      "sha256": "81d2b68f3c9b4cff5b0ea1434f0b4347e5049b3793d651883a361e6976eebd20"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/collisionutil.h",
+      "copy": "work/client-build/source/R3Engine/extension/collisionutil.h",
+      "sha256": "c9f7b3d3a1c56edb7ff0481080ec49ceee8c0e74e2c3b85569cbabbe6e610e2e"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/cswordtrace.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/cswordtrace.cpp",
+      "sha256": "6b996a5bd26addde14670327606ba8f136e68a88e3abb0b21ec1745a6cc0030f"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/cswordtrace.h",
+      "copy": "work/client-build/source/R3Engine/extension/cswordtrace.h",
+      "sha256": "b4c783174fd51de2198cd4c16575c7b44859e89a64f545576ae3d248613e155f"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/effectcore.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/effectcore.cpp",
+      "sha256": "cffac92990cb1010ad5c315b2edb8f0c92e4c13865548231cf98956dcc68f548"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/effectcore.h",
+      "copy": "work/client-build/source/R3Engine/extension/effectcore.h",
+      "sha256": "06fbd668463ff89a8edf601cdac68728d41da34cf6baa570e33b2a98564da4b1"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/effectentitylist.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/effectentitylist.cpp",
+      "sha256": "dcfefe69fc13add750584960b33cfba4491edb58a954afb4508dbf8921ca0810"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/effectentitylist.h",
+      "copy": "work/client-build/source/R3Engine/extension/effectentitylist.h",
+      "sha256": "f148e6ab07810502e88db51ad87599e79cd8856002a942772dd61bc990297d9b"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/effectutil.h",
+      "copy": "work/client-build/source/R3Engine/extension/effectutil.h",
+      "sha256": "2a5532fa1178140a312a2fa5b47fe19bbd7bd8d6c5ed2b38e4735b3e795d58ab"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/particlelist.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/particlelist.cpp",
+      "sha256": "19fa9832ccbc45ebe00b2f46fb2faaedf3b0909bd0a405cb82bd5371eaece1ff"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/particlelist.h",
+      "copy": "work/client-build/source/R3Engine/extension/particlelist.h",
+      "sha256": "23cb8b4be39625a51094c89776b76fcc8c3fc06318389c01138a926a03385567"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/rtmovie.cpp",
+      "copy": "work/client-build/source/R3Engine/extension/rtmovie.cpp",
+      "sha256": "5e92578e0aa0e776fcd7138d2f28d48b31132cf87c95a0a1f17ce2362d0b2b44"
+    },
+    {
+      "original": "R3Engine/R3Engine/extension/rtmovie.h",
+      "copy": "work/client-build/source/R3Engine/extension/rtmovie.h",
+      "sha256": "d3ecc98e196213c15bf8d8a213f4a170fcb9a76c66254ef8e9cfdddbaf946123"
+    },
+    {
+      "original": "R3Engine/R3Engine/global.h",
+      "copy": "work/client-build/source/R3Engine/global.h",
+      "sha256": "f98249dbb925258571db46fcc501a4afa220d75881a72641818ca6c1acc9d833"
+    },
+    {
+      "original": "R3Engine/R3Engine/logo_32.ico",
+      "copy": "work/client-build/source/R3Engine/logo_32.ico",
+      "sha256": "0444cfe4c1c7e328133c8b60dc97a9f74f0c76bc8863e43d537f67f7e41a515e"
+    },
+    {
+      "original": "R3Engine/R3Engine/mss.h",
+      "copy": "work/client-build/source/R3Engine/mss.h",
+      "sha256": "824c8770cec766d0370837f3c16dac55b4d78e0c5ec0d1f00acd3bf8e6126223"
+    },
+    {
+      "original": "R3Engine/R3Engine/mss32.lib",
+      "copy": "work/client-build/source/R3Engine/mss32.lib",
+      "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    },
+    {
+      "original": "R3Engine/R3Engine/R3Engine.dsp",
+      "copy": "work/client-build/source/R3Engine/R3Engine.dsp",
+      "sha256": "390d46dd0ad688a2d12b0d81871ed508b637e232509a3a56d7181d5053388bb5"
+    },
+    {
+      "original": "R3Engine/R3Engine/R3Engine.dsw",
+      "copy": "work/client-build/source/R3Engine/R3Engine.dsw",
+      "sha256": "02423719ae4bb36e52c187b51679d25c5aaadc2102bbd158acde0dbfd6ba3733"
+    },
+    {
+      "original": "R3Engine/R3Engine/R3EngineD.lib",
+      "copy": "work/client-build/source/R3Engine/R3EngineD.lib",
+      "sha256": "e84eff8fb1489a4171ff67becb5810bd00b51f8d1674a2d04430787aee75950e"
+    },
+    {
+      "original": "R3Engine/R3Engine/resource.h",
+      "copy": "work/client-build/source/R3Engine/resource.h",
+      "sha256": "4b2837a87c125073752bea984a09a76a7e8721f8a269207e55a55d8b6fa98225"
+    },
+    {
+      "original": "R3Engine/R3Engine/winmain.rc",
+      "copy": "work/client-build/source/R3Engine/winmain.rc",
+      "sha256": "52495c12e83c0a33c95c4b5e068ea07c6215b74c4be88755ba1957e6d7f02d10"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/cmagicscript.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/cmagicscript.cpp",
+      "sha256": "81c09af147448a9f5fbcc48a99bcf1d09c12fb15e72fb60e9330f04a207ade71"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/cmagicscript.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/cmagicscript.h",
+      "sha256": "969e8dcd0d42e03db819795573eb969b72219b7d9410a3f3244aabea25f3ac08"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/cswordtrace.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/cswordtrace.cpp",
+      "sha256": "f28cc9682165a746c2e3a0a2f5048739e959f14e39c1f6b8324a2af0a89c6200"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/cswordtrace.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/cswordtrace.h",
+      "sha256": "b4c783174fd51de2198cd4c16575c7b44859e89a64f545576ae3d248613e155f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/dummydefine.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/dummydefine.h",
+      "sha256": "a738ed707d15a07f5c84da4ad274a7e197bbadd663909c1edb138458a5479bfc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectcore.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectcore.cpp",
+      "sha256": "5e8301a66f55b4ba354f7a9ef371257bc611930f1bc83003d1187335b91616b3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectcore.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectcore.h",
+      "sha256": "142a77c96ce4cde5addfe9751cbaacad985360428be3e3b0bcb0019f3962cf9f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectentitylist.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectentitylist.cpp",
+      "sha256": "dcfefe69fc13add750584960b33cfba4491edb58a954afb4508dbf8921ca0810"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectentitylist.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectentitylist.h",
+      "sha256": "f148e6ab07810502e88db51ad87599e79cd8856002a942772dd61bc990297d9b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectutil.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
+      "sha256": "1ae9cd1d7d7cf2e85b3857cdbb62531b60ce038b2d252833cf30e3f18c46e529"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectutil.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectutil.h",
+      "sha256": "7d82896d98bc27d4312c2281a91112fcfaaea670503f8024b8299af672b5d13b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectutilfont.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectutilfont.cpp",
+      "sha256": "8c7dd0a8b074edb485cee4d7911657c97bbdb8264fd13c9424e65eebbef9976e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/effectutilfont.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/effectutilfont.h",
+      "sha256": "f552bbb80e0d268768cf9d76f0d4e3c818928d0e10cd179be86c990ab6f8578c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/foreffect.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/foreffect.cpp",
+      "sha256": "98422142f0d34990870b87685085b5d76652cf838eb06e105d3f63c679aad580"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/foreffect.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/foreffect.h",
+      "sha256": "cba775c3a3a12601d1e3d06c66faa00cde6bb6245332368e90f12178ea051747"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/itemspecialeffect.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/itemspecialeffect.cpp",
+      "sha256": "18a4ab194a0dcf136f8685108bf5e76a81aa2136b2c5bf68be0ad209627acf6f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/itemspecialeffect.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/itemspecialeffect.h",
+      "sha256": "ed2195df2804bd879689822f3176d730832081e8479b038709cab3e70a75c5b2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/monsterspecialeffect.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/monsterspecialeffect.cpp",
+      "sha256": "20fea3c887c98e4b58e4ce9e915fd34897f982f884df1bce1cd6a29dc095aad3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/monsterspecialeffect.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/monsterspecialeffect.h",
+      "sha256": "93b741ed50895dff641aea9a63bf144277f2bc68db0b0e81634b7acd10f5fab2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/moveeffectmanager.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/moveeffectmanager.cpp",
+      "sha256": "8fdc45c5973c99cac525fc7aa64da430f56145b779d194b7ae0d473b38c92974"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/moveeffectmanager.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/moveeffectmanager.h",
+      "sha256": "9b7ba2cade870cd623993843db5638a9ab1241a3fd50b1ac068a72c1caf9762e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/playerspecialeffect.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/playerspecialeffect.cpp",
+      "sha256": "d598c62e7d2b79fcb658db7c59fa228fc33099dd41713c0c08ea602c9692e030"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/playerspecialeffect.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/playerspecialeffect.h",
+      "sha256": "40009dea9746d6a3983bb56ae08784450aeae239046227578fea1ec610cc307e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/vieweffectcode.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/vieweffectcode.cpp",
+      "sha256": "a2784af812f0db98712c06c313483fa4f6f1a112d1e27f12d9f139f23384f3ab"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyjang/vieweffectcode.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyjang/vieweffectcode.h",
+      "sha256": "a8c10bf352de7d0afd38c55579bab28dcaf5a3c9f4a4bf80f4b599fd206c94b0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/particlelist.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/particlelist.cpp",
+      "sha256": "497b91c0e95339491ab91bc51d78a8a368e54553bb4a741664113bef56a33ccf"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/particlelist.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/particlelist.h",
+      "sha256": "d213a8ac7cad4047ebb641ca4d3694a656dd7936113eec8c3b03ae4f694890d9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/protect.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/protect.cpp",
+      "sha256": "f4546bc874efef61c96afb5549187f99ea00403412ebcabdff4394c03a4a99bc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/protect.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/protect.h",
+      "sha256": "51da868676b745e302f4d7b050a729406c924262ec8daa38a54e8b4f2956a4b6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/shadowlist.cpp",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/shadowlist.cpp",
+      "sha256": "6ca56635cccd68323d18152ff3a50d3bcb315522db9ab4e40596ad48959929c2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/addcodebyyun/shadowlist.h",
+      "copy": "work/client-build/source/RF_Client/addcodebyyun/shadowlist.h",
+      "sha256": "01f6d1dcf2735f711a06e308ea7974f856802e76d65106d457ce2fddcfeac0c2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/baseheader.h",
+      "copy": "work/client-build/source/RF_Client/baseheader.h",
+      "sha256": "2f45ba695963952e27ee76910979ac47d04cf7727210e1a99ef176ecb5f07a96"
+    },
+    {
+      "original": "RF Client Side/RF_Client/ccamera.cpp",
+      "copy": "work/client-build/source/RF_Client/ccamera.cpp",
+      "sha256": "c1d1e17e26dacbf0b90d22ead1a664659be5ed2a178a9ef5dc20322c5c6a7447"
+    },
+    {
+      "original": "RF Client Side/RF_Client/ccamera.h",
+      "copy": "work/client-build/source/RF_Client/ccamera.h",
+      "sha256": "5a56e12d1fbac39b58f7efb1dd6097acf3dae165a80a4a3b3c9e543fd7e49827"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar.cpp",
+      "sha256": "9db2b53b0fba8c77f4b7fd0e9a41c1364d019f296ad26827925841f74c054cbf"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar.h",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar.h",
+      "sha256": "271c0c65f5e2ced63878dd0a069ce49b88e21c5283028ee0a46107710c40e8ba"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_behavior.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_behavior.cpp",
+      "sha256": "b60cd4ba54bff4d04631f0f633f0902468d16e68af4939978faa547ba519dac7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_combat.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_combat.cpp",
+      "sha256": "36c67f3822bf778d920460d16dc21ef68d82a22ef7e5bb071f3e5491453bd059"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_etc.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_etc.cpp",
+      "sha256": "670571e1e83427940d199ec1a1bcb2106f2dd2c0791e81c2cdadd02e924e7012"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_etc_ui.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_etc_ui.cpp",
+      "sha256": "534e02a8c8ddef085f076c6cccea5628e44e721483b9e9d14239eb56125d931f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_quest.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_quest.cpp",
+      "sha256": "f9cfc8b0c3825ae3314d9f9ccf90311fd4dd3049c0d538c5a40e8e3e0198b5f2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_quest.h",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_quest.h",
+      "sha256": "b56fe9c16b45d3b445cbe385b92958d4ea414ffdeb4111891bd2c67bdb620e88"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_relationinfo.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo.cpp",
+      "sha256": "14afd02e124d6744671b35cbd6bc5f72c4ec1761b0bc6852c1819880d8987edb"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_relationinfo.h",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo.h",
+      "sha256": "480e76736085c1e4e950cbac60c36343203de3237fc6aaafd9a4895811e8e9c4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_relationinfo2.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo2.cpp",
+      "sha256": "19085c4ea1d8c4ecd827be6229e070f2ef0d3873c28c2d96a1de9b5353667051"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_relationinfo2.h",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo2.h",
+      "sha256": "b45d87a09923948b0dc70c83a1b8f19ca94e26becc0ecbdb9fe287f0d69d0836"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/avatar/cavatar_ui_process.cpp",
+      "copy": "work/client-build/source/RF_Client/character/avatar/cavatar_ui_process.cpp",
+      "sha256": "5b8b66a9374d1c0ac8574bc714699d1f3fd53e6df37f281a693ffc78005e0f31"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter.cpp",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter.cpp",
+      "sha256": "7804bbc8510bf0c9bc2e3d187474f4014f1a9d4b997bb840595d1208c5b74a95"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter.h",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter.h",
+      "sha256": "57fa55d53138d30a6e03868b5beab7010b03b12ca0addc6d7aa40f6b3c1c40c4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter_etc.cpp",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter_etc.cpp",
+      "sha256": "bd3c914ba4effcd1b76447c356a1a98004e5687be663e5b5edfaf2479e69015c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter_relationinfo.cpp",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter_relationinfo.cpp",
+      "sha256": "5e4848d100530e3c079a6fb2bf442a0510377140e201a4fc989ba4923b97d0e0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter_relationinfo.h",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter_relationinfo.h",
+      "sha256": "96cc793f1e58640e7a99c1426da8ceee3d4429a3ae2e5684111f7d3dcf107cbd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter_relationinfo2.cpp",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter_relationinfo2.cpp",
+      "sha256": "9720f0e893fe9b8dde90b0d5f311474c4f23c7bd67e21ab22aac84e99ebef746"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/character/ccharacter_relationinfo2.h",
+      "copy": "work/client-build/source/RF_Client/character/character/ccharacter_relationinfo2.h",
+      "sha256": "2addf17f4d5dc9133dfd24950e13e5f5e6033a6f2042b1128388edcc90b3f349"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/canimus.cpp",
+      "copy": "work/client-build/source/RF_Client/character/npc/canimus.cpp",
+      "sha256": "48c7560c9dadc357515619d6555cb05da99e495fc4219c2f0cb813fb6bfc8db8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/canimus.h",
+      "copy": "work/client-build/source/RF_Client/character/npc/canimus.h",
+      "sha256": "7e6f2836ce56cd497547552d36be1792bac0dd7b40390683bdefb927826522c9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cbasenpc.cpp",
+      "copy": "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+      "sha256": "0a9322f77e2091be1bd5f8ebdbc2e4b3f2e1e1e8eda8fbf550ca5376d39317bb"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cbasenpc.h",
+      "copy": "work/client-build/source/RF_Client/character/npc/cbasenpc.h",
+      "sha256": "68174e5f852613aec893c1ca1b9015e70e2c262f25311d2fae6dc80f1fbdfb45"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cguardtower.cpp",
+      "copy": "work/client-build/source/RF_Client/character/npc/cguardtower.cpp",
+      "sha256": "da807a3daf9540778c51a58e74f068209727a77d7dd5e394fb136dfdfce67f23"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cguardtower.h",
+      "copy": "work/client-build/source/RF_Client/character/npc/cguardtower.h",
+      "sha256": "68cf7b7ad8a0ddb4b83fda71be7b16e6717edbb1aa21a835a5a199578b068fef"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cmonster.cpp",
+      "copy": "work/client-build/source/RF_Client/character/npc/cmonster.cpp",
+      "sha256": "8f795b93b9e75bb99e078f78086dc519e381b88855f0118a7719bf5153e91d2a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cmonster.h",
+      "copy": "work/client-build/source/RF_Client/character/npc/cmonster.h",
+      "sha256": "fe5a7441651939f46a7486eb7117312333bf123c869fb58ee1c31224e95c9d7b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cnpc.cpp",
+      "copy": "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+      "sha256": "6abe15ae874992929150312e16a4d8ff67825fb0789c2abe72b93957794dc064"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/npc/cnpc.h",
+      "copy": "work/client-build/source/RF_Client/character/npc/cnpc.h",
+      "sha256": "99d3b175c83c58885ccfe24cf9fe3f83a314bf6c27fe4ce5f453825da296fd17"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cbaseplayer.cpp",
+      "copy": "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+      "sha256": "00dfc1f7664d2b0dfc35474d8f7aca1a267c5f4b4736690efef17bda4da2258e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cbaseplayer.h",
+      "copy": "work/client-build/source/RF_Client/character/player/cbaseplayer.h",
+      "sha256": "d4f7230860b2921f01ce2caad4be3d2e1846a921881344f1d3c012911c673fec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cplayer.cpp",
+      "copy": "work/client-build/source/RF_Client/character/player/cplayer.cpp",
+      "sha256": "660b52ab622a22f9282468a5a311f3b63799642fb9cb451e3ae7ff9aa55ea01e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cplayer.h",
+      "copy": "work/client-build/source/RF_Client/character/player/cplayer.h",
+      "sha256": "612076d0e2313ae9758e41207d248211c46f2cbf64365df8285412b37ebd7038"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cplayer_etc.cpp",
+      "copy": "work/client-build/source/RF_Client/character/player/cplayer_etc.cpp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cunit.cpp",
+      "copy": "work/client-build/source/RF_Client/character/player/cunit.cpp",
+      "sha256": "5b6bee7148c60f17949e86a193a1e296a7ce8332afb92b2531fa1edb9a876495"
+    },
+    {
+      "original": "RF Client Side/RF_Client/character/player/cunit.h",
+      "copy": "work/client-build/source/RF_Client/character/player/cunit.h",
+      "sha256": "2035df94a50ade87335017f00855bd4e122715789e64cc8170a5e64dbdd75922"
+    },
+    {
+      "original": "RF Client Side/RF_Client/CharacterMR.lib",
+      "copy": "work/client-build/source/RF_Client/CharacterMR.lib",
+      "sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cland.cpp",
+      "copy": "work/client-build/source/RF_Client/cland.cpp",
+      "sha256": "54d249bea4dcefc072a64fdd22f2548985b220b85ceeb50e3c86f8e21db173e1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cland.h",
+      "copy": "work/client-build/source/RF_Client/cland.h",
+      "sha256": "ed02b839216c747d12b91519b837825ffd9952ee6aa1b46be73cd2c5b202e220"
+    },
+    {
+      "original": "RF Client Side/RF_Client/clist.h",
+      "copy": "work/client-build/source/RF_Client/clist.h",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cobject.cpp",
+      "copy": "work/client-build/source/RF_Client/cobject.cpp",
+      "sha256": "7ed21e592be04841f93b89a68c2d853a3ea623450483aab37c2b625f614d7230"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cobject.h",
+      "copy": "work/client-build/source/RF_Client/cobject.h",
+      "sha256": "23f8998eb0e08f6dcf1f2741721619277b9c484c60572253334dccddaf19193f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cpath.cpp",
+      "copy": "work/client-build/source/RF_Client/cpath.cpp",
+      "sha256": "1d3c96966aa36f9bbc271cab00134c83f170e8629b9923e463b15fb444eb7cc8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cpath.h",
+      "copy": "work/client-build/source/RF_Client/cpath.h",
+      "sha256": "e06496938aaf58253d50670b66625db518e0afd03e1eb4023f0d69730edb7ff2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cresobject.cpp",
+      "copy": "work/client-build/source/RF_Client/cresobject.cpp",
+      "sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438"
+    },
+    {
+      "original": "RF Client Side/RF_Client/cresobject.h",
+      "copy": "work/client-build/source/RF_Client/cresobject.h",
+      "sha256": "dbeab77079d6db822a6a43b17742694db3d01472b14f9d1bcc196025ff4b99bd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datafile.cpp",
+      "copy": "work/client-build/source/RF_Client/datafile.cpp",
+      "sha256": "0d4bd3264cdfe04cf1e7a2a5772082c9c5f9bf3ae0ac9c1563e6ce538adec033"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datafile.h",
+      "copy": "work/client-build/source/RF_Client/datafile.h",
+      "sha256": "4629c98f93601a96056d11f41eab9da48042ec286e5574217474dfca17db99ca"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/ccharacterdatamgr.cpp",
+      "copy": "work/client-build/source/RF_Client/datatable/ccharacterdatamgr.cpp",
+      "sha256": "89fc7299b6907e16b19bb0fb8e816cff485198530eb2cab25de7f61300eb7e94"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/ccharacterdatamgr.h",
+      "copy": "work/client-build/source/RF_Client/datatable/ccharacterdatamgr.h",
+      "sha256": "460f362aa94df7e0f107f2c55f3e627d1a220b12f10130fdb12d7643952e0cfe"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/citemdatamgr.cpp",
+      "copy": "work/client-build/source/RF_Client/datatable/citemdatamgr.cpp",
+      "sha256": "0e154b5af8d94516e93a9ccfd619296e5ca9c44b98ea1881c0f27940c29186dc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/citemdatamgr.h",
+      "copy": "work/client-build/source/RF_Client/datatable/citemdatamgr.h",
+      "sha256": "8136ea51a877c4250c4b0aec61616dbaf4f72c151c4960b43ac3d96d425bec1b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/cmessagemgr.cpp",
+      "copy": "work/client-build/source/RF_Client/datatable/cmessagemgr.cpp",
+      "sha256": "3086c8a5b08b7d138eb39501942cf01d834bdc43fdf912c19a92ab330e941377"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/cmessagemgr.h",
+      "copy": "work/client-build/source/RF_Client/datatable/cmessagemgr.h",
+      "sha256": "a56473f985c8bdfd83a1e628115b83038ff4fc778171abf78020db6691e8910b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/cresourcedatamgr.cpp",
+      "copy": "work/client-build/source/RF_Client/datatable/cresourcedatamgr.cpp",
+      "sha256": "96ba6e2824a7220263a5dd97bd70ab8c29d981c440457b7f33b6d9cea9e56775"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/cresourcedatamgr.h",
+      "copy": "work/client-build/source/RF_Client/datatable/cresourcedatamgr.h",
+      "sha256": "2470a46e09a477d7ebe72ea172012281b877f7b38957920f6646ae81394fc2a7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/servertable/basefld.h",
+      "copy": "work/client-build/source/RF_Client/datatable/servertable/basefld.h",
+      "sha256": "ace9c7ba0a6bdd228c6b38af90c323247e46b7d0739d7865dbe36d0d6ff79e33"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/servertable/expfld.h",
+      "copy": "work/client-build/source/RF_Client/datatable/servertable/expfld.h",
+      "sha256": "58282dfb656796c392915a7ec1b1354da4aac97e3dd659e915557df25823f0cc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/servertable/playercharacterfld.h",
+      "copy": "work/client-build/source/RF_Client/datatable/servertable/playercharacterfld.h",
+      "sha256": "69990bec674875c6d441d3af69329e3847dec3db89a99d42669d48e92570c2ad"
+    },
+    {
+      "original": "RF Client Side/RF_Client/datatable/servertable/weaponbulletlinkfld.h",
+      "copy": "work/client-build/source/RF_Client/datatable/servertable/weaponbulletlinkfld.h",
+      "sha256": "f4e8df15b5b893aa1ccc7f855cebaa342cf492e421b2bf199c516acb33130d75"
+    },
+    {
+      "original": "RF Client Side/RF_Client/define.h",
+      "copy": "work/client-build/source/RF_Client/define.h",
+      "sha256": "ee477148fc8385e263e3dba5dd8c3d6da12511982e68aa3eb68c6a994d8f9d98"
+    },
+    {
+      "original": "RF Client Side/RF_Client/definemessage.h",
+      "copy": "work/client-build/source/RF_Client/definemessage.h",
+      "sha256": "0d94cfa6f5453199ee4c5796ae474a9665cde7169ff8c450e0f5e4fd245b797a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/cboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/cboard.cpp",
+      "sha256": "2fa01aa57a5f5ea71fba9e558b396f3b6ce84992ca054d3a7609e3afe8dd7146"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/cboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/cboard.h",
+      "sha256": "078cbcabf16826ef9910aaec8a41029eea79c481777edde32d0a72dec3429d61"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/cboardmanager.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/cboardmanager.cpp",
+      "sha256": "7c5ad17bf3fd0bc8ee698f6749ade970b6209158968ec4bd5d9f21dab8e8f63c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/cboardmanager.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/cboardmanager.h",
+      "sha256": "9925545c292447de0da0d19e7e32e0eb454186f27d351d6c8495d18a1cbfce44"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "sha256": "d4ef8c7e37cf7ff74b3e78606330111f90eef4eeff9aba908bc7e24f90f6d4df"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/common/clinkboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/common/clinkboard.h",
+      "sha256": "74d1d6439b5aa7a75e852c06f43c70f050f93097285d590b918562e52765cac5"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/etcboard/cclasschangeboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/etcboard/cclasschangeboard.cpp",
+      "sha256": "b47f3b64fd8f768b3d5099b0d030daf8b6a1a041d162cd4791417f4444e9ee5d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/etcboard/cclasschangeboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/etcboard/cclasschangeboard.h",
+      "sha256": "42d41d725dcabe2bff5f507eae078663cd9262a644bfc8c096c93cadbc245508"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cboard_etc.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cboard_etc.cpp",
+      "sha256": "fd926191f8c99c3a44a0de50b81cca0a140d75977eb63d8bdfb2f748f81d56cc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cboard_etc.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cboard_etc.h",
+      "sha256": "44ac3bb7a415529e2188d6715c3ac830218f9b53ea0e4b2bda4b24614bcc7dbf"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cgameeventboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cgameeventboard.cpp",
+      "sha256": "7acc4486db6109153ffdb7303db91cd2aa52f5fe6726bae98af40a3077c1be81"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cgameeventboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cgameeventboard.h",
+      "sha256": "2016f45a834511a5fd4b4b62263591f396b90a243679d831a14475efc809ca47"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/chelpboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/chelpboard.cpp",
+      "sha256": "9495ffd66d1ed77fb4b202de9104de5e6ca4efee482b94ef4c5467325f290d64"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/chelpboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/chelpboard.h",
+      "sha256": "0a8baf2636d7887dbdac84a678bdc06ab2fa1c223abdbb6082e727a9da0089e8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cpartyboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cpartyboard.cpp",
+      "sha256": "339685cbf630baed1d115938d8a0c2dfd33cfc953009750c05fe43023ce0a1d6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/general/cpartyboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/general/cpartyboard.h",
+      "sha256": "bc77d978f9924e239b071aa276389962fdcb66918374f1b5581af9915e50f2ec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cbeltboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cbeltboard.cpp",
+      "sha256": "ae66f3e3faa21408ebebce6b456402b304b1348b52e6f32bda8b18203f7421f4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cbeltboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cbeltboard.h",
+      "sha256": "afe94677453d12e1919638ceaa86bc623cd65818275ce0cdb6939cbf2f66a7b0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cequipboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cequipboard.cpp",
+      "sha256": "1e4d09a9e1266182bcfb1747f05406a8cd925c7e790fc8bb2b3449f3c019b6dd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cequipboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cequipboard.h",
+      "sha256": "effea085789297e9682efce1bdd8825b4f55b1d05ca6d94d9404da66d622fc4a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cinventoryboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cinventoryboard.cpp",
+      "sha256": "55cee2f02f729421766485e103e93c0fcd42d090c8c1518990ceb2ba50fb5e2a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/cinventoryboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/cinventoryboard.h",
+      "sha256": "9671b79a56d928291a9e67a68a860aa5ab4a4c4ab65fab647b1e2038e0185580"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemboard.cpp",
+      "sha256": "153344477ef6425582c2a921a9d04910eb37e80f5d78111b4f86936449c1ad27"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemboard.h",
+      "sha256": "5aca1a9c6f9f9ff4351c8dfd0d17b67bc0e39a1bdeb353fe8c6603bef2ef82c6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemupgradeboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemupgradeboard.cpp",
+      "sha256": "f13c0ce7b1fe6d1df31a09a221691cc2352025637a07366390f6c639cc89f454"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemupgradeboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemupgradeboard.h",
+      "sha256": "00bbc9fe1a296d9498e18ae15c951bf86c02db14b7f70b929aaf0bdcca8e4159"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemworkboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemworkboard.cpp",
+      "sha256": "15be2be955907f38e6917c014179c5206f5d8e98de036fe9cb9104e79d665633"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/citemworkboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/citemworkboard.h",
+      "sha256": "da0c8fb05995bfebada2aaa158f81c97d76103082587b11ff82202ec48bc2c1e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/coreprocboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/coreprocboard.cpp",
+      "sha256": "b630e88db8e58b60b645fff9d1bbb31d6fe0918b2040c6ca1cbd29274f9332d0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/itemboard/coreprocboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/itemboard/coreprocboard.h",
+      "sha256": "3042ff05203f2b3cbaff3bc2d6428c1f2e5fcc8969998e8c69a60d1d29951b5b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cplayertradeboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cplayertradeboard.cpp",
+      "sha256": "e3e01d66c577d0cd6f575918db0c50f7881657cf93248b49191e0d9957b035e4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cplayertradeboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cplayertradeboard.h",
+      "sha256": "21178239e98a7be86b32be3172c8150df7cb0ab7a014372e0c84680960b6511c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cshoptradeboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cshoptradeboard.cpp",
+      "sha256": "cb478d8545f92475572ca72ebc348339033f8aed2c9657f7561607a30f741685"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cshoptradeboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cshoptradeboard.h",
+      "sha256": "d5af1d87883d85cae072ec0f2022058c6c20b45c97b3ad7190151e39530a94f9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cunittuningboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cunittuningboard.cpp",
+      "sha256": "675e807eae18a57b33492b106ef99f378faa07593ea5feed163c7c3c3ec8753b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/shopboard/cunittuningboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/shopboard/cunittuningboard.h",
+      "sha256": "41091ebf45a4bf558d3b8907aafafb5223af3cf532a07a35b72604ddd9ee004b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/canimusboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/canimusboard.cpp",
+      "sha256": "d56e41aef904211ab84528f79a4b9de129a48514a303018312f0994811e2f013"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/canimusboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/canimusboard.h",
+      "sha256": "869aad40ef395b6094835607988a06db7293aad5f815f0eb374fe43e6a2c3213"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/cforceboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/cforceboard.cpp",
+      "sha256": "41bb43259a7537e5663b1daa37e5588f155b892b22873158a4579dcc0066050a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/cforceboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/cforceboard.h",
+      "sha256": "32b9c610d8b6d0a0da68e30bde4012cb3110c6f4b7107efddf766d25d9f5f0b4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/csfboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/csfboard.cpp",
+      "sha256": "8b007e1bc6e201a6ce57bbe6a209c620aa82c6204b7352b3186b746f617cf83c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/csfboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/csfboard.h",
+      "sha256": "06f97f899fa7e3d6f8f70b4a1575903222174a1b54dac9bf0e84464a95d11974"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/cskillboard.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/cskillboard.cpp",
+      "sha256": "231bc9128a81a3781cd6d0fb0f0be376e536187c7d81c31363937ba65038237d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/board/skillforceboard/cskillboard.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/board/skillforceboard/cskillboard.h",
+      "sha256": "ee604f699ef2e5dfcc60baee469059a54a77f54cc53c88fd5ec68eaa5638e131"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/ccharactermgr.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp",
+      "sha256": "559759b09c14f356f6bcb219633bb41eb4741e82750070cc53b427260f17972f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/ccharactermgr.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.h",
+      "sha256": "3f06f4e290ff0d66d52fb27fa7263c6469f60499471bb772bb3727f0ca2a9ef4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/cgrounditemmanager.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/cgrounditemmanager.cpp",
+      "sha256": "7a1e48fc383b85c839811e759709fbc7b4e3b7948ed5ae6ea4870786fe6a53ec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/cgrounditemmanager.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/cgrounditemmanager.h",
+      "sha256": "94b547cb871eb0a61c08e967e80a21a471b1dc52cf53d3fac00bf92c18214e23"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/ctargetmgr.cpp",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/ctargetmgr.cpp",
+      "sha256": "5ce29d3e58c05672e0d1e3259bedd03b85dc8e183c9fe73334a871da36cfdf55"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameobject/manager/ctargetmgr.h",
+      "copy": "work/client-build/source/RF_Client/gameobject/manager/ctargetmgr.h",
+      "sha256": "08eb6e51904e09ea432faee89933a614730e3328dc1f2d7571348e0f8e37454c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgameprogress.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgameprogress.cpp",
+      "sha256": "74cd3a62c25016acdb4e2c806de3dd4e24cf76252f59d6a974b611c2b7c0fedd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgameprogress.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgameprogress.h",
+      "sha256": "94ee50f969c66f2aa72753395dd5774863eaf829913391f6999f0c93c0062b33"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_charactercreate.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_charactercreate.cpp",
+      "sha256": "80c197e0102f77f8b303b52242bc9971fe70298f877513e1790b1556abef61e1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_charactercreate.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_charactercreate.h",
+      "sha256": "8cb88846d2ad5f6340d6c95a95d5615c1ac06fdc3fe8d156f3645334d4b550d7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_login.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+      "sha256": "80ad3b3a781673a39da3138bcbc67b1182cc0a915b73c87f58fcaf50e8106bda"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_login.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_login.h",
+      "sha256": "a79812fcd4fa8b32358056e83a92011a113f43c89208b8cb0a74f6cbee06304d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_maingame.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_maingame.cpp",
+      "sha256": "115e853abb9ce929a66771da6b528ebb450df2407f1b2b23fd80bc470d976256"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_maingame.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_maingame.h",
+      "sha256": "f32623b5fd119b053916eac24bab6198a57f27fd6298d9cedd9ca6f35626b37c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_maingame_etc.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_maingame_etc.cpp",
+      "sha256": "1d2ef4791e0b30016bbd35a1f267f78cdfaa23700b88b6dfcf3234c342aee2dc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_maingame_processinput.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_maingame_processinput.cpp",
+      "sha256": "dbfda7d02bbb0246e5baf6e729a1687a696204d0a1be8e84bdfc01e7000e5be9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_title.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_title.cpp",
+      "sha256": "0b8c7507c1ed07d73d3aca1f739f015d52042dfebb31d183309e2a0b0ba3521e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cgp_title.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cgp_title.h",
+      "sha256": "203d890ee8b0049e0c70fdc210e6e177bd40242005a8db8d5172cf3edd14dda5"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cinputprocessmgr.cpp",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cinputprocessmgr.cpp",
+      "sha256": "075243456b8b057a3f161c27b980b1ec7961447243613abd7e4931a71c3a9e16"
+    },
+    {
+      "original": "RF Client Side/RF_Client/gameprogress/cinputprocessmgr.h",
+      "copy": "work/client-build/source/RF_Client/gameprogress/cinputprocessmgr.h",
+      "sha256": "2e5a76615d1ec6d6361b242d547eedb2e93eb3cf8a20a6ef256d8631dfee9fed"
+    },
+    {
+      "original": "RF Client Side/RF_Client/global.cpp",
+      "copy": "work/client-build/source/RF_Client/global.cpp",
+      "sha256": "5276bb35cba51f02a625b35359113b573b5a8cada5ae60e4fc56e556485b4412"
+    },
+    {
+      "original": "RF Client Side/RF_Client/global.h",
+      "copy": "work/client-build/source/RF_Client/global.h",
+      "sha256": "09bc26c07612006b38e5b858271d28fff4b7db42f0bbd115558811dbe8f5b8b2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/input/imeedit.cpp",
+      "copy": "work/client-build/source/RF_Client/input/imeedit.cpp",
+      "sha256": "4bb35d01899e1a5b4343a4f1fc093020555a001621a13dec9ab8923bff304afe"
+    },
+    {
+      "original": "RF Client Side/RF_Client/input/imeedit.h",
+      "copy": "work/client-build/source/RF_Client/input/imeedit.h",
+      "sha256": "da6d9b7aea0ff9e88b411c6af4e8c038face691412d9acc8912c09491b5366f9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citem.cpp",
+      "copy": "work/client-build/source/RF_Client/item/citem.cpp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citem.h",
+      "copy": "work/client-build/source/RF_Client/item/citem.h",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citemdata.cpp",
+      "copy": "work/client-build/source/RF_Client/item/citemdata.cpp",
+      "sha256": "96cd63459038eecaa7d10a824eef4cdf8d84eadb1a1d558019ad40f4886649c3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citemdata.h",
+      "copy": "work/client-build/source/RF_Client/item/citemdata.h",
+      "sha256": "4f6d2f60d5783d3fadb88dfa49693b896975149f627c823b4539619da61deeb1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citemmgr.cpp",
+      "copy": "work/client-build/source/RF_Client/item/citemmgr.cpp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/item/citemmgr.h",
+      "copy": "work/client-build/source/RF_Client/item/citemmgr.h",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/lib/CharacterMR.lib",
+      "copy": "work/client-build/source/RF_Client/lib/CharacterMR.lib",
+      "sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/mainapp.cpp",
+      "copy": "work/client-build/source/RF_Client/mainapp.cpp",
+      "sha256": "e1752c4a7973781a151b08848827a5fcf76cd4b12f9e5e713d6ca889c36c1039"
+    },
+    {
+      "original": "RF Client Side/RF_Client/mainapp.h",
+      "copy": "work/client-build/source/RF_Client/mainapp.h",
+      "sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr.cpp",
+      "sha256": "cbdd2f5b957c781c83a30eec1ae0f22f497ef91e27bc20d88b9d1c8f3fc304d3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr.h",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr.h",
+      "sha256": "863707de5869cfba293afb7481827759c6779075cfa7820b036a20074f55d8d6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_chatmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_chatmsg.cpp",
+      "sha256": "c72f8303a1427fe68bc09e60506d416ab5a96e969cbe6145941c43bddc0f8812"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_effectmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_effectmsg.cpp",
+      "sha256": "bd3a97fc9032edf56566111276ae719053017ce6461c0b6f4a0145a4c407485f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_eventmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_eventmsg.cpp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_fightmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_fightmsg.cpp",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_initmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_initmsg.cpp",
+      "sha256": "99c2a37752002397b057ffa517a75489053deea73f0654aec78c05bde16a0a3c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_masterservermsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_masterservermsg.cpp",
+      "sha256": "9bd915f9c8a2ff5eda6b6e8a41ce9f9d81bd44cc870ae0400155896a1e253e08"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_observermsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_observermsg.cpp",
+      "sha256": "53dcdd4fd2c68bbb3ff3dac91b2d5b24cfb15f6cd99117a1a40e245e14513ff3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_positionmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_positionmsg.cpp",
+      "sha256": "7561df15de1d89e52c694591bbf066e2e9bf01a738d282ac3c9e20ae5103b255"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/cnetworkmgr_systemmsg.cpp",
+      "copy": "work/client-build/source/RF_Client/network/cnetworkmgr_systemmsg.cpp",
+      "sha256": "4fc2334192185e7ce2f5423c540c956ce0e972471d746b42a2c56569c3c64ffb"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/cnetmsgprocessor_base.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/cnetmsgprocessor_base.cpp",
+      "sha256": "25c87cad5a7fe01448c710c6572b333f9741e78b46535a71707771f4ff7c70ff"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/cnetmsgprocessor_base.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/cnetmsgprocessor_base.h",
+      "sha256": "0c1209c61b466decf5b07cad062a2a3522a24c6c8901f2fbcee2415ae8e101e1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/combat/cnetmsgprocessor_combat.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/combat/cnetmsgprocessor_combat.cpp",
+      "sha256": "03b1d1d3fed457e99765c687b8b0a38bbf25bab429e3e3aa3c6f46dec25c64e0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/combat/cnetmsgprocessor_combat.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/combat/cnetmsgprocessor_combat.h",
+      "sha256": "cfe8e97cbc739ffc2cd18c8fa934e8c69d5c2346b5484f2f29b78221467061bc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/dungeon/cnetmsgprocessor_dungeon.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/dungeon/cnetmsgprocessor_dungeon.cpp",
+      "sha256": "dfdb94c97df6b7dc4549fadf32f71d0ffe0cb7c5cf80a97b9949e11aac01c795"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/dungeon/cnetmsgprocessor_dungeon.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/dungeon/cnetmsgprocessor_dungeon.h",
+      "sha256": "b3bc68c8eee10b58c3bb82b5ad8b8da2998d02bf87f9bc904548257b6cdb8091"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/event/cnetmsgprocessor_event.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/event/cnetmsgprocessor_event.cpp",
+      "sha256": "301febaea460bfe0da7de11d5f9e25d705ad89a387e1a54ce620b9a4402038bb"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/event/cnetmsgprocessor_event.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/event/cnetmsgprocessor_event.h",
+      "sha256": "4394ba4630971e6e2b1a45996544023aad477f619249cb6d63bbf4a698f51721"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_item.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_item.cpp",
+      "sha256": "06ef79288b416a3b803341b8321d61c1e3d2ef501d47ab33d8b0895526ac952e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_item.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_item.h",
+      "sha256": "c4562d0fd84c09b892664429921db1ca7a23493d188320c969b138b613fdc8b9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.cpp",
+      "sha256": "fcdc58a6c961f2b5e50163d3e04f2578260d239f7c7e681edcde905269742993"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h",
+      "sha256": "735aa80ffbd0e38d101bb3bd77b17f429cc8a86f3d9cbde0c6e9201a907e2bbf"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+      "sha256": "105a1f1021a521a162a05568832c271080782db287a707df216df51bfdbaedca"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h",
+      "sha256": "942a03eed8cd9d3c54da53d9d440eef4b08d26ca9b55522a07c5facf1aa85656"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtradeplayer.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtradeplayer.cpp",
+      "sha256": "cec511a46e8615b2d282c95cbc00f4a644f8c323464cfc2a44f124ae74103103"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtradeplayer.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtradeplayer.h",
+      "sha256": "8b01dedb9df24b4e8f6dee31ab3f84ffcf5849d2b7a5ec69cfae1e5f7869bb61"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp",
+      "sha256": "af66efc8b68e468ae32f7873a5d180df7688996876a50694e86aa25d759f9539"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.h",
+      "sha256": "4b3673e96955af1dcb83719bdd62449c3352eff18d320c558553070484990bcd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party.cpp",
+      "sha256": "c7c4057df3dcdb390a6934f573b860e31d68b0b028c4fac9c0d7c09db493b72e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party.h",
+      "sha256": "bae5cd0507b24b23456a6cb32ab7d5811284a62462a5a7740b7d7812975f1978"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party_dev.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party_dev.cpp",
+      "sha256": "209982cb28d29827c888f6308d5f653647db4af1083d2301308685b0b60800dc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party_dev.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/party/cnetmsgprocessor_party_dev.h",
+      "sha256": "b52adf1b8c2b090594f7f2696fb7e62cc03628d08649e3f65a63414490bff539"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/resource/cnetmsgprocessor_resource.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/resource/cnetmsgprocessor_resource.cpp",
+      "sha256": "cb6eb9de488fdc2201f65054e7010a89fc2dbf59d313fbb1204a3a8a58908bfa"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/resource/cnetmsgprocessor_resource.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/resource/cnetmsgprocessor_resource.h",
+      "sha256": "33ce016939047fbe38ab25daa78f58dda71c6e3798e286a23a57fac53a55c37b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/summon/cnetmsgprocessor_summon.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/summon/cnetmsgprocessor_summon.cpp",
+      "sha256": "5108e9af4eef8ca23dbfffcfa7708d5a99936c7573833a772eaa7fad85957735"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/summon/cnetmsgprocessor_summon.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/summon/cnetmsgprocessor_summon.h",
+      "sha256": "ce41d4547ed00c03b6f50c6226599078609c4f1be189f63b6dde4ffe92706c98"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/unit/cnetmsgprocessor_unit.cpp",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/unit/cnetmsgprocessor_unit.cpp",
+      "sha256": "73cbdfb2eabee6bd6bf71cce1e992354bdb677165ae934185266182cc6c7a141"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/netmsgprocessor/unit/cnetmsgprocessor_unit.h",
+      "copy": "work/client-build/source/RF_Client/network/netmsgprocessor/unit/cnetmsgprocessor_unit.h",
+      "sha256": "029215d9f72b30521cbcb0d4ed66d1967c3759d2bc74e41c558c61a5e66ee0e1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netprocess.cpp",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netprocess.cpp",
+      "sha256": "95262290a0c2f7030669e623269c484c8b02c10d68b34f9cb1bfeb8814255b48"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netprocess.h",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netprocess.h",
+      "sha256": "946d8f5be26d24507fb977f571b6b56d23ad2c7008ec8b9790695c8cddb323e7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netsocket.cpp",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netsocket.cpp",
+      "sha256": "79a66adb0e9878e08d385ab3e7d1d0d6d8e0d3ca8651eb02145c2abe3c979065"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netsocket.h",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netsocket.h",
+      "sha256": "d83fffb3d82cd3f002a1be459eb5d347d477514a6584a63f7a35c898b85b8077"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netutil.cpp",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netutil.cpp",
+      "sha256": "cba1b7192d729286db8f9b551d106893f47040fdbcb206a9cd322a89535452ed"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/netutil.h",
+      "copy": "work/client-build/source/RF_Client/network/networklib/netutil.h",
+      "sha256": "71175e524620c9216400b58798c92d0bc2eba578b84e6c1a205e4359a3a1cca9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/networking.cpp",
+      "copy": "work/client-build/source/RF_Client/network/networklib/networking.cpp",
+      "sha256": "bc8e8ca13d52c59687dd4e8c54876ed97aad2fa9890c8ca39bf05aaa6d61adbf"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/networklib/networking.h",
+      "copy": "work/client-build/source/RF_Client/network/networklib/networking.h",
+      "sha256": "a6085207db7bcde43d7d1312e24a887a0fae726efbb8cf45a872a822798e62c1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/aimessage.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/aimessage.h",
+      "sha256": "0d15672e56e798109ccdeac7927000e2e3903335d8fab3f9ffeacde341de0d29"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/characterdb.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/characterdb.h",
+      "sha256": "a26387f1220f4ad23a2bf225b62310c765d7c446e9b34f26eff6ba63fa01eea5"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/erroreventfromserver.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/erroreventfromserver.h",
+      "sha256": "b28d28d0d460b131aec5074355a09221861ad3f2b5d1b9f33983017e1b796fd0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/protocol.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/protocol.h",
+      "sha256": "b5793613cbfe6856c1de7dbf2b777394b99f352c3e891b36ec9b4d6d7edd8e81"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/pt_login_client.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/pt_login_client.h",
+      "sha256": "03dd7b01521c3c595d05e186eeb2476eee4f1fe0c50ecbe4083b2818269fce17"
+    },
+    {
+      "original": "RF Client Side/RF_Client/network/protocol/pt_zone_client.h",
+      "copy": "work/client-build/source/RF_Client/network/protocol/pt_zone_client.h",
+      "sha256": "91338dd5c0e562aa846511b85deeab6d0cb58ea158c885512fbd2acb51855efa"
+    },
+    {
+      "original": "RF Client Side/RF_Client/RF_Online.dsp",
+      "copy": "work/client-build/source/RF_Client/RF_Online.dsp",
+      "sha256": "e8954bc3f8fb2e45597b8aabb99020f508acfa5c26f61d7e612d0ed0f7899283"
+    },
+    {
+      "original": "RF Client Side/RF_Client/RF_Online.dsw",
+      "copy": "work/client-build/source/RF_Client/RF_Online.dsw",
+      "sha256": "7090c40fdc88f3c1cb84c800ea668cbef1da161b59248f30339278d17997c12b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/consolewin.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/consolewin.cpp",
+      "sha256": "c191edcb8cb0632e64387a5a2fe277a5ef19e4a2204ca9da115cd2a44c60c1fc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/consolewin.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/consolewin.h",
+      "sha256": "49358b25427fca4871e7c0a78fbe8b2bd61feb9379634098323b0dff09007289"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/dungeon/guidungeon.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/dungeon/guidungeon.cpp",
+      "sha256": "a668f3444e7de822f381e989bd53619a7feb0ba221e92637a78058a66401dd11"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/dungeon/guidungeon.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/dungeon/guidungeon.h",
+      "sha256": "e9b429a792f41db4a6c06a44ff949608a0013af785802754ba4fe0248ab81268"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guieventwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guieventwindow.cpp",
+      "sha256": "1419448e4c767de8355e7f834a3c465f5591b7375f0ae3c0bb51c61f4659f8b6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guieventwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guieventwindow.h",
+      "sha256": "725906cb94ee62a0af15b623b18a8aa5f57ddf5fd65a66d7c41a2f25a7d2beb4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guihelpwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guihelpwindow.cpp",
+      "sha256": "99afa44be03653e3b8285a0669a3044ae7e480b85909f218238a66e23b7a2512"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guihelpwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guihelpwindow.h",
+      "sha256": "f91092a7800ebcfe0d90b4049a5d158d043c79f6b6e92c5f5f1823eacb4b749b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guimaploadingwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guimaploadingwindow.cpp",
+      "sha256": "9001cb679ba2134cf22cdb981f230e5d143293d53accb5e68a48eb31f7e48408"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guimaploadingwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guimaploadingwindow.h",
+      "sha256": "e1923f90fd603ffdff1f575d7dd3e199cee0dbf29a1ea9e60bdebed97458e2a1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guimapmovewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guimapmovewindow.cpp",
+      "sha256": "1dc3394f272b7518fd6233ee4ed637ab1c8bb26e6769f88d2c7ef89eb76ac8d6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guimapmovewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guimapmovewindow.h",
+      "sha256": "037eb62463e48229a820f9f181f55fc557debb2bbba2f5dfb1f5c06d18339c96"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guiminimapwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guiminimapwindow.cpp",
+      "sha256": "18b5169d59e44fc4f6de74cc80c946ebc67344d2a1155a5ab926fc0fd9aab912"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guiminimapwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guiminimapwindow.h",
+      "sha256": "6bd52ffb475992f6d29acfb03cd1cde6a8a3c1a4d1968051c73761df84443704"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guioptionwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guioptionwindow.cpp",
+      "sha256": "4f594f32c404b1b9fc35d414867b37d4a46457890078dd41a7e36ebe32ce3019"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guioptionwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guioptionwindow.h",
+      "sha256": "4d4e76a77029c39821189492f887706f24cb138ed86219bda1da2e0744c613ed"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guiradarwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guiradarwindow.cpp",
+      "sha256": "5ec4cbd44466425e8261ad97c5be03191520c907b78448c0f9c62baae3fb936d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/etcwin/guiradarwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/etcwin/guiradarwindow.h",
+      "sha256": "582d766590348f9234c7b661ab55dbf476026ce517aaac301f68de7410797791"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/group/guipartywindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/group/guipartywindow.cpp",
+      "sha256": "27f9eed6bdc14763703ad5e3ee3b4666d490426dacc2cffc1f2576b5fdc6515e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/group/guipartywindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/group/guipartywindow.h",
+      "sha256": "72afd83023e3ac2269405a0f2137c889d6bd1f88ace95659b61a9af2fce00d54"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiattackpartwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiattackpartwindow.cpp",
+      "sha256": "5cfba70a1148adbb1ad3cce43e76c1b566c2dd5533de10e9d1c06b13d2494340"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiattackpartwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiattackpartwindow.h",
+      "sha256": "a3d67568e873cc76cefbc5deeaf9ec7c0a49b3af78248419b1449957feeaf884"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guicharinfowindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guicharinfowindow.cpp",
+      "sha256": "1b8c574a96c400034fe1e9c0ca2bb78b277a3c9bb8d821233835f84469da9e9c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guicharinfowindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guicharinfowindow.h",
+      "sha256": "1f2db4aa51b2b00824f5cbecbd5c453ee4e934bd5fa8aa2495c2ec5f73348146"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guichatwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guichatwindow.cpp",
+      "sha256": "920304e705162a9c8b3e29b1a6f34193953ce410df30c98e16d256e19ded634b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guichatwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guichatwindow.h",
+      "sha256": "7b162db2765af1c41c829f953768146ce71a7284da85e71a667c7dd3f412b00c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiforcebeltwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiforcebeltwindow.cpp",
+      "sha256": "06863db2f60943bdbcf938f701f39b1268dafc327bde90c51d3a6168462c1bb4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiforcebeltwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiforcebeltwindow.h",
+      "sha256": "356b5e188b2693b3c593ea8d237eea74ea552f726bf0125c59965eff2e617993"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guigaugeexpwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guigaugeexpwindow.cpp",
+      "sha256": "334def0e550b597fb6d48230942366b522dda6a8e72b43220f19adad1c289c85"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guigaugeexpwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guigaugeexpwindow.h",
+      "sha256": "de20afd46f02d4cdb810d2c526ecd96ba8e02972cee95fa841daf485fc7cfd05"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guihotkeyboard.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guihotkeyboard.cpp",
+      "sha256": "905eda51c50f75934cd36dc54002a81c30d3f8c925fcd44e4a6b0a30f585e5dd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guihotkeyboard.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guihotkeyboard.h",
+      "sha256": "8adc49c837ad2a798702c5fe864a5f5b3f71bf7c6398e2a60e279b221cd0ff63"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiinventorywindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiinventorywindow.cpp",
+      "sha256": "73bef08951455061a1414c20a8808ff8b330af0c78e42e5f6e1a7b37a5ed2bce"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiinventorywindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiinventorywindow.h",
+      "sha256": "3b0770918bae5748dc3d5bd26f1a12b69c313ff163cc7528c8de7adc3e2301d6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiitembeltwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiitembeltwindow.cpp",
+      "sha256": "6bb1a365a984c7e46234a00a8ece82f06d8ef46b006d7cf78156d5c1c83cd042"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiitembeltwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiitembeltwindow.h",
+      "sha256": "594f1215621f8aee1a3203504744db5e3cedcdef30f68b1d99bf1c1f49f1465e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiselectedcharmenu.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiselectedcharmenu.cpp",
+      "sha256": "6154365c818931abf1b74ea9ae5ea0aab8290d3593990470946d3fa5021103b9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiselectedcharmenu.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiselectedcharmenu.h",
+      "sha256": "7da90e7b5cb399d5ef70d93557387cecb8728eafd7c40e9bf0384dd496db56ec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiselectedcharwin.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiselectedcharwin.cpp",
+      "sha256": "89cf718c84cc38dbbae548021cce1e426d69f4b5494fea398526922ac517a73f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/guiselectedcharwin.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/guiselectedcharwin.h",
+      "sha256": "95182d93e34c8358ffd8ed0d8e8c60e463bfa6097161ed521107fc67ef298a8e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/itemproc/guiitemmakewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/itemproc/guiitemmakewindow.cpp",
+      "sha256": "f314e5f8bf20c697685f24b4e33a75e57370d2f43bae53d4664733313c5aa19b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/itemproc/guiitemmakewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/itemproc/guiitemmakewindow.h",
+      "sha256": "bae94a1cc2def0a6cc787f4526a6304341abbe5b59784bd002a59e18d827eeb6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/itemproc/guiitemupgradewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/itemproc/guiitemupgradewindow.cpp",
+      "sha256": "28bb05cf0e73ee62f2865a58085975430b6f63cb9536c9d29d29ed99d1ab693c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/itemproc/guiitemupgradewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/itemproc/guiitemupgradewindow.h",
+      "sha256": "41ca1a3511d181ebc2b9457a7fab83c549fa1e0a84fbde79ff7ef94d28a9b1bb"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/mining/guiminingwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/mining/guiminingwindow.cpp",
+      "sha256": "da469931fb7dd5bd459c5b8b5c42c0d48c2462632e4fc81f1bdd1b1144c63a85"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/mining/guiminingwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/mining/guiminingwindow.h",
+      "sha256": "2edd6768eba7825ecec388bdebb1ff62adaa9fb3e5336b83c1deca2240d724ec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guiclasschangewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiclasschangewindow.cpp",
+      "sha256": "0ee430030b9a6c8c03d429aff678fd92adff8f12f1a6d9cf66af4edcfdcb2668"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guiclasschangewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiclasschangewindow.h",
+      "sha256": "029d271e566c2d89e81a89c3a76f6f9c109ddca822bfd77c0858f7397fb3431d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.cpp",
+      "sha256": "ec08d1f401213ddd59476df16a95583ad88227fc8844e52024a7e51416571097"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.h",
+      "sha256": "ebe61d920fc38a242f926a2f94b96d74cd582cd8088382ebd85a45c6f857e427"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guinpcselectwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guinpcselectwindow.cpp",
+      "sha256": "84428c12720fc193ed39107b29ca284b6e4a0614f5833e4888c165cc5614b1ec"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guinpcselectwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guinpcselectwindow.h",
+      "sha256": "9e49647455b6c8f3efef54c668f72c5c2bfbb397bc31e3f8fa21c7d62d7808af"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guioreprocwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guioreprocwindow.cpp",
+      "sha256": "65eacd5346217ba527126efb94e8d64474d07cb002e508f30849337f11e98a9a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guioreprocwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guioreprocwindow.h",
+      "sha256": "4f3ba2bca92e1d9bb6d06200d697102285ea4790b53683303e8945700d1484d7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guishopwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guishopwindow.cpp",
+      "sha256": "a0a3d37acdcb76888db1a2e3bb2234e54dc718dae5707ca78bd4c63ded59fa68"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/npc/guishopwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guishopwindow.h",
+      "sha256": "76e4796344662511f555bc46657236eddd3fd7da51a3ac50ad31022c747d7231"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/player/guitradewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/player/guitradewindow.cpp",
+      "sha256": "4af3832d2b5999c27694833e6ec4a206139f55933f069770d2ba462c0e344eb7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/player/guitradewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/player/guitradewindow.h",
+      "sha256": "0fbfb55fc3c5e82e8795ebf16bea42ee866def64fb985b92efd7d9f464d7d07e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/recall/guimobcontrol.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/recall/guimobcontrol.cpp",
+      "sha256": "014de7177cf465b0b20b096516f22e32f4bb26c78cc8fa77433dbe512c50a8e2"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/recall/guimobcontrol.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/recall/guimobcontrol.h",
+      "sha256": "17e6fe132c90e4c2027a611480048f7fb799de803ed5edf6839d6beb46874917"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/recall/guirecallwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/recall/guirecallwindow.cpp",
+      "sha256": "02b8ccfbc5a5d4501ebe7cebc44f156ca018e79b6938ae2d067343c642dbf018"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/recall/guirecallwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/recall/guirecallwindow.h",
+      "sha256": "74d0d9efaa38a80e309adfecf4c338045d45b93519e78669f5c426416afd4fe0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiforcewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiforcewindow.cpp",
+      "sha256": "28f037313d3adf9ded108da9ff092a01bdcb49bac76e811cafe48c7e5a921690"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiforcewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiforcewindow.h",
+      "sha256": "198162417f32f523f3f85540dd82119c0acb11864a290706151cda7a9c82bf6c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiskillforcequeue.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiskillforcequeue.cpp",
+      "sha256": "f313a49ab31cfd7210f5774fffcddb114bd9afb06dedbc93ce92c21694d91ba3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiskillforcequeue.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiskillforcequeue.h",
+      "sha256": "20c626d46f01d86fa572207c24aa6c0466a6d9fe2da9f0226c6336d2124fe1aa"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiskillwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiskillwindow.cpp",
+      "sha256": "076505faa6e8506f28e7a02d41f1fa24bac68c49fa068e971b1c7e17f91c14f6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/skillforce/guiskillwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/skillforce/guiskillwindow.h",
+      "sha256": "7d6b0734296053b7942c4ccc67c48de7b0c070b4f96f366b0f05ffa585d60c3a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/unit/guiunitstorewindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/unit/guiunitstorewindow.cpp",
+      "sha256": "ed5cd2b6d83b73324dec30612d9428674c05b225a5bbe611df03a8a421caf852"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/unit/guiunitstorewindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/unit/guiunitstorewindow.h",
+      "sha256": "1a813e7bb4c5f3023b2b2832f975a1119bef7ea8d8c38468fbd08a6f029276a5"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/unit/guiunittuningwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/unit/guiunittuningwindow.cpp",
+      "sha256": "e019f9588bfff9358e42cfff11dd936a9fa33253978ef7eebb3958f1e534e204"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/gamewindow/unit/guiunittuningwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/gamewindow/unit/guiunittuningwindow.h",
+      "sha256": "6d15178c7ab6f81d47d87bf8a8624a4c722a155be1fcfe9cacb88141a9b53db4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guibutton.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guibutton.cpp",
+      "sha256": "d127436073e630255cd1621f43aebb29ee6ad53dcf370ea89505a4f578cf99d6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guibutton.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guibutton.h",
+      "sha256": "7f98fe483b52431f72d4732e006279e96ee2b564f4cb9ead27c8778e549aa38d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guicontainer.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guicontainer.cpp",
+      "sha256": "4dac6fd0b60b5bdcf9d7dff87257a3e994dd078caab608bf6329f0240918dcdc"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guicontainer.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guicontainer.h",
+      "sha256": "bdde6987409d9f7ab6921c6866542892ed3310b33b746a0b7e5f5306f76ea061"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guidialogbox.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guidialogbox.cpp",
+      "sha256": "053412648b4a0b75ca258d5575d3746ae69dedc809784520fde7a757a8ffd03b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guidialogbox.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guidialogbox.h",
+      "sha256": "f58bffa3a44481f5545dfeebf5fe5860fd0e6bd6020230762b060f21635f3cce"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiinput.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiinput.cpp",
+      "sha256": "9168407e2240c1770aacca4cb07ac875f19c3e11370791163736eda69c2eb267"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiinput.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiinput.h",
+      "sha256": "7b199dd05279cce942d4f171608f8917580d1e07cc385424f2a10b709927e8e6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "sha256": "5f8c76708819fee9b88e8db524512c5f16575dcb3c116580d8258ba2403a521f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiitem.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guilistboard.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guilistboard.cpp",
+      "sha256": "a1fbd1eeaf3f9e669cb7d9838acfccf8d03c1d937d017b2e93c3cbcf12d889dd"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guilistboard.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guilistboard.h",
+      "sha256": "4a5223a87959e9036a27745b09354710678a792c07985e858b0dcc683f9de903"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guimessagebox.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guimessagebox.cpp",
+      "sha256": "11ddb2bc951e6130070600cea4f07965c22671bba3b33c581992de525abab51f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guimessagebox.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guimessagebox.h",
+      "sha256": "4852515a42ad746d1aabf8783f784679e1cee3e7d5750d2a6b4aa141a56448a8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guimouse.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guimouse.cpp",
+      "sha256": "d7d44786f300117a1dce7a817c53350de13b2dc9d5be86a0e3d8590ddfff67c7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guimouse.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guimouse.h",
+      "sha256": "3ea648be972e39db328eb937d79d9666df25665bbc4de5746af306e93315ed2f"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guinuminputdlg.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guinuminputdlg.cpp",
+      "sha256": "366df69bfb2dff4f0ff1082b6997c660ceecc865ac7ed553cbc0a0a88548c5ba"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guinuminputdlg.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guinuminputdlg.h",
+      "sha256": "ac08755549584a3d36d8701cb0899238dc1a7eb09c44edfd7bf730f28fe1bbb8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiobject.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiobject.cpp",
+      "sha256": "923a96c296e734730700b2b8ca7a33c45b3cbe3b44c349c2ccb5b80fd4a9366d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiobject.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiobject.h",
+      "sha256": "5cfcf384cc2e6a60e496b8fdba8b676cf90f8cbb7715be492de6498d152c112c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiobjectevent.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiobjectevent.h",
+      "sha256": "ebb08a2c05f75636449a80eacf89b042e2d39339538ca5cc91026c06ae3d3931"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiobjecteventproc.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiobjecteventproc.cpp",
+      "sha256": "74c192e15bc7d6768842b8b487ff60da8b9804c8defb59e703bab1495c8b8c06"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiradiobutton.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiradiobutton.cpp",
+      "sha256": "2d1a5bea22399ddb26e6d3d255a344f8488439398a549c9f651e35e4f0caf9f1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiradiobutton.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiradiobutton.h",
+      "sha256": "dce766f4f2c512a2b5bcbda7b04bb2af1119e013afbd46d19eaf18f7247b986e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiscreen.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiscreen.cpp",
+      "sha256": "0bfc099a6423eefb2277582881986cdb216f1c4b80f845e32f89c7ceedd0904d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiscreen.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiscreen.h",
+      "sha256": "9c455b6c6f5747868d1a6c15937b3556a82fba27d6337dc263b818a390f299a8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiscrollbar.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiscrollbar.cpp",
+      "sha256": "4a9fa49c4aa8faf736d92755156d2606bb175363015181651deaa591a158e996"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiscrollbar.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiscrollbar.h",
+      "sha256": "286c31f3b7f72dfab294cc50bd0edb295140874874c3fe728c86c8eadc9953f8"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiselectitem.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiselectitem.cpp",
+      "sha256": "0f42f1464149e1a6322058623b3da33eec9886a293a7e06fc43d01ed5edf9645"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiselectitem.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiselectitem.h",
+      "sha256": "fa662943b9a6bb291aae7b2a17218b45604b4bfed20726fbf9d77af9753baba7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitext.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitext.cpp",
+      "sha256": "ca3f7d29c36922fc2bda342530f4ada8972856a0e86c642c7d8ed61ecf8c2f4d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitext.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitext.h",
+      "sha256": "db4f2dd0ed271fb407aa5adda17fa656f3adf7acc2cf06dbf784171c1f0726e7"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitextboard.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitextboard.cpp",
+      "sha256": "ffc5055ff94ce810ecdecf8a620b93455511dacf2556536d559d9e300998db83"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitextboard.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitextboard.h",
+      "sha256": "b7906a4454964dea56ac631db9b33681ca158032e1e87d20d564d9ca2c4abba6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitooltip.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitooltip.cpp",
+      "sha256": "1f36085b89caf6a7dba5001edc89ea0d85b59c9ccc94a9bd924c3a14932d52af"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitooltip.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitooltip.h",
+      "sha256": "f9ae0dfb6ffec0407c94af29fe8566c94a38d967b45f90e4b7710d671f8e9f2c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitree.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitree.cpp",
+      "sha256": "627747bae96e22e94484d136ca943e55d3d8e70c238d60b3d191abd0ff34e4c9"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guitree.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guitree.h",
+      "sha256": "38a9b5ecf239283689e03e987c54ccedb19c535020cd92d9c2a9cb85ef019fb1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiwindow.cpp",
+      "sha256": "42e25c02e604c5f96089368914c879421121ed1672b246b6aa15380395736630"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guicontroller/guiwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guicontroller/guiwindow.h",
+      "sha256": "48607f3fe5e322a467cb7e4861c1c8cd178e1200383a73986efcd624d6b8d8e3"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guidebuggingwin.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/guidebuggingwin.cpp",
+      "sha256": "66387d8ef932dad8a8f17d5a4cc81ab8875bfb04aa0101074ff3451ad5fc707c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/guidebuggingwin.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/guidebuggingwin.h",
+      "sha256": "cfc21277709df9218877b01c26ca2d3142fffaa9b95429a8c9c9c9c0d86c80f1"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/inputmgr.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/inputmgr.cpp",
+      "sha256": "d31a3f28ed37853ddb2ff4d273f21a2a0342b3658f9df86e400cf8dc11117550"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/inputmgr.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/inputmgr.h",
+      "sha256": "70d11215f0feb5a6088d4a9b893fd046ee9fa9d13ff9fd2dc860e7d0a971d426"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guicreatecharacter.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guicreatecharacter.cpp",
+      "sha256": "1155d6e0bd2ea6c9b55ffab7a79b402e7a5b34e0f0eaf21e4661e3046b9b8c54"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guicreatecharacter.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guicreatecharacter.h",
+      "sha256": "ae293e1670a4021dda0c4b5da8f3175c6f2db1ac97d409b1ab7704992e5f7cce"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiloadingwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiloadingwindow.cpp",
+      "sha256": "a38ace347846ba27ea5d5e0315c41a9f488a32d2f5e3a536089cda77695cf4d0"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiloadingwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiloadingwindow.h",
+      "sha256": "ac71aaf051e787b0ad55ceda0c579da18708e4417f77e26905ea37e073a50fa4"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiloginwindow.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiloginwindow.cpp",
+      "sha256": "6c0dfbd8ed96fa757479c8660008829064fde374d6199041c5d2936cbd8e1d2a"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiloginwindow.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiloginwindow.h",
+      "sha256": "21a15860673d6d379559ba34128344ca6108716af17f96bec2bd049b1afd853c"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiselectcharacter.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiselectcharacter.cpp",
+      "sha256": "895a868657b56e7eb73e15e027968984472ef8c5a933ef1fb1ec8e502aceb988"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiselectcharacter.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiselectcharacter.h",
+      "sha256": "03d0994ee5cef980f749d625f76d9efbd52d6ca674ed9e65496d20e95981fc29"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiselectrace.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiselectrace.cpp",
+      "sha256": "a0de9f0826c55518be213ff7309e3bc136ca656875d483685934b6799f09048d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/loginwindow/guiselectrace.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/loginwindow/guiselectrace.h",
+      "sha256": "7e59c95f797f4952ad693c4ca66da9e27fac9029f6cb8c1fae529e5b75938c57"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/mousedev.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/mousedev.cpp",
+      "sha256": "bb03d6be0386a28b9a6ec9c68c83b1143c6872f5f84759d2a7d546ad3255350b"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/mousedev.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/mousedev.h",
+      "sha256": "31618e51a61982380e4d8de438a9ac00f0d46b93396c1192873e2bdf99495e5d"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/ndqueue.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/ndqueue.h",
+      "sha256": "72a12e6e54f0eecf64c006e017e8802341b1f75962b9c5556aa15d2a68067fc5"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/singleton.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/singleton.h",
+      "sha256": "3b6d51207dd84f13bb5f54be9b234f8541e6fe5024e349d3c1ef4d636f9e00a6"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/spritemgr.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/spritemgr.cpp",
+      "sha256": "13a8fc77873fb8e24b0357e14779c1400213469819449e00b7dba3875d91e63e"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/spritemgr.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/spritemgr.h",
+      "sha256": "8ec55b54edb8759e6b2af1f61dd372ea6ea4c771217376b0531ea3e7eced3bea"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/uiglobal.cpp",
+      "copy": "work/client-build/source/RF_Client/userinterface/uiglobal.cpp",
+      "sha256": "cce479fa65d877707df9672d612fd328e936494a93054c80becedf62bcb4be09"
+    },
+    {
+      "original": "RF Client Side/RF_Client/userinterface/uiglobal.h",
+      "copy": "work/client-build/source/RF_Client/userinterface/uiglobal.h",
+      "sha256": "1f5fe53c440430e634449d46c8d3fc54ac4a344ca747d9f5c3a1078bb2e68b1c"
+    }
+  ]
+}
