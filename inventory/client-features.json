@@ -586,7 +586,7 @@
         "Independent retained SDK comparison group;two actual LoadRealData calls select source,including8public source symbols/x86MT objects"
       ],
       "gaps": [
-        "455MESH08source framing/loader/real assets,material/skin/index/vertex semantics",
+        "455MESH08 full runtime loader/material/skin/index/vertex semantics;framing is covered separately by DATA-MESH08-FRAMING-013",
         "4555803byte packed mesh/64byte vertex/negative normals/inline matrices and first-match binding differ from legacy1072/36/heap",
         "Other binary-only Character routines and physical texture/triangle upload/GPU/D3D9renderer",
         "Unsafe bounds/OOM/failure/unwind/locale/alias domain and complete old/modern CRT ABI"
@@ -596,7 +596,7 @@
       "id": "DATA-MESH08-012",
       "description": "455MESH08mesh format and its distinct client loading path",
       "status": "described",
-      "verification": "Initial evidence only:exact6byte prefix detector and actual LoadRealData edges verified in both pinned PE;607line loader cached,one MESH08 and two plain real model samples pinned. No source MESH08loader or complete format/behavior validation yet.",
+      "verification": "Detector and full loader/bone-resolver bodies plus12framing instruction sites verified in both pinned PE. Source framing is implemented separately;full runtime loader/material/bone/shared GPU path and normal LoadRealData integration remain open.",
       "reference": [
         {
           "va": "0x91f250",
@@ -614,19 +614,64 @@
           "role": "actual LoadRealData loader call"
         }
       ],
-      "implementation": "Not implemented;next Character455critical path",
+      "implementation": "Format module available;full runtime loader not implemented",
       "evidence": [
         "inventory/character-init-reference.json",
-        "research/character-init-source.md"
+        "research/character-init-source.md",
+        "inventory/client455-mesh08-reference.json",
+        "research/client455-mesh08-format.md"
       ],
       "scenarios": [
         "Shield065hasMESH08prefix;Shield031/Cloak002 pass bounded plain693record framing toEOF",
         "Normal/UV/physique/index/format-reference bodies andcaller edges match both pinned455PE"
       ],
       "gaps": [
-        "Complete MESH08framing/material/skin/indices/vertices and source loader",
+        "Runtime mesh construction/matrices/materials/bone resolution/shared GPU buffers/index rebase/publication/release and normal loader integration",
         "Complete real model inventory/variants and error/lifecycle semantics",
         "Packed455mesh/D3D9buffer/render consumers and physical character GPU acceptance"
+      ]
+    },
+    {
+      "id": "DATA-MESH08-FRAMING-013",
+      "description": "Bounded lossless MESH08 byte framing and writer;not runtime ObjectMesh ABI or full model loader",
+      "status": "implemented",
+      "verification": "858real files/12090meshes byte-roundtrip;6304native checks/12samples/393parts/1309guarded truncations in component and full-client own entry;7Python tests. Normal runtime consumer remains absent.",
+      "reference": [
+        {
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "role": "MESH08magic detector"
+        },
+        {
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "role": "distinct MESH08load body"
+        }
+      ],
+      "implementation": [
+        "scripts/mesh08.py",
+        "scripts/native/client455_mesh08.h",
+        "scripts/native/client455_mesh08.cpp"
+      ],
+      "option": "RF_CLIENT_455_MESH08",
+      "evidence": [
+        "inventory/character-mesh08-corpus.json",
+        "inventory/client455-mesh08-reference.json",
+        "inventory/client455-mesh08.json",
+        "inventory/client455-mesh08-link.json",
+        "inventory/client455-mesh08-runtime.json",
+        "research/client455-mesh08-format.md"
+      ],
+      "scenarios": [
+        "858loose installed MESH08files,515096894bytes/5153052vertices/5153052indices/412222bone records",
+        "12pinned samples/393parts,payload offsets andbyte hashes,re-encode andexact in-place encoding",
+        "Every truncated prefix of1309byte fixture withWindows guard pages",
+        "Wrong magic/count,zero/tail,64000/64001indices,65535vertices/0indices,opaque NaN/negative zero,capacity/sizeoverflow"
+      ],
+      "gaps": [
+        "Normal runtime model-loader not integrated;materials/bones/shared GPU buffers/publication/release tracked by DATA-MESH08-012",
+        "Archived/RFS models and1850other-prefix loose models outside this census",
+        "Explicit bounded errors are owned safety policy,not reference unchecked AV/OOM/debugbreak parity"
       ]
     }
   ],

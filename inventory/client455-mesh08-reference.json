@@ -1,0 +1,230 @@
+{
+  "reference": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "detector",
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "size": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        },
+        {
+          "name": "blend_names",
+          "va": "0x93cb00",
+          "rva": "0x53cb00",
+          "size": 595,
+          "sha256": "52561ad9c5b9b526b2801f565b4bca846174078801c3a6641f5336b7b18bf839"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x922a6a",
+          "rva": "0x522a6a",
+          "bytes": "c744241808000000",
+          "meaning": "Start file cursor at8"
+        },
+        {
+          "va": "0x922a91",
+          "rva": "0x522a91",
+          "bytes": "0fb77e06",
+          "meaning": "Mesh count isWORD at+6"
+        },
+        {
+          "va": "0x922b45",
+          "rva": "0x522b45",
+          "bytes": "05b5020000",
+          "meaning": "Per-mesh header693bytes"
+        },
+        {
+          "va": "0x9234c0",
+          "rva": "0x5234c0",
+          "bytes": "0fb7043b",
+          "meaning": "Vertex countWORD"
+        },
+        {
+          "va": "0x9234d2",
+          "rva": "0x5234d2",
+          "bytes": "ba40000000",
+          "meaning": "Vertex allocation multiplier64"
+        },
+        {
+          "va": "0x9234f3",
+          "rva": "0x5234f3",
+          "bytes": "c1e606",
+          "meaning": "Vertex copy size=count<<6"
+        },
+        {
+          "va": "0x92350e",
+          "rva": "0x52350e",
+          "bytes": "0fb7043b",
+          "meaning": "Index countWORD"
+        },
+        {
+          "va": "0x923512",
+          "rva": "0x523512",
+          "bytes": "3d00fa0000",
+          "meaning": "Index count gate64000"
+        },
+        {
+          "va": "0x923545",
+          "rva": "0x523545",
+          "bytes": "ba02000000",
+          "meaning": "Index bytes=count*2"
+        },
+        {
+          "va": "0x923561",
+          "rva": "0x523561",
+          "bytes": "03c0",
+          "meaning": "Index copy size=count*2"
+        },
+        {
+          "va": "0x92362f",
+          "rva": "0x52362f",
+          "bytes": "0fb7043a",
+          "meaning": "Bone record countWORD"
+        },
+        {
+          "va": "0x923638",
+          "rva": "0x523638",
+          "bytes": "ba94010000",
+          "meaning": "Bone record stride404"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "detector",
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "size": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        },
+        {
+          "name": "blend_names",
+          "va": "0x93cb00",
+          "rva": "0x53cb00",
+          "size": 595,
+          "sha256": "52561ad9c5b9b526b2801f565b4bca846174078801c3a6641f5336b7b18bf839"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x922a6a",
+          "rva": "0x522a6a",
+          "bytes": "c744241808000000",
+          "meaning": "Start file cursor at8"
+        },
+        {
+          "va": "0x922a91",
+          "rva": "0x522a91",
+          "bytes": "0fb77e06",
+          "meaning": "Mesh count isWORD at+6"
+        },
+        {
+          "va": "0x922b45",
+          "rva": "0x522b45",
+          "bytes": "05b5020000",
+          "meaning": "Per-mesh header693bytes"
+        },
+        {
+          "va": "0x9234c0",
+          "rva": "0x5234c0",
+          "bytes": "0fb7043b",
+          "meaning": "Vertex countWORD"
+        },
+        {
+          "va": "0x9234d2",
+          "rva": "0x5234d2",
+          "bytes": "ba40000000",
+          "meaning": "Vertex allocation multiplier64"
+        },
+        {
+          "va": "0x9234f3",
+          "rva": "0x5234f3",
+          "bytes": "c1e606",
+          "meaning": "Vertex copy size=count<<6"
+        },
+        {
+          "va": "0x92350e",
+          "rva": "0x52350e",
+          "bytes": "0fb7043b",
+          "meaning": "Index countWORD"
+        },
+        {
+          "va": "0x923512",
+          "rva": "0x523512",
+          "bytes": "3d00fa0000",
+          "meaning": "Index count gate64000"
+        },
+        {
+          "va": "0x923545",
+          "rva": "0x523545",
+          "bytes": "ba02000000",
+          "meaning": "Index bytes=count*2"
+        },
+        {
+          "va": "0x923561",
+          "rva": "0x523561",
+          "bytes": "03c0",
+          "meaning": "Index copy size=count*2"
+        },
+        {
+          "va": "0x92362f",
+          "rva": "0x52362f",
+          "bytes": "0fb7043a",
+          "meaning": "Bone record countWORD"
+        },
+        {
+          "va": "0x923638",
+          "rva": "0x523638",
+          "bytes": "ba94010000",
+          "meaning": "Bone record stride404"
+        }
+      ]
+    }
+  ],
+  "format": {
+    "magic_hex": "4d4553483038",
+    "count_offset": 6,
+    "count_bytes": 2,
+    "first_record": 8,
+    "header_bytes": 693,
+    "vertex_bytes": 64,
+    "index_bytes": 2,
+    "bone_record_bytes": 404,
+    "index_count_limit": 64000
+  },
+  "confirmed": [
+    "Per mesh:693header,WORD vertex count/64byte records,WORD index count/WORD indices,WORD bone-record count/404byte records",
+    "Bone binding helper iterates404byte records:DWORD influence count followed by100byte name slots;GPU rebasing/runtime resolution separate",
+    "858loose real model files decoded andround-tripped in corpus report"
+  ],
+  "limits": [
+    "This validates format framing,not full607line loader behavior",
+    "Source safety/capacity errors are own policy;reference has unchecked reads/debugbreak/OOM paths",
+    "Material texture loading,packed runtime mesh,shared GPU buffer rebasing,bone resolution andpublication remain open"
+  ],
+  "raw_analysis": "artifacts/character-mesh-source/mesh08-0x93cb00.json and cached922A00body;artifacts/character-mesh08/framing-insns.json;owned IDAeb76ecefclosed/save;no input EXE execution"
+}

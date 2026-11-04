@@ -175,8 +175,15 @@ static int mapTimeScenarioProbe() {
 #include "client_character_init_lab.inc"
 #endif
 
+#if defined(RF_CLIENT_455_MESH08)
+#include "client_mesh08_lab.inc"
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_MESH08)
+    if (!std::strcmp(command,"--rf-mesh08-scenario")) ExitProcess(mesh08ScenarioProbe());
+#endif
 #if defined(RF_CHARACTER_MESH_SOURCE)
     if (!std::strcmp(command,"--rf-character-mesh-scenario")) ExitProcess(characterMeshScenarioProbe());
     if (!std::strcmp(command,"--rf-character-init-scenario")) ExitProcess(characterInitScenarioProbe());

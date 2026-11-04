@@ -120,7 +120,11 @@ Character prerequisite:8legacy functions/full InitVertex имеют source;245bi
 LoadRealData→source call destinations. Mesh/triangles/weights/matrices/errors/release
 проверены через test-only COM capture. Это не Character455/GPU acceptance:
 legacy1072/36byte vertex/heap blends отличается от4555803/64/inline;455normals negated,
-MESH08loader ещё отсутствует. Реальные Character assets/material/texture/render/
+Полный MESH08 runtime loader ещё отсутствует. Его format reader/writer готов:
+858real files/12090meshes прошли lossless roundtrip;6304native checks standalone/
+full-client,12samples/393parts/1309guarded truncations и7Python tests. Normal loader
+ещё не использует модуль. research/client455-mesh08-format.md.
+Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 
 ## Приёмка

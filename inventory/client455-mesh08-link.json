@@ -1,0 +1,37 @@
+{
+  "normal": {
+    "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+    "exe_sha256": "43863bc4334d896a91888f0b132b79d7e85974b519073c2ebad8a4995b89c6af",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [],
+    "library_sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8",
+    "component_report_sha256": "56e94e67fccd307a489ab8e13c49bb1fd673adbaf2b7e6a3b2a00b55962fa685",
+    "reference_report_sha256": "9b1a50aa09d85cca00bf8bf96c5f48a7d429c081d4ebbc913fa604047f44d369",
+    "normal_runtime_model_loader_integrated": false,
+    "scope": "Source format dependency available;own lab consumer linked andchecked. Normal fullMESH08loader/material/bone/GPU path remains open;unused normal APIs may be stripped."
+  },
+  "lab": {
+    "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
+    "exe_sha256": "d8edc962d7985e2598cd1ed4080c416e03ff94ae88f2d4875cf3473657d4f1a6",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_DecodeMesh08",
+        "va": "0x6b0400",
+        "rva": "0x2b0400"
+      },
+      {
+        "symbol": "_RF455_EncodeMesh08",
+        "va": "0x6b0700",
+        "rva": "0x2b0700"
+      }
+    ],
+    "library_sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8",
+    "component_report_sha256": "56e94e67fccd307a489ab8e13c49bb1fd673adbaf2b7e6a3b2a00b55962fa685",
+    "reference_report_sha256": "9b1a50aa09d85cca00bf8bf96c5f48a7d429c081d4ebbc913fa604047f44d369",
+    "normal_runtime_model_loader_integrated": false,
+    "scope": "Source format dependency available;own lab consumer linked andchecked. Normal fullMESH08loader/material/bone/GPU path remains open;unused normal APIs may be stripped."
+  }
+}

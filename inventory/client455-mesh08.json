@@ -1,0 +1,29 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "library": "work/recovered/client455/mesh08/RFClient455Mesh08.lib",
+  "library_sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8",
+  "source_sha256": {
+    "client455_mesh08.cpp": "be59a96edbcc4b243bd3071935466fe3c565f184573bbfb4659b3c2269dc4096",
+    "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f",
+    "test_client455_mesh08.cpp": "3d762633c85b1b190ac22f1f820ecfa32b95d49b70b3641441a29285df2d785b"
+  },
+  "object_sha256": "9e73aab5d057a1d3ae219b72f5d1ccbe3038e3c19e0823fc40e5f1ced25514b4",
+  "executable_sha256": "5d605532e22594afb09841911b5bc960dbd5f42ebbe953238df85235dd640b19",
+  "native_test": {
+    "checks": 6304,
+    "failures": 0,
+    "real_files": 12,
+    "parts": 393,
+    "boundary_cases": 1309,
+    "guard_pages_used": true,
+    "gpu_used": false
+  },
+  "corpus_report_sha256": "62e8304822f186db93704470aedafd3343c494019794e25cf3eaae1f51340df9",
+  "limits": [
+    "Owned byte views andlossless framing;not455ObjectMesh ABI",
+    "Runtime materials/textures/bone resolution/shared GPU buffers/load publication not implemented bythis module",
+    "Explicit bounded length/capacity errors differ from unchecked reference AV/OOM/debugbreak behavior",
+    "No input EXE orphysicalGPU/network/game DLL execution"
+  ]
+}

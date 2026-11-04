@@ -370,8 +370,32 @@ time-input regressions прошли. Platform01/device2GPUcases/69checks,0warnin
 Dmalloc/COMbalance0,FPU007F;frameSHA равен прежнему просмотренному frame.
 455vertex normals инвертированы,64byte layout иMESH08path91F250→922A00 подтверждены.
 7bodies/field/magic instructions/2calls в обоих pinned PE;3model samples закреплены.
-MESH08реализация ещё отсутствует;старая693frame схема не подходит кShield065.
+В этой ревизии MESH08реализация ещё отсутствовала;старая693frame схема не подходит кShield065.
 Owned IDAab009b3b/012583e5closed/save;research/character-init-source.md.
+
+## M6: MESH08 format source и реальный corpus, 2026-11-05
+
+В loose model tree прочитано2708files:858MESH08 и1850other-prefix, не включённых в
+данный форматный аудит.858/858 прошли точный byte roundtrip:515096894bytes,
+12090meshes,5153052vertices/indices,412222bone records. Archive/RFS модели иполный
+resource inventory не покрыты. Source C++ bounded reader/writer x86/MT проверен:
+6304checks/12real samples/393parts/1309guard-page truncations standalone/full-client;
+7Python tests.3reference bodies/12instruction sites сверены в обоих pinned PE.
+Материалы, bone resolver иshared GPU state не восстанавливаются форматным модулем;
+normal LoadRealData его ещё не вызывает, обе API в normal EXE удалены linker.
+Lab decoder/encoderVA6B0400/6B0700, RVA2B0400/2B0700;source,неbyte-identical port.
+
+Normal2451456bytes,entryRVA0x1BC4B0,SHA
+43863bc4334d896a91888f0b132b79d7e85974b519073c2ebad8a4995b89c6af;
+snapshot mesh08-format,не запускался. Lab4483072bytes,entryRVA0x8125,SHA
+d8edc962d7985e2598cd1ed4080c416e03ff94ae88f2d4875cf3473657d4f1a6.
+289modern COFF иformat object /MT. Character245+6732checks,clock1443,map-time314,
+weather703,resource30,time-command432cases/2628checks+20actual input прошли.
+Platform01/device2GPUcases/69checks,0warnings/errors,Dmalloc/COMbalance0,FPU007F;
+frameSHA равен прежнему просмотренному. Это map/weather regression,неCharacterGPU.
+GameDLLs/referenceEXE/normalWinMain не запускались. Owned IDAeb76ecefclosed/save.
+research/client455-mesh08-format.md;inventory/character-mesh08-corpus.json,
+inventory/client455-mesh08*.json. M6/M6F/M7/M9 открыты.
 
 ## Документация интеграций
 

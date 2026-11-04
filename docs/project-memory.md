@@ -63,11 +63,11 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-a070e9fb4350290fc8877940ae6cfbce417b0cc12b5a12b8a6a82ba5e121d573.
-Snapshot character-init-source;предыдущие revisions сохранены. Обычный EXE
+43863bc4334d896a91888f0b132b79d7e85974b519073c2ebad8a4995b89c6af.
+Snapshot mesh08-format;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA ce6a1bb826d11f219218d4361f923ba1b11de9b31fe998b65b98696b68104cce,
-size4167680,entryRVA0x7EC8; snapshot work/client-character-mesh-lab/ce6a1bb826d11f21/RF_Online.bin.
+Own lab EXE SHA d8edc962d7985e2598cd1ed4080c416e03ff94ae88f2d4875cf3473657d4f1a6,
+size4483072,entryRVA0x8125; snapshot work/client-mesh08-lab/d8edc962d7985e25/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
@@ -77,6 +77,11 @@ Character8source functions подключены,включая полный lega
 0-2meshes/0-2faces,matrices/UV/weights/bounds/parents иcreate/lock failure проверены
 через actual SDK MakeVB с test-only COM capture;не Character GPU/455acceptance.
 research/character-init-source.md;inventory/character-mesh-source*.json,character-init*.json.
+MESH08format decoder/writer sourceготов:858real files/515096894bytes/12090meshes/
+5153052vertices+indices/412222bone records прошлиlossless tool roundtrip.
+6304native checks/12samples/393parts и1309guard-page truncations standalone/fullclient.
+7Python tests. Normal fullmodel-loader consumer не реализован,unused APIs stripped;
+labдвеAPI linked. research/client455-mesh08-format.md;client455-mesh08*.json.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -164,15 +169,25 @@ engine API без переноса binary consumers не является455rend
 Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
 Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVertex checks.
 Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
-unwind до него открыт. NEXT:455MESH08 framing/CPU data по922A00,materials/skin/indices/
-vertices на pinned sample Shield065;потом455packed layouts иD3D9buffer/render consumers.
+unwind до него открыт. MESH08framing/source reader готов,НЕ повторять corpus858audit
+без изменения inputs/parser. NEXT:runtime model construction по922A00:metadata/
+matrices/material texture names/loading,first-match local/external parents иbone
+order по93CB00;затем shared GPU buffers/index rebase/publication/release/D3D9consumer.
 Не подавать MESH08 встарый unchecked MakeMeshData693 reader. Новый raw body607lines
 кеширован artifacts/character-mesh-source/mesh08-0x922a00.json/.txt;не выгружать снова.
 Gate91F250 сравнивает6bytes MESH08;LoadRealData9238F0/923902 ведут вgate/loader.
 Reference93B020 инвертирует normals ииспользует64byte vertex;93B5F0 задаётUV+44/+48.
 7bodies/normal/UV/magic instructions/2calls и3samples pinned вcharacter-init-reference.json.
 research/character-init-source.md. В455mesh5803/vertex64/inline matrices;
-legacy1072/36/heap — иной ABI. MESH08 source пока отсутствует,его восстанавливать дальше.
+legacy1072/36/heap — иной ABI. MESH08format sourceесть,full runtime loader ещё открыт.
+Stream:MESH08+WORDcount,permesh693header+WORDv/64*v+WORDi/2*i+WORDb/404*b.
+3bodies/12framing instructions вbothPE;858loose sources/12090parts roundtrip toEOF,
+0trailing/limit/out-of-range/influence>4.1850other-prefix loose files не классифицированы;
+RFS/archived models не покрыты. C++ views24/20 неподменяют455mesh5803.
+Bounds errors — own safety,неAV/OOM/debugbreak parity. Normal consumerнеподключён,
+необъявлятьCharacter455готовым. Raw607line922A00 и146line93CB00кешированы;
+large disasm вернул10lines приinstruction_count1069:дляfacts использовать scoped
+insn_query,неполагатьсятольконаcursor.done. Owned IDAeb76ecefclosed/save.
 research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
 Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:

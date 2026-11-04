@@ -28,7 +28,10 @@ weather states на GPU. research/client455-time-commands-source.md. Затем 
 144cases/12FP modes,4COFFtests,2actual LoadRealData→source calls в полном клиенте.
 Это CPU comparison с test-only COM capture,не Character GPU acceptance.
 research/character-init-source.md. Следом455MESH08/data/layouts перед D3D9 port:
-найден отдельный loader для новых моделей. Остальные subsystems/chat/calendar/lighting открыты.
+найден отдельный loader для новых моделей. MESH08format module восстановлен:
+858real files/12090meshes прошлиlossless roundtrip,6304native checks standalone/
+full-client. Normal runtime model-loader ещё не переключён;следом materials/bones/
+GPU state. research/client455-mesh08-format.md. Остальные subsystems/chat/calendar/lighting открыты.
 Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
 M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 

@@ -65,6 +65,11 @@ CPU vertices/triangles/weights/matrices/errors сравниваются с SDK �
 capture. 455negative normals/vertex64 иотдельный MESH08loader922A00 подтверждены;
 Shield065 имеетновый header,old693reader его не читает. Новый приоритет —455MESH08/
 CPU data,потом packed layouts/D3D9. research/character-init-source.md. Character455 открыт.
+MESH08 framing теперь восстановлен:858real files/12090meshes прошли lossless roundtrip;
+6304native checks/12samples/393parts/1309guarded truncations standalone/full-client,
+7Python tests. Source dependency доступна, normal model-loader ещё не использует её.
+Runtime materials/bones/shared GPU buffers иполный Character455 остаются открытыми.
+research/client455-mesh08-format.md. Это завершение формата,не всего loader или M6.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.
@@ -104,8 +109,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: восстановить455MESH08/CPU data иmaterial/skin/indices/vertices на реальных
-   samples;затем455mesh layouts иbuffer/material/texture lifecycle. Legacy InitVertex source готов.
+1. M6: создать runtime meshes MESH08: metadata/matrices,material/texture names,
+   first-match bone resolution; затем shared buffers/index rebase/publication/release.
+   Framing иlegacy InitVertex source готовы; normal loader ещё не переключать до
+   восстановления его runtime consumers. Затем455layouts/D3D9 иреальные model scenarios.
 2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
 3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
 4. M6F: завершить реестр возможностей/расхождений и доказательства полноты клиента.

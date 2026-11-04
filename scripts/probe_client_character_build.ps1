@@ -122,6 +122,17 @@ $characterLibrary = $meshArchive
 $arguments += '-DRF_CHARACTER_MESH_SOURCE=ON'
 $arguments += "-DRF_CHARACTER_MESH_SOURCE_LIBRARY=$meshLibrary"
 $arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
+$mesh08 = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-mesh08.json') -Raw | ConvertFrom-Json
+$mesh08Library = Join-Path $workspace $mesh08.library
+if ((Get-FileHash -LiteralPath $mesh08Library -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh08.library_sha256 -or
+    $mesh08.native_test.failures -ne 0 -or $mesh08.native_test.boundary_cases -ne 1309 -or
+    $mesh08.native_test.checks -lt 6304 -or -not $mesh08.native_test.guard_pages_used) { throw 'MESH08 source proof missing or stale.' }
+foreach ($property in $mesh08.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw 'MESH08 source changed since verification.' }
+}
+if ((Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/character-mesh08-corpus.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh08.corpus_report_sha256) { throw 'MESH08 corpus proof changed.' }
+$arguments += '-DRF_CLIENT_455_MESH08=ON'
+$arguments += "-DRF_CLIENT_455_MESH08_LIBRARY=$mesh08Library"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -191,6 +202,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_character_mesh_source.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_character_mesh_source.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_mesh08.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_mesh08.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

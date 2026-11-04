@@ -66,8 +66,14 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Продолжить Character455 с MESH08 framing/CPU data по922A00 на pinned Shield065,
-   materials/skin/indices/vertices;потом packed455layouts иD3D9buffer/render consumers.
+1. Продолжить Character455 с runtime construction MESH08 по922A00: metadata/matrices,
+   materials, first-match local/external bones и404-byte influence records; затем
+   shared GPU buffers/index rebase/publication/release иD3D9buffer/render consumers.
+   Framing готов:858real files/12090meshes прошли lossless roundtrip;
+   6304native checks/12samples/393parts/1309guarded truncations standalone/full-client.
+   7Python tests прошли. Не повторять corpus audit без изменения inputs/parser.
+   Normal model-loader ещё не подключён; runtime материал/кости/GPU не восстановлены.
+   research/client455-mesh08-format.md;inventory/client455-mesh08*.json.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -104,6 +110,7 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 Обычная повторная сборка: scripts/probe_client_character_build.ps1.
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
 Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
+MESH08: build_client455_mesh08.py; verify_client_mesh08.py [--lab]; probe_client_mesh08.py.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
 --level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).
