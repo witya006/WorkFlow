@@ -10,39 +10,152 @@
       "description": "Helper loader: record fields, options, names, growth and missing-file count reset",
       "status": "implemented",
       "verification": "partial; native lab and static instruction comparison",
-      "reference": {"va": "0x90bbf0", "rva": "0x50bbf0", "size": 1318},
+      "reference": {
+        "va": "0x90bbf0",
+        "rva": "0x50bbf0",
+        "size": 1318
+      },
       "implementation": "work/client-build/source/R3Engine/2ndclass/extdummy.cpp",
       "option": "RF_CLIENT_455_HELPER_LOADER",
-      "evidence": ["inventory/client-behavior-patches.json", "inventory/client-helper-runtime.json", "research/client-helper455-runtime.md"],
-      "scenarios": ["140 pinned real files, 97543 records", "12 own fixtures", "capacity 0,1,15,16,17,47,48,49,80", "uppercase/truncated/empty names", "music/interior/fog/id and option order", "missing input after successful load", "empty input and no script_begin", "flag filtering, index clamping and explicit release"],
-      "gaps": ["unsafe malformed inputs", "OOM", "non-ASCII locale/decimal conversion parity", "repeat successful-load lifecycle", "normal map selection/use"]
+      "evidence": [
+        "inventory/client-behavior-patches.json",
+        "inventory/client-helper-runtime.json",
+        "research/client-helper455-runtime.md"
+      ],
+      "scenarios": [
+        "140 pinned real files, 97543 records",
+        "12 own fixtures",
+        "capacity 0,1,15,16,17,47,48,49,80",
+        "uppercase/truncated/empty names",
+        "music/interior/fog/id and option order",
+        "missing input after successful load",
+        "empty input and no script_begin",
+        "flag filtering, index clamping and explicit release"
+      ],
+      "gaps": [
+        "unsafe malformed inputs",
+        "OOM",
+        "non-ASCII locale/decimal conversion parity",
+        "repeat successful-load lifecycle",
+        "normal map selection/use"
+      ]
     },
     {
       "id": "WORLD-HELPER-002",
       "description": "Helper matrices, coordinate transformations and local inclusive bbox",
       "status": "implemented",
-      "verification": "partial; native binary32 outputs and independent scalar calculation; reference execution not compared",
+      "verification": "partial overall; inverse/transform instruction identity proved at COFF and linked PE, 338 native checks in 12 FP modes; full normal game environment remains open",
       "reference": [
-        {"va": "0x8bfbc0", "rva": "0x4bfbc0", "role": "inverse"},
-        {"va": "0x8c0980", "rva": "0x4c0980", "role": "transform"},
-        {"va": "0x8bbe60", "rva": "0x4bbe60", "role": "inclusive bbox"},
-        {"va": "0x90ba90", "rva": "0x50ba90", "role": "helper bbox query"}
+        {
+          "va": "0x8bfbc0",
+          "rva": "0x4bfbc0",
+          "role": "inverse"
+        },
+        {
+          "va": "0x8c0980",
+          "rva": "0x4c0980",
+          "role": "transform"
+        },
+        {
+          "va": "0x8bbe60",
+          "rva": "0x4bbe60",
+          "role": "inclusive bbox"
+        },
+        {
+          "va": "0x90ba90",
+          "rva": "0x50ba90",
+          "role": "helper bbox query"
+        }
       ],
-      "implementation": ["work/client-build/source/R3Engine/common/r3math.cpp", "work/client-build/source/R3Engine/2ndclass/extdummy.cpp"],
-      "evidence": ["inventory/client-helper-runtime.json", "research/client-helper455-runtime.md"],
-      "scenarios": ["nonzero interior local point -> world -> local", "outside point classification", "matrix times inverse identity tolerance", "invalid index preserves output", "missing node_tm keeps inverse zero"],
-      "gaps": ["exact x87 rounding vs modern scalar code", "singular/NaN behavior", "full affine-threshold boundary parity"]
+      "implementation": [
+        "work/client-build/source/R3Engine/common/r3math.cpp",
+        "work/client-build/source/R3Engine/2ndclass/extdummy.cpp"
+      ],
+      "evidence": [
+        "inventory/client-helper-runtime.json",
+        "research/client-helper455-runtime.md",
+        "inventory/client455-x87-math.json",
+        "inventory/client455-x87-link.json",
+        "research/client455-x87-and-weather.md"
+      ],
+      "scenarios": [
+        "nonzero interior local point -> world -> local",
+        "outside point classification",
+        "matrix times inverse identity tolerance",
+        "invalid index preserves output",
+        "missing node_tm keeps inverse zero"
+      ],
+      "gaps": [
+        "normal game FPU initialization and caller environment",
+        "full helper loader/NaN/exception behavior outside the two exact math kernels",
+        "normal map runtime"
+      ]
     },
     {
       "id": "WORLD-HELPER-003",
-      "description": "Level EXT.spt load and additional helper-owner pointer passed to BSP",
+      "description": "Level EXT.spt load, helper-owner binding and confirmed two-layer weather/interior consumer",
       "status": "described",
-      "verification": "static caller confirmed; new BSP consumer unknown",
-      "reference": {"load_va": "0x8eaa88", "load_rva": "0x4eaa88", "bind_va": "0x8eaa93", "bind_rva": "0x4eaa93", "owner_offset": 512, "bsp_field_offset": 744},
+      "verification": "static caller and weather consumer confirmed in both pinned PE; source integration remains open",
+      "reference": {
+        "load_va": "0x8eaa88",
+        "load_rva": "0x4eaa88",
+        "bind_va": "0x8eaa93",
+        "bind_rva": "0x4eaa93",
+        "owner_offset": 512,
+        "bsp_field_offset": 744,
+        "consumer_va": "0x8cad00",
+        "consumer_rva": "0x4cad00"
+      },
       "implementation": "work/client-build/source/R3Engine/2ndclass/level.cpp",
-      "evidence": ["research/client-helper455-runtime.md"],
-      "scenarios": ["normal LoadLevel constructs EXT.spt filename"],
-      "gaps": ["identify actual BSP pointer consumer", "restore required behavior in source", "normal LoadLevel runtime", "interior/fog integration"]
+      "evidence": [
+        "research/client-helper455-runtime.md",
+        "inventory/client455-weather-helper.json",
+        "research/client455-x87-and-weather.md"
+      ],
+      "scenarios": [
+        "normal LoadLevel constructs EXT.spt filename"
+      ],
+      "gaps": [
+        "port complete two-layer environment config/state/load/release/render",
+        "restore helper-owner binding and interior state control",
+        "normal LoadLevel runtime"
+      ]
+    },
+    {
+      "id": "MATH-X87-001",
+      "description": "Affine matrix inverse and xyz transform with exact 455 instruction order and float spills",
+      "status": "verified",
+      "verification": "bounded to two instruction-identical x86 functions under equal caller x87 environment; not complete game equivalence",
+      "reference": [
+        {
+          "va": "0x8bfbc0",
+          "rva": "0x4bfbc0",
+          "size": 485
+        },
+        {
+          "va": "0x8c0980",
+          "rva": "0x4c0980",
+          "size": 132
+        }
+      ],
+      "implementation": "scripts/native/client455_x87_math.cpp",
+      "option": "RF_CLIENT_455_X87_MATH",
+      "evidence": [
+        "inventory/client455-x87-math.json",
+        "inventory/client455-x87-link.json",
+        "research/client455-x87-and-weather.md"
+      ],
+      "scenarios": [
+        "COFF instruction identity in both pinned PE",
+        "same two linked function bodies and global wrapper bindings",
+        "PC24/53/64 with all four rounding modes",
+        "affine threshold/next float, NaN and singular quirks, alias position, FPU TOP/control preservation",
+        "140 real helper files in aligned native lab"
+      ],
+      "gaps": [
+        "normal game startup x87 environment",
+        "other math functions and binary Character SDK internals remain outside this feature"
+      ]
     }
   ],
   "remaining_areas": "All other acceptance areas in docs/client-acceptance.md remain open; successful helper lab is not M5/M9 completion"

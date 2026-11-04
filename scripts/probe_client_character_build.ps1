@@ -24,6 +24,8 @@ if ($HelperLab) { $logs = Join-Path $workspace 'artifacts/client-helper-lab' }
 $dx = Get-Content -LiteralPath (Join-Path $workspace 'inventory/directx81b-sdk.json') -Raw | ConvertFrom-Json
 New-Item -ItemType Directory -Force -Path $logs | Out-Null
 $arguments = @('-S', $source, '-B', $build, '-G', 'Visual Studio 18 2026', '-A', 'Win32', '-T', 'v145', '-DCMAKE_SYSTEM_VERSION=10.0.26100.0',
+    '-DCMAKE_CXX_FLAGS=/DWIN32 /D_WINDOWS /W3 /GR /EHsc',
+    '-DCMAKE_CXX_FLAGS_RELEASE=/O2 /Ob2 /DNDEBUG',
     "-DRF_LEGACY_DX8_INCLUDE=$(Join-Path $workspace 'local/directx81b/include-overlay')",
     "-DRF_LEGACY_DX8_LIBRARY=$(Join-Path $dx.sdk_root 'lib')",
     "-DRF_RECOVERED_CHARACTER_INCLUDE=$(Join-Path $recovered 'include')",
@@ -43,6 +45,16 @@ if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_LOBBY_TR
 $arguments += '-DRF_CLIENT_455_LOBBY_TRANSITION=ON'
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_HELPER_LOADER' })) { throw '455 helper-loader evidence/selection is missing.' }
 $arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
+$math = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-x87-math.json') -Raw | ConvertFrom-Json
+$mathLibrary = Join-Path $workspace $math.library
+if ((Get-FileHash -LiteralPath $mathLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $math.library_sha256 -or
+    $math.native_test.checks -lt 338 -or $math.native_test.failures -ne 0 -or $math.native_test.precision_rounding_modes -ne 12) { throw '455 x87 math proof is missing or stale.' }
+foreach ($property in $math.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 x87 math source changed since verification.' }
+}
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_X87_MATH' -and $_.implementation_library_sha256 -eq $math.library_sha256 })) { throw '455 x87 math source selection is missing or stale.' }
+$arguments += '-DRF_CLIENT_455_X87_MATH=ON'
+$arguments += "-DRF_CLIENT_455_X87_MATH_LIBRARY=$mathLibrary"
 $arguments += "-DRF_CLIENT_HELPER_LAB=$(if ($HelperLab) { 'ON' } else { 'OFF' })"
 $jpeg = Get-Content -LiteralPath (Join-Path $workspace 'inventory/jpeg6b-build.json') -Raw | ConvertFrom-Json
 $jpegLibrary = Join-Path $workspace $jpeg.library
@@ -99,6 +111,15 @@ if ($HelperLab) {
     & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-helper-lab/build.txt --build-dir work/client-build/build-helper-lab --output inventory/client-helper-lab-build.json --max-details 80
 } else {
     & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_executable_build.py --build-exit $result --log artifacts/client-character-diagnostic/build.txt --build-dir work/client-build/build-character-diagnostic --output inventory/client-character-diagnostic.json --max-details 80
+}
+if ($result -eq 0) {
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_x87_math455.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_x87_math455.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
 exit $result

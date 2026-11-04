@@ -25,12 +25,19 @@ struct Header {
     char magic[8];
     DWORD version,loaded,count,recordBytes,useBytes,checks,failures;
     DWORD missingCalled,countAfterMissing,clampMatches,memBefore,memAfter;
+    DWORD fpBefore,fpAfter;
 };
 struct Use {
     float world[3],local[3];
     BOOL inside,outside,worldOk,localOk;
 };
-static_assert(sizeof(Header)==56 && sizeof(Use)==40,"Lab wire layout");
+static_assert(sizeof(Header)==64 && sizeof(Use)==40,"Lab wire layout");
+
+static unsigned short fpControl() {
+    unsigned short value;
+    __asm { fnstcw value }
+    return value;
+}
 
 static void check(Header& header,bool ok) {
     ++header.checks;
@@ -44,7 +51,8 @@ static unsigned probe() {
     if (!a || a>=sizeof(input) || !b || b>=sizeof(output)) return 21;
     DWORD n=GetEnvironmentVariableA("RF_LAB_HELPER_MISSING",missing,sizeof(missing));
     if (n>=sizeof(missing)) return 22;
-    Header header={ {'R','F','H','L','P','4','5','5'},1,0,0,208,40,0,0,0,0,0,0,0 };
+    Header header={ {'R','F','H','L','P','4','5','5'},2,0,0,208,40,0,0,0,0,0,0,0,0,0 };
+    header.fpBefore=fpControl();
     const char* delayed[]={"mss32.dll","ABuse.dll","Adv.dll","PDLL.dll"};
     for (unsigned i=0;i<4;++i) check(header,GetModuleHandleA(delayed[i])==NULL);
     CExtDummy owner;
@@ -102,6 +110,8 @@ static unsigned probe() {
     }
     owner.ReleaseExtDummy();
     header.memAfter=GetDmallocSize();
+    header.fpAfter=fpControl();
+    check(header,header.fpBefore==header.fpAfter);
     check(header,header.memBefore==header.memAfter && owner.GetTotalNum()==0 && owner.GetDummy(0)==NULL);
     for (unsigned i=0;i<4;++i) check(header,GetModuleHandleA(delayed[i])==NULL);
     io=io && std::fseek(fp,0,SEEK_SET)==0 && std::fwrite(&header,sizeof(header),1,fp)==1;

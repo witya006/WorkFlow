@@ -13,8 +13,8 @@ DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, ru
 Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
 Документ research/client-first-build.md; inventory/client-first-build.json.
 
-Сохранены 11 compiler-only patches и 6 отдельных selectable behavior files:
-DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455.
+Сохранены 11 compiler-only patches и 7 отдельных selectable behavior files:
+DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455 и x87 math.
 Их инструкции сверены
 по обоим pinned PE, исходные ветки сохранены. _DEVELOPER_ и /FORCE не включены;
 CheckFiles/SendLog не заменены пустыми functions. По исследованным reference callers
@@ -27,14 +27,19 @@ Loader455 VA0x90BBF0 найден, весь body/инструкции свере
 записи, interior4. research/client-helper455-runtime.md; inventory/client-features.json.
 Полный проект с own lab entry загрузил 140 файлов/97 543 записи и 12 fixtures.
 Проверены raw fields, ненулевые coordinate transforms, inverse, bbox/list/release.
-2 546 779 native/comparison checks, 4 import-parser tests. Игровые DLL не загружались.
-Обычная ревизия также собрана: 2 436 608 bytes, entry RVA0x1BAA10, snapshot helper455.
+Текущая x87 ревизия:2 546 931 native/comparison checks,4 import-parser tests.
+Две math функции совпали с инструкциями 455 на COFF и в linked normal/lab PE;
+338 own native checks в12 FP modes и3 COFF parser tests. FP control lab0x027F.
+Игровые DLL не загружались. Обычная ревизия собрана:2 436 608bytes,
+entryRVA0x1BA990, snapshot math455-release. research/client455-x87-and-weather.md.
 Обычный запуск игры/LoadLevel/GPU/network НЕ выполнен; M5 пока не закрыт.
 
-1. Сравнить численные math contracts с 455; текущая native binary32 проверка
-   не доказывает совпадение с x87 rounding эталона. Max local roundtrip error .001953125.
-2. Проверить полный путь использования EXT helpers. 455 после LoadExtDummy передаёт
-   owner в BSP+744; старый клиент этой связи не содержит. Найти фактический consumer.
+1. Перенести полный weather/helper path. Consumer найден:0x8CAD00/RVA0x4CAD00,
+   два слоя weather, BSP+744 owner, mask4 останавливает type1 particles внутри bbox.
+   Сначала восстановить реальный 455 config parser/state/lifecycle обоих слоёв,
+   затем source integration/render. Не копировать 455 offsets в старый CBsp.
+2. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
+   инструкционно совпадают с 455; окружающая среда игры/GPU ещё не проверена.
 3. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
    malformed paths/locale/OOM пока не закрыты. Не исправлять quirks по догадке.
 4. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
@@ -50,6 +55,7 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 
 Обычная повторная сборка: scripts/probe_client_character_build.ps1.
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
+Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
 Lab использует отдельные build-helper-lab/logs/reports, нормальный target не запускается.
 Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
 Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем
@@ -57,12 +63,14 @@ Lab использует отдельные build-helper-lab/logs/reports, но�
 Если меняется Character header: prepare_character_header.py -> check_character_header.py
 -> build_character_setters.py -> build_character_managers.py -> probe_character_effect_loaders.py.
 Logger: build_client455_effect_log.py -> apply_client_effect_log455.py.
+Math: build_client455_x87_math.py -> apply_client_x87_math455.py; driver после сборки
+сам проверяет linked instructions. Не пересобирать неизменённый archive без причины.
 Behavior branches: apply_client_draw455.py / apply_client_lobby455.py /
-apply_client_helper455.py -> prepare_client_build.py
+apply_client_helper455.py / apply_client_x87_math455.py -> prepare_client_build.py
 -> diagnostic build -> verify_client_draw455.py / verify_client_coff.py.
 
 audit_client_executable.py --label NAME сохраняет immutable snapshot нормальной сборки;
-initial/clean/helper455 уже заняты, перезапись другой сборкой запрещена. Для новой
+initial/clean/helper455/helper-x87/math455-release уже заняты, перезапись другой сборкой запрещена. Для новой
 ревизии выбрать новое короткое имя. Lab entry таким snapshot не принимается.
 Все Python scripts запускать через scripts/Invoke-Python.ps1.
 

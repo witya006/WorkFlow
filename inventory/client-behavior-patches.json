@@ -238,6 +238,82 @@
     ]
   },
   {
+    "file": "work/client-build/source/R3Engine/common/r3math.cpp",
+    "original_sha256": "67b4f2961a30a2e317c0a0124eceea1efed4b691cfa4cf98e9f14fa5e3fc53d7",
+    "input_sha256": "67b4f2961a30a2e317c0a0124eceea1efed4b691cfa4cf98e9f14fa5e3fc53d7",
+    "patched_sha256": "d6458313a25b6cecb869c268d7d80660db1d28104b90619bd74475b097925468",
+    "build_option": "RF_CLIENT_455_X87_MATH",
+    "legacy_branch_preserved": true,
+    "implementation_library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
+    "reason": "Preserve 455 x87 arithmetic instruction order, float spills and caller FP control instead of binary32 intermediate rounding.",
+    "binary_evidence": [
+      {
+        "input": "current",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "symbol": "_RF455_MatrixInvert",
+            "va": "0x8bfbc0",
+            "rva": "0x4bfbc0",
+            "size": 485,
+            "reference_code_sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee",
+            "relocations": [
+              {
+                "offset": 33,
+                "type": 6,
+                "symbol": "_RF455_AffineEpsilon"
+              }
+            ],
+            "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+          },
+          {
+            "symbol": "_RF455_Vector3fTransform",
+            "va": "0x8c0980",
+            "rva": "0x4c0980",
+            "size": 132,
+            "reference_code_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+            "relocations": [],
+            "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+          }
+        ]
+      },
+      {
+        "input": "reference-backup",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "symbol": "_RF455_MatrixInvert",
+            "va": "0x8bfbc0",
+            "rva": "0x4bfbc0",
+            "size": 485,
+            "reference_code_sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee",
+            "relocations": [
+              {
+                "offset": 33,
+                "type": 6,
+                "symbol": "_RF455_AffineEpsilon"
+              }
+            ],
+            "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+          },
+          {
+            "symbol": "_RF455_Vector3fTransform",
+            "va": "0x8c0980",
+            "rva": "0x4c0980",
+            "size": 132,
+            "reference_code_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+            "relocations": [],
+            "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+          }
+        ]
+      }
+    ]
+  },
+  {
     "file": "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
     "original_sha256": "1ae9cd1d7d7cf2e85b3857cdbb62531b60ce038b2d252833cf30e3f18c46e529",
     "input_sha256": "1ae9cd1d7d7cf2e85b3857cdbb62531b60ce038b2d252833cf30e3f18c46e529",

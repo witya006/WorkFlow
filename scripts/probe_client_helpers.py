@@ -1,8 +1,8 @@
 """Run only our full-project helper-lab client; preserve exact pinned real samples.
 
 No input EXE or game DLL is executed. The lab-specific WinMain bypasses normal
-engine/GPU/network initialization and original game teardown. Binary 455 evidence
-is static; numerical parity with x87 reference execution remains unproven.
+engine/GPU/network initialization and original game teardown. Math instruction
+identity is proved separately; normal game startup FPU state remains unverified.
 """
 import argparse
 import hashlib
@@ -16,7 +16,7 @@ from compare_client_binaries import WS, pe
 from helper_spt import Helper,parse,encode
 from apply_client_helper455 import binary_evidence
 
-HEADER = struct.Struct('<8s12I')
+HEADER = struct.Struct('<8s14I')
 USE = struct.Struct('<6f4I')
 DELAYED = {'mss32.dll','abuse.dll','adv.dll','pdll.dll'}
 
@@ -26,9 +26,10 @@ def f32(x):
 
 
 def transform(pos, matrix):
-    # Independent explicit binary32 calculation of the source's scalar order.
-    return tuple(f32(f32(f32(f32(matrix[j]*pos[0])+f32(matrix[j+4]*pos[1]))+
-                       f32(matrix[j+8]*pos[2]))+matrix[j+12]) for j in range(3))
+    # Independent binary64 intermediates for the observed x87 PC53/nearest mode.
+    # Reference instruction order starts with y*column[1] + x*column[0].
+    return tuple(f32(((matrix[j+4]*pos[1]+matrix[j]*pos[0])+
+                      matrix[j+8]*pos[2])+matrix[j+12]) for j in range(3))
 
 
 def import_names(data, index):
@@ -70,12 +71,15 @@ def read_output(path):
     data=path.read_bytes()
     magic,*values=HEADER.unpack_from(data)
     names=['version','loaded','count','record_bytes','use_bytes','checks','failures',
-           'missing_called','count_after_missing','clamp_matches','memory_before','memory_after']
+           'missing_called','count_after_missing','clamp_matches','memory_before','memory_after',
+           'fp_before','fp_after']
     header=dict(zip(names,values))
-    if magic!=b'RFHLP455' or header['version']!=1 or header['record_bytes']!=208 or header['use_bytes']!=40:
+    if magic!=b'RFHLP455' or header['version']!=2 or header['record_bytes']!=208 or header['use_bytes']!=40:
         raise ValueError('Unexpected helper-lab output header')
     if len(data)!=HEADER.size+header['count']*248 or header['failures']:
         raise ValueError(f'Incomplete or failed native result: {header}')
+    if header['fp_before']!=header['fp_after'] or header['fp_before']&0xf00!=0x200:
+        raise ValueError(f'Independent scalar comparison requires unchanged PC53/nearest: {header}')
     records=[]
     for i in range(header['count']):
         at=HEADER.size+248*i
@@ -97,7 +101,9 @@ def main():
     build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'))
     if build['build_exit'] or build['unresolved_symbols'] or build['generated_objects']!=181:
         raise ValueError('A successful complete-project helper-lab build is required')
-    if any(build['build_settings'].get(k)!='ON' for k in ['RF_CLIENT_455_HELPER_LOADER','RF_CLIENT_HELPER_LAB']):
+    if build.get('compiler_flags',{}).get('CMAKE_CXX_FLAGS_RELEASE')!='/O2 /Ob2 /DNDEBUG':
+        raise ValueError('Lab engine must use the explicit production Release flags')
+    if any(build['build_settings'].get(k)!='ON' for k in ['RF_CLIENT_455_HELPER_LOADER','RF_CLIENT_HELPER_LAB','RF_CLIENT_455_X87_MATH']):
         raise ValueError('Missing 455 loader/lab build selection')
     if len(build.get('lab_input_sha256',{}))!=4:
         raise ValueError('Lab build input hashes are missing')
@@ -107,6 +113,9 @@ def main():
     exe=WS/'work/client-build/build-helper-lab/Release/RF_Online.bin'
     data=exe.read_bytes()
     image=pe(data)
+    linked=json.loads((WS/'inventory/client455-x87-link.json').read_text(encoding='utf-8'))['lab']
+    if linked['sha256']!=hashlib.sha256(data).hexdigest():
+        raise ValueError('Run verify_client_x87_math455.py --lab for the current binary')
     direct,delayed=import_names(data,1),import_names(data,13)
     if set(delayed)!=DELAYED or set(direct)&DELAYED:
         raise ValueError('Input game DLLs must only be delay imports in the lab')
@@ -114,7 +123,13 @@ def main():
             'dinput8.dll','winmm.dll','ws2_32.dll','imm32.dll','comdlg32.dll'}
     if set(direct)-system:
         raise ValueError(f'Unexpected eager lab DLL: {set(direct)-system}')
-    lab=WS/'work/client-helper-lab'
+    math_proof=json.loads((WS/'inventory/client455-x87-math.json').read_text(encoding='utf-8'))
+    math_library=WS/math_proof['library']
+    if hashlib.sha256(math_library.read_bytes()).hexdigest()!=math_proof['library_sha256']:
+        raise ValueError('Verified x87 library changed')
+    if Path(build['build_settings']['RF_CLIENT_455_X87_MATH_LIBRARY']).resolve()!=math_library.resolve():
+        raise ValueError('Lab did not select the verified x87 library')
+    lab=WS/'work/client-helper-lab/revisions'/hashlib.sha256(data).hexdigest()[:16]
     lab.mkdir(parents=True,exist_ok=True)
     if any(lab.rglob('*.dll')) or any(exe.parent.glob('*.dll')):
         raise ValueError('The helper lab must contain no local DLL providers')
@@ -200,7 +215,7 @@ def main():
         total_helpers+=len(items)
         return {'case':label,'path':original,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),
             'helpers':len(items),'native_checks':header['checks'],'comparison_checks':checks,
-            'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest()}
+            'output_sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'fp_control':hex(header['fp_before'])}
 
     for label,raw,expected,mode,loaded in fixtures:
         records_report.append(run('fixtures/'+label,raw,expected,mode,loaded))
@@ -221,9 +236,10 @@ def main():
         'architecture':image['architecture'],'image_base':hex(image['image_base']),'entry_rva':hex(image['entry_rva']),
         'direct_imports':direct,'delayed_imports':delayed,
         'lab_source_sha256':hashlib.sha256((WS/'scripts/native/client_helper_lab.cpp').read_bytes()).hexdigest(),
-        'binary_evidence':evidence,'max_world_local_error':max_roundtrip_error,
+        'binary_evidence':evidence,'math_proof':'inventory/client455-x87-math.json',
+        'max_world_local_error':max_roundtrip_error,
         'probe_point_classified_outside':center_outside,'cases':records_report,
-        'limits':'Own full-project CPU-only laboratory entry, not normal LoadLevel/GPU/network startup. Original input EXEs/DLLs not executed. Reference comparison is instruction-level/static; x87 numerical parity, OOM, unsafe malformed inputs, non-ASCII locale and complete map path not established.'}
+        'limits':'Own full-project CPU-only laboratory entry, not normal LoadLevel/GPU/network startup. Original input EXEs/DLLs not executed. Two math functions match reference instruction bytes under equal x87 environment; actual game startup FPU environment, OOM, unsafe malformed inputs, non-ASCII locale and complete map path not established.'}
     output=WS/('artifacts/client-helper-lab/limited-probe.json' if args.limit else 'inventory/client-helper-runtime.json')
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')

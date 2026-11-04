@@ -31,7 +31,11 @@ R3Engine собран под VS 2026 x86 с двумя успешными чис
 Обычная ревизия собрана, отдельный own lab entry полного проекта выполнил загрузку
 140 реальных файлов/97 543 записей и CPU transforms/bbox;12 fixtures,2 546 779 checks,
 4 import-parser tests. В lab игровые DLL отложены и не загружались. Обычный игровой
-запуск/LoadLevel и x87 reference parity не проверены. research/client-helper455-runtime.md.
+запуск/LoadLevel не проверены. Последующее: две x87 math функции восстановлены
+с совпадением всех инструкций455, проверены в обоих linked clients и338 native
+checks/12FP modes. Повтор140files после выравнивания Release options успешен,
+2 546 931checks, FP control0x027F. Weather helper consumer найден, двухслойная система
+ещё не перенесена. research/client455-x87-and-weather.md.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).

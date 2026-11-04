@@ -1,0 +1,169 @@
+{
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "function_va": "0x8cad00",
+      "function_rva": "0x4cad00",
+      "size": 935,
+      "body_sha256": "e3f75b9112ab84296baa87acb12045b9ea104d7feed8adb2b66e2f8bfd5b0965",
+      "instructions": [
+        {
+          "va": "0x8cad68",
+          "rva": "0x4cad68",
+          "bytes": "8b8de8020000",
+          "meaning": "read BSP helper owner at +744"
+        },
+        {
+          "va": "0x8cad78",
+          "rva": "0x4cad78",
+          "bytes": "6a04",
+          "meaning": "interior mask 4"
+        },
+        {
+          "va": "0x8cada7",
+          "rva": "0x4cada7",
+          "bytes": "e8e40d0400",
+          "meaning": "helper flag list"
+        },
+        {
+          "va": "0x8cafdd",
+          "rva": "0x4cafdd",
+          "bytes": "8b8de8020000",
+          "meaning": "same owner for bbox query"
+        },
+        {
+          "va": "0x8cafe4",
+          "rva": "0x4cafe4",
+          "bytes": "e8a70a0400",
+          "meaning": "helper bbox contains camera"
+        },
+        {
+          "va": "0x8cb046",
+          "rva": "0x4cb046",
+          "bytes": "6a00",
+          "meaning": "stop state"
+        },
+        {
+          "va": "0x8cb04e",
+          "rva": "0x4cb04e",
+          "bytes": "6a01",
+          "meaning": "start state"
+        },
+        {
+          "va": "0x8cb052",
+          "rva": "0x4cb052",
+          "bytes": "e8c9510100",
+          "meaning": "apply particle state"
+        },
+        {
+          "va": "0xb373b8",
+          "rva": "0x7373b8",
+          "bytes": "b81e85eb51b8ce3f",
+          "meaning": "strict lower time threshold"
+        },
+        {
+          "va": "0xb373b0",
+          "rva": "0x7373b0",
+          "bytes": "8fc2f5285c8fea3f",
+          "meaning": "strict upper time threshold"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "function_va": "0x8cad00",
+      "function_rva": "0x4cad00",
+      "size": 935,
+      "body_sha256": "e3f75b9112ab84296baa87acb12045b9ea104d7feed8adb2b66e2f8bfd5b0965",
+      "instructions": [
+        {
+          "va": "0x8cad68",
+          "rva": "0x4cad68",
+          "bytes": "8b8de8020000",
+          "meaning": "read BSP helper owner at +744"
+        },
+        {
+          "va": "0x8cad78",
+          "rva": "0x4cad78",
+          "bytes": "6a04",
+          "meaning": "interior mask 4"
+        },
+        {
+          "va": "0x8cada7",
+          "rva": "0x4cada7",
+          "bytes": "e8e40d0400",
+          "meaning": "helper flag list"
+        },
+        {
+          "va": "0x8cafdd",
+          "rva": "0x4cafdd",
+          "bytes": "8b8de8020000",
+          "meaning": "same owner for bbox query"
+        },
+        {
+          "va": "0x8cafe4",
+          "rva": "0x4cafe4",
+          "bytes": "e8a70a0400",
+          "meaning": "helper bbox contains camera"
+        },
+        {
+          "va": "0x8cb046",
+          "rva": "0x4cb046",
+          "bytes": "6a00",
+          "meaning": "stop state"
+        },
+        {
+          "va": "0x8cb04e",
+          "rva": "0x4cb04e",
+          "bytes": "6a01",
+          "meaning": "start state"
+        },
+        {
+          "va": "0x8cb052",
+          "rva": "0x4cb052",
+          "bytes": "e8c9510100",
+          "meaning": "apply particle state"
+        },
+        {
+          "va": "0xb373b8",
+          "rva": "0x7373b8",
+          "bytes": "b81e85eb51b8ce3f",
+          "meaning": "strict lower time threshold"
+        },
+        {
+          "va": "0xb373b0",
+          "rva": "0x7373b0",
+          "bytes": "8fc2f5285c8fea3f",
+          "meaning": "strict upper time threshold"
+        }
+      ]
+    }
+  ],
+  "scope": "Manual whole-function analysis plus reproducible instruction checks, not runtime weather validation",
+  "confirmed": {
+    "helper_owner_bsp_offset": 744,
+    "environment_particle_pointer_offsets": [
+      96,
+      100
+    ],
+    "environment_layer_iterations": 2,
+    "interior_flag": 4,
+    "flagged_helper_stack_capacity": 1024,
+    "camera_test_position": "global inverse-view translation; not weather creation position offset by forward vector*50",
+    "particle_type_1": "stop on any containing interior helper; else start only if stopped; attr0x10000 adds strict .24<getter<.83 stop condition",
+    "particle_type_2": "retains fixed world bbox stop/restart rule",
+    "lifecycle": "ClearVariable0x8F66B0 and ReleaseEntities0x8F9940 clear owner; level load0x8EAA93 binds owner"
+  },
+  "unknown": [
+    "meaning of time getter0x8B1430 beyond returning float at0x1154DEC",
+    "complete two-layer environment configuration/parser/lifecycle and particle changes",
+    "all other possible consumers and full normal map runtime"
+  ],
+  "implementation": "Not yet ported; legacy source has one environment particle and no helper-owner binding. Do not copy 455 object offsets into the old CBsp layout."
+}

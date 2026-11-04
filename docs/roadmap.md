@@ -34,9 +34,11 @@ SetTexPath/SetMipMap восстановлены; 18 дополнительных
 M5 в работе: loader455 VA0x90BBF0/RVA0x50BBF0 найден; count reset, lowercase каждой
 записи и interior4 перенесены отдельным flag. Own lab entry полного проекта загрузил
 140 файлов/97 543 записи, использовал ненулевые координаты и bbox. 12 fixtures /
-2 546 779 checks прошли;4 import-parser tests. Обычная ревизия также собрана.
-Остаются полный LoadLevel/BSP consumer и точное сравнение с x87 reference; M5 не закрыт.
-research/client-helper455-runtime.md; inventory/client-features.json.
+2 546 931 checks прошли;4 import-parser tests. Обычная ревизия также собрана.
+Две math функции совпали со всеми инструкциями455 в COFF/linked PE;338 native
+checks в12FP modes. BSP consumer найден:двухслойная погода и mask4 interior stop.
+Остаются его полный source перенос, normal LoadLevel и FPU initialization;M5 не закрыт.
+research/client455-x87-and-weather.md; inventory/client-features.json.
 
 ## Этапы
 

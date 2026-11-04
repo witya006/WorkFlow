@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T09:31:49.090759+00:00",
+  "checked_at_utc": "2026-11-04T10:05:57.288074+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -29,13 +29,19 @@
     "RF_LEGACY_NEW_UI": "ON",
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
+    "RF_CLIENT_455_X87_MATH": "ON",
+    "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
     "RF_CLIENT_HELPER_LAB": "ON"
   },
   "scope": "Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.",
+  "compiler_flags": {
+    "CMAKE_CXX_FLAGS": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc",
+    "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
+  },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "6156fd65c19360a93b16779178bf2afe630e1d3fa7b10271ba526ba6ad7b4b85",
+    "scripts/native/client_helper_lab.cpp": "c347b3d28f380926ec94be6d03bcb31b2de284bb2fecbb0359c10993f68ab556",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "7f5d7be0679cce3c92eff3f6ec176c99b444c67758805731f415cb6493df0b5a"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "cf5110dd3dbbdbbffa21c91fcd46f2c8b0f5f3bc8cfb255bdfb8c4591a165f44"
   }
 }

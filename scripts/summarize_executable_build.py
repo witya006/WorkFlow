@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
@@ -67,6 +67,9 @@ def main():
               'build_dir': args.build_dir, 'log': args.log,
               'build_settings': settings,
               'scope': 'Client-only compile diagnostic. No input EXE execution; compilation does not prove behavior.'}
+    if cache.exists():
+        report['compiler_flags']={match[1]:match[2] for line in cache.read_text(encoding='utf-8').splitlines()
+            if (match:=re.match(r'(CMAKE_CXX_FLAGS(?:_RELEASE)?):STRING=(.*)',line))}
     if settings.get('RF_CLIENT_HELPER_LAB')=='ON' and args.build_exit==0:
         inputs=['scripts/native/client_helper_lab.cpp',
                 'work/client-build/source/R3Engine/2ndclass/extdummy.cpp',

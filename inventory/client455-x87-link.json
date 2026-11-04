@@ -1,0 +1,102 @@
+{
+  "lab": {
+    "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
+    "sha256": "cf5110dd3dbbdbbffa21c91fcd46f2c8b0f5f3bc8cfb255bdfb8c4591a165f44",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "map_sha256": "94ebd52c5ddd8d2260e054dba4c597d817764047eae86fbde40e51d8ab9c6356",
+    "math_library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
+    "functions": [
+      {
+        "symbol": "_RF455_MatrixInvert",
+        "va": "0x690fe0",
+        "rva": "0x290fe0",
+        "size": 485,
+        "linked_sha256": "f05a707921343edbec54816de4ca3c8c921113eede92da96be16826d4f03e71e",
+        "reference_va": "0x8bfbc0",
+        "reference_rva": "0x4bfbc0",
+        "instruction_identity": true,
+        "wrapper": "?MatrixInvert@@YAHQAY03M0@Z",
+        "wrapper_va": "0x656e30",
+        "wrapper_rva": "0x256e30",
+        "wrapper_kind": "balanced-frame-tail-jump",
+        "wrapper_edge": "558bec5de971acdaff",
+        "linker_thunks": [
+          {
+            "va": "0x401aaa",
+            "rva": "0x1aaa",
+            "bytes": "e931f52800"
+          }
+        ]
+      },
+      {
+        "symbol": "_RF455_Vector3fTransform",
+        "va": "0x691240",
+        "rva": "0x291240",
+        "size": 132,
+        "linked_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+        "reference_va": "0x8c0980",
+        "reference_rva": "0x4c0980",
+        "instruction_identity": true,
+        "wrapper": "?Vector3fTransform@@YAXQAM0QAY03M@Z",
+        "wrapper_va": "0x657de0",
+        "wrapper_rva": "0x257de0",
+        "wrapper_kind": "tail-jump",
+        "wrapper_edge": "e92f73dbff",
+        "linker_thunks": [
+          {
+            "va": "0x40f114",
+            "rva": "0xf114",
+            "bytes": "e927212800"
+          }
+        ]
+      }
+    ],
+    "executed_by_this_check": false,
+    "limits": "Two exact linked instruction sequences and integer-only global wrapper bindings; other engine functions and normal game startup remain outside this check."
+  },
+  "normal": {
+    "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+    "sha256": "8a728fcf95c2ea27989a80faba4680d0ae74febe462dbfbdd03c8f73b4725593",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "map_sha256": "b8b615e2f639c93063c6f739fa490ef804841a350967ba3d0280a4a834f499bb",
+    "math_library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
+    "functions": [
+      {
+        "symbol": "_RF455_MatrixInvert",
+        "va": "0x5b9840",
+        "rva": "0x1b9840",
+        "size": 485,
+        "linked_sha256": "3fee8f3f66b7f2c2a348ec8337effa2e3821d845bb2da6df9b3f75573ed02fe4",
+        "reference_va": "0x8bfbc0",
+        "reference_rva": "0x4bfbc0",
+        "instruction_identity": true,
+        "wrapper": "?MatrixInvert@@YAHQAY03M0@Z",
+        "wrapper_va": "0x596970",
+        "wrapper_rva": "0x196970",
+        "wrapper_kind": "balanced-frame-tail-jump",
+        "wrapper_edge": "558bec5de9c72e0200",
+        "linker_thunks": []
+      },
+      {
+        "symbol": "_RF455_Vector3fTransform",
+        "va": "0x5b9a30",
+        "rva": "0x1b9a30",
+        "size": 132,
+        "linked_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+        "reference_va": "0x8c0980",
+        "reference_rva": "0x4c0980",
+        "instruction_identity": true,
+        "wrapper": "?Vector3fTransform@@YAXQAM0QAY03M@Z",
+        "wrapper_va": "0x597590",
+        "wrapper_rva": "0x197590",
+        "wrapper_kind": "tail-jump",
+        "wrapper_edge": "e99b240200",
+        "linker_thunks": []
+      }
+    ],
+    "executed_by_this_check": false,
+    "limits": "Two exact linked instruction sequences and integer-only global wrapper bindings; other engine functions and normal game startup remain outside this check."
+  }
+}

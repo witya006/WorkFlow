@@ -1,0 +1,85 @@
+{
+  "library": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+  "library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
+  "source_sha256": {
+    "client455_x87_math.h": "e39964badde6e02329f9b2e69f0e3ee4b22735b133cfb8364c376aaaaf954a51",
+    "client455_x87_math.cpp": "dbf2491e2abdfd8717e026bfd443189a7129b891e5bffae29251169dd454d740",
+    "test_client455_x87_math.cpp": "e2d427de33060f70026751b137b6e3cbf5880dea6164d3f924b4a6c218afc6d2"
+  },
+  "object_sha256": "d8d0e5567a072b1b3320c9ceb002b1a94e920c60e0ee0f132e984d4b5ccf6e63",
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "symbol": "_RF455_MatrixInvert",
+          "va": "0x8bfbc0",
+          "rva": "0x4bfbc0",
+          "size": 485,
+          "reference_code_sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee",
+          "relocations": [
+            {
+              "offset": 33,
+              "type": 6,
+              "symbol": "_RF455_AffineEpsilon"
+            }
+          ],
+          "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+        },
+        {
+          "symbol": "_RF455_Vector3fTransform",
+          "va": "0x8c0980",
+          "rva": "0x4c0980",
+          "size": 132,
+          "reference_code_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+          "relocations": [],
+          "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "symbol": "_RF455_MatrixInvert",
+          "va": "0x8bfbc0",
+          "rva": "0x4bfbc0",
+          "size": 485,
+          "reference_code_sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee",
+          "relocations": [
+            {
+              "offset": 33,
+              "type": 6,
+              "symbol": "_RF455_AffineEpsilon"
+            }
+          ],
+          "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+        },
+        {
+          "symbol": "_RF455_Vector3fTransform",
+          "va": "0x8c0980",
+          "rva": "0x4c0980",
+          "size": 132,
+          "reference_code_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+          "relocations": [],
+          "same_all_instruction_bytes_except_verified_absolute_data_operand": true
+        }
+      ]
+    }
+  ],
+  "native_test": {
+    "checks": 338,
+    "failures": 0,
+    "precision_rounding_modes": 12,
+    "cancellation_x87": 1,
+    "cancellation_binary32": 0
+  },
+  "input_executables_loaded_or_executed": false,
+  "limits": "Instruction identity for these two functions under equal x87 environment/memory; not full client equivalence or proof of matching game startup FPU state. No GPU/network behavior tested."
+}
