@@ -1,0 +1,11 @@
+# Prepared configuration only; not installed into the user's global Codex settings.
+# GoMMO's documented stdio bridge discovers the live local instance itself.
+# No ephemeral port or authentication token belongs in this file.
+[mcp_servers.gommo_studio]
+command = 'E:\RFOnlineTrash\GoMMO_Studio-v1.3.0\gommostudio.exe'
+args = ['-mcp']
+startup_timeout_sec = 60
+tool_timeout_sec = 120
+
+# IDA configuration intentionally omitted until its actual MCP implementation
+# and Python runtime have been identified and successfully tested.
