@@ -33,6 +33,8 @@ gate inventory/client455-character-manager-checkpoint.json. Текущие PE id
    parser сохранён artifacts/character-manager455/manager-plus-4.json. Начало
    converter — artifacts/character-gpu455/next-2.json(250lines) и
    artifacts/character-legacy455/converter-tail.json(328lines): все578сохранены.
+   Проверить его MTG sidecar/vertex64/legacyphysique93BC40/parentmatrix иCPU-retention
+   branches инструкциями; ориентиры отмечены hypotheses вновом research, не пропускать.
 2. Подключить полный dispatcher9238A0 после legacy reader/converter. Сохранить
    загрузочные flags, parent prerequisite, sticky failures и lifetime по эталону.
    MESH08-only successful stub недопустим. Затем FrameMove923A40, transforms,

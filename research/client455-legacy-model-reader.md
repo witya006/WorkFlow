@@ -95,6 +95,26 @@ environment,private allocator/STL ABI/exception unwind иподозритель�
 dispatcher9238A0 остаются следующим шагом. Пары по одинаковому basename — fixture
 choice, не доказательство runtime selection.
 
+## Ориентиры для converter — ещё проверить инструкциями
+
+Полная cached decompilation93CD60 указывает на следующие branches. Это ориентиры
+для scoped insn_query, не уже доказанная source equivalence:
+
+- Before mesh loop93CE35..93CEAF: derives .mtg sidecar изmodel.name4 через93A9D0,
+  fopen;при наличии читает84bytes/face, дополнительныеfloat поляvertex52/56/60.
+- Count5086/5090 начинается как3*faces, не original vertexCount. Header/matrix/
+  material code похож наMESH08kernels, но нельзя автоматически объявлять его равным.
+- Vertex64 conversion93B020 иphysique93AA10,face expansion/UV93B5F0,затем93B310
+  либоCPUarray retention4506 приrenderer+33528==2 иfirstphysique.influences>2.
+- Parent resolver93BAB0 похож напрежний;после него conditionmodelImport24==0
+  применяет mesh4702=mesh4574*parent4638. Последнийcompactflag влияет на весь model.
+- Legacyphysique binding93BC40 отличается отMESH08bone resolver93CB00.
+- После публикации536/count532 sscanf первыхдвухсловmeshname иuppercaseпервого
+  ставятflag5567 дляBONE. Форматные строки/unsafe lengths требуют отдельного domain.
+
+Не реализовывать BN-only successful shortcut, который пропускает эти ветки.
+Сначала сверить фактические инструкции иисточники sidecar/реальных inputs.
+
 Воспроизведение через scripts/Invoke-Python.ps1:
 test_legacy_model_oracle.py; audit_client455_legacy_models.py;
 build_client455_legacy_models.py; probe_client455_legacy_models.py.
