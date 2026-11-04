@@ -1,0 +1,134 @@
+{
+  "libraries": [
+    {
+      "dll": "ABuse.dll",
+      "dll_sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6",
+      "architecture": "x86",
+      "exports": [
+        {
+          "ordinal": 1,
+          "rva": "0x1470",
+          "name": "ABuse_Automata"
+        },
+        {
+          "ordinal": 2,
+          "rva": "0x1250",
+          "name": "ABuse_CheckAbuse"
+        },
+        {
+          "ordinal": 3,
+          "rva": "0x1220",
+          "name": "ABuse_DecodeDic"
+        },
+        {
+          "ordinal": 4,
+          "rva": "0x1460",
+          "name": "ABuse_Emotion"
+        },
+        {
+          "ordinal": 5,
+          "rva": "0x1470",
+          "name": "ABuse_EncodeDic"
+        },
+        {
+          "ordinal": 6,
+          "rva": "0x1460",
+          "name": "ABuse_Fuzzy"
+        },
+        {
+          "ordinal": 7,
+          "rva": "0x1160",
+          "name": "ABuse_InitDic"
+        },
+        {
+          "ordinal": 8,
+          "rva": "0x1480",
+          "name": "ABuse_Is2Byte"
+        },
+        {
+          "ordinal": 9,
+          "rva": "0x1000",
+          "name": "ABuse_LoadDic"
+        }
+      ],
+      "library": "work/client-build/recovered-imports/ABuse.lib",
+      "library_sha256": "305b471ff2867898480451a8ea48ad861cf7e7d3bfa707b07d5826700be815e9"
+    },
+    {
+      "dll": "Adv.dll",
+      "dll_sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36",
+      "architecture": "x86",
+      "exports": [
+        {
+          "ordinal": 1,
+          "rva": "0x1510",
+          "name": "Adv_Automata"
+        },
+        {
+          "ordinal": 2,
+          "rva": "0x1250",
+          "name": "Adv_CheckAbuse"
+        },
+        {
+          "ordinal": 3,
+          "rva": "0x1220",
+          "name": "Adv_DecodeDic"
+        },
+        {
+          "ordinal": 4,
+          "rva": "0x1500",
+          "name": "Adv_Emotion"
+        },
+        {
+          "ordinal": 5,
+          "rva": "0x1510",
+          "name": "Adv_EncodeDic"
+        },
+        {
+          "ordinal": 6,
+          "rva": "0x1500",
+          "name": "Adv_Fuzzy"
+        },
+        {
+          "ordinal": 7,
+          "rva": "0x1160",
+          "name": "Adv_InitDic"
+        },
+        {
+          "ordinal": 8,
+          "rva": "0x1520",
+          "name": "Adv_Is2Byte"
+        },
+        {
+          "ordinal": 9,
+          "rva": "0x1000",
+          "name": "Adv_LoadDic"
+        }
+      ],
+      "library": "work/client-build/recovered-imports/Adv.lib",
+      "library_sha256": "7f972126e1590f230b6664a0df4bcb1c5558fe0caf5e6e9fa10aa885169a53e2"
+    },
+    {
+      "dll": "PDLL.dll",
+      "dll_sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde",
+      "architecture": "x86",
+      "exports": [
+        {
+          "ordinal": 1,
+          "rva": "0x1920",
+          "name": "?HookAllApps@@YGHHK@Z"
+        }
+      ],
+      "library": "work/client-build/recovered-imports/PDLL.lib",
+      "library_sha256": "2730b54a744c6326064aafd1a7eb3aa11f562b0d2253d98b46c405f0ec74a191"
+    }
+  ],
+  "link_probe": {
+    "exit": 0,
+    "executed": false,
+    "sha256": "903501cc89c768cc91eaf8cb5d4367a1ffcc2e4ccea8f1b0004dd904405d7991",
+    "architecture": "x86",
+    "entry_rva": "0x1310"
+  },
+  "scope": "Import name/link validation only. DLL function signatures/behavior not independently established. No DLL or probe execution."
+}

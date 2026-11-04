@@ -100,6 +100,7 @@ endif()
 target_compile_definitions(RF_Online PRIVATE WIN32 NDEBUG _WINDOWS _MBCS)
 target_compile_options(RF_Online PRIVATE /W3 /EHsc /Zc:forScope-)
 target_link_libraries(RF_Online PRIVATE R3Engine)
+target_link_directories(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/recovered-imports")
 set_target_properties(RF_Online PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
   MSVC_RUNTIME_LIBRARY MultiThreaded SUFFIX ".bin")
 # Original client /MT retained for diagnosis. CRT alignment and missing legacy

@@ -5,6 +5,7 @@ from pathlib import Path
 
 WS = Path(__file__).resolve().parents[1]
 PATCHES = {
+    'RF_Client/addcodebyyun/protect.cpp': [(b'#include <Winable.h>', b'#include <windows.h>')],
     'R3Engine/1stclass/r3bsp.h': [(b'\tClearVariable();', b'\tvoid ClearVariable();')],
     'R3Engine/1stclass/bsp.cpp': [(b'CBsp::ClearVariable()', b'void CBsp::ClearVariable()')],
     'R3Engine/common/cjcache.cpp': [
@@ -25,7 +26,7 @@ def main():
     source_root = Path(paths['legacy_source']) / 'R3Engine'
     report = []
     for name, edits in PATCHES.items():
-        original = source_root / name
+        original = (Path(paths['legacy_source']) / 'RF Client Side' / name) if name.startswith('RF_Client/') else source_root / name
         old = original.read_bytes()
         new = old
         for before, after in edits:
@@ -41,7 +42,9 @@ def main():
         dst.write_bytes(new)
         report.append({'file': dst.relative_to(WS).as_posix(), 'original_sha256': hashlib.sha256(old).hexdigest(),
                        'patched_sha256': hashlib.sha256(new).hexdigest(), 'changes': len(edits),
-                       'reason': 'Explicit void ClearVariable return type; both in-tree callers discard its result.' if name.endswith(('r3bsp.h', 'bsp.cpp')) else 'Restore VC6 function-scope loop variable lifetime in standard C++; no algorithm change.'})
+                       'reason': ('Use current Windows API declarations instead of missing legacy Winable.h; no protection logic changed.' if name.endswith('protect.cpp') else
+                                  'Explicit void ClearVariable return type; both in-tree callers discard its result.' if name.endswith(('r3bsp.h', 'bsp.cpp')) else
+                                  'Restore VC6 function-scope loop variable lifetime in standard C++; no algorithm change.')})
     (WS / 'inventory/client-source-patches.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(report, indent=2))
 
