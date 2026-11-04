@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T16:05:12.560869+00:00",
+  "checked_at_utc": "2026-11-04T16:43:01.351753+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -40,7 +40,9 @@
     "RF_CHARACTER_MESH_SOURCE": "ON",
     "RF_CHARACTER_MESH_SOURCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/mesh-bindings/CharacterMeshSource.lib",
     "RF_CLIENT_455_MESH08": "ON",
-    "RF_CLIENT_455_MESH08_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/mesh08/RFClient455Mesh08.lib"
+    "RF_CLIENT_455_MESH08_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/mesh08/RFClient455Mesh08.lib",
+    "RF_CLIENT_455_MESH_BINDINGS": "ON",
+    "RF_CLIENT_455_MESH_BINDINGS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/mesh-bindings/RFClient455MeshBindings.lib"
   },
   "scope": "Full client project with own CPU/hidden-window GPU lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.",
   "compiler_flags": {
@@ -48,16 +50,22 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "752bc87aac323fb5c5d0852f961ea3a3b27abe7e9c4f4704ebfb7e3769343ddc",
+    "scripts/native/client_helper_lab.cpp": "3d63a073ab064bd1aaa305ed4399928d0c6e27f204258328a0bce6532972f64b",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "d8edc962d7985e2598cd1ed4080c416e03ff94ae88f2d4875cf3473657d4f1a6"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "0a1dbe6d2f069b436556e7933648b3ce44ac877a0e808653cc1ed7d93d92b79d"
   },
   "mesh08_input_sha256": {
     "scripts/native/client455_mesh08.cpp": "be59a96edbcc4b243bd3071935466fe3c565f184573bbfb4659b3c2269dc4096",
     "scripts/native/client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f",
     "scripts/native/test_client455_mesh08.cpp": "3d762633c85b1b190ac22f1f820ecfa32b95d49b70b3641441a29285df2d785b",
     "scripts/native/client_mesh08_lab.inc": "36e5faf05c40ea4c8c0f98f6f692c1a110f8338b1e30b890b0d9b64f5026463b"
+  },
+  "mesh_binding_input_sha256": {
+    "scripts/native/client455_mesh_bindings.cpp": "47df5394b20b920041eb08c006570961de79f57c46a3d8bbe9ce326a6e895378",
+    "scripts/native/client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
+    "scripts/native/test_client455_mesh_bindings.cpp": "a2ff780d283cf3f237aeac02d0ab9bcdb1144d6753f829fd9ad881f335616522",
+    "scripts/native/client_mesh_bindings_lab.inc": "31d581a0a8b47d5a78b325bd3a315dd70f828f84a8fe503d23463ed5d2a12798"
   },
   "character_mesh_input_sha256": {
     "scripts/native/character_mesh_bindings.cpp": "a7df51daf1639c0ce282ead09aef7be96a0793039bbe5898137af514dfea1da8",

@@ -31,7 +31,10 @@ research/character-init-source.md. Следом455MESH08/data/layouts перед
 найден отдельный loader для новых моделей. MESH08format module восстановлен:
 858real files/12090meshes прошлиlossless roundtrip,6304native checks standalone/
 full-client. Normal runtime model-loader ещё не переключён;следом materials/bones/
-GPU state. research/client455-mesh08-format.md. Остальные subsystems/chat/calendar/lighting открыты.
+GPU state. research/client455-mesh08-format.md. Затем восстановлены четыре455CPU
+parent/bone bindings:2237checks/12real mesh-skeleton pairs/393meshes standalone/
+full-client. Normal loader не подключён; metadata/materials/sharedGPU ещё открыты.
+research/client455-mesh-bindings-source.md. Остальные subsystems/chat/calendar/lighting открыты.
 Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
 M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 

@@ -133,6 +133,18 @@ foreach ($property in $mesh08.source_sha256.PSObject.Properties) {
 if ((Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/character-mesh08-corpus.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh08.corpus_report_sha256) { throw 'MESH08 corpus proof changed.' }
 $arguments += '-DRF_CLIENT_455_MESH08=ON'
 $arguments += "-DRF_CLIENT_455_MESH08_LIBRARY=$mesh08Library"
+$mesh455 = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-mesh-bindings.json') -Raw | ConvertFrom-Json
+$mesh455Library = Join-Path $workspace $mesh455.library
+if ((Get-FileHash -LiteralPath $mesh455Library -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh455.library_sha256 -or
+    $mesh455.native_test.failures -ne 0 -or $mesh455.native_test.real_pairs -ne 12 -or
+    $mesh455.native_test.parts -ne 393 -or $mesh455.native_test.overlap_cases -ne 20) { throw '455 mesh binding source proof missing or stale.' }
+foreach ($property in $mesh455.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 mesh binding source changed since verification.' }
+}
+if ((Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/character-mesh08-bone-pairs.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh455.pair_report_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-mesh-bindings-reference.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh455.reference_report_sha256) { throw '455 mesh binding inputs changed.' }
+$arguments += '-DRF_CLIENT_455_MESH_BINDINGS=ON'
+$arguments += "-DRF_CLIENT_455_MESH_BINDINGS_LIBRARY=$mesh455Library"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -208,6 +220,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_mesh08.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_mesh08.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_bindings.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_bindings.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

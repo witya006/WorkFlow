@@ -1,0 +1,31 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "library": "work/recovered/client455/mesh-bindings/RFClient455MeshBindings.lib",
+  "library_sha256": "c2dc4530731d76d5aa88693dc3f6b9b500e41a6e88e39c9515e325f1e7e082d8",
+  "source_sha256": {
+    "client455_mesh_bindings.cpp": "47df5394b20b920041eb08c006570961de79f57c46a3d8bbe9ce326a6e895378",
+    "client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
+    "test_client455_mesh_bindings.cpp": "a2ff780d283cf3f237aeac02d0ab9bcdb1144d6753f829fd9ad881f335616522",
+    "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f"
+  },
+  "object_sha256": "1752a7432cf030113c7710dc68f91370177edcdf7568186f2ce33264d28a4eb1",
+  "executable_sha256": "c2561c10e43d0f0cd65d658359192a18eb4febe8c61306421a61dec1ba0c5b27",
+  "native_test": {
+    "checks": 2237,
+    "failures": 0,
+    "real_pairs": 12,
+    "parts": 393,
+    "overlap_cases": 20,
+    "gpu_used": false
+  },
+  "pair_report_sha256": "a9b2e9cb4e49cee683d8ba9f11c00e29f789fae9da60aa32810828dceee0681c",
+  "reference_report_sha256": "cf27b82d7593663d0798b888f68c99809951ed1e09eebbe16ec59d4b9c5e26f3",
+  "framing_library_sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8",
+  "scope": "Standalone source455packed CPU binding kernels on12real mesh/skeleton pairs;not full Character/source constructor/material/animation/GPU/full client normal loader integration",
+  "limits": [
+    "Borrowed input views;vector ownership and reference debug logging not wired",
+    "Bounded >50resolved andmalformed records return owned errors;not unchecked reference failure parity",
+    "Fixture skeleton selection is not full game asset-selection proof"
+  ]
+}

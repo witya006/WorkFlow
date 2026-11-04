@@ -397,6 +397,30 @@ GameDLLs/referenceEXE/normalWinMain не запускались. Owned IDAeb76ec
 research/client455-mesh08-format.md;inventory/character-mesh08-corpus.json,
 inventory/client455-mesh08*.json. M6/M6F/M7/M9 открыты.
 
+## M6: packed455 parent/bone source, 2026-11-05
+
+Четыре455CPU kernels (lookup/parent array/rematch/MESH08bones) восстановлены source.
+4bodies/12instruction sites сверены в обоих pinned PE;owned IDA6f091546closed/save.
+2237checks/12real mesh-skeleton pairs/393meshes/455skeleton records прошли standalone
+иfull-client own entry;вfixtures0missing influences,max4unique/mesh.20cases count31–50
+сохраняют подтверждённое перекрытие pointer copy/matrix fields;owncap50 не доказательство
+официальной безопасной capacity. Plain BN framing/names проверены tooling;полный
+skeleton/model loader,selection/transforms/animation/material/GPU ещё открыты.
+Normal используетlegacyCharacterABI,unused455APIs stripped;lab4APIlinked fromsource /MT.
+
+Normal2451456bytes,entryRVA0x1BC4B0,SHA
+d52d1e6889e679af1262182088e6f648affd7a0f73d89b23c35c975f310ac30b;
+snapshot mesh455-bones,не запускался. Lab4534784bytes,entryRVA0x81D4,SHA
+0a1dbe6d2f069b436556e7933648b3ce44ac877a0e808653cc1ed7d93d92b79d.
+Regressions:mesh08 6304,legacy245+6732,clock1443,map-time314,weather703,resource30,
+time-command432cases/2628checks+20actual input прошли.289modern COFFx86/MT.
+Platform01/device2GPUcases/69checks,0warnings/errors,Dmalloc/COMbalance0,FPU007F;
+обаframeSHA равны прежним просмотренным кадрам. Это map/weather,неCharacterGPU.
+Source macro ограничен labfile,все180old units без причины не пересобираются.
+GameDLLs/referenceEXE/normalWinMain не запускались. M6/M6F/M7/M9 не закрыты.
+research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json,
+character-mesh08-bone-pairs.json,character-mesh455-bindings-graphics-runtime.json.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

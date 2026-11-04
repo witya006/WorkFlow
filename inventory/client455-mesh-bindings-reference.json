@@ -1,0 +1,235 @@
+{
+  "reference": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "lookup",
+          "va": "0x93ba40",
+          "rva": "0x53ba40",
+          "size": 87,
+          "sha256": "da3405967ac6877fae76e2c4ead66219aec4f9eb4540ba95aa1b8bbd6c329f47"
+        },
+        {
+          "name": "parents",
+          "va": "0x93bab0",
+          "rva": "0x53bab0",
+          "size": 189,
+          "sha256": "aa9cf373221b7d1eb3dbfd9a3d93cb31a65cd06b925993db066707d472307c95"
+        },
+        {
+          "name": "rematch",
+          "va": "0x93bb70",
+          "rva": "0x53bb70",
+          "size": 193,
+          "sha256": "2b39b37d7ab0a1bb6d0d6453f031b39cd0fce2ca404603f01fa74e9d000656f3"
+        },
+        {
+          "name": "mesh08_bones",
+          "va": "0x93cb00",
+          "rva": "0x53cb00",
+          "size": 595,
+          "sha256": "52561ad9c5b9b526b2801f565b4bca846174078801c3a6641f5336b7b18bf839"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x93cb9d",
+          "rva": "0x53cb9d",
+          "bytes": "8d5904",
+          "meaning": "First influence name atrecord+4"
+        },
+        {
+          "va": "0x93cbf6",
+          "rva": "0x53cbf6",
+          "bytes": "e845eeffff",
+          "meaning": "First lookup against external array"
+        },
+        {
+          "va": "0x93cc17",
+          "rva": "0x53cc17",
+          "bytes": "e824eeffff",
+          "meaning": "Fallback lookup against local array"
+        },
+        {
+          "va": "0x93cc65",
+          "rva": "0x53cc65",
+          "bytes": "83c364",
+          "meaning": "Influence-name stride100"
+        },
+        {
+          "va": "0x93cc82",
+          "rva": "0x53cc82",
+          "bytes": "81c194010000",
+          "meaning": "Bone-record stride404"
+        },
+        {
+          "va": "0x93cc99",
+          "rva": "0x53cc99",
+          "bytes": "89bb50ffffff",
+          "meaning": "Write count atmesh+522,base698-176"
+        },
+        {
+          "va": "0x93cce7",
+          "rva": "0x53cce7",
+          "bytes": "8dbb54ffffff",
+          "meaning": "Pointer copy destinationmesh+526,base698-172"
+        },
+        {
+          "va": "0x93cced",
+          "rva": "0x53cced",
+          "bytes": "f3a5",
+          "meaning": "Copy pointers after identity stores"
+        },
+        {
+          "va": "0x93ccf2",
+          "rva": "0x53ccf2",
+          "bytes": "81c3ab160000",
+          "meaning": "Mesh stride5803"
+        },
+        {
+          "va": "0x93bb3a",
+          "rva": "0x53bb3a",
+          "bytes": "897500",
+          "meaning": "Parent pointer destinationmesh+518"
+        },
+        {
+          "va": "0x93bb3d",
+          "rva": "0x53bb3d",
+          "bytes": "c645fa01",
+          "meaning": "Has-parent byte atmesh+512"
+        },
+        {
+          "va": "0x93bb43",
+          "rva": "0x53bb43",
+          "bytes": "c7857113000001000000",
+          "meaning": "External-parent/rematch flag atmesh+5495"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "lookup",
+          "va": "0x93ba40",
+          "rva": "0x53ba40",
+          "size": 87,
+          "sha256": "da3405967ac6877fae76e2c4ead66219aec4f9eb4540ba95aa1b8bbd6c329f47"
+        },
+        {
+          "name": "parents",
+          "va": "0x93bab0",
+          "rva": "0x53bab0",
+          "size": 189,
+          "sha256": "aa9cf373221b7d1eb3dbfd9a3d93cb31a65cd06b925993db066707d472307c95"
+        },
+        {
+          "name": "rematch",
+          "va": "0x93bb70",
+          "rva": "0x53bb70",
+          "size": 193,
+          "sha256": "2b39b37d7ab0a1bb6d0d6453f031b39cd0fce2ca404603f01fa74e9d000656f3"
+        },
+        {
+          "name": "mesh08_bones",
+          "va": "0x93cb00",
+          "rva": "0x53cb00",
+          "size": 595,
+          "sha256": "52561ad9c5b9b526b2801f565b4bca846174078801c3a6641f5336b7b18bf839"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x93cb9d",
+          "rva": "0x53cb9d",
+          "bytes": "8d5904",
+          "meaning": "First influence name atrecord+4"
+        },
+        {
+          "va": "0x93cbf6",
+          "rva": "0x53cbf6",
+          "bytes": "e845eeffff",
+          "meaning": "First lookup against external array"
+        },
+        {
+          "va": "0x93cc17",
+          "rva": "0x53cc17",
+          "bytes": "e824eeffff",
+          "meaning": "Fallback lookup against local array"
+        },
+        {
+          "va": "0x93cc65",
+          "rva": "0x53cc65",
+          "bytes": "83c364",
+          "meaning": "Influence-name stride100"
+        },
+        {
+          "va": "0x93cc82",
+          "rva": "0x53cc82",
+          "bytes": "81c194010000",
+          "meaning": "Bone-record stride404"
+        },
+        {
+          "va": "0x93cc99",
+          "rva": "0x53cc99",
+          "bytes": "89bb50ffffff",
+          "meaning": "Write count atmesh+522,base698-176"
+        },
+        {
+          "va": "0x93cce7",
+          "rva": "0x53cce7",
+          "bytes": "8dbb54ffffff",
+          "meaning": "Pointer copy destinationmesh+526,base698-172"
+        },
+        {
+          "va": "0x93cced",
+          "rva": "0x53cced",
+          "bytes": "f3a5",
+          "meaning": "Copy pointers after identity stores"
+        },
+        {
+          "va": "0x93ccf2",
+          "rva": "0x53ccf2",
+          "bytes": "81c3ab160000",
+          "meaning": "Mesh stride5803"
+        },
+        {
+          "va": "0x93bb3a",
+          "rva": "0x53bb3a",
+          "bytes": "897500",
+          "meaning": "Parent pointer destinationmesh+518"
+        },
+        {
+          "va": "0x93bb3d",
+          "rva": "0x53bb3d",
+          "bytes": "c645fa01",
+          "meaning": "Has-parent byte atmesh+512"
+        },
+        {
+          "va": "0x93bb43",
+          "rva": "0x53bb43",
+          "bytes": "c7857113000001000000",
+          "meaning": "External-parent/rematch flag atmesh+5495"
+        }
+      ]
+    }
+  ],
+  "confirmed": [
+    "Case-sensitive first name match for parent and blend lookup",
+    "External skeleton first;local fallback;resolved names deduplicated in first-encounter order;unresolved occurrences not deduplicated",
+    "Parent pointer518,has-parent512,external/rematch5495;blend count522,pointers526,identity matrices646",
+    "Identity stores precede pointer copy:at31+selected names pointer copy overlaps first matrix bytes;do not invent disjoint50-slot ABI",
+    "Reference influence count is signed;nonpositive counts skip the slots"
+  ],
+  "limits": [
+    "Owned >50resolved or >4positive influences/unterminated-record errors replace unchecked reference overflow/overread",
+    "Source API borrows input views and returns missing counts;reference vector frees and debug logging belong to later loader adapter",
+    "Complete mesh constructor/material/transform/animation/GPU/full normal loader remains open"
+  ],
+  "raw_analysis": "artifacts/character-mesh08/bone-binding-insns.json;cached reference-0x93ba40-asm/reference-0x93bab0/reference-0x93bb70-asm/mesh08-0x93cb00;owned IDA6f091546closed/save;no input EXE execution"
+}

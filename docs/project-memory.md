@@ -63,11 +63,11 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-43863bc4334d896a91888f0b132b79d7e85974b519073c2ebad8a4995b89c6af.
-Snapshot mesh08-format;предыдущие revisions сохранены. Обычный EXE
+d52d1e6889e679af1262182088e6f648affd7a0f73d89b23c35c975f310ac30b.
+Snapshot mesh455-bones;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA d8edc962d7985e2598cd1ed4080c416e03ff94ae88f2d4875cf3473657d4f1a6,
-size4483072,entryRVA0x8125; snapshot work/client-mesh08-lab/d8edc962d7985e25/RF_Online.bin.
+Own lab EXE SHA 0a1dbe6d2f069b436556e7933648b3ce44ac877a0e808653cc1ed7d93d92b79d,
+size4534784,entryRVA0x81D4; snapshot work/client455-mesh-bindings-lab/0a1dbe6d2f069b43/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
@@ -82,6 +82,12 @@ MESH08format decoder/writer sourceготов:858real files/515096894bytes/12090m
 6304native checks/12samples/393parts и1309guard-page truncations standalone/fullclient.
 7Python tests. Normal fullmodel-loader consumer не реализован,unused APIs stripped;
 labдвеAPI linked. research/client455-mesh08-format.md;client455-mesh08*.json.
+Четыре packed455parent/bone kernels sourceготовы:2237checks/12real mesh-skeleton
+pairs/393meshes/455skeleton records standalone/full-client,20pointer/matrix overlap
+cases31–50. Нет missing influences в fixtures,max4unique/mesh. Names изplain BN
+выделены tooling,полный skeleton loader/матрицы/анимации иего selection не доказаны.
+Normal consumer ещё отсутствует;не смешивать сlegacy1072ABI. Полный loader открыт.
+research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -157,7 +163,7 @@ EffectList bridge bounded500 entries, sentinel9; missing inline/out-of-domain un
 First-match455 vs last-matchlegacy иnegative455normals(+32/+36/+40)/UV(+44/+48) подтверждены.
 MESH08gate91F250/51F250 иloader922A00/522A00 найдены,оба тела совпадают в pinned PE.
 Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693framing доEOF.
-Новые parser/layout/renderer иполный unwind открыты. Source CLevel::GetFrustumNormalPlane
+Полный loader/layout/renderer иunwind открыты. Source CLevel::GetFrustumNormalPlane
 рекурсивен (C4717); сверить 455, не исправлять по одному имени.
 Детали/хеши в inventory/character-*.json и research/character-*.md.
 
@@ -171,8 +177,10 @@ Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVer
 Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
 unwind до него открыт. MESH08framing/source reader готов,НЕ повторять corpus858audit
 без изменения inputs/parser. NEXT:runtime model construction по922A00:metadata/
-matrices/material texture names/loading,first-match local/external parents иbone
-order по93CB00;затем shared GPU buffers/index rebase/publication/release/D3D9consumer.
+matrices/material texture names/loading;затем shared GPU buffers/index rebase/
+publication/release/D3D9consumer. First-match local/external bindings и93CB00bone
+kernel уже sourceготовы,НЕ повторять reverse. 12fixturepairs pinned,ноnormal model
+dispatch/полный skeleton loader не подключены;unknown contracts не объявлятьготовыми.
 Не подавать MESH08 встарый unchecked MakeMeshData693 reader. Новый raw body607lines
 кеширован artifacts/character-mesh-source/mesh08-0x922a00.json/.txt;не выгружать снова.
 Gate91F250 сравнивает6bytes MESH08;LoadRealData9238F0/923902 ведут вgate/loader.
@@ -188,6 +196,14 @@ Bounds errors — own safety,неAV/OOM/debugbreak parity. Normal consumerнеп
 необъявлятьCharacter455готовым. Raw607line922A00 и146line93CB00кешированы;
 large disasm вернул10lines приinstruction_count1069:дляfacts использовать scoped
 insn_query,неполагатьсятольконаcursor.done. Owned IDAeb76ecefclosed/save.
+Следом IDA6f091546closed/save:4bodies/12binding instruction sites сверены вbothPE.
+Packed parent pointer518/flag512/rematch5495,blend count522/pointers526/matrices646.
+Identity stores ПЕРЕД pointer copy;count>=31 наблюдаемо перекрывает matrix bytes.
+Source воспроизводит порядок,own safetycap50 не означаетofficial safe capacity50.
+Signed influence<=0 skips;>4/unterminated/>50resolved — ownerror,неAV/OOM parity.
+Vector frees/debug logger ещё не подключены. See research/client455-mesh-bindings-source.md.
+Fixture plain-BN name extraction:6Python tests/all minimal truncations passed.
+Source/kernel inputs не менялись после final component/full-client validation.
 research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
 Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:

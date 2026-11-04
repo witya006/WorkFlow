@@ -587,7 +587,7 @@
       ],
       "gaps": [
         "455MESH08 full runtime loader/material/skin/index/vertex semantics;framing is covered separately by DATA-MESH08-FRAMING-013",
-        "4555803byte packed mesh/64byte vertex/negative normals/inline matrices and first-match binding differ from legacy1072/36/heap",
+        "Full4555803byte class/64byte vertices/negative normals/inline state differ fromlegacy1072/36/heap;4known455binding kernels covered by CHARACTER455-BINDINGS-014",
         "Other binary-only Character routines and physical texture/triangle upload/GPU/D3D9renderer",
         "Unsafe bounds/OOM/failure/unwind/locale/alias domain and complete old/modern CRT ABI"
       ]
@@ -596,7 +596,7 @@
       "id": "DATA-MESH08-012",
       "description": "455MESH08mesh format and its distinct client loading path",
       "status": "described",
-      "verification": "Detector and full loader/bone-resolver bodies plus12framing instruction sites verified in both pinned PE. Source framing is implemented separately;full runtime loader/material/bone/shared GPU path and normal LoadRealData integration remain open.",
+      "verification": "Source framing and4packed455parent/bone kernels verified separately;full loader metadata/matrices/material/shared GPU/publication/lifecycle and normal dispatch remain open.",
       "reference": [
         {
           "va": "0x91f250",
@@ -619,14 +619,16 @@
         "inventory/character-init-reference.json",
         "research/character-init-source.md",
         "inventory/client455-mesh08-reference.json",
-        "research/client455-mesh08-format.md"
+        "research/client455-mesh08-format.md",
+        "research/client455-mesh-bindings-source.md",
+        "inventory/client455-mesh-bindings-runtime.json"
       ],
       "scenarios": [
         "Shield065hasMESH08prefix;Shield031/Cloak002 pass bounded plain693record framing toEOF",
         "Normal/UV/physique/index/format-reference bodies andcaller edges match both pinned455PE"
       ],
       "gaps": [
-        "Runtime mesh construction/matrices/materials/bone resolution/shared GPU buffers/index rebase/publication/release and normal loader integration",
+        "Complete runtime mesh construction/matrices/materials/shared GPU buffers/index rebase/publication/release;bone-kernel ownership/debug adapter andnormal loader integration",
         "Complete real model inventory/variants and error/lifecycle semantics",
         "Packed455mesh/D3D9buffer/render consumers and physical character GPU acceptance"
       ]
@@ -672,6 +674,60 @@
         "Normal runtime model-loader not integrated;materials/bones/shared GPU buffers/publication/release tracked by DATA-MESH08-012",
         "Archived/RFS models and1850other-prefix loose models outside this census",
         "Explicit bounded errors are owned safety policy,not reference unchecked AV/OOM/debugbreak parity"
+      ]
+    },
+    {
+      "id": "CHARACTER455-BINDINGS-014",
+      "description": "Four source455packed CPU parent/bone binding kernels;not complete Character class or full model loader",
+      "status": "implemented",
+      "verification": "2237native checks/12real mesh-skeleton pairs/393meshes/455skeleton records standalone/full-client;4reference bodies/12instruction sites match both pinnedPE;20pointer/matrix overlap cases31-50. Normal runtime fullmodel-loader not integrated.6Python fixture-parser boundary tests.",
+      "reference": [
+        {
+          "va": "0x93ba40",
+          "rva": "0x53ba40",
+          "role": "first name lookup"
+        },
+        {
+          "va": "0x93bab0",
+          "rva": "0x53bab0",
+          "role": "first parent binding"
+        },
+        {
+          "va": "0x93bb70",
+          "rva": "0x53bb70",
+          "role": "gated rematch"
+        },
+        {
+          "va": "0x93cb00",
+          "rva": "0x53cb00",
+          "role": "MESH08bone resolver"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_mesh_bindings.cpp",
+        "scripts/native/client455_mesh_bindings.h"
+      ],
+      "option": "RF_CLIENT_455_MESH_BINDINGS",
+      "evidence": [
+        "inventory/client455-mesh-bindings-reference.json",
+        "inventory/character-mesh08-bone-pairs.json",
+        "inventory/client455-mesh-bindings.json",
+        "inventory/client455-mesh-bindings-link.json",
+        "inventory/client455-mesh-bindings-runtime.json",
+        "inventory/character-mesh455-bindings-graphics-runtime.json",
+        "research/client455-mesh-bindings-source.md"
+      ],
+      "scenarios": [
+        "Case-sensitive first match,duplicates,missing match preserves existing state,external priority/local fallback,rematch gate",
+        "12paired real inputs/393full packed5803byte results,455skeleton record names,0missing influences,max4unique/mesh",
+        "Signed negative influence count skipped;duplicate resolved names suppressed,missing occurrences repeated",
+        "All selected counts0-50,identity writes followed bypointer copy,pointer/matrix overlap31-50,owned51capacity/unterminated/>4influences errors"
+      ],
+      "gaps": [
+        "Normal loader/full constructor/metadata/matrix/material/animation/shared GPU/index rebase/publication/release not integrated",
+        "Borrowed views;reference vector ownership/free anddebug logging need loader adapter",
+        "Fixture skeleton pairing/basename extraction is not proof of game asset selection orfull BN loader",
+        "Owned safety limit50/record validation is not reference unchecked overflow/OOM/AV equivalence;full capacity contract unknown"
       ]
     }
   ],

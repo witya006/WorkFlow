@@ -124,6 +124,11 @@ legacy1072/36byte vertex/heap blends отличается от4555803/64/inline;
 858real files/12090meshes прошли lossless roundtrip;6304native checks standalone/
 full-client,12samples/393parts/1309guarded truncations и7Python tests. Normal loader
 ещё не использует модуль. research/client455-mesh08-format.md.
+Отдельные packed455parent/bone kernels имеют source:2237checks/12real paired fixtures/
+393meshes/455skeleton records и20overlap cases standalone/full-client. Normal
+loader иполные skeleton/transform/animation/material/GPU consumers ещё открыты.
+research/client455-mesh-bindings-source.md. Сами paired fixtures не доказывают
+игровой выбор скелета иполную загрузку BN.
 Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 

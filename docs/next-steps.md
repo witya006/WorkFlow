@@ -13,7 +13,8 @@ DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, ru
 Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
 Документ research/client-first-build.md; inventory/client-first-build.json.
 
-Сохранены 11 compiler-only patches и18 selectable behavior files:
+Сохранены 11 compiler-only patches;текущий behavior ledger содержит22files.
+Исторический набор первой сборки включал18 selectable behavior files:
 DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455,
 x87 math и двухслойная погода (9 files).
 Их инструкции сверены
@@ -67,13 +68,18 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 ## Очередь M6 → M9
 
 1. Продолжить Character455 с runtime construction MESH08 по922A00: metadata/matrices,
-   materials, first-match local/external bones и404-byte influence records; затем
+   materials; затем
    shared GPU buffers/index rebase/publication/release иD3D9buffer/render consumers.
    Framing готов:858real files/12090meshes прошли lossless roundtrip;
    6304native checks/12samples/393parts/1309guarded truncations standalone/full-client.
    7Python tests прошли. Не повторять corpus audit без изменения inputs/parser.
    Normal model-loader ещё не подключён; runtime материал/кости/GPU не восстановлены.
    research/client455-mesh08-format.md;inventory/client455-mesh08*.json.
+   First-match local/external parent иMESH08bone kernels уже sourceготовы:
+   2237checks/12real pairs/393meshes/455skeleton records standalone/full-client;
+   20overlap cases31–50,0missing influences вfixtures. Полный skeleton/model loader,
+   transforms/material/GPU/normal dispatch не подключены. Не повторять этот reverse.
+   research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -111,6 +117,8 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
 Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
 MESH08: build_client455_mesh08.py; verify_client_mesh08.py [--lab]; probe_client_mesh08.py.
+455bindings: build_client455_mesh_bindings.py; verify_client455_mesh_bindings.py [--lab];
+probe_client455_mesh_bindings.py. Пары: audit_mesh08_bone_pairs.py (повтор при изменении входов).
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
 --level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).

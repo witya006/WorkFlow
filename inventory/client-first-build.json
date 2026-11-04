@@ -2598,5 +2598,186 @@
     ],
     "executed": false,
     "limits": "Diagnostic /Od source-base build with selected 455 branches and adapted CharacterMR. Direct provider discovery is not recursive loader/runtime validation or 455 parity."
+  },
+  "mesh455-bones": {
+    "sha256": "d52d1e6889e679af1262182088e6f648affd7a0f73d89b23c35c975f310ac30b",
+    "size": 2451456,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1bc4b0",
+    "subsystem": "Windows GUI",
+    "snapshot": "artifacts/client-first-build/mesh455-bones",
+    "build_settings": {
+      "RF_CHARACTER_EXCEPTIONS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
+      "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
+      "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/mesh-bindings/CharacterMR-mesh-source.lib",
+      "RF_CHARACTER_SETTERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
+      "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
+      "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
+      "RF_CLIENT_455_DRAW_ARGUMENTS": "ON",
+      "RF_CLIENT_455_EFFECT_LOG": "ON",
+      "RF_CLIENT_455_EFFECT_LOG_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+      "RF_CLIENT_455_LOBBY_TRANSITION": "ON",
+      "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
+      "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
+      "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
+      "RF_LEGACY_NEW_UI": "ON",
+      "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
+      "RF_CLIENT_455_CLOCK": "ON",
+      "RF_CLIENT_455_HELPER_LOADER": "ON",
+      "RF_CLIENT_455_MAP_TIME": "ON",
+      "RF_CLIENT_455_RESOURCE_IO": "ON",
+      "RF_CLIENT_455_TIME_COMMANDS": "ON",
+      "RF_CLIENT_455_WEATHER": "ON",
+      "RF_CLIENT_455_X87_MATH": "ON",
+      "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "RF_CLIENT_HELPER_LAB": "OFF",
+      "RF_CHARACTER_MESH_SOURCE": "ON",
+      "RF_CHARACTER_MESH_SOURCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/mesh-bindings/CharacterMeshSource.lib",
+      "RF_CLIENT_455_MESH08": "ON",
+      "RF_CLIENT_455_MESH08_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/mesh08/RFClient455Mesh08.lib",
+      "RF_CLIENT_455_MESH_BINDINGS": "ON",
+      "RF_CLIENT_455_MESH_BINDINGS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/mesh-bindings/RFClient455MeshBindings.lib"
+    },
+    "sections": [
+      {
+        "name": ".text",
+        "rva": 4096,
+        "virtual_size": 2088281,
+        "raw_offset": 1024,
+        "raw_size": 2088448,
+        "sha256": "74e0160275fad7bce51c123515fc5752770283e0a658b30d4c27741fbf4da503"
+      },
+      {
+        "name": ".rdata",
+        "rva": 2093056,
+        "virtual_size": 225390,
+        "raw_offset": 2089472,
+        "raw_size": 225792,
+        "sha256": "7773617b67930dd962e5627c20850bf03173abab815f2dee28ad50ebaf9973f8"
+      },
+      {
+        "name": ".data",
+        "rva": 2322432,
+        "virtual_size": 12560076,
+        "raw_offset": 2315264,
+        "raw_size": 50688,
+        "sha256": "ef5f877722b3558662486944acda4134366584c6f3002b7f44c62e0c165f2bba"
+      },
+      {
+        "name": ".data1",
+        "rva": 14884864,
+        "virtual_size": 2272,
+        "raw_offset": 2365952,
+        "raw_size": 2560,
+        "sha256": "9a1e1a6e69fd980ae9724ec0236a97ae21a2c751d40f5a12c040cc608c7ae163"
+      },
+      {
+        "name": ".fptable",
+        "rva": 14888960,
+        "virtual_size": 128,
+        "raw_offset": 2368512,
+        "raw_size": 512,
+        "sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560"
+      },
+      {
+        "name": ".rsrc",
+        "rva": 14893056,
+        "virtual_size": 480,
+        "raw_offset": 2369024,
+        "raw_size": 512,
+        "sha256": "cba977d64e4f40b6e6690b8aedcbe4c63e424d78f787d7f586c3e8a8c0ec78f8"
+      },
+      {
+        "name": ".reloc",
+        "rva": 14897152,
+        "virtual_size": 81532,
+        "raw_offset": 2369536,
+        "raw_size": 81920,
+        "sha256": "01af27ffd5e2e15e1d2f6b759e6b2a31da7243b41e86b832eef9279a9f2a7015"
+      }
+    ],
+    "direct_providers": [
+      {
+        "name": "mss32.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll",
+        "architecture": "x86",
+        "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+      },
+      {
+        "name": "KERNEL32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\KERNEL32.dll",
+        "architecture": "x86",
+        "sha256": "46276ed0568503a278605aec168605e1b289f35fa8c46971c479ea606e76acc5"
+      },
+      {
+        "name": "USER32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\USER32.dll",
+        "architecture": "x86",
+        "sha256": "5afa8e3084f4bc55d59319e9afcbd261436ad73aa0d678397863ca8764421586"
+      },
+      {
+        "name": "GDI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\GDI32.dll",
+        "architecture": "x86",
+        "sha256": "ca166569151a9f56bc27c090641e950e16400177cba36e9ad1981598f7f00299"
+      },
+      {
+        "name": "ADVAPI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\ADVAPI32.dll",
+        "architecture": "x86",
+        "sha256": "fd36ac0419e85e17f129c7458cc3b45aaf871e3efde7ea1fe78a83b92b31f566"
+      },
+      {
+        "name": "d3d8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\d3d8.dll",
+        "architecture": "x86",
+        "sha256": "07db2610a36f320703db1fd587118f227ae0071e004ec075746160e70441e6f4"
+      },
+      {
+        "name": "DINPUT8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\DINPUT8.dll",
+        "architecture": "x86",
+        "sha256": "b287dd87985f07a4c23e39ede02ff6d4311d8ab7aa177fc29f5401dc1f8f5fbd"
+      },
+      {
+        "name": "WINMM.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WINMM.dll",
+        "architecture": "x86",
+        "sha256": "6729816e459be41ae1726438b95d207a3a626ff7b87ebeb8d569f740dcbc7f51"
+      },
+      {
+        "name": "WS2_32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WS2_32.dll",
+        "architecture": "x86",
+        "sha256": "5d920a7a5486e7c1693334d59271f2a59a64b59a8fa87fa4ba71aacce4cdf8a6"
+      },
+      {
+        "name": "IMM32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\IMM32.dll",
+        "architecture": "x86",
+        "sha256": "d986143836003f52c4d599786dc3a18a126d7455c66d5a27c542574f060d6660"
+      },
+      {
+        "name": "ABuse.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\ABuse.dll",
+        "architecture": "x86",
+        "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
+      },
+      {
+        "name": "Adv.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\Adv.dll",
+        "architecture": "x86",
+        "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
+      },
+      {
+        "name": "PDLL.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\PDLL.dll",
+        "architecture": "x86",
+        "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
+      }
+    ],
+    "executed": false,
+    "limits": "Diagnostic /Od source-base build with selected 455 branches and adapted CharacterMR. Direct provider discovery is not recursive loader/runtime validation or 455 parity."
   }
 }

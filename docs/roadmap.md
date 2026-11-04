@@ -70,6 +70,9 @@ MESH08 framing теперь восстановлен:858real files/12090meshes �
 7Python tests. Source dependency доступна, normal model-loader ещё не использует её.
 Runtime materials/bones/shared GPU buffers иполный Character455 остаются открытыми.
 research/client455-mesh08-format.md. Это завершение формата,не всего loader или M6.
+Следом source455parent/bone kernels проверены:2237checks/12real mesh-skeleton pairs/
+393meshes/455skeleton records standalone/full-client;20overlap cases31–50. Полный
+normal loader иCharacter GPU ещё открыты. research/client455-mesh-bindings-source.md.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.
@@ -109,9 +112,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: создать runtime meshes MESH08: metadata/matrices,material/texture names,
-   first-match bone resolution; затем shared buffers/index rebase/publication/release.
-   Framing иlegacy InitVertex source готовы; normal loader ещё не переключать до
+1. M6: создать runtime meshes MESH08: metadata/matrices,material/texture names;
+   затем shared buffers/index rebase/publication/release.
+   Framing,455parent/bone kernels иlegacy InitVertex source готовы; normal loader ещё не переключать до
    восстановления его runtime consumers. Затем455layouts/D3D9 иреальные model scenarios.
 2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
 3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
