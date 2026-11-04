@@ -1,0 +1,3446 @@
+{
+  "checked_at": "2026-11-04T01:51:44.821Z",
+  "native_tool_count": 66,
+  "open": {
+    "success": true,
+    "session": {
+      "session_id": "fb60fd59",
+      "input_path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\ida-mcp-smoke\\LoginServerSR.exe.i64",
+      "filename": "LoginServerSR.exe.i64",
+      "created_at": "2026-11-04T10:51:06.324910",
+      "last_accessed": "2026-11-04T10:51:06.324910",
+      "is_analyzing": false,
+      "metadata": {}
+    },
+    "warmup": {
+      "ok": true,
+      "steps": [
+        {
+          "step": "init_caches",
+          "ok": true,
+          "ms": 12.26
+        },
+        {
+          "step": "init_hexrays",
+          "ok": true,
+          "ms": 0.02
+        }
+      ],
+      "health": {
+        "status": "ok",
+        "uptime_sec": 70.763,
+        "idb_path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\ida-mcp-smoke\\LoginServerSR.exe.i64",
+        "module": "LoginServerSR.exe",
+        "input_path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\ida-mcp-smoke\\LoginServerSR.exe",
+        "imagebase": "0x400000",
+        "auto_analysis_ready": true,
+        "hexrays_ready": true,
+        "strings_cache_ready": true,
+        "strings_cache_size": 227
+      }
+    },
+    "message": "Binary opened: LoginServerSR.exe.i64 (fb60fd59)"
+  },
+  "health": {
+    "status": "ok",
+    "uptime_sec": 82.3,
+    "idb_path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\ida-mcp-smoke\\LoginServerSR.exe.i64",
+    "module": "LoginServerSR.exe",
+    "input_path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\ida-mcp-smoke\\LoginServerSR.exe",
+    "imagebase": "0x400000",
+    "auto_analysis_ready": true,
+    "hexrays_ready": true,
+    "strings_cache_ready": true,
+    "strings_cache_size": 227
+  },
+  "functions": {
+    "result": [
+      {
+        "data": [
+          {
+            "addr": "0x401005",
+            "name": "sub_401005",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40100a",
+            "name": "sub_40100A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40100f",
+            "name": "sub_40100F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401014",
+            "name": "sub_401014",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401019",
+            "name": "sub_401019",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40101e",
+            "name": "sub_40101E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401023",
+            "name": "sub_401023",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401028",
+            "name": "sub_401028",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401032",
+            "name": "sub_401032",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40103c",
+            "name": "sub_40103C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401041",
+            "name": "sub_401041",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401046",
+            "name": "sub_401046",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401055",
+            "name": "sub_401055",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40105f",
+            "name": "sub_40105F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401064",
+            "name": "sub_401064",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401069",
+            "name": "sub_401069",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40106e",
+            "name": "sub_40106E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401073",
+            "name": "sub_401073",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401078",
+            "name": "sub_401078",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40107d",
+            "name": "sub_40107D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401082",
+            "name": "sub_401082",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401087",
+            "name": "sub_401087",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40108c",
+            "name": "sub_40108C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401091",
+            "name": "sub_401091",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401096",
+            "name": "sub_401096",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40109b",
+            "name": "sub_40109B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010a0",
+            "name": "sub_4010A0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010aa",
+            "name": "sub_4010AA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010af",
+            "name": "sub_4010AF",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010b4",
+            "name": "sub_4010B4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010b9",
+            "name": "sub_4010B9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010c3",
+            "name": "sub_4010C3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010cd",
+            "name": "sub_4010CD",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010d7",
+            "name": "sub_4010D7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010dc",
+            "name": "sub_4010DC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010e1",
+            "name": "sub_4010E1",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010e6",
+            "name": "sub_4010E6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010f0",
+            "name": "sub_4010F0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010f5",
+            "name": "sub_4010F5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4010fa",
+            "name": "sub_4010FA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401104",
+            "name": "sub_401104",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401109",
+            "name": "sub_401109",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40110e",
+            "name": "sub_40110E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401122",
+            "name": "sub_401122",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401127",
+            "name": "sub_401127",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40112c",
+            "name": "sub_40112C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401131",
+            "name": "sub_401131",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401140",
+            "name": "sub_401140",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401145",
+            "name": "sub_401145",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40114a",
+            "name": "sub_40114A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40114f",
+            "name": "sub_40114F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401159",
+            "name": "sub_401159",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40115e",
+            "name": "sub_40115E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401163",
+            "name": "sub_401163",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40116d",
+            "name": "sub_40116D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401172",
+            "name": "sub_401172",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401177",
+            "name": "sub_401177",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40117c",
+            "name": "sub_40117C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401181",
+            "name": "sub_401181",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401186",
+            "name": "sub_401186",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40118b",
+            "name": "sub_40118B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401190",
+            "name": "sub_401190",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401195",
+            "name": "sub_401195",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40119f",
+            "name": "sub_40119F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011a4",
+            "name": "sub_4011A4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011a9",
+            "name": "sub_4011A9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011b3",
+            "name": "sub_4011B3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011b8",
+            "name": "sub_4011B8",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011bd",
+            "name": "sub_4011BD",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011c2",
+            "name": "sub_4011C2",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011c7",
+            "name": "sub_4011C7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011cc",
+            "name": "sub_4011CC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011d1",
+            "name": "sub_4011D1",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011d6",
+            "name": "sub_4011D6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011db",
+            "name": "sub_4011DB",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011e0",
+            "name": "sub_4011E0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011e5",
+            "name": "sub_4011E5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011ea",
+            "name": "sub_4011EA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011ef",
+            "name": "sub_4011EF",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011f4",
+            "name": "sub_4011F4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011f9",
+            "name": "sub_4011F9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4011fe",
+            "name": "sub_4011FE",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401208",
+            "name": "sub_401208",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40120d",
+            "name": "sub_40120D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401217",
+            "name": "sub_401217",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40121c",
+            "name": "sub_40121C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401226",
+            "name": "sub_401226",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40123a",
+            "name": "sub_40123A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40123f",
+            "name": "sub_40123F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401244",
+            "name": "sub_401244",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401249",
+            "name": "sub_401249",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40124e",
+            "name": "sub_40124E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401258",
+            "name": "sub_401258",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40125d",
+            "name": "sub_40125D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401262",
+            "name": "sub_401262",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401267",
+            "name": "sub_401267",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401271",
+            "name": "sub_401271",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40127b",
+            "name": "sub_40127B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401280",
+            "name": "sub_401280",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401285",
+            "name": "StartAddress",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40128a",
+            "name": "sub_40128A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40128f",
+            "name": "sub_40128F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40129e",
+            "name": "sub_40129E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012a3",
+            "name": "sub_4012A3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012b2",
+            "name": "sub_4012B2",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012b7",
+            "name": "sub_4012B7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012bc",
+            "name": "sub_4012BC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012c1",
+            "name": "sub_4012C1",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012c6",
+            "name": "sub_4012C6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012d0",
+            "name": "sub_4012D0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012d5",
+            "name": "sub_4012D5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012da",
+            "name": "sub_4012DA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012e4",
+            "name": "sub_4012E4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012e9",
+            "name": "sub_4012E9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012ee",
+            "name": "sub_4012EE",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012f8",
+            "name": "sub_4012F8",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4012fd",
+            "name": "sub_4012FD",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401302",
+            "name": "sub_401302",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40130c",
+            "name": "sub_40130C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401311",
+            "name": "sub_401311",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401316",
+            "name": "sub_401316",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401320",
+            "name": "sub_401320",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401325",
+            "name": "sub_401325",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40132a",
+            "name": "sub_40132A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40132f",
+            "name": "sub_40132F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401334",
+            "name": "sub_401334",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401339",
+            "name": "sub_401339",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40133e",
+            "name": "sub_40133E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401343",
+            "name": "sub_401343",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401348",
+            "name": "sub_401348",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401352",
+            "name": "sub_401352",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401361",
+            "name": "sub_401361",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401366",
+            "name": "sub_401366",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40136b",
+            "name": "sub_40136B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401370",
+            "name": "sub_401370",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401375",
+            "name": "sub_401375",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40137f",
+            "name": "sub_40137F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401384",
+            "name": "sub_401384",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401389",
+            "name": "sub_401389",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40138e",
+            "name": "sub_40138E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401398",
+            "name": "sub_401398",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40139d",
+            "name": "sub_40139D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013ac",
+            "name": "sub_4013AC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013b6",
+            "name": "sub_4013B6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013bb",
+            "name": "sub_4013BB",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013c0",
+            "name": "sub_4013C0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013ca",
+            "name": "sub_4013CA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013cf",
+            "name": "sub_4013CF",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013d4",
+            "name": "sub_4013D4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013d9",
+            "name": "sub_4013D9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013e3",
+            "name": "sub_4013E3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013ed",
+            "name": "sub_4013ED",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013f2",
+            "name": "sub_4013F2",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013f7",
+            "name": "sub_4013F7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4013fc",
+            "name": "sub_4013FC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401401",
+            "name": "sub_401401",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401406",
+            "name": "sub_401406",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40140b",
+            "name": "sub_40140B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401410",
+            "name": "sub_401410",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40141a",
+            "name": "sub_40141A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40141f",
+            "name": "sub_40141F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401424",
+            "name": "sub_401424",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401429",
+            "name": "sub_401429",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40142e",
+            "name": "sub_40142E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401438",
+            "name": "sub_401438",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40143d",
+            "name": "sub_40143D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401442",
+            "name": "sub_401442",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401447",
+            "name": "sub_401447",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40144c",
+            "name": "sub_40144C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401451",
+            "name": "sub_401451",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401456",
+            "name": "sub_401456",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40145b",
+            "name": "sub_40145B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401460",
+            "name": "sub_401460",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401465",
+            "name": "sub_401465",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40146a",
+            "name": "sub_40146A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40146f",
+            "name": "sub_40146F",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401474",
+            "name": "sub_401474",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401479",
+            "name": "sub_401479",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40147e",
+            "name": "sub_40147E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401483",
+            "name": "sub_401483",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401488",
+            "name": "sub_401488",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40148d",
+            "name": "sub_40148D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401492",
+            "name": "sub_401492",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401497",
+            "name": "sub_401497",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40149c",
+            "name": "sub_40149C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014b0",
+            "name": "sub_4014B0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014b5",
+            "name": "sub_4014B5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014ba",
+            "name": "sub_4014BA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014c4",
+            "name": "sub_4014C4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014c9",
+            "name": "sub_4014C9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014ce",
+            "name": "sub_4014CE",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014d3",
+            "name": "sub_4014D3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014dd",
+            "name": "sub_4014DD",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014e2",
+            "name": "sub_4014E2",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014e7",
+            "name": "sub_4014E7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014ec",
+            "name": "sub_4014EC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014f1",
+            "name": "sub_4014F1",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014f6",
+            "name": "sub_4014F6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4014fb",
+            "name": "sub_4014FB",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401500",
+            "name": "_WinMain@16",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40150a",
+            "name": "sub_40150A",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401514",
+            "name": "sub_401514",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401519",
+            "name": "sub_401519",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40151e",
+            "name": "sub_40151E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401523",
+            "name": "sub_401523",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401528",
+            "name": "sub_401528",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40152d",
+            "name": "sub_40152D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401532",
+            "name": "sub_401532",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401537",
+            "name": "sub_401537",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40153c",
+            "name": "sub_40153C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401541",
+            "name": "sub_401541",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401546",
+            "name": "sub_401546",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401550",
+            "name": "sub_401550",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401555",
+            "name": "sub_401555",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401564",
+            "name": "sub_401564",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40156e",
+            "name": "sub_40156E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401573",
+            "name": "sub_401573",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40157d",
+            "name": "sub_40157D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401582",
+            "name": "sub_401582",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401587",
+            "name": "sub_401587",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401591",
+            "name": "sub_401591",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401596",
+            "name": "sub_401596",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015a0",
+            "name": "sub_4015A0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015a5",
+            "name": "sub_4015A5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015aa",
+            "name": "sub_4015AA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015af",
+            "name": "sub_4015AF",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015b4",
+            "name": "sub_4015B4",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015b9",
+            "name": "sub_4015B9",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015be",
+            "name": "sub_4015BE",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015c3",
+            "name": "sub_4015C3",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015c8",
+            "name": "sub_4015C8",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015cd",
+            "name": "sub_4015CD",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015d2",
+            "name": "sub_4015D2",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015d7",
+            "name": "sub_4015D7",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015dc",
+            "name": "sub_4015DC",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015e1",
+            "name": "sub_4015E1",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015e6",
+            "name": "sub_4015E6",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015eb",
+            "name": "sub_4015EB",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015f0",
+            "name": "sub_4015F0",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015f5",
+            "name": "sub_4015F5",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x4015fa",
+            "name": "sub_4015FA",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401604",
+            "name": "sub_401604",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401609",
+            "name": "sub_401609",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40160e",
+            "name": "sub_40160E",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401613",
+            "name": "sub_401613",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40161d",
+            "name": "sub_40161D",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401622",
+            "name": "sub_401622",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401627",
+            "name": "j_?OnInitDialog@CMFCToolBarsToolsPropertyPage@@MAEHXZ",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40162c",
+            "name": "sub_40162C",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401631",
+            "name": "sub_401631",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401636",
+            "name": "sub_401636",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x40163b",
+            "name": "sub_40163B",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x401c80",
+            "name": "sub_401C80",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x401cc0",
+            "name": "sub_401CC0",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x401d00",
+            "name": "sub_401D00",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x401d50",
+            "name": "sub_401D50",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x401d90",
+            "name": "sub_401D90",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x401dd0",
+            "name": "sub_401DD0",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x401e10",
+            "name": "sub_401E10",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x401e60",
+            "name": "sub_401E60",
+            "size": "0x50"
+          },
+          {
+            "addr": "0x401ed0",
+            "name": "sub_401ED0",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x401f20",
+            "name": "sub_401F20",
+            "size": "0x1a3"
+          },
+          {
+            "addr": "0x402130",
+            "name": "sub_402130",
+            "size": "0x3c"
+          },
+          {
+            "addr": "0x402180",
+            "name": "sub_402180",
+            "size": "0x195"
+          },
+          {
+            "addr": "0x402380",
+            "name": "sub_402380",
+            "size": "0x222"
+          },
+          {
+            "addr": "0x402630",
+            "name": "sub_402630",
+            "size": "0x6f"
+          },
+          {
+            "addr": "0x4026c0",
+            "name": "sub_4026C0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x402700",
+            "name": "sub_402700",
+            "size": "0x30f"
+          },
+          {
+            "addr": "0x402ae0",
+            "name": "sub_402AE0",
+            "size": "0x2b7"
+          },
+          {
+            "addr": "0x402e50",
+            "name": "sub_402E50",
+            "size": "0x90"
+          },
+          {
+            "addr": "0x402f10",
+            "name": "sub_402F10",
+            "size": "0x16c"
+          },
+          {
+            "addr": "0x4030e0",
+            "name": "sub_4030E0",
+            "size": "0x38"
+          },
+          {
+            "addr": "0x403130",
+            "name": "sub_403130",
+            "size": "0x54"
+          },
+          {
+            "addr": "0x4031a0",
+            "name": "sub_4031A0",
+            "size": "0x14e"
+          },
+          {
+            "addr": "0x403350",
+            "name": "sub_403350",
+            "size": "0x41"
+          },
+          {
+            "addr": "0x4033b0",
+            "name": "sub_4033B0",
+            "size": "0x4d"
+          },
+          {
+            "addr": "0x403410",
+            "name": "sub_403410",
+            "size": "0x75"
+          },
+          {
+            "addr": "0x4034b0",
+            "name": "sub_4034B0",
+            "size": "0xd4"
+          },
+          {
+            "addr": "0x4035c0",
+            "name": "sub_4035C0",
+            "size": "0xe7"
+          },
+          {
+            "addr": "0x4036e0",
+            "name": "sub_4036E0",
+            "size": "0x44"
+          },
+          {
+            "addr": "0x403740",
+            "name": "sub_403740",
+            "size": "0x3b"
+          },
+          {
+            "addr": "0x403790",
+            "name": "StartAddress_0",
+            "size": "0x124"
+          },
+          {
+            "addr": "0x403900",
+            "name": "sub_403900",
+            "size": "0x84"
+          },
+          {
+            "addr": "0x4039b0",
+            "name": "sub_4039B0",
+            "size": "0x159"
+          },
+          {
+            "addr": "0x403b60",
+            "name": "sub_403B60",
+            "size": "0xab"
+          },
+          {
+            "addr": "0x403c40",
+            "name": "sub_403C40",
+            "size": "0x16d"
+          },
+          {
+            "addr": "0x403e10",
+            "name": "sub_403E10",
+            "size": "0xde"
+          },
+          {
+            "addr": "0x403f30",
+            "name": "sub_403F30",
+            "size": "0x41"
+          },
+          {
+            "addr": "0x403f90",
+            "name": "sub_403F90",
+            "size": "0x41"
+          },
+          {
+            "addr": "0x403ff0",
+            "name": "sub_403FF0",
+            "size": "0x6a"
+          },
+          {
+            "addr": "0x404080",
+            "name": "sub_404080",
+            "size": "0x61"
+          },
+          {
+            "addr": "0x404100",
+            "name": "sub_404100",
+            "size": "0x71"
+          },
+          {
+            "addr": "0x404190",
+            "name": "sub_404190",
+            "size": "0xdf"
+          },
+          {
+            "addr": "0x4042b0",
+            "name": "sub_4042B0",
+            "size": "0x8f"
+          },
+          {
+            "addr": "0x404370",
+            "name": "sub_404370",
+            "size": "0x150"
+          },
+          {
+            "addr": "0x404520",
+            "name": "sub_404520",
+            "size": "0x116"
+          },
+          {
+            "addr": "0x404680",
+            "name": "sub_404680",
+            "size": "0x54"
+          },
+          {
+            "addr": "0x4046f0",
+            "name": "sub_4046F0",
+            "size": "0x8f"
+          },
+          {
+            "addr": "0x4047b0",
+            "name": "sub_4047B0",
+            "size": "0xaa"
+          },
+          {
+            "addr": "0x404890",
+            "name": "sub_404890",
+            "size": "0xbf"
+          },
+          {
+            "addr": "0x404980",
+            "name": "sub_404980",
+            "size": "0x10a"
+          },
+          {
+            "addr": "0x404ad0",
+            "name": "sub_404AD0",
+            "size": "0x140"
+          },
+          {
+            "addr": "0x404c60",
+            "name": "sub_404C60",
+            "size": "0xc4"
+          },
+          {
+            "addr": "0x404d60",
+            "name": "sub_404D60",
+            "size": "0x78"
+          },
+          {
+            "addr": "0x404e00",
+            "name": "sub_404E00",
+            "size": "0x1e0"
+          },
+          {
+            "addr": "0x405090",
+            "name": "sub_405090",
+            "size": "0x87"
+          },
+          {
+            "addr": "0x405140",
+            "name": "sub_405140",
+            "size": "0xf3"
+          },
+          {
+            "addr": "0x405270",
+            "name": "sub_405270",
+            "size": "0x115"
+          },
+          {
+            "addr": "0x4053d0",
+            "name": "sub_4053D0",
+            "size": "0x89"
+          },
+          {
+            "addr": "0x405480",
+            "name": "sub_405480",
+            "size": "0x197"
+          },
+          {
+            "addr": "0x405680",
+            "name": "sub_405680",
+            "size": "0xf2"
+          },
+          {
+            "addr": "0x4057b0",
+            "name": "sub_4057B0",
+            "size": "0x57"
+          },
+          {
+            "addr": "0x405820",
+            "name": "sub_405820",
+            "size": "0xe6"
+          },
+          {
+            "addr": "0x405940",
+            "name": "sub_405940",
+            "size": "0x135"
+          },
+          {
+            "addr": "0x405ad0",
+            "name": "sub_405AD0",
+            "size": "0x100"
+          },
+          {
+            "addr": "0x405c10",
+            "name": "sub_405C10",
+            "size": "0x123"
+          },
+          {
+            "addr": "0x405d80",
+            "name": "sub_405D80",
+            "size": "0xd7"
+          },
+          {
+            "addr": "0x405e90",
+            "name": "sub_405E90",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x405f10",
+            "name": "sub_405F10",
+            "size": "0x67"
+          },
+          {
+            "addr": "0x405f90",
+            "name": "sub_405F90",
+            "size": "0x2da"
+          },
+          {
+            "addr": "0x406320",
+            "name": "sub_406320",
+            "size": "0x42"
+          },
+          {
+            "addr": "0x406380",
+            "name": "sub_406380",
+            "size": "0x24"
+          },
+          {
+            "addr": "0x4063b0",
+            "name": "sub_4063B0",
+            "size": "0x3f"
+          },
+          {
+            "addr": "0x406470",
+            "name": "sub_406470",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4064b0",
+            "name": "sub_4064B0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4064f0",
+            "name": "sub_4064F0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x406530",
+            "name": "sub_406530",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x406570",
+            "name": "sub_406570",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4065b0",
+            "name": "sub_4065B0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4065f0",
+            "name": "sub_4065F0",
+            "size": "0x34"
+          },
+          {
+            "addr": "0x406640",
+            "name": "sub_406640",
+            "size": "0x41"
+          },
+          {
+            "addr": "0x4066a0",
+            "name": "sub_4066A0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4066e0",
+            "name": "sub_4066E0",
+            "size": "0x2d"
+          },
+          {
+            "addr": "0x406790",
+            "name": "sub_406790",
+            "size": "0x2d"
+          },
+          {
+            "addr": "0x4067d0",
+            "name": "sub_4067D0",
+            "size": "0x43"
+          },
+          {
+            "addr": "0x406830",
+            "name": "sub_406830",
+            "size": "0x4a"
+          },
+          {
+            "addr": "0x406890",
+            "name": "sub_406890",
+            "size": "0x2a"
+          },
+          {
+            "addr": "0x4068d0",
+            "name": "sub_4068D0",
+            "size": "0x2f"
+          },
+          {
+            "addr": "0x406910",
+            "name": "sub_406910",
+            "size": "0x3e"
+          },
+          {
+            "addr": "0x406960",
+            "name": "sub_406960",
+            "size": "0x82"
+          },
+          {
+            "addr": "0x406a10",
+            "name": "sub_406A10",
+            "size": "0x5f"
+          },
+          {
+            "addr": "0x406a90",
+            "name": "sub_406A90",
+            "size": "0x83"
+          },
+          {
+            "addr": "0x406b40",
+            "name": "sub_406B40",
+            "size": "0x2b"
+          },
+          {
+            "addr": "0x406b80",
+            "name": "sub_406B80",
+            "size": "0x2f"
+          },
+          {
+            "addr": "0x406bc0",
+            "name": "sub_406BC0",
+            "size": "0x2b"
+          },
+          {
+            "addr": "0x406c00",
+            "name": "sub_406C00",
+            "size": "0x38"
+          },
+          {
+            "addr": "0x406c50",
+            "name": "sub_406C50",
+            "size": "0x4c"
+          },
+          {
+            "addr": "0x406cb0",
+            "name": "sub_406CB0",
+            "size": "0xa2"
+          },
+          {
+            "addr": "0x406d80",
+            "name": "sub_406D80",
+            "size": "0xb8"
+          },
+          {
+            "addr": "0x406e70",
+            "name": "sub_406E70",
+            "size": "0x5f"
+          },
+          {
+            "addr": "0x406ef0",
+            "name": "sub_406EF0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x406f30",
+            "name": "sub_406F30",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x406f70",
+            "name": "sub_406F70",
+            "size": "0x3b"
+          },
+          {
+            "addr": "0x406fc0",
+            "name": "sub_406FC0",
+            "size": "0x3b"
+          },
+          {
+            "addr": "0x407010",
+            "name": "sub_407010",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x407050",
+            "name": "sub_407050",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x407090",
+            "name": "sub_407090",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4070d0",
+            "name": "sub_4070D0",
+            "size": "0x1a3"
+          },
+          {
+            "addr": "0x4072e0",
+            "name": "sub_4072E0",
+            "size": "0x28c"
+          },
+          {
+            "addr": "0x407610",
+            "name": "sub_407610",
+            "size": "0xa1"
+          },
+          {
+            "addr": "0x4076e0",
+            "name": "sub_4076E0",
+            "size": "0xe1"
+          },
+          {
+            "addr": "0x407800",
+            "name": "sub_407800",
+            "size": "0x6a"
+          },
+          {
+            "addr": "0x407890",
+            "name": "sub_407890",
+            "size": "0x192"
+          },
+          {
+            "addr": "0x407a90",
+            "name": "sub_407A90",
+            "size": "0x107"
+          },
+          {
+            "addr": "0x407be0",
+            "name": "sub_407BE0",
+            "size": "0xba"
+          },
+          {
+            "addr": "0x407cd0",
+            "name": "sub_407CD0",
+            "size": "0x68"
+          },
+          {
+            "addr": "0x407d60",
+            "name": "sub_407D60",
+            "size": "0x59"
+          },
+          {
+            "addr": "0x407dd0",
+            "name": "sub_407DD0",
+            "size": "0x4f"
+          },
+          {
+            "addr": "0x407e40",
+            "name": "sub_407E40",
+            "size": "0x61"
+          },
+          {
+            "addr": "0x407ec0",
+            "name": "sub_407EC0",
+            "size": "0x76"
+          },
+          {
+            "addr": "0x407f60",
+            "name": "sub_407F60",
+            "size": "0x68"
+          },
+          {
+            "addr": "0x407ff0",
+            "name": "sub_407FF0",
+            "size": "0x61"
+          },
+          {
+            "addr": "0x408070",
+            "name": "sub_408070",
+            "size": "0x5a"
+          },
+          {
+            "addr": "0x4080e0",
+            "name": "sub_4080E0",
+            "size": "0xd0"
+          },
+          {
+            "addr": "0x4081f0",
+            "name": "sub_4081F0",
+            "size": "0x7e"
+          },
+          {
+            "addr": "0x408290",
+            "name": "sub_408290",
+            "size": "0xae"
+          },
+          {
+            "addr": "0x408370",
+            "name": "sub_408370",
+            "size": "0x4c"
+          },
+          {
+            "addr": "0x4083d0",
+            "name": "sub_4083D0",
+            "size": "0x61"
+          },
+          {
+            "addr": "0x408450",
+            "name": "sub_408450",
+            "size": "0x7e"
+          },
+          {
+            "addr": "0x4084f0",
+            "name": "sub_4084F0",
+            "size": "0x103"
+          },
+          {
+            "addr": "0x408640",
+            "name": "sub_408640",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x408680",
+            "name": "sub_408680",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x4086c0",
+            "name": "sub_4086C0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x408700",
+            "name": "sub_408700",
+            "size": "0x2f"
+          },
+          {
+            "addr": "0x408740",
+            "name": "sub_408740",
+            "size": "0x4f"
+          },
+          {
+            "addr": "0x4087b0",
+            "name": "sub_4087B0",
+            "size": "0x1d4"
+          },
+          {
+            "addr": "0x408a00",
+            "name": "sub_408A00",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x408a70",
+            "name": "sub_408A70",
+            "size": "0x804"
+          },
+          {
+            "addr": "0x409480",
+            "name": "sub_409480",
+            "size": "0x31"
+          },
+          {
+            "addr": "0x4094c0",
+            "name": "sub_4094C0",
+            "size": "0x96"
+          },
+          {
+            "addr": "0x409580",
+            "name": "sub_409580",
+            "size": "0x77"
+          },
+          {
+            "addr": "0x409620",
+            "name": "sub_409620",
+            "size": "0x93"
+          },
+          {
+            "addr": "0x4096e0",
+            "name": "sub_4096E0",
+            "size": "0x122"
+          },
+          {
+            "addr": "0x409850",
+            "name": "sub_409850",
+            "size": "0x271"
+          },
+          {
+            "addr": "0x409be0",
+            "name": "sub_409BE0",
+            "size": "0x100"
+          },
+          {
+            "addr": "0x409d20",
+            "name": "sub_409D20",
+            "size": "0xce"
+          },
+          {
+            "addr": "0x409e30",
+            "name": "sub_409E30",
+            "size": "0x8a"
+          },
+          {
+            "addr": "0x409ee0",
+            "name": "sub_409EE0",
+            "size": "0x11c"
+          },
+          {
+            "addr": "0x40a050",
+            "name": "sub_40A050",
+            "size": "0x1d5"
+          },
+          {
+            "addr": "0x40a2a0",
+            "name": "sub_40A2A0",
+            "size": "0x268"
+          },
+          {
+            "addr": "0x40a5b0",
+            "name": "sub_40A5B0",
+            "size": "0x25d"
+          },
+          {
+            "addr": "0x40a8b0",
+            "name": "sub_40A8B0",
+            "size": "0x176"
+          },
+          {
+            "addr": "0x40aa90",
+            "name": "sub_40AA90",
+            "size": "0x99"
+          },
+          {
+            "addr": "0x40ab50",
+            "name": "sub_40AB50",
+            "size": "0x17a"
+          },
+          {
+            "addr": "0x40ad30",
+            "name": "sub_40AD30",
+            "size": "0x1bf"
+          },
+          {
+            "addr": "0x40afc0",
+            "name": "sub_40AFC0",
+            "size": "0xa2"
+          },
+          {
+            "addr": "0x40b090",
+            "name": "sub_40B090",
+            "size": "0x95"
+          },
+          {
+            "addr": "0x40b480",
+            "name": "sub_40B480",
+            "size": "0xf1"
+          },
+          {
+            "addr": "0x40b5b0",
+            "name": "sub_40B5B0",
+            "size": "0x90"
+          },
+          {
+            "addr": "0x40b670",
+            "name": "sub_40B670",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40b6b0",
+            "name": "sub_40B6B0",
+            "size": "0x44"
+          },
+          {
+            "addr": "0x40b710",
+            "name": "sub_40B710",
+            "size": "0x40"
+          },
+          {
+            "addr": "0x40b760",
+            "name": "sub_40B760",
+            "size": "0x2d"
+          },
+          {
+            "addr": "0x40b7e0",
+            "name": "sub_40B7E0",
+            "size": "0x92"
+          },
+          {
+            "addr": "0x40b8a0",
+            "name": "sub_40B8A0",
+            "size": "0x7f"
+          },
+          {
+            "addr": "0x40b940",
+            "name": "sub_40B940",
+            "size": "0x80"
+          },
+          {
+            "addr": "0x40b9e0",
+            "name": "sub_40B9E0",
+            "size": "0x93"
+          },
+          {
+            "addr": "0x40baa0",
+            "name": "sub_40BAA0",
+            "size": "0x66"
+          },
+          {
+            "addr": "0x40bb20",
+            "name": "sub_40BB20",
+            "size": "0x37"
+          },
+          {
+            "addr": "0x40bb70",
+            "name": "sub_40BB70",
+            "size": "0xc1"
+          },
+          {
+            "addr": "0x40bce0",
+            "name": "sub_40BCE0",
+            "size": "0x202"
+          },
+          {
+            "addr": "0x40bf70",
+            "name": "sub_40BF70",
+            "size": "0x86"
+          },
+          {
+            "addr": "0x40c020",
+            "name": "sub_40C020",
+            "size": "0x8d"
+          },
+          {
+            "addr": "0x40c0d0",
+            "name": "sub_40C0D0",
+            "size": "0x20c"
+          },
+          {
+            "addr": "0x40c360",
+            "name": "sub_40C360",
+            "size": "0x31"
+          },
+          {
+            "addr": "0x40c3a0",
+            "name": "sub_40C3A0",
+            "size": "0x6f"
+          },
+          {
+            "addr": "0x40c430",
+            "name": "sub_40C430",
+            "size": "0x8d"
+          },
+          {
+            "addr": "0x40c4e0",
+            "name": "sub_40C4E0",
+            "size": "0x8b"
+          },
+          {
+            "addr": "0x40c590",
+            "name": "?OnInitDialog@CMFCToolBarsToolsPropertyPage@@MAEHXZ",
+            "size": "0x173"
+          },
+          {
+            "addr": "0x40c760",
+            "name": "sub_40C760",
+            "size": "0xc9"
+          },
+          {
+            "addr": "0x40c860",
+            "name": "sub_40C860",
+            "size": "0x101"
+          },
+          {
+            "addr": "0x40c9b0",
+            "name": "sub_40C9B0",
+            "size": "0xe4"
+          },
+          {
+            "addr": "0x40cad0",
+            "name": "sub_40CAD0",
+            "size": "0xd9"
+          },
+          {
+            "addr": "0x40cbe0",
+            "name": "sub_40CBE0",
+            "size": "0x29"
+          },
+          {
+            "addr": "0x40ccd0",
+            "name": "sub_40CCD0",
+            "size": "0xe9"
+          },
+          {
+            "addr": "0x40ce00",
+            "name": "sub_40CE00",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x40ce70",
+            "name": "sub_40CE70",
+            "size": "0xb7"
+          },
+          {
+            "addr": "0x40cf60",
+            "name": "sub_40CF60",
+            "size": "0x152"
+          },
+          {
+            "addr": "0x40d110",
+            "name": "sub_40D110",
+            "size": "0xb5"
+          },
+          {
+            "addr": "0x40d200",
+            "name": "sub_40D200",
+            "size": "0xc0"
+          },
+          {
+            "addr": "0x40d2f0",
+            "name": "sub_40D2F0",
+            "size": "0x22b"
+          },
+          {
+            "addr": "0x40d5b0",
+            "name": "sub_40D5B0",
+            "size": "0xcf"
+          },
+          {
+            "addr": "0x40d6c0",
+            "name": "sub_40D6C0",
+            "size": "0x154"
+          },
+          {
+            "addr": "0x40d870",
+            "name": "sub_40D870",
+            "size": "0x9e"
+          },
+          {
+            "addr": "0x40d940",
+            "name": "sub_40D940",
+            "size": "0xd2"
+          },
+          {
+            "addr": "0x40da50",
+            "name": "sub_40DA50",
+            "size": "0x89"
+          },
+          {
+            "addr": "0x40db00",
+            "name": "sub_40DB00",
+            "size": "0xbd"
+          },
+          {
+            "addr": "0x40dcd0",
+            "name": "sub_40DCD0",
+            "size": "0x2f1"
+          },
+          {
+            "addr": "0x40e080",
+            "name": "sub_40E080",
+            "size": "0xa5"
+          },
+          {
+            "addr": "0x40e210",
+            "name": "sub_40E210",
+            "size": "0x95"
+          },
+          {
+            "addr": "0x40e2d0",
+            "name": "sub_40E2D0",
+            "size": "0x39"
+          },
+          {
+            "addr": "0x40e320",
+            "name": "sub_40E320",
+            "size": "0x24"
+          },
+          {
+            "addr": "0x40e350",
+            "name": "sub_40E350",
+            "size": "0xb0"
+          },
+          {
+            "addr": "0x40e430",
+            "name": "sub_40E430",
+            "size": "0x41"
+          },
+          {
+            "addr": "0x40e490",
+            "name": "sub_40E490",
+            "size": "0xbc"
+          },
+          {
+            "addr": "0x40e580",
+            "name": "sub_40E580",
+            "size": "0x88"
+          },
+          {
+            "addr": "0x40e770",
+            "name": "sub_40E770",
+            "size": "0x72"
+          },
+          {
+            "addr": "0x40e800",
+            "name": "sub_40E800",
+            "size": "0x9e"
+          },
+          {
+            "addr": "0x40e8d0",
+            "name": "sub_40E8D0",
+            "size": "0x56"
+          },
+          {
+            "addr": "0x40e9e0",
+            "name": "sub_40E9E0",
+            "size": "0x10e"
+          },
+          {
+            "addr": "0x40ee90",
+            "name": "sub_40EE90",
+            "size": "0x1fc"
+          },
+          {
+            "addr": "0x40f110",
+            "name": "sub_40F110",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x40f180",
+            "name": "sub_40F180",
+            "size": "0xd9"
+          },
+          {
+            "addr": "0x40f290",
+            "name": "sub_40F290",
+            "size": "0x13e"
+          },
+          {
+            "addr": "0x40f490",
+            "name": "sub_40F490",
+            "size": "0x93"
+          },
+          {
+            "addr": "0x40f550",
+            "name": "sub_40F550",
+            "size": "0xc1"
+          },
+          {
+            "addr": "0x40f650",
+            "name": "sub_40F650",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x40f6d0",
+            "name": "sub_40F6D0",
+            "size": "0x7c"
+          },
+          {
+            "addr": "0x40f7e0",
+            "name": "sub_40F7E0",
+            "size": "0x94"
+          },
+          {
+            "addr": "0x40f8a0",
+            "name": "sub_40F8A0",
+            "size": "0x28"
+          },
+          {
+            "addr": "0x40f8e0",
+            "name": "sub_40F8E0",
+            "size": "0x26"
+          },
+          {
+            "addr": "0x40f910",
+            "name": "sub_40F910",
+            "size": "0x26"
+          },
+          {
+            "addr": "0x40f940",
+            "name": "sub_40F940",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40f980",
+            "name": "sub_40F980",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40f9c0",
+            "name": "sub_40F9C0",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x40fa10",
+            "name": "sub_40FA10",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40fa50",
+            "name": "sub_40FA50",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40fa90",
+            "name": "sub_40FA90",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40fad0",
+            "name": "sub_40FAD0",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x40fb20",
+            "name": "sub_40FB20",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x40fb60",
+            "name": "sub_40FB60",
+            "size": "0xc0"
+          },
+          {
+            "addr": "0x40fc50",
+            "name": "sub_40FC50",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x40fcc0",
+            "name": "sub_40FCC0",
+            "size": "0x3f"
+          },
+          {
+            "addr": "0x40fd10",
+            "name": "sub_40FD10",
+            "size": "0x269"
+          },
+          {
+            "addr": "0x410020",
+            "name": "sub_410020",
+            "size": "0x94"
+          },
+          {
+            "addr": "0x4100e0",
+            "name": "sub_4100E0",
+            "size": "0x8c"
+          },
+          {
+            "addr": "0x410190",
+            "name": "sub_410190",
+            "size": "0x178"
+          },
+          {
+            "addr": "0x4106a0",
+            "name": "sub_4106A0",
+            "size": "0x6d"
+          },
+          {
+            "addr": "0x410730",
+            "name": "sub_410730",
+            "size": "0x6d"
+          },
+          {
+            "addr": "0x4107c0",
+            "name": "sub_4107C0",
+            "size": "0x74"
+          },
+          {
+            "addr": "0x410860",
+            "name": "sub_410860",
+            "size": "0x74"
+          },
+          {
+            "addr": "0x410900",
+            "name": "sub_410900",
+            "size": "0x250"
+          },
+          {
+            "addr": "0x410bf0",
+            "name": "sub_410BF0",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410c30",
+            "name": "sub_410C30",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410c70",
+            "name": "sub_410C70",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x410cc0",
+            "name": "sub_410CC0",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410d00",
+            "name": "sub_410D00",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410d40",
+            "name": "sub_410D40",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410d80",
+            "name": "sub_410D80",
+            "size": "0x36"
+          },
+          {
+            "addr": "0x410dd0",
+            "name": "sub_410DD0",
+            "size": "0x33"
+          },
+          {
+            "addr": "0x410e10",
+            "name": "sub_410E10",
+            "size": "0xb5"
+          },
+          {
+            "addr": "0x410f00",
+            "name": "sub_410F00",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x410f70",
+            "name": "sub_410F70",
+            "size": "0x74"
+          },
+          {
+            "addr": "0x4112c0",
+            "name": "sub_4112C0",
+            "size": "0x20f"
+          },
+          {
+            "addr": "0x411560",
+            "name": "sub_411560",
+            "size": "0x21c"
+          },
+          {
+            "addr": "0x412090",
+            "name": "sub_412090",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x412100",
+            "name": "sub_412100",
+            "size": "0x4d"
+          },
+          {
+            "addr": "0x412220",
+            "name": "sub_412220",
+            "size": "0x44"
+          },
+          {
+            "addr": "0x412280",
+            "name": "sub_412280",
+            "size": "0xec"
+          },
+          {
+            "addr": "0x412620",
+            "name": "sub_412620",
+            "size": "0x2d"
+          },
+          {
+            "addr": "0x412660",
+            "name": "sub_412660",
+            "size": "0x51"
+          },
+          {
+            "addr": "0x4126d0",
+            "name": "sub_4126D0",
+            "size": "0x2d"
+          },
+          {
+            "addr": "0x412b00",
+            "name": "sub_412B00",
+            "size": "0xa3"
+          },
+          {
+            "addr": "0x412df0",
+            "name": "sub_412DF0",
+            "size": "0x63"
+          },
+          {
+            "addr": "0x412e70",
+            "name": "sub_412E70",
+            "size": "0x61"
+          },
+          {
+            "addr": "0x412ef0",
+            "name": "sub_412EF0",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x412f70",
+            "name": "sub_412F70",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x412ff0",
+            "name": "sub_412FF0",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x4132a0",
+            "name": "sub_4132A0",
+            "size": "0x103"
+          },
+          {
+            "addr": "0x413470",
+            "name": "sub_413470",
+            "size": "0x5e"
+          },
+          {
+            "addr": "0x4134f0",
+            "name": "sub_4134F0",
+            "size": "0x2e"
+          },
+          {
+            "addr": "0x413530",
+            "name": "sub_413530",
+            "size": "0x38"
+          },
+          {
+            "addr": "0x413580",
+            "name": "sub_413580",
+            "size": "0x2e"
+          },
+          {
+            "addr": "0x4135c0",
+            "name": "sub_4135C0",
+            "size": "0x3d"
+          },
+          {
+            "addr": "0x413610",
+            "name": "_WinMain@16_0",
+            "size": "0x21e"
+          },
+          {
+            "addr": "0x4138c0",
+            "name": "sub_4138C0",
+            "size": "0x244"
+          },
+          {
+            "addr": "0x413ba0",
+            "name": "sub_413BA0",
+            "size": "0xc9"
+          },
+          {
+            "addr": "0x413ca0",
+            "name": "sub_413CA0",
+            "size": "0xcf"
+          },
+          {
+            "addr": "0x413db0",
+            "name": "sub_413DB0",
+            "size": "0x2a7"
+          },
+          {
+            "addr": "0x414100",
+            "name": "sub_414100",
+            "size": "0x9b"
+          },
+          {
+            "addr": "0x4141d0",
+            "name": "sub_4141D0",
+            "size": "0xa5"
+          },
+          {
+            "addr": "0x4142a0",
+            "name": "sub_4142A0",
+            "size": "0x9b"
+          },
+          {
+            "addr": "0x414362",
+            "name": "Sleep",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414368",
+            "name": "GetPrivateProfileIntA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41436e",
+            "name": "GetPrivateProfileStringA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414374",
+            "name": "DeleteCriticalSection",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41437a",
+            "name": "InitializeCriticalSection",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414380",
+            "name": "EnterCriticalSection",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414386",
+            "name": "LeaveCriticalSection",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41438c",
+            "name": "DeleteFileA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414392",
+            "name": "CloseHandle",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414398",
+            "name": "WriteFile",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41439e",
+            "name": "SetFilePointer",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143a4",
+            "name": "CreateFileA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143aa",
+            "name": "CreateDirectoryA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143b0",
+            "name": "ResetEvent",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143b6",
+            "name": "lstrcatA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143bc",
+            "name": "lstrcpyA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143c2",
+            "name": "OutputDebugStringA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143c8",
+            "name": "FindClose",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143ce",
+            "name": "FindNextFileA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143d4",
+            "name": "FindFirstFileA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143da",
+            "name": "wsprintfA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143e0",
+            "name": "MessageBoxA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143e6",
+            "name": "DispatchMessageA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143ec",
+            "name": "TranslateMessage",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143f2",
+            "name": "GetMessageA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143f8",
+            "name": "PeekMessageA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4143fe",
+            "name": "ShowWindow",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414404",
+            "name": "CreateWindowExA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41440a",
+            "name": "RegisterClassA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414410",
+            "name": "LoadIconA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414416",
+            "name": "LoadCursorA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41441c",
+            "name": "DefWindowProcA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414422",
+            "name": "SetWindowTextA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414428",
+            "name": "KillTimer",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41442e",
+            "name": "PostQuitMessage",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414434",
+            "name": "SetTimer",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41443a",
+            "name": "SendMessageA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414440",
+            "name": "SetFocus",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414446",
+            "name": "SetWindowLongA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41444c",
+            "name": "CallWindowProcA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414452",
+            "name": "GetWindowTextA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414458",
+            "name": "PostMessageA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41445e",
+            "name": "ReleaseDC",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414464",
+            "name": "GetDC",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41446a",
+            "name": "TextOutA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414470",
+            "name": "SetBkColor",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414476",
+            "name": "SQLConnect",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41447c",
+            "name": "SQLSetConnectAttr",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414482",
+            "name": "SQLSetEnvAttr",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414488",
+            "name": "SQLFreeHandle",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41448e",
+            "name": "SQLAllocHandle",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414494",
+            "name": "SQLDisconnect",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41449a",
+            "name": "SQLGetDiagRec",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144a0",
+            "name": "SQLExecDirect",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144a6",
+            "name": "SQLEndTran",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144ac",
+            "name": "SQLGetData",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144b2",
+            "name": "SQLCloseCursor",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144b8",
+            "name": "SQLFetch",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144be",
+            "name": "inet_addr",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144c4",
+            "name": "inet_ntoa",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144ca",
+            "name": "WSAEnumNetworkEvents",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144d0",
+            "name": "WSAWaitForMultipleEvents",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144d6",
+            "name": "WSACreateEvent",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144dc",
+            "name": "WSACloseEvent",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144e2",
+            "name": "WSAEventSelect",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144e8",
+            "name": "closesocket",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144ee",
+            "name": "accept",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144f4",
+            "name": "WSAGetLastError",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4144fa",
+            "name": "connect",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414500",
+            "name": "socket",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414506",
+            "name": "recv",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41450c",
+            "name": "send",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414512",
+            "name": "shutdown",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414518",
+            "name": "listen",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41451e",
+            "name": "bind",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414524",
+            "name": "htonl",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41452a",
+            "name": "htons",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414530",
+            "name": "gethostbyname",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414536",
+            "name": "gethostname",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41453c",
+            "name": "getsockname",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414542",
+            "name": "WSACleanup",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414548",
+            "name": "WSAStartup",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41454e",
+            "name": "timeGetTime",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414554",
+            "name": "_chkesp",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414560",
+            "name": "__onexit",
+            "size": "0x3f"
+          },
+          {
+            "addr": "0x4145a0",
+            "name": "_atexit",
+            "size": "0x18"
+          },
+          {
+            "addr": "0x4145b8",
+            "name": "__CxxFrameHandler",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145c0",
+            "name": "??3@YAXPAX@Z",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145c6",
+            "name": "_beginthread",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145cc",
+            "name": "atoi",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145d2",
+            "name": "strcmp",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145d8",
+            "name": "sprintf",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145de",
+            "name": "??2@YAPAXI@Z",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145e4",
+            "name": "memcpy",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145ea",
+            "name": "_endthreadex",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145f0",
+            "name": "strcpy",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145f6",
+            "name": "strncmp",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4145fc",
+            "name": "strlen",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414610",
+            "name": "__alloca_probe",
+            "size": "0x2f"
+          },
+          {
+            "addr": "0x414640",
+            "name": "_strtime",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414646",
+            "name": "_strdate",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41464c",
+            "name": "memset",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414652",
+            "name": "vsprintf",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414658",
+            "name": "rand",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414660",
+            "name": "??_M@YGXPAXIHP6EX0@Z@Z",
+            "size": "0xa4"
+          },
+          {
+            "addr": "0x414710",
+            "name": "?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z",
+            "size": "0x80"
+          },
+          {
+            "addr": "0x414790",
+            "name": "sub_414790",
+            "size": "0x2c"
+          },
+          {
+            "addr": "0x4147c0",
+            "name": "??_L@YGXPAXIHP6EX0@Z1@Z",
+            "size": "0xa0"
+          },
+          {
+            "addr": "0x414860",
+            "name": "strcat",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414866",
+            "name": "exit",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41486c",
+            "name": "acos",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414872",
+            "name": "sqrt",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414878",
+            "name": "pow",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41487e",
+            "name": "_ftol",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414884",
+            "name": "localtime",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41488a",
+            "name": "time",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414890",
+            "name": "fclose",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414896",
+            "name": "fprintf",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x41489c",
+            "name": "fopen",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x4148b0",
+            "name": "start",
+            "size": "0x1e8"
+          },
+          {
+            "addr": "0x414aaa",
+            "name": "__dllonexit",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ab0",
+            "name": "_except_handler3",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ab6",
+            "name": "?terminate@@YAXXZ",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414abc",
+            "name": "_exit",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ac2",
+            "name": "_XcptFilter",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ac8",
+            "name": "__getmainargs",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ace",
+            "name": "_initterm",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414ae0",
+            "name": "__setdefaultprecision",
+            "size": "0x17"
+          },
+          {
+            "addr": "0x414af8",
+            "name": "__setusermatherr",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b00",
+            "name": "?IsAppThemedFail@_ThemeHelper@@SGHXZ",
+            "size": "0x7"
+          },
+          {
+            "addr": "0x414b10",
+            "name": "sub_414B10",
+            "size": "0x5"
+          },
+          {
+            "addr": "0x414b16",
+            "name": "__p__commode",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b1c",
+            "name": "__p__fmode",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b22",
+            "name": "__set_app_type",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b28",
+            "name": "_controlfp",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b2e",
+            "name": "GetModuleHandleA",
+            "size": "0x6"
+          },
+          {
+            "addr": "0x414b34",
+            "name": "GetStartupInfoA",
+            "size": "0x6"
+          }
+        ],
+        "next_offset": null
+      }
+    ]
+  },
+  "decompilation": {
+    "addr": "0x401e60",
+    "code": "void __cdecl sub_401E60()\n{\n  if ( (byte_5F0EFC & 1) == 0 ) /*0x401e84*/\n  {\n    byte_5F0EFC |= 1u; /*0x401e8f*/\n    sub_401334(&unk_5F0E90); /*0x401e9a*/\n  }\n}",
+    "line_count": 8,
+    "total_lines": 8,
+    "truncated": false,
+    "cursor": {
+      "done": true
+    },
+    "refs": [
+      {
+        "addr": "0x5f0efc",
+        "name": "byte_5F0EFC"
+      },
+      {
+        "addr": "0x401334",
+        "name": "sub_401334"
+      },
+      {
+        "addr": "0x5f0e90",
+        "name": "unk_5F0E90"
+      }
+    ]
+  },
+  "close": {
+    "success": true,
+    "session_id": "fb60fd59",
+    "backend": "worker",
+    "owned": true,
+    "saved": null,
+    "message": "Session closed: LoginServerSR.exe.i64 (fb60fd59)"
+  },
+  "input_sha256": "9874cbada393244db1d02c1549eb02434f6d376e7cea33fc97e8424bfb1cc7a2",
+  "architecture": "x86",
+  "sample_rva": "0x1e60",
+  "function_count": 669
+}

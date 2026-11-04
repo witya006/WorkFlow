@@ -1,0 +1,62 @@
+{
+  "name": "RFOnline",
+  "store": null,
+  "appid": null,
+  "path": "E:\\RFOnlineTrash\\RFOnline",
+  "engine": {
+    "key": "native",
+    "label": "Unknown native engine",
+    "confidence": 10,
+    "evidence": [
+      "no known engine signature"
+    ]
+  },
+  "other_engine_signals": [],
+  "anti_cheat": [
+    "nProtect GameGuard"
+  ],
+  "mod_loaders_installed": [
+    "ASI loader"
+  ],
+  "mod_folders": [],
+  "workshop": null,
+  "saves": [],
+  "executables": {
+    "rdm.exe": {
+      "arch": "x86",
+      "managed": false
+    },
+    "rf.exe": {
+      "arch": "x86",
+      "managed": false
+    },
+    "rflauncher.exe": {
+      "arch": "x64",
+      "managed": false
+    },
+    "fireguard/fggm.exe": {
+      "arch": "x86",
+      "managed": false
+    }
+  },
+  "routes": [
+    {
+      "route": "proxy-DLL loader + function hooks (MinHook/SafetyHook), memory reading; Ghidra/IDA + x64dbg + Cheat Engine",
+      "playbook": "native.md",
+      "why": "engine: Unknown native engine"
+    }
+  ],
+  "warnings": [
+    "anti-cheat present (nProtect GameGuard): offline/single-player only, never inject into online play; many titles need the anti-cheat disabled via an official offline launch option - do not bypass it"
+  ],
+  "playbook": "skills/mod-any-game/references/engines/native.md",
+  "files_indexed": 30311,
+  "index_truncated": false,
+  "host": {
+    "os": "windows",
+    "os_version": "10.0.19045",
+    "arch": "x64",
+    "wsl": false,
+    "translated": false
+  }
+}

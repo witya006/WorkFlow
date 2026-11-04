@@ -1,0 +1,43 @@
+[
+ {
+  "score": 13,
+  "path": "games/red-faction-guerrilla/rf-gmod-gravity-gun-sandbox-and-armageddon-port.md",
+  "title": "rf-gmod: a Garry's Mod-style sandbox (gravity gun, physgun, HL2 weapons, noclip) in RFG Re-Mars-tered, with an untested Armageddon port",
+  "game": "Red Faction: Guerrilla Re-Mars-tered",
+  "engine": "native",
+  "route": "native-hook",
+  "status": "in-progress",
+  "hits": [
+   "- **Single player only.** RFG has online PvP, and RF:A has online co-op with Valve Anti-Cheat listed on its Steam",
+   "# rf-gmod: a Garry's Mod-style sandbox (gravity gun, physgun, HL2 weapons, noclip) in RFG Re-Mars-tered, with an untested Armageddon port",
+   "> [Dylan Faden mod](control-resonant-dylan-takeover-retargeted-animations.md). Two RFG builds ran in the human's"
+  ]
+ },
+ {
+  "score": 7,
+  "path": "games/red-faction-guerrilla/control-resonant-dylan-takeover-retargeted-animations.md",
+  "title": "CONTROL Resonant's Dylan as the player: control takeover, 217 retargeted clips, the Aberrant drawn in D3D11, no-despawn physics",
+  "game": "Red Faction: Guerrilla Re-Mars-tered",
+  "engine": "native",
+  "route": "native-hook",
+  "status": "in-progress",
+  "hits": [
+   "- **Single player only.** RFG has online PvP and Steam leaderboards. The mod reads the multiplayer flag (0x2FEB588)",
+   "> control map replaces RFG's on-foot controls, his kit (powers, the Aberrant's melee forms) runs inside RFG's",
+   "> Aberrant weapon is drawn into RFG's D3D11 frame. A `dinput8.dll` proxy loads a native DLL of MinHook detours."
+  ]
+ },
+ {
+  "score": 2,
+  "path": "games/dead-cells/decoupled-timed-door-scaling-environmental-rally-immunity-an.md",
+  "title": "Decoupled Timed Door Scaling, Environmental Rally Immunity, and HashLink State Storage in Dead Cells",
+  "game": "Dead Cells",
+  "engine": "haxe",
+  "route": "managed-patch",
+  "status": "working",
+  "hits": [
+   "- **Single player only**: Dead Cells has no online play, but Daily Challenge scores go on the leaderboards, so keep the patched exe out of the Daily Challenge and out of any run you post or compare.",
+   "Replace vanilla logic with kill bonus calculation ($1 + \\lfloor \\text{bossTier} / 2 \\rfloor$) and accumulate into `game.__uid` (`pr.Game` field 41). Pad with 6 `NullCheck` and 1 `Nop`."
+  ]
+ }
+]

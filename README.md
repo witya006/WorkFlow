@@ -23,6 +23,7 @@
 Проверка GoMMO MCP: `scripts/Invoke-Python.ps1 scripts/probe_gommo.py`.
 Проверка IDA MCP: `scripts/Invoke-Python.ps1 scripts/probe_ida_mcp.py --configured`.
 Настройка и использование IDA: `docs/ida-mcp.md`.
+Universal Modder: 13 навыков и CLI um, см. `docs/universal-modder.md`.
 
 Оригинальные каталоги перечислены в `config/paths.json`; скрипты аудита читают их,
 но ничего в них не изменяют. Исходники пока не импортированы и не перекодированы.
