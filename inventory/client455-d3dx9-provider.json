@@ -1,0 +1,43 @@
+{
+  "path": "C:\\Windows\\SysWOW64\\d3dx9_36.dll",
+  "sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "architecture": "x86",
+  "preferred_image_base": "0x400000",
+  "file_version": "9.19.949.2111",
+  "exports": [
+    {
+      "name": "D3DXMatrixInverse",
+      "rva": "0x1654a1",
+      "preferred_va": "0x5654a1"
+    },
+    {
+      "name": "D3DXMatrixMultiply",
+      "rva": "0x164f24",
+      "preferred_va": "0x564f24"
+    }
+  ],
+  "observed_current_host_behavior": {
+    "input_diagonal_bits": [
+      "40000000",
+      "40000000",
+      "40000000",
+      "3f800000"
+    ],
+    "inverse_diagonal_bits": [
+      "3effffff",
+      "3effffff",
+      "3effffff",
+      "3f7fffff"
+    ],
+    "scope": "Actual direct export check in14562-case source CPU test;CPU-dispatch-specific observation,not all-hardware certification"
+  },
+  "behavior_evidence": [
+    "inventory/client455-mesh-runtime.json",
+    "inventory/client455-mesh-runtime-client.json",
+    "scripts/native/test_client455_mesh_runtime.cpp"
+  ],
+  "limits": [
+    "Export-entry RVAs only;internal CPU dispatcher implementations not mapped",
+    "No input EXE executed;this audit is static anddoes not load the DLL"
+  ]
+}

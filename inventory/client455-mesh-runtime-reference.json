@@ -1,0 +1,161 @@
+{
+  "reference": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "mesh_constructor",
+          "va": "0x9214e0",
+          "rva": "0x5214e0",
+          "size": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "overwritten_subobject_constructor",
+          "va": "0x920e40",
+          "rva": "0x520e40",
+          "size": 222,
+          "sha256": "f54b8ac43cc0edb530672fce5de30e225fdedf2080b746b09b252694390e5232"
+        },
+        {
+          "name": "mesh08_loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        },
+        {
+          "name": "texture_lookup",
+          "va": "0x934120",
+          "rva": "0x534120",
+          "size": 324,
+          "sha256": "303bca75499df787044bcb466ac8ee265ceaa2ae213d6cb2d923058a16a37853"
+        },
+        {
+          "name": "texture_load",
+          "va": "0x934a20",
+          "rva": "0x534a20",
+          "size": 829,
+          "sha256": "2e8076366829b50d50a61adc245087042f874b99c1677bd42d90831fbc870f63"
+        }
+      ],
+      "matrix_imports": [
+        {
+          "va": "0x854130",
+          "rva": "0x454130",
+          "iat_va": "0xaa4734",
+          "iat_rva": "0x6a4734",
+          "bytes": "ff253447aa00",
+          "dll": "d3dx9_36.dll",
+          "name": "D3DXMatrixInverse"
+        },
+        {
+          "va": "0x85412a",
+          "rva": "0x45412a",
+          "iat_va": "0xaa4738",
+          "iat_rva": "0x6a4738",
+          "bytes": "ff253847aa00",
+          "dll": "d3dx9_36.dll",
+          "name": "D3DXMatrixMultiply"
+        }
+      ],
+      "unsigned_bias": {
+        "va": "0xb369b0",
+        "rva": "0x7369b0",
+        "bytes": "0000804f"
+      }
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "mesh_constructor",
+          "va": "0x9214e0",
+          "rva": "0x5214e0",
+          "size": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "overwritten_subobject_constructor",
+          "va": "0x920e40",
+          "rva": "0x520e40",
+          "size": 222,
+          "sha256": "f54b8ac43cc0edb530672fce5de30e225fdedf2080b746b09b252694390e5232"
+        },
+        {
+          "name": "mesh08_loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        },
+        {
+          "name": "texture_lookup",
+          "va": "0x934120",
+          "rva": "0x534120",
+          "size": 324,
+          "sha256": "303bca75499df787044bcb466ac8ee265ceaa2ae213d6cb2d923058a16a37853"
+        },
+        {
+          "name": "texture_load",
+          "va": "0x934a20",
+          "rva": "0x534a20",
+          "size": 829,
+          "sha256": "2e8076366829b50d50a61adc245087042f874b99c1677bd42d90831fbc870f63"
+        }
+      ],
+      "matrix_imports": [
+        {
+          "va": "0x854130",
+          "rva": "0x454130",
+          "iat_va": "0xaa4734",
+          "iat_rva": "0x6a4734",
+          "bytes": "ff253447aa00",
+          "dll": "d3dx9_36.dll",
+          "name": "D3DXMatrixInverse"
+        },
+        {
+          "va": "0x85412a",
+          "rva": "0x45412a",
+          "iat_va": "0xaa4738",
+          "iat_rva": "0x6a4738",
+          "bytes": "ff253847aa00",
+          "dll": "d3dx9_36.dll",
+          "name": "D3DXMatrixMultiply"
+        }
+      ],
+      "unsigned_bias": {
+        "va": "0xb369b0",
+        "rva": "0x7369b0",
+        "bytes": "0000804f"
+      }
+    }
+  ],
+  "matrix_provider": {
+    "path": "C:\\Windows\\SysWOW64\\d3dx9_36.dll",
+    "input_relative": "d3dx9_36.dll",
+    "sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+    "bytes": 3734536,
+    "architecture": "x86",
+    "file_version": "9.19.949.2111",
+    "publisher_verification": "PowerShell Get-AuthenticodeSignature onbyte-identical input:Valid,Microsoft Corporation"
+  },
+  "confirmed": [
+    "Constructor final state:whole5803zero,four1.0 fields,nine-1fields,cumulative count/byte accounting;preceding subobject writes overwritten",
+    "Header copies200/264/328matrices;inverse328 times200 withrow translation forced0;separate inverse200",
+    "Unsigned598 uses x87 signedFILD plus2^32 onnegative thenFSTP;6float copies also use x87",
+    "Primary basename lowercased ininput;NOR/SEQ/REF inserted beforefirst.dds;all4load requests only onprimary cache miss;secondary retains case andleading-only backslash",
+    "Object texture directory ifnonempty,otherwise manager fallback;missing texture IDs stay0"
+  ],
+  "limits": [
+    "Source metadata/material control flow,not full normal loader/texture cache/GPU provider",
+    "Matrix implementation remains pinned Microsoft D3DX9runtime dependency;no inputEXE executed",
+    "Source errors forbad names/primary path/singular inverse differ fromunchecked reference failures",
+    "Unmasked exceptions/non-ASCII CRT locale/OOM/full constructor owning methods/destructor andGPU publication remain open"
+  ],
+  "raw_analysis": "artifacts/character-mesh08/runtime-instructions.json/runtime-0x934120.json/runtime-0x934a20.json/runtime-0x920e40.json;cached607line922A00 and55line9214E0;owned IDA716ae4faclosed/save"
+}

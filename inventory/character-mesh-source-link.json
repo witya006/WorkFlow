@@ -1,7 +1,7 @@
 {
   "normal": {
     "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
-    "exe_sha256": "d52d1e6889e679af1262182088e6f648affd7a0f73d89b23c35c975f310ac30b",
+    "exe_sha256": "6f486f1f4ef950d207d9fd9cba9d2e647d7538954185c39adfeec7d5c9316a0b",
     "architecture": "x86",
     "image_base": "0x400000",
     "source_functions": [
@@ -91,56 +91,56 @@
   },
   "lab": {
     "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
-    "exe_sha256": "0a1dbe6d2f069b436556e7933648b3ce44ac877a0e808653cc1ed7d93d92b79d",
+    "exe_sha256": "f55fdb172661cbcfdf131aa3d7a0ddba1413b2039151ff866c88f78f2a3c42cb",
     "architecture": "x86",
     "image_base": "0x400000",
     "source_functions": [
       {
         "symbol": "?FindParent@@YAPAUObjectMesh@@PADPAU1@H@Z",
-        "va": "0x6bc060",
-        "rva": "0x2bc060",
+        "va": "0x6c6af0",
+        "rva": "0x2c6af0",
         "source": "character_mesh_bindings.cpp"
       },
       {
         "symbol": "?FindParent@@YAHPAUObjectMesh@@H0H@Z",
-        "va": "0x6bc030",
-        "rva": "0x2bc030",
+        "va": "0x6c6ac0",
+        "rva": "0x2c6ac0",
         "source": "character_mesh_bindings.cpp"
       },
       {
         "symbol": "?RematchParent@@YAHPAUObjectMesh@@H0H@Z",
-        "va": "0x6bc0e0",
-        "rva": "0x2bc0e0",
+        "va": "0x6c6b70",
+        "rva": "0x2c6b70",
         "source": "character_mesh_bindings.cpp"
       },
       {
         "symbol": "?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z",
-        "va": "0x6bbcf0",
-        "rva": "0x2bbcf0",
+        "va": "0x6c6780",
+        "rva": "0x2c6780",
         "source": "character_mesh_bindings.cpp"
       },
       {
         "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
-        "va": "0x6bc6f0",
-        "rva": "0x2bc6f0",
+        "va": "0x6c7180",
+        "rva": "0x2c7180",
         "source": "character_mesh_init.cpp"
       },
       {
         "symbol": "?ConvertVtToD3D@@YAXAAVCHARACTERVERTEX@@AAUEXPTVERTEX@@@Z",
-        "va": "0x6bc3a0",
-        "rva": "0x2bc3a0",
+        "va": "0x6c6e30",
+        "rva": "0x2c6e30",
         "source": "character_mesh_init.cpp"
       },
       {
         "symbol": "?ConvertUV@@YAXAAVCHARACTERVERTEX@@UtagTEXCOORDFLOAT@@@Z",
-        "va": "0x6bc380",
-        "rva": "0x2bc380",
+        "va": "0x6c6e10",
+        "rva": "0x2c6e10",
         "source": "character_mesh_init.cpp"
       },
       {
         "symbol": "?DecodeTwoBlendPhysiqueData@@YAXPAVCHARACTERVERTEX@@HPAUPHYSIQUE@@H@Z",
-        "va": "0x6bc3d0",
-        "rva": "0x2bc3d0",
+        "va": "0x6c6e60",
+        "rva": "0x2c6e60",
         "source": "character_mesh_init.cpp"
       }
     ],
@@ -160,23 +160,23 @@
     ],
     "actual_load_real_calls": [
       {
-        "va": "0x426177",
-        "rva": "0x26177",
-        "bytes": "e8f6d2fdff",
+        "va": "0x4264a7",
+        "rva": "0x264a7",
+        "bytes": "e802d0fdff",
         "destination_symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
-        "destination_va": "0x6bc6f0",
+        "destination_va": "0x6c7180",
         "thunks": [
-          "0x403472"
+          "0x4034ae"
         ]
       },
       {
-        "va": "0x42621e",
-        "rva": "0x2621e",
-        "bytes": "e84fd2fdff",
+        "va": "0x42654e",
+        "rva": "0x2654e",
+        "bytes": "e85bcffdff",
         "destination_symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
-        "destination_va": "0x6bc6f0",
+        "destination_va": "0x6c7180",
         "thunks": [
-          "0x403472"
+          "0x4034ae"
         ]
       }
     ],

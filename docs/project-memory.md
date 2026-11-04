@@ -31,7 +31,7 @@ M8 не требуется. Компиляция, запуск и частичн
   particles15/500:inside/night[0,0],outside/night[1,1],outside/day[0,0].
   13GPU cases/321checks,0errors/warnings,allocation/COM release balance0.
   FPU initial/engine/device=0x027F/0x027F/0x007F; actual map/render/consumer остаются007F.
-  703weather/30resource/23 337targeted helper checks на текущем lab прошли.
+  703weather/30resource/23 337targeted helper checks прошли на исторической M5 lab revision.
   Gate inventory/client-m5-checkpoint.json; research/client455-graphics-runtime.md.
 - M6 в работе. Полные particles/clock/Character/UI/network/renderer parity открыты.
   Первая clock ревизия:8scalar functions+256byte frame prefix,773bytes
@@ -63,11 +63,11 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-d52d1e6889e679af1262182088e6f648affd7a0f73d89b23c35c975f310ac30b.
-Snapshot mesh455-bones;предыдущие revisions сохранены. Обычный EXE
+6f486f1f4ef950d207d9fd9cba9d2e647d7538954185c39adfeec7d5c9316a0b.
+Snapshot mesh455-header-material;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA 0a1dbe6d2f069b436556e7933648b3ce44ac877a0e808653cc1ed7d93d92b79d,
-size4534784,entryRVA0x81D4; snapshot work/client455-mesh-bindings-lab/0a1dbe6d2f069b43/RF_Online.bin.
+Own lab EXE SHA f55fdb172661cbcfdf131aa3d7a0ddba1413b2039151ff866c88f78f2a3c42cb,
+size4585984,entryRVA0x828D; snapshot work/client455-mesh-runtime-lab/f55fdb172661cbcf/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
@@ -88,6 +88,15 @@ cases31–50. Нет missing influences в fixtures,max4unique/mesh. Names изp
 выделены tooling,полный skeleton loader/матрицы/анимации иего selection не доказаны.
 Normal consumer ещё отсутствует;не смешивать сlegacy1072ABI. Полный loader открыт.
 research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json.
+Constructor final state/counters,header fields/matrices/special names иmaterial
+request flow sourceготовы:14562checks/12real files/393parts/12FP modes standalone/
+full-client. Матрицы используютactual D3DX9_36,texture backend вtests scripted.
+Native algebraic invariants +synthetic bitgolden;неполный arbitrary matrix bitproof.
+858files/12090headers исследованы поfrozen offsets:8659primary empty,3431DDS/backslash,
+0nonfinite/nonaffine/zero numeric3x3det/unterminated/nonASCII/% strings. Это domain
+audit,неfull matrix condition proof. НЕ повторять header census без изменения inputs.
+Actual TextureManager/sharedGPU/loader/destructor/normaldispatch ещё открыты.
+research/client455-mesh-runtime-source.md;inventory/client455-mesh-runtime*.json.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -117,8 +126,10 @@ files имеют отдельный ledger client-behavior-patches.json. Сей�
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
 CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
 X87_MATH /WEATHER /RESOURCE_IO /CLOCK /MAP_TIME /TIME_COMMANDS по умолчанию
-OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
-CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
+OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches.
+MESH08/MESH_BINDINGS/MESH_RUNTIME — отдельные defaultOFF dependencies,driverON;
+последние два source macro ограничены labfile. Normal consumers ещё не подключены.
+Заглушек CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
 - Logger 0x7DF200: append с prior length, >10M truncate, >5M flag. 14 cases/66 checks.
   Clear routine 0x7DF1B0 существует, но xrefs/absolute pointer не найдены; lifecycle
@@ -176,9 +187,10 @@ engine API без переноса binary consumers не является455rend
 Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVertex checks.
 Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
 unwind до него открыт. MESH08framing/source reader готов,НЕ повторять corpus858audit
-без изменения inputs/parser. NEXT:runtime model construction по922A00:metadata/
-matrices/material texture names/loading;затем shared GPU buffers/index rebase/
-publication/release/D3D9consumer. First-match local/external bindings и93CB00bone
+без изменения inputs/parser. NEXT:actual TextureManager934120/934A20 иprovider933DE0;
+затем shared GPU allocators93E000/93E180,index rebase/publication/release/D3D9consumer.
+Constructor/header/matrices/material request flow уже sourceготовы (14562checks),
+НЕ повторять этот reverse/header census. First-match local/external bindings и93CB00bone
 kernel уже sourceготовы,НЕ повторять reverse. 12fixturepairs pinned,ноnormal model
 dispatch/полный skeleton loader не подключены;unknown contracts не объявлятьготовыми.
 Не подавать MESH08 встарый unchecked MakeMeshData693 reader. Новый raw body607lines
@@ -204,6 +216,21 @@ Signed influence<=0 skips;>4/unterminated/>50resolved — ownerror,неAV/OOM pa
 Vector frees/debug logger ещё не подключены. See research/client455-mesh-bindings-source.md.
 Fixture plain-BN name extraction:6Python tests/all minimal truncations passed.
 Source/kernel inputs не менялись после final component/full-client validation.
+Следом IDA716ae4faclosed/save:5runtime bodies совпали вbothPE,matrix thunks854130/
+85412A действительно импортируютd3dx9_36. Installed SysWOW64 DLL равнаclient-local,
+SHA c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935,
+version9.19.949.2111,Microsoft signatureValid.
+DLLexport-entry RVAs:Inverse1654A1/Multiply164F24;client455-d3dx9-provider.json.
+Не подменять D3DX8 илиидеальнойmath:inverse diag(2,2,2,1) даёт bits3EFFFFFF x3/3F7FFFFF.
+Отклонение1ULP доказано;reciprocal approximation — предположение оего причине.
+Header6floats иunsigned598 используютx87;unsigned correction constant2^32.
+Material callback API требуетbackend;scriptedprovider толькоtest. Primary-miss
+запускает4load attempts;empty primary сохраняетaux;secondary leading-only slash
+остаётсявимени. Actual texture cache/creation ещё не подключены. Full607line body
+НЕ выгружать;новыеtexture934120/934A20/subctor920E40 cachedartifacts/character-mesh08.
+SharedGPU:vertex offset4494,index offset4502;WORD index+=((offset%0x231860)>>6),
+upload толькоприindexCount>0;затемparent/boneиpublicationobject+532/+536.
+Destructor920FD0 cached,owningmethods/vectorfree/logger/unwind открыты.
 research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
 Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:

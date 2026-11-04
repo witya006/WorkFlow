@@ -596,7 +596,7 @@
       "id": "DATA-MESH08-012",
       "description": "455MESH08mesh format and its distinct client loading path",
       "status": "described",
-      "verification": "Source framing and4packed455parent/bone kernels verified separately;full loader metadata/matrices/material/shared GPU/publication/lifecycle and normal dispatch remain open.",
+      "verification": "Source framing,packed455parent/bone kernels andCPU constructor/header/matrix/material-request flow verified separately. Full physical texture backend/shared GPU/publication/destructor/normal dispatch remain open.",
       "reference": [
         {
           "va": "0x91f250",
@@ -621,14 +621,16 @@
         "inventory/client455-mesh08-reference.json",
         "research/client455-mesh08-format.md",
         "research/client455-mesh-bindings-source.md",
-        "inventory/client455-mesh-bindings-runtime.json"
+        "inventory/client455-mesh-bindings-runtime.json",
+        "research/client455-mesh-runtime-source.md",
+        "inventory/client455-mesh-runtime-client.json"
       ],
       "scenarios": [
         "Shield065hasMESH08prefix;Shield031/Cloak002 pass bounded plain693record framing toEOF",
         "Normal/UV/physique/index/format-reference bodies andcaller edges match both pinned455PE"
       ],
       "gaps": [
-        "Complete runtime mesh construction/matrices/materials/shared GPU buffers/index rebase/publication/release;bone-kernel ownership/debug adapter andnormal loader integration",
+        "ActualTextureManager/cache/texture loading,shared vertex/index buffers/rebase/publication/release;bone-vector ownership/debug/unwind andnormal loader integration",
         "Complete real model inventory/variants and error/lifecycle semantics",
         "Packed455mesh/D3D9buffer/render consumers and physical character GPU acceptance"
       ]
@@ -724,10 +726,66 @@
         "All selected counts0-50,identity writes followed bypointer copy,pointer/matrix overlap31-50,owned51capacity/unterminated/>4influences errors"
       ],
       "gaps": [
-        "Normal loader/full constructor/metadata/matrix/material/animation/shared GPU/index rebase/publication/release not integrated",
+        "Normal loader/full class owning methods/animation/texture backend/shared GPU/index rebase/publication/release not integrated;constructor/header/material request kernels tracked separately by CHARACTER455-MESH-CPU-015",
         "Borrowed views;reference vector ownership/free anddebug logging need loader adapter",
         "Fixture skeleton pairing/basename extraction is not proof of game asset selection orfull BN loader",
         "Owned safety limit50/record validation is not reference unchecked overflow/OOM/AV equivalence;full capacity contract unknown"
+      ]
+    },
+    {
+      "id": "CHARACTER455-MESH-CPU-015",
+      "description": "Source455mesh constructor final state/counters,header metadata/matrices/special names andmaterial request order;physical texture backend/full model loader separate",
+      "status": "implemented",
+      "verification": "14562checks/12real files/393parts/12FP modes standalone/full-client;8scripted material traces;real pinned D3DX9_36matrix exports. Header domain858files/12090meshes checked separately. Normal loader not integrated;derived arbitrary matrix bits not fully certified.",
+      "reference": [
+        {
+          "va": "0x9214e0",
+          "rva": "0x5214e0",
+          "role": "mesh constructor final state"
+        },
+        {
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "role": "MESH08header/material path"
+        },
+        {
+          "va": "0x854130",
+          "rva": "0x454130",
+          "role": "D3DX9MatrixInverse import"
+        },
+        {
+          "va": "0x85412a",
+          "rva": "0x45412a",
+          "role": "D3DX9MatrixMultiply import"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_mesh_runtime.cpp",
+        "scripts/native/client455_mesh_runtime.h"
+      ],
+      "option": "RF_CLIENT_455_MESH_RUNTIME",
+      "evidence": [
+        "inventory/character-mesh08-headers.json",
+        "inventory/client455-mesh-runtime-reference.json",
+        "inventory/client455-d3dx9-provider.json",
+        "inventory/client455-mesh-runtime.json",
+        "inventory/client455-mesh-runtime-link.json",
+        "inventory/client455-mesh-runtime-client.json",
+        "inventory/character-mesh455-runtime-graphics.json",
+        "research/client455-mesh-runtime-source.md"
+      ],
+      "scenarios": [
+        "Full5803byte constructor/header scalar/copy golden withderived matrix ranges independently checked;counter DWORD wraparound",
+        "Actual D3DX9inverse/multiply algebraic invariants,forced+0translation,andexact current-provider reciprocal-approximation synthetic bits",
+        "12FP modes/uint32 rounding boundaries/negative zero/denormal/infinity/QNaN/SNaN;control word andstack preserved",
+        "8exact material request traces:cached/missing primary,auxiliary attempts,dir fallback,missing textures,noDDS names,case/header mutation,secondary leading-only slash",
+        "8special names/repeatedflags andinvalid name/path/argument/singular input owned errors"
+      ],
+      "gaps": [
+        "PhysicalTextureManager/cache/DDS-RFC-RFT loading/shared GPU buffers/index rebase/full model dispatch/owning subobject methods/destructor not integrated",
+        "Material callbacks scripted only in tests;production backend mandatory,none provided by this unit",
+        "Arbitrary matrix bit-equivalence/full condition domains/CPU-dispatch variation remain unproven;provider pinned toDLLSHA",
+        "Own malformed/singular errors differ fromreference unchecked failures;unmasked FP/OOM/non-ASCII CRT locale/failure unwind remain open"
       ]
     }
   ],

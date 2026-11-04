@@ -67,8 +67,8 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Продолжить Character455 с runtime construction MESH08 по922A00: metadata/matrices,
-   materials; затем
+1. Продолжить Character455 сactual TextureManager934120/934A20 иprovider933DE0;
+   затем
    shared GPU buffers/index rebase/publication/release иD3D9buffer/render consumers.
    Framing готов:858real files/12090meshes прошли lossless roundtrip;
    6304native checks/12samples/393parts/1309guarded truncations standalone/full-client.
@@ -80,6 +80,11 @@ R3X checks.703weather regression checks прошли на текущем lab.286
    20overlap cases31–50,0missing influences вfixtures. Полный skeleton/model loader,
    transforms/material/GPU/normal dispatch не подключены. Не повторять этот reverse.
    research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json.
+   Constructor/header/matrices/material request flow sourceготовы:14562checks/
+   12real files/393parts/12FP modes standalone/full-client,actual D3DX9_36 matrices,
+   scriptedtexture backend тольковtests.8material traces;all858files/12090headers
+   провереныдлястрок/matrixdomains. ActualTextureManager/sharedGPU/normaldispatch
+   открыты. Не повторять этотreverse/headercensus. research/client455-mesh-runtime-source.md.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -119,6 +124,8 @@ Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/prob
 MESH08: build_client455_mesh08.py; verify_client_mesh08.py [--lab]; probe_client_mesh08.py.
 455bindings: build_client455_mesh_bindings.py; verify_client455_mesh_bindings.py [--lab];
 probe_client455_mesh_bindings.py. Пары: audit_mesh08_bone_pairs.py (повтор при изменении входов).
+Mesh CPU runtime:build_client455_mesh_runtime.py;verify_client455_mesh_runtime.py [--lab];
+probe_client455_mesh_runtime.py. D3DX9provider закреплён SHA;его1ULP quirks сохранять.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
 --level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).

@@ -145,6 +145,20 @@ if ((Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/character-mesh08
     (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-mesh-bindings-reference.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $mesh455.reference_report_sha256) { throw '455 mesh binding inputs changed.' }
 $arguments += '-DRF_CLIENT_455_MESH_BINDINGS=ON'
 $arguments += "-DRF_CLIENT_455_MESH_BINDINGS_LIBRARY=$mesh455Library"
+$meshRuntime = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-mesh-runtime.json') -Raw | ConvertFrom-Json
+$meshRuntimeLibrary = Join-Path $workspace $meshRuntime.library
+if ((Get-FileHash -LiteralPath $meshRuntimeLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshRuntime.library_sha256 -or
+    $meshRuntime.native_test.failures -ne 0 -or $meshRuntime.native_test.real_files -ne 12 -or
+    $meshRuntime.native_test.parts -ne 393 -or $meshRuntime.native_test.precision_rounding_modes -ne 12 -or
+    $meshRuntime.native_test.material_cases -ne 8 -or $meshRuntime.native_test.checks -lt 14562) { throw '455 mesh runtime source proof missing or stale.' }
+foreach ($property in $meshRuntime.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 mesh runtime source changed.' }
+}
+if ((Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/character-mesh08-headers.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshRuntime.header_report_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-mesh-runtime-reference.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshRuntime.reference_report_sha256 -or
+    (Get-FileHash -LiteralPath $meshRuntime.matrix_provider.path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshRuntime.matrix_provider.sha256) { throw '455 mesh runtime input/provider proof changed.' }
+$arguments += '-DRF_CLIENT_455_MESH_RUNTIME=ON'
+$arguments += "-DRF_CLIENT_455_MESH_RUNTIME_LIBRARY=$meshRuntimeLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -226,6 +240,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_bindings.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_bindings.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_runtime.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_mesh_runtime.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

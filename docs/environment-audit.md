@@ -421,6 +421,34 @@ GameDLLs/referenceEXE/normalWinMain не запускались. M6/M6F/M7/M9 н
 research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json,
 character-mesh08-bone-pairs.json,character-mesh455-bindings-graphics-runtime.json.
 
+## M6: mesh constructor/header/material request source,2026-11-05
+
+3CPU API constructor final state/counters,header scalars/names/matrices/material
+request flow восстановлены source.14562checks/12real files/393parts/12FP modes
+standalone/full-client прошли. Матрицы вызываютactual D3DX9_36;texture provider
+вtests scripted,физическийTextureManager/sharedGPU/normal loader ещё открыты.
+Header domain858files/12090meshes:8659empty primary,3431DDS/backslash;0unterminated/
+nonASCII/% strings,nonfinite/nonaffine/zero numeric3x3det. Это ограниченнаяклассификация.
+5bodies совпали вbothPE;thunks854130/85412A IAT resolveD3DX9_36;ownedIDA716ae4faclosed/save.
+SysWOW64 DLL иclient-local DLL byte-equal,SHA
+c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935,x86/3734536bytes,
+version9.19.949.2111,Microsoft AuthenticodeValid. Direct export подтвердил1ULP offset:
+inverse diag(2,2,2,1) bits3EFFFFFF x3/3F7FFFFF. Сохранятьquirk;reciprocal approximation
+предполагается какпричина,внутренниеинструкцииDLL не исследованы.
+
+Normal2451456bytes,entryRVA1BC4B0,SHA
+6f486f1f4ef950d207d9fd9cba9d2e647d7538954185c39adfeec7d5c9316a0b,
+snapshot mesh455-header-material,не запускался. Lab4585984bytes,entryRVA828D,SHA
+f55fdb172661cbcfdf131aa3d7a0ddba1413b2039151ff866c88f78f2a3c42cb.
+Lab3API fromsource;normal unused APIs stripped.289modern COFF/MT. Regresions:
+mesh086304,binding4552237,legacy245+6732,clock1443,map-time314,weather703,resource30,
+time-command432cases/2628checks+20actualinput. Platform01/device2GPUcases/69checks,
+0warnings/errors,Dmalloc/COMbalance0,FPU007F;обаframeSHA равны просмотренным.
+Это map/weather regression;CharacterGPU ещё открыт. GameDLLs/normalWinMain/referenceEXE
+не запускались. M6/M6F/M7/M9 не закрыты. research/client455-mesh-runtime-source.md;
+inventory/character-mesh08-headers.json,client455-mesh-runtime*.json,
+character-mesh455-runtime-graphics.json.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

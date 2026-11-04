@@ -1,0 +1,38 @@
+{
+  "normal": {
+    "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+    "exe_sha256": "6f486f1f4ef950d207d9fd9cba9d2e647d7538954185c39adfeec7d5c9316a0b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [],
+    "library_sha256": "f484360d40a11e1443ef3a5937326d7546631cbe729aadf4e7c2ada5fd166ef1",
+    "component_report_sha256": "07853652d66576f39b289476258bfc212ed3a846fe80fe526bdd560c72965c41",
+    "scope": "Source455mesh construction/header/material request dependency available;own lab invokes3APIs. Normal full model-loader/texture backend/GPU not integrated;unused normal APIs may be stripped."
+  },
+  "lab": {
+    "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
+    "exe_sha256": "f55fdb172661cbcfdf131aa3d7a0ddba1413b2039151ff866c88f78f2a3c42cb",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructMeshStorage",
+        "va": "0x6c6250",
+        "rva": "0x2c6250"
+      },
+      {
+        "symbol": "_RF455_ApplyMesh08Header",
+        "va": "0x6c5d20",
+        "rva": "0x2c5d20"
+      },
+      {
+        "symbol": "_RF455_LoadMesh08Materials",
+        "va": "0x6c6370",
+        "rva": "0x2c6370"
+      }
+    ],
+    "library_sha256": "f484360d40a11e1443ef3a5937326d7546631cbe729aadf4e7c2ada5fd166ef1",
+    "component_report_sha256": "07853652d66576f39b289476258bfc212ed3a846fe80fe526bdd560c72965c41",
+    "scope": "Source455mesh construction/header/material request dependency available;own lab invokes3APIs. Normal full model-loader/texture backend/GPU not integrated;unused normal APIs may be stripped."
+  }
+}

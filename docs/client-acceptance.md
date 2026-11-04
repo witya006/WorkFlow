@@ -129,6 +129,11 @@ full-client,12samples/393parts/1309guarded truncations и7Python tests. Normal l
 loader иполные skeleton/transform/animation/material/GPU consumers ещё открыты.
 research/client455-mesh-bindings-source.md. Сами paired fixtures не доказывают
 игровой выбор скелета иполную загрузку BN.
+Constructor final state/header/matrix/material-request kernels source готовы:
+14562checks/12real files/393parts/12FP modes standalone/full-client. Matrix provider
+закреплённаяD3DX9_36;texture callbacks вtests scripted. Arbitrary matrix bitproof,
+actual TextureManager/sharedGPU/destructor/full loader остаются открытыми.
+research/client455-mesh-runtime-source.md. Проверка матричной DLL не закрывает D3D9renderer.
 Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 

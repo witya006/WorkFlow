@@ -61,7 +61,7 @@ def main():
             if m:settings[m[1]]=m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS)(?:_LIBRARY)?):[^=]+=(.*)',line)
+            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME)(?:_LIBRARY)?):[^=]+=(.*)',line)
             if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
@@ -90,6 +90,9 @@ def main():
         if settings.get('RF_CLIENT_455_MESH_BINDINGS')=='ON':
             mesh_binding_inputs=['scripts/native/client455_mesh_bindings.cpp','scripts/native/client455_mesh_bindings.h','scripts/native/test_client455_mesh_bindings.cpp','scripts/native/client_mesh_bindings_lab.inc']
             report['mesh_binding_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in mesh_binding_inputs}
+        if settings.get('RF_CLIENT_455_MESH_RUNTIME')=='ON':
+            mesh_runtime_inputs=['scripts/native/client455_mesh_runtime.cpp','scripts/native/client455_mesh_runtime.h','scripts/native/test_client455_mesh_runtime.cpp','scripts/native/client_mesh_runtime_lab.inc']
+            report['mesh_runtime_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in mesh_runtime_inputs}
         if settings.get('RF_CHARACTER_MESH_SOURCE')=='ON':
             mesh_inputs=['scripts/native/character_mesh_bindings.cpp','scripts/native/test_character_mesh_bindings.cpp','scripts/native/client_character_mesh_lab.inc']
             mesh_inputs+=['scripts/native/character_mesh_init.cpp','scripts/native/character_mesh_format.h','scripts/native/test_character_mesh_init.cpp','scripts/native/client_character_init_lab.inc']

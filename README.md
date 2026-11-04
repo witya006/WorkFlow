@@ -35,6 +35,10 @@ GPU state. research/client455-mesh08-format.md. Затем восстановл�
 parent/bone bindings:2237checks/12real mesh-skeleton pairs/393meshes standalone/
 full-client. Normal loader не подключён; metadata/materials/sharedGPU ещё открыты.
 research/client455-mesh-bindings-source.md. Остальные subsystems/chat/calendar/lighting открыты.
+Далее sourceconstructor/header matrices/material request flow455 прошли14562checks/
+12real files/393parts/12FP modes standalone/full-client. Матрицы используют именно
+pinned D3DX9_36;actual TextureManager/sharedGPU/normal loader ещё открыты.
+research/client455-mesh-runtime-source.md.
 Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
 M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 
