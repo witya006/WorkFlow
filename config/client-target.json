@@ -1,0 +1,18 @@
+{
+  "target_label": "455 client supplied by user; official version attribution not independently established",
+  "behavior_reference": {
+    "input_root_key": "client_455",
+    "filename": "RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000"
+  },
+  "secondary_reference": {
+    "filename": "RF_Online.bin.2026-10-18_12-15-42.backup",
+    "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+    "role": "Comparison baseline for the two existing modifications; not automatically the requested behavior target"
+  },
+  "resource_root_key": "client_455",
+  "resource_manifest_status": "Full resource hashing pending; freeze per-file hashes for every tested sample",
+  "rationale": "Use the user's actual RF_Online.bin as the pinned behavior target, retain backup for provenance and static cross-checks. Displayed version constants alone do not prove version or equivalence."
+}

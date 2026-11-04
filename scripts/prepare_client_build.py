@@ -22,6 +22,8 @@ def main():
     engine = original / 'R3Engine/R3Engine'
     client = original / 'RF Client Side/RF_Client'
     manifest = []
+    patch_path = WS / 'inventory/client-source-patches.json'
+    patches = {x['file']: x for x in json.loads(patch_path.read_text(encoding='utf-8'))} if patch_path.exists() else {}
     for folder, target, exclude in [(engine, destination / 'source/R3Engine', {'Util', 'Client Debug'}),
                                      (client, destination / 'source/RF_Client', set())]:
         for p in sorted(folder.rglob('*')):
@@ -32,12 +34,18 @@ def main():
                 continue
             copy = target / relative
             expected = digest(p)
-            if copy.exists() and digest(copy) != expected:
+            expected_copy = expected
+            patch = patches.get(copy.relative_to(WS).as_posix())
+            if patch:
+                if patch['original_sha256'] != expected:
+                    raise RuntimeError(f'Patch input has changed: {p}')
+                expected_copy = patch['patched_sha256']
+            if copy.exists() and digest(copy) not in {expected, expected_copy}:
                 raise RuntimeError(f'Preserving modified work file: {copy}')
             copy.parent.mkdir(parents=True, exist_ok=True)
             if not copy.exists():
                 shutil.copyfile(p, copy)
-            if digest(copy) != expected:
+            if digest(copy) not in {expected, expected_copy}:
                 raise RuntimeError(f'Copy verification failed: {copy}')
             manifest.append({'original': p.relative_to(original).as_posix(), 'copy': copy.relative_to(WS).as_posix(), 'sha256': expected})
     dsp = engine / 'R3Engine.dsp'
@@ -64,7 +72,7 @@ if(RF_LEGACY_DX8_INCLUDE)
   target_include_directories(R3Engine PRIVATE "${RF_LEGACY_DX8_INCLUDE}")
 endif()
 target_compile_definitions(R3Engine PRIVATE WIN32 NDEBUG _MBCS _LIB)
-target_compile_options(R3Engine PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:/W3>" "$<$<COMPILE_LANGUAGE:CXX>:/EHsc>")
+target_compile_options(R3Engine PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:/W3>" "$<$<COMPILE_LANGUAGE:CXX>:/EHsc>" "$<$<COMPILE_LANGUAGE:CXX>:/Zc:forScope->")
 set_target_properties(R3Engine PROPERTIES
   CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
   MSVC_RUNTIME_LIBRARY MultiThreadedDLL
@@ -72,10 +80,14 @@ set_target_properties(R3Engine PROPERTIES
 # No RTMOVIE definition in the selected original CPP settings.
 # /MD is an explicit modern baseline; original configuration has no CRT switch.
 # Legacy source charset / execution charset and CRT ABI are still unverified.
+# /Zc:forScope- temporarily preserves VC6 loop scope; compiler support tested.
 '''
     cmake_path = destination / 'CMakeLists.txt'
     if cmake_path.exists() and cmake_path.read_text(encoding='utf-8') != cmake:
-        raise RuntimeError(f'Preserving modified build project: {cmake_path}')
+        previous_path = WS / 'inventory/client-build-inputs.json'
+        previous = json.loads(previous_path.read_text(encoding='utf-8')) if previous_path.exists() else {}
+        if digest(cmake_path) != previous.get('cmake_sha256'):
+            raise RuntimeError(f'Preserving modified build project: {cmake_path}')
     cmake_path.write_text(cmake, encoding='utf-8')
     report = {'scope': 'Client and R3Engine only. No server files copied or changed.',
               'selected_legacy_config': selected, 'legacy_cpp_directives': configs[selected],

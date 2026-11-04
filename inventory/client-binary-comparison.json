@@ -1,0 +1,114 @@
+{
+  "inputs": [
+    {
+      "label": "reference-backup",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\RF_Online.bin.2026-10-18_12-15-42.backup",
+      "copy": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-reference\\reference-backup\\RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "size": 8430808,
+      "pe": {
+        "architecture": "x86",
+        "image_base": 4194304,
+        "entry_rva": 4728399,
+        "sections": [
+          {
+            "name": ".text",
+            "rva": 4096,
+            "virtual_size": 6955674,
+            "raw_offset": 1024,
+            "raw_size": 6956032
+          },
+          {
+            "name": ".rdata",
+            "rva": 6963200,
+            "virtual_size": 1208196,
+            "raw_offset": 6957056,
+            "raw_size": 1208320
+          },
+          {
+            "name": ".data",
+            "rva": 8171520,
+            "virtual_size": 17035172,
+            "raw_offset": 8165376,
+            "raw_size": 252416
+          },
+          {
+            "name": ".rsrc",
+            "rva": 25206784,
+            "virtual_size": 2292,
+            "raw_offset": 8417792,
+            "raw_size": 2560
+          }
+        ]
+      }
+    },
+    {
+      "label": "current",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\RF_Online.bin",
+      "copy": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-reference\\current\\RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "size": 8430808,
+      "pe": {
+        "architecture": "x86",
+        "image_base": 4194304,
+        "entry_rva": 4728399,
+        "sections": [
+          {
+            "name": ".text",
+            "rva": 4096,
+            "virtual_size": 6955674,
+            "raw_offset": 1024,
+            "raw_size": 6956032
+          },
+          {
+            "name": ".rdata",
+            "rva": 6963200,
+            "virtual_size": 1208196,
+            "raw_offset": 6957056,
+            "raw_size": 1208320
+          },
+          {
+            "name": ".data",
+            "rva": 8171520,
+            "virtual_size": 17035172,
+            "raw_offset": 8165376,
+            "raw_size": 252416
+          },
+          {
+            "name": ".rsrc",
+            "rva": 25206784,
+            "virtual_size": 2292,
+            "raw_offset": 8417792,
+            "raw_size": 2560
+          }
+        ]
+      }
+    }
+  ],
+  "changed_bytes": 5,
+  "change_ranges": [
+    {
+      "file_offset": "0x3a6017",
+      "length": 1,
+      "section": ".text",
+      "rva": "0x3a6c17",
+      "backup_hex": "76",
+      "current_hex": "eb"
+    },
+    {
+      "file_offset": "0x6adf4b",
+      "length": 4,
+      "section": ".rdata",
+      "rva": "0x6af74b",
+      "backup_hex": "c09f9a10",
+      "current_hex": "40333312"
+    }
+  ],
+  "shared_numeric_constant": {
+    "file_offset": "0x6adf48",
+    "rva": "0x6af748",
+    "backup_double": 4.151000022888184,
+    "current_double": 4.550000190734863
+  },
+  "interpretation": "Byte differences only. Version provenance and semantics require further evidence; no input executed."
+}

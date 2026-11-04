@@ -1,4 +1,4 @@
-param([string]$DirectXInclude = '')
+param([string]$DirectXInclude = '', [switch]$CleanRebuild)
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path -Parent $PSScriptRoot
 $verified = Get-Content -LiteralPath (Join-Path $workspace 'inventory/msvc-verification.json') -Raw | ConvertFrom-Json
@@ -11,7 +11,9 @@ $cmakeArgs = @('-S', $sourcePath, '-B', $buildPath, '-G', 'Visual Studio 18 2026
 if ($DirectXInclude) { $cmakeArgs += "-DRF_LEGACY_DX8_INCLUDE=$DirectXInclude" }
 & $cmakePath @cmakeArgs *> (Join-Path $logPath 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logPath 'configure.txt') -Tail 20; exit $LASTEXITCODE }
-& $cmakePath --build $buildPath --config Release --target R3Engine --parallel 4 *> (Join-Path $logPath 'build.txt')
+$buildArgs = @('--build', $buildPath, '--config', 'Release', '--target', 'R3Engine', '--parallel', '4')
+if ($CleanRebuild) { $buildArgs += '--clean-first' }
+& $cmakePath @buildArgs *> (Join-Path $logPath 'build.txt')
 $buildExit = $LASTEXITCODE
 & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/summarize_client_build.py --build-exit $buildExit
 Write-Output "R3Engine build exit: $buildExit"

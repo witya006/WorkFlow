@@ -1,0 +1,37 @@
+[
+  {
+    "file": "work/client-build/source/R3Engine/1stclass/r3bsp.h",
+    "original_sha256": "8e43ae5b21b06b2f9c1dce706612001b14e90dd8a86c360b2135c4be1b586aed",
+    "patched_sha256": "871c6d2e9c6ce53586966dfd4a6b6af9b6755cd097b901ce93621dc4b3876661",
+    "changes": 1,
+    "reason": "Explicit void ClearVariable return type; both in-tree callers discard its result."
+  },
+  {
+    "file": "work/client-build/source/R3Engine/1stclass/bsp.cpp",
+    "original_sha256": "8c8e9e6397edab789ff25b55da168a017767129d61e5764193d0929843432c49",
+    "patched_sha256": "2861b73ddeb099e270cfa660b9bc579540f6f3db21dd6dcd255235c079b12940",
+    "changes": 1,
+    "reason": "Explicit void ClearVariable return type; both in-tree callers discard its result."
+  },
+  {
+    "file": "work/client-build/source/R3Engine/common/cjcache.cpp",
+    "original_sha256": "e8b20b073b61d31614237e2ad7212ff437dc17257375e1ec8808692d9b41f772",
+    "patched_sha256": "7e03bfb038e0ee7ebc9150aaf933aa5639c941e569d32d479cee334465e3e918",
+    "changes": 1,
+    "reason": "Restore VC6 function-scope loop variable lifetime in standard C++; no algorithm change."
+  },
+  {
+    "file": "work/client-build/source/R3Engine/common/r3profiler.cpp",
+    "original_sha256": "ef23f9fe2a408ca2f238ff79a9b91b1f145a904f5848e14597bc33c3a728562f",
+    "patched_sha256": "48103375f0a474aceaec0334ac1d9f1883ef6beda602b9268378ae3bd620c513",
+    "changes": 1,
+    "reason": "Restore VC6 function-scope loop variable lifetime in standard C++; no algorithm change."
+  },
+  {
+    "file": "work/client-build/source/R3Engine/common/commonutil.cpp",
+    "original_sha256": "b40b63f80317c13bcfd627731d8cbb744740e5344b8132edec528911d080ac91",
+    "patched_sha256": "2367c915218112cb9ba31b92099a4a80d7bcb7a733ee97210e08a110fc128eeb",
+    "changes": 2,
+    "reason": "Restore VC6 function-scope loop variable lifetime in standard C++; no algorithm change."
+  }
+]
