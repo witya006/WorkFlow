@@ -96,7 +96,7 @@ M4: диагностическая компиляция всех 180 C++ кли�
 inventory/client-character-diagnostic.json и client-mt-variant.json; research/client-port-m4.md.
 
 В work/recovered/character-legacy/include/Character.h создан диагностический заголовок:
-224 исходных публичных контракта, 61 layout assertions, native decorated names 165
+224 исходных публичных контракта, 64 layout assertions, native decorated names 165
 адресуемых публичных функций совпали с библиотекой. 30 проверок инструкций подтверждают
 числа в отдельном манифесте character-legacy-layouts.json. Это ещё не полный SDK:
 конструкторы и часть inline API/default arguments не восстановлены и объявлены без
@@ -113,9 +113,8 @@ headers; baseline/progressive golden decodes побайтово точны. Mile
 при повторе; генераторы тоже не переписывают идентичные файлы.
 
 Diagnostic link берёт отдельную stdio-adapted копию CharacterMR и адресно откладывает
-CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 7 unique
-undefined symbols: ChInterface constructor, DrawCharacter short call, SetEffect,
-SetMipMap, SetTexPath, CheckFiles и SendLog.
+CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 4 unique
+undefined symbols: DrawCharacter short call, SetEffect, CheckFiles и SendLog.
 Проверки целостности/логирования не отключались. Парсер LNK исправлен, 3 теста прошли.
 
 Native CRT probe: Character EffectList loader читает FILE+12 &0x10; modern EOF даёт
@@ -133,7 +132,7 @@ AnimationManager: собственный empty-vector constructor + реальн
 Оригинальный inline ctor не найден, undocumented singleton assignment не добавлялся.
 1806 дополнительных проверок real SDK регистрации/поиска/удаления по ID/destruction,
 всего 3102. DeleteAnimation(name) имеет предполагаемую UAF по decompile, не проверен.
-Header: 61 layout assertions, 165 signatures по-прежнему совпадают.
+Header: 64 layout assertions, 165 signatures по-прежнему совпадают.
 Два реальных загрузчика Pattern/Item прошли 49 native проверок valid fixtures с
 classic FILE adapter. По обоим pinned PE проверены push0/call targets для mesh-effect
 defaults; corresponding function names — structural inference, не символы из PDB.
@@ -143,8 +142,20 @@ signed x86 msvcp60.dll SHA8d024f35...98dd139; provider не dependency клие�
 Manager/parser тесты повторно прошли с реальной exception library без aliases.
 Историческая libci и полное exception unwinding Character ещё не проверены.
 research/character-effects-and-exceptions.md, character-managers.md;
-inventory/character-{effect-defaults,effect-loaders,exceptions,managers}.json; 7 link gaps.
-Следующий шаг при продолжении M4 — остальные constructors/inline и CheckFiles/SendLog.
+inventory/character-{effect-defaults,effect-loaders,exceptions,managers}.json.
+Последнее: SetTexPath/SetMipMap восстановлены по 455 (null source, strncpy255 без
+форсированного tail NUL; raw DWORD detail). Legacy offsets path272, manager mip156
+проверены по consumers; 455 offsets другие. 18 ABI byte checks прошли, character-setters.json.
+Texture/mesh/render/interface ctors: собственные empty states + реальные Init SDK.
+CRender bridge связывает m_Render=this для старых effect consumers; original inline
+binding/полный sizeof не доказаны, Texture/Animation static pointers не менялись.
+8 constructions/destructions и 136 part allocations проверены настоящими SDK методами;
+оба setters вызываются на constructed objects. Всего 3630 native checks (528 renderer).
+research/character-setters-and-construction.md; 4 link gaps. Дальше DrawCharacter
+source calls: найден 455 CResObject::Render 0x7CD2A0, явные scale=this+240 и scroll=0.
+Проверить CNpc по RTTI/vtable, не угадывать default1.0; изменения поведения вести отдельно
+от compiler patches. 455 EffectList setter 0x9298D0 map-based, legacy массивы отличны.
+CheckFiles/SendLog сохраняются. Все raw findings сохранены, IDA session 2e6f4605 закрыта.
 Полной runtime ABI
 проверки ещё нет. research/character-stdio-adapter.md; character-stdio-adapter.json.
 Все собственные IDA-сессии закрыты. Серверы не менялись.

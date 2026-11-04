@@ -17,7 +17,9 @@ FIELDS = {
     DWORD m_ID;
     char m_Name[256];
     DWORD m_Load;
-    unsigned char unknown_108[264];
+    DWORD unknown_108;
+    CHARACTEROBJECT* legacy_bone;
+    char legacy_texture_path[256];
     DWORD m_MaxObj;
     ObjectMesh* m_pMesh;
     unsigned char unknown_218[128];
@@ -85,15 +87,15 @@ FIELDS = {
     DWORD unknown_014;
     DWORD legacy_next_id;
     char legacy_path[128];
-    DWORD unknown_09c;
-    TextureManager(); // Inline constructor not yet recovered.
+    DWORD legacy_mip_skip;
+    TextureManager(); // Empty legacy vector + supplied Init().
 ''',
     'CMeshManager': '''
     unsigned char unknown_000[4];
     CObjectManager** legacy_begin;
     CObjectManager** legacy_end;
     CObjectManager** legacy_capacity;
-    CMeshManager(); // Inline constructor not yet recovered.
+    CMeshManager(); // Reconstructed empty legacy container.
 ''',
     'CRender': '''
     IDirect3DDevice8* legacy_device;
@@ -105,8 +107,8 @@ FIELDS = {
     unsigned char unknown_248[108];
     IDirect3DTexture8* legacy_shadow[20];
     IDirect3DSurface8* legacy_shadow_surface;
-    CRender(); // Inline constructor not yet recovered.
-    void SetMipMap(DWORD); // Missing inline API: declaration, no implementation.
+    CRender(); // Reconstructed members + supplied Init; original inline unknown.
+    void SetMipMap(DWORD); // Recovered setter; legacy texture manager field +156.
     IDirect3DTexture8* GetShadow(DWORD);
     void DrawCharacter(CHARACTEROBJECT*, float*, float);
     void DrawCharacter(CHARACTEROBJECT*, float*, float, float);
@@ -115,7 +117,7 @@ FIELDS = {
 ''',
     'ChInterface': '''
     ChInterface(); // No additional storage has been established in the library.
-    void SetTexPath(CHARACTEROBJECT*, char*); // Missing inline API.
+    void SetTexPath(CHARACTEROBJECT*, char*); // Null-source guard and strncpy(...,255).
 ''',
     'CHMEMORYINFO': '''
     DWORD m_TextureSize;
@@ -206,7 +208,8 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
             header = header[:-3]+'    static CRender& GetRender() { return *m_Render; }\n};\n'
     header += '\n'.join(free)+'\n'
     asserts = {
-        'CHARACTEROBJECT': (776, {'m_ID': 0, 'm_Name': 4, 'm_Load': 260, 'm_MaxObj': 528,
+        'CHARACTEROBJECT': (776, {'m_ID': 0, 'm_Name': 4, 'm_Load': 260, 'legacy_bone': 268,
+                                'legacy_texture_path': 272, 'm_MaxObj': 528,
                                 'm_pMesh': 532, 'm_Frame': 668, 'm_OMaxFrame': 672,
                                 'm_Transition': 676, 'm_TransitionStart': 680,
                                 'm_TransFrame': 684, 'm_TransTime': 688, 'm_Material': 692, 'm_Alpha': 772}),
@@ -217,7 +220,7 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
         'CObjectManager': (148, {'legacy_begin': 4, 'legacy_end': 8, 'legacy_capacity': 12, 'legacy_next_id': 16, 'legacy_name': 20}),
         'AnimationManager': (24, {'legacy_begin': 4, 'legacy_end': 8, 'legacy_capacity': 12,
                                 'unknown_010': 16, 'legacy_next_id': 20}),
-        'TextureManager': (160, {'legacy_path': 28}),
+        'TextureManager': (160, {'legacy_path': 28, 'legacy_mip_skip': 156}),
         'CMeshManager': (16, {}),
         'CRender': (776, {'legacy_meshes': 112, 'legacy_bones': 260, 'm_TM': 408,
                           'legacy_parts': 568, 'legacy_shadow': 692, 'legacy_shadow_surface': 772}),
@@ -239,15 +242,14 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
               'public_contracts_input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
               'status': 'incomplete diagnostic interface; not production-ready',
               'layout_assertions': sum(1+len(fields) for _, fields in asserts.values()),
-              'unimplemented_inline_api': ['TextureManager/CMeshManager/CRender/ChInterface constructors',
-                   'SetMipMap', 'GetShadow', 'SetTexPath', 'EffectList::SetEffect',
+              'unimplemented_inline_api': ['GetShadow', 'EffectList::SetEffect',
                    'DrawCharacter/DrawCharacterShadow/LoadRealData shortened overloads'],
               'reconstructed_effect_defaults': effect_defaults,
               'unverified': ['Full layout of API-only classes remains missing',
                    'Names inferred from source use need final instruction cross-check',
                    'Whole-client linking and complete runtime compatibility remain unverified',
                    'Old STL ABI must not cross into modern STL objects',
-                   'CRender/ChInterface tail and total sizes inferred from observed accesses; validate initialization'],
+                   'CRender/ChInterface tail and original constructor side effects remain unproven; native empty-state checks are bounded'],
               'method_declarations': sum(len(x) for x in methods.values()), 'free_declarations': len(free)}
     (WS/'inventory/character-header-recovery.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     print(f'Prepared incomplete header: {len(methods)} API types, {report["layout_assertions"]} layout assertions.')

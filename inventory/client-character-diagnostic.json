@@ -1,24 +1,21 @@
 {
-  "checked_at_utc": "2026-11-04T07:39:40.119099+00:00",
+  "checked_at_utc": "2026-11-04T07:56:45.735420+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
   "build_exit": 1,
   "error_counts": {
-    "LNK2019": 7,
+    "LNK2019": 4,
     "LNK2001": 2,
     "LNK1120": 1
   },
   "unresolved_symbols": [
-    "??0ChInterface@@QAE@XZ",
     "?CheckFiles@@YAPADXZ",
     "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z",
     "?SendLog@@YA_NXZ",
-    "?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z",
-    "?SetMipMap@CRender@@QAEXK@Z",
-    "?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z"
+    "?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z"
   ],
-  "distinct_diagnostics_total": 10,
+  "distinct_diagnostics_total": 7,
   "distinct_diagnostics": [
     {
       "file": "cresobject.obj ",
@@ -56,27 +53,6 @@
       "count": 1
     },
     {
-      "file": "cgp_login.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall CRender::SetMipMap(unsigned long)\" (?SetMipMap@CRender@@QAEXK@Z) в функции \"protected: virtual int __thiscall CGP_LogIn::LoadData(void)\" (?LoadData@CGP_LogIn@@MAEHXZ).",
-      "count": 1
-    },
-    {
-      "file": "global.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall ChInterface::ChInterface(void)\" (??0ChInterface@@QAE@XZ) в функции \"int __cdecl _CreateCharIF(struct IDirect3DDevice8 *)\" (?_CreateCharIF@@YAHPAUIDirect3DDevice8@@@Z).",
-      "count": 1
-    },
-    {
-      "file": "cresourcedatamgr.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall ChInterface::SetTexPath(class CHARACTEROBJECT *,char *)\" (?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z) в функции \"public: int __thiscall CCharResData::LoadMeshDataList(unsigned char,class CDataString *)\" (?LoadMeshDataList@CCharResData@@QAEHEPAVCDataString@@@Z).",
-      "count": 1
-    },
-    {
       "file": "effectutil.obj ",
       "line": null,
       "code": "LNK2019",
@@ -87,7 +63,7 @@
       "file": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-build\\build-character-diagnostic\\Release\\RF_Online.bin ",
       "line": null,
       "code": "LNK1120",
-      "message": "неразрешенных внешних элементов: 7",
+      "message": "неразрешенных внешних элементов: 4",
       "count": 1
     }
   ],
@@ -99,6 +75,7 @@
     "RF_CHARACTER_EXCEPTIONS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
     "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
     "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
+    "RF_CHARACTER_SETTERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
     "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
     "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
     "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",

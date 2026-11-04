@@ -16,6 +16,11 @@ from verify_client_coff import directives
 def main():
     verified = json.loads((WS/'inventory/msvc-verification.json').read_text(encoding='utf-8'))
     header = json.loads((WS/'inventory/character-header-recovery.json').read_text(encoding='utf-8'))
+    setters = json.loads((WS/'inventory/character-setters.json').read_text(encoding='utf-8'))
+    setter_library = WS/setters['library']
+    if (hashlib.sha256(setter_library.read_bytes()).hexdigest() != setters['library_sha256']
+            or setters['header_sha256'] != header['header_sha256']):
+        raise ValueError('Recovered setters/header changed since verification')
     stdio = json.loads((WS/'inventory/character-stdio-adapter.json').read_text(encoding='utf-8'))
     exceptions = json.loads((WS/'inventory/character-exceptions.json').read_text(encoding='utf-8'))
     exception_library = WS/exceptions['library']
@@ -39,6 +44,16 @@ def main():
     animation_init = coff_function_records(animation_obj.read_bytes())['?Init@AnimationManager@@QAEHXZ']
     if animation_init['bytes'] != bytes.fromhex('c7411000000000c7411401000000c3'):
         raise ValueError('Animation initialization instructions changed')
+    reused = []
+    for index, symbol in [(8,'?Init@TextureManager@@QAEHXZ'),(9,'?Init@CRender@@QAEXXZ')]:
+        entry = json.loads((WS/'inventory/character-codeview.json').read_text(encoding='utf-8'))['objects'][index-1]
+        data = (WS/entry['working_object']).read_bytes()
+        if hashlib.sha256(data).hexdigest() != entry['sha256']:
+            raise ValueError('Supplied renderer/texture initialization changed')
+        record = coff_function_records(data)[symbol]
+        reused.append({'object_sha256':entry['sha256'],'symbol':symbol,'architecture':'x86',
+            'file_offset':hex(record['file_offset']),'size':record['size'],
+            'body_sha256':hashlib.sha256(record['bytes']).hexdigest(),'rva':None})
     includes = WS/header['header']
     if hashlib.sha256(includes.read_bytes()).hexdigest() != header['header_sha256']:
         raise ValueError('Recovered header changed')
@@ -64,7 +79,7 @@ cl {options} /c character_recovered_managers.cpp /Fomanagers.obj > "{log}" 2>&1
 if errorlevel 1 exit /b 1
 lib /nologo /machine:x86 /out:CharacterRecoveredManagers.lib managers.obj >> "{log}" 2>&1
 if errorlevel 1 exit /b 1
-cl {options} /D_CRT_SECURE_NO_WARNINGS test_character_recovered_managers.cpp CharacterRecoveredManagers.lib "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{exception_library}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Femanagers-probe.exe /link /NODEFAULTLIB:libci.lib >> "{log}" 2>&1
+cl {options} /D_CRT_SECURE_NO_WARNINGS test_character_recovered_managers.cpp CharacterRecoveredManagers.lib "{setter_library}" "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{exception_library}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Femanagers-probe.exe /link /NODEFAULTLIB:libci.lib >> "{log}" 2>&1
 exit /b %errorlevel%
 ''', encoding='ascii')
     result = subprocess.run(['cmd.exe', '/d', '/c', str(batch)], cwd=work)
@@ -90,8 +105,11 @@ exit /b %errorlevel%
                   'singleton': 'No undocumented static m_AManager assignment introduced'},
               'sdk_archive_sha256': stdio['adapted_archive_sha256'], 'header_sha256': header['header_sha256'],
               'native_test': evidence, 'input_game_exe_execution': False,
-              'limit': 'Ordinary object/animation manager operations on unloaded records; mesh/device/file loaders, DeleteAnimation(name), exception paths and 455 parity unverified.',
+              'limit': 'Ordinary object/animation managers, empty reconstructed renderer construction/destruction and setters. Loaded meshes/textures, GPU operations, DeleteAnimation(name), exception paths and full 455 parity unverified.',
+              'setter_library_sha256': setters['library_sha256'],
               'exception_library_sha256': exceptions['library_sha256'],
+              'reused_initializers': reused,
+              'renderer_construction': 'Owned empty-manager reconstruction plus supplied Init; binds m_Render for old consumers. Exact original inline side effects and full original sizeof unproven.',
               'test_only_aliases': False}
     (WS/'inventory/character-managers.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     print(f'PASS: reconstructed object/animation managers, {evidence["checks_passed"]} checks using real old manager routines.')

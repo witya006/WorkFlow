@@ -121,22 +121,23 @@ MAXPARTICLE=3 и MAX_PATTERN_SIZE=9 проверены по циклам/сра�
 хеши и смещения — inventory/character-legacy-layouts.json.
 
 scripts/prepare_character_header.py генерирует Character.h в ignored work/.
-scripts/check_character_header.py проверил 61 layout assertions и decorated names 165
+scripts/check_character_header.py проверил 64 layout assertions и decorated names 165
 адресуемых публичных функций. Данные, непубличные методы и конструкторы/деструкторы
 этим адресным тестом не проверяются. Права доступа сохранены: MSVC кодирует их в имени.
 CHMEMORYINFO описан как семь DWORD: texture size/count, vertex size/count, animation
 size, object count/size — по обновлениям счётчиков и использованию в клиенте.
 GetRender возвращает ссылку на известный m_Render; вызов с точкой есть в cbasenpc.cpp.
 
-Все 180 C++ клиента скомпилированы с этим заголовком. Это не готовый SDK: конструкторы,
-SetMipMap/GetShadow/SetTexPath, EffectList::SetEffect и короткие перегрузки с неизвестными
-default arguments объявлены без реализаций. Пустые реализации не добавлялись.
+Все 180 C++ клиента скомпилированы с этим заголовком. Это не готовый SDK: при первоначальной
+компиляции конструкторы и inline API только объявлялись. Конструкторы и SetMipMap/SetTexPath
+впоследствии реконструированы; GetShadow, EffectList::SetEffect и часть коротких перегрузок
+ещё без реализаций. Пустые реализации не добавлялись.
 Внутренний layout API-only классов не установлен; не создавать их экземпляры.
 CRender/ChInterface размером 776 в реконструкции покрывают наблюдаемые поля, но точный
 sizeof оригинального ChInterface сверх этого диапазона ещё не доказан.
 Современные std::vector не подставлены вместо старого хранения. STL/CRT/исключения
 VC6 и передачи STL объектов требуют отдельной проверки. Компиляция этого не доказывает.
-JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 7 уникальных
+JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 4 уникальных
 символов, полный список — inventory/client-character-diagnostic.json.
 Native тест подтвердил несовместимость прямого FILE EOF доступа CharacterMR с UCRT;
 Classic CRT adapter уже реализован и проверен на собственных fixtures и двух
@@ -146,3 +147,7 @@ AnimationManager invariant reconstruction — research/character-managers.md.
 Effect defaults и настоящие exception helpers восстановлены; 770 сравнений с classic
 exports прошли. SDK не готов. Текущие доказательства и границы —
 research/character-effects-and-exceptions.md; исходные зависимости — client-dependencies-m4.md.
+Последующее восстановление setters/empty render construction: 18 ABI checks,
+3630 combined native checks, включая 8 instances/136 part managers. Конструкторы
+reconstructed, exact original inline/sizeof не доказан. Актуальные границы и следующий
+DrawCharacter/SetEffect анализ — research/character-setters-and-construction.md.

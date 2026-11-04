@@ -1,15 +1,12 @@
 {
   "library_sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8",
   "header": "work/recovered/character-legacy/include/Character.h",
-  "header_sha256": "1570319cee2de77e3bafe2181a50bd8d7d510ef3b21aca4615200d566bc0de01",
+  "header_sha256": "b963b5a65139b0dde07423a6fc4e16dd203a5e9fa9c4a48addda008ecfef2148",
   "public_contracts_input_sha256": "f134de4abdb6c9cb6e3c0e770c37b471997be402a82c27609c054612a61d1262",
   "status": "incomplete diagnostic interface; not production-ready",
-  "layout_assertions": 61,
+  "layout_assertions": 64,
   "unimplemented_inline_api": [
-    "TextureManager/CMeshManager/CRender/ChInterface constructors",
-    "SetMipMap",
     "GetShadow",
-    "SetTexPath",
     "EffectList::SetEffect",
     "DrawCharacter/DrawCharacterShadow/LoadRealData shortened overloads"
   ],
@@ -88,7 +85,7 @@
     "Names inferred from source use need final instruction cross-check",
     "Whole-client linking and complete runtime compatibility remain unverified",
     "Old STL ABI must not cross into modern STL objects",
-    "CRender/ChInterface tail and total sizes inferred from observed accesses; validate initialization"
+    "CRender/ChInterface tail and original constructor side effects remain unproven; native empty-state checks are bounded"
   ],
   "method_declarations": 144,
   "free_declarations": 75,
@@ -262,7 +259,7 @@
       "?UnSetState@CRender@@QAEXXZ",
       "?_R3CalculateTime@@YAXXZ"
     ],
-    "probe_obj_sha256": "52f5830d2f83c4f7b77b241417d80d5acc9492fe4dc8d357c1a7934246088a50",
+    "probe_obj_sha256": "67f724b829b084d87ae4056d2e9c174b73e0e12c6fe608839d10132a50527980",
     "executed": false
   },
   "client_global_diagnostic": {

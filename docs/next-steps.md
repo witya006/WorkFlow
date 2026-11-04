@@ -25,7 +25,7 @@ M8 (графика) не является условием этой цели. П
    Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
    JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
    26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
-   В diagnostic link остались 7 уникальных символов; вызовы CheckFiles/SendLog сохранены.
+   В diagnostic link остались 4 уникальных символа; вызовы CheckFiles/SendLog сохранены.
    Прямой EOF доступ CharacterMR несовместим с UCRT; classic FILE изолирован адаптером.
    Адаптер 8 stream API готов: 1828 собственных native проверок и 3 теста COFF прошли,
    два настоящих загрузчика Pattern/Item проверены отдельно: 49 native проверок
@@ -34,17 +34,25 @@ M8 (графика) не является условием этой цели. П
    _Xlen/_Xran реализованы реальными exceptions, 770 native сравнений с classic exports.
    CObjectManager constructor
    восстановлен; AnimationManager получил empty-state constructor + настоящий Init.
-   3102 native проверки настоящих SDK функций прошли на незагруженных записях.
+   Всего 3630 native проверок настоящих SDK функций и восстановленной конструкции:
+   8 empty renderer instances, 136 part managers, unloaded object/animation records.
    AnimationManager original inline constructor не найден, singleton side effects
    не доказаны. Test-only exception aliases удалены, native компоненты проходят
-   с настоящей exception library. Следующие 7 gaps: ChInterface constructor,
-   DrawCharacter short call, SetEffect, SetMipMap, SetTexPath, CheckFiles и SendLog.
+   с настоящей exception library. Конструкторы TextureManager/CMeshManager/CRender/
+   ChInterface реконструированы через empty states + real Init; оригинальный inline
+   ctor/полный sizeof не доказаны. SetTexPath/SetMipMap сверены с инструкциями обоих PE,
+   18 guarded ABI checks и вызовы на constructed objects прошли.
+   Следующие 4 gaps: DrawCharacter short call, SetEffect, CheckFiles и SendLog.
+   Найден 455 CResObject::Render с явным scale=this+240, scroll=0; проверить CNpc,
+   затем оформить соответствие вызовов отдельно от compiler-only patches.
+   455 SetEffect уже использует map; не смешивать его layout с legacy массивами.
+   Подробности research/character-setters-and-construction.md.
    research/character-effects-and-exceptions.md, character-managers.md,
    character-stdio-adapter.md. Полный runtime/exception unwind Character не проверен.
    Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
    У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
    неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.
-   207 тел функций уже кешированы; 30 проверок инструкций, 61 layout assertions,
+   207 тел функций уже кешированы; 30 проверок инструкций, 64 layout assertions,
    165 публичных сигнатур проверены. Подробности research/character-library.md.
    Дополнительных SDK/PDB у пользователя нет, не ожидать их. Серверные render-типы
    целевым поиском не найдены. Из 455 доступны отдельные D3D9 GPU layouts и import .lib;
@@ -55,6 +63,11 @@ M8 (графика) не является условием этой цели. П
 
 Сборка движка: prepare_client_build.py → apply_client_port_patches.py →
 prepare_dx8_sdk.ps1 → build_client_engine.ps1 -DirectXInclude <overlay> -CleanRebuild.
+
+Текущие Character проверки при изменении header: prepare_character_header.py →
+check_character_header.py → build_character_setters.py → build_character_managers.py →
+probe_character_effect_loaders.py → probe_client_character_build.ps1.
+Exception/stdio библиотеки переиспользовать по проверенным хешам, не пересобирать без причины.
 
 ## Восстановление клиента
 

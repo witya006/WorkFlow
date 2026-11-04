@@ -56,7 +56,8 @@ x86, image base 0x400000. Backup — вторичный материал; раз
   arguments и runtime ABI старой STL/CRT не проверены. research/character-library.md.
 - Старый прямой FILE EOF доступ CharacterMR несовместим с UCRT. Изолирующий адаптер
   прошёл 1828 собственных проверок и два настоящих текстовых загрузчика (49 checks).
-  Два менеджера прошли 3102 проверки на unloaded records, exception helpers — 770
+  Менеджеры/empty renderer прошли 3630 проверок на unloaded records, setters — 18 ABI
+  checks, exception helpers — 770
   сравнений с classic exports. Полный SDK ABI/exception unwind/render не доказан;
   research/character-effects-and-exceptions.md. Одного успешного link недостаточно для M4.
 - Старый CLevel::GetFrustumNormalPlane вызывает себя (C4717); есть глобальная функция

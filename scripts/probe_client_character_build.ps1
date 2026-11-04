@@ -54,6 +54,14 @@ if (Test-Path -LiteralPath $managerReport) {
     $arguments += "-DRF_CHARACTER_RECOVERED_MANAGERS_LIBRARY=$managerLibrary"
 }
 $arguments += '-DRF_DIAGNOSTIC_DEFER_LIBRARIES=CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib'
+$settersReport = Join-Path $workspace 'inventory/character-setters.json'
+if (Test-Path -LiteralPath $settersReport) {
+    $setters = Get-Content -LiteralPath $settersReport -Raw | ConvertFrom-Json
+    $settersLibrary = Join-Path $workspace $setters.library
+    if ((Get-FileHash -LiteralPath $settersLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $setters.library_sha256 -or
+        $contract.header_sha256 -ne $setters.header_sha256) { throw 'Recovered setters/header changed since verification.' }
+    $arguments += "-DRF_CHARACTER_SETTERS_LIBRARY=$settersLibrary"
+}
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logs 'configure.txt') -Tail 15; exit $LASTEXITCODE }
 & $cmake --build $build --config Release --target RF_Online --parallel 4 *> (Join-Path $logs 'build.txt')

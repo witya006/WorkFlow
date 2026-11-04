@@ -19,3 +19,28 @@ AnimationManager::AnimationManager()
     std::memset(unknown_000, 0, sizeof(unknown_000));
     Init(); // The old body has no defined int return; deliberately discard it.
 }
+
+TextureManager::TextureManager()
+    : legacy_begin(nullptr), legacy_end(nullptr), legacy_capacity(nullptr) {
+    std::memset(unknown_004, 0, sizeof(unknown_004));
+    std::memset(legacy_path, 0, sizeof(legacy_path));
+    Init(); // Supplied SDK establishes device/counters/mip state.
+}
+
+CMeshManager::CMeshManager()
+    : legacy_begin(nullptr), legacy_end(nullptr), legacy_capacity(nullptr) {
+    std::memset(unknown_000, 0, sizeof(unknown_000));
+}
+
+CRender::CRender() {
+    // Embedded managers have constructed their actual empty legacy states.
+    std::memset(unknown_004, 0, sizeof(unknown_004));
+    std::memset(unknown_248, 0, sizeof(unknown_248));
+    Init(); // Supplied SDK sets light, flags, device, shadows and file-load init.
+    // Own bridge invariant: old effect routines consume this private pointer,
+    // and the supplied renderer destructor clears it. Original inline binding
+    // sequence is unavailable; exact constructor equivalence is not claimed.
+    m_Render = this;
+}
+
+ChInterface::ChInterface() = default; // Real CRender base construction; no extra proven fields.

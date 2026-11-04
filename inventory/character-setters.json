@@ -1,0 +1,137 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "library": "work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
+  "library_sha256": "9d199a8bbb3e13bfebce850398a20a1ad9c384da897bc6981c7195a827795496",
+  "source_sha256": {
+    "character_recovered_setters.cpp": "47f1f6b1d806e84128f28713b24a90eda4d1e1aee01341a1f959aaaa3f7333a4",
+    "test_character_recovered_setters.cpp": "117cc6165769134104b0ab84902195375e12726d9ebd7a9d31edcfcabdcaf09b"
+  },
+  "header_sha256": "b963b5a65139b0dde07423a6fc4e16dd203a5e9fa9c4a48addda008ecfef2148",
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "instructions": [
+        {
+          "va": "0x60814c",
+          "rva": "0x20814c",
+          "file_offset": "0x20754c",
+          "bytes": "837d0c00741b"
+        },
+        {
+          "va": "0x608152",
+          "rva": "0x208152",
+          "file_offset": "0x207552",
+          "bytes": "68ff000000"
+        },
+        {
+          "va": "0x60815e",
+          "rva": "0x20815e",
+          "file_offset": "0x20755e",
+          "bytes": "81c114010000"
+        },
+        {
+          "va": "0x608165",
+          "rva": "0x208165",
+          "file_offset": "0x207565",
+          "bytes": "e836162700"
+        },
+        {
+          "va": "0x540123",
+          "rva": "0x140123",
+          "file_offset": "0x13f523",
+          "bytes": "81c1e8200000"
+        },
+        {
+          "va": "0x540129",
+          "rva": "0x140129",
+          "file_offset": "0x13f529",
+          "bytes": "e812000000"
+        },
+        {
+          "va": "0x540152",
+          "rva": "0x140152",
+          "file_offset": "0x13f552",
+          "bytes": "89881c010000"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "instructions": [
+        {
+          "va": "0x60814c",
+          "rva": "0x20814c",
+          "file_offset": "0x20754c",
+          "bytes": "837d0c00741b"
+        },
+        {
+          "va": "0x608152",
+          "rva": "0x208152",
+          "file_offset": "0x207552",
+          "bytes": "68ff000000"
+        },
+        {
+          "va": "0x60815e",
+          "rva": "0x20815e",
+          "file_offset": "0x20755e",
+          "bytes": "81c114010000"
+        },
+        {
+          "va": "0x608165",
+          "rva": "0x208165",
+          "file_offset": "0x207565",
+          "bytes": "e836162700"
+        },
+        {
+          "va": "0x540123",
+          "rva": "0x140123",
+          "file_offset": "0x13f523",
+          "bytes": "81c1e8200000"
+        },
+        {
+          "va": "0x540129",
+          "rva": "0x140129",
+          "file_offset": "0x13f529",
+          "bytes": "e812000000"
+        },
+        {
+          "va": "0x540152",
+          "rva": "0x140152",
+          "file_offset": "0x13f552",
+          "bytes": "89881c010000"
+        }
+      ]
+    },
+    {
+      "object_sha256": "3849deb835602cee422b6b2e904a6ab8d7dc0f73958f89459362b6529c2eedcd",
+      "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
+      "architecture": "x86",
+      "function_offset": "0x1b7",
+      "file_offset": "0xbe27",
+      "rva": null,
+      "field_offset": 272
+    },
+    {
+      "object_sha256": "31757302232b953c3b36f7627aef26860edc13399bfcda3adfaabe6e10a45e8d",
+      "symbol": "?AddTexture@TextureManager@@QAE_NPBD0@Z",
+      "architecture": "x86",
+      "function_offset": "0x15b",
+      "file_offset": "0xa7ab",
+      "rva": null,
+      "field_offset": 156
+    }
+  ],
+  "native_test": {
+    "checks_passed": 18,
+    "renderer_constructed": false,
+    "probe": "leaf machine ABI on guarded storage"
+  },
+  "input_game_exe_execution": false,
+  "correspondence": "455 source/call-sequence correspondence inferred; instruction effects confirmed. Legacy storage adapted using checked consumers.",
+  "limit": "Leaf method ABI/byte effects only; full C++ renderer construction and loaded textures not tested. Source length >=255 deliberately does not force the last byte to NUL, matching the reference."
+}
