@@ -279,6 +279,24 @@ instruction checks на обоих pinned PE; owned77bfa3a2 закрыта с sa
 research/client455-graphics-runtime.md. D3D9/full Character/particles/clock/UI/network
 и M6/M6F/M7/M9 открыты; M8 modernization не требуется.
 
+## M6: численный clock455
+
+Собственный x86 clock module восстановил8scalar functions и256byte clock prefix
+из0x8B1F20/RVA0x4B1F20.773instruction bytes совпали в обоих pinned PE после
+проверки absolute operands/constants.1275checks/12FP modes прошли standalone и
+в полном lab клиенте. Normal retained2used routines/prefix,lab9; linked code,
+constants и .CRT$XCU initializer KERNEL32.GetTickCount проверены в обоих EXE.
+Обычный RF_Online.bin2440704bytes/entryRVA0x1BBAA0,SHA
+f5f945160fe45255b9cea935cb3e27946a0a5ab531a18b1279abbd41164e18e5,не запускался.
+Lab SHA bb441c5c3e393f98a298355b794e14bbb95d1efdd790c36e1356080d64c44e9b:
+703weather/30resource regression checks и2real GPU cases/59checks на Platform01
+прошли. Helper/interior/night states прежние,FP007F,release balance0;game DLLs отсутствуют.
+287normal modern x86 /MT objects проверены; дополнительный61-й engine object —clock.
+Уточнение:0x7E3E55 это console %time; настоящий clock map caller0x7C8B60.
+Cached time/packet origin/CLand/console и full lighting ещё открыты.
+research/client455-clock-source.md; inventory/client455-clock*.json/client455-time-callers.json.
+M6/M6F/M7/M9 открыты. Historical M5 evidence сохранён отдельно и проверен --saved.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

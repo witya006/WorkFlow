@@ -47,6 +47,12 @@ if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_HELPER_L
 $arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_WEATHER' })) { throw '455 weather source selection is missing.' }
 $arguments += '-DRF_CLIENT_455_WEATHER=ON'
+$clock = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-clock.json') -Raw | ConvertFrom-Json
+if ($clock.native_test.failures -ne 0 -or $clock.native_test.precision_rounding_modes -ne 12 -or $clock.native_test.checks -lt 1275) { throw '455 clock component proof missing.' }
+foreach ($property in $clock.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 clock source proof stale.' }
+}
+$arguments += '-DRF_CLIENT_455_CLOCK=ON'
 $resources = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-resource-io.json') -Raw | ConvertFrom-Json
 if ($resources.native_checks -lt 18895 -or $resources.archives.Count -ne 78) { throw 'Native resource-I/O proof missing.' }
 foreach ($property in $resources.source_sha256.PSObject.Properties) {
@@ -126,6 +132,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_x87_math455.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_x87_math455.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_clock455.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_clock455.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

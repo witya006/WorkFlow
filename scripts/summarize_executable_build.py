@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
@@ -78,6 +78,8 @@ def main():
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
         if settings.get('RF_CLIENT_455_WEATHER')=='ON':
             weather_inputs=['scripts/native/client455_weather.cpp','scripts/native/client455_weather_format.h','scripts/native/client_weather_lab.inc']
+            if settings.get('RF_CLIENT_455_CLOCK')=='ON':
+                weather_inputs+=['scripts/native/client455_clock.cpp','scripts/native/client455_clock.h','scripts/native/test_client455_clock.cpp']
             report['weather_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in weather_inputs}
         if settings.get('RF_CLIENT_455_RESOURCE_IO')=='ON':
             resource_inputs=['scripts/native/client455_resource_io.cpp','scripts/native/client455_resource_io.h','scripts/native/client_resource_lab.inc',
@@ -86,7 +88,7 @@ def main():
             graphics_inputs=['scripts/native/client_graphics_lab.inc','work/client-build/source/R3Engine/1stclass/entity.cpp',
                              'work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp','work/client-build/source/R3Engine/1stclass/renderentity.cpp']
             report['graphics_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in graphics_inputs}
-        report['scope']='Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.'
+        report['scope']='Full client project with own CPU/hidden-window GPU lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.'
     (WS / args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['build_exit', 'error_counts', 'generated_objects']}, ensure_ascii=True))
 

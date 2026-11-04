@@ -66,8 +66,12 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
-   environment. Setter/rate/basic API есть, network/lighting не объявлены готовыми.
+1. Восстановить cached time fields/client packet origin и clock вызовы CLand4550x7C8B60.
+   Численный clock уже восстановлен:8functions+256byte frame prefix,773bytes equal
+   обоим PE;1275native checks/12FP modes в module и полном клиенте. Actual Platform01
+   FrameMove/GPU повторно прошёл2cases/59checks. research/client455-clock-source.md.
+   0x7E3E55 — console %time, не network handler; %real_time тоже отдельная console
+   ветка. Эти команды, map cached fields и весь lighting ещё открыты.
 2. Полные particle455 options/curves/collision/emission и остальные resource consumers.
    Реальные selected5entities/5particles уже отрисованы; это не полная455parity.
 3. Восстановить D3D9/device/material/shader/lighting поведение455. Это обязательный
@@ -95,6 +99,11 @@ Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
 --level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).
 M5 gate: Invoke-Python.ps1 scripts/verify_client_m5.py.
+После следующих ревизий M5 historical gate: verify_client_m5.py --saved.
+Clock: build_client455_clock.py; после сборки verify_client_clock455.py [--lab],
+затем probe_client_clock455.py. Actual caller evidence: audit_client_time455.py.
+GPU clock regression: probe_client_graphics455.py --level Platform01 --output
+inventory/client455-clock-graphics-runtime.json (сохраняет прежний13case M5 report).
 Map/RPK tools: Invoke-Python.ps1 scripts/test_map455.py, затем
 Invoke-Python.ps1 scripts/audit_client_map_resources455.py. Это static tooling;
 его round trip не доказывает native loader/GPU parity.

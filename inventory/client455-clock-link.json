@@ -1,0 +1,169 @@
+{
+  "normal": {
+    "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+    "exe_sha256": "f5f945160fe45255b9cea935cb3e27946a0a5ab531a18b1279abbd41164e18e5",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_GetDayFraction",
+        "va": "0x5b0fc0",
+        "rva": "0x1b0fc0",
+        "reference_va": "0x8b1430",
+        "reference_rva": "0x4b1430",
+        "size": 7,
+        "sha256": "4993f0495c82d420e9b4c42697085d07cd7a7d983c22e9f470487d16b771db21",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_AdvanceDayClock",
+        "va": "0x5b0eb0",
+        "rva": "0x1b0eb0",
+        "reference_va": "0x8b1f20",
+        "reference_rva": "0x4b1f20",
+        "size": 256,
+        "sha256": "21739b9bde455f66ee7b0030658d9282c25d164e2318fe7e8a1179086709c9e8",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": true
+      }
+    ],
+    "default_provider": {
+      "initializer_va": "0x441a40",
+      "initializer_rva": "0x41a40",
+      "registration_va": "0x5fd518",
+      "module": "KERNEL32.dll",
+      "name": "GetTickCount"
+    },
+    "component_report_sha256": "a708ca136c65a2261eff1c55466ea8d0eedbb5da0198d7fc4eb9bb5183455fdc",
+    "source_sha256": {
+      "client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
+      "client455_clock.cpp": "04dfac005b6cba0be13164b07bf51e999d819eb8b783c43965220cb5512c72f9",
+      "test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49"
+    },
+    "executed": false,
+    "scope": "Selected linked routines; absent unused functions may be discarded by normal linker. Caller integration and full lighting remain separate."
+  },
+  "lab": {
+    "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
+    "exe_sha256": "bb441c5c3e393f98a298355b794e14bbb95d1efdd790c36e1356080d64c44e9b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_SetDayRate",
+        "va": "0x686fc0",
+        "rva": "0x286fc0",
+        "reference_va": "0x8b12c0",
+        "reference_rva": "0x4b12c0",
+        "size": 11,
+        "sha256": "89004941308ff0c0efc0916f7102ca492aaf82f64ce8c672fe56ac2525811834",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_GetDayRate",
+        "va": "0x686e90",
+        "rva": "0x286e90",
+        "reference_va": "0x8b12d0",
+        "reference_rva": "0x4b12d0",
+        "size": 7,
+        "sha256": "30083fbd2c903baa9822a968e8d35f8253cdc67b54fd20d8aaf5966f98ad78e3",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_SetDayTime",
+        "va": "0x686fd0",
+        "rva": "0x286fd0",
+        "reference_va": "0x8b12e0",
+        "reference_rva": "0x4b12e0",
+        "size": 204,
+        "sha256": "0f9bf702daab72b76078535872c551782b7cf54526bc2a130abca448d53a327b",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_GetDayTime",
+        "va": "0x686ea0",
+        "rva": "0x286ea0",
+        "reference_va": "0x8b13b0",
+        "reference_rva": "0x4b13b0",
+        "size": 117,
+        "sha256": "28ceccd03a7f55934190f14343b3ba4ceb499ed1f10c52800cc709a55cb8aa73",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_GetDayFraction",
+        "va": "0x686e80",
+        "rva": "0x286e80",
+        "reference_va": "0x8b1430",
+        "reference_rva": "0x4b1430",
+        "size": 7,
+        "sha256": "3f9c4aac7d78d84334d74cee299e6f78ab54535ea638af7605bf2df0e2a32a70",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_SetDayFraction",
+        "va": "0x686f50",
+        "rva": "0x286f50",
+        "reference_va": "0x8b1440",
+        "reference_rva": "0x4b1440",
+        "size": 85,
+        "sha256": "c6ccfa1a6d67bfbdb1617761678d190169d4d4584e2110bc54bd6108aff70108",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_GetRealDayFraction",
+        "va": "0x686f40",
+        "rva": "0x286f40",
+        "reference_va": "0x8b15c0",
+        "reference_rva": "0x4b15c0",
+        "size": 7,
+        "sha256": "c3510638f72a13cd8c3abc34f88351f486a9d88a1934933eedfb994d2cbbadeb",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_SetRealDayFraction",
+        "va": "0x6870d0",
+        "rva": "0x2870d0",
+        "reference_va": "0x8b15d0",
+        "reference_rva": "0x4b15d0",
+        "size": 79,
+        "sha256": "ed7362bc2d9a935fc7049e594841090afc68f5ed9ca61d5e0251cced243cafbf",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": false
+      },
+      {
+        "symbol": "_RF455_AdvanceDayClock",
+        "va": "0x686d30",
+        "rva": "0x286d30",
+        "reference_va": "0x8b1f20",
+        "reference_rva": "0x4b1f20",
+        "size": 256,
+        "sha256": "ab98b0b0eed619d8c80b09d64c32f8e268bee9e5f1ed7decb0e6f6c2284a370e",
+        "identity_except_verified_absolute_operands": true,
+        "prefix_only": true
+      }
+    ],
+    "default_provider": {
+      "initializer_va": "0x48e450",
+      "initializer_rva": "0x8e450",
+      "registration_va": "0x763404",
+      "module": "KERNEL32.dll",
+      "name": "GetTickCount"
+    },
+    "component_report_sha256": "a708ca136c65a2261eff1c55466ea8d0eedbb5da0198d7fc4eb9bb5183455fdc",
+    "source_sha256": {
+      "client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
+      "client455_clock.cpp": "04dfac005b6cba0be13164b07bf51e999d819eb8b783c43965220cb5512c72f9",
+      "test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49"
+    },
+    "executed": false,
+    "scope": "Selected linked routines; absent unused functions may be discarded by normal linker. Caller integration and full lighting remain separate."
+  }
+}

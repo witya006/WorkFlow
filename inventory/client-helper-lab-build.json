@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T12:36:31.262826+00:00",
+  "checked_at_utc": "2026-11-04T13:02:10.731823+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -28,6 +28,7 @@
     "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
     "RF_LEGACY_NEW_UI": "ON",
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
+    "RF_CLIENT_455_CLOCK": "ON",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
     "RF_CLIENT_455_RESOURCE_IO": "ON",
     "RF_CLIENT_455_WEATHER": "ON",
@@ -35,21 +36,24 @@
     "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
     "RF_CLIENT_HELPER_LAB": "ON"
   },
-  "scope": "Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.",
+  "scope": "Full client project with own CPU/hidden-window GPU lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.",
   "compiler_flags": {
     "CMAKE_CXX_FLAGS": "/DWIN32 /D_WINDOWS /W3 /GR /EHsc",
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "76fd53cb3ef80576fbb46f40605bcdd61e834d06be95841e4db56c658adbcdfb",
+    "scripts/native/client_helper_lab.cpp": "295347aa3b8ac36e46d6ff186b1ea19735fe56b4dd3d4266f97a9ff266eca7d0",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "ece2acccb434ef06ee0aba3d35a15778f3bdf87e5b70589221f8f34732aed3ae"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "bb441c5c3e393f98a298355b794e14bbb95d1efdd790c36e1356080d64c44e9b"
   },
   "weather_input_sha256": {
-    "scripts/native/client455_weather.cpp": "85bdcdedda2a3f88865299e3dee764f7b3c2a2dcc5c516988bc722c89b81fa2a",
-    "scripts/native/client455_weather_format.h": "9ef952c077bba1aca573d97f896e3722197fe9e7f286f187f4740f2103684011",
-    "scripts/native/client_weather_lab.inc": "aa0d60a97727efe3ae3b5b4b6f934a4f01efbe734cde200d96a636029f2801ff"
+    "scripts/native/client455_weather.cpp": "bae812e92b8fbe5f2b753c85ce08c504812f71d18e9d7e7807d1821ee2ddf5d8",
+    "scripts/native/client455_weather_format.h": "74810735f187bea35c36129d525113954383864cfad65469bdded0047389109f",
+    "scripts/native/client_weather_lab.inc": "aa0d60a97727efe3ae3b5b4b6f934a4f01efbe734cde200d96a636029f2801ff",
+    "scripts/native/client455_clock.cpp": "04dfac005b6cba0be13164b07bf51e999d819eb8b783c43965220cb5512c72f9",
+    "scripts/native/client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
+    "scripts/native/test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49"
   },
   "resource_input_sha256": {
     "scripts/native/client455_resource_io.cpp": "e796328b29dd736c4768cff2597ef8e00e986300af13273da5f34aef0088f162",

@@ -127,8 +127,31 @@ static unsigned probe() {
 #include "client_graphics_lab.inc"
 #endif
 
+#if defined(RF_CLIENT_455_CLOCK)
+#include "client455_clock.h"
+namespace ClockProbe {
+#define RF455_CLOCK_EMBEDDED
+#include "test_client455_clock.cpp"
+#undef RF455_CLOCK_EMBEDDED
+}
+static int clockScenarioProbe() {
+    const char* output=std::getenv("RF_LAB_HELPER_OUTPUT");
+    if (!output) return 90;
+    const char* dlls[]={"mss32.dll","ABuse.dll","Adv.dll","PDLL.dll"};
+    for (unsigned i=0;i<4;++i) if (GetModuleHandleA(dlls[i])) return 91;
+    FILE* file=std::fopen(output,"wt");if (!file) return 92;
+    const int result=ClockProbe::runClockChecks(file);
+    if (std::fclose(file)) return 93;
+    for (unsigned i=0;i<4;++i) if (GetModuleHandleA(dlls[i])) return 94;
+    return result;
+}
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_CLOCK)
+    if (!std::strcmp(command,"--rf-clock-scenario")) ExitProcess(clockScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_RESOURCE_IO)
     if (!std::strcmp(command,"--rf-resource-scenario")) ExitProcess(resourceScenarioProbe());
     if (!std::strcmp(command,"--rf-graphics-device")) ExitProcess(graphicsProbe(0));

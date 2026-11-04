@@ -1,6 +1,7 @@
 #pragma once
 #include <stdio.h>
 #include <stddef.h>
+#include "client455_clock.h"
 
 #pragma pack(push,1)
 struct RF455_ExtMaterial {
@@ -33,9 +34,3 @@ static_assert(offsetof(RF455_ExtMaterial,mSceneFlags)==524,"scene flags");
 // copy their available bytes into zeroed storage, as the reference's fread does.
 bool RF455_ReadExtMaterial(FILE*,RF455_ExtMaterial*);
 void RF455_ReadWeatherTokens(FILE*,char* mutableToken);
-float RF455_GetDayFraction();
-void RF455_SetDayFraction(float);
-void RF455_AdvanceDayClock();
-float RF455_GetDayRate();
-void RF455_SetDayRate(float);
-void RF455_SetDayTime(unsigned hours,unsigned minutes,unsigned seconds);

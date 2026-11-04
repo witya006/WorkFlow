@@ -1,6 +1,7 @@
 """Evidence gate for M5's first helper-data slice, never M6F/M9 acceptance."""
 import hashlib
 import json
+import argparse
 from compare_client_binaries import WS
 
 
@@ -9,6 +10,21 @@ def read(name):return json.loads((WS/name).read_text(encoding='utf-8'))
 
 
 def main():
+    cli=argparse.ArgumentParser();cli.add_argument('--saved',action='store_true',help='Validate preserved M5 checkpoint after later source/build changes');args=cli.parse_args()
+    if args.saved:
+        checkpoint=read('inventory/client-m5-checkpoint.json')
+        root=WS/'artifacts/m5-checkpoint'/checkpoint['graphics_exe_sha256'][:16]
+        if json.loads((root/'client-m5-checkpoint.json').read_text(encoding='utf-8'))!=checkpoint:raise ValueError('Preserved M5 checkpoint differs')
+        for name,digest in checkpoint['evidence_sha256'].items():
+            if sha(root/name.split('/')[-1])!=digest:raise ValueError('Preserved M5 report lost/changed:'+name)
+        gpu=json.loads((root/'client455-graphics-runtime.json').read_text(encoding='utf-8'))
+        if sha(WS/gpu['exe'])!=gpu['exe_sha256']:raise ValueError('Preserved graphics EXE lost/changed')
+        for case in gpu['cases']:
+            if sha(WS/case['frame'])!=case['frame_sha256']:raise ValueError('Preserved GPU frame changed')
+        helper=json.loads((root/'client-helper-runtime.json').read_text(encoding='utf-8'))
+        if sha(WS/helper['exe'])!=helper['exe_sha256']:raise ValueError('Preserved helper EXE changed')
+        print('PASS:preserved M5 checkpoint/evidence/EXEs/GPU frames intact; this is historical evidence, not a new build regression.')
+        return
     gpu=read('inventory/client455-graphics-runtime.json');build=read('inventory/client-helper-lab-build.json')
     if build['build_exit'] or gpu['exe_sha256']!=sha(WS/gpu['exe']):raise ValueError('Graphics executable missing/stale')
     if gpu['exe_sha256']!=sha(WS/'work/client-build/build-helper-lab/Release/RF_Online.bin'):raise ValueError('Graphics report is not current lab')

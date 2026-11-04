@@ -34,6 +34,10 @@ M8 не требуется. Компиляция, запуск и частичн
   703weather/30resource/23 337targeted helper checks на текущем lab прошли.
   Gate inventory/client-m5-checkpoint.json; research/client455-graphics-runtime.md.
 - M6 в работе. Полные particles/clock/Character/UI/network/renderer parity открыты.
+  Численный clock уже восстановлен:8scalar functions+256byte frame prefix,773bytes
+  совпали с обоими PE;1275checks/12FP modes в component и полном клиенте. Два
+  независимых счётчика и actual FrameMove работают; CLand/cache/packet/console
+  integration и весь lighting ещё открыты. research/client455-clock-source.md.
   D3D8 legacy против455D3D9 — обязательное восстановление M6, не optional M8.
   Normal WinMain и reference EXE не запускались. M6F/M7/M9 не закрыты.
 
@@ -49,13 +53,16 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 440 704bytes,entryRVA0x1BBA50,SHA256
-a761c930a5ff86025d0a68ab195bd9253855b1d7887f3d9d0f6b9639fec8970c.
-Snapshot resource455-runtime;предыдущие revisions сохранены. Обычный EXE
-не запускался,286objects /MT проверены (180client +60engine +46JPEG).
-Own lab EXE SHA ece2acccb434ef06ee0aba3d35a15778f3bdf87e5b70589221f8f34732aed3ae,
-snapshot work/client-graphics-lab/ece2acccb434ef06/RF_Online.bin.
-Он исполнялся с resource/weather/helper и --rf-graphics-device/entity/particle/level.
+2 440 704bytes,entryRVA0x1BBAA0,SHA256
+f5f945160fe45255b9cea935cb3e27946a0a5ab531a18b1279abbd41164e18e5.
+Snapshot clock455;предыдущие revisions сохранены. Обычный EXE
+не запускался,287objects /MT проверены (180client +61engine +46JPEG).
+Own lab EXE SHA bb441c5c3e393f98a298355b794e14bbb95d1efdd790c36e1356080d64c44e9b,
+size4085248,entryRVA0x7DD8; snapshot work/client-clock-lab/bb441c5c3e393f98/RF_Online.bin.
+Он исполнялся с clock/resource/weather и --rf-graphics-device/level Platform01.
+1275clock checks/12FP modes,703weather/30resource,2GPUcases/59checks прошли.
+M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
+artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
 Hidden-window640x480 D3D8 HAL/RTX2080Ti, без focus/input; real backbuffer BMP сохранены.
 HAL требует разрешённого запуска вне sandbox; та же сборка внутри вернула0x8876086A.
@@ -82,7 +89,7 @@ files имеют отдельный ledger client-behavior-patches.json. Сей�
 плюс2новых resource consumers;7resource overlays включают5weather files и2новых.
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
 CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
-X87_MATH /WEATHER /RESOURCE_IO по умолчанию
+X87_MATH /WEATHER /RESOURCE_IO /CLOCK по умолчанию
 OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
 CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
@@ -129,7 +136,11 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M6: следующий шаг — clock/client Time/HMS caller4550x7E3E55 и numeric/FPU contract.
+M6: следующий шаг — cached map time fields/network origin и CLand clock integration.
+Уточнение:0x7E3E55 — console %time, НЕ network handler; %real_time вызывает0x8B14A0.
+Настоящий map caller0x7C8B60 ->game fraction0x8B1440 и real fraction0x8B15D0.
+Численный clock/FPU contract уже source-integrated и instruction-identical; не
+повторять его исследование. inventory/client455-clock*.json,client455-time-callers.json.
 Actual entity/texture/particle и LoadLevel/GPU уже прошли M5 в own entry.
 RPK file/group/fopen/exists и particle end source уже подключены (flag RESOURCE_IO).
 18 907native module checks на3775members/78RPK;30actual CParticle/LoadR3X archive
@@ -142,8 +153,8 @@ Compile DDS mask128bytes в обоих linked PE равен455; input EXE/DLL н
 inventory/client455-resource-{io,reference,runtime,link}.json. Commands в next-steps.md.
 Повтор MSBuild после sandbox E_ACCESSDENIED с escalation прошёл, cache не удалялся.
 Последняя полная140helper проверка остаётся pinned weather revision;703weather checks
-повторены на текущем graphics lab,23 337targeted helper checks тоже прошли.
-Owned graphics IDA session закрыта/save. Resource audit/GPU уже выполнены;
+повторены на текущем clock lab;23 337targeted helper checks исторического M5 сохранены.
+Owned graphics/clock IDA sessions закрыты/save. Resource audit/GPU уже выполнены;
 не повторять их без изменения соответствующих входов.
 78MapEntity archives/3775entries,1067declaredSize mismatches: game fopen их игнорирует,
 tool uses next-offset/EOF extent и сохраняет metadata.70BSP39+93EBP20 round trips;
@@ -159,8 +170,8 @@ scripts/rpk455.py/map455.py,8tests. Strict tooling не эмулирует unsaf
 версия1.1 прежняя, payload1032 vslegacy1024, name2+392/id2+520/sceneFlags+524.
 65real files размерами1028/1036,7lens толькоreader;4fixtures,37real CPU lifecycle
 checks и703total. CAlpha4buffers fixture исправлена после живого CBsp, allocator не менялся.
-Clock normalized dayFraction/HMS, mutable initial rate3.0, numeric equivalence/lighting/
-client time caller пока не закрыты. Particle455 curves/options, все прочие VFS consumers,
+Clock numeric8functions+two-clock prefix закрыт для equal caller FP environment;
+map/client input integration/lighting пока открыты. Particle455 curves/options, все прочие VFS consumers,
 full fog2/lens/scene weather и unsafe failure domain тоже открыты.
 Source failure quirks и unchecked short header сохранены, не улучшать по догадке.
 Research client455-weather-source.md; новый module scripts/native/client455_weather.cpp.

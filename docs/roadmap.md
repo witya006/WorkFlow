@@ -38,7 +38,13 @@ LoadLevel/FrameMove/render/release прошли в own entry на lobby и Platf
 Platform01:23helpers/8interiors, два weather layers меняют состояния[0,0]→[1,1]→[0,0].
 13GPU cases/321checks,703weather,30resource и23 337targeted helper regression checks.
 Gate inventory/client-m5-checkpoint.json; research/client-m5-checkpoint.md.
-M6 в работе; M6F/M7/M9 открыты. D3D8 база против D3D9 эталона — обязательное
+M6 в работе; M6F/M7/M9 открыты.
+В M6 восстановлен численный clock:773instruction bytes/8scalar functions+256byte
+frame prefix,1275native checks/12FP modes внутри module/полного клиента;287objects /MT.
+Actual Platform01 FrameMove/GPU повторно прошёл с новыми clocks (2cases/59checks).
+Map cached time/packet/CLand/console integration и полное lighting ещё открыты.
+research/client455-clock-source.md.
+Разница D3D8 базы и D3D9 эталона — обязательное
 восстановление M6, а не модернизация M8. Полные particles/clock/Character/UI/network
 не сертифицированы; нормальный WinMain и входной455 EXE не запускались.
 

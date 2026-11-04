@@ -15,7 +15,10 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 def main():
-    cli=argparse.ArgumentParser();cli.add_argument('--entity',action='store_true');cli.add_argument('--particle',action='store_true');cli.add_argument('--level',choices=['lobby','Platform01'],action='append',default=[]);args=cli.parse_args()
+    cli=argparse.ArgumentParser();cli.add_argument('--entity',action='store_true');cli.add_argument('--particle',action='store_true');cli.add_argument('--level',choices=['lobby','Platform01'],action='append',default=[])
+    cli.add_argument('--output',default='inventory/client455-graphics-runtime.json');args=cli.parse_args()
+    report_path=WS/args.output
+    if report_path.resolve().parent!=(WS/'inventory').resolve() or report_path.suffix!='.json':raise ValueError('Graphics report must be a JSON directly under inventory/')
     build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'))
     if build['build_exit'] or build['build_settings'].get('RF_CLIENT_455_RESOURCE_IO')!='ON':raise ValueError('Successful graphics-enabled lab build required')
     for group in ['graphics_input_sha256','lab_input_sha256','resource_input_sha256','weather_input_sha256']:
@@ -98,8 +101,8 @@ def main():
     report={'exe':exe.relative_to(WS).as_posix(),'exe_sha256':digest,'architecture':'x86','cases':all_results,
             'graphics_source_sha256':build['graphics_input_sha256'],
             'scope':'Own hidden-window real D3D8 HAL device/engine, selected RPK assets and optional actual CLevel::LoadLevel. Normal game WinMain, reference EXE, D3D9 comparison, sound/network not executed; no game DLL provider present.'}
-    (WS/'inventory/client455-graphics-runtime.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-    print(json.dumps({'cases':len(all_results),'stage':all_results[-1]['stage'],'exit':all_results[-1]['exit_code'],'result':'inventory/client455-graphics-runtime.json'}))
+    report_path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    print(json.dumps({'cases':len(all_results),'stage':all_results[-1]['stage'],'exit':all_results[-1]['exit_code'],'result':args.output}))
     if any(row['exit_code'] or row.get('failures') or row.get('errors') for row in all_results):raise ValueError('Graphics probe did not complete; inspect recorded stage/evidence')
 
 

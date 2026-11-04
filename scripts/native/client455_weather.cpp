@@ -31,6 +31,7 @@ void RF455_ReadWeatherTokens(FILE* file,char* token) {
     if (!strcmp(token,"*ENVIRONMENT_ID2")) { fscanf(file,"%s",token); state->mEnvIDs[1]=(DWORD)atoi(token); }
 }
 
+#if !defined(RF_CLIENT_455_CLOCK)
 static DWORD dayBase=0;
 static float dayFraction=0;
 static float dayRate=3.0f;
@@ -54,6 +55,8 @@ void RF455_AdvanceDayClock() {
     dayFraction=(float)((double)wrapped/86400.0);
     if (dayFraction>1.0f) dayFraction=0;
 }
+
+#endif
 
 void CBsp::LoadEnvironment455() {
     _R3ENGINE_STATE* state=GetR3State();

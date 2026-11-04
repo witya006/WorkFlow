@@ -91,8 +91,7 @@
       ],
       "gaps": [
         "Reference455 startup FPU/caller environment; own D3D8 device/map/render consumer measured0x007F",
-        "full helper loader/NaN/exception behavior outside the two exact math kernels",
-        "normal map runtime"
+        "full helper loader/NaN/exception behavior outside the two exact math kernels"
       ]
     },
     {
@@ -164,7 +163,7 @@
         "140 real helper files in aligned native lab"
       ],
       "gaps": [
-        "normal game startup x87 environment",
+        "Reference455 startup x87 environment; own device/map path measured0x007F",
         "other math functions and binary Character SDK internals remain outside this feature"
       ]
     },
@@ -248,7 +247,9 @@
         "inventory/client455-weather-runtime.json",
         "research/client455-weather-source.md",
         "inventory/client455-graphics-runtime.json",
-        "research/client455-graphics-runtime.md"
+        "research/client455-graphics-runtime.md",
+        "inventory/client455-clock-runtime.json",
+        "inventory/client455-clock-graphics-runtime.json"
       ],
       "scenarios": [
         "two distinct particles loaded/released",
@@ -264,7 +265,7 @@
       "gaps": [
         "full particle455 implementation/curves/options and GPU parity",
         "unsafe asset-failure edges",
-        "clock numeric/FPU equivalence and client-side time caller4550x7E3E55"
+        "Cached client map time/packet/CLand/console integration and full lighting; clock numeric routines restored separately"
       ]
     },
     {
@@ -377,6 +378,51 @@
       "gaps": [
         "Complete particle455 options/curves/finalization",
         "Full455GPU/collision/emission parity; selected five real scripts now render through legacy engine"
+      ]
+    },
+    {
+      "id": "WORLD-CLOCK-008",
+      "description": "x87 game/real clock scalar routines and two-clock frame-update prefix",
+      "status": "verified",
+      "verification": "Bounded instruction identity:8scalar functions+256byte frame prefix,773bytes after verified absolute operands/constants;1275checks/12FP modes standalone and full-client. Normal linked2used functions/prefix,lab9; actual Platform01 FrameMove/GPU regression2cases/59checks.",
+      "reference": [
+        {
+          "va": "0x8b12c0",
+          "rva": "0x4b12c0",
+          "role": "rate setter; related scalar VA/RVA in clock manifest"
+        },
+        {
+          "va": "0x8b1f20",
+          "rva": "0x4b1f20",
+          "size": 256,
+          "role": "clock-only prefix, later lighting excluded"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_clock.cpp",
+        "scripts/native/client455_clock.h"
+      ],
+      "option": "RF_CLIENT_455_CLOCK",
+      "evidence": [
+        "inventory/client455-clock.json",
+        "inventory/client455-clock-link.json",
+        "inventory/client455-clock-runtime.json",
+        "inventory/client455-clock-graphics-runtime.json",
+        "inventory/client455-time-callers.json",
+        "research/client455-clock-source.md"
+      ],
+      "scenarios": [
+        "HMS unsigned modulo24/60/60 and aliased getter outputs",
+        "PC24/53/64 with four rounding modes; control/TOP preservation",
+        "tick rollover, mutable rate/zero/negative, raw fractions and masked NaN/Inf",
+        "Independent two ticks; accelerated game modulo and unwrapped real fraction>1",
+        "Default KERNEL32.GetTickCount provider .CRT$XCU initialization; fake provider test-only",
+        "Actual Platform01 interior/night weather states through FrameMove and GPU"
+      ],
+      "gaps": [
+        "Cached map time fields/client packet origin and CLand0x7C8B60 caller source",
+        "Console %time0x7E3E55 and %real_time are not network handlers and remain unported",
+        "Full lighting/sky, unmasked-exception domain and reference full startup FPU state"
       ]
     }
   ],

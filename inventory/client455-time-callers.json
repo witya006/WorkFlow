@@ -1,0 +1,158 @@
+{
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "console_command",
+          "va": "0x7e3b10",
+          "rva": "0x3e3b10",
+          "size": 1301,
+          "sha256": "8eb2f406ba36900aba07c0d7b330ac64cf6ca7aca2f1bbb257b710567a08fb01"
+        },
+        {
+          "name": "client_map_load",
+          "va": "0x7c8b60",
+          "rva": "0x3c8b60",
+          "size": 872,
+          "sha256": "92fd057bc259eeef21e181db6b3206e125ad0de2986f0eaf5780eeaa040155f6"
+        },
+        {
+          "name": "set_real_hms",
+          "va": "0x8b14a0",
+          "rva": "0x4b14a0",
+          "size": 147,
+          "sha256": "e796a935fb668c9b95650129ee8a7ac257561392bd33c2d78a03c5b489c2c103"
+        }
+      ],
+      "calls": [
+        {
+          "va": "0x7e3e55",
+          "rva": "0x3e3e55",
+          "destination_va": "0x8b12e0",
+          "destination_rva": "0x4b12e0",
+          "bytes": "e886d40c00",
+          "meaning": "console %time hours,0,0"
+        },
+        {
+          "va": "0x7e3f3a",
+          "rva": "0x3e3f3a",
+          "destination_va": "0x8b14a0",
+          "destination_rva": "0x4b14a0",
+          "bytes": "e861d50c00",
+          "meaning": "console %real_time hours,minutes,0"
+        },
+        {
+          "va": "0x7c8de3",
+          "rva": "0x3c8de3",
+          "destination_va": "0x8b12d0",
+          "destination_rva": "0x4b12d0",
+          "bytes": "e8e8840e00",
+          "meaning": "client map load queries simulation rate"
+        },
+        {
+          "va": "0x7c8e4d",
+          "rva": "0x3c8e4d",
+          "destination_va": "0x8b1440",
+          "destination_rva": "0x4b1440",
+          "bytes": "e8ee850e00",
+          "meaning": "client map load sets simulation fraction"
+        },
+        {
+          "va": "0x7c8e87",
+          "rva": "0x3c8e87",
+          "destination_va": "0x8b15d0",
+          "destination_rva": "0x4b15d0",
+          "bytes": "e844870e00",
+          "meaning": "client map load sets real-time fraction"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "console_command",
+          "va": "0x7e3b10",
+          "rva": "0x3e3b10",
+          "size": 1301,
+          "sha256": "8eb2f406ba36900aba07c0d7b330ac64cf6ca7aca2f1bbb257b710567a08fb01"
+        },
+        {
+          "name": "client_map_load",
+          "va": "0x7c8b60",
+          "rva": "0x3c8b60",
+          "size": 872,
+          "sha256": "92fd057bc259eeef21e181db6b3206e125ad0de2986f0eaf5780eeaa040155f6"
+        },
+        {
+          "name": "set_real_hms",
+          "va": "0x8b14a0",
+          "rva": "0x4b14a0",
+          "size": 147,
+          "sha256": "e796a935fb668c9b95650129ee8a7ac257561392bd33c2d78a03c5b489c2c103"
+        }
+      ],
+      "calls": [
+        {
+          "va": "0x7e3e55",
+          "rva": "0x3e3e55",
+          "destination_va": "0x8b12e0",
+          "destination_rva": "0x4b12e0",
+          "bytes": "e886d40c00",
+          "meaning": "console %time hours,0,0"
+        },
+        {
+          "va": "0x7e3f3a",
+          "rva": "0x3e3f3a",
+          "destination_va": "0x8b14a0",
+          "destination_rva": "0x4b14a0",
+          "bytes": "e861d50c00",
+          "meaning": "console %real_time hours,minutes,0"
+        },
+        {
+          "va": "0x7c8de3",
+          "rva": "0x3c8de3",
+          "destination_va": "0x8b12d0",
+          "destination_rva": "0x4b12d0",
+          "bytes": "e8e8840e00",
+          "meaning": "client map load queries simulation rate"
+        },
+        {
+          "va": "0x7c8e4d",
+          "rva": "0x3c8e4d",
+          "destination_va": "0x8b1440",
+          "destination_rva": "0x4b1440",
+          "bytes": "e8ee850e00",
+          "meaning": "client map load sets simulation fraction"
+        },
+        {
+          "va": "0x7c8e87",
+          "rva": "0x3c8e87",
+          "destination_va": "0x8b15d0",
+          "destination_rva": "0x4b15d0",
+          "bytes": "e844870e00",
+          "meaning": "client map load sets real-time fraction"
+        }
+      ]
+    }
+  ],
+  "confirmed": [
+    "0x7E3E55 is the console %time command, not a network handler. Its only direct HMS setter xref was checked in IDA.",
+    "0x7C8B60 loads client map and then initializes both clocks from cached fields, elapsed GetTickCount and the simulation rate.",
+    "Map-load arithmetic adds elapsed_seconds%60 to seconds and (elapsed_seconds/60)%60 to minutes; no additional hour carry is present in that fragment.",
+    "Console %real_time invokes a separate unaccelerated HMS setter; that setter/command is not yet source-integrated."
+  ],
+  "unknown": [
+    "Network origin/layout/update rules for the cached map time fields",
+    "Complete client CLand clock/caller restoration and date/weather fields",
+    "Full lighting/sky integration and both console command paths"
+  ],
+  "raw_analysis": "artifacts/clock455-analysis; cached IDA database used. Input executables never executed."
+}
