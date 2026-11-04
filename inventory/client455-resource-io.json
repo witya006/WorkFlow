@@ -1,0 +1,713 @@
+{
+  "source_sha256": {
+    "client455_resource_io.h": "bb1865d81d6a0f8b87a90db0bd03bd6ea9e3b32c7ee1dc1e02ea0759139375f4",
+    "client455_resource_io.cpp": "e796328b29dd736c4768cff2597ef8e00e986300af13273da5f34aef0088f162",
+    "test_client455_resource_io.cpp": "2a1a4d77e62d21e86156fa810cfc541792eba8f0d39dcb0a0711b35d48aa4b82"
+  },
+  "exe": "work/recovered/client455/resource-io/resource-io-probe.exe",
+  "exe_sha256": "5c672fd58f13ebe3e96acc4be35a89e460bf44c4b1b0e429a37e5f1a164511f9",
+  "object_sha256": "1792ece93b8e8c0be8da1e1d7f8f5cd075c29695f6c3c7652ad9c8d0fb893781",
+  "architecture": "x86",
+  "runtime": "/MT",
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "rpk_release",
+          "va": "0x8e6d60",
+          "rva": "0x4e6d60",
+          "size": 54,
+          "sha256": "b56db973263b5346f990a91e6e73cf5236dfc04ec44bbc505049d55daed6404a"
+        },
+        {
+          "name": "group_release",
+          "va": "0x8e7440",
+          "rva": "0x4e7440",
+          "size": 101,
+          "sha256": "9dcf7de2fbbbec50de6c49f7ddb1aa8158a0f23dd5a5df108c19fbba1fe15d47"
+        },
+        {
+          "name": "group_exists",
+          "va": "0x8e7510",
+          "rva": "0x4e7510",
+          "size": 96,
+          "sha256": "e6b54edc3ed5ad0da4278bb8567fabb78dc54fb322dae74e9d35ecc25744f5a6"
+        },
+        {
+          "name": "set_active",
+          "va": "0x8e75d0",
+          "rva": "0x4e75d0",
+          "size": 10,
+          "sha256": "c6e202e1a501f354f582423c046397d70ada0340cb5ab7c605c784733cb10ce4"
+        },
+        {
+          "name": "resource_exists",
+          "va": "0x8e75f0",
+          "rva": "0x4e75f0",
+          "size": 72,
+          "sha256": "e33edbb430ae945e5d1fa5f6e74ffac620bfaa5ab21b2eb03717e24e578599e0"
+        },
+        {
+          "name": "file_exists",
+          "va": "0x8e7130",
+          "rva": "0x4e7130",
+          "size": 25,
+          "sha256": "c8d7e82056bfa5f4b32b07ac32ba1fef977fb367669b76338c2213171abf762a"
+        },
+        {
+          "name": "material_binary",
+          "va": "0x90b1c0",
+          "rva": "0x50b1c0",
+          "size": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "rpk_release",
+          "va": "0x8e6d60",
+          "rva": "0x4e6d60",
+          "size": 54,
+          "sha256": "b56db973263b5346f990a91e6e73cf5236dfc04ec44bbc505049d55daed6404a"
+        },
+        {
+          "name": "group_release",
+          "va": "0x8e7440",
+          "rva": "0x4e7440",
+          "size": 101,
+          "sha256": "9dcf7de2fbbbec50de6c49f7ddb1aa8158a0f23dd5a5df108c19fbba1fe15d47"
+        },
+        {
+          "name": "group_exists",
+          "va": "0x8e7510",
+          "rva": "0x4e7510",
+          "size": 96,
+          "sha256": "e6b54edc3ed5ad0da4278bb8567fabb78dc54fb322dae74e9d35ecc25744f5a6"
+        },
+        {
+          "name": "set_active",
+          "va": "0x8e75d0",
+          "rva": "0x4e75d0",
+          "size": 10,
+          "sha256": "c6e202e1a501f354f582423c046397d70ada0340cb5ab7c605c784733cb10ce4"
+        },
+        {
+          "name": "resource_exists",
+          "va": "0x8e75f0",
+          "rva": "0x4e75f0",
+          "size": 72,
+          "sha256": "e33edbb430ae945e5d1fa5f6e74ffac620bfaa5ab21b2eb03717e24e578599e0"
+        },
+        {
+          "name": "file_exists",
+          "va": "0x8e7130",
+          "rva": "0x4e7130",
+          "size": 25,
+          "sha256": "c8d7e82056bfa5f4b32b07ac32ba1fef977fb367669b76338c2213171abf762a"
+        },
+        {
+          "name": "material_binary",
+          "va": "0x90b1c0",
+          "rva": "0x50b1c0",
+          "size": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        }
+      ]
+    }
+  ],
+  "native_checks": 18907,
+  "archives": [
+    {
+      "path": "Map/Entity/MapEntity0.rpk",
+      "sha256": "d080565ee380fc28da65c8114eb4cb58fc8dcb90589a0e441443cc9c3fc40b1a",
+      "files_checked": 29,
+      "output_sha256": "8c898baa85b32d3b15bb988ba4a863fa73a78df16d3502b109274600ae1dcb32"
+    },
+    {
+      "path": "Map/Entity/MapEntity1.rpk",
+      "sha256": "e95591250e8fb269698f48197812afcb8e95bba89b0ee9b1a32f92f3f46ef9d7",
+      "files_checked": 5,
+      "output_sha256": "e272be9b1c06e2754267e638717518581fc287dcce27b8665f8fd0a7fe09276f"
+    },
+    {
+      "path": "Map/Entity/MapEntity10.rpk",
+      "sha256": "caeab897df38b168b6e132ebce8923434a48bc3dc523d09d33c562c0eb7945f4",
+      "files_checked": 36,
+      "output_sha256": "19ce50302eae299318f8d925fc9a761e8d1768e5a365537f08d6f1440e04a27a"
+    },
+    {
+      "path": "Map/Entity/MapEntity11.rpk",
+      "sha256": "01cdbdce1098c1a91d3640bb836418245a76f02aa3f04ca4807261f2c0a0b703",
+      "files_checked": 51,
+      "output_sha256": "dfe8d1402ae533486ebae6e372ca9395283f712b2ac244850ad5eec7f7c9b722"
+    },
+    {
+      "path": "Map/Entity/MapEntity12.rpk",
+      "sha256": "30d613bd9f3e1c819e3a05bbe91f84ecbd26b1e539c8139b63c23f266b666fb7",
+      "files_checked": 51,
+      "output_sha256": "03e46d4cb866e35d1b4bf148e3e5b3370581070098091bc61b7bae82ba8e5c42"
+    },
+    {
+      "path": "Map/Entity/MapEntity13.rpk",
+      "sha256": "c12e86e9ef26f27a5c6e226874b2e88ba60a41c99643d93484a083712bb29560",
+      "files_checked": 47,
+      "output_sha256": "18dda61f8b49d5852ff7168d1644472c02b50b1802c144bd254842b9c5e1d873"
+    },
+    {
+      "path": "Map/Entity/MapEntity14.rpk",
+      "sha256": "c9098719c0be5b24c3e199622423549080a542a3b0589248cb6b2b7f8ddae2fd",
+      "files_checked": 66,
+      "output_sha256": "577eb6fbf566e926ec4a6a09dbc04f2f0949278ec7c6f2e854fda5bc13168bab"
+    },
+    {
+      "path": "Map/Entity/MapEntity15.rpk",
+      "sha256": "736f51bdd4e196a1e7953e52fd83eeac881608353f7dcf274d4b1ff41f4b8c55",
+      "files_checked": 69,
+      "output_sha256": "179d69d90706c03728537ca1e4a3af380fac9259130ea6078b8574e4c38baad7"
+    },
+    {
+      "path": "Map/Entity/MapEntity16.rpk",
+      "sha256": "b5f16be9a8de04d681bad3c0116a763cde7609b96980fcac431b9e6bd3b8ddf0",
+      "files_checked": 77,
+      "output_sha256": "37ef5581ced3144f3c19b06817f62ebcd685903a56345722c139260f14fa7e91"
+    },
+    {
+      "path": "Map/Entity/MapEntity17.rpk",
+      "sha256": "011cb8331fcd552fff1090b2b7431f117f626419a67c083184f22fcee83a2b73",
+      "files_checked": 66,
+      "output_sha256": "ecda975eac81abd7a60eb0762c58f133468d9acfc83605076d89cf49c29d01a2"
+    },
+    {
+      "path": "Map/Entity/MapEntity18.rpk",
+      "sha256": "160ed5ad3a97f400750ea3cc902363e98f3eb0f3f1b9c1e50e3f204563b2b181",
+      "files_checked": 85,
+      "output_sha256": "ca5829f61ca1865bfc321121d512da08f8037de1f814a6a343755c4246b98d41"
+    },
+    {
+      "path": "Map/Entity/MapEntity19.rpk",
+      "sha256": "5453e8a9fc00eb9457031c8a887661e7a9b091d2de2af319cdba075ad8b86350",
+      "files_checked": 44,
+      "output_sha256": "095666633e8aaa1c889610c97979c0e247875ed4c18afa44113b33861d949f97"
+    },
+    {
+      "path": "Map/Entity/MapEntity2.rpk",
+      "sha256": "052cbbf61d00050b52f82d7a8a930aadcb979b2cdf6ea6dac128ef45e331217d",
+      "files_checked": 80,
+      "output_sha256": "6015b0ca574813c2ad615aee862b30c1ee658e7263772de35513b48f68129936"
+    },
+    {
+      "path": "Map/Entity/MapEntity20.rpk",
+      "sha256": "3097f0e8740e00bb75a44dbd03343cef6f9d25647164b88f6cacb572c3510a74",
+      "files_checked": 49,
+      "output_sha256": "7f62f363916e58440bb9f8d17727854abc9ed30ab5eabeecee9df18ee71c52c2"
+    },
+    {
+      "path": "Map/Entity/MapEntity21.rpk",
+      "sha256": "701ba90ca0d70566cf8336f20805d7bbd6328350e4dfd8fa3769a50fc0632d02",
+      "files_checked": 40,
+      "output_sha256": "f1a7bf0dcc607f2b9e3d58a1afdd2fed24bc61e3df5c4f369e4c01063a93c927"
+    },
+    {
+      "path": "Map/Entity/MapEntity22.rpk",
+      "sha256": "a6ec046c533322c848e0b5a2ba2bebbf914568d5f3bb8c899b65f7786588284c",
+      "files_checked": 27,
+      "output_sha256": "5366ffd457358e228297c3c3bd3f18789054257bebef5810873d260da8ed11bf"
+    },
+    {
+      "path": "Map/Entity/MapEntity24.rpk",
+      "sha256": "501b2367557fae00932e3346aca13f3d830d288cb48481dc7008dea8522798f3",
+      "files_checked": 57,
+      "output_sha256": "466281f4b767cc8195966ea39dbdf0c8422ff0ec5937911f3b6b298742fb096f"
+    },
+    {
+      "path": "Map/Entity/MapEntity25.rpk",
+      "sha256": "15c3b3c3bc5076d3e434e57d080d8a8abcd87a44523e75ebbc2eb6d8edc2538e",
+      "files_checked": 18,
+      "output_sha256": "ae15f8fb0e97e5946415aa6fcc6b0bea3005dcae2c5c9de0383108c821f91d5f"
+    },
+    {
+      "path": "Map/Entity/MapEntity26.rpk",
+      "sha256": "bf751147526d2df6ed80e5b90aeeebd5011d256ab635a5ba4375a9e056216a4d",
+      "files_checked": 60,
+      "output_sha256": "1e3e8a51136759733941cd06e50277f6dd859576ccac950b837b2fc99e3baaaf"
+    },
+    {
+      "path": "Map/Entity/MapEntity27.rpk",
+      "sha256": "81c832df27ebabdac919a249ab182d21e85140d4db12da2950b8a2afdc54c18c",
+      "files_checked": 39,
+      "output_sha256": "696ff8df211f5debfbcf84da2150ab4bbd5754babe3f088c8ab90cb6a979a833"
+    },
+    {
+      "path": "Map/Entity/MapEntity28.rpk",
+      "sha256": "0c715e8b57dba2f346a340fa4a238ef7b670f98cb65fe4a4d8693aa8dfd1aa86",
+      "files_checked": 87,
+      "output_sha256": "2bf0e36969249018f22c6008c8fa8a37039512c648e87e1ed69c688ad4b0b906"
+    },
+    {
+      "path": "Map/Entity/MapEntity29.rpk",
+      "sha256": "66277753d488470d97527269c4446cd32d6ed38031c85ccc13130ee5125b1f28",
+      "files_checked": 63,
+      "output_sha256": "f3c4b43ac8981c4423efdf3f39b4163dcea5faddc85c28ef03aa30450c1d79a3"
+    },
+    {
+      "path": "Map/Entity/MapEntity3.rpk",
+      "sha256": "8a50dfbcefb7d0d30ae9c7e8c9607a6a6c6332f196e9d457fe1c4ebc402f2732",
+      "files_checked": 54,
+      "output_sha256": "b0fa1b2dea8bdf21ce9400c562e13a9b29d14e403bc4194820f781321085e621"
+    },
+    {
+      "path": "Map/Entity/MapEntity30.rpk",
+      "sha256": "e6a7a6ca6836745abbb0d52314798fd3256c569617cee7c4aa27290888131924",
+      "files_checked": 81,
+      "output_sha256": "4ccaa01c1f3dde55a609fd650a6e05cc33a988e3e5c7951cff5d4a06414d8a25"
+    },
+    {
+      "path": "Map/Entity/MapEntity31.rpk",
+      "sha256": "da627dd3c19ee780524912521ef522411bd6b533551f9e7231ec5d41c463b6a1",
+      "files_checked": 27,
+      "output_sha256": "75784e8570020fa9a9f51b37eb3d44618dd7901bdbf88f30bd3402f28891e746"
+    },
+    {
+      "path": "Map/Entity/MapEntity32.rpk",
+      "sha256": "580300d109a60c8078cba588add68a2c93f118896dfaac9206df62a192dd88c1",
+      "files_checked": 27,
+      "output_sha256": "6889626bac07485983ae6dedb5e5cb3e8951d818e86f8609c3e5abe43440ac9b"
+    },
+    {
+      "path": "Map/Entity/MapEntity34.rpk",
+      "sha256": "101778569e373c80e5599dca533d10690b57cf8eca1e8310531158b7c8e49676",
+      "files_checked": 64,
+      "output_sha256": "6cde3233097f973e8e77de9f5dbec1b13184a56abad7400c1459b3752528aa25"
+    },
+    {
+      "path": "Map/Entity/MapEntity35.rpk",
+      "sha256": "9e729cfb1383ea360e5364afbf9c0d7925cbd9803217eed738ed3e91141692fd",
+      "files_checked": 108,
+      "output_sha256": "87993811bf131b3c8fe906cdabe2584ff2376221326bc6663b0032277e169326"
+    },
+    {
+      "path": "Map/Entity/MapEntity36.rpk",
+      "sha256": "10d11c8af607581ddf21e22bbda05dcc4bb62ef424de2c4855e41c8f673d191c",
+      "files_checked": 121,
+      "output_sha256": "05f8515e91a99387da8e58b12786d2541895626cc537f4e4afa6e61c5cb74bd1"
+    },
+    {
+      "path": "Map/Entity/MapEntity37.rpk",
+      "sha256": "d387dd03cfcb53ed13a6395eb9d1f0a08c44413740388d19e8f793868bb54dad",
+      "files_checked": 3,
+      "output_sha256": "0c1299a7be7aca06a7b986229fd9e03eef6758e28b02c978077dc67dccf556eb"
+    },
+    {
+      "path": "Map/Entity/MapEntity4.rpk",
+      "sha256": "073621ab145faa4214b31d3b2c522b72f3810f7ffb1cb985925be1e5f991b9ff",
+      "files_checked": 81,
+      "output_sha256": "0dba1197e0be3239a883f8c06bc918e8f8ada6ee140133baf12717ad1e9ad691"
+    },
+    {
+      "path": "Map/Entity/MapEntity47.rpk",
+      "sha256": "2a9b9063d062e8806deb31a1881e16c2739fa103df69553e42cb28ba4810bd98",
+      "files_checked": 145,
+      "output_sha256": "9a4fb75e928141c490f593686b8487096fc834f4f63ae3e07ade4151609c084d"
+    },
+    {
+      "path": "Map/Entity/MapEntity48.rpk",
+      "sha256": "cc6f885a55dbcefd828998dea9421766268d0250e1e68d44d175186b58a20ed9",
+      "files_checked": 27,
+      "output_sha256": "f98cce2a7e93035daad701dcba83bcaf7bf4725ce5cbb49577ff3f669a54168f"
+    },
+    {
+      "path": "Map/Entity/MapEntity49.rpk",
+      "sha256": "a315d8f7000979bc69eafb3716b669331bd2c6ef8650644339db75a80b0d59c3",
+      "files_checked": 45,
+      "output_sha256": "f6f2c4ef19f8e17439f6c57d828e15696f7c7502f1d6ec5482336ebd292a0946"
+    },
+    {
+      "path": "Map/Entity/MapEntity5.rpk",
+      "sha256": "897665fe8537ed0d6917ce7f33cd9723e819a3331c0c791d6843f0c6e688157f",
+      "files_checked": 110,
+      "output_sha256": "f03aea48f42722211d622cc07c0b717b474a7102849ae4dbeb4091fae0bb7200"
+    },
+    {
+      "path": "Map/Entity/MapEntity50.rpk",
+      "sha256": "16909baafba35ccd505748246d0b5ca958428fa0ba737ea5c73a352a1847ce44",
+      "files_checked": 9,
+      "output_sha256": "3ff665b806928b5a59f367e22637dba26657f278b692c75012a5214f6b93c262"
+    },
+    {
+      "path": "Map/Entity/MapEntity51.rpk",
+      "sha256": "dc7383b6892ae3b89b7f4353141f2358e9a69a57051029f8e2d39ef3ac8d2080",
+      "files_checked": 45,
+      "output_sha256": "e1716f8f44721fd0cba9fd8e31d978f0a74bd7120063ff15c86fe08ecd2d24a4"
+    },
+    {
+      "path": "Map/Entity/MapEntity52.rpk",
+      "sha256": "9d2d7ab6c8d7362eac45de5d0ae391c9d43030057aeb3cf31d54076a4ca3d57d",
+      "files_checked": 49,
+      "output_sha256": "6ec5ab7d0dcae60671f1e9c72d53ae9ef5451d4a0f8cd6fe929a35f179117397"
+    },
+    {
+      "path": "Map/Entity/MapEntity53.rpk",
+      "sha256": "970c391be917dae3fe778d223c95fad538e2b9629fd3aa775a72a52c4d000b7c",
+      "files_checked": 45,
+      "output_sha256": "f653deb121789b9e342f5af9b08b356aa915d2364dd5e91e99c317766a924cbf"
+    },
+    {
+      "path": "Map/Entity/MapEntity54.rpk",
+      "sha256": "49d6f87058607c1a350eb466423ff3c4473d3503401b49f738581f5ced334509",
+      "files_checked": 40,
+      "output_sha256": "fa22f3f0583192e9418e6875feab1369b088e2f5283d6bb5eb1168f08838565c"
+    },
+    {
+      "path": "Map/Entity/MapEntity55.rpk",
+      "sha256": "630a27802a232dc0a4674223e76068b226e7d42340dc9b1896313c900d75b33a",
+      "files_checked": 42,
+      "output_sha256": "f0cbe6cc6b3d1a7a079d058f1922150af11d664ec943dd8a7f0c2277d4e365e7"
+    },
+    {
+      "path": "Map/Entity/MapEntity56.rpk",
+      "sha256": "7cf5b995a8a2d50ab865b35f3c684e52c04982850fe9ca2361d91ba987b97470",
+      "files_checked": 72,
+      "output_sha256": "aee8b77b2c1b57983d3b34ef5cccfcb3ce4b8d214bea617439d5cd34d9ca95c9"
+    },
+    {
+      "path": "Map/Entity/MapEntity57.rpk",
+      "sha256": "d744d8f5bb8d5149e647599cf37e80aeb24aecfaa3a948cfb0054829ef56a39a",
+      "files_checked": 27,
+      "output_sha256": "8a5c631cc1c1a2e7af8697326c2985a98e235ec65220d481277a64963fe3696b"
+    },
+    {
+      "path": "Map/Entity/MapEntity58.rpk",
+      "sha256": "6bd04b4da4ef5c59613dab58dbc6b34d8f1340da6abcb6a416d65821838b3bec",
+      "files_checked": 62,
+      "output_sha256": "13a978cca5f76ed34d428f6c9f7fc2a6254ecffa2c48230b6efec3375a9f52a5"
+    },
+    {
+      "path": "Map/Entity/MapEntity59.rpk",
+      "sha256": "e8e4172b86c472e1d4f3bf9b71f820a0e071f62e8dbcc6ed6ccca15e33ede039",
+      "files_checked": 15,
+      "output_sha256": "82c95e7052ffae910ca395c50f5a34464abde28c0f403dda847fd43ec6c4f87d"
+    },
+    {
+      "path": "Map/Entity/MapEntity6.rpk",
+      "sha256": "72b52bdd3ec9760ec96af3b4308d35af471f08e24fa59c0fe4c57ad0d52fed9c",
+      "files_checked": 69,
+      "output_sha256": "48faa8fd762bca20a19a3087879ef02bf234afdcbf3a8531557d37ed959ae58b"
+    },
+    {
+      "path": "Map/Entity/MapEntity60.rpk",
+      "sha256": "b601a3c957e9a8efa5d2e90e19606cbe8adcb5f1b58d4bc23e75a31d4acecff8",
+      "files_checked": 21,
+      "output_sha256": "3ffa15a354087bd3d7ec7ec6bc49eb9b151228547902ab1995bd43bbf7d39728"
+    },
+    {
+      "path": "Map/Entity/MapEntity61.rpk",
+      "sha256": "4186bc44f6c669de3f82a2706a0cefacbf78e2076a82c5f24b0cb642903ea130",
+      "files_checked": 51,
+      "output_sha256": "b800fae5ef986ad04e5b5374cf82b4ef4f5c232454f1a473c6c4be0b609dc7e8"
+    },
+    {
+      "path": "Map/Entity/MapEntity62.rpk",
+      "sha256": "689d97d713574c0a43776413221de3c6e2d160920b711df88e8ef7e548da11c4",
+      "files_checked": 48,
+      "output_sha256": "17d41fba7ba15068eb2a7e70d7621bc0de367d1649d898e7e5d96d4f532d2ec8"
+    },
+    {
+      "path": "Map/Entity/MapEntity63.rpk",
+      "sha256": "2868cc3e087c14311f8a570100f215b40bc0db8860c41b9a327adc1759b9db0c",
+      "files_checked": 18,
+      "output_sha256": "42ee7cb0d3b036f8516d83da395ee8c7259a254c94de6e9942a85b22d8ec9936"
+    },
+    {
+      "path": "Map/Entity/MapEntity64.rpk",
+      "sha256": "ca5f4d974540098ebf03a6c69145da5ee15acf827d503b1dd5ed0ecd2c2a6de8",
+      "files_checked": 12,
+      "output_sha256": "880b395100969ee2390c866f4abd359016c2151d5062c240412d08394fa4c112"
+    },
+    {
+      "path": "Map/Entity/MapEntity65.rpk",
+      "sha256": "853e0465aadcbf8f159f93ada7faaf6e584809a545b72a5b1ce62cb4e3977d22",
+      "files_checked": 12,
+      "output_sha256": "4509556456f584a40074b67e3f23e5d1bb06a925908c2dad164e7e8711e07245"
+    },
+    {
+      "path": "Map/Entity/MapEntity66.rpk",
+      "sha256": "59d8a24af9087332f80d442af4c925e33e6d62d3479ce07c6015416bcdbe6268",
+      "files_checked": 93,
+      "output_sha256": "f83598e6e16f4c83b720c3a60f177456f3a6de12331038928da18f6043a2697c"
+    },
+    {
+      "path": "Map/Entity/MapEntity67.rpk",
+      "sha256": "d11a08cf8aa8fb3e3b2232eadb732f10fa0be1f2956a2020c02d2604f0344165",
+      "files_checked": 31,
+      "output_sha256": "b8fcb0b95a0086f921dc69f46b9b6ecf152ecafca0ea01308f731e1a6fa2d528"
+    },
+    {
+      "path": "Map/Entity/MapEntity68.rpk",
+      "sha256": "b97a302f956c81ce2f4eebb0b5ea33f061fbb53038a434307d53da651e3495ee",
+      "files_checked": 27,
+      "output_sha256": "369f590a046b125437717b539235461a415454d500b9aeeb8161066d9c32ae13"
+    },
+    {
+      "path": "Map/Entity/MapEntity69.rpk",
+      "sha256": "85fa25803d6b674ec56ce0ff365b84817cd05668ef05cc0e59e1a88a22de95e3",
+      "files_checked": 36,
+      "output_sha256": "0113d9235dc3e18997c3c3eee31c3f9654afc0f3f4e8f1a7d6b284eb3d7bb945"
+    },
+    {
+      "path": "Map/Entity/MapEntity7.rpk",
+      "sha256": "b7693f243938832b56b01f55aad25e035434e7425ecb8225a7aab53beb24ea11",
+      "files_checked": 87,
+      "output_sha256": "1eb79f59766424d9c0307a91c1a3f12240bf1660cdf61b99fb8b624ed72d44f9"
+    },
+    {
+      "path": "Map/Entity/MapEntity70.rpk",
+      "sha256": "aa6d8ffee32a7461065e98ef370dcb39d0760d3d9aa8d9c98760313f3df5fe78",
+      "files_checked": 48,
+      "output_sha256": "df69f9c20adbac44cd4f81794da265f0d647a1bdfaa031cb721574f93247803c"
+    },
+    {
+      "path": "Map/Entity/MapEntity71.rpk",
+      "sha256": "910d9f8af1f1ab3446cbf8c968f9591c7ebbb7e0bdb94bca93f49defde425e71",
+      "files_checked": 54,
+      "output_sha256": "dc98aa7bca19a4e535849fd57bb0e9f77ddc1efb074a18d86cd2100cd5d6d896"
+    },
+    {
+      "path": "Map/Entity/MapEntity72.rpk",
+      "sha256": "0185d87d88a34367f61d487169e2d583f18663759d4d4b03f5182d9b38d259f7",
+      "files_checked": 68,
+      "output_sha256": "073886c5dbe0c547736f4d638c45f8868ba1a3ddc29c4612d1616e1d5fa069e3"
+    },
+    {
+      "path": "Map/Entity/MapEntity73.rpk",
+      "sha256": "c5d6e0df385e935cd7044a0f168d275e70df2ea161cdda6b6f9384502a3f17e7",
+      "files_checked": 23,
+      "output_sha256": "14df84ffb2b596cb9df028c413e82752ba8669602c338e462fc84230b814bfbf"
+    },
+    {
+      "path": "Map/Entity/MapEntity74.rpk",
+      "sha256": "4ed547902efb3dbc55523e2857c729198cd019c3e7e42ec392e26026b591ce56",
+      "files_checked": 24,
+      "output_sha256": "e94825230eba1e15a645c0c2e765e80cc40b1713e93ddbd336b2e97e89d99d06"
+    },
+    {
+      "path": "Map/Entity/MapEntity75.rpk",
+      "sha256": "26bd39aa2ff5e1c5bb98098888ff2cab053eaff5754e35190e2286828ec79823",
+      "files_checked": 49,
+      "output_sha256": "d6e806827a96da8c5ff56ff36ce98d7256bc7cf545e7ca17a42c1b0f83be12e4"
+    },
+    {
+      "path": "Map/Entity/MapEntity76.rpk",
+      "sha256": "369535186fecca7b4255b3ec0b7cc3e5b3d6c0adf5f0a8249ac5b27604c12221",
+      "files_checked": 30,
+      "output_sha256": "738bd25f7fb251081ea0e310cfb93d229d1e6eb7cc467a0620ba0234f3e6a7bc"
+    },
+    {
+      "path": "Map/Entity/MapEntity77.rpk",
+      "sha256": "da6bbc2d944096d5fd97289533a2ec84e1e4c53c48e16d7cd59f532595a3a21b",
+      "files_checked": 54,
+      "output_sha256": "a1673e312f828633837b8a90998b2bcd89852af4d3ff81a84bb82455508a7c00"
+    },
+    {
+      "path": "Map/Entity/MapEntity78.rpk",
+      "sha256": "671362314854e6f39ecc9a5f9ad22c99c875fbd15baabdf8c0fad2afb0acc175",
+      "files_checked": 24,
+      "output_sha256": "f210df62f5c468a4c2ca3a4e3741e8badcf473cb63efb8f2609656f8f09e0b26"
+    },
+    {
+      "path": "Map/Entity/MapEntity79.rpk",
+      "sha256": "9edc6781b1f129309250ab8296d580813a6803764c72143dba699265052340e8",
+      "files_checked": 63,
+      "output_sha256": "9558431b5e83dbf42f90781a7a611cd8900e241a4581c656f35ec267e326e280"
+    },
+    {
+      "path": "Map/Entity/MapEntity8.rpk",
+      "sha256": "73f3a07d3938bfe543c87fd4194e128ca3145a152a5fa5876541574f60f0ad42",
+      "files_checked": 33,
+      "output_sha256": "fdfe2fec35103570ec355c07567b156d596f65782ab9135bec68cc2e3f013d1f"
+    },
+    {
+      "path": "Map/Entity/MapEntity80.rpk",
+      "sha256": "a884be3d66396ce63a20facead34651d2dc429f9751d61b7efeffbaa6a8be40c",
+      "files_checked": 27,
+      "output_sha256": "9f7e52a0935122815de786abba5f3ac639afdb8e645c6e9620282bbcfb65e0a5"
+    },
+    {
+      "path": "Map/Entity/MapEntity81.rpk",
+      "sha256": "c2d7af5d1c018ec0289ebb8985f64b3634649635e85b96ccff8f82e36ecfd2ee",
+      "files_checked": 37,
+      "output_sha256": "bfad69e56557eccfc633512bc1e60323d5d3db146c837d86a67707e5c39f4744"
+    },
+    {
+      "path": "Map/Entity/MapEntity82.rpk",
+      "sha256": "718f9a68bfb216a1545acb576f35c3f72866747f1fd9a3ac0a8d0b979004dcb3",
+      "files_checked": 66,
+      "output_sha256": "13818a417eb3a48d18fa7b71b5544a499affcbff8513020a1a00520cf97a98b3"
+    },
+    {
+      "path": "Map/Entity/MapEntity83.rpk",
+      "sha256": "0d922e1b589357286e086b638a71e1bc1ebe0eadb052a22138f82df12ceccf03",
+      "files_checked": 42,
+      "output_sha256": "9f6ae4ea45349dab42dcfd3ee5848f91d73da279075891f1be5dc645538409dd"
+    },
+    {
+      "path": "Map/Entity/MapEntity84.rpk",
+      "sha256": "5398f307a8b21445a37767d1ef2d41cd32cbda07ec213fb24cb430453216a296",
+      "files_checked": 33,
+      "output_sha256": "cc159aba61ff9831c4b841b90c9d78926d45e6a0fb1aa5c52d4adce402f4c40f"
+    },
+    {
+      "path": "Map/Entity/MapEntity85.rpk",
+      "sha256": "0951df90cf217f351f04f5a9638f9e9a2a2322f86eab052ed45abadcb6b4bce8",
+      "files_checked": 15,
+      "output_sha256": "9f7efc39edc2427a93856255159e4da53890c26b94b70a3c7614fa81d50cb95b"
+    },
+    {
+      "path": "Map/Entity/MapEntity86.rpk",
+      "sha256": "365629103ab00f6bb5715f2d7d868ff76938b1be9661aa9ba6d14e9fc66e09ec",
+      "files_checked": 63,
+      "output_sha256": "c9ff7e46235d88860e485112cf2f7c2b10921a5fe5202b672afed6dd42c4eeb4"
+    },
+    {
+      "path": "Map/Entity/MapEntity87.rpk",
+      "sha256": "83b063f4c835b9e5c6899f3b2cd0cf12e117f6930eaa2198d6ead8720551cced",
+      "files_checked": 12,
+      "output_sha256": "31e548e24c7fe17236c5b1c0a9f6fd17016357a91d0d7a7709b7b737fe20dd4a"
+    },
+    {
+      "path": "Map/Entity/MapEntity88.rpk",
+      "sha256": "a6c4b4e3902d3d069e9f7ea4334e2e4ddc749cc0c6a154b738f5e5f09433de1f",
+      "files_checked": 24,
+      "output_sha256": "eeca7a53eca861d795a5ad66802703bd76d09b69c8ece97cfb77fae67bd2ad32"
+    },
+    {
+      "path": "Map/Entity/MapEntity9.rpk",
+      "sha256": "ff7fd82fc43a4e0edb9d8323254195739979d7c4e2b6e294d68cf180f40eab06",
+      "files_checked": 36,
+      "output_sha256": "2f1d874183564d361df05b43666e2ec5aad00f15cfde92f4f0132f4616d5ba2e"
+    }
+  ],
+  "group": {
+    "archive_order": [
+      "packs\\first.rpk",
+      "packs\\oddxrpk",
+      "packs\\second.rpk"
+    ],
+    "independent_windows_enumeration": [
+      [
+        ".",
+        16
+      ],
+      [
+        "..",
+        16
+      ],
+      [
+        "fallback.txt",
+        32
+      ],
+      [
+        "first.rpk",
+        32
+      ],
+      [
+        "ignored.rpk",
+        16
+      ],
+      [
+        "oddXrpk",
+        32
+      ],
+      [
+        "second.rpk",
+        32
+      ]
+    ],
+    "queries": [
+      {
+        "query": "PACKS\\DIR\\A.SPT",
+        "active": true,
+        "mutated": "packs\\dir\\a.spt",
+        "first_byte": 111,
+        "exists": true
+      },
+      {
+        "query": "packs\\fallback.txt",
+        "active": true,
+        "mutated": "packs\\fallback.txt",
+        "first_byte": 70,
+        "exists": true
+      },
+      {
+        "query": "packs\\missing.spt",
+        "active": true,
+        "mutated": "packs\\missing.spt",
+        "first_byte": -2,
+        "exists": false
+      },
+      {
+        "query": "DIR\\A.SPT",
+        "active": false,
+        "mutated": "DIR\\A.SPT",
+        "first_byte": 76,
+        "exists": true
+      },
+      {
+        "query": "DIR\\A.SPT",
+        "active": true,
+        "mutated": "dir\\a.spt",
+        "first_byte": 76,
+        "exists": true
+      },
+      {
+        "query": "XXXXXXDIR\\A.SPT",
+        "active": true,
+        "mutated": "xxxxxxdir\\a.spt",
+        "first_byte": 111,
+        "exists": true
+      }
+    ],
+    "allocation_balance": 0
+  },
+  "group_boundaries": [
+    {
+      "case": "missing",
+      "archive_count": 0,
+      "allocation_balance": 0,
+      "warnings": 0
+    },
+    {
+      "case": "empty",
+      "archive_count": 0,
+      "allocation_balance": 0,
+      "warnings": 0
+    },
+    {
+      "case": "wrong-version",
+      "archive_count": 1,
+      "allocation_balance": 0,
+      "warnings": 1
+    },
+    {
+      "case": "limit256",
+      "archive_count": 0,
+      "allocation_balance": 0,
+      "warnings": 1
+    }
+  ],
+  "limits": [
+    "Own native module execution, no input game EXE/DLL.",
+    "Valid metadata and explicit safe version/missing/count-limit cases; unsafe tables, >256archive overrun, repeated successful load leak/OOM not exercised.",
+    "Group ordering compared with independent Win32 enumeration on the controlled fixture; other filesystems/locales remain unverified.",
+    "This standalone report covers the resource module only; full-client integration has separate reports. Normal map/GPU remains outside this check."
+  ]
+}

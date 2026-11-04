@@ -13,7 +13,7 @@ DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, ru
 Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
 Документ research/client-first-build.md; inventory/client-first-build.json.
 
-Сохранены 11 compiler-only patches и16 selectable behavior files:
+Сохранены 11 compiler-only patches и18 selectable behavior files:
 DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455,
 x87 math и двухслойная погода (9 files).
 Их инструкции сверены
@@ -47,12 +47,19 @@ size fields неверны относительно extent; Dungeon00 имеет
 8parser tests прошли. research/client455-map-resources.md,
 inventory/client455-map-resources.json. Runtime/сборки в этом цикле не менялись.
 
-1. Восстановить source RPK/group/archive-aware fopen4550x8E7680 и остановку particle
-   SPT на case-sensitive end до lowercase (0x8DB650/0x8DB741). Старый parser читает
-   до EOF; FILE* внутри RPK не ограничен размером записи. Native проверка на20staged
-   real assets/fixtures, затем реальные entity/particle и normal LoadLevel/GPU.
-   Форматы/зависимости уже исследованы; не повторять static audit вместо переноса.
-   Full particle455 options/curves и enumeration/path/error quirks остаются открыты.
+Следующий source перенос выполнен: RPK file/group/fopen/exists и case-sensitive
+particle end boundaries подключены в7copied files.18 907standalone native checks
+на3775real members/78archives и group/boundary fixtures;30full-project actual SPT/
+R3X checks.703weather regression checks прошли на текущем lab.286modern /MT objects,
+обычный2440704bytes,entryRVA0x1BBA50,snapshot resource455-runtime. Normal EXE не
+запускался. research/client455-resource-io-source.md; inventory/client455-resource-*.json.
+Общий RPK код есть; все другие resource consumers/archives и GPU не объявлены готовыми.
+
+1. Проверить actual entity/texture/particle и normal LoadLevel/GPU на реальных данных:
+   собственный graphics entry, device/FPU initialization и изолированные copies.
+   RPK module и selected consumers уже source-integrated/native-tested; не повторять
+   static audit вместо следующего runtime этапа. Полные particle455 options/curves,
+   остальные resource consumers/groups, locale/error/OOM/unsafe domains ещё открыты.
 2. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
    environment. Setter/rate/basic API есть, network/lighting не объявлены готовыми.
 3. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
@@ -77,6 +84,12 @@ Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Map/RPK tools: Invoke-Python.ps1 scripts/test_map455.py, затем
 Invoke-Python.ps1 scripts/audit_client_map_resources455.py. Это static tooling;
 его round trip не доказывает native loader/GPU parity.
+Source RPK: audit_client_resource455.py -> build_client455_resource_io.py ->
+apply_client_resource455.py -> prepare_client_build.py -> обычный/lab build driver.
+Native full-project: probe_client_resources455.py; compiled branches/DDS mask:
+verify_client_resource455.py. Все Python commands через Invoke-Python.ps1.
+MSBuild FileTracker E_ACCESSDENIED в sandbox устраняется разрешённой escalation
+того же build command, не изменением исходников/удалением build cache.
 Lab использует отдельные build-helper-lab/logs/reports, нормальный target не запускается.
 Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
 Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем
@@ -93,7 +106,8 @@ Weather selection: audit_client_weather455.py -> apply_client_weather455.py ->
 prepare_client_build.py; driver выбирает RF_CLIENT_455_WEATHER=ON.
 
 audit_client_executable.py --label NAME сохраняет immutable snapshot нормальной сборки;
-initial/clean/helper455/helper-x87/math455-release/weather455/weather455-cpu уже заняты;
+initial/clean/helper455/helper-x87/math455-release/weather455/weather455-cpu/
+resource455/resource455-runtime уже заняты;
 перезапись другой сборкой запрещена. Для новой
 ревизии выбрать новое короткое имя. Lab entry таким snapshot не принимается.
 Все Python scripts запускать через scripts/Invoke-Python.ps1.

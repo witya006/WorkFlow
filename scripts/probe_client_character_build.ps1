@@ -47,6 +47,12 @@ if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_HELPER_L
 $arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_WEATHER' })) { throw '455 weather source selection is missing.' }
 $arguments += '-DRF_CLIENT_455_WEATHER=ON'
+$resources = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-resource-io.json') -Raw | ConvertFrom-Json
+if ($resources.native_checks -lt 18895 -or $resources.archives.Count -ne 78) { throw 'Native resource-I/O proof missing.' }
+foreach ($property in $resources.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw 'Resource I/O source proof stale.' }
+}
+$arguments += '-DRF_CLIENT_455_RESOURCE_IO=ON'
 $math = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-x87-math.json') -Raw | ConvertFrom-Json
 $mathLibrary = Join-Path $workspace $math.library
 if ((Get-FileHash -LiteralPath $mathLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $math.library_sha256 -or

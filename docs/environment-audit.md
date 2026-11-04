@@ -41,9 +41,15 @@ load/release/update/draw split,interior/night.65real R3X +4fixtures/703checks,
 Последующий resource audit:78RPK/3775files,70BSP+93EBP,20weather assets закреплены
 с SHA.8parser tests прошли. Выявлены1067неверных size fields RPK и stale offsets
 Dungeon00;455 использует offset-only fopen и sequential BSP reads соответственно.
-Source VFS/end parsing ещё предстоит восстановить. Один weather path missing для
+На этом статическом этапе Source VFS/end ещё отсутствовал. Один weather path missing для
 трёхTower R3X, directory component не найден во всех162RPK indexes. Игровые EXE/DLL
 не запускались; сборки не менялись. research/client455-map-resources.md.
+Следующий цикл восстановил RPK source/group/fopen/exists и particle end:18 907native
+module checks на3775members/78RPK и30actual full-project archive/SPT/R3X checks.
+Обе сборки успешны,286modern x86 /MT objects; selected compiled branches и DDS mask
+проверены.703weather checks прошли на новой lab revision. Normal LoadLevel/GPU не
+выполнены. MSBuild FileTracker sandbox E_ACCESSDENIED устранён escalation того же
+build command. research/client455-resource-io-source.md.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).

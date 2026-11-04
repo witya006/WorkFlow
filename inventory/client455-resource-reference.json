@@ -1,0 +1,286 @@
+{
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "rpk_release",
+          "va": "0x8e6d60",
+          "rva": "0x4e6d60",
+          "size": 54,
+          "sha256": "b56db973263b5346f990a91e6e73cf5236dfc04ec44bbc505049d55daed6404a"
+        },
+        {
+          "name": "group_release",
+          "va": "0x8e7440",
+          "rva": "0x4e7440",
+          "size": 101,
+          "sha256": "9dcf7de2fbbbec50de6c49f7ddb1aa8158a0f23dd5a5df108c19fbba1fe15d47"
+        },
+        {
+          "name": "group_exists",
+          "va": "0x8e7510",
+          "rva": "0x4e7510",
+          "size": 96,
+          "sha256": "e6b54edc3ed5ad0da4278bb8567fabb78dc54fb322dae74e9d35ecc25744f5a6"
+        },
+        {
+          "name": "set_active",
+          "va": "0x8e75d0",
+          "rva": "0x4e75d0",
+          "size": 10,
+          "sha256": "c6e202e1a501f354f582423c046397d70ada0340cb5ab7c605c784733cb10ce4"
+        },
+        {
+          "name": "resource_exists",
+          "va": "0x8e75f0",
+          "rva": "0x4e75f0",
+          "size": 72,
+          "sha256": "e33edbb430ae945e5d1fa5f6e74ffac620bfaa5ab21b2eb03717e24e578599e0"
+        },
+        {
+          "name": "file_exists",
+          "va": "0x8e7130",
+          "rva": "0x4e7130",
+          "size": 25,
+          "sha256": "c8d7e82056bfa5f4b32b07ac32ba1fef977fb367669b76338c2213171abf762a"
+        },
+        {
+          "name": "material_binary",
+          "va": "0x90b1c0",
+          "rva": "0x50b1c0",
+          "size": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        },
+        {
+          "name": "load_entities",
+          "va": "0x8f94a0",
+          "rva": "0x4f94a0",
+          "size": 1010,
+          "sha256": "c82cddb26d9e4d5c56d799114c5b696c45f9ac4ba65aaec422c446d59a4358f8"
+        },
+        {
+          "name": "release_bsp",
+          "va": "0x8f9ad0",
+          "rva": "0x4f9ad0",
+          "size": 330,
+          "sha256": "353511c2ec74feba202f55ae86b68bd0091544e7f3f6c2912198c4558a9aa516"
+        },
+        {
+          "name": "load_level",
+          "va": "0x8ea220",
+          "rva": "0x4ea220",
+          "size": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x8fe2ed",
+          "rva": "0x4fe2ed",
+          "bytes": "e8ce8efeff",
+          "destination": "0x8e71c0",
+          "meaning": "BSP loads group from EntityPath"
+        },
+        {
+          "va": "0x8fe2f3",
+          "rva": "0x4fe2f3",
+          "bytes": "e8d892feff",
+          "destination": "0x8e75d0",
+          "meaning": "BSP selects its group"
+        },
+        {
+          "va": "0x8f9532",
+          "rva": "0x4f9532",
+          "bytes": "e899e0feff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadEntities selects group after allocation"
+        },
+        {
+          "va": "0x8f9ad9",
+          "rva": "0x4f9ad9",
+          "bytes": "e862d9feff",
+          "destination": "0x8e7440",
+          "meaning": "ReleaseBsp releases archive group first"
+        },
+        {
+          "va": "0x8ea245",
+          "rva": "0x4ea245",
+          "bytes": "e886d3ffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets group at start"
+        },
+        {
+          "va": "0x8ea735",
+          "rva": "0x4ea735",
+          "bytes": "e896ceffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets before light map"
+        },
+        {
+          "va": "0x8eaa73",
+          "rva": "0x4eaa73",
+          "bytes": "e858cbffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets before helper path"
+        },
+        {
+          "va": "0x8e0b93",
+          "rva": "0x4e0b93",
+          "bytes": "e8586a0000",
+          "destination": "0x8e75f0",
+          "meaning": "Entity binary material uses archive-aware existence"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "rpk_release",
+          "va": "0x8e6d60",
+          "rva": "0x4e6d60",
+          "size": 54,
+          "sha256": "b56db973263b5346f990a91e6e73cf5236dfc04ec44bbc505049d55daed6404a"
+        },
+        {
+          "name": "group_release",
+          "va": "0x8e7440",
+          "rva": "0x4e7440",
+          "size": 101,
+          "sha256": "9dcf7de2fbbbec50de6c49f7ddb1aa8158a0f23dd5a5df108c19fbba1fe15d47"
+        },
+        {
+          "name": "group_exists",
+          "va": "0x8e7510",
+          "rva": "0x4e7510",
+          "size": 96,
+          "sha256": "e6b54edc3ed5ad0da4278bb8567fabb78dc54fb322dae74e9d35ecc25744f5a6"
+        },
+        {
+          "name": "set_active",
+          "va": "0x8e75d0",
+          "rva": "0x4e75d0",
+          "size": 10,
+          "sha256": "c6e202e1a501f354f582423c046397d70ada0340cb5ab7c605c784733cb10ce4"
+        },
+        {
+          "name": "resource_exists",
+          "va": "0x8e75f0",
+          "rva": "0x4e75f0",
+          "size": 72,
+          "sha256": "e33edbb430ae945e5d1fa5f6e74ffac620bfaa5ab21b2eb03717e24e578599e0"
+        },
+        {
+          "name": "file_exists",
+          "va": "0x8e7130",
+          "rva": "0x4e7130",
+          "size": 25,
+          "sha256": "c8d7e82056bfa5f4b32b07ac32ba1fef977fb367669b76338c2213171abf762a"
+        },
+        {
+          "name": "material_binary",
+          "va": "0x90b1c0",
+          "rva": "0x50b1c0",
+          "size": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        },
+        {
+          "name": "load_entities",
+          "va": "0x8f94a0",
+          "rva": "0x4f94a0",
+          "size": 1010,
+          "sha256": "c82cddb26d9e4d5c56d799114c5b696c45f9ac4ba65aaec422c446d59a4358f8"
+        },
+        {
+          "name": "release_bsp",
+          "va": "0x8f9ad0",
+          "rva": "0x4f9ad0",
+          "size": 330,
+          "sha256": "353511c2ec74feba202f55ae86b68bd0091544e7f3f6c2912198c4558a9aa516"
+        },
+        {
+          "name": "load_level",
+          "va": "0x8ea220",
+          "rva": "0x4ea220",
+          "size": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x8fe2ed",
+          "rva": "0x4fe2ed",
+          "bytes": "e8ce8efeff",
+          "destination": "0x8e71c0",
+          "meaning": "BSP loads group from EntityPath"
+        },
+        {
+          "va": "0x8fe2f3",
+          "rva": "0x4fe2f3",
+          "bytes": "e8d892feff",
+          "destination": "0x8e75d0",
+          "meaning": "BSP selects its group"
+        },
+        {
+          "va": "0x8f9532",
+          "rva": "0x4f9532",
+          "bytes": "e899e0feff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadEntities selects group after allocation"
+        },
+        {
+          "va": "0x8f9ad9",
+          "rva": "0x4f9ad9",
+          "bytes": "e862d9feff",
+          "destination": "0x8e7440",
+          "meaning": "ReleaseBsp releases archive group first"
+        },
+        {
+          "va": "0x8ea245",
+          "rva": "0x4ea245",
+          "bytes": "e886d3ffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets group at start"
+        },
+        {
+          "va": "0x8ea735",
+          "rva": "0x4ea735",
+          "bytes": "e896ceffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets before light map"
+        },
+        {
+          "va": "0x8eaa73",
+          "rva": "0x4eaa73",
+          "bytes": "e858cbffff",
+          "destination": "0x8e75d0",
+          "meaning": "LoadLevel resets before helper path"
+        },
+        {
+          "va": "0x8e0b93",
+          "rva": "0x4e0b93",
+          "bytes": "e8586a0000",
+          "destination": "0x8e75f0",
+          "meaning": "Entity binary material uses archive-aware existence"
+        }
+      ]
+    }
+  ],
+  "base_contracts_report": "inventory/client455-map-resources.json",
+  "base_contracts_report_sha256": "40f191d43b649592098d0f02cb4d458e6593d3eead27dfbaa715010a529a32b9",
+  "scope": "Manual decomp/disassembly plus reproducible checks of archive ownership/selection/existence. Native source results recorded separately.",
+  "known_reference_quirks": [
+    "unchecked metadata reads/allocations, invalid tables and overlong paths unsafe",
+    "directory scan skips first Win32 result, accepts any last3letters rpk with length>=4, limit check only after collecting",
+    "group lowercases caller path and strips prefix by length without matching prefix text",
+    "positioned FILE has physical archive EOF, no member size boundary",
+    "repeat successful index/group loading does not implicitly release prior allocation"
+  ]
+}

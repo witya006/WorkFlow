@@ -21,8 +21,9 @@ M5 в работе: найден loader455, перенесены три отли
 карты, GPU/полные particles и clock integration ещё открыты:
 research/client455-weather-source.md, inventory/client-features.json.
 Форматы/зависимости карт проверены:78RPK,163BSP/EBP,20real weather assets закреплены.
-Следующий source перенос — архивный доступ и end границы particle SPT;
-research/client455-map-resources.md. Обычный LoadLevel/GPU ещё не проверен.
+Архивный доступ и end границы particle SPT уже подключены в source;18 907native
+module checks и30full-project archive/SPT/R3X checks прошли. Обе сборки успешны.
+research/client455-resource-io-source.md. Обычный LoadLevel/GPU ещё не проверен.
 
 ## Структура
 

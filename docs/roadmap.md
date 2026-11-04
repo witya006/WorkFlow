@@ -43,7 +43,10 @@ normal LoadLevel и FPU initialization;M5 не закрыт.
 research/client455-weather-source.md; inventory/client-features.json.
 Ресурсные prerequisites M5 уточнены:78RPK и163BSP/EBP проаудированы,20weather assets
 закреплены. Далее source archive-aware fopen и SPT end boundaries, затем normal map
-runtime. Research client455-map-resources.md. Это не закрытие M5 и не новый этап.
+runtime. Research client455-map-resources.md. Следом source RPK/group/fopen/exists
+и particle end подключены:18 907module checks +30actual full-project checks;
+обе сборки успешны. Далее реальные entity/texture/particle и normal LoadLevel/GPU.
+research/client455-resource-io-source.md. M5 остаётся открыт.
 
 ## Этапы
 

@@ -53,7 +53,9 @@ BSP weather consumer перенесён вместе с двумя слоями 
 
 Ресурсный аудит M5 закрепил78MapEntity RPK,70BSP39/93EBP20 и20weather assets.
 Header/table round trips,8tool parser tests и DDS mip sizes прошли, native/GPU
-load не выполнялись. Source RPK/fopen и particle end boundaries отсутствуют;
+load в том цикле не выполнялись. Последующий source RPK/fopen/exists и particle end
+подключён и проверен:18 907native module checks и30actual full-project checks;
+normal LoadLevel/GPU ещё не выполнялись. research/client455-resource-io-source.md;
 один weather path missing для3Tower R3X. Неверные metadata sizes/offsets не
 исправлялись: research/client455-map-resources.md. Полного resource manifest ещё нет.
 

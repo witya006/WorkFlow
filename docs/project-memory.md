@@ -31,8 +31,10 @@ M8 не требуется. Компиляция, запуск и частичн
   703checks,37native lifecycle checks.58real R3X применены реальной LoadR3X без lens/GPU.
   Обычный LoadLevel/FPU initialization не проверены; M5 пока не закрыт.
   Ресурсный аудит:78RPK/3775file entries,70BSP+93EBP,20real weather assets сохранены
-  с hashes.8tool tests прошли. Source VFS и particle end handling ещё отсутствуют;
-  research/client455-map-resources.md. Исходники/EXE в этом цикле не менялись.
+  с hashes.8tool tests прошли. Следом RPK file/group/fopen/exists и particle end
+  перенесены в source;18 907native module checks и30actual full-project checks.
+  Обе сборки успешны,703weather checks на текущем lab; normal LoadLevel/GPU ещё нет.
+  research/client455-resource-io-source.md.
 
 ## Артефакт первой сборки
 
@@ -46,13 +48,13 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 438 144bytes,entryRVA0x1BAF50,SHA256
-45690c220e37be7e34d234ffdd90f11d31703271e1fd12d37567fb6916c67542.
-Snapshot weather455-cpu;предыдущие revisions сохранены. Обычный EXE
-не запускался,285objects /MT проверены (180client +59engine +46JPEG).
-Own lab EXE SHAe9ae5fa895742de2ff49b2b2c7f52c9748e7717d9ff21a623dc7d13bcdf3f361,
-entryRVA0x7DBF,work/client-helper-lab/revisions/e9ae5fa895742de2/RF_Online.bin. Этот вариант
-исполнялся с --rf-helper-probe /--rf-weather-read /--rf-weather-scenario.
+2 440 704bytes,entryRVA0x1BBA50,SHA256
+a761c930a5ff86025d0a68ab195bd9253855b1d7887f3d9d0f6b9639fec8970c.
+Snapshot resource455-runtime;предыдущие revisions сохранены. Обычный EXE
+не запускался,286objects /MT проверены (180client +60engine +46JPEG).
+Own lab EXE SHAc23d4bc8634cd2d49c31753b85ec9d876ba35d053096497840a9a8198656a8b9,
+entryRVA0x7DE7,size4067328,work/client-weather-lab/c23d4bc8634cd2d4/RF_Online.bin.
+Этот вариант исполнялся с --rf-resource-scenario /--rf-weather-read /--rf-weather-scenario.
 Game DLLs delayed и GetModuleHandle подтвердил отсутствие
 их загрузки; normal GPU/network/startup/teardown не выполнялись.
 
@@ -72,11 +74,12 @@ GoMMO stdio audit работает; это не разрешение Install/pub
 ## Сборка и источники доказательств
 
 492 копии client/R3Engine под work/client-build/source. 11 byte-preserving compiler
-patches: inventory/client-source-patches.json; не менять кодировки. Ещё16behavior
-files (draw2/logger1/login1/helper2/math1/weather9) имеют отдельный ledger client-behavior-patches.json.
+patches: inventory/client-source-patches.json; не менять кодировки. Behavior
+files имеют отдельный ledger client-behavior-patches.json. Сейчас18files: исходные16
+плюс2новых resource consumers;7resource overlays включают5weather files и2новых.
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
 CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
-X87_MATH /WEATHER по умолчанию
+X87_MATH /WEATHER /RESOURCE_IO по умолчанию
 OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
 CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
@@ -123,10 +126,21 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M5: следующий шаг — source RPK/group/fopen4550x8E7680 и case-sensitive particle end
-перед lowercase (0x8DB650/0x8DB741), native checks на20staged weather assets.
-Затем real entity/particle/normal LoadLevel/GPU, clock/client Time/HMS integration
-caller4550x7E3E55. Resource format audit уже выполнен; не повторять его вместо переноса.
+M5: следующий шаг — actual entity/texture/particle и normal LoadLevel/GPU:
+собственный graphics entry, device/FPU initialization, изолированные real assets.
+RPK file/group/fopen/exists и particle end source уже подключены (flag RESOURCE_IO).
+18 907native module checks на3775members/78RPK;30actual CParticle/LoadR3X archive
+checks в full-project lab,7source ledgers/6compiled objects проверены. RPKFILE/Group
+owners276/268, manual release/active pointer; Dmalloc настоящий в engine. Enumeration
+порядок, skip-first,last3letters rpk,256limit,prefix-length-only, mutation и unbounded
+FILE сохранены. Остальные consumers/groups/unsafe errors/OOM не сертифицированы.
+Compile DDS mask128bytes в обоих linked PE равен455; input EXE/DLL не запускались.
+Затем clock/client Time/HMS caller4550x7E3E55. Research client455-resource-io-source.md;
+inventory/client455-resource-{io,reference,runtime,link}.json. Commands в next-steps.md.
+Повтор MSBuild после sandbox E_ACCESSDENIED с escalation прошёл, cache не удалялся.
+Последняя полная140helper проверка остаётся weather revision;703weather checks
+повторены на текущем resource lab. IDA supervisor подтвердил0sessions после TTL.
+Resource format audit уже выполнен; не повторять его вместо runtime следующего шага.
 78MapEntity archives/3775entries,1067declaredSize mismatches: game fopen их игнорирует,
 tool uses next-offset/EOF extent и сохраняет metadata.70BSP39+93EBP20 round trips;
 Dungeon00 stale offsets overlap, sequential reads/skip end ровно на EOF. Остальные
@@ -141,7 +155,7 @@ scripts/rpk455.py/map455.py,8tests. Strict tooling не эмулирует unsaf
 65real files размерами1028/1036,7lens толькоreader;4fixtures,37real CPU lifecycle
 checks и703total. CAlpha4buffers fixture исправлена после живого CBsp, allocator не менялся.
 Clock normalized dayFraction/HMS, mutable initial rate3.0, numeric equivalence/lighting/
-client time caller пока не закрыты. Particle455 curves/options, VFS wrapper0x8E7680,
+client time caller пока не закрыты. Particle455 curves/options, все прочие VFS consumers,
 full fog2/lens/scene weather и unsafe failure domain тоже открыты.
 Source failure quirks и unchecked short header сохранены, не улучшать по догадке.
 Research client455-weather-source.md; новый module scripts/native/client455_weather.cpp.

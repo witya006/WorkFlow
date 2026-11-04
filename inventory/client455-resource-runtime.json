@@ -1,0 +1,16 @@
+{
+  "checks": 30,
+  "failures": 0,
+  "warnings": 1,
+  "allocation_before": 0,
+  "allocation_after": 0,
+  "exe_sha256": "c23d4bc8634cd2d49c31753b85ec9d876ba35d053096497840a9a8198656a8b9",
+  "fixture_sha256": "28f5fdcc75012fdcc58400691cb45d512c28593dfc3af9812f998f98057cc6d8",
+  "lab_source_sha256": {
+    "scripts/native/client455_resource_io.cpp": "e796328b29dd736c4768cff2597ef8e00e986300af13273da5f34aef0088f162",
+    "scripts/native/client455_resource_io.h": "bb1865d81d6a0f8b87a90db0bd03bd6ea9e3b32c7ee1dc1e02ea0759139375f4",
+    "scripts/native/client_resource_lab.inc": "2c3fe58f76155f9afe5f882698317f60b72e154a8ed26beee85aa7e1f9d0287c",
+    "work/client-build/source/R3Engine/1stclass/r3particle.cpp": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16"
+  },
+  "scope": "Actual CParticle::LoadParticleSPT and LoadR3X consume an RPK via production source; adjacent entries/end/case/header boundaries. No entity/GPU/network or game DLL executed."
+}

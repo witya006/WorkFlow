@@ -3,11 +3,13 @@
     "file": "work/client-build/source/R3Engine/1stclass/bsp.cpp",
     "original_sha256": "8c8e9e6397edab789ff25b55da168a017767129d61e5764193d0929843432c49",
     "input_sha256": "2861b73ddeb099e270cfa660b9bc579540f6f3db21dd6dcd255235c079b12940",
-    "patched_sha256": "3377164da281fb80055bee26db78ac072ad47664419b223dd98278bfba392e7d",
-    "build_option": "RF_CLIENT_455_WEATHER",
+    "patched_sha256": "58c748aa212ad91511731adc5da7f4feefdd43f58173aa3847391c3b4d8f7f12",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": "RF_CLIENT_455_WEATHER",
+    "upstream_sha256": "3377164da281fb80055bee26db78ac072ad47664419b223dd98278bfba392e7d",
     "legacy_branch_preserved": true,
-    "reason": "455 two-layer R3X/text config, weather lifecycle, helper interior stop, frame update/draw split and night particle flag. GPU and full clock/network parity remain open.",
-    "binary_evidence_report": "inventory/client455-weather-helper.json"
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
     "file": "work/client-build/source/R3Engine/1stclass/core.cpp",
@@ -30,24 +32,52 @@
     "binary_evidence_report": "inventory/client455-weather-helper.json"
   },
   {
+    "file": "work/client-build/source/R3Engine/1stclass/entity.cpp",
+    "original_sha256": "c82dcbba98b12baa438713d8dc27129bfb6fc7610f2f61670eac3160b64da6d5",
+    "input_sha256": "c82dcbba98b12baa438713d8dc27129bfb6fc7610f2f61670eac3160b64da6d5",
+    "patched_sha256": "b14e117c82bc629c63882129465d82a646500132a573adaffc1e5dbb7c7459a5",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": null,
+    "upstream_sha256": "c82dcbba98b12baa438713d8dc27129bfb6fc7610f2f61670eac3160b64da6d5",
+    "legacy_branch_preserved": true,
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
+  },
+  {
     "file": "work/client-build/source/R3Engine/1stclass/r3bsp.h",
     "original_sha256": "8e43ae5b21b06b2f9c1dce706612001b14e90dd8a86c360b2135c4be1b586aed",
     "input_sha256": "871c6d2e9c6ce53586966dfd4a6b6af9b6755cd097b901ce93621dc4b3876661",
-    "patched_sha256": "703c00b2b33317ef309dfa7c29b16c3357f2a157f49a46bdae185d37789474a1",
-    "build_option": "RF_CLIENT_455_WEATHER",
+    "patched_sha256": "b78dc256012be5a0e529e1d38e406281a5691ae46a3cc850c65027f891ba7e6f",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": "RF_CLIENT_455_WEATHER",
+    "upstream_sha256": "703c00b2b33317ef309dfa7c29b16c3357f2a157f49a46bdae185d37789474a1",
     "legacy_branch_preserved": true,
-    "reason": "455 two-layer R3X/text config, weather lifecycle, helper interior stop, frame update/draw split and night particle flag. GPU and full clock/network parity remain open.",
-    "binary_evidence_report": "inventory/client455-weather-helper.json"
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
+  },
+  {
+    "file": "work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp",
+    "original_sha256": "4193359bb36dce67d1f78b0cae29ff682650b08fb19b3f3ac685f4cd99ffe290",
+    "input_sha256": "4193359bb36dce67d1f78b0cae29ff682650b08fb19b3f3ac685f4cd99ffe290",
+    "patched_sha256": "7b4434f6980cbd9f5409db0c1c0769efe69b68e2c870738b81635f55f9c854b4",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": null,
+    "upstream_sha256": "4193359bb36dce67d1f78b0cae29ff682650b08fb19b3f3ac685f4cd99ffe290",
+    "legacy_branch_preserved": true,
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
     "file": "work/client-build/source/R3Engine/1stclass/r3material.cpp",
     "original_sha256": "7d1a706f04f5e1c05daa5cb0c2481631f63841f712c00236aa934b5951df7866",
     "input_sha256": "7d1a706f04f5e1c05daa5cb0c2481631f63841f712c00236aa934b5951df7866",
-    "patched_sha256": "f7088d65599464441624c0b5141efea25205b5b1ef0fbb42330725a7edfe3ca9",
-    "build_option": "RF_CLIENT_455_WEATHER",
+    "patched_sha256": "1a5a6ea5df2c5324affe7de6fe2036846dfbb98babcbfcb0f7fb9f948796ac9a",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": "RF_CLIENT_455_WEATHER",
+    "upstream_sha256": "f7088d65599464441624c0b5141efea25205b5b1ef0fbb42330725a7edfe3ca9",
     "legacy_branch_preserved": true,
-    "reason": "455 two-layer R3X/text config, weather lifecycle, helper interior stop, frame update/draw split and night particle flag. GPU and full clock/network parity remain open.",
-    "binary_evidence_report": "inventory/client455-weather-helper.json"
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
     "file": "work/client-build/source/R3Engine/1stclass/r3material.h",
@@ -63,11 +93,13 @@
     "file": "work/client-build/source/R3Engine/1stclass/r3particle.cpp",
     "original_sha256": "cbb3a73dbadec2c2abe7ac603c3382d8133dfab9b09e3dc8437ff25ac9761fbc",
     "input_sha256": "cbb3a73dbadec2c2abe7ac603c3382d8133dfab9b09e3dc8437ff25ac9761fbc",
-    "patched_sha256": "fa6fea3ff7436607170f20f83ffe2432d54b6c45e1c770b235d3415ebd09da03",
-    "build_option": "RF_CLIENT_455_WEATHER",
+    "patched_sha256": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": "RF_CLIENT_455_WEATHER",
+    "upstream_sha256": "fa6fea3ff7436607170f20f83ffe2432d54b6c45e1c770b235d3415ebd09da03",
     "legacy_branch_preserved": true,
-    "reason": "455 two-layer R3X/text config, weather lifecycle, helper interior stop, frame update/draw split and night particle flag. GPU and full clock/network parity remain open.",
-    "binary_evidence_report": "inventory/client455-weather-helper.json"
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
     "file": "work/client-build/source/R3Engine/1stclass/r3render.cpp",
@@ -321,11 +353,13 @@
     "file": "work/client-build/source/R3Engine/2ndclass/level.cpp",
     "original_sha256": "e8f0ed74d0de4d1459bc281865007f25173b2b14544b07e486464b593e1c5493",
     "input_sha256": "e8f0ed74d0de4d1459bc281865007f25173b2b14544b07e486464b593e1c5493",
-    "patched_sha256": "27e99743d228483787841e1a30f49fac07dc7d6cae218ac3985896ab346f2aae",
-    "build_option": "RF_CLIENT_455_WEATHER",
+    "patched_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84",
+    "build_option": "RF_CLIENT_455_RESOURCE_IO",
+    "upstream_build_option": "RF_CLIENT_455_WEATHER",
+    "upstream_sha256": "27e99743d228483787841e1a30f49fac07dc7d6cae218ac3985896ab346f2aae",
     "legacy_branch_preserved": true,
-    "reason": "455 two-layer R3X/text config, weather lifecycle, helper interior stop, frame update/draw split and night particle flag. GPU and full clock/network parity remain open.",
-    "binary_evidence_report": "inventory/client455-weather-helper.json"
+    "reason": "Archive-aware resource opens/exists, BSP group ownership/selection and exact case-sensitive particle end boundaries; prior weather branches retained.",
+    "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
     "file": "work/client-build/source/R3Engine/common/r3math.cpp",

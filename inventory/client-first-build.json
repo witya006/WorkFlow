@@ -1199,5 +1199,349 @@
     ],
     "executed": false,
     "limits": "Diagnostic /Od source-base build with selected 455 branches and adapted CharacterMR. Direct provider discovery is not recursive loader/runtime validation or 455 parity."
+  },
+  "resource455": {
+    "sha256": "60b835d5b3393beadf06fbe65dd0adb72006c9e442ec99c045f1543c35e3721d",
+    "size": 2440704,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1bba10",
+    "subsystem": "Windows GUI",
+    "snapshot": "artifacts/client-first-build/resource455",
+    "build_settings": {
+      "RF_CHARACTER_EXCEPTIONS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
+      "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
+      "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
+      "RF_CHARACTER_SETTERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
+      "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
+      "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
+      "RF_CLIENT_455_DRAW_ARGUMENTS": "ON",
+      "RF_CLIENT_455_EFFECT_LOG": "ON",
+      "RF_CLIENT_455_EFFECT_LOG_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+      "RF_CLIENT_455_LOBBY_TRANSITION": "ON",
+      "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
+      "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
+      "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
+      "RF_LEGACY_NEW_UI": "ON",
+      "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
+      "RF_CLIENT_455_HELPER_LOADER": "ON",
+      "RF_CLIENT_455_RESOURCE_IO": "ON",
+      "RF_CLIENT_455_WEATHER": "ON",
+      "RF_CLIENT_455_X87_MATH": "ON",
+      "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "RF_CLIENT_HELPER_LAB": "OFF"
+    },
+    "sections": [
+      {
+        "name": ".text",
+        "rva": 4096,
+        "virtual_size": 2079001,
+        "raw_offset": 1024,
+        "raw_size": 2079232,
+        "sha256": "d04114a1b59c208fb910f9eafe3fca300e4ee4228a2e715de908ee339a76674e"
+      },
+      {
+        "name": ".rdata",
+        "rva": 2084864,
+        "virtual_size": 224944,
+        "raw_offset": 2080256,
+        "raw_size": 225280,
+        "sha256": "e71ac62257c8c115bfd5991841e7766858f9e085f8db376bee9281acf30b5caf"
+      },
+      {
+        "name": ".data",
+        "rva": 2310144,
+        "virtual_size": 12559516,
+        "raw_offset": 2305536,
+        "raw_size": 50176,
+        "sha256": "1e4d88ccb1a1472dcaa21204d4b9905884f81a493b3b977215ccacaabe96d50e"
+      },
+      {
+        "name": ".data1",
+        "rva": 14872576,
+        "virtual_size": 2272,
+        "raw_offset": 2355712,
+        "raw_size": 2560,
+        "sha256": "9a1e1a6e69fd980ae9724ec0236a97ae21a2c751d40f5a12c040cc608c7ae163"
+      },
+      {
+        "name": ".fptable",
+        "rva": 14876672,
+        "virtual_size": 128,
+        "raw_offset": 2358272,
+        "raw_size": 512,
+        "sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560"
+      },
+      {
+        "name": ".rsrc",
+        "rva": 14880768,
+        "virtual_size": 480,
+        "raw_offset": 2358784,
+        "raw_size": 512,
+        "sha256": "2c44ab7de69cb4be954cd35bb3b7db50a8a95b3eeaf6b5d653ebb23fe36acc66"
+      },
+      {
+        "name": ".reloc",
+        "rva": 14884864,
+        "virtual_size": 81168,
+        "raw_offset": 2359296,
+        "raw_size": 81408,
+        "sha256": "44b41d4175c50cbf459ac9109257f30935abb1d97498765763041b86bc3ada30"
+      }
+    ],
+    "direct_providers": [
+      {
+        "name": "mss32.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll",
+        "architecture": "x86",
+        "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+      },
+      {
+        "name": "KERNEL32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\KERNEL32.dll",
+        "architecture": "x86",
+        "sha256": "46276ed0568503a278605aec168605e1b289f35fa8c46971c479ea606e76acc5"
+      },
+      {
+        "name": "USER32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\USER32.dll",
+        "architecture": "x86",
+        "sha256": "5afa8e3084f4bc55d59319e9afcbd261436ad73aa0d678397863ca8764421586"
+      },
+      {
+        "name": "GDI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\GDI32.dll",
+        "architecture": "x86",
+        "sha256": "ca166569151a9f56bc27c090641e950e16400177cba36e9ad1981598f7f00299"
+      },
+      {
+        "name": "ADVAPI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\ADVAPI32.dll",
+        "architecture": "x86",
+        "sha256": "fd36ac0419e85e17f129c7458cc3b45aaf871e3efde7ea1fe78a83b92b31f566"
+      },
+      {
+        "name": "d3d8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\d3d8.dll",
+        "architecture": "x86",
+        "sha256": "07db2610a36f320703db1fd587118f227ae0071e004ec075746160e70441e6f4"
+      },
+      {
+        "name": "DINPUT8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\DINPUT8.dll",
+        "architecture": "x86",
+        "sha256": "b287dd87985f07a4c23e39ede02ff6d4311d8ab7aa177fc29f5401dc1f8f5fbd"
+      },
+      {
+        "name": "WINMM.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WINMM.dll",
+        "architecture": "x86",
+        "sha256": "6729816e459be41ae1726438b95d207a3a626ff7b87ebeb8d569f740dcbc7f51"
+      },
+      {
+        "name": "WS2_32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WS2_32.dll",
+        "architecture": "x86",
+        "sha256": "5d920a7a5486e7c1693334d59271f2a59a64b59a8fa87fa4ba71aacce4cdf8a6"
+      },
+      {
+        "name": "IMM32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\IMM32.dll",
+        "architecture": "x86",
+        "sha256": "d986143836003f52c4d599786dc3a18a126d7455c66d5a27c542574f060d6660"
+      },
+      {
+        "name": "ABuse.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\ABuse.dll",
+        "architecture": "x86",
+        "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
+      },
+      {
+        "name": "Adv.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\Adv.dll",
+        "architecture": "x86",
+        "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
+      },
+      {
+        "name": "PDLL.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\PDLL.dll",
+        "architecture": "x86",
+        "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
+      }
+    ],
+    "executed": false,
+    "limits": "Diagnostic /Od source-base build with selected 455 branches and adapted CharacterMR. Direct provider discovery is not recursive loader/runtime validation or 455 parity."
+  },
+  "resource455-runtime": {
+    "sha256": "a761c930a5ff86025d0a68ab195bd9253855b1d7887f3d9d0f6b9639fec8970c",
+    "size": 2440704,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1bba50",
+    "subsystem": "Windows GUI",
+    "snapshot": "artifacts/client-first-build/resource455-runtime",
+    "build_settings": {
+      "RF_CHARACTER_EXCEPTIONS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
+      "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
+      "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
+      "RF_CHARACTER_SETTERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
+      "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
+      "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
+      "RF_CLIENT_455_DRAW_ARGUMENTS": "ON",
+      "RF_CLIENT_455_EFFECT_LOG": "ON",
+      "RF_CLIENT_455_EFFECT_LOG_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+      "RF_CLIENT_455_LOBBY_TRANSITION": "ON",
+      "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
+      "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
+      "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
+      "RF_LEGACY_NEW_UI": "ON",
+      "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
+      "RF_CLIENT_455_HELPER_LOADER": "ON",
+      "RF_CLIENT_455_RESOURCE_IO": "ON",
+      "RF_CLIENT_455_WEATHER": "ON",
+      "RF_CLIENT_455_X87_MATH": "ON",
+      "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "RF_CLIENT_HELPER_LAB": "OFF"
+    },
+    "sections": [
+      {
+        "name": ".text",
+        "rva": 4096,
+        "virtual_size": 2079049,
+        "raw_offset": 1024,
+        "raw_size": 2079232,
+        "sha256": "145df2ac83f9016ff6bcb3c175fc0ba8d0ef654760c9fc72244e88cee49bd0dd"
+      },
+      {
+        "name": ".rdata",
+        "rva": 2084864,
+        "virtual_size": 224944,
+        "raw_offset": 2080256,
+        "raw_size": 225280,
+        "sha256": "c494dab3a0f482e9adf4cd4831352054a011f6b6a43bbff5f79d0802f01a3804"
+      },
+      {
+        "name": ".data",
+        "rva": 2310144,
+        "virtual_size": 12559516,
+        "raw_offset": 2305536,
+        "raw_size": 50176,
+        "sha256": "1e4d88ccb1a1472dcaa21204d4b9905884f81a493b3b977215ccacaabe96d50e"
+      },
+      {
+        "name": ".data1",
+        "rva": 14872576,
+        "virtual_size": 2272,
+        "raw_offset": 2355712,
+        "raw_size": 2560,
+        "sha256": "9a1e1a6e69fd980ae9724ec0236a97ae21a2c751d40f5a12c040cc608c7ae163"
+      },
+      {
+        "name": ".fptable",
+        "rva": 14876672,
+        "virtual_size": 128,
+        "raw_offset": 2358272,
+        "raw_size": 512,
+        "sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560"
+      },
+      {
+        "name": ".rsrc",
+        "rva": 14880768,
+        "virtual_size": 480,
+        "raw_offset": 2358784,
+        "raw_size": 512,
+        "sha256": "2c44ab7de69cb4be954cd35bb3b7db50a8a95b3eeaf6b5d653ebb23fe36acc66"
+      },
+      {
+        "name": ".reloc",
+        "rva": 14884864,
+        "virtual_size": 81180,
+        "raw_offset": 2359296,
+        "raw_size": 81408,
+        "sha256": "b06bda7c28830390026578f06473141ee1e5e549ecf655b1a90ec2eeec503a36"
+      }
+    ],
+    "direct_providers": [
+      {
+        "name": "mss32.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll",
+        "architecture": "x86",
+        "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+      },
+      {
+        "name": "KERNEL32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\KERNEL32.dll",
+        "architecture": "x86",
+        "sha256": "46276ed0568503a278605aec168605e1b289f35fa8c46971c479ea606e76acc5"
+      },
+      {
+        "name": "USER32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\USER32.dll",
+        "architecture": "x86",
+        "sha256": "5afa8e3084f4bc55d59319e9afcbd261436ad73aa0d678397863ca8764421586"
+      },
+      {
+        "name": "GDI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\GDI32.dll",
+        "architecture": "x86",
+        "sha256": "ca166569151a9f56bc27c090641e950e16400177cba36e9ad1981598f7f00299"
+      },
+      {
+        "name": "ADVAPI32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\ADVAPI32.dll",
+        "architecture": "x86",
+        "sha256": "fd36ac0419e85e17f129c7458cc3b45aaf871e3efde7ea1fe78a83b92b31f566"
+      },
+      {
+        "name": "d3d8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\d3d8.dll",
+        "architecture": "x86",
+        "sha256": "07db2610a36f320703db1fd587118f227ae0071e004ec075746160e70441e6f4"
+      },
+      {
+        "name": "DINPUT8.dll",
+        "provider": "C:\\Windows\\SysWOW64\\DINPUT8.dll",
+        "architecture": "x86",
+        "sha256": "b287dd87985f07a4c23e39ede02ff6d4311d8ab7aa177fc29f5401dc1f8f5fbd"
+      },
+      {
+        "name": "WINMM.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WINMM.dll",
+        "architecture": "x86",
+        "sha256": "6729816e459be41ae1726438b95d207a3a626ff7b87ebeb8d569f740dcbc7f51"
+      },
+      {
+        "name": "WS2_32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\WS2_32.dll",
+        "architecture": "x86",
+        "sha256": "5d920a7a5486e7c1693334d59271f2a59a64b59a8fa87fa4ba71aacce4cdf8a6"
+      },
+      {
+        "name": "IMM32.dll",
+        "provider": "C:\\Windows\\SysWOW64\\IMM32.dll",
+        "architecture": "x86",
+        "sha256": "d986143836003f52c4d599786dc3a18a126d7455c66d5a27c542574f060d6660"
+      },
+      {
+        "name": "ABuse.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\ABuse.dll",
+        "architecture": "x86",
+        "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
+      },
+      {
+        "name": "Adv.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\Adv.dll",
+        "architecture": "x86",
+        "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
+      },
+      {
+        "name": "PDLL.dll",
+        "provider": "E:\\RFOnlineTrash\\RFOnline\\PDLL.dll",
+        "architecture": "x86",
+        "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
+      }
+    ],
+    "executed": false,
+    "limits": "Diagnostic /Od source-base build with selected 455 branches and adapted CharacterMR. Direct provider discovery is not recursive loader/runtime validation or 455 parity."
   }
 }

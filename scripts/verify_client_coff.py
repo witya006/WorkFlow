@@ -36,7 +36,8 @@ def main():
     records = []
     sets = []
     weather='RF_CLIENT_455_WEATHER:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
-    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 59 if weather else 58, build)]
+    resource='RF_CLIENT_455_RESOURCE_IO:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
+    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 58+int(weather)+int(resource), build)]
     jpeg_report = WS/'inventory/jpeg6b-build.json'
     if jpeg_report.exists():
         jpeg = json.loads(jpeg_report.read_text(encoding='utf-8'))

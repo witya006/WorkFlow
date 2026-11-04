@@ -122,9 +122,15 @@ static unsigned probe() {
 #if defined(RF_CLIENT_455_WEATHER)
 #include "client_weather_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_RESOURCE_IO)
+#include "client_resource_lab.inc"
+#endif
 
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_RESOURCE_IO)
+    if (!std::strcmp(command,"--rf-resource-scenario")) ExitProcess(resourceScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_WEATHER)
     if (!std::strcmp(command,"--rf-weather-read")) ExitProcess(weatherReadProbe());
     if (!std::strcmp(command,"--rf-weather-scenario")) ExitProcess(weatherScenarioProbe());
