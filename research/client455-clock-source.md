@@ -37,7 +37,8 @@ RF_CLIENT_455_CLOCK defaultOFF, driver явно ON и требует component p
 branch. CLevel::FrameMove уже вызывает общий AdvanceDayClock. Новый module —61-й
 engine object; normal build180+61+46JPEG=287modern x86 /MT.
 
-Normal RF_Online.bin2440704bytes,entryRVA0x1BBAA0,SHA
+Историческая ревизия первого clock port (следом client455-map-time-source.md):
+normal RF_Online.bin2440704bytes,entryRVA0x1BBAA0,SHA
 f5f945160fe45255b9cea935cb3e27946a0a5ab531a18b1279abbd41164e18e5,
 snapshot artifacts/client-first-build/clock455. Не исполнялся.
 Own lab4085248bytes,entryRVA0x7DD8,SHA
@@ -63,13 +64,20 @@ scripts/verify_client_m5.py --saved проверяет тот historical checkpo
 Прежнее предположение, что0x7E3E55 является сетевым Time/HMS handler, неверно:
 это console %time, часы из atol, minutes/seconds0. %real_time читает hours/minutes
 и вызывает отдельный real HMS setter0x8B14A0. Оба console paths пока не перенесены.
-Действительный map caller0x7C8B60/RVA0x3C8B60 после load использует как минимум4cached
-DWORD time fields, добавляет elapsed_seconds%60 к seconds и (elapsed_seconds/60)%60 к minutes,
+Действительный map caller0x7C8B60/RVA0x3C8B60 после load вызывает localtime32 на
+cached32bit timestamp, добавляет elapsed_seconds%60 к tm_sec и (elapsed_seconds/60)%60 к tm_min,
 считает totalSeconds. Затем accelerated game fraction через rate и real fraction
 без rate передаются setters0x8B1440/0x8B15D0. Дополнительный hour carry в этом
-fragment отсутствует; не исправлять по догадке. Структура/update origin cached fields
-и полный CLand path ещё требуют восстановления. inventory/client455-time-callers.json
-закрепляет3bodies/5calls/2strings в обоих PE; raw decomp в artifacts/clock455-analysis.
+fragment отсутствует; не исправлять по догадке. tm_mday передаётся setter поля+24
+только для map12; для остальных maps0. Сетевой map message8/5 найден: handler580AE0
+читает payload DWORD+1 и signed timestamp+5, игнорирует byte0. Оба stores в CLand:
+opaque value+32,timestamp+36 и GetTickCount receipt tick+40. Init7C79F0 обнуляет+32/+36,
+оставляет+40/+24 неизменными. Следующий selected source port и actual CLand/packet/GPU
+проверка описаны в client455-map-time-source.md. Значение
+первого DWORD/byte0, остальные consumers поля+24 и timezone/DST/CRT parity открыты.
+inventory/client455-time-callers.json закрепляет10bodies/6calls/2strings в обоих PE;
+raw decomp в artifacts/clock455-analysis. tm является результатом localtime32, а не
+передаваемой по сети структурой; прежняя гипотеза о4cachedDWORD time fields уточнена.
 
 Окружение: новый current binary auto-analysis превысил300s timeout клиента MCP,
 но worker завершил его позже; session восстановлена через idb_list, закрыта/save.
@@ -77,6 +85,6 @@ fragment отсутствует; не исправлять по догадке. 
 Owned b336dffc/6c9c1ee9 закрыты/save; fallback adopted7fc260bd detach/save тоже выполнен.
 Далее открывать сохранённый .i64, а не повторять полный auto-analysis бинарника.
 
-Дальше M6: cached map time/packet origin/CLand caller, console commands, full sky/
+Дальше M6: full map/calendar domains,console commands,full sky/
 lighting/materials и D3D9 restoration. Полные Character/particles/UI/network/sound/
 gameplay/acceptance coverage остаются открытыми. M8 модернизация не требуется.

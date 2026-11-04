@@ -53,6 +53,13 @@ foreach ($property in $clock.source_sha256.PSObject.Properties) {
     if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 clock source proof stale.' }
 }
 $arguments += '-DRF_CLIENT_455_CLOCK=ON'
+$mapTime = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-map-time.json') -Raw | ConvertFrom-Json
+if ($mapTime.native_test.failures -ne 0 -or $mapTime.native_test.checks -lt 314 -or $mapTime.native_test.precision_rounding_modes -ne 12) { throw '455 map time component proof missing.' }
+foreach ($property in $mapTime.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 map time source proof stale.' }
+}
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_MAP_TIME' })) { throw '455 map time source selection missing.' }
+$arguments += '-DRF_CLIENT_455_MAP_TIME=ON'
 $resources = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-resource-io.json') -Raw | ConvertFrom-Json
 if ($resources.native_checks -lt 18895 -or $resources.archives.Count -ne 78) { throw 'Native resource-I/O proof missing.' }
 foreach ($property in $resources.source_sha256.PSObject.Properties) {
@@ -138,6 +145,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_clock455.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_clock455.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_map_time455.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_map_time455.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

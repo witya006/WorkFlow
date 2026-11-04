@@ -147,10 +147,32 @@ static int clockScenarioProbe() {
 }
 #endif
 
+#if defined(RF_CLIENT_455_MAP_TIME)
+#include "client455_map_time.h"
+namespace MapTimeProbe {
+#define RF455_MAP_TIME_EMBEDDED
+#include "test_client455_map_time.cpp"
+#undef RF455_MAP_TIME_EMBEDDED
+}
+static int mapTimeScenarioProbe() {
+    const char* output=std::getenv("RF_LAB_HELPER_OUTPUT");if (!output) return 95;
+    const char* dlls[]={"mss32.dll","ABuse.dll","Adv.dll","PDLL.dll"};
+    for (unsigned i=0;i<4;++i) if (GetModuleHandleA(dlls[i])) return 96;
+    FILE* file=std::fopen(output,"wt");if (!file) return 97;
+    const int result=MapTimeProbe::runMapTimeChecks(file);
+    if (std::fclose(file)) return 98;
+    for (unsigned i=0;i<4;++i) if (GetModuleHandleA(dlls[i])) return 99;
+    return result;
+}
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
 #if defined(RF_CLIENT_455_CLOCK)
     if (!std::strcmp(command,"--rf-clock-scenario")) ExitProcess(clockScenarioProbe());
+#endif
+#if defined(RF_CLIENT_455_MAP_TIME)
+    if (!std::strcmp(command,"--rf-map-time-scenario")) ExitProcess(mapTimeScenarioProbe());
 #endif
 #if defined(RF_CLIENT_455_RESOURCE_IO)
     if (!std::strcmp(command,"--rf-resource-scenario")) ExitProcess(resourceScenarioProbe());

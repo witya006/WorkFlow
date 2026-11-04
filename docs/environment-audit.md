@@ -297,6 +297,26 @@ Cached time/packet origin/CLand/console и full lighting ещё открыты.
 research/client455-clock-source.md; inventory/client455-clock*.json/client455-time-callers.json.
 M6/M6F/M7/M9 открыты. Historical M5 evidence сохранён отдельно и проверен --saved.
 
+## M6: client map message8/5 → CLand time
+
+Восстановлен selected source path client packet8/5,CLand timestamp/receipt tick cache
+и successful map-load clock hook. Source overlays трёх client files,21behavior files
+total; own MapTimeState16bytes не применяется как binary455layout. Критический130byte
+numeric fragment0x7C8DC4/RVA0x3C8DC4 совпал с обоими pinned PE.314component/full-client
+checks/12FP modes/UTC+JST; actual linked helper/CLand/packet object references проверены.
+Own GPU entry выполнил реальный CNetMsgProcessor_Map8/5,CLand Create/LoadLevel(char*)
+и public post-load hook, Platform01 FrameMove/render/CLand Destroy/UnloadLevel.
+Synthetic timestamp43200 при UTC0 дал fractions0.5/0.5,mapDay1 для synthetic mapIndex12.
+Это не full byte-index UI/camera/effects path и не root network/socket verification.
+2GPUcases/66checks,0errors/warnings,allocation/COM balance0; FPU007F,frame просмотрен.
+1275clock/703weather/30resource regressions и288modern x86 /MT checks прошли.
+Normal2448896bytes,entryRVA0x1BBDF0,SHA
+a1b9dd5d7e45313ef414d90dff198717e66bc5d58e5ed95bcb72fba601cf456a,не исполнялся.
+Lab SHA ad3a17d3d54372c4a05962ae0088b3f44d3d96b438f0873e94c06317cae5f441.
+Localtime32 old-CRT timezone/DST/invalid/Init domains,opaque fields/other consumers,
+full CLand/console/lighting и M6/M6F/M7/M9 открыты. Owned IDA92d1827c закрыта/save.
+research/client455-map-time-source.md; inventory/client455-map-time*.json.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

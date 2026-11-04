@@ -9,6 +9,13 @@
 #include "jerror.h"
 #include "client455_resource_io.h"
 #include "level.h"
+#if defined(RF_CLIENT_455_MAP_TIME)
+#include "Character.h"
+#include "global.h"
+#include "cland.h"
+#include "network/netmsgprocessor/map/cnetmsgprocessor_map.h"
+#include <time.h>
+#endif
 
 struct GraphicsResult {
     char output[32768];const char* stage;
@@ -63,6 +70,29 @@ static void graphicsError(char*) { ++graphicsResult.errors;graphicsReport("engin
 static bool graphicsHR(HRESULT hr) { graphicsResult.hr=hr;++graphicsResult.checks;if (FAILED(hr)) { ++graphicsResult.failures;return false; }return true; }
 static bool graphicsCheck(bool value) { ++graphicsResult.checks;if (!value)++graphicsResult.failures;return value; }
 static unsigned short graphicsFP() { unsigned short value;__asm { fnstcw value }return value; }
+
+#if defined(RF_CLIENT_455_MAP_TIME)
+static DWORD WINAPI graphicsTimeTick() { return 0x23456789; }
+static void graphicsMapTime(CLand* land) {
+    const char* env=getenv("TZ");const std::string oldTZ=env?env:"";
+    _putenv_s("TZ","UTC0");_tzset();auto provider=RF455_ClockTickSource;
+    RF455_ClockTickSource=&graphicsTimeTick;
+    char payload[9]={0x7F};const DWORD value=0x11223344,timestamp=43200;
+    memcpy(payload+1,&value,4);memcpy(payload+5,&timestamp,4);
+    _MSG_HEADER header={};header.m_wSize=13;header.m_byType[0]=8;header.m_byType[1]=5;
+    CNetMsgProcessor_Map processor;
+    graphicsCheck(processor.AnalysisServerPacket(&header,payload));
+    const RF455_MapTimeState& received=land->GetMapTime455();
+    graphicsCheck(received.value0==value && received.timestamp==timestamp && received.receiptTick==graphicsTimeTick());
+    land->ApplyMapTime455(12);
+    graphicsCheck(received.mapDay==1);
+    graphicsCheck(RF455_GetDayFraction()==.5f && RF455_GetRealDayFraction()==.5f);
+    graphicsCheck(graphicsFP()==0x007F);
+    FILE* output=fopen("map-time.json","wb");graphicsCheck(output!=NULL);
+    if (output) { fprintf(output,"{\"message\":[8,5],\"value0\":%u,\"timestamp\":%u,\"receipt_tick\":%u,\"map_day\":%u,\"game_fraction\":%.9g,\"real_fraction\":%.9g,\"fpu\":%u,\"client_processor_called\":true,\"land_hook_called\":true}\n",received.value0,received.timestamp,received.receiptTick,received.mapDay,RF455_GetDayFraction(),RF455_GetRealDayFraction(),graphicsFP());fclose(output); }
+    RF455_ClockTickSource=provider;_putenv_s("TZ",oldTZ.c_str());_tzset();
+}
+#endif
 
 static void graphicsLevelCamera(CLevel* level,Vector3f camera,Vector3f target) {
     _R3ENGINE_STATE* state=GetR3State();D3DXVECTOR3 eye(camera),at(target),up(0,1,0);
@@ -156,13 +186,25 @@ static unsigned graphicsProbe(unsigned mode) {
     graphicsHR(device->Clear(0,NULL,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,0xff102030,1.0f,0));
     RF455_RpkGroup group;CEntity entity;CParticle particle;
     CLevel* level=NULL;
+#if defined(RF_CLIENT_455_MAP_TIME)
+    CLand* land=NULL;CLand* previousLand=g_pLand;CLevel* previousLevel=g_pLevel;
+#endif
     if (levelMode) {
         char input[256];length=GetEnvironmentVariableA("RF_LAB_HELPER_INPUT",input,sizeof(input));
         if (!length || length>=sizeof(input)) return 88;
+#if defined(RF_CLIENT_455_MAP_TIME)
+        land=new CLand;graphicsCheck(land->Create()!=FALSE);level=land->GetLevel();
+        graphicsReport("loading-level");land->LoadLevel(input);
+#else
         level=new CLevel;
-        graphicsReport("loading-level");level->LoadLevel(input);graphicsResult.fpAfterLoad=graphicsFP();
+        graphicsReport("loading-level");level->LoadLevel(input);
+#endif
+        graphicsResult.fpAfterLoad=graphicsFP();
         graphicsResult.levelLoaded=level->IsLoadedBsp();graphicsCheck(graphicsResult.levelLoaded!=FALSE);
         if (graphicsResult.levelLoaded) {
+#if defined(RF_CLIENT_455_MAP_TIME)
+            graphicsMapTime(land);
+#endif
             graphicsResult.levelLeaves=level->mBsp->mLeafNum;graphicsResult.levelNodes=level->mBsp->mNodeNum;
             graphicsResult.levelHelpers=level->mDummy.GetTotalNum();
             graphicsLevelWeather(level);
@@ -229,7 +271,12 @@ static unsigned graphicsProbe(unsigned mode) {
     graphicsReport("captured");
     if (entityMode && graphicsResult.entityLoaded) entity.ReleaseEntity();
     if (particleMode && graphicsResult.particleLoaded) { particle.ReleaseParticle();particle.ReleaseEntity(); }
+#if defined(RF_CLIENT_455_MAP_TIME)
+    if (land) { delete land;g_pLand=previousLand;g_pLevel=previousLevel; }
+    else if (level) { level->ReleaseLevel();delete level; }
+#else
     if (level) { level->ReleaseLevel();delete level; }
+#endif
     RF455_SetResourceGroup(NULL);group.Release();
     R3ReleaseAllTextures();R3ReleasePreTextures();
     R3DeleteDevice();graphicsResult.deviceRefs=device->Release();graphicsResult.d3dRefs=d3d->Release();

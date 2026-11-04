@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T13:02:10.731823+00:00",
+  "checked_at_utc": "2026-11-04T13:30:09.523921+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -30,6 +30,7 @@
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
     "RF_CLIENT_455_CLOCK": "ON",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
+    "RF_CLIENT_455_MAP_TIME": "ON",
     "RF_CLIENT_455_RESOURCE_IO": "ON",
     "RF_CLIENT_455_WEATHER": "ON",
     "RF_CLIENT_455_X87_MATH": "ON",
@@ -42,10 +43,10 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "295347aa3b8ac36e46d6ff186b1ea19735fe56b4dd3d4266f97a9ff266eca7d0",
+    "scripts/native/client_helper_lab.cpp": "823b545ffa94346a57d9269ff09700150decd269d4f085ee8d5bf5153719e5e3",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "bb441c5c3e393f98a298355b794e14bbb95d1efdd790c36e1356080d64c44e9b"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "ad3a17d3d54372c4a05962ae0088b3f44d3d96b438f0873e94c06317cae5f441"
   },
   "weather_input_sha256": {
     "scripts/native/client455_weather.cpp": "bae812e92b8fbe5f2b753c85ce08c504812f71d18e9d7e7807d1821ee2ddf5d8",
@@ -53,7 +54,13 @@
     "scripts/native/client_weather_lab.inc": "aa0d60a97727efe3ae3b5b4b6f934a4f01efbe734cde200d96a636029f2801ff",
     "scripts/native/client455_clock.cpp": "04dfac005b6cba0be13164b07bf51e999d819eb8b783c43965220cb5512c72f9",
     "scripts/native/client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
-    "scripts/native/test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49"
+    "scripts/native/test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49",
+    "scripts/native/client455_map_time.cpp": "771ea3c2a2175ecb046f66c3e9d6d7c9eff088b2622136ba4493a339e1331394",
+    "scripts/native/client455_map_time.h": "a70754f2db06d9e2e6238f141b1bde2af34a95bdb3cf05d52f078a73a0ded319",
+    "scripts/native/test_client455_map_time.cpp": "9524e96088256d79c8c2261ea4d1b28df12c65dce7cdf3a602df451a30cbbd0b",
+    "work/client-build/source/RF_Client/cland.cpp": "13f565f86dd2b8a29dd6a8bdc1e68e8e01fba625bb8301e7d6e02cbc6d58a8c0",
+    "work/client-build/source/RF_Client/cland.h": "96ac56ec73d5f2276b0b3b97225e1a03d24a91997a0cba4890ce751b8796f0a6",
+    "work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp": "0645eed801236988eb9e8f71b78508e74c88a342152537b7e5e1275a7f0a9077"
   },
   "resource_input_sha256": {
     "scripts/native/client455_resource_io.cpp": "e796328b29dd736c4768cff2597ef8e00e986300af13273da5f34aef0088f162",
@@ -62,7 +69,7 @@
     "work/client-build/source/R3Engine/1stclass/r3particle.cpp": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16"
   },
   "graphics_input_sha256": {
-    "scripts/native/client_graphics_lab.inc": "6a25d097345dde95d87a9775597927b8207fbb612f7c241f794da82d4ad6e948",
+    "scripts/native/client_graphics_lab.inc": "44e7f38f1952c94ae47fa1c45beb0f43d34cf1404182b9e88a4155bfc46770a1",
     "work/client-build/source/R3Engine/1stclass/entity.cpp": "b14e117c82bc629c63882129465d82a646500132a573adaffc1e5dbb7c7459a5",
     "work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp": "7b4434f6980cbd9f5409db0c1c0769efe69b68e2c870738b81635f55f9c854b4",
     "work/client-build/source/R3Engine/1stclass/renderentity.cpp": "1d5321f772127dce3ce14aaed021d109d55fb8b3a2056a38a312fd7c01077f1d"

@@ -42,8 +42,12 @@ M6 в работе; M6F/M7/M9 открыты.
 В M6 восстановлен численный clock:773instruction bytes/8scalar functions+256byte
 frame prefix,1275native checks/12FP modes внутри module/полного клиента;287objects /MT.
 Actual Platform01 FrameMove/GPU повторно прошёл с новыми clocks (2cases/59checks).
-Map cached time/packet/CLand/console integration и полное lighting ещё открыты.
+Следом packet8/5,CLand timestamp/tick cache и successful-load hook перенесены:
+130byte numeric fragment равен455,314checks/12FP modes/UTC+JST; actual CNetMap/CLand
+Platform01 GPU2cases/66checks. Актуальная сборка288objects /MT.
+Full CLand/transport/calendar/console/lighting domains ещё открыты.
 research/client455-clock-source.md.
+research/client455-map-time-source.md.
 Разница D3D8 базы и D3D9 эталона — обязательное
 восстановление M6, а не модернизация M8. Полные particles/clock/Character/UI/network
 не сертифицированы; нормальный WinMain и входной455 EXE не запускались.

@@ -66,12 +66,16 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Восстановить cached time fields/client packet origin и clock вызовы CLand4550x7C8B60.
-   Численный clock уже восстановлен:8functions+256byte frame prefix,773bytes equal
-   обоим PE;1275native checks/12FP modes в module и полном клиенте. Actual Platform01
-   FrameMove/GPU повторно прошёл2cases/59checks. research/client455-clock-source.md.
-   0x7E3E55 — console %time, не network handler; %real_time тоже отдельная console
-   ветка. Эти команды, map cached fields и весь lighting ещё открыты.
+1. Восстановить console %time/%real_time и их actual input/caller;0x7E3E55 — не network.
+   Caller4335A0/RVA335A0,size8B3,call4335BD первым пробует local parser7E3B10, затем
+   GM/text-command fallback. Raw command-caller-0x4335a0.json уже сохранён; начать
+   с source ChatMsg_ChatCheatRequest_clzo/GUIChatWindow и найти соответствующий input edge.
+   Clock numeric уже восстановлен. Затем перенесены packet8/5,CLand timestamp/tick
+   cache и successful-load hook:130byte numeric fragment equal обоим PE,314native
+   checks/12FP modes/UTC+JST в module/full client; actual CNetMap/CLand Platform01
+   GPU2cases/66checks. research/client455-map-time-source.md. Full byte-index CLand
+   UI/camera/effect/failure path,root network и localtime32 old-CRT timezone/DST/
+   invalid domains ещё открыты. Byte0/value0 semantics и field+24 consumers исследовать.
 2. Полные particle455 options/curves/collision/emission и остальные resource consumers.
    Реальные selected5entities/5particles уже отрисованы; это не полная455parity.
 3. Восстановить D3D9/device/material/shader/lighting поведение455. Это обязательный
@@ -102,6 +106,9 @@ M5 gate: Invoke-Python.ps1 scripts/verify_client_m5.py.
 После следующих ревизий M5 historical gate: verify_client_m5.py --saved.
 Clock: build_client455_clock.py; после сборки verify_client_clock455.py [--lab],
 затем probe_client_clock455.py. Actual caller evidence: audit_client_time455.py.
+Map-time: build_client455_map_time.py → apply_client_map_time455.py → prepare_client_build.py
+→ normal/lab driver → verify_client_map_time455.py [--lab] → probe_client_clock455.py
+--map-time. GPU report --output inventory/client455-map-time-graphics-runtime.json.
 GPU clock regression: probe_client_graphics455.py --level Platform01 --output
 inventory/client455-clock-graphics-runtime.json (сохраняет прежний13case M5 report).
 Map/RPK tools: Invoke-Python.ps1 scripts/test_map455.py, затем

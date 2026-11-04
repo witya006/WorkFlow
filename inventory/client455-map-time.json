@@ -1,0 +1,75 @@
+{
+  "library": "work/recovered/client455/map-time/RFClient455MapTime.lib",
+  "library_sha256": "e51c6ca5ea26f51e8543c20c312ad3a66bcbe224a17a2e2813d682ed2f8d4998",
+  "source_sha256": {
+    "client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
+    "client455_map_time.h": "a70754f2db06d9e2e6238f141b1bde2af34a95bdb3cf05d52f078a73a0ded319",
+    "client455_map_time.cpp": "771ea3c2a2175ecb046f66c3e9d6d7c9eff088b2622136ba4493a339e1331394",
+    "test_client455_map_time.cpp": "9524e96088256d79c8c2261ea4d1b28df12c65dce7cdf3a602df451a30cbbd0b"
+  },
+  "object_sha256": "04e6fb36201df8a9d7e149844eebb25da8defd462120cfdd3460b1201cdc4f7d",
+  "clock_library_sha256": "e5834a4ad6ad7558ed8f303d7b81ebf782505fd6fea70cce73bd0d8cb4205ff0",
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "va": "0x7c8dc4",
+      "rva": "0x3c8dc4",
+      "size": 130,
+      "body_sha256": "6584bea3f8945a82ce97935524f24e7bf08527aa999e1212e6c73e6ee38f7321",
+      "relocations": [
+        {
+          "offset": 47,
+          "type": 20,
+          "symbol": "_RF455_GetDayRate",
+          "fragment_offset": 32
+        },
+        {
+          "offset": 138,
+          "type": 6,
+          "symbol": "_RF455_SecondsPerDay",
+          "fragment_offset": 123
+        }
+      ],
+      "instruction_identity_except_verified_operands": true
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "va": "0x7c8dc4",
+      "rva": "0x3c8dc4",
+      "size": 130,
+      "body_sha256": "6584bea3f8945a82ce97935524f24e7bf08527aa999e1212e6c73e6ee38f7321",
+      "relocations": [
+        {
+          "offset": 47,
+          "type": 20,
+          "symbol": "_RF455_GetDayRate",
+          "fragment_offset": 32
+        },
+        {
+          "offset": 138,
+          "type": 6,
+          "symbol": "_RF455_SecondsPerDay",
+          "fragment_offset": 123
+        }
+      ],
+      "instruction_identity_except_verified_operands": true
+    }
+  ],
+  "native_test": {
+    "checks": 314,
+    "failures": 0,
+    "first_failure": 0,
+    "precision_rounding_modes": 12,
+    "timezone_cases": [
+      "UTC0",
+      "JST-9"
+    ]
+  },
+  "scope": "Own module cache/packet fields and map-load arithmetic;130critical bytes equal455. Calendar uses current UCRT localtime32; complete old-CRT timezone/DST parity remains open. Client dispatcher/CLand integration tested separately."
+}

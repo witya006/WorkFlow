@@ -120,7 +120,8 @@
         "inventory/client455-weather-runtime.json",
         "research/client455-weather-source.md",
         "inventory/client455-graphics-runtime.json",
-        "research/client455-graphics-runtime.md"
+        "research/client455-graphics-runtime.md",
+        "inventory/client455-map-time-graphics-runtime.json"
       ],
       "scenarios": [
         "normal LoadLevel constructs EXT.spt filename",
@@ -128,7 +129,7 @@
       ],
       "gaps": [
         "full real particle/entity dependencies and GPU behavior",
-        "clock/server-time caller integration and full lighting"
+        "Full map/calendar/root-transport/console/lighting domain; selected8/5 cache/load hook restored"
       ]
     },
     {
@@ -249,7 +250,8 @@
         "inventory/client455-graphics-runtime.json",
         "research/client455-graphics-runtime.md",
         "inventory/client455-clock-runtime.json",
-        "inventory/client455-clock-graphics-runtime.json"
+        "inventory/client455-clock-graphics-runtime.json",
+        "inventory/client455-map-time-graphics-runtime.json"
       ],
       "scenarios": [
         "two distinct particles loaded/released",
@@ -265,7 +267,7 @@
       "gaps": [
         "full particle455 implementation/curves/options and GPU parity",
         "unsafe asset-failure edges",
-        "Cached client map time/packet/CLand/console integration and full lighting; clock numeric routines restored separately"
+        "Full map/calendar/root-transport/console/lighting domain; selected8/5 cache/load hook restored"
       ]
     },
     {
@@ -420,9 +422,66 @@
         "Actual Platform01 interior/night weather states through FrameMove and GPU"
       ],
       "gaps": [
-        "Cached map time fields/client packet origin and CLand0x7C8B60 caller source",
-        "Console %time0x7E3E55 and %real_time are not network handlers and remain unported",
-        "Full lighting/sky, unmasked-exception domain and reference full startup FPU state"
+        "Complete CLand byte-index UI/camera/effects/failure path; selected packet/cache/load hook restored separately",
+        "Console %time/%real_time remain unported; root network and other messages not verified",
+        "Old-CRT localtime32 timezone/DST/invalid/init domains,full lighting/sky/unmasked exceptions/reference startup FPU state"
+      ]
+    },
+    {
+      "id": "CLIENT-MAP-TIME-009",
+      "description": "Client map message8/5,CLand timestamp/tick cache and successful-load clock hook",
+      "status": "implemented",
+      "verification": "Partial:130critical numeric bytes match both455PE;314checks/12FP modes/UTC+JST in module/full client. Actual CNetMsgProcessor_Map/CLand char* load +public post-load hook,Platform01 GPU/release2cases/66checks. Full byte-index/root network/calendar domain remains open.",
+      "reference": [
+        {
+          "va": "0x5801b0",
+          "rva": "0x1801b0",
+          "role": "map8/5 dispatch"
+        },
+        {
+          "va": "0x580ae0",
+          "rva": "0x180ae0",
+          "role": "payload DWORD+1/+5"
+        },
+        {
+          "va": "0x580b40",
+          "rva": "0x180b40",
+          "role": "timestamp/tick cache"
+        },
+        {
+          "va": "0x7c8dc4",
+          "rva": "0x3c8dc4",
+          "size": 130,
+          "role": "numeric fragment"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_map_time.cpp",
+        "scripts/native/client455_map_time.h",
+        "work/client-build/source/RF_Client/cland.cpp",
+        "work/client-build/source/RF_Client/cland.h",
+        "work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp"
+      ],
+      "option": "RF_CLIENT_455_MAP_TIME",
+      "evidence": [
+        "inventory/client455-time-callers.json",
+        "inventory/client455-map-time.json",
+        "inventory/client455-map-time-link.json",
+        "inventory/client455-map-time-runtime.json",
+        "inventory/client455-map-time-graphics-runtime.json",
+        "research/client455-map-time-source.md"
+      ],
+      "scenarios": [
+        "Unaligned9byte payload/ignored byte0/cache/tick capture",
+        "Init clears value0/timestamp,leaves receipt tick/mapDay unchanged",
+        "localtime32 UTC0/JST-9 dates,tick rollover,elapsed complete hours dropped and day carry omitted",
+        "12FP modes;instruction-identical130byte numeric kernel and verified E9 rate thunk",
+        "Synthetic8/5 through real processor and CLand;mapIndex12/day1,0.5game/real fractions;real Platform01 FrameMove/render/release"
+      ],
+      "gaps": [
+        "Byte0/value0 meaning and other field+24 consumers",
+        "Old-CRT timezone/DST/localtime32/invalid/init domains",
+        "Complete byte-index CLand UI/camera/effects/error sequence and root CNetworkMgr/socket/transport/other messages"
       ]
     }
   ],

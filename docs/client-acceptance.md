@@ -58,6 +58,13 @@ FrameMove/GPU повторно прошёл. Это закрывает числ�
 окружении; cached client map time/packet/console integration и lighting остаются
 открытыми. research/client455-clock-source.md. Критерии полноты не изменены.
 
+Следом selected client map message8/5 →CLand cache→successful-load hook перенесён
+и проверен:314native checks/12FP modes/UTC+JST,130instruction bytes equal455,
+actual client processor/CLand/Platform01 GPU2cases/66checks. Full byte-index CLand
+UI/effects/error path,root network/transport,opaque fields и old-CRT localtime32
+timezone/DST/invalid domains остаются открытыми. Это не закрывает строку «Клиентская
+сеть» или полный жизненный цикл. research/client455-map-time-source.md.
+
 Ресурсный аудит M5 закрепил78MapEntity RPK,70BSP39/93EBP20 и20weather assets.
 Header/table round trips,8tool parser tests и DDS mip sizes прошли, native/GPU
 load в том цикле не выполнялись. Последующий source RPK/fopen/exists и particle end

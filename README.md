@@ -20,9 +20,10 @@ M5 закрыт для первого выбранного участка: helpe
 на lobby и Platform01. На Platform01 загружены23helpers/8interiors; два погодных слоя
 правильно меняют состояния внутри/снаружи и ночью/днём.13GPU cases/321checks прошли.
 Основание и границы: research/client-m5-checkpoint.md, client455-graphics-runtime.md.
-М6 в работе: расчёт двух clocks восстановлен,773instruction bytes и1275native checks/
-12FP modes. Далее cached map time/CLand/console integration и остальные подсистемы.
-research/client455-clock-source.md. Полные particles/Character/renderer/UI/network открыты.
+М6 в работе: расчёт clocks,packet8/5,CLand time cache и load hook восстановлены.
+1275clock+314map-time native checks/12FP modes; actual CNetMap/CLand и Platform01 GPU
+прошли. research/client455-map-time-source.md. Далее console/calendar/lighting и
+остальные подсистемы; полные particles/Character/renderer/UI/network открыты.
 Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
 M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 

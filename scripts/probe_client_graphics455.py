@@ -52,7 +52,7 @@ def main():
             attempt=len(list(folder.glob('result-*.json')))+1
         else:attempt=1
         output=folder/f'result-{attempt:03}.json'
-        for name in ['frame.bmp','particle.json','level.json','fpu.json']:
+        for name in ['frame.bmp','particle.json','level.json','fpu.json','map-time.json']:
             transient=folder/name
             if transient.exists():
                 if not transient.resolve().is_relative_to(root.resolve()):raise ValueError('Transient artifact outside own lab')
@@ -87,6 +87,7 @@ def main():
         if (folder/'particle.json').exists():result['particle']=json.loads((folder/'particle.json').read_text())
         if (folder/'level.json').exists():result['level']=json.loads((folder/'level.json').read_text())
         if (folder/'fpu.json').exists():result['fpu_stages']=json.loads((folder/'fpu.json').read_text())
+        if (folder/'map-time.json').exists():result['map_time']=json.loads((folder/'map-time.json').read_text())
         frame=folder/'frame.bmp'
         if frame.exists():
             image=frame.read_bytes()
