@@ -61,6 +61,16 @@ foreach ($property in $commands.source_sha256.PSObject.Properties) {
 }
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_TIME_COMMANDS' })) { throw '455 time command source selection missing.' }
 $arguments += '-DRF_CLIENT_455_TIME_COMMANDS=ON'
+$animationTiming = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-timing-build.json') -Raw | ConvertFrom-Json
+$animationTimingCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-timing-cpu.json') -Raw | ConvertFrom-Json
+if ($animationTimingCpu.native.status -ne 'PASS' -or $animationTimingCpu.native.cases -ne 612 -or
+    $animationTimingCpu.native.fp_modes -ne 12 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-animation-timing-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $animationTimingCpu.build_report_sha256 -or
+    -not ($behavior | Where-Object { $_.animation_timing.option -eq 'RF_CLIENT_455_ANIMATION_TIMING' })) { throw '455 actual animation timing source proof missing or stale.' }
+foreach ($property in $animationTiming.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 animation timing source changed.' }
+}
+$arguments += '-DRF_CLIENT_455_ANIMATION_TIMING=ON'
 $mapTime = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-map-time.json') -Raw | ConvertFrom-Json
 if ($mapTime.native_test.failures -ne 0 -or $mapTime.native_test.checks -lt 314 -or $mapTime.native_test.precision_rounding_modes -ne 12) { throw '455 map time component proof missing.' }
 if ($mapTime.clock_library_sha256 -ne $clock.library_sha256) { throw 'Map time was not tested against the current clock component.' }
@@ -349,6 +359,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_timing.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_timing.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_pose.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_pose.py }

@@ -1583,7 +1583,7 @@
     "file": "work/client-build/source/RF_Client/cresobject.cpp",
     "original_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
     "input_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
-    "patched_sha256": "9df31c5bbbf65f4d663b512dfa36101910e7242977df4310e72afb499a2b1335",
+    "patched_sha256": "946b78723cb2909912ea2eea8359518c04385da5fed6cc8b78fa4f0eddae6f9a",
     "build_option": "RF_CLIENT_455_DRAW_ARGUMENTS",
     "legacy_branch_preserved": true,
     "reason": "455 passes object m_fScale and zero scroll; no invented legacy default arguments.",
@@ -1710,7 +1710,108 @@
           }
         ]
       }
-    ]
+    ],
+    "build_options": [
+      "RF_CLIENT_455_DRAW_ARGUMENTS",
+      "RF_CLIENT_455_ANIMATION_TIMING"
+    ],
+    "animation_timing": {
+      "option": "RF_CLIENT_455_ANIMATION_TIMING",
+      "legacy_branches_preserved": true,
+      "reference_report_sha256": "b74591a509412fb5e74bdcf2e947f2fbd1b86efe3a9905c195454dbbe03466c1",
+      "source_apis": [
+        "RF455_AdvanceAnimationFrameValue",
+        "RF455_InitializeAnimationControl"
+      ],
+      "binary_evidence": [
+        {
+          "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "frame_producer",
+              "rva": "0x3cd560",
+              "bytes": 683,
+              "sha256": "53da7d79c8b541ce4ab190f7ee9c4412eecb34c9f721d16b26694c24edb76a5c"
+            },
+            {
+              "name": "animation_ctor",
+              "rva": "0x3ccc30",
+              "bytes": 96,
+              "sha256": "34c3daeee04b6e6cc98722843587a67bba79f536c2b4b351c54b691982fc4c4b"
+            },
+            {
+              "name": "secondary_ctor",
+              "rva": "0x51c490",
+              "bytes": 118,
+              "sha256": "89bdfd21728673ee21ce842e25c2f77e2f2c2d7912c62be76ff01db90cc0b233"
+            },
+            {
+              "name": "secondary_ctor_wrapper",
+              "rva": "0x3cd1b0",
+              "bytes": 30,
+              "sha256": "7a76a3c1775a71f66ac65e2b3bb6d34e260f98895591b05c7aaee0d40312b72a"
+            },
+            {
+              "name": "elapsed_getter",
+              "rva": "0x4b3e30",
+              "bytes": 7,
+              "sha256": "9e5ebfbd1089e6b79c75c6349d1dede1fc0166c60d58b722208b1d5e0abe3343"
+            },
+            {
+              "name": "speed_getter",
+              "rva": "0x48180",
+              "bytes": 25,
+              "sha256": "390cb89a4dbce4c67c65099815ee0dcc9fee9148577f9d9d3674356045ce17a7"
+            }
+          ]
+        },
+        {
+          "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "frame_producer",
+              "rva": "0x3cd560",
+              "bytes": 683,
+              "sha256": "53da7d79c8b541ce4ab190f7ee9c4412eecb34c9f721d16b26694c24edb76a5c"
+            },
+            {
+              "name": "animation_ctor",
+              "rva": "0x3ccc30",
+              "bytes": 96,
+              "sha256": "34c3daeee04b6e6cc98722843587a67bba79f536c2b4b351c54b691982fc4c4b"
+            },
+            {
+              "name": "secondary_ctor",
+              "rva": "0x51c490",
+              "bytes": 118,
+              "sha256": "89bdfd21728673ee21ce842e25c2f77e2f2c2d7912c62be76ff01db90cc0b233"
+            },
+            {
+              "name": "secondary_ctor_wrapper",
+              "rva": "0x3cd1b0",
+              "bytes": 30,
+              "sha256": "7a76a3c1775a71f66ac65e2b3bb6d34e260f98895591b05c7aaee0d40312b72a"
+            },
+            {
+              "name": "elapsed_getter",
+              "rva": "0x4b3e30",
+              "bytes": 7,
+              "sha256": "9e5ebfbd1089e6b79c75c6349d1dede1fc0166c60d58b722208b1d5e0abe3343"
+            },
+            {
+              "name": "speed_getter",
+              "rva": "0x48180",
+              "bytes": 25,
+              "sha256": "390cb89a4dbce4c67c65099815ee0dcc9fee9148577f9d9d3674356045ce17a7"
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     "file": "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",

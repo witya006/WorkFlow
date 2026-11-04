@@ -1,0 +1,97 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "0aec5bc1ba169988f5bb1778123e2b214af23dc7062c23c776a8edad1fa6d67e",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [
+      {
+        "symbol": "_RF455_AdvanceAnimationFrameValue",
+        "rva": "0x18ea20",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      },
+      {
+        "symbol": "_RF455_InitializeAnimationControl",
+        "rva": "0x18eaa0",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_InitializeAnimationControl",
+        "caller": "??0CAnimation@@QAE@XZ",
+        "section": 7,
+        "offset": "0xc",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb0c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb8f",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "object_sha256": "a55f190c54b495296c2b744558c42df02faf41ae30e0bc001ee0d5b6868e0b4f",
+    "module_sha256": "d5b0a68d6de09546053e76dbeed6d125518915353bcf196bcb7aad2f6f8c37eb",
+    "scope": "Normal actualCResObject numeric andCAnimation initialization selectsource455;full455CharacterABI/normalrenderer stillopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae",
+    "exe_bytes": 5225472,
+    "entry_rva": "0x89b3",
+    "functions": [
+      {
+        "symbol": "_RF455_AdvanceAnimationFrameValue",
+        "rva": "0x2f3940",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      },
+      {
+        "symbol": "_RF455_InitializeAnimationControl",
+        "rva": "0x2f39e0",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      },
+      {
+        "symbol": "_RF455_InitializeSecondaryState",
+        "rva": "0x2f3a70",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_InitializeAnimationControl",
+        "caller": "??0CAnimation@@QAE@XZ",
+        "section": 7,
+        "offset": "0xc",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb0c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb8f",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "object_sha256": "79f4f603f1b5d945bf54f3ae231c5d351511e6407b7b32eb4d17a1d7612b16ce",
+    "module_sha256": "f672c438960455fd56ce6beff470dc09b2d7ca2bea5fc9f7726b7c86baa802e3",
+    "scope": "Normal actualCResObject numeric andCAnimation initialization selectsource455;full455CharacterABI/normalrenderer stillopen"
+  }
+}

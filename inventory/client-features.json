@@ -1191,7 +1191,7 @@
         {"rva":"0x51df90","role":"quaternion channel0 binary search/Slerp/negateW"},
         {"rva":"0x51e160","role":"translation channel1 binary search"},
         {"rva":"0x523a40","role":"main FrameMove phases;partial source"},
-        {"rva":"0x51e270","role":"secondary motion still reference only"}
+        {"rva":"0x51e270","role":"secondary motion source tracked by024;staticCRT sine incomplete"}
       ],
       "implementation":["scripts/native/client455_pose.h","scripts/native/client455_pose.cpp"],
       "option":"RF_CLIENT_455_POSE",
@@ -1214,7 +1214,7 @@
       ],
       "gaps":[
         "Secondary91E270 source flow nowtracked by024;missing mathcontext stillRF_POSE_SECONDARY. StaticCRTsin/profiling/privateglobal scratchABI notrestored",
-        "Actual frame/transition producers,AnimationManager/asyncworker,skinningdraw/declarations/shaders/normaltypedconsumers/fullD3D9renderer remainopen",
+        "Selected actualframe arithmetic/CAnimation ctor restored by025;upstreamelapsedclock/fulltransitionproducers/AnimationManager/asyncworker/skinningdraw/declarations/shaders/normaltypedconsumers/fullD3D9renderer remainopen",
         "Real matrix comparisons prove source structural identities,not independent fullreferenceFrameMove execution equivalence;no referenceEXE run",
         "One parent-ramp analytic childtranslation check allows1e-4 dueobservedD3DXinverse deviation;notallmathbitproof/arbitrarymatrices/NaN/unmaskedFP coverage",
         "Own span/count/pointer/singularmatrix/nullallocation policies differfromunchecked reference failure/exception/unwind;31+bone overlap unsafe domains notcertified",
@@ -1250,10 +1250,50 @@
       ],
       "gaps":[
         "Reference static__CIsin SSE/defaultimplementation notported. sineFloat mandatory backend;lab modernMTsin(double)->float32 explicitlynotreference bitparity",
-        "Actor defaultstate constructor/frame-transition producer/normal binding/AnimationManager/worker notrestored",
+        "Known84secondarydefaults andselected framearithmetic restored by025;fullactorconstructor/normal secondarybinding/upstreamelapsedclock/transitions/AnimationManager/worker remainopen",
         "Independent scalar expectations onlyfinite/nearestPC53;arbitraryNaN/unmaskedFP/OOM/uncheckedpointer/name/exception/unwind domains andfull privateglobalsABI open",
         "Matrix tests checkcallflow/anglebits/finiteposes/selectedpreservedfields,not independently executedfullreference secondarymatrixgoldens",
         "CPUonly/nodraw,no normalWinMain orreferenceEXE execution;fullD3D9renderer/shaders/typedconsumers/M6F/M9 remainopen"
+      ]
+    },
+    {
+      "id":"ANIMATION455-TIMING-025",
+      "description":"Selected source455 frame numeric kernel/CAnimation100 constructor integrated into normal CResObject;known secondary84 initializer recovered",
+      "status":"implemented",
+      "verification":"612 independent rational cases/12maskedFPmodes/614checks standalone and full-client;16 actual CResObject scenarios/56checks;normal2sourceAPIs/3actualE8REL32calls from ctor and frame method. ScopedPlatform01/device2cases69checks passed,previous frameSHA preserved. 290normalMTobjects/190labTUs;unchangedbulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x3cd560","bytes":683,"role":"CResObject frame update including selected numeric paths"},
+        {"rva":"0x3ccc30","bytes":96,"role":"CAnimation100 constructor"},
+        {"rva":"0x51c490","bytes":118,"role":"Known secondary84 inline region initializer"},
+        {"rva":"0x3cd1b0","bytes":30,"role":"Actor secondary constructor wrapper"},
+        {"rva":"0x4b3e30","bytes":7,"role":"Elapsedfloat getter;upstream clock not proved"},
+        {"rva":"0x048180","bytes":25,"role":"Animationcontrol speed getter"}
+      ],
+      "implementation":["scripts/native/client455_animation_timing.h","scripts/native/client455_animation_timing.cpp","scripts/apply_client455_animation_timing.py"],
+      "option":"RF_CLIENT_455_ANIMATION_TIMING",
+      "evidence":[
+        "inventory/client455-animation-timing-reference.json",
+        "inventory/client455-animation-timing-build.json",
+        "inventory/client455-animation-timing-cpu.json",
+        "inventory/client455-animation-timing-client.json",
+        "inventory/client455-animation-timing-link.json",
+        "inventory/client455-animation-timing-graphics.json",
+        "inventory/client455-animation-timing-checkpoint.json",
+        "research/client455-animation-timing.md"
+      ],
+      "scenarios":[
+        "X87 elapsedfloat*1000double*5double+unsignedcarry/double spill/speed/current/signed64chop/lowDWORD;FPcontrolword restored;finite/nonfinite/overflow/subnormal/wrap",
+        "Whole100byte CAnimation andknown84byte secondarydefaults;actualcompiledCAnimation size100 asserted",
+        "Actual CResObject automatic/explicit/STOP/loop/clamp/interpolation complete-incomplete/missing-disabledIP/zerospeed/carry/highDWORD/negativeelapsed/max0/nullbone;realR3SetLoopTime input restored",
+        "Normal ctor/2numericpaths callactual R3EngineMT member;runtime intentionally changed,not asserted equalprevious snapshot",
+        "ScopedPlatform01/device preservedframeSHA/COM/Dmalloc0;oldlargeANI/texture/sharedbuffer/manager suites notrepeated"
+      ],
+      "gaps":[
+        "Upstream elapsed clock smoothing/rate andCPU/FPU conditions not proved;selected numeric equality requires same elapsed input",
+        "Fullactorctor/lifecycle/derivedvirtualflagbehavior/normal secondary84binding/full455CBone-ChAnimationABI/AnimationManager/worker remainopen",
+        "Known84 initializer available tocomponent/lab butnormal actorsecondary binding notconnected;full secondaryclass size notclaimed",
+        "MaskedFPresult/CW tested;unmaskedtraps/exceptionflags/unwind/OOM/privateABI notcertified",
+        "Normal Character455 skin/draw/shaders/staticCRTsin/fullD3D9renderer/M6F/M9 remainopen;ownentry notnormalWinMain orreferenceEXE execution"
       ]
     }
   ],

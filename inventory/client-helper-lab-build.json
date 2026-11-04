@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T22:47:53.694827+00:00",
+  "checked_at_utc": "2026-11-04T23:09:29.525610+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 189,
+  "generated_objects": 190,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -28,6 +28,7 @@
     "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
     "RF_LEGACY_NEW_UI": "ON",
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
+    "RF_CLIENT_455_ANIMATION_TIMING": "ON",
     "RF_CLIENT_455_CLOCK": "ON",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
     "RF_CLIENT_455_MAP_TIME": "ON",
@@ -67,10 +68,17 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "ea56ea242d4c5edf407e0dbc125e9e932a1df963bfec68025acf0bece12df18b",
+    "scripts/native/client_helper_lab.cpp": "6fb3bd928ccbcab7459b724b011a7c913690ae5d58bb136b0038f3797463bce8",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "9b3e683569b24396cbdd330fea175d03d59623911df3ffc5dd9411e94efc1c12"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae"
+  },
+  "animation_timing_input_sha256": {
+    "scripts/native/client455_animation_timing.cpp": "513906795753c439c16b135b96b5a032d0565d88a6fc75f8b6abf6135bf94dfb",
+    "scripts/native/client455_animation_timing.h": "bd64d105c1a4f21c318a6e828e5ecd31c528c338a21c74f80558c727cbc66dfb",
+    "scripts/native/test_client455_animation_timing.cpp": "81b3a67f86bbe3ac1ad9a0d06a827e128673e51a3f2e6b0d67e05aefbb599b52",
+    "scripts/native/client_animation_timing_lab.inc": "70198ffaac2a3301d3b12973007095086868d6a7f6c0ded7bd9aecfbd9985ce4",
+    "work/client-build/source/RF_Client/cresobject.cpp": "946b78723cb2909912ea2eea8359518c04385da5fed6cc8b78fa4f0eddae6f9a"
   },
   "mesh08_input_sha256": {
     "scripts/native/client455_mesh08.cpp": "be59a96edbcc4b243bd3071935466fe3c565f184573bbfb4659b3c2269dc4096",

@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Актуальное дополнение 05.11: восстановленный расчёт кадра и CAnimation ctor
+подключены к обычному клиенту через R3EngineMT. Проверены 612 численных случаев,
+16 actual CResObject сценариев и короткая Platform01/device регрессия (2 случая).
+Normal290modernCOFF x86/MT, lab190clientTUs; установки не менялись. Runtime обычной
+сборки намеренно изменён выбранными вызовами, полный Character455/draw ещё открыт.
+Gate inventory/client455-animation-timing-checkpoint.json;
+research/client455-animation-timing.md. Старые большие runtime suites не повторялись.
+
 05.11 modelpipeline source:connectedMESH08route/lifetime10021HALchecks вcomponent
 иполномclientlab,393parts/276realuploads/59texturebindings,ownheap/COM/Dmalloc0.
 ТотжеpinnedD3DX9_36/HAL,no new installs;normalgame manager/renderer integration

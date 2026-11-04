@@ -100,6 +100,12 @@ option(RF_CLIENT_455_HELPER_LOADER "Select verified 455 helper-loader behavior" 
 option(RF_CLIENT_455_WEATHER "Restore two-layer weather and helper interior integration" OFF)
 option(RF_CLIENT_455_CLOCK "Restore exact x87 day and real-time clock arithmetic" OFF)
 option(RF_CLIENT_455_TIME_COMMANDS "Restore grade-gated local time text commands" OFF)
+option(RF_CLIENT_455_ANIMATION_TIMING "Restore source455 frame arithmetic and animation control constructor" OFF)
+if(RF_CLIENT_455_ANIMATION_TIMING)
+  target_sources(R3EngineClientMT PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_animation_timing.cpp")
+  target_include_directories(R3EngineClientMT PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native")
+  set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client/cresobject.cpp" APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_ANIMATION_TIMING)
+endif()
 if(RF_CLIENT_455_TIME_COMMANDS)
   if(NOT RF_CLIENT_455_CLOCK)
     message(FATAL_ERROR "Time commands require restored clock routines")
@@ -207,6 +213,13 @@ target_include_directories(RF_Online PRIVATE
 option(RF_CLIENT_HELPER_LAB "Diagnostic helper-only entry in the full client; no normal game startup" OFF)
 if(RF_CLIENT_HELPER_LAB)
   target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp")
+  if(RF_CLIENT_455_ANIMATION_TIMING)
+    target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_animation_timing.cpp")
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_animation_timing.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF455_ANIMATION_TIMING_EMBEDDED)
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_ANIMATION_TIMING)
+  endif()
   target_compile_definitions(RF_Online PRIVATE WinMain=RFOriginalWinMain RF_CLIENT_HELPER_LAB)
   target_link_options(RF_Online PRIVATE "/INCLUDE:_RFOriginalWinMain@16")
   # Original game DLL code is not needed by this CPU-only diagnostic entry.

@@ -11,12 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний source участок M6: вторичные движения волос/юбок вFrameMove.
-36scalar scenarios и2настоящих скелетаCora проверены standalone/fullclientownentry;
-связаннаяpose проверка11пар также прошла. Это CPUбезdraw;точность старогоCRTsin,
-producer кадров/AnimationManager/normal consumers/D3D9renderer ещё открыты.
-M6/M6F/M7/M9 не закрыты. Подробности research/client455-secondary-motion.md,
-inventory/client455-secondary-checkpoint.json иdocs/next-steps.md.
+Последний участок M6: восстановлены численный расчёт кадра анимации и конструктор
+CAnimation. Они подключены к реальным CResObject/CAnimation обычной сборки:
+три места вызова двух source API. Проверены 612 численных случаев, 16 сценариев
+настоящего CResObject и короткая регрессия Platform01/device. Неизменённые большие
+наборы тестов не повторялись. Полный Character 455 и отрисовка ещё открыты.
+M6/M6F/M7/M9 не закрыты. Подробности research/client455-animation-timing.md,
+inventory/client455-animation-timing-checkpoint.json и docs/next-steps.md.
 
 История предшествующих этапов (актуальная очередь выше):
 

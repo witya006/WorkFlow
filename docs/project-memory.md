@@ -23,6 +23,28 @@
 
 ## Последний проверенный результат
 
+В scripts/native/client455_animation_timing.{h,cpp} восстановлены расчёт кадра
+7CD560/RVA3CD560, конструктор CAnimation 7CCC30/RVA3CCC30 и известный secondary
+prefix84 91C490/RVA51C490. Два API встроены в обычный клиент через настоящий
+R3EngineMT: ctor и два численных пути CResObject (три E8 REL32 callsites).
+612 независимых Fraction случаев/12 masked FP modes, 614 component checks;
+16 реальных CResObject сценариев/56 checks в full-client own entry прошли.
+Короткая Platform01/device проверка: 2 случая/69 checks, прежние frame SHA,
+COM/Dmalloc0. Старые большие runtime suites не повторялись.
+Gate inventory/client455-animation-timing-checkpoint.json;
+research/client455-animation-timing.md. Normal snapshot character455-animation-timing:
+2451456B/entryRVA1BC450,
+SHA0aec5bc1ba169988f5bb1778123e2b214af23dc7062c23c776a8edad1fa6d67e.
+Lab5225472B/entryRVA89B3,
+SHA9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae.
+Normal180client+64engine+46JPEG=290modernCOFF/MT; lab190clientTUs.
+Normal runtime намеренно изменён выбранными timing/ctor вызовами.
+Elapsed clock upstream и derived actor lifecycle ещё не доказаны; полный actor
+ctor/secondary binding/455 ABI/renderer не восстановлены. Known84 default initializer
+пока доступен компоненту/lab, но не подключён к normal actor secondary region.
+
+Предыдущий результат:
+
 Source secondary91E270 вscripts/native/client455_secondary.{h,cpp} подключён
 вRFClient455Pose.lib/UpdateCharacterPose. State84/global28,5oscillators и5effects,
 36whole-state scalarcases;CoraFemale38parts/all5effects иarmor06135parts/3skirts,
@@ -32,7 +54,7 @@ Static reference__CIsin ещё не source:mandatory sineFloat callback;lab яв
 modernMTsin(double)→float32,не bitparity proof. Secondary unit частичный именно
 вэтомnumeric/backend/normalconsumer смысле,не успешная пустая замена.
 
-Current gateinventory/client455-secondary-checkpoint.json;
+Historical gateinventory/client455-secondary-checkpoint.json;
 research/client455-secondary-motion.md. Связаннаяpose regression пройдена:
 11BN→MESH08pairs/132updates/2298skin matrices standalone/fullclient,прежнийрезультат.
 Normal snapshotcharacter455-secondary:2451456B/entryRVA1BC4B0,
@@ -46,7 +68,8 @@ objects такжеx86/MT. ANI/GPU/manager/Platform01 runtime suites не пов�
 ## Следующий шаг
 
 1. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
-   dispatcher),actor secondary defaults ифактическийproducer frame/transition.
+   dispatcher), полный actor lifecycle/secondary binding, upstream elapsed clock
+   и frame/transition consumers. Численный producer и известные defaults готовы (025).
    Secondary flow source уже готов сrequiredmathcontext;RF_POSE_SECONDARY только
    приотсутствующем backend. Не повторять584instruction reverse/golden math безизменений.
 2. Полный AnimationManager/async worker/record ownership. Потом связать pose с
@@ -61,7 +84,12 @@ Owned66b26ca4/8115e37c closed/save; живых owned IDA sessions нет. Cached
 неверные D3DX stdcall prototypes/stack locals: использовать инструкции.
 Готовый framing/loader/geometry/material/parent reverse не повторять.
 Secondary rawsecondary-insn.txt/secondary-*.json втомжеartifactfolder. Borrower
-7CD430=this+500→model1184,cleared byFrameMove/no free;actor ctor покаunknown.
+7CD430=this+500→model1184,cleared byFrameMove/no free. Actor ctor7CCFA0 вызывает
+CAnimation ctor на+140 и secondary initializer на+500; полный lifecycle ещё открыт.
+Timing rawtiming-*.json в той же папке; owned77611a53/23cf5a01 закрыты/save.
+У7CD560 elapsed*1000*5+unsignedcarry сначала spill double, затем speed/current,
+FISTP signed64/chop и lowDWORD с восстановлением CW. Не заменять float выражением:
+при .03f/current160/speed1 PC53nearest получается309, floatshortcut даёт310.
 Skirt trigger quaternionW*Z<-.2,timers savedtime,неdecompilerinitialweights/quatbits.
 Sharedglobals1189738..50 — left/right/pony timers/XYZ/phase,неperactor.
 

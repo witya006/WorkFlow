@@ -12,6 +12,13 @@
 
 ## Текущий статус
 
+Актуальное дополнение M6: численный расчёт кадра и CAnimation ctor встроены в
+обычный клиент через R3EngineMT; три реальных callsites двух source API проверены.
+612 численных случаев/12 FP modes, 16 actual CResObject сценариев и короткая
+Platform01/device регрессия прошли. Known84 secondary defaults восстановлены;
+полный actor lifecycle, upstream elapsed clock и normal Character455/draw открыты.
+Gate inventory/client455-animation-timing-checkpoint.json. M6/M6F/M7/M9 открыты.
+
 M1 выполнен: R3Engine.lib, две чистые пересборки, все 58 объектов x86.
 M2: бинарный эталон закреплён по SHA-256, различия текущего клиента/backup исследованы.
 M3 выполнен для helper-only SPT: 140 файлов, 97 543 объекта, round trip и 7 тестов.
@@ -160,7 +167,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: завершить staticCRTsin/actor defaults/producer кадров и
+1. M6: завершить staticCRTsin/полный actor lifecycle/upstream elapsed clock и
    AnimationManager/worker. Key evaluators/основныеpose/transition/ramp/skinmatrices
    source готовы:11pairs/132updates standalone/fullclient CPU,5sourceC APIs;
    secondary state/effects подключены:36scalarcases/2realCoraBN/6updates;reference

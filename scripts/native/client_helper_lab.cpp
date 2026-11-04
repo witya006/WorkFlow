@@ -206,8 +206,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_POSE)
 #include "client_pose_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_ANIMATION_TIMING)
+#include "client_animation_timing_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_ANIMATION_TIMING)
+    if (!std::strcmp(command,"--rf-animation-timing-scenario")) ExitProcess(animationTimingScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_POSE)
     if (!std::strcmp(command,"--rf-pose-scenario")) ExitProcess(poseScenarioProbe());
     if (!std::strcmp(command,"--rf-secondary-scenario")) ExitProcess(poseScenarioProbe(true));

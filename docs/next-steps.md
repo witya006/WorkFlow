@@ -11,7 +11,17 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — secondary state84/global28/5effects91E270 вsourceFrameMove:
+Последний unit — численный расчёт кадра и CAnimation ctor в обычном клиенте.
+Два source API из R3EngineMT вызываются в настоящих CResObject/CAnimation:
+три callsites подтверждены. 612 численных случаев/12 FP modes и 16 actual actor
+сценариев прошли; Platform01/device 2cases/69checks, прежние frame SHA.
+Normal290modernCOFF/MT, lab190clientTUs. Runtime намеренно изменён timing/ctor
+вызовами; это не полное поведение 455. Known84 secondary defaults восстановлены,
+normal actor binding/full lifecycle и upstream elapsed clock ещё открыты.
+Gate inventory/client455-animation-timing-checkpoint.json;
+research/client455-animation-timing.md. Неизменённые большие тесты не повторялись.
+
+Предыдущий unit — secondary state84/global28/5effects91E270 вsourceFrameMove:
 36whole-state scalarcases/2actualCoraBN/6updates component/fullclient;6source APIs,
 heap/Dmalloc0. Связаннаяpose проверка11pairs/132updates прошла,прочиеoldbulk suites
 неповторялись. Gateinventory/client455-secondary-checkpoint.json;
@@ -56,7 +66,9 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 ## Очередь M6 → M9
 
 1. Завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
-   actor ctor/defaults иproducer кадров/transitions,AnimationManager/worker.
+   полный actor lifecycle/secondary binding, upstream elapsed clock и transition
+   consumers, AnimationManager/worker. Численный producer и known84 defaults
+   восстановлены в 025; повторно их не исследовать без новых фактов.
    Основныеpose/skinmatrix иsecondary source готовы;secondary requires mathcontext,
    missingbackend возвращаетRF_POSE_SECONDARY. Raw584secondaryinstructions+borrower
    7CD430cached;неповторятьэтотreverse. State84borrowedfromactor+500→model1184,

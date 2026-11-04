@@ -1,0 +1,108 @@
+{
+  "scope": "Normal client frame advance numeric contract andknown100/84byte constructors;not full actor/renderer acceptance",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "frame_producer",
+          "rva": "0x3cd560",
+          "bytes": 683,
+          "sha256": "53da7d79c8b541ce4ab190f7ee9c4412eecb34c9f721d16b26694c24edb76a5c"
+        },
+        {
+          "name": "animation_ctor",
+          "rva": "0x3ccc30",
+          "bytes": 96,
+          "sha256": "34c3daeee04b6e6cc98722843587a67bba79f536c2b4b351c54b691982fc4c4b"
+        },
+        {
+          "name": "secondary_ctor",
+          "rva": "0x51c490",
+          "bytes": 118,
+          "sha256": "89bdfd21728673ee21ce842e25c2f77e2f2c2d7912c62be76ff01db90cc0b233"
+        },
+        {
+          "name": "secondary_ctor_wrapper",
+          "rva": "0x3cd1b0",
+          "bytes": 30,
+          "sha256": "7a76a3c1775a71f66ac65e2b3bb6d34e260f98895591b05c7aaee0d40312b72a"
+        },
+        {
+          "name": "elapsed_getter",
+          "rva": "0x4b3e30",
+          "bytes": 7,
+          "sha256": "9e5ebfbd1089e6b79c75c6349d1dede1fc0166c60d58b722208b1d5e0abe3343"
+        },
+        {
+          "name": "speed_getter",
+          "rva": "0x48180",
+          "bytes": 25,
+          "sha256": "390cb89a4dbce4c67c65099815ee0dcc9fee9148577f9d9d3674356045ce17a7"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "frame_producer",
+          "rva": "0x3cd560",
+          "bytes": 683,
+          "sha256": "53da7d79c8b541ce4ab190f7ee9c4412eecb34c9f721d16b26694c24edb76a5c"
+        },
+        {
+          "name": "animation_ctor",
+          "rva": "0x3ccc30",
+          "bytes": 96,
+          "sha256": "34c3daeee04b6e6cc98722843587a67bba79f536c2b4b351c54b691982fc4c4b"
+        },
+        {
+          "name": "secondary_ctor",
+          "rva": "0x51c490",
+          "bytes": 118,
+          "sha256": "89bdfd21728673ee21ce842e25c2f77e2f2c2d7912c62be76ff01db90cc0b233"
+        },
+        {
+          "name": "secondary_ctor_wrapper",
+          "rva": "0x3cd1b0",
+          "bytes": 30,
+          "sha256": "7a76a3c1775a71f66ac65e2b3bb6d34e260f98895591b05c7aaee0d40312b72a"
+        },
+        {
+          "name": "elapsed_getter",
+          "rva": "0x4b3e30",
+          "bytes": 7,
+          "sha256": "9e5ebfbd1089e6b79c75c6349d1dede1fc0166c60d58b722208b1d5e0abe3343"
+        },
+        {
+          "name": "speed_getter",
+          "rva": "0x48180",
+          "bytes": 25,
+          "sha256": "390cb89a4dbce4c67c65099815ee0dcc9fee9148577f9d9d3674356045ce17a7"
+        }
+      ]
+    }
+  ],
+  "golden": "work/client-reference/character-timing455/timing.bin",
+  "golden_sha256": "2593943c5c0a40de91e78909741b3037facffdec835dce6592795724ebecb0ef",
+  "cases": 612,
+  "fp_modes": 12,
+  "oracle": "Independent Fraction precision24/53/64 and4rounding modes;double spill then signed64 truncation/lowDWORD. Masked nonfinite input yields integer-indefinite low0.",
+  "script_sha256": "2a3408d01cdedf4fe4915dbb7d40dc25be2ca085616d8c6346b66429d36b780d",
+  "confirmed": [
+    "CResObject7CD560 highlevel branches matchlegacy source;reference numericelapsedfloat*1000double*5double+unsignedcarry,spilldouble,speedfloat multiply+unsignedcurrent,truncate signed64/lowDWORD",
+    "CAnimation ctor7CCC30 zeros100,IDminus1/speed1,10invalid effectframes;91C490 initializesknown84secondaryinline region",
+    "Stop flag512 preventsadvance andretainscarry;loop256 restores160/old0;interpolationflag2048 advancesIPtime notboneframe;postwrite alwayspublishesmodel672 whenboneexists"
+  ],
+  "limits": [
+    "Caller source stilluseslegacytypedCBone modelABI;455FrameMove/D3D9normalconsumer integration remainsopen",
+    "Masked FP oracle,notunmaskedtrap/full process FPU exception-state proof",
+    "Frame timing comesfromactualsourceR3GetLoopTime;full upstream455 elapsedclock equivalence notproved"
+  ],
+  "raw_analysis": "artifacts/character-animation455/timing-*.json;owned77611a53closed/save"
+}

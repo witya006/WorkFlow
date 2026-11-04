@@ -1,0 +1,84 @@
+{
+  "scope": "Normal sourceCAnimation ctor/CResObject frame numeric integration,not fullCharacter455 orM9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "0aec5bc1ba169988f5bb1778123e2b214af23dc7062c23c776a8edad1fa6d67e",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [
+      {
+        "symbol": "_RF455_AdvanceAnimationFrameValue",
+        "rva": "0x18ea20",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      },
+      {
+        "symbol": "_RF455_InitializeAnimationControl",
+        "rva": "0x18eaa0",
+        "provider": "R3EngineMT:client455_animation_timing.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_InitializeAnimationControl",
+        "caller": "??0CAnimation@@QAE@XZ",
+        "section": 7,
+        "offset": "0xc",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb0c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_AdvanceAnimationFrameValue",
+        "caller": "?CalculateCurrentAnimationFrame@CResObject@@QAEXK@Z",
+        "section": 7,
+        "offset": "0xb8f",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "object_sha256": "a55f190c54b495296c2b744558c42df02faf41ae30e0bc001ee0d5b6868e0b4f",
+    "module_sha256": "d5b0a68d6de09546053e76dbeed6d125518915353bcf196bcb7aad2f6f8c37eb",
+    "scope": "Normal actualCResObject numeric andCAnimation initialization selectsource455;full455CharacterABI/normalrenderer stillopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae",
+    "exe_bytes": 5225472,
+    "entry_rva": "0x89b3"
+  },
+  "native": {
+    "status": "PASS",
+    "cases": 612,
+    "checks": 614,
+    "failures": 0,
+    "fp_modes": 12
+  },
+  "actual_caller": {
+    "status": "PASS",
+    "actual_cases": 16,
+    "checks": 56,
+    "failures": 0,
+    "dmalloc_balance": 0
+  },
+  "scoped_graphics_checks": 69,
+  "previous_frame_hashes_equal": true,
+  "normal_runtime_intentionally_changed": "CAnimationctor andtwo CResObject frame advance paths nowcall source455kernels",
+  "normal_modern_coff_objects": 290,
+  "lab_client_objects": 190,
+  "unchanged_bulk_suites_repeated": false,
+  "evidence_sha256": {
+    "client455-animation-timing-reference": "b74591a509412fb5e74bdcf2e947f2fbd1b86efe3a9905c195454dbbe03466c1",
+    "client455-animation-timing-build": "e896ad57ab496ab1a6217312c09eed5ffd98b3f7090f04e165638b68ce0c6304",
+    "client455-animation-timing-cpu": "1fbe7d6609d31fcea2c2e716bc2d63118510f0d9bf17d234f0f06bffa5244a75",
+    "client455-animation-timing-client": "d68b10e25166f526c246b042660517ae5c003facdd04c24aab332db6a3879ea2",
+    "client455-animation-timing-link": "1f6fc80d7fbb79511f99062a7a38d3c753bc9e9d5f288806aac38fdcd2ac7918",
+    "client455-animation-timing-graphics": "4271958f40e64ef3157e3817b7d03cee0611e94512e824cdcb84276fc3a02f7e",
+    "client-mt-variant": "6bc528ae4721d6f4d05a86a83e7012951c71ae73d8ce84be6f747c8f2ff130bd",
+    "client-behavior-patches": "701010afc674bb34c05457805b1355a4fdce5dafa5b8ed795aab0df35e3a5486"
+  }
+}
