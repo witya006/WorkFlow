@@ -336,6 +336,25 @@ Owned IDA1bf47ee9 закрыта/save;research/client455-time-commands-source.md
 Следующий critical path — Character sources/ABI перед D3D9; current header/import
 contract использует IDirect3DDevice8. M6/M6F/M7/M9 не закрыты.
 
+## M6: первый Character source unit
+
+Четыре legacy CPU mesh bindings восстановлены source и подключены normal/lab.
+245checks standalone/full-client и4COFFtests;три actual InitVertex E8 calls доходят
+до source. Skinned/unskinned CPU meshes3vertices/0faces загружаются/освобождаются.
+Pointer+160 задаёт штатный FindBlendParent,включая count0;constructor patch не сделан.
+455mesh5803/vertex64/inline blends отличаются от legacy1072/36/heap;first-match455
+противlast-matchlegacy учтён как gap. Full Character455/render/real assets открыты.
+Normal2450944bytes,entryRVA0x1BC340,SHA
+9cb2329eda37ff61548f7b24fcb70b617b85a151623e867ced71439972e3a794,не исполнялся.
+Lab4146176bytes,entryRVA0x7EAA,SHA
+d59233bc12b46799bc8cc5311acfeb6dcb09f3e900624eb3b1933d08458b1c46.
+289modern client/engine/JPEG x86/MT иown binding archive /MT проверены.
+1443clock/314map-time/703weather/30resource,432command cases/2628checks+20actual input,
+Platform01/device2GPUcases/69checks прошли.0GPUwarnings/errors,Dmalloc/COMbalance0,
+FPU007F,frame просмотрен;это map/weather regression,не CharacterGPU acceptance.
+Owned IDAc99d5253closed/save;8reference bodies/11instruction sites в обоих PE.
+research/character-mesh-source.md;inventory/character-mesh-source*.json.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

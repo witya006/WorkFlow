@@ -1,0 +1,313 @@
+{
+  "reference": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "mesh_construct",
+          "va": "0x9214e0",
+          "rva": "0x5214e0",
+          "size": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "mesh_destroy",
+          "va": "0x920fd0",
+          "rva": "0x520fd0",
+          "size": 210,
+          "sha256": "84f4b658dfa0e45551f7bab88ced32fb8abfbab5250f4e81de8475d119e0ecda"
+        },
+        {
+          "name": "load_real",
+          "va": "0x9238a0",
+          "rva": "0x5238a0",
+          "size": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        },
+        {
+          "name": "init_vertex",
+          "va": "0x93cd60",
+          "rva": "0x53cd60",
+          "size": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        },
+        {
+          "name": "find_by_name",
+          "va": "0x93ba40",
+          "rva": "0x53ba40",
+          "size": 87,
+          "sha256": "da3405967ac6877fae76e2c4ead66219aec4f9eb4540ba95aa1b8bbd6c329f47"
+        },
+        {
+          "name": "bind_parents",
+          "va": "0x93bab0",
+          "rva": "0x53bab0",
+          "size": 189,
+          "sha256": "aa9cf373221b7d1eb3dbfd9a3d93cb31a65cd06b925993db066707d472307c95"
+        },
+        {
+          "name": "rematch",
+          "va": "0x93bb70",
+          "rva": "0x53bb70",
+          "size": 193,
+          "sha256": "2b39b37d7ab0a1bb6d0d6453f031b39cd0fce2ca404603f01fa74e9d000656f3"
+        },
+        {
+          "name": "bind_blends",
+          "va": "0x93bc40",
+          "rva": "0x53bc40",
+          "size": 502,
+          "sha256": "46627b4ddb6c67df123da147d0885219447ac0334431a68f956e26ab7c82f5aa"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x921504",
+          "rva": "0x521504",
+          "bytes": "68ab160000",
+          "meaning": "Mesh storage5803bytes"
+        },
+        {
+          "va": "0x92150b",
+          "rva": "0x52150b",
+          "bytes": "e8a013f5ff",
+          "meaning": "Clear whole mesh via memset"
+        },
+        {
+          "va": "0x921519",
+          "rva": "0x521519",
+          "bytes": "810510961801ab160000",
+          "meaning": "Account5803bytes"
+        },
+        {
+          "va": "0x93bc5f",
+          "rva": "0x53bc5f",
+          "bytes": "81c2ba020000",
+          "meaning": "Blend loop reference base+698"
+        },
+        {
+          "va": "0x93bdb4",
+          "rva": "0x53bdb4",
+          "bytes": "899a50ffffff",
+          "meaning": "Blend count at+522"
+        },
+        {
+          "va": "0x93be02",
+          "rva": "0x53be02",
+          "bytes": "8dba54ffffff",
+          "meaning": "Copy parent pointers to+526"
+        },
+        {
+          "va": "0x93bb1c",
+          "rva": "0x53bb1c",
+          "bytes": "81c7ab160000",
+          "meaning": "Parent mesh stride5803"
+        },
+        {
+          "va": "0x93bb17",
+          "rva": "0x53bb17",
+          "bytes": "7411",
+          "meaning": "First match exits parent scan"
+        },
+        {
+          "va": "0x93bb94",
+          "rva": "0x53bb94",
+          "bytes": "83bd71130000007479",
+          "meaning": "Rematch requires external flag at+5495"
+        },
+        {
+          "va": "0x93bdc2",
+          "rva": "0x53bdc2",
+          "bytes": "83c040",
+          "meaning": "Inline blend matrices advance64bytes"
+        },
+        {
+          "va": "0x93bdf7",
+          "rva": "0x53bdf7",
+          "bytes": "d9508c",
+          "meaning": "Identity first element at loop base+646"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "mesh_construct",
+          "va": "0x9214e0",
+          "rva": "0x5214e0",
+          "size": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "mesh_destroy",
+          "va": "0x920fd0",
+          "rva": "0x520fd0",
+          "size": 210,
+          "sha256": "84f4b658dfa0e45551f7bab88ced32fb8abfbab5250f4e81de8475d119e0ecda"
+        },
+        {
+          "name": "load_real",
+          "va": "0x9238a0",
+          "rva": "0x5238a0",
+          "size": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        },
+        {
+          "name": "init_vertex",
+          "va": "0x93cd60",
+          "rva": "0x53cd60",
+          "size": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        },
+        {
+          "name": "find_by_name",
+          "va": "0x93ba40",
+          "rva": "0x53ba40",
+          "size": 87,
+          "sha256": "da3405967ac6877fae76e2c4ead66219aec4f9eb4540ba95aa1b8bbd6c329f47"
+        },
+        {
+          "name": "bind_parents",
+          "va": "0x93bab0",
+          "rva": "0x53bab0",
+          "size": 189,
+          "sha256": "aa9cf373221b7d1eb3dbfd9a3d93cb31a65cd06b925993db066707d472307c95"
+        },
+        {
+          "name": "rematch",
+          "va": "0x93bb70",
+          "rva": "0x53bb70",
+          "size": 193,
+          "sha256": "2b39b37d7ab0a1bb6d0d6453f031b39cd0fce2ca404603f01fa74e9d000656f3"
+        },
+        {
+          "name": "bind_blends",
+          "va": "0x93bc40",
+          "rva": "0x53bc40",
+          "size": 502,
+          "sha256": "46627b4ddb6c67df123da147d0885219447ac0334431a68f956e26ab7c82f5aa"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x921504",
+          "rva": "0x521504",
+          "bytes": "68ab160000",
+          "meaning": "Mesh storage5803bytes"
+        },
+        {
+          "va": "0x92150b",
+          "rva": "0x52150b",
+          "bytes": "e8a013f5ff",
+          "meaning": "Clear whole mesh via memset"
+        },
+        {
+          "va": "0x921519",
+          "rva": "0x521519",
+          "bytes": "810510961801ab160000",
+          "meaning": "Account5803bytes"
+        },
+        {
+          "va": "0x93bc5f",
+          "rva": "0x53bc5f",
+          "bytes": "81c2ba020000",
+          "meaning": "Blend loop reference base+698"
+        },
+        {
+          "va": "0x93bdb4",
+          "rva": "0x53bdb4",
+          "bytes": "899a50ffffff",
+          "meaning": "Blend count at+522"
+        },
+        {
+          "va": "0x93be02",
+          "rva": "0x53be02",
+          "bytes": "8dba54ffffff",
+          "meaning": "Copy parent pointers to+526"
+        },
+        {
+          "va": "0x93bb1c",
+          "rva": "0x53bb1c",
+          "bytes": "81c7ab160000",
+          "meaning": "Parent mesh stride5803"
+        },
+        {
+          "va": "0x93bb17",
+          "rva": "0x53bb17",
+          "bytes": "7411",
+          "meaning": "First match exits parent scan"
+        },
+        {
+          "va": "0x93bb94",
+          "rva": "0x53bb94",
+          "bytes": "83bd71130000007479",
+          "meaning": "Rematch requires external flag at+5495"
+        },
+        {
+          "va": "0x93bdc2",
+          "rva": "0x53bdc2",
+          "bytes": "83c040",
+          "meaning": "Inline blend matrices advance64bytes"
+        },
+        {
+          "va": "0x93bdf7",
+          "rva": "0x53bdf7",
+          "bytes": "d9508c",
+          "meaning": "Identity first element at loop base+646"
+        }
+      ]
+    }
+  ],
+  "legacy": [
+    {
+      "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
+      "object_sha256": "3849deb835602cee422b6b2e904a6ab8d7dc0f73958f89459362b6529c2eedcd",
+      "file_offset": 48240,
+      "size": 2254,
+      "body_sha256": "63924b92cb70df2e919c241c9d2d87229f47282da784fcb157324499b9142491",
+      "rva": null
+    },
+    {
+      "symbol": "?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z",
+      "object_sha256": "3849deb835602cee422b6b2e904a6ab8d7dc0f73958f89459362b6529c2eedcd",
+      "file_offset": 53469,
+      "size": 551,
+      "body_sha256": "69c065c67db061fea42bdcb69d244bf155e8e2aca4cd328f8c624925b374e459",
+      "rva": null
+    },
+    {
+      "symbol": "??0ObjectMesh@@QAE@XZ",
+      "object_sha256": "46833cbe908304571d46eeb9e07712a2ef17d2edcf9b7b8e06a5ef363d731e61",
+      "file_offset": 48496,
+      "size": 443,
+      "body_sha256": "01ce3fdc713a1c6a4338bb271895a74994e8abc41597db8025156f9daed95488",
+      "rva": null
+    },
+    {
+      "symbol": "??1ObjectMesh@@QAE@XZ",
+      "object_sha256": "46833cbe908304571d46eeb9e07712a2ef17d2edcf9b7b8e06a5ef363d731e61",
+      "file_offset": 49652,
+      "size": 124,
+      "body_sha256": "31087247b5d1a1dc8290696799c717e12e1546e960a6df524c9f045ebbef3401",
+      "rva": null
+    }
+  ],
+  "confirmed": [
+    "Legacy ctor omits blend pointer+160; actual FindBlendParent assigns it for every processed mesh,including count0 allocation",
+    "455 uses5803byte packed mesh and full zeroing;blend count+522,inline parent pointers+526,inline matrix writes start+646",
+    "Legacy array binding counts all duplicate-name matches and keeps last;455stops at first match",
+    "Legacy and455 both use720byte mesh-data records and424byte physique records"
+  ],
+  "unknown": [
+    "Complete455mesh members/5803byte ownership and subobject lifecycles",
+    "455capacity/overflow domain:parent pointer copies beyond30overlap the observed matrix region;do not assume a safe50element object array",
+    "Real Character assets/full InitVertex triangles/textures/D3D9 render and all exception/OOM paths",
+    "No production constructor patch justified by unloaded fixture pointer alone"
+  ],
+  "raw_analysis": "artifacts/character-analysis and artifacts/character-mesh-source;owned IDAc99d5253closed/save;no input EXE execution"
+}

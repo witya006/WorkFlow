@@ -62,15 +62,19 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 450 432bytes,entryRVA0x1BC330,SHA256
-d656498a2465feec8c9b4fb44149f01e38aa8e4288e4cc9e4bb4c555ec490919.
-Snapshot time-commands455;предыдущие revisions сохранены. Обычный EXE
+2 450 944bytes,entryRVA0x1BC340,SHA256
+9cb2329eda37ff61548f7b24fcb70b617b85a151623e867ced71439972e3a794.
+Snapshot character-mesh-source;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA d19ea1193dbfd546e68eadb3332e145de3d42d83e5429155726c807cfd3a1c24,
-size4131328,entryRVA0x7E9B; snapshot work/client-time-commands-lab/d19ea1193dbfd546/RF_Online.bin.
+Own lab EXE SHA d59233bc12b46799bc8cc5311acfeb6dcb09f3e900624eb3b1933d08458b1c46,
+size4146176,entryRVA0x7EAA; snapshot work/client-character-mesh-lab/d59233bc12b46799/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
+Character4CPU source functions подключены;245checks standalone/full-client и4COFF
+tests прошли,три actual linked InitVertex calls доходят до source. Skinned/unskinned
+InitVertex3vertices/0faces иrelease проверены,это ещё не CharacterGPU/455parity.
+research/character-mesh-source.md;inventory/character-mesh-source*.json.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -139,8 +143,11 @@ old exception layouts/unwind не полностью проверены, test-on
 59 checks actual text/binary effect loaders + CPU effect application к 2meshes.
 EffectList bridge bounded500 entries, sentinel9; missing inline/out-of-domain unknown,
 455 map/36 grades не перенесены. ObjectMesh ctor не задаёт blend pointer+160, dtor
-его освобождает. Synthetic fixture задаёт null ownership; SDK не исправлялся. Проверить
-real InitVertex/455 перед изменением production поведения. Source CLevel::GetFrustumNormalPlane
+его освобождает; реальный InitVertex→FindBlendParent всегда записывает allocation,
+включая count0. Проверены skinned/unskinned CPU cases;constructor patch не обоснован.
+Четыре legacy CPU bindings восстановлены source,245checks/4COFFtests;455mesh5803bytes
+с inline matrices отличается от legacy1072. First-match455 vs last-matchlegacy отмечен.
+Полные InitVertex/455layout/renderer/unwind открыты. Source CLevel::GetFrustumNormalPlane
 рекурсивен (C4717); сверить 455, не исправлять по одному имени.
 Детали/хеши в inventory/character-*.json и research/character-*.md.
 
@@ -150,9 +157,12 @@ M6: следующий critical step — полноценный Character source
 перед полным D3D9 переносом. Header/library contract явно IDirect3DDevice8; новая
 engine API без переноса binary consumers не является455renderer restoration.
 Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
-Начать с настоящего InitVertex/CObjectMesh blend allocation/lifecycle: pointer+160
-оставлен ctor неинициализированным; fixtures его обнуляли, production не исправлен.
-Проверить метод/loaded mesh source contract и455пару, затем восстановить source unit.
+Первый source unit готов:4legacy CPU bindings,245checks иactual InitVertex CPU lifecycle.
+Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
+unwind до него открыт. Следом восстановить полный InitVertex/vertex conversion и
+mesh-data source contract, затем реальные Character assets/buffer/material/texture
+lifecycle и455packed layouts. research/character-mesh-source.md. В455mesh5803bytes,
+64byte vertices иinline blend matrices;legacy1072/36bytes/heap pointer — иной ABI.
 research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
 Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:

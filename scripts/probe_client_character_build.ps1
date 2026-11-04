@@ -102,6 +102,23 @@ if (Test-Path -LiteralPath $stdioReport) {
         (Get-FileHash -LiteralPath $stdio.classic_provider_hash_file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $stdio.classic_provider_sha256) { throw 'Character stdio adapter/provider changed since verification.' }
     $arguments += "-DRF_CHARACTER_STDIO_ADAPTER_LIBRARY=$adapterLibrary"
 }
+$meshSource = Get-Content -LiteralPath (Join-Path $workspace 'inventory/character-mesh-source.json') -Raw | ConvertFrom-Json
+$meshLibrary = Join-Path $workspace $meshSource.library
+$meshArchive = Join-Path $workspace $meshSource.adapted_archive
+if ((Get-FileHash -LiteralPath $meshLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshSource.library_sha256 -or
+    (Get-FileHash -LiteralPath $meshArchive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshSource.adapted_archive_sha256 -or
+    $meshSource.base_archive_sha256 -ne $stdio.adapted_archive_sha256 -or $meshSource.header_sha256 -ne $contract.header_sha256 -or
+    $meshSource.native_test.source_functions -ne 4 -or $meshSource.native_test.checks_passed -ne 245 -or
+    -not $meshSource.native_test.actual_init_vertex) { throw 'Recovered Character mesh source/archive proof is missing or stale.' }
+foreach ($property in $meshSource.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw 'Character mesh source changed since verification.' }
+}
+foreach ($property in $meshSource.script_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw 'Character mesh source substitution changed since verification.' }
+}
+$characterLibrary = $meshArchive
+$arguments += '-DRF_CHARACTER_MESH_SOURCE=ON'
+$arguments += "-DRF_CHARACTER_MESH_SOURCE_LIBRARY=$meshLibrary"
 $arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
@@ -166,6 +183,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_time_commands455.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_time_commands455.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_character_mesh_source.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_character_mesh_source.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

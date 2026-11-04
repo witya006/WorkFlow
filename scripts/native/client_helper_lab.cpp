@@ -170,8 +170,15 @@ static int mapTimeScenarioProbe() {
 #include "client_time_commands_lab.inc"
 #endif
 
+#if defined(RF_CHARACTER_MESH_SOURCE)
+#include "client_character_mesh_lab.inc"
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CHARACTER_MESH_SOURCE)
+    if (!std::strcmp(command,"--rf-character-mesh-scenario")) ExitProcess(characterMeshScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_TIME_COMMANDS)
     if (!std::strcmp(command,"--rf-time-commands-scenario")) ExitProcess(timeCommandsScenarioProbe());
 #endif

@@ -115,6 +115,13 @@ research/client-first-build.md; inventory/client-first-build.json.
   Success->lobby edge не содержит древнего CheckFiles, но остальные integrity/resource
   checks и полная login sequence ещё требуют аудита. Не считать их покрытыми.
 
+Character prerequisite: четыре legacy CPU mesh bindings уже имеют source;245checks
+standalone/full-client,4COFFtests и3actual InitVertex→source call destinations.
+Skinned/unskinned CPU setup/release проверены на3vertices/0faces. Это не Character455
+acceptance: legacy1072/36byte vertex/heap blends отличается от4555803/64/inline,
+реальные assets/triangle upload/полный material/texture/render/unwind открыты.
+research/character-mesh-source.md иinventory/character-mesh-source*.json.
+
 ## Приёмка
 
 По уточнению пользователя M9 — финальная приёмка этого клиента 455 без модернизации

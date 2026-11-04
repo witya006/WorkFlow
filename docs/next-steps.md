@@ -66,12 +66,15 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Character source/ABI и loaded mesh path перед полным D3D9 port. Current SDK
-   header/contracts явно используют IDirect3DDevice8; binary consumers нужно перенести
-   вместе с engine. Дополнительного SDK/PDB нет; использовать cached207definitions/
-   10COFF, не повторять массовый decomp. Начать с InitVertex/CObjectMesh blend pointer
-   +160 allocation/lifecycle и сравнения с455; fixtures обнуляли pointer, production
-   не исправлен. Восстанавливать реальную source unit с проверкой runtime/ABI.
+1. Продолжить Character source/ABI перед полным D3D9 port. Первый source unit готов:
+   4legacy CPU bindings,245native checks standalone/full-client,4COFFtests и3actual
+   linked InitVertex destinations. Pointer+160 штатно задаёт FindBlendParent даже
+   при count0;constructor patch не обоснован. research/character-mesh-source.md.
+   Далее полный InitVertex/vertex conversion и mesh-data source contract, реальные
+   Character assets/buffer/material/texture lifecycle и455packed layouts. Legacy
+   mesh1072/vertex36/heap blends против4555803/64/inline;ABI не смешивать.
+   Current SDK явно IDirect3DDevice8; binary consumers переносить вместе с engine.
+   Дополнительного SDK/PDB нет;cached207definitions/10COFF,не повторять массовый reverse.
 2. Selected local time input уже source-integrated:grade>=1,432cases/2628checks,
    20actual CHAT_INFO access/history/lifecycle checks;1037clock instruction bytes/
    1443checks,314map-time checks,commands→GPU weather2cases/69checks прошли.
@@ -89,7 +92,7 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 Известные дальнейшие gaps: D3D8 база против D3D9 reference; legacy EffectList9grades
 против 455 map/36; полные Character sources/layouts/constructors/exception unwind;
-реальная инициализация blend pointer+160; recursion CLevel::GetFrustumNormalPlane;
+failure/unwind до blend initialization; recursion CLevel::GetFrustumNormalPlane;
 полный resource manifest; всё UI/сеть/игровые действия ещё не проверено.
 Clear routine effect log0x7DF1B0 не привязывать к atexit по догадке.
 
@@ -130,6 +133,11 @@ Lab использует отдельные build-helper-lab/logs/reports, но�
 проверенные dependency builders по manifests. Не пересобирать неизменённые helpers.
 Если меняется Character header: prepare_character_header.py -> check_character_header.py
 -> build_character_setters.py -> build_character_managers.py -> probe_character_effect_loaders.py.
+Character mesh source: audit_character_mesh455.py → test_coff_source_bindings.py →
+build_character_mesh_bindings.py → normal/lab driver → verify_character_mesh_source.py
+[--lab] → probe_client_character_mesh.py. Все Python через Invoke-Python.ps1.
+Текущая GPU regression: --output inventory/character-mesh-source-graphics-runtime.json;
+это Platform01/weather,не Character GPU acceptance. Не повторять без изменения входов.
 Logger: build_client455_effect_log.py -> apply_client_effect_log455.py.
 Math: build_client455_x87_math.py -> apply_client_x87_math455.py; driver после сборки
 сам проверяет linked instructions. Не пересобирать неизменённый archive без причины.

@@ -52,6 +52,13 @@ Full CLand/transport/calendar/other local commands/chat/lighting domains ещё 
 research/client455-clock-source.md.
 research/client455-map-time-source.md.
 research/client455-time-commands-source.md.
+Character:4legacy CPU bindings восстановлены source и подключены normal/lab;
+245native checks/4COFFtests,actual InitVertex skinned/unskinned CPU setup/release
+и3linked call destinations проверены. Pointer+160 задаётся штатным FindBlendParent;
+constructor patch не нужен на подтверждённом пути. Выявлены455mesh5803/vertex64/inline
+blends против legacy1072/36/heap иfirst-match vs last-match. Полный Character455
+ещё открыт; следующий source unit — InitVertex/vertex conversion и реальные assets.
+research/character-mesh-source.md. M6/M6F/M7/M9 не закрыты.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.
@@ -91,11 +98,12 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. Проверить зависимости R3Engine RTMovie Release и создать проект под установленный MSVC x86.
-2. Копировать клиент/движок в work/client-build и получить воспроизводимую сборку движка.
-3. Установить контракт Character, согласовать варианты библиотек и CRT для RF_Online.
-4. Исследовать клиентские бинарники и восстановить один формат 455.
-5. Получить RF_Online и перенести первый законченный участок поведения 455.
+1. M6: продолжить Character source/ABI с полного InitVertex и vertex conversion;
+   затем реальные Character assets,455mesh layouts и buffer/material/texture lifecycle.
+2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
+3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
+4. M6F: завершить реестр возможностей/расхождений и доказательства полноты клиента.
+5. M7: закрепить воспроизводимую сборку;M9: финальная приёмка455 без модернизации графики.
 
 ## Организация работы и память
 

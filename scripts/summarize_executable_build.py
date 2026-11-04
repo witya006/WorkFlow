@@ -55,6 +55,10 @@ def main():
             m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
+    if cache.exists():
+        for line in cache.read_text(encoding='utf-8').splitlines():
+            m=re.match(r'(RF_CHARACTER_MESH_SOURCE(?:_LIBRARY)?):[^=]+=(.*)',line)
+            if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
               'error_counts': dict(collections.Counter(x['code'] for x in errors)),
@@ -76,6 +80,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CHARACTER_MESH_SOURCE')=='ON':
+            mesh_inputs=['scripts/native/character_mesh_bindings.cpp','scripts/native/test_character_mesh_bindings.cpp','scripts/native/client_character_mesh_lab.inc']
+            report['character_mesh_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in mesh_inputs}
         if settings.get('RF_CLIENT_455_WEATHER')=='ON':
             weather_inputs=['scripts/native/client455_weather.cpp','scripts/native/client455_weather_format.h','scripts/native/client_weather_lab.inc']
             if settings.get('RF_CLIENT_455_CLOCK')=='ON':
