@@ -14,6 +14,13 @@ M8 не требуется. Компиляция, запуск и частичн
 
 ## Текущее состояние
 
+- Новейший standalone unit: reader93C2F0/part720 ctor+dtor/model28release.
+  4606native checks/12realBN455records+5synthetic4records,1183PAGE_NOACCESS prefixes,
+  7allocfailpoints,12FPmodes,6Python tests,heap0. Source x86/MT/O2/W4/WX.
+  Fullclient/normal import/converter не подключены; текущие клиентские PE ниже
+  не менялись. Next: importer93C770 +converter93CD60, затем dispatcher/FrameMove.
+  Research client455-legacy-model-reader.md;inventory/client455-legacy-models*.json.
+  Owned926983beclosed/save;converter tail328lines saved,вместе спрежними250все578.
 - Последний завершённый source unit M6: Character455 record1188/manager4148,
   IDcache/rawMSH/borrowedtexture refresh.850CPU/1138HAL checks, полный lab1138;
   12models/393parts/276uploads/59texture pointers, ownheap/COM/Dmalloc0.
@@ -243,7 +250,8 @@ Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693frami
 
 ## Следующий шаг
 
-M6: source reader93C2F0/importer93C770 иconverter93CD60 для настоящего BN/skeleton.
+M6: importer93C770 иconverter93CD60 для настоящего BN/skeleton. Source reader93C2F0
+иpart/model lifetime уже проверены standalone; не повторять их reverse.
 Затем dispatcher9238A0 соsticky flags/failure lifetime, FrameMove923A40, animation/
 skinning/455shaders иnormal typed consumers. Selected manager/fileIO/ctor/refresh
 уже готовы; НЕ повторять их reverse. Полный455record allocation1188 подтверждён,
@@ -251,7 +259,8 @@ semantics tail/полныйC++ABI открыты. Root next-steps теперь �
 Cache retain-after-delete сохранён; не разыменовывать freed entries в тестах.
 Current24ranges иctorinstructions pinned; ownedc3f13f8bclosed/save. Raw parser181lines
 вartifacts/character-manager455/manager-plus-4.json; FrameMove head+tail тамже.
-93CD60 пока только250/578lines вartifacts/character-gpu455/next-2.json.
+93CD60:первые250lines вartifacts/character-gpu455/next-2.json,остальные328
+вartifacts/character-legacy455/converter-tail.json. Весьbodycached.
 Подробности research/client455-character-manager.md. ПолныйD3D9 остаётся M6.
 
 Ниже исторические ориентиры уже выполненных шагов, не текущая очередь:

@@ -1,0 +1,306 @@
+{
+  "scope": "Intermediate legacy MSH/BN parser/part lifetime;file importer/runtime converter still pending",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "part_ctor",
+          "rva": "0x53c020",
+          "bytes": 35,
+          "sha256": "7fedb3b15665c1cc768346a15b644826289b52b037ca57045d82417a202bd93a"
+        },
+        {
+          "name": "part_dtor",
+          "rva": "0x51c270",
+          "bytes": 134,
+          "sha256": "3bf5da1dab452187a8a9e6a3d29e632d80db2a1ce9c17e7e56cdf6ccb0a4b031"
+        },
+        {
+          "name": "import_release",
+          "rva": "0x51fb20",
+          "bytes": 99,
+          "sha256": "79e77c4068f79260908c284638cfc136fb53bf8bb33e75c5c8e90b4b73abda0f"
+        },
+        {
+          "name": "legacy_reader",
+          "rva": "0x53c2f0",
+          "bytes": 1136,
+          "sha256": "551d008ae10e7669e8a27a202b8a74c014d216abbf6a067db412d3c817333e16"
+        },
+        {
+          "name": "raw_thunk",
+          "rva": "0x53c760",
+          "bytes": 5,
+          "sha256": "6869ca2a0376eed22dc434a9ec4c9ee7dafeb498efdd4451f77d46d746cc0a43"
+        },
+        {
+          "name": "file_importer_pending",
+          "rva": "0x53c770",
+          "bytes": 291,
+          "sha256": "2c6e1c4d5b149f66d101961a8666f0f3f7d220c56cb243fba27ffdb0e5f4a5f5"
+        },
+        {
+          "name": "runtime_converter_pending",
+          "rva": "0x53cd60",
+          "bytes": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "part_ctor",
+          "rva": "0x53c020",
+          "bytes": 35,
+          "sha256": "7fedb3b15665c1cc768346a15b644826289b52b037ca57045d82417a202bd93a"
+        },
+        {
+          "name": "part_dtor",
+          "rva": "0x51c270",
+          "bytes": 134,
+          "sha256": "3bf5da1dab452187a8a9e6a3d29e632d80db2a1ce9c17e7e56cdf6ccb0a4b031"
+        },
+        {
+          "name": "import_release",
+          "rva": "0x51fb20",
+          "bytes": 99,
+          "sha256": "79e77c4068f79260908c284638cfc136fb53bf8bb33e75c5c8e90b4b73abda0f"
+        },
+        {
+          "name": "legacy_reader",
+          "rva": "0x53c2f0",
+          "bytes": 1136,
+          "sha256": "551d008ae10e7669e8a27a202b8a74c014d216abbf6a067db412d3c817333e16"
+        },
+        {
+          "name": "raw_thunk",
+          "rva": "0x53c760",
+          "bytes": 5,
+          "sha256": "6869ca2a0376eed22dc434a9ec4c9ee7dafeb498efdd4451f77d46d746cc0a43"
+        },
+        {
+          "name": "file_importer_pending",
+          "rva": "0x53c770",
+          "bytes": 291,
+          "sha256": "2c6e1c4d5b149f66d101961a8666f0f3f7d220c56cb243fba27ffdb0e5f4a5f5"
+        },
+        {
+          "name": "runtime_converter_pending",
+          "rva": "0x53cd60",
+          "bytes": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_001.bn",
+      "sha256": "38cadb3d52b2377ab4c0435583b22e96c2667593733d0e5e1f8b64d32cf82b0b",
+      "kind": "real_bn",
+      "bytes": 70448,
+      "records": 30,
+      "compact_records": 30,
+      "vertices": 292,
+      "faces": 470,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_002.bn",
+      "sha256": "870944741b8bbc59b2c37fe92fc9e6dbd66b1ef5b0b1818af624ab07f94187cd",
+      "kind": "real_bn",
+      "bytes": 122576,
+      "records": 62,
+      "compact_records": 62,
+      "vertices": 496,
+      "faces": 744,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_003.bn",
+      "sha256": "8e1be78fbb105c4c1ba9b8e310f74791622c7f06d84bd7d0955bac30cd39841a",
+      "kind": "real_bn",
+      "bytes": 69101,
+      "records": 43,
+      "compact_records": 43,
+      "vertices": 266,
+      "faces": 360,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_004.bn",
+      "sha256": "118554daa363b009ab22e47b36f02ce937f4ea3bfa8e39adc51fc401cf06d2b5",
+      "kind": "real_bn",
+      "bytes": 37932,
+      "records": 22,
+      "compact_records": 22,
+      "vertices": 147,
+      "faces": 210,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_005.bn",
+      "sha256": "74f97d1eabc8009a57bde227cee1f9b529184d539284e325481e4c26123cc11f",
+      "kind": "real_bn",
+      "bytes": 19772,
+      "records": 10,
+      "compact_records": 10,
+      "vertices": 80,
+      "faces": 120,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_006.bn",
+      "sha256": "95ca0bb26b0a0386d90bf935c6383c9c20646924b7f8d39f9075e5d4fc4c988e",
+      "kind": "real_bn",
+      "bytes": 81613,
+      "records": 35,
+      "compact_records": 35,
+      "vertices": 340,
+      "faces": 542,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_007.bn",
+      "sha256": "f0a791eab0f7daacc7bdf61a201ad2333fc34e92714cc7eefefb34721b50c00d",
+      "kind": "real_bn",
+      "bytes": 108011,
+      "records": 49,
+      "compact_records": 49,
+      "vertices": 444,
+      "faces": 698,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_008.bn",
+      "sha256": "a376fd79e562ca11b745fc927bb19afcb15286954076eebc96a7df90a434ea8a",
+      "kind": "real_bn",
+      "bytes": 100103,
+      "records": 45,
+      "compact_records": 45,
+      "vertices": 412,
+      "faces": 650,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_009.bn",
+      "sha256": "5ce389b910fcf7153fd0176a28bc5f2f1d8cce829e39288c12ab072f5234b778",
+      "kind": "real_bn",
+      "bytes": 71145,
+      "records": 31,
+      "compact_records": 31,
+      "vertices": 292,
+      "faces": 470,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_010.bn",
+      "sha256": "beb1777973e6fc574d966f421358f6da22ba8adee6cbd1ba3abb7f6df80466fd",
+      "kind": "real_bn",
+      "bytes": 115730,
+      "records": 56,
+      "compact_records": 56,
+      "vertices": 470,
+      "faces": 722,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_011.bn",
+      "sha256": "4037a1bf6084654c67bcea560bff8fd1cc2f7ef23cfcbcc3b768b89f3681c4ec",
+      "kind": "real_bn",
+      "bytes": 89635,
+      "records": 41,
+      "compact_records": 41,
+      "vertices": 364,
+      "faces": 578,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/mesh08-bones/skeleton_012.bn",
+      "sha256": "612290c71c0331d258894443a274f782a73d37ef8c59ee0cbdf51ada4943dcf7",
+      "kind": "real_bn",
+      "bytes": 72425,
+      "records": 31,
+      "compact_records": 31,
+      "vertices": 300,
+      "faces": 482,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-legacy-models/plain.bin",
+      "sha256": "70c5874ba14a8d2ad8f16cdd71ecc910cccd13d60f8e585b887d33c387d2155e",
+      "kind": "synthetic",
+      "bytes": 1263,
+      "records": 1,
+      "compact_records": 0,
+      "vertices": 2,
+      "faces": 1,
+      "physiques": 1
+    },
+    {
+      "copy": "work/client-reference/character-legacy-models/compact.bin",
+      "sha256": "b178918ce7796b79a0d33acc37b228559fb15eff0404b7cba36d957c10d866ad",
+      "kind": "synthetic",
+      "bytes": 1183,
+      "records": 1,
+      "compact_records": 1,
+      "vertices": 1,
+      "faces": 2,
+      "physiques": 2
+    },
+    {
+      "copy": "work/client-reference/character-legacy-models/compact_zero_dictionary.bin",
+      "sha256": "c8026198ebbfc2cc25e31626fec53a15c7268dc1394c24845e861000f8cb10a8",
+      "kind": "synthetic",
+      "bytes": 699,
+      "records": 1,
+      "compact_records": 1,
+      "vertices": 0,
+      "faces": 0,
+      "physiques": 3
+    },
+    {
+      "copy": "work/client-reference/character-legacy-models/compact_empty_physique.bin",
+      "sha256": "4e4c5117a1cae25d2441fc27a8a214dcd0084312d49b99aeda1030143781e56d",
+      "kind": "synthetic",
+      "bytes": 899,
+      "records": 1,
+      "compact_records": 1,
+      "vertices": 0,
+      "faces": 0,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-legacy-models/empty.bin",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "kind": "synthetic",
+      "bytes": 2,
+      "records": 0,
+      "compact_records": 0,
+      "vertices": 0,
+      "faces": 0,
+      "physiques": 0
+    }
+  ],
+  "parts": 459,
+  "nonempty_geometry_records": 3906,
+  "golden": "work/client-reference/character-legacy-models/golden.bin",
+  "golden_sha256": "3e01a9196e390e1c8f552987417164748a7e9999d750df22943d7397d55c5be6",
+  "allocator_test_fill": 165,
+  "pair_report_sha256": "a9b2e9cb4e49cee683d8ba9f11c00e29f789fae9da60aa32810828dceee0681c",
+  "script_sha256": "6e35438c1972d4d413925bc04804cc7a46a533cac46b827d48ea8ec1cff741a2",
+  "limits": [
+    "Plain header/payload oracle uses previously checked independent Python framing;compact name/weight expansion modeled from separately pinned instructions",
+    "Unwritten fields are allocator-dependent;A5 used only by owned test allocator",
+    "Bounded count/influence/index/short-read/nullallocation cleanup is ownpolicy,not unchecked AV/OOM/exception equivalence",
+    "No full BNruntime matrices/vertex conversion/material/GPU/animation ornormal dispatcher integration",
+    "Raw artifacts/character-legacy455;owned926983beclosed/save;no referenceEXE run"
+  ]
+}

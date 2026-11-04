@@ -103,6 +103,10 @@ route исогласованныеtypedconsumers. research/client455-model-pipel
 Normal dispatcher остаётсяlegacy. Next: BN reader93C2F0/importer93C770/converter93CD60,
 dispatcher9238A0/FrameMove923A40, animation иtyped consumers. Current model10021/
 Platform01-device69checks прошли,frameSHA сохранены. research/client455-character-manager.md.
+Затем intermediate reader93C2F0/part720/model28lifetime source прошли4606standalone
+checks/12realBN455records+5synthetic4records,1183guarded prefixes/7allocfailpoints/
+12FPmodes/6Python tests. Importer/converter/BNruntime/normal integration ещё впереди.
+research/client455-legacy-model-reader.md. Converter теперьcachedвесь578lines.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port; legacy SDK contract
 явно IDirect3DDevice8. Старые InitVertex/loaded mesh/blend kernels уже проверены,
 не повторять их исследование. Cached207definitions доступны.
@@ -142,7 +146,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: BN reader/importer/converter,затем полный dispatcher/FrameMove/animation и
+1. M6: BN file importer/runtime converter (intermediate reader уже source),затем полный dispatcher/FrameMove/animation и
    normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
    selected manager/rawIO source готовы; normal loader не переключать до согласования
    ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.

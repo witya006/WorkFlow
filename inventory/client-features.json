@@ -1055,6 +1055,40 @@
         "Ownbounds/percentlongname/nullallocation/shortloosefailure policies differfromuncheckedreference AV/OOM/exception/logger;exactRFSretryreindex/fullunwind open",
         "External skeleton names stilltooling golden;GPUuploads andborrowedtexture refresh do notprovefullCharacterdraw orreferenceEXEruntimeequivalence"
       ]
+    },
+    {
+      "id":"CHARACTER455-LEGACY-READER-020",
+      "description":"Source intermediate legacyMSH/BN reader93C2F0,720byte part construction/destruction and28byte import release;not runtime5803mesh converter",
+      "status":"implemented",
+      "verification":"7bodyranges equalbothpins;4606standalone nativechecks/17fixtures459records/1183guarded truncations/7allocationfailpoints/12FPmodes,6Python tests,ownedheap0. Fullclient/importer/converter/BNruntime still pending.",
+      "reference":[
+        {"rva":"0x53c020","role":"720byte part constructor"},
+        {"rva":"0x51c270","role":"part dtor,5orderedfree/null"},
+        {"rva":"0x51fb20","role":"reverse array/cookie release"},
+        {"rva":"0x53c2f0","role":"plain/compact intermediate reader"},
+        {"rva":"0x53c641","role":"x87weight load"},
+        {"rva":"0x53c64e","role":"x87weight store"}
+      ],
+      "implementation":["scripts/native/client455_legacy_model.h","scripts/native/client455_legacy_model.cpp"],
+      "evidence":[
+        "inventory/client455-legacy-models-reference.json",
+        "inventory/client455-legacy-models-build.json",
+        "inventory/client455-legacy-models-cpu.json",
+        "research/client455-legacy-model-reader.md"
+      ],
+      "scenarios":[
+        "12realBN455records and5synthetic4records:whole720part/28model/payload sizes+bytes,unwritten bytes preserved through ownedA5allocator",
+        "Plain28vertex/88face/424physique andcompact100names/40physique→424expanded,strncpy99+NUL,negativeinfluences skip,x87sNaNquieting/negativezero/1ULP in12maskedFPmodes",
+        "Zero dictionary skipsallphysique;zero geometry stillallocates;empty model cookienonnull;partdtorordered5pointerfree/null andmodel reversearray/free/null12/20",
+        "All1183prefix truncations atPAGE_NOACCESS,all7allocation failures,oversize dictionary/count/influence/index errors,output+consumed unchanged,ownheap0,trailing accepted"
+      ],
+      "gaps":[
+        "Source file importer93C770/converter93CD60/dispatcher9238A0/BNruntime matrices/parent selection/vertex/material/GPU/animation/shaders notintegrated",
+        "Standalone only;current fullclient/normal PE unchanged. Fixture basename pairing doesnotprove runtime asset selection",
+        "Unwritten fields are allocator-dependent;A5 testfill isnot originalallocator behavior orprivateSTL/heapABI proof",
+        "Ownbounds/influence<=4/index/nullallocation/statuscleanup differsfromunchecked AV/overflow/OOM/exception/logger/unmaskedFP domains",
+        "No reference EXE execution/runtimeequivalence claim;seven pinnedbody ranges include unimplemented importer/converter asdependencies"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

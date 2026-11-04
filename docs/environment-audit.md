@@ -543,3 +543,8 @@ Normal сборка289modernCOFF/MT,lab185clientTUs;проверены моде�
 Normal EXE не запускался;его runtimebytes кромеtimestamps равны предыдущейrevision.
 IDAownedc3f13f8bclosed/save. ПолныйBN/dispatcher/animation/D3D9renderer остаются M6.
 research/client455-character-manager.md. Изменений исходного installation/server нет.
+Следующий standaloneunit: legacyMSH/BN intermediate parser/lifetime source,
+4606checks/17samples459records/1183guarded prefixes/7allocation failures/12FPmodes,
+6Python tests,heap0.7bodies pinned;importer/converter покаpending. SourceO2/W4/WX
+x86/MT. Fullclient PE не менялся;owned IDA926983beclosed/save. Reports
+inventory/client455-legacy-models-reference/build/cpu.json;research/client455-legacy-model-reader.md.

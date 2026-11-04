@@ -137,7 +137,9 @@ rawcast недопустим.
 Cached: manager-plus-4.json — полный181line93C2F0; manager-layout-3.json+
 frame-move-tail.json — FrameMove923A40; dispatcher/93C770 втом же artifacts/
 character-manager455. Начало converter93CD60 — artifacts/character-gpu455/
-next-2.json, только250из578lines. Полные607line922A00/146line93CB00 ранее сохранены
+next-2.json, первые250из578lines. Последующее исследование добавило остальные328
+вartifacts/character-legacy455/converter-tail.json;теперьbodyсохранёнцеликом.
+Полные607line922A00/146line93CB00 ранее сохранены
 вcharacter-mesh-source. Не повторять закрытый reverse/858file census без новых входов.
 
 Воспроизведение, Python через scripts/Invoke-Python.ps1:

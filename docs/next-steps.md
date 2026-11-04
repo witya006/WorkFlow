@@ -11,7 +11,11 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний source unit — Character455 record1188/manager4148/cache/rawMSH/refresh.
+Последний source unit — промежуточный reader93C2F0/part720/model28 lifetime:
+4606standalone checks/12realBN455records+5synthetic4records/1183guarded prefixes/
+7allocfailpoints/12FPmodes;6Python tests. Полные importer/converter/BNruntime ещё
+не подключены. research/client455-legacy-model-reader.md; client455-legacy-models*.json.
+Предыдущий connected unit — Character455 record1188/manager4148/cache/rawMSH/refresh.
 850CPU/1138HAL checks, полный клиент даёт те же1138;12models/393parts/276uploads/
 59texture pointers, ownheap/COM/Dmalloc0.13 APIs вызваны из actual lab TU иsource lib.
 24bodies equalbothpins; ctor1188bytes — oracle из92записанных инструкций+констант.
@@ -21,12 +25,14 @@ gate inventory/client455-character-manager-checkpoint.json. Текущие PE id
 
 ## Очередь M6 → M9
 
-1. Восстановить source reader93C2F0/importer93C770 для legacy MSH/BN и преобразование
-   93CD60 в455mesh5803. Это следующий шаг к настоящему skeleton loader, вместо
+1. Подключить file importer93C770 и восстановить преобразование93CD60 в455mesh5803.
+   Source reader93C2F0/part lifetime уже проверены standalone. Это следующий шаг
+   к настоящему skeleton loader, вместо
    external names из tooling golden. Использовать записанные body/формат и real BN;
    проверять границы, malformed/compact physique и реальные матрицы. Полный181line
    parser сохранён artifacts/character-manager455/manager-plus-4.json. Начало
-   converter — artifacts/character-gpu455/next-2.json: только250 из578lines.
+   converter — artifacts/character-gpu455/next-2.json(250lines) и
+   artifacts/character-legacy455/converter-tail.json(328lines): все578сохранены.
 2. Подключить полный dispatcher9238A0 после legacy reader/converter. Сохранить
    загрузочные flags, parent prerequisite, sticky failures и lifetime по эталону.
    MESH08-only successful stub недопустим. Затем FrameMove923A40, transforms,

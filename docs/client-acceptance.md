@@ -161,6 +161,10 @@ Stickydispatcher9238A0 исследован,ещё не реализован;п�
 shader/draw иunsafefailure equivalence открыты. Cache retains danglingpointers —
 поведение сохранено,stale dereferences не сертифицированы. research/client455-character-manager.md;
 inventory/client455-character-manager-checkpoint.json. Это не приёмка Character целиком.
+Intermediate legacyMSH/BN reader/part720/model28 lifetime отдельно source:
+4606standalone checks/12realBN455records+5synthetic4records/1183guarded prefixes/
+7allocfailpoints/12FPmodes/6Python tests. File importer/converter/realruntime skeleton
+иnormal dispatch этим не подтверждены. research/client455-legacy-model-reader.md.
 
 ## Приёмка
 
