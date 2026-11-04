@@ -27,6 +27,16 @@ if ((Get-FileHash -LiteralPath $jpegLibrary -Algorithm SHA256).Hash.ToLowerInvar
 $arguments += "-DRF_JPEG_LIBRARY_DIR=$(Split-Path -Parent $jpegLibrary)"
 $characterLibrary = Join-Path $source 'source/RF_Client/CharacterMR.lib'
 if ((Get-FileHash -LiteralPath $characterLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne '483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8') { throw 'Character reference digest changed.' }
+$stdioReport = Join-Path $workspace 'inventory/character-stdio-adapter.json'
+if (Test-Path -LiteralPath $stdioReport) {
+    $stdio = Get-Content -LiteralPath $stdioReport -Raw | ConvertFrom-Json
+    $characterLibrary = Join-Path $workspace $stdio.adapted_archive
+    $adapterLibrary = Join-Path $workspace $stdio.adapter_library
+    if ((Get-FileHash -LiteralPath $characterLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $stdio.adapted_archive_sha256 -or
+        (Get-FileHash -LiteralPath $adapterLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $stdio.adapter_library_sha256 -or
+        (Get-FileHash -LiteralPath $stdio.classic_provider_hash_file -Algorithm SHA256).Hash.ToLowerInvariant() -ne $stdio.classic_provider_sha256) { throw 'Character stdio adapter/provider changed since verification.' }
+    $arguments += "-DRF_CHARACTER_STDIO_ADAPTER_LIBRARY=$adapterLibrary"
+}
 $arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
 $arguments += '-DRF_DIAGNOSTIC_DEFER_LIBRARIES=CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib'
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')

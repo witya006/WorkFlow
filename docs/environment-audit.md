@@ -269,3 +269,11 @@ classic CRT прошёл только этот частный тест. RF_Onlin
 research/client-dependencies-m4.md и client-port-m4.md;
 inventory/client-character-diagnostic.json, client-mt-variant.json,
 character-header-recovery.json. Четыре проверки COFF прошли.
+
+Последнее дополнение: адаптер 8 stdio API прошёл 1828 собственных native проверок и
+3 теста COFF; инструкции/релокации 10 входных объектов сохранены. Runtime старых
+загрузчиков ещё не проверен, остаются 13 link gaps. research/character-stdio-adapter.md.
+Для завершения последней /Goal повторно получены две чистые сборки R3Engine x86;
+runtime sections/relocations 58 объектов совпали. Хеши исходных PE/копий и 5 различий
+повторно проверены, 140 SPT / 97 543 записи прошли round trip. goal-checkpoint.json.
+Ограниченная цель заканчивается уведомлением о начале пункта 4, полный клиент не готов.

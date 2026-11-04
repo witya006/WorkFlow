@@ -1,0 +1,254 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "rva": null,
+  "original_archive_sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8",
+  "source_sha256": {
+    "character_legacy_stdio.h": "cf3244013bd3ee722702ee707f9c9322fcf251eb8d47b84472bdf6c398bff54f",
+    "character_legacy_stdio.cpp": "ac7c30881b38cff59189fd71d8f01d0fb1234af293961cf2308d7ec15adae9db",
+    "test_character_legacy_stdio.cpp": "98b8996c86898df214a65846d326b923e385fa7bb8b6c16978d20fc2e016d28c"
+  },
+  "adapted_archive": "work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
+  "adapted_archive_sha256": "3ce694ff47aab901e772281f2e443d2b0ae55cecc4b1c711618e6e1307446dba",
+  "adapter_library": "work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
+  "adapter_library_sha256": "b3ca111368b29ba6b2eaeaaf94806e37636817c579b406c3a76517e11f3f2004",
+  "objects": [
+    {
+      "input_sha256": "7e7a3f4a3fd69d0779b6e2ffb6a5a7681ad709452582caaf2b556b87ce7fcdba",
+      "output_sha256": "48240ab92245f58557a044142b4a833f6275be68bdfc08850e198c64c9322619",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_01.obj",
+      "renames": [
+        {
+          "symbol_index": 188,
+          "before": "_fclose",
+          "after": "_rf_vc6_fclose"
+        },
+        {
+          "symbol_index": 193,
+          "before": "_fread",
+          "after": "_rf_vc6_fread"
+        },
+        {
+          "symbol_index": 201,
+          "before": "_fgets",
+          "after": "_rf_vc6_fgets"
+        },
+        {
+          "symbol_index": 202,
+          "before": "_fopen",
+          "after": "_rf_vc6_fopen"
+        },
+        {
+          "symbol_index": 248,
+          "before": "_fseek",
+          "after": "_rf_vc6_fseek"
+        }
+      ],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "e283ac4d8c87e586f2fba2a1527a98aa92e8c9f6d7d7b6a7221b9720e0f7b7e2",
+      "output_sha256": "e283ac4d8c87e586f2fba2a1527a98aa92e8c9f6d7d7b6a7221b9720e0f7b7e2",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_02.obj",
+      "renames": [],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "d939f5e90d6ce4428cd4635c9d2e57b3253c8fbdb17a31d0cefaad45e0d729f2",
+      "output_sha256": "11330afe7eac5adaf166810295b31d3977d8e015b706aabae577c7a140779c92",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_03.obj",
+      "renames": [
+        {
+          "symbol_index": 298,
+          "before": "_fclose",
+          "after": "_rf_vc6_fclose"
+        },
+        {
+          "symbol_index": 300,
+          "before": "_fscanf",
+          "after": "_rf_vc6_fscanf"
+        },
+        {
+          "symbol_index": 304,
+          "before": "_fopen",
+          "after": "_rf_vc6_fopen"
+        },
+        {
+          "symbol_index": 352,
+          "before": "_fgets",
+          "after": "_rf_vc6_fgets"
+        },
+        {
+          "symbol_index": 575,
+          "before": "_fwrite",
+          "after": "_rf_vc6_fwrite"
+        },
+        {
+          "symbol_index": 609,
+          "before": "_fread",
+          "after": "_rf_vc6_fread"
+        },
+        {
+          "symbol_index": 610,
+          "before": "_ftell",
+          "after": "_rf_vc6_ftell"
+        },
+        {
+          "symbol_index": 611,
+          "before": "_fseek",
+          "after": "_rf_vc6_fseek"
+        }
+      ],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "3e21b72117809c41a5d1c9e81b4e3a5b1f77666ba0a40ec353473e028ccf3999",
+      "output_sha256": "c1cf6dce5d4c6206681cee1a43dee27f92e93cc1b2cf48ffcf07f7c1468457c0",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_04.obj",
+      "renames": [
+        {
+          "symbol_index": 58,
+          "before": "_fclose",
+          "after": "_rf_vc6_fclose"
+        },
+        {
+          "symbol_index": 59,
+          "before": "_fread",
+          "after": "_rf_vc6_fread"
+        },
+        {
+          "symbol_index": 61,
+          "before": "_ftell",
+          "after": "_rf_vc6_ftell"
+        },
+        {
+          "symbol_index": 62,
+          "before": "_fseek",
+          "after": "_rf_vc6_fseek"
+        },
+        {
+          "symbol_index": 63,
+          "before": "_fopen",
+          "after": "_rf_vc6_fopen"
+        }
+      ],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "0fe402dab6108538997fc86f30d0f9f048929a30d7ac429847b779b019036328",
+      "output_sha256": "0fe402dab6108538997fc86f30d0f9f048929a30d7ac429847b779b019036328",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_05.obj",
+      "renames": [],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "37119bd6f28b6ea184cec9e0d78ab831c8d18fcbc207b8e7750147cf68fc20be",
+      "output_sha256": "37119bd6f28b6ea184cec9e0d78ab831c8d18fcbc207b8e7750147cf68fc20be",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_06.obj",
+      "renames": [],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "3849deb835602cee422b6b2e904a6ab8d7dc0f73958f89459362b6529c2eedcd",
+      "output_sha256": "7e99992e36c9245404c8e3534ef19ef941808508799f9b710735267634f02ed5",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_07.obj",
+      "renames": [
+        {
+          "symbol_index": 92,
+          "before": "_fclose",
+          "after": "_rf_vc6_fclose"
+        },
+        {
+          "symbol_index": 93,
+          "before": "_fread",
+          "after": "_rf_vc6_fread"
+        },
+        {
+          "symbol_index": 95,
+          "before": "_ftell",
+          "after": "_rf_vc6_ftell"
+        },
+        {
+          "symbol_index": 96,
+          "before": "_fseek",
+          "after": "_rf_vc6_fseek"
+        },
+        {
+          "symbol_index": 97,
+          "before": "_fopen",
+          "after": "_rf_vc6_fopen"
+        }
+      ],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "31757302232b953c3b36f7627aef26860edc13399bfcda3adfaabe6e10a45e8d",
+      "output_sha256": "da16d90f4b8d121d7c452e144e6bba23f2be1e20559fd85b832be8c43a8f1da9",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_08.obj",
+      "renames": [
+        {
+          "symbol_index": 245,
+          "before": "_fclose",
+          "after": "_rf_vc6_fclose"
+        },
+        {
+          "symbol_index": 246,
+          "before": "_fopen",
+          "after": "_rf_vc6_fopen"
+        },
+        {
+          "symbol_index": 263,
+          "before": "_fseek",
+          "after": "_rf_vc6_fseek"
+        },
+        {
+          "symbol_index": 264,
+          "before": "_ftell",
+          "after": "_rf_vc6_ftell"
+        },
+        {
+          "symbol_index": 280,
+          "before": "_fread",
+          "after": "_rf_vc6_fread"
+        }
+      ],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "46833cbe908304571d46eeb9e07712a2ef17d2edcf9b7b8e06a5ef363d731e61",
+      "output_sha256": "46833cbe908304571d46eeb9e07712a2ef17d2edcf9b7b8e06a5ef363d731e61",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_09.obj",
+      "renames": [],
+      "instructions_and_relocations_unchanged": true
+    },
+    {
+      "input_sha256": "5fed886e3886b0b8c21dec66404835c538c76345c184d7d6157a4b2db0278572",
+      "output_sha256": "5fed886e3886b0b8c21dec66404835c538c76345c184d7d6157a4b2db0278572",
+      "object": "work/recovered/character-legacy/stdio-adapter/character_10.obj",
+      "renames": [],
+      "instructions_and_relocations_unchanged": true
+    }
+  ],
+  "stream_api_surface": [
+    "fopen",
+    "fclose",
+    "fgets",
+    "fread",
+    "fwrite",
+    "fscanf",
+    "fseek",
+    "ftell"
+  ],
+  "native_test": {
+    "checks_passed": 1828,
+    "fscanf_iterations": 256,
+    "stream_apis": 8
+  },
+  "classic_provider_hash_file": "C:\\Windows\\SysWOW64\\msvcrt.dll",
+  "classic_provider_sha256": "c1be919e7de267ed2fcfbb4da52aad912cb468069b58b6a00198ff3c525373a0",
+  "input_game_exe_execution": false,
+  "limits": [
+    "Adapter API and COFF edits verified; no original game execution.",
+    "Old Character loaders/containers/constructors/exceptions are not runtime-verified by these tests."
+  ]
+}

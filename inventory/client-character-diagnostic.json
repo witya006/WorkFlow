@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T06:13:38.864814+00:00",
+  "checked_at_utc": "2026-11-04T06:34:47.280307+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -118,42 +118,42 @@
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(EffectScript.obj) ",
+      "file": "CharacterMR-stdio.lib(character_03.obj) ",
       "line": null,
       "code": "LNK2019",
       "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z).",
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(FileLoad.obj) ",
+      "file": "CharacterMR-stdio.lib(character_01.obj) ",
       "line": null,
       "code": "LNK2001",
       "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(CScript.obj) ",
+      "file": "CharacterMR-stdio.lib(character_04.obj) ",
       "line": null,
       "code": "LNK2001",
       "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(EffectScript.obj) ",
+      "file": "CharacterMR-stdio.lib(character_03.obj) ",
       "line": null,
       "code": "LNK2019",
       "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(char const *,class std::allocator<char> const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z).",
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(FileLoad.obj) ",
+      "file": "CharacterMR-stdio.lib(character_01.obj) ",
       "line": null,
       "code": "LNK2001",
       "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
       "count": 1
     },
     {
-      "file": "CharacterMR.lib(CScript.obj) ",
+      "file": "CharacterMR-stdio.lib(character_04.obj) ",
       "line": null,
       "code": "LNK2001",
       "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
@@ -172,7 +172,8 @@
   "build_dir": "work/client-build/build-character-diagnostic",
   "log": "artifacts/client-character-diagnostic/build.txt",
   "build_settings": {
-    "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/client-build/source/RF_Client/CharacterMR.lib",
+    "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
+    "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",
     "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
     "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
     "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
