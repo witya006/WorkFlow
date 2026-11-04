@@ -29,7 +29,7 @@
   в research/client-port-m1.md. M1 завершён по критерию компиляции/архивации.
 - DirectX 8.1b SDK извлечён локально; SHA1 совпал с архивом, подпись Microsoft Valid.
   Используется overlay 13 DX8 headers без старых системных Windows headers.
-- Десять рабочих файлов минимально исправлены байтовыми патчами, оригиналы неизменны.
+- Одиннадцать рабочих файлов исправлены байтовыми патчами, оригиналы неизменны.
   /Zc:forScope- временно сохраняет VC6 loop scope; в будущем заменить объявлениями.
 - Два клиента отличаются 5 байтами в 2 диапазонах. Текущий RF_Online.bin закреплён
   как эталон поведения в config/client-target.json; backup — вторичный материал.
@@ -65,6 +65,9 @@
   без флага — ошибки неполных типов, с флагом — успешная компиляция без изменения файла.
 - Для клиента строить R3EngineClientMT (/MT, OUTPUT_NAME R3EngineMT), M1 /MD хранить
   отдельно. Не обходить LNK2038 и не переименовывать несовместимые варианты.
+- D07: прямая CharacterMR + UCRT несовместима по проверенному FILE EOF доступу.
+  Успешный link без адаптации этого ABI не закрывает M4. Старый архив допускается
+  только как явная reference library в отдельном diagnostic link, без переименования.
 - CharacterMR.lib не переименовывать в CharacterMD/R без проверки символов и ABI.
 - Повседневно Sol medium; реверс Sol high; Astra high для трудных локальных вопросов.
 
@@ -80,7 +83,7 @@ SPT: 140 реальных файлов / 97 543 объекта, побитово
 M4: диагностическая компиляция всех 180 C++ клиента прошла; RF_Online.bin ещё нет.
 Реальный R3EngineMT.lib (/MT) собран отдельно, 58 объектов; вместе с клиентом все 238
 объектов проверены как COFF x86 /MT. LNK2038 устранён выбором правильного CRT при сборке,
-пути genuine DX8 .lib подключены. Текущий link blocker: JpegLibMT.lib (LNK1104).
+пути genuine DX8 .lib подключены. JPEG 6b и Miles зависимости уже подключены.
 inventory/client-character-diagnostic.json и client-mt-variant.json; research/client-port-m4.md.
 
 В work/recovered/character-legacy/include/Character.h создан диагностический заголовок:
@@ -92,11 +95,28 @@ inventory/client-character-diagnostic.json и client-mt-variant.json; research/c
 207 тел функций из 10 объектов кешированы в artifacts/character-analysis; не повторять
 массовый реверс. 4 проверки COFF прошли. research/character-library.md.
 
-Следующий шаг — genuine JPEG 6b (локальный jpeglib.h version 62), затем фактические
-link diagnostics zip/Character. Проба GetAlpha ранее оставила std::_Xlen/_Xran;
-исполняемый тест не проводился. CharacterMR не переименовывать в CharacterR без ABI проверки.
-Все собственные IDA-сессии закрыты. Оригиналы/серверы не менялись; 10 рабочих патчей
-сохраняют кодировки, последние 4 явно указывают старый неявный int.
+JPEG 6b: official IJG archive pinned, 46 C /MT, 28 ABI values совпали со старыми
+headers; baseline/progressive golden decodes побайтово точны. Miles .lib из комплекта
+подключена, 26 реальных импортов есть в 455 mss32.dll; DLL не запускалась. 284 x86 /MT
+объекта проверены. Сводки jpeg6b-build.json, miles-link-audit.json, client-mt-variant.json.
+Старый item switch уже был недостижим под _NEW_UI_; #else исключает мёртвые ссылки,
+живая маршрутизация не менялась. Все 11 патчей сохраняют bytes/кодировки и timestamps
+при повторе; генераторы тоже не переписывают идентичные файлы.
+
+Diagnostic link теперь явно берёт неизменённый CharacterMR и адресно откладывает
+CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 13 unique
+undefined symbols: 3 constructors, 6 inline/short APIs, _Xlen/_Xran, CheckFiles, SendLog.
+Проверки целостности/логирования не отключались. Парсер LNK исправлен, 3 теста прошли.
+
+Native CRT probe: Character EffectList loader читает FILE+12 &0x10; modern EOF даёт
+flags=0x2049 и старый тест false. Classic msvcrt даёт 0x19 и true. Это подтверждённая
+несовместимость, не просто риск. Classic x86 DLL hash/metadata проверены с SysWOW64.
+Тест использовал только собственную fixture/EXE, не игровой код. vc6-stdio-probe.json.
+Следующий шаг — изолировать 8 stream API Character через classic CRT с проверками
+fixtures либо восстановить загрузчики исходным кодом; затем реальные constructors/
+inline/std helpers и CheckFiles/SendLog по клиентским доказательствам. Details:
+research/client-dependencies-m4.md. Не считать один classic EOF тест полной ABI проверкой.
+Все собственные IDA-сессии закрыты. Серверы не менялись.
 В 455 подтверждён D3D9, восстановлены 2 GPU layouts; это не CPU ABI старой D3D8 библиотеки.
 Дополнительных материалов у пользователя нет. M5 ещё не начат; сообщить при переходе.
 Полный хеш-манифест ресурсов и атрибуция версии ещё открыты.

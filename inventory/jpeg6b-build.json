@@ -1,0 +1,62 @@
+{
+  "provider": "Independent JPEG Group, JPEG 6b",
+  "source_url": "https://www.ijg.org/files/jpegsrc.v6b.tar.gz",
+  "archive_sha256": "75c3ec241e9996504fe02a9ed4d12f16b74ade713972f3db9e65ce95cd27e35d",
+  "license_file": "work/client-dependencies/jpeg6b/jpeg-6b/README",
+  "modified_upstream_sources": [],
+  "configuration": "Unmodified jconfig.vc copied to generated jconfig.h",
+  "library_sources": 46,
+  "library": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+  "library_sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b",
+  "architecture": "x86",
+  "runtime": "/MT",
+  "legacy_abi": {
+    "matched": true,
+    "values": {
+      "JPEG_LIB_VERSION": 62,
+      "BITS_IN_JSAMPLE": 8,
+      "sizeof(boolean)": 1,
+      "sizeof(JDIMENSION)": 4,
+      "sizeof(JSAMPLE)": 1,
+      "sizeof(JCOEF)": 2,
+      "sizeof(struct jpeg_error_mgr)": 132,
+      "sizeof(struct jpeg_common_struct)": 24,
+      "sizeof(struct jpeg_compress_struct)": 360,
+      "sizeof(struct jpeg_decompress_struct)": 432,
+      "sizeof(jpeg_component_info)": 84,
+      "sizeof(JQUANT_TBL)": 130,
+      "sizeof(JHUFF_TBL)": 274,
+      "offsetof(struct jpeg_decompress_struct, err)": 0,
+      "offsetof(struct jpeg_decompress_struct, image_width)": 28,
+      "offsetof(struct jpeg_decompress_struct, image_height)": 32,
+      "offsetof(struct jpeg_decompress_struct, num_components)": 36,
+      "offsetof(struct jpeg_decompress_struct, jpeg_color_space)": 40,
+      "offsetof(struct jpeg_decompress_struct, out_color_space)": 44,
+      "offsetof(struct jpeg_decompress_struct, dct_method)": 68,
+      "offsetof(struct jpeg_decompress_struct, output_width)": 92,
+      "offsetof(struct jpeg_decompress_struct, output_height)": 96,
+      "offsetof(struct jpeg_decompress_struct, output_components)": 104,
+      "offsetof(struct jpeg_decompress_struct, output_scanline)": 120,
+      "offsetof(struct jpeg_decompress_struct, comp_info)": 196,
+      "offsetof(struct jpeg_decompress_struct, quant_tbl_ptrs)": 144,
+      "offsetof(struct jpeg_decompress_struct, dc_huff_tbl_ptrs)": 160,
+      "offsetof(struct jpeg_decompress_struct, ac_huff_tbl_ptrs)": 176
+    }
+  },
+  "golden_vectors": [
+    {
+      "input": "testorig.jpg",
+      "input_sha256": "acc6ec555d41d15b368320edaa3b20958ee6fa97cb6e4a18d1213d5ae8bec73b",
+      "output_sha256": "b64a47d529e289e5570648db9f0385d9b240448724cdde7716fa0139b121d491",
+      "golden_exact": true
+    },
+    {
+      "input": "testprog.jpg",
+      "input_sha256": "24770f706b81b40a71944af3b39aad8a3f7ffb21c4f2725447022e518222d823",
+      "output_sha256": "b64a47d529e289e5570648db9f0385d9b240448724cdde7716fa0139b121d491",
+      "golden_exact": true
+    }
+  ],
+  "input_game_exe_execution": false,
+  "limit": "Library/source-header ABI and IJG stock vectors; client 455 JPEG behavior not established."
+}

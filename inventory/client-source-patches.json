@@ -1,5 +1,12 @@
 [
   {
+    "file": "work/client-build/source/RF_Client/network/cnetworkmgr.cpp",
+    "original_sha256": "cbdd2f5b957c781c83a30eec1ae0f22f497ef91e27bc20d88b9d1c8f3fc304d3",
+    "patched_sha256": "3e9dc553fb149dd4673a10538281438340dcac488918a5d5699aa65713d79a12",
+    "changes": 1,
+    "reason": "Exclude already-unreachable old item dispatch in _NEW_UI_ builds; existing live routing is unchanged."
+  },
+  {
     "file": "work/client-build/source/RF_Client/character/character/ccharacter.cpp",
     "original_sha256": "7804bbc8510bf0c9bc2e3d187474f4014f1a9d4b997bb840595d1208c5b74a95",
     "patched_sha256": "04adfd2ffffe7665fa93c05c9cd8980b7baec2792d53b2d20486e842121dbff1",

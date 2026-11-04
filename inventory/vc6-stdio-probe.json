@@ -1,0 +1,32 @@
+{
+  "target": "Modern MSVC x86 /MT vs observed VC6 Character FILE access",
+  "source_object_sha256": "d939f5e90d6ce4428cd4635c9d2e57b3253c8fbdb17a31d0cefaad45e0d729f2",
+  "function": "?LoadEffectFileList@EffectList@@QAEXPAD@Z",
+  "coff_function_offsets": [
+    "0x31",
+    "0x38"
+  ],
+  "rva": null,
+  "legacy_offset": 12,
+  "legacy_eof_mask": 16,
+  "observed": {
+    "public_file_size": 4,
+    "eof_reported": 1,
+    "flags_at_old_offset_after_eof": 8265,
+    "error_reported": 1,
+    "flags_at_old_offset_after_error": 8273,
+    "classic_eof_reported": 1,
+    "classic_flags_at_old_offset": 25,
+    "classic_module": "C:/Windows/System32/msvcrt.dll",
+    "classic_image_timestamp": 2116507183,
+    "classic_image_size": 782336,
+    "legacy_direct_eof": false
+  },
+  "eof_access_compatible": false,
+  "classic_eof_access_compatible": true,
+  "classic_module_sha256": "c1be919e7de267ed2fcfbb4da52aad912cb468069b58b6a00198ff3c525373a0",
+  "classic_hash_file": "C:\\Windows\\SysWOW64\\msvcrt.dll",
+  "probe_exe_sha256": "9296955dfc99a218eb82ab99c965dc3a4992915bb254400554ee747eb6f1a389",
+  "input_game_exe_execution": false,
+  "limit": "One concrete FILE EOF access tested; no general CRT/STL compatibility inferred."
+}

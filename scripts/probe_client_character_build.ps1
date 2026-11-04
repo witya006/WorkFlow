@@ -21,6 +21,14 @@ $arguments = @('-S', $source, '-B', $build, '-G', 'Visual Studio 18 2026', '-A',
     "-DRF_LEGACY_DX8_LIBRARY=$(Join-Path $dx.sdk_root 'lib')",
     "-DRF_RECOVERED_CHARACTER_INCLUDE=$(Join-Path $recovered 'include')",
     "-DRF_CHARACTER_STD_DIAGNOSTIC=$(Join-Path $recovered 'diagnostic_std.hpp')")
+$jpeg = Get-Content -LiteralPath (Join-Path $workspace 'inventory/jpeg6b-build.json') -Raw | ConvertFrom-Json
+$jpegLibrary = Join-Path $workspace $jpeg.library
+if ((Get-FileHash -LiteralPath $jpegLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $jpeg.library_sha256) { throw 'JPEG archive changed since verification.' }
+$arguments += "-DRF_JPEG_LIBRARY_DIR=$(Split-Path -Parent $jpegLibrary)"
+$characterLibrary = Join-Path $source 'source/RF_Client/CharacterMR.lib'
+if ((Get-FileHash -LiteralPath $characterLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne '483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8') { throw 'Character reference digest changed.' }
+$arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
+$arguments += '-DRF_DIAGNOSTIC_DEFER_LIBRARIES=CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib'
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logs 'configure.txt') -Tail 15; exit $LASTEXITCODE }
 & $cmake --build $build --config Release --target RF_Online --parallel 4 *> (Join-Path $logs 'build.txt')

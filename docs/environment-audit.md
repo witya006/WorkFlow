@@ -23,8 +23,8 @@ R3Engine собран под VS 2026 x86 с двумя успешными чис
 
 Статический аудит сборки завершён: 14 DSP / 14 DSW, 41 конфигурация, 832 SOURCE,
 6 отсутствующих записей в CameraExporter/R3MapExp. Все 180 C++ клиента уже компилируются
-с диагностическим восстановленным Character.h. Линковку останавливает JpegLibMT.lib;
-дальше остаются Character inline/варианты библиотек и CRT.
+с диагностическим восстановленным Character.h. JPEG 6b/Miles подключены. Остались
+13 undefined symbols и подтверждённая несовместимость Character FILE с UCRT.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).
@@ -261,8 +261,11 @@ M4: 207 определений Character кешированы, 30 операнд
 Диагностический Character.h: 56 layout assertions и 165 публичных decorated names
 проверены; все 180 C++ клиента скомпилированы. Конструкторы/inline/STL ABI ещё открыты.
 Отдельно собран настоящий /MT R3EngineMT.lib; 180+58 COFF x86 /MT проверены.
-LNK2038 устранён корректной сборкой, genuine DX8 .lib подключены. Последняя линковка:
-LNK1104 JpegLibMT.lib. RF_Online.bin пока нет. Старый GetAlpha link-only probe ранее
-выявил std::_Xlen/_Xran. Input EXE/DLL не запускались. research/client-port-m4.md;
+LNK2038 устранён корректной сборкой, genuine DX8 .lib подключены. JPEG 6b /MT прошёл
+28 ABI сравнений и 2 точных golden decodes; 26 Miles импортов есть в 455 DLL.
+Проверены 284 x86 /MT объекта. Diagnostic link оставляет 13 уникальных символов.
+Native собственный тест подтвердил: старый FILE EOF доступ Character не работает с UCRT;
+classic CRT прошёл только этот частный тест. RF_Online.bin нет, input EXE/DLL не запускались.
+research/client-dependencies-m4.md и client-port-m4.md;
 inventory/client-character-diagnostic.json, client-mt-variant.json,
 character-header-recovery.json. Четыре проверки COFF прошли.

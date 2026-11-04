@@ -21,10 +21,14 @@
    Спецификация и границы — research/helper-spt-format.md.
 2. M4: все 180 C++ клиента компилируются с диагностическим восстановленным Character.h.
    Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
-   Все 238 объектов проверены как x86 /MT. Последняя линковка: LNK1104 JpegLibMT.lib;
-   ошибок компиляции и LNK2038 больше нет. research/client-port-m4.md.
-   Следующий шаг — восстановить JPEG 6b (version 62 в исходном jpeglib.h), затем
-   проверить реально требуемые zip/Character библиотеки и остальные link diagnostics.
+   JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
+   26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
+   В diagnostic link остались 13 уникальных символов; вызовы CheckFiles/SendLog сохранены.
+   Следующий шаг — адаптация старого FILE/CRT: native тест подтвердил несовместимость
+   прямого EOF доступа CharacterMR с UCRT, classic CRT прошёл этот конкретный тест.
+   Изолировать восемь старых stream API или восстановить загрузчики исходным кодом,
+   проверить fixtures, затем реализовать конструкторы/inline и std helpers.
+   Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
    У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
    неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.
    207 тел функций уже кешированы; 30 проверок инструкций, 56 layout assertions,

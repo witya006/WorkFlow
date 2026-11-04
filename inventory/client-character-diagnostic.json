@@ -1,19 +1,169 @@
 {
-  "checked_at_utc": "2026-11-04T05:54:06.966360+00:00",
+  "checked_at_utc": "2026-11-04T06:13:38.864814+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
   "build_exit": 1,
   "error_counts": {
-    "LNK1104": 1
+    "LNK2019": 13,
+    "LNK2001": 6,
+    "LNK1120": 1
   },
-  "distinct_diagnostics_total": 1,
+  "unresolved_symbols": [
+    "??0AnimationManager@@QAE@XZ",
+    "??0CObjectManager@@QAE@XZ",
+    "??0ChInterface@@QAE@XZ",
+    "?CheckFiles@@YAPADXZ",
+    "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z",
+    "?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KK@Z",
+    "?SendLog@@YA_NXZ",
+    "?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z",
+    "?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KK@Z",
+    "?SetMipMap@CRender@@QAEXK@Z",
+    "?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z",
+    "?_Xlen@std@@YAXXZ",
+    "?_Xran@std@@YAXXZ"
+  ],
+  "distinct_diagnostics_total": 20,
   "distinct_diagnostics": [
     {
-      "file": "LINK ",
+      "file": "cresobject.obj ",
       "line": null,
-      "code": "LNK1104",
-      "message": "не удается открыть файл \"JpegLibMT.lib\"",
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall CRender::DrawCharacter(class CHARACTEROBJECT *,float *,float)\" (?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z) в функции \"public: virtual int __thiscall CResObject::Render(void)\" (?Render@CResObject@@UAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "cnpc.obj ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"public: void __thiscall CRender::DrawCharacter(class CHARACTEROBJECT *,float *,float)\" (?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z).",
+      "count": 1
+    },
+    {
+      "file": "cbasenpc.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall EffectList::SetEffect(class CHARACTEROBJECT *,unsigned long)\" (?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z) в функции \"protected: void __thiscall CBaseNpc::Render_DrawMesh(void)\" (?Render_DrawMesh@CBaseNpc@@IAEXXZ).",
+      "count": 1
+    },
+    {
+      "file": "citemdata.obj ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"public: void __thiscall EffectList::SetEffect(class CHARACTEROBJECT *,unsigned long)\" (?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z).",
+      "count": 1
+    },
+    {
+      "file": "citemdata.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"void __cdecl SetMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long)\" (?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KK@Z) в функции \"public: int __thiscall CMeshItem::RenderWithShadow(void)\" (?RenderWithShadow@CMeshItem@@QAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "citemdata.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"bool __cdecl IsHaveMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long)\" (?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KK@Z) в функции \"protected: void __thiscall CMeshItem::Render_RenderWithEffect(void)\" (?Render_RenderWithEffect@CMeshItem@@IAEXXZ).",
+      "count": 1
+    },
+    {
+      "file": "cgp_login.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"char * __cdecl CheckFiles(void)\" (?CheckFiles@@YAPADXZ) в функции \"protected: virtual int __thiscall CGP_LogIn::LoadData(void)\" (?LoadData@CGP_LogIn@@MAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "cgp_login.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall CRender::SetMipMap(unsigned long)\" (?SetMipMap@CRender@@QAEXK@Z) в функции \"protected: virtual int __thiscall CGP_LogIn::LoadData(void)\" (?LoadData@CGP_LogIn@@MAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "global.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall CObjectManager::CObjectManager(void)\" (??0CObjectManager@@QAE@XZ) в функции \"public: int __thiscall CUnityBoneMgr::Create(void)\" (?Create@CUnityBoneMgr@@QAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "global.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall AnimationManager::AnimationManager(void)\" (??0AnimationManager@@QAE@XZ) в функции \"public: int __thiscall CUnityAniMgr::Create(void)\" (?Create@CUnityAniMgr@@QAEHXZ).",
+      "count": 1
+    },
+    {
+      "file": "global.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: __thiscall ChInterface::ChInterface(void)\" (??0ChInterface@@QAE@XZ) в функции \"int __cdecl _CreateCharIF(struct IDirect3DDevice8 *)\" (?_CreateCharIF@@YAHPAUIDirect3DDevice8@@@Z).",
+      "count": 1
+    },
+    {
+      "file": "cresourcedatamgr.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"public: void __thiscall ChInterface::SetTexPath(class CHARACTEROBJECT *,char *)\" (?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z) в функции \"public: int __thiscall CCharResData::LoadMeshDataList(unsigned char,class CDataString *)\" (?LoadMeshDataList@CCharResData@@QAEHEPAVCDataString@@@Z).",
+      "count": 1
+    },
+    {
+      "file": "effectutil.obj ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"bool __cdecl SendLog(void)\" (?SendLog@@YA_NXZ) в функции \"void __cdecl EffectLog(char *)\" (?EffectLog@@YAXPAD@Z).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(EffectScript.obj) ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(FileLoad.obj) ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(CScript.obj) ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(EffectScript.obj) ",
+      "line": null,
+      "code": "LNK2019",
+      "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(char const *,class std::allocator<char> const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(FileLoad.obj) ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
+      "count": 1
+    },
+    {
+      "file": "CharacterMR.lib(CScript.obj) ",
+      "line": null,
+      "code": "LNK2001",
+      "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
+      "count": 1
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-build\\build-character-diagnostic\\Release\\RF_Online.bin ",
+      "line": null,
+      "code": "LNK1120",
+      "message": "неразрешенных внешних элементов: 13",
       "count": 1
     }
   ],
@@ -22,7 +172,10 @@
   "build_dir": "work/client-build/build-character-diagnostic",
   "log": "artifacts/client-character-diagnostic/build.txt",
   "build_settings": {
+    "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/client-build/source/RF_Client/CharacterMR.lib",
     "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
+    "RF_DIAGNOSTIC_DEFER_LIBRARIES": "CharacterR.lib;ziplibm.lib;ZipArchive_STL_M.lib;libci.lib",
+    "RF_JPEG_LIBRARY_DIR": "E:/RFOnlineTrash/Source/WorkFlow/work/client-dependencies/jpeg6b/build/lib/Release",
     "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
     "RF_LEGACY_NEW_UI": "ON",
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include"

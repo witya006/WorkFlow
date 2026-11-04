@@ -136,4 +136,8 @@ CRender/ChInterface размером 776 в реконструкции покр�
 sizeof оригинального ChInterface сверх этого диапазона ещё не доказан.
 Современные std::vector не подставлены вместо старого хранения. STL/CRT/исключения
 VC6 и передачи STL объектов требуют отдельной проверки. Компиляция этого не доказывает.
-Последний link blocker — JpegLibMT.lib; подробности research/client-port-m4.md.
+JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 13 уникальных
+символов, полный список — inventory/client-character-diagnostic.json.
+Native тест подтвердил несовместимость прямого FILE EOF доступа CharacterMR с UCRT;
+classic CRT прошёл лишь этот частный тест. Адаптация ещё не реализована, SDK не готов.
+Доказательства и следующий шаг — research/client-dependencies-m4.md.

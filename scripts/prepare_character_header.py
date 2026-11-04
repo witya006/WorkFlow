@@ -227,7 +227,8 @@ bool IsHaveMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
             header += f'static_assert(offsetof({name}, {field})=={offset}, "{name}::{field}");\n'
     target = WS/'work/recovered/character-legacy/include/Character.h'
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(header, encoding='ascii')
+    if not target.exists() or target.read_text(encoding='ascii') != header:
+        target.write_text(header, encoding='ascii')
     report = {'library_sha256': contracts['library_sha256'], 'header': target.relative_to(WS).as_posix(),
               'header_sha256': hashlib.sha256(target.read_bytes()).hexdigest(),
               'public_contracts_input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),

@@ -88,6 +88,7 @@ get_target_property(RF_ENGINE_INCLUDES R3Engine INCLUDE_DIRECTORIES)
 add_library(R3EngineClientMT STATIC EXCLUDE_FROM_ALL ${RF_ENGINE_SOURCES})
 target_include_directories(R3EngineClientMT PRIVATE ${RF_ENGINE_INCLUDES})
 target_compile_definitions(R3EngineClientMT PRIVATE WIN32 NDEBUG _MBCS _LIB)
+target_link_libraries(R3EngineClientMT PUBLIC "${R3}/mss32.lib")
 target_compile_options(R3EngineClientMT PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:/W3>" "$<$<COMPILE_LANGUAGE:CXX>:/EHsc>" "$<$<COMPILE_LANGUAGE:CXX>:/Zc:forScope->" "$<$<COMPILE_LANGUAGE:CXX>:/MP4>")
 set_target_properties(R3EngineClientMT PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
   MSVC_RUNTIME_LIBRARY MultiThreaded OUTPUT_NAME R3EngineMT
@@ -103,6 +104,9 @@ set(RFC "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client")
 set(RF_RECOVERED_CHARACTER_INCLUDE "" CACHE PATH "Incomplete recovered Character header; diagnostic builds only")
 set(RF_CHARACTER_STD_DIAGNOSTIC "" CACHE FILEPATH "Separate diagnostic shim for legacy unqualified STL names")
 set(RF_LEGACY_DX8_LIBRARY "" CACHE PATH "Genuine DirectX 8 SDK x86 libraries")
+set(RF_JPEG_LIBRARY_DIR "" CACHE PATH "Verified JPEG 6b x86 MT archive directory")
+set(RF_CHARACTER_REFERENCE_LIBRARY "" CACHE FILEPATH "Unmodified old Character archive for static link diagnostics only")
+set(RF_DIAGNOSTIC_DEFER_LIBRARIES "" CACHE STRING "Unavailable default libraries deferred to expose unresolved symbols; diagnostic only")
 option(RF_LEGACY_NEW_UI "Enable UI branch required by current client item classes (present in legacy Debug)" ON)
 add_executable(RF_Online WIN32 EXCLUDE_FROM_ALL
 ''' + ''.join(f'  "${{RFC}}/{p}"\n' for p in client_units) + ''')
@@ -128,6 +132,18 @@ target_link_directories(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/recovered-i
 if(RF_LEGACY_DX8_LIBRARY)
   target_link_directories(RF_Online PRIVATE "${RF_LEGACY_DX8_LIBRARY}")
 endif()
+if(RF_JPEG_LIBRARY_DIR)
+  target_link_directories(RF_Online PRIVATE "${RF_JPEG_LIBRARY_DIR}")
+endif()
+if(RF_CHARACTER_REFERENCE_LIBRARY OR RF_DIAGNOSTIC_DEFER_LIBRARIES)
+  if(NOT RF_CHARACTER_STD_DIAGNOSTIC)
+    message(FATAL_ERROR "Old Character reference/deferred libraries require the separate diagnostic configuration")
+  endif()
+  target_link_libraries(RF_Online PRIVATE "${RF_CHARACTER_REFERENCE_LIBRARY}" legacy_stdio_definitions.lib)
+  foreach(RF_DEFERRED_LIB IN LISTS RF_DIAGNOSTIC_DEFER_LIBRARIES)
+    target_link_options(RF_Online PRIVATE "/NODEFAULTLIB:${RF_DEFERRED_LIB}")
+  endforeach()
+endif()
 set_target_properties(RF_Online PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
   MSVC_RUNTIME_LIBRARY MultiThreaded SUFFIX ".bin")
 # Original client /MT retained for diagnosis. CRT alignment and missing legacy
@@ -138,7 +154,8 @@ set_target_properties(RF_Online PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED
         previous = json.loads(previous_path.read_text(encoding='utf-8')) if previous_path.exists() else {}
         if digest(cmake_path) != previous.get('cmake_sha256'):
             raise RuntimeError(f'Preserving modified build project: {cmake_path}')
-    cmake_path.write_text(cmake, encoding='utf-8')
+    if not cmake_path.exists() or cmake_path.read_text(encoding='utf-8') != cmake:
+        cmake_path.write_text(cmake, encoding='utf-8')
     report = {'scope': 'Client and R3Engine only. No server files copied or changed.',
               'selected_legacy_config': selected, 'legacy_cpp_directives': configs[selected],
               'translation_units': len([x for x in units if x.lower().endswith(('.cpp', '.c'))]),

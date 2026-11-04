@@ -9,6 +9,15 @@ from pathlib import Path
 WS = Path(__file__).resolve().parents[1]
 
 
+def unresolved_symbol(message):
+    prefix = re.split(r' в функции | referenced in function | in function ', message, maxsplit=1)[0]
+    decorated = re.search(r'\((\?[^ )]+)\)', prefix)
+    if decorated:
+        return decorated[1]
+    raw = re.search(r'(?<!\w)(_[A-Za-z_][A-Za-z0-9_@]*)(?=[\s.,"()]|$)', prefix)
+    return raw[1] if raw else None
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--build-exit', required=True, type=int)
@@ -37,12 +46,14 @@ def main():
     settings = {}
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY)):[^=]+=(.*)', line)
+            m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY|JPEG_LIBRARY_DIR|CHARACTER_REFERENCE_LIBRARY|DIAGNOSTIC_DEFER_LIBRARIES)):[^=]+=(.*)', line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
               'error_counts': dict(collections.Counter(x['code'] for x in errors)),
+              'unresolved_symbols': sorted({symbol for x in errors if x['code'] in {'LNK2001', 'LNK2019'}
+                                             if (symbol := unresolved_symbol(x['message']))}),
               'distinct_diagnostics_total': len(groups),
               'distinct_diagnostics': [dict(zip(['file', 'line', 'code', 'message', 'count'], [*key, count])) for key, count in list(groups.items())[:args.max_details]],
               'details_omitted': max(0, len(groups)-args.max_details),

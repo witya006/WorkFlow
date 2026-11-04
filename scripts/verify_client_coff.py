@@ -35,8 +35,16 @@ def main():
     build = WS/'work/client-build/build-character-diagnostic'
     records = []
     sets = []
-    for target, expected in [('RF_Online', 180), ('R3EngineClientMT', 58)]:
-        objects = sorted((build/f'{target}.dir/Release').glob('*.obj'))
+    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 58, build)]
+    jpeg_report = WS/'inventory/jpeg6b-build.json'
+    if jpeg_report.exists():
+        jpeg = json.loads(jpeg_report.read_text(encoding='utf-8'))
+        library = WS/jpeg['library']
+        if hashlib.sha256(library.read_bytes()).hexdigest() != jpeg['library_sha256']:
+            raise ValueError('JPEG archive changed since golden verification')
+        targets.append(('JpegLibMT', 46, WS/'work/client-dependencies/jpeg6b/build'))
+    for target, expected, root in targets:
+        objects = sorted((root/f'{target}.dir/Release').glob('*.obj'))
         if len(objects) != expected:
             raise ValueError(f'{target}: expected {expected} objects, found {len(objects)}')
         for path in objects:
@@ -63,7 +71,7 @@ def main():
               'object_manifest_sha256': hashlib.sha256(artifact.read_bytes()).hexdigest(),
               'input_exe_execution': False}
     (WS/'inventory/client-mt-variant.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
-    print('PASS: 180 client + 58 engine objects are x86 /MT; actual R3EngineMT.lib verified.')
+    print(f'PASS: {sum(x["objects_verified"] for x in sets)} objects are x86 /MT; actual R3EngineMT.lib verified.')
 
 
 if __name__ == '__main__':

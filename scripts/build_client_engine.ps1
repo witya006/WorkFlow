@@ -14,6 +14,11 @@ if (Test-Path -LiteralPath $dxReport) {
     $dx = Get-Content -LiteralPath $dxReport -Raw | ConvertFrom-Json
     $cmakeArgs += "-DRF_LEGACY_DX8_LIBRARY=$(Join-Path $dx.sdk_root 'lib')"
 }
+$jpegReport = Join-Path $workspace 'inventory/jpeg6b-build.json'
+if (Test-Path -LiteralPath $jpegReport) {
+    $jpeg = Get-Content -LiteralPath $jpegReport -Raw | ConvertFrom-Json
+    $cmakeArgs += "-DRF_JPEG_LIBRARY_DIR=$(Split-Path -Parent (Join-Path $workspace $jpeg.library))"
+}
 & $cmakePath @cmakeArgs *> (Join-Path $logPath 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logPath 'configure.txt') -Tail 20; exit $LASTEXITCODE }
 $buildArgs = @('--build', $buildPath, '--config', 'Release', '--target', $Target, '--parallel', '4')

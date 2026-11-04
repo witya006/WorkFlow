@@ -80,7 +80,9 @@ exit /b %errorlevel%
     options = ' '.join(f'/I"{p}"' for p in includes)
     # Keep source-migration diagnostics separate from recovered binary declarations.
     shim = work/'diagnostic_std.hpp'
-    shim.write_text('#include <winsock2.h>\n#include <windows.h>\n#include <tchar.h>\n#include "dxutil.h"\n#include <list>\n#include <queue>\n#include <map>\n#include <vector>\n#include <string>\nusing namespace std;\n', encoding='ascii')
+    shim_text = '#include <winsock2.h>\n#include <windows.h>\n#include <tchar.h>\n#include "dxutil.h"\n#include <list>\n#include <queue>\n#include <map>\n#include <vector>\n#include <string>\nusing namespace std;\n'
+    if not shim.exists() or shim.read_text(encoding='ascii') != shim_text:
+        shim.write_text(shim_text, encoding='ascii')
     client_log = WS/'artifacts/character-global-compile.txt'
     batch.write_text(f'''@echo off
 call "{env}" -no_logo -arch=x86 -host_arch=x64 > header-env.txt 2>&1
