@@ -9,6 +9,7 @@ from verify_client_coff import directives
 FUNCTIONS=[('_RF455_SetDayRate',0x8b12c0,11),('_RF455_GetDayRate',0x8b12d0,7),
            ('_RF455_SetDayTime',0x8b12e0,0xcc),('_RF455_GetDayTime',0x8b13b0,0x75),
            ('_RF455_GetDayFraction',0x8b1430,7),('_RF455_SetDayFraction',0x8b1440,0x55),
+           ('_RF455_SetRealDayTime',0x8b14a0,0x93),('_RF455_GetRealDayTime',0x8b1540,0x75),
            ('_RF455_GetRealDayFraction',0x8b15c0,7),('_RF455_SetRealDayFraction',0x8b15d0,0x4f),
            ('_RF455_AdvanceDayClock',0x8b1f20,0x100)]
 OPERANDS={0xbf7348:'_RF455_DayRate',0x1154dec:'_RF455_DayFraction',0x1154df0:'_RF455_DayBase',
@@ -63,8 +64,8 @@ exit /b %errorlevel%
     if native['failures'] or native['precision_rounding_modes']!=12:raise ValueError('Incomplete native clock test')
     report={'library':(work/'RFClient455Clock.lib').relative_to(WS).as_posix(),'library_sha256':sha(work/'RFClient455Clock.lib'),
             'source_sha256':hashes,'object_sha256':sha(work/'clock.obj'),'binary_evidence':evidence,'native_test':native,
-            'reference_executables_executed':False,'scope':'Eight scalar clock routines and256byte two-clock update prefix. Not full lighting, map caller, console commands, network synchronization or M9.'}
+            'reference_executables_executed':False,'scope':'Ten scalar clock routines and256byte two-clock update prefix. Not full lighting, map caller, text commands, network synchronization or M9.'}
     (WS/'inventory/client455-clock.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-    print(f'PASS:8clock functions+256byte frame prefix match both455PE;{native["checks"]}native checks/12FP modes.')
+    print(f'PASS:10clock functions+256byte frame prefix match both455PE;{native["checks"]}native checks/12FP modes.')
 
 if __name__=='__main__':main()

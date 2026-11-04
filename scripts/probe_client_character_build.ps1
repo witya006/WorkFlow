@@ -48,13 +48,22 @@ $arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_WEATHER' })) { throw '455 weather source selection is missing.' }
 $arguments += '-DRF_CLIENT_455_WEATHER=ON'
 $clock = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-clock.json') -Raw | ConvertFrom-Json
-if ($clock.native_test.failures -ne 0 -or $clock.native_test.precision_rounding_modes -ne 12 -or $clock.native_test.checks -lt 1275) { throw '455 clock component proof missing.' }
+if ($clock.native_test.failures -ne 0 -or $clock.native_test.precision_rounding_modes -ne 12 -or $clock.native_test.checks -lt 1443) { throw '455 clock component proof missing.' }
 foreach ($property in $clock.source_sha256.PSObject.Properties) {
     if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 clock source proof stale.' }
 }
 $arguments += '-DRF_CLIENT_455_CLOCK=ON'
+$commands = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-time-commands.json') -Raw | ConvertFrom-Json
+if ($commands.native_test.failures -ne 0 -or $commands.native_test.checks -lt 2628 -or $commands.native_test.cases -ne 432) { throw '455 time command component proof missing.' }
+if ($commands.clock_library_sha256 -ne $clock.library_sha256) { throw 'Time commands were not tested against the current clock component.' }
+foreach ($property in $commands.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 time command source proof stale.' }
+}
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_TIME_COMMANDS' })) { throw '455 time command source selection missing.' }
+$arguments += '-DRF_CLIENT_455_TIME_COMMANDS=ON'
 $mapTime = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-map-time.json') -Raw | ConvertFrom-Json
 if ($mapTime.native_test.failures -ne 0 -or $mapTime.native_test.checks -lt 314 -or $mapTime.native_test.precision_rounding_modes -ne 12) { throw '455 map time component proof missing.' }
+if ($mapTime.clock_library_sha256 -ne $clock.library_sha256) { throw 'Map time was not tested against the current clock component.' }
 foreach ($property in $mapTime.source_sha256.PSObject.Properties) {
     if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 map time source proof stale.' }
 }
@@ -151,6 +160,12 @@ if ($result -eq 0) {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_map_time455.py --lab
     } else {
         & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_map_time455.py
+    }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+    if ($HelperLab) {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_time_commands455.py --lab
+    } else {
+        & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client_time_commands455.py
     }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }

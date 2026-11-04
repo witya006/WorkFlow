@@ -1,0 +1,60 @@
+{
+  "normal": {
+    "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+    "exe_sha256": "d656498a2465feec8c9b4fb44149f01e38aa8e4288e4cc9e4bb4c555ec490919",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "parser_va": "0x595fc0",
+    "parser_rva": "0x195fc0",
+    "objects": [
+      {
+        "object": "work/client-build/build-character-diagnostic/RF_Online.dir/Release/cavatar_relationinfo2.obj",
+        "sha256": "a3fc3dfb740dd0c56231ca1b24861707d778808683948bab140ba3fcf0a0423d",
+        "undefined_references": [
+          "_RF455_TryClockCommand"
+        ]
+      },
+      {
+        "object": "work/client-build/build-character-diagnostic/R3EngineClientMT.dir/Release/client455_time_commands.obj",
+        "sha256": "bab8e91d95ab9a06c2f3c41ac9b1ef74ac6b491ae0c410c949b007002a664e06",
+        "undefined_references": [
+          "_RF455_SetDayTime",
+          "_RF455_SetRealDayTime"
+        ]
+      }
+    ],
+    "component_report_sha256": "d7122921e704c6bdce85bb398a9a0a566bd14d58fe2665ed2b4e6271f3c01be1",
+    "source_patch_sha256": "dcddc9017ca87bdbf389a7433bfd8fd98fe535a14abe7f2370f6caf2827faa0b",
+    "reference_report_sha256": "20903a53663838f9b04531b819934076084b2b0979eb2812202964391a2efb20",
+    "scope": "Actual source/compiled input and clock consumers,not instruction identity of the C++text parser. Native component/input scenarios recorded separately;full chat/other directives remain open."
+  },
+  "lab": {
+    "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
+    "exe_sha256": "d19ea1193dbfd546e68eadb3332e145de3d42d83e5429155726c807cfd3a1c24",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "parser_va": "0x662ce0",
+    "parser_rva": "0x262ce0",
+    "objects": [
+      {
+        "object": "work/client-build/build-helper-lab/RF_Online.dir/Release/cavatar_relationinfo2.obj",
+        "sha256": "8ae945c50cd8762115eaf7afd47402bedd9612568ed3d65af7725651c51c31e9",
+        "undefined_references": [
+          "_RF455_TryClockCommand"
+        ]
+      },
+      {
+        "object": "work/client-build/build-helper-lab/R3EngineClientMT.dir/Release/client455_time_commands.obj",
+        "sha256": "e90a969159d91a3b1318a06aeea179e28ac34ddd21b4cc228ac992f25fe45bc2",
+        "undefined_references": [
+          "_RF455_SetDayTime",
+          "_RF455_SetRealDayTime"
+        ]
+      }
+    ],
+    "component_report_sha256": "d7122921e704c6bdce85bb398a9a0a566bd14d58fe2665ed2b4e6271f3c01be1",
+    "source_patch_sha256": "dcddc9017ca87bdbf389a7433bfd8fd98fe535a14abe7f2370f6caf2827faa0b",
+    "reference_report_sha256": "20903a53663838f9b04531b819934076084b2b0979eb2812202964391a2efb20",
+    "scope": "Actual source/compiled input and clock consumers,not instruction identity of the C++text parser. Native component/input scenarios recorded separately;full chat/other directives remain open."
+  }
+}

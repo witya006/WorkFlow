@@ -37,6 +37,15 @@ static int runClockChecks(FILE* output) {
         calls=0;RF455_SetRealDayFraction(.25f);
         check(calls==1 && RF455_RealDayBase==tick-21600000u);
         check(RF455_GetRealDayFraction()==.25f);unchanged(cw,st);
+        calls=0;RF455_SetRealDayTime(36,60,60);
+        check(calls==1 && RF455_RealDayBase==tick-43200000u);
+        check(RF455_GetRealDayFraction()==.5f);unchanged(cw,st);
+        h=m=s=99;RF455_GetRealDayTime(&h,&m,&s);
+        check(h==12 && m==0 && s==0);unchanged(cw,st);
+        check(RF455_GetDayFraction()==.25f);
+        h=99;RF455_GetRealDayTime(&h,&h,&h);check(h==0);unchanged(cw,st);
+        RF455_SetRealDayTime(0xFFFFFFFFu,0xFFFFFFFFu,0xFFFFFFFFu);
+        check(RF455_RealDayBase==tick-54915000u);unchanged(cw,st);
         // Exact periods exercise modulo, the independent real-time counter and
         // its two separate GetTickCount calls without a wall-clock race.
         RF455_DayBase=RF455_RealDayBase=0;tick=14400000;calls=0;

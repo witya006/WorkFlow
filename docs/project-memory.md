@@ -34,13 +34,18 @@ M8 не требуется. Компиляция, запуск и частичн
   703weather/30resource/23 337targeted helper checks на текущем lab прошли.
   Gate inventory/client-m5-checkpoint.json; research/client455-graphics-runtime.md.
 - M6 в работе. Полные particles/clock/Character/UI/network/renderer parity открыты.
-  Численный clock уже восстановлен:8scalar functions+256byte frame prefix,773bytes
+  Первая clock ревизия:8scalar functions+256byte frame prefix,773bytes
   совпали с обоими PE;1275checks/12FP modes в component и полном клиенте. Два
   независимых счётчика и actual FrameMove работают. Следом source packet8/5,
   CLand timestamp/tick cache и successful-load hook перенесены;314native checks/
   12FP modes/UTC+JST. Actual CNetMsgProcessor_Map/CLand и Platform01 прошли GPU
   2cases/66checks.130byte numeric fragment равен455,linked normal/lab проверены.
-  Full CLand/transport/calendar domain,console и lighting открыты.
+  Затем time/real_time commands и actual CHAT_INFO grade>=1 hook перенесены:
+  432cases/2628checks/12FP modes,20actual input/access/history/lifecycle checks;
+  grade1 accepts/grade0 rejects,no connections. Real HMS set/get добавлены:clock
+  теперь10scalar functions+256byte prefix,1037bytes equal455,1443checks/12FP modes.
+  Commands→actual Platform01 FrameMove/weather/GPU2cases/69checks прошли.
+  Full CLand/transport/calendar domain,other local commands/chat/lighting открыты.
   research/client455-clock-source.md и client455-map-time-source.md.
   D3D8 legacy против455D3D9 — обязательное восстановление M6, не optional M8.
   Normal WinMain и reference EXE не запускались. M6F/M7/M9 не закрыты.
@@ -57,14 +62,15 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 448 896bytes,entryRVA0x1BBDF0,SHA256
-a1b9dd5d7e45313ef414d90dff198717e66bc5d58e5ed95bcb72fba601cf456a.
-Snapshot map-time455;предыдущие revisions сохранены. Обычный EXE
-не запускался,288objects /MT проверены (180client +62engine +46JPEG).
-Own lab EXE SHA ad3a17d3d54372c4a05962ae0088b3f44d3d96b438f0873e94c06317cae5f441,
-size4105216,entryRVA0x7E78; snapshot work/client-map-time-lab/ad3a17d3d54372c4/RF_Online.bin.
-Он исполнялся с clock/map-time/resource/weather и --rf-graphics-device/level Platform01.
-1275clock+314map-time checks/12FP modes,703weather/30resource,2GPUcases/66checks прошли.
+2 450 432bytes,entryRVA0x1BC330,SHA256
+d656498a2465feec8c9b4fb44149f01e38aa8e4288e4cc9e4bb4c555ec490919.
+Snapshot time-commands455;предыдущие revisions сохранены. Обычный EXE
+не запускался,289objects /MT проверены (180client +63engine +46JPEG).
+Own lab EXE SHA d19ea1193dbfd546e68eadb3332e145de3d42d83e5429155726c807cfd3a1c24,
+size4131328,entryRVA0x7E9B; snapshot work/client-time-commands-lab/d19ea1193dbfd546/RF_Online.bin.
+Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
+1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
+20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -89,11 +95,11 @@ GoMMO stdio audit работает; это не разрешение Install/pub
 
 492 копии client/R3Engine под work/client-build/source. 11 byte-preserving compiler
 patches: inventory/client-source-patches.json; не менять кодировки. Behavior
-files имеют отдельный ledger client-behavior-patches.json. Сейчас21files: прежние18
-плюс3client map-time files;7resource overlays включают5weather files и2новых.
+files имеют отдельный ledger client-behavior-patches.json. Сейчас22files: прежние21
+плюс1actual CHAT_INFO input file;7resource overlays включают5weather files и2новых.
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
 CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
-X87_MATH /WEATHER /RESOURCE_IO /CLOCK /MAP_TIME по умолчанию
+X87_MATH /WEATHER /RESOURCE_IO /CLOCK /MAP_TIME /TIME_COMMANDS по умолчанию
 OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
 CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
@@ -140,12 +146,22 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M6: следующий шаг — console %time/%real_time input/caller и full calendar/lighting domain.
+M6: следующий critical step — полноценный Character source/ABI и loaded mesh path,
+перед полным D3D9 переносом. Header/library contract явно IDirect3DDevice8; новая
+engine API без переноса binary consumers не является455renderer restoration.
+Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
+Начать с настоящего InitVertex/CObjectMesh blend allocation/lifecycle: pointer+160
+оставлен ctor неинициализированным; fixtures его обнуляли, production не исправлен.
+Проверить метод/loaded mesh source contract и455пару, затем восстановить source unit.
+research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
+Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:
 он сначала пробует local parser, затем обрабатывает GM/text-command fallback.
 Raw artifacts/clock455-analysis/command-caller-0x4335a0.json;body/call проверены в обоих
-PE через audit_client_time455.py. Следом найти соответствующую source input branch;
-начать с ссылок ChatMsg_ChatCheatRequest_clzo/GUIChatWindow, не дублировать decomp.
+PE через audit_client_time455.py. Actual copied CHAT_INFO::SendMessage hook добавлен
+с grade>=1 после existing history/prefix path;clock-only subset/ASCII domain.
+Other local directives/full chat fallback/UI/key events/CRT locale ещё открыты,
+не объявлять parser целиком готовым.
 Owned IDAdec47527 закрыта/save.
 Уточнение:0x7E3E55 — console %time, НЕ network handler; %real_time вызывает0x8B14A0.
 Настоящий map caller0x7C8B60 ->game fraction0x8B1440 и real fraction0x8B15D0 уже

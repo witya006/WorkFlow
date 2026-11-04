@@ -10,6 +10,8 @@ float RF455_GetDayFraction();
 void RF455_SetDayFraction(float);
 void RF455_SetDayTime(unsigned hours,unsigned minutes,unsigned seconds);
 void RF455_GetDayTime(unsigned* hours,unsigned* minutes,unsigned* seconds);
+void RF455_SetRealDayTime(unsigned hours,unsigned minutes,unsigned seconds);
+void RF455_GetRealDayTime(unsigned* hours,unsigned* minutes,unsigned* seconds);
 float RF455_GetRealDayFraction();
 void RF455_SetRealDayFraction(float);
 void RF455_AdvanceDayClock();

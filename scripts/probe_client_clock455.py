@@ -6,7 +6,7 @@ from probe_client_helpers import import_names
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     cli=argparse.ArgumentParser();cli.add_argument('--map-time',action='store_true');args=cli.parse_args()
-    label='map-time' if args.map_time else 'clock';checks=314 if args.map_time else 1275
+    label='map-time' if args.map_time else 'clock';checks=314 if args.map_time else 1443
     build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'))
     if build['build_exit'] or build['build_settings'].get('RF_CLIENT_455_CLOCK')!='ON':raise ValueError('Successful clock-enabled lab required')
     if args.map_time and build['build_settings'].get('RF_CLIENT_455_MAP_TIME')!='ON':raise ValueError('Map time branch must be enabled')
@@ -15,7 +15,7 @@ def main():
             if sha(WS/name)!=digest:raise ValueError('Stale clock lab source:'+name)
     original=WS/'work/client-build/build-helper-lab/Release/RF_Online.bin';digest=sha(original)
     linked=json.loads((WS/f'inventory/client455-{label}-link.json').read_text(encoding='utf-8'))['lab']
-    if linked['exe_sha256']!=digest or (not args.map_time and len(linked['functions'])!=9):raise ValueError('Full lab linked clock proof required')
+    if linked['exe_sha256']!=digest or (not args.map_time and len(linked['functions'])!=11):raise ValueError('Full lab linked clock proof required')
     if set(import_names(original.read_bytes(),13))!={'mss32.dll','abuse.dll','adv.dll','pdll.dll'}:raise ValueError('Game DLLs must remain delayed')
     root=WS/f'work/client-{label}-lab'/digest[:16];root.mkdir(parents=True,exist_ok=True)
     exe=root/'RF_Online.bin'

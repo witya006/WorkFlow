@@ -1,0 +1,287 @@
+{
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "input_send",
+          "va": "0x433050",
+          "rva": "0x33050",
+          "size": 316,
+          "sha256": "bf7edf42a96ffd23e6c80f71d240b5490ce407270010684ada79f2ff88e62b6e"
+        },
+        {
+          "name": "privileged_commands",
+          "va": "0x4335a0",
+          "rva": "0x335a0",
+          "size": 2227,
+          "sha256": "1ae9c4be0acfd773bf4be959426ab7c4a2e2c872c50c1a26794a944945ebdd1a"
+        },
+        {
+          "name": "local_parser",
+          "va": "0x7e3b10",
+          "rva": "0x3e3b10",
+          "size": 1301,
+          "sha256": "8eb2f406ba36900aba07c0d7b330ac64cf6ca7aca2f1bbb257b710567a08fb01"
+        },
+        {
+          "name": "grade_getter",
+          "va": "0x40a690",
+          "rva": "0xa690",
+          "size": 28,
+          "sha256": "1cc50336b093ef9638e90516362de249f603c64ca444cfded06f2fc4313207a3"
+        },
+        {
+          "name": "empty_input",
+          "va": "0x432600",
+          "rva": "0x32600",
+          "size": 59,
+          "sha256": "e04ceeb8c1c3e3072ff46795ff8f5ef6a323e76c48558f298cae82f2f96ead3b"
+        },
+        {
+          "name": "clear_prefix",
+          "va": "0x432640",
+          "rva": "0x32640",
+          "size": 78,
+          "sha256": "3875e4baf510a468a1dadb2166e871448df4b2ec5638c278224651712763eb42"
+        },
+        {
+          "name": "save_history",
+          "va": "0x432690",
+          "rva": "0x32690",
+          "size": 449,
+          "sha256": "676c50d142089d2a8357b05f6b358849bbffb9da424cd2175a00e24d03249c3e"
+        },
+        {
+          "name": "atol_wrapper",
+          "va": "0x874f6a",
+          "rva": "0x474f6a",
+          "size": 17,
+          "sha256": "3ee2464d5d456f55a5dbb60392a71082c6a0ec3a9cd9f48df2c038a36ea95322"
+        },
+        {
+          "name": "strtol_wrapper",
+          "va": "0x8754fe",
+          "rva": "0x4754fe",
+          "size": 41,
+          "sha256": "c2326ac5ead9feaa191039d9f761410ff5abe7302e61b9cc6397d80b88836244"
+        }
+      ],
+      "calls": [
+        {
+          "va": "0x433091",
+          "rva": "0x33091",
+          "destination_va": "0x40a690",
+          "bytes": "e8fa75fdff",
+          "meaning": "query client grade"
+        },
+        {
+          "va": "0x4330a2",
+          "rva": "0x330a2",
+          "destination_va": "0x4335a0",
+          "bytes": "e8f9040000",
+          "meaning": "call privileged text path"
+        },
+        {
+          "va": "0x4330b5",
+          "rva": "0x330b5",
+          "destination_va": "0x432640",
+          "bytes": "e886f5ffff",
+          "meaning": "clear consumed command prefix"
+        },
+        {
+          "va": "0x4330ca",
+          "rva": "0x330ca",
+          "destination_va": "0x432690",
+          "bytes": "e8c1f5ffff",
+          "meaning": "save original consumed command"
+        },
+        {
+          "va": "0x4335bd",
+          "rva": "0x335bd",
+          "destination_va": "0x7e3b10",
+          "bytes": "e84e053b00",
+          "meaning": "try local parser before fallback"
+        },
+        {
+          "va": "0x7e3e55",
+          "rva": "0x3e3e55",
+          "destination_va": "0x8b12e0",
+          "bytes": "e886d40c00",
+          "meaning": "set game HMS"
+        },
+        {
+          "va": "0x7e3f3a",
+          "rva": "0x3e3f3a",
+          "destination_va": "0x8b14a0",
+          "bytes": "e861d50c00",
+          "meaning": "set real HMS"
+        },
+        {
+          "va": "0x874f72",
+          "rva": "0x474f72",
+          "destination_va": "0x8754fe",
+          "bytes": "e887050000",
+          "meaning": "atol uses strtol"
+        }
+      ],
+      "grade_gate": {
+        "va": "0x433096",
+        "rva": "0x33096",
+        "bytes": "83f8017c41",
+        "meaning": "signed grade>=1 before local command path"
+      }
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "input_send",
+          "va": "0x433050",
+          "rva": "0x33050",
+          "size": 316,
+          "sha256": "bf7edf42a96ffd23e6c80f71d240b5490ce407270010684ada79f2ff88e62b6e"
+        },
+        {
+          "name": "privileged_commands",
+          "va": "0x4335a0",
+          "rva": "0x335a0",
+          "size": 2227,
+          "sha256": "1ae9c4be0acfd773bf4be959426ab7c4a2e2c872c50c1a26794a944945ebdd1a"
+        },
+        {
+          "name": "local_parser",
+          "va": "0x7e3b10",
+          "rva": "0x3e3b10",
+          "size": 1301,
+          "sha256": "8eb2f406ba36900aba07c0d7b330ac64cf6ca7aca2f1bbb257b710567a08fb01"
+        },
+        {
+          "name": "grade_getter",
+          "va": "0x40a690",
+          "rva": "0xa690",
+          "size": 28,
+          "sha256": "1cc50336b093ef9638e90516362de249f603c64ca444cfded06f2fc4313207a3"
+        },
+        {
+          "name": "empty_input",
+          "va": "0x432600",
+          "rva": "0x32600",
+          "size": 59,
+          "sha256": "e04ceeb8c1c3e3072ff46795ff8f5ef6a323e76c48558f298cae82f2f96ead3b"
+        },
+        {
+          "name": "clear_prefix",
+          "va": "0x432640",
+          "rva": "0x32640",
+          "size": 78,
+          "sha256": "3875e4baf510a468a1dadb2166e871448df4b2ec5638c278224651712763eb42"
+        },
+        {
+          "name": "save_history",
+          "va": "0x432690",
+          "rva": "0x32690",
+          "size": 449,
+          "sha256": "676c50d142089d2a8357b05f6b358849bbffb9da424cd2175a00e24d03249c3e"
+        },
+        {
+          "name": "atol_wrapper",
+          "va": "0x874f6a",
+          "rva": "0x474f6a",
+          "size": 17,
+          "sha256": "3ee2464d5d456f55a5dbb60392a71082c6a0ec3a9cd9f48df2c038a36ea95322"
+        },
+        {
+          "name": "strtol_wrapper",
+          "va": "0x8754fe",
+          "rva": "0x4754fe",
+          "size": 41,
+          "sha256": "c2326ac5ead9feaa191039d9f761410ff5abe7302e61b9cc6397d80b88836244"
+        }
+      ],
+      "calls": [
+        {
+          "va": "0x433091",
+          "rva": "0x33091",
+          "destination_va": "0x40a690",
+          "bytes": "e8fa75fdff",
+          "meaning": "query client grade"
+        },
+        {
+          "va": "0x4330a2",
+          "rva": "0x330a2",
+          "destination_va": "0x4335a0",
+          "bytes": "e8f9040000",
+          "meaning": "call privileged text path"
+        },
+        {
+          "va": "0x4330b5",
+          "rva": "0x330b5",
+          "destination_va": "0x432640",
+          "bytes": "e886f5ffff",
+          "meaning": "clear consumed command prefix"
+        },
+        {
+          "va": "0x4330ca",
+          "rva": "0x330ca",
+          "destination_va": "0x432690",
+          "bytes": "e8c1f5ffff",
+          "meaning": "save original consumed command"
+        },
+        {
+          "va": "0x4335bd",
+          "rva": "0x335bd",
+          "destination_va": "0x7e3b10",
+          "bytes": "e84e053b00",
+          "meaning": "try local parser before fallback"
+        },
+        {
+          "va": "0x7e3e55",
+          "rva": "0x3e3e55",
+          "destination_va": "0x8b12e0",
+          "bytes": "e886d40c00",
+          "meaning": "set game HMS"
+        },
+        {
+          "va": "0x7e3f3a",
+          "rva": "0x3e3f3a",
+          "destination_va": "0x8b14a0",
+          "bytes": "e861d50c00",
+          "meaning": "set real HMS"
+        },
+        {
+          "va": "0x874f72",
+          "rva": "0x474f72",
+          "destination_va": "0x8754fe",
+          "bytes": "e887050000",
+          "meaning": "atol uses strtol"
+        }
+      ],
+      "grade_gate": {
+        "va": "0x433096",
+        "rva": "0x33096",
+        "bytes": "83f8017c41",
+        "meaning": "signed grade>=1 before local command path"
+      }
+    }
+  ],
+  "confirmed": [
+    "Source is copied up to256bytes,byte256 terminated,then lowercased;input is not mutated",
+    "Cursor advances by token strlen without skipping leading whitespace;real minutes uses first argument strlen+1",
+    "Time uses hours,0,0;real_time hours,minutes,0;raw unsigned HMS wrapping follows signed32 strtol conversion",
+    "Other recognized directives/end terminate this local parser before later time tokens",
+    "The input grade>=1 gate precedes local parser;consumed command clears prefix and saves original text"
+  ],
+  "unknown": [
+    "Complete other local directives and privileged/network fallback",
+    "Full modern/old CRT locale/non-ASCII and strtol/sscanf domain",
+    "Complete CHAT_INFO/chat histories/UI transport equivalence;selected time path only"
+  ],
+  "raw_analysis": "artifacts/clock455-analysis/command-*.json;owned IDA1bf47ee9 closed/save;input EXEs never executed"
+}

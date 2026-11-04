@@ -1,0 +1,31 @@
+{
+  "exe": "work/client-time-commands-lab/d19ea1193dbfd546/RF_Online.bin",
+  "exe_sha256": "d19ea1193dbfd546e68eadb3332e145de3d42d83e5429155726c807cfd3a1c24",
+  "component": {
+    "checks": 2628,
+    "failures": 0,
+    "first_failure": 0,
+    "cases": 432,
+    "precision_rounding_modes": 12,
+    "ascii_domain": true
+  },
+  "input": {
+    "checks": 20,
+    "failures": 0,
+    "actual_chat_send_called": true,
+    "grades": [
+      1,
+      0
+    ],
+    "history_prefix_checked": true,
+    "network_processes_created": 0,
+    "winsock_constructor_only": true,
+    "game_dlls_loaded": false
+  },
+  "output_sha256": "e22efe941342de3eb21ca8e40b9e082d9884a9289ab4d1ccb4ba728a8c7b5bec",
+  "input_output_sha256": "8fa0bb558af8acdec74622a106eab85d3a6513785784806dadd523bdba0aee85",
+  "output": "work/client-time-commands-lab/d19ea1193dbfd546/result-001.json",
+  "input_output": "work/client-time-commands-lab/d19ea1193dbfd546/result-001.json.input.json",
+  "link_report_sha256": "a127c831ba79fb4f551b8f4a0741fb5df6d62e4cb7ba28b7bc9556834bd215fa",
+  "scope": "Own full-client entry,real CHAT_INFO/CNetworkMgr construction and SendMessage,grade1 accepts/grade0 rejects,history/prefix and independent clocks. Winsock initialization only,no Create/SetNetSystem/Connect or connections. No reference EXE/game DLL/normal WinMain executed."
+}

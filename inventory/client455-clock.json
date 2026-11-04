@@ -1,12 +1,12 @@
 {
   "library": "work/recovered/client455/clock/RFClient455Clock.lib",
-  "library_sha256": "e5834a4ad6ad7558ed8f303d7b81ebf782505fd6fea70cce73bd0d8cb4205ff0",
+  "library_sha256": "aa12c326ee100f84363f168428451807c82ead7ff010ef278aea8b06c3dfc38d",
   "source_sha256": {
-    "client455_clock.h": "cd58c42a03d99f9fab55522090fa04fe2ff6d4d3a5964074ec4c19233456aaf1",
-    "client455_clock.cpp": "04dfac005b6cba0be13164b07bf51e999d819eb8b783c43965220cb5512c72f9",
-    "test_client455_clock.cpp": "996289ba060e87985eab9f539bec21d8ef4c68ac627c2ed908bbf4fbfb94da49"
+    "client455_clock.h": "0e62bb617d8f3ae3198a86a1a3fd617150f161bda46c333ff099a006fafb3be0",
+    "client455_clock.cpp": "c0b19cdd44cb221fdcba149593a5da6b81a500bde02ec56e040567d42d634194",
+    "test_client455_clock.cpp": "8678169e16e285569665c06a69581e86eb48285bbeb49e66ea95aeb884718231"
   },
-  "object_sha256": "9228f8564d4af3431364ab1637ff4f2e4e27ef122085b540adef3e30639ce558",
+  "object_sha256": "60ee03f7e882d9f5fe3878964a2c6ecddeec7ca378c06ad67a3ea277817d0a4b",
   "binary_evidence": [
     {
       "input": "current",
@@ -155,6 +155,63 @@
               "offset": 77,
               "type": 6,
               "symbol": "_RF455_DayBase"
+            }
+          ],
+          "identity_except_verified_absolute_operands": true,
+          "prefix_only": false
+        },
+        {
+          "symbol": "_RF455_SetRealDayTime",
+          "va": "0x8b14a0",
+          "rva": "0x4b14a0",
+          "size": 147,
+          "reference_body_sha256": "e796a935fb668c9b95650129ee8a7ac257561392bd33c2d78a03c5b489c2c103",
+          "relocations": [
+            {
+              "offset": 109,
+              "type": 6,
+              "symbol": "_RF455_UInt32Bias"
+            },
+            {
+              "offset": 115,
+              "type": 6,
+              "symbol": "_RF455_SecondsPerDay"
+            },
+            {
+              "offset": 121,
+              "type": 6,
+              "symbol": "_RF455_RealDayFraction"
+            },
+            {
+              "offset": 127,
+              "type": 6,
+              "symbol": "_RF455_ClockTickSource"
+            },
+            {
+              "offset": 141,
+              "type": 6,
+              "symbol": "_RF455_RealDayBase"
+            }
+          ],
+          "identity_except_verified_absolute_operands": true,
+          "prefix_only": false
+        },
+        {
+          "symbol": "_RF455_GetRealDayTime",
+          "va": "0x8b1540",
+          "rva": "0x4b1540",
+          "size": 117,
+          "reference_body_sha256": "c8574e209b63a6785323995916b620e6b2ea181a8c686142168cb9eebac73cb8",
+          "relocations": [
+            {
+              "offset": 5,
+              "type": 6,
+              "symbol": "_RF455_RealDayFraction"
+            },
+            {
+              "offset": 12,
+              "type": 6,
+              "symbol": "_RF455_SecondsPerDay"
             }
           ],
           "identity_except_verified_absolute_operands": true,
@@ -453,6 +510,63 @@
           "prefix_only": false
         },
         {
+          "symbol": "_RF455_SetRealDayTime",
+          "va": "0x8b14a0",
+          "rva": "0x4b14a0",
+          "size": 147,
+          "reference_body_sha256": "e796a935fb668c9b95650129ee8a7ac257561392bd33c2d78a03c5b489c2c103",
+          "relocations": [
+            {
+              "offset": 109,
+              "type": 6,
+              "symbol": "_RF455_UInt32Bias"
+            },
+            {
+              "offset": 115,
+              "type": 6,
+              "symbol": "_RF455_SecondsPerDay"
+            },
+            {
+              "offset": 121,
+              "type": 6,
+              "symbol": "_RF455_RealDayFraction"
+            },
+            {
+              "offset": 127,
+              "type": 6,
+              "symbol": "_RF455_ClockTickSource"
+            },
+            {
+              "offset": 141,
+              "type": 6,
+              "symbol": "_RF455_RealDayBase"
+            }
+          ],
+          "identity_except_verified_absolute_operands": true,
+          "prefix_only": false
+        },
+        {
+          "symbol": "_RF455_GetRealDayTime",
+          "va": "0x8b1540",
+          "rva": "0x4b1540",
+          "size": 117,
+          "reference_body_sha256": "c8574e209b63a6785323995916b620e6b2ea181a8c686142168cb9eebac73cb8",
+          "relocations": [
+            {
+              "offset": 5,
+              "type": 6,
+              "symbol": "_RF455_RealDayFraction"
+            },
+            {
+              "offset": 12,
+              "type": 6,
+              "symbol": "_RF455_SecondsPerDay"
+            }
+          ],
+          "identity_except_verified_absolute_operands": true,
+          "prefix_only": false
+        },
+        {
           "symbol": "_RF455_GetRealDayFraction",
           "va": "0x8b15c0",
           "rva": "0x4b15c0",
@@ -594,12 +708,12 @@
     }
   ],
   "native_test": {
-    "checks": 1275,
+    "checks": 1443,
     "failures": 0,
     "first_failure": 0,
     "precision_rounding_modes": 12,
     "fake_ticks_only": true
   },
   "reference_executables_executed": false,
-  "scope": "Eight scalar clock routines and256byte two-clock update prefix. Not full lighting, map caller, console commands, network synchronization or M9."
+  "scope": "Ten scalar clock routines and256byte two-clock update prefix. Not full lighting, map caller, text commands, network synchronization or M9."
 }

@@ -317,6 +317,25 @@ Localtime32 old-CRT timezone/DST/invalid/Init domains,opaque fields/other consum
 full CLand/console/lighting и M6/M6F/M7/M9 открыты. Owned IDA92d1827c закрыта/save.
 research/client455-map-time-source.md; inventory/client455-map-time*.json.
 
+## M6: local clock commands и actual input
+
+Восстановлены time/real_time,grade>=1 input hook в actual CHAT_INFO::SendMessage и
+real HMS set/get. Clock10scalar functions+256byte prefix:1037instruction bytes
+совпали с обоими PE;1443checks/12FP modes standalone/full-client. Parser432ASCII cases/
+2628checks/12FP modes,20actual input/access/history/lifecycle checks прошли:grade1
+accepts,grade0 rejects. CNetworkMgr ctor/dtor/WSAStartup выполнены;Create/SetNetSystem/
+Connect не вызывались,network processes0,соединений/отправки нет. Game DLLs отсутствуют.
+Две команды в own graphics entry управляют actual Platform01 weather FrameMove:
+2GPUcases/69checks,0warnings/errors,Dmalloc/COM balance0,FPU007F,23helpers/8interiors.
+289modern x86 /MT,314map-time/703weather/30resource regressions прошли.
+Normal2450432bytes,entryRVA0x1BC330,SHA
+d656498a2465feec8c9b4fb44149f01e38aa8e4288e4cc9e4bb4c555ec490919,не исполнялся.
+Lab SHA d19ea1193dbfd546e68eadb3332e145de3d42d83e5429155726c807cfd3a1c24.
+Other local directives/full chat/GUI input/locale/calendar/lighting остаются открытыми.
+Owned IDA1bf47ee9 закрыта/save;research/client455-time-commands-source.md.
+Следующий critical path — Character sources/ABI перед D3D9; current header/import
+contract использует IDirect3DDevice8. M6/M6F/M7/M9 не закрыты.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

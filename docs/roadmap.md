@@ -45,9 +45,16 @@ Actual Platform01 FrameMove/GPU повторно прошёл с новыми cl
 Следом packet8/5,CLand timestamp/tick cache и successful-load hook перенесены:
 130byte numeric fragment равен455,314checks/12FP modes/UTC+JST; actual CNetMap/CLand
 Platform01 GPU2cases/66checks. Актуальная сборка288objects /MT.
-Full CLand/transport/calendar/console/lighting domains ещё открыты.
+Следом local time/real_time +grade>=1 input перенесены:432cases/2628checks и20actual
+CHAT_INFO checks. Clock расширен до10scalar functions+256byte prefix,1037bytes/
+1443checks/12FP modes. Commands→actual weather/GPU2cases/69checks;289objects /MT.
+Full CLand/transport/calendar/other local commands/chat/lighting domains ещё открыты.
 research/client455-clock-source.md.
 research/client455-map-time-source.md.
+research/client455-time-commands-source.md.
+Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
+binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
+неизвестного blend pointer lifecycle; cached207definitions уже доступны.
 Разница D3D8 базы и D3D9 эталона — обязательное
 восстановление M6, а не модернизация M8. Полные particles/clock/Character/UI/network
 не сертифицированы; нормальный WinMain и входной455 EXE не запускались.

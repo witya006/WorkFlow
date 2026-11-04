@@ -65,6 +65,13 @@ UI/effects/error path,root network/transport,opaque fields и old-CRT localtime3
 timezone/DST/invalid domains остаются открытыми. Это не закрывает строку «Клиентская
 сеть» или полный жизненный цикл. research/client455-map-time-source.md.
 
+Selected local time/real_time input восстановлен с grade>=1,history/prefix boundary
+и независимыми clocks:432ASCII cases/2628checks,20actual CHAT_INFO checks,commands→
+weather/GPU2cases/69checks. Other local directives/full chat/GUI key events и old-CRT
+locale остаются открытыми; это method-boundary проверка. Clock теперь10scalar
+functions+256byte prefix/1037instruction bytes,1443checks/12FP modes. Подробности
+research/client455-time-commands-source.md; область «Ввод и интерфейс» целиком открыта.
+
 Ресурсный аудит M5 закрепил78MapEntity RPK,70BSP39/93EBP20 и20weather assets.
 Header/table round trips,8tool parser tests и DDS mip sizes прошли, native/GPU
 load в том цикле не выполнялись. Последующий source RPK/fopen/exists и particle end

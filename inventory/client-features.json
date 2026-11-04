@@ -386,7 +386,7 @@
       "id": "WORLD-CLOCK-008",
       "description": "x87 game/real clock scalar routines and two-clock frame-update prefix",
       "status": "verified",
-      "verification": "Bounded instruction identity:8scalar functions+256byte frame prefix,773bytes after verified absolute operands/constants;1275checks/12FP modes standalone and full-client. Normal linked2used functions/prefix,lab9; actual Platform01 FrameMove/GPU regression2cases/59checks.",
+      "verification": "Bounded instruction identity:10scalar functions+256byte frame prefix,1037bytes after verified absolute operands/constants;1443checks/12FP modes standalone and full-client. Normal linked7used routines/prefix,lab11; time commands drive actual Platform01 FrameMove/weather/GPU regression2cases/69checks.",
       "reference": [
         {
           "va": "0x8b12c0",
@@ -411,7 +411,9 @@
         "inventory/client455-clock-runtime.json",
         "inventory/client455-clock-graphics-runtime.json",
         "inventory/client455-time-callers.json",
-        "research/client455-clock-source.md"
+        "research/client455-clock-source.md",
+        "research/client455-time-commands-source.md",
+        "inventory/client455-time-commands-graphics-runtime.json"
       ],
       "scenarios": [
         "HMS unsigned modulo24/60/60 and aliased getter outputs",
@@ -423,7 +425,7 @@
       ],
       "gaps": [
         "Complete CLand byte-index UI/camera/effects/failure path; selected packet/cache/load hook restored separately",
-        "Console %time/%real_time remain unported; root network and other messages not verified",
+        "Selected time/real_time input restored separately; other local directives/full chat/root network remain open",
         "Old-CRT localtime32 timezone/DST/invalid/init domains,full lighting/sky/unmasked exceptions/reference startup FPU state"
       ]
     },
@@ -482,6 +484,56 @@
         "Byte0/value0 meaning and other field+24 consumers",
         "Old-CRT timezone/DST/localtime32/invalid/init domains",
         "Complete byte-index CLand UI/camera/effects/error sequence and root CNetworkMgr/socket/transport/other messages"
+      ]
+    },
+    {
+      "id": "INPUT-TIME-COMMANDS-010",
+      "description": "Local time/real_time commands and grade-gated CHAT_INFO input",
+      "status": "implemented",
+      "verification": "Partial ASCII contract:432cases/2628checks/12FP modes in module/full client,20actual CHAT_INFO access/history/lifecycle checks. Grade1 accepts/grade0 rejects; real CNetworkMgr ctor/dtor without network processes/connections. Commands drive actual Platform01 weather/GPU2cases/69checks. C++ parser instruction identity and full chat equivalence not claimed.",
+      "reference": [
+        {
+          "va": "0x433050",
+          "rva": "0x33050",
+          "role": "input send"
+        },
+        {
+          "va": "0x433096",
+          "rva": "0x33096",
+          "role": "signed grade>=1 gate"
+        },
+        {
+          "va": "0x7e3b10",
+          "rva": "0x3e3b10",
+          "role": "local parser"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_time_commands.cpp",
+        "scripts/native/client455_time_commands.h",
+        "work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo2.cpp"
+      ],
+      "option": "RF_CLIENT_455_TIME_COMMANDS",
+      "evidence": [
+        "inventory/client455-time-command-reference.json",
+        "inventory/client455-time-commands.json",
+        "inventory/client455-time-commands-link.json",
+        "inventory/client455-time-commands-runtime.json",
+        "inventory/client455-time-commands-graphics-runtime.json",
+        "research/client455-time-commands-source.md"
+      ],
+      "scenarios": [
+        "Independent game/real HMS clocks; game hours and real hours/minutes",
+        "Case-insensitive copy,256byte truncation,input unchanged and cursor/whitespace quirks",
+        "Signed32 decimal overflow before unsigned HMS modulo; end/other directive barriers",
+        "Actual grade1 acceptance,grade0 rejection,original history and cleared prefix",
+        "time0/time12 drive real Platform01 FrameMove weather states and GPU release"
+      ],
+      "gaps": [
+        "Other local camera/color directives and privileged/network fallback",
+        "Complete chat/history/GUI key events and root transport",
+        "Full old/modern CRT locale,non-ASCII and strtol/sscanf domains",
+        "Complete455input equivalence outside selected time commands"
       ]
     }
   ],

@@ -9,6 +9,9 @@
 #include "jerror.h"
 #include "client455_resource_io.h"
 #include "level.h"
+#if defined(RF_CLIENT_455_TIME_COMMANDS)
+#include "client455_time_commands.h"
+#endif
 #if defined(RF_CLIENT_455_MAP_TIME)
 #include "Character.h"
 #include "global.h"
@@ -118,7 +121,12 @@ static void graphicsLevelWeather(CLevel* level) {
         Vector3f camera,target;
         memcpy(camera,scenario==0?inside:outside,sizeof(camera));memcpy(target,camera,sizeof(target));target[2]+=100;
         graphicsLevelCamera(level,camera,target);
-        RF455_SetDayFraction(scenario==2?0.5f:0.0f);R3SetTime(0);R3SetLoopTime(0);
+#if defined(RF_CLIENT_455_TIME_COMMANDS)
+        graphicsCheck(RF455_TryClockCommand(scenario==2?"%time 12":"%time 0")==1);
+#else
+        RF455_SetDayFraction(scenario==2?0.5f:0.0f);
+#endif
+        R3SetTime(0);R3SetLoopTime(0);
         graphicsResult.weatherFP[scenario][0]=graphicsFP();level->FrameMove();graphicsResult.weatherFP[scenario][1]=graphicsFP();
         for (unsigned layer=0;layer<2;++layer) {
             graphicsResult.weatherStates[scenario][layer]=particles[layer]->GetParticleState();

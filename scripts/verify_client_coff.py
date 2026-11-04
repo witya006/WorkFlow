@@ -39,7 +39,8 @@ def main():
     resource='RF_CLIENT_455_RESOURCE_IO:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
     clock='RF_CLIENT_455_CLOCK:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
     map_time='RF_CLIENT_455_MAP_TIME:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
-    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 58+int(weather)+int(resource)+int(clock)+int(map_time), build)]
+    commands='RF_CLIENT_455_TIME_COMMANDS:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
+    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 58+int(weather)+int(resource)+int(clock)+int(map_time)+int(commands), build)]
     jpeg_report = WS/'inventory/jpeg6b-build.json'
     if jpeg_report.exists():
         jpeg = json.loads(jpeg_report.read_text(encoding='utf-8'))

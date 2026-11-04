@@ -1,0 +1,21 @@
+{
+  "library": "work/recovered/client455/time-commands/RFClient455TimeCommands.lib",
+  "library_sha256": "e75c69066e630431a9b7d1c5501c08889453b81d065961ca56cf1337a83f8d0e",
+  "object_sha256": "8d3dea14043f83cdc6d2a0cd7fe2614c851bd538dc79adfdd792331ec0eb3c90",
+  "source_sha256": {
+    "client455_clock.h": "0e62bb617d8f3ae3198a86a1a3fd617150f161bda46c333ff099a006fafb3be0",
+    "client455_time_commands.h": "9893e8c93e17077dc0fca10770071652133af3afbf95d6bca2d12bbeb1fab223",
+    "client455_time_commands.cpp": "0a019a809d910c3a8b447a206271fd73a2e2e0d2ef64a37c44500ce9c465b012",
+    "test_client455_time_commands.cpp": "f9a230ccd8efb6f2c77aa716eacd757136e58b5a037775fdcdb259db11586778"
+  },
+  "clock_library_sha256": "aa12c326ee100f84363f168428451807c82ead7ff010ef278aea8b06c3dfc38d",
+  "native_test": {
+    "checks": 2628,
+    "failures": 0,
+    "first_failure": 0,
+    "cases": 432,
+    "precision_rounding_modes": 12,
+    "ascii_domain": true
+  },
+  "scope": "Time-command parsing,256byte cap/ASCII/cursor/strtol and independent clock effects. Static455parser contracts and actual client grade/input hook verified separately. Other local directives, full chat/network/locale and M9 remain open."
+}

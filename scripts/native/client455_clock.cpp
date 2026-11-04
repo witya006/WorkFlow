@@ -143,6 +143,103 @@ extern "C" __declspec(naked) void RF455_GetDayTime(unsigned*,unsigned*,unsigned*
     }
 }
 
+extern "C" __declspec(naked) void RF455_SetRealDayTime(unsigned,unsigned,unsigned) {
+    __asm {
+        mov ecx, [esp+4]
+        mov eax, 0AAAAAAABh
+        mul ecx
+        shr edx, 4
+        imul edx, -18h
+        add ecx, edx
+        push esi
+        mov esi, [esp+0Ch]
+        mov eax, 88888889h
+        mul esi
+        shr edx, 5
+        mov eax, edx
+        shl eax, 4
+        sub eax, edx
+        neg eax
+        lea esi, [esi+eax*4]
+        push edi
+        mov edi, [esp+14h]
+        mov eax, 88888889h
+        mul edi
+        shr edx, 5
+        mov eax, edx
+        shl eax, 4
+        sub eax, edx
+        neg eax
+        lea edx, [edi+eax*4]
+        mov eax, ecx
+        shl eax, 4
+        sub eax, ecx
+        lea eax, [esi+eax*4]
+        mov ecx, eax
+        shl ecx, 4
+        sub ecx, eax
+        lea esi, [edx+ecx*4]
+        mov edx, esi
+        test edx, edx
+        mov [esp+0Ch], edx
+        fild dword ptr [esp+0Ch]
+        jge real_hms_unsigned
+        fadd RF455_UInt32Bias
+    real_hms_unsigned:
+        fdiv RF455_SecondsPerDay
+        fstp RF455_RealDayFraction
+        call dword ptr [RF455_ClockTickSource]
+        imul esi, 3E8h
+        sub eax, esi
+        pop edi
+        mov RF455_RealDayBase, eax
+        pop esi
+        ret
+    }
+}
+
+extern "C" __declspec(naked) void RF455_GetRealDayTime(unsigned*,unsigned*,unsigned*) {
+    __asm {
+        sub esp, 0Ch
+        fld RF455_RealDayFraction
+        push esi
+        fmul RF455_SecondsPerDay
+        push edi
+        fnstcw word ptr [esp+0Ah]
+        mov edi, 18h
+        movzx eax, word ptr [esp+0Ah]
+        or eax, 0C00h
+        mov [esp+0Ch], eax
+        mov eax, 91A2B3C5h
+        fldcw word ptr [esp+0Ch]
+        fistp qword ptr [esp+0Ch]
+        mov esi, [esp+0Ch]
+        mul esi
+        fldcw word ptr [esp+0Ah]
+        mov ecx, edx
+        shr ecx, 0Bh
+        mov eax, ecx
+        imul ecx, 0E10h
+        xor edx, edx
+        div edi
+        mov eax, [esp+18h]
+        pop edi
+        mov [eax], edx
+        mov eax, esi
+        sub eax, ecx
+        mov ecx, 3Ch
+        xor edx, edx
+        div ecx
+        mov ecx, [esp+18h]
+        pop esi
+        mov [ecx], eax
+        mov eax, [esp+18h]
+        mov [eax], edx
+        add esp, 0Ch
+        ret
+    }
+}
+
 extern "C" __declspec(naked) void RF455_SetDayFraction(float) {
     __asm {
         sub esp, 8

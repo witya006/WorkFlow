@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
@@ -83,6 +83,8 @@ def main():
             if settings.get('RF_CLIENT_455_MAP_TIME')=='ON':
                 weather_inputs+=['scripts/native/client455_map_time.cpp','scripts/native/client455_map_time.h','scripts/native/test_client455_map_time.cpp']
                 weather_inputs+=['work/client-build/source/RF_Client/cland.cpp','work/client-build/source/RF_Client/cland.h','work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp']
+            if settings.get('RF_CLIENT_455_TIME_COMMANDS')=='ON':
+                weather_inputs+=['scripts/native/client455_time_commands.cpp','scripts/native/client455_time_commands.h','scripts/native/test_client455_time_commands.cpp','scripts/native/client_time_commands_lab.inc','work/client-build/source/RF_Client/character/avatar/cavatar_relationinfo2.cpp']
             report['weather_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in weather_inputs}
         if settings.get('RF_CLIENT_455_RESOURCE_IO')=='ON':
             resource_inputs=['scripts/native/client455_resource_io.cpp','scripts/native/client455_resource_io.h','scripts/native/client_resource_lab.inc',

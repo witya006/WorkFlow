@@ -166,8 +166,15 @@ static int mapTimeScenarioProbe() {
 }
 #endif
 
+#if defined(RF_CLIENT_455_TIME_COMMANDS)
+#include "client_time_commands_lab.inc"
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_TIME_COMMANDS)
+    if (!std::strcmp(command,"--rf-time-commands-scenario")) ExitProcess(timeCommandsScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_CLOCK)
     if (!std::strcmp(command,"--rf-clock-scenario")) ExitProcess(clockScenarioProbe());
 #endif

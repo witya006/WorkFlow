@@ -63,7 +63,10 @@ scripts/verify_client_m5.py --saved проверяет тот historical checkpo
 
 Прежнее предположение, что0x7E3E55 является сетевым Time/HMS handler, неверно:
 это console %time, часы из atol, minutes/seconds0. %real_time читает hours/minutes
-и вызывает отдельный real HMS setter0x8B14A0. Оба console paths пока не перенесены.
+и вызывает отдельный real HMS setter0x8B14A0. Оба console paths затем перенесены;
+432ASCII cases/2628checks и20actual CHAT_INFO access/history/lifecycle checks прошли.
+Clock расширен до10scalar routines+prefix/1037bytes и1443checks/12FP modes.
+Текущая ревизия и границы: client455-time-commands-source.md.
 Действительный map caller0x7C8B60/RVA0x3C8B60 после load вызывает localtime32 на
 cached32bit timestamp, добавляет elapsed_seconds%60 к tm_sec и (elapsed_seconds/60)%60 к tm_min,
 считает totalSeconds. Затем accelerated game fraction через rate и real fraction
@@ -85,6 +88,6 @@ raw decomp в artifacts/clock455-analysis. tm является результа�
 Owned b336dffc/6c9c1ee9 закрыты/save; fallback adopted7fc260bd detach/save тоже выполнен.
 Далее открывать сохранённый .i64, а не повторять полный auto-analysis бинарника.
 
-Дальше M6: full map/calendar domains,console commands,full sky/
+Дальше M6: full map/calendar domains,other local commands/full chat,full sky/
 lighting/materials и D3D9 restoration. Полные Character/particles/UI/network/sound/
 gameplay/acceptance coverage остаются открытыми. M8 модернизация не требуется.

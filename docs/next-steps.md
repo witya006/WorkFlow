@@ -66,23 +66,22 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Восстановить console %time/%real_time и их actual input/caller;0x7E3E55 — не network.
-   Caller4335A0/RVA335A0,size8B3,call4335BD первым пробует local parser7E3B10, затем
-   GM/text-command fallback. Raw command-caller-0x4335a0.json уже сохранён; начать
-   с source ChatMsg_ChatCheatRequest_clzo/GUIChatWindow и найти соответствующий input edge.
-   Clock numeric уже восстановлен. Затем перенесены packet8/5,CLand timestamp/tick
-   cache и successful-load hook:130byte numeric fragment equal обоим PE,314native
-   checks/12FP modes/UTC+JST в module/full client; actual CNetMap/CLand Platform01
-   GPU2cases/66checks. research/client455-map-time-source.md. Full byte-index CLand
-   UI/camera/effect/failure path,root network и localtime32 old-CRT timezone/DST/
-   invalid domains ещё открыты. Byte0/value0 semantics и field+24 consumers исследовать.
-2. Полные particle455 options/curves/collision/emission и остальные resource consumers.
-   Реальные selected5entities/5particles уже отрисованы; это не полная455parity.
+1. Character source/ABI и loaded mesh path перед полным D3D9 port. Current SDK
+   header/contracts явно используют IDirect3DDevice8; binary consumers нужно перенести
+   вместе с engine. Дополнительного SDK/PDB нет; использовать cached207definitions/
+   10COFF, не повторять массовый decomp. Начать с InitVertex/CObjectMesh blend pointer
+   +160 allocation/lifecycle и сравнения с455; fixtures обнуляли pointer, production
+   не исправлен. Восстанавливать реальную source unit с проверкой runtime/ABI.
+2. Selected local time input уже source-integrated:grade>=1,432cases/2628checks,
+   20actual CHAT_INFO access/history/lifecycle checks;1037clock instruction bytes/
+   1443checks,314map-time checks,commands→GPU weather2cases/69checks прошли.
+   research/client455-time-commands-source.md. Позже закрыть остальные local camera/
+   color directives/full chat,full CLand/root transport/calendar/locale domains.
 3. Восстановить D3D9/device/material/shader/lighting поведение455. Это обязательный
    функциональный перенос M6; обновление визуального стиля M8 не требуется.
    Own D3D8 FPU измерен; reference startup/control и Character ABI ещё открыты.
-4. Довести Character sources/layouts/constructors/effects, затем UI/network/gameplay/
-   ввод/звук и все обнаруженные acceptance сценарии. Не заменять их одним map demo.
+4. Полные particle455 options/curves/collision/emission/resources,UI/network/gameplay/
+   ввод/звук и все acceptance сценарии. Не заменять их одним map demo.
 5. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
    malformed paths/locale/OOM пока не закрыты. Не исправлять quirks по догадке.
 6. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
@@ -106,6 +105,11 @@ M5 gate: Invoke-Python.ps1 scripts/verify_client_m5.py.
 После следующих ревизий M5 historical gate: verify_client_m5.py --saved.
 Clock: build_client455_clock.py; после сборки verify_client_clock455.py [--lab],
 затем probe_client_clock455.py. Actual caller evidence: audit_client_time455.py.
+Local commands: audit_client_time_commands455.py → build_client455_clock.py →
+build_client455_time_commands.py /build_client455_map_time.py → apply_client_time_commands455.py
+→ prepare_client_build.py → normal/lab driver → verify_client_time_commands455.py [--lab]
+→ probe_client_time_commands455.py (Winsock ctor/no connections;проверено вне sandbox).
+Current GPU --output inventory/client455-time-commands-graphics-runtime.json.
 Map-time: build_client455_map_time.py → apply_client_map_time455.py → prepare_client_build.py
 → normal/lab driver → verify_client_map_time455.py [--lab] → probe_client_clock455.py
 --map-time. GPU report --output inventory/client455-map-time-graphics-runtime.json.
