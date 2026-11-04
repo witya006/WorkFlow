@@ -129,7 +129,9 @@ FIELDS = {
     DWORD m_ObjectSize;
 ''',
     'EffectList': '''
-    void SetEffect(CHARACTEROBJECT*, DWORD); // Missing inline implementation.
+    DWORD legacy_present[500];
+    char* legacy_files[500];
+    void SetEffect(CHARACTEROBJECT*, DWORD); // Bounded legacy table bridge; original inline unknown.
 ''',
 }
 
@@ -221,6 +223,7 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
         'AnimationManager': (24, {'legacy_begin': 4, 'legacy_end': 8, 'legacy_capacity': 12,
                                 'unknown_010': 16, 'legacy_next_id': 20}),
         'TextureManager': (160, {'legacy_path': 28, 'legacy_mip_skip': 156}),
+        'EffectList': (4000, {'legacy_present': 0, 'legacy_files': 2000}),
         'CMeshManager': (16, {}),
         'CRender': (776, {'legacy_meshes': 112, 'legacy_bones': 260, 'm_TM': 408,
                           'legacy_parts': 568, 'legacy_shadow': 692, 'legacy_shadow_surface': 772}),
@@ -242,7 +245,7 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
               'public_contracts_input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
               'status': 'incomplete diagnostic interface; not production-ready',
               'layout_assertions': sum(1+len(fields) for _, fields in asserts.values()),
-              'unimplemented_inline_api': ['GetShadow', 'EffectList::SetEffect',
+              'unimplemented_inline_api': ['GetShadow',
                    'DrawCharacter/DrawCharacterShadow/LoadRealData shortened overloads'],
               'reconstructed_effect_defaults': effect_defaults,
               'unverified': ['Full layout of API-only classes remains missing',

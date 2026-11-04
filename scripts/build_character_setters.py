@@ -43,7 +43,9 @@ def verify_evidence():
     manifest = json.loads((WS/'inventory/character-codeview.json').read_text(encoding='utf-8'))
     for index, symbol, offset, prefix, value in [
             (7,'?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z',0x1b7,'8a8a',272),
-            (8,'?AddTexture@TextureManager@@QAE_NPBD0@Z',0x15b,'8b83',156)]:
+            (8,'?AddTexture@TextureManager@@QAE_NPBD0@Z',0x15b,'8b83',156),
+            (3,'?LoadEffectFileList@EffectList@@QAEXPAD@Z',0x49,'81ff',500),
+            (3,'?LoadEffectFileList@EffectList@@QAEXPAD@Z',0xd0,'8984ab',2000)]:
         entry = manifest['objects'][index-1]
         data = (WS/entry['working_object']).read_bytes()
         if hashlib.sha256(data).hexdigest() != entry['sha256']:
@@ -53,7 +55,7 @@ def verify_evidence():
             raise ValueError('Legacy consumed field offset changed')
         facts.append({'object_sha256':entry['sha256'],'symbol':symbol,'architecture':'x86',
             'function_offset':hex(offset),'file_offset':hex(record['file_offset']+offset),
-            'rva':None,'field_offset':value})
+            'rva':None,'verified_operand':value})
     return facts
 
 
@@ -68,7 +70,7 @@ def main():
     work = WS/'work/recovered/character-legacy/setters'
     work.mkdir(parents=True,exist_ok=True)
     hashes = {}
-    for name in ['character_recovered_setters.cpp','test_character_recovered_setters.cpp']:
+    for name in ['character_recovered_setters.cpp','character_recovered_effect_setter.cpp','test_character_recovered_setters.cpp']:
         source = WS/'scripts/native'/name
         shutil.copyfile(source,work/name)
         hashes[name] = hashlib.sha256(source.read_bytes()).hexdigest()
@@ -81,7 +83,9 @@ call "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1
 if errorlevel 1 exit /b 1
 cl {opts} /c character_recovered_setters.cpp /Fosetters.obj > "{log}" 2>&1
 if errorlevel 1 exit /b 1
-lib /nologo /machine:x86 /out:CharacterRecoveredSetters.lib setters.obj >> "{log}" 2>&1
+cl {opts} /c character_recovered_effect_setter.cpp /Foeffect_setter.obj >> "{log}" 2>&1
+if errorlevel 1 exit /b 1
+lib /nologo /machine:x86 /out:CharacterRecoveredSetters.lib setters.obj effect_setter.obj >> "{log}" 2>&1
 if errorlevel 1 exit /b 1
 cl {opts} test_character_recovered_setters.cpp CharacterRecoveredSetters.lib /Fesetters-probe.exe >> "{log}" 2>&1
 exit /b %errorlevel%
@@ -94,6 +98,9 @@ exit /b %errorlevel%
     definitions = coff_function_records(obj)
     if not {'?SetMipMap@CRender@@QAEXK@Z','?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z'} <= definitions.keys():
         raise ValueError('Setter symbol contract mismatch')
+    effect_obj = (work/'effect_setter.obj').read_bytes()
+    if '/DEFAULTLIB:"LIBCMT"' not in directives(effect_obj) or '?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z' not in coff_function_records(effect_obj):
+        raise ValueError('Effect setter x86 /MT symbol contract mismatch')
     run = subprocess.run([str(work/'setters-probe.exe')],cwd=work,capture_output=True,
         timeout=20,creationflags=subprocess.CREATE_NO_WINDOW)
     if run.returncode:
@@ -104,6 +111,7 @@ exit /b %errorlevel%
     report = {'architecture':'x86','runtime':'/MT','library':library.relative_to(WS).as_posix(),
         'library_sha256':hashlib.sha256(library.read_bytes()).hexdigest(),'source_sha256':hashes,
         'header_sha256':header['header_sha256'],'binary_evidence':facts,'native_test':result,
+        'effect_bridge_runtime_verification':'Separate inventory/character-effect-loaders.json, not covered by the leaf setter probe',
         'input_game_exe_execution':False,
         'correspondence':'455 source/call-sequence correspondence inferred; instruction effects confirmed. Legacy storage adapted using checked consumers.',
         'limit':'Leaf method ABI/byte effects only; full C++ renderer construction and loaded textures not tested. Source length >=255 deliberately does not force the last byte to NUL, matching the reference.'}

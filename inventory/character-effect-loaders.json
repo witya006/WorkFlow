@@ -2,20 +2,24 @@
   "architecture": "x86",
   "runtime": "/MT",
   "native_test": {
-    "checks_passed": 49,
-    "actual_old_file_loaders": 2,
+    "checks_passed": 59,
+    "actual_old_file_loaders": 4,
+    "mesh_effects_applied": 2,
     "render_device_used": false
   },
-  "source_sha256": "b14b279d7410af79ed6dce553952838e128b3ad4ad687737c1587cc269fd5a80",
-  "executable_sha256": "1c2d11d92386f5eef7a39b2e3e07ddd3296166693061abad46b95d4038bb76c8",
-  "header_sha256": "b963b5a65139b0dde07423a6fc4e16dd203a5e9fa9c4a48addda008ecfef2148",
+  "source_sha256": "aafce2a1feb9071a83fcff2d776e23483e88bce574947b78f341d1dacedc4d27",
+  "executable_sha256": "0b6f3ee6468481832f3aa464b1fef766b1756b5bc6882844d2ee12041d38be9f",
+  "header_sha256": "5d424272d3af6b6fa984da15047d1102bd406a6f56b3269273cbae3e9cad3cfc",
   "sdk_archive_sha256": "3ce694ff47aab901e772281f2e443d2b0ae55cecc4b1c711618e6e1307446dba",
   "adapter_library_sha256": "b3ca111368b29ba6b2eaeaaf94806e37636817c579b406c3a76517e11f3f2004",
   "exception_library_sha256": "e332cda07083ad669298801baf9e862e5acde83f126f24217a9a4ae34bc4b2ff",
   "test_only_aliases": false,
+  "setter_library_sha256": "d7e3588144878a0070b70f455ec4bf8837fe0f4090689909a750e5edefbbbeb8",
   "fixtures": {
     "patterns.txt": "65def0d90e953fe1e64be38055d592f1333e4b39f884462cae6ca30c5e8888b1",
-    "items.txt": "717153ccf4b20f8c34958fd772f3beaeb2286995458d1b46ea5d7c5258c8b589"
+    "items.txt": "717153ccf4b20f8c34958fd772f3beaeb2286995458d1b46ea5d7c5258c8b589",
+    "effects.txt": "b2c60251303c7f9990b55286b667a663d383d21c0dd70e3d54b78607cfcb8d84",
+    "EFFECT_A.EFF": "dc40792ec319da51d77aebdfd747063575e8255f07976d9daf8fb0c0469a457e"
   },
   "default_argument_facts": [
     {
@@ -88,5 +92,5 @@
     }
   ],
   "input_game_exe_execution": false,
-  "limit": "Valid bounded synthetic pattern/item inputs; malformed old-loader inputs, effect-file loading, rendering and 455 behavior parity unverified."
+  "limit": "Bounded synthetic pattern/item/effect inputs with real CPU mesh-state application. Malformed old-loader inputs, texture/GPU branches and 455 map/36-grade parity unverified. SetEffect is an owned bounded legacy-table bridge; original missing inline/bad-input behavior unproven."
 }

@@ -2,12 +2,13 @@
   "architecture": "x86",
   "runtime": "/MT",
   "library": "work/recovered/character-legacy/setters/CharacterRecoveredSetters.lib",
-  "library_sha256": "9d199a8bbb3e13bfebce850398a20a1ad9c384da897bc6981c7195a827795496",
+  "library_sha256": "d7e3588144878a0070b70f455ec4bf8837fe0f4090689909a750e5edefbbbeb8",
   "source_sha256": {
     "character_recovered_setters.cpp": "47f1f6b1d806e84128f28713b24a90eda4d1e1aee01341a1f959aaaa3f7333a4",
+    "character_recovered_effect_setter.cpp": "563ed10c152022dd4abb78b7f51df58980f5214e26c810d7295334845f7670b1",
     "test_character_recovered_setters.cpp": "117cc6165769134104b0ab84902195375e12726d9ebd7a9d31edcfcabdcaf09b"
   },
-  "header_sha256": "b963b5a65139b0dde07423a6fc4e16dd203a5e9fa9c4a48addda008ecfef2148",
+  "header_sha256": "5d424272d3af6b6fa984da15047d1102bd406a6f56b3269273cbae3e9cad3cfc",
   "binary_evidence": [
     {
       "input": "current",
@@ -114,7 +115,7 @@
       "function_offset": "0x1b7",
       "file_offset": "0xbe27",
       "rva": null,
-      "field_offset": 272
+      "verified_operand": 272
     },
     {
       "object_sha256": "31757302232b953c3b36f7627aef26860edc13399bfcda3adfaabe6e10a45e8d",
@@ -123,7 +124,25 @@
       "function_offset": "0x15b",
       "file_offset": "0xa7ab",
       "rva": null,
-      "field_offset": 156
+      "verified_operand": 156
+    },
+    {
+      "object_sha256": "d939f5e90d6ce4428cd4635c9d2e57b3253c8fbdb17a31d0cefaad45e0d729f2",
+      "symbol": "?LoadEffectFileList@EffectList@@QAEXPAD@Z",
+      "architecture": "x86",
+      "function_offset": "0x49",
+      "file_offset": "0xf2d3",
+      "rva": null,
+      "verified_operand": 500
+    },
+    {
+      "object_sha256": "d939f5e90d6ce4428cd4635c9d2e57b3253c8fbdb17a31d0cefaad45e0d729f2",
+      "symbol": "?LoadEffectFileList@EffectList@@QAEXPAD@Z",
+      "architecture": "x86",
+      "function_offset": "0xd0",
+      "file_offset": "0xf35a",
+      "rva": null,
+      "verified_operand": 2000
     }
   ],
   "native_test": {
@@ -132,6 +151,7 @@
     "probe": "leaf machine ABI on guarded storage"
   },
   "input_game_exe_execution": false,
+  "effect_bridge_runtime_verification": "Separate inventory/character-effect-loaders.json, not covered by the leaf setter probe",
   "correspondence": "455 source/call-sequence correspondence inferred; instruction effects confirmed. Legacy storage adapted using checked consumers.",
   "limit": "Leaf method ABI/byte effects only; full C++ renderer construction and loaded textures not tested. Source length >=255 deliberately does not force the last byte to NUL, matching the reference."
 }

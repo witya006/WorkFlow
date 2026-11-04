@@ -24,6 +24,8 @@ def main():
     manifest = []
     patch_path = WS / 'inventory/client-source-patches.json'
     patches = {x['file']: x for x in json.loads(patch_path.read_text(encoding='utf-8'))} if patch_path.exists() else {}
+    behavior_path = WS/'inventory/client-behavior-patches.json'
+    behaviors = {x['file']:x for x in json.loads(behavior_path.read_text(encoding='utf-8'))} if behavior_path.exists() else {}
     for folder, target, exclude in [(engine, destination / 'source/R3Engine', {'Util', 'Client Debug'}),
                                      (client, destination / 'source/RF_Client', set())]:
         for p in sorted(folder.rglob('*')):
@@ -40,12 +42,18 @@ def main():
                 if patch['original_sha256'] != expected:
                     raise RuntimeError(f'Patch input has changed: {p}')
                 expected_copy = patch['patched_sha256']
-            if copy.exists() and digest(copy) not in {expected, expected_copy}:
+            accepted = {expected,expected_copy}
+            behavior = behaviors.get(copy.relative_to(WS).as_posix())
+            if behavior:
+                if behavior['original_sha256'] != expected or behavior['input_sha256'] != expected_copy:
+                    raise RuntimeError(f'Behavior patch input has changed: {p}')
+                accepted.add(behavior['patched_sha256'])
+            if copy.exists() and digest(copy) not in accepted:
                 raise RuntimeError(f'Preserving modified work file: {copy}')
             copy.parent.mkdir(parents=True, exist_ok=True)
             if not copy.exists():
                 shutil.copyfile(p, copy)
-            if digest(copy) not in {expected, expected_copy}:
+            if digest(copy) not in accepted:
                 raise RuntimeError(f'Copy verification failed: {copy}')
             manifest.append({'original': p.relative_to(original).as_posix(), 'copy': copy.relative_to(WS).as_posix(), 'sha256': expected})
     dsp = engine / 'R3Engine.dsp'
@@ -112,6 +120,7 @@ set(RF_CHARACTER_EXCEPTIONS_LIBRARY "" CACHE FILEPATH "Verified reconstructed le
 set(RF_CHARACTER_SETTERS_LIBRARY "" CACHE FILEPATH "Verified recovered texture path/detail setters")
 set(RF_DIAGNOSTIC_DEFER_LIBRARIES "" CACHE STRING "Unavailable default libraries deferred to expose unresolved symbols; diagnostic only")
 option(RF_LEGACY_NEW_UI "Enable UI branch required by current client item classes (present in legacy Debug)" ON)
+option(RF_CLIENT_455_DRAW_ARGUMENTS "Use verified 455 scale/scroll arguments at selected client draw sites" OFF)
 add_executable(RF_Online WIN32 EXCLUDE_FROM_ALL
 ''' + ''.join(f'  "${{RFC}}/{p}"\n' for p in client_units) + ''')
 target_include_directories(RF_Online PRIVATE
@@ -125,6 +134,9 @@ if(RF_CHARACTER_STD_DIAGNOSTIC)
 endif()
 if(RF_LEGACY_NEW_UI)
   target_compile_definitions(RF_Online PRIVATE _NEW_UI_)
+endif()
+if(RF_CLIENT_455_DRAW_ARGUMENTS)
+  target_compile_definitions(RF_Online PRIVATE RF_CLIENT_455_DRAW_ARGUMENTS)
 endif()
 if(RF_LEGACY_DX8_INCLUDE)
   target_include_directories(RF_Online PRIVATE "${RF_LEGACY_DX8_INCLUDE}")

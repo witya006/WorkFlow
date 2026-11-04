@@ -29,7 +29,8 @@
   в research/client-port-m1.md. M1 завершён по критерию компиляции/архивации.
 - DirectX 8.1b SDK извлечён локально; SHA1 совпал с архивом, подпись Microsoft Valid.
   Используется overlay 13 DX8 headers без старых системных Windows headers.
-- Одиннадцать рабочих файлов исправлены байтовыми патчами, оригиналы неизменны.
+- Одиннадцать compiler-only файлов исправлены байтовыми патчами, оригиналы неизменны.
+  Ещё два файла имеют отдельные selectable 455 draw behavior patches, отдельный ledger.
   /Zc:forScope- временно сохраняет VC6 loop scope; в будущем заменить объявлениями.
 - Два клиента отличаются 5 байтами в 2 диапазонах. Текущий RF_Online.bin закреплён
   как эталон поведения в config/client-target.json; backup — вторичный материал.
@@ -96,7 +97,7 @@ M4: диагностическая компиляция всех 180 C++ кли�
 inventory/client-character-diagnostic.json и client-mt-variant.json; research/client-port-m4.md.
 
 В work/recovered/character-legacy/include/Character.h создан диагностический заголовок:
-224 исходных публичных контракта, 64 layout assertions, native decorated names 165
+224 исходных публичных контракта, 67 layout assertions, native decorated names 165
 адресуемых публичных функций совпали с библиотекой. 30 проверок инструкций подтверждают
 числа в отдельном манифесте character-legacy-layouts.json. Это ещё не полный SDK:
 конструкторы и часть inline API/default arguments не восстановлены и объявлены без
@@ -113,8 +114,8 @@ headers; baseline/progressive golden decodes побайтово точны. Mile
 при повторе; генераторы тоже не переписывают идентичные файлы.
 
 Diagnostic link берёт отдельную stdio-adapted копию CharacterMR и адресно откладывает
-CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 4 unique
-undefined symbols: DrawCharacter short call, SetEffect, CheckFiles и SendLog.
+CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 2 unique
+undefined symbols: CheckFiles и SendLog.
 Проверки целостности/логирования не отключались. Парсер LNK исправлен, 3 теста прошли.
 
 Native CRT probe: Character EffectList loader читает FILE+12 &0x10; modern EOF даёт
@@ -132,7 +133,7 @@ AnimationManager: собственный empty-vector constructor + реальн
 Оригинальный inline ctor не найден, undocumented singleton assignment не добавлялся.
 1806 дополнительных проверок real SDK регистрации/поиска/удаления по ID/destruction,
 всего 3102. DeleteAnimation(name) имеет предполагаемую UAF по decompile, не проверен.
-Header: 64 layout assertions, 165 signatures по-прежнему совпадают.
+Header: 67 layout assertions, 165 signatures по-прежнему совпадают.
 Два реальных загрузчика Pattern/Item прошли 49 native проверок valid fixtures с
 classic FILE adapter. По обоим pinned PE проверены push0/call targets для mesh-effect
 defaults; corresponding function names — structural inference, не символы из PDB.
@@ -156,6 +157,21 @@ source calls: найден 455 CResObject::Render 0x7CD2A0, явные scale=thi
 Проверить CNpc по RTTI/vtable, не угадывать default1.0; изменения поведения вести отдельно
 от compiler patches. 455 EffectList setter 0x9298D0 map-based, legacy массивы отличны.
 CheckFiles/SendLog сохраняются. Все raw findings сохранены, IDA session 2e6f4605 закрыта.
+Последующее продолжение: CNpc Render 0x45D280 подтверждён RTTI/vtable и asm, оба
+DrawCharacter calls в source имеют m_fScale,0.0f под RF_CLIENT_455_DRAW_ARGUMENTS.
+Default CMake OFF, diagnostic ON; исходная ветка сохранена. Отдельные behavior patches,
+не compiler ledger; idempotence/timestamps и два реальных COFF references проверены.
+SetEffect: собственный bounded bridge над legacy flags[500]/names[500], +2000 checked;
+делегирует реальному SetPartEffect sentinel9. Original missing inline не найден, 455
+map/36 grades не покрыты. Новый позитивный CPU effect fixture прошёл 59 checks,
+4 actual loaders и применение ID17 к двум мешам. SDK ObjectMesh ctor оставляет +160
+untouched, dtor освобождает: fixture задаёт null blend pointer; production SDK не менялся.
+Обычный allocator/exit прошёл, диагностический allocator не используется в result.
+Исследовать реальную mesh initialization отдельно. research/client-draw-and-legacy-effects.md.
+Теперь 2 link gaps. 455 EffectLog0x7DF200: >10M truncate; >5M pending flag0x113E45C,
+без прямого SendLog. Candidate flag-clear0x7DF1B0 не имеет xrefs и stack warning;
+его lifecycle неизвестен, не добавлять atexit по догадке. Следом logging flow/CheckFiles.
+Новые IDA sessions dbda4903/46039b3e/68782058 закрыты; input EXE/DLL не выполнялись.
 Полной runtime ABI
 проверки ещё нет. research/character-stdio-adapter.md; character-stdio-adapter.json.
 Все собственные IDA-сессии закрыты. Серверы не менялись.

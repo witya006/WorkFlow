@@ -1,5 +1,9 @@
 $ErrorActionPreference = 'Stop'
 $workspace = Split-Path -Parent $PSScriptRoot
+$behavior = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client-behavior-patches.json') -Raw | ConvertFrom-Json
+foreach ($patch in $behavior) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace $patch.file) -Algorithm SHA256).Hash.ToLowerInvariant() -ne $patch.patched_sha256) { throw '455 behavior patch changed since evidence verification.' }
+}
 $verified = Get-Content -LiteralPath (Join-Path $workspace 'inventory/msvc-verification.json') -Raw | ConvertFrom-Json
 $cmake = Join-Path $verified.installation_path 'Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe'
 $source = Join-Path $workspace 'work/client-build'
@@ -20,7 +24,8 @@ $arguments = @('-S', $source, '-B', $build, '-G', 'Visual Studio 18 2026', '-A',
     "-DRF_LEGACY_DX8_INCLUDE=$(Join-Path $workspace 'local/directx81b/include-overlay')",
     "-DRF_LEGACY_DX8_LIBRARY=$(Join-Path $dx.sdk_root 'lib')",
     "-DRF_RECOVERED_CHARACTER_INCLUDE=$(Join-Path $recovered 'include')",
-    "-DRF_CHARACTER_STD_DIAGNOSTIC=$(Join-Path $recovered 'diagnostic_std.hpp')")
+    "-DRF_CHARACTER_STD_DIAGNOSTIC=$(Join-Path $recovered 'diagnostic_std.hpp')",
+    '-DRF_CLIENT_455_DRAW_ARGUMENTS=ON')
 $jpeg = Get-Content -LiteralPath (Join-Path $workspace 'inventory/jpeg6b-build.json') -Raw | ConvertFrom-Json
 $jpegLibrary = Join-Path $workspace $jpeg.library
 if ((Get-FileHash -LiteralPath $jpegLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $jpeg.library_sha256) { throw 'JPEG archive changed since verification.' }
@@ -60,6 +65,10 @@ if (Test-Path -LiteralPath $settersReport) {
     $settersLibrary = Join-Path $workspace $setters.library
     if ((Get-FileHash -LiteralPath $settersLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $setters.library_sha256 -or
         $contract.header_sha256 -ne $setters.header_sha256) { throw 'Recovered setters/header changed since verification.' }
+    $effectProbe = Get-Content -LiteralPath (Join-Path $workspace 'inventory/character-effect-loaders.json') -Raw | ConvertFrom-Json
+    if ($effectProbe.setter_library_sha256 -ne $setters.library_sha256 -or
+        $effectProbe.header_sha256 -ne $contract.header_sha256 -or
+        $effectProbe.native_test.mesh_effects_applied -ne 2) { throw 'Actual legacy effect-loader/application check is stale or missing.' }
     $arguments += "-DRF_CHARACTER_SETTERS_LIBRARY=$settersLibrary"
 }
 & $cmake @arguments *> (Join-Path $logs 'configure.txt')

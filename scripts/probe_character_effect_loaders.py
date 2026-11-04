@@ -5,6 +5,7 @@ No original game executable is run. No test-only exception substitutions.
 import hashlib
 import json
 import shutil
+import struct
 import subprocess
 from pathlib import Path
 from compare_client_binaries import WS
@@ -20,6 +21,10 @@ def main():
     if hashlib.sha256(exception_library.read_bytes()).hexdigest() != exceptions['library_sha256']:
         raise ValueError('Exception support changed since verification')
     header = json.loads((WS/'inventory/character-header-recovery.json').read_text(encoding='utf-8'))
+    setters = json.loads((WS/'inventory/character-setters.json').read_text(encoding='utf-8'))
+    setter_library = WS/setters['library']
+    if hashlib.sha256(setter_library.read_bytes()).hexdigest() != setters['library_sha256'] or setters['header_sha256'] != header['header_sha256']:
+        raise ValueError('Recovered effect setter/header changed since verification')
     dx = json.loads((WS/'inventory/directx81b-sdk.json').read_text(encoding='utf-8'))
     includes = WS/header['header']
     if hashlib.sha256(includes.read_bytes()).hexdigest() != header['header_sha256']:
@@ -30,7 +35,14 @@ def main():
     work = WS/'work/recovered/character-legacy/effect-loaders'
     work.mkdir(parents=True, exist_ok=True)
     fixtures = {'patterns.txt': b'1 1 0 2 0 3 0 4 0 5\r\n2 0 0 0 0 0 0 0 0 0\r\n',
-        'items.txt': b'10203040 1 2 2 2 2 2\r\nABCDEF01 1 2 2 2 2 2\r\n'}
+        'items.txt': b'10203040 1 2 2 2 2 2\r\nABCDEF01 1 2 2 2 2 2\r\n',
+        'effects.txt': b'1 EFFECT_A.EFF\r\n'}
+    # One bounded legacy 176-byte effect record, empty mesh/texture filters.
+    # The SDK copies its first particle slot from record+84 to ObjectMesh+876.
+    effect = bytearray(176)
+    struct.pack_into('<HB',effect,0,176,2)
+    struct.pack_into('<fffI',effect,84,0.1,0.2,0.3,17)
+    fixtures['EFFECT_A.EFF'] = bytes(effect)
     for name, data in fixtures.items():
         (work/name).write_bytes(data)
     source = WS/'scripts/native/test_character_effect_loaders.cpp'
@@ -43,7 +55,7 @@ def main():
     batch.write_text(f'''@echo off
 call "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1
 if errorlevel 1 exit /b 1
-cl /nologo /MT /O2 /EHsc /std:c++14 /W4 /WX /I"{includes.parent}" /external:I"{WS/dx['include_overlay']}" /external:W0 "{source.name}" "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{exception_library}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Feeffect-loaders.exe /link /NODEFAULTLIB:libci.lib > "{log}" 2>&1
+cl /nologo /MT /O2 /EHsc /std:c++14 /W4 /WX /I"{includes.parent}" /external:I"{WS/dx['include_overlay']}" /external:W0 "{source.name}" "{setter_library}" "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{exception_library}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Feeffect-loaders.exe /link /NODEFAULTLIB:libci.lib > "{log}" 2>&1
 exit /b %errorlevel%
 ''', encoding='ascii')
     build = subprocess.run(['cmd.exe', '/d', '/c', str(batch)], cwd=work)
@@ -61,11 +73,12 @@ exit /b %errorlevel%
         'header_sha256': header['header_sha256'], 'sdk_archive_sha256': stdio['adapted_archive_sha256'],
         'adapter_library_sha256': stdio['adapter_library_sha256'],
         'exception_library_sha256': exceptions['library_sha256'], 'test_only_aliases': False,
+        'setter_library_sha256': setters['library_sha256'],
         'fixtures': {name: hashlib.sha256(data).hexdigest() for name, data in fixtures.items()},
         'default_argument_facts': facts, 'input_game_exe_execution': False,
-        'limit': 'Valid bounded synthetic pattern/item inputs; malformed old-loader inputs, effect-file loading, rendering and 455 behavior parity unverified.'}
+        'limit': 'Bounded synthetic pattern/item/effect inputs with real CPU mesh-state application. Malformed old-loader inputs, texture/GPU branches and 455 map/36-grade parity unverified. SetEffect is an owned bounded legacy-table bridge; original missing inline/bad-input behavior unproven.'}
     (WS/'inventory/character-effect-loaders.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
-    print(f'PASS: two actual SDK text loaders, {result["checks_passed"]} effect-query/default checks.')
+    print(f'PASS: actual SDK text/binary loaders and CPU mesh effect application, {result["checks_passed"]} checks.')
 
 
 if __name__ == '__main__':

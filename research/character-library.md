@@ -121,7 +121,7 @@ MAXPARTICLE=3 и MAX_PATTERN_SIZE=9 проверены по циклам/сра�
 хеши и смещения — inventory/character-legacy-layouts.json.
 
 scripts/prepare_character_header.py генерирует Character.h в ignored work/.
-scripts/check_character_header.py проверил 64 layout assertions и decorated names 165
+scripts/check_character_header.py проверил 67 layout assertions и decorated names 165
 адресуемых публичных функций. Данные, непубличные методы и конструкторы/деструкторы
 этим адресным тестом не проверяются. Права доступа сохранены: MSVC кодирует их в имени.
 CHMEMORYINFO описан как семь DWORD: texture size/count, vertex size/count, animation
@@ -137,7 +137,7 @@ CRender/ChInterface размером 776 в реконструкции покр�
 sizeof оригинального ChInterface сверх этого диапазона ещё не доказан.
 Современные std::vector не подставлены вместо старого хранения. STL/CRT/исключения
 VC6 и передачи STL объектов требуют отдельной проверки. Компиляция этого не доказывает.
-JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 4 уникальных
+JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 2 уникальных
 символов, полный список — inventory/client-character-diagnostic.json.
 Native тест подтвердил несовместимость прямого FILE EOF доступа CharacterMR с UCRT;
 Classic CRT adapter уже реализован и проверен на собственных fixtures и двух
@@ -151,3 +151,6 @@ research/character-effects-and-exceptions.md; исходные зависимо�
 3630 combined native checks, включая 8 instances/136 part managers. Конструкторы
 reconstructed, exact original inline/sizeof не доказан. Актуальные границы и следующий
 DrawCharacter/SetEffect анализ — research/character-setters-and-construction.md.
+Дальнейшее восстановление: selectable 455 draw arguments и bounded legacy SetEffect
+bridge с позитивным CPU test. 59 native checks, original missing inline/455 map behavior
+не доказаны. Сейчас 2 symbols: CheckFiles/SendLog; research/client-draw-and-legacy-effects.md.

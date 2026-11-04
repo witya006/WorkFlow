@@ -55,7 +55,9 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 - Восстановленный Character.h обеспечивает компиляцию; конструкторы, inline/default
   arguments и runtime ABI старой STL/CRT не проверены. research/character-library.md.
 - Старый прямой FILE EOF доступ CharacterMR несовместим с UCRT. Изолирующий адаптер
-  прошёл 1828 собственных проверок и два настоящих текстовых загрузчика (49 checks).
+  прошёл 1828 собственных проверок и настоящие text/binary loaders с CPU mesh effects
+  (59 checks). Legacy SetEffect bridge bounded; original inline/bad-input behavior
+  и 455 map/36 grades не доказаны. 455 draw source calls проверены статически, GPU нет.
   Менеджеры/empty renderer прошли 3630 проверок на unloaded records, setters — 18 ABI
   checks, exception helpers — 770
   сравнений с classic exports. Полный SDK ABI/exception unwind/render не доказан;

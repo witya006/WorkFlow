@@ -1,0 +1,268 @@
+[
+  {
+    "file": "work/client-build/source/RF_Client/cresobject.cpp",
+    "original_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
+    "input_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
+    "patched_sha256": "9df31c5bbbf65f4d663b512dfa36101910e7242977df4310e72afb499a2b1335",
+    "build_option": "RF_CLIENT_455_DRAW_ARGUMENTS",
+    "legacy_branch_preserved": true,
+    "reason": "455 passes object m_fScale and zero scroll; no invented legacy default arguments.",
+    "binary_evidence": [
+      {
+        "input": "current",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "instructions": [
+          {
+            "va": "0x45d421",
+            "rva": "0x5d421",
+            "file_offset": "0x5c821",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x45d42a",
+            "rva": "0x5d42a",
+            "file_offset": "0x5c82a",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x45d454",
+            "rva": "0x5d454",
+            "file_offset": "0x5c854",
+            "bytes": "e8272a4d00"
+          },
+          {
+            "va": "0x7cd2e1",
+            "rva": "0x3cd2e1",
+            "file_offset": "0x3cc6e1",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x7cd2e9",
+            "rva": "0x3cd2e9",
+            "file_offset": "0x3cc6e9",
+            "bytes": "e822cfc3ff"
+          },
+          {
+            "va": "0x40a21f",
+            "rva": "0xa21f",
+            "file_offset": "0x961f",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x7cd310",
+            "rva": "0x3cd310",
+            "file_offset": "0x3cc710",
+            "bytes": "e86b2b1600"
+          },
+          {
+            "va": "0xaabd9c",
+            "rva": "0x6abd9c",
+            "file_offset": "0x6aa59c",
+            "bytes": "80d24500"
+          },
+          {
+            "va": "0xaa9394",
+            "rva": "0x6a9394",
+            "file_offset": "0x6a7b94",
+            "bytes": "a0d27c00"
+          }
+        ]
+      },
+      {
+        "input": "reference-backup",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "instructions": [
+          {
+            "va": "0x45d421",
+            "rva": "0x5d421",
+            "file_offset": "0x5c821",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x45d42a",
+            "rva": "0x5d42a",
+            "file_offset": "0x5c82a",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x45d454",
+            "rva": "0x5d454",
+            "file_offset": "0x5c854",
+            "bytes": "e8272a4d00"
+          },
+          {
+            "va": "0x7cd2e1",
+            "rva": "0x3cd2e1",
+            "file_offset": "0x3cc6e1",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x7cd2e9",
+            "rva": "0x3cd2e9",
+            "file_offset": "0x3cc6e9",
+            "bytes": "e822cfc3ff"
+          },
+          {
+            "va": "0x40a21f",
+            "rva": "0xa21f",
+            "file_offset": "0x961f",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x7cd310",
+            "rva": "0x3cd310",
+            "file_offset": "0x3cc710",
+            "bytes": "e86b2b1600"
+          },
+          {
+            "va": "0xaabd9c",
+            "rva": "0x6abd9c",
+            "file_offset": "0x6aa59c",
+            "bytes": "80d24500"
+          },
+          {
+            "va": "0xaa9394",
+            "rva": "0x6a9394",
+            "file_offset": "0x6a7b94",
+            "bytes": "a0d27c00"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+    "original_sha256": "6abe15ae874992929150312e16a4d8ff67825fb0789c2abe72b93957794dc064",
+    "input_sha256": "6abe15ae874992929150312e16a4d8ff67825fb0789c2abe72b93957794dc064",
+    "patched_sha256": "cfe3be8cee3400ce16c449800200e19345211b214ea4d75be1f52b24bd626013",
+    "build_option": "RF_CLIENT_455_DRAW_ARGUMENTS",
+    "legacy_branch_preserved": true,
+    "reason": "455 passes object m_fScale and zero scroll; no invented legacy default arguments.",
+    "binary_evidence": [
+      {
+        "input": "current",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "instructions": [
+          {
+            "va": "0x45d421",
+            "rva": "0x5d421",
+            "file_offset": "0x5c821",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x45d42a",
+            "rva": "0x5d42a",
+            "file_offset": "0x5c82a",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x45d454",
+            "rva": "0x5d454",
+            "file_offset": "0x5c854",
+            "bytes": "e8272a4d00"
+          },
+          {
+            "va": "0x7cd2e1",
+            "rva": "0x3cd2e1",
+            "file_offset": "0x3cc6e1",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x7cd2e9",
+            "rva": "0x3cd2e9",
+            "file_offset": "0x3cc6e9",
+            "bytes": "e822cfc3ff"
+          },
+          {
+            "va": "0x40a21f",
+            "rva": "0xa21f",
+            "file_offset": "0x961f",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x7cd310",
+            "rva": "0x3cd310",
+            "file_offset": "0x3cc710",
+            "bytes": "e86b2b1600"
+          },
+          {
+            "va": "0xaabd9c",
+            "rva": "0x6abd9c",
+            "file_offset": "0x6aa59c",
+            "bytes": "80d24500"
+          },
+          {
+            "va": "0xaa9394",
+            "rva": "0x6a9394",
+            "file_offset": "0x6a7b94",
+            "bytes": "a0d27c00"
+          }
+        ]
+      },
+      {
+        "input": "reference-backup",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "instructions": [
+          {
+            "va": "0x45d421",
+            "rva": "0x5d421",
+            "file_offset": "0x5c821",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x45d42a",
+            "rva": "0x5d42a",
+            "file_offset": "0x5c82a",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x45d454",
+            "rva": "0x5d454",
+            "file_offset": "0x5c854",
+            "bytes": "e8272a4d00"
+          },
+          {
+            "va": "0x7cd2e1",
+            "rva": "0x3cd2e1",
+            "file_offset": "0x3cc6e1",
+            "bytes": "d9ee"
+          },
+          {
+            "va": "0x7cd2e9",
+            "rva": "0x3cd2e9",
+            "file_offset": "0x3cc6e9",
+            "bytes": "e822cfc3ff"
+          },
+          {
+            "va": "0x40a21f",
+            "rva": "0xa21f",
+            "file_offset": "0x961f",
+            "bytes": "d980f0000000"
+          },
+          {
+            "va": "0x7cd310",
+            "rva": "0x3cd310",
+            "file_offset": "0x3cc710",
+            "bytes": "e86b2b1600"
+          },
+          {
+            "va": "0xaabd9c",
+            "rva": "0x6abd9c",
+            "file_offset": "0x6aa59c",
+            "bytes": "80d24500"
+          },
+          {
+            "va": "0xaa9394",
+            "rva": "0x6a9394",
+            "file_offset": "0x6a7b94",
+            "bytes": "a0d27c00"
+          }
+        ]
+      }
+    ]
+  }
+]

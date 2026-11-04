@@ -25,11 +25,11 @@ M8 (графика) не является условием этой цели. П
    Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
    JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
    26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
-   В diagnostic link остались 4 уникальных символа; вызовы CheckFiles/SendLog сохранены.
+   В diagnostic link остались 2 уникальных символа: CheckFiles/SendLog; вызовы сохранены.
    Прямой EOF доступ CharacterMR несовместим с UCRT; classic FILE изолирован адаптером.
    Адаптер 8 stream API готов: 1828 собственных native проверок и 3 теста COFF прошли,
-   два настоящих загрузчика Pattern/Item проверены отдельно: 49 native проверок
-   на valid synthetic fixtures с положительными/отрицательными effect queries.
+   Pattern/Item/EffectList/binary Effect loader проверены отдельно: 59 native checks
+   на valid synthetic fixtures, включая применение particle ID к двум мешам без GPU.
    По инструкциям обоих 455 восстановлен default=0 для двух mesh-effect API.
    _Xlen/_Xran реализованы реальными exceptions, 770 native сравнений с classic exports.
    CObjectManager constructor
@@ -42,17 +42,23 @@ M8 (графика) не является условием этой цели. П
    ChInterface реконструированы через empty states + real Init; оригинальный inline
    ctor/полный sizeof не доказаны. SetTexPath/SetMipMap сверены с инструкциями обоих PE,
    18 guarded ABI checks и вызовы на constructed objects прошли.
-   Следующие 4 gaps: DrawCharacter short call, SetEffect, CheckFiles и SendLog.
-   Найден 455 CResObject::Render с явным scale=this+240, scroll=0; проверить CNpc,
-   затем оформить соответствие вызовов отдельно от compiler-only patches.
-   455 SetEffect уже использует map; не смешивать его layout с legacy массивами.
+   DrawCharacter: оба source calls теперь имеют отдельную selectable 455 ветку
+   m_fScale/scroll=0; CNpc подтверждён по RTTI/asm, native object refs проверены.
+   11 compiler patches и 2 behavior patches ведутся раздельно. Diagnostic flag ON,
+   default project flag OFF; оба старых коротких вызова сохранены в выключенной ветке.
+   SetEffect: bounded legacy table bridge реально применяет эффект через старый SDK.
+   Это не завершение 455 map/36-grade переноса; original inline/bad inputs неизвестны.
+   Найден 455 EffectLog (5/10 MB, flag, без прямого SendLog). Проверить reachability
+   clear routine 0x7DF1B0; не предполагать atexit. Затем восстановить reference logging
+   flow и исследовать CheckFiles, не отключать их ради линковки.
+   research/client-draw-and-legacy-effects.md.
    Подробности research/character-setters-and-construction.md.
    research/character-effects-and-exceptions.md, character-managers.md,
    character-stdio-adapter.md. Полный runtime/exception unwind Character не проверен.
    Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
    У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
    неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.
-   207 тел функций уже кешированы; 30 проверок инструкций, 64 layout assertions,
+   207 тел функций уже кешированы; 30 проверок инструкций, 67 layout assertions,
    165 публичных сигнатур проверены. Подробности research/character-library.md.
    Дополнительных SDK/PDB у пользователя нет, не ожидать их. Серверные render-типы
    целевым поиском не найдены. Из 455 доступны отдельные D3D9 GPU layouts и import .lib;
@@ -68,6 +74,8 @@ prepare_dx8_sdk.ps1 → build_client_engine.ps1 -DirectXInclude <overlay> -Clean
 check_character_header.py → build_character_setters.py → build_character_managers.py →
 probe_character_effect_loaders.py → probe_client_character_build.ps1.
 Exception/stdio библиотеки переиспользовать по проверенным хешам, не пересобирать без причины.
+455 draw branch: apply_client_draw455.py → prepare_client_build.py → diagnostic build →
+verify_client_draw455.py. Отдельный ledger inventory/client-behavior-patches.json.
 
 ## Восстановление клиента
 
