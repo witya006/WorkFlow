@@ -23,53 +23,42 @@
 
 ## Последний проверенный результат
 
-В scripts/native/client455_animation_timing.{h,cpp} восстановлены расчёт кадра
-7CD560/RVA3CD560, конструктор CAnimation 7CCC30/RVA3CCC30 и известный secondary
-prefix84 91C490/RVA51C490. Два API встроены в обычный клиент через настоящий
-R3EngineMT: ctor и два численных пути CResObject (три E8 REL32 callsites).
-612 независимых Fraction случаев/12 masked FP modes, 614 component checks;
-16 реальных CResObject сценариев/56 checks в full-client own entry прошли.
-Короткая Platform01/device проверка: 2 случая/69 checks, прежние frame SHA,
-COM/Dmalloc0. Старые большие runtime suites не повторялись.
-Gate inventory/client455-animation-timing-checkpoint.json;
-research/client455-animation-timing.md. Normal snapshot character455-animation-timing:
-2451456B/entryRVA1BC450,
-SHA0aec5bc1ba169988f5bb1778123e2b214af23dc7062c23c776a8edad1fa6d67e.
-Lab5225472B/entryRVA89B3,
-SHA9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae.
-Normal180client+64engine+46JPEG=290modernCOFF/MT; lab190clientTUs.
-Normal runtime намеренно изменён выбранными timing/ctor вызовами.
-Elapsed clock upstream и derived actor lifecycle ещё не доказаны; полный actor
-ctor/secondary binding/455 ABI/renderer не восстановлены. Known84 default initializer
-пока доступен компоненту/lab, но не подключён к normal actor secondary region.
+Source elapsed clock8B3CC0/RVA4B3CC0 подключён в normal R3EngineMT. Модуль:
+scripts/native/client455_loop_clock.{h,cpp}; bridge.inc заменяет выбранную ветку
+commonutil.cpp под flag, legacy branch сохранён. Полный update/QPC init/fallback/
+duration/get-set/toggles восстановлены для выбранного контракта. В normal PE
+UpdateLoopClock RVA1AF700; GetDuration source call есть в COFF, но normal unused
+API удалён линкером. RTMovie scale setter готов, event caller ещё не перенесён.
+144 whole-state случая/12maskedFPmodes, 3provider сценария и1DAZ/FTZ случай прошли component,
+затем через actual R3CalculateTime в полном client lab. Actual clock→R3GetLoopTime
+→CResObject даёт frame309; setter/toggle checks прошли. Dmalloc0, gameDLLs не загружены.
+Platform01/device2cases69checks прошли, прежние frameSHA; старые большие наборы
+не повторялись. Gate inventory/client455-loop-clock-checkpoint.json;
+research/client455-loop-clock.md. Raw elapsed-*.json, ownedc215239f closed/save.
+Normal snapshot character455-loop-clock-final:2451456B/entryRVA1BC450,
+SHAc2ea6d497a4fa2e6ad9aec32d61127a79efb0908b5d44db75a85ec3a588431e8.
+Lab5233664B/entryRVA89CC,
+SHA66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3.
+Normal180client+65engine+46JPEG=291modernCOFF/MT; lab191clientTUs.
+Normal runtime намеренно изменён. Original process scheduling/timer traces не
+снимались; arbitrary NaN/signalling/unmasked FP exception equivalence не доказана.
 
-Предыдущий результат:
-
-Source secondary91E270 вscripts/native/client455_secondary.{h,cpp} подключён
-вRFClient455Pose.lib/UpdateCharacterPose. State84/global28,5oscillators и5effects,
-36whole-state scalarcases;CoraFemale38parts/all5effects иarmor06135parts/3skirts,
-6FrameMoveupdates component/fullclientownentry. Heap/Dmalloc0,gameDLLs не загружены.
-Шесть pose/secondary APIs имеют actualcaller/archiveproof. Это CPU,безdraw.
-Static reference__CIsin ещё не source:mandatory sineFloat callback;lab явно
-modernMTsin(double)→float32,не bitparity proof. Secondary unit частичный именно
-вэтомnumeric/backend/normalconsumer смысле,не успешная пустая замена.
-
-Historical gateinventory/client455-secondary-checkpoint.json;
-research/client455-secondary-motion.md. Связаннаяpose regression пройдена:
-11BN→MESH08pairs/132updates/2298skin matrices standalone/fullclient,прежнийрезультат.
-Normal snapshotcharacter455-secondary:2451456B/entryRVA1BC4B0,
-SHA40575afbd24f9ed9dc6f8e945806a932059c5056873ae300ebfc3a789bd6aef5.
-Lab5214208B/entryRVA899F,
-SHA9b3e683569b24396cbdd330fea175d03d59623911df3ffc5dd9411e94efc1c12.
-Normal180client,lab189TUs;normal APIs unused/stripped,runtimebytes кромеtimestamps
-равныpose-final. Прежние289modernCOFF/MT verification исторические,новые source
-objects такжеx86/MT. ANI/GPU/manager/Platform01 runtime suites не повторялись.
+Предыдущие результаты (исторические checkpoints не переписывать):
+- Timing025: CAnimation100 ctor и два численных пути CResObject подключены normal;
+  secondary84 defaults известны, normal secondary region ещё не подключён.
+  research/client455-animation-timing.md; gate client455-animation-timing-checkpoint.json.
+- Secondary024: state84/global28/5effects в source FrameMove; 36scalarcases/2CoraBN,
+  6updates прошли. Mandatory sineFloat; lab modernMTsin, не staticCRT bitparity.
+  research/client455-secondary-motion.md; gate client455-secondary-checkpoint.json.
+- Pose023: key evaluators/transition/ramp/skin matrices;11pairs/132updates. CPU,
+  без animated draw. research/client455-pose-source.md и pose-checkpoint.json.
 
 ## Следующий шаг
 
 1. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
-   dispatcher), полный actor lifecycle/secondary binding, upstream elapsed clock
-   и frame/transition consumers. Численный producer и известные defaults готовы (025).
+   dispatcher), полный actor lifecycle/secondary binding и transition consumers.
+   Численный producer/defaults готовы (025), elapsed clock готов (026); RTMovie
+   scale consumer остаётся открытым. Не переделывать готовый clock reverse.
    Secondary flow source уже готов сrequiredmathcontext;RF_POSE_SECONDARY только
    приотсутствующем backend. Не повторять584instruction reverse/golden math безизменений.
 2. Полный AnimationManager/async worker/record ownership. Потом связать pose с
@@ -92,6 +81,13 @@ FISTP signed64/chop и lowDWORD с восстановлением CW. Не за�
 при .03f/current160/speed1 PC53nearest получается309, floatshortcut даёт310.
 Skirt trigger quaternionW*Z<-.2,timers savedtime,неdecompilerinitialweights/quatbits.
 Sharedglobals1189738..50 — left/right/pony timers/XYZ/phase,неperactor.
+Elapsed clock: DWORD count/hop wrap, окно только>10, unsigned x87 average/1000double,
+float spill→clamp→scale→real→toggles. До нового среднего scale повторно умножает
+сохранённое loopSeconds. Пороги float, вычитание widened-float double; exact cancel
+при round-down даёт -0. QPC нужен init/duration, elapsed берётся timeGetTime.
+Сравнения также x87: ordinary C++ сравнение ломалось на negative subnormal при
+SSE DAZ/FTZ. Ошибка воспроизведена и исправлена; один целевой пример есть в native
+и actual engine suite. Не заменять эти сравнения на SSE без доказательства.
 
 ## Контракты, которые легко нарушить
 

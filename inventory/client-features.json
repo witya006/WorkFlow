@@ -1214,7 +1214,7 @@
       ],
       "gaps":[
         "Secondary91E270 source flow nowtracked by024;missing mathcontext stillRF_POSE_SECONDARY. StaticCRTsin/profiling/privateglobal scratchABI notrestored",
-        "Selected actualframe arithmetic/CAnimation ctor restored by025;upstreamelapsedclock/fulltransitionproducers/AnimationManager/asyncworker/skinningdraw/declarations/shaders/normaltypedconsumers/fullD3D9renderer remainopen",
+        "Selected actualframe arithmetic/CAnimation ctor restored by025 andelapsedclock by026;fulltransitionproducers/AnimationManager/asyncworker/skinningdraw/declarations/shaders/normaltypedconsumers/fullD3D9renderer remainopen",
         "Real matrix comparisons prove source structural identities,not independent fullreferenceFrameMove execution equivalence;no referenceEXE run",
         "One parent-ramp analytic childtranslation check allows1e-4 dueobservedD3DXinverse deviation;notallmathbitproof/arbitrarymatrices/NaN/unmaskedFP coverage",
         "Own span/count/pointer/singularmatrix/nullallocation policies differfromunchecked reference failure/exception/unwind;31+bone overlap unsafe domains notcertified",
@@ -1250,7 +1250,7 @@
       ],
       "gaps":[
         "Reference static__CIsin SSE/defaultimplementation notported. sineFloat mandatory backend;lab modernMTsin(double)->float32 explicitlynotreference bitparity",
-        "Known84secondarydefaults andselected framearithmetic restored by025;fullactorconstructor/normal secondarybinding/upstreamelapsedclock/transitions/AnimationManager/worker remainopen",
+        "Known84secondarydefaults andselected framearithmetic restored by025,elapsedclock by026;fullactorconstructor/normal secondarybinding/transitions/AnimationManager/worker remainopen",
         "Independent scalar expectations onlyfinite/nearestPC53;arbitraryNaN/unmaskedFP/OOM/uncheckedpointer/name/exception/unwind domains andfull privateglobalsABI open",
         "Matrix tests checkcallflow/anglebits/finiteposes/selectedpreservedfields,not independently executedfullreference secondarymatrixgoldens",
         "CPUonly/nodraw,no normalWinMain orreferenceEXE execution;fullD3D9renderer/shaders/typedconsumers/M6F/M9 remainopen"
@@ -1289,11 +1289,53 @@
         "ScopedPlatform01/device preservedframeSHA/COM/Dmalloc0;oldlargeANI/texture/sharedbuffer/manager suites notrepeated"
       ],
       "gaps":[
-        "Upstream elapsed clock smoothing/rate andCPU/FPU conditions not proved;selected numeric equality requires same elapsed input",
+        "Elapsed averaging/scale/toggles nowrestored by026 andconnected toactualframecaller;original process scheduling/timer trace andfullCPU/FPU conditions notcertified",
         "Fullactorctor/lifecycle/derivedvirtualflagbehavior/normal secondary84binding/full455CBone-ChAnimationABI/AnimationManager/worker remainopen",
         "Known84 initializer available tocomponent/lab butnormal actorsecondary binding notconnected;full secondaryclass size notclaimed",
         "MaskedFPresult/CW tested;unmaskedtraps/exceptionflags/unwind/OOM/privateABI notcertified",
         "Normal Character455 skin/draw/shaders/staticCRTsin/fullD3D9renderer/M6F/M9 remainopen;ownentry notnormalWinMain orreferenceEXE execution"
+      ]
+    },
+    {
+      "id":"LOOP-CLOCK455-026",
+      "description":"Source elapsed loop clock/QPC initialization-fallback/duration/averaging/clamp/scale/real time/toggles integrated into normal R3EngineMT",
+      "status":"implemented",
+      "verification":"8ranges equalbothpins;144whole-state cases/12maskedFPmodes,3provider paths/1DAZ-FTZcase/448checks component andactual R3CalculateTime in fullclientlab.9connected getter-setter/toggle/actor checks,frame309. Platform01/device2cases69checks passed,previousframeSHA.291normalMTobjects/191labTUs,unchangedbulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x4b3ae0","bytes":74,"role":"QPC ticks withzero retry andmillisecond fallback"},
+        {"rva":"0x4b3b30","bytes":48,"role":"Signed wrapped duration,one finalfloat spill"},
+        {"rva":"0x4b3b70","bytes":90,"role":"30FPS toggle"},
+        {"rva":"0x4b3be0","bytes":90,"role":"15FPS toggle"},
+        {"rva":"0x4b3c50","bytes":90,"role":"7FPS sharedtail"},
+        {"rva":"0x4b3cb0","bytes":11,"role":"Set loop time scale"},
+        {"rva":"0x4b3cc0","bytes":362,"role":"R3CalculateTime body without-of-line tail"},
+        {"rva":"0x4b3e30","bytes":79,"role":"Loop-real getter/setter andminFPS"}
+      ],
+      "implementation":["scripts/native/client455_loop_clock.h","scripts/native/client455_loop_clock.cpp","scripts/native/client455_loop_clock_bridge.inc","scripts/apply_client455_loop_clock.py"],
+      "option":"RF_CLIENT_455_LOOP_CLOCK",
+      "evidence":[
+        "inventory/client455-loop-clock-reference.json",
+        "inventory/client455-loop-clock-build.json",
+        "inventory/client455-loop-clock-cpu.json",
+        "inventory/client455-loop-clock-client.json",
+        "inventory/client455-loop-clock-link.json",
+        "inventory/client455-loop-clock-graphics.json",
+        "inventory/client455-loop-clock-checkpoint.json",
+        "research/client455-loop-clock.md"
+      ],
+      "scenarios":[
+        "DWORDcount-hop-wrap/unsignedx87average/window>10/floatspill/clamp-before-scale/repeatedscalingwhilewindowopen/real accumulation",
+        "Float thresholds/widenedfloatdouble subtraction/floatresidual/reset/NEGINT_MIN/round-down exact cancellation negativezero",
+        "Negative subnormal withSSE DAZ-FTZ reproducedC++comparison mismatch;fixedx87comparison passedcomponent andactualenginebridge",
+        "QPF-QPC success/frequency1000fallback/timeGetTimefallback/zeroQPCRetry/initialcachedticks/signedduration",
+        "Actualengine R3CalculateTime/getset/minFPS/toggles and clock-to-CResObject frame309;gameDLLs notloaded/Dmalloc0",
+        "Normal source UpdateLoopClock linked fromR3EngineMT;unusedduration onlyCOFF sourcecall,notclaimedlinkednormal;runtime intentionallychanged"
+      ],
+      "gaps":[
+        "RTMovie event0x0B scale consumer notported;setter alone isnot fullcinematic subsystem",
+        "No independent original process timer-scheduling trace;no normalWinMain/referenceEXE execution;actualinitialQPC branch proved atcomponent withcontrolledproviders",
+        "Arbitrary NaN payload-signalling/unmaskedFPexceptionstate/processCPUconditions/uncheckedcallbacks notcertified",
+        "Fullactorlifecycle/secondarybinding/normal455CharacterABI/AnimationManager-worker/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
       ]
     }
   ],

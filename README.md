@@ -11,13 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: восстановлены численный расчёт кадра анимации и конструктор
-CAnimation. Они подключены к реальным CResObject/CAnimation обычной сборки:
-три места вызова двух source API. Проверены 612 численных случаев, 16 сценариев
-настоящего CResObject и короткая регрессия Platform01/device. Неизменённые большие
-наборы тестов не повторялись. Полный Character 455 и отрисовка ещё открыты.
-M6/M6F/M7/M9 не закрыты. Подробности research/client455-animation-timing.md,
-inventory/client455-animation-timing-checkpoint.json и docs/next-steps.md.
+Последний участок M6: восстановлен elapsed clock с усреднением, коэффициентом
+времени и переключателями 30/15/7 FPS. Он подключён к обычному клиенту; проверена
+связка настоящего R3CalculateTime с расчётом кадра CResObject. Точечные проверки
+таймера и Platform01/device прошли; большие неизменённые наборы не повторялись.
+Полный Character 455 и отрисовка ещё открыты. M6/M6F/M7/M9 не закрыты.
+Подробности research/client455-loop-clock.md,
+inventory/client455-loop-clock-checkpoint.json и docs/next-steps.md.
 
 История предшествующих этапов (актуальная очередь выше):
 

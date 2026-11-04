@@ -209,8 +209,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_ANIMATION_TIMING)
 #include "client_animation_timing_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_LOOP_CLOCK)
+#include "client_loop_clock_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_LOOP_CLOCK)
+    if (!std::strcmp(command,"--rf-loop-clock-scenario")) ExitProcess(loopClockScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_ANIMATION_TIMING)
     if (!std::strcmp(command,"--rf-animation-timing-scenario")) ExitProcess(animationTimingScenarioProbe());
 #endif

@@ -1,0 +1,127 @@
+{
+  "scope": "Complete selected R3CalculateTime flow and clock API/own state;not full client runtime acceptance",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "ticks",
+          "rva": "0x4b3ae0",
+          "bytes": 74,
+          "sha256": "317a195dcc4eb6401aef7d02f0e3dc55329c6c198f5f723bdcc2ef432ed085a8"
+        },
+        {
+          "name": "duration",
+          "rva": "0x4b3b30",
+          "bytes": 48,
+          "sha256": "b4edf00486c86f8e65d75dff8e1fca860e8b899c37b8fad051d54428eb7a5c7b"
+        },
+        {
+          "name": "toggle30",
+          "rva": "0x4b3b70",
+          "bytes": 90,
+          "sha256": "9e5f0e8b2f8d624ff74e68ed98c05e1d631def8f38a004c987d542e221109047"
+        },
+        {
+          "name": "toggle15",
+          "rva": "0x4b3be0",
+          "bytes": 90,
+          "sha256": "3a84b28da062f44ce88ced60e2b4508c7ba6a683fae9d958355dfa59f3b0a318"
+        },
+        {
+          "name": "toggle7_tail",
+          "rva": "0x4b3c50",
+          "bytes": 90,
+          "sha256": "29230aa33393ee1567dff107957d210bd7b6cff99c342b64024444f2bd15f517"
+        },
+        {
+          "name": "scale_set",
+          "rva": "0x4b3cb0",
+          "bytes": 11,
+          "sha256": "082a6f6ec4c2befe3267db03e3822c71ec1c99e45de7046534f454482520359e"
+        },
+        {
+          "name": "update",
+          "rva": "0x4b3cc0",
+          "bytes": 362,
+          "sha256": "882e55e3e3cfcfba4643ed3ac477b28f8ee740ca6040068b43d0c4595656363e"
+        },
+        {
+          "name": "loop_get_set_real_get_set_minfps",
+          "rva": "0x4b3e30",
+          "bytes": 79,
+          "sha256": "4e633dec746af886fa5bcd9a7607662f43d83042f3dd5eae9da1f4a9026701c0"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "ticks",
+          "rva": "0x4b3ae0",
+          "bytes": 74,
+          "sha256": "317a195dcc4eb6401aef7d02f0e3dc55329c6c198f5f723bdcc2ef432ed085a8"
+        },
+        {
+          "name": "duration",
+          "rva": "0x4b3b30",
+          "bytes": 48,
+          "sha256": "b4edf00486c86f8e65d75dff8e1fca860e8b899c37b8fad051d54428eb7a5c7b"
+        },
+        {
+          "name": "toggle30",
+          "rva": "0x4b3b70",
+          "bytes": 90,
+          "sha256": "9e5f0e8b2f8d624ff74e68ed98c05e1d631def8f38a004c987d542e221109047"
+        },
+        {
+          "name": "toggle15",
+          "rva": "0x4b3be0",
+          "bytes": 90,
+          "sha256": "3a84b28da062f44ce88ced60e2b4508c7ba6a683fae9d958355dfa59f3b0a318"
+        },
+        {
+          "name": "toggle7_tail",
+          "rva": "0x4b3c50",
+          "bytes": 90,
+          "sha256": "29230aa33393ee1567dff107957d210bd7b6cff99c342b64024444f2bd15f517"
+        },
+        {
+          "name": "scale_set",
+          "rva": "0x4b3cb0",
+          "bytes": 11,
+          "sha256": "082a6f6ec4c2befe3267db03e3822c71ec1c99e45de7046534f454482520359e"
+        },
+        {
+          "name": "update",
+          "rva": "0x4b3cc0",
+          "bytes": 362,
+          "sha256": "882e55e3e3cfcfba4643ed3ac477b28f8ee740ca6040068b43d0c4595656363e"
+        },
+        {
+          "name": "loop_get_set_real_get_set_minfps",
+          "rva": "0x4b3e30",
+          "bytes": 79,
+          "sha256": "4e633dec746af886fa5bcd9a7607662f43d83042f3dd5eae9da1f4a9026701c0"
+        }
+      ]
+    }
+  ],
+  "cases": 144,
+  "fp_modes": 12,
+  "golden": "work/client-reference/loop-clock455/loop-clock.bin",
+  "golden_sha256": "43d057ee9575d510ef377d7020591f3687a4d15eb8499281de2b9a2ec29d8431",
+  "script_sha256": "7002116ca370ace4347ffd1b10b4dfdcf949554f4adede82c1372b7e1d74cc2a",
+  "oracle": "Fraction model from cached x87 instructions;finite fields,explicit float spills,unsigned wrapping,12precision-rounding modes. OS callback lifecycle separately exercised in native test.",
+  "raw_analysis": "artifacts/character-animation455/elapsed-*.json;ownedc215239f closed/save",
+  "remaining": [
+    "RTMovie event0x0B caller notported;only reference setter established",
+    "Original process timers/scheduling/frequency values not dynamically observed;no input EXE runs",
+    "NaN payload/unmasked exceptions/CPU feature process state not certified"
+  ]
+}

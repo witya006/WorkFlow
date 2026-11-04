@@ -362,6 +362,20 @@
     "binary_evidence_report": "inventory/client455-resource-reference.json"
   },
   {
+    "file": "work/client-build/source/R3Engine/common/commonutil.cpp",
+    "original_sha256": "b40b63f80317c13bcfd627731d8cbb744740e5344b8132edec528911d080ac91",
+    "input_sha256": "2367c915218112cb9ba31b92099a4a80d7bcb7a733ee97210e08a110fc128eeb",
+    "patched_sha256": "860769bfd145629816b5db37f5e7ba768c4cd74f79708afe8a5a21b162aa8cf5",
+    "build_option": "RF_CLIENT_455_LOOP_CLOCK",
+    "legacy_branches_preserved": true,
+    "reference_report_sha256": "ad8d8e63ec2d359d9c22e91df2df3d46cf8e62a8cb93822ff5635961a4708a1a",
+    "reason": "Restore full selected elapsed-clock update/OS initialization/toggle flow;legacy branch retained",
+    "source_apis": [
+      "RF455_UpdateLoopClock",
+      "RF455_GetLoopDuration"
+    ]
+  },
+  {
     "file": "work/client-build/source/R3Engine/common/r3math.cpp",
     "original_sha256": "67b4f2961a30a2e317c0a0124eceea1efed4b691cfa4cf98e9f14fa5e3fc53d7",
     "input_sha256": "67b4f2961a30a2e317c0a0124eceea1efed4b691cfa4cf98e9f14fa5e3fc53d7",

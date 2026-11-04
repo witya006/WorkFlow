@@ -1,0 +1,90 @@
+{
+  "scope": "Recovered elapsed loop clock integrated into normal engine and actual frame producer;not full client455/M9 acceptance",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "c2ea6d497a4fa2e6ad9aec32d61127a79efb0908b5d44db75a85ec3a588431e8",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [
+      {
+        "symbol": "_RF455_UpdateLoopClock",
+        "rva": "0x1af700",
+        "provider": "R3EngineMT:client455_loop_clock.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_GetLoopDuration",
+        "caller": "?GetDuration@@YAMXZ",
+        "section": 7,
+        "offset": "0x12",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UpdateLoopClock",
+        "caller": "?R3CalculateTime@@YAXXZ",
+        "section": 18,
+        "offset": "0x18",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "commonutil_object_sha256": "2cfca31c9cfb9f3f52af853beb1ba2d488c03b322fa9db41f40fa45a8ecc382f",
+    "module_sha256": "c5b97293cd269a13ce3f49b79b381b244ee5739921c5afcb928606b98c0a88af",
+    "scope": "Normal elapsed-clock source selected;normalWinMain/fullCharacter/renderer acceptance remainsopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3",
+    "exe_bytes": 5233664,
+    "entry_rva": "0x89cc"
+  },
+  "component": {
+    "status": "PASS",
+    "state_cases": 144,
+    "provider_cases": 3,
+    "daz_ftz_cases": 1,
+    "checks": 448,
+    "failures": 0,
+    "fp_modes": 12,
+    "actual_engine_bridge": false
+  },
+  "actual_engine": {
+    "status": "PASS",
+    "state_cases": 144,
+    "provider_cases": 3,
+    "daz_ftz_cases": 1,
+    "checks": 448,
+    "failures": 0,
+    "fp_modes": 12,
+    "actual_engine_bridge": true
+  },
+  "connected_actor": {
+    "status": "PASS",
+    "connected_checks": 9,
+    "failures": 0,
+    "frame": 309,
+    "dmalloc_balance": 0
+  },
+  "scoped_graphics_checks": 69,
+  "previous_frame_hashes_equal": true,
+  "normal_runtime_intentionally_changed": true,
+  "normal_modern_coff_objects": 291,
+  "lab_client_objects": 191,
+  "unchanged_bulk_suites_repeated": false,
+  "remaining": [
+    "RTMovie0x0B normal event consumer",
+    "Full actor/normal455CharacterABI/AnimationManager-worker/skin-draw/shaders/D3D9renderer",
+    "No independent original process timer trace/unmasked FP exception equivalence"
+  ],
+  "evidence_sha256": {
+    "client455-loop-clock-reference": "ad8d8e63ec2d359d9c22e91df2df3d46cf8e62a8cb93822ff5635961a4708a1a",
+    "client455-loop-clock-build": "b5b653039dede3b2640fd952e9a7081bfc9bdbae4df9311fc0ee0f908e769885",
+    "client455-loop-clock-cpu": "5c6aeb38c8a75ccc6a99d8177034f2bda5f50035f378d55e28d69d7bf7b91176",
+    "client455-loop-clock-client": "26953b96fe6fb52c2faea6a7720d38c957ca46e71c1c296b3687253b0a382a96",
+    "client455-loop-clock-link": "b03a7123e0493a634439190ce0c4f5ece3071f59d21879cbb3a4df96c9e5cd4b",
+    "client455-loop-clock-graphics": "13f61b3916ac7b4006dc402fac8205953f9b82376bf9eaef443802e892dca312",
+    "client-mt-variant": "17dd8de1e0d4cd480bfd2f8deda8af3f1da2a2ba2faa7a23eea528ac29441e51",
+    "client-behavior-patches": "bb410418820fa9d5efa0c65cc0175e16236e0972ecf231587bec9c3e51d5d189"
+  }
+}

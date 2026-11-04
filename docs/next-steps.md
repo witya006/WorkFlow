@@ -11,7 +11,17 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — численный расчёт кадра и CAnimation ctor в обычном клиенте.
+Последний unit — source elapsed clock в обычном R3EngineMT: усреднение DWORD,
+ограничение/scale, real time, toggles, QPC init/fallback/duration. 144 состояния
+в12FPmodes/3provider сценария прошли; полный client lab вызывает настоящий
+R3CalculateTime и затем CResObject, результат frame309. Короткая Platform01/device
+регрессия прошла с прежними frame SHA. Normal291MTobjects, lab191clientTUs.
+Gate inventory/client455-loop-clock-checkpoint.json;research/client455-loop-clock.md.
+RTMovie scale consumer/full actor lifecycle/normal455ABI/renderer ещё открыты.
+Original scheduling/timer trace не наблюдался; runtime намеренно изменён.
+Большие неизменённые наборы не повторялись.
+
+Предыдущий unit — численный расчёт кадра и CAnimation ctor в обычном клиенте.
 Два source API из R3EngineMT вызываются в настоящих CResObject/CAnimation:
 три callsites подтверждены. 612 численных случаев/12 FP modes и 16 actual actor
 сценариев прошли; Platform01/device 2cases/69checks, прежние frame SHA.
@@ -66,9 +76,10 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 ## Очередь M6 → M9
 
 1. Завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
-   полный actor lifecycle/secondary binding, upstream elapsed clock и transition
-   consumers, AnimationManager/worker. Численный producer и known84 defaults
-   восстановлены в 025; повторно их не исследовать без новых фактов.
+   полный actor lifecycle/secondary binding, transition consumers и
+   AnimationManager/worker. Численный producer/known84 defaults готовы в025,
+   elapsed clock в026; повторно их не исследовать без новых фактов. RTMovie scale
+   caller ещё открыт, весь cinematic subsystem не объявлять восстановленным.
    Основныеpose/skinmatrix иsecondary source готовы;secondary requires mathcontext,
    missingbackend возвращаетRF_POSE_SECONDARY. Raw584secondaryinstructions+borrower
    7CD430cached;неповторятьэтотreverse. State84borrowedfromactor+500→model1184,

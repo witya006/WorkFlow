@@ -101,6 +101,13 @@ option(RF_CLIENT_455_WEATHER "Restore two-layer weather and helper interior inte
 option(RF_CLIENT_455_CLOCK "Restore exact x87 day and real-time clock arithmetic" OFF)
 option(RF_CLIENT_455_TIME_COMMANDS "Restore grade-gated local time text commands" OFF)
 option(RF_CLIENT_455_ANIMATION_TIMING "Restore source455 frame arithmetic and animation control constructor" OFF)
+option(RF_CLIENT_455_LOOP_CLOCK "Restore source455 elapsed clock, time scale and frame toggles" OFF)
+if(RF_CLIENT_455_LOOP_CLOCK)
+  target_sources(R3EngineClientMT PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_loop_clock.cpp")
+  target_include_directories(R3EngineClientMT PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native")
+  set_property(SOURCE "${R3}/common/commonutil.cpp" APPEND PROPERTY COMPILE_DEFINITIONS
+    "$<$<STREQUAL:$<TARGET_PROPERTY:NAME>,R3EngineClientMT>:RF_CLIENT_455_LOOP_CLOCK>")
+endif()
 if(RF_CLIENT_455_ANIMATION_TIMING)
   target_sources(R3EngineClientMT PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_animation_timing.cpp")
   target_include_directories(R3EngineClientMT PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native")
@@ -213,6 +220,13 @@ target_include_directories(RF_Online PRIVATE
 option(RF_CLIENT_HELPER_LAB "Diagnostic helper-only entry in the full client; no normal game startup" OFF)
 if(RF_CLIENT_HELPER_LAB)
   target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp")
+  if(RF_CLIENT_455_LOOP_CLOCK)
+    target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_loop_clock.cpp")
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_loop_clock.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF455_LOOP_CLOCK_EMBEDDED)
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_LOOP_CLOCK)
+  endif()
   if(RF_CLIENT_455_ANIMATION_TIMING)
     target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_animation_timing.cpp")
     set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_animation_timing.cpp"

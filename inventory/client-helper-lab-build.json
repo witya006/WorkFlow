@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T23:09:29.525610+00:00",
+  "checked_at_utc": "2026-11-04T23:41:46.937185+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 190,
+  "generated_objects": 191,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -31,6 +31,7 @@
     "RF_CLIENT_455_ANIMATION_TIMING": "ON",
     "RF_CLIENT_455_CLOCK": "ON",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
+    "RF_CLIENT_455_LOOP_CLOCK": "ON",
     "RF_CLIENT_455_MAP_TIME": "ON",
     "RF_CLIENT_455_RESOURCE_IO": "ON",
     "RF_CLIENT_455_TIME_COMMANDS": "ON",
@@ -68,10 +69,18 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "6fb3bd928ccbcab7459b724b011a7c913690ae5d58bb136b0038f3797463bce8",
+    "scripts/native/client_helper_lab.cpp": "7f7d898b0e04e3c3ad21f1271ecff5acb769f6c3155ff295a0284811c5cc1d99",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "9e0ad1539a3a01a0964f6d2288167ae9524fe2619f95d8e3c47479159d1eafae"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3"
+  },
+  "loop_clock_input_sha256": {
+    "scripts/native/client455_loop_clock.cpp": "a2ca84c8f74f3f9eebd0db12fc43cff9b9757aad2ae88e714bd194e6933016fd",
+    "scripts/native/client455_loop_clock.h": "84766651fdab5eeacd59842ec738291bcdb9f7db6a5214f792c8d3e50ff75515",
+    "scripts/native/client455_loop_clock_bridge.inc": "2a887699ace8a8f0488a20343ec678a8102125c0e5e4281a08a6d9504f2dd7c9",
+    "scripts/native/test_client455_loop_clock.cpp": "2a7cbd4a512a8b4cc8bd2299270be4e83434f35948c0b60e26d3a7bf18492edf",
+    "scripts/native/client_loop_clock_lab.inc": "07e61b66a8a790c177db94dbfab8c87a87fa3aa49638558d5718bf710d449fdd",
+    "work/client-build/source/R3Engine/common/commonutil.cpp": "860769bfd145629816b5db37f5e7ba768c4cd74f79708afe8a5a21b162aa8cf5"
   },
   "animation_timing_input_sha256": {
     "scripts/native/client455_animation_timing.cpp": "513906795753c439c16b135b96b5a032d0565d88a6fc75f8b6abf6135bf94dfb",

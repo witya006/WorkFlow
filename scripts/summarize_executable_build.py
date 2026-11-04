@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS|455_ANIMATION_TIMING)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS|455_ANIMATION_TIMING|455_LOOP_CLOCK)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     if cache.exists():
@@ -84,6 +84,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_LOOP_CLOCK')=='ON':
+            loop_inputs=['scripts/native/'+p for p in ['client455_loop_clock.cpp','client455_loop_clock.h','client455_loop_clock_bridge.inc','test_client455_loop_clock.cpp','client_loop_clock_lab.inc']]+['work/client-build/source/R3Engine/common/commonutil.cpp']
+            report['loop_clock_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in loop_inputs}
         if settings.get('RF_CLIENT_455_ANIMATION_TIMING')=='ON':
             timing_inputs=['scripts/native/'+p for p in ['client455_animation_timing.cpp','client455_animation_timing.h','test_client455_animation_timing.cpp','client_animation_timing_lab.inc']]+['work/client-build/source/RF_Client/cresobject.cpp']
             report['animation_timing_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in timing_inputs}

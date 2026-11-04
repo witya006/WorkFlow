@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение после timing: source elapsed clock подключён в normal R3EngineMT.
+144 состояния/3 provider сценария прошли; actual R3CalculateTime→CResObject
+проверен в полном client lab. Platform01/device прошёл, прежние frame SHA.
+Normal291modernCOFF x86/MT, lab191clientTUs; новые установки не требовались.
+Текущий gate inventory/client455-loop-clock-checkpoint.json;
+research/client455-loop-clock.md. Исторические snapshots ниже не обновлялись.
+
 Актуальное дополнение 05.11: восстановленный расчёт кадра и CAnimation ctor
 подключены к обычному клиенту через R3EngineMT. Проверены 612 численных случаев,
 16 actual CResObject сценариев и короткая Platform01/device регрессия (2 случая).

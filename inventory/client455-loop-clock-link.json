@@ -1,0 +1,78 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "c2ea6d497a4fa2e6ad9aec32d61127a79efb0908b5d44db75a85ec3a588431e8",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [
+      {
+        "symbol": "_RF455_UpdateLoopClock",
+        "rva": "0x1af700",
+        "provider": "R3EngineMT:client455_loop_clock.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_GetLoopDuration",
+        "caller": "?GetDuration@@YAMXZ",
+        "section": 7,
+        "offset": "0x12",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UpdateLoopClock",
+        "caller": "?R3CalculateTime@@YAXXZ",
+        "section": 18,
+        "offset": "0x18",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "commonutil_object_sha256": "2cfca31c9cfb9f3f52af853beb1ba2d488c03b322fa9db41f40fa45a8ecc382f",
+    "module_sha256": "c5b97293cd269a13ce3f49b79b381b244ee5739921c5afcb928606b98c0a88af",
+    "scope": "Normal elapsed-clock source selected;normalWinMain/fullCharacter/renderer acceptance remainsopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3",
+    "exe_bytes": 5233664,
+    "entry_rva": "0x89cc",
+    "functions": [
+      {
+        "symbol": "_RF455_UpdateLoopClock",
+        "rva": "0x959d0",
+        "provider": "R3EngineMT:client455_loop_clock.obj"
+      },
+      {
+        "symbol": "_RF455_GetLoopDuration",
+        "rva": "0x32f410",
+        "provider": "R3EngineMT:client455_loop_clock.obj"
+      },
+      {
+        "symbol": "_RF455_GetLoopTicks",
+        "rva": "0x26de20",
+        "provider": "R3EngineMT:client455_loop_clock.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_GetLoopDuration",
+        "caller": "?GetDuration@@YAMXZ",
+        "section": 7,
+        "offset": "0x12",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UpdateLoopClock",
+        "caller": "?R3CalculateTime@@YAXXZ",
+        "section": 18,
+        "offset": "0x18",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "commonutil_object_sha256": "ccd86e8bb70f32f62cc6904744dc67ed1101f97af6f3ba64857d5083b63782c4",
+    "module_sha256": "77e112d9b275a5d5a7a15b618c3d3963698cad83332493e1336f97b1790092ce",
+    "scope": "Normal elapsed-clock source selected;normalWinMain/fullCharacter/renderer acceptance remainsopen"
+  }
+}

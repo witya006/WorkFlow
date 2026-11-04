@@ -22,6 +22,10 @@
 выбранного контракта; полный Character455/actor lifecycle/normal draw остаются открыты.
 Основание: inventory/client455-animation-timing-checkpoint.json.
 
+Следующий выбранный участок M6: elapsed clock теперь source и подключён к обычному
+R3EngineMT. Actual clock→frame caller проверен в полном client lab; остальные
+области и полнота клиента открыты. inventory/client455-loop-clock-checkpoint.json.
+
 ## Эталон
 
 Бинарный эталон закреплён в config/client-target.json: текущий пользовательский

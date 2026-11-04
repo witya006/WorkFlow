@@ -12,6 +12,11 @@
 
 ## Текущий статус
 
+Новейшее дополнение M6: elapsed clock восстановлен и подключён к обычному клиенту.
+Actual R3CalculateTime→CResObject и короткая Platform01/device проверка прошли.
+Gate inventory/client455-loop-clock-checkpoint.json. Full actor/normal455ABI/
+AnimationManager-worker/draw/renderer и M6F/M7/M9 остаются открыты.
+
 Актуальное дополнение M6: численный расчёт кадра и CAnimation ctor встроены в
 обычный клиент через R3EngineMT; три реальных callsites двух source API проверены.
 612 численных случаев/12 FP modes, 16 actual CResObject сценариев и короткая
@@ -167,7 +172,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: завершить staticCRTsin/полный actor lifecycle/upstream elapsed clock и
+1. M6: завершить staticCRTsin/полный actor lifecycle/transition consumers и
    AnimationManager/worker. Key evaluators/основныеpose/transition/ramp/skinmatrices
    source готовы:11pairs/132updates standalone/fullclient CPU,5sourceC APIs;
    secondary state/effects подключены:36scalarcases/2realCoraBN/6updates;reference
