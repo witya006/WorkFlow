@@ -20,6 +20,9 @@ M5 в работе: найден loader455, перенесены три отли
 перенесены с CPU проверкой65real R3X и actual particle lifecycle. Обычная загрузка
 карты, GPU/полные particles и clock integration ещё открыты:
 research/client455-weather-source.md, inventory/client-features.json.
+Форматы/зависимости карт проверены:78RPK,163BSP/EBP,20real weather assets закреплены.
+Следующий source перенос — архивный доступ и end границы particle SPT;
+research/client455-map-resources.md. Обычный LoadLevel/GPU ещё не проверен.
 
 ## Структура
 

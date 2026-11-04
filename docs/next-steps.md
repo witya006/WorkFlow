@@ -39,10 +39,20 @@ checks для двух one-element particles. Настоящий LoadR3X при�
 285modern objects /MT. research/client455-weather-source.md.
 Обычный запуск игры/LoadLevel/GPU/network НЕ выполнен; M5 пока не закрыт.
 
-1. Аудировать реальные particle/entity dependencies погодных samples и формат BSP,
-   чтобы перейти к normal map runtime. Двухслойные config/load/release/update/draw,
-   helper binding/interior/night уже перенесены и CPU-проверены; не повторять их
-   вместо проверки реальных assets/GPU. Полные particle455 options/curves ещё открыты.
+Ресурсный аудит:78MapEntity RPK/3775entries и70BSP+93EBP проверены tooling с
+lossless container round trip.20real weather assets закреплены в work/.1067RPK
+size fields неверны относительно extent; Dungeon00 имеет stale overlapping offsets,
+455 читает BSP последовательно. Один weather SPT отсутствует для трёх Tower R3X;
+его directory component не найден во всех162RPK indexes. Не подменять похожим файлом.
+8parser tests прошли. research/client455-map-resources.md,
+inventory/client455-map-resources.json. Runtime/сборки в этом цикле не менялись.
+
+1. Восстановить source RPK/group/archive-aware fopen4550x8E7680 и остановку particle
+   SPT на case-sensitive end до lowercase (0x8DB650/0x8DB741). Старый parser читает
+   до EOF; FILE* внутри RPK не ограничен размером записи. Native проверка на20staged
+   real assets/fixtures, затем реальные entity/particle и normal LoadLevel/GPU.
+   Форматы/зависимости уже исследованы; не повторять static audit вместо переноса.
+   Full particle455 options/curves и enumeration/path/error quirks остаются открыты.
 2. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
    environment. Setter/rate/basic API есть, network/lighting не объявлены готовыми.
 3. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
@@ -64,6 +74,9 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
 Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
+Map/RPK tools: Invoke-Python.ps1 scripts/test_map455.py, затем
+Invoke-Python.ps1 scripts/audit_client_map_resources455.py. Это static tooling;
+его round trip не доказывает native loader/GPU parity.
 Lab использует отдельные build-helper-lab/logs/reports, нормальный target не запускается.
 Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
 Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем

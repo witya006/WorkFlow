@@ -30,6 +30,9 @@ M8 не требуется. Компиляция, запуск и частичн
   CPU update отдельно отdraw, helper owner/interior и night.65real R3X +4fixtures /
   703checks,37native lifecycle checks.58real R3X применены реальной LoadR3X без lens/GPU.
   Обычный LoadLevel/FPU initialization не проверены; M5 пока не закрыт.
+  Ресурсный аудит:78RPK/3775file entries,70BSP+93EBP,20real weather assets сохранены
+  с hashes.8tool tests прошли. Source VFS и particle end handling ещё отсутствуют;
+  research/client455-map-resources.md. Исходники/EXE в этом цикле не менялись.
 
 ## Артефакт первой сборки
 
@@ -120,8 +123,18 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M5: следующий шаг — реальные particle/entity dependencies и BSP parser для normal
-map runtime, затем clock/client Time/HMS integration caller4550x7E3E55.
+M5: следующий шаг — source RPK/group/fopen4550x8E7680 и case-sensitive particle end
+перед lowercase (0x8DB650/0x8DB741), native checks на20staged weather assets.
+Затем real entity/particle/normal LoadLevel/GPU, clock/client Time/HMS integration
+caller4550x7E3E55. Resource format audit уже выполнен; не повторять его вместо переноса.
+78MapEntity archives/3775entries,1067declaredSize mismatches: game fopen их игнорирует,
+tool uses next-offset/EOF extent и сохраняет metadata.70BSP39+93EBP20 round trips;
+Dungeon00 stale offsets overlap, sequential reads/skip end ровно на EOF. Остальные
+162containers offsets совпали.5of6weather SPT resolved +5R3E113/5R3M/5R3T.
+DDS headers/mask/DXT mip sizes проверены безGPU. Один e_cauldron_boss_tower/spt/
+magmadust.spt missing для3Tower R3X; component нет во всех162RPK indexes. Не подменять.
+Evidence inventory/client455-map-resources.json, research/client455-map-resources.md;
+scripts/rpk455.py/map455.py,8tests. Strict tooling не эмулирует unsafe game parser.
 Двухслойная weather source plumbing уже есть под RF_CLIENT_455_WEATHER, own arrays
 не подменяются offsets455. Consumer0x8CAD00/RVA0x4CAD00, R3X reader0x90AED0/RVA0x50AED0:
 версия1.1 прежняя, payload1032 vslegacy1024, name2+392/id2+520/sceneFlags+524.

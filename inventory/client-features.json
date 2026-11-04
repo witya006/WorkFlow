@@ -258,6 +258,46 @@
         "clock numeric/FPU equivalence and client-side time caller4550x7E3E55",
         "normal map runtime"
       ]
+    },
+    {
+      "id": "DATA-RPK-005",
+      "description": "RPK1.0 index tree, group lookup and archive-aware fopen",
+      "status": "described",
+      "verification": "Static contracts match both pinned PE; tooling parses/rebuilds78 MapEntity archives with3775file entries. Native source implementation is pending.",
+      "reference": [
+        {"va": "0x8e6c50", "rva": "0x4e6c50", "role": "index loader"},
+        {"va": "0x8e70d0", "rva": "0x4e70d0", "role": "positioned FILE open"},
+        {"va": "0x8e7680", "rva": "0x4e7680", "role": "active group and loose fallback"}
+      ],
+      "implementation": "scripts/rpk455.py (tooling only)",
+      "evidence": ["inventory/client455-map-resources.json", "research/client455-map-resources.md"],
+      "scenarios": ["78lossless archive round trips", "1067declared size mismatches explicitly preserved", "20real weather dependency assets staged and hashed", "malformed tree/offset/name fixtures"],
+      "gaps": ["native source and production integration", "enumeration order and skip-first/limit quirks", "locale/path mutation, errors/OOM", "full resource manifest", "missing e_cauldron_boss_tower weather SPT used by3Tower R3X; no exact directory component in162installed RPK indexes"]
+    },
+    {
+      "id": "DATA-MAP-006",
+      "description": "BSP39/EBP20 map containers, sequential loading and selected R3E/R3T dependencies",
+      "status": "described",
+      "verification": "70BSP+93EBP bounded header/lump checks and lossless container round trips. Five weather geometry headers and DDS/mip sizes checked, no game loader/GPU executed.",
+      "reference": [
+        {"va": "0x8fdea0", "rva": "0x4fdea0", "role": "BSP loader"},
+        {"va": "0x8ff280", "rva": "0x4ff280", "role": "EBP loader"},
+        {"va": "0x8f1810", "rva": "0x4f1810", "role": "DDS header mask"}
+      ],
+      "implementation": "scripts/map455.py (tooling only); legacy game loaders not certified",
+      "evidence": ["inventory/client455-map-resources.json", "research/client455-map-resources.md"],
+      "scenarios": ["684/388byte map headers and record strides", "Dungeon00 stale overlapping offsets exposed, sequential extent ends on EOF", "plain/masked DDS headers and exact DXT mip block sizes", "8combined parser unit tests"],
+      "gaps": ["complete geometry/index/animation/collision semantics", "native map loading and real GPU", "all other material/texture formats and malformed inputs"]
+    },
+    {
+      "id": "PARTICLE-SCRIPT-007",
+      "description": "Case-sensitive end boundaries before lowercasing particle SPT tokens",
+      "status": "described",
+      "verification": "Instructions0x8DB650/0x8DB741/0x8DB753 verified in both pinned PE; old source scans to EOF and lacks these boundaries.",
+      "reference": {"va": "0x8db5b0", "rva": "0x4db5b0", "role": "particle SPT loader"},
+      "implementation": "pending",
+      "evidence": ["inventory/client455-map-resources.json", "research/client455-map-resources.md"],
+      "gaps": ["native source port and tests with adjacent archive files", "complete particle455 options/curves/finalization"]
     }
   ],
   "remaining_areas": "All other acceptance areas in docs/client-acceptance.md remain open; successful helper lab is not M5/M9 completion"

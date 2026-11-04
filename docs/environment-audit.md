@@ -38,6 +38,12 @@ checks/12FP modes. Повтор140files после выравнивания Rele
 load/release/update/draw split,interior/night.65real R3X +4fixtures/703checks,
 37actual CPU lifecycle checks,285modern objects /MT. GPU/normal map/clock integration
 остаются открыты. research/client455-weather-source.md.
+Последующий resource audit:78RPK/3775files,70BSP+93EBP,20weather assets закреплены
+с SHA.8parser tests прошли. Выявлены1067неверных size fields RPK и stale offsets
+Dungeon00;455 использует offset-only fopen и sequential BSP reads соответственно.
+Source VFS/end parsing ещё предстоит восстановить. Один weather path missing для
+трёхTower R3X, directory component не найден во всех162RPK indexes. Игровые EXE/DLL
+не запускались; сборки не менялись. research/client455-map-resources.md.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).
@@ -278,7 +284,8 @@ LNK2038 устранён корректной сборкой, genuine DX8 .lib �
 28 ABI сравнений и 2 точных golden decodes; 26 Miles импортов есть в 455 DLL.
 Проверены 284 x86 /MT объекта. Diagnostic link и clean rebuild успешны.
 Native собственный тест подтвердил: старый FILE EOF доступ Character не работает с UCRT;
-classic CRT прошёл только этот частный тест. RF_Online.bin нет, input EXE/DLL не запускались.
+classic CRT прошёл только этот частный тест. На том этапе RF_Online.bin ещё не был
+получен; последующая полная сборка описана выше. Input EXE/DLL не запускались.
 research/client-dependencies-m4.md и client-port-m4.md;
 inventory/client-character-diagnostic.json, client-mt-variant.json,
 character-header-recovery.json. Четыре проверки COFF прошли.

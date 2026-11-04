@@ -51,6 +51,12 @@ BSP weather consumer перенесён вместе с двумя слоями 
 не закрывает целиком строки «Файлы и данные» или «Рендер и мир» выше.
 Подробности research/client455-weather-source.md.
 
+Ресурсный аудит M5 закрепил78MapEntity RPK,70BSP39/93EBP20 и20weather assets.
+Header/table round trips,8tool parser tests и DDS mip sizes прошли, native/GPU
+load не выполнялись. Source RPK/fopen и particle end boundaries отсутствуют;
+один weather path missing для3Tower R3X. Неверные metadata sizes/offsets не
+исправлялись: research/client455-map-resources.md. Полного resource manifest ещё нет.
+
 ## Запись каждой возможности
 
 Уникальный ID; источник обнаружения; SHA-256/VA/RVA для бинарного доказательства;

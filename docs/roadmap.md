@@ -41,6 +41,9 @@ checks в12FP modes. Два weather слоя config/lifecycle/update/draw, inter
 CPU lifecycle checks. Остаются real asset/GPU/particle455 parity, clock integration,
 normal LoadLevel и FPU initialization;M5 не закрыт.
 research/client455-weather-source.md; inventory/client-features.json.
+Ресурсные prerequisites M5 уточнены:78RPK и163BSP/EBP проаудированы,20weather assets
+закреплены. Далее source archive-aware fopen и SPT end boundaries, затем normal map
+runtime. Research client455-map-resources.md. Это не закрытие M5 и не новый этап.
 
 ## Этапы
 
