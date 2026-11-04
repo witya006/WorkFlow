@@ -782,7 +782,7 @@
         "8special names/repeatedflags andinvalid name/path/argument/singular input owned errors"
       ],
       "gaps": [
-        "Normal full model dispatch/owning subobject methods/destructor not integrated;physical texture backend CHARACTER455-TEXTURE-016 andshared buffers CHARACTER455-SHARED-GPU-017 separately verified",
+        "Normal game manager/file dispatch/full animation/shaders not integrated;source texture/shared buffers/lifetime+connected MESH08route tracked by CHARACTER455-TEXTURE-016/CHARACTER455-SHARED-GPU-017/CHARACTER455-MODEL-PIPELINE-018",
         "This unit tests material requests withscripted callbacks;actual backend separately verified by CHARACTER455-TEXTURE-016",
         "Arbitrary matrix bit-equivalence/full condition domains/CPU-dispatch variation remain unproven;provider pinned toDLLSHA",
         "Own malformed/singular errors differ fromreference unchecked failures;unmasked FP/OOM/non-ASCII CRT locale/failure unwind remain open"
@@ -934,10 +934,77 @@
         "Fullclient ownentry hasidentical component report/frame hashes;game DLLs absent,Dmalloc/COM0,previous texture8440 andPlatform01/weather regression pass"
       ],
       "gaps": [
-        "Normal full model-loader/publication/model owning destructor/unwind/skeleton/animation/skinning/455shader declaration/draw integration open",
+        "Normal full manager/file dispatch/skeleton/animation/skinning/455shader integration open;source selected mesh lifetime/publication+connected MESH08route separately tracked by CHARACTER455-MODEL-PIPELINE-018",
         "Synthetic lab declaration is not455shaders;capture byte comparisons are notGPUreadback ofWRITEONLYbuffers",
         "Full renderer reset/device-loss/opaque8192/private full renderer ABI/OOM/unsafe exception andinvalid-state domains open",
         "Explicit shared accounting storage corresponds toreference globals;full owner adapter still required;no reference EXE runtime comparison"
+      ]
+    },
+    {
+      "id": "CHARACTER455-MODEL-PIPELINE-018",
+      "description": "Source5803byte mesh dtor/array cookie reverse lifetime/ownedrelease andconnected valid-input MESH08 materials/header/GPU/parent/bone/publication route",
+      "status": "implemented",
+      "verification": "10reference bodies equalboth455pins;9953CPU/10021HAL checks standalone/fullclient;12lifetimecases/12files/393parts/276real uploads/59texturebindings,ownheap/COM/Dmalloc0. Normal game dispatch/full model ABI/BN/animation/shaders not integrated.",
+      "reference": [
+        {
+          "rva": "0x520fd0",
+          "role": "mesh dtor"
+        },
+        {
+          "rva": "0x51c3c0",
+          "role": "tables"
+        },
+        {
+          "rva": "0x520f20",
+          "role": "strings"
+        },
+        {
+          "rva": "0x521480",
+          "role": "deleting dtor"
+        },
+        {
+          "rva": "0x47284c",
+          "role": "reverse iterator"
+        },
+        {
+          "rva": "0x521960",
+          "role": "manager ownership branch"
+        },
+        {
+          "rva": "0x522a00",
+          "role": "MESH08route/publication"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_model_lifecycle.cpp",
+        "scripts/native/client455_model_lifecycle.h",
+        "scripts/native/client455_model_loader.cpp",
+        "scripts/native/client455_model_loader.h"
+      ],
+      "option": "RF_CLIENT_455_MODELS",
+      "evidence": [
+        "inventory/client455-models-reference.json",
+        "inventory/client455-models-build.json",
+        "inventory/client455-models-cpu.json",
+        "inventory/client455-models-gpu.json",
+        "inventory/client455-models-link.json",
+        "inventory/client455-models-client.json",
+        "inventory/client455-models-graphics-regression.json",
+        "research/client455-model-pipeline.md"
+      ],
+      "scenarios": [
+        "Byte-exact mesh destructor state/orderedCOM+heaprelease;20interleavedpairs/168zero/five reverse strings preserving otherbytes",
+        "Flags0..7,reverse array/cookiecount,empty/overflow/null allocation,owned/borrowed arrays,count retention;actual modernCRT allocation tracking",
+        "Connected12paired real models/393parts→materials/header/matrix/GPU→local/external parent→bone resolution→scratchfree→publish536then532",
+        "276real HALuploads/117zeroindexparts/59actualtexturebindings,pointer flags/blend identities/counts/selfpointer checked;paired fixtures useexternal names,not fullBN",
+        "Own null-allocation cleanup in3stages/partial flag,reload oldpointer overwrite withoutfree,empty model publication,truncated ownederror;source fullclient result matchescomponent"
+      ],
+      "gaps": [
+        "Normal game manager/file dispatcher/otherformats/full model ABI andtyped consumers stilllegacy;legacy parent/count/mesh268/528/532 differsfrom455272/532/536",
+        "Known800byteprefix ownview only;MemoryOps cannot establish oldbinarySDKheapcompatibility",
+        "Full unchecked AV/debugbreak/OOM/std::bad_alloc/callback exceptions/unwind/logger/device-loss/reset domains open",
+        "BN/skeleton loader/transforms/animation/skinning/455declaration/shaders/draw/gameplay not covered;uploads not full model rendering",
+        "Selected manager ownership branch only,not full vector delete-name/delete-ID/clear implementations;no reference EXE runtime comparison"
       ]
     }
   ],

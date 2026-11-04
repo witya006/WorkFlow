@@ -1,0 +1,45 @@
+{
+  "lab": {
+    "exe_sha256": "62c9412b09666154ff5f2de58d6b934dc366a3d9613c3d03c0c0168b42e0e4d7",
+    "entry_rva": "0x8698",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [
+      {
+        "symbol": "_RF455_DestroyMeshStorage",
+        "rva": "0x2fc1b0"
+      },
+      {
+        "symbol": "_RF455_AllocateMeshArray",
+        "rva": "0x2fbe70"
+      },
+      {
+        "symbol": "_RF455_DeleteMeshStorage",
+        "rva": "0x2fbef0"
+      },
+      {
+        "symbol": "_RF455_ReleaseModelMeshArray",
+        "rva": "0x2fc3c0"
+      },
+      {
+        "symbol": "_RF455_LoadMesh08Model",
+        "rva": "0x2fd620"
+      }
+    ],
+    "crt_provider_symbols": [
+      "?RF455_CrtMeshMemoryOps@@YA?AURF455MeshMemoryOps@@XZ"
+    ],
+    "library_sha256": "b4e13bb4bdf30d521be2dc317085559d2ddf6a02e9360a6f65ce4817977a6a15",
+    "scope": "Own model source pipeline/lifetime available;lab invokes full route;normal file dispatch/manager/renderer/animation not integrated"
+  },
+  "normal": {
+    "exe_sha256": "e8b56ea5380ad37181edc725d23f051c6ddc019c48afd61c010d20ab93f66dd0",
+    "entry_rva": "0x1bc4b0",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "functions": [],
+    "crt_provider_symbols": [],
+    "library_sha256": "b4e13bb4bdf30d521be2dc317085559d2ddf6a02e9360a6f65ce4817977a6a15",
+    "scope": "Own model source pipeline/lifetime available;lab invokes full route;normal file dispatch/manager/renderer/animation not integrated"
+  }
+}

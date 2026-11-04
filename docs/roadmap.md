@@ -91,6 +91,12 @@ dtor/first-fit1024/upload36+64+INDEX16/bind/rebase/MESH08GPUfragment.158336CPU/
 owning publication/destructor/unwind,skeleton/skinning/shaders ещё открыты.
 research/client455-shared-buffers.md. Следующий unit —owning model lifecycle и
 normal dispatch;полныйM6/M6F/M7/M9 не закрыт.
+Следом mesh lifetime иconnectedMESH08route source готовы:9953CPU/10021HALchecks,
+12files/393parts/276realuploads/59texturebindings,12lifetimecases,ownheap/COM/Dmalloc0.
+10bodies equalbothpins. Full-model lab связывает материалы/header/GPU/parents/bones/
+publication/release. Normalmanager/filedispatch,полныйmodel ABI,BN/animation/shaders
+ещё открыты;known800byte view не заменяетстарыйCHARACTEROBJECT. Next:file/manager
+route исогласованныеtypedconsumers. research/client455-model-pipeline.md.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.

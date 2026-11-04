@@ -184,6 +184,18 @@ foreach ($property in $buffers.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_SHARED_BUFFERS=ON'
 $arguments += "-DRF_CLIENT_455_SHARED_BUFFERS_LIBRARY=$bufferLibrary"
+$models = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-models-build.json') -Raw | ConvertFrom-Json
+$modelGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-models-gpu.json') -Raw | ConvertFrom-Json
+$modelLibrary = Join-Path $workspace $models.library
+if ($models.compile_only -or $modelGpu.native.status -ne 'PASS' -or $modelGpu.native.model_parts -ne 393 -or
+    $modelGpu.native.physical_uploaded_parts -ne 276 -or $modelGpu.native.positive_texture_bindings -ne 59 -or
+    (Get-FileHash -LiteralPath $modelLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $models.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-models-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $modelGpu.build_report_sha256) { throw '455 model lifecycle/pipeline proof missing or stale.' }
+foreach ($property in $models.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 model source proof stale.' }
+}
+$arguments += '-DRF_CLIENT_455_MODELS=ON'
+$arguments += "-DRF_CLIENT_455_MODELS_LIBRARY=$modelLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -275,6 +287,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_models.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_models.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shared_buffers.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shared_buffers.py }

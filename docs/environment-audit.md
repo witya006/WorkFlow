@@ -1,5 +1,10 @@
 # Аудит окружения — 04.11.2026
 
+05.11 modelpipeline source:connectedMESH08route/lifetime10021HALchecks вcomponent
+иполномclientlab,393parts/276realuploads/59texturebindings,ownheap/COM/Dmalloc0.
+ТотжеpinnedD3DX9_36/HAL,no new installs;normalgame manager/renderer integration
+ещё открыта. research/client455-model-pipeline.md.
+
 Следующее дополнение05.11:source sharedVB36/VB64/INDEX16 работает втомжеHALD3D9;
 159173nativechecks standalone/fullclient,12files/393parts/276real uploads,
 4syntheticindexed draws,COM/Dmalloc0. Зависимости/установки не менялись.

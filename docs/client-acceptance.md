@@ -147,6 +147,12 @@ SharedGPUsourceunit:159173checks standalone/fullclient,12real files/393parts,
 Это не полный shader/skin/animation/draw coverage:lab POSITIONT/COLOR declaration
 не подменяет455declaration. Normal full model-loader/ownership ещё открыты.
 research/client455-shared-buffers.md;inventory/client455-shared-buffers*.json.
+Connected MESH08 route/lifetime:9953CPU/10021HALchecks standalone/full-client,
+12files/393parts/276realuploads/59texturebindings. Dtor5803byte endstate/order,
+reverse cookiearray,ownedrelease,reload overwrite иbounded nullallocationcleanup
+проверены. Ownheap/COM/Dmalloc0. Это не full manager/filedispatch/BN/animation/
+shaders acceptance;пары скелетов —tooling fixtures,known800byteprefix не полныйABI,
+OOM/unchecked/full exception unwind открыты. research/client455-model-pipeline.md.
 Реальные Character assets/material/texture/render/
 unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 

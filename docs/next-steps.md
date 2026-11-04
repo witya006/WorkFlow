@@ -67,8 +67,9 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Продолжить Character455 сowning model array publication/release/failure unwind
-   иnormal loader dispatch;затем full skeleton/transforms/skinning/shaders.
+1. Продолжить Character455 сactual file/model-manager route иполным455model layout
+   длятипизированных consumers;затем BN/skeleton/transforms/skinning/shaders и
+   normal integration. Начатьxref91F250;full922A00/920FD0 уже cached,не повторять.
    TextureManager иsharedGPU source units уже готовы вописанном ниже domain.
    Framing готов:858real files/12090meshes прошли lossless roundtrip;
    6304native checks/12samples/393parts/1309guarded truncations standalone/full-client.
@@ -98,6 +99,13 @@ R3X checks.703weather regression checks прошли на текущем lab.286
    117indexCount0 skip.4syntheticdraws/rollover,COM/Dmalloc0. Normal full loader
    ещё legacy. research/client455-shared-buffers.md. Не повторять15poolfunctions;
    ownerreset/opaque8192/полные shader/animation/failure domains остаются открыты.
+   Mesh lifetime/connectedMESH08route теперь source:9953CPU/10021HALchecks,
+   12lifetimecases/12files/393parts/276realuploads/59texturebindings. Whole5803byte
+   dtor state/order,reversearraycookie,ownedrelease,pending nullallocationcleanup,
+   reload overwrite ипубликация проверены.10matching bodies. Ownheap/COM/Dmalloc0.
+   Normal game dispatcher покаlegacy;known800byteprefix неполныйC++ABI. Legacy
+   parent/count/mesh offsets268/528/532 против455272/532/536 —rawcast недопустим.
+   research/client455-model-pipeline.md. Не повторять mesh dtor/array reverse.
    Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
    144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
    Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
@@ -147,6 +155,9 @@ SharedGPU:audit_client455_shared_buffers.py;build_client455_shared_buffers.py;
 probe_client455_shared_buffers.py [--gpu];после full build
 verify_client455_shared_buffers.py [--lab];probe_client455_shared_buffers_client.py.
 Текущая GPU regression inventory/client455-shared-buffers-graphics-regression.json.
+Models:audit_client455_models.py;build_client455_models.py;probe_client455_models.py
+[--gpu];fullbuild;verify_client455_models.py [--lab];probe_client455_models_client.py.
+CurrentGPUregression inventory/client455-models-graphics-regression.json.
 Текущая GPU regression inventory/client455-texture-graphics-regression.json:69checks.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle

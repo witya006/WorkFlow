@@ -1,0 +1,179 @@
+{
+  "scope": "Static lifetime/publication contract;source/native implementation evidence separate",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "name": "mesh_ctor",
+          "rva": "0x5214e0",
+          "bytes": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "mesh_dtor",
+          "rva": "0x520fd0",
+          "bytes": 210,
+          "sha256": "84f4b658dfa0e45551f7bab88ced32fb8abfbab5250f4e81de8475d119e0ecda"
+        },
+        {
+          "name": "tables_dtor",
+          "rva": "0x51c3c0",
+          "bytes": 81,
+          "sha256": "4ee3316fe75553b59bb905099b8d93abd430ab57309e0628e572e3eebb8bd0b9"
+        },
+        {
+          "name": "strings_dtor",
+          "rva": "0x520f20",
+          "bytes": 168,
+          "sha256": "0a839a63df7510e212d06e98aa40ae4b301500b29ed980f043a2e64f762ed629"
+        },
+        {
+          "name": "deleting_dtor",
+          "rva": "0x521480",
+          "bytes": 85,
+          "sha256": "a4bf9cf901b7052db5ddac04733abead6e686568f7379f43e038ed5a205656f9"
+        },
+        {
+          "name": "array_dtor_iterator",
+          "rva": "0x47284c",
+          "bytes": 99,
+          "sha256": "3187a77ea0a1ceb4fda6cdf03fe3cd72d0ea496b674feb5d0a8f6eaff3434480"
+        },
+        {
+          "name": "manager_delete_name",
+          "rva": "0x521960",
+          "bytes": 231,
+          "sha256": "c9f054e51fbbf103adb6712510702ae2464e7a64676c353e1d2c8a5a9d791424"
+        },
+        {
+          "name": "manager_delete_id",
+          "rva": "0x521a50",
+          "bytes": 181,
+          "sha256": "86649c33893bdd2aa16beb690c820ee32734db098fb50f6bfc63b26c09547048"
+        },
+        {
+          "name": "manager_clear",
+          "rva": "0x521bc0",
+          "bytes": 151,
+          "sha256": "704f914649630e1aeb3dab3132fc1ef66f5a6d738c63f4d8f511158f3fa24c40"
+        },
+        {
+          "name": "mesh08_loader",
+          "rva": "0x522a00",
+          "bytes": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        }
+      ],
+      "free_thunks": [
+        {
+          "rva": "0x4745ba",
+          "target_rva": "0x471e91",
+          "bytes": "e9d2d8ffff"
+        },
+        {
+          "rva": "0x471e91",
+          "target_rva": "0x473871",
+          "bytes": "e9db190000"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "name": "mesh_ctor",
+          "rva": "0x5214e0",
+          "bytes": 450,
+          "sha256": "d275a6a979ec9e7a9bb58d8411508fedc75fe07b1556fb1fe8f8ba395ff19d0f"
+        },
+        {
+          "name": "mesh_dtor",
+          "rva": "0x520fd0",
+          "bytes": 210,
+          "sha256": "84f4b658dfa0e45551f7bab88ced32fb8abfbab5250f4e81de8475d119e0ecda"
+        },
+        {
+          "name": "tables_dtor",
+          "rva": "0x51c3c0",
+          "bytes": 81,
+          "sha256": "4ee3316fe75553b59bb905099b8d93abd430ab57309e0628e572e3eebb8bd0b9"
+        },
+        {
+          "name": "strings_dtor",
+          "rva": "0x520f20",
+          "bytes": 168,
+          "sha256": "0a839a63df7510e212d06e98aa40ae4b301500b29ed980f043a2e64f762ed629"
+        },
+        {
+          "name": "deleting_dtor",
+          "rva": "0x521480",
+          "bytes": 85,
+          "sha256": "a4bf9cf901b7052db5ddac04733abead6e686568f7379f43e038ed5a205656f9"
+        },
+        {
+          "name": "array_dtor_iterator",
+          "rva": "0x47284c",
+          "bytes": 99,
+          "sha256": "3187a77ea0a1ceb4fda6cdf03fe3cd72d0ea496b674feb5d0a8f6eaff3434480"
+        },
+        {
+          "name": "manager_delete_name",
+          "rva": "0x521960",
+          "bytes": 231,
+          "sha256": "c9f054e51fbbf103adb6712510702ae2464e7a64676c353e1d2c8a5a9d791424"
+        },
+        {
+          "name": "manager_delete_id",
+          "rva": "0x521a50",
+          "bytes": 181,
+          "sha256": "86649c33893bdd2aa16beb690c820ee32734db098fb50f6bfc63b26c09547048"
+        },
+        {
+          "name": "manager_clear",
+          "rva": "0x521bc0",
+          "bytes": 151,
+          "sha256": "704f914649630e1aeb3dab3132fc1ef66f5a6d738c63f4d8f511158f3fa24c40"
+        },
+        {
+          "name": "mesh08_loader",
+          "rva": "0x522a00",
+          "bytes": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        }
+      ],
+      "free_thunks": [
+        {
+          "rva": "0x4745ba",
+          "target_rva": "0x471e91",
+          "bytes": "e9d2d8ffff"
+        },
+        {
+          "rva": "0x471e91",
+          "target_rva": "0x473871",
+          "bytes": "e9db190000"
+        }
+      ]
+    }
+  ],
+  "confirmed": [
+    "5803byte mesh destructor:Release4486/4490 without nulling;free+null5095/5099/4506;tables5595 thenstrings5163",
+    "Tables:20interleaved pointer pairs(+4i,+80+4i),free+null each,then whole168byteszero",
+    "Strings:reverse offsets132,96,68,32,4;capacity>=16 free data pointer;cap15/len0/firstbyte0 only,other bytes retained",
+    "Array allocation DWORDcookie+5803count;vector dtor runs last tofirst;flags2array/flags1free;free basecookie forarray;cookie count authoritative",
+    "Manager delete paths guard model ownsDWORD260 andnonnullmeshptr536;destroyarray/freecookie/clear536,thenfreemodel;count532 not reset",
+    "Mesh08valid flow:construct all\u2192materials/header/GPUperpart\u2192copybone scratch\u2192clearparentflag\u2192local thenexternal binding\u2192bone resolution\u2192freebone scratch\u2192publish536then532",
+    "Existing array is not freed by922A00 before overwriting model fields;caller owns repeated-load policy;special model flag796 onlyset"
+  ],
+  "limits": [
+    "Raw model view knownminimum800bytes is not fullObjectData ABI",
+    "Own checked parser/errors/nullallocation cleanup differ fromunchecked AV/debugbreak/OOM/exception unwind",
+    "MemoryOps owns modern allocations;do not free unrelated binarySDK allocations with modern CRT;old heap ABI not certified",
+    "Normal model-manager/file dispatcher/BN/skeleton/animation/shaders/full renderer lifecycle still open",
+    "No input EXE execution;copied IDB50804ce1closed/save;rawartifacts/character-model455"
+  ]
+}

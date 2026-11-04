@@ -191,8 +191,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_SHARED_BUFFERS)
 #include "client_shared_buffers_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_MODELS)
+#include "client_models_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_MODELS)
+    if (!std::strcmp(command,"--rf-models-scenario")) ExitProcess(modelScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_SHARED_BUFFERS)
     if (!std::strcmp(command,"--rf-shared-buffers-scenario")) ExitProcess(sharedBufferScenarioProbe());
 #endif

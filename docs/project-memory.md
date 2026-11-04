@@ -63,11 +63,11 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-716268e192fe2c56b27e2617ea827b3148a84a6fb4e0c00dcedd44fd5cba3a72.
-Snapshot character455-shared-buffers;предыдущие revisions сохранены. Обычный EXE
+e8b56ea5380ad37181edc725d23f051c6ddc019c48afd61c010d20ab93f66dd0.
+Snapshot character455-model-pipeline;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA ea3b3dc91b372a75737717df79c59ef42862063982301bf9d67a65873fef1ca5,
-size4769792,entryRVA0x85D5; snapshot work/b9/ea3b3dc9/client001/RF_Online.bin.
+Own lab EXE SHA 62c9412b09666154ff5f2de58d6b934dc366a3d9613c3d03c0c0168b42e0e4d7,
+size4843520,entryRVA0x8698; snapshot work/m9/62c9412b/client001/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
@@ -126,6 +126,24 @@ SetDevice920590writesborroweddevices. Renderer reset/opaque8192/unsafeOOMopen.
 research/client455-shared-buffers.md;inventory/client455-shared-buffers*.json.
 Owned10003798 иb58f27c1closed/save. Все прежние scoped regressions +texture8440
 иPlatform01/device69checks прошли наcurrentlab;frames сохранены.
+Затем source mesh dtor/array lifetime иconnected MESH08route готовы:9953CPU/
+10021HALchecks standalone/full-client,12lifetimecases/12files/393parts,
+276realGPUuploads/59texturebindings.10bodies equalbothpins. Dtor920FD0→tables
+91C3C0 (20interleavedpairs→168zero)→strings920F20(reverse5fields→cap15/len0/first0).
+COM4486/4490 не обнуляются;free+null5095/5099/4506. ArraycookieDWORDcount,
+reverse destruction,flags2array/1free. Ownedmodel260 guards536release,count532
+retained. Default realMTmalloc/free,MemoryOps для соответствующегоowner;oldheapABI
+не смешивать. Source loader usesmaterials/header/GPU→parents/bones→scratchfree→
+publish536then532. ExistingarrayoverwrittenWITHOUTfree,caller reloadpolicyneeded.
+Own bounded/nullalloc cleanup отличаетсяотuncheckedref failures;full unwindopen.
+Knownmodelprefix800 —ownminimumview,неfullABI. Legacy CHARACTEROBJECT parent268/
+count528/mesh532 отличаетсяот455272/532/536;неcast/flipnormaldispatcherпреждевременно.
+Normalmanager/filedispatch/BN/animation/shaders ещё открыты. Next:actualfile/manager
+route иполный455model layout/typedconsumers,затемnormal integration. Начатьxref91F250;
+920FD0/921480/3managerdelete bodies уже cached/pinned,не повторять reverse.
+research/client455-model-pipeline.md;inventory/client455-models*.json.
+Owned50804ce1closed/save;allprevious scopedregressions inclshared159173,
+texture8440 иPlatform01/device69 прошли,currentframesunchanged. Ownheap/COM/Dmalloc0.
 Configured MCP probe переведён наcopied client455IDB;66tools,10functionpage,
 decompile/close2fa6d05a проверены. Restricted workercode2 устраняется тойже
 escalation,непереустановкой. Серверныйsmoke input больше не используется.
