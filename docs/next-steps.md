@@ -13,8 +13,9 @@ DWORD. Все 284 modern COFF x86 /MT;13 direct DLL providers найдены, ru
 Pure legacy OFF branches, canonical optimized Release, весь Character ABI ещё открыты.
 Документ research/client-first-build.md; inventory/client-first-build.json.
 
-Сохранены 11 compiler-only patches и 7 отдельных selectable behavior files:
-DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455 и x87 math.
+Сохранены 11 compiler-only patches и16 selectable behavior files:
+DrawCharacter scale/scroll, EffectLog455, login success->lobby, helper loader455,
+x87 math и двухслойная погода (9 files).
 Их инструкции сверены
 по обоим pinned PE, исходные ветки сохранены. _DEVELOPER_ и /FORCE не включены;
 CheckFiles/SendLog не заменены пустыми functions. По исследованным reference callers
@@ -31,18 +32,24 @@ Loader455 VA0x90BBF0 найден, весь body/инструкции свере
 Две math функции совпали с инструкциями 455 на COFF и в linked normal/lab PE;
 338 own native checks в12 FP modes и3 COFF parser tests. FP control lab0x027F.
 Игровые DLL не загружались. Обычная ревизия собрана:2 436 608bytes,
-entryRVA0x1BA990, snapshot math455-release. research/client455-x87-and-weather.md.
+Последующий weather port:65real R3X +4fixtures,703checks,37actual CPU lifecycle
+checks для двух one-element particles. Настоящий LoadR3X применён для58real files
+без lens flag;7lens samples проверены shared production reader без GPU.
+Обычная версия:2 438 144bytes,entryRVA0x1BAF50,snapshot weather455-cpu.
+285modern objects /MT. research/client455-weather-source.md.
 Обычный запуск игры/LoadLevel/GPU/network НЕ выполнен; M5 пока не закрыт.
 
-1. Перенести полный weather/helper path. Consumer найден:0x8CAD00/RVA0x4CAD00,
-   два слоя weather, BSP+744 owner, mask4 останавливает type1 particles внутри bbox.
-   Сначала восстановить реальный 455 config parser/state/lifecycle обоих слоёв,
-   затем source integration/render. Не копировать 455 offsets в старый CBsp.
-2. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
+1. Аудировать реальные particle/entity dependencies погодных samples и формат BSP,
+   чтобы перейти к normal map runtime. Двухслойные config/load/release/update/draw,
+   helper binding/interior/night уже перенесены и CPU-проверены; не повторять их
+   вместо проверки реальных assets/GPU. Полные particle455 options/curves ещё открыты.
+2. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
+   environment. Setter/rate/basic API есть, network/lighting не объявлены готовыми.
+3. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
    инструкционно совпадают с 455; окружающая среда игры/GPU ещё не проверена.
-3. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
+4. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
    malformed paths/locale/OOM пока не закрыты. Не исправлять quirks по догадке.
-4. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
+5. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
    coverage, M7 — закрепление сборки, затем M9. Не закрывать цель по одному EXE.
 
 Известные дальнейшие gaps: D3D8 база против D3D9 reference; legacy EffectList9grades
@@ -56,6 +63,7 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 Обычная повторная сборка: scripts/probe_client_character_build.ps1.
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
 Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
+Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
 Lab использует отдельные build-helper-lab/logs/reports, нормальный target не запускается.
 Чистая: тот же script с -CleanRebuild. Он проверяет хеши dependencies и behavior ledger.
 Для нового дерева: prepare_client_build.py -> apply_client_port_patches.py; затем
@@ -68,9 +76,12 @@ Math: build_client455_x87_math.py -> apply_client_x87_math455.py; driver пос�
 Behavior branches: apply_client_draw455.py / apply_client_lobby455.py /
 apply_client_helper455.py / apply_client_x87_math455.py -> prepare_client_build.py
 -> diagnostic build -> verify_client_draw455.py / verify_client_coff.py.
+Weather selection: audit_client_weather455.py -> apply_client_weather455.py ->
+prepare_client_build.py; driver выбирает RF_CLIENT_455_WEATHER=ON.
 
 audit_client_executable.py --label NAME сохраняет immutable snapshot нормальной сборки;
-initial/clean/helper455/helper-x87/math455-release уже заняты, перезапись другой сборкой запрещена. Для новой
+initial/clean/helper455/helper-x87/math455-release/weather455/weather455-cpu уже заняты;
+перезапись другой сборкой запрещена. Для новой
 ревизии выбрать новое короткое имя. Lab entry таким snapshot не принимается.
 Все Python scripts запускать через scripts/Invoke-Python.ps1.
 

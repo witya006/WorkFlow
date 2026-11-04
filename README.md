@@ -16,9 +16,10 @@
 клиент 455. Результат/границы: research/client-first-build.md.
 M5 в работе: найден loader455, перенесены три отличия; own lab entry полного проекта
 загрузил 140 файлов/97 543 записи и проверил CPU coordinate/bbox использование.
-Две math функции уже совпадают с инструкциями455, weather/BSP consumer найден.
-Обычная загрузка карты и перенос двухслойной погоды ещё открыты:
-research/client455-x87-and-weather.md, inventory/client-features.json.
+Две math функции совпадают с инструкциями455; двухслойная погода и helper binding
+перенесены с CPU проверкой65real R3X и actual particle lifecycle. Обычная загрузка
+карты, GPU/полные particles и clock integration ещё открыты:
+research/client455-weather-source.md, inventory/client-features.json.
 
 ## Структура
 

@@ -83,8 +83,7 @@ ClearVariable0x8F66B0 и ReleaseEntities0x8F9940 обнуляют owner.
 
 ## Что остаётся
 
-Старая source weather система имеет один particle и не содержит helper binding.
-Нельзя просто подставить 455 offsets в старый CBsp: layout другой. Следующий перенос
-должен включать два слоя environment config/state/load/release/render и interior query,
-с проверкой настоящего 455 parser и всех ссылок. Нормальный LoadLevel path ещё не
-проверен, поэтому M5 остаётся в работе. M9 не достигнут; серверы не затрагивались.
+Последующее продолжение перенесло два слоя config/state/load/release/update/draw,
+helper binding/interior и night flag в own source layout. 65real R3X и CPU lifecycle
+проверены; детали/current artifacts: client455-weather-source.md. GPU/полные particles,
+normal LoadLevel и точное clock окружение ещё не проверены. M5/M9 остаются открыты.

@@ -94,8 +94,8 @@
     {
       "id": "WORLD-HELPER-003",
       "description": "Level EXT.spt load, helper-owner binding and confirmed two-layer weather/interior consumer",
-      "status": "described",
-      "verification": "static caller and weather consumer confirmed in both pinned PE; source integration remains open",
+      "status": "implemented",
+      "verification": "partial; source owner binding/frame hook and two-layer CPU update/lifecycle tested in full-project lab; normal LoadLevel/GPU not run",
       "reference": {
         "load_va": "0x8eaa88",
         "load_rva": "0x4eaa88",
@@ -106,19 +106,24 @@
         "consumer_va": "0x8cad00",
         "consumer_rva": "0x4cad00"
       },
-      "implementation": "work/client-build/source/R3Engine/2ndclass/level.cpp",
+      "implementation": [
+        "scripts/native/client455_weather.cpp",
+        "work/client-build/source/R3Engine/2ndclass/level.cpp"
+      ],
       "evidence": [
         "research/client-helper455-runtime.md",
         "inventory/client455-weather-helper.json",
-        "research/client455-x87-and-weather.md"
+        "research/client455-x87-and-weather.md",
+        "inventory/client455-weather-runtime.json",
+        "research/client455-weather-source.md"
       ],
       "scenarios": [
         "normal LoadLevel constructs EXT.spt filename"
       ],
       "gaps": [
-        "port complete two-layer environment config/state/load/release/render",
-        "restore helper-owner binding and interior state control",
-        "normal LoadLevel runtime"
+        "full real particle/entity dependencies and GPU behavior",
+        "normal LoadLevel runtime",
+        "clock/server-time caller integration and full lighting"
       ]
     },
     {
@@ -155,6 +160,103 @@
       "gaps": [
         "normal game startup x87 environment",
         "other math functions and binary Character SDK internals remain outside this feature"
+      ]
+    },
+    {
+      "id": "DATA-R3X-002",
+      "description": "Two-layer environment fields in version1.1 R3X and text material tokens",
+      "status": "implemented",
+      "verification": "partial; shared production reader on65pinned real files, full LoadR3X application on58real non-lens files;7lens files remain reader-only",
+      "reference": [
+        {
+          "va": "0x90aed0",
+          "rva": "0x50aed0",
+          "role": "R3X reader"
+        },
+        {
+          "va": "0x90a4d0",
+          "rva": "0x50a4d0",
+          "role": "text material"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_weather_format.h",
+        "scripts/native/client455_weather.cpp",
+        "work/client-build/source/R3Engine/1stclass/r3material.cpp"
+      ],
+      "option": "RF_CLIENT_455_WEATHER",
+      "evidence": [
+        "inventory/client455-weather-helper.json",
+        "inventory/client455-weather-runtime.json",
+        "research/client455-weather-source.md"
+      ],
+      "scenarios": [
+        "1024/1032 byte bodies with same float1.1 version",
+        "name/id offsets256/384 and392/520, scene flags524",
+        "real active second layer",
+        "text key case and preserved filename case",
+        "wrong version, valid short bodies, env flag off and trailing bytes"
+      ],
+      "gaps": [
+        "full lens/fog2/weather/haze rendering and scene fields",
+        "archive-aware fopen path0x8E7680",
+        "unsafe short header/unbounded strings and complete malformed input domain"
+      ]
+    },
+    {
+      "id": "WORLD-WEATHER-004",
+      "description": "Two environment layers: lifecycle, separate frame update/draw, interior/night state control",
+      "status": "implemented",
+      "verification": "partial;37native checks on actual CParticle CPU load/init/Loop/state/release and compiled production source integration; draw not executed",
+      "reference": [
+        {
+          "va": "0x8f8c90",
+          "rva": "0x4f8c90",
+          "role": "load"
+        },
+        {
+          "va": "0x8f9ad0",
+          "rva": "0x4f9ad0",
+          "role": "release"
+        },
+        {
+          "va": "0x8cad00",
+          "rva": "0x4cad00",
+          "role": "update"
+        },
+        {
+          "va": "0x8cb0b0",
+          "rva": "0x4cb0b0",
+          "role": "draw"
+        },
+        {
+          "va": "0x8e7910",
+          "rva": "0x4e7910",
+          "role": "frame"
+        }
+      ],
+      "implementation": "scripts/native/client455_weather.cpp",
+      "option": "RF_CLIENT_455_WEATHER",
+      "evidence": [
+        "inventory/client455-weather-helper.json",
+        "inventory/client455-weather-runtime.json",
+        "research/client455-weather-source.md"
+      ],
+      "scenarios": [
+        "two distinct particles loaded/released",
+        "interior stop and restart outside",
+        "camera vs offset creation origin",
+        "night .24/.83 double thresholds and adjacent float values",
+        "first-layer and enable gates",
+        "fixed type2 bbox",
+        "mutable day rate/basic HMS API",
+        "Dmalloc balance after CBsp/CAlpha destruction"
+      ],
+      "gaps": [
+        "full particle455 implementation/curves/options and GPU parity",
+        "unsafe asset-failure edges",
+        "clock numeric/FPU equivalence and client-side time caller4550x7E3E55",
+        "normal map runtime"
       ]
     }
   ],

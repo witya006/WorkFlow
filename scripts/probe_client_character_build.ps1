@@ -45,6 +45,8 @@ if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_LOBBY_TR
 $arguments += '-DRF_CLIENT_455_LOBBY_TRANSITION=ON'
 if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_HELPER_LOADER' })) { throw '455 helper-loader evidence/selection is missing.' }
 $arguments += '-DRF_CLIENT_455_HELPER_LOADER=ON'
+if (-not ($behavior | Where-Object { $_.build_option -eq 'RF_CLIENT_455_WEATHER' })) { throw '455 weather source selection is missing.' }
+$arguments += '-DRF_CLIENT_455_WEATHER=ON'
 $math = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-x87-math.json') -Raw | ConvertFrom-Json
 $mathLibrary = Join-Path $workspace $math.library
 if ((Get-FileHash -LiteralPath $mathLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $math.library_sha256 -or

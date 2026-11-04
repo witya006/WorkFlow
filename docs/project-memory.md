@@ -26,7 +26,9 @@ M8 не требуется. Компиляция, запуск и частичн
   загрузил 140 реальных файлов/97 543 записи, использовал ненулевые координаты/bbox;
   12 fixtures/2 546 931 checks и4 import-parser tests прошли. Две x87 math функции
   инструкционно совпали с455 в library и linked PE;338 native checks/12FP modes,
-  3 COFF parser tests. BSP consumer найден (двухслойная погода), но пока не перенесён.
+  3 COFF parser tests. Двухслойная погода перенесена: R3X/text config, load/release,
+  CPU update отдельно отdraw, helper owner/interior и night.65real R3X +4fixtures /
+  703checks,37native lifecycle checks.58real R3X применены реальной LoadR3X без lens/GPU.
   Обычный LoadLevel/FPU initialization не проверены; M5 пока не закрыт.
 
 ## Артефакт первой сборки
@@ -41,13 +43,14 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 436 608bytes,entryRVA0x1BA990,SHA256
-8a728fcf95c2ea27989a80faba4680d0ae74febe462dbfbdd03c8f73b4725593.
-Snapshot math455-release;предыдущие helper455/helper-x87 сохранены. Обычный EXE
-не запускался,284 objects /MT проверены.
-Own lab EXE SHAcf5110dd3dbbdbbffa21c91fcd46f2c8b0f5f3bc8cfb255bdfb8c4591a165f44,
-entryRVA0x7D97,work/client-helper-lab/revisions/cf5110dd3dbbdbbf/RF_Online.bin. Этот вариант
-исполнялся с --rf-helper-probe. Game DLLs delayed и GetModuleHandle подтвердил отсутствие
+2 438 144bytes,entryRVA0x1BAF50,SHA256
+45690c220e37be7e34d234ffdd90f11d31703271e1fd12d37567fb6916c67542.
+Snapshot weather455-cpu;предыдущие revisions сохранены. Обычный EXE
+не запускался,285objects /MT проверены (180client +59engine +46JPEG).
+Own lab EXE SHAe9ae5fa895742de2ff49b2b2c7f52c9748e7717d9ff21a623dc7d13bcdf3f361,
+entryRVA0x7DBF,work/client-helper-lab/revisions/e9ae5fa895742de2/RF_Online.bin. Этот вариант
+исполнялся с --rf-helper-probe /--rf-weather-read /--rf-weather-scenario.
+Game DLLs delayed и GetModuleHandle подтвердил отсутствие
 их загрузки; normal GPU/network/startup/teardown не выполнялись.
 
 ## Эталон и инструменты
@@ -66,11 +69,11 @@ GoMMO stdio audit работает; это не разрешение Install/pub
 ## Сборка и источники доказательств
 
 492 копии client/R3Engine под work/client-build/source. 11 byte-preserving compiler
-patches: inventory/client-source-patches.json; не менять кодировки. Ещё7 behavior
-files (draw2/logger1/login1/helper2/math1) имеют отдельный ledger client-behavior-patches.json.
+patches: inventory/client-source-patches.json; не менять кодировки. Ещё16behavior
+files (draw2/logger1/login1/helper2/math1/weather9) имеют отдельный ledger client-behavior-patches.json.
 Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
 CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
-X87_MATH по умолчанию
+X87_MATH /WEATHER по умолчанию
 OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches; заглушек
 CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
 - Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
@@ -117,10 +120,18 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M5: восстановить двухслойную погоду/config/state/load/release/render и interior path.
-Consumer0x8CAD00/RVA0x4CAD00 читает ownerBSP+744; mask4+camera bbox останавливает
-type1 weather particle. В старом source один слой и нет owner binding. Сначала
-исследовать parser455 и lifecycle, не подставлять offsets455 в старый layout.
+M5: следующий шаг — реальные particle/entity dependencies и BSP parser для normal
+map runtime, затем clock/client Time/HMS integration caller4550x7E3E55.
+Двухслойная weather source plumbing уже есть под RF_CLIENT_455_WEATHER, own arrays
+не подменяются offsets455. Consumer0x8CAD00/RVA0x4CAD00, R3X reader0x90AED0/RVA0x50AED0:
+версия1.1 прежняя, payload1032 vslegacy1024, name2+392/id2+520/sceneFlags+524.
+65real files размерами1028/1036,7lens толькоreader;4fixtures,37real CPU lifecycle
+checks и703total. CAlpha4buffers fixture исправлена после живого CBsp, allocator не менялся.
+Clock normalized dayFraction/HMS, mutable initial rate3.0, numeric equivalence/lighting/
+client time caller пока не закрыты. Particle455 curves/options, VFS wrapper0x8E7680,
+full fog2/lens/scene weather и unsafe failure domain тоже открыты.
+Source failure quirks и unchecked short header сохранены, не улучшать по догадке.
+Research client455-weather-source.md; новый module scripts/native/client455_weather.cpp.
 Math instruction parity выполнена для двух kernels; normal LoadLevel/FPU init пока нет.
 23 из140 samples имеют имя EXT.spt (48records), не все автоматически выбраны картой.
 Lab FP control0x027F,max roundtrip error .000967025756835938,interior probes внутри.

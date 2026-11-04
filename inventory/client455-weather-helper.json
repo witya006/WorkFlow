@@ -59,6 +59,60 @@
           "meaning": "apply particle state"
         },
         {
+          "va": "0x90af71",
+          "rva": "0x50af71",
+          "bytes": "6808040000",
+          "meaning": "read 1032-byte R3X payload"
+        },
+        {
+          "va": "0xb39d8c",
+          "rva": "0x739d8c",
+          "bytes": "2a454e5649524f4e4d454e543200",
+          "meaning": "text second layer name"
+        },
+        {
+          "va": "0xb39d78",
+          "rva": "0x739d78",
+          "bytes": "2a454e5649524f4e4d454e545f49443200",
+          "meaning": "text second layer id"
+        },
+        {
+          "va": "0x90b0da",
+          "rva": "0x50b0da",
+          "bytes": "a3407f1501",
+          "meaning": "R3X first environment id destination"
+        },
+        {
+          "va": "0x90b0ff",
+          "rva": "0x50b0ff",
+          "bytes": "890d447f1501",
+          "meaning": "R3X second environment id destination"
+        },
+        {
+          "va": "0x8dbc13",
+          "rva": "0x4dbc13",
+          "bytes": "818dc804000000000100",
+          "meaning": "night particle attribute0x10000"
+        },
+        {
+          "va": "0xbf7348",
+          "rva": "0x7f7348",
+          "bytes": "00004040",
+          "meaning": "initial day clock acceleration"
+        },
+        {
+          "va": "0x8b12c0",
+          "rva": "0x4b12c0",
+          "bytes": "d9442404d91d4873bf00c3",
+          "meaning": "clock rate setter preserves mutable initial rate"
+        },
+        {
+          "va": "0x8f9b6c",
+          "rva": "0x4f9b6c",
+          "bytes": "bd02000000",
+          "meaning": "release both environment layers"
+        },
+        {
           "va": "0xb373b8",
           "rva": "0x7373b8",
           "bytes": "b81e85eb51b8ce3f",
@@ -69,6 +123,71 @@
           "rva": "0x7373b0",
           "bytes": "8fc2f5285c8fea3f",
           "meaning": "strict upper time threshold"
+        }
+      ],
+      "related_functions": [
+        {
+          "name": "material_text",
+          "va": "0x90a4d0",
+          "rva": "0x50a4d0",
+          "size": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        },
+        {
+          "name": "material_r3x",
+          "va": "0x90aed0",
+          "rva": "0x50aed0",
+          "size": 651,
+          "sha256": "ae026d4137f610b37f636856e5bf9801aa0da855d21d98f215dcc9f6e59c7463"
+        },
+        {
+          "name": "environment_load",
+          "va": "0x8f8c90",
+          "rva": "0x4f8c90",
+          "size": 391,
+          "sha256": "9603c0213c409303aeebf073f8a7fe4c114b9cb4488296acb83316f928d46805"
+        },
+        {
+          "name": "level_release",
+          "va": "0x8f9ad0",
+          "rva": "0x4f9ad0",
+          "size": 330,
+          "sha256": "353511c2ec74feba202f55ae86b68bd0091544e7f3f6c2912198c4558a9aa516"
+        },
+        {
+          "name": "weather_draw",
+          "va": "0x8cb0b0",
+          "rva": "0x4cb0b0",
+          "size": 147,
+          "sha256": "d21da5a36736d98de81f22ae62e9a7911feb1835165b8348d3dcd998895556ee"
+        },
+        {
+          "name": "set_clock_hms",
+          "va": "0x8b12e0",
+          "rva": "0x4b12e0",
+          "size": 204,
+          "sha256": "6ef22c2e5719fbbf1cb951525de78a1f30bbbea9cd56877f9298d696cc74c649"
+        },
+        {
+          "name": "clock_hms",
+          "va": "0x8b13b0",
+          "rva": "0x4b13b0",
+          "size": 117,
+          "sha256": "de569bba252a44668d5050c69c29cd4667345a15a159e4ebc78ba975a22255b3"
+        },
+        {
+          "name": "set_clock_fraction",
+          "va": "0x8b1440",
+          "rva": "0x4b1440",
+          "size": 85,
+          "sha256": "62d93341b2c1226978d7376758f217412c9175084e69829995efdfccb30be380"
+        },
+        {
+          "name": "level_frame",
+          "va": "0x8e7910",
+          "rva": "0x4e7910",
+          "size": 252,
+          "sha256": "e22b878962d81568336bfef3c12b62ab616888c0122c912ad3c601054edd9bbb"
         }
       ]
     },
@@ -131,6 +250,60 @@
           "meaning": "apply particle state"
         },
         {
+          "va": "0x90af71",
+          "rva": "0x50af71",
+          "bytes": "6808040000",
+          "meaning": "read 1032-byte R3X payload"
+        },
+        {
+          "va": "0xb39d8c",
+          "rva": "0x739d8c",
+          "bytes": "2a454e5649524f4e4d454e543200",
+          "meaning": "text second layer name"
+        },
+        {
+          "va": "0xb39d78",
+          "rva": "0x739d78",
+          "bytes": "2a454e5649524f4e4d454e545f49443200",
+          "meaning": "text second layer id"
+        },
+        {
+          "va": "0x90b0da",
+          "rva": "0x50b0da",
+          "bytes": "a3407f1501",
+          "meaning": "R3X first environment id destination"
+        },
+        {
+          "va": "0x90b0ff",
+          "rva": "0x50b0ff",
+          "bytes": "890d447f1501",
+          "meaning": "R3X second environment id destination"
+        },
+        {
+          "va": "0x8dbc13",
+          "rva": "0x4dbc13",
+          "bytes": "818dc804000000000100",
+          "meaning": "night particle attribute0x10000"
+        },
+        {
+          "va": "0xbf7348",
+          "rva": "0x7f7348",
+          "bytes": "00004040",
+          "meaning": "initial day clock acceleration"
+        },
+        {
+          "va": "0x8b12c0",
+          "rva": "0x4b12c0",
+          "bytes": "d9442404d91d4873bf00c3",
+          "meaning": "clock rate setter preserves mutable initial rate"
+        },
+        {
+          "va": "0x8f9b6c",
+          "rva": "0x4f9b6c",
+          "bytes": "bd02000000",
+          "meaning": "release both environment layers"
+        },
+        {
           "va": "0xb373b8",
           "rva": "0x7373b8",
           "bytes": "b81e85eb51b8ce3f",
@@ -141,6 +314,71 @@
           "rva": "0x7373b0",
           "bytes": "8fc2f5285c8fea3f",
           "meaning": "strict upper time threshold"
+        }
+      ],
+      "related_functions": [
+        {
+          "name": "material_text",
+          "va": "0x90a4d0",
+          "rva": "0x50a4d0",
+          "size": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        },
+        {
+          "name": "material_r3x",
+          "va": "0x90aed0",
+          "rva": "0x50aed0",
+          "size": 651,
+          "sha256": "ae026d4137f610b37f636856e5bf9801aa0da855d21d98f215dcc9f6e59c7463"
+        },
+        {
+          "name": "environment_load",
+          "va": "0x8f8c90",
+          "rva": "0x4f8c90",
+          "size": 391,
+          "sha256": "9603c0213c409303aeebf073f8a7fe4c114b9cb4488296acb83316f928d46805"
+        },
+        {
+          "name": "level_release",
+          "va": "0x8f9ad0",
+          "rva": "0x4f9ad0",
+          "size": 330,
+          "sha256": "353511c2ec74feba202f55ae86b68bd0091544e7f3f6c2912198c4558a9aa516"
+        },
+        {
+          "name": "weather_draw",
+          "va": "0x8cb0b0",
+          "rva": "0x4cb0b0",
+          "size": 147,
+          "sha256": "d21da5a36736d98de81f22ae62e9a7911feb1835165b8348d3dcd998895556ee"
+        },
+        {
+          "name": "set_clock_hms",
+          "va": "0x8b12e0",
+          "rva": "0x4b12e0",
+          "size": 204,
+          "sha256": "6ef22c2e5719fbbf1cb951525de78a1f30bbbea9cd56877f9298d696cc74c649"
+        },
+        {
+          "name": "clock_hms",
+          "va": "0x8b13b0",
+          "rva": "0x4b13b0",
+          "size": 117,
+          "sha256": "de569bba252a44668d5050c69c29cd4667345a15a159e4ebc78ba975a22255b3"
+        },
+        {
+          "name": "set_clock_fraction",
+          "va": "0x8b1440",
+          "rva": "0x4b1440",
+          "size": 85,
+          "sha256": "62d93341b2c1226978d7376758f217412c9175084e69829995efdfccb30be380"
+        },
+        {
+          "name": "level_frame",
+          "va": "0x8e7910",
+          "rva": "0x4e7910",
+          "size": 252,
+          "sha256": "e22b878962d81568336bfef3c12b62ab616888c0122c912ad3c601054edd9bbb"
         }
       ]
     }
@@ -160,10 +398,24 @@
     "particle_type_2": "retains fixed world bbox stop/restart rule",
     "lifecycle": "ClearVariable0x8F66B0 and ReleaseEntities0x8F9940 clear owner; level load0x8EAA93 binds owner"
   },
+  "format": {
+    "version": 1.1,
+    "reader_payload_bytes": 1032,
+    "legacy_payload_bytes": 1024,
+    "environment_name_offsets": [
+      256,
+      392
+    ],
+    "environment_id_offsets": [
+      384,
+      520
+    ],
+    "scene_flags_offset": 524
+  },
+  "clock": "normalized day fraction: HMS setter/getter use 86400 seconds, mutable speed initialized3.0. Full lighting/time synchronization remains open.",
   "unknown": [
-    "meaning of time getter0x8B1430 beyond returning float at0x1154DEC",
-    "complete two-layer environment configuration/parser/lifecycle and particle changes",
+    "complete particle455 behavior, graphics and clock numeric/environment equivalence",
     "all other possible consumers and full normal map runtime"
   ],
-  "implementation": "Not yet ported; legacy source has one environment particle and no helper-owner binding. Do not copy 455 object offsets into the old CBsp layout."
+  "implementation": "Source branch RF_CLIENT_455_WEATHER ports two layers, R3X/text fields, load/release/update/draw split, helper owner/interior and night flag. CPU native validation is separate; full weather/GPU/time acceptance remains open."
 }

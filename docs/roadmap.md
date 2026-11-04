@@ -36,9 +36,11 @@ M5 в работе: loader455 VA0x90BBF0/RVA0x50BBF0 найден; count reset, 
 140 файлов/97 543 записи, использовал ненулевые координаты и bbox. 12 fixtures /
 2 546 931 checks прошли;4 import-parser tests. Обычная ревизия также собрана.
 Две math функции совпали со всеми инструкциями455 в COFF/linked PE;338 native
-checks в12FP modes. BSP consumer найден:двухслойная погода и mask4 interior stop.
-Остаются его полный source перенос, normal LoadLevel и FPU initialization;M5 не закрыт.
-research/client455-x87-and-weather.md; inventory/client-features.json.
+checks в12FP modes. Два weather слоя config/lifecycle/update/draw, interior/night
+и helper binding перенесены в source.65real R3X +4fixtures /703checks;37actual
+CPU lifecycle checks. Остаются real asset/GPU/particle455 parity, clock integration,
+normal LoadLevel и FPU initialization;M5 не закрыт.
+research/client455-weather-source.md; inventory/client-features.json.
 
 ## Этапы
 

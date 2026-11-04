@@ -25,6 +25,15 @@ def main():
             (0x8cb046,bytes.fromhex('6a00'),'stop state'),
             (0x8cb04e,bytes.fromhex('6a01'),'start state'),
             (0x8cb052,b'\xe8'+struct.pack('<i',0x8e0220-0x8cb057),'apply particle state'),
+            (0x90af71,bytes.fromhex('6808040000'),'read 1032-byte R3X payload'),
+            (0xb39d8c,b'*ENVIRONMENT2\0','text second layer name'),
+            (0xb39d78,b'*ENVIRONMENT_ID2\0','text second layer id'),
+            (0x90b0da,bytes.fromhex('a3407f1501'),'R3X first environment id destination'),
+            (0x90b0ff,bytes.fromhex('890d447f1501'),'R3X second environment id destination'),
+            (0x8dbc13,bytes.fromhex('818dc804000000000100'),'night particle attribute0x10000'),
+            (0xbf7348,struct.pack('<f',3),'initial day clock acceleration'),
+            (0x8b12c0,bytes.fromhex('d9442404d91d4873bf00c3'),'clock rate setter preserves mutable initial rate'),
+            (0x8f9b6c,bytes.fromhex('bd02000000'),'release both environment layers'),
             (0xb373b8,struct.pack('<d',.24),'strict lower time threshold'),
             (0xb373b0,struct.pack('<d',.83),'strict upper time threshold')]
         instructions=[]
@@ -32,9 +41,17 @@ def main():
             if read_va(data,va,len(wanted))!=wanted:
                 raise ValueError(f'Weather instruction changed at {va:x}')
             instructions.append({'va':hex(va),'rva':hex(va-0x400000),'bytes':wanted.hex(),'meaning':meaning})
+        functions=[]
+        for name,va,size in [('material_text',0x90a4d0,0x9f6),('material_r3x',0x90aed0,0x28b),
+                ('environment_load',0x8f8c90,0x187),('level_release',0x8f9ad0,0x14a),
+                ('weather_draw',0x8cb0b0,0x93),('set_clock_hms',0x8b12e0,0xcc),
+                ('clock_hms',0x8b13b0,0x75),('set_clock_fraction',0x8b1440,0x55),
+                ('level_frame',0x8e7910,0xfc)]:
+            functions.append({'name':name,'va':hex(va),'rva':hex(va-0x400000),'size':size,
+                'sha256':hashlib.sha256(read_va(data,va,size)).hexdigest()})
         facts.append({'input':folder,'sha256':digest,'architecture':'x86','image_base':'0x400000',
             'function_va':'0x8cad00','function_rva':'0x4cad00','size':len(body),
-            'body_sha256':hashlib.sha256(body).hexdigest(),'instructions':instructions})
+            'body_sha256':hashlib.sha256(body).hexdigest(),'instructions':instructions,'related_functions':functions})
     report={'binary_evidence':facts,'scope':'Manual whole-function analysis plus reproducible instruction checks, not runtime weather validation',
         'confirmed':{'helper_owner_bsp_offset':744,'environment_particle_pointer_offsets':[96,100],
             'environment_layer_iterations':2,'interior_flag':4,'flagged_helper_stack_capacity':1024,
@@ -42,12 +59,14 @@ def main():
             'particle_type_1':'stop on any containing interior helper; else start only if stopped; attr0x10000 adds strict .24<getter<.83 stop condition',
             'particle_type_2':'retains fixed world bbox stop/restart rule',
             'lifecycle':'ClearVariable0x8F66B0 and ReleaseEntities0x8F9940 clear owner; level load0x8EAA93 binds owner'},
-        'unknown':['meaning of time getter0x8B1430 beyond returning float at0x1154DEC',
-            'complete two-layer environment configuration/parser/lifecycle and particle changes',
+        'format':{'version':1.1,'reader_payload_bytes':1032,'legacy_payload_bytes':1024,
+            'environment_name_offsets':[256,392],'environment_id_offsets':[384,520],'scene_flags_offset':524},
+        'clock':'normalized day fraction: HMS setter/getter use 86400 seconds, mutable speed initialized3.0. Full lighting/time synchronization remains open.',
+        'unknown':['complete particle455 behavior, graphics and clock numeric/environment equivalence',
             'all other possible consumers and full normal map runtime'],
-        'implementation':'Not yet ported; legacy source has one environment particle and no helper-owner binding. Do not copy 455 object offsets into the old CBsp layout.'}
+        'implementation':'Source branch RF_CLIENT_455_WEATHER ports two layers, R3X/text fields, load/release/update/draw split, helper owner/interior and night flag. CPU native validation is separate; full weather/GPU/time acceptance remains open.'}
     (WS/'inventory/client455-weather-helper.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-    print('PASS: weather/interior helper consumer instructions verified in both pinned PE; implementation remains open.')
+    print('PASS: weather config/lifecycle/interior/night and clock evidence verified in both pinned PE.')
 
 
 if __name__=='__main__': main()

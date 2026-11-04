@@ -45,9 +45,11 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 Первый предметный реестр: inventory/client-features.json. Для helper SPT получена
 частичная native CPU-проверка полного проекта на 140 файлах/97 543 записях; обычный
 LoadLevel ещё не проверен. Две math функции теперь инструкционно совпадают с455;
-BSP weather consumer найден, пока не перенесён. Этот ограниченный результат
+BSP weather consumer перенесён вместе с двумя слоями config/lifecycle/update/draw;
+65real R3X и CPU lifecycle проверены. GPU/полный particle455/clock/time integration
+не проверены. Этот ограниченный результат
 не закрывает целиком строки «Файлы и данные» или «Рендер и мир» выше.
-Подробности research/client455-x87-and-weather.md.
+Подробности research/client455-weather-source.md.
 
 ## Запись каждой возможности
 

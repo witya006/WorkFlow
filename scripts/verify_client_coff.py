@@ -35,7 +35,8 @@ def main():
     build = WS/'work/client-build/build-character-diagnostic'
     records = []
     sets = []
-    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 58, build)]
+    weather='RF_CLIENT_455_WEATHER:BOOL=ON' in (build/'CMakeCache.txt').read_text(encoding='utf-8')
+    targets = [('RF_Online', 180, build), ('R3EngineClientMT', 59 if weather else 58, build)]
     jpeg_report = WS/'inventory/jpeg6b-build.json'
     if jpeg_report.exists():
         jpeg = json.loads(jpeg_report.read_text(encoding='utf-8'))

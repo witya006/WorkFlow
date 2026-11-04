@@ -119,8 +119,16 @@ static unsigned probe() {
     return io?(header.failures?26:0):25;
 }
 
+#if defined(RF_CLIENT_455_WEATHER)
+#include "client_weather_lab.inc"
+#endif
+
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_WEATHER)
+    if (!std::strcmp(command,"--rf-weather-read")) ExitProcess(weatherReadProbe());
+    if (!std::strcmp(command,"--rf-weather-scenario")) ExitProcess(weatherScenarioProbe());
+#endif
     if (std::strcmp(command,"--rf-helper-probe")) ExitProcess(20);
     unsigned result=probe();
     // All probe-owned resources are released. Normal game teardown requires

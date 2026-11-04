@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T10:05:57.288074+00:00",
+  "checked_at_utc": "2026-11-04T10:53:52.067155+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -29,6 +29,7 @@
     "RF_LEGACY_NEW_UI": "ON",
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
+    "RF_CLIENT_455_WEATHER": "ON",
     "RF_CLIENT_455_X87_MATH": "ON",
     "RF_CLIENT_455_X87_MATH_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/x87-math/RFClient455X87Math.lib",
     "RF_CLIENT_HELPER_LAB": "ON"
@@ -39,9 +40,14 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "c347b3d28f380926ec94be6d03bcb31b2de284bb2fecbb0359c10993f68ab556",
+    "scripts/native/client_helper_lab.cpp": "99d13f353614597b08c3815ae7f9c952ce620440f571c4ffe882fb09158ee1e0",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "cf5110dd3dbbdbbffa21c91fcd46f2c8b0f5f3bc8cfb255bdfb8c4591a165f44"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "e9ae5fa895742de2ff49b2b2c7f52c9748e7717d9ff21a623dc7d13bcdf3f361"
+  },
+  "weather_input_sha256": {
+    "scripts/native/client455_weather.cpp": "85bdcdedda2a3f88865299e3dee764f7b3c2a2dcc5c516988bc722c89b81fa2a",
+    "scripts/native/client455_weather_format.h": "9ef952c077bba1aca573d97f896e3722197fe9e7f286f187f4740f2103684011",
+    "scripts/native/client_weather_lab.inc": "aa0d60a97727efe3ae3b5b4b6f934a4f01efbe734cde200d96a636029f2801ff"
   }
 }

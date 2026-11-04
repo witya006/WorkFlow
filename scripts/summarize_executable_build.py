@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
@@ -76,6 +76,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_WEATHER')=='ON':
+            weather_inputs=['scripts/native/client455_weather.cpp','scripts/native/client455_weather_format.h','scripts/native/client_weather_lab.inc']
+            report['weather_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in weather_inputs}
         report['scope']='Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.'
     (WS / args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['build_exit', 'error_counts', 'generated_objects']}, ensure_ascii=True))
