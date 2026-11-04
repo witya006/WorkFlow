@@ -1,4 +1,5 @@
 #include "client455_pose.h"
+#include "client455_secondary.h"
 #include <cstring>
 #include <cstdio>
 
@@ -224,7 +225,7 @@ extern "C" RF455PoseStatus RF455_UpdateCharacterPose(RF455CharacterStorage* mode
         if(useRamp)ramp(scratch.current,scratch.current,reinterpret_cast<const float*>(m+4958),unsignedRatio(get<unsigned>(b,712),get<unsigned>(b,716)));
         if(m[512]){if(!context->math.matrix.multiply(m+4830,scratch.current,parent->bytes+4830))return RF_POSE_MATRIX;}
         else std::memcpy(m+4830,scratch.current,64);
-        if(get<unsigned>(m,5571) && get<unsigned>(b,1184))return RF_POSE_SECONDARY;
+        if(get<unsigned>(m,5571)){const auto status=RF455_ApplySecondaryMotion(model,mesh,context->secondary);if(status!=RF_POSE_OK)return status;}
         if(get<unsigned>(b,796)){const unsigned slot=get<unsigned>(m,5575);if(slot){if(slot>3)return RF_POSE_BOUNDS;std::memcpy(b+928+64*slot,m+4638,64);std::memcpy(b+736+64*slot,m+4830,64);}}
     }
     put<unsigned>(b,708,0);scratch.initialized|=32;

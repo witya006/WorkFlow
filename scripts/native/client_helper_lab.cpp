@@ -210,6 +210,7 @@ int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
 #if defined(RF_CLIENT_455_POSE)
     if (!std::strcmp(command,"--rf-pose-scenario")) ExitProcess(poseScenarioProbe());
+    if (!std::strcmp(command,"--rf-secondary-scenario")) ExitProcess(poseScenarioProbe(true));
 #endif
 #if defined(RF_CLIENT_455_ANIMATION)
     if (!std::strcmp(command,"--rf-animation-scenario")) ExitProcess(animationScenarioProbe());

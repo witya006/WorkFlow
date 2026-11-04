@@ -160,10 +160,11 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: завершить FrameMove secondary91E270/owner1184/producer кадров и
+1. M6: завершить staticCRTsin/actor defaults/producer кадров и
    AnimationManager/worker. Key evaluators/основныеpose/transition/ramp/skinmatrices
    source готовы:11pairs/132updates standalone/fullclient CPU,5sourceC APIs;
-   research/client455-pose-source.md. Затем skin/draw и
+   secondary state/effects подключены:36scalarcases/2realCoraBN/6updates;reference
+   staticCRTsin parity ещёopen. research/client455-secondary-motion.md. Затем skin/draw и
    normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
    selected manager/rawIO/ANI/attachment/dispatcher source готовы; normal loader не переключать до согласования
    ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.

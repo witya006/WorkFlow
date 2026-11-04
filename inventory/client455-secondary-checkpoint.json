@@ -1,0 +1,55 @@
+{
+  "scope": "Selected secondary state/effects/connected FrameMove,not original staticCRT sine parity/normal runtime/draw orM9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "40575afbd24f9ed9dc6f8e945806a932059c5056873ae300ebfc3a789bd6aef5",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "16d7c0fd0d6d378682805db89cd6682da7cce29acdc3da01f56cafd6ed2e4656",
+    "scope": "Selected pose andsecondary flow;staticCRT sine parity/normal consumers/profiling/animateddraw remain open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "9b3e683569b24396cbdd330fea175d03d59623911df3ffc5dd9411e94efc1c12",
+    "exe_bytes": 5214208,
+    "entry_rva": "0x899f"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 4294,
+    "scalar_cases": 36,
+    "human_models": 2,
+    "human_updates": 6,
+    "sine_provider": "modern_MT_sin_double_then_float32_not_reference_parity",
+    "rendered": false
+  },
+  "related_pose_regression": {
+    "status": "PASS",
+    "checks": 94482,
+    "key_cases": 132,
+    "real_pairs": 11,
+    "pose_updates": 132,
+    "skin_matrices": 2298,
+    "fp_modes": 12
+  },
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "lab_client_objects": 189,
+  "unchanged_bulk_suites_repeated": false,
+  "remaining": [
+    "Reference static __CIsin/SSE versusmodern MT sine bit-parity",
+    "Original actor constructor/defaults/frameproducer andnormal typed consumers",
+    "Full manager/worker/D3D9skin-draw/shaders/acceptance"
+  ],
+  "evidence_sha256": {
+    "client455-secondary-reference": "826108cb2103dcb25ef8e5859995bebef5bce10f322d6d3134829fecb0755f08",
+    "client455-secondary-build": "e9f0e86728cbfb0bb54108ba4b7b543c7fdbc7e598a10338be8370e983a82061",
+    "client455-secondary-cpu": "8a416623b31b2db19147d9a3c825f1ab990fe4a18f762644d6551badc099fa0d",
+    "client455-secondary-client": "4a440d0a9392bb0252b92f195495967ca6ff80ce35fdd5b37fb6cdf15b81e0cf",
+    "client455-pose-build": "856941f530bec1e363883129ae011ec6fb7a75799579d16af6f87e26852f11a7",
+    "client455-pose-cpu": "17bfc3f5adfeda3b709ab6257f96c50b767034887f9228343ea4ad00fc528c41",
+    "client455-pose-client": "c4f0361fa7676c3ab7b8dff571ad0a9d036853db036b20a6fffcc5b14a67fde8",
+    "client455-pose-link": "4389090b5a8ce86cdad62a83ac96bc4b84275f57c93caa3d6a1efdf3047c1b54"
+  }
+}

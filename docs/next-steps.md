@@ -11,7 +11,15 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — source pose evaluators иосновные FrameMove phases:
+Последний unit — secondary state84/global28/5effects91E270 вsourceFrameMove:
+36whole-state scalarcases/2actualCoraBN/6updates component/fullclient;6source APIs,
+heap/Dmalloc0. Связаннаяpose проверка11pairs/132updates прошла,прочиеoldbulk suites
+неповторялись. Gateinventory/client455-secondary-checkpoint.json;
+research/client455-secondary-motion.md. Lab189TUs,normalruntimebytes прежние.
+CRTstatic__CIsin не восстановлен:lab явноmodernMTsin;source требуетsineFloat
+backend. Не выдавать это за full math/normal runtime/animateddraw acceptance.
+
+Предыдущий unit — source pose evaluators иосновные FrameMove phases:
 11realBN→MESH08pairs/22ANI/132updates/2298skin matrices;132selectedkey cases,
 8analytic scenarios в12maskedFPmodes. Component иfullclientownentry равны;
 5sourceC APIs caller/archiveproof,heap/Dmalloc0. Это CPUpose,неanimateddraw.
@@ -47,12 +55,12 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Завершить FrameMove: secondary91E270 сmodel1184/timeGetTime/pony-skirt math,
-   фактическийproducer frame/transition иAnimationManager/worker ownership.
-   Основныеpose/key/transition/ramp/parent/skinmatrix phases source готовы;
-   secondary-required branch пока RF_POSE_SECONDARY,не successful no-op.
-   Девять bodies и1040active tracks уже pinned;rawinstructions вcharacter-animation455.
-   Не повторять framing/loader/key census. Rawkeys borrowed:mesh release доANIowner.
+1. Завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
+   actor ctor/defaults иproducer кадров/transitions,AnimationManager/worker.
+   Основныеpose/skinmatrix иsecondary source готовы;secondary requires mathcontext,
+   missingbackend возвращаетRF_POSE_SECONDARY. Raw584secondaryinstructions+borrower
+   7CD430cached;неповторятьэтотreverse. State84borrowedfromactor+500→model1184,
+   globals28sharedacrosscharacters. CRTlabbackendmodernsin явнонеbitparity.
 2. Далее skinning/draw,455declarations/shaders и normal typed consumers.
    Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.
 3. Восстановить полный D3D9renderer455/lighting/effects/device lifecycle вместе
@@ -93,6 +101,16 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Python черезscripts/Invoke-Python.ps1:
+build_client455_pose.py →probe_client455_pose.py →build_client455_secondary.py →
+probe_client455_secondary.py →prepare_client_build.py →
+probe_client_character_build.ps1 [обычный/-HelperLab] →
+probe_client455_secondary_client.py →probe_client455_pose_client.py →
+checkpoint_client455_secondary.py. Normalsnapshotcharacter455-secondary.
+Повторять только затронутые области;неизменённыеIO/texture/GPU/manager suites исторические.
+
+Предыдущийpose unit:
 
 Python через scripts/Invoke-Python.ps1:
 prepare_client455_pose_inputs.py →build_client455_pose.py →probe_client455_pose.py →

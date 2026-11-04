@@ -573,3 +573,11 @@ Normal180client/289modernCOFF,lab188TUs. Старые runtime suites не пов
 normalruntimebytes кромеtimestamps сохранены. Secondary/producer кадров/manager/
 worker/normal consumers/shaders открыты. Gateinventory/client455-pose-checkpoint.json;
 research/client455-pose-source.md. НовыхIDA sessions нет,оригиналы/серверы не менялись.
+Следующийunit:secondary91E270/borrower7CD430,3bodyranges и18doubleconstants pinned.
+Source state84/globals28/5effects,O2/W4/WX/x86/MT;36scalarcases/2realCoraBN/6updates
+component/fullclientownentry,6APIs sourcecaller. Relatedpose11pairs/132updates
+passed;прочиеoldbulk suites не запускались. Heap/Dmalloc0,CPUonly/noD3Ddraw.
+Static__CIsin reference поканеsource,mandatorycallback;labmodernMTsin прямоотмечен.
+Normal180client/lab189TUs;normalruntimebytes прежниеexcepttimestamps. Owned8115e37c
+closed/save. Gateinventory/client455-secondary-checkpoint.json;
+research/client455-secondary-motion.md. Оригиналы исерверы без изменений.

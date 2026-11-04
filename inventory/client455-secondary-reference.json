@@ -1,0 +1,190 @@
+{
+  "scope": "Secondary84/global28/pointer-and-time contract,source andselected scalar cases;staticCRT sine parity/normal consumers remainopen",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "secondary",
+          "rva": "0x51e270",
+          "bytes": 2062,
+          "sha256": "3bf66dac405b1c5d937f50a0d65e0525258402e08531580cd10df20c85d83dd7"
+        },
+        {
+          "name": "borrow_actor_state",
+          "rva": "0x3cd430",
+          "bytes": 261,
+          "sha256": "8d861867d7ad63ccc4d53208e31d99024cdddb64381693565ac70456042e6bf0"
+        },
+        {
+          "name": "static_CIsin_dispatch_reference",
+          "rva": "0x473340",
+          "bytes": 79,
+          "sha256": "ce681df5154269f3d0435b56ef6157dcd99e67573cf8636c67b683e8570255b5"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "secondary",
+          "rva": "0x51e270",
+          "bytes": 2062,
+          "sha256": "3bf66dac405b1c5d937f50a0d65e0525258402e08531580cd10df20c85d83dd7"
+        },
+        {
+          "name": "borrow_actor_state",
+          "rva": "0x3cd430",
+          "bytes": 261,
+          "sha256": "8d861867d7ad63ccc4d53208e31d99024cdddb64381693565ac70456042e6bf0"
+        },
+        {
+          "name": "static_CIsin_dispatch_reference",
+          "rva": "0x473340",
+          "bytes": 79,
+          "sha256": "ce681df5154269f3d0435b56ef6157dcd99e67573cf8636c67b683e8570255b5"
+        }
+      ]
+    }
+  ],
+  "constants": [
+    {
+      "rva": "0x6b03c8",
+      "bits": "333333333333d33f",
+      "double": 0.3
+    },
+    {
+      "rva": "0x736b90",
+      "bits": "7b14ae47e17a843f",
+      "double": 0.01
+    },
+    {
+      "rva": "0x6e5958",
+      "bits": "000000403333d33f",
+      "double": 0.30000001192092896
+    },
+    {
+      "rva": "0x73a5a8",
+      "bits": "00000040e17a743f",
+      "double": 0.004999999888241291
+    },
+    {
+      "rva": "0x73a5a0",
+      "bits": "7b14ae47e17a743f",
+      "double": 0.005
+    },
+    {
+      "rva": "0x6a9730",
+      "bits": "000000000000e03f",
+      "double": 0.5
+    },
+    {
+      "rva": "0x6ae568",
+      "bits": "000000e04d62503f",
+      "double": 0.0010000000474974513
+    },
+    {
+      "rva": "0x6aa4b8",
+      "bits": "000000a09999c93f",
+      "double": 0.20000000298023224
+    },
+    {
+      "rva": "0x6b0da8",
+      "bits": "000000a09999d93f",
+      "double": 0.4000000059604645
+    },
+    {
+      "rva": "0x73a580",
+      "bits": "9a9999999999b9bf",
+      "double": -0.1
+    },
+    {
+      "rva": "0x6b0288",
+      "bits": "9a9999999999c93f",
+      "double": 0.2
+    },
+    {
+      "rva": "0x6aa3a0",
+      "bits": "000000a09999b93f",
+      "double": 0.10000000149011612
+    },
+    {
+      "rva": "0x6a9b98",
+      "bits": "000000000000f83f",
+      "double": 1.5
+    },
+    {
+      "rva": "0x73a550",
+      "bits": "9a9999999999c9bf",
+      "double": -0.2
+    },
+    {
+      "rva": "0x6ab200",
+      "bits": "00000040e17a843f",
+      "double": 0.009999999776482582
+    },
+    {
+      "rva": "0x73a540",
+      "bits": "0ad7a3681058c93f",
+      "double": 0.1980000029504299
+    },
+    {
+      "rva": "0x73a538",
+      "bits": "f6285cd722dbc93f",
+      "double": 0.20200000301003457
+    },
+    {
+      "rva": "0x6b0698",
+      "bits": "9a9999999999e93f",
+      "double": 0.8
+    }
+  ],
+  "cases": 36,
+  "golden": "work/client-reference/character-secondary455/secondary.bin",
+  "golden_sha256": "ebf820a95b1aac28aef26e530e84ced1eaa46a0a627393a7bdacb38cf67131c5",
+  "human_models": [
+    {
+      "original": "Character/Player/Bone/Cora_Female.bn",
+      "copy": "work/client-reference/character-secondary455/human_0.bn",
+      "sha256": "a74be394152d0536ccff2792ee215e12786f2b3e2f7c30be6e8cbebd701f6c31",
+      "parts": 38,
+      "secondary_names": [
+        "Bip01 Ponytail L1",
+        "Bip01 Ponytail L11",
+        "Bip01 B skirt",
+        "Bip01 L skirt",
+        "Bip01 R skirt"
+      ]
+    },
+    {
+      "original": "Character/Player/Bone/CORFEMALE_ARMOR_061.bn",
+      "copy": "work/client-reference/character-secondary455/human_1.bn",
+      "sha256": "736c0f0317b42bcb42d77414002354d2ba76449ec0057e0384cd7ae640199bfc",
+      "parts": 35,
+      "secondary_names": [
+        "Bip01 B skirt",
+        "Bip01 L skirt",
+        "Bip01 R skirt"
+      ]
+    }
+  ],
+  "script_sha256": "d71944c802425267bda3edaeebcda9d976ab4cc22c78565c86de7e5abb5ed2ec",
+  "confirmed": [
+    "Owner84=5floatvalues+5signeddirections+5floatmin+5floatmax+DWORDtick;borrowed fromactor+500 throughmodel1184,FrameMove clears pointer",
+    "Unsigned timeGetTime delta>10,oncepereffect;globalponyphase andposition/left-right timers shared acrossactors",
+    "Skirt trigger isquaternionW*Z < -.2,notinitialweight1.3*1.2;timers use savedDWORDtime,notquaternionbits;decompilerstacktypeswrong",
+    "Pony preservestranslation afterrotationnormalization;L11 usesparentpose;R/Lskirt usemodelinverse1120/1056 andpose928/864;backskirt computesunusedRotationY beforeRotationZ",
+    "Source oscillator x87storeorder/constants preserved;current source sine ismandatory callback;reference static __CIsin includesSSE/defaultdispatch notrestored"
+  ],
+  "limits": [
+    "Scalar Python goldens finite/nearest53bit;notuncheckedNaN/OOM/CRTsin/arbitrarymatrix/fullreferenceexecution proof",
+    "Two humanBN fixtures arecontrolled inputs,notproof ofruntime character selection orstateconstructor defaults",
+    "No reference EXE executed;owned8115e37cclosed/save"
+  ],
+  "raw_analysis": "artifacts/character-animation455/secondary-*.json andsecondary-insn.txt"
+}

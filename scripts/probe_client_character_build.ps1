@@ -252,6 +252,12 @@ foreach ($property in $pose.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_POSE=ON'
 $arguments += "-DRF_CLIENT_455_POSE_LIBRARY=$poseLibrary"
+$secondary = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-secondary-cpu.json') -Raw | ConvertFrom-Json
+$secondaryBuild = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-secondary-build.json') -Raw | ConvertFrom-Json
+if ($secondary.native.status -ne 'PASS' -or $secondary.native.scalar_cases -ne 36 -or
+    $secondary.native.human_models -ne 2 -or $secondary.native.human_updates -ne 6 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-secondary-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $secondary.build_report_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $secondaryBuild.pose_build_sha256) { throw '455 secondary source proof missing or stale.' }
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json

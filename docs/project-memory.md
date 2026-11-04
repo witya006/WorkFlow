@@ -23,29 +23,32 @@
 
 ## Последний проверенный результат
 
-Source scripts/native/client455_pose.{h,cpp}, RFClient455Pose.lib, x86/MT/O2/W4/WX:
-scale91DE80, rotation91DF90, translation91E160 и основные FrameMove923A40 phases.
-132selected keycases,11real BN→MESH08 pairs/22ANI/132pose updates/2298skin matrices;
-component и own entry полного RF_Online.bin дают одинаковый результат.
-8analytic scenarios в12maskedFPmodes плюс zero model/null/missing load/key edges.
-Heap/Dmalloc0, game DLLs не загружаются. Пять source APIs имеют actual callers
-и source archive provider. Это CPU pose, без отрисовки персонажа.
+Source secondary91E270 вscripts/native/client455_secondary.{h,cpp} подключён
+вRFClient455Pose.lib/UpdateCharacterPose. State84/global28,5oscillators и5effects,
+36whole-state scalarcases;CoraFemale38parts/all5effects иarmor06135parts/3skirts,
+6FrameMoveupdates component/fullclientownentry. Heap/Dmalloc0,gameDLLs не загружены.
+Шесть pose/secondary APIs имеют actualcaller/archiveproof. Это CPU,безdraw.
+Static reference__CIsin ещё не source:mandatory sineFloat callback;lab явно
+modernMTsin(double)→float32,не bitparity proof. Secondary unit частичный именно
+вэтомnumeric/backend/normalconsumer смысле,не успешная пустая замена.
 
-Gate inventory/client455-pose-checkpoint.json, research/client455-pose-source.md.
-Normal snapshot character455-pose-final:2451456B,entryRVA1BC4B0,
-SHA022126636fb09cbe68d7331f8941356293139247f6adcd95c0974b04125e8eef.
-Lab5180928B,entryRVA899A,
-SHA6bbff5feb3e84bbac8bf685f464726829a4174024ef0cee6e2ab81e2b5b0293f.
-Normal180client/289modernCOFF/MT,lab188clientTUs. Normal APIs unused/stripped;
-runtime bytes равны предыдущему ANI snapshot, кроме timestampDWORD.
-Прежние ANI/GPU/manager/Platform01 proofs сохранены как исторические;
-в этом unit их runtime suites не повторялись и не объявлены текущими.
+Current gateinventory/client455-secondary-checkpoint.json;
+research/client455-secondary-motion.md. Связаннаяpose regression пройдена:
+11BN→MESH08pairs/132updates/2298skin matrices standalone/fullclient,прежнийрезультат.
+Normal snapshotcharacter455-secondary:2451456B/entryRVA1BC4B0,
+SHA40575afbd24f9ed9dc6f8e945806a932059c5056873ae300ebfc3a789bd6aef5.
+Lab5214208B/entryRVA899F,
+SHA9b3e683569b24396cbdd330fea175d03d59623911df3ffc5dd9411e94efc1c12.
+Normal180client,lab189TUs;normal APIs unused/stripped,runtimebytes кромеtimestamps
+равныpose-final. Прежние289modernCOFF/MT verification исторические,новые source
+objects такжеx86/MT. ANI/GPU/manager/Platform01 runtime suites не повторялись.
 
 ## Следующий шаг
 
-1. Завершить FrameMove: secondary91E270 (pony/skirt), фактический producer кадров/
-   transitions и owner1184. Сейчас при действительно требуемом secondary effect
-   UpdatePose возвращает RF_POSE_SECONDARY, не successful no-op.
+1. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
+   dispatcher),actor secondary defaults ифактическийproducer frame/transition.
+   Secondary flow source уже готов сrequiredmathcontext;RF_POSE_SECONDARY только
+   приотсутствующем backend. Не повторять584instruction reverse/golden math безизменений.
 2. Полный AnimationManager/async worker/record ownership. Потом связать pose с
    skinning/draw/declarations/shaders и normal typed consumers на455 D3D9.
    Старый Character SDK — D3D8 и другой layout, rawcast не допускается.
@@ -54,9 +57,13 @@ runtime bytes равны предыдущему ANI snapshot, кроме timesta
 
 Девять bodies FrameMove/key/secondary/profile pinned вclient455-pose-reference.json.
 Raw artifacts/character-animation455/{framemove-*,key-*-insn,pose-*,scale-axis}.json.
-Owned66b26ca4 closed/save; живых owned IDA sessions нет. Cached decompiler имеет
+Owned66b26ca4/8115e37c closed/save; живых owned IDA sessions нет. Cached decompiler имеет
 неверные D3DX stdcall prototypes/stack locals: использовать инструкции.
 Готовый framing/loader/geometry/material/parent reverse не повторять.
+Secondary rawsecondary-insn.txt/secondary-*.json втомжеartifactfolder. Borrower
+7CD430=this+500→model1184,cleared byFrameMove/no free;actor ctor покаunknown.
+Skirt trigger quaternionW*Z<-.2,timers savedtime,неdecompilerinitialweights/quatbits.
+Sharedglobals1189738..50 — left/right/pony timers/XYZ/phase,неperactor.
 
 ## Контракты, которые легко нарушить
 

@@ -367,6 +367,9 @@ if(RF_CLIENT_455_POSE)
     target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_pose.cpp")
     set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_pose.cpp"
       APPEND PROPERTY COMPILE_DEFINITIONS RF455_POSE_EMBEDDED)
+    target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_secondary.cpp")
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_secondary.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF455_SECONDARY_EMBEDDED)
     set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp"
       APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_POSE)
   endif()

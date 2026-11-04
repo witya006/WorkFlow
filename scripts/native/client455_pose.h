@@ -10,6 +10,7 @@ struct RF455PoseSpan {const unsigned char* bytes;std::size_t length;};
 struct RF455PoseKeyPair {const unsigned char* left;const unsigned char* right;unsigned index;float ratio;};
 enum RF455PoseStatus {RF_POSE_OK=0,RF_POSE_ARGUMENT=1,RF_POSE_BOUNDS=2,RF_POSE_MATRIX=3,RF_POSE_LOAD=4,RF_POSE_SECONDARY=5};
 struct RF455PoseScratch {float previous[16],current[16];unsigned initialized;};
+struct RF455SecondaryContext;
 struct RF455PoseContext {
     const RF455CharacterLoadContext* load;
     RF455PoseMath math;
@@ -17,6 +18,7 @@ struct RF455PoseContext {
     float blendDuration; // renderer+33844,not frame delta.
     void* ownerContext;
     int (__cdecl *resolveOwner)(void*,const RF455AnimationData*,RF455PoseSpan*);
+    const RF455SecondaryContext* secondary=nullptr;
 };
 extern "C" {
 // signed key times; lowWORD count; count1 still uses a second key if contained
@@ -29,8 +31,8 @@ RF455PoseStatus RF455_ApplyPoseRotation(float* matrix,int frame,const RF455MeshS
     const RF455AnimationData*,const RF455PoseSpan*,const RF455PoseMath*);
 RF455PoseStatus RF455_ApplyPoseTranslation(float* matrix,int frame,const RF455MeshStorage*,
     const RF455AnimationData*,const RF455PoseSpan*);
-// Recovered FrameMove pose/transition/ramp/parent/bone phases. Secondary motion
-// with model1184!=0 is explicitly unsupported,never a successful no-op.
-// Normal game consumers/secondary motion/profiling owner are separate work.
+// Recovered FrameMove phases. A live secondary owner requires a complete
+// secondary context,otherwise returns RF_POSE_SECONDARY,not a successful no-op.
+// Normal game consumers/profiling owner are separate work.
 RF455PoseStatus RF455_UpdateCharacterPose(RF455CharacterStorage*,const RF455PoseContext*);
 }

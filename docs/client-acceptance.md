@@ -176,6 +176,14 @@ consumers всё ещё открыты. Failure/locale/privateABI/unwind gaps я
 
 ## Приёмка
 
+Secondary91E270 source state84/globals28/5effects подключёнкFrameMove;
+36whole-statecases/2actualCoraBN/6updates standalone/fullclient,6source APIs,
+heap/Dmalloc0. Relatedpose11pairs passed;неизменённыеbulk suites не повторялись.
+Lab используетmodernMTsin callback:reference static__CIsin/SSE bitparity не
+подтверждена,actor ctor/frameproducer/normal consumers/draw ещёopen.
+CPUonly. Gateinventory/client455-secondary-checkpoint.json;
+research/client455-secondary-motion.md. Это не fullFrameMove/M6/M9 acceptance.
+
 Selected pose/FrameMove phases source:11realpairs/22ANI/132updates/2298skinmatrices
 standalone/fullclientownentry,132selectedkeycases и8analytic scenes/12maskedFPmodes.
 5source APIs,heap/Dmalloc0. CPUpose не является animateddraw. Secondary91E270,

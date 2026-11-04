@@ -112,7 +112,7 @@ def main():
             animation_inputs=['scripts/native/'+p for p in ['client455_animation.cpp','client455_animation.h','test_client455_animation.cpp','client_animation_lab.inc']]
             report['animation_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in animation_inputs}
         if settings.get('RF_CLIENT_455_POSE')=='ON':
-            pose_inputs=['scripts/native/'+p for p in ['client455_pose.cpp','client455_pose.h','test_client455_pose.cpp','client_pose_lab.inc']]
+            pose_inputs=['scripts/native/'+p for p in ['client455_pose.cpp','client455_pose.h','test_client455_pose.cpp','client_pose_lab.inc','client455_secondary.cpp','client455_secondary.h','test_client455_secondary.cpp']]
             report['pose_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in pose_inputs}
         if settings.get('RF_CHARACTER_MESH_SOURCE')=='ON':
             mesh_inputs=['scripts/native/character_mesh_bindings.cpp','scripts/native/test_character_mesh_bindings.cpp','scripts/native/client_character_mesh_lab.inc']

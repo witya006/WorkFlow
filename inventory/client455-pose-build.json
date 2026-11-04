@@ -1,5 +1,5 @@
 {
-  "scope": "Three pose evaluators and connected FrameMove pose/transition/ramp/bone phases;secondary motion/normal consumers separate",
+  "scope": "Connected pose/transition/ramp/bone andsecondary source;staticCRT sine parity/normal consumers separate",
   "architecture": "x86",
   "runtime": "/MT",
   "compile_only": false,
@@ -16,14 +16,16 @@
     "client455_mesh_runtime.h": "35f5395568691b4ba212c9f2ea1ebc87fd93b55465f34a3a7bac730daf4c48cb",
     "client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
     "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f",
-    "client455_pose.h": "9b91f748d6ea6d2928c9031e18aa7c381bc883bbf72c25c8608b747132f2a612",
-    "client455_pose.cpp": "a9743b974f0c0651e49f8f51ed1066550c35e4375e735bd70eea1e4c0896e7f0",
+    "client455_pose.h": "42a3f4e510b78165072486d54861327d0e81f616bf72c1d216774b0918de130b",
+    "client455_pose.cpp": "3fa383ea071ce342a429614ac9345ba704d21290a12dd8abe273d7f61d09c6d9",
+    "client455_secondary.h": "a3ec052f03d8e456bf21ab04998bc1d5f72ab73dc30afd56865add5b1d54b2a5",
+    "client455_secondary.cpp": "bb6483c9f4613d0cc4f8e3926d5e0384249e4b31e0d69af5b8acd0e894fe591c",
     "test_client455_pose.cpp": "cb135ca4760b51c5d3e7772ee83c52aef8b2e149446296c52f2cd4bcff89ca4b"
   },
   "library": "work/recovered/client455/pose/RFClient455Pose.lib",
-  "library_sha256": "ee6e8153b356ff45a0ccc6a059eac4c93ca42a0aad5fac021f83b4367e1f549d",
+  "library_sha256": "16d7c0fd0d6d378682805db89cd6682da7cce29acdc3da01f56cafd6ed2e4656",
   "object": "work/recovered/client455/pose/pose.obj",
-  "object_sha256": "d4398f87a424f1789f22de465af7abd510ccbea8235dd748ebe6fd5293267b5f",
+  "object_sha256": "275f745dca79a8a89becd8bf44a4f84f910b282f98ce0ce3748ef2b257ac8e03",
   "dependencies": [
     {
       "file": "work/recovered/client455/animation/RFClient455Animation.lib",
@@ -66,7 +68,11 @@
       "sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8"
     }
   ],
+  "secondary_object": {
+    "file": "work/recovered/client455/pose/secondary.obj",
+    "sha256": "6873102a9c759df18e5d354a4f129e359eb8d1162985e4aee070f38ffd303336"
+  },
   "exe": "work/recovered/client455/pose/pose-probe.exe",
-  "exe_sha256": "2b1b9bdb98b8fdaa656bde38f0c76667f8970ee2247639a3fe9b2a681ef2c399",
-  "entry_rva": "0x12250"
+  "exe_sha256": "697ca8b42bbbe8509c5f38cc2a5b5fc14b250b9ec7321413d068f5deb6260543",
+  "entry_rva": "0x13110"
 }

@@ -9,6 +9,7 @@ def inputs():
     build=json.loads((WS/'inventory/client455-pose-build.json').read_text(encoding='utf-8'));source=json.loads((WS/'inventory/client455-pose-inputs.json').read_text(encoding='utf-8'))
     if build['compile_only']:raise ValueError('Pose test required')
     if sha(WS/build['library'])!=build['library_sha256'] or sha(WS/build['object'])!=build['object_sha256']:raise ValueError('Changed owned pose archive/object')
+    if sha(WS/build['secondary_object']['file'])!=build['secondary_object']['sha256']:raise ValueError('Changed secondary source object')
     for name,digest in build['source_sha256'].items():
         if sha(WS/'scripts/native'/name)!=digest:raise ValueError('Changed pose source:'+name)
     for record in build['dependencies']:

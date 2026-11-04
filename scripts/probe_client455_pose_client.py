@@ -7,7 +7,7 @@ from probe_client_helpers import import_names
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     _,_,golden,texture_root,dll,_=inputs();build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'));cpu=json.loads((WS/'inventory/client455-pose-cpu.json').read_text(encoding='utf-8'));link=json.loads((WS/'inventory/client455-pose-link.json').read_text(encoding='utf-8'))['lab']
-    if build['build_exit'] or len(link['functions'])!=5:raise ValueError('Full pose source build required')
+    if build['build_exit'] or len(link['functions'])!=6:raise ValueError('Full pose/secondary source build required')
     for group in ['lab_input_sha256','pose_input_sha256','animation_input_sha256','legacy_runtime_input_sha256','character_manager_input_sha256','model_input_sha256','shared_buffer_input_sha256','texture_input_sha256','mesh_runtime_input_sha256','mesh_binding_input_sha256']:
         for name,digest in build[group].items():
             if sha(WS/name)!=digest:raise ValueError('Changed full-client source:'+name)
