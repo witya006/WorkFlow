@@ -107,6 +107,12 @@ Platform01-device69checks прошли,frameSHA сохранены. research/cli
 checks/12realBN455records+5synthetic4records,1183guarded prefixes/7allocfailpoints/
 12FPmodes/6Python tests. Importer/converter/BNruntime/normal integration ещё впереди.
 research/client455-legacy-model-reader.md. Converter теперьcachedвесь578lines.
+Затем полныйvalid-input legacyMSH/BN converter/fileIO/weights/indexing/MTG source
+подключён:66627capture/14896HALchecks standalone/fullclient,34runs972parts,
+832HALindexeduploads/2CPUretained;12realBN→MESH08pairs393parts276uploads.
+Fullclient source10APIs verified,heap/COM/Dmalloc0. Normaldispatcher/ANI/animation/
+shaders/typedconsumers ещё открыты. Next:ANI93ACD0/dispatcher9238A0/FrameMove923A40.
+research/client455-legacy-model-runtime.md. Current manager1138/model10021/graphics69passed.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port; legacy SDK contract
 явно IDirect3DDevice8. Старые InitVertex/loaded mesh/blend kernels уже проверены,
 не повторять их исследование. Cached207definitions доступны.
@@ -146,7 +152,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: BN file importer/runtime converter (intermediate reader уже source),затем полный dispatcher/FrameMove/animation и
+1. M6: ANI importer/full dispatcher,затемFrameMove/animation и
    normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
    selected manager/rawIO source готовы; normal loader не переключать до согласования
    ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.

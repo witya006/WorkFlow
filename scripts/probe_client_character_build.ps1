@@ -209,6 +209,24 @@ foreach ($property in $character455.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_CHARACTER_MANAGER=ON'
 $arguments += "-DRF_CLIENT_455_CHARACTER_MANAGER_LIBRARY=$character455Library"
+$legacyRuntime = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-legacy-runtime-build.json') -Raw | ConvertFrom-Json
+$legacyRuntimeGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-legacy-runtime-gpu.json') -Raw | ConvertFrom-Json
+$legacyReader = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-legacy-models-build.json') -Raw | ConvertFrom-Json
+$legacyRuntimeLibrary = Join-Path $workspace $legacyRuntime.library
+$legacyReaderLibrary = Join-Path $workspace $legacyReader.library
+if ($legacyRuntime.compile_only -or $legacyRuntimeGpu.native.status -ne 'PASS' -or
+    $legacyRuntimeGpu.native.model_runs -ne 34 -or $legacyRuntimeGpu.native.model_parts -ne 972 -or
+    $legacyRuntimeGpu.native.physical_indexed_parts -ne 832 -or $legacyRuntimeGpu.native.cpu_retained_parts -ne 2 -or
+    $legacyRuntimeGpu.native.paired_files -ne 12 -or $legacyRuntimeGpu.native.paired_physical_parts -ne 276 -or
+    (Get-FileHash -LiteralPath $legacyRuntimeLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $legacyRuntime.library_sha256 -or
+    (Get-FileHash -LiteralPath $legacyReaderLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $legacyReader.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-legacy-runtime-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $legacyRuntimeGpu.build_report_sha256) { throw '455 legacy converter runtime proof missing or stale.' }
+foreach ($property in $legacyRuntime.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 legacy converter source changed since proof.' }
+}
+$arguments += '-DRF_CLIENT_455_LEGACY_RUNTIME=ON'
+$arguments += "-DRF_CLIENT_455_LEGACY_RUNTIME_LIBRARY=$legacyRuntimeLibrary"
+$arguments += "-DRF_CLIENT_455_LEGACY_READER_LIBRARY=$legacyReaderLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -300,6 +318,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_legacy_runtime.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_legacy_runtime.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_manager.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_manager.py }

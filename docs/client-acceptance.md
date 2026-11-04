@@ -165,6 +165,14 @@ Intermediate legacyMSH/BN reader/part720/model28 lifetime отдельно sourc
 4606standalone checks/12realBN455records+5synthetic4records/1183guarded prefixes/
 7allocfailpoints/12FPmodes/6Python tests. File importer/converter/realruntime skeleton
 иnormal dispatch этим не подтверждены. research/client455-legacy-model-reader.md.
+Следом fullselectedvalid-input legacyMSH/BN converter/fileIO/MTG/weights/indexing/
+binding source подключён:66627capture/14896HALchecks standalone/fullclient,
+34runs972parts/832HALindexeduploads/2CPUretained.12actualBN→MESH08pairs393parts/
+276uploads,heap/COM/Dmalloc0;10sourceAPIs verified. BNinitialmatrices/parent/blend
+tables проверены,полныеANI/animation/skinningdraw/shaders/normaldispatcher/typed
+consumers всё ещё открыты. Failure/locale/privateABI/unwind gaps явно перечислены
+вresearch/client455-legacy-model-runtime.md;gateclient455-legacy-runtime-checkpoint.json.
+Приёмка всегоCharacter/M6/M9 не заявлена.
 
 ## Приёмка
 

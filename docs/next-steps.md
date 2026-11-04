@@ -11,33 +11,31 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний source unit — промежуточный reader93C2F0/part720/model28 lifetime:
-4606standalone checks/12realBN455records+5synthetic4records/1183guarded prefixes/
-7allocfailpoints/12FPmodes;6Python tests. Полные importer/converter/BNruntime ещё
-не подключены. research/client455-legacy-model-reader.md; client455-legacy-models*.json.
+Последний connected unit —legacyMSH/BN importer/converter/weights/indexing/MTG:
+66627capture/14896HALchecks standalone/fullclient;34runs/972parts/832HALuploads,
+2CPUretainedparts.12actualBN→MESH08pairs393parts/276uploads. Source8runtime APIs+
+reader/delete chain verified,ownheap/COM/Dmalloc0. BN теперь построен source,
+а не только names изgolden. Normaldispatcher/ANI/animation/shaders открыты.
+Gate inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
+Промежуточный reader/lifetime:4606standalone checks,6Python tests;
+research/client455-legacy-model-reader.md. Не повторять закрытый parser reverse.
 Предыдущий connected unit — Character455 record1188/manager4148/cache/rawMSH/refresh.
 850CPU/1138HAL checks, полный клиент даёт те же1138;12models/393parts/276uploads/
 59texture pointers, ownheap/COM/Dmalloc0.13 APIs вызваны из actual lab TU иsource lib.
 24bodies equalbothpins; ctor1188bytes — oracle из92записанных инструкций+констант.
 Реальный MESH08 из собственного RFS и11loose моделей проверены до парсинга по байтам.
 Normal game dispatcher покаlegacy. Research: client455-character-manager.md;
-gate inventory/client455-character-manager-checkpoint.json. Текущие PE identities там.
+gate inventory/client455-character-manager-checkpoint.json исторический;
+текущие PE identities вновомlegacy-runtime checkpoint.
 
 ## Очередь M6 → M9
 
-1. Подключить file importer93C770 и восстановить преобразование93CD60 в455mesh5803.
-   Source reader93C2F0/part lifetime уже проверены standalone. Это следующий шаг
-   к настоящему skeleton loader, вместо
-   external names из tooling golden. Использовать записанные body/формат и real BN;
-   проверять границы, malformed/compact physique и реальные матрицы. Полный181line
-   parser сохранён artifacts/character-manager455/manager-plus-4.json. Начало
-   converter — artifacts/character-gpu455/next-2.json(250lines) и
-   artifacts/character-legacy455/converter-tail.json(328lines): все578сохранены.
-   Проверить его MTG sidecar/vertex64/legacyphysique93BC40/parentmatrix иCPU-retention
-   branches инструкциями; ориентиры отмечены hypotheses вновом research, не пропускать.
-2. Подключить полный dispatcher9238A0 после legacy reader/converter. Сохранить
-   загрузочные flags, parent prerequisite, sticky failures и lifetime по эталону.
-   MESH08-only successful stub недопустим. Затем FrameMove923A40, transforms,
+1. Восстановить ANI importer93ACD0 иполный dispatcher9238A0. Сохранить loading264/
+   loaded260,externalparent prerequisite,sticky failures иlifetime. LegacyMSH/BN
+   parser/importer/converter иMESH08route уже source;не повторять их reverse.
+   ANI ветку не заменять successful stub. Полный dispatcher cached вcharacter-manager455;
+   найти текущиеANI xrefs/format/readers вreference,до реализации уточнить инструкции.
+2. Затем FrameMove923A40, transforms,
    animation/skinning, 455declarations/shaders и normal typed consumers.
    Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.
 3. Восстановить полный D3D9renderer455/lighting/effects/device lifecycle вместе
@@ -73,11 +71,22 @@ gate inventory/client455-character-manager-checkpoint.json. Текущие PE id
   client455-resource-io-source.md. Это исторические результаты, не повторять
   массовые проверки без изменения соответствующих входов/кода/неразрешённого риска.
 - Текущие Platform01/device2cases/69checks,0errors/warnings/COM/Dmalloc,
-  прежние frameSHA сохранены: inventory/client455-character-manager-graphics.json.
+  прежние frameSHA сохранены: inventory/client455-legacy-runtime-graphics.json.
 - M5 historical gate: verify_client_m5.py --saved. Старый13case report иего
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Python через scripts/Invoke-Python.ps1:
+audit_client455_legacy_runtime.py →prepare_client455_legacy_runtime_inputs.py →
+build_client455_legacy_runtime.py →probe_client455_legacy_runtime.py [--gpu] →
+prepare_client_build.py →probe_client_character_build.ps1 [обычный/-HelperLab] →
+verify_client455_legacy_runtime.py [--lab] →probe_client455_legacy_runtime_client.py.
+Послеmanager/model/Platform01 regressions:checkpoint_client455_legacy_runtime.py.
+Последнийпроверенный PE:186clientlabTUs,289normalmodernCOFF/MT. Обычныйsnapshot
+character455-legacy-models immutable,normalruntimebytes equalprevious excepttimestamps.
+
+Предыдущий модуль manager (исторический gate,актуальныеregressions отмечены выше):
 
 Python — исключительно scripts/Invoke-Python.ps1:
 test_character_ctor_oracle.py → audit_client455_character_manager.py →

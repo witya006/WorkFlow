@@ -1,0 +1,199 @@
+{
+  "scope": "Full source legacy converter/IO/geometry contracts;runtime/normal integration tracked separately",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "vertex64",
+          "rva": "0x53b020",
+          "bytes": 49,
+          "sha256": "b1fb69024d08299a6611f903b81da516320e7c94e4f2c77a8b55bb2c3ba0ed7b"
+        },
+        {
+          "name": "uv64",
+          "rva": "0x53b5f0",
+          "bytes": 23,
+          "sha256": "2f99345e81b371cafac3c99246e13e65fea30f18a56083d96aa3b1affdef40cc"
+        },
+        {
+          "name": "weights64",
+          "rva": "0x53aa10",
+          "bytes": 704,
+          "sha256": "460c465d635b7884ba60ece86ae2e166eea59a67310741ac7bb2300f317fe83f"
+        },
+        {
+          "name": "convert36",
+          "rva": "0x53b130",
+          "bytes": 452,
+          "sha256": "b0ca8978aa6888e96624a6ed70819bacbb5211114bbbdb8fb060d989df08c8e7"
+        },
+        {
+          "name": "dedup_upload",
+          "rva": "0x53b310",
+          "bytes": 731,
+          "sha256": "3a7d26d4ee96f9c926f0e9be70b0df86f2e99b2ba68a12cc9697f6905babeaa3"
+        },
+        {
+          "name": "legacy_bones",
+          "rva": "0x53bc40",
+          "bytes": 502,
+          "sha256": "46627b4ddb6c67df123da147d0885219447ac0334431a68f956e26ab7c82f5aa"
+        },
+        {
+          "name": "strip_extension",
+          "rva": "0x53a9d0",
+          "bytes": 51,
+          "sha256": "ce24d9f3d2adca5b284712619452d29bf47e9be5fa31494f2b289b2774aeb5c7"
+        },
+        {
+          "name": "legacy_converter",
+          "rva": "0x53cd60",
+          "bytes": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        },
+        {
+          "name": "file_importer",
+          "rva": "0x53c770",
+          "bytes": 291,
+          "sha256": "2c6e1c4d5b149f66d101961a8666f0f3f7d220c56cb243fba27ffdb0e5f4a5f5"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "vertex64",
+          "rva": "0x53b020",
+          "bytes": 49,
+          "sha256": "b1fb69024d08299a6611f903b81da516320e7c94e4f2c77a8b55bb2c3ba0ed7b"
+        },
+        {
+          "name": "uv64",
+          "rva": "0x53b5f0",
+          "bytes": 23,
+          "sha256": "2f99345e81b371cafac3c99246e13e65fea30f18a56083d96aa3b1affdef40cc"
+        },
+        {
+          "name": "weights64",
+          "rva": "0x53aa10",
+          "bytes": 704,
+          "sha256": "460c465d635b7884ba60ece86ae2e166eea59a67310741ac7bb2300f317fe83f"
+        },
+        {
+          "name": "convert36",
+          "rva": "0x53b130",
+          "bytes": 452,
+          "sha256": "b0ca8978aa6888e96624a6ed70819bacbb5211114bbbdb8fb060d989df08c8e7"
+        },
+        {
+          "name": "dedup_upload",
+          "rva": "0x53b310",
+          "bytes": 731,
+          "sha256": "3a7d26d4ee96f9c926f0e9be70b0df86f2e99b2ba68a12cc9697f6905babeaa3"
+        },
+        {
+          "name": "legacy_bones",
+          "rva": "0x53bc40",
+          "bytes": 502,
+          "sha256": "46627b4ddb6c67df123da147d0885219447ac0334431a68f956e26ab7c82f5aa"
+        },
+        {
+          "name": "strip_extension",
+          "rva": "0x53a9d0",
+          "bytes": 51,
+          "sha256": "ce24d9f3d2adca5b284712619452d29bf47e9be5fa31494f2b289b2774aeb5c7"
+        },
+        {
+          "name": "legacy_converter",
+          "rva": "0x53cd60",
+          "bytes": 4227,
+          "sha256": "29433bec127f9f8fb9e4993e62e82f3a0ed7b9b4b726b91aa1522161c46bfe1e"
+        },
+        {
+          "name": "file_importer",
+          "rva": "0x53c770",
+          "bytes": 291,
+          "sha256": "2c6e1c4d5b149f66d101961a8666f0f3f7d220c56cb243fba27ffdb0e5f4a5f5"
+        }
+      ]
+    }
+  ],
+  "real_legacy_meshes": [
+    {
+      "copy": "work/client-reference/character-models/ACCRETIA_ARMOR_LSHIELD_031.msh",
+      "sha256": "a85555a3ba1edb6222591ff7fe9c0a4beaad4ed56e01219c78d7077e3fad8074",
+      "original_relative": "item/Shield/Mesh/ACCRETIA_ARMOR_LSHIELD_031.msh",
+      "records": 16,
+      "vertices": 580,
+      "faces": 896,
+      "physiques": 0
+    },
+    {
+      "copy": "work/client-reference/character-models/ACCRETIA_ARMOR_CLOAK_002.msh",
+      "sha256": "88c20c25e540191745d1fb8100fde07e38698ce8264b1e492c2acaea5660da33",
+      "original_relative": "item/Armor/Mesh/ACCRETIA_ARMOR_CLOAK_002.msh",
+      "records": 6,
+      "vertices": 999,
+      "faces": 1676,
+      "physiques": 0
+    }
+  ],
+  "missing_bone_wide": {
+    "rva": "0x73b118",
+    "words": [
+      69,
+      114,
+      114,
+      111,
+      114,
+      58,
+      32,
+      67,
+      97,
+      110,
+      39,
+      116,
+      32,
+      70,
+      105,
+      110,
+      100,
+      32,
+      80,
+      97,
+      114,
+      101,
+      110,
+      116,
+      33,
+      33,
+      10,
+      0
+    ],
+    "file": "work/client-reference/character-legacy-runtime/missing-bone-utf16.bin",
+    "sha256": "b611d4d24a90454f96c1cde6105911ec0942428df9c7d298e90bb3d748216045"
+  },
+  "confirmed": [
+    "MTG derived from model.name4 by stripping final dot suffix,then .mtg,loose fopen only;84bytes perface,three x87copied floats per28byte corner tovertex52/56/60",
+    "Header counts5086/5090=3faces beforematrix;normal conversion initializesweights/indices butpreserves persistent scratchUV/tangent tail",
+    "93B130 converts64\u219236 withDWORDcopies exceptweight12 whichusesx87;bothunrolledandscalar remainder verified",
+    "64byte memcmp firstmatch dedup;mode4VB64/mode2VB36;mode2conversionloops expandedCount butuploads uniqueCount;indexbase fromabsolute%2300000/stride,WORDwrap,IBupload evenafterVBfailure",
+    "Mode2+physique+firstinfluenceCount>2 retainsCPUexpandedarray4506,skipsindexupload;othermodesindexed",
+    "Parents local thenexternal;last import compactflag24 gates4702=4574*parent4638;legacy424physique distinctfromMESH08resolver",
+    "Legacybone resolver writesidentitymatrices beforeinlinepointercopy,includingknown31+overlap;missingbones callOutputDebugStringW(addressB3B118)",
+    "FileimporterRFS\u2192loose\u2192parser\u2192rawfree\u2192unconditionalImportMeshorBoneData(...):NULL log,evenparse success"
+  ],
+  "limits": [
+    "Full source logger/OutputDebugString owner wiring still needed;adapter receives exact literal text/API kind",
+    "Bounded index/count/name/nullallocation/MTGshortread errors differfromunchecked reference/AV/debugbreak/OOM/unwind",
+    "Scratch isowned persistent memory corresponding toreference globals;other fullrenderer users andthreading remainopen",
+    "Body hash/decompiler text alone doesnotproveequivalence;scoped instruction evidence captured inartifacts/character-converter455"
+  ],
+  "raw_analysis": "artifacts/character-converter455;owned0d9553e1/08d81b2fclosed/save;no referenceEXE run"
+}

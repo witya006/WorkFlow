@@ -11,11 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний source участок M6:mesh lifetime иconnectedMESH08route,10021HALchecks
-standalone/fullclient,393parts/276realGPUuploads/59texturebindings,ownheap/COM/Dmalloc0.
-Normalfile/manager dispatch иполные animation/shaders ещё legacy;M6/M6F/M7/M9 открыты.
-Далееactualmanager/file route иполный455model ABI/typedconsumers,BN/skeleton,
-skinning/shaders. research/client455-model-pipeline.md.
+Последний source участок M6:legacy MSH/BN importer/converter/weights/indexing/MTG,
+66627capture/14896HALchecks standalone/fullclient.34runs/972parts/832HALuploads,
+2CPUretainedparts;12actualBN→MESH08pairs/393parts/276uploads. Heap/COM/Dmalloc0.
+Normal dispatcher/ANI/animation/shaders/typed consumers ещё открыты;M6/M6F/M7/M9
+не закрыты. ДалееANI importer/dispatcher иFrameMove. Подробности
+research/client455-legacy-model-runtime.md иdocs/next-steps.md.
+
+История предшествующих этапов (актуальная очередь выше):
 
 Получена первая полная диагностическая сборка RF_Online.bin и успешная чистая
 пересборка. Это старая база с выбранными подтверждёнными участками 455, а не готовый

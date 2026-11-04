@@ -548,3 +548,11 @@ research/client455-character-manager.md. Изменений исходного i
 6Python tests,heap0.7bodies pinned;importer/converter покаpending. SourceO2/W4/WX
 x86/MT. Fullclient PE не менялся;owned IDA926983beclosed/save. Reports
 inventory/client455-legacy-models-reference/build/cpu.json;research/client455-legacy-model-reader.md.
+Последующийconnectedunit:legacyMSH/BN converter/importer/MTG/weights/indexing/binding,
+66627capture/14896HALchecks standalone/fullclient;34runs972parts/832HALuploads,
+2CPUretained,12actualBN→MESH08pairs393parts276uploads.9bodies equalbothpins,
+10sourceAPIs verified,heap/COM/Dmalloc0. SourceO2/W4/WX/x86/MT;fullclient186labTUs,
+289normalmodernCOFF/MT. Current manager1138/model10021/Platform01-device69passed,
+frames иnormalruntimebytes (excepttimestamps) сохранены. Всеidentities/evidence:
+inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
+Normaldispatcher/ANI/animation/shaders пока открыты. Owned0d9553e1/08d81b2fclosed/save.

@@ -1,7 +1,7 @@
 {
   "normal": {
     "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
-    "exe_sha256": "4634f68457ab0251075b8ed110075f13af36332121bcd4346d32de4de8def5f3",
+    "exe_sha256": "0279b5033c8098edf814d6527a4b355ad2f7398e9ebd25e4c6c20aea7f170b96",
     "architecture": "x86",
     "image_base": "0x400000",
     "functions": [],
@@ -11,29 +11,29 @@
   },
   "lab": {
     "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
-    "exe_sha256": "9ebef3b540bcf766643bd26bd40527afc91810b8fc0b74807d6914a01542757f",
+    "exe_sha256": "c9e49065dc81493c3285a7d508b0240c87c7f69c31f2fa8ad81440e3fd3d777e",
     "architecture": "x86",
     "image_base": "0x400000",
     "functions": [
       {
         "symbol": "_RF455_FindParentMesh",
-        "va": "0x6ff1c0",
-        "rva": "0x2ff1c0"
+        "va": "0x715c10",
+        "rva": "0x315c10"
       },
       {
         "symbol": "_RF455_BindMeshParents",
-        "va": "0x6ff190",
-        "rva": "0x2ff190"
+        "va": "0x715be0",
+        "rva": "0x315be0"
       },
       {
         "symbol": "_RF455_RematchMeshParents",
-        "va": "0x6ff240",
-        "rva": "0x2ff240"
+        "va": "0x715c90",
+        "rva": "0x315c90"
       },
       {
         "symbol": "_RF455_ResolveMesh08Bones",
-        "va": "0x6ff270",
-        "rva": "0x2ff270"
+        "va": "0x715cc0",
+        "rva": "0x315cc0"
       }
     ],
     "library_sha256": "c2dc4530731d76d5aa88693dc3f6b9b500e41a6e88e39c9515e325f1e7e082d8",

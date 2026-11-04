@@ -14,6 +14,15 @@ M8 не требуется. Компиляция, запуск и частичн
 
 ## Текущее состояние
 
+- Новейший connectedunit:legacy fileimporter93C770/converter93CD60/vertex64/UV/
+  physique64/convert36/dedup+upload/bindings/MTG,9bodies equalbothpins.66627capture/
+  14896HALchecks standalone/fullclient;34runs/972parts/832HALuploads,2CPUretained.
+  12actualBN→MESH08pairs/393parts/276uploads:BNmesh теперь прочитан/построен source,
+  не только names изtooling.10APIs linked (8runtime+reader/delete),heap/COM/Dmalloc0.
+  Current manager1138/model10021/Platform01-device69passed,frames unchanged.
+  Gate inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
+  Next:ANI importer93ACD0/full dispatcher9238A0,FrameMove/animation/typedconsumers.
+  Owned0d9553e1/08d81b2fclosed/save. Source/normaldispatcher switch всё ещё впереди.
 - Новейший standalone unit: reader93C2F0/part720 ctor+dtor/model28release.
   4606native checks/12realBN455records+5synthetic4records,1183PAGE_NOACCESS prefixes,
   7allocfailpoints,12FPmodes,6Python tests,heap0. Source x86/MT/O2/W4/WX.
@@ -80,12 +89,12 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-4634f68457ab0251075b8ed110075f13af36332121bcd4346d32de4de8def5f3.
-Snapshot character455-manager-io;предыдущие revisions сохранены. Обычный EXE
+0279b5033c8098edf814d6527a4b355ad2f7398e9ebd25e4c6c20aea7f170b96.
+Snapshot character455-legacy-models;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA 9ebef3b540bcf766643bd26bd40527afc91810b8fc0b74807d6914a01542757f,
-size4909056,entryRVA0x8733; snapshot work/m9/9ebef3b5/client001/RF_Online.bin.
-Current: manager1138/model10021/Platform01-device69checks;185clientlabTUs.
+Own lab EXE SHA c9e49065dc81493c3285a7d508b0240c87c7f69c31f2fa8ad81440e3fd3d777e,
+size5033984,entryRVA0x8887; snapshot work/m9/c9e49065/client001/RF_Online.bin.
+Current: legacyruntime14896/manager1138/model10021/Platform01-device69checks;186clientlabTUs.
 Normal runtime bytes после исключения двух timestamps равны предыдущему snapshot.
 Следующие прежние scoped proofs относятся к историческим revisions; их inputs/
 source не менялись, повторных запусков на current PE не было:
@@ -250,8 +259,9 @@ Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693frami
 
 ## Следующий шаг
 
-M6: importer93C770 иconverter93CD60 для настоящего BN/skeleton. Source reader93C2F0
-иpart/model lifetime уже проверены standalone; не повторять их reverse.
+M6: ANIimporter93ACD0/full dispatcher9238A0,FrameMove923A40/animation/typedconsumers.
+Legacyimporter93C770/converter93CD60 иrealBN→MESH08 теперь source/connected,
+не повторять закрытый reverse. Прежний intermediate reader/lifetime тоже готов.
 Затем dispatcher9238A0 соsticky flags/failure lifetime, FrameMove923A40, animation/
 skinning/455shaders иnormal typed consumers. Selected manager/fileIO/ctor/refresh
 уже готовы; НЕ повторять их reverse. Полный455record allocation1188 подтверждён,
