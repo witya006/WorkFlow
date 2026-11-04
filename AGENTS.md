@@ -2,6 +2,13 @@
 
 ## Scope and evidence
 
+- CLIENT ONLY: reconstruct the RF Online client from legacy client/R3Engine code
+  toward client 455. Work on R3Engine and asset tools only as client dependencies.
+- Do not build, restore, implement or plan AccountServer, LoginServer, ControlServer,
+  ZoneServer, server databases or GoMMO server logic. Their absence is not a client blocker.
+- First build target is client dependency R3Engine - Win32 RTMovie Release;
+  final executable target is RF_Online. Prior LoginServer build decision is revoked.
+
 - Main working root: E:\RFOnlineTrash\Source\WorkFlow.
 - Read README.md, docs/environment-audit.md and docs/next-steps.md before new work.
 - Read docs/project-memory.md for current decisions; use docs/roadmap.md when planning.
