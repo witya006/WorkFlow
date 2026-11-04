@@ -30,6 +30,8 @@
 Повторная инвентаризация: `scripts/Invoke-Python.ps1 scripts/inventory.py`.
 Проверка GoMMO MCP: `scripts/Invoke-Python.ps1 scripts/probe_gommo.py`.
 Проверка IDA MCP: `scripts/Invoke-Python.ps1 scripts/probe_ida_mcp.py --configured`.
+Проверка VS/MSVC x86: `scripts/Invoke-Python.ps1 scripts/probe_msvc.py`.
+Основная сборочная среда — VS 2026 Professional; VC6 не является обязательным этапом.
 Настройка и использование IDA: `docs/ida-mcp.md`.
 Universal Modder: 13 навыков и CLI um, см. `docs/universal-modder.md`.
 

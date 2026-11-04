@@ -15,6 +15,9 @@
   ZoneServer, server databases or GoMMO server logic. Their absence is not a client blocker.
 - First build target is client dependency R3Engine - Win32 RTMovie Release;
   final executable target is RF_Online. Prior LoginServer build decision is revoked.
+- Primary build environment is installed VS 2026 Professional / modern MSVC x86.
+  Port settings from the legacy DSP into a modern project; VC6 is fallback only,
+  not a prerequisite. Keep renderer modernization separate from this port.
 
 - Main working root: E:\RFOnlineTrash\Source\WorkFlow.
 - Read README.md, docs/environment-audit.md and docs/next-steps.md before new work.
