@@ -4,6 +4,13 @@
 
 - CLIENT ONLY: reconstruct the RF Online client from legacy client/R3Engine code
   toward client 455. Work on R3Engine and asset tools only as client dependencies.
+- Delivery target: maintainable source that builds RF_Online.bin with the full
+  functionality and behavior of the pinned 455 client. Track all known gaps;
+  compilation, launching or a partial vertical slice is not project completion.
+- Server source files may be read as reference material for client contracts.
+  Do not modify, build or restore those files, including working copies.
+- Server source claims must be verified against the 455 client before treating
+  them as its behavior. Follow docs/client-acceptance.md for completeness evidence.
 - Do not build, restore, implement or plan AccountServer, LoginServer, ControlServer,
   ZoneServer, server databases or GoMMO server logic. Their absence is not a client blocker.
 - First build target is client dependency R3Engine - Win32 RTMovie Release;
