@@ -1,6 +1,6 @@
 # Память проекта
 
-Обновлено 2026-11-04. Основной root: E:\RFOnlineTrash\Source\WorkFlow.
+Обновлено 2026-11-05. Основной root: E:\RFOnlineTrash\Source\WorkFlow.
 
 ## Цель и границы
 
@@ -62,19 +62,21 @@ COFF timestamp и timestamp debug directory; после исключения э�
 inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 450 944bytes,entryRVA0x1BC340,SHA256
-9cb2329eda37ff61548f7b24fcb70b617b85a151623e867ced71439972e3a794.
-Snapshot character-mesh-source;предыдущие revisions сохранены. Обычный EXE
+2 451 456bytes,entryRVA0x1BC4B0,SHA256
+a070e9fb4350290fc8877940ae6cfbce417b0cc12b5a12b8a6a82ba5e121d573.
+Snapshot character-init-source;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA d59233bc12b46799bc8cc5311acfeb6dcb09f3e900624eb3b1933d08458b1c46,
-size4146176,entryRVA0x7EAA; snapshot work/client-character-mesh-lab/d59233bc12b46799/RF_Online.bin.
+Own lab EXE SHA ce6a1bb826d11f219218d4361f923ba1b11de9b31fe998b65b98696b68104cce,
+size4167680,entryRVA0x7EC8; snapshot work/client-character-mesh-lab/ce6a1bb826d11f21/RF_Online.bin.
 Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
-Character4CPU source functions подключены;245checks standalone/full-client и4COFF
-tests прошли,три actual linked InitVertex calls доходят до source. Skinned/unskinned
-InitVertex3vertices/0faces иrelease проверены,это ещё не CharacterGPU/455parity.
-research/character-mesh-source.md;inventory/character-mesh-source*.json.
+Character8source functions подключены,включая полный legacy InitVertex/vertex/physique.
+245binding+6732InitVertex checks/144cases/12FP modes standalone/full-client и4COFFtests
+прошли;два actual SDK LoadRealData calls доходят до собственного InitVertex.
+0-2meshes/0-2faces,matrices/UV/weights/bounds/parents иcreate/lock failure проверены
+через actual SDK MakeVB с test-only COM capture;не Character GPU/455acceptance.
+research/character-init-source.md;inventory/character-mesh-source*.json,character-init*.json.
 M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
 artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
 Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
@@ -145,9 +147,12 @@ EffectList bridge bounded500 entries, sentinel9; missing inline/out-of-domain un
 455 map/36 grades не перенесены. ObjectMesh ctor не задаёт blend pointer+160, dtor
 его освобождает; реальный InitVertex→FindBlendParent всегда записывает allocation,
 включая count0. Проверены skinned/unskinned CPU cases;constructor patch не обоснован.
-Четыре legacy CPU bindings восстановлены source,245checks/4COFFtests;455mesh5803bytes
-с inline matrices отличается от legacy1072. First-match455 vs last-matchlegacy отмечен.
-Полные InitVertex/455layout/renderer/unwind открыты. Source CLevel::GetFrustumNormalPlane
+Восемь legacy CPU functions/full InitVertex восстановлены source,245+6732checks/
+4COFFtests;455mesh5803bytes/vertex64/inline matrices отличается от legacy1072/36/heap.
+First-match455 vs last-matchlegacy иnegative455normals(+32/+36/+40)/UV(+44/+48) подтверждены.
+MESH08gate91F250/51F250 иloader922A00/522A00 найдены,оба тела совпадают в pinned PE.
+Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693framing доEOF.
+Новые parser/layout/renderer иполный unwind открыты. Source CLevel::GetFrustumNormalPlane
 рекурсивен (C4717); сверить 455, не исправлять по одному имени.
 Детали/хеши в inventory/character-*.json и research/character-*.md.
 
@@ -157,12 +162,17 @@ M6: следующий critical step — полноценный Character source
 перед полным D3D9 переносом. Header/library contract явно IDirect3DDevice8; новая
 engine API без переноса binary consumers не является455renderer restoration.
 Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
-Первый source unit готов:4legacy CPU bindings,245checks иactual InitVertex CPU lifecycle.
+Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVertex checks.
 Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
-unwind до него открыт. Следом восстановить полный InitVertex/vertex conversion и
-mesh-data source contract, затем реальные Character assets/buffer/material/texture
-lifecycle и455packed layouts. research/character-mesh-source.md. В455mesh5803bytes,
-64byte vertices иinline blend matrices;legacy1072/36bytes/heap pointer — иной ABI.
+unwind до него открыт. NEXT:455MESH08 framing/CPU data по922A00,materials/skin/indices/
+vertices на pinned sample Shield065;потом455packed layouts иD3D9buffer/render consumers.
+Не подавать MESH08 встарый unchecked MakeMeshData693 reader. Новый raw body607lines
+кеширован artifacts/character-mesh-source/mesh08-0x922a00.json/.txt;не выгружать снова.
+Gate91F250 сравнивает6bytes MESH08;LoadRealData9238F0/923902 ведут вgate/loader.
+Reference93B020 инвертирует normals ииспользует64byte vertex;93B5F0 задаётUV+44/+48.
+7bodies/normal/UV/magic instructions/2calls и3samples pinned вcharacter-init-reference.json.
+research/character-init-source.md. В455mesh5803/vertex64/inline matrices;
+legacy1072/36/heap — иной ABI. MESH08 source пока отсутствует,его восстанавливать дальше.
 research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
 Local time input уже перенесён; подробности research/client455-time-commands-source.md.
 Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:

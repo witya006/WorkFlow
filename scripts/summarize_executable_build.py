@@ -82,6 +82,7 @@ def main():
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
         if settings.get('RF_CHARACTER_MESH_SOURCE')=='ON':
             mesh_inputs=['scripts/native/character_mesh_bindings.cpp','scripts/native/test_character_mesh_bindings.cpp','scripts/native/client_character_mesh_lab.inc']
+            mesh_inputs+=['scripts/native/character_mesh_init.cpp','scripts/native/character_mesh_format.h','scripts/native/test_character_mesh_init.cpp','scripts/native/client_character_init_lab.inc']
             report['character_mesh_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in mesh_inputs}
         if settings.get('RF_CLIENT_455_WEATHER')=='ON':
             weather_inputs=['scripts/native/client455_weather.cpp','scripts/native/client455_weather_format.h','scripts/native/client_weather_lab.inc']

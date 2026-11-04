@@ -11,6 +11,10 @@ BINDINGS={
  '?FindParent@@YAHPAUObjectMesh@@H0H@Z':'_RFCharacterOriginal_BindParents',
  '?RematchParent@@YAHPAUObjectMesh@@H0H@Z':'_RFCharacterOriginal_RematchParents',
  '?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z':'_RFCharacterOriginal_BindBlends',
+ '?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z':'_RFCharacterOriginal_InitVertex',
+ '?ConvertVtToD3D@@YAXAAVCHARACTERVERTEX@@AAUEXPTVERTEX@@@Z':'_RFCharacterOriginal_ConvertVertex',
+ '?ConvertUV@@YAXAAVCHARACTERVERTEX@@UtagTEXCOORDFLOAT@@@Z':'_RFCharacterOriginal_ConvertUV',
+ '?DecodeTwoBlendPhysiqueData@@YAXPAVCHARACTERVERTEX@@HPAUPHYSIQUE@@H@Z':'_RFCharacterOriginal_DecodePhysique',
 }
 
 def source_bindings(data):

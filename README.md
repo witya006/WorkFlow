@@ -24,10 +24,11 @@ M5 закрыт для первого выбранного участка: helpe
 1443clock+314map-time native checks/12FP modes;432command cases/2628checks и20actual
 CHAT_INFO input/access/lifecycle checks прошли. Команды также управляют реальными
 weather states на GPU. research/client455-time-commands-source.md. Затем восстановлены
-4legacy Character CPU bindings:245native checks/4COFFtests,реальный InitVertex CPU
-skinned/unskinned setup/release и3source call destinations проверены в полном клиенте.
-research/character-mesh-source.md. Далее полный Character/InitVertex source и455layouts
-перед D3D9 port; остальные subsystems и полный chat/calendar/lighting открыты.
+8legacy Character functions,включая полный InitVertex:245binding+6732InitVertex checks/
+144cases/12FP modes,4COFFtests,2actual LoadRealData→source calls в полном клиенте.
+Это CPU comparison с test-only COM capture,не Character GPU acceptance.
+research/character-init-source.md. Следом455MESH08/data/layouts перед D3D9 port:
+найден отдельный loader для новых моделей. Остальные subsystems/chat/calendar/lighting открыты.
 Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
 M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 

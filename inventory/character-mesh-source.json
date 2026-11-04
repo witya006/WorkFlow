@@ -3,17 +3,20 @@
   "runtime": "/MT",
   "rva": null,
   "library": "work/recovered/character-legacy/mesh-bindings/CharacterMeshSource.lib",
-  "library_sha256": "ad1d823757303df0941eba198f402c5edaa645b295632190974abe5f220ced09",
+  "library_sha256": "73d2b22afd2de565808a34e82a891c39d551c9ba2899d797083142befaf90fe6",
   "adapted_archive": "work/recovered/character-legacy/mesh-bindings/CharacterMR-mesh-source.lib",
-  "adapted_archive_sha256": "e5b88901e3619ec500e036ad7150ca8990c8abb8888fc8130685b01d6f343522",
+  "adapted_archive_sha256": "54767fc0678118e28ce942180d6b919b7c1c4215f7f7191fe39542a303696c9a",
   "base_archive_sha256": "3ce694ff47aab901e772281f2e443d2b0ae55cecc4b1c711618e6e1307446dba",
   "source_sha256": {
     "character_mesh_bindings.cpp": "a7df51daf1639c0ce282ead09aef7be96a0793039bbe5898137af514dfea1da8",
-    "test_character_mesh_bindings.cpp": "2ac0694ddc0242ae114c1b9b5b802fe9cf9f6125701d892a57df04393e501528"
+    "character_mesh_init.cpp": "86c27d276ad67bdef3cb0ee1943d79d33dafa0b4b93870405af4bea3dba0d2d6",
+    "character_mesh_format.h": "47c9267985e84d1b2f82869746e5efeed6cc5815c95c8f990e02e464fc01e45b",
+    "test_character_mesh_bindings.cpp": "2ac0694ddc0242ae114c1b9b5b802fe9cf9f6125701d892a57df04393e501528",
+    "test_character_mesh_init.cpp": "3bc70529c558b161ede9df2f435a20994c7def6411f67977ece3e58d94c97531"
   },
   "script_sha256": {
-    "coff_source_bindings.py": "4afe4e377071a468e86e8a1123b42c211f5f3f132674e834fbf7e02492e14d0d",
-    "build_character_mesh_bindings.py": "0f07a2eb75d8fedf5c2f98afd175f1c49573fbd54cfacf7141b9179b1940591f"
+    "coff_source_bindings.py": "f68f6529036dbad304fe6139159ca1e28012efdb77e04e02c995344a25304221",
+    "build_character_mesh_bindings.py": "f1e6a49f66d5b12d33b61b30b9e5c9aa7a082b4b9d1718d165de9c5f86bf841d"
   },
   "header_sha256": "5d424272d3af6b6fa984da15047d1102bd406a6f56b3269273cbae3e9cad3cfc",
   "objects": [
@@ -68,31 +71,135 @@
     {
       "object": "work/recovered/character-legacy/mesh-bindings/character_07.obj",
       "input_sha256": "7e99992e36c9245404c8e3534ef19ef941808508799f9b710735267634f02ed5",
-      "sha256": "faff2feb89e35803941ebdb7c93f64907c0b77db9d1fdd82dbcc93594faf40f3",
+      "sha256": "5ef1c57e44675e18848608436b6bc888c283fecd8d9bae19e3423d8ef78be91f",
       "changes": [
+        {
+          "symbol": "?DecodeTwoBlendPhysiqueData@@YAXPAVCHARACTERVERTEX@@HPAUPHYSIQUE@@H@Z",
+          "retained_as": "_RFCharacterOriginal_DecodePhysique",
+          "symbol_index": 48,
+          "undefined_index": 447,
+          "redirected_callers": [
+            {
+              "section": 13,
+              "offset": "0x20",
+              "from_index": 48,
+              "to_index": 447
+            },
+            {
+              "section": 13,
+              "offset": "0x24",
+              "from_index": 48,
+              "to_index": 447
+            },
+            {
+              "section": 14,
+              "offset": "0x0",
+              "from_index": 48,
+              "to_index": 447
+            }
+          ]
+        },
+        {
+          "symbol": "?ConvertVtToD3D@@YAXAAVCHARACTERVERTEX@@AAUEXPTVERTEX@@@Z",
+          "retained_as": "_RFCharacterOriginal_ConvertVertex",
+          "symbol_index": 188,
+          "undefined_index": 448,
+          "redirected_callers": [
+            {
+              "section": 40,
+              "offset": "0x20",
+              "from_index": 188,
+              "to_index": 448
+            },
+            {
+              "section": 40,
+              "offset": "0x24",
+              "from_index": 188,
+              "to_index": 448
+            },
+            {
+              "section": 41,
+              "offset": "0x0",
+              "from_index": 188,
+              "to_index": 448
+            }
+          ]
+        },
+        {
+          "symbol": "?ConvertUV@@YAXAAVCHARACTERVERTEX@@UtagTEXCOORDFLOAT@@@Z",
+          "retained_as": "_RFCharacterOriginal_ConvertUV",
+          "symbol_index": 201,
+          "undefined_index": 449,
+          "redirected_callers": [
+            {
+              "section": 43,
+              "offset": "0x20",
+              "from_index": 201,
+              "to_index": 449
+            },
+            {
+              "section": 43,
+              "offset": "0x24",
+              "from_index": 201,
+              "to_index": 449
+            },
+            {
+              "section": 44,
+              "offset": "0x0",
+              "from_index": 201,
+              "to_index": 449
+            }
+          ]
+        },
+        {
+          "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
+          "retained_as": "_RFCharacterOriginal_InitVertex",
+          "symbol_index": 237,
+          "undefined_index": 450,
+          "redirected_callers": [
+            {
+              "section": 58,
+              "offset": "0x46",
+              "from_index": 237,
+              "to_index": 450
+            },
+            {
+              "section": 58,
+              "offset": "0x4a",
+              "from_index": 237,
+              "to_index": 450
+            },
+            {
+              "section": 59,
+              "offset": "0x0",
+              "from_index": 237,
+              "to_index": 450
+            }
+          ]
+        },
         {
           "symbol": "?FindParent@@YAPAUObjectMesh@@PADPAU1@H@Z",
           "retained_as": "_RFCharacterOriginal_FindByName",
           "symbol_index": 282,
-          "undefined_index": 447,
+          "undefined_index": 451,
           "redirected_callers": [
             {
               "section": 61,
               "offset": "0x20",
               "from_index": 282,
-              "to_index": 447
+              "to_index": 451
             },
             {
               "section": 61,
               "offset": "0x24",
               "from_index": 282,
-              "to_index": 447
+              "to_index": 451
             },
             {
               "section": 62,
               "offset": "0x0",
               "from_index": 282,
-              "to_index": 447
+              "to_index": 451
             }
           ]
         },
@@ -100,37 +207,25 @@
           "symbol": "?FindParent@@YAHPAUObjectMesh@@H0H@Z",
           "retained_as": "_RFCharacterOriginal_BindParents",
           "symbol_index": 295,
-          "undefined_index": 448,
+          "undefined_index": 452,
           "redirected_callers": [
-            {
-              "section": 50,
-              "offset": "0x727",
-              "from_index": 295,
-              "to_index": 448
-            },
-            {
-              "section": 50,
-              "offset": "0x750",
-              "from_index": 295,
-              "to_index": 448
-            },
             {
               "section": 64,
               "offset": "0x20",
               "from_index": 295,
-              "to_index": 448
+              "to_index": 452
             },
             {
               "section": 64,
               "offset": "0x24",
               "from_index": 295,
-              "to_index": 448
+              "to_index": 452
             },
             {
               "section": 65,
               "offset": "0x0",
               "from_index": 295,
-              "to_index": 448
+              "to_index": 452
             }
           ]
         },
@@ -138,25 +233,25 @@
           "symbol": "?RematchParent@@YAHPAUObjectMesh@@H0H@Z",
           "retained_as": "_RFCharacterOriginal_RematchParents",
           "symbol_index": 308,
-          "undefined_index": 449,
+          "undefined_index": 453,
           "redirected_callers": [
             {
               "section": 67,
               "offset": "0x20",
               "from_index": 308,
-              "to_index": 449
+              "to_index": 453
             },
             {
               "section": 67,
               "offset": "0x24",
               "from_index": 308,
-              "to_index": 449
+              "to_index": 453
             },
             {
               "section": 68,
               "offset": "0x0",
               "from_index": 308,
-              "to_index": 449
+              "to_index": 453
             }
           ]
         },
@@ -164,31 +259,25 @@
           "symbol": "?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z",
           "retained_as": "_RFCharacterOriginal_BindBlends",
           "symbol_index": 321,
-          "undefined_index": 450,
+          "undefined_index": 454,
           "redirected_callers": [
-            {
-              "section": 50,
-              "offset": "0x7c9",
-              "from_index": 321,
-              "to_index": 450
-            },
             {
               "section": 71,
               "offset": "0x20",
               "from_index": 321,
-              "to_index": 450
+              "to_index": 454
             },
             {
               "section": 71,
               "offset": "0x24",
               "from_index": 321,
-              "to_index": 450
+              "to_index": 454
             },
             {
               "section": 72,
               "offset": "0x0",
               "from_index": 321,
-              "to_index": 450
+              "to_index": 454
             }
           ]
         }
@@ -221,24 +310,17 @@
       "rva": null
     }
   ],
-  "actual_init_vertex_source_calls": [
+  "source_function_count": 8,
+  "actual_load_real_source_calls": [
     {
-      "section": 50,
-      "offset": "0x727",
-      "from_index": 295,
-      "to_index": 448
+      "offset": 120,
+      "type": 20,
+      "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z"
     },
     {
-      "section": 50,
-      "offset": "0x750",
-      "from_index": 295,
-      "to_index": 448
-    },
-    {
-      "section": 50,
-      "offset": "0x7c9",
-      "from_index": 321,
-      "to_index": 450
+      "offset": 287,
+      "type": 20,
+      "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z"
     }
   ],
   "native_test": {
@@ -247,12 +329,23 @@
     "actual_init_vertex": true,
     "gpu_used": false
   },
-  "executable_sha256": "390ad7b9c5757b2d664f00bf6758ed4d51ff75efb7aa0ad773fe9a1d6f44ba2e",
+  "native_init_test": {
+    "checks_passed": 6732,
+    "cases": 144,
+    "precision_rounding_modes": 12,
+    "source_init_vertex": true,
+    "actual_sdk_make_vb": true,
+    "test_only_com_capture": true,
+    "gpu_used": false,
+    "remaining_capture_buffers": 0
+  },
+  "executable_sha256": "a9d31bf4bb9509d588ff389c1d50552da6ed250cb818ade197b82c0fa1eb7025",
+  "init_executable_sha256": "e49939851f43c464c94cb931df7b9db26a39ba846b497be1e3dc1571418093c2",
   "limits": [
-    "Legacy1072byte mesh CPU bindings,not455renderer parity",
-    "No GPU/textures/triangle upload; actual InitVertex CPU setup with3vertices and0faces",
+    "Legacy1072byte mesh/36byte vertex source prerequisite,not455renderer parity",
+    "Empty textures;0-2triangle expanded VB inputs captured by test-only COM doubles,not physical GPU",
     "Bounded <=4legacy blend parents;unsafe overflow/OOM/invalid inputs unverified",
-    "Retained old bodies only for comparison;incoming relocations routed to own source",
-    "Other Character functions still binary-only;455packed5803byte layout/first-match/inline matrices differ"
+    "Retained old bodies only for comparison;incoming callers select own source",
+    "Other Character functions still binary-only;455packed5803byte layout/64byte vertex/first-match/inline matrices differ"
   ]
 }

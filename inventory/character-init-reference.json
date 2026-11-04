@@ -1,0 +1,400 @@
+{
+  "reference": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "convert_vertex64",
+          "va": "0x93b020",
+          "rva": "0x53b020",
+          "size": 49,
+          "sha256": "b1fb69024d08299a6611f903b81da516320e7c94e4f2c77a8b55bb2c3ba0ed7b"
+        },
+        {
+          "name": "convert_uv64",
+          "va": "0x93b5f0",
+          "rva": "0x53b5f0",
+          "size": 23,
+          "sha256": "2f99345e81b371cafac3c99246e13e65fea30f18a56083d96aa3b1affdef40cc"
+        },
+        {
+          "name": "decode_physique64",
+          "va": "0x93aa10",
+          "rva": "0x53aa10",
+          "size": 704,
+          "sha256": "460c465d635b7884ba60ece86ae2e166eea59a67310741ac7bb2300f317fe83f"
+        },
+        {
+          "name": "make_indexed_vertex",
+          "va": "0x93b310",
+          "rva": "0x53b310",
+          "size": 731,
+          "sha256": "3a7d26d4ee96f9c926f0e9be70b0df86f2e99b2ba68a12cc9697f6905babeaa3"
+        },
+        {
+          "name": "vertex64_to36",
+          "va": "0x93b130",
+          "rva": "0x53b130",
+          "size": 452,
+          "sha256": "b0ca8978aa6888e96624a6ed70819bacbb5211114bbbdb8fb060d989df08c8e7"
+        },
+        {
+          "name": "mesh08_gate",
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "size": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "mesh08_loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        }
+      ],
+      "confirmed_normal_sign": "x87 load/negate/store into normal+32/36/40",
+      "confirmed_magic": "MESH08 at first6bytes",
+      "confirmed_load_real_calls": [
+        "0x9238f0",
+        "0x923902"
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "convert_vertex64",
+          "va": "0x93b020",
+          "rva": "0x53b020",
+          "size": 49,
+          "sha256": "b1fb69024d08299a6611f903b81da516320e7c94e4f2c77a8b55bb2c3ba0ed7b"
+        },
+        {
+          "name": "convert_uv64",
+          "va": "0x93b5f0",
+          "rva": "0x53b5f0",
+          "size": 23,
+          "sha256": "2f99345e81b371cafac3c99246e13e65fea30f18a56083d96aa3b1affdef40cc"
+        },
+        {
+          "name": "decode_physique64",
+          "va": "0x93aa10",
+          "rva": "0x53aa10",
+          "size": 704,
+          "sha256": "460c465d635b7884ba60ece86ae2e166eea59a67310741ac7bb2300f317fe83f"
+        },
+        {
+          "name": "make_indexed_vertex",
+          "va": "0x93b310",
+          "rva": "0x53b310",
+          "size": 731,
+          "sha256": "3a7d26d4ee96f9c926f0e9be70b0df86f2e99b2ba68a12cc9697f6905babeaa3"
+        },
+        {
+          "name": "vertex64_to36",
+          "va": "0x93b130",
+          "rva": "0x53b130",
+          "size": 452,
+          "sha256": "b0ca8978aa6888e96624a6ed70819bacbb5211114bbbdb8fb060d989df08c8e7"
+        },
+        {
+          "name": "mesh08_gate",
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "size": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "mesh08_loader",
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "size": 3739,
+          "sha256": "b0877db96a760b7e727242fc119dffd2c6c68f3a6fca37afb8cc88e78b680e11"
+        }
+      ],
+      "confirmed_normal_sign": "x87 load/negate/store into normal+32/36/40",
+      "confirmed_magic": "MESH08 at first6bytes",
+      "confirmed_load_real_calls": [
+        "0x9238f0",
+        "0x923902"
+      ]
+    }
+  ],
+  "legacy_object_sha256": "3849deb835602cee422b6b2e904a6ab8d7dc0f73958f89459362b6529c2eedcd",
+  "legacy_functions": [
+    {
+      "symbol": "?FindParent@@YAPAUObjectMesh@@PADPAU1@H@Z",
+      "file_offset": 52205,
+      "size": 117,
+      "body_sha256": "cbb03b6f7ab1a578b603aca19dacd274065380f9903efdb50487b723a8e360ef",
+      "rva": null
+    },
+    {
+      "symbol": "?FindParent@@YAHPAUObjectMesh@@H0H@Z",
+      "file_offset": 52524,
+      "size": 198,
+      "body_sha256": "781cbabcb96147dec4787ff068ddbd15d88c7a09a69b65920b31972412bac2a3",
+      "rva": null
+    },
+    {
+      "symbol": "?RematchParent@@YAHPAUObjectMesh@@H0H@Z",
+      "file_offset": 52984,
+      "size": 212,
+      "body_sha256": "af67897deae529c27a2fe5a37e7ea6cdcf84959b4870b35a35d0a71e237b8b43",
+      "rva": null
+    },
+    {
+      "symbol": "?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z",
+      "file_offset": 53469,
+      "size": 551,
+      "body_sha256": "69c065c67db061fea42bdcb69d244bf155e8e2aca4cd328f8c624925b374e459",
+      "rva": null
+    },
+    {
+      "symbol": "?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z",
+      "file_offset": 48240,
+      "size": 2254,
+      "body_sha256": "63924b92cb70df2e919c241c9d2d87229f47282da784fcb157324499b9142491",
+      "rva": null
+    },
+    {
+      "symbol": "?ConvertVtToD3D@@YAXAAVCHARACTERVERTEX@@AAUEXPTVERTEX@@@Z",
+      "file_offset": 47145,
+      "size": 43,
+      "body_sha256": "d251b1673d721e0d80e993f8c964249da9a8cd0add3e71191b4218647146cf9c",
+      "rva": null
+    },
+    {
+      "symbol": "?ConvertUV@@YAXAAVCHARACTERVERTEX@@UtagTEXCOORDFLOAT@@@Z",
+      "file_offset": 47373,
+      "size": 25,
+      "body_sha256": "c1834a045c338c1df1120d6214e1142029115ed1196b9c60b1a72e4cf998da5e",
+      "rva": null
+    },
+    {
+      "symbol": "?DecodeTwoBlendPhysiqueData@@YAXPAVCHARACTERVERTEX@@HPAUPHYSIQUE@@H@Z",
+      "file_offset": 40790,
+      "size": 628,
+      "body_sha256": "29465962211c3af4876beb1f84d87facdc49b90ad01df0d88a506cb13092a7c2",
+      "rva": null
+    }
+  ],
+  "samples": [
+    {
+      "original_relative": "item/Shield/Mesh/ACCRETIA_ARMOR_LSHIELD_031.msh",
+      "copy": "work/client-reference/character-models/ACCRETIA_ARMOR_LSHIELD_031.msh",
+      "sha256": "a85555a3ba1edb6222591ff7fe9c0a4beaad4ed56e01219c78d7077e3fad8074",
+      "bytes": 106242,
+      "prefix_hex": "100044756d6d795f41726d735f4c0000",
+      "mesh08_prefix": false,
+      "legacy_framing": {
+        "accepted": true,
+        "mesh_count": 16,
+        "extent": 106242,
+        "trailing_bytes": 0,
+        "records": [
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 440,
+            "faces": 704,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 140,
+            "faces": 192,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          }
+        ],
+        "scope": "Bounded framing only,not complete geometry/skin/renderer semantics"
+      }
+    },
+    {
+      "original_relative": "item/Shield/Mesh/ACCRETIA_ARMOR_LSHIELD_065.msh",
+      "copy": "work/client-reference/character-models/ACCRETIA_ARMOR_LSHIELD_065.msh",
+      "sha256": "3ac6020a3afaf9fd1d3696dc51689a6c87987fca6e98973c37c021102947f737",
+      "bytes": 413972,
+      "prefix_hex": "4d4553483038180044756d6d795f4172",
+      "mesh08_prefix": true,
+      "legacy_framing": {
+        "accepted": false,
+        "reason": "MESH08 requires its separate455loader"
+      }
+    },
+    {
+      "original_relative": "item/Armor/Mesh/ACCRETIA_ARMOR_CLOAK_002.msh",
+      "copy": "work/client-reference/character-models/ACCRETIA_ARMOR_CLOAK_002.msh",
+      "sha256": "88c20c25e540191745d1fb8100fde07e38698ce8264b1e492c2acaea5660da33",
+      "bytes": 179644,
+      "prefix_hex": "060044756d6d795f41726d735f4c0000",
+      "mesh08_prefix": false,
+      "legacy_framing": {
+        "accepted": true,
+        "mesh_count": 6,
+        "extent": 179644,
+        "trailing_bytes": 0,
+        "records": [
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 999,
+            "faces": 1676,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          },
+          {
+            "vertices": 0,
+            "faces": 0,
+            "physiques": 0,
+            "compact": 1,
+            "bones": 0
+          }
+        ],
+        "scope": "Bounded framing only,not complete geometry/skin/renderer semantics"
+      }
+    }
+  ],
+  "confirmed": [
+    "Legacy source InitVertex/36byte vertices are a dependency restoration,not full455geometry behavior",
+    "455negates normals and uses64byte weighted/indexed/tangent vertex data",
+    "Actual reference LoadRealData detects MESH08 and uses a distinct loader;installed065sample has this header"
+  ],
+  "unknown": [
+    "MESH08 full framing/material/texture/skin/vertex/index semantics and source implementation",
+    "All other installed model variants/complete model inventory",
+    "455packed5803byte mesh and GPU/D3D9pipeline;legacy source comparison does not certify them"
+  ],
+  "raw_analysis": "artifacts/character-mesh-source/vertex-*.json and mesh08-*.json;owned IDAab009b3b/012583e5closed/save;no input EXE executed"
+}

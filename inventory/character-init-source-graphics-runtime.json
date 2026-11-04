@@ -1,0 +1,575 @@
+{
+  "exe": "work/client-graphics-lab/ce6a1bb826d11f21/RF_Online.bin",
+  "exe_sha256": "ce6a1bb826d11f219218d4361f923ba1b11de9b31fe998b65b98696b68104cce",
+  "architecture": "x86",
+  "cases": [
+    {
+      "stage": "complete",
+      "adapter": "NVIDIA GeForce RTX 2080 Ti",
+      "checks": 20,
+      "failures": 0,
+      "warnings": 0,
+      "errors": 0,
+      "hr": 0,
+      "device_flags": 32,
+      "backbuffer_format": 22,
+      "fpu": [
+        639,
+        639,
+        127
+      ],
+      "texture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "changed_pixels": 0,
+      "entity_loaded": 0,
+      "entity_drawn": 0,
+      "entity_groups": 0,
+      "entity_textures": 0,
+      "allocation_before": 0,
+      "allocation_after": 0,
+      "device_refs_after_release": 0,
+      "d3d_refs_after_release": 0,
+      "case": "device",
+      "input": null,
+      "exit_code": 0,
+      "output": "work/client-graphics-lab/ce6a1bb826d11f21/device/result-001.json",
+      "archives": [],
+      "fpu_stages": {
+        "after_load": 0,
+        "before_draw": 127,
+        "after_draw": 127,
+        "weather": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "frame": "work/client-graphics-lab/ce6a1bb826d11f21/device/frame-001.bmp",
+      "frame_sha256": "81e7ae1c54890083e98239505cba1fdd372c516b66cab101cc6d7ab2c6ab44a3"
+    },
+    {
+      "stage": "complete",
+      "adapter": "NVIDIA GeForce RTX 2080 Ti",
+      "checks": 49,
+      "failures": 0,
+      "warnings": 0,
+      "errors": 0,
+      "hr": 0,
+      "device_flags": 32,
+      "backbuffer_format": 22,
+      "fpu": [
+        639,
+        639,
+        127
+      ],
+      "texture": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "changed_pixels": 307200,
+      "entity_loaded": 0,
+      "entity_drawn": 0,
+      "entity_groups": 0,
+      "entity_textures": 0,
+      "allocation_before": 0,
+      "allocation_after": 0,
+      "device_refs_after_release": 0,
+      "d3d_refs_after_release": 0,
+      "case": "level-Platform01",
+      "input": "Map/Platform01/Platform01.bsp",
+      "exit_code": 0,
+      "output": "work/client-graphics-lab/ce6a1bb826d11f21/level-Platform01/result-001.json",
+      "archives": [
+        {
+          "path": "Map/Entity/MapEntity0.rpk",
+          "sha256": "d080565ee380fc28da65c8114eb4cb58fc8dcb90589a0e441443cc9c3fc40b1a"
+        },
+        {
+          "path": "Map/Entity/MapEntity1.rpk",
+          "sha256": "e95591250e8fb269698f48197812afcb8e95bba89b0ee9b1a32f92f3f46ef9d7"
+        },
+        {
+          "path": "Map/Entity/MapEntity10.rpk",
+          "sha256": "caeab897df38b168b6e132ebce8923434a48bc3dc523d09d33c562c0eb7945f4"
+        },
+        {
+          "path": "Map/Entity/MapEntity11.rpk",
+          "sha256": "01cdbdce1098c1a91d3640bb836418245a76f02aa3f04ca4807261f2c0a0b703"
+        },
+        {
+          "path": "Map/Entity/MapEntity12.rpk",
+          "sha256": "30d613bd9f3e1c819e3a05bbe91f84ecbd26b1e539c8139b63c23f266b666fb7"
+        },
+        {
+          "path": "Map/Entity/MapEntity13.rpk",
+          "sha256": "c12e86e9ef26f27a5c6e226874b2e88ba60a41c99643d93484a083712bb29560"
+        },
+        {
+          "path": "Map/Entity/MapEntity14.rpk",
+          "sha256": "c9098719c0be5b24c3e199622423549080a542a3b0589248cb6b2b7f8ddae2fd"
+        },
+        {
+          "path": "Map/Entity/MapEntity15.rpk",
+          "sha256": "736f51bdd4e196a1e7953e52fd83eeac881608353f7dcf274d4b1ff41f4b8c55"
+        },
+        {
+          "path": "Map/Entity/MapEntity16.rpk",
+          "sha256": "b5f16be9a8de04d681bad3c0116a763cde7609b96980fcac431b9e6bd3b8ddf0"
+        },
+        {
+          "path": "Map/Entity/MapEntity17.rpk",
+          "sha256": "011cb8331fcd552fff1090b2b7431f117f626419a67c083184f22fcee83a2b73"
+        },
+        {
+          "path": "Map/Entity/MapEntity18.rpk",
+          "sha256": "160ed5ad3a97f400750ea3cc902363e98f3eb0f3f1b9c1e50e3f204563b2b181"
+        },
+        {
+          "path": "Map/Entity/MapEntity19.rpk",
+          "sha256": "5453e8a9fc00eb9457031c8a887661e7a9b091d2de2af319cdba075ad8b86350"
+        },
+        {
+          "path": "Map/Entity/MapEntity2.rpk",
+          "sha256": "052cbbf61d00050b52f82d7a8a930aadcb979b2cdf6ea6dac128ef45e331217d"
+        },
+        {
+          "path": "Map/Entity/MapEntity20.rpk",
+          "sha256": "3097f0e8740e00bb75a44dbd03343cef6f9d25647164b88f6cacb572c3510a74"
+        },
+        {
+          "path": "Map/Entity/MapEntity21.rpk",
+          "sha256": "701ba90ca0d70566cf8336f20805d7bbd6328350e4dfd8fa3769a50fc0632d02"
+        },
+        {
+          "path": "Map/Entity/MapEntity22.rpk",
+          "sha256": "a6ec046c533322c848e0b5a2ba2bebbf914568d5f3bb8c899b65f7786588284c"
+        },
+        {
+          "path": "Map/Entity/MapEntity24.rpk",
+          "sha256": "501b2367557fae00932e3346aca13f3d830d288cb48481dc7008dea8522798f3"
+        },
+        {
+          "path": "Map/Entity/MapEntity25.rpk",
+          "sha256": "15c3b3c3bc5076d3e434e57d080d8a8abcd87a44523e75ebbc2eb6d8edc2538e"
+        },
+        {
+          "path": "Map/Entity/MapEntity26.rpk",
+          "sha256": "bf751147526d2df6ed80e5b90aeeebd5011d256ab635a5ba4375a9e056216a4d"
+        },
+        {
+          "path": "Map/Entity/MapEntity27.rpk",
+          "sha256": "81c832df27ebabdac919a249ab182d21e85140d4db12da2950b8a2afdc54c18c"
+        },
+        {
+          "path": "Map/Entity/MapEntity28.rpk",
+          "sha256": "0c715e8b57dba2f346a340fa4a238ef7b670f98cb65fe4a4d8693aa8dfd1aa86"
+        },
+        {
+          "path": "Map/Entity/MapEntity29.rpk",
+          "sha256": "66277753d488470d97527269c4446cd32d6ed38031c85ccc13130ee5125b1f28"
+        },
+        {
+          "path": "Map/Entity/MapEntity3.rpk",
+          "sha256": "8a50dfbcefb7d0d30ae9c7e8c9607a6a6c6332f196e9d457fe1c4ebc402f2732"
+        },
+        {
+          "path": "Map/Entity/MapEntity30.rpk",
+          "sha256": "e6a7a6ca6836745abbb0d52314798fd3256c569617cee7c4aa27290888131924"
+        },
+        {
+          "path": "Map/Entity/MapEntity31.rpk",
+          "sha256": "da627dd3c19ee780524912521ef522411bd6b533551f9e7231ec5d41c463b6a1"
+        },
+        {
+          "path": "Map/Entity/MapEntity32.rpk",
+          "sha256": "580300d109a60c8078cba588add68a2c93f118896dfaac9206df62a192dd88c1"
+        },
+        {
+          "path": "Map/Entity/MapEntity34.rpk",
+          "sha256": "101778569e373c80e5599dca533d10690b57cf8eca1e8310531158b7c8e49676"
+        },
+        {
+          "path": "Map/Entity/MapEntity35.rpk",
+          "sha256": "9e729cfb1383ea360e5364afbf9c0d7925cbd9803217eed738ed3e91141692fd"
+        },
+        {
+          "path": "Map/Entity/MapEntity36.rpk",
+          "sha256": "10d11c8af607581ddf21e22bbda05dcc4bb62ef424de2c4855e41c8f673d191c"
+        },
+        {
+          "path": "Map/Entity/MapEntity37.rpk",
+          "sha256": "d387dd03cfcb53ed13a6395eb9d1f0a08c44413740388d19e8f793868bb54dad"
+        },
+        {
+          "path": "Map/Entity/MapEntity4.rpk",
+          "sha256": "073621ab145faa4214b31d3b2c522b72f3810f7ffb1cb985925be1e5f991b9ff"
+        },
+        {
+          "path": "Map/Entity/MapEntity47.rpk",
+          "sha256": "2a9b9063d062e8806deb31a1881e16c2739fa103df69553e42cb28ba4810bd98"
+        },
+        {
+          "path": "Map/Entity/MapEntity48.rpk",
+          "sha256": "cc6f885a55dbcefd828998dea9421766268d0250e1e68d44d175186b58a20ed9"
+        },
+        {
+          "path": "Map/Entity/MapEntity49.rpk",
+          "sha256": "a315d8f7000979bc69eafb3716b669331bd2c6ef8650644339db75a80b0d59c3"
+        },
+        {
+          "path": "Map/Entity/MapEntity5.rpk",
+          "sha256": "897665fe8537ed0d6917ce7f33cd9723e819a3331c0c791d6843f0c6e688157f"
+        },
+        {
+          "path": "Map/Entity/MapEntity50.rpk",
+          "sha256": "16909baafba35ccd505748246d0b5ca958428fa0ba737ea5c73a352a1847ce44"
+        },
+        {
+          "path": "Map/Entity/MapEntity51.rpk",
+          "sha256": "dc7383b6892ae3b89b7f4353141f2358e9a69a57051029f8e2d39ef3ac8d2080"
+        },
+        {
+          "path": "Map/Entity/MapEntity52.rpk",
+          "sha256": "9d2d7ab6c8d7362eac45de5d0ae391c9d43030057aeb3cf31d54076a4ca3d57d"
+        },
+        {
+          "path": "Map/Entity/MapEntity53.rpk",
+          "sha256": "970c391be917dae3fe778d223c95fad538e2b9629fd3aa775a72a52c4d000b7c"
+        },
+        {
+          "path": "Map/Entity/MapEntity54.rpk",
+          "sha256": "49d6f87058607c1a350eb466423ff3c4473d3503401b49f738581f5ced334509"
+        },
+        {
+          "path": "Map/Entity/MapEntity55.rpk",
+          "sha256": "630a27802a232dc0a4674223e76068b226e7d42340dc9b1896313c900d75b33a"
+        },
+        {
+          "path": "Map/Entity/MapEntity56.rpk",
+          "sha256": "7cf5b995a8a2d50ab865b35f3c684e52c04982850fe9ca2361d91ba987b97470"
+        },
+        {
+          "path": "Map/Entity/MapEntity57.rpk",
+          "sha256": "d744d8f5bb8d5149e647599cf37e80aeb24aecfaa3a948cfb0054829ef56a39a"
+        },
+        {
+          "path": "Map/Entity/MapEntity58.rpk",
+          "sha256": "6bd04b4da4ef5c59613dab58dbc6b34d8f1340da6abcb6a416d65821838b3bec"
+        },
+        {
+          "path": "Map/Entity/MapEntity59.rpk",
+          "sha256": "e8e4172b86c472e1d4f3bf9b71f820a0e071f62e8dbcc6ed6ccca15e33ede039"
+        },
+        {
+          "path": "Map/Entity/MapEntity6.rpk",
+          "sha256": "72b52bdd3ec9760ec96af3b4308d35af471f08e24fa59c0fe4c57ad0d52fed9c"
+        },
+        {
+          "path": "Map/Entity/MapEntity60.rpk",
+          "sha256": "b601a3c957e9a8efa5d2e90e19606cbe8adcb5f1b58d4bc23e75a31d4acecff8"
+        },
+        {
+          "path": "Map/Entity/MapEntity61.rpk",
+          "sha256": "4186bc44f6c669de3f82a2706a0cefacbf78e2076a82c5f24b0cb642903ea130"
+        },
+        {
+          "path": "Map/Entity/MapEntity62.rpk",
+          "sha256": "689d97d713574c0a43776413221de3c6e2d160920b711df88e8ef7e548da11c4"
+        },
+        {
+          "path": "Map/Entity/MapEntity63.rpk",
+          "sha256": "2868cc3e087c14311f8a570100f215b40bc0db8860c41b9a327adc1759b9db0c"
+        },
+        {
+          "path": "Map/Entity/MapEntity64.rpk",
+          "sha256": "ca5f4d974540098ebf03a6c69145da5ee15acf827d503b1dd5ed0ecd2c2a6de8"
+        },
+        {
+          "path": "Map/Entity/MapEntity65.rpk",
+          "sha256": "853e0465aadcbf8f159f93ada7faaf6e584809a545b72a5b1ce62cb4e3977d22"
+        },
+        {
+          "path": "Map/Entity/MapEntity66.rpk",
+          "sha256": "59d8a24af9087332f80d442af4c925e33e6d62d3479ce07c6015416bcdbe6268"
+        },
+        {
+          "path": "Map/Entity/MapEntity67.rpk",
+          "sha256": "d11a08cf8aa8fb3e3b2232eadb732f10fa0be1f2956a2020c02d2604f0344165"
+        },
+        {
+          "path": "Map/Entity/MapEntity68.rpk",
+          "sha256": "b97a302f956c81ce2f4eebb0b5ea33f061fbb53038a434307d53da651e3495ee"
+        },
+        {
+          "path": "Map/Entity/MapEntity69.rpk",
+          "sha256": "85fa25803d6b674ec56ce0ff365b84817cd05668ef05cc0e59e1a88a22de95e3"
+        },
+        {
+          "path": "Map/Entity/MapEntity7.rpk",
+          "sha256": "b7693f243938832b56b01f55aad25e035434e7425ecb8225a7aab53beb24ea11"
+        },
+        {
+          "path": "Map/Entity/MapEntity70.rpk",
+          "sha256": "aa6d8ffee32a7461065e98ef370dcb39d0760d3d9aa8d9c98760313f3df5fe78"
+        },
+        {
+          "path": "Map/Entity/MapEntity71.rpk",
+          "sha256": "910d9f8af1f1ab3446cbf8c968f9591c7ebbb7e0bdb94bca93f49defde425e71"
+        },
+        {
+          "path": "Map/Entity/MapEntity72.rpk",
+          "sha256": "0185d87d88a34367f61d487169e2d583f18663759d4d4b03f5182d9b38d259f7"
+        },
+        {
+          "path": "Map/Entity/MapEntity73.rpk",
+          "sha256": "c5d6e0df385e935cd7044a0f168d275e70df2ea161cdda6b6f9384502a3f17e7"
+        },
+        {
+          "path": "Map/Entity/MapEntity74.rpk",
+          "sha256": "4ed547902efb3dbc55523e2857c729198cd019c3e7e42ec392e26026b591ce56"
+        },
+        {
+          "path": "Map/Entity/MapEntity75.rpk",
+          "sha256": "26bd39aa2ff5e1c5bb98098888ff2cab053eaff5754e35190e2286828ec79823"
+        },
+        {
+          "path": "Map/Entity/MapEntity76.rpk",
+          "sha256": "369535186fecca7b4255b3ec0b7cc3e5b3d6c0adf5f0a8249ac5b27604c12221"
+        },
+        {
+          "path": "Map/Entity/MapEntity77.rpk",
+          "sha256": "da6bbc2d944096d5fd97289533a2ec84e1e4c53c48e16d7cd59f532595a3a21b"
+        },
+        {
+          "path": "Map/Entity/MapEntity78.rpk",
+          "sha256": "671362314854e6f39ecc9a5f9ad22c99c875fbd15baabdf8c0fad2afb0acc175"
+        },
+        {
+          "path": "Map/Entity/MapEntity79.rpk",
+          "sha256": "9edc6781b1f129309250ab8296d580813a6803764c72143dba699265052340e8"
+        },
+        {
+          "path": "Map/Entity/MapEntity8.rpk",
+          "sha256": "73f3a07d3938bfe543c87fd4194e128ca3145a152a5fa5876541574f60f0ad42"
+        },
+        {
+          "path": "Map/Entity/MapEntity80.rpk",
+          "sha256": "a884be3d66396ce63a20facead34651d2dc429f9751d61b7efeffbaa6a8be40c"
+        },
+        {
+          "path": "Map/Entity/MapEntity81.rpk",
+          "sha256": "c2d7af5d1c018ec0289ebb8985f64b3634649635e85b96ccff8f82e36ecfd2ee"
+        },
+        {
+          "path": "Map/Entity/MapEntity82.rpk",
+          "sha256": "718f9a68bfb216a1545acb576f35c3f72866747f1fd9a3ac0a8d0b979004dcb3"
+        },
+        {
+          "path": "Map/Entity/MapEntity83.rpk",
+          "sha256": "0d922e1b589357286e086b638a71e1bc1ebe0eadb052a22138f82df12ceccf03"
+        },
+        {
+          "path": "Map/Entity/MapEntity84.rpk",
+          "sha256": "5398f307a8b21445a37767d1ef2d41cd32cbda07ec213fb24cb430453216a296"
+        },
+        {
+          "path": "Map/Entity/MapEntity85.rpk",
+          "sha256": "0951df90cf217f351f04f5a9638f9e9a2a2322f86eab052ed45abadcb6b4bce8"
+        },
+        {
+          "path": "Map/Entity/MapEntity86.rpk",
+          "sha256": "365629103ab00f6bb5715f2d7d868ff76938b1be9661aa9ba6d14e9fc66e09ec"
+        },
+        {
+          "path": "Map/Entity/MapEntity87.rpk",
+          "sha256": "83b063f4c835b9e5c6899f3b2cd0cf12e117f6930eaa2198d6ead8720551cced"
+        },
+        {
+          "path": "Map/Entity/MapEntity88.rpk",
+          "sha256": "a6c4b4e3902d3d069e9f7ea4334e2e4ddc749cc0c6a154b738f5e5f09433de1f"
+        },
+        {
+          "path": "Map/Entity/MapEntity9.rpk",
+          "sha256": "ff7fd82fc43a4e0edb9d8323254195739979d7c4e2b6e294d68cf180f40eab06"
+        },
+        {
+          "path": "Map/Platform01/am16.dds",
+          "sha256": "f66caff78f2278e5ecf6e9f4246afc771745995bae090722e8d3043295c3efb5"
+        },
+        {
+          "path": "Map/Platform01/Platform01-[PORTAL].txt",
+          "sha256": "624c3a036b3bf21449e5252dbb26ad3930b8f3f9bc4f123c50d37b1a330653af"
+        },
+        {
+          "path": "Map/Platform01/Platform01.bsp",
+          "sha256": "52ced589dc477618b0abd02b63e7eba0e1dc44a92de353f87eefe2b9df95529f"
+        },
+        {
+          "path": "Map/Platform01/Platform01.cam",
+          "sha256": "6be4c78d8646bc15c7290d7b34a4a59dd8dcb9b4527ded4cc2b5c843bcef0da4"
+        },
+        {
+          "path": "Map/Platform01/Platform01.ebp",
+          "sha256": "4c364e5f4de802dceb8e8dbc719a8d22b763593082ca804195f8c90c38242576"
+        },
+        {
+          "path": "Map/Platform01/Platform01.r3m",
+          "sha256": "5751a2553c3856aa716c859b7226f7524ada6f168739f3af3f4c0e08bfd9ff8c"
+        },
+        {
+          "path": "Map/Platform01/Platform01.r3t",
+          "sha256": "13afeee1ddb2d90085f6d94912c4c3d2f714d7501460996f94f6b84219f6230c"
+        },
+        {
+          "path": "Map/Platform01/Platform01.r3x",
+          "sha256": "500f63b0e6bd7e23b108b8be2401b9a4093ab7d6aac3eace1be88485623da4dc"
+        },
+        {
+          "path": "Map/Platform01/Platform01.rvp",
+          "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+        },
+        {
+          "path": "Map/Platform01/Platform01.spt",
+          "sha256": "be3dd274c54472018f8ed1235f1635874de1ca1b25f087d39a8713a3a92b2a9e"
+        },
+        {
+          "path": "Map/Platform01/Platform01__.spt",
+          "sha256": "7b4c18b19777afa4a3f0a983fca42e3360d236a3d82e280a33ad272c311131a6"
+        },
+        {
+          "path": "Map/Platform01/Platform01_dummy.spt",
+          "sha256": "230ecd081f3cba8a9f70f7272039a333e86998897b195de0edb3b81956a02099"
+        },
+        {
+          "path": "Map/Platform01/Platform01_dummy.txt",
+          "sha256": "dddeceb2372e76fc6242688f0c845c33ce6682826a898e1cc3ebfba83ebc0821"
+        },
+        {
+          "path": "Map/Platform01/Platform01EXT.spt",
+          "sha256": "f6ac47e46a31db155510e6eb288fa6ed1fc5d6b4d90f0847f603a2504d44ae99"
+        },
+        {
+          "path": "Map/Platform01/Platform01Lgt.r3t",
+          "sha256": "1242f906665a10808bc989b8a6e8ce435aacc7b4936b232c5ab85ec4dc3fadd4"
+        },
+        {
+          "path": "Map/Platform01/Platformb.rvp",
+          "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+        },
+        {
+          "path": "Map/Platform01/RFMapTool.ini",
+          "sha256": "b5692f6d0b1f879798b0f24883b94fb15b6cb9864e53b79b9e8f26c9cbea5973"
+        },
+        {
+          "path": "Map/Platform01/Sky/Platform01Sky.r3e",
+          "sha256": "4a4bb4e5855820413d317458002c09c08425d3bd331951ac43edfe9cee4ee767"
+        },
+        {
+          "path": "Map/Platform01/Sky/Platform01Sky.r3m",
+          "sha256": "436ca180891526e60002eef0b98fa6bd58327256699d12d88a19e9370ff0e062"
+        },
+        {
+          "path": "Map/Platform01/Sky/Platform01Sky.r3t",
+          "sha256": "93a13e1a7aca48658c7248c73826383e48570f5d4bbc0f27c66ad3a34dd947c1"
+        },
+        {
+          "path": "Map/Platform01/Sky2/Platform01sky2.r3e",
+          "sha256": "eab2768fbe519ad75ba230b8f279a8869349a37b794d235cbc575fc6cb3889cd"
+        },
+        {
+          "path": "Map/Platform01/Sky2/Platform01sky2.r3m",
+          "sha256": "f4c374f125b1586c5f77b098149dc8e9284b7b61b01885d45682f31d67be8137"
+        },
+        {
+          "path": "Map/Platform01/Sky2/Platform01sky2.r3t",
+          "sha256": "790cbf777d9cd7c2ffe4e8fbf111ca24d2a75e53f8d7ec263e3a431678223ef4"
+        }
+      ],
+      "level": {
+        "loaded": 1,
+        "leaves": 14141,
+        "nodes": 14140,
+        "helpers": 23,
+        "visible_groups": 12,
+        "interiors": 8,
+        "weather_counts": [
+          15,
+          500
+        ],
+        "weather_states": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "weather_checks": 6
+      },
+      "fpu_stages": {
+        "after_load": 127,
+        "before_draw": 127,
+        "after_draw": 127,
+        "weather": [
+          [
+            127,
+            127
+          ],
+          [
+            127,
+            127
+          ],
+          [
+            127,
+            127
+          ]
+        ]
+      },
+      "map_time": {
+        "message": [
+          8,
+          5
+        ],
+        "value0": 287454020,
+        "timestamp": 43200,
+        "receipt_tick": 591751049,
+        "map_day": 1,
+        "game_fraction": 0.5,
+        "real_fraction": 0.5,
+        "fpu": 127,
+        "client_processor_called": true,
+        "land_hook_called": true
+      },
+      "frame": "work/client-graphics-lab/ce6a1bb826d11f21/level-Platform01/frame-001.bmp",
+      "frame_sha256": "14974894ce00e54ee0bc949bf98f9a11a08db6db01233be84f3531aa8924a6a0"
+    }
+  ],
+  "graphics_source_sha256": {
+    "scripts/native/client_graphics_lab.inc": "7d422d93faccd02e2f0a76aa923e4ac3adf0a9f0000cc7145d0602f0cefc67e6",
+    "work/client-build/source/R3Engine/1stclass/entity.cpp": "b14e117c82bc629c63882129465d82a646500132a573adaffc1e5dbb7c7459a5",
+    "work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp": "7b4434f6980cbd9f5409db0c1c0769efe69b68e2c870738b81635f55f9c854b4",
+    "work/client-build/source/R3Engine/1stclass/renderentity.cpp": "1d5321f772127dce3ce14aaed021d109d55fb8b3a2056a38a312fd7c01077f1d"
+  },
+  "scope": "Own hidden-window real D3D8 HAL device/engine, selected RPK assets and optional actual CLevel::LoadLevel. Normal game WinMain, reference EXE, D3D9 comparison, sound/network not executed; no game DLL provider present."
+}

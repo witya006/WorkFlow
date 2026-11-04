@@ -109,7 +109,9 @@ if ((Get-FileHash -LiteralPath $meshLibrary -Algorithm SHA256).Hash.ToLowerInvar
     (Get-FileHash -LiteralPath $meshArchive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $meshSource.adapted_archive_sha256 -or
     $meshSource.base_archive_sha256 -ne $stdio.adapted_archive_sha256 -or $meshSource.header_sha256 -ne $contract.header_sha256 -or
     $meshSource.native_test.source_functions -ne 4 -or $meshSource.native_test.checks_passed -ne 245 -or
-    -not $meshSource.native_test.actual_init_vertex) { throw 'Recovered Character mesh source/archive proof is missing or stale.' }
+    -not $meshSource.native_test.actual_init_vertex -or $meshSource.source_function_count -ne 8 -or
+    $meshSource.native_init_test.checks_passed -ne 6732 -or $meshSource.native_init_test.cases -ne 144 -or
+    $meshSource.native_init_test.precision_rounding_modes -ne 12) { throw 'Recovered Character mesh/InitVertex source/archive proof is missing or stale.' }
 foreach ($property in $meshSource.source_sha256.PSObject.Properties) {
     if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw 'Character mesh source changed since verification.' }
 }

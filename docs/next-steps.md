@@ -1,6 +1,6 @@
 # Ближайшие действия — только клиент
 
-Обновлено 2026-11-04. /Goal — M9: финальная приёмка клиента 455 без модернизации графики.
+Обновлено 2026-11-05. /Goal — M9: финальная приёмка клиента 455 без модернизации графики.
 Критерии docs/client-acceptance.md; M8 не требуется. Серверы/БД не разрабатывать.
 Серверные исходники — только read-only reference. Оригинальные EXE не запускать.
 
@@ -66,13 +66,16 @@ R3X checks.703weather regression checks прошли на текущем lab.286
 
 ## Очередь M6 → M9
 
-1. Продолжить Character source/ABI перед полным D3D9 port. Первый source unit готов:
-   4legacy CPU bindings,245native checks standalone/full-client,4COFFtests и3actual
-   linked InitVertex destinations. Pointer+160 штатно задаёт FindBlendParent даже
-   при count0;constructor patch не обоснован. research/character-mesh-source.md.
-   Далее полный InitVertex/vertex conversion и mesh-data source contract, реальные
-   Character assets/buffer/material/texture lifecycle и455packed layouts. Legacy
-   mesh1072/vertex36/heap blends против4555803/64/inline;ABI не смешивать.
+1. Продолжить Character455 с MESH08 framing/CPU data по922A00 на pinned Shield065,
+   materials/skin/indices/vertices;потом packed455layouts иD3D9buffer/render consumers.
+   Legacy source unit готов:8functions/full InitVertex,245binding+6732InitVertex checks/
+   144cases/12FP modes standalone/full-client,4COFFtests и2actual SDK LoadRealData calls.
+   Это CPU сравнение с SDK через test-only COM capture,не Character GPU acceptance.
+   research/character-init-source.md;body607lines кеширован mesh08-0x922a00.json/.txt.
+   Gate91F250 проверяет6bytes MESH08;old693reader неприменим кэтому header.
+   455negative normals/vertex64/UV+44/+48 подтверждены. Pointer+160 штатно задаёт
+   FindBlendParent даже при count0;constructor patch не обоснован.
+   Legacy mesh1072/vertex36/heap blends против4555803/64/inline;ABI не смешивать.
    Current SDK явно IDirect3DDevice8; binary consumers переносить вместе с engine.
    Дополнительного SDK/PDB нет;cached207definitions/10COFF,не повторять массовый reverse.
 2. Selected local time input уже source-integrated:grade>=1,432cases/2628checks,
@@ -133,10 +136,10 @@ Lab использует отдельные build-helper-lab/logs/reports, но�
 проверенные dependency builders по manifests. Не пересобирать неизменённые helpers.
 Если меняется Character header: prepare_character_header.py -> check_character_header.py
 -> build_character_setters.py -> build_character_managers.py -> probe_character_effect_loaders.py.
-Character mesh source: audit_character_mesh455.py → test_coff_source_bindings.py →
+Character mesh source: audit_character_mesh455.py /audit_character_init455.py → test_coff_source_bindings.py →
 build_character_mesh_bindings.py → normal/lab driver → verify_character_mesh_source.py
-[--lab] → probe_client_character_mesh.py. Все Python через Invoke-Python.ps1.
-Текущая GPU regression: --output inventory/character-mesh-source-graphics-runtime.json;
+[--lab] → probe_client_character_mesh.py [--init]. Все Python через Invoke-Python.ps1.
+Текущая GPU regression: --output inventory/character-init-source-graphics-runtime.json;
 это Platform01/weather,не Character GPU acceptance. Не повторять без изменения входов.
 Logger: build_client455_effect_log.py -> apply_client_effect_log455.py.
 Math: build_client455_x87_math.py -> apply_client_x87_math455.py; driver после сборки

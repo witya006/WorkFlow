@@ -1,6 +1,6 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-Обновлено 2026-11-04 по прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
+Обновлено 2026-11-05. По прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
 Старые клиентские исходники и R3Engine — база, клиент 455 — объект реверса.
 Серверы, БД и серверная логика вне задачи. Прежний серверный план отменён.
 Серверные исходники разрешены исключительно для чтения как справочник клиентских
@@ -59,6 +59,12 @@ constructor patch не нужен на подтверждённом пути. В
 blends против legacy1072/36/heap иfirst-match vs last-match. Полный Character455
 ещё открыт; следующий source unit — InitVertex/vertex conversion и реальные assets.
 research/character-mesh-source.md. M6/M6F/M7/M9 не закрыты.
+Затем source unit расширен до8functions/full legacy InitVertex:245binding+6732checks/
+144cases/12FP modes standalone/full-client,4COFFtests,2actual LoadRealData→source calls.
+CPU vertices/triangles/weights/matrices/errors сравниваются с SDK через test-only COM
+capture. 455negative normals/vertex64 иотдельный MESH08loader922A00 подтверждены;
+Shield065 имеетновый header,old693reader его не читает. Новый приоритет —455MESH08/
+CPU data,потом packed layouts/D3D9. research/character-init-source.md. Character455 открыт.
 Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
 binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
 неизвестного blend pointer lifecycle; cached207definitions уже доступны.
@@ -98,8 +104,8 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: продолжить Character source/ABI с полного InitVertex и vertex conversion;
-   затем реальные Character assets,455mesh layouts и buffer/material/texture lifecycle.
+1. M6: восстановить455MESH08/CPU data иmaterial/skin/indices/vertices на реальных
+   samples;затем455mesh layouts иbuffer/material/texture lifecycle. Legacy InitVertex source готов.
 2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
 3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
 4. M6F: завершить реестр возможностей/расхождений и доказательства полноты клиента.

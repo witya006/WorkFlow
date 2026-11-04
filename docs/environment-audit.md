@@ -355,6 +355,24 @@ FPU007F,frame просмотрен;это map/weather regression,не CharacterG
 Owned IDAc99d5253closed/save;8reference bodies/11instruction sites в обоих PE.
 research/character-mesh-source.md;inventory/character-mesh-source*.json.
 
+## M6: full legacy InitVertex source,2026-11-05
+
+Source Character unit расширен до8functions/full InitVertex/vertex/physique.245binding+
+6732InitVertex checks/144cases/12FP modes standalone/full-client,4COFFtests и2actual
+LoadRealData→source calls прошли. Actual SDK MakeVB использует test-only COM capture,
+physical Character GPU не сертифицирован. Нормальный WinMain не исполнялся.
+Normal2451456bytes,entryRVA0x1BC4B0,SHA
+a070e9fb4350290fc8877940ae6cfbce417b0cc12b5a12b8a6a82ba5e121d573.
+Lab4167680bytes,entryRVA0x7EC8,SHA
+ce6a1bb826d11f219218d4361f923ba1b11de9b31fe998b65b98696b68104cce.
+289modern COFF +source bindings/init objects x86/MT;clock/map-time/weather/resource/
+time-input regressions прошли. Platform01/device2GPUcases/69checks,0warnings/errors,
+Dmalloc/COMbalance0,FPU007F;frameSHA равен прежнему просмотренному frame.
+455vertex normals инвертированы,64byte layout иMESH08path91F250→922A00 подтверждены.
+7bodies/field/magic instructions/2calls в обоих pinned PE;3model samples закреплены.
+MESH08реализация ещё отсутствует;старая693frame схема не подходит кShield065.
+Owned IDAab009b3b/012583e5closed/save;research/character-init-source.md.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

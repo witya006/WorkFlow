@@ -3,6 +3,7 @@ import json,struct,unittest
 from compare_client_binaries import WS
 from coff_source_bindings import BINDINGS,source_bindings
 from export_character_analysis import coff_function_records
+from build_client455_x87_math import object_relocations
 
 class SourceBindingsTests(unittest.TestCase):
     @classmethod
@@ -16,13 +17,17 @@ class SourceBindingsTests(unittest.TestCase):
             before=coff_function_records(raw);after=coff_function_records(output)
             for name,f in before.items():self.assertEqual(f['bytes'],after[BINDINGS.get(name,name)]['bytes'])
             if not changes:self.assertEqual(raw,output)
-        self.assertEqual(total,4)
+        self.assertEqual(total,8)
     def test_actual_init_callers(self):
-        raw=self.raw[6];_,changes=source_bindings(raw)
+        raw=self.raw[6];output,changes=source_bindings(raw)
         init=coff_function_records(raw)['?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z']
         callers=[x for c in changes for x in c['redirected_callers'] if x['section']==init['section'] and init['section_offset']<=int(x['offset'],16)<init['section_offset']+init['size']]
-        self.assertEqual(len(callers),3)
-        self.assertEqual(sorted(int(x['offset'],16)-init['section_offset'] for x in callers),[0x727,0x750,0x7c9])
+        self.assertEqual(len(callers),0) # Retained comparison group stays independent.
+        after=coff_function_records(output)[BINDINGS['?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z']]
+        references=object_relocations(output,after,after['size'])
+        actual={r['symbol'] for r in references}
+        for name in BINDINGS.values():
+            if name not in ['_RFCharacterOriginal_InitVertex','_RFCharacterOriginal_RematchParents','_RFCharacterOriginal_FindByName']:self.assertIn(name,actual)
     def test_truncated_tables(self):
         raw=self.raw[6]
         for n in [0,19,20,100,len(raw)-1]:

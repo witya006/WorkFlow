@@ -538,9 +538,9 @@
     },
     {
       "id": "CHARACTER-SOURCE-BINDINGS-011",
-      "description": "Own legacy mesh CPU parent/blend bindings as a prerequisite for complete Character source",
+      "description": "Own legacy mesh/InitVertex/vertex/physique source prerequisite for complete Character455",
       "status": "implemented",
-      "verification": "Legacy prerequisite only,not455parity. Four source functions,245native differential/actual InitVertex checks standalone/full client,4COFFtests. Three actual linked InitVertex calls reach source in normal/lab. Known455layout/first-match/inline matrix differences remain open.",
+      "verification": "Legacy prerequisite,not455parity:8source functions,245binding+6732InitVertex comparisons/144cases/12FP modes standalone/full client,4COFFtests. Two actual SDK LoadRealData calls reach source InitVertex. MakeVB inputs captured with test-only COM doubles;physical Character GPU and455MESH08/packed layout remain open.",
       "reference": [
         {
           "va": "0x93bab0",
@@ -560,6 +560,8 @@
       ],
       "implementation": [
         "scripts/native/character_mesh_bindings.cpp",
+        "scripts/native/character_mesh_init.cpp",
+        "scripts/native/character_mesh_format.h",
         "scripts/coff_source_bindings.py"
       ],
       "option": "RF_CHARACTER_MESH_SOURCE",
@@ -569,19 +571,62 @@
         "inventory/character-mesh-source-link.json",
         "inventory/character-mesh-source-runtime.json",
         "inventory/character-mesh-source-graphics-runtime.json",
-        "research/character-mesh-source.md"
+        "research/character-mesh-source.md",
+        "inventory/character-init-reference.json",
+        "inventory/character-init-source-runtime.json",
+        "inventory/character-init-source-graphics-runtime.json",
+        "research/character-init-source.md"
       ],
       "scenarios": [
         "Case-sensitive lookup,duplicates/last-match legacy semantics,rematch gate,negative/zero counts",
         "0-4unique parents,missing/local/external bones,identity matrices and release",
         "Actual InitVertex with3vertices/0faces,skinned/unskinned CPU setup and release",
-        "Unchanged original instruction bytes;source selected by caller relocation and linked destination checks"
+        "Unchanged original instruction bytes;source selected by caller relocation and linked destination checks",
+        "144InitVertex cases across12FP modes:0-2meshes/0-2faces,matrices/UV/weights/parents/bounds/BONE,create/lock failures andrelease",
+        "Independent retained SDK comparison group;two actual LoadRealData calls select source,including8public source symbols/x86MT objects"
       ],
       "gaps": [
-        "Full own-source InitVertex/mesh/vertex conversion,other binary-only Character routines",
-        "4555803byte packed mesh/64byte vertex/inline matrix ABI and first-match binding differ from legacy1072/36/heap",
-        "Real Character assets,triangle upload/material/texture/GPU/D3D9renderer",
-        "Unsafe bounds/OOM/failure/unwind before blend pointer assignment;complete old/modern CRT ABI"
+        "455MESH08source framing/loader/real assets,material/skin/index/vertex semantics",
+        "4555803byte packed mesh/64byte vertex/negative normals/inline matrices and first-match binding differ from legacy1072/36/heap",
+        "Other binary-only Character routines and physical texture/triangle upload/GPU/D3D9renderer",
+        "Unsafe bounds/OOM/failure/unwind/locale/alias domain and complete old/modern CRT ABI"
+      ]
+    },
+    {
+      "id": "DATA-MESH08-012",
+      "description": "455MESH08mesh format and its distinct client loading path",
+      "status": "described",
+      "verification": "Initial evidence only:exact6byte prefix detector and actual LoadRealData edges verified in both pinned PE;607line loader cached,one MESH08 and two plain real model samples pinned. No source MESH08loader or complete format/behavior validation yet.",
+      "reference": [
+        {
+          "va": "0x91f250",
+          "rva": "0x51f250",
+          "role": "MESH08magic detector"
+        },
+        {
+          "va": "0x922a00",
+          "rva": "0x522a00",
+          "role": "distinct MESH08load body"
+        },
+        {
+          "va": "0x923902",
+          "rva": "0x523902",
+          "role": "actual LoadRealData loader call"
+        }
+      ],
+      "implementation": "Not implemented;next Character455critical path",
+      "evidence": [
+        "inventory/character-init-reference.json",
+        "research/character-init-source.md"
+      ],
+      "scenarios": [
+        "Shield065hasMESH08prefix;Shield031/Cloak002 pass bounded plain693record framing toEOF",
+        "Normal/UV/physique/index/format-reference bodies andcaller edges match both pinned455PE"
+      ],
+      "gaps": [
+        "Complete MESH08framing/material/skin/indices/vertices and source loader",
+        "Complete real model inventory/variants and error/lifecycle semantics",
+        "Packed455mesh/D3D9buffer/render consumers and physical character GPU acceptance"
       ]
     }
   ],

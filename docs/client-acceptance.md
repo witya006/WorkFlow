@@ -115,12 +115,13 @@ research/client-first-build.md; inventory/client-first-build.json.
   Success->lobby edge не содержит древнего CheckFiles, но остальные integrity/resource
   checks и полная login sequence ещё требуют аудита. Не считать их покрытыми.
 
-Character prerequisite: четыре legacy CPU mesh bindings уже имеют source;245checks
-standalone/full-client,4COFFtests и3actual InitVertex→source call destinations.
-Skinned/unskinned CPU setup/release проверены на3vertices/0faces. Это не Character455
-acceptance: legacy1072/36byte vertex/heap blends отличается от4555803/64/inline,
-реальные assets/triangle upload/полный material/texture/render/unwind открыты.
-research/character-mesh-source.md иinventory/character-mesh-source*.json.
+Character prerequisite:8legacy functions/full InitVertex имеют source;245binding+
+6732InitVertex checks/144cases/12FP modes standalone/full-client,4COFFtests и2actual
+LoadRealData→source call destinations. Mesh/triangles/weights/matrices/errors/release
+проверены через test-only COM capture. Это не Character455/GPU acceptance:
+legacy1072/36byte vertex/heap blends отличается от4555803/64/inline;455normals negated,
+MESH08loader ещё отсутствует. Реальные Character assets/material/texture/render/
+unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
 
 ## Приёмка
 

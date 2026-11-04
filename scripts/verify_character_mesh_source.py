@@ -3,6 +3,7 @@ import argparse,hashlib,json,re,struct
 from compare_client_binaries import WS
 from coff_source_bindings import BINDINGS
 from build_client455_x87_math import read_va
+from verify_client_coff import directives
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
@@ -15,17 +16,24 @@ def main():
         if sha(WS/'scripts/native'/name)!=digest:raise ValueError('Changed mesh source')
     for key in ['library','adapted_archive']:
         if sha(WS/proof[key])!=proof[key+'_sha256']:raise ValueError('Changed mesh library')
+    source_objects=[]
+    for name in ['bindings.obj','init.obj']:
+        obj=(WS/proof['library']).parent/name
+        if '/DEFAULTLIB:"LIBCMT"' not in directives(obj.read_bytes()):raise ValueError('Own Character source object is not x86 /MT')
+        source_objects.append({'file':obj.relative_to(WS).as_posix(),'sha256':sha(obj),'architecture':'x86','runtime':'/MT'})
     mapping=(build/'RF_Online-Release.map').read_text(encoding='ascii',errors='replace')
     symbols={m[1]:(int(m[2],16),line) for line in mapping.splitlines() if (m:=re.match(r'\s+[0-9a-fA-F]{4}:[0-9a-fA-F]{8}\s+(\S+)\s+([0-9a-fA-F]{8})\s',line))}
     selected=[]
     for symbol in BINDINGS:
         va,line=symbols[symbol]
-        if 'CharacterMeshSource:bindings.obj' not in line:raise ValueError('Mesh function not selected from own source:'+symbol)
-        selected.append({'symbol':symbol,'va':hex(va),'rva':hex(va-0x400000),'source':'character_mesh_bindings.cpp'})
-    va,line=symbols['?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z']
-    if 'CharacterMR-mesh-source:character_07.obj' not in line:raise ValueError('Unadapted InitVertex selected')
+        unit='bindings' if BINDINGS[symbol] in ['_RFCharacterOriginal_FindByName','_RFCharacterOriginal_BindParents','_RFCharacterOriginal_RematchParents','_RFCharacterOriginal_BindBlends'] else 'init'
+        if f'CharacterMeshSource:{unit}.obj' not in line:raise ValueError('Mesh function not selected from own source:'+symbol)
+        selected.append({'symbol':symbol,'va':hex(va),'rva':hex(va-0x400000),'source':f'character_mesh_{"bindings" if unit=="bindings" else "init"}.cpp'})
+    va,line=symbols['?LoadRealData@CRender@@QAE_NPAVCHARACTEROBJECT@@PAVTextureManager@@_N@Z']
+    if 'CharacterMR-mesh-source:character_09.obj' not in line:raise ValueError('Unexpected LoadRealData provider')
     data=(build/'Release/RF_Online.bin').read_bytes();calls=[]
-    for offset,symbol in [(0x726,'?FindParent@@YAHPAUObjectMesh@@H0H@Z'),(0x74f,'?FindParent@@YAHPAUObjectMesh@@H0H@Z'),(0x7c8,'?FindBlendParent@@YAXPAUObjectMesh@@H0HPAVObjectData@@@Z')]:
+    for offset in [0x77,0x11e]:
+        symbol='?InitVertex@@YAXPAVObjectData@@PAVCHARACTEROBJECT@@1PAVTextureManager@@_N@Z'
         site=va+offset;code=read_va(data,site,5)
         if code[0]!=0xe8:raise ValueError('InitVertex call instruction changed')
         dest=site+5+struct.unpack_from('<i',code,1)[0];target=symbols[symbol][0];forward=[]
@@ -37,8 +45,8 @@ def main():
         if dest!=target:raise ValueError('Unresolved source call thunk')
         calls.append({'va':hex(site),'rva':hex(site-0x400000),'bytes':code.hex(),'destination_symbol':symbol,'destination_va':hex(dest),'thunks':forward})
     path=WS/'inventory/character-mesh-source-link.json';out=json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
-    out[mode]={'exe':(build/'Release/RF_Online.bin').relative_to(WS).as_posix(),'exe_sha256':sha(build/'Release/RF_Online.bin'),'architecture':'x86','image_base':'0x400000','source_functions':selected,'actual_init_vertex_calls':calls,'component_report_sha256':sha(WS/'inventory/character-mesh-source.json'),'scope':'Four own legacy CPU bindings and three actual InitVertex call destinations verified;455packed mesh/render parity remains open.'}
+    out[mode]={'exe':(build/'Release/RF_Online.bin').relative_to(WS).as_posix(),'exe_sha256':sha(build/'Release/RF_Online.bin'),'architecture':'x86','image_base':'0x400000','source_functions':selected,'source_objects':source_objects,'actual_load_real_calls':calls,'component_report_sha256':sha(WS/'inventory/character-mesh-source.json'),'scope':'Eight own legacy mesh/InitVertex/vertex functions and two actual SDK LoadRealData call destinations verified;455packed mesh/render parity remains open.'}
     path.write_text(json.dumps(out,indent=2)+'\n',encoding='utf-8')
-    print(f'PASS:{mode}4source mesh functions/3actual InitVertex destinations;legacy ABI,not455renderer parity.')
+    print(f'PASS:{mode}8source mesh/InitVertex functions/2actual LoadRealData destinations;legacy ABI,not455renderer parity.')
 
 if __name__=='__main__':main()
