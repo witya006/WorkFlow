@@ -176,6 +176,15 @@ consumers всё ещё открыты. Failure/locale/privateABI/unwind gaps я
 
 ## Приёмка
 
+Selected pose/FrameMove phases source:11realpairs/22ANI/132updates/2298skinmatrices
+standalone/fullclientownentry,132selectedkeycases и8analytic scenes/12maskedFPmodes.
+5source APIs,heap/Dmalloc0. CPUpose не является animateddraw. Secondary91E270,
+producer кадров/manager/worker/normaltypedconsumers/shaders остаются открытыми.
+Часть parent-ramp analytic expectations имеет1e-4допуск из-заpinnedD3DXinverse;
+wholematrix skin/parent consistency exact. Не заявлять независимое полное сравнение
+с выполнением referenceFrameMove. Gateinventory/client455-pose-checkpoint.json;
+research/client455-pose-source.md. Старые runtime suites не повторялись.
+
 Последующий selected ANI/rawIO/record284/lifetime/attachment/Character dispatcher
 source:27files1062tracks/6Python tests;14513CPU/15181HALchecks standalone/fullclient,
 22real ANI switches на11BN→MESH08pairs794parts/660HALuploads;13sourceC APIs.

@@ -1,422 +1,102 @@
 # Память проекта
 
-Обновлено 2026-11-05. Основной root: E:\RFOnlineTrash\Source\WorkFlow.
+Обновлено 2026-11-05. Root `E:\RFOnlineTrash\Source\WorkFlow`.
+Сокращена для продолжения работы без повторного чтения устаревших очередей.
+Полная предыдущая память сохранена в research/project-memory-pre-pose.md;
+подробные доказательства — research/ и inventory/.
 
-## Цель и границы
+## Цель и ограничения
 
-Только клиент: поддерживаемые исходники RF_Online.bin с полным функционалом и
-поведением закреплённого 455. /Goal — M9: финальная приёмка без модернизации графики.
-M8 не требуется. Компиляция, запуск и частичный участок не закрывают цель;
-критерии docs/client-acceptance.md. Степень соответствия сейчас неизвестна.
-Серверные файлы разрешено только читать как справочник. Не изменять/копировать для
-разработки/собирать серверы, БД или GoMMO server logic. Оригиналы читать, работать в work/.
-Не запускать входные EXE. Субагенты — только по прямому запросу пользователя.
+- Только клиент RF_Online.bin: поддерживаемый source с функционалом и поведением
+  закреплённого455. /Goal M9 = финальная приёмка без модернизации графики.
+  M0–M4 diagnostic milestones и выбранный M5 закрыты; M6/M6F/M7/M9 открыты.
+  Compilation/загрузка модели/вычисление позы не являются готовым клиентом.
+- Серверные файлы только справочник для чтения; не менять, не копировать для
+  разработки, не собирать серверы/БД/GoMMO server logic. Originals immutable.
+  Изменения клиентского кода — под work/; не исполнять входные EXE.
+- Git локальный, remote/push/publish не разрешены. Raw assets/IDB/large traces
+  ignored work/ и artifacts/. Ignoring не backup. Субагенты не разрешены.
+- Пользователь уточнил стоимость159173checks: это assertions в автоматическом
+  запуске, не запросы к ИИ. Проверять изменённый участок/зависимости; неизменённые
+  большие runtime suites не повторять без конкретного риска. Число проверок
+  не показатель готовности; приоритет — работающий восстановленный клиент.
 
-## Текущее состояние
+## Последний проверенный результат
 
-- Пользователь уточнил необходимость159173checks. Не использовать количество
-  assertions как показатель готовности. Это автоматические сравнения в одном
-  diagnostic запуске;полный набор повторять только при изменённых входах/коде,
-  сбое или конкретном unresolved риске. Не тратить цикл на неизменённые corpora.
-  Главный критерий — восстановленное поведение и подключение к реальному клиенту.
-- Начат следующий FrameMove unit:9bodies equalbothpins;
-  inventory/client455-pose-reference.json, scripts/audit_client455_pose.py.
-  1040active realtracks:timestamp signed comparisons,0nonmonotone/0nonfinite,
-  нетcount1 в22выбранныхANI. Scale91DE80(channel2),rotation91DF90(channel0),
-  translation91E160(channel1). Поворот usesactual D3DX Slerp+Wnegation;
-  cacheddecompiler prototypes wrong,trustinstructions. Count1 unsafe second-key
-  read не заменять константой по догадке. FrameMove сам672неувеличивает;
-  blend692/global33844,ramp712/716,pose4830,skin646=mesh4574*bone4638*bone4830.
-  933430/933490 — profiling,не locks. Вторичные pony/skirt motions91E270 ещёopen.
-  Raw artifacts/character-animation455/{framemove-*,key-*-insn,pose-*,scale-axis}.json;
-  owned66b26ca4closed/save. Source pose ещё не реализован.
-- Новейший unit: ANI93ACD0/framing/record284/lifetime/attachment93C050/93C1F0,
-  Character dispatcher9238A0/MatchAnimation9316C0.16bodies equalbothpins;
-  27ANI/1062tracks roundtrip/6Python tests,14513CPU/15181HALchecks standalone/
-  fullclient.22real ANI matches на11BN→MESH08парах794parts/660HALuploads.
-  13C API actual caller/archiveproof. Sticky failure flags, previous/current,
-  cumulative_msize counter иone reference raw leak подтверждены. Harness отдельно
-  чистит leak после наблюдения;не считать это поведением455. COM/Dmalloc0.
-  Current legacy14896/manager1138/Platform01-device69passed,framesunchanged.
-  Gate inventory/client455-animation-checkpoint.json;
-  research/client455-animation-dispatch.md. Normal APIs unused/stripped,
-  runtimebytes кромеtimestamps прежние. Next:FrameMove923A40/pose/key evaluator,
-  fullAnimationManager/worker,skinning/shaders/normaltypedconsumers. Owned45964631closed/save.
-  Normal SHA0b414fbc4d5cb14ec7640a1d23c71547203de78058f310fdb1c8e53d481404e1,
-  x86/2451456B/entryRVA1BC4B0;lab d9db2a2304da80e931c69bd0fa9ac11266ad313aaaab9cbb45c1f121f13326b7,
-  5125120B/entryRVA891D.289normalmodernCOFF/MT,187clientlabTUs.
-- Новейший connectedunit:legacy fileimporter93C770/converter93CD60/vertex64/UV/
-  physique64/convert36/dedup+upload/bindings/MTG,9bodies equalbothpins.66627capture/
-  14896HALchecks standalone/fullclient;34runs/972parts/832HALuploads,2CPUretained.
-  12actualBN→MESH08pairs/393parts/276uploads:BNmesh теперь прочитан/построен source,
-  не только names изtooling.10APIs linked (8runtime+reader/delete),heap/COM/Dmalloc0.
-  Current manager1138/model10021/Platform01-device69passed,frames unchanged.
-  Gate inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
-  Следующий ANI/dispatcher unit выполнен выше;FrameMove/animation/typedconsumers открыты.
-  Owned0d9553e1/08d81b2fclosed/save. Source/normaldispatcher switch всё ещё впереди.
-- Новейший standalone unit: reader93C2F0/part720 ctor+dtor/model28release.
-  4606native checks/12realBN455records+5synthetic4records,1183PAGE_NOACCESS prefixes,
-  7allocfailpoints,12FPmodes,6Python tests,heap0. Source x86/MT/O2/W4/WX.
-  Fullclient/normal import/converter не подключены; текущие клиентские PE ниже
-  не менялись. Next: importer93C770 +converter93CD60, затем dispatcher/FrameMove.
-  Research client455-legacy-model-reader.md;inventory/client455-legacy-models*.json.
-  Owned926983beclosed/save;converter tail328lines saved,вместе спрежними250все578.
-- Последний завершённый source unit M6: Character455 record1188/manager4148,
-  IDcache/rawMSH/borrowedtexture refresh.850CPU/1138HAL checks, полный lab1138;
-  12models/393parts/276uploads/59texture pointers, ownheap/COM/Dmalloc0.
-  24bodies equalbothpins; ctor1188byte oracle из92recorded instructions.
-  13APIs реально вызваны из fullclient test TU/source archive. MESH08 из собственного
-  RFS и11loose моделей совпали по rawbytes с pinned files. Normal dispatcher legacy.
-  Current model10021 иPlatform01/device69checks passed; прочие старые proofs
-  исторические. Gate inventory/client455-character-manager-checkpoint.json;
-  research/client455-character-manager.md. Next: BN93C2F0/93C770 +converter93CD60,
-  затем dispatcher9238A0/FrameMove923A40/animation/typed consumers.
-- M1: R3Engine.lib под VS 2026 x86, две чистые пересборки; отдельный /MT R3EngineMT.lib.
-- M2: бинарный эталон закреплён, 5 bytes / 2 ranges различий с backup исследованы.
-- M3: helper-only SPT, 140 файлов / 97 543 записи, float32 round trip и 7 tests.
-- M4: ПЕРВАЯ ПОЛНАЯ ДИАГНОСТИЧЕСКАЯ СБОРКА RF_Online.bin И CLEAN REBUILD УСПЕШНЫ.
-  Это старая исходная база с отдельными подтверждёнными 455 ветками, /Od, NDEBUG,
-  recovered Character header и адаптированной CharacterMR. Pure legacy branches OFF
-  не объявлены восстановленными; canonical optimized Release и весь runtime ещё открыты.
-  Не выдавать сборочный результат за полноту клиента или завершение M9.
-- M5 ЗАКРЫТ для первого выбранного участка: helper455data и interior/weather consumer.
-  Loader455 и617bytes двух math функций сверены с обоими pinned PE;140реальных
-  files/97 543records +12fixtures /2 546 931checks сохранены на historical lab revision.
-  338math checks/12FP modes; RPK module18 907checks/3775members/78archives.
-  Actual LoadLevel/FrameMove/render/release полного проекта через own entry прошли
-  на lobby и Platform01.23helpers/8interiors Platform01 управляют двумя real weather
-  particles15/500:inside/night[0,0],outside/night[1,1],outside/day[0,0].
-  13GPU cases/321checks,0errors/warnings,allocation/COM release balance0.
-  FPU initial/engine/device=0x027F/0x027F/0x007F; actual map/render/consumer остаются007F.
-  703weather/30resource/23 337targeted helper checks прошли на исторической M5 lab revision.
-  Gate inventory/client-m5-checkpoint.json; research/client455-graphics-runtime.md.
-- M6 в работе. Полные particles/clock/Character/UI/network/renderer parity открыты.
-  Первая clock ревизия:8scalar functions+256byte frame prefix,773bytes
-  совпали с обоими PE;1275checks/12FP modes в component и полном клиенте. Два
-  независимых счётчика и actual FrameMove работают. Следом source packet8/5,
-  CLand timestamp/tick cache и successful-load hook перенесены;314native checks/
-  12FP modes/UTC+JST. Actual CNetMsgProcessor_Map/CLand и Platform01 прошли GPU
-  2cases/66checks.130byte numeric fragment равен455,linked normal/lab проверены.
-  Затем time/real_time commands и actual CHAT_INFO grade>=1 hook перенесены:
-  432cases/2628checks/12FP modes,20actual input/access/history/lifecycle checks;
-  grade1 accepts/grade0 rejects,no connections. Real HMS set/get добавлены:clock
-  теперь10scalar functions+256byte prefix,1037bytes equal455,1443checks/12FP modes.
-  Commands→actual Platform01 FrameMove/weather/GPU2cases/69checks прошли.
-  Full CLand/transport/calendar domain,other local commands/chat/lighting открыты.
-  research/client455-clock-source.md и client455-map-time-source.md.
-  D3D8 legacy против455D3D9 — обязательное восстановление M6, не optional M8.
-  Normal WinMain и reference EXE не запускались. M6F/M7/M9 не закрыты.
+Source scripts/native/client455_pose.{h,cpp}, RFClient455Pose.lib, x86/MT/O2/W4/WX:
+scale91DE80, rotation91DF90, translation91E160 и основные FrameMove923A40 phases.
+132selected keycases,11real BN→MESH08 pairs/22ANI/132pose updates/2298skin matrices;
+component и own entry полного RF_Online.bin дают одинаковый результат.
+8analytic scenarios в12maskedFPmodes плюс zero model/null/missing load/key edges.
+Heap/Dmalloc0, game DLLs не загружаются. Пять source APIs имеют actual callers
+и source archive provider. Это CPU pose, без отрисовки персонажа.
 
-## Артефакт первой сборки
-
-Первая историческая версия (snapshot artifacts/client-first-build/clean), 2 436 608 bytes,
-x86 Windows GUI, base 0x400000, entry RVA 0x1BA9E0. Clean SHA-256:
-0b4c768fc4f52b26035c48cf900f67553392407d0372e23bb528333d2a87cf91.
-Снимки initial/clean в ignored artifacts/client-first-build. Различаются только
-COFF timestamp и timestamp debug directory; после исключения этих двух DWORD
-все остальные байты равны. Не заявлять raw bit-exact EXE. Все 284 modern COFF x86 /MT.
-13 direct DLL providers найдены; recursive loader/runtime не проверены. EXE не запускался.
-inventory/client-first-build.json, client-character-diagnostic.json, client-mt-variant.json.
-
-Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
-2 451 456bytes,entryRVA0x1BC4B0,SHA256
-0279b5033c8098edf814d6527a4b355ad2f7398e9ebd25e4c6c20aea7f170b96.
-Snapshot character455-legacy-models;предыдущие revisions сохранены. Обычный EXE
-не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA c9e49065dc81493c3285a7d508b0240c87c7f69c31f2fa8ad81440e3fd3d777e,
-size5033984,entryRVA0x8887; snapshot work/m9/c9e49065/client001/RF_Online.bin.
-Current: legacyruntime14896/manager1138/model10021/Platform01-device69checks;186clientlabTUs.
-Normal runtime bytes после исключения двух timestamps равны предыдущему snapshot.
-Следующие прежние scoped proofs относятся к историческим revisions; их inputs/
-source не менялись, повторных запусков на current PE не было:
-1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
-20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
-Character8source functions подключены,включая полный legacy InitVertex/vertex/physique.
-245binding+6732InitVertex checks/144cases/12FP modes standalone/full-client и4COFFtests
-прошли;два actual SDK LoadRealData calls доходят до собственного InitVertex.
-0-2meshes/0-2faces,matrices/UV/weights/bounds/parents иcreate/lock failure проверены
-через actual SDK MakeVB с test-only COM capture;не Character GPU/455acceptance.
-research/character-init-source.md;inventory/character-mesh-source*.json,character-init*.json.
-MESH08format decoder/writer sourceготов:858real files/515096894bytes/12090meshes/
-5153052vertices+indices/412222bone records прошлиlossless tool roundtrip.
-6304native checks/12samples/393parts и1309guard-page truncations standalone/fullclient.
-7Python tests. Normal fullmodel-loader consumer не реализован,unused APIs stripped;
-labдвеAPI linked. research/client455-mesh08-format.md;client455-mesh08*.json.
-Четыре packed455parent/bone kernels sourceготовы:2237checks/12real mesh-skeleton
-pairs/393meshes/455skeleton records standalone/full-client,20pointer/matrix overlap
-cases31–50. Нет missing influences в fixtures,max4unique/mesh. Names изplain BN
-выделены tooling,полный skeleton loader/матрицы/анимации иего selection не доказаны.
-Normal consumer ещё отсутствует;не смешивать сlegacy1072ABI. Полный loader открыт.
-research/client455-mesh-bindings-source.md;inventory/client455-mesh-bindings*.json.
-Constructor final state/counters,header fields/matrices/special names иmaterial
-request flow sourceготовы:14562checks/12real files/393parts/12FP modes standalone/
-full-client. Матрицы используютactual D3DX9_36,texture backend вtests scripted.
-Native algebraic invariants +synthetic bitgolden;неполный arbitrary matrix bitproof.
-858files/12090headers исследованы поfrozen offsets:8659primary empty,3431DDS/backslash,
-0nonfinite/nonaffine/zero numeric3x3det/unterminated/nonASCII/% strings. Это domain
-audit,неfull matrix condition proof. НЕ повторять header census без изменения inputs.
-Actual TextureManager backend теперь source;sharedGPU/loader/destructor/normaldispatch открыты.
-research/client455-mesh-runtime-source.md;inventory/client455-mesh-runtime*.json.
-Следующий source unit завершён в выбранном texture domain: Character RFS index/cache,
-DDS XOR/mip/repair и288byte TextureManager known fields.24body ranges совпали по
-обоим pinned455PE,3imports ведут вactual D3DX9_36. Источники client455_texture.cpp/
-client455_character_rfs.cpp,optionRF_CLIENT_455_TEXTURE. Native333CPU/8440GPU checks,
-80DDSprofiles,68successful actualD3DX texture pairs/all mip contents,137renders,
-3real MESH08models/97parts/59positive material bindings. Реальный cube orphan+null
-return сохранён;test wrapper освобождает orphan только после наблюдения.9Python tests.
-Полный lab даёт теже8440checks,COM/Dmalloc0,gameDLLs отсутствуют. Все предыдущие
-scoped regressions иPlatform01/device69checks прошли;frameSHA сохранены. Normal
-loader ещё legacy,новые unused APIs stripped. Не повторять texture reverse/corpus
-без новых inputs;не считать full Character GPU/455acceptance. Next:shared buffers
-93E000/93E180,index rebase/publication/owning release,затем normal model dispatch.
-Raw artifacts/character-texture455,отчёты inventory/client455-texture*.json,
-research/client455-character-textures.md. Private allocator/STL ABI,logger/cache
-teardown/reset,malformed/OOM/nonASCII/unsafe format-string domains открыты.
-SharedGPU unit теперь source:18full bodies+MESH08upload fragment equalbothpins,
-8200byte ctors/Release-onlydtors/first-fit1024/VB36+64/INDEX16/rebase/callerfragment.
-Native158336CPU/159173HALchecks standalone/full-client,12real files/393parts;
-276nonzero-indexparts реально загружены вmanagedGPUbuffers,117zero-indexparts
-пропустилиобаuploads. Capture проверяет bytes,slot1023/exhaustion/wrap/failures;
-4synthetic indexed draws до/после rollover совпали. COM/Dmalloc0. Normal APIs
-unused/stripped;full renderer/skeleton/animation/model publication ещё открыты.
-Не повторять9allocator/bindfunctions и6poolctors/dtors. Next:owning model
-array/destructor/failure unwind+normal loader dispatch,затем полноценные
-transforms/skinning/shaders. Ownerctor5DFB70,+8928VB64/+17128VB36/+25328IB;
-SetDevice920590writesborroweddevices. Renderer reset/opaque8192/unsafeOOMopen.
-research/client455-shared-buffers.md;inventory/client455-shared-buffers*.json.
-Owned10003798 иb58f27c1closed/save. Все прежние scoped regressions +texture8440
-иPlatform01/device69checks прошли наcurrentlab;frames сохранены.
-Затем source mesh dtor/array lifetime иconnected MESH08route готовы:9953CPU/
-10021HALchecks standalone/full-client,12lifetimecases/12files/393parts,
-276realGPUuploads/59texturebindings.10bodies equalbothpins. Dtor920FD0→tables
-91C3C0 (20interleavedpairs→168zero)→strings920F20(reverse5fields→cap15/len0/first0).
-COM4486/4490 не обнуляются;free+null5095/5099/4506. ArraycookieDWORDcount,
-reverse destruction,flags2array/1free. Ownedmodel260 guards536release,count532
-retained. Default realMTmalloc/free,MemoryOps для соответствующегоowner;oldheapABI
-не смешивать. Source loader usesmaterials/header/GPU→parents/bones→scratchfree→
-publish536then532. ExistingarrayoverwrittenWITHOUTfree,caller reloadpolicyneeded.
-Own bounded/nullalloc cleanup отличаетсяотuncheckedref failures;full unwindopen.
-Knownmodelprefix800 —ownminimumview,неfullABI. Legacy CHARACTEROBJECT parent268/
-count528/mesh532 отличаетсяот455272/532/536;неcast/flipnormaldispatcherпреждевременно.
-Normalmanager/filedispatch/BN/animation/shaders ещё открыты. Next:actualfile/manager
-route иполный455model layout/typedconsumers,затемnormal integration. Начатьxref91F250;
-920FD0/921480/3managerdelete bodies уже cached/pinned,не повторять reverse.
-research/client455-model-pipeline.md;inventory/client455-models*.json.
-Owned50804ce1closed/save;allprevious scopedregressions inclshared159173,
-texture8440 иPlatform01/device69 прошли,currentframesunchanged. Ownheap/COM/Dmalloc0.
-Configured MCP probe переведён наcopied client455IDB;66tools,10functionpage,
-decompile/close2fa6d05a проверены. Restricted workercode2 устраняется тойже
-escalation,непереустановкой. Серверныйsmoke input больше не используется.
-M5 lab ece2accc... и13GPUcases остаются historical evidence; snapshot/evidence в
-artifacts/m5-checkpoint/ece2acccb434ef06, gate verify_client_m5.py --saved.
-Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
-Hidden-window640x480 D3D8 HAL/RTX2080Ti, без focus/input; real backbuffer BMP сохранены.
-HAL требует разрешённого запуска вне sandbox; та же сборка внутри вернула0x8876086A.
-Звук/сеть/normal game startup/teardown не проверены. Исторические lab hashes сохранены.
-
-## Эталон и инструменты
-
-config/paths.json: legacy_source, client_455, server_bundle — reference inputs.
-Current RF_Online.bin SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b.
-Backup SHA 46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
-Оба x86/base 0x400000; config/client-target.json. Показанное 4.55 само не доказывает
-официальную атрибуцию. Полный resource manifest ещё не готов; samples M3 хешированы.
-VS2026 Professional18.11.3, MSVC14.51.36231/v145, WinSDK10.0.26100, CMake4.3.1-msvc1.
-VC6 не обязателен. Python через scripts/Invoke-Python.ps1. Git локальный, без remote/push.
-IDA9.2/HexRays/IDAPython3.11/native ida_mcp работают; owned sessions закрыты.
-GoMMO stdio audit работает; это не разрешение Install/publish/server work.
-13 Universal Modder skills и um0.2 установлены. Документы docs/ida-mcp.md/universal-modder.md.
-
-## Сборка и источники доказательств
-
-492 копии client/R3Engine под work/client-build/source. 11 byte-preserving compiler
-patches: inventory/client-source-patches.json; не менять кодировки. Behavior
-files имеют отдельный ledger client-behavior-patches.json. Сейчас22files: прежние21
-плюс1actual CHAT_INFO input file;7resource overlays включают5weather files и2новых.
-Compiler/login overlay chain проверяется; повтор не меняет bytes/timestamps.
-CMake flags RF_CLIENT_455_DRAW_ARGUMENTS / EFFECT_LOG / LOBBY_TRANSITION / HELPER_LOADER /
-X87_MATH /WEATHER /RESOURCE_IO /CLOCK /MAP_TIME /TIME_COMMANDS по умолчанию
-OFF, diagnostic driver явно ON. Legacy calls сохранены в OFF branches.
-MESH08/MESH_BINDINGS/MESH_RUNTIME — отдельные defaultOFF dependencies,driverON;
-последние два source macro ограничены labfile. Normal consumers ещё не подключены.
-Заглушек CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подтверждённые изменения:
-- Draw: CNpc 0x45D280/CResObject 0x7CD2A0 передают m_fScale,scroll0.
-- Logger 0x7DF200: append с prior length, >10M truncate, >5M flag. 14 cases/66 checks.
-  Clear routine 0x7DF1B0 существует, но xrefs/absolute pointer не найдены; lifecycle
-  неизвестен. Реальная clear implementation есть, автоматического вызова/atexit нет.
-- Login success0x53FDC9 ->0x53FE2B -> lobby load0x53FE36, без старого CheckFiles
-  на этом edge. Другие проверки файлов/вся login sequence ещё не исследованы полностью.
-- Math MatrixInvert0x8BFBC0/RVA0x4BFBC0 и Vector3fTransform0x8C0980/RVA0x4C0980:
-  собственный читаемый x87 source совпал со всеми617bytes инструкций обоих PE,
-  кроме проверенной DIR32 ссылки на свою равную epsilon constant. Обе функции
-  проверены также после линковки, global wrappers действительно на них переходят.
-  Caller FPU control сохраняется; own graphics путь измерен0x007F,455startup ещё не установлен.
-research/client-first-build.md и client-draw-and-legacy-effects.md, manifest instruction bytes.
-
-D06: _NEW_UI_ включён, как в original Debug; без него текущие item classes некомплектны.
-Dead old item switch исключён #else после уже существовавшего unconditional break.
-/NODEFAULTLIB только в диагностике: CharacterR/ziplibm/ZipArchive_STL_M/libci; нет /FORCE.
-Не переименовывать CharacterMR в R/MD. Готовый EXE не доказывает их полную ABI.
-JPEG6b genuine IJG:46 C /MT,28 ABI values,2 exact golden decodes. Miles26 imports в
-455 DLL. Genuine DX8.1b overlay13headers; 455 сам использует D3D9 — renderer gap M6.
-
-## Character: что проверено и что осталось
-
-CharacterMR SHA483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8,
-10 COFF x86. Дополнительных SDK/PDB у пользователя нет. .debug$T только typeserver refs.
-207 function bodies cached artifacts/character-analysis; не повторять массовый reverse.
-Header:67 layout assertions,165 public decorated refs; unknown storage остаётся opaque.
-Рабочие views legacy776/1072 не подменять 455 GPU/CPU layouts. Exact original ctor/sizeof
-и все defaults не доказаны. CRender bridge связывает m_Render, использует real Init;
-Texture/Animation static pointers не получают придуманных assignments.
-3630 native manager/empty renderer checks (8 instances,136 parts); setters 18 ABI checks.
-FILE adapter8API:1828 own checks +3 COFF tests. Old loader FILE+12&0x10 несовместим с UCRT;
-classic FILE изолирован, только 8 undefined symbols retargeted; bytes/relocations сохранены.
-_Xlen/_Xran — real typed /MT throws,770 comparisons с classic system exports;
-old exception layouts/unwind не полностью проверены, test-only aliases удалены.
-59 checks actual text/binary effect loaders + CPU effect application к 2meshes.
-EffectList bridge bounded500 entries, sentinel9; missing inline/out-of-domain unknown,
-455 map/36 grades не перенесены. ObjectMesh ctor не задаёт blend pointer+160, dtor
-его освобождает; реальный InitVertex→FindBlendParent всегда записывает allocation,
-включая count0. Проверены skinned/unskinned CPU cases;constructor patch не обоснован.
-Восемь legacy CPU functions/full InitVertex восстановлены source,245+6732checks/
-4COFFtests;455mesh5803bytes/vertex64/inline matrices отличается от legacy1072/36/heap.
-First-match455 vs last-matchlegacy иnegative455normals(+32/+36/+40)/UV(+44/+48) подтверждены.
-MESH08gate91F250/51F250 иloader922A00/522A00 найдены,оба тела совпадают в pinned PE.
-Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693framing доEOF.
-Полный loader/layout/renderer иunwind открыты. Source CLevel::GetFrustumNormalPlane
-рекурсивен (C4717); сверить 455, не исправлять по одному имени.
-Детали/хеши в inventory/character-*.json и research/character-*.md.
+Gate inventory/client455-pose-checkpoint.json, research/client455-pose-source.md.
+Normal snapshot character455-pose-final:2451456B,entryRVA1BC4B0,
+SHA022126636fb09cbe68d7331f8941356293139247f6adcd95c0974b04125e8eef.
+Lab5180928B,entryRVA899A,
+SHA6bbff5feb3e84bbac8bf685f464726829a4174024ef0cee6e2ab81e2b5b0293f.
+Normal180client/289modernCOFF/MT,lab188clientTUs. Normal APIs unused/stripped;
+runtime bytes равны предыдущему ANI snapshot, кроме timestampDWORD.
+Прежние ANI/GPU/manager/Platform01 proofs сохранены как исторические;
+в этом unit их runtime suites не повторялись и не объявлены текущими.
 
 ## Следующий шаг
 
-M6: ANIimporter93ACD0/full dispatcher9238A0,FrameMove923A40/animation/typedconsumers.
-Legacyimporter93C770/converter93CD60 иrealBN→MESH08 теперь source/connected,
-не повторять закрытый reverse. Прежний intermediate reader/lifetime тоже готов.
-Затем dispatcher9238A0 соsticky flags/failure lifetime, FrameMove923A40, animation/
-skinning/455shaders иnormal typed consumers. Selected manager/fileIO/ctor/refresh
-уже готовы; НЕ повторять их reverse. Полный455record allocation1188 подтверждён,
-semantics tail/полныйC++ABI открыты. Root next-steps теперь содержит краткую очередь.
-Cache retain-after-delete сохранён; не разыменовывать freed entries в тестах.
-Current24ranges иctorinstructions pinned; ownedc3f13f8bclosed/save. Raw parser181lines
-вartifacts/character-manager455/manager-plus-4.json; FrameMove head+tail тамже.
-93CD60:первые250lines вartifacts/character-gpu455/next-2.json,остальные328
-вartifacts/character-legacy455/converter-tail.json. Весьbodycached.
-Подробности research/client455-character-manager.md. ПолныйD3D9 остаётся M6.
+1. Завершить FrameMove: secondary91E270 (pony/skirt), фактический producer кадров/
+   transitions и owner1184. Сейчас при действительно требуемом secondary effect
+   UpdatePose возвращает RF_POSE_SECONDARY, не successful no-op.
+2. Полный AnimationManager/async worker/record ownership. Потом связать pose с
+   skinning/draw/declarations/shaders и normal typed consumers на455 D3D9.
+   Старый Character SDK — D3D8 и другой layout, rawcast не допускается.
+3. Другие M6 client subsystems по client-features.json и client-acceptance.md;
+   затем M6F/M7/M9. M8 исключён. Доказательств полноты клиента пока нет.
 
-Ниже исторические ориентиры уже выполненных шагов, не текущая очередь:
-Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
-Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVertex checks.
-Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
-unwind до него открыт. MESH08framing/source reader готов,НЕ повторять corpus858audit
-без изменения inputs/parser. TextureManager934120/934A20/provider933DE0 иshared GPU
-allocators93E000/93E180/index rebase/publication/release уже перенесены в source.
-Constructor/header/matrices/material request flow уже sourceготовы (14562checks),
-НЕ повторять этот reverse/header census. First-match local/external bindings и93CB00bone
-kernel уже sourceготовы,НЕ повторять reverse. 12fixturepairs pinned,ноnormal model
-dispatch/полный skeleton loader не подключены;unknown contracts не объявлятьготовыми.
-Не подавать MESH08 встарый unchecked MakeMeshData693 reader. Новый raw body607lines
-кеширован artifacts/character-mesh-source/mesh08-0x922a00.json/.txt;не выгружать снова.
-Gate91F250 сравнивает6bytes MESH08;LoadRealData9238F0/923902 ведут вgate/loader.
-Reference93B020 инвертирует normals ииспользует64byte vertex;93B5F0 задаётUV+44/+48.
-7bodies/normal/UV/magic instructions/2calls и3samples pinned вcharacter-init-reference.json.
-research/character-init-source.md. В455mesh5803/vertex64/inline matrices;
-legacy1072/36/heap — иной ABI. MESH08format sourceесть,full runtime loader ещё открыт.
-Stream:MESH08+WORDcount,permesh693header+WORDv/64*v+WORDi/2*i+WORDb/404*b.
-3bodies/12framing instructions вbothPE;858loose sources/12090parts roundtrip toEOF,
-0trailing/limit/out-of-range/influence>4.1850other-prefix loose files не классифицированы;
-RFS/archived models не покрыты. C++ views24/20 неподменяют455mesh5803.
-Bounds errors — own safety,неAV/OOM/debugbreak parity. Normal consumerнеподключён,
-необъявлятьCharacter455готовым. Raw607line922A00 и146line93CB00кешированы;
-large disasm вернул10lines приinstruction_count1069:дляfacts использовать scoped
-insn_query,неполагатьсятольконаcursor.done. Owned IDAeb76ecefclosed/save.
-Следом IDA6f091546closed/save:4bodies/12binding instruction sites сверены вbothPE.
-Packed parent pointer518/flag512/rematch5495,blend count522/pointers526/matrices646.
-Identity stores ПЕРЕД pointer copy;count>=31 наблюдаемо перекрывает matrix bytes.
-Source воспроизводит порядок,own safetycap50 не означаетofficial safe capacity50.
-Signed influence<=0 skips;>4/unterminated/>50resolved — ownerror,неAV/OOM parity.
-Vector frees/debug logger ещё не подключены. See research/client455-mesh-bindings-source.md.
-Fixture plain-BN name extraction:6Python tests/all minimal truncations passed.
-Source/kernel inputs не менялись после final component/full-client validation.
-Следом IDA716ae4faclosed/save:5runtime bodies совпали вbothPE,matrix thunks854130/
-85412A действительно импортируютd3dx9_36. Installed SysWOW64 DLL равнаclient-local,
-SHA c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935,
-version9.19.949.2111,Microsoft signatureValid.
-DLLexport-entry RVAs:Inverse1654A1/Multiply164F24;client455-d3dx9-provider.json.
-Не подменять D3DX8 илиидеальнойmath:inverse diag(2,2,2,1) даёт bits3EFFFFFF x3/3F7FFFFF.
-Отклонение1ULP доказано;reciprocal approximation — предположение оего причине.
-Header6floats иunsigned598 используютx87;unsigned correction constant2^32.
-Material callback API требуетbackend;scriptedprovider толькоtest. Primary-miss
-запускает4load attempts;empty primary сохраняетaux;secondary leading-only slash
-остаётсявимени. Actual texture cache/creation ещё не подключены. Full607line body
-НЕ выгружать;новыеtexture934120/934A20/subctor920E40 cachedartifacts/character-mesh08.
-SharedGPU:vertex offset4494,index offset4502;WORD index+=((offset%0x231860)>>6),
-upload толькоприindexCount>0;затемparent/boneиpublicationobject+532/+536.
-Destructor920FD0 cached,owningmethods/vectorfree/logger/unwind открыты.
-research/character-library.md,character-effects-and-exceptions.md,character-setters-and-construction.md.
-Local time input уже перенесён; подробности research/client455-time-commands-source.md.
-Parser7E3B10 имеет один прямой caller4335A0/RVA335A0,size8B3,call4335BD:
-он сначала пробует local parser, затем обрабатывает GM/text-command fallback.
-Raw artifacts/clock455-analysis/command-caller-0x4335a0.json;body/call проверены в обоих
-PE через audit_client_time455.py. Actual copied CHAT_INFO::SendMessage hook добавлен
-с grade>=1 после existing history/prefix path;clock-only subset/ASCII domain.
-Other local directives/full chat fallback/UI/key events/CRT locale ещё открыты,
-не объявлять parser целиком готовым.
-Owned IDAdec47527 закрыта/save.
-Уточнение:0x7E3E55 — console %time, НЕ network handler; %real_time вызывает0x8B14A0.
-Настоящий map caller0x7C8B60 ->game fraction0x8B1440 и real fraction0x8B15D0 уже
-source-integrated. Packet8/5 handler580AE0 stores payload DWORD+1/+5 to CLand+32/+36
-и receipt GetTickCount+40. Timestamp signed32 проходит через localtime32; struct tm
-не передаётся по сети. Full hours/day carry не добавлять: reference их теряет.
-Byte0/value0 meanings и остальные field+24 consumers неизвестны. Init обнуляет+32/+36,
-оставляет+40/+24 неизменными в исследованном body; native tests требуют valid packet.
-Module own16byte state,130byte x87 fragment,314checks/12FP modes/UTC+JST; copied3files
-и2actual compiled client object references проверены. Actual CNetMap/CLand GPU path
-использовал char* LoadLevel +public post-load hook; полный byte-index UI/camera/effects
-path не исполнялся, root CNetworkMgr/socket тоже. Old-CRT timezone/DST/invalid domains
-не закрыты. research/client455-map-time-source.md.
-Численный clock/FPU contract уже source-integrated и instruction-identical; не
-повторять его исследование. inventory/client455-clock*.json,client455-time-callers.json.
-Actual entity/texture/particle и LoadLevel/GPU уже прошли M5 в own entry.
-RPK file/group/fopen/exists и particle end source уже подключены (flag RESOURCE_IO).
-18 907native module checks на3775members/78RPK;30actual CParticle/LoadR3X archive
-checks в full-project lab,7source ledgers/6compiled objects проверены. RPKFILE/Group
-owners276/268, manual release/active pointer; Dmalloc настоящий в engine. Enumeration
-порядок, skip-first,last3letters rpk,256limit,prefix-length-only, mutation и unbounded
-FILE сохранены. Остальные consumers/groups/unsafe errors/OOM не сертифицированы.
-Compile DDS mask128bytes в обоих linked PE равен455; input EXE/DLL не запускались.
-Следом полные particles и обязательное D3D9 восстановление. Research client455-resource-io-source.md;
-inventory/client455-resource-{io,reference,runtime,link}.json. Commands в next-steps.md.
-Повтор MSBuild после sandbox E_ACCESSDENIED с escalation прошёл, cache не удалялся.
-Последняя полная140helper проверка остаётся pinned weather revision;703weather checks
-повторены на текущем clock lab;23 337targeted helper checks исторического M5 сохранены.
-Owned graphics/clock IDA sessions закрыты/save. Resource audit/GPU уже выполнены;
-не повторять их без изменения соответствующих входов.
-78MapEntity archives/3775entries,1067declaredSize mismatches: game fopen их игнорирует,
-tool uses next-offset/EOF extent и сохраняет metadata.70BSP39+93EBP20 round trips;
-Dungeon00 stale offsets overlap, sequential reads/skip end ровно на EOF. Остальные
-162containers offsets совпали.5of6weather SPT resolved +5R3E113/5R3M/5R3T.
-DDS headers/mask/DXT mip sizes проверены, пять real entities затем загружены наGPU.
-Один e_cauldron_boss_tower/spt/
-magmadust.spt missing для3Tower R3X; component нет во всех162RPK indexes. Не подменять.
-Evidence inventory/client455-map-resources.json, research/client455-map-resources.md;
-scripts/rpk455.py/map455.py,8tests. Strict tooling не эмулирует unsafe game parser.
-Двухслойная weather source plumbing уже есть под RF_CLIENT_455_WEATHER, own arrays
-не подменяются offsets455. Consumer0x8CAD00/RVA0x4CAD00, R3X reader0x90AED0/RVA0x50AED0:
-версия1.1 прежняя, payload1032 vslegacy1024, name2+392/id2+520/sceneFlags+524.
-65real files размерами1028/1036,7lens толькоreader;4fixtures,37real CPU lifecycle
-checks и703total. CAlpha4buffers fixture исправлена после живого CBsp, allocator не менялся.
-Clock numeric8functions+two-clock prefix закрыт для equal caller FP environment;
-полные map/calendar/transport/console/lighting области пока открыты. Particle455 curves/options, все прочие VFS consumers,
-full fog2/lens/scene weather и unsafe failure domain тоже открыты.
-Source failure quirks и unchecked short header сохранены, не улучшать по догадке.
-Research client455-weather-source.md; новый module scripts/native/client455_weather.cpp.
-Math instruction parity выполнена для двух kernels; own LoadLevel/FPU init проверены,
-reference455startup и normal WinMain остаются неизвестны.
-23 из140 samples имеют имя EXT.spt (48records), не все автоматически выбраны картой.
-Lab FP control0x027F,max roundtrip error .000967025756835938,interior probes внутри.
-Новые доказательства research/client455-x87-and-weather.md, inventory/client455-*.json,
-client-features.json. Build driver задаёт base/Release flags явно после выявленного
-пустого lab cache при первоначальном E_ACCESSDENIED. RF client diagnostic/Od,
-engine Release/O2. Не повторять неизменённые140 native tests без причины.
-M6/M6F и критерии M9 остаются открыты. Подробные команды — docs/next-steps.md.
+Девять bodies FrameMove/key/secondary/profile pinned вclient455-pose-reference.json.
+Raw artifacts/character-animation455/{framemove-*,key-*-insn,pose-*,scale-axis}.json.
+Owned66b26ca4 closed/save; живых owned IDA sessions нет. Cached decompiler имеет
+неверные D3DX stdcall prototypes/stack locals: использовать инструкции.
+Готовый framing/loader/geometry/material/parent reverse не повторять.
+
+## Контракты, которые легко нарушить
+
+- Current pin SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+  backup46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+  x86/base400000,5bytes/2unrelated ranges отличаются. Документировать RVA+SHA.
+- D3DX9_36 provider SysWOW64 равен клиентскому, SHA
+  c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935,
+  v9.19.949.2111,previous signatureValid. Inverse1654A1/Multiply164F24.
+  Inverse отклоняется от идеальной математики на1ULP; причина reciprocal
+  approximation — гипотеза. Не подменять идеальным inverse/D3DX8.
+- Legacy object parent/count/mesh268/528/532,455272/532/536. Record1188,
+  knownprefix800,mesh5803,vertex64,ANIrecord284/descriptor32; private C++ ABI открыт.
+- Mesh current5095/previous5099 владеют descriptors, ключи borrowed от ANI raw268.
+  Mesh lifetime заканчивать до ANI owner. ANI loading4/model loading264 sticky,
+  retry может вернуть true при loaded0. Cache manager оставляет dangling pointers.
+- ANI BYTE0 count/BYTE1 ignored/header140/WORDcounts/strides20-16-16-8.
+  Scale channel2 linear search, rotation0/translation1 binary search;
+  timestamps signed32, numerator wraps signed32,denominator unsigned32,x87 ratio.
+  Before/after extrapolate, count1 читает следующий key за declared channel.
+  Source допускает это внутри owner span, выход за owner — own bounded failure.
+- Quaternion W меняет знак через x87. FrameMove не увеличивает frame672.
+  Previous684,blend692/duration(renderer33844),ramp704/708/712/716;
+  localpose4830,parentold4894,rampbase4958,skin646=mesh4574*bone4638*bone4830.
+  Порядок mesh traversal/previous release observable. Profile933430/933490 не locks.
+- Bone pointer table526 пересекается с matrices646 при31+; сохранить подтверждённый
+  порядок записей, не считать limit50 гарантией безопасности. Реальные selected
+  fixtures не доказывают все unsafe/OOM/unwind/NaN/unmaskedFP/error domains.
+
+## Где искать уже сделанное
+
+- ANI/dispatch: research/client455-animation-dispatch.md, gateclient455-animation-checkpoint.json.
+- Legacy converter/MTG/weights: client455-legacy-model-runtime.md; parser/lifetime:
+  client455-legacy-model-reader.md. Real BN уже строится source, не только names.
+- Manager/rawMSH/refresh: client455-character-manager.md. Model/lifetime:
+  client455-model-pipeline.md; texture/RFS:client455-character-textures.md;
+  sharedGPU:client455-shared-buffers.md; layouts/bindings:client455-mesh-*.md.
+- M5 helper/interior/weather: client-m5-checkpoint.md. Clocks/map/commands/resource:
+  client455-clock-source.md,client455-map-time-source.md,client455-time-commands-source.md,
+  client455-resource-io-source.md. Historical gates не обновлять массовыми reruns.
+- Toolchain VS2026Professional/x86; scripts/Invoke-Python.ps1 — единственный audit
+  Python entry. MSBuild/HAL и Git mutations требуют разрешённого escalation.
+  IDA tools всегда database sessionID, открывать копии и закрывать owned sessions.

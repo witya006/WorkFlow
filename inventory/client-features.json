@@ -1180,6 +1180,46 @@
         "Unsafe531310 direct-free wrapper notnormalownerroute;borrowedkeylifetime requiresmeshreleasebeforeANIowner;privateC++STL/heapABI andruntimeassetselection open",
         "Oneparentvalidationrawleak retained in source;test freesitonlyafterobservingstrandedblock. HALupload notanimateddraw orreferenceEXEruntimeequivalence"
       ]
+    },
+    {
+      "id":"CHARACTER455-POSE-023",
+      "description":"Source scale/rotation/translation key evaluators and main FrameMove pose/transition/ramp/parent/two-phase skin matrix flow;secondary motion and normal renderer integration incomplete",
+      "status":"partial",
+      "verification":"132selected real-key cases;8analytic scenes in12maskedFPmodes;11actual BN-to-MESH08pairs/22ANI/132poseupdates/2298skin matrices standalone/fullclientownentry.5sourceAPIs called,heap/Dmalloc0. CPUonly,no animateddraw. Older runtime suites not repeated.",
+      "reference":[
+        {"rva":"0x51de80","role":"scale channel2 linear search"},
+        {"rva":"0x51df90","role":"quaternion channel0 binary search/Slerp/negateW"},
+        {"rva":"0x51e160","role":"translation channel1 binary search"},
+        {"rva":"0x523a40","role":"main FrameMove phases;partial source"},
+        {"rva":"0x51e270","role":"secondary motion still reference only"}
+      ],
+      "implementation":["scripts/native/client455_pose.h","scripts/native/client455_pose.cpp"],
+      "option":"RF_CLIENT_455_POSE",
+      "evidence":[
+        "inventory/client455-pose-reference.json",
+        "inventory/client455-pose-inputs.json",
+        "inventory/client455-pose-build.json",
+        "inventory/client455-pose-cpu.json",
+        "inventory/client455-pose-link.json",
+        "inventory/client455-pose-client.json",
+        "inventory/client455-pose-checkpoint.json",
+        "research/client455-pose-source.md"
+      ],
+      "scenarios":[
+        "LowWORDcount/signedtimestamps/wrapping signednumerator+unsigneddenominator/x87;before-first/after-last extrapolation;count1 secondkey insideowner;duplicate-time zero ratio",
+        "Actual pinnedD3DX9 Slerp/RotationQuaternion/inverse/multiply,quaternionWnegation,scale axis and static fallbacks",
+        "Current/previous transition/negative ratio/completed release/resets;parent baseline capture/ramp/modifier/null-current diagnostics/specialslot3/zero-null-missingmodel",
+        "11real sourceBN parents andMESH08children,2ANI/3phases,finite poses/exact64byte skin identities/inactiveparentclosure;borrowed ANI owners outlive meshes",
+        "Fullclient ownentry equalscomponent;5sourcecaller/archiveproof,normalruntimebytes excepttimestamps preserved,normalunused APIs stripped"
+      ],
+      "gaps":[
+        "Secondary91E270 requiringmodel1184 returnsRF_POSE_SECONDARY;notfullFrameMove replacement. Profiling/privateglobal scratchABI notrestored",
+        "Actual frame/transition producers,AnimationManager/asyncworker,skinningdraw/declarations/shaders/normaltypedconsumers/fullD3D9renderer remainopen",
+        "Real matrix comparisons prove source structural identities,not independent fullreferenceFrameMove execution equivalence;no referenceEXE run",
+        "One parent-ramp analytic childtranslation check allows1e-4 dueobservedD3DXinverse deviation;notallmathbitproof/arbitrarymatrices/NaN/unmaskedFP coverage",
+        "Own span/count/pointer/singularmatrix/nullallocation policies differfromunchecked reference failure/exception/unwind;31+bone overlap unsafe domains notcertified",
+        "CPUonly,not animateddraw ornormalWinMain acceptance;historical GPU/ANI/manager suites were not rerun onthislab"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

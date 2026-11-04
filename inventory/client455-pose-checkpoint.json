@@ -1,0 +1,42 @@
+{
+  "scope": "Selected pose evaluator/FrameMove phases,not full secondary motion/normal runtime/animateddraw or M9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "022126636fb09cbe68d7331f8941356293139247f6adcd95c0974b04125e8eef",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "ee6e8153b356ff45a0ccc6a059eac4c93ca42a0aad5fac021f83b4367e1f549d",
+    "scope": "Selected pose phases;normal consumers/secondary motion/profiling/animateddraw remain open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "6bbff5feb3e84bbac8bf685f464726829a4174024ef0cee6e2ab81e2b5b0293f",
+    "exe_bytes": 5180928,
+    "entry_rva": "0x899a"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 94482,
+    "key_cases": 132,
+    "real_pairs": 11,
+    "pose_updates": 132,
+    "skin_matrices": 2298,
+    "fp_modes": 12
+  },
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "normal_modern_coff_objects": 289,
+  "lab_client_objects": 188,
+  "old_runtime_suites_repeated": false,
+  "prior_runtime_evidence": "Historical ANI/legacy/manager/graphics proofs remain in client455-animation-checkpoint.json;not rerun or claimed current here",
+  "evidence_sha256": {
+    "client455-pose-reference": "c04ce2109e229b7dbe87969405464d8b548bad20de71a6a30d18e16474e65815",
+    "client455-pose-inputs": "215c9f8c7009973afa415f2893deb271263acdf34d8567e22821fbb5b6b793e9",
+    "client455-pose-build": "b450e4744475b88d0165612f7fac76c8db811cc36a59a29237f84bd4f3aa0f50",
+    "client455-pose-cpu": "b43eab36acf99df570fb6963dfb502407bc5d9dc4310b1327a1fb4e06ab74aca",
+    "client455-pose-link": "ae3b544e868f397b3846c652321085a8739e5d8c8ea5a7e582302f3abba1ecdc",
+    "client455-pose-client": "4f778116a55de767ad7ba9b24dc5a33329cc1d8279f5dce76681c1a78bf2c034",
+    "client-mt-variant": "f1a167553dc461649cb7222f815bf7d3f137026b48a2d3825160bf32687f0ff1"
+  }
+}

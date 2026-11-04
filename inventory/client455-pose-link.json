@@ -1,0 +1,48 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "022126636fb09cbe68d7331f8941356293139247f6adcd95c0974b04125e8eef",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "ee6e8153b356ff45a0ccc6a059eac4c93ca42a0aad5fac021f83b4367e1f549d",
+    "scope": "Selected pose phases;normal consumers/secondary motion/profiling/animateddraw remain open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "6bbff5feb3e84bbac8bf685f464726829a4174024ef0cee6e2ab81e2b5b0293f",
+    "exe_bytes": 5180928,
+    "entry_rva": "0x899a",
+    "functions": [
+      {
+        "symbol": "_RF455_SelectPoseKeys",
+        "rva": "0x346110",
+        "provider": "RFClient455Pose:pose.obj"
+      },
+      {
+        "symbol": "_RF455_ApplyPoseScale",
+        "rva": "0x345e40",
+        "provider": "RFClient455Pose:pose.obj"
+      },
+      {
+        "symbol": "_RF455_ApplyPoseRotation",
+        "rva": "0x345b50",
+        "provider": "RFClient455Pose:pose.obj"
+      },
+      {
+        "symbol": "_RF455_ApplyPoseTranslation",
+        "rva": "0x346010",
+        "provider": "RFClient455Pose:pose.obj"
+      },
+      {
+        "symbol": "_RF455_UpdateCharacterPose",
+        "rva": "0x346350",
+        "provider": "RFClient455Pose:pose.obj"
+      }
+    ],
+    "library_sha256": "ee6e8153b356ff45a0ccc6a059eac4c93ca42a0aad5fac021f83b4367e1f549d",
+    "scope": "Selected pose phases;normal consumers/secondary motion/profiling/animateddraw remain open"
+  }
+}

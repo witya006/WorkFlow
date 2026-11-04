@@ -240,6 +240,18 @@ foreach ($property in $animation.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_ANIMATION=ON'
 $arguments += "-DRF_CLIENT_455_ANIMATION_LIBRARY=$animationLibrary"
+$pose = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Raw | ConvertFrom-Json
+$poseCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-cpu.json') -Raw | ConvertFrom-Json
+$poseLibrary = Join-Path $workspace $pose.library
+if ($pose.compile_only -or $poseCpu.native.status -ne 'PASS' -or $poseCpu.native.real_pairs -ne 11 -or
+    $poseCpu.native.pose_updates -ne 132 -or
+    (Get-FileHash -LiteralPath $poseLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $pose.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $poseCpu.build_report_sha256) { throw '455 pose proof missing or stale.' }
+foreach ($property in $pose.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 pose source changed since proof.' }
+}
+$arguments += '-DRF_CLIENT_455_POSE=ON'
+$arguments += "-DRF_CLIENT_455_POSE_LIBRARY=$poseLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -331,6 +343,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_pose.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_pose.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation.py }

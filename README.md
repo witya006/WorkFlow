@@ -11,12 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний source участок M6: ANI/rawIO/record/attachment и Character dispatcher.
-27ANI/1062tracks,22переключения на11BN→MESH08парах/794parts/660HALuploads;
-14513CPU/15181HALchecks standalone/fullclient.13source APIs проверены. Normal
-consumers/pose/animation/shaders ещё открыты;M6/M6F/M7/M9 не закрыты. Далее
-FrameMove/pose. Подробности research/client455-animation-dispatch.md,
-inventory/client455-animation-checkpoint.json иdocs/next-steps.md.
+Последний source участок M6: вычисление позы по ANI и основные FrameMove phases.
+11настоящих BN→MESH08 пар/22ANI,132pose updates,2298skin matrices проверены
+standalone ивown entry полногоRF_Online.bin;5source APIs. Это CPU pose безdraw.
+Secondary motion,frame producer,AnimationManager,normal consumers иD3D9renderer
+ещё открыты;M6/M6F/M7/M9 не закрыты. Подробности research/client455-pose-source.md,
+inventory/client455-pose-checkpoint.json иdocs/next-steps.md.
 
 История предшествующих этапов (актуальная очередь выше):
 

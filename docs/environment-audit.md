@@ -566,3 +566,10 @@ frames/normalruntimebytes кромеtimestamps сохранены. Normalconsume
 AnimationManager/asyncworker остаются открытыми. Owned45964631closed/save.
 Gate inventory/client455-animation-checkpoint.json;
 research/client455-animation-dispatch.md. Original/server inputs без изменений.
+Последующий source unit: pose evaluators/основные FrameMove phases,sourceO2/W4/WX/
+x86/MT.11realpairs/132updates/2298skin matrices standalone иfullclientownentry,
+5sourceC APIs actualcaller/archiveproof,heap/Dmalloc0. CPUonly,безGPUdraw.
+Normal180client/289modernCOFF,lab188TUs. Старые runtime suites не повторялись;
+normalruntimebytes кромеtimestamps сохранены. Secondary/producer кадров/manager/
+worker/normal consumers/shaders открыты. Gateinventory/client455-pose-checkpoint.json;
+research/client455-pose-source.md. НовыхIDA sessions нет,оригиналы/серверы не менялись.

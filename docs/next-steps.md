@@ -11,7 +11,15 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — ANI/rawIO/record284/lifetime/attachment/Character dispatcher:
+Последний unit — source pose evaluators иосновные FrameMove phases:
+11realBN→MESH08pairs/22ANI/132updates/2298skin matrices;132selectedkey cases,
+8analytic scenarios в12maskedFPmodes. Component иfullclientownentry равны;
+5sourceC APIs caller/archiveproof,heap/Dmalloc0. Это CPUpose,неanimateddraw.
+Gate inventory/client455-pose-checkpoint.json;research/client455-pose-source.md.
+Normal180client/289modernCOFF/MT,lab188clientTUs;normal source APIs unused/stripped,
+normalruntimebytes кромеtimestamps прежние. Старые runtime suites не повторялись.
+
+Предыдущий unit — ANI/rawIO/record284/lifetime/attachment/Character dispatcher:
 14513CPU/15181HALchecks standalone/fullclient,27ANI1062tracks/6Python tests,
 22real ANI matches на11BN→MESH08парах794parts/660HALuploads.13sourceC APIs
 проверены. Normalconsumers/pose/shaders открыты. Stickyflags/cumulativecounter/
@@ -39,17 +47,13 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Восстановить FrameMove923A40: state/timing иdownstream key evaluator/pose/
-   transforms. ANI importer/record/attachment/Character dispatcher source готовы;
-   не повторять закрытое framing/IO исследование. FullAnimationManager/worker
-   lifecycle остаются открытыми. Raw keys borrowed:mesh lifetime заканчивать доANIowner.
-   Девять bodies иshape1040active tracks уже закреплены вclient455-pose-reference.json;
-   instructions/rawcache вcharacter-animation455. Scale91DE80/channel2,
-   rotation91DF90/channel0,translation91E160/channel1;decompiler stacktypes неверны.
-   Далее source трёх evaluators сactualD3DX/x87 иconnectedpose;не повторять
-   уже выполненный ANI census или unchanged массовые регрессии ради счётчика.
-2. Далее transforms,
-   animation/skinning, 455declarations/shaders и normal typed consumers.
+1. Завершить FrameMove: secondary91E270 сmodel1184/timeGetTime/pony-skirt math,
+   фактическийproducer frame/transition иAnimationManager/worker ownership.
+   Основныеpose/key/transition/ramp/parent/skinmatrix phases source готовы;
+   secondary-required branch пока RF_POSE_SECONDARY,не successful no-op.
+   Девять bodies и1040active tracks уже pinned;rawinstructions вcharacter-animation455.
+   Не повторять framing/loader/key census. Rawkeys borrowed:mesh release доANIowner.
+2. Далее skinning/draw,455declarations/shaders и normal typed consumers.
    Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.
 3. Восстановить полный D3D9renderer455/lighting/effects/device lifecycle вместе
    с consumers Character. Это обязательное соответствие M6, не модернизация M8.
@@ -89,6 +93,15 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Python через scripts/Invoke-Python.ps1:
+prepare_client455_pose_inputs.py →build_client455_pose.py →probe_client455_pose.py →
+prepare_client_build.py →probe_client_character_build.ps1 [обычный/-HelperLab] →
+probe_client455_pose_client.py →checkpoint_client455_pose.py.
+Normal snapshot character455-pose-final. Старые suites не повторять без риска;
+их исторические gates иimmutable snapshots сохранены. Текущийpose gate не заявляетGPUdraw.
+
+Предыдущий модуль ANI:
 
 Python через scripts/Invoke-Python.ps1:
 test_ani455.py →audit_client455_animation.py →build_client455_animation.py →

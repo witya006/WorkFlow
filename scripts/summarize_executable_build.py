@@ -61,7 +61,7 @@ def main():
             if m:settings[m[1]]=m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION)(?:_LIBRARY)?):[^=]+=(.*)',line)
+            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
             if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
@@ -111,6 +111,9 @@ def main():
         if settings.get('RF_CLIENT_455_ANIMATION')=='ON':
             animation_inputs=['scripts/native/'+p for p in ['client455_animation.cpp','client455_animation.h','test_client455_animation.cpp','client_animation_lab.inc']]
             report['animation_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in animation_inputs}
+        if settings.get('RF_CLIENT_455_POSE')=='ON':
+            pose_inputs=['scripts/native/'+p for p in ['client455_pose.cpp','client455_pose.h','test_client455_pose.cpp','client_pose_lab.inc']]
+            report['pose_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in pose_inputs}
         if settings.get('RF_CHARACTER_MESH_SOURCE')=='ON':
             mesh_inputs=['scripts/native/character_mesh_bindings.cpp','scripts/native/test_character_mesh_bindings.cpp','scripts/native/client_character_mesh_lab.inc']
             mesh_inputs+=['scripts/native/character_mesh_init.cpp','scripts/native/character_mesh_format.h','scripts/native/test_character_mesh_init.cpp','scripts/native/client_character_init_lab.inc']
