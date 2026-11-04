@@ -14,6 +14,21 @@ M8 не требуется. Компиляция, запуск и частичн
 
 ## Текущее состояние
 
+- Новейший unit: ANI93ACD0/framing/record284/lifetime/attachment93C050/93C1F0,
+  Character dispatcher9238A0/MatchAnimation9316C0.16bodies equalbothpins;
+  27ANI/1062tracks roundtrip/6Python tests,14513CPU/15181HALchecks standalone/
+  fullclient.22real ANI matches на11BN→MESH08парах794parts/660HALuploads.
+  13C API actual caller/archiveproof. Sticky failure flags, previous/current,
+  cumulative_msize counter иone reference raw leak подтверждены. Harness отдельно
+  чистит leak после наблюдения;не считать это поведением455. COM/Dmalloc0.
+  Current legacy14896/manager1138/Platform01-device69passed,framesunchanged.
+  Gate inventory/client455-animation-checkpoint.json;
+  research/client455-animation-dispatch.md. Normal APIs unused/stripped,
+  runtimebytes кромеtimestamps прежние. Next:FrameMove923A40/pose/key evaluator,
+  fullAnimationManager/worker,skinning/shaders/normaltypedconsumers. Owned45964631closed/save.
+  Normal SHA0b414fbc4d5cb14ec7640a1d23c71547203de78058f310fdb1c8e53d481404e1,
+  x86/2451456B/entryRVA1BC4B0;lab d9db2a2304da80e931c69bd0fa9ac11266ad313aaaab9cbb45c1f121f13326b7,
+  5125120B/entryRVA891D.289normalmodernCOFF/MT,187clientlabTUs.
 - Новейший connectedunit:legacy fileimporter93C770/converter93CD60/vertex64/UV/
   physique64/convert36/dedup+upload/bindings/MTG,9bodies equalbothpins.66627capture/
   14896HALchecks standalone/fullclient;34runs/972parts/832HALuploads,2CPUretained.
@@ -21,7 +36,7 @@ M8 не требуется. Компиляция, запуск и частичн
   не только names изtooling.10APIs linked (8runtime+reader/delete),heap/COM/Dmalloc0.
   Current manager1138/model10021/Platform01-device69passed,frames unchanged.
   Gate inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
-  Next:ANI importer93ACD0/full dispatcher9238A0,FrameMove/animation/typedconsumers.
+  Следующий ANI/dispatcher unit выполнен выше;FrameMove/animation/typedconsumers открыты.
   Owned0d9553e1/08d81b2fclosed/save. Source/normaldispatcher switch всё ещё впереди.
 - Новейший standalone unit: reader93C2F0/part720 ctor+dtor/model28release.
   4606native checks/12realBN455records+5synthetic4records,1183PAGE_NOACCESS prefixes,

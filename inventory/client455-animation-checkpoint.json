@@ -1,0 +1,62 @@
+{
+  "scope": "Selected ANI/framing/rawIO/record/lifetime/attachment/character dispatcher,not full pose/normal runtime orM9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "0b414fbc4d5cb14ec7640a1d23c71547203de78058f310fdb1c8e53d481404e1",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "2b5da5ab73dfc049bcfb2a7ca6806623e9ff3994b9f33412f6693ad8755a25b2",
+    "scope": "Selected source ANI/character dispatch;normal consumers,pose math,async manager remain open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "d9db2a2304da80e931c69bd0fa9ac11266ad313aaaab9cbb45c1f121f13326b7",
+    "exe_bytes": 5125120,
+    "entry_rva": "0x891d"
+  },
+  "native": {
+    "cpu": {
+      "status": "PASS",
+      "checks": 14513,
+      "ani_files": 27,
+      "tracks": 1062,
+      "real_ani_matches": 22,
+      "model_parts": 794,
+      "physical_parts": 0,
+      "stranded_raw_blocks_observed_and_harness_freed": 1
+    },
+    "gpu_and_client": {
+      "status": "PASS",
+      "checks": 15181,
+      "ani_files": 27,
+      "tracks": 1062,
+      "real_ani_matches": 22,
+      "model_parts": 794,
+      "physical_parts": 660,
+      "stranded_raw_blocks_observed_and_harness_freed": 1
+    }
+  },
+  "regressions": {
+    "legacy_runtime_checks": 14896,
+    "manager_checks": 1138,
+    "graphics_checks": 69,
+    "previous_frame_hashes_equal": true,
+    "normal_runtime_bytes_equal_previous_excluding_timestamps": true
+  },
+  "normal_modern_coff_objects": 289,
+  "lab_client_objects": 187,
+  "evidence_sha256": {
+    "client455-animation-reference": "fc6e6b4f3d30a457be397270914da6f0f7df115cd64d4be6658572f69400386a",
+    "client455-animation-build": "37135ad88fae83aadc2323ea485ce7a272a74b4dfc0281e192269752be068a68",
+    "client455-animation-cpu": "44d604d935189029de26575b113fd54703e1005d8f6032ebc1732bcec650492e",
+    "client455-animation-gpu": "65f3310e3dcaddaec227e3a89200ed9588563100dced7467985d0dd6bcc42956",
+    "client455-animation-link": "95b15a4bcf532fb1945ca244fe7da6bceb19631dee79fc198837c4d638d6d503",
+    "client455-animation-client": "07cbf704c283b30dbc362bb880260934c011ddec2416a62cb23066a68c26bc98",
+    "client455-animation-graphics": "e32dfa625c0d7955907c2933579add8028d0991caf038c211773304fc1c41908",
+    "client455-legacy-runtime-client": "8bb33e8672608b548d2a6c8f0c6c0c65196cf055b0d06d1b08574107ada50848",
+    "client455-character-manager-client": "cfbe07fbbb047a293eaa92376509bf2c6d9167907f74380ac11a82d7728b294d",
+    "client-mt-variant": "f1a167553dc461649cb7222f815bf7d3f137026b48a2d3825160bf32687f0ff1"
+  }
+}

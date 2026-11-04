@@ -11,12 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний source участок M6:legacy MSH/BN importer/converter/weights/indexing/MTG,
-66627capture/14896HALchecks standalone/fullclient.34runs/972parts/832HALuploads,
-2CPUretainedparts;12actualBN→MESH08pairs/393parts/276uploads. Heap/COM/Dmalloc0.
-Normal dispatcher/ANI/animation/shaders/typed consumers ещё открыты;M6/M6F/M7/M9
-не закрыты. ДалееANI importer/dispatcher иFrameMove. Подробности
-research/client455-legacy-model-runtime.md иdocs/next-steps.md.
+Последний source участок M6: ANI/rawIO/record/attachment и Character dispatcher.
+27ANI/1062tracks,22переключения на11BN→MESH08парах/794parts/660HALuploads;
+14513CPU/15181HALchecks standalone/fullclient.13source APIs проверены. Normal
+consumers/pose/animation/shaders ещё открыты;M6/M6F/M7/M9 не закрыты. Далее
+FrameMove/pose. Подробности research/client455-animation-dispatch.md,
+inventory/client455-animation-checkpoint.json иdocs/next-steps.md.
 
 История предшествующих этапов (актуальная очередь выше):
 

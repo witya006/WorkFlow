@@ -1,0 +1,749 @@
+{
+  "scope": "ANI rawIO/framing/record/lifetime/attachment andvalid character dispatch;full pose math/animationmanager/privateABI/normal consumers remainopen",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "animation_ctor",
+          "rva": "0x532380",
+          "bytes": 43,
+          "sha256": "f10d6b3d016da9d36989d7857b418f557cf97ff51ce776212cb72515f161b006"
+        },
+        {
+          "name": "animation_dtor",
+          "rva": "0x532690",
+          "bytes": 114,
+          "sha256": "d9d36ec23e8a27d40341b709a0b03480fb7103d0e4edaff38eaf69016c0ee0a1"
+        },
+        {
+          "name": "read_raw_ani",
+          "rva": "0x53acd0",
+          "bytes": 325,
+          "sha256": "ac36ed135a2bac5a72a67c3069deaf8b8e83ac66dbdc0aa52b66038f5a55ddd3"
+        },
+        {
+          "name": "find_max",
+          "rva": "0x53ae20",
+          "bytes": 251,
+          "sha256": "ed4420407b6b692e1a039e28fba31bc9083918665f1c34b1e2e7976f2e891b4c"
+        },
+        {
+          "name": "load_animation",
+          "rva": "0x532400",
+          "bytes": 119,
+          "sha256": "8c09bd7c89c509bf2b87b380d00dfa9b0291f6053c8ba93ffc41d09c2fe7891c"
+        },
+        {
+          "name": "attach_track",
+          "rva": "0x53c050",
+          "bytes": 404,
+          "sha256": "0cc437c10509a608dabc168886ea4dfd13148a3b79eb9b4e28a8f66e0b5e6496"
+        },
+        {
+          "name": "attach_raw",
+          "rva": "0x53c1f0",
+          "bytes": 246,
+          "sha256": "239c0e2b7119b257a1d1b7d46ba76b6792457b6e4159615de246852601b141d7"
+        },
+        {
+          "name": "dispatchA",
+          "rva": "0x5352a0",
+          "bytes": 126,
+          "sha256": "6259abc64b021b2148aa6b7502858fdc94f87749b0bf6c686e6baefa7cbd2eea"
+        },
+        {
+          "name": "dispatchB",
+          "rva": "0x535320",
+          "bytes": 126,
+          "sha256": "5ceaaad50432e9dc0f206a638fb8af89d267083a3548a5cf9e54ff723dd9a4c7"
+        },
+        {
+          "name": "suffix",
+          "rva": "0x5351a0",
+          "bytes": 48,
+          "sha256": "9506f4dc413f9b33b64ffa8a8af3e40800db8db0ba2a5e54dc327e8d86389123"
+        },
+        {
+          "name": "load_character",
+          "rva": "0x5238a0",
+          "bytes": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        },
+        {
+          "name": "validate_faces",
+          "rva": "0x51f150",
+          "bytes": 94,
+          "sha256": "7c701639a9a05175899c94a68db7ee13aade325899c16eaa9a96c317e979816c"
+        },
+        {
+          "name": "mesh08_gate",
+          "rva": "0x51f250",
+          "bytes": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "match_animation",
+          "rva": "0x5316c0",
+          "bytes": 100,
+          "sha256": "4fa4e6232d6ad5ca045fb8b6ac43521addfb2de0f290c684cc2262a5eed4e2f3"
+        },
+        {
+          "name": "factory_reference",
+          "rva": "0x533280",
+          "bytes": 208,
+          "sha256": "e02d3eca37d072e22e0c44826bc44f9dbcc068a7587d53456c4e7f5166aae6b2"
+        },
+        {
+          "name": "unsafe_direct_free_wrapper_reference",
+          "rva": "0x531310",
+          "bytes": 47,
+          "sha256": "249198113c761166f03586c97aaa714ab8d9fad17825915e20148d885de0805e"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "animation_ctor",
+          "rva": "0x532380",
+          "bytes": 43,
+          "sha256": "f10d6b3d016da9d36989d7857b418f557cf97ff51ce776212cb72515f161b006"
+        },
+        {
+          "name": "animation_dtor",
+          "rva": "0x532690",
+          "bytes": 114,
+          "sha256": "d9d36ec23e8a27d40341b709a0b03480fb7103d0e4edaff38eaf69016c0ee0a1"
+        },
+        {
+          "name": "read_raw_ani",
+          "rva": "0x53acd0",
+          "bytes": 325,
+          "sha256": "ac36ed135a2bac5a72a67c3069deaf8b8e83ac66dbdc0aa52b66038f5a55ddd3"
+        },
+        {
+          "name": "find_max",
+          "rva": "0x53ae20",
+          "bytes": 251,
+          "sha256": "ed4420407b6b692e1a039e28fba31bc9083918665f1c34b1e2e7976f2e891b4c"
+        },
+        {
+          "name": "load_animation",
+          "rva": "0x532400",
+          "bytes": 119,
+          "sha256": "8c09bd7c89c509bf2b87b380d00dfa9b0291f6053c8ba93ffc41d09c2fe7891c"
+        },
+        {
+          "name": "attach_track",
+          "rva": "0x53c050",
+          "bytes": 404,
+          "sha256": "0cc437c10509a608dabc168886ea4dfd13148a3b79eb9b4e28a8f66e0b5e6496"
+        },
+        {
+          "name": "attach_raw",
+          "rva": "0x53c1f0",
+          "bytes": 246,
+          "sha256": "239c0e2b7119b257a1d1b7d46ba76b6792457b6e4159615de246852601b141d7"
+        },
+        {
+          "name": "dispatchA",
+          "rva": "0x5352a0",
+          "bytes": 126,
+          "sha256": "6259abc64b021b2148aa6b7502858fdc94f87749b0bf6c686e6baefa7cbd2eea"
+        },
+        {
+          "name": "dispatchB",
+          "rva": "0x535320",
+          "bytes": 126,
+          "sha256": "5ceaaad50432e9dc0f206a638fb8af89d267083a3548a5cf9e54ff723dd9a4c7"
+        },
+        {
+          "name": "suffix",
+          "rva": "0x5351a0",
+          "bytes": 48,
+          "sha256": "9506f4dc413f9b33b64ffa8a8af3e40800db8db0ba2a5e54dc327e8d86389123"
+        },
+        {
+          "name": "load_character",
+          "rva": "0x5238a0",
+          "bytes": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        },
+        {
+          "name": "validate_faces",
+          "rva": "0x51f150",
+          "bytes": 94,
+          "sha256": "7c701639a9a05175899c94a68db7ee13aade325899c16eaa9a96c317e979816c"
+        },
+        {
+          "name": "mesh08_gate",
+          "rva": "0x51f250",
+          "bytes": 76,
+          "sha256": "0e7ae29ae3a9aee200db790a548c5b0adb3488fe9f6f91c4f9902e67337af8be"
+        },
+        {
+          "name": "match_animation",
+          "rva": "0x5316c0",
+          "bytes": 100,
+          "sha256": "4fa4e6232d6ad5ca045fb8b6ac43521addfb2de0f290c684cc2262a5eed4e2f3"
+        },
+        {
+          "name": "factory_reference",
+          "rva": "0x533280",
+          "bytes": 208,
+          "sha256": "e02d3eca37d072e22e0c44826bc44f9dbcc068a7587d53456c4e7f5166aae6b2"
+        },
+        {
+          "name": "unsafe_direct_free_wrapper_reference",
+          "rva": "0x531310",
+          "bytes": 47,
+          "sha256": "249198113c761166f03586c97aaa714ab8d9fad17825915e20148d885de0805e"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "copy": "work/client-reference/character-animation455/sample_000.ani",
+      "sha256": "686be74f8d0e3697848dd640950311ce6453090d3f63969f701f1c69cf1ecde8",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ZETSOHOLIDAY_PEACEDAMAGE_01_00.ANI",
+      "pair_index": 1,
+      "bytes": 27746,
+      "tracks": 85,
+      "max_frame": 3200,
+      "consumed": 27746,
+      "trailing": 0,
+      "channel_keys": [
+        675,
+        0,
+        0,
+        208
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_001.ani",
+      "sha256": "a694c7df7b89e76d15ff1b76e798676530530845cfda2b634771c21be943526c",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ZETSOHOLIDAY_PEACEIDLE_02_00.ANI",
+      "pair_index": 1,
+      "bytes": 70794,
+      "tracks": 81,
+      "max_frame": 17920,
+      "consumed": 70794,
+      "trailing": 0,
+      "channel_keys": [
+        2857,
+        0,
+        0,
+        208
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_002.ani",
+      "sha256": "a8374926608cf30daf68468ba50a5e35be11cbd2acd3480138c1d1300739faa0",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/CORA_GUARDTOWER_022_ATTACK_01_00.ANI",
+      "pair_index": 2,
+      "bytes": 30742,
+      "tracks": 57,
+      "max_frame": 6400,
+      "consumed": 30742,
+      "trailing": 0,
+      "channel_keys": [
+        924,
+        168,
+        5,
+        132
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_003.ani",
+      "sha256": "3e979e030064e981d21431d122a083c3b774ee1f155361176252c4d382c81044",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/CORA_GUARDTOWER_022_CORPSE_01_00.ANI",
+      "pair_index": 2,
+      "bytes": 11598,
+      "tracks": 61,
+      "max_frame": 160,
+      "consumed": 11598,
+      "trailing": 0,
+      "channel_keys": [
+        72,
+        12,
+        9,
+        99
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_004.ani",
+      "sha256": "66ffaefc5faa24364d00720ddfbc0492495bf293c8cd54a993e36d59a6be5830",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/ACCRETIA_GUARDTOWER_042_ATTACK_01_00.ANI",
+      "pair_index": 3,
+      "bytes": 14758,
+      "tracks": 29,
+      "max_frame": 6400,
+      "consumed": 14758,
+      "trailing": 0,
+      "channel_keys": [
+        168,
+        378,
+        30,
+        72
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_005.ani",
+      "sha256": "ea7838100e9829317f96b9c4dd66ac58426ec72d5efd247b80c7378b5dadbe7b",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/ACCRETIA_GUARDTOWER_042_CORPSE_01_00.ANI",
+      "pair_index": 3,
+      "bytes": 5118,
+      "tracks": 28,
+      "max_frame": 160,
+      "consumed": 5118,
+      "trailing": 0,
+      "channel_keys": [
+        3,
+        18,
+        12,
+        54
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_006.ani",
+      "sha256": "ecf144f6e83b4ffb2477f692f90c30bc70a0c5a7abb8c1f0e254f8c3afaf1127",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/BELLATO_GUARDTOWER_003_ATTACK_01_00.ANI",
+      "pair_index": 4,
+      "bytes": 9030,
+      "tracks": 15,
+      "max_frame": 6400,
+      "consumed": 9030,
+      "trailing": 0,
+      "channel_keys": [
+        294,
+        42,
+        0,
+        32
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_007.ani",
+      "sha256": "dd1d061722c89b42e6f51baf7e0f19b33f7f1c30f86c5c8abd642c772e6a4715",
+      "kind": "real",
+      "original": "Character/GuardTower/Ani/BELLATO_GUARDTOWER_003_CORPSE_01_00.ANI",
+      "pair_index": 4,
+      "bytes": 2918,
+      "tracks": 15,
+      "max_frame": 160,
+      "consumed": 2918,
+      "trailing": 0,
+      "channel_keys": [
+        18,
+        9,
+        0,
+        24
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_008.ani",
+      "sha256": "d7423139f8a003bd0b5aa242003c91b80045bf30235ce8e6a9749f6b98504fa6",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ANABOLACYSTHOLIDAY_PEACEDAMAGE_01_00.ANI",
+      "pair_index": 5,
+      "bytes": 14734,
+      "tracks": 27,
+      "max_frame": 4480,
+      "consumed": 14734,
+      "trailing": 0,
+      "channel_keys": [
+        420,
+        120,
+        0,
+        52
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_009.ani",
+      "sha256": "df3be843c048ad9d4d81500c59540785aa60e549c3530e834843e1de97486ceb",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ANABOLACYSTHOLIDAY_PEACEIDLE_03_00.ANI",
+      "pair_index": 5,
+      "bytes": 17518,
+      "tracks": 27,
+      "max_frame": 6400,
+      "consumed": 17518,
+      "trailing": 0,
+      "channel_keys": [
+        588,
+        84,
+        0,
+        52
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_010.ani",
+      "sha256": "7e922354d5b61385a3a0cc4fe9bad326a6335e247c372aae87e958f68d9b2fc9",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARGHOLHOLIDAY_PEACECRITICAL_01_00.ANI",
+      "pair_index": 6,
+      "bytes": 33354,
+      "tracks": 74,
+      "max_frame": 3360,
+      "consumed": 33354,
+      "trailing": 0,
+      "channel_keys": [
+        842,
+        304,
+        0,
+        87
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_011.ani",
+      "sha256": "4d17d76f6af3619c0383ef453ae00fe793175d4e6a8b5aa7fda06bd843b5ec6c",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARGHOLHOLIDAY_PEACEIDLE_01_00.ANI",
+      "pair_index": 6,
+      "bytes": 59190,
+      "tracks": 74,
+      "max_frame": 7840,
+      "consumed": 59190,
+      "trailing": 0,
+      "channel_keys": [
+        1877,
+        625,
+        0,
+        87
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_012.ani",
+      "sha256": "7e922354d5b61385a3a0cc4fe9bad326a6335e247c372aae87e958f68d9b2fc9",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARGHOLQUICHHOLIDAY_PEACECRITICAL_01_00.ANI",
+      "pair_index": 7,
+      "bytes": 33354,
+      "tracks": 74,
+      "max_frame": 3360,
+      "consumed": 33354,
+      "trailing": 0,
+      "channel_keys": [
+        842,
+        304,
+        0,
+        87
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_013.ani",
+      "sha256": "4d17d76f6af3619c0383ef453ae00fe793175d4e6a8b5aa7fda06bd843b5ec6c",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARGHOLQUICHHOLIDAY_PEACEIDLE_01_00.ANI",
+      "pair_index": 7,
+      "bytes": 59190,
+      "tracks": 74,
+      "max_frame": 7840,
+      "consumed": 59190,
+      "trailing": 0,
+      "channel_keys": [
+        1877,
+        625,
+        0,
+        87
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_014.ani",
+      "sha256": "7516c79d1f487a66ef6a0a40bcd07bd930256baaac46339ac4a95da23729f57e",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARMEDGHOSTHOLIDAY_PEACECRITICAL_01_00.ANI",
+      "pair_index": 8,
+      "bytes": 19530,
+      "tracks": 29,
+      "max_frame": 5600,
+      "consumed": 19530,
+      "trailing": 0,
+      "channel_keys": [
+        537,
+        255,
+        0,
+        52
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_015.ani",
+      "sha256": "82f1d2fab2a743283ffdbfa3fd4ff0a95f4ae1abc2c45c374859c1749a9348fe",
+      "kind": "real",
+      "original": "Character/Monster/Ani/ARMEDGHOSTHOLIDAY_PEACEIDLE_01_00.ANI",
+      "pair_index": 8,
+      "bytes": 10070,
+      "tracks": 18,
+      "max_frame": 9600,
+      "consumed": 10070,
+      "trailing": 0,
+      "channel_keys": [
+        251,
+        123,
+        0,
+        52
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_016.ani",
+      "sha256": "b39236d6d009340f5382a50d2c62cef370d1adebce5001f5859dbf26bd90101c",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BELPHEGORHOLIDAY_PEACEDAMAGE_01_00.ANI",
+      "pair_index": 9,
+      "bytes": 43298,
+      "tracks": 89,
+      "max_frame": 4320,
+      "consumed": 43298,
+      "trailing": 0,
+      "channel_keys": [
+        1131,
+        377,
+        0,
+        184
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_017.ani",
+      "sha256": "26294dcc7d414e4b933e05c6fb6c5718f8c7ab09e9f9421a7d1ca6c5bb7bc94e",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BELPHEGORHOLIDAY_PEACEIDLE_03_00.ANI",
+      "pair_index": 9,
+      "bytes": 58058,
+      "tracks": 88,
+      "max_frame": 6880,
+      "consumed": 58058,
+      "trailing": 0,
+      "channel_keys": [
+        1710,
+        585,
+        0,
+        184
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_018.ani",
+      "sha256": "897e75c0fa2f8d48bda6c5a7bbeab595d9a0b3e2c15cf9a3376c294b8adf314d",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BIGRATMOTHHOLIDAY_PEACECRITICAL_01_00.ANI",
+      "pair_index": 10,
+      "bytes": 20602,
+      "tracks": 38,
+      "max_frame": 3520,
+      "consumed": 20602,
+      "trailing": 0,
+      "channel_keys": [
+        552,
+        216,
+        0,
+        60
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_019.ani",
+      "sha256": "8af2edde8f15fbbca3300346d697c15927cfd911bfe8aeebda734fb7d5b56620",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BIGRATMOTHHOLIDAY_PEACEIDLE_01_00.ANI",
+      "pair_index": 10,
+      "bytes": 35542,
+      "tracks": 33,
+      "max_frame": 12800,
+      "consumed": 35542,
+      "trailing": 0,
+      "channel_keys": [
+        1312,
+        246,
+        0,
+        60
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_020.ani",
+      "sha256": "09ac80c1ca011807621f26896d7b5c3698425d85857e533d3889c72c5e6cb4c9",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BLADEPAWNHOLIDAY_PEACEDAMAGE_01_00.ANI",
+      "pair_index": 11,
+      "bytes": 10850,
+      "tracks": 24,
+      "max_frame": 3520,
+      "consumed": 10850,
+      "trailing": 0,
+      "channel_keys": [
+        288,
+        72,
+        0,
+        48
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/sample_021.ani",
+      "sha256": "c370eb284bcab72b6b3d9ba3c8879ef8e367887235d7c6bb9ef734c8d178607f",
+      "kind": "real",
+      "original": "Character/Monster/Ani/BLADEPAWNHOLIDAY_PEACEIDLE_01_00.ANI",
+      "pair_index": 11,
+      "bytes": 2790,
+      "tracks": 17,
+      "max_frame": 0,
+      "consumed": 2790,
+      "trailing": 0,
+      "channel_keys": [
+        0,
+        0,
+        0,
+        34
+      ],
+      "inactive": 17
+    },
+    {
+      "copy": "work/client-reference/character-animation455/channels.ani",
+      "sha256": "7bbc133c88276df1941623155e36b2a669ca75ff6788eee78817617da14252d5",
+      "kind": "synthetic",
+      "original": null,
+      "pair_index": null,
+      "bytes": 554,
+      "tracks": 3,
+      "max_frame": 65535,
+      "consumed": 554,
+      "trailing": 0,
+      "channel_keys": [
+        3,
+        1,
+        1,
+        2
+      ],
+      "inactive": 1
+    },
+    {
+      "copy": "work/client-reference/character-animation455/duplicate.ani",
+      "sha256": "bc27cddaf96e7c6e073c726522d34717ead8fc17e325ae4c90bc7fac1c7eedd2",
+      "kind": "synthetic",
+      "original": null,
+      "pair_index": null,
+      "bytes": 418,
+      "tracks": 2,
+      "max_frame": 8,
+      "consumed": 418,
+      "trailing": 0,
+      "channel_keys": [
+        4,
+        1,
+        1,
+        1
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/empty.ani",
+      "sha256": "96a296d224f285c67bee93c30f8a309157f0daa35dc5b87e410b78630a09cfc7",
+      "kind": "synthetic",
+      "original": null,
+      "pair_index": null,
+      "bytes": 2,
+      "tracks": 0,
+      "max_frame": 0,
+      "consumed": 2,
+      "trailing": 0,
+      "channel_keys": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/onebyte.ani",
+      "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+      "kind": "synthetic",
+      "original": null,
+      "pair_index": null,
+      "bytes": 1,
+      "tracks": 0,
+      "max_frame": 0,
+      "consumed": 2,
+      "trailing": 0,
+      "channel_keys": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inactive": 0
+    },
+    {
+      "copy": "work/client-reference/character-animation455/empty_high.ani",
+      "sha256": "8e97e4990e2c189a9393c3a8a5cece8f28b36483c19b91c29837bf46d2656574",
+      "kind": "synthetic",
+      "original": null,
+      "pair_index": null,
+      "bytes": 7,
+      "tracks": 0,
+      "max_frame": 0,
+      "consumed": 2,
+      "trailing": 5,
+      "channel_keys": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "inactive": 0
+    }
+  ],
+  "total_tracks": 1062,
+  "golden": "work/client-reference/character-animation455/golden.bin",
+  "golden_sha256": "e300ebc45885c48dff2b65117b021e56a766bff2227a59ba7c3cc770b21302b2",
+  "script_sha256": "8856f470fde9652de7a81cd9a88c5ebcbaeb2fe81c5339c99302cd92b0092ffa",
+  "framing_script_sha256": "0543ee806b7f5e9789a67c51378167e0d8f69b4490199c3b98c10e044697b8e5",
+  "confirmed": [
+    "284byte ctorwrites only0/4/5/264/268/272/276/280;rawowner268,descriptorcookie272,extra280;dtorfree/null inthatorder,retainsflags/max/name/id",
+    "93ACD0 rawANI hasno formatparse;RFSaccountinguses_msize,looseaccountingfilesize,DWORDcumulative1189608 neverdecremented",
+    "Firstcount BYTE0 only,byte1ignored,tracksstart2;header140 +WORDcounts/20,16,16,8;maxheader102 includesdisabled/unmatchedtracks",
+    "AnimationData32 contains4DWORDcount/pointerpairs;viewsborrowkeys;current5095/previous5099 copies ownonlydescriptors",
+    "Exactfirstmatching meshname;activeheader100 updates5094/current/5103 andretainsoldcurrentasprevious;inactive freescurrent only;model676onlygrows",
+    "Loading4 ofANI and264ofmodel stays1 onmostfailures;retry short-circuits true evenifloaded0;externalparent prerequisite beforeflagwrite",
+    "Object MESH08route onlyexternalparent branch;legacyvalidationfailure clearsloading onlyinparentbranch andleaksraw there;unparentedMESH08 stillentersoldparser",
+    "Unsafe931310 wrapperfreeRaw afterattach leavesborrowedkeydangling;referenceonly,not normal successfulowner route"
+  ],
+  "limits": [
+    "Strictbounded counts/format/type/allocator/pointer policies differfromunchecked AV/OOM/partialparse/exception/unwind domains",
+    "Own tagged union rejectspreexistingANI-as-ObjectData28 andMSH-as-ANI reinterpretation ofuninitialized memory;no successstub",
+    "Maxvalidator usesallocationextent asreference,butboundedbeforeeveryread;allocatorpadding/uninitialized invalidinputdomains open",
+    "Logicalsourcecontexts and284storage notfull C++/STL/animationmanager ABI;full pose evaluator/key semantics deferred",
+    "Selectedbasename companions arefixtures,notproof ofruntime assetselection;deprecateddirectfreewrapper notported as safeowner"
+  ],
+  "raw_analysis": "artifacts/character-animation455;owned45964631closed/save;no referenceEXE run"
+}

@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T21:07:08.752387+00:00",
+  "checked_at_utc": "2026-11-04T21:58:26.881013+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 186,
+  "generated_objects": 187,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -39,6 +39,8 @@
     "RF_CLIENT_HELPER_LAB": "ON",
     "RF_CHARACTER_MESH_SOURCE": "ON",
     "RF_CHARACTER_MESH_SOURCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/mesh-bindings/CharacterMeshSource.lib",
+    "RF_CLIENT_455_ANIMATION": "ON",
+    "RF_CLIENT_455_ANIMATION_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/animation/RFClient455Animation.lib",
     "RF_CLIENT_455_CHARACTER_MANAGER": "ON",
     "RF_CLIENT_455_CHARACTER_MANAGER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/character-manager/RFClient455CharacterManager.lib",
     "RF_CLIENT_455_LEGACY_READER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/legacy-models/RFClient455LegacyModel.lib",
@@ -63,10 +65,10 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "076fac4b040b71acb814130564d7ca30405ca76d7be58dddffc98141202d8a42",
+    "scripts/native/client_helper_lab.cpp": "c5137460251b6b54255dcd30f24065321a5f6c76a303c95e3f0970b77c1c0082",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "c9e49065dc81493c3285a7d508b0240c87c7f69c31f2fa8ad81440e3fd3d777e"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "d9db2a2304da80e931c69bd0fa9ac11266ad313aaaab9cbb45c1f121f13326b7"
   },
   "mesh08_input_sha256": {
     "scripts/native/client455_mesh08.cpp": "be59a96edbcc4b243bd3071935466fe3c565f184573bbfb4659b3c2269dc4096",
@@ -122,6 +124,12 @@
     "scripts/native/client455_legacy_model.h": "78209466f52b7b1106a7db01f1acdeb58a4b256ef52d09a63844d8bdc9761022",
     "scripts/native/test_client455_legacy_runtime.cpp": "5c72df1f253ae2869f71a7a01a5e5b81a64df5d95990cbef83d05b5b3c970041",
     "scripts/native/client_legacy_runtime_lab.inc": "2604c389c666ee87549435dce5b1b75238c4d28bd7e5ecdd897f800112765c04"
+  },
+  "animation_input_sha256": {
+    "scripts/native/client455_animation.cpp": "2df96dda82ec270b31b467c0c8fdcbd6a2099b0f94a17184e11f55d53acedab2",
+    "scripts/native/client455_animation.h": "af907bc68e701bfcb1f0b88af3a772ee2242189dcd80c4f0fe9d717a45145053",
+    "scripts/native/test_client455_animation.cpp": "9002bb127fe148bff6a8dd06af6c611b3451493a850dbcd89b622cd5a3c0b0ad",
+    "scripts/native/client_animation_lab.inc": "91e8101d11acfc5ceaa427042bc801a301cc0c9962de08777ce9cf0a4ff348ca"
   },
   "character_mesh_input_sha256": {
     "scripts/native/character_mesh_bindings.cpp": "a7df51daf1639c0ce282ead09aef7be96a0793039bbe5898137af514dfea1da8",

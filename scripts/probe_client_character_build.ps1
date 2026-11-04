@@ -227,6 +227,19 @@ foreach ($property in $legacyRuntime.source_sha256.PSObject.Properties) {
 $arguments += '-DRF_CLIENT_455_LEGACY_RUNTIME=ON'
 $arguments += "-DRF_CLIENT_455_LEGACY_RUNTIME_LIBRARY=$legacyRuntimeLibrary"
 $arguments += "-DRF_CLIENT_455_LEGACY_READER_LIBRARY=$legacyReaderLibrary"
+$animation = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-build.json') -Raw | ConvertFrom-Json
+$animationGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-gpu.json') -Raw | ConvertFrom-Json
+$animationLibrary = Join-Path $workspace $animation.library
+if ($animation.compile_only -or $animationGpu.native.status -ne 'PASS' -or
+    $animationGpu.native.ani_files -ne 27 -or $animationGpu.native.tracks -ne 1062 -or
+    $animationGpu.native.real_ani_matches -ne 22 -or $animationGpu.native.physical_parts -ne 660 -or
+    (Get-FileHash -LiteralPath $animationLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $animation.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-animation-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $animationGpu.build_report_sha256) { throw '455 ANI/dispatcher proof missing or stale.' }
+foreach ($property in $animation.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 ANI/dispatcher source changed since proof.' }
+}
+$arguments += '-DRF_CLIENT_455_ANIMATION=ON'
+$arguments += "-DRF_CLIENT_455_ANIMATION_LIBRARY=$animationLibrary"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -318,6 +331,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_legacy_runtime.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_legacy_runtime.py }

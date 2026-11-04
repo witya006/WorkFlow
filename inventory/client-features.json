@@ -1134,6 +1134,52 @@
         "ASCII/finite-realUV fixture domain;full locale/nonASCII/unsafeformatstring andruntime assetselection unknown;realMTG absent inselected14realinputs",
         "GPUuploads/descriptors notcompleteCharacterdraw orreferenceEXEruntimecomparison;BNinitialstates notfull pose/animation equivalence"
       ]
+    },
+    {
+      "id":"CHARACTER455-ANI-DISPATCH-022",
+      "description":"Source ANI rawIO/framing/284byte record/lifetime/current-previous attachment and valid Character parent/no-parent dispatcher/MatchAnimation",
+      "status":"implemented",
+      "verification":"16bodies equalboth455pins;27ANI1062tracks roundtrip/6Python tests,14513CPU/15181HALchecks standalone/fullclient;22real ANI matches/11BN-to-MESH08pairs794parts660uploads.13sourceC APIs actual caller/archiveproof. Normal consumers/pose math/shaders/async manager remainopen.",
+      "reference":[
+        {"rva":"0x532380","role":"284byte animation ctor"},
+        {"rva":"0x532690","role":"ordered owner release"},
+        {"rva":"0x53acd0","role":"RFS/loose rawANI/cumulative accounting"},
+        {"rva":"0x53ae20","role":"all-track max/extent validation"},
+        {"rva":"0x532400","role":"sticky AnimationLoad"},
+        {"rva":"0x53c050","role":"firstmatch current/previous descriptor"},
+        {"rva":"0x53c1f0","role":"ANI attachment"},
+        {"rva":"0x5238a0","role":"parent/no-parent character dispatcher"},
+        {"rva":"0x5316c0","role":"MatchAnimation/model672 reset"}
+      ],
+      "implementation":["scripts/native/client455_animation.h","scripts/native/client455_animation.cpp","scripts/ani455.py"],
+      "option":"RF_CLIENT_455_ANIMATION",
+      "evidence":[
+        "inventory/client455-animation-reference.json",
+        "inventory/client455-animation-build.json",
+        "inventory/client455-animation-cpu.json",
+        "inventory/client455-animation-gpu.json",
+        "inventory/client455-animation-link.json",
+        "inventory/client455-animation-client.json",
+        "inventory/client455-animation-graphics.json",
+        "inventory/client455-animation-checkpoint.json",
+        "research/client455-animation-dispatch.md"
+      ],
+      "scenarios":[
+        "BYTE0count/ignoredBYTE1/header140/WORDcounts/20-16-16-8strides/trailing/onebyteempty/lossless framing,guarded prefix truncations",
+        "Whole284ctor/dtor ordered owners,32byte borrowed descriptors/firstmatch/duplicates/inactive-retainedprevious/monotonicmodelmax versus filemax",
+        "RFS-before-loose/short fallback/_msize versusfilesize/cumulativeDWORDwrap/no decrement/no-dotXANI/failed allocation/stickyretryfalse-success",
+        "Parent prerequisite beforeloadingflag,parentMESH08 versusunparentedlegacyroute,3faces>64000 rejection,differentstickyflags andobservableparentrawleak withseparateharnesscleanup",
+        "22real ANI switches/11sourceBN parents+MESH08children/794parts/660HALuploads,borrowedkeypointers/counts comparedtogolden,currentandprevious owners surviveuntilmeshrelease",
+        "Fullclient15181 equalscomponentHAL;legacy14896/manager1138/Platform01-device69pass,previousframes preserved,normalruntimeunchanged excepttimestamps"
+      ],
+      "gaps":[
+        "FrameMove523A40/pose/key evaluator/interpolation/transforms/skinning/declarations/shaders/fullD3D9renderer/normal typed consumers not restored",
+        "AnimationManager fullsource andasync worker lifecycle remainopen;factory533280/worker535450 research not implementation",
+        "Bounded parser/status/type/nullallocation/extent guards differfromunchecked AV/OOM/partialattachment/exception/unwind domains;allocatorpadding invalidinput notcertified",
+        "Own taggedunion rejectsundefinedANI-as-ObjectData28/MSH-as-ANI;InitVertex diagnostic printsdeterministicnumericarg instead ofreference missingarg undefinedformat",
+        "Unsafe531310 direct-free wrapper notnormalownerroute;borrowedkeylifetime requiresmeshreleasebeforeANIowner;privateC++STL/heapABI andruntimeassetselection open",
+        "Oneparentvalidationrawleak retained in source;test freesitonlyafterobservingstrandedblock. HALupload notanimateddraw orreferenceEXEruntimeequivalence"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

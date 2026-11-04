@@ -11,7 +11,16 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний connected unit —legacyMSH/BN importer/converter/weights/indexing/MTG:
+Последний unit — ANI/rawIO/record284/lifetime/attachment/Character dispatcher:
+14513CPU/15181HALchecks standalone/fullclient,27ANI1062tracks/6Python tests,
+22real ANI matches на11BN→MESH08парах794parts/660HALuploads.13sourceC APIs
+проверены. Normalconsumers/pose/shaders открыты. Stickyflags/cumulativecounter/
+one rawleak сохранены;harness чистит leak только после явного наблюдения.
+Gate inventory/client455-animation-checkpoint.json;
+research/client455-animation-dispatch.md. Current legacy14896/manager1138/
+Platform01-device69passed,framesunchanged. Normal289modernCOFF/MT,187clientlabTUs.
+
+Предыдущий connected unit —legacyMSH/BN importer/converter/weights/indexing/MTG:
 66627capture/14896HALchecks standalone/fullclient;34runs/972parts/832HALuploads,
 2CPUretainedparts.12actualBN→MESH08pairs393parts/276uploads. Source8runtime APIs+
 reader/delete chain verified,ownheap/COM/Dmalloc0. BN теперь построен source,
@@ -30,12 +39,11 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Восстановить ANI importer93ACD0 иполный dispatcher9238A0. Сохранить loading264/
-   loaded260,externalparent prerequisite,sticky failures иlifetime. LegacyMSH/BN
-   parser/importer/converter иMESH08route уже source;не повторять их reverse.
-   ANI ветку не заменять successful stub. Полный dispatcher cached вcharacter-manager455;
-   найти текущиеANI xrefs/format/readers вreference,до реализации уточнить инструкции.
-2. Затем FrameMove923A40, transforms,
+1. Восстановить FrameMove923A40: state/timing иdownstream key evaluator/pose/
+   transforms. ANI importer/record/attachment/Character dispatcher source готовы;
+   не повторять закрытое framing/IO исследование. FullAnimationManager/worker
+   lifecycle остаются открытыми. Raw keys borrowed:mesh lifetime заканчивать доANIowner.
+2. Далее transforms,
    animation/skinning, 455declarations/shaders и normal typed consumers.
    Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.
 3. Восстановить полный D3D9renderer455/lighting/effects/device lifecycle вместе
@@ -76,6 +84,17 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Python через scripts/Invoke-Python.ps1:
+test_ani455.py →audit_client455_animation.py →build_client455_animation.py →
+probe_client455_animation.py [--gpu] →prepare_client_build.py →
+probe_client_character_build.ps1 [обычный/-HelperLab] →
+verify_client455_animation.py [--lab] →probe_client455_animation_client.py.
+После scoped legacy/manager/Platform01 regressions:checkpoint_client455_animation.py.
+Normal snapshot character455-animation immutable;normal runtimebytes кромеtimestamps
+равны character455-legacy-models. Не повторять unchanged massive corpora.
+
+Предыдущий модуль:
 
 Python через scripts/Invoke-Python.ps1:
 audit_client455_legacy_runtime.py →prepare_client455_legacy_runtime_inputs.py →

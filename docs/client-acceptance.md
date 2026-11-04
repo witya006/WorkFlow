@@ -176,6 +176,16 @@ consumers всё ещё открыты. Failure/locale/privateABI/unwind gaps я
 
 ## Приёмка
 
+Последующий selected ANI/rawIO/record284/lifetime/attachment/Character dispatcher
+source:27files1062tracks/6Python tests;14513CPU/15181HALchecks standalone/fullclient,
+22real ANI switches на11BN→MESH08pairs794parts/660HALuploads;13sourceC APIs.
+Sticky flags/previous-current/borrowed key lifetime/cumulativecounter/raw leak
+проверены;тест очищает leak отдельно после наблюдения,не маскируя его.
+Normalconsumers/pose math/AnimationManager/asyncworker/shaders/full failure domains
+остаются открытыми. Не считать HAL uploads приёмкой анимированного персонажа.
+Gate inventory/client455-animation-checkpoint.json;
+research/client455-animation-dispatch.md. M6/M6F/M7/M9 открыты.
+
 По уточнению пользователя M9 — финальная приёмка этого клиента 455 без модернизации
 графики. M6F и M7 входят в критерии; M8 не требуется. Восстановление рендера/шейдеров,
 необходимых для поведения эталона, входит в восстановление клиента. Обновление

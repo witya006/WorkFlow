@@ -556,3 +556,13 @@ inventory/client455-legacy-models-reference/build/cpu.json;research/client455-le
 frames иnormalruntimebytes (excepttimestamps) сохранены. Всеidentities/evidence:
 inventory/client455-legacy-runtime-checkpoint.json;research/client455-legacy-model-runtime.md.
 Normaldispatcher/ANI/animation/shaders пока открыты. Owned0d9553e1/08d81b2fclosed/save.
+Последующий unit:ANI/rawIO/record284/lifetime/attachment/Character dispatcher.
+16bodyranges equalbothpins;14513CPU/15181HALchecks standalone/fullclient,
+27ANI1062tracks/6Python tests/22real switches/11BN→MESH08pairs794parts660uploads.
+13sourceC API actual caller/archiveproof;sourceO2/W4/WX/x86/MT. Stickyflags иrawleak
+проверены (отдельнаяharnesscleanup после наблюдения). COM/Dmalloc0;normal289modernCOFF,
+lab187clientTUs. Current legacy14896/manager1138/Platform01-device69passed,
+frames/normalruntimebytes кромеtimestamps сохранены. Normalconsumers/pose/shaders/
+AnimationManager/asyncworker остаются открытыми. Owned45964631closed/save.
+Gate inventory/client455-animation-checkpoint.json;
+research/client455-animation-dispatch.md. Original/server inputs без изменений.

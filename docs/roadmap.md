@@ -122,6 +122,14 @@ research/client455-legacy-model-runtime.md. Current manager1138/model10021/graph
 
 ## Этапы
 
+Последующий unit ANI/record/attachment/Character dispatcher source готов:
+14513CPU/15181HALchecks standalone/fullclient,27ANI1062tracks/22real switches,
+11BN→MESH08pairs794parts/660HALuploads.13sourceC APIs verified;legacy14896/
+manager1138/Platform01-device69passed,framesunchanged. Normalruntime покаlegacy;
+pose/key evaluator/animationmanager/worker/shaders/typedconsumers ещё открыты.
+Gate inventory/client455-animation-checkpoint.json;
+research/client455-animation-dispatch.md. ДалееFrameMove923A40.
+
 Основная среда теперь VS 2026 Professional / MSVC x86: собственная Win32 smoke-сборка
 прошла. Сразу переносим клиентский код на современный компилятор. VC6 — резерв,
 его поиск не является предварительным условием. Графику сохраняем на этом этапе.
@@ -152,9 +160,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: ANI importer/full dispatcher,затемFrameMove/animation и
+1. M6: FrameMove/key evaluator/pose/animation и
    normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
-   selected manager/rawIO source готовы; normal loader не переключать до согласования
+   selected manager/rawIO/ANI/attachment/dispatcher source готовы; normal loader не переключать до согласования
    ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.
 2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
 3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
