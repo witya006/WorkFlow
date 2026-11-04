@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-11-04T05:54:06.966360+00:00",
+  "target": "RF_Online",
+  "platform": "Win32",
+  "configuration": "Release",
+  "build_exit": 1,
+  "error_counts": {
+    "LNK1104": 1
+  },
+  "distinct_diagnostics_total": 1,
+  "distinct_diagnostics": [
+    {
+      "file": "LINK ",
+      "line": null,
+      "code": "LNK1104",
+      "message": "не удается открыть файл \"JpegLibMT.lib\"",
+      "count": 1
+    }
+  ],
+  "details_omitted": 0,
+  "generated_objects": 180,
+  "build_dir": "work/client-build/build-character-diagnostic",
+  "log": "artifacts/client-character-diagnostic/build.txt",
+  "build_settings": {
+    "RF_CHARACTER_STD_DIAGNOSTIC": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/diagnostic_std.hpp",
+    "RF_LEGACY_DX8_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/local/directx81b/extracted/DX8.1b SDK/DXF/DXSDK/lib",
+    "RF_LEGACY_NEW_UI": "ON",
+    "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include"
+  },
+  "scope": "Client-only compile diagnostic. No input EXE execution; compilation does not prove behavior."
+}

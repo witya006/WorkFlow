@@ -9,6 +9,11 @@ $logPath = Join-Path $workspace $(if ($Target -eq 'RF_Online') { 'artifacts/clie
 New-Item -ItemType Directory -Force -Path $logPath | Out-Null
 $cmakeArgs = @('-S', $sourcePath, '-B', $buildPath, '-G', 'Visual Studio 18 2026', '-A', 'Win32', '-T', 'v145', '-DCMAKE_SYSTEM_VERSION=10.0.26100.0')
 if ($DirectXInclude) { $cmakeArgs += "-DRF_LEGACY_DX8_INCLUDE=$DirectXInclude" }
+$dxReport = Join-Path $workspace 'inventory/directx81b-sdk.json'
+if (Test-Path -LiteralPath $dxReport) {
+    $dx = Get-Content -LiteralPath $dxReport -Raw | ConvertFrom-Json
+    $cmakeArgs += "-DRF_LEGACY_DX8_LIBRARY=$(Join-Path $dx.sdk_root 'lib')"
+}
 & $cmakePath @cmakeArgs *> (Join-Path $logPath 'configure.txt')
 if ($LASTEXITCODE -ne 0) { Get-Content -LiteralPath (Join-Path $logPath 'configure.txt') -Tail 20; exit $LASTEXITCODE }
 $buildArgs = @('--build', $buildPath, '--config', 'Release', '--target', $Target, '--parallel', '4')

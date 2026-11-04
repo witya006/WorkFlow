@@ -12,12 +12,19 @@ WS = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--build-exit', required=True, type=int)
+    parser.add_argument('--log', default='artifacts/client-executable-build/build.txt')
+    parser.add_argument('--build-dir', default='work/client-build/build-vs2026')
+    parser.add_argument('--output', default='inventory/client-executable-build-result.json')
+    parser.add_argument('--max-details', type=int, default=200)
     args = parser.parse_args()
-    log = (WS / 'artifacts/client-executable-build/build.txt').read_text(encoding='utf-8-sig', errors='replace')
+    log = (WS / args.log).read_text(encoding='utf-8-sig', errors='replace')
     errors = []
     for line in log.splitlines():
         m = re.match(r'(.*?)\((\d+),(\d+)\): (?:fatal )?error ([A-Z]+\d+): (.*?) \[', line)
         if not m:
+            link = re.match(r'(.*?): (?:fatal )?error (LNK\d+): (.*?) \[', line)
+            if link:
+                errors.append({'file': link[1], 'line': None, 'code': link[2], 'message': link[3]})
             continue
         p = Path(m[1])
         try:
@@ -26,13 +33,24 @@ def main():
             name = str(p)
         errors.append({'file': name, 'line': int(m[2]), 'code': m[4], 'message': m[5]})
     groups = collections.Counter((x['file'], x['line'], x['code'], x['message']) for x in errors)
+    cache = WS / args.build_dir / 'CMakeCache.txt'
+    settings = {}
+    if cache.exists():
+        for line in cache.read_text(encoding='utf-8').splitlines():
+            m = re.match(r'(RF_(?:RECOVERED_CHARACTER_INCLUDE|CHARACTER_STD_DIAGNOSTIC|LEGACY_NEW_UI|LEGACY_DX8_LIBRARY)):[^=]+=(.*)', line)
+            if m:
+                settings[m[1]] = m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
               'error_counts': dict(collections.Counter(x['code'] for x in errors)),
-              'distinct_diagnostics': [dict(zip(['file', 'line', 'code', 'message', 'count'], [*key, count])) for key, count in groups.items()],
-              'generated_objects': len(list((WS / 'work/client-build/build-vs2026/RF_Online.dir/Release').glob('*.obj'))),
-              'scope': 'Client-only first full compile. No missing SDK replaced with stubs, no input EXE execution.'}
-    (WS / 'inventory/client-executable-build-result.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+              'distinct_diagnostics_total': len(groups),
+              'distinct_diagnostics': [dict(zip(['file', 'line', 'code', 'message', 'count'], [*key, count])) for key, count in list(groups.items())[:args.max_details]],
+              'details_omitted': max(0, len(groups)-args.max_details),
+              'generated_objects': len(list((WS / args.build_dir / 'RF_Online.dir/Release').glob('*.obj'))),
+              'build_dir': args.build_dir, 'log': args.log,
+              'build_settings': settings,
+              'scope': 'Client-only compile diagnostic. No input EXE execution; compilation does not prove behavior.'}
+    (WS / args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['build_exit', 'error_counts', 'generated_objects']}, ensure_ascii=True))
 
 

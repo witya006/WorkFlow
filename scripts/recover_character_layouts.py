@@ -24,7 +24,7 @@ def operand(record, offset, prefix, width=4):
 def main():
     inputs = json.loads((WS/'inventory/character-codeview.json').read_text(encoding='utf-8'))
     objects = {}
-    for index in (5, 6, 9):
+    for index in (3, 5, 6, 8, 9):
         item = inputs['objects'][index-1]
         data = (WS/item['working_object']).read_bytes()
         if hashlib.sha256(data).hexdigest() != item['sha256']:
@@ -78,6 +78,17 @@ def main():
     add = '?AddCharacter@CObjectManager@@QAEXPAVCHARACTEROBJECT@@@Z'
     fact('CObjectManager capacity pointer offset', 9, add, 0x13, '8b56', 12, 1)
     fact('CObjectManager next ID offset', 9, add, 0xb, '8b46', 16, 1)
+    part = '?AddPartToMM@ChInterface@@QAEXPAD@Z'
+    fact('CObjectManager allocation bytes', 6, part, 0x29, '68', 148)
+    fact('CObjectManager name length diagnostic threshold', 6, part, 0x16, '81f9', 128)
+    fact('CObjectManager name buffer offset', 6, part, 0x50, '8d56', 20, 1)
+    destructor = '??1CRender@@QAE@XZ'
+    fact('CRender embedded mesh manager offset', 9, destructor, 0x8e, '8d4f', 112, 1)
+    fact('CRender embedded bone manager offset', 9, destructor, 0x7e, '8d8f', 260)
+    fact('CRender embedded texture manager offset', 9, destructor, 0x6e, '8d8f', 408)
+    fact('CRender embedded part manager offset', 9, destructor, 0x54, '8d8f', 568)
+    fact('TextureManager last observed DWORD offset', 8, '?Init@TextureManager@@QAEHXZ', 0x11, '8981', 156)
+    fact('Effect pattern count / all-pattern sentinel', 3, '?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KKK@Z', 5, '83fe', 9, 1)
 
     work = WS/'work/recovered/character-legacy'
     work.mkdir(parents=True, exist_ok=True)

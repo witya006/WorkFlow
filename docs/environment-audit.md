@@ -22,8 +22,9 @@ VC6 остаётся резервным инструментом. DirectX 8.1b S
 R3Engine собран под VS 2026 x86 с двумя успешными чистыми пересборками.
 
 Статический аудит сборки завершён: 14 DSP / 14 DSW, 41 конфигурация, 832 SOURCE,
-6 отсутствующих записей в CameraExporter/R3MapExp. Клиент дополнительно блокируют
-Character.h, варианты Character-библиотек, сторонние .lib и настройки include/link.
+6 отсутствующих записей в CameraExporter/R3MapExp. Все 180 C++ клиента уже компилируются
+с диагностическим восстановленным Character.h. Линковку останавливает JpegLibMT.lib;
+дальше остаются Character inline/варианты библиотек и CRT.
 Область работы уточнена: исключительно клиент. Выбор LoginServer отозван;
 первая цель клиентской зависимости — R3Engine RTMovie Release, затем RF_Online. Детали: [build-audit.md](build-audit.md),
 этапы: [roadmap.md](roadmap.md), актуальная память: [project-memory.md](project-memory.md).
@@ -256,11 +257,12 @@ client-build-result.json, research/client-port-m1.md.
 эталоном по SHA-256 в config/client-target.json. Версионная константа не считается
 доказательством атрибуции. Полный манифест ресурсов ещё не создан.
 
-M4: CharacterMR.lib исследована статически через IDA MCP; 207 определений публичных
-функций сохранены локально с фильтрацией extern по COFF. Проверены 21 операнд x86
-инструкций, native x86 compile подтвердил частичные memory views (776/1072/280 байт).
-4 проверки COFF/повреждённых входов прошли. Полный Character.h ещё не восстановлен.
-Проба линковки GetAlpha завершилась двумя unresolved символами старой STL
-(std::_Xlen/_Xran); DLL не загружалась/не выполнялась. Это диагностика, а не
-подтверждение ABI. research/character-library.md, inventory/character-legacy-layouts.json,
-character-analysis-export.json, character-link-probe.json.
+M4: 207 определений Character кешированы, 30 операндов инструкций проверены.
+Диагностический Character.h: 56 layout assertions и 165 публичных decorated names
+проверены; все 180 C++ клиента скомпилированы. Конструкторы/inline/STL ABI ещё открыты.
+Отдельно собран настоящий /MT R3EngineMT.lib; 180+58 COFF x86 /MT проверены.
+LNK2038 устранён корректной сборкой, genuine DX8 .lib подключены. Последняя линковка:
+LNK1104 JpegLibMT.lib. RF_Online.bin пока нет. Старый GetAlpha link-only probe ранее
+выявил std::_Xlen/_Xran. Input EXE/DLL не запускались. research/client-port-m4.md;
+inventory/client-character-diagnostic.json, client-mt-variant.json,
+character-header-recovery.json. Четыре проверки COFF прошли.

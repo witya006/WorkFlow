@@ -81,6 +81,17 @@ set_target_properties(R3Engine PROPERTIES
 # /MD is an explicit modern baseline; original configuration has no CRT switch.
 # Legacy source charset / execution charset and CRT ABI are still unverified.
 # /Zc:forScope- temporarily preserves VC6 loop scope; compiler support tested.
+
+# Build an actual /MT client variant; do not rename the /MD M1 archive.
+get_target_property(RF_ENGINE_SOURCES R3Engine SOURCES)
+get_target_property(RF_ENGINE_INCLUDES R3Engine INCLUDE_DIRECTORIES)
+add_library(R3EngineClientMT STATIC EXCLUDE_FROM_ALL ${RF_ENGINE_SOURCES})
+target_include_directories(R3EngineClientMT PRIVATE ${RF_ENGINE_INCLUDES})
+target_compile_definitions(R3EngineClientMT PRIVATE WIN32 NDEBUG _MBCS _LIB)
+target_compile_options(R3EngineClientMT PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:/W3>" "$<$<COMPILE_LANGUAGE:CXX>:/EHsc>" "$<$<COMPILE_LANGUAGE:CXX>:/Zc:forScope->" "$<$<COMPILE_LANGUAGE:CXX>:/MP4>")
+set_target_properties(R3EngineClientMT PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
+  MSVC_RUNTIME_LIBRARY MultiThreaded OUTPUT_NAME R3EngineMT
+  ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 '''
     cmake_path = destination / 'CMakeLists.txt'
     _, _, client_sources, _ = parse_project(client / 'RF_Online.dsp')
@@ -89,18 +100,34 @@ set_target_properties(R3Engine PROPERTIES
     cmake += '''
 # First real client target: original Release source set; excluded from engine builds.
 set(RFC "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client")
+set(RF_RECOVERED_CHARACTER_INCLUDE "" CACHE PATH "Incomplete recovered Character header; diagnostic builds only")
+set(RF_CHARACTER_STD_DIAGNOSTIC "" CACHE FILEPATH "Separate diagnostic shim for legacy unqualified STL names")
+set(RF_LEGACY_DX8_LIBRARY "" CACHE PATH "Genuine DirectX 8 SDK x86 libraries")
+option(RF_LEGACY_NEW_UI "Enable UI branch required by current client item classes (present in legacy Debug)" ON)
 add_executable(RF_Online WIN32 EXCLUDE_FROM_ALL
 ''' + ''.join(f'  "${{RFC}}/{p}"\n' for p in client_units) + ''')
 target_include_directories(RF_Online PRIVATE
   "${RFC}" "${R3}" "${R3}/extension" "${R3}/1stclass" "${R3}/2ndclass"
   "${R3}/common" "${R3}/d3d/include")
+if(RF_RECOVERED_CHARACTER_INCLUDE)
+  target_include_directories(RF_Online BEFORE PRIVATE "${RF_RECOVERED_CHARACTER_INCLUDE}")
+endif()
+if(RF_CHARACTER_STD_DIAGNOSTIC)
+  target_compile_options(RF_Online PRIVATE "/FI${RF_CHARACTER_STD_DIAGNOSTIC}" /MP4 /Od)
+endif()
+if(RF_LEGACY_NEW_UI)
+  target_compile_definitions(RF_Online PRIVATE _NEW_UI_)
+endif()
 if(RF_LEGACY_DX8_INCLUDE)
   target_include_directories(RF_Online PRIVATE "${RF_LEGACY_DX8_INCLUDE}")
 endif()
 target_compile_definitions(RF_Online PRIVATE WIN32 NDEBUG _WINDOWS _MBCS)
 target_compile_options(RF_Online PRIVATE /W3 /EHsc /Zc:forScope-)
-target_link_libraries(RF_Online PRIVATE R3Engine)
-target_link_directories(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/recovered-imports")
+target_link_libraries(RF_Online PRIVATE R3EngineClientMT)
+target_link_directories(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/recovered-imports" "$<TARGET_FILE_DIR:R3EngineClientMT>")
+if(RF_LEGACY_DX8_LIBRARY)
+  target_link_directories(RF_Online PRIVATE "${RF_LEGACY_DX8_LIBRARY}")
+endif()
 set_target_properties(RF_Online PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
   MSVC_RUNTIME_LIBRARY MultiThreaded SUFFIX ".bin")
 # Original client /MT retained for diagnosis. CRT alignment and missing legacy
