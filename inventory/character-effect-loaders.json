@@ -1,0 +1,92 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "native_test": {
+    "checks_passed": 49,
+    "actual_old_file_loaders": 2,
+    "render_device_used": false
+  },
+  "source_sha256": "b14b279d7410af79ed6dce553952838e128b3ad4ad687737c1587cc269fd5a80",
+  "executable_sha256": "9f3c7d1edf0586bf487cd63bfe4ceb6b79c660b47fd945222a53be86303db7e0",
+  "header_sha256": "1570319cee2de77e3bafe2181a50bd8d7d510ef3b21aca4615200d566bc0de01",
+  "sdk_archive_sha256": "3ce694ff47aab901e772281f2e443d2b0ae55cecc4b1c711618e6e1307446dba",
+  "adapter_library_sha256": "b3ca111368b29ba6b2eaeaaf94806e37636817c579b406c3a76517e11f3f2004",
+  "exception_library_sha256": "e332cda07083ad669298801baf9e862e5acde83f126f24217a9a4ae34bc4b2ff",
+  "test_only_aliases": false,
+  "fixtures": {
+    "patterns.txt": "65def0d90e953fe1e64be38055d592f1333e4b39f884462cae6ca30c5e8888b1",
+    "items.txt": "717153ccf4b20f8c34958fd772f3beaeb2286995458d1b46ea5d7c5258c8b589"
+  },
+  "default_argument_facts": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "inferred_legacy_api": "SetMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c6ad",
+      "push_rva": "0x6c6ad",
+      "push_file_offset": "0x6baad",
+      "push_bytes": "6a00",
+      "call_va": "0x46c6e4",
+      "call_rva": "0x6c6e4",
+      "call_file_offset": "0x6bae4",
+      "call_bytes": "e887d74b00",
+      "destination_va": "0x929e70",
+      "destination_rva": "0x529e70"
+    },
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "inferred_legacy_api": "IsHaveMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c8c6",
+      "push_rva": "0x6c8c6",
+      "push_file_offset": "0x6bcc6",
+      "push_bytes": "6a00",
+      "call_va": "0x46c8da",
+      "call_rva": "0x6c8da",
+      "call_file_offset": "0x6bcda",
+      "call_bytes": "e8a1b24b00",
+      "destination_va": "0x927b80",
+      "destination_rva": "0x527b80"
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "inferred_legacy_api": "SetMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c6ad",
+      "push_rva": "0x6c6ad",
+      "push_file_offset": "0x6baad",
+      "push_bytes": "6a00",
+      "call_va": "0x46c6e4",
+      "call_rva": "0x6c6e4",
+      "call_file_offset": "0x6bae4",
+      "call_bytes": "e887d74b00",
+      "destination_va": "0x929e70",
+      "destination_rva": "0x529e70"
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "inferred_legacy_api": "IsHaveMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c8c6",
+      "push_rva": "0x6c8c6",
+      "push_file_offset": "0x6bcc6",
+      "push_bytes": "6a00",
+      "call_va": "0x46c8da",
+      "call_rva": "0x6c8da",
+      "call_file_offset": "0x6bcda",
+      "call_bytes": "e8a1b24b00",
+      "destination_va": "0x927b80",
+      "destination_rva": "0x527b80"
+    }
+  ],
+  "input_game_exe_execution": false,
+  "limit": "Valid bounded synthetic pattern/item inputs; malformed old-loader inputs, effect-file loading, rendering and 455 behavior parity unverified."
+}

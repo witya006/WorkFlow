@@ -1,0 +1,41 @@
+{
+  "architecture": "x86",
+  "runtime": "/MT",
+  "library": "work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
+  "library_sha256": "e332cda07083ad669298801baf9e862e5acde83f126f24217a9a4ae34bc4b2ff",
+  "source_sha256": {
+    "character_legacy_exceptions.cpp": "6c8609a3070cfad314123502c59d3a3eff361559443c3e31cc4d5c9842841ab8",
+    "test_character_legacy_exceptions.cpp": "3d2e739789b601c3ea0cd36adc8f03191247cd754a7b0c99ad4753228d1766ee"
+  },
+  "comparison_provider": "C:\\Windows\\SysWOW64\\msvcp60.dll",
+  "provider_sha256": "8d024f35eead1e0942aad24ecbf86cf72e3237f7c94eebb5a6a3a41f498dd139",
+  "image_base": "0x10000000",
+  "binary_facts": [
+    {
+      "symbol": "?_Xlen@std@@YAXXZ",
+      "rva": "0x27010",
+      "exception_constructor_rva": "0xc0b0",
+      "throwinfo_rva": "0x3bc98",
+      "throw_call_rva": "0x27046",
+      "message_rva": "0x615c",
+      "message": "string too long"
+    },
+    {
+      "symbol": "?_Xran@std@@YAXXZ",
+      "rva": "0x27060",
+      "exception_constructor_rva": "0xc270",
+      "throwinfo_rva": "0x3bcd4",
+      "throw_call_rva": "0x27096",
+      "message_rva": "0x616c",
+      "message": "invalid string position"
+    }
+  ],
+  "native_test": {
+    "checks_passed": 770,
+    "guard_destructors": 512,
+    "provider_timestamp": 3582907959,
+    "provider_image_size": 458752
+  },
+  "input_game_exe_execution": false,
+  "limit": "Type/message/reference catch/rethrow contracts checked against installed compatible classic provider, not exact SDK-linked historical libci. Old Character exception unwind paths and copied old exception layouts unverified."
+}

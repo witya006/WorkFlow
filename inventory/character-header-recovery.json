@@ -1,7 +1,7 @@
 {
   "library_sha256": "483715b927690fc69607682a093dff53635911870456f5849c9f52741702b8a8",
   "header": "work/recovered/character-legacy/include/Character.h",
-  "header_sha256": "b3f53e831eae97f839447e0f1428164a8e9c4bfaed0b8628ba59e1637ec04df5",
+  "header_sha256": "1570319cee2de77e3bafe2181a50bd8d7d510ef3b21aca4615200d566bc0de01",
   "public_contracts_input_sha256": "f134de4abdb6c9cb6e3c0e770c37b471997be402a82c27609c054612a61d1262",
   "status": "incomplete diagnostic interface; not production-ready",
   "layout_assertions": 61,
@@ -11,7 +11,77 @@
     "GetShadow",
     "SetTexPath",
     "EffectList::SetEffect",
-    "DrawCharacter/DrawCharacterShadow/LoadRealData/SetMeshEffect/IsHaveMeshEffect shortened overloads"
+    "DrawCharacter/DrawCharacterShadow/LoadRealData shortened overloads"
+  ],
+  "reconstructed_effect_defaults": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "inferred_legacy_api": "SetMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c6ad",
+      "push_rva": "0x6c6ad",
+      "push_file_offset": "0x6baad",
+      "push_bytes": "6a00",
+      "call_va": "0x46c6e4",
+      "call_rva": "0x6c6e4",
+      "call_file_offset": "0x6bae4",
+      "call_bytes": "e887d74b00",
+      "destination_va": "0x929e70",
+      "destination_rva": "0x529e70"
+    },
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "inferred_legacy_api": "IsHaveMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c8c6",
+      "push_rva": "0x6c8c6",
+      "push_file_offset": "0x6bcc6",
+      "push_bytes": "6a00",
+      "call_va": "0x46c8da",
+      "call_rva": "0x6c8da",
+      "call_file_offset": "0x6bcda",
+      "call_bytes": "e8a1b24b00",
+      "destination_va": "0x927b80",
+      "destination_rva": "0x527b80"
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "inferred_legacy_api": "SetMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c6ad",
+      "push_rva": "0x6c6ad",
+      "push_file_offset": "0x6baad",
+      "push_bytes": "6a00",
+      "call_va": "0x46c6e4",
+      "call_rva": "0x6c6e4",
+      "call_file_offset": "0x6bae4",
+      "call_bytes": "e887d74b00",
+      "destination_va": "0x929e70",
+      "destination_rva": "0x529e70"
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "inferred_legacy_api": "IsHaveMeshEffect",
+      "default_argument": 0,
+      "push_va": "0x46c8c6",
+      "push_rva": "0x6c8c6",
+      "push_file_offset": "0x6bcc6",
+      "push_bytes": "6a00",
+      "call_va": "0x46c8da",
+      "call_rva": "0x6c8da",
+      "call_file_offset": "0x6bcda",
+      "call_bytes": "e8a1b24b00",
+      "destination_va": "0x927b80",
+      "destination_rva": "0x527b80"
+    }
   ],
   "unverified": [
     "Full layout of API-only classes remains missing",
@@ -192,7 +262,7 @@
       "?UnSetState@CRender@@QAEXXZ",
       "?_R3CalculateTime@@YAXXZ"
     ],
-    "probe_obj_sha256": "5b1714b7b00e2097341d09e28f593dce2dfab23a9512fbba3a053a83326d2213",
+    "probe_obj_sha256": "52f5830d2f83c4f7b77b241417d80d5acc9492fe4dc8d357c1a7934246088a50",
     "executed": false
   },
   "client_global_diagnostic": {

@@ -38,6 +38,13 @@ if (Test-Path -LiteralPath $stdioReport) {
     $arguments += "-DRF_CHARACTER_STDIO_ADAPTER_LIBRARY=$adapterLibrary"
 }
 $arguments += "-DRF_CHARACTER_REFERENCE_LIBRARY=$characterLibrary"
+$exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
+if (Test-Path -LiteralPath $exceptionsReport) {
+    $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
+    $exceptionsLibrary = Join-Path $workspace $exceptions.library
+    if ((Get-FileHash -LiteralPath $exceptionsLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $exceptions.library_sha256) { throw 'Recovered exception library changed since verification.' }
+    $arguments += "-DRF_CHARACTER_EXCEPTIONS_LIBRARY=$exceptionsLibrary"
+}
 $managerReport = Join-Path $workspace 'inventory/character-managers.json'
 if (Test-Path -LiteralPath $managerReport) {
     $manager = Get-Content -LiteralPath $managerReport -Raw | ConvertFrom-Json

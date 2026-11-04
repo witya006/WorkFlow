@@ -21,10 +21,11 @@ M4 начат: цель RF_Online из 180 C++ исходников, полна�
 M8 остаётся отдельным необязательным этапом и не блокирует M9.
 Все 180 C++ уже компилируются в диагностической конфигурации с восстановленными
 объявлениями Character. Настоящий /MT движок собран отдельно; 238 COFF x86 /MT проверены.
-JPEG 6b/Miles подключены; diagnostic link оставляет 11 символов. CObjectManager
+JPEG 6b/Miles подключены; diagnostic link оставляет 7 символов. CObjectManager
 constructor восстановлен, AnimationManager сконструирован через empty state + Init;
-реальные SDK операции прошли 3102 native проверки. Подтверждена
-несовместимость старого FILE EOF доступа с UCRT; Character inline/CRT ещё не закрыты.
+реальные SDK операции прошли 3102 native проверки. Два старых загрузчика прошли
+49 проверок; exception helpers — 770 сравнений с classic exports. Character inline/CRT
+ещё не закрыты. research/character-effects-and-exceptions.md.
 
 ## Этапы
 

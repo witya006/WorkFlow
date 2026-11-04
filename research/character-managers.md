@@ -24,9 +24,10 @@ checks. Clear retains the increasing ID counter. The harness uses a fixed array
 for expected pointers, avoiding modern STL instantiations with the old SDK's
 COMDAT names. No input game executable is launched.
 
-Missing _Xlen/_Xran have test-only aliases to an immediate failure routine.
-Those aliases are absent from the delivered manager library and client build.
-Thus exception paths remain unresolved in production, rather than passing silently.
+Initially missing _Xlen/_Xran had test-only aliases to an immediate failure routine.
+After reconstructing real helpers these aliases were removed from the test as
+well. The manager test still passes with the real exception support library;
+research/character-effects-and-exceptions.md.
 File loading, loaded mesh destruction, rendering and exceptions are outside this
 test. Source and output hashes: inventory/character-managers.json.
 
@@ -57,5 +58,6 @@ and still matches 165 addressable public decorated names. These checks do not
 prove compatibility of loaded animation data, exceptions or the 455 implementation.
 
 After connecting these constructors, all 180 client C++ units remain compiled and
-the diagnostic link has 11 unique unresolved symbols, down from 13. The full
+the diagnostic link initially had 11 unique unresolved symbols, down from 13.
+Effect defaults/exception reconstruction subsequently reduced this to 7. The full
 RF_Online.bin is not built. inventory/client-character-diagnostic.json.

@@ -3,15 +3,6 @@
 #include <cstdio>
 #include <cstring>
 
-// Test-only tripwires. The unresolved error helpers stay unresolved in the client
-// until reconstructed; a call here fails this bounded ordinary-container test.
-extern "C" __declspec(noreturn) void rf_unexpected_legacy_exception() {
-    std::fputs("Unverified legacy exception path reached\n", stderr);
-    ExitProcess(99);
-}
-#pragma comment(linker, "/alternatename:?_Xlen@std@@YAXXZ=_rf_unexpected_legacy_exception")
-#pragma comment(linker, "/alternatename:?_Xran@std@@YAXXZ=_rf_unexpected_legacy_exception")
-
 static int __cdecl suppress_interactive_faults() {
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX);
     return 0;

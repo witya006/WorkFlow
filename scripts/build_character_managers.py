@@ -1,7 +1,7 @@
 """Recover a real manager constructor and test it with supplied SDK algorithms.
 
 The test runs a newly linked component harness, never the input game executable.
-Unverified exception helpers are test-only failure tripwires, not client replacements.
+Uses the real reconstructed exception helpers; no test-only symbol substitutions.
 """
 import hashlib
 import json
@@ -17,6 +17,10 @@ def main():
     verified = json.loads((WS/'inventory/msvc-verification.json').read_text(encoding='utf-8'))
     header = json.loads((WS/'inventory/character-header-recovery.json').read_text(encoding='utf-8'))
     stdio = json.loads((WS/'inventory/character-stdio-adapter.json').read_text(encoding='utf-8'))
+    exceptions = json.loads((WS/'inventory/character-exceptions.json').read_text(encoding='utf-8'))
+    exception_library = WS/exceptions['library']
+    if hashlib.sha256(exception_library.read_bytes()).hexdigest() != exceptions['library_sha256']:
+        raise ValueError('Exception support changed since verification')
     dx = json.loads((WS/'inventory/directx81b-sdk.json').read_text(encoding='utf-8'))
     work = WS/'work/recovered/character-legacy/managers'
     work.mkdir(parents=True, exist_ok=True)
@@ -60,7 +64,7 @@ cl {options} /c character_recovered_managers.cpp /Fomanagers.obj > "{log}" 2>&1
 if errorlevel 1 exit /b 1
 lib /nologo /machine:x86 /out:CharacterRecoveredManagers.lib managers.obj >> "{log}" 2>&1
 if errorlevel 1 exit /b 1
-cl {options} /D_CRT_SECURE_NO_WARNINGS test_character_recovered_managers.cpp CharacterRecoveredManagers.lib "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Femanagers-probe.exe /link /NODEFAULTLIB:libci.lib >> "{log}" 2>&1
+cl {options} /D_CRT_SECURE_NO_WARNINGS test_character_recovered_managers.cpp CharacterRecoveredManagers.lib "{WS/stdio['adapted_archive']}" "{WS/stdio['adapter_library']}" "{exception_library}" "{Path(dx['sdk_root'])/'lib/d3dx8.lib'}" kernel32.lib user32.lib gdi32.lib advapi32.lib winmm.lib legacy_stdio_definitions.lib /Femanagers-probe.exe /link /NODEFAULTLIB:libci.lib >> "{log}" 2>&1
 exit /b %errorlevel%
 ''', encoding='ascii')
     result = subprocess.run(['cmd.exe', '/d', '/c', str(batch)], cwd=work)
@@ -87,7 +91,8 @@ exit /b %errorlevel%
               'sdk_archive_sha256': stdio['adapted_archive_sha256'], 'header_sha256': header['header_sha256'],
               'native_test': evidence, 'input_game_exe_execution': False,
               'limit': 'Ordinary object/animation manager operations on unloaded records; mesh/device/file loaders, DeleteAnimation(name), exception paths and 455 parity unverified.',
-              'test_only_aliases': 'Missing _Xlen/_Xran fail the test if reached; absent from delivered manager library and client settings.'}
+              'exception_library_sha256': exceptions['library_sha256'],
+              'test_only_aliases': False}
     (WS/'inventory/character-managers.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
     print(f'PASS: reconstructed object/animation managers, {evidence["checks_passed"]} checks using real old manager routines.')
 

@@ -1,28 +1,24 @@
 {
-  "checked_at_utc": "2026-11-04T07:22:24.728170+00:00",
+  "checked_at_utc": "2026-11-04T07:39:40.119099+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
   "build_exit": 1,
   "error_counts": {
-    "LNK2019": 11,
-    "LNK2001": 6,
+    "LNK2019": 7,
+    "LNK2001": 2,
     "LNK1120": 1
   },
   "unresolved_symbols": [
     "??0ChInterface@@QAE@XZ",
     "?CheckFiles@@YAPADXZ",
     "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@PAMM@Z",
-    "?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KK@Z",
     "?SendLog@@YA_NXZ",
     "?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z",
-    "?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KK@Z",
     "?SetMipMap@CRender@@QAEXK@Z",
-    "?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z",
-    "?_Xlen@std@@YAXXZ",
-    "?_Xran@std@@YAXXZ"
+    "?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z"
   ],
-  "distinct_diagnostics_total": 18,
+  "distinct_diagnostics_total": 10,
   "distinct_diagnostics": [
     {
       "file": "cresobject.obj ",
@@ -50,20 +46,6 @@
       "line": null,
       "code": "LNK2001",
       "message": "неразрешенный внешний символ \"public: void __thiscall EffectList::SetEffect(class CHARACTEROBJECT *,unsigned long)\" (?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z).",
-      "count": 1
-    },
-    {
-      "file": "citemdata.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"void __cdecl SetMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long)\" (?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KK@Z) в функции \"public: int __thiscall CMeshItem::RenderWithShadow(void)\" (?RenderWithShadow@CMeshItem@@QAEHXZ).",
-      "count": 1
-    },
-    {
-      "file": "citemdata.obj ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"bool __cdecl IsHaveMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long)\" (?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KK@Z) в функции \"protected: void __thiscall CMeshItem::Render_RenderWithEffect(void)\" (?Render_RenderWithEffect@CMeshItem@@IAEXXZ).",
       "count": 1
     },
     {
@@ -102,52 +84,10 @@
       "count": 1
     },
     {
-      "file": "CharacterMR-stdio.lib(character_03.obj) ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z).",
-      "count": 1
-    },
-    {
-      "file": "CharacterMR-stdio.lib(character_01.obj) ",
-      "line": null,
-      "code": "LNK2001",
-      "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
-      "count": 1
-    },
-    {
-      "file": "CharacterMR-stdio.lib(character_04.obj) ",
-      "line": null,
-      "code": "LNK2001",
-      "message": "неразрешенный внешний символ \"void __cdecl std::_Xran(void)\" (?_Xran@std@@YAXXZ).",
-      "count": 1
-    },
-    {
-      "file": "CharacterMR-stdio.lib(character_03.obj) ",
-      "line": null,
-      "code": "LNK2019",
-      "message": "ссылка на неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ) в функции \"public: __thiscall std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >(char const *,class std::allocator<char> const &)\" (??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBDABV?$allocator@D@1@@Z).",
-      "count": 1
-    },
-    {
-      "file": "CharacterMR-stdio.lib(character_01.obj) ",
-      "line": null,
-      "code": "LNK2001",
-      "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
-      "count": 1
-    },
-    {
-      "file": "CharacterMR-stdio.lib(character_04.obj) ",
-      "line": null,
-      "code": "LNK2001",
-      "message": "неразрешенный внешний символ \"void __cdecl std::_Xlen(void)\" (?_Xlen@std@@YAXXZ).",
-      "count": 1
-    },
-    {
       "file": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client-build\\build-character-diagnostic\\Release\\RF_Online.bin ",
       "line": null,
       "code": "LNK1120",
-      "message": "неразрешенных внешних элементов: 11",
+      "message": "неразрешенных внешних элементов: 7",
       "count": 1
     }
   ],
@@ -156,6 +96,7 @@
   "build_dir": "work/client-build/build-character-diagnostic",
   "log": "artifacts/client-character-diagnostic/build.txt",
   "build_settings": {
+    "RF_CHARACTER_EXCEPTIONS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/exceptions/CharacterLegacyExceptions.lib",
     "RF_CHARACTER_RECOVERED_MANAGERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
     "RF_CHARACTER_REFERENCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterMR-stdio.lib",
     "RF_CHARACTER_STDIO_ADAPTER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/stdio-adapter/CharacterLegacyStdio.lib",

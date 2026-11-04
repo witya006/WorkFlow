@@ -2,10 +2,10 @@
   "architecture": "x86",
   "runtime": "/MT",
   "library": "work/recovered/character-legacy/managers/CharacterRecoveredManagers.lib",
-  "library_sha256": "6b6971f28a1c5e42a6c237daa3103e0f77648235e42405f784e4bca7d745825b",
+  "library_sha256": "8b1ffc7d52e196faf7aad5c83789c4659201e0e899f41c80f52198991b53c9af",
   "source_sha256": {
     "character_recovered_managers.cpp": "eddbee94e6335976381f6e5e782c01e6b8ffa4f4f6a3f5ec4926f22297bb8a99",
-    "test_character_recovered_managers.cpp": "300387ce89d09309640d46da187a30345389c0f8b3c8020e892b59c68e54569d"
+    "test_character_recovered_managers.cpp": "0e89e89385d0aede9693c4e73a9e266dbf69795d3661140dc7f12f7a7b6ffd1e"
   },
   "constructor_evidence_object_sha256": "37119bd6f28b6ea184cec9e0d78ab831c8d18fcbc207b8e7750147cf68fc20be",
   "constructor_evidence_function": "?AddPartToMM@ChInterface@@QAEXPAD@Z",
@@ -26,7 +26,7 @@
     "singleton": "No undocumented static m_AManager assignment introduced"
   },
   "sdk_archive_sha256": "3ce694ff47aab901e772281f2e443d2b0ae55cecc4b1c711618e6e1307446dba",
-  "header_sha256": "b3f53e831eae97f839447e0f1428164a8e9c4bfaed0b8628ba59e1637ec04df5",
+  "header_sha256": "1570319cee2de77e3bafe2181a50bd8d7d510ef3b21aca4615200d566bc0de01",
   "native_test": {
     "checks_passed": 3102,
     "object_manager_checks": 1296,
@@ -37,5 +37,6 @@
   },
   "input_game_exe_execution": false,
   "limit": "Ordinary object/animation manager operations on unloaded records; mesh/device/file loaders, DeleteAnimation(name), exception paths and 455 parity unverified.",
-  "test_only_aliases": "Missing _Xlen/_Xran fail the test if reached; absent from delivered manager library and client settings."
+  "exception_library_sha256": "e332cda07083ad669298801baf9e862e5acde83f126f24217a9a4ae34bc4b2ff",
+  "test_only_aliases": false
 }

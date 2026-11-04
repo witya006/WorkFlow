@@ -96,7 +96,7 @@ M4: диагностическая компиляция всех 180 C++ кли�
 inventory/client-character-diagnostic.json и client-mt-variant.json; research/client-port-m4.md.
 
 В work/recovered/character-legacy/include/Character.h создан диагностический заголовок:
-224 исходных публичных контракта, 56 layout assertions, native decorated names 165
+224 исходных публичных контракта, 61 layout assertions, native decorated names 165
 адресуемых публичных функций совпали с библиотекой. 30 проверок инструкций подтверждают
 числа в отдельном манифесте character-legacy-layouts.json. Это ещё не полный SDK:
 конструкторы и часть inline API/default arguments не восстановлены и объявлены без
@@ -113,8 +113,9 @@ headers; baseline/progressive golden decodes побайтово точны. Mile
 при повторе; генераторы тоже не переписывают идентичные файлы.
 
 Diagnostic link берёт отдельную stdio-adapted копию CharacterMR и адресно откладывает
-CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 11 unique
-undefined symbols: ChInterface constructor, 6 inline/short APIs, _Xlen/_Xran, CheckFiles, SendLog.
+CharacterR/ziplibm/ZipArchive_STL_M/libci default libs, без /FORCE. Осталось 7 unique
+undefined symbols: ChInterface constructor, DrawCharacter short call, SetEffect,
+SetMipMap, SetTexPath, CheckFiles и SendLog.
 Проверки целостности/логирования не отключались. Парсер LNK исправлен, 3 теста прошли.
 
 Native CRT probe: Character EffectList loader читает FILE+12 &0x10; modern EOF даёт
@@ -127,15 +128,24 @@ flags=0x2049 и старый тест false. Classic msvcrt даёт 0x19 и tru
 использует отдельный CharacterMR-stdio.lib + adapter lib. CObjectManager constructor
 восстановлен по inlined stores member_06.obj; native harness прошёл 1296 проверок
 реальных старых SDK операций на unloaded objects (259 добавлений). Test-only _Xlen/_Xran
-fail tripwires отсутствуют в product library; modern STL fixture types не используются.
+aliases теперь удалены и из тестов; modern STL fixture types не используются.
 AnimationManager: собственный empty-vector constructor + реальный Init (+16=0,+20=1).
 Оригинальный inline ctor не найден, undocumented singleton assignment не добавлялся.
 1806 дополнительных проверок real SDK регистрации/поиска/удаления по ID/destruction,
 всего 3102. DeleteAnimation(name) имеет предполагаемую UAF по decompile, не проверен.
 Header: 61 layout assertions, 165 signatures по-прежнему совпадают.
-research/character-managers.md, inventory/character-managers.json; 11 link gaps.
-Следующий шаг при продолжении M4 — проверить старые загрузчики, продолжить
-constructors/inline/std helpers и CheckFiles/SendLog. Полной runtime ABI
+Два реальных загрузчика Pattern/Item прошли 49 native проверок valid fixtures с
+classic FILE adapter. По обоим pinned PE проверены push0/call targets для mesh-effect
+defaults; corresponding function names — structural inference, не символы из PDB.
+_Xlen/_Xran: собственные /MT typed throws с теми же messages/classes, что в Microsoft
+signed x86 msvcp60.dll SHA8d024f35...98dd139; provider не dependency клиентской сборки.
+770 сравнений type/message/ref catch/rethrow/512 guard destructions прошли.
+Manager/parser тесты повторно прошли с реальной exception library без aliases.
+Историческая libci и полное exception unwinding Character ещё не проверены.
+research/character-effects-and-exceptions.md, character-managers.md;
+inventory/character-{effect-defaults,effect-loaders,exceptions,managers}.json; 7 link gaps.
+Следующий шаг при продолжении M4 — остальные constructors/inline и CheckFiles/SendLog.
+Полной runtime ABI
 проверки ещё нет. research/character-stdio-adapter.md; character-stdio-adapter.json.
 Все собственные IDA-сессии закрыты. Серверы не менялись.
 В 455 подтверждён D3D9, восстановлены 2 GPU layouts; это не CPU ABI старой D3D8 библиотеки.

@@ -25,16 +25,22 @@ M8 (графика) не является условием этой цели. П
    Отдельно собран настоящий R3EngineMT.lib: 58 C++, /MT вместо M1 /MD, без переименования.
    JPEG 6b собран: 28 ABI значений совпали, 2 golden decodes точны; Miles .lib подключена,
    26 импортов есть в 455 DLL. Все 284 современных объекта x86 /MT проверены.
-   В diagnostic link остались 11 уникальных символов; вызовы CheckFiles/SendLog сохранены.
-   Следующий шаг — адаптация старого FILE/CRT: native тест подтвердил несовместимость
-   прямого EOF доступа CharacterMR с UCRT, classic CRT прошёл этот конкретный тест.
+   В diagnostic link остались 7 уникальных символов; вызовы CheckFiles/SendLog сохранены.
+   Прямой EOF доступ CharacterMR несовместим с UCRT; classic FILE изолирован адаптером.
    Адаптер 8 stream API готов: 1828 собственных native проверок и 3 теста COFF прошли,
-   но сами старые загрузчики ещё не runtime-проверены. CObjectManager constructor
+   два настоящих загрузчика Pattern/Item проверены отдельно: 49 native проверок
+   на valid synthetic fixtures с положительными/отрицательными effect queries.
+   По инструкциям обоих 455 восстановлен default=0 для двух mesh-effect API.
+   _Xlen/_Xran реализованы реальными exceptions, 770 native сравнений с classic exports.
+   CObjectManager constructor
    восстановлен; AnimationManager получил empty-state constructor + настоящий Init.
    3102 native проверки настоящих SDK функций прошли на незагруженных записях.
    AnimationManager original inline constructor не найден, singleton side effects
-   не доказаны. Продолжить constructors/inline/std helpers;
-   research/character-managers.md и research/character-stdio-adapter.md.
+   не доказаны. Test-only exception aliases удалены, native компоненты проходят
+   с настоящей exception library. Следующие 7 gaps: ChInterface constructor,
+   DrawCharacter short call, SetEffect, SetMipMap, SetTexPath, CheckFiles и SendLog.
+   research/character-effects-and-exceptions.md, character-managers.md,
+   character-stdio-adapter.md. Полный runtime/exception unwind Character не проверен.
    Детали и ограничения diagnostic /NODEFAULTLIB — research/client-dependencies-m4.md.
    У Character остаются объявления без восстановленных inline-реализаций/конструкторов,
    неизвестные исходные default arguments и ABI старой STL/CRT; не подменять их заглушками.

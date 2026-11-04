@@ -33,6 +33,11 @@ CRLF/fgets, malformed fscanf и 256 циклов varargs. Отдельно пр�
 M4 должно проверить сам старый компонент и восстановить оставшиеся методы, сохраняя
 CheckFiles/SendLog. Контекст предыдущих зависимостей: client-dependencies-m4.md.
 
+Последующее продолжение M4: два настоящих Pattern/Item загрузчика прошли 49 native
+проверок с этим адаптером. Два менеджера прошли 3102 проверки; реальные exception
+helpers — 770 сравнений с classic exports. Test-only aliases удалены. Теперь 7 link
+gaps. Подробности и сохраняющиеся ограничения — character-effects-and-exceptions.md.
+
 Дополнительное статическое чтение 455 сохранено как гипотеза: backup SHA-256
 46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558,
 x86, image base 0x400000. Кандидаты transform/draw wrapper VA 0x92FBE0 / RVA 0x52FBE0

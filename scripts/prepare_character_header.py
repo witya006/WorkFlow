@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from recover_character_effect_defaults import verify_default_evidence
 
 WS = Path(__file__).resolve().parents[1]
 
@@ -132,6 +133,7 @@ FIELDS = {
 
 
 def main():
+    effect_defaults = verify_default_evidence()
     source = WS/'inventory/character-public-contracts.json'
     contracts = json.loads(source.read_text(encoding='utf-8'))
     methods = {}
@@ -164,6 +166,11 @@ def main():
         elif not member:
             if declaration.startswith(('public:', 'private:', 'protected:')):
                 raise ValueError('Unparsed member contract: '+declaration)
+            if entry['mangled'] in ('?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KKK@Z',
+                                    '?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KKK@Z'):
+                if not declaration.endswith(',unsigned long)'):
+                    raise ValueError('Unexpected full mesh-effect declaration')
+                declaration = declaration[:-1]+' = 0)'
             free.append(('extern ' if '(' not in declaration else '')+declaration+';')
     # ChInterface derives from CRender in this reconstruction; no vtable is introduced.
     # Other API-only types are not constructed by the client. Their storage is unknown.
@@ -198,10 +205,6 @@ struct CharacterEffectSlot { float m_X, m_Y, m_Z; DWORD m_ID; };
             # Private static storage exists in the supplied library. Define only an accessor.
             header = header[:-3]+'    static CRender& GetRender() { return *m_Render; }\n};\n'
     header += '\n'.join(free)+'\n'
-    header += '''// Shortened calls exist in client sources; original default arguments are not known.
-void SetMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
-bool IsHaveMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
-'''
     asserts = {
         'CHARACTEROBJECT': (776, {'m_ID': 0, 'm_Name': 4, 'm_Load': 260, 'm_MaxObj': 528,
                                 'm_pMesh': 532, 'm_Frame': 668, 'm_OMaxFrame': 672,
@@ -238,7 +241,8 @@ bool IsHaveMeshEffect(CHARACTEROBJECT*, unsigned long, unsigned long);
               'layout_assertions': sum(1+len(fields) for _, fields in asserts.values()),
               'unimplemented_inline_api': ['TextureManager/CMeshManager/CRender/ChInterface constructors',
                    'SetMipMap', 'GetShadow', 'SetTexPath', 'EffectList::SetEffect',
-                   'DrawCharacter/DrawCharacterShadow/LoadRealData/SetMeshEffect/IsHaveMeshEffect shortened overloads'],
+                   'DrawCharacter/DrawCharacterShadow/LoadRealData shortened overloads'],
+              'reconstructed_effect_defaults': effect_defaults,
               'unverified': ['Full layout of API-only classes remains missing',
                    'Names inferred from source use need final instruction cross-check',
                    'Whole-client linking and complete runtime compatibility remain unverified',

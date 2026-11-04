@@ -136,11 +136,13 @@ CRender/ChInterface размером 776 в реконструкции покр�
 sizeof оригинального ChInterface сверх этого диапазона ещё не доказан.
 Современные std::vector не подставлены вместо старого хранения. STL/CRT/исключения
 VC6 и передачи STL объектов требуют отдельной проверки. Компиляция этого не доказывает.
-JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 11 уникальных
+JPEG/Miles зависимости уже подключены. Diagnostic link оставляет 7 уникальных
 символов, полный список — inventory/client-character-diagnostic.json.
 Native тест подтвердил несовместимость прямого FILE EOF доступа CharacterMR с UCRT;
-Classic CRT adapter уже реализован и проверен на собственных fixtures, старые
-загрузчики ещё не проверены. CObjectManager и AnimationManager construction подключены,
+Classic CRT adapter уже реализован и проверен на собственных fixtures и двух
+настоящих Pattern/Item загрузчиках (49 checks). CObjectManager и AnimationManager construction подключены,
 3102 native проверки реальных SDK операций на unloaded records прошли; пределы и
 AnimationManager invariant reconstruction — research/character-managers.md.
-SDK не готов. Остальное — research/client-dependencies-m4.md.
+Effect defaults и настоящие exception helpers восстановлены; 770 сравнений с classic
+exports прошли. SDK не готов. Текущие доказательства и границы —
+research/character-effects-and-exceptions.md; исходные зависимости — client-dependencies-m4.md.

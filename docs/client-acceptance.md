@@ -54,9 +54,11 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 
 - Восстановленный Character.h обеспечивает компиляцию; конструкторы, inline/default
   arguments и runtime ABI старой STL/CRT не проверены. research/character-library.md.
-- Старый прямой FILE EOF доступ CharacterMR несовместим с UCRT: подтверждено собственным
-  x86 тестом. Исправление и общая совместимость classic CRT ещё не доказаны;
-  research/client-dependencies-m4.md. Одного успешного link недостаточно для M4.
+- Старый прямой FILE EOF доступ CharacterMR несовместим с UCRT. Изолирующий адаптер
+  прошёл 1828 собственных проверок и два настоящих текстовых загрузчика (49 checks).
+  Два менеджера прошли 3102 проверки на unloaded records, exception helpers — 770
+  сравнений с classic exports. Полный SDK ABI/exception unwind/render не доказан;
+  research/character-effects-and-exceptions.md. Одного успешного link недостаточно для M4.
 - Старый CLevel::GetFrustumNormalPlane вызывает себя (C4717); есть глобальная функция
   с тем же именем. Не исправлено; поведение/эквивалент в 455 ещё не установлены.
 - _NEW_UI_ нужен текущим исходным классам предметов и включён для современной сборки;
