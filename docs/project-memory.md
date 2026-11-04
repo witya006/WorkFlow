@@ -91,6 +91,19 @@ Winable.h заменён на windows.h только в рабочем protect.c
 Ориентир пользователя — сообщить при переходе к началу M5; до него ещё не дошли.
 Полный хеш-манифест ресурсов и атрибуция версии ещё открыты.
 
+Дополнение M4: через IDA MCP выгружены 207 определений функций Character из 10 COFF
+объектов (повторные inline учитываются отдельно), extern отфильтрованы по COFF.
+Выгрузки кешируются в artifacts/character-analysis, повторный реверс не нужен.
+21 проверка операндов инструкций подтвердила выделение CHARACTEROBJECT 776 байт,
+ChAnimation 280, шаг ObjectMesh 1072; поля count/mesh/alpha/material/эффектов и
+первые поля CObjectManager. Частичные memory views под work/recovered/character-legacy
+прошли native MSVC x86 static_assert; это ещё не Character.h и не контракт CPU 455.
+4 теста COFF/границ/инструкций прошли. Манифест character-legacy-layouts.json.
+Проба link-only GetAlpha со старой CharacterMR оставляет std::_Xlen и std::_Xran;
+не выполнялась. Совместимость контейнеров/CRT/исключений пока не доказана, заглушек нет.
+Следующий шаг: размеры ChInterface/менеджеров, встроенные поля и конструкторы по
+локальным выгрузкам и обращениям клиента. Подробности research/character-library.md.
+
 ## Неизвестное
 
 Различия клиентов; точная версия SDK/CRT; Character SDK и недостающие .lib;

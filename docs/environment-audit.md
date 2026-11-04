@@ -255,3 +255,12 @@ client-build-result.json, research/client-port-m1.md.
 исследованы в IDA, собственная сессия закрыта с сохранением. Текущий клиент закреплён
 эталоном по SHA-256 в config/client-target.json. Версионная константа не считается
 доказательством атрибуции. Полный манифест ресурсов ещё не создан.
+
+M4: CharacterMR.lib исследована статически через IDA MCP; 207 определений публичных
+функций сохранены локально с фильтрацией extern по COFF. Проверены 21 операнд x86
+инструкций, native x86 compile подтвердил частичные memory views (776/1072/280 байт).
+4 проверки COFF/повреждённых входов прошли. Полный Character.h ещё не восстановлен.
+Проба линковки GetAlpha завершилась двумя unresolved символами старой STL
+(std::_Xlen/_Xran); DLL не загружалась/не выполнялась. Это диагностика, а не
+подтверждение ABI. research/character-library.md, inventory/character-legacy-layouts.json,
+character-analysis-export.json, character-link-probe.json.
