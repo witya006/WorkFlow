@@ -1,0 +1,143 @@
+{
+  "binary_evidence": [
+    {
+      "input": "current",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "device_enumeration",
+          "va": "0x8ef080",
+          "rva": "0x4ef080",
+          "size": 1547,
+          "sha256": "ee20ab25e2891c24b2afc98b2d03bc90da0d1d4ad8cf90d2d4b927bab201b0a0"
+        },
+        {
+          "name": "device_creation",
+          "va": "0x8ef690",
+          "rva": "0x4ef690",
+          "size": 1310,
+          "sha256": "12cb242cf713709af0d8352b2044009ba9c3015e375e935b2add06e2aab6e747"
+        },
+        {
+          "name": "window_init",
+          "va": "0x8f0330",
+          "rva": "0x4f0330",
+          "size": 538,
+          "sha256": "232aa942879b7a5f44b255284817393d4bf89678c6647e1bba3135b7d1a1bfab"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x8ef872",
+          "rva": "0x4ef872",
+          "bytes": "834f0c04",
+          "meaning": "force flag0x4 before CreateDevice"
+        },
+        {
+          "va": "0x8ef8a3",
+          "rva": "0x4ef8a3",
+          "bytes": "ffd2",
+          "meaning": "indirect IDirect3D9 CreateDevice call"
+        },
+        {
+          "va": "0x8f0344",
+          "rva": "0x4f0344",
+          "bytes": "e8537c1100",
+          "meaning": "Direct3DCreate9 import thunk"
+        },
+        {
+          "va": "0x8ef341",
+          "rva": "0x4ef341",
+          "bytes": "c7849cfc00000040000000",
+          "meaning": "candidate vertex processing flag 0x40"
+        },
+        {
+          "va": "0x8ef373",
+          "rva": "0x4ef373",
+          "bytes": "c7849cfc00000080000000",
+          "meaning": "candidate vertex processing flag 0x80"
+        },
+        {
+          "va": "0x8ef3a2",
+          "rva": "0x4ef3a2",
+          "bytes": "c7849cfc00000020000000",
+          "meaning": "candidate vertex processing flag 0x20"
+        }
+      ]
+    },
+    {
+      "input": "reference-backup",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "device_enumeration",
+          "va": "0x8ef080",
+          "rva": "0x4ef080",
+          "size": 1547,
+          "sha256": "ee20ab25e2891c24b2afc98b2d03bc90da0d1d4ad8cf90d2d4b927bab201b0a0"
+        },
+        {
+          "name": "device_creation",
+          "va": "0x8ef690",
+          "rva": "0x4ef690",
+          "size": 1310,
+          "sha256": "12cb242cf713709af0d8352b2044009ba9c3015e375e935b2add06e2aab6e747"
+        },
+        {
+          "name": "window_init",
+          "va": "0x8f0330",
+          "rva": "0x4f0330",
+          "size": 538,
+          "sha256": "232aa942879b7a5f44b255284817393d4bf89678c6647e1bba3135b7d1a1bfab"
+        }
+      ],
+      "instructions": [
+        {
+          "va": "0x8ef872",
+          "rva": "0x4ef872",
+          "bytes": "834f0c04",
+          "meaning": "force flag0x4 before CreateDevice"
+        },
+        {
+          "va": "0x8ef8a3",
+          "rva": "0x4ef8a3",
+          "bytes": "ffd2",
+          "meaning": "indirect IDirect3D9 CreateDevice call"
+        },
+        {
+          "va": "0x8f0344",
+          "rva": "0x4f0344",
+          "bytes": "e8537c1100",
+          "meaning": "Direct3DCreate9 import thunk"
+        },
+        {
+          "va": "0x8ef341",
+          "rva": "0x4ef341",
+          "bytes": "c7849cfc00000040000000",
+          "meaning": "candidate vertex processing flag 0x40"
+        },
+        {
+          "va": "0x8ef373",
+          "rva": "0x4ef373",
+          "bytes": "c7849cfc00000080000000",
+          "meaning": "candidate vertex processing flag 0x80"
+        },
+        {
+          "va": "0x8ef3a2",
+          "rva": "0x4ef3a2",
+          "bytes": "c7849cfc00000020000000",
+          "meaning": "candidate vertex processing flag 0x20"
+        }
+      ]
+    }
+  ],
+  "confirmed": "Reference uses D3D9; creation code selects candidate VP flags and ORs0x4. Own legacy graphics lab uses D3D8 HAL/SWVP0x20, a different API/configuration.",
+  "unknown": [
+    "Actual reference runtime x87 control word and other startup changes: reference EXE never executed.",
+    "Full renderer/shader/device-reset parity; these static checks do not prove pixel equivalence."
+  ]
+}

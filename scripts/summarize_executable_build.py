@@ -83,6 +83,9 @@ def main():
             resource_inputs=['scripts/native/client455_resource_io.cpp','scripts/native/client455_resource_io.h','scripts/native/client_resource_lab.inc',
                              'work/client-build/source/R3Engine/1stclass/r3particle.cpp']
             report['resource_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in resource_inputs}
+            graphics_inputs=['scripts/native/client_graphics_lab.inc','work/client-build/source/R3Engine/1stclass/entity.cpp',
+                             'work/client-build/source/R3Engine/1stclass/r3d3dtex.cpp','work/client-build/source/R3Engine/1stclass/renderentity.cpp']
+            report['graphics_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in graphics_inputs}
         report['scope']='Full client project with own helper-only lab entry; normal game initialization bypassed, game DLLs delayed. Build record only, runtime recorded separately.'
     (WS / args.output).write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps({k: report[k] for k in ['build_exit', 'error_counts', 'generated_objects']}, ensure_ascii=True))

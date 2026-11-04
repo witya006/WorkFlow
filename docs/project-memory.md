@@ -22,19 +22,20 @@ M8 не требуется. Компиляция, запуск и частичн
   recovered Character header и адаптированной CharacterMR. Pure legacy branches OFF
   не объявлены восстановленными; canonical optimized Release и весь runtime ещё открыты.
   Не выдавать сборочный результат за полноту клиента или завершение M9.
-- M5 В РАБОТЕ: loader455 найден, три отличия перенесены. Full-project own lab entry
-  загрузил 140 реальных файлов/97 543 записи, использовал ненулевые координаты/bbox;
-  12 fixtures/2 546 931 checks и4 import-parser tests прошли. Две x87 math функции
-  инструкционно совпали с455 в library и linked PE;338 native checks/12FP modes,
-  3 COFF parser tests. Двухслойная погода перенесена: R3X/text config, load/release,
-  CPU update отдельно отdraw, helper owner/interior и night.65real R3X +4fixtures /
-  703checks,37native lifecycle checks.58real R3X применены реальной LoadR3X без lens/GPU.
-  Обычный LoadLevel/FPU initialization не проверены; M5 пока не закрыт.
-  Ресурсный аудит:78RPK/3775file entries,70BSP+93EBP,20real weather assets сохранены
-  с hashes.8tool tests прошли. Следом RPK file/group/fopen/exists и particle end
-  перенесены в source;18 907native module checks и30actual full-project checks.
-  Обе сборки успешны,703weather checks на текущем lab; normal LoadLevel/GPU ещё нет.
-  research/client455-resource-io-source.md.
+- M5 ЗАКРЫТ для первого выбранного участка: helper455data и interior/weather consumer.
+  Loader455 и617bytes двух math функций сверены с обоими pinned PE;140реальных
+  files/97 543records +12fixtures /2 546 931checks сохранены на historical lab revision.
+  338math checks/12FP modes; RPK module18 907checks/3775members/78archives.
+  Actual LoadLevel/FrameMove/render/release полного проекта через own entry прошли
+  на lobby и Platform01.23helpers/8interiors Platform01 управляют двумя real weather
+  particles15/500:inside/night[0,0],outside/night[1,1],outside/day[0,0].
+  13GPU cases/321checks,0errors/warnings,allocation/COM release balance0.
+  FPU initial/engine/device=0x027F/0x027F/0x007F; actual map/render/consumer остаются007F.
+  703weather/30resource/23 337targeted helper checks на текущем lab прошли.
+  Gate inventory/client-m5-checkpoint.json; research/client455-graphics-runtime.md.
+- M6 в работе. Полные particles/clock/Character/UI/network/renderer parity открыты.
+  D3D8 legacy против455D3D9 — обязательное восстановление M6, не optional M8.
+  Normal WinMain и reference EXE не запускались. M6F/M7/M9 не закрыты.
 
 ## Артефакт первой сборки
 
@@ -52,11 +53,13 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 a761c930a5ff86025d0a68ab195bd9253855b1d7887f3d9d0f6b9639fec8970c.
 Snapshot resource455-runtime;предыдущие revisions сохранены. Обычный EXE
 не запускался,286objects /MT проверены (180client +60engine +46JPEG).
-Own lab EXE SHAc23d4bc8634cd2d49c31753b85ec9d876ba35d053096497840a9a8198656a8b9,
-entryRVA0x7DE7,size4067328,work/client-weather-lab/c23d4bc8634cd2d4/RF_Online.bin.
-Этот вариант исполнялся с --rf-resource-scenario /--rf-weather-read /--rf-weather-scenario.
-Game DLLs delayed и GetModuleHandle подтвердил отсутствие
-их загрузки; normal GPU/network/startup/teardown не выполнялись.
+Own lab EXE SHA ece2acccb434ef06ee0aba3d35a15778f3bdf87e5b70589221f8f34732aed3ae,
+snapshot work/client-graphics-lab/ece2acccb434ef06/RF_Online.bin.
+Он исполнялся с resource/weather/helper и --rf-graphics-device/entity/particle/level.
+Game DLLs delayed; GetModuleHandle до/после подтвердил отсутствие их загрузки.
+Hidden-window640x480 D3D8 HAL/RTX2080Ti, без focus/input; real backbuffer BMP сохранены.
+HAL требует разрешённого запуска вне sandbox; та же сборка внутри вернула0x8876086A.
+Звук/сеть/normal game startup/teardown не проверены. Исторические lab hashes сохранены.
 
 ## Эталон и инструменты
 
@@ -92,7 +95,7 @@ CheckFiles/SendLog нет. _DEVELOPER_ и /FORCE не включены. Подт
   собственный читаемый x87 source совпал со всеми617bytes инструкций обоих PE,
   кроме проверенной DIR32 ссылки на свою равную epsilon constant. Обе функции
   проверены также после линковки, global wrappers действительно на них переходят.
-  Caller FPU control сохраняется; game startup FPU state ещё не проверен.
+  Caller FPU control сохраняется; own graphics путь измерен0x007F,455startup ещё не установлен.
 research/client-first-build.md и client-draw-and-legacy-effects.md, manifest instruction bytes.
 
 D06: _NEW_UI_ включён, как в original Debug; без него текущие item classes некомплектны.
@@ -126,8 +129,8 @@ real InitVertex/455 перед изменением production поведени�
 
 ## Следующий шаг
 
-M5: следующий шаг — actual entity/texture/particle и normal LoadLevel/GPU:
-собственный graphics entry, device/FPU initialization, изолированные real assets.
+M6: следующий шаг — clock/client Time/HMS caller4550x7E3E55 и numeric/FPU contract.
+Actual entity/texture/particle и LoadLevel/GPU уже прошли M5 в own entry.
 RPK file/group/fopen/exists и particle end source уже подключены (flag RESOURCE_IO).
 18 907native module checks на3775members/78RPK;30actual CParticle/LoadR3X archive
 checks в full-project lab,7source ledgers/6compiled objects проверены. RPKFILE/Group
@@ -135,17 +138,19 @@ owners276/268, manual release/active pointer; Dmalloc настоящий в engi
 порядок, skip-first,last3letters rpk,256limit,prefix-length-only, mutation и unbounded
 FILE сохранены. Остальные consumers/groups/unsafe errors/OOM не сертифицированы.
 Compile DDS mask128bytes в обоих linked PE равен455; input EXE/DLL не запускались.
-Затем clock/client Time/HMS caller4550x7E3E55. Research client455-resource-io-source.md;
+Следом полные particles и обязательное D3D9 восстановление. Research client455-resource-io-source.md;
 inventory/client455-resource-{io,reference,runtime,link}.json. Commands в next-steps.md.
 Повтор MSBuild после sandbox E_ACCESSDENIED с escalation прошёл, cache не удалялся.
-Последняя полная140helper проверка остаётся weather revision;703weather checks
-повторены на текущем resource lab. IDA supervisor подтвердил0sessions после TTL.
-Resource format audit уже выполнен; не повторять его вместо runtime следующего шага.
+Последняя полная140helper проверка остаётся pinned weather revision;703weather checks
+повторены на текущем graphics lab,23 337targeted helper checks тоже прошли.
+Owned graphics IDA session закрыта/save. Resource audit/GPU уже выполнены;
+не повторять их без изменения соответствующих входов.
 78MapEntity archives/3775entries,1067declaredSize mismatches: game fopen их игнорирует,
 tool uses next-offset/EOF extent и сохраняет metadata.70BSP39+93EBP20 round trips;
 Dungeon00 stale offsets overlap, sequential reads/skip end ровно на EOF. Остальные
 162containers offsets совпали.5of6weather SPT resolved +5R3E113/5R3M/5R3T.
-DDS headers/mask/DXT mip sizes проверены безGPU. Один e_cauldron_boss_tower/spt/
+DDS headers/mask/DXT mip sizes проверены, пять real entities затем загружены наGPU.
+Один e_cauldron_boss_tower/spt/
 magmadust.spt missing для3Tower R3X; component нет во всех162RPK indexes. Не подменять.
 Evidence inventory/client455-map-resources.json, research/client455-map-resources.md;
 scripts/rpk455.py/map455.py,8tests. Strict tooling не эмулирует unsafe game parser.
@@ -159,7 +164,8 @@ client time caller пока не закрыты. Particle455 curves/options, в�
 full fog2/lens/scene weather и unsafe failure domain тоже открыты.
 Source failure quirks и unchecked short header сохранены, не улучшать по догадке.
 Research client455-weather-source.md; новый module scripts/native/client455_weather.cpp.
-Math instruction parity выполнена для двух kernels; normal LoadLevel/FPU init пока нет.
+Math instruction parity выполнена для двух kernels; own LoadLevel/FPU init проверены,
+reference455startup и normal WinMain остаются неизвестны.
 23 из140 samples имеют имя EXT.spt (48records), не все автоматически выбраны картой.
 Lab FP control0x027F,max roundtrip error .000967025756835938,interior probes внутри.
 Новые доказательства research/client455-x87-and-weather.md, inventory/client455-*.json,

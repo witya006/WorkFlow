@@ -260,6 +260,25 @@ SHA-256 и entry point RVA тестового PE x86 записаны в отч�
 client-build-result.json, подробности research/client-port-first-build.md.
 Отсутствие DirectX-заголовков теперь подтверждено компилятором, а не только поиском.
 
+## Последующее M5: настоящий GPU и map path
+
+M5 закрыт для первого helper-data участка, gate inventory/client-m5-checkpoint.json.
+Own entry полного client project выполнил настоящий D3D8 HAL на RTX2080Ti, загрузку/
+отрисовку5RPKentities и5real particle scripts, CLevel::LoadLevel/FrameMove/render/release
+для lobby и Platform01.13cases/321checks,0warnings/errors, allocation и COM balance0.
+Platform01:23helpers/8interiors и два weather layers15/500; inside/night stop,
+outside/night start,outside/day stop проверены настоящим FrameMove. GPU BMP прочитаны
+из backbuffer, hashes сохранены, кадры просмотрены. Control words027F→027F→007F;
+map/particle/render/helper consumer не изменяют007F. Reference startup state неизвестен.
+Sandbox HAL creation дал0x8876086A, тот же EXE вне sandbox прошёл без изменения source.
+Game DLL delayed и не загружались; звук/сеть/normal WinMain/input EXE не запускались.
+703weather/30resource/23 337targeted helper regressions прошли на final lab SHA
+ece2acccb434ef06ee0aba3d35a15778f3bdf87e5b70589221f8f34732aed3ae.
+Normal build a761c930... не менялся. IDA reference graphics analysis:3functions/6exact
+instruction checks на обоих pinned PE; owned77bfa3a2 закрыта с save.
+research/client455-graphics-runtime.md. D3D9/full Character/particles/clock/UI/network
+и M6/M6F/M7/M9 открыты; M8 modernization не требуется.
+
 ## Документация интеграций
 
 - [GoMMO: stdio bridge и studio_status](https://oldschoolops.com/docs/gommo-studio/automation/ai-assistants/).

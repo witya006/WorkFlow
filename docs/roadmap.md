@@ -31,22 +31,16 @@ SetTexPath/SetMipMap восстановлены; 18 дополнительных
 455 draw аргументы подключены отдельным flag/ledger; legacy SetEffect bridge проверен.
 455 map/36-grade эффекты ещё не перенесены. Character inline/CRT
 ещё не закрыты. research/character-effects-and-exceptions.md.
-M5 в работе: loader455 VA0x90BBF0/RVA0x50BBF0 найден; count reset, lowercase каждой
-записи и interior4 перенесены отдельным flag. Own lab entry полного проекта загрузил
-140 файлов/97 543 записи, использовал ненулевые координаты и bbox. 12 fixtures /
-2 546 931 checks прошли;4 import-parser tests. Обычная ревизия также собрана.
-Две math функции совпали со всеми инструкциями455 в COFF/linked PE;338 native
-checks в12FP modes. Два weather слоя config/lifecycle/update/draw, interior/night
-и helper binding перенесены в source.65real R3X +4fixtures /703checks;37actual
-CPU lifecycle checks. Остаются real asset/GPU/particle455 parity, clock integration,
-normal LoadLevel и FPU initialization;M5 не закрыт.
-research/client455-weather-source.md; inventory/client-features.json.
-Ресурсные prerequisites M5 уточнены:78RPK и163BSP/EBP проаудированы,20weather assets
-закреплены. Далее source archive-aware fopen и SPT end boundaries, затем normal map
-runtime. Research client455-map-resources.md. Следом source RPK/group/fopen/exists
-и particle end подключены:18 907module checks +30actual full-project checks;
-обе сборки успешны. Далее реальные entity/texture/particle и normal LoadLevel/GPU.
-research/client455-resource-io-source.md. M5 остаётся открыт.
+M5 закрыт для первого выбранного helper-data участка: loader455, две instruction-identical
+math функции, RPK доступ и реальное interior/weather использование.140files/97 543records,
+2 546 931native/comparison checks,338math checks/12FP modes. Настоящие клиентские
+LoadLevel/FrameMove/render/release прошли в own entry на lobby и Platform01;
+Platform01:23helpers/8interiors, два weather layers меняют состояния[0,0]→[1,1]→[0,0].
+13GPU cases/321checks,703weather,30resource и23 337targeted helper regression checks.
+Gate inventory/client-m5-checkpoint.json; research/client-m5-checkpoint.md.
+M6 в работе; M6F/M7/M9 открыты. D3D8 база против D3D9 эталона — обязательное
+восстановление M6, а не модернизация M8. Полные particles/clock/Character/UI/network
+не сертифицированы; нормальный WinMain и входной455 EXE не запускались.
 
 ## Этапы
 

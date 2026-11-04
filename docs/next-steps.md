@@ -21,7 +21,16 @@ x87 math и двухслойная погода (9 files).
 CheckFiles/SendLog не заменены пустыми functions. По исследованным reference callers
 455 не вызывает их в этих двух местах. Не делать вывод об остальных file checks.
 
-## M5 в работе: получена native CPU-проверка helper данных
+## M5 закрыт: выбранный helper-data участок
+
+Итоговый gate inventory/client-m5-checkpoint.json; research/client-m5-checkpoint.md.
+Actual LoadLevel/FrameMove/render/release прошли через own entry полного проекта
+на lobby и Platform01.13GPU cases/321checks, allocation/COM balance0,0callbacks/errors.
+Platform01:23helpers/8interiors; реальные два weather layers15/500 меняют состояния
+inside/night[0,0]→outside/night[1,1]→outside/day[0,0]. Own graphics FPU после device007F.
+Normal WinMain/reference EXE не исполнялись; весь455renderer и остальные области открыты.
+
+История предпосылок (полные отчёты сохранены):
 
 Loader455 VA0x90BBF0 найден, весь body/инструкции сверены в обоих pinned PE.
 Три отличия перенесены отдельным flag: missing-input count reset, lowercase каждой
@@ -37,7 +46,7 @@ checks для двух one-element particles. Настоящий LoadR3X при�
 без lens flag;7lens samples проверены shared production reader без GPU.
 Обычная версия:2 438 144bytes,entryRVA0x1BAF50,snapshot weather455-cpu.
 285modern objects /MT. research/client455-weather-source.md.
-Обычный запуск игры/LoadLevel/GPU/network НЕ выполнен; M5 пока не закрыт.
+В том CPU цикле LoadLevel/GPU ещё не выполнялись; последующая проверка описана выше.
 
 Ресурсный аудит:78MapEntity RPK/3775entries и70BSP+93EBP проверены tooling с
 lossless container round trip.20real weather assets закреплены в work/.1067RPK
@@ -53,20 +62,22 @@ particle end boundaries подключены в7copied files.18 907standalone na
 R3X checks.703weather regression checks прошли на текущем lab.286modern /MT objects,
 обычный2440704bytes,entryRVA0x1BBA50,snapshot resource455-runtime. Normal EXE не
 запускался. research/client455-resource-io-source.md; inventory/client455-resource-*.json.
-Общий RPK код есть; все другие resource consumers/archives и GPU не объявлены готовыми.
+Общий RPK код есть; все другие resource consumers/archives не объявлены готовыми.
 
-1. Проверить actual entity/texture/particle и normal LoadLevel/GPU на реальных данных:
-   собственный graphics entry, device/FPU initialization и изолированные copies.
-   RPK module и selected consumers уже source-integrated/native-tested; не повторять
-   static audit вместо следующего runtime этапа. Полные particle455 options/curves,
-   остальные resource consumers/groups, locale/error/OOM/unsafe domains ещё открыты.
-2. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
+## Очередь M6 → M9
+
+1. Перенести client-side time/HMS caller4550x7E3E55 и проверить clock numeric/FPU
    environment. Setter/rate/basic API есть, network/lighting не объявлены готовыми.
-3. Проверить обычный LoadLevel и FPU initialization. Сами inverse/transform теперь
-   инструкционно совпадают с 455; окружающая среда игры/GPU ещё не проверена.
-4. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
+2. Полные particle455 options/curves/collision/emission и остальные resource consumers.
+   Реальные selected5entities/5particles уже отрисованы; это не полная455parity.
+3. Восстановить D3D9/device/material/shader/lighting поведение455. Это обязательный
+   функциональный перенос M6; обновление визуального стиля M8 не требуется.
+   Own D3D8 FPU измерен; reference startup/control и Character ABI ещё открыты.
+4. Довести Character sources/layouts/constructors/effects, затем UI/network/gameplay/
+   ввод/звук и все обнаруженные acceptance сценарии. Не заменять их одним map demo.
+5. Выяснить lifecycle/error rules выбранного участка: reload-success/leak, unsafe
    malformed paths/locale/OOM пока не закрыты. Не исправлять quirks по догадке.
-5. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
+6. Вести feature/scenario matrix по client-acceptance.md. M6/M6F — полный functional
    coverage, M7 — закрепление сборки, затем M9. Не закрывать цель по одному EXE.
 
 Известные дальнейшие gaps: D3D8 база против D3D9 reference; legacy EffectList9grades
@@ -81,6 +92,9 @@ Clear routine effect log0x7DF1B0 не привязывать к atexit по до
 Lab: тот же script с -HelperLab, затем Invoke-Python.ps1 scripts/probe_client_helpers.py.
 Перед native runner: verify_client_x87_math455.py --lab для текущего linked EXE.
 Weather native: Invoke-Python.ps1 scripts/probe_client_weather455.py.
+Graphics native: Invoke-Python.ps1 scripts/probe_client_graphics455.py --entity --particle
+--level lobby --level Platform01 (HAL требует разрешённого запуска вне sandbox).
+M5 gate: Invoke-Python.ps1 scripts/verify_client_m5.py.
 Map/RPK tools: Invoke-Python.ps1 scripts/test_map455.py, затем
 Invoke-Python.ps1 scripts/audit_client_map_resources455.py. Это static tooling;
 его round trip не доказывает native loader/GPU parity.

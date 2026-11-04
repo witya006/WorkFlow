@@ -14,16 +14,15 @@
 Получена первая полная диагностическая сборка RF_Online.bin и успешная чистая
 пересборка. Это старая база с выбранными подтверждёнными участками 455, а не готовый
 клиент 455. Результат/границы: research/client-first-build.md.
-M5 в работе: найден loader455, перенесены три отличия; own lab entry полного проекта
-загрузил 140 файлов/97 543 записи и проверил CPU coordinate/bbox использование.
-Две math функции совпадают с инструкциями455; двухслойная погода и helper binding
-перенесены с CPU проверкой65real R3X и actual particle lifecycle. Обычная загрузка
-карты, GPU/полные particles и clock integration ещё открыты:
-research/client455-weather-source.md, inventory/client-features.json.
-Форматы/зависимости карт проверены:78RPK,163BSP/EBP,20real weather assets закреплены.
-Архивный доступ и end границы particle SPT уже подключены в source;18 907native
-module checks и30full-project archive/SPT/R3X checks прошли. Обе сборки успешны.
-research/client455-resource-io-source.md. Обычный LoadLevel/GPU ещё не проверен.
+M5 закрыт для первого выбранного участка: helper SPT455 и его interior/weather consumer.
+140 файлов/97 543 записи проверены; две math функции совпадают с инструкциями455.
+В own entry полного проекта настоящие LoadLevel/FrameMove/render/release прошли
+на lobby и Platform01. На Platform01 загружены23helpers/8interiors; два погодных слоя
+правильно меняют состояния внутри/снаружи и ночью/днём.13GPU cases/321checks прошли.
+Основание и границы: research/client-m5-checkpoint.md, client455-graphics-runtime.md.
+М6 следующий: clock/time caller, полные particles/Character/renderer/UI/network.
+Нормальный WinMain ещё не запускался; D3D8 база ещё не восстановлена до D3D9 эталона.
+M9 — полная приёмка455 без модернизации графики — остаётся открытым.
 
 ## Структура
 

@@ -42,20 +42,20 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 | Социальные функции | Чат, группы, гильдии и прочие обнаруженные функции | Не проверено |
 | Жизненный цикл | Загрузка/смена локаций, разрыв соединения, выход, освобождение ресурсов | Не проверено |
 
-Первый предметный реестр: inventory/client-features.json. Для helper SPT получена
-частичная native CPU-проверка полного проекта на 140 файлах/97 543 записях; обычный
-LoadLevel ещё не проверен. Две math функции теперь инструкционно совпадают с455;
-BSP weather consumer перенесён вместе с двумя слоями config/lifecycle/update/draw;
-65real R3X и CPU lifecycle проверены. GPU/полный particle455/clock/time integration
-не проверены. Этот ограниченный результат
-не закрывает целиком строки «Файлы и данные» или «Рендер и мир» выше.
-Подробности research/client455-weather-source.md.
+Первый предметный реестр: inventory/client-features.json. M5 закрыт для helper SPT455
+и его interior/weather consumer:140files/97 543records; две math функции инструкционно
+совпадают с455. Actual LoadLevel/FrameMove/render/release прошли на lobby/Platform01
+через own entry полного проекта.23helpers/8interiors управляют двумя real weather layers.
+13GPU cases/321checks,703weather/30resource/23 337targeted helper checks прошли.
+research/client-m5-checkpoint.md; client455-graphics-runtime.md. Это ограниченный
+результат; строки «Файлы и данные»/«Рендер и мир» целиком остаются открыты.
+Full particles/clock/lighting/D3D9 parity и normal WinMain не проверены.
 
 Ресурсный аудит M5 закрепил78MapEntity RPK,70BSP39/93EBP20 и20weather assets.
 Header/table round trips,8tool parser tests и DDS mip sizes прошли, native/GPU
 load в том цикле не выполнялись. Последующий source RPK/fopen/exists и particle end
 подключён и проверен:18 907native module checks и30actual full-project checks;
-normal LoadLevel/GPU ещё не выполнялись. research/client455-resource-io-source.md;
+следом selected consumers прошли actual map/GPU cases. research/client455-resource-io-source.md;
 один weather path missing для3Tower R3X. Неверные metadata sizes/offsets не
 исправлялись: research/client455-map-resources.md. Полного resource manifest ещё нет.
 
@@ -71,7 +71,8 @@ normal LoadLevel/GPU ещё не выполнялись. research/client455-reso
 
 RF_Online.bin получен и чисто пересобран в diagnostic configuration: /Od, reconstructed
 Character interface/адаптированная библиотека и отдельные подтверждённые 455 branches.
-EXE не запускался. Pure legacy OFF configurations и canonical optimized Release
+Обычный WinMain не запускался; own full-project lab выполнял CPU и GPU scenarios.
+Pure legacy OFF configurations и canonical optimized Release
 не объявлены готовыми. Это сборочный результат M4, не финальная приёмка 455.
 research/client-first-build.md; inventory/client-first-build.json.
 

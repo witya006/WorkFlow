@@ -1,0 +1,30 @@
+{
+  "milestone": "M5",
+  "status": "complete",
+  "scope": "First selected helper455data slice: loader, exact math and real interior/weather consumer through actual CLevel LoadLevel/FrameMove/GPU in own full-client entry.",
+  "graphics_exe_sha256": "ece2acccb434ef06ee0aba3d35a15778f3bdf87e5b70589221f8f34732aed3ae",
+  "graphics_cases": 13,
+  "graphics_checks": 321,
+  "helper_dataset_checks": 2546931,
+  "normal_maps": [
+    "lobby",
+    "Platform01"
+  ],
+  "evidence_sha256": {
+    "inventory/client-helper-runtime.json": "b91c9223dc167c83863ec9f43f378c4e4cfdd876eb8686c15298ba6086bea46d",
+    "inventory/client455-x87-link.json": "21ec966c08fb2b13879800404e7e757c125f414da590abd2786fcc9d28172862",
+    "inventory/client455-weather-helper.json": "b0e8a24ef07e1ec087a2e9ea5d57fb59c283948e58d587787272522a28382c22",
+    "inventory/client455-weather-runtime.json": "322a95b3227cb4cfaac02f80c00600ba58da1e49d3a23b105b7298f24995bc1e",
+    "inventory/client455-resource-reference.json": "ddab740cc01e4c2bf35c6e025c83da8d5b026c88c2993fc1d0a82cf746a81d74",
+    "inventory/client455-resource-link.json": "b391bf9de6ea3a40cc5658cf5a9e15c9abab4ce30b6199a730d7f7b361112794",
+    "inventory/client455-graphics-runtime.json": "4aed782eb5c74c4c45b9551f2e1a70e37a28abc6b2c8b85da2812422078da2ac",
+    "inventory/client455-graphics-reference.json": "1a3184dd60ddb9d869b5af4b738005aada8c261168641473c14508e30f3c085e"
+  },
+  "comparison": "Reference helper/consumer contracts statically inspected and byte-pinned in both PE; own source/natives verified. Two math kernels have instruction identity. Reference EXE not executed.",
+  "not_closed": [
+    "M6/M6F/M7/M9",
+    "All particle/renderer/lighting/clock behavior and all other client acceptance areas",
+    "D3D8 legacy vs455D3D9, full Character sources/ABI, UI/network/sound/gameplay, canonical Release",
+    "Reference runtime FPU state, malformed/lifecycle/OOM domains beyond scoped checks"
+  ]
+}

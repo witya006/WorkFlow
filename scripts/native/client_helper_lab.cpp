@@ -124,12 +124,17 @@ static unsigned probe() {
 #endif
 #if defined(RF_CLIENT_455_RESOURCE_IO)
 #include "client_resource_lab.inc"
+#include "client_graphics_lab.inc"
 #endif
 
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
 #if defined(RF_CLIENT_455_RESOURCE_IO)
     if (!std::strcmp(command,"--rf-resource-scenario")) ExitProcess(resourceScenarioProbe());
+    if (!std::strcmp(command,"--rf-graphics-device")) ExitProcess(graphicsProbe(0));
+    if (!std::strcmp(command,"--rf-graphics-entity")) ExitProcess(graphicsProbe(1));
+    if (!std::strcmp(command,"--rf-graphics-particle")) ExitProcess(graphicsProbe(2));
+    if (!std::strcmp(command,"--rf-graphics-level")) ExitProcess(graphicsProbe(3));
 #endif
 #if defined(RF_CLIENT_455_WEATHER)
     if (!std::strcmp(command,"--rf-weather-read")) ExitProcess(weatherReadProbe());
