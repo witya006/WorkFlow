@@ -4,6 +4,9 @@
 
 - Main working root: E:\RFOnlineTrash\Source\WorkFlow.
 - Read README.md, docs/environment-audit.md and docs/next-steps.md before new work.
+- Read docs/project-memory.md for current decisions; use docs/roadmap.md when planning.
+- After a completed milestone, update project-memory.md and next-steps.md; keep
+  detailed evidence in inventory/ or research/, not in conversational memory alone.
 - Treat directories in config/paths.json as reference inputs. Work on copies under
   work/ unless the user explicitly requests changes to the original installation.
 - Do not recode or normalize legacy source files during inventory.

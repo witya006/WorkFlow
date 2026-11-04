@@ -19,6 +19,9 @@
 - `local/` — временные файлы и машинные настройки; исключены из Git.
 
 Начать с `docs/environment-audit.md` и `docs/next-steps.md`.
+Актуальная память: `docs/project-memory.md`; дорожная карта: `docs/roadmap.md`.
+Аудит 14 проектов и первая сборка: `docs/build-audit.md`.
+Повтор проверки входов сборки: `scripts/Invoke-Python.ps1 scripts/audit_build.py`.
 Повторная инвентаризация: `scripts/Invoke-Python.ps1 scripts/inventory.py`.
 Проверка GoMMO MCP: `scripts/Invoke-Python.ps1 scripts/probe_gommo.py`.
 Проверка IDA MCP: `scripts/Invoke-Python.ps1 scripts/probe_ida_mcp.py --configured`.
