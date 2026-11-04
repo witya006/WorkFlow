@@ -1,5 +1,6 @@
 """Inspect CodeView type record kinds in a COFF archive; never load its code."""
 import collections
+import argparse
 import hashlib
 import json
 import struct
@@ -9,6 +10,9 @@ WS = Path(__file__).resolve().parents[1]
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--extract', action='store_true')
+    args = parser.parse_args()
     path = WS / 'work/client-build/source/RF_Client/CharacterMR.lib'
     data = path.read_bytes()
     if not data.startswith(b'!<arch>\n'):
@@ -27,6 +31,14 @@ def main():
             machine, count = struct.unpack_from('<HH', content)
             optional = struct.unpack_from('<H', content, 16)[0]
             record = {'member': header[:16].decode('ascii').strip(), 'machine': hex(machine), 'type_sections': []}
+            record['sha256'] = hashlib.sha256(content).hexdigest()
+            if args.extract:
+                output = WS / 'work/character-reverse' / f'member_{len(objects)+1:02d}.obj'
+                output.parent.mkdir(parents=True, exist_ok=True)
+                if output.exists() and output.read_bytes() != content:
+                    raise ValueError(f'Preserving different working object: {output}')
+                output.write_bytes(content)
+                record['working_object'] = output.relative_to(WS).as_posix()
             for i in range(count):
                 at = 20+optional+40*i
                 section = content[at:at+8].rstrip(b'\0')

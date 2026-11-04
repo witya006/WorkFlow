@@ -1,0 +1,49 @@
+{
+  "checked_at_utc": "2026-11-04T04:57:22.987904+00:00",
+  "target": "RF_Online",
+  "platform": "Win32",
+  "configuration": "Release",
+  "build_exit": 1,
+  "error_counts": {
+    "C1083": 87
+  },
+  "distinct_diagnostics": [
+    {
+      "file": "work/client-build/source/RF_Client/BaseHeader.h",
+      "line": 29,
+      "code": "C1083",
+      "message": "Не удается открыть файл включение: Character.h: No such file or directory,",
+      "count": 83
+    },
+    {
+      "file": "work/client-build/source/RF_Client/AddCodeByYun/ParticleList.h",
+      "line": 5,
+      "code": "C1083",
+      "message": "Не удается открыть файл включение: Character.h: No such file or directory,",
+      "count": 1
+    },
+    {
+      "file": "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.cpp",
+      "line": 216,
+      "code": "C1083",
+      "message": "Не удается открыть файл включение: character.h: No such file or directory,",
+      "count": 1
+    },
+    {
+      "file": "work/client-build/source/RF_Client/addcodebyyun/ParticleList.h",
+      "line": 5,
+      "code": "C1083",
+      "message": "Не удается открыть файл включение: Character.h: No such file or directory,",
+      "count": 1
+    },
+    {
+      "file": "work/client-build/source/RF_Client/addcodebyyun/protect.cpp",
+      "line": 3,
+      "code": "C1083",
+      "message": "Не удается открыть файл включение: Winable.h: No such file or directory,",
+      "count": 1
+    }
+  ],
+  "generated_objects": 93,
+  "scope": "Client-only first full compile. No missing SDK replaced with stubs, no input EXE execution."
+}

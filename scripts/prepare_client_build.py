@@ -83,6 +83,28 @@ set_target_properties(R3Engine PROPERTIES
 # /Zc:forScope- temporarily preserves VC6 loop scope; compiler support tested.
 '''
     cmake_path = destination / 'CMakeLists.txt'
+    _, _, client_sources, _ = parse_project(client / 'RF_Online.dsp')
+    client_units = [resolve(client, s['reference']).relative_to(client).as_posix()
+                    for s in client_sources if Path(s['reference']).suffix.lower() in {'.cpp', '.c', '.rc'}]
+    cmake += '''
+# First real client target: original Release source set; excluded from engine builds.
+set(RFC "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client")
+add_executable(RF_Online WIN32 EXCLUDE_FROM_ALL
+''' + ''.join(f'  "${{RFC}}/{p}"\n' for p in client_units) + ''')
+target_include_directories(RF_Online PRIVATE
+  "${RFC}" "${R3}" "${R3}/extension" "${R3}/1stclass" "${R3}/2ndclass"
+  "${R3}/common" "${R3}/d3d/include")
+if(RF_LEGACY_DX8_INCLUDE)
+  target_include_directories(RF_Online PRIVATE "${RF_LEGACY_DX8_INCLUDE}")
+endif()
+target_compile_definitions(RF_Online PRIVATE WIN32 NDEBUG _WINDOWS _MBCS)
+target_compile_options(RF_Online PRIVATE /W3 /EHsc /Zc:forScope-)
+target_link_libraries(RF_Online PRIVATE R3Engine)
+set_target_properties(RF_Online PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES
+  MSVC_RUNTIME_LIBRARY MultiThreaded SUFFIX ".bin")
+# Original client /MT retained for diagnosis. CRT alignment and missing legacy
+# pragma-linked library variants remain open; no substitution is asserted here.
+'''
     if cmake_path.exists() and cmake_path.read_text(encoding='utf-8') != cmake:
         previous_path = WS / 'inventory/client-build-inputs.json'
         previous = json.loads(previous_path.read_text(encoding='utf-8')) if previous_path.exists() else {}
