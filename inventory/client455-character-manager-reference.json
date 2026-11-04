@@ -1,0 +1,330 @@
+{
+  "scope": "Selected record/manager/cache/rawMSH source contracts;full dispatcher/legacyBN/animation/normal renderer still open",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_ctor",
+          "rva": "0x51c510",
+          "bytes": 444,
+          "sha256": "dcaa20ba522537df3caf79f8e0f11398127ad21f4fb78e4bbcf8255a65273276"
+        },
+        {
+          "name": "material_init",
+          "rva": "0x51c450",
+          "bytes": 59,
+          "sha256": "ce6141f3d67abc9326857d66f2ae031205e417d049a96556c692ce5e830543a5"
+        },
+        {
+          "name": "manager_ctor",
+          "rva": "0x1dfe60",
+          "bytes": 110,
+          "sha256": "1e78ab447c4fe368ac0d493b0fb37f88bcd8882952bc9443b305cb0a2370756b"
+        },
+        {
+          "name": "cache_ctor",
+          "rva": "0x1dfed0",
+          "bytes": 41,
+          "sha256": "a8d10fb2966c249c706ab9516fa3a4e71a3426de257eb0765b103ab038a82715"
+        },
+        {
+          "name": "cache_find",
+          "rva": "0x51c7b0",
+          "bytes": 140,
+          "sha256": "8ca8a396768291df8c30e464195b0b036529a2e186abc045276c96624ccfafc6"
+        },
+        {
+          "name": "cache_put",
+          "rva": "0x51c840",
+          "bytes": 170,
+          "sha256": "52e9266cae80f5e9fe8a04620fab878e8ff20a70fd27047b548bde8395191ac2"
+        },
+        {
+          "name": "key1",
+          "rva": "0x5321b0",
+          "bytes": 57,
+          "sha256": "4a91ac15ff57a43060b6f4100c3971c4e075bad20c271d250245dd200f7ddf8d"
+        },
+        {
+          "name": "key2",
+          "rva": "0x5321f0",
+          "bytes": 66,
+          "sha256": "fd397779ccc19b3216c708f3cef2d961b6366d3d425bf39d8cb18828d442e4b2"
+        },
+        {
+          "name": "lookup_name",
+          "rva": "0x520a20",
+          "bytes": 89,
+          "sha256": "4c22b9c2f82ef4562686d373dee674cc219f78d993d6a20053d43cf4858686c3"
+        },
+        {
+          "name": "lookup_id",
+          "rva": "0x520a80",
+          "bytes": 75,
+          "sha256": "925921a330423b95ef34752171bbed2e93e23c75138c6a6967f10ee10f424c59"
+        },
+        {
+          "name": "id_by_name",
+          "rva": "0x520ad0",
+          "bytes": 98,
+          "sha256": "96e952ded87d630c44590b0adf80f4258b085964a69d4e39076f411335b504b0"
+        },
+        {
+          "name": "append_assign_id",
+          "rva": "0x522840",
+          "bytes": 87,
+          "sha256": "e977c3f82ccdaec909e40b514d28312265ac76e5dec73141d4341fa7d9691cb6"
+        },
+        {
+          "name": "vector_insert",
+          "rva": "0x521d00",
+          "bytes": 437,
+          "sha256": "8559c9f74332816a52c122133617b7c8d6861b151bad63a360ed0d798754fecd"
+        },
+        {
+          "name": "manager_dtor",
+          "rva": "0x522240",
+          "bytes": 95,
+          "sha256": "a77928ee425e28392fe92916a6250745e27f370f025ce6ebec7aca34a6b78c0f"
+        },
+        {
+          "name": "delete_name",
+          "rva": "0x521960",
+          "bytes": 231,
+          "sha256": "c9f054e51fbbf103adb6712510702ae2464e7a64676c353e1d2c8a5a9d791424"
+        },
+        {
+          "name": "delete_id",
+          "rva": "0x521a50",
+          "bytes": 181,
+          "sha256": "86649c33893bdd2aa16beb690c820ee32734db098fb50f6bfc63b26c09547048"
+        },
+        {
+          "name": "manager_clear",
+          "rva": "0x521bc0",
+          "bytes": 151,
+          "sha256": "704f914649630e1aeb3dab3132fc1ef66f5a6d738c63f4d8f511158f3fa24c40"
+        },
+        {
+          "name": "create_character",
+          "rva": "0x531360",
+          "bytes": 136,
+          "sha256": "b58d7ff6cd4dba2d5319553096cbce090acb09f469823f60655d2c0bfa840e21"
+        },
+        {
+          "name": "refresh_textures",
+          "rva": "0x51f0a0",
+          "bytes": 164,
+          "sha256": "12301397060c811c31452eab0b1b1885c8a0367aec470029d26aa9f958e520d7"
+        },
+        {
+          "name": "read_raw_msh",
+          "rva": "0x51f1b0",
+          "bytes": 155,
+          "sha256": "2c434efa398c24a743e7c4c5649e2cb6bf94e10d7584c979637edaefc7d059a4"
+        },
+        {
+          "name": "extension",
+          "rva": "0x5351a0",
+          "bytes": 48,
+          "sha256": "9506f4dc413f9b33b64ffa8a8af3e40800db8db0ba2a5e54dc327e8d86389123"
+        },
+        {
+          "name": "rfs_blob",
+          "rva": "0x5383a0",
+          "bytes": 225,
+          "sha256": "0241e0745b1e69db578f06be5ea8a7ef9c8833bbf50d65b39faac103c241173f"
+        },
+        {
+          "name": "rfs_blob_read",
+          "rva": "0x5367c0",
+          "bytes": 396,
+          "sha256": "b82d1b25be74c364609ad2d415c48a83f5f071b779705fce41f1c69faceb095c"
+        },
+        {
+          "name": "dispatcher",
+          "rva": "0x5238a0",
+          "bytes": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_ctor",
+          "rva": "0x51c510",
+          "bytes": 444,
+          "sha256": "dcaa20ba522537df3caf79f8e0f11398127ad21f4fb78e4bbcf8255a65273276"
+        },
+        {
+          "name": "material_init",
+          "rva": "0x51c450",
+          "bytes": 59,
+          "sha256": "ce6141f3d67abc9326857d66f2ae031205e417d049a96556c692ce5e830543a5"
+        },
+        {
+          "name": "manager_ctor",
+          "rva": "0x1dfe60",
+          "bytes": 110,
+          "sha256": "1e78ab447c4fe368ac0d493b0fb37f88bcd8882952bc9443b305cb0a2370756b"
+        },
+        {
+          "name": "cache_ctor",
+          "rva": "0x1dfed0",
+          "bytes": 41,
+          "sha256": "a8d10fb2966c249c706ab9516fa3a4e71a3426de257eb0765b103ab038a82715"
+        },
+        {
+          "name": "cache_find",
+          "rva": "0x51c7b0",
+          "bytes": 140,
+          "sha256": "8ca8a396768291df8c30e464195b0b036529a2e186abc045276c96624ccfafc6"
+        },
+        {
+          "name": "cache_put",
+          "rva": "0x51c840",
+          "bytes": 170,
+          "sha256": "52e9266cae80f5e9fe8a04620fab878e8ff20a70fd27047b548bde8395191ac2"
+        },
+        {
+          "name": "key1",
+          "rva": "0x5321b0",
+          "bytes": 57,
+          "sha256": "4a91ac15ff57a43060b6f4100c3971c4e075bad20c271d250245dd200f7ddf8d"
+        },
+        {
+          "name": "key2",
+          "rva": "0x5321f0",
+          "bytes": 66,
+          "sha256": "fd397779ccc19b3216c708f3cef2d961b6366d3d425bf39d8cb18828d442e4b2"
+        },
+        {
+          "name": "lookup_name",
+          "rva": "0x520a20",
+          "bytes": 89,
+          "sha256": "4c22b9c2f82ef4562686d373dee674cc219f78d993d6a20053d43cf4858686c3"
+        },
+        {
+          "name": "lookup_id",
+          "rva": "0x520a80",
+          "bytes": 75,
+          "sha256": "925921a330423b95ef34752171bbed2e93e23c75138c6a6967f10ee10f424c59"
+        },
+        {
+          "name": "id_by_name",
+          "rva": "0x520ad0",
+          "bytes": 98,
+          "sha256": "96e952ded87d630c44590b0adf80f4258b085964a69d4e39076f411335b504b0"
+        },
+        {
+          "name": "append_assign_id",
+          "rva": "0x522840",
+          "bytes": 87,
+          "sha256": "e977c3f82ccdaec909e40b514d28312265ac76e5dec73141d4341fa7d9691cb6"
+        },
+        {
+          "name": "vector_insert",
+          "rva": "0x521d00",
+          "bytes": 437,
+          "sha256": "8559c9f74332816a52c122133617b7c8d6861b151bad63a360ed0d798754fecd"
+        },
+        {
+          "name": "manager_dtor",
+          "rva": "0x522240",
+          "bytes": 95,
+          "sha256": "a77928ee425e28392fe92916a6250745e27f370f025ce6ebec7aca34a6b78c0f"
+        },
+        {
+          "name": "delete_name",
+          "rva": "0x521960",
+          "bytes": 231,
+          "sha256": "c9f054e51fbbf103adb6712510702ae2464e7a64676c353e1d2c8a5a9d791424"
+        },
+        {
+          "name": "delete_id",
+          "rva": "0x521a50",
+          "bytes": 181,
+          "sha256": "86649c33893bdd2aa16beb690c820ee32734db098fb50f6bfc63b26c09547048"
+        },
+        {
+          "name": "manager_clear",
+          "rva": "0x521bc0",
+          "bytes": 151,
+          "sha256": "704f914649630e1aeb3dab3132fc1ef66f5a6d738c63f4d8f511158f3fa24c40"
+        },
+        {
+          "name": "create_character",
+          "rva": "0x531360",
+          "bytes": 136,
+          "sha256": "b58d7ff6cd4dba2d5319553096cbce090acb09f469823f60655d2c0bfa840e21"
+        },
+        {
+          "name": "refresh_textures",
+          "rva": "0x51f0a0",
+          "bytes": 164,
+          "sha256": "12301397060c811c31452eab0b1b1885c8a0367aec470029d26aa9f958e520d7"
+        },
+        {
+          "name": "read_raw_msh",
+          "rva": "0x51f1b0",
+          "bytes": 155,
+          "sha256": "2c434efa398c24a743e7c4c5649e2cb6bf94e10d7584c979637edaefc7d059a4"
+        },
+        {
+          "name": "extension",
+          "rva": "0x5351a0",
+          "bytes": 48,
+          "sha256": "9506f4dc413f9b33b64ffa8a8af3e40800db8db0ba2a5e54dc327e8d86389123"
+        },
+        {
+          "name": "rfs_blob",
+          "rva": "0x5383a0",
+          "bytes": 225,
+          "sha256": "0241e0745b1e69db578f06be5ea8a7ef9c8833bbf50d65b39faac103c241173f"
+        },
+        {
+          "name": "rfs_blob_read",
+          "rva": "0x5367c0",
+          "bytes": 396,
+          "sha256": "b82d1b25be74c364609ad2d415c48a83f5f071b779705fce41f1c69faceb095c"
+        },
+        {
+          "name": "dispatcher",
+          "rva": "0x5238a0",
+          "bytes": 405,
+          "sha256": "9649360a8111c87563fd603592044441367196892e723dfce947f63ca0e2347a"
+        }
+      ]
+    }
+  ],
+  "constructor_golden": "work/client-reference/character-manager/ctor.bin",
+  "constructor_golden_sha256": "1d51cf95ae6116e74d5d0d3f846261f6a4f7f2b86f92693727e21a5356961bf3",
+  "record_bytes": 1188,
+  "manager_bytes": 4148,
+  "ctor_disassembly_sha256": "bb426d71c6ead64d45cfa801a2982a73b99a0caddbd97f7195bc78a729bcaccf",
+  "oracle_script_sha256": "f683ec2c20ff877c0b69838982f3b3e9e538edde493bc9515d3ca5a510f7d20b",
+  "confirmed": [
+    "Ctor zeros1188bytes,twoidentitymatrices,material RGB0.6/0.3,Alpha792=1,minus1at696,160at672/684,3000at716",
+    "Manager preservesopaque0/name128;vector/nextId=0,cache1000pointers0;cachebase148",
+    "Cache3probes(slot=20*((key1+p)%50)+(key2+p)%20),keys byteSum%113 XOR2 and7*sum%113 XOR2;replacefirst ifallfull;lookup validatesrecordID",
+    "Exact-name firstmatch;IDcache thenfirstvectorscan;ID0 valid andmissing-name IDalso0;nextIdDWORDwrap;deleteallmatches/clear/dtor retaincache,nextId",
+    "Refresh six borrowed texture pointers plussecondaryalias5283;noAddRef",
+    "MSHraw reader usesextensionhelper returningfilename+1 whennodot;RFS beforeloose;zero-size rawallocation accepted",
+    "Dispatcher9238A0 short-circuitsloadingbyte264 orloadedDWORD260;MESH08onlyexternal-parent branch;parent mustbeloaded;MESH08failure decrementsloading,other failures oftenleavestickybyte;full implementation deferred untillegacyreader/converter"
+  ],
+  "limits": [
+    "Constructor golden interprets recorded instruction subset andpinned constants,not reference EXE execution;helper91C450 semantics separatelypinned",
+    "Old CHARACTEROBJECT and455 layouts incompatible;full methods/unknown tail semantics notsupplied byrecordstorage",
+    "Cache retention canleave danglingpointers afterdelete;do notfix byguessing;unsafe stale dereferences outsidevalidated domain",
+    "Own bounded/percent-name/length/short-read/nullallocation policies differ fromunchecked ref/OOM/exception/logger/failure domains",
+    "4148byte logical storage/privateallocator padding notfull originalC++classABI;normal manager/file dispatch/BN/animation/shaders remainopen"
+  ],
+  "raw_analysis": "artifacts/character-manager455;ownedc3f13f8bclosed/save;no inputEXE run"
+}

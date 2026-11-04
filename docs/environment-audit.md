@@ -532,3 +532,14 @@ runtime sections/relocations 58 объектов совпали. Хеши исх
 Предыдущая ограниченная цель выполнена уведомлением о начале пункта 4.
 Активная новая /Goal — M9, финальная приёмка клиента 455 без модернизации графики.
 Полный клиент ещё не готов.
+
+Последний клиентский source unit (2026-11-05): Character455 record1188/manager4148,
+IDcache/rawMSH/texture refresh.24body ranges equalbothpins; ctor92instructions
+вмаленьком trackedmanifest.850CPU/1138HALchecks standalone,1138вполномlab;
+12models/393parts/276uploads/59texturepointers,COM/heap/Dmalloc0. Source x86/MT,
+/W4/WX.13C APIs происходят изsource archive ивызываются вlab;normal unused/stripped.
+Normal сборка289modernCOFF/MT,lab185clientTUs;проверены модели10021 иPlatform01/device69,
+прежниеframeSHA равны. PE identities:inventory/client455-character-manager-checkpoint.json.
+Normal EXE не запускался;его runtimebytes кромеtimestamps равны предыдущейrevision.
+IDAownedc3f13f8bclosed/save. ПолныйBN/dispatcher/animation/D3D9renderer остаются M6.
+research/client455-character-manager.md. Изменений исходного installation/server нет.

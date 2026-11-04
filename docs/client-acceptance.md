@@ -32,7 +32,7 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 | Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Не проверено |
 | Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers; область в целом открыта |
 | Рендер и мир | Сцена, камера, освещение, эффекты, видимость, коллизии клиента | Частично: selected maps/helpers/weather/clock; D3D9 и полное поведение открыты |
-| Персонажи | Модели, экипировка, анимации, клиентские состояния | Не проверено |
+| Персонажи | Модели, экипировка, анимации, клиентские состояния | Частично: selected mesh/texture/buffer/model/manager; normal dispatch/BN/animation/full Character открыты |
 | Ввод и интерфейс | Управление, окна, текст/IME, фокус, сочетания клавиш | Не проверено |
 | Звук | События, позиционирование, музыка, настройки | Не проверено |
 | Клиентская сеть | Пакеты, сериализация, обработчики, порядок состояний/ошибок | Не проверено |
@@ -153,8 +153,14 @@ reverse cookiearray,ownedrelease,reload overwrite иbounded nullallocationcleanu
 проверены. Ownheap/COM/Dmalloc0. Это не full manager/filedispatch/BN/animation/
 shaders acceptance;пары скелетов —tooling fixtures,known800byteprefix не полныйABI,
 OOM/unchecked/full exception unwind открыты. research/client455-model-pipeline.md.
-Реальные Character assets/material/texture/render/
-unwind остаются открытыми. research/character-init-source.md;inventory/character-init*.json.
+Selected455record/manager/rawMSH/refresh:850CPU/1138HALchecks standalone/fullclient;
+whole1188byte ctor vs92instruction oracle/12FPmodes,manager4148/cache/ID/delete/clear/
+dtor,18rawreads/12models/393parts/276uploads/59pointers. RealMSHизсобственногоRFS и
+11loose models rawбайты равныpins.13APIs source/called,ownheap/COM/Dmalloc0.
+Stickydispatcher9238A0 исследован,ещё не реализован;полныйBN/animation/typedconsumers/
+shader/draw иunsafefailure equivalence открыты. Cache retains danglingpointers —
+поведение сохранено,stale dereferences не сертифицированы. research/client455-character-manager.md;
+inventory/client455-character-manager-checkpoint.json. Это не приёмка Character целиком.
 
 ## Приёмка
 

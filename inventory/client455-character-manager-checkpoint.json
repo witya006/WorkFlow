@@ -1,0 +1,58 @@
+{
+  "scope": "Character455 record/manager/cache/rawMSH selected source unit checkpoint;M6/M6F/M7/M9 remain open",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "4634f68457ab0251075b8ed110075f13af36332121bcd4346d32de4de8def5f3",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "ebd4a0151668105cdc31e1fa34c7f5e25d6ec5c5621688a0034c6e37ef6632c6",
+    "scope": "Owned source record/manager/cache/raw-MSH APIs;lab connected to source MESH08 route;normal Character callers/renderer/animation remain legacy"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "9ebef3b540bcf766643bd26bd40527afc91810b8fc0b74807d6914a01542757f",
+    "exe_bytes": 4909056,
+    "entry_rva": "0x8733"
+  },
+  "native": {
+    "cpu": {
+      "status": "PASS",
+      "checks": 850,
+      "ctor_fp_modes": 12,
+      "raw_files": 18,
+      "model_files": 12,
+      "model_parts": 393,
+      "physical_parts": 0,
+      "positive_texture_pointers": 0
+    },
+    "gpu_and_client": {
+      "status": "PASS",
+      "checks": 1138,
+      "ctor_fp_modes": 12,
+      "raw_files": 18,
+      "model_files": 12,
+      "model_parts": 393,
+      "physical_parts": 276,
+      "positive_texture_pointers": 59
+    }
+  },
+  "model_regression_checks": 10021,
+  "graphics_cases": 2,
+  "graphics_checks": 69,
+  "previous_frame_hashes_equal": true,
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "constructor_instruction_count": 92,
+  "evidence_sha256": {
+    "client455-character-manager-reference": "a817c64985fe2459dff8ef7277d5e274ce23ca9fa55515d1545f0e78aa1dbcb1",
+    "client455-character-constructor-instructions": "bb426d71c6ead64d45cfa801a2982a73b99a0caddbd97f7195bc78a729bcaccf",
+    "client455-character-manager-build": "940d4ee0dc104b20ff75e1154c2db1daf3dbee1f672fa58270fc98e71b949b2c",
+    "client455-character-manager-cpu": "18b60bcf795163dd21075db2087e41d05b2eb78dfc05994aecc1dbece2396b70",
+    "client455-character-manager-gpu": "e57d236bfa6783f4ace7563408d7806a679769bbc35002fc1cbe4a721513a5eb",
+    "client455-character-manager-link": "c21cda62be6dc349ec1499e9bdd7d18959dc9ed15872d4983984e05f174823b6",
+    "client455-character-manager-client": "4f79da94ab200c4468ee2084339c15712df4d560c33f35023d9c0677091e2af6",
+    "client455-character-manager-graphics": "976357cebdc2b7975db8021b6230d8709c81586c3dcf114c055d1cf6629c4f04",
+    "client455-models-client": "4121868465dcaf5261c84c7abe16027c411b3b037477cd80b1a8a80fb4523f7b"
+  }
+}

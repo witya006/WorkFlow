@@ -1,0 +1,75 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "4634f68457ab0251075b8ed110075f13af36332121bcd4346d32de4de8def5f3",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc4b0",
+    "functions": [],
+    "library_sha256": "ebd4a0151668105cdc31e1fa34c7f5e25d6ec5c5621688a0034c6e37ef6632c6",
+    "scope": "Owned source record/manager/cache/raw-MSH APIs;lab connected to source MESH08 route;normal Character callers/renderer/animation remain legacy"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "9ebef3b540bcf766643bd26bd40527afc91810b8fc0b74807d6914a01542757f",
+    "exe_bytes": 4909056,
+    "entry_rva": "0x8733",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructCharacter",
+        "rva": "0x30b4a0"
+      },
+      {
+        "symbol": "_RF455_ConstructCharacterManager",
+        "rva": "0x30b630"
+      },
+      {
+        "symbol": "_RF455_CreateCharacter",
+        "rva": "0x30b680"
+      },
+      {
+        "symbol": "_RF455_AddCharacter",
+        "rva": "0x30b2b0"
+      },
+      {
+        "symbol": "_RF455_FindCharacterName",
+        "rva": "0x30bd40"
+      },
+      {
+        "symbol": "_RF455_FindCharacterId",
+        "rva": "0x30bbd0"
+      },
+      {
+        "symbol": "_RF455_CharacterId",
+        "rva": "0x30b3c0"
+      },
+      {
+        "symbol": "_RF455_DeleteCharacterName",
+        "rva": "0x30ba80"
+      },
+      {
+        "symbol": "_RF455_DeleteCharacterId",
+        "rva": "0x30b9f0"
+      },
+      {
+        "symbol": "_RF455_ClearCharacters",
+        "rva": "0x30b440"
+      },
+      {
+        "symbol": "_RF455_DestroyCharacterManager",
+        "rva": "0x30bb40"
+      },
+      {
+        "symbol": "_RF455_RefreshModelTextures",
+        "rva": "0x30bfa0"
+      },
+      {
+        "symbol": "_RF455_ReadMshFile",
+        "rva": "0x30bdc0"
+      }
+    ],
+    "library_sha256": "ebd4a0151668105cdc31e1fa34c7f5e25d6ec5c5621688a0034c6e37ef6632c6",
+    "scope": "Owned source record/manager/cache/raw-MSH APIs;lab connected to source MESH08 route;normal Character callers/renderer/animation remain legacy"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "scope": "Source record/manager/cache/raw-MSH IO compile;not full Character/dispatcher ABI",
+  "architecture": "x86",
+  "runtime": "/MT",
+  "library": "work/recovered/client455/character-manager/RFClient455CharacterManager.lib",
+  "library_sha256": "ebd4a0151668105cdc31e1fa34c7f5e25d6ec5c5621688a0034c6e37ef6632c6",
+  "objects": [
+    {
+      "file": "work/recovered/client455/character-manager/manager.obj",
+      "sha256": "2237627adf527bd2fbff778f5c9266d67f645a0ff8667f94c324fab046be08cc"
+    }
+  ],
+  "source_sha256": {
+    "client455_character_manager.cpp": "be8dc4d76fd4005246ab21416e6983438ecaadaab0e12d91e6ff3dbb0c7b6a98",
+    "client455_character_manager.h": "35c39ec322144360a7f0b4d6a1150b11cb30a39ee6c4af31a4fd77e80498e1ee",
+    "test_client455_character_manager.cpp": "c213d6a247d956217c6e009cb31c32bab571a8d8b08a63b80ac509f21a598c90",
+    "client455_model_loader.h": "00352539ac1c53bff78e9337453f74e2d3d5557f63064c5c92ba0b442ca645ad",
+    "client455_model_lifecycle.h": "ba7ca216c396dac1f06c0fc2e9e56c78733f90917d84c9579b89aafbe1a7ff56",
+    "client455_shared_buffers.h": "0787f17ab3250f8f3b311fee52a1770e2f2a76e63cd470b340bd685bc5082183",
+    "client455_texture.h": "0f4d16d2c52a98425db9729ff32fb517cf276b4d2f699ef956302cf1f7517378",
+    "client455_character_rfs.h": "08765ee00f072e4c1b66e7d5b4167ce8f6aaa92a9516d525652a07c35e5b1415",
+    "client455_mesh_runtime.h": "35f5395568691b4ba212c9f2ea1ebc87fd93b55465f34a3a7bac730daf4c48cb",
+    "client455_mesh_bindings.h": "95ea21813a7b9280c40fbf7f888375d21bd1215c028484d2672cad71de14b143",
+    "client455_mesh08.h": "92f5105148d598df693f980e41636318bcf327f64d4c24fc61517054867ae52f"
+  },
+  "exe": "work/recovered/client455/character-manager/manager-probe.exe",
+  "exe_sha256": "bc2de6098352bcfc02d0b6bca6f3d3cfcc673202b9703bedb017a2d29003f579",
+  "entry_rva": "0xcd00",
+  "dependencies": [
+    {
+      "file": "work/recovered/client455/models/RFClient455Models.lib",
+      "sha256": "b4e13bb4bdf30d521be2dc317085559d2ddf6a02e9360a6f65ce4817977a6a15"
+    },
+    {
+      "file": "work/recovered/client455/shared-buffers/RFClient455SharedBuffers.lib",
+      "sha256": "69ed1ceed85d87351a92eb8da607dcefca97290a2e49e561d5118184eb5dedbd"
+    },
+    {
+      "file": "work/recovered/client455/texture/RFClient455Texture.lib",
+      "sha256": "5b2c075953e2e973b1d1af29644308f6ab4c4b876e9a28d206c55afdc45c1af9"
+    },
+    {
+      "file": "work/recovered/client455/mesh-runtime/RFClient455MeshRuntime.lib",
+      "sha256": "f484360d40a11e1443ef3a5937326d7546631cbe729aadf4e7c2ada5fd166ef1"
+    },
+    {
+      "file": "work/recovered/client455/mesh-bindings/RFClient455MeshBindings.lib",
+      "sha256": "c2dc4530731d76d5aa88693dc3f6b9b500e41a6e88e39c9515e325f1e7e082d8"
+    },
+    {
+      "file": "work/recovered/client455/mesh08/RFClient455Mesh08.lib",
+      "sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8"
+    }
+  ]
+}

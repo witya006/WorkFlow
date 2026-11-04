@@ -16,7 +16,7 @@ from probe_client_helpers import import_names
 
 def main():
     build=json.loads((WS/'inventory/client-helper-lab-build.json').read_text(encoding='utf-8'))
-    expected_objects=181+sum(build['build_settings'].get(name)=='ON' for name in ['RF_CLIENT_455_TEXTURE','RF_CLIENT_455_SHARED_BUFFERS','RF_CLIENT_455_MODELS'])
+    expected_objects=181+sum(build['build_settings'].get(name)=='ON' for name in ['RF_CLIENT_455_TEXTURE','RF_CLIENT_455_SHARED_BUFFERS','RF_CLIENT_455_MODELS','RF_CLIENT_455_CHARACTER_MANAGER'])
     if build['build_exit'] or build['generated_objects']!=expected_objects or build['build_settings'].get('RF_CLIENT_455_WEATHER')!='ON':
         raise ValueError('Successful weather-enabled full client lab required')
     for key in ['lab_input_sha256','weather_input_sha256']:

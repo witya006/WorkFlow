@@ -97,9 +97,15 @@ normal dispatch;полныйM6/M6F/M7/M9 не закрыт.
 publication/release. Normalmanager/filedispatch,полныйmodel ABI,BN/animation/shaders
 ещё открыты;known800byte view не заменяетстарыйCHARACTEROBJECT. Next:file/manager
 route исогласованныеtypedconsumers. research/client455-model-pipeline.md.
-Очередь M6 уточнена: Character source/ABI перед полным D3D9 port, поскольку текущий
-binary SDK contract явно IDirect3DDevice8. Начать с real InitVertex/loaded mesh и
-неизвестного blend pointer lifecycle; cached207definitions уже доступны.
+Следом record1188/manager4148/cache/rawMSH/texture refresh восстановлены source:
+850CPU/1138HALchecks standalone/fullclient,12models/393parts/276uploads/59pointers.
+24bodies equalbothpins;ctor1188byte oracle из92instructions;13APIs linked/called.
+Normal dispatcher остаётсяlegacy. Next: BN reader93C2F0/importer93C770/converter93CD60,
+dispatcher9238A0/FrameMove923A40, animation иtyped consumers. Current model10021/
+Platform01-device69checks прошли,frameSHA сохранены. research/client455-character-manager.md.
+Очередь M6 уточнена: Character source/ABI перед полным D3D9 port; legacy SDK contract
+явно IDirect3DDevice8. Старые InitVertex/loaded mesh/blend kernels уже проверены,
+не повторять их исследование. Cached207definitions доступны.
 Разница D3D8 базы и D3D9 эталона — обязательное
 восстановление M6, а не модернизация M8. Полные particles/clock/Character/UI/network
 не сертифицированы; нормальный WinMain и входной455 EXE не запускались.
@@ -136,10 +142,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: actual TextureManager934120/934A20/provider933DE0,затем shared buffers/
-   index rebase/publication/release. Framing,constructor/header/matrix/material-request
-   kernels,455parent/bone иlegacy InitVertex source готовы;normal loader не переключать до
-   восстановления его runtime consumers. Затем455layouts/D3D9 иреальные model scenarios.
+1. M6: BN reader/importer/converter,затем полный dispatcher/FrameMove/animation и
+   normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
+   selected manager/rawIO source готовы; normal loader не переключать до согласования
+   ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.
 2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
 3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
 4. M6F: завершить реестр возможностей/расхождений и доказательства полноты клиента.

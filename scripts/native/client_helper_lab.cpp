@@ -194,8 +194,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_MODELS)
 #include "client_models_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_CHARACTER_MANAGER)
+#include "client_character_manager_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_CHARACTER_MANAGER)
+    if (!std::strcmp(command,"--rf-character-manager-scenario")) ExitProcess(characterManagerScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_MODELS)
     if (!std::strcmp(command,"--rf-models-scenario")) ExitProcess(modelScenarioProbe());
 #endif

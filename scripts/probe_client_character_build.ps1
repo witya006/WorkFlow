@@ -196,6 +196,19 @@ foreach ($property in $models.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_MODELS=ON'
 $arguments += "-DRF_CLIENT_455_MODELS_LIBRARY=$modelLibrary"
+$character455 = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-character-manager-build.json') -Raw | ConvertFrom-Json
+$character455Gpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-character-manager-gpu.json') -Raw | ConvertFrom-Json
+$character455Library = Join-Path $workspace $character455.library
+if ($character455Gpu.native.status -ne 'PASS' -or $character455Gpu.native.ctor_fp_modes -ne 12 -or
+    $character455Gpu.native.raw_files -ne 18 -or $character455Gpu.native.model_parts -ne 393 -or
+    $character455Gpu.native.physical_parts -ne 276 -or $character455Gpu.native.positive_texture_pointers -ne 59 -or
+    (Get-FileHash -LiteralPath $character455Library -Algorithm SHA256).Hash.ToLowerInvariant() -ne $character455.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-character-manager-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $character455Gpu.build_report_sha256) { throw '455 record/manager proof missing or stale.' }
+foreach ($property in $character455.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 record/manager source proof stale.' }
+}
+$arguments += '-DRF_CLIENT_455_CHARACTER_MANAGER=ON'
+$arguments += "-DRF_CLIENT_455_CHARACTER_MANAGER_LIBRARY=$character455Library"
 $exceptionsReport = Join-Path $workspace 'inventory/character-exceptions.json'
 if (Test-Path -LiteralPath $exceptionsReport) {
     $exceptions = Get-Content -LiteralPath $exceptionsReport -Raw | ConvertFrom-Json
@@ -287,6 +300,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_manager.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_manager.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_models.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_models.py }

@@ -1004,7 +1004,56 @@
         "Known800byteprefix ownview only;MemoryOps cannot establish oldbinarySDKheapcompatibility",
         "Full unchecked AV/debugbreak/OOM/std::bad_alloc/callback exceptions/unwind/logger/device-loss/reset domains open",
         "BN/skeleton loader/transforms/animation/skinning/455declaration/shaders/draw/gameplay not covered;uploads not full model rendering",
-        "Selected manager ownership branch only,not full vector delete-name/delete-ID/clear implementations;no reference EXE runtime comparison"
+        "Selected manager/vector/delete-name/delete-ID/clear now tracked by CHARACTER455-MANAGER-019;full dispatcher and reference EXE runtime comparison remain open"
+      ]
+    },
+    {
+      "id": "CHARACTER455-MANAGER-019",
+      "description": "Selected source Character1188byte ctor/factory,4148byte manager/vector/IDcache/delete/clear/dtor,rawMSH IO andborrowed texture refresh connected tosourceMESH08route",
+      "status": "implemented",
+      "verification": "24bodies equalboth455pins;1188byte ctor oracle from92recorded instructions;850CPU/1138HALchecks standalone/fullclient,12FPmodes/18rawreads/12models/393parts/276uploads/59texturepointers.13source C APIs called;ownheap/COM/Dmalloc0. Normal game dispatcher/BN/animation/shaders remain open.",
+      "reference": [
+        {"rva":"0x51c510","role":"1188byte constructor"},
+        {"rva":"0x1dfe60","role":"4148byte manager constructor"},
+        {"rva":"0x51c7b0","role":"three-probe cache lookup"},
+        {"rva":"0x51c840","role":"three-probe cache insertion"},
+        {"rva":"0x522840","role":"ID assignment andvector append"},
+        {"rva":"0x531360","role":"record factory"},
+        {"rva":"0x51f0a0","role":"borrowed texture pointer refresh"},
+        {"rva":"0x51f1b0","role":"rawMSH reader"},
+        {"rva":"0x5238a0","role":"dispatcher investigated;implementation deferred"}
+      ],
+      "implementation": [
+        "scripts/native/client455_character_manager.cpp",
+        "scripts/native/client455_character_manager.h"
+      ],
+      "option":"RF_CLIENT_455_CHARACTER_MANAGER",
+      "evidence":[
+        "inventory/client455-character-constructor-instructions.json",
+        "inventory/client455-character-manager-reference.json",
+        "inventory/client455-character-manager-build.json",
+        "inventory/client455-character-manager-cpu.json",
+        "inventory/client455-character-manager-gpu.json",
+        "inventory/client455-character-manager-link.json",
+        "inventory/client455-character-manager-client.json",
+        "inventory/client455-character-manager-graphics.json",
+        "inventory/client455-character-manager-checkpoint.json",
+        "research/client455-character-manager.md"
+      ],
+      "scenarios":[
+        "Whole1188byte ctor vs bounded instruction interpreter/pinned constants in12FP modes;whole4148byte manager ctor preserves opaque/name",
+        "50records/vectorgrowth/ID0/case/duplicate names andIDs/deleteall/order/cachethreecollisionprobes/replacement/IDvalidation/DWORDwrap",
+        "Clear/dtor retaincache,nextID,name;owned versusborrowed mesharray release;trackedactualMTheap zero;ownedname/nullallocation policies",
+        "18rawreads:6IOfixtures+12realMSH,one realmodel inownedRFS/11loose,pinnedrawbyte comparison;archiveprecedence/shortreadfallback/empty/nodot/dot/case/invalidextension",
+        "Factory/rawIO/sourceMESH08pipeline/postloadrefresh/delete on12models393parts;276HALuploads/59texturepointers,wholemeshrefresh comparison andborrowedrefs observed",
+        "Ownfullclient1138 equalscomponentHAL;modelregression10021,Platform01/device69checks,priorframesunchanged;normalunused runtime bytes unchanged excepttimestamps"
+      ],
+      "gaps":[
+        "Full dispatcher9238A0/BNreader93C2F0/importer93C770/converter93CD60/animation/skinning/shaders/normaltypedconsumers remain open",
+        "1188allocation confirmed,alltailsemantics/methods/privateC++STLallocator ABI notrestored;legacy layout incompatible",
+        "Cache intentionally retains danglingpointers afterdelete/clear/dtor;unsafe stale dereferences andcaller lifecycle notcertified",
+        "Ownbounds/percentlongname/nullallocation/shortloosefailure policies differfromuncheckedreference AV/OOM/exception/logger;exactRFSretryreindex/fullunwind open",
+        "External skeleton names stilltooling golden;GPUuploads andborrowedtexture refresh do notprovefullCharacterdraw orreferenceEXEruntimeequivalence"
       ]
     }
   ],

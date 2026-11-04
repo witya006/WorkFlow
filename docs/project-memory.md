@@ -14,6 +14,16 @@ M8 не требуется. Компиляция, запуск и частичн
 
 ## Текущее состояние
 
+- Последний завершённый source unit M6: Character455 record1188/manager4148,
+  IDcache/rawMSH/borrowedtexture refresh.850CPU/1138HAL checks, полный lab1138;
+  12models/393parts/276uploads/59texture pointers, ownheap/COM/Dmalloc0.
+  24bodies equalbothpins; ctor1188byte oracle из92recorded instructions.
+  13APIs реально вызваны из fullclient test TU/source archive. MESH08 из собственного
+  RFS и11loose моделей совпали по rawbytes с pinned files. Normal dispatcher legacy.
+  Current model10021 иPlatform01/device69checks passed; прочие старые proofs
+  исторические. Gate inventory/client455-character-manager-checkpoint.json;
+  research/client455-character-manager.md. Next: BN93C2F0/93C770 +converter93CD60,
+  затем dispatcher9238A0/FrameMove923A40/animation/typed consumers.
 - M1: R3Engine.lib под VS 2026 x86, две чистые пересборки; отдельный /MT R3EngineMT.lib.
 - M2: бинарный эталон закреплён, 5 bytes / 2 ranges различий с backup исследованы.
 - M3: helper-only SPT, 140 файлов / 97 543 записи, float32 round trip и 7 tests.
@@ -63,12 +73,15 @@ inventory/client-first-build.json, client-character-diagnostic.json, client-mt-v
 
 Текущая обычная ревизия:work/client-build/build-character-diagnostic/Release/RF_Online.bin,
 2 451 456bytes,entryRVA0x1BC4B0,SHA256
-e8b56ea5380ad37181edc725d23f051c6ddc019c48afd61c010d20ab93f66dd0.
-Snapshot character455-model-pipeline;предыдущие revisions сохранены. Обычный EXE
+4634f68457ab0251075b8ed110075f13af36332121bcd4346d32de4de8def5f3.
+Snapshot character455-manager-io;предыдущие revisions сохранены. Обычный EXE
 не запускался,289objects /MT проверены (180client +63engine +46JPEG).
-Own lab EXE SHA 62c9412b09666154ff5f2de58d6b934dc366a3d9613c3d03c0c0168b42e0e4d7,
-size4843520,entryRVA0x8698; snapshot work/m9/62c9412b/client001/RF_Online.bin.
-Он исполнялся с time-commands/clock/map-time/resource/weather и graphics Platform01.
+Own lab EXE SHA 9ebef3b540bcf766643bd26bd40527afc91810b8fc0b74807d6914a01542757f,
+size4909056,entryRVA0x8733; snapshot work/m9/9ebef3b5/client001/RF_Online.bin.
+Current: manager1138/model10021/Platform01-device69checks;185clientlabTUs.
+Normal runtime bytes после исключения двух timestamps равны предыдущему snapshot.
+Следующие прежние scoped proofs относятся к историческим revisions; их inputs/
+source не менялись, повторных запусков на current PE не было:
 1443clock/314map-time/703weather/30resource плюс432command cases/2628checks,
 20actual CHAT_INFO access/history/lifecycle и2GPUcases/69checks прошли.
 Character8source functions подключены,включая полный legacy InitVertex/vertex/physique.
@@ -230,15 +243,24 @@ Shield065sample имеетMESH08;Shield031/Cloak002 проходят old693frami
 
 ## Следующий шаг
 
-M6: следующий critical step — полноценный Character source/ABI и loaded mesh path,
-перед полным D3D9 переносом. Header/library contract явно IDirect3DDevice8; новая
-engine API без переноса binary consumers не является455renderer restoration.
+M6: source reader93C2F0/importer93C770 иconverter93CD60 для настоящего BN/skeleton.
+Затем dispatcher9238A0 соsticky flags/failure lifetime, FrameMove923A40, animation/
+skinning/455shaders иnormal typed consumers. Selected manager/fileIO/ctor/refresh
+уже готовы; НЕ повторять их reverse. Полный455record allocation1188 подтверждён,
+semantics tail/полныйC++ABI открыты. Root next-steps теперь содержит краткую очередь.
+Cache retain-after-delete сохранён; не разыменовывать freed entries в тестах.
+Current24ranges иctorinstructions pinned; ownedc3f13f8bclosed/save. Raw parser181lines
+вartifacts/character-manager455/manager-plus-4.json; FrameMove head+tail тамже.
+93CD60 пока только250/578lines вartifacts/character-gpu455/next-2.json.
+Подробности research/client455-character-manager.md. ПолныйD3D9 остаётся M6.
+
+Ниже исторические ориентиры уже выполненных шагов, не текущая очередь:
 Использовать уже кешированные207definitions/10COFF, не выгружать всё заново.
 Legacy source unit теперь8functions/full InitVertex:245binding+6732InitVertex checks.
 Не повторять расследование pointer+160: штатный FindBlendParent его задаёт;failure/
 unwind до него открыт. MESH08framing/source reader готов,НЕ повторять corpus858audit
-без изменения inputs/parser. NEXT:actual TextureManager934120/934A20 иprovider933DE0;
-затем shared GPU allocators93E000/93E180,index rebase/publication/release/D3D9consumer.
+без изменения inputs/parser. TextureManager934120/934A20/provider933DE0 иshared GPU
+allocators93E000/93E180/index rebase/publication/release уже перенесены в source.
 Constructor/header/matrices/material request flow уже sourceготовы (14562checks),
 НЕ повторять этот reverse/header census. First-match local/external bindings и93CB00bone
 kernel уже sourceготовы,НЕ повторять reverse. 12fixturepairs pinned,ноnormal model
