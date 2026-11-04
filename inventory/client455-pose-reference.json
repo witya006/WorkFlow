@@ -1,0 +1,237 @@
+{
+  "scope": "Research only: pinned FrameMove/three key evaluators/secondary motion and selected real key shapes; no pose implementation claim",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "frame_move",
+          "rva": "0x523a40",
+          "bytes": 3250,
+          "sha256": "80e45c1627e1dd6f9dcdf6db5d727d4e497ede0c7fcb82e9f324ce760a65e57b"
+        },
+        {
+          "name": "key_scale",
+          "rva": "0x51de80",
+          "bytes": 259,
+          "sha256": "a84380112ec56aea63237d1bf776507fb2adc551ce95757d308562050b4cab8b"
+        },
+        {
+          "name": "key_rotation",
+          "rva": "0x51df90",
+          "bytes": 455,
+          "sha256": "725b7f5ae68fe92135c5b1d16385c50143fd67dc11bac18184deb53bed8a4bf8"
+        },
+        {
+          "name": "key_translation",
+          "rva": "0x51e160",
+          "bytes": 262,
+          "sha256": "776694b99bb91a5f97a03a44e227dd6c60a17e537ff5188a3dcbf7790f40831d"
+        },
+        {
+          "name": "secondary_motion",
+          "rva": "0x51e270",
+          "bytes": 2062,
+          "sha256": "3bf66dac405b1c5d937f50a0d65e0525258402e08531580cd10df20c85d83dd7"
+        },
+        {
+          "name": "scale_axis",
+          "rva": "0x534fc0",
+          "bytes": 68,
+          "sha256": "e6554e503e1d56662b07d0d61ae5d3b00d95031b11d191681ca08e1ad9372746"
+        },
+        {
+          "name": "matrix_multiply",
+          "rva": "0x534d60",
+          "bytes": 21,
+          "sha256": "051877fedfada860b8a973b6337cb80b4a30733011be93c40468f72690c41ffc"
+        },
+        {
+          "name": "profile_begin",
+          "rva": "0x533430",
+          "bytes": 95,
+          "sha256": "f3ff5cd778b1e8d547cbf385c109e8f8096e9633c8effa1d272fac8b67155254"
+        },
+        {
+          "name": "profile_end",
+          "rva": "0x533490",
+          "bytes": 112,
+          "sha256": "6c4f8055969f1e4c15d91595a9684a2a6b61217992f7d8c018a66190afa97079"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "frame_move",
+          "rva": "0x523a40",
+          "bytes": 3250,
+          "sha256": "80e45c1627e1dd6f9dcdf6db5d727d4e497ede0c7fcb82e9f324ce760a65e57b"
+        },
+        {
+          "name": "key_scale",
+          "rva": "0x51de80",
+          "bytes": 259,
+          "sha256": "a84380112ec56aea63237d1bf776507fb2adc551ce95757d308562050b4cab8b"
+        },
+        {
+          "name": "key_rotation",
+          "rva": "0x51df90",
+          "bytes": 455,
+          "sha256": "725b7f5ae68fe92135c5b1d16385c50143fd67dc11bac18184deb53bed8a4bf8"
+        },
+        {
+          "name": "key_translation",
+          "rva": "0x51e160",
+          "bytes": 262,
+          "sha256": "776694b99bb91a5f97a03a44e227dd6c60a17e537ff5188a3dcbf7790f40831d"
+        },
+        {
+          "name": "secondary_motion",
+          "rva": "0x51e270",
+          "bytes": 2062,
+          "sha256": "3bf66dac405b1c5d937f50a0d65e0525258402e08531580cd10df20c85d83dd7"
+        },
+        {
+          "name": "scale_axis",
+          "rva": "0x534fc0",
+          "bytes": 68,
+          "sha256": "e6554e503e1d56662b07d0d61ae5d3b00d95031b11d191681ca08e1ad9372746"
+        },
+        {
+          "name": "matrix_multiply",
+          "rva": "0x534d60",
+          "bytes": 21,
+          "sha256": "051877fedfada860b8a973b6337cb80b4a30733011be93c40468f72690c41ffc"
+        },
+        {
+          "name": "profile_begin",
+          "rva": "0x533430",
+          "bytes": 95,
+          "sha256": "f3ff5cd778b1e8d547cbf385c109e8f8096e9633c8effa1d272fac8b67155254"
+        },
+        {
+          "name": "profile_end",
+          "rva": "0x533490",
+          "bytes": 112,
+          "sha256": "6c4f8055969f1e4c15d91595a9684a2a6b61217992f7d8c018a66190afa97079"
+        }
+      ]
+    }
+  ],
+  "ani_report_sha256": "fc6e6b4f3d30a457be397270914da6f0f7df115cd64d4be6658572f69400386a",
+  "active_tracks": 1040,
+  "channel_order": [
+    "quaternion20",
+    "translation16",
+    "scale16",
+    "unused_by_three_evaluators8"
+  ],
+  "active_channel_count_histograms": [
+    {
+      "0": 590,
+      "3": 36,
+      "13": 1,
+      "15": 1,
+      "16": 2,
+      "21": 16,
+      "22": 18,
+      "23": 68,
+      "24": 35,
+      "29": 39,
+      "30": 14,
+      "32": 2,
+      "36": 8,
+      "37": 5,
+      "42": 47,
+      "45": 38,
+      "47": 2,
+      "48": 4,
+      "50": 1,
+      "51": 68,
+      "62": 4,
+      "82": 16,
+      "93": 1,
+      "108": 1,
+      "110": 1,
+      "111": 3,
+      "112": 2,
+      "113": 8,
+      "114": 9
+    },
+    {
+      "0": 882,
+      "3": 23,
+      "4": 3,
+      "5": 4,
+      "6": 4,
+      "7": 2,
+      "8": 2,
+      "9": 2,
+      "22": 4,
+      "23": 18,
+      "24": 12,
+      "29": 13,
+      "30": 4,
+      "35": 2,
+      "36": 4,
+      "37": 1,
+      "39": 4,
+      "40": 2,
+      "42": 16,
+      "43": 2,
+      "45": 13,
+      "47": 2,
+      "48": 2,
+      "51": 14,
+      "61": 1,
+      "62": 1,
+      "82": 3
+    },
+    {
+      "0": 1026,
+      "3": 7,
+      "5": 7
+    },
+    {
+      "0": 516,
+      "3": 175,
+      "4": 349
+    }
+  ],
+  "nonmonotone_signed_time_tracks": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "nonfinite_value_tracks": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "one_key_channels": [],
+  "confirmed": [
+    "Key timestamps use signed DWORD comparisons;delta subtraction wrapsDWORD,then signed numerator/unsigned denominator converted byx87 andratio storedfloat32",
+    "Scale key2 useslinear search;quaternion key0 andtranslation key1 usebinary search;before-first/after-last extrapolate withoutclamp",
+    "Count1 still readssecond key beyonddeclared channel;do notinvent count1constant behavior;allocation-contained behavior needsseparate evidence",
+    "QuaternionSlerp actualfourargument stdcall,D3DXMatrixRotationQuaternion actualtwoargument stdcall;cacheddecompiler haswrongprototype/stackalignment",
+    "QuaternionW isFCHS/x87 beforematrixconversion;scale appliesmesh5483vector,translation fallbackmesh4750",
+    "FrameMove readsframe672/previous684,doesnotadvancecurrentframe;blend692/global33844 andramp712/716 separate",
+    "FrameMove producespose4830 throughparentpose andtwo-phase skinmatrix646=mesh4574*bone4638*bone4830;parent/mesh traversalorder observable",
+    "Profilebegin/end933430/933490 aretimingmetrics,notmutexlocks;secondarymotion91E270 usesmodel1184/timeGetTime andspecificpony/skirt names"
+  ],
+  "limits": [
+    "No source pose implementation yet;nextinspectcount1 actualreadspan andthree math kernels before full FrameMove",
+    "Raw decompiler labels pose-rotation.json/pose-position.json/pose-scale.json areinitialprovisionalfilenames;actualroles determinedfrominstructions are scale91DE80/rotation91DF90/translation91E160",
+    "No inputEXE execution oranimateddraw proof"
+  ],
+  "raw_analysis": "artifacts/character-animation455/framemove-0.json,framemove-1.json,framemove-tail.json,key-*-insn.json,pose-*.json,scale-axis.json;owned66b26ca4closed/save",
+  "script_sha256": "f1e21b3d61726ac8c35adbcb2fdd88b4dad86f3d0ba600436303dcd97e921dc0"
+}

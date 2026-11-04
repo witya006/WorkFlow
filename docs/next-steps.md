@@ -43,6 +43,11 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
    transforms. ANI importer/record/attachment/Character dispatcher source готовы;
    не повторять закрытое framing/IO исследование. FullAnimationManager/worker
    lifecycle остаются открытыми. Raw keys borrowed:mesh lifetime заканчивать доANIowner.
+   Девять bodies иshape1040active tracks уже закреплены вclient455-pose-reference.json;
+   instructions/rawcache вcharacter-animation455. Scale91DE80/channel2,
+   rotation91DF90/channel0,translation91E160/channel1;decompiler stacktypes неверны.
+   Далее source трёх evaluators сactualD3DX/x87 иconnectedpose;не повторять
+   уже выполненный ANI census или unchanged массовые регрессии ради счётчика.
 2. Далее transforms,
    animation/skinning, 455declarations/shaders и normal typed consumers.
    Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.

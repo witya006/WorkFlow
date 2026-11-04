@@ -14,6 +14,22 @@ M8 не требуется. Компиляция, запуск и частичн
 
 ## Текущее состояние
 
+- Пользователь уточнил необходимость159173checks. Не использовать количество
+  assertions как показатель готовности. Это автоматические сравнения в одном
+  diagnostic запуске;полный набор повторять только при изменённых входах/коде,
+  сбое или конкретном unresolved риске. Не тратить цикл на неизменённые corpora.
+  Главный критерий — восстановленное поведение и подключение к реальному клиенту.
+- Начат следующий FrameMove unit:9bodies equalbothpins;
+  inventory/client455-pose-reference.json, scripts/audit_client455_pose.py.
+  1040active realtracks:timestamp signed comparisons,0nonmonotone/0nonfinite,
+  нетcount1 в22выбранныхANI. Scale91DE80(channel2),rotation91DF90(channel0),
+  translation91E160(channel1). Поворот usesactual D3DX Slerp+Wnegation;
+  cacheddecompiler prototypes wrong,trustinstructions. Count1 unsafe second-key
+  read не заменять константой по догадке. FrameMove сам672неувеличивает;
+  blend692/global33844,ramp712/716,pose4830,skin646=mesh4574*bone4638*bone4830.
+  933430/933490 — profiling,не locks. Вторичные pony/skirt motions91E270 ещёopen.
+  Raw artifacts/character-animation455/{framemove-*,key-*-insn,pose-*,scale-axis}.json;
+  owned66b26ca4closed/save. Source pose ещё не реализован.
 - Новейший unit: ANI93ACD0/framing/record284/lifetime/attachment93C050/93C1F0,
   Character dispatcher9238A0/MatchAnimation9316C0.16bodies equalbothpins;
   27ANI/1062tracks roundtrip/6Python tests,14513CPU/15181HALchecks standalone/
