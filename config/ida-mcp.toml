@@ -1,0 +1,6 @@
+# IDA 9.2-compatible server; pinned package lives in this workspace's local venv.
+[mcp_servers.ida_mcp]
+command = 'E:\RFOnlineTrash\Source\WorkFlow\local\ida-mcp-venv\Scripts\python.exe'
+args = ['-m', 'ida_pro_mcp.idalib_supervisor', '--stdio']
+startup_timeout_sec = 120
+tool_timeout_sec = 300

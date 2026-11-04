@@ -1,5 +1,7 @@
 """Executed inside IDA only, on work/ida-smoke/LoginServerSR.exe."""
 import json
+import hashlib
+import sys
 from pathlib import Path
 
 import ida_auto
@@ -12,6 +14,8 @@ import idautils
 
 root = Path(__file__).resolve().parents[1]
 report = {"ida_version": idaapi.get_kernel_version(), "input": ida_nalt.get_input_file_path()}
+report["python_version"] = sys.version
+report["input_sha256"] = hashlib.sha256(Path(report["input"]).read_bytes()).hexdigest()
 exit_code = 0
 try:
     ida_auto.auto_wait()
@@ -25,6 +29,8 @@ try:
                 report["decompilation_verified"] = True
                 report["sample_rva"] = hex(address - ida_nalt.get_imagebase())
                 break
+    if not report["decompilation_verified"]:
+        raise RuntimeError("Hex-Rays did not produce a verified decompilation")
 except Exception as error:
     report["error"] = str(error)
     exit_code = 1

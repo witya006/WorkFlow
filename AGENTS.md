@@ -22,7 +22,10 @@
 - GoMMO MCP discovery is reproducible through scripts/probe_gommo.py. Check actual
   returned schemas before any new tool call. Audit uses initialize, tools/list and
   studio_status only. Audit authorization does not imply Install or publishing.
-- Verify the IDA runtime and actual MCP implementation before claiming availability.
+- IDA MCP is installed and registered as ida_mcp using the local venv and idalib
+  supervisor. See docs/ida-mcp.md. Verify it using probe_ida_mcp.py --configured.
+  Open copies under work/ with idb_open, pass its database session ID to every
+  analysis call, and close owned sessions with idb_close. Never execute input EXEs.
 - Do not assume a current native MCP tool registration from a config file alone.
 - Do not add remote repositories, publish assets or push commits unless requested.
 - Delegate to subagents only when the user explicitly requests delegation.

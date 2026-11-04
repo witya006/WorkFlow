@@ -21,6 +21,8 @@
 Начать с `docs/environment-audit.md` и `docs/next-steps.md`.
 Повторная инвентаризация: `scripts/Invoke-Python.ps1 scripts/inventory.py`.
 Проверка GoMMO MCP: `scripts/Invoke-Python.ps1 scripts/probe_gommo.py`.
+Проверка IDA MCP: `scripts/Invoke-Python.ps1 scripts/probe_ida_mcp.py --configured`.
+Настройка и использование IDA: `docs/ida-mcp.md`.
 
 Оригинальные каталоги перечислены в `config/paths.json`; скрипты аудита читают их,
 но ничего в них не изменяют. Исходники пока не импортированы и не перекодированы.
