@@ -1,6 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий участок M6, effects039: EFF reader/registry/file lists/application,
+Текущий участок M6, characterclock040: таймер Character и реальный normal bridge
+подключены, численные и provider сценарии прошли. Это отдельные миллисекунды,
+не повторный update engine clock. Full normal link имеет один g_ChMemoryInfo.
+Сам таймер не доказывает новые frame methods924700/9248A0 или полный actor
+lifecycle; normal WinMain/UI/network/gameplay приёмка остаётся открытой.
+research/client455-character-clock.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6, effects039: EFF reader/registry/file lists/application,
 InitEffect и particle/entity views подключены к обычной сборке. Реальные файлы,
 контракты выборки/сброса и применение настоящей DDS к модели на GPU проверены.
 Это не приёмка полного particle emitter или игрового lifecycle. Pattern tail

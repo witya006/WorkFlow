@@ -1,0 +1,152 @@
+{
+  "scope": "Separate Character millisecond timer and actual normal bridge;not whole animation/game acceptance",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_clock",
+          "rva": "0x51ea80",
+          "bytes": 339,
+          "sha256": "c29cb4e7202b057af893483a836f1206100ecdc0112516e86743e85a4f73be5a"
+        },
+        {
+          "name": "duplicate_clock_no_found_xrefs",
+          "rva": "0x51ebe0",
+          "bytes": 339,
+          "sha256": "871f8024829fa688383998261c96a7138e31cb33ed89f5a2997df439f889f480"
+        },
+        {
+          "name": "main_loop_two_distinct_calls",
+          "rva": "0x3d13a2",
+          "bytes": 10,
+          "sha256": "0f43e608b47cd14784eff3ed09ff5baba753db02363aa70b14c32196c605be6f"
+        },
+        {
+          "name": "frame_consumer",
+          "rva": "0x524700",
+          "bytes": 414,
+          "sha256": "41fbe9d2888d68494ad9946647a2c63e1d6dc2b1565694efb268bfa7eaa96736"
+        },
+        {
+          "name": "self_timed_frame_consumer",
+          "rva": "0x5248a0",
+          "bytes": 419,
+          "sha256": "c2cb9c69d41060c48a47319de4f33468f7979ec3db2b4de59f01d6f5bb7ec5f8"
+        }
+      ],
+      "initial_globals": [
+        {
+          "rva": "0xd894f8",
+          "bytes": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89500",
+          "bytes": 8,
+          "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89508",
+          "bytes": 8,
+          "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89518",
+          "bytes": 24,
+          "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+          "all_zero": true
+        }
+      ],
+      "unsigned_bias": {
+        "rva": "0x7369b0",
+        "bytes": 4,
+        "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96"
+      }
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_clock",
+          "rva": "0x51ea80",
+          "bytes": 339,
+          "sha256": "c29cb4e7202b057af893483a836f1206100ecdc0112516e86743e85a4f73be5a"
+        },
+        {
+          "name": "duplicate_clock_no_found_xrefs",
+          "rva": "0x51ebe0",
+          "bytes": 339,
+          "sha256": "871f8024829fa688383998261c96a7138e31cb33ed89f5a2997df439f889f480"
+        },
+        {
+          "name": "main_loop_two_distinct_calls",
+          "rva": "0x3d13a2",
+          "bytes": 10,
+          "sha256": "0f43e608b47cd14784eff3ed09ff5baba753db02363aa70b14c32196c605be6f"
+        },
+        {
+          "name": "frame_consumer",
+          "rva": "0x524700",
+          "bytes": 414,
+          "sha256": "41fbe9d2888d68494ad9946647a2c63e1d6dc2b1565694efb268bfa7eaa96736"
+        },
+        {
+          "name": "self_timed_frame_consumer",
+          "rva": "0x5248a0",
+          "bytes": 419,
+          "sha256": "c2cb9c69d41060c48a47319de4f33468f7979ec3db2b4de59f01d6f5bb7ec5f8"
+        }
+      ],
+      "initial_globals": [
+        {
+          "rva": "0xd894f8",
+          "bytes": 4,
+          "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89500",
+          "bytes": 8,
+          "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89508",
+          "bytes": 8,
+          "sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc",
+          "all_zero": true
+        },
+        {
+          "rva": "0xd89518",
+          "bytes": 24,
+          "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0",
+          "all_zero": true
+        }
+      ],
+      "unsigned_bias": {
+        "rva": "0x7369b0",
+        "bytes": 4,
+        "sha256": "9d459b445179d46efc315fd7ef9a5c8185bd7f3e2860dc6d325ab1b85acf6a96"
+      }
+    }
+  ],
+  "golden": "work/client-reference/character-clock455/clock.bin",
+  "golden_sha256": "da151a534ac5c47eec5c8c597ff8218bf0e9d12fb267430c6d832b601a6bf5f6",
+  "cases": 168,
+  "fp_modes": 12,
+  "oracle": "Instruction-derived Fraction/x87 rounding with signed64 multiplication wrap, unsigned fallback bias, float spills; no clamp/scale and no fallback elapsed accumulation",
+  "script_sha256": "348119072c005f1ba28b51c1793f1ca02e2888c4188ebc6b46f9d16d31ad3d05",
+  "gaps": [
+    "Failure-without-output QPC/QPF leaves original unspecified stack bytes; source zero seed is not equivalent in that domain",
+    "Unmasked exceptions/NaN payloads/process timer scheduling not accepted",
+    "Frame methods924700/9248A0 are reference consumers, not newly restored normal animation APIs; full lifecycle remains open"
+  ]
+}

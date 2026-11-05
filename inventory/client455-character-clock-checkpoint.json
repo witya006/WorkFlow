@@ -1,0 +1,33 @@
+{
+  "status": "PARTIAL",
+  "source_character_clock": "PASS",
+  "actual_normal_bridge": "PASS",
+  "engine_clock_independent": "PASS",
+  "cases": 168,
+  "fp_modes": 12,
+  "full_normal_link": "OPEN",
+  "remaining_unresolved": 1,
+  "actual_caller": {
+    "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/mainapp.obj",
+    "sha256": "0acf7e0f22461d37b3904120efe04c331cd394fbc8d3d9ea1c0e8997c72d246f"
+  },
+  "evidence_sha256": {
+    "client455-character-clock-reference": "879c720d18022db0c046e4f45ce77e03713bb2e5f2d58dccee4e23239e87b5bc",
+    "client455-character-clock-native": "2ecf5c307ef017e1d5272477d209c157f05e4fa40b787cc0143958244a905707",
+    "client455-normal-build": "1c444237a78dadfb8f2ef93c632740b0eff57cff2c6d654b28a4fc5dc9b8849e",
+    "client455-normal-preparation": "447c548602f39317570cba032a28b94296c1b0bc10078d230c7002dad689c475",
+    "client455-normal-link": "6c60ebe7f9f30bfe51a3b3b6f09a642d173271b3097fa084310813329356e1ad"
+  },
+  "gaps": [
+    "Failure-without-output QPC/QPF leaves original unspecified stack bytes; source zero seed is not equivalent in that domain",
+    "Unmasked exceptions/NaN payloads/process timer scheduling not accepted",
+    "Frame methods924700/9248A0 are reference consumers, not newly restored normal animation APIs; full lifecycle remains open",
+    "Character accounting still unresolved;normal WinMain/gameplay/UI/network acceptance open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -37,7 +37,7 @@ def main():
     names=['client455-normal-preparation','client455-normal-build','client455-normal-consumers','client455-normal-renderer-gpu','client455-normal-link','client455-normal-contracts-reference']
     report={'status':'PARTIAL','restored_methods':methods,'contract_scenarios':'PASS','real_model_reset_reattach_rematch':'PASS','previous_two_frames_equal':True,
         'normal_client_objects':182,'canonical_kernel_objects':20,'full_normal_link':'OPEN','remaining_unresolved':link['unique_unresolved'],
-        'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in names},'gaps':ref['bounds']+['Effects/particle slots/accounting/Character clock still unresolved;see current normal-link.json','Full normal WinMain,gameplay,UI,network and455behavioral acceptance remain open'],
+        'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in names},'gaps':ref['bounds']+['Remaining client contracts are listed in current normal-link.json; completed dependencies have separate checkpoints','Full normal WinMain,gameplay,UI,network and455behavioral acceptance remain open'],
         'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     (WS/'inventory/client455-normal-contracts-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n')
     print('PARTIAL:five normal model contracts/real reset+rematch PASS;full link'+str(link['unique_unresolved'])+'unresolved;M6/M9OPEN')

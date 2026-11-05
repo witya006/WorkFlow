@@ -11,14 +11,31 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — effects039. Чтение EFF, registry, file lists, InitEffect,
+Последний участок — characterclock040. Таймер Character 91EA80 восстановлен
+отдельно от engine clock; actual _R3CalculateTime и mainapp caller подключены.
+QPC/fallback/округление/независимость проверены; прежние renderer/ANI/BBX/effect/
+shadow сценарии прошли. 182 client + 10 facade + 20 kernel CPP собираются.
+Полный линк: только g_ChMemoryInfo. research/client455-character-clock.md;
+inventory/client455-character-clock-checkpoint.json: PARTIAL. M9 открыт.
+
+Следом041 — process-wide Character accounting с настоящими producers.
+Подтверждены адреса texture bytes/count11895F8/FC, shared buffer bytes/count
+1189600/04, raw ANI cumulative1189608, mesh ctor count/bytes118960C/10.
+Debug consumer7F26F1..7F2798 совпадает со смыслом старых семи полей. Отдельный
+ctor9312E0 обнуляет32байта, но не имеет найденных xrefs; принадлежность восьмого
+поля ещё требует проверки. Texture accounting уже process-wide, mesh/buffer/ANI
+в normal Runtime пока per-renderer: исправить владение без подмены live heap total.
+Не подставлять пустой глобал; проверить накопление/release/wrap/multiple owners,
+затем полный normal link и отдельно normal initialization.
+
+Предыдущий участок — effects039. Чтение EFF, registry, file lists, InitEffect,
 SetPartEffect/SetMeshEffect и particle/entity views подключены. Проверены
 реальные EFF, выбор/кеширование/сброс и эффект с настоящей DDS на модели/GPU.
 182 client + 8 facade + 20 kernel CPP собираются; полный линк: только
 g_ChMemoryInfo и _R3CalculateTime. research/client455-effects.md;
 inventory/client455-effects-checkpoint.json: PARTIAL. M9 открыт.
 
-Следующий участок040 — восстановить accounting и Character clock по 455 и
+Историческая очередь039 — восстановить accounting и Character clock по 455 и
 реальным callers; не подставлять пустой глобал или no-op ради линковки.
 Проверить layout CHMEMORYINFO (старые 28 байт против замеченного ctor 32),
 владение счётчиками и связь Character clock с уже восстановленным engine clock.

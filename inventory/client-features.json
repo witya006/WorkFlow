@@ -1584,6 +1584,16 @@
       "evidence":["inventory/client455-effects-reference.json","inventory/client455-effects-native.json","inventory/client455-effects-checkpoint.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","research/client455-effects.md"],
       "gaps":["Full particle/entity math/flags/lifecycle not accepted; numeric292 and modern strings do not reproduce private classic STL or undefined opaque bytes","Original pattern tail grades9..35 remains explicitly unknown; no zero-success fallback","Malformed/OOM/errorUI/logging/unwind and full normal WinMain/UI/network/gameplay acceptance open","Character accounting and clock remain unresolved; M6/M6F/M7/M9 OPEN"]
     }
+    ,{
+      "id":"CLIENT455-CHARACTER-CLOCK-040",
+      "status":"partial",
+      "description":"Separate source Character QPC/fallback millisecond clock and actual normal _R3CalculateTime bridge; independent of engine clock",
+      "implementation":["scripts/native/client455_character_clock.h","scripts/native/client455_character_clock.cpp","scripts/native/client455_normal_clock.cpp"],
+      "reference":[{"rva":"0x51ea80","role":"Character clock"},{"rva":"0x3d13a2","role":"Main calls engine then Character"},{"rva":"0x524700","role":"Reference frame consumer, not ported here"},{"rva":"0x5248a0","role":"Reference self-timed frame consumer, not ported here"}],
+      "verification":"Clock/caller/consumer ranges equal both455pins and selected globals initiallyzero.168Fraction/x87 state cases/12FP modes pass core and actual normal bridge; initialization/fallback/ignored QPC BOOL with written output/control word/engine independence verified. Actual mainapp caller retained; full link now only g_ChMemoryInfo.182client/10facade/20kernel CPP compile; short ANI/BBX/renderer/effect/shadow cases pass, prior frames retained, COM/Dmalloc0.",
+      "evidence":["inventory/client455-character-clock-reference.json","inventory/client455-character-clock-native.json","inventory/client455-character-clock-checkpoint.json","inventory/client455-normal-link.json","research/client455-character-clock.md"],
+      "gaps":["Failed provider without supplied output, zero divisors/nonfinite/unmasked exceptions/process scheduling not accepted","Reference frame methods924700/9248A0 and full actor lifecycle not restored by this unit","Character memory accounting unresolved; normal WinMain/UI/network/gameplay/device reset and M6/M6F/M7/M9 remain open"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

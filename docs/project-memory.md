@@ -23,6 +23,35 @@
 
 ## Последний проверенный результат
 
+Character clock040: client455_character_clock.{h,cpp} +normal_clock.cpp,
+facade10CPP. Separate91EA80 milliseconds timer, not engine8B3CC0. Original
+main7D13A2/7D13A7 calls both; both pins equal. Initial selected globals zero
+in loaded PE image. Own state44B (no raw overlay across shader COM pointers).
+First QPF once, successful branch QPC twice first call/once later; original
+ignores QPC BOOL. Wrap64 delta*1000, signed FILD numerator/frequency, float delta
+spill then elapsed +=delta. No clamp/scale. Fallback DWORD tick/window/count;
+only >200 produces average milliseconds, resets count/window, retains delta
+otherwise; NO elapsed accumulation on fallback. Quirks preserved, CW unchanged.
+168 Fraction/x87 cases/12PC-RC modes passed in core and actual _R3CalculateTime;
+provider lifecycle/ignored BOOL with supplied output passed; engine loop state
+unchanged. Failure without supplied QPC data uses own zero seed, not certified.
+924700/9248A0 are pinned reference consumers only, not newly restored APIs.
+182client/10facade/20kernelCPP compile; full link now only g_ChMemoryInfo.
+Short ANI/BBX/renderer/effect/table/shadow regressions passed, old frames/COM0/
+Dmalloc0. IDAa91e5275 closed/saved=true. Research client455-character-clock.md;
+reference/native/checkpoint client455-character-clock. M6/M6F/M7/M9OPEN.
+Previous goal turn was progress: effects039 committed dd66565; this turn adds
+real clock implementation/evidence, no blocker/no-progress condition.
+Next041: actual process accounting. Producers identified texture11895F8/FC,
+buffers1189600/04, rawANI1189608, meshctor118960C/10. Debug7F26F1..7F2798
+matches seven old fields. Ctor9312E0 zeros8DWORD but no found xrefs: eighth
+field association remains unproven, do not claim full32-byte ABI yet. Texture
+source is already cumulative process global; normal Runtime mesh/buffer/ANI
+currently per-owner, must share and expose real counters. No fake zero global.
+Then full normal link/init; full particles/blend/shadow/UI/network/gameplay open.
+
+Предыдущий результат:
+
 Effects039: source client455_effects.{h,cpp}, normal_effects.cpp и pinned factor
 constants; facade теперь 8 CPP. EFF read92B380/converter929070/ctor920E40/
 apply927040/filter9281A0/file9293D0/reset91C760+91F2B0/particle predicates и

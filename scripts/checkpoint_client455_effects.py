@@ -52,10 +52,10 @@ def main():
     for symbol in ['InitEffect@CRender','SetEffect@EffectList','SetPartEffect@EffectObjectManager','LoadEffectFileList@EffectList','LoadEffectFileList@EffectFileList','IsHaveEffect@RF455CharacterStorage','SetMeshEffect','particleSlots@RF455MeshStorage','entitySlot@RF455MeshStorage','LoadEffect@EffectObjectManager','g_EFFMonList','g_EFFUnitList','g_EffectFileList']:
         if not re.search(re.escape(symbol)+r'[^\r\n]+RFClient455Facade:client455_normal_effects\.obj',mapping):raise ValueError('Wrong EFF provider:'+symbol)
         if any(symbol in row['symbol'] for row in link['unresolved']):raise ValueError('Still unresolved EFF contract')
-    if not link['link_exit'] or link['other_errors'] or link['unique_unresolved']!=2 or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Inspect new full link state')
+    if not link['link_exit'] or link['other_errors'] or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Inspect new full link state')
     names=['client455-effects-reference','client455-effects-native','client455-normal-renderer-gpu','client455-normal-build','client455-normal-preparation','client455-normal-link']
     report={'status':'PARTIAL','source_eff_read_apply_reset_slots':'PASS','real_texture_model_draw':'PASS','actual_effect_changed_pixels':changed,'real_sample_files':n['real_files'],'real_sample_records':n['real_records'],'format_inventory_records':ref['valid_real_files_records'],
-        'full_normal_link':'OPEN','remaining_unresolved':2,'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},'gaps':ref['gaps']+['Character accounting/clock still unresolved;normal gameplay/UI/network acceptance open'],
+        'full_normal_link':'OPEN','remaining_unresolved':link['unique_unresolved'],'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},'gaps':ref['gaps']+['Remaining client contracts in normal-link.json;normal gameplay/UI/network acceptance open'],
         'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    (WS/'inventory/client455-effects-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:source EFF/real texture/model GPU PASS;full link2unresolved;M9OPEN')
+    (WS/'inventory/client455-effects-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:source EFF/real texture/model GPU PASS;full link'+str(link['unique_unresolved'])+'unresolved;M9OPEN')
 if __name__=='__main__':main()

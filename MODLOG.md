@@ -1,5 +1,11 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Characterclock040. Restored separate91EA80 QPC/fallback millisecond
+timer and real normal _R3CalculateTime bridge. Core/bridge Fraction oracle and
+provider lifecycle scenarios pass; engine clock remains independent. Full link
+now only g_ChMemoryInfo. Partial M6; full actor/gameplay acceptance open.
+[research/client455-character-clock.md](research/client455-character-clock.md).
+
 2026-11-06 — Effects039. Recovered EFF parsing, registry/file lists, application,
 reset and current particle/entity slot views in the normal facade. Real DDS
 upload and effect application changed a real model frame; previous color and

@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, characterclock040: без новых установок. Отдельный таймер
+Character 91EA80 и _R3CalculateTime подключены к современному x86/MT facade.
+168 численных случаев/12 режимов FPU, QPC/fallback и независимость engine clock
+прошли. 182 client / 10 facade / 20 kernel CPP собираются; полный линк теперь
+только g_ChMemoryInfo. Короткие ANI/BBX/model/effect/shadow сценарии прошли,
+прежние кадры сохранились, COM/Dmalloc 0. IDA a91e5275 closed/saved=true.
+research/client455-character-clock.md; checkpoint PARTIAL; M9 открыт.
+
 Дополнение 06.11, effects039: новых установок нет. 182 клиентских, 8 facade и
 20 canonical kernel CPP собираются x86/MT. Загрузка и применение EFF работают
 с прежним source TextureManager на D3D9 HAL. Эффект с реальной DDS изменил кадр

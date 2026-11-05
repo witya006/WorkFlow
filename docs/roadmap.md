@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — effects039: EFF reader, registry/file lists, применение,
+Новейший участок M6 — characterclock040: таймер Character и normal bridge
+восстановлены отдельно от engine clock. QPC/fallback/округление проверены,
+прежние кадры и короткие consumer/effect/shadow сценарии прошли. Полный линк:
+один g_ChMemoryInfo. Далее process accounting и полный normal link.
+research/client455-character-clock.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — effects039: EFF reader, registry/file lists, применение,
 сброс и particle/entity views подключены. Реальный texture/model GPU сценарий
 прошёл; предыдущие кадры сохранились. Полный линк: 2 символа вместо 15.
 Далее accounting/Character clock и полный normal link; игровая приёмка впереди.
