@@ -1,0 +1,118 @@
+{
+  "scope": "Real migratedR3EngineD3D9 bringup/capture/release withsource455Character owner attachedtothesamedevice;notnormalgame/455behaviorparity",
+  "architecture": "x86",
+  "exe": "work/m9/7a4bbf82/engine9002/engine9-probe.exe",
+  "exe_sha256": "7a4bbf825c520e1542b5f13e82c8e78a1ada5e786d3fe8bd6b6410366acd1446",
+  "entry_rva": "0x90390",
+  "native": {
+    "stage": "complete",
+    "adapter": "NVIDIA GeForce RTX 2080 Ti",
+    "checks": 46,
+    "failures": 0,
+    "warnings": 0,
+    "errors": 0,
+    "hr": 0,
+    "device_flags": 32,
+    "backbuffer_format": 22,
+    "fpu": [
+      639,
+      639,
+      127
+    ],
+    "texture": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "changed_pixels": 307200,
+    "entity_loaded": 0,
+    "entity_drawn": 0,
+    "entity_groups": 0,
+    "entity_textures": 0,
+    "allocation_before": 0,
+    "allocation_after": 0,
+    "device_refs_after_release": 0,
+    "d3d_refs_after_release": 0
+  },
+  "direct_imports": [
+    "advapi32.dll",
+    "comdlg32.dll",
+    "d3d9.dll",
+    "d3dx9_36.dll",
+    "gdi32.dll",
+    "kernel32.dll",
+    "user32.dll",
+    "winmm.dll"
+  ],
+  "d3dx36_imports_verified": [
+    "D3DXAssembleShaderFromFileA",
+    "D3DXCreateRenderToSurface",
+    "D3DXCreateTexture",
+    "D3DXCreateTextureFromFileExA",
+    "D3DXCreateTextureFromFileInMemory",
+    "D3DXLoadSurfaceFromSurface",
+    "D3DXMatrixInverse",
+    "D3DXMatrixLookAtLH",
+    "D3DXMatrixMultiply",
+    "D3DXMatrixPerspectiveFovLH",
+    "D3DXMatrixRotationQuaternion",
+    "D3DXMatrixRotationX",
+    "D3DXMatrixRotationY",
+    "D3DXMatrixRotationZ",
+    "D3DXMatrixScaling",
+    "D3DXMatrixTranslation",
+    "D3DXMatrixTranspose",
+    "D3DXQuaternionMultiply",
+    "D3DXQuaternionRotationAxis",
+    "D3DXVec3Normalize"
+  ],
+  "provider_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "shader_inputs": [
+    {
+      "file": "System/shader/Grass1.vsh",
+      "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+    },
+    {
+      "file": "System/shader/grass1.vso",
+      "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+    }
+  ],
+  "output": "work/m9/7a4bbf82/engine9002/result.json",
+  "output_sha256": "2f7b80a86b6e17061d31ea8d4e1b2e9c79dd226cb411ae6ce9be869290a01ec0",
+  "build_report_sha256": "96c92ede9bec63b8013fec53a1350ee6b00759c77e6e0c50323f1a2a42018bf4",
+  "input_exe_executed": false,
+  "engine_shaders": {
+    "grass_program_created": true
+  },
+  "character_owner_attached": true,
+  "frame": "work/m9/7a4bbf82/engine9002/frame.bmp",
+  "frame_sha256": "92232e8a086fda2bda449d8845c3e1cccef4671016b6c269a4e256050b29b715",
+  "level": {
+    "loaded": 1,
+    "leaves": 14141,
+    "nodes": 14140,
+    "helpers": 23,
+    "visible_groups": 12,
+    "interiors": 8,
+    "weather_counts": [
+      15,
+      500
+    ],
+    "weather_states": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "weather_checks": 6
+  }
+}

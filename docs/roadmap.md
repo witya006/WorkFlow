@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6: renderer owner032 constructor/device/destruction/typedcontexts
+Новейший участок M6: начальный R3Engine D3D9port033,67units собираются в отдельной
+копии work/client455-port. Device/Grassshader/Characterowner same-device иPlatform01
+GPU/helpers/interiors/weather прошли. Следом нормальные180clientconsumers иtyped
+Character455 facade. Базоваясборка неизменена;fullengine/runtimeparity ещёоткрыта.
+Gate inventory/client455-engine9-checkpoint.json; M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок M6: renderer owner032 constructor/device/destruction/typedcontexts
 теперьsource. Real model/ANI/3textures рисуется через его ресурсы;два кадра равны
 component/fullclient,COM/ownheap/Dmalloc0. Normal owner API ещёunused,normalruntime
 прежний кромеtimestamps. Следом coupled normal typed ChInterface/model/animation/

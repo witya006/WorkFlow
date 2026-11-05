@@ -11,7 +11,20 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — renderer owner032: source constructor/device binding/destruction
+Последний unit — начальный engine9port033 в work/client455-port.67units x86/MT
+собраны. Настоящие R3ConfirmDevice/R3InitDevice/Grass shader иsource Characterowner
+на одном D3D9 HAL device прошли; Platform01 отрисован с23helpers/8interiors идвумя
+weather layers,cleanup0. Gate inventory/client455-engine9-checkpoint.json;
+research/client455-engine9-port.md. Базоваяnormalсборка не менялась.
+
+Практический следующий шаг: source Character455.h/facade и реальные180clientTUs
+в этой новойкопии, затем RF_Online.bin с R3Engine455. Переносить typed model/
+animation consumers вместе;39SDKfunctions/150field candidates ещё открыты.
+Не rawcast и не возвращать CharacterMR для успешного link. Готовые source kernels
+и владелец ресурсов не требуют повторного восстановления. Fullengine455state/
+camera/reset/shaders/allfullscreen modes/ABI/CRT иM6/M6F/M7/M9 ещёоткрыты.
+
+Предыдущий unit — renderer owner032: source constructor/device binding/destruction
 и typed load/draw adapters. Реальная модель проходит через owner managers/pools/
 shaders;2frames совпали component/fullclient. Провереныconstructor patterns,caps
 gate иRelease order;ownheap/COM/Dmalloc0. Lab197TUs,normal293MTobjects/runtime

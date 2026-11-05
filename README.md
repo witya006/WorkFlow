@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: source владелец Character455 — constructor/device binding/
+Последний участок M6: реальный R3Engine перенесён на D3D9 в work/client455-port,
+67units x86/MT собираются. Device/Platform01 прошли с Grass shader и source
+Character owner на одном D3D9 device,8interiors/2weather layers проверены.
+Normal180clientTUs/typed Character facade ещё не подключены; базовая сборка
+work/client-build сохранена. Gate inventory/client455-engine9-checkpoint.json;
+research/client455-engine9-port.md. M6/M9 остаются открытыми.
+
+Предыдущий участок M6: source владелец Character455 — constructor/device binding/
 destruction и typed model/draw contexts. Реальная модель с ANI/3textures прошла
 через принадлежащие ему managers/pools/shaders отдельно и в полном client lab;
 два кадра совпали, allocations/COM освобождены. Normal runtime прежний кроме

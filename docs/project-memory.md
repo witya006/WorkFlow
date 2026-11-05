@@ -23,6 +23,31 @@
 
 ## Последний проверенный результат
 
+Engine9port033: новаякопия work/client455-port,492files/50byte-migrated;
+67realengineTUs x86/MT собираются. Никаких aliasesDevice8→9/legacyCharacterMR
+в новом probe. HWND/D3D9HAL R3ConfirmDevice→R3InitDevice→Grass shader/declaration,
+source455Characterowner наТOMЖЕdevice (12programs/sprite/pools/textures),cleanup
+прошли. Platform01:14141leaves/23helpers/8interiors/2weather states[0,0]→[1,1]→[0,0],
+12visiblegroups/frameviewed,enginewarnings/errors0,Dmalloc0,COM0.24device/46map
+assertions;big неизменённые suites не повторялись. Runtime
+work/m9/7a4bbf82/engine900{1,2}/engine9-probe.exe, SHA/RVA вengine9runtime reports.
+Gate inventory/client455-engine9-checkpoint.json;research/client455-engine9-port.md.
+База work/client-build иnormalRF_Online не менялись в033. Следом реальные180client
+consumers: source Character455.h/facade,typed models/animation иnormalgame linkage
+с новымengine.39SDKfunctions/150field candidates прежние. Не rawcast/неподключать
+CharacterMR для обхода незавершённого порта. Готовые owner/load/ANI/pose/draw/frustum
+переиспользовать. M6/M6F/M7/M9 OPEN.
+Genuine headers изsigned Microsoft.DXSDK.D3DX9.29.952.8 stagedlocal;package targets
+неисполнялись,_43DLLs неустановлены. x86importarchive retarget43→36,allactualimports
+проверены противpinned9_36. SDK43inlines/fullABI36 несертифицированы. Fullscreen
+enumeration покаX8R8G8B8;allmodes/reset/unwind/state/shader/camera parity ещёоткрыты.
+Engine/probe общийENGINE_DEFINITIONS включаетHELPER_LOADER; безнего было0interiors,
+это исправлено. LabWindows path backslashes исправлены послеowncrash. Probe CLand
+hooks excluded,неproduction stubs. NativeownSEH exception report+MAP доступны;
+CDBexe неустановлен (Debuggers/x64 directory alone notproof). IDAсессийнеоткрывали.
+
+Предыдущий результат:
+
 Renderer owner032 source:client455_renderer_owner.{h,cpp},constants.h;33856byte
 storage с managers116/4264,texture8424,effects8712,pools8928/17128/25328,caps33532.
 Constructor/SetDevice920590/dtor9228A0/2typed context adapters восстановлены.

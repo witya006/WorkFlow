@@ -1,0 +1,22 @@
+{
+  "scope": "Separate D3D9 source migration tree,not client455acceptance;no legacy Character ABI aliased",
+  "root": "work/client455-port",
+  "baseline": "work/client-build/source",
+  "staged_files": 492,
+  "changed_files": 50,
+  "engine_sources": 67,
+  "sdk_report_sha256": "8c369cd4f93097a567c9107b80017f032fd985a9de6a48c16b7959a134541195",
+  "manifest": "artifacts/client455-d3d9-port/source-migration.json",
+  "manifest_sha256": "ee02cd928ec9f790f0a61d9c4cdde72a1e17383bf55058c1bc341e2fc9738cb4",
+  "script_sha256": "cd6e2fef913a32e09119950b83d6f4c03ae48e16effd86ab5d2b6c5089be32ac",
+  "rewriter_sha256": "11e7c0cd45a20231ad962b7b14caa177aa7bde831c3dbb40e2e503b1f8ab5b20",
+  "migration_inputs_sha256": {
+    "scripts/client455_d3d9_port.py": "11e7c0cd45a20231ad962b7b14caa177aa7bde831c3dbb40e2e503b1f8ab5b20",
+    "scripts/client455_d3d9_edits.py": "3477899f536f7665056e5e9b4b6436569ef0a3f9815247e708d7c81f915cfd71",
+    "scripts/native/client455_d3d9_port.h": "c692540465be8ffb8b490636e358f9b1bb3e94807ee1511f07983ac2d9cfc5bd",
+    "scripts/native/client455_r3_shader_load.inc": "2d1b5dba2020cfa115955247ff7d3bfafcb286cf5ca6a4197ed0aa099598718a",
+    "scripts/native/client455_r3_shader_assemble.inc": "15b88b98414608ed6acf038f33a5690cd09dbc4ef08587995718e8d88301032d"
+  },
+  "baseline_mutated": false,
+  "source_validation": "Compiler errors remain authoritative;API rewrites do notprove455behavior;nonzero indices bases/overlapping rewrites fail explicitly"
+}

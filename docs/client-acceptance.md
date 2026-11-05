@@ -17,7 +17,13 @@
 без конкретного риска. Общую регрессию выполнять после сквозных изменений и при
 приёмке этапа. В отчётах указывать сценарии и их результат, а не только счётчик.
 
-Последний выбранный участок M6: source renderer owner constructor/device binding/
+Последний выбранный участок M6: начальный real R3EngineD3D9port в отдельнойкопии,
+67x86/MTunits собраны. Device/Grassshader/Characterowner same-device иPlatform01
+GPU/helpers/interiors/weather прошли.180normalclientconsumers ещёнеперенесены;
+это не полный RF_Online455 и не original game frame parity. Gate
+inventory/client455-engine9-checkpoint.json;research/client455-engine9-port.md.
+
+Предыдущий выбранный участок M6: source renderer owner constructor/device binding/
 destruction иtypedcontexts проверены нареальной модели/ANI/3textures отдельно и
 вполном client lab. Два кадра равны,allocations/COM освобождены. Normalowner API
 ещёunused/stripped;fullnormal Character/D3D9 port не принят. Gate

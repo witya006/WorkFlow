@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение05.11 engine9port033: local Microsoft.DXSDK.D3DX9.29.952.8 headers,
+Author/Repository подписи проверены. PackageSHA/files inventory/d3dx9-headers.json.
+Никакие_43runtimeDLLs неустановлены; x86importarchive retargeted36 иactualimports
+проверены поpinnedDLLexports. НастоящийD3D9R3Engine67units x86/MT,device/Platform01
+иsource Characterowner наодномdevice прошли. Originalnormalсборка не менялась.
+Gate inventory/client455-engine9-checkpoint.json. CDBexe отсутствует,ошибкаownrun
+разобрана через собственныйSEHreport/MAP. Full180client migration ещёоткрыта.
+
 Дополнение05.11: source renderer owner032 использует прежние MSVCx86/MT,
 pinnedD3DX9_36 иD3D9HAL. Constructor/caps/destructor иreal model→pose→draw путь
 прошли component/fullclient,ownheap/COM/Dmalloc0;новых установок нет.

@@ -1,0 +1,15 @@
+{
+  "scope": "Import archive only;noD3DX runtime code replaced",
+  "package_sha256": "ead0906ae8a26c18a7525da7490127a2110f7c58f18293738283e30e97c6ea4b",
+  "member": "build/native/release/lib/x86/d3dx9.lib",
+  "original_sha256": "0b1cd009d5e5ed15080c4d7ad0245a273242da07e0747921e80ac3ccf9bc0fc2",
+  "library": "work/client455-port/dependencies/d3dx9_36.lib",
+  "library_sha256": "b92a88b327c13a5738ac567ce34b73aa652c536e37fc46c9797dab2f7c413794",
+  "descriptor_replacements": 672,
+  "runtime": "d3dx9_36.dll",
+  "runtime_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "limits": [
+    "Unused header exports may be newer than36;final PE importednames must bechecked against actualpinned exports",
+    "D3DX_SDK_VERSION inpackageheaders is43;no automatic CheckVersion compatibility claim"
+  ]
+}
