@@ -1,0 +1,109 @@
+{
+  "status": "PASS",
+  "scope": "Scene-frustum producer/AABB source math integrated into actual normal SetCharacterClipping/CResObject callers;M6/M6F/M7/M9 remain OPEN",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "198c2dd38f5f0c78bedbea8d70f6712981ef63b042a21cf4fa16db89bbbcc6b4",
+    "exe_bytes": 2451968,
+    "entry_rva": "0x1bc610",
+    "actual_calls": [
+      {
+        "caller": "?SetCharacterClipping@@YAXXZ",
+        "call_rva": "0xdc02e",
+        "target": "_RF455_PublishSystemCharacterFrustum",
+        "destination_rva": "0x19c5f0",
+        "linker_thunks": [],
+        "provider": "R3EngineMT:client455_frustum_system.obj",
+        "object_sha256": "7d267650a2baf5aa3098ebe741163b09e422b71e55231ab0625239f2be68d2c1",
+        "module_sha256": "008c5d205bc8bcd90a3fb1ec162be5f684a92ad0984d58af6f5332009e48e7c6",
+        "source_sha256": "9e8a0b745a05f77d5c4d0b20659eeb8fa210240219f315cb8abe257ce8a82f49"
+      },
+      {
+        "caller": "?ProcessClipping@CResObject@@QAEHXZ",
+        "call_rva": "0x43d2d",
+        "target": "_RF455_IsBBoxInFrustum",
+        "destination_rva": "0x18e570",
+        "linker_thunks": [],
+        "provider": "R3EngineMT:client455_frustum.obj",
+        "object_sha256": "4ad68f301f018517f146cc2c063885d38c58197b33d96f5877eb782325e42bcd",
+        "module_sha256": "2e588651db09a1a40b8a85197800700b44721d5b9e483c20200c5c4ba43a2575",
+        "source_sha256": "5d8eab0e27a1b8899e917f687ba5d9a4cb5d8ae7f14196dd11a29611a9a75d33"
+      }
+    ],
+    "build_report_sha256": "9c971ea1ebbaba03f2e3b90c0224412c28979a9e223f854cc30092fd947281c7",
+    "scope": "Selected producer/AABB calls in actual normal source;full actor/Character layout/camera behavior remains open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "ee98e3caa31cbf5d4e78e919cb37fc9ac317661c958a7028acf9770c7a6f0f9d",
+    "exe_bytes": 5439488,
+    "entry_rva": "0x8c15",
+    "actual_calls": [
+      {
+        "caller": "?SetCharacterClipping@@YAXXZ",
+        "call_rva": "0x15885e",
+        "target": "_RF455_PublishSystemCharacterFrustum",
+        "destination_rva": "0x32f8f0",
+        "linker_thunks": [
+          {
+            "rva": "0x1b36",
+            "bytes": "e9b5dd3200"
+          }
+        ],
+        "provider": "R3EngineMT:client455_frustum_system.obj",
+        "object_sha256": "e4aaa6907b7ffcab291ff860bd719bdceff14ce53592349f3bce1ad16fc1c670",
+        "module_sha256": "0b8936af5a4d7b98d06bbaaecda3ee1e67b84d0be419684b530e1e5f399b1488",
+        "source_sha256": "9e8a0b745a05f77d5c4d0b20659eeb8fa210240219f315cb8abe257ce8a82f49"
+      },
+      {
+        "caller": "?ProcessClipping@CResObject@@QAEHXZ",
+        "call_rva": "0x97c1d",
+        "target": "_RF455_IsBBoxInFrustum",
+        "destination_rva": "0x319000",
+        "linker_thunks": [
+          {
+            "rva": "0x5137",
+            "bytes": "e9c43e3100"
+          }
+        ],
+        "provider": "R3EngineMT:client455_frustum.obj",
+        "object_sha256": "a6c2c14ffc0a6b470aad4c86b9cbba1f4ad874000a8ffc54b63eff0d05c452d3",
+        "module_sha256": "8b2cfadfa9f78710996aa63efe90f6ebe96e254379e802dd75d05de4973458d0",
+        "source_sha256": "5d8eab0e27a1b8899e917f687ba5d9a4cb5d8ae7f14196dd11a29611a9a75d33"
+      }
+    ],
+    "build_report_sha256": "9c971ea1ebbaba03f2e3b90c0224412c28979a9e223f854cc30092fd947281c7",
+    "scope": "Selected producer/AABB calls in actual normal source;full actor/Character layout/camera behavior remains open"
+  },
+  "numeric_cases": {
+    "matrix": 72,
+    "bbox": 204,
+    "fp_modes": 12
+  },
+  "actor_cases": 9,
+  "normal_api": {
+    "named_calls": 139,
+    "distinct_symbols": 45,
+    "legacy_sdk_functions": 39,
+    "candidate_fields": 150
+  },
+  "evidence_sha256": {
+    "client455-frustum-reference": "f36293de56376a8698422151097ea759444f6db217e52fe49f9fbae57319d853",
+    "client455-frustum-build": "9c971ea1ebbaba03f2e3b90c0224412c28979a9e223f854cc30092fd947281c7",
+    "client455-frustum-link": "8056d5048fc693be075fb34af2a31fcbb5175a6f4f2e88eee5936434a417f7d8",
+    "client455-frustum-client": "0ba3abc688ebc172349ff02f3f0d5b67363e2ee0af32c22a5ce93c35687fe9d9",
+    "client455-frustum-graphics": "fe62d556e35a0b74f8a619a30b4217fe6a0b087d08be68e0753f6f2fb705b443",
+    "client455-normal-character-api": "73b81095638df624bfe3932db442008ba5a9e66986ad54221725a509e71905d1",
+    "client-mt-variant": "b6a8e5f8b285168b034e3060882c9abf5a59fcdfec9bfab634bfa8dc33d25262"
+  },
+  "not_accepted": [
+    "Normal typed model/animation/Character455 layout and full D3D9 renderer",
+    "High-level camera/visibility/actor lifecycle and full455runtime equivalence",
+    "CRT matherr/errno/unmasked exceptions and nonfinite normalization payloads",
+    "Deployment failure policy:missing math runtime abort differs fromoriginal mandatory import failure"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false
+}

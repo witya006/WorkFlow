@@ -132,6 +132,13 @@ snapshot character455-route-final равен character455-draw кромеtimesta
 Следом: typed normal Character/model/animation interface audit, wrappers/culling/
 simple draw исовместная D3D9engine migration. M6/M6F/M7/M9 открыты.
 
+Обновление031: normal interface inventory завершён, scene-frustum8C2A90/AABB8C2C90
+теперь source и подключены к обычным SetCharacterClipping/ProcessClipping.
+См. research/client455-normal-character-interface.md и client455-frustum.md.
+9238A0 — уже восстановленный lazy loader/dispatcher; вызов его из92FBA0 перед
+main draw не доказывает culling. Высокоуровневая camera/actor visibility и
+подключение scene publisher к normal D3D9 Character context ещё открыты.
+
 Воспроизведение через scripts/Invoke-Python.ps1:
 audit_client455_character_draw.py → build_client455_draw.py →
 probe_client455_draw.py → build_client455_character_draw.py →

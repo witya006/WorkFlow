@@ -12,7 +12,14 @@
 
 ## Текущий статус
 
-Новейший участок M6: main Character draw030/effects/transparency/batch/CPU/shadow
+Новейший участок M6: scene-frustum031 source подключён к обычным camera-plane/
+CResObject clipping calls. Численные случаи,9actor scenarios икороткая Platform01
+регрессия прошли;normal293MTobjects,lab196TUs. API audit:39oldSDKfunctions ещё
+вызываются,150field tokens требуют typed review. Следом coupled typed normal
+model/animation/Character owner/D3D9 device lifecycle port. Gate
+inventory/client455-frustum-checkpoint.json; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6: main Character draw030/effects/transparency/batch/CPU/shadow
 теперь source.16targeted сценариев и2реальных кадра прошли standalone/fullclient.
 Следом normal interface/caller audit исовместный typedmodel/animation/D3D9engine port;
 visibility/scene-frustum/CRT/undefined/device lifecycle domains ещё открыты.

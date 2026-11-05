@@ -1491,11 +1491,22 @@
       ],
       "gaps":[
         "NormaltypedCharacter-model-animation-engineD3D9 integration notdone;allnormal source APIs stripped",
-        "Wrapper visibility/culling/simple92E140 andexternal8C2A90 scenefrustum publication/device lifecycle remainopen",
+        "As of030 wrapper visibility/simple92E140/device lifecycle open;031restores scene8C2A90/AABB separately,normalD3D9Character context stillopen",
         "Firstbump material scratch andzero-weight CPU initialtemp values undefinedinreference;explicit source zero seeds notoriginalstack parity",
         "Explicitlab modernMTsin-cos(double)->float isnot original staticCRT bitparity;unsafe-OOM-unmaskedFP-errorUI/fullprivateABI notcertified",
         "Syntheticbatch-shadow-CPU states are not alloriginalgame frames;normalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 open"
       ]
+    },
+    {
+    "id": "SCENE-FRUSTUM-031",
+    "status": "partial",
+    "description": "Source455 camera-plane producer andAABB integrated into actualnormal SetCharacterClipping/ProcessClipping;fullcamera/actor visibility remainsopen",
+    "reference": [{"rva":"0x4c2a90","role":"View-projection plane publisher"},{"rva":"0x4c2c90","role":"AABB ordered supportvertex andunordered-dot behavior"}],
+    "option": "RF_CLIENT_455_FRUSTUM",
+    "implementation": ["scripts/native/client455_frustum.h","scripts/native/client455_frustum.cpp","scripts/native/client455_frustum_system.cpp"],
+    "verification": "72matrix/204AABB cases across12PC-RC modes standalone/actualfullclientpublisher;9actualactor cases;device-Platform01 frames unchanged.293normal modern x86MT objects;twoactual calltargets resolved;oldSDKclippingreferences absent. No bulk unchanged suites.",
+    "evidence": ["inventory/client455-frustum-reference.json","inventory/client455-frustum-build.json","inventory/client455-frustum-link.json","inventory/client455-frustum-client.json","inventory/client455-frustum-graphics.json","inventory/client455-frustum-checkpoint.json","research/client455-frustum.md"],
+    "gaps": ["Fullnormalcamera/visibility/actorlifecycle/typedCharacter455-D3D9renderer integration","CRT errno-matherr/unmasked exceptions/nonfinite normalization payloads","Missingmathruntime failure policy differsfromoriginal mandatoryimport initialization"]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

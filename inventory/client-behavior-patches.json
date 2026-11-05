@@ -1597,7 +1597,7 @@
     "file": "work/client-build/source/RF_Client/cresobject.cpp",
     "original_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
     "input_sha256": "ed88f709e57e32fc05c62a8e7bd5e6cfefd662040c23bde60c6e7675eba98438",
-    "patched_sha256": "946b78723cb2909912ea2eea8359518c04385da5fed6cc8b78fa4f0eddae6f9a",
+    "patched_sha256": "5d8eab0e27a1b8899e917f687ba5d9a4cb5d8ae7f14196dd11a29611a9a75d33",
     "build_option": "RF_CLIENT_455_DRAW_ARGUMENTS",
     "legacy_branch_preserved": true,
     "reason": "455 passes object m_fScale and zero scroll; no invented legacy default arguments.",
@@ -1726,8 +1726,9 @@
       }
     ],
     "build_options": [
+      "RF_CLIENT_455_ANIMATION_TIMING",
       "RF_CLIENT_455_DRAW_ARGUMENTS",
-      "RF_CLIENT_455_ANIMATION_TIMING"
+      "RF_CLIENT_455_FRUSTUM"
     ],
     "animation_timing": {
       "option": "RF_CLIENT_455_ANIMATION_TIMING",
@@ -1825,6 +1826,115 @@
           ]
         }
       ]
+    },
+    "frustum": {
+      "option": "RF_CLIENT_455_FRUSTUM",
+      "upstream_sha256": "946b78723cb2909912ea2eea8359518c04385da5fed6cc8b78fa4f0eddae6f9a",
+      "reference_report_sha256": "f36293de56376a8698422151097ea759444f6db217e52fe49f9fbae57319d853",
+      "binary_evidence": [
+        {
+          "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "scene_publish",
+              "rva": "0x4c2a90",
+              "bytes": 508,
+              "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+            },
+            {
+              "name": "aabb",
+              "rva": "0x4c2c90",
+              "bytes": 171,
+              "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+            },
+            {
+              "name": "copy_planes",
+              "rva": "0x4c2dc0",
+              "bytes": 21,
+              "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+            },
+            {
+              "name": "sqrt_entry",
+              "rva": "0x474500",
+              "bytes": 20,
+              "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+            },
+            {
+              "name": "sqrt_core",
+              "rva": "0x47451d",
+              "bytes": 157,
+              "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+            },
+            {
+              "name": "sqrt_load_cw",
+              "rva": "0x488dd5",
+              "bytes": 23,
+              "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+            },
+            {
+              "name": "sqrt_classify_exit",
+              "rva": "0x488e48",
+              "bytes": 77,
+              "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+            }
+          ]
+        },
+        {
+          "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "scene_publish",
+              "rva": "0x4c2a90",
+              "bytes": 508,
+              "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+            },
+            {
+              "name": "aabb",
+              "rva": "0x4c2c90",
+              "bytes": 171,
+              "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+            },
+            {
+              "name": "copy_planes",
+              "rva": "0x4c2dc0",
+              "bytes": 21,
+              "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+            },
+            {
+              "name": "sqrt_entry",
+              "rva": "0x474500",
+              "bytes": 20,
+              "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+            },
+            {
+              "name": "sqrt_core",
+              "rva": "0x47451d",
+              "bytes": 157,
+              "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+            },
+            {
+              "name": "sqrt_load_cw",
+              "rva": "0x488dd5",
+              "bytes": 23,
+              "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+            },
+            {
+              "name": "sqrt_classify_exit",
+              "rva": "0x488e48",
+              "bytes": 77,
+              "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+            }
+          ]
+        }
+      ],
+      "source_apis": [
+        "RF455_IsBBoxInFrustum"
+      ],
+      "scope": "Only scene-frustum producer/math consumer;old actor bound-box/lifecycle behavior retained,not full455actor acceptance"
     }
   },
   {
@@ -1913,6 +2023,126 @@
         "scope": "This success edge enters lobby loading directly; no general claim about 455 file verification elsewhere."
       }
     ]
+  },
+  {
+    "file": "work/client-build/source/RF_Client/global.cpp",
+    "original_sha256": "5276bb35cba51f02a625b35359113b573b5a8cada5ae60e4fc56e556485b4412",
+    "input_sha256": "5276bb35cba51f02a625b35359113b573b5a8cada5ae60e4fc56e556485b4412",
+    "build_option": "RF_CLIENT_455_FRUSTUM",
+    "legacy_branch_preserved": true,
+    "frustum": {
+      "option": "RF_CLIENT_455_FRUSTUM",
+      "upstream_sha256": "5276bb35cba51f02a625b35359113b573b5a8cada5ae60e4fc56e556485b4412",
+      "reference_report_sha256": "f36293de56376a8698422151097ea759444f6db217e52fe49f9fbae57319d853",
+      "binary_evidence": [
+        {
+          "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "scene_publish",
+              "rva": "0x4c2a90",
+              "bytes": 508,
+              "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+            },
+            {
+              "name": "aabb",
+              "rva": "0x4c2c90",
+              "bytes": 171,
+              "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+            },
+            {
+              "name": "copy_planes",
+              "rva": "0x4c2dc0",
+              "bytes": 21,
+              "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+            },
+            {
+              "name": "sqrt_entry",
+              "rva": "0x474500",
+              "bytes": 20,
+              "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+            },
+            {
+              "name": "sqrt_core",
+              "rva": "0x47451d",
+              "bytes": 157,
+              "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+            },
+            {
+              "name": "sqrt_load_cw",
+              "rva": "0x488dd5",
+              "bytes": 23,
+              "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+            },
+            {
+              "name": "sqrt_classify_exit",
+              "rva": "0x488e48",
+              "bytes": 77,
+              "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+            }
+          ]
+        },
+        {
+          "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "functions": [
+            {
+              "name": "scene_publish",
+              "rva": "0x4c2a90",
+              "bytes": 508,
+              "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+            },
+            {
+              "name": "aabb",
+              "rva": "0x4c2c90",
+              "bytes": 171,
+              "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+            },
+            {
+              "name": "copy_planes",
+              "rva": "0x4c2dc0",
+              "bytes": 21,
+              "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+            },
+            {
+              "name": "sqrt_entry",
+              "rva": "0x474500",
+              "bytes": 20,
+              "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+            },
+            {
+              "name": "sqrt_core",
+              "rva": "0x47451d",
+              "bytes": 157,
+              "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+            },
+            {
+              "name": "sqrt_load_cw",
+              "rva": "0x488dd5",
+              "bytes": 23,
+              "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+            },
+            {
+              "name": "sqrt_classify_exit",
+              "rva": "0x488e48",
+              "bytes": 77,
+              "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+            }
+          ]
+        }
+      ],
+      "source_apis": [
+        "RF455_PublishSystemCharacterFrustum"
+      ],
+      "scope": "Only scene-frustum producer/math consumer;old actor bound-box/lifecycle behavior retained,not full455actor acceptance"
+    },
+    "build_options": [
+      "RF_CLIENT_455_FRUSTUM"
+    ],
+    "patched_sha256": "9e8a0b745a05f77d5c4d0b20659eeb8fa210240219f315cb8abe257ce8a82f49"
   },
   {
     "file": "work/client-build/source/RF_Client/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp",

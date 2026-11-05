@@ -1,0 +1,855 @@
+{
+  "scope": "Normal compiled client/R3Engine named Character consumers;field tokens are candidates,not full AST/indirect-call completeness",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
+  "exe_sha256": "198c2dd38f5f0c78bedbea8d70f6712981ef63b042a21cf4fa16db89bbbcc6b4",
+  "entry_rva": "0x1bc610",
+  "objects": 247,
+  "client_objects": 180,
+  "engine_objects": 67,
+  "total_named_references": 164,
+  "reference_status": {
+    "linked_direct_call": 139,
+    "linked_named_address": 23,
+    "object_reference_only": 2
+  },
+  "linked_direct_calls": 139,
+  "linked_distinct_symbols": 45,
+  "linked_owners": {
+    "ChInterface": 38,
+    "CRender": 59,
+    "EffectObjectManager": 2,
+    "EffectList": 4,
+    "ChAnimation": 15,
+    "AlphaMeshManager": 2,
+    "EffectFileList": 1,
+    "EffectPatternList": 1,
+    "ItemEffectList": 1,
+    "global": 5,
+    "CHARACTEROBJECT": 2,
+    "CObjectManager": 6,
+    "AnimationManager": 3
+  },
+  "field_candidate_count": 150,
+  "functions": [
+    {
+      "symbol": "??0AnimationManager@@QAE@XZ",
+      "owner": "AnimationManager",
+      "declaration": "public: __thiscall AnimationManager::AnimationManager(void)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredManagers:managers.obj"
+      ]
+    },
+    {
+      "symbol": "??0CObjectManager@@QAE@XZ",
+      "owner": "CObjectManager",
+      "declaration": "public: __thiscall CObjectManager::CObjectManager(void)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredManagers:managers.obj"
+      ]
+    },
+    {
+      "symbol": "??0ChInterface@@QAE@XZ",
+      "owner": "ChInterface",
+      "declaration": "public: __thiscall ChInterface::ChInterface(void)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredManagers:managers.obj"
+      ]
+    },
+    {
+      "symbol": "??1AnimationManager@@QAE@XZ",
+      "owner": "AnimationManager",
+      "declaration": "public: __thiscall AnimationManager::~AnimationManager(void)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_05.obj"
+      ]
+    },
+    {
+      "symbol": "??1CObjectManager@@QAE@XZ",
+      "owner": "CObjectManager",
+      "declaration": "public: __thiscall CObjectManager::~CObjectManager(void)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "??1CRender@@QAE@XZ",
+      "owner": "CRender",
+      "declaration": "public: __thiscall CRender::~CRender(void)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?AddAnimationData@ChInterface@@QAEPAVChAnimation@@PAVAnimationManager@@PAD@Z",
+      "owner": "ChInterface",
+      "declaration": "public: class ChAnimation * __thiscall ChInterface::AddAnimationData(class AnimationManager *,char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/datatable/cresourcedatamgr.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?AnimationReset@ChInterface@@QAEXPAVCHARACTEROBJECT@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::AnimationReset(class CHARACTEROBJECT *)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?BeginShadow@CRender@@QAEHK@Z",
+      "owner": "CRender",
+      "declaration": "public: int __thiscall CRender::BeginShadow(unsigned long)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?DrawAlpahMesh@AlphaMeshManager@@QAEXXZ",
+      "owner": "AlphaMeshManager",
+      "declaration": "public: void __thiscall AlphaMeshManager::DrawAlpahMesh(void)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_maingame.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_10.obj"
+      ]
+    },
+    {
+      "symbol": "?DrawCharacter@CRender@@QAEXPAVCHARACTEROBJECT@@QAMMMM@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::DrawCharacter(class CHARACTEROBJECT *,float * const,float,float,float)",
+      "object_references": 5,
+      "linked_calls": 5,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_10.obj"
+      ]
+    },
+    {
+      "symbol": "?DrawCharacterShadow@CRender@@QAEXPAVCHARACTEROBJECT@@QAMMMM@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::DrawCharacterShadow(class CHARACTEROBJECT *,float * const,float,float,float)",
+      "object_references": 5,
+      "linked_calls": 5,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+        "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+        "work/client-build/source/RF_Client/character/player/cunit.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_10.obj"
+      ]
+    },
+    {
+      "symbol": "?EndShadow@CRender@@QAEXXZ",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::EndShadow(void)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?FrameMove@CRender@@QAEXPAVCHARACTEROBJECT@@@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::FrameMove(class CHARACTEROBJECT *)",
+      "object_references": 6,
+      "linked_calls": 6,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/character/ccharacter_etc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?GetAlpha@ChInterface@@QAEMPAVCHARACTEROBJECT@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: float __thiscall ChInterface::GetAlpha(class CHARACTEROBJECT *)",
+      "object_references": 3,
+      "linked_calls": 3,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?GetAnimationData@AnimationManager@@QAEPAVChAnimation@@K@Z",
+      "owner": "AnimationManager",
+      "declaration": "public: class ChAnimation * __thiscall AnimationManager::GetAnimationData(unsigned long)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_05.obj"
+      ]
+    },
+    {
+      "symbol": "?GetCharacter@CObjectManager@@QAEPAVCHARACTEROBJECT@@K@Z",
+      "owner": "CObjectManager",
+      "declaration": "public: class CHARACTEROBJECT * __thiscall CObjectManager::GetCharacter(unsigned long)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?ImportBoundBox@ChInterface@@QAEHPADQAM1@Z",
+      "owner": "ChInterface",
+      "declaration": "public: int __thiscall ChInterface::ImportBoundBox(char *,float * const,float * const)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?InitCharacter@ChInterface@@QAEXPAUIDirect3DDevice8@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::InitCharacter(struct IDirect3DDevice8 *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?InitEffect@CRender@@QAEXPAVCHARACTEROBJECT@@@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::InitEffect(class CHARACTEROBJECT *)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?IsHaveEffect@CHARACTEROBJECT@@QAEHXZ",
+      "owner": "CHARACTEROBJECT",
+      "declaration": "public: int __thiscall CHARACTEROBJECT::IsHaveEffect(void)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?IsHaveMeshEffect@@YA_NPAVCHARACTEROBJECT@@KKK@Z",
+      "owner": "global",
+      "declaration": "bool __cdecl IsHaveMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long,unsigned long)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?IsLoadAnimation@ChInterface@@QAE_NPAVChAnimation@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: bool __thiscall ChInterface::IsLoadAnimation(class ChAnimation *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/cresobject.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadEffect@EffectObjectManager@@SAXPAD@Z",
+      "owner": "EffectObjectManager",
+      "declaration": "public: static void __cdecl EffectObjectManager::LoadEffect(char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyyun/particlelist.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadEffectFileList@EffectFileList@@QAEXPAD@Z",
+      "owner": "EffectFileList",
+      "declaration": "public: void __thiscall EffectFileList::LoadEffectFileList(char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadEffectFileList@EffectList@@QAEXPAD@Z",
+      "owner": "EffectList",
+      "declaration": "public: void __thiscall EffectList::LoadEffectFileList(char *)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadEffectPatternList@EffectPatternList@@QAEXPAD@Z",
+      "owner": "EffectPatternList",
+      "declaration": "public: void __thiscall EffectPatternList::LoadEffectPatternList(char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadItemListFile@ItemEffectList@@QAEXPAD@Z",
+      "owner": "ItemEffectList",
+      "declaration": "public: void __thiscall ItemEffectList::LoadItemListFile(char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadMeshData@ChInterface@@QAEPAVCHARACTEROBJECT@@PAVCObjectManager@@PAD_NPAV2@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: class CHARACTEROBJECT * __thiscall ChInterface::LoadMeshData(class CObjectManager *,char *,bool,class CHARACTEROBJECT *)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/datatable/cresourcedatamgr.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadRealAnimation@ChAnimation@@QAE_N_N@Z",
+      "owner": "ChAnimation",
+      "declaration": "public: bool __thiscall ChAnimation::LoadRealAnimation(bool)",
+      "object_references": 15,
+      "linked_calls": 15,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp",
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_05.obj"
+      ]
+    },
+    {
+      "symbol": "?LoadRealData@CRender@@QAE_NPAVCHARACTEROBJECT@@PAVTextureManager@@_N@Z",
+      "owner": "CRender",
+      "declaration": "public: bool __thiscall CRender::LoadRealData(class CHARACTEROBJECT *,class TextureManager *,bool)",
+      "object_references": 3,
+      "linked_calls": 3,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/global.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?MatchAnimationToMesh@ChInterface@@QAEXPAVChAnimation@@PAVCHARACTEROBJECT@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::MatchAnimationToMesh(class ChAnimation *,class CHARACTEROBJECT *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/cresobject.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?RematchParent@ChInterface@@QAEXPAVCHARACTEROBJECT@@0@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::RematchParent(class CHARACTEROBJECT *,class CHARACTEROBJECT *)",
+      "object_references": 3,
+      "linked_calls": 3,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_charactercreate.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?SetAlpha@ChInterface@@QAEXPAVCHARACTEROBJECT@@M@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::SetAlpha(class CHARACTEROBJECT *,float)",
+      "object_references": 10,
+      "linked_calls": 10,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?SetEffect@EffectList@@QAEXPAVCHARACTEROBJECT@@K@Z",
+      "owner": "EffectList",
+      "declaration": "public: void __thiscall EffectList::SetEffect(class CHARACTEROBJECT *,unsigned long)",
+      "object_references": 2,
+      "linked_calls": 2,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredSetters:effect_setter.obj"
+      ]
+    },
+    {
+      "symbol": "?SetEyeVec@ChInterface@@QAEXPADPAVCHARACTEROBJECT@@UD3DXMATRIX@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::SetEyeVec(char *,class CHARACTEROBJECT *,struct D3DXMATRIX)",
+      "object_references": 7,
+      "linked_calls": 7,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyjang/monsterspecialeffect.cpp",
+        "work/client-build/source/RF_Client/character/player/cbaseplayer.cpp",
+        "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?SetLight@CRender@@QAEXU_D3DLIGHT8@@@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::SetLight(struct _D3DLIGHT8)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/cresobject.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?SetMaterial@ChInterface@@QAEXPAVCHARACTEROBJECT@@AAU_D3DMATERIAL8@@@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::SetMaterial(class CHARACTEROBJECT *,struct _D3DMATERIAL8 &)",
+      "object_references": 4,
+      "linked_calls": 4,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/character/npc/cnpc.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_06.obj"
+      ]
+    },
+    {
+      "symbol": "?SetMeshEffect@@YAXPAVCHARACTEROBJECT@@KKK@Z",
+      "owner": "global",
+      "declaration": "void __cdecl SetMeshEffect(class CHARACTEROBJECT *,unsigned long,unsigned long,unsigned long)",
+      "object_references": 3,
+      "linked_calls": 3,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?SetMipMap@CRender@@QAEXK@Z",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::SetMipMap(unsigned long)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredSetters:setters.obj"
+      ]
+    },
+    {
+      "symbol": "?SetPartEffect@EffectObjectManager@@SAHPAVCHARACTEROBJECT@@PADH@Z",
+      "owner": "EffectObjectManager",
+      "declaration": "public: static int __cdecl EffectObjectManager::SetPartEffect(class CHARACTEROBJECT *,char *,int)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?SetState@CRender@@QAEXXZ",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::SetState(void)",
+      "object_references": 16,
+      "linked_calls": 16,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
+        "work/client-build/source/RF_Client/addcodebyjang/monsterspecialeffect.cpp",
+        "work/client-build/source/RF_Client/addcodebyjang/playerspecialeffect.cpp",
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp",
+        "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp",
+        "work/client-build/source/RF_Client/gameobject/manager/cgrounditemmanager.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_charactercreate.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?SetTexPath@ChInterface@@QAEXPAVCHARACTEROBJECT@@PAD@Z",
+      "owner": "ChInterface",
+      "declaration": "public: void __thiscall ChInterface::SetTexPath(class CHARACTEROBJECT *,char *)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/datatable/cresourcedatamgr.cpp"
+      ],
+      "providers": [
+        "CharacterRecoveredSetters:setters.obj"
+      ]
+    },
+    {
+      "symbol": "?UnSetState@CRender@@QAEXXZ",
+      "owner": "CRender",
+      "declaration": "public: void __thiscall CRender::UnSetState(void)",
+      "object_references": 15,
+      "linked_calls": 15,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyjang/effectutil.cpp",
+        "work/client-build/source/RF_Client/addcodebyjang/monsterspecialeffect.cpp",
+        "work/client-build/source/RF_Client/addcodebyjang/playerspecialeffect.cpp",
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/cresobject.cpp",
+        "work/client-build/source/RF_Client/gameobject/manager/ccharactermgr.cpp",
+        "work/client-build/source/RF_Client/gameobject/manager/cgrounditemmanager.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_charactercreate.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp",
+        "work/client-build/source/RF_Client/userinterface/gamewindow/npc/guiexchangewindow.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?_R3CalculateTime@@YAXXZ",
+      "owner": "global",
+      "declaration": "void __cdecl _R3CalculateTime(void)",
+      "object_references": 1,
+      "linked_calls": 1,
+      "linked_address_references": 0,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/mainapp.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?g_AMeshManager@@3VAlphaMeshManager@@A",
+      "owner": "global",
+      "declaration": "class AlphaMeshManager g_AMeshManager",
+      "object_references": 2,
+      "linked_calls": 0,
+      "linked_address_references": 2,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_maingame.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_10.obj"
+      ]
+    },
+    {
+      "symbol": "?g_ChMemoryInfo@@3UCHMEMORYINFO@@A",
+      "owner": "global",
+      "declaration": "struct CHMEMORYINFO g_ChMemoryInfo",
+      "object_references": 8,
+      "linked_calls": 0,
+      "linked_address_references": 8,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/addcodebyjang/foreffect.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?g_EFFMonList@@3VEffectList@@A",
+      "owner": "global",
+      "declaration": "class EffectList g_EFFMonList",
+      "object_references": 2,
+      "linked_calls": 0,
+      "linked_address_references": 2,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp",
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?g_EFFUnitList@@3VEffectList@@A",
+      "owner": "global",
+      "declaration": "class EffectList g_EFFUnitList",
+      "object_references": 2,
+      "linked_calls": 0,
+      "linked_address_references": 2,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp",
+        "work/client-build/source/RF_Client/item/citemdata.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?g_EffectFileList@@3VEffectFileList@@A",
+      "owner": "global",
+      "declaration": "class EffectFileList g_EffectFileList",
+      "object_references": 1,
+      "linked_calls": 0,
+      "linked_address_references": 1,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?g_EffectItemList@@3VItemEffectList@@A",
+      "owner": "global",
+      "declaration": "class ItemEffectList g_EffectItemList",
+      "object_references": 1,
+      "linked_calls": 0,
+      "linked_address_references": 1,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?g_PatternList@@3VEffectPatternList@@A",
+      "owner": "global",
+      "declaration": "class EffectPatternList g_PatternList",
+      "object_references": 1,
+      "linked_calls": 0,
+      "linked_address_references": 1,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/gameprogress/cgp_login.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_03.obj"
+      ]
+    },
+    {
+      "symbol": "?m_Render@CRender@@0PAV1@A",
+      "owner": "CRender",
+      "declaration": "private: static class CRender * CRender::m_Render",
+      "object_references": 1,
+      "linked_calls": 0,
+      "linked_address_references": 1,
+      "caller_sources": [
+        "work/client-build/source/RF_Client/character/npc/cbasenpc.cpp"
+      ],
+      "providers": [
+        "CharacterMR-mesh-source:character_09.obj"
+      ]
+    },
+    {
+      "symbol": "?stTime@@3MA",
+      "owner": "global",
+      "declaration": "float stTime",
+      "object_references": 7,
+      "linked_calls": 0,
+      "linked_address_references": 5,
+      "caller_sources": [
+        "work/client-build/source/R3Engine/1stclass/multilayer.cpp"
+      ],
+      "providers": [
+        "R3EngineMT:multilayer.obj"
+      ]
+    }
+  ],
+  "artifact": "artifacts/client-character-interface/normal-references.json",
+  "artifact_sha256": "9fc6cd4a3d5d5eee7d07d1c03ff56c68f194b52e12b7ba458084f02fea0cfd78",
+  "contracts_sha256": "f134de4abdb6c9cb6e3c0e770c37b471997be402a82c27609c054612a61d1262",
+  "header_sha256": "5d424272d3af6b6fa984da15047d1102bd406a6f56b3269273cbae3e9cad3cfc",
+  "script_sha256": "9793f46a8553540385847015a12f7092a76abca9569186ff416db1228a16bd28",
+  "parser_sha256": "7877d8f75ff76dfb6e269d440eb664d7da6d5db1b912a72ff1d0f964e1a306b9",
+  "limits": [
+    "Only named relocations in current normal objects;SDK internalcallee closure/indirectcalls not claimed complete",
+    "No455 mapping inferred from a legacy method name",
+    "Lexical member references can belong to another type;typed source review required",
+    "Linked locations with target_unproven remain unproven,never counted asverifiedcalls",
+    "No source orbinary inputs mutated;no runtime suites orinputEXEs executed"
+  ]
+}

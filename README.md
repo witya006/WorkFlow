@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: основной Character draw/эффекты/прозрачность/batch/CPU/shadow
+Последний участок M6: восстановленный расчёт плоскостей камеры иAABB подключён
+к обычным SetCharacterClipping/CResObject::ProcessClipping. Численные/actor cases
+и короткая Platform01 регрессия прошли. Normal Character API audit завершён:
+ещё39функций старогоSDK. Следом совместный typed model/animation/Character owner/
+D3D9 device port. Gate inventory/client455-frustum-checkpoint.json;
+research/client455-normal-character-interface.md. M6/M9 остаются открытыми.
+
+Предыдущий участок M6: основной Character draw/эффекты/прозрачность/batch/CPU/shadow
 перенесены в source.16targeted сценариев и реальная модель с ANI/3textures прошли
 отдельно и внутри client lab; два кадра совпали. Normal typed model/animation/
 D3D9engine migration,visibility/CRT/undefined domains ещё открыты. M6/M9 не закрыты.

@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-05T10:22:24.287342+00:00",
+  "checked_at_utc": "2026-11-05T11:02:41.965063+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 195,
+  "generated_objects": 196,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -30,6 +30,7 @@
     "RF_RECOVERED_CHARACTER_INCLUDE": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/include",
     "RF_CLIENT_455_ANIMATION_TIMING": "ON",
     "RF_CLIENT_455_CLOCK": "ON",
+    "RF_CLIENT_455_FRUSTUM": "ON",
     "RF_CLIENT_455_HELPER_LOADER": "ON",
     "RF_CLIENT_455_LOOP_CLOCK": "ON",
     "RF_CLIENT_455_MAP_TIME": "ON",
@@ -77,10 +78,19 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "f589392d826ee3d5277ff8ec40550f33228212917e0678bbe102fdc180a36c4a",
+    "scripts/native/client_helper_lab.cpp": "da5e857e27297f9b4fafcdd7b8655192cbedf4a6b516db8e6df75cb2ef743529",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "ee98e3caa31cbf5d4e78e919cb37fc9ac317661c958a7028acf9770c7a6f0f9d"
+  },
+  "frustum_input_sha256": {
+    "scripts/native/client455_frustum.h": "7bf9a015840c8bca08203c431a3c0a712f31062e89e816059ccf673579f241a9",
+    "scripts/native/client455_frustum.cpp": "1a8d0f24d2912ffcba51914c45dc30c1cad6ffd8d94438b4e7ef56e6767be19b",
+    "scripts/native/client455_frustum_system.cpp": "80a124936ade5b16a15573a451a7c3a0d8f56480fc70198c2d351204dde6a1a4",
+    "scripts/native/test_client455_frustum.cpp": "b7a9ed152faafda70bd9da15faae093fd3f5ad4af1c5fbb9e232d3e24ec99503",
+    "scripts/native/client_frustum_lab.inc": "60426f099d727ed47b8960edb10dae4e7c10f20d21bef265fbc3f8dd93e4825b",
+    "work/client-build/source/RF_Client/global.cpp": "9e8a0b745a05f77d5c4d0b20659eeb8fa210240219f315cb8abe257ce8a82f49",
+    "work/client-build/source/RF_Client/cresobject.cpp": "5d8eab0e27a1b8899e917f687ba5d9a4cb5d8ae7f14196dd11a29611a9a75d33"
   },
   "draw_input_sha256": {
     "scripts/native/client455_draw.cpp": "e16a877331e1cb158a5903c5b79e6780ab930524d59861f62ab41ac414ccb277",
@@ -123,7 +133,7 @@
     "scripts/native/client455_animation_timing.h": "bd64d105c1a4f21c318a6e828e5ecd31c528c338a21c74f80558c727cbc66dfb",
     "scripts/native/test_client455_animation_timing.cpp": "81b3a67f86bbe3ac1ad9a0d06a827e128673e51a3f2e6b0d67e05aefbb599b52",
     "scripts/native/client_animation_timing_lab.inc": "70198ffaac2a3301d3b12973007095086868d6a7f6c0ded7bd9aecfbd9985ce4",
-    "work/client-build/source/RF_Client/cresobject.cpp": "946b78723cb2909912ea2eea8359518c04385da5fed6cc8b78fa4f0eddae6f9a"
+    "work/client-build/source/RF_Client/cresobject.cpp": "5d8eab0e27a1b8899e917f687ba5d9a4cb5d8ae7f14196dd11a29611a9a75d33"
   },
   "mesh08_input_sha256": {
     "scripts/native/client455_mesh08.cpp": "be59a96edbcc4b243bd3071935466fe3c565f184573bbfb4659b3c2269dc4096",

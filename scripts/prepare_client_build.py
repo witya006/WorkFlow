@@ -102,6 +102,16 @@ option(RF_CLIENT_455_CLOCK "Restore exact x87 day and real-time clock arithmetic
 option(RF_CLIENT_455_TIME_COMMANDS "Restore grade-gated local time text commands" OFF)
 option(RF_CLIENT_455_ANIMATION_TIMING "Restore source455 frame arithmetic and animation control constructor" OFF)
 option(RF_CLIENT_455_LOOP_CLOCK "Restore source455 elapsed clock, time scale and frame toggles" OFF)
+option(RF_CLIENT_455_FRUSTUM "Restore source455 scene-frustum and actual object clipping math" OFF)
+if(RF_CLIENT_455_FRUSTUM)
+  target_sources(R3EngineClientMT PRIVATE
+    "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_frustum.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_frustum_system.cpp")
+  target_include_directories(R3EngineClientMT PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native")
+  set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client/global.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/source/RF_Client/cresobject.cpp"
+    APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_FRUSTUM)
+endif()
 if(RF_CLIENT_455_LOOP_CLOCK)
   target_sources(R3EngineClientMT PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client455_loop_clock.cpp")
   target_include_directories(R3EngineClientMT PUBLIC "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native")
@@ -228,6 +238,13 @@ target_include_directories(RF_Online PRIVATE
 option(RF_CLIENT_HELPER_LAB "Diagnostic helper-only entry in the full client; no normal game startup" OFF)
 if(RF_CLIENT_HELPER_LAB)
   target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp")
+  if(RF_CLIENT_455_FRUSTUM)
+    target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_frustum.cpp")
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_frustum.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF455_FRUSTUM_EMBEDDED)
+    set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/client_helper_lab.cpp"
+      APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_FRUSTUM)
+  endif()
   if(RF_CLIENT_455_LOOP_CLOCK)
     target_sources(RF_Online PRIVATE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_loop_clock.cpp")
     set_property(SOURCE "${CMAKE_CURRENT_LIST_DIR}/../../scripts/native/test_client455_loop_clock.cpp"

@@ -11,20 +11,35 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — Character main draw030: main92E5F0/effect stage/transparent
+Последний unit — scene frustum031: producer/AABB source подключены к обычным
+SetCharacterClipping/ProcessClipping.72matrix/204AABB cases/12FP modes и9actual
+CResObject cases прошли; device/Platform01 кадры прежние. Normal293MTobjects,
+lab196clientTUs. Gate inventory/client455-frustum-checkpoint.json;
+research/client455-frustum.md. Большие неизменённые runtime suites не повторялись.
+
+Normal interface/caller inventory выполнен:139calls/45symbols, из них39functions/
+131calls ещё старыйSDK.150field tokens требуют typed review; indirect calls иSDK
+internal closure не покрыты. research/client455-normal-character-interface.md.
+RTMOVIE macro выключен согласно оригинальным CPP flags, не включать вслепую.
+9238A0 — уже source lazy loader, его wrapper92FBA0 не доказывает culling.
+
+Следующий практический шаг — согласованный typed normal model/animation/Character
+owner иD3D9 device lifecycle port: использовать восстановленные loading/pose/draw,
+проверить оставшиеся normal API/field consumers по инвентарю. Не подменять один
+AnimationManager и не rawcast old/new layouts. Затем подключать реальный
+model→pose→draw/camera путь в обычном клиенте. Это воспроизведение455, не M8.
+Полный actor visibility/simple92E140/CRT/undefined scratch/device reset/unwind
+и deployment failure policy остаются открытыми. Делегирование только по запросу.
+
+Предыдущий unit — Character main draw030: main92E5F0/effect stage/transparent
 queue+flush/batch capture+flush/CPU retained/shadow теперь source,8APIs.16targeted
 scenarios/185assertions и2real model frames прошли standalone/fullclient,COM/heap/
 Dmalloc0. Material проверен настоящим red GPU-pixel. Normal291MTobjects/runtime
 прежний кромеtimestamps,lab195TUs. Gate inventory/client455-character-draw-checkpoint.json;
 research/client455-character-draw.md. Большие неизменённые runtime suites не повторялись.
 
-Следующий практический шаг — normal Character interface/caller inventory: какие
-методы старого SDK ещё вызывают R3Engine и180clientTUs, какие тела/типы455 нужны
-до безопасной сменыlayout. Не подменять толькоAnimationManager или rawcast old/new.
-Делегирование только по прямому запросу пользователя. Переноситьtyped model/animation/Character
-вместе с renderer D3D9; это воспроизведение455, не модернизация графики.
-Незавершённые draw contracts: wrapper visibility/culling/simple92E140 иscene-frustum
-publisher8C2A90,device lifecycle. Original first-bump material/zero-weight CPU
+Историческая очередь после030 уточнена выше. Незавершённые draw contracts:
+high-level visibility/simple92E140/device lifecycle. Original first-bump material/zero-weight CPU
 scratch undefined,source zero seeds явноотличаются; modernMTsin/cos — explicit lab
 provider,неoriginalCRT bits. Этиграницы не считатьзакрытыми при normal integration.
 M6/M6F/M7/M9 остаютсяоткрытыми.

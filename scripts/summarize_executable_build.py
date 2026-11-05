@@ -52,7 +52,7 @@ def main():
                 settings[m[1]] = m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS|455_ANIMATION_TIMING|455_LOOP_CLOCK)):[^=]+=(.*)',line)
+            m = re.match(r'(RF_CLIENT_(?:455_HELPER_LOADER|HELPER_LAB|455_X87_MATH|455_X87_MATH_LIBRARY|455_WEATHER|455_RESOURCE_IO|455_CLOCK|455_MAP_TIME|455_TIME_COMMANDS|455_ANIMATION_TIMING|455_LOOP_CLOCK|455_FRUSTUM)):[^=]+=(.*)',line)
             if m:
                 settings[m[1]] = m[2]
     if cache.exists():
@@ -84,6 +84,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_FRUSTUM')=='ON':
+            frustum_inputs=['scripts/native/'+p for p in ['client455_frustum.h','client455_frustum.cpp','client455_frustum_system.cpp','test_client455_frustum.cpp','client_frustum_lab.inc']]+['work/client-build/source/RF_Client/global.cpp','work/client-build/source/RF_Client/cresobject.cpp']
+            report['frustum_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in frustum_inputs}
         if settings.get('RF_CLIENT_455_DRAW')=='ON':
             draw_inputs=['scripts/native/'+p for p in ['client455_draw.cpp','client455_draw.h','test_client455_draw.cpp','client_draw_lab.inc']]
             report['draw_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in draw_inputs}

@@ -1,0 +1,116 @@
+{
+  "scope": "455 scene frustum and AABB math;normal actor lifecycle and full game visibility remain open",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "scene_publish",
+          "rva": "0x4c2a90",
+          "bytes": 508,
+          "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+        },
+        {
+          "name": "aabb",
+          "rva": "0x4c2c90",
+          "bytes": 171,
+          "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+        },
+        {
+          "name": "copy_planes",
+          "rva": "0x4c2dc0",
+          "bytes": 21,
+          "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+        },
+        {
+          "name": "sqrt_entry",
+          "rva": "0x474500",
+          "bytes": 20,
+          "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+        },
+        {
+          "name": "sqrt_core",
+          "rva": "0x47451d",
+          "bytes": 157,
+          "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+        },
+        {
+          "name": "sqrt_load_cw",
+          "rva": "0x488dd5",
+          "bytes": 23,
+          "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+        },
+        {
+          "name": "sqrt_classify_exit",
+          "rva": "0x488e48",
+          "bytes": 77,
+          "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "scene_publish",
+          "rva": "0x4c2a90",
+          "bytes": 508,
+          "sha256": "052a1ff02ee271124803f83597ad3e33b5578d9f06606a8c89493a6365750fe5"
+        },
+        {
+          "name": "aabb",
+          "rva": "0x4c2c90",
+          "bytes": 171,
+          "sha256": "6d259dac855988a837432c998ae7bd574a4584e60a38d1d208f22745efd436b3"
+        },
+        {
+          "name": "copy_planes",
+          "rva": "0x4c2dc0",
+          "bytes": 21,
+          "sha256": "bc842acbd4711d2f2d66915ceebc0a71d08f7a5682be11fee72a9d832ca123f8"
+        },
+        {
+          "name": "sqrt_entry",
+          "rva": "0x474500",
+          "bytes": 20,
+          "sha256": "fbad3efd60ea9171c092ba5e42ed652e30a17261ed37eebcdc9a7c23afb45458"
+        },
+        {
+          "name": "sqrt_core",
+          "rva": "0x47451d",
+          "bytes": 157,
+          "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+        },
+        {
+          "name": "sqrt_load_cw",
+          "rva": "0x488dd5",
+          "bytes": 23,
+          "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+        },
+        {
+          "name": "sqrt_classify_exit",
+          "rva": "0x488e48",
+          "bytes": 77,
+          "sha256": "23a9d683a278a3b322f0a7e7d67c12438e2384af9ba06ae0b08928134c855713"
+        }
+      ]
+    }
+  ],
+  "matrix_cases": 72,
+  "bbox_cases": 204,
+  "fp_modes": 12,
+  "golden": "work/client-reference/frustum455/frustum.bin",
+  "golden_sha256": "fcd8244277f602d98f467f7528fad35bd439f1c4590353439631c9f9f1a5951e",
+  "script_sha256": "30a0f26090bbb00c5540d578ee59321b8af225ece499730cff0a9221cf07ee8d",
+  "oracle": "Exact Fraction x87 operations,integer-square-root nearest at inherited PC,explicit m32 spills,12PC/RC modes;binary-exact input matrix products independent of D3DX rounding. qNaN rejection branch separately modeled.",
+  "provider_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "limits": [
+    "Sqrt proof covers finite nonnegative inputs with masked exceptions;CRT errno/matherr,NaN payloads,unmasked exceptions not accepted",
+    "Real camera matrix acquisition/full game visibility not accepted",
+    "No input455EXE execution;no percentage inferred from check count"
+  ]
+}

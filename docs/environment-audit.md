@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение05.11: source scene-frustum использует прежнюю pinned x86 D3DX9_36,
+устанавливать ничего не требовалось. Нормальные SetCharacterClipping/CResObject
+подключены к source math;72matrix/204AABB/9actor scenarios икороткая Platform01
+регрессия прошли. Normal293MTobjects,lab196clientTUs. Named Character API audit
+247objects завершён;39oldSDKfunctions ещё вызываются. Native IDA session закрыта/save.
+inventory/client455-frustum-checkpoint.json;research/client455-normal-character-interface.md.
+
 Последнее дополнение: основной Character draw/эффекты/deferred paths source
 проверены на том же D3D9HAL/pinnedD3DX9_36 отдельно и в полном client lab:
 16targeted scenarios/185assertions,2realmodel frames,COM/heap/Dmalloc0. Lab195TUs,

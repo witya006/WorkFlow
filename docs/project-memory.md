@@ -23,6 +23,29 @@
 
 ## Последний проверенный результат
 
+Scene frustum031 подключён к обычным SetCharacterClipping/ProcessClipping.
+Source client455_frustum.{h,cpp}/system.cpp:8C2A90/8C2C90,pinnedD3DX9_36,
+x87 float spills/finite masked sqrt CW.72matrix/204AABB/12FP modes прошли отдельно
+и через actual publisher;9actor cases прошли,Dmalloc0. Device/Platform01: прежние
+frame SHA,COM0,warnings/errors0. Normal2451968B/entry1BC610,
+SHA198c2dd38f5f0c78bedbea8d70f6712981ef63b042a21cf4fa16db89bbbcc6b4,
+snapshot character455-frustum;293modernCOFF/MT (180client+67engine+46JPEG).
+Lab196clientTUs; immutable runtime path/hash в client455-frustum-client.json.
+Gate inventory/client455-frustum-checkpoint.json;research/client455-frustum.md.
+Normal API inventory завершён:139calls/45symbols;131calls/39functions старогоSDK,
+8calls/6source managers/setters.150field tokens только лексические кандидаты;
+indirect/SDK internal closure не покрыто.23data refs подтверждены,5stTime отsource
+multilayer;2object-only refs не включены. RTMOVIE выключен исходными CPP settings,
+не включать вслепую. research/client455-normal-character-interface.md.
+9238A0 — уже source loader/dispatch, не culling;92FBA0 делает lazy load→main draw.
+Следом coupled typed normal model/animation/Character owner иD3D9 device port,
+используя готовые loading/pose/draw модули. Fullcamera/actor visibility/CRT special
+domains/device lifecycle ещё открыты. Missing math DLL abort отличается отoriginal
+mandatory import failure;deployment policy открыт. M6/M6F/M7/M9 не закрыты.
+Owned2a568200closed/save. Большие неизменённые runtime suites не повторялись.
+
+Предыдущий результат:
+
 Main Character draw030: scripts/native/client455_character_draw.{h,cpp},core.cpp,
 internal.h;8APIs. Main92E5F0/effects92D3E0/transparent930A40/batch930650/CPU92DB60/
 shadow930120 source.13ranges/5constant ranges равныобоимpins. Effect signature5args

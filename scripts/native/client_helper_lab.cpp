@@ -224,8 +224,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_CHARACTER_DRAW)
 #include "client_character_draw_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_FRUSTUM)
+#include "client_frustum_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_FRUSTUM)
+    if (!std::strcmp(command,"--rf-frustum-scenario")) ExitProcess(frustumScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_CHARACTER_DRAW)
     if (!std::strcmp(command,"--rf-character-draw-scenario")) ExitProcess(characterDrawScenarioProbe());
 #endif

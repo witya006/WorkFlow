@@ -2,9 +2,9 @@
   "normal": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "ccee7cc0d7e4254a90cbc64870132b18827a5428d352748f1b77c37b8784dcfd",
-    "exe_bytes": 2451456,
-    "entry_rva": "0x1bc450",
+    "exe_sha256": "198c2dd38f5f0c78bedbea8d70f6712981ef63b042a21cf4fa16db89bbbcc6b4",
+    "exe_bytes": 2451968,
+    "entry_rva": "0x1bc610",
     "functions": [],
     "library_sha256": "16d7c0fd0d6d378682805db89cd6682da7cce29acdc3da01f56cafd6ed2e4656",
     "scope": "Selected pose andsecondary flow;staticCRT sine parity/normal consumers/profiling/animateddraw remain open"
@@ -12,38 +12,38 @@
   "lab": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603",
-    "exe_bytes": 5427200,
-    "entry_rva": "0x8c01",
+    "exe_sha256": "ee98e3caa31cbf5d4e78e919cb37fc9ac317661c958a7028acf9770c7a6f0f9d",
+    "exe_bytes": 5439488,
+    "entry_rva": "0x8c15",
     "functions": [
       {
         "symbol": "_RF455_SelectPoseKeys",
-        "rva": "0x3791c0",
+        "rva": "0x37bca0",
         "provider": "RFClient455Pose:pose.obj"
       },
       {
         "symbol": "_RF455_ApplyPoseScale",
-        "rva": "0x378ef0",
+        "rva": "0x37b9d0",
         "provider": "RFClient455Pose:pose.obj"
       },
       {
         "symbol": "_RF455_ApplyPoseRotation",
-        "rva": "0x378c00",
+        "rva": "0x37b6e0",
         "provider": "RFClient455Pose:pose.obj"
       },
       {
         "symbol": "_RF455_ApplyPoseTranslation",
-        "rva": "0x3790c0",
+        "rva": "0x37bba0",
         "provider": "RFClient455Pose:pose.obj"
       },
       {
         "symbol": "_RF455_UpdateCharacterPose",
-        "rva": "0x379400",
+        "rva": "0x37bee0",
         "provider": "RFClient455Pose:pose.obj"
       },
       {
         "symbol": "_RF455_ApplySecondaryMotion",
-        "rva": "0x37a490",
+        "rva": "0x37cf70",
         "provider": "RFClient455Pose:secondary.obj"
       }
     ],

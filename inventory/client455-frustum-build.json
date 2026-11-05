@@ -1,0 +1,26 @@
+{
+  "scope": "Source scene-frustum math and pinned system-matrix deployment adapter,not full game visibility",
+  "architecture": "x86",
+  "runtime": "/MT",
+  "source_sha256": {
+    "client455_frustum.h": "7bf9a015840c8bca08203c431a3c0a712f31062e89e816059ccf673579f241a9",
+    "client455_frustum.cpp": "1a8d0f24d2912ffcba51914c45dc30c1cad6ffd8d94438b4e7ef56e6767be19b",
+    "client455_frustum_system.cpp": "80a124936ade5b16a15573a451a7c3a0d8f56480fc70198c2d351204dde6a1a4",
+    "test_client455_frustum.cpp": "b7a9ed152faafda70bd9da15faae093fd3f5ad4af1c5fbb9e232d3e24ec99503"
+  },
+  "exe": "work/recovered/client455/frustum/frustum-probe.exe",
+  "exe_sha256": "095a7d5701412af68a69fb6d226a73aa3bf953828c4f9bcdabbf18f6f3730fef",
+  "entry_rva": "0x23a0",
+  "native": {
+    "status": "PASS",
+    "matrix_cases": 72,
+    "bbox_cases": 204,
+    "fp_modes": 12,
+    "checks": 973,
+    "failures": 0,
+    "actual_publisher": false
+  },
+  "output": "work/recovered/client455/frustum/result.json",
+  "output_sha256": "c4c8287d36c6097d81bfc84c90abe14ccbb506b54b6fb30d89140d1d7e33b512",
+  "reference_report_sha256": "f36293de56376a8698422151097ea759444f6db217e52fe49f9fbae57319d853"
+}

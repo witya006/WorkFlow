@@ -17,7 +17,12 @@
 без конкретного риска. Общую регрессию выполнять после сквозных изменений и при
 приёмке этапа. В отчётах указывать сценарии и их результат, а не только счётчик.
 
-Последний выбранный участок M6: расчёт кадра и CAnimation ctor подключены к обычной
+Последний выбранный участок M6: scene frustum/AABB source подключены к
+SetCharacterClipping/ProcessClipping;72matrix/204AABB cases/9actor scenarios
+и короткая Platform01 регрессия прошли. Это не полная game camera/actor visibility
+или typed Character455/D3D9 integration. Gate inventory/client455-frustum-checkpoint.json.
+
+Предыдущий результат: расчёт кадра и CAnimation ctor подключены к обычной
 сборке, 612 численных случаев/16 actual CResObject сценариев прошли. Это доказательство
 выбранного контракта; полный Character455/actor lifecycle/normal draw остаются открыты.
 Основание: inventory/client455-animation-timing-checkpoint.json.
