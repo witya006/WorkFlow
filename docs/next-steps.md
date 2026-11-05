@@ -11,7 +11,25 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — Character draw primitives029: source states/selection/material/
+Последний unit — Character main draw030: main92E5F0/effect stage/transparent
+queue+flush/batch capture+flush/CPU retained/shadow теперь source,8APIs.16targeted
+scenarios/185assertions и2real model frames прошли standalone/fullclient,COM/heap/
+Dmalloc0. Material проверен настоящим red GPU-pixel. Normal291MTobjects/runtime
+прежний кромеtimestamps,lab195TUs. Gate inventory/client455-character-draw-checkpoint.json;
+research/client455-character-draw.md. Большие неизменённые runtime suites не повторялись.
+
+Следующий практический шаг — normal Character interface/caller inventory: какие
+методы старого SDK ещё вызывают R3Engine и180clientTUs, какие тела/типы455 нужны
+до безопасной сменыlayout. Не подменять толькоAnimationManager или rawcast old/new.
+Делегирование только по прямому запросу пользователя. Переноситьtyped model/animation/Character
+вместе с renderer D3D9; это воспроизведение455, не модернизация графики.
+Незавершённые draw contracts: wrapper visibility/culling/simple92E140 иscene-frustum
+publisher8C2A90,device lifecycle. Original first-bump material/zero-weight CPU
+scratch undefined,source zero seeds явноотличаются; modernMTsin/cos — explicit lab
+provider,неoriginalCRT bits. Этиграницы не считатьзакрытыми при normal integration.
+M6/M6F/M7/M9 остаютсяоткрытыми.
+
+Предыдущий unit — Character draw primitives029: source states/selection/material/
 skinpalette/shared submission. Real BELPHEGORHOLIDAY/ANI/3textures:46geometry parts,
 44skinned,кадры160/2160; компонент и полный client lab дали одинаковые кадры.
 4analytic buffer draws также прошли;596targeted assertions,COM/heap/Dmalloc0.

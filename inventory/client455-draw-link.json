@@ -2,33 +2,33 @@
   "lab": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf",
-    "exe_bytes": 5328384,
-    "entry_rva": "0x8a8a",
+    "exe_sha256": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603",
+    "exe_bytes": 5427200,
+    "entry_rva": "0x8c01",
     "functions": [
       {
         "symbol": "_RF455_SetCharacterDrawState",
-        "rva": "0x3626c0",
+        "rva": "0x3734b0",
         "provider": "RFClient455Draw:draw.obj"
       },
       {
         "symbol": "_RF455_SelectCharacterShader",
-        "rva": "0x362630",
+        "rva": "0x373420",
         "provider": "RFClient455Draw:draw.obj"
       },
       {
         "symbol": "_RF455_SetCharacterMaterial",
-        "rva": "0x3629f0",
+        "rva": "0x3737e0",
         "provider": "RFClient455Draw:draw.obj"
       },
       {
         "symbol": "_RF455_UploadCharacterPalette",
-        "rva": "0x362ba0",
+        "rva": "0x373ae0",
         "provider": "RFClient455Draw:draw.obj"
       },
       {
         "symbol": "_RF455_SubmitSharedCharacterMesh",
-        "rva": "0x362a30",
+        "rva": "0x373970",
         "provider": "RFClient455Draw:draw.obj"
       }
     ],
@@ -146,18 +146,18 @@
         "opcode": "E8 REL32"
       }
     ],
-    "library_sha256": "11011565af31f76dd14e7aac9d33be83ee33275b6492d697dff13d5d781bd3c0",
+    "library_sha256": "66857ed3052488fa773edf18490162ff03e2fc40a758ce961a8f060289cbcd41",
     "scope": "Actual source state/material/palette/shared draw;normal D3D8/full draw routing still open"
   },
   "normal": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "bfa9ac62a6c5a320caa6822d302f37d5bad64b2fbbcbc1acca599f591463f6b1",
+    "exe_sha256": "ccee7cc0d7e4254a90cbc64870132b18827a5428d352748f1b77c37b8784dcfd",
     "exe_bytes": 2451456,
     "entry_rva": "0x1bc450",
     "functions": [],
     "actual_callsites": [],
-    "library_sha256": "11011565af31f76dd14e7aac9d33be83ee33275b6492d697dff13d5d781bd3c0",
+    "library_sha256": "66857ed3052488fa773edf18490162ff03e2fc40a758ce961a8f060289cbcd41",
     "scope": "Actual source state/material/palette/shared draw;normal D3D8/full draw routing still open"
   }
 }

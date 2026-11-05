@@ -293,6 +293,17 @@ foreach ($property in $draw.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_DRAW=ON'
 $arguments += "-DRF_CLIENT_455_DRAW_LIBRARY=$drawLibrary"
+$characterDraw = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-character-draw-build.json') -Raw | ConvertFrom-Json
+$characterDrawGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-character-draw-gpu.json') -Raw | ConvertFrom-Json
+$characterDrawLibrary = Join-Path $workspace $characterDraw.library
+if ($characterDraw.compile_only -or $characterDrawGpu.native.status -ne 'PASS' -or $characterDrawGpu.native.real_draws -ne 92 -or $characterDrawGpu.native.route_cases -ne 16 -or $characterDrawGpu.native.heap_and_com_balance -ne 0 -or
+    (Get-FileHash -LiteralPath $characterDrawLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $characterDraw.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-character-draw-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $characterDrawGpu.build_report_sha256) { throw '455 Character main draw source proof missing or stale.' }
+foreach ($property in $characterDraw.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 Character main draw source changed.' }
+}
+$arguments += '-DRF_CLIENT_455_CHARACTER_DRAW=ON'
+$arguments += "-DRF_CLIENT_455_CHARACTER_DRAW_LIBRARY=$characterDrawLibrary"
 $pose = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Raw | ConvertFrom-Json
 $poseCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-cpu.json') -Raw | ConvertFrom-Json
 $poseLibrary = Join-Path $workspace $pose.library
@@ -460,6 +471,11 @@ if ($result -eq 0) {
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_draw.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_draw.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_draw.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_character_draw.py }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 exit $result

@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-05T01:01:27.377170+00:00",
+  "checked_at_utc": "2026-11-05T10:22:24.287342+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 194,
+  "generated_objects": 195,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -45,6 +45,8 @@
     "RF_CLIENT_455_ANIMATION_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/animation/RFClient455Animation.lib",
     "RF_CLIENT_455_ANIMATION_MANAGER": "ON",
     "RF_CLIENT_455_ANIMATION_MANAGER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/animation-manager/RFClient455AnimationManager.lib",
+    "RF_CLIENT_455_CHARACTER_DRAW": "ON",
+    "RF_CLIENT_455_CHARACTER_DRAW_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/character-draw/RFClient455CharacterDraw.lib",
     "RF_CLIENT_455_CHARACTER_MANAGER": "ON",
     "RF_CLIENT_455_CHARACTER_MANAGER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/character-manager/RFClient455CharacterManager.lib",
     "RF_CLIENT_455_DRAW": "ON",
@@ -75,16 +77,25 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "f604c7482d83bcb96545920fc91480ca5c4ad2d1f00655371f629a5194bf2419",
+    "scripts/native/client_helper_lab.cpp": "f589392d826ee3d5277ff8ec40550f33228212917e0678bbe102fdc180a36c4a",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603"
   },
   "draw_input_sha256": {
-    "scripts/native/client455_draw.cpp": "f3131dcbcf9e29694248c0fae4e1248effb4bb4043a42980f6cc415ba8ebdcf2",
-    "scripts/native/client455_draw.h": "593e3cbf8cb4e53eb10e13c311ee94c58826c2a9ebac1c3e0c59c82f021bb7c8",
+    "scripts/native/client455_draw.cpp": "e16a877331e1cb158a5903c5b79e6780ab930524d59861f62ab41ac414ccb277",
+    "scripts/native/client455_draw.h": "dd357df5281ca008ea52cf2f5535ee5591e4d0d10bc438114d176d253b76ef7c",
     "scripts/native/test_client455_draw.cpp": "fa2ff9de4b56d149fa40fe910bdedd626ff102e1bc63cbdfc768b64d42601deb",
     "scripts/native/client_draw_lab.inc": "97bd7484b43507ad762aa7b5e27dc7eb3c220c1b762c720020ca254e250917d4"
+  },
+  "character_draw_input_sha256": {
+    "scripts/native/client455_character_draw.h": "d304ef32d439ea35b3e93908672ce4f9fd3214303c0b8910f243815f047d5606",
+    "scripts/native/client455_character_draw_internal.h": "6ef6084581a32f9b9043c2efb591168bb7baddb1a919ef72c58eb80701b29781",
+    "scripts/native/client455_character_draw_core.cpp": "549d7ca15daef22cecc9885c45a7a35f867bb627ca6ab2777d7a842c58f9814a",
+    "scripts/native/client455_character_draw.cpp": "85d6c1b9ac07f917c6bbb02c6e15ac93cd1d23e21d077ae1b1ce199af59b8c5a",
+    "scripts/native/test_client455_character_draw.cpp": "540a879c546857cd7969fc42663da317a0ed3e08731ecf1b62bfff02f70b4bdd",
+    "scripts/native/test_client455_draw.cpp": "fa2ff9de4b56d149fa40fe910bdedd626ff102e1bc63cbdfc768b64d42601deb",
+    "scripts/native/client_character_draw_lab.inc": "ba86c569380e683d93a82d9a226285f3d96b8170beba4053649ab4e7ebcb5606"
   },
   "shader_input_sha256": {
     "scripts/native/client455_shaders.cpp": "98fd4c6311a95f1b49e3c043ef37d30b6316ffa566977e1a4843901532d4d044",

@@ -1459,6 +1459,43 @@
         "Normaltypedmodel-animation-D3D9renderer migration/device-loss-reset/CRT-FPU/failureUI/fullprivateABI incomplete",
         "NormalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 remainopen"
       ]
+    },
+    {
+      "id":"CHARACTER455-MAIN-DRAW-030",
+      "description":"Source main Character draw/effect stage/transparency/deferred batch/CPU/shadow routes;normal renderer andfull runtime equivalence remainopen",
+      "status":"partial",
+      "verification":"13body ranges/5constants equalbothpins;fiveargument effect signature verifiedagainstinstructions.16targeted HALscenarios/185assertions andtwo real model frames matchstandalone/fullclient.8actual source APIs/E8REL32providers,heap-COM-Dmalloc0.Native materialredpixel verified.Normal291MTobjects/runtime unchanged excepttimestamps;lab195TUs.Unchangedbulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x52e5f0","role":"Main draw"},
+        {"rva":"0x52d330","role":"Bump oscillator"},
+        {"rva":"0x52d3e0","role":"Effect stage five stackargs"},
+        {"rva":"0x52d270","role":"Reset transparent queue"},
+        {"rva":"0x52d6c0","role":"Depth key"},
+        {"rva":"0x52d6f0","role":"Sorted insert"},
+        {"rva":"0x51f300","role":"Packet2060"},
+        {"rva":"0x52d9d0","role":"Batch capture10-at-time/cap200"},
+        {"rva":"0x530650","role":"Batch flush"},
+        {"rva":"0x52db60","role":"CPU retained draw"},
+        {"rva":"0x530a40","role":"Transparent flush"},
+        {"rva":"0x530120","role":"Shadow draw"}
+      ],
+      "implementation":["scripts/native/client455_character_draw.h","scripts/native/client455_character_draw_internal.h","scripts/native/client455_character_draw.cpp","scripts/native/client455_character_draw_core.cpp"],
+      "option":"RF_CLIENT_455_CHARACTER_DRAW",
+      "evidence":["inventory/client455-character-draw-reference.json","inventory/client455-character-draw-build.json","inventory/client455-character-draw-gpu.json","inventory/client455-character-draw-client.json","inventory/client455-character-draw-link.json","inventory/client455-character-draw-checkpoint.json","research/client455-character-draw.md"],
+      "scenarios":[
+        "Effect1-stage0 no-write/environment/scroll/rotation/bump/default/type5;real RGB material redpixel",
+        "Queue descendingdepth/equal-LIFO/NaN-C0/cap1024,alpha-secondpass/frequency",
+        "Main basic-scroll-bump-specular/secondpass/hidden/counterwrap;shadow program3",
+        "Batch200records/40allocations/201st immediate fallback/lifecycle;CPU4bone vertices/FVF/count2048",
+        "Real BN-MESH08-ANI-pose-main shader selection/palette/material/transparent flush,46parts andframes160-2160"
+      ],
+      "gaps":[
+        "NormaltypedCharacter-model-animation-engineD3D9 integration notdone;allnormal source APIs stripped",
+        "Wrapper visibility/culling/simple92E140 andexternal8C2A90 scenefrustum publication/device lifecycle remainopen",
+        "Firstbump material scratch andzero-weight CPU initialtemp values undefinedinreference;explicit source zero seeds notoriginalstack parity",
+        "Explicitlab modernMTsin-cos(double)->float isnot original staticCRT bitparity;unsafe-OOM-unmaskedFP-errorUI/fullprivateABI notcertified",
+        "Syntheticbatch-shadow-CPU states are not alloriginalgame frames;normalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 open"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

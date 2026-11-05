@@ -78,6 +78,11 @@ extern "C" HRESULT RF455_SubmitSharedCharacterMesh(IDirect3DDevice9* device,unsi
     RF455VertexBufferPool* vertices36,RF455VertexBufferPool* vertices64,
     RF455IndexBufferPool* indices,const RF455MeshStorage* mesh){
     if(get<const void*>(mesh->bytes,4506))return D3DERR_INVALIDCALL;
+    return RF455_SubmitSharedCharacterGeometry(device,mode,vertices36,vertices64,indices,mesh);
+}
+extern "C" HRESULT RF455_SubmitSharedCharacterGeometry(IDirect3DDevice9* device,unsigned mode,
+    RF455VertexBufferPool* vertices36,RF455VertexBufferPool* vertices64,
+    RF455IndexBufferPool* indices,const RF455MeshStorage* mesh){
     const unsigned count=get<unsigned>(mesh->bytes,5086);if(!count)return S_FALSE;
     const unsigned vertex=get<unsigned>(mesh->bytes,4494),index=get<unsigned>(mesh->bytes,4502);
     unsigned start=0xffffffffu;

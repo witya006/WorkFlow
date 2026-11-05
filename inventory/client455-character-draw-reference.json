@@ -1,0 +1,313 @@
+{
+  "scope": "Source main/effects/transparency/batch/CPU/shadow routes;normal renderer/highlevel visibility remain open",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "material_rgba",
+          "rva": "0x51c450",
+          "bytes": 58,
+          "sha256": "65a867d5eee75c84df5240c68d0f7ef603eb0538e334791eceac935f6ee9622d"
+        },
+        {
+          "name": "main_draw",
+          "rva": "0x52e5f0",
+          "bytes": 5520,
+          "sha256": "21ed8ddc4f02bdf594fc9b135065ab85238fe9c18df089a4e84afec9d0c4d02a"
+        },
+        {
+          "name": "bump_oscillator",
+          "rva": "0x52d330",
+          "bytes": 162,
+          "sha256": "82cc3a478cb3f4ee0c7d6b2d092fc89887e653faa73069a70f4d0d1ea093a6cb"
+        },
+        {
+          "name": "effect_stage",
+          "rva": "0x52d3e0",
+          "bytes": 689,
+          "sha256": "4ac5e55737afd494eef78c7d12bea3607bff6c0d1ce971f3e137930f8e741eab"
+        },
+        {
+          "name": "transparent_reset",
+          "rva": "0x52d270",
+          "bytes": 90,
+          "sha256": "608c4f6fd16ad2f568b7bbeb903131cb6f250ffad1f8fcb796ce6d6d6d32fd21"
+        },
+        {
+          "name": "transparent_depth",
+          "rva": "0x52d6c0",
+          "bytes": 38,
+          "sha256": "3b0ed730d1c639ff77d79025fdae7094b9b68bc8731bf6a9a24f0ae187122ab8"
+        },
+        {
+          "name": "transparent_insert",
+          "rva": "0x52d6f0",
+          "bytes": 304,
+          "sha256": "b92bdb416c6f91d0c6615d6c695c5a6a492102cbbd30c4e8395dc135228e411e"
+        },
+        {
+          "name": "transparent_packet",
+          "rva": "0x51f300",
+          "bytes": 230,
+          "sha256": "c4f3e9b527ad16298bf3becd87eaa7a08e304150e7fa9dfe695bc6bf49f7b9bd"
+        },
+        {
+          "name": "batch_capture",
+          "rva": "0x52d9d0",
+          "bytes": 391,
+          "sha256": "52afeb567f4f6402b11c7a2b74a1854a8f18d6e75dfb6e06c3500416c9ca0f7b"
+        },
+        {
+          "name": "batch_draw",
+          "rva": "0x530650",
+          "bytes": 862,
+          "sha256": "04636606aa0e7306f23c8966ac16964426e938112c7c369d011f55e534e04e44"
+        },
+        {
+          "name": "dynamic_draw",
+          "rva": "0x52db60",
+          "bytes": 1492,
+          "sha256": "5b35a72ad13fc2f86dbbcdc88c3cd2cedf16fb039d10e95484da4e1a35e8c7e4"
+        },
+        {
+          "name": "transparent_draw",
+          "rva": "0x530a40",
+          "bytes": 2203,
+          "sha256": "7a2ef5671dc4c90678e90f2b079f5af9af10e2b494030f596d2aa35845adf6a3"
+        },
+        {
+          "name": "shadow_draw",
+          "rva": "0x530120",
+          "bytes": 916,
+          "sha256": "ee6fec1a8ce2018a01afd5d389ec622862762c5ede3ca568a81d8032acae18c9"
+        }
+      ],
+      "constants": [
+        {
+          "name": "environment",
+          "rva": "0x7f8360",
+          "bytes": 64,
+          "sha256": "0f63dcc73a6e0c82d650f2f01b4d61500b5d0d3293a83c9c7a67b8631f1200aa",
+          "values": [
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "pi",
+          "rva": "0x6da958",
+          "bytes": 8,
+          "sha256": "387688f9240b7a78393541098b24aefe3e8d688fe35170af9c8cabcdc44f4097",
+          "values": [
+            3.1415927410125732
+          ]
+        },
+        {
+          "name": "bump_rate",
+          "rva": "0x6ab200",
+          "bytes": 8,
+          "sha256": "595700f5c0ba132c9ede02f9ad9a19cffe697fd8fd52890abb10fd78f47d9aa1",
+          "values": [
+            0.009999999776482582
+          ]
+        },
+        {
+          "name": "bump_negative_rate",
+          "rva": "0x737360",
+          "bytes": 8,
+          "sha256": "89fdea18b4e6b182183f046673d47c2ecb040466f850b5d74e01c557f02ded98",
+          "values": [
+            -0.009999999776482582
+          ]
+        },
+        {
+          "name": "color_denominator",
+          "rva": "0x73add8",
+          "bytes": 8,
+          "sha256": "f07ace6883e63b15127f8cbe00faeb92eb4364e62f1db7ad49bc324441b549ea",
+          "values": [
+            2147483264.0
+          ]
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "material_rgba",
+          "rva": "0x51c450",
+          "bytes": 58,
+          "sha256": "65a867d5eee75c84df5240c68d0f7ef603eb0538e334791eceac935f6ee9622d"
+        },
+        {
+          "name": "main_draw",
+          "rva": "0x52e5f0",
+          "bytes": 5520,
+          "sha256": "21ed8ddc4f02bdf594fc9b135065ab85238fe9c18df089a4e84afec9d0c4d02a"
+        },
+        {
+          "name": "bump_oscillator",
+          "rva": "0x52d330",
+          "bytes": 162,
+          "sha256": "82cc3a478cb3f4ee0c7d6b2d092fc89887e653faa73069a70f4d0d1ea093a6cb"
+        },
+        {
+          "name": "effect_stage",
+          "rva": "0x52d3e0",
+          "bytes": 689,
+          "sha256": "4ac5e55737afd494eef78c7d12bea3607bff6c0d1ce971f3e137930f8e741eab"
+        },
+        {
+          "name": "transparent_reset",
+          "rva": "0x52d270",
+          "bytes": 90,
+          "sha256": "608c4f6fd16ad2f568b7bbeb903131cb6f250ffad1f8fcb796ce6d6d6d32fd21"
+        },
+        {
+          "name": "transparent_depth",
+          "rva": "0x52d6c0",
+          "bytes": 38,
+          "sha256": "3b0ed730d1c639ff77d79025fdae7094b9b68bc8731bf6a9a24f0ae187122ab8"
+        },
+        {
+          "name": "transparent_insert",
+          "rva": "0x52d6f0",
+          "bytes": 304,
+          "sha256": "b92bdb416c6f91d0c6615d6c695c5a6a492102cbbd30c4e8395dc135228e411e"
+        },
+        {
+          "name": "transparent_packet",
+          "rva": "0x51f300",
+          "bytes": 230,
+          "sha256": "c4f3e9b527ad16298bf3becd87eaa7a08e304150e7fa9dfe695bc6bf49f7b9bd"
+        },
+        {
+          "name": "batch_capture",
+          "rva": "0x52d9d0",
+          "bytes": 391,
+          "sha256": "52afeb567f4f6402b11c7a2b74a1854a8f18d6e75dfb6e06c3500416c9ca0f7b"
+        },
+        {
+          "name": "batch_draw",
+          "rva": "0x530650",
+          "bytes": 862,
+          "sha256": "04636606aa0e7306f23c8966ac16964426e938112c7c369d011f55e534e04e44"
+        },
+        {
+          "name": "dynamic_draw",
+          "rva": "0x52db60",
+          "bytes": 1492,
+          "sha256": "5b35a72ad13fc2f86dbbcdc88c3cd2cedf16fb039d10e95484da4e1a35e8c7e4"
+        },
+        {
+          "name": "transparent_draw",
+          "rva": "0x530a40",
+          "bytes": 2203,
+          "sha256": "7a2ef5671dc4c90678e90f2b079f5af9af10e2b494030f596d2aa35845adf6a3"
+        },
+        {
+          "name": "shadow_draw",
+          "rva": "0x530120",
+          "bytes": 916,
+          "sha256": "ee6fec1a8ce2018a01afd5d389ec622862762c5ede3ca568a81d8032acae18c9"
+        }
+      ],
+      "constants": [
+        {
+          "name": "environment",
+          "rva": "0x7f8360",
+          "bytes": 64,
+          "sha256": "0f63dcc73a6e0c82d650f2f01b4d61500b5d0d3293a83c9c7a67b8631f1200aa",
+          "values": [
+            0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            -0.5,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.5,
+            0.5,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "name": "pi",
+          "rva": "0x6da958",
+          "bytes": 8,
+          "sha256": "387688f9240b7a78393541098b24aefe3e8d688fe35170af9c8cabcdc44f4097",
+          "values": [
+            3.1415927410125732
+          ]
+        },
+        {
+          "name": "bump_rate",
+          "rva": "0x6ab200",
+          "bytes": 8,
+          "sha256": "595700f5c0ba132c9ede02f9ad9a19cffe697fd8fd52890abb10fd78f47d9aa1",
+          "values": [
+            0.009999999776482582
+          ]
+        },
+        {
+          "name": "bump_negative_rate",
+          "rva": "0x737360",
+          "bytes": 8,
+          "sha256": "89fdea18b4e6b182183f046673d47c2ecb040466f850b5d74e01c557f02ded98",
+          "values": [
+            -0.009999999776482582
+          ]
+        },
+        {
+          "name": "color_denominator",
+          "rva": "0x73add8",
+          "bytes": 8,
+          "sha256": "f07ace6883e63b15127f8cbe00faeb92eb4364e62f1db7ad49bc324441b549ea",
+          "values": [
+            2147483264.0
+          ]
+        }
+      ]
+    }
+  ],
+  "draw_fixture_report_sha256": "7a43927b7cfb72df79b2e4b2842e3b7bc6d71ddc57b26d461aef42ef39b0dbe6",
+  "script_sha256": "eb62d1441475774caa20c922e85a3bdffc77dc79365546ad7e63ec7aeee6b3ce",
+  "raw_analysis": "artifacts/character-animation455/route-*.json and draw-main{,-tail}.json",
+  "instruction_pagination": "route-main-all-instructions.json has1582 actual instructions;each120-instruction page checked against actual length. Earlier draw-main-insn.json was silently clipped to10lines despite982count/cursor.done;do not use it as complete evidence.",
+  "confirmed": [
+    "Effect stage iscdecl(device,stage,type,color,scroll),five stackargs;decompiler registerargs and apparent matrix+3 overread are wrong",
+    "Indexed transparent branch selectsprogram11 again even whenentry effect2 initiallyselected6",
+    "Bump branch reuses main material scratch;first bump without prior basic material isundefined stack content inreference"
+  ],
+  "gaps": [
+    "StaticCRT sine-cosine/failure-OOM/uninitialized-stack domains unproven",
+    "8C2A90 scene-frustum publication is explicit external dependency whenorthographic isenabled",
+    "Highlevel culling/wrappers/simpledraw/normaltypedrenderer andfullM9 acceptance remainopen"
+  ]
+}

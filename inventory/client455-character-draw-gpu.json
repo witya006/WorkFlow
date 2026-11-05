@@ -1,0 +1,44 @@
+{
+  "scope": "Source main/effect/transparent/batch/dynamic/shadow routing;normal migration andfull reference runtime parity open",
+  "architecture": "x86",
+  "exe": "work/m9/dfec4dc4/gpu001/character-draw-probe.exe",
+  "exe_sha256": "dfec4dc41910248cbeed999152449423a79a0a2e36cad0ee42cec3f835ca550f",
+  "entry_rva": "0x16d00",
+  "native": {
+    "status": "PASS",
+    "checks": 185,
+    "route_cases": 16,
+    "real_draws": 92,
+    "frames": [
+      160,
+      2160
+    ],
+    "colored_pixels": [
+      9103,
+      9421
+    ],
+    "heap_and_com_balance": 0,
+    "original_static_crt_parity": false
+  },
+  "frames": [
+    {
+      "frame": "work/m9/dfec4dc4/gpu001/route-frame-0.bgra",
+      "sha256": "51120a6c3c880b24c72236bcd14e8c35753078d42c2f4272c7c47f49c5a246c7",
+      "preview": "work/m9/dfec4dc4/gpu001/route-frame-0.bmp",
+      "preview_sha256": "76bd1c06ad493124f40621c510b96602c1a741a12ea61249f68942c620955717"
+    },
+    {
+      "frame": "work/m9/dfec4dc4/gpu001/route-frame-1.bgra",
+      "sha256": "d641896b979a3af37710ec7cec3a7ca5b9db43876b904365692a66984623d36e",
+      "preview": "work/m9/dfec4dc4/gpu001/route-frame-1.bmp",
+      "preview_sha256": "45650b2b6887d47a6f58493af2193de092cfbc3f7c35dd10b8bec8c1a1dec865"
+    }
+  ],
+  "provider_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "output": "work/m9/dfec4dc4/gpu001/result.json",
+  "output_sha256": "b75819409e8f7f5ca48117d322cba73ddcae86d59be9054a861705e17cab6464",
+  "build_report_sha256": "fe352d237bbb6d40c7f1f686793bfbecaa8f9baaeb7da8552e749de877eba5f9",
+  "reference_report_sha256": "0f4de2fc97e2337d4a26e6e5592e25da0ebaeeaf1a3874430a37da0413cc08e7",
+  "original_exe_executed": false,
+  "transcendental_provider": "Modern MTsin/cos(double)->float supplied explicitly;original staticCRT bitparity notproven"
+}

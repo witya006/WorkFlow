@@ -23,6 +23,34 @@
 
 ## Последний проверенный результат
 
+Main Character draw030: scripts/native/client455_character_draw.{h,cpp},core.cpp,
+internal.h;8APIs. Main92E5F0/effects92D3E0/transparent930A40/batch930650/CPU92DB60/
+shadow930120 source.13ranges/5constant ranges равныобоимpins. Effect signature5args
+cdecl(device,stage,type,color,scroll); apparentoverread был ошибкойdecompiler ESP.
+16targeted scenarios/185assertions,materialredGPU-pixel,queue ties/NaN/cap1024,
+batch200/201st fallback,DWORDrollover/CPUlimit. Real BELPHEGORHOLIDAY46parts/44skinned,
+frames160/2160/3DDS теперьрисуется через main route;92submissions,две картинки
+равны standalone/fullclient иrelated029. COM/heap/Dmalloc0,no gameDLLs. Preview
+work/m9/3a7ddb01/client001/route-frame-{0,1}.bmp просмотрены. Gate
+inventory/client455-character-draw-checkpoint.json;research/client455-character-draw.md.
+Normal2451456B/entry1BC450/SHA ccee7cc0d7e4254a90cbc64870132b18827a5428d352748f1b77c37b8784dcfd,
+snapshot character455-route-final; runtime равен029кромеtimestamps,291MTobjects/engine прежний.
+Lab5427200B/entry8C01/SHA3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603,
+195clientTUs. Related029primitive596checks повторены из-за выделенияrawpool branch;
+старыеbigANI/texture/sharedbuffer/Platform01 runtime suites не повторялись.
+Следом normalCharacter interface/caller inventory исовместныйtypedmodel/animation/
+rendererD3D9 port. Wrapperculling/simple92E140/scene-frustum8C2A90/device lifecycle
+ещёоткрыты. Originalbump branch используетпоследний material scratch,первыйbump
+можетчитатьundefinedstack; source имеетявныйzero seed. CPUunusedtemps такжеzero
+seed. ModernMTsin/cos(double)→float — explicit labprovider,originalCRT bitsнеприняты.
+M6/M6F/M7/M9 незакрыты. Никакихlegacy455casts/shadowrecords/manager-onlyswap.
+MCP: route-main-all-instructions.json содержит1582actualinstructions;страницы
+по120проверены. Старыйdraw-main-insn.json содержитлишь10lines несмотрянаcount982/done:
+не использоватькакполнуювыгрузку. Effect240/transparent681/bump42проверены.
+Owned96236a02closed/save. Rawroute-*.json ignoredartifacts/character-animation455.
+
+Предыдущий результат (историческая очередь ниже):
+
 Source draw primitives029: client455_draw.{h,cpp},5APIs; initial states91CDE0,
 selection91FB90, material92D830, palette91D120, shared branch92E140/92E5F0.
 Реальный BELPHEGORHOLIDAY pair9:51parts/46geometry/44skinned,ANIframes160/2160,

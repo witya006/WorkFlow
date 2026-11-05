@@ -1,0 +1,83 @@
+{
+  "scope": "Source main/effect/transparent/batch/dynamic/shadow routes with defined-input limits;not full normal455/M9 acceptance",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "ccee7cc0d7e4254a90cbc64870132b18827a5428d352748f1b77c37b8784dcfd",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "561dd0786320a9a4acffd700310a30a56cc4de8afa9fef2c5628c7d587233f69",
+    "scope": "Source Character draw routing;normal typedrenderer andfull455 runtime stillopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603",
+    "exe_bytes": 5427200,
+    "entry_rva": "0x8c01"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 185,
+    "route_cases": 16,
+    "real_draws": 92,
+    "frames": [
+      160,
+      2160
+    ],
+    "colored_pixels": [
+      9103,
+      9421
+    ],
+    "heap_and_com_balance": 0,
+    "original_static_crt_parity": false
+  },
+  "same_frames": [
+    "51120a6c3c880b24c72236bcd14e8c35753078d42c2f4272c7c47f49c5a246c7",
+    "d641896b979a3af37710ec7cec3a7ca5b9db43876b904365692a66984623d36e"
+  ],
+  "same_as_related_primitive_frames": true,
+  "normal_runtime_equal_previous_excluding_timestamps": true,
+  "normal_modern_coff_objects": 291,
+  "lab_client_objects": 195,
+  "bulk_suites_repeated": false,
+  "related_pool_primitive_regression": {
+    "status": "PASS",
+    "checks": 596,
+    "draws": 96,
+    "real_drawn_parts": 46,
+    "animated_parts": 44,
+    "palette_uploads": 92,
+    "textured_parts": 46,
+    "real_animation_frames": 2,
+    "frame_values": [
+      160,
+      2160
+    ],
+    "colored_pixels": [
+      9103,
+      9421
+    ],
+    "owned_heap_balance": 0,
+    "device_and_api_release_counts": 0
+  },
+  "owned_ida_session": "96236a02 closed/save",
+  "remaining": [
+    "Typed normal model/animation/Character interface and D3D9 engine integration",
+    "Wrapper visibility/culling/simple92E140 and external scene-frustum publication8C2A90",
+    "StaticCRT sin/cos and original compiler/FPU parity;first-bump undefined scratch andzero-weight undefinedCPU temps notcertified",
+    "Device loss/reset/failure/OOM/unsafe input and full game lighting/camera/effects runtime acceptance",
+    "All remaining M6/M6F/M7/M9 domains"
+  ],
+  "evidence_sha256": {
+    "client455-character-draw-reference": "0f4de2fc97e2337d4a26e6e5592e25da0ebaeeaf1a3874430a37da0413cc08e7",
+    "client455-character-draw-build": "fe352d237bbb6d40c7f1f686793bfbecaa8f9baaeb7da8552e749de877eba5f9",
+    "client455-character-draw-gpu": "32909d7cb942295b369e419ea3e0d5ea41e8b2c47a08d104501c8591481052c4",
+    "client455-character-draw-client": "5d26f4d0dc82b6bc8129b9b362cd08d3a93e83fc64d870fa28d721601154920a",
+    "client455-character-draw-link": "74493c10843f7a4b44d190ce5ad822bdc64b39dc23a54193e41bb8784b8d9574",
+    "client455-draw-build": "340f7d11cf319ad1416088825b166019a50b9e909b2e4c6bf103b2d7f5af3d16",
+    "client455-draw-gpu": "2d624458a4bd8399350530c292e3fadd2408de79c178014fd096c17cebbd391a",
+    "client-helper-lab-build": "29a26d55faa9be1f09383f1a3bc5d51ef43cc41ba793735340fcafdd93970d94"
+  }
+}

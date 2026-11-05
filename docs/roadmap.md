@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6: draw primitives029 source/realHAL/fullclient: реальная модель
+Новейший участок M6: main Character draw030/effects/transparency/batch/CPU/shadow
+теперь source.16targeted сценариев и2реальных кадра прошли standalone/fullclient.
+Следом normal interface/caller audit исовместный typedmodel/animation/D3D9engine port;
+visibility/scene-frustum/CRT/undefined/device lifecycle domains ещё открыты.
+Gate inventory/client455-character-draw-checkpoint.json; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6: draw primitives029 source/realHAL/fullclient: реальная модель
 с ANI/3textures,46geometry parts/44skinned,два разных кадра совпали отдельно и
 в полном client lab. Полный92E5F0/effect/transparent/batch/normal renderer открыт.
 Следом full draw routing, затем coupled typed model/animation/renderer migration.

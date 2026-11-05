@@ -41,6 +41,12 @@ Harness выбирает basic shader/камеру/CullNONE: это ещё не 
 
 ## Эталон
 
+Main Character draw030 теперь source: эффекты, прозрачность, deferred batch, CPU и
+shadow ветки представлены и проверены16targeted сценариями в полном client lab.
+Реальная модель рисуется через основной маршрут, два кадра совпали с компонентом.
+Это не normal integration/visibility/game frame acceptance; original CRT и
+undefined scratch domains явнооткрыты. inventory/client455-character-draw-checkpoint.json.
+
 Бинарный эталон закреплён в config/client-target.json: текущий пользовательский
 RF_Online.bin, SHA-256 b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b,
 x86, image base 0x400000. Backup — вторичный материал; различия локализованы.

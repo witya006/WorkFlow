@@ -1,6 +1,13 @@
 # Аудит окружения — 04.11.2026
 
-Последнее дополнение: source Character draw primitives проверены на настоящей
+Последнее дополнение: основной Character draw/эффекты/deferred paths source
+проверены на том же D3D9HAL/pinnedD3DX9_36 отдельно и в полном client lab:
+16targeted scenarios/185assertions,2realmodel frames,COM/heap/Dmalloc0. Lab195TUs,
+normal291MTobjects/тот же engine archive/runtime прежний кромеtimestamps.
+Новых SDK/установок нет. Старый staticCRT sin/cos ещё не сертифицирован.
+inventory/client455-character-draw-checkpoint.json;research/client455-character-draw.md.
+
+Предыдущее дополнение: source Character draw primitives проверены на настоящей
 анимированной модели с3textures/D3D9HAL/pinnedD3DX9_36. Два кадра совпали отдельно
 и внутри client lab; heap/COM/Dmalloc0. Новых установок нет. Lab194clientTUs,
 normal291modernCOFF/MT, прежний engine archive; normal renderer ещё D3D8.

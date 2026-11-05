@@ -28,4 +28,8 @@ HRESULT RF455_UploadCharacterPalette(IDirect3DDevice9*,const RF455MeshStorage*,
 HRESULT RF455_SubmitSharedCharacterMesh(IDirect3DDevice9*,unsigned vertexMode,
     RF455VertexBufferPool* vertices36,RF455VertexBufferPool* vertices64,
     RF455IndexBufferPool*,const RF455MeshStorage*);
+// Literal pool branch,also used by the original second pass even for a mesh
+// retaining CPU data. Caller selects the route;this does not inspect4506.
+HRESULT RF455_SubmitSharedCharacterGeometry(IDirect3DDevice9*,unsigned vertexMode,
+    RF455VertexBufferPool*,RF455VertexBufferPool*,RF455IndexBufferPool*,const RF455MeshStorage*);
 }

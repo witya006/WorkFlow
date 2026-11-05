@@ -1,0 +1,367 @@
+{
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "3a7ddb01a9fc8aff2b961863df5288f737833811466a5f989162bbd175c60603",
+    "exe_bytes": 5427200,
+    "entry_rva": "0x8c01",
+    "functions": [
+      {
+        "symbol": "_RF455_ResetCharacterTransparency",
+        "rva": "0x374aa0",
+        "provider": "RFClient455CharacterDraw:core.obj"
+      },
+      {
+        "symbol": "_RF455_QueueCharacterTransparency",
+        "rva": "0x374ea0",
+        "provider": "RFClient455CharacterDraw:core.obj"
+      },
+      {
+        "symbol": "_RF455_SetCharacterEffectStage",
+        "rva": "0x2ed2e0",
+        "provider": "RFClient455CharacterDraw:core.obj"
+      },
+      {
+        "symbol": "_RF455_DrawDynamicCharacterMesh",
+        "rva": "0x2ecf20",
+        "provider": "RFClient455CharacterDraw:core.obj"
+      },
+      {
+        "symbol": "_RF455_DrawCharacter455",
+        "rva": "0x374f90",
+        "provider": "RFClient455CharacterDraw:route.obj"
+      },
+      {
+        "symbol": "_RF455_FlushCharacterTransparency",
+        "rva": "0x377d40",
+        "provider": "RFClient455CharacterDraw:route.obj"
+      },
+      {
+        "symbol": "_RF455_FlushCharacterMeshBatch",
+        "rva": "0x377ae0",
+        "provider": "RFClient455CharacterDraw:route.obj"
+      },
+      {
+        "symbol": "_RF455_DrawCharacterShadow",
+        "rva": "0x3778e0",
+        "provider": "RFClient455CharacterDraw:route.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x5bbf",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_QueueCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x5da7",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x5f4a",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_QueueCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x5f95",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_QueueCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6026",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6114",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_QueueCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6189",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_QueueCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x61f7",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?queueChecks@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6236",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6312",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x63ab",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x64e2",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x659e",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x6686",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x684a",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterEffectStage",
+        "caller": "?effects@route455@@YAHAAURF455CharacterDrawContext@@@Z",
+        "section": 9,
+        "offset": "0x68cd",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x6f9b",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x720d",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7569",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x77a9",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7af3",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterTransparency",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7ba3",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7cf3",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7f4c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterTransparency",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x7ff2",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8177",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterTransparency",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8224",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8316",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterMeshBatch",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x83f5",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacterShadow",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x84d0",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8736",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x89b0",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8c12",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8d70",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x8ed7",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x9024",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterMeshBatch",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x90d5",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawDynamicCharacterMesh",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x932f",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawDynamicCharacterMesh",
+        "caller": "?routes@route455@@YAHAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@@Z",
+        "section": 9,
+        "offset": "0x94b7",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DrawCharacter455",
+        "caller": "?realModel@route455@@YAHPBDAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@URF455PoseMath@@@Z",
+        "section": 9,
+        "offset": "0xadd6",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FlushCharacterTransparency",
+        "caller": "?realModel@route455@@YAHPBDAAURF455CharacterDrawContext@@AAUScene@?A0x877d596e@@URF455PoseMath@@@Z",
+        "section": 9,
+        "offset": "0xade6",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?run@route455@@YAHPBD0@Z",
+        "section": 9,
+        "offset": "0xbec0",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetCharacterTransparency",
+        "caller": "?run@route455@@YAHPBD0@Z",
+        "section": 9,
+        "offset": "0xc0dc",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "library_sha256": "561dd0786320a9a4acffd700310a30a56cc4de8afa9fef2c5628c7d587233f69",
+    "scope": "Source Character draw routing;normal typedrenderer andfull455 runtime stillopen"
+  },
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "ccee7cc0d7e4254a90cbc64870132b18827a5428d352748f1b77c37b8784dcfd",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "561dd0786320a9a4acffd700310a30a56cc4de8afa9fef2c5628c7d587233f69",
+    "scope": "Source Character draw routing;normal typedrenderer andfull455 runtime stillopen"
+  }
+}
