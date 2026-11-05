@@ -23,27 +23,31 @@
 
 ## Последний проверенный результат
 
-Source elapsed clock8B3CC0/RVA4B3CC0 подключён в normal R3EngineMT. Модуль:
-scripts/native/client455_loop_clock.{h,cpp}; bridge.inc заменяет выбранную ветку
-commonutil.cpp под flag, legacy branch сохранён. Полный update/QPC init/fallback/
-duration/get-set/toggles восстановлены для выбранного контракта. В normal PE
-UpdateLoopClock RVA1AF700; GetDuration source call есть в COFF, но normal unused
-API удалён линкером. RTMovie scale setter готов, event caller ещё не перенесён.
-144 whole-state случая/12maskedFPmodes, 3provider сценария и1DAZ/FTZ случай прошли component,
-затем через actual R3CalculateTime в полном client lab. Actual clock→R3GetLoopTime
-→CResObject даёт frame309; setter/toggle checks прошли. Dmalloc0, gameDLLs не загружены.
-Platform01/device2cases69checks прошли, прежние frameSHA; старые большие наборы
-не повторялись. Gate inventory/client455-loop-clock-checkpoint.json;
-research/client455-loop-clock.md. Raw elapsed-*.json, ownedc215239f closed/save.
-Normal snapshot character455-loop-clock-final:2451456B/entryRVA1BC450,
-SHAc2ea6d497a4fa2e6ad9aec32d61127a79efb0908b5d44db75a85ec3a588431e8.
-Lab5233664B/entryRVA89CC,
-SHA66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3.
-Normal180client+65engine+46JPEG=291modernCOFF/MT; lab191clientTUs.
-Normal runtime намеренно изменён. Original process scheduling/timer traces не
-снимались; arbitrary NaN/signalling/unmasked FP exception equivalence не доказана.
+Source коллекция AnimationManager4028: constructor/registration/name-ID-suffix
+lookup/3probe cache/deletion/vector+record ownership;11C APIs, отдельный /MT archive.
+scripts/native/client455_animation_manager.{h,cpp}. 25диапазонов равны обоим pin;
+87targeted assertions/4groups/one real ANI прошли component/fullclient lab.
+Heap/Dmalloc0,gameDLLs не загружены. Normal CUnity/ChAnimation ещё legacy: source
+APIs в normal unused/stripped;11APIs в lab имеют E8 REL32 caller/provider proof.
+Normal runtime равен loop-clock-final после исключения timestamps. Несвязанные
+GPU/clock/texture/массовыеANI suites не повторялись. COFF caller parser extension
+проверен на real static/external callers и malformed offset/opcode:4testsPASS.
+Gate inventory/client455-animation-manager-checkpoint.json;
+research/client455-animation-manager.md. Raw manager-*.json;ownedab74ea29/4c43ad92 closed/save.
+Normal snapshot character455-animation-manager:2451456B/entryRVA1BC450,
+SHAb597d3ef8287197f6de3da1ef4e2ab360fc87ac6b65fb809c3de2e7cf756bbe0.
+Lab5258752B/entryRVA89EF,
+SHA67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc.
+Normal291modernCOFF/MT/прежний engine archive;lab192clientTUs.
+Открыты normal typed consumers/UnityGetAni failureUI и full actor/renderer.
+Worker935450:нет IDA xrefs и immediateVA обоим pin,не доказательство unreachable;
+оба выбранных importer mode синхронные. Искать caller перед новым reverse worker.
 
 Предыдущие результаты (исторические checkpoints не переписывать):
+- LoopClock026: source elapsed update/QPCinit/fallback/duration/clamp/scale/toggles
+  подключён normal R3EngineMT;144state cases/3provider/1DAZFTZ прошли. Actual clock
+  →CResObject frame309 и Platform01/device69passed. Source x87 compares обязательны.
+  research/client455-loop-clock.md; gate client455-loop-clock-checkpoint.json.
 - Timing025: CAnimation100 ctor и два численных пути CResObject подключены normal;
   secondary84 defaults известны, normal secondary region ещё не подключён.
   research/client455-animation-timing.md; gate client455-animation-timing-checkpoint.json.
@@ -55,13 +59,19 @@ Normal runtime намеренно изменён. Original process scheduling/ti
 
 ## Следующий шаг
 
-1. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
+1. Согласовать normal CUnityAniMgr/CAniData/actor typed source boundary. Коллекция
+   менеджера и record ownership готовы (027), её не реверсить заново. Old manager24/
+   ChAnimation280 нельзя rawcast к new4028/record284; старые SDK consumers ещё живы.
+   UnityGetAni1E12C0:IDFFFFFFFF guard, lazy load, failure handling различается при
+   mode>=2/UI556 versus mode<2/UI1999+3000ms. Это reference, не implementation.
+2. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
    dispatcher), полный actor lifecycle/secondary binding и transition consumers.
    Численный producer/defaults готовы (025), elapsed clock готов (026); RTMovie
    scale consumer остаётся открытым. Не переделывать готовый clock reverse.
    Secondary flow source уже готов сrequiredmathcontext;RF_POSE_SECONDARY только
    приотсутствующем backend. Не повторять584instruction reverse/golden math безизменений.
-2. Полный AnimationManager/async worker/record ownership. Потом связать pose с
+   Async worker уточнять по caller,не считать установленным runtime блокером.
+   Потом связать pose с
    skinning/draw/declarations/shaders и normal typed consumers на455 D3D9.
    Старый Character SDK — D3D8 и другой layout, rawcast не допускается.
 3. Другие M6 client subsystems по client-features.json и client-acceptance.md;
@@ -88,6 +98,10 @@ float spill→clamp→scale→real→toggles. До нового среднего
 Сравнения также x87: ordinary C++ сравнение ломалось на negative subnormal при
 SSE DAZ/FTZ. Ошибка воспроизведена и исправлена; один целевой пример есть в native
 и actual engine suite. Не заменять эти сравнения на SSE без доказательства.
+AnimationManager: self0/preserved allocatorpadding4/vector8-12-16/counter20/nextId24,
+cache1000 at28. Constructorcounter0/ID1; reset counters не clear. Release932F30
+оставляет cache/self/counters. Не dereference freedcache в tests. Suffix включает
+backslash; IDhash sumbytes,3probes;registeredlowercase names,record284,ID264.
 
 ## Контракты, которые легко нарушить
 

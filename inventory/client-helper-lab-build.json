@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T23:41:46.937185+00:00",
+  "checked_at_utc": "2026-11-04T23:59:29.644472+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 191,
+  "generated_objects": 192,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -43,6 +43,8 @@
     "RF_CHARACTER_MESH_SOURCE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/character-legacy/mesh-bindings/CharacterMeshSource.lib",
     "RF_CLIENT_455_ANIMATION": "ON",
     "RF_CLIENT_455_ANIMATION_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/animation/RFClient455Animation.lib",
+    "RF_CLIENT_455_ANIMATION_MANAGER": "ON",
+    "RF_CLIENT_455_ANIMATION_MANAGER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/animation-manager/RFClient455AnimationManager.lib",
     "RF_CLIENT_455_CHARACTER_MANAGER": "ON",
     "RF_CLIENT_455_CHARACTER_MANAGER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/character-manager/RFClient455CharacterManager.lib",
     "RF_CLIENT_455_LEGACY_READER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/legacy-models/RFClient455LegacyModel.lib",
@@ -69,10 +71,16 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "7f7d898b0e04e3c3ad21f1271ecff5acb769f6c3155ff295a0284811c5cc1d99",
+    "scripts/native/client_helper_lab.cpp": "d53ea9fcd0df6e770b1a53429c3d012cfda6a4bf14eaf9ee2506d3631e556828",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "66e7d75f977031ecea45da0deb49c9c61e81feb6b14d17a1fff3a2831e82f0d3"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc"
+  },
+  "animation_manager_input_sha256": {
+    "scripts/native/client455_animation_manager.cpp": "a7f32e533624f17813190f2d034751fc7a80361694f6885a0944176b3a6a8649",
+    "scripts/native/client455_animation_manager.h": "c7f83c5c0821f63a4a924097cdfb42bf69fdf27d1bc2bad49a1a21afb7504734",
+    "scripts/native/test_client455_animation_manager.cpp": "46ceed092f5ccdc6b9247facf2b95adc4cf2054c889b648fc60e4e3b6aaad9ee",
+    "scripts/native/client_animation_manager_lab.inc": "9319ac76f7c4dd5feb6aa64a64edb1e71fca16a30c29d3f49f02e14d3a7b67e6"
   },
   "loop_clock_input_sha256": {
     "scripts/native/client455_loop_clock.cpp": "a2ca84c8f74f3f9eebd0db12fc43cff9b9757aad2ae88e714bd194e6933016fd",

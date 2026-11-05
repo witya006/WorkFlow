@@ -1,0 +1,403 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "b597d3ef8287197f6de3da1ef4e2ab360fc87ac6b65fb809c3de2e7cf756bbe0",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "210e5acf78cd5ee7d70f0899a75dfe198f9454c1b811bd446d6b646fc2b2c982",
+    "scope": "Source collection available;normal CUnity/ChAnimation consumers remainlegacy,no unsafe ABI cast"
+  },
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc",
+    "exe_bytes": 5258752,
+    "entry_rva": "0x89ef",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructAnimationManager",
+        "rva": "0x3537d0",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_ResetAnimationCounters",
+        "rva": "0x354190",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_RegisterAnimation",
+        "rva": "0x353ed0",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_GetOrRegisterAnimation",
+        "rva": "0x353e80",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_FindAnimationName",
+        "rva": "0x353bf0",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_FindAnimationSuffix",
+        "rva": "0x353d30",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_FindAnimationId",
+        "rva": "0x353a20",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_FindAnimationIdByName",
+        "rva": "0x353bc0",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_DeleteAnimationName",
+        "rva": "0x3538b0",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_DeleteAnimationId",
+        "rva": "0x353820",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      },
+      {
+        "symbol": "_RF455_ReleaseAnimationManager",
+        "rva": "0x354100",
+        "provider": "RFClient455AnimationManager:animation_manager.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x522",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x707",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationName",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x76a",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x952",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_GetOrRegisterAnimation",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x9d7",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationIdByName",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xa4d",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationIdByName",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xa66",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationSuffix",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xadd",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationSuffix",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xaf9",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xb6b",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xb87",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DeleteAnimationName",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xc10",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationName",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xc45",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?collection@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xd28",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xf61",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0xfe3",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1062",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1176",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ResetAnimationCounters",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x11f3",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x12ae",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DeleteAnimationId",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1306",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationName",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x133b",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationName",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1353",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?collisions@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x13ad",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x14e9",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x151d",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1622",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x169b",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1713",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1722",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x179e",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x17bd",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x17de",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1879",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_RegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x190f",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_GetOrRegisterAnimation",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x19ed",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?wrapAndFailures@?A0xa8d17e9c@@YAHXZ",
+        "section": 7,
+        "offset": "0x1a53",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x1bb0",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_GetOrRegisterAnimation",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x1bc8",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_DeleteAnimationId",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x1e9e",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x2053",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ConstructAnimationManager",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x2100",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_GetOrRegisterAnimation",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x2118",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_FindAnimationId",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x2325",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_GetOrRegisterAnimation",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x23b9",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_ReleaseAnimationManager",
+        "caller": "?ownersAndFile@?A0xa8d17e9c@@YAHII@Z",
+        "section": 7,
+        "offset": "0x2517",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "library_sha256": "210e5acf78cd5ee7d70f0899a75dfe198f9454c1b811bd446d6b646fc2b2c982",
+    "scope": "Source collection available;normal CUnity/ChAnimation consumers remainlegacy,no unsafe ABI cast"
+  }
+}

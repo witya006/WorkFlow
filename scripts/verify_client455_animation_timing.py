@@ -5,13 +5,20 @@ from export_character_analysis import coff_function_records
 from verify_client_coff import directives
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def calls(data,wanted):
-    table,count=struct.unpack_from('<II',data,8);strings=table+18*count;names={};i=0
+def calls(data,wanted,include_static=False):
+    table,count=struct.unpack_from('<II',data,8);strings=table+18*count;names={};static_functions={};i=0
     while i<count:
         at=table+18*i;record=data[at:at+18];name=record[:8].split(b'\0',1)[0].decode('ascii',errors='replace')
         if record[:4]==bytes(4):offset=struct.unpack_from('<I',record,4)[0];name=data[strings+offset:data.index(b'\0',strings+offset)].decode('ascii')
-        names[i]=name;i+=1+record[17]
-    found=[];functions=coff_function_records(data)
+        names[i]=name
+        section,kind=struct.unpack_from('<hH',record,12)
+        if include_static and section>0 and record[16]==3 and kind&0x20:
+            if section>struct.unpack_from('<H',data,2)[0]:raise ValueError('Static function outside COFF sections')
+            h=20+40*(section-1);size,raw=struct.unpack_from('<II',data,h+16);value=struct.unpack_from('<I',record,8)[0]
+            if value>=size or raw+size>len(data):raise ValueError('Static function outside COFF bytes')
+            static_functions[name]={'section':section,'section_offset':value}
+        i+=1+record[17]
+    found=[];functions=coff_function_records(data);functions.update(static_functions)
     for section in range(1,struct.unpack_from('<H',data,2)[0]+1):
         h=20+40*(section-1);size,raw=struct.unpack_from('<II',data,h+16);reloc=struct.unpack_from('<I',data,h+24)[0];n=struct.unpack_from('<H',data,h+32)[0]
         if n==65535:raise ValueError('Unexpected overflow relocation table')

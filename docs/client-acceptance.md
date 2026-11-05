@@ -26,6 +26,10 @@
 R3EngineMT. Actual clock→frame caller проверен в полном client lab; остальные
 области и полнота клиента открыты. inventory/client455-loop-clock-checkpoint.json.
 
+Следующий участок: source коллекция AnimationManager4028/record ownership проверена
+в полном client lab на одном real ANI. Normal CUnity/CAniData ещё legacy; библиотека
+сама по себе не закрывает область «Персонажи». inventory/client455-animation-manager-checkpoint.json.
+
 ## Эталон
 
 Бинарный эталон закреплён в config/client-target.json: текущий пользовательский

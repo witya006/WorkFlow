@@ -61,7 +61,7 @@ def main():
             if m:settings[m[1]]=m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
+            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|ANIMATION_MANAGER|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
             if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
@@ -84,6 +84,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_ANIMATION_MANAGER')=='ON':
+            manager_inputs=['scripts/native/'+p for p in ['client455_animation_manager.cpp','client455_animation_manager.h','test_client455_animation_manager.cpp','client_animation_manager_lab.inc']]
+            report['animation_manager_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in manager_inputs}
         if settings.get('RF_CLIENT_455_LOOP_CLOCK')=='ON':
             loop_inputs=['scripts/native/'+p for p in ['client455_loop_clock.cpp','client455_loop_clock.h','client455_loop_clock_bridge.inc','test_client455_loop_clock.cpp','client_loop_clock_lab.inc']]+['work/client-build/source/R3Engine/common/commonutil.cpp']
             report['loop_clock_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in loop_inputs}

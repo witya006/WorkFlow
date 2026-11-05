@@ -1174,7 +1174,7 @@
       ],
       "gaps":[
         "FrameMove523A40/pose/key evaluator/interpolation/transforms/skinning/declarations/shaders/fullD3D9renderer/normal typed consumers not restored",
-        "AnimationManager fullsource andasync worker lifecycle remainopen;factory533280/worker535450 research not implementation",
+        "AnimationManager collection/recordownership implemented by027;normal CUnity-ChAnimation typedmigration/UI failure policy andasync externalentry lifecycle remainopen",
         "Bounded parser/status/type/nullallocation/extent guards differfromunchecked AV/OOM/partialattachment/exception/unwind domains;allocatorpadding invalidinput notcertified",
         "Own taggedunion rejectsundefinedANI-as-ObjectData28/MSH-as-ANI;InitVertex diagnostic printsdeterministicnumericarg instead ofreference missingarg undefinedformat",
         "Unsafe531310 direct-free wrapper notnormalownerroute;borrowedkeylifetime requiresmeshreleasebeforeANIowner;privateC++STL/heapABI andruntimeassetselection open",
@@ -1336,6 +1336,53 @@
         "No independent original process timer-scheduling trace;no normalWinMain/referenceEXE execution;actualinitialQPC branch proved atcomponent withcontrolledproviders",
         "Arbitrary NaN payload-signalling/unmaskedFPexceptionstate/processCPUconditions/uncheckedcallbacks notcertified",
         "Fullactorlifecycle/secondarybinding/normal455CharacterABI/AnimationManager-worker/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
+      ]
+    },
+    {
+      "id":"ANIMATION455-MANAGER-027",
+      "description":"Source AnimationManager4028 collection/name-ID-suffix lookup/threeprobe cache/vector growth/record owner lifetime;normal legacyconsumers separate",
+      "status":"implemented",
+      "verification":"25ranges equalbothpins;87targeted assertions/4groups/one real ANI passed standalone andfullclientlab;11sourceAPIs actualE8REL32 callers/archiveprovider,heap-Dmalloc0/gameDLLs notloaded. Normalruntime bytes equalprevious excepttimestamps,unusedAPIs stripped.4COFFcaller parser tests passed. Unrelated graphics/clock/bulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x1e1150","role":"Constructor,self/allocatorpadding/vector/counters/cache"},
+        {"rva":"0x532480","role":"Counter20zero,nextId24one"},
+        {"rva":"0x532240","role":"Threeprobe ID cache lookup"},
+        {"rva":"0x5322d0","role":"Cache insertion/firstslot replacement"},
+        {"rva":"0x5329b0","role":"ID bylowercase name"},
+        {"rva":"0x532a60","role":"Suffix fromlastbackslash includingseparator"},
+        {"rva":"0x532b30","role":"Lowercase full name lookup"},
+        {"rva":"0x532bf0","role":"ID cache thenlinear lookup"},
+        {"rva":"0x532d30","role":"Deleteall matching names"},
+        {"rva":"0x532e20","role":"Deleteall matching IDs"},
+        {"rva":"0x532f30","role":"Release records/vector,preserve cache-counters"},
+        {"rva":"0x533280","role":"Register284byte record,no file load"},
+        {"rva":"0x531f80","role":"Get-or-register interface"}
+      ],
+      "implementation":["scripts/native/client455_animation_manager.h","scripts/native/client455_animation_manager.cpp"],
+      "option":"RF_CLIENT_455_ANIMATION_MANAGER",
+      "evidence":[
+        "inventory/client455-animation-manager-reference.json",
+        "inventory/client455-animation-manager-build.json",
+        "inventory/client455-animation-manager-cpu.json",
+        "inventory/client455-animation-manager-client.json",
+        "inventory/client455-animation-manager-link.json",
+        "inventory/client455-animation-manager-checkpoint.json",
+        "research/client455-animation-manager.md",
+        "scripts/test_coff_callers.py"
+      ],
+      "scenarios":[
+        "Whole4028 constructor/allocatorpadding preserved;14capacity steps/1.5growth/lowercase duplicates/no-load registration",
+        "Name-ID-suffix lookups/cache slots65-86-107/fourcolliding DWORDbyte permutations/firstslot replacement",
+        "Resetcounters preservesvector-cache;duplicate IDs deleteall;DWORDIDwrap/emptyname;cache bits retained afterfree withoutdereference",
+        "Raw268/descriptorcookie272-4/extra280/record orderedrelease,vector ownership andownedOOM cleanup",
+        "Real27746byte85track ANI registration-load-IDlookup-max3200-release,loadedretry/stickyfailedretry;native andfullclient87checks match"
+      ],
+      "gaps":[
+        "Normal CUnityAniMgr/CAniData/ChAnimation consumers stilllegacy24-280;no unsafecast tosource4028-284. Normal source API availability isnot runtimeintegration",
+        "UnityGetAni IDFFFFFFFF guard/mode-dependent failureUI-localization/actor lifecycle notported",
+        "Worker935450 noxref/immediateVA bothpins,not fullunreachable proof;bothselected importer routes synchronous,external async lifecycle stillunknown",
+        "Long-percent-null names/missingbackslash/OOM guards differfromundefined unchecked reference domains;locale/nonASCII/allocator-privateC++STL/exceptionunwind notcertified",
+        "Full normalCharacter455/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
       ]
     }
   ],

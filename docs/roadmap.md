@@ -12,6 +12,11 @@
 
 ## Текущий статус
 
+Новейший участок M6: коллекция AnimationManager4028/11sourceAPIs восстановлена,
+проверены cache/owners/один real ANI standalone/fullclient. Normal typed consumers
+ещё legacy; normal runtime прежний после исключения timestamps. Gate
+inventory/client455-animation-manager-checkpoint.json; M6/M6F/M7/M9 открыты.
+
 Новейшее дополнение M6: elapsed clock восстановлен и подключён к обычному клиенту.
 Actual R3CalculateTime→CResObject и короткая Platform01/device проверка прошли.
 Gate inventory/client455-loop-clock-checkpoint.json. Full actor/normal455ABI/
@@ -173,7 +178,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 ## Ближайшая очередь
 
 1. M6: завершить staticCRTsin/полный actor lifecycle/transition consumers и
-   AnimationManager/worker. Key evaluators/основныеpose/transition/ramp/skinmatrices
+   normal CUnity/CAniData calls. Коллекция AnimationManager/record ownership ready027;
+   async worker уточнять по callers, оба выбранных importer mode синхронные.
+   Key evaluators/основныеpose/transition/ramp/skinmatrices
    source готовы:11pairs/132updates standalone/fullclient CPU,5sourceC APIs;
    secondary state/effects подключены:36scalarcases/2realCoraBN/6updates;reference
    staticCRTsin parity ещёopen. research/client455-secondary-motion.md. Затем skin/draw и

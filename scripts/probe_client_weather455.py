@@ -20,6 +20,7 @@ def main():
     if build['build_settings'].get('RF_CLIENT_455_POSE')=='ON':expected_objects+=1 # Secondary test TU shares the pose flag.
     if build['build_settings'].get('RF_CLIENT_455_ANIMATION_TIMING')=='ON':expected_objects+=1
     if build['build_settings'].get('RF_CLIENT_455_LOOP_CLOCK')=='ON':expected_objects+=1
+    if build['build_settings'].get('RF_CLIENT_455_ANIMATION_MANAGER')=='ON':expected_objects+=1
     if build['build_exit'] or build['generated_objects']!=expected_objects or build['build_settings'].get('RF_CLIENT_455_WEATHER')!='ON':
         raise ValueError('Successful weather-enabled full client lab required')
     for key in ['lab_input_sha256','weather_input_sha256']:

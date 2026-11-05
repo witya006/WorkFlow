@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Последнее дополнение: source AnimationManager4554028/11APIs проверен standalone
+и full-client lab на коллекции/кэше/владении/одном real ANI. Новых установок нет.
+Normal291MTobjects/прежний engine archive, lab192clientTUs. Normal runtime равен
+предыдущему после исключения timestamps: старые consumers ещё не переключены.
+inventory/client455-animation-manager-checkpoint.json;
+research/client455-animation-manager.md. Несвязанные большие тесты не повторялись.
+
 Дополнение после timing: source elapsed clock подключён в normal R3EngineMT.
 144 состояния/3 provider сценария прошли; actual R3CalculateTime→CResObject
 проверен в полном client lab. Platform01/device прошёл, прежние frame SHA.

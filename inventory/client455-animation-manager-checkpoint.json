@@ -1,0 +1,46 @@
+{
+  "scope": "Source AnimationManager4028 collection/cache/owners,not normal typed consumers/UI/async/fullCharacter455/M9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "b597d3ef8287197f6de3da1ef4e2ab360fc87ac6b65fb809c3de2e7cf756bbe0",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "210e5acf78cd5ee7d70f0899a75dfe198f9454c1b811bd446d6b646fc2b2c982",
+    "scope": "Source collection available;normal CUnity/ChAnimation consumers remainlegacy,no unsafe ABI cast"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc",
+    "exe_bytes": 5258752,
+    "entry_rva": "0x89ef"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 87,
+    "groups": 4,
+    "real_ani_files": 1,
+    "owned_heap_balance": 0
+  },
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "normal_modern_coff_objects": 291,
+  "lab_client_objects": 192,
+  "unchanged_bulk_suites_repeated": false,
+  "unrelated_graphics_timer_suites_repeated": false,
+  "remaining": [
+    "Normal CUnityAniMgr/ChAnimation types stilllegacy;no rawcast allowed",
+    "UI-specific CUnityGetAni failure policy/localization/async external entry lifetime notrestored",
+    "Owned guards forlong-percent/null names/missingbackslash/OOM differfromundefined reference domains",
+    "Original C++ allocator/exception/privateSTL ABI notcertified"
+  ],
+  "evidence_sha256": {
+    "client455-animation-manager-reference": "ebcd3b6d009ead92a47f7e2eba4b5a72c4878c7c3943a6a3c86a98951ed25ee4",
+    "client455-animation-manager-build": "c4d06c318ab92e0505b578d63e8719b63f8bf65be7c946b70eba8dc25478180a",
+    "client455-animation-manager-cpu": "043a914a9e17198f67f6cf498b9256d270008a62ff3258ce15aa389143114811",
+    "client455-animation-manager-client": "414386480c5666fdce4a86d21c0500a32e832e7a2d83fde0c8f04beb4872d5b8",
+    "client455-animation-manager-link": "3b18cbe6e62b0a39687664be5660a79a3026652622dcc84177112d8eac19dd1e",
+    "client-helper-lab-build": "1a075c8fdec63253e98add92f45d7d892557c0545f49536783616d15825f6b64"
+  }
+}

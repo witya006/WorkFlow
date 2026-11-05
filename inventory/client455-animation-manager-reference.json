@@ -1,0 +1,355 @@
+{
+  "scope": "Source AnimationManager4028 collection/cache/record ownership;normal oldSDK consumer migration separate",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "ctor",
+          "rva": "0x1e1150",
+          "bytes": 116,
+          "sha256": "f4559f70109931495f2caafefa3c8de03d16180c7c8408e17732b4a6a49cc54f"
+        },
+        {
+          "name": "cache_ctor",
+          "rva": "0x1e11d0",
+          "bytes": 41,
+          "sha256": "d516b1650b773b524a601cc3e87ab72ad49be33f5d31c21b4ecdc447f15a801b"
+        },
+        {
+          "name": "vector_ctor",
+          "rva": "0x1e7ec0",
+          "bytes": 48,
+          "sha256": "81dbb962550befa9bf7cf77480493b88a7e6053b54846a9f315984a6cfcb9cae"
+        },
+        {
+          "name": "allocator_base",
+          "rva": "0x1e9380",
+          "bytes": 36,
+          "sha256": "f8783bb0b85414b72cadc762c8c483508a089f567b1e167d6e63172d456ed9da"
+        },
+        {
+          "name": "allocator_copy",
+          "rva": "0x1ea9d0",
+          "bytes": 24,
+          "sha256": "97cc1c4aa31cfb80ccbf868882eb2c565fee3e39f24d51c86344bb8123122b69"
+        },
+        {
+          "name": "vector_empty",
+          "rva": "0x1e9280",
+          "bytes": 133,
+          "sha256": "d10f3a4f5bd06000db305913fa9b9fe125e68676767955c26567ad19271a0c38"
+        },
+        {
+          "name": "init_counters",
+          "rva": "0x532480",
+          "bytes": 15,
+          "sha256": "4c46a206b52756f4e832de4377434eaa22e514a906388475775954b4684719c4"
+        },
+        {
+          "name": "hash_row",
+          "rva": "0x5321b0",
+          "bytes": 57,
+          "sha256": "4a91ac15ff57a43060b6f4100c3971c4e075bad20c271d250245dd200f7ddf8d"
+        },
+        {
+          "name": "hash_column",
+          "rva": "0x5321f0",
+          "bytes": 66,
+          "sha256": "fd397779ccc19b3216c708f3cef2d961b6366d3d425bf39d8cb18828d442e4b2"
+        },
+        {
+          "name": "cache_find",
+          "rva": "0x532240",
+          "bytes": 144,
+          "sha256": "438630289342b1b2fe731564386ef3c20d61a03f14453f10936b67824abe9211"
+        },
+        {
+          "name": "cache_put",
+          "rva": "0x5322d0",
+          "bytes": 170,
+          "sha256": "0b7c7773ffb2bcffe5b25c682fc1dba74d7d58f406fc895054f1388127b90ecd"
+        },
+        {
+          "name": "id_by_name",
+          "rva": "0x5329b0",
+          "bytes": 164,
+          "sha256": "a9f3d85675f5351ede77d77533f69d94b2b2c949381131f527001854dd695784"
+        },
+        {
+          "name": "find_suffix",
+          "rva": "0x532a60",
+          "bytes": 198,
+          "sha256": "536a7dc08975dc19674e8845d47a3dc8a9b7bd38c32c22594d6e8943ece1fed8"
+        },
+        {
+          "name": "find_name",
+          "rva": "0x532b30",
+          "bytes": 188,
+          "sha256": "18cad1e61a606b467a4b027577788b65ee15433dd37a214de53474dbef8ee392"
+        },
+        {
+          "name": "find_id",
+          "rva": "0x532bf0",
+          "bytes": 76,
+          "sha256": "1eba6638ac6ad831df60fef586c51b2c6e7bbe9567d1c6fce5a0ecf3ff2dc3e8"
+        },
+        {
+          "name": "delete_name",
+          "rva": "0x532d30",
+          "bytes": 233,
+          "sha256": "9099bc317e19f85a0e4d997dae6a60372e8cf78a3e3f0b599bc288fd723fe7b1"
+        },
+        {
+          "name": "delete_id",
+          "rva": "0x532e20",
+          "bytes": 103,
+          "sha256": "3cf1ba57c57c8b2c83d0619247371cc19cf730dc5f867a2cd7cdabd260d653f2"
+        },
+        {
+          "name": "release_records_vector",
+          "rva": "0x532f30",
+          "bytes": 185,
+          "sha256": "dfc162962b5586299d5aa3708ce3ab35d96756464eba3546fb1286ae863a55e3"
+        },
+        {
+          "name": "vector_grow",
+          "rva": "0x533020",
+          "bytes": 437,
+          "sha256": "e572180897d593db0692c659656faf11ce77cef0a8ad357ae000bab33628365c"
+        },
+        {
+          "name": "push",
+          "rva": "0x533230",
+          "bytes": 77,
+          "sha256": "036999b2550d880a36ae441fd69c9e48766205adea8144c7b4287955d18d7b4b"
+        },
+        {
+          "name": "register",
+          "rva": "0x533280",
+          "bytes": 208,
+          "sha256": "e02d3eca37d072e22e0c44826bc44f9dbcc068a7587d53456c4e7f5166aae6b2"
+        },
+        {
+          "name": "get_or_register",
+          "rva": "0x531f80",
+          "bytes": 48,
+          "sha256": "6ebfbbd8f8e947a109d7f5cfd2fb33311b063fd3c5c4647537d9ae1d07573a5d"
+        },
+        {
+          "name": "unity_get",
+          "rva": "0x1e12c0",
+          "bytes": 230,
+          "sha256": "c958477bebd68deaa0c78389dc05aba0d91c31b8def64e9a69ac53d5dbdd1357"
+        },
+        {
+          "name": "synchronous_false_import",
+          "rva": "0x5352a0",
+          "bytes": 128,
+          "sha256": "a56eb91d16e6b26a7f008d4216fbee4ac9a9a38d3e7637655d6d5e6a7ba002e9"
+        },
+        {
+          "name": "synchronous_true_import",
+          "rva": "0x535320",
+          "bytes": 128,
+          "sha256": "2df06580baf9185068be289259b9a18c8b7d5a67b84e4d8797630a1903dbd777"
+        }
+      ],
+      "worker_va_byte_occurrences": 0
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "ctor",
+          "rva": "0x1e1150",
+          "bytes": 116,
+          "sha256": "f4559f70109931495f2caafefa3c8de03d16180c7c8408e17732b4a6a49cc54f"
+        },
+        {
+          "name": "cache_ctor",
+          "rva": "0x1e11d0",
+          "bytes": 41,
+          "sha256": "d516b1650b773b524a601cc3e87ab72ad49be33f5d31c21b4ecdc447f15a801b"
+        },
+        {
+          "name": "vector_ctor",
+          "rva": "0x1e7ec0",
+          "bytes": 48,
+          "sha256": "81dbb962550befa9bf7cf77480493b88a7e6053b54846a9f315984a6cfcb9cae"
+        },
+        {
+          "name": "allocator_base",
+          "rva": "0x1e9380",
+          "bytes": 36,
+          "sha256": "f8783bb0b85414b72cadc762c8c483508a089f567b1e167d6e63172d456ed9da"
+        },
+        {
+          "name": "allocator_copy",
+          "rva": "0x1ea9d0",
+          "bytes": 24,
+          "sha256": "97cc1c4aa31cfb80ccbf868882eb2c565fee3e39f24d51c86344bb8123122b69"
+        },
+        {
+          "name": "vector_empty",
+          "rva": "0x1e9280",
+          "bytes": 133,
+          "sha256": "d10f3a4f5bd06000db305913fa9b9fe125e68676767955c26567ad19271a0c38"
+        },
+        {
+          "name": "init_counters",
+          "rva": "0x532480",
+          "bytes": 15,
+          "sha256": "4c46a206b52756f4e832de4377434eaa22e514a906388475775954b4684719c4"
+        },
+        {
+          "name": "hash_row",
+          "rva": "0x5321b0",
+          "bytes": 57,
+          "sha256": "4a91ac15ff57a43060b6f4100c3971c4e075bad20c271d250245dd200f7ddf8d"
+        },
+        {
+          "name": "hash_column",
+          "rva": "0x5321f0",
+          "bytes": 66,
+          "sha256": "fd397779ccc19b3216c708f3cef2d961b6366d3d425bf39d8cb18828d442e4b2"
+        },
+        {
+          "name": "cache_find",
+          "rva": "0x532240",
+          "bytes": 144,
+          "sha256": "438630289342b1b2fe731564386ef3c20d61a03f14453f10936b67824abe9211"
+        },
+        {
+          "name": "cache_put",
+          "rva": "0x5322d0",
+          "bytes": 170,
+          "sha256": "0b7c7773ffb2bcffe5b25c682fc1dba74d7d58f406fc895054f1388127b90ecd"
+        },
+        {
+          "name": "id_by_name",
+          "rva": "0x5329b0",
+          "bytes": 164,
+          "sha256": "a9f3d85675f5351ede77d77533f69d94b2b2c949381131f527001854dd695784"
+        },
+        {
+          "name": "find_suffix",
+          "rva": "0x532a60",
+          "bytes": 198,
+          "sha256": "536a7dc08975dc19674e8845d47a3dc8a9b7bd38c32c22594d6e8943ece1fed8"
+        },
+        {
+          "name": "find_name",
+          "rva": "0x532b30",
+          "bytes": 188,
+          "sha256": "18cad1e61a606b467a4b027577788b65ee15433dd37a214de53474dbef8ee392"
+        },
+        {
+          "name": "find_id",
+          "rva": "0x532bf0",
+          "bytes": 76,
+          "sha256": "1eba6638ac6ad831df60fef586c51b2c6e7bbe9567d1c6fce5a0ecf3ff2dc3e8"
+        },
+        {
+          "name": "delete_name",
+          "rva": "0x532d30",
+          "bytes": 233,
+          "sha256": "9099bc317e19f85a0e4d997dae6a60372e8cf78a3e3f0b599bc288fd723fe7b1"
+        },
+        {
+          "name": "delete_id",
+          "rva": "0x532e20",
+          "bytes": 103,
+          "sha256": "3cf1ba57c57c8b2c83d0619247371cc19cf730dc5f867a2cd7cdabd260d653f2"
+        },
+        {
+          "name": "release_records_vector",
+          "rva": "0x532f30",
+          "bytes": 185,
+          "sha256": "dfc162962b5586299d5aa3708ce3ab35d96756464eba3546fb1286ae863a55e3"
+        },
+        {
+          "name": "vector_grow",
+          "rva": "0x533020",
+          "bytes": 437,
+          "sha256": "e572180897d593db0692c659656faf11ce77cef0a8ad357ae000bab33628365c"
+        },
+        {
+          "name": "push",
+          "rva": "0x533230",
+          "bytes": 77,
+          "sha256": "036999b2550d880a36ae441fd69c9e48766205adea8144c7b4287955d18d7b4b"
+        },
+        {
+          "name": "register",
+          "rva": "0x533280",
+          "bytes": 208,
+          "sha256": "e02d3eca37d072e22e0c44826bc44f9dbcc068a7587d53456c4e7f5166aae6b2"
+        },
+        {
+          "name": "get_or_register",
+          "rva": "0x531f80",
+          "bytes": 48,
+          "sha256": "6ebfbbd8f8e947a109d7f5cfd2fb33311b063fd3c5c4647537d9ae1d07573a5d"
+        },
+        {
+          "name": "unity_get",
+          "rva": "0x1e12c0",
+          "bytes": 230,
+          "sha256": "c958477bebd68deaa0c78389dc05aba0d91c31b8def64e9a69ac53d5dbdd1357"
+        },
+        {
+          "name": "synchronous_false_import",
+          "rva": "0x5352a0",
+          "bytes": 128,
+          "sha256": "a56eb91d16e6b26a7f008d4216fbee4ac9a9a38d3e7637655d6d5e6a7ba002e9"
+        },
+        {
+          "name": "synchronous_true_import",
+          "rva": "0x535320",
+          "bytes": 128,
+          "sha256": "2df06580baf9185068be289259b9a18c8b7d5a67b84e4d8797630a1903dbd777"
+        }
+      ],
+      "worker_va_byte_occurrences": 0
+    }
+  ],
+  "sample": {
+    "copy": "work/client-reference/character-animation455/sample_000.ani",
+    "sha256": "686be74f8d0e3697848dd640950311ce6453090d3f63969f701f1c69cf1ecde8",
+    "kind": "real",
+    "original": "Character/Monster/Ani/ZETSOHOLIDAY_PEACEDAMAGE_01_00.ANI",
+    "pair_index": 1,
+    "bytes": 27746,
+    "tracks": 85,
+    "max_frame": 3200,
+    "consumed": 27746,
+    "trailing": 0,
+    "channel_keys": [
+      675,
+      0,
+      0,
+      208
+    ],
+    "inactive": 0
+  },
+  "script_sha256": "2b373262e66e574a17beec4af328d35bbed1de5136c481d786c3e636279c51a0",
+  "confirmed": [
+    "Manager allocated0xFBC;self0/allocatorpadding4 preserved/vector8-12-16/counter20zero/nextId24one/cache28+4000zero",
+    "Register lowercases short plain name,duplicate returnsfalse,no file load,record284 ID264,nextId incrementsafter push,vector capacity grows1.5x",
+    "IDcache uses3probes andfirstslotreplacement,deleted records remaincached;no invalidation bydelete/release",
+    "Suffix compares fromlastbackslash INCLUDING separator;managerrelease destroysrecords thenfreesvector/zeros8-12-16 only",
+    "Both importer modes use synchronous dispatch;worker935450 noxref incheckedIDA/currentimage immediateVA occurrence recorded,not claimed unreachable proof"
+  ],
+  "remaining": [
+    "Normal CUnityAniMgr/ChAnimation types stilllegacy;no rawcast allowed",
+    "UI-specific CUnityGetAni failure policy/localization/async external entry lifetime notrestored",
+    "Owned guards forlong-percent/null names/missingbackslash/OOM differfromundefined reference domains",
+    "Original C++ allocator/exception/privateSTL ABI notcertified"
+  ],
+  "raw_analysis": "artifacts/character-animation455/manager-*.json;ownedab74ea29/4c43ad92 closed/save"
+}

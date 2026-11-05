@@ -11,7 +11,16 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — source elapsed clock в обычном R3EngineMT: усреднение DWORD,
+Последний unit — source коллекция AnimationManager4028:11APIs регистрации,
+поиска/кэша/удаления/владения.87targeted checks/один real ANI прошли component
+и полный client lab; heap/Dmalloc0. Normal runtime равен loop-clock-final после
+исключения timestamps, normal CUnity/ChAnimation ещё legacy; lab192clientTUs.
+Gate inventory/client455-animation-manager-checkpoint.json;
+research/client455-animation-manager.md. Графические/clock/bulk suites не повторялись.
+Далее — typed CUnity/CAniData/actor transitions. Для worker935450 не найден caller,
+оба проверенных importer mode синхронные; не считать worker доказанным блокером.
+
+Предыдущий unit — source elapsed clock в обычном R3EngineMT: усреднение DWORD,
 ограничение/scale, real time, toggles, QPC init/fallback/duration. 144 состояния
 в12FPmodes/3provider сценария прошли; полный client lab вызывает настоящий
 R3CalculateTime и затем CResObject, результат frame309. Короткая Platform01/device
@@ -77,7 +86,9 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 1. Завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
    полный actor lifecycle/secondary binding, transition consumers и
-   AnimationManager/worker. Численный producer/known84 defaults готовы в025,
+   normal CUnity/CAniData calls. Коллекция AnimationManager и record ownership
+   готовы в027; async worker уточнять по реальным callers, не по наличию тела.
+   Численный producer/known84 defaults готовы в025,
    elapsed clock в026; повторно их не исследовать без новых фактов. RTMovie scale
    caller ещё открыт, весь cinematic subsystem не объявлять восстановленным.
    Основныеpose/skinmatrix иsecondary source готовы;secondary requires mathcontext,

@@ -259,6 +259,17 @@ foreach ($property in $animation.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_ANIMATION=ON'
 $arguments += "-DRF_CLIENT_455_ANIMATION_LIBRARY=$animationLibrary"
+$animationManager = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-manager-build.json') -Raw | ConvertFrom-Json
+$animationManagerCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-animation-manager-cpu.json') -Raw | ConvertFrom-Json
+$animationManagerLibrary = Join-Path $workspace $animationManager.library
+if ($animationManagerCpu.native.status -ne 'PASS' -or $animationManagerCpu.native.real_ani_files -ne 1 -or $animationManagerCpu.native.owned_heap_balance -ne 0 -or
+    (Get-FileHash -LiteralPath $animationManagerLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $animationManager.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-animation-manager-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $animationManagerCpu.build_report_sha256) { throw '455 animation manager source proof missing or stale.' }
+foreach ($property in $animationManager.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 animation manager source changed.' }
+}
+$arguments += '-DRF_CLIENT_455_ANIMATION_MANAGER=ON'
+$arguments += "-DRF_CLIENT_455_ANIMATION_MANAGER_LIBRARY=$animationManagerLibrary"
 $pose = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Raw | ConvertFrom-Json
 $poseCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-cpu.json') -Raw | ConvertFrom-Json
 $poseLibrary = Join-Path $workspace $pose.library
@@ -368,6 +379,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_manager.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_manager.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_loop_clock.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_loop_clock.py }
