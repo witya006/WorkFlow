@@ -1,6 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий участок M6, characterclock040: таймер Character и реальный normal bridge
+Текущий участок M6, accounting041: семь подтверждённых cumulative counters
+питаются от настоящих producers и читаются diagnostic consumer через own source
+snapshot. Actual ANI/two renderers/mesh lifetime и model/GPU descriptors прошли.
+Вся новая normal source ветка компилируется и линкуется в RF_Online.bin, 0 missing
+symbols. Это отдельный подтверждённый результат. Normal WinMain, initialization,
+device lifecycle и полный UI/network/gameplay ещё не приняты; M6/M6F/M7/M9 открыты.
+research/client455-normal-accounting.md; scoped checkpoint PARTIAL.
+
+Предыдущий участок M6, characterclock040: таймер Character и реальный normal bridge
 подключены, численные и provider сценарии прошли. Это отдельные миллисекунды,
 не повторный update engine clock. Full normal link имеет один g_ChMemoryInfo.
 Сам таймер не доказывает новые frame methods924700/9248A0 или полный actor

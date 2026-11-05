@@ -1594,6 +1594,16 @@
       "evidence":["inventory/client455-character-clock-reference.json","inventory/client455-character-clock-native.json","inventory/client455-character-clock-checkpoint.json","inventory/client455-normal-link.json","research/client455-character-clock.md"],
       "gaps":["Failed provider without supplied output, zero divisors/nonfinite/unmasked exceptions/process scheduling not accepted","Reference frame methods924700/9248A0 and full actor lifecycle not restored by this unit","Character memory accounting unresolved; normal WinMain/UI/network/gameplay/device reset and M6/M6F/M7/M9 remain open"]
     }
+    ,{
+      "id":"CLIENT455-NORMAL-ACCOUNTING-041",
+      "status":"partial",
+      "description":"Process-wide real cumulative mesh/buffer/ANI counters and existing texture totals exposed to normal diagnostic consumer; first full normal source link",
+      "implementation":["scripts/native/client455_normal_accounting.h","scripts/native/client455_normal_accounting.cpp","scripts/native/client455_normal_facade.cpp","scripts/prepare_client455_normal.py"],
+      "reference":[{"rva":"0xd895f8","role":"Seven confirmed counters,28bytes initiallyzero"},{"rva":"0x534a20","role":"Texture producer"},{"rva":"0x53de00","role":"Vertex buffer creation"},{"rva":"0x5214e0","role":"Mesh constructor"},{"rva":"0x53acd0","role":"Raw ANI bytes"},{"rva":"0x3f26f1","role":"Diagnostic consumer fragment"}],
+      "verification":"Both455pins agree on producers/consumer/initial counters. Real70794-byte ANI across2normal renderer owners, cached load/release/mesh lifetime/DWORDwrap pass. Actual GPU BN-MSH-ANI model parts, pools, texture descriptors and filelength match all counters; release/next renderer retain cumulative totals. Previous color/effect/shadow frames retained, COM/Dmalloc0.182client/11facade/20kernelCPP compile; full RF_Online.bin link PASS/0unresolved, PE/MAP/response verified.",
+      "evidence":["inventory/client455-normal-accounting-reference.json","inventory/client455-normal-accounting-native.json","inventory/client455-normal-accounting-checkpoint.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","research/client455-normal-accounting.md"],
+      "gaps":["Unassociated32byte constructor doesnot prove eighth field/private global ABI; own read view exposes seven confirmed counters","Original async races/diagnostic float formatting/allocator failure domains unproven","Normal WinMain/runtime initialization and full device/actor/particle/UI/network/gameplay acceptance remain open; M6/M6F/M7/M9 OPEN"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

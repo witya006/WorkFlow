@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "client455_normal_renderer_math.h"
+#include "client455_normal_accounting.h"
 #include "client455_secondary.h"
 #include <cstring>
 #include <cwchar>
@@ -65,14 +66,14 @@ CRender*& activeRenderer(){static CRender* value=nullptr;return value;}
 }
 struct CRender::Runtime {
     RF455AnimationMemoryOps animationMemory=RF455_CrtAnimationMemoryOps();
-    RF455MeshAccounting meshes={};RF455BufferAccounting buffers={};unsigned importedBytes=0;
     RF455LegacyScratch scratch;RF455CharacterLoadContext load;
     RF455PoseScratch poseScratch={};RF455PoseContext pose={};
     RF455CharacterDrawContext draw={};D3DXMATRIX view,projection;
     explicit Runtime(RF455CharacterRenderer& owner){
         auto& process=hub();RF455LegacyDiagnostics log={nullptr,diagnostic,diagnosticWide};
-        const auto base=RF455_RendererModelContext(&owner,&animationMemory.memory,&process.pose.matrix,&meshes,&buffers);
-        load={{base,&owner.vertices36,owner.vertexMode,&scratch,log},{animationMemory,log,&importedBytes}};
+        auto& accounting=*RF455_GetNormalCharacterAccounting();
+        const auto base=RF455_RendererModelContext(&owner,&animationMemory.memory,&process.pose.matrix,&accounting.meshes,&accounting.buffers);
+        load={{base,&owner.vertices36,owner.vertexMode,&scratch,log},{animationMemory,log,&accounting.importedAnimationBytes}};
         pose={&load,process.pose,&poseScratch,0,nullptr,animationOwner,&process.secondary};
         draw.math=process.drawing;draw.memory=animationMemory.memory;draw.globals=&process.drawGlobals;draw.transparent=&process.transparent;
         draw.view=reinterpret_cast<const float*>(&view);draw.projection=reinterpret_cast<float*>(&projection);

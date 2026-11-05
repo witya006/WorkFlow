@@ -2,6 +2,7 @@
 #include "global.h"
 #include "jmalloc.h"
 #include "client455_normal_renderer_math.h"
+#include "client455_normal_accounting.h"
 #include <cstdio>
 #include <cstring>
 #include <vector>
@@ -10,6 +11,7 @@
 int RF455_CheckNormalShadowCapture();
 int RF455_CheckNormalShadowHal(CRender*,CHARACTEROBJECT*,IDirect3DDevice9*);
 int RF455_CheckEffectsGpu(ChInterface*,CHARACTEROBJECT*,IDirect3DDevice9*);
+static CHMEMORYINFO lastSceneMemory;
 
 #define R_REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Normal renderer failure line%d\n",__LINE__);return 1;}}while(0)
 template<class T>T read(const void* p,unsigned at){T out;std::memcpy(&out,static_cast<const unsigned char*>(p)+at,sizeof(out));return out;}
@@ -21,6 +23,7 @@ static std::vector<unsigned char> capture(IDirect3DDevice9* d){
 }
 static bool frame(const char* name,const std::vector<unsigned char>& pixels){FILE* f=std::fopen(name,"wb");if(!f)return false;const bool ok=std::fwrite(pixels.data(),1,pixels.size(),f)==pixels.size();std::fclose(f);return ok;}
 static int scene(IDirect3DDevice9* d,const char* fixture){
+    const auto memoryBefore=RF455_GetCharacterMemoryInfo();
     FILE* f=std::fopen(fixture,"rb");R_REQUIRE(f);char paths[3][512];for(auto& path:paths){R_REQUIRE(std::fgets(path,sizeof(path),f));path[std::strcspn(path,"\r\n")]=0;}std::fclose(f);
     ChInterface renderer;renderer.InitCharacter(d);renderer.native.blendDuration=150;g_ifCharIF=&renderer;
     CUnityBoneMgr bones;CUnityMeshMgr meshes;CUnityAniMgr animations;R_REQUIRE(bones.Create() && meshes.Create() && animations.Create());
@@ -28,6 +31,16 @@ static int scene(IDirect3DDevice9* d,const char* fixture){
     renderer.SetTexPath(root,".\\tex");renderer.SetTexPath(model,".\\tex");
     R_REQUIRE(bones.GetBone(RLI_MONSTER,root->m_ID)==root && root->m_Load && meshes.GetMesh(RLI_MONSTER,model->m_ID)==model && model->m_Load);
     auto* animation=animations.AddAni(RLI_MONSTER,paths[2]);R_REQUIRE(animation && renderer.IsLoadAnimation(animation) && animation->m_Load);
+    const auto loadedMemory=RF455_GetCharacterMemoryInfo();unsigned vertexBlocks=0,indexBlocks=0;
+    for(unsigned i=0;i<RF455_BUFFER_SLOTS;++i){vertexBlocks+=renderer.native.vertices64.buffers[i]!=nullptr;vertexBlocks+=renderer.native.vertices36.buffers[i]!=nullptr;indexBlocks+=renderer.native.indices.buffers[i]!=nullptr;}
+    R_REQUIRE(loadedMemory.m_ObjectNum-memoryBefore.m_ObjectNum==root->m_MaxObj+model->m_MaxObj);
+    R_REQUIRE(loadedMemory.m_ObjectSize-memoryBefore.m_ObjectSize==5803u*(root->m_MaxObj+model->m_MaxObj));
+    R_REQUIRE(loadedMemory.m_VertexSize-memoryBefore.m_VertexSize==vertexBlocks*RF455_VERTEX_BLOCK_BYTES+indexBlocks*RF455_INDEX_BLOCK_BYTES);
+    R_REQUIRE(loadedMemory.m_VetexNum-memoryBefore.m_VetexNum==vertexBlocks+indexBlocks);
+    unsigned textureCount=0,textureBytes=0;
+    for(auto** at=renderer.native.textures.begin;at!=renderer.native.textures.end;++at){D3DSURFACE_DESC descriptor={};R_REQUIRE(SUCCEEDED((*at)->texture->GetLevelDesc(0,&descriptor)));++textureCount;textureBytes+=4u*descriptor.Width*descriptor.Height;}
+    R_REQUIRE(loadedMemory.m_TextureSize-memoryBefore.m_TextureSize==textureBytes && loadedMemory.m_TextureNum-memoryBefore.m_TextureNum==textureCount);
+    f=std::fopen(paths[2],"rb");R_REQUIRE(f);std::fseek(f,0,SEEK_END);const unsigned aniBytes=static_cast<unsigned>(std::ftell(f));std::fclose(f);R_REQUIRE(loadedMemory.m_AniSize-memoryBefore.m_AniSize==aniBytes);
     renderer.MatchAnimationToMesh(animation,root);const DWORD originalMax=root->m_OMaxFrame;R_REQUIRE(originalMax>160);
     renderer.AnimationReset(root);R_REQUIRE(root->m_Frame==160 && root->m_OMaxFrame==0);
     for(unsigned i=0;i<root->m_MaxObj;++i)R_REQUIRE(!root->m_pMesh[i].bytes[5094] && !read<unsigned>(root->m_pMesh+i,5095));
@@ -69,11 +82,15 @@ static int scene(IDirect3DDevice9* d,const char* fixture){
     R_REQUIRE(RF455_CheckEffectsGpu(&renderer,model,d)==0);
     R_REQUIRE(RF455_CheckNormalShadowHal(&renderer,model,d)==0);
     renderer.UnSetState();DWORD state;R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_VERTEXBLEND,&state)) && state==D3DVBF_DISABLE);R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_CULLMODE,&state)) && state==D3DCULL_CCW);R_REQUIRE(SUCCEEDED(d->GetSamplerState(4,D3DSAMP_MIPFILTER,&state)) && state==D3DTEXF_POINT);
-    g_ifCharIF=nullptr;R_REQUIRE(animations.Destroy() && meshes.Destroy() && bones.Destroy());return 0;
+    lastSceneMemory=RF455_GetCharacterMemoryInfo();g_ifCharIF=nullptr;R_REQUIRE(animations.Destroy() && meshes.Destroy() && bones.Destroy());return 0;
 }
 int main(int argc,char** argv){
     if(argc!=3)return 2;R_REQUIRE(RF455_CheckNormalShadowCapture()==0);const unsigned before=GetDmallocSize();InitR3Engine();IDirect3D9* api=Direct3DCreate9(D3D_SDK_VERSION);R_REQUIRE(api);HWND window=CreateWindowExA(0,"STATIC","Owned normal455renderer test",WS_OVERLAPPEDWINDOW,0,0,256,256,nullptr,nullptr,GetModuleHandleA(nullptr),nullptr);R_REQUIRE(window);
     D3DPRESENT_PARAMETERS pp={};pp.Windowed=TRUE;pp.hDeviceWindow=window;pp.BackBufferWidth=pp.BackBufferHeight=256;pp.BackBufferFormat=D3DFMT_X8R8G8B8;pp.SwapEffect=D3DSWAPEFFECT_DISCARD;pp.EnableAutoDepthStencil=TRUE;pp.AutoDepthStencilFormat=D3DFMT_D16;IDirect3DDevice9* d=nullptr;R_REQUIRE(SUCCEEDED(api->CreateDevice(0,D3DDEVTYPE_HAL,window,D3DCREATE_SOFTWARE_VERTEXPROCESSING|D3DCREATE_FPU_PRESERVE,&pp,&d)));
-    R_REQUIRE(scene(d,argv[1])==0);for(unsigned i=0;i<8;++i)d->SetTexture(i,nullptr);d->SetStreamSource(0,nullptr,0,0);d->SetIndices(nullptr);d->SetVertexShader(nullptr);d->SetPixelShader(nullptr);d->SetVertexDeclaration(nullptr);RF455_ReleaseNormalCharacterSharedResources();ReleaseR3Engine();const auto refs=d->Release(),apiRefs=api->Release();DestroyWindow(window);R_REQUIRE(!refs && !apiRefs && GetDmallocSize()==before);
+    R_REQUIRE(scene(d,argv[1])==0);const auto releasedMemory=RF455_GetCharacterMemoryInfo();R_REQUIRE(!std::memcmp(&releasedMemory,&lastSceneMemory,sizeof(releasedMemory)));
+    {ChInterface anotherOwner;const auto nextOwner=RF455_GetCharacterMemoryInfo();R_REQUIRE(!std::memcmp(&releasedMemory,&nextOwner,sizeof(nextOwner)));}
+    for(unsigned i=0;i<8;++i)d->SetTexture(i,nullptr);d->SetStreamSource(0,nullptr,0,0);d->SetIndices(nullptr);d->SetVertexShader(nullptr);d->SetPixelShader(nullptr);d->SetVertexDeclaration(nullptr);RF455_ReleaseNormalCharacterSharedResources();ReleaseR3Engine();const auto refs=d->Release(),apiRefs=api->Release();DestroyWindow(window);R_REQUIRE(!refs && !apiRefs && GetDmallocSize()==before);
+    FILE* memoryOutput=std::fopen("normal-accounting-gpu.json","wb");R_REQUIRE(memoryOutput);
+    std::fprintf(memoryOutput,"{\"status\":\"PASS\",\"real_model_counters\":true,\"cumulative_after_release\":true,\"next_renderer_keeps_counters\":true,\"mesh_count\":%lu,\"mesh_bytes\":%lu,\"buffer_count\":%lu,\"buffer_bytes\":%lu,\"texture_count\":%lu,\"texture_bytes\":%lu,\"ani_bytes\":%lu}\n",lastSceneMemory.m_ObjectNum,lastSceneMemory.m_ObjectSize,lastSceneMemory.m_VetexNum,lastSceneMemory.m_VertexSize,lastSceneMemory.m_TextureNum,lastSceneMemory.m_TextureSize,lastSceneMemory.m_AniSize);std::fclose(memoryOutput);
     R_REQUIRE(!GetModuleHandleA("mss32.dll") && !GetModuleHandleA("ABuse.dll") && !GetModuleHandleA("Adv.dll") && !GetModuleHandleA("PDLL.dll"));FILE* f=std::fopen(argv[2],"wb");R_REQUIRE(f);std::fputs("{\"status\":\"PASS\",\"normal_unity_model_pipeline\":true,\"animated_frames\":2,\"matrix_wrapper_equal_frames\":2,\"geometry_parts\":46,\"filter_cases\":3,\"alpha_material_checked\":true,\"real_animation_reset_reattach\":true,\"real_mesh_rematch\":true,\"texture_path_method\":true,\"shadow_capture\":true,\"shadow_target_passes\":3,\"real_model_shadow\":true,\"shadow_begin_success_return\":0,\"device_refs\":0,\"dmalloc_balance\":0,\"game_dlls_loaded\":false}\n",f);std::fclose(f);return 0;
 }

@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, accounting041: без новых установок. 182 client / 11 facade /
+20 canonical kernel CPP x86/MT собираются; новый полный normal RF_Online.bin
+успешно линкуется с 0 unresolved и без принудительного разрешения. PE32 x86,
+1 966 080 байт, entry RVA149500, SHA/response/MAP — normal-link.json.
+Общие counters и actual ANI/multiple owners/mesh lifetime/GPU descriptors
+проверены; release/новый renderer не обнуляют cumulative значения. Старые
+цветные/effect/shadow кадры сохранились, COM/Dmalloc0. Входные EXE и normal
+WinMain не исполнялись; runtime DLLs/обычная инициализация ещё не приняты.
+IDA6b33fc0a closed/saved=true. research/client455-normal-accounting.md;
+checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
 Дополнение 06.11, characterclock040: без новых установок. Отдельный таймер
 Character 91EA80 и _R3CalculateTime подключены к современному x86/MT facade.
 168 численных случаев/12 режимов FPU, QPC/fallback и независимость engine clock

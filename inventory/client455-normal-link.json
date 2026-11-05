@@ -1,25 +1,17 @@
 {
   "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
-  "link_exit": 1120,
+  "link_exit": 0,
   "client_objects": 182,
-  "unique_unresolved": 1,
-  "unresolved": [
-    {
-      "symbol": "?g_ChMemoryInfo@@3UCHMEMORYINFO@@A",
-      "declaration": "struct CHMEMORYINFO g_ChMemoryInfo",
-      "objects": [
-        "foreffect.obj"
-      ]
-    }
-  ],
+  "unique_unresolved": 0,
+  "unresolved": [],
   "other_errors": [],
   "log": "artifacts/client455-normal/normal-link.txt",
-  "log_sha256": "c3db308a930f471150f67778a6923c7b6c6ecacc8b71bf7a4d35a12b1ec7ad6e",
-  "normal_build_sha256": "1c444237a78dadfb8f2ef93c632740b0eff57cff2c6d654b28a4fc5dc9b8849e",
+  "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "normal_build_sha256": "a517d76e469ec2979e1743f40cb4599187008ed02ba7ac6c392753215d4d94f4",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "68d8a3f60f14868b1a0fa5885d2360b2ed0c0614c59b35cc860f716059da7d5c"
+      "sha256": "1af63c4490ed44bbcec0bab7a9dbb2a374a11e6bf646a8cafbbeb047197166f5"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
@@ -67,5 +59,28 @@
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "39062b2cbf18f5680fd1d59c3d73c22c020770c30e99c9107302cf6678a53a05",
+    "bytes": 1966080,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x149500",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "map": {
+    "file": "work/client455-port/normal/build/RF_Online.map",
+    "sha256": "971131371c9d3e7f146bbc359aa1244c74b0027bcfe40c15ad73b1dc9901e04f"
+  },
+  "link_response": {
+    "file": "work/client455-port/normal/generated/normal-link.rsp",
+    "sha256": "144f34302aba4489af56e6cdf2dea387e281b9b10a113dfeb6b3b5a3267d7683"
+  }
 }

@@ -50,6 +50,9 @@ def main():
         report['definitions']=definitions
         report['extra_sources']=[{'file':p.relative_to(WS).as_posix(),'sha256':sha(p)} for p in extra_sources]
         if mode=='gpu':
+            accounting=run/'normal-accounting-gpu.json'
+            report['accounting']={'file':accounting.relative_to(WS).as_posix(),'sha256':sha(accounting),'native':json.loads(accounting.read_text())}
+            report['accounting_reference_sha256']=sha(WS/'inventory/client455-normal-accounting-reference.json')
             shadow=run/'normal-shadow.bgra';data=shadow.read_bytes()
             if len(data)!=512*512*4:raise ValueError('Short shadow frame')
             preview=shadow.with_suffix('.bmp');preview.write_bytes(b'BM'+struct.pack('<IHHI',54+len(data),0,0,54)+struct.pack('<IiiHHIIiiII',40,512,-512,1,32,0,len(data),2835,2835,0,0)+data)

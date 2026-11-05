@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+Accounting041: source normal_accounting.{h,cpp} supplies process-wide mesh/
+buffer/rawANI counters, existing texture global remains actual source owner.
+Normal Runtime now passes shared pointers, not per-renderer totals. Own
+CHMEMORYINFO remains seven-field read view; RF455_GetCharacterMemoryInfo returns
+current values. Sole legacy foreffect diagnostic has8reads replaced by one
+local snapshot. No dummy global/no private32byte overlay. Seven globals
+11895F8..1189610 and all known producers/debugconsumer pinned both455bins;
+initial28bytes zero. Ctor9312E0 zeros32 but no found xrefs/association remains
+unknown; eighth field not invented. Actual globals count creations/cumulative
+estimated bytes, not live memory. Buffers count COM blocks, object count mesh
+parts, ANI counts raw import size. Destruction does not subtract.
+CPU actualANI70794bytes loaded/cached/released across2normal renderer owners;
+mesh ctor/destruction/DWORDwrap/source snapshot checked. GPU realBN+MSH+ANI:
+107meshes/620921bytes,2bufferblocks/3300000bytes,4textures/4194304estimatedbytes
+(includes newEFFtexture),43298ANIbytes. Verified against loaded model parts,
+nonnull pools, actual texture descriptors and looseANI length. Release andnew
+renderer keep totals. Old2color/effect/shadow frames unchanged, COM/Dmalloc0.
+One test expectation corrected: texture nextId starts1; GPU oracle now counts
+actual entries/descriptors, not nextId. Production counters unchanged by fix.
+182client/11facade/20kernelCPP compile. FIRST full normal source455/D3D9 link
+PASS/0unresolved/noothererrors/noCharacterMR/noFORCE. Own RF_Online.bin1966080B,
+x86/base400000/entry149500,SHA39062b2cbf18f5680fd1d59c3d73c22c020770c30e99c9107302cf6678a53a05.
+Full link metadata/MAP/response in normal-link.json; common helper validates
+success as separate fact, all8scoped checkpoints remain PARTIAL/M9OPEN.
+Research client455-normal-accounting.md, reference/native/checkpoint normal-
+accounting; raw artifacts/normal-accounting455. IDA6b33fc0a closed/saved=true.
+Originals/server/baseline/engine033 untouched; no input EXE or normalWinMain run.
+Previous goal turn progress:69914c3 restoredclock; current adds actual ownership
+and full link evidence. No blocking/no-progress condition.
+Next042: own fullPE imports/delayed DLL/CRT/global/WinMain preflight and isolated
+offline startup lab. Main starts engine→Miles sound→D3D init→Create→ABuse/Adv
+filters→loop/network OnLoop. Verify actual DLL APIs/config/assets before run;
+do not invent successful providers or use original workingdir. PE lacks.rsrc;
+engine winmain.rc containsicon, caller necessity stillunproven. Full actor/
+particle/shadow/blend/UI/network/gameplay/device-reset acceptance remainsopen.
+
+Предыдущий результат:
+
 Character clock040: client455_character_clock.{h,cpp} +normal_clock.cpp,
 facade10CPP. Separate91EA80 milliseconds timer, not engine8B3CC0. Original
 main7D13A2/7D13A7 calls both; both pins equal. Initial selected globals zero

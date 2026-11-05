@@ -1,0 +1,66 @@
+{
+  "status": "PARTIAL",
+  "confirmed_counter_fields": 7,
+  "source_process_accounting": "PASS",
+  "real_ani_multiple_owners": "PASS",
+  "real_model_gpu_counters": "PASS",
+  "cumulative_after_release": "PASS",
+  "normal_display_source_call": "PASS",
+  "full_normal_executable_link": "PASS",
+  "remaining_unresolved": 0,
+  "gpu_counters": {
+    "status": "PASS",
+    "real_model_counters": true,
+    "cumulative_after_release": true,
+    "next_renderer_keeps_counters": true,
+    "mesh_count": 107,
+    "mesh_bytes": 620921,
+    "buffer_count": 2,
+    "buffer_bytes": 3300000,
+    "texture_count": 4,
+    "texture_bytes": 4194304,
+    "ani_bytes": 43298
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "39062b2cbf18f5680fd1d59c3d73c22c020770c30e99c9107302cf6678a53a05",
+    "bytes": 1966080,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x149500",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "consumer": {
+    "file": "work/client455-port/normal/source/addcodebyjang/foreffect.cpp",
+    "sha256": "048658e9e48bb5942635d9d9440e8dd1ed8ba754def597e85008046f025d65a9",
+    "object": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/foreffect.obj",
+    "object_sha256": "2b290e6fac181cb9d25d05021bf394e3d80c27981ee02a7eb84e96ffbc341c38"
+  },
+  "evidence_sha256": {
+    "client455-normal-accounting-reference": "c9e6a21281346d93006c7ecd958811328cae8a9dad2af8804975b4a104516c25",
+    "client455-normal-accounting-native": "9ab30dd8bd1e3400f2d0503a51c779f3a819679032c6471d3e1f3c04824aa543",
+    "client455-normal-accounting-prior-frames": "b941e845f9647756a4190ecc55ff8dd502d1a8923f7a9413f098cd4026b6ec7e",
+    "client455-normal-renderer-gpu": "ef237b4eb2a6dde57055f46cea450149494b2e573b9a8155176b32b172f7d9b6",
+    "client455-normal-preparation": "eb8723fee78b09625e32ddf981bc2acdf08dc885ccf7f57218c2c8dee8d4bb89",
+    "client455-normal-build": "a517d76e469ec2979e1743f40cb4599187008ed02ba7ac6c392753215d4d94f4",
+    "client455-normal-link": "de89269f805ec331c6fd229f45e64695fa8fcabf41c27d02d9a3a00611007d95"
+  },
+  "gaps": [
+    "Eighth field/private32byte association unproven;do not infer semantics from unused constructor",
+    "Original async data races/diagnostic float formatting/allocator extent failures not accepted",
+    "Full normal WinMain/device-reset/gameplay/UI/network acceptance remains open",
+    "Successful source link is not normal WinMain/device-lifecycle or complete455behavior acceptance"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

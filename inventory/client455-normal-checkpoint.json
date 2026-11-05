@@ -2,24 +2,24 @@
   "status": "PARTIAL",
   "compile_status": "PASS",
   "normal_consumer_cases": "PASS",
-  "normal_executable_link": "OPEN",
+  "normal_executable_link": "PASS",
   "original_client_sources": 180,
   "production_split_sources": 2,
   "compiled_client_objects": 182,
-  "unresolved_symbols": 1,
+  "unresolved_symbols": 0,
   "record_sizes": [
     1188,
     5803,
     284
   ],
   "evidence_sha256": {
-    "client455-normal-preparation": "447c548602f39317570cba032a28b94296c1b0bc10078d230c7002dad689c475",
-    "client455-normal-build": "1c444237a78dadfb8f2ef93c632740b0eff57cff2c6d654b28a4fc5dc9b8849e",
-    "client455-normal-consumers": "e202e18ca66ddc92d49583af6d02b66bc7af9850715341792d8c010899d89e50",
-    "client455-normal-link": "6c60ebe7f9f30bfe51a3b3b6f09a642d173271b3097fa084310813329356e1ad"
+    "client455-normal-preparation": "eb8723fee78b09625e32ddf981bc2acdf08dc885ccf7f57218c2c8dee8d4bb89",
+    "client455-normal-build": "a517d76e469ec2979e1743f40cb4599187008ed02ba7ac6c392753215d4d94f4",
+    "client455-normal-consumers": "3d16dc916762c5d0623261fc549340a2506d7cc207615b512e95a1505d8578e4",
+    "client455-normal-link": "de89269f805ec331c6fd229f45e64695fa8fcabf41c27d02d9a3a00611007d95"
   },
   "gaps": [
-    "Remaining current unresolved named contracts/data;see normal-link.json",
+    "Full source link verified separately; normal startup/initialization and remaining behavior contracts are open",
     "Verify high-level455wrapper/state/pose/draw semantics andeffect slot layouts",
     "Screenshot D3D9 readback runtime/multisampling notverified",
     "No full normal WinMain/device loss/gameplay/UI/network acceptance",

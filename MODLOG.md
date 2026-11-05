@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Accounting041. Normal process-wide cumulative counters now connect
+real mesh/buffer/ANI producers and existing texture totals to the diagnostic
+consumer. Real ANI/two owners, mesh lifetime/wrap and actual GPU descriptors
+pass. First full normal source Character/D3D9 RF_Online.bin links with zero
+unresolved symbols. Normal WinMain/gameplay acceptance and M9 remain open.
+[research/client455-normal-accounting.md](research/client455-normal-accounting.md).
+
 2026-11-06 — Characterclock040. Restored separate91EA80 QPC/fallback millisecond
 timer and real normal _R3CalculateTime bridge. Core/bridge Fraction oracle and
 provider lifecycle scenarios pass; engine clock remains independent. Full link

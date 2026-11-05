@@ -11,14 +11,33 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — characterclock040. Таймер Character 91EA80 восстановлен
+Последний участок — accounting041. Normal mesh/buffer/ANI counters теперь
+process-wide; существующие texture counters читаются из их настоящего owner.
+Legacy diagnostic consumer читает source snapshot семи подтверждённых полей,
+без подстановки пустого global или наложения неизвестного private ABI.
+Реальные ANI в двух renderer, mesh lifetime/wrap, реальные model/GPU descriptors
+и сохранение cumulative значений после release прошли. 182 client +11 facade
++20 kernel CPP собираются; full normal RF_Online.bin link PASS/0 unresolved.
+research/client455-normal-accounting.md; checkpoint PARTIAL. M9 открыт.
+
+Следом042 — normal startup/initialization. Проверить импорты и delayed DLLs
+собственного PE, ранний WinMain/CRT/global construction, нужные client assets/
+конфигурацию и логирование в отдельном lab. WinMain сначала InitR3Engine и
+InitR3SoundSystem, затем InitR3D3D/Create и фильтры ABuse/Adv; учитывать реальные
+DLL API/CRT, не подменять успешными no-ops. Сначала составить воспроизводимый
+offline startup набор, затем выполнять только собственную сборку из lab.
+Отсутствие .rsrc в PE зафиксировано; найден engine RC с иконкой, необходимость
+конкретных ресурсов ещё проверить по callers. Оригинальные EXE не запускать,
+серверы не строить, исходную установку не менять. M6F/M7/M9 остаются открытыми.
+
+Предыдущий участок — characterclock040. Таймер Character 91EA80 восстановлен
 отдельно от engine clock; actual _R3CalculateTime и mainapp caller подключены.
 QPC/fallback/округление/независимость проверены; прежние renderer/ANI/BBX/effect/
 shadow сценарии прошли. 182 client + 10 facade + 20 kernel CPP собираются.
 Полный линк: только g_ChMemoryInfo. research/client455-character-clock.md;
 inventory/client455-character-clock-checkpoint.json: PARTIAL. M9 открыт.
 
-Следом041 — process-wide Character accounting с настоящими producers.
+Историческая очередь040 — process-wide Character accounting с настоящими producers.
 Подтверждены адреса texture bytes/count11895F8/FC, shared buffer bytes/count
 1189600/04, raw ANI cumulative1189608, mesh ctor count/bytes118960C/10.
 Debug consumer7F26F1..7F2798 совпадает со смыслом старых семи полей. Отдельный

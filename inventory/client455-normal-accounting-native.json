@@ -1,0 +1,63 @@
+{
+  "scope": "Source normal cumulative process counters/realANI/multiple owners and mesh lifetime;not full game acceptance",
+  "architecture": "x86",
+  "exe": "work/m9/10e40914/accounting001/normal-accounting-probe.exe",
+  "exe_sha256": "10e409142faa9de6fe3034511910c70cd83781fbdc1c4a3f0c497e2a2f18c145",
+  "entry_rva": "0x79190",
+  "native": {
+    "status": "PASS",
+    "real_ani_bytes": 70794,
+    "renderer_owners": 2,
+    "cumulative_after_release": true,
+    "cached_load_unchanged": true,
+    "dword_wrap": true,
+    "real_mesh_lifetime": true,
+    "snapshot_fields": 7
+  },
+  "source": "scripts/native/test_client455_normal_accounting.cpp",
+  "source_sha256": "bbebda949ef00836bfab5dcadfd2da316a0d1203377dc220f5ea67161cd105af",
+  "output": "work/m9/10e40914/accounting001/result.json",
+  "output_sha256": "3c79112cc930a76e76d08decaae1976344ec03d5104c2da22287f9ea7b396711",
+  "map": "work/client455-port/normal/build/normal-accounting-probe.map",
+  "map_sha256": "20986acd1fceb6afd26082416d0bdc300dd1d19aad2dc9cb6f63da5cc779c13f",
+  "libraries": [
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "1af63c4490ed44bbcec0bab7a9dbb2a374a11e6bf646a8cafbbeb047197166f5"
+    },
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
+      "sha256": "99728d39109f515440a400d76a3c83eeb3316c88e34179009a80dab7914d9de0"
+    },
+    {
+      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+    },
+    {
+      "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+      "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
+    },
+    {
+      "file": "work/client455-port/build-vs2026/Release/R3Engine455.lib",
+      "sha256": "fba3d77db954750118dbfb5dbb66e5606c3c79398ebe8d502b5fb61d7cad7369"
+    },
+    {
+      "file": "work/client455-port/dependencies/d3dx9_36.lib",
+      "sha256": "b92a88b327c13a5738ac567ce34b73aa652c536e37fc46c9797dab2f7c413794"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/mss32.lib",
+      "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    }
+  ],
+  "reference_sha256": "c9e6a21281346d93006c7ecd958811328cae8a9dad2af8804975b4a104516c25",
+  "normal_build_sha256": "a517d76e469ec2979e1743f40cb4599187008ed02ba7ac6c392753215d4d94f4",
+  "fixture": {
+    "file": "work/m9/10e40914/accounting001/sample.ani",
+    "sha256": "a694c7df7b89e76d15ff1b76e798676530530845cfda2b634771c21be943526c"
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

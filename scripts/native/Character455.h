@@ -88,7 +88,8 @@ class ItemEffectList {public:
 };
 struct CHMEMORYINFO {DWORD m_TextureSize,m_TextureNum,m_VertexSize,m_VetexNum,m_AniSize,m_ObjectNum,m_ObjectSize;};
 extern AlphaMeshManager g_AMeshManager;
-extern CHMEMORYINFO g_ChMemoryInfo;
+// Read-only own view of confirmed counters. No private original global overlay.
+CHMEMORYINFO RF455_GetCharacterMemoryInfo();
 extern EffectList g_EFFMonList,g_EFFNPCList,g_EFFUnitList;
 extern EffectFileList g_EffectFileList;
 extern ItemEffectList g_EffectItemList;

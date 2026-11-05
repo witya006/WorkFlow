@@ -12,7 +12,14 @@
 
 ## Текущий статус
 
-Новейший участок M6 — characterclock040: таймер Character и normal bridge
+Новейший участок M6 — accounting041: реальные process counters и diagnostic
+consumer подключены. Новая source Character/D3D9 ветка собирается и полностью
+линкуется: RF_Online.bin, 0 unresolved. ANI/multiple owners/mesh lifetime/GPU
+counters и прежние кадры прошли. Далее обычный startup/initialization, затем
+оставшиеся поведенческие разрывы. research/client455-normal-accounting.md;
+checkpoint PARTIAL. M6/M6F/M7/M9 открыты: линковка не закрывает игровую приёмку.
+
+Предыдущий участок M6 — characterclock040: таймер Character и normal bridge
 восстановлены отдельно от engine clock. QPC/fallback/округление проверены,
 прежние кадры и короткие consumer/effect/shadow сценарии прошли. Полный линк:
 один g_ChMemoryInfo. Далее process accounting и полный normal link.

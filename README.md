@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — characterclock040: отдельный таймер Character восстановлен
+Последний участок M6 — accounting041: общее накопительное хранение счётчиков
+Character и чтение их диагностическим экраном подключены. Реальные ANI/модели/
+GPU-ресурсы и release проверены. Новая D3D9/Character source ветка полностью
+скомпилировалась и слинковалась в RF_Online.bin: 0 missing symbols. Это ещё не
+приёмка normal WinMain или поведения всего455. research/client455-normal-accounting.md;
+checkpoint PARTIAL; M6/M9 открыты. Далее — normal startup/initialization.
+
+Предыдущий участок M6 — characterclock040: отдельный таймер Character восстановлен
 и подключён к обычному _R3CalculateTime. QPC, fallback и независимость от таймера
 движка проверены. Полный линк: один g_ChMemoryInfo; следующие задачи — учёт памяти
 и полная линковка. research/client455-character-clock.md; M6/M9 открыты.

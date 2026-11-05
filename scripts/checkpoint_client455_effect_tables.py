@@ -31,11 +31,13 @@ def main():
     for symbol in ['IsHaveMeshEffect','LoadEffectPatternList@EffectPatternList','LoadItemListFile@ItemEffectList','g_PatternList','g_EffectItemList']:
         if not re.search(re.escape(symbol)+r'[^\r\n]+RFClient455Facade:client455_normal_effect_tables\.obj',mapping):raise ValueError('Missing actual normal provider:'+symbol)
         if any(symbol in row['symbol'] for row in link['unresolved']):raise ValueError('Table method/data still unresolved')
-    if not link['link_exit'] or link['other_errors'] or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Inspect new full link state')
+    from client455_normal_link_evidence import validate_normal_link
+    link_state=validate_normal_link(link)
     names=['client455-effect-tables-reference','client455-effect-tables-native','client455-normal-preparation','client455-normal-build','client455-normal-link']
     report={'status':'PARTIAL','defined_pattern_item_loading_and_query':'PASS','normal_facade_providers':'PASS','undefined_original_stack_tail':'OPEN','unsupported_queries_reported':n['undefined_queries_explicit'],
         'pattern_records':n['pattern_records'],'item_records':n['item_records'],'full_normal_link':'OPEN','remaining_unresolved':link['unique_unresolved'],'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},
         'gaps':ref['gaps']+['Applying chosen effect to real material/particle/entity consumers remains open;full455acceptance unproven'],
         'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    (WS/'inventory/client455-effect-tables-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:defined real effect table/query cases PASS;undefined tails OPEN;full link'+str(link['unique_unresolved'])+'unresolved;M9OPEN')
+    report['full_normal_link']=link_state
+    (WS/'inventory/client455-effect-tables-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:defined real effect table/query cases PASS;undefined tails OPEN;full link '+link_state+';M9OPEN')
 if __name__=='__main__':main()

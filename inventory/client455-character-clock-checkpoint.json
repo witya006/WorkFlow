@@ -5,24 +5,24 @@
   "engine_clock_independent": "PASS",
   "cases": 168,
   "fp_modes": 12,
-  "full_normal_link": "OPEN",
-  "remaining_unresolved": 1,
+  "full_normal_link": "PASS",
+  "remaining_unresolved": 0,
   "actual_caller": {
     "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/mainapp.obj",
-    "sha256": "0acf7e0f22461d37b3904120efe04c331cd394fbc8d3d9ea1c0e8997c72d246f"
+    "sha256": "82ae3100caecf6b1c863c3ec53ca82e733722c486d2bcc421f7f9cf6d8508b8a"
   },
   "evidence_sha256": {
     "client455-character-clock-reference": "879c720d18022db0c046e4f45ce77e03713bb2e5f2d58dccee4e23239e87b5bc",
-    "client455-character-clock-native": "2ecf5c307ef017e1d5272477d209c157f05e4fa40b787cc0143958244a905707",
-    "client455-normal-build": "1c444237a78dadfb8f2ef93c632740b0eff57cff2c6d654b28a4fc5dc9b8849e",
-    "client455-normal-preparation": "447c548602f39317570cba032a28b94296c1b0bc10078d230c7002dad689c475",
-    "client455-normal-link": "6c60ebe7f9f30bfe51a3b3b6f09a642d173271b3097fa084310813329356e1ad"
+    "client455-character-clock-native": "78d3122b7eea532a028c8a03108bf4234312dfda3baf01bf7323fbffaae93449",
+    "client455-normal-build": "a517d76e469ec2979e1743f40cb4599187008ed02ba7ac6c392753215d4d94f4",
+    "client455-normal-preparation": "eb8723fee78b09625e32ddf981bc2acdf08dc885ccf7f57218c2c8dee8d4bb89",
+    "client455-normal-link": "de89269f805ec331c6fd229f45e64695fa8fcabf41c27d02d9a3a00611007d95"
   },
   "gaps": [
     "Failure-without-output QPC/QPF leaves original unspecified stack bytes; source zero seed is not equivalent in that domain",
     "Unmasked exceptions/NaN payloads/process timer scheduling not accepted",
     "Frame methods924700/9248A0 are reference consumers, not newly restored normal animation APIs; full lifecycle remains open",
-    "Character accounting still unresolved;normal WinMain/gameplay/UI/network acceptance open"
+    "Normal WinMain/gameplay/UI/network acceptance remains open"
   ],
   "input_exe_executed": false,
   "server_modified": false,
