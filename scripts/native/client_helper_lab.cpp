@@ -218,8 +218,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_SHADERS)
 #include "client_shaders_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_DRAW)
+#include "client_draw_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_DRAW)
+    if (!std::strcmp(command,"--rf-draw-scenario")) ExitProcess(drawScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_SHADERS)
     if (!std::strcmp(command,"--rf-shaders-scenario")) ExitProcess(shadersScenarioProbe());
 #endif

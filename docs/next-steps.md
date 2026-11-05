@@ -11,7 +11,20 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — Character shader bootstrap028:12SHO/12VS+3PS/2declarations на
+Последний unit — Character draw primitives029: source states/selection/material/
+skinpalette/shared submission. Real BELPHEGORHOLIDAY/ANI/3textures:46geometry parts,
+44skinned,кадры160/2160; компонент и полный client lab дали одинаковые кадры.
+4analytic buffer draws также прошли;596targeted assertions,COM/heap/Dmalloc0.
+Normal291MTobjects/runtime прежний, lab194TUs; нет новой установки или bulk rerun.
+Gate inventory/client455-draw-checkpoint.json;research/client455-draw.md.
+Сразу продолжать full92E5F0/effect program choice/material-alpha/scrolling, затем
+sorted930A40/deferred92D9D0/CPU92DB60/shadow930120/wrapper culling. Raw draw-*.json
+сохранены; у draw-main914lines первая страница752, tailoffset740. 92D3E0/92D330/
+92D6C0 требуют instructions: decompiler prototypes неверны. В lab сейчас вручную
+выбран basic shader/CullNONE/камера для просмотра, это не full game draw acceptance.
+После полного source draw — совместный typed normal model/animation/renderer port.
+
+Предыдущий unit — Character shader bootstrap028:12SHO/12VS+3PS/2declarations на
 pinnedD3DX9_36 и realD3D9HAL.119checks standalone/fullclient,7APIs и matching
 harness frame;COM/Dmalloc0. Это shader resources,не fullCharacter draw.
 Gate inventory/client455-shaders-checkpoint.json;research/client455-shaders.md.

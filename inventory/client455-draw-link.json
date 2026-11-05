@@ -1,0 +1,163 @@
+{
+  "lab": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf",
+    "exe_bytes": 5328384,
+    "entry_rva": "0x8a8a",
+    "functions": [
+      {
+        "symbol": "_RF455_SetCharacterDrawState",
+        "rva": "0x3626c0",
+        "provider": "RFClient455Draw:draw.obj"
+      },
+      {
+        "symbol": "_RF455_SelectCharacterShader",
+        "rva": "0x362630",
+        "provider": "RFClient455Draw:draw.obj"
+      },
+      {
+        "symbol": "_RF455_SetCharacterMaterial",
+        "rva": "0x3629f0",
+        "provider": "RFClient455Draw:draw.obj"
+      },
+      {
+        "symbol": "_RF455_UploadCharacterPalette",
+        "rva": "0x362ba0",
+        "provider": "RFClient455Draw:draw.obj"
+      },
+      {
+        "symbol": "_RF455_SubmitSharedCharacterMesh",
+        "rva": "0x362a30",
+        "provider": "RFClient455Draw:draw.obj"
+      }
+    ],
+    "actual_callsites": [
+      {
+        "target": "_RF455_SetCharacterDrawState",
+        "caller": "?contracts@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0xa1e",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SelectCharacterShader",
+        "caller": "?contracts@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0xe93",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterMaterial",
+        "caller": "?contracts@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x1100",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UploadCharacterPalette",
+        "caller": "?contracts@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x157e",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterDrawState",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x1a61",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SelectCharacterShader",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x1b83",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterMaterial",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x1b9d",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UploadCharacterPalette",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x201f",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SubmitSharedCharacterMesh",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x2244",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SubmitSharedCharacterMesh",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x265c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SubmitSharedCharacterMesh",
+        "caller": "?sharedDraw@?A0xb57347d7@@YAHURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@ABURF455MeshMatrixOps@@@Z",
+        "section": 7,
+        "offset": "0x2710",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterDrawState",
+        "caller": "?animated@?A0xb57347d7@@YAHPBDURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@URF455PoseMath@@@Z",
+        "section": 7,
+        "offset": "0x3c3a",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SelectCharacterShader",
+        "caller": "?animated@?A0xb57347d7@@YAHPBDURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@URF455PoseMath@@@Z",
+        "section": 7,
+        "offset": "0x3d2c",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SetCharacterMaterial",
+        "caller": "?animated@?A0xb57347d7@@YAHPBDURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@URF455PoseMath@@@Z",
+        "section": 7,
+        "offset": "0x3d46",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_UploadCharacterPalette",
+        "caller": "?animated@?A0xb57347d7@@YAHPBDURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@URF455PoseMath@@@Z",
+        "section": 7,
+        "offset": "0x405b",
+        "opcode": "E8 REL32"
+      },
+      {
+        "target": "_RF455_SubmitSharedCharacterMesh",
+        "caller": "?animated@?A0xb57347d7@@YAHPBDURF455CharacterDrawState@@PAURF455ShaderManager@@AAUScene@1@URF455PoseMath@@@Z",
+        "section": 7,
+        "offset": "0x411a",
+        "opcode": "E8 REL32"
+      }
+    ],
+    "library_sha256": "11011565af31f76dd14e7aac9d33be83ee33275b6492d697dff13d5d781bd3c0",
+    "scope": "Actual source state/material/palette/shared draw;normal D3D8/full draw routing still open"
+  },
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "bfa9ac62a6c5a320caa6822d302f37d5bad64b2fbbcbc1acca599f591463f6b1",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "11011565af31f76dd14e7aac9d33be83ee33275b6492d697dff13d5d781bd3c0",
+    "scope": "Actual source state/material/palette/shared draw;normal D3D8/full draw routing still open"
+  }
+}

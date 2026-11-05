@@ -34,6 +34,11 @@ Shader bootstrap455 теперь source:12VS/3PS/2declarations проверен�
 Контрольный draw использует synthetic triangle, не full Character draw. Normal
 model/animation/renderer migration ещё открыта. inventory/client455-shaders-checkpoint.json.
 
+Следом source draw primitives проверены на реальном BELPHEGORHOLIDAY с ANI и3textures:
+46geometry parts/44skinned,кадры160/2160 совпадают в standalone и полном client lab.
+Harness выбирает basic shader/камеру/CullNONE: это ещё не full92E5F0/effects/transparent
+или normal renderer acceptance. inventory/client455-draw-checkpoint.json.
+
 ## Эталон
 
 Бинарный эталон закреплён в config/client-target.json: текущий пользовательский

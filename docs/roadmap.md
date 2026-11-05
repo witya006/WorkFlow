@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6: shader bootstrap028 source/realHAL/fullclient:12SHO/12VS+3PS/
+Новейший участок M6: draw primitives029 source/realHAL/fullclient: реальная модель
+с ANI/3textures,46geometry parts/44skinned,два разных кадра совпали отдельно и
+в полном client lab. Полный92E5F0/effect/transparent/batch/normal renderer открыт.
+Следом full draw routing, затем coupled typed model/animation/renderer migration.
+Gate inventory/client455-draw-checkpoint.json; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6: shader bootstrap028 source/realHAL/fullclient:12SHO/12VS+3PS/
 2declarations и контрольный harness draw. Normal renderer и fullCharacter draw
 ещё открыты. Из-за name4/ID260 oldSDK против5/264455 normal integration переносит
 typedmodel/animation/draw вместе; изолированная подмена менеджера исключена.

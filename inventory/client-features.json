@@ -1427,6 +1427,38 @@
         "ModalshadererrorUI/engine logs/vertexcreatefailure-device-reset-OOM/uncheckedexception equivalence open;partialCOMleaks preservedwithtestcleanup only",
         "NormalWinMain/referenceEXE notexecuted;M6F/M7/M9 remainopen"
       ]
+    },
+    {
+      "id":"CHARACTER455-DRAW-029",
+      "description":"Source draw state/program/material/palette/shared submission with real animated and textured Character;full routing and normal migration remain open",
+      "status":"partial",
+      "verification":"7ranges equalbothpins;real BELPHEGORHOLIDAY BN/MESH08/ANI/3DDS,46geometry parts/44skinned,frames160-2160 equalstandalone/fullclient.4analytic36-64/indexed-nonindexed offsetdraws;596targeted assertions,heap-COM-Dmalloc0.5actualE8REL32 APIs fromsource archive.Normal291MTobjects/runtime unchanged excepttimestamps;lab194TUs.Bulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x51cde0","role":"Initial Character draw states"},
+        {"rva":"0x51d120","role":"skin orpose*world palette/translation override"},
+        {"rva":"0x51fb90","role":"Program selection including invalid index"},
+        {"rva":"0x52d830","role":"Ambient19 then diffuse18 constants"},
+        {"rva":"0x52e140","role":"Shared-buffer draw caller"},
+        {"rva":"0x52e5f0","role":"Full main draw still reference"},
+        {"rva":"0x534d60","role":"Pinned D3DX multiply,not transpose"}
+      ],
+      "implementation":["scripts/native/client455_draw.h","scripts/native/client455_draw.cpp"],
+      "option":"RF_CLIENT_455_DRAW",
+      "evidence":["inventory/client455-draw-reference.json","inventory/client455-draw-build.json","inventory/client455-draw-gpu.json","inventory/client455-draw-client.json","inventory/client455-draw-link.json","inventory/client455-draw-checkpoint.json","research/client455-draw.md"],
+      "scenarios":[
+        "Initial mode2-4 declarations/weight states/specular optional writes/lightdirection actualGPUreadback",
+        "Valid-invalid program selection/NULLVS-PS/selectedindex retained;material constants GPUreadback",
+        "Noncommuting skin-world/optionaltranslation-only override/count0 fourpalette copies",
+        "36and64streams/positive vertexbyteoffset/rebased INDEX16/baseVertex0/nonindexed;matching actual triangle frames",
+        "Real BN-MESH08-ANI-sourcepose-textures-palette-sharedGPU,46drawnparts andtwo different256x256frames"
+      ],
+      "gaps":[
+        "Full92E5F0 effects-primary-environment-bump-grade-alpha andall state transitions notyet implemented;basicshader manually selectedbyharness",
+        "Sorted930A40/batch92D9D0/CPUretained92DB60/shadow930120/highlevelwrapper culling remainreference",
+        "Harnesscamera/CullNONE/depth fit notoriginalgame camera-visibility-lighting/frame equivalence",
+        "Normaltypedmodel-animation-D3D9renderer migration/device-loss-reset/CRT-FPU/failureUI/fullprivateABI incomplete",
+        "NormalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 remainopen"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

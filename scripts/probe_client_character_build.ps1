@@ -282,6 +282,17 @@ foreach ($property in $shaders.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_SHADERS=ON'
 $arguments += "-DRF_CLIENT_455_SHADERS_LIBRARY=$shadersLibrary"
+$draw = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-draw-build.json') -Raw | ConvertFrom-Json
+$drawGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-draw-gpu.json') -Raw | ConvertFrom-Json
+$drawLibrary = Join-Path $workspace $draw.library
+if ($drawGpu.native.status -ne 'PASS' -or $drawGpu.native.real_animation_frames -ne 2 -or $drawGpu.native.animated_parts -lt 1 -or $drawGpu.native.device_and_api_release_counts -ne 0 -or
+    (Get-FileHash -LiteralPath $drawLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $draw.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-draw-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $drawGpu.build_report_sha256) { throw '455 connected draw GPU proof missing or stale.' }
+foreach ($property in $draw.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 draw source changed.' }
+}
+$arguments += '-DRF_CLIENT_455_DRAW=ON'
+$arguments += "-DRF_CLIENT_455_DRAW_LIBRARY=$drawLibrary"
 $pose = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Raw | ConvertFrom-Json
 $poseCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-cpu.json') -Raw | ConvertFrom-Json
 $poseLibrary = Join-Path $workspace $pose.library
@@ -444,6 +455,11 @@ if ($result -eq 0) {
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_texture.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_texture.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_draw.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_draw.py }
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 exit $result

@@ -1,0 +1,47 @@
+{
+  "scope": "Source draw primitives on real animated/texture model and four analytic shared-buffer draws;full92E5F0/normal draw still open",
+  "architecture": "x86",
+  "exe": "work/m9/77fb2fef/gpu001/draw-probe.exe",
+  "exe_sha256": "77fb2fef4fa1be6a11c785e3772f86909713520034788722691f783b18b9dcc0",
+  "entry_rva": "0x12fb0",
+  "native": {
+    "status": "PASS",
+    "checks": 596,
+    "draws": 96,
+    "real_drawn_parts": 46,
+    "animated_parts": 44,
+    "palette_uploads": 92,
+    "textured_parts": 46,
+    "real_animation_frames": 2,
+    "frame_values": [
+      160,
+      2160
+    ],
+    "colored_pixels": [
+      9103,
+      9421
+    ],
+    "owned_heap_balance": 0,
+    "device_and_api_release_counts": 0
+  },
+  "frames": [
+    {
+      "frame": "work/m9/77fb2fef/gpu001/character-frame-0.bgra",
+      "sha256": "51120a6c3c880b24c72236bcd14e8c35753078d42c2f4272c7c47f49c5a246c7",
+      "preview": "work/m9/77fb2fef/gpu001/character-frame-0.bmp",
+      "preview_sha256": "76bd1c06ad493124f40621c510b96602c1a741a12ea61249f68942c620955717"
+    },
+    {
+      "frame": "work/m9/77fb2fef/gpu001/character-frame-1.bgra",
+      "sha256": "d641896b979a3af37710ec7cec3a7ca5b9db43876b904365692a66984623d36e",
+      "preview": "work/m9/77fb2fef/gpu001/character-frame-1.bmp",
+      "preview_sha256": "45650b2b6887d47a6f58493af2193de092cfbc3f7c35dd10b8bec8c1a1dec865"
+    }
+  ],
+  "provider_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "output": "work/m9/77fb2fef/gpu001/result.json",
+  "output_sha256": "7f7ee233ba656977cd7105d2bfc016bf669548dadca2bb4916bb7b366ceb6df7",
+  "build_report_sha256": "ea69fb0e135c52bad3bb157d8c7234d3c2b73abce3782a95faedc027b91fc38f",
+  "reference_report_sha256": "7a43927b7cfb72df79b2e4b2842e3b7bc6d71ddc57b26d461aef42ef39b0dbe6",
+  "reference_exe_executed": false
+}

@@ -1,0 +1,65 @@
+{
+  "scope": "Source draw state/program/material/palette/shared submission with real animated model;full draw/normal455/M9 unproven",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "bfa9ac62a6c5a320caa6822d302f37d5bad64b2fbbcbc1acca599f591463f6b1",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "11011565af31f76dd14e7aac9d33be83ee33275b6492d697dff13d5d781bd3c0",
+    "scope": "Actual source state/material/palette/shared draw;normal D3D8/full draw routing still open"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf",
+    "exe_bytes": 5328384,
+    "entry_rva": "0x8a8a"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 596,
+    "draws": 96,
+    "real_drawn_parts": 46,
+    "animated_parts": 44,
+    "palette_uploads": 92,
+    "textured_parts": 46,
+    "real_animation_frames": 2,
+    "frame_values": [
+      160,
+      2160
+    ],
+    "colored_pixels": [
+      9103,
+      9421
+    ],
+    "owned_heap_balance": 0,
+    "device_and_api_release_counts": 0
+  },
+  "same_frame_sha256": [
+    "51120a6c3c880b24c72236bcd14e8c35753078d42c2f4272c7c47f49c5a246c7",
+    "d641896b979a3af37710ec7cec3a7ca5b9db43876b904365692a66984623d36e"
+  ],
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "normal_modern_coff_objects": 291,
+  "lab_client_objects": 194,
+  "bulk_suites_repeated": false,
+  "original_exe_executed": false,
+  "owned_ida_session": "96152de8 closed/save",
+  "remaining": [
+    "Full92E5F0 effect/material program dispatch and all its state transitions",
+    "Sorted transparent930A40 and batch queues92D9D0,CPU retained92DB60,shadow930120 and high-level wrapper/culling",
+    "Coupled typed normal model/animation/renderer integration;no old455 pointer casts",
+    "Original frame/lighting/camera/visibility/device-loss/reset/CRT/FPU/error-path acceptance",
+    "All remaining M6/M6F/M7/M9 domains"
+  ],
+  "evidence_sha256": {
+    "client455-draw-reference": "7a43927b7cfb72df79b2e4b2842e3b7bc6d71ddc57b26d461aef42ef39b0dbe6",
+    "client455-draw-build": "ea69fb0e135c52bad3bb157d8c7234d3c2b73abce3782a95faedc027b91fc38f",
+    "client455-draw-gpu": "a194b9f744763a74ab3c5793f177f655b1492dbd5f77341fad577df9f8b4b96c",
+    "client455-draw-client": "219e77158efc65214ba554e4f3783fb771503803ec3dee27b36a3f51ad6c7faf",
+    "client455-draw-link": "43b2b6cf13c502135d7aed75f3f94a6f24aa94ea843caa944cc131efce7db868",
+    "client-helper-lab-build": "1651e76b28649614670de5011bc2cd6873f6047a46bf39a269fbc1cb4ac7132e"
+  }
+}

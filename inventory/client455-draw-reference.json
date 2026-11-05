@@ -1,0 +1,150 @@
+{
+  "scope": "Recovered state/palette/shared draw contracts and one connected real animated model;full draw routing remains open",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "draw_state",
+          "rva": "0x51cde0",
+          "bytes": 828,
+          "sha256": "28c671e3a031a9ec6f9b659ba197b2aa729bbd4bf98147cd86a58161e7d17020"
+        },
+        {
+          "name": "palette",
+          "rva": "0x51d120",
+          "bytes": 512,
+          "sha256": "feb8defeca7beac08f12502477860e76c31f06b8907a183d267f7483325bf81b"
+        },
+        {
+          "name": "shader_selection",
+          "rva": "0x51fb90",
+          "bytes": 112,
+          "sha256": "eff0b9558a25ecc7e831833519864f9e6e23bff2566578283e3276e43d29ed92"
+        },
+        {
+          "name": "material_constants",
+          "rva": "0x52d830",
+          "bytes": 52,
+          "sha256": "66fb61a78a5f4a3b2ddff97106fccd7eac67910ca4fb3f1204b3fef98cdf8c34"
+        },
+        {
+          "name": "shared_draw_caller",
+          "rva": "0x52e140",
+          "bytes": 1193,
+          "sha256": "5ce4560ca126f2990904e5e0cc591cd2150208591c36ee1bead36b9c685b990c"
+        },
+        {
+          "name": "full_main_draw",
+          "rva": "0x52e5f0",
+          "bytes": 5520,
+          "sha256": "21ed8ddc4f02bdf594fc9b135065ab85238fe9c18df089a4e84afec9d0c4d02a"
+        },
+        {
+          "name": "matrix_multiply",
+          "rva": "0x534d60",
+          "bytes": 21,
+          "sha256": "051877fedfada860b8a973b6337cb80b4a30733011be93c40468f72690c41ffc"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "draw_state",
+          "rva": "0x51cde0",
+          "bytes": 828,
+          "sha256": "28c671e3a031a9ec6f9b659ba197b2aa729bbd4bf98147cd86a58161e7d17020"
+        },
+        {
+          "name": "palette",
+          "rva": "0x51d120",
+          "bytes": 512,
+          "sha256": "feb8defeca7beac08f12502477860e76c31f06b8907a183d267f7483325bf81b"
+        },
+        {
+          "name": "shader_selection",
+          "rva": "0x51fb90",
+          "bytes": 112,
+          "sha256": "eff0b9558a25ecc7e831833519864f9e6e23bff2566578283e3276e43d29ed92"
+        },
+        {
+          "name": "material_constants",
+          "rva": "0x52d830",
+          "bytes": 52,
+          "sha256": "66fb61a78a5f4a3b2ddff97106fccd7eac67910ca4fb3f1204b3fef98cdf8c34"
+        },
+        {
+          "name": "shared_draw_caller",
+          "rva": "0x52e140",
+          "bytes": 1193,
+          "sha256": "5ce4560ca126f2990904e5e0cc591cd2150208591c36ee1bead36b9c685b990c"
+        },
+        {
+          "name": "full_main_draw",
+          "rva": "0x52e5f0",
+          "bytes": 5520,
+          "sha256": "21ed8ddc4f02bdf594fc9b135065ab85238fe9c18df089a4e84afec9d0c4d02a"
+        },
+        {
+          "name": "matrix_multiply",
+          "rva": "0x534d60",
+          "bytes": 21,
+          "sha256": "051877fedfada860b8a973b6337cb80b4a30733011be93c40468f72690c41ffc"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "work/client-reference/character-models/mesh08-native/sample_010.msh",
+      "sha256": "a85c20bc0bfa84f01f6a4328a8977d2ccddcc8d7a841d96a8a5e5ea1abd65cce"
+    },
+    {
+      "path": "work/client-reference/character-legacy-runtime/real_09.bn",
+      "sha256": "beb1777973e6fc574d966f421358f6da22ba8adee6cbd1ba3abb7f6df80466fd"
+    },
+    {
+      "path": "work/client-reference/character-animation455/sample_016.ani",
+      "sha256": "b39236d6d009340f5382a50d2c62cef370d1adebce5001f5859dbf26bd90101c"
+    }
+  ],
+  "fixture": "work/client-reference/draw455/model.txt",
+  "fixture_sha256": "660e03ff3bf33985b53148dc9916b4343cdb25fe4d01a9f3c5aef9c9cf0df328",
+  "pair_index": 9,
+  "skeleton_original": "Character/Monster/Bone/BELPHEGORHOLIDAY.bn",
+  "parts": 51,
+  "textures": [
+    {
+      "copy": "work/client-reference/draw455/tex/25_A_Xmas_02.dds",
+      "sha256": "bcda0ec855c1e19a670b6f652fa88d025dbeb356a9441d5053ced6545199a208",
+      "original": "Character/Monster/Tex/25_A_Xmas_02.dds",
+      "requested": "25_A_XMAS_02.DDS",
+      "bytes": 174904
+    },
+    {
+      "copy": "work/client-reference/draw455/tex/25_BELPHE.dds",
+      "sha256": "fe8ccac33314b1e10351e3f22c99ec8ecb7af1611a21b2d8501112490e4bbd46",
+      "original": "Character/Monster/Tex/25_BELPHE.dds",
+      "requested": "25_BELPHE.DDS",
+      "bytes": 349648
+    },
+    {
+      "copy": "work/client-reference/draw455/tex/25_BELPHE_weap.dds",
+      "sha256": "fe7626d9ca618ff3fb4828d2baa0420a248d89de94ba10aec25efa974b5477af",
+      "original": "Character/Monster/Tex/25_BELPHE_weap.dds",
+      "requested": "25_BELPHE_WEAP.DDS",
+      "bytes": 349648
+    }
+  ],
+  "script_sha256": "c8d826adf029ab02a138629d5828bac910ce77cad202173a9b56d2ed7f5d9dea",
+  "limits": [
+    "Draw primitives are source,full92E5F0/effects/queues/CPU fallback/normal integration still open",
+    "Reference EXE is never executed;GPU run is source integration evidence,not original frame equivalence"
+  ]
+}

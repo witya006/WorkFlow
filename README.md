@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: source загрузка12штатных SHO, компиляция12VS/3PS и создание
+Последний участок M6: восстановленные draw-state/program/material/palette/shared
+submission рисуют реальный BELPHEGORHOLIDAY с ANI и3textures на D3D9 HAL.
+46geometry parts/44skinned,2кадра совпали отдельно и в полном client lab.
+Полный92E5F0/effects/transparent routing/normal D3D9 ещё открыты; M6/M9 не закрыты.
+Gate inventory/client455-draw-checkpoint.json; research/client455-draw.md.
+
+Предыдущий участок M6: source загрузка12штатных SHO, компиляция12VS/3PS и создание
 двух Character declarations проверены на настоящем D3D9 HAL отдельно и в полном
 client lab. Контрольный треугольник использует original shader; полный Character
 draw и normal renderer ещё открыты. Подтверждённые различия old/455 layout требуют

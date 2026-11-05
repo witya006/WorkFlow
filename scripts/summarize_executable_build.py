@@ -61,7 +61,7 @@ def main():
             if m:settings[m[1]]=m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|ANIMATION_MANAGER|SHADERS|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
+            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|ANIMATION_MANAGER|SHADERS|DRAW|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
             if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
@@ -84,6 +84,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_DRAW')=='ON':
+            draw_inputs=['scripts/native/'+p for p in ['client455_draw.cpp','client455_draw.h','test_client455_draw.cpp','client_draw_lab.inc']]
+            report['draw_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in draw_inputs}
         if settings.get('RF_CLIENT_455_SHADERS')=='ON':
             shader_inputs=['scripts/native/'+p for p in ['client455_shaders.cpp','client455_shaders.h','client455_shader_key.h','test_client455_shaders.cpp','client_shaders_lab.inc']]
             report['shader_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in shader_inputs}

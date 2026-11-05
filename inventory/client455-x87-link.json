@@ -1,53 +1,53 @@
 {
   "lab": {
     "exe": "work/client-build/build-helper-lab/Release/RF_Online.bin",
-    "sha256": "4dc80db8f12e9346ed40beef6f12061fd1917607cebb300d72874e7e3f7e29d1",
+    "sha256": "94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf",
     "architecture": "x86",
     "image_base": "0x400000",
-    "map_sha256": "7615993433c20ad7b03bca5c2782d60891c5ca9ad3bddbe4df1bfbc55c55be20",
+    "map_sha256": "af8c3280fd3a158dfe8121c286a615d49f1121efed404ba4b53c1255dfaabb5b",
     "math_library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
     "functions": [
       {
         "symbol": "_RF455_MatrixInvert",
-        "va": "0x760d50",
-        "rva": "0x360d50",
+        "va": "0x768780",
+        "rva": "0x368780",
         "size": 485,
-        "linked_sha256": "b925c532a9bf737eab934efd92d234917d8ec4356f5d53ddd00fcd41602cbdd8",
+        "linked_sha256": "12102f39ec9b15211f41f6eb6e3202103aeccffe092e371586295b2abf6e25b9",
         "reference_va": "0x8bfbc0",
         "reference_rva": "0x4bfbc0",
         "instruction_identity": true,
         "wrapper": "?MatrixInvert@@YAHQAY03M0@Z",
-        "wrapper_va": "0x70a280",
-        "wrapper_rva": "0x30a280",
+        "wrapper_va": "0x711570",
+        "wrapper_rva": "0x311570",
         "wrapper_kind": "balanced-frame-tail-jump",
-        "wrapper_edge": "558bec5de97a79cfff",
+        "wrapper_edge": "558bec5de98a06cfff",
         "linker_thunks": [
           {
             "va": "0x401c03",
             "rva": "0x1c03",
-            "bytes": "e948f13500"
+            "bytes": "e9786b3600"
           }
         ]
       },
       {
         "symbol": "_RF455_Vector3fTransform",
-        "va": "0x760fb0",
-        "rva": "0x360fb0",
+        "va": "0x7689e0",
+        "rva": "0x3689e0",
         "size": 132,
         "linked_sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
         "reference_va": "0x8c0980",
         "reference_rva": "0x4c0980",
         "instruction_identity": true,
         "wrapper": "?Vector3fTransform@@YAXQAM0QAY03M@Z",
-        "wrapper_va": "0x70b230",
-        "wrapper_rva": "0x30b230",
+        "wrapper_va": "0x712520",
+        "wrapper_rva": "0x312520",
         "wrapper_kind": "tail-jump",
-        "wrapper_edge": "e9ca58d0ff",
+        "wrapper_edge": "e90ce6cfff",
         "linker_thunks": [
           {
-            "va": "0x410aff",
-            "rva": "0x10aff",
-            "bytes": "e9ac043500"
+            "va": "0x410b31",
+            "rva": "0x10b31",
+            "bytes": "e9aa7e3500"
           }
         ]
       }
@@ -57,10 +57,10 @@
   },
   "normal": {
     "exe": "work/client-build/build-character-diagnostic/Release/RF_Online.bin",
-    "sha256": "87db29ad1a4461bbaea2c617633b9eb8df1fb445abc394eea538dd8272cf4253",
+    "sha256": "bfa9ac62a6c5a320caa6822d302f37d5bad64b2fbbcbc1acca599f591463f6b1",
     "architecture": "x86",
     "image_base": "0x400000",
-    "map_sha256": "3f98ba16fe2c190e4306cd41616cf331456bbfa79e1c7c69e0cd551b64f8ec0d",
+    "map_sha256": "9cd4e803e95759fe6de253e073955c26bf50e148f758bfd7fc908b27d037d149",
     "math_library_sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06",
     "functions": [
       {

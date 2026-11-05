@@ -1,6 +1,12 @@
 # Аудит окружения — 04.11.2026
 
-Последнее дополнение: source Character shader bootstrap работает на настоящем
+Последнее дополнение: source Character draw primitives проверены на настоящей
+анимированной модели с3textures/D3D9HAL/pinnedD3DX9_36. Два кадра совпали отдельно
+и внутри client lab; heap/COM/Dmalloc0. Новых установок нет. Lab194clientTUs,
+normal291modernCOFF/MT, прежний engine archive; normal renderer ещё D3D8.
+inventory/client455-draw-checkpoint.json;research/client455-draw.md.
+
+Предыдущее дополнение: source Character shader bootstrap работает на настоящем
 D3D9 HAL и pinnedD3DX9_36:12SHO/12VS+3PS/2declarations,119checks standalone и в
 полном client lab. COM counts0, gameDLLs не загружены; normal renderer ещё D3D8.
 Новых SDK/установок нет. Lab193clientTUs,normal291MTobjects/runtime прежний.

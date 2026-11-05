@@ -23,6 +23,25 @@
 
 ## Последний проверенный результат
 
+Source draw primitives029: client455_draw.{h,cpp},5APIs; initial states91CDE0,
+selection91FB90, material92D830, palette91D120, shared branch92E140/92E5F0.
+Реальный BELPHEGORHOLIDAY pair9:51parts/46geometry/44skinned,ANIframes160/2160,
+3real looseDDS. BN→MESH08→ANI→source pose→GPU,92real draws+4analytic36/64indexed/
+nonindexed.596targeted assertions,heap/COM/Dmalloc0. Native и fullclient два frame
+SHA равны; previews work/m9/94e327e9/client001/character-frame-{0,1}.bmp просмотрены.
+Gate inventory/client455-draw-checkpoint.json; research/client455-draw.md.
+Normal2451456B/entry1BC450,SHAbfa9ac62a6c5a320caa6822d302f37d5bad64b2fbbcbc1acca599f591463f6b1,
+snapshot character455-draw; unusedAPIs stripped, runtime равенshader snapshot кромеtimestamps.
+Lab5328384B/entry8A8A,SHA94e327e99f32ba83d32a53cabcfaad1cc5a1d0f6d9e6b4992c0ed9c6585a61cf,
+194clientTUs;normal291modernCOFF/MT/engine archive прежний. Старыеbulk suites не повторялись.
+Harness camera/CullNONE/basicshader выбран вручную; full92E5F0 и normal D3D9 не приняты.
+Следом full main effect/material routing, sorted930A40/batch92D9D0/CPU92DB60/shadow/
+wrapperculling, затем coupled typednormal model/animation/renderer. Rawdraw-*.json
+в artifacts/character-animation455; owned96152de8 closed/save. Main914lines: first752,
+tailoffset740. 92D3E0 wrong decompiler prototype — проверить instructions до source.
+
+Предыдущий результат:
+
 Source shader bootstrap028: scripts/native/client455_shaders.{h,cpp},7APIs.
 12real SHO→12VS+3PS,2declarations; pinned D3DX9_36/realD3D9HAL.119native checks
 standalone/fullclient;sameframe,COM release counts0/Dmalloc0/no gameDLLs.15actual
@@ -113,6 +132,10 @@ externalprefix appended withoutseparator;originalfilepreamble ignored.9vertex-on
 record16/8initialcapacity/doubling,deviceborrowed. PScompilefail strandsVS+VStable;
 source preserves,only harness cleans after observing. ModalerrorUI notwired yet.
 DrawDynamic92DB60 decompiler prototype неверен; это ещё reference,неsource draw.
+Draw palette: skin646+64i *world, count0 pose4830 повторяется4раза c100/104/108/112.
+Optional world меняет только translation12/13/14. Shared indexed baseVertex0,
+minVertex=(vertexAbsolute%2300000)/(36or64),startIndex=(indexAbsolute%1000000)/2.
+State renderer33836 — specularEnable, не fog; numeric29/146/143.
 
 ## Контракты, которые легко нарушить
 
