@@ -11,7 +11,20 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — scene frustum031: producer/AABB source подключены к обычным
+Последний unit — renderer owner032: source constructor/device binding/destruction
+и typed load/draw adapters. Реальная модель проходит через owner managers/pools/
+shaders;2frames совпали component/fullclient. Провереныconstructor patterns,caps
+gate иRelease order;ownheap/COM/Dmalloc0. Lab197TUs,normal293MTobjects/runtime
+прежний кромеtimestamps. Gate inventory/client455-renderer-owner-checkpoint.json;
+research/client455-renderer-owner.md. Normal owner API покаunused/stripped.
+
+Следующая работа — normal typed model/animation/ChInterface facade вместе с
+движковым D3D9 device path, используя готовые source owner/load/pose/draw/frustum.
+Нужны реальные normal callers: не отдельная подмена одного старого менеджера.
+Не повторять уже восстановленные ядра.39oldSDKfunctions/150field candidates
+остаются ориентиром;full camera/actor visibility/CRTtrig/reset/errorUI ещёоткрыты.
+
+Предыдущий unit — scene frustum031: producer/AABB source подключены к обычным
 SetCharacterClipping/ProcessClipping.72matrix/204AABB cases/12FP modes и9actual
 CResObject cases прошли; device/Platform01 кадры прежние. Normal293MTobjects,
 lab196clientTUs. Gate inventory/client455-frustum-checkpoint.json;
@@ -23,8 +36,8 @@ internal closure не покрыты. research/client455-normal-character-interf
 RTMOVIE macro выключен согласно оригинальным CPP flags, не включать вслепую.
 9238A0 — уже source lazy loader, его wrapper92FBA0 не доказывает culling.
 
-Следующий практический шаг — согласованный typed normal model/animation/Character
-owner иD3D9 device lifecycle port: использовать восстановленные loading/pose/draw,
+Очередь после031 уточнена выше. Согласованный typed normal model/animation/Character
+owner иD3D9 device lifecycle port использует восстановленные loading/pose/draw,
 проверить оставшиеся normal API/field consumers по инвентарю. Не подменять один
 AnimationManager и не rawcast old/new layouts. Затем подключать реальный
 model→pose→draw/camera путь в обычном клиенте. Это воспроизведение455, не M8.

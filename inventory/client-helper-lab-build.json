@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-05T11:02:41.965063+00:00",
+  "checked_at_utc": "2026-11-05T11:28:52.096455+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 196,
+  "generated_objects": 197,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -65,6 +65,8 @@
     "RF_CLIENT_455_MODELS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/models/RFClient455Models.lib",
     "RF_CLIENT_455_POSE": "ON",
     "RF_CLIENT_455_POSE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/pose/RFClient455Pose.lib",
+    "RF_CLIENT_455_RENDERER_OWNER": "ON",
+    "RF_CLIENT_455_RENDERER_OWNER_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/renderer-owner/RFClient455RendererOwner.lib",
     "RF_CLIENT_455_SHADERS": "ON",
     "RF_CLIENT_455_SHADERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/shaders/RFClient455Shaders.lib",
     "RF_CLIENT_455_SHARED_BUFFERS": "ON",
@@ -78,10 +80,17 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "da5e857e27297f9b4fafcdd7b8655192cbedf4a6b516db8e6df75cb2ef743529",
+    "scripts/native/client_helper_lab.cpp": "2826b59c279edc5db9bf323b92c8c0a942790ae6115563ce1768b80acf61e6a6",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "ee98e3caa31cbf5d4e78e919cb37fc9ac317661c958a7028acf9770c7a6f0f9d"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "7bcf7ea450ba2a5dfd157b0237c728a813e73ab0bea265269cfa60d4dbb9b3f1"
+  },
+  "renderer_owner_input_sha256": {
+    "scripts/native/client455_renderer_owner.h": "a190e9f10342d8a7451831953af2a707bd576f40c241328b880dcd294354b1bd",
+    "scripts/native/client455_renderer_owner.cpp": "ea8ee5b2099909fcd431148b08d60ad338e24984635128f380a3deef3f66968a",
+    "scripts/native/client455_renderer_owner_constants.h": "bf140c76303d5eeb0cbe0b1f796204d759ce57f4c723f93aa15746ab98c11b11",
+    "scripts/native/test_client455_renderer_owner.cpp": "65c0334c3e707a6a6d939e7df2c181b9ec2601928301cf43b99486bf5e706f68",
+    "scripts/native/client_renderer_owner_lab.inc": "93a7c06740d6149b43d537f7b395785b4916d8b2ee2de7024275d6b297b859c7"
   },
   "frustum_input_sha256": {
     "scripts/native/client455_frustum.h": "7bf9a015840c8bca08203c431a3c0a712f31062e89e816059ccf673579f241a9",

@@ -2,7 +2,7 @@
   "normal": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "198c2dd38f5f0c78bedbea8d70f6712981ef63b042a21cf4fa16db89bbbcc6b4",
+    "exe_sha256": "626d8f8a800294de371684da5a3c71515e3b0217159fa679b938ef0ec13c7fe8",
     "exe_bytes": 2451968,
     "entry_rva": "0x1bc610",
     "actual_calls": [
@@ -35,19 +35,19 @@
   "lab": {
     "architecture": "x86",
     "image_base": "0x400000",
-    "exe_sha256": "ee98e3caa31cbf5d4e78e919cb37fc9ac317661c958a7028acf9770c7a6f0f9d",
-    "exe_bytes": 5439488,
-    "entry_rva": "0x8c15",
+    "exe_sha256": "7bcf7ea450ba2a5dfd157b0237c728a813e73ab0bea265269cfa60d4dbb9b3f1",
+    "exe_bytes": 5475840,
+    "entry_rva": "0x8c60",
     "actual_calls": [
       {
         "caller": "?SetCharacterClipping@@YAXXZ",
-        "call_rva": "0x15885e",
+        "call_rva": "0x1589ce",
         "target": "_RF455_PublishSystemCharacterFrustum",
-        "destination_rva": "0x32f8f0",
+        "destination_rva": "0x336e70",
         "linker_thunks": [
           {
-            "rva": "0x1b36",
-            "bytes": "e9b5dd3200"
+            "rva": "0x1b40",
+            "bytes": "e92b533300"
           }
         ],
         "provider": "R3EngineMT:client455_frustum_system.obj",
@@ -57,13 +57,13 @@
       },
       {
         "caller": "?ProcessClipping@CResObject@@QAEHXZ",
-        "call_rva": "0x97c1d",
+        "call_rva": "0x97d8d",
         "target": "_RF455_IsBBoxInFrustum",
-        "destination_rva": "0x319000",
+        "destination_rva": "0x320580",
         "linker_thunks": [
           {
-            "rva": "0x5137",
-            "bytes": "e9c43e3100"
+            "rva": "0x5164",
+            "bytes": "e917b43100"
           }
         ],
         "provider": "R3EngineMT:client455_frustum.obj",

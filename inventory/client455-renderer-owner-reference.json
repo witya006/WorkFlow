@@ -1,0 +1,174 @@
+{
+  "scope": "Renderer storage construction,borrowed device/sharedshader bootstrap gate andnormal destruction;not complete455engine integration",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "interface_create",
+          "rva": "0x1dfa80",
+          "bytes": 206,
+          "sha256": "ea1d97418316207d8f810f2a2a2aa8effe88ee827ffe68ea2da03d58304fdeb3"
+        },
+        {
+          "name": "owner_ctor",
+          "rva": "0x1dfb70",
+          "bytes": 205,
+          "sha256": "292a5fef5ce19a5ebeaf77914006a822d983e202a410ad4b16834c776085d990"
+        },
+        {
+          "name": "renderer_defaults",
+          "rva": "0x51c8f0",
+          "bytes": 262,
+          "sha256": "b332e11e1ac52d0b8b1ae75216d28874e79f877f3dd832630e9b7e6eb34c9283"
+        },
+        {
+          "name": "bind_device",
+          "rva": "0x520590",
+          "bytes": 214,
+          "sha256": "852a2834c95d0b18ebd4baa6a56e615ede71beaede9804268d1c6d773a3c8d01"
+        },
+        {
+          "name": "interface_bind_thunk",
+          "rva": "0x531300",
+          "bytes": 5,
+          "sha256": "5200f68234a6ff728bda590df28cbc41fe6860d095f9a27135a6012e0d015192"
+        },
+        {
+          "name": "owner_dtor",
+          "rva": "0x5228a0",
+          "bytes": 343,
+          "sha256": "9a9ab6a8a5363005d818e6eb88f53da43def9b7375b40b80f36ea37224687225"
+        },
+        {
+          "name": "effect_manager_dtor",
+          "rva": "0x522730",
+          "bytes": 185,
+          "sha256": "0276b08335126353cab9a37ecb1f37417f649cec7b4e4810ce70944bfd69c318"
+        },
+        {
+          "name": "shader_set_device",
+          "rva": "0x539b70",
+          "bytes": 9,
+          "sha256": "aa1d0523d277f6a14d7950c488982e29fa08fe5d88274b15a712c4427302720a"
+        },
+        {
+          "name": "manager_ctor",
+          "rva": "0x1dfe60",
+          "bytes": 110,
+          "sha256": "1e78ab447c4fe368ac0d493b0fb37f88bcd8882952bc9443b305cb0a2370756b"
+        },
+        {
+          "name": "texture_ctor",
+          "rva": "0x1dfc40",
+          "bytes": 105,
+          "sha256": "a0d85d254a1bf7ac96f046adf22d2475a70b05b583298427c359b39dd7f713df"
+        },
+        {
+          "name": "effect_ctor",
+          "rva": "0x1e7e90",
+          "bytes": 48,
+          "sha256": "cbad895e8da57d082d2ec27ba7d43e7c09ebd18ed492f208f5d6f75cf1334b72"
+        }
+      ],
+      "log_literal_rva": "0x73a7ec",
+      "warning_rva": "0x73a804",
+      "warning_bytes": 32
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "interface_create",
+          "rva": "0x1dfa80",
+          "bytes": 206,
+          "sha256": "ea1d97418316207d8f810f2a2a2aa8effe88ee827ffe68ea2da03d58304fdeb3"
+        },
+        {
+          "name": "owner_ctor",
+          "rva": "0x1dfb70",
+          "bytes": 205,
+          "sha256": "292a5fef5ce19a5ebeaf77914006a822d983e202a410ad4b16834c776085d990"
+        },
+        {
+          "name": "renderer_defaults",
+          "rva": "0x51c8f0",
+          "bytes": 262,
+          "sha256": "b332e11e1ac52d0b8b1ae75216d28874e79f877f3dd832630e9b7e6eb34c9283"
+        },
+        {
+          "name": "bind_device",
+          "rva": "0x520590",
+          "bytes": 214,
+          "sha256": "852a2834c95d0b18ebd4baa6a56e615ede71beaede9804268d1c6d773a3c8d01"
+        },
+        {
+          "name": "interface_bind_thunk",
+          "rva": "0x531300",
+          "bytes": 5,
+          "sha256": "5200f68234a6ff728bda590df28cbc41fe6860d095f9a27135a6012e0d015192"
+        },
+        {
+          "name": "owner_dtor",
+          "rva": "0x5228a0",
+          "bytes": 343,
+          "sha256": "9a9ab6a8a5363005d818e6eb88f53da43def9b7375b40b80f36ea37224687225"
+        },
+        {
+          "name": "effect_manager_dtor",
+          "rva": "0x522730",
+          "bytes": 185,
+          "sha256": "0276b08335126353cab9a37ecb1f37417f649cec7b4e4810ce70944bfd69c318"
+        },
+        {
+          "name": "shader_set_device",
+          "rva": "0x539b70",
+          "bytes": 9,
+          "sha256": "aa1d0523d277f6a14d7950c488982e29fa08fe5d88274b15a712c4427302720a"
+        },
+        {
+          "name": "manager_ctor",
+          "rva": "0x1dfe60",
+          "bytes": 110,
+          "sha256": "1e78ab447c4fe368ac0d493b0fb37f88bcd8882952bc9443b305cb0a2370756b"
+        },
+        {
+          "name": "texture_ctor",
+          "rva": "0x1dfc40",
+          "bytes": 105,
+          "sha256": "a0d85d254a1bf7ac96f046adf22d2475a70b05b583298427c359b39dd7f713df"
+        },
+        {
+          "name": "effect_ctor",
+          "rva": "0x1e7e90",
+          "bytes": 48,
+          "sha256": "cbad895e8da57d082d2ec27ba7d43e7c09ebd18ed492f208f5d6f75cf1334b72"
+        }
+      ],
+      "log_literal_rva": "0x73a7ec",
+      "warning_rva": "0x73a804",
+      "warning_bytes": 32
+    }
+  ],
+  "constructor_bytes": 33856,
+  "written_bytes": 32892,
+  "golden": "work/client-reference/renderer-owner455/constructor.bin",
+  "golden_sha256": "632672ccb137347859793420501f4a6af61d51e5ddb08920c1be0511f0a4afd1",
+  "script_sha256": "4dc67341ba9befcd837016a5b7850bb1658173ff76f475af0d44d29c018d1480",
+  "constants_header_sha256": "be2480ea79846f050ebed8eab3f9ae0eb4e6482a104dd2dc24b8e6de4ebfb8cc",
+  "device_contract": [
+    "GetDeviceCaps HRESULT ignored;old caps retained onfailed untouched result",
+    "MaxVertexBlendMatrices2or4 overwritesmode;other values retain previousmode",
+    "Shared shaderdevice gate prevents bootstrap/rebind whenalready nonnull",
+    "Device borrows includeowner,texturemanager,andthreepools;noAddRef"
+  ],
+  "limits": [
+    "No original process/unwind/device-reset/errorUI/allocatorfailure equivalence",
+    "Missing shadererror callback returns init failure rather thanoriginal loggerresult;failure diagnostics pending",
+    "Opaque fields preserved;layout doesnotprovide unimplemented methods orpermitold-new casts"
+  ]
+}

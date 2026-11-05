@@ -1507,6 +1507,17 @@
     "verification": "72matrix/204AABB cases across12PC-RC modes standalone/actualfullclientpublisher;9actualactor cases;device-Platform01 frames unchanged.293normal modern x86MT objects;twoactual calltargets resolved;oldSDKclippingreferences absent. No bulk unchanged suites.",
     "evidence": ["inventory/client455-frustum-reference.json","inventory/client455-frustum-build.json","inventory/client455-frustum-link.json","inventory/client455-frustum-client.json","inventory/client455-frustum-graphics.json","inventory/client455-frustum-checkpoint.json","research/client455-frustum.md"],
     "gaps": ["Fullnormalcamera/visibility/actorlifecycle/typedCharacter455-D3D9renderer integration","CRT errno-matherr/unmasked exceptions/nonfinite normalization payloads","Missingmathruntime failure policy differsfromoriginal mandatoryimport initialization"]
+    },
+    {
+      "id":"CHARACTER455-RENDERER-OWNER-032",
+      "status":"partial",
+      "description":"Source455renderer construction/device binding/destruction andtyped model-draw contexts;normaltypedCharacter-D3D9engine stillopen",
+      "reference":[{"rva":"0x1dfb70","role":"Constructor children"},{"rva":"0x51c8f0","role":"Default fields"},{"rva":"0x520590","role":"Borrowed device/caps/sharedshader gate"},{"rva":"0x5228a0","role":"Owner destruction"}],
+      "option":"RF_CLIENT_455_RENDERER_OWNER",
+      "implementation":["scripts/native/client455_renderer_owner.h","scripts/native/client455_renderer_owner.cpp"],
+      "verification":"11ranges equalbothpins;constructor write-mask/2seeds,5caps scenarios,COMRelease order. Real BN-MSH-ANI-3textures-pose-mainD3D9draw throughowner resources:46parts/92draws/2frames equalcomponent-fullclient,tracked model-animation heap andCOM balanced. Normal293MTobjects/runtime unchanged excepttimestamps;owner normalAPIs stripped,lab197TUs.",
+      "evidence":["inventory/client455-renderer-owner-reference.json","inventory/client455-renderer-owner-build.json","inventory/client455-renderer-owner-gpu.json","inventory/client455-renderer-owner-client.json","inventory/client455-renderer-owner-link.json","inventory/client455-renderer-owner-checkpoint.json","research/client455-renderer-owner.md"],
+      "gaps":["NormaltypedChInterface-model-animation andengineD3D9device path","Opaque methods/constructorunwind/device-reset/OOM/fullerrorUI-logger","ModernMTtrig notoriginalstaticCRT parity;no originalgame frames compared;M6-M6F-M7-M9 OPEN"]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

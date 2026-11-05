@@ -23,6 +23,30 @@
 
 ## Последний проверенный результат
 
+Renderer owner032 source:client455_renderer_owner.{h,cpp},constants.h;33856byte
+storage с managers116/4264,texture8424,effects8712,pools8928/17128/25328,caps33532.
+Constructor/SetDevice920590/dtor9228A0/2typed context adapters восстановлены.
+11ranges equalbothpins.32892written bytes/constructor mask;opaque bytes preserved.
+2poison seeds/5caps scenarios/Release order прошли. Shared shaders bootstrap only
+when shareddevice null;repeat bind не пересоздаёт их,device borrowed/noAddRef.
+Real BN→MESH08/ANI/3textures→pose→main draw использует owner managers/pools/shaders;
+46parts/92draws/2frames совпали component/fullclient.169targeted assertions,
+ownheap/COM/Dmalloc0. Fullclient previews work/m9/7bcf7ea4/client001/owner-frame-*.bmp
+просмотрены. Lab197TUs/5475840B/entry8C60,
+SHA7bcf7ea450ba2a5dfd157b0237c728a813e73ab0bea265269cfa60d4dbb9b3f1.
+Normal293MTobjects/тот жеengine archive,owner APIs stripped;runtime равенfrustum031
+кромеtimestamps.2451968B/entry1BC610,
+SHA626d8f8a800294de371684da5a3c71515e3b0217159fa679b938ef0ec13c7fe8,
+snapshot character455-renderer-owner. Gate inventory/client455-renderer-owner-checkpoint.json;
+research/client455-renderer-owner.md. Native IDA8ad1c657closed/save.
+Следом normal typed model/animation/ChInterface facade иengineD3D9 device path.
+Использовать готовый source owner/load/pose/draw/frustum,не восстанавливать повторно.
+39oldSDKfunctions/150field candidates ещёактуальны. Shader-failurelogger безcallback,
+opaque methods/constructorunwind/reset/OOM/CRTtrig/fullgamecamera ещёоткрыты.
+M6/M6F/M7/M9 не закрыты. Большие неизменённые runtime suites не повторялись.
+
+Предыдущий результат:
+
 Scene frustum031 подключён к обычным SetCharacterClipping/ProcessClipping.
 Source client455_frustum.{h,cpp}/system.cpp:8C2A90/8C2C90,pinnedD3DX9_36,
 x87 float spills/finite masked sqrt CW.72matrix/204AABB/12FP modes прошли отдельно

@@ -1,0 +1,169 @@
+{
+  "normal": {
+    "architecture": "x86",
+    "exe_sha256": "626d8f8a800294de371684da5a3c71515e3b0217159fa679b938ef0ec13c7fe8",
+    "exe_bytes": 2451968,
+    "entry_rva": "0x1bc610",
+    "library_sha256": "f0c6549e2647980c58fe5efd74e5e3ce774fbdd845f1ae31221f3f2497a4d5bb",
+    "functions": [],
+    "actual_calls": [],
+    "scope": "Source renderer owner;normal typedCharacter/D3D9engine stillopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "7bcf7ea450ba2a5dfd157b0237c728a813e73ab0bea265269cfa60d4dbb9b3f1",
+    "exe_bytes": 5475840,
+    "entry_rva": "0x8c60",
+    "library_sha256": "f0c6549e2647980c58fe5efd74e5e3ce774fbdd845f1ae31221f3f2497a4d5bb",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructCharacterRenderer",
+        "rva": "0x3823c0",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_SetCharacterRendererDevice",
+        "rva": "0x382700",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_DestroyCharacterRenderer",
+        "rva": "0x382530",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_RendererModelContext",
+        "rva": "0x382690",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_BindRendererDrawContext",
+        "rva": "0x382330",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      }
+    ],
+    "actual_calls": [
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f334d",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f3543",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f37f2",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_DestroyCharacterRenderer",
+        "call_rva": "0x2f3e56",
+        "destination_rva": "0x382530",
+        "linker_thunks": [
+          {
+            "rva": "0xa06f",
+            "bytes": "e9bc843700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_RendererModelContext",
+        "call_rva": "0x2f4a08",
+        "destination_rva": "0x382690",
+        "linker_thunks": [
+          {
+            "rva": "0xe133",
+            "bytes": "e958453700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_BindRendererDrawContext",
+        "call_rva": "0x2f5f18",
+        "destination_rva": "0x382330",
+        "linker_thunks": [
+          {
+            "rva": "0xd189",
+            "bytes": "e9a2513700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_DestroyCharacterRenderer",
+        "call_rva": "0x2f7041",
+        "destination_rva": "0x382530",
+        "linker_thunks": [
+          {
+            "rva": "0xa06f",
+            "bytes": "e9bc843700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f7c3e",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f7c98",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f7d40",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      }
+    ],
+    "scope": "Source renderer owner;normal typedCharacter/D3D9engine stillopen"
+  }
+}

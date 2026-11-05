@@ -1,0 +1,208 @@
+{
+  "status": "PASS",
+  "scope": "Source455owner construction/device/sharedshader gate/destruction andtyped load-draw adapters;normal integration andM6/M6F/M7/M9 remainOPEN",
+  "normal": {
+    "architecture": "x86",
+    "exe_sha256": "626d8f8a800294de371684da5a3c71515e3b0217159fa679b938ef0ec13c7fe8",
+    "exe_bytes": 2451968,
+    "entry_rva": "0x1bc610",
+    "library_sha256": "f0c6549e2647980c58fe5efd74e5e3ce774fbdd845f1ae31221f3f2497a4d5bb",
+    "functions": [],
+    "actual_calls": [],
+    "scope": "Source renderer owner;normal typedCharacter/D3D9engine stillopen"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "7bcf7ea450ba2a5dfd157b0237c728a813e73ab0bea265269cfa60d4dbb9b3f1",
+    "exe_bytes": 5475840,
+    "entry_rva": "0x8c60",
+    "library_sha256": "f0c6549e2647980c58fe5efd74e5e3ce774fbdd845f1ae31221f3f2497a4d5bb",
+    "functions": [
+      {
+        "symbol": "_RF455_ConstructCharacterRenderer",
+        "rva": "0x3823c0",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_SetCharacterRendererDevice",
+        "rva": "0x382700",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_DestroyCharacterRenderer",
+        "rva": "0x382530",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_RendererModelContext",
+        "rva": "0x382690",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      },
+      {
+        "symbol": "_RF455_BindRendererDrawContext",
+        "rva": "0x382330",
+        "provider": "RFClient455RendererOwner:owner.obj"
+      }
+    ],
+    "actual_calls": [
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f334d",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f3543",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f37f2",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      },
+      {
+        "caller": "?contracts@owner455@@YAHPBD@Z",
+        "target": "_RF455_DestroyCharacterRenderer",
+        "call_rva": "0x2f3e56",
+        "destination_rva": "0x382530",
+        "linker_thunks": [
+          {
+            "rva": "0xa06f",
+            "bytes": "e9bc843700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_RendererModelContext",
+        "call_rva": "0x2f4a08",
+        "destination_rva": "0x382690",
+        "linker_thunks": [
+          {
+            "rva": "0xe133",
+            "bytes": "e958453700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_BindRendererDrawContext",
+        "call_rva": "0x2f5f18",
+        "destination_rva": "0x382330",
+        "linker_thunks": [
+          {
+            "rva": "0xd189",
+            "bytes": "e9a2513700"
+          }
+        ]
+      },
+      {
+        "caller": "?model@owner455@@YAHPBDAAURF455CharacterRenderer@@AAURF455RendererShared@@URF455PoseMath@@URF455CharacterDrawMath@@@Z",
+        "target": "_RF455_DestroyCharacterRenderer",
+        "call_rva": "0x2f7041",
+        "destination_rva": "0x382530",
+        "linker_thunks": [
+          {
+            "rva": "0xa06f",
+            "bytes": "e9bc843700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_ConstructCharacterRenderer",
+        "call_rva": "0x2f7c3e",
+        "destination_rva": "0x3823c0",
+        "linker_thunks": [
+          {
+            "rva": "0xcdc4",
+            "bytes": "e9f7553700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f7c98",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      },
+      {
+        "caller": "?gpu@owner455@@YAHPBD0@Z",
+        "target": "_RF455_SetCharacterRendererDevice",
+        "call_rva": "0x2f7d40",
+        "destination_rva": "0x382700",
+        "linker_thunks": [
+          {
+            "rva": "0x105e1",
+            "bytes": "e91a213700"
+          }
+        ]
+      }
+    ],
+    "scope": "Source renderer owner;normal typedCharacter/D3D9engine stillopen"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 169,
+    "constructor_seeds": 2,
+    "caps_cases": 5,
+    "release_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "real_model_draws": 92,
+    "real_frames": 2,
+    "heap_com_balance": 0
+  },
+  "normal_equal_previous_excluding_timestamps": true,
+  "evidence_sha256": {
+    "client455-renderer-owner-reference": "94e7acc463be410374175a8c932d2935a4447d35d6fc138b69dbb3414ecd56e1",
+    "client455-renderer-owner-build": "04053735dc1b9805c3eeca4e576b3539225ffd73982e90193bc48ac547be5c9f",
+    "client455-renderer-owner-gpu": "0ef687b082df7d7ab9ae7886ff9041812e58234d0047c9344ebfbc5dd025443f",
+    "client455-renderer-owner-client": "74a17e9ed67d07c5bca2f359f88d60cf8a56d045d63feba0e08f0cca95db6980",
+    "client455-renderer-owner-link": "2b795e0fdaed5589a315be1f08d5a0b7008378b242f519bf53728fe0fc4b5eb3",
+    "client-mt-variant": "b6a8e5f8b285168b034e3060882c9abf5a59fcdfec9bfab634bfa8dc33d25262",
+    "client455-normal-character-api": "d2ba0db893d054bf157a0886c07d450669746e4513941e8594e41f53248c3562"
+  },
+  "gaps": [
+    "Normaltypedmodel-animation-ChInterface facade andD3D9engine device port;normal39SDKfunctions stillselected",
+    "Opaque methods/constructorunwind/exception-OOM anddevice-reset/state-block behavior",
+    "Shaderinit failure loggingcallback notfull original errorUI/logger lifecycle",
+    "ModernMTtrig provider notoriginal staticCRT bitparity;no originalgame frames compared"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false
+}

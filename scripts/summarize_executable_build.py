@@ -61,7 +61,7 @@ def main():
             if m:settings[m[1]]=m[2]
     if cache.exists():
         for line in cache.read_text(encoding='utf-8').splitlines():
-            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|CHARACTER_DRAW|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|ANIMATION_MANAGER|SHADERS|DRAW|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
+            m=re.match(r'(RF_CLIENT_455_(?:MESH08|MESH_BINDINGS|MESH_RUNTIME|TEXTURE|SHARED_BUFFERS|MODELS|CHARACTER_MANAGER|CHARACTER_DRAW|RENDERER_OWNER|LEGACY_RUNTIME|LEGACY_READER|ANIMATION|ANIMATION_MANAGER|SHADERS|DRAW|POSE)(?:_LIBRARY)?):[^=]+=(.*)',line)
             if m:settings[m[1]]=m[2]
     report = {'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'target': 'RF_Online',
               'platform': 'Win32', 'configuration': 'Release', 'build_exit': args.build_exit,
@@ -84,6 +84,9 @@ def main():
                 'work/client-build/source/R3Engine/2ndclass/extdummy.h',
                 args.build_dir+'/Release/RF_Online.bin']
         report['lab_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in inputs}
+        if settings.get('RF_CLIENT_455_RENDERER_OWNER')=='ON':
+            owner_inputs=['scripts/native/'+p for p in ['client455_renderer_owner.h','client455_renderer_owner.cpp','client455_renderer_owner_constants.h','test_client455_renderer_owner.cpp','client_renderer_owner_lab.inc']]
+            report['renderer_owner_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in owner_inputs}
         if settings.get('RF_CLIENT_455_FRUSTUM')=='ON':
             frustum_inputs=['scripts/native/'+p for p in ['client455_frustum.h','client455_frustum.cpp','client455_frustum_system.cpp','test_client455_frustum.cpp','client_frustum_lab.inc']]+['work/client-build/source/RF_Client/global.cpp','work/client-build/source/RF_Client/cresobject.cpp']
             report['frustum_input_sha256']={p:hashlib.sha256((WS/p).read_bytes()).hexdigest() for p in frustum_inputs}

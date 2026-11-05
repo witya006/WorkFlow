@@ -227,8 +227,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_FRUSTUM)
 #include "client_frustum_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_RENDERER_OWNER)
+#include "client_renderer_owner_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_RENDERER_OWNER)
+    if (!std::strcmp(command,"--rf-renderer-owner-scenario")) ExitProcess(rendererOwnerScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_FRUSTUM)
     if (!std::strcmp(command,"--rf-frustum-scenario")) ExitProcess(frustumScenarioProbe());
 #endif

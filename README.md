@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: восстановленный расчёт плоскостей камеры иAABB подключён
+Последний участок M6: source владелец Character455 — constructor/device binding/
+destruction и typed model/draw contexts. Реальная модель с ANI/3textures прошла
+через принадлежащие ему managers/pools/shaders отдельно и в полном client lab;
+два кадра совпали, allocations/COM освобождены. Normal runtime прежний кроме
+timestamps; совместный normal typed Character/D3D9 port ещё открыт. Gate
+inventory/client455-renderer-owner-checkpoint.json; research/client455-renderer-owner.md.
+
+Предыдущий участок M6: восстановленный расчёт плоскостей камеры иAABB подключён
 к обычным SetCharacterClipping/CResObject::ProcessClipping. Численные/actor cases
 и короткая Platform01 регрессия прошли. Normal Character API audit завершён:
 ещё39функций старогоSDK. Следом совместный typed model/animation/Character owner/

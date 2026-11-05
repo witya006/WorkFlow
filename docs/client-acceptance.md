@@ -17,7 +17,13 @@
 без конкретного риска. Общую регрессию выполнять после сквозных изменений и при
 приёмке этапа. В отчётах указывать сценарии и их результат, а не только счётчик.
 
-Последний выбранный участок M6: scene frustum/AABB source подключены к
+Последний выбранный участок M6: source renderer owner constructor/device binding/
+destruction иtypedcontexts проверены нареальной модели/ANI/3textures отдельно и
+вполном client lab. Два кадра равны,allocations/COM освобождены. Normalowner API
+ещёunused/stripped;fullnormal Character/D3D9 port не принят. Gate
+inventory/client455-renderer-owner-checkpoint.json.
+
+Предыдущий выбранный участок M6: scene frustum/AABB source подключены к
 SetCharacterClipping/ProcessClipping;72matrix/204AABB cases/9actor scenarios
 и короткая Platform01 регрессия прошли. Это не полная game camera/actor visibility
 или typed Character455/D3D9 integration. Gate inventory/client455-frustum-checkpoint.json.

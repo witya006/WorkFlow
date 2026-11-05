@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение05.11: source renderer owner032 использует прежние MSVCx86/MT,
+pinnedD3DX9_36 иD3D9HAL. Constructor/caps/destructor иreal model→pose→draw путь
+прошли component/fullclient,ownheap/COM/Dmalloc0;новых установок нет.
+Lab197TUs,normal293MTobjects/runtime прежний кромеtimestamps. IDA8ad1c657closed/save.
+inventory/client455-renderer-owner-checkpoint.json;research/client455-renderer-owner.md.
+
 Дополнение05.11: source scene-frustum использует прежнюю pinned x86 D3DX9_36,
 устанавливать ничего не требовалось. Нормальные SetCharacterClipping/CResObject
 подключены к source math;72matrix/204AABB/9actor scenarios икороткая Platform01
