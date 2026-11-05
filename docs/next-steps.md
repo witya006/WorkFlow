@@ -11,12 +11,25 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — normal shadow037. BeginShadow/EndShadow подключены;
+Последний участок — effecttables038. Чтение PatternList/ItemEffectList и
+IsHaveMeshEffect подключены;2246паттернов/4600предметов и выборки проверены.
+Особенность455: readerчитает9значений, но копирует36DWORD; tail27 неизвестен.
+Он помечен явно, неизвестный query вызывает ошибку. Не считать его восстановленным.
+182client/6facade/20kernelCPP собираются; полный линк15символов. M9 открыт.
+research/client455-effect-tables.md; checkpoint PARTIAL.
+
+Следом — EffectList/FileList/globals, EFFbinary92B380, SetPartEffect/SetMeshEffect/
+InitEffect иparticle/entityslots, modelIsHaveEffect, Characterclock/accounting.
+Навигацияraw вartifacts/normal-effects455, не повторять уже готовый table reverse.
+SetMeshEffect используетдополнительный renderercontext455 и status-aware selection.
+Не подставлять старые offsets или принимать неизвестные grades9..35 за ноль.
+
+Предыдущий участок — normal shadow037. BeginShadow/EndShadow подключены;
 реальная модель дала силуэт в512x512 текстуре, прежние два цветных кадра совпали.
 182client/4facade/20kernelCPP собираются; полный линк20символов без других ошибок.
 research/client455-normal-shadow.md; checkpoint PARTIAL. M9 открыт.
 
-Следом — эффекты/таблицы/particleSlots/entitySlot, _R3CalculateTime и accounting.
+Историческая очередь037: эффекты/таблицы/слоты, _R3CalculateTime и accounting.
 Сохранить обнаруженный контракт: Begin возвращает HRESULT, успех0, при этом
 оба callers455 используют if(result) и пропускают End. Тест явно завершает
 собственный проход. Ground projection/GetShadow/normal actor lifecycle ещё открыты.

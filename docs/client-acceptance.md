@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6, effecttables038: два загрузчика таблиц иquery подключены
+кобычному sourcefacade, реальные2246patterns/4600items проверены. Это определённая
+область выбора эффекта. Reader455 оставляет grades9..35 какнеизвестные stackbytes;
+нашиqueries явно выявляют эту границу, не принимают её какнулевой эффект.
+EFFloading/application/particles иполнаяигровая приёмка ещё открыты. Полныйлинк15
+символов. research/client455-effect-tables.md; checkpoint PARTIAL/M9OPEN.
+
 Текущий участок M6, normalshadow037: восстановлены BeginShadow/EndShadow,
 текстуры и общий quad. Реальная модель дала силуэт512x512, переключение/
 восстановление/reuse прошли, COM0. Это собственный явно завершённый проход:

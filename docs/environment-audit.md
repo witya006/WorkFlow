@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11 effecttables038: без новых установок. Два reader иquery работают
+вnormalfacade с source owners. Проверены реальные2246patterns/4600items,
+неизвестные stacktail grades9..35 явно выявлены.182client/6facade/20kernelCPP
+собираются, полный линк15символов. Короткая renderer/ANI/BBX/shadow регрессия
+прошла; больших неизменённых suites нет. IDA3ce41498closed/saved=true.
+research/client455-effect-tables.md; checkpoint PARTIAL/M9OPEN.
+
 Дополнение06.11, normalshadow037: новых установок нет. BeginShadow/EndShadow
 и512x512targets на прежнем D3D9HAL/pinnedD3DX9_36 работают в собственном проходе.
 Реальная модель дала силуэт;3прохода/reuse/COM0/прежние цветные кадры проверены.

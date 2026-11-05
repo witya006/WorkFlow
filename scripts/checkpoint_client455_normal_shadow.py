@@ -33,11 +33,11 @@ def main():
     for name in ['BeginShadow','EndShadow']:
         if not re.search(r'\?'+name+r'@CRender[^\r\n]+RFClient455Facade:client455_normal_shadow\.obj',mapping):raise ValueError('Missing normal shadow provider')
         if any(name in row['symbol'] for row in link['unresolved']):raise ValueError('Still unresolved shadow method')
-    if not link['link_exit'] or link['other_errors'] or link['unique_unresolved']!=20 or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Inspect new full link state')
+    if not link['link_exit'] or link['other_errors'] or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Inspect new full link state')
     names=['client455-normal-preparation','client455-normal-build','client455-normal-renderer-gpu','client455-normal-link','client455-normal-shadow-reference']
     report={'status':'PARTIAL','normal_shadow_targets':'PASS','capture_protocol_and_selected_failures':'PASS','real_model_shadow':'PASS','two_previous_color_frames_unchanged':True,
-        'begin_success_hresult':0,'original_callers_use_bool':True,'shadow_colored_pixels':colored,'device_refs':0,'dmalloc_balance':0,'full_normal_link':'OPEN','remaining_unresolved':20,
+        'begin_success_hresult':0,'original_callers_use_bool':True,'shadow_colored_pixels':colored,'device_refs':0,'dmalloc_balance':0,'full_normal_link':'OPEN','remaining_unresolved':link['unique_unresolved'],
         'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},'gaps':ref['gaps']+['Effects/particle slots/accounting/Character clock unresolved;full client behavior acceptance open'],
         'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    (WS/'inventory/client455-normal-shadow-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:normal shadow target/real silhouette PASS;full link20unresolved;M6/M9OPEN')
+    (WS/'inventory/client455-normal-shadow-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:normal shadow target/real silhouette PASS;full link'+str(link['unique_unresolved'])+'unresolved;M6/M9OPEN')
 if __name__=='__main__':main()

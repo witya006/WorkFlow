@@ -123,7 +123,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -135,6 +135,7 @@ def main():
     report['canonical_kernel_sources']=[p.relative_to(WS).as_posix() for p in kernel_units];report['kernel_source_reports']=kernel_evidence
     report['record_inputs']['client455_normal_contracts.cpp']=sha((native/'client455_normal_contracts.cpp').read_bytes())
     for name in ['client455_normal_shadow.cpp','client455_normal_shadow.h','client455_normal_shadow_constants.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effect_tables.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

@@ -1564,6 +1564,16 @@
       "evidence":["inventory/client455-normal-shadow-reference.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-shadow-checkpoint.json","inventory/client455-normal-link.json","research/client455-normal-shadow.md"],
       "gaps":["Original Begin returns HRESULT0 on success, both actual callers use BOOL and skip End; test explicitly completes its own pass","Ground projection91D630/GetShadow/reset/full failure and normal actor lifecycle open","Effects/particle slots/Character clock/accounting and full455gameplay/UI/network acceptance remain open"]
     }
+    ,{
+      "id":"CLIENT455-EFFECT-TABLES-038",
+      "status":"partial",
+      "description":"Normal source pattern/item table owners, readers and status-aware effect selection; undefined original stack tail remains open",
+      "implementation":["scripts/native/client455_effect_tables.h","scripts/native/client455_effect_tables.cpp","scripts/native/client455_normal_effect_tables.cpp"],
+      "reference":[{"rva":"0x525710","role":"Pattern reader scans9values but copies36DWORD"},{"rva":"0x529920","role":"Item reader"},{"rva":"0x527b80","role":"Boolean query"},{"rva":"0x529460","role":"First insert wins"}],
+      "verification":"Five functions equal both455pins; original340400-byte table initiallyzero in PE image. Real2246patterns/4600items and180selected queries match defined oracle or explicit unknown status(72). Targeted duplicate/reload/partial/boundary/malformed cases pass. Normal182client/6facade/20kernelCPP compile; full link15unresolved. Short color/shadow/ANI/BBX regressions pass, COM/Dmalloc0.",
+      "evidence":["inventory/client455-effect-tables-reference.json","inventory/client455-effect-tables-native.json","inventory/client455-effect-tables-checkpoint.json","inventory/client455-normal-link.json","research/client455-effect-tables.md"],
+      "gaps":["Loaded pattern grades9..35 are original uninitialized stack bytes; explicit errors preserve unknown status, not full equivalent behavior","Invalid group/pattern/malformed/OOM policies not accepted as original unchecked behavior","EFF binary loading/application and particle/entity slots, remaining client contracts and M9 acceptance open"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

@@ -23,6 +23,33 @@
 
 ## Последний проверенный результат
 
+Effect tables038: client455_effect_tables.{h,cpp} иnormal_effect_tables.cpp
+вfacade(теперь6CPP). Pattern/Item classes globals имеют настоящие source owners;
+2loaders+IsHaveMeshEffect подключены. 925710/929920/927B80/9276B0/929460 pinned
+both455bins, initialPattern340400bytes zero PE image verified. Pattern=2300flags+
+2300*36DWORD; readerattempt1..2299, scanfID+9ints then COPIES36DWORD fromstack.
+Loadedrow grades9..35 UNSPECIFIED,notzeroproven. Own knownmask metadata: direct
+SelectItemEffect returnsUNDEFINED;bool facade throws forunknown,neverfalsefallback.
+FutureSetMeshEffect MUST use same status-aware selection. First9 partialfields
+retain priorloopvalues/knownbits; missing/reload no tableclear, patternduplicate
+overwrites. ItemhexID+6selectors initially0/partialretain;duplicatefirstwins.
+Query ignoresmodel,grade>=36false/missingitemfalse beforegroups;presentflagunused.
+Own invalidgroup/pattern/malformederrors differfromunchecked/hangingreference.
+Real2246patterns/4600items,180selectedqueries incl72explicitunknown passed; targeted
+duplicates/reload/missing/partial/limits/malformed passed. MAP true normalproviders.
+182client/6facade/20kernelCPP compile,fullnormal link15unresolved/noothererrors.
+Headerchanged:shortrealANI/BBX/colorframes/shadow regressions passed,COM/Dmalloc0;
+no bulkunchangedtests. All5normal/tablecheckpoints PARTIAL. M6/M6F/M7/M9OPEN.
+Researchclient455-effect-tables.md. OwnedIDA3ce41498closed/saved=true.
+Next15 effects/FileList/globals/EFFbinary/apply/slots/modelIsHaveEffect/accounting/
+Characterclock. Cached artifacts/normal-effects455:92CEA0/92CD60/9293D0/9281A0,
+927040(applytexture/effectpointer5455),91C710(renderpredicate,NOTparticles).
+Login53FFA1..53FFE7 exactcaller. EFFload92B380;SetEffect9298D0 usesrendercontext.
+Do notreuseold4arg setter/rawparticle offsets. Unknownpattern stacktail alsoopen.
+Originals/server/baseline untouched. Shader/HRESULTcaller,blend,CRT gaps remain.
+
+Предыдущий результат:
+
 Normal shadow037: client455_normal_shadow.cpp — четвёртый facadeCPP.
 Begin91D330/End91D5C0/helper9335F0 и callers51DBE0/51DE60 pinned both455bins;
 inventory/client455-normal-shadow-reference.json. 20lazy textures512x512/1level

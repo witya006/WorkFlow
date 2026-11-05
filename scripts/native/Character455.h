@@ -5,6 +5,7 @@
 #include "client455_renderer_owner.h"
 #include "client455_animation_manager.h"
 #include "client455_pose.h"
+#include "client455_effect_tables.h"
 using CHARACTEROBJECT=RF455CharacterStorage;
 using ObjectMesh=RF455MeshStorage;
 using ChAnimation=RF455AnimationStorage;
@@ -76,8 +77,14 @@ class AlphaMeshManager {public:void DrawAlpahMesh();};
 class EffectList {public:void LoadEffectFileList(char*);void SetEffect(CHARACTEROBJECT*,DWORD);};
 class EffectObjectManager {public:static void LoadEffect(char*);static int SetPartEffect(CHARACTEROBJECT*,char*,int);};
 class EffectFileList {public:void LoadEffectFileList(char*);};
-class EffectPatternList {public:void LoadEffectPatternList(char*);};
-class ItemEffectList {public:void LoadItemListFile(char*);};
+class EffectPatternList {public:
+    RF455EffectPatterns native;RF455EffectTableRead lastRead={};
+    EffectPatternList();void LoadEffectPatternList(char*);
+};
+class ItemEffectList {public:
+    RF455EffectItems native;RF455EffectTableRead lastRead={};
+    void LoadItemListFile(char*);
+};
 struct CHMEMORYINFO {DWORD m_TextureSize,m_TextureNum,m_VertexSize,m_VetexNum,m_AniSize,m_ObjectNum,m_ObjectSize;};
 extern AlphaMeshManager g_AMeshManager;
 extern CHMEMORYINFO g_ChMemoryInfo;

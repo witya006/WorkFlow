@@ -1,0 +1,124 @@
+{
+  "scope": "455 pattern/item readers and defined item-effect selections;not effect binary loading/application or undefined original stack tail",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "pattern_reader",
+          "rva": "0x525710",
+          "bytes": 212,
+          "sha256": "58ba4ccedad2dda006e507a2b666e9f18ab7d2d640c543c3bf45a884aaf56a99"
+        },
+        {
+          "name": "item_reader",
+          "rva": "0x529920",
+          "bytes": 272,
+          "sha256": "a1cbf5f54dd27a5ae3afa6962315e1ac30a10b14f77e42eb901c3f774ef64013"
+        },
+        {
+          "name": "query",
+          "rva": "0x527b80",
+          "bytes": 88,
+          "sha256": "ba604fab0cf322a28b528e4a15532051c03e2e8f1477b4f5e514807906252b12"
+        },
+        {
+          "name": "item_lookup",
+          "rva": "0x5276b0",
+          "bytes": 98,
+          "sha256": "75d5ad1c92f156899020f581f45d4a8c42a925c0a2bfce81282da053d0de9506"
+        },
+        {
+          "name": "first_insert_wins",
+          "rva": "0x529460",
+          "bytes": 185,
+          "sha256": "033456a27efb0dbc4e1f7b8404a7b00754193f442e1fb2b75eef5ee8cf469520"
+        }
+      ],
+      "initial_pattern_table": {
+        "rva": "0xd89820",
+        "bytes": 340400,
+        "sha256": "46f5010532f63b6e5a57c30f1a974dc1c08ce10a7c5f77551cb6020b64e469d3",
+        "all_zero": true
+      }
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "pattern_reader",
+          "rva": "0x525710",
+          "bytes": 212,
+          "sha256": "58ba4ccedad2dda006e507a2b666e9f18ab7d2d640c543c3bf45a884aaf56a99"
+        },
+        {
+          "name": "item_reader",
+          "rva": "0x529920",
+          "bytes": 272,
+          "sha256": "a1cbf5f54dd27a5ae3afa6962315e1ac30a10b14f77e42eb901c3f774ef64013"
+        },
+        {
+          "name": "query",
+          "rva": "0x527b80",
+          "bytes": 88,
+          "sha256": "ba604fab0cf322a28b528e4a15532051c03e2e8f1477b4f5e514807906252b12"
+        },
+        {
+          "name": "item_lookup",
+          "rva": "0x5276b0",
+          "bytes": 98,
+          "sha256": "75d5ad1c92f156899020f581f45d4a8c42a925c0a2bfce81282da053d0de9506"
+        },
+        {
+          "name": "first_insert_wins",
+          "rva": "0x529460",
+          "bytes": 185,
+          "sha256": "033456a27efb0dbc4e1f7b8404a7b00754193f442e1fb2b75eef5ee8cf469520"
+        }
+      ],
+      "initial_pattern_table": {
+        "rva": "0xd89820",
+        "bytes": 340400,
+        "sha256": "46f5010532f63b6e5a57c30f1a974dc1c08ce10a7c5f77551cb6020b64e469d3",
+        "all_zero": true
+      }
+    }
+  ],
+  "files": [
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\CHEF\\PatternList.txt",
+      "copy": "work/client-reference/normal-effects455/PatternList.txt",
+      "sha256": "0163f529d8a57acabd83a9f74648db2ea516bb326a6a15ccab26b8929ac314af"
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\CHEF\\ItemEffectList.txt",
+      "copy": "work/client-reference/normal-effects455/ItemEffectList.txt",
+      "sha256": "ada2ab3736f9df6c8995ca2662bc1677fc3f2336f1516136d79f517f5a2eb89b"
+    }
+  ],
+  "pattern_records": 2246,
+  "pattern_duplicate_records": 0,
+  "item_records": 4600,
+  "item_duplicate_records": 36,
+  "golden": "work/client-reference/normal-effects455/selection.bin",
+  "golden_sha256": "a8f2351cd22e92cc4c065ed37c0effb656c7841545185d06322555de903465ed",
+  "selection_cases": 180,
+  "facts": [
+    "Pattern global340400bytes initiallyzero:2300flags+2300rows*36DWORD",
+    "925710 attempts1..2299;fscanf ID+9integers then repmovsd36copies;tail27DWORD is uninitialized stack,not file data",
+    "Pattern duplicate overwrites row;missing files/reload do not clear table;tokens ignore line boundaries",
+    "929920 initializes itemkey+6selectors once;partial reads retain previous fields;duplicates keep first map entry",
+    "927B80 ignores model,guards grade36,finds unsigned itemkey,then group selector and pattern row;does not consult present flags"
+  ],
+  "gaps": [
+    "Original row tail grades9..35 is unspecified stack content;owned known-bit metadata makes such queries explicit errors,not zero effects",
+    "Group>=6 or pattern>=2300 is unchecked inreference;owned errors do not certify invalid-pointer/OOM behavior",
+    "Nonnumeric item token can hang original;owned reader reports malformed input",
+    "Effect file map/loading/material/particle slots and complete client acceptance still open"
+  ],
+  "script_sha256": "0c93e80eb390096f87cf1ee7c88d959fee64643f1532b75b6ad4e1124d56f4f1"
+}

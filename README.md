@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — normalshadow037: восстановлены BeginShadow/EndShadow
+Последний участок M6 — effecttables038: два readerтаблиц иquery подключены,
+реальные таблицы проверены. Неизвестные grades9..35 выявляются явно; весь EFF
+ещё не перенесён. Полный линк15символов. research/client455-effect-tables.md;
+checkpoint PARTIAL; M6/M9OPEN.
+
+Предыдущий участок M6 — normalshadow037: восстановлены BeginShadow/EndShadow
 и теневые render targets. Реальная модель дала силуэт, прежние цветные кадры
 совпали. Полный линк ещё20символов; обычный игровой shadow lifecycle открыт.
 research/client455-normal-shadow.md; checkpoint PARTIAL; M6/M9OPEN.
