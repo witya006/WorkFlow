@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 05.11, normal port034: без новых установок компилируются 180 исходных
+клиентских единиц на D3D9/типах455; после выделения CUnity/CAnimation — 182 объекта
+x86/MT. Реальные потребители загружают ANI. Полный линк пока LNK1120:39 символов
+методов/данных, CharacterMR не подключён. База/engine033 сохранены, игровые DLL
+в тесте не загружались. inventory/client455-normal-checkpoint.json (PARTIAL);
+research/client455-normal-port.md. Сессий IDA не открывали.
+
 Дополнение05.11 engine9port033: local Microsoft.DXSDK.D3DX9.29.952.8 headers,
 Author/Repository подписи проверены. PackageSHA/files inventory/d3dx9-headers.json.
 Никакие_43runtimeDLLs неустановлены; x86importarchive retargeted36 иactualimports

@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: реальный R3Engine перенесён на D3D9 в work/client455-port,
+Последний участок M6: 180 клиентских исходных единиц перенесены на типы 455
+в work/client455-port/normal. После выделения CUnity/CAnimation собираются 182
+объекта x86/MT. Реальная загрузка ANI через обычные потребители проверена.
+Полная линковка открыта: 39 методов/данных; CharacterMR не используется.
+inventory/client455-normal-checkpoint.json; research/client455-normal-port.md.
+M6/M9 остаются открытыми.
+
+Предыдущий участок M6: реальный R3Engine перенесён на D3D9 в work/client455-port,
 67units x86/MT собираются. Device/Platform01 прошли с Grass shader и source
 Character owner на одном D3D9 device,8interiors/2weather layers проверены.
 Normal180clientTUs/typed Character facade ещё не подключены; базовая сборка

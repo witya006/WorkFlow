@@ -12,6 +12,13 @@
 
 ## Текущий статус
 
+Новейший участок M6 — normal port034: 180 исходных клиентских единиц компилируются
+на D3D9 с типами455, после выделения CUnity/CAnimation — 182 объекта x86/MT.
+Реальная загрузка ANI через обычные потребители проверена. Полная RF_Online.bin
+пока не линкуется:39 методов/данных. Следом обёртки pose/draw/state,
+LoadMeshData/setters/reset/bounds/effects; inventory/client455-normal-link.json.
+inventory/client455-normal-checkpoint.json PARTIAL; M6/M6F/M7/M9 OPEN.
+
 Новейший участок M6: начальный R3Engine D3D9port033,67units собираются в отдельной
 копии work/client455-port. Device/Grassshader/Characterowner same-device иPlatform01
 GPU/helpers/interiors/weather прошли. Следом нормальные180clientconsumers иtyped

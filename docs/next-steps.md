@@ -11,7 +11,22 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — начальный engine9port033 в work/client455-port.67units x86/MT
+Последний участок — normal port 034, work/client455-port/normal. Все 180 исходных
+клиентских единиц компилируются с типами 455/D3D9; после выделения CUnity/CAnimation
+получены 182 объекта x86/MT. Настоящие CAnimation и CUnityAniMgr загружают ANI.
+Полная линковка открыта: 39 методов/данных, без CharacterMR.
+inventory/client455-normal-link.json; research/client455-normal-port.md;
+inventory/client455-normal-checkpoint.json имеет статус PARTIAL.
+
+Следом подключить готовые pose/draw через подтверждённые normal FrameMove/
+DrawCharacter/SetState/UnSetState и состояние камеры/света. Затем LoadMeshData,
+setters/reset/bounds, эффекты и слоты частиц. Обёртки проверять по клиенту 455.
+Готовые ядра повторно не восстанавливать, старый SDK не возвращать для link.
+Далее нормальная RF_Online.bin и приёмка по client-acceptance.md. База
+work/client-build и engine033 сохранены. M6/M6F/M7/M9 OPEN.
+
+Очередь ниже — история, заменена текущей очередью выше.
+Предыдущий unit — начальный engine9port033 в work/client455-port.67units x86/MT
 собраны. Настоящие R3ConfirmDevice/R3InitDevice/Grass shader иsource Characterowner
 на одном D3D9 HAL device прошли; Platform01 отрисован с23helpers/8interiors идвумя
 weather layers,cleanup0. Gate inventory/client455-engine9-checkpoint.json;

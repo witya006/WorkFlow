@@ -23,6 +23,31 @@
 
 ## Последний проверенный результат
 
+Normal port034: work/client455-port/normal, все180clientTUs на D3D9/typed455records
+1188/5803/284. Named union views подтверждённых полей только в копиях headers,
+не legacy ABI casts. CUnity/CAnimation выделены в два productionTU: тела побайтно
+равны исходным секциям, из прежних TU удалены.182clientobjects x86/MT плюс
+RFClient455Facade.lib собираются. Wrappers — own API, не original C++ ABI.
+Реальные CAnimation::LoadData и CUnityAniMgr::GetAni загрузили ANI, проверены
+ID/extra/effect frames/repeat/missing. Animation sticky+4 — BYTE loadAttempted,
+НЕ DWORD load=4. Model frame672/max676/ramp704-716; mesh final4830/previous4894/
+local4958/palette646; animation name5/id264/extra280 основаны на готовых ядрах.
+MAP providers, SHA/RVA/run path в inventory/client455-normal-consumers.json.
+Полная normal линковка всех182objects: LNK1120,39distinct unresolved methods/data,
+без других ошибок/CharacterMR/forced unresolved. Это НЕ прежние39oldSDKfunctions.
+inventory/client455-normal-link.json; checkpoint PARTIAL; M6/M6F/M7/M9 OPEN.
+Unknown particleSlots/entitySlot остаются link errors. Screenshot readback compile
+only, multisample runtime открыт. Hub exceptions/debug log и высокоуровневые
+adapters ещё сверять с455. Baseline/engine033 сохранены. Следом normal FrameMove/
+DrawCharacter/SetState/UnSetState/camera/light, затем LoadMeshData/setters/reset/
+bounds/effects/data. Готовые kernels не восстанавливать повторно. Через Invoke-Python:
+prepare_client455_normal.py, build_client455_normal.py, probe_client455_normal_consumers.py,
+link_client455_normal.py (ожидается ненулевой exit), checkpoint_client455_normal.py.
+research/client455-normal-port.md; inventory/client455-normal-checkpoint.json.
+Новых установок/IDA sessions/bulk suites нет.
+
+Предыдущий результат:
+
 Engine9port033: новаякопия work/client455-port,492files/50byte-migrated;
 67realengineTUs x86/MT собираются. Никаких aliasesDevice8→9/legacyCharacterMR
 в новом probe. HWND/D3D9HAL R3ConfirmDevice→R3InitDevice→Grass shader/declaration,
