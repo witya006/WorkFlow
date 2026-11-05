@@ -1574,6 +1574,16 @@
       "evidence":["inventory/client455-effect-tables-reference.json","inventory/client455-effect-tables-native.json","inventory/client455-effect-tables-checkpoint.json","inventory/client455-normal-link.json","research/client455-effect-tables.md"],
       "gaps":["Loaded pattern grades9..35 are original uninitialized stack bytes; explicit errors preserve unknown status, not full equivalent behavior","Invalid group/pattern/malformed/OOM policies not accepted as original unchecked behavior","EFF binary loading/application and particle/entity slots, remaining client contracts and M9 acceptance open"]
     }
+    ,{
+      "id":"CLIENT455-EFFECTS-039",
+      "status":"partial",
+      "description":"Source EFF reader/registry/file lists/application/reset and current particle/entity views in normal facade; real DDS/model GPU scenario",
+      "implementation":["scripts/native/client455_effects.h","scripts/native/client455_effects.cpp","scripts/native/client455_effect_constants.h","scripts/native/client455_normal_effects.cpp"],
+      "reference":[{"rva":"0x52b380","role":"EFF reader"},{"rva":"0x529070","role":"Record converter"},{"rva":"0x527040","role":"Apply mesh"},{"rva":"0x5281a0","role":"Ordered filter"},{"rva":"0x51c6d0","role":"Particle predicate"},{"rva":"0x3bc9b0","role":"Selected current-effect consumer fragment"}],
+      "verification":"Pinned15body ranges/3particle fragments/factor literals equal both455bins. All discovered EFF framing/names parsed,19766records;12real files/28records native lossless;132factor cases/12FP modes and targeted filter/cache/reset/slots/list cases pass. Actual normal facade and real DDS/model GPU effect changed5814pixels; previous color frames/shadow pass, COM/Dmalloc0.182client/8facade/20kernel CPP compile; full link2unresolved.",
+      "evidence":["inventory/client455-effects-reference.json","inventory/client455-effects-native.json","inventory/client455-effects-checkpoint.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","research/client455-effects.md"],
+      "gaps":["Full particle/entity math/flags/lifecycle not accepted; numeric292 and modern strings do not reproduce private classic STL or undefined opaque bytes","Original pattern tail grades9..35 remains explicitly unknown; no zero-success fallback","Malformed/OOM/errorUI/logging/unwind and full normal WinMain/UI/network/gameplay acceptance open","Character accounting and clock remain unresolved; M6/M6F/M7/M9 OPEN"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

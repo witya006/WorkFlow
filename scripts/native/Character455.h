@@ -6,10 +6,11 @@
 #include "client455_animation_manager.h"
 #include "client455_pose.h"
 #include "client455_effect_tables.h"
+#include "client455_effects.h"
 using CHARACTEROBJECT=RF455CharacterStorage;
 using ObjectMesh=RF455MeshStorage;
 using ChAnimation=RF455AnimationStorage;
-enum {MAXPARTICLE=3,MAX_PATTERN_SIZE=9};
+enum {MAXPARTICLE=3,MAX_PATTERN_SIZE=36};
 
 class CObjectManager {
 public:
@@ -74,9 +75,9 @@ public:
 };
 // Own public facade; real shared transparency storage belongs to the Hub.
 class AlphaMeshManager {public:void DrawAlpahMesh();};
-class EffectList {public:void LoadEffectFileList(char*);void SetEffect(CHARACTEROBJECT*,DWORD);};
+class EffectList {public:RF455EffectFiles native;RF455EffectRead lastRead={};void LoadEffectFileList(char*);void SetEffect(CHARACTEROBJECT*,DWORD);};
 class EffectObjectManager {public:static void LoadEffect(char*);static int SetPartEffect(CHARACTEROBJECT*,char*,int);};
-class EffectFileList {public:void LoadEffectFileList(char*);};
+class EffectFileList {public:RF455EffectFiles native;RF455EffectRead lastRead={};void LoadEffectFileList(char*);};
 class EffectPatternList {public:
     RF455EffectPatterns native;RF455EffectTableRead lastRead={};
     EffectPatternList();void LoadEffectPatternList(char*);

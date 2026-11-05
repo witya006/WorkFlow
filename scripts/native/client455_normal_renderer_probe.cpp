@@ -9,6 +9,7 @@
 #include <algorithm>
 int RF455_CheckNormalShadowCapture();
 int RF455_CheckNormalShadowHal(CRender*,CHARACTEROBJECT*,IDirect3DDevice9*);
+int RF455_CheckEffectsGpu(ChInterface*,CHARACTEROBJECT*,IDirect3DDevice9*);
 
 #define R_REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Normal renderer failure line%d\n",__LINE__);return 1;}}while(0)
 template<class T>T read(const void* p,unsigned at){T out;std::memcpy(&out,static_cast<const unsigned char*>(p)+at,sizeof(out));return out;}
@@ -65,6 +66,7 @@ static int scene(IDirect3DDevice9* d,const char* fixture){
         R_REQUIRE(SUCCEEDED(d->Clear(0,nullptr,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,0xff101020,1,0)) && SUCCEEDED(d->BeginScene()));renderer.DrawCharacter(model,const_cast<float*>(position),0,.5f,0);g_AMeshManager.DrawAlpahMesh();R_REQUIRE(SUCCEEDED(d->EndScene()));const auto pixels=capture(d);R_REQUIRE(pixels.size()==256*256*4);unsigned colored=0;for(unsigned i=0;i<256*256;++i)if((read<DWORD>(pixels.data(),4*i)&0xffffff)!=0x101020)++colored;R_REQUIRE(filter==2?colored>100:colored==0);
     }
     model->opaque268=0;renderer.native.effects.active=0;
+    R_REQUIRE(RF455_CheckEffectsGpu(&renderer,model,d)==0);
     R_REQUIRE(RF455_CheckNormalShadowHal(&renderer,model,d)==0);
     renderer.UnSetState();DWORD state;R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_VERTEXBLEND,&state)) && state==D3DVBF_DISABLE);R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_CULLMODE,&state)) && state==D3DCULL_CCW);R_REQUIRE(SUCCEEDED(d->GetSamplerState(4,D3DSAMP_MIPFILTER,&state)) && state==D3DTEXF_POINT);
     g_ifCharIF=nullptr;R_REQUIRE(animations.Destroy() && meshes.Destroy() && bones.Destroy());return 0;

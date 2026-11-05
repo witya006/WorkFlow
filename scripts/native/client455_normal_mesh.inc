@@ -1,4 +1,7 @@
+#pragma pack(push,1)
 struct CharacterEffectSlot {float m_X,m_Y,m_Z;DWORD m_ID;};
+#pragma pack(pop)
+static_assert(sizeof(CharacterEffectSlot)==16,"455 particle/entity slot");
 #pragma pack(push,1)
 struct RF455MeshStorage {
     union {
@@ -14,8 +17,7 @@ struct RF455MeshStorage {
     // Native kernels perform the confirmed constructor writes explicitly.
     // D3DXMATRIX has a nontrivial C++ constructor, so declare this union owner.
     RF455MeshStorage() noexcept {}
-    // These original effect contracts still require455evidence. Missing symbols
-    // remain link errors; they must never silently allocate a shadow old mesh.
+    // Views into CURRENT effect5455 (particle208/entity256),not old inline slots.
     CharacterEffectSlot* particleSlots();
     CharacterEffectSlot& entitySlot();
     int IsHaveEffect();

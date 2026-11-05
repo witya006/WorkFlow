@@ -1,0 +1,61 @@
+{
+  "scope": "Source EFF parsing/registry/filter/reset/slots and finite factor math through normal facade;not full renderer/particle acceptance",
+  "architecture": "x86",
+  "exe": "work/m9/716a48e2/eff001/effects-probe.exe",
+  "exe_sha256": "716a48e2646de20da4f4382b1a0b340783c37a6eb6f3a2f66583a54defe75fd4",
+  "entry_rva": "0x7c780",
+  "native": {
+    "status": "PASS",
+    "real_files": 12,
+    "real_records": 28,
+    "lossless_roundtrip": true,
+    "factor_cases": 132,
+    "fp_modes": 12,
+    "registry_filter_slots": true,
+    "file_lists": true,
+    "normal_facade": true
+  },
+  "source": "scripts/native/test_client455_effects.cpp",
+  "source_sha256": "dca263992715a63f6f1abc7e8d2eef0db05c6f1ddd914311cb6239e7d9f98161",
+  "output": "work/m9/716a48e2/eff001/result.json",
+  "output_sha256": "c65ccea93026e01f0d1d15760c14439ec84853a3d958c3850d8e7c8852fda117",
+  "map": "work/client455-port/normal/build/effects-probe.map",
+  "map_sha256": "18ac416aea88ac95a87d370a9a290ede834ac529dc594ab052b6dfcbf1a5c989",
+  "libraries": [
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "cc02373c2fafce496c0692b9d138f37de3c969252aeb35eaf3a9995ef74351dd"
+    },
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
+      "sha256": "99728d39109f515440a400d76a3c83eeb3316c88e34179009a80dab7914d9de0"
+    },
+    {
+      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+    },
+    {
+      "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+      "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
+    },
+    {
+      "file": "work/client455-port/build-vs2026/Release/R3Engine455.lib",
+      "sha256": "fba3d77db954750118dbfb5dbb66e5606c3c79398ebe8d502b5fb61d7cad7369"
+    },
+    {
+      "file": "work/client455-port/dependencies/d3dx9_36.lib",
+      "sha256": "b92a88b327c13a5738ac567ce34b73aa652c536e37fc46c9797dab2f7c413794"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/mss32.lib",
+      "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    }
+  ],
+  "reference_sha256": "855897ef550d9258e1ca71158aea985fca440c8113739214cf90662c35cc1c8e",
+  "normal_build_sha256": "70f346e779ccc3dd20c6aa4f89cc19b34efcb1bbc35ee6f6c2e550e62dbfe15d",
+  "legacy_character_linked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

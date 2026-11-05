@@ -1,9 +1,9 @@
 {
   "scope": "Actual normal facade renderer gpu scenario;not full normal WinMain/455acceptance",
   "architecture": "x86",
-  "exe": "work/m9/df3a6e41/normal-gpu001/normal-renderer-gpu.exe",
-  "exe_sha256": "df3a6e41e6dc939f63e05aea3d789862385b5088e1da0f6355e2196a6e206498",
-  "entry_rva": "0x8ace0",
+  "exe": "work/m9/8fb3c574/normal-gpu001/normal-renderer-gpu.exe",
+  "exe_sha256": "8fb3c57411814bb1f735364a6c6fb23c30507d7b32911dabaf15f93ad1c19dd3",
+  "entry_rva": "0x8ef80",
   "native": {
     "status": "PASS",
     "normal_unity_model_pipeline": true,
@@ -25,38 +25,38 @@
   },
   "frames": [
     {
-      "file": "work/m9/df3a6e41/normal-gpu001/normal-frame-0.bgra",
+      "file": "work/m9/8fb3c574/normal-gpu001/normal-frame-0.bgra",
       "sha256": "6017d4fa3cd3a0f1ea1a443f68076cb0cb8d24cc48ac97e1957f7303878158c3",
-      "preview": "work/m9/df3a6e41/normal-gpu001/normal-frame-0.bmp",
+      "preview": "work/m9/8fb3c574/normal-gpu001/normal-frame-0.bmp",
       "preview_sha256": "5f76c889168eaf38a1820ce16c23d35df9a3359b3a02d90f2e67b7c7269713c3"
     },
     {
-      "file": "work/m9/df3a6e41/normal-gpu001/normal-frame-1.bgra",
+      "file": "work/m9/8fb3c574/normal-gpu001/normal-frame-1.bgra",
       "sha256": "cbcd161f293811704d9e0a612cb3a01fb305dbdbb3aad86f96825fde26146675",
-      "preview": "work/m9/df3a6e41/normal-gpu001/normal-frame-1.bmp",
+      "preview": "work/m9/8fb3c574/normal-gpu001/normal-frame-1.bmp",
       "preview_sha256": "4f91f8f8d6d72fb8353c02f6d98264ec1a1adb7a56546e46adb232b45619ced1"
     }
   ],
-  "output": "work/m9/df3a6e41/normal-gpu001/result.json",
+  "output": "work/m9/8fb3c574/normal-gpu001/result.json",
   "output_sha256": "91db231ecc3e099e38aec614ebf7ec555ae7e5f719530b6584a28309c564d8f8",
   "source": "scripts/native/client455_normal_renderer_probe.cpp",
-  "source_sha256": "6298aaef53e4b972c358903bd0da21c014883ab642eb42ea81f16f297684c228",
+  "source_sha256": "18ac599342b36d23c8831102f2a3b13d8c904ddf30efdc52e81fc097c8a37c62",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/unity_managers.obj",
-      "sha256": "fc44cd51263c9f394f07518850d0bff87fd2b45d8a02cfbabfb32b4396695648"
+      "sha256": "266e5a0dfffa3723147a9a260f61d4925ce474381f768353611eac1ca8bd13c6"
     },
     {
       "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/animation_control.obj",
-      "sha256": "ba198382ff77c448140686a49143889a08b9caa75cacf29676a2f2399bf2ad7d"
+      "sha256": "83dfea4566f131ef7a3aa25a481dda6f4dbdc6d439dcab344355f19c8e377ec7"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "eb7623619338d60ab4e711be56b3225cb46a8991f59245b45a284d9df3cbe9dc"
+      "sha256": "cc02373c2fafce496c0692b9d138f37de3c969252aeb35eaf3a9995ef74351dd"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "ccfd69d5ffba94102fc49a48620214ff87b1e5a3f2911eb6be071c85cdcada72"
+      "sha256": "99728d39109f515440a400d76a3c83eeb3316c88e34179009a80dab7914d9de0"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
@@ -80,8 +80,8 @@
     }
   ],
   "map": "work/client455-port/normal/build/normal-renderer-gpu.map",
-  "map_sha256": "1db34e6018b5362c3bd5a3216585c16ff10829f0ca37c5c4514dd3c52f8e77a0",
-  "normal_build_sha256": "954b5a8b86a65ad0e92acdf50600df804ea76e0a737f70147d339a86812928cd",
+  "map_sha256": "dc5436ba7e76d7b69a61f9ad58974377caf17e4018c11ee907b8f4a4feb0974a",
+  "normal_build_sha256": "70f346e779ccc3dd20c6aa4f89cc19b34efcb1bbc35ee6f6c2e550e62dbfe15d",
   "reference_sha256": "1a13fd33929e59db76fbe46a5defc19e22e458ca7a3cbd09af9bf10082922d9a",
   "legacy_character_linked": false,
   "input_exe_executed": false,
@@ -113,15 +113,60 @@
     {
       "file": "scripts/native/test_client455_normal_shadow.cpp",
       "sha256": "7ba722cad0fdf19d9e9cbf1d9cc663fd563566426b5a59c2932459b70bdf7361"
+    },
+    {
+      "file": "scripts/native/test_client455_effects_gpu.cpp",
+      "sha256": "32f9682518c228eb59148cc87d181b5307c57f61f8c4cf684c3b3d5e7ce923fc"
     }
   ],
   "shadow_frame": {
-    "file": "work/m9/df3a6e41/normal-gpu001/normal-shadow.bgra",
+    "file": "work/m9/8fb3c574/normal-gpu001/normal-shadow.bgra",
     "sha256": "4eca3b75b87f3c969b8ee2d09d3f7e7347d69bf99d7e072e4157ae48d56d7890",
-    "preview": "work/m9/df3a6e41/normal-gpu001/normal-shadow.bmp",
+    "preview": "work/m9/8fb3c574/normal-gpu001/normal-shadow.bmp",
     "preview_sha256": "77b18c678338a992798080f2d5dab899614fa1fa4dcbfed1e7f0b76632f61591"
   },
   "shadow_reference_sha256": "3e71a3c96f783756e86a2e4590fe5312094da247d0c6a3d8dc19851521efd753",
+  "effect_frames": [
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/normal-effect-before.bgra",
+      "sha256": "cbcd161f293811704d9e0a612cb3a01fb305dbdbb3aad86f96825fde26146675",
+      "preview": "work/m9/8fb3c574/normal-gpu001/normal-effect-before.bmp",
+      "preview_sha256": "4f91f8f8d6d72fb8353c02f6d98264ec1a1adb7a56546e46adb232b45619ced1"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/normal-effect-after.bgra",
+      "sha256": "43edb7a948a1d532b6641aaf19218bdf61905990fd381ed2d2f09d22fd9dcf1a",
+      "preview": "work/m9/8fb3c574/normal-gpu001/normal-effect-after.bmp",
+      "preview_sha256": "df057dc491100c7326a2ebce7f712ae80257cd3503248e20472400bb0b582a6d"
+    }
+  ],
+  "effect_inputs": [
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/gpu.eff",
+      "sha256": "1d63d2670eb517fb12544f4b5a17184b807d8efbb9112f6de4ea70b5cb91b6bb"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/gpu-files.txt",
+      "sha256": "a1b794b3c147abde3cc7970a421a4d2be30148d2880aac6ffdbd039c384f854c"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/gpu-patterns.txt",
+      "sha256": "e0834d5526dc7434311757e6d169229e6638e4235b440cb9e872282a28601e98"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/gpu-items.txt",
+      "sha256": "009f38b2fac8a096b0861aa6704b7c0171bf72f9dde2973561c4a7cf86779f47"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/gpu-monsters.ini",
+      "sha256": "21e43e7459c7f4bcb68b1fa6fdb1e4e532fecb27af6115ba978d4b0af39fd615"
+    },
+    {
+      "file": "work/m9/8fb3c574/normal-gpu001/tex/effect.dds",
+      "sha256": "bcda0ec855c1e19a670b6f652fa88d025dbeb356a9441d5053ced6545199a208"
+    }
+  ],
+  "effects_reference_sha256": "855897ef550d9258e1ca71158aea985fca440c8113739214cf90662c35cc1c8e",
   "precanonical_frames_equal": true,
   "precanonical_report_sha256": "b8e0b76a8a7c0869943a316a3f152d54da1f832a9f127665465b9a44ef68df34"
 }

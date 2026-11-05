@@ -2,82 +2,8 @@
   "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
   "link_exit": 1120,
   "client_objects": 182,
-  "unique_unresolved": 15,
+  "unique_unresolved": 2,
   "unresolved": [
-    {
-      "symbol": "?InitEffect@CRender@@QAEXPAURF455CharacterStorage@@@Z",
-      "declaration": "public: void __thiscall CRender::InitEffect(struct RF455CharacterStorage *)",
-      "objects": [
-        "cbasenpc.obj",
-        "citemdata.obj"
-      ]
-    },
-    {
-      "symbol": "?SetEffect@EffectList@@QAEXPAURF455CharacterStorage@@K@Z",
-      "declaration": "public: void __thiscall EffectList::SetEffect(struct RF455CharacterStorage *,unsigned long)",
-      "objects": [
-        "cbasenpc.obj",
-        "citemdata.obj"
-      ]
-    },
-    {
-      "symbol": "?SetPartEffect@EffectObjectManager@@SAHPAURF455CharacterStorage@@PADH@Z",
-      "declaration": "public: static int __cdecl EffectObjectManager::SetPartEffect(struct RF455CharacterStorage *,char *,int)",
-      "objects": [
-        "cbasenpc.obj"
-      ]
-    },
-    {
-      "symbol": "?g_EFFMonList@@3VEffectList@@A",
-      "declaration": "class EffectList g_EFFMonList",
-      "objects": [
-        "cbasenpc.obj",
-        "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?LoadEffectFileList@EffectList@@QAEXPAD@Z",
-      "declaration": "public: void __thiscall EffectList::LoadEffectFileList(char *)",
-      "objects": [
-        "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?LoadEffectFileList@EffectFileList@@QAEXPAD@Z",
-      "declaration": "public: void __thiscall EffectFileList::LoadEffectFileList(char *)",
-      "objects": [
-        "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?g_EFFUnitList@@3VEffectList@@A",
-      "declaration": "class EffectList g_EFFUnitList",
-      "objects": [
-        "cgp_login.obj",
-        "citemdata.obj"
-      ]
-    },
-    {
-      "symbol": "?g_EffectFileList@@3VEffectFileList@@A",
-      "declaration": "class EffectFileList g_EffectFileList",
-      "objects": [
-        "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?IsHaveEffect@RF455CharacterStorage@@QAEHXZ",
-      "declaration": "public: int __thiscall RF455CharacterStorage::IsHaveEffect(void)",
-      "objects": [
-        "citemdata.obj"
-      ]
-    },
-    {
-      "symbol": "?SetMeshEffect@@YAXPAURF455CharacterStorage@@KKK@Z",
-      "declaration": "void __cdecl SetMeshEffect(struct RF455CharacterStorage *,unsigned long,unsigned long,unsigned long)",
-      "objects": [
-        "citemdata.obj"
-      ]
-    },
     {
       "symbol": "?g_ChMemoryInfo@@3UCHMEMORYINFO@@A",
       "declaration": "struct CHMEMORYINFO g_ChMemoryInfo",
@@ -91,41 +17,20 @@
       "objects": [
         "mainapp.obj"
       ]
-    },
-    {
-      "symbol": "?particleSlots@RF455MeshStorage@@QAEPAUCharacterEffectSlot@@XZ",
-      "declaration": "public: struct CharacterEffectSlot * __thiscall RF455MeshStorage::particleSlots(void)",
-      "objects": [
-        "particlelist.obj"
-      ]
-    },
-    {
-      "symbol": "?entitySlot@RF455MeshStorage@@QAEAAUCharacterEffectSlot@@XZ",
-      "declaration": "public: struct CharacterEffectSlot & __thiscall RF455MeshStorage::entitySlot(void)",
-      "objects": [
-        "particlelist.obj"
-      ]
-    },
-    {
-      "symbol": "?LoadEffect@EffectObjectManager@@SAXPAD@Z",
-      "declaration": "public: static void __cdecl EffectObjectManager::LoadEffect(char *)",
-      "objects": [
-        "particlelist.obj"
-      ]
     }
   ],
   "other_errors": [],
   "log": "artifacts/client455-normal/normal-link.txt",
-  "log_sha256": "5f8895e35499b3f4fa117bd9a6d7780722e8a383b53c26683d27775abbd2df43",
-  "normal_build_sha256": "954b5a8b86a65ad0e92acdf50600df804ea76e0a737f70147d339a86812928cd",
+  "log_sha256": "e889ac94c1445e15b82c5e077cae04accc9198d4e53d1cf890cbf977bf1f98c5",
+  "normal_build_sha256": "70f346e779ccc3dd20c6aa4f89cc19b34efcb1bbc35ee6f6c2e550e62dbfe15d",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "eb7623619338d60ab4e711be56b3225cb46a8991f59245b45a284d9df3cbe9dc"
+      "sha256": "cc02373c2fafce496c0692b9d138f37de3c969252aeb35eaf3a9995ef74351dd"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "ccfd69d5ffba94102fc49a48620214ff87b1e5a3f2911eb6be071c85cdcada72"
+      "sha256": "99728d39109f515440a400d76a3c83eeb3316c88e34179009a80dab7914d9de0"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",

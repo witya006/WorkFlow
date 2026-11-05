@@ -23,6 +23,37 @@
 
 ## Последний проверенный результат
 
+Effects039: source client455_effects.{h,cpp}, normal_effects.cpp и pinned factor
+constants; facade теперь 8 CPP. EFF read92B380/converter929070/ctor920E40/
+apply927040/filter9281A0/file9293D0/reset91C760+91F2B0/particle predicates и
+reader/insert lists/Animus4572D0 pinned both bins. Evidence reference/native/
+checkpoint client455-effects, research/client455-effects.md; raw artifacts/eff455.
+All discovered EFF framing/names parsed:19766 records, lengths176/172. This is
+format inventory, not a whole-game functional test. Native12real files/28records
+lossless,132factor cases/12FP modes, bounded malformed/reload/filter/cache/slots
+cases passed. strlen may cross20byte fields but bounded at176 in own parser.
+Modern strings own text; numeric292 supplies confirmed render/particle fields,
+not classic STL ABI. Texture cache attempts56/60 sticky; cached ptr branch
+does not change mesh texture ID. Empty filter all, named overrides; duplicate
+file/filter last wins, file-list ID first wins. Reset→inline5163, current5455,
+particles208/224/240/entity256. MAX_PATTERN_SIZE=36 confirmed by Animus caller.
+SetMeshEffect uses status-aware selection; grades9..35 unknown stays explicit.
+Actual GPU: InitEffect→binary EFF→tables→SetMeshEffect→real DDS upload→model main
+D3D9 draw. Grade/mode/cache tested; before/after5814pixels differ; old two color
+frames unchanged, shadow silhouette retained, COM/Dmalloc0. Slot/plumbing test
+does not restore full particle emitter math/flags/lifecycle.
+182client/8facade/20kernel CPP compile. Full link only g_ChMemoryInfo and
+_R3CalculateTime, no other errors/old CharacterMR/forced resolution. Normal,
+renderer/contracts/shadow/table/effect checkpoints PARTIAL. No unchanged bulk
+suites. Owned IDA4a2e7cac closed with save requested, returned saved=null.
+Originals/server/baseline untouched. M6/M6F/M7/M9 OPEN.
+Next040: verify CHMEMORYINFO old28 vs455ctor32, actual accounting producers and
+Character timer bridge; no empty global/no-op or duplicate clock advance.
+Then full normal link/init. Shadow/HRESULT caller, blending, CRT, unknown pattern
+tail, full particles/gameplay/UI/network/device-reset acceptance remain open.
+
+Предыдущий результат:
+
 Effect tables038: client455_effect_tables.{h,cpp} иnormal_effect_tables.cpp
 вfacade(теперь6CPP). Pattern/Item classes globals имеют настоящие source owners;
 2loaders+IsHaveMeshEffect подключены. 925710/929920/927B80/9276B0/929460 pinned

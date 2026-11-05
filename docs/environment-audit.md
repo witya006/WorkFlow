@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, effects039: новых установок нет. 182 клиентских, 8 facade и
+20 canonical kernel CPP собираются x86/MT. Загрузка и применение EFF работают
+с прежним source TextureManager на D3D9 HAL. Эффект с реальной DDS изменил кадр
+модели; прежние цветные кадры и теневой проход сохранились, COM/Dmalloc 0.
+Полный линк: только g_ChMemoryInfo и _R3CalculateTime, других ошибок нет.
+IDA 4a2e7cac закрыта с запросом save; returned saved=null. Оригинальные EXE
+не исполнялись, серверы не менялись. research/client455-effects.md;
+inventory/client455-effects-checkpoint.json: PARTIAL, M9 открыт.
+
 Дополнение06.11 effecttables038: без новых установок. Два reader иquery работают
 вnormalfacade с source owners. Проверены реальные2246patterns/4600items,
 неизвестные stacktail grades9..35 явно выявлены.182client/6facade/20kernelCPP

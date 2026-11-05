@@ -11,14 +11,29 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — effecttables038. Чтение PatternList/ItemEffectList и
+Последний участок — effects039. Чтение EFF, registry, file lists, InitEffect,
+SetPartEffect/SetMeshEffect и particle/entity views подключены. Проверены
+реальные EFF, выбор/кеширование/сброс и эффект с настоящей DDS на модели/GPU.
+182 client + 8 facade + 20 kernel CPP собираются; полный линк: только
+g_ChMemoryInfo и _R3CalculateTime. research/client455-effects.md;
+inventory/client455-effects-checkpoint.json: PARTIAL. M9 открыт.
+
+Следующий участок040 — восстановить accounting и Character clock по 455 и
+реальным callers; не подставлять пустой глобал или no-op ради линковки.
+Проверить layout CHMEMORYINFO (старые 28 байт против замеченного ctor 32),
+владение счётчиками и связь Character clock с уже восстановленным engine clock.
+Затем получить полный normal link и отдельно проверить normal initialization.
+Full particles/entity math, неизвестный pattern tail grades9..35, shadow
+lifecycle, blend producers и UI/network/gameplay остаются открытыми.
+
+Предыдущий участок — effecttables038. Чтение PatternList/ItemEffectList и
 IsHaveMeshEffect подключены;2246паттернов/4600предметов и выборки проверены.
 Особенность455: readerчитает9значений, но копирует36DWORD; tail27 неизвестен.
 Он помечен явно, неизвестный query вызывает ошибку. Не считать его восстановленным.
 182client/6facade/20kernelCPP собираются; полный линк15символов. M9 открыт.
 research/client455-effect-tables.md; checkpoint PARTIAL.
 
-Следом — EffectList/FileList/globals, EFFbinary92B380, SetPartEffect/SetMeshEffect/
+Историческая очередь038 — EffectList/FileList/globals, EFFbinary92B380, SetPartEffect/SetMeshEffect/
 InitEffect иparticle/entityslots, modelIsHaveEffect, Characterclock/accounting.
 Навигацияraw вartifacts/normal-effects455, не повторять уже готовый table reverse.
 SetMeshEffect используетдополнительный renderercontext455 и status-aware selection.

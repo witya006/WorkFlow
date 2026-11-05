@@ -21,7 +21,9 @@ def main():
     if run['normal_build_sha256']!=sha(WS/'inventory/client455-normal-build.json') or link['normal_build_sha256']!=run['normal_build_sha256'] or build['build_exit'] or build['objects']!=182:raise ValueError('Stale/incomplete normal build')
     if sha(WS/run['exe'])!=run['exe_sha256'] or pe((WS/run['exe']).read_bytes())['entry_rva']!=int(run['entry_rva'],16) or sha(WS/run['output'])!=run['output_sha256'] or sha(WS/run['map'])!=run['map_sha256'] or sha(WS/run['source'])!=run['source_sha256']:raise ValueError('Changed native evidence')
     expected='scripts/native/test_client455_normal_shadow.cpp'
-    if run['extra_sources']!=[{'file':expected,'sha256':sha(WS/expected)}]:raise ValueError('Shadow native cases not compiled')
+    if {'file':expected,'sha256':sha(WS/expected)} not in run['extra_sources']:raise ValueError('Shadow native cases not compiled')
+    for row in run['extra_sources']:
+        if sha(WS/row['file'])!=row['sha256']:raise ValueError('Changed additional GPU test source')
     for item in run['libraries']:
         if sha(WS/item['file'])!=item['sha256']:raise ValueError('Changed library')
     native=run['native'];frame=run['shadow_frame'];pixels=(WS/frame['file']).read_bytes()

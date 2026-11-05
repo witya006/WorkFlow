@@ -22,7 +22,8 @@ def main():
         source=WS/'scripts/native'/name;entry=root/'generated'/name;entry.write_bytes(source.read_bytes());exe=root/'build'/('normal-renderer-'+mode+'.exe');batch=root/'generated'/('build-renderer-'+mode+'.cmd');log=art/('build-'+mode+'.txt')
         extra_sources=[]
         if mode=='gpu':
-            extra_source=WS/'scripts/native/test_client455_normal_shadow.cpp';extra_entry=root/'generated'/extra_source.name;extra_entry.write_bytes(extra_source.read_bytes());extra_sources=[extra_source]
+            for extra_name in ['test_client455_normal_shadow.cpp','test_client455_effects_gpu.cpp']:
+                extra_source=WS/'scripts/native'/extra_name;extra_entry=root/'generated'/extra_source.name;extra_entry.write_bytes(extra_source.read_bytes());extra_sources.append(extra_source)
         inputs=objects+libraries if mode=='gpu' else [libraries[0]]
         forced='/FI"'+str(WS/'work/client455-port/port_std.hpp')+'"' if mode=='gpu' else ''
         batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-renderer.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} {forced} "{entry}" '+' '.join('"'+str(p)+'"' for p in ([root/'generated'/p.name for p in extra_sources]+inputs))+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
@@ -35,7 +36,8 @@ def main():
         while (base/f'normal-{mode}{index:03d}').exists():index+=1
         run=base/f'normal-{mode}{index:03d}';run.mkdir();shutil.copyfile(exe,run/exe.name);output=run/'result.json'
         if mode=='math':fixture=WS/ref['golden']
-        else:_,fixture=stage_inputs(run)
+        else:
+            _,fixture=stage_inputs(run);textures=sorted((run/'tex').iterdir());shutil.copyfile(textures[0],run/'tex/effect.dds')
         result=subprocess.run([str(run/exe.name),str(fixture),str(output)],cwd=run,capture_output=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)
         if result.returncode:raise ValueError('Normal renderer '+mode+' runtime:'+str(run/'console.txt'))
         native=json.loads(output.read_text());frames=[]
@@ -53,6 +55,12 @@ def main():
             preview=shadow.with_suffix('.bmp');preview.write_bytes(b'BM'+struct.pack('<IHHI',54+len(data),0,0,54)+struct.pack('<IiiHHIIiiII',40,512,-512,1,32,0,len(data),2835,2835,0,0)+data)
             report['shadow_frame']={'file':shadow.relative_to(WS).as_posix(),'sha256':sha(shadow),'preview':preview.relative_to(WS).as_posix(),'preview_sha256':sha(preview)}
             report['shadow_reference_sha256']=sha(WS/'inventory/client455-normal-shadow-reference.json')
+            effects=[]
+            for suffix in ['before','after']:
+                path=run/f'normal-effect-{suffix}.bgra';data=path.read_bytes()
+                if len(data)!=256*256*4:raise ValueError('Short effect frame')
+                preview=path.with_suffix('.bmp');preview.write_bytes(b'BM'+struct.pack('<IHHI',54+len(data),0,0,54)+struct.pack('<IiiHHIIiiII',40,256,-256,1,32,0,len(data),2835,2835,0,0)+data);effects.append({'file':path.relative_to(WS).as_posix(),'sha256':sha(path),'preview':preview.relative_to(WS).as_posix(),'preview_sha256':sha(preview)})
+            report['effect_frames']=effects;report['effect_inputs']=[{'file':(run/name).relative_to(WS).as_posix(),'sha256':sha(run/name)} for name in ['gpu.eff','gpu-files.txt','gpu-patterns.txt','gpu-items.txt','gpu-monsters.ini','tex/effect.dds']];report['effects_reference_sha256']=sha(WS/'inventory/client455-effects-reference.json')
         if mode=='gpu':
             previous=WS/'inventory/client455-normal-renderer-precanonical.json';before=json.loads(previous.read_text())
             if any(native.get(k)!=v for k,v in before['native'].items()) or [r['sha256'] for r in frames]!=[r['sha256'] for r in before['frames']]:raise ValueError('Normal renderer changed previous behavior/frames')

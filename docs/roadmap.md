@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — effecttables038: readerпаттернов/предметов ивыбор эффекта
+Новейший участок M6 — effects039: EFF reader, registry/file lists, применение,
+сброс и particle/entity views подключены. Реальный texture/model GPU сценарий
+прошёл; предыдущие кадры сохранились. Полный линк: 2 символа вместо 15.
+Далее accounting/Character clock и полный normal link; игровая приёмка впереди.
+research/client455-effects.md; checkpoint PARTIAL. M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — effecttables038: readerпаттернов/предметов ивыбор эффекта
 подключены, реальные таблицы проверены. Полный линк15символов. Неизвестный stack
 tail grades9..35 остаётся открытым; загрузка/применение EFF ислоты ещё впереди.
 research/client455-effect-tables.md; checkpoint PARTIAL. M6/M6F/M7/M9OPEN.

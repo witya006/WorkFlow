@@ -1,6 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий участок M6, effecttables038: два загрузчика таблиц иquery подключены
+Текущий участок M6, effects039: EFF reader/registry/file lists/application,
+InitEffect и particle/entity views подключены к обычной сборке. Реальные файлы,
+контракты выборки/сброса и применение настоящей DDS к модели на GPU проверены.
+Это не приёмка полного particle emitter или игрового lifecycle. Pattern tail
+grades9..35 по-прежнему неизвестен. Полный линк: 2 символа; normal WinMain,
+клиентская сеть, UI и игровые сценарии ещё не приняты. M6/M6F/M7/M9 открыты.
+Подробности: research/client455-effects.md; checkpoint PARTIAL.
+
+Предыдущий участок M6, effecttables038: два загрузчика таблиц иquery подключены
 кобычному sourcefacade, реальные2246patterns/4600items проверены. Это определённая
 область выбора эффекта. Reader455 оставляет grades9..35 какнеизвестные stackbytes;
 нашиqueries явно выявляют эту границу, не принимают её какнулевой эффект.
