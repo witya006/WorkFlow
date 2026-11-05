@@ -23,6 +23,29 @@
 
 ## Последний проверенный результат
 
+Normal shadow037: client455_normal_shadow.cpp — четвёртый facadeCPP.
+Begin91D330/End91D5C0/helper9335F0 и callers51DBE0/51DE60 pinned both455bins;
+inventory/client455-normal-shadow-reference.json. 20lazy textures512x512/1level
+с currentRT format/usage/pool. Quad4*24bytes ±30/FFFFFFFF/exactUV, managedVB96,
+usage8/FVF322, shared original1189598 bits published before firstVB attempt.
+SavedRT/DS owner8920/8924; literal COM order/restoration and retained released
+savedpointers. Failed firstLock leaves cached unfilledVB; S_FALSE createTex rejected.
+CRITICAL: Begin returns HRESULT from SetDepthNULL. S_OK=0, BOTH actual455callers
+use if(result), so skip End on success. Do notreturn1/fix behavior silently.
+Own HAL test explicitly Ends andsetsStateBEFOREBegin;not normalcaller acceptance.
+Capture protocol/selectedfailures passed. HAL slot0/19/reuse0,descriptor/depth/Z/
+viewport restoration,realmodelshadow silhouette512x512(23218RGBpixels) passed;
+frame viewed,2previouscolorframes equal035,COM/Dmalloc0. 182client/4facade/20kernel
+CPP compile0errors;fullnormal link20unresolved/noothererrors. All4normal checkpoints
+PARTIAL;M6/M6F/M7/M9OPEN. Researchclient455-normal-shadow.md.
+Next: effects/tables/particle-entityslots/accounting/Characterclock (normal-link.json).
+Groundprojection91D630/GetShadow/nonactiveconsumers/reset/fullnormal lifecycle
+andBOOLcaller issue stillopen. No oldSDK/noop/fullgame parity claims.
+No bulkunchangedtests. OwnedIDA63e04581closed/saved=true. Baseline/server/originals
+unchanged. Normal blend enable/duration/elapsed, originalCRT/profiling stillopen.
+
+Предыдущий результат:
+
 Normal contracts036: client455_normal_contracts.cpp подключён третьим CPP
 к RFClient455Facade.lib. AnimationReset931FB0, RematchParent931A80,
 SetEyeVec931AC0, SetTexPath608140, ImportBoundBox931810→93BF90 восстановлены.

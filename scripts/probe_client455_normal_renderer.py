@@ -20,9 +20,12 @@ def main():
     for mode,name in [('math','test_client455_normal_renderer_math.cpp'),('gpu','client455_normal_renderer_probe.cpp')]:
         if options.mode not in [mode,'all']:continue
         source=WS/'scripts/native'/name;entry=root/'generated'/name;entry.write_bytes(source.read_bytes());exe=root/'build'/('normal-renderer-'+mode+'.exe');batch=root/'generated'/('build-renderer-'+mode+'.cmd');log=art/('build-'+mode+'.txt')
+        extra_sources=[]
+        if mode=='gpu':
+            extra_source=WS/'scripts/native/test_client455_normal_shadow.cpp';extra_entry=root/'generated'/extra_source.name;extra_entry.write_bytes(extra_source.read_bytes());extra_sources=[extra_source]
         inputs=objects+libraries if mode=='gpu' else [libraries[0]]
         forced='/FI"'+str(WS/'work/client455-port/port_std.hpp')+'"' if mode=='gpu' else ''
-        batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-renderer.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} {forced} "{entry}" '+' '.join('"'+str(p)+'"' for p in inputs)+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
+        batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-renderer.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} {forced} "{entry}" '+' '.join('"'+str(p)+'"' for p in ([root/'generated'/p.name for p in extra_sources]+inputs))+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
         result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=entry.parent,creationflags=subprocess.CREATE_NO_WINDOW)
         if result.returncode:raise ValueError('Normal renderer '+mode+' build:'+str(log))
         raw=exe.read_bytes();slots=imported_slots(raw);dll=Path('C:/Windows/SysWOW64/d3dx9_36.dll')
@@ -43,6 +46,13 @@ def main():
                 preview=pixels.with_suffix('.bmp');preview.write_bytes(b'BM'+struct.pack('<IHHI',54+len(data),0,0,54)+struct.pack('<IiiHHIIiiII',40,256,-256,1,32,0,len(data),2835,2835,0,0)+data);frames.append({'file':pixels.relative_to(WS).as_posix(),'sha256':sha(pixels),'preview':preview.relative_to(WS).as_posix(),'preview_sha256':sha(preview)})
         report={'scope':'Actual normal facade renderer '+mode+' scenario;not full normal WinMain/455acceptance','architecture':'x86','exe':(run/exe.name).relative_to(WS).as_posix(),'exe_sha256':sha(exe),'entry_rva':hex(pe(raw)['entry_rva']),'native':native,'frames':frames,'output':output.relative_to(WS).as_posix(),'output_sha256':sha(output),'source':source.relative_to(WS).as_posix(),'source_sha256':sha(source),'libraries':[{'file':p.relative_to(WS).as_posix(),'sha256':sha(p)} for p in inputs],'map':exe.with_suffix('.map').relative_to(WS).as_posix(),'map_sha256':sha(exe.with_suffix('.map')),'normal_build_sha256':sha(WS/'inventory/client455-normal-build.json'),'reference_sha256':sha(WS/'inventory/client455-normal-renderer-reference.json'),'legacy_character_linked':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
         report['definitions']=definitions
+        report['extra_sources']=[{'file':p.relative_to(WS).as_posix(),'sha256':sha(p)} for p in extra_sources]
+        if mode=='gpu':
+            shadow=run/'normal-shadow.bgra';data=shadow.read_bytes()
+            if len(data)!=512*512*4:raise ValueError('Short shadow frame')
+            preview=shadow.with_suffix('.bmp');preview.write_bytes(b'BM'+struct.pack('<IHHI',54+len(data),0,0,54)+struct.pack('<IiiHHIIiiII',40,512,-512,1,32,0,len(data),2835,2835,0,0)+data)
+            report['shadow_frame']={'file':shadow.relative_to(WS).as_posix(),'sha256':sha(shadow),'preview':preview.relative_to(WS).as_posix(),'preview_sha256':sha(preview)}
+            report['shadow_reference_sha256']=sha(WS/'inventory/client455-normal-shadow-reference.json')
         if mode=='gpu':
             previous=WS/'inventory/client455-normal-renderer-precanonical.json';before=json.loads(previous.read_text())
             if any(native.get(k)!=v for k,v in before['native'].items()) or [r['sha256'] for r in frames]!=[r['sha256'] for r in before['frames']]:raise ValueError('Normal renderer changed previous behavior/frames')

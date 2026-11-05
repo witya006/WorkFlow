@@ -1554,6 +1554,16 @@
       "evidence":["inventory/client455-normal-contracts-reference.json","inventory/client455-normal-consumers.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","inventory/client455-normal-contracts-checkpoint.json","research/client455-normal-contracts.md"],
       "gaps":["Remaining effects/tables/particle slots/shadow targets/Character clock/accounting","Normal blend enable/duration/elapsed producers and complete actor lifecycle","Original failure/CRT policies, normal WinMain and gameplay/UI/network acceptance; M6/M6F/M7/M9 OPEN"]
     }
+    ,{
+      "id":"CLIENT455-NORMAL-SHADOW-037",
+      "status":"partial",
+      "description":"Normal BeginShadow/EndShadow, lazy shadow textures, shared quad and saved render-target/depth transitions",
+      "implementation":["scripts/native/client455_normal_shadow.cpp","scripts/native/client455_normal_shadow.h","scripts/native/client455_normal_shadow_constants.h"],
+      "reference":[{"rva":"0x51d330","role":"BeginShadow"},{"rva":"0x51d5c0","role":"EndShadow"},{"rva":"0x5335f0","role":"Texture helper"}],
+      "verification":"Five body/caller ranges and four literals equal both455pins. Protocol capture includes selected HRESULT failures and cached failed-lock behavior. HAL slot0/19/reuse0, exact descriptors/depth/Z/target restore, real model silhouette23218pixels. Previous two color frames unchanged, COM/Dmalloc0. All182client/4facade/20kernelCPP compile, full link20unresolved.",
+      "evidence":["inventory/client455-normal-shadow-reference.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-shadow-checkpoint.json","inventory/client455-normal-link.json","research/client455-normal-shadow.md"],
+      "gaps":["Original Begin returns HRESULT0 on success, both actual callers use BOOL and skip End; test explicitly completes its own pass","Ground projection91D630/GetShadow/reset/full failure and normal actor lifecycle open","Effects/particle slots/Character clock/accounting and full455gameplay/UI/network acceptance remain open"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

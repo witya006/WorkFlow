@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — normalcontracts036: восстановлены пять методов
+Последний участок M6 — normalshadow037: восстановлены BeginShadow/EndShadow
+и теневые render targets. Реальная модель дала силуэт, прежние цветные кадры
+совпали. Полный линк ещё20символов; обычный игровой shadow lifecycle открыт.
+research/client455-normal-shadow.md; checkpoint PARTIAL; M6/M9OPEN.
+
+Предыдущий участок M6 — normalcontracts036: восстановлены пять методов
 reset/parent/eye/texturepath/bounds. Реальная модель после сброса и повторного
 назначения анимации/перепривязки рисует прежние два кадра. Полный линк ещё22символа.
 research/client455-normal-contracts.md; checkpoint PARTIAL; M6/M9OPEN.

@@ -33,12 +33,12 @@ def main():
         if any(method in row['symbol'] for row in link['unresolved']):raise ValueError('Still unresolved:'+method)
     g=gpu['native']
     if not all(g.get(k) for k in ['real_animation_reset_reattach','real_mesh_rematch','texture_path_method']) or not gpu['precanonical_frames_equal'] or g['device_refs'] or g['dmalloc_balance']:raise ValueError('Actual model path/cleanup not verified')
-    if not link['link_exit'] or link['other_errors'] or link['unique_unresolved']!=22 or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Unexpected full link state:inspect before acceptance')
+    if not link['link_exit'] or link['other_errors'] or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Unexpected full link state:inspect before acceptance')
     names=['client455-normal-preparation','client455-normal-build','client455-normal-consumers','client455-normal-renderer-gpu','client455-normal-link','client455-normal-contracts-reference']
     report={'status':'PARTIAL','restored_methods':methods,'contract_scenarios':'PASS','real_model_reset_reattach_rematch':'PASS','previous_two_frames_equal':True,
-        'normal_client_objects':182,'canonical_kernel_objects':20,'full_normal_link':'OPEN','remaining_unresolved':22,
-        'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in names},'gaps':ref['bounds']+['Effects/particle slots/shadow targets/accounting/Character clock still unresolved','Full normal WinMain,gameplay,UI,network and455behavioral acceptance remain open'],
+        'normal_client_objects':182,'canonical_kernel_objects':20,'full_normal_link':'OPEN','remaining_unresolved':link['unique_unresolved'],
+        'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in names},'gaps':ref['bounds']+['Effects/particle slots/accounting/Character clock still unresolved;see current normal-link.json','Full normal WinMain,gameplay,UI,network and455behavioral acceptance remain open'],
         'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     (WS/'inventory/client455-normal-contracts-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n')
-    print('PARTIAL:five normal model contracts/real reset+rematch PASS;full link22unresolved;M6/M9OPEN')
+    print('PARTIAL:five normal model contracts/real reset+rematch PASS;full link'+str(link['unique_unresolved'])+'unresolved;M6/M9OPEN')
 if __name__=='__main__':main()

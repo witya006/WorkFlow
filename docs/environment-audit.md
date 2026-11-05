@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, normalshadow037: новых установок нет. BeginShadow/EndShadow
+и512x512targets на прежнем D3D9HAL/pinnedD3DX9_36 работают в собственном проходе.
+Реальная модель дала силуэт;3прохода/reuse/COM0/прежние цветные кадры проверены.
+Begin возвращает0 на успехе, а настоящие455callers используют BOOLпроверку;
+normal shadow lifecycle ещё не принят. Полный линк20символов. IDA63e04581
+closed/saved=true. research/client455-normal-shadow.md; checkpoint PARTIAL/M9OPEN.
+
 Дополнение06.11, normalcontracts036: новых установок нет. Пять методов модели
 и сброса анимации455 подключены к обычному x86/MT facade. Реальные BBX и модель
 после reset/reattach/rematch прошли, прежние два GPUкадра совпали. Сборка182client/

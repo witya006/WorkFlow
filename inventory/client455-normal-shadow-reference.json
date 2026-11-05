@@ -1,0 +1,141 @@
+{
+  "scope": "455shadow target begin/end,texture helper and two actual callers;not ground projection or full client acceptance",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "begin_shadow",
+          "rva": "0x51d330",
+          "bytes": 646,
+          "sha256": "6dd9d9d626f87f6f21782876f05de6d00b0f30f838f823c1b3af7b9589a6026c"
+        },
+        {
+          "name": "end_shadow",
+          "rva": "0x51d5c0",
+          "bytes": 105,
+          "sha256": "68ef76c93138b8181dca1d758bf896dab6668e628bb5af33dd2b50643ea9f9be"
+        },
+        {
+          "name": "create_texture",
+          "rva": "0x5335f0",
+          "bytes": 116,
+          "sha256": "f10661414d520de6652f6c3ae9033c06d066456ef9824759bd2f887948580702"
+        },
+        {
+          "name": "avatar_caller",
+          "rva": "0x11dbe0",
+          "bytes": 105,
+          "sha256": "d61beaee239a1680471b8c8db9ef67a9b7887f997f9c2865fd2369ff8469bdf5"
+        },
+        {
+          "name": "character_caller",
+          "rva": "0x11de60",
+          "bytes": 209,
+          "sha256": "fe1ab3525cd0e3f77498d2a1e137b3e1908f6cd7c5e2ab511ce3ecd0238f73e7"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "begin_shadow",
+          "rva": "0x51d330",
+          "bytes": 646,
+          "sha256": "6dd9d9d626f87f6f21782876f05de6d00b0f30f838f823c1b3af7b9589a6026c"
+        },
+        {
+          "name": "end_shadow",
+          "rva": "0x51d5c0",
+          "bytes": 105,
+          "sha256": "68ef76c93138b8181dca1d758bf896dab6668e628bb5af33dd2b50643ea9f9be"
+        },
+        {
+          "name": "create_texture",
+          "rva": "0x5335f0",
+          "bytes": 116,
+          "sha256": "f10661414d520de6652f6c3ae9033c06d066456ef9824759bd2f887948580702"
+        },
+        {
+          "name": "avatar_caller",
+          "rva": "0x11dbe0",
+          "bytes": 105,
+          "sha256": "d61beaee239a1680471b8c8db9ef67a9b7887f997f9c2865fd2369ff8469bdf5"
+        },
+        {
+          "name": "character_caller",
+          "rva": "0x11de60",
+          "bytes": 209,
+          "sha256": "fe1ab3525cd0e3f77498d2a1e137b3e1908f6cd7c5e2ab511ce3ecd0238f73e7"
+        }
+      ]
+    }
+  ],
+  "constants": [
+    {
+      "rva": "0x7397c4",
+      "bytes": 4,
+      "sha256": "b400850123d30d48298f31a72d5425dd2866ec0167ed31b1d082160e4c3cf3ce"
+    },
+    {
+      "rva": "0x6a9720",
+      "bytes": 4,
+      "sha256": "409303c5035263c102682239f8d654e7e194daae6235aff347c036576a261d96"
+    },
+    {
+      "rva": "0x736b60",
+      "bytes": 4,
+      "sha256": "0f2f3591427956b004ca17393783192e0f81858c06bb5496aa2cea004f1ee863"
+    },
+    {
+      "rva": "0x7373f4",
+      "bytes": 4,
+      "sha256": "f327d6c4ad57b5fff97d62b13893c13cee24e133e99afda07ed99f16dc5fb768"
+    }
+  ],
+  "quad_bits": [
+    3253731328,
+    0,
+    1106247680,
+    4294967295,
+    953267991,
+    953267991,
+    3253731328,
+    0,
+    3253731328,
+    4294967295,
+    953267991,
+    1065351538,
+    1106247680,
+    0,
+    1106247680,
+    4294967295,
+    1065351538,
+    953267991,
+    1106247680,
+    0,
+    3253731328,
+    4294967295,
+    1065351538,
+    1065351538
+  ],
+  "constants_header_sha256": "181d81215ce4cddb7f1e0b4d604e5402c77fe8ee8a7fba898046e5689a058b54",
+  "facts": [
+    "Limit20 lazy512x512singlelevel textures,format/usage/pool copied from currentRT;helper accepts HRESULT==0 only",
+    "Shared96byte managedVB,usage8/FVF322;lock0/96/0,quad copy then ignoredUnlockHRESULT",
+    "GetDepth->GetSurfaceLevel->GetRenderTarget->SetRenderTarget->SetDepthNULL->ReleaseLevel->ClearTarget0->BeginScene->ZFALSE",
+    "Begin returns SetDepthStencilSurfaceNULL HRESULT,even though later calls mayfail;S_OK0 isfalse in both455callers",
+    "End ZTRUE->EndScene->restoreRT->restoreDS->releaseRT->releaseDS;releasedsavedslots retained at8920/8924"
+  ],
+  "gaps": [
+    "Full failure/uncheckedinvalid-state/unwind/reset behavior not accepted",
+    "Original callers skip End when successful begin returns0;retain observed behavior,do not silently change return to1",
+    "Ground shadow projection91D630 and full normal actor lifecycle remain open"
+  ],
+  "script_sha256": "756f3306ce1ab111c82398b53a001e1a27a3756465e98eb659e19660719338b4"
+}

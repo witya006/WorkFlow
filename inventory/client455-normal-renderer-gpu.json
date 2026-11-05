@@ -1,9 +1,9 @@
 {
   "scope": "Actual normal facade renderer gpu scenario;not full normal WinMain/455acceptance",
   "architecture": "x86",
-  "exe": "work/m9/32f46a5e/normal-gpu001/normal-renderer-gpu.exe",
-  "exe_sha256": "32f46a5e197eb4e10828cda2bf54d5db6469fbc2ad9961af3fae93d04e9c1b46",
-  "entry_rva": "0x881e0",
+  "exe": "work/m9/3cbc26d6/normal-gpu001/normal-renderer-gpu.exe",
+  "exe_sha256": "3cbc26d6f9eea3aa276f35ccd6d9a57ad3f10c764598e036824ba8ec00f3bf69",
+  "entry_rva": "0x8ace0",
   "native": {
     "status": "PASS",
     "normal_unity_model_pipeline": true,
@@ -15,28 +15,32 @@
     "real_animation_reset_reattach": true,
     "real_mesh_rematch": true,
     "texture_path_method": true,
+    "shadow_capture": true,
+    "shadow_target_passes": 3,
+    "real_model_shadow": true,
+    "shadow_begin_success_return": 0,
     "device_refs": 0,
     "dmalloc_balance": 0,
     "game_dlls_loaded": false
   },
   "frames": [
     {
-      "file": "work/m9/32f46a5e/normal-gpu001/normal-frame-0.bgra",
+      "file": "work/m9/3cbc26d6/normal-gpu001/normal-frame-0.bgra",
       "sha256": "6017d4fa3cd3a0f1ea1a443f68076cb0cb8d24cc48ac97e1957f7303878158c3",
-      "preview": "work/m9/32f46a5e/normal-gpu001/normal-frame-0.bmp",
+      "preview": "work/m9/3cbc26d6/normal-gpu001/normal-frame-0.bmp",
       "preview_sha256": "5f76c889168eaf38a1820ce16c23d35df9a3359b3a02d90f2e67b7c7269713c3"
     },
     {
-      "file": "work/m9/32f46a5e/normal-gpu001/normal-frame-1.bgra",
+      "file": "work/m9/3cbc26d6/normal-gpu001/normal-frame-1.bgra",
       "sha256": "cbcd161f293811704d9e0a612cb3a01fb305dbdbb3aad86f96825fde26146675",
-      "preview": "work/m9/32f46a5e/normal-gpu001/normal-frame-1.bmp",
+      "preview": "work/m9/3cbc26d6/normal-gpu001/normal-frame-1.bmp",
       "preview_sha256": "4f91f8f8d6d72fb8353c02f6d98264ec1a1adb7a56546e46adb232b45619ced1"
     }
   ],
-  "output": "work/m9/32f46a5e/normal-gpu001/result.json",
-  "output_sha256": "3f16b4fc8bda1e0fd9519a81d4adc4d68d69d5d7f1c8041f71b469fa8be5581c",
+  "output": "work/m9/3cbc26d6/normal-gpu001/result.json",
+  "output_sha256": "91db231ecc3e099e38aec614ebf7ec555ae7e5f719530b6584a28309c564d8f8",
   "source": "scripts/native/client455_normal_renderer_probe.cpp",
-  "source_sha256": "f4dea6a30793ba33752b549f6183c03e8d595cfe086b01cd900169072dfab31a",
+  "source_sha256": "6298aaef53e4b972c358903bd0da21c014883ab642eb42ea81f16f297684c228",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/unity_managers.obj",
@@ -48,7 +52,7 @@
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "c7a8ca51e920a208179514d8ed77ea70d998a6d9cedd753de2e87b6bcc16c704"
+      "sha256": "503fe95968b46ec4b8faaa00ab0bab42a66be4cdc81bdffef2af2665b2f47f29"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
@@ -76,8 +80,8 @@
     }
   ],
   "map": "work/client455-port/normal/build/normal-renderer-gpu.map",
-  "map_sha256": "89b24a3a6fc231ffd44add8f9b137d0dbbdbe9f5736bb0f9adbaf2029db07d49",
-  "normal_build_sha256": "0a8aa183c74f749298580791b488a367b50afb49a13cdeba5e3b158a894c4a17",
+  "map_sha256": "593175d055d900d2f71fa2c81203b873907abdcb93217f2185d71de79eb7e17b",
+  "normal_build_sha256": "412732b4bf8b33e54e507e68aa4a6c367001bbfb8b2b4bc7d204d5a9ef0122da",
   "reference_sha256": "1a13fd33929e59db76fbe46a5defc19e22e458ca7a3cbd09af9bf10082922d9a",
   "legacy_character_linked": false,
   "input_exe_executed": false,
@@ -105,6 +109,19 @@
     "_NEW_UI_",
     "_WINDOWS"
   ],
+  "extra_sources": [
+    {
+      "file": "scripts/native/test_client455_normal_shadow.cpp",
+      "sha256": "7ba722cad0fdf19d9e9cbf1d9cc663fd563566426b5a59c2932459b70bdf7361"
+    }
+  ],
+  "shadow_frame": {
+    "file": "work/m9/3cbc26d6/normal-gpu001/normal-shadow.bgra",
+    "sha256": "4eca3b75b87f3c969b8ee2d09d3f7e7347d69bf99d7e072e4157ae48d56d7890",
+    "preview": "work/m9/3cbc26d6/normal-gpu001/normal-shadow.bmp",
+    "preview_sha256": "77b18c678338a992798080f2d5dab899614fa1fa4dcbfed1e7f0b76632f61591"
+  },
+  "shadow_reference_sha256": "3e71a3c96f783756e86a2e4590fe5312094da247d0c6a3d8dc19851521efd753",
   "precanonical_frames_equal": true,
   "precanonical_report_sha256": "b8e0b76a8a7c0869943a316a3f152d54da1f832a9f127665465b9a44ef68df34"
 }

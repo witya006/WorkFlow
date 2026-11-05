@@ -2,7 +2,7 @@
   "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
   "link_exit": 1120,
   "client_objects": 182,
-  "unique_unresolved": 22,
+  "unique_unresolved": 20,
   "unresolved": [
     {
       "symbol": "?InitEffect@CRender@@QAEXPAURF455CharacterStorage@@@Z",
@@ -33,20 +33,6 @@
       "objects": [
         "cbasenpc.obj",
         "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?BeginShadow@CRender@@QAEHK@Z",
-      "declaration": "public: int __thiscall CRender::BeginShadow(unsigned long)",
-      "objects": [
-        "ccharactermgr.obj"
-      ]
-    },
-    {
-      "symbol": "?EndShadow@CRender@@QAEXXZ",
-      "declaration": "public: void __thiscall CRender::EndShadow(void)",
-      "objects": [
-        "ccharactermgr.obj"
       ]
     },
     {
@@ -165,12 +151,12 @@
   ],
   "other_errors": [],
   "log": "artifacts/client455-normal/normal-link.txt",
-  "log_sha256": "c46f2ab8b6fe6394102560b3d21592cbda7b0caac9499782f466c357aacc48ec",
-  "normal_build_sha256": "0a8aa183c74f749298580791b488a367b50afb49a13cdeba5e3b158a894c4a17",
+  "log_sha256": "4687c7292db752109e1e2f752244a17d626d96a64f0927be787040f77c2b2897",
+  "normal_build_sha256": "412732b4bf8b33e54e507e68aa4a6c367001bbfb8b2b4bc7d204d5a9ef0122da",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "c7a8ca51e920a208179514d8ed77ea70d998a6d9cedd753de2e87b6bcc16c704"
+      "sha256": "503fe95968b46ec4b8faaa00ab0bab42a66be4cdc81bdffef2af2665b2f47f29"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",

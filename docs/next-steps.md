@@ -11,13 +11,23 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — normal contracts036. AnimationReset/RematchParent/SetEyeVec,
+Последний участок — normal shadow037. BeginShadow/EndShadow подключены;
+реальная модель дала силуэт в512x512 текстуре, прежние два цветных кадра совпали.
+182client/4facade/20kernelCPP собираются; полный линк20символов без других ошибок.
+research/client455-normal-shadow.md; checkpoint PARTIAL. M9 открыт.
+
+Следом — эффекты/таблицы/particleSlots/entitySlot, _R3CalculateTime и accounting.
+Сохранить обнаруженный контракт: Begin возвращает HRESULT, успех0, при этом
+оба callers455 используют if(result) и пропускают End. Тест явно завершает
+собственный проход. Ground projection/GetShadow/normal actor lifecycle ещё открыты.
+
+Предыдущий участок — normal contracts036. AnimationReset/RematchParent/SetEyeVec,
 SetTexPath/ImportBoundBox подключены и проверены. Реальная модель прошла сброс,
 повторное назначение ANI и перепривязку родителей; два кадра совпали с035.
 Все182client+3facade+20kernelCPP собираются; полный линк22символа без других
 ошибок. research/client455-normal-contracts.md; checkpoint PARTIAL. M9 открыт.
 
-Следом — оставшиеся22: эффекты/таблицы/particleSlots/entitySlot, shadow targets,
+Историческая очередь036: оставшиеся22 включали эффекты/таблицы/слоты/shadowtargets,
 _R3CalculateTime и accounting. Готовые методы не восстанавливать повторно.
 Отдельно найти normal включение renderer33840/инициализацию33844/продвижение
 blendelapsed692 и полный actor lifecycle; включённый reset проверен искусственно,

@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+int RF455_CheckNormalShadowCapture();
+int RF455_CheckNormalShadowHal(CRender*,CHARACTEROBJECT*,IDirect3DDevice9*);
 
 #define R_REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Normal renderer failure line%d\n",__LINE__);return 1;}}while(0)
 template<class T>T read(const void* p,unsigned at){T out;std::memcpy(&out,static_cast<const unsigned char*>(p)+at,sizeof(out));return out;}
@@ -63,12 +65,13 @@ static int scene(IDirect3DDevice9* d,const char* fixture){
         R_REQUIRE(SUCCEEDED(d->Clear(0,nullptr,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,0xff101020,1,0)) && SUCCEEDED(d->BeginScene()));renderer.DrawCharacter(model,const_cast<float*>(position),0,.5f,0);g_AMeshManager.DrawAlpahMesh();R_REQUIRE(SUCCEEDED(d->EndScene()));const auto pixels=capture(d);R_REQUIRE(pixels.size()==256*256*4);unsigned colored=0;for(unsigned i=0;i<256*256;++i)if((read<DWORD>(pixels.data(),4*i)&0xffffff)!=0x101020)++colored;R_REQUIRE(filter==2?colored>100:colored==0);
     }
     model->opaque268=0;renderer.native.effects.active=0;
+    R_REQUIRE(RF455_CheckNormalShadowHal(&renderer,model,d)==0);
     renderer.UnSetState();DWORD state;R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_VERTEXBLEND,&state)) && state==D3DVBF_DISABLE);R_REQUIRE(SUCCEEDED(d->GetRenderState(D3DRS_CULLMODE,&state)) && state==D3DCULL_CCW);R_REQUIRE(SUCCEEDED(d->GetSamplerState(4,D3DSAMP_MIPFILTER,&state)) && state==D3DTEXF_POINT);
     g_ifCharIF=nullptr;R_REQUIRE(animations.Destroy() && meshes.Destroy() && bones.Destroy());return 0;
 }
 int main(int argc,char** argv){
-    if(argc!=3)return 2;const unsigned before=GetDmallocSize();InitR3Engine();IDirect3D9* api=Direct3DCreate9(D3D_SDK_VERSION);R_REQUIRE(api);HWND window=CreateWindowExA(0,"STATIC","Owned normal455renderer test",WS_OVERLAPPEDWINDOW,0,0,256,256,nullptr,nullptr,GetModuleHandleA(nullptr),nullptr);R_REQUIRE(window);
+    if(argc!=3)return 2;R_REQUIRE(RF455_CheckNormalShadowCapture()==0);const unsigned before=GetDmallocSize();InitR3Engine();IDirect3D9* api=Direct3DCreate9(D3D_SDK_VERSION);R_REQUIRE(api);HWND window=CreateWindowExA(0,"STATIC","Owned normal455renderer test",WS_OVERLAPPEDWINDOW,0,0,256,256,nullptr,nullptr,GetModuleHandleA(nullptr),nullptr);R_REQUIRE(window);
     D3DPRESENT_PARAMETERS pp={};pp.Windowed=TRUE;pp.hDeviceWindow=window;pp.BackBufferWidth=pp.BackBufferHeight=256;pp.BackBufferFormat=D3DFMT_X8R8G8B8;pp.SwapEffect=D3DSWAPEFFECT_DISCARD;pp.EnableAutoDepthStencil=TRUE;pp.AutoDepthStencilFormat=D3DFMT_D16;IDirect3DDevice9* d=nullptr;R_REQUIRE(SUCCEEDED(api->CreateDevice(0,D3DDEVTYPE_HAL,window,D3DCREATE_SOFTWARE_VERTEXPROCESSING|D3DCREATE_FPU_PRESERVE,&pp,&d)));
     R_REQUIRE(scene(d,argv[1])==0);for(unsigned i=0;i<8;++i)d->SetTexture(i,nullptr);d->SetStreamSource(0,nullptr,0,0);d->SetIndices(nullptr);d->SetVertexShader(nullptr);d->SetPixelShader(nullptr);d->SetVertexDeclaration(nullptr);RF455_ReleaseNormalCharacterSharedResources();ReleaseR3Engine();const auto refs=d->Release(),apiRefs=api->Release();DestroyWindow(window);R_REQUIRE(!refs && !apiRefs && GetDmallocSize()==before);
-    R_REQUIRE(!GetModuleHandleA("mss32.dll") && !GetModuleHandleA("ABuse.dll") && !GetModuleHandleA("Adv.dll") && !GetModuleHandleA("PDLL.dll"));FILE* f=std::fopen(argv[2],"wb");R_REQUIRE(f);std::fputs("{\"status\":\"PASS\",\"normal_unity_model_pipeline\":true,\"animated_frames\":2,\"matrix_wrapper_equal_frames\":2,\"geometry_parts\":46,\"filter_cases\":3,\"alpha_material_checked\":true,\"real_animation_reset_reattach\":true,\"real_mesh_rematch\":true,\"texture_path_method\":true,\"device_refs\":0,\"dmalloc_balance\":0,\"game_dlls_loaded\":false}\n",f);std::fclose(f);return 0;
+    R_REQUIRE(!GetModuleHandleA("mss32.dll") && !GetModuleHandleA("ABuse.dll") && !GetModuleHandleA("Adv.dll") && !GetModuleHandleA("PDLL.dll"));FILE* f=std::fopen(argv[2],"wb");R_REQUIRE(f);std::fputs("{\"status\":\"PASS\",\"normal_unity_model_pipeline\":true,\"animated_frames\":2,\"matrix_wrapper_equal_frames\":2,\"geometry_parts\":46,\"filter_cases\":3,\"alpha_material_checked\":true,\"real_animation_reset_reattach\":true,\"real_mesh_rematch\":true,\"texture_path_method\":true,\"shadow_capture\":true,\"shadow_target_passes\":3,\"real_model_shadow\":true,\"shadow_begin_success_return\":0,\"device_refs\":0,\"dmalloc_balance\":0,\"game_dlls_loaded\":false}\n",f);std::fclose(f);return 0;
 }

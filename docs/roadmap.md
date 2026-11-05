@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Новейший участок M6 — normalshadow037: два метода переключения теневых буферов
+восстановлены; реальная модель дала силуэт, цветные кадры прежние. Полный линк
+20символов. Неоднозначный BOOLcaller/HRESULTконтракт455 сохранён; обычный игровой
+теневой цикл и groundprojection открыты. research/client455-normal-shadow.md.
+Далее эффекты/слоты/Characterclock/accounting. M6/M6F/M7/M9OPEN.
+
 Новейший участок M6 — normalcontracts036: пять методов reset/parent/eye/path/bounds
 восстановлены и подключены. Реальная модель после reset/reattach/rematch даёт
 прежние два кадра;182client+3facade+20kernelCPP собираются. Полный линк22символа.
