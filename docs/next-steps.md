@@ -11,7 +11,17 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний unit — source коллекция AnimationManager4028:11APIs регистрации,
+Последний unit — Character shader bootstrap028:12SHO/12VS+3PS/2declarations на
+pinnedD3DX9_36 и realD3D9HAL.119checks standalone/fullclient,7APIs и matching
+harness frame;COM/Dmalloc0. Это shader resources,не fullCharacter draw.
+Gate inventory/client455-shaders-checkpoint.json;research/client455-shaders.md.
+Normal unused APIs stripped/runtime прежний;lab193TUs. Большие наборы не повторялись.
+Уточнение очереди: old ChAnimation280/name4/ID260 против455284/name5/ID264;
+model776/mesh1072 против1188/5803. Переключать один CUnity manager нельзя.
+Сначала fullCharacter draw/constants/palette/material и typedmodel/renderer путь,
+затем normal integration вместе с animation consumers; без rawcasts/shadow records.
+
+Предыдущий unit — source коллекция AnimationManager4028:11APIs регистрации,
 поиска/кэша/удаления/владения.87targeted checks/один real ANI прошли component
 и полный client lab; heap/Dmalloc0. Normal runtime равен loop-clock-final после
 исключения timestamps, normal CUnity/ChAnimation ещё legacy; lab192clientTUs.
@@ -84,7 +94,10 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
+1. Восстановить full Character455 draw/mesh submit/state/constants/palette/material
+   и shader selection, затем связанный normal typedmodel/animation/renderer путь.
+   Bootstrap028 готов на HAL; не подменять только CUnity manager из-за разных ABI.
+   Для этого же пути завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
    полный actor lifecycle/secondary binding, transition consumers и
    normal CUnity/CAniData calls. Коллекция AnimationManager и record ownership
    готовы в027; async worker уточнять по реальным callers, не по наличию тела.

@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Последнее дополнение: source Character shader bootstrap работает на настоящем
+D3D9 HAL и pinnedD3DX9_36:12SHO/12VS+3PS/2declarations,119checks standalone и в
+полном client lab. COM counts0, gameDLLs не загружены; normal renderer ещё D3D8.
+Новых SDK/установок нет. Lab193clientTUs,normal291MTobjects/runtime прежний.
+inventory/client455-shaders-checkpoint.json;research/client455-shaders.md.
+
 Последнее дополнение: source AnimationManager4554028/11APIs проверен standalone
 и full-client lab на коллекции/кэше/владении/одном real ANI. Новых установок нет.
 Normal291MTobjects/прежний engine archive, lab192clientTUs. Normal runtime равен

@@ -1384,6 +1384,49 @@
         "Long-percent-null names/missingbackslash/OOM guards differfromundefined unchecked reference domains;locale/nonASCII/allocator-privateC++STL/exceptionunwind notcertified",
         "Full normalCharacter455/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
       ]
+    },
+    {
+      "id":"CHARACTER455-SHADERS-028",
+      "description":"Source Character shader bootstrap/SHO-HLSL loading/compiler/COM resource owners/declarations onrealHAL;full draw andnormal integration incomplete",
+      "status":"partial",
+      "verification":"9ranges equalbothpins;12real SHO/12VS+3PS,15actual compiler inputSHAs verified,2declarations/GetFunction/binding/teardown,119native checks standalone andfullclient withsame harnessframe.4parser tests passed.7sourceAPIs actualE8REL32/archiveprovider;COM/Dmalloc0. Normalruntime unchanged excepttimestamps,unusedAPIs stripped;unrelatedbulk suites notrepeated.",
+      "reference":[
+        {"rva":"0x51fd40","bytes":722,"role":"Character shader bootstrap/declarations/12programs"},
+        {"rva":"0x539bb0","bytes":109,"role":"Append16byte program/8capacity/doubling"},
+        {"rva":"0x539d00","bytes":220,"role":"Release program/declaration arrays"},
+        {"rva":"0x53a160","bytes":30,"role":"Known managerprefix28 constructor"},
+        {"rva":"0x53a1f0","bytes":165,"role":"Manager/globaldeclaration teardown"},
+        {"rva":"0x53a350","bytes":842,"role":"Compile main/VS2.0-PS3.0/flags8008/createCOM"},
+        {"rva":"0x53a6a0","bytes":590,"role":"SHO priority/mod137XOR/literal sections"},
+        {"rva":"0x53a8f0","bytes":22,"role":"Load wrapper"},
+        {"rva":"0x53a9d0","bytes":51,"role":"Remove last extension"}
+      ],
+      "implementation":["scripts/native/client455_shaders.h","scripts/native/client455_shaders.cpp","scripts/native/client455_shader_key.h"],
+      "option":"RF_CLIENT_455_SHADERS",
+      "evidence":[
+        "inventory/client455-shaders-reference.json",
+        "inventory/client455-shaders-build.json",
+        "inventory/client455-shaders-gpu.json",
+        "inventory/client455-shaders-client.json",
+        "inventory/client455-shaders-link.json",
+        "inventory/client455-shaders-checkpoint.json",
+        "research/client455-shaders.md",
+        "scripts/test_shader455_sources.py"
+      ],
+      "scenarios":[
+        "SHO beforeSHR/cache-no-fallback,134keybytes+3zero/mod137,case-sensitive markers/reverseorder/CRLF/empty-truncated-embeddedNUL",
+        "15real HLSLstage source hashes before actualpinnedD3DXcompile/profile/flags,COMGetFunction matchescompilerbytecode,12VS+3PS acceptedandbound",
+        "2actual D3D9 declarations match96recovered bytes;SHORT4indices@24/stride64",
+        "Original sh_basic onsyntheticweightedtriangle/identitypalette,HALreadback center-white/corner-black;standalone-fullclient frameequal",
+        "Plaintext fallbackcompile/programcapacity16,orderedCOMrelease;PScompilefailure strands2resources observedthenexplicitlyharnessfreed"
+      ],
+      "gaps":[
+        "Harness triangle notfull DrawCharacter orrealanimatedmodel;fullstate/constants/palette/material/effects/selection/D3D9renderer notrestored",
+        "Normal oldChAnimation name4-ID260 versus4555-264 andmodel776-mesh1072 versus1188-5803 requirecoupledtypedmigration;no manager-only swap/rawcast/shadow records",
+        "Known managerprefix28 notcomplete privateclass/globalABI;originalscheduler/CPU-FPU/compilerconditions notdynamicallycompared",
+        "ModalshadererrorUI/engine logs/vertexcreatefailure-device-reset-OOM/uncheckedexception equivalence open;partialCOMleaks preservedwithtestcleanup only",
+        "NormalWinMain/referenceEXE notexecuted;M6F/M7/M9 remainopen"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

@@ -11,13 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6: восстановлена коллекция AnimationManager455 — регистрация,
-поиск, кэш и освобождение записей. Она проверена отдельно и в полном client lab
-с одним настоящим ANI; normal CUnity/ChAnimation ещё используют старые типы.
-Ранее восстановленный таймер остаётся подключён к обычному клиенту.
-Большие неизменённые наборы не повторялись. Полный Character 455 и отрисовка ещё
-открыты; M6/M6F/M7/M9 не закрыты. Подробности research/client455-animation-manager.md,
-inventory/client455-animation-manager-checkpoint.json и docs/next-steps.md.
+Последний участок M6: source загрузка12штатных SHO, компиляция12VS/3PS и создание
+двух Character declarations проверены на настоящем D3D9 HAL отдельно и в полном
+client lab. Контрольный треугольник использует original shader; полный Character
+draw и normal renderer ещё открыты. Подтверждённые различия old/455 layout требуют
+совместного переноса consumers. Большие неизменённые наборы не повторялись.
+M6/M6F/M7/M9 не закрыты. Подробности research/client455-shaders.md,
+inventory/client455-shaders-checkpoint.json и docs/next-steps.md.
 
 История предшествующих этапов (актуальная очередь выше):
 

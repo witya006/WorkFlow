@@ -30,6 +30,10 @@ R3EngineMT. Actual clock→frame caller проверен в полном client 
 в полном client lab на одном real ANI. Normal CUnity/CAniData ещё legacy; библиотека
 сама по себе не закрывает область «Персонажи». inventory/client455-animation-manager-checkpoint.json.
 
+Shader bootstrap455 теперь source:12VS/3PS/2declarations проверены realHAL/fullclient.
+Контрольный draw использует synthetic triangle, не full Character draw. Normal
+model/animation/renderer migration ещё открыта. inventory/client455-shaders-checkpoint.json.
+
 ## Эталон
 
 Бинарный эталон закреплён в config/client-target.json: текущий пользовательский

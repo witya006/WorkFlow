@@ -23,27 +23,30 @@
 
 ## Последний проверенный результат
 
-Source коллекция AnimationManager4028: constructor/registration/name-ID-suffix
-lookup/3probe cache/deletion/vector+record ownership;11C APIs, отдельный /MT archive.
-scripts/native/client455_animation_manager.{h,cpp}. 25диапазонов равны обоим pin;
-87targeted assertions/4groups/one real ANI прошли component/fullclient lab.
-Heap/Dmalloc0,gameDLLs не загружены. Normal CUnity/ChAnimation ещё legacy: source
-APIs в normal unused/stripped;11APIs в lab имеют E8 REL32 caller/provider proof.
-Normal runtime равен loop-clock-final после исключения timestamps. Несвязанные
-GPU/clock/texture/массовыеANI suites не повторялись. COFF caller parser extension
-проверен на real static/external callers и malformed offset/opcode:4testsPASS.
-Gate inventory/client455-animation-manager-checkpoint.json;
-research/client455-animation-manager.md. Raw manager-*.json;ownedab74ea29/4c43ad92 closed/save.
-Normal snapshot character455-animation-manager:2451456B/entryRVA1BC450,
-SHAb597d3ef8287197f6de3da1ef4e2ab360fc87ac6b65fb809c3de2e7cf756bbe0.
-Lab5258752B/entryRVA89EF,
-SHA67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc.
-Normal291modernCOFF/MT/прежний engine archive;lab192clientTUs.
-Открыты normal typed consumers/UnityGetAni failureUI и full actor/renderer.
-Worker935450:нет IDA xrefs и immediateVA обоим pin,не доказательство unreachable;
-оба выбранных importer mode синхронные. Искать caller перед новым reverse worker.
+Source shader bootstrap028: scripts/native/client455_shaders.{h,cpp},7APIs.
+12real SHO→12VS+3PS,2declarations; pinned D3DX9_36/realD3D9HAL.119native checks
+standalone/fullclient;sameframe,COM release counts0/Dmalloc0/no gameDLLs.15actual
+compiler input SHA совпали с независимо извлечёнными stage;flags8008/main/vs_2_0/
+ps_3_0.4parser tests passed. Nativeharness рисует synthetic weighted triangle
+через originalsh_basic/declaration64, НЕ fullCharacter draw/real animatedmodel.
+Preview work/m9/4dc80db8/client001/shader-frame.bmp визуально просмотрен.
+Gate inventory/client455-shaders-checkpoint.json;research/client455-shaders.md.
+Normal unused APIs stripped/runtime равен предыдущему manager snapshot кромеtimestamps;
+normal renderer всё ещё D3D8. BigANI/texture/sharedGPU/Platform01 suites не повторялись.
+Normal snapshot character455-shaders:2451456B/entryRVA1BC450,
+SHA87db29ad1a4461bbaea2c617633b9eb8df1fb445abc394eea538dd8272cf4253.
+Lab5291520B/entryRVA8A6C,
+SHA4dc80db8f12e9346ed40beef6f12061fd1917607cebb300d72874e7e3f7e29d1.
+Normal291modernCOFF/MT/тот же engine archive;lab193clientTUs.
+Raw render-*.json/renderer-start-*.json;owned95159529 closed/save.
+Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё открыты.
 
 Предыдущие результаты (исторические checkpoints не переписывать):
+- AnimationManager027: source4028/cache/record ownership,11APIs,87checks/oneANI;
+  normal CUnity/ChAnimation ещё legacy. research/client455-animation-manager.md;
+  gate client455-animation-manager-checkpoint.json. COFFcallers4testsPASS.
+  Worker935450 noxref/immediateVA,не доказательство unreachable; оба выбранных
+  importer mode синхронные,искать caller перед новым reverse worker.
 - LoopClock026: source elapsed update/QPCinit/fallback/duration/clamp/scale/toggles
   подключён normal R3EngineMT;144state cases/3provider/1DAZFTZ прошли. Actual clock
   →CResObject frame309 и Platform01/device69passed. Source x87 compares обязательны.
@@ -59,9 +62,11 @@ Worker935450:нет IDA xrefs и immediateVA обоим pin,не доказат�
 
 ## Следующий шаг
 
-1. Согласовать normal CUnityAniMgr/CAniData/actor typed source boundary. Коллекция
-   менеджера и record ownership готовы (027), её не реверсить заново. Old manager24/
-   ChAnimation280 нельзя rawcast к new4028/record284; старые SDK consumers ещё живы.
+1. Восстановить full Character455 draw/mesh submit/state/constants/palette/material
+   и shader selection. Bootstrap028 уже готов. Затем связанный normal typedmodel/
+   animation/renderer путь, не отдельная подмена manager. Old ChAnimation name4/
+   ID260/size280 против4555/264/284; oldmodel776/mesh1072 против1188/5803. Поэтому
+   rawcast/shadow legacy records не добавлять. Коллекция027 готова,не реверсить снова.
    UnityGetAni1E12C0:IDFFFFFFFF guard, lazy load, failure handling различается при
    mode>=2/UI556 versus mode<2/UI1999+3000ms. Это reference, не implementation.
 2. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
@@ -102,6 +107,12 @@ AnimationManager: self0/preserved allocatorpadding4/vector8-12-16/counter20/next
 cache1000 at28. Constructorcounter0/ID1; reset counters не clear. Release932F30
 оставляет cache/self/counters. Не dereference freedcache в tests. Suffix включает
 backslash; IDhash sumbytes,3probes;registeredlowercase names,record284,ID264.
+Shaders: SHO preferred, key134bytes atRVA739918+3zero,mod137. Literal markers,
+externalprefix appended withoutseparator;originalfilepreamble ignored.9vertex-only
+и3dualprograms. CompileShader flags8008/main/VS2.0/PS3.0. Managerknownprefix28,
+record16/8initialcapacity/doubling,deviceborrowed. PScompilefail strandsVS+VStable;
+source preserves,only harness cleans after observing. ModalerrorUI notwired yet.
+DrawDynamic92DB60 decompiler prototype неверен; это ещё reference,неsource draw.
 
 ## Контракты, которые легко нарушить
 

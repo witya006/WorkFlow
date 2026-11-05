@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-04T23:59:29.644472+00:00",
+  "checked_at_utc": "2026-11-05T00:32:36.295301+00:00",
   "target": "RF_Online",
   "platform": "Win32",
   "configuration": "Release",
@@ -9,7 +9,7 @@
   "distinct_diagnostics_total": 0,
   "distinct_diagnostics": [],
   "details_omitted": 0,
-  "generated_objects": 192,
+  "generated_objects": 193,
   "build_dir": "work/client-build/build-helper-lab",
   "log": "artifacts/client-helper-lab/build.txt",
   "build_settings": {
@@ -60,6 +60,8 @@
     "RF_CLIENT_455_MODELS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/models/RFClient455Models.lib",
     "RF_CLIENT_455_POSE": "ON",
     "RF_CLIENT_455_POSE_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/pose/RFClient455Pose.lib",
+    "RF_CLIENT_455_SHADERS": "ON",
+    "RF_CLIENT_455_SHADERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/shaders/RFClient455Shaders.lib",
     "RF_CLIENT_455_SHARED_BUFFERS": "ON",
     "RF_CLIENT_455_SHARED_BUFFERS_LIBRARY": "E:/RFOnlineTrash/Source/WorkFlow/work/recovered/client455/shared-buffers/RFClient455SharedBuffers.lib",
     "RF_CLIENT_455_TEXTURE": "ON",
@@ -71,10 +73,17 @@
     "CMAKE_CXX_FLAGS_RELEASE": "/O2 /Ob2 /DNDEBUG"
   },
   "lab_input_sha256": {
-    "scripts/native/client_helper_lab.cpp": "d53ea9fcd0df6e770b1a53429c3d012cfda6a4bf14eaf9ee2506d3631e556828",
+    "scripts/native/client_helper_lab.cpp": "be0f6e97ad0c982ae0a82194c4157700a8c1c5d5bdf01f65cbe82bbf69688590",
     "work/client-build/source/R3Engine/2ndclass/extdummy.cpp": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653",
     "work/client-build/source/R3Engine/2ndclass/extdummy.h": "8c7848a4f98ea17b7b6526f1c8dc2e91ba288432859ca8a3f850ecfed4cd692a",
-    "work/client-build/build-helper-lab/Release/RF_Online.bin": "67d3766c98d5bab983baa7003cc0267b42ca909d1b0898a865b37e809157b6cc"
+    "work/client-build/build-helper-lab/Release/RF_Online.bin": "4dc80db8f12e9346ed40beef6f12061fd1917607cebb300d72874e7e3f7e29d1"
+  },
+  "shader_input_sha256": {
+    "scripts/native/client455_shaders.cpp": "98fd4c6311a95f1b49e3c043ef37d30b6316ffa566977e1a4843901532d4d044",
+    "scripts/native/client455_shaders.h": "77afe106add5cdf2011cc9a553769a719e5bed5bec593edf2d4548d1ba7eca74",
+    "scripts/native/client455_shader_key.h": "09d4e6ddca6bee868aae3e0857899fe64bf6b94024a590de3271e824dfe26866",
+    "scripts/native/test_client455_shaders.cpp": "bbee59581dab3d0f19ddf4fd0e9a0740bca33efec55c810542aa0d0f8f5b4d4b",
+    "scripts/native/client_shaders_lab.inc": "450642952e6e434518a68206248c8a9e4d3131f636c984c9a91a3fecfca2d0b9"
   },
   "animation_manager_input_sha256": {
     "scripts/native/client455_animation_manager.cpp": "a7f32e533624f17813190f2d034751fc7a80361694f6885a0944176b3a6a8649",

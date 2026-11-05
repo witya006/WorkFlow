@@ -1,0 +1,106 @@
+{
+  "scope": "Source Character shader bootstrap/HAL resources in fullclient ownentry;triangle is harness,not fullCharacter draw",
+  "architecture": "x86",
+  "exe": "work/m9/4dc80db8/client001/RF_Online.bin",
+  "exe_sha256": "4dc80db8f12e9346ed40beef6f12061fd1917607cebb300d72874e7e3f7e29d1",
+  "entry_rva": "0x8a6c",
+  "native": {
+    "status": "PASS",
+    "checks": 119,
+    "programs": 12,
+    "vertex_shaders": 12,
+    "pixel_shaders": 3,
+    "declarations": 2,
+    "harness_draws": 1,
+    "center_rgb": 16777215,
+    "orphan_resources_observed_and_harness_freed": 2,
+    "device_refs_after_release": 0,
+    "api_refs_after_release": 0
+  },
+  "output": "work/m9/4dc80db8/client001/result.json",
+  "output_sha256": "02bfe91b4c52e6524c172ba760e31c47676a2f8b2a017e6ee896708549adb9e9",
+  "frame": "work/m9/4dc80db8/client001/shader-frame.bgra",
+  "frame_sha256": "61648d3a33bf95fce248b7fbfb7ebad85e7067d264ef0c6238e5258933808c44",
+  "preview": "work/m9/4dc80db8/client001/shader-frame.bmp",
+  "actual_compiler_sources": [
+    {
+      "program": "sh_basic",
+      "stage": "vertex",
+      "sha256": "ceb56f9c8b2337e3e078fc2b6e6187ebdf97479bd6f8ec2a91ea3b96c4b2fac6"
+    },
+    {
+      "program": "sh_normal",
+      "stage": "vertex",
+      "sha256": "0295cf124cf39178019ac6c001b0bf8d8b301a7dfbdfd76e719ef7f370688e2b"
+    },
+    {
+      "program": "sh_normal",
+      "stage": "pixel",
+      "sha256": "b963aad760414d48252bf983e4c15ba004f3284b134af9155e1be4ae3efe7593"
+    },
+    {
+      "program": "sh_norm_spec",
+      "stage": "vertex",
+      "sha256": "e595d728049d03c225ba81459271f8926d7a6a2c93745b8f8082b1f7aefdcceb"
+    },
+    {
+      "program": "sh_norm_spec",
+      "stage": "pixel",
+      "sha256": "1493feaa330078cdf703225db8ded341b5f75e7187f243e5918dc24f44b3874b"
+    },
+    {
+      "program": "sh_shadow",
+      "stage": "vertex",
+      "sha256": "278ffa7f64feb8b6cef43822b956e867024e07047548c269091f0dd20217de16"
+    },
+    {
+      "program": "sh_shadow",
+      "stage": "pixel",
+      "sha256": "25d7fe2d0d2f86fc67befea2420cea8499f14d02ae6054bc75f0b9d5bc965d37"
+    },
+    {
+      "program": "sh_basic_Bump",
+      "stage": "vertex",
+      "sha256": "0ecd8b99870b16fe10668a502cec4889de069ca6116e7c10ef58a8f22011fcbd"
+    },
+    {
+      "program": "sh_basic_BumpEffect",
+      "stage": "vertex",
+      "sha256": "df5138e466f761598a58dbf4299414a2cbe05c233925846bf34bf5b4cf3cace6"
+    },
+    {
+      "program": "sh_basic_Scroll",
+      "stage": "vertex",
+      "sha256": "15366238067482096f0ade6c007a01f56faf94531aebe2f9f351654e9aed931e"
+    },
+    {
+      "program": "sh_basic_DScroll",
+      "stage": "vertex",
+      "sha256": "e51ae5c7042cba8f99fe3e26484b9b0711268bfa3720684aa8f2da403fc0b2b5"
+    },
+    {
+      "program": "sh_basic_EnvScroll",
+      "stage": "vertex",
+      "sha256": "fe2b435bf71ee53678f7cd2f7b3a7a340a6be71af05f795775af25c3f3f40b80"
+    },
+    {
+      "program": "sh_basic_GradeEffect",
+      "stage": "vertex",
+      "sha256": "55587b6dba578c580953eeab0f95738f31be81ca21af93541e99a618aa28447a"
+    },
+    {
+      "program": "sh_basic_GradeEnvEffect",
+      "stage": "vertex",
+      "sha256": "a846afbe9ab4c322023fcc07246976d89e0f8bee00ce32ff7f87c44d44a6cdbb"
+    },
+    {
+      "program": "sh_basic_alpha",
+      "stage": "vertex",
+      "sha256": "f1b5bf8d2945db619e6566470b27dd5e79a0cadcf77baa4b256c0af85b68b49c"
+    }
+  ],
+  "component_report_sha256": "714c0788de1029b8883709bc6a093da2d5f29fd82b72710b6ebfce332fd8935d",
+  "dmalloc_balance": 0,
+  "game_dlls_loaded": false,
+  "normal_game_entry_executed": false
+}

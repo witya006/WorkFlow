@@ -270,6 +270,18 @@ foreach ($property in $animationManager.source_sha256.PSObject.Properties) {
 }
 $arguments += '-DRF_CLIENT_455_ANIMATION_MANAGER=ON'
 $arguments += "-DRF_CLIENT_455_ANIMATION_MANAGER_LIBRARY=$animationManagerLibrary"
+$shaders = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-shaders-build.json') -Raw | ConvertFrom-Json
+$shadersGpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-shaders-gpu.json') -Raw | ConvertFrom-Json
+$shadersLibrary = Join-Path $workspace $shaders.library
+if ($shadersGpu.native.status -ne 'PASS' -or $shadersGpu.native.vertex_shaders -ne 12 -or $shadersGpu.native.pixel_shaders -ne 3 -or $shadersGpu.native.declarations -ne 2 -or
+    $shadersGpu.native.device_refs_after_release -ne 0 -or
+    (Get-FileHash -LiteralPath $shadersLibrary -Algorithm SHA256).Hash.ToLowerInvariant() -ne $shaders.library_sha256 -or
+    (Get-FileHash -LiteralPath (Join-Path $workspace 'inventory/client455-shaders-build.json') -Algorithm SHA256).Hash.ToLowerInvariant() -ne $shadersGpu.build_report_sha256) { throw '455 shader bootstrap GPU proof missing or stale.' }
+foreach ($property in $shaders.source_sha256.PSObject.Properties) {
+    if ((Get-FileHash -LiteralPath (Join-Path $workspace "scripts/native/$($property.Name)") -Algorithm SHA256).Hash.ToLowerInvariant() -ne $property.Value) { throw '455 shader bootstrap source changed.' }
+}
+$arguments += '-DRF_CLIENT_455_SHADERS=ON'
+$arguments += "-DRF_CLIENT_455_SHADERS_LIBRARY=$shadersLibrary"
 $pose = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-build.json') -Raw | ConvertFrom-Json
 $poseCpu = Get-Content -LiteralPath (Join-Path $workspace 'inventory/client455-pose-cpu.json') -Raw | ConvertFrom-Json
 $poseLibrary = Join-Path $workspace $pose.library
@@ -379,6 +391,11 @@ if ($result -eq 0) {
     if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 }
 Write-Output "Diagnostic RF_Online build exit: $result"
+if ($result -eq 0) {
+    if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shaders.py --lab }
+    else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_shaders.py }
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 if ($result -eq 0) {
     if ($HelperLab) { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_manager.py --lab }
     else { & (Join-Path $PSScriptRoot 'Invoke-Python.ps1') scripts/verify_client455_animation_manager.py }

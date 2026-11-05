@@ -1,0 +1,305 @@
+{
+  "scope": "Pinned Character shader resource bootstrap,not full renderer/normal integration",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_shader_bootstrap",
+          "rva": "0x51fd40",
+          "bytes": 722,
+          "sha256": "de3fcff12a046abb9e09dd302b51bb632a01462d729eec3489daf895e1d3f4fa"
+        },
+        {
+          "name": "program_append",
+          "rva": "0x539bb0",
+          "bytes": 109,
+          "sha256": "4f462420e383da99eddf7f4f060cf608b0796210f937125a3f190b774b3f5aac"
+        },
+        {
+          "name": "program_release",
+          "rva": "0x539d00",
+          "bytes": 220,
+          "sha256": "201b90dda217bad313399dac37a6e4a92bad15f9f372ded8cd9244b5b7021eeb"
+        },
+        {
+          "name": "manager_ctor_prefix",
+          "rva": "0x53a160",
+          "bytes": 30,
+          "sha256": "3009b7e3ac72bb0b22034f2d4a11361369042cc0f3d0491c93f60f8e45b813bd"
+        },
+        {
+          "name": "manager_dtor",
+          "rva": "0x53a1f0",
+          "bytes": 165,
+          "sha256": "e353d09300ac35503d8bd04af27ff86c176a16114091826283cb5ef65b892986"
+        },
+        {
+          "name": "compile_program",
+          "rva": "0x53a350",
+          "bytes": 842,
+          "sha256": "f3c8157eb982f00ff68e08bb505f4d1eaccff466bce6d4567028e5be6068cef0"
+        },
+        {
+          "name": "file_dispatch_decode",
+          "rva": "0x53a6a0",
+          "bytes": 590,
+          "sha256": "743e8f908141ef9e07f83e7b4687026af8ebc0b0d11f52cd6cdbb0eae5ba9511"
+        },
+        {
+          "name": "load_wrapper",
+          "rva": "0x53a8f0",
+          "bytes": 22,
+          "sha256": "f3817e51185fb94a4565e270fbaaa7e4833dc4dfc1165e19bfd951d5e34e751b"
+        },
+        {
+          "name": "strip_last_extension",
+          "rva": "0x53a9d0",
+          "bytes": 51,
+          "sha256": "ce24d9f3d2adca5b284712619452d29bf47e9be5fa31494f2b289b2774aeb5c7"
+        }
+      ],
+      "key_rva": "0x739918",
+      "key_sha256": "f2fec4561c51b01da5a167b4b0ffbf487199fb95c5755ffdf7d409328faa9074"
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "character_shader_bootstrap",
+          "rva": "0x51fd40",
+          "bytes": 722,
+          "sha256": "de3fcff12a046abb9e09dd302b51bb632a01462d729eec3489daf895e1d3f4fa"
+        },
+        {
+          "name": "program_append",
+          "rva": "0x539bb0",
+          "bytes": 109,
+          "sha256": "4f462420e383da99eddf7f4f060cf608b0796210f937125a3f190b774b3f5aac"
+        },
+        {
+          "name": "program_release",
+          "rva": "0x539d00",
+          "bytes": 220,
+          "sha256": "201b90dda217bad313399dac37a6e4a92bad15f9f372ded8cd9244b5b7021eeb"
+        },
+        {
+          "name": "manager_ctor_prefix",
+          "rva": "0x53a160",
+          "bytes": 30,
+          "sha256": "3009b7e3ac72bb0b22034f2d4a11361369042cc0f3d0491c93f60f8e45b813bd"
+        },
+        {
+          "name": "manager_dtor",
+          "rva": "0x53a1f0",
+          "bytes": 165,
+          "sha256": "e353d09300ac35503d8bd04af27ff86c176a16114091826283cb5ef65b892986"
+        },
+        {
+          "name": "compile_program",
+          "rva": "0x53a350",
+          "bytes": 842,
+          "sha256": "f3c8157eb982f00ff68e08bb505f4d1eaccff466bce6d4567028e5be6068cef0"
+        },
+        {
+          "name": "file_dispatch_decode",
+          "rva": "0x53a6a0",
+          "bytes": 590,
+          "sha256": "743e8f908141ef9e07f83e7b4687026af8ebc0b0d11f52cd6cdbb0eae5ba9511"
+        },
+        {
+          "name": "load_wrapper",
+          "rva": "0x53a8f0",
+          "bytes": 22,
+          "sha256": "f3817e51185fb94a4565e270fbaaa7e4833dc4dfc1165e19bfd951d5e34e751b"
+        },
+        {
+          "name": "strip_last_extension",
+          "rva": "0x53a9d0",
+          "bytes": 51,
+          "sha256": "ce24d9f3d2adca5b284712619452d29bf47e9be5fa31494f2b289b2774aeb5c7"
+        }
+      ],
+      "key_rva": "0x739918",
+      "key_sha256": "f2fec4561c51b01da5a167b4b0ffbf487199fb95c5755ffdf7d409328faa9074"
+    }
+  ],
+  "programs": [
+    {
+      "name": "sh_basic",
+      "original": "System/shader/sh_basic.sho",
+      "copy": "work/client-reference/shaders455/sh_basic.sho",
+      "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607",
+      "bytes": 2866,
+      "decoded": "work/client-reference/shaders455/sh_basic.decoded.txt",
+      "decoded_sha256": "99ee6fe9e53ee149c194e5cbf76ad9c2175ebf0155778324ab421c309530496f",
+      "vertex_sha256": "ceb56f9c8b2337e3e078fc2b6e6187ebdf97479bd6f8ec2a91ea3b96c4b2fac6",
+      "vertex_bytes": 2847,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_normal",
+      "original": "System/shader/sh_normal.sho",
+      "copy": "work/client-reference/shaders455/sh_normal.sho",
+      "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e",
+      "bytes": 5076,
+      "decoded": "work/client-reference/shaders455/sh_normal.decoded.txt",
+      "decoded_sha256": "c00b4dd3519ce31135307af334daf87f3c24927f7c27538027f6bc1f613d98b2",
+      "vertex_sha256": "0295cf124cf39178019ac6c001b0bf8d8b301a7dfbdfd76e719ef7f370688e2b",
+      "vertex_bytes": 3447,
+      "pixel_sha256": "b963aad760414d48252bf983e4c15ba004f3284b134af9155e1be4ae3efe7593",
+      "pixel_bytes": 1592
+    },
+    {
+      "name": "sh_norm_spec",
+      "original": "System/shader/sh_norm_spec.sho",
+      "copy": "work/client-reference/shaders455/sh_norm_spec.sho",
+      "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f",
+      "bytes": 6688,
+      "decoded": "work/client-reference/shaders455/sh_norm_spec.decoded.txt",
+      "decoded_sha256": "8b8512670d81292c898e1c612169585c0328284393fc27d1af82c48eed69f43d",
+      "vertex_sha256": "e595d728049d03c225ba81459271f8926d7a6a2c93745b8f8082b1f7aefdcceb",
+      "vertex_bytes": 3426,
+      "pixel_sha256": "1493feaa330078cdf703225db8ded341b5f75e7187f243e5918dc24f44b3874b",
+      "pixel_bytes": 3225
+    },
+    {
+      "name": "sh_shadow",
+      "original": "System/shader/sh_Shadow.sho",
+      "copy": "work/client-reference/shaders455/sh_shadow.sho",
+      "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6",
+      "bytes": 2356,
+      "decoded": "work/client-reference/shaders455/sh_shadow.decoded.txt",
+      "decoded_sha256": "420f289d61e1a7da1664d3ad8b3fb9d94e38737d9d7d6333ce46d3b765b49832",
+      "vertex_sha256": "278ffa7f64feb8b6cef43822b956e867024e07047548c269091f0dd20217de16",
+      "vertex_bytes": 2051,
+      "pixel_sha256": "25d7fe2d0d2f86fc67befea2420cea8499f14d02ae6054bc75f0b9d5bc965d37",
+      "pixel_bytes": 268
+    },
+    {
+      "name": "sh_basic_Bump",
+      "original": "System/shader/sh_basic_bump.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_Bump.sho",
+      "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32",
+      "bytes": 2635,
+      "decoded": "work/client-reference/shaders455/sh_basic_Bump.decoded.txt",
+      "decoded_sha256": "9bf1cca817b064d4e019b7b8f8111ea0a4c207c06ee25e35e5361c637949a1a8",
+      "vertex_sha256": "0ecd8b99870b16fe10668a502cec4889de069ca6116e7c10ef58a8f22011fcbd",
+      "vertex_bytes": 2616,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_BumpEffect",
+      "original": "System/shader/sh_basic_BumpEffect.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_BumpEffect.sho",
+      "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123",
+      "bytes": 2985,
+      "decoded": "work/client-reference/shaders455/sh_basic_BumpEffect.decoded.txt",
+      "decoded_sha256": "169ca529e611ac56589247d85faa6cc878bb09ce05a46515a3c63739fbc85c3f",
+      "vertex_sha256": "df5138e466f761598a58dbf4299414a2cbe05c233925846bf34bf5b4cf3cace6",
+      "vertex_bytes": 2966,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_Scroll",
+      "original": "System/shader/sh_basic_Scroll.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_Scroll.sho",
+      "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c",
+      "bytes": 2676,
+      "decoded": "work/client-reference/shaders455/sh_basic_Scroll.decoded.txt",
+      "decoded_sha256": "441cef7ca31d3e05e5b69ab2c22219d4263d482255ec7215dded49529659ce14",
+      "vertex_sha256": "15366238067482096f0ade6c007a01f56faf94531aebe2f9f351654e9aed931e",
+      "vertex_bytes": 2657,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_DScroll",
+      "original": "System/shader/sh_basic_DScroll.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_DScroll.sho",
+      "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff",
+      "bytes": 2947,
+      "decoded": "work/client-reference/shaders455/sh_basic_DScroll.decoded.txt",
+      "decoded_sha256": "e31c6c2f121bed53b063e6f9e895d66acee75d1d0631bdc506988e4b2cfdb141",
+      "vertex_sha256": "e51ae5c7042cba8f99fe3e26484b9b0711268bfa3720684aa8f2da403fc0b2b5",
+      "vertex_bytes": 2928,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_EnvScroll",
+      "original": "System/shader/sh_basic_EnvScroll.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_EnvScroll.sho",
+      "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c",
+      "bytes": 3064,
+      "decoded": "work/client-reference/shaders455/sh_basic_EnvScroll.decoded.txt",
+      "decoded_sha256": "54804994f43229d514930222d887d02e2727b3ff47514616867ae4cc72d6bbcd",
+      "vertex_sha256": "fe2b435bf71ee53678f7cd2f7b3a7a340a6be71af05f795775af25c3f3f40b80",
+      "vertex_bytes": 3045,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_GradeEffect",
+      "original": "System/shader/sh_basic_GradeEffect.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_GradeEffect.sho",
+      "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf",
+      "bytes": 2180,
+      "decoded": "work/client-reference/shaders455/sh_basic_GradeEffect.decoded.txt",
+      "decoded_sha256": "d0ac48655e98a611fe54f5c910b654536f0acbefc690bcbaa6f0ed0245e67869",
+      "vertex_sha256": "55587b6dba578c580953eeab0f95738f31be81ca21af93541e99a618aa28447a",
+      "vertex_bytes": 2161,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_GradeEnvEffect",
+      "original": "System/shader/sh_basic_GradeEnvEffect.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_GradeEnvEffect.sho",
+      "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604",
+      "bytes": 2640,
+      "decoded": "work/client-reference/shaders455/sh_basic_GradeEnvEffect.decoded.txt",
+      "decoded_sha256": "2047fe708244fbf616e2d7881245a0fb575c811c90d13b980224866c38b3217f",
+      "vertex_sha256": "a846afbe9ab4c322023fcc07246976d89e0f8bee00ce32ff7f87c44d44a6cdbb",
+      "vertex_bytes": 2621,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    },
+    {
+      "name": "sh_basic_alpha",
+      "original": "System/shader/sh_basic_alpha.sho",
+      "copy": "work/client-reference/shaders455/sh_basic_alpha.sho",
+      "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802",
+      "bytes": 2433,
+      "decoded": "work/client-reference/shaders455/sh_basic_alpha.decoded.txt",
+      "decoded_sha256": "8e04afd1a80715ccbff0fde02e9e768090bcba9da10586753ff938ef511bef79",
+      "vertex_sha256": "f1b5bf8d2945db619e6566470b27dd5e79a0cadcf77baa4b256c0af85b68b49c",
+      "vertex_bytes": 2414,
+      "pixel_sha256": null,
+      "pixel_bytes": 0
+    }
+  ],
+  "compile": {
+    "entry": "main",
+    "vertex_profile": "vs_2_0",
+    "pixel_profile": "ps_3_0",
+    "flags": "0x8008",
+    "defines": null,
+    "include": null
+  },
+  "key_header_sha256": "09d4e6ddca6bee868aae3e0857899fe64bf6b94024a590de3271e824dfe26866",
+  "script_sha256": "e06601659bdecfba4990d70294746ebc4389cfec3ae2af57536b57f143ccd38c",
+  "raw_analysis": "artifacts/character-animation455/render-*.json/renderer-start-*.json;owned95159529 closed/save",
+  "remaining": [
+    "Full Character draw/state/constants andnormal typedconsumer migration",
+    "Invalid input/compile failure resource behavior/UI equivalence",
+    "Old ChAnimation name4/ID260 versus455 name5/ID264 prevents isolatedmanager swap"
+  ]
+}

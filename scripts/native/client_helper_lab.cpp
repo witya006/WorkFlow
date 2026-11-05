@@ -215,8 +215,14 @@ static int mapTimeScenarioProbe() {
 #if defined(RF_CLIENT_455_ANIMATION_MANAGER)
 #include "client_animation_manager_lab.inc"
 #endif
+#if defined(RF_CLIENT_455_SHADERS)
+#include "client_shaders_lab.inc"
+#endif
 int WINAPI WinMain(HINSTANCE,HINSTANCE,LPSTR command,int) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
+#if defined(RF_CLIENT_455_SHADERS)
+    if (!std::strcmp(command,"--rf-shaders-scenario")) ExitProcess(shadersScenarioProbe());
+#endif
 #if defined(RF_CLIENT_455_ANIMATION_MANAGER)
     if (!std::strcmp(command,"--rf-animation-manager-scenario")) ExitProcess(animationManagerScenarioProbe());
 #endif

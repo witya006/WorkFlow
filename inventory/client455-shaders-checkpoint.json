@@ -1,0 +1,53 @@
+{
+  "scope": "Source Character shader bootstrap/real D3D9 resources;harness triangle not fullCharacter draw/normal455 integration/M9",
+  "normal": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "exe_sha256": "87db29ad1a4461bbaea2c617633b9eb8df1fb445abc394eea538dd8272cf4253",
+    "exe_bytes": 2451456,
+    "entry_rva": "0x1bc450",
+    "functions": [],
+    "actual_callsites": [],
+    "library_sha256": "0aad0d1ccb2b68977bd3d5f6b5ad808fca569191f59366024d821432d3634193",
+    "scope": "Source shader bootstrap;normal D3D8 renderer stillseparate,notfull455Character integration"
+  },
+  "lab": {
+    "architecture": "x86",
+    "exe_sha256": "4dc80db8f12e9346ed40beef6f12061fd1917607cebb300d72874e7e3f7e29d1",
+    "exe_bytes": 5291520,
+    "entry_rva": "0x8a6c"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 119,
+    "programs": 12,
+    "vertex_shaders": 12,
+    "pixel_shaders": 3,
+    "declarations": 2,
+    "harness_draws": 1,
+    "center_rgb": 16777215,
+    "orphan_resources_observed_and_harness_freed": 2,
+    "device_refs_after_release": 0,
+    "api_refs_after_release": 0
+  },
+  "same_frame_sha256": "61648d3a33bf95fce248b7fbfb7ebad85e7067d264ef0c6238e5258933808c44",
+  "normal_runtime_bytes_equal_previous_excluding_timestamps": true,
+  "normal_modern_coff_objects": 291,
+  "lab_client_objects": 193,
+  "unchanged_bulk_suites_repeated": false,
+  "unrelated_platform01_suites_repeated": false,
+  "remaining": [
+    "Full455DrawCharacter/draw-state/constants/palette/material/effects/device lifecycle",
+    "Coupled normal typedmodel/animation/renderer migration;old layout4-260 differsfrom4555-264",
+    "Modal shadererror UI/uncheckedfailure/OOM/originalCPU-FPU conditions notcertified",
+    "Fullclient acceptance M6F/M7/M9"
+  ],
+  "evidence_sha256": {
+    "client455-shaders-reference": "734c215a09c033d8497019e22e87daae67a3e1c1f8e2aa406d07950c3135c814",
+    "client455-shaders-build": "a1dbfd204a4f5cbb3631e07de3a531bf0afcaa3e4d645b242098744068e67a36",
+    "client455-shaders-gpu": "714c0788de1029b8883709bc6a093da2d5f29fd82b72710b6ebfce332fd8935d",
+    "client455-shaders-client": "d3b3295aaa3a135afe62088ddf46ec47fb0e26747a1828c4e18e8713ff31de4e",
+    "client455-shaders-link": "cb5c577b5847cd7620307e8b12b42bc1b9707b3bb0e71a2e0b2acc08ae218035",
+    "client-helper-lab-build": "ada329e198d6fd4ec6672661242f2c318403f195db82bbb7b616985238aada60"
+  }
+}

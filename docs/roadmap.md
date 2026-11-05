@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Новейший участок M6: shader bootstrap028 source/realHAL/fullclient:12SHO/12VS+3PS/
+2declarations и контрольный harness draw. Normal renderer и fullCharacter draw
+ещё открыты. Из-за name4/ID260 oldSDK против5/264455 normal integration переносит
+typedmodel/animation/draw вместе; изолированная подмена менеджера исключена.
+Gate inventory/client455-shaders-checkpoint.json; M6/M6F/M7/M9 открыты.
+
 Новейший участок M6: коллекция AnimationManager4028/11sourceAPIs восстановлена,
 проверены cache/owners/один real ANI standalone/fullclient. Normal typed consumers
 ещё legacy; normal runtime прежний после исключения timestamps. Gate
@@ -177,7 +183,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: завершить staticCRTsin/полный actor lifecycle/transition consumers и
+1. M6: восстановить fullCharacter draw/state/constants/palette/material и shader
+   selection, затем связанный normal typedmodel/animation/renderer путь. Shader
+   bootstrap028 готов на HAL; не делать отдельную подмену CUnity manager.
+   В той же цепочке завершить staticCRTsin/полный actor lifecycle/transition consumers и
    normal CUnity/CAniData calls. Коллекция AnimationManager/record ownership ready027;
    async worker уточнять по callers, оба выбранных importer mode синхронные.
    Key evaluators/основныеpose/transition/ramp/skinmatrices
