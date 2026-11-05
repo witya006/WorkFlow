@@ -41,6 +41,7 @@ int main(int argc,char** argv){
         REQUIRE(animations.GetAni(RLI_PLAYER,lazy->m_Ident)==lazy && lazy->m_Load && lazy->maximum==decoded.maxFrame && lazy->imported && lazy->imported!=imported);
         char missing[]=".\\missing.ani";auto* failed=animations.AddAni(RLI_FORCE,missing);REQUIRE(failed && !failed->m_Load);
         REQUIRE(animations.GetAni(RLI_FORCE,failed->m_Ident)==failed && !failed->m_Load && failed->loadAttempted==1 && !failed->imported);
+        REQUIRE(renderer.IsLoadAnimation(failed) && !failed->m_Load && !renderer.IsLoadAnimation(nullptr));
         REQUIRE(animations.GetAni(RLI_FORCE,failed->m_Ident)==failed && !failed->m_Load && failed->loadAttempted==1 && !failed->imported);
         loaded=2;maxFrame=animation->maximum;
         REQUIRE(animations.Destroy() && !animations.Destroy());REQUIRE(models.Destroy() && bones.Destroy());

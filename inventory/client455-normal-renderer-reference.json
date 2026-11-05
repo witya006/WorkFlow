@@ -1,0 +1,238 @@
+{
+  "scope": "Confirmed normal455wrapper ranges/constants;not complete high-level behavior or original process execution",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "unset_state",
+          "rva": "0x51cbb0",
+          "bytes": 498,
+          "sha256": "63ede08d835a475ea456382924014cc5b23d08e076a74983f7ff68f049286ebc"
+        },
+        {
+          "name": "set_light",
+          "rva": "0x51cdb0",
+          "bytes": 48,
+          "sha256": "7fb9c11a97d34966b2e618f98c0b4ad5227df0206ac5cb0dc2b155cde0508d15"
+        },
+        {
+          "name": "set_state",
+          "rva": "0x51cde0",
+          "bytes": 828,
+          "sha256": "28c671e3a031a9ec6f9b659ba197b2aa729bbd4bf98147cd86a58161e7d17020"
+        },
+        {
+          "name": "draw_at_position",
+          "rva": "0x52fe80",
+          "bytes": 670,
+          "sha256": "250b839d5bc13e55712f41ed29edbfb729deb7dc227a39a906f4aeacf8dc153c"
+        },
+        {
+          "name": "draw_matrix",
+          "rva": "0x52fba0",
+          "bytes": 51,
+          "sha256": "0db49cac81f5b4c654cbd0d889ed2fb4997f0622484eec229ae4eebe09e4619c"
+        },
+        {
+          "name": "shadow_at_position",
+          "rva": "0x530500",
+          "bytes": 323,
+          "sha256": "b8e297df4da76998decb1bea8d2c210596c846e2252618ddb5946d5dbf68e4cc"
+        },
+        {
+          "name": "model_cull",
+          "rva": "0x534f00",
+          "bytes": 190,
+          "sha256": "a4b7e151b98991cdc53d8ca6f732a987f27614b496dbb5d45f3bb5394192fa30"
+        },
+        {
+          "name": "register_mesh",
+          "rva": "0x5313f0",
+          "bytes": 136,
+          "sha256": "c8f1f6ae954563ea8a1a86e0e7a08b7e4920fd9475b19324c91966b8a610c13a"
+        },
+        {
+          "name": "is_load_animation",
+          "rva": "0x5316a0",
+          "bytes": 28,
+          "sha256": "f3b8f99d96a3fe6b56b0175bfdb763139c97b4eb4cc2e573ff40a4b874d245d4"
+        },
+        {
+          "name": "match_animation",
+          "rva": "0x5316c0",
+          "bytes": 100,
+          "sha256": "4fa4e6232d6ad5ca045fb8b6ac43521addfb2de0f290c684cc2262a5eed4e2f3"
+        },
+        {
+          "name": "set_alpha",
+          "rva": "0x531740",
+          "bytes": 50,
+          "sha256": "9ceb9015ed4c77590760c7fd3e1cbb9e51a39933b4390847bdb88a62ada6d000"
+        },
+        {
+          "name": "get_alpha",
+          "rva": "0x531780",
+          "bytes": 13,
+          "sha256": "3c5906f2170ecd813f523b1a5905fa6d3bd4d2cbb0d19aa058ed0f621fa0c465"
+        },
+        {
+          "name": "set_material",
+          "rva": "0x531790",
+          "bytes": 32,
+          "sha256": "656cc486620eb2bbc89c8357625174c8ef813b28d6b2c0c8a41a727eead3ee4d"
+        },
+        {
+          "name": "frame_move",
+          "rva": "0x523a40",
+          "bytes": 3250,
+          "sha256": "80e45c1627e1dd6f9dcdf6db5d727d4e497ede0c7fcb82e9f324ce760a65e57b"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "name": "unset_state",
+          "rva": "0x51cbb0",
+          "bytes": 498,
+          "sha256": "63ede08d835a475ea456382924014cc5b23d08e076a74983f7ff68f049286ebc"
+        },
+        {
+          "name": "set_light",
+          "rva": "0x51cdb0",
+          "bytes": 48,
+          "sha256": "7fb9c11a97d34966b2e618f98c0b4ad5227df0206ac5cb0dc2b155cde0508d15"
+        },
+        {
+          "name": "set_state",
+          "rva": "0x51cde0",
+          "bytes": 828,
+          "sha256": "28c671e3a031a9ec6f9b659ba197b2aa729bbd4bf98147cd86a58161e7d17020"
+        },
+        {
+          "name": "draw_at_position",
+          "rva": "0x52fe80",
+          "bytes": 670,
+          "sha256": "250b839d5bc13e55712f41ed29edbfb729deb7dc227a39a906f4aeacf8dc153c"
+        },
+        {
+          "name": "draw_matrix",
+          "rva": "0x52fba0",
+          "bytes": 51,
+          "sha256": "0db49cac81f5b4c654cbd0d889ed2fb4997f0622484eec229ae4eebe09e4619c"
+        },
+        {
+          "name": "shadow_at_position",
+          "rva": "0x530500",
+          "bytes": 323,
+          "sha256": "b8e297df4da76998decb1bea8d2c210596c846e2252618ddb5946d5dbf68e4cc"
+        },
+        {
+          "name": "model_cull",
+          "rva": "0x534f00",
+          "bytes": 190,
+          "sha256": "a4b7e151b98991cdc53d8ca6f732a987f27614b496dbb5d45f3bb5394192fa30"
+        },
+        {
+          "name": "register_mesh",
+          "rva": "0x5313f0",
+          "bytes": 136,
+          "sha256": "c8f1f6ae954563ea8a1a86e0e7a08b7e4920fd9475b19324c91966b8a610c13a"
+        },
+        {
+          "name": "is_load_animation",
+          "rva": "0x5316a0",
+          "bytes": 28,
+          "sha256": "f3b8f99d96a3fe6b56b0175bfdb763139c97b4eb4cc2e573ff40a4b874d245d4"
+        },
+        {
+          "name": "match_animation",
+          "rva": "0x5316c0",
+          "bytes": 100,
+          "sha256": "4fa4e6232d6ad5ca045fb8b6ac43521addfb2de0f290c684cc2262a5eed4e2f3"
+        },
+        {
+          "name": "set_alpha",
+          "rva": "0x531740",
+          "bytes": 50,
+          "sha256": "9ceb9015ed4c77590760c7fd3e1cbb9e51a39933b4390847bdb88a62ada6d000"
+        },
+        {
+          "name": "get_alpha",
+          "rva": "0x531780",
+          "bytes": 13,
+          "sha256": "3c5906f2170ecd813f523b1a5905fa6d3bd4d2cbb0d19aa058ed0f621fa0c465"
+        },
+        {
+          "name": "set_material",
+          "rva": "0x531790",
+          "bytes": 32,
+          "sha256": "656cc486620eb2bbc89c8357625174c8ef813b28d6b2c0c8a41a727eead3ee4d"
+        },
+        {
+          "name": "frame_move",
+          "rva": "0x523a40",
+          "bytes": 3250,
+          "sha256": "80e45c1627e1dd6f9dcdf6db5d727d4e497ede0c7fcb82e9f324ce760a65e57b"
+        }
+      ]
+    }
+  ],
+  "constants": [
+    {
+      "rva": "0x7f8320",
+      "bytes": 64,
+      "sha256": "9059331711684dd40239180016f88b175b3a22b23f845fbfeec763e15e2d1773"
+    },
+    {
+      "rva": "0x6a9750",
+      "bytes": 8,
+      "sha256": "fab4c4415b50601e97f6b89f2f92021b61bf2dd3bdb9d1f5ffb6e8de92046e01"
+    },
+    {
+      "rva": "0x6b0048",
+      "bytes": 8,
+      "sha256": "14ec8c195f045f8e0e60ad94e0043ed232fc58d03ed9fc0d8aef863c93d6ee15"
+    }
+  ],
+  "coordinate_matrix": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "degree_operand": 180.0,
+  "radian_operand": 0.01745329238474369,
+  "constants_header_sha256": "11a0aa411f4ad7418394f3144ee3f6d99770e5ad3c0589428e6237612bc281eb",
+  "bounds": [
+    "934F00 spills dot to m32 BEFORE adding plane.w;8C2C90 source helper is different",
+    "91CBB0 is actual UnSetState via ResObject caller7CD340;91D320 hasno xrefs andisnotaccepted asUnSetState",
+    "9316A0 loads animation synchronously=false;itdoesnotjustinspect load flag",
+    "9313F0 ignores boolean andregisters deferred model in caller-provided manager",
+    "92FE80 argument4 isscale,argument5 unused,argument6 optional unscaled-translation matrix",
+    "930500 ignores position/alpha anduses argument5 asscale;profiling/CRT/error domains remainopen"
+  ],
+  "script_sha256": "40ad57cde6862a6947b97c011ed4c44ed535390ca452d690e5b6c568ff9fce9f",
+  "golden": "work/client-reference/normal-renderer455/math.bin",
+  "golden_sha256": "541da6c6239262318e5e20f72759e2d5d9c2ca810b6f0cdccceb0448bc1395fd",
+  "angle_cases": 96,
+  "box_cases": 60
+}

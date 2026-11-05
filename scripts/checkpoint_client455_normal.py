@@ -16,7 +16,10 @@ def main():
         if sha(WS/item['file'])!=item['sha256'] or ('input' in item and sha(WS/item['input'])!=item['input_sha256']):raise ValueError('Changed normal source:'+item['file'])
     objects=list((root/'build/RFClient455Consumers.dir/Release').glob('*.obj'))
     if build['build_exit'] or build['objects']!=182 or len(objects)!=182 or build['errors']:raise ValueError('Incomplete normal compilation')
-    for obj in objects:
+    kernels=list((root/'build/RFClient455Kernels.dir/Release').glob('*.obj'))
+    if len(kernels)!=build['canonical_kernel_objects'] or len(kernels)!=build['expected_kernel_sources']:raise ValueError('Incomplete canonical kernels')
+    if list((root/'generated/kernels').glob('*.h')):raise ValueError('Local kernel headers shadow canonical include directory')
+    for obj in objects+kernels:
         parsed=parse(obj.read_bytes());flags=directives(obj.read_bytes()).upper()
         if '/DEFAULTLIB:"LIBCMT"' not in flags or 'MSVCRT' in flags or 'D3D8.LIB' in flags or 'D3DX8.LIB' in flags:raise ValueError('Wrong normal CRT/runtime')
         # The parser already rejects non-x86 COFFs; it is not a link/runtime gate.
@@ -35,9 +38,10 @@ def main():
     if not link['link_exit'] or link['other_errors'] or link['unique_unresolved']!=len(link['unresolved']) or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Unexpected current link state; inspect and update acceptance evidence')
     if sha(WS/link['log'])!=link['log_sha256'] or sha(WS/run['map'])!=run['map_sha256'] or sha(WS/'scripts/native/client455_normal_consumers_probe.cpp')!=run['source_sha256']:raise ValueError('Changed native evidence')
     mapping=(WS/run['map']).read_text(errors='replace')
-    for symbol,provider in [(r'\?GetAni@CUnityAniMgr',r'unity_managers\.obj'),(r'\?LoadData@CAnimation',r'animation_control\.obj'),(r'\?LoadRealAnimation@RF455AnimationStorage',r'RFClient455Facade:client455_normal_facade\.obj'),('_RF455_LoadAnimation',r'RFClient455Animation:animation\.obj')]:
+    for symbol,provider in [(r'\?GetAni@CUnityAniMgr',r'unity_managers\.obj'),(r'\?LoadData@CAnimation',r'animation_control\.obj'),(r'\?LoadRealAnimation@RF455AnimationStorage',r'RFClient455Facade:client455_normal_facade\.obj'),('_RF455_LoadAnimation',r'RFClient455Kernels:client455_animation\.obj')]:
         if not re.search(symbol+r'[^\r\n]+\b'+provider+r'\b',mapping):raise ValueError('Actual normal method provider unproven:'+symbol)
     evidence=['client455-normal-preparation','client455-normal-build','client455-normal-consumers','client455-normal-link']
-    report={'status':'PARTIAL','compile_status':'PASS','normal_consumer_cases':'PASS','normal_executable_link':'OPEN','original_client_sources':180,'production_split_sources':2,'compiled_client_objects':182,'unresolved_symbols':link['unique_unresolved'],'record_sizes':[1188,5803,284],'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in evidence},'gaps':['Complete39current unresolved named contracts/data;see normal-link.json','Verify high-level455wrapper/state/pose/draw semantics andeffect slot layouts','Screenshot D3D9 readback runtime/multisampling notverified','No full normal WinMain/device loss/gameplay/UI/network acceptance','Hub uses own missing-runtime exceptions/debug logging;original failure/logging notcertified'],'legacy_character_linked':False,'baseline_modified':False,'engine033_modified':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
+    report={'status':'PARTIAL','compile_status':'PASS','normal_consumer_cases':'PASS','normal_executable_link':'OPEN','original_client_sources':180,'production_split_sources':2,'compiled_client_objects':182,'unresolved_symbols':link['unique_unresolved'],'record_sizes':[1188,5803,284],'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in evidence},'gaps':['Remaining current unresolved named contracts/data;see normal-link.json','Verify high-level455wrapper/state/pose/draw semantics andeffect slot layouts','Screenshot D3D9 readback runtime/multisampling notverified','No full normal WinMain/device loss/gameplay/UI/network acceptance','Hub uses own missing-runtime exceptions/debug logging;original failure/logging notcertified'],'legacy_character_linked':False,'baseline_modified':False,'engine033_modified':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
+    report['canonical_kernel_objects']=len(kernels)
     (WS/'inventory/client455-normal-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL: normal182objects/CUnity-CAnimation realANI PASS;RF_Online link OPEN;M6/M9 OPEN')
 if __name__=='__main__':main()

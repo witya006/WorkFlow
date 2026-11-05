@@ -45,6 +45,8 @@ public:
     void DrawCharacter(CHARACTEROBJECT*,float*,float);
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float);
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float);
+    void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float,bool);
+    void DrawCharacterMat(CHARACTEROBJECT*,D3DXMATRIX*,float);
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float);
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float,float);
     bool LoadRealData(CHARACTEROBJECT*,TextureManager*);
@@ -52,6 +54,7 @@ public:
     void FrameMove(CHARACTEROBJECT*);void InitEffect(CHARACTEROBJECT*);
     int BeginShadow(unsigned long);void EndShadow();
     void SetLight(D3DLIGHT9);void SetState();void UnSetState();
+    void FlushTransparency();
     static CRender& GetRender();
     struct Runtime;
     Runtime* runtime;
@@ -68,6 +71,7 @@ public:
     void AnimationReset(CHARACTEROBJECT*);void RematchParent(CHARACTEROBJECT*,CHARACTEROBJECT*);
     int ImportBoundBox(char*,float*,float*);void SetEyeVec(char*,CHARACTEROBJECT*,D3DXMATRIX);
 };
+// Own public facade; real shared transparency storage belongs to the Hub.
 class AlphaMeshManager {public:void DrawAlpahMesh();};
 class EffectList {public:void LoadEffectFileList(char*);void SetEffect(CHARACTEROBJECT*,DWORD);};
 class EffectObjectManager {public:static void LoadEffect(char*);static int SetPartEffect(CHARACTEROBJECT*,char*,int);};

@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+Normal renderer035:
+В этой новой ветви 20productionCPP Character пересобираются в RFClient455Kernels.lib
+из scripts/native с ЕДИНЫМИ normal/include определениями типов. Линковать только
+новуюcanonicallibrary, не старые отдельные component archives. SourceSHA/evidence
+из старых отчётов нужны для происхождения, ихbinarylibs для сборки не нужны.
+Кадры/результаты до и после canonical rebuild совпали; precanonical report сохранён
+в inventory/client455-normal-renderer-precanonical.json. kernel_sources() в prepare
+проверяет source SHA, build/checkpoints проверяют20objects/canonical include set.
+Source CRender FrameMove/DrawCharacter/DrawCharacterMat/shadow/
+SetState/UnSetState/SetLight, CUnity LoadMeshData, SetAlpha/GetAlpha/SetMaterial и
+общая transparency queue подключены в work/client455-port/normal.14ranges equal
+bothpins и constants: inventory/client455-normal-renderer-reference.json.
+IsLoadAnimation исправлен:9316A0 вызывает loader0, а не проверяет load flag;
+повтор после missing file может вернуть true при load0==0/attempted4==1 — проверено.
+UnSetState=91CBB0 (caller7CD340), не91D320. Model cull934F00 имеет m32 dot spill
+до plane.w, в отличие от scene8C2C90.96angles/60boxes/12FPmodes прошли; signed zero
+при RC-down учтён. World coordinate matrix изBF8320, degrees/radians double pinned.
+182normalobjects+facade собираются. Actual CUnity BN/MESH08/ANI→pose→DrawCharacter/
+alpha flush→HAL прошёл:51parts/46geometry,2animated frames equalmatrixwrapper,
+ненулевое положение,3visibility cases/alpha/material/light/unsetstate,COM/Dmalloc0.
+Кадры просмотрены; source inputs EXE не запускались, gameDLLs отсутствуют.
+Native GPU probe должен иметь ENGINE_DEFINITIONS как у engine/client, особенно
+RF_CLIENT_455_WEATHER: без него был неверный offset R3 camera state и пустой кадр.
+Inventory normal-renderer-math/gpu содержит PE SHA/RVA/run paths/definitions.
+Полный normal link LNK1120:27remaining methods/data, без других ошибок/CharacterMR/
+forced unresolved. Оба normal checkpoints PARTIAL; M6/M6F/M7/M9 OPEN.
+Следом remaining27 из inventory/client455-normal-link.json:effects/slots/reset/
+parent/eye/bounds/texturepath/shadowtargets/time/data. Готовые ядра не восстанавливать.
+Важно: originalprofiling/staticCRTtrig/failure/FPspecial/batch/ortho/reset/fullscreen/
+normalshutdown не приняты. BlendDuration33844 ctor не пишет; test явно150,
+normalinit неизвестен. Теперь читается только при existing previous track.
+Shared shutdown own adapter проверен после renderer destruction, normal WinMain
+ещё не подключён. Originalframeparity не доказана. Baseline/engine033 сохранены.
+Research client455-normal-renderer.md; checkpoint_client455_normal_renderer.py.
+IDA owned1bcd6f24 closed,save requested/returned saved=null; новых установок нет.
+
+Предыдущий результат:
+
 Normal port034: work/client455-port/normal, все180clientTUs на D3D9/typed455records
 1188/5803/284. Named union views подтверждённых полей только в копиях headers,
 не legacy ABI casts. CUnity/CAnimation выделены в два productionTU: тела побайтно

@@ -1,0 +1,54 @@
+{
+  "scope": "Actual normal facade renderer math scenario;not full normal WinMain/455acceptance",
+  "architecture": "x86",
+  "exe": "work/m9/81de8822/normal-math001/normal-renderer-math.exe",
+  "exe_sha256": "81de8822d61e77de75cd8c2ff900bcf5facdcad5b6d607ab8917380771bbb8c1",
+  "entry_rva": "0x1c60",
+  "native": {
+    "status": "PASS",
+    "angle_cases": 96,
+    "box_cases": 60,
+    "fp_modes": 12
+  },
+  "frames": [],
+  "output": "work/m9/81de8822/normal-math001/result.json",
+  "output_sha256": "4a7886781abdcadd85b25445a6292f4dbe0d57965170ad0a29bc00c6a0b32bc9",
+  "source": "scripts/native/test_client455_normal_renderer_math.cpp",
+  "source_sha256": "835ecb71a9243ee76232048b570d9ccb9462e5858fa9cff8e31cc28d6b7416b9",
+  "libraries": [
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "7b56a4eaf7e194cb02278e56ebcea0bd16ff19ae7c4b662132ed36a6b6f18962"
+    }
+  ],
+  "map": "work/client455-port/normal/build/normal-renderer-math.map",
+  "map_sha256": "d16047407ffd99fbc201cd47166f4ec3b2ae78ae0ec67b8fb81a35d374699043",
+  "normal_build_sha256": "ad43e9833e97d60027e35025a68be8a1ed8e9308064d1d9db09ba8535a35a0cd",
+  "reference_sha256": "1a13fd33929e59db76fbe46a5defc19e22e458ca7a3cbd09af9bf10082922d9a",
+  "legacy_character_linked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN",
+  "definitions": [
+    "NDEBUG",
+    "RF_CLIENT_455_ANIMATION_TIMING",
+    "RF_CLIENT_455_CLOCK",
+    "RF_CLIENT_455_DRAW_ARGUMENTS",
+    "RF_CLIENT_455_EFFECT_LOG",
+    "RF_CLIENT_455_FRUSTUM",
+    "RF_CLIENT_455_HELPER_LOADER",
+    "RF_CLIENT_455_LOBBY_TRANSITION",
+    "RF_CLIENT_455_LOOP_CLOCK",
+    "RF_CLIENT_455_MAP_TIME",
+    "RF_CLIENT_455_RESOURCE_IO",
+    "RF_CLIENT_455_TIME_COMMANDS",
+    "RF_CLIENT_455_WEATHER",
+    "RF_CLIENT_455_X87_MATH",
+    "WIN32",
+    "_LIB",
+    "_MBCS",
+    "_NEW_UI_",
+    "_WINDOWS"
+  ]
+}

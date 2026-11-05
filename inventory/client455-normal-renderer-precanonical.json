@@ -1,0 +1,165 @@
+{
+  "scope": "Actual normal facade renderer gpu scenario;not full normal WinMain/455acceptance",
+  "architecture": "x86",
+  "exe": "work/m9/c4b364d2/normal-gpu001/normal-renderer-gpu.exe",
+  "exe_sha256": "c4b364d2814f214a21db881f1e31dab7ec939447dbfe19a4dfa24684685382ea",
+  "entry_rva": "0x87ba0",
+  "native": {
+    "status": "PASS",
+    "normal_unity_model_pipeline": true,
+    "animated_frames": 2,
+    "matrix_wrapper_equal_frames": 2,
+    "geometry_parts": 46,
+    "filter_cases": 3,
+    "alpha_material_checked": true,
+    "device_refs": 0,
+    "dmalloc_balance": 0,
+    "game_dlls_loaded": false
+  },
+  "frames": [
+    {
+      "file": "work/m9/c4b364d2/normal-gpu001/normal-frame-0.bgra",
+      "sha256": "6017d4fa3cd3a0f1ea1a443f68076cb0cb8d24cc48ac97e1957f7303878158c3",
+      "preview": "work/m9/c4b364d2/normal-gpu001/normal-frame-0.bmp",
+      "preview_sha256": "5f76c889168eaf38a1820ce16c23d35df9a3359b3a02d90f2e67b7c7269713c3"
+    },
+    {
+      "file": "work/m9/c4b364d2/normal-gpu001/normal-frame-1.bgra",
+      "sha256": "cbcd161f293811704d9e0a612cb3a01fb305dbdbb3aad86f96825fde26146675",
+      "preview": "work/m9/c4b364d2/normal-gpu001/normal-frame-1.bmp",
+      "preview_sha256": "4f91f8f8d6d72fb8353c02f6d98264ec1a1adb7a56546e46adb232b45619ced1"
+    }
+  ],
+  "output": "work/m9/c4b364d2/normal-gpu001/result.json",
+  "output_sha256": "48028c4307ebda51f5aa96d2e4f0a2924e2c282b2f2a9d98a8fdef29f9a85cd6",
+  "source": "scripts/native/client455_normal_renderer_probe.cpp",
+  "source_sha256": "754092cacabd74d7b5e389aac3dac03af1a10ab24e2c01a34ac0f87ed159c7eb",
+  "libraries": [
+    {
+      "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/unity_managers.obj",
+      "sha256": "0d0198a5dcaee6b803bd247f6e761687d88c78457cc4d3bae7dd8f665e7bda64"
+    },
+    {
+      "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/animation_control.obj",
+      "sha256": "9f30b927743ee3f0cdfb8322b686adafdf75a8a068acae138bbe442854d0f6ca"
+    },
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "7b56a4eaf7e194cb02278e56ebcea0bd16ff19ae7c4b662132ed36a6b6f18962"
+    },
+    {
+      "file": "work/recovered/client455/renderer-owner/RFClient455RendererOwner.lib",
+      "sha256": "f0c6549e2647980c58fe5efd74e5e3ce774fbdd845f1ae31221f3f2497a4d5bb"
+    },
+    {
+      "file": "work/recovered/client455/character-draw/RFClient455CharacterDraw.lib",
+      "sha256": "561dd0786320a9a4acffd700310a30a56cc4de8afa9fef2c5628c7d587233f69"
+    },
+    {
+      "file": "work/recovered/client455/draw/RFClient455Draw.lib",
+      "sha256": "66857ed3052488fa773edf18490162ff03e2fc40a758ce961a8f060289cbcd41"
+    },
+    {
+      "file": "work/recovered/client455/pose/RFClient455Pose.lib",
+      "sha256": "16d7c0fd0d6d378682805db89cd6682da7cce29acdc3da01f56cafd6ed2e4656"
+    },
+    {
+      "file": "work/recovered/client455/animation/RFClient455Animation.lib",
+      "sha256": "2b5da5ab73dfc049bcfb2a7ca6806623e9ff3994b9f33412f6693ad8755a25b2"
+    },
+    {
+      "file": "work/recovered/client455/legacy-runtime/RFClient455LegacyRuntime.lib",
+      "sha256": "fb65911fe64162dd74aea7c62d83fd4f31d353e670f6d8fc18358f79488d952d"
+    },
+    {
+      "file": "work/recovered/client455/legacy-models/RFClient455LegacyModel.lib",
+      "sha256": "c809a11d0f9640c9aae3a1a1cd57ac0d1d009f96317b083e3ef4cf7a163df3f3"
+    },
+    {
+      "file": "work/recovered/client455/character-manager/RFClient455CharacterManager.lib",
+      "sha256": "ebd4a0151668105cdc31e1fa34c7f5e25d6ec5c5621688a0034c6e37ef6632c6"
+    },
+    {
+      "file": "work/recovered/client455/models/RFClient455Models.lib",
+      "sha256": "b4e13bb4bdf30d521be2dc317085559d2ddf6a02e9360a6f65ce4817977a6a15"
+    },
+    {
+      "file": "work/recovered/client455/shared-buffers/RFClient455SharedBuffers.lib",
+      "sha256": "69ed1ceed85d87351a92eb8da607dcefca97290a2e49e561d5118184eb5dedbd"
+    },
+    {
+      "file": "work/recovered/client455/texture/RFClient455Texture.lib",
+      "sha256": "5b2c075953e2e973b1d1af29644308f6ab4c4b876e9a28d206c55afdc45c1af9"
+    },
+    {
+      "file": "work/recovered/client455/mesh-runtime/RFClient455MeshRuntime.lib",
+      "sha256": "f484360d40a11e1443ef3a5937326d7546631cbe729aadf4e7c2ada5fd166ef1"
+    },
+    {
+      "file": "work/recovered/client455/mesh-bindings/RFClient455MeshBindings.lib",
+      "sha256": "c2dc4530731d76d5aa88693dc3f6b9b500e41a6e88e39c9515e325f1e7e082d8"
+    },
+    {
+      "file": "work/recovered/client455/mesh08/RFClient455Mesh08.lib",
+      "sha256": "f390620f6987fac92a49701896193b299de28a065ccae3b0c36d959b0bcec7c8"
+    },
+    {
+      "file": "work/recovered/client455/shaders/RFClient455Shaders.lib",
+      "sha256": "0aad0d1ccb2b68977bd3d5f6b5ad808fca569191f59366024d821432d3634193"
+    },
+    {
+      "file": "work/recovered/client455/animation-manager/RFClient455AnimationManager.lib",
+      "sha256": "210e5acf78cd5ee7d70f0899a75dfe198f9454c1b811bd446d6b646fc2b2c982"
+    },
+    {
+      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+    },
+    {
+      "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+      "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
+    },
+    {
+      "file": "work/client455-port/build-vs2026/Release/R3Engine455.lib",
+      "sha256": "fba3d77db954750118dbfb5dbb66e5606c3c79398ebe8d502b5fb61d7cad7369"
+    },
+    {
+      "file": "work/client455-port/dependencies/d3dx9_36.lib",
+      "sha256": "b92a88b327c13a5738ac567ce34b73aa652c536e37fc46c9797dab2f7c413794"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/mss32.lib",
+      "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    }
+  ],
+  "map": "work/client455-port/normal/build/normal-renderer-gpu.map",
+  "map_sha256": "3079c65ae8c455280ab0570c1e9226ef4bcb3ab3e952b50d18e76886c89f1702",
+  "normal_build_sha256": "d4af636775d989024d25c970da0fcceba6b99cde2365477009667ffea15d4fa3",
+  "reference_sha256": "1a13fd33929e59db76fbe46a5defc19e22e458ca7a3cbd09af9bf10082922d9a",
+  "legacy_character_linked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN",
+  "definitions": [
+    "NDEBUG",
+    "RF_CLIENT_455_ANIMATION_TIMING",
+    "RF_CLIENT_455_CLOCK",
+    "RF_CLIENT_455_DRAW_ARGUMENTS",
+    "RF_CLIENT_455_EFFECT_LOG",
+    "RF_CLIENT_455_FRUSTUM",
+    "RF_CLIENT_455_HELPER_LOADER",
+    "RF_CLIENT_455_LOBBY_TRANSITION",
+    "RF_CLIENT_455_LOOP_CLOCK",
+    "RF_CLIENT_455_MAP_TIME",
+    "RF_CLIENT_455_RESOURCE_IO",
+    "RF_CLIENT_455_TIME_COMMANDS",
+    "RF_CLIENT_455_WEATHER",
+    "RF_CLIENT_455_X87_MATH",
+    "WIN32",
+    "_LIB",
+    "_MBCS",
+    "_NEW_UI_",
+    "_WINDOWS"
+  ]
+}

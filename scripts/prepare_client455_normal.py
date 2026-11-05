@@ -23,6 +23,24 @@ def section(raw,first,last):
         depth+=(masked[end]==ord('{'))-(masked[end]==ord('}'));end+=1
     return start,end
 
+def kernel_sources(native):
+    owner=json.loads((WS/'inventory/client455-renderer-owner-build.json').read_text())
+    animation=json.loads((WS/'inventory/client455-animation-manager-build.json').read_text())
+    wanted={owner['library']:owner['library_sha256'],animation['library']:animation['library_sha256']}
+    wanted.update({r['file']:r['sha256'] for r in owner['dependencies']})
+    found=set();sources={};evidence=[]
+    for path in sorted((WS/'inventory').glob('client455*.json')):
+        report=json.loads(path.read_text(encoding='utf-8'));library=report.get('library')
+        if library not in wanted or report.get('library_sha256')!=wanted[library] or not report.get('source_sha256'):continue
+        found.add(library);evidence.append({'report':path.relative_to(WS).as_posix(),'sha256':sha(path.read_bytes())})
+        for name,digest in report['source_sha256'].items():
+            if not name.startswith('client455_') or not name.endswith('.cpp'):continue
+            source=native/name
+            if sha(source.read_bytes())!=digest:raise ValueError('Changed kernel algorithm:'+name)
+            sources[name]=source
+    if found!=set(wanted):raise ValueError('Missing kernel production source reports:'+str(set(wanted)-found))
+    return sorted(sources.values()),evidence
+
 def main():
     port=WS/'work/client455-port';root=port/'normal';native=WS/'scripts/native';art=WS/'artifacts/client455-normal';art.mkdir(parents=True,exist_ok=True)
     manifest=art/'sources.json';previous={r['file']:r['sha256'] for r in json.loads(manifest.read_text())} if manifest.exists() else {};records=[]
@@ -104,9 +122,21 @@ def main():
     cmake='cmake_minimum_required(VERSION 3.24)\nproject(RFNormal455 LANGUAGES CXX)\nif(NOT MSVC OR NOT CMAKE_SIZEOF_VOID_P EQUAL 4)\nmessage(FATAL_ERROR "MSVC x86 required")\nendif()\nadd_library(RFClient455Consumers OBJECT\n'+''.join(' "'+p.as_posix()+'"\n' for p in units)+')\n'
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
-    source=native/'client455_normal_facade.cpp';facade=root/'generated'/source.name;save(facade,source.read_bytes(),source)
-    cmake+='add_library(RFClient455Facade STATIC "'+facade.as_posix()+'")\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    facade_units=[]
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp']:
+        source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
+    cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    sources,kernel_evidence=kernel_sources(native);kernel_units=[]
+    for source in sources:
+        target=root/'generated/kernels'/source.name;save(target,source.read_bytes(),source);kernel_units.append(target)
+    cmake+='add_library(RFClient455Kernels STATIC '+''.join(' "'+p.as_posix()+'"' for p in kernel_units)+')\ntarget_include_directories(RFClient455Kernels PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_definitions(RFClient455Kernels PRIVATE _CRT_SECURE_NO_WARNINGS)\ntarget_compile_options(RFClient455Kernels PRIVATE /W3 /O2 /Gy /EHsc /MP4)\nset_target_properties(RFClient455Kernels PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     save(root/'CMakeLists.txt',cmake.encode());manifest.write_text(json.dumps(records,indent=2)+'\n')
-    report={'scope':'Actual180original client sources plus2production TU splits against455records/D3D9;open methods remain undefined','original_sources':180,'sources':len(units),'manifest':manifest.relative_to(WS).as_posix(),'manifest_sha256':sha(manifest.read_bytes()),'script_sha256':sha(Path(__file__).read_bytes()),'record_inputs':{name:sha((native/name).read_bytes()) for name in ['Character455.h','client455_normal_model.inc','client455_normal_mesh.inc','client455_normal_animation.inc','client455_normal_facade.cpp']},'legacy_character_linked':False,'baseline_modified':False,'engine033_modified':False}
-    (WS/'inventory/client455-normal-preparation.json').write_text(json.dumps(report,indent=2)+'\n');print('Prepared180originalsources+2production splits;no legacy Character library')
+    report={'scope':'Actual180original client sources plus2production TU splits against455records/D3D9;open methods remain undefined','original_sources':180,'sources':len(units),'manifest':manifest.relative_to(WS).as_posix(),'manifest_sha256':sha(manifest.read_bytes()),'script_sha256':sha(Path(__file__).read_bytes()),'record_inputs':{name:sha((native/name).read_bytes()) for name in ['Character455.h','client455_normal_model.inc','client455_normal_mesh.inc','client455_normal_animation.inc','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_renderer_math.h','client455_normal_renderer_constants.h']},'legacy_character_linked':False,'baseline_modified':False,'engine033_modified':False}
+    report['canonical_kernel_sources']=[p.relative_to(WS).as_posix() for p in kernel_units];report['kernel_source_reports']=kernel_evidence
+    snapshot=art/'pre-canonical-renderer-gpu.json'
+    if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
+    preserved=WS/'inventory/client455-normal-renderer-precanonical.json'
+    if not preserved.exists():preserved.write_bytes(snapshot.read_bytes())
+    report['precanonical_renderer_sha256']=sha(preserved.read_bytes())
+    (WS/'inventory/client455-normal-preparation.json').write_text(json.dumps(report,indent=2)+'\n');print('Prepared180originalsources+2production splits;canonical kernel sources:'+str(len(kernel_units)))
 if __name__=='__main__':main()

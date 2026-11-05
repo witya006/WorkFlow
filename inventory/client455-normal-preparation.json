@@ -3,16 +3,108 @@
   "original_sources": 180,
   "sources": 182,
   "manifest": "artifacts/client455-normal/sources.json",
-  "manifest_sha256": "a6c66b3c91d3966171c9b854f3bffe1b03dc40ac1a1fee52cc98328c12407def",
-  "script_sha256": "307014d351f936ee0d9a282645c0d802dc479f901750db70674d2b27d296d575",
+  "manifest_sha256": "c7b3607497fb36f6930d5cec3d7ddf5dcc11b3831285579ad729b7db8a49b0d8",
+  "script_sha256": "fc4ee37193aca5662d566b244ad6cc265b1cf7286c46679320ea77dca37e2ae6",
   "record_inputs": {
-    "Character455.h": "c83cc93d63c5232f1ceb818008b06bacd09763e50f140f89636b55ee5eccb0eb",
+    "Character455.h": "baf93d4d3103309876f55b6f9025ea4811f7ff5bc8771dfdedf6cf933f7c3017",
     "client455_normal_model.inc": "d8211416be497c9362d16f3432f290a9f56f4278b6e5cfee28b2080b96f57c44",
     "client455_normal_mesh.inc": "09ba3b485ef86cd09568175d9f13b4647a2515f6d85f8c03e317cad6a0be0a20",
     "client455_normal_animation.inc": "ea951ad733eb26e4a1bbc8d75bd657fb74f7059cc898a2b4839f2691b344fbce",
-    "client455_normal_facade.cpp": "ddb6d09a8be077d6c38c396340a35911bdf5792f3f8809f92f78511a48a310d1"
+    "client455_normal_facade.cpp": "8b96187e0f70e6105d186de7b5cf9986e5408386d0ef1e10b3aa777df7bfe0d5",
+    "client455_normal_renderer_math.cpp": "06af50155273a09dec6241191746736179608295a3e1ce2f3e46e6566d481b79",
+    "client455_normal_renderer_math.h": "fd8176f414e4270d9f02f9dbdda15222923b4e9dc6d22dcc1430ee44e3e4ca2b",
+    "client455_normal_renderer_constants.h": "11a0aa411f4ad7418394f3144ee3f6d99770e5ad3c0589428e6237612bc281eb"
   },
   "legacy_character_linked": false,
   "baseline_modified": false,
-  "engine033_modified": false
+  "engine033_modified": false,
+  "canonical_kernel_sources": [
+    "work/client455-port/normal/generated/kernels/client455_animation.cpp",
+    "work/client455-port/normal/generated/kernels/client455_animation_manager.cpp",
+    "work/client455-port/normal/generated/kernels/client455_character_draw.cpp",
+    "work/client455-port/normal/generated/kernels/client455_character_draw_core.cpp",
+    "work/client455-port/normal/generated/kernels/client455_character_manager.cpp",
+    "work/client455-port/normal/generated/kernels/client455_character_rfs.cpp",
+    "work/client455-port/normal/generated/kernels/client455_draw.cpp",
+    "work/client455-port/normal/generated/kernels/client455_legacy_model.cpp",
+    "work/client455-port/normal/generated/kernels/client455_legacy_runtime.cpp",
+    "work/client455-port/normal/generated/kernels/client455_mesh08.cpp",
+    "work/client455-port/normal/generated/kernels/client455_mesh_bindings.cpp",
+    "work/client455-port/normal/generated/kernels/client455_mesh_runtime.cpp",
+    "work/client455-port/normal/generated/kernels/client455_model_lifecycle.cpp",
+    "work/client455-port/normal/generated/kernels/client455_model_loader.cpp",
+    "work/client455-port/normal/generated/kernels/client455_pose.cpp",
+    "work/client455-port/normal/generated/kernels/client455_renderer_owner.cpp",
+    "work/client455-port/normal/generated/kernels/client455_secondary.cpp",
+    "work/client455-port/normal/generated/kernels/client455_shaders.cpp",
+    "work/client455-port/normal/generated/kernels/client455_shared_buffers.cpp",
+    "work/client455-port/normal/generated/kernels/client455_texture.cpp"
+  ],
+  "kernel_source_reports": [
+    {
+      "report": "inventory/client455-animation-build.json",
+      "sha256": "37135ad88fae83aadc2323ea485ce7a272a74b4dfc0281e192269752be068a68"
+    },
+    {
+      "report": "inventory/client455-animation-manager-build.json",
+      "sha256": "c4d06c318ab92e0505b578d63e8719b63f8bf65be7c946b70eba8dc25478180a"
+    },
+    {
+      "report": "inventory/client455-character-draw-build.json",
+      "sha256": "fe352d237bbb6d40c7f1f686793bfbecaa8f9baaeb7da8552e749de877eba5f9"
+    },
+    {
+      "report": "inventory/client455-character-manager-build.json",
+      "sha256": "940d4ee0dc104b20ff75e1154c2db1daf3dbee1f672fa58270fc98e71b949b2c"
+    },
+    {
+      "report": "inventory/client455-draw-build.json",
+      "sha256": "340f7d11cf319ad1416088825b166019a50b9e909b2e4c6bf103b2d7f5af3d16"
+    },
+    {
+      "report": "inventory/client455-legacy-models-build.json",
+      "sha256": "571f0e37af66baa748d8f099dd7634db2eed17ae4f74935c0db91a6ce34845a8"
+    },
+    {
+      "report": "inventory/client455-legacy-runtime-build.json",
+      "sha256": "29333704f5cdf73c163a1defa2ba1613a90aebe8913a1cf17e13579673c377b4"
+    },
+    {
+      "report": "inventory/client455-mesh-bindings.json",
+      "sha256": "05dfc8aa4f99a252ccba4c19e5eba2635f798d57b1b94240383c6dc0a6ce8c75"
+    },
+    {
+      "report": "inventory/client455-mesh-runtime.json",
+      "sha256": "07853652d66576f39b289476258bfc212ed3a846fe80fe526bdd560c72965c41"
+    },
+    {
+      "report": "inventory/client455-mesh08.json",
+      "sha256": "56e94e67fccd307a489ab8e13c49bb1fd673adbaf2b7e6a3b2a00b55962fa685"
+    },
+    {
+      "report": "inventory/client455-models-build.json",
+      "sha256": "711cabacb24e387bb256156478cc547f0ebca7d90bebb2b0a3d15060e267f8cc"
+    },
+    {
+      "report": "inventory/client455-pose-build.json",
+      "sha256": "856941f530bec1e363883129ae011ec6fb7a75799579d16af6f87e26852f11a7"
+    },
+    {
+      "report": "inventory/client455-renderer-owner-build.json",
+      "sha256": "04053735dc1b9805c3eeca4e576b3539225ffd73982e90193bc48ac547be5c9f"
+    },
+    {
+      "report": "inventory/client455-shaders-build.json",
+      "sha256": "a1dbfd204a4f5cbb3631e07de3a531bf0afcaa3e4d645b242098744068e67a36"
+    },
+    {
+      "report": "inventory/client455-shared-buffers-build.json",
+      "sha256": "addb6935557100ae3905bd915c99eb0f79440e9b1e78966eda8c134568e7ae00"
+    },
+    {
+      "report": "inventory/client455-texture-build.json",
+      "sha256": "d42898392278f2f52b2ead52809bc11bde9119d57a38a1687f5f4783f0268fc1"
+    }
+  ],
+  "precanonical_renderer_sha256": "b8e0b76a8a7c0869943a316a3f152d54da1f832a9f127665465b9a44ef68df34"
 }

@@ -11,7 +11,25 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — normal port 034, work/client455-port/normal. Все 180 исходных
+Последний участок — normal renderer 035.
+20 исходных CPP Character теперь собираются в RFClient455Kernels.lib с едиными
+типами normal/include; старые отдельные component archives не линковать в эту ветвь.
+Кадры до/после пересборки совпали. Происхождение кода — normal-preparation.json.
+Обычные CUnity/FrameMove/CRender рисуют
+реальную модель на D3D9. Два кадра через координаты/матрицу равны, фильтры видимости,
+alpha/material/свет/состояние и освобождение проверены. Полная линковка ещё открыта:
+27 методов/данных. research/client455-normal-renderer.md;
+inventory/client455-normal-renderer-checkpoint.json PARTIAL. M6/M6F/M7/M9 OPEN.
+
+Следом — оставшиеся контракты из normal-link.json: эффекты/таблицы/слоты,
+AnimationReset/RematchParent/SetEyeVec, SetTexPath/ImportBoundBox, shadow target
+и _R3CalculateTime. Переиспользовать готовые kernels. Затем полный RF_Online.bin
+и настоящий normal lifecycle/игровая приёмка. Отдельно выяснить инициализацию
+blendDuration +33844, profiling/static CRT trig, batch/ortho/reset/fullscreen.
+Тест задаёт blendDuration=150; нормальную инициализацию это не доказывает.
+
+Предыдущая очередь ниже — история.
+Предыдущий участок — normal port 034, work/client455-port/normal. Все 180 исходных
 клиентских единиц компилируются с типами 455/D3D9; после выделения CUnity/CAnimation
 получены 182 объекта x86/MT. Настоящие CAnimation и CUnityAniMgr загружают ANI.
 Полная линковка открыта: 39 методов/данных, без CharacterMR.
