@@ -35,6 +35,9 @@ def main():
         if sha(WS/item['file'])!=item['sha256']:raise ValueError('Changed actual consumer object')
     if sha(WS/run['exe'])!=run['exe_sha256'] or sha(WS/run['output'])!=run['output_sha256'] or sha(WS/run['fixture'])!=run['fixture_sha256'] or pe((WS/run['exe']).read_bytes())['entry_rva']!=int(run['entry_rva'],16):raise ValueError('Changed actual normal run')
     if run['native']['status']!='PASS' or run['native']['named_record_sizes']!=[1188,5803,284] or not run['native']['real_ani_loaded'] or run['native']['game_dlls_loaded']:raise ValueError('Incomplete normal consumer cases')
+    bbx=run['bbx_fixture']
+    if sha(WS/bbx['copy'])!=bbx['sha256'] or run['native'].get('model_contract_groups')!=5 or not run['native'].get('real_bbx_loaded'):raise ValueError('Incomplete model contract/BBX evidence')
+    if run['contracts_reference_sha256']!=sha(WS/'inventory/client455-normal-contracts-reference.json'):raise ValueError('Stale model contract reference')
     if not link['link_exit'] or link['other_errors'] or link['unique_unresolved']!=len(link['unresolved']) or not link['unresolved'] or link['legacy_character_linked'] or link['unresolved_forced']:raise ValueError('Unexpected current link state; inspect and update acceptance evidence')
     if sha(WS/link['log'])!=link['log_sha256'] or sha(WS/run['map'])!=run['map_sha256'] or sha(WS/'scripts/native/client455_normal_consumers_probe.cpp')!=run['source_sha256']:raise ValueError('Changed native evidence')
     mapping=(WS/run['map']).read_text(errors='replace')

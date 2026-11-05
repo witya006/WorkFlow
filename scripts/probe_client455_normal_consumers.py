@@ -27,11 +27,14 @@ def main():
     while (run/f'normal{index:03d}').exists():index+=1
     run=run/f'normal{index:03d}';run.mkdir();shutil.copyfile(exe,run/exe.name)
     fixture=WS/'work/client-reference/character-animation455/sample_001.ani';shutil.copyfile(fixture,run/'sample.ani');output=run/'result.json'
+    bbx=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])/'Character/Unit/Bone/GOLIATH.BBX';shutil.copyfile(bbx,run/'real.bbx')
     result=subprocess.run([str(run/exe.name),'.\\sample.ani',str(output)],cwd=run,capture_output=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)
     if result.returncode:raise ValueError('Normal consumer run failed:'+str(run/'console.txt'))
     native=json.loads(output.read_text());mapping=exe.with_suffix('.map').read_text(errors='replace')
     if 'CharacterMR' in mapping or native['status']!='PASS' or not native['real_ani_loaded']:raise ValueError('Incomplete own normal consumers')
     report={'scope':'Actual production split CUnity/CAnimation modules from global.cpp/CResObject.cpp withsource455ANI integration;not normal WinMain/game acceptance','architecture':'x86','exe':(run/exe.name).relative_to(WS).as_posix(),'exe_sha256':sha(exe),'entry_rva':hex(pe(exe.read_bytes())['entry_rva']),'native':native,'output':output.relative_to(WS).as_posix(),'output_sha256':sha(output),'fixture':fixture.relative_to(WS).as_posix(),'fixture_sha256':sha(fixture),'libraries':[{'file':p.relative_to(WS).as_posix(),'sha256':sha(p)} for p in libraries],'objects':[{'file':p.relative_to(WS).as_posix(),'sha256':sha(p)} for p in objects],'source_sha256':sha(source),'normal_build_sha256':sha(WS/'inventory/client455-normal-build.json'),'map':exe.with_suffix('.map').relative_to(WS).as_posix(),'map_sha256':sha(exe.with_suffix('.map')),'legacy_character_linked':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     report['definitions']=definitions
+    report['bbx_fixture']={'original':str(bbx),'copy':(run/'real.bbx').relative_to(WS).as_posix(),'sha256':sha(bbx)}
+    report['contracts_reference_sha256']=sha(WS/'inventory/client455-normal-contracts-reference.json')
     (WS/'inventory/client455-normal-consumers.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(native))
 if __name__=='__main__':main()

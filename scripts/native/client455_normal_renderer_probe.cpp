@@ -22,10 +22,18 @@ static int scene(IDirect3DDevice9* d,const char* fixture){
     ChInterface renderer;renderer.InitCharacter(d);renderer.native.blendDuration=150;g_ifCharIF=&renderer;
     CUnityBoneMgr bones;CUnityMeshMgr meshes;CUnityAniMgr animations;R_REQUIRE(bones.Create() && meshes.Create() && animations.Create());
     auto* root=bones.AddBone(RLI_MONSTER,paths[1]);auto* model=meshes.AddMesh(RLI_MONSTER,paths[0],root);R_REQUIRE(root && model && !root->m_Load && !model->m_Load);
-    std::strcpy(root->legacy_texture_path,".\\tex");std::strcpy(model->legacy_texture_path,".\\tex");
+    renderer.SetTexPath(root,".\\tex");renderer.SetTexPath(model,".\\tex");
     R_REQUIRE(bones.GetBone(RLI_MONSTER,root->m_ID)==root && root->m_Load && meshes.GetMesh(RLI_MONSTER,model->m_ID)==model && model->m_Load);
     auto* animation=animations.AddAni(RLI_MONSTER,paths[2]);R_REQUIRE(animation && renderer.IsLoadAnimation(animation) && animation->m_Load);
-    renderer.MatchAnimationToMesh(animation,root);root->m_Frame=model->m_Frame=160;renderer.FrameMove(root);renderer.FrameMove(model);
+    renderer.MatchAnimationToMesh(animation,root);const DWORD originalMax=root->m_OMaxFrame;R_REQUIRE(originalMax>160);
+    renderer.AnimationReset(root);R_REQUIRE(root->m_Frame==160 && root->m_OMaxFrame==0);
+    for(unsigned i=0;i<root->m_MaxObj;++i)R_REQUIRE(!root->m_pMesh[i].bytes[5094] && !read<unsigned>(root->m_pMesh+i,5095));
+    renderer.MatchAnimationToMesh(animation,root);R_REQUIRE(root->m_OMaxFrame==originalMax);
+    renderer.RematchParent(root,model);unsigned rematched=0;
+    for(unsigned i=0;i<model->m_MaxObj;++i){const auto& mesh=model->m_pMesh[i];if(!read<unsigned>(&mesh,5495))continue;
+        auto* expected=RF455_FindParentMesh(mesh.parentName,root->m_pMesh,static_cast<int>(root->m_MaxObj));
+        if(expected){R_REQUIRE(mesh.m_pParent==expected && mesh.m_HaveParent);++rematched;}}
+    R_REQUIRE(rematched>0);root->m_Frame=model->m_Frame=160;renderer.FrameMove(root);renderer.FrameMove(model);
     f=std::fopen(paths[0],"rb");R_REQUIRE(f);std::fseek(f,0,SEEK_END);const long meshLength=std::ftell(f);std::rewind(f);std::vector<unsigned char> meshRaw(meshLength);R_REQUIRE(std::fread(meshRaw.data(),1,meshRaw.size(),f)==meshRaw.size());std::fclose(f);std::vector<RF455Mesh08Part> inputParts(128);RF455Mesh08View inputView={};R_REQUIRE(RF455_DecodeMesh08(meshRaw.data(),meshRaw.size(),inputParts.data(),inputParts.size(),&inputView)==RF_MESH08_OK);
     R_REQUIRE(model->m_MaxObj==inputView.meshCount && renderer.native.vertexMode==4);
     const float position[3]={1,2,-3};
@@ -62,5 +70,5 @@ int main(int argc,char** argv){
     if(argc!=3)return 2;const unsigned before=GetDmallocSize();InitR3Engine();IDirect3D9* api=Direct3DCreate9(D3D_SDK_VERSION);R_REQUIRE(api);HWND window=CreateWindowExA(0,"STATIC","Owned normal455renderer test",WS_OVERLAPPEDWINDOW,0,0,256,256,nullptr,nullptr,GetModuleHandleA(nullptr),nullptr);R_REQUIRE(window);
     D3DPRESENT_PARAMETERS pp={};pp.Windowed=TRUE;pp.hDeviceWindow=window;pp.BackBufferWidth=pp.BackBufferHeight=256;pp.BackBufferFormat=D3DFMT_X8R8G8B8;pp.SwapEffect=D3DSWAPEFFECT_DISCARD;pp.EnableAutoDepthStencil=TRUE;pp.AutoDepthStencilFormat=D3DFMT_D16;IDirect3DDevice9* d=nullptr;R_REQUIRE(SUCCEEDED(api->CreateDevice(0,D3DDEVTYPE_HAL,window,D3DCREATE_SOFTWARE_VERTEXPROCESSING|D3DCREATE_FPU_PRESERVE,&pp,&d)));
     R_REQUIRE(scene(d,argv[1])==0);for(unsigned i=0;i<8;++i)d->SetTexture(i,nullptr);d->SetStreamSource(0,nullptr,0,0);d->SetIndices(nullptr);d->SetVertexShader(nullptr);d->SetPixelShader(nullptr);d->SetVertexDeclaration(nullptr);RF455_ReleaseNormalCharacterSharedResources();ReleaseR3Engine();const auto refs=d->Release(),apiRefs=api->Release();DestroyWindow(window);R_REQUIRE(!refs && !apiRefs && GetDmallocSize()==before);
-    R_REQUIRE(!GetModuleHandleA("mss32.dll") && !GetModuleHandleA("ABuse.dll") && !GetModuleHandleA("Adv.dll") && !GetModuleHandleA("PDLL.dll"));FILE* f=std::fopen(argv[2],"wb");R_REQUIRE(f);std::fputs("{\"status\":\"PASS\",\"normal_unity_model_pipeline\":true,\"animated_frames\":2,\"matrix_wrapper_equal_frames\":2,\"geometry_parts\":46,\"filter_cases\":3,\"alpha_material_checked\":true,\"device_refs\":0,\"dmalloc_balance\":0,\"game_dlls_loaded\":false}\n",f);std::fclose(f);return 0;
+    R_REQUIRE(!GetModuleHandleA("mss32.dll") && !GetModuleHandleA("ABuse.dll") && !GetModuleHandleA("Adv.dll") && !GetModuleHandleA("PDLL.dll"));FILE* f=std::fopen(argv[2],"wb");R_REQUIRE(f);std::fputs("{\"status\":\"PASS\",\"normal_unity_model_pipeline\":true,\"animated_frames\":2,\"matrix_wrapper_equal_frames\":2,\"geometry_parts\":46,\"filter_cases\":3,\"alpha_material_checked\":true,\"real_animation_reset_reattach\":true,\"real_mesh_rematch\":true,\"texture_path_method\":true,\"device_refs\":0,\"dmalloc_balance\":0,\"game_dlls_loaded\":false}\n",f);std::fclose(f);return 0;
 }

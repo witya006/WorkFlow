@@ -1544,6 +1544,16 @@
       "evidence":["inventory/client455-normal-renderer-reference.json","inventory/client455-normal-renderer-math.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-renderer-precanonical.json","inventory/client455-normal-renderer-checkpoint.json","inventory/client455-normal-link.json","research/client455-normal-renderer.md"],
       "gaps":["Remaining effects/reset/parent/eye/bounds/shadowtarget/time/texturepath/data contracts","Original profiling-staticCRTtrig-FPspecial-errorpolicy andblendDuration initialization unproven","Fullnormal lifecycle/batch/ortho/reset/fullscreen/gameplay/UI/network andoriginalgameframe parity;M6-M6F-M7-M9 OPEN"]
     }
+    ,{
+      "id":"CLIENT455-NORMAL-CONTRACTS-036",
+      "status":"partial",
+      "description":"Normal animation reset, parent rematch, eye matrix, texture path and BBX reader contracts",
+      "implementation":["scripts/native/client455_normal_contracts.cpp","scripts/native/client455_normal_model.inc"],
+      "reference":[{"rva":"0x531fb0","role":"AnimationReset"},{"rva":"0x531a80","role":"RematchParent"},{"rva":"0x531ac0","role":"SetEyeVec"},{"rva":"0x208140","role":"SetTexPath"},{"rva":"0x531810","role":"ImportBoundBox"}],
+      "verification":"Ten body/caller ranges equal both455pins. Five contract groups include disabled/enabled reset and retained borrowed keys, exact-name rematch, complete matrix copy, path limits, real GOLIATH.BBX and partial reads. Real BN/MESH08/ANI reset-reattach-rematch-pose-HAL preserves previous two frame hashes. All182client/3facade/20canonicalCPP compile; full link22unresolved without other errors. No large unchanged suites repeated.",
+      "evidence":["inventory/client455-normal-contracts-reference.json","inventory/client455-normal-consumers.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","inventory/client455-normal-contracts-checkpoint.json","research/client455-normal-contracts.md"],
+      "gaps":["Remaining effects/tables/particle slots/shadow targets/Character clock/accounting","Normal blend enable/duration/elapsed producers and complete actor lifecycle","Original failure/CRT policies, normal WinMain and gameplay/UI/network acceptance; M6/M6F/M7/M9 OPEN"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

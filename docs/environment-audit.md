@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, normalcontracts036: новых установок нет. Пять методов модели
+и сброса анимации455 подключены к обычному x86/MT facade. Реальные BBX и модель
+после reset/reattach/rematch прошли, прежние два GPUкадра совпали. Сборка182client/
+3facade/20kernelCPP успешна; полный линк22метода/данных, M9OPEN. Большие
+неизменённые suites не повторялись. IDAb8160cd3closed/saved=true.
+research/client455-normal-contracts.md; inventory/client455-normal-contracts-checkpoint.json.
+
 Дополнение 05.11, normal renderer035: новые установки не требовались. Обычные
 CUnity/модель/поза/CRender рисуют два кадра на D3D9; координатная и матричная
 обёртки дали одинаковые кадры, COM/Dmalloc после явного завершения 0. Макросы

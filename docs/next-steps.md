@@ -1,6 +1,6 @@
 # Ближайшие действия — только клиент
 
-Обновлено 2026-11-05. /Goal — M9: финальная приёмка клиента455 без модернизации
+Обновлено 2026-11-06. /Goal — M9: финальная приёмка клиента455 без модернизации
 графики. M8 не требуется. Критерии docs/client-acceptance.md. Серверы/БД/GoMMO server
 logic не разрабатывать; серверные исходники только читать как справочник.
 Оригинальные EXE не исполнять, изменения только в собственных копиях/work/.
@@ -11,7 +11,19 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — normal renderer 035.
+Последний участок — normal contracts036. AnimationReset/RematchParent/SetEyeVec,
+SetTexPath/ImportBoundBox подключены и проверены. Реальная модель прошла сброс,
+повторное назначение ANI и перепривязку родителей; два кадра совпали с035.
+Все182client+3facade+20kernelCPP собираются; полный линк22символа без других
+ошибок. research/client455-normal-contracts.md; checkpoint PARTIAL. M9 открыт.
+
+Следом — оставшиеся22: эффекты/таблицы/particleSlots/entitySlot, shadow targets,
+_R3CalculateTime и accounting. Готовые методы не восстанавливать повторно.
+Отдельно найти normal включение renderer33840/инициализацию33844/продвижение
+blendelapsed692 и полный actor lifecycle; включённый reset проверен искусственно,
+нормальную инициализацию это не доказывает. Затем полный RF_Online.bin и приёмка.
+
+Предыдущий участок — normal renderer 035.
 20 исходных CPP Character теперь собираются в RFClient455Kernels.lib с едиными
 типами normal/include; старые отдельные component archives не линковать в эту ветвь.
 Кадры до/после пересборки совпали. Происхождение кода — normal-preparation.json.
@@ -21,7 +33,7 @@ alpha/material/свет/состояние и освобождение пров�
 27 методов/данных. research/client455-normal-renderer.md;
 inventory/client455-normal-renderer-checkpoint.json PARTIAL. M6/M6F/M7/M9 OPEN.
 
-Следом — оставшиеся контракты из normal-link.json: эффекты/таблицы/слоты,
+Историческая очередь035, заменена текущей выше: эффекты/таблицы/слоты,
 AnimationReset/RematchParent/SetEyeVec, SetTexPath/ImportBoundBox, shadow target
 и _R3CalculateTime. Переиспользовать готовые kernels. Затем полный RF_Online.bin
 и настоящий normal lifecycle/игровая приёмка. Отдельно выяснить инициализацию

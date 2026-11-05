@@ -1,6 +1,6 @@
 # Память проекта
 
-Обновлено 2026-11-05. Root `E:\RFOnlineTrash\Source\WorkFlow`.
+Обновлено 2026-11-06. Root `E:\RFOnlineTrash\Source\WorkFlow`.
 Сокращена для продолжения работы без повторного чтения устаревших очередей.
 Полная предыдущая память сохранена в research/project-memory-pre-pose.md;
 подробные доказательства — research/ и inventory/.
@@ -22,6 +22,32 @@
   не показатель готовности; приоритет — работающий восстановленный клиент.
 
 ## Последний проверенный результат
+
+Normal contracts036: client455_normal_contracts.cpp подключён третьим CPP
+к RFClient455Facade.lib. AnimationReset931FB0, RematchParent931A80,
+SetEyeVec931AC0, SetTexPath608140, ImportBoundBox931810→93BF90 восстановлены.
+10body/caller ranges equalboth455pins; inventory/client455-normal-contracts-reference.json.
+Reset при current && renderer33840 сохраняет descriptor32 вprevious5099 (keys
+borrowed), model680=1/684=oldframe/688=oldmax/692=0; always mesh5094/5103=0,
+current5095=null/alpha5131=1, model frame160/max0. Disabled/nullcurrent retains
+previous. Namedmodel680..692 теперьcanonical fields, size1188 unchanged.
+Rematch используетготовый93BB70 только дляexternal5495, firstexactname.
+Eye64bytes→5503/flag5499, texturestrncpy255→276 leaveslastbyte.
+BBX loose rb:skip256,second12thenfirst12;shortreadreturns1/preservesunwritten.
+Fivegroups inclsynthetic enabledreset/retainedprevious/names/pathlimits/realGOLIATH
+BBX+malformed passed, actualCUnity/CAnimation twoANI passed. RealBN/MESH08/ANI
+reset→reattach→rematch→pose→HAL passed;2frames equal035precanonical,COM/Dmalloc0.
+182client+3facade+20canonicalCPP compile0errors. Fullnormal link22unresolved,
+noothererrors; actualMAPall5providersclient455_normal_contracts.obj.
+All3normal checkpoints PARTIAL. M6/M6F/M7/M9OPEN. Researchclient455-normal-contracts.md.
+Remaining22:effects/tables/particle/entityslots/shadowtargets/Characterclock/accounting.
+Do notrepeatdonekernels. Normal33840enabling/33844init/blendelapsedadvance/actor
+lifecycle stillopen; enabledresettest setsflag explicitly, GPUduration150explicit.
+Bad_alloc ownedOOMpolicy,notoriginalfailureparity. OriginalCRT/profiling/fullnormal
+WinMain/gameplay/UI/network stillopen. Largeunchangedsuitesnotrerun.
+OwnedIDAb8160cd3closed/saved=true. Baseline/engine033/originals/serveruntouched.
+
+Предыдущий результат:
 
 Normal renderer035:
 В этой новой ветви 20productionCPP Character пересобираются в RFClient455Kernels.lib

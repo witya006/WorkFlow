@@ -1,0 +1,38 @@
+{
+  "status": "PARTIAL",
+  "restored_methods": [
+    "AnimationReset",
+    "RematchParent",
+    "SetEyeVec",
+    "SetTexPath",
+    "ImportBoundBox"
+  ],
+  "contract_scenarios": "PASS",
+  "real_model_reset_reattach_rematch": "PASS",
+  "previous_two_frames_equal": true,
+  "normal_client_objects": 182,
+  "canonical_kernel_objects": 20,
+  "full_normal_link": "OPEN",
+  "remaining_unresolved": 22,
+  "evidence_sha256": {
+    "client455-normal-preparation": "6adee8aa8883d8bed89bd70a9047328db4dc536c2fda785cf9e94c6c92e51a31",
+    "client455-normal-build": "0a8aa183c74f749298580791b488a367b50afb49a13cdeba5e3b158a894c4a17",
+    "client455-normal-consumers": "1b9fc78c8dfef1393e1194d7431da3ca15b7059807d9e49ca75311f7d432e880",
+    "client455-normal-renderer-gpu": "d3888db9ddc26824dcc2f7f4873e4e2a060455133c052a7158ede5ec861743a4",
+    "client455-normal-link": "68e484036774d8658ffd9c3cb82147cc0b88db718b111c0872b2d607af0ed3d8",
+    "client455-normal-contracts-reference": "f3947604473b4024e2b8a02dad964bd67e4d2ad2c0cdbcbe431bf60795b39a9f"
+  },
+  "gaps": [
+    "Original OOM/unchecked-pointer failure behavior not reproduced;modern allocator throws bad_alloc",
+    "Renderer33840 constructor sets0;normal producers enabling blend and initializing33844remain unproven",
+    "Model blend elapsed advancement andcomplete actor lifecycle still open;reset alone doesnot establish timed blending",
+    "Effects/particle slots/shadow targets/accounting/Character clock still unresolved",
+    "Full normal WinMain,gameplay,UI,network and455behavioral acceptance remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

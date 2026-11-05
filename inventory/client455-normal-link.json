@@ -2,7 +2,7 @@
   "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
   "link_exit": 1120,
   "client_objects": 182,
-  "unique_unresolved": 27,
+  "unique_unresolved": 22,
   "unresolved": [
     {
       "symbol": "?InitEffect@CRender@@QAEXPAURF455CharacterStorage@@@Z",
@@ -33,31 +33,6 @@
       "objects": [
         "cbasenpc.obj",
         "cgp_login.obj"
-      ]
-    },
-    {
-      "symbol": "?AnimationReset@ChInterface@@QAEXPAURF455CharacterStorage@@@Z",
-      "declaration": "public: void __thiscall ChInterface::AnimationReset(struct RF455CharacterStorage *)",
-      "objects": [
-        "cbaseplayer.obj",
-        "cresobject.obj"
-      ]
-    },
-    {
-      "symbol": "?RematchParent@ChInterface@@QAEXPAURF455CharacterStorage@@0@Z",
-      "declaration": "public: void __thiscall ChInterface::RematchParent(struct RF455CharacterStorage *,struct RF455CharacterStorage *)",
-      "objects": [
-        "cbaseplayer.obj",
-        "cgp_charactercreate.obj"
-      ]
-    },
-    {
-      "symbol": "?SetEyeVec@ChInterface@@QAEXPADPAURF455CharacterStorage@@UD3DXMATRIX@@@Z",
-      "declaration": "public: void __thiscall ChInterface::SetEyeVec(char *,struct RF455CharacterStorage *,struct D3DXMATRIX)",
-      "objects": [
-        "cbaseplayer.obj",
-        "ccharactermgr.obj",
-        "monsterspecialeffect.obj"
       ]
     },
     {
@@ -153,24 +128,10 @@
       ]
     },
     {
-      "symbol": "?SetTexPath@ChInterface@@QAEXPAURF455CharacterStorage@@PAD@Z",
-      "declaration": "public: void __thiscall ChInterface::SetTexPath(struct RF455CharacterStorage *,char *)",
-      "objects": [
-        "cresourcedatamgr.obj"
-      ]
-    },
-    {
       "symbol": "?g_ChMemoryInfo@@3UCHMEMORYINFO@@A",
       "declaration": "struct CHMEMORYINFO g_ChMemoryInfo",
       "objects": [
         "foreffect.obj"
-      ]
-    },
-    {
-      "symbol": "?ImportBoundBox@ChInterface@@QAEHPADPAM1@Z",
-      "declaration": "public: int __thiscall ChInterface::ImportBoundBox(char *,float *,float *)",
-      "objects": [
-        "global.obj"
       ]
     },
     {
@@ -204,16 +165,16 @@
   ],
   "other_errors": [],
   "log": "artifacts/client455-normal/normal-link.txt",
-  "log_sha256": "e9c1f341bee72deebb41a05b824b696ec7a46a822929bf65ab2055783b631fa6",
-  "normal_build_sha256": "ad43e9833e97d60027e35025a68be8a1ed8e9308064d1d9db09ba8535a35a0cd",
+  "log_sha256": "c46f2ab8b6fe6394102560b3d21592cbda7b0caac9499782f466c357aacc48ec",
+  "normal_build_sha256": "0a8aa183c74f749298580791b488a367b50afb49a13cdeba5e3b158a894c4a17",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "7b56a4eaf7e194cb02278e56ebcea0bd16ff19ae7c4b662132ed36a6b6f18962"
+      "sha256": "c7a8ca51e920a208179514d8ed77ea70d998a6d9cedd753de2e87b6bcc16c704"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "954be4ccbc46730ad915a770e25f8a9eb4b8152e9359ab50e587a0471f5f7154"
+      "sha256": "ccfd69d5ffba94102fc49a48620214ff87b1e5a3f2911eb6be071c85cdcada72"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",

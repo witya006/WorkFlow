@@ -27,6 +27,7 @@ def main():
     if not any(p['file'].endswith('/RFClient455Kernels.lib') for p in gpu['libraries']) or any('/work/recovered/client455/' in '/'+p['file'] and p['file'].endswith('.lib') and 'x87-math' not in p['file'] for p in gpu['libraries']):raise ValueError('Normal path uses old separately compiled storage definitions')
     n=math['native'];g=gpu['native']
     if [n['angle_cases'],n['box_cases'],n['fp_modes']]!=[96,60,12] or not g['normal_unity_model_pipeline'] or [g['animated_frames'],g['matrix_wrapper_equal_frames'],g['geometry_parts'],g['filter_cases']]!=[2,2,46,3] or g['device_refs'] or g['dmalloc_balance'] or g['game_dlls_loaded'] or not g['alpha_material_checked']:raise ValueError('Incomplete changed contracts')
+    if not all(g.get(name) for name in ['real_animation_reset_reattach','real_mesh_rematch','texture_path_method']):raise ValueError('Real model contracts not exercised')
     if len(gpu['frames'])!=2 or gpu['frames'][0]['sha256']==gpu['frames'][1]['sha256']:raise ValueError('No animation change')
     for frame in gpu['frames']:
         if sha(WS/frame['file'])!=frame['sha256'] or sha(WS/frame['preview'])!=frame['preview_sha256']:raise ValueError('Changed rendered frame')
@@ -38,5 +39,6 @@ def main():
     names=['client455-normal-build','client455-normal-consumers','client455-normal-link','client455-normal-renderer-reference','client455-normal-renderer-math','client455-normal-renderer-gpu']
     report={'status':'PARTIAL','normal_model_pose_draw':'PASS','world_and_matrix_wrappers_equal':True,'visibility_alpha_material_state':'PASS','full_normal_executable_link':'OPEN','unresolved_symbols':link['unique_unresolved'],'evidence_sha256':{n:sha(WS/f'inventory/{n}.json') for n in names},'gaps':['Remaining named methods/data:effects/reset/parent/bounds/shadow-target/time/texture-path','Original staticCRT trig/profiling andallFP-special/failure policies notcertified','Renderer blendDuration constructor bytes unwritten;normal initialization remainsunproven;test explicitlysets150','Batch/orthographic/device-reset/fullscreen/fullnormal shutdown/gameplay/UI/network acceptance open','No original455gameframe parity;owncamera/renderedfixture evidence only'],'legacy_character_linked':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     report['canonical_kernel_objects']=build['canonical_kernel_objects'];report['precanonical_frames_equal']=True
+    report['gaps'][0]='Remaining named methods/data:effects/particle-slots/shadow-target/time/accounting'
     (WS/'inventory/client455-normal-renderer-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:actual normalCUnity/model/pose/draw/2frames PASS;fullRF_Online link OPEN;M6/M9 OPEN')
 if __name__=='__main__':main()

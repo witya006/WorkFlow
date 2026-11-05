@@ -45,7 +45,7 @@ def main():
         report['definitions']=definitions
         if mode=='gpu':
             previous=WS/'inventory/client455-normal-renderer-precanonical.json';before=json.loads(previous.read_text())
-            if native!=before['native'] or [r['sha256'] for r in frames]!=[r['sha256'] for r in before['frames']]:raise ValueError('Canonical header rebuild changed renderer output')
+            if any(native.get(k)!=v for k,v in before['native'].items()) or [r['sha256'] for r in frames]!=[r['sha256'] for r in before['frames']]:raise ValueError('Normal renderer changed previous behavior/frames')
             report['precanonical_frames_equal']=True;report['precanonical_report_sha256']=sha(previous)
         (WS/f'inventory/client455-normal-renderer-{mode}.json').write_text(json.dumps(report,indent=2)+'\n');print(mode,json.dumps(native))
 if __name__=='__main__':main()
