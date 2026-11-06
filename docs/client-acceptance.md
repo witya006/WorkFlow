@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок063: текущие GDI byte width/DBCS fit/кэш высоты и геометрия обычного
+CGUIText проверены независимым Win32 oracle и Korea/Russia GUI/D3D probes.
+Own lifecycle adapter устраняет pre-main доступ к не созданному font provider
+базы0.7. Полная новая PE собирается, existingCreate1 сохранён. Полные TextBoard/
+scrollbar, FreeType/16byte font scale, briefing и Tutorial ещё не приняты.
+[Доказательства](../research/client455-text-metrics.md). M6/M6F/M7/M9 OPEN.
+
 Участок062: обычные modal button bindings/67×21/ND106–107, outline/colors/
 margins, Enter/Esc/Y/N и mouse1/2/3 проверены на реальных Korea/Russia GUI/D3D.
 Новая полная PE собирается, existingCreate=1. Ошибка спрайтов061 исправлена.

@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок063: normal CGUIText получил measured GDI geometry и target style
+fallthrough, byte width/DBCS fit/first-height cache. Ранние запросы0.7 отложены
+до создания реального шрифта; destroyed pending labels удаляются. Korea/Russia
+native exit0, независимый GDI oracle, реальные GUI размеры и финальные PNG
+проверены. Production71bc4b21…/entry14D7C0,182/20/26TU,0unresolved,
+existingCreate1; font/modal регрессии прошли. Далее064 — полный CGUITextBoard:
+fragment/line caches, markup, перенос/retention/margins/relayout и общий
+CGUIScrollbar. Затем весь briefing, actualhost/Avatar/world/Tutorial/fourstage.
+FreeType и16byte FONT_INFO/float scale остаются OPEN. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-text-metrics.md).
+
+Предыдущий результат:
+
 Участок062: обычные modal controls/outline/input перенесены в normal sources.
 Korea/Russia GUI/D3D probes exit0, исправлен видимый sprite mismatch061. Размеры
 67×21, captions106/107, цвета, margins7, Esc3/Enter1/YN/mouse1–3/nested/focus/
@@ -575,26 +588,16 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Восстановить full Character455 draw/mesh submit/state/constants/palette/material
-   и shader selection, затем связанный normal typedmodel/animation/renderer путь.
-   Bootstrap028 готов на HAL; не подменять только CUnity manager из-за разных ABI.
-   Для этого же пути завершить FrameMove fidelity:originalstatic__CIsin473340/SSE/default contract,
-   полный actor lifecycle/secondary binding, transition consumers и
-   normal CUnity/CAniData calls. Коллекция AnimationManager и record ownership
-   готовы в027; async worker уточнять по реальным callers, не по наличию тела.
-   Численный producer/known84 defaults готовы в025,
-   elapsed clock в026; повторно их не исследовать без новых фактов. RTMovie scale
-   caller ещё открыт, весь cinematic subsystem не объявлять восстановленным.
-   Основныеpose/skinmatrix иsecondary source готовы;secondary requires mathcontext,
-   missingbackend возвращаетRF_POSE_SECONDARY. Raw584secondaryinstructions+borrower
-   7CD430cached;неповторятьэтотreverse. State84borrowedfromactor+500→model1184,
-   globals28sharedacrosscharacters. CRTlabbackendmodernsin явнонеbitparity.
-2. Далее skinning/draw,455declarations/shaders и normal typed consumers.
-   Legacy parent/count/mesh268/528/532 отличается от455272/532/536; rawcast запрещён.
-3. Восстановить полный D3D9renderer455/lighting/effects/device lifecycle вместе
-   с consumers Character. Это обязательное соответствие M6, не модернизация M8.
-   Продолжать другие M6 клиентские области по feature/scenario matrix: UI/input,
-   клиентская сеть, game states, предметы/действия, звук и остальные выявленные.
+1. Участок064: полный TextBoard/scrollbar и необходимые typed FONT_INFO/scale
+   контракты; полные инструкции layout/markup перед переносом. Метрики063 и
+   modal062 уже в ordinary sources; не повторять их reverse без новых фактов.
+2. Полный briefing, concrete Avatar/world/input/frame/feedback/local handlers,
+   actual Tutorial и совместные четыре stage/explicit-next переходы455.
+3. Реальный login UI/оставшийся клиентский протокол/world transitions и остальные
+   M6 области по feature registry. AES/TCP/account foundations уже реализованы;
+   успешный TCP/Create не равен входу в игру. Закрыть оставшиеся renderer/actor/
+   lifecycle/numeric/error/IME/audio/ресурсные gaps. Восстановленные Character
+   model/animation/draw части не исследовать повторно без конкретного расхождения.
 4. M6F: полный реестр возможностей и расхождений; сценарии с одинаковыми ресурсами,
    настройками, входами и состояниями. Закрывать пробелы по client-acceptance.md.
 5. M7: воспроизводимая поддерживаемая сборка, зависимости и проверки.
@@ -630,18 +633,27 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Воспроизведение последнего модуля
 
-Актуальный052: audit_client455_connection.py; стандартные prepare/build/
+Актуальный063: audit_client455_text_metrics.py → prepare_client455_normal.py →
+build_client455_normal.py → probe_client455_normal_consumers.py →
+link_client455_normal.py. Затем probe_client455_text_metrics.py и затронутые
+font/modal probes; audit_client455_startup.py/audit_client455_own_entry.py,
+probe_client455_startup.py и probe_client455_device_startup.py --after-create.
+Gate checkpoint_client455_text_metrics.py; все команды через Invoke-Python.ps1.
+Повторять только при изменении соответствующих исходников/входов. Полный
+исторический перечень ниже не является обязательным набором каждого запуска.
+
+Исторический052: audit_client455_connection.py; стандартные prepare/build/
 normalconsumers/link/own-entry/startup-audit; probe_client455_connection.py.
 Затем startup(Korea/Russia), device/create/after-create и checkpoint_connection.
 Startup/device scripts создают свежие временные TCPfixtures. Russia trace
 имеет before_client_connect marker; без fake адреса/успеха. Только Invoke-Python.ps1.
 
-Актуальный051: audit_client455_network_codec.py (проверяет и генерирует private
+Исторический051: audit_client455_network_codec.py (проверяет и генерирует private
 constants из pin) → prepare_client455_normal.py → build → normal consumers →
 link. Затем probe_client455_network_codec.py и own startup/device/after-create
 пробы; checkpoint_client455_network_codec.py. Все Python через Invoke-Python.ps1.
 
-Актуальный050: audit_client455_bootstrap.py → prepare_client455_normal.py →
+Исторический050: audit_client455_bootstrap.py → prepare_client455_normal.py →
 build_client455_normal.py → probe_client455_normal_consumers.py →
 link_client455_normal.py → audit_client455_own_entry.py / audit_client455_startup.py.
 Затем probe_client455_bootstrap.py, актуальные own startup/contracts/device/

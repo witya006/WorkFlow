@@ -23,6 +23,49 @@
 
 ## Последний проверенный результат
 
+Text-metrics063: normal CGUIText.SetString calls source-owned byte-width
+geometry; 80000000 intermediate8*cells/16 overwritten by ordinary size unless
+40000000 sets final16*WORD(width/12)/32. SetFont only copies,no recalc.
+New native/client455_text_metrics.{h,cpp},gui_text_size.inc,gui_text_metrics.cpp.
+GDI measure uses GetTextExtentPoint32A, fit uses GetTextExtentExPointA then
+language isLead(fit-1) decrement. Exact raw byte prefix may cut DBCS;FFFF full,
+zero/null width0. Default height measures EMPTY AA8DD4 once,retains across reload.
+GDI zero-cy fallback is cellHeight. Full FreeType/Unicode route remainsOPEN.
+Target FONT_INFO16 has float scale1.0 at+12,NOT link identifier;typed scale/draw
+stillOPEN. LegacyTextBoard2000byte-count algorithm not accepted as455.
+
+Initial ownPE19821d65 pre-main C0000005/ownRVA5F034 read10: legacy globalGUI
+SetString ran before RF455GdiFont construction. Trace work/m9/19821d65/text-
+metrics-ko-kr-001/metric-debug.jsonl. Fixed by owned pending geometry queue:
+register backend PODcallback,flush after successful real font creation,
+ForgetGuiText in normal destructor removes destroyedpending;registryAlive guards
+late global teardown. This is0.7port adaptation,NOT target lifecycle claim.
+Native global EarlyText+temporary deletion+real sizes/clean exit checked.
+
+15ranges/emptyliteral equalbothpins,5completeasm; IDAe13a414e closed/save.
+Raw artifacts/client455-tutorial/{textboard-initial063,textboard-metrics063,
+text-metrics-reference063,063-*-asm}.json. Reports inventory/client455-text-
+metrics-{reference,native,checkpoint}.json;research/client455-text-metrics.md.
+Native fixture source UTF8 literals initially mojibake under legacy cl source
+codepage;fixed universal Unicode escapes+roundtrip. Final PNGs viewed,correct
+Hangul/Russian. Current ownPEf7cd59ce7a634a6c3765ea3cef46e5cb3904d202a3e25336e511cfc99f3bef51,
+entryE2780,naturalexit0. Korea50prefix/260fit,Russia48/276oracle cases;
+actualCGUIText/highflags/noSetFontrecalc/NULL/DBCS/cache reload allpassed.
+Viewport640×480,271/304pixels;counts are localassertions,NOT completeness.
+Production71bc4b210a88d6f66693d321e8b3b5099d8b04818b9ad6ad4ac4367ba19e8fc4,
+x86/base400000/entry14D7C0/2025984bytes,182client20kernel26facade,0unresolved.
+Normal width/defaultheight/geometry providers linked;fit helper only used in
+fullobject probe untilTextBoard caller port. RequiredCUnity/CAnimation passed.
+Generator manifest/preparation idempotent. Engine archive unchanged.
+Currentaffectedfont/modalKoRu probes PASS;exactnewPE WinMain/TCPfixture/engine/
+D3D/Character/existingCreate1 passed,stopbeforeloop,noauth/gameclaim.
+Next064 fullTextBoard fragment/line cache/markup/wrap/retention/margins/scroll
+and shared scrollbar;thenfullbriefing/actualTutorial/fourstage. FullFreeType/
+16byte scale,olditemtail25/camera276/cursor/numeric/errors retainedOPEN.
+No largeunchangedsuites/server/inputEXEexecution. M6/M6F/M7/M9OPEN.
+
+## Предыдущий перенос — modal062
+
 Modal062: ordinary CGUIMessagebox/CGUIDialogBox modified via prepare_normal,
 not separate fake dialog. New native client455_modal.{h,cpp},modal_init.inc,
 dialog_input.inc. Bothbuttons commonID1/action1/frames0normal1hover2press3disabled;
@@ -1200,7 +1243,8 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок057: Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
+1. Участок064: fullTextBoard/scrollbar/необходимый16byte font scale, затем
+   briefing и actual Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
    затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
    успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.

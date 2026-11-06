@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+Участок063: перенесены GDI byte width/DBCS fit/cache высоты и обычные размеры
+CGUIText455. Ранняя геометрия0.7 ожидает создания шрифта. Korea/Russia oracle/
+GUI проверки и кадры прошли, новая полная PE сохранила existingCreate1.
+Далее064 — полный TextBoard и scrollbar, затем briefing и actual Tutorial/
+fourstage. FreeType/16byte font scale ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-text-metrics.md).
+
+Предыдущий участок:
+
 Участок062: обычные модальные окна получили подтверждённые кнопки/подписи/
 рамку/отступы и input455. Korea/Russia GUI/D3D/nativeexit0; новая полная PE
 прошла existingCreate=1. Далее063 — общий text-board/scrollbar, затем полный

@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TEXT-METRICS-063",
+      "status": "partial",
+      "description": "Current GDI byte-width/DBCS fitting/first-height cache and ordinary CGUIText geometry;fullTextBoard/scrollbar/FreeType OPEN",
+      "reference": [{"rva":"0x241130","role":"CGUIText sizing"},{"rva":"0x3b24b0","role":"byte-prefix width"},{"rva":"0x3b2670","role":"fit and DBCS boundary"},{"rva":"0x3b2630","role":"first empty-string height"},{"rva":"0x95040","role":"16byte FONT_INFO float scale finding"}],
+      "implementation": ["scripts/native/client455_text_metrics.cpp","scripts/native/client455_gui_text_metrics.cpp","scripts/native/client455_gui_text_size.inc","scripts/native/client455_font.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "Korea/Russia full-object nativeexit0;independent GDI byte-prefix/fit oracle;actualCGUIText/highflags/SetFont/no-recalc/default-height reload/earlystatic creation+deletion;correct final Unicode PNGs viewed;affectedfont/modal/Create1 passed;newproduction0unresolved",
+      "evidence": ["inventory/client455-text-metrics-reference.json","inventory/client455-text-metrics-native.json","inventory/client455-text-metrics-checkpoint.json","research/client455-text-metrics.md"],
+      "gaps": ["FullTextBoard fragment+line caches/markup/wrapping/retention/margins/scroll and shared scrollbar","FreeType/Unicode metric branches and target16byte FONT_INFO/float scale/draw","Fit helper production caller waits for TextBoard port;unsafe scratch/foreign-pointer/huge-input/error domains OPEN","Full briefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorunknown/numeric gaps;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-MODAL-062",
       "status": "partial",
       "description": "Ordinary modal button/caption/outline/geometry/input contracts455;fulltext/scrollbar/game remain OPEN",

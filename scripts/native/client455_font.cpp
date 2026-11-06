@@ -27,6 +27,7 @@ void prepare(IDirect3DDevice9*d,IDirect3DTexture9*t){
     d->SetTextureStageState(1,D3DTSS_ALPHAOP,D3DTOP_DISABLE);
 }
 RF455GdiFont fonts[3];bool loaded=false,registered=false;
+void(*textReadyCallback)()=nullptr;
 }
 struct RF455GdiFont::State {
     IDirect3DDevice9*device=nullptr;IDirect3DTexture9*texture=nullptr;
@@ -110,6 +111,14 @@ HRESULT RF455GdiFont::initialize(IDirect3DDevice9*d,const char*name,unsigned cha
     return s.columns&& !s.rows.empty()?S_OK:E_FAIL;
 }
 SIZE RF455GdiFont::measure(const wchar_t*text)const{return state->measure(text,static_cast<unsigned>(std::wcslen(text)));}
+SIZE RF455GdiFont::measureAnsi(const char*text)const{
+    SIZE size={};if(text)GetTextExtentPoint32A(state->dc,text,static_cast<int>(std::strlen(text)),&size);
+    if(!size.cy)size.cy=state->cellHeight;return size;
+}
+int RF455GdiFont::fitAnsi(const char*text,int maximumWidth)const{
+    int fit=0;SIZE size={};if(text)GetTextExtentExPointA(state->dc,text,static_cast<int>(std::strlen(text)),maximumWidth,&fit,nullptr,&size);
+    return fit;
+}
 RF455FontSnapshot RF455GdiFont::snapshot()const{const auto&s=*state;return {s.cellWidth,s.cellHeight,s.columns,static_cast<unsigned>(s.rows.size()),s.hits,s.uploads,s.font,s.texture};}
 HRESULT RF455GdiFont::draw(float position[4],const wchar_t*text,DWORD color,DWORD flags,float scale,const float*clip){
     auto&s=*state;if(!s.device||!s.texture)return E_FAIL;
@@ -145,7 +154,8 @@ HRESULT RF455_LoadTextResources(IDirect3DDevice9*d,unsigned memory){
     const auto medium=fonts[1].initialize(d,aux,settings.charset,1024,128,16);
     const auto large=fonts[2].initialize(d,aux,settings.charset,1024,512,24);
     if(SUCCEEDED(hr)&&FAILED(medium))hr=medium;if(SUCCEEDED(hr)&&FAILED(large))hr=large;
-    char log[96];std::sprintf(log,"RF455 Font:GDI:%d:%ld",settings.charset,hr);OutputDebugStringA(log);return hr;
+    char log[96];std::sprintf(log,"RF455 Font:GDI:%d:%ld",settings.charset,hr);OutputDebugStringA(log);
+    if(SUCCEEDED(hr)&&textReadyCallback)textReadyCallback();return hr;
 }
 void RF455_ReleaseTextResources(){if(!loaded)return;loaded=false;for(auto&font:fonts)font.release();if(registered){RemoveFontResourceA(".\\system\\010.TTF");registered=false;}}
 HRESULT RF455_DrawText(float position[4],const wchar_t*text,DWORD color,DWORD flags,float scale,const float*clip){return fonts[(flags&0x40000000)?2:((flags&0x80000000)?1:0)].draw(position,text,color,flags,scale,clip);}
@@ -162,4 +172,9 @@ SIZE RF455_MeasureLegacyText(const char* text){
     std::vector<wchar_t> wide(count);MultiByteToWideChar(cp,0,text,-1,wide.data(),count);
     return fonts[0].measure(wide.data());
 }
+SIZE RF455_MeasureTextAnsi(const char* text){return fonts[0].measureAnsi(text);}
+int RF455_FitTextAnsi(const char* text,int maximumWidth){return fonts[0].fitAnsi(text,maximumWidth);}
+RF455FontSnapshot RF455_GetNormalFontSnapshot(){return fonts[0].snapshot();}
+bool RF455_TextResourcesReady(){return loaded&&fonts[0].snapshot().font!=nullptr;}
+void RF455_SetTextReadyCallback(void(*callback)()){textReadyCallback=callback;}
 void RF455_SetTextOutline(DWORD value){fonts[0].outline=value&0xffffff;}

@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Text-metrics063. Ported current GDI byte width/DBCS fit/first-height
+cache and actual ordinary CGUIText sizing/style fallthrough. Added an owned
+deferred geometry adapter for pre-font legacy static constructors; native global
+creation/deletion and clean exit checked. Fixed mojibake in the test fixture;
+final Korea/Russia PNGs viewed. New production71bc4b21… links and passes existing
+Create1; affected font/modal regressions passed. FullTextBoard/scrollbar/FreeType/
+16byte font scale/Tutorial remain OPEN. [Evidence](research/client455-text-metrics.md).
+
 2026-11-06 — Modal062. Ordinary CGUIMessagebox/CGUIDialogBox now use confirmed
 455button frames/dimensions/captions,outline/colors/margins and keyboard input.
 Korea/Russia full-object GUI/D3D probes exit0;mouse observers/results,nested/focus/

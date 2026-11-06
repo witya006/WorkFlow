@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, text-metrics063: установок нет.15 диапазонов и empty literal
+совпали между pins,5полных asm; IDAe13a414e closed/save.182client/20kernel/
+26facade,0unresolved; production71bc4b21…/entry14D7C0. Собственная GDI/CGUIText
+проба Korea/Russia exit0, финальные кадры просмотрены. Ранний null-provider
+сбой0.7 исправлен ожиданием реального шрифта. Font/modal/existingCreate1
+регрессии прошли. [Доказательства](../research/client455-text-metrics.md).
+
 Дополнение06.11, modal062: установок нет.43 диапазона/3vtable совпали между pins,
 8полных asm; IDA124615b8/14980562 closed/save.182client/20kernel/24facade,
 0unresolved, production PEa5b1da0b…/entry14D300. Modal Korea/Russia own native

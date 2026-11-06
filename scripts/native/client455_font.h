@@ -21,6 +21,8 @@ public:
     HRESULT initialize(IDirect3DDevice9*,const char*name,unsigned charset,unsigned width,unsigned height,unsigned points);
     HRESULT draw(float position[4],const wchar_t*,DWORD color,DWORD flags,float scale=1,const float*clip=nullptr);
     SIZE measure(const wchar_t*)const;
+    SIZE measureAnsi(const char*)const;
+    int fitAnsi(const char*, int maximumWidth)const;
     RF455FontSnapshot snapshot()const;
     void release();
     DWORD outline=0;
@@ -33,3 +35,8 @@ HRESULT RF455_DrawText(float position[4],const wchar_t*,DWORD,DWORD,float scale=
 HRESULT RF455_DrawLegacyText(float position[4],const char*,DWORD,DWORD,const float*clip=nullptr);
 DWORD RF455_GetTextOutline();void RF455_SetTextOutline(DWORD);
 SIZE RF455_MeasureLegacyText(const char*);
+SIZE RF455_MeasureTextAnsi(const char*);
+int RF455_FitTextAnsi(const char*, int maximumWidth);
+RF455FontSnapshot RF455_GetNormalFontSnapshot();
+bool RF455_TextResourcesReady();
+void RF455_SetTextReadyCallback(void (*)());
