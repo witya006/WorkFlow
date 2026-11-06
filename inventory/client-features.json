@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-BRIEFING-CONTROLS-071",
+      "status": "partial",
+      "description": "Frame/key/sheet-animation source controls and corrected typing base Draw;ordinary briefing instance OPEN",
+      "reference": [{"rva":"0x331e60","role":"frame sizing"},{"rva":"0x331f60","role":"frame draw"},{"rva":"0x3323f0","role":"key rows"},{"rva":"0x332900","role":"key selector"},{"rva":"0x228bd0","role":"sheet animation update"},{"rva":"0x227910","role":"SPI/UV restore"},{"rva":"0x2262e0","role":"base fill correction"},{"rva":"0x233360","role":"screen capture setter,unported"}],
+      "implementation": ["scripts/native/client455_briefing_controls.h","scripts/native/client455_briefing_controls.cpp","scripts/native/client455_gui_text_typing_board.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "29ranges/3vtables equalpins,8fullasm;realcommon/tutorial sprites,Ko/Ru native/GPU20frames/12uniqueviews;key BYTE membership,stalegeometry/gaps,UV/cells/pause/loop,body/border/alpha;typing80000pixelbasefill correction;exactPE existingCreate1;priorGUI evidence reused onlyafter whole-runtime-byte equality exceptlinktimestamps",
+      "evidence": ["inventory/client455-briefing-controls-reference.json","inventory/client455-briefing-controls-native.json","inventory/client455-briefing-controls-production.json","inventory/client455-briefing-controls-checkpoint.json","research/client455-briefing-controls.md"],
+      "gaps": ["Actualwindow/outline/portrait/pages/buttons/events/capture/provider/Tutorial/fourstage/Avatar/world notyetconnected","Legacy0.7Ani consumers and fullrotation/drawmodes/FP/unsafe/resource/failure domains","PreInitframecolors targetunspecified,sourcezero notparity;higherrowcounts nottested","FullGUI/IME/layers/auth/gameplay;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TEXT-TYPING-070",
       "status": "partial",
       "description": "Source CGUITextTypingBoard dependency with actual full-object GUI/GDI/D3D tests;ordinary briefing instance stillOPEN",

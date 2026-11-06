@@ -1,6 +1,10 @@
 # Разбор следующего окна: CGUIBriefingWindow, начало070
 
 Это карта статического разбора для071, **не готовая реализация/приёмка**.
+Обновление071:frame/key/animation controls source готовы и проверены,
+см.client455-briefing-controls.md. BaseDraw включает собственнуюзаливку.
+633360 подтверждён как setter capture pointer экрана;не close-caption flag.
+Далее072 — самwindow/outline/portrait/capture consumers иactualprovider.
 Эталон455 x86/base400000 SHA-256
 `b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b`.
 Source0.7 не содержит этого класса. Raw decompile записан в игнорируемые
@@ -50,7 +54,8 @@ Source CGUITextTypingBoard восстановлен отдельно070,см.cli
 CTutorialBoard rich message target RVA0A63A0 (raw board-decompile061 уже есть):
 title ND445,Clear,build TextInfo28 fromserialized font fields,insert text array,
 portrait disabled,keys enabled;align bottom40 andhorizontalcenter;Open if hidden;
-branch allowed-close uses633360,его точный смысл/arguments надо подтвердить asm.
+branch allowed-close uses633360(screen ECX):capture window for1/release for0;
+подтверждено полным asm071. Input/removal/lifetime consumers ещё не перенесены.
 Key messages use ushort low/high bytes;17 produces2rows. Don't replace this with
 generic messagebox/instant text,or claim the existing fixture is this window.
 

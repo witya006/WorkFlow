@@ -95,6 +95,11 @@
           "rva": "0x3336b0",
           "bytes": 65,
           "sha256": "eb1fa5d8aa9faba33c342075ebdadb8a20ac852f2f35d9d79d8c002bc65015e9"
+        },
+        {
+          "rva": "0x2262e0",
+          "bytes": 375,
+          "sha256": "cac35e13a5ba9a148f86193b506652e19bc8b95001ff981a645ddce921bb5585"
         }
       ],
       "data": [
@@ -200,6 +205,11 @@
           "rva": "0x3336b0",
           "bytes": 65,
           "sha256": "eb1fa5d8aa9faba33c342075ebdadb8a20ac852f2f35d9d79d8c002bc65015e9"
+        },
+        {
+          "rva": "0x2262e0",
+          "bytes": 375,
+          "sha256": "cac35e13a5ba9a148f86193b506652e19bc8b95001ff981a645ddce921bb5585"
         }
       ],
       "data": [
@@ -244,6 +254,10 @@
     {
       "rva": "0x247690",
       "instructions": 184
+    },
+    {
+      "rva": "0x2262e0",
+      "instructions": 124
     }
   ],
   "raw_evidence": [
@@ -266,6 +280,10 @@
     {
       "file": "artifacts/client455-tutorial/typing-reference070.json",
       "sha256": "7c33105a2c2daf2af102fc6fbc82dadec4912dea8353e09c3c8786eeb73f233d"
+    },
+    {
+      "file": "artifacts/client455-tutorial/briefing-base-draw071.json",
+      "sha256": "a7b8d1ffbc574caefe378c6c35376ad8e68e8b82f10b4ee443ce8b52e289465b"
     }
   ],
   "inputs": [
@@ -496,7 +514,7 @@
       }
     }
   ],
-  "script_sha256": "f12339aa73474ffcb7d977bf48e45ea3c5c87854086365eda13596f5595e2335",
+  "script_sha256": "e9d254f235fb1130692a1256c2d80f631fc9b29dff5604063a8cfc17d0232a60",
   "facts": [
     "Typing entries247470/2475A0/247640/247690/247940/247BD0 verified directly",
     "WORD interval100 default;running/finished0,first/last0,cursorFFFF;Start storesDWORDclock+delay andprevious0",
@@ -504,7 +522,7 @@
     "One byte cursor except resource-codepage DBCS lead;spaces skip interval increments and crossing uses previous fragment string",
     "Partial draw uses strict line-start<cursor but includes cursor byte;firstASCII alone remains invisible",
     "Clear resets cursor and base caches but retains active/finished/timers;Finish sets endpoint andfinished1",
-    "Typing Draw visits child objects without painting its own fill;Update does not update child objects",
+    "Typing Draw calls60CAC0:own fill/image via6262E0 then children;070 contrary assumption corrected071;Update does not update child objects",
     "Actual briefing733920 sets80ms,firstpage delay250/others0;733A50 reveal then nextpage/close;not yet connected in source"
   ],
   "gaps": [

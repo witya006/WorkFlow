@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок071: frame/key/animation sourcecontrols сrealresources иKo/Ru/GPUverified.
+070typingno-self-fillclaim отозван:source/fixture исправлены по2262E0,проверены
+80000redpixels. Самиordinarybriefing/window/capture/portrait/TutorialещёOPEN.
+Productionruntime equal070 excepttimestamps;oldGUI evidence reusedexplicitly,
+не объявленоfresh. ExactnewPECreate1не означаетfullUI/auth/мир.
+[Доказательства](../research/client455-briefing-controls.md). M6/M6F/M7/M9 OPEN.
+
 Участок070: CGUITextTypingBoard source interval/cursor/DBCS/space/timing и
 partialDraw восстановлены;actual full-object Ko/Ru/GPU passed. Source compiled
 in normalfacade,ordinary briefing instance ещё OPEN. Sharedrenderer extract

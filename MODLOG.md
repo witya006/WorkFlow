@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Briefing-controls071. Restored frame/key/sheetanimation source
+controls,realresources/KoRu/GPU20frames/12uniqueviews.29ranges/3vtables equalpins,
+8fullasm. Corrected070children-onlyDraw assumption:base2262E0 paintsfill/image;
+typing/frame tests nowprovebasefillorder. UVdouble-normalization corrected.
+Capture633360 belongsScreen. Productionfea692b9…/entry150290/182-20-30TU,
+exactCreate1;runtimeequal070except2timestamps,oldGUIproofreusedexplicitly.
+Actualfullwindow/portrait/capture/provider stillOPEN,next072;M9OPEN.
+[Evidence](research/client455-briefing-controls.md).
+
 2026-11-07 — Text-typing070. Restored missing CGUITextTypingBoard dependency:
 WORD cursor/interval,delay/absoluteDWORD quirks,resourceDBCS,space/oldfragment
 rule,virtualClear retention,partialDraw.18ranges/1vtable equalpins,8fullasm;

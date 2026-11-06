@@ -60,9 +60,8 @@ void CGUITextTypingBoard::Update(){
     }
 }
 BOOL CGUITextTypingBoard::Draw(){
-    if(!IsShow())return FALSE;
-    // Target60CAC0 draws child objects but does not paint the object's own fill.
-    for(auto* child:m_listObject)child->Draw();
+    // Target60CAC0 starts with6262E0: own image/fill, then child objects.
+    if(!CGUIContainer::Draw())return FALSE;
     if(!GetFragmentCount455()||m_fragment==0xffff||m_offset==0xffff)return TRUE;
     int visible=VisibleLines(),total=GetTotalLineNum();
     const int blank=GetAutoScroll455()&&visible>total?visible-total:0;

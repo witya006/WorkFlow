@@ -1,0 +1,309 @@
+{
+  "scope": "Actual source briefing frame/key/animation controls in full-object probe;not ordinary full briefing/Tutorial",
+  "architecture": "x86",
+  "entry_rva": "0xe48d0",
+  "source": "scripts/native/client455_briefing_controls_probe.cpp",
+  "source_sha256": "92e3630a882c2e12851f1405184d3d71c3fda017581537e3c980bcc394542613",
+  "sources": {
+    "client455_briefing_controls.h": "545ea3a4419c1d3fd1cc42e44efbe077576227d10c2fa5c290fe584b05218d8e",
+    "client455_briefing_controls.cpp": "5c5a4a000d40e90e299d954bbd9ef33e546a1b2a33a4f47df929c704b118f06a"
+  },
+  "script_sha256": "da9bc88ee35f2682a9905a99a6e72c227a8486b93b3d1d0767b35416b0572221",
+  "builder_sha256": "a96c21a061c5fc925ca50020772279f2b61b809fd1dadf034b1ec07bd779a5b3",
+  "reference_sha256": "98231202ec3fba40a1f8fb2a5f2cdc827d30dd528a14a665d369c0d264d53bbe",
+  "normal_link_sha256": "c2f4999a184bf2e3fec41060e086dafdf676a1634da6664668e8334df21ea539",
+  "map": {
+    "file": "work/client455-port/briefing-controls-probe/briefing-controls-probe.map",
+    "sha256": "60ad76cac99aa01dded3ccb47d777fcfa6246e9e3cfd8af76ad6422b83379b86"
+  },
+  "runs": [
+    {
+      "nation": "Korea",
+      "exe": {
+        "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-controls-probe.exe",
+        "sha256": "85a2312e56faffd07cc26a2aa2bdf56546fe28b5cee4de57185e1e3225d571c3"
+      },
+      "output": {
+        "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/result.json",
+        "sha256": "2b2a744e736796fd54e5409080a5322661c2728aae25ed4e3f6375969a84e4d6"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/System/shader/Grass1.vsh",
+          "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/System/shader/grass1.vso",
+          "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/System/console.jpg",
+          "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/System/010.TTF",
+          "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/DataTable/ko-kr/NDLanguage.edf",
+          "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/SpriteImage/ko-kr/common.spr",
+          "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/SpriteImage/Common/tutorial.spr",
+          "sha256": "092461b4ea653dc950e5644c17fd940ddaceee83675cb030d797b49968e6974b"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/R3Engine.ini",
+          "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
+        }
+      ],
+      "frames": [
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame.bgra",
+          "sha256": "e7012813c1c87a7d9819b94c0603140780d0c223be7467cc39c223c398e8522c",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame.png",
+          "preview_sha256": "4d57f061af5feaecc6fb02b34a329bd088fd1a97ffb477b451cb48a484eb5f74",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-self-fill.bgra",
+          "sha256": "e6a29f8fd5fe6b6717d45c62b27224b9ca01201a973288b98acf0f863d8172d8",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-self-fill.png",
+          "preview_sha256": "487a5c7de2600287df322136b0ca13bd74f55e6aafccd96ecf452bdf774f9d7c",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-alpha.bgra",
+          "sha256": "4f128ce7204b26aef658b31b83b5e08faed0d6823f0171a181460968e69cc35b",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-alpha.png",
+          "preview_sha256": "65f4fc46c20baafc11eac4865f6bfc60211da7f2cfb710797d5bad6802f7b09a",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-wide.bgra",
+          "sha256": "cd5916efbe26227ed3da1bfac9da4625973856b73a41b7ccbe45c4219447db76",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-frame-wide.png",
+          "preview_sha256": "cf3610408eccf12cf96a7f4964f6f68a13d3b6dda502f4af01566ba8ae57df72",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-single.bgra",
+          "sha256": "d676a21fc22b280ea1c929c307d5de92402e6e50bee0ad162e0e918afc4c0665",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-single.png",
+          "preview_sha256": "ce25e2d6e1b7d8a0771283d9c5aa364919a03c9f5747783679cc74fdb3a18c12",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-two.bgra",
+          "sha256": "4b8d1d8341c874f1b4ffdbdb729cd88761e87044e9b52f791d746307f480eaef",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-two.png",
+          "preview_sha256": "76bfc499b45c080bb9e8ade3bb312ce31b73181ebd31253d76dd0c82033a5cc6",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-stale.bgra",
+          "sha256": "35c00bab7f12e5273284d0decec4ead023d01b05f7ff60d167db06b367e3a247",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-keys-stale.png",
+          "preview_sha256": "8bf25738efa35871f85099d6bdf8eeea8ce305fdf098cc0d4683f2ce546fcfc1",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-first.bgra",
+          "sha256": "69079a27545248880ecc2dadb44f409d70538e0ed8ca0e02be11f1893f81426f",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-first.png",
+          "preview_sha256": "fa834362f3efba9266419f8947021e9cf0a96f804b3f1ce07429651e710076f8",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-second.bgra",
+          "sha256": "30d525cd0ed451b3ebba98963bf99ee518ac9086e02d77262301df8ae4292765",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-second.png",
+          "preview_sha256": "0268d873cf39a70ee13bd324eb4f1d91e66f9e3d8f6755947733117ef2f9a2ac",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-cropped.bgra",
+          "sha256": "29085ffbf88d49c032a9735d138fe15371d11f0b3d2d747d6633d514e2d67206",
+          "preview": "work/m9/85a2312e/briefing-controls-ko-kr-001/briefing-animation-cropped.png",
+          "preview_sha256": "14738bfcb600262a41972655a5fdde45bcb9f7b80b61896c59d14839f71f2cb3",
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "native": {
+        "status": "PASS",
+        "real_frame_caps": true,
+        "body_border_GPU": true,
+        "alpha_RGB": true,
+        "key_selectors": 17,
+        "key_rows_gaps_stale": true,
+        "sprite_padding_UV": true,
+        "sheet_animation_pause_loop": true,
+        "forced_UV_and_zero_grid": true,
+        "ordinary_briefing": false,
+        "full_Tutorial": false
+      },
+      "exit": 0
+    },
+    {
+      "nation": "Russia",
+      "exe": {
+        "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-controls-probe.exe",
+        "sha256": "85a2312e56faffd07cc26a2aa2bdf56546fe28b5cee4de57185e1e3225d571c3"
+      },
+      "output": {
+        "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/result.json",
+        "sha256": "2b2a744e736796fd54e5409080a5322661c2728aae25ed4e3f6375969a84e4d6"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/System/shader/Grass1.vsh",
+          "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/System/shader/grass1.vso",
+          "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/System/console.jpg",
+          "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/System/010.TTF",
+          "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/DataTable/ru-ru/NDLanguage.edf",
+          "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/SpriteImage/ru-ru/common.spr",
+          "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/SpriteImage/Common/tutorial.spr",
+          "sha256": "092461b4ea653dc950e5644c17fd940ddaceee83675cb030d797b49968e6974b"
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/R3Engine.ini",
+          "sha256": "1031b0b5845206bddb65635470edfba08089b040d39eee1f57774ec6b088f482"
+        }
+      ],
+      "frames": [
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame.bgra",
+          "sha256": "e7012813c1c87a7d9819b94c0603140780d0c223be7467cc39c223c398e8522c",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame.png",
+          "preview_sha256": "4d57f061af5feaecc6fb02b34a329bd088fd1a97ffb477b451cb48a484eb5f74",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-self-fill.bgra",
+          "sha256": "e6a29f8fd5fe6b6717d45c62b27224b9ca01201a973288b98acf0f863d8172d8",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-self-fill.png",
+          "preview_sha256": "487a5c7de2600287df322136b0ca13bd74f55e6aafccd96ecf452bdf774f9d7c",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-alpha.bgra",
+          "sha256": "4f128ce7204b26aef658b31b83b5e08faed0d6823f0171a181460968e69cc35b",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-alpha.png",
+          "preview_sha256": "65f4fc46c20baafc11eac4865f6bfc60211da7f2cfb710797d5bad6802f7b09a",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-wide.bgra",
+          "sha256": "cd5916efbe26227ed3da1bfac9da4625973856b73a41b7ccbe45c4219447db76",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-frame-wide.png",
+          "preview_sha256": "cf3610408eccf12cf96a7f4964f6f68a13d3b6dda502f4af01566ba8ae57df72",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-single.bgra",
+          "sha256": "d676a21fc22b280ea1c929c307d5de92402e6e50bee0ad162e0e918afc4c0665",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-single.png",
+          "preview_sha256": "ce25e2d6e1b7d8a0771283d9c5aa364919a03c9f5747783679cc74fdb3a18c12",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-two.bgra",
+          "sha256": "ef89fd36d149b674951393935313d998cc5fcd0b52f8fddb93dc1f5b74d8e11a",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-two.png",
+          "preview_sha256": "0968b8cfa812b1e2b234e86e5f28fb2ffca2b735f52dd26e509925f3608f6a45",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-stale.bgra",
+          "sha256": "8cc44877525397a6cd56307af1125d50fb7ead1a7681b626e4a009c88b2cc56d",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-keys-stale.png",
+          "preview_sha256": "8a7cfa3a85456e94bf1d6bf8906c046098dfa6e3d9fee0b153827e57cb4370cd",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-first.bgra",
+          "sha256": "69079a27545248880ecc2dadb44f409d70538e0ed8ca0e02be11f1893f81426f",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-first.png",
+          "preview_sha256": "fa834362f3efba9266419f8947021e9cf0a96f804b3f1ce07429651e710076f8",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-second.bgra",
+          "sha256": "30d525cd0ed451b3ebba98963bf99ee518ac9086e02d77262301df8ae4292765",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-second.png",
+          "preview_sha256": "0268d873cf39a70ee13bd324eb4f1d91e66f9e3d8f6755947733117ef2f9a2ac",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-cropped.bgra",
+          "sha256": "29085ffbf88d49c032a9735d138fe15371d11f0b3d2d747d6633d514e2d67206",
+          "preview": "work/m9/85a2312e/briefing-controls-ru-ru-001/briefing-animation-cropped.png",
+          "preview_sha256": "14738bfcb600262a41972655a5fdde45bcb9f7b80b61896c59d14839f71f2cb3",
+          "width": 640,
+          "height": 480
+        }
+      ],
+      "native": {
+        "status": "PASS",
+        "real_frame_caps": true,
+        "body_border_GPU": true,
+        "alpha_RGB": true,
+        "key_selectors": 17,
+        "key_rows_gaps_stale": true,
+        "sprite_padding_UV": true,
+        "sheet_animation_pause_loop": true,
+        "forced_UV_and_zero_grid": true,
+        "ordinary_briefing": false,
+        "full_Tutorial": false
+      },
+      "exit": 0
+    }
+  ],
+  "ordinary_briefing_connected": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M9": "OPEN"
+}

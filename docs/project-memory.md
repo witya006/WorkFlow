@@ -23,6 +23,45 @@
 
 ## Последний проверенный результат
 
+Briefing-controls071: new client455_briefing_controls.{h,cpp} supplies frame,
+keywidget and sourceanimationbridge;legacyCGUIObjectAni notgloballymigrated.
+Maincaps common4:3/4=462x32,9:6/7=611x32,2capchildren;body+verticalborders then
+basefill/image+children. Alpha preservesRGB. Colorsmustconfigured:preInit
+targetfieldsunspecified/sourcezero notparity. Key21 Common/tutorial.spr,
+plus12x12,ND1058,rowsmax2/retainsoriginalcountconditions. Mouse0..4 andkeys
+17/18/32/65/70/73/77/79/83/87/90/112.255 preservesstate/size;otherunsupported
+resetanimationbutretainsize. Heightsusestale omitteddimensions;pluspositions
+two5gaps,butwidthcountsone. NewanimationbridgefloatFPS/x87advance;BYTEgrid0->1,
+Org/gridcellsize,UVcell(orforcedextent)/tex. SetSheetdoesn'tsetUVuntilUpdate/
+SetFrame;preUpdatecompressedmousesheetsfixture intentional. Loopoverflow0+
+paused+stamp,dropsremainder;pauseunsignedelapsed>interval,resumeUpdate noadvance;
+nonlooplast/finished. Mode0/unrotatedonlyverified;fulloldAni/unsafe domainsOPEN.
+
+Important070correction:60CAC0 calls2262E0,baseDrawincludesownfill/image. Old
+children-onlyclaimwrong. Typing.Draw nowCGUIContainer.Draw,80000redpixelstest;
+frame ownfillaftermanualrectanglesbeforecaps. NativeUVtestfirstcaughtdouble
+ratio viaoldSetSpriteU/V;fixed directUVassignment. Typing ref19ranges/9asm.
+TargetA63A0 asm confirms633360 ECXscreen pointer:1captureswindow,0releases,
+setter rejectsnot-added. Fullinput/removal/lifetimecapture consumersOPEN.
+
+29ranges/3vtablesequalpins/8fullasm,IDAs e0103d83/38abac4esavedclosed. Ko/Ru
+controls/typingnaturalexit0.20frames/12uniqueviews,8othersbyteequalprofiles;
+typedredfillviewed/countverified. Controlsprobe85a2312e56faffd07cc26a2aa2bdf56546fe28b5cee4de57185e1e3225d571c3,
+entryE48D0;typing676c939a6ddb6b296f179cacb7a32448ad0ff3524aaaa631ee90907a3a31bab3.
+Productionfea692b941be17117b80a697c2af1a09317905bb8ce6fe9ceee7917b594c6cc9,
+entry150290,2041856bytes/182client20kernel30facade/0unresolved/exactCreate1.
+Unusednewclassesstrippednaturally. WholeownPEruntimebyteequal070 aftermasking
+ONLYCOFF/debugtimestamps296/1873360;audit_controls_production.py evidence.
+7oldGUI native manifestsunmodified/exactsameas6173adf/recordedsourcesunchanged,
+reusedexplicitlyinnewtypinggate;44oldGPUhashesstill069equal. No unchangedlarge
+suites rerun. Fresh currenttyping+controls gatesPARTIAL;otheroldergatesremain
+historical,not falselyretaggedfresh. PrepE22CE37B…idempotent/engine056same.
+Next072 actualCGUIBriefingWindow/outline/portrait/page/events/screencapture/
+RF455TutorialBriefingView,thenAvatar/world/Tutorial/fourstage. M6/M6F/M7/M9OPEN.
+research/client455-briefing-controls.md andbriefing-analysis.md containdetails.
+
+Предыдущий участок070:
+
 Text-typing070: CGUITextTypingBoard source added(h/cpp),normalfacade29TU.
 No production window instance yet;stripunusedallowed,no forceinclude. Actual
 full-object native usesfacade methods. State intervalWORD100/running0/finished0/
@@ -34,7 +73,7 @@ atnewOffset:leadingfragmentspace canrevealBC inone tick. Resource language
 601F50/7B2450 DBCS,notambientCRT;firstglyphlead adds1,subsequent2/1 advances.
 Donewhen cursor>endmarker/sameoffset>=end. FinaltickretainspreviousTime.
 Clear647BD0 cursorFFFF+baseclear,retainsflags/timers;sourceClear nowvirtual.
-Draw647940 childrenwithoutself-fill,nochildUpdate;strictstart<cursor then
+Draw647940 ownfill/image+children (corrected071),nochildUpdate;strictstart<cursor then
 inclusivepartialhelper645150. FirstASCIIcursor0 invisible,firstDBCS cursor1
 visible. SharedDrawLineTo455 extracted;smallfull-lineadapter inlines. Existing
 TextBoardgate nowchecksactualendpointprovider,notforce-retained oldsymbol.

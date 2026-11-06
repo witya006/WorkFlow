@@ -7,6 +7,7 @@ from pathlib import Path
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
 from compare_client_binaries import WS, pe
+from audit_client455_controls_production import main as audit_runtime_identity
 
 
 def sha(path):
@@ -72,6 +73,8 @@ def main():
     baseline = '7115112'
     names = ['client455-text-board-native', 'client455-modal-native', 'client455-font-native', 'client455-text-metrics-native', 'client455-scrollbar-native', 'client455-scrollbar-variants-native', 'client455-minimap-opacity-native']
     compared = []
+    reused = []
+    identity = None
     def frames(run):
         if 'frames' in run:
             return run['frames']
@@ -81,7 +84,24 @@ def main():
 
     for name in names:
         current = load(name)
-        if current['normal_link_sha256'] != digest or any(row['exit'] or row['native']['status'] != 'PASS' for row in current['runs']):
+        if current['normal_link_sha256'] != digest:
+            if identity is None:
+                audit_runtime_identity()
+                identity = load('client455-briefing-controls-production')
+                if not identity['same_runtime_bytes_ignoring_link_timestamps'] or not identity['same_layout'] or identity['normal_link_sha256'] != digest:
+                    raise ValueError('Runtime changed;rerun affected GUI instead of reusing evidence')
+            prior = json.loads(subprocess.check_output(['git', '-c', 'safe.directory=' + str(WS), 'show', identity['baseline_commit'] + ':inventory/' + name + '.json'], cwd=WS))
+            if current != prior:
+                raise ValueError('GUI evidence is not the verified runtime baseline:' + name)
+            for group in ['sources', 'font_sources']:
+                for source_name, source_hash in current.get(group, {}).items():
+                    source = WS / 'scripts/native' / source_name
+                    if sha(source) != source_hash:
+                        raise ValueError('GUI source changed;fresh probe required:' + source_name)
+            if sha(WS / current['source']) != current['source_sha256']:
+                raise ValueError('GUI probe source changed;fresh probe required:' + name)
+            reused.append(name)
+        if any(row['exit'] or row['native']['status'] != 'PASS' for row in current['runs']):
             raise ValueError('Current affected GUI required:' + name)
         old = json.loads(subprocess.check_output(['git', '-c', 'safe.directory=' + str(WS), 'show', baseline + ':inventory/' + name + '.json'], cwd=WS))
         for current_run, old_run in zip(current['runs'], old['runs']):
@@ -95,8 +115,10 @@ def main():
     if ui['normal_link_sha256'] != digest or not ui['completed_existing_client_create'] or ui['markers'][-1]['eax'] != 1:
         raise ValueError('Current existing Create required')
     names += ['client455-text-typing-reference', 'client455-text-typing-native', 'client455-normal-preparation', 'client455-normal-link', 'client455-ui-startup-native']
+    if reused:names += ['client455-briefing-controls-production']
     report = {'status': 'PARTIAL', 'typing_source_compiled_in_normal_facade': 'PASS', 'actual_full_object_typing_trace_and_GPU': 'PASS',
               'shared_renderer_GUIs_and_Create': 'PASS', 'shared_GUI_baseline_commit': baseline, 'unchanged_shared_GPU_frames': compared,
+              'reused_GUI_native_for_identical_runtime': reused,
               'ordinary_briefing_instance': 'OPEN', 'full_Tutorial': 'OPEN', 'gaps': reference['gaps'],
               'script_sha256': sha(Path(__file__)), 'evidence_sha256': {name: sha(WS / f'inventory/{name}.json') for name in names},
               'input_exe_executed': False, 'server_modified': False, 'M6': 'OPEN', 'M6F': 'OPEN', 'M7': 'OPEN', 'M9': 'OPEN'}

@@ -57,7 +57,7 @@ def main():
             raise ValueError(f'Typing {nation} exit{result.returncode}:{run}:{result.stderr.decode(errors="replace")}')
         output = run / 'result.json'
         frames = []
-        for name in ['typing-first-ascii', 'typing-partial', 'typing-expected-partial', 'typing-complete', 'typing-localized', 'typing-no-self-fill', 'typing-colored']:
+        for name in ['typing-first-ascii', 'typing-partial', 'typing-expected-partial', 'typing-complete', 'typing-localized', 'typing-self-fill', 'typing-colored']:
             frame, preview = run / (name + '.bgra'), run / (name + '.png')
             Image.frombytes('RGBA', (640, 480), frame.read_bytes(), 'raw', 'BGRA').convert('RGB').save(preview)
             frames.append({'file': frame.relative_to(WS).as_posix(), 'sha256': sha(frame), 'preview': preview.relative_to(WS).as_posix(), 'preview_sha256': sha(preview), 'width': 640, 'height': 480})

@@ -1,0 +1,122 @@
+{
+  "scope": "Read-only own PE metadata/runtime comparison;not455equivalence",
+  "baseline_commit": "6173adf",
+  "baseline": {
+    "file": "work/m9/8f009924/startup001/RF_Online.bin",
+    "sha256": "8f009924c882d5c87c2f6872c3c99b07ff98a9085bd6ca9643bf13832d6f0b4c"
+  },
+  "current": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "fea692b941be17117b80a697c2af1a09317905bb8ce6fe9ceee7917b594c6cc9",
+    "bytes": 2041856,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x150290",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "same_size": true,
+  "same_layout": true,
+  "layout": {
+    "timestamp_offset": 296,
+    "sections": [
+      {
+        "name": ".text",
+        "rva": 4096,
+        "size": 1703424,
+        "offset": 1024
+      },
+      {
+        "name": ".rdata",
+        "rva": 1708032,
+        "size": 220160,
+        "offset": 1704448
+      },
+      {
+        "name": ".data",
+        "rva": 1929216,
+        "size": 41472,
+        "offset": 1924608
+      },
+      {
+        "name": ".fptable",
+        "rva": 16429056,
+        "size": 512,
+        "offset": 1966080
+      },
+      {
+        "name": ".reloc",
+        "rva": 16433152,
+        "size": 75264,
+        "offset": 1966592
+      }
+    ],
+    "debug": [
+      {
+        "directory_offset": 1873356,
+        "type": 13,
+        "data_offset": 1893848,
+        "data_bytes": 1016
+      }
+    ]
+  },
+  "timestamp_metadata_offsets": [
+    296,
+    1873360
+  ],
+  "same_runtime_bytes_ignoring_link_timestamps": true,
+  "normalized_runtime_sha256": {
+    "old": "6d4099bd5f26cafef51027c1ccc63e9d39e26e9c04644f2c9eb9c435c3862b41",
+    "new": "6d4099bd5f26cafef51027c1ccc63e9d39e26e9c04644f2c9eb9c435c3862b41"
+  },
+  "differences": [
+    {
+      "offset": 296,
+      "bytes": 3,
+      "old": "2bf8ed",
+      "new": "8902ee"
+    },
+    {
+      "offset": 1873360,
+      "bytes": 3,
+      "old": "2bf8ed",
+      "new": "8902ee"
+    }
+  ],
+  "sections": [
+    {
+      "name": ".text",
+      "old_sha256": "31b380e0dc60f7bfd8bdfdf331a6afc373087bb415f309695edf54a347882112",
+      "new_sha256": "31b380e0dc60f7bfd8bdfdf331a6afc373087bb415f309695edf54a347882112"
+    },
+    {
+      "name": ".rdata",
+      "old_sha256": "1e0df948ec524d0a6b6df53538e21a5d171dc0b54be20db1d22753f00478fb63",
+      "new_sha256": "d2861ae9e46043989595969127e62fe78d564f8b460429497340c79fd9cdc10b"
+    },
+    {
+      "name": ".data",
+      "old_sha256": "a989f10acb51669e33c07cc1e3ffe6d6d924472f536f69a01f7a9ba5c5ee39a4",
+      "new_sha256": "a989f10acb51669e33c07cc1e3ffe6d6d924472f536f69a01f7a9ba5c5ee39a4"
+    },
+    {
+      "name": ".fptable",
+      "old_sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560",
+      "new_sha256": "076a27c79e5ace2a3d47f9dd2e83e4ff6ea8872b3c2218f66c92b89b55f36560"
+    },
+    {
+      "name": ".reloc",
+      "old_sha256": "02b71aafa2bedf1ea058173795fa88830b4803bdf038e2a655ba365fce7c1ed4",
+      "new_sha256": "02b71aafa2bedf1ea058173795fa88830b4803bdf038e2a655ba365fce7c1ed4"
+    }
+  ],
+  "normal_link_sha256": "c2f4999a184bf2e3fec41060e086dafdf676a1634da6664668e8334df21ea539",
+  "script_sha256": "ee63759a552e371ef77cb0b6d4a06a7c78717249894867ac642398844bda2bda",
+  "input_exe_executed": false,
+  "server_modified": false
+}

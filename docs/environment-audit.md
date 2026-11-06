@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,briefing-controls071: установокнет.29ranges/3vtablesequalpins,
+8fullasm,IDAs e0103d83/38abac4e savedclosed. Frame/key/animation иtyping basefill
+Ko/Ru native/GPUpassed,20frames/12uniqueviews. Final PEfea692b9…/entry150290,
+182/20/30TU,0unresolved/exactCreate1. Runtime bytes equal070 except2timestamps:
+oldGUI evidence reused explicitly,не перезаписано какfresh. Newcontrols/window
+instance ещёunused;currenttyping/controls gates PARTIAL. Exception40080201unknown.
+[Доказательства](../research/client455-briefing-controls.md).
+
 Дополнение07.11,text-typing070: установок нет.18ranges/1vtable equalpins,
 8fullasm;IDA37b9a025 savedclosed. Typing source compiled normalfacade,исполнен
 в full-object probe,ordinarybriefingещё OPEN. NativeKo/Ru/GPU traces passed,

@@ -1,5 +1,11 @@
 # Постепенный вывод текста455 — зависимость брифинга, участок070
 
+Исправление071:60CAC0 вызывает base2262E0,который рисует собственный fill/image.
+Прежний вывод об отсутствии self-fill неверен. SourceDraw иfixture исправлены;
+проверены80000redpixels иfreshKo/Ru. Reference теперь19ranges/9asm. Подробности:
+[briefing-controls071](client455-briefing-controls.md). Исторические hashes070
+ниже относятся к предыдущей сборке;актуальные — вnative manifests071.
+
 2026-11-07. Восстановлен исходный `CGUITextTypingBoard`, необходимый настоящему
 CGUIBriefingWindow. Это отсутствующий в базе0.7 класс, а не ускорение старого
 вывода. Сам briefing/key/portrait/frame provider и обычный Tutorial ещё открыты.
@@ -53,7 +59,7 @@ DBCS lead определяется через codepage реального langua
 может сразу провести курсор через следующий `BC`. Исправлена fixture, алгоритм
 не менялся под тест. Начальный newline marker также участвует в продвижении.
 
-Draw сначала рисует child objects без собственной заливки, затем текст до
+Draw сначала рисует собственный fill/image и child objects, затем текст до
 inclusive cursor. Однако partial line вызывается только при start<cursor.
 Поэтому первый одиночный ASCII byte ещё невидим; следующий tick показывает
 два байта. Первый DBCS glyph получает cursor1 и виден целиком. Эти особенности
@@ -72,7 +78,7 @@ language pack, GDI и D3D9. Трассы состояния заданы по as
 точные границы ticks, invalid-range no-query, spaces/fragment-crossing/newline,
 resource DBCS против ambient CRT, zero sentinel/DWORD wrap/zero interval,
 виртуальный Clear и сохранённые flags/timer, hidden/finished gates, child Draw
-без child Update и без self fill. На профиль пришлось42 clock queries; это
+без child Update и собственная заливка (исправление071). На профиль пришлось42 clock queries; это
 детерминированная трасса, не число запросов к ИИ/мера полноты455.
 
 Korea: partial64/full90/colored90pixels, first localized glyph43pixels.

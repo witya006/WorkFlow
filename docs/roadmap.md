@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Участок071: frame/key/animation sourcecontrols455 восстановлены иKo/Ru/GPU
+проверены. Typingbasefillошибка070исправлена. CurrentPECreate1;runtimebyteequal070
+excepttimestamps,oldGUI evidence reusedwithoutunchangedsuites. Actualwindow
+providerещёOPEN. Далее072 — outline/portrait/window/capture/pages/events/provider.
+[Доказательства](../research/client455-briefing-controls.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок:
+
 Участок070: отсутствовавший CGUITextTypingBoard восстановлен как dependency
 настоящего брифинга. Ko/Ru componenttraces/GPU иsharedrenderer44unchangedframes
 passed,normal8f009924…/Create1. Ordinarybriefing instanceещёнет,10gatesPARTIAL.
@@ -481,9 +489,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/071: полный CGUIBriefingWindow: настоящий rich text/ресурсы/события/state,
+1. M6/072: полный CGUIBriefingWindow: настоящий rich text/ресурсы/события/state,
    постраничный/временной текст, портреты и изображения клавиш. Modal sizing/rich
-   caller перенесён069,typing dependency070;учесть other layers/IME/base virtual size/wrapper gaps
+   caller перенесён069,typing070,frame/key/animation071;учестьcapture/other layers/IME/base virtual size/wrapper gaps
    по мере использования,не объявляя остальные окна соответствующими455.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
    feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.

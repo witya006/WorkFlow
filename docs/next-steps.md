@@ -7,6 +7,20 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок071: source CGUIBriefingBoard/CGUITutorialKeyBoard/RF455GuiAnimatedImage
+готовы дляactualwindow. Realcommoncaps462/611,tutorial21 sheets/17selectors,
+2rows/gaps/stalegeometry/UV/loop/pause/alpha testedKo/Ru.20frames,12uniqueviewed.
+Исправлена070ошибка:base60CAC0→6262E0 рисуетownfill/image thenchildren;
+typingDraw/fixture исправлены,80000redpixels checked. Source-onlyproviders:
+ordinarybriefing instanceещёнет,no force-retention. PEfea692b9…/entry150290,
+182/20/30TU,exactCreate1passed. Runtime equal070 exceptlinktimestamps:7oldGUI
+reports keptoriginal/reusedexplicitly,44framesbaselinechecked безunchangedsuites.
+Далее072 actualwindow/outline/portrait/pages/buttons/events,capture routing и
+RF455TutorialBriefingView;затемactualAvatar/world/Tutorial/fourstage. ВсеM6F/M9
+gaps сохраняются. [Доказательства](../research/client455-briefing-controls.md).
+
+Предыдущий участок:
+
 Участок070: CGUITextTypingBoard source восстановлен,реальные GDI/D3D/full-object
 Ko/Ru traces прошли. Interval/delay/space/cursor/DBCS/resourceCP/DWORDwrap/zero/
 virtualClear иpartialrenderer verified;44GUI GPU hashes unchanged from069.

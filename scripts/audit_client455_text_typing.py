@@ -12,14 +12,15 @@ def sha(path):
 
 def main():
     root = WS / 'artifacts/client455-tutorial'
-    names = ['briefing-core070', 'typing-core070', 'briefing-dependencies070', 'typing-details070', 'typing-reference070']
+    names = ['briefing-core070', 'typing-core070', 'briefing-dependencies070', 'typing-details070', 'typing-reference070', 'briefing-base-draw071']
     raw_evidence = []
     for name in names:
         path = root / (name + '.json')
         raw_evidence.append({'file': path.relative_to(WS).as_posix(), 'sha256': sha(path)})
     body = json.loads((root / 'typing-reference070.json').read_text())
+    base_draw = json.loads((root / 'briefing-base-draw071.json').read_text())
     assemblies = []
-    for row in body['assemblies']:
+    for row in body['assemblies'] + base_draw['assemblies']:
         count = len(row['asm']['lines'])
         if not row['cursor']['done'] or count != row['instruction_count'] or count != row['total_instructions']:
             raise ValueError('Incomplete typing asm')
@@ -32,7 +33,7 @@ def main():
         if sha(path) != pin['sha256'] or pe(raw)['architecture'] != 'x86':
             raise ValueError('Changed455pin')
         functions = []
-        for row in body['ranges']['result']:
+        for row in body['ranges']['result'] + base_draw['ranges']['result']:
             if row['error']:
                 raise ValueError('Missing typing function')
             address, size = int(row['fn']['addr'], 16), int(row['fn']['size'], 16)
@@ -51,7 +52,7 @@ def main():
                         'One byte cursor except resource-codepage DBCS lead;spaces skip interval increments and crossing uses previous fragment string',
                         'Partial draw uses strict line-start<cursor but includes cursor byte;firstASCII alone remains invisible',
                         'Clear resets cursor and base caches but retains active/finished/timers;Finish sets endpoint andfinished1',
-                        'Typing Draw visits child objects without painting its own fill;Update does not update child objects',
+                        'Typing Draw calls60CAC0:own fill/image via6262E0 then children;070 contrary assumption corrected071;Update does not update child objects',
                         'Actual briefing733920 sets80ms,firstpage delay250/others0;733A50 reveal then nextpage/close;not yet connected in source'],
               'gaps': ['Actual CGUIBriefingWindow/board/key-guide/portrait/frame providers and production view/Tutorial/fourstage not yet ported',
                        'Negative accepted ranges lead to foreign/invalid marker reads in target;source explicitly refuses',
