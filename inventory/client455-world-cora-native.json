@@ -1,0 +1,1094 @@
+{
+  "scope": "Real source CLand/CLevel/BSP39/EBP20 load/render/reload diagnostic,not fullILevel/Tutorial/game acceptance",
+  "race": "cora",
+  "architecture": "x86",
+  "entry_rva": "0xe2970",
+  "source": "scripts/native/client455_world_probe.cpp",
+  "source_sha256": "5cf656e086ff6c54bc829f89f74b0776c1b163645c439461b16ed45556bd9d68",
+  "script_sha256": "0ec4cb2ad84594f1b01023a0faf9f6b065304eb51ea36a34f4c6e38e72d7dafe",
+  "builder_sha256": "a96c21a061c5fc925ca50020772279f2b61b809fd1dadf034b1ec07bd779a5b3",
+  "normal_link_sha256": "94e66e176d1ec344ca6786c43de286c10227f37157ec65068a0c0fa5e5eb30fc",
+  "engine_report_sha256": "dbf59a29091819cf65d6b5b0347e5234b531a0021348aad1ecc54c947c26d7e0",
+  "exe": {
+    "file": "work/m9/0b9173bd/world-cora-001/world-probe.exe",
+    "sha256": "0b9173bd915e465f7b73d90127c104939d327406b529f6016ebb1aba2badba75"
+  },
+  "map": {
+    "file": "work/m9/0b9173bd/world-cora-001/world-probe.map",
+    "sha256": "6f167b85408f9e88811a56301b4ba2719f463109999a05f6fd28fc71f32d87ac"
+  },
+  "console": {
+    "file": "work/m9/0b9173bd/world-cora-001/console.txt",
+    "sha256": "32ab28ed482e7f3d654e6ba9d2536b6a3d10ae2d11db652f882dc3f358e983c6"
+  },
+  "output": {
+    "file": "work/m9/0b9173bd/world-cora-001/result.json",
+    "sha256": "fd4f0c906103d55d6fe97e5e77f4b730b6790f366af4bf253c0998ba7c46f33f"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bat/bat.r3e",
+      "sha256": "233e87b0e664480927368a25703b9aaf269973816080d257dac7a4cd93163033",
+      "bytes": 6126
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bat/bat.r3m",
+      "sha256": "64a107520c13e4343fdf3c96f4c3ae9b917fa3d39b80c6223258b983d65ee652",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bat/bat.r3t",
+      "sha256": "4f99bfe5238d17ae47fa344e52c4952e9485b7fe7f363973ab1bcbdd695d082f",
+      "bytes": 22140
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass01/bd_grass01.r3e",
+      "sha256": "72d8ac329de6bfdb3c31806ee257c7021a810f89208046bb5a10249ec1a539a7",
+      "bytes": 56314
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass01/bd_grass01.r3m",
+      "sha256": "14de2d6f6048c517c6b26b697fcd3cfa9bf2e36a15c25a19b1166aa166de3382",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass01/bd_grass01.r3t",
+      "sha256": "5d39aed239c1c4df736bd169ed293f4778adbfaaaae6c125b8a86114845aa60c",
+      "bytes": 87644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass_03/bd_grass_03.r3e",
+      "sha256": "bf0efa6c248cca517b1f9bf626424f97a5613abcef6bf57122bd6a44f6b0ecc5",
+      "bytes": 5762
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass_03/bd_grass_03.r3m",
+      "sha256": "d0aa26fc3cc291683ba2c7cdf6ed9d2faa6af9ac9fdea9042db951c731f78eca",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_grass_03/bd_grass_03.r3t",
+      "sha256": "c1c8305a1035f0a53ed7fc1c715c88ca7dae22f45d57b483c61d9272208adf22",
+      "bytes": 175068
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef01/bd_light_ef01.r3e",
+      "sha256": "1868148b21bf9c54d12f7941530f8a480b9f6aadc1dbc968839a4f8e53122e43",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef01/bd_light_ef01.r3m",
+      "sha256": "fbcd5cd1f24203822ecdaa5ae4800f758394c7b5ec1d83aaec30444cb553caf7",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef01/bd_light_ef01.r3t",
+      "sha256": "1640465012a7216099efab812c36c74cec837c993afe57c2ce1fede20967b94b",
+      "bytes": 349812
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef02/bd_light_ef02.r3e",
+      "sha256": "a48d060e671f79bef04fd848acd193096f8bd67489190d3432e8abc72abc7fad",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef02/bd_light_ef02.r3m",
+      "sha256": "575a2681139512841935bc089863a62443a23b2ee993b17722cc133e55838110",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef02/bd_light_ef02.r3t",
+      "sha256": "52aba7eac310ff0ba20dec0f957061b23c5d782ccd4030f520ef8602da786ae6",
+      "bytes": 349812
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef03/bd_light_ef03.r3e",
+      "sha256": "206c9028c1156b0bef83053972612653f591457359e5c5e86f5214ff91c405f3",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef03/bd_light_ef03.r3m",
+      "sha256": "7ea5b2d86a2c2d5a9d420255fb3d83b30a2d7537d092f3254c4032c5850104f9",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/bd_light_ef03/bd_light_ef03.r3t",
+      "sha256": "057fb28d4345bce4760fdc758e8523b6a1e1e2988b9ed41e03399559dcb5e09d",
+      "bytes": 699332
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/blk_smk/smk.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/blk_smk/smk.r3m",
+      "sha256": "9c7a0f5c882a7107873706ffc2d60dff5b975047d770268ccbda4ac314f375df",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/blk_smk/smk.r3t",
+      "sha256": "9b6b94ff0aff18daf98bf9c71ba10116ff17b99f768c0f6489133fef7e5d007e",
+      "bytes": 87644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cora_grass01_1/cora_grass01_1.r3e",
+      "sha256": "f2689bddbe7d6cecfcb9b76b63ba7a09833008ed1d1d0188a48a0257a7160440",
+      "bytes": 2316
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cora_grass01_1/cora_grass01_1.r3m",
+      "sha256": "72d7d6d17be5b004c2213fe70d58419c3bdb0c30aed61e2e36f4463dcce74494",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cora_grass01_1/cora_grass01_1.r3t",
+      "sha256": "d2110b9d79234f39111f57cea6f9c07df701eeb12bf67d7e7b11730446040d9f",
+      "bytes": 87644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cross_light_01/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cross_light_01/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/cross_light_01/wave02.r3t",
+      "sha256": "9cbeb6835ad1e8720d76d0beeefd6f5bc25b71d3d44e8a288f3bd9ae9f66340d",
+      "bytes": 43972
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fall01/wave03.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fall01/wave03.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fall01/wave03.r3t",
+      "sha256": "4ea6976f3e1a37ffea96a05f251c07085a9aa527938c5eed67f853666bd70db2",
+      "bytes": 11204
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fire_001/fire_001.r3e",
+      "sha256": "ce626f3f4dd67ca64bd17195b545b172afcc4b008b6a4637274890c5e498fa4d",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fire_001/fire_001.r3m",
+      "sha256": "e3d8200b0f30166c4e0b15a84316ce9313190eeb9a9cc987107a8ec0cd1cd401",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fire_001/fire_001.r3t",
+      "sha256": "9b1e1059d1bde8b84085838f76b8c13aac6bbf3ebfd9efb53c8798b2003b0bc8",
+      "bytes": 175044
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fog01/fog01.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fog01/fog01.r3m",
+      "sha256": "72d7d6d17be5b004c2213fe70d58419c3bdb0c30aed61e2e36f4463dcce74494",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/fog01/fog01.r3t",
+      "sha256": "ba9d7a7f480141d8e6dbcb141ae201e7389b38d9533ec0816462637ce8a14b58",
+      "bytes": 22108
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree14/L_tree14.r3e",
+      "sha256": "439076268209851da44d37df3c485997339f2180521d7c4f722fd2167e311542",
+      "bytes": 19322
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree14/L_tree14.r3m",
+      "sha256": "2c967f63f562775bd80f6029dc3df20896b009fa1285eb45b0473277e8002cc0",
+      "bytes": 388
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree14/L_tree14.r3t",
+      "sha256": "603493bc720a482b7dd30949c205fc7c2ffd798530d84daf53432e62332d274f",
+      "bytes": 437480
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16/L_tree16.r3e",
+      "sha256": "6e88ab6710fa9f3534d39545dfe3d28d53d3dba1ecfdab043437c2194ddd24e3",
+      "bytes": 24684
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16/L_tree16.r3m",
+      "sha256": "2a378a290ecb2774bfb3728a4fc4e91c37cd9facd779612a8f663a66b2ae450b",
+      "bytes": 768
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16/L_tree16.r3t",
+      "sha256": "268dffa56190f68cc5e22086f7e2f597105495492a95a9a55340c340519c0095",
+      "bytes": 612816
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16_1/L_tree16_1.r3e",
+      "sha256": "2e6caf0606319e5bd7ce271d11fe707364b54a960e5392a3ea710dfc70eef5ec",
+      "bytes": 19168
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16_1/L_tree16_1.r3m",
+      "sha256": "6bad35084295bba1f86619588a711467ed9c6f5f54a0dc0ad7b13c4e260e2a8a",
+      "bytes": 388
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree16_1/L_tree16_1.r3t",
+      "sha256": "12dff4005bc578b4de28e8e0218f93892613908f3f3c901dfba56af2cc03983c",
+      "bytes": 437480
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree20/L_tree20.r3e",
+      "sha256": "2504a10039fb065d2e9ad24994d036e75bd4f313919198f28ea6c46e3381c311",
+      "bytes": 19034
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree20/L_tree20.r3m",
+      "sha256": "ebc41a08fce3f5ba7d9559ccd6cd125380da306078c0150af67f79cde929d671",
+      "bytes": 578
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree20/L_tree20.r3t",
+      "sha256": "3912f65548369a3abc9342ff9b0941d1123d1a6c6664f76ab3f0365ddd46e685",
+      "bytes": 787292
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree20/midimap.dll",
+      "sha256": "ec25c836651bf40b023e70d6ce01a582a7cf62aad8554c3a3833770f74be80b8",
+      "bytes": 18944
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree24/L_tree24.r3e",
+      "sha256": "c801ca099fff4f8e3834700b8d1e35417d10aba945a57b075a32cca36272ae3c",
+      "bytes": 12642
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree24/L_tree24.r3m",
+      "sha256": "afc94e1830e3366c10d20423cbc12c466e6c141597f0d7bf1c6496ef096062fe",
+      "bytes": 578
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree24/L_tree24.r3t",
+      "sha256": "31a09b88e1ab7977c12489bfa9ad47a640a42ea454ce2d53e77a6ffb84d094e8",
+      "bytes": 415916
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/L_tree24/midimap.dll",
+      "sha256": "ec25c836651bf40b023e70d6ce01a582a7cf62aad8554c3a3833770f74be80b8",
+      "bytes": 18944
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_003/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_003/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_003/wave02.r3t",
+      "sha256": "9379061811e46cf440a08199a33ae32a1736427ff80ed318cbd5603249db89cc",
+      "bytes": 43972
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_005/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_005/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_005/wave02.r3t",
+      "sha256": "fb141cc215ce78db8d36b58b86c136075ae89774c689bbf38d556dce37e0aec5",
+      "bytes": 43988
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_006/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_006/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_006/wave02.r3t",
+      "sha256": "ab4f60a68ddf3dab5f9fd96a9a4ebdf33cbe2ede858c8829b53d2b0cf1e8f98d",
+      "bytes": 43972
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_007/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_007/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_007/wave02.r3t",
+      "sha256": "9a6cc3f0d405bf3e130d296f937834ff6d20796f31b383a116deef1497ccc88d",
+      "bytes": 43972
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_008/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_008/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/light_008/wave02.r3t",
+      "sha256": "37a11da9fbcca0f60549dd8485c5dbc4f6eb053b5e38b85dd23b46a1303117ea",
+      "bytes": 22132
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/magma_01/smk.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/magma_01/smk.r3m",
+      "sha256": "293e5927af037102cd896dca4283f5e0f483e84744d6ed1f0e0a570b809c51cd",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/magma_01/smk.r3t",
+      "sha256": "31f8752e7ed0a83c65a96481764c951ff9ca03228166c5c91bbae496f45ba6ba",
+      "bytes": 11204
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/midimap.dll",
+      "sha256": "ec25c836651bf40b023e70d6ce01a582a7cf62aad8554c3a3833770f74be80b8",
+      "bytes": 18944
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass01/midimap.dll",
+      "sha256": "ec25c836651bf40b023e70d6ce01a582a7cf62aad8554c3a3833770f74be80b8",
+      "bytes": 18944
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass01/S_grass01.r3e",
+      "sha256": "182a0b82cc87ee8d5b2344ee7dd4a6307b9e60ab8805901611b4bca2a8c7a6e6",
+      "bytes": 1674
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass01/S_grass01.r3m",
+      "sha256": "64a107520c13e4343fdf3c96f4c3ae9b917fa3d39b80c6223258b983d65ee652",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass01/S_grass01.r3t",
+      "sha256": "569ef2302610a28c09c3791b0be9de932fe7b9021382b4eff133ac1ace51db67",
+      "bytes": 349788
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass08/S_grass08.r3e",
+      "sha256": "61619e7295ef7bd217bbffb013e91e36c2ebe6db17f4c42a1e266e89f5724b34",
+      "bytes": 5896
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass08/S_grass08.r3m",
+      "sha256": "72ee84d8f0ca68176a6c04d4c2b9a01fe26b846266e2fa2443843aad6f5f1bb6",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/S_grass08/S_grass08.r3t",
+      "sha256": "69ad8a21f97ea8fc471599098489e1e03a094eb4204185de123856d2451250ef",
+      "bytes": 87708
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/sand_001/wave03.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/sand_001/wave03.r3m",
+      "sha256": "3e915a78511c374a538fe0e2057debb5fe78f5c4d497f9626c60e3dbd34f7390",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/sand_001/wave03.r3t",
+      "sha256": "70de858fdcfe75797105ba2aee598c79867f4e99cb8a02151ae597f2f3540870",
+      "bytes": 87676
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/bd_light_ef01.spt",
+      "sha256": "65cb98d3edbb142ddeb0d132c5a9eb96b50c1349e81e96dfda3dfa9858e27830",
+      "bytes": 430
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/bd_light_ef02.spt",
+      "sha256": "2d5367b523905c8cea748ffa5b96c32cd2e70b92902296720e8bf542e0f0ae7a",
+      "bytes": 403
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/bd_light_ef03.spt",
+      "sha256": "dfdeafc5c78eed1ab871c2f1d28d586dad4398b05498e081e1092640bb200b27",
+      "bytes": 404
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/bell_steam.spt",
+      "sha256": "7ea0c7e691c67c124d179d9114ead4f3938c45d7e3e58c0d0c553bdac8d4294f",
+      "bytes": 389
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/cross_light_01.spt",
+      "sha256": "b72bd863b828302f1c2c2fad94f78c06ba37bec4f7f67135fe3936bb7be9b7d0",
+      "bytes": 323
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/fall01.spt",
+      "sha256": "71bc338f20324150f2de924d41b26e1046f4e788b35d6967069f0ef8670f5bb7",
+      "bytes": 395
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/fire_001.spt",
+      "sha256": "f8c4788eadff48836dc561014937c6a256552366628db843453b80f6aef77135",
+      "bytes": 274
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/light_003.spt",
+      "sha256": "c597b8c32782dcfbe887890a5a3c6e55046b4c417f09b604399e58c144719351",
+      "bytes": 411
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/light_005.spt",
+      "sha256": "65e87fcabc93bc81e3f2c61be9f63aee51f089b3d2cdd2d4b5398f2adc3fa055",
+      "bytes": 467
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/light_006.spt",
+      "sha256": "116c18aa2dbe1f2232bed3c2077f97225b0a170d840c9930fa3f4be45e7a56c3",
+      "bytes": 722
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/light_007.spt",
+      "sha256": "add9b66065135fad9ff5c7cc471da17d8a8184aff79e32ad3f72ae0126bbd3d3",
+      "bytes": 611
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/light_008.spt",
+      "sha256": "76d4abc705bacfb12c5c2bbce64946b159ae12e9ac4f6925f8ab6748c4edd863",
+      "bytes": 332
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/magma_01.spt",
+      "sha256": "739707bba0573a6a989b29e9970b15c08a4a9d5e4887f3503fd749b08d4a7c13",
+      "bytes": 562
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/sand_001.spt",
+      "sha256": "aa7e5650b8e8b7dd119b36872122090aae2966ae55f448e84726d8e910a824aa",
+      "bytes": 451
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/smk.spt",
+      "sha256": "93d88c62a4e236f13bdb9621755dc125e2f1e0fc2469dce64fad14ab07f47c96",
+      "bytes": 630
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/wave02.spt",
+      "sha256": "4f93eb28a8a4a7719434c698cf32cc0b7447905070dd715bf8bfa8ac02b2dccd",
+      "bytes": 283
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/wave03.spt",
+      "sha256": "1fa76acf05ac5eb6de955b13bb95a06d2b0f907b8aaae84eac70a425aec0f518",
+      "bytes": 330
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/spt/wave04.spt",
+      "sha256": "e4c33c2fbdb1e51676f964dd1847528bd39e9a41b673d7d0310dc56eb57909cb",
+      "bytes": 330
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave02/wave02.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave02/wave02.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave02/wave02.r3t",
+      "sha256": "0340db989db410b8eae6d018d230b7b00bc5cb4d56c3c9273a63c8f752c1ebb5",
+      "bytes": 175020
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave03/wave03.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave03/wave03.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave03/wave03.r3t",
+      "sha256": "b96c0d168c9be4b105193fcc45a0c830cfc2a5d65a44d4098e627df2e1f8441e",
+      "bytes": 87644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave04/wave03.r3e",
+      "sha256": "80a94f5d0a3415d1b9d6acb495ffe5a7deb610839449aefff5b07a5cd631a00b",
+      "bytes": 220
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave04/wave03.r3m",
+      "sha256": "a7eae14738bb0e482db58d5c73c57e42dc5b4b6b1f7e37f0bb6ec69868079201",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/e_battledungeon2/wave04/wave03.r3t",
+      "sha256": "a5825dfde11e28fa1d9c54e1fb82f8d8433b7764be1ff0050f5e952c254c646c",
+      "bytes": 87644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity0.rpk",
+      "sha256": "d080565ee380fc28da65c8114eb4cb58fc8dcb90589a0e441443cc9c3fc40b1a",
+      "bytes": 451207
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity1.rpk",
+      "sha256": "e95591250e8fb269698f48197812afcb8e95bba89b0ee9b1a32f92f3f46ef9d7",
+      "bytes": 89921
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity10.rpk",
+      "sha256": "caeab897df38b168b6e132ebce8923434a48bc3dc523d09d33c562c0eb7945f4",
+      "bytes": 2926000
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity11.rpk",
+      "sha256": "01cdbdce1098c1a91d3640bb836418245a76f02aa3f04ca4807261f2c0a0b703",
+      "bytes": 4302325
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity12.rpk",
+      "sha256": "30d613bd9f3e1c819e3a05bbe91f84ecbd26b1e539c8139b63c23f266b666fb7",
+      "bytes": 3279706
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity13.rpk",
+      "sha256": "c12e86e9ef26f27a5c6e226874b2e88ba60a41c99643d93484a083712bb29560",
+      "bytes": 5660907
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity14.rpk",
+      "sha256": "c9098719c0be5b24c3e199622423549080a542a3b0589248cb6b2b7f8ddae2fd",
+      "bytes": 3445149
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity15.rpk",
+      "sha256": "736f51bdd4e196a1e7953e52fd83eeac881608353f7dcf274d4b1ff41f4b8c55",
+      "bytes": 3551179
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity16.rpk",
+      "sha256": "b5f16be9a8de04d681bad3c0116a763cde7609b96980fcac431b9e6bd3b8ddf0",
+      "bytes": 6101558
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity17.rpk",
+      "sha256": "011cb8331fcd552fff1090b2b7431f117f626419a67c083184f22fcee83a2b73",
+      "bytes": 5241409
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity18.rpk",
+      "sha256": "160ed5ad3a97f400750ea3cc902363e98f3eb0f3f1b9c1e50e3f204563b2b181",
+      "bytes": 6059323
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity19.rpk",
+      "sha256": "5453e8a9fc00eb9457031c8a887661e7a9b091d2de2af319cdba075ad8b86350",
+      "bytes": 4004509
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity2.rpk",
+      "sha256": "052cbbf61d00050b52f82d7a8a930aadcb979b2cdf6ea6dac128ef45e331217d",
+      "bytes": 4177766
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity20.rpk",
+      "sha256": "3097f0e8740e00bb75a44dbd03343cef6f9d25647164b88f6cacb572c3510a74",
+      "bytes": 1296833
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity21.rpk",
+      "sha256": "701ba90ca0d70566cf8336f20805d7bbd6328350e4dfd8fa3769a50fc0632d02",
+      "bytes": 825426
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity22.rpk",
+      "sha256": "a6ec046c533322c848e0b5a2ba2bebbf914568d5f3bb8c899b65f7786588284c",
+      "bytes": 7044136
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity24.rpk",
+      "sha256": "501b2367557fae00932e3346aca13f3d830d288cb48481dc7008dea8522798f3",
+      "bytes": 5182166
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity25.rpk",
+      "sha256": "15c3b3c3bc5076d3e434e57d080d8a8abcd87a44523e75ebbc2eb6d8edc2538e",
+      "bytes": 6132482
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity26.rpk",
+      "sha256": "bf751147526d2df6ed80e5b90aeeebd5011d256ab635a5ba4375a9e056216a4d",
+      "bytes": 4471799
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity27.rpk",
+      "sha256": "81c832df27ebabdac919a249ab182d21e85140d4db12da2950b8a2afdc54c18c",
+      "bytes": 2402385
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity28.rpk",
+      "sha256": "0c715e8b57dba2f346a340fa4a238ef7b670f98cb65fe4a4d8693aa8dfd1aa86",
+      "bytes": 3839147
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity29.rpk",
+      "sha256": "66277753d488470d97527269c4446cd32d6ed38031c85ccc13130ee5125b1f28",
+      "bytes": 4088284
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity3.rpk",
+      "sha256": "8a50dfbcefb7d0d30ae9c7e8c9607a6a6c6332f196e9d457fe1c4ebc402f2732",
+      "bytes": 1949482
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity30.rpk",
+      "sha256": "e6a7a6ca6836745abbb0d52314798fd3256c569617cee7c4aa27290888131924",
+      "bytes": 5038485
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity31.rpk",
+      "sha256": "da627dd3c19ee780524912521ef522411bd6b533551f9e7231ec5d41c463b6a1",
+      "bytes": 8963568
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity32.rpk",
+      "sha256": "580300d109a60c8078cba588add68a2c93f118896dfaac9206df62a192dd88c1",
+      "bytes": 2632508
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity34.rpk",
+      "sha256": "101778569e373c80e5599dca533d10690b57cf8eca1e8310531158b7c8e49676",
+      "bytes": 3491320
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity35.rpk",
+      "sha256": "9e729cfb1383ea360e5364afbf9c0d7925cbd9803217eed738ed3e91141692fd",
+      "bytes": 8268712
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity36.rpk",
+      "sha256": "10d11c8af607581ddf21e22bbda05dcc4bb62ef424de2c4855e41c8f673d191c",
+      "bytes": 8186185
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity37.rpk",
+      "sha256": "d387dd03cfcb53ed13a6395eb9d1f0a08c44413740388d19e8f793868bb54dad",
+      "bytes": 1137312
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity4.rpk",
+      "sha256": "073621ab145faa4214b31d3b2c522b72f3810f7ffb1cb985925be1e5f991b9ff",
+      "bytes": 6673873
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity47.rpk",
+      "sha256": "2a9b9063d062e8806deb31a1881e16c2739fa103df69553e42cb28ba4810bd98",
+      "bytes": 7178743
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity48.rpk",
+      "sha256": "cc6f885a55dbcefd828998dea9421766268d0250e1e68d44d175186b58a20ed9",
+      "bytes": 5388743
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity49.rpk",
+      "sha256": "a315d8f7000979bc69eafb3716b669331bd2c6ef8650644339db75a80b0d59c3",
+      "bytes": 5479386
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity5.rpk",
+      "sha256": "897665fe8537ed0d6917ce7f33cd9723e819a3331c0c791d6843f0c6e688157f",
+      "bytes": 3909397
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity50.rpk",
+      "sha256": "16909baafba35ccd505748246d0b5ca958428fa0ba737ea5c73a352a1847ce44",
+      "bytes": 5017980
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity51.rpk",
+      "sha256": "dc7383b6892ae3b89b7f4353141f2358e9a69a57051029f8e2d39ef3ac8d2080",
+      "bytes": 5226796
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity52.rpk",
+      "sha256": "9d2d7ab6c8d7362eac45de5d0ae391c9d43030057aeb3cf31d54076a4ca3d57d",
+      "bytes": 3259537
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity53.rpk",
+      "sha256": "970c391be917dae3fe778d223c95fad538e2b9629fd3aa775a72a52c4d000b7c",
+      "bytes": 5642851
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity54.rpk",
+      "sha256": "49d6f87058607c1a350eb466423ff3c4473d3503401b49f738581f5ced334509",
+      "bytes": 6033625
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity55.rpk",
+      "sha256": "630a27802a232dc0a4674223e76068b226e7d42340dc9b1896313c900d75b33a",
+      "bytes": 5601265
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity56.rpk",
+      "sha256": "7cf5b995a8a2d50ab865b35f3c684e52c04982850fe9ca2361d91ba987b97470",
+      "bytes": 5614058
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity57.rpk",
+      "sha256": "d744d8f5bb8d5149e647599cf37e80aeb24aecfaa3a948cfb0054829ef56a39a",
+      "bytes": 6684255
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity58.rpk",
+      "sha256": "6bd04b4da4ef5c59613dab58dbc6b34d8f1340da6abcb6a416d65821838b3bec",
+      "bytes": 5826692
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity59.rpk",
+      "sha256": "e8e4172b86c472e1d4f3bf9b71f820a0e071f62e8dbcc6ed6ccca15e33ede039",
+      "bytes": 3109737
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity6.rpk",
+      "sha256": "72b52bdd3ec9760ec96af3b4308d35af471f08e24fa59c0fe4c57ad0d52fed9c",
+      "bytes": 6498470
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity60.rpk",
+      "sha256": "b601a3c957e9a8efa5d2e90e19606cbe8adcb5f1b58d4bc23e75a31d4acecff8",
+      "bytes": 5305472
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity61.rpk",
+      "sha256": "4186bc44f6c669de3f82a2706a0cefacbf78e2076a82c5f24b0cb642903ea130",
+      "bytes": 5214938
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity62.rpk",
+      "sha256": "689d97d713574c0a43776413221de3c6e2d160920b711df88e8ef7e548da11c4",
+      "bytes": 5804107
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity63.rpk",
+      "sha256": "2868cc3e087c14311f8a570100f215b40bc0db8860c41b9a327adc1759b9db0c",
+      "bytes": 6260944
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity64.rpk",
+      "sha256": "ca5f4d974540098ebf03a6c69145da5ee15acf827d503b1dd5ed0ecd2c2a6de8",
+      "bytes": 6251154
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity65.rpk",
+      "sha256": "853e0465aadcbf8f159f93ada7faaf6e584809a545b72a5b1ce62cb4e3977d22",
+      "bytes": 5239800
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity66.rpk",
+      "sha256": "59d8a24af9087332f80d442af4c925e33e6d62d3479ce07c6015416bcdbe6268",
+      "bytes": 5248174
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity67.rpk",
+      "sha256": "d11a08cf8aa8fb3e3b2232eadb732f10fa0be1f2956a2020c02d2604f0344165",
+      "bytes": 6256828
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity68.rpk",
+      "sha256": "b97a302f956c81ce2f4eebb0b5ea33f061fbb53038a434307d53da651e3495ee",
+      "bytes": 5464120
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity69.rpk",
+      "sha256": "85fa25803d6b674ec56ce0ff365b84817cd05668ef05cc0e59e1a88a22de95e3",
+      "bytes": 5146770
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity7.rpk",
+      "sha256": "b7693f243938832b56b01f55aad25e035434e7425ecb8225a7aab53beb24ea11",
+      "bytes": 5231545
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity70.rpk",
+      "sha256": "aa6d8ffee32a7461065e98ef370dcb39d0760d3d9aa8d9c98760313f3df5fe78",
+      "bytes": 5162334
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity71.rpk",
+      "sha256": "910d9f8af1f1ab3446cbf8c968f9591c7ebbb7e0bdb94bca93f49defde425e71",
+      "bytes": 5539264
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity72.rpk",
+      "sha256": "0185d87d88a34367f61d487169e2d583f18663759d4d4b03f5182d9b38d259f7",
+      "bytes": 4606565
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity73.rpk",
+      "sha256": "c5d6e0df385e935cd7044a0f168d275e70df2ea161cdda6b6f9384502a3f17e7",
+      "bytes": 4039476
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity74.rpk",
+      "sha256": "4ed547902efb3dbc55523e2857c729198cd019c3e7e42ec392e26026b591ce56",
+      "bytes": 5878132
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity75.rpk",
+      "sha256": "26bd39aa2ff5e1c5bb98098888ff2cab053eaff5754e35190e2286828ec79823",
+      "bytes": 5647129
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity76.rpk",
+      "sha256": "369535186fecca7b4255b3ec0b7cc3e5b3d6c0adf5f0a8249ac5b27604c12221",
+      "bytes": 5781112
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity77.rpk",
+      "sha256": "da6bbc2d944096d5fd97289533a2ec84e1e4c53c48e16d7cd59f532595a3a21b",
+      "bytes": 4594472
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity78.rpk",
+      "sha256": "671362314854e6f39ecc9a5f9ad22c99c875fbd15baabdf8c0fad2afb0acc175",
+      "bytes": 5702395
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity79.rpk",
+      "sha256": "9edc6781b1f129309250ab8296d580813a6803764c72143dba699265052340e8",
+      "bytes": 5487918
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity8.rpk",
+      "sha256": "73f3a07d3938bfe543c87fd4194e128ca3145a152a5fa5876541574f60f0ad42",
+      "bytes": 5512686
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity80.rpk",
+      "sha256": "a884be3d66396ce63a20facead34651d2dc429f9751d61b7efeffbaa6a8be40c",
+      "bytes": 5330332
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity81.rpk",
+      "sha256": "c2d7af5d1c018ec0289ebb8985f64b3634649635e85b96ccff8f82e36ecfd2ee",
+      "bytes": 5916679
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity82.rpk",
+      "sha256": "718f9a68bfb216a1545acb576f35c3f72866747f1fd9a3ac0a8d0b979004dcb3",
+      "bytes": 5911059
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity83.rpk",
+      "sha256": "0d922e1b589357286e086b638a71e1bc1ebe0eadb052a22138f82df12ceccf03",
+      "bytes": 6039586
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity84.rpk",
+      "sha256": "5398f307a8b21445a37767d1ef2d41cd32cbda07ec213fb24cb430453216a296",
+      "bytes": 6355017
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity85.rpk",
+      "sha256": "0951df90cf217f351f04f5a9638f9e9a2a2322f86eab052ed45abadcb6b4bce8",
+      "bytes": 6935412
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity86.rpk",
+      "sha256": "365629103ab00f6bb5715f2d7d868ff76938b1be9661aa9ba6d14e9fc66e09ec",
+      "bytes": 6391673
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity87.rpk",
+      "sha256": "83b063f4c835b9e5c6899f3b2cd0cf12e117f6930eaa2198d6ead8720551cced",
+      "bytes": 2924992
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity88.rpk",
+      "sha256": "a6c4b4e3902d3d069e9f7ea4334e2e4ddc749cc0c6a154b738f5e5f09433de1f",
+      "bytes": 2794104
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/Entity/MapEntity9.rpk",
+      "sha256": "ff7fd82fc43a4e0edb9d8323254195739979d7c4e2b6e294d68cf180f40eab06",
+      "bytes": 4024104
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.bsp",
+      "sha256": "904dce246c00aa45dc8b1015b1d48135041c443c862d41eb25c967aa7caab6eb",
+      "bytes": 11027375
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.cam",
+      "sha256": "d420d620d97f64aa4fab90482216c7bee585118aebb08fd27e7256ae359ba308",
+      "bytes": 34644
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Cora.cf",
+      "sha256": "01920173ac017b4dd9dfbf610d103d065efbf0de5de6cd45302d29e5f6987ddd",
+      "bytes": 97476
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.ebp",
+      "sha256": "b983cd2df18a6ffa01c4d7c4e1b0109187203e20da88b5f4fd8f24a19925ae84",
+      "bytes": 248100
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.r3m",
+      "sha256": "8de465ef1d0eda1b718d814d640d00646b152f89b4cabc0c083ef0e1b65e8d14",
+      "bytes": 88990
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.r3t",
+      "sha256": "d1a954e4c1d8603f414944357113be61609a91b464ed9cc9cd6febbe4675b77f",
+      "bytes": 14439138
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.r3x",
+      "sha256": "5a263e9ce28ecd58a5ad3ff96706015cb1279b3f9180c02d0faa45fa732ebc90",
+      "bytes": 1028
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/cora.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733",
+      "bytes": 1040
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Cora.spt",
+      "sha256": "f2837eb5e8088411e26bbdcb02447a11a74427b59306dd360d09c1cec6d1fff4",
+      "bytes": 2809
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Cora_dummy.spt",
+      "sha256": "50e5026c143d5f432f91b1e2c531395bdeddd6965a922b040e407de465f59560",
+      "bytes": 198
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/coraLgt.r3t",
+      "sha256": "b513035f3d0d36b022d662fd3f0f7e24f29633d77e208502dc6823e3787d8a47",
+      "bytes": 10619216
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Sky/corasky.r3e",
+      "sha256": "f2aaae231cd985b10bc9c72d2e39c668371e047f080af3dea3d4352b901e1e9f",
+      "bytes": 28022
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Sky/corasky.r3m",
+      "sha256": "b422f4f9d5df93fe4aecc5768051ad31408eadb1aefd9ba739e537b3588ab6b0",
+      "bytes": 1908
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/Map/cora/Sky/corasky.r3t",
+      "sha256": "5f04b108c1ea2ed6923fe1a915bc4dea8b39e0bb9d5b8d58b16ebdc8e39bbe4b",
+      "bytes": 3913176
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/System/shader/Grass1.vsh",
+      "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/System/shader/grass1.vso",
+      "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/System/console.jpg",
+      "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/R3Engine.ini",
+      "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9"
+    }
+  ],
+  "staged_inputs_unchanged": true,
+  "frames": [
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/world-reload.bgra",
+      "sha256": "52cf9021c3a79444e8e55e0ffb95011147bed725816e36c29fba1e24c6bf2798",
+      "preview": "work/m9/0b9173bd/world-cora-001/world-reload.png",
+      "preview_sha256": "6106b68a2de459f60553f660352e8ad88edc79861b2c0b6a6d8df5d3aaa1b99c"
+    },
+    {
+      "file": "work/m9/0b9173bd/world-cora-001/world.bgra",
+      "sha256": "52cf9021c3a79444e8e55e0ffb95011147bed725816e36c29fba1e24c6bf2798",
+      "preview": "work/m9/0b9173bd/world-cora-001/world.png",
+      "preview_sha256": "6106b68a2de459f60553f660352e8ad88edc79861b2c0b6a6d8df5d3aaa1b99c"
+    }
+  ],
+  "natural_exit": 0,
+  "native": {
+    "status": "PASS",
+    "vertices": 108443,
+    "faces": 126980,
+    "leaves": 8649,
+    "materials": 477,
+    "map_entities": 147,
+    "pixels": 307200,
+    "warnings": 0,
+    "actual_land_owner": true,
+    "reload_and_global_clear": true,
+    "memory_before": 270592,
+    "memory_loaded": 14343055,
+    "memory_reloaded": 14343055,
+    "memory_after": 270592,
+    "spawn_leaf": 4902,
+    "spawn_collision": true,
+    "spawn_height": 491.476562,
+    "INS_provider_refused": true,
+    "full_ILevel": false,
+    "full_Tutorial": false
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M9": "OPEN"
+}

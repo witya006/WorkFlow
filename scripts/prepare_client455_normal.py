@@ -337,6 +337,15 @@ def main():
                 body=body.replace(anchor,bridge+anchor);raw=b'#include "client455_sprites.h"'+nl+raw[:start]+body+raw[end:]
                 changes.append('confirmed455localized/Common sprite route for actual startup mouse/common consumers;other legacyUI groups open')
             if source.name.lower()=='cland.cpp':
+                raw=b'#include <cstring>\r\n'+raw
+                first,last=section(raw,b'CLand::LoadLevel( char * pi_pLevelName )',b'CLand::LoadLevel( char * pi_pLevelName )')
+                body=(native/'client455_land_load.inc').read_bytes().replace(b'BOOL CLand::',b'CLand::',1)
+                raw=raw[:first]+body+raw[last:]
+                first,last=section(raw,b'CLand::LoadLevel( BYTE pi_byMapIndex )',b'CLand::LoadLevel( BYTE pi_byMapIndex )')
+                body=raw[first:last];anchor=b'm_pLevel->LoadLevel( m_pMapInfo[pi_byMapIndex].pFileName );'
+                if body.count(anchor)!=1:raise ValueError('Indexed land load boundary changed')
+                body=body.replace(anchor,b'if(!LoadLevel(m_pMapInfo[pi_byMapIndex].pFileName))return FALSE;');raw=raw[:first]+body+raw[last:]
+                changes.append('455BSP level ownership recreated per load and camera rebound;INS provider explicitly missing;fullILevel/Empty/INS stillopen')
                 start,end=section(raw,b'CLand::UnloadLevel( void )',b'CLand::UnloadLevel( void )')
                 body=raw[start:end];anchor=b'\tassert( m_pLevel != NULL );'
                 if body.count(anchor)!=1:raise ValueError('Land unload entry changed')
@@ -601,6 +610,7 @@ def main():
     for name in ['client455_briefing_controls.h','client455_briefing_controls.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_briefing_window.h','client455_briefing_window.cpp','client455_screen_message.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_avatar_stage.h','client455_avatar_stage.cpp','client455_avatar_stage.inc','client455_tutorial_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_land_load.inc']=sha((native/'client455_land_load.inc').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

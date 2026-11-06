@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-WORLD-074",
+      "status": "partial",
+      "description": "Actual CLand loads/renders/reloads/releases three455Tutorial BSP worlds;fullILevel/INS/Tutorial open",
+      "reference": [{"rva":"0x3c8600","role":"level owner load"},{"rva":"0x3c7180","role":"camera BSP binding"},{"rva":"0x4ea120","role":"level destructor"},{"rva":"0x4e7730","role":"release"},{"rva":"0x4fdea0","role":"BSP39"},{"rva":"0x4ff280","role":"EBP20"}],
+      "implementation": ["scripts/native/client455_land_load.inc","scripts/native/client455_level_destroy.inc","scripts/prepare_client455_normal.py","scripts/build_client455_engine_startup.py"],
+      "verification": "10ranges/vtableprefix48/6asm equalpins. Three real maps nativeGPU/load/reload/release/allocatorbalance,independentwirecounts,realspawncollision,6viewedframes. ExactnewPE/Create1 andaffectedaccount/GUI passed.",
+      "evidence": ["inventory/client455-world-reference.json","inventory/client455-world-bellato-native.json","inventory/client455-world-cora-native.json","inventory/client455-world-accretia-native.json","inventory/client455-world-visual.json","inventory/client455-world-checkpoint.json","research/client455-world.md"],
+      "gaps": ["FullILevel/Empty/INS;INS explicitlyrefused;indexedmapextras andfullworldinterfaces","Onlysky/opaque/camera0views,notfullalpha/effects/shaders/lighting/audio/lifecycle/455pixel equivalence","FullTutorialstage/intro/Avatar/QBI/localhandlers/fourstage/auth/gameplay/IME/failures/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-AVATAR-STAGE-073",
       "status": "partial",
       "description": "Actual Avatar stage/skip,MainApp Create gate,login stage2 and boundedlocal Tutorial routing;fullstage/world/handlers open",

@@ -7,6 +7,18 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+074: тринастоящих учебных BSP39 загружены/отрисованы черезCLand. Исправлены
+owner/release;reload/GPU/collision/Dmalloc balanceпроверены. Шестькадров просмотрены,
+finalPE/Create1 passed. FullILevel/Empty/INS иполнаяигра OPEN;M9недостигнут.
+[Доказательства](../research/client455-world.md).
+
+075: настоящий CGP_Tutorial:Load/Create,таблицаcameraintro/frame/input,realAvatar/
+localhandlers/feedback,board47QBI иfourstagefactory/nextDWORD. Использовать уже
+проверенный BSP backend,не повторять аудитвсехmapcontainers. Sourcefactory ещё
+legacy3/modulo;IDbridge2->3 убрать только присовместномпереносе Tutorial2/Main3.
+
+Предыдущий участок:
+
 073: состояние этапа Avatar,Create failure gate,login bypass иlocal Tutorial
 route связаны с обычными методами. Source/localhandlers остаются неполными:
 knownignored/1-17 transport работают,остальные handlers явноотклоняются.

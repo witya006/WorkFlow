@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+074: настоящие Bellato/Cora/Accretia455 загружаются/рисуются черезCLand. Owner
+иleveldestructorперенесены;reload/GPU/collision/Dmallocbalance и6кадров проверены.
+FinalPE/Create1 passed. FullILevel/Empty/INS иTutorialещёOPEN. Далее075 — actual
+Tutorialstage/cameraintro/Avatar/localhandlers/QBI/fourstage.M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-world.md).
+
+Предыдущий участок:
+
 073: ordinary Avatar stage/skip,MainApp Create gate,login иlocalTutorial routing
 перенесены. Knownignored/1-17transport проверены;полныеlocalhandlers ещёOPEN с
 явнымотказом. NewPE/Create1 иwindow/boardpassed;22кадра равныreviewed072.
@@ -506,9 +514,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/074: настоящий world owner/ILevel/BSP39 иTutorial cameraintro,затем
-   localhandlers/Avatar/world/frame/input/feedback/board47QBI иfourstagefactory.
-   Stage/skip/source routing073 перенесены;сам Tutorial иполныймир ещёOPEN.
+1. M6/075: настоящийCGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+   localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
+   проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать
    screen/window lifecycle,capture,currentstage guard,device-reset/resources,
    otherlayers/IME/basevirtualsize/wrappers,не объявляя весьGUI соответствующим455.

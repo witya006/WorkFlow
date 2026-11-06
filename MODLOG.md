@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — World074. Real Bellato/Cora/Accretia loaded/rendered throughCLand;
+BSP39/EBP20 sourceworked,owner recreation andlevel destructorReleaseported.
+10ranges/prefix48/6asm equalpins,IDA60286d36savedclosed. 3worlds/reload/GPU/
+collision/Dmallocbalance,6viewedframes,zero warnings. Engine67/6overlays
+c00d9d4d…;PEfd8b038d…/entry150790/182-20-32TU/Create1. FullILevel/Empty/INS/
+Tutorial/fourstage/M9OPEN. Next075 actualTutorial/cameraintro/Avatar/handlers.
+[Evidence](research/client455-world.md).
+
 2026-11-07 — Avatar-stage073. ActualAvatar stage/skip,MainApp Create failure gate,
 login stage2 and localTutorial route wired. Knownignored/1-17transport accepted;
 missinglocalhandlers explicitlyfail,fullfactory/world/Tutorial stillOPEN.

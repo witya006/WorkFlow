@@ -23,6 +23,33 @@
 
 ## Последний проверенный результат
 
+074: realBSP worlds loaded/rendered throughordinaryCLand. ExistingBSP39/EBP20
+geometry loaderworked;no rewrite. Newland_load.inc deletesoldlevel/newCLevel/
+globalgLevel/camera.Create;indexedload usesit. .ins explicitFALSE/missingprovider.
+Derivedengine6thoverlaylevel.cpp:destructorReleaseLevel beforeSky/BSPdelete.
+InitialCreate remainslegacyCLevel,fullILevel/Empty/INS NOTported. Base033preserved.
+10ranges/vtableprefix48 equalpins,6completeasm;IDA60286d36savedclosed. Rawworld074
+inartifacts/client455-progress includesfullLoad pages/owner/release/camera.
+Bellato98020verts/85661faces/5455leaf/666mats/1187entities;Cora108443/126980/
+8649/477/147;Acc102817/60866/4345/912/0. IndependentMapFilecounts match.
+Realspawncollision true/heights277.230469/491.476562/-296.876953,leaf1597/4902/3733.
+3load→frame→GPU→reload→frame→GPU→Destroy processesexit0,warnings0;6viewedframes.
+Dmallocbefore=after270592;loaded=reloaded10583464/14343055/9627794. NotallCOM/heap
+lifetimes orfullphysicsproof. Stage maps/camera0views only,notfullintro/pixel455.
+Inputs actualcopieswork/world455-inputs;runhardlinksONLYworkcopies,notoriginals;
+hashesunchangedafter. Eachrun .map copiedimmutable. Fixture fixes:Windowspaths,
+relativeRPKprefix,CLandheap(stackoverflow0xC00000FD),notgeometrysubstitutions.
+PEfd8b038dcbc0890caf4b728c487dd15448dbcb551a6ed38a804ba7002c8b5c21,entry150790,
+2043392bytes/182client20kernel32facade/0unresolved/exactCreate1. Engine67TU/6overlays
+c00d9d4da762dbf226bff5a8110034026159758b41738c4435c30438aa79568c. Prep4E7428C9…
+idempotent. Freshstartupcontracts/account/Avatar/MainApp/KoRuWindowPASS;otherold
+GUI/kernelreports historical. 40080201unknown. NewworldgatePARTIAL;M6/M6F/M7/M9OPEN.
+Next075 actualCGP_Tutorial Load/Create/cameraintrosegments/frame/input +realAvatar/
+localhandlers/board47QBI/fourstage jointly,using provenBSPbackend;don'tre-auditall
+mapcontainers. FullILevel/Empty/INS/indexedextras/alpha/effects/shaders/lighting/
+audio/deviceReset/Avatar/gameplay/auth/IME/failuresgaps remainmandatory.
+Details research/client455-world.md.
+
 Участок073: CAvatar получил source stageBYTE/skipDWORD default0. Targetfields
 20165/20168;set/get безнормализации,requested2->3ifskip. Real predicate вcavatar.obj
 используетсяaccount342. MainApp GameMainLoop теперьвозвращает0приCreatefailure;

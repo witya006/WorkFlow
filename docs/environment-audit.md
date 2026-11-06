@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,world074:установокнет.10ranges/vtableprefix48/6asm equalpins,
+IDA60286d36savedclosed. RealCLand3maps/load/render/reload/release/collision,
+6GPUframes иDmallocbalance passed. Engine67TU/6overlays c00d9d4d… сохраняетbase033.
+PEfd8b038d…/entry150790/182-20-32TU/0unresolved/exactCreate1;freshstartupcontracts,
+account/Avatar/MainApp/KoRuWindowpassed. FullILevel/INS/Tutorial/игра OPEN.
+40080201unknown.[Доказательства](../research/client455-world.md).
+
 Дополнение07.11,avatar-stage073: установокнет. ConfiguredIDAprobe внеsandbox
 прошёл66tools/list10/decompile/close;внутри sandbox workerexit2. NativeMCP
 работал,сессияb3b8653dsavedclosed.34ranges/2vtables/15fullasm equalpins.

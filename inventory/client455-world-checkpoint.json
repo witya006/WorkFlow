@@ -1,0 +1,69 @@
+{
+  "status": "PARTIAL",
+  "actual_BSP_worlds": "PASS",
+  "load_reload_release_Dmalloc": "PASS",
+  "real_spawn_collision": "PASS_BOUNDED",
+  "source_opaque_GPU_frames_reviewed": 6,
+  "exactPE_Create1": "PASS",
+  "observations": [
+    {
+      "race": "bellato",
+      "vertices": 98020,
+      "faces": 85661,
+      "leaves": 5455,
+      "materials": 666,
+      "map_entities": 1187,
+      "height": 277.230469,
+      "Dmalloc_loaded": 10583464
+    },
+    {
+      "race": "cora",
+      "vertices": 108443,
+      "faces": 126980,
+      "leaves": 8649,
+      "materials": 477,
+      "map_entities": 147,
+      "height": 491.476562,
+      "Dmalloc_loaded": 14343055
+    },
+    {
+      "race": "accretia",
+      "vertices": 102817,
+      "faces": 60866,
+      "leaves": 4345,
+      "materials": 912,
+      "map_entities": 0,
+      "height": -296.876953,
+      "Dmalloc_loaded": 9627794
+    }
+  ],
+  "sources": {
+    "client455_land_load.inc": "e25005cfd4dc33d02ee5453ea9ba1f26b585859a4bb9b35bf7c813a1a49c1ed7",
+    "client455_level_destroy.inc": "f8f1ddcc5775ee76a114bde728215b5066e2b0aa1e99274e7e69a4caddbc7d48"
+  },
+  "script_sha256": "b04877d6db8e474d4800ee3f9f3001ba8ee23f36c8bfc0de5960f78ce9d2de0d",
+  "evidence_sha256": {
+    "client455-world-reference": "ee9d11727baf8056943eba9fe646a73583b2ea6ec7088304f92196cb2063ae0f",
+    "client455-world-visual": "6dc4bfd40c70815412b650a6d51666391ead8860e94409285f8ce1f23ff3ef35",
+    "client455-startup-engine-build": "dbf59a29091819cf65d6b5b0347e5234b531a0021348aad1ecc54c947c26d7e0",
+    "client455-ui-startup-native": "1f68d0370de88f36735c37d0273736713f14dc6586b7b7611e19211c418a7205",
+    "client455-account-native": "932e0cbafd89310da79937443a36e7a81ffd69ba6a8a790ac49fede9bba8044f",
+    "client455-briefing-window-native": "df11805d49f0493168554aeefbb4045f5796567154423daf181a79f854e15cc8",
+    "client455-world-bellato-native": "29f7fa479725fff43a28a44bebc5da4f2b230ef829195182f80f797dccc72d69",
+    "client455-world-cora-native": "3a407b324dbd74c1f2e8d0a062d83a0b0692af6318be4aea057bedd6f234d923",
+    "client455-world-accretia-native": "70115353fedbed5577d8227cb8fcf3e3ed96ad8730c4ca66a0fe09ad57f25eb9"
+  },
+  "gaps": [
+    "FullILevel virtualinterface,Empty initialowner andCLevelIns notported;ins explicitlyreturnsFALSE",
+    "Indexedmapextras/effects/time/radar/lifecycle andallworldinterfaces notaccepted",
+    "GPUframes are ownsource/camera0 views,not pixelcomparison against455;sky/opaque shown,fullalpha/effects/shaders/lighting/audio/lifecycle unresolved",
+    "FullTutorialclass/cameraintro/Avatar/QBI/localhandlers/fourstage/auth/gameplay/IME/M6F/M9 open",
+    "Allocatorbalance coversDmalloc only,not proof ofallCOM/GPU/heap lifetimes;invalidstrings/OOM/failure domains unaccepted"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

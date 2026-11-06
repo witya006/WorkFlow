@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+074: три реальныекарты455 загружены/отрисованы черезCLand. SourceBSPowner и
+деструкторLevelперенесены,load/reload/release/collision/Dmallocbalance и6GPU
+кадров проверены. ExactnewPE/Create1passed. Это boundedBSP path:fullILevel/
+Empty/INS,alpha/effects/lighting/audio/полныеphysics иTutorial/worldGameplay
+ещёнеприняты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-world.md).
+
 073: ordinary CAvatar stage/skip иMainApp Createfailure gate перенесены,
 login342 учитывает stage2,SendNetMessage использует реальныеstage/skip.
 Knownignored и1/17transport приняты вограниченномдомене;остальныеlocalhandlers

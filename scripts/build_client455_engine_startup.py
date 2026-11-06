@@ -11,7 +11,7 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp']:
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp']:
         source=base/'source/R3Engine'/('1stclass' if filename=='r3d3dtex.cpp' else '2ndclass')/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
@@ -30,6 +30,10 @@ def main():
             from prepare_client455_normal import section
             start,end=section(raw,b'void *GetDDSTexFromBuffer(',b'void *GetDDSTexFromBuffer(')
             raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
+        elif filename=='level.cpp':
+            from prepare_client455_normal import section
+            first,last=section(raw,b'CLevel::~CLevel()',b'CLevel::~CLevel()')
+            raw=raw[:first]+(WS/'scripts/native/client455_level_destroy.inc').read_bytes()+raw[last:]
         else:
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_camera.h').as_posix()+'"\n#include <utility>\n').encode()+raw

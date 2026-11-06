@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — avatar-stage073: состояние этапа связано с настоящим
+Последний участок M6 — world074:Bellato/Cora/Accretia455 загружаются иотрисовываются
+через настоящий CLand. Исправлены владелец BSP идеструктор уровня;повторная
+загрузка/GPU/collision/Dmalloc balance проверены. Новая PE/Create1 проходит.
+Полные ILevel/INS/Tutorial/игра ещёоткрыты;далее075 — настоящий Tutorial stage.
+[Доказательства](research/client455-world.md).
+
+Предыдущий участок M6 — avatar-stage073: состояние этапа связано с настоящим
 Avatar,исправлена проверка Create ивключены подтверждённые ветки login/local
 Tutorial routing. Недостающие обработчики дают явный отказ. Окно/панель и новая
 PE/Create1 проверены;полные Tutorial/world/fourstage ещё открыты. Далее074.
