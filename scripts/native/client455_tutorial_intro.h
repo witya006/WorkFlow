@@ -64,6 +64,8 @@ public:
     bool fading()override;
     void fadeIn(std::uint32_t,float,float)override;
     void fadeOut(std::uint32_t,float,float)override;
+    void setEngineRenderFlag(std::uint32_t)override;
+    void setEngineFloat8CE9D0(float)override;
     const float* position()const{return m_position;}
     const float* viewMatrix()const{return &m_matrix[0][0];}
     CAniCamera& camera(){return *m_camera;}

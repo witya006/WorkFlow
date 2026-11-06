@@ -23,6 +23,35 @@
 
 ## Последний проверенный результат
 
+076: restoredordinaryFullscreen motion branch (existingenginefunction,notnew
+replacementrenderer). stFullScreenEffectState==target1163FB0,real==FB4,old==FB8;
+stMain==1163FE8,stBlur==1163FC0. 8CED70SetState copiesDWORD/resetsoldonlyif0.
+8CE9D0densityrawfloat/defaultBF7850=.25;Tutorial .15/.25 nowrealbackendcallbacks.
+IMPORTANT8CE9F0motion:modechange mainopaque→CLEAR CURRENTBLUR;eachframe mainalpha
+trunc(density*255)→CLEAR CURRENTBLUR→mainopaque. Preservecounterintuitivefinalpass;
+doNOTimplementusualtemporalaccumulation. AsmECXFC0 onClear8DA470 confirmsowner.
+11ranges/defaultequalpins,4fullasm;rawfullscreen076.json includesinit/end/Begin
+asm plusengine/Avatar5488F0/5588C0decomp. IDAf1ac7cc2savedclosed.
+Newseventhengineoverlayr3d3d8.cpp: motion.inc,densityAPI,Beginactualreturn,
+stTexSize512independentoldlowvidmem. Other455targets/water/bloom/shadow/reset
+stillunaccepted;doNOTcallfullInit/graphicscomplete. Base033unchanged,67TU/7overlays,
+lib2df1e50eafb559452c4c610815e3c9534cc6eb0d1f5186e0c876cd7ab3576592.
+GPU18patternframes(5viewed) passedrealBegin/FSE/End,default/.0/.15/.25/1,fullmode
+80000005,red→blue→green nohistory,UI/actualtarget/depth/viewport/Zrestored,
+vidmem0/2actual512targets,Release/Beginfalse/Init/success. Numericdrawonlyfinite0..1.
+IntroHostmode/densitycallactualbasebackend;cameraControls/stage/QBI/followstill
+recordingfixtures. Realintro3maps9/9/8cuts and357/325/258ticks,343/310/244matrices,
+skip/reload/counters/Dmalloc270592beforeafter,warn0/exit0;29newviewsreviewed.
+PE4553f4016e40d2803bee9a91661961206ef00b59f2ac395c564dcd311dc6f204,entry150860,
+2043904bytes,182client20kernel34facade/0unresolved/exactCreate1,freshstartupcontracts.
+Runtimechanged so075timestampreuseinapplicable;oldgateshistorical/current076gate
+PARTIAL. 40080201unknown. FullStage/QBI/cameraControls/postprocess/M6F/M7/M9OPEN.
+Next077 remaining8D4C30consumers andrealCGP_Tutorialowner lifecycle/input/board/
+Avatar/localfeedback/fourstagejointintegration. 5488F0normalAvatarCreate differs
+from5588C0Tutorialstats99/inventoryhandling;doNOTsubstituteoneforother. Legacy2->3
+bridge remains untilactualTutorial2/Main3/Logintransitions. Noopprovidersforbidden.
+Details research/client455-fullscreen-effect.md.
+
 075: Tutorial intro branch5590B0 andLoad5594D0 sequence source restored.
 RF455TutorialIntro +realRF455TutorialIntroCameraHost (CAniCamera/R3SetCameraMatrix/
 fade) normalfacadecompiled butordinaryfactoryunused;NO force-retention/fullstage

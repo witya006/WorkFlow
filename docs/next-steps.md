@@ -7,6 +7,22 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+076: настоящаяmotion-ветка FullScreenEffect455 перенесена;mode/densitycallbacks
+intro больше незаписывающиезаглушки. GPU18/failedBegin/lowVRAM512/restoreUI и
+3worlds/26cameras/34viewedframes passed. PE/Create1passed;M9недостигнут.
+[Доказательства](../research/client455-fullscreen-effect.md).
+
+077: продолжитьCGP_Tutorialowner: cameraControls8D4C30+реальныепотребители,
+Load/Create/Frame/Input/Destroy иAvatar/QBI/localfeedback/board,затемfourstage/
+nextDWORD/Loginвместе. ИспользоватьBSP/intro/FSE/briefingproviders. Не заменять
+нехваткуcallbackno-op. 5488F0normalAvatarCreate и5588C0Tutorialstats99 — разные
+методы;неподменятьих. Legacy2->3bridge убратьсовместносTutorial2/Main3.
+FSE076конечныйpassopaque+clearcurrentblur — сохранитьдажепротивназванияmotionblur.
+Полныеwater/bloom/extra455targets/shadowallocation/reset ещёOPEN;runtimechanged,
+075timestampreuseнеприменим. M6/M6F/M7/M9OPEN.
+
+Предыдущий участок:
+
 075: 26камер трёхучебныхмиров/настоящиеfade/screen/mouse/Avatar race-stage
 проверены;29GPUкадров просмотрены. Skip/reload/countretention/DmallocPASS.
 Intro source вnormalfacade,ноactualTutorialowner/boardQBI/newenginecallbacks

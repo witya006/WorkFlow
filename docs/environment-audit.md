@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,fullscreen-effect076: установокнет.11ranges/default0.25 equalpins,
+4fullasm;IDAf1ac7cc2savedclosed. Derivedengine67TU/7overlays/2df1e50e… сохраняет033.
+RealFSE GPU18/lowVRAM512/failedBegin/target-depth-viewport-UIpassed;realintro3worlds
+26cameras/Dmalloc/34viewedframesPASS. PE4553f401…/entry150860/182-20-34TU/
+0unresolved/exactCreate1,freshstartupcontracts. Runtimechanged,075timestampreuse
+неприменим;oldGUI/kernelhistorical. Fullpostprocess/stage/QBI/M9OPEN,40080201unknown.
+[Доказательства](../research/client455-fullscreen-effect.md).
+
 Дополнение07.11,tutorial-intro075: установокнет.15ranges/3tables equalpins,
 4fullasm,IDAb92074d1savedclosed. Realcamera/fade/screen/mouse/world сAvatar
 race/stage:26cameras/29viewedGPUframes/skip/reload/DmallocbalancePASS. Исправлен

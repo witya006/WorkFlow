@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+076: восстановлен настоящийfullscreen motion-проход455;intro mode/density
+связанысдвижком. GPU18/3worlds26cameras/34viewedframes/failedBegin/lowVRAM512
+passed,PE/Create1passed. ActualTutorialowner/QBI/cameraControls/factory ещёOPEN.
+Далее077;M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-fullscreen-effect.md).
+
+Предыдущий участок:
+
 075: перенесенаintrosequence455;26actualcameras на3worlds,fade/skip/reload,
 29viewedGPU иDmallocbalancePASS. Normalfacadeproviderещёunusedactualstage;
 fullTutorial/QBI/newenginecontrols/factoryOPEN. PE/Create1passed,runtimeequal074

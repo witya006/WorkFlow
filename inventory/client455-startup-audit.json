@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "516664365726f782f256c87337ba0d14f349ee2e7556fa48205a53619220a44c",
-    "bytes": 2043392,
+    "sha256": "4553f4016e40d2803bee9a91661961206ef00b59f2ac395c564dcd311dc6f204",
+    "bytes": 2043904,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x150790",
+    "entry_rva": "0x150860",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "f72d317044a32dc4bc537a8738d70db9bb23dea85d4b4f91bb24e413c079994a",
+  "normal_link_sha256": "d19c2959f11109f739124094f3d4b5454be158efe23b74a175baf37b91d0728c",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1456,6 +1456,10 @@
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
       "sha256": "70d20367785d8ddd93de27a5d26be19e32d3df5b49234a2299c5aa0fd15fb8bd"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
+      "sha256": "c2d974739249f0301654899ecb2c2acf934bd64a5323775b65b6cad33533762c"
     }
   ],
   "normal_winmain_executed": false,
@@ -1464,5 +1468,5 @@
   "M6": "OPEN",
   "M9": "OPEN",
   "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
-  "startup_engine_build_sha256": "dbf59a29091819cf65d6b5b0347e5234b531a0021348aad1ecc54c947c26d7e0"
+  "startup_engine_build_sha256": "5596b45c0b799f06c34b77c21b61b0b4cf2c9ac0b0843874f26696fe0e7c1f49"
 }

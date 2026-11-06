@@ -11,6 +11,7 @@
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
 #include "client455_tutorial_intro.h"
+#include "client455_fullscreen_effect.h"
 #include "jerror.h"
 #include "jmalloc.h"
 #include <cstdio>
@@ -37,8 +38,8 @@ static unsigned capture(const char* name){
 }
 struct Selection{unsigned ordinal,start,end;float tick;};
 struct Fade{bool out;float seconds;};
-// These explicit recordings are the still-missing stage/QBI/new-engine consumers,
-// not production implementations. Camera,fade,screen,mouse,Avatar and world are real.
+// Stage/QBI/follow/camera-control callbacks remain explicit recordings. Fullscreen
+// mode/density now call the real engine backend;camera/fade/UI/world are real.
 struct Host final : RF455TutorialIntroCameraHost {
     CGUIScreen& screen;bool blocked=false;unsigned scripts=0,follows=0,applied=0,engineFlag=0,control=6;float engineFloat=0;
     std::vector<Selection> selections;std::vector<Fade> fades;std::vector<unsigned> finishOrder;
@@ -47,8 +48,8 @@ struct Host final : RF455TutorialIntroCameraHost {
     void applyCameraMatrix(float matrix[4][4])override{++applied;RF455TutorialIntroCameraHost::applyCameraMatrix(matrix);for(unsigned i=0;i<16;++i){check(std::isfinite(viewMatrix()[i]),"finite real camera matrix");check(std::fabs(viewMatrix()[i]-matrix[i/4][i%4])<0.00001f,"camera backend engine layout/zero-rotation view");}if(applied<=2)std::fprintf(stderr,"camera:%u raw=%.6g,%.6g,%.6g,%.6g actual=%.6g,%.6g,%.6g,%.6g pos=%.6g,%.6g,%.6g\n",applied,matrix[0][0],matrix[1][1],matrix[2][2],matrix[3][3],viewMatrix()[0],viewMatrix()[5],viewMatrix()[10],viewMatrix()[15],position()[0],position()[1],position()[2]);}
     void fadeIn(std::uint32_t color,float seconds,float density)override{check(!color&&density==1,"fade-in arguments");fades.push_back({false,seconds});if(seconds==5)finishOrder.push_back(2);RF455TutorialIntroCameraHost::fadeIn(color,seconds,density);}
     void fadeOut(std::uint32_t color,float seconds,float density)override{check(!color&&density==1,"fade-out arguments");fades.push_back({true,seconds});if(!seconds)finishOrder.push_back(1);RF455TutorialIntroCameraHost::fadeOut(color,seconds,density);}
-    void setEngineRenderFlag(std::uint32_t flag)override{engineFlag=flag;if(!flag)finishOrder.push_back(8);}
-    void setEngineFloat8CE9D0(float value)override{engineFloat=value;if(value==0.25f)finishOrder.push_back(9);}
+    void setEngineRenderFlag(std::uint32_t flag)override{RF455TutorialIntroCameraHost::setEngineRenderFlag(flag);engineFlag=flag;check(GetStateFullScreenEffect()==flag,"real fullscreen mode binding");if(!flag)finishOrder.push_back(8);}
+    void setEngineFloat8CE9D0(float value)override{RF455TutorialIntroCameraHost::setEngineFloat8CE9D0(value);engineFloat=value;check(RF455_GetFullScreenEffectDensity()==value,"real fullscreen density binding");if(value==0.25f)finishOrder.push_back(9);}
     std::uint32_t cameraControlFlags()override{return control;}
     void setCameraControlFlags(std::uint32_t value)override{control=value;if(!(value&1))finishOrder.push_back(10);}
     void blockStageInput(bool value)override{blocked=value;if(!value)finishOrder.push_back(3);}
@@ -59,7 +60,7 @@ struct Host final : RF455TutorialIntroCameraHost {
 };
 static void draw(CLevel& level,Host& host){
     Vector3f position;std::memcpy(position,host.position(),sizeof(position));D3DXMATRIX matrix;std::memcpy(&matrix,host.viewMatrix(),64);level.SetCameraPos(position);level.SetViewMatrix(&matrix);level.FrameMove();
-    auto* device=GetD3dDevice();check(SUCCEEDED(device->Clear(0,nullptr,D3DCLEAR_TARGET|D3DCLEAR_ZBUFFER,0xff102030,1,0)),"clear");check(SUCCEEDED(device->BeginScene()),"begin");level.DrawSkyBoxRender();level.DrawMapRender();level.DrawMapEntitiesRender();DrawFadeScreen();check(SUCCEEDED(device->EndScene()),"end");
+    check(R3BeginScene()!=FALSE,"real R3BeginScene");R3ClearFrameBuffer();level.DrawSkyBoxRender();level.DrawMapRender();level.DrawMapEntitiesRender();FullScreenEffect();DrawFadeScreen();R3EndScene();
 }
 static void drawFadeOnly(){auto* device=GetD3dDevice();check(SUCCEEDED(device->BeginScene()),"fade begin");DrawFadeScreen();check(SUCCEEDED(device->EndScene()),"fade end");}
 static int run(const char* race){

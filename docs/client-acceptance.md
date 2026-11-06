@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+076: ordinaryFullScreenEffect motion branch/density/Beginresult перенесены.
+GPU18/target-depth-viewport-UI/lowVRAM512 иrealintro26/34viewedframes passed.
+Intro mode/densityactualbackend,ноstage/QBI/follow/cameraControlsещёrecordings.
+ExactPE/Create1passed. Полныеpostprocess/water/bloom/extra455targets/shadow/reset,
+CGP_Tutorial/Avataractor/fourstage/game/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-fullscreen-effect.md).
+
 075: introsequence/camera/fade веткаперенесена,26камер3миров/29GPU/skip/reload/
 Dmallocpassed. ActualAvatarтолькоrace/stage,UIреальные;QBI/follow/newenginecontrols
 вprobeexplicitrecordings,неполныеproviders. Normalfacadecompiled,ordinaryTutorial

@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-FULLSCREEN-EFFECT-076",
+      "status": "partial",
+      "description": "Actual fullscreen motion branch/density/BeginScene result and real intro mode-density backend;fullpostprocess/stage open",
+      "reference": [{"rva":"0x4ce9f0","role":"fullscreen motion branch"},{"rva":"0x4ce9d0","role":"density setter"},{"rva":"0x4ced70","role":"mode setter/cache reset"},{"rva":"0x4cdb80","role":"BeginScene result"},{"rva":"0x4cd9f0","role":"fixed512 targets"}],
+      "implementation": ["scripts/native/client455_fullscreen_effect.h","scripts/native/client455_fullscreen_motion.inc","scripts/build_client455_engine_startup.py","scripts/native/client455_tutorial_intro_camera.cpp"],
+      "verification": "11ranges/default0.25/4fullasm equalpins. GPU18 patterns prove finalopaque/nohistory,target-depth-viewport-UI,Z,lowVRAM512 andfailedBegin. Realintro3worlds/26cameras/34viewedframes/Create1. No force-retention.",
+      "evidence": ["inventory/client455-fullscreen-effect-reference.json","inventory/client455-fullscreen-effect-native.json","inventory/client455-fullscreen-effect-visual.json","inventory/client455-fullscreen-effect-checkpoint.json","research/client455-fullscreen-effect.md"],
+      "gaps": ["Fullwater/bloom/extra455targets/shadowallocation/init/reset/COM-GPU-lifecycle/numericfailures","CameraControls8D4C30 andactualCGP_Tutorial/Avataractor/QBI/follow/fourstage/Login integration","Allpriorworld/Character/render/auth/gameplay/IME/M6F/M7/M9gaps"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-INTRO-075",
       "status": "partial",
       "description": "455 intro cut/fade/skip sequencing with real camera/world backend;ordinary Tutorial owner and QBI providers remain open",

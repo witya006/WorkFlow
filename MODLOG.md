@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Fullscreen-effect076. Actualmotionbranch/density/Beginreturn,
+fixed512targets;11ranges/default/4asm equalpins,IDAf1ac7cc2savedclosed.
+Sourceengine67/7overlays,033preserved. GPU18+realintro3maps/26cameras,
+34reviewedframes/target-depth-viewport-UI/Dmallocpassed. PE4553f401…/Create1,
+freshcontracts. FullStage/QBI/cameraControls/postprocess/M9OPEN;next077.
+Details research/client455-fullscreen-effect.md.
+
 2026-11-07 — Tutorial-intro075. Restored455 intro cuts/fade/skip/reload,
 15ranges/3tablesequalpins/4asm,IDAb92074d1savedclosed. Real camera/fade/world/
 screen/mouse+Avatar race-stage:26cameras/29viewedframes/DmallocbalancePASS.

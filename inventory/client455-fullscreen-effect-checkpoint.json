@@ -1,0 +1,61 @@
+{
+  "status": "PARTIAL",
+  "ordinary_fullscreen_motion_branch": "PASS_BOUNDED",
+  "GPU_pattern_frames": 18,
+  "reviewed_frames": 34,
+  "real_intro_fullscreen_bindings": "PASS",
+  "observations": [
+    {
+      "race": "bellato",
+      "cameras": 9,
+      "frames": 357,
+      "Dmalloc_before_after": [
+        270592,
+        270592
+      ]
+    },
+    {
+      "race": "cora",
+      "cameras": 9,
+      "frames": 325,
+      "Dmalloc_before_after": [
+        270592,
+        270592
+      ]
+    },
+    {
+      "race": "accretia",
+      "cameras": 8,
+      "frames": 258,
+      "Dmalloc_before_after": [
+        270592,
+        270592
+      ]
+    }
+  ],
+  "exactPE_Create1": "PASS",
+  "script_sha256": "b3f5e663e6745202eb93f311122762c105d1c65041f1d4c19c9e22c4862b94e1",
+  "evidence_sha256": {
+    "client455-fullscreen-effect-reference": "9c076d4422defdda55adbadbdb01c75e9181b25c144f7daec36f31cfe3db998a",
+    "client455-fullscreen-effect-native": "2389d436a11853c907b3563a41153700004a19a23c6cae92cb9371f78bf450aa",
+    "client455-fullscreen-effect-visual": "08c1f9d8a8f5d10ccbcd55f8a9ca7e4e164bf76305ab2eb2455e984a9700d503",
+    "client455-tutorial-intro-visual": "17bb1ffb0f12670c7ba81b68cbb5f0f9f95cbd7741d449301be500e6751cef72",
+    "client455-startup-engine-build": "5596b45c0b799f06c34b77c21b61b0b4cf2c9ac0b0843874f26696fe0e7c1f49",
+    "client455-ui-startup-native": "e407103b7fe35aa71848c614df61d28f7d8faf6a73adbc0a13b7d2e3072962cb",
+    "client455-tutorial-intro-bellato-native": "92d7d8c964071c1db0f1c1188f84d05350dbee58c709bdaae6df8925d5bafdbf",
+    "client455-tutorial-intro-cora-native": "f131874a6dbb29cd7a36b7a6d1dc5ccca3a7115feb7503d99f400d53310c6df8",
+    "client455-tutorial-intro-accretia-native": "cfe69fdb539c10aafc449ef944e64d4da61ac6a0b31dbdc9570add47e252773d"
+  },
+  "gaps": [
+    "Water/bloom/extra455targets andcompleteInit/restore/reset/lifecycle/numericfailure domains remainunaccepted;legacyshadow allocation isnot claimed455-equivalent",
+    "Stagecamera control8D4C30/follow/QBI/Avataractor/fullCGP_Tutorial/fourstage stillopen",
+    "GPUchecks are owncode andstatic455contracts,not reference-runtime pixelparity;densitydraw verified onlyfinite0..1",
+    "AllpreviousILevel/Empty/INS/Character/render/gameplay/auth/IME/M6F/M7/M9 gaps remain"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

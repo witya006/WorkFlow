@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — tutorial-intro075: восстановлен порядок26 камер трёх
+Последний участок M6 — fullscreen-effect076: перенесён настоящий fullscreen
+motion-проход455;intro mode/density теперь вызывают движок. GPU18 и3мира/26камер/
+34просмотренных кадра прошли;новая PE/Create1 проходит. FullTutorial/QBI/camera
+controls/factory остаются OPEN. Далее077 — продолжение настоящего Tutorial owner.
+[Доказательства](research/client455-fullscreen-effect.md).
+
+Предыдущий участок M6 — tutorial-intro075: восстановлен порядок26 камер трёх
 настоящих учебных миров, fade/skip/reload;29GPU кадров просмотрены. ExactPE/Create1
 прошёл;runtime равен074 кроме linktimestamps. Actual stage/QBI/new-engine controls
 иfourstage остаются OPEN. Далее076 — настоящий CGP_Tutorial owner.

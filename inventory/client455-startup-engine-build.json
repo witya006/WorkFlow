@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "c00d9d4da762dbf226bff5a8110034026159758b41738c4435c30438aa79568c",
+  "library_sha256": "2df1e50eafb559452c4c610815e3c9534cc6eb0d1f5186e0c876cd7ab3576592",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -315,6 +315,12 @@
       "sha256": "70d20367785d8ddd93de27a5d26be19e32d3df5b49234a2299c5aa0fd15fb8bd",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
+      "sha256": "c2d974739249f0301654899ecb2c2acf934bd64a5323775b65b6cad33533762c",
+      "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
+      "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
     }
   ],
   "baseline_library": {
@@ -323,13 +329,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "bfb9598fbc66d8b7282c14a4528b789810c10db9c0037bbf68262a7a18e7e390"
+    "sha256": "72242e9a00f1b0bd2bbd0043ace67ce816ff622cd44dad3f445f567f77b89bd7"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "427349bf6f613394824a6030ac731b5c42f2a393de946cc3686a3b920daa6562"
+    "sha256": "27f436142d5fdbd97480bbae4639ffa897672360688d35171e1fe270539b9110"
   },
-  "script_sha256": "4fd883d6ae695f5e9b82de0393ccff151b00da1ad44074a3fd18493ea8bdc1d8",
+  "script_sha256": "0beb5613eff3250d6e2db7e56b0f3aa99af632851582594703e2f3328c0b3655",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -345,5 +351,9 @@
     "client455_camera.h": "ddfd150a5c90dd29a9d6dc2ad9a4f584f05480240467cd4a32289124571a1b8e",
     "client455_camera_load.inc": "f9be72f2944adaa05831f55d7792b653b009373a75a9dacdc599a96093f04eda",
     "client455_camera_play.inc": "c0b33fe3dc71a3be03eb5025902416f900ff97e8168768377b27624bb6791b2f"
+  },
+  "fullscreen_effect": {
+    "client455_fullscreen_effect.h": "db8149cd423614c8e7d9370ba76f68ec2cc5dc8888e6336918537b2c12c0dd0a",
+    "client455_fullscreen_motion.inc": "a27d6331f011baf6aa626a19054544e3f7cae9356a5c1de0ab4bc6874601c857"
   }
 }

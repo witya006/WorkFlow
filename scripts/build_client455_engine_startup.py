@@ -11,8 +11,8 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp']:
-        source=base/'source/R3Engine'/('1stclass' if filename=='r3d3dtex.cpp' else '2ndclass')/filename;raw=source.read_bytes()
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp']:
+        source=base/'source/R3Engine'/('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp'] else '2ndclass')/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
             if raw.count(anchor)!=1:raise ValueError('Legacy forced fullscreen changed')
@@ -34,6 +34,22 @@ def main():
             from prepare_client455_normal import section
             first,last=section(raw,b'CLevel::~CLevel()',b'CLevel::~CLevel()')
             raw=raw[:first]+(WS/'scripts/native/client455_level_destroy.inc').read_bytes()+raw[last:]
+        elif filename=='r3d3d8.cpp':
+            from prepare_client455_normal import section
+            raw=b'#include "client455_fullscreen_effect.h"\r\n'+raw
+            anchor=b'static DWORD stTexSize;'
+            if raw.count(anchor)!=1:raise ValueError('Full-screen effect state boundary changed')
+            raw=raw.replace(anchor,anchor+b'\r\nstatic float st455FullScreenDensity=0.25f;\r\nvoid RF455_SetFullScreenEffectDensity(float value){st455FullScreenDensity=value;}\r\nfloat RF455_GetFullScreenEffectDensity(){return st455FullScreenDensity;}')
+            first,last=section(raw,b'if( stFullScreenEffectState & _FSE_MOTION_BLUR )',b'if( stFullScreenEffectState & _FSE_MOTION_BLUR )')
+            raw=raw[:first]+(WS/'scripts/native/client455_fullscreen_motion.inc').read_bytes()+raw[last:]
+            first,last=section(raw,b'BOOL R3BeginScene()',b'BOOL R3BeginScene()');body=raw[first:last];anchor=b'\t\tstRToTMain.BeginScene();'
+            if body.count(anchor)!=1:raise ValueError('Full-screen Begin result boundary changed')
+            body=body.replace(anchor,b'\t\treturn stRToTMain.BeginScene();');raw=raw[:first]+body+raw[last:]
+            first,last=section(raw,b'void InitFullScreenEffect()',b'void InitFullScreenEffect()');body=raw[first:last]
+            pattern=rb'if\( state->mThisVidMemLevel == 2 \).*?stTexSize = 256;.*?else\s+stTexSize = 512;'
+            body,count=re.subn(pattern,b'stTexSize = 512; //4558CD9F4,independent of legacy video-memory level',body,flags=re.S)
+            if count!=1:raise ValueError('Full-screen texture size boundary changed')
+            raw=raw[:first]+body+raw[last:]
         else:
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_camera.h').as_posix()+'"\n#include <utility>\n').encode()+raw
@@ -61,5 +77,6 @@ def main():
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
+    report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

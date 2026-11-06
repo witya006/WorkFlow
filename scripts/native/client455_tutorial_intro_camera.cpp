@@ -1,4 +1,5 @@
 #include "client455_tutorial_intro.h"
+#include "client455_fullscreen_effect.h"
 #include "core.h"
 #include "commonutil.h"
 #include "anicamera.h"
@@ -21,3 +22,5 @@ float RF455TutorialIntroCameraHost::cameraSeconds(){return m_camera->GetNowFrame
 bool RF455TutorialIntroCameraHost::fading(){return IsFading()!=FALSE;}
 void RF455TutorialIntroCameraHost::fadeIn(std::uint32_t color,float seconds,float density){SetFadeIn(color,seconds,density);}
 void RF455TutorialIntroCameraHost::fadeOut(std::uint32_t color,float seconds,float density){SetFadeOut(color,seconds,density);}
+void RF455TutorialIntroCameraHost::setEngineRenderFlag(std::uint32_t mode){SetStateFullScreenEffect(mode);}
+void RF455TutorialIntroCameraHost::setEngineFloat8CE9D0(float value){RF455_SetFullScreenEffectDensity(value);}
