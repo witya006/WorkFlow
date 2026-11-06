@@ -60,7 +60,10 @@ def main():
         path=client/relative;row={'relative':relative,'exists':path.is_file(),**({'sha256':sha(path),'bytes':path.stat().st_size} if path.is_file() else {})}
         if not path.is_file():row['localized_candidates']=[{'relative':p.relative_to(client).as_posix(),'sha256':sha(p),'bytes':p.stat().st_size} for p in sorted((client/'DataTable').glob('*/'+path.name))]
         inputs.append(row)
-    sources=['work/client455-port/normal/source/mainapp.cpp','work/client455-port/source/R3Engine/2ndclass/r3sound.cpp','work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp','work/client455-port/source/R3Engine/2ndclass/r3d3dapp.cpp']
+    engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
+    if not any(row['file']==engine['library'] and row['sha256']==engine['library_sha256'] for row in link['libraries']):raise ValueError('Full client did not select derived startup engine')
+    sources=['work/client455-port/normal/source/mainapp.cpp','work/client455-port/source/R3Engine/2ndclass/r3sound.cpp','work/client455-port/source/R3Engine/2ndclass/r3d3dapp.cpp']+[row['file'] for row in engine['derived_sources']]
     report={'scope':'Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance','executable':link['executable'],'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'modules':modules,'unresolved_provider_modules':missing,'startup_files':inputs,'source_inputs':[{'file':name,'sha256':sha(WS/name)} for name in sources],'normal_winmain_executed':False,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN','script_sha256':sha(WS/'scripts/audit_client455_startup.py')}
+    report['startup_engine_build_sha256']=sha(WS/'inventory/client455-startup-engine-build.json')
     (WS/'inventory/client455-startup-audit.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'modules':len(modules),'delayed':[m['dll'] for m in modules if m['delayed']],'unresolved_providers':missing,'startup_files':inputs}))
 if __name__=='__main__':main()

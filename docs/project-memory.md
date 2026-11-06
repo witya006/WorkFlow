@@ -23,6 +23,41 @@
 
 ## Последний проверенный результат
 
+Device startup043: target WinMain7D04E0/setup7D2880/wrapper8EDAB0/color8ED5A0
+pinned both bins. CRITICAL old ForceFullScreen name misled legacy code:
+4558ED5A0 writes DWORD1157CA8=32, NOT fullscreen1157CB0. Restore this body and
+Create policy: vcall8EDB72 TEST/JZ, any nonzero exit(0), including S_FALSE.
+Derived work/client455-port/startup-engine builds67units from unchanged033
+source inputs, replacing only kernel/wrapper CPP copies. Baseline033source/lib
+SHA preserved. New archive R3Engine455Startup.lib selected by normal consumer/
+full link; old engine archive not mixed. Source generation build_client455_
+engine_startup.py; reference/native startup-contracts. CPU test virtualCreate
+only: S_OK continues, S_FALSE/E_FAIL exit0 +atexit; color32 keeps full FALSE/TRUE.
+Actual PE changed:51fd3f49ab867f7178a548dcd7058276fb4f1ac4983ab5feac808db863df5fd1,
+1966080B/x86/base400000/entry149510. Exact own WinMain real device lab passed:
+fullscreen0/renderBits32 from config (NO memory/config behavior override),
+afterD3D HRESULT0, ready1/windowed1/nonzeroHWND+device. Own debugger SW_HIDE
+request, breakpoints only in child memory; stop before CMainApp::Create,
+plannedexitE0434200 observed. Raw work/m9/51fd3f49/device-startup002. No UI input.
+Own source layout measured by compiler: ready178060/window178136/device178152/
+windowed178052; Core full1964/renderBits1956. Not reference ABI overlay.
+EarlyCRT/Miles42 rerun on new exactPE; all short native ANI/BBX/color/effect/
+shadow/clock/table/accounting regressions passed, priorframes equal/COM0/
+Dmalloc0. No unchanged bulk suites. Reference IDA1c8c37b3 closed/saved=true.
+Detailed research client455-device-startup.md, inventory device-startup-checkpoint
+PARTIAL; all scoped checkpoints retain M6/M6F/M7/M9 OPEN. Previous goal turn
+aa6db9f was progress; this turn adds real source corrections+device execution.
+Next044 target bootstrap: Setup/Language in .\\R3Engine.ini (AB04F8 string),
+mapper7D29C0/setter7D1110, language selection7CFB10, root5E5B50 buildsFG_CB.ini.
+Target nation/launcher/network/connect BEFORE engine, then WaveList+BGMList,
+device/Create7D18B0. Old normal main lacks these flows; don't claimstartup455
+equivalence or fakefilterrootcopies. Recover locale/root/normalCreate on actual
+client resources. Wrapper camera adds reset op18 in455 while oldconsole table17
+only; this branch remains OPEN, neverwriteOOB. Full Create/UI/launcher/network/
+gameplay/device reset/show/fullshutdown remainOPEN; server/originals untouched.
+
+Предыдущий результат:
+
 Startup042: no production code/PE changes. Actual exact RF_Online.bin041 copied
 to work/m9/39062b2c/startup002, x86/base400000/entry149500/SHA39062b2c... unchanged.
 Native own_client_startup_debugger.cpp built Win32/MT; CREATE_PROCESS_DEBUG_ONLY,

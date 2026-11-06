@@ -1,6 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий участок M6, startup042: точная собственная full PE041 действительно
+Текущий участок M6, devicestartup043: по эталону исправлены color32 и strict
+Create result policy. Новая полная PE прошла actual normal window/D3D init,
+ready1/windowed1, с ненулевыми HWND/device, и остановлена до CMainApp::Create.
+Это не приёмка target startup: nation/launcher/network order455, locale/root,
+BGM, camera console18 и полное Create/UI/lifecycle ещё открыты.
+research/client455-device-startup.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6, startup042: точная собственная full PE041 действительно
 дошла через CRT/WinMain/engine до успешного Miles startup (return1), providers
 сверены по SHA. Процесс остановлен debugger до D3D/window/Create; этот запуск
 не доказывает graphics initialization, всю WaveList/playback/launcher/network
@@ -143,7 +150,7 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 
 | Область | Что сопоставлять | Текущий статус |
 |---|---|---|
-| Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Частично: точная own PE CRT/WinMain/engine/Miles bootstrap; D3D/Create/launcher/locale/error/shutdown ещё открыты |
+| Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Частично: own PE CRT/WinMain/engine/Miles/window/D3D ready; target startup order/Create/launcher/locale/error/shutdown ещё открыты |
 | Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers; область в целом открыта |
 | Рендер и мир | Сцена, камера, освещение, эффекты, видимость, коллизии клиента | Частично: selected maps/helpers/weather/clock; D3D9 и полное поведение открыты |
 | Персонажи | Модели, экипировка, анимации, клиентские состояния | Частично: selected mesh/texture/buffer/model/manager; normal dispatch/BN/animation/full Character открыты |

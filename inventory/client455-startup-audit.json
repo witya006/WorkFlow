@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "39062b2cbf18f5680fd1d59c3d73c22c020770c30e99c9107302cf6678a53a05",
+    "sha256": "51fd3f49ab867f7178a548dcd7058276fb4f1ac4983ab5feac808db863df5fd1",
     "bytes": 1966080,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x149500",
+    "entry_rva": "0x149510",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "de89269f805ec331c6fd229f45e64695fa8fcabf41c27d02d9a3a00611007d95",
+  "normal_link_sha256": "a4be553e61b56ab8ce9bbebc9949ff8273cf99967e16792bc09fc7813726dc7d",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1358,12 +1358,16 @@
       "sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
     },
     {
-      "file": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
-      "sha256": "c45e62c4668a404ce946b0d3d89cca09fd8ac03d91aa2b705651505f7c1d521b"
-    },
-    {
       "file": "work/client455-port/source/R3Engine/2ndclass/r3d3dapp.cpp",
       "sha256": "5b1eec67f0b51ab8f8528f348009cdf5cbad6202800fb280e9155fd8c77ea7e0"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
+      "sha256": "8ecb2f7f678fb29ebda8736f3a2b020d81844f1bd401105cb0f0396263ae9c5e"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3d3dwrapper.cpp",
+      "sha256": "77740cd49125401ff3fd75ffe087fba1bc9d908eec41db91c974c42c56ff9394"
     }
   ],
   "normal_winmain_executed": false,
@@ -1371,5 +1375,6 @@
   "server_modified": false,
   "M6": "OPEN",
   "M9": "OPEN",
-  "script_sha256": "e9bae43dac89d1f734e61f394a0b846d4263fabb29ab35d1ea921cb569558416"
+  "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
+  "startup_engine_build_sha256": "2f440563f87d888bcd3c82bb9f98e9c58fbd8f3ac996e5f6059cd9bc9d624eb1"
 }

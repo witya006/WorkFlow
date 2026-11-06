@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, devicestartup043: установок нет. Отдельно собрана библиотека
+R3Engine455Startup из67units с двумя подтверждёнными правками;033source/lib
+сохранены. Full normal PE линкуется, новый SHA51fd3f49..., entry149510.
+Реальный WinMain дошёл до window/D3D/device ready1 в оконном режиме32бит;
+свой debugger с SW_HIDE запросом остановил процесс до CMainApp::Create,
+exit наблюдён. Source snapshots CPU и exactPE traces под work/, короткие
+Character/renderer regressions прошли, прежние кадры сохранены. Reference
+IDA1c8c37b3 closed/saved=true. Locale/launcher/network/bootstrap order455
+ещё не восстановлены. research/client455-device-startup.md; M6/M9 открыты.
+
 Дополнение 06.11, startup042: установок не требовалось. Собственный Win32
 debugger собран VS2026 и запускает только точную staged own RF_Online.bin.
 Все15 regular/delayed import descriptors имеют x86 providers/нужные exports;

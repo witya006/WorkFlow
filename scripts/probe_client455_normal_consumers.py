@@ -12,7 +12,9 @@ def main():
     libraries=[root/'build/Release/RFClient455Facade.lib',root/'build/Release/RFClient455Kernels.lib']
     for name in ['client455-x87-math','jpeg6b-build']:
         report=json.loads((WS/f'inventory/{name}.json').read_text());libraries.append(WS/report['library'])
-    libraries+=[WS/'work/client455-port/build-vs2026/Release/R3Engine455.lib',WS/'work/client455-port/dependencies/d3dx9_36.lib',engine/'mss32.lib']
+    startup=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
+    if startup['build_exit'] or startup['objects']!=67 or sha(WS/startup['library'])!=startup['library_sha256']:raise ValueError('Current455startup engine build required')
+    libraries+=[WS/startup['library'],WS/'work/client455-port/dependencies/d3dx9_36.lib',engine/'mss32.lib']
     objects=[root/f'build/RFClient455Consumers.dir/Release/{name}.obj' for name in ['unity_managers','animation_control']]
     for path in libraries+objects:
         if not path.is_file():raise ValueError('Missing normal probe dependency:'+str(path))

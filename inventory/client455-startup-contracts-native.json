@@ -1,0 +1,71 @@
+{
+  "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
+  "exe": "work/client455-port/startup-engine/contracts/contracts.exe",
+  "exe_sha256": "1d130c2a86cf8ac7f6d7f3cd2a3f8b92faa52c596bbc48eb8125e2d9309426a6",
+  "entry_rva": "0x8bf70",
+  "source": "scripts/native/test_client455_startup_contracts.cpp",
+  "source_sha256": "c8f2d4c9b06f98874b15c56e2ec42a494095d25d424e97f3e288c9452260e336",
+  "cases": [
+    {
+      "name": "success",
+      "exit": 0,
+      "file": "work/m9/1d130c2a/startup-contracts001/success.txt",
+      "sha256": "08fc71636c741921f53b686b30545f4328b42d51651cfac9db3d4b174631f3bd"
+    },
+    {
+      "name": "s_false",
+      "exit": 0,
+      "file": "work/m9/1d130c2a/startup-contracts001/s_false.txt",
+      "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
+    },
+    {
+      "name": "e_fail",
+      "exit": 0,
+      "file": "work/m9/1d130c2a/startup-contracts001/e_fail.txt",
+      "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
+    }
+  ],
+  "layout": {
+    "ready": 178060,
+    "windowed": 178052,
+    "window": 178136,
+    "device": 178152,
+    "state_fullscreen": 1964,
+    "state_renderbits": 1956
+  },
+  "libraries": [
+    {
+      "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+      "sha256": "5760728ce3b64000205dd8495e6c0a06f56306f73b286cdbe6cc70c222d96ff7"
+    },
+    {
+      "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+      "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
+    },
+    {
+      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+    },
+    {
+      "file": "work/client455-port/dependencies/d3dx9_36.lib",
+      "sha256": "b92a88b327c13a5738ac567ce34b73aa652c536e37fc46c9797dab2f7c413794"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/mss32.lib",
+      "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    }
+  ],
+  "map": {
+    "file": "work/client455-port/startup-engine/contracts/contracts.map",
+    "sha256": "ef76993427de94e5a6b6cf1d57adfc6cd7743bffaeeb978ba91089f88e8cfdf5"
+  },
+  "build_sha256": "2f440563f87d888bcd3c82bb9f98e9c58fbd8f3ac996e5f6059cd9bc9d624eb1",
+  "reference_sha256": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
+  "status": "PASS",
+  "color32_preserves_window_mode": true,
+  "nonzero_create_exits_zero": true,
+  "M6": "OPEN",
+  "M9": "OPEN",
+  "input_exe_executed": false,
+  "server_modified": false
+}

@@ -1614,6 +1614,16 @@
       "evidence":["inventory/client455-startup-audit.json","inventory/client455-startup-native.json","inventory/client455-startup-checkpoint.json","research/client455-startup.md"],
       "gaps":["This unit adds own execution evidence, not restored/accepted full455startup equivalence","D3D/window/Create/launcher/locale/data/UI/network/gameplay and normal shutdown not reached or accepted","Full WaveList/Miles playback/music/3D API unproven; ABuse/Adv/PDLL runtime not reached","Legacy root filter paths differ from localized candidates; verify target455policy before adaptation; M6/M6F/M7/M9 OPEN"]
     }
+    ,{
+      "id":"CLIENT455-DEVICE-STARTUP-043",
+      "status":"partial",
+      "description":"Restored455color32 and nonzero Create exit contracts in a derived engine;exact own PE actual window/device ready before client Create",
+      "implementation":["scripts/build_client455_engine_startup.py","scripts/probe_client455_startup_contracts.py","scripts/probe_client455_device_startup.py","scripts/native/own_client_startup_debugger.cpp"],
+      "reference":[{"rva":"0x4ed5a0","role":"Write render depth32,not fullscreen"},{"rva":"0x4edab0","role":"Virtual Create/nonzero exit0"},{"rva":"0x3d04e0","role":"Target startup order"},{"rva":"0x3d2880","role":"Setup/Language source"}],
+      "verification":"Both455pins match contracts.67unit derived engine preserves033source/lib. CPU S_OK/S_FALSE/E_FAIL and color32 retaining both window modes pass. Exact own PE51fd3f49... reaches normal D3D return0, ready1/windowed1/nonzero HWND/device with config full0/render32;planned stop/exit before CMainApp::Create. Prior short ANI/BBX/renderer/effect/shadow/clock/accounting cases pass and frames retained.",
+      "evidence":["inventory/client455-startup-contracts-reference.json","inventory/client455-startup-engine-build.json","inventory/client455-startup-contracts-native.json","inventory/client455-device-startup-native.json","inventory/client455-device-startup-checkpoint.json","research/client455-device-startup.md"],
+      "gaps":["Target nation/launcher/language/network order and BGM/bootstrap data not restored;legacy whole startup not equivalent","Camera branch needs index18 while old console has17entries;do not writeOOB or claim full wrapper","Client Create/UI/launcher/network/gameplay/device reset/fullscreen/show/normal shutdown and M6/M6F/M7/M9 remain open"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

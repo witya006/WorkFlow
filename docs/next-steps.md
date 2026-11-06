@@ -11,14 +11,35 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — startup042. Точная own RF_Online.bin041 (SHA39062b2c...)
+Последний участок — devicestartup043. Target8ED5A0 ставит renderBits32, а не
+fullscreen;8EDAB0 завершает процесс exit0 при любом nonzero Create. Эти две
+правки подключены через отдельную67unit engine библиотеку,033 сохранён.
+CPU S_OK/S_FALSE/E_FAIL и сохранение обоих window modes прошли. Exact own
+PE51fd3f49... дошла до реального window/device ready1/windowed1/render32,
+затем остановлена перед CMainApp::Create. Короткие прежние сценарии и кадры
+сохранились. research/client455-device-startup.md; checkpoint PARTIAL/M9OPEN.
+
+Следом044 — клиентский bootstrap языка/лаунчера/данных и normal Create.
+Target WinMain7D04E0 сначала SetupNation7D2880 (читает Setup/Language из
+R3Engine.ini), language selection7CFB10, root5E5B50/FG_CB.ini, network manager
+и connect, затем engine/WaveList+BGMList/device/Create7D18B0. Legacy порядок
+не соответствует этому. Следующие адреса: language mapper7D29C0, nation
+setter7D1110, data-root5E5B50. Восстановить точные выборы/пути и нормальный
+Create на реальных клиентских входах, без выдуманных root copies фильтров.
+Дальнейшие network сценарии проверять как клиентский контракт; серверы не
+строить/менять, ввод/аккаунты не использовать без необходимости задачи.
+Отдельный gap: camera branch455 сбрасывает console index18, а старый table
+имеет17entries; не записывать за его границу и не считать весь wrapper готовым.
+После bootstrap — UI/resources/launcher и normal lifecycle/shutdown.
+
+Предыдущий участок — startup042. Точная own RF_Online.bin041 (SHA39062b2c...)
 действительно прошла CRT и обычный WinMain до успешного InitR3SoundSystem.
 Engine bootstrap/Miles return1 и фактические providers проверены. Debugger
 останавливает её перед D3D/window/Create; exit подтверждён. Production PE не
 менялся, старые runtime suites не повторялись. research/client455-startup.md;
 inventory/client455-startup-checkpoint.json PARTIAL; M9 открыт.
 
-Следом043 — normal D3D/window/device initialization и startup contracts455.
+Историческая очередь042 — normal D3D/window/device initialization и startup contracts455.
 Сначала сопоставить target455 startup/config/locale с legacy WinMain: root
 DataTable/cryp.dat/advr.dat отсутствуют, настоящие файлы лежат в ko-kr. Не
 копировать их в выдуманные пути до подтверждения locale policy455.

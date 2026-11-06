@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — startup042: точная собственная RF_Online.bin прошла CRT,
+Последний участок M6 — devicestartup043: по 455 восстановлены установка32бит
+без принудительного fullscreen и строгий результат Create. Производная
+библиотека движка сохраняет033; полная PE прошла actual window/D3D init:
+ready1/windowed1, устройство ненулевое. Остановка перед CMainApp::Create.
+research/client455-device-startup.md; checkpoint PARTIAL; M6/M9 открыты.
+
+Предыдущий участок M6 — startup042: точная собственная RF_Online.bin прошла CRT,
 вошла в обычный WinMain, выполнила engine bootstrap и успешный Miles Audio init.
 Запуск из отдельного lab остановлен отладчиком перед D3D; окно/Create/сеть и
 полный shutdown ещё не приняты. Импорты и реально загруженные providers проверены.

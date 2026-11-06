@@ -1,0 +1,91 @@
+{
+  "scope": "Confirmed startup color/write and Create result contracts;not full455bootstrap/locale/network implementation",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "name": "reference_winmain",
+          "rva": "0x3d04e0",
+          "bytes": 2028,
+          "sha256": "a0ce2da0ecc45356bcfce778e5b5985402848c53abb116c0973c57d80fe51e30"
+        },
+        {
+          "name": "force_renderbits32",
+          "rva": "0x4ed5a0",
+          "bytes": 11,
+          "sha256": "e1b48d07938c647c906e72caed5da8b3ed23b6a7207ab8d270bc13de2439a653"
+        },
+        {
+          "name": "device_wrapper",
+          "rva": "0x4edab0",
+          "bytes": 247,
+          "sha256": "c28b5fe2d96df07a2d07a4d8c143d53cedaf26053c0a175db3a421d7958452dc"
+        },
+        {
+          "name": "setup_language",
+          "rva": "0x3d2880",
+          "bytes": 218,
+          "sha256": "3d94c7e4cfa74b8548e4e5293f270edfbecfda092762d276820d31ee06379421"
+        },
+        {
+          "name": "configuration_filename",
+          "rva": "0x6b04f8",
+          "bytes": 15,
+          "sha256": "fa4cc6541f132c5c241a1c653bf8fb32d87222c0ddc1459461cdb0b5b60ee5b2"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "name": "reference_winmain",
+          "rva": "0x3d04e0",
+          "bytes": 2028,
+          "sha256": "a0ce2da0ecc45356bcfce778e5b5985402848c53abb116c0973c57d80fe51e30"
+        },
+        {
+          "name": "force_renderbits32",
+          "rva": "0x4ed5a0",
+          "bytes": 11,
+          "sha256": "e1b48d07938c647c906e72caed5da8b3ed23b6a7207ab8d270bc13de2439a653"
+        },
+        {
+          "name": "device_wrapper",
+          "rva": "0x4edab0",
+          "bytes": 247,
+          "sha256": "c28b5fe2d96df07a2d07a4d8c143d53cedaf26053c0a175db3a421d7958452dc"
+        },
+        {
+          "name": "setup_language",
+          "rva": "0x3d2880",
+          "bytes": 218,
+          "sha256": "3d94c7e4cfa74b8548e4e5293f270edfbecfda092762d276820d31ee06379421"
+        },
+        {
+          "name": "configuration_filename",
+          "rva": "0x6b04f8",
+          "bytes": 15,
+          "sha256": "fa4cc6541f132c5c241a1c653bf8fb32d87222c0ddc1459461cdb0b5b60ee5b2"
+        }
+      ]
+    }
+  ],
+  "facts": [
+    "8ED5A0 writes render depth DWORD1157CA8=32, not fullscreen DWORD1157CB0",
+    "8EDAB0 calls virtualCreate;any nonzero result exits(0), then flag/input handling and return0",
+    "WinMain sets nation/language/launcher/config/network before engine and loads BGMList after WaveList;legacy bootstrap is not equivalent",
+    "Setup/Language read from .\\R3Engine.ini;locale manager/paths require further reconstruction"
+  ],
+  "gaps": [
+    "Console camera branch adds index18 reset in455, old console only17entries;do not write beyond old table",
+    "Nation/launcher/locale/language dispatch and whole startup/Create/GUI/network remain open",
+    "Reference EXEs are static evidence only, never executed"
+  ],
+  "script_sha256": "f6b2fc165c8d5dc4c5a42cfc9a398e2e5c086a3a9a082315deeadf872a7a310b"
+}

@@ -1,0 +1,313 @@
+{
+  "scope": "Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open",
+  "architecture": "x86",
+  "build_exit": 0,
+  "objects": 67,
+  "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+  "library_sha256": "5760728ce3b64000205dd8495e6c0a06f56306f73b286cdbe6cc70c222d96ff7",
+  "base_cmake": {
+    "file": "work/client455-port/CMakeLists.txt",
+    "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
+  },
+  "base_sources": [
+    {
+      "file": "work/client455-port/source/R3Engine/common/b_sort.cpp",
+      "sha256": "8b3b790cf581cdb74ab7bcac204754fa60ec7d3c4ba6c164adbb5613db85b357"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/cjcache.cpp",
+      "sha256": "7e03bfb038e0ee7ebc9150aaf933aa5639c941e569d32d479cee334465e3e918"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/commonutil.cpp",
+      "sha256": "860769bfd145629816b5db37f5e7ba768c4cd74f79708afe8a5a21b162aa8cf5"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/jerror.cpp",
+      "sha256": "97d78148deb50c7ca40e2afbb198087b78d580ed065b54f7856493b44aa969ba"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/jmalloc.cpp",
+      "sha256": "20c7f0e202e1e4e4e0ad84427fdf46395a2c48bc9fa6288cb4238d09e3e0027b"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/jpegfile.cpp",
+      "sha256": "17909e9a6ae6f80b2516dbf2bba57e3452a67fad733b1c95467ca73420227c75"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/r3dinput.cpp",
+      "sha256": "bacf62153182aa32f0d2860214fa27e7a63e61dbc326fed3627880a691f7bc07"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/r3input.cpp",
+      "sha256": "b6eb338484342a7ff1a7d3efc0f3166153a285e2da51e50eb9c9b53e76d34020"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/r3math.cpp",
+      "sha256": "d6458313a25b6cecb869c268d7d80660db1d28104b90619bd74475b097925468"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/common/r3profiler.cpp",
+      "sha256": "48103375f0a474aceaec0334ac1d9f1883ef6beda602b9268378ae3bd620c513"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/animation.cpp",
+      "sha256": "13cdd0f2cd311816aec9bdf50ff831776be607981d009a2b23f3baf01b5f0296"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
+      "sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/collision.cpp",
+      "sha256": "af462fc691c4d17a7109a8a141552c22e8af141a142215e384111fddb64c15fd"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/core.cpp",
+      "sha256": "30f384cc288edeaa22566e5d60881bc8267dcc9da005bf3ee0a50c3dbc620b47"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/cpathfinder.cpp",
+      "sha256": "bcfeec1699a8ed9e9fce82489f7717f034538dd6cbf2d458e66379fb0e79f261"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/entity.cpp",
+      "sha256": "8e93ec7ea4c249a4a255ec40ac72b6ab3b5890927f350a0c1c38fba1881cd645"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/multilayer.cpp",
+      "sha256": "cbb336d30c1bbb04168a685d2cf755d8328f8bd9dc7d97a083cf7ba7b097428f"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/procedural.cpp",
+      "sha256": "aabfa177544a4fe14abec19c10a58c04f7fb86dff7d467173963b093f9e584d1"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3alpha.cpp",
+      "sha256": "e136a16a98f33c356078e1548329942da6fee1ef5fbd60f1bfdecf7dd3e29c07"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
+      "sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3d3dtex.cpp",
+      "sha256": "7aad342e1952ae32641ae413ba654f2867847871aada1e4b978309205bbf90dd"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3lightmap.cpp",
+      "sha256": "2f4c7dc3fde667815cea4582a39fbeecf56ef30ceef7e0fc5e1f064767967fa4"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3material.cpp",
+      "sha256": "1a5a6ea5df2c5324affe7de6fe2036846dfbb98babcbfcb0f7fb9f948796ac9a"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3particle.cpp",
+      "sha256": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3render.cpp",
+      "sha256": "26015b5c628c7b5384a2cec25f3ffa518cef44893a21c43833eee5a8d662da92"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3vertexbuffer.cpp",
+      "sha256": "34524e9cfe9908db5b93c47251dee5a7f868eaf9fd0d174e6ba685f29bc4d85e"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/r3vertexshader.cpp",
+      "sha256": "acb1adca40e26a6c0b70e19a929d76c51a801ebf7ecd64a638a2292911a6d85b"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/renderentity.cpp",
+      "sha256": "3d725a94c1d02c8123cbece91a57d37136758edc5164f3adbc2d760cdd2628fc"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/renderflag.cpp",
+      "sha256": "792b7124d24b7c64c4c79cb87fcb53793982a5465967ac22eb8d84979a620f6a"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/renderparticle.cpp",
+      "sha256": "854a7417c8495ca390fc0e75c66c7a5707e1832608622f18999e090f6347e926"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/skybox.cpp",
+      "sha256": "724dfbc3b3472cc6577067467cb0935ac64c92a3a401bd8acfd62a19c0a31557"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/soundentity.cpp",
+      "sha256": "b6c314251c51f4171cafa6cc131917359be2a4ee66cc4d32bb51cb76f4deb7ae"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/specialparticle.cpp",
+      "sha256": "49668a26909c7c8f530e057db058565906f60f32280f687e6dabc737a7854406"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/1stclass/toolcollision.cpp",
+      "sha256": "bef175efe7b804bc4ca69e3bbc273ce005f5a9626bc75b1d6a10cc912a7b8b40"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/2dsprite.cpp",
+      "sha256": "68985ff8d033b14aae3a39c3f636981efb1df2134bd4536c484b1ea925a43492"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/anicamera.cpp",
+      "sha256": "b8370cabc324e8c88502e0ab74552ed9483295e612c30d9c93f6fb49e3075507"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/console.cpp",
+      "sha256": "14af993cbf9c5ffa42a65c9e79069cf794dca59d5241a667de641021120986fc"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/extdummy.cpp",
+      "sha256": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
+      "sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/movecamera.cpp",
+      "sha256": "1aa5fa5321ce25e0ae7f607e02250d9fe59343c9fd82c835cab7c2d9b0a6b23e"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3d3dapp.cpp",
+      "sha256": "5b1eec67f0b51ab8f8528f348009cdf5cbad6202800fb280e9155fd8c77ea7e0"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3d3dwrapper.cpp",
+      "sha256": "cb828c7d9fc30728d30ff7918d0ec233ac1c9b8afbcb3a8f900fa09d90fb47fb"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
+      "sha256": "c45e62c4668a404ce946b0d3d89cca09fd8ac03d91aa2b705651505f7c1d521b"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3font.cpp",
+      "sha256": "c6971a350bfe218f55ca3c0e75cdac02127e04ae35a9e47f12efe4805183bf6f"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3move.cpp",
+      "sha256": "ae39c33b0393c9eb61519b51a2bfe27c0866504de88b79da1f0a9cc2af3b15bb"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
+      "sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3text.cpp",
+      "sha256": "72993c33a9d2910395849203d0f0b64cc70b44dba1efcb1ab99a32606954d413"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/2ndclass/r3util.cpp",
+      "sha256": "8fcdb6c14ff863a602aa0c27fd0cd97d1ce6b935908c3138ee4cb6fc62ec8afa"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/characterobj.cpp",
+      "sha256": "b17bd2c6b1a268288c733bb93005ed6f30d7ca07cb1796dbfb7733256eb15654"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/cmagicscript.cpp",
+      "sha256": "df73b0e1fa4c59949d8079191a4edc087a6409fa6972ffaee2c761e0fafd0032"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/collisionutil.cpp",
+      "sha256": "81d2b68f3c9b4cff5b0ea1434f0b4347e5049b3793d651883a361e6976eebd20"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/cswordtrace.cpp",
+      "sha256": "0490b90c6824a188d13069207aee2c5b77796064da5ccff809471cfca853c9a6"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/effectcore.cpp",
+      "sha256": "ff2981211fb4ce5f0af470273bff14449b8e9c19efa4d6ec6a543cbd43ecc146"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/effectentitylist.cpp",
+      "sha256": "dcfefe69fc13add750584960b33cfba4491edb58a954afb4508dbf8921ca0810"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/particlelist.cpp",
+      "sha256": "19fa9832ccbc45ebe00b2f46fb2faaedf3b0909bd0a405cb82bd5371eaece1ff"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/extension/rtmovie.cpp",
+      "sha256": "c5b7ff4063d2a85833d8373ce86d8240bdf6eaf4c49abffa28abc72731dcb3ee"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/d3d/d3dutil.cpp",
+      "sha256": "a2d48575557430ed5550160d5f9554f67a9b1ccfae12b67e841a25b9ea5a0813"
+    },
+    {
+      "file": "work/client455-port/source/R3Engine/d3d/dxutil.cpp",
+      "sha256": "ed27b72154d911203331d6d00ace780c7304e814b07e0968684a151ed64e420c"
+    },
+    {
+      "file": "scripts/native/client455_frustum.cpp",
+      "sha256": "1a8d0f24d2912ffcba51914c45dc30c1cad6ffd8d94438b4e7ef56e6767be19b"
+    },
+    {
+      "file": "scripts/native/client455_frustum_system.cpp",
+      "sha256": "80a124936ade5b16a15573a451a7c3a0d8f56480fc70198c2d351204dde6a1a4"
+    },
+    {
+      "file": "scripts/native/client455_loop_clock.cpp",
+      "sha256": "a2ca84c8f74f3f9eebd0db12fc43cff9b9757aad2ae88e714bd194e6933016fd"
+    },
+    {
+      "file": "scripts/native/client455_animation_timing.cpp",
+      "sha256": "513906795753c439c16b135b96b5a032d0565d88a6fc75f8b6abf6135bf94dfb"
+    },
+    {
+      "file": "scripts/native/client455_time_commands.cpp",
+      "sha256": "0a019a809d910c3a8b447a206271fd73a2e2e0d2ef64a37c44500ce9c465b012"
+    },
+    {
+      "file": "scripts/native/client455_map_time.cpp",
+      "sha256": "771ea3c2a2175ecb046f66c3e9d6d7c9eff088b2622136ba4493a339e1331394"
+    },
+    {
+      "file": "scripts/native/client455_clock.cpp",
+      "sha256": "c0b19cdd44cb221fdcba149593a5da6b81a500bde02ec56e040567d42d634194"
+    },
+    {
+      "file": "scripts/native/client455_resource_io.cpp",
+      "sha256": "e796328b29dd736c4768cff2597ef8e00e986300af13273da5f34aef0088f162"
+    },
+    {
+      "file": "scripts/native/client455_weather.cpp",
+      "sha256": "bae812e92b8fbe5f2b753c85ce08c504812f71d18e9d7e7807d1821ee2ddf5d8"
+    }
+  ],
+  "derived_sources": [
+    {
+      "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
+      "sha256": "8ecb2f7f678fb29ebda8736f3a2b020d81844f1bd401105cb0f0396263ae9c5e",
+      "original": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
+      "original_sha256": "c45e62c4668a404ce946b0d3d89cca09fd8ac03d91aa2b705651505f7c1d521b"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3d3dwrapper.cpp",
+      "sha256": "77740cd49125401ff3fd75ffe087fba1bc9d908eec41db91c974c42c56ff9394",
+      "original": "work/client455-port/source/R3Engine/2ndclass/r3d3dwrapper.cpp",
+      "original_sha256": "cb828c7d9fc30728d30ff7918d0ec233ac1c9b8afbcb3a8f900fa09d90fb47fb"
+    }
+  ],
+  "baseline_library": {
+    "file": "work/client455-port/build-vs2026/Release/R3Engine455.lib",
+    "sha256": "fba3d77db954750118dbfb5dbb66e5606c3c79398ebe8d502b5fb61d7cad7369"
+  },
+  "cmake": {
+    "file": "work/client455-port/startup-engine/CMakeLists.txt",
+    "sha256": "fd7ae83c2949cfbcb65135763cec917f8f7dd3fb028d45f9394505cc9d0a1c69"
+  },
+  "log": {
+    "file": "artifacts/client455-startup-engine/build.txt",
+    "sha256": "fcc5e966ad71cf2dcf604d97fb9472ee255ad610ef669a897122e39453082471"
+  },
+  "script_sha256": "9b445666c8816d897e3c0d0a7a54f3f958f9b3d3f4ab8010795eb19dfea31ee1",
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

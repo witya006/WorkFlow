@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — startup042: точная собственная полная PE прошла CRT,
+Новейший участок M6 — devicestartup043: восстановлены два startup контракта455
+(32бит без forcedfullscreen; nonzero Create→exit0). Exact own PE прошла
+обычную оконную D3D/device инициализацию, ready1. Остановка перед клиентским
+Create. Далее target locale/launcher/bootstrap и normal Create/resources.
+research/client455-device-startup.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — startup042: точная собственная полная PE прошла CRT,
 обычный WinMain, engine и Miles startup. Провайдеры DLL сверены, процесс
 контролируемо остановлен до D3D/window. Далее actual normal graphics/Create/
 launcher и сверка startup/locale contracts455. research/client455-startup.md;

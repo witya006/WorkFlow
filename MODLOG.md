@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Devicestartup043. Corrected legacy ForceFullScreen behavior to the
+actual455color32 write and restored nonzero Create→exit0 policy in a derived
+engine, preserving033. Exact own PE reaches window/device ready in configured
+windowed mode, then stops before client Create. Target bootstrap order/locale/
+launcher/network and full runtime acceptance remain open.
+[research/client455-device-startup.md](research/client455-device-startup.md).
+
 2026-11-06 — Startup042. Exact own full PE041 passed CRT/normal WinMain/engine
 and real Miles startup (return1), then the own debugger stopped it before D3D.
 Actual eager/MSS providers matched the static export/hash audit. Original input

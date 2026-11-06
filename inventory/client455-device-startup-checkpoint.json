@@ -1,0 +1,43 @@
+{
+  "status": "PARTIAL",
+  "restored_color32_preserves_window_mode": "PASS",
+  "restored_create_nonzero_exit_policy": "PASS",
+  "actual_own_window_device_ready": "PASS",
+  "actual_config": {
+    "kind": "render_configuration",
+    "fullscreen": 0,
+    "render_bits": 32
+  },
+  "actual_device_state": {
+    "kind": "device_state",
+    "read": true,
+    "ready": 1,
+    "window": "0x920464",
+    "device": "0x4a962c0",
+    "windowed": 1
+  },
+  "full_normal_source_link": "PASS",
+  "normal_client_create_reached": false,
+  "evidence_sha256": {
+    "client455-startup-contracts-reference": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
+    "client455-startup-engine-build": "2f440563f87d888bcd3c82bb9f98e9c58fbd8f3ac996e5f6059cd9bc9d624eb1",
+    "client455-startup-contracts-native": "2523b6dcd05f42caa2dadf7d06c67a2ba0878c7a5047b0b00664d41839e78eca",
+    "client455-device-startup-native": "617cd309e586d37c4d6bc1b3b702708d9f42b5afe71e75da59383ad8bb4d55d1",
+    "client455-startup-native": "ba040e2cf81248146cbfc5ff5f6ba6285f82acc2a85a55743df8fa72ab251f7c",
+    "client455-normal-link": "a4be553e61b56ab8ce9bbebc9949ff8273cf99967e16792bc09fc7813726dc7d"
+  },
+  "gaps": [
+    "Console camera branch adds index18 reset in455, old console only17entries;do not write beyond old table",
+    "Nation/launcher/locale/language dispatch and whole startup/Create/GUI/network remain open",
+    "Reference EXEs are static evidence only, never executed",
+    "Own client stopped before CMainApp::Create/launcher/UI/gameplay/network/full shutdown;window show behavior not accepted by SW_HIDE lab run",
+    "Reference startup orders nation/launcher/network before engine and BGM after WaveList;these flows remain open",
+    "Existing renderer/particle/shadow/blend/CRT acceptance gaps remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
