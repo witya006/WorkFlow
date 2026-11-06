@@ -1,6 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий участок M6, accounting041: семь подтверждённых cumulative counters
+Текущий участок M6, startup042: точная собственная full PE041 действительно
+дошла через CRT/WinMain/engine до успешного Miles startup (return1), providers
+сверены по SHA. Процесс остановлен debugger до D3D/window/Create; этот запуск
+не доказывает graphics initialization, всю WaveList/playback/launcher/network
+или normal shutdown. Это own execution evidence, не сравнение startup всего455.
+research/client455-startup.md; scoped checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6, accounting041: семь подтверждённых cumulative counters
 питаются от настоящих producers и читаются diagnostic consumer через own source
 snapshot. Actual ANI/two renderers/mesh lifetime и model/GPU descriptors прошли.
 Вся новая normal source ветка компилируется и линкуется в RF_Online.bin, 0 missing
@@ -136,12 +143,12 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 
 | Область | Что сопоставлять | Текущий статус |
 |---|---|---|
-| Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Не проверено |
+| Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Частично: точная own PE CRT/WinMain/engine/Miles bootstrap; D3D/Create/launcher/locale/error/shutdown ещё открыты |
 | Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers; область в целом открыта |
 | Рендер и мир | Сцена, камера, освещение, эффекты, видимость, коллизии клиента | Частично: selected maps/helpers/weather/clock; D3D9 и полное поведение открыты |
 | Персонажи | Модели, экипировка, анимации, клиентские состояния | Частично: selected mesh/texture/buffer/model/manager; normal dispatch/BN/animation/full Character открыты |
 | Ввод и интерфейс | Управление, окна, текст/IME, фокус, сочетания клавиш | Не проверено |
-| Звук | События, позиционирование, музыка, настройки | Не проверено |
+| Звук | События, позиционирование, музыка, настройки | Частично: реальный Miles startup/digital driver init; playback/music/3D и соответствие455 ещё открыты |
 | Клиентская сеть | Пакеты, сериализация, обработчики, порядок состояний/ошибок | Не проверено |
 | Вход и выбор персонажа | Клиентские экраны, переходы и обмен сообщениями | Не проверено |
 | Игровые действия | Перемещение, выбор цели, атака, умения и отображение результатов | Не проверено |

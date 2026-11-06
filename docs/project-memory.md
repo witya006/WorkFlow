@@ -23,6 +23,35 @@
 
 ## Последний проверенный результат
 
+Startup042: no production code/PE changes. Actual exact RF_Online.bin041 copied
+to work/m9/39062b2c/startup002, x86/base400000/entry149500/SHA39062b2c... unchanged.
+Native own_client_startup_debugger.cpp built Win32/MT; CREATE_PROCESS_DEBUG_ONLY,
+owned handles/20s bound, breakpoints at own WinMain RVA B3CD0 and B3CED after
+sound/before D3D. Breakpoints ephemeral in OWN child memory, never input EXEs.
+Main reached, engine bootstrap returned, InitR3SoundSystem returned1; actual
+Miles DLL loaded from private lab, real WaveList513339bytes opened. Stop before
+D3D/window/Create/network stage, plannedexit E0434200 observed, no live process.
+3firstchance events40080201/E06D7363/406D1388 handled byruntime (forwarded via
+DBG_EXCEPTION_NOT_HANDLED), no secondchance. No playback/full audio acceptance.
+Own IDA2714f558 closed/saved=true; raw own WinMain disasm artifacts/client455-startup.
+Static audit parses regular+delay descriptors and x86 provider exports:15groups,
+delayed MSS32/ABuse/Adv/PDLL. Regular providers SysWOW64, delayed user DLL copies;
+actual eager+MSS hashes matched. ABuse/Adv/PDLL not reached/loaded. Copies of real
+WaveList/mssmp3.asi and own R3Engine.ini only; no user accounts/configs copied.
+Root cryp.dat/advr.dat absent but ko-kr versions exist, paths/hashes in audit.
+Do NOT claim dependencies absent altogether; verify455locale policy before
+changing paths. Current legacy main ForceFullScreen overrides ini FALSE.
+Scripts audit/probe/checkpoint_client455_startup.py; inventory startup-audit/
+native/checkpoint PARTIAL; research client455-startup.md. Existing native suites
+not rerun because production PE unchanged. Previous goal turn41db2a9 full link
+was progress; this turn adds real exactPE execution/provider evidence, no blocker.
+Next043: target455startup/config/locale contracts and actualnormal D3D/window/
+device callbacks in controlled windowed own lab; do not treat lab override as
+target production behavior. Then Create/launcher/data/error/shutdown and full
+UI/network/gameplay. Full M6/M6F/M7/M9 OPEN. InputEXEs/server/originals untouched.
+
+Предыдущий результат:
+
 Accounting041: source normal_accounting.{h,cpp} supplies process-wide mesh/
 buffer/rawANI counters, existing texture global remains actual source owner.
 Normal Runtime now passes shared pointers, not per-renderer totals. Own

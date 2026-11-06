@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, startup042: установок не требовалось. Собственный Win32
+debugger собран VS2026 и запускает только точную staged own RF_Online.bin.
+Все15 regular/delayed import descriptors имеют x86 providers/нужные exports;
+фактически загруженные eager DLLs и Miles совпали по SHA. CRT/WinMain/engine/
+Miles startup прошли, sound return1. Отладчик остановил процесс до D3D/window;
+exit наблюдён. Три first-chance события обработаны runtime, second-chance нет.
+Lab inputs: копии DLL/WaveList и собственный ini, оригиналы не менялись.
+CDB не устанавливался; raw trace под work/m9/39062b2c/startup002. Own IDA
+2714f558 closed/saved=true. Нормальная graphics/Create/launcher приёмка впереди.
+research/client455-startup.md; checkpoint PARTIAL; M6/M9 открыты.
+
 Дополнение 06.11, accounting041: без новых установок. 182 client / 11 facade /
 20 canonical kernel CPP x86/MT собираются; новый полный normal RF_Online.bin
 успешно линкуется с 0 unresolved и без принудительного разрешения. PE32 x86,

@@ -1604,6 +1604,16 @@
       "evidence":["inventory/client455-normal-accounting-reference.json","inventory/client455-normal-accounting-native.json","inventory/client455-normal-accounting-checkpoint.json","inventory/client455-normal-renderer-gpu.json","inventory/client455-normal-link.json","research/client455-normal-accounting.md"],
       "gaps":["Unassociated32byte constructor doesnot prove eighth field/private global ABI; own read view exposes seven confirmed counters","Original async races/diagnostic float formatting/allocator failure domains unproven","Normal WinMain/runtime initialization and full device/actor/particle/UI/network/gameplay acceptance remain open; M6/M6F/M7/M9 OPEN"]
     }
+    ,{
+      "id":"CLIENT455-STARTUP-042",
+      "status":"partial",
+      "description":"Exact own full PE CRT/normal WinMain/engine/Miles startup execution in private lab with controlled stop before D3D",
+      "implementation":["scripts/audit_client455_startup.py","scripts/probe_client455_startup.py","scripts/native/own_client_startup_debugger.cpp"],
+      "reference":[{"scope":"own compiled PE041, not reference455","sha256":"39062b2cbf18f5680fd1d59c3d73c22c020770c30e99c9107302cf6678a53a05","rva":"0xb3cd0","role":"Actual WinMain"},{"scope":"own compiled PE041","rva":"0xb3ced","role":"After sound/before D3D checkpoint"}],
+      "verification":"All15regular/delay import groups have x86 providers/required exports. Exact staged own PE reaches WinMain and after-sound marker; real engine/Miles init returns1. Actual eager/MSS providers match audited SHA, process exit observed after planned debugger stop. Three first-chance events handled byruntime, no secondchance. Production PE unchanged; prior suites not rerun.",
+      "evidence":["inventory/client455-startup-audit.json","inventory/client455-startup-native.json","inventory/client455-startup-checkpoint.json","research/client455-startup.md"],
+      "gaps":["This unit adds own execution evidence, not restored/accepted full455startup equivalence","D3D/window/Create/launcher/locale/data/UI/network/gameplay and normal shutdown not reached or accepted","Full WaveList/Miles playback/music/3D API unproven; ABuse/Adv/PDLL runtime not reached","Legacy root filter paths differ from localized candidates; verify target455policy before adaptation; M6/M6F/M7/M9 OPEN"]
+    }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
 }

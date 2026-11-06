@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Startup042. Exact own full PE041 passed CRT/normal WinMain/engine
+and real Miles startup (return1), then the own debugger stopped it before D3D.
+Actual eager/MSS providers matched the static export/hash audit. Original input
+EXEs never executed; no production PE changes. Graphics/Create/launcher/locale/
+shutdown and full455behavior remain open.
+[research/client455-startup.md](research/client455-startup.md).
+
 2026-11-06 — Accounting041. Normal process-wide cumulative counters now connect
 real mesh/buffer/ANI producers and existing texture totals to the diagnostic
 consumer. Real ANI/two owners, mesh lifetime/wrap and actual GPU descriptors

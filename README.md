@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — accounting041: общее накопительное хранение счётчиков
+Последний участок M6 — startup042: точная собственная RF_Online.bin прошла CRT,
+вошла в обычный WinMain, выполнила engine bootstrap и успешный Miles Audio init.
+Запуск из отдельного lab остановлен отладчиком перед D3D; окно/Create/сеть и
+полный shutdown ещё не приняты. Импорты и реально загруженные providers проверены.
+research/client455-startup.md; checkpoint PARTIAL; M6/M9 открыты.
+
+Предыдущий участок M6 — accounting041: общее накопительное хранение счётчиков
 Character и чтение их диагностическим экраном подключены. Реальные ANI/модели/
 GPU-ресурсы и release проверены. Новая D3D9/Character source ветка полностью
 скомпилировалась и слинковалась в RF_Online.bin: 0 missing symbols. Это ещё не

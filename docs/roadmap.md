@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — accounting041: реальные process counters и diagnostic
+Новейший участок M6 — startup042: точная собственная полная PE прошла CRT,
+обычный WinMain, engine и Miles startup. Провайдеры DLL сверены, процесс
+контролируемо остановлен до D3D/window. Далее actual normal graphics/Create/
+launcher и сверка startup/locale contracts455. research/client455-startup.md;
+checkpoint PARTIAL. M6/M6F/M7/M9 остаются открытыми.
+
+Предыдущий участок M6 — accounting041: реальные process counters и diagnostic
 consumer подключены. Новая source Character/D3D9 ветка собирается и полностью
 линкуется: RF_Online.bin, 0 unresolved. ANI/multiple owners/mesh lifetime/GPU
 counters и прежние кадры прошли. Далее обычный startup/initialization, затем

@@ -11,7 +11,26 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — accounting041. Normal mesh/buffer/ANI counters теперь
+Последний участок — startup042. Точная own RF_Online.bin041 (SHA39062b2c...)
+действительно прошла CRT и обычный WinMain до успешного InitR3SoundSystem.
+Engine bootstrap/Miles return1 и фактические providers проверены. Debugger
+останавливает её перед D3D/window/Create; exit подтверждён. Production PE не
+менялся, старые runtime suites не повторялись. research/client455-startup.md;
+inventory/client455-startup-checkpoint.json PARTIAL; M9 открыт.
+
+Следом043 — normal D3D/window/device initialization и startup contracts455.
+Сначала сопоставить target455 startup/config/locale с legacy WinMain: root
+DataTable/cryp.dat/advr.dat отсутствуют, настоящие файлы лежат в ko-kr. Не
+копировать их в выдуманные пути до подтверждения locale policy455.
+Для дальнейшего own lab запуска обеспечить оконный режим: текущий Release
+WinMain принудительно вызывает ForceFullScreen, ini FALSE сам не помогает.
+Проверять реальное InitR3D3D/его callbacks и следующий Create, без подмены
+успешными no-ops. Не выдавать lab window/config override за восстановленную
+production семантику455. Работать из lab с собственными runtime/config копиями.
+Полные WaveList/playback/music/3D audio, ABuse/Adv/PDLL runtime ABI, графический
+startup/launcher, shutdown и UI/network/gameplay остаются открытыми.
+
+Предыдущий участок — accounting041. Normal mesh/buffer/ANI counters теперь
 process-wide; существующие texture counters читаются из их настоящего owner.
 Legacy diagnostic consumer читает source snapshot семи подтверждённых полей,
 без подстановки пустого global или наложения неизвестного private ABI.
@@ -20,7 +39,7 @@ Legacy diagnostic consumer читает source snapshot семи подтвер�
 +20 kernel CPP собираются; full normal RF_Online.bin link PASS/0 unresolved.
 research/client455-normal-accounting.md; checkpoint PARTIAL. M9 открыт.
 
-Следом042 — normal startup/initialization. Проверить импорты и delayed DLLs
+Историческая очередь041 — normal startup/initialization. Проверить импорты и delayed DLLs
 собственного PE, ранний WinMain/CRT/global construction, нужные client assets/
 конфигурацию и логирование в отдельном lab. WinMain сначала InitR3Engine и
 InitR3SoundSystem, затем InitR3D3D/Create и фильтры ABuse/Adv; учитывать реальные
