@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Tutorial-runtime058. Recovered QBI scheduling/refresh/shared state,
+message and wait rules. Own x86 library/recording-host tests exit0, including
+clock wrap and completion that unloads the runtime. Other41 selectors/real host
+remain open; unsupported real programs fail explicitly. Production PE unchanged.
+Fixed057/058 library report schema for canonical discovery; verified20kernels.
+[Evidence](research/client455-tutorial-runtime.md).
+
 2026-11-06 — Tutorial-scripts057. Restored a source-owned47-selector SCP reader
 and writer. All99 race/class files roundtrip losslessly; named fields match an
 independent parser. Synthetic missing selectors and bounded failures pass.

@@ -1,5 +1,11 @@
 # Полнота восстановления RF_Online.bin
 
+Участок058: принят bounded QBI scheduler и message/wait rules с recording host.
+Это не реальные UI/Avatar side effects.41селектор, остальные context fields,
+настоящий host/Tutorial/fourstage остаются открытыми. Отказ при отсутствии
+процессора проверен; пропуск неизвестных команд не допускается.
+[Доказательства](../research/client455-tutorial-runtime.md). M6/M6F/M7/M9 открыты.
+
 Участок057: принят bounded wire reader47селекторов SCP, lossless99realfiles
 и семантическая сверка именованных полей. Эта самостоятельная библиотека пока
 не подключена к обычному Tutorial. Исполнение команд, CTutorialBoard, Avatar,

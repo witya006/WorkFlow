@@ -23,6 +23,42 @@
 
 ## Последний проверенный результат
 
+Tutorial-runtime058: own source QBI scheduler/basic message0–4/wait5 в
+client455_tutorial_runtime.{h,cpp}. Standalone, НЕ ordinary Tutorial/realhost.
+RF455TutorialHost чисто абстрактный; native recording host не реализация UI.
+Factory остальных41selectors возвращаетnullptr;prepare атомарно отказывает,
+не пропускает команды.3realBW/CW/AR=1235records,728supported/507open ввыборке.
+42functionranges+10vtables equalbothpins;7completeasmfunctions. OwnedIDA
+f84ad03d closed/save. Source-owned liba758e02c...;PE9618bd36.../entry8100,
+naturalexit0. NormalPE56905e68.../182client20kernel23facade unchanged.
+Scheduler: atmost1newBegin/tick;current begun&&!done blocksnext;tick begun
+unfinished prefix, lastrecorddone+iteratorend decidescompletion, notallrecords.
+BaseBegin resetscursor excepttype16 BEFORE Start; failedStart stopsbeforeclock/
+state reset. Success captures timeGetTime, sharedstartTime, input11,state52=0,
+flags|1. Bit4 skipUpdate andfinish;donebit2 setbeforeFinish. Both Message/Wait
+Finish verifiedempty equalbytes. Refresh429F70 resetsidFFFFFFFF,countWORD0,
+flags/iterator/current, preserveslist andprocessorprivate fields;explicit
+GetQBI(index) thennull bycount0,defaultFFFF returnscurrent. Explicitquestrefresh
+doesn'tselectcurrentordinal. Completioncallback mayclear runtime;noaccessafter.
+Wait0 inputBYTE vsfullDWORD,consumes→11;Wait1 unsignedelapsed>=value,wrap;
+Wait2 values4..10 exact board17 fields1892/1896,AvatarBYTE614/612,DWORD24308.
+Gameplay names/providers unknown; don't guess. Owner52meaning/othercontext,
+OOM/arbitrarycallback invalidation/rawreload domains open. fixedMessage4 with
+datatype0..3 foreignpointer execution rejected,not claimedasequivalence.
+Native checkedqueue/gates/retry/refresh/private retention/onebegin/last-only,
+sharedtimerlaterreset/separateclockreads/equality/wrap,conditions,unloadcallback.
+Fix057/058 reports: library MUSTstring+library_sha256,notnestedobject;otherwise
+prepare.kernel_sources crashesonunhashabledict. Metadata writers/checkpoints
+updated;short057+058probes refreshed;canonical20kernels discovery passed.
+Parser057code unchanged;itscurrentlib5edb0780.../PEb55131f6.../entryBB30.
+Research/client455-tutorial-runtime.md +inventory/client455-tutorial-runtime-*.
+Raw artifacts/client455-tutorial/runtime-reference.json,runtime-vtables.json,
+058-*-asm.json, scheduler/processor decompile. Next059 restCQBI Position/Move/
+Creation first,thenUI/Equip/Cursor/Combat/Item,board/briefing,realAvatar/scene/
+localhandlers/joint4stage. M6/M6F/M7/M9OPEN.No server/inputEXE execution.
+
+## Предыдущий перенос — tutorial-scripts057
+
 Tutorial-scripts057: самостоятельный source-owned SCP reader/writer47selectors.
 Не подключён к ordinary Tutorial/Avatar и не заменяет его исполнение. Legacy
 QUEST_INFO28types имеет другую нумерацию; не отправлять в него новые записи.

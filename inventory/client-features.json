@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-RUNTIME-058",
+      "status": "partial",
+      "description": "Source-owned QBI scheduler/common flags/refresh/shared timer and message0to4/wait5 rules; recording host, not yet production Tutorial",
+      "reference": [{"rva":"0x2af60","role":"scheduler"},{"rva":"0x277f0","role":"common Begin"},{"rva":"0x278c0","role":"Update/Finish"},{"rva":"0x29f70","role":"quest reset"},{"rva":"0x27a40","role":"wait rules"}],
+      "implementation": ["scripts/native/client455_tutorial_runtime.h","scripts/native/client455_tutorial_runtime.cpp"],
+      "verification": "Own x86 library/nativeexit0;queue/gates/refresh/common state/clock wrap/shared reset/flags/last-only completion/unload callback;message/wait recording host;real unsupported programs rejected;canonical discovery20kernels preserved",
+      "evidence": ["inventory/client455-tutorial-runtime-reference.json","inventory/client455-tutorial-runtime-native.json","inventory/client455-tutorial-runtime-checkpoint.json","research/client455-tutorial-runtime.md"],
+      "gaps": ["Other41 selectors and concrete UI/Avatar/world host;names and providers of wait condition fields","CTutorialBoard/briefing/scene/localmessages/joint4stage and full Tutorial","Owner52 meaning/other context fields/raw reload/OOM/arbitrary callback invalidation","Fixed message foreign-pointer domains deliberately rejected","Full455/authentication/gameplay/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-SCRIPTS-057",
       "status": "partial",
       "description": "Source-owned SCP47 selector reader/writer; typed common/message fields and lossless fixed records; not yet ordinary Tutorial integration",

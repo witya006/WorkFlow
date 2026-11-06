@@ -52,7 +52,9 @@ def main():
     for name, digest in native['sources'].items():
         if sha(WS / 'scripts/native' / name) != digest:
             raise ValueError('Changed SCP implementation')
-    for key in ['library', 'object', 'exe', 'map', 'build_log', 'output']:
+    if sha(WS / native['library']) != native['library_sha256']:
+        raise ValueError('Changed SCP library')
+    for key in ['object', 'exe', 'map', 'build_log', 'output']:
         check(native[key])
     for key in ['inputs', 'roundtrips', 'semantics', 'fixtures']:
         for row in native[key]:

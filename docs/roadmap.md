@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Участок058: QBI scheduler/refresh/flags/shared timer и правила сообщений/
+ожиданий восстановлены, standalone native с recording host прошёл. Actual
+UI/Avatar host и41остальной селектор открыты. Далее059 — Position/Move/Creation,
+затем остальные процессоры, board/briefing и joint Tutorial/fourstage.
+[Доказательства](../research/client455-tutorial-runtime.md). M6/M6F/M7/M9 открыты.
+
 Участок057: восстановлен SCP reader47селекторов; самостоятельная C++ библиотека
 прошла99реальных сценариев, побайтовую и семантическую сверку. Старый reader28
 типов не подходит; новое исполнение команд пока открыто. Далее058 — состояния

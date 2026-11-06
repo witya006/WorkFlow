@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок058: восстановлены QBI scheduler/refresh/flags и общие Begin/Update/
+Finish, message0–4/wait5. Own x86 lib/native9618bd36... entry8100/exit0,
+recording host; реальные UI/Avatar side effects ещё не приняты.42ranges/10vtables
+equalbothpins, IDAf84ad03d closed/save. Далее059 — Position/Move/Creation и их
+Avatar/world state, затем UI/Equip/Cursor/Combat/Item, board/briefing и настоящий
+Tutorial/fourstage. Basic factory отклоняет остальные41селектор; не выдавать
+728/1235supported sample records за готовность обучения. Не менять ordinary
+factory до переноса настоящего режима. [Доказательства](../research/client455-tutorial-runtime.md).
+Production PE056 неизменна. У standalone reports library должен быть string,
+library_sha256 — отдельно: kernel_sources просматривает все client455*.json.
+
+Предыдущий результат:
+
 Участок057 восстановил данные обучения: SCP47 reader/writer, typed message
 fields, fixed record preservation.99realfiles/812quests/39864instructions,
 37real selectors+10synthetic, независимая семантическая и byte equality сверка

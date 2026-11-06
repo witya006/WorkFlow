@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,tutorial-runtime058: установок нет.42function ranges/10vtables
+совпали в pins,7полных asm функций проверены. IDAf84ad03d closed/save.
+Own x86 library/native9618bd36.../entry8100, naturalexit0. Recording host,
+не actual UI/Avatar. New reports совместимы с discovery20kernels; production
+PE56905e68... не менялась. [Доказательства](../research/client455-tutorial-runtime.md).
+
 Дополнение06.11,tutorial-scripts057: новых установок нет.19диапазонов функций,
 CQBI RTTI и selector strings совпали между pins. Own x86 SCP library собрана,
 99realfiles/47synthetic selectors/semantic fields/bounds проверены, naturalexit0.

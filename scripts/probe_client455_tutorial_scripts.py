@@ -132,7 +132,7 @@ def main():
               'architecture': 'x86', 'entry_rva': hex(pe(exe.read_bytes())['entry_rva']),
               'script_sha256': sha(Path(__file__)), 'reference_sha256': sha(reference_path),
               'sources': {p.name: sha(p) for p in [source, header, probe]},
-              'library': {'file': library.relative_to(WS).as_posix(), 'sha256': sha(library)},
+              'library': library.relative_to(WS).as_posix(), 'library_sha256': sha(library),
               'object': {'file': obj.relative_to(WS).as_posix(), 'sha256': sha(obj)},
               'exe': {'file': target.relative_to(WS).as_posix(), 'sha256': sha(target)},
               'map': {'file': map_file.relative_to(WS).as_posix(), 'sha256': sha(map_file)},
