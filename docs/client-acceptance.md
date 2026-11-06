@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+Участок069: ordinary modal.SetMsg plain/rich/colorFFE3E0D9/naturalpixel extent
+перенесены,wrapperformatted/close параметры доступны.300/250 fallbackonly;
+requestedsize заменяется послеextent. Ko/Ru12групп сGDIoracle и10viewedGPUframes,
+affectedGUI/Create1passed;productionrich/extentprovidersretained naturally.
+Empty-fragment extent target243D30 имеетuninitialized newline local:source
+explicitrefusal,не parity. GlobalbaseGUI.SetSize nonvirtual/allwrapperguards,
+полныеBriefing/Tutorial/Avatar/world/GUI/игра остаютсяOPEN.
+[Доказательства](../research/client455-message-sizing.md). M6/M6F/M7/M9 OPEN.
+
 Участок068: boundedbase GUI input/focus/key/queue/main-list contracts перенесены
 и проверены Ko/Ru:double7/right8,300ms/wrap,modalguard,focusorder,keyscan/dedup,
 focus70/value80/middlebutton. Исправлена ошибочная065arrow binding:ordinary

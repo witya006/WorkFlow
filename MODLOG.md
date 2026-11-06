@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Message-sizing069. Replaced ordinary modal SetMsg with455
+plain/rich/basecolor/pixel extent and scroll/layout order. Natural positive
+extent bypasses300/250 fallback caps;ordinary wrapper forwards rich/close.
+21ranges equalpins/15fullasm;Ko/Ru12groups,10viewedframes,affectedGUI/Create1
+passed. Productionc22502fa…/entry150290,182/20/28TU. Emptylist targetUB explicitly
+unsupported;globalbasevirtualSetSize/fullwrappers/Briefing/Tutorial remainOPEN.
+Next070 actualBriefing,thenAvatar/world/Tutorial/fourstage. M9OPEN.
+[Evidence](research/client455-message-sizing.md).
+
 2026-11-07 — GUI-input068. Restored base double7/right8/mouseguard/key/focus/queue
 and main-list container contracts,including300ms/wrap/queryorder,bytekeydedup,
 focus70/value80 and middlebutton. Corrected065ordinaryarrowadapter:targetleaves

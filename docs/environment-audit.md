@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,message-sizing069: установок нет.21ranges equalpins,15fullasm;
+IDAb852f877 saved/closed. Productionc22502fa…/entry150290,182/20/28TU,
+0unresolved/existingCreate1. Ko/Ru12групп real modal/GDI и10viewedGPUframes;
+rich/extent production providers retained naturally. Все затронутые GUI passed,
+9gatesPARTIAL. Empty fragment extent иglobalvirtualSetSize остаются OPEN.
+Firstchance40080201 черезKernelBase повторяется;causeunknown,не полнаяfailures
+приёмка. [Доказательства](../research/client455-message-sizing.md).
+
 Дополнение07.11,gui-input068: установок нет.34ranges/1vtable prefix equalpins,
 15completeasm,IDA6eadfaf3 savedclosed,idb_list0. Productionde76223c…/entry14F4A0,
 182/20/28TU,0unresolved/existingCreate1. Ko/Ru realGUI input/focus/queue и

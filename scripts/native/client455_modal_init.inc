@@ -25,7 +25,7 @@ void CGUIMessagebox::SetSprite(void)
     m_cBase.RemoveSpriteInfo();
     m_cBase.SetARGB(0xd8222628);
     RF455_ConfigureModalScrollbar(m_uiScrollbar);
-    // The shared scrollbar/text-board layout/input algorithms are still open.
+    // Resource/error domains and the full window lifecycle remain open.
 }
 
 void CGUIMessagebox::SetAlpha(BYTE alpha)

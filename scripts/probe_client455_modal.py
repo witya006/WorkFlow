@@ -27,12 +27,12 @@ def main():
         (run/'console.txt').write_bytes(result.stdout+result.stderr)
         if result.returncode:raise ValueError(f'Modal {nation} runtime {result.returncode}:{run}:{result.stderr.decode(errors="replace")}')
         output=run/'result.json';frames=[]
-        for name in ['modal-normal','modal-hover','modal-disabled']:
+        for name in ['modal-normal','modal-hover','modal-disabled','modal-rich','modal-rich-wrapper']:
             raw=run/(name+'.bgra');preview=run/(name+'.png')
             Image.frombytes('RGBA',(640,480),raw.read_bytes(),'raw','BGRA').convert('RGB').save(preview)
             frames.append({'file':raw.relative_to(WS).as_posix(),'sha256':sha(raw),'preview':preview.relative_to(WS).as_posix(),'preview_sha256':sha(preview),'width':640,'height':480})
         runs.append({'nation':nation,'folder':folder,'exe':{'file':target.relative_to(WS).as_posix(),'sha256':sha(target)},'output':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output)},'inputs':inputs,'frames':frames,'native':json.loads(output.read_text()),'exit':result.returncode})
-    names=['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_dialog_input.inc','client455_font.h','client455_font.cpp']
+    names=['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_modal_message.inc','client455_dialog_input.inc','client455_font.h','client455_font.cpp']
     report={'scope':'Actual normal modal controls/outline/input with Korean/Russian packs;full455text/scrollbar and game remainOPEN',
             'architecture':'x86','entry_rva':hex(pe(exe.read_bytes())['entry_rva']),
             'source':cpp.relative_to(WS).as_posix(),'source_sha256':sha(cpp),'sources':{name:sha(WS/'scripts/native'/name)for name in names},

@@ -60,6 +60,7 @@ def main():
         for name in ['real_modal_controls','caption106107','outline_and_margins','keyboard_and_nested','mouse_results123','focused_chat_gate','pool_close_permission','open_reset_and_enable']:
             if not actual[name]:raise ValueError('Missing modal behavior:'+name)
         if actual['button_states']!=5 or actual['viewport_pixels']<=100 or actual['full455_text_scrollbar']or actual['full_Tutorial']:raise ValueError('Wrong modal scope')
+        if len(row['frames'])!=5 or actual['pixel_message_sizing_cases']!=12 or not all(actual[key]for key in ['ordinary_rich_wrapper','natural_extent_before_scroll_fallback','empty_extent_unsupported']):raise ValueError('Missing modal sizing/rich checks')
     font=load('client455-font-native')
     if font['normal_link_sha256']!=native['normal_link_sha256']:raise ValueError('Current affected-font regression required')
     if any(row['exit']or row['native']['status']!='PASS'or not row['native']['gdi_metrics_and_atlas_equal']for row in font['runs']):raise ValueError('GDI regression failed')

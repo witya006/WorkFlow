@@ -246,7 +246,12 @@ def main():
                                          (b'g_uiMsgBox[l_nAvailMsgBox].SetDuration( pi_wDurationTime );',b'TRUE')]:
                     if raw.count(anchor)!=1:raise ValueError('Modal close-permission wrapper changed')
                     raw=raw.replace(anchor,anchor+b'\r\n\tg_uiMsgBox[l_nAvailMsgBox].SetAllowClose455('+argument+b');')
-                for method in [b'Init(',b'SetSprite(',b'SetAlpha(',b'SetBound(',b'Open(']:
+                raw=raw.replace(b'g_uiMsgBox[l_nAvailMsgBox].SetMsg( pi_pCreateInfo->pMsg );',b'g_uiMsgBox[l_nAvailMsgBox].SetMsg( pi_pCreateInfo->pMsg, pi_pCreateInfo->bFormatted455 );')
+                raw=raw.replace(b'g_uiMsgBox[l_nAvailMsgBox].SetMsg( pi_pMsg );',b'g_uiMsgBox[l_nAvailMsgBox].SetMsg( pi_pMsg, pi_bFormatted455 );')
+                raw,count=re.subn(rb'BOOL\s+pi_bScrollable/\* = FALSE\*/\s*\)',b'BOOL pi_bScrollable/* = FALSE*/, BOOL pi_bFormatted455, BOOL pi_bAllowClose455 )',raw)
+                if count!=1:raise ValueError('Modal ordinary wrapper signature changed')
+                raw=raw.replace(b'SetAllowClose455(TRUE);',b'SetAllowClose455(pi_bAllowClose455);')
+                for method in [b'Init(',b'SetSprite(',b'SetAlpha(',b'SetBound(',b'Open(',b'SetMsg(']:
                     signature=b'CGUIMessagebox::'+method
                     first,last=section(raw,signature,signature)
                     # The return type is on a preceding line in the legacy TU.
@@ -254,11 +259,19 @@ def main():
                     if raw[begin:first].strip()!=b'void':raise ValueError('Modal method return boundary changed')
                     raw=raw[:begin]+b'// 455implementation below.\r\n'+raw[last:]
                 raw+=b'\r\n'+(native/'client455_modal_init.inc').read_bytes()
-                changes.append('455normal modal button sprites/labels/outline/colors/geometry/Open;shared text and scrollbar algorithms remain open')
+                raw+=b'\r\n'+(native/'client455_modal_message.inc').read_bytes()
+                changes.append('455normal modal controls and SetMsg plain/formatted color/pixel sizing/order;legacy SetBound bridge for target SetSize')
             if relative=='userinterface/guicontroller/guimessagebox.h':
                 anchor=b'BOOL\t\t\tbLockOtherWin;'
                 if raw.count(anchor)!=1:raise ValueError('Modal create-info boundary changed')
-                raw=raw.replace(anchor,anchor+b'\r\n\tBOOL bAllowClose455=TRUE;')
+                raw=raw.replace(anchor,anchor+b'\r\n\tBOOL bAllowClose455=TRUE;\r\n\tBOOL bFormatted455=FALSE;')
+                raw,count=re.subn(rb'BOOL\s+pi_bScrollable = FALSE \);',b'BOOL pi_bScrollable = FALSE, BOOL pi_bFormatted455 = FALSE, BOOL pi_bAllowClose455 = TRUE );',raw,count=1)
+                if count!=1:raise ValueError('Modal public wrapper declaration changed')
+                first,last=section(raw,b'class CGUIMessagebox :',b'class CGUIMessagebox :')
+                definition=raw[first:last]
+                definition,count=re.subn(rb'void\s+SetMsg\( char \* pi_pMsg \);',b'void SetMsg(char* pi_pMsg, BOOL formatted455=FALSE);\r\n\tvoid SetSize(LONG width,LONG height);\r\n\tvoid SetSize(POINT& size){SetSize(size.x,size.y);}',definition)
+                if count!=1:raise ValueError('Modal SetMsg declaration changed')
+                raw=raw[:first]+definition+raw[last:]
                 changes.append('typed455modal Escape permission/default reset for pooled windows')
             if relative=='gameprogress/cgameprogress.h':
                 raw,count=re.subn(rb'(BOOL\s+m_bIsLoadedData\s*;)',rb'\1\r\n\tDWORD m_nextStage455=0xffffffff; // Owned initial safety domain;target Init retains this field.',raw)
@@ -529,7 +542,7 @@ def main():
     report['record_inputs']['client455_progress_loop.inc']=sha((native/'client455_progress_loop.inc').read_bytes())
     for name in ['client455_camera.h','client455_camera.cpp','client455_camera_load.inc','client455_camera_play.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['network_defaults']=codec_reference['generated_defaults']
-    for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_modal_message.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

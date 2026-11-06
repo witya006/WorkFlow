@@ -7,6 +7,20 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок069: ordinary CGUIMessagebox.SetMsg plain/rich/colorFFE3E0D9 и natural
+pixel extent/order455 перенесены. Width/height читаются после ResizeToText;
+300/250 fallback only,requestedsize заменяется. Обычный wrapper передаёт
+formatted/allowClose;rich/extent providers естественно retained в production.
+Ko/Ru12групп и10кадров просмотрены,affectedGUI passed,PE c22502fa…/entry150290,
+182/20/28TU,0unresolved/existingCreate1;9gatesPARTIAL. Empty-fragment extent
+читаетtargetuninitialized newline local:source explicitly refuses;globalbase
+SetSize ещё nonvirtual,typed modal/SetBoundbridge tested. Все gaps сохранены.
+Далее070: настоящий CGUIBriefingWindow (rich/resources/events/state),затем
+Avatar/world/Tutorial host/fourstage. ОстальныеGUI/IME/layers/wrappers/fullgame
+по-прежнему обязательныM6F/M9. [Доказательства](../research/client455-message-sizing.md).
+
+Предыдущий участок:
+
 Участок068: ordinary GUIObject input/MsgProc/focus и event queue перенесены.
 Event7=double,event8=right,300ms inclusive/wrap,conditional clockquery +stamp,
 right-pressed/modal/last-click states. Input88flag отдельно отActive52. Modal

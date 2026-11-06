@@ -16,10 +16,14 @@
 #include "client455_modal.h"
 #include "client455_language.h"
 #include "client455_nation_paths.h"
+#include "client455_text_metrics.h"
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
 #include <vector>
+#include <string>
+#include <algorithm>
+#undef max
 extern CMainApp g_MainApp;
 template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
 #define FIELD(Tag,TypeName,Class,member) struct Tag{using Type=TypeName Class::*;friend Type access(Tag);};template struct MemberAccess<Tag,&Class::member>;
@@ -30,6 +34,8 @@ FIELD(CancelButton,CGUIButtonEx,CGUIDialogBox,m_uiCancelButton)
 FIELD(CloseButton,CGUIButton,CGUIDialogBox,m_uiCloseButton)
 FIELD(MouseObserver,IMouseObserver*,CGUIObject,m_pMouseObserver)
 FIELD(BaseBoard,CGUIObject,CGUIMessagebox,m_cBase)
+FIELD(MessageBoard,CGUITextBoard,CGUIMessagebox,m_uiMsgBoard)
+FIELD(MessageScrollbar,CGUIScrollbar,CGUIMessagebox,m_uiScrollbar)
 FIELD(Label,CGUIText,CGUIButtonEx,m_cLabel)
 struct Load{using Type=BOOL(CMainApp::*)();friend Type access(Load);};template struct MemberAccess<Load,&CMainApp::LoadData>;
 struct Unload{using Type=BOOL(CMainApp::*)();friend Type access(Unload);};template struct MemberAccess<Unload,&CMainApp::UnloadData>;
@@ -50,6 +56,48 @@ static unsigned capture(CGUIMessagebox& box,const char* filename){
     for(unsigned y=view.Y;y<view.Y+view.Height;++y){auto* row=reinterpret_cast<const DWORD*>(static_cast<const BYTE*>(lock.pBits)+y*lock.Pitch)+view.X;
         std::fwrite(row,4,view.Width,output);for(unsigned x=0;x<view.Width;++x)changed+=(row[x]&0xffffff)!=0x102030;}
     std::fclose(output);memory->UnlockRect();memory->Release();target->Release();return changed;
+}
+static unsigned checkMessageSizing(){
+    const auto snapshot=RF455_GetNormalFontSnapshot();check(snapshot.font!=nullptr,"live default font");
+    HDC dc=CreateCompatibleDC(nullptr);HGDIOBJ previous=SelectObject(dc,snapshot.font);
+    auto width=[dc](const std::string& text){SIZE size={};check(GetTextExtentPoint32A(dc,text.c_str(),static_cast<int>(text.size()),&size)!=0,"independent modal GDI oracle");return size.cx;};
+    const LONG stride=static_cast<LONG>(snapshot.cellHeight)+4;unsigned cases=0;
+    CGUIMessagebox message;message.Init(DLG_STYLE_OK);message.Show(TRUE);
+    auto& board=message.*access(MessageBoard{});auto& bar=message.*access(MessageScrollbar{});
+    const LONG buttonHeight=(message.*access(OKButton{})).GetSizeY();
+    for(const auto& text:std::vector<std::string>{"i",std::string(80,'W'),RF455_GetNormalLanguagePack()->get(106)}){
+        message.SetScrollable(TRUE);message.SetMsgBoardSize(37,19);message.SetMsg(const_cast<char*>(text.c_str()));
+        check(board.GetSizeX()==width(text)+10&&board.GetSizeY()==stride+10,"natural pixel extent replaces requested size");
+        check(message.GetSizeX()==std::max<LONG>(200,width(text)+40)&&message.GetSizeY()==std::max<LONG>(100,stride+40+buttonHeight),"pixel based dialog and minimum dimensions");
+        check(!message.IsAddedObject(&bar)&&board.GetFragmentCount455()==1&&board.GetFragment455(0)->GetFont()->dwColor==0xffe3e0d9,"plain modal color/no scrollbar");++cases;
+    }
+    check(width(std::string(80,'W'))+10>300,"long fixture exceeds fallback width cap");
+    message.SetMsg(const_cast<char*>("Wide\ni\n"));
+    check(board.GetSizeX()==width("Wide")+10&&board.GetSizeY()==3*stride+10,"trailing newline adds final extent line");++cases;
+    std::string tall="W";for(int i=1;i<40;++i)tall+="\nW";
+    message.SetMsg(const_cast<char*>(tall.c_str()));
+    check(board.GetSizeY()==40*stride+10&&board.GetSizeY()>250&&!message.IsAddedObject(&bar),"natural height is not capped at250");++cases;
+    const char* markup="Normal <font color=ffff0000 >red</font> tail\nlast";
+    message.SetScrollable(FALSE);message.SetMsg(const_cast<char*>(markup),FALSE);
+    check(board.GetFragmentCount455()==1&&!std::strcmp(board.GetFragment455(0)->GetText(),markup),"plain mode preserves literal tags");++cases;
+    message.SetMsg(const_cast<char*>(markup),TRUE);
+    check(board.GetFragmentCount455()==3&&board.GetFragment455(0)->GetFont()->dwColor==0xffe3e0d9&&board.GetFragment455(1)->GetFont()->dwColor==0xffff0000&&board.GetFragment455(2)->GetFont()->dwColor==0xffe3e0d9,"explicit rich parameter and base color");
+    check(board.GetSizeX()==width("Normal ")+width("red")+width(" tail")+10&&board.GetSizeY()==2*stride+10,"formatted extent adds independently measured fragments");++cases;
+    const LONG savedWidth=message.GetSizeX(),savedHeight=message.GetSizeY();message.SetMsg(nullptr,TRUE);
+    check(board.GetFragmentCount455()==3&&message.GetSizeX()==savedWidth&&message.GetSizeY()==savedHeight,"null message leaves state unchanged");++cases;
+    message.SetPos((640-message.GetSizeX())/2,(480-message.GetSizeY())/2);capture(message,"modal-rich.bgra");
+    message.Add(&bar);message.SetMsg(const_cast<char*>("Existing scrollbar"));
+    check(message.IsAddedObject(&bar)&&message.GetSizeX()==std::max<LONG>(200,board.GetSizeX()+bar.GetSizeX()+60)&&message.GetSizeY()==std::max<LONG>(100,board.GetSizeY()+buttonHeight+45),"existing scrollbar branch preserves membership/margins");++cases;
+    message.Remove(&bar);message.SetSize(330,180);
+    check((message.*access(BaseBoard{})).GetSizeX()==330&&(message.*access(OKButton{})).GetPosY()==message.GetPosY()+180-buttonHeight-7,"direct typed SetSize relayout");++cases;
+    bool refused=false;try{message.SetMsg(const_cast<char*>(""));}catch(const std::invalid_argument&){refused=true;}
+    check(refused,"empty fragment undefined extent stays explicitly unsupported");++cases;
+    SelectObject(dc,previous);DeleteDC(dc);
+    _GUIMessageBox(nullptr,const_cast<char*>(markup),MSG_BOX_RGBA,0x6001,DLG_STYLE_OK,0xffffffff,FALSE,TRUE,FALSE);
+    auto* wrapped=dynamic_cast<CGUIMessagebox*>(g_pUiScreen->GetLastDialogBox());
+    check(wrapped&&wrapped->GetUserDefinedID()==0x6001&&!wrapped->GetAllowClose455()&&(wrapped->*access(MessageBoard{})).GetFragmentCount455()==3,"ordinary wrapper forwards rich and close parameters");
+    capture(*wrapped,"modal-rich-wrapper.bgra");closeBox(*wrapped);++cases;
+    return cases;
 }
 static int run(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
@@ -101,8 +149,9 @@ static int run(){
     }
     {auto* outer=show(3);CGUIMessagebox inner;inner.Init(4);inner.SetMsg(const_cast<char*>("Nested"));inner.SetOwnerWindow(outer);inner.SetAllowClose455(TRUE);inner.Open();
         outer->MsgProc(nullptr,WM_CHAR,VK_ESCAPE,0);check(inner.GetResultMsg()==MSG_CLOSE&&outer->GetResultMsg()==MSG_NONE,"nested dialog dispatch");closeBox(inner);closeBox(*outer);}
+    const unsigned sizing=checkMessageSizing();
     _CloseAllDialogBox();(g_MainApp.*access(Unload{}))();R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
-    FILE* output=std::fopen("result.json","wb");check(output!=nullptr,"output");std::fprintf(output,"{\"status\":\"PASS\",\"real_modal_controls\":true,\"button_states\":%u,\"caption106107\":true,\"outline_and_margins\":true,\"keyboard_and_nested\":true,\"mouse_results123\":true,\"focused_chat_gate\":true,\"pool_close_permission\":true,\"open_reset_and_enable\":true,\"viewport_pixels\":%u,\"full455_text_scrollbar\":false,\"full_Tutorial\":false}\n",states,colored);std::fclose(output);return 0;
+    FILE* output=std::fopen("result.json","wb");check(output!=nullptr,"output");std::fprintf(output,"{\"status\":\"PASS\",\"real_modal_controls\":true,\"button_states\":%u,\"caption106107\":true,\"outline_and_margins\":true,\"keyboard_and_nested\":true,\"mouse_results123\":true,\"focused_chat_gate\":true,\"pool_close_permission\":true,\"open_reset_and_enable\":true,\"viewport_pixels\":%u,\"pixel_message_sizing_cases\":%u,\"ordinary_rich_wrapper\":true,\"natural_extent_before_scroll_fallback\":true,\"empty_extent_unsupported\":true,\"full455_text_scrollbar\":false,\"full_Tutorial\":false}\n",states,colored,sizing);std::fclose(output);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* info){if(info->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;return EXCEPTION_EXECUTE_HANDLER;}
 static int guarded(){__try{return run();}__except(filter(GetExceptionInformation())){return 99;}}

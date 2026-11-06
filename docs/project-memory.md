@@ -23,6 +23,32 @@
 
 ## Последний проверенный результат
 
+Message-sizing069: ordinary CGUIMessagebox.SetMsg now takes explicit formatted
+bool(defaultFALSE),basefontFFE3E0D9,Clear→plain/markup→ResizeToText before reading
+dimensions. Null pointer no-op. Target701870 scroll branch reads natural size,
+so300/250 caps are fallback ONLY;positive requestedsize is overwritten. No
+unconditional scrollbar removal;overflow Add→bar.SetSize→board.AddScrollbar.
+Minimum200x100,margins30/30 or60/45+barWidth/buttonHeight. Target701630 is
+SetSize(width,height),notRECT SetBound;source keeps typed SetSize→SetBound
+bridge. GlobalGUIObject.SetSize stillnonvirtual:mandatorygap. Wrapper700720
+forwards runtime formatted/allowClose;constructor/errorwrapper passplain0.
+Source create-info bFormatted455 isconvenience,notoriginal455ABI. Emptylist
+243D30 readsuninitialized newline local:sourceSetMsg explicitlyrefuseszero
+fragments;not equivalence. Allwrapperguards/OOM/invalidgeometry remainOPEN.
+
+21ranges equalpins/15fullasm,IDAb852f877 savedclosed. Ko/Ru12groups GDIoracle+
+realmodalcontrols/richwrapper,GPU10frames allviewed;nativeexit0. Ownprobe
+1a1b3022…/entryE6B20. Productionc22502faf1a98ed229ed62d341f4609ab5ca55f31c33bd26cdc2b7bc5aa83340,
+entry150290,2041856bytes,182/20/28TU,0unresolved/existingCreate1. TextBoard
+InsertFormatted455/ResizeToText retainedbyactualSetMsg,notforceinclude;
+SetSizeadapterinline/SetBoundretained. IdempotentprepEF02C4A3…. Engine056same.
+AffectedGUI/Tutorial/font/metrics/scroll/input passed,9gatesPARTIAL. No unchanged
+largeparticle/runtime rerun. Firstchance40080201 stillcauseunknown.
+Next070 actualCGUIBriefingWindow rich/resources/events/state,thenactualAvatar/
+world/Tutorial/fourstage. M6/M6F/M7/M9OPEN. research/client455-message-sizing.md.
+
+Предыдущий участок068:
+
 GUI-input068: new client455_gui_input.{h,cpp},object/container/queue.inc and
 generator overlays actual GUIObject/Container/EventProc/MouseDev. Base input
 626B90:extra inputflagDWORD88 default1 (notActive52),double7/right8,300inclusive

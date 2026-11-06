@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — gui-input068: перенесены базовые mouse/key/focus/queue
+Последний участок M6 — message-sizing069: обычный SetMsg использует pixel extent,
+цвет455 и отдельный plain/rich параметр. Естественный размер вычисляется до
+scroll fallback;300/250 не являются общими пределами. Ko/Ru12групп и10кадров,
+затронутые GUI/Create1 проверки прошли. Пустой fragment extent явно unsupported,
+полные Briefing/Tutorial/GUI остаются OPEN.
+[Доказательства](research/client455-message-sizing.md). M6/M9 открыты.
+
+Предыдущий участок M6 — gui-input068: перенесены базовые mouse/key/focus/queue
 правила455,main-list Add/Remove и средняя кнопка. Double7/right8,порог300,
 key dedup и focus order проверены Ko/Ru. Убран недоказанный arrow adapter
 обычного scrollbar;EX binding сохранён. Новая PE собирается/existingCreate1,

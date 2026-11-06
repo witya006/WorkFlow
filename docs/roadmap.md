@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+Участок069: обычный modal.SetMsg теперьplain/rich,pixel extent,color/order455;
+300/250 fallback only. Ordinary rich caller подключён,providersretained.
+Ko/RuGDI/12групп,10viewedframes,affectedGUI/Create1 passed. Productionc22502fa…,
+9gatesPARTIAL. Emptyfragment extent/basevirtualSetSize/allwrapper domains OPEN.
+Далее070 — полныйCGUIBriefingWindow,затемAvatar/world/Tutorial/fourstage.
+[Доказательства](../research/client455-message-sizing.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок:
+
 Участок068: базовые GUI mouse/key/focus/queue455 и main-list Add/Remove перенесены.
 Double7/right8,300ms/DWORDwrap,modal guard,key dedup/focus order/средняя кнопка
 проверены Ko/Ru. Ordinary arrows unbound в target;прежний adapter удалён,EX
@@ -464,10 +473,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/069: production message sizing/rich callers и полный CGUIBriefingWindow:
-   связать восстановленные text/GUI методы с настоящими окнами,учесть pending
-   other layers/IME/caller gaps по мере использования. Затем briefing:
-   постраничный/временной текст, портреты и изображения клавиш.
+1. M6/070: полный CGUIBriefingWindow: настоящий rich text/ресурсы/события/state,
+   постраничный/временной текст, портреты и изображения клавиш. Modal sizing/rich
+   caller перенесён069;учесть other layers/IME/base virtual size/wrapper gaps
+   по мере использования,не объявляя остальные окна соответствующими455.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
    feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.
    Затем полный интерфейс входа, аутентификация и переход в игровой мир.

@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MESSAGE-SIZING-069",
+      "status": "partial",
+      "description": "Ordinary modal SetMsg plain/rich,color,natural pixel extent and scroll/layout order;fullGUI/Tutorial OPEN",
+      "reference": [{"rva":"0x301870","role":"SetMsg"},{"rva":"0x301630","role":"SetSize"},{"rva":"0x2444d0","role":"plain replace"},{"rva":"0x244540","role":"formatted replace"},{"rva":"0x243d30","role":"natural extent"},{"rva":"0x300720","role":"ordinary wrapper"}],
+      "implementation": ["scripts/native/client455_modal_message.inc","scripts/native/client455_modal_init.inc","scripts/native/client455_gui_text_board.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "21ranges equalpins,15fullasm;Ko/Ru12groups with independent GDI widths,natural width>300/height>250,requestedsize replacement,newline,color,plain tags/rich fragments,null,present scrollbar,typed size and actual wrapper;10GPUframes viewed,redpixels checked;production rich/extent retained naturally;affectedGUI/exactPE existingCreate1 PASS",
+      "evidence": ["inventory/client455-message-sizing-reference.json","inventory/client455-message-sizing-checkpoint.json","inventory/client455-modal-native.json","research/client455-message-sizing.md"],
+      "gaps": ["Emptyfragment extent target643D30 readsuninitialized newline local;sourceexplicitrefusal,notparity","GlobalbaseGUI.SetSize stillnonvirtual;typed modal SetSize/SetBoundbridge only","All455wrapper variants/guards and callers/invalidgeometry/OOM/overflow/automatic scroll-attach edge domains","ActualBriefing/Tutorial/Avatar/world/fourstage/auth/fullGUI/gameplay;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-GUI-INPUT-068",
       "status": "partial",
       "description": "Ordinary baseGUI mouse/doubleclick/modal guard/key/focus/queue and main-list Add/Remove;fullGUI/IME/otherlayers OPEN",
