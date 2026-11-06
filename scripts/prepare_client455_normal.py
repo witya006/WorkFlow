@@ -108,11 +108,8 @@ def main():
                 raw=raw[:first]+b'CGUIText::~CGUIText(){RF455_ForgetGuiText(this);}\r\n'+raw[last:]
                 changes.append('455CGUIText measured byte-string geometry and exact high-style flag fallthrough;GDI route only')
             if relative=='userinterface/guicontroller/guiscrollbar.cpp':
-                first,last=section(raw,b'CGUIScrollbar::SetTotalAmount(',b'CGUIScrollbar::SetTotalAmount(')
-                raw=raw[:first]+b'CGUIScrollbar::SetTotalAmount(LONG total){SetAmount(total,m_nCurrentAmount);}\r\n'+raw[last:]
-                first,last=section(raw,b'CGUIScrollbar::SetCurrentAmount(',b'CGUIScrollbar::SetCurrentAmount(')
-                raw=raw[:first]+b'CGUIScrollbar::SetCurrentAmount(LONG current){SetAmount(m_nTotalAmount,current);}\r\n'+raw[last:]
-                changes.append('455scrollbar amount setters both use combined clamp/update;full thumb/input algorithms remain open')
+                raw=(native/'client455_gui_scrollbar.cpp').read_bytes()
+                changes.append('455ordinary scrollbar composite thumb/layout/amount/x87 snap/mouse/timers;legacy parent-routing adapter')
             if relative=='userinterface/guicontroller/guibutton.h':
                 anchor=b'void\t\tSetLabel( char * pi_pLabel );'
                 if raw.count(anchor)!=1:raise ValueError('Button label API changed')
@@ -133,11 +130,8 @@ def main():
                 raw=raw[:line]+b'\tBOOL IsFocused455()const{return m_bEnableFocus&&m_bShow&&m_bActive&&s_pFocusedObject==this;}\r\n'+raw[line:]
                 changes.append('confirmed455show/active/enableFocus/static-focus predicate')
             if relative=='userinterface/guicontroller/guiscrollbar.h':
-                anchor=b'void\tSetBarSize( POINT & pi_ptSize )'
-                position=raw.find(anchor)
-                if position<0:raise ValueError('Scrollbar bar API changed')
-                line=raw.rfind(b'\n',0,position)+1
-                raw=raw[:line]+b'\tvoid SetBarColor455(DWORD color){m_uiBar.SetARGB(color);}\r\n'+raw[line:]
+                raw=(native/'client455_gui_scrollbar.h').read_bytes()
+                changes.append('455ordinary scrollbar source interfaces and composite scrollbar button')
             if relative=='userinterface/guicontroller/guidialogbox.h':
                 raw,count=re.subn(rb'(BOOL[ \t]+m_bOpened[ \t]*;)',rb'\1\r\n\tBOOL m_allowClose455=FALSE; // Target base window starts with Escape disabled.',raw)
                 if count!=1:raise ValueError('Dialog storage boundary changed')
@@ -446,6 +440,7 @@ def main():
     for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+Участок065: обычный scrollbar получил composite thumb, layout/amount/snapping/
+mouse/repeat rules455. Ko/Ru GPU/queued input, затронутые GUI probes и Create1
+прошли. EX/Var, полная parent routing и resource/skin parity ещё открыты.
+Далее066 — варианты/parent input, затем production rich callers/message sizing/
+briefing и actual Tutorial/fourstage. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-scrollbar.md).
+
+Предыдущий участок:
+
 Участок064: обычная текстовая панель получила caches455, pixel wrap/retention/
 draw; typed FONT_INFO16/TextInfo28 и rich/extent проверены в full-object probe.
 Production rich callers/message sizing ещё открыты. Новая PE сохранила Create1;

@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-SCROLLBAR-065",
+      "status": "partial",
+      "description": "Ordinary scrollbar/composite thumb geometry,amount,x87 snap,mouse/clock rules;EX/Var and completeparent input OPEN",
+      "reference": [{"rva":"0x238ee0","role":"ordinary constructor"},{"rva":"0x239590","role":"amount and auto thumb size"},{"rva":"0x2398f0","role":"mouse/repeat rules"},{"rva":"0x239ec0","role":"drag"},{"rva":"0x23a1a0","role":"pixel snapping"},{"rva":"0x238be0","role":"composite rendering"},{"rva":"0x4cff90","role":"frame clamp"}],
+      "implementation": ["scripts/native/client455_gui_scrollbar.h","scripts/native/client455_gui_scrollbar.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "Ko/Ru actual ordinaryGUI/queue nativeexit0;geometry/minimum/auto/manual/dynamictrack/wrap/x87+SSE2/NaN/clockqueries/drag/release/postupdate direction/count3 removal;real common44frame clamp and owned synthetic row2 GPU oracle;5frames viewed,profile SHAs equal;affectedGUI/Create1 PASS",
+      "evidence": ["inventory/client455-scrollbar-reference.json","inventory/client455-scrollbar-native.json","inventory/client455-scrollbar-checkpoint.json","research/client455-scrollbar.md"],
+      "gaps": ["ScrollbarEX/Var,real callers and fullparent input/show pipeline;owned0.7adapter remains","Defaultcap44to49 absent fromselectedcommon action2;fullresource/skin/versionparity OPEN","Legacy GetMinSize/SetScrollSpeed compatibility wrappers,allalpha/clipping/privateABI/lifecycle/unsafe/OOM/FP/nonSSE2 domains","Productionrich/message sizing/fullbriefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorgaps;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TEXT-BOARD-064",
       "status": "partial",
       "description": "Ordinary TextBoard fragment/line caches,pixel wrap/retention/draw;formatted/extent paths in full-object probe;production rich callers and fullscrollbar OPEN",

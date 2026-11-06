@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Scrollbar065. Ordinary geometry/linear thumb sizing,x87 snapping/
+SSE2int32 conversion,mouse/drag/repeat clocks and queued events ported. Composite
+thumb min6x18 and row2 tiling verified. Real common action2 has44frames,so
+defaults44–49 clamp to43;real/synthetic GPU paths kept separate. Ko/Ru probes
+and affected GUI/Create1 passed;productiond38d74e0…/entry14E350. EX/Var,parent
+input/fullbriefing/Tutorial remain OPEN. [Evidence](research/client455-scrollbar.md).
+
 2026-11-06 — Text-board064. Replaced ordinary board with pixel layout,fragment/
 line caches,WORD retention/rebase and draw. FONT_INFO16/TextInfo28 restored;
 BYTE-copy and markup quirks verified in full-object probe. Production rich

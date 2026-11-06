@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок065: normal scrollbar и composite thumb source. Геометрия/min6×18/
+linear auto20/dynamic track/signed32 wrap, x87 snap/SSE2 conversion, queued
+mouse/drag/release/repeat clocks проверены на Ko/Ru. Real common action2 имеет
+44frames,defaults44–49 clamp43;5GPUframes(profile SHA equal) просмотрены.
+Productiond38d74e0…/entry14E350,182/20/26TU,0unresolved,existingCreate1;
+TextBoard/metrics/font/modal/tutorial regressions прошли. Далее066 — EX/Var
+и реальные callers/parent input; decomp уже в scrollbar-more/helpers065.
+Потом message sizing/rich callers/fullbriefing и actualhost/Tutorial/fourstage.
+Legacy GetMinSize/SetScrollSpeed, alpha/clipping/skin/FP/unsafe ещё открыты.
+[Доказательства](../research/client455-scrollbar.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий результат:
+
 Участок064: normal TextBoard — source fragment/line caches, pixel layout,
 newline/margin quirks, WORD retention/rebase и Draw. FONT_INFO16/TextInfo28,
 cached length/Clear и BYTE-copy подтверждены. Full-object markup/extent/GPU
@@ -601,8 +614,8 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Участок065: полный scrollbar/auto thumb/geometry/timers/input/variants,
-   затем production message sizing/rich callers/full briefing. TextBoard064,
+1. Участок066: EX/Var и полный parent input/callers, затем production
+   message sizing/rich callers/full briefing. Ordinary scrollbar065/TextBoard064,
    typed font/text metadata, metrics063 и modal062 уже исследованы; не повторять
    этот reverse без новых фактов. Rich/extent064 пока full-object probe only.
 2. Полный briefing, concrete Avatar/world/input/frame/feedback/local handlers,
@@ -647,7 +660,14 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Воспроизведение последнего модуля
 
-Актуальный064: audit_client455_text_board.py → prepare_client455_normal.py →
+Актуальный065: audit_client455_scrollbar.py → prepare_client455_normal.py →
+build_client455_normal.py → probe_client455_normal_consumers.py →
+link_client455_normal.py → probe_client455_scrollbar.py; затем затронутые
+TextBoard/metrics/font/modal/tutorial-board и exact startup/after-create.
+Gate checkpoint_client455_scrollbar.py. Synthetic SPR создаётся только вlab;
+все Python через Invoke-Python.ps1,без повторения неизменённых bulk suites.
+
+Исторический064: audit_client455_text_board.py → prepare_client455_normal.py →
 build_client455_normal.py → probe_client455_normal_consumers.py →
 link_client455_normal.py → probe_client455_text_board.py. Затронутые metrics/
 font/modal/tutorial-board probes, startup/own-entry audits и exact startup/

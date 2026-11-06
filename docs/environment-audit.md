@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, scrollbar065: установок нет.23ranges/2vtable prefixes/divisor
+совпали между pins,15complete asm; IDAbfcf8ee1/9775776a closed/save. Новая PE
+d38d74e0…/entry14E350,182/20/26TU,0unresolved/existingCreate1. Ko/Ru ordinary
+scrollbar/queued input/GPU и затронутые GUI probes passed. Common action2
+имеет44frames,defaults44–49 clamp to43;synthetic sprite только для теста.
+[Доказательства](../research/client455-scrollbar.md).
+
 Дополнение06.11, text-board064: установок нет.49 диапазонов и2vtable regions
 совпали между pins,17полных asm. IDA958042ee/aabab7c3/06c03ace closed/save.
 Полная PE3a209cdc…/entry14DD30,182/20/26TU,0unresolved/existingCreate1.

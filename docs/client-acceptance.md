@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+Участок065: ordinary scrollbar geometry/amount/mouse/clock и composite thumb
+подключены; Ko/Ru queued GUI/GPU проверки прошли. Наличие23pinned ranges и
+этих тестов не закрывает EX/Var, parent input pipeline или полноту GUI455.
+В common action2 отсутствуют default cap frames44–49;сохранён target clamp43,
+алгоритм отдельно проверен на собственном synthetic sprite. Production PE
+собирается/existingCreate1; M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-scrollbar.md).
+
 Участок064: ordinary TextBoard fragment/line caches, pixel layout/retention/Draw
 подключены. FONT_INFO16/TextInfo28 и markup/extent/BYTE-copy quirks проверены
 в full-object probe, Korea/Russia GPU кадры просмотрены. Production rich callers

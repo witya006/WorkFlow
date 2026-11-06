@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — text-board064: обычная панель использует fragment/line
+Последний участок M6 — scrollbar065: перенесены обычная полоса прокрутки,
+составной бегунок, геометрия, snapping и mouse/clock rules455. GUI/GPU проверки
+Korea/Russia и начальная инициализация новой PE прошли. Обнаружено ограничение
+кадров composite skin в имеющихся ресурсах; EX/Var и parent input ещё открыты.
+[Доказательства](research/client455-scrollbar.md).
+
+Предыдущий участок M6 — text-board064: обычная панель использует fragment/line
 caches455, пиксельный перенос, retention и Draw. Форматирование/extent проверены
 в full-object probe; production rich callers ещё открыты. Korea/Russia GUI/GPU
 и начальная инициализация новой RF_Online.bin прошли. Далее полный scrollbar,

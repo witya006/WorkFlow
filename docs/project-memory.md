@@ -23,6 +23,57 @@
 
 ## Последний проверенный результат
 
+Scrollbar065: new native/client455_gui_scrollbar.{h,cpp} replace normal header/
+body. Ordinary classesCGUIScrollbar+CGUIScrollbarButton (container+3imageobjects),
+NOT simplelegacyCGUIButton. Defaultthumb6×18,minwidth6/minheight18;autoTRUE,
+minimum20. Auto length=parentExtent-arrowSizes-total thenmin;too-short canleave
+negative/zero track. Minsetter capsminimum toavailable excludingarrows;growing
+parentdoesnotrestoreoldrequestedmin. Trackrecomputed fromcurrentdimensions;
+UpdateBar signed32current*track WRAPS beforeidiv. SetTotal/Current bothSetAmount.
+Zero total removesThumb onlyifchildcount==3. SourceDraw=container&&thumb again.
+Modalhelper7B4E30requested5×18 nowphysically6×18;062's5waslegacy/requested size.
+
+Calc63A1A0: inttotal/distance double spills,x87 divide/multiply,floatspill;
+__ftol2_sse872B70 SSE2 uses32bitCVTTSD2SI,NOT int64. Preservemodulo/halfcompare
+andNaNsmall-range upperendpoint. Nativevalidsnap/NaN/INT32overflow/productwrap
+passed. NonSSE2 fallback/allFP/unmasked/unsafe domains stillOPEN.
+Mouse: strokedtime+eventtime2queries;repeat thresholdquery+newstepquery+eventtime,
+DWORD wrap and multiplication. Postupdate comparisoncanemitDOWN31forupward
+track/drag. Dragkeepsfreepixelposition;release realignsnoevent ifsnapunchanged.
+Nativeclock replaysetter restoresdefaulttimeGetTime. Actualqueue dispatch used.
+Ownedarrowobserver/showadapter bridges0.7lackof455parent bubbling/inheritance;
+notclaimtargetprivatewiring. GetMinSize/SetScrollSpeed wrappersawaitfullcallerproof.
+
+Compositeframes44/47top,45/48middle,46/49bottom/common action2. Row2 repeated
+perpixel;middleUV useswidth/orig/texture ratio as6269A0. RealKo/Rucommon action2
+only44frames0..43. Target8CFF90clampsmissing44..49 to43;actualnativepreserves,
+realnormal/pressedimagesIDENTICAL. Doesnotproveassetversion orruntimeuseof
+defaultskin (flagdefault0). SourceSetSegmented sizesuseSetAction/Frame clamp
+beforeGetSpriteOrg;doNOT queryout-of-range frame directly.
+OwnsyntheticSPR has50frames/colorcaps/middleonlyrow2green/cyan,otherrowsgray.
+Point-samplingfixture actualGPU row2pixeloracle andpressedRGBdifferencepassed.
+FiveframesKo/Ruhashesequal,representativesallviewed:478/279/279/478/478pixels.
+
+23functionranges+2vtableprefixes+double2 equalbothpins;15fullasm. OwnedIDA
+bfcf8ee1/9775776a closed/save. Raw artifacts/client455-tutorial/scrollbar-*065.
+Core/ranges/asm/support/ftol/containerdraw/spriteorder/frameclamp primaryproof;
+more/helpers alsoincludeunportedEX/Var decomp for066. NoinputEXE/serverchanges.
+OwnPE05e4466e3f8100129a1f40045cdf082d185a73c06b3ac752f9ac9550478fec9a,
+entryE4020,naturalexit0Ko/Ru. NativeprivateEventQueue create/process viafriend
+accessfixture;noexposureinproduction. SourceCPPfirstMASM 'length' reservedname
+renamedscrollLength;probeprivatequeue compilefixedwithfixtureaccess.
+Productiond38d74e09a7b11801abec69ff90804ee89c6c5fa12818a1f55311b61414229a8,
+x86/base400000/entry14E350/2030080bytes,182client20kernel26facade,0unresolved.
+NormalCUnity/CAnimationPASS;engineunchanged;generatoridempotent. CurrentTextBoard/
+metrics/font/modal/tutorial-board probesPASS;exactPE WinMain/TCPfixture/engine/
+D3D/Character/existingCreate1,stopbeforeloop,noauth/gameclaim. ScopedgatesPARTIAL.
+Next066 EX/Var +parentinput/callers;thenmessage sizing/rich/fullbriefing/actual
+Tutorial/fourstage. Resource/skin/alpha/clipping/lifecycle/FP/unsafe andfullM9OPEN.
+Reportsinventory/client455-scrollbar-{reference,native,checkpoint}.json;
+research/client455-scrollbar.md. M6/M6F/M7/M9OPEN.No largeunchangedsuites.
+
+## Предыдущий перенос — text-board064
+
 Text-board064: replaced normal guitextboard.{h,cpp} through generator from new
 native/client455_gui_text_board.{h,cpp}. Separate owned TextInfo fragments and
 WORD fragment/offset line markers,limit1000/base/view0. Pixel metrics063/layout
@@ -1293,7 +1344,7 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок065: fullscrollbar, затем production message sizing/richcallers/full
+1. Участок066: scrollbarEX/Var/parentinput/callers, затем production message sizing/richcallers/full
    briefing и actual Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
    затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
