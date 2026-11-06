@@ -1,0 +1,128 @@
+{
+  "scope": "455Land unload before Create and destructor callchain;only the confirmed null-level branch is ported",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x3c78e0",
+          "bytes": 129,
+          "sha256": "126dba7f8c03b5bf36dea5302bb8ea639fdb13c44b7e72bbc295343a9e3d6a00"
+        },
+        {
+          "rva": "0x3c79f0",
+          "bytes": 204,
+          "sha256": "c85589a9dcd8a7c72bbf85229ae688cf52e1b9d75d6abcce409fc9beb3752193"
+        },
+        {
+          "rva": "0x3c7970",
+          "bytes": 121,
+          "sha256": "bb252e6fc666b9522aac40151b679eaecd4e666631d0785df70516d574c86c04"
+        },
+        {
+          "rva": "0x3c7ac0",
+          "bytes": 152,
+          "sha256": "d986726be09a8bbd87311635d3484388fa56c5f9d2c0b4e4d6a825a68bd73751"
+        },
+        {
+          "rva": "0x3c7b60",
+          "bytes": 46,
+          "sha256": "1d6f7e0bba8b1776815cfc8b79ada24006b992d66afa320afd0e9627c2838698"
+        },
+        {
+          "rva": "0x3c82c0",
+          "bytes": 415,
+          "sha256": "af790e0e26ec01818d7b273880327385ac7be834b8f10edc3f2f61f2699ccfc3"
+        },
+        {
+          "rva": "0x3c8f30",
+          "bytes": 311,
+          "sha256": "16874c3a6d520a769b7c3254033d856355fee74fbc3291b2c5be419cd05d27f0"
+        },
+        {
+          "rva": "0x3c7cb0",
+          "bytes": 15,
+          "sha256": "183ce04a4c284a375f5e5468fa3188b20d7b02ebde21538759ba0fdb78c2d611"
+        },
+        {
+          "rva": "0x6ecaec",
+          "bytes": 52,
+          "sha256": "2ece0536022e4680943f0f3a16c2e90ac7cbea1eafa859834f1ae759a5feb438"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x3c78e0",
+          "bytes": 129,
+          "sha256": "126dba7f8c03b5bf36dea5302bb8ea639fdb13c44b7e72bbc295343a9e3d6a00"
+        },
+        {
+          "rva": "0x3c79f0",
+          "bytes": 204,
+          "sha256": "c85589a9dcd8a7c72bbf85229ae688cf52e1b9d75d6abcce409fc9beb3752193"
+        },
+        {
+          "rva": "0x3c7970",
+          "bytes": 121,
+          "sha256": "bb252e6fc666b9522aac40151b679eaecd4e666631d0785df70516d574c86c04"
+        },
+        {
+          "rva": "0x3c7ac0",
+          "bytes": 152,
+          "sha256": "d986726be09a8bbd87311635d3484388fa56c5f9d2c0b4e4d6a825a68bd73751"
+        },
+        {
+          "rva": "0x3c7b60",
+          "bytes": 46,
+          "sha256": "1d6f7e0bba8b1776815cfc8b79ada24006b992d66afa320afd0e9627c2838698"
+        },
+        {
+          "rva": "0x3c82c0",
+          "bytes": 415,
+          "sha256": "af790e0e26ec01818d7b273880327385ac7be834b8f10edc3f2f61f2699ccfc3"
+        },
+        {
+          "rva": "0x3c8f30",
+          "bytes": 311,
+          "sha256": "16874c3a6d520a769b7c3254033d856355fee74fbc3291b2c5be419cd05d27f0"
+        },
+        {
+          "rva": "0x3c7cb0",
+          "bytes": 15,
+          "sha256": "183ce04a4c284a375f5e5468fa3188b20d7b02ebde21538759ba0fdb78c2d611"
+        },
+        {
+          "rva": "0x6ecaec",
+          "bytes": 52,
+          "sha256": "2ece0536022e4680943f0f3a16c2e90ac7cbea1eafa859834f1ae759a5feb438"
+        }
+      ]
+    }
+  ],
+  "script_sha256": "259627a906ea90292be9b5820fb067631e6d7c95c4b239aba9bd962860a7622f",
+  "facts": [
+    "Land ctor7C78E0 callsInit7C79F0;first owner pointer is zero",
+    "Land destructor7C7970 callsDestroy7C82C0,which first callsUnload7C8F30",
+    "Unload7C8F30 returnsFALSE immediately if level owner is null;no effects cleanup or global writes",
+    "Create7C7AC0 allocates8byte ILevel-derived wrapper7C7B60;not oldfullCLevel layout",
+    "Default wrapper vtableAECAEC slot40 points7C7CB0,an empty release method;other concrete level types remain to port"
+  ],
+  "ported": [
+    "Null-level returnFALSE before cleanup,used by real normal CLand/CMainApp global destruction"
+  ],
+  "gaps": [
+    "Full typed ILevel owner/wrapper/concrete types and world lifecycle",
+    "Created-level unload effects order/global-level clearing/extra two containers differ from oldCLand",
+    "Normal WinMain early-error paths,full CMainApp Create and full game shutdown",
+    "Device loss/reset and whole455UI/gameplay/network acceptance"
+  ],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

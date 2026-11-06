@@ -11,13 +11,28 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — font046: GDI/Unicode font/cache/draw иобычный enginebridge
+Последний участок — lifecycle047: null-level ветка UnloadLevel восстановлена
+по обоим 455 PE. Реальный глобальный CMainApp/CLand в трёх состояниях и оба
+GUI-приложения без создания Land завершились естественно с exit0. Полная PE
+11833d1e... собирается без unresolved; 14 scoped checkpoints PASS/PARTIAL.
+Full ILevel/созданный игровой мир/полный WinMain не приняты.
+[Доказательства](../research/client455-lifecycle.md).
+
+Следом 048 — дальнейший normal Create: _CreateCharDataMgr в global.cpp,
+его реальные таблицы и соответствующий менеджер 455. Определить подтверждённые
+порядок и формат, затем пройти следующую настоящую границу Create на исходных
+данных 455. Не обходить загрузку ради запуска. Цель ближайшего последовательного
+участка — полная инициализация и реальный интерфейс входа; сеть остаётся только
+клиентской. Typed ILevel/мировой lifecycle, FT/ANSI/text/IME/layout, launcher/
+FG_CB/network/BGM и полный shutdown обязательны до закрытия M6.
+
+Предыдущий участок — font046: GDI/Unicode font/cache/draw иобычный enginebridge
 подключены. Actual CGUIText вывел Hangul/кириллицу изNDLanguage;frames==wideAPI,
 GDIoracle atlas/metrics/cacheeviction прошли;обаownGUIprobes exit0. FullPE
 88942d08.../entry1485A0 прошлаnormalfont/D3D/Character startup.13scopedchecks
 PASS/PARTIAL;M6/M9OPEN. research/client455-font.md.
 
-Следом047 — normalearly-abort/lifecycleCLand/CMainApp:oldDestroy доCreate
+Историческая очередь 047 — normalearly-abort/lifecycleCLand/CMainApp:oldDestroy доCreate
 вызываетnullLevel->ReleaseLevel. Зафиксирован ownRVA7DD9C READnull+158h при
 первом неполномlabexit. Не выдумыватьguard радизелёного теста;сверить455 ctor/
 destroy/unload/ownership. TargetLandCreate7C7AC0 alloc8wrapper7C7B60;это иной

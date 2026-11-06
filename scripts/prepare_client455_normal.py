@@ -71,6 +71,14 @@ def main():
         if source.suffix.lower() in ['.lib','.dsp','.dsw']:continue
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
+            if source.name.lower()=='cland.cpp':
+                start,end=section(raw,b'CLand::UnloadLevel( void )',b'CLand::UnloadLevel( void )')
+                body=raw[start:end];anchor=b'\tassert( m_pLevel != NULL );'
+                if body.count(anchor)!=1:raise ValueError('Land unload entry changed')
+                nl=b'\r\n' if b'\r\n' in body else b'\n'
+                body=body.replace(anchor,b'\t// 455 RVA 3C8F30: an uncreated level returns FALSE before cleanup.'+nl+b'\tif( m_pLevel == NULL ) return FALSE;')
+                raw=raw[:start]+body+raw[end:]
+                changes.append('confirmed455 unload early return before level creation;full ILevel ownership port remains open')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='mainapp.cpp':
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')

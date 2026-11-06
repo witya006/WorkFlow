@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — font046: обычный engine text path использует455GDI/
+Последний участок M6 — lifecycle047: восстановлен подтверждённый по 455 выход
+из UnloadLevel до создания уровня. Три пробы реального глобального CMainApp/
+CLand и две GUI-пробы без создания Land завершились естественно с кодом 0.
+Полная новая RF_Online.bin собирается; полные Create, ILevel и игровой цикл
+ещё открыты. [Доказательства](research/client455-lifecycle.md). M6/M9 открыты.
+
+Предыдущий участок M6 — font046: обычный engine text path использует455GDI/
 Unicode backend. Реальный CGUIText нарисовал Hangul/кириллицу из NDLanguage;
 метрики/atlas проверены независимым GDI,оба UI probes завершились чисто.
 Exact own PE font/D3D/Character startup и прежние кадры сохранились. FullUI/

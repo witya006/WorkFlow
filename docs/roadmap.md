@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Новейший участок M6 — lifecycle047: подтверждённый null-level return FALSE
+предотвращает падение до Create. Три normal CMainApp/CLand процесса и две GUI
+пробы без Land завершились естественно с exit0. Новая PE собирается;14scoped
+checkpoints PASS/PARTIAL. Full ILevel/WinMain/мир/shutdown не приняты.
+Следом048: normal _CreateCharDataMgr, реальные таблицы455 и дальнейший Create
+к интерфейсу входа. [Доказательства](../research/client455-lifecycle.md).
+FT/ANSI/text/IME и остальные M6 gaps сохранены; M6/M6F/M7/M9 открыты.
+
 Новейший участок M6 — font046: GDI/Unicode atlas/cache/draw подключены кnormal
 engine text calls;actual CGUIText вывел Korean/Russian строки,оба probes exit0.
 GDI oracle/цветные регрессии прошли. FT/полныйtext/UI/IME остаются M6.

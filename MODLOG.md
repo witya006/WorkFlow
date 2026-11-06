@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Lifecycle047. Restored the binary-confirmed455null-level FALSE
+return before cleanup in ordinary CLand::UnloadLevel. Three normal global
+CMainApp/CLand labs and both GUI font labs without artificial Land creation
+exit naturally with0. Full normal source PE links with0unresolved and preserves
+startup/Character/frames. Full typed ILevel,world/Create/WinMain/shutdown remain
+open. [Evidence](research/client455-lifecycle.md).
+
 2026-11-06 — Devicestartup043. Corrected legacy ForceFullScreen behavior to the
 actual455color32 write and restored nonzero Create→exit0 policy in a derived
 engine, preserving033. Exact own PE reaches window/device ready in configured

@@ -19,12 +19,6 @@
 #include <cwchar>
 #include <vector>
 extern CMainApp g_MainApp;
-// Test fixture initializes the real Land member exactly as normal Create does,
-// without entering the still-unported table readers. Explicit instantiation
-// gives a compiler-typed member pointer;no guessed offset or changed class ABI.
-template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
-struct LandMember{using Type=CLand CMainApp::*;friend Type access(LandMember);};
-template struct MemberAccess<LandMember,&CMainApp::m_cLand>;
 
 #define F_REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Font failure line%d\n",__LINE__);return 1;}}while(0)
 static unsigned frameWidth=0,frameHeight=0;
@@ -49,7 +43,7 @@ static int oracle(IDirect3DDevice9*d,const wchar_t*text){
 }
 static int runFontProbe(int argc,char**argv){
     if(argc!=2)return 200;SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
-    F_REQUIRE(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData());InitR3Engine();GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();F_REQUIRE((g_MainApp.*access(LandMember{})).Create());F_REQUIRE(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)));
+    F_REQUIRE(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData());InitR3Engine();GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();F_REQUIRE(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)));
     auto*d=GetD3dDevice();F_REQUIRE(d);auto*pack=RF455_GetNormalLanguagePack();const char*text=pack->get(0);F_REQUIRE(*text);const int count=MultiByteToWideChar(pack->codepage,0,text,-1,nullptr,0);std::vector<wchar_t>wide(count);F_REQUIRE(count&&MultiByteToWideChar(pack->codepage,0,text,-1,wide.data(),count));
     F_REQUIRE(oracle(d,wide.data())==0);
     CGUIText label;label.SetString(const_cast<char*>(text));label.SetPos(20,20);label.Show(TRUE);FONT_INFO style;style.dwColor=0xffffffff;style.dwStyle=0;label.SetFont(&style);

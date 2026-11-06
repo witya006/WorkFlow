@@ -1,0 +1,68 @@
+{
+  "scope": "Actual normal global CMainApp/CLand beforeCreate and real legacyCreated-level cleanup;CRT exit observed,not whole455lifecycle acceptance",
+  "architecture": "x86",
+  "entry_rva": "0xdb890",
+  "source": "scripts/native/client455_lifecycle_probe.cpp",
+  "source_sha256": "3d19a79e2ef60f73acb6c21c84c052e78b90b0ab1ce6a74ee371f087dd79410d",
+  "script_sha256": "b1369bdb4be6dd2c48a028d8f3b18b7e58768bfaeee933b159a9b6a7cc817188",
+  "normal_land_source": {
+    "file": "work/client455-port/normal/source/cland.cpp",
+    "sha256": "be62c21861ec016da3c0ae81a5ff8bf6b00933d86c780b6f349fe7e0a23a3e59"
+  },
+  "normal_link_sha256": "0a272c6f4549cbde081025610b2d2b8a508b0cbd68ad36c4aa5c698fa469ba61",
+  "reference_sha256": "34ead39c5567f114d0a0a8af8c9347af6fdb286dd74aee5c5daa94f75fad6666",
+  "map": "work/client455-port/lifecycle-probe/lifecycle-probe.map",
+  "map_sha256": "3b2971005e4fd6d3a4485aa133da7938b1f4005f4c8403111b19c9565773ad25",
+  "runs": [
+    {
+      "mode": "uncreated",
+      "exit": 0,
+      "native": {
+        "status_before_crt_exit": "PASS",
+        "mode": "uncreated",
+        "normal_global_owner": true,
+        "full_game_create_executed": false
+      },
+      "exe": "work/m9/d0e0036d/lifecycle-uncreated001/lifecycle-probe.exe",
+      "exe_sha256": "d0e0036df83b0afad825f9eff35fa592c0e00cf98901ba65f7a2708968d22f60",
+      "output": "work/m9/d0e0036d/lifecycle-uncreated001/result.json",
+      "output_sha256": "f210b45cfe71350d36e72bd857c6e10e93d3e16b1132f549a6c2f2b1a1bc7f51"
+    },
+    {
+      "mode": "engine-only",
+      "exit": 0,
+      "native": {
+        "status_before_crt_exit": "PASS",
+        "mode": "engine-only",
+        "normal_global_owner": true,
+        "full_game_create_executed": false
+      },
+      "exe": "work/m9/d0e0036d/lifecycle-engine-only001/lifecycle-probe.exe",
+      "exe_sha256": "d0e0036df83b0afad825f9eff35fa592c0e00cf98901ba65f7a2708968d22f60",
+      "output": "work/m9/d0e0036d/lifecycle-engine-only001/result.json",
+      "output_sha256": "05ed228498416f80df9b5f65f18a1b7cfa312f93b70d7b9e6b12e9e79fff0ecd"
+    },
+    {
+      "mode": "created",
+      "exit": 0,
+      "native": {
+        "status_before_crt_exit": "PASS",
+        "mode": "created",
+        "normal_global_owner": true,
+        "full_game_create_executed": false
+      },
+      "exe": "work/m9/d0e0036d/lifecycle-created001/lifecycle-probe.exe",
+      "exe_sha256": "d0e0036df83b0afad825f9eff35fa592c0e00cf98901ba65f7a2708968d22f60",
+      "output": "work/m9/d0e0036d/lifecycle-created001/result.json",
+      "output_sha256": "1a21843e735e2c40df34fca4fbf88d518ee7d9fc8f50ba1c18365bea29450ac7"
+    }
+  ],
+  "debugger_used": false,
+  "termination_requested": false,
+  "full_winmain_executed": false,
+  "full_game_create_executed": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

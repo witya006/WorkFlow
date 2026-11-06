@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, lifecycle047: установок нет. IDA session dae004fd открыла
+копию эталона, закрыта с save=true. Девять диапазонов Land/ILevel совпали
+в обоих закреплённых PE; null-level branch RVA3C8F3F подтверждён инструкциями.
+Новая собственная x86 PE SHA11833d1e... / entry1485A0: 182 объекта клиента,
+20 kernel, линковка без unresolved. Три отдельных процесса с реальным
+глобальным CMainApp и две GUI-пробы без Land завершились с exit0 без отладчика
+и TerminateProcess. Обычные startup/device/Create checkpoints также сохранены,
+но эти отдельные запуски остановлены отладчиком. Полный WinMain/shutdown не
+принят. [Подробности](../research/client455-lifecycle.md); M6/M9 открыты.
+
 Дополнение06.11,font046: установок нет. Настоящие CreateFontA/ExtTextOutW/
 GDI metrics/D3DX36 atlas работают сcountry params;Hangul/кириллица просмотрены
 вкадрахреальногоCGUIText. Собственный font probe создаёт Land передвыходом и

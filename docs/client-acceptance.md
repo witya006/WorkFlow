@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6, lifecycle047: восстановлена только null-level ветка
+UnloadLevel, подтверждённая инструкциями обоих pinned455PE. Три собственных
+full-object labs с реальным глобальным CMainApp/CLand и две GUI-пробы без Land
+завершились естественно с exit0. Full WinMain в lifecycle lab не исполнялся;
+старый CLevel после Create не равен8байтному target ILevel wrapper. Полные
+world ownership/effects cleanup/WinMain/shutdown остаются открытыми.
+[Доказательства](../research/client455-lifecycle.md); M6/M6F/M7/M9 открыты.
+
 Текущий участок M6,font046: selected GDI/Unicode font path иnormal engine bridge
 восстановлены. Actual CGUIText Korean/Russian frames совпали сwide API;
 GDI metrics/atlas oracle/cache eviction проверены,процессы завершилисьexit0.

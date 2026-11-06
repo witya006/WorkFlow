@@ -9,9 +9,9 @@
   "full_game_create_executed": false,
   "evidence_sha256": {
     "client455-font-reference": "d8e4a00d86715d9b8f408abda43ad6fe5cea0cede26ace327f54802926a897d5",
-    "client455-font-native": "67e7e7cddd084f5bcdad758af4eeefa3dcf602f5842f0ab6ae9ab2603342e12c",
-    "client455-create-startup-native": "66788db1c27c0c014aaca8114d571ee02e01edec12523c5f8a21967a3383c82a",
-    "client455-normal-link": "d5c36cd6f6e69bd7d7acec871e333ccb99edde6b44d149bac9e58cdf0708ea79",
+    "client455-font-native": "96ad472aece14ac517f4c2156685915640e5c00436ab8c7d81b2d500345d9cb1",
+    "client455-create-startup-native": "e9d095567b94b7df6104c25270ad67702b760b8af0d3248bed3feedd1ec00273",
+    "client455-normal-link": "0a272c6f4549cbde081025610b2d2b8a508b0cbd68ad36c4aa5c698fa469ba61",
     "client455-startup-engine-build": "b9ebb0ca786a4ebf5d6c4ee3c6d601abfc3126316d2b9ef059e92cf45781fe93"
   },
   "gaps": [
@@ -20,7 +20,7 @@
     "WholeUI layout/wordwrap/IME/input/reset/gameplay acceptance",
     "Source uses RAII rows and frees overwritten unused stateblocks;original allocation/leak/OOM/unsafe domains not equivalent",
     "GDI glyph output depends on actual Windows installedfonts/fontlinking/DPI;not proof of original455frame parity",
-    "Legacy CLand Destroy before Create dereferences null;observed in first incomplete-lab exit;normal early-abort behavior remains open",
+    "Before-Create null-level exit restored by lifecycle047;full ILevel/CMainApp shutdown remains open",
     "Old GUI byteWidth6 layout/clipping is not accepted as455layout;only selected Draw consumer verified",
     "Actual lab backbuffer640x500 vs viewport/configheight480;full window sizing acceptance open"
   ],

@@ -23,6 +23,39 @@
 
 ## Последний проверенный результат
 
+Lifecycle047: только подтверждённая ветка null-level UnloadLevel перенесена
+в normal/source/cland.cpp генератором prepare_client455_normal.py; исходная
+база и engine033 не изменены. Target x86/base400000: ctor7C78E0/Init7C79F0
+обнуляет owner, dtor7C7970→Destroy7C82C0→Unload7C8F30, где CMP[owner],0
+при null возвращает FALSE до любых cleanup/global writes (RVA3C8F3F).
+Девять диапазонов и default ILevel vtable совпали в обоих pinned PE.
+Target Create7C7AC0 выделяет8байт wrapper7C7B60; его release slot40=7C7CB0
+пустой. Это НЕ старый полный CLevel. Полный owner/world port ещё обязателен;
+created-level effects order/global clearing/extra containers не перенесены.
+
+Собственная RF_Online.bin SHA11833d1e9d58d0f352a211bb92d5d84423a6f5a21fb3a721eab82f62bf9d299a,
+x86/base400000/entryRVA1485A0,1998336bytes;182client/20kernel/15facade,
+0unresolved. Engine d0ef3b09... прежний. Native lifecycle helper линкует полный
+normal object set с собственным console entry. Реальный глобальный CMainApp
+и его CLand: uncreated, engine-only, created→Destroy→Destroy; все три процесса
+естественно exit0, debugger/TerminateProcess не используются. Full WinMain и
+full CMainApp::Create не выполнялись. Helper SHA d0e0036d...;lab work/m9/d0e0036d.
+В font probe удалена специальная инициализация Land: Korean/Russian CGUIText
+по-прежнему дают прежние кадры и оба процесса exit0. Legacy normal created
+cleanup — регрессия сохранения текущего поведения, не доказательство455ILevel.
+Точная новая fullPE прошла прежние startup/device/partialCreate checkpoints
+(в этих отдельных запусках остаётся контролируемая остановка отладчиком).
+Короткие consumer/ANI/BBX/effect/shadow/counters/clock сценарии прошли,
+14scoped checkpoints PASS/PARTIAL;M6/M6F/M7/M9OPEN. IDAdae004fd closed/save=true.
+Research/inventory: client455-lifecycle.*;rawdecomp artifacts/client455-lifecycle/.
+
+Далее048: normal _CreateCharDataMgr/global.cpp и действительные таблицы455,
+порядок/формат эталона и продвижение полного Create к интерфейсу входа.
+Не обходить неперенесённые readers. Full typed ILevel/world, FT/ANSI/text/IME/
+layout, launcher/FG_CB/network/BGM и shutdown остаются обязательной очередьюM6.
+
+## Предыдущий результат — font046
+
 Font046: replaced activelegacyr3texttail with real455GDI/Unicode bridge;
 033engine/source preserved,derived67units now3CPPoverlays(kernel,wrapper,text).
 LibrarySHA d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a.

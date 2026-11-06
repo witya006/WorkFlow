@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-LIFECYCLE-047",
+      "status":"partial",
+      "description":"Confirmed455null-level returnFALSE before UnloadLevel cleanup in actual normal CLand/CMainApp ownership",
+      "reference":[{"va":"0x7c8f30","rva":"0x3c8f30","role":"unload owner null check"},{"va":"0x7c82c0","rva":"0x3c82c0","role":"Land destruction"}],
+      "implementation":["scripts/prepare_client455_normal.py","work/client455-port/normal/source/cland.cpp"],
+      "verification":"Three actual normal global owner processes naturally exit0 before/afterengine andaftercreated-level cleanup;twoGUI probes naturally exit0 without LandCreate",
+      "evidence":["inventory/client455-lifecycle-reference.json","inventory/client455-lifecycle-native.json","inventory/client455-lifecycle-checkpoint.json","research/client455-lifecycle.md"],
+      "gaps":["Full typedILevel/defaultwrapper/concretelevels/worldownership","Created-state effects order/global clearing/two containers","Actual fullWinMain early-error andgame shutdown","Whole455UI/gameplay/network acceptance"]
+    },
+    {
       "id":"CLIENT455-FONT-GDI-046",
       "status":"partial",
       "description":"Country font parameters and recovered Unicode/GDI atlas/cache/draw in ordinary engine text API;selected normal CGUIText draws realKorean/Russian labels",
@@ -13,7 +23,7 @@
       "implementation":["scripts/native/client455_font.cpp","scripts/native/client455_font_settings.cpp","scripts/native/client455_text_bridge.inc"],
       "verification":"ActualCGUIText frames equalwideAPI,independentGDI metrics/alpha4atlas,cachehit/eviction,exit0 forKorea/Russia;exactownPE font startup andpreviousframes pass",
       "evidence":["inventory/client455-font-checkpoint.json","inventory/client455-font-native.json","research/client455-font.md"],
-      "gaps":["ConfiguredFreeType/ANSI/fulltextAPI/IME/layout","PrivateABI/x87/unsafe/OOM/leak-domain fidelity","LegacyCLand early-abort nullpointer andnormalfullshutdown","Window/backbuffer sizing","Whole455UI/gameplay acceptance"]
+      "gaps":["ConfiguredFreeType/ANSI/fulltextAPI/IME/layout","PrivateABI/x87/unsafe/OOM/leak-domain fidelity","FullILevel/CMainApp shutdown;beforeCreate nullpointer fixed bylifecycle047","Window/backbuffer sizing","Whole455UI/gameplay acceptance"]
     },
     {
       "id": "CLIENT455-LANGUAGE-045",
