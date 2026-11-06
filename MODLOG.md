@@ -21,6 +21,12 @@ pass. First full normal source Character/D3D9 RF_Online.bin links with zero
 unresolved symbols. Normal WinMain/gameplay acceptance and M9 remain open.
 [research/client455-normal-accounting.md](research/client455-normal-accounting.md).
 
+2026-11-06 — Language045. EDF/NDLanguage603130/RVA203130,index query6023B0,
+DBCS601F50/601FE0 and11ETCAction codepage kernels recovered.9realEDF roundtrip
+and production source reader pass;exact own normal WinMain loads Korean949
+andRussian1251. Normal D3D/Character preserved. Actualfont/text/UI/factory/
+launcher andfullCreate/M9 remainopen. [research/client455-language.md](research/client455-language.md).
+
 2026-11-06 — Nationpaths044. Country mapper7D29C0/RVA3D29C0 and selector7CFB10/
 RVA3CFB10 pinned both455PEs. Eleven case-sensitive country/root choices now
 in actual normal WinMain;CRT/font/NDLanguage remain unfinished. Own full PE

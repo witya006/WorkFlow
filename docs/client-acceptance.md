@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6, language045: EDF decoder/NDLanguage indexed lookup/DBCS
+и countryCRT/codepage agreement восстановлены. Exact own WinMain действительно
+загрузил Korean949/Russian1251 пакеты;9realEDF прошли byte roundtrip. Это не
+отрисованный текст/UI или fullfont/ETCAction/startup455 acceptance. После
+Korean init normal Character device подтверждён;stop до старых data readers.
+research/client455-language.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
 Текущий участок M6, nationpaths044: case-sensitive выбор страны/корня данных
 подключён к ordinary WinMain и проверен на11странах. Exact own PE прошла ранний
 Create до Character/bone/mesh/animation/bounds managers; Character использует
@@ -158,7 +165,7 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 | Область | Что сопоставлять | Текущий статус |
 |---|---|---|
 | Запуск и конфигурация | Инициализация, параметры, локализация, ошибки | Частично: own PE CRT/WinMain/engine/Miles/window/D3D ready; target startup order/Create/launcher/locale/error/shutdown ещё открыты |
-| Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers; область в целом открыта |
+| Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers, EDF/NDLanguage; область в целом открыта |
 | Рендер и мир | Сцена, камера, освещение, эффекты, видимость, коллизии клиента | Частично: selected maps/helpers/weather/clock; D3D9 и полное поведение открыты |
 | Персонажи | Модели, экипировка, анимации, клиентские состояния | Частично: selected mesh/texture/buffer/model/manager; normal dispatch/BN/animation/full Character открыты |
 | Ввод и интерфейс | Управление, окна, текст/IME, фокус, сочетания клавиш | Не проверено |

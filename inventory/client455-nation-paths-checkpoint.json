@@ -8,11 +8,11 @@
   "actual_create_stop": "Before _CreateCharDataMgr;after Character/bone/mesh/animation/bounds managers",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88",
-    "bytes": 1967104,
+    "sha256": "1fc267d5ebe214dda8cfaa1b3b456f01ddb78848ec8c18899db1a9c411b17bc1",
+    "bytes": 1998336,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1496c0",
+    "entry_rva": "0x14a920",
     "sections": [
       ".text",
       ".rdata",
@@ -23,15 +23,15 @@
   },
   "evidence_sha256": {
     "client455-nation-paths-reference": "ea810eb58fe12c13defbb09ab621be223c2b05c59d252517b12de672911f0ad0",
-    "client455-nation-paths-native": "99e99895dd9f399b5080a544b9f2e8cb91f1f81e753430fbd9ce19546ff7006a",
-    "client455-own-entry": "349f69bda9073069e406040aa0bb8c9e064d0405a71672ba6d78b1ee6ea0b4f2",
-    "client455-create-startup-native": "c945868a29e15ace9406eb7c164c28908ac127f1a624d90bee7ee434cecdc123",
-    "client455-normal-link": "49397bcbb88e76fb47a5a243b6b2b390203176a0224f8b5e422888231e97aa84"
+    "client455-nation-paths-native": "27a2d4781e5cd61f02f8ee10fdb53a690c67bd3b54e6cc0a14c8c3971555f6c3",
+    "client455-own-entry": "a731187d213fae652a5c99b8babe2313e09c9a5b1bd4cbfab2eba78300143590",
+    "client455-create-startup-native": "74b6f12566ed8f896ee910dbcf64ad4d8259e106ad97b5c679ae9854925ecdf2",
+    "client455-normal-link": "92ca3112826460db39280a15760fdc1340c347cf40b1424cf535c0545d81af1d"
   },
   "gaps": [
     "ETCAction country factory/providers and launcher policies",
-    "Actual CRT locale/codepage agreement/font application/NDLanguage pack loading",
     "Whole reference bootstrap/network/Create/UI/gameplay and M9",
+    "Full font/locale/UI acceptance remains open;selected CRT/NDLanguage kernels are verified separately by client455-language-checkpoint.json",
     "Normal Create data readers/input/UI/LoadData/gameprogress/launcher/normal shutdown remain unexecuted",
     "No reference input EXE execution or full455bootstrap behavior comparison",
     "Renderer/pose/particle/oldCRT/remaining feature registry gaps remain open"

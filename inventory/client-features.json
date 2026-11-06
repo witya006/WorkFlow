@@ -6,6 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-LANGUAGE-045",
+      "status": "partial",
+      "description": "SourceEDF/NDLanguage indexed bytes,storedCP DBCS boundaries,countryCRT agreement and actual normal WinMain language initialization",
+      "reference": [
+        {"va":"0x603130","rva":"0x203130","role":"NDLanguage loader"},
+        {"va":"0x6023b0","rva":"0x2023b0","role":"lookup by index"},
+        {"va":"0x601f50","rva":"0x201f50","role":"DBCS lead position"},
+        {"va":"0x601fe0","rva":"0x201fe0","role":"DBCS trail position"}
+      ],
+      "implementation": "scripts/native/client455_language.cpp",
+      "verification": "9realEDF byte roundtrip,production reader/index/DBCS/release,11countryCRT codepages;exact own PE Korean949/Russian1251 WinMain initialization and preserved Korean D3D/Character startup",
+      "evidence": ["inventory/client455-language-checkpoint.json","inventory/client455-language-native.json","research/client455-language.md"],
+      "gaps": ["Full font/text/UI and input consumers","Full ETCAction/factories/launcher/network startup policies","Unsafe malformed/OOM/reload leakage domains","Missing local en-us/th-th NDLanguage inputs","Whole normal Create/gameplay/shutdown/M9"]
+    },
+    {
       "id": "CLIENT455-NATION-PATHS-044",
       "status": "partial",
       "description": "Case-sensitive455country selection/root publication in actual normal WinMain;partial normal Create reaches Character/managers on real app device",

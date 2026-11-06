@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — nationpaths044: выбор страны/корня данных подключён к
+Последний участок M6 — language045: EDF/NDLanguage reader, indexed lookup и
+DBCS boundaries восстановлены. Exact own WinMain загрузил корейский и русский
+пакеты с правильными codepages; после корейского сохранился startup Character.
+Все9доступных пакетов прошли byte roundtrip;11CRT locale согласованы. Шрифт/
+текст/UI и весь Create ещё открыты. research/client455-language.md; M6/M9 открыты.
+
+Предыдущий участок M6 — nationpaths044: выбор страны/корня данных подключён к
 обычному WinMain. Новая полная сборка прошла ранний CMainApp::Create до Character
 и менеджеров; Character привязан к настоящему устройству приложения. Остановка
 до старых игровых таблиц. Полный язык/CRT/font/NDLanguage и Create/UI открыты.

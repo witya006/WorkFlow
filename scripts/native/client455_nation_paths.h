@@ -9,8 +9,8 @@ struct RF455NationPaths {
     std::uint16_t nation=0xffff;bool configured=false;
     char folder[32]={},dataRoot[260]={};
 };
-// Only nation mapping/path publication. Full ETCAction factories, CRT/font/
-// NDLanguage initialization remain distinct, unfinished startup contracts.
+// Only nation mapping/path publication. Language data initialization lives in
+// client455_language;full font/ETCAction/launcher policies remain unfinished.
 std::uint16_t RF455_MapNation(const char*);
 const RF455NationDescriptor& RF455_NationDescriptor(unsigned);
 bool RF455_ReadNationPaths(const char* ini,RF455NationPaths*);

@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+Language045: EDF29header/DWORDsize/payload/256encodedkey;key alternating-/+
+digit1<<((i+1)%8),reverse256,swapadjacent;payload even-key/odd+key[(i+1)%256].
+Reference5EEC00/5EEC90/5EED90/5EEF00/5EF000 andND603130/601EF0/6023B0/603360
+pinned bothPEs. NDpayload DWORDcount then{DWORDid,DWORDlen,bytes};querybyINDEX,
+notid. Validrealstrings alreadyNUL,do not transcode. CP stored afterloadsuccess;
+release clearsrecords pointer,count/cp retained. Lead601F50/trail601FE0 scan
+IsDBCSLeadByteEx(storedCP). client455_language.h/.cpp own APIs/RAII,notprivateABI.
+Bounded malformed/overflow/OOM guards andcleanup onrepeatedsuccessfulload differ
+from unsafe original/leak domains;keep gaps explicit.9availableEDF/44095records
+pass byte roundtrip/actualproductionreader;Korea6851,Taiwan6997,others4321.
+en-us/th-th NDLanguage missing locally,nofallbackcopies. Fixtures work/client-
+reference/language455;metadata inventory/client455-language-reference.json.
+CountryCP through factory→ETCAction(kind1)→vtable slot76:949,1252,936,1252,1252,
+932,1252,1251,950,1252,874. Returnbodies18h andslots pinnedbothPEs;actualCRT
+LC_COLLATE names all11 produceexpectedCP. Full7factory/providers NOTrestored.
+Main beforeengine nowcalls InitializeNationPaths thenInitializeLanguageData;
+actualfont notapplied. Fullfont/text/UI/startup stillOPEN.13facade CPP+182client/
+20canonical kernels;link0unresolved. Own PE1fc267d5ebe214dda8cfaa1b3b456f01ddb78848ec8c18899db1a9c411b17bc1,
+1998336B/x86/base400000/entry14A920.MainRVA B3D40,soundB3D89,D3DB3D9C,charDataB3469.
+ExactPElabs work/m9/1fc267d5:startup001 Korean949/6851;startup-russia001 Russian
+1251/4321;device-startup001 realready1/windowed1/render32;create-startup001
+owner4696d20/device456e0a0==appdevice,stopBEFOREoldcharDatareader. Controlled
+exitE0434200 observed,no2ndchance,nooriginalEXE/serverchanges. Unchangeddebugger
+reused bysource/exeSHA;--nation Russia savesseparatereport,doesnotclobberKorea.
+ShortANI/BBX/model/effect/shadow/math/clock/accounting regressions passed;
+oldframes equal,COM/Dmalloc0.12scoped checkpoints PASS/PARTIAL;M6/M6F/M7/M9OPEN.
+IDA34ab1c2b closed/save=true;rawartifacts/client455-language;codepage-chain.json
+records factory/ctor/vtable/method IDs forfuturefullproviders. Detailed
+research/client455-language.md. Previous goal turn044 wasprogress;this045adds
+productionlanguage data andactualownWinMain Korean/Russian evidence.
+Next046: actualfont/text provider8C5A80 andBF7718/BF7618/BF7818/BF781C/BF7820
+consumers;comparefontctor/privateInit/glyphlayout455 withlegacyCR3Font85byte
+name/DEFAULT_CHARSET/fixedheight. Thennormaltextqueryconsumer andrealtext/DBCS
+input;notmerelyloadedstrings. ContinuefullCreate/data/UI/launcher/ETCAction/
+FG_CB/networkorder/BGM/shutdown. Noblocker requiring userinput currently.
+
+Предыдущий результат — nationpaths044:
+
 Nationpaths044: реальный country mapper7D29C0 case-sensitive _mbscmp,
 11names Korea/Brazil/China/Europe/Indonesia/Japan/Philippines/Russia/Taiwan/
 USA/Thailand ->0..10;unknownWORDffff. Setup7D2880 читает128bytes Setup/Language

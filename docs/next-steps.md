@@ -11,7 +11,22 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — nationpaths044. Выбор11стран/корня данных455 подключён
+Последний участок — language045. EDF/NDLanguage reader/index lookup и DBCS
+восстановлены;9realEDF byte roundtrip и11CRT/codepage cases прошли. Exact own
+WinMain загрузил Korean949 иRussian1251,послеKorean normal D3D/Character
+сохранился. NewownPE1fc267d5.../x86/entry14A920,13facade CPP,link0unresolved.
+Font/text/UI ещё не приняты. research/client455-language.md;M6/M9OPEN.
+
+Следом046 — actualfont/text provider: setter8C5A80 иconsumers globalsBF7718/
+BF7618/BF7818/BF781C/BF7820. Сверить constructor/privateInit/glyphlayout455 с
+legacyCR3Font(name85bytes,DEFAULT_CHARSET,fixedheight12). Подключить выбранный
+normaltext/UI consumer к455query ипроверитьнастоящий текст/DBCS input.
+Не считать загруженные строки отрисованным интерфейсом. Затем полный
+Create/data readers/UI,ETCAction factories/launcher/FG_CB/network order/BGM и
+обычный lifecycle/shutdown. NDLanguage en-us/th-th в установке не найдены;
+не подменять их чужими пакетами,продолжать доступные клиентские участки.
+
+Предыдущий участок — nationpaths044. Выбор11стран/корня данных455 подключён
 до engine в normal WinMain; реальные profile/case/ошибки проверены. Новая
 own PEcb64af10.../x86/entry1496C0 прошла actual partial CMainApp::Create:
 Character/bone/mesh/animation/bounds managers; app device==Character device.
@@ -19,7 +34,7 @@ Character/bone/mesh/animation/bounds managers; app device==Character device.
 кадры прошли. research/client455-nation-paths.md; checkpoint PARTIAL/M9OPEN.
 Адреса checkpoints брать из current own-entry.json,не main+1D/+30.
 
-Следом045 — полный locale/data bootstrap перед UI: country factory8321E0,
+Историческая очередь045 — полный locale/data bootstrap перед UI: country factory8321E0,
 ETCAction manager8327B0(1) codepage vslot76,CRT locale compare/font8C5A80,
 NDLanguage601EF0/603130 и EDF reader5EEC00/5EE900/5EEB90 на реальном файле.
 Сейчас CRT/font/charset только metadata; корень опубликован,но full selector

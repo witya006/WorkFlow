@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — nationpaths044: country/path selection455 подключён к
+Новейший участок M6 — language045: EDF/NDLanguage/lookup/DBCS восстановлены,
+countryCRT/codepage11cases согласованы. Exact own WinMain загрузил Korean и
+Russian packs;normal D3D/Character прошли. Fullfont/text/UI/Create ещё открыты.
+Следом046 — actual font/text provider и normal UI consumer.
+research/client455-language.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — nationpaths044: country/path selection455 подключён к
 WinMain. Exact own PE прошла ранний normal Create: Character/менеджеры созданы,
 Character device совпал с device приложения. Стоп до старых data readers.
 Полный locale/CRT/font/NDLanguage, Create/UI/launcher/network ещё открыты.

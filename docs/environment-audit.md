@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, language045: новых установок нет. Actual MSVC CRT LC_COLLATE
+для11country names дал ожидаемые codepages.9realNDLanguage EDF/bytes/index/DBCS
+проверены;en-us/th-th пакеты здесь отсутствуют,не заменять другими. New own PE
+SHA1fc267d5.../x86/entry14A920 прошла Korean+Russian language init/Miles и
+Korean D3D/Character startup. Debugger повторно использован по SHA. Lab
+work/m9/1fc267d5;IDA34ab1c2b closed/save=true;short regressions/кадры прошли.
+Полные font/text/UI/Create/launcher/network/shutdown ещё открыты.
+research/client455-language.md; M6/M9 открыты.
+
 Дополнение 06.11, nationpaths044: новых установок нет. Полная собственная PE
 SHAcb64af10.../x86/entry1496C0 собирается без unresolved. Выбор страны/корня
 данных проверен по обоим455PE; штатный Create дошёл до Character и менеджеров
