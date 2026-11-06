@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+078: перенесён RVP load-model/interpolation;44 файла/615 описаний объектов/
+1569 команд сверены независимо,12 команд проверены native. Ordinary player ещё
+compiled stub; PE из077. Далее079 — реальные runtime bindings/исполнение и
+CGP_Tutorial. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-rvp.md).
+
+Предыдущий результат:
+
 077: восстановлены RTMovie flags, полосы/логотип и default FOV; intro связан
 с движком. Flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров/Create1
 прошли. Полный RVP player пока compiled stub; Tutorial/game integration открыта.
@@ -539,7 +547,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/078: настоящий RVP player (сейчас compiled stub), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/079: настоящий RVP player (load-model078 готова, ordinary player ещё stub), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать

@@ -7,6 +7,21 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+078: RVP source load-model/interpolation готова в ограниченном домене;44 файла,
+615 записей объектов/1569 команд и12 видов команд проверены независимо/native.
+Производственный RTMovie player остаётся заглушкой. PE/Create evidence из077
+не менялись. [Доказательства](../research/client455-rvp.md).
+
+079: восстановить runtime RVP: CAM/dummy binding и фактические Character/
+effects/audio/resource failure rules; Create/Release/Prepare/Start/Pause/Extract/
+FrameMove/Render. Совместить flag0x10 gate с настоящим Tutorial/intro, затем
+закрывать Avatar/QBI/follow/local-feedback/four-stage/Login. 34 отсутствующие
+ссылки из77 не считать игровым блокером без проверки455; не заменять путями
+одноимённых файлов автоматически. Три учебных RVP имеют0actor records.
+Дальнейшая цель — сквозной игровой путь и все критерии M9; все прежние gaps открыты.
+
+Предыдущий результат:
+
 077: реальные RTMovie flags/display/defaultFOV подключены к движку и intro.
 Flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров/точная PE Create=1
 прошли. Полный RVP player подтверждён как compiled stub; M9 не достигнут.

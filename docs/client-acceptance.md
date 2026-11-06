@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+078: RVP load-model и интерполяция проверены на44originals/615actor-records/
+1569commands плюс all12 fixture. Это запись до resource/camera binding,
+не подтверждение работающего проигрывателя. Ordinary player остаётся stub,
+новая библиотека пока используется только ownprobe. 34missing из77exact-path
+refs не объявлены игровым blocker без проверки поведения455. ProductionPE и
+Create evidence077 не менялись; M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-rvp.md).
+
 077: приняты ограниченные RTMovie positive flags/display/defaultFOV contracts.
 Реальный intro backend, flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров
 и точная PE/Create1 прошли. Это не полный RVP: собственный RTMovieFrameMove

@@ -23,6 +23,32 @@
 
 ## Последний проверенный результат
 
+078: новая RVP load-model library, НЕ ordinary player. 15ranges equalpins,
+Create770lines in644+126 pages, fullasm1722 instructions in12pages +curve85.
+Raw artifacts/client455-progress/rvp078-paged.json. Большой одиночный disasm
+заявлял1722, но реально вернул10строк; отвергнут/заменён полными страницами.
+IDAa265e239savedclosed. client455_rvp.h/.cpp: objects/properties/prepare/track,
+12kinds/floatbits/order/flags/totalframe, cursor interpolation4D4D80. Все44real
+RVP=615actor-records/1569commands; native+Python namedfields match;2fixtures
+all12/throw/scanner/malformed/interpolation passed. Latestwork/m9/9cf0f09d/rvp-001.
+77 unique resource refs,34missing exactpath. Не считать
+их игровым блокером безпроверкиtargetfailure. PATROL_B.* есть подChef,неподставлять
+автоматически. Tutorial RVP Bellato29/Cora28/Acc25,actors0 у всех трёх.
+RTMrecords20600,tracks56(kind48/frame52). Target fscanf%s не пропускает comments;
+unknown/underscore tokens ignored individually; DOS EOF1a; prefixatoi; color/2.
+Throw dummy-vs-actor determines extra attachment token; needs camera name context.
+IR symbol bindings/resource handles/effect/audio sideeffects ещё не восстановлены;
+independent-if keyword-argument fallthrough/numericunsafe domains notcertified.
+Ordinary RF_Online.bin/engine/source hashes остаются077; новая library только
+в ownprobe. BigGUI/GPU не повторялись, Create1 reused077,не fresh078.
+079: actual RVP camera/dummy bindings +Character/effects/audio/resource failures,
+Create/Release/Prepare/Start/Pause/Extract/FrameMove/Render, then CGP_Tutorial/
+Avatar/QBI/follow/fourstage. Flag16 gate FrameMove требует jointintro integration:
+не включать legacyplayer вслепую поверх отдельной probe camera. Allgaps/M9OPEN.
+Details research/client455-rvp.md, checkpoint_client455_rvp.py.
+
+Предыдущий результат:
+
 077: movie-state/display/defaultFOV восстановлены. 8D4C30 — положительные
 RTMovie flags wide1/logo2/no-camera4, не общий camera-control. Полный request
 11641C4 отдельно; getter читает internal11641B4, setter сохраняет верхние биты.

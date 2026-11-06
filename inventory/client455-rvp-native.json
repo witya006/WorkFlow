@@ -1,0 +1,435 @@
+{
+  "scope": "RVP load model, not a working RTMovie player or ordinary Tutorial",
+  "script_sha256": "b77dade50b08be642eefb721ff7378b96975f72b9698247dfb26efe7a389e4e8",
+  "reference_sha256": "c48d10dcc72161552df862eb45414bf3a5accf8e13326e8deb3b1beaa1596573",
+  "source": {
+    "file": "scripts/native/client455_rvp.cpp",
+    "sha256": "aae4ad199a91b080c942fdd66cdc9fe6a58ce24bed129c5bda69313ac661b55e"
+  },
+  "header": {
+    "file": "scripts/native/client455_rvp.h",
+    "sha256": "40cd37ada45303dc88b43b2ca06d2d5f6a8fe2ab3f15bf75a42e0dfbeb4bcaf2"
+  },
+  "probe": {
+    "file": "scripts/native/client455_rvp_probe.cpp",
+    "sha256": "04ae0629dd08a124320eed786d21a00ed071dc79dede8eb0c30cf8fa7beee9de"
+  },
+  "camera_header": {
+    "file": "scripts/native/client455_camera.h",
+    "sha256": "ddfd150a5c90dd29a9d6dc2ad9a4f584f05480240467cd4a32289124571a1b8e"
+  },
+  "library": "work/client455-port/rvp-probe/RF455Rvp.lib",
+  "library_sha256": "fb2ccb5e0161149d62e2b3acedccecd96f7395ddab260be8c240ba8b5633727d",
+  "executable": {
+    "file": "work/m9/9cf0f09d/rvp-001/rvp-probe.exe",
+    "sha256": "9cf0f09d35c21617b6c1647ff5e0e02e4e24e56ef854dbcf5fba52aa98507d59"
+  },
+  "map": {
+    "file": "work/m9/9cf0f09d/rvp-001/rvp-probe.map",
+    "sha256": "9f6162255871c6be2f089819a911df34f532f039e2cde9aa38ce817d01258e94"
+  },
+  "build_log": {
+    "file": "work/client455-port/rvp-probe/build.txt",
+    "sha256": "34ea49e08aaa842d968f8ca18c112d9037a38e32e27ee67e3ab0b08f651486fa"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/accretia/accretia.rvp",
+      "sha256": "f826274fefe18c42b094fbe73d1ec06b3d1f18bd4dc07341cca87de2ec2ada1e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/bellato/bellato.rvp",
+      "sha256": "69efb80fbd6d41bb879292c57f5436176de62b40bcbab2b3f0acf1f7ba284930"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/cora/cora.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon04/Dungeon04.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05/Dungeon05.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Ch2/Dungeon05_Ch2.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Ch3/Dungeon05_Ch3.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Pr1/Dungeon05_Pr1.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Pr2/Dungeon05_Pr2.rvp",
+      "sha256": "cf45042bae500f33c2c369212d7789703e15582a7ff3828050d716878ab2e733"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralA/neutralA.rvp",
+      "sha256": "450d022c3257c458d8fbcf85c04daac7bd5f03e7544c786fcb719093c089ba8b"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralAS1/neutralAS1.rvp",
+      "sha256": "f3ce969e8663a08b69ca606a45d14dae025adb8d7c399ecf44665ce401c2315f"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralAS2/neutralAS2.rvp",
+      "sha256": "78ea95a764dbb7ad4671b2441fb3fda22ca23be9b8a253f72e4146f13c882590"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralB/neutralB.rvp",
+      "sha256": "0d6c96997d7be08814ab63134f82193796bf04786affb3e455041fc32921975c"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralBS1/neutralBS1.rvp",
+      "sha256": "2a034b06957a3c7b5b459cea789a167eb4aaaf6374ad883a3031f429a079c633"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralBS2/neutralBS2.rvp",
+      "sha256": "6fa2a66a80cad352aa5985776df1f4b4a418b1b9d74d7e8050354ca0bb2b8d84"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralC/NeutralC.rvp",
+      "sha256": "3bbaf5257ead1b7cf2820a06dca532fb7d7548bd0ff2ed773b97fd48ae8c0b9d"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralCS1/neutralCS1.rvp",
+      "sha256": "07aa3b4cef6d608f1e6e4ab44b5afb42da04b49cdb33cf2f858774be75e71521"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralCS2/neutralCS2.rvp",
+      "sha256": "08f0ead9471ea9cc0689080620a94fbe049c637d5ea5f170dbf8f51a10dc2835"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01/Platform01.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01 _Ch2/Platform01.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01 _Ch2/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch2/Platform01_Ch2.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch2/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch3/Platform01_Ch3.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch3/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr1/Platform01_Pr1.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr1/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr2/Platform01_Pr2.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr2/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02/Platform02.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch2/Platform02_Ch2.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch2/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch3/Platform02_Ch3.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch3/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr1/Platform02_Pr1.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr1/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr2/Platform02_Pr2.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr2/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform03/Platform03.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform03/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform04/Platform04.rvp",
+      "sha256": "455b03cdb424474e15946e3803600abc0191c033370232addb1f4dcfd286490e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform04/Platformb.rvp",
+      "sha256": "5c14cfadc0fa931ecbb821a0a94ebd32c07a7be2af2ccc11f7b3f6c5bf230b80"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/all-commands.rvp",
+      "sha256": "9b4e03279d707e80c048d9231c760d2e706ae93c525865a647006e44533f3c8e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/scanner-quirks.rvp",
+      "sha256": "b1e2bd94740c0984177d099d75736b70181083cec078fc31f27769644a4ca539"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/accretia/accretia.rvp.semantic.json",
+      "sha256": "0834085c3a1837901ad4916901fc0c7222d050b86da542955e80edf0d0596fc2"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/bellato/bellato.rvp.semantic.json",
+      "sha256": "d992913bedf79dd85fa1add777ef5316f07fbc92779e466a887ee1a6c682b9c9"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/cora/cora.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon04/Dungeon04.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05/Dungeon05.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Ch2/Dungeon05_Ch2.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Ch3/Dungeon05_Ch3.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Pr1/Dungeon05_Pr1.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Dungeon05_Pr2/Dungeon05_Pr2.rvp.semantic.json",
+      "sha256": "6d49eab5db35d5f1e1de9c7eea1b7d07a6d2c800a61efde06f78eb865616ec42"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralA/neutralA.rvp.semantic.json",
+      "sha256": "43753df9300743fbb423bda921a176319f409f4515bcd9e5bda1cc60fd13bdf6"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralAS1/neutralAS1.rvp.semantic.json",
+      "sha256": "00dd0b5bd4e57fa8a24ebb7849bc97a3280f448d4f8f58ddd6191418bbe2cc15"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralAS2/neutralAS2.rvp.semantic.json",
+      "sha256": "7b0ca800c73b34c326281612e79e5f93621cb983344d1c896a2b01010faf262e"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralB/neutralB.rvp.semantic.json",
+      "sha256": "2152f32179dcdd4d4c457c7553637f5b3b1c304fd0f12173b257e9c0980b9935"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralBS1/neutralBS1.rvp.semantic.json",
+      "sha256": "8b87bb82de67a75abdf8b6b779ff286363d01d87d37ebe40b5c57c8d231348db"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralBS2/neutralBS2.rvp.semantic.json",
+      "sha256": "7dfb2d496186cda5295d2a1e753fe1acaeefeeef809105d53bf6a3d747e85e59"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralC/NeutralC.rvp.semantic.json",
+      "sha256": "b944bfc5e84a05536ea50b76441551db9d3de05efd98e94734fb78be3ae39e5c"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralCS1/neutralCS1.rvp.semantic.json",
+      "sha256": "0ca1a57d7269ffd4b847f745e45c87eb668141574d246c66ee5de8cc6b120f7b"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/neutralCS2/neutralCS2.rvp.semantic.json",
+      "sha256": "f4b658cd27343ad288607908396da4ca819ba7ce943aacf8a63ae8120603566c"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01/Platform01.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01 _Ch2/Platform01.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01 _Ch2/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch2/Platform01_Ch2.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch2/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch3/Platform01_Ch3.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Ch3/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr1/Platform01_Pr1.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr1/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr2/Platform01_Pr2.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform01_Pr2/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02/Platform02.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch2/Platform02_Ch2.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch2/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch3/Platform02_Ch3.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Ch3/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr1/Platform02_Pr1.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr1/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr2/Platform02_Pr2.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform02_Pr2/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform03/Platform03.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform03/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform04/Platform04.rvp.semantic.json",
+      "sha256": "63828967bfc8f9d3b7f356bbcedf616f32399fab803fe37f45b03d71d32ef516"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/Map/Platform04/Platformb.rvp.semantic.json",
+      "sha256": "e253d9fe0a93498a89cf7a98247a96994f715f3e403bd35d386548328508d4e4"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/all-commands.rvp.semantic.json",
+      "sha256": "5964ed529e53f0d569f22bdcb07870fa94f3c42b76f9f4d65131cafc470c64e3"
+    },
+    {
+      "file": "work/m9/9cf0f09d/rvp-001/scanner-quirks.rvp.semantic.json",
+      "sha256": "0438fe66888db43e28d24ec4e1bb6a0e2a15624bc97b9cdba6bfef4c97636699"
+    }
+  ],
+  "result": {
+    "file": "work/m9/9cf0f09d/rvp-001/result.json",
+    "sha256": "22c3af9138cdc71e0064a2a2896d2d940ddc1b73b6e96b7153dac15302665128"
+  },
+  "console": {
+    "file": "work/m9/9cf0f09d/rvp-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "native": {
+    "status": "PASS",
+    "files": 46,
+    "actors": 618,
+    "tracks": 1586,
+    "malformed_transactional": true,
+    "cursor_interpolation": true,
+    "full_RVP_player": false,
+    "full_Tutorial": false
+  },
+  "natural_exit": 0,
+  "independent_named_fields_equal": true,
+  "all_twelve_command_kinds": true,
+  "normal_client_relinked": false,
+  "normal_client_functionality_changed": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M9": "OPEN"
+}

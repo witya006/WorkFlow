@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RVP-078",
+      "status": "partial",
+      "description": "RVP object/command load model and cursor interpolation; actual movie player remains a compiled stub",
+      "reference": [{"rva":"0x4d69e0","role":"RVP Create parser/resource setup"},{"rva":"0x4d3e10","role":"20600-byte actor defaults"},{"rva":"0x4d4d80","role":"cursor key interpolation"},{"rva":"0x4d4e70","role":"track execution dependency"},{"rva":"0x4d5ff0","role":"full runtime frame dependency"}],
+      "implementation": ["scripts/native/client455_rvp.h","scripts/native/client455_rvp.cpp"],
+      "verification": "15ranges equalpins, full1722+85asm. All44 stock files/615actor records/1569commands match independent named-field/bit/string decoding. Own native46files, all12command kinds, malformed transactional/cursor interpolation passed. Ordinary PE unchanged077.",
+      "evidence": ["inventory/client455-rvp-reference.json","inventory/client455-rvp-native.json","inventory/client455-rvp-checkpoint.json","research/client455-rvp.md"],
+      "gaps": ["Actual movie player, resource/CAM-dummy/Character/effect/audio binding and side effects; ordinary engine player is still disabled","Independent-if argument-keyword scanner fallthrough and complete numeric/malformed domains unaccepted","34 exact-path resource refs missing; failure behavior/use needs verification, not automatic asset substitution","Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay and all prior M6F/M7/M9 gaps remain"]
+    },
+    {
       "id": "CLIENT455-MOVIE-STATE-077",
       "status": "partial",
       "description": "Positive RTMovie flags/display and separate defaultFOV; intro calls real engine, full RVP player remains a compiled stub",

@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Rvp078. Source-owned RVP objects/12commands/interpolation restored;
+44originals/615actor-records/1569commands and2fixtures passed independent/native
+named-field checks. 15ranges equalpins, full1722+85asm; IDAa265e239closed.
+77resource refs/34missing exactpaths, not established gameplay blockers.
+OrdinaryPE077 unchanged; actual player remains stub. Next079 runtime bindings,
+Character/effects/audio andTutorial integration. M9OPEN. research/client455-rvp.md.
+
 2026-11-07 — Movie-state077. Positive RTMovie flags/display/defaultFOV source
 restored and intro bound to actual engine. Engine67/9overlays, baseline033
 preserved. Flags8/GPU6/intro26/fullscreen18/40 reviewed frames/Create1 passed.

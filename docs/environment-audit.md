@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, rvp078: установок нет. IDAa265e239savedclosed,15ranges equalpins,
+полные1722+85asminstructions. Новая x86 source library/probe проверила44RVP
+(615actor records/1569commands)+2fixtures/all12kinds/interpolation. Именованные
+поля совпали с независимым Python. Exact-path resources:77refs/34missing;
+это не подтверждённый blocker. OrdinaryPE/engine/Create evidence остаются077,
+runtime player/Tutorial/M9 открыты. [Доказательства](../research/client455-rvp.md).
+
 Дополнение 07.11, movie-state077: новых установок нет. 13 ranges/4 asm equalpins;
 IDA70b16df7 закрыта, idb_list пуст. Engine67TU/9overlays/18086e42… сохраняет033.
 Flags8/GPU6/intro3worlds26cameras/fullscreen18/40 просмотренных кадров прошли.
