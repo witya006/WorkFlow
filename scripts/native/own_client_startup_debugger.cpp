@@ -28,12 +28,14 @@ int wmain(int argc,wchar_t** argv){
     FILE*arguments=nullptr;_wfopen_s(&arguments,(cwd+L"\\launcher-commandline.txt").c_str(),L"rb");
     if(arguments){char bytes[2048]={};const size_t n=std::fread(bytes,1,sizeof(bytes)-1,arguments);std::fclose(arguments);const int size=MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,bytes,static_cast<int>(n),nullptr,0);if(size<=0){std::fclose(output);return 206;}std::wstring text(size,L'\0');MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,bytes,static_cast<int>(n),&text[0],size);command+=L" "+text;}
     if(deviceMode){startup.dwFlags=STARTF_USESHOWWINDOW;startup.wShowWindow=SW_HIDE;}
+    std::string firstLabel="after_sound_before_d3d";FILE* labelFile=nullptr;_wfopen_s(&labelFile,(cwd+L"\\checkpoint-label.txt").c_str(),L"rb");
+    if(labelFile){char label[64]={};std::fread(label,1,sizeof(label)-1,labelFile);std::fclose(labelFile);if(deviceMode||std::string(label)!="before_client_connect"){std::fclose(output);return 207;}firstLabel=label;}
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     if(!CreateProcessW(target.c_str(),&command[0],nullptr,nullptr,FALSE,DEBUG_ONLY_THIS_PROCESS|CREATE_NO_WINDOW,nullptr,cwd.c_str(),&startup,&process)){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,"after_sound_before_d3d",0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"after_client_create":"before_character_data",0,false}};
+    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"after_client_create":"before_character_data",0,false}};
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+20000;
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}
@@ -93,5 +95,6 @@ int wmain(int argc,wchar_t** argv){
     }
     if(!exited){TerminateProcess(process.hProcess,0xe0434206);WaitForSingleObject(process.hProcess,5000);}CloseHandle(process.hThread);CloseHandle(process.hProcess);
     if(deviceMode)std::fprintf(output,"{\"kind\":\"summary\",\"main_reached\":%s,\"after_d3d_reached\":%s,\"final_checkpoint_reached\":%s,\"exit_observed\":%s}\n",mainReached?"true":"false",d3dReached?"true":"false",stopReached?"true":"false",exited?"true":"false");
+    else if(firstLabel=="before_client_connect")std::fprintf(output,"{\"kind\":\"summary\",\"main_reached\":%s,\"before_connect_reached\":%s,\"exit_observed\":%s}\n",mainReached?"true":"false",stopReached?"true":"false",exited?"true":"false");
     else std::fprintf(output,"{\"kind\":\"summary\",\"main_reached\":%s,\"after_sound_reached\":%s,\"exit_observed\":%s}\n",mainReached?"true":"false",stopReached?"true":"false",exited?"true":"false");std::fclose(output);return 0;
 }

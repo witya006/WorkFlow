@@ -5,6 +5,8 @@ from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
 from audit_client455_own_entry import validated_entry
+from client455_launcher_fixture import stage_launcher
+from client455_tcp_fixture import TcpAcceptanceFixture
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def symbol(mapping,name):
@@ -44,15 +46,17 @@ def main():
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
     output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['after_create'] if args.after_create else [])
-    try:
-        result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW)
-    finally:
-        removeFont=ctypes.WinDLL('gdi32.dll').RemoveFontResourceW;removeFont.argtypes=[ctypes.c_wchar_p];removeFont.restype=ctypes.c_int
-        fontRegistrationRemoved=bool(removeFont(str(run/'System/010.TTF')))
+    with TcpAcceptanceFixture() as transport:
+        fixture=stage_launcher(run,0,WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
+        try:
+            result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW)
+        finally:
+            removeFont=ctypes.WinDLL('gdi32.dll').RemoveFontResourceW;removeFont.argtypes=[ctypes.c_wchar_p];removeFont.restype=ctypes.c_int
+            fontRegistrationRemoved=bool(removeFont(str(run/'System/010.TTF')))
     (run/'console.txt').write_bytes(result.stdout+result.stderr)
     events=[json.loads(line) for line in output.read_text().splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});config=next((e for e in events if e['kind']=='render_configuration'),{});device=next((e for e in events if e['kind']=='device_state'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception']
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate
+    report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report();report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
     report['lab_font_registration_removed']=fontRegistrationRemoved
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
     report['scope']='Exact own normal PE through Character manager creation;stop before character data manager construction;not complete Create or455acceptance' if args.create else report['scope']

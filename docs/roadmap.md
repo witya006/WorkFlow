@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Последний участок M6 — connection052: Connect/events-only wait до engine,
+строгие тайм-ауты/задержка callback и102-entry receipt budget восстановлены.
+Обычный CCR WinMain прошёл реальное TCP-соединение и существующий Create.
+Это не аутентификация. Успех полного Russian/European bootstrap ещё открыт;
+подтверждённые endpoint0/1 не перенаправляются искусственно.
+Далее053 — gatecrypto request/reply, packet state/35handlers и полный вход/UI.
+[Доказательства](../research/client455-connection.md). M6/M6F/M7/M9 открыты.
+
 Последний участок M6 — network-codec051: в обычных CNetProcess отправке/приёме
 работают восстановленные AES192-CBC, формат пакетов и буферы20КБ/1МБ. Создаются
 два сетевых процесса, вместимость — шесть. Независимый Windows AES и настоящие

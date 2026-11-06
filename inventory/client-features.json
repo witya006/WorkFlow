@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-CONNECTION-052",
+      "status":"partial",
+      "description":"Actual pre-engine Connect/wait/events-only pump,strict delayed accept and receipt budgets;realTCP success/errors in normal source",
+      "reference":[{"rva":"0x3d1150","role":"initialConnect/wait"},{"rva":"0x4aa100","role":"eventspump"},{"rva":"0x4ad3a0","role":"receiptbudget/delay"},{"rva":"0x4b0420","role":"clientsocketaccept"},{"rva":"0x42c7b0","role":"all11profiles do notskip"}],
+      "implementation":["scripts/native/client455_connection.cpp","scripts/native/client455_connection_bridge.inc","scripts/native/client455_network_receipt.inc","scripts/prepare_client455_normal.py"],
+      "verification":"DWORDprofile/clockwrap,equality/connected-before-timeout/strictaccept andactual103node budget;realnormalTCPpeer/getpeername,raw-error andtimeout withactualNDLanguage dialogs,naturalexit0. ExactCCRWinMain TCP beforeengine thenexistingCreate1. CurrentRussian endpointgap recorded",
+      "evidence":["inventory/client455-connection-reference.json","inventory/client455-connection-native.json","inventory/client455-connection-checkpoint.json","research/client455-connection.md"],
+      "gaps":["Complete35handler constructors/countryproviders;Russian/European successfulinitialbootstrap notproved","Gatecrypto request/reply/downstreampacket state,wire layouts/ID-PW,authentication/login","Fulltransport/queued/filters/internalsecurity/threads/Close/errorlogging/ownership","FullUI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9","Boundedformatting vsunsafeoriginal,OOM/concurrency/CRT/error domains"]
+    },
+    {
       "id":"CLIENT455-NETWORK-CODEC-051",
       "status":"partial",
       "description":"Directional AES192-CBC and packet framing in actual normal send/receive consumers;dynamic80byte rings and2configured/6capacity network processes",
@@ -13,7 +23,7 @@
       "implementation":["scripts/native/client455_network_codec.cpp","scripts/native/client455_network_buffer.inc","scripts/native/client455_network_send.inc","scripts/native/client455_network_config.inc","scripts/prepare_client455_normal.py"],
       "verification":"Complete active schedules verified frombothpins;CNG AES128/192/256 andreal directional192CBC/framing over16payload boundaries;actualnormal send wrap/fragmentedreceive wrap/dispatch;globalnetwork2processes/6capacity/20KBreceive/1MBsend;naturalexit0;ownexistingCreate returns1",
       "evidence":["inventory/client455-network-codec-reference.json","inventory/client455-network-codec-native.json","inventory/client455-network-codec-checkpoint.json","research/client455-network-codec.md"],
-      "gaps":["Full236byteconfig semantic mapping,standard/queued transport/event/accept/pump/threads/Close","35handlers,gatecrypto request/reply consumers,wireID/PW13bytes vsstate50/32;authentication/login","Send filters/throttle/backpressure/internal security and allerror domains","TargetCreate outofboundsconfig2 stackwrites not reproduced;unsafe/OOM/overlap/concurrent domains not certified","PreengineConnectwait/fullUI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9"]
+      "gaps":["Full236byteconfig semantic mapping,standard/queued transport/threads/Close","35handlers,gatecrypto request/reply consumers,wireID/PW13bytes vsstate50/32;authentication/login","Send filters/throttle/backpressure/internal security and allerror domains","TargetCreate outofboundsconfig2 stackwrites not reproduced;unsafe/OOM/overlap/concurrent domains not certified","Fullcountrybootstrap/UI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9"]
     },
     {
       "id":"CLIENT455-BOOTSTRAP-050",

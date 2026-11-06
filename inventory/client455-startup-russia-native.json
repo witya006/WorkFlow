@@ -1,12 +1,12 @@
 {
-  "scope": "Exact own normal PE CRT/WinMain/engine/sound startup;debugger stops before D3D/window/network;not full normal initialization or455acceptance",
+  "scope": "Exact own WinMain nation/launcher/language/FG/networkCreate/instance;stopped at decoded call before Connect;not sound or successful connection acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "71e644eb7948f54dcee7528ef69cefc59403d23cc49bfd656c77730abda5d405",
-    "bytes": 2008576,
+    "sha256": "0733cce1ed6e77e2d70646ddc281129629d029421888cda6adff2f01a433a53a",
+    "bytes": 2012160,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x149ef0",
+    "entry_rva": "0x14a3f0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,154 +15,121 @@
       ".reloc"
     ]
   },
-  "staged_executable": "work\\m9\\71e644eb\\startup-russia001\\RF_Online.bin",
-  "normal_link_sha256": "e3610354d80f5097d570dd204bb1234dd33a59c20329973409f34046aa7cece9",
-  "audit_sha256": "75e499b6f52258fdd0a86de991e4580964234f21dcea515e63b08a7871059137",
+  "staged_executable": "work\\m9\\0733cce1\\startup-russia003\\RF_Online.bin",
+  "normal_link_sha256": "8acb7a4cd269d058b8de8ffc6e39b85b155dba6bf2c123bc363faa429e707bcb",
+  "audit_sha256": "bb8e1cacd25a61dac3c35f3528e349f810e35f5455254fb3dcb5329aef1dae56",
   "debugger": {
     "file": "work/tools/own-client-startup/own-startup-debugger.exe",
-    "sha256": "01e2001414fa75bab4fe429f989bf113803b6efc17a8800ddbcad4d8850fcd11",
+    "sha256": "0c8beff6d83f53ccac86acc14d3a79cfcd37ccdc6ba6d3d7206a923967599962",
     "source": "scripts/native/own_client_startup_debugger.cpp",
-    "source_sha256": "1807af7c52d2c56d87e4c9d6bc7843ca8a1d6124b3f57f5d162ddb266fbb17cb"
+    "source_sha256": "87e039b286217f507cd536568e1b1f3e8b585e135dc5918ddafd40cc0d983aa3"
   },
   "lab_inputs": [
     {
-      "file": "work/m9/71e644eb/startup-russia001/RF_Online.bin",
-      "sha256": "71e644eb7948f54dcee7528ef69cefc59403d23cc49bfd656c77730abda5d405",
+      "file": "work/m9/0733cce1/startup-russia003/RF_Online.bin",
+      "sha256": "0733cce1ed6e77e2d70646ddc281129629d029421888cda6adff2f01a433a53a",
       "kind": "own executable"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/mss32.dll",
+      "file": "work/m9/0733cce1/startup-russia003/mss32.dll",
       "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/abuse.dll",
+      "file": "work/m9/0733cce1/startup-russia003/abuse.dll",
       "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/adv.dll",
+      "file": "work/m9/0733cce1/startup-russia003/adv.dll",
       "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/pdll.dll",
+      "file": "work/m9/0733cce1/startup-russia003/pdll.dll",
       "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/Snd/WaveList.spt",
+      "file": "work/m9/0733cce1/startup-russia003/Snd/WaveList.spt",
       "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/mssmp3.asi",
+      "file": "work/m9/0733cce1/startup-russia003/mssmp3.asi",
       "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/System/010.TTF",
+      "file": "work/m9/0733cce1/startup-russia003/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/DataTable/ru-ru/NDLanguage.edf",
+      "file": "work/m9/0733cce1/startup-russia003/DataTable/ru-ru/NDLanguage.edf",
       "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/R3Engine.ini",
+      "file": "work/m9/0733cce1/startup-russia003/R3Engine.ini",
       "sha256": "f36ef1bbb9a21dfd68e85ae6fe247fbcc1509a7d1c17b56f4f1cbf246967e320",
       "kind": "own lab config"
     },
     {
-      "file": "work/m9/71e644eb/startup-russia001/launcher-commandline.txt",
+      "file": "work/m9/0733cce1/startup-russia003/DataTable/ClientSystem.ini",
+      "sha256": "b8a1bfbc4a4490b0237f97258922d2259fbb2803b6af020442a3e9611d7efb6b",
+      "kind": "own transport timeout"
+    },
+    {
+      "file": "work/m9/0733cce1/startup-russia003/checkpoint-label.txt",
+      "sha256": "3eb49a868bcb2d1b1b65c96a55299d66652c583f1635bd5b790d697b3228894c",
+      "kind": "owned decoded checkpoint label"
+    },
+    {
+      "file": "work/m9/0733cce1/startup-russia003/launcher-commandline.txt",
       "sha256": "6fe288d2b87d84c5407c53d37a1fb8d633b5f229e730a4ad0f33ce740ac1842f",
       "kind": "synthetic offline launcher fixture;not authentication"
     }
   ],
   "events": {
-    "file": "work/m9/71e644eb/startup-russia001/debug-events.jsonl",
-    "sha256": "045067cea2a4982f968413442a30dac26ffdd424443c3c3121ed893416711d6b"
+    "file": "work/m9/0733cce1/startup-russia003/debug-events.jsonl",
+    "sha256": "de25b7c6960af1667cc875739d1c4f6bec6d53d2373be12458ac074864712d63"
   },
   "debugger_exit": 0,
   "summary": {
     "kind": "summary",
     "main_reached": true,
-    "after_sound_reached": true,
+    "before_connect_reached": true,
     "exit_observed": true
   },
   "markers": [
     {
       "kind": "checkpoint",
       "name": "WinMain",
-      "rva": "0xb3f80",
-      "eax": 37843028
+      "rva": "0xb4310",
+      "eax": 7762004
     },
     {
       "kind": "checkpoint",
-      "name": "after_sound_before_d3d",
-      "rva": "0xb40b6",
+      "name": "before_client_connect",
+      "rva": "0xb4435",
       "eax": 1
     }
   ],
-  "sound_return": 1,
-  "exceptions": [
-    {
-      "kind": "exception",
-      "code": "0x40080201",
-      "first_chance": 1,
-      "address": "0x76d20b82",
-      "rva": "0x140b82",
-      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
-      "parameter0": 2147942487,
-      "parameter1": "0x19"
-    },
-    {
-      "kind": "exception",
-      "code": "0xe06d7363",
-      "first_chance": 1,
-      "address": "0x76d20b82",
-      "rva": "0x140b82",
-      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
-      "parameter0": 429065504,
-      "parameter1": "0xf5e5a0"
-    },
-    {
-      "kind": "exception",
-      "code": "0x406d1388",
-      "first_chance": 1,
-      "address": "0x76d20b82",
-      "rva": "0x140b82",
-      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
-      "parameter0": 4096,
-      "parameter1": "0x2113e330"
-    }
-  ],
+  "sound_return": null,
+  "exceptions": [],
   "loaded_modules": [
     {
       "kind": "module",
-      "base": "0xfa0000",
-      "bytes": 16461824,
-      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\71e644eb\\startup-russia001\\RF_Online.bin"
-    },
-    {
-      "kind": "module",
-      "base": "0x21100000",
-      "bytes": 389120,
-      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\71e644eb\\startup-russia001\\mss32.dll"
-    },
-    {
-      "kind": "module",
-      "base": "0x26f00000",
-      "bytes": 172032,
-      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\71e644eb\\startup-russia001\\mssmp3.asi"
+      "base": "0x900000",
+      "bytes": 16465920,
+      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\0733cce1\\startup-russia003\\RF_Online.bin"
     }
   ],
   "normal_winmain_executed": true,
   "input_exe_executed": false,
   "graphics_window_created": false,
-  "network_stage_reached": false,
+  "network_stage_reached": true,
   "server_modified": false,
   "M6": "OPEN",
   "M6F": "OPEN",
@@ -245,29 +212,37 @@
       "sha256": "46276ed0568503a278605aec168605e1b289f35fa8c46971c479ea606e76acc5",
       "expected_sha256": "46276ed0568503a278605aec168605e1b289f35fa8c46971c479ea606e76acc5",
       "matches_audited_provider": true
-    },
-    {
-      "dll": "mss32.dll",
-      "file": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\71e644eb\\startup-russia001\\mss32.dll",
-      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
-      "expected_sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
-      "matches_audited_provider": true
     }
   ],
-  "loaded_module_count": 68,
-  "own_entry_sha256": "9b2c169a79d1d8bcf55ac09f876c3db65a641868bb23ab26802657d1048f3663",
+  "loaded_module_count": 43,
+  "own_entry_sha256": "c246fc6f990ecba45f2ba0c2d315ed5c4333156e17dcbbb4fbc1d94470d6cbe0",
+  "tcp_fixture": {
+    "enabled": false,
+    "loopback_port": 1,
+    "accepted_connections": 0,
+    "bytes_received": 0,
+    "bytes_sent": 0,
+    "rf_protocol_responses": false,
+    "authentication_performed": false,
+    "thread_stopped": true
+  },
+  "before_connect": true,
+  "connection_attempted": false,
+  "transport_connected": false,
+  "tcp_fixture_sha256": "a65f6665ac87b4e1498461bc21a9db1228542fe4d4639f4da10598a0cd5a998f",
+  "script_sha256": "6e7d557eb438a6251894926eb5c383fab1916865bf6a6e0ecece56aa57036f04",
   "own_checkpoints": [
     {
       "name": "WinMain",
-      "rva": "0xb3f80",
+      "rva": "0xb4310",
       "bytes": 1,
       "sha256": "a25513c7e0f6eaa80a3337ee18081b9e2ed09e00af8531c8f7bb2542764027e7"
     },
     {
-      "name": "after_sound_before_d3d",
-      "rva": "0xb40b6",
-      "bytes": 3,
-      "sha256": "0922bc23817866b17b5ce11bd7b21428d78ba7564e9b0024637ae34d2a05b017"
+      "name": "before_client_connect",
+      "rva": "0xb4435",
+      "bytes": 5,
+      "sha256": "b6579cfd78e60cd8ae00a122fa7705f3384d648f8797c02200e87c9aa753e8d8"
     }
   ],
   "nation": "Russia",

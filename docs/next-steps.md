@@ -11,14 +11,29 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — network-codec051: AES192-CBC с разными ключами направлений,
+Последний участок — connection052: настоящий Connect/events-only wait стоит
+перед engine. Строгие timeout/accept-delay, DWORD wrap и102-entry receipt
+budget проверены. CCR own WinMain через реальный TCP дошёл до existingCreate=1.
+Native success/raw-error/timeout probes естественно exit0; тексты реальных
+ошибочных диалогов сверены. TCPfixture не реализует RFпротокол. Russian trace
+останавливается передConnect: собственный argv endpoint1 пока пуст, полные
+target country/handler side effects неизвестны. Не перенаправлять endpoint0→1.
+[Доказательства](../research/client455-connection.md).
+
+Далее053 — gatecrypto request/reply569CD0/569D30 и downstream packet state,
+полные wire layouts/35handlers/countryproviders. Затем первый полный loginUI
+и реальные игровые таблицы/действия. Fulltransport/queued/filters/security/
+threads/Close,FT/IME/layout/ILevel/world/shutdown остаются обязательными.
+Серверные проекты/БД не трогать. Аутентификация не считается доказанной TCP.
+
+Предыдущий участок — network-codec051: AES192-CBC с разными ключами направлений,
 формат пакета и dynamic80byte rings подключены к normal отправке/приёму.
 Receive20КБ/send1МБ, два configuredпроцесса при вместимости6. Байты пакетов
 сверены с независимым CNG, настоящие методы прошли fragmentation/wrap/dispatch
 и naturalexit0. Новая полная PE71e644eb.../entry149ef0,0unresolved; existing
 Create вернул1. [Доказательства](../research/client455-network-codec.md).
 
-Далее052 — события/accept и реальный ConnectToServer7D1150 wait/pump/timeout
+Историческая очередь052 — события/accept и реальный ConnectToServer7D1150 wait/pump/timeout
 перед движком. Проверять connected отдельно от raw0; подтверждённая потеря
 ошибки послеclosesocket сохраняется. Затем gatecrypto request/reply consumers
 569CD0/569D30, полные packet layouts/35handlers и вход. Ключи AES постоянные
@@ -500,6 +515,12 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Актуальный052: audit_client455_connection.py; стандартные prepare/build/
+normalconsumers/link/own-entry/startup-audit; probe_client455_connection.py.
+Затем startup(Korea/Russia), device/create/after-create и checkpoint_connection.
+Startup/device scripts создают свежие временные TCPfixtures. Russia trace
+имеет before_client_connect marker; без fake адреса/успеха. Только Invoke-Python.ps1.
 
 Актуальный051: audit_client455_network_codec.py (проверяет и генерирует private
 constants из pin) → prepare_client455_normal.py → build → normal consumers →

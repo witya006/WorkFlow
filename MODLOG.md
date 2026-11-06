@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Connection052. Restored events-only pre-engine connection wait,
+strict timeout/delayed-accept boundaries and102-entry receipt budgets. Actual
+normal WinMain reaches existingCreate through genuine TCP; native real-method
+success/raw-error/timeout cases exit0 and verify localized dialogs. No RF
+protocol or authentication is simulated. Current argv endpoint0/1 gap remains
+open pending full455country/handler side effects. M6/M9 open.
+[Evidence](research/client455-connection.md).
+
 2026-11-06 — Network codec051. Recovered directional AES192-CBC packet framing
 and dynamic80-byte rings; wired actual normal sender/receiver and two configured
 processes with capacity6. Source AES matches independent CNG; real consumers pass

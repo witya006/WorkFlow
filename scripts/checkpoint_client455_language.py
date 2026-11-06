@@ -41,8 +41,8 @@ def main():
             if sha(WS/row['file'])!=row['sha256']:raise ValueError('Changed own lab input')
         pack=next(row for row in inputs if row['file'].replace('\\','/').endswith(f'/DataTable/{nation}/NDLanguage.edf'))
         if pack['sha256']!=expected['sha256'] or f'.\\DataTable\\{nation}' not in logs or f'RF455 NDLanguage:{cp}:{expected["records"]}' not in logs:raise ValueError('Actual production language init absent')
-        if summary!=run['summary'] or not summary['main_reached'] or not summary['exit_observed'] or not(summary.get('after_sound_reached') or summary.get('final_checkpoint_reached')) or next(e['code'] for e in events if e['kind']=='exit')!='0xe0434200' or any(e['kind'].endswith('_error') or e['kind'] in ['timeout','termination_timeout'] or e['kind']=='exception' and not e['first_chance'] for e in events):raise ValueError('Actual startup incomplete')
-        executions.append({'folder':nation,'codepage':cp,'records':expected['records'],'source':name,'status':'PASS'})
+        if summary!=run['summary'] or not summary['main_reached'] or not summary['exit_observed'] or not(summary.get('after_sound_reached') or summary.get('final_checkpoint_reached') or summary.get('before_connect_reached')) or next(e['code'] for e in events if e['kind']=='exit')!='0xe0434200' or any(e['kind'].endswith('_error') or e['kind'] in ['timeout','termination_timeout'] or e['kind']=='exception' and not e['first_chance'] for e in events):raise ValueError('Actual startup incomplete')
+        executions.append({'folder':nation,'codepage':cp,'records':expected['records'],'source':name,'checkpoint':'before_connect' if run.get('before_connect') else 'before_character_data','status':'PASS'})
     mapping=(WS/link['map']['file']).read_text()
     if not re.search(r'\?RF455_InitializeLanguageData@@[^\r\n]+RFClient455Facade:client455_language\.obj',mapping):raise ValueError('Wrong normal language provider')
     names=['client455-language-reference','client455-language-native','client455-create-startup-native','client455-startup-russia-native','client455-normal-link']

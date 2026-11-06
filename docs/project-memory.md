@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+Connection052: обычный WinMain вызывает actual CMainApp::ConnectNetwork455 до
+InitR3Engine. Endpoint1/process0, global ./DataTable/ClientSystem.ini Network/
+ConnectTime default90sec*1000DWORDwrap. Slot284 FALSE во всех11профилях.
+Raw!=0→ND6BE/MessageBox/false. Raw0→clock before events-only PumpEvents455,
+connected1 before unsigned elapsed>budget, затем Sleep4; timeout→WSAerror/
+NDBFA/ShowWindow hide/MessageBox/false. Бюджет после blocking Connect, не до.
+_Receipt теперь максимум102accept/102close/102ready, включая failed accepts;
+callback только elapsed>1000 (было legacy>=1000). Pump не разбирает пакеты и
+не вызывает UserLoop. В broader OnLoop остаются ещё legacy/gaps.
+
+Реальные native success/raw-error/timeout/Russian argv cases проверены;
+getpeername подтверждает собственный TCP-port. Fake clocks — только unit
+границы/rollover; production использует настоящее время/сеть. Helper закрывает
+реальные error dialogs через hook собственного потока+timer, текст сверяется
+с NDLanguage. API/ветки/возвраты в production не подменяются. Три процесса exit0.
+TCPfixture временный loopback/zeroRFresponses, все sockets/threads закрыты.
+
+IMPORTANT: reference Russia argv setsendpoint0, initialConnect readsendpoint1,
+gettersraw, Initzeros. У own текущего source endpoint1 пуст→timeout. Это НЕ
+доказательство полного targetcountry failure:35handler ctors/countryproviders
+ещё не все восстановлены, возможные side effects UNKNOWN. Не remap0→1 ради
+успеха теста. Exact Russian WinMain останавливается передConnect (не Miles).
+Language/launcher gates учитывают эту честную границу; native case проверяет
+текущий настоящий timeout. Korean CCR trace проходит TCP→engine/Miles/D3D/
+existingCreate=1. Noauth/gameplay acceptance.
+
+OwnPE0733cce1ed6e77e2d70646ddc281129629d029421888cda6adff2f01a433a53a,
+x86/base400000/entry14a3f0/2012160bytes;182client/20kernel/21facade,0unresolved.
+Engine879f9b75 unchanged. BeforeConnectownRVA B4435→B38E0, after B443A;
+afterSound B4458, D3D B4468, existingCreate EAX1 at B447A (callB4475→B3AC0).
+15functions+11vtables equalbothpins; IDAbed1c136 closed/save=true.
+research/client455-connection.md; audit/probe/checkpoint_client455_connection.py.
+Raw artifacts/client455-connection/reference.json. M6/M6F/M7/M9 OPEN.
+Next053: gatecrypto569CD0/569D30 downstream packet state, full35handlers/
+wire layouts/countryproviders, затем fulllogin/UI/game tables/gameplay.
+
+## Предыдущий результат — network-codec051
+
 Network-codec051: AES192-CBC с разными ключами отправки/приёма подключён к
 normal CNetProcess::LoadSendMsg/_PopRecvMsg. Plain header LE16length/group/op;
 encrypted outer LE16length/BYTEpad/ciphertext. IV0 на каждый пакет, zero-padding
@@ -804,16 +842,14 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок052: event/Accept sequencing и реальный ConnectToServer7D1150
-   timeout/wait/pump перед engine. Raw0 на отказе из-за close-order не означает
-   connected; успех TCP проверять отдельно от аутентификации. Затем gatecrypto
-   request/reply569CD0/569D30 и оставшиеся wire layouts/35handlers. AES/формат
-   пакетов/буферы/two-process configuration051 уже готовы,неповторять.
-2. Full236config semantic mapping/standard-queued routes/filters/throttle/
-   backpressure/internal security/threads/Close остаются OPEN. Далее target
-   Create/video/BGM/managers/fullUI/login/game tables,FT/ANSI/IME/layout/ILevel/
-   world/actions/startup-error/fullshutdown. Нельзя обходить connect/auth успехом.
-   Сверять по455, использовать собственные packet fixtures; серверы не делать.
+1. Участок053: gatecrypto request/reply569CD0/569D30 и downstream packet state,
+   wire layouts/35handlers/countryproviders. У own argv endpoint1 не заполнен;
+   не делать remap без target доказательств. TCP052/AES051 уже интегрированы,
+   успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.
+2. Full236config semantics/standard-queued routes/filters/throttle/backpressure/
+   internal security/threads/Close остаются OPEN; target Create/video/BGM/fullUI,
+   FT/ANSI/IME/layout/ILevel/world/actions/startup-error/fullshutdown обязательны.
+   Не обходить connect/auth успехом. Только client fixtures; серверы не делать.
 3. Другие M6 client subsystems по client-features.json и client-acceptance.md;
    затем M6F/M7/M9. M8 исключён. Доказательств полноты клиента пока нет.
 
@@ -882,6 +918,8 @@ State renderer33836 — specularEnable, не fog; numeric29/146/143.
   fixtures не доказывают все unsafe/OOM/unwind/NaN/unmaskedFP/error domains.
 
 ## Где искать уже сделанное
+
+- Initial connection/events/wait: research/client455-connection.md; gate client455-connection-checkpoint.json.
 
 - Network AES/framing/rings: research/client455-network-codec.md; gate client455-network-codec-checkpoint.json.
 
