@@ -1,27 +1,27 @@
 {
   "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
   "exe": "work/client455-port/startup-engine/contracts/contracts.exe",
-  "exe_sha256": "99f75b8a90b8e2f7dc8c15ec559d9ddad71d168fd69f4bb6ff539d6417ca0320",
-  "entry_rva": "0x8bf70",
+  "exe_sha256": "c9b504a291de953d46912cc9e8318cd8a8d361f96398d95746c13c7162dede40",
+  "entry_rva": "0x8be60",
   "source": "scripts/native/test_client455_startup_contracts.cpp",
   "source_sha256": "466e9898301f38a3c841960dcf550e569be2e6181047924f2837f5f460e2fb7d",
   "cases": [
     {
       "name": "success",
       "exit": 0,
-      "file": "work/m9/99f75b8a/startup-contracts001/success.txt",
+      "file": "work/m9/c9b504a2/startup-contracts001/success.txt",
       "sha256": "08fc71636c741921f53b686b30545f4328b42d51651cfac9db3d4b174631f3bd"
     },
     {
       "name": "s_false",
       "exit": 0,
-      "file": "work/m9/99f75b8a/startup-contracts001/s_false.txt",
+      "file": "work/m9/c9b504a2/startup-contracts001/s_false.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     },
     {
       "name": "e_fail",
       "exit": 0,
-      "file": "work/m9/99f75b8a/startup-contracts001/e_fail.txt",
+      "file": "work/m9/c9b504a2/startup-contracts001/e_fail.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     }
   ],
@@ -37,7 +37,7 @@
   "libraries": [
     {
       "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "5760728ce3b64000205dd8495e6c0a06f56306f73b286cdbe6cc70c222d96ff7"
+      "sha256": "d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a"
     },
     {
       "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
@@ -54,13 +54,17 @@
     {
       "file": "work/client455-port/source/R3Engine/mss32.lib",
       "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
+    },
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "246574774cd3c3d7c8167851e26730d04f0568f3f6a2329112fb4bd3ad65ad4a"
     }
   ],
   "map": {
     "file": "work/client455-port/startup-engine/contracts/contracts.map",
-    "sha256": "0bb9169bdd93ec81ff5610987de9f059bed25ac29b62b875f8dcd6254dfbe032"
+    "sha256": "baf65de2b5962d0273055ceb9d52cd05c7466e39f160e8aa56800daa56dd1354"
   },
-  "build_sha256": "2f440563f87d888bcd3c82bb9f98e9c58fbd8f3ac996e5f6059cd9bc9d624eb1",
+  "build_sha256": "b9ebb0ca786a4ebf5d6c4ee3c6d601abfc3126316d2b9ef059e92cf45781fe93",
   "reference_sha256": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
   "status": "PASS",
   "color32_preserves_window_mode": true,

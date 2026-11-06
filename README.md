@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — language045: EDF/NDLanguage reader, indexed lookup и
+Последний участок M6 — font046: обычный engine text path использует455GDI/
+Unicode backend. Реальный CGUIText нарисовал Hangul/кириллицу из NDLanguage;
+метрики/atlas проверены независимым GDI,оба UI probes завершились чисто.
+Exact own PE font/D3D/Character startup и прежние кадры сохранились. FullUI/
+FT/IME/early-abort/shutdown открыты. research/client455-font.md; M6/M9 открыты.
+
+Предыдущий участок M6 — language045: EDF/NDLanguage reader, indexed lookup и
 DBCS boundaries восстановлены. Exact own WinMain загрузил корейский и русский
 пакеты с правильными codepages; после корейского сохранился startup Character.
 Все9доступных пакетов прошли byte roundtrip;11CRT locale согласованы. Шрифт/

@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,font046: установок нет. Настоящие CreateFontA/ExtTextOutW/
+GDI metrics/D3DX36 atlas работают сcountry params;Hangul/кириллица просмотрены
+вкадрахреальногоCGUIText. Собственный font probe создаёт Land передвыходом и
+завершаетсяexit0;старый early-abort nullLand gap зафиксирован отдельно.
+OwnPE88942d08.../x86/entry1485A0 прошла GDI/D3D/Character;lab fontregistration
+очищена. Derivedengine67units,033сохранён. IDAa9adfb47 closed/save=true.
+Полные FT/text/UI/IME/window sizing/early-abort/shutdown ещё открыты.
+research/client455-font.md; M6/M9 открыты.
+
 Дополнение 06.11, language045: новых установок нет. Actual MSVC CRT LC_COLLATE
 для11country names дал ожидаемые codepages.9realNDLanguage EDF/bytes/index/DBCS
 проверены;en-us/th-th пакеты здесь отсутствуют,не заменять другими. New own PE

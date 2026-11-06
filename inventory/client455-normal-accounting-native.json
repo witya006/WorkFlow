@@ -1,9 +1,9 @@
 {
   "scope": "Source normal cumulative process counters/realANI/multiple owners and mesh lifetime;not full game acceptance",
   "architecture": "x86",
-  "exe": "work/m9/0299d640/accounting001/normal-accounting-probe.exe",
-  "exe_sha256": "0299d64019b42f8641b5a5574cc9f9b432d077a67830a11adbc52d505a0ed238",
-  "entry_rva": "0x79190",
+  "exe": "work/m9/f22b5f85/accounting001/normal-accounting-probe.exe",
+  "exe_sha256": "f22b5f85563f9c7755cef59bbc92b047949b52e21aae583c99e33dd557938c8b",
+  "entry_rva": "0x76d80",
   "native": {
     "status": "PASS",
     "real_ani_bytes": 70794,
@@ -16,14 +16,14 @@
   },
   "source": "scripts/native/test_client455_normal_accounting.cpp",
   "source_sha256": "bbebda949ef00836bfab5dcadfd2da316a0d1203377dc220f5ea67161cd105af",
-  "output": "work/m9/0299d640/accounting001/result.json",
+  "output": "work/m9/f22b5f85/accounting001/result.json",
   "output_sha256": "3c79112cc930a76e76d08decaae1976344ec03d5104c2da22287f9ea7b396711",
   "map": "work/client455-port/normal/build/normal-accounting-probe.map",
-  "map_sha256": "5a5f19b6cfdd38aa51ae33fbae561effd7ceefaac2b7baf45f54a4b5ee18abc5",
+  "map_sha256": "6f4a403295b51a4504ee0adf96c6e49d6d24553eb6bb9515d2d0e8dfd11fa1e9",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "5d21483414b330792b6dfaf088cefef6223552a6bb22f000d51b7d0f12e26a3e"
+      "sha256": "246574774cd3c3d7c8167851e26730d04f0568f3f6a2329112fb4bd3ad65ad4a"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
@@ -39,7 +39,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "5760728ce3b64000205dd8495e6c0a06f56306f73b286cdbe6cc70c222d96ff7"
+      "sha256": "d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -51,9 +51,9 @@
     }
   ],
   "reference_sha256": "c9e6a21281346d93006c7ecd958811328cae8a9dad2af8804975b4a104516c25",
-  "normal_build_sha256": "a06b94d4f433b4bc5b24836715de2dbb83c3d0467e2788ebd54434cfcae13d0b",
+  "normal_build_sha256": "625ef2ebc5bc3c76bdc34c9eb87e1bed911fcb949a82095352fb9e2143611f84",
   "fixture": {
-    "file": "work/m9/0299d640/accounting001/sample.ani",
+    "file": "work/m9/f22b5f85/accounting001/sample.ani",
     "sha256": "a694c7df7b89e76d15ff1b76e798676530530845cfda2b634771c21be943526c"
   },
   "input_exe_executed": false,

@@ -33,7 +33,7 @@ def main():
         if sha(original)!=module['provider']['sha256']:raise ValueError('Changed delayed DLL')
         shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference runtime DLL'})
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
-    for relative in ['Snd/WaveList.spt','mssmp3.asi',f'DataTable/{country["folder"]}/NDLanguage.edf']:
+    for relative in ['Snd/WaveList.spt','mssmp3.asi','System/010.TTF',f'DataTable/{country["folder"]}/NDLanguage.edf']:
         original=client/relative;copy=run/relative
         if not original.is_file():raise ValueError('Required startup input missing:'+relative)
         copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference input'})

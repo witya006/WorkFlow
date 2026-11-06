@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6,font046: selected GDI/Unicode font path иnormal engine bridge
+восстановлены. Actual CGUIText Korean/Russian frames совпали сwide API;
+GDI metrics/atlas oracle/cache eviction проверены,процессы завершилисьexit0.
+Это lab entry среальным UI consumer,неполный production Create/интерфейс455.
+Fontstartup exact own PE подтверждён. FT/ANSI/IME/layout/early-abort/shutdown
+остаются открытыми. research/client455-font.md; M6/M6F/M7/M9 открыты.
+
 Текущий участок M6, language045: EDF decoder/NDLanguage indexed lookup/DBCS
 и countryCRT/codepage agreement восстановлены. Exact own WinMain действительно
 загрузил Korean949/Russian1251 пакеты;9realEDF прошли byte roundtrip. Это не
@@ -168,7 +175,7 @@ x86, image base 0x400000. Backup — вторичный материал; раз
 | Файлы и данные | Форматы, таблицы, ресурсы, загрузка и обработка ошибок | Частично: helper SPT, selected RPK/R3X consumers, EDF/NDLanguage; область в целом открыта |
 | Рендер и мир | Сцена, камера, освещение, эффекты, видимость, коллизии клиента | Частично: selected maps/helpers/weather/clock; D3D9 и полное поведение открыты |
 | Персонажи | Модели, экипировка, анимации, клиентские состояния | Частично: selected mesh/texture/buffer/model/manager; normal dispatch/BN/animation/full Character открыты |
-| Ввод и интерфейс | Управление, окна, текст/IME, фокус, сочетания клавиш | Не проверено |
+| Ввод и интерфейс | Управление, окна, текст/IME, фокус, сочетания клавиш | Частично: selected CGUIText GDI/Unicode draw иstoredCP boundaries;полные UI/layout/IME/input открыты |
 | Звук | События, позиционирование, музыка, настройки | Частично: реальный Miles startup/digital driver init; playback/music/3D и соответствие455 ещё открыты |
 | Клиентская сеть | Пакеты, сериализация, обработчики, порядок состояний/ошибок | Не проверено |
 | Вход и выбор персонажа | Клиентские экраны, переходы и обмен сообщениями | Не проверено |

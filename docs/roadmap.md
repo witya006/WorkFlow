@@ -12,7 +12,13 @@
 
 ## Текущий статус
 
-Новейший участок M6 — language045: EDF/NDLanguage/lookup/DBCS восстановлены,
+Новейший участок M6 — font046: GDI/Unicode atlas/cache/draw подключены кnormal
+engine text calls;actual CGUIText вывел Korean/Russian строки,оба probes exit0.
+GDI oracle/цветные регрессии прошли. FT/полныйtext/UI/IME остаются M6.
+Следом047 — early-abort/lifecycle CLand/CMainApp и дальнейший Create/data/UI.
+research/client455-font.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — language045: EDF/NDLanguage/lookup/DBCS восстановлены,
 countryCRT/codepage11cases согласованы. Exact own WinMain загрузил Korean и
 Russian packs;normal D3D/Character прошли. Fullfont/text/UI/Create ещё открыты.
 Следом046 — actual font/text provider и normal UI consumer.

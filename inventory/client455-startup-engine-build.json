@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "5760728ce3b64000205dd8495e6c0a06f56306f73b286cdbe6cc70c222d96ff7",
+  "library_sha256": "d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -291,6 +291,12 @@
       "sha256": "77740cd49125401ff3fd75ffe087fba1bc9d908eec41db91c974c42c56ff9394",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3d3dwrapper.cpp",
       "original_sha256": "cb828c7d9fc30728d30ff7918d0ec233ac1c9b8afbcb3a8f900fa09d90fb47fb"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3text.cpp",
+      "sha256": "21cb2fdffce259959039be9f14b76363c8bca324ec397641619f57bed1e343db",
+      "original": "work/client455-port/source/R3Engine/2ndclass/r3text.cpp",
+      "original_sha256": "72993c33a9d2910395849203d0f0b64cc70b44dba1efcb1ab99a32606954d413"
     }
   ],
   "baseline_library": {
@@ -299,15 +305,19 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "fd7ae83c2949cfbcb65135763cec917f8f7dd3fb028d45f9394505cc9d0a1c69"
+    "sha256": "b1c9c3feead8fb20302a6e3ae5415283bc9fe93defbfa603eb45abcedb9e6d73"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "fcc5e966ad71cf2dcf604d97fb9472ee255ad610ef669a897122e39453082471"
+    "sha256": "14c9772a45fb3f15931e3cf70556a08cef95b636c7359eebd7301e93d439ae26"
   },
-  "script_sha256": "9b445666c8816d897e3c0d0a7a54f3f958f9b3d3f4ab8010795eb19dfea31ee1",
+  "script_sha256": "7469e24349dc19b427de86e5956face37c05fe582273e0744650bf125e54c646",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "text_bridge": {
+    "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
+    "client455_font.h": "c8532595029c3ed10e20efefec7d3c140a32f2ee59cf6c98cd7b857bdd5ed478"
+  }
 }

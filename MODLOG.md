@@ -21,6 +21,12 @@ pass. First full normal source Character/D3D9 RF_Online.bin links with zero
 unresolved symbols. Normal WinMain/gameplay acceptance and M9 remain open.
 [research/client455-normal-accounting.md](research/client455-normal-accounting.md).
 
+2026-11-06 — Font046. Country params8C5A80 andGDI/Unicode atlas/cache/draw
+9067E0/906C10/906DD0/907710 now drive ordinary R3LoadTextTexture/DrawR3Hangul.
+ActualCGUIText renders Hangul/Cyrillic fromNDLanguage;GDIoracle/atlas/frame/
+cacheeviction andcleanexit pass. Early-abort~CLand nullLevel found andtracked;
+fullFT/text/UI/lifecycle remainopen. [research/client455-font.md](research/client455-font.md).
+
 2026-11-06 — Language045. EDF/NDLanguage603130/RVA203130,index query6023B0,
 DBCS601F50/601FE0 and11ETCAction codepage kernels recovered.9realEDF roundtrip
 and production source reader pass;exact own normal WinMain loads Korean949

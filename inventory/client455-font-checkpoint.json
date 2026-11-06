@@ -1,0 +1,33 @@
+{
+  "status": "PARTIAL",
+  "country_font_parameters": "PASS",
+  "gdi_metrics_and_atlas": "PASS",
+  "actual_normal_gui_korean_russian_text": "PASS",
+  "unicode_cache_hit_eviction": "PASS",
+  "actual_fullpe_gdi_font_startup": "PASS",
+  "actual_gui_probe_clean_exit": "PASS",
+  "full_game_create_executed": false,
+  "evidence_sha256": {
+    "client455-font-reference": "d8e4a00d86715d9b8f408abda43ad6fe5cea0cede26ace327f54802926a897d5",
+    "client455-font-native": "67e7e7cddd084f5bcdad758af4eeefa3dcf602f5842f0ab6ae9ab2603342e12c",
+    "client455-create-startup-native": "66788db1c27c0c014aaca8114d571ee02e01edec12523c5f8a21967a3383c82a",
+    "client455-normal-link": "d5c36cd6f6e69bd7d7acec871e333ccb99edde6b44d149bac9e58cdf0708ea79",
+    "client455-startup-engine-build": "b9ebb0ca786a4ebf5d6c4ee3c6d601abfc3126316d2b9ef059e92cf45781fe93"
+  },
+  "gaps": [
+    "Full FreeType/configuredfont path,ANSI-specific cache and all othertext methods",
+    "Complete original private2040byte layout and oldCRT/x87/allfloatingpoint environments",
+    "WholeUI layout/wordwrap/IME/input/reset/gameplay acceptance",
+    "Source uses RAII rows and frees overwritten unused stateblocks;original allocation/leak/OOM/unsafe domains not equivalent",
+    "GDI glyph output depends on actual Windows installedfonts/fontlinking/DPI;not proof of original455frame parity",
+    "Legacy CLand Destroy before Create dereferences null;observed in first incomplete-lab exit;normal early-abort behavior remains open",
+    "Old GUI byteWidth6 layout/clipping is not accepted as455layout;only selected Draw consumer verified",
+    "Actual lab backbuffer640x500 vs viewport/configheight480;full window sizing acceptance open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

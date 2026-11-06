@@ -1,5 +1,6 @@
 #include "client455_language.h"
 #include "client455_nation_paths.h"
+#include "client455_font_settings.h"
 #include <windows.h>
 #include <clocale>
 #include <cstdio>
@@ -68,6 +69,7 @@ int RF455_InitializeLanguageData(){
     const char*locale=std::setlocale(LC_COLLATE,descriptor.crtLocale);const char*suffix=locale?std::strchr(locale,'.'):nullptr;
     if(!suffix)return 0;const unsigned cp=static_cast<unsigned>(std::atol(suffix+1));const unsigned expected=RF455_CountryCodePage(nation->nation);
     if(cp!=expected){char text[256];std::sprintf(text,"Mismatch CodePage between ETCAction(%d) and NationSelect(%d)! %s",expected,cp,descriptor.crtLocale);MessageBoxA(nullptr,text,"RF_ONLINE",0);return 0;}
+    RF455_SetFontParameters(descriptor.font,9,12,descriptor.charset);RF455_SetFontCodePage(cp);
     char path[300];std::sprintf(path,"%s\\NDLanguage.edf",nation->dataRoot);
     if(!RF455_LoadLanguagePack(normal,path,cp))return 0;
     char log[96];std::sprintf(log,"RF455 NDLanguage:%u:%u",normal.codepage,normal.count);OutputDebugStringA(log);return 1;

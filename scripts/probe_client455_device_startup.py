@@ -1,5 +1,5 @@
 """Run exact own PE through real window/device init;stop before client Create."""
-import argparse,hashlib,json,re,shutil,subprocess
+import argparse,ctypes,hashlib,json,re,shutil,subprocess
 from pathlib import Path
 from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
@@ -41,10 +41,16 @@ def main():
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
     output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]
-    result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)
+    try:
+        result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW)
+    finally:
+        removeFont=ctypes.WinDLL('gdi32.dll').RemoveFontResourceW;removeFont.argtypes=[ctypes.c_wchar_p];removeFont.restype=ctypes.c_int
+        fontRegistrationRemoved=bool(removeFont(str(run/'System/010.TTF')))
+    (run/'console.txt').write_bytes(result.stdout+result.stderr)
     events=[json.loads(line) for line in output.read_text().splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});config=next((e for e in events if e['kind']=='render_configuration'),{});device=next((e for e in events if e['kind']=='device_state'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception']
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=args.create
+    report['lab_font_registration_removed']=fontRegistrationRemoved
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
     report['scope']='Exact own normal PE through Character manager creation;stop before character data readers;not complete Create or455acceptance' if args.create else report['scope']
     report['nation_paths']=[e for e in events if e['kind']=='debug_string']

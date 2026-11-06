@@ -5,7 +5,7 @@ from compare_client_binaries import WS,pe
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
-    ref=json.loads((WS/'inventory/client455-language-reference.json').read_text());root=WS/'work/client455-port/language';root.mkdir(parents=True,exist_ok=True);native=WS/'scripts/native';info=json.loads((WS/'inventory/msvc-verification.json').read_text());dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat';exe=root/'language-probe.exe';batch=root/'build.cmd';log=root/'build.txt';source=[native/name for name in ['client455_language.cpp','client455_nation_paths.cpp','test_client455_language.cpp']]
+    ref=json.loads((WS/'inventory/client455-language-reference.json').read_text());root=WS/'work/client455-port/language';root.mkdir(parents=True,exist_ok=True);native=WS/'scripts/native';info=json.loads((WS/'inventory/msvc-verification.json').read_text());dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat';exe=root/'language-probe.exe';batch=root/'build.cmd';log=root/'build.txt';source=[native/name for name in ['client455_language.cpp','client455_nation_paths.cpp','client455_font_settings.cpp','test_client455_language.cpp']]
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W4 /D_CRT_SECURE_NO_WARNINGS /I"{native}" '+' '.join('"'+str(p)+'"' for p in source)+f' user32.lib /Fe"{exe}" /link /MAP:"{root/"language-probe.map"}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
     build=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=root,creationflags=subprocess.CREATE_NO_WINDOW)
     if build.returncode:raise ValueError('Language build:'+str(log))

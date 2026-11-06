@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-FONT-GDI-046",
+      "status":"partial",
+      "description":"Country font parameters and recovered Unicode/GDI atlas/cache/draw in ordinary engine text API;selected normal CGUIText draws realKorean/Russian labels",
+      "reference":[{"va":"0x8c5a80","rva":"0x4c5a80","role":"font parameters"},{"va":"0x9067e0","rva":"0x5067e0","role":"GDI initialization/metrics"},{"va":"0x906dd0","rva":"0x506dd0","role":"Unicode atlas upload"},{"va":"0x907710","rva":"0x507710","role":"Unicode drawing"}],
+      "implementation":["scripts/native/client455_font.cpp","scripts/native/client455_font_settings.cpp","scripts/native/client455_text_bridge.inc"],
+      "verification":"ActualCGUIText frames equalwideAPI,independentGDI metrics/alpha4atlas,cachehit/eviction,exit0 forKorea/Russia;exactownPE font startup andpreviousframes pass",
+      "evidence":["inventory/client455-font-checkpoint.json","inventory/client455-font-native.json","research/client455-font.md"],
+      "gaps":["ConfiguredFreeType/ANSI/fulltextAPI/IME/layout","PrivateABI/x87/unsafe/OOM/leak-domain fidelity","LegacyCLand early-abort nullpointer andnormalfullshutdown","Window/backbuffer sizing","Whole455UI/gameplay acceptance"]
+    },
+    {
       "id": "CLIENT455-LANGUAGE-045",
       "status": "partial",
       "description": "SourceEDF/NDLanguage indexed bytes,storedCP DBCS boundaries,countryCRT agreement and actual normal WinMain language initialization",

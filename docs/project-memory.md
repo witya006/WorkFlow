@@ -23,6 +23,50 @@
 
 ## Последний проверенный результат
 
+Font046: replaced activelegacyr3texttail with real455GDI/Unicode bridge;
+033engine/source preserved,derived67units now3CPPoverlays(kernel,wrapper,text).
+LibrarySHA d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a.
+Font settings8C5A80 strncpy250 twice into256names;points9/unusedheight12/
+charset appliedin languageinit BEFORENDload. New font_settings/module CPPs
+inactualnormalfacade15units;182client/20kernel;full link0unresolved.
+GDIref9067E0 DIB-3points,CreateFontA selectedcharset/quality0/pitch0,measurew
+cell;905920 D3DXformat26managed;Unicodecache905CF0/906C10/906DD0 pixelwidth+
+WCHARcapacity/roundrobin/ExtTextOutW/alpha4. Draw906F60/907710 UVclip,6vertices,
+FVF324/stride28,shadow2/outline9/bold2,postblendFALSE/stickylinear0x400.
+Normal3fonts bymem100/160m,16point1024x128,24point1024x512;auxTahomaorA010.
+FT8C5C60/ANSIcache/fulltextAPI/IME/layout stillOPEN;doNOTclaimfontcomplete.
+Source-ownRAII/freeunusedinitialstateblocks differsoriginalleak/OOM domains.
+Native full-object textprobe:actual CMainAppdevice+CGUIText::Draw on NDLanguage
+Korea/Russia. Frames==directwideAPI;independentGDI metrics/atlas pixels equal;
+cachehits/eviction/poststate verified. Viewporttextpixels151/179 (notblacktail).
+Actualbackbuffer640x500 vsviewportheight480 separatewindow sizinggap.
+Probe uses compiler-typed explicit-instantiation memberpointer to callactual
+m_cLand.Create beforeexit,nochangedclassdefinition/guessedoffset. FullGameCreate
+NOTcalled;oldtablesnotread. Bothprobes exit0;BMPviewed Hangul/Cyrillic readable.
+First incomplete-lab exit exposed old~CLand Destroy→UnloadLevel nullLevel AV:
+ownRVA7DD9C READnull+158h;raw work/m9/e73bb511/font-ko-kr001/exception.json.
+Production early-abort/lifecycle stillOPEN;do nothidebyexitingearly/successstub.
+Own PE88942d085c1de3a349c337b51a91a3ca311e9522b112f824fc2105ebfa85289f,
+1998336B/x86/base400000/entry1485A0.MainB3D40,soundB3D89,D3DB3D9C,charDataB3469.
+work/m9/88942d08 normal startup/device/Create passed;Font:GDI:129:0 inactual
+trace. CharacterownerA2F3060/device516afa0==app. controlledexitE0434200 observed.
+AdditionalhandledfirstchanceC++exceptions afterD3DX,font init no2ndchance.
+System010TTF copies staged;device lab removesitsfontregistration=true after
+kill;bothfont/device scripts cleanupownfontpath in finally evenonfailure.
+ShortANI/BBX/model/effect/shadow/clock/accounting regressions PASS,oldframes
+equal/COM/Dmalloc0.13scoped checkpoints PASS/PARTIAL;M6/M6F/M7/M9OPEN.
+IDAa9adfb47 closed/save=true;rawartifacts/client455-font;21bodyranges equalboth
+pins in font-reference.json. Detailed research/client455-font.md;current
+GUI frames/ownedrunpaths in font-native.json (probe PE hash changes onrelink).
+Previous045 wasprogress;046addsactualnormal text source/GUI pixel evidence.
+Next047: pin/restoreCLand/CMainAppearly-abort/lifecycle,thenfullCreate/data/UI/
+launcher. KeepFT/ANSI/textmetrics/IME requiredM6queue beforeM6F. TargetLandCreate
+7C7AC0 alloc8byteCLevelwrappervia7C7B60,notoldfullCLevellayout;needtypedport/
+correctownership beforeclaimingdestroy. CMainAppDestroy7D1E70,Create7D18B0 cached
+underfontartifacts;many455managercalls alreadylisted there. Noblocker/userinput.
+
+Предыдущий результат — language045:
+
 Language045: EDF29header/DWORDsize/payload/256encodedkey;key alternating-/+
 digit1<<((i+1)%8),reverse256,swapadjacent;payload even-key/odd+key[(i+1)%256].
 Reference5EEC00/5EEC90/5EED90/5EEF00/5EF000 andND603130/601EF0/6023B0/603360

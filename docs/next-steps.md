@@ -11,13 +11,29 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — language045. EDF/NDLanguage reader/index lookup и DBCS
+Последний участок — font046: GDI/Unicode font/cache/draw иобычный enginebridge
+подключены. Actual CGUIText вывел Hangul/кириллицу изNDLanguage;frames==wideAPI,
+GDIoracle atlas/metrics/cacheeviction прошли;обаownGUIprobes exit0. FullPE
+88942d08.../entry1485A0 прошлаnormalfont/D3D/Character startup.13scopedchecks
+PASS/PARTIAL;M6/M9OPEN. research/client455-font.md.
+
+Следом047 — normalearly-abort/lifecycleCLand/CMainApp:oldDestroy доCreate
+вызываетnullLevel->ReleaseLevel. Зафиксирован ownRVA7DD9C READnull+158h при
+первом неполномlabexit. Не выдумыватьguard радизелёного теста;сверить455 ctor/
+destroy/unload/ownership. TargetLandCreate7C7AC0 alloc8wrapper7C7B60;это иной
+контракт,чемстарыйfullCLevel. ЗатемдальнейшийnormalCreate/data/UI/launcher.
+FTconfiguredfont8C5C60,ANSIcache,полныйtextAPI/wordwrap/IME/UIlayout остаются
+обязательнымиM6доM6F. OldCGUIText width6 наbyte несертифицирован;backbuffer
+640x500 vsviewport480 —незакрытый sizinggap. Source RAII freesunusedstates
+вместоoriginalleak;unsafe/OOM/x87domains невыдаватьзаэквивалентность.
+
+Предыдущий участок — language045. EDF/NDLanguage reader/index lookup и DBCS
 восстановлены;9realEDF byte roundtrip и11CRT/codepage cases прошли. Exact own
 WinMain загрузил Korean949 иRussian1251,послеKorean normal D3D/Character
 сохранился. NewownPE1fc267d5.../x86/entry14A920,13facade CPP,link0unresolved.
 Font/text/UI ещё не приняты. research/client455-language.md;M6/M9OPEN.
 
-Следом046 — actualfont/text provider: setter8C5A80 иconsumers globalsBF7718/
+Историческая очередь046 — actualfont/text provider: setter8C5A80 иconsumers globalsBF7718/
 BF7618/BF7818/BF781C/BF7820. Сверить constructor/privateInit/glyphlayout455 с
 legacyCR3Font(name85bytes,DEFAULT_CHARSET,fixedheight12). Подключить выбранный
 normaltext/UI consumer к455query ипроверитьнастоящий текст/DBCS input.
