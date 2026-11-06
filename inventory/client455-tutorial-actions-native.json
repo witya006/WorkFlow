@@ -1,0 +1,494 @@
+{
+  "scope": "QBI19to46 action rules and complete processor preparation with a recording host; actual UI/world Tutorial OPEN",
+  "architecture": "x86",
+  "entry_rva": "0x13f80",
+  "sources": {
+    "client455_tutorial_script.cpp": "6745120cf611ed3eeff46cfb6d395d1d8f7ba5ebc2f036e5036cf900c2992fbd",
+    "client455_tutorial_runtime.cpp": "f971f174242753ccfd19ab4a7ee2831a059fae8254610339d504df6fd5d38363",
+    "client455_tutorial_spatial.cpp": "b411098382e281c2404ca83ec8d3fb6a72413867f215c793ead0d946589fd34f",
+    "client455_tutorial_actions.cpp": "779b89b4e33945c0420f46a817807ad597dbe262e59e44db47e75822840be497",
+    "client455_tutorial_actions_probe.cpp": "981dd47b1309c001befd57fbaadabd80c95e7b32cda784b7ed6a64d225a1febd",
+    "client455_tutorial_script.h": "a9a578c626162cdb2a1bb726dd2bda183eaa1bcb5843bb7e9715d7ae47499de9",
+    "client455_tutorial_runtime.h": "04b7f28cee4b3f1bf2f91aaddd840d2a8f053b1c01479d0cbe76fa7fff33810a",
+    "client455_tutorial_spatial.h": "064d05deebdfd224937220072729ff6a6529073aecbde42ad617b29a73eb3213",
+    "client455_tutorial_actions.h": "40e933fa84aa3291be701bbfcd418238fa2f14b790202ded0a0a52ad3be14d88",
+    "testing/client455_tutorial_recording_host.h": "5855194138932c2da8d9e4ff5c6455531c39e7b1a32353d681cd5b0fac228617"
+  },
+  "script_sha256": "052a06d9af70d90d387b09236bf5f76c97d5fde852f4848c75080583e4ba3702",
+  "reference_sha256": "db0d327c5b03d3a1393daa224afbc55013594a38dd6fa7e705b8328531f9a159",
+  "library": "work/client455-port/tutorial-actions-probe/RF455TutorialActions.lib",
+  "library_sha256": "71c8d6505c07a939689ddf4007ee857d37fa515634800901f5930c723d022403",
+  "objects": [
+    {
+      "file": "work/client455-port/tutorial-actions-probe/client455_tutorial_script.obj",
+      "sha256": "52e90afd21fe83cb26fba3512e85add37ffd70e31f59be3332a877ca96446690"
+    },
+    {
+      "file": "work/client455-port/tutorial-actions-probe/client455_tutorial_runtime.obj",
+      "sha256": "b73a25d369941a77cb197b0793f80416bbbee50a10b33d641409c7c625f2321b"
+    },
+    {
+      "file": "work/client455-port/tutorial-actions-probe/client455_tutorial_spatial.obj",
+      "sha256": "cf515f6d9247584eb299d44fac3e050b014f6fa7002d030becfcdf7a85ca46b2"
+    },
+    {
+      "file": "work/client455-port/tutorial-actions-probe/client455_tutorial_actions.obj",
+      "sha256": "6d83b75c4a170e4f51e36e626142e55ee89f61eccacab2ee3a5446d4d3df45c9"
+    },
+    {
+      "file": "work/client455-port/tutorial-actions-probe/client455_tutorial_actions_probe.obj",
+      "sha256": "8c888e81fbb56a3307ddd6e756154eee95b522d38d782e1b8d167b0d9ef2f933"
+    }
+  ],
+  "exe": {
+    "file": "work/m9/ac630491/tutorial-actions-001/tutorial-actions-probe.exe",
+    "sha256": "ac6304916a8cbdac8d597fa807c69812ae2d3298550df8164ae730830774c344"
+  },
+  "map": {
+    "file": "work/client455-port/tutorial-actions-probe/tutorial-actions-probe.map",
+    "sha256": "6c3d182b7df264802e3614e943998d04e75251d1bad1814ce910f283cc51ab2c"
+  },
+  "build_log": {
+    "file": "work/client455-port/tutorial-actions-probe/build.txt",
+    "sha256": "1c0fa5c25fa8f191aed0dd0c9a7e1121ee4971225fbc97a51431a3dcfb2ee5a8"
+  },
+  "output": {
+    "file": "work/m9/ac630491/tutorial-actions-001/result.json",
+    "sha256": "52d6080c2f658092d2d5dded055e704a8ef82ee455a5bc74efdb652137797cf5"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/ar.scp",
+      "sha256": "7c56fdb1da20c1370f90cb6b6d384ab6aaeb39ceed55e5c69c75d5d12d7411e9"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/as.scp",
+      "sha256": "2ae575bcf59b206abeffd49bfb0e75978a4174ae88e51ce366918ce2665d1f21"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/aw.scp",
+      "sha256": "68257a2dab191738bf904ca0bc0bb58c2cae899cbe7f6241af758000efc84338"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/bf.scp",
+      "sha256": "0cb64161190bbff1ffcca20934f656f02b0a62d0b571ab661d6a59681874d1ea"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/br.scp",
+      "sha256": "eb2c0bf6a9dd12a25e1762f763cb16e9a7875549647410649ddf1d860879155a"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/bs.scp",
+      "sha256": "1eb908ad5d79a3760f119f697e320b795950317d5d7034a9087a54114ff19ad4"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/bw.scp",
+      "sha256": "1a6066976d9ab58ff849f96b741c3693e6b4da2377bf4f587cceae5f2015184c"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/cf.scp",
+      "sha256": "71ecb98d3943d2dabe477c3f3c59fde352d1c4c12ed5700feb458b1a1bd482be"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/cr.scp",
+      "sha256": "d56f50c41e6a1b08c17f77b70b738b894340aeaa5c0b3da91b68934f112abf3b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/cs.scp",
+      "sha256": "67247c2f3fa4c04e8f6dd1f9dfeceffec49ee4f88fe10526a37a1279522fb40f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-gb/cw.scp",
+      "sha256": "7d76b3d3e305d549e3b0e32f858d33e7d54a28ed577cdb4e5c8a132e01ef1a8b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/ar.scp",
+      "sha256": "30af77b9cbc991c8ade5812cd2a11f56ec35efb47f77c8de810e9d168a7c9161"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/as.scp",
+      "sha256": "ce802a018e9ec6dfae47c2ef26aa832de4c2637e9ef5a8a638e3f1e739483ed3"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/aw.scp",
+      "sha256": "dfec8f00d89c52c06674f734114dbf899ccd8da81716f10df2b1dfd6a50df059"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/bf.scp",
+      "sha256": "e93598a8419d4be92541c5ce09a4dc049e60553d5d75f01d2c78fe8a1e9bfaca"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/br.scp",
+      "sha256": "7fbb4deb4a93675ee32d142954dfef750832d28c25b7710a2d4b4a4a5eb18662"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/bs.scp",
+      "sha256": "3363ce5093da5ef1f2f1597c184d2c5773e9442e05893bc58602b9fc8ee51d57"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/bw.scp",
+      "sha256": "c8099e27ee1a1ca7f0864d48cd0a7cb71801ab8ec5c556e31541115c3cdc7bf2"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/cf.scp",
+      "sha256": "249f820fa9bb2e0e5174d4d48a4fcb24e8a071783f5330031c9db75d72648883"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/cr.scp",
+      "sha256": "a1d6b4b19dab6c765cb8ac67c77b9075c470ba66fc83b6a1fab3e6d9425d67b8"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/cs.scp",
+      "sha256": "a385cb95f410ba098055e4aa9a888111a19c539bc163b687eadc0ea62edc7a50"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-id/cw.scp",
+      "sha256": "7628e3a89fd2f08523f1bfe36ea22d379b3b2c18bf20fbdf442482ee9150b628"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/ar.scp",
+      "sha256": "7c56fdb1da20c1370f90cb6b6d384ab6aaeb39ceed55e5c69c75d5d12d7411e9"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/as.scp",
+      "sha256": "2ae575bcf59b206abeffd49bfb0e75978a4174ae88e51ce366918ce2665d1f21"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/aw.scp",
+      "sha256": "68257a2dab191738bf904ca0bc0bb58c2cae899cbe7f6241af758000efc84338"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/bf.scp",
+      "sha256": "0cb64161190bbff1ffcca20934f656f02b0a62d0b571ab661d6a59681874d1ea"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/br.scp",
+      "sha256": "eb2c0bf6a9dd12a25e1762f763cb16e9a7875549647410649ddf1d860879155a"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/bs.scp",
+      "sha256": "1eb908ad5d79a3760f119f697e320b795950317d5d7034a9087a54114ff19ad4"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/bw.scp",
+      "sha256": "1a6066976d9ab58ff849f96b741c3693e6b4da2377bf4f587cceae5f2015184c"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/cf.scp",
+      "sha256": "71ecb98d3943d2dabe477c3f3c59fde352d1c4c12ed5700feb458b1a1bd482be"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/cr.scp",
+      "sha256": "d56f50c41e6a1b08c17f77b70b738b894340aeaa5c0b3da91b68934f112abf3b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/cs.scp",
+      "sha256": "67247c2f3fa4c04e8f6dd1f9dfeceffec49ee4f88fe10526a37a1279522fb40f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/en-ph/cw.scp",
+      "sha256": "7d76b3d3e305d549e3b0e32f858d33e7d54a28ed577cdb4e5c8a132e01ef1a8b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/ar.scp",
+      "sha256": "8af6bc72ca6ca3abfe3c3eef86da9f8fab0b217a93c8f7efbc92061005b8dcbb"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/as.scp",
+      "sha256": "bd15e1a9b306d792a5fb7a477aeeefec58745980dda3c49a2b38150a06c4a8d2"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/aw.scp",
+      "sha256": "e99ece271807565e13d95663ce2a2da17388170b7da7b46cd5b363cf4a854877"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/bf.scp",
+      "sha256": "9c1982dfc22d14018ae6a2b1ae641f61bb752383adce92f5032534211e72b326"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/br.scp",
+      "sha256": "f56b62cf9e12f423db926dbcdd3f02eb64e4bb6bcdf108f4afe1078907bee72a"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/bs.scp",
+      "sha256": "51123754e76cc2b389e75f92d62485f1720c386fc227fdb380d22e38274ca9d0"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/bw.scp",
+      "sha256": "0cae37dff97274f1958e26d48d9a1ffb1795d0d86089056068e9fe61dc925b02"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/cf.scp",
+      "sha256": "5b09296f118a84d276bfe8671e7fb7379b63b8757d3af7098be53a9b635d0a1e"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/cr.scp",
+      "sha256": "fc752c4b441b05740491a219614f0cbafe79a6aa7b6297c1fe579f50cbffee2e"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/cs.scp",
+      "sha256": "6f5ab80ba01f4b303c89160c4a56ec3ce2d3a54c9066973efde81eed97d7fc82"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ja-jp/cw.scp",
+      "sha256": "b8abc75b4c00a3837461ae9228ccdf78a977d78265768323960afbfa57ba4a45"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/AR.scp",
+      "sha256": "cfd7decd79bb405db9a140c00018a0fa9c504ed309021f290b539373310e6ddb"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/AS.scp",
+      "sha256": "f4ef428074da614fd9d95e1f28a592cfb2407869a8271bc1d338518a844c15ad"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/AW.scp",
+      "sha256": "60ce461499f461c6dca4e68feb1812cb9a7ce0ebd92c37710afc8abd63d19f85"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/BF.scp",
+      "sha256": "267545ca5b2fcfa7c92a581394db9cff7d8cec8971f60e6731b3ba416dc2da70"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/BR.scp",
+      "sha256": "507227df0dfadada350c12a9cb0fd6348320f028a0cdd09352c83b8e08070c1e"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/BS.scp",
+      "sha256": "188c18a1cbfe550d15ad16446c65c2964530e81aabf34aea3c951d7608bfce2c"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/BW.scp",
+      "sha256": "6b9dc2da906b716e01afa0687e8eae329abc9e221e240d02c957e955a8d321dc"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/cf.scp",
+      "sha256": "a6d0e4f011267af7086fdfbbf968c67a499c19f489a8cd0cbeb2cf46c00436b5"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/cr.scp",
+      "sha256": "d3f0a4a702e4c43efd949b9ef22fc8ef06a190a32ac329e421e439474e18884d"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/CS.scp",
+      "sha256": "9cd74410d751811c9d587ed7eb39c7caf4fbc9c9ef60f5d1d5124db62e52af0a"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ko-kr/CW.scp",
+      "sha256": "9a041c66e9bff8944ac2c5e578c7105155834d6cc237daad734f5f757d9c0b64"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/ar.scp",
+      "sha256": "10f22a708e1d2e78af9c08a481b39e4a6e89d586f5cd7c0bdd24d4210ed2a266"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/as.scp",
+      "sha256": "9149c3e1c3c485ef3a0066253054487e2195dc2f57a6b52a9a9e2b3e9c6ec8d5"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/aw.scp",
+      "sha256": "0298a0b9988e13852e56cde5b4707cba2d435a1ef94afad1b3e5f38a2599b10c"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/bf.scp",
+      "sha256": "bdfd0c6edd85aba5dc26bb869326065c84cb3d0b670178357ee21ab3d99d580f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/br.scp",
+      "sha256": "b0be6c35651f237c3b87019ef06f85bbefd528c7e111a85d4d50da15957ef4b1"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/bs.scp",
+      "sha256": "ceaa3cf215d3c00bd79e4cc16f04586fdb2b919bf3dbee1b6e9fc171e0fd12a8"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/bw.scp",
+      "sha256": "38816b007a3a08bf885d62004dbb7813beca2e0db4655712c98b1e72d32f6b0f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/cf.scp",
+      "sha256": "96b7ec695a888bd3047bfbfb16c155e6ea73e970498218392b5cffa48c75ee4f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/cr.scp",
+      "sha256": "fe1a97398fca4b37e4334b6f1713adcacda7a7f400538d9234e328e37534109b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/cs.scp",
+      "sha256": "9698ed50d29fbbcad7f9cb53b71eac198292c21949d25c4dd7a54a2fbec2f13f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/pt-br/cw.scp",
+      "sha256": "edbd7ed1edcfdd6c415c037d48703eb9f7f2f68f8e2952f592d2736c88b43ced"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/ar.scp",
+      "sha256": "2019319b432a31d50297f7022f38b9260f98d99bd6a23ab85766cc160825f785"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/as.scp",
+      "sha256": "d68cbcbbc378e57e4aac98e9c0851e21c983b3bf266b83478f2091bde27770b5"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/aw.scp",
+      "sha256": "7bd5535ce947f378073bfb482e31260f3a1036687ccd5e7f84f85b5c99896989"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/bf.scp",
+      "sha256": "aef56ffbb8922fbe4a40b919667599929a5c42658ed0e385e50c6163bf40c20b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/br.scp",
+      "sha256": "7abf48b793188cf7f9da4471d82a3fbbd756ac88eb8609438c7c462ec44454b1"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/bs.scp",
+      "sha256": "cf482e5930d6869828d58fd30aeec5f285ed312c3d1d7f01a2d04c803fdd514d"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/bw.scp",
+      "sha256": "0cb09477e8eb2af9fdce87b623159f17f0ff163970c2bdac88774568258d031b"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/cf.scp",
+      "sha256": "c1b9987f0150ff3767d37f24fa398ee906fbfe70c1c1b1d037fae6dc772b2c95"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/cr.scp",
+      "sha256": "86c19ab68cdb0d979109b65ce210bbcc904ed66a187237e0609cf4b94ce9c1a5"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/cs.scp",
+      "sha256": "c07f5eb61a2e06c1f229f00e075d8d0d5f2ad99123bc1b2e219e6d88daeb7463"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/ru-ru/cw.scp",
+      "sha256": "5847fc819e1ff9848d947bdb8c552138e09de27c7286a83879db795741215cdd"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/ar.scp",
+      "sha256": "63af91e2f1b797c4f243c992773e0349486d4be1320e24ef6739d9bcbba7bc63"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/as.scp",
+      "sha256": "64e723300bbeca19e94967ce7d4e20908c162471f05ecb6dabc2866bd94198cb"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/aw.scp",
+      "sha256": "2b1026a2cb78f39ad114a0e889c2f1807f95eac31d933a1b28532c7c4e18fe0f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/bf.scp",
+      "sha256": "e2204002af330b98314920ecdab06409857c908eb6e9e28ae973dcf371f7aba3"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/br.scp",
+      "sha256": "7f22262b67803ed45c4e2ccbbf45fcd96883d97060ee2b1563397c0ef5aa5684"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/bs.scp",
+      "sha256": "54a0a5fc75102c6541bdfa3197ed14b1bbc8dac8d81ddce3614baa54ed9ecef6"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/bw.scp",
+      "sha256": "d9d798d4b7d8be1c5d7660447301fb524acb1ea5d9b742490bec94be4f4fb469"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/cf.scp",
+      "sha256": "3a2e32016a93bac860ba968ec5ed60340a92a0f64e3eacc546e958024e02d5d1"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/cr.scp",
+      "sha256": "5c5ad32252cab51f1eeeae771e629f27c1e3d4bac5fb3cbfd73bcca2a441dcfa"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/cs.scp",
+      "sha256": "3e94ec42287a29185b14c4ea99ab4923f3bd65ea9f63ff3eeef910614a64788f"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-cn/cw.scp",
+      "sha256": "69d4deee2cf5ba65d6125a60f9e1d9a64d1f371b447ee87e7802636b8220dac0"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/ar.scp",
+      "sha256": "0c87c43656abf55ae576ed02cbf8b60e435a7eb3575841083fb98807c96e0f5e"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/as.scp",
+      "sha256": "fbc09e96f5362d8016c04766a3fdbf75dec63cf6e252f4425f82b040df911630"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/aw.scp",
+      "sha256": "8ff6491b85cf0fea0ecae95e6dcca1414e20dec54c789b6c4617236578210060"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/bf.scp",
+      "sha256": "e6bd206342d73b8f138122171218e4219e461f4dfb974ff7e7f6ba1190b91ac6"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/br.scp",
+      "sha256": "87fb5aa8ea81d3c99da615e867b4ab14d48e44edbff7f8f9bbbcaf2d4292b843"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/bs.scp",
+      "sha256": "a5b52631bccf742ea63a97fc5357934fc8510b093a17082d90aa12adc330c230"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/bw.scp",
+      "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/cf.scp",
+      "sha256": "3afbe62341f868d73857c3a537d1fdda28f6fa357baa340a60d8f9e5301083d5"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/cr.scp",
+      "sha256": "642067eb3318e62f5d7f5e2a54ce2aaf7cafcb3fc12c7f850a46b9285e3ac630"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/cs.scp",
+      "sha256": "a7f9c7a6eb2ba4062848a41577cfe6425aaf02be93f79418c9111b070b53faa8"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/DataTable/zh-tw/cw.scp",
+      "sha256": "37188947a672af7b1446dd688d29a913c619b0c9626f81fdc476c38ff101ad4f"
+    }
+  ],
+  "equip_map": {
+    "file": "work/m9/ac630491/tutorial-actions-001/equip-map.bin",
+    "sha256": "1bc3416b89235a2064616b8d7f2e06c0b412fade8f3983307a5eb0042d8b5d2e"
+  },
+  "fixtures": [
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/inputs.txt",
+      "sha256": "d032eb22b0826f631a92eef073562ab59f347e769513c91592c0b7465725571a"
+    },
+    {
+      "file": "work/m9/ac630491/tutorial-actions-001/all47.scp",
+      "sha256": "30d5055834b82bd6757adad33be5f1a73b532cbc5975425833297256458e95e0"
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "ui19to22": true,
+    "equip23to26": true,
+    "cursor27to34": true,
+    "combat35to39": true,
+    "item40to46": true,
+    "lifecycle_and_branch_order": true,
+    "files_prepared": 99,
+    "records_prepared": 39864,
+    "synthetic47_prepared": true,
+    "production_host": false,
+    "unsafe_cursor_failure_resolved": false,
+    "full_Tutorial": false
+  },
+  "natural_exit": 0,
+  "normal_client_relinked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

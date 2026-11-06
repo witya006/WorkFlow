@@ -75,7 +75,7 @@ def main():
         raise ValueError('Source item mapping differs from pinned 455 bytes')
     report = {'scope': 'Spatial QBI rules and local spawn known bytes with a recording host; real world/Avatar and item tail OPEN',
               'architecture': 'x86', 'entry_rva': hex(pe(exe.read_bytes())['entry_rva']),
-              'sources': {name: sha(native/name) for name in names + [probe.name, 'client455_tutorial_script.h', 'client455_tutorial_runtime.h', 'client455_tutorial_spatial.h']},
+              'sources': {name: sha(native/name) for name in names + [probe.name, 'client455_tutorial_script.h', 'client455_tutorial_runtime.h', 'client455_tutorial_spatial.h', 'testing/client455_tutorial_recording_host.h']},
               'script_sha256': sha(Path(__file__)), 'reference_sha256': sha(ref_path),
               'library': library.relative_to(WS).as_posix(), 'library_sha256': sha(library),
               'objects': [{'file': p.relative_to(WS).as_posix(), 'sha256': sha(p)} for p in objects],

@@ -102,3 +102,8 @@ probe_client455_tutorial_spatial.py, checkpoint_client455_tutorial_spatial.py.
 Далее060: UI19–22, Equip23–26, затем Cursor27–34/Combat35–39/Item40–46;
 CTutorialBoard/briefing и реальный Avatar/world host. Сцена, локальные сообщения,
 настоящий Tutorial иjoint fourstage обязательны. M6/M6F/M7/M9 открыты.
+
+Дополнение060: recording host вынесен в тестовый template header, spatial
+регрессия повторена без изменения правил. Текущие артефакты:c73ed3fe.../entry9B30,
+lib42c67412...; исходные артефакты059 выше исторические.
+[Следующий участок](client455-tutorial-actions.md).

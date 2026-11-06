@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Участок060: QBI19–46 rules перенесены; composition47families/99programs prepared.
+Recording-host проверки прошли. Реальное исполнение сценариев/UI/Avatar/world
+и обычный Tutorial ещё открыты. Далее061 — CTutorialBoard/briefing и реальные
+providers, затем jointTutorial/fourstage.
+[Доказательства](../research/client455-tutorial-actions.md). M6/M6F/M7/M9 открыты.
+
 Участок059: Move6–8/Creation9–11/Position12–18 перенесены и проверены с recording
 host. Factory создаёт0–18; остальные28 типов и настоящий world/Avatar host
 открыты. Item packet DWORD+25 остаётся неподтверждённым. Далее060 — UI/Equip,

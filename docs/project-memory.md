@@ -23,6 +23,47 @@
 
 ## Последний проверенный результат
 
+Tutorial-actions060: client455_tutorial_actions.{h,cpp};ActionsHost abstract
+extendsSpatialHost;Factory composes0–46. Native recordinghost,NOTrealUI/world.
+UI19open21closeforcebit4;20/22waitnotimeout. UI0/63/64→board0,5→7,6→3,11→17;
+inventorypage0;skill/forcewindowupdateTab(0,0,1)thenselect0samewindow.25openfinditem
+Land4289E0+36→477D10/use4FAA70,missingND284;27directshow;25/27directclose.
+Equipmap16AA9C74={5,1,2,6,4,8,7,3,9,9,10,10,11,11,11,46};slot25523skip;
+invalid16..25423factoryrefused.25slot12then13;24/26waitnot4FE2B0;26slot12bothempty.
+Cursor data6/8originshort,10/12targetshort,14button,15window,16DWORDvalue.
+27/31originFFFFFFFF orscreen0..4;28/32default427020/element4272B0 returnDWORDX/Y,
+NOTrect;lowWORDsigned targets. UIpoint63 mapsboard1 unlikeUIopen63→0;keepseparate.
+Failedhelper canleaveuninitializedcoords;Hostpoint.initialized mustexplicit,
+Startfalseifunknown(gap),knownfalse-result retainsforcebit4/continuation.
+27/28positiveSetCursorPos offsetorigin+Y21 thenlogicalcoords,negative→5578F0;
+31/32exactlogicalcompletion.29stageinputDWORDvt60Tutorial5588A0→owner64;
+30mouseShowBOOLvt486233C0(+systemShowCursorwhenconfigured).33missing/projfail
+immediate,successmotionandUpdatefalse;34defaultmotion/Updatefalse;externalwritersOPEN.
+Combat35mode(kind==1),37flag24308(kind!=0),forcebit4.36trace+locktargettype,
+wildcardindex/racefaction/monsterlocalindex;missingmonsterDTaccepts.38feedback
+type thenwildcard/type4/skillcode;missingSkillaccepts;Finishclearsctxattack/skill/
+targetpair.39privatekind255,ctx.state52unsignedthreshold;counterwritersmeaningOPEN.
+AllCombatoperationActive1/0;RF455_GetTutorialCombatParameters typedreadonlyview.
+Item40/41tempClone→resolve/create→stackcount200OR45FE90value→item96→serialshared
+WORD→tempBoard620 attachitem+serial→emptyInventory/insert.41category18/use then
+closeboard3onlyifpreviouslyclosed. Boarddtorbeforeclonedtor;failedlookupnoID.
+43/45board7/3 objectifnotlinked→finditemslot→board6link(target255,255,select0).
+42underlyingitemfield112wait;44/46link+optionalidentityslotBYTE(q-1),0wrap255.
+50functionranges/equip16/2vtablebindings equalbothpins;11completeasm;ID758bbebc
+closed/save. Raw artifacts/client455-tutorial/actions-*.json,060-*-asm.
+WinProc7D2260decompileexcerptonly,NOTfullacceptance. Ownlib71c8d650.../
+PEac630491.../entry13F80 naturalexit0.99files/39864processors prepared +synthetic47,
+NOTfullruntime. Recording spatialfixture extracted template native/testing/;
+059shortregressionPEc73ed3fe.../entry9B30/lib42c67412...passed. Rules059unchanged.
+NormalPE56905e68/182client20kernel23facade unchanged;no broadunchanged suites.
+Research/client455-tutorial-actions.md +inventory/client455-tutorial-actions-*.
+Next061 actual CTutorialBoard/CGUIBriefingWindow/message0–4 providers,then
+Avatar/world/frame/input/feedback/localmessages/joint4stage. Remaining real
+host/backend/helper/data-view bindings mandatory,plusfailedUIpoint/equipdomain/
+itemtail25/camera276/numeric/error gaps. M6/M6F/M7/M9OPEN.Noserver/inputEXEexecution.
+
+## Предыдущий перенос — tutorial-spatial059
+
 Tutorial-spatial059: new client455_tutorial_spatial.{h,cpp}, SpatialHost pure
 interface+factory composition0–18. RecordingHost native;NOTrealworld/Avatar.
 Move6/7 mode0marker,only6createpath43EEF0→facevt84(1/12)→state10000001. Update XZdistance<=15

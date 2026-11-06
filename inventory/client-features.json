@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-ACTIONS-060",
+      "status": "partial",
+      "description": "Source-owned QBI UI/Equip/Cursor/Combat/Item rules and all47-family composition; recording host, not actual Tutorial/UI/world",
+      "reference": [{"rva":"0x28640","role":"UI rules"},{"rva":"0x28cb0","role":"equipment"},{"rva":"0x28f10","role":"cursor"},{"rva":"0x29440","role":"combat predicates"},{"rva":"0x29660","role":"item actions"},{"rva":"0x29c60","role":"item waits"}],
+      "implementation": ["scripts/native/client455_tutorial_actions.h","scripts/native/client455_tutorial_actions.cpp"],
+      "verification": "Own x86 nativeexit0;UI mapping/tab order/equip16/dual slots/cursor arguments/lowWORD/chrome21/lock+feedback+counter/item temporary lifetimes+insert/use/link branches;99real programs39864processors+synthetic47 prepared;spatial fixture regression passed",
+      "evidence": ["inventory/client455-tutorial-actions-reference.json","inventory/client455-tutorial-actions-native.json","inventory/client455-tutorial-actions-checkpoint.json","research/client455-tutorial-actions.md"],
+      "gaps": ["Concrete UI/Avatar/world host, full panel/briefing/frame/feedback/data-view bindings and actual Tutorial execution","Failed helper uninitialized cursor coords not fabricated;equipment23 invalid map indices refused","Cursor33/34 external completion and Combat39 counter/feedback writers","Itemtail25/camera276/numeric/error domains from earlier stages","Ordinary Tutorial/fourstage/full455/authentication/gameplay/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-SPATIAL-059",
       "status": "partial",
       "description": "Source-owned Move6to8/Creation9to11/Position12to18 rules and known local spawn bytes; recording host, not real Avatar/world",

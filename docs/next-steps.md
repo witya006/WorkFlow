@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок060: ActionsFactory композирует все47семейств QBI;99реальных сценариев/
+39864records иsynthetic47 подготовлены. QBI UI19–22/Equip23–26/Cursor27–34/
+Combat35–39/Item40–46 rules прошли recording-host nativeexit0. Это НЕ реальный
+UI/Avatar/worldhost или полноепроигрывание. Далее061 CTutorialBoard/
+CGUIBriefingWindow и message providers, затем actualframe/input/feedback/world
+и jointTutorial/fourstage. Unsafe failed UI point coords не выдумывать;
+equip23 slots16..254 внедоказанной map16 отказаны. Itemtail25/camera276/прочие
+gaps сохраняются. [Доказательства](../research/client455-tutorial-actions.md).
+ProductionPE056unchanged;M6/M6F/M7/M9OPEN. Spatial recording fixture теперь
+в native/testing/, его короткая регрессия обновлена; не включать в production.
+
+Предыдущий результат:
+
 Участок059: Move6–8/Creation9–11/Position12–18 rules готовы в standalone
 spatial module; realhost ещё отсутствует. Factory0–18,946/1235instantiable в
 3samplefiles,289 требуютостальных28types. Это не процентготовности/Tutorial.

@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок060: приняты bounded QBI19–46 rules с recording host. Factory47types и
+99programs/39864records подготовлены, но это не реальное проигрывание обучения.
+Concrete UI/Avatar/world/frame/feedback и ordinary Tutorial/fourstage обязательны.
+Failed UI point coordinates и equip23 invalid table domain остаются известными
+расхождениями; itemtail/прочие ранее открытые области не закрыты.
+[Доказательства](../research/client455-tutorial-actions.md). M6/M6F/M7/M9 открыты.
+
 Участок059: приняты bounded Move/Creation/Position rules с recording host,
 known monster17/item25 wire и category47 map. Real world/Avatar/backend и
 decrement shared remaining ещё не приняты. Item receiver читает unknown DWORD

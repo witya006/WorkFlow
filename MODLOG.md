@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Tutorial-actions060. Recovered QBI19–46 rules and composed all47
+processor families. Recording-host native exit0;99real programs/39864records
+prepare, without claiming playback. Equip map16, lifetimes, cursor/feedback/
+item/link branches verified. Undefined failed UI coordinates remain OPEN.
+Shared spatial fixture extracted/tested; production PE unchanged.
+[Evidence](research/client455-tutorial-actions.md).
+
 2026-11-06 — Tutorial-spatial059. Restored Move/Creation/Position rules6–18,
 shared remaining state and exact known spawn bytes. Recording-host x86 native
 exit0; prior scheduler regression passed. Item receiver reads an uninitialized

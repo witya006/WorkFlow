@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,tutorial-actions060: установок нет.50ranges/equip16/virtual
+bindings equalbothpins,11completeasm; IDA758bbebc closed/save. Own x86 lib
+71c8d650.../PEac630491.../entry13F80 naturalexit0;recordinghost,не actual UI.
+99programs/39864records prepare;spatial fixture regression exit0. Production
+56905e68... unchanged. [Доказательства](../research/client455-tutorial-actions.md).
+
 Дополнение06.11,tutorial-spatial059: установок нет.32function ranges/47category
 bytes/counters/constants equalbothpins,7asm functions complete. IDAc60c1913/
 5b89854f/7dedc5cb/cfea0c20 closed/save. Own x86 lib19d337cb.../PEdb7706b3.../entry9B30 exit0;
