@@ -8,7 +8,10 @@ class RF455TutorialProcessor;
 struct RF455TutorialQuestState;
 
 struct RF455TutorialContext {
+    std::uint32_t operationActive = 0; // Target context+0, set by Move/Creation.
     std::uint32_t startTime = 0;
+    float remainingDistance = 0;       // Target context+8.
+    std::array<float, 3> cameraRemaining{}; // Target context+12/16/20.
     std::uint8_t input = 11, attackType = 255;
     std::uint32_t skillIndex = 0xffffffff, target[2] = {0xffffffff, 0xffffffff};
     // Meaning of owner+52 is not yet certified. Starting a QBI clears it.

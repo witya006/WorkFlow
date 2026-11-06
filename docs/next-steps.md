@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок059: Move6–8/Creation9–11/Position12–18 rules готовы в standalone
+spatial module; realhost ещё отсутствует. Factory0–18,946/1235instantiable в
+3samplefiles,289 требуютостальных28types. Это не процентготовности/Tutorial.
+OwnPEdb7706b3.../entry9B30/nativeexit0; context058 расширен и regressionpassed.
+Source math XZ ignoresY; type17defaultpending; type18camera float276 unknownname,
+не FOV. Item producer427F90 initializes25bytes, receiver565A90 readsDWORD+25
+andstoresitem676:tailunknown,realdispatch mustnotfabricateit. Далее060 UI19–22/
+Equip23–26,затемCursor/Combat/Item,CTutorialBoard/briefing/Avatarworldhost and
+jointTutorial/fourstage. [Доказательства](../research/client455-tutorial-spatial.md).
+ProductionPE056unchanged;M6/M6F/M7/M9OPEN.
+
+Предыдущий результат:
+
 Участок058: восстановлены QBI scheduler/refresh/flags и общие Begin/Update/
 Finish, message0–4/wait5. Own x86 lib/native9618bd36... entry8100/exit0,
 recording host; реальные UI/Avatar side effects ещё не приняты.42ranges/10vtables

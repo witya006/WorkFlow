@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,tutorial-spatial059: установок нет.32function ranges/47category
+bytes/counters/constants equalbothpins,7asm functions complete. IDAc60c1913/
+5b89854f/7dedc5cb/cfea0c20 closed/save. Own x86 lib19d337cb.../PEdb7706b3.../entry9B30 exit0;
+recording host, не world. Common-context regression058 passed. Production
+PE56905e68... unchanged. [Доказательства](../research/client455-tutorial-spatial.md).
+
 Дополнение06.11,tutorial-runtime058: установок нет.42function ranges/10vtables
 совпали в pins,7полных asm функций проверены. IDAf84ad03d closed/save.
 Own x86 library/native9618bd36.../entry8100, naturalexit0. Recording host,

@@ -23,6 +23,45 @@
 
 ## Последний проверенный результат
 
+Tutorial-spatial059: new client455_tutorial_spatial.{h,cpp}, SpatialHost pure
+interface+factory composition0–18. RecordingHost native;NOTrealworld/Avatar.
+Move6/7 mode0marker,only6createpath43EEF0→facevt84(1/12)→state10000001. Update XZdistance<=15
+releasesmarker1,NOtimeout. Mode1 remainingDistance=float(unsignedamount),only6
+targetsin/cos(yaw*6.283185307/360)*DWORD(amount+2)+position;getterorderX/yaw/Y/Z/yaw.
+Mode1remaining<=1OR unsignedelapsed>=20000;mode2forcefinish;type8toggle(mode==1,0).
+Position12setpos1/0;13yawvalue[1],1/12;14orbit+dirty;15/16absremaining3,only15
+relativecameraaction;allremaining<=1OR20000ms.17Starttrue/Updatefalse default,
+18setcameraFloat276(value<=0?75:value),fieldname/providerUNCONFIRMED,notFOV.
+Orbitangles+distance,notXYZEuler. Contextfields added operationActive(target+0),
+remainingDistance(+8),cameraRemaining(+12/16/20). Realframe decrement notwired.
+Move/Creationstartoperation1/Finish0. Creation9 monster17packet,10knownitem25,
+11waitcontaineremptyOR20000. ProcessglobalIDsinitialitemWORD3840/monsterDWORD65535,
+wrapnaturally;failedlookupdoesnotconsume. TemporaryCItem begin→lookup→dispatch→
+end,includingfailedlookup,RAIIscope;both9/10forcefinish evenlookupfalse.
+IMPORTANT producer427F90onlyinitializes25itembytes;receiver565A90readsDWORD+25
+→46EB70storesitemDWORD676. Tailuninitialized/meaningOPEN;don'tinventzeros;
+Host.localItemSpawnKnown25 receivesonlyknownbytes,notactualfullhandler.
+Itemmap47pinnedAA9C44,38..46zero;resolver600030rejects>=47. MonsterIndexlowWORD,
+coord __ftol2_sse lowAX,marker1358954291. XZx87sum/floatspill/_CIsqrt;direction
+float/double spills retained. CRT/error/NaN/allFP domains notfullycertified.
+Nativeallmethods/flags/remaining/timeouts/wrap/triangle/nextafter15/Yignore,
+getterorder/known17+25/map47/clone lifetime/failedlookup/IDwrap passedexit0.
+3BW/CW/AR1235records,946factorycreate/289open; fullpreparestopsfirst>=19.
+Ownlib19d337cb.../PEdb7706b3.../entry9B30;058regressionlibdaab7a98.../
+PEa95ef0b2.../entry8050passedaftercontextchange. Production56905e68 unchanged;
+no broad unchanged suites rerun,canonical20kernels discovery preserved.
+32ranges,data/counters/constants/character vtslots equalbothpins,7completeasm.
+43EEF0 doesnotcopyposition:decompiler hidespaththis for5EE790;pathcalls worldvt188.
+vt84=43D560→7CE550 facesfromcurrent,target via8B4E40→scalarvt88=43D530→7CE360.
+OwnedIDA c60c1913/5b89854f/7dedc5cb/cfea0c20 closed/save.
+Raw artifacts/client455-tutorial/spatial-*.json,059-*-asm.
+Research/client455-tutorial-spatial.md + inventory/client455-tutorial-spatial-*.
+Next060 UI19–22/Equip23–26 thenCursor27–34/Combat35–39/Item40–46,board/briefing/
+realworldAvatar/localhandlers/joint4stage. Itemtail andframe/providers mandatory
+beforefullTutorial acceptance. M6/M6F/M7/M9OPEN.No server/inputEXE execution.
+
+## Предыдущий перенос — tutorial-runtime058
+
 Tutorial-runtime058: own source QBI scheduler/basic message0–4/wait5 в
 client455_tutorial_runtime.{h,cpp}. Standalone, НЕ ordinary Tutorial/realhost.
 RF455TutorialHost чисто абстрактный; native recording host не реализация UI.

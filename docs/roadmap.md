@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Участок059: Move6–8/Creation9–11/Position12–18 перенесены и проверены с recording
+host. Factory создаёт0–18; остальные28 типов и настоящий world/Avatar host
+открыты. Item packet DWORD+25 остаётся неподтверждённым. Далее060 — UI/Equip,
+затем Cursor/Combat/Item, board/briefing и Tutorial/fourstage.
+[Доказательства](../research/client455-tutorial-spatial.md). M6/M6F/M7/M9 открыты.
+
 Участок058: QBI scheduler/refresh/flags/shared timer и правила сообщений/
 ожиданий восстановлены, standalone native с recording host прошёл. Actual
 UI/Avatar host и41остальной селектор открыты. Далее059 — Position/Move/Creation,

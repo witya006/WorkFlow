@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — tutorial-runtime058: восстановлены порядок/состояния QBI,
+Последний участок M6 — tutorial-spatial059: перенесены правила Move/Creation/
+Position. Factory охватывает0–18; recording-host проверки прошли. Настоящий
+мир/Avatar, остальные28 селекторов и неизвестный хвост item packet ещё открыты.
+[Доказательства](research/client455-tutorial-spatial.md).
+
+Предыдущий участок M6 — tutorial-runtime058: восстановлены порядок/состояния QBI,
 сообщения и ожидания. Собственная библиотека проверена с recording host;
 реальный UI/Avatar host и остальные41 селектор ещё открыты.
 [Доказательства](research/client455-tutorial-runtime.md).

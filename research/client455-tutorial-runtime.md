@@ -116,3 +116,8 @@ probe_client455_tutorial_runtime.py → checkpoint_client455_tutorial_runtime.py
 Далее059: остальные CQBI processors, начиная с Position/Move/Creation, их
 состояния и реальные Avatar/world contracts; затем UI/экипировка/cursor/combat/
 item, CTutorialBoard/briefing и подключение настоящего Tutorial.
+
+Дополнение059: context расширен полями операции, остатка дистанции и camera
+remaining. Короткая регрессия повторена: текущая PEa95ef0b2.../entry8050,
+librarydaab7a98...; исходные артефакты058 выше остаются историческим результатом.
+[Новые доказательства](client455-tutorial-spatial.md).

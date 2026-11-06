@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-SPATIAL-059",
+      "status": "partial",
+      "description": "Source-owned Move6to8/Creation9to11/Position12to18 rules and known local spawn bytes; recording host, not real Avatar/world",
+      "reference": [{"rva":"0x27c10","role":"Position"},{"rva":"0x28290","role":"Move"},{"rva":"0x27f90","role":"Creation"},{"rva":"0x4b4ca0","role":"XZdistance"},{"rva":"0x165a90","role":"item receiver with unresolved tail"}],
+      "implementation": ["scripts/native/client455_tutorial_spatial.h","scripts/native/client455_tutorial_spatial.cpp","scripts/native/client455_tutorial_runtime.h"],
+      "verification": "Own x86 nativeexit0;position/default17/18,request/XZ boundary/clock+counter wrap/directed getter order,known17+25 bytes/category47/temp clone lifetime;058 shared-context regression passed;unknown real commands explicitly rejected",
+      "evidence": ["inventory/client455-tutorial-spatial-reference.json","inventory/client455-tutorial-spatial-native.json","inventory/client455-tutorial-spatial-checkpoint.json","research/client455-tutorial-spatial.md"],
+      "gaps": ["Item DWORD+25 tail read into item676 uninitialized by QBI producer;not fabricated","Real world/Avatar/Frame/remaining decrement/marker/localreceiver providers and camera276 name","Remaining28 selectors/board/briefing/Tutorial/fourstage","CRT math/error/NaN/allFP domains not fully certified","Full455/authentication/gameplay/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-RUNTIME-058",
       "status": "partial",
       "description": "Source-owned QBI scheduler/common flags/refresh/shared timer and message0to4/wait5 rules; recording host, not yet production Tutorial",

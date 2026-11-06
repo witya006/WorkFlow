@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Tutorial-spatial059. Restored Move/Creation/Position rules6–18,
+shared remaining state and exact known spawn bytes. Recording-host x86 native
+exit0; prior scheduler regression passed. Item receiver reads an uninitialized
+DWORD+25 beyond producer25bytes; tracked OPEN without invented tail. Real host/
+remaining28 selectors/Tutorial still open; production PE unchanged.
+[Evidence](research/client455-tutorial-spatial.md).
+
 2026-11-06 — Tutorial-runtime058. Recovered QBI scheduling/refresh/shared state,
 message and wait rules. Own x86 library/recording-host tests exit0, including
 clock wrap and completion that unloads the runtime. Other41 selectors/real host

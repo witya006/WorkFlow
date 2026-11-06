@@ -1,59 +1,59 @@
 {
   "scope": "QBI scheduler/flags/common start and message/wait rules with a recording host; not the real UI/Avatar host",
   "architecture": "x86",
-  "entry_rva": "0x8100",
+  "entry_rva": "0x8050",
   "sources": {
     "client455_tutorial_script.cpp": "6745120cf611ed3eeff46cfb6d395d1d8f7ba5ebc2f036e5036cf900c2992fbd",
     "client455_tutorial_runtime.cpp": "f971f174242753ccfd19ab4a7ee2831a059fae8254610339d504df6fd5d38363",
     "client455_tutorial_runtime_probe.cpp": "fa869364af5253a5e31e8280e7b7dc68eb37f3bdbf8340c32e68181b28c63545",
     "client455_tutorial_script.h": "a9a578c626162cdb2a1bb726dd2bda183eaa1bcb5843bb7e9715d7ae47499de9",
-    "client455_tutorial_runtime.h": "097f212ee668119e5b624325190e2a407475be00c1dd520fa5eefeaf67c707b3"
+    "client455_tutorial_runtime.h": "04b7f28cee4b3f1bf2f91aaddd840d2a8f053b1c01479d0cbe76fa7fff33810a"
   },
   "script_sha256": "086081898b4847868683dc4e6c9e5ab7412a27216eca3eb94b95d833d3b9c575",
   "reference_sha256": "8cca8fd87a7b70466d8db7bcbd5e3c44a9fb0cec21791e38b3891e70b9d35ad2",
   "library": "work/client455-port/tutorial-runtime-probe/RF455TutorialRuntime.lib",
-  "library_sha256": "a758e02cb6f7a511a41dfa356596b011511f0cdc599bf655927d138ae869ba3f",
+  "library_sha256": "daab7a98286f260a1fe54c14d4939ab79a5c13cfac721c57e5d2f3ddc3bb290a",
   "objects": [
     {
       "file": "work/client455-port/tutorial-runtime-probe/client455_tutorial_script.obj",
-      "sha256": "fc95b21af8d28c97f6681634641084fab1481adb1d1921d0c6532dc5e46e6a74"
+      "sha256": "78e122677ca9021d81499d1e46f9c41c8ca8609e723c24a8b87a30b810f7db1b"
     },
     {
       "file": "work/client455-port/tutorial-runtime-probe/client455_tutorial_runtime.obj",
-      "sha256": "8d1e02724c57d8ff3c58f4c71dbb5a9f08c9f384e388ec06978d32437af4618b"
+      "sha256": "30d3493e5d7876d321794b31ff1a806ab1bbdbf098ff44e320894e31309fd786"
     },
     {
       "file": "work/client455-port/tutorial-runtime-probe/client455_tutorial_runtime_probe.obj",
-      "sha256": "a9484f5331e4520233b480d131396f57926b1c4cd5657d2ea9d1f573affd3a9d"
+      "sha256": "876e28ead0b322ecb93496c2b2beecf78e0c6d12252ad30fd71f8217ad8c4f93"
     }
   ],
   "exe": {
-    "file": "work/m9/9618bd36/tutorial-runtime-001/tutorial-runtime-probe.exe",
-    "sha256": "9618bd36f5697c7fbd438f919e34832b2abd3a9abd76fadfbbf950c3964b8b95"
+    "file": "work/m9/a95ef0b2/tutorial-runtime-001/tutorial-runtime-probe.exe",
+    "sha256": "a95ef0b2f78e29b6848c0f52e8f5b49df25ccb83911dd0b0da38a9edae50b33b"
   },
   "map": {
     "file": "work/client455-port/tutorial-runtime-probe/tutorial-runtime-probe.map",
-    "sha256": "c1d5ff452010a8c5c64b597415652c57ae6c76619ae059d90f12b24cccc278f4"
+    "sha256": "5190b0575e36ec40386cc700f1fd82a69c86847720030b5a0c7bc30f3315f8ce"
   },
   "build_log": {
     "file": "work/client455-port/tutorial-runtime-probe/build.txt",
     "sha256": "5fef5f2ae312c26814ae4adf83267088db9a04bb647c080c61911d1220256948"
   },
   "output": {
-    "file": "work/m9/9618bd36/tutorial-runtime-001/result.json",
+    "file": "work/m9/a95ef0b2/tutorial-runtime-001/result.json",
     "sha256": "b4148a062bbf577675069e5079ca4273557bc584c371846fe475856cd4549071"
   },
   "inputs": [
     {
-      "file": "work/m9/9618bd36/tutorial-runtime-001/bw.scp",
+      "file": "work/m9/a95ef0b2/tutorial-runtime-001/bw.scp",
       "sha256": "6b9dc2da906b716e01afa0687e8eae329abc9e221e240d02c957e955a8d321dc"
     },
     {
-      "file": "work/m9/9618bd36/tutorial-runtime-001/cw.scp",
+      "file": "work/m9/a95ef0b2/tutorial-runtime-001/cw.scp",
       "sha256": "9a041c66e9bff8944ac2c5e578c7105155834d6cc237daad734f5f757d9c0b64"
     },
     {
-      "file": "work/m9/9618bd36/tutorial-runtime-001/ar.scp",
+      "file": "work/m9/a95ef0b2/tutorial-runtime-001/ar.scp",
       "sha256": "cfd7decd79bb405db9a140c00018a0fa9c504ed309021f290b539373310e6ddb"
     }
   ],

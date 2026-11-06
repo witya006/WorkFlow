@@ -1,0 +1,94 @@
+{
+  "scope": "Spatial QBI rules and local spawn known bytes with a recording host; real world/Avatar and item tail OPEN",
+  "architecture": "x86",
+  "entry_rva": "0x9b30",
+  "sources": {
+    "client455_tutorial_script.cpp": "6745120cf611ed3eeff46cfb6d395d1d8f7ba5ebc2f036e5036cf900c2992fbd",
+    "client455_tutorial_runtime.cpp": "f971f174242753ccfd19ab4a7ee2831a059fae8254610339d504df6fd5d38363",
+    "client455_tutorial_spatial.cpp": "b411098382e281c2404ca83ec8d3fb6a72413867f215c793ead0d946589fd34f",
+    "client455_tutorial_spatial_probe.cpp": "c0538d541c9391a27a91d59b3b8f3c6c7cd9a20834b4742d60b0ff4bb19865a4",
+    "client455_tutorial_script.h": "a9a578c626162cdb2a1bb726dd2bda183eaa1bcb5843bb7e9715d7ae47499de9",
+    "client455_tutorial_runtime.h": "04b7f28cee4b3f1bf2f91aaddd840d2a8f053b1c01479d0cbe76fa7fff33810a",
+    "client455_tutorial_spatial.h": "064d05deebdfd224937220072729ff6a6529073aecbde42ad617b29a73eb3213"
+  },
+  "script_sha256": "a1b6f463bf40854cd4910596afe7bbef6adcd6ebc3eb81445fa9efc1dd15344d",
+  "reference_sha256": "bf27aca3865bbe30148bb0956e139b8153a17ad72c0fe65fa78a5c83c6e66eed",
+  "library": "work/client455-port/tutorial-spatial-probe/RF455TutorialSpatial.lib",
+  "library_sha256": "19d337cb7d599e8f51c1caee31925abbaf587b58072439db57931e825c9c120c",
+  "objects": [
+    {
+      "file": "work/client455-port/tutorial-spatial-probe/client455_tutorial_script.obj",
+      "sha256": "c9d239d94139aaa134304438a0d4d31493273e8a1e72bfbc3bd2ee2fee940a8d"
+    },
+    {
+      "file": "work/client455-port/tutorial-spatial-probe/client455_tutorial_runtime.obj",
+      "sha256": "050247ed4c4c976d3b0f4dd44aa6e6834c7dd31a7498c1c615a92cae755f3249"
+    },
+    {
+      "file": "work/client455-port/tutorial-spatial-probe/client455_tutorial_spatial.obj",
+      "sha256": "dfe7a05a127416a0f13d119556e0a5491c73c5a272ad4b586f37e3b4b8e3d848"
+    },
+    {
+      "file": "work/client455-port/tutorial-spatial-probe/client455_tutorial_spatial_probe.obj",
+      "sha256": "cea24c7897dee3e923211e93faec7d2acd41118ad505a38d82f5bb3ceb0380a0"
+    }
+  ],
+  "exe": {
+    "file": "work/m9/db7706b3/tutorial-spatial-001/tutorial-spatial-probe.exe",
+    "sha256": "db7706b30ed2416da150eee0f94aea4ca2a72c3cb1e0ea22e9323e2ca4d958de"
+  },
+  "map": {
+    "file": "work/client455-port/tutorial-spatial-probe/tutorial-spatial-probe.map",
+    "sha256": "b08c657fac430ed5e5fc48570fd2cc00ed790af882bbdda680ff26438877c722"
+  },
+  "build_log": {
+    "file": "work/client455-port/tutorial-spatial-probe/build.txt",
+    "sha256": "fd047536c506548019ac3d7a49d9474b8de9305d86ae64e0216d2514f87f5c3d"
+  },
+  "output": {
+    "file": "work/m9/db7706b3/tutorial-spatial-001/result.json",
+    "sha256": "7f9ddbf1ace4e27e211d5badb8e1e75f810771d9242fc5567d401fb9cec61c28"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/db7706b3/tutorial-spatial-001/bw.scp",
+      "sha256": "6b9dc2da906b716e01afa0687e8eae329abc9e221e240d02c957e955a8d321dc"
+    },
+    {
+      "file": "work/m9/db7706b3/tutorial-spatial-001/cw.scp",
+      "sha256": "9a041c66e9bff8944ac2c5e578c7105155834d6cc237daad734f5f757d9c0b64"
+    },
+    {
+      "file": "work/m9/db7706b3/tutorial-spatial-001/ar.scp",
+      "sha256": "cfd7decd79bb405db9a140c00018a0fa9c504ed309021f290b539373310e6ddb"
+    }
+  ],
+  "category_map": {
+    "file": "work/m9/db7706b3/tutorial-spatial-001/category-map.bin",
+    "sha256": "3d51bb4e5482f477eb9c9ea783664e0ba8d58ca937dbfe9c372551bd5ea8dec9"
+  },
+  "native": {
+    "status": "PASS",
+    "position12to18": true,
+    "move6to8": true,
+    "creation9to11_rules": true,
+    "XZ_distance": true,
+    "wire17_known25": true,
+    "timeout_wrap": true,
+    "counter_wrap": true,
+    "real_records": 1235,
+    "supported": 946,
+    "open": 289,
+    "production_host": false,
+    "item_tail25_resolved": false,
+    "full_Tutorial": false
+  },
+  "natural_exit": 0,
+  "normal_client_relinked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

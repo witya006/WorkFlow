@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок059: приняты bounded Move/Creation/Position rules с recording host,
+known monster17/item25 wire и category47 map. Real world/Avatar/backend и
+decrement shared remaining ещё не приняты. Item receiver читает unknown DWORD
+по+25; не подставлять значение без доказательства. Full Tutorial и28 других
+селекторов обязательны. [Доказательства](../research/client455-tutorial-spatial.md).
+M6/M6F/M7/M9 открыты.
+
 Участок058: принят bounded QBI scheduler и message/wait rules с recording host.
 Это не реальные UI/Avatar side effects.41селектор, остальные context fields,
 настоящий host/Tutorial/fourstage остаются открытыми. Отказ при отсутствии
