@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний аудит M6 — progress054: подтверждены четыре этапа455, включая
+Последний перенос M6 — progress-base055: восстановлены обычный базовый цикл,
+поле next-stage и Title next1. Реальные методы/счётчики проверены; полная
+сборка и existingCreate=1 сохранены. Фабрика4stage/Tutorial ещё открыта.
+[Доказательства](research/client455-progress-base.md).
+
+Предыдущий аудит M6 — progress054: подтверждены четыре этапа455, включая
 CGP_Tutorial; источник mode2 — Avatar stage. Текущая база ещё имеет три этапа
 и старые переходы. Следующий перенос охватывает stage/Avatar/Tutorial вместе.
 [Доказательства](research/client455-progress.md). Runtime в054 не менялся.

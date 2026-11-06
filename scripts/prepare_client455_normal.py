@@ -75,6 +75,24 @@ def main():
         if source.suffix.lower() in ['.lib','.dsp','.dsw']:continue
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
+            relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            if relative=='gameprogress/cgameprogress.h':
+                raw,count=re.subn(rb'(BOOL\s+m_bIsLoadedData\s*;)',rb'\1\r\n\tDWORD m_nextStage455=0xffffffff; // Owned initial safety domain;target Init retains this field.',raw)
+                if count!=1:raise ValueError('Progress storage boundary changed')
+                anchor=b'BOOL\tIsCreated( void )'
+                if raw.count(anchor)!=1:raise ValueError('Progress getter boundary changed')
+                api=b'void SetNextStage455(DWORD value){m_nextStage455=value;}\r\n\tDWORD GetNextStage455()const{return m_nextStage455;}\r\n\tvoid RequestStageExit455(){m_bExit=TRUE;}\r\n\t'
+                raw=raw.replace(anchor,api+anchor)
+                changes.append('target nextstageDWORD retained across Init;explicit next/exit API;whole4stage factory remains open')
+            if relative=='gameprogress/cgameprogress.cpp':
+                method=b'CGameProgress::MainLoop(';first,last=section(raw,method,method)
+                raw=raw[:first]+(native/'client455_progress_loop.inc').read_bytes()+raw[last:]
+                changes.append('455base input/exit/update/render/reset ordering;focus handling belongs to derived stages')
+            if relative=='gameprogress/cgp_title.cpp':
+                method=b'CGP_Title::CGP_Title()';first,last=section(raw,method,method);body=raw[first:last]
+                if body.count(b'Init();')!=1:raise ValueError('Title nextstage boundary changed')
+                body=body.replace(b'Init();',b'Init();\r\n\tSetNextStage455(1);');raw=raw[:first]+body+raw[last:]
+                changes.append('455Title constructor sets explicitnext1;fullTitle lifecycle notyetported')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='userinterface/spritemgr.cpp':
                 start,end=section(raw,b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )',b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )')
                 body=raw[start:end];anchor=b'\tif( pi_wSpriteID >= SP_ID_MINIMAP )'
@@ -324,6 +342,7 @@ def main():
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_connection.cpp','client455_connection.h','client455_connection_bridge.inc','client455_network_receipt.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_account.cpp','client455_account.h','client455_account_bridge.inc','client455_account_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_progress_loop.inc']=sha((native/'client455_progress_loop.inc').read_bytes())
     report['network_defaults']=codec_reference['generated_defaults']
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())

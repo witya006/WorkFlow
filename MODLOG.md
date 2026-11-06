@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Progress-base055. Ordinary CGameProgress now has explicit next
+storage/exit API and recovered Input/exit/Frame/Render/reset order. Actual
+base/Title/particle-owner native cases exit0;fullPE still reaches existing
+Create=1. Fourstage factory/Avatar/Tutorial remainopen. OwnedIDA3bc31778 saved/
+closed;no referenceEXE or server execution.
+[Evidence](research/client455-progress-base.md).
+
 2026-11-06 — Progress054. Pinned4stage classes via PE RTTI and28functions.
 Avatar mode2 is Tutorial;replay hypothesis rejected. Legacy3stage/modulo
 factory is an explicit client gap. Old INI reader has no static callers found;

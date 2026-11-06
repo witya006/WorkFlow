@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-PROGRESS-BASE-055",
+      "status":"partial",
+      "description":"Ordinary CGameProgress nextDWORD/exit API and baseInput/exit/Frame/Render/particlecount order;Titleconstructor next1",
+      "reference":[{"rva":"0x138f70","role":"Initretainsnext"},{"rva":"0x138ff0","role":"baseMainLoop"},{"rva":"0x13f6b0","role":"setnext"},{"rva":"0x13f6d0","role":"exit"},{"rva":"0x139050","role":"particlecounterreset"}],
+      "implementation":["scripts/native/client455_progress_loop.inc","scripts/prepare_client455_normal.py"],
+      "verification":"ActualfullobjectCGameProgress/Title/particleowner;next5values/Init,virtualorder/inactive/input/already/frameexit,realcounters reset;naturalexit0;fullPEexistingCreate1",
+      "evidence":["inventory/client455-progress-base-reference.json","inventory/client455-progress-native.json","inventory/client455-progress-base-checkpoint.json","research/client455-progress-base.md"],
+      "gaps":["Fullfourstagefactory/explicitnext transitions/Avatar/Tutorial remainopen;currentfactory3/modulo","Title/Login/Tutorial/MainGame fullruntime/UI/world/gameplay/IME/shutdown","Dynamicparticleowner vslegacyfixed1024","Ownnext initialFFFFFFFF vsoriginaluninitializeddomain;ownedMainLoopBOOL API retained","M6F/M7/M9 andrealonlineauthentication"]
+    },
+    {
       "id":"CLIENT455-PROGRESS-054",
       "status":"open",
       "description":"Mandatory455Title0/Login1/Tutorial2/MainGame3 factory,explicitnextstage and Avatar stage/network tutorial routing",

@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,progress-base055: установок нет.18function ranges equalbothpins,
+IDA3bc31778 closed/save=true. Actual CGameProgress/Title/particlecount probe
+naturalexit0. Fullx86PE5302f71a.../entry14A750,182client/20kernel/22facade,
+0unresolved;existingCreate=1. Fullfourstage/Tutorial/M6F/M9 открыты.
+[Доказательства](../research/client455-progress-base.md).
+
 Дополнение06.11,progress054: установок/пересборки нет.28function ranges,
 RTTI/vtables четырёх stage classes совпали в455pins; IDA3915694c closed/save.
 Mode2=Tutorial подтверждён через Avatar setter/фабрику/RTTI. Raw static scan

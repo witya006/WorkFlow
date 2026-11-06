@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Участок055: обычный CGameProgress получил next DWORD и целевой порядок
+Input/exit/Frame/Render/reset. Настоящие методы и counters проверены, новая
+полная сборка проходит existingCreate. Фабрика4stages/Avatar/Tutorial ещё
+открыты; следующий056 продолжает их зависимости и интеграцию.
+[Доказательства](../research/client455-progress-base.md). M6/M6F/M7/M9 открыты.
+
 Аудит054 уточнил обязательную работу M6: в455 четыре stage classes, включая
 Tutorial, а старая база использует три и modulo-переход. Восстановить stage/
 Avatar/Tutorial совместно, затем LoginUI/world transitions. Tutorial входит

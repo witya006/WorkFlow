@@ -23,6 +23,39 @@
 
 ## Последний проверенный результат
 
+Progress-base055: normal CGameProgress now24bytesx86:vt/fourBOOL/nextDWORD.
+Explicit SetNextStage455/GetNextStage455/RequestStageExit455;Init retainsnext.
+Ownconstructor defaultFFFFFFFF differsfrom targetuninitializeddomain,explicitgap.
+BaseMainLoop now Input→ifexitreturn1→FrameMove→Render→realparticlecountreset→0.
+IgnoresBOOLactive (owned API retained);virtualreturnsignored. Frameexit still
+renders/resets,observedafter nextInput. Title constructorSetNext1. Current
+MainAppfactory remains3/modulo;newnextfield NOT wiredtoactualtransitionsyet.
+Don'tmap legacyMainGame2 to targetTutorial2;fullfactory/Avatar/Tutorial joint
+migration remainsmandatory. ActualTitle lifecycle/input remainslegacy.
+
+Nativefullobjectprobe verified5next values/Initretention,baseCreate/Destroy,
+realvirtualorder/inactiveRendering/input/already/frameexit andactual existing
+particlecounts0/31/1023;naturalexit0. Currentparticles fixed1024,targetvector
+CHPARTICLEstride7836/count7832;dynamicowner notported,notfullparticleparity.
+FullownPE5302f71a07bb7b895971dc18e43ae676d2901aeaf7fa737d79d9d0c86144d8b5,
+x86/base400000/entry14A750/2012160bytes,182client/20kernel/22facade,0unresolved.
+Engine879f9b75 unchanged. Exactownstartup TCP→engine/D3D/Character/existingCreate1
+passed;Russia remainsbeforeConnect. No fullgame-loop/authentication acceptance.
+18function ranges equalbothpins;ownedIDA3bc31778 closed/save=true. Rawignored
+artifacts/client455-progress-base/reference.json plus tutorial-input-tail.json.
+SevenTutorialmethods pinned/read:Create5586D0,Destroy558AE0,Frame558B80,
+Load5594D0,Unload559750,device559810,input5598C0. Race cameras/startcoordinates
+andmanyWorld/UI/Avatar dependencies visible;notimplemented. Useinstructionsfor
+decompilerlocals/this,do notreuseguessedarray bounds. research/client455-progress-base.md,
+inventory/client455-progress-base-{reference,checkpoint}.json andprogress-native.json.
+Next056 Tutorial/world/UI/Avatar/localhandlers→full4stage/explicittransition;
+M6/M6F/M7/M9OPEN. CompleteTutorial includedinM9;noserverwork.
+Все21scoped checkpoints наcurrent evidence завершились0/PARTIAL;короткие
+зависимые native probes обновлены,большие unchanged historicalsuites не
+повторялись. Ownednativeпроцессовнет;Gitworkingtreeпослеcommitдолженбытьчистым.
+
+## Предыдущий аудит — progress054
+
 Progress054 — static reverse, runtime не менялся. 28function ranges и4primary
 vtable/COL/type descriptor совпали в обоих455pins; имена подтвержденыPE RTTI.
 Stage0 CGP_Title ctor557B60/vtAB0E14;1 CGP_LogIn53B860/AB0014;
@@ -901,7 +934,7 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок055: jointstage foundation/explicitnext/Avatar/Tutorial/localhandlers,
+1. Участок056: Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
    затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
    успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.

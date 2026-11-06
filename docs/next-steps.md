@@ -7,7 +7,15 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-Аудит054 завершён: mode2=Avatar stage Tutorial, а не replay. В455 четыре
+Участок055 завершил базовый CGameProgress loop/next/exit и Title next1.
+FullPE5302f71a.../entry14A750/0unresolved,actualnativeexit0,existingCreate=1.
+Далее056 — Tutorial data/camera/UI/Avatar и локальные handlers, fullfourstage
+factory/явные переходы;field next пока не подключён к normalMainApp, factory
+ещё3/modulo. Не map старый MainGame2 к целевому Tutorial2. Particle owner
+покаfixed1024, его targetdynamic migration остаётся обязательной.
+[Доказательства](../research/client455-progress-base.md). M6/M6F/M7/M9 открыты.
+
+Предыдущий аудит054: mode2=Avatar stage Tutorial, а не replay. В455 четыре
 stage classes с явным next-stage; legacy база имеет3/modulo и не создаёт
 Tutorial. Далее055 — совместный перенос stage foundation/Avatar/Tutorial
 и клиентских tutorial handlers, затем target LoginUI/Create/world transitions.

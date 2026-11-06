@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок055: принят локальный базовый контракт CGameProgress loop/next/exit,
+Title constructor next1 и общий particlecount reset в текущем владельце.
+Доказательство — actual full-object native methods, не весь stage runtime.
+Factory всё ещё3/modulo, next не подключён к обычным переходам; target
+dynamicparticles/Title/Login/Tutorial/world/Avatar ещё открыты.
+[Доказательства](../research/client455-progress-base.md). M6/M6F/M7/M9 открыты.
+
 Аудит054: обязательна приёмка всех четырёх этапов455: Title0/Login1/Tutorial2/
 MainGame3, их явных переходов и Avatar stage. Tutorial подтверждён RTTI и
 фабрикой; его локальные клиентские сообщения тоже входят в scope. Текущая

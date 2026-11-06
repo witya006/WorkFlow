@@ -1,0 +1,47 @@
+{
+  "scope": "Ordinary CGameProgress base order/next state and existing particle counters;not fourstage/Tutorial runtime acceptance",
+  "source": "scripts/native/client455_progress_probe.cpp",
+  "source_sha256": "4224adec2b9ca2ae8b417d2c55d070ca15c14916aa4d005a3836879c38c330b9",
+  "script_sha256": "12400fdd05c6c4e839d1a32c9337bc73e2a801ff3f29830dd6f9db156c01dbc3",
+  "builder_sha256": "a96c21a061c5fc925ca50020772279f2b61b809fd1dadf034b1ec07bd779a5b3",
+  "sources": {
+    "client455_progress_loop.inc": "3acbaea02804d6fb0a7cb18a48ba7b18a226b124dde14c87930fcb73a8af607a"
+  },
+  "reference_sha256": "590251d449db538bc3eae90dda4f28899051dfce2a24d6e406a18bb4a8208c77",
+  "normal_link_sha256": "484b775d85b876db24722cf6ce40ca23169c6cd5f68f0c7932ec9454f0d53731",
+  "architecture": "x86",
+  "entry_rva": "0xdd460",
+  "exe": {
+    "file": "work/m9/5fc667d1/progress-001/progress-probe.exe",
+    "sha256": "5fc667d137e14d39e7bc3aa265ac7bf00a854cf19afc1b394b5fd5fb15137b0f"
+  },
+  "map": {
+    "file": "work/client455-port/progress-probe/progress-probe.map",
+    "sha256": "8bc2619931dd3c4820b08ba20cae6a766dd33ef4b04a8790ca2fe2e2fbc64d26"
+  },
+  "output": {
+    "file": "work/m9/5fc667d1/progress-001/result.json",
+    "sha256": "9f2f1b48b27d2d65c83662a1d4e7615c36da4036fe4d5710da76bf47328b71f6"
+  },
+  "native": {
+    "status": "PASS",
+    "actual_base_size": 24,
+    "next_stage_roundtrips": 5,
+    "init_retains_next": true,
+    "base_create_destroy_no_data_sideeffects": true,
+    "actual_virtual_order": true,
+    "inactive_still_renders": true,
+    "input_exit_shortcircuits": true,
+    "frame_exit_observed_next_iteration": true,
+    "actual_particle_counters_reset": true,
+    "title_constructor_next1": true,
+    "full_four_stage_factory": false,
+    "tutorial_runtime": false,
+    "input_exe_executed": false
+  },
+  "natural_exit": 0,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}
