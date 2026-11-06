@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MONEY-083",
+      "status": "partial",
+      "description": "Actual signed64 Avatar/inventory money API, grouping and title alignment;dependency of Tutorial, not complete currency protocol or stage",
+      "reference": [{"rva":"0x1c3d0","role":"Avatar Dalant qword setter"},{"rva":"0x1c380","role":"Avatar Gold qword setter"},{"rva":"0x277990","role":"inventory Dalant label/alignment"},{"rva":"0x277a50","role":"inventory Gold label/alignment"},{"rva":"0x3b2780","role":"signed64 grouped formatter"},{"rva":"0x3b2ab0","role":"shared32-byte output"}],
+      "implementation": ["scripts/native/client455_money.h","scripts/native/client455_money.cpp","scripts/native/client455_inventory_money.inc","scripts/native/client455_inventory_gold.inc","scripts/prepare_client455_normal.py"],
+      "verification": "21money/Tutorial ranges equalpins;382actual instructions from10money functions. Real Avatar/inventory/GDI/D3D Ko/Ru92cases each/4roundingmodes/6reviewedframes. Freshaccount/actorFX/9reviewedframes/exactPE/Create1. Engine unchanged082;three-map/Miles suites not rerun.",
+      "evidence": ["inventory/client455-money-reference.json","inventory/client455-money-native.json","inventory/client455-money-visual.json","inventory/client455-money-checkpoint.json","research/client455-money.md"],
+      "gaps": ["Full currency network/login/character DB/trade/shop/exchange still contain DWORD/float producers/consumers","Full inventory Init/layout/sprites/other controls not accepted","Unmasked x87 exceptions/status/CRT failures/foreign buffer domains remain open","ActualTutorial/sharedAvatar/UI/board/QBIhost/follow/localhandlers/fourstage/Login/auth/gameplay and all prior gaps remain mandatory;window ID38 is not QBI selector count47"]
+    },
+    {
       "id": "CLIENT455-RVP-AUDIO-082",
       "status": "partial",
       "description": "Actual Miles immediate-wave table and ordinary RVP ambient/event/timer-rate route;compiled WAV no-handle behavior preserved;full audio/game open",

@@ -1,0 +1,41 @@
+{
+  "status": "PARTIAL",
+  "Avatar_inventory_signed64": "PASS_BOUNDED",
+  "money_cases": 184,
+  "rounding_modes": 4,
+  "money_GPU_frames": 6,
+  "fresh_actor_GPU_frames": 9,
+  "exactPE_Create1": "PASS",
+  "account_regression": "PASS_BOUNDED",
+  "normal_link_sha256": "2dd9ee0ec3131707ce427dee5f7a4a832ada45582a5bdfe11d6033fb41325de4",
+  "engine_report_sha256": "b4defe8f96a702eb901eb631a5d37e51def2d72c2ac71b2587d94148b17660b4",
+  "reused_082_engine_contracts": true,
+  "three_map_audio_suites_rerun": false,
+  "evidence_sha256": {
+    "client455-money-reference": "c1d1e479f87b8b0ca8a265cca73394ebeb05fe062f79d2873fe070731c785f15",
+    "client455-money-native": "253b491284d314c5136e191798899bb0885e21f820d947840aaba9e1cb2491c3",
+    "client455-money-visual": "d3ba5bcbcac6d0c1ff4a6e2c5140c69ebec545af6e3984cdd5050bfdee50103a",
+    "client455-rvp-actor-native": "604866b0a97902402be68d7d67dee71c4cacc7cf2056ff61e0bcb23dca2c7a91",
+    "client455-rvp-actor-visual": "539f22528d895f225624916b14eb80ec20c61220a87ebc764f29a189340b2e7c",
+    "client455-account-native": "1e8409c0d6e848604777a6376c91cd70101c53197912a60e1992192cc846b084",
+    "client455-startup-native": "65cf2b088037a862ea0daec4d94852cf44eb13aa8d4527b60228cd61b688f2bb",
+    "client455-ui-startup-native": "2f81b0cfd0d804c818895c1911296a8fa814dd491d5824ab57b0f4108f735ff3"
+  },
+  "script_sha256": "df47111eade9a2f13a99d1eb7cd6edca92b7f787d6c3ad71e2e026e7f50ed802",
+  "helper_sha256": "a12408ee0e34cb09f6dd6715d98d87fbf646dc0ecba6228a282cad19481a8a1b",
+  "gaps": [
+    "Full Tutorial Create/Load/Frame/Input/Destroy and ordinary factory still unfinished;money dependency is not stage completion",
+    "Legacy login/character DB/network/trade/shop/exchange price producers/consumers still include32-bit orfloat values;not full currency economy/protocol acceptance",
+    "Full inventory Init/layout/sprites/other controls not certified455;this unit restores money values/text/alignment only",
+    "Selected four x87 rounding modes with masked exceptions tested;unmasked exceptions/status/CRT failure/locale/foreign buffer domains remain open",
+    "Fullclient/audio/FX/gameplay and all prior M6F/M7/M9 gaps remain mandatory"
+  ],
+  "actual_Tutorial_stage": false,
+  "full_currency_protocol": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

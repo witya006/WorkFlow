@@ -7,6 +7,24 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+083: восстановлена настоящая цепочка 64-битной валюты Avatar → инвентарь,
+форматирование с измеренными x87 особенностями и выравнивание сумм. По 92
+проверки Korea/Russia и шесть просмотренных кадров; свежие account/actor/FX,
+девять actor кадров и точная новая PE/Create=1 прошли. Движок не менялся;
+трёхкарточные/Miles проверки 082 повторно не запускались. Gate083 PARTIAL.
+Полные Tutorial, валюта в протоколе/торговле и игра ещё открыты.
+[Доказательства](../research/client455-money.md).
+
+Далее 084: настоящий CGP_Tutorial и его shared UI/board/Avatar preparation,
+QBI host/follow/local handlers/feedback, frame/input/lifecycle и четыре этапа
+с переходами Login. Фактический Create5586D0 вызывает Avatar5488F0, не5588C0.
+Окно CTutorialBoard имеет ID38; «47» означает число селекторов QBI, а не
+подтверждённый слот менеджера. Не заменять интеграцию одним переключением ID.
+Все прежние audio/FX/Character/GUI/IME/численные разрывы остаются в M6/M9.
+Достоверный общий процент ещё не измерен: реестр поведения неполный.
+
+Предыдущий результат:
+
 082: настоящие immediateMiles/RVP audio иtimer_rate перенесены вboundedдомене.
 RealMP3decoder/loop/volume/ownership,2ambientstarts/2stops/4events/129boundary,
 3maps/actorFX/15reviewedframes/exactPE/Create1passed. Stock210WAVevents регистрируют
@@ -14,8 +32,8 @@ nohandle в455compiledbranch;невыдаватьэто заотсутствие
 Полные audio/FX/Tutorial/game/M9 OPEN. Gate082 PARTIAL.
 [Доказательства](../research/client455-rvp-audio.md).
 
-083: actualCGP_Tutorial Load/Create/Destroy/Frame/Input,realAvatar/QBI/follow/
-localhandlers/feedback/board47 иfour-stage/Login transitions. ТриTutorialRVP уже
+Очередь после082: actualCGP_Tutorial Load/Create/Destroy/Frame/Input,realAvatar/QBI/follow/
+localhandlers/feedback/CTutorialBoard иfour-stage/Login transitions. ТриTutorialRVP уже
 используютработающиеcamera/fade;unusedmagic/traceнеявляютсяусловиемначалаэтой
 интеграции. СохранитьобязательнуюочередьостальныхRVP/advancedFX/globalChef/
 material-lightreset иполногоMiles/PlayWave/streaming/failure/numericparity.
@@ -893,12 +911,13 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Участок066: EX/Var и полный parent input/callers, затем production
-   message sizing/rich callers/full briefing. Ordinary scrollbar065/TextBoard064,
-   typed font/text metadata, metrics063 и modal062 уже исследованы; не повторять
-   этот reverse без новых фактов. Rich/extent064 пока full-object probe only.
-2. Полный briefing, concrete Avatar/world/input/frame/feedback/local handlers,
-   actual Tutorial и совместные четыре stage/explicit-next переходы455.
+1. После money083: общий UI/board/Avatar init и настоящий Tutorial owner,
+   QBI host/follow/input/frame/feedback/local handlers, четыре этапа и переходы.
+   Восстановленные controls/briefing/camera/world/RVP не исследовать заново без
+   новых расхождений; связать их с настоящим владельцем. ID окна38, QBI47 типов.
+2. Закрыть оставшуюся полноту GUI/briefing/инвентаря, остальные слои/IME и
+   current-stage/device lifecycle; 32-bit/float producers валюты в протоколе,
+   торговле/магазинах не считать исправленными переносом двух setters.
 3. Реальный login UI/оставшийся клиентский протокол/world transitions и остальные
    M6 области по feature registry. AES/TCP/account foundations уже реализованы;
    успешный TCP/Create не равен входу в игру. Закрыть оставшиеся renderer/actor/

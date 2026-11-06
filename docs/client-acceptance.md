@@ -1,5 +1,16 @@
 # Полнота восстановления RF_Online.bin
 
+083: цепочка signed64 Avatar → инвентарь, группировка и геометрия сумм
+восстановлены. Проверены 184 случая двух локалей/четырёх режимов округления,
+шесть кадров валюты и девять actor кадров; свежие account/actor/FX и exact
+PE/Create=1 прошли. Gate083 PARTIAL. Полные Init инвентаря, сеть/торговля/
+магазины с оставшимися DWORD/float, unmasked FP/CRT failures не приняты.
+Actual Tutorial/factory/QBI host и полноценная игра ещё открыты. Движок и его
+контракты082 переиспользованы; три карты/Miles082 не объявляются свежими083.
+Число тестов и завершённые M0–M5 не дают общего процента готовности.
+M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-money.md).
+
 082: actualMiles immediateaudio/RVP ambient/event/timer_rate работаютвпроверенном
 домене. RealMP3decoder/status/loop/volume,129boundary,2ambientstarts/2stops/4events,
 3maps/actorFX/15viewedframes/exactPE/Create1passed. StockRVP2WAV/210events имеют

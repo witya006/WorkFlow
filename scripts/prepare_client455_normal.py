@@ -309,7 +309,35 @@ def main():
                 anchor=b'QUEST_INFO *\t\t\t\tm_pTutorialInfo;'
                 if raw.count(anchor)!=1:raise ValueError('Avatar Tutorial storage boundary changed')
                 raw=raw.replace(anchor,anchor+b'\r\n\tRF455AvatarStage m_stage455;')
+                for member in ['Gold','Dalant']:
+                    raw,count=re.subn(rb'DWORD(\s+m_dw'+member.encode()+rb'\s*;)',rb'__int64\1',raw)
+                    if count!=1:raise ValueError('Avatar money field '+member)
+                    raw,count=re.subn(rb'(void\s+Set'+member.encode()+rb'\(\s*)DWORD',rb'\1__int64',raw)
+                    if count!=1:raise ValueError('Avatar money setter '+member)
+                    raw,count=re.subn(rb'inline\s+DWORD(\s+Get'+member.encode()+rb'\()',rb'inline __int64\1',raw)
+                    if count!=1:raise ValueError('Avatar money getter '+member)
                 changes.append('455Avatar stageBYTE/skipDWORD initialized0,copyable source state;explicit455IDs separate from legacy3stage factory')
+                changes.append('455signed64 money storage and typed setter/getter ABI;network/trade producers remain separate acceptance gaps')
+            if relative=='character/avatar/cavatar_etc.cpp':
+                for member in ['Gold','Dalant']:
+                    raw,count=re.subn(rb'(CAvatar::Set'+member.encode()+rb'\(\s*)DWORD',rb'\1__int64',raw)
+                    if count!=1:raise ValueError('Avatar money implementation '+member)
+                changes.append('45564-bit Avatar money setters retain real optional inventory update')
+            if relative=='userinterface/gamewindow/guiinventorywindow.h':
+                for member in ['Dalant','Gold']:
+                    raw,count=re.subn(rb'DWORD(\s+m_dwOwn'+member.encode()+rb'\s*;)',rb'__int64\1',raw)
+                    if count!=1:raise ValueError('Inventory money field '+member)
+                    raw,count=re.subn(rb'(void\s+SetOwn'+member.encode()+rb'\(\s*)DWORD',rb'\1__int64',raw)
+                    if count!=1:raise ValueError('Inventory money setter '+member)
+                    raw,count=re.subn(rb'inline\s+DWORD(\s+GetOwn'+member.encode()+rb'\()',rb'inline __int64\1',raw)
+                    if count!=1:raise ValueError('Inventory money getter '+member)
+                changes.append('455signed64 inventory money fields and API')
+            if relative=='userinterface/gamewindow/guiinventorywindow.cpp':
+                raw=b'#include "client455_money.h"\r\n'+raw
+                for member,filename in [('Dalant','client455_inventory_money.inc'),('Gold','client455_inventory_gold.inc')]:
+                    method=('CGUIInventoryWindow::SetOwn'+member+'(').encode();first,last=section(raw,method,method)
+                    raw=raw[:first]+(native/filename).read_bytes()+raw[last:]
+                changes.append('455grouped signed64 money labels positioned before wider title with10pixel gap;no legacy fixed318/335 coordinates')
             if relative=='character/avatar/cavatar.cpp':
                 raw+=b'\r\n'+(native/'client455_avatar_stage.inc').read_bytes()
                 changes.append('real Avatar global supplies455Tutorial-stage login packing predicate')
@@ -591,7 +619,7 @@ def main():
     cmake+='set_source_files_properties("'+intro_camera_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     for name in ['client455_tutorial_intro.cpp','client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:
+    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -635,6 +663,7 @@ def main():
     for name in ['client455_rvp.h','client455_rvp.cpp','client455_rvp_runtime.h','client455_rvp_runtime.cpp','client455_rvp_actor.h','client455_rvp_actor.cpp','client455_normal_rvp.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp_effects.h','client455_rvp_effects.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp_audio.h','client455_rvp_audio.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_money.h','client455_money.cpp','client455_inventory_money.inc','client455_inventory_gold.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['camera_header_overlay']=header_report
     report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

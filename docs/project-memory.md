@@ -23,6 +23,41 @@
 
 ## Последний проверенный результат
 
+083: actual Avatar → inventory currency fields/API теперь signed64; значения
+выше32бит не теряются. Форматирование группами3 и wider-title x−10−amountWidth,
+rowY перенесены. Для negative target использует FILD→double→fabs→truncation:
+сохранены rounding выше2^53 и INT64_MIN double-minus при masked invalid.
+Форматтер inline в естественно удержанном RF455_GetMoneyText; force-retain нет.
+Полные currency network/trade/shop/exchange всё ещё содержат DWORD/float gaps.
+
+21 диапазон обоих pins равен;382 actual asm/10 money functions. Raw money083/
+tutorial083 в artifacts/client455-progress. IDA b55212f6 saved/closed/list0.
+Korea/Russia native work/m9/5b4651a6/money-{ko-kr,ru-ru}-001:92cases each,
+4roundingmodes,3GPUframes each,3416/3796pixels;6кропов просмотрены. Freshaccount
+с actual stage/skip/Create gate/login transform PASS, без authentication.
+Freshactor work/m9/05a1955b/rvp-actor-001:269ticks/185draws/148particle/6entity,
+9distinctpose ticks/459parts,0warnings,Dmalloc270592balanced;9кадров просмотрены.
+Полный inventory Init/other controls и reference-runtime pixel parity не приняты.
+
+Current PE SHA8b51618359be41530f1558a47440111196c93b441d2a597edc5b1233ffa2f6ec,
+2095104bytes/entryRVA151490/182client-20kernel-41facade/0unresolved. Freshearly
+TCP/sound и exactPE/D3D/existingCreate1;WinMainB73B0,afterCreateB751A.
+Engine9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769
+не менялся;startup contracts082 reuse. Три карты/Miles082 не повторялись,
+159k suites тоже. Gateclient455-money-checkpoint.json PARTIAL/current;
+old082gatehistorical. Research/client455-money.md содержит пределы доказательств.
+
+Далее084: настоящий CGP_Tutorial со shared UI/board/Avatar preparation5488F0
+(Create5586D0 не вызывает statshelper5588C0), concrete QBI/follow/localhandlers/
+feedback/frame/input/Destroy иfourstage/Login. Нового полного владельца083нет.
+CORRECTION: CTutorialBoard InitWindow ID38. «47» означает QBI selectors, не
+подтверждённый board-manager slot. Прежний shorthand board47 не использовать.
+Остальные RVP/advancedFX/globalChef/fullMiles/GUI/Character/IME/game gaps остаются.
+Общий процент не измерен; реестр неполный, M0–M5 не процент функционала455.
+M6/M6F/M7/M9 OPEN.
+
+Предыдущий результат:
+
 082: ordinaryRVP immediate audio иtimer_rate подключены креальномуMiles/clock.
 20-byteIMrecords,128+32growth,occupiedнеочищаетсяindividualrelease;sourceoverlay
 r3sound.cpp используетactualexistingdigitaldriver. MP3 musicgate/rawloopflag/
@@ -47,8 +82,8 @@ entry1512B0/2094592bytes/182-20-40TU/0unresolved;freshstartup/contracts/exactCre
 Freshactor269ticks/185draws/148particle/6entity;3maps364/330/262ticks,15GPUviews.
 Old081/080gateshistorical;currentgateclient455-rvp-audio-checkpoint.json PARTIAL.
 
-Далее083 — actualCGP_Tutorial lifecycle/frame/input/Avatar/QBI/follow/localhandlers/
-feedback/board47 иfourstage/Login. ТриTutorialRVP используют уже проверенныеcamera/
+Очередь после082 — actualCGP_Tutorial lifecycle/frame/input/Avatar/QBI/follow/localhandlers/
+feedback/CTutorialBoard иfourstage/Login. ТриTutorialRVP используют уже проверенныеcamera/
 fade;неоткладыватьинтеграциюрадиunusedmagic/trace. Magic/throw/collision/shadow/trace/
 screen,advancedFX/globalChef/materiallight,fullMilesinit/PlayWave/streaming/audio
 failure иFP/scanner/fullgame остаютсяобязательнымиM6/M9,приоритетнеотмена.

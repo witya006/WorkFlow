@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+083: восстановлена 64-битная валюта Avatar → инвентарь с форматированием и
+выравниванием455. Korea/Russia, затронутые account/actor/FX и точная новая
+PE/Create=1 проверены. Это зависимость настоящего Tutorial, который ещё не
+подключён целиком. Далее084 — его общий UI/board/Avatar init, QBI host и
+жизненный цикл, четыре этапа и переходы. M6/M6F/M7/M9 открыты. Общий процент
+не измерен: M0–M5 не равны доле восстановленного функционала.
+[Доказательства](../research/client455-money.md).
+
+Предыдущий результат:
+
 082: реальные RVP immediateMiles/ambient/event/timer_rate подключены иbounded
 проверены;3maps/actorFX/15GPUviews/exactnewPE/Create1passed. StockWAVcompiledbranch
 не создаёт handle,что сохранено;fullsound acceptance ещёOPEN. Далее083 — actual
@@ -583,8 +593,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/083: actualCGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
-   localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
+1. M6/084: actualCGP_Tutorial shared UI/board/Avatar init, Load/Create/cameraintro/
+   frame/input/Destroy, QBI host/follow/localhandlers/feedback/CTutorialBoard и
+   fourstagefactory. Money083 готов в ограниченном домене; ID окна38, QBI47 типов.
+   BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
    Затемостальные RVP magic/throw/trace/screen/collision/shadow providers,
    advancedparticle/entitymath/globalChef lifecycle/material-lightreset иfullaudio;
