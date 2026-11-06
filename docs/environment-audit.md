@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,gui-input068: установок нет.34ranges/1vtable prefix equalpins,
+15completeasm,IDA6eadfaf3 savedclosed,idb_list0. Productionde76223c…/entry14F4A0,
+182/20/28TU,0unresolved/existingCreate1. Ko/Ru realGUI input/focus/queue и
+затронутые GUI probes прошли;40GPUreadback hashes совпали с предыдущими
+просмотренными кадрами. Новый trace содержит firstchance40080201 через
+KernelBase (причина не установлена),checkpointCreate1 пройден;это не приёмка
+всех exception/failure domains. Старые крупные suites не повторялись.
+[Доказательства](../research/client455-gui-input.md).
+
 Дополнение06.11,minimap-opacity067: установок нет.17ranges/2vtable regions
 совпали между pins,10complete asm;IDA7b53e450/b947042c closed/save,sessioncount0.
 Main sprites:Ko fallbackCommon DXT1,Ru localizedARGB;frames5:0=400×18/5:32=400².

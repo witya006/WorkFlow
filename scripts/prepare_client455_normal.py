@@ -163,8 +163,64 @@ def main():
                 position=raw.find(anchor)
                 if position<0:raise ValueError('GUI active getter boundary changed')
                 line=raw.rfind(b'\n',0,position)+1
-                raw=raw[:line]+b'\tBOOL IsFocused455()const{return m_bEnableFocus&&m_bShow&&m_bActive&&s_pFocusedObject==this;}\r\n'+raw[line:]
+                raw=raw[:line]+b'\tvirtual BOOL IsFocused455()const{return m_bEnableFocus&&m_bShow&&m_bActive&&s_pFocusedObject==this;}\r\n'+raw[line:]
+                raw,count=re.subn(rb'(static\s+CGUIObject\s*\*\s*s_pFocusedObject\s*;)',rb'\1\r\n\tstatic CGUIObject *s_pRightPressed455,*s_pMouseModal455,*s_pLastClick455;\r\n\tstatic DWORD s_lastClickTime455;',raw)
+                if count!=1:raise ValueError('GUI focus storage changed')
+                raw,count=re.subn(rb'(BOOL\s+m_bEnableFocus\s*;)',rb'\1\r\n\tBOOL m_mouseInput455=TRUE;\r\n\tIFocusObserver455* m_focusObserver455=nullptr;',raw)
+                if count!=1:raise ValueError('GUI focus flag changed')
+                raw,count=re.subn(rb'(virtual\s+void\s+SetFocus\( void \)\s*)\{[^\r\n]*\}',rb'\1{TryFocus455();}',raw)
+                if count!=1:raise ValueError('GUI SetFocus boundary changed')
+                anchor=b'CGUIObject();'
+                if raw.count(anchor)!=2:raise ValueError('GUI constructor/destructor declarations changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tBOOL TryFocus455();\r\n\tvoid KillFocus455();\r\n\tvoid SendFocusEvent455(WORD id);\r\n\tvoid AddFocusHandler455(IFocusObserver455* observer){m_focusObserver455=observer;}\r\n\tvoid SetMouseInput455(BOOL enabled){m_mouseInput455=enabled;}\r\n\tBOOL GetMouseInput455()const{return m_mouseInput455;}\r\n\tstatic void SetMouseModal455(CGUIObject* object);\r\n\tstatic CGUIObject* GetMouseModal455(){return s_pMouseModal455;}\r\n\tstatic CGUIObject* GetRightPressed455(){return s_pRightPressed455;}\r\n\tvirtual void CloseMouseModal455(){}',1)
                 changes.append('confirmed455show/active/enableFocus/static-focus predicate')
+            if relative=='userinterface/guicontroller/guiobjectevent.h':
+                raw,count=re.subn(rb'#define\s+LMOUSE_STROKED\s+7',b'#define MOUSE_DOUBLE_STROKED 7\r\n#define LMOUSE_STROKED 8',raw)
+                if count!=1:raise ValueError('Legacy right mouse event changed')
+                raw,count=re.subn(rb'(WORD\s+wSelectIndex\s*;)',rb'\1\r\n\tDWORD nValue455;',raw)
+                if count!=1:raise ValueError('GUI event payload changed')
+                extra=b'\r\n#define FOCUS_ACQUIRED455 70\r\n#define FOCUS_RELEASED455 71\r\nstruct _focus_event455{CGUIObject* source;WORD id;};\r\nstruct _value_event455{CGUIObject* source;WORD id;DWORD value;};\r\nclass IFocusObserver455{public:virtual void FocusEvent455(_focus_event455& event)=0;};\r\nclass IValueObserver455{public:virtual void ValueEvent455(_value_event455& event)=0;};\r\n'
+                raw=raw.replace(b'#endif // __GUIOBJECTEVENT_H__',extra+b'#endif // __GUIOBJECTEVENT_H__')
+                changes.append('455double7/right8,focus70/value80 event domains and DWORD value payload')
+            if relative=='userinterface/guicontroller/guiobject.cpp':
+                raw=b'#include "client455_gui_input.h"\r\n'+raw
+                for name,expected in [(b'InputProc(',b'BOOL'),(b'SendMouseEvent(',b'void'),(b'SendMouseMotionEvent(',b'void'),(b'MsgProc(',b'LRESULT'),(b'InActive(',b'void'),(b'DisableFocus(',b'void')]:
+                    signature=b'CGUIObject::'+name;first,last=section(raw,signature,signature);begin=raw.rfind(b'\n',0,first-1)+1
+                    if raw[begin:first].strip()!=expected:raise ValueError('GUI input method boundary changed')
+                    raw=raw[:begin]+b'//455implementation below.\r\n'+raw[last:]
+                first,last=section(raw,b'CGUIObject::~CGUIObject()',b'CGUIObject::~CGUIObject()')
+                body=raw[first:last];body=body[:-1]+b'\r\n\tif(s_pRightPressed455==this)s_pRightPressed455=nullptr;\r\n\tif(s_pMouseModal455==this)s_pMouseModal455=nullptr;\r\n\tif(s_pLastClick455==this)s_pLastClick455=nullptr;\r\n}'
+                raw=raw[:first]+body+raw[last:]+b'\r\n'+(native/'client455_gui_input_object.inc').read_bytes()
+                changes.append('455mouse/doubleclick/modal guard/focus/key contracts;known object state cleanup')
+            if relative=='userinterface/guicontroller/guiobjecteventproc.cpp':
+                raw=b'#include "GUIDialogBox.h"\r\n'+raw
+                anchor=b's_qEventList[i].wEventID == pi_EventInfo.wEventID )'
+                if raw.count(anchor)!=1:raise ValueError('GUI queue duplicate key changed')
+                raw=raw.replace(anchor,b's_qEventList[i].wEventID == pi_EventInfo.wEventID && s_qEventList[i].byKeyCode == pi_EventInfo.byKeyCode )')
+                first,last=section(raw,b'CGUIObject::EventProcess(',b'CGUIObject::EventProcess(');begin=raw.rfind(b'\n',0,first-1)+1
+                if raw[begin:first].strip()!=b'void':raise ValueError('GUI queue process boundary changed')
+                raw=raw[:begin]+(native/'client455_gui_input_queue.inc').read_bytes()+raw[last:]
+                changes.append('455queue dedup includes byte key;focus70/value80 dispatch;existing mouse/motion/key/scroll/window routes')
+            if relative=='userinterface/guicontroller/guicontainer.h':
+                anchor=b'virtual\tvoid\tAdd( CGUIObject * pi_pObj );'
+                if raw.count(anchor)!=1:raise ValueError('Container Add API changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid AddFront455(CGUIObject* object);')
+                raw,count=re.subn(rb'(void\s+SetFocus\( void \)\s*)\{;\}',rb'\1{CGUIObject::SetFocus();}',raw)
+                if count!=1:raise ValueError('Container SetFocus override changed')
+                changes.append('455front insertion and inherited focus request;other container layers remain open')
+            if relative=='userinterface/guicontroller/guicontainer.cpp':
+                for signature,expected in [(b'CGUIContainer::Add( CGUIObject * pi_pObj )',b'void'),(b'CGUIContainer::Remove(',b'BOOL'),(b'CGUIContainer::RemoveAll(',b'void')]:
+                    first,last=section(raw,signature,signature);begin=raw.rfind(b'\n',0,first-1)+1
+                    if raw[begin:first].strip()!=expected:raise ValueError('Container input method boundary changed')
+                    raw=raw[:begin]+b'//455implementation below.\r\n'+raw[last:]
+                first,last=section(raw,b'CGUIContainer::CGUIContainer()',b'CGUIContainer::CGUIContainer()');body=raw[first:last];body=body[:-1]+b'CGUIObject::DisableFocus();\r\n}'
+                raw=raw[:first]+body+raw[last:]+b'\r\n'+(native/'client455_gui_input_container.inc').read_bytes()
+                changes.append('455default focus-off,Add show inheritance,Remove focus-only cleanup;other two layers remain open')
+            if relative=='userinterface/mousedev.cpp':
+                first,last=section(raw,b'CMouseDev::Update(',b'CMouseDev::Update(');body=raw[first:last];anchor=b'\tif( l_bPress )'
+                if body.count(anchor)!=1:raise ValueError('Mouse update priority changed')
+                body=body.replace(anchor,b'\telse if(gMouse.button & _MIDDLE_BUTTON_DOWN){m_wKey=3;l_bPress=true;}\r\n'+anchor)
+                raw=raw[:first]+body+raw[last:];changes.append('455mouse priority left/right/middle and existing drag/move rules')
             if relative=='userinterface/guicontroller/guiscrollbar.h':
                 raw=(native/'client455_gui_scrollbar.h').read_bytes()
                 changes.append('455ordinary scrollbar source interfaces and composite scrollbar button')
@@ -445,7 +501,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -478,6 +534,7 @@ def main():
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

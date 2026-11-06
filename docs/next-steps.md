@@ -1,11 +1,38 @@
 # Ближайшие действия — только клиент
 
-Обновлено 2026-11-06. /Goal — M9: финальная приёмка клиента455 без модернизации
+Обновлено 2026-11-07. /Goal — M9: финальная приёмка клиента455 без модернизации
 графики. M8 не требуется. Критерии docs/client-acceptance.md. Серверы/БД/GoMMO server
 logic не разрабатывать; серверные исходники только читать как справочник.
 Оригинальные EXE не исполнять, изменения только в собственных копиях/work/.
 
 ## Текущая точка
+
+Участок068: ordinary GUIObject input/MsgProc/focus и event queue перенесены.
+Event7=double,event8=right,300ms inclusive/wrap,conditional clockquery +stamp,
+right-pressed/modal/last-click states. Input88flag отдельно отActive52. Modal
+setter вызываетoldcallback дажеsame/null;guard используетсяdropdown63DEB0,
+не путать с inputfield. Focus previousblur доeligibility;queue includes bytekey,
+record36/value32,focus70/value80 dispatch;Ctrl/Alt иfull-high-half PROCESSKEY.
+Container defaultfocusOFF,Add showinherit/mainlist/front;Remove толькоfocus,
+retains mouse refs tolive removed objects. Source twootherlists/layers OPEN.
+60D3D0/60D650 — list insertion,60DE40/60E010 — find;parent bubbling в этих путях
+нет. Ordinary ctor binds composite only,SetAmount self only:удалён adapter065
+с автоматическими arrow observers. EX explicit4bindings сохранены.
+
+NativeKo/RuPASS,real input/defaultordinary-unbound vsEX-bound проверены;
+40GPU hashes unchanged,allaffectedGUI passed. Tutorialfixture hidden branch
+теперь Show(FALSE) AFTER screen.Add,согласноновомуcontract,productionнеоткачен.
+PEde76223c…/entry14F4A0,182/20/28TU,0unresolved/existingCreate1;8gatesPARTIAL.
+Далее069: ordinary CGUIMessagebox.SetMsg/sizing и productionrich callers;
+использовать pixel metrics/TextBoard064,не forceinclude unused rich code ине
+переосмысливать plainInsertText. Затем actualCGUIBriefingWindow,Avatar/world/
+Tutorial host/fourstage. Оставшиеся inputfield/IME/popup/value80 consumers,
+other2container lists/layers,indexedlegacyAPI,destructorregistry и downstream
+event7/8 actions обязательны дляM6F/M9,но неблокируют статическийреверсследующих
+callers. Полнаямини-карта/camera555940/вход/мир/gameplayещё OPEN.
+[Доказательства](../research/client455-gui-input.md).
+
+Предыдущий результат:
 
 Участок067: opacity EX теперь в обычном CGUIMiniMapWindow и production map.
 7B2C60 — только generic alignment,skinhelper7B5450. Styles0/1=194×13/192×15,

@@ -114,7 +114,7 @@ def main():
         'gaps': [
             'CGUIScrollbarEX/Var and their real callers not yet ported;cached decomp evidence retained',
             'Default composite skin frames absent from selected real resources;full resource/version parity remains OPEN',
-            'Legacy container lacks455 parent event bubbling/show inheritance;owned arrow/show adapter used;full parent input system OPEN',
+            '068corrected base arrow binding:ordinary ctor/amount leave arrows unbound;generic Add now inherits show;fullGUI input/other layers remain OPEN',
             'General clipped rendering/alpha,all skin setters/private ABI/lifecycle/OOM/numeric/unmaskedFP and non-SSE2 fallback domains OPEN',
             'Zero adjustment modulo and forced UpdateBar(total0) explicitly refused;not claimed original fault equivalence',
             'Legacy GetMinSize/SetScrollSpeed compatibility wrappers await complete target caller/setter proof',

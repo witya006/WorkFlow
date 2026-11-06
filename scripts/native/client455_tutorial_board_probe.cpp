@@ -122,6 +122,7 @@ static int run(){
     check(unbound.message(3,&message,0),"message3");box=modal(0x6002,4);check(textOf(*box)=="Tutorial 455","actual message3 text");_CloseDialogBox(nullptr,0x6002);
     View view;CTutorialBoard board(runtime,host,shared,&view);board.InitWindow(38,-1,-3);
     check(!view.autosize&&view.actualWindow.GetPosX()==89&&view.actualWindow.GetPosY()==273,"base anchor/init contract");
+    view.actualWindow.Show(FALSE); //455Add inherits the screen's visibility.
     runtime.context.input=11;board.FrameMove();check(runtime.context.input==3,"hidden briefing sets input3");
     view.actualWindow.Show(TRUE);runtime.context.input=9;board.FrameMove();check(runtime.context.input==9,"visible briefing preserves input");
     view.acceptRich=true;check(board.message(0,&message,0)&&board.closeBlocked()&&!view.lastClose,"rich0 close lock");

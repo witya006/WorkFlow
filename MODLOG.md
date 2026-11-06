@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — GUI-input068. Restored base double7/right8/mouseguard/key/focus/queue
+and main-list container contracts,including300ms/wrap/queryorder,bytekeydedup,
+focus70/value80 and middlebutton. Corrected065ordinaryarrowadapter:targetleaves
+basearrowsunbound,EXexplicitbindingsretained. Add inheritsShow,Removefocus-only;
+otherlists/layers/privateGUI/IME remainOPEN. Ko/Ru real-object tests and affected
+GUI/Create1 passed;40GPUhashes unchanged. Normalde76223c…/entry14F4A0,182/20/28TU.
+Next069 production rich/message sizing/briefing,actualTutorial/fourstage. M9OPEN.
+[Evidence](research/client455-gui-input.md).
+
 2026-11-06 — Minimap-opacity067. Ordinary CGUIMiniMapWindow now owns EX and
 receives actual queued mouse/scroll events. Recovered style0/1,alignment80/80,
 known alpha groups/lists and Draw455;17ranges/2vtables equalpins,10fullasm.

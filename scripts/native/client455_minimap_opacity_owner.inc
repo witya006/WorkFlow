@@ -18,12 +18,12 @@ void CGUIMiniMapWindow::InitOpacity455(){
     m_uiMiniMap.SetPos(m_ptPos.x+1,m_ptPos.y+m_uiTitleBoard.GetSizeY());
     m_mapBackground455.SetPos(m_uiMiniMap.GetPosX(),m_uiMiniMap.GetPosY());
     m_mapBackground455.SetSize(400,400);m_mapBackground455.DisableFocus();
-    m_mapBackground455.Show(m_uiMiniMap.IsShow());m_uiMiniMap.Add(&m_mapBackground455);
+    m_uiMiniMap.Add(&m_mapBackground455);
     SetAlpha455(255);
     RF455_AlignGuiObject(m_opacityScrollbar455,m_uiTitleBoard.m_ptPos,m_uiTitleBoard.m_ptSize,-1,-1);
     m_opacityScrollbar455.SetPos(m_opacityScrollbar455.GetPosX(),m_opacityScrollbar455.GetPosY()+15);
     m_opacityScrollbar455.SetAmount(80,80);m_opacityScrollbar455.AddScrollHandler(this);
-    m_opacityScrollbar455.Show(IsShow());Add(&m_opacityScrollbar455);
+    Add(&m_opacityScrollbar455);
 }
 void CGUIMiniMapWindow::SetAlpha455(BYTE alpha){
     auto apply=[alpha](CGUIObject& object){object.SetARGB((object.GetARGB()&0xffffff)|(static_cast<DWORD>(alpha)<<24));};

@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-GUI-INPUT-068",
+      "status": "partial",
+      "description": "Ordinary baseGUI mouse/doubleclick/modal guard/key/focus/queue and main-list Add/Remove;fullGUI/IME/otherlayers OPEN",
+      "reference": [{"rva":"0x226b90","role":"mouse state machine"},{"rva":"0x227370","role":"keyboard messages"},{"rva":"0x2275c0","role":"focus acquisition"},{"rva":"0x2277d0","role":"modal mouse setter"},{"rva":"0x22ae80","role":"queue dedup"},{"rva":"0x22af90","role":"queue dispatch"},{"rva":"0x20bfa0","role":"Add"},{"rva":"0x20c480","role":"Remove"},{"rva":"0x3af900","role":"mouse device update"}],
+      "implementation": ["scripts/native/client455_gui_input.h","scripts/native/client455_gui_input.cpp","scripts/native/client455_gui_input_object.inc","scripts/native/client455_gui_input_container.inc","scripts/native/client455_gui_input_queue.inc","scripts/prepare_client455_normal.py"],
+      "verification": "34ranges/1vtableprefix equalpins,15completeasm;Ko/Ru actual objects/mouse/queue verifydouble300/301/wrap/queryorder,right8/modalguard/inputflag,Addvisibility/Removealive refs,focusordering,CtrlAlt/key229/bytekeydedup/focus70/value80/middle;ordinaryarrowsunbound/EXbound;affectedGUI/Create1 PASS,40GPUhashes unchanged",
+      "evidence": ["inventory/client455-gui-input-reference.json","inventory/client455-gui-input-native.json","inventory/client455-gui-input-checkpoint.json","research/client455-gui-input.md"],
+      "gaps": ["Other2containerlists/renderlayers and fulllegacyindexedAPI/callers","FullGUIInput/IME/popup/combobox/focus/value80consumers and downstream7/8actions;preAdd-hidden legacycallers requiretargetcomparison","FullprivateABI/destructorregistry/cross-thread/OOM/unsafe/failure domains;extrafirstchance40080201causeunknown","Productionrich/message sizing/briefing/Avatar/world/Tutorial/fourstage/auth/fullminimap/camera;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-MINIMAP-OPACITY-067",
       "status": "partial",
       "description": "Actual minimap owner EX opacity control/styles/alignment/mapped alpha/Draw455;fullminimap and target parent input OPEN",

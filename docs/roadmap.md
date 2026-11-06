@@ -1,6 +1,6 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-Обновлено 2026-11-06. По прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
+Обновлено 2026-11-07. По прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
 Старые клиентские исходники и R3Engine — база, клиент 455 — объект реверса.
 Серверы, БД и серверная логика вне задачи. Прежний серверный план отменён.
 Серверные исходники разрешены исключительно для чтения как справочник клиентских
@@ -11,6 +11,17 @@
 [client-acceptance.md](client-acceptance.md). Не закрывать проект после сборки/запуска.
 
 ## Текущий статус
+
+Участок068: базовые GUI mouse/key/focus/queue455 и main-list Add/Remove перенесены.
+Double7/right8,300ms/DWORDwrap,modal guard,key dedup/focus order/средняя кнопка
+проверены Ko/Ru. Ordinary arrows unbound в target;прежний adapter удалён,EX
+binding сохранён. Productionde76223c…/existingCreate1,affectedGUI passed;
+другие2lists/render layers/fullGUI/IME/целевыеcallers остаются OPEN. Далее069 —
+production message sizing/rich callers,затем полный briefing и actualTutorial/
+fourstage. Оставшиеся GUI/lifecycle gaps учитывать в M6F.
+[Доказательства](../research/client455-gui-input.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок:
 
 Участок067: EX связан с обычным CGUIMiniMapWindow. Восстановлены opacity
 styles0/1,alignment,80/80Init,alpha mappings и Draw455. Настоящий MouseDev→owner→
@@ -453,9 +464,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/068: восстановить общий GUIObject/Container input/show/focus/parent wiring;
-   сопоставить Add60BFA0 и его helper60D3D0 с observer/event dispatch. Затем production
-   message sizing/rich callers и полный CGUIBriefingWindow:
+1. M6/069: production message sizing/rich callers и полный CGUIBriefingWindow:
+   связать восстановленные text/GUI методы с настоящими окнами,учесть pending
+   other layers/IME/caller gaps по мере использования. Затем briefing:
    постраничный/временной текст, портреты и изображения клавиш.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
    feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.

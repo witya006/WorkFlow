@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — minimap-opacity067: EX подключён к обычному владельцу
+Последний участок M6 — gui-input068: перенесены базовые mouse/key/focus/queue
+правила455,main-list Add/Remove и средняя кнопка. Double7/right8,порог300,
+key dedup и focus order проверены Ko/Ru. Убран недоказанный arrow adapter
+обычного scrollbar;EX binding сохранён. Новая PE собирается/existingCreate1,
+затронутый GUI прошёл проверки. Полные GUI/IME/other layers/игра ещё открыты.
+[Доказательства](research/client455-gui-input.md). M6/M9 открыты.
+
+Предыдущий участок M6 — minimap-opacity067: EX подключён к обычному владельцу
 мини-карты; оформление, выравнивание, 81значение alpha и настоящий mouse→queue
 путь проверены для Korea/Russia. Восстановлен Draw455;провайдеры присутствуют
 в production PE,existingCreate=1 сохранён. Игровая карта,другие controls,

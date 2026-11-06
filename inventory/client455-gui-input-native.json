@@ -1,0 +1,157 @@
+{
+  "scope": "455base mouse/doubleclick/modal guard/key/focus/queue and main-list Add/Remove;fullGUI/IME/render layers/gameplay OPEN",
+  "architecture": "x86",
+  "entry_rva": "0xe4480",
+  "source": "scripts/native/client455_gui_input_probe.cpp",
+  "source_sha256": "eddee430803e4abbe3575fc32dd65c0b3188083226448c563869b0263b42544e",
+  "sources": {
+    "client455_gui_input.h": "296ceb77b8edcd88f673dd34f9bd3fe3f449f01e334023b71410a89ca9e05795",
+    "client455_gui_input.cpp": "76c013f7e034e4e4525c288527a2e80c0a3037d5e1acf18ff6d4b7d498c57831",
+    "client455_gui_input_object.inc": "afffafab2599142b83fe508e5cf049e008b04bd349d88551ba152ed058bcfd0f",
+    "client455_gui_input_container.inc": "4535f94e2a11ce5ac3a7e968a4026fe61b58569f710b128439c9438fbe7fee62",
+    "client455_gui_input_queue.inc": "fe4f21d391836a2249f7b67a41f9ba433d255004fae2d49616e129c1d93ecfd1",
+    "client455_gui_scrollbar.cpp": "04944732c1cfecb3fefae11364f5cfd8793a6903b1315106746d038a873827fd",
+    "client455_minimap_opacity_owner.inc": "72e2415542c0c2cd90ae408bef2937c6ca7b21c106673445b60985b24bccb2a7"
+  },
+  "script_sha256": "b4e56d5325772f43d9a099ab42ecce99b60c20495bb1d98a9f09d75436a68e19",
+  "builder_sha256": "a96c21a061c5fc925ca50020772279f2b61b809fd1dadf034b1ec07bd779a5b3",
+  "generator_sha256": "dba3992c79e889386aebbc5aec334175d5d228760bc9df9ae1a40bc3c8197a23",
+  "reference_sha256": "653e9f911626783662ceb133f1897db4b5bc7356cbdf0e6f8f5df064a52bbcb6",
+  "normal_link_sha256": "357c93bdf03ba0a37a308ecf3898d29ee445ba60b42a737460357bd5fbeb8411",
+  "map": {
+    "file": "work/client455-port/gui-input-probe/gui-input-probe.map",
+    "sha256": "b10fc72c686d2187431c43a07c18853275019fb2c4cf0312914a35383ee2ffe5"
+  },
+  "runs": [
+    {
+      "nation": "Korea",
+      "exe": {
+        "file": "work/m9/d424f606/input-ko-kr-001/gui-input-probe.exe",
+        "sha256": "d424f606ec491232aba552e53311e96f79ca76802b636d15120316a62c6a4082"
+      },
+      "output": {
+        "file": "work/m9/d424f606/input-ko-kr-001/result.json",
+        "sha256": "ea639a41cd5c0eaa80457a675e11d2cfa5720cb85e0a0fbbc98114c4eaa5b5a7"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/System/shader/Grass1.vsh",
+          "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/System/shader/grass1.vso",
+          "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/System/console.jpg",
+          "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/System/010.TTF",
+          "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/DataTable/ko-kr/NDLanguage.edf",
+          "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/SpriteImage/Common/mouse.spr",
+          "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/SpriteImage/ko-kr/common.spr",
+          "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
+        },
+        {
+          "file": "work/m9/d424f606/input-ko-kr-001/R3Engine.ini",
+          "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
+        }
+      ],
+      "native": {
+        "status": "PASS",
+        "codepage": 949,
+        "double7_right8": true,
+        "threshold_wrap_clock": true,
+        "modal_and_input_flags": true,
+        "container_main_list_contracts": true,
+        "focus_order_and_predicate": true,
+        "key_scan_and_modifier": true,
+        "key_dedup_focus_value_queue": true,
+        "middle_button": true,
+        "ordinary_unbound_EX_bound": true,
+        "full_GUI_IME": false,
+        "other_container_layers": false,
+        "full_Tutorial": false
+      },
+      "exit": 0
+    },
+    {
+      "nation": "Russia",
+      "exe": {
+        "file": "work/m9/d424f606/input-ru-ru-001/gui-input-probe.exe",
+        "sha256": "d424f606ec491232aba552e53311e96f79ca76802b636d15120316a62c6a4082"
+      },
+      "output": {
+        "file": "work/m9/d424f606/input-ru-ru-001/result.json",
+        "sha256": "49acc7bb0fbd8007ee6987d62430d43d6cbbd217ba428f4a79097b4614648270"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/System/shader/Grass1.vsh",
+          "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/System/shader/grass1.vso",
+          "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/System/console.jpg",
+          "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/System/010.TTF",
+          "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/DataTable/ru-ru/NDLanguage.edf",
+          "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/SpriteImage/Common/mouse.spr",
+          "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/SpriteImage/ru-ru/common.spr",
+          "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736"
+        },
+        {
+          "file": "work/m9/d424f606/input-ru-ru-001/R3Engine.ini",
+          "sha256": "1031b0b5845206bddb65635470edfba08089b040d39eee1f57774ec6b088f482"
+        }
+      ],
+      "native": {
+        "status": "PASS",
+        "codepage": 1251,
+        "double7_right8": true,
+        "threshold_wrap_clock": true,
+        "modal_and_input_flags": true,
+        "container_main_list_contracts": true,
+        "focus_order_and_predicate": true,
+        "key_scan_and_modifier": true,
+        "key_dedup_focus_value_queue": true,
+        "middle_button": true,
+        "ordinary_unbound_EX_bound": true,
+        "full_GUI_IME": false,
+        "other_container_layers": false,
+        "full_Tutorial": false
+      },
+      "exit": 0
+    }
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

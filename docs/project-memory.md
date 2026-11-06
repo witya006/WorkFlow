@@ -1,6 +1,6 @@
 # Память проекта
 
-Обновлено 2026-11-06. Root `E:\RFOnlineTrash\Source\WorkFlow`.
+Обновлено 2026-11-07. Root `E:\RFOnlineTrash\Source\WorkFlow`.
 Сокращена для продолжения работы без повторного чтения устаревших очередей.
 Полная предыдущая память сохранена в research/project-memory-pre-pose.md;
 подробные доказательства — research/ и inventory/.
@@ -22,6 +22,70 @@
   не показатель готовности; приоритет — работающий восстановленный клиент.
 
 ## Последний проверенный результат
+
+GUI-input068: new client455_gui_input.{h,cpp},object/container/queue.inc and
+generator overlays actual GUIObject/Container/EventProc/MouseDev. Base input
+626B90:extra inputflagDWORD88 default1 (notActive52),double7/right8,300inclusive
+DWORDwrap. IfsameLast==this clockqueryforcompare then alwaysnewstampquery;first
+differentowner skipscomparequery. Double clearslastowner;rightstroke setsright
+pointerandclearslastowner evenifleft suppressesevent;right-held suppresseshover/
+move. Source captures modalglobal102CF4C:6277D0 alwayscallsoldvirtual100 before
+assignsame/null;outsideleftstroke callsoldcallback andconsumeswithoutunderlying
+stroke. Caller63DEB0 isdropdown,notinputfield;API CloseMouseModal455 defaultnoop
+as504CF0. Fullpopup implementation stillOPEN.
+
+Msg627370:focuspredicate then WM_KEYDOWN/WM_CHAR,Ctrl17/Alt18 highbitfilter,
+allbytekeys;229 mapsENTIREarithmetic high16 viafixedQWERTY scans16–25/30–38/
+44–50,elseFF. Not MapVirtualKey,notmask8bits. Queue62AE80dedups source/id/keyBYTE,
+ignoreshandler/value. Eventrecord36,bytekey10,DWORDvalue32. Focus70–79 generic
+IFocusObserver455,80–89 source/id/value,>=90ignored;old50/60windowroutesretained.
+Source namedinterfaces areownedsemanticAPIs,notoriginalprivateABI/identities.
+
+Focus6275C0:alreadyfocused returns1;oldpointerdifferent sends71 BEFOREtesting
+newenableFocus/show/active/disabled. Failedcandidate leavesoldpointer despite
+blur. Success updatespointer,70. Kill627650 onlywhenIsFocused predicate true;
+hidden/inactive pointer canpersist untilvalidkill/destructor. InActive/Disable
+focus kills beforeflagchange. Basepredicateignoresdisabled state,soalready
+disabledfocusedobject stillqueueskeys. Containerdefaultdisablefocus confirmed
+60BDE0→60D0A0;sourceSetFocus nowdelegatesbase afterexplicitEnableFocus.
+
+ContainerAdd60BFA0:nonnull/notduplicate→Show(parent)→pushbackmainlist96.
+60C040 pushfront,noimplicitparentobserver. 60D3D0/60D650 arelistinsert and
+60DE40/60E010 arefind,NOTbubbling. Input60C850 reverse-main-list;parentinputflag
+doesn'tblockchild. Remove60C480:null0,nonnull1 evennonmember,kill eligiblefocus,
+removefrom3targetlists;doesNOTclearhover/pressed refs toalivechild. RemoveAll
+60C4F0focus-only then3clears. Sourcecurrentlymainlistonly;other2/renderlayers
+andlegacyindexedcompatAPI remainOPEN. Mouse7AF900 sameleft/rightpriority plus
+middlekey3 (bit2);drag/move rules unchanged.
+
+Important065correction:ordinary638EE0 bindscomposite484 only,639590 registersself
+only,627070 onlydirectobserver;defaultarrowsUNBOUND. Removedownedarrowadapter,
+updatedoldreferencegap. EX63A750 explicit4regs retained. Removedredundantmanual
+Show bridges nowgenericAddinherits. NativeactualInput verifiesordinaryamount10
+unchangedonarrow vsEX10→9. Neverinventtargetbugfix. Actualcaller-specific arrow
+registration stillrequiresproof.
+
+34ranges/1vtableprefix equalpins,15completeasm;IDA6eadfaf3 savedclosed/idb_list0.
+Rawartifacts/client455-tutorial/gui-*068. OwnPEd424f606ec491232aba552e53311e96f79ca76802b636d15120316a62c6a4082,
+x86entryE4480,Ko/Ru naturalexit0. Double300/301/wrap/querycount,right/modalguard,
+Addshow/duplicates/front/Removealive refs,focusordering/stalepredicate,CtrAlt/
+key229/differentqueuedkeys/value/focus70/middle/ordinaryvsEX checked. Native
+firstcompile hitbaseheader '#define parent(this)' fixturelocalname;renamedholder.
+Tutorial-board061fixture expectedCtorhiddenAFTERscreen.Add;Add455inheritedshow
+correctlymadeitvisible. FixtureexplicitShow(FALSE) afterAdd,productionunchanged.
+EightboundedgatesPARTIAL;allaffectedscrollbar/variants/minimap/textboard/metrics/
+font/modal/tutorialboardpassed. FortyGPUframehashes equalpriorviewedframes.
+NormalPEde76223c075a2af2d164f6486e8ceed49d34ebf28153bc7c12a85c4e187be60a,
+2036736bytes/x86/base400000/entry14F4A0,182/20/28TU,0unresolved/existingCreate1.
+OwnstartupTCPfixture/engine/D3D/Character/Create passed,stopbeforeloop. Oneextra
+firstchance40080201 inKernelBase logged;causeunknown,notfaultparityacceptance.
+Generatoridempotent,canonical20/engineunchanged,allownedsessionsclosed/probes
+stopped,noreferenceEXE/serverchanges/largeunchangedsuites. Next069 production
+message sizing/rich callers/fullbriefing,thenactualTutorial/Avatar/world/fourstage.
+Inputfield/IME/popup/value80consumers,other2lists/layers,indexedcompat,cross-thread/
+OOM/destructorregistry/downstream7/8 actions andallpriorM6F/M7/M9 remainOPEN.
+
+## Предыдущий результат — minimap-opacity067
 
 Minimap-opacity067: new client455_minimap_opacity.{h,cpp},owner.inc +generator
 overlays normal CGUIMiniMapWindow header/body. Adds actual EX/IScrollObserver,

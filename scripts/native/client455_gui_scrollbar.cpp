@@ -165,14 +165,13 @@ void CGUIScrollbar::SetAmount(LONG total,LONG current){
         m_top.RemoveMouseEventHandler();m_bottom.RemoveMouseEventHandler();RemoveMouseEventHandler();
         if(GetAddedObjectNum()==3)Remove(&m_thumb);return;
     }
-    // The0.7 container lacks455 parent mouse-event bubbling. These explicit
-    // arrow observers are the owned adapter for the recovered scrollbar rules.
-    AddMouseEventHandler(this);m_top.AddMouseEventHandler(this);m_bottom.AddMouseEventHandler(this);
+    //639590 registers only self. Base ctor binds the composite thumb;arrows
+    //remain unbound here. EX registers its own arrows explicitly in63A750.
+    AddMouseEventHandler(this);
     if(!IsAddedObject(&m_thumb)){
         if(m_style)m_thumb.SetPos(0,m_ptPos.y+(m_ptSize.y-m_thumb.GetSizeY())/2);
         else m_thumb.SetPos(m_ptPos.x+(m_ptSize.x-m_thumb.GetSizeX())/2,0);
         if(m_bEnableFocus)m_thumb.EnableFocus();else m_thumb.DisableFocus();
-        m_thumb.Show(IsShow()); //0.7 Add lacks455 child show inheritance.
         Add(&m_thumb);
     }
     if(m_autoThumb){
@@ -240,7 +239,7 @@ BOOL CGUIScrollbar::Draw(){return CGUIContainer::Draw()&&m_thumb.Draw();}
 
 CGUIScrollbarEX::CGUIScrollbarEX(){
     m_button.AddMouseEventHandler(this);m_button.AddMouseMotionEventHandler(this);
-    m_button.Show(IsShow());Add(&m_button);SetStyle(Vertical);
+    Add(&m_button);SetStyle(Vertical);
 }
 void CGUIScrollbarEX::SetSize(LONG width,LONG height){
     CGUIObject::SetSize(width,height);
@@ -263,7 +262,7 @@ void CGUIScrollbarEX::SetAmount(LONG total,LONG current){
         if(m_style)m_button.SetPos(0,m_ptPos.y+(m_ptSize.y-m_button.GetSizeY())/2);
         else m_button.SetPos(m_ptPos.x+(m_ptSize.x-m_button.GetSizeX())/2,0);
         if(m_bEnableFocus)m_button.EnableFocus();else m_button.DisableFocus();
-        m_button.Show(IsShow());Add(&m_button);
+        Add(&m_button);
     }
     if(m_autoThumb){
         if(m_style)m_button.m_ptSize.x=std::max(m_minThumb,m_ptSize.x-m_top.GetSizeX()-m_bottom.GetSizeX()-m_total);
@@ -324,11 +323,11 @@ void CGUIScrollbarVar::SetSize(LONG width,LONG height){
 void CGUIScrollbarVar::SetAmount(LONG total,LONG current){
     m_total=std::max<LONG>(0,total);m_current=std::max<LONG>(0,std::min(current,m_total));
     if(!m_total){Remove(&m_capTop);Remove(&m_middle);Remove(&m_capBottom);Remove(&m_thumb);RemoveMouseEventHandler();return;}
-    for(CGUIObject* child:{&m_capTop,static_cast<CGUIObject*>(&m_middle),&m_capBottom}){if(!IsAddedObject(child))child->Show(IsShow());Add(child);}
+    for(CGUIObject* child:{&m_capTop,static_cast<CGUIObject*>(&m_middle),&m_capBottom})Add(child);
     AddMouseEventHandler(this);m_capTop.SetPos(m_ptPos.x,m_ptPos.y);
     m_middle.SetPos(m_ptPos.x,m_capTop.GetPosY()+imageHeight(m_capTop));m_capBottom.SetPos(m_ptPos.x,m_middle.GetPosY()+m_middle.GetSizeY());
     m_thumb.SetSize(m_capTop.GetSizeX(),add(sub(m_skinHeight,m_total),add(m_capTop.GetSizeY(),m_capBottom.GetSizeY())));
-    m_thumb.SetPos(m_ptPos.x,m_ptPos.y);if(!IsAddedObject(&m_thumb))m_thumb.Show(IsShow());Add(&m_thumb);
+    m_thumb.SetPos(m_ptPos.x,m_ptPos.y);Add(&m_thumb);
     m_middleExtent=sub(m_skinHeight,m_total);m_thumb.AddMouseEventHandler(this);m_thumb.AddMouseMotionEventHandler(this);
 }
 int CGUIScrollbarVar::GetScrollLength455()const{

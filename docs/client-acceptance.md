@@ -1,5 +1,15 @@
 # Полнота восстановления RF_Online.bin
 
+Участок068: boundedbase GUI input/focus/key/queue/main-list contracts перенесены
+и проверены Ko/Ru:double7/right8,300ms/wrap,modalguard,focusorder,keyscan/dedup,
+focus70/value80/middlebutton. Исправлена ошибочная065arrow binding:ordinary
+defaultunbound,EXexplicitbound. GenericAddinheritsShow;Remove retainslive mouse
+refs. Sourceordinaryproviders retained,PECreate1 иaffectedGUIpassed;40GPUhashes
+равныпредыдущимпросмотренным. FullGUI/IME/popup/other2lists/layers/destructor
+registry/all7–8gameplay handlers ещё не приняты. Nativefirstchance40080201
+causeunknown,безвыводаопаритетеfailuredomains.
+[Доказательства](../research/client455-gui-input.md). M6/M6F/M7/M9 OPEN.
+
 Участок067: обычный владелец миникарты получил EX opacity control,skin0/1,
 alignment,Init80/80,подтверждённые alpha mappings и Draw455. Реальный mouse→
 owner→EX→queue путь/81amount/пополненные lists/RGB/Ko-Ru GPU прошли. Production
