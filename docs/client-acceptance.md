@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6,bootstrap050: подтверждены FG rawint/instance policy,
+настоящий ранний NetworkCreate и per-process Connect/error state. Own probes
+проверили имя/два процесса/mutex,6process states,реальный TCP и callback.
+455читаетошибкупослеclosesocket:наэтойWindows10061 теряетсядо0;connectedfalse.
+Это совпадениеAPIконтракта,неуспешное соединение. ExistingCreate вернул1;
+полный455transport/двеnetworkconfigs/35handlers/framing/cipher/crypto/вход
+ещёнеприняты. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-bootstrap.md).
+
 Текущий участок M6,launcher049: file93bytes/argc5profiles,checknation ипередача
 данных обычнымnetwork memberfields восстановлены. NativeKorea/Russia/Europe
 проверенынасинтетическихofflineданных,безNetworkCreate/connect/auth. Exact

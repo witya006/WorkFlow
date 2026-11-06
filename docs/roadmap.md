@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Последний участок M6 — bootstrap050: FG/USEFG, country instance policy и
+per-process Connect state/raw error contract подключены. ActualNetworkCreate
+перенесён передengine;existingCreate вернул1. Закрытый TCPпорт и независимый
+WinSock oracle выявили подтверждённый по455 порядок,теряющий10061послеclose;
+connectedfalse. Full455transport/35handlers/framing/crypto/auth ещёоткрыты.
+Следом051 — эти клиентские контракты,затем Connect wait/pump доengine иfullUI.
+[Доказательства](../research/client455-bootstrap.md);M6/M6F/M7/M9 открыты.
+
 Новейший участок M6 — launcher049: sourceCCR93/argvпрофили иcountrycheck
 подключены кWinMain передlanguage;старыйпозднийread удалён. Полянастоящего
 CNetworkMgr проверены offline;собственный existingCreate вернул1,затемstop

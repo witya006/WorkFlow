@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-BOOTSTRAP-050",
+      "status":"partial",
+      "description":"FG rawint, country singleinstance policy, actual early NetworkCreate and per-process Connect/raw standardTCP state contract",
+      "reference":[{"rva":"0x3d04e0","role":"WinMainbootstrap"},{"rva":"0x3d0cd0","role":"FGsetter"},{"rva":"0x3cf8a0","role":"instancegate"},{"rva":"0x3d10a0","role":"networkCreateentry"},{"rva":"0x162350","role":"perprocessConnect"},{"rva":"0x4b0480","role":"standardTCPaftercloseerror"}],
+      "implementation":["scripts/native/client455_bootstrap.cpp","scripts/native/client455_bootstrap_bridge.inc","scripts/native/client455_network_state.cpp","scripts/native/client455_network_bridge.inc","scripts/native/client455_network_transport.inc","scripts/prepare_client455_normal.py"],
+      "verification":"RealFG/truncation,11country policies,name/actual2ownprocesses/mutex;6processcorestate,actualnetworkCreate/TCPclosedport/invalidprocess/logoutcallback;naturalexit0. ExactownWinMain order andexistingCreateEAX1",
+      "evidence":["inventory/client455-bootstrap-reference.json","inventory/client455-bootstrap-native.json","inventory/client455-bootstrap-checkpoint.json","research/client455-bootstrap.md"],
+      "gaps":["455two configuredprocesses/35handlers vslegacyone/12;236byteconfig/queuedrouting/pump/Close","Framing/cipher/gatecrypto request569CD0;wireID/PW13bytes vsstate50/32;realconnect/auth/login","FullpreengineConnectwait notyetwired;rawTCP0afterclosesocketonactualrefusal doesnotproveconnected","FGpurpose beyondstoredint/fullcountryproviders/video/BGM/errorlogging","FullUI/FT/ANSI/IME/ILevel/world/gameactions/shutdown/M6F/M9"]
+    },
+    {
       "id":"CLIENT455-LAUNCHER-049",
       "status":"partial",
       "description":"Country-selected CCR93/argv launcher metadata andactualnormal network fields;WinMain beforelanguage",

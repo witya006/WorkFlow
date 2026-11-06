@@ -23,6 +23,41 @@
 
 ## Последний проверенный результат
 
+Bootstrap050: FG/USEFG nSize4→atol rawint иcountry instance policy восстановлены.
+WinMain Nation→Launcher→Language→FG→actualNetworkCreate→Instance→Engine/Miles.
+LateNetworkCreate удалён изexistingCreate:actualearlydebugstringровноодинраз.
+Instancebypass2/3/7/8;Japan5неbypass. basenameuppercase13RF_ONLINE.BIN,Toolhelp
+count>1reject,Global\\_R_F_is_execute_ existingreject;targetnullmutexaccepted.
+Handle сохраняетсядовыхода;ownCRTзакрывает. FGpurposebeyondstoredintUNKNOWN.
+
+Connect562350/RVA162350:activeBYTE6/connectedDWORD4,rawint0success,-1existing;
+errorclearsrequestedconnected/preservesactive. Endpoint2/logout directcallback
+alwaysprocess0;normalbridgepublishesnewactivebeforeactualcallback. Legacy
+BOOLConnectтеперьобёрткаraw==0;source normalCreate/transportещё12handlers/
+oneprocess,455Create35handlers/twoconfigs/capacity6. GateAccept569CD0crypto,
+queuedtransport236config/framing/cipher/CloseиprotocolещёOPEN. WireID/PW13 vs
+state50/32unchangedgap. FullConnectToServer7D1150wait/pumpbeforeengineNOTwired.
+
+IMPORTANT:455VA8B0505closesocket→8B050BWSAGetLastError. IndependentrealWinSock
+oracleandactualownTCPclosedport:10061beforeclose,0afterclose,connectedfalse.
+Неисправлятьпорядоккакобычныйbug:этоtargetquirk,неуспешное соединение/auth.
+Actualinvalidprocess5returns10022;real logoutendpoint1callbacknosend passes.
+NativeownhelperRF_Online.bin/secondownchild/name/process/mutex/FG/state all
+naturalexit0. Нетслушающегосервиса/эмулятора,оригинальныеEXEнеисполнялись.
+
+28ranges+11countryvtablesequalbothpins. IDAd716d7fa/8102ad50closed/save=true.
+Rawartifacts/client455-bootstrap/{reference,network-decompilation,tcp-assembly}.json;
+audit/probe/checkpoint_client455_bootstrap.py;research/client455-bootstrap.md.
+OwnPE3b93b0ebab349dd0b2d41d970918d4933176eb33431ec547cb7a61db1439d738,
+x86/base400000/entry149010/2004992bytes;182client/20kernel/19facade,0unresolved.
+Derivedengine879f9b75...unchanged. ActualKorea/RussiaearlybootstrapandD3D;
+existingCreateEAX1atownRVA B3F88,callB3F83→B35E0;controlledstopbeforegame-loop.
+17scopedgatesPASS/PARTIAL,oldlargehistorical suitesnotrerun.M6/M6F/M7/M9OPEN.
+Next051:client455transport/config/Accept/framing/cipher;thenpreenginewait,
+targetCreate/video/BGM/fullUI/login/tables;FT/ANSI/IME/ILevel/world/shutdown.
+
+## Предыдущий результат — launcher049
+
 Launcher049:19function ranges+11full296bytecountryETCActionvtables identical
 bothpinnedPE. Slot196:9nations8392E0/RVA4392E0 CCRfile;Russia836CB0/RVA436CB0,
 Europe83B4F0/RVA43B4F0 argc5. Europe CString temporary onlycopieshostname;
@@ -739,23 +774,17 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Восстановить full Character455 draw/mesh submit/state/constants/palette/material
-   и shader selection. Bootstrap028 уже готов. Затем связанный normal typedmodel/
-   animation/renderer путь, не отдельная подмена manager. Old ChAnimation name4/
-   ID260/size280 против4555/264/284; oldmodel776/mesh1072 против1188/5803. Поэтому
-   rawcast/shadow legacy records не добавлять. Коллекция027 готова,не реверсить снова.
-   UnityGetAni1E12C0:IDFFFFFFFF guard, lazy load, failure handling различается при
-   mode>=2/UI556 versus mode<2/UI1999+3000ms. Это reference, не implementation.
-2. Завершить fidelity FrameMove: reference static__CIsin contract (473340 SSE/default
-   dispatcher), полный actor lifecycle/secondary binding и transition consumers.
-   Численный producer/defaults готовы (025), elapsed clock готов (026); RTMovie
-   scale consumer остаётся открытым. Не переделывать готовый clock reverse.
-   Secondary flow source уже готов сrequiredmathcontext;RF_POSE_SECONDARY только
-   приотсутствующем backend. Не повторять584instruction reverse/golden math безизменений.
-   Async worker уточнять по caller,не считать установленным runtime блокером.
-   Потом связать pose с
-   skinning/draw/declarations/shaders и normal typed consumers на455 D3D9.
-   Старый Character SDK — D3D8 и другой layout, rawcast не допускается.
+1. Участок051: точный455clienttransport/config/standard-queued routes, actual
+   pump/Accept/gatecrypto569CD0,framing/cipher. Основы050 готовы,неповторять.
+   Oldoneprocess/12handlers иwireID-PW13bytes ещё не455two/35/state50-32.
+   Сверятьпо455,boundedofflinepacketfixtures;серверынеразрабатывать.
+2. РеальныйConnectToServer7D1150 timeout/wait/pump передengine,затем target
+   Create/video/BGM/managers/fullUI/login/game tables. Необходитьconnect/auth
+   успехом. RawstandardTCP можетвернуть0наrefusalиз-заtargetclose-order;
+   проверятьconnectedflag. Fulltext/FT/ANSI/IME/layout/ILevel/world/actions/
+   startup-error/fullshutdown остаются обязательными. Character draw/normal
+   consumers/clock/effects033–041ужеинтегрированы;закрыватьоставшиесяgaps по
+   профильнымresearch,неповторятьготовыебольшиеисторическиеsuites.
 3. Другие M6 client subsystems по client-features.json и client-acceptance.md;
    затем M6F/M7/M9. M8 исключён. Доказательств полноты клиента пока нет.
 
@@ -824,6 +853,8 @@ State renderer33836 — specularEnable, не fog; numeric29/146/143.
   fixtures не доказывают все unsafe/OOM/unwind/NaN/unmaskedFP/error domains.
 
 ## Где искать уже сделанное
+
+- Bootstrap/state/instance: research/client455-bootstrap.md, gate client455-bootstrap-checkpoint.json.
 
 - ANI/dispatch: research/client455-animation-dispatch.md, gateclient455-animation-checkpoint.json.
 - Legacy converter/MTG/weights: client455-legacy-model-runtime.md; parser/lifetime:

@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,bootstrap050: новых установок нет.28диапазонов функций и11
+country vtables совпали между455pins; IDA d716d7fa/8102ad50 closed/save=true.
+MSVC x86 собрал182client/20kernel/19facade; ownPE3b93b0eb.../entry149010,
+0unresolved. ActualNetworkCreate теперь передengine ивыполняетсяодинраз.
+Ownnative FG/name/process/mutex/state probes естественно exit0, включая вторую
+собственную RF_Online.bin. Реальный закрытый TCPпорт:10061 доclosesocket,
+0после — совпадаетсAPIпорядком455;connectedfalse,аутентификации нет. Exactown
+Korea/Russia bootstrap/D3D/existingCreate прошли;отладчик остановилдоцикла.
+17scoped gates PASS/PARTIAL. Полный455transport/framing/crypto/UI/M9 открыт.
+[Доказательства](../research/client455-bootstrap.md).
+
 Дополнение06.11,launcher049: установок нет.19функций и11country vtables
 совпали в обоих pinned455PE;IDAf2fdf71d closed/save=true. Modern MSVC x86
 собрал182client/20kernel/17facade;full PE a64601c8.../entry148860,0unresolved.

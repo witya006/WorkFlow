@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Bootstrap050. Restored FG profile/instance policy, moved actual
+network creation before engine and recovered per-process Connect/raw results.
+Real full-object tests cover duplicate own processes/mutex, state callbacks and
+closed-port TCP. Target closes socket before reading its error: independent
+WinSock and own source both lose10061 to0 here,while connected staysfalse.
+ExistingCreate stillreturns1. Full455transport/framing/crypto/auth/UI/M9 remain
+open. [Evidence](research/client455-bootstrap.md).
+
 2026-11-06 — Launcher049. Reconstructed CCR93file/country andRussia/Europeargc5
 profiles,includingbounded50/32fields. ActualWinMain nowloadsmetadata before
 language/engine andlatelegacyread isremoved. Realmembernetwork setters pass

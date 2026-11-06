@@ -93,31 +93,62 @@ def main():
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'
-                raw=b'#include "client455_nation_paths.h"'+nl+b'#include "client455_language.h"'+nl+b'#include "client455_launcher.h"'+nl+raw.replace(anchor,b'\tif(!RF455_InitializeNationPaths()) return 0;'+nl+b'\tif(!g_MainApp.GetDataFromLauncher()){MessageBoxA(NULL,"Connectioninfo load failure.","RF Online",0);return 0;}'+nl+b'\tif(!RF455_InitializeLanguageData()){MessageBoxA(NULL,"LangPack reading failure.","RF Online",0);return 0;}'+nl+anchor)
+                raw=b'#include "client455_nation_paths.h"'+nl+b'#include "client455_language.h"'+nl+b'#include "client455_launcher.h"'+nl+b'#include "client455_bootstrap.h"'+nl+raw.replace(anchor,b'\tif(!RF455_InitializeNationPaths()) return 0;'+nl+b'\tif(!g_MainApp.GetDataFromLauncher()){MessageBoxA(NULL,"Connectioninfo load failure.","RF Online",0);return 0;}'+nl+b'\tif(!RF455_InitializeLanguageData()){MessageBoxA(NULL,"LangPack reading failure.","RF Online",0);return 0;}'+nl+b'\tRF455_LoadBootstrapSettings();'+nl+b'\tg_MainApp.CreateNetworkMgr455();'+nl+b'\tif(!RF455_CheckStartupInstance()) return 0;'+nl+anchor)
                 start,end=section(raw,b'CMainApp::GetDataFromLauncher( void )',b'CMainApp::GetDataFromLauncher( void )')
                 raw=raw[:start]+(native/'client455_launcher_bridge.inc').read_bytes()+raw[end:]
                 start,end=section(raw,b'CMainApp::Create( void )',b'CMainApp::Create( void )');body=raw[start:end]
                 pattern=rb'\tif\( !GetDataFromLauncher\(\) \)\s*\{\s*RequestQuitProgram\(\);\s*\}'
                 body,count=re.subn(pattern,b'\t// 455 launcher data is loaded in WinMain before language/engine.',body)
                 if count!=1:raise ValueError('Legacy late launcher call changed')
+                if body.count(b'\tm_cNetworkMgr.Create();')!=1:raise ValueError('Legacy network creation boundary changed')
+                body=body.replace(b'\tm_cNetworkMgr.Create();',b'\t// Network creation moved before engine in WinMain,as in455.')
                 # Keep a named initialization boundary for diagnostics in the
                 # modern port;this one-time call is otherwise inlined away.
                 body=body.replace(b'CMainApp::Create( void )',b'__declspec(noinline) CMainApp::Create( void )',1)
-                raw=raw[:start]+body+raw[end:]
+                raw=raw[:start]+body+raw[end:]+nl+(native/'client455_bootstrap_bridge.inc').read_bytes()
                 changes.append('455country launcher before language;typed network fields;remove late legacy launcher read;full connection order remains open')
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='mainapp.h':
+                anchor=b'BOOL\tGetDataFromLauncher( void );'
+                if raw.count(anchor)!=1:raise ValueError('MainApp public launcher declaration changed')
+                raw=raw.replace(anchor,b'BOOL CreateNetworkMgr455( void );\r\n\t'+anchor)
+                changes.append('named ordinary pre-engine network creation entry')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr.h':
                 for name,size in [(b'm_pID',51),(b'm_pPassword',33)]:
                     raw,count=re.subn(rb'\b'+name+rb'\[32\]',name+b'['+str(size).encode()+b']',raw)
                     if count!=1:raise ValueError('Normal network credential storage changed')
+                raw,count=re.subn(rb'(#define\s+MAX_GAME_SERVER\s+)3\b',rb'\g<1>4',raw)
+                if count!=1:raise ValueError('Normal network endpoint count changed')
+                raw,count=re.subn(rb'(char\s+m_nActiveServerID\s*;)',rb'\1\r\n\tBYTE m_activeServer455[6];',raw)
+                if count!=1:raise ValueError('Normal active network field changed')
+                anchor=b'void\tConnect( BYTE pi_byServerType );'
+                if raw.count(anchor)!=1:raise ValueError('Normal network connect declaration changed')
+                raw=raw.replace(anchor,b'int ConnectToServer455(BYTE endpoint,BYTE process=0);\r\n\t\t\t'+anchor)
                 changes.append('455source-owned identifier51/password33 storage;wire protocols still pending')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr.cpp':
-                nl=b'\r\n' if b'\r\n' in raw else b'\n';raw=b'#include "client455_launcher.h"'+nl+raw
+                nl=b'\r\n' if b'\r\n' in raw else b'\n';raw=b'#include "client455_launcher.h"'+nl+b'#include "client455_network_state.h"'+nl+raw
                 for method,field in [(b'SetID',b'm_pID'),(b'SetPassword',b'm_pPassword')]:
                     signature=b'CNetworkMgr::'+method+b'( char * pi_p'+(b'ID' if method==b'SetID' else b'Password')+b' )'
                     start,end=section(raw,signature,signature);param=b'pi_pID' if method==b'SetID' else b'pi_pPassword'
                     raw=raw[:start]+signature+nl+b'{'+nl+b'\tRF455_CopyLauncherText('+field+b','+param+b',sizeof('+field+b'));'+nl+b'}'+raw[end:]
                     raw=re.sub(rb'ZeroMemory\( '+field+rb', 32 \)',b'ZeroMemory( '+field+b', sizeof('+field+b') )',raw)
+                signature=b'CNetworkMgr::Connect( BYTE pi_byServerType )';start,end=section(raw,signature,signature)
+                raw=raw[:start]+signature+nl+b'{ConnectToServer455(pi_byServerType,0);}' +raw[end:]+nl+(native/'client455_network_bridge.inc').read_bytes()
+                for method in [b'CNetworkMgr::Init( void )',b'CNetworkMgr::Create( void )']:
+                    start,end=section(raw,method,method);body=raw[start:end];at=body.index(b'{')+1;body=body[:at]+nl+b'\tmemset(m_activeServer455,255,sizeof(m_activeServer455));'+body[at:];raw=raw[:start]+body+raw[end:]
+                start,end=section(raw,b'CNetworkMgr::AcceptClientCheck(',b'CNetworkMgr::AcceptClientCheck(');body=raw[start:end];at=body.index(b'{')+1
+                body=body[:at]+nl+b'\tif(dwProID>=6)return;'+nl+b'\tm_nActiveServerID=static_cast<char>(m_activeServer455[dwProID]);'+nl+b'\tif(m_nActiveServerID<0 || m_nActiveServerID>=MAX_GAME_SERVER)return;'+body[at:];raw=raw[:start]+body+raw[end:]
+                start,end=section(raw,b'CNetworkMgr::CloseClientCheck(',b'CNetworkMgr::CloseClientCheck(');body=raw[start:end]
+                body,count=re.subn(rb'(m_nActiveServerID\s*=\s*GST_NONE;)',rb'\1\r\n\tif(dwProID<6)m_activeServer455[dwProID]=255;',body)
+                if count!=1:raise ValueError('Normal close callback reset changed')
+                raw=raw[:start]+body+raw[end:]
                 changes.append('confirmed bounded455identifier/password setters;no credentials logged')
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/networking.h':
+                anchor=b'bool Connect(DWORD dwProID, DWORD dwSocketIndex, DWORD dwIP, WORD wPort);'
+                if raw.count(anchor)!=1:raise ValueError('Normal transport declaration changed')
+                raw=raw.replace(anchor,b'int ConnectRaw455(DWORD process,DWORD socketIndex,DWORD address,WORD port);\r\n\t'+anchor)
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/networking.cpp':
+                signature=b'bool CNetWorking::Connect(';start,end=section(raw,signature,signature)
+                raw=raw[:start]+(native/'client455_network_transport.inc').read_bytes()+raw[end:]
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='addcodebyyun/particlelist.cpp':
                 old=b'pd3dDevice->CopyRects(backbuf,&r,1,psurface[count],&pt)'
                 if raw.count(old)!=1:raise ValueError('Screenshot readback call changed')
@@ -183,7 +214,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -204,6 +235,7 @@ def main():
     for name in ['client455_font_settings.cpp','client455_font_settings.h','client455_font.cpp','client455_font.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_sprites.cpp','client455_sprites.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

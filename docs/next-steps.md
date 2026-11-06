@@ -11,7 +11,23 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — launcher049: CCR93 для9стран,argv дляRussia/Europe,
+Последний участок — bootstrap050: FG/USEFG rawint, instance policy и6process/
+4endpoint Connect state восстановлены. NetworkMgr.Create перенесён передengine,
+позднийдубликат удалён. Ownnative FG/filename/двапроцесса/mutex/state/actualTCP
+естественно exit0. Подтверждён455порядокclose→GetLastError:10061доclose,0после,
+connectedfalse;это неуспешное соединение. ExactownPE3b93b0eb.../entry149010,
+182client/20kernel/19facade,0unresolved;existingCreateвернул1.17scoped gates
+PASS/PARTIAL. [Доказательства](../research/client455-bootstrap.md).
+
+Следом051 —455client transport Create/config236/two configured processes,
+standard/queued routing,pump/Accept/gate crypto request569CD0,framing/cipher и
+packet layouts. Старые12handlers/oneprocess/13byteID-PW ещёне45535handlers/
+twoprocess/state50-32. Затем настоящие ConnectToServer7D1150 timeout/wait/pump
+передengine;неподменять connected/auth успехом. Послеэтого targetCreate/video/
+BGM/managers/fullUI/login иигровыетаблицы. FT/ANSI/IME/layout/ILevel/world/full
+shutdown обязательны. Исходникисерверов не изменять и не разрабатывать.
+
+Предыдущий участок — launcher049: CCR93 для9стран,argv дляRussia/Europe,
 country check и bounded identifier50/password32 восстановлены. Настоящий
 WinMain читает launcher перед language;старый позднийread удалён. Данные
 передаются настоящим полям CNetworkMgr;остальные455поля сохранены отдельно.
@@ -20,7 +36,7 @@ ExactownPE a64601c8... прошла существующий Create срезул
 16scoped checks PASS/PARTIAL;M6/M6F/M7/M9 открыты.
 [Доказательства](../research/client455-launcher.md).
 
-Следом050 — оставшаяся bootstrap-цепочка455: FG_CB/USEFG,instance policy,
+Историческая очередь050 — оставшаяся bootstrap-цепочка455: FG_CB/USEFG,instance policy,
 клиентский NetworkMgr.Create/ConnectToServer и его packet/state contracts.
 Исходные опорные функции7D0CD0/7CF8A0/7D10A0/7D1150/562350. Послеlanguage
 в455 сеть/соединение идут до engine;вownклиенте этот порядок ещё старый.
@@ -469,6 +485,14 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Актуальный050: audit_client455_bootstrap.py → prepare_client455_normal.py →
+build_client455_normal.py → probe_client455_normal_consumers.py →
+link_client455_normal.py → audit_client455_own_entry.py / audit_client455_startup.py.
+Затем probe_client455_bootstrap.py, актуальные own startup/contracts/device/
+--after-create пробы и checkpoint_client455_bootstrap.py. Все Python через
+scripts/Invoke-Python.ps1. Native build/run в разрешённом режиме. Старые команды
+ниже относятся к историческим участкам; не запускать большие suites без причины.
 
 Python черезscripts/Invoke-Python.ps1:
 build_client455_pose.py →probe_client455_pose.py →build_client455_secondary.py →

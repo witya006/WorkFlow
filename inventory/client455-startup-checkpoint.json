@@ -8,11 +8,11 @@
   "process_exit_observed": true,
   "own_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "a64601c891cade91395fa285945320c115d15aa7621258391b4571e0112dd64a",
-    "bytes": 2001408,
+    "sha256": "3b93b0ebab349dd0b2d41d970918d4933176eb33431ec547cb7a61db1439d738",
+    "bytes": 2004992,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x148860",
+    "entry_rva": "0x149010",
     "sections": [
       ".text",
       ".rdata",
@@ -24,13 +24,13 @@
   "own_checkpoints": [
     {
       "name": "WinMain",
-      "rva": "0xb3ca0",
+      "rva": "0xb3e30",
       "bytes": 1,
       "sha256": "a25513c7e0f6eaa80a3337ee18081b9e2ed09e00af8531c8f7bb2542764027e7"
     },
     {
       "name": "after_sound_before_d3d",
-      "rva": "0xb3d92",
+      "rva": "0xb3f66",
       "bytes": 3,
       "sha256": "0922bc23817866b17b5ce11bd7b21428d78ba7564e9b0024637ae34d2a05b017"
     }
@@ -41,9 +41,9 @@
     "0x406d1388"
   ],
   "evidence_sha256": {
-    "client455-startup-audit": "b3170abe8fe588aa045070c3d1be8be9b5f16b326333390ca2b21275271fcdce",
-    "client455-startup-native": "f706bd859b6e571e0e36f8541c50a07bac6ef96b838689af0b52c818274a8a21",
-    "client455-normal-link": "99e74b53caf1b118936008e0a154e3b9f620547ab5bc84a114d2d17480cefc12"
+    "client455-startup-audit": "e098259bede80b4c50f3a80f1dd884923a26e712200a33233935027df0556777",
+    "client455-startup-native": "7eea48ef545a354bab493fd734470c03b2e9c2c61e7d7efcb4f85fe2f770abac",
+    "client455-normal-link": "f1c2354cd763d5a53c58d4d9dbf8a7443918456281c11107b36bd0a36b398a87"
   },
   "gaps": [
     "Window/D3D/Create/launcher/config/data loading/UI/network/full shutdown not executed or accepted by this run",
