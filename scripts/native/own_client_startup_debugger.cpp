@@ -19,9 +19,9 @@ DWORD imageSize(HANDLE process,std::uintptr_t base){IMAGE_DOS_HEADER dos={};IMAG
 bool writeByte(HANDLE process,std::uintptr_t address,BYTE value){SIZE_T written=0;DWORD original=0,discard=0;void* target=reinterpret_cast<void*>(address);if(!VirtualProtectEx(process,target,1,PAGE_EXECUTE_READWRITE,&original))return false;const bool ok=WriteProcessMemory(process,target,&value,1,&written) && written==1;VirtualProtectEx(process,target,1,original,&discard);return ok && FlushInstructionCache(process,target,1);}
 }
 int wmain(int argc,wchar_t** argv){
-    if(argc!=5&&argc!=6)return 201;FILE* output=nullptr;if(_wfopen_s(&output,argv[2],L"wb")||!output)return 202;
+    if(argc!=5&&argc!=6&&argc!=7)return 201;FILE* output=nullptr;if(_wfopen_s(&output,argv[2],L"wb")||!output)return 202;
     const DWORD mainRva=wcstoul(argv[3],nullptr,16),stopRva=wcstoul(argv[4],nullptr,16);if(!mainRva||!stopRva){std::fclose(output);return 203;}
-    const bool deviceMode=argc==6;DWORD plan[11]={};
+    const bool deviceMode=argc>=6;DWORD plan[11]={};
     if(deviceMode){FILE* file=nullptr;_wfopen_s(&file,argv[5],L"rb");bool ok=file!=nullptr;for(unsigned i=0;ok&&i<11;++i)ok=std::fscanf(file,"%lx",plan+i)==1;if(file)std::fclose(file);if(!ok||!plan[7]||!plan[8]){std::fclose(output);return 205;}}
     std::wstring target=argv[1],cwd=target.substr(0,target.find_last_of(L"\\/")),command=L"\""+target+L"\"";STARTUPINFOW startup={sizeof(startup)};PROCESS_INFORMATION process={};
     if(deviceMode){startup.dwFlags=STARTF_USESHOWWINDOW;startup.wShowWindow=SW_HIDE;}
@@ -30,7 +30,7 @@ int wmain(int argc,wchar_t** argv){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,"after_sound_before_d3d",0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,"before_character_data",0,false}};
+    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,"after_sound_before_d3d",0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"before_launcher":"before_character_data",0,false}};
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+20000;
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}

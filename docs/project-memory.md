@@ -23,6 +23,58 @@
 
 ## Последний проверенный результат
 
+Sprites048: target filenames tableBDB6A0/RVA7DB6A0 (55×128),path7B0110/RVA3B0110
+uses ./SpriteImage/<nationFolder>/<name>,_access thenCommon evenifbothmissing;
+rejectID>=55. New client455_sprites.h/.cpp source module,16normalfacadeCPPs.
+Target IDs differ fromlegacy (loading2/login3/item8/unitparts19);onlymouse0/
+common1 ordinaryCSpriteMgr startup calls bridged. OtherUI/layout/slots remain
+OPEN,doNOTremapoldgroupsbyguessing. Target pathreplacementcache lifecycle not
+ported;selectedsame-path cache reuse verified. CCharacterDataMgr creator5E1920
+ctor5FA190/Init5FA370 onlyallocation/init,no tableIO atthatCreateboundary.
+
+Recovered GetDDSTexFromBuffer target8F2E70/RVA4F2E70 in new fourth derivedengine
+overlay r3d3dtex.cpp via scripts/native/client455_sprite_texture.inc. Supports
+DXT1/DXT5/ARGB32/R5G6B5/A1R5G5B5;one managedtexture,contiguouspayloadcopy;
+noncompressed secondmanagedtexture+surface TRIANGLE roundtrip andpitch guard.
+Decompiler has wrong stack deltas afterimportedcalls;manuallyfollowed actual
+ESP to distinguishT1/T2/surfaces in artifacts/client455-sprites/texture-assembly.
+Source bounds publishedstDebugSize andchecksfailedHRESULT/cleansresources;
+unsafe/error/OOM domains notclaimedidentical. Legacy033source/library preserved.
+Derivedengine67units/4CPP overlays SHA879f9b754d229f3570913d9256327e3ddf0231881efc793e68480d1067814cec.
+FullownPE SHAd431094dfee0ceb2ba854c8dc71f2eaacdaf08909c0d57f1cffc1b8103b1fa47,
+x86/base400000/entry148390/1999360bytes,182client/20kernel/16facade,0unresolved.
+
+Actual normal CMainApp.LoadData/UnloadData invoked through compiler-typed method
+pointers in ownfull-object lab;real memberSpriteMgr+Screen pointers published
+exactly asCreate does. FullCreate/WinMain notrun inthislab. ActualCGUIMouse and
+Commonbutton drawn;all562selected frame textures eachKorea/Russia matchrealSPR
+payloadbytes andmetadata across4formats;bothprocesses naturalexit0/deviceRefs
+baselinepreserved. SourceSPR reader remainslegacy,notfullanimation/errorcertified.
+4realSPR files losslessroundtrip;55binary-derivednames/bounds/fallback tested.
+Labs work/m9/315bb2d7/sprites-{ko-kr,ru-ru}001;previewsviewed;backbuffer640×500
+vsviewport480 remainsopen. Font/othermodel/effect/shadow frames preserved.
+
+ExactownfullPE separatelypassed all existingclientCreate/UIinit/LoadData/title
+allocation tobeforelegacylauncher I/O atownRVA B354A. Ownentryaudit decodesPUSH
+ofuniqueDefaultSet.tmp literal andfollowingCreateFileA IATcall;not fixedoffset
+or missing(inlined)GetDataFromLauncher symbol. Debugger optional7thargument
+labels before_launcher;restorescodebyte,reads Characterdevice,thencontrolled
+TerminateProcessE0434200. ThisrunNOTnaturalexit/fullCreate/target455UI acceptance.
+Latestlab work/m9/d431094d/ui-startup002;actualdevice51dbf60==Characterdevice,
+ownerA614720. Allfontregistrationscleaned. No launcher/accountfile staged/read.
+Nativeearly/device/Create/Korea/Russia/font/lifecycle andshortdependentregressions
+passed;15scopedcheckpoints PASS/PARTIAL.M6/M6F/M7/M9OPEN. IDA64d5aa70 closed/save.
+Detailedresearch/inventory client455-sprites.*,UIrun client455-ui-startup-native.
+
+Next049:targetlauncher/bootstrap7D04E0 contracts/order/errorpaths. Legacy
+GetDataFromLauncher does uncheckedDefaultSet.tmp/CreateFile/ReadFile andoldschema;
+doNOTcontinueitwithmissinginput orfakeauthsuccess. Pin455nation→launcher→
+language→FG_CB→clientnetwork→engine/BGM;ownofflinefixtures first. Then target
+managers/video/fullCreate andloginUI. Fullgametables arestillrequiredlater.
+OtherUI/FT/ANSI/text/IME/layout/ILevel/world/network/shutdown remainM6queue.
+
+## Предыдущий результат — lifecycle047
+
 Lifecycle047: только подтверждённая ветка null-level UnloadLevel перенесена
 в normal/source/cland.cpp генератором prepare_client455_normal.py; исходная
 база и engine033 не изменены. Target x86/base400000: ctor7C78E0/Init7C79F0

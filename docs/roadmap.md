@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Новейший участок M6 — sprites048: настоящие mouse/common ресурсы455 загружаются
+через CMainApp.LoadData;DXT5 uploader восстановлен. Содержимое GPU текстур,
+отрисовка курсора/кнопки и естественный exit0 проверены дляKorea/Russia.
+ExactownPE дошла до launcher I/O после существующей UI инициализации иLoadData;
+остановлена отладчиком. Полные455UI/Create/вход ещё открыты. Следом049 — target
+launcher/bootstrap order,затем полная инициализация/экран входа.
+[Доказательства](../research/client455-sprites.md);M6/M6F/M7/M9 открыты.
+
 Новейший участок M6 — lifecycle047: подтверждённый null-level return FALSE
 предотвращает падение до Create. Три normal CMainApp/CLand процесса и две GUI
 пробы без Land завершились естественно с exit0. Новая PE собирается;14scoped

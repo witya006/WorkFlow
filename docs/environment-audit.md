@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, sprites048: установок нет. Сессия IDA64d5aa70 работала с
+копией эталона, закрыта/save=true.14диапазонов sprite/texture/manager и55имён
+совпали в обоих pinnedPE. Производный движок сохраняет033;67units/4CPP overlays,
+новый source texture uploader поддерживает реальный DXT5. Две own GUI пробы
+с normal CMainApp.LoadData/CGUIMouse естественно exit0,COMrefs сохранены.
+Точная ownPE d431094d.../x86/entry148390 дошла до новой проверенной границы
+RVA B354A перед CreateFileA(DefaultSet.tmp);остановлена собственным debugger,
+launcher-данные не читались. Полный455bootstrap/вход ещё открыты.
+[Доказательства](../research/client455-sprites.md);M6/M9 открыты.
+
 Дополнение 06.11, lifecycle047: установок нет. IDA session dae004fd открыла
 копию эталона, закрыта с save=true. Девять диапазонов Land/ILevel совпали
 в обоих закреплённых PE; null-level branch RVA3C8F3F подтверждён инструкциями.

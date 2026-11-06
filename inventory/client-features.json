@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-SPRITES-048",
+      "status":"partial",
+      "description":"455sprite path/table and managedtexture upload includingDXT5;actualnormal startup mouse/common consumers",
+      "reference":[{"va":"0x7b0110","rva":"0x3b0110","role":"localized sprite lookup"},{"va":"0x8f2e70","rva":"0x4f2e70","role":"sprite texture upload"},{"va":"0xbdb6a0","rva":"0x7db6a0","role":"55targetfilenames"}],
+      "implementation":["scripts/native/client455_sprites.cpp","scripts/native/client455_sprite_texture.inc","scripts/prepare_client455_normal.py"],
+      "verification":"4realSPR exactroundtrip;actualCMainApp.LoadData/CGUIMouse,562framepayloads eachKorean/Russian,capturedframe,refs andexit0;exactfullPE reaches prelauncherI/O",
+      "evidence":["inventory/client455-sprites-reference.json","inventory/client455-sprites-native.json","inventory/client455-ui-startup-native.json","inventory/client455-sprites-checkpoint.json","research/client455-sprites.md"],
+      "gaps":["OtherlegacyUIgroups/targetIDs/layout/bindings","FullSPR animation/draw/reload/error/OOM/privateABI acceptance","Launcher/bootstrap/targetCreate/video/loginUI andclientnetwork","Window/backbuffer sizing andfullshutdown","Whole455gameplay/M9"]
+    },
+    {
       "id":"CLIENT455-LIFECYCLE-047",
       "status":"partial",
       "description":"Confirmed455null-level returnFALSE before UnloadLevel cleanup in actual normal CLand/CMainApp ownership",

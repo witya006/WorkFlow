@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6,sprites048: source455route55names иtexture upload включают
+DXT5,которого не поддерживал legacyкод. Только подтверждённые startup IDs0/1
+подключены к normalUI. ActualCMainApp.LoadData/CGUIMouse в ownlab загрузили и
+нарисовали реальные455resources;562texture frames наязык сверенысполнымиbytes,
+обаprocess naturalexit0. Это не полный455UI. ExactownPE отдельно дошла до
+legacylauncherAPI послесуществующегоCreateprefix,затемостановленаотладчиком.
+Ни launcherконтракт455,ниполныйCreate/логин/остальныеUIslots этимнеприняты.
+[Доказательства](../research/client455-sprites.md);M6/M6F/M7/M9 открыты.
+
 Текущий участок M6, lifecycle047: восстановлена только null-level ветка
 UnloadLevel, подтверждённая инструкциями обоих pinned455PE. Три собственных
 full-object labs с реальным глобальным CMainApp/CLand и две GUI-пробы без Land

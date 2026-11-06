@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "d0ef3b09bf260a5d513ceb7fad6468b5dcda5cfe5ed5108eaab445e746ee2b3a",
+  "library_sha256": "879f9b754d229f3570913d9256327e3ddf0231881efc793e68480d1067814cec",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -297,6 +297,12 @@
       "sha256": "21cb2fdffce259959039be9f14b76363c8bca324ec397641619f57bed1e343db",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3text.cpp",
       "original_sha256": "72993c33a9d2910395849203d0f0b64cc70b44dba1efcb1ab99a32606954d413"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3d3dtex.cpp",
+      "sha256": "3f84eb01516cec35c8322d9926cd2517c321ff6860ea0e0fe58a4e5f675bae61",
+      "original": "work/client455-port/source/R3Engine/1stclass/r3d3dtex.cpp",
+      "original_sha256": "7aad342e1952ae32641ae413ba654f2867847871aada1e4b978309205bbf90dd"
     }
   ],
   "baseline_library": {
@@ -305,13 +311,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "b1c9c3feead8fb20302a6e3ae5415283bc9fe93defbfa603eb45abcedb9e6d73"
+    "sha256": "28f951952b469b28e67634b593bde731308e1390ffa99c0549d702002b78a303"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "14c9772a45fb3f15931e3cf70556a08cef95b636c7359eebd7301e93d439ae26"
+    "sha256": "18974d6453ea549441db4f83f56c1204350d5318ffd1741fda1e92cd34899447"
   },
-  "script_sha256": "7469e24349dc19b427de86e5956face37c05fe582273e0744650bf125e54c646",
+  "script_sha256": "48a5f5d4e3ba4543b6b783d06883b62b323f4c0d5ee46cf3ba1bc44ef4e6f991",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -319,5 +325,8 @@
   "text_bridge": {
     "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
     "client455_font.h": "c8532595029c3ed10e20efefec7d3c140a32f2ee59cf6c98cd7b857bdd5ed478"
+  },
+  "sprite_texture": {
+    "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"
   }
 }

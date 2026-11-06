@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Sprites048. Recovered55target filenames/localized→Common selection
+and455managed texture uploader,including actual requiredDXT5. Ordinary startup
+mouse/common consumers nowload real455resources;actualCMainApp.LoadData and
+CGUIMouse pass payload/frame/cache/cleanexit checks in Korean/Russian labs.
+ExactownPE reaches decodedpre-launcher boundary afterexistingUI initialization.
+FullUI/targetbootstrap/Create/login andM9 remainopen.
+[Evidence](research/client455-sprites.md).
+
 2026-11-06 — Lifecycle047. Restored the binary-confirmed455null-level FALSE
 return before cleanup in ordinary CLand::UnloadLevel. Three normal global
 CMainApp/CLand labs and both GUI font labs without artificial Land creation

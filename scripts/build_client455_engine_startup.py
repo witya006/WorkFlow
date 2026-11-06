@@ -11,8 +11,8 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp']:
-        source=base/'source/R3Engine/2ndclass'/filename;raw=source.read_bytes()
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp']:
+        source=base/'source/R3Engine'/('1stclass' if filename=='r3d3dtex.cpp' else '2ndclass')/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
             if raw.count(anchor)!=1:raise ValueError('Legacy forced fullscreen changed')
@@ -21,11 +21,15 @@ def main():
             anchor=b'\tCreate(hInstance);'
             if raw.count(anchor)!=1:raise ValueError('Legacy Create wrapper changed')
             raw=raw.replace(anchor,b'\tif(Create(hInstance)!=S_OK) exit(0); // 455:8EDB72..7A;any nonzero result')
-        else:
+        elif filename=='r3text.cpp':
             anchor=b'static CR3Font stCR3Font;'
             if raw.count(anchor)!=1:raise ValueError('Legacy active text boundary changed')
             header=(WS/'scripts/native/client455_font.h').as_posix()
             raw=(f'#include "{header}"\n'.encode()+raw[:raw.index(anchor)]+(WS/'scripts/native/client455_text_bridge.inc').read_bytes())
+        else:
+            from prepare_client455_normal import section
+            start,end=section(raw,b'void *GetDDSTexFromBuffer(',b'void *GetDDSTexFromBuffer(')
+            raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
         target=root/'source'/filename;target.parent.mkdir(parents=True,exist_ok=True)
         if target.exists() and target.read_bytes()!=raw and sha(target)!=old.get(target.relative_to(WS).as_posix()):raise ValueError('Preserving changed derived source')
         if not target.exists() or target.read_bytes()!=raw:target.write_bytes(raw)
@@ -41,5 +45,6 @@ def main():
     if len(objects)!=67 or sha(oldLibrary)!=oldHash or any(sha(WS/row['file'])!=row['sha256'] for row in sources):raise ValueError('Engine source/object/baseline drift')
     report={'scope':'Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open','architecture':'x86','build_exit':0,'objects':67,'library':library.relative_to(WS).as_posix(),'library_sha256':sha(library),'base_cmake':{'file':template.relative_to(WS).as_posix(),'sha256':sha(template)},'base_sources':sources,'derived_sources':derived,'baseline_library':{'file':oldLibrary.relative_to(WS).as_posix(),'sha256':oldHash},'cmake':{'file':(root/'CMakeLists.txt').relative_to(WS).as_posix(),'sha256':sha(root/'CMakeLists.txt')},'log':{'file':log.relative_to(WS).as_posix(),'sha256':sha(log)},'script_sha256':sha(WS/'scripts/build_client455_engine_startup.py'),'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
+    report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

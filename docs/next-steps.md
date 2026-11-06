@@ -11,14 +11,35 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — lifecycle047: null-level ветка UnloadLevel восстановлена
+Последний участок — sprites048: маршрут55target sprite names/localized→Common
+восстановлен; только startup IDs0/1 подключены к старым UI consumers. Actual
+CMainApp.LoadData/CGUIMouse используют реальные ko-kr/ru-ru packs;DXT5/прочие
+форматы,содержимое текстур,кэш,кадр и естественный exit0 проверены. Exact ownPE
+d431094d... прошла оставшуюся существующую UI init/LoadData/title allocation
+до launcher file API (RVA B354A),без обхода загрузки.15scoped checks PASS/PARTIAL;
+полный интерфейс/вход/455Create не приняты.
+[Доказательства](../research/client455-sprites.md).
+
+Следом049 — target455 launcher/bootstrap order и клиентский контракт входных
+данных. Старый GetDataFromLauncher не проверяет CreateFile/ReadFile и использует
+старую DefaultSet.tmp schema;не пропускать эту точку на отсутствующем файле и
+не выдавать её за455. Восстановить по7D04E0 связанную последовательность
+nation→launcher→language→FG_CB→clientnetwork→engine/BGM и контракты ошибок.
+Работать с собственными offline fixtures,не подменять результат/auth и не
+разрабатывать серверы. Затем нужные target managers/video/полный Create и UI
+входа. Игровые таблицы остаются обязательны: _CreateCharDataMgr только создаёт
+объект,реальное IO наступает позже. Остальные UI IDs отличаются от legacy;
+не применять старые номера к target55. FT/ANSI/text/IME/layout/ILevel/world/
+network/shutdown остаются обязательными доM6F/M7/M9.
+
+Предыдущий участок — lifecycle047: null-level ветка UnloadLevel восстановлена
 по обоим 455 PE. Реальный глобальный CMainApp/CLand в трёх состояниях и оба
 GUI-приложения без создания Land завершились естественно с exit0. Полная PE
 11833d1e... собирается без unresolved; 14 scoped checkpoints PASS/PARTIAL.
 Full ILevel/созданный игровой мир/полный WinMain не приняты.
 [Доказательства](../research/client455-lifecycle.md).
 
-Следом 048 — дальнейший normal Create: _CreateCharDataMgr в global.cpp,
+Историческая очередь 048 — дальнейший normal Create: _CreateCharDataMgr в global.cpp,
 его реальные таблицы и соответствующий менеджер 455. Определить подтверждённые
 порядок и формат, затем пройти следующую настоящую границу Create на исходных
 данных 455. Не обходить загрузку ради запуска. Цель ближайшего последовательного
