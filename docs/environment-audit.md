@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,account053: новых установок нет.26функций/11country selectors
+совпали между455pins; IDAf2469475 closed/save=true. Собственная x86PEa12b10f7...,
+entry14A980,182client/20kernel/22facade,0unresolved. Пакеты account/gateseed,
+bounded dispatcher и pending dialog проверены реальными методами на owned
+in-memory fixture; естественный exit0. Точная PE сохранила existingCreate=1.
+Настоящий вход и full455 ещё открыты. [Доказательства](../research/client455-account.md).
+
 Дополнение06.11,connection052: установок нет.15функций/11vtables совпали между
 455pins; IDAbed1c136 closed/save=true. Полная собственная x86PE0733cce1...,
 entry14a3f0:182client/20kernel/21facade,0unresolved. Настоящие Connect/events/

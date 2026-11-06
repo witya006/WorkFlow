@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6,account053: gate seed и account payloads/ответы подключены
+к обычным send/receive/dispatch. Реальные методы проверены собственными
+пакетами, включая настоящий pending dialog и повреждённые границы. Это
+компонентное доказательство; реальная аутентификация не выполнялась. Ticket/
+ini/mode providers,35handlers,notify11/fullUI/world/gameplay/IME/shutdown
+остаются открытыми. [Доказательства](../research/client455-account.md).
+M6/M6F/M7/M9 открыты.
+
 Текущий участок M6,connection052: обычный WinMain проверяет настоящее соединение
 до engine; события/задержка callback/timeout восстановлены. Реальные методы
 подтвердили TCP-peer, raw-error и timeout с текстами NDLanguage. Собственные

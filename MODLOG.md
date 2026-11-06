@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Account053. Restored gate seed,342byte login and account/world
+packet consumers in the ordinary client. Actual sender/ring/dispatcher and
+pending dialogs pass owned fixture cases;naturalexit0. Full PE still reaches
+existingCreate=1. No authentication or server implementation. Providers/fullUI/
+other game protocols remain open. M6/M9 open.
+[Evidence](research/client455-account.md).
+
 2026-11-06 — Connection052. Restored events-only pre-engine connection wait,
 strict timeout/delayed-accept boundaries and102-entry receipt budgets. Actual
 normal WinMain reaches existingCreate through genuine TCP; native real-method

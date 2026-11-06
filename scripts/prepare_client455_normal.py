@@ -117,6 +117,17 @@ def main():
                 raw=raw.replace(anchor,b'BOOL CreateNetworkMgr455( void );\r\n\tBOOL ConnectNetwork455();\r\n\t'+anchor)
                 changes.append('named ordinary pre-engine network creation entry')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr.h':
+                raw=b'#include "client455_account.h"\r\n'+raw
+                first,last=section(raw,b'struct WORLD_SERVER_INFO',b'struct WORLD_SERVER_INFO')
+                raw=raw[:first]+b'using WORLD_SERVER_INFO=RF455WorldInfo;'+raw[last+1:]
+                raw,count=re.subn(rb'(#define\s+MAX_WORLD_SERVER\s+\(\s*)100\b',rb'\g<1>300',raw)
+                if count!=1:raise ValueError('World list capacity changed')
+                raw,count=re.subn(rb'BYTE(\s+m_byWorldServerNum\s*;)',rb'std::uint32_t\1',raw)
+                if count!=1:raise ValueError('World list count storage changed')
+                raw=raw.replace(b'AccountMsg_LoginAccountRequest_cllo( void )',b'AccountMsg_LoginAccountRequest_cllo( const char* ticket=nullptr )')
+                anchor=b'\tCNetworkMgr();'
+                if raw.count(anchor)!=1:raise ValueError('Account public declaration boundary changed')
+                raw=raw.replace(anchor,b'\tRF455AccountHandshake m_account455;\r\n\tBOOL AccountMsg_CryptoSeedRequest455();\r\n\tbool DispatchAccount455(BYTE,char*,std::size_t);\r\n'+anchor)
                 for name,size in [(b'm_pID',51),(b'm_pPassword',33)]:
                     raw,count=re.subn(rb'\b'+name+rb'\[32\]',name+b'['+str(size).encode()+b']',raw)
                     if count!=1:raise ValueError('Normal network credential storage changed')
@@ -129,7 +140,7 @@ def main():
                 raw=raw.replace(anchor,b'int ConnectToServer455(BYTE endpoint,BYTE process=0);\r\n\t\t\t'+anchor)
                 changes.append('455source-owned identifier51/password33 storage;wire protocols still pending')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr.cpp':
-                nl=b'\r\n' if b'\r\n' in raw else b'\n';raw=b'#include "client455_launcher.h"'+nl+b'#include "client455_network_state.h"'+nl+raw
+                nl=b'\r\n' if b'\r\n' in raw else b'\n';raw=b'#include "client455_launcher.h"'+nl+b'#include "client455_network_state.h"'+nl+b'#include "client455_account.h"'+nl+b'#include "client455_language.h"'+nl+raw
                 for method,field in [(b'SetID',b'm_pID'),(b'SetPassword',b'm_pPassword')]:
                     signature=b'CNetworkMgr::'+method+b'( char * pi_p'+(b'ID' if method==b'SetID' else b'Password')+b' )'
                     start,end=section(raw,signature,signature);param=b'pi_pID' if method==b'SetID' else b'pi_pPassword'
@@ -140,7 +151,20 @@ def main():
                 for method in [b'CNetworkMgr::Init( void )',b'CNetworkMgr::Create( void )']:
                     start,end=section(raw,method,method);body=raw[start:end];at=body.index(b'{')+1;body=body[:at]+nl+b'\tmemset(m_activeServer455,255,sizeof(m_activeServer455));'+body[at:];raw=raw[:start]+body+raw[end:]
                 start,end=section(raw,b'CNetworkMgr::AcceptClientCheck(',b'CNetworkMgr::AcceptClientCheck(');body=raw[start:end];at=body.index(b'{')+1
-                body=body[:at]+nl+b'\tif(dwProID>=6)return;'+nl+b'\tm_nActiveServerID=static_cast<char>(m_activeServer455[dwProID]);'+nl+b'\tif(m_nActiveServerID<0 || m_nActiveServerID>=MAX_GAME_SERVER)return;'+body[at:];raw=raw[:start]+body+raw[end:]
+                body=body[:at]+nl+b'\tif(dwProID>=6)return;'+nl+b'\tm_nActiveServerID=static_cast<char>(m_activeServer455[dwProID]);'+nl+b'\tif(m_nActiveServerID<0 || m_nActiveServerID>=MAX_GAME_SERVER)return;'+body[at:]
+                anchor=b'\tif( m_nActiveServerID == GST_ZONE )'
+                if body.count(anchor)!=1:raise ValueError('Gate accept branch changed')
+                body=body.replace(anchor,b'\tif(m_nActiveServerID==0)AccountMsg_CryptoSeedRequest455();'+nl+anchor)
+                raw=raw[:start]+body+raw[end:]
+                start,end=section(raw,b'CNetworkMgr::Init( void )',b'CNetworkMgr::Init( void )');body=raw[start:end];at=body.index(b'{')+1
+                body=body[:at]+nl+b'\tm_account455.delta=0;m_account455.mask=0;m_account455.selectedWorld=0xffffffff;m_account455.zoneRequestMode=-1;'+body[at:];raw=raw[:start]+body+raw[end:]
+                dispatch=(native/'client455_account_dispatch.inc').read_bytes()
+                for method in [b'CNetworkMgr::SendRequestMsg(',b'CNetworkMgr::ReceiveResponseMsg(']:
+                    start,end=section(raw,method,method);a,b=section(dispatch,method,method);raw=raw[:start]+dispatch[a:b]+raw[end:]
+                start,end=section(raw,b'CNetworkMgr::AnalysisServerPacket(',b'CNetworkMgr::AnalysisServerPacket(');body=raw[start:end];at=body.index(b'{')+1
+                body=body[:at]+nl+b'\tif(!pMsgHeader || pMsgHeader->m_wSize<4)return false;'+nl+b'\tif(pMsgHeader->m_byType[0]==21)return DispatchAccount455(pMsgHeader->m_byType[1],pi_pMsg,pMsgHeader->m_wSize-4);'+body[at:]
+                new_methods=dispatch[dispatch.index(b'BOOL CNetworkMgr::AccountMsg_CryptoSeedRequest455'):]
+                raw=raw[:start]+body+raw[end:]+nl+new_methods
                 start,end=section(raw,b'CNetworkMgr::CloseClientCheck(',b'CNetworkMgr::CloseClientCheck(');body=raw[start:end]
                 body,count=re.subn(rb'(m_nActiveServerID\s*=\s*GST_NONE;)',rb'\1\r\n\tif(dwProID<6)m_activeServer455[dwProID]=255;',body)
                 if count!=1:raise ValueError('Normal close callback reset changed')
@@ -153,6 +177,14 @@ def main():
                 body=body.replace(b'return TRUE;',b'return transportCreated;');raw=raw[:start]+body+raw[end:]
                 signature=b'CNetworkMgr::SendNetMessage(';start,end=section(raw,signature,signature);body=raw[start:end];at=body.index(b'{')+1
                 body=body[:at]+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr_masterservermsg.cpp':
+                raw=b'#include "client455_account.h"\r\n#include "client455_nation_paths.h"\r\n'+raw
+                bridge=(native/'client455_account_bridge.inc').read_bytes()
+                for method in [b'JoinAccountRequest_cllo',b'JoinAccountResult_locl',b'LoginAccountRequest_cllo',b'LoginAccountResult_locl',b'WorldListRequest_cllo',b'WorldListResult_locl',b'SelectWorldRequest_cllo',b'SelectWorldResult_locl',b'PushCloseRequest_cllo',b'PushCloseResult_locl']:
+                    signature=b'CNetworkMgr::AccountMsg_'+method+b'('
+                    first,last=section(raw,signature,signature);a,b=section(bridge,signature,signature)
+                    raw=raw[:first]+bridge[a:b]+raw[last:]
+                changes.append('455 account84/342/88 payloads,seed mask,50/24 replies and72byte world records;full game protocols/UI remain open')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/networking.h':
                 anchor=b'bool Connect(DWORD dwProID, DWORD dwSocketIndex, DWORD dwIP, WORD wPort);'
                 if raw.count(anchor)!=1:raise ValueError('Normal transport declaration changed')
@@ -267,7 +299,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -291,6 +323,7 @@ def main():
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_connection.cpp','client455_connection.h','client455_connection_bridge.inc','client455_network_receipt.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_account.cpp','client455_account.h','client455_account_bridge.inc','client455_account_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['network_defaults']=codec_reference['generated_defaults']
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())

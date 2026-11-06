@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-ACCOUNT-053",
+      "status":"partial",
+      "description":"Gate seed,account84/342/88 packets and50/24 replies,bounded ordinary dispatcher,72byte world records and request dialog predicates",
+      "reference":[{"rva":"0x169cd0","role":"emptyseedrequest"},{"rva":"0x169d30","role":"seedreply"},{"rva":"0x169ef0","role":"login342"},{"rva":"0x16a2c0","role":"worldrecords72"},{"rva":"0x162a20","role":"pendingdialog"}],
+      "implementation":["scripts/native/client455_account.h","scripts/native/client455_account.cpp","scripts/native/client455_account_bridge.inc","scripts/native/client455_account_dispatch.inc","scripts/prepare_client455_normal.py"],
+      "verification":"Actual ordinary sender/ring/fragmented wrapreceive/dispatcher and real pendingdialog open/close;ID50/PW32/seedwrap/ticket/clearing/fields/worldreload/count127/name64/truncation;naturalexit0;fullPE existingCreate1. Noauthentication",
+      "evidence":["inventory/client455-account-reference.json","inventory/client455-account-native.json","inventory/client455-account-checkpoint.json","research/client455-account.md"],
+      "gaps":["MASTER_SERVER ini/globalmode2/zone-mode/otherseed providers","Real authentication,ticket acquisition and fullcountrybootstrap/loginUI","35handlers,remainingwire messages,notify11 targetquit/localizedsideeffects","WorldUI value/status interpretation,world/gameplay/IME/lifecycle/M6F/M9","Own bounded nullticket/malformed domains intentionallydo notreproduce undefinedmemorybehavior"]
+    },
+    {
       "id":"CLIENT455-CONNECTION-052",
       "status":"partial",
       "description":"Actual pre-engine Connect/wait/events-only pump,strict delayed accept and receipt budgets;realTCP success/errors in normal source",

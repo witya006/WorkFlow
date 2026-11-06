@@ -11,7 +11,19 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — connection052: настоящий Connect/events-only wait стоит
+Последний участок — account053: gate seed,342byte login, account replies и
+world72/capacity300 подключены к normal send/receive/dispatch. Реальные методы,
+pending dialog/zone predicates и повреждённые границы проверены; собственный
+процесс exit0. FullPEa12b10f7.../entry14A980,0unresolved,existingCreate=1.
+Это не настоящий вход. [Доказательства](../research/client455-account.md).
+
+Далее054: найти вызов MASTER_SERVER/SERVER_TYPE provider (setter5F0FE0),
+runtime mode2/replay provider (41E130), writers436232/seed56BEA0 и остальные
+country/35handler constructors. Затем настоящий loginUI/ticket acquisition,
+notify11 localized/quit и оставшиеся wire contracts. Не подменять endpoint0/1,
+подключение или аутентификацию успехом. Серверы не делать и не изменять.
+
+Предыдущий участок — connection052: настоящий Connect/events-only wait стоит
 перед engine. Строгие timeout/accept-delay, DWORD wrap и102-entry receipt
 budget проверены. CCR own WinMain через реальный TCP дошёл до existingCreate=1.
 Native success/raw-error/timeout probes естественно exit0; тексты реальных
@@ -20,7 +32,7 @@ Native success/raw-error/timeout probes естественно exit0; текст
 target country/handler side effects неизвестны. Не перенаправлять endpoint0→1.
 [Доказательства](../research/client455-connection.md).
 
-Далее053 — gatecrypto request/reply569CD0/569D30 и downstream packet state,
+Историческая очередь053 — gatecrypto request/reply569CD0/569D30 и downstream packet state,
 полные wire layouts/35handlers/countryproviders. Затем первый полный loginUI
 и реальные игровые таблицы/действия. Fulltransport/queued/filters/security/
 threads/Close,FT/IME/layout/ILevel/world/shutdown остаются обязательными.

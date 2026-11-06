@@ -23,6 +23,36 @@
 
 ## Последний проверенный результат
 
+Account053: group21/op12 на accept endpoint0; op13 даёт BYTE+1/WORD+3,
+не новые AESkeys. Join84/PushClose88=ID51/PW33[/zero4]; login342, Taiwan8
+ticket257@85, transform BYTE(byte+delta)^LOWBYTE(mask), затем overwrite84
+serverType436024. Loginreply50: result/account, clearPW33 кромеresult5.
+Worldreply header3/dataSize, signextendedcount; typed records72/capacity300,
+signedvalue/name64/status1/pad3. Boundedcount0..127/names1..64; validatebefore
+mutation, retainname bytesafter declaredspan. SelectLE16/storedindex,reply24
+setsendpoint1IP/port/keys16. Ordinary dispatcher uses decodedframe length.
+Pending/tick,F100/ND305/style5: show active0!=2 OR436232==4;close active0!=2
+ORmode!=-1. Mode initial=-1;allwritersnotyetported. New normal packer supports
+mode2skip as explicit argument;runtime bridge/provider stillopen. SERVER_TYPE
+setter5F0FE0 confirmedfrom MASTER_SERVER ini default0;invocation remainsopen.
+
+OwnPEa12b10f729e561f075ba67ea36b575bee9f8110434449ec40b7d161f2ae10ad1,
+x86/base400000/entry14A980/2012672bytes,182client/20kernel/22facade,0unresolved.
+Engine879f9b75 unchanged. Fullobject native fixture actualsend/ring/fragmented
+wrapreceive/dispatch/UIpending/zonepredicates naturalexit0. NoTCP/auth in that
+fixture;separate realTCP052/codec051 regressions passed. ExactownWinMain still
+reaches D3D/Character/existingCreate1 then controlledstopbeforeloop. Russia
+stillbeforeConnect;don'tremap endpoint0→1 withoutproof.
+26functions/11selectors equalbothpins;ownedIDAf2469475 closed/save=true.
+research/client455-account.md;inventory/client455-account-{reference,native,
+checkpoint}.json. Raw ignoredartifacts/client455-account/reference-final.json.
+M6/M6F/M7/M9 OPEN. Next054 providers/35handlers→fullloginUI/remainingprotocols.
+Все20scoped checkpoint scripts на текущих evidence завершились0/PARTIAL;
+короткие зависимые native/regression probes обновлены, большие неизменённые
+исторические math/kernel suites не повторялись. Native процессов не осталось.
+
+## Предыдущий результат — connection052
+
 Connection052: обычный WinMain вызывает actual CMainApp::ConnectNetwork455 до
 InitR3Engine. Endpoint1/process0, global ./DataTable/ClientSystem.ini Network/
 ConnectTime default90sec*1000DWORDwrap. Slot284 FALSE во всех11профилях.
@@ -56,7 +86,7 @@ afterSound B4458, D3D B4468, existingCreate EAX1 at B447A (callB4475→B3AC0).
 15functions+11vtables equalbothpins; IDAbed1c136 closed/save=true.
 research/client455-connection.md; audit/probe/checkpoint_client455_connection.py.
 Raw artifacts/client455-connection/reference.json. M6/M6F/M7/M9 OPEN.
-Next053: gatecrypto569CD0/569D30 downstream packet state, full35handlers/
+HistoricalNext053: gatecrypto569CD0/569D30 downstream packet state, full35handlers/
 wire layouts/countryproviders, затем fulllogin/UI/game tables/gameplay.
 
 ## Предыдущий результат — network-codec051
@@ -842,9 +872,9 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок053: gatecrypto request/reply569CD0/569D30 и downstream packet state,
-   wire layouts/35handlers/countryproviders. У own argv endpoint1 не заполнен;
-   не делать remap без target доказательств. TCP052/AES051 уже интегрированы,
+1. Участок054: MASTER_SERVER/SERVER_TYPE ini callsite,mode2/replay provider,
+   writers436232/seed56BEA0,остальные35handlers/countryproviders. У own argv endpoint1 не заполнен;
+   не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
    успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.
 2. Full236config semantics/standard-queued routes/filters/throttle/backpressure/
    internal security/threads/Close остаются OPEN; target Create/video/BGM/fullUI,

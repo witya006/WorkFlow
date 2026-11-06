@@ -12,7 +12,14 @@
 
 ## Текущий статус
 
-Последний участок M6 — connection052: Connect/events-only wait до engine,
+Последний участок M6 — account053: восстановлены gate seed и account wire
+пакеты84/342/88, ответы50/24 и world records72/capacity300. Обычные методы
+send/receive/dispatch и GUI pending прошли компонентную проверку; полная PE
+собралась и сохранила запуск до existingCreate=1. Аутентификация/fullUI/мир ещё
+открыты. Далее054 — country/ini/mode providers, остальные handlers и loginUI.
+[Доказательства](../research/client455-account.md). M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — connection052: Connect/events-only wait до engine,
 строгие тайм-ауты/задержка callback и102-entry receipt budget восстановлены.
 Обычный CCR WinMain прошёл реальное TCP-соединение и существующий Create.
 Это не аутентификация. Успех полного Russian/European bootstrap ещё открыт;
