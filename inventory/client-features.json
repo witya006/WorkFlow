@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-PROGRESS-054",
+      "status":"open",
+      "description":"Mandatory455Title0/Login1/Tutorial2/MainGame3 factory,explicitnextstage and Avatar stage/network tutorial routing",
+      "reference":[{"rva":"0x3d1c30","role":"fourstagefactory"},{"rva":"0x3d1370","role":"stageCreate/mainloop/next"},{"rva":"0xa6160","role":"Avatarstage setter"},{"rva":"0x1584d0","role":"Tutorialconstructor"},{"rva":"0x164520","role":"clienttutorial messages"}],
+      "implementation":[],
+      "verification":"Static28function ranges plus4class RTTI/vtables equalbothpins;current source3stage/modulo/Tutorialabsence recorded. No runtime change or equivalence claim",
+      "evidence":["inventory/client455-progress-reference.json","research/client455-progress.md"],
+      "gaps":["Joint stage/Avatar/Tutorial runtime and client-onlytutorialhandlers","Explicit nextstage/mainloop/lifecycle/focus","FullLoginUI/Create/worldstate/35handlers/countrybootstrap/realonlineauthentication","Tutorial completion and all stage transitions requiredforM6F/M9"]
+    },
+    {
       "id":"CLIENT455-ACCOUNT-053",
       "status":"partial",
       "description":"Gate seed,account84/342/88 packets and50/24 replies,bounded ordinary dispatcher,72byte world records and request dialog predicates",
@@ -13,7 +23,7 @@
       "implementation":["scripts/native/client455_account.h","scripts/native/client455_account.cpp","scripts/native/client455_account_bridge.inc","scripts/native/client455_account_dispatch.inc","scripts/prepare_client455_normal.py"],
       "verification":"Actual ordinary sender/ring/fragmented wrapreceive/dispatcher and real pendingdialog open/close;ID50/PW32/seedwrap/ticket/clearing/fields/worldreload/count127/name64/truncation;naturalexit0;fullPE existingCreate1. Noauthentication",
       "evidence":["inventory/client455-account-reference.json","inventory/client455-account-native.json","inventory/client455-account-checkpoint.json","research/client455-account.md"],
-      "gaps":["MASTER_SERVER ini/globalmode2/zone-mode/otherseed providers","Real authentication,ticket acquisition and fullcountrybootstrap/loginUI","35handlers,remainingwire messages,notify11 targetquit/localizedsideeffects","WorldUI value/status interpretation,world/gameplay/IME/lifecycle/M6F/M9","Own bounded nullticket/malformed domains intentionallydo notreproduce undefinedmemorybehavior"]
+      "gaps":["AvatarTutorialstage routing,transitionstate andotherseed providers;INI startupcall notproved (see054)","Real authentication,ticket acquisition and fullcountrybootstrap/loginUI","35handlers,remainingwire messages,notify11 targetquit/localizedsideeffects","WorldUI value/status interpretation,world/gameplay/IME/lifecycle/M6F/M9","Own bounded nullticket/malformed domains intentionallydo notreproduce undefinedmemorybehavior"]
     },
     {
       "id":"CLIENT455-CONNECTION-052",

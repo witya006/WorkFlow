@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,progress054: установок/пересборки нет.28function ranges,
+RTTI/vtables четырёх stage classes совпали в455pins; IDA3915694c closed/save.
+Mode2=Tutorial подтверждён через Avatar setter/фабрику/RTTI. Raw static scan
+не нашёл callers старого INI reader; computed calls остаются неизвестными.
+Runtime/source сборки053 не изменены. [Доказательства](../research/client455-progress.md).
+
 Дополнение06.11,account053: новых установок нет.26функций/11country selectors
 совпали между455pins; IDAf2469475 closed/save=true. Собственная x86PEa12b10f7...,
 entry14A980,182client/20kernel/22facade,0unresolved. Пакеты account/gateseed,

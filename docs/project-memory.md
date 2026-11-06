@@ -23,6 +23,35 @@
 
 ## Последний проверенный результат
 
+Progress054 — static reverse, runtime не менялся. 28function ranges и4primary
+vtable/COL/type descriptor совпали в обоих455pins; имена подтвержденыPE RTTI.
+Stage0 CGP_Title ctor557B60/vtAB0E14;1 CGP_LogIn53B860/AB0014;
+2 CGP_Tutorial5584D0/AB0F9C;3 CGP_MainGame5454E0/AB0324. Tutorial derivesMainGame.
+7D1C30: requested2→3 if AvatarDWORD20168 nonzero,otherwiseTutorial. 7D1370:
+после successfulstageCreate записывает AvatarBYTE20165 через4A6160,затем
+вызываетMainLoop;следующий stage читаетDWORDstage+20 (7D1470),неmodulo.
+Title задаётnext1 через53F6B0. Режим2 в41E130/562E80/562BE0=Tutorial,
+НЕ replay;не использовать старый GPI_MAIN_GAME2 как targetTutorial2.
+562BE0: stage2 && Avatar20168==0→564520 clienttutorial dispatcher;остальные
+путиactualtransport. Fulltutorialhandlers иAvatarstate ещёоткрыты.
+Старая normal база MAX_GAME_PROGRESS3/GPI_MAIN_GAME2/modulo, Tutorialfactory
+отсутствует. Jointstage migration обязательна,неподменятьучебныйрежиммиром.
+
+5F0EB0..5F0FD1 определён вownedIDB;INI MASTER_SERVERreader имеет0IDAxrefs,
+0E8/E9rawcandidates и0absoluteaddressbytes в обоихpins. Computedcalls UNKNOWN.
+Не добавлять его вWinMain на основе одного setter! Previousreplay/mandatory
+INIprovider hypotheses сняты. Source serverType0 сохраняется,неclaimfull.
+Networkstate436232 writers42DCA0:164470 делает2→3/7→8 поsocketinfoflag48;
+1643C0 делает3→4/53B430;остальныеwriterslogin/world. Fullstate migrationopen.
+research/client455-progress.md,inventory/client455-progress-reference.json,
+scripts/audit_client455_progress.py;rawignoredartifacts/client455-progress/.
+Owned3915694c closed/save=true. No inputEXE/servermodified;no nativerebuild,
+ownPEa12b10f7.../entry14A980 из053неизменён. M6/M6F/M7/M9OPEN.
+Next055: stagefoundation/explicitnext/Avatar/Tutorial/localhandlers,then
+targetLoginUI/Create/worldtransitions. FullTutorial входитвM6F/M9scope.
+
+## Предыдущий реализованный результат — account053
+
 Account053: group21/op12 на accept endpoint0; op13 даёт BYTE+1/WORD+3,
 не новые AESkeys. Join84/PushClose88=ID51/PW33[/zero4]; login342, Taiwan8
 ticket257@85, transform BYTE(byte+delta)^LOWBYTE(mask), затем overwrite84
@@ -872,8 +901,8 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок054: MASTER_SERVER/SERVER_TYPE ini callsite,mode2/replay provider,
-   writers436232/seed56BEA0,остальные35handlers/countryproviders. У own argv endpoint1 не заполнен;
+1. Участок055: jointstage foundation/explicitnext/Avatar/Tutorial/localhandlers,
+   затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
    успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.
 2. Full236config semantics/standard-queued routes/filters/throttle/backpressure/

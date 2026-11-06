@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Progress054. Pinned4stage classes via PE RTTI and28functions.
+Avatar mode2 is Tutorial;replay hypothesis rejected. Legacy3stage/modulo
+factory is an explicit client gap. Old INI reader has no static callers found;
+do notinsert intoWinMain withoutproof. Tutorial is mandatory M6F/M9 scope.
+Runtime unchanged;ownedIDA3915694c closed/save=true.
+[Evidence](research/client455-progress.md).
+
 2026-11-06 — Account053. Restored gate seed,342byte login and account/world
 packet consumers in the ordinary client. Actual sender/ring/dispatcher and
 pending dialogs pass owned fixture cases;naturalexit0. Full PE still reaches

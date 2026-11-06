@@ -12,6 +12,12 @@
 
 ## Текущий статус
 
+Аудит054 уточнил обязательную работу M6: в455 четыре stage classes, включая
+Tutorial, а старая база использует три и modulo-переход. Восстановить stage/
+Avatar/Tutorial совместно, затем LoginUI/world transitions. Tutorial входит
+в M6F/M9; графика M8 по-прежнему отдельно. Runtime в054 не менялся.
+[Доказательства](../research/client455-progress.md).
+
 Последний участок M6 — account053: восстановлены gate seed и account wire
 пакеты84/342/88, ответы50/24 и world records72/capacity300. Обычные методы
 send/receive/dispatch и GUI pending прошли компонентную проверку; полная PE

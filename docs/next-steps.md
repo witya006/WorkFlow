@@ -7,6 +7,14 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Аудит054 завершён: mode2=Avatar stage Tutorial, а не replay. В455 четыре
+stage classes с явным next-stage; legacy база имеет3/modulo и не создаёт
+Tutorial. Далее055 — совместный перенос stage foundation/Avatar/Tutorial
+и клиентских tutorial handlers, затем target LoginUI/Create/world transitions.
+Старый MASTER_SERVER ini reader не имеет обнаруженных статических callers:
+не вставлять в startup без нового доказательства. Runtime в054 не менялся.
+[Доказательства](../research/client455-progress.md). M6/M6F/M7/M9 открыты.
+
 M0–M4 выполнены в описанных diagnostic compile пределах; M5 закрыт для выбранного
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
@@ -17,7 +25,7 @@ pending dialog/zone predicates и повреждённые границы про
 процесс exit0. FullPEa12b10f7.../entry14A980,0unresolved,existingCreate=1.
 Это не настоящий вход. [Доказательства](../research/client455-account.md).
 
-Далее054: найти вызов MASTER_SERVER/SERVER_TYPE provider (setter5F0FE0),
+Историческая очередь054: найти вызов MASTER_SERVER/SERVER_TYPE provider (setter5F0FE0),
 runtime mode2/replay provider (41E130), writers436232/seed56BEA0 и остальные
 country/35handler constructors. Затем настоящий loginUI/ticket acquisition,
 notify11 localized/quit и оставшиеся wire contracts. Не подменять endpoint0/1,
