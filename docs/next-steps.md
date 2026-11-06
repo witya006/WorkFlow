@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок064: normal TextBoard — source fragment/line caches, pixel layout,
+newline/margin quirks, WORD retention/rebase и Draw. FONT_INFO16/TextInfo28,
+cached length/Clear и BYTE-copy подтверждены. Full-object markup/extent/GPU
+Korea/Russia passed; production rich callers ещё не подключены и stripped.
+Новая PE3a209cdc…/entry14DD30,182/20/26TU,0unresolved,existingCreate1;
+metrics/font/modal/tutorial-board regressions прошли. Далее065 — общий scrollbar:
+auto thumb sizing/geometry/timers/mouse/input/variants. Затем production
+message sizing/rich callers и full briefing, actualhost/Tutorial/fourstage.
+CRT startup уже systemANSI; getter0 для SBCS не считать иной codepage.
+[Доказательства](../research/client455-text-board.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий результат:
+
 Участок063: normal CGUIText получил measured GDI geometry и target style
 fallthrough, byte width/DBCS fit/first-height cache. Ранние запросы0.7 отложены
 до создания реального шрифта; destroyed pending labels удаляются. Korea/Russia
@@ -588,9 +601,10 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. Участок064: полный TextBoard/scrollbar и необходимые typed FONT_INFO/scale
-   контракты; полные инструкции layout/markup перед переносом. Метрики063 и
-   modal062 уже в ordinary sources; не повторять их reverse без новых фактов.
+1. Участок065: полный scrollbar/auto thumb/geometry/timers/input/variants,
+   затем production message sizing/rich callers/full briefing. TextBoard064,
+   typed font/text metadata, metrics063 и modal062 уже исследованы; не повторять
+   этот reverse без новых фактов. Rich/extent064 пока full-object probe only.
 2. Полный briefing, concrete Avatar/world/input/frame/feedback/local handlers,
    actual Tutorial и совместные четыре stage/explicit-next переходы455.
 3. Реальный login UI/оставшийся клиентский протокол/world transitions и остальные
@@ -633,7 +647,14 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Воспроизведение последнего модуля
 
-Актуальный063: audit_client455_text_metrics.py → prepare_client455_normal.py →
+Актуальный064: audit_client455_text_board.py → prepare_client455_normal.py →
+build_client455_normal.py → probe_client455_normal_consumers.py →
+link_client455_normal.py → probe_client455_text_board.py. Затронутые metrics/
+font/modal/tutorial-board probes, startup/own-entry audits и exact startup/
+device --after-create. Gate checkpoint_client455_text_board.py. Все Python
+через Invoke-Python.ps1; повторять только затронутые области.
+
+Исторический063: audit_client455_text_metrics.py → prepare_client455_normal.py →
 build_client455_normal.py → probe_client455_normal_consumers.py →
 link_client455_normal.py. Затем probe_client455_text_metrics.py и затронутые
 font/modal probes; audit_client455_startup.py/audit_client455_own_entry.py,

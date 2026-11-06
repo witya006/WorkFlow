@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок064: ordinary TextBoard fragment/line caches, pixel layout/retention/Draw
+подключены. FONT_INFO16/TextInfo28 и markup/extent/BYTE-copy quirks проверены
+в full-object probe, Korea/Russia GPU кадры просмотрены. Production rich callers
+и legacy message sizing ещё не перенесены; весь scrollbar/input/briefing/
+Tutorial остаётся открытым. Полная PE собирается и проходит existingCreate1.
+[Доказательства](../research/client455-text-board.md). M6/M6F/M7/M9 OPEN.
+
 Участок063: текущие GDI byte width/DBCS fit/кэш высоты и геометрия обычного
 CGUIText проверены независимым Win32 oracle и Korea/Russia GUI/D3D probes.
 Own lifecycle adapter устраняет pre-main доступ к не созданному font provider

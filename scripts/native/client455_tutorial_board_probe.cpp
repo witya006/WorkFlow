@@ -31,7 +31,6 @@ FIELD(SpriteMember,CSpriteMgr,CMainApp,m_cSpriteMgr)
 FIELD(ScreenMember,CGUIScreen,CMainApp,m_cScreen)
 FIELD(MessageText,CGUITextBoard,CGUIMessagebox,m_uiMsgBoard)
 FIELD(MessageBase,CGUIObject,CGUIMessagebox,m_cBase)
-FIELD(TextList,GUITextList,CGUITextBoard,m_listText)
 struct Load{using Type=BOOL(CMainApp::*)();friend Type access(Load);};template struct MemberAccess<Load,&CMainApp::LoadData>;
 struct Unload{using Type=BOOL(CMainApp::*)();friend Type access(Unload);};template struct MemberAccess<Unload,&CMainApp::UnloadData>;
 
@@ -66,13 +65,11 @@ static CGUIMessagebox* modal(std::uint16_t id,std::uint16_t style){
 }
 static std::string textOf(CGUIMessagebox& box){
     auto& board=box.*access(MessageText{});std::string text;
-    for(auto* line:board.*access(TextList{}))text+=line->GetText();
+    for(unsigned index=0;index<board.GetFragmentCount455();++index)text+=board.GetFragment455(index)->GetText();
     return text;
 }
 static std::string languageContent(unsigned index){
-    std::string result=RF455_GetNormalLanguagePack()->get(index);
-    result.erase(std::remove(result.begin(),result.end(),'\n'),result.end());
-    return result; // Layout consumes line breaks; compare the retained content.
+    return RF455_GetNormalLanguagePack()->get(index); //455 keeps raw fragments and separate line markers.
 }
 static unsigned frameWidth=0,frameHeight=0;
 static unsigned renderModal(CGUIMessagebox& box,const char* path){

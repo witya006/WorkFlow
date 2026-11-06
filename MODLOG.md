@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Text-board064. Replaced ordinary board with pixel layout,fragment/
+line caches,WORD retention/rebase and draw. FONT_INFO16/TextInfo28 restored;
+BYTE-copy and markup quirks verified in full-object probe. Production rich
+callers and full scrollbar remain OPEN. Korea/Russia four GPU frames viewed,
+affected GUI/tutorial-modal/Create1 passed. Production3a209cdc…/entry14DD30.
+CRT getter0/SBCS misunderstanding corrected using installed UCRT source;
+redundant experimental adapter removed. [Evidence](research/client455-text-board.md).
+
 2026-11-06 — Text-metrics063. Ported current GDI byte width/DBCS fit/first-height
 cache and actual ordinary CGUIText sizing/style fallthrough. Added an owned
 deferred geometry adapter for pre-font legacy static constructors; native global

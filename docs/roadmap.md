@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+Участок064: обычная текстовая панель получила caches455, pixel wrap/retention/
+draw; typed FONT_INFO16/TextInfo28 и rich/extent проверены в full-object probe.
+Production rich callers/message sizing ещё открыты. Новая PE сохранила Create1;
+затронутые GUI regressions прошли. Далее065 — полный scrollbar, затем реальные
+rich callers/briefing и actual Tutorial/fourstage. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-text-board.md).
+
+Предыдущий участок:
+
 Участок063: перенесены GDI byte width/DBCS fit/cache высоты и обычные размеры
 CGUIText455. Ранняя геометрия0.7 ожидает создания шрифта. Korea/Russia oracle/
 GUI проверки и кадры прошли, новая полная PE сохранила existingCreate1.

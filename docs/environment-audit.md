@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, text-board064: установок нет.49 диапазонов и2vtable regions
+совпали между pins,17полных asm. IDA958042ee/aabab7c3/06c03ace closed/save.
+Полная PE3a209cdc…/entry14DD30,182/20/26TU,0unresolved/existingCreate1.
+Korea/Russia TextBoard/GPU и затронутые GUI probes прошли. Исходники UCRT SDK
+10.0.26100.0 доступны локально: getter0 допустим для SBCS ANSI1251, отдельный
+startup adapter не нужен. [Доказательства](../research/client455-text-board.md).
+
 Дополнение06.11, text-metrics063: установок нет.15 диапазонов и empty literal
 совпали между pins,5полных asm; IDAe13a414e closed/save.182client/20kernel/
 26facade,0unresolved; production71bc4b21…/entry14D7C0. Собственная GDI/CGUIText

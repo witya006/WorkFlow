@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TEXT-BOARD-064",
+      "status": "partial",
+      "description": "Ordinary TextBoard fragment/line caches,pixel wrap/retention/draw;formatted/extent paths in full-object probe;production rich callers and fullscrollbar OPEN",
+      "reference": [{"rva":"0x243890","role":"pixel layout and retention"},{"rva":"0x244030","role":"WORD line marker"},{"rva":"0x244580","role":"formatted insertion"},{"rva":"0x244800","role":"font tag parser"},{"rva":"0x245150","role":"fragment drawing"},{"rva":"0x3b1f40","role":"BYTE copy helper"},{"rva":"0x240940","role":"TextInfo cached length"}],
+      "implementation": ["scripts/native/client455_gui_text_board.h","scripts/native/client455_gui_text_board.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "Korea/Russia actual full-object TextBoard/nativeexit0;independent GDI/golden markers/DBCS/newline+margin quirks/retention/WORD rebase/BYTE copy+scratch reuse/tags/typed font16+info28/scroll view/GPU4frames viewed;affectedmetrics/font/modal/tutorial probes and exactCreate1 passed;newproduction0unresolved",
+      "evidence": ["inventory/client455-text-board-reference.json","inventory/client455-text-board-native.json","inventory/client455-text-board-checkpoint.json","research/client455-text-board.md"],
+      "gaps": ["Full scrollbar thumb sizing/geometry/timing/input/variants","Production rich-text/extent callers stripped pending port;legacy messagebox byte-count sizing remains","Other shared102DAB0 consumers and fullCRT locale/thread domains","Malformed/OOM/unsafe/foreign-pointer/numeric/FreeType/fullother scale consumers","Fullbriefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorunknown gaps;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TEXT-METRICS-063",
       "status": "partial",
       "description": "Current GDI byte-width/DBCS fitting/first-height cache and ordinary CGUIText geometry;fullTextBoard/scrollbar/FreeType OPEN",

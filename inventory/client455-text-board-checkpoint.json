@@ -1,0 +1,39 @@
+{
+  "status": "PARTIAL",
+  "ordinary_TextBoard_layout_and_draw": "PASS",
+  "formatted_text_and_extent_in_full_object_probe": "PASS",
+  "production_rich_text_callers": "OPEN",
+  "typed_FONT_INFO16_TextInfo28": "PASS",
+  "WORD_retention_rebase_and_BYTE_copy": "PASS",
+  "actual_scroll_amount_view_and_GPU": "PASS",
+  "affected_GUI_and_existing_Create": "PASS",
+  "full_scrollbar_input_and_geometry": "OPEN",
+  "full_briefing": "OPEN",
+  "full_Tutorial": "OPEN",
+  "evidence_sha256": {
+    "client455-text-board-reference": "9c4cfb3fb5e188eb3a9748911ff3f8740006b9815998195bede8828fe79a32ac",
+    "client455-text-board-native": "ec465a7254670f368b381df18fb9dc3e3efd92ee38fef1e697050f381ab68f79",
+    "client455-normal-preparation": "efba89cdb9c6e58461835e883f3d8f37ecb9d0f978d394f95603f18d742b5ff3",
+    "client455-normal-link": "bc397fa1fabb360eb06af5a4e0b3a4734541d29be12697ffdc230dfba4088a18",
+    "client455-text-metrics-native": "862813e5211095cc8f8602d5822ad665f2f8a530b1f854e5c7c5011ee6043291",
+    "client455-font-native": "306f3c107b352a6d3b01fe11b1ecca39b69b2a4491ce83c03133e85c86e2a78a",
+    "client455-modal-native": "cf141ee41e25a265afd3d1aac623e0b981d2b9ef7abbe9e5851964d717228bc7",
+    "client455-tutorial-board-native": "06e00c75221cb43810b55e822b98e55d4610a831c0ef1e44d00596bdff2f92b0",
+    "client455-ui-startup-native": "8ed837af7b1b2c340e3a07453ebd95123b62c7201c8d929232fcb90d33b96c29"
+  },
+  "gaps": [
+    "Full scrollbar thumb auto-sizing/geometry/timing/mouse/keyboard algorithms and variants remain legacy",
+    "Production rich-text callers and legacy messagebox byte-count sizing remain unported;unused formatted/extent functions are stripped in production",
+    "Other users of target shared102DAB0 scratch not yet connected;cross-subsystem scratch state domains OPEN",
+    "Complete CRT locale/thread/create_locale updates beyond initial systemANSI startup remain OPEN",
+    "Malformed non-advancing tags/32byte token overflow and WORD input overflow explicitly refused,not claimed target equivalence",
+    "Private STL/allocator/OOM/unsafe/numeric/foreign-pointer domains and complete font/FreeType routing remain OPEN",
+    "Full briefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and prior unknown domains;M6F/M7/M9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

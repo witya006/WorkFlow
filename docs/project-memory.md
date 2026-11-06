@@ -23,6 +23,56 @@
 
 ## Последний проверенный результат
 
+Text-board064: replaced normal guitextboard.{h,cpp} through generator from new
+native/client455_gui_text_board.{h,cpp}. Separate owned TextInfo fragments and
+WORD fragment/offset line markers,limit1000/base/view0. Pixel metrics063/layout
+append reconstructs lastline;fullreflow only on actualwidthchange. Margin-only
+does NOT reflow;unfittable glyph may remain raw without anyline. Newline markers
+point at newline byte:leading/trailing newline quirks preserved. Retention
+frees wholeoldfragments only when nextmarker advances fragment;zero limitkeeps1.
+Rebase atbase+fragment>=FFFF subtracts first absolute marker andresetsbase0.
+Actual65536insertions/limit1 reachedrebase native;not65536independentchecks.
+
+FONT_INFO16:BYTE size0/style0/colorFFFFFFFF/float scale1. TextInfo28 cachesWORD
+length at8/font at12;Clear freesstring butretainslength. SetFont(nullptr)no-op.
+Source refuseslength>FFFF insteadof reproducing target mallocWORD/strcpyoverflow.
+Both ordinary CGUIText/boarddraw passscale1;fullother scale/FTconsumers OPEN.
+New formatted/extent methods sourceavailable/fullobject tested butSTRIPPED in
+production untilrealrich callers port. Legacy messagebox.SetMsg stillbyte-size.
+DoNOT forceinclude symbols or reinterpret plainInsertText asmarkup tohidegap.
+
+Markup font/close prefix case-insensitive,attrkeys case-sensitive;stickycolor/
+styleflags,colorprecedence andadjacent '>' in %stoken preserved. Reject32token
+overflow/nonadvancing malformed grammar explicitly. Helper7B1F40 capacity BYTE
+proven0FB64510;256->0 retainsdest. Boardmarkup/finaldraw share256byte scratch;
+otheroriginal102DAB0users OPEN. Copy followsambientCRT,notresourceCP.
+TargetCRT889853 _setmbcp(-3);_getmbcp returns0forSBCS too. InstalledUCRT source
+alreadyinitializesANSI. Incorrect earlyadapter assumption wasrejected;files
+removed,noproductionadapter. Nativeexplicit949/1251copy tests restore_MB_CP_ANSI,
+notambiguousgetmbcp0. ThisPC ACP1251/ambientgetter0;fullCRT thread/localegapsOPEN.
+
+Scrollbar SetTotal/SetCurrent nowboth SetAmount toclamp/update. TextBoardrange/
+view/auto-bottom/observer tested. Fullthumb/inputgeometry/timing/variants legacy.
+49ranges+primary/observervtables equalbothpins,17completeasm;owned958042ee,
+aabab7c3/06c03ace closed/save. Raw artifacts/client455-tutorial/textboard-*064
+and064-643890-asm;reference/native/checkpoint reports client455-text-board-*.
+FinalownPE256cbbe73ad1de562bf8b7e8a39b23aa9681917c944d275ed678444af285bbfc,
+entryE4610,naturalexit0Korea/Russia. ActualGUI/GDIoracle predefined markers/
+DBCS/boundaries/cache/retention/rebase/tags/scroll/GPU4frames passed/viewed.
+Ko204/575/271,Ru160/620/304coloredpixels(colors/markup/bottom),highlightalsoseen.
+Tutorial061fixture movedfromprivate m_listText topublicfragment API;now compares
+rawND441/444 WITHnewlines,modal2/3regression PASS. Rich/stageproviders stillfixtures.
+Production3a209cdc328c7fb20313233ba3f58745685344c0521bbe69c071e020a2e71485,
+x86/base400000/entry14DD30/2028032bytes,182client20kernel26facade,0unresolved.
+Smallcopyhelperinlined intoDrawLine;explicitentry inownprobe. Requirednormal
+CUnity/CAnimationpassed;engineunchanged. Currentmetrics/font/modal/tutorial
+probesPASS;exactPE WinMain/TCPfixture/engine/D3D/Character/existingCreate1,stop
+beforeloop. Noauth/fullgameclaim. Next065fullscrollbar;thenproduction message
+sizing/richcallers/fullbriefing/actualTutorial/fourstage. M6/M6F/M7/M9OPEN.
+Researchclient455-text-board.md; noinputEXE/server/original changes.
+
+## Предыдущий перенос — text-metrics063
+
 Text-metrics063: normal CGUIText.SetString calls source-owned byte-width
 geometry; 80000000 intermediate8*cells/16 overwritten by ordinary size unless
 40000000 sets final16*WORD(width/12)/32. SetFont only copies,no recalc.
@@ -1243,7 +1293,7 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок064: fullTextBoard/scrollbar/необходимый16byte font scale, затем
+1. Участок065: fullscrollbar, затем production message sizing/richcallers/full
    briefing и actual Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
    затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,

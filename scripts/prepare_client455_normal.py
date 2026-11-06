@@ -76,13 +76,43 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            if relative=='userinterface/guicontroller/guitextboard.h':
+                raw=(native/'client455_gui_text_board.h').read_bytes()
+                changes.append('455TextBoard fragment/line caches,WORD indices,markup and pixel layout source interfaces')
+            if relative=='userinterface/guicontroller/guitextboard.cpp':
+                raw=(native/'client455_gui_text_board.cpp').read_bytes()
+                changes.append('455TextBoard fragment/line layout,retention,markup and actual ordinary drawing')
+            if relative=='userinterface/guicontroller/guitext.h':
+                anchor=b'\tDWORD\tdwColor;'
+                if raw.count(anchor)!=1:raise ValueError('FONT_INFO color declaration changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tfloat\tfScale455;')
+                anchor=b'\t\tdwStyle = 0;'
+                if raw.count(anchor)!=1:raise ValueError('FONT_INFO constructor changed')
+                raw=raw.replace(anchor,b'\t\tbySize = 0;\r\n\t\tfScale455 = 1.0f;\r\n'+anchor)
+                anchor=b'\tFONT_INFO\tm_sFontInfo;'
+                if raw.count(anchor)!=1:raise ValueError('CGUITextInfo font member changed')
+                raw=raw.replace(anchor,b'\tWORD m_wTextLength455 = 0;\r\n'+anchor)
+                anchor=b'\tchar *\t\tGetText( void ) { return m_pText; }'
+                if raw.count(anchor)!=1:raise ValueError('CGUITextInfo text accessor changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tWORD GetLength455() const { return m_wTextLength455; }')
+                changes.append('455FONT_INFO16/scale1/defaultsize0 and CGUITextInfo28 cachedWORD length;Clear retains length')
             if relative=='userinterface/guicontroller/guitext.cpp':
-                raw=b'#include "client455_text_metrics.h"\r\n'+raw
+                raw=b'#include "client455_text_metrics.h"\r\n#include <stdexcept>\r\n'+raw
+                first,last=section(raw,b'CGUITextInfo::SetText(',b'CGUITextInfo::SetText(')
+                brace=raw.index(b'{',first)
+                raw=raw[:brace+1]+b'\r\n const auto length455=pi_pText?strlen(pi_pText):0;\r\n if(length455>0xffff)throw std::length_error("CGUITextInfo WORD length domain exceeded");\r\n m_wTextLength455=static_cast<WORD>(length455);\r\n'+raw[brace+1:]
+                raw=raw.replace(b'memcpy( &m_sFontInfo, pi_pFontInfo, sizeof( FONT_INFO ) );',b'if(pi_pFontInfo)memcpy( &m_sFontInfo, pi_pFontInfo, sizeof( FONT_INFO ) );')
                 first,last=section(raw,b'CGUIText::SetString(',b'CGUIText::SetString(')
                 raw=raw[:first]+(native/'client455_gui_text_size.inc').read_bytes()+raw[last:]
                 first,last=section(raw,b'CGUIText::~CGUIText()',b'CGUIText::~CGUIText()')
                 raw=raw[:first]+b'CGUIText::~CGUIText(){RF455_ForgetGuiText(this);}\r\n'+raw[last:]
                 changes.append('455CGUIText measured byte-string geometry and exact high-style flag fallthrough;GDI route only')
+            if relative=='userinterface/guicontroller/guiscrollbar.cpp':
+                first,last=section(raw,b'CGUIScrollbar::SetTotalAmount(',b'CGUIScrollbar::SetTotalAmount(')
+                raw=raw[:first]+b'CGUIScrollbar::SetTotalAmount(LONG total){SetAmount(total,m_nCurrentAmount);}\r\n'+raw[last:]
+                first,last=section(raw,b'CGUIScrollbar::SetCurrentAmount(',b'CGUIScrollbar::SetCurrentAmount(')
+                raw=raw[:first]+b'CGUIScrollbar::SetCurrentAmount(LONG current){SetAmount(m_nTotalAmount,current);}\r\n'+raw[last:]
+                changes.append('455scrollbar amount setters both use combined clamp/update;full thumb/input algorithms remain open')
             if relative=='userinterface/guicontroller/guibutton.h':
                 anchor=b'void\t\tSetLabel( char * pi_pLabel );'
                 if raw.count(anchor)!=1:raise ValueError('Button label API changed')
@@ -415,6 +445,7 @@ def main():
     report['network_defaults']=codec_reference['generated_defaults']
     for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

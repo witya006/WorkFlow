@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — text-metrics063: обычный CGUIText получил GDI-размеры455,
+Последний участок M6 — text-board064: обычная панель использует fragment/line
+caches455, пиксельный перенос, retention и Draw. Форматирование/extent проверены
+в full-object probe; production rich callers ещё открыты. Korea/Russia GUI/GPU
+и начальная инициализация новой RF_Online.bin прошли. Далее полный scrollbar,
+message sizing и briefing. [Доказательства](research/client455-text-board.md).
+
+Предыдущий участок M6 — text-metrics063: обычный CGUIText получил GDI-размеры455,
 побайтовое измерение/DBCS fit и кэш высоты. Исправлена ранняя инициализация
 геометрии в базе0.7; Korea/Russia проверки и просмотр кадров прошли.
 Новая RF_Online.bin собирается и проходит существующий Create.
