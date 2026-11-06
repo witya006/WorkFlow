@@ -11,21 +11,24 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — devicestartup043. Target8ED5A0 ставит renderBits32, а не
-fullscreen;8EDAB0 завершает процесс exit0 при любом nonzero Create. Эти две
-правки подключены через отдельную67unit engine библиотеку,033 сохранён.
-CPU S_OK/S_FALSE/E_FAIL и сохранение обоих window modes прошли. Exact own
-PE51fd3f49... дошла до реального window/device ready1/windowed1/render32,
-затем остановлена перед CMainApp::Create. Короткие прежние сценарии и кадры
-сохранились. research/client455-device-startup.md; checkpoint PARTIAL/M9OPEN.
+Последний участок — nationpaths044. Выбор11стран/корня данных455 подключён
+до engine в normal WinMain; реальные profile/case/ошибки проверены. Новая
+own PEcb64af10.../x86/entry1496C0 прошла actual partial CMainApp::Create:
+Character/bone/mesh/animation/bounds managers; app device==Character device.
+Остановка до _CreateCharDataMgr и старых игровых таблиц. Короткие регрессии/
+кадры прошли. research/client455-nation-paths.md; checkpoint PARTIAL/M9OPEN.
+Адреса checkpoints брать из current own-entry.json,не main+1D/+30.
 
-Следом044 — клиентский bootstrap языка/лаунчера/данных и normal Create.
-Target WinMain7D04E0 сначала SetupNation7D2880 (читает Setup/Language из
-R3Engine.ini), language selection7CFB10, root5E5B50/FG_CB.ini, network manager
-и connect, затем engine/WaveList+BGMList/device/Create7D18B0. Legacy порядок
-не соответствует этому. Следующие адреса: language mapper7D29C0, nation
-setter7D1110, data-root5E5B50. Восстановить точные выборы/пути и нормальный
-Create на реальных клиентских входах, без выдуманных root copies фильтров.
+Следом045 — полный locale/data bootstrap перед UI: country factory8321E0,
+ETCAction manager8327B0(1) codepage vslot76,CRT locale compare/font8C5A80,
+NDLanguage601EF0/603130 и EDF reader5EEC00/5EE900/5EEB90 на реальном файле.
+Сейчас CRT/font/charset только metadata; корень опубликован,но full selector
+ещё не реализован. setlocale category1=LC_COLLATE;USA uses UK CRTlocale.
+Нельзя country7/Russia класть в старые3language arrays или выдавать успешное
+path init за язык455. Затем normal data consumers/Create/UI/launcher.
+Target WinMain7D04E0 имеет порядок nation→launcher→language→FG_CB.ini→network/
+connect→engine→WaveList/BGM→device/Create;legacy пока ему не соответствует.
+Восстанавливать подтверждённые реальные consumers без выдуманных root copies.
 Дальнейшие network сценарии проверять как клиентский контракт; серверы не
 строить/менять, ввод/аккаунты не использовать без необходимости задачи.
 Отдельный gap: camera branch455 сбрасывает console index18, а старый table

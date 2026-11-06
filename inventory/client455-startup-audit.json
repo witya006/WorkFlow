@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "51fd3f49ab867f7178a548dcd7058276fb4f1ac4983ab5feac808db863df5fd1",
-    "bytes": 1966080,
+    "sha256": "cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88",
+    "bytes": 1967104,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x149510",
+    "entry_rva": "0x1496c0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "a4be553e61b56ab8ce9bbebc9949ff8273cf99967e16792bc09fc7813726dc7d",
+  "normal_link_sha256": "49397bcbb88e76fb47a5a243b6b2b390203176a0224f8b5e422888231e97aa84",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1130,107 +1130,107 @@
       "imports": [
         {
           "name": "_AIL_set_named_sample_file@20",
-          "iat_rva": "0x1cfbe0"
+          "iat_rva": "0x1cfd20"
         },
         {
           "name": "_AIL_start_sample@4",
-          "iat_rva": "0x1cfbe4"
+          "iat_rva": "0x1cfd24"
         },
         {
           "name": "_AIL_stop_sample@4",
-          "iat_rva": "0x1cfbe8"
+          "iat_rva": "0x1cfd28"
         },
         {
           "name": "_AIL_set_sample_volume_pan@12",
-          "iat_rva": "0x1cfbec"
+          "iat_rva": "0x1cfd2c"
         },
         {
           "name": "_AIL_set_sample_loop_count@8",
-          "iat_rva": "0x1cfbf0"
+          "iat_rva": "0x1cfd30"
         },
         {
           "name": "_AIL_active_sample_count@4",
-          "iat_rva": "0x1cfbf4"
+          "iat_rva": "0x1cfd34"
         },
         {
           "name": "_AIL_init_sample@4",
-          "iat_rva": "0x1cfbf8"
+          "iat_rva": "0x1cfd38"
         },
         {
           "name": "_AIL_close_stream@4",
-          "iat_rva": "0x1cfbfc"
+          "iat_rva": "0x1cfd3c"
         },
         {
           "name": "_AIL_service_stream@8",
-          "iat_rva": "0x1cfc00"
+          "iat_rva": "0x1cfd40"
         },
         {
           "name": "_AIL_start_stream@4",
-          "iat_rva": "0x1cfc04"
+          "iat_rva": "0x1cfd44"
         },
         {
           "name": "_AIL_pause_stream@8",
-          "iat_rva": "0x1cfc08"
+          "iat_rva": "0x1cfd48"
         },
         {
           "name": "_AIL_set_stream_volume_pan@12",
-          "iat_rva": "0x1cfc0c"
+          "iat_rva": "0x1cfd4c"
         },
         {
           "name": "_AIL_set_stream_loop_count@8",
-          "iat_rva": "0x1cfc10"
+          "iat_rva": "0x1cfd50"
         },
         {
           "name": "_AIL_stream_status@4",
-          "iat_rva": "0x1cfc14"
+          "iat_rva": "0x1cfd54"
         },
         {
           "name": "_AIL_stream_info@20",
-          "iat_rva": "0x1cfc18"
+          "iat_rva": "0x1cfd58"
         },
         {
           "name": "_AIL_release_sample_handle@4",
-          "iat_rva": "0x1cfc1c"
+          "iat_rva": "0x1cfd5c"
         },
         {
           "name": "_AIL_allocate_sample_handle@4",
-          "iat_rva": "0x1cfc20"
+          "iat_rva": "0x1cfd60"
         },
         {
           "name": "_AIL_close_digital_driver@4",
-          "iat_rva": "0x1cfc24"
+          "iat_rva": "0x1cfd64"
         },
         {
           "name": "_AIL_open_digital_driver@16",
-          "iat_rva": "0x1cfc28"
+          "iat_rva": "0x1cfd68"
         },
         {
           "name": "_AIL_last_error@0",
-          "iat_rva": "0x1cfc2c"
+          "iat_rva": "0x1cfd6c"
         },
         {
           "name": "_AIL_set_preference@8",
-          "iat_rva": "0x1cfc30"
+          "iat_rva": "0x1cfd70"
         },
         {
           "name": "_AIL_shutdown@0",
-          "iat_rva": "0x1cfc34"
+          "iat_rva": "0x1cfd74"
         },
         {
           "name": "_AIL_startup@0",
-          "iat_rva": "0x1cfc38"
+          "iat_rva": "0x1cfd78"
         },
         {
           "name": "_AIL_file_read@8",
-          "iat_rva": "0x1cfc3c"
+          "iat_rva": "0x1cfd7c"
         },
         {
           "name": "_AIL_open_stream@12",
-          "iat_rva": "0x1cfc40"
+          "iat_rva": "0x1cfd80"
         },
         {
           "name": "_AIL_mem_free_lock@4",
-          "iat_rva": "0x1cfc44"
+          "iat_rva": "0x1cfd84"
         }
       ],
       "provider": {
@@ -1247,19 +1247,19 @@
       "imports": [
         {
           "name": "ABuse_InitDic",
-          "iat_rva": "0x1cfbb0"
+          "iat_rva": "0x1cfcf0"
         },
         {
           "name": "ABuse_DecodeDic",
-          "iat_rva": "0x1cfbb4"
+          "iat_rva": "0x1cfcf4"
         },
         {
           "name": "ABuse_CheckAbuse",
-          "iat_rva": "0x1cfbb8"
+          "iat_rva": "0x1cfcf8"
         },
         {
           "name": "ABuse_LoadDic",
-          "iat_rva": "0x1cfbbc"
+          "iat_rva": "0x1cfcfc"
         }
       ],
       "provider": {
@@ -1276,19 +1276,19 @@
       "imports": [
         {
           "name": "Adv_LoadDic",
-          "iat_rva": "0x1cfbc4"
+          "iat_rva": "0x1cfd04"
         },
         {
           "name": "Adv_InitDic",
-          "iat_rva": "0x1cfbc8"
+          "iat_rva": "0x1cfd08"
         },
         {
           "name": "Adv_DecodeDic",
-          "iat_rva": "0x1cfbcc"
+          "iat_rva": "0x1cfd0c"
         },
         {
           "name": "Adv_CheckAbuse",
-          "iat_rva": "0x1cfbd0"
+          "iat_rva": "0x1cfd10"
         }
       ],
       "provider": {
@@ -1305,7 +1305,7 @@
       "imports": [
         {
           "name": "?HookAllApps@@YGHHK@Z",
-          "iat_rva": "0x1cfbd8"
+          "iat_rva": "0x1cfd18"
         }
       ],
       "provider": {
@@ -1351,7 +1351,7 @@
   "source_inputs": [
     {
       "file": "work/client455-port/normal/source/mainapp.cpp",
-      "sha256": "231ef9d4f8ceb906292df9d07af90158416503d6c52a1de83a552f04d6a25e38"
+      "sha256": "b2b2f17ac95e21bcdfd748c4dc23b37e6a57928081a74e1c8fdaf41496a159fd"
     },
     {
       "file": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",

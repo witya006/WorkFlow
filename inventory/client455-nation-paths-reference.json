@@ -1,0 +1,409 @@
+{
+  "scope": "Case-sensitive country mapping and data-root selection;CRT/font records are confirmed metadata,not applied locale acceptance",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "rows": [
+        {
+          "id": 0,
+          "setting": "Korea",
+          "folder": "ko-kr",
+          "crt_locale": "Korean_Korea",
+          "font_hex": "b1bcb8b2c3bc",
+          "charset": 129,
+          "literal_rvas": [
+            "0x6ed7c8",
+            "0x6ed38c",
+            "0x6ed37c",
+            "0x6ed374"
+          ]
+        },
+        {
+          "id": 1,
+          "setting": "Brazil",
+          "folder": "pt-br",
+          "crt_locale": "Portuguese_Brazil",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7c0",
+            "0x6ed36c",
+            "0x6ed358",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 2,
+          "setting": "China",
+          "folder": "zh-cn",
+          "crt_locale": "Chinese_China",
+          "font_hex": "53696d53756e",
+          "charset": 134,
+          "literal_rvas": [
+            "0x6ed7b8",
+            "0x6ed348",
+            "0x6ed338",
+            "0x6ed330"
+          ]
+        },
+        {
+          "id": 3,
+          "setting": "Europe",
+          "folder": "en-gb",
+          "crt_locale": "English_United Kingdom",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7b0",
+            "0x6ed328",
+            "0x6ed310",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 4,
+          "setting": "Indonesia",
+          "folder": "en-id",
+          "crt_locale": "English_Indonesia",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7a4",
+            "0x6ed308",
+            "0x6ed2f4",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 5,
+          "setting": "Japan",
+          "folder": "ja-jp",
+          "crt_locale": "Japanese_Japan",
+          "font_hex": "4d5320476f74686963",
+          "charset": 128,
+          "literal_rvas": [
+            "0x6ed79c",
+            "0x6ed2ec",
+            "0x6ed2dc",
+            "0x6ed2d0"
+          ]
+        },
+        {
+          "id": 6,
+          "setting": "Philippines",
+          "folder": "en-ph",
+          "crt_locale": "English_Philippines",
+          "font_hex": "5461686f6d61",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed790",
+            "0x6ed2c8",
+            "0x6ed2b4",
+            "0x6ed2ac"
+          ]
+        },
+        {
+          "id": 7,
+          "setting": "Russia",
+          "folder": "ru-ru",
+          "crt_locale": "Russian_Russia",
+          "font_hex": "4c756369646120436f6e736f6c65",
+          "charset": 204,
+          "literal_rvas": [
+            "0x6ed788",
+            "0x6ed2a4",
+            "0x6ed294",
+            "0x6ed284"
+          ]
+        },
+        {
+          "id": 8,
+          "setting": "Taiwan",
+          "folder": "zh-tw",
+          "crt_locale": "Chinese_Taiwan",
+          "font_hex": "4d696e674c6955",
+          "charset": 136,
+          "literal_rvas": [
+            "0x6ed780",
+            "0x6ed27c",
+            "0x6ed26c",
+            "0x6ed264"
+          ]
+        },
+        {
+          "id": 9,
+          "setting": "USA",
+          "folder": "en-us",
+          "crt_locale": "English_United Kingdom",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed77c",
+            "0x6ed25c",
+            "0x6ed310",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 10,
+          "setting": "Thailand",
+          "folder": "th-th",
+          "crt_locale": "Thai_Thailand",
+          "font_hex": "5461686f6d61",
+          "charset": 222,
+          "literal_rvas": [
+            "0x6ed770",
+            "0x6ed254",
+            "0x6ed244",
+            "0x6ed2ac"
+          ]
+        }
+      ],
+      "ranges": [
+        {
+          "name": "mapper",
+          "rva": "0x3d29c0",
+          "bytes": 377,
+          "sha256": "0402f179c1ac23ae293f73b4510650f7bf522bcb3dcbef0e9c64a29909cc1211"
+        },
+        {
+          "name": "profile_reader",
+          "rva": "0x3d2880",
+          "bytes": 218,
+          "sha256": "3d94c7e4cfa74b8548e4e5293f270edfbecfda092762d276820d31ee06379421"
+        },
+        {
+          "name": "selector",
+          "rva": "0x3cfb10",
+          "bytes": 1393,
+          "sha256": "262358c9ac010e64dc3f50eabceb8207f0e0c45327501abde919384be6e0069f"
+        },
+        {
+          "name": "root_accessor",
+          "rva": "0x1e5b70",
+          "bytes": 27,
+          "sha256": "5821cd249c7fb2f2f0307f46582bdf5a5e162981327e9a4777e59d99bbbdf8d5"
+        },
+        {
+          "name": "font_settings",
+          "rva": "0x4c5a80",
+          "bytes": 71,
+          "sha256": "f600554d6282dad5408ab1fb5a7dfa047688cbc0f35db7bb82bc6c01b222e3e4"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "rows": [
+        {
+          "id": 0,
+          "setting": "Korea",
+          "folder": "ko-kr",
+          "crt_locale": "Korean_Korea",
+          "font_hex": "b1bcb8b2c3bc",
+          "charset": 129,
+          "literal_rvas": [
+            "0x6ed7c8",
+            "0x6ed38c",
+            "0x6ed37c",
+            "0x6ed374"
+          ]
+        },
+        {
+          "id": 1,
+          "setting": "Brazil",
+          "folder": "pt-br",
+          "crt_locale": "Portuguese_Brazil",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7c0",
+            "0x6ed36c",
+            "0x6ed358",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 2,
+          "setting": "China",
+          "folder": "zh-cn",
+          "crt_locale": "Chinese_China",
+          "font_hex": "53696d53756e",
+          "charset": 134,
+          "literal_rvas": [
+            "0x6ed7b8",
+            "0x6ed348",
+            "0x6ed338",
+            "0x6ed330"
+          ]
+        },
+        {
+          "id": 3,
+          "setting": "Europe",
+          "folder": "en-gb",
+          "crt_locale": "English_United Kingdom",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7b0",
+            "0x6ed328",
+            "0x6ed310",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 4,
+          "setting": "Indonesia",
+          "folder": "en-id",
+          "crt_locale": "English_Indonesia",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed7a4",
+            "0x6ed308",
+            "0x6ed2f4",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 5,
+          "setting": "Japan",
+          "folder": "ja-jp",
+          "crt_locale": "Japanese_Japan",
+          "font_hex": "4d5320476f74686963",
+          "charset": 128,
+          "literal_rvas": [
+            "0x6ed79c",
+            "0x6ed2ec",
+            "0x6ed2dc",
+            "0x6ed2d0"
+          ]
+        },
+        {
+          "id": 6,
+          "setting": "Philippines",
+          "folder": "en-ph",
+          "crt_locale": "English_Philippines",
+          "font_hex": "5461686f6d61",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed790",
+            "0x6ed2c8",
+            "0x6ed2b4",
+            "0x6ed2ac"
+          ]
+        },
+        {
+          "id": 7,
+          "setting": "Russia",
+          "folder": "ru-ru",
+          "crt_locale": "Russian_Russia",
+          "font_hex": "4c756369646120436f6e736f6c65",
+          "charset": 204,
+          "literal_rvas": [
+            "0x6ed788",
+            "0x6ed2a4",
+            "0x6ed294",
+            "0x6ed284"
+          ]
+        },
+        {
+          "id": 8,
+          "setting": "Taiwan",
+          "folder": "zh-tw",
+          "crt_locale": "Chinese_Taiwan",
+          "font_hex": "4d696e674c6955",
+          "charset": 136,
+          "literal_rvas": [
+            "0x6ed780",
+            "0x6ed27c",
+            "0x6ed26c",
+            "0x6ed264"
+          ]
+        },
+        {
+          "id": 9,
+          "setting": "USA",
+          "folder": "en-us",
+          "crt_locale": "English_United Kingdom",
+          "font_hex": "417269616c",
+          "charset": 1,
+          "literal_rvas": [
+            "0x6ed77c",
+            "0x6ed25c",
+            "0x6ed310",
+            "0x6ed350"
+          ]
+        },
+        {
+          "id": 10,
+          "setting": "Thailand",
+          "folder": "th-th",
+          "crt_locale": "Thai_Thailand",
+          "font_hex": "5461686f6d61",
+          "charset": 222,
+          "literal_rvas": [
+            "0x6ed770",
+            "0x6ed254",
+            "0x6ed244",
+            "0x6ed2ac"
+          ]
+        }
+      ],
+      "ranges": [
+        {
+          "name": "mapper",
+          "rva": "0x3d29c0",
+          "bytes": 377,
+          "sha256": "0402f179c1ac23ae293f73b4510650f7bf522bcb3dcbef0e9c64a29909cc1211"
+        },
+        {
+          "name": "profile_reader",
+          "rva": "0x3d2880",
+          "bytes": 218,
+          "sha256": "3d94c7e4cfa74b8548e4e5293f270edfbecfda092762d276820d31ee06379421"
+        },
+        {
+          "name": "selector",
+          "rva": "0x3cfb10",
+          "bytes": 1393,
+          "sha256": "262358c9ac010e64dc3f50eabceb8207f0e0c45327501abde919384be6e0069f"
+        },
+        {
+          "name": "root_accessor",
+          "rva": "0x1e5b70",
+          "bytes": 27,
+          "sha256": "5821cd249c7fb2f2f0307f46582bdf5a5e162981327e9a4777e59d99bbbdf8d5"
+        },
+        {
+          "name": "font_settings",
+          "rva": "0x4c5a80",
+          "bytes": 71,
+          "sha256": "f600554d6282dad5408ab1fb5a7dfa047688cbc0f35db7bb82bc6c01b222e3e4"
+        }
+      ]
+    }
+  ],
+  "fixture": "work/client455-port/nation-paths/reference.tsv",
+  "fixture_sha256": "6ad1e5b67ee842a85127c0064849317e4b5d1a9456faa2043b36c516b6d9a71e",
+  "script_sha256": "1a8afbabf57e18a4b6e197fe22da4578f61c3b975054f78860d5b78074f0ca49",
+  "facts": [
+    "7D29C0 compares11 country names with _mbscmp;unknown returnsWORDffff",
+    "7D2880 reads128bytes Setup/Language from .\\R3Engine.ini;WORD>11 rejected",
+    "Country11 cannot be produced by mapper;selector default is Korea",
+    "7CFB10 constructs .\\DataTable\\<folder>;USA uses UK CRT locale",
+    "7CFB10 setlocale category1 is LC_COLLATE,not LC_CTYPE",
+    "Font setter records9x12 and charset;it does not itself render text"
+  ],
+  "gaps": [
+    "ETCAction country factory/providers and launcher policies",
+    "Actual CRT locale/codepage agreement/font application/NDLanguage pack loading",
+    "Whole reference bootstrap/network/Create/UI/gameplay and M9"
+  ],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

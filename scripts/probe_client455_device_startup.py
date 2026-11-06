@@ -1,9 +1,10 @@
 """Run exact own PE through real window/device init;stop before client Create."""
-import hashlib,json,re,shutil,subprocess
+import argparse,hashlib,json,re,shutil,subprocess
 from pathlib import Path
 from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
+from audit_client455_own_entry import validated_entry
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def symbol(mapping,name):
@@ -11,13 +12,14 @@ def symbol(mapping,name):
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--create',action='store_true');args=parser.parse_args()
     link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link);early=json.loads((WS/'inventory/client455-startup-native.json').read_text());contracts=json.loads((WS/'inventory/client455-startup-contracts-native.json').read_text());engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
     if early['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or contracts['build_sha256']!=sha(WS/'inventory/client455-startup-engine-build.json'):raise ValueError('Current early startup/contracts evidence required')
-    source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=mainVa+0x30
-    if read_va(raw,stopVa,2)!=b'\x85\xc0' or read_va(raw,stopVa-5,1)!=b'\xe8':raise ValueError('Actual D3D return checkpoint changed;reinspect own IDA')
+    entry=validated_entry();source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=base+int(entry['points']['before_char_data' if args.create else 'after_d3d']['rva'],16)
     parent=WS/'work/m9'/sha(source)[:8];parent.mkdir(parents=True,exist_ok=True);index=1
-    while (parent/f'device-startup{index:03d}').exists():index+=1
-    run=parent/f'device-startup{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
+    prefix='create-startup' if args.create else 'device-startup'
+    while (parent/f'{prefix}{index:03d}').exists():index+=1
+    run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
     for item in early['lab_inputs']:
         original=WS/item['file'];relative=original.relative_to(oldRoot);copy=run/relative
         if sha(original)!=item['sha256']:raise ValueError('Changed private startup input')
@@ -27,8 +29,14 @@ def main():
         original=client/name;copy=run/name
         if not original.is_file():raise ValueError('Missing actual startup resource:'+name)
         copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+    if args.create:
+        shaders=json.loads((WS/'inventory/client455-shaders-reference.json').read_text())
+        for row in shaders['programs']:
+            original=WS/row['copy'];copy=run/'System/shader'/(row['name']+'.sho')
+            if sha(original)!=row['sha256']:raise ValueError('Changed actual Character shader')
+            shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     layout=contracts['layout'];state=symbol(mapping,'?stState@@3U_R3ENGINE_STATE@@A')-base;app=symbol(mapping,'?g_MainApp@@3VCMainApp@@A')-base
-    values=[state+layout['state_fullscreen'],state+layout['state_renderbits'],app,layout['ready'],layout['window'],layout['device'],layout['windowed']]
+    values=[state+layout['state_fullscreen'],state+layout['state_renderbits'],app,layout['ready'],layout['window'],layout['device'],layout['windowed'],int(entry['points']['after_sound']['rva'],16),int(entry['points']['after_d3d']['rva'],16),symbol(mapping,'?g_ifCharIF@@3PAVChInterface@@A')-base,layout['character_device']]
     plan=run/'device.plan';plan.write_text(' '.join(f'{value:x}' for value in values)+'\n',encoding='ascii');inputs.append({'file':plan.relative_to(WS).as_posix(),'sha256':sha(plan)})
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
@@ -36,5 +44,10 @@ def main():
     result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)
     events=[json.loads(line) for line in output.read_text().splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});config=next((e for e in events if e['kind']=='render_configuration'),{});device=next((e for e in events if e['kind']=='device_state'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception']
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    (WS/'inventory/client455-device-startup-native.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'summary':summary,'config':config,'device':device,'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}))
+    report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=args.create
+    report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
+    report['scope']='Exact own normal PE through Character manager creation;stop before character data readers;not complete Create or455acceptance' if args.create else report['scope']
+    report['nation_paths']=[e for e in events if e['kind']=='debug_string']
+    name='client455-create-startup-native' if args.create else 'client455-device-startup-native'
+    (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}))
 if __name__=='__main__':main()

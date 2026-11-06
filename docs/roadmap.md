@@ -12,7 +12,14 @@
 
 ## Текущий статус
 
-Новейший участок M6 — devicestartup043: восстановлены два startup контракта455
+Новейший участок M6 — nationpaths044: country/path selection455 подключён к
+WinMain. Exact own PE прошла ранний normal Create: Character/менеджеры созданы,
+Character device совпал с device приложения. Стоп до старых data readers.
+Полный locale/CRT/font/NDLanguage, Create/UI/launcher/network ещё открыты.
+Следом045 — реальная языковая/данная инициализация и дальнейший Create.
+research/client455-nation-paths.md; checkpoint PARTIAL; M6/M6F/M7/M9 открыты.
+
+Предыдущий участок M6 — devicestartup043: восстановлены два startup контракта455
 (32бит без forcedfullscreen; nonzero Create→exit0). Exact own PE прошла
 обычную оконную D3D/device инициализацию, ready1. Остановка перед клиентским
 Create. Далее target locale/launcher/bootstrap и normal Create/resources.

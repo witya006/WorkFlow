@@ -1,6 +1,7 @@
 #include "r3d3dwrapper.h"
 #include "core.h"
 #include "r3enginekernel.h"
+#include "Character455.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -15,7 +16,7 @@ public:
     }
     void seed(){mR3Flag=0xabcdef01;}
     DWORD flag()const{return mR3Flag;}
-    static void layout(){std::printf("{\"ready\":%zu,\"windowed\":%zu,\"window\":%zu,\"device\":%zu,\"state_fullscreen\":%zu,\"state_renderbits\":%zu}\n",offsetof(CreationCase,m_bReady),offsetof(CreationCase,m_bWindowed),offsetof(CreationCase,m_hWnd),offsetof(CreationCase,m_pd3dDevice),offsetof(_R3ENGINE_STATE,mbFullScreen),offsetof(_R3ENGINE_STATE,mRenderBits));}
+    static void layout(){std::printf("{\"ready\":%zu,\"windowed\":%zu,\"window\":%zu,\"device\":%zu,\"state_fullscreen\":%zu,\"state_renderbits\":%zu,\"character_device\":%zu}\n",offsetof(CreationCase,m_bReady),offsetof(CreationCase,m_bWindowed),offsetof(CreationCase,m_hWnd),offsetof(CreationCase,m_pd3dDevice),offsetof(_R3ENGINE_STATE,mbFullScreen),offsetof(_R3ENGINE_STATE,mRenderBits),offsetof(CRender,native)+offsetof(RF455CharacterRenderer,device));}
 };
 void completed(){FILE* file=std::fopen(outputPath,"ab");if(file){std::fputs("atexit\n",file);std::fclose(file);}}
 int main(int argc,char** argv){

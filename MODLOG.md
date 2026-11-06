@@ -21,6 +21,14 @@ pass. First full normal source Character/D3D9 RF_Online.bin links with zero
 unresolved symbols. Normal WinMain/gameplay acceptance and M9 remain open.
 [research/client455-normal-accounting.md](research/client455-normal-accounting.md).
 
+2026-11-06 — Nationpaths044. Country mapper7D29C0/RVA3D29C0 and selector7CFB10/
+RVA3CFB10 pinned both455PEs. Eleven case-sensitive country/root choices now
+in actual normal WinMain;CRT/font/NDLanguage remain unfinished. Own full PE
+cb64af10... passed partial normal Create through Character/managers using
+the same real app D3D9 device;stop before old data readers. New decoded own
+CALL/MAP checkpoints replace fixed offsets;short regressions/frames pass.
+M6/M9 open. [research/client455-nation-paths.md](research/client455-nation-paths.md).
+
 2026-11-06 — Characterclock040. Restored separate91EA80 QPC/fallback millisecond
 timer and real normal _R3CalculateTime bridge. Core/bridge Fraction oracle and
 provider lifecycle scenarios pass; engine clock remains independent. Full link

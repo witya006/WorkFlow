@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+Nationpaths044: реальный country mapper7D29C0 case-sensitive _mbscmp,
+11names Korea/Brazil/China/Europe/Indonesia/Japan/Philippines/Russia/Taiwan/
+USA/Thailand ->0..10;unknownWORDffff. Setup7D2880 читает128bytes Setup/Language
+из .\R3Engine.ini и отвергает>11. Имя Russia,неru-ru;неподставлятьcountry7
+в old3language arrays. Selector7CFB10/root5E5B70: .\DataTable\<folder>.
+Модуль client455_nation_paths.cpp подключён перед InitR3Engine в normal main.
+CRT/font/charset пока только metadata; НЕ заявлять полный SelectR3Language.
+USA=en-us с English_United Kingdom;Korea font bytesB1BCB8B2C3BC;setlocale(1)
+значит LC_COLLATE,неLC_CTYPE. ETCAction/factory/NDLanguage ещё не реализованы.
+Country/source CPU fixture из обоихPE;profile/case/invalid/missing/truncation/
+reload cases passed.182client/12facade/20kernel CPP,full link0unresolved.
+New own PE cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88,
+1967104B/x86/base400000/entry1496C0. Actual CRT/Miles/window/D3D прошли;
+normal Create создал Character/bone/mesh/animation/bounds managers, stop BEFORE
+_CreateCharDataMgr. Character owner439f160 device44d5da0 == actual app device.
+Source country path .\DataTable\ko-kr виден вtrace.12realSHO staged.
+Raw work/m9/cb64af10/{startup001,device-startup001,create-startup001}.
+Controlled exitE0434200 observed;no2ndchance;SW_HIDE request не show acceptance.
+Own debugger plan11DWORD: full/bits/appRVA,ready/window/device/windowed offsets,
+soundRVA,d3dRVA,charGlobalRVA,charDeviceOffset(compiler measured0).
+Old main+1D/+30 INVALID after newcall. audit_client455_own_entry.py uses
+dumpbin decoded CALL+MAP and currentPE SHA; validated_entry required before run.
+MainRVA B3CD0,afterSound B3CFA,afterD3D B3D0D,beforeCharData B33F9.
+Current engine043 unchanged,033 baseline preserved. Short ANI/BBX/model/effect/
+shadow/math/clock/accounting regressions passed;old frames equal,COM/Dmalloc0.
+All11scoped checkpoints PASS/PARTIAL;fullclient acceptance stillOPEN.
+Reference IDA5f01f0d1 closed/save=true. No original EXE/server changes.
+research/client455-nation-paths.md;inventory/client455-nation-paths-checkpoint.json.
+Next045: full locale/data bootstrap: factory8321E0,provider8327B0(1) vslot76,
+CRT codepage parse/compare,font8C5A80,NDLanguage601EF0/603130 and EDF reader
+5EEC00/5EE900/5EEB90. Do not fake success/factories or move filters blindly.
+Then normal data consumers/Create/UI/launcher/network order/BGM/fullshutdown.
+Previous goal status-only turn was no progress;state revalidated and this
+turn changed production source and yielded actual normal Create evidence.
+M6/M6F/M7/M9 remain OPEN;no blockers requiring user input currently.
+
+Предыдущий результат — devicestartup043:
+
 Device startup043: target WinMain7D04E0/setup7D2880/wrapper8EDAB0/color8ED5A0
 pinned both bins. CRITICAL old ForceFullScreen name misled legacy code:
 4558ED5A0 writes DWORD1157CA8=32, NOT fullscreen1157CB0. Restore this body and

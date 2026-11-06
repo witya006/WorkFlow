@@ -1,0 +1,45 @@
+{
+  "status": "PARTIAL",
+  "country_path_source": "PASS",
+  "binary_derived11_country_cases": "PASS",
+  "actual_own_winmain_country_root": "PASS",
+  "actual_partial_client_create": "PASS",
+  "character_bound_to_normal_device": "PASS",
+  "actual_create_stop": "Before _CreateCharDataMgr;after Character/bone/mesh/animation/bounds managers",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88",
+    "bytes": 1967104,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1496c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "evidence_sha256": {
+    "client455-nation-paths-reference": "ea810eb58fe12c13defbb09ab621be223c2b05c59d252517b12de672911f0ad0",
+    "client455-nation-paths-native": "99e99895dd9f399b5080a544b9f2e8cb91f1f81e753430fbd9ce19546ff7006a",
+    "client455-own-entry": "349f69bda9073069e406040aa0bb8c9e064d0405a71672ba6d78b1ee6ea0b4f2",
+    "client455-create-startup-native": "c945868a29e15ace9406eb7c164c28908ac127f1a624d90bee7ee434cecdc123",
+    "client455-normal-link": "49397bcbb88e76fb47a5a243b6b2b390203176a0224f8b5e422888231e97aa84"
+  },
+  "gaps": [
+    "ETCAction country factory/providers and launcher policies",
+    "Actual CRT locale/codepage agreement/font application/NDLanguage pack loading",
+    "Whole reference bootstrap/network/Create/UI/gameplay and M9",
+    "Normal Create data readers/input/UI/LoadData/gameprogress/launcher/normal shutdown remain unexecuted",
+    "No reference input EXE execution or full455bootstrap behavior comparison",
+    "Renderer/pose/particle/oldCRT/remaining feature registry gaps remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

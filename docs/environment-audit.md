@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 06.11, nationpaths044: новых установок нет. Полная собственная PE
+SHAcb64af10.../x86/entry1496C0 собирается без unresolved. Выбор страны/корня
+данных проверен по обоим455PE; штатный Create дошёл до Character и менеджеров
+на реальном D3D9. Точный stop до _CreateCharDataMgr, exit наблюдён. Breakpoint
+адреса теперь определяются dumpbin по инструкциям текущего PE/MAP; fixed offsets
+удалены. Свой debugger/CPU layout обновлены, short regressions/кадры прошли.
+IDA5f01f0d1 закрыта/save=true; lab work/m9/cb64af10/create-startup001.
+Полные locale/NDLanguage/launcher/UI/network/shutdown впереди.
+research/client455-nation-paths.md; M6/M9 открыты.
+
 Дополнение 06.11, devicestartup043: установок нет. Отдельно собрана библиотека
 R3Engine455Startup из67units с двумя подтверждёнными правками;033source/lib
 сохранены. Full normal PE линкуется, новый SHA51fd3f49..., entry149510.

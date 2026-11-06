@@ -4,11 +4,14 @@ from pathlib import Path
 from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
+from audit_client455_own_entry import validated_entry
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def load(name):return json.loads((WS/f'inventory/{name}.json').read_text())
 def main():
     ref=load('client455-startup-contracts-reference');build=load('client455-startup-engine-build');cpu=load('client455-startup-contracts-native');run=load('client455-device-startup-native');link=load('client455-normal-link');validate_normal_link(link)
+    validated_entry()
+    if run['own_entry_sha256']!=sha(WS/'inventory/client455-own-entry.json'):raise ValueError('Stale decoded device checkpoints')
     for folder,item in zip(['current','reference-backup'],ref['references']):
         path=WS/f'work/client-reference/{folder}/RF_Online.bin';raw=path.read_bytes()
         if sha(path)!=item['sha256']:raise ValueError('Changed pinned455')

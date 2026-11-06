@@ -6,6 +6,20 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-NATION-PATHS-044",
+      "status": "partial",
+      "description": "Case-sensitive455country selection/root publication in actual normal WinMain;partial normal Create reaches Character/managers on real app device",
+      "reference": [
+        {"va":"0x7d29c0","rva":"0x3d29c0","role":"country mapper"},
+        {"va":"0x7d2880","rva":"0x3d2880","role":"Setup/Language reader"},
+        {"va":"0x7cfb10","rva":"0x3cfb10","role":"country folder/CRT/font selector"}
+      ],
+      "implementation": "scripts/native/client455_nation_paths.cpp",
+      "verification": "11binary-derived country records and real profile edge cases pass;exact own PE publishesko-kr and creates Character on same normal D3D device;controlled stop before _CreateCharDataMgr",
+      "evidence": ["inventory/client455-nation-paths-checkpoint.json","inventory/client455-create-startup-native.json","research/client455-nation-paths.md"],
+      "gaps": ["ETCAction/factory/launcher policies","Actual CRT/codepage agreement,font application,NDLanguage EDF","Whole reference startup order and full normal Create/UI/gameplay/network/shutdown"]
+    },
+    {
       "id": "DATA-SPT-001",
       "description": "Helper loader: record fields, options, names, growth and missing-file count reset",
       "status": "implemented",

@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — devicestartup043: по 455 восстановлены установка32бит
+Последний участок M6 — nationpaths044: выбор страны/корня данных подключён к
+обычному WinMain. Новая полная сборка прошла ранний CMainApp::Create до Character
+и менеджеров; Character привязан к настоящему устройству приложения. Остановка
+до старых игровых таблиц. Полный язык/CRT/font/NDLanguage и Create/UI открыты.
+research/client455-nation-paths.md; checkpoint PARTIAL; M6/M9 открыты.
+
+Предыдущий участок M6 — devicestartup043: по 455 восстановлены установка32бит
 без принудительного fullscreen и строгий результат Create. Производная
 библиотека движка сохраняет033; полная PE прошла actual window/D3D init:
 ready1/windowed1, устройство ненулевое. Остановка перед CMainApp::Create.

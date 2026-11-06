@@ -2,11 +2,11 @@
   "scope": "Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "51fd3f49ab867f7178a548dcd7058276fb4f1ac4983ab5feac808db863df5fd1",
-    "bytes": 1966080,
+    "sha256": "cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88",
+    "bytes": 1967104,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x149510",
+    "entry_rva": "0x1496c0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,76 +15,77 @@
       ".reloc"
     ]
   },
-  "staged_executable": "work/m9/51fd3f49/device-startup002/RF_Online.bin",
-  "normal_link_sha256": "a4be553e61b56ab8ce9bbebc9949ff8273cf99967e16792bc09fc7813726dc7d",
+  "staged_executable": "work/m9/cb64af10/device-startup001/RF_Online.bin",
+  "normal_link_sha256": "49397bcbb88e76fb47a5a243b6b2b390203176a0224f8b5e422888231e97aa84",
   "engine_build_sha256": "2f440563f87d888bcd3c82bb9f98e9c58fbd8f3ac996e5f6059cd9bc9d624eb1",
-  "contracts_sha256": "2523b6dcd05f42caa2dadf7d06c67a2ba0878c7a5047b0b00664d41839e78eca",
-  "early_startup_sha256": "ba040e2cf81248146cbfc5ff5f6ba6285f82acc2a85a55743df8fa72ab251f7c",
+  "contracts_sha256": "c17640df7dad8b4879e8d8019fec016e7f06664d1bba64a3207de5c072a41d26",
+  "early_startup_sha256": "167c47cc1fc2fe5c65fd337fbe271a368e5561eed0ebd4ae4a12368924aa1717",
   "debugger": {
     "file": "work/tools/own-client-startup/own-startup-debugger.exe",
-    "sha256": "18be30c178dc92836562b17ae3f40ada11368a1e5a77d9734c46aa43222c59f4",
+    "sha256": "62a39b4b25fc014e43710b6a525bdace825540f894c8b358cd325b2b45cf1a5a",
     "source": "scripts/native/own_client_startup_debugger.cpp",
-    "source_sha256": "9371a9a1198d65a581eca7150eacbd20a454a1c7fd3d288ad1ec430440b43d30"
+    "source_sha256": "b8661983aaab5956c6cd52b307f8ff0908f74ffd7fadf6ad73d1d004f534ed29"
   },
   "inputs": [
     {
-      "file": "work/m9/51fd3f49/device-startup002/RF_Online.bin",
-      "sha256": "51fd3f49ab867f7178a548dcd7058276fb4f1ac4983ab5feac808db863df5fd1"
+      "file": "work/m9/cb64af10/device-startup001/RF_Online.bin",
+      "sha256": "cb64af10cad3f527af015609f71ca0c7d300cce59aa3c2671bf0155aab384b88"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/mss32.dll",
+      "file": "work/m9/cb64af10/device-startup001/mss32.dll",
       "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/abuse.dll",
+      "file": "work/m9/cb64af10/device-startup001/abuse.dll",
       "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/adv.dll",
+      "file": "work/m9/cb64af10/device-startup001/adv.dll",
       "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/pdll.dll",
+      "file": "work/m9/cb64af10/device-startup001/pdll.dll",
       "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/Snd/WaveList.spt",
+      "file": "work/m9/cb64af10/device-startup001/Snd/WaveList.spt",
       "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/mssmp3.asi",
+      "file": "work/m9/cb64af10/device-startup001/mssmp3.asi",
       "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/R3Engine.ini",
-      "sha256": "24d75767f2fdf57dfd8083c9907f283a4033718909b3f56cd3d8be4079b31905"
+      "file": "work/m9/cb64af10/device-startup001/R3Engine.ini",
+      "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/System/shader/Grass1.vsh",
+      "file": "work/m9/cb64af10/device-startup001/System/shader/Grass1.vsh",
       "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/System/shader/grass1.vso",
+      "file": "work/m9/cb64af10/device-startup001/System/shader/grass1.vso",
       "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/System/console.jpg",
+      "file": "work/m9/cb64af10/device-startup001/System/console.jpg",
       "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
     },
     {
-      "file": "work/m9/51fd3f49/device-startup002/device.plan",
-      "sha256": "77daf462e0edf02ad072c4448c284cb1c242e24cd7d025ed75adaa17fb17be10"
+      "file": "work/m9/cb64af10/device-startup001/device.plan",
+      "sha256": "da2c5aaa90ef97f7b25b3fd9b8a52265c639a29abf37cb2fb9aa676da6028013"
     }
   ],
   "events": {
-    "file": "work/m9/51fd3f49/device-startup002/debug-events.jsonl",
-    "sha256": "efda466ef2757c5125c07be2a1a5cd3a311c97c0739c6fd2655ba9df932c0ff3"
+    "file": "work/m9/cb64af10/device-startup001/debug-events.jsonl",
+    "sha256": "667936b6792ae252699ad79bb1d2049edf3ea01a40f83f00a9c3d8281944279e"
   },
   "debugger_exit": 0,
   "summary": {
     "kind": "summary",
     "main_reached": true,
     "after_d3d_reached": true,
+    "final_checkpoint_reached": true,
     "exit_observed": true
   },
   "render_configuration": {
@@ -96,8 +97,8 @@
     "kind": "device_state",
     "read": true,
     "ready": 1,
-    "window": "0x920464",
-    "device": "0x4a962c0",
+    "window": "0xa5044a",
+    "device": "0x41e95e0",
     "windowed": 1
   },
   "markers": [
@@ -105,18 +106,18 @@
       "kind": "checkpoint",
       "name": "WinMain",
       "rva": "0xb3cd0",
-      "eax": 29257739
+      "eax": 24145931
     },
     {
       "kind": "checkpoint",
       "name": "after_sound_before_d3d",
-      "rva": "0xb3ced",
+      "rva": "0xb3cfa",
       "eax": 1
     },
     {
       "kind": "checkpoint",
       "name": "after_d3d_before_create",
-      "rva": "0xb3d00",
+      "rva": "0xb3d0d",
       "eax": 0
     }
   ],
@@ -139,7 +140,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x17ae548"
+      "parameter1": "0x3ce1b8"
     },
     {
       "kind": "exception",
@@ -157,5 +158,18 @@
   "M6": "OPEN",
   "M6F": "OPEN",
   "M7": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "own_entry_sha256": "349f69bda9073069e406040aa0bb8c9e064d0405a71672ba6d78b1ee6ea0b4f2",
+  "partial_client_create": false,
+  "character_owner": {},
+  "nation_paths": [
+    {
+      "kind": "debug_string",
+      "value": ".\\DataTable\\ko-kr"
+    },
+    {
+      "kind": "debug_string",
+      "value": "onecoreuap\\windows\\core\\color\\moderncolor\\winrt\\displaycolormanagement\\lib\\displaycolormanagement.cpp(34)\\Windows.Internal.Graphics.Display.DisplayColorManagement.dll!73889928: (caller: 738C3BDA) ReturnHr(1) tid(360c) 80070057 \u0413\u040f\u0413\u00a0\u0413\u00b0\u0413\u00a0\u0413\u00ac\u0413\u0490\u0413\u0406\u0413\u00b0 \u0413\u00a7\u0413\u00a0\u0413\u00a4\u0413\u00a0\u0413\u00ad \u0413\u00ad\u0413\u0490\u0413\u045e\u0413\u0490\u0413\u00b0\u0413\u00ad\u0413\u00ae.\r\n"
+    }
+  ]
 }

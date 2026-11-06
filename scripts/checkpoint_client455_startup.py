@@ -5,11 +5,14 @@ from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
 from audit_client455_startup import imports,exported
+from audit_client455_own_entry import validated_entry
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def load(name):return json.loads((WS/f'inventory/{name}.json').read_text())
 def main():
     audit=load('client455-startup-audit');run=load('client455-startup-native');link=load('client455-normal-link');validate_normal_link(link)
+    validated_entry()
+    if run['own_entry_sha256']!=sha(WS/'inventory/client455-own-entry.json'):raise ValueError('Stale decoded startup checkpoints')
     if audit['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or run['normal_link_sha256']!=audit['normal_link_sha256'] or run['audit_sha256']!=sha(WS/'inventory/client455-startup-audit.json'):raise ValueError('Stale full-client startup evidence')
     if audit['script_sha256']!=sha(WS/'scripts/audit_client455_startup.py') or audit['unresolved_provider_modules']:raise ValueError('Incomplete provider audit')
     raw=(WS/link['executable']['file']).read_bytes();current=imports(raw)+imports(raw,True)
