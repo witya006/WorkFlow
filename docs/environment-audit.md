@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,avatar-stage073: установокнет. ConfiguredIDAprobe внеsandbox
+прошёл66tools/list10/decompile/close;внутри sandbox workerexit2. NativeMCP
+работал,сессияb3b8653dsavedclosed.34ranges/2vtables/15fullasm equalpins.
+ActualAvatar/MainApp/account routing,window/board иexactCreate1PASS;
+22кадра равныreviewed072. FinalPE3d1f8c32…/entry150550,182/20/32TU,
+0unresolved. FullTutorial/world/handlers/factory ещёOPEN;40080201unknown.
+[Доказательства](../research/client455-avatar-stage.md).
+
 Дополнение07.11,briefing-window072: установокнет.32ranges/vtable212 equalpins,
 19listedfullasm+2captureasm;IDA18f99dcdsavedclosed. Sourcewindow/provider,
 realScreen capture,actualboardrich/key иKo/Ru22GPUframes проверены. Fresh

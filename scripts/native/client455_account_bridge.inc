@@ -11,7 +11,7 @@ BOOL CNetworkMgr::AccountMsg_LoginAccountRequest_cllo( const char* ticket )
 {
     BYTE packet[RF455LoginBytes];
     const bool ticketProfile=RF455_GetNormalNationPaths()->nation==8;
-    if(!RF455_PackLogin(packet,m_account455,m_pID,m_pPassword,ticketProfile,ticket))return FALSE;
+    if(!RF455_PackLogin(packet,m_account455,m_pID,m_pPassword,ticketProfile,ticket,RF455_IsTutorialAvatarStage()))return FALSE;
     BYTE type[2]={21,3};const BOOL sent=SendNetMessage(0,type,packet,sizeof(packet));
     if(sent)SendRequestMsg();else NetLogWrite("455 account login request failed");return sent;
 }

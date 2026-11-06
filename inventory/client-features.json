@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-AVATAR-STAGE-073",
+      "status": "partial",
+      "description": "Actual Avatar stage/skip,MainApp Create gate,login stage2 and boundedlocal Tutorial routing;fullstage/world/handlers open",
+      "reference": [{"rva":"0x2110","role":"Avatarctor"},{"rva":"0x1e130","role":"stage equality"},{"rva":"0xa6160","role":"stage setter"},{"rva":"0x20bb0","role":"skip setter"},{"rva":"0x20be0","role":"skip getter"},{"rva":"0x3d1370","role":"main loop"},{"rva":"0x162be0","role":"send route"},{"rva":"0x164520","role":"local dispatcher"},{"rva":"0x162e80","role":"login transform"},{"rva":"0x25efb0","role":"Screen singleton PostUIguard"}],
+      "implementation": ["scripts/native/client455_avatar_stage.h","scripts/native/client455_avatar_stage.cpp","scripts/native/client455_avatar_stage.inc","scripts/native/client455_tutorial_dispatch.inc","scripts/native/client455_account_bridge.inc","scripts/prepare_client455_normal.py"],
+      "verification": "34ranges/2vtables/15asm equalpins;actual Avatar/MainApp/account probes,KoRuwindow/board andfinalPE/Create1 PASS.22GPUframes equalreviewed687b88c reusedexplicitly. Actualstage fixture remains test-only.",
+      "evidence": ["inventory/client455-avatar-stage-reference.json","inventory/client455-avatar-stage-checkpoint.json","inventory/client455-account-native.json","research/client455-avatar-stage.md"],
+      "gaps": ["FullCGP_Tutorial/world/BSP39/cameraintro/Avatar/QBI/fourstagefactory/nextDWORD;legacy3/modulo and explicitIDbridge remain","Local4/5/7/13/17 handlers still explicitlyfail;only confirmedignored/1-17transport accepted","SkipDWORD networkproducer,fullAvatar/Character/world/GUI/IME/renderer/lifecycle/auth/gameplay/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-BRIEFING-WINDOW-072",
       "status": "partial",
       "description": "Source briefing window/provider with real screen capture,pages,buttons,portraits and key guide;actual Tutorial stage remains open",
@@ -13,7 +23,7 @@
       "implementation": ["scripts/native/client455_briefing_window.h","scripts/native/client455_briefing_window.cpp","scripts/native/client455_screen_message.inc","scripts/prepare_client455_normal.py"],
       "verification": "32ranges/vtable212 equalpins;19listedfullasm+2captureasm. Ko/Ru3pages,actual mouse queue,portrait timers/cells,22viewedGPUframes. CTutorialBoard uses real sourceview. AffectedGUI and exactownPE/Create1 passed.",
       "evidence": ["inventory/client455-briefing-window-reference.json","inventory/client455-briefing-window-native.json","inventory/client455-briefing-window-visual.json","inventory/client455-briefing-window-checkpoint.json","research/client455-briefing-window.md"],
-      "gaps": ["Ordinary Tutorial/fourstage factory,real Avatar/world/frame/input/localfeedback host","Currentstage event guard45FBD0,fullbasewindow lifecycle/input/sound/docking,resource21/31..33 device-reset/globalmanager","Russian ND1059 extends beyond45pxbutton;original455pixel equivalence unproven","GlobalvirtualSetSize,otherGUIlayers/IME/oldAni/unsafe/failure domains and allpreviousgameplay/M6F/M7/M9 gaps"]
+      "gaps": ["Ordinary Tutorial/fourstage factory,real Avatar/world/frame/input/localfeedback host","Fullbasewindow lifecycle/input/sound/docking,resource21/31..33 device-reset/globalmanager;Screen singleton guard closed073","Russian ND1059 extends beyond45pxbutton;original455pixel equivalence unproven","GlobalvirtualSetSize,otherGUIlayers/IME/oldAni/unsafe/failure domains and allpreviousgameplay/M6F/M7/M9 gaps"]
     },
     {
       "id": "CLIENT455-BRIEFING-CONTROLS-071",

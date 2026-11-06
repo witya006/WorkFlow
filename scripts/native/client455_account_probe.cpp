@@ -13,6 +13,7 @@
 #include "client455_account.h"
 #include "client455_language.h"
 #include "client455_nation_paths.h"
+#include "client455_avatar_stage.h"
 #include <cstdio>
 #include <cstring>
 #include <vector>
@@ -22,6 +23,11 @@ template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename
 FIELD(NetworkMember,CNetworkMgr,CMainApp,m_cNetworkMgr)
 FIELD(SpriteMember,CSpriteMgr,CMainApp,m_cSpriteMgr)
 FIELD(ScreenMember,CGUIScreen,CMainApp,m_cScreen)
+FIELD(StageMember,CGameProgress*,CMainApp,m_pGameProgress)
+FIELD(StageIdMember,BYTE,CMainApp,m_byGameProgressID)
+FIELD(CreatedMember,BOOL,CMainApp,m_bCreatedAllObject)
+FIELD(LoadedMember,BOOL,CMainApp,m_bLoadedAllData)
+FIELD(ActiveMember,BOOL,CMainApp,m_bIsActive)
 FIELD(SendBuffer,_NET_BUFFER*,CNetProcess,m_pSendBuffer)
 FIELD(ReceiveBuffer,_NET_BUFFER*,CNetProcess,m_pRecvBuffer)
 FIELD(Owner,CNetWorking*,CNetProcess,m_pNetwork)
@@ -43,10 +49,55 @@ static void push(_NET_BUFFER& buffer,const BYTE* p,std::size_t size){
 static std::vector<BYTE> frame(BYTE opcode,const std::vector<BYTE>& data){
     std::vector<BYTE> result={BYTE((data.size()+4)&255),BYTE((data.size()+4)>>8),21,opcode};result.insert(result.end(),data.begin(),data.end());return result;
 }
-static std::vector<BYTE> loginOracle(const char* id,const char* pw,const char* ticket,BYTE delta,WORD mask,BYTE serverType){
+static std::vector<BYTE> loginOracle(const char* id,const char* pw,const char* ticket,BYTE delta,WORD mask,BYTE serverType,bool tutorial=false){
     std::vector<BYTE> result(342,0);auto text=[&](unsigned offset,unsigned capacity,const char* input){for(unsigned i=0;i+1<capacity&&input[i];++i)result[offset+i]=BYTE(input[i]);};
     if(ticket)text(85,257,ticket);else {text(0,51,id);text(51,33,pw);}
-    for(auto& byte:result)byte=BYTE((unsigned(byte)+delta)^mask);result[84]=serverType;return frame(3,result);
+    if(!tutorial)for(auto& byte:result)byte=BYTE((unsigned(byte)+delta)^mask);result[84]=serverType;return frame(3,result);
+}
+struct StageFixture: CGameProgress {
+    unsigned creates=0,loops=0;bool succeed=false;
+    BOOL Create()override{++creates;m_bIsCreated=succeed;return succeed;}
+    BOOL MainLoop(BOOL)override{++loops;return FALSE;}
+    HRESULT RestoreDeviceObjects()override{return S_OK;}
+    HRESULT InvalidateDeviceObjects()override{return S_OK;}
+    HRESULT FrameMove()override{return S_OK;}HRESULT Render()override{return S_OK;}
+    BOOL InputProcess()override{return TRUE;}BOOL LoadData()override{return TRUE;}BOOL UnloadData()override{return TRUE;}
+    LRESULT MsgProc(HWND,UINT,WPARAM,LPARAM)override{return 0;}
+    void reset(){Init();creates=loops=0;}
+};
+struct StageBinding {
+    CGameProgress* previousStage=g_MainApp.*access(StageMember{});BYTE previousId=g_MainApp.*access(StageIdMember{});
+    BOOL previousCreated=g_MainApp.*access(CreatedMember{}),previousLoaded=g_MainApp.*access(LoadedMember{}),previousActive=g_MainApp.*access(ActiveMember{});
+    CAvatar* previousAvatar=g_pAvatar;
+    StageBinding(CAvatar& avatar,StageFixture& stage){g_pAvatar=&avatar;g_MainApp.*access(StageMember{})=&stage;g_MainApp.*access(CreatedMember{})=TRUE;g_MainApp.*access(LoadedMember{})=TRUE;g_MainApp.*access(ActiveMember{})=FALSE;}
+    ~StageBinding(){g_pAvatar=previousAvatar;g_MainApp.*access(StageMember{})=previousStage;g_MainApp.*access(StageIdMember{})=previousId;g_MainApp.*access(CreatedMember{})=previousCreated;g_MainApp.*access(LoadedMember{})=previousLoaded;g_MainApp.*access(ActiveMember{})=previousActive;}
+};
+static int avatarStageChecks(CNetworkMgr& network,_NET_BUFFER& send){
+    CAvatar avatar;REQUIRE(avatar.GetClientStage455()==0&&avatar.GetSkipTutorial455()==0);
+    StageFixture stage;StageBinding binding(avatar,stage);
+    for(BYTE value:{BYTE(0),BYTE(1),BYTE(2),BYTE(3),BYTE(127),BYTE(255)}){
+        avatar.SetClientStage455(value);REQUIRE(avatar.GetClientStage455()==value&&avatar.IsClientStage455(value));
+        for(DWORD skip:{0u,1u,0xffffffffu}){avatar.SetSkipTutorial455(skip);REQUIRE(avatar.GetSkipTutorial455()==skip);
+            REQUIRE(avatar.SelectClientStage455(2)==(skip?3:2)&&avatar.SelectClientStage455(3)==3);
+            REQUIRE(bool(avatar.HandlesTutorialLocally455())==(value==2&&!skip));
+            REQUIRE(RF455_IsTutorialAvatarStage()==(value==2));}
+    }
+    avatar.SetClientStage455(255);stage.succeed=false;g_MainApp.*access(StageIdMember{})=2;
+    REQUIRE(!g_MainApp.GameMainLoop()&&stage.creates==1&&stage.loops==0&&avatar.GetClientStage455()==255);
+    stage.succeed=true;REQUIRE(g_MainApp.GameMainLoop()&&stage.creates==2&&stage.loops==1&&avatar.GetClientStage455()==3);
+    avatar.SetClientStage455(255);REQUIRE(g_MainApp.GameMainLoop()&&stage.creates==2&&stage.loops==2&&avatar.GetClientStage455()==255);
+    for(BYTE id:{BYTE(0),BYTE(1)}){stage.reset();stage.succeed=true;g_MainApp.*access(StageIdMember{})=id;REQUIRE(g_MainApp.GameMainLoop()&&avatar.GetClientStage455()==id);}
+    network.SetID("fixture-id");network.SetPassword("fixture-password");
+    for(DWORD skip:{0u,1u,0xffffffffu}){avatar.SetSkipTutorial455(skip);
+        for(BYTE id:{BYTE(1),BYTE(2),BYTE(3)}){avatar.SetClientStage455(id);
+            REQUIRE(network.AccountMsg_LoginAccountRequest_cllo());
+            const auto sent=take(send);if(id==2&&!skip)REQUIRE(sent.empty());else REQUIRE(sent==loginOracle("fixture-id","fixture-password",nullptr,network.m_account455.delta,network.m_account455.mask,network.m_account455.serverType,id==2));network.ReceiveResponseMsg();}
+    }
+    avatar.SetClientStage455(2);avatar.SetSkipTutorial455(0);auto& codec=network.m_Process[0].m_codec455;
+    codec.enabled=false;BYTE type[2]={1,17},payload=0x5a;REQUIRE(network.SendNetMessage(0,type,&payload,1)&&take(send)==std::vector<BYTE>({5,0,1,17,0x5a})&&!codec.enabled);
+    type[0]=21;type[1]=3;codec.enabled=true;REQUIRE(network.SendNetMessage(0,type,nullptr,0)&&take(send).empty()&&codec.enabled);
+    type[0]=4;type[1]=31;REQUIRE(!network.SendNetMessage(0,type,&payload,1)&&take(send).empty()&&codec.enabled);
+    return 0;
 }
 int main(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
@@ -107,7 +158,8 @@ int main(){
     (network.*access(Active{}))[0]=2;network.m_account455.zoneRequestMode=-1;network.SendRequestMsg();REQUIRE(network.IsSendRequestMsg()&&!_IsOpenedDialogBox(nullptr,0xf100));network.ReceiveResponseMsg();
     network.m_account455.zoneRequestMode=4;network.SendRequestMsg();REQUIRE(_IsOpenedDialogBox(nullptr,0xf100));network.m_account455.zoneRequestMode=-1;network.ReceiveResponseMsg();REQUIRE(!network.IsSendRequestMsg()&&_IsOpenedDialogBox(nullptr,0xf100));
     network.m_account455.zoneRequestMode=3;network.ReceiveResponseMsg();REQUIRE(!_IsOpenedDialogBox(nullptr,0xf100));(network.*access(Active{}))[0]=0;
+    REQUIRE(avatarStageChecks(network,send)==0);
     process.*access(SendBuffer{})=nullptr;process.*access(ReceiveBuffer{})=nullptr;process.*access(Owner{})=nullptr;process.m_NetSocket.GetSocket(0)->m_bAccept=false;
     REQUIRE((g_MainApp.*access(Unload{}))());g_pUiSpriteMgr=nullptr;g_pUiScreen=nullptr;R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
-    FILE* out=std::fopen("result.json","wb");REQUIRE(out);std::fputs("{\"status\":\"PASS\",\"actual_gate_accept_request\":true,\"actual_fragment_wrap_seed_dispatch\":true,\"actual_request_dialog_open_close\":true,\"actual_account_send_receive\":true,\"login_bytes\":342,\"world_stride\":72,\"world_capacity\":300,\"bounded_world_reload\":true,\"maximum_valid_signed_count\":127,\"ticket_profile_packet\":true,\"mode2_packer_branch\":true,\"authentication_performed\":false}\n",out);std::fclose(out);return 0;
+    FILE* out=std::fopen("result.json","wb");REQUIRE(out);std::fputs("{\"status\":\"PASS\",\"actual_gate_accept_request\":true,\"actual_fragment_wrap_seed_dispatch\":true,\"actual_request_dialog_open_close\":true,\"actual_account_send_receive\":true,\"login_bytes\":342,\"world_stride\":72,\"world_capacity\":300,\"bounded_world_reload\":true,\"maximum_valid_signed_count\":127,\"ticket_profile_packet\":true,\"mode2_packer_branch\":true,\"actual_Avatar_stage_skip\":true,\"actual_MainApp_Create_gate\":true,\"legacy_main2_maps_to455_main3\":true,\"actual_login_Tutorial_transform\":true,\"full_fourstage_factory\":false,\"authentication_performed\":false}\n",out);std::fclose(out);return 0;
 }

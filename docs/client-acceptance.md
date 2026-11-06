@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+073: ordinary CAvatar stage/skip иMainApp Createfailure gate перенесены,
+login342 учитывает stage2,SendNetMessage использует реальныеstage/skip.
+Knownignored и1/17transport приняты вограниченномдомене;остальныеlocalhandlers
+явноотклоняются инеприняты. Полнаяfactoryостаётсяlegacy3/modulo. Window/board,
+22GPU hashes иfinalPE/Create1passed. Correction:45FBD0 — Screen singleton,
+а неуказательэтапа. ПолныеTutorial/world/handlers/Avatar иM6F/M7/M9OPEN.
+[Доказательства](../research/client455-avatar-stage.md).
+
 Участок072: source CGUIBriefingWindow/provider,outline/portrait/pages/keys и
 реальныйscreen capture перенесены. CTutorialBoardprobe больше неиспользует
 rich Viewfixture. Ko/Ru3pages,realmousequeue,22viewedGPUframes,affectedGUI и

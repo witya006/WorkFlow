@@ -23,6 +23,32 @@
 
 ## Последний проверенный результат
 
+Участок073: CAvatar получил source stageBYTE/skipDWORD default0. Targetfields
+20165/20168;set/get безнормализации,requested2->3ifskip. Real predicate вcavatar.obj
+используетсяaccount342. MainApp GameMainLoop теперьвозвращает0приCreatefailure;
+послеуспехапишетAvatarstage. Factory покаlegacy3/modulo:bridgelegacyMain2->455
+Main3 обязателен,удалитьсовместноsfourstage. Stage2login skipsmask regardlessskip;
+SendNetMessage localbranch stage2+skip0 теперьactual:knownignoredincl21TRUE/noRing,
+1/17directtransport сохраняетcodec. Handler4:1/19/31,all5,7:2/5/9/11/13,
+13:2/21/26,17:4 покаEXPLICITFALSE/log,НЕaccepted. Group5unknownможетfeedback,
+необобщатьignored. Реальныйheartbeatbyteuninitializedещёнепридуман.
+Correction072:45FBD0/C0BD64 isSCREENsingleton,notcurrentstage.636C80calledfrom
+62FB40Screenctor,4F5E40readsHWND340. SourcePostUI LPARAMguard implemented/nulltested.
+34ranges/2vtable64/15fullasm equalpins;IDAb3b8653dsavedclosed. Raw*073вartifacts/
+client455-progress. ConfiguredIDAprobe66tools/list10/decompile/closePASSoutside
+sandbox;insideworkerexit2. Nativeconnectionworked,noinstalls.
+ActualAvatar+MainApp+accountinmemorychecksPASS;stageisvirtualfixture,notTutorial.
+KoRuwindow/boardPASS,22GPUhashesequalreviewed687b88c explicitlyreused;othersGUI
+historicalunchanged. PE3d1f8c323584e2a21a3e9c8b284d355f898ffcb5528f942385b333b682148970,
+entry150550/2042880bytes/182client20kernel32facade/0unresolved/exactCreate1.
+PrepC250DB70…idempotent.40080201unknown.M6/M6F/M7/M9OPEN,newgatePARTIAL.
+FullTutorialmethods5586D0/558AE0/558B80/5590B0/5594D0/559670/559750/559810/
+5598C0 read/saved;actualclassnotcreated. Next074: realworldowner/ILevel/BSP39
+forrace-selectedbellato/cora/accretia maps +cameraintro,thenlocalhandlers/real
+Avatar/world/frame/input/feedbackhost/board47QBI/fourstage jointmigration.
+6realBSP/CAMfilesavailable/pinned;BSP39,CAM1.2. No server changes. Allpriorgapsstay.
+Details research/client455-avatar-stage.md.
+
 Участок072: actual source CGUIBriefingWindow/RF455TutorialBriefingWindow готов
 для real stage owner. Pages BYTE/80ms/firstdelay250/continuefinish-next-close,
 ND445/1059/106,6lineautosize,caps462/611,outline,portrait134/128,keyframe140,

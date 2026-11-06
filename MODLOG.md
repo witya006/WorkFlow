@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Avatar-stage073. ActualAvatar stage/skip,MainApp Create failure gate,
+login stage2 and localTutorial route wired. Knownignored/1-17transport accepted;
+missinglocalhandlers explicitlyfail,fullfactory/world/Tutorial stillOPEN.
+45FBD0 corrected toSCREENsingleton,PostUIguardimplemented/tested.34ranges/
+2vtables/15asm equalpins,IDAb3b8653dsavedclosed. NewPE3d1f8c32…/entry150550,
+182/20/32TU/Create1;actualaccount/window/boardPASS,22frames equalreviewed072.
+Next074 realworld/BSP39/Tutorialintro andactualhandlers/Avatar/fourstage.M9OPEN.
+[Evidence](research/client455-avatar-stage.md).
+
 2026-11-07 — Briefing-window072. Source window/provider/pages/buttons/portraits/
 keys and actual Screen capture restored.32ranges/vtable212 equalpins,
 19listedfullasm+2captureasm;IDA18f99dcdsavedclosed. CTutorialBoardprobe now uses

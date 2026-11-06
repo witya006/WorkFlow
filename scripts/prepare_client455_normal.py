@@ -224,6 +224,11 @@ def main():
                 if raw.count(anchor)!=1:raise ValueError('Screen storage boundary changed')
                 raw=raw.replace(anchor,anchor+b'\r\n\tCGUIWindow* m_capture455=nullptr;')
                 changes.append('455screen capture pointer:validate main-list membership at assignment only;shown capture routes input and messages')
+            if relative=='userinterface/guicontroller/guiwindow.cpp':
+                signature=b'CGUIWindow::PostUIMessage( UINT pi_uMsg, LPARAM pi_lParam )'
+                first,last=section(raw,signature,signature)
+                raw=raw[:first]+signature+b'\r\n{auto* screen=CGUIScreen::GetSingletonPtr();if(!screen)return FALSE;return PostMessage(screen->GetHWND(),pi_uMsg,m_dwID,pi_lParam);}\r\n'+raw[last:]
+                changes.append('455PostUIMessage checks Screen singleton,not current game stage;actual target45FBD0/65EFB0')
             if relative=='userinterface/guicontroller/guiscreen.cpp':
                 first,last=section(raw,b'CGUIScreen::InputProc(',b'CGUIScreen::InputProc(');body=raw[first:last]
                 anchor=b'if( g_nLockDlgBoxCount > 0 &&'
@@ -291,6 +296,19 @@ def main():
                 if count!=1:raise ValueError('Modal SetMsg declaration changed')
                 raw=raw[:first]+definition+raw[last:]
                 changes.append('typed455modal Escape permission/default reset for pooled windows')
+            if relative=='character/avatar/cavatar.h':
+                raw=b'#include "client455_avatar_stage.h"\r\n'+raw
+                anchor=b'CAvatar();'
+                if raw.count(anchor)!=2:raise ValueError('Avatar constructor boundary changed')
+                api=(b'void SetClientStage455(BYTE value){m_stage455.current=value;}\r\n\tBYTE GetClientStage455()const{return m_stage455.current;}\r\n\tBOOL IsClientStage455(BYTE value)const{return m_stage455.is(value);}\r\n\tvoid SetSkipTutorial455(DWORD value){m_stage455.skipTutorial=value;}\r\n\tDWORD GetSkipTutorial455()const{return m_stage455.skipTutorial;}\r\n\tBYTE SelectClientStage455(BYTE value)const{return m_stage455.select(value);}\r\n\tBOOL HandlesTutorialLocally455()const{return m_stage455.handlesTutorialLocally();}\r\n\t')
+                raw=raw.replace(anchor,api+anchor,1)
+                anchor=b'QUEST_INFO *\t\t\t\tm_pTutorialInfo;'
+                if raw.count(anchor)!=1:raise ValueError('Avatar Tutorial storage boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tRF455AvatarStage m_stage455;')
+                changes.append('455Avatar stageBYTE/skipDWORD initialized0,copyable source state;explicit455IDs separate from legacy3stage factory')
+            if relative=='character/avatar/cavatar.cpp':
+                raw+=b'\r\n'+(native/'client455_avatar_stage.inc').read_bytes()
+                changes.append('real Avatar global supplies455Tutorial-stage login packing predicate')
             if relative=='gameprogress/cgameprogress.h':
                 raw,count=re.subn(rb'(BOOL\s+m_bIsLoadedData\s*;)',rb'\1\r\n\tDWORD m_nextStage455=0xffffffff; // Owned initial safety domain;target Init retains this field.',raw)
                 if count!=1:raise ValueError('Progress storage boundary changed')
@@ -327,6 +345,12 @@ def main():
                 raw=raw[:start]+body+raw[end:]
                 changes.append('confirmed455 unload early return before level creation;full ILevel ownership port remains open')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='mainapp.cpp':
+                first,last=section(raw,b'CMainApp::GameMainLoop(',b'CMainApp::GameMainLoop(');body=raw[first:last]
+                replacement=(b'if(!m_pGameProgress->IsCreated()){\r\n\t\t\tif(!m_pGameProgress->Create())return FALSE;\r\n\t\t\tif(_GetAvatar())_GetAvatar()->SetClientStage455(RF455_FromLegacyStage(m_byGameProgressID));\r\n\t\t}')
+                body,count=re.subn(rb'if\( !m_pGameProgress->IsCreated\(\) \)\s+m_pGameProgress->Create\(\);',lambda _:replacement,body)
+                if count!=1:raise ValueError('MainApp stage Create boundary changed')
+                raw=raw[:first]+body+raw[last:]
+                raw=b'#include "client455_avatar_stage.h"\r\n'+raw
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'
@@ -360,7 +384,7 @@ def main():
                 raw=raw.replace(b'AccountMsg_LoginAccountRequest_cllo( void )',b'AccountMsg_LoginAccountRequest_cllo( const char* ticket=nullptr )')
                 anchor=b'\tCNetworkMgr();'
                 if raw.count(anchor)!=1:raise ValueError('Account public declaration boundary changed')
-                raw=raw.replace(anchor,b'\tRF455AccountHandshake m_account455;\r\n\tBOOL AccountMsg_CryptoSeedRequest455();\r\n\tbool DispatchAccount455(BYTE,char*,std::size_t);\r\n'+anchor)
+                raw=raw.replace(anchor,b'\tRF455AccountHandshake m_account455;\r\n\tBOOL DispatchTutorial455(DWORD,BYTE*,void*,int);\r\n\tBOOL AccountMsg_CryptoSeedRequest455();\r\n\tbool DispatchAccount455(BYTE,char*,std::size_t);\r\n'+anchor)
                 for name,size in [(b'm_pID',51),(b'm_pPassword',33)]:
                     raw,count=re.subn(rb'\b'+name+rb'\[32\]',name+b'['+str(size).encode()+b']',raw)
                     if count!=1:raise ValueError('Normal network credential storage changed')
@@ -409,9 +433,11 @@ def main():
                 if body.count(b'return TRUE;')!=1:raise ValueError('Network Create return changed')
                 body=body.replace(b'return TRUE;',b'return transportCreated;');raw=raw[:start]+body+raw[end:]
                 signature=b'CNetworkMgr::SendNetMessage(';start,end=section(raw,signature,signature);body=raw[start:end];at=body.index(b'{')+1
-                body=body[:at]+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
+                body=body[:at]+nl+b'\tif(_GetAvatar()&&_GetAvatar()->HandlesTutorialLocally455())return DispatchTutorial455(pi_dwClientIndex,pi_pType,pi_pMsg,pi_nSize);'+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
+                raw=b'#include "client455_avatar_stage.h"\r\n'+raw+b'\r\n'+(native/'client455_tutorial_dispatch.inc').read_bytes()
+                changes.append('455actual Avatar stage2+skip0 gates localTutorial route;knownignored packets swallowed,1/17directtransport,missing localhandlers explicitly fail')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr_masterservermsg.cpp':
-                raw=b'#include "client455_account.h"\r\n#include "client455_nation_paths.h"\r\n'+raw
+                raw=b'#include "client455_account.h"\r\n#include "client455_avatar_stage.h"\r\n#include "client455_nation_paths.h"\r\n'+raw
                 bridge=(native/'client455_account_bridge.inc').read_bytes()
                 for method in [b'JoinAccountRequest_cllo',b'JoinAccountResult_locl',b'LoginAccountRequest_cllo',b'LoginAccountResult_locl',b'WorldListRequest_cllo',b'WorldListResult_locl',b'SelectWorldRequest_cllo',b'SelectWorldResult_locl',b'PushCloseRequest_cllo',b'PushCloseResult_locl']:
                     signature=b'CNetworkMgr::AccountMsg_'+method+b'('
@@ -541,7 +567,7 @@ def main():
     window_source=native/'client455_briefing_window.cpp'
     window_facade=root/'generated'/window_source.name
     save(window_facade,window_source.read_bytes(),window_source);facade_units.append(window_facade)
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
+    for name in ['client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -574,6 +600,7 @@ def main():
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp','client455_gui_text_typing_board.h','client455_gui_text_typing_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_briefing_controls.h','client455_briefing_controls.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_briefing_window.h','client455_briefing_window.cpp','client455_screen_message.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_avatar_stage.h','client455_avatar_stage.cpp','client455_avatar_stage.inc','client455_tutorial_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

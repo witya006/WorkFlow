@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+073: ordinary Avatar stage/skip,MainApp Create gate,login иlocalTutorial routing
+перенесены. Knownignored/1-17transport проверены;полныеlocalhandlers ещёOPEN с
+явнымотказом. NewPE/Create1 иwindow/boardpassed;22кадра равныreviewed072.
+Factorylegacy3/modulo остаётся. Далее074 — настоящийworld/BSP39/Tutorialcamera,
+затемполнаяинтеграцияAvatar/handlers/QBI/fourstage. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-avatar-stage.md).
+
+Предыдущий участок:
+
 Участок072: исходное CGUIBriefingWindow инастоящий screen capture готовы,
 CTutorialBoard probe использует actual rich/key provider. Ko/Ru3pages/22GPU,
 real mouse queue,portrait timers/cells иexactnewPE/Create1 прошли. Обычный
@@ -497,9 +506,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/073: связать настоящие окно/панель обучения и47 QBI processors с Avatar/
-   world/frame/input/feedback/local handlers;подключить Tutorial ичетыре обычных
-   этапа клиента. Source briefing072 проверен;его production instance ещёнет.
+1. M6/074: настоящий world owner/ILevel/BSP39 иTutorial cameraintro,затем
+   localhandlers/Avatar/world/frame/input/feedback/board47QBI иfourstagefactory.
+   Stage/skip/source routing073 перенесены;сам Tutorial иполныймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать
    screen/window lifecycle,capture,currentstage guard,device-reset/resources,
    otherlayers/IME/basevirtualsize/wrappers,не объявляя весьGUI соответствующим455.

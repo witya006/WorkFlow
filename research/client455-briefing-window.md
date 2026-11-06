@@ -1,5 +1,9 @@
 # Окно брифинга и экранный захват ввода — участок072
 
+Уточнение073:guard45FBD0 оказался Screen singleton,а неуказателемэтапа.
+Проверка перенесена вобычныйPostUIMessage. Остальныеграницы072 остаются.
+[Текущее состояние](client455-avatar-stage.md).
+
 Подтверждён исходный компонент CGUIBriefingWindow и его использование CTutorialBoard
 в полной объектной сборке. Настоящий игровой этап Tutorial, Avatar и мир ещё не
 подключены. M6/M6F/M7/M9 открыты; запуск оригинального EXE не проводился.
@@ -93,7 +97,8 @@ fragments,key widget,capture,closeBlocked,показ/скрытие и рабо�
 затем четыре обычных этапа клиента,вход и переход в мир. Не регистрировать
 Tutorial window в login stage для искусственного удержания кода.
 
-У окна ещё открыты current-stage event guard45FBD0,полный base window lifecycle/
+На момент072 проверка Screen singleton45FBD0 ещё не была перенесена;073 её
+закрыл. У окна ещё открыты полный base window lifecycle/
 input/sound/docking,device-loss/reset и владение ресурсами21/31..33 в обычном
 sprite manager,глобальная virtualSetSize,пиксельная приёмка против455,unsafe/OOM/
 overflow/failure domains. Старые AnimatedImage callers,остальной GUI/IME/layers,

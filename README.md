@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — briefing-window072: восстановлено исходное окно брифинга
+Последний участок M6 — avatar-stage073: состояние этапа связано с настоящим
+Avatar,исправлена проверка Create ивключены подтверждённые ветки login/local
+Tutorial routing. Недостающие обработчики дают явный отказ. Окно/панель и новая
+PE/Create1 проверены;полные Tutorial/world/fourstage ещё открыты. Далее074.
+[Доказательства](research/client455-avatar-stage.md).
+
+Предыдущий участок M6 — briefing-window072: восстановлено исходное окно брифинга
 со страницами,кнопками,портретами,клавишами и настоящим screen capture.
 CTutorialBoard probe использует его вместо View fixture. Ko/Ru/22GPU кадра,
 затронутый GUI и точная новая PE/Create1 прошли проверки. Настоящие Avatar/world/

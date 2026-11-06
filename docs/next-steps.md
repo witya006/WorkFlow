@@ -7,6 +7,21 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+073: состояние этапа Avatar,Create failure gate,login bypass иlocal Tutorial
+route связаны с обычными методами. Source/localhandlers остаются неполными:
+knownignored/1-17 transport работают,остальные handlers явноотклоняются.
+Окно/панель иfinalPE/Create1 проверены. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-avatar-stage.md).
+
+074: восстановить настоящий world owner/ILevel/BSP39 для Tutorial иегоcamera
+intro. Реальныеbellato/cora/accretia BSP/CAM доступны иприкрепленык073reference.
+Затем localhandlers/realAvatar/world/frame/input/feedbackhost,board/47QBI и
+fourstagefactory/nextDWORD совместно. Сейчасfactorylegacy3/modulo;bridge2->3
+только длястарогоMainGame. Не переноситьегонабудущийTutorial2.
+Исправление:45FBD0 — Screen singleton,не stageguard;проверкаперенесена073.
+
+Предыдущий участок:
+
 Участок072: исходное окно брифинга иscreen capture восстановлены;CTutorialBoard
 probe использует actual provider. Страницы/typing/buttons/портреты/клавиши,
 настоящий mouse→queue иKo/Ru22GPUкадра проверены. ExactnewPE/Create1 изатронутый

@@ -28,6 +28,8 @@ FIELD(ScreenMember,CGUIScreen,CMainApp,m_cScreen)
 struct Load{using Type=BOOL(CMainApp::*)();friend Type access(Load);};template struct MemberAccess<Load,&CMainApp::LoadData>;
 struct Unload{using Type=BOOL(CMainApp::*)();friend Type access(Unload);};template struct MemberAccess<Unload,&CMainApp::UnloadData>;
 struct QueueCreate{using Type=void(*)(WORD);friend Type access(QueueCreate);};template struct MemberAccess<QueueCreate,&CGUIObject::CreateEventQueue>;
+struct ScreenSingleton{using Type=CGUIScreen**;friend Type access(ScreenSingleton);};template struct MemberAccess<ScreenSingleton,&CSingleton<CGUIScreen>::m_pSingleton>;
+struct PostUi{using Type=BOOL(CGUIWindow::*)(UINT,LPARAM);friend Type access(PostUi);};template struct MemberAccess<PostUi,static_cast<BOOL(CGUIWindow::*)(UINT,LPARAM)>(&CGUIWindow::PostUIMessage)>;
 static DWORD tick=1000;static unsigned randomQueries=0;static float delta=0;
 static DWORD now(){return tick;}static float seconds(){return delta;}static int randomValue(){++randomQueries;return 0;}
 static unsigned capture(CGUIObject& object,const char* filename){
@@ -43,6 +45,8 @@ static void mouseFrame(LONG x,LONG y,DWORD buttons){gMouse.x=x;gMouse.y=y;gMouse
 static void click(CGUIObject& object){const auto x=object.GetPosX()+object.GetSizeX()/2,y=object.GetPosY()+object.GetSizeY()/2;mouseFrame(x,y,0);mouseFrame(x,y,_LEFT_BUTTON_DOWN);mouseFrame(x,y,0);}
 struct Spy:CGUIWindow {unsigned inputs=0,messages=0;BOOL InputProc()override{++inputs;return FALSE;}LRESULT MsgProc(HWND,UINT,WPARAM,LPARAM)override{++messages;return 0;}};
 static void captureChecks(){
+    CGUIWindow posting;auto* singleton=CGUIScreen::GetSingletonPtr();*access(ScreenSingleton{})=nullptr;
+    const BOOL sent=(posting.*access(PostUi{}))(0x1201,LPARAM(1));*access(ScreenSingleton{})=singleton;check(!sent,"PostUIMessage rejects missing Screen singleton without dereference");
     Spy first,second,outsider;first.SetID(100);second.SetID(101);g_pUiScreen->Add(&first);g_pUiScreen->Add(&second);
     g_pUiScreen->SetCapture455(&outsider);check(!g_pUiScreen->GetCapture455(),"capture rejects nonmember");
     g_pUiScreen->SetCapture455(&first);g_pUiScreen->InputProc();check(first.inputs==1&&second.inputs==0&&g_dwGUIInputID==100,"capture input overrides ordinary windows even when child returnsfalse");

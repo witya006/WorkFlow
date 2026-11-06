@@ -1,0 +1,39 @@
+{
+  "status": "PARTIAL",
+  "actual_Avatar_stage_skip": "PASS",
+  "actual_MainApp_Create_gate": "PASS",
+  "stage2_login_and_local_route": "PASS_BOUNDED",
+  "missing_local_handlers": "EXPLICIT_FAILURE_OPEN",
+  "PostUI_Screen_singleton_guard": "PASS",
+  "existingCreate1": "PASS",
+  "window_GPU_frames_equal_reviewed072": 22,
+  "visual_review_reused_from_commit": "687b88c",
+  "sources": {
+    "client455_avatar_stage.h": "0e74e84637333894fff1a047e112f2df1d18528c0aa12f45bed978e04d459cb2",
+    "client455_avatar_stage.cpp": "911220d653f137e8f69a473331fde2f81068193966f3766af40d50a8c08de3f7",
+    "client455_avatar_stage.inc": "b97b1247b213b714b192816435c36eca19d0311b9ce7a538ad46625e1f76b547",
+    "client455_tutorial_dispatch.inc": "8a3d5e7bcc33f151506bc4bef4307754133533f4584dfdd55d07c10de4d1e863",
+    "client455_account_bridge.inc": "d759928ebc9fa82ae6d794feab15699302112b435e8ec3f226454714ad2ccab2"
+  },
+  "script_sha256": "c7739973f253a5fa60028cc82ca5d07c990591ab63aac32e6d133349e2cc023f",
+  "evidence_sha256": {
+    "client455-avatar-stage-reference": "fce5790978d0c436e89cf24c54330e38ceb3e4356a029bacbd3071d773763f38",
+    "client455-account-native": "b0b7764ba2708eaef603e7b12fcda43e3b40b9cd242283e66497385b3be2e6ec",
+    "client455-briefing-window-native": "9a82996e348e611955e9cd9cff4ddd24e7e9ebd3c1302c615a2c39b793c53157",
+    "client455-tutorial-board-native": "8db47a5d673f15813616e7b1357bac4478c0210847cb169e1399e13f4a4a00e2",
+    "client455-ui-startup-native": "34a41c767e3a7feb6a54d909e39b17fd5aad5ba5ea187f6ab89d816c1165d69c",
+    "client455-normal-link": "ee2cd87f77919545a28347ed9a31a2758ff2e7000b913e437935d3356454d9fc"
+  },
+  "gaps": [
+    "Ordinary factory remains legacy3/modulo;source legacyMainGame2 explicitly maps to455AvatarMainGame3 until jointmigration",
+    "CGP_Tutorial Create/Destroy/frame/input/world/camera/board/Avatar/localmessage integration notyetimplemented",
+    "Avatar network skip flag producer,fullcopy/lifecycle/constructor behavior beyondtwofields unverified",
+    "Full localTutorial handlers,realworld/Avatar/GUI/IME/renderer/lifecycle/auth/gameplay/M6F/M9 stillopen"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
