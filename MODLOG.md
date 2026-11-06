@@ -1,5 +1,11 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Camera056. Ordinary CAniCamera nowreads1.2/1.3 typedpayloads and
+preserves confirmed455playback/FOV quirks. Fourreal1.2CAM plus synthetic1.3
+roundtrip/materialize/play/GPUprojection/release pass,naturalexit0. Source033
+preserved;newfullPE existingCreate1. FullTutorial/camera-cut/matrixparity open.
+[Evidence](research/client455-camera.md).
+
 2026-11-06 — Progress-base055. Ordinary CGameProgress now has explicit next
 storage/exit API and recovered Input/exit/Frame/Render/reset order. Actual
 base/Title/particle-owner native cases exit0;fullPE still reaches existing

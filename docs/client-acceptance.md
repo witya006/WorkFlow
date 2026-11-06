@@ -1,5 +1,11 @@
 # Полнота восстановления RF_Online.bin
 
+Участок056: ordinary CAniCamera1.2/1.3/read/play/FOVscale/release принят в
+описанном bounded домене.4real1.2CAM и synthetic1.3 проверены с настоящим
+D3D9 projection. Fullcamera matrix/FOV-updater consumer8D5FF0, fullTutorial/
+Avatar/fourstage/мир ещё не приняты. [Доказательства](../research/client455-camera.md).
+M6/M6F/M7/M9 открыты.
+
 Участок055: принят локальный базовый контракт CGameProgress loop/next/exit,
 Title constructor next1 и общий particlecount reset в текущем владельце.
 Доказательство — actual full-object native methods, не весь stage runtime.

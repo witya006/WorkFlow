@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,camera056: установок нет.12ranges equalbothpins;IDAc449e061
+closed/save. Derivedengine67units/5overlays91bdf0c7...;033unchanged. FullownPE
+56905e68.../entry14ACA0,182client/20kernel/23facade,0unresolved. RealCAM1.2/
+synthetic1.3/play/GPUprojection/release nativeexit0;existingCreate=1. Full
+Tutorial/fourstage/M9 open. [Доказательства](../research/client455-camera.md).
+
 Дополнение06.11,progress-base055: установок нет.18function ranges equalbothpins,
 IDA3bc31778 closed/save=true. Actual CGameProgress/Title/particlecount probe
 naturalexit0. Fullx86PE5302f71a.../entry14A750,182client/20kernel/22facade,

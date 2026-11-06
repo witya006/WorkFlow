@@ -7,7 +7,17 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-Участок055 завершил базовый CGameProgress loop/next/exit и Title next1.
+Участок056: ordinary CAniCamera loader1.2/1.3/play/FOVscale/release восстановлен.
+FullownPE56905e68.../entry14ACA0/0unresolved,existingCreate1. Derivedengine
+91bdf0c7.../67units/5overlays;033 preserved. Далее057 — Tutorial scene/Avatar/
+UI/localhandlers→fullfourstage. FOV updater consumer8D5FF0 и allmatrix math
+domains ещё открыты;не вставлять FOVupdate в Play безtargetоснования.
+[Доказательства](../research/client455-camera.md). M6/M6F/M7/M9 открыты.
+Все22 scoped checkpoints на этой сборке завершились0/PARTIAL; повторять их
+без изменения соответствующих зависимостей не требуется. Большие прежние
+наборы проверок неизменённого кода не запускались.
+
+Предыдущий участок055 завершил базовый CGameProgress loop/next/exit и Title next1.
 FullPE5302f71a.../entry14A750/0unresolved,actualnativeexit0,existingCreate=1.
 Далее056 — Tutorial data/camera/UI/Avatar и локальные handlers, fullfourstage
 factory/явные переходы;field next пока не подключён к normalMainApp, factory

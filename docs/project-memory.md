@@ -23,6 +23,43 @@
 
 ## Последний проверенный результат
 
+Camera056: ordinary CAniCamera::LoadAniCamera/Play now455,basederivedengine
+5thoverlay anicamera.cpp;noheaderABI mix,classsize56/ownedprivate80camera
+record plus typedFOVdocument registry;targetprivatecamera88. Engine033source/
+libraryunchanged. Newparser supports1.2 and1.3FOV20bytekeys,node349 wire100+
+tracks16/20,dummyname/parent64. SourcecurrentHeaderusesparentmacro;newdocfield
+mustbe parentName. Registrycontainer processlifetime toavoidCRTdestructororder;
+Release erasesdoc;originaldestructorstill empty,explicitRelease required.
+Actual4realCAM versions1.2:bellato9,cora9,accretia8,lobby24=50cameras,89nodes,
+42dummies. Synthetic1.3 adds1camera/1node/FOVkeys. Nativefullobjectprobe
+roundtripallbytes/typedmembermaterialization/actualD3Dprojection/FOV*.788/
+reverse/loop/stop/releaseDmallocbalance naturalexit0. Malformed/truncation/
+size_t-to-intx86allocationbounds checked;atomicfailure differsunsafeoriginal.
+Playback4D1DC0:forward>=end/30;flag0restart setsseconds=float(startFrame),
+reverse<=0(notend/30);flag0setsend/30+clockreset,nonzeroflag0;terminalfalse.
+Pause clock0reads exceptlooprestart;normalrestartmay2reads. Asm verified.
+FOVhelper4D1FC0 interpolationatseconds*30/value0*.788,beforefirstselectslast.
+SeparateFOVAPItested,buttargetengineconsumer8D5FF0 notyetported;DON'T insert
+perframeFOVupdateunconditionallyinPlay. LegacyGetAniMatrix/dummy numeric
+domains/cycles remainopen. Fullcamera/Tutorial/fourstage/Avatar notaccepted.
+
+FullownPE56905e68ce0746c5367db5e08cdda8ee948a26196091d11d4777c6c116a697cf,
+x86/base400000/entry14ACA0/2022912bytes,182client/20kernel/23facade,0unresolved.
+Derivedengine91bdf0c7f76b24c353aef8b3195fc48626e01f2040b1a5c1ccf0bf7c1ed7eb01,
+67units/5overlays;baseline033unchanged. ExactownTCP→engine/D3D/Character/
+existingCreate1passed;Russia remainsbeforeConnect.12ranges equalbothpins,
+ownedIDAc449e061 closed/save. Rawignoredartifacts/client455-camera/reference.json
+andplayback-branches.json;research/client455-camera.md;camera-{reference,native,
+checkpoint}.json. Next057 Tutorial scene/Avatar/UI/localhandlers/fourstage;
+M6/M6F/M7/M9 OPEN. No server/inputEXE execution.
+Все22 scoped checkpoints завершились0/PARTIAL на текущей сборке; короткие
+зависимые native probes обновлены, прежние большие unchanged suites не запускались.
+Для отчётов пользователю: техническая основа и отдельные подсистемы восстановлены,
+но сквозной игровой сценарий455 ещё не принят. Полный объём поведения не измерен;
+число assertions, файлов и закрытых подготовительных этапов не переводить в процент.
+
+## Предыдущий перенос — progress-base055
+
 Progress-base055: normal CGameProgress now24bytesx86:vt/fourBOOL/nextDWORD.
 Explicit SetNextStage455/GetNextStage455/RequestStageExit455;Init retainsnext.
 Ownconstructor defaultFFFFFFFF differsfrom targetuninitializeddomain,explicitgap.
@@ -934,7 +971,7 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок056: Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
+1. Участок057: Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,
    затем targetLoginUI/Create/worldtransitions,seed56BEA0/35handlers/countryproviders. У own argv endpoint1 не заполнен;
    не делать remap без target доказательств. Account053/TCP052/AES051 уже интегрированы,
    успех TCP не означает аутентификацию. Дальше реальный loginUI/game tables.

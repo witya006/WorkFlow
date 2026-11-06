@@ -1,7 +1,7 @@
 {
   "scope": "Real client wait/events/TCP and own-thread error dialogs;not authentication/login/gameplay",
   "architecture": "x86",
-  "entry_rva": "0xe0380",
+  "entry_rva": "0xe0890",
   "source": "scripts/native/client455_connection_probe.cpp",
   "source_sha256": "7a08550118a2c98e04d7ca739fd47b4378571f388a96df4df5cd93d3fa77aa4c",
   "script_sha256": "92ea8ccc6ace57c90d16493f7c8a985d7d6a4b6de8e2905fdbe7e4072ae87dbb",
@@ -13,7 +13,7 @@
     "client455_connection_bridge.inc": "57c7b6c3c7abb73ea90802e26de6f244a3ac2592e7abb9fbef988654d63070f4",
     "client455_network_receipt.inc": "e9a8cb171c52c119046702c477ae9a778ad518c78b012debb0d6434b5489d12c"
   },
-  "normal_link_sha256": "484b775d85b876db24722cf6ce40ca23169c6cd5f68f0c7932ec9454f0d53731",
+  "normal_link_sha256": "6958baf5e0d1cc7a0d96a7fc8dc24a8e4a46bfc78e854e3e7ced37ca41a9a5d4",
   "runs": [
     {
       "mode": "positive",
@@ -26,19 +26,19 @@
         "receipt_budget102": true,
         "profile_dword_wrap": true,
         "connected": true,
-        "elapsed_ms": 1026,
-        "wait_iterations": 66,
+        "elapsed_ms": 1016,
+        "wait_iterations": 67,
         "raw_result": 0,
         "timeout": false,
         "raw_error_dialog": true,
         "localized_dialogs": 1,
-        "peer_port": 53898,
+        "peer_port": 57181,
         "russia_endpoint_mismatch": false,
         "authentication_performed": false
       },
       "tcp_fixture": {
         "enabled": true,
-        "loopback_port": 53898,
+        "loopback_port": 57181,
         "accepted_connections": 1,
         "bytes_received": 0,
         "bytes_sent": 0,
@@ -47,15 +47,15 @@
         "thread_stopped": true
       },
       "exe": {
-        "file": "work/m9/85c9971a/connection-positive-001/connection-probe.exe",
-        "sha256": "85c9971a30d60cdb2a93d31e0b8daad9114382017a5e2c83071af25cbeba99cc"
+        "file": "work/m9/f09a2d35/connection-positive-001/connection-probe.exe",
+        "sha256": "f09a2d3528fd14a90c4331462dd4dfbeeb2c0b9c386e285d6637c1c00629683d"
       },
       "output": {
-        "file": "work/m9/85c9971a/connection-positive-001/result.json",
-        "sha256": "673bb624a80b5cd4166a625842277e37cff06c82b7eb5ad35e08e89a80b7800f"
+        "file": "work/m9/f09a2d35/connection-positive-001/result.json",
+        "sha256": "c6592b7b0e7392883f9bda7e6f127a9a4f522a2c1fac534771a615bd841a3dc5"
       },
       "language": {
-        "file": "work/m9/85c9971a/connection-positive-001/DataTable/ko-kr/NDLanguage.edf",
+        "file": "work/m9/f09a2d35/connection-positive-001/DataTable/ko-kr/NDLanguage.edf",
         "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
       }
     },
@@ -70,7 +70,7 @@
         "receipt_budget102": true,
         "profile_dword_wrap": true,
         "connected": false,
-        "elapsed_ms": 2106,
+        "elapsed_ms": 2099,
         "wait_iterations": 2,
         "raw_result": 0,
         "timeout": true,
@@ -91,15 +91,15 @@
         "thread_stopped": true
       },
       "exe": {
-        "file": "work/m9/85c9971a/connection-timeout-001/connection-probe.exe",
-        "sha256": "85c9971a30d60cdb2a93d31e0b8daad9114382017a5e2c83071af25cbeba99cc"
+        "file": "work/m9/f09a2d35/connection-timeout-001/connection-probe.exe",
+        "sha256": "f09a2d3528fd14a90c4331462dd4dfbeeb2c0b9c386e285d6637c1c00629683d"
       },
       "output": {
-        "file": "work/m9/85c9971a/connection-timeout-001/result.json",
-        "sha256": "6a969e34c39c090578113b7697da41f815e842057a4b8b613832c7564e3db87c"
+        "file": "work/m9/f09a2d35/connection-timeout-001/result.json",
+        "sha256": "85e4c2b06c6cadaedf81ecf33a5cc4a39e53670d6211c10af4c7f0e0b1d38b7f"
       },
       "language": {
-        "file": "work/m9/85c9971a/connection-timeout-001/DataTable/ko-kr/NDLanguage.edf",
+        "file": "work/m9/f09a2d35/connection-timeout-001/DataTable/ko-kr/NDLanguage.edf",
         "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
       }
     },
@@ -114,7 +114,7 @@
         "receipt_budget102": true,
         "profile_dword_wrap": true,
         "connected": false,
-        "elapsed_ms": 75,
+        "elapsed_ms": 67,
         "wait_iterations": 2,
         "raw_result": 0,
         "timeout": true,
@@ -135,15 +135,15 @@
         "thread_stopped": true
       },
       "exe": {
-        "file": "work/m9/85c9971a/connection-russia-001/connection-probe.exe",
-        "sha256": "85c9971a30d60cdb2a93d31e0b8daad9114382017a5e2c83071af25cbeba99cc"
+        "file": "work/m9/f09a2d35/connection-russia-001/connection-probe.exe",
+        "sha256": "f09a2d3528fd14a90c4331462dd4dfbeeb2c0b9c386e285d6637c1c00629683d"
       },
       "output": {
-        "file": "work/m9/85c9971a/connection-russia-001/result.json",
-        "sha256": "4811a87c8250bc3f2dd0a017cc448d8581dcc56c02d867aa481a31abe8503f41"
+        "file": "work/m9/f09a2d35/connection-russia-001/result.json",
+        "sha256": "971f89a56e21283c54a3a9dd72cecca9ca274ec2b2a39784d12aad730e1a4ecf"
       },
       "language": {
-        "file": "work/m9/85c9971a/connection-russia-001/DataTable/ru-ru/NDLanguage.edf",
+        "file": "work/m9/f09a2d35/connection-russia-001/DataTable/ru-ru/NDLanguage.edf",
         "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154"
       }
     }

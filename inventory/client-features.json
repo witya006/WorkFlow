@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-CAMERA-056",
+      "status":"partial",
+      "description":"Ordinary CAniCamera1.2/1.3 loader,typed materialization,FOVscale and playback/loop/reverse/stop;explicitrelease",
+      "reference":[{"rva":"0x4d2070","role":"CAMloader"},{"rva":"0x4d1dc0","role":"playback"},{"rva":"0x4d1b00","role":"initialFOVscale"},{"rva":"0x4d1fc0","role":"FOVkeys"},{"rva":"0x4d1890","role":"release"}],
+      "implementation":["scripts/native/client455_camera.h","scripts/native/client455_camera.cpp","scripts/native/client455_camera_load.inc","scripts/native/client455_camera_play.inc","scripts/build_client455_engine_startup.py"],
+      "verification":"4real1.2CAM+synthetic1.3 byte roundtrip;actualordinary51camera/90nodes/42dummies materialize/play/GPUprojection/release;nativeexit0;fullownPE existingCreate1",
+      "evidence":["inventory/client455-camera-reference.json","inventory/client455-camera-native.json","inventory/client455-camera-checkpoint.json","research/client455-camera.md"],
+      "gaps":["FOVupdater consumer8D5FF0,allmatrix/dummy numericdomains/cycles","FullTutorial/fourstage/Avatar/UI/world/gameplay/IME/shutdown","Malformedatomicload differsfrom originalunsafe state/errors;OOM/concurrency notcertified","Registrycontainer lifetime vsoriginalprivate88byte record;ownedAPI56andprivate80consistent","M6F/M7/M9 andrealonlineauthentication"]
+    },
+    {
       "id":"CLIENT455-PROGRESS-BASE-055",
       "status":"partial",
       "description":"Ordinary CGameProgress nextDWORD/exit API and baseInput/exit/Frame/Render/particlecount order;Titleconstructor next1",

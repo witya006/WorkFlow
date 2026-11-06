@@ -1,0 +1,1252 @@
+{
+  "scope": "455camera1.2/1.3wire loading and playback state;not fullTutorial/world/camera matrix parity",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x159670",
+          "bytes": 216,
+          "sha256": "2f622bc119b18b41814fa21a2595711f0b72c65f79b70ca799d67ebb2ec7eebe"
+        },
+        {
+          "rva": "0x1590b0",
+          "bytes": 872,
+          "sha256": "875e43aaa42b5bd49a7bfaab2290428f33c3395e9b2da30da9269396244cbb1e"
+        },
+        {
+          "rva": "0x4d1650",
+          "bytes": 20,
+          "sha256": "d68fdae80b6b2920f8f0b02f53d8848c8fab6a25602ee656a9a2fe99f2174203"
+        },
+        {
+          "rva": "0x4d1890",
+          "bytes": 247,
+          "sha256": "7e10f2fe0923b8371a7521d0e34806f6298eb967a8691fa761d9f34146d103c5"
+        },
+        {
+          "rva": "0x4d1990",
+          "bytes": 142,
+          "sha256": "115e57440dc50ce71e2032206c927fb6b4f0738d1849c475f9fad9b85dd6bfe4"
+        },
+        {
+          "rva": "0x4d1a20",
+          "bytes": 210,
+          "sha256": "250fbaa0c802a0602582c060aa65ce6f59a25a92c94332a35c69f751cab80847"
+        },
+        {
+          "rva": "0x4d1b00",
+          "bytes": 500,
+          "sha256": "8f6f4063869479306fafc4573174e32d7d22d5b250460dbef8fd53e89fa01740"
+        },
+        {
+          "rva": "0x4d1d00",
+          "bytes": 141,
+          "sha256": "3c4b02e1b80294e882684d6d5702795087fd2417a43a8f8cafec3a061856bd5f"
+        },
+        {
+          "rva": "0x4d1dc0",
+          "bytes": 348,
+          "sha256": "5ef45501a95ae204d705cd919eb29a58f4c77f37bd450fa813abe6bc7d6c016f"
+        },
+        {
+          "rva": "0x4d1f20",
+          "bytes": 153,
+          "sha256": "8eb4c4d2813ac24eba328298534bf920b46530db3ce2d359cd1dd4cad2b0a80a"
+        },
+        {
+          "rva": "0x4d1fc0",
+          "bytes": 166,
+          "sha256": "8e3b0ff4add14c8819c2863dbbf9c9c9a18fe9abedc93dd4e647aacef77382aa"
+        },
+        {
+          "rva": "0x4d2070",
+          "bytes": 1207,
+          "sha256": "2e803739cae0330a887fb07f1cc2e6635834f13b8ec780a8b935062febe97889"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x159670",
+          "bytes": 216,
+          "sha256": "2f622bc119b18b41814fa21a2595711f0b72c65f79b70ca799d67ebb2ec7eebe"
+        },
+        {
+          "rva": "0x1590b0",
+          "bytes": 872,
+          "sha256": "875e43aaa42b5bd49a7bfaab2290428f33c3395e9b2da30da9269396244cbb1e"
+        },
+        {
+          "rva": "0x4d1650",
+          "bytes": 20,
+          "sha256": "d68fdae80b6b2920f8f0b02f53d8848c8fab6a25602ee656a9a2fe99f2174203"
+        },
+        {
+          "rva": "0x4d1890",
+          "bytes": 247,
+          "sha256": "7e10f2fe0923b8371a7521d0e34806f6298eb967a8691fa761d9f34146d103c5"
+        },
+        {
+          "rva": "0x4d1990",
+          "bytes": 142,
+          "sha256": "115e57440dc50ce71e2032206c927fb6b4f0738d1849c475f9fad9b85dd6bfe4"
+        },
+        {
+          "rva": "0x4d1a20",
+          "bytes": 210,
+          "sha256": "250fbaa0c802a0602582c060aa65ce6f59a25a92c94332a35c69f751cab80847"
+        },
+        {
+          "rva": "0x4d1b00",
+          "bytes": 500,
+          "sha256": "8f6f4063869479306fafc4573174e32d7d22d5b250460dbef8fd53e89fa01740"
+        },
+        {
+          "rva": "0x4d1d00",
+          "bytes": 141,
+          "sha256": "3c4b02e1b80294e882684d6d5702795087fd2417a43a8f8cafec3a061856bd5f"
+        },
+        {
+          "rva": "0x4d1dc0",
+          "bytes": 348,
+          "sha256": "5ef45501a95ae204d705cd919eb29a58f4c77f37bd450fa813abe6bc7d6c016f"
+        },
+        {
+          "rva": "0x4d1f20",
+          "bytes": 153,
+          "sha256": "8eb4c4d2813ac24eba328298534bf920b46530db3ce2d359cd1dd4cad2b0a80a"
+        },
+        {
+          "rva": "0x4d1fc0",
+          "bytes": 166,
+          "sha256": "8e3b0ff4add14c8819c2863dbbf9c9c9a18fe9abedc93dd4e647aacef77382aa"
+        },
+        {
+          "rva": "0x4d2070",
+          "bytes": 1207,
+          "sha256": "2e803739cae0330a887fb07f1cc2e6635834f13b8ec780a8b935062febe97889"
+        }
+      ]
+    }
+  ],
+  "raw_evidence": {
+    "file": "artifacts/client455-camera/reference.json",
+    "sha256": "cb3ac06d80d84a51dd1a9bcdeb23ef076a4cd3937fbec35d7681cd60038e5954"
+  },
+  "script_sha256": "721711f0a3cc78b7ea90b753c8e6a92244bbb529a5bacee13c48c25f1401ccf2",
+  "inputs": [
+    {
+      "file": "E:\\RFOnlineTrash\\RFOnline\\Map\\bellato\\bellato.cam",
+      "relative": "Map/bellato/bellato.cam",
+      "sha256": "53c5721c43d6c4c9849ca89d0407be66c4cedaf2f6ed208372cda4868cd4dd9b",
+      "bytes": 22340,
+      "layout": {
+        "version": 1.2000000476837158,
+        "camera_count": 9,
+        "start": 0,
+        "end": 2650,
+        "cameras": [
+          {
+            "name": "camera01",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 52,
+                "rotation_keys": 52
+              }
+            ]
+          },
+          {
+            "name": "camera02",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 56,
+                "rotation_keys": 56
+              }
+            ]
+          },
+          {
+            "name": "camera03",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 109,
+                "rotation_keys": 109
+              }
+            ]
+          },
+          {
+            "name": "camera05",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 64,
+                "rotation_keys": 64
+              }
+            ]
+          },
+          {
+            "name": "camera06",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 53,
+                "rotation_keys": 53
+              }
+            ]
+          },
+          {
+            "name": "camera07",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 81,
+                "rotation_keys": 81
+              }
+            ]
+          },
+          {
+            "name": "camera08",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 65,
+                "rotation_keys": 65
+              }
+            ]
+          },
+          {
+            "name": "camera09",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 46,
+                "rotation_keys": 46
+              }
+            ]
+          },
+          {
+            "name": "camera10",
+            "fov": 1.0808000564575195,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 50,
+                "rotation_keys": 50
+              }
+            ]
+          }
+        ],
+        "dummies": [],
+        "trailer_bytes": 0,
+        "roundtrip_equal": true
+      }
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\RFOnline\\Map\\cora\\cora.cam",
+      "relative": "Map/cora/cora.cam",
+      "sha256": "d420d620d97f64aa4fab90482216c7bee585118aebb08fd27e7256ae359ba308",
+      "bytes": 34644,
+      "layout": {
+        "version": 1.2000000476837158,
+        "camera_count": 9,
+        "start": 0,
+        "end": 2400,
+        "cameras": [
+          {
+            "name": "camera01",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 49,
+                "rotation_keys": 49
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera06",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 64,
+                "rotation_keys": 64
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera05",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 57
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera03",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 42
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera02",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 54,
+                "rotation_keys": 0
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera04",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 75,
+                "rotation_keys": 75
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera08",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 45,
+                "rotation_keys": 68
+              },
+              {
+                "position_keys": 10,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera07",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 57,
+                "rotation_keys": 57
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera02_1",
+            "fov": 0.949999988079071,
+            "distance": 414.6250915527344,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 61
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          }
+        ],
+        "dummies": [
+          {
+            "name": "Dummy01",
+            "parent": "",
+            "position_keys": 49,
+            "rotation_keys": 49
+          },
+          {
+            "name": "Dummy06",
+            "parent": "",
+            "position_keys": 64,
+            "rotation_keys": 64
+          },
+          {
+            "name": "Dummy05",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 57
+          },
+          {
+            "name": "Dummy03",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 42
+          },
+          {
+            "name": "Dummy02",
+            "parent": "",
+            "position_keys": 54,
+            "rotation_keys": 0
+          },
+          {
+            "name": "Dummy04",
+            "parent": "",
+            "position_keys": 75,
+            "rotation_keys": 75
+          },
+          {
+            "name": "Dummy08",
+            "parent": "",
+            "position_keys": 45,
+            "rotation_keys": 68
+          },
+          {
+            "name": "Dummy07",
+            "parent": "",
+            "position_keys": 57,
+            "rotation_keys": 57
+          },
+          {
+            "name": "Dummy02_1",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 61
+          }
+        ],
+        "trailer_bytes": 0,
+        "roundtrip_equal": true
+      }
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\RFOnline\\Map\\accretia\\accretia.cam",
+      "relative": "Map/accretia/accretia.cam",
+      "sha256": "ebab01932efa5d74b963a091768c41d487605a3a4bb79155a1c7a00fddee5fb6",
+      "bytes": 53732,
+      "layout": {
+        "version": 1.2000000476837158,
+        "camera_count": 8,
+        "start": 0,
+        "end": 1900,
+        "cameras": [
+          {
+            "name": "camera01",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 165,
+                "rotation_keys": 165
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera02",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 81,
+                "rotation_keys": 81
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera03",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 50,
+                "rotation_keys": 50
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera04",
+            "fov": 0.949999988079071,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 73,
+                "rotation_keys": 73
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera05",
+            "fov": 0.949999988079071,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 45,
+                "rotation_keys": 45
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera06",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 103,
+                "rotation_keys": 103
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera07",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 154,
+                "rotation_keys": 137
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "camera08",
+            "fov": 1.142699956893921,
+            "distance": 160.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 64,
+                "rotation_keys": 0
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          }
+        ],
+        "dummies": [
+          {
+            "name": "Dummy01",
+            "parent": "",
+            "position_keys": 165,
+            "rotation_keys": 165
+          },
+          {
+            "name": "Dummy02",
+            "parent": "",
+            "position_keys": 81,
+            "rotation_keys": 81
+          },
+          {
+            "name": "Dummy03",
+            "parent": "",
+            "position_keys": 50,
+            "rotation_keys": 50
+          },
+          {
+            "name": "Dummy04",
+            "parent": "",
+            "position_keys": 73,
+            "rotation_keys": 73
+          },
+          {
+            "name": "Dummy05",
+            "parent": "",
+            "position_keys": 45,
+            "rotation_keys": 45
+          },
+          {
+            "name": "Dummy06",
+            "parent": "",
+            "position_keys": 103,
+            "rotation_keys": 103
+          },
+          {
+            "name": "Dummy07",
+            "parent": "",
+            "position_keys": 154,
+            "rotation_keys": 137
+          },
+          {
+            "name": "Dummy08",
+            "parent": "",
+            "position_keys": 64,
+            "rotation_keys": 0
+          }
+        ],
+        "trailer_bytes": 0,
+        "roundtrip_equal": true
+      }
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.cam",
+      "relative": "Map/lobby/lobby.cam",
+      "sha256": "756c1d914c895931cb3e4826f71048f16646cd15e32d0fd7491ced7708b4bef0",
+      "bytes": 74592,
+      "layout": {
+        "version": 1.2000000476837158,
+        "camera_count": 24,
+        "start": 0,
+        "end": 1500,
+        "cameras": [
+          {
+            "name": "c_02_03_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 11,
+                "rotation_keys": 11
+              },
+              {
+                "position_keys": 11,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_01_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 11,
+                "rotation_keys": 11
+              },
+              {
+                "position_keys": 11,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_05_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 16,
+                "rotation_keys": 16
+              },
+              {
+                "position_keys": 16,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 6
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_02",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 6
+              },
+              {
+                "position_keys": 6,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_03",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 6
+              },
+              {
+                "position_keys": 6,
+                "rotation_keys": 6
+              }
+            ]
+          },
+          {
+            "name": "c_02_02_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 11,
+                "rotation_keys": 11
+              },
+              {
+                "position_keys": 11,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_01_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 10,
+                "rotation_keys": 10
+              },
+              {
+                "position_keys": 11,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_01_02",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 10,
+                "rotation_keys": 10
+              },
+              {
+                "position_keys": 10,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_01_03",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 16,
+                "rotation_keys": 16
+              },
+              {
+                "position_keys": 16,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_05_02",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 16,
+                "rotation_keys": 16
+              },
+              {
+                "position_keys": 16,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_04_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 21,
+                "rotation_keys": 21
+              },
+              {
+                "position_keys": 21,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_04_02",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 18,
+                "rotation_keys": 18
+              },
+              {
+                "position_keys": 18,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_05",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_04_03",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 18,
+                "rotation_keys": 18
+              },
+              {
+                "position_keys": 18,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_03_in",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 6,
+                "rotation_keys": 0
+              },
+              {
+                "position_keys": 6,
+                "rotation_keys": 6
+              }
+            ]
+          },
+          {
+            "name": "c_02_01_in",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 6,
+                "rotation_keys": 0
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_02_02_in",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 6,
+                "rotation_keys": 0
+              },
+              {
+                "position_keys": 6,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_03_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 16,
+                "rotation_keys": 10
+              },
+              {
+                "position_keys": 16,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_06_01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 4,
+                "rotation_keys": 4
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_ex01",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 301,
+                "rotation_keys": 301
+              },
+              {
+                "position_keys": 25,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_ex02",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 301,
+                "rotation_keys": 301
+              },
+              {
+                "position_keys": 0,
+                "rotation_keys": 0
+              }
+            ]
+          },
+          {
+            "name": "c_05_03",
+            "fov": 0.949999988079071,
+            "distance": 1.0,
+            "fov_keys": 0,
+            "hierarchy": [
+              {
+                "position_keys": 16,
+                "rotation_keys": 16
+              },
+              {
+                "position_keys": 16,
+                "rotation_keys": 0
+              }
+            ]
+          }
+        ],
+        "dummies": [
+          {
+            "name": "Group01",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 0
+          },
+          {
+            "name": "Group02",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 0
+          },
+          {
+            "name": "Group03",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 0
+          },
+          {
+            "name": "D_02_03_01",
+            "parent": "",
+            "position_keys": 11,
+            "rotation_keys": 11
+          },
+          {
+            "name": "D_01_01",
+            "parent": "",
+            "position_keys": 11,
+            "rotation_keys": 11
+          },
+          {
+            "name": "D_05_01",
+            "parent": "",
+            "position_keys": 16,
+            "rotation_keys": 16
+          },
+          {
+            "name": "D_02_01",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 6
+          },
+          {
+            "name": "D_02_02",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 6
+          },
+          {
+            "name": "D_02_03",
+            "parent": "",
+            "position_keys": 0,
+            "rotation_keys": 6
+          },
+          {
+            "name": "D_02_02_01",
+            "parent": "",
+            "position_keys": 11,
+            "rotation_keys": 11
+          },
+          {
+            "name": "D_02_01_01",
+            "parent": "",
+            "position_keys": 10,
+            "rotation_keys": 10
+          },
+          {
+            "name": "D_01_02",
+            "parent": "",
+            "position_keys": 10,
+            "rotation_keys": 10
+          },
+          {
+            "name": "D_01_03",
+            "parent": "",
+            "position_keys": 16,
+            "rotation_keys": 16
+          },
+          {
+            "name": "D_05_02",
+            "parent": "",
+            "position_keys": 16,
+            "rotation_keys": 16
+          },
+          {
+            "name": "D_04_01",
+            "parent": "",
+            "position_keys": 21,
+            "rotation_keys": 21
+          },
+          {
+            "name": "D_04_02",
+            "parent": "",
+            "position_keys": 18,
+            "rotation_keys": 18
+          },
+          {
+            "name": "D_04_03",
+            "parent": "",
+            "position_keys": 18,
+            "rotation_keys": 18
+          },
+          {
+            "name": "D_02_03_in",
+            "parent": "",
+            "position_keys": 6,
+            "rotation_keys": 0
+          },
+          {
+            "name": "D_02_01_in",
+            "parent": "",
+            "position_keys": 6,
+            "rotation_keys": 0
+          },
+          {
+            "name": "D_02_02_in",
+            "parent": "",
+            "position_keys": 6,
+            "rotation_keys": 0
+          },
+          {
+            "name": "D_03_01",
+            "parent": "",
+            "position_keys": 16,
+            "rotation_keys": 10
+          },
+          {
+            "name": "D_06_01",
+            "parent": "",
+            "position_keys": 4,
+            "rotation_keys": 4
+          },
+          {
+            "name": "D_ex01",
+            "parent": "",
+            "position_keys": 301,
+            "rotation_keys": 301
+          },
+          {
+            "name": "D_ex02",
+            "parent": "",
+            "position_keys": 301,
+            "rotation_keys": 301
+          },
+          {
+            "name": "D_05_03",
+            "parent": "",
+            "position_keys": 16,
+            "rotation_keys": 16
+          }
+        ],
+        "trailer_bytes": 0,
+        "roundtrip_equal": true
+      }
+    }
+  ],
+  "facts": [
+    "Camera owner56bytes;target privatecamera records88=Name64/hierarchyCount/fov/distance/FovCount/FovPtr/NodePtr",
+    "Version>=1.2;FOV count/20bytekeys presentwhen version>=float1.3;node349serializedmatrix64/pos12/quat16/counts/tracks16and20",
+    "Dummy header name64/parent64 followedbysame node payload;zeroCamera file doesnotreadotherheaders;trailerignoredbytarget",
+    "Initial matrix FOV is storedFov*float0.788;separateFOV updater interpolates keyvalue0 at nowSeconds*30;beforefirst/notbracketed selects lastkey",
+    "Play:forward terminal>=end/30;flag0 resets time but uses float(startFrame) seconds;reverse terminal<=0 ratherthan end/30;allterminal cases returnfalse",
+    "Paused play doesnotreadclock unless flag0 terminal resets it;clockmaybereadtwice onordinary loop restart",
+    "Tutorial scene/race usesbellato/cora/accretia BSPandCAM;normalLogin useslobbyCAM"
+  ],
+  "gaps": [
+    "FullTutorial/4stage/Avatar/world/UI/camera-cut sequencing remainopen",
+    "Source camera private80bytelegacy record retainedasownedtype;additional FOVdocument registry stores455metadata without mixedheaders/raw original overlays",
+    "Separate FOV API is source andtested;actualengine camera consumer8D5FF0 updater callsite stillrequiresport",
+    "Legacyengine matrix interpolation/matrix numericdomains anddummy hierarchy unsafe cycles notfullycertified",
+    "Malformedload nowatomic/preservesold owner;target mayreleasefirst/overread/partiallymutate;OOM/concurrency/CRTerror domains notcertified",
+    "Target destructor empty;explicitRelease required;smallregistrycontainer deliberatelysurvivesCRT teardown;documents erasedonRelease",
+    "Whole455runtime/authentication/M6F/M9 remainopen"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN",
+  "actual_selected_files_version": "1.2;1.3 is verified on a syntheticfixture;do notclaim real1.3coverage",
+  "playback_asm": {
+    "file": "artifacts/client455-camera/playback-branches.json",
+    "sha256": "a18a33103e6282302c96fff5e84f7d8722f5b519cf4043ca4a86bd98cf7c28c7"
+  }
+}

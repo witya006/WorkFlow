@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний перенос M6 — progress-base055: восстановлены обычный базовый цикл,
+Последний перенос M6 — camera056: обычный CAniCamera загружает1.2/1.3,
+восстановлены FOV scale и playback boundaries455. Реальные камеры обучения/
+входа, GPU projection и release проверены; новая PE сохранила existingCreate=1.
+Полный Tutorial/fourstage/мир ещё открыты. [Доказательства](research/client455-camera.md).
+
+Предыдущий перенос M6 — progress-base055: восстановлены обычный базовый цикл,
 поле next-stage и Title next1. Реальные методы/счётчики проверены; полная
 сборка и existingCreate=1 сохранены. Фабрика4stage/Tutorial ещё открыта.
 [Доказательства](research/client455-progress-base.md).

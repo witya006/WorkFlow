@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "879f9b754d229f3570913d9256327e3ddf0231881efc793e68480d1067814cec",
+  "library_sha256": "91bdf0c7f76b24c353aef8b3195fc48626e01f2040b1a5c1ccf0bf7c1ed7eb01",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -303,6 +303,12 @@
       "sha256": "3f84eb01516cec35c8322d9926cd2517c321ff6860ea0e0fe58a4e5f675bae61",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3dtex.cpp",
       "original_sha256": "7aad342e1952ae32641ae413ba654f2867847871aada1e4b978309205bbf90dd"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/anicamera.cpp",
+      "sha256": "896192262fcdaa44bd33f12f206b9967fe23bd1a00e806bccf6d8f5252ac7404",
+      "original": "work/client455-port/source/R3Engine/2ndclass/anicamera.cpp",
+      "original_sha256": "b8370cabc324e8c88502e0ab74552ed9483295e612c30d9c93f6fb49e3075507"
     }
   ],
   "baseline_library": {
@@ -311,13 +317,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "28f951952b469b28e67634b593bde731308e1390ffa99c0549d702002b78a303"
+    "sha256": "b6834a78e733788e2eab5275fa055caca936e19ac80d5b65f6fdec521992f520"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "18974d6453ea549441db4f83f56c1204350d5318ffd1741fda1e92cd34899447"
+    "sha256": "b329e05d8b6827246dd8afe5849afdfe81170307a669e69faf5ec08df96e2106"
   },
-  "script_sha256": "48a5f5d4e3ba4543b6b783d06883b62b323f4c0d5ee46cf3ba1bc44ef4e6f991",
+  "script_sha256": "4eeaa5e24022e27af8a59c083d3342a663f17e616bb881411aee2c0b19073bca",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -328,5 +334,10 @@
   },
   "sprite_texture": {
     "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"
+  },
+  "camera": {
+    "client455_camera.h": "ddfd150a5c90dd29a9d6dc2ad9a4f584f05480240467cd4a32289124571a1b8e",
+    "client455_camera_load.inc": "f9be72f2944adaa05831f55d7792b653b009373a75a9dacdc599a96093f04eda",
+    "client455_camera_play.inc": "c0b33fe3dc71a3be03eb5025902416f900ff97e8168768377b27624bb6791b2f"
   }
 }
