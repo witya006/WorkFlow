@@ -35,23 +35,13 @@ def main():
         if not rows or rows[0][0]!=begin:raise ValueError('Own function entry was not decoded')
         decoded[key]=rows
     points={}
-    for label,owner,target,after in [('after_sound','main','sound',True),('after_d3d','main','d3d',True),('before_char_data','create','char_data',False)]:
+    for label,owner,target,after in [('after_sound','main','sound',True),('after_d3d','main','d3d',True),('before_char_data','create','char_data',False),('after_create','main','create',True)]:
         calls=[row for row in decoded[owner] if row[2]=='call' and len(row[1])==5 and row[1][0]==0xe8 and row[0]+5+struct.unpack('<i',row[1][1:])[0]==addresses[target]]
         if len(calls)!=1:raise ValueError('Expected one decoded CALL:'+label)
         call=calls[0];at=call[0]+5 if after else call[0]
         row=next((row for row in decoded[owner] if row[0]==at),None)
         if row is None:raise ValueError('Checkpoint is not a decoded instruction boundary')
         points[label]={'rva':hex(at-base),'call_rva':hex(call[0]-base),'target_rva':hex(addresses[target]-base),'bytes':len(row[1]),'sha256':hashlib.sha256(row[1]).hexdigest()}
-    # GetDataFromLauncher is inlined by current MSVC. Bind the final filename
-    # PUSH and the following real CreateFileA IAT call,not a guessed offset.
-    literal=b'.\\System\\DefaultSet.tmp\0'
-    if raw.count(literal)!=1:raise ValueError('Expected one own launcher filename')
-    at=raw.index(literal);section=next(s for s in pe(raw)['sections'] if s['raw_offset']<=at<s['raw_offset']+s['raw_size']);literalVa=base+at-section['raw_offset']+section['rva']
-    pushes=[r for r in decoded['create'] if r[1]==b'\x68'+struct.pack('<I',literalVa)]
-    if len(pushes)!=1:raise ValueError('Expected one decoded launcher filename PUSH')
-    push=pushes[0];call=next(r for r in decoded['create'] if r[0]==push[0]+5);iat=symbol(mapping,'__imp__CreateFileA@28')
-    if call[1]!=b'\xff\x15'+struct.pack('<I',iat):raise ValueError('Launcher filename is not followed by CreateFileA')
-    points['before_launcher']={'kind':'filename_push','rva':hex(push[0]-base),'bytes':5,'sha256':hashlib.sha256(push[1]).hexdigest(),'literal_rva':hex(literalVa-base),'literal_bytes':len(literal),'literal_sha256':hashlib.sha256(literal).hexdigest(),'call_rva':hex(call[0]-base),'call_bytes':6,'call_sha256':hashlib.sha256(call[1]).hexdigest(),'iat_rva':hex(iat-base)}
     if not addresses['main']<base+int(points['after_sound']['rva'],16)<base+int(points['after_d3d']['rva'],16):raise ValueError('Unexpected own startup order')
     report={'scope':'Decoded instruction checkpoints in the exact own linked PE;not reference behavior acceptance','executable':link['executable'],'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'script_sha256':sha(Path(__file__)),'tool':{'file':str(dumpbin),'sha256':sha(dumpbin)},'symbols':{k:{'name':names[k],'rva':hex(v-base)} for k,v in addresses.items()},'points':points,'disassembly':files}
     (WS/'inventory/client455-own-entry.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'main':report['symbols']['main']['rva'],'points':points}))
@@ -63,10 +53,6 @@ def validated_entry():
     if hashlib.sha256(raw).hexdigest()!=report['executable']['sha256']:raise ValueError('Changed own PE')
     for row in report['points'].values():
         if hashlib.sha256(read_va(raw,base+int(row['rva'],16),row['bytes'])).hexdigest()!=row['sha256']:raise ValueError('Changed own decoded instruction')
-        if row.get('kind')=='filename_push':
-            literal=read_va(raw,base+int(row['literal_rva'],16),row['literal_bytes']);call=read_va(raw,base+int(row['call_rva'],16),6)
-            if hashlib.sha256(literal).hexdigest()!=row['literal_sha256'] or hashlib.sha256(call).hexdigest()!=row['call_sha256'] or call!=b'\xff\x15'+struct.pack('<I',base+int(row['iat_rva'],16)) or int(row['call_rva'],16)!=int(row['rva'],16)+5:raise ValueError('Changed own launcher boundary')
-            continue
         call=read_va(raw,base+int(row['call_rva'],16),5)
         if call[0]!=0xe8 or int(row['call_rva'],16)+5+struct.unpack('<i',call[1:])[0]!=int(row['target_rva'],16):raise ValueError('Changed own CALL target')
     return report

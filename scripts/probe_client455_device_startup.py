@@ -12,12 +12,12 @@ def symbol(mapping,name):
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
 def main():
-    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--before-launcher',action='store_true');args=parser.parse_args();partialCreate=args.create or args.before_launcher
+    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');args=parser.parse_args();partialCreate=args.create or args.after_create
     link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link);early=json.loads((WS/'inventory/client455-startup-native.json').read_text());contracts=json.loads((WS/'inventory/client455-startup-contracts-native.json').read_text());engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
     if early['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or contracts['build_sha256']!=sha(WS/'inventory/client455-startup-engine-build.json'):raise ValueError('Current early startup/contracts evidence required')
-    entry=validated_entry();source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=base+int(entry['points']['before_launcher' if args.before_launcher else 'before_char_data' if args.create else 'after_d3d']['rva'],16)
+    entry=validated_entry();source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=base+int(entry['points']['after_create' if args.after_create else 'before_char_data' if args.create else 'after_d3d']['rva'],16)
     parent=WS/'work/m9'/sha(source)[:8];parent.mkdir(parents=True,exist_ok=True);index=1
-    prefix='ui-startup' if args.before_launcher else 'create-startup' if args.create else 'device-startup'
+    prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
     while (parent/f'{prefix}{index:03d}').exists():index+=1
     run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
     for item in early['lab_inputs']:
@@ -29,7 +29,7 @@ def main():
         original=client/name;copy=run/name
         if not original.is_file():raise ValueError('Missing actual startup resource:'+name)
         copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
-    if args.before_launcher:
+    if args.after_create:
         for name in ['SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if partialCreate:
@@ -43,7 +43,7 @@ def main():
     plan=run/'device.plan';plan.write_text(' '.join(f'{value:x}' for value in values)+'\n',encoding='ascii');inputs.append({'file':plan.relative_to(WS).as_posix(),'sha256':sha(plan)})
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
-    output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['before_launcher'] if args.before_launcher else [])
+    output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['after_create'] if args.after_create else [])
     try:
         result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW)
     finally:
@@ -56,9 +56,10 @@ def main():
     report['lab_font_registration_removed']=fontRegistrationRemoved
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
     report['scope']='Exact own normal PE through Character manager creation;stop before character data manager construction;not complete Create or455acceptance' if args.create else report['scope']
-    if args.before_launcher:report['scope']='Exact own normal PE through existing UI initialization/LoadData/title object;stop before legacy launcher data;not full455Create/UI acceptance'
+    if args.after_create:report['scope']='Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance'
+    report['completed_existing_client_create']=args.after_create and bool(markers) and markers[-1].get('eax')==1
     report['nation_paths']=[e for e in events if e['kind']=='debug_string']
     report['script_sha256']=sha(Path(__file__))
-    name='client455-ui-startup-native' if args.before_launcher else 'client455-create-startup-native' if args.create else 'client455-device-startup-native'
+    name='client455-ui-startup-native' if args.after_create else 'client455-create-startup-native' if args.create else 'client455-device-startup-native'
     (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}))
 if __name__=='__main__':main()

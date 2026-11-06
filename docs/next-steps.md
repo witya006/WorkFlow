@@ -11,7 +11,27 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — sprites048: маршрут55target sprite names/localized→Common
+Последний участок — launcher049: CCR93 для9стран,argv дляRussia/Europe,
+country check и bounded identifier50/password32 восстановлены. Настоящий
+WinMain читает launcher перед language;старый позднийread удалён. Данные
+передаются настоящим полям CNetworkMgr;остальные455поля сохранены отдельно.
+ExactownPE a64601c8... прошла существующий Create срезультатом1 до filters/
+игрового цикла. Native metadata-тесты offline,аутентификация не выполнялась.
+16scoped checks PASS/PARTIAL;M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-launcher.md).
+
+Следом050 — оставшаяся bootstrap-цепочка455: FG_CB/USEFG,instance policy,
+клиентский NetworkMgr.Create/ConnectToServer и его packet/state contracts.
+Исходные опорные функции7D0CD0/7CF8A0/7D10A0/7D1150/562350. Послеlanguage
+в455 сеть/соединение идут до engine;вownклиенте этот порядок ещё старый.
+Восстанавливать по клиенту сoffline transport/packet fixtures;не подменять
+connect/auth успешным значением. Legacy sender копирует ID/password по13bytes,
+хотя455state уже хранит50/32;не считать wire/auth готовыми. Worldindex/personal/
+premium/mode-потребители ещё не перенесены. Далее targetmanagers/video/fullUI/
+login/game tables. FT/ANSI/text/IME/layout/ILevel/world/shutdown обязательны.
+Серверные проекты/базы не изменять и не разрабатывать.
+
+Предыдущий участок — sprites048: маршрут55target sprite names/localized→Common
 восстановлен; только startup IDs0/1 подключены к старым UI consumers. Actual
 CMainApp.LoadData/CGUIMouse используют реальные ko-kr/ru-ru packs;DXT5/прочие
 форматы,содержимое текстур,кэш,кадр и естественный exit0 проверены. Exact ownPE
@@ -20,7 +40,7 @@ d431094d... прошла оставшуюся существующую UI init/L
 полный интерфейс/вход/455Create не приняты.
 [Доказательства](../research/client455-sprites.md).
 
-Следом049 — target455 launcher/bootstrap order и клиентский контракт входных
+Историческая очередь049 — target455 launcher/bootstrap order и клиентский контракт входных
 данных. Старый GetDataFromLauncher не проверяет CreateFile/ReadFile и использует
 старую DefaultSet.tmp schema;не пропускать эту точку на отсутствующем файле и
 не выдавать её за455. Восстановить по7D04E0 связанную последовательность

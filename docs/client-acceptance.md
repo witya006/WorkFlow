@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+Текущий участок M6,launcher049: file93bytes/argc5profiles,checknation ипередача
+данных обычнымnetwork memberfields восстановлены. NativeKorea/Russia/Europe
+проверенынасинтетическихofflineданных,безNetworkCreate/connect/auth. Exact
+WinMain launcherидётпередlanguage;существующийCreate вернул1,дальшеstop.
+Это не проверка аутентификации,полного455Create илиигровоговхода. Wire ID/PW
+пока13bytes,аstate50/32;world/personal/premium/modeпотребители иостальная
+bootstrap/networkцепочкаоткрыты. [Доказательства](../research/client455-launcher.md).
+M6/M6F/M7/M9 открыты.
+
 Текущий участок M6,sprites048: source455route55names иtexture upload включают
 DXT5,которого не поддерживал legacyкод. Только подтверждённые startup IDs0/1
 подключены к normalUI. ActualCMainApp.LoadData/CGUIMouse в ownlab загрузили и

@@ -12,6 +12,13 @@
 
 ## Текущий статус
 
+Новейший участок M6 — launcher049: sourceCCR93/argvпрофили иcountrycheck
+подключены кWinMain передlanguage;старыйпозднийread удалён. Полянастоящего
+CNetworkMgr проверены offline;собственный existingCreate вернул1,затемstop
+доfilters/game-loop. Full455bootstrap/connect/auth/UIещёоткрыты. Следом050 —
+FG_CB/instance policy иclientnetwork Create/Connect/state/packet contracts.
+[Доказательства](../research/client455-launcher.md);M6/M6F/M7/M9 открыты.
+
 Новейший участок M6 — sprites048: настоящие mouse/common ресурсы455 загружаются
 через CMainApp.LoadData;DXT5 uploader восстановлен. Содержимое GPU текстур,
 отрисовка курсора/кнопки и естественный exit0 проверены дляKorea/Russia.

@@ -23,6 +23,58 @@
 
 ## Последний проверенный результат
 
+Launcher049:19function ranges+11full296bytecountryETCActionvtables identical
+bothpinnedPE. Slot196:9nations8392E0/RVA4392E0 CCRfile;Russia836CB0/RVA436CB0,
+Europe83B4F0/RVA43B4F0 argc5. Europe CString temporary onlycopieshostname;
+bothargvmethods inet_addr,noDNS,atol→WORD,endpoint0,id50/password32. Invalid
+IP/portnumeric notvalidatedbytarget;argc!=5false. Fullproviders stillOPEN.
+CCR93byte layout offsets0ip/4port/6id51/57account/61keys16/77worldWORD/
+79personalRef/83premium/87modeDWORD/91nationWORD. XOR masks pinnedinstructions;
+premium83..86 forced0,targetcallssettersBEFOREnationcomparison. Source own
+statekeepsdecodedfields evenfalse;normalbridge commitsacceptedprofilesonly,
+soerror-sideeffects notidentical/explicitgap. Missing/short/exclusive-sharing/
+extra data checked. Identifier5E5920 truncates50andzeroes51,password32/33;
+source boundedstrlen/size0guard differsunsafe/OOM domains. No authsuccessfake.
+
+New client455_launcher.h/.cpp plus bridge.inc inordinaryMainApp.GetDataFromLauncher.
+WinMain nowNation→GetDataFromLauncher→Language→Engine;lateCreate readremoved.
+Actual memberCNetworkMgr receivesendpoint/id/password(ifargv)/account+keys(ifCCR).
+Worldindex/personal/premium/mode preservedinsource455state,consumersstillOPEN.
+Normal CNetworkMgr IDstorage51/password33+confirmedboundedsetter,Initsizeof;
+oldnetworkwire structs stillmax_id_len12/max_pw_len12/copied13bytes. Auth/wire
+NOTaccepted andmustportbeforegameplay. No actualaccounts/credentials read/stored.
+DefaultSet.tmp/argv fixtures syntheticloopbackonly,no connection attempted.
+
+MSVCinlinedCreate afterlateblockremoved;explicit__declspec(noinline) nowkeeps
+one-timeproductioninitboundary fordiagnostics withoutresult/branchchange.
+Ownentryaudit decodesafterCALL Create now;oldliteral-PUSH boundaryremoved.
+OwnPE SHAa64601c891cade91395fa285945320c115d15aa7621258391b4571e0112dd64a,
+x86/base400000/entry148860/2001408bytes;182client/20kernel/17facade,
+0unresolved;derivedengine879f9b75... unchanged. No originals/server changes.
+Nativefull-objectlauncher probes Korea/Russia/Europe:allnaturalexit0,realmember
+setter/getter checks incl50/32strings;9CCRcountryprofiles,19shortfileboundaries,
+sharing/missing/extra/argccount/inet/portcases. NeitherNetworkCreate norconnect.
+Labwork/m9/a20f2085. ActualWinMainKorea/Russia eventorderlauncher beforeNDLanguage,
+Miles1. Debuggerforwardsonlystagedlauncher-commandline.txt toownchild;itdoesnot
+readuserlauncherdata. Existingnativefont/sprite helpers useownentry,notWinMain.
+
+Exact ownPE existingCreate actuallyreturned1 atRVA B3DB4 (CALLB3DAF,targetB3440).
+CLIdeviceprobe --after-create replaces --before-launcher;rawmarkerafter_client_create.
+Latestlabwork/m9/a64601c8/ui-startup001;device53E4B80==Characterdevice,ownerA6A36F0.
+StopE0434200 beforefilter/game-loop/clientconnect;NOTnaturalexit/full455Create.
+Rawdecomp/slots/asm artifacts/client455-launcher;IDA f2fdf71d closedsave=true.
+Core/GUI/lifecycle/shortmodel/effects/shadow/clock/accounting testsand16scoped
+checkpoints PASS/PARTIAL;font/sprite/otherframes unchanged. M6/M6F/M7/M9OPEN.
+
+Next050:targetFG_CB7D0CD0/instance7CF8A0/NetworkCreate7D10A0/Connect7D1150→562350
+andactualclientwire/stateflow. Targetnetwork/create/connect happensBEFOREengine;
+ownstilllegacybeyondnewlauncher ordering. Nofakeauth/no serverimplementation.
+Offlineclientpacketfixtures first;worldindex/personal/premium/mode remaining
+consumers,alltargetmanagers/video/fullUI/gameTables/FT/ANSI/IME/ILevel/shutdown
+remainrequiredM6. No blockingconditionrequiring userinput now.
+
+## Предыдущий результат — sprites048
+
 Sprites048: target filenames tableBDB6A0/RVA7DB6A0 (55×128),path7B0110/RVA3B0110
 uses ./SpriteImage/<nationFolder>/<name>,_access thenCommon evenifbothmissing;
 rejectID>=55. New client455_sprites.h/.cpp source module,16normalfacadeCPPs.

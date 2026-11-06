@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,launcher049: установок нет.19функций и11country vtables
+совпали в обоих pinned455PE;IDAf2fdf71d closed/save=true. Modern MSVC x86
+собрал182client/20kernel/17facade;full PE a64601c8.../entry148860,0unresolved.
+Три own offline launcher-пробы естественно exit0,сеть не создавали. Exact
+WinMain Korean/Russian прошёл nation→launcher→language→engine/Miles;обычный
+Create вернул1. Остановка на ownRVA B3DB4 до фильтров/игрового цикла. Debugger
+передаёт аргументы только из labfixture,не читает реальные account-файлы.
+Полный455bootstrap/connect/auth/gameplay ещё открыт.
+[Доказательства](../research/client455-launcher.md);M6/M9 открыты.
+
 Дополнение 06.11, sprites048: установок нет. Сессия IDA64d5aa70 работала с
 копией эталона, закрыта/save=true.14диапазонов sprite/texture/manager и55имён
 совпали в обоих pinnedPE. Производный движок сохраняет033;67units/4CPP overlays,

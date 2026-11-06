@@ -24,13 +24,16 @@ int wmain(int argc,wchar_t** argv){
     const bool deviceMode=argc>=6;DWORD plan[11]={};
     if(deviceMode){FILE* file=nullptr;_wfopen_s(&file,argv[5],L"rb");bool ok=file!=nullptr;for(unsigned i=0;ok&&i<11;++i)ok=std::fscanf(file,"%lx",plan+i)==1;if(file)std::fclose(file);if(!ok||!plan[7]||!plan[8]){std::fclose(output);return 205;}}
     std::wstring target=argv[1],cwd=target.substr(0,target.find_last_of(L"\\/")),command=L"\""+target+L"\"";STARTUPINFOW startup={sizeof(startup)};PROCESS_INFORMATION process={};
+    // Only an explicitly staged own-lab fixture is forwarded to the own child.
+    FILE*arguments=nullptr;_wfopen_s(&arguments,(cwd+L"\\launcher-commandline.txt").c_str(),L"rb");
+    if(arguments){char bytes[2048]={};const size_t n=std::fread(bytes,1,sizeof(bytes)-1,arguments);std::fclose(arguments);const int size=MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,bytes,static_cast<int>(n),nullptr,0);if(size<=0){std::fclose(output);return 206;}std::wstring text(size,L'\0');MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,bytes,static_cast<int>(n),&text[0],size);command+=L" "+text;}
     if(deviceMode){startup.dwFlags=STARTF_USESHOWWINDOW;startup.wShowWindow=SW_HIDE;}
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     if(!CreateProcessW(target.c_str(),&command[0],nullptr,nullptr,FALSE,DEBUG_ONLY_THIS_PROCESS|CREATE_NO_WINDOW,nullptr,cwd.c_str(),&startup,&process)){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,"after_sound_before_d3d",0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"before_launcher":"before_character_data",0,false}};
+    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,"after_sound_before_d3d",0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"after_client_create":"before_character_data",0,false}};
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+20000;
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}

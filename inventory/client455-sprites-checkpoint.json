@@ -5,14 +5,14 @@
   "normal_load_data_and_payloads": "PASS",
   "actual_gui_sprite_frame": "PASS",
   "clean_native_exit_and_refs": "PASS",
-  "exact_own_pe_before_launcher": "PASS",
-  "full_game_create_executed": false,
+  "exact_own_pe_existing_create_returned": "PASS",
+  "full455_game_create_accepted": false,
   "evidence_sha256": {
     "client455-sprites-reference": "740b552f4ed8af40871c20293d5851804f22c9fc089d16e5b8a69bec9d1de167",
-    "client455-sprites-native": "591cc2d382a9346bd369695523ed4a2d2c2b450e0e54a575caf520c0825187fa",
-    "client455-ui-startup-native": "8e21d109d7515f4be878fb0c2147f81a1d4e82d0017d1763a3338096b140bee2",
+    "client455-sprites-native": "bd95c4b028aa85baa4c20550b5ac3b35e48c2640b9f81769714d6a828ccc0568",
+    "client455-ui-startup-native": "b11701df588fc30ede7d92ac3849b2844deb0d874fe201b0446f5deeb8e3ca00",
     "client455-startup-engine-build": "e7bcd592196e4184d2c8119f2f1695e82e9f1682ae49d80c2de674d241853b96",
-    "client455-normal-link": "21879b76ce36213ba5b01b7a6adb1000ba3bbdcf66c7de8c767c04e3557fd605"
+    "client455-normal-link": "99e74b53caf1b118936008e0a154e3b9f620547ab5bc84a114d2d17480cefc12"
   },
   "gaps": [
     "Other legacy UI groups/IDs/layout/resource bindings and full455UI",
@@ -21,7 +21,7 @@
     "SPR reader/general animation/draw methods still legacy andnot fullycertified455",
     "Complete Create/launcher/normal world tables/network/shutdown andM9",
     "Actual backbuffer640x500 vsviewport480 sizing remainsopen",
-    "Existing production Create stilllegacy except scoped ports;beforelauncher doesnotcertifyall455managers/UI/video/order"
+    "Existing production Create stilllegacy except scoped ports;returnedownCreate doesnotcertifyall455managers/UI/video/order"
   ],
   "input_exe_executed": false,
   "server_modified": false,

@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Launcher049. Reconstructed CCR93file/country andRussia/Europeargc5
+profiles,includingbounded50/32fields. ActualWinMain nowloadsmetadata before
+language/engine andlatelegacyread isremoved. Realmembernetwork setters pass
+offline,ownexistingCreate returns1 thencontrolledstop beforefilters/game loop.
+No authentication performed;remainingbootstrap/network/wire/targetCreate/UI
+andM9open. [Evidence](research/client455-launcher.md).
+
 2026-11-06 — Sprites048. Recovered55target filenames/localized→Common selection
 and455managed texture uploader,including actual requiredDXT5. Ordinary startup
 mouse/common consumers nowload real455resources;actualCMainApp.LoadData and

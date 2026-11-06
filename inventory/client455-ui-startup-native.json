@@ -1,12 +1,12 @@
 {
-  "scope": "Exact own normal PE through existing UI initialization/LoadData/title object;stop before legacy launcher data;not full455Create/UI acceptance",
+  "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "d431094dfee0ceb2ba854c8dc71f2eaacdaf08909c0d57f1cffc1b8103b1fa47",
-    "bytes": 1999360,
+    "sha256": "a64601c891cade91395fa285945320c115d15aa7621258391b4571e0112dd64a",
+    "bytes": 2001408,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x148390",
+    "entry_rva": "0x148860",
     "sections": [
       ".text",
       ".rdata",
@@ -15,134 +15,138 @@
       ".reloc"
     ]
   },
-  "staged_executable": "work/m9/d431094d/ui-startup002/RF_Online.bin",
-  "normal_link_sha256": "21879b76ce36213ba5b01b7a6adb1000ba3bbdcf66c7de8c767c04e3557fd605",
+  "staged_executable": "work/m9/a64601c8/ui-startup001/RF_Online.bin",
+  "normal_link_sha256": "99e74b53caf1b118936008e0a154e3b9f620547ab5bc84a114d2d17480cefc12",
   "engine_build_sha256": "e7bcd592196e4184d2c8119f2f1695e82e9f1682ae49d80c2de674d241853b96",
-  "contracts_sha256": "fcb73d5220bccc3586436a812971e185cff67334eb5f390941418b7856fe853e",
-  "early_startup_sha256": "4c22707408aca3e665c833bc327d7a92001cb8a7e19238f323fb9d9c3de43676",
+  "contracts_sha256": "75e18db6ac3b2da6a14bdb9915ff24c2e317464d7281ace89f1d4faed5f43135",
+  "early_startup_sha256": "f706bd859b6e571e0e36f8541c50a07bac6ef96b838689af0b52c818274a8a21",
   "debugger": {
     "file": "work/tools/own-client-startup/own-startup-debugger.exe",
-    "sha256": "70b5893d41df542c0d682991daf0a27056522351978502bfd1dbeb0446841418",
+    "sha256": "01e2001414fa75bab4fe429f989bf113803b6efc17a8800ddbcad4d8850fcd11",
     "source": "scripts/native/own_client_startup_debugger.cpp",
-    "source_sha256": "00575a781edc83ab355a0c3d8da48ebf6233f89ce9104a2bbc48b405c3d9af9b"
+    "source_sha256": "1807af7c52d2c56d87e4c9d6bc7843ca8a1d6124b3f57f5d162ddb266fbb17cb"
   },
   "inputs": [
     {
-      "file": "work/m9/d431094d/ui-startup002/RF_Online.bin",
-      "sha256": "d431094dfee0ceb2ba854c8dc71f2eaacdaf08909c0d57f1cffc1b8103b1fa47"
+      "file": "work/m9/a64601c8/ui-startup001/RF_Online.bin",
+      "sha256": "a64601c891cade91395fa285945320c115d15aa7621258391b4571e0112dd64a"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/mss32.dll",
+      "file": "work/m9/a64601c8/ui-startup001/mss32.dll",
       "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/abuse.dll",
+      "file": "work/m9/a64601c8/ui-startup001/abuse.dll",
       "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/adv.dll",
+      "file": "work/m9/a64601c8/ui-startup001/adv.dll",
       "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/pdll.dll",
+      "file": "work/m9/a64601c8/ui-startup001/pdll.dll",
       "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/Snd/WaveList.spt",
+      "file": "work/m9/a64601c8/ui-startup001/Snd/WaveList.spt",
       "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/mssmp3.asi",
+      "file": "work/m9/a64601c8/ui-startup001/mssmp3.asi",
       "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/010.TTF",
+      "file": "work/m9/a64601c8/ui-startup001/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/DataTable/ko-kr/NDLanguage.edf",
+      "file": "work/m9/a64601c8/ui-startup001/DataTable/ko-kr/NDLanguage.edf",
       "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/R3Engine.ini",
+      "file": "work/m9/a64601c8/ui-startup001/R3Engine.ini",
       "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/Grass1.vsh",
+      "file": "work/m9/a64601c8/ui-startup001/System/DefaultSet.tmp",
+      "sha256": "0f38bb554d15aa739c179a04b7cbc1d1ff50c89ab46006e8761838bcac1e4ab9"
+    },
+    {
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/Grass1.vsh",
       "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/grass1.vso",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/grass1.vso",
       "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/console.jpg",
+      "file": "work/m9/a64601c8/ui-startup001/System/console.jpg",
       "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/SpriteImage/Common/mouse.spr",
+      "file": "work/m9/a64601c8/ui-startup001/SpriteImage/Common/mouse.spr",
       "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/SpriteImage/ko-kr/common.spr",
+      "file": "work/m9/a64601c8/ui-startup001/SpriteImage/ko-kr/common.spr",
       "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic.sho",
       "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_normal.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_normal.sho",
       "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_norm_spec.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_norm_spec.sho",
       "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_shadow.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_shadow.sho",
       "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_Bump.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_Bump.sho",
       "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_BumpEffect.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_BumpEffect.sho",
       "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_Scroll.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_Scroll.sho",
       "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_DScroll.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_DScroll.sho",
       "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_EnvScroll.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_EnvScroll.sho",
       "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_GradeEffect.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_GradeEffect.sho",
       "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_GradeEnvEffect.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_GradeEnvEffect.sho",
       "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/System/shader/sh_basic_alpha.sho",
+      "file": "work/m9/a64601c8/ui-startup001/System/shader/sh_basic_alpha.sho",
       "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802"
     },
     {
-      "file": "work/m9/d431094d/ui-startup002/device.plan",
-      "sha256": "e7edc2a4790a1e39adcb468f6d208b03695368d7a081d09c3681e49c06fafb3a"
+      "file": "work/m9/a64601c8/ui-startup001/device.plan",
+      "sha256": "63947d28c93699db3fff1b322786f74c53fdd177fe4e3f9ca6ab628deb5393be"
     }
   ],
   "events": {
-    "file": "work/m9/d431094d/ui-startup002/debug-events.jsonl",
-    "sha256": "05392509e8a85bc200b60ffaeeb13f7130d2b4f903b3049adead41ffbbdf9b38"
+    "file": "work/m9/a64601c8/ui-startup001/debug-events.jsonl",
+    "sha256": "5647dacb515a19b28cd49f0d80edb6e4427e055906d4610890ac10c2bebdf19f"
   },
   "debugger_exit": 0,
   "summary": {
@@ -161,34 +165,34 @@
     "kind": "device_state",
     "read": true,
     "ready": 1,
-    "window": "0x14b0448",
-    "device": "0x51dbf60",
+    "window": "0xb90474",
+    "device": "0x53e4b80",
     "windowed": 1
   },
   "markers": [
     {
       "kind": "checkpoint",
       "name": "WinMain",
-      "rva": "0xb3d40",
-      "eax": 37384175
+      "rva": "0xb3ca0",
+      "eax": 38170607
     },
     {
       "kind": "checkpoint",
       "name": "after_sound_before_d3d",
-      "rva": "0xb3d89",
+      "rva": "0xb3d92",
       "eax": 1
     },
     {
       "kind": "checkpoint",
       "name": "after_d3d_before_create",
-      "rva": "0xb3d9c",
+      "rva": "0xb3da2",
       "eax": 0
     },
     {
       "kind": "checkpoint",
-      "name": "before_launcher",
-      "rva": "0xb354a",
-      "eax": 30698824
+      "name": "after_client_create",
+      "rva": "0xb3db4",
+      "eax": 1
     }
   ],
   "exceptions": [
@@ -210,7 +214,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20fe0e8"
+      "parameter1": "0x20fe518"
     },
     {
       "kind": "exception",
@@ -230,7 +234,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     },
     {
       "kind": "exception",
@@ -240,7 +244,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     },
     {
       "kind": "exception",
@@ -250,7 +254,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     },
     {
       "kind": "exception",
@@ -260,7 +264,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     },
     {
       "kind": "exception",
@@ -270,7 +274,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     },
     {
       "kind": "exception",
@@ -280,7 +284,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x20ff548"
+      "parameter1": "0x20ff974"
     }
   ],
   "input_exe_executed": false,
@@ -289,15 +293,16 @@
   "M6F": "OPEN",
   "M7": "OPEN",
   "M9": "OPEN",
-  "own_entry_sha256": "080f0b6b0b9eb0e4302120917fee5df75fd90567df1ec667c84e30829c3257d4",
+  "own_entry_sha256": "45ef7d9dd6d9926045935ce38d0478c50b4c20324bf7eb0e88adb1b0772d7816",
   "partial_client_create": true,
   "lab_font_registration_removed": true,
   "character_owner": {
     "kind": "character_owner",
     "read": true,
-    "owner": "0xa614720",
-    "device": "0x51dbf60"
+    "owner": "0xa6a36f0",
+    "device": "0x53e4b80"
   },
+  "completed_existing_client_create": true,
   "nation_paths": [
     {
       "kind": "debug_string",
@@ -305,16 +310,20 @@
     },
     {
       "kind": "debug_string",
+      "value": "RF455 Launcher:ccr:1"
+    },
+    {
+      "kind": "debug_string",
       "value": "RF455 NDLanguage:949:6851"
     },
     {
       "kind": "debug_string",
-      "value": "onecoreuap\\windows\\core\\color\\moderncolor\\winrt\\displaycolormanagement\\lib\\displaycolormanagement.cpp(34)\\Windows.Internal.Graphics.Display.DisplayColorManagement.dll!73889928: (caller: 738C3BDA) ReturnHr(1) tid(2274) 80070057 \u0413\u040f\u0413\u00a0\u0413\u00b0\u0413\u00a0\u0413\u00ac\u0413\u0490\u0413\u0406\u0413\u00b0 \u0413\u00a7\u0413\u00a0\u0413\u00a4\u0413\u00a0\u0413\u00ad \u0413\u00ad\u0413\u0490\u0413\u045e\u0413\u0490\u0413\u00b0\u0413\u00ad\u0413\u00ae.\r\n"
+      "value": "onecoreuap\\windows\\core\\color\\moderncolor\\winrt\\displaycolormanagement\\lib\\displaycolormanagement.cpp(34)\\Windows.Internal.Graphics.Display.DisplayColorManagement.dll!73889928: (caller: 738F3BDA) ReturnHr(1) tid(27a4) 80070057 \u0413\u040f\u0413\u00a0\u0413\u00b0\u0413\u00a0\u0413\u00ac\u0413\u0490\u0413\u0406\u0413\u00b0 \u0413\u00a7\u0413\u00a0\u0413\u00a4\u0413\u00a0\u0413\u00ad \u0413\u00ad\u0413\u0490\u0413\u045e\u0413\u0490\u0413\u00b0\u0413\u00ad\u0413\u00ae.\r\n"
     },
     {
       "kind": "debug_string",
       "value": "RF455 Font:GDI:129:0"
     }
   ],
-  "script_sha256": "a48a3a0c2c19d8e4086eec7dbd8b183cd7a374dc5f201eca69c00c7f2a64cd88"
+  "script_sha256": "2a40900f793c8a5775a6a4104a926ba70064a54c92a62cbc91afe985e8541067"
 }

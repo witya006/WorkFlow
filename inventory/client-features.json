@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-LAUNCHER-049",
+      "status":"partial",
+      "description":"Country-selected CCR93/argv launcher metadata andactualnormal network fields;WinMain beforelanguage",
+      "reference":[{"va":"0x8392e0","rva":"0x4392e0","role":"CCR93file loader"},{"va":"0x836cb0","rva":"0x436cb0","role":"Russia argc5"},{"va":"0x83b4f0","rva":"0x43b4f0","role":"Europe argc5"},{"va":"0x5e5920","rva":"0x1e5920","role":"boundedcopy"}],
+      "implementation":["scripts/native/client455_launcher.cpp","scripts/native/client455_launcher_bridge.inc","scripts/prepare_client455_normal.py"],
+      "verification":"9CCRcountryprofiles,19shortfileboundaries,sharing/missing/extra/argc/numeric/string cases;realnormal memberfields/exit0 forKorea/Russia/Europe;actualWinMain order andexistingCreate returned1",
+      "evidence":["inventory/client455-launcher-reference.json","inventory/client455-launcher-native.json","inventory/client455-launcher-checkpoint.json","research/client455-launcher.md"],
+      "gaps":["FullETCAction/FG_CB/instance/network/bootstrap/BGM order","Worldindex/personal/premium/mode consumers heldinstate","LegacywireID/PW13bytes vsnewstate50/32;realconnect/auth/protocol/gameplay","RejectedCCRsetter sideeffects/unsafe/OOM/oldCRT/nonASCII/errorlogging domains","Full455Create/video/UI/FT/IME/world/shutdown/M9"]
+    },
+    {
       "id":"CLIENT455-SPRITES-048",
       "status":"partial",
       "description":"455sprite path/table and managedtexture upload includingDXT5;actualnormal startup mouse/common consumers",

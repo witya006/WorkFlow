@@ -5,6 +5,7 @@ from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
 from audit_client455_own_entry import validated_entry
+from client455_launcher_fixture import stage_launcher
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
@@ -38,6 +39,7 @@ def main():
         if not original.is_file():raise ValueError('Required startup input missing:'+relative)
         copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference input'})
     config=run/'R3Engine.ini';config.write_text(f'[Setup]\nLanguage={args.nation}\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');inputs.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config),'kind':'own lab config'})
+    inputs.append(stage_launcher(run,country['id'],WS))
     output=run/'debug-events.jsonl';command=[str(debugger),str(target),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}']
     result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)
     events=[json.loads(line) for line in output.read_text(encoding='utf-8').splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception'];sound=next((e['eax'] for e in markers if e['name']=='after_sound_before_d3d'),None)
