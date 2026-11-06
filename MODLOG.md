@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Tutorial-intro075. Restored455 intro cuts/fade/skip/reload,
+15ranges/3tablesequalpins/4asm,IDAb92074d1savedclosed. Real camera/fade/world/
+screen/mouse+Avatar race-stage:26cameras/29viewedframes/DmallocbalancePASS.
+CameraTU uses matching engine definitions. PE51666436…/exactCreate1,runtime
+equal074excepttimestamps. Fullstage/QBI/newenginecontrols/factory/M9OPEN.
+Next076;details research/client455-tutorial-intro.md.
+
 2026-11-07 — World074. Real Bellato/Cora/Accretia loaded/rendered throughCLand;
 BSP39/EBP20 sourceworked,owner recreation andlevel destructorReleaseported.
 10ranges/prefix48/6asm equalpins,IDA60286d36savedclosed. 3worlds/reload/GPU/

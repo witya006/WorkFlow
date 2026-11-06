@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-INTRO-075",
+      "status": "partial",
+      "description": "455 intro cut/fade/skip sequencing with real camera/world backend;ordinary Tutorial owner and QBI providers remain open",
+      "reference": [{"rva":"0x1594d0","role":"intro load"},{"rva":"0x1590b0","role":"intro frame branch"},{"rva":"0x4b4a40","role":"IsFading"},{"rva":"0x7d18c8","role":"Bellato cut table"},{"rva":"0x7d1938","role":"Cora cut table"},{"rva":"0x7d19b0","role":"Accretia cut table"}],
+      "implementation": ["scripts/native/client455_tutorial_intro.h","scripts/native/client455_tutorial_intro.cpp","scripts/native/client455_tutorial_intro_camera.cpp","scripts/audit_client455_tutorial_intro.py","scripts/prepare_client455_normal.py"],
+      "verification": "15ranges/3tables equalpins,4fullasm. Three real worlds/26cameras/29reviewedGPUframes,actualcamera/fade/screen/mouse/Avatar race-stage,skip/reload/Dmalloc balance. ExactPE/Create1;runtime equal074 exceptlinktimestamps. Stage/QBI/newengine callbacks explicitly recorded only inprobe.",
+      "evidence": ["inventory/client455-tutorial-intro-reference.json","inventory/client455-tutorial-intro-bellato-native.json","inventory/client455-tutorial-intro-cora-native.json","inventory/client455-tutorial-intro-accretia-native.json","inventory/client455-tutorial-intro-visual.json","inventory/client455-tutorial-intro-production.json","inventory/client455-tutorial-intro-checkpoint.json","research/client455-tutorial-intro.md"],
+      "gaps": ["ActualCGP_Tutorial lifecycle/fourstage/Login/nextDWORD integration;provider compiled but not used in ordinaryfactory","QBI/actions/localfeedback/Avatar actor/follow-camera andnewengine consumers require actualproviders","Fullfade/render/matrix455parity,world/effects/Character/IME/auth/gameplay/lifecycle/M6F/M7/M9 remain open"]
+    },
+    {
       "id": "CLIENT455-WORLD-074",
       "status": "partial",
       "description": "Actual CLand loads/renders/reloads/releases three455Tutorial BSP worlds;fullILevel/INS/Tutorial open",

@@ -1,0 +1,80 @@
+{
+  "status": "PARTIAL",
+  "intro_sequence": "PASS_BOUNDED",
+  "real_camera_count": 26,
+  "reviewed_frames": 29,
+  "observations": [
+    {
+      "race": "bellato",
+      "status": "PASS",
+      "selected": 9,
+      "captures": 9,
+      "frames": 357,
+      "applied": 343,
+      "fade_outs": 9,
+      "warnings": 0,
+      "memory_before": 270592,
+      "memory_after": 270592,
+      "real_camera_fade_screen_mouse_avatar_world": true,
+      "deferred_skip": true,
+      "reload_retains_counters": true,
+      "full_stage_QBI_engine_controls": false
+    },
+    {
+      "race": "cora",
+      "status": "PASS",
+      "selected": 9,
+      "captures": 9,
+      "frames": 325,
+      "applied": 310,
+      "fade_outs": 9,
+      "warnings": 0,
+      "memory_before": 270592,
+      "memory_after": 270592,
+      "real_camera_fade_screen_mouse_avatar_world": true,
+      "deferred_skip": true,
+      "reload_retains_counters": true,
+      "full_stage_QBI_engine_controls": false
+    },
+    {
+      "race": "accretia",
+      "status": "PASS",
+      "selected": 8,
+      "captures": 8,
+      "frames": 258,
+      "applied": 244,
+      "fade_outs": 8,
+      "warnings": 0,
+      "memory_before": 270592,
+      "memory_after": 270592,
+      "real_camera_fade_screen_mouse_avatar_world": true,
+      "deferred_skip": true,
+      "reload_retains_counters": true,
+      "full_stage_QBI_engine_controls": false
+    }
+  ],
+  "exactPE_Create1": "PASS",
+  "unchanged_runtime_against074": true,
+  "evidence_sha256": {
+    "client455-tutorial-intro-reference": "083775e97d5eb1c3c4b0ff49734aae7be8860f864f8dbe14a65f82c4b73a295f",
+    "client455-tutorial-intro-production": "86ad3d97bfbde16c570bf2a14488abd5211ceb78ed7e59f68ac0190f89f1a337",
+    "client455-tutorial-intro-visual": "3daf8ca3c0286a752ceaaccc6abfddd46c76f47d8121ef1bd3a074b5ac4725c3",
+    "client455-normal-preparation": "f2d6de62e9b644e1675da0d8e85f65e235936671ef0b6245f8b2e664d86d11ce",
+    "client455-ui-startup-native": "0cf3f56dc0d7a88576a8e9c794059c67d72bbce8c6f115b1b4aea9a2d93212bb",
+    "client455-tutorial-intro-bellato-native": "1158c7551ab24c6e740a52deb0f56325b78cf457a1016e46f597f40bf25bac1b",
+    "client455-tutorial-intro-cora-native": "25309c4bb238417c6428b7dd71ed38140c29b42bcd9ddbe8dde6547d0a5d4336",
+    "client455-tutorial-intro-accretia-native": "7ca51c28b4207af36abd4c523ae41ed1fa93c1d5a87ae12777bab32ad2390415"
+  },
+  "script_sha256": "6ee687ef506275d0e5d0b65c20b5545e3a2d0cac91448cd53fcc94544656daad",
+  "gaps": [
+    "Full CGP_Tutorial lifecycle/factory,Avatar/QBI/action/localfeedback providers remain open",
+    "Engine renderflag8CED70,float8CE9D0 and camera control8D4C30 have additional455 consumers not in legacy engine;host must supply them,not a no-op",
+    "Complete follow-camera/render numeric parity,full world/effects/IME/lifecycle/M6F/M9 unaccepted"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,tutorial-intro075: установокнет.15ranges/3tables equalpins,
+4fullasm,IDAb92074d1savedclosed. Realcamera/fade/screen/mouse/world сAvatar
+race/stage:26cameras/29viewedGPUframes/skip/reload/DmallocbalancePASS. Исправлен
+ENGINE_DEFINITIONS только новойcamera TU для согласованногоengine state layout. PE51666436…
+182/20/34TU/0unresolved/exactCreate1;runtime equal074 except2linktimestamps.
+Fullstage/QBI/newengine controls/fourstage иM9 OPEN;40080201unknown.
+[Доказательства](../research/client455-tutorial-intro.md).
+
 Дополнение07.11,world074:установокнет.10ranges/vtableprefix48/6asm equalpins,
 IDA60286d36savedclosed. RealCLand3maps/load/render/reload/release/collision,
 6GPUframes иDmallocbalance passed. Engine67TU/6overlays c00d9d4d… сохраняетbase033.

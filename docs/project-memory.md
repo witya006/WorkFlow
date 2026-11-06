@@ -23,6 +23,32 @@
 
 ## Последний проверенный результат
 
+075: Tutorial intro branch5590B0 andLoad5594D0 sequence source restored.
+RF455TutorialIntro +realRF455TutorialIntroCameraHost (CAniCamera/R3SetCameraMatrix/
+fade) normalfacadecompiled butordinaryfactoryunused;NO force-retention/fullstage
+claim. Stage/QBI/follow/newenginecontrol callbacks mandatory abstract;probe
+explicitrecordings,notproductionproviders. RealAvatar onlyrace/stage,nofullactor.
+15ranges/3tablesequalpins,4fullasm,rawintro075.json;IDAb92074d1savedclosed.
+Tables generatedfrompins+realCAMcounts9/9/8. Labelunused;ordinalselect matters.
+signed32(end-70) threshold,pendingonce,waitIsFading(notIsFadeOut),fadeout2/in3;
+activeordinalcount foronetick thenfinish. SkipatendsetsFFFF/deferredfinish.
+Loadretainscounters;onlyInitresets. Endout0/in5/unblock/screen/mouse/script/clear/
+engine/follow orderchecked. Three actualworld/camera/nativeprocesses exit0/warn0,
+29viewedframes(26cuts+3initial),357/325/258ticks drivenR3SetTime/.25loop (nofullwait).
+343/310/244matrixapplications;Dmalloc270592beforeafterall. Notpixel455parity or
+fullfaderenderer/cameraMatrix/COM/GPU/heapproof. Resources workcopies unchanged.
+Firstfailure blankGPU:cameraTUcompiledwithoutRF_CLIENT_455_WEATHER;fixedperfile
+ENGINE_DEFINITIONS matchingrealengine. Requiredbygate;donotgloballyalterfacades.
+PE516664365726f782f256c87337ba0d14f349ee2e7556fa48205a53619220a44c,entry150790/
+2043392bytes/182client20kernel34facade/0unresolved/exactCreate1. Runtimeequal074
+aftertwoDWORDtimestamps304/1874448mask;unchangedGUI/kernelnotrerun/historical.
+40080201unknown;newgatePARTIAL. FullCGP_Tutorial/Avatar/QBI/newenginecontrols/
+factory/M6/M6F/M7/M9 OPEN. Next076 realstageowner withworld+intro+boardproviders,
+newengineconsumers8CED70/8CE9D0/8D4C30,thenfourstage/nextDWORD jointly. Legacy2->3
+bridge remainsuntilactualTutorial2/Main3/Logintransitions;nevercarryitontoTutorial.
+FullILevel/Empty/INS/Character/render/gameplay/auth/IME/lifecycle/failuresgapsstay.
+Details research/client455-tutorial-intro.md.
+
 074: realBSP worlds loaded/rendered throughordinaryCLand. ExistingBSP39/EBP20
 geometry loaderworked;no rewrite. Newland_load.inc deletesoldlevel/newCLevel/
 globalgLevel/camera.Create;indexedload usesit. .ins explicitFALSE/missingprovider.

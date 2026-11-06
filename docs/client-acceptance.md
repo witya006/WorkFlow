@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+075: introsequence/camera/fade веткаперенесена,26камер3миров/29GPU/skip/reload/
+Dmallocpassed. ActualAvatarтолькоrace/stage,UIреальные;QBI/follow/newenginecontrols
+вprobeexplicitrecordings,неполныеproviders. Normalfacadecompiled,ordinaryTutorial
+owner/factoryпоканет;unusedcodeудалёнlinker. PECreate1passed/runtimeequal074except
+timestamps. Полныеstage/game/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-tutorial-intro.md).
+
 074: три реальныекарты455 загружены/отрисованы черезCLand. SourceBSPowner и
 деструкторLevelперенесены,load/reload/release/collision/Dmallocbalance и6GPU
 кадров проверены. ExactnewPE/Create1passed. Это boundedBSP path:fullILevel/

@@ -53,6 +53,10 @@ def main():
     defaults=WS/codec_reference['generated_defaults']['file']
     if sha(defaults.read_bytes())!=codec_reference['generated_defaults']['sha256'] or sha((WS/'scripts/audit_client455_network_codec.py').read_bytes())!=codec_reference['script_sha256']:raise ValueError('Run current network codec audit before preparing')
     save(root/'include/client455_network_defaults.h',defaults.read_bytes(),defaults)
+    intro_reference=json.loads((WS/'inventory/client455-tutorial-intro-reference.json').read_text())
+    intro_tables=WS/intro_reference['generated']['file']
+    if sha(intro_tables.read_bytes())!=intro_reference['generated']['sha256'] or sha((WS/'scripts/audit_client455_tutorial_intro.py').read_bytes())!=intro_reference['script_sha256']:raise ValueError('Run current Tutorial intro audit before preparing')
+    save(root/'include/client455_tutorial_intro_tables.h',intro_tables.read_bytes(),intro_tables)
     # Keep the kernel type names/allocations unchanged. Add named confirmed
     # fields only to the normal port headers, leaving all existing evidence valid.
     replacements={
@@ -576,7 +580,12 @@ def main():
     window_source=native/'client455_briefing_window.cpp'
     window_facade=root/'generated'/window_source.name
     save(window_facade,window_source.read_bytes(),window_source);facade_units.append(window_facade)
-    for name in ['client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
+    intro_camera=native/'client455_tutorial_intro_camera.cpp';intro_camera_facade=root/'generated'/intro_camera.name
+    save(intro_camera_facade,intro_camera.read_bytes(),intro_camera);facade_units.append(intro_camera_facade)
+    # This TU reads _R3ENGINE_STATE directly;its conditional weather fields must
+    # agree with the actual engine and client. Keep unrelated facade TUs unchanged.
+    cmake+='set_source_files_properties("'+intro_camera_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
+    for name in ['client455_tutorial_intro.cpp','client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -611,6 +620,8 @@ def main():
     for name in ['client455_briefing_window.h','client455_briefing_window.cpp','client455_screen_message.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_avatar_stage.h','client455_avatar_stage.cpp','client455_avatar_stage.inc','client455_tutorial_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_land_load.inc']=sha((native/'client455_land_load.inc').read_bytes())
+    for name in ['client455_tutorial_intro.h','client455_tutorial_intro.cpp','client455_tutorial_intro_camera.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+075: перенесенаintrosequence455;26actualcameras на3worlds,fade/skip/reload,
+29viewedGPU иDmallocbalancePASS. Normalfacadeproviderещёunusedactualstage;
+fullTutorial/QBI/newenginecontrols/factoryOPEN. PE/Create1passed,runtimeequal074
+exceptlinktimestamps. Далее076 — настоящийTutorialowner;M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-tutorial-intro.md).
+
+Предыдущий участок:
+
 074: настоящие Bellato/Cora/Accretia455 загружаются/рисуются черезCLand. Owner
 иleveldestructorперенесены;reload/GPU/collision/Dmallocbalance и6кадров проверены.
 FinalPE/Create1 passed. FullILevel/Empty/INS иTutorialещёOPEN. Далее075 — actual

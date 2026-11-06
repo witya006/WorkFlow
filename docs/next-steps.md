@@ -7,6 +7,21 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+075: 26камер трёхучебныхмиров/настоящиеfade/screen/mouse/Avatar race-stage
+проверены;29GPUкадров просмотрены. Skip/reload/countretention/DmallocPASS.
+Intro source вnormalfacade,ноactualTutorialowner/boardQBI/newenginecallbacks
+ещёнет. PE/Create1passed,runtimeequal074excepttimestamps;M9недостигнут.
+[Доказательства](../research/client455-tutorial-intro.md).
+
+076: настоящийCGP_Tutorial Create/Destroy/Load/Unload/Frame/Input. Подключить
+проверенныеBSP+intro,восстановитьengineconsumers8CED70/8CE9D0/8D4C30 иreal
+Avatar/QBI/localfeedback/board,затемfourstagefactory/nextDWORD/Loginпереходы.
+Callbackrecordingsнепереноситькакproductionno-ops. НовыйcameraTUобязанполучать
+ENGINE_DEFINITIONS(WEATHERменяет_R3ENGINE_STATE);прочиеfacadeTUнеменятьглобально.
+Legacy2->3bridgeубиратьтолькосовместносTutorial2/Main3. M6/M6F/M7/M9OPEN.
+
+Предыдущий участок:
+
 074: тринастоящих учебных BSP39 загружены/отрисованы черезCLand. Исправлены
 owner/release;reload/GPU/collision/Dmalloc balanceпроверены. Шестькадров просмотрены,
 finalPE/Create1 passed. FullILevel/Empty/INS иполнаяигра OPEN;M9недостигнут.

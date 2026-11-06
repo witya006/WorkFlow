@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — world074:Bellato/Cora/Accretia455 загружаются иотрисовываются
+Последний участок M6 — tutorial-intro075: восстановлен порядок26 камер трёх
+настоящих учебных миров, fade/skip/reload;29GPU кадров просмотрены. ExactPE/Create1
+прошёл;runtime равен074 кроме linktimestamps. Actual stage/QBI/new-engine controls
+иfourstage остаются OPEN. Далее076 — настоящий CGP_Tutorial owner.
+[Доказательства](research/client455-tutorial-intro.md).
+
+Предыдущий участок M6 — world074:Bellato/Cora/Accretia455 загружаются иотрисовываются
 через настоящий CLand. Исправлены владелец BSP идеструктор уровня;повторная
 загрузка/GPU/collision/Dmalloc balance проверены. Новая PE/Create1 проходит.
 Полные ILevel/INS/Tutorial/игра ещёоткрыты;далее075 — настоящий Tutorial stage.
