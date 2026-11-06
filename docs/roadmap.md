@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+081: подключены базовые particle/entity RVP passes иsharedFX deferred lifecycle.
+Stockclip269ticks/148particle/6entitydraws,15reviewedframes,3карты иноваяPE/Create1
+прошли. Исправлен ABI weather helper1148/208->1296/212 ипроверены actual allocations.
+Далее082 — audio/остальные RVP providers иполныйTutorial/game;advancedFX/global
+resource lifecycle ивсе прежние gaps остаются. M6/M6F/M7/M9 OPEN. Процент всего
+клиента не измерен;закрытые M0–M5 неравнозначны доле готового поведения455.
+[Доказательства](../research/client455-rvp-effects.md).
+
+Предыдущий результат:
+
 080: RVP resources/animation/dummy/culling/отдельные позы общих моделей/
 model draw/EFF подключены к обычному клиенту. Real12actors/4models,9distinct
 pose ticks/459restoredparts,11reviewedframes,3camera regressions иexactPE/Create1
@@ -564,7 +574,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/081: настоящий RVP particle/entity pass иshared-effect lifecycle, остальные audio/magic/trace/screen/timer/collision/shadow providers; CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/082: ambient/event audio иостальные RVP magic/trace/screen/timer/collision/shadow providers; advancedparticle/entitymath/globalChef lifecycle/material-lightreset; CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать

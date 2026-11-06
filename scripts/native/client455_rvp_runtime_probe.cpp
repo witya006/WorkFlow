@@ -12,6 +12,7 @@
 #include "mainapp.h"
 #include "Character.h"
 #include "client455_rvp_runtime.h"
+#include "client455_rvp_effects.h"
 #include "client455_movie_state.h"
 #include "client455_fullscreen_effect.h"
 #include <client455_normal_renderer_math.h>
@@ -27,6 +28,7 @@
 extern CMainApp g_MainApp;
 
 static unsigned warnings=0;
+static void phase(const char* text){std::fprintf(stderr,"phase:%s\n",text);std::fflush(stderr);}
 static void check(bool value,const char* message){if(!value)throw std::runtime_error(message);}
 static void message(char* text){std::fprintf(stderr,"RVP engine:%s\n",text);}
 static void warning(char* text){++warnings;message(text);}
@@ -48,11 +50,12 @@ static void draw(CLevel& level) {
 }
 static int run(const char* race) {
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
-    InitR3Engine();SetErrorMessageProc(message);SetWarningMessageProc(warning);
+    phase("before-engine");InitR3Engine();phase("engine");SetErrorMessageProc(message);SetWarningMessageProc(warning);
     auto* state=GetR3State();state->mScreenXsize=640;state->mScreenYsize=480;
     state->mbFullScreen=FALSE;ForceFullScreen();std::strcpy(state->MapPath,".\\Map\\");
     std::strcpy(state->EntityPath,".\\Map\\Entity\\");
     check(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)),"device");
+    phase("device");
     state->mScreenXsize=640;state->mScreenYsize=480;R3SetViewPort(0,0,640,480);
     unsigned selected=0,fadeIns=0,fadeOuts=0,ticks=0;int before=0,after=0;
     {
@@ -61,7 +64,7 @@ static int run(const char* race) {
         {
             CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);check(land->Create()!=0,"land create");
             char path[256];std::sprintf(path,".\\Map\\%s\\%s.bsp",race,race);
-            R3SetTime(0);RTMoviePause(FALSE);check(land->LoadLevel(path)!=0,"world load");
+            R3SetTime(0);RTMoviePause(FALSE);phase("before-world");check(land->LoadLevel(path)!=0,"world load");phase("world");
             check(IsLoadedRTMovie()&&IsLoadedRTCamera()&&IsRTMoviePlaying(),"ordinary CLevel created actual RVP");
             auto initial=RF455_RvpView();check(!initial.limitation[0]&&initial.tracks>20&&RF455_GetMovieState()==4,"loaded RVP contract");
             auto* level=land->GetLevel();check(level!=nullptr,"level owner");
@@ -80,6 +83,7 @@ static int run(const char* race) {
                 draw(*level);if(tick==20)capture("rvp-scene.bgra");
             }
             std::fclose(trace);const auto done=RF455_RvpView();
+            phase("clip-done");
             check(!done.playing&&done.movieLoaded&&(RF455_GetMovieState()&4),"camera final-stop ends player");
             check(done.cursor==done.tracks,"all stock tracks consumed");
             check(RF455_GetFullScreenEffectDensity()==.25f,"completion resets density");
@@ -109,9 +113,16 @@ static int run(const char* race) {
             //observable through the actual CLand.Destroy path as well.
             char originalRvp[256];std::sprintf(originalRvp,".\\Map\\%s\\%s.rvp",race,race);
             RTMoviePause(FALSE);RTMovieCreate(originalRvp,level);check(IsLoadedRTMovie(),"reload after explicit refusal");
+            check(RF455_RvpEffectsState().present&&RF455_RvpEffectsState().references==1,"reloaded RVP owns one FX reference");
             check(land->Destroy()!=0&&!g_pLevel,"destroy actual level");g_pCamera=nullptr;
+            phase("world-destroyed");
             check(!IsLoadedRTCamera()&&IsLoadedRTMovie(),"455 release keeps loaded scalar");
             check(&CRender::GetRender()==&outer,"nested renderer restores active outer owner");
+            //CLand::UnloadLevel and CLevel's destructor each release:1->0,
+            //then zero-ref destruction. The actor probe separately observes
+            //the retained cache between those two release calls.
+            check(!RF455_RvpEffectsState().present,"two level-release calls free deferred FX cache");
+            RTMovieRelease();check(!RF455_RvpEffectsState().present,"release without cache or level is harmless");
         }
         after=GetDmallocSize();check(before==after,"world/camera Dmalloc release balance");
     }

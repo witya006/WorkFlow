@@ -47,7 +47,7 @@ def main():
         frames.append(dict(file=path.relative_to(WS).as_posix(),sha256=sha(path),preview=preview.relative_to(WS).as_posix(),preview_sha256=sha(preview)))
     def record(path):return dict(file=path.relative_to(WS).as_posix(),sha256=sha(path)) if path.exists() else None
     native=json.loads(output.read_text()) if output.exists() else None
-    report=dict(scope='Actual ordinary RVP camera/timeline/empty-list renderer path;actor/effect/audio/timer providers still open',
+    report=dict(scope='Actual ordinary RVP camera/timeline/empty-list renderer and deferred FX release regression;full RVP/audio/Tutorial remain open',
         race=race,source=record(source),script_sha256=sha(Path(__file__)),builder_sha256=sha(WS/'scripts/client455_own_probe.py'),
         runtime_inputs_sha256=sha(WS/'scripts/client455_runtime_inputs.py'),normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),
         engine_report_sha256=sha(WS/'inventory/client455-startup-engine-build.json'),

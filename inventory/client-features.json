@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RVP-EFFECTS-081",
+      "status": "partial",
+      "description": "Ordinary basic particle/entity RVP pass, shared FX references/deferred release and coordinated particle/entity ABI;fullFX/audio/game open",
+      "reference": [{"rva":"0x50d4c0","role":"particle/entity pass"},{"rva":"0x3bd560","role":"lazy six-particle load"},{"rva":"0x4d6900","role":"shared acquire"},{"rva":"0x4d8340","role":"deferred release"},{"rva":"0x4dae60","role":"1296-byte particle constructor"}],
+      "implementation": ["scripts/native/client455_rvp_effects.h","scripts/native/client455_rvp_effects.cpp","scripts/native/client455_rvp_runtime.cpp","scripts/native/client455_rvp_actor.cpp","scripts/client455_particle_port.py","scripts/build_client455_engine_startup.py","scripts/prepare_client455_normal.py"],
+      "verification": "18equalranges/2960actualasm;owned1296/212 layout and fullparticle ctor oracle. Stock269ticks/148particle draws;isolated realENTITY1 sixdraws/50pixels;15reviewedframes/3camera maps/exactPE/Create1. Weather ABI heapcorruption fixed and actual old/new allocation instructions verified1148/208->1296/212. Exit0/warn0/Dmallocbalanced.",
+      "evidence": ["inventory/client455-rvp-effects-reference.json","inventory/client455-particle-inputs.json","inventory/client455-particle-layout.json","inventory/client455-particle-abi-fix.json","inventory/client455-rvp-effects-checkpoint.json","research/client455-rvp-effects.md"],
+      "gaps": ["Legacy basicparticle/entity code with measured overlays is not complete455 numeric/render parity;advancedcurve/light/distort/azirang/trace/combine/special remain open","Original process-ownedChef/context/lifetime and densecache/failure/unwind differ from source adapter;material/lightreset8CE5D0 open","No isolatedparticle readback or fine reference-runtime pixel equivalence claim","Fullaudio/magic/collision/shadow/screen/timer/Tutorial/Avatar/QBI/fourstage/Login/auth/gameplay/IME and all earlier gaps remain mandatory"]
+    },
+    {
       "id": "CLIENT455-RVP-ACTOR-080",
       "status": "partial",
       "description": "Ordinary RVP actor resource/animation/dummy/culling/individual saved pose/model draw/EFF binding;full particles/audio/game remain open",

@@ -7,6 +7,22 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+081: базовые RVP particle/entity passes и sharedFX deferred lifetime работают.
+Полный stockclip269ticks/148particle/6isolatedentitydraws,15reviewedframes,
+3maps/exactPE/Create1passed. Coraheap corruption из-за старых weather allocations
+1148/208 исправлена на1296/212; actual machine instructions подтверждены.
+Полные FX/звук/Tutorial/игра ещё OPEN. Gate081 PARTIAL.
+[Доказательства](../research/client455-rvp-effects.md).
+
+082: восстановить ambient/event audio RVP с реальным Miles backend и ownership;
+далее magic/trace/screen/timer_rate/collision/shadow. Не потерять advancedparticle/
+полныйentitymath, globalChefowner/context/failure unwind иmaterial/lightreset8CE5D0.
+Затем actualCGP_Tutorial/Avatar/QBI/follow/localhandlers/feedback/board47 иfourstage/
+Login/auth/gameplay. При смене CParticle/CEntity ABI согласовывать weather helper,
+а не только engine/normal TUs. M6/M6F/M7/M9 OPEN; процент полноты не измерен.
+
+Предыдущий результат:
+
 080: RVP resource/animation/dummy/culling/palette/model draw/EFF binding
 подключены. Real neutralAS1:12actors/4sharedmodels/70pose+draw; отдельная сцена
 с настоящей анимацией:9distinct ticks/459restoredparts.11GPUframes просмотрены,

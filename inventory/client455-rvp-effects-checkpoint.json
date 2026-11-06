@@ -1,0 +1,53 @@
+{
+  "status": "PARTIAL",
+  "ordinary_RVP_basic_particle_entity": "PASS_BOUNDED",
+  "particle_size": 1296,
+  "entity_size": 212,
+  "weather_allocation_ABI_fixed": true,
+  "stock_ticks": 269,
+  "stock_actor_draws": 185,
+  "particle_draws": 148,
+  "entity_draws": 6,
+  "reviewed_frames": 15,
+  "visual_limit": "Stock actor/particle and isolated entity occupy few pixels;no isolated particle readback or reference-runtime fine pixel equivalence claim",
+  "regressions": [
+    {
+      "race": "bellato",
+      "ticks": 364,
+      "native_sha256": "9dbb8cf17bc56eda184b2d50c3528c972c508323ba5a77e66a3fe2f008d9aac3"
+    },
+    {
+      "race": "cora",
+      "ticks": 330,
+      "native_sha256": "48c38780136a427d91ee7e1cf11a4803ea39a9c363a6d7709593618820572f46"
+    },
+    {
+      "race": "accretia",
+      "ticks": 262,
+      "native_sha256": "9061ddc02cc4bb3bbdf20358262111c1108fc8a951df3418b920585ac0b67351"
+    }
+  ],
+  "exactPE_Create1": "PASS",
+  "normal_link_sha256": "4ddae8ca44bdb47d113c7f4f380368054b48eda08c8f50edbef670ece7be4d68",
+  "engine_report_sha256": "a06035b598e6b3c9e179115350a2c970d6960e7e5fe2ac53c70550e46b8b6977",
+  "actor_native_sha256": "7134095a9207b01a1a6b7727e8198342f8e50450dae367c9b1fb0920ad123f2e",
+  "reference_sha256": "b51b3b4539224ded5c11e40f4df9e458c674d8f7b387eb8e3144818883768ef5",
+  "layout_sha256": "b0e29fd993bfc8a2f3a79e227ae711e18c9e134fb2c5af96a84961fe8340c7f6",
+  "abi_fix_sha256": "bf1642e2259912b6c72df52478c68e3f78bae89542d1fdb098201c6f9ac0fed1",
+  "script_sha256": "a12408ee0e34cb09f6dd6715d98d87fbf646dc0ecba6228a282cad19481a8a1b",
+  "gaps": [
+    "Advanced curve/trace/light/distortion/azirang/combine-scale and special-particle kernels remain incomplete; selected advanced SPT tokens explicitly refuse loading",
+    "Basic SPT/CParticle update and CEntity loader/draw retain legacy implementations with measured overlays; exact455 numeric/render/failure equivalence is unaccepted",
+    "Original Chef resource group is process-owned; adapter owns indexes with shared RVP cache and explicitly selects it; global owner/context/enumeration parity remains open",
+    "Original dense2000-slot cache replaced by sparse owned slots; failure/locale/OOM/unregistered-index behavior not fully equivalent; constructor unwind remains unaccepted",
+    "Render material/light reset8CE5D0,full shader/lighting/reset/resource lifecycle and fine reference-runtime pixel parity remain open",
+    "Audio,magic,collision,shadow,trace,screen,timer-rate and fullTutorial/Avatar/QBI/follow/fourstage/Login/auth/gameplay/IME remain required",
+    "Prior scanner078,pausedCAM/numeric079,palette bounds080 and all other client-acceptance gaps remain"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

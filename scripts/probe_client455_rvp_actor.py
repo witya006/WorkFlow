@@ -17,7 +17,8 @@ def main():
     files=set()
     for folder in ['Map/Entity','Map/neutralAS1','Chef/RealTime_00','Chef/Tex','Chef/Eff/Real']:
         files.update(p for p in (client/folder).rglob('*') if p.is_file())
-    files.update(client/name for name in ['Chef/Real/unit.ini','System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg'])
+    files.update(client/name for name in ['Chef/Real/unit.ini','Chef/Real/entity.ini','Chef/Real/particle.ini','System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg'])
+    files.update((client/'Chef').glob('*.rpk'))
     for original in sorted(files):
         digest=sha(original);cached=staged/original.relative_to(client);cached.parent.mkdir(parents=True,exist_ok=True)
         if cached.exists():
@@ -53,7 +54,7 @@ def main():
         frames.append(dict(file=path.relative_to(WS).as_posix(),sha256=sha(path),preview=preview.relative_to(WS).as_posix(),preview_sha256=sha(preview)))
     def record(path):return dict(file=path.relative_to(WS).as_posix(),sha256=sha(path)) if path.exists() else None
     native=json.loads(output.read_text()) if output.exists() else None
-    report=dict(scope='Actual ordinary RVP actors/realBN-MSH-ANI/pose snapshots/model draw/EFF binding;particle and audio consumers still open',
+    report=dict(scope='Actual ordinary RVP actors/realBN-MSH-ANI/pose snapshots/model draw/basic particle and entity passes/deferred FX release;full advanced FX/audio/Tutorial remain open',
         source=record(source),script_sha256=sha(Path(__file__)),builder_sha256=sha(WS/'scripts/client455_own_probe.py'),
         runtime_inputs_sha256=sha(WS/'scripts/client455_runtime_inputs.py'),normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),
         engine_report_sha256=sha(WS/'inventory/client455-startup-engine-build.json'),exe=record(target),map=record(target.with_suffix('.map')),

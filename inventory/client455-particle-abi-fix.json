@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "scope": "Owned x86 weather caller allocation ABI correction;not full weather/particle parity",
+  "cases": [
+    {
+      "label": "before",
+      "exe": {
+        "file": "work/m9/def353f4/rvp-runtime-cora-001/rvp-runtime-probe.exe",
+        "sha256": "def353f4b5cf865d6c271865c527d6704db2ba01c26e5a4e384ac7c0462052da"
+      },
+      "map": {
+        "file": "work/m9/def353f4/rvp-runtime-cora-001/rvp-runtime-probe.map",
+        "sha256": "69cb109e251602c74e45b26ac7082daeb1f5e249baf1bcd109dd0cb84f3201b0"
+      },
+      "decoded": {
+        "file": "artifacts/client455-particle-abi/before.txt",
+        "sha256": "731f6a630c2e0d2d1e9ccceb06159d0f7e20983fadc77f88dbe64403bc191c51"
+      },
+      "architecture": "x86",
+      "allocations": [
+        {
+          "bytes": 1148,
+          "rva": "0xe69bf"
+        },
+        {
+          "bytes": 208,
+          "rva": "0xe6ac2"
+        }
+      ]
+    },
+    {
+      "label": "after",
+      "exe": {
+        "file": "work/m9/93bbf104/rvp-runtime-cora-001/rvp-runtime-probe.exe",
+        "sha256": "93bbf1045e958bcd81be95a52eca74151a80f918584300db2bb83f0ce8fc1ce5"
+      },
+      "map": {
+        "file": "work/m9/93bbf104/rvp-runtime-cora-001/rvp-runtime-probe.map",
+        "sha256": "c0217239e8c1ca5774923f7db8c1dfe76e591f652700cf7e3813040cd72f79df"
+      },
+      "decoded": {
+        "file": "artifacts/client455-particle-abi/after.txt",
+        "sha256": "1cd663505a6011ff9fb32f824d5b778901c4a31142bafa1d62ad11838008dcf1"
+      },
+      "architecture": "x86",
+      "allocations": [
+        {
+          "bytes": 1296,
+          "rva": "0xe69bf"
+        },
+        {
+          "bytes": 212,
+          "rva": "0xe6ac2"
+        }
+      ]
+    }
+  ],
+  "failed_exit": "0xc0000374",
+  "failed_phase": "Cora world load",
+  "failed_console": {
+    "file": "work/m9/def353f4/rvp-runtime-cora-001/console.txt",
+    "sha256": "ebc67f189cb29f2810d2ef574031a446c7e47e7c0dbfcd2f9bbf9cf300e5cf9b"
+  },
+  "diagnosis": "Weather helper retained legacy1148/208 allocations while new constructors required1296/212;force only owned particle/entity declarations into that helper",
+  "fixed_cora_native_sha256": "48c38780136a427d91ee7e1cf11a4803ea39a9c363a6d7709593618820572f46",
+  "engine_report_sha256": "a06035b598e6b3c9e179115350a2c970d6960e7e5fe2ac53c70550e46b8b6977",
+  "script_sha256": "1ce3d58ef76ba03f5b25db4550abf907cf60c8bad5b1969aa6861689a49f0e73",
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

@@ -1,5 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
+081: базовый отдельный RVP particle/entity pass иsharedFX deferred lifetime
+подключены;269stockticks/148particle/6isolatedentitydraws,15reviewedframes,
+3maps/exactPE/Create1passed. CParticle/CEntity1296/212 иactual weather allocations
+согласованы;Coraheap corruption исправлена ипроверена. Это bounded legacy/basic
+FX:advancedcurve/light/distort/trace/azirang/special,полныйentity455math/render,
+process-ownedChef/context/failureunwind/material-lightreset ещёнеприняты.
+Малые captures/счётчикdraws недоказывают isolatedparticle/finepixel parity.
+Audio/magic/collision/shadow/screen/timer/fullTutorial/auth/game ивсе прежниеgaps
+остаютсяобязательными. Gate081 PARTIAL;M6/M6F/M7/M9 OPEN. Достоверный процент
+всего клиента по неполному реестру невычисляется.
+[Доказательства](../research/client455-rvp-effects.md).
+
 080: ordinary RVP resource/animation/dummy/culling/palette/model draw/EFF binding
 восстановлены в проверенном домене.12stock actors/4sharedmodels, отдельные
 9distinctpose ticks/459parts,11reviewedframes,3camera regressions иexactnewPE/

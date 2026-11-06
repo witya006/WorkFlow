@@ -1,4 +1,5 @@
 #include "client455_rvp_actor.h"
+#include "client455_rvp_effects.h"
 #include "anicamera.h"
 #include "level.h"
 #include "r3bsp.h"
@@ -88,7 +89,7 @@ void RF455_RvpActorFrame(RF455RvpActorRuntime& actor,const RF455RvpActor& source
     //Bip01 displacement feeds only the still-unaccepted shadow/trace paths.
 }
 void RF455_RvpActorDraw(RF455RvpActorRuntime& actor,const RF455RvpActor& source,
-    ChInterface& renderer,RF455CharacterManager* body,EffectList& effects,CLevel& level) {
+    ChInterface& renderer,RF455CharacterManager* body,RF455RvpEffects& effects,CLevel& level) {
     if(!actor.visible||!resolve(actor,source,renderer,body))return;
     actor.renderColor=(source.flags&1)?actor.color:level.mBsp->GetLightFromPoint(actor.matrix[3],2);
     D3DLIGHT9 light;D3DMATERIAL9 material;
@@ -98,7 +99,7 @@ void RF455_RvpActorDraw(RF455RvpActorRuntime& actor,const RF455RvpActor& source,
     material.Ambient.r+=.2f;material.Ambient.g+=.2f;material.Ambient.b+=.2f;
     const float alpha=float(double(actor.renderColor>>24)/255);if(alpha==0)return;
     renderer.SetAlpha(actor.mesh,alpha);renderer.SetLight(light);renderer.SetMaterial(actor.mesh,material);
-    effects.SetEffect(actor.mesh,source.meshId);RF455_RestoreRvpPalette(actor);
+    effects.Apply(renderer,actor.mesh,source.meshId);RF455_RestoreRvpPalette(actor);
     renderer.SetState();renderer.DrawCharacterMat(actor.mesh,reinterpret_cast<D3DXMATRIX*>(actor.matrix),0);
     renderer.UnSetState();++actor.draws;
     //8D4340 has no xrefs and is not called by the ordinary455 Frame/Render.

@@ -5,6 +5,7 @@
 #include <vector>
 class CAniCamera;
 class CLevel;
+class RF455RvpEffects;
 
 // Named source state. It is not an overlay of the original20600-byte actor.
 struct RF455RvpPalette {
@@ -27,6 +28,6 @@ void RF455_RvpActorAnimation(RF455RvpActorRuntime&,const RF455RvpActor&,
 void RF455_RvpActorFrame(RF455RvpActorRuntime&,const RF455RvpActor&,
     ChInterface&,RF455CharacterManager*,CAniCamera&);
 void RF455_RvpActorDraw(RF455RvpActorRuntime&,const RF455RvpActor&,
-    ChInterface&,RF455CharacterManager*,EffectList&,CLevel&);
+    ChInterface&,RF455CharacterManager*,RF455RvpEffects&,CLevel&);
 void RF455_SaveRvpPalette(RF455RvpActorRuntime&);
 void RF455_RestoreRvpPalette(const RF455RvpActorRuntime&);

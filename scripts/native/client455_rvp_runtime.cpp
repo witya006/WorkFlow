@@ -2,6 +2,7 @@
 #include "client455_rvp_runtime.h"
 #include "client455_rvp.h"
 #include "client455_rvp_actor.h"
+#include "client455_rvp_effects.h"
 #include "client455_camera.h"
 #include "client455_movie_state.h"
 #include "client455_fullscreen_effect.h"
@@ -23,7 +24,7 @@ struct Movie {
     std::unique_ptr<ChInterface> renderer;
     std::unique_ptr<AnimationManager> animations;
     RF455CharacterManager* body=nullptr;
-    EffectList effects;
+    RF455RvpEffects* effects=nullptr;
     std::vector<RF455RvpActorRuntime> actors;
     std::size_t cursor=0;
     unsigned cameras=0,fadeIns=0,fadeOuts=0;
@@ -120,8 +121,8 @@ void RF455_RvpCreate(char* path,CLevel* level) {
     value.renderer=std::move(renderer);
     value.data=std::move(bound);value.actors.clear();value.actors.resize(value.data.actors.size());
     value.animations.reset(new AnimationManager);value.body=value.renderer->CreatePart455("BODY");
+    value.effects=&RF455_AcquireRvpEffects();
     if(!value.actors.empty()) {
-        value.effects.LoadEffectFileList(".\\chef\\real\\unit.ini");
         for(std::size_t i=0;i<value.actors.size();++i) {
             const auto& source=value.data.actors[i];auto& actor=value.actors[i];
             const auto name=source.mapDummy.empty()?std::string():source.mapDummy.substr(1);
@@ -129,7 +130,7 @@ void RF455_RvpCreate(char* path,CLevel* level) {
             if(actor.dummy==0xffffffffu){value.limitation="RVP actor dummy binding failed;failure domain unaccepted";value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;return;}
             RF455_LoadRvpActor(actor,source,*value.renderer,value.body,*value.animations);
         }
-        value.limitation="RVP actor geometry/animation active;particle/entity pass and shared-effect lifecycle remain open";
+        value.limitation="RVP actor and basic particle/entity passes active;advanced FX/audio and global resource lifetime parity remain open";
     }
     RF455_AddMovieFlags(value.data.flags);
     if(value.data.flags&1)GetR3State()->mWideOn=TRUE;
@@ -170,20 +171,21 @@ void RF455_RvpRender() {
     auto& value=movie();if(!ready(value)||!value.level->IsLoadedBsp()||!value.loaded||!value.renderer||(RF455_GetMovieState()&16))return;
     //The empty-list455 path has one unconditional UnSetState, no SetState.
     if(GetR3State()->mIsFog)GetD3dDevice()->SetRenderState(D3DRS_FOGENABLE,TRUE);
-    for(std::size_t i=0;i<value.actors.size();++i)RF455_RvpActorDraw(value.actors[i],value.data.actors[i],*value.renderer,value.body,value.effects,*value.level);
+    for(std::size_t i=0;i<value.actors.size();++i)RF455_RvpActorDraw(value.actors[i],value.data.actors[i],*value.renderer,value.body,*value.effects,*value.level);
     if(!value.actors.empty()){value.renderer->SetState();value.renderer->FlushTransparency();value.renderer->UnSetState();}
     if(GetR3State()->mIsFog)GetD3dDevice()->SetRenderState(D3DRS_FOGENABLE,FALSE);
     value.renderer->UnSetState();
+    for(auto& actor:value.actors)if(actor.visible&&actor.bone&&actor.mesh)value.effects->Draw(actor.mesh,reinterpret_cast<D3DXMATRIX*>(actor.matrix),actor.renderColor);
     if(GetR3State()->mIsFog)GetD3dDevice()->SetRenderState(D3DRS_FOGENABLE,TRUE);
 }
 void RF455_RvpRelease() {
-    auto& value=movie();if(!value.level)return;
+    RF455_ReleaseRvpEffects();auto& value=movie();if(!value.level)return;
     value.camera()->ReleaseAniCamera();
     //455 Release leaves loaded/play/pause scalars untouched. Detach a camera-only
     // failed-load owner as well so the source-owned pointer cannot outlive it;
     // that failure-domain divergence is tracked, not accepted as full parity.
     value.level=nullptr;
     if(!value.loaded)return;
-    value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;value.effects.native.entries.clear();value.data={};value.cursor=0;value.blur=0;
+    value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;value.effects=nullptr;value.data={};value.cursor=0;value.blur=0;
     RF455_RemoveMovieFlags(0xffffffffu);
 }

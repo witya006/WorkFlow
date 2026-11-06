@@ -23,6 +23,45 @@
 
 ## Последний проверенный результат
 
+081: настоящий отдельный RVP particle/entity DrawEffectMat и sharedFX
+Create/refcount/deferred Release подключены к обычному клиенту. EFF-кэш отдельно
+от прочих владельцев;17ChefRPK разрешают283/300particle и61/64entity definitions,
+все5RVP294–298 доступны. Cache lazy-load/clones6/cycle%6, Loop до публикации
+rotation/createpos; falseLoop завершает весь model pass. Entity inverseYZ и
+scroll timer сохраняются. Первый Release1->0 удерживает cache; следующий0
+удаляет даже без level. Полные advancedFX/численная эквивалентность ещё OPEN.
+
+Owned CParticle1148->1296/CEntity208->212; ctor1296byte oracle PASS.
+Реальная регрессия Cora обнаружила heap corruption0xc0000374 при LoadLevel:
+отдельный weather helper выделял старые размеры. Исправлено /FI particle455.h
+только для него; actual old/new operator-new args1148/208->1296/212 подтверждены
+по RVA E69BF/E6AC2 в own probe. Final3maps passed364/330/262ticks,0warnings и
+Dmallocbalance. Не повторять ошибку: 58engine TU плюс weather используют owned
+декларации; прочие8independent helpers не получают legacy camera namespace.
+
+StockneutralAS1:269ticks до конца/12actors/4models/185draws/148particle draws,
+one loadedrecipe. Отдельный actualENTITY1:6draws/50pixels. Старый animation
+regression9distinctticks/459parts сохраняется.15GPUframes просмотрены; мелкие
+изображения/счётчик particle draws не доказывают isolatedparticle/finepixel parity.
+Final actor run work/m9/a81c4cb8/rvp-actor-001, exit0/warn0/Dmalloc270592balance.
+Engine14af5e53fd4f639d5afa42e81d38ccb041bd14706d55bfa1b1c4c51763bd5c22,
+67objects/11overlays/baseline033preserved. PE0165bf169fb462a9111cd93201963d97f8a9d0e18ea8cdd9f0c600503c34440f,
+entry151000/2089984bytes/182-20-39TU/0unresolved;freshstartup/entry/contracts/
+exactCreate1passed. IDA2710bd78savedclosed/list0;18equalranges/2960actualasm.
+Gate inventory/client455-rvp-effects-checkpoint.json PARTIAL, старые gates historical.
+
+Открыты advancedtrace/curve/light/distort/azirang/combine/special kernels,
+полныйCEntity/particle455math/render,process-ownedChef group/context/lifetime,
+dense-cache/failure/constructorunwind,Render8CE5D0material/lightreset и все прежние
+разрывы. Source adapter explicit-refuses selectedadvancedSPT; не выдавать legacy
+basic за полный455. Далее082 — ambient/event audio/Miles contracts и другие
+RVP providers, затем actualTutorial/Avatar/QBI/follow/localhandlers/fourstage/Login.
+Большие неизменённые159k suites не повторялись. На запрос общей оценки не давать
+выдуманный процент: M0–M5 закрыты, M6 частичный; полного входа/мира/игры ещё нет.
+M6/M6F/M7/M9 OPEN. Подробности research/client455-rvp-effects.md.
+
+Предыдущий результат:
+
 080: обычный RVP вызывает восстановленные загрузку Character, выбор ANI,
 dummy×scale, culling, сохранение/восстановление отдельных поз, material/EFF,
 настоящую отрисовку модели и transparency. Новые source APIs находятся в

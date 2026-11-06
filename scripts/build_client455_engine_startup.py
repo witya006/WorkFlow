@@ -11,14 +11,21 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
+    from client455_particle_port import headers,particle_source,entity_source
+    particleHeaders=headers(base,root,previous)
+    ownedParticleHeader=root/'include/particle455.h'
+    particlePrefix=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders)).encode()
+    if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
+    if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
     cameraHeader=base/'source/R3Engine/2ndclass/anicamera.h';ownedHeader=root/'include/anicamera455.h';ownedHeader.parent.mkdir(parents=True,exist_ok=True)
     header=cameraHeader.read_bytes();anchor=b'void SetNowFrame( DWORD frame);'
     if header.count(anchor)!=1:raise ValueError('Camera seconds declaration boundary changed')
     header=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n').encode()+header.replace(anchor,anchor+b'\r\n\tvoid SetNowFrame(float seconds); //4558D1D90 float argument')
+    header=header.replace(b'#include "c_vector.h"\r\n',b'#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders).encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp']:
-        folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp']:
+        folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
@@ -74,6 +81,8 @@ def main():
             first,last=section(raw,b'BOOL DrawFadeScreen()',b'BOOL DrawFadeScreen()');body=raw[first:last];at=body.index(b'{')+1
             bars=b'\r\n\tif(GetR3State()->mWideOn){const LONG width=LONG(GetR3State()->mScreenXsize),height=LONG(GetR3State()->mScreenYsize);const LONG image=LONG(double(0.55f)*GetR3State()->mScreenXsize);const LONG border=LONG(double(GetR3State()->mScreenYsize)-image)/2;Draw2DRectangle(0,0,width,border,0xff000000);Draw2DRectangle(0,height-border,width,height,0xff000000);}\r\n'
             raw=raw[:first]+body[:at]+bars+body[at:]+raw[last:]
+        elif filename=='r3particle.cpp':raw=particle_source(raw)
+        elif filename=='entity.cpp':raw=entity_source(raw)
         else:
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_camera.h').as_posix()+'"\n#include <utility>\n').encode()+raw
@@ -92,13 +101,15 @@ def main():
         derived.append({'file':target.relative_to(WS).as_posix(),'sha256':sha(target),'original':source.relative_to(WS).as_posix(),'original_sha256':sha(source)})
         cmakeText=cmakeText.replace(source.as_posix(),target.as_posix())
     cmakeText=cmakeText.replace('R3Engine455','R3Engine455Startup')
-    # Keep helper kernels that never declare CAniCamera free of legacy globals/
-    # using-directives. Every engine TU sees the same owned class declaration.
+    #Weather allocates CParticle/CEntity and must see their expanded declarations.
+    #Other helper kernels stay free of legacy camera/global declarations.
     redirected={row['original']:row['file'] for row in derived}
     for row in sources:
-        if not (WS/row['file']).is_relative_to(base/'source/R3Engine'):continue
+        isEngine=(WS/row['file']).is_relative_to(base/'source/R3Engine')
+        if not isEngine and row['file']!='scripts/native/client455_weather.cpp':continue
         actual=WS/redirected.get(row['file'],row['file'])
-        cmakeText+='\nset_property(SOURCE "'+actual.as_posix()+'" APPEND PROPERTY COMPILE_OPTIONS "/FI'+ownedHeader.as_posix()+'")\n'
+        declaration=ownedHeader if isEngine else ownedParticleHeader
+        cmakeText+='\nset_property(SOURCE "'+actual.as_posix()+'" APPEND PROPERTY COMPILE_OPTIONS "/FI'+declaration.as_posix()+'")\n'
     (root/'CMakeLists.txt').write_text(cmakeText)
     info=json.loads((WS/'inventory/msvc-verification.json').read_text());cmake=Path(info['installation_path'])/'Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe';build=root/'build';oldLibrary=base/'build-vs2026/Release/R3Engine455.lib';oldHash=sha(oldLibrary)
     config=subprocess.run([str(cmake),'-S',str(root),'-B',str(build),'-G','Visual Studio 18 2026','-A','Win32','-T','v145','-DCMAKE_SYSTEM_VERSION=10.0.26100.0'],capture_output=True,timeout=120,creationflags=subprocess.CREATE_NO_WINDOW);(art/'configure.txt').write_bytes(config.stdout+config.stderr)
@@ -115,5 +126,8 @@ def main():
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
     report['rvp_runtime']={name:sha(WS/'scripts/native'/name) for name in ['client455_rvp_runtime.h','client455_rvp_engine.inc']}
     report['camera_header_overlay']={'file':ownedHeader.relative_to(WS).as_posix(),'sha256':sha(ownedHeader),'original':cameraHeader.relative_to(WS).as_posix(),'original_sha256':sha(cameraHeader)}
+    report['particle_headers']=particleHeaders
+    report['particle_header_overlay']={'file':ownedParticleHeader.relative_to(WS).as_posix(),'sha256':sha(ownedParticleHeader),'extra_consumer':'scripts/native/client455_weather.cpp'}
+    report['particle_port']={'script':{'file':'scripts/client455_particle_port.py','sha256':sha(WS/'scripts/client455_particle_port.py')}}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

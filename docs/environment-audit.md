@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, rvp-effects081: новых установок нет. IDA2710bd78 сохранена/
+закрыта;18 ranges совпадают между pins,2960 полных asm instructions сохранены.
+Собственные CParticle/CEntity1296/212, полный ctor oracle и базовые RVP FX
+проверены:269ticks/148particle/6entitydraws,15просмотренных кадров,3карты и
+exactPE/Create1. Исправлена heap corruption Cora: weather helper выделял старые
+1148/208 байтов; actual allocation instructions проверены до/после исправления.
+Engine14af5e53…/67objects/11overlays,PE0165bf16…/entry151000/182-20-39TU/
+0unresolved. Baseline033 сохранена;fullFX/audio/Tutorial/game/M9 OPEN.
+[Доказательства](../research/client455-rvp-effects.md).
+
 Дополнение07.11, rvp-actor080: установок нет. IDA f9d34033 сохранена и закрыта;
 16 ranges совпадают между pins,1051 asm instructions получены полностью.
 Сцена12actors/4models и отдельные позы общей модели прошли проверки:
