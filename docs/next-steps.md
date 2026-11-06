@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок072: исходное окно брифинга иscreen capture восстановлены;CTutorialBoard
+probe использует actual provider. Страницы/typing/buttons/портреты/клавиши,
+настоящий mouse→queue иKo/Ru22GPUкадра проверены. ExactnewPE/Create1 изатронутый
+GUI прошли;M6/M6F/M7/M9 OPEN. Подробности:client455-briefing-window.md вresearch/.
+
+Далее073: связать board/47QBI processors с настоящими Avatar/world/frame/input/
+localfeedback исоздать Tutorial class вобычной4stagefactory. Actualwindow не
+регистрировать впостороннемloginstage ине force-retain. Current-stage guard
+45FBD0/basewindow/device-reset/sprite-manager/globalvirtualsize/IME/layers и
+все прежние Character/render/gameplay gaps обязательны дляM6F/M9.
+
+Предыдущий участок:
+
 Участок071: source CGUIBriefingBoard/CGUITutorialKeyBoard/RF455GuiAnimatedImage
 готовы дляactualwindow. Realcommoncaps462/611,tutorial21 sheets/17selectors,
 2rows/gaps/stalegeometry/UV/loop/pause/alpha testedKo/Ru.20frames,12uniqueviewed.

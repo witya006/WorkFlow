@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,briefing-window072: установокнет.32ranges/vtable212 equalpins,
+19listedfullasm+2captureasm;IDA18f99dcdsavedclosed. Sourcewindow/provider,
+realScreen capture,actualboardrich/key иKo/Ru22GPUframes проверены. Fresh
+gui-input/modal/minimap passed. PEbd50df91…/entry150350,182/20/31TU,
+0unresolved/exactCreate1. Runtime changed,071timestamp-onlyreuse неприменим;
+прочиеoldGUI отчёты оставленыhistorical. ActualTutorial/Avatar/world иполная
+приёмкаещёOPEN.40080201unknown.
+[Доказательства](../research/client455-briefing-window.md).
+
 Дополнение07.11,briefing-controls071: установокнет.29ranges/3vtablesequalpins,
 8fullasm,IDAs e0103d83/38abac4e savedclosed. Frame/key/animation иtyping basefill
 Ko/Ru native/GPUpassed,20frames/12uniqueviews. Final PEfea692b9…/entry150290,

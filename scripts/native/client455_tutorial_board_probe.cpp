@@ -15,6 +15,7 @@
 #include "client455_nation_paths.h"
 #include "client455_tutorial_actions.h"
 #include "client455_tutorial_board.h"
+#include "client455_briefing_window.h"
 #include <mbctype.h>
 #include <algorithm>
 #include <cstdio>
@@ -40,21 +41,11 @@ struct Host final : RF455TutorialBoardHost {
     bool skipTutorial()override{return skip;}
     void setSkipTutorial(std::uint32_t value)override{check(value==1,"skip argument");skip=true;calls.push_back("skip");}
     std::uint32_t milliseconds()override{++clocks;return now;}
-    void releaseUiCapture()override{calls.push_back("capture");}
+    void releaseUiCapture()override{g_pUiScreen->SetCapture455(nullptr);calls.push_back("capture");}
     void stageVirtual52()override{calls.push_back("virtual52");}
     void setStageInput(std::uint32_t value)override{check(value==1,"stage input");calls.push_back("input");}
     void setAvatarStage(std::uint8_t value)override{check(value==3&&runtime&&runtime->quests.empty(),"unload before stage3");calls.push_back("stage3");}
     void reportProgressRequested()override{++reports;}
-};
-
-// Test visibility/board callbacks only. This is explicitly NOT the455 rich UI.
-struct View final : RF455TutorialBriefingView {
-    CGUIWindow actualWindow;bool autosize=true,acceptRich=false,lastClose=false;
-    View(){actualWindow.SetSize(462,207);actualWindow.Show(FALSE);}
-    CGUIWindow& window()override{return actualWindow;}
-    void setAutoSize(bool value)override{autosize=value;}
-    bool showRichMessage(const RF455TutorialMessage&,bool closeAllowed)override{lastClose=closeAllowed;return acceptRich;}
-    bool showKeyGuide(const RF455TutorialKeyGuide&)override{return false;}
 };
 
 static CGUIMessagebox* modal(std::uint16_t id,std::uint16_t style){
@@ -120,17 +111,20 @@ static int run(){
     check(unbound.message(2,&message,0),"message2");auto* box=modal(0x6000,3);check(textOf(*box)=="Tutorial 455","actual message2 text");
     const unsigned colored=renderModal(*box,"modal2.bgra");check(colored>100,"actual modal rendered");_CloseDialogBox(nullptr,0x6000);
     check(unbound.message(3,&message,0),"message3");box=modal(0x6002,4);check(textOf(*box)=="Tutorial 455","actual message3 text");_CloseDialogBox(nullptr,0x6002);
-    View view;CTutorialBoard board(runtime,host,shared,&view);board.InitWindow(38,-1,-3);
-    check(!view.autosize&&view.actualWindow.GetPosX()==89&&view.actualWindow.GetPosY()==273,"base anchor/init contract");
-    view.actualWindow.Show(FALSE); //455Add inherits the screen's visibility.
+    std::unique_ptr<RF455TutorialBriefingWindow> owner(new RF455TutorialBriefingWindow);auto& view=*owner;auto& actualWindow=view.briefing();CTutorialBoard board(runtime,host,shared,&view);board.InitWindow(38,-1,-3);
+    check(!actualWindow.GetAutoSize455()&&actualWindow.GetPosX()==89&&actualWindow.GetPosY()==273,"base anchor/init contract");
+    actualWindow.Show(FALSE); //455Add inherits the screen's visibility.
     runtime.context.input=11;board.FrameMove();check(runtime.context.input==3,"hidden briefing sets input3");
-    view.actualWindow.Show(TRUE);runtime.context.input=9;board.FrameMove();check(runtime.context.input==9,"visible briefing preserves input");
-    view.acceptRich=true;check(board.message(0,&message,0)&&board.closeBlocked()&&!view.lastClose,"rich0 close lock");
-    board.MsgProc(nullptr,0x1201,38,1);check(view.actualWindow.IsShow(),"locked close suppressed");
-    check(board.message(1,&message,0)&&!board.closeBlocked()&&view.lastClose,"rich1 close permission");
-    board.MsgProc(nullptr,0x1201,38,0);check(view.actualWindow.IsShow(),"base close disabled by zero argument");
-    board.MsgProc(nullptr,0x1201,38,1);check(!view.actualWindow.IsShow(),"ordinary close");
-    board.MsgProc(nullptr,0x1202,38,1);check(view.actualWindow.IsShow(),"ordinary toggle");
+    actualWindow.Show(TRUE);runtime.context.input=9;board.FrameMove();check(runtime.context.input==9,"visible briefing preserves input");
+    check(board.message(0,&message,0)&&board.closeBlocked()&&!g_pUiScreen->GetCapture455(),"rich0 close lock");
+    board.MsgProc(nullptr,0x1201,38,1);check(actualWindow.IsShow(),"locked close suppressed");
+    check(board.message(1,&message,0)&&!board.closeBlocked()&&g_pUiScreen->GetCapture455()==&actualWindow,"rich1 captures real briefing");
+    check(actualWindow.GetTyping455().GetFragmentCount455()==2&&std::strcmp(actualWindow.GetTitle455().GetString(),RF455_GetNormalLanguagePack()->get(445))==0,"actual title and rich fragments");
+    check(board.message(4,nullptr,0x0311)&&actualWindow.GetKeys455()&&actualWindow.GetKeyFrame455().IsAddedObject(actualWindow.GetKeys455()),"actual board key widget");
+    check(board.message(4,nullptr,0xffff)&&!actualWindow.GetKeyFrame455().IsAddedObject(actualWindow.GetKeys455()),"actual board hides key widget");
+    board.MsgProc(nullptr,0x1201,38,0);check(actualWindow.IsShow(),"base close disabled by zero argument");
+    board.MsgProc(nullptr,0x1201,38,1);check(!actualWindow.IsShow(),"ordinary close");
+    board.MsgProc(nullptr,0x1202,38,1);check(actualWindow.IsShow(),"ordinary toggle");
     host.calls.clear();hasQuest(runtime);board.questRefreshed();board.requestFinish(false);
     check(!board.ready()&&host.calls.empty(),"first incomplete finish asks confirmation");box=modal(0x6001,3);
     check(textOf(*box)==languageContent(444),"real language444");_CloseDialogBox(nullptr,0x6001);
@@ -160,9 +154,9 @@ static int run(){
     const auto count=runtime.quests.size();host.skip=true;check(!board.startScript("missing",0,0,factory,runtimeHost)&&runtime.quests.size()==count,"skip retains script");host.skip=false;
     check(!board.startScript("missing",0,0,factory,runtimeHost)&&runtime.quests.empty()&&runtime.context.input==11,"failed load unloads old script");
     check(!board.startScript("DataTable\\en-gb",6,0,factory,runtimeHost)&&!board.startScript("DataTable\\en-gb",0,4,factory,runtimeHost),"unsafe selector table domains refused");
-    g_pUiScreen->Remove(&view.actualWindow);_CloseAllDialogBox();(g_MainApp.*access(Unload{}))();R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
+    g_pUiScreen->SetCapture455(nullptr);g_pUiScreen->Remove(&actualWindow);owner.reset();_CloseAllDialogBox();(g_MainApp.*access(Unload{}))();R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");
-    std::fprintf(out,"{\"status\":\"PASS\",\"board_rules\":true,\"real_modal2_and3\":true,\"real_language441_and444\":true,\"mbsnbcpy_and_bounds\":true,\"key_guide_rows\":true,\"quit_and_finish_order\":true,\"report_clock_wrap\":true,\"race_class_programs_prepared\":%u,\"modal_colored_pixels\":%u,\"frame_width\":%u,\"frame_height\":%u,\"rich_view_is_test_fixture\":true,\"production_host\":false,\"full_briefing_window\":false,\"full_Tutorial\":false}\n",prepared,colored,frameWidth,frameHeight);std::fclose(out);return 0;
+    std::fprintf(out,"{\"status\":\"PASS\",\"board_rules\":true,\"real_modal2_and3\":true,\"real_language441_and444\":true,\"mbsnbcpy_and_bounds\":true,\"key_guide_rows\":true,\"quit_and_finish_order\":true,\"report_clock_wrap\":true,\"race_class_programs_prepared\":%u,\"modal_colored_pixels\":%u,\"frame_width\":%u,\"frame_height\":%u,\"rich_view_is_test_fixture\":false,\"production_host\":false,\"source_briefing_window\":true,\"full_Tutorial\":false}\n",prepared,colored,frameWidth,frameHeight);std::fclose(out);return 0;
 }
 static LONG observe(EXCEPTION_POINTERS* info){if(info->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;FILE* out=std::fopen("exception.json","wb");if(out){std::fprintf(out,"{\"code\":%lu,\"address\":%lu,\"base\":%lu}\n",info->ExceptionRecord->ExceptionCode,reinterpret_cast<DWORD>(info->ExceptionRecord->ExceptionAddress),reinterpret_cast<DWORD>(GetModuleHandleA(nullptr)));std::fclose(out);}return EXCEPTION_EXECUTE_HANDLER;}
 static int guarded(){__try{return run();}__except(observe(GetExceptionInformation())){return 99;}}

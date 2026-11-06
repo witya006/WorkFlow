@@ -61,19 +61,24 @@ def main():
     frame=native['frame']
     if frame['width']!=640 or frame['height']!=480 or (WS/frame['file']).stat().st_size!=640*480*4:
         raise ValueError('Frame must contain just the actual640x480viewport')
-    if not actual['rich_view_is_test_fixture'] or actual['production_host'] or \
-       actual['full_briefing_window'] or actual['full_Tutorial'] or native['normal_client_relinked']:
-        raise ValueError('Do not promote a partial board/legacy GUI bridge into455acceptance')
+    if actual['rich_view_is_test_fixture'] or not actual['source_briefing_window'] or actual['production_host'] or \
+       actual['full_Tutorial'] or native['normal_client_relinked']:
+        raise ValueError('Source briefing must be real;Avatar/stage acceptance remains open')
+    window=load('client455-briefing-window-native')
+    if window['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json'):
+        raise ValueError('Stale actual briefing component evidence')
+    for name,value in window['sources'].items():
+        if sha(WS/'scripts/native'/name)!=value:raise ValueError('Changed briefing dependency:'+name)
     kernels,_=kernel_sources(WS/'scripts/native')
     if len(kernels)!=20:raise ValueError('Canonical source discovery changed')
     report={'status':'PARTIAL','board_control_rules':'PASS','real_modal_GUI_bridge_and_D3D':'PASS',
-            'modal_sprite_mapping_455':'OPEN','full_CGUIBriefingWindow':'OPEN','production_host':'OPEN',
+            'modal_sprite_mapping_455':'SOURCE_COMPONENT_PASS','source_CGUIBriefingWindow':'PASS','full_CGUIBriefingWindow_acceptance':'OPEN','production_host':'OPEN',
             'full_Tutorial':'OPEN','evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in
-                ['client455-tutorial-board-reference','client455-tutorial-board-native']},
+                ['client455-tutorial-board-reference','client455-tutorial-board-native','client455-briefing-window-native']},
             'gaps':reference['gaps'],'input_exe_executed':False,'server_modified':False,
             'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     (WS/'inventory/client455-tutorial-board-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n')
-    print('PARTIAL:board control/modal GUI bridge/D3D PASS;455sprites/rich UI/host/Tutorial/M9 OPEN')
+    print('PARTIAL:board actual source briefing/key/capture/modal/D3D PASS;Avatar/world/stage/Tutorial/M9 OPEN')
 
 
 if __name__=='__main__':main()

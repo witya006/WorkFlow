@@ -11,7 +11,14 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — briefing-controls071: восстановлены frame/key/animation
+Последний участок M6 — briefing-window072: восстановлено исходное окно брифинга
+со страницами,кнопками,портретами,клавишами и настоящим screen capture.
+CTutorialBoard probe использует его вместо View fixture. Ko/Ru/22GPU кадра,
+затронутый GUI и точная новая PE/Create1 прошли проверки. Настоящие Avatar/world/
+Tutorial stage ещё не связаны. Далее073;M6/M9 открыты.
+[Доказательства](research/client455-briefing-window.md).
+
+Предыдущий участок M6 — briefing-controls071: восстановлены frame/key/animation
 controls455,исправлен typing basefill. Ko/Ru native/GPU прошли;точная новая PE
 сохранила Create1. Её runtime bytes совпали с070 за исключением timestamps,
 поэтому неизменённые GUI suites не повторялись. Fullbriefing/provider ещё OPEN.

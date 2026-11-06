@@ -1,15 +1,15 @@
 {
-  "scope": "Board control rules,real client modal2/3 objects and D3D draw;visibility/rich/stage providers are test fixtures",
+  "scope": "Board control rules,actual source briefing provider/key/capture and modal2/3;Avatar/stage host remains a recording fixture",
   "architecture": "x86",
-  "entry_rva": "0xf02d0",
+  "entry_rva": "0xf34e0",
   "sources": {
     "client455_tutorial_board.cpp": "33b1f9d3abb11754ad18956fdceefd31b69d34b10b1aa51db516ce7969c6c8b8",
-    "client455_tutorial_board_probe.cpp": "ef4c276de985e6705cf13594f4a982b0da5a72e0f3fc4dd390f6867f8332cf58",
+    "client455_tutorial_board_probe.cpp": "0fbf9c86fa4336b706a38095136e10ea8d1c64920ba3c07e48032565b1b3ab8f",
     "client455_tutorial_board.h": "d0e715eff6122f47b00a7fddcda4c5182808ffbbcee71b9b6ed6f0fa654a9922"
   },
-  "script_sha256": "360e15e5957aeef71e7e8dd7f43376a188732f28bfffc27369653b39fcc40a20",
+  "script_sha256": "e9677fa410751fa50e0608ef45a22368c232060f65eff2799c9d69ac35dce9dc",
   "reference_sha256": "b7c0b679e222f2c5e8b440a4b3ec8286a9e0021e70aa0d5825a02f4765c5de90",
-  "normal_link_sha256": "6fa586f4b06362c3bbad7c9450c4c2a3fd17f31d0d149b665de00519b258286c",
+  "normal_link_sha256": "1b7e090895e8251c18689fc2e9c11355793a9cd1e5ea7c68e6159b969602a3f6",
   "processor_report_sha256": "2e4555ff0b18e1570381787d66e11d0602f9c0730accad0b2b17953f402edb65",
   "processor_library": {
     "file": "work/client455-port/tutorial-actions-probe/RF455TutorialActions.lib",
@@ -18,87 +18,91 @@
   "objects": [
     {
       "file": "work/client455-port/tutorial-board-probe/client455_tutorial_board.obj",
-      "sha256": "06e09edb9486bde18d91ce7a0820fb5752816992c8b801dd1c478e5b6b4d0b44"
+      "sha256": "ac649c3fd1384a9831a2a42f13c2c80864433b9dd2c21e140e4e382e64960f4d"
     },
     {
       "file": "work/client455-port/tutorial-board-probe/client455_tutorial_board_probe.obj",
-      "sha256": "e18ca7f38521168c2ad4b7270fca70a45a9a471a96a5d6ed3a7eea828c0bcc4e"
+      "sha256": "f6be72f331b2fabb3619d31694dc5250f8878c18967dba8095db1de4b7ed5f08"
     }
   ],
   "exe": {
-    "file": "work/m9/9fb4ffab/tutorial-board-001/tutorial-board-probe.exe",
-    "sha256": "9fb4ffab87a45f3b3a09a77af08c2c0fb07e5d5b3ec0ee52f7070a97fc270474"
+    "file": "work/m9/0bbc48b2/tutorial-board-001/tutorial-board-probe.exe",
+    "sha256": "0bbc48b236708b27f60ef673814941b9cd72cdcf03a25fdb071c8cc48e168692"
   },
   "map": {
     "file": "work/client455-port/tutorial-board-probe/tutorial-board-probe.map",
-    "sha256": "7c6c21281d88a4b064f964388ef2057c1af521fab29bf9f8c2f0e906b9a2c3b1"
+    "sha256": "90a6bc55eedfeb31188216d202df4457143bb435cdf308eb2735ba1a9121af83"
   },
   "build_log": {
     "file": "work/client455-port/tutorial-board-probe/build.txt",
-    "sha256": "d98e0d70fc9dd26bdb180c140bef63d16e99bfb7c421b5e4d829929e7fd98aa2"
+    "sha256": "993693d0eed260ecc9f71a4310086722d82a2e72dbb899bf5daa897d001753f9"
   },
   "link_response": {
     "file": "work/client455-port/tutorial-board-probe/link.rsp",
     "sha256": "5c7a4a8d6e371c7968842c2c2756e0dd56087380e5da062767d7878e230bba69"
   },
   "output": {
-    "file": "work/m9/9fb4ffab/tutorial-board-001/result.json",
-    "sha256": "c1a1d99246dc03be8a16923f1dbfe3bb9cab9c4d6cd5b1900250f8752d5e256a"
+    "file": "work/m9/0bbc48b2/tutorial-board-001/result.json",
+    "sha256": "ac6dbd4f50803ff6d73d4782305be3b0c9648228aa61add187724aabce9aece4"
   },
   "frame": {
-    "file": "work/m9/9fb4ffab/tutorial-board-001/modal2.bgra",
+    "file": "work/m9/0bbc48b2/tutorial-board-001/modal2.bgra",
     "sha256": "f6648260cbb0c09a3ec027169b61285d7098b5d0c324b5685d00ecd51083d2ae",
     "width": 640,
     "height": 480,
     "format": "BGRA8"
   },
   "preview": {
-    "file": "work/m9/9fb4ffab/tutorial-board-001/modal2.png",
+    "file": "work/m9/0bbc48b2/tutorial-board-001/modal2.png",
     "sha256": "957f700b36a77cd37ddb1be40f1efc07ced8a6b24bde08df08ede4cc0ac98d5e"
   },
   "inputs": [
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/System/shader/Grass1.vsh",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/System/shader/Grass1.vsh",
       "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/System/shader/grass1.vso",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/System/shader/grass1.vso",
       "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/System/console.jpg",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/System/console.jpg",
       "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/System/010.TTF",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/DataTable/ko-kr/NDLanguage.edf",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/DataTable/ko-kr/NDLanguage.edf",
       "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/SpriteImage/Common/mouse.spr",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/SpriteImage/Common/mouse.spr",
       "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/SpriteImage/ko-kr/common.spr",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/SpriteImage/ko-kr/common.spr",
       "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/DataTable/en-gb/bw.scp",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/SpriteImage/Common/tutorial.spr",
+      "sha256": "092461b4ea653dc950e5644c17fd940ddaceee83675cb030d797b49968e6974b"
+    },
+    {
+      "file": "work/m9/0bbc48b2/tutorial-board-001/DataTable/en-gb/bw.scp",
       "sha256": "1a6066976d9ab58ff849f96b741c3693e6b4da2377bf4f587cceae5f2015184c"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/DataTable/en-gb/cr.scp",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/DataTable/en-gb/cr.scp",
       "sha256": "d56f50c41e6a1b08c17f77b70b738b894340aeaa5c0b3da91b68934f112abf3b"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/DataTable/en-gb/as.scp",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/DataTable/en-gb/as.scp",
       "sha256": "2ae575bcf59b206abeffd49bfb0e75978a4174ae88e51ce366918ce2665d1f21"
     },
     {
-      "file": "work/m9/9fb4ffab/tutorial-board-001/R3Engine.ini",
+      "file": "work/m9/0bbc48b2/tutorial-board-001/R3Engine.ini",
       "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
     }
   ],
@@ -115,9 +119,9 @@
     "modal_colored_pixels": 20000,
     "frame_width": 640,
     "frame_height": 480,
-    "rich_view_is_test_fixture": true,
+    "rich_view_is_test_fixture": false,
     "production_host": false,
-    "full_briefing_window": false,
+    "source_briefing_window": true,
     "full_Tutorial": false
   },
   "natural_exit": 0,

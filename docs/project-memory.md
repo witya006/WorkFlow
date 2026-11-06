@@ -23,6 +23,29 @@
 
 ## Последний проверенный результат
 
+Участок072: actual source CGUIBriefingWindow/RF455TutorialBriefingWindow готов
+для real stage owner. Pages BYTE/80ms/firstdelay250/continuefinish-next-close,
+ND445/1059/106,6lineautosize,caps462/611,outline,portrait134/128,keyframe140,
+real21/31..33resources. Portraitrole0or2/3/15,raceBYTE/2,128cells8idle/16talk,
+FPS10,random%5+10periods/oneperiodtalk;actualwindow Updatecell2/UV0.5 checked.
+Avatar race API explicit:realcurrentAvatar provider ещёнет. Screencapture field
+target+480E0:membership check onlySet,shown overridesinput/ID andMsg routing;
+Remove/Close retainspointer,release before destruction. Msg no queuedrain.
+32ranges/vtable212 equalpins,19listedfullasm+2captureasm,IDA18f99dcdsavedclosed.
+Ko/Ru3pages/realmouse→queue→NextClose/22frames contact sheets viewed. Russian
+ND1059 beyond45pxbutton:pixelparity notproven. ActualCTutorialBoardprobe uses
+realwindow/key/capture now;Avatar/stage stillrecordingfixture,productionwindow
+instance notregistered. No force-retention. Facade31TU/182client/20kernel,
+0unresolved;PEbd50df91f63d2e5a3e844cd6fafe9b960a8bcd3479f8f9c4c2c3b2bc3d5710f7,
+entry150350/2041856bytes/exactCreate1. Nativeprobe d0692d3d…/entryE7930.
+Freshgui-input/modal/minimapKoRuPASS;olderGUIreports historical,notretagged.
+Runtime changed:071timestamp-onlyreuse isNOTcurrent. No largeunchangedsuites.
+40080201unknown;ownresource reset/globalmanager/currentstage45FBD0/basewindow/
+virtualSetSize/IME/layers/unsafe domains stillOPEN. NewwindowgatePARTIAL.
+Next073: actualAvatar/world/frame/input/localfeedback +Tutorial/fourstage,then
+fullauth/login/world/gameplay. AllpreviousCharacter/render/lifecyclegaps stay.
+M6/M6F/M7/M9OPEN. Details research/client455-briefing-window.md.
+
 Briefing-controls071: new client455_briefing_controls.{h,cpp} supplies frame,
 keywidget and sourceanimationbridge;legacyCGUIObjectAni notgloballymigrated.
 Maincaps common4:3/4=462x32,9:6/7=611x32,2capchildren;body+verticalborders then

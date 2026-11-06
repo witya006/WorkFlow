@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-BRIEFING-WINDOW-072",
+      "status": "partial",
+      "description": "Source briefing window/provider with real screen capture,pages,buttons,portraits and key guide;actual Tutorial stage remains open",
+      "reference": [{"rva":"0x332ed0","role":"Init"},{"rva":"0x333790","role":"text array"},{"rva":"0x333920","role":"page"},{"rva":"0x333a50","role":"continue"},{"rva":"0x333cb0","role":"portrait timer"},{"rva":"0x333de0","role":"portrait sheet"},{"rva":"0x233360","role":"capture setter"},{"rva":"0x230d30","role":"screen input"},{"rva":"0x231180","role":"screen messages"}],
+      "implementation": ["scripts/native/client455_briefing_window.h","scripts/native/client455_briefing_window.cpp","scripts/native/client455_screen_message.inc","scripts/prepare_client455_normal.py"],
+      "verification": "32ranges/vtable212 equalpins;19listedfullasm+2captureasm. Ko/Ru3pages,actual mouse queue,portrait timers/cells,22viewedGPUframes. CTutorialBoard uses real sourceview. AffectedGUI and exactownPE/Create1 passed.",
+      "evidence": ["inventory/client455-briefing-window-reference.json","inventory/client455-briefing-window-native.json","inventory/client455-briefing-window-visual.json","inventory/client455-briefing-window-checkpoint.json","research/client455-briefing-window.md"],
+      "gaps": ["Ordinary Tutorial/fourstage factory,real Avatar/world/frame/input/localfeedback host","Currentstage event guard45FBD0,fullbasewindow lifecycle/input/sound/docking,resource21/31..33 device-reset/globalmanager","Russian ND1059 extends beyond45pxbutton;original455pixel equivalence unproven","GlobalvirtualSetSize,otherGUIlayers/IME/oldAni/unsafe/failure domains and allpreviousgameplay/M6F/M7/M9 gaps"]
+    },
+    {
       "id": "CLIENT455-BRIEFING-CONTROLS-071",
       "status": "partial",
       "description": "Frame/key/sheet-animation source controls and corrected typing base Draw;ordinary briefing instance OPEN",

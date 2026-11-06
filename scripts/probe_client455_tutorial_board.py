@@ -53,7 +53,7 @@ def main():
     while (parent/f'tutorial-board-{index:03d}').exists():index+=1
     run=parent/f'tutorial-board-{index:03d}';run.mkdir();target=run/exe.name;shutil.copyfile(exe,target)
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']);inputs=[]
-    for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
+    for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr','SpriteImage/Common/tutorial.spr']:
         source=client/name;destination=run/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,destination)
         inputs.append({'file':destination.relative_to(WS).as_posix(),'sha256':sha(destination)})
     for row in reference['inputs']:
@@ -72,7 +72,7 @@ def main():
     output=run/'result.json';frame=run/'modal2.bgra';actual=json.loads(output.read_text())
     preview=run/'modal2.png'
     Image.frombytes('RGBA',(actual['frame_width'],actual['frame_height']),frame.read_bytes(),'raw','BGRA').convert('RGB').save(preview)
-    report={'scope':'Board control rules,real client modal2/3 objects and D3D draw;visibility/rich/stage providers are test fixtures',
+    report={'scope':'Board control rules,actual source briefing provider/key/capture and modal2/3;Avatar/stage host remains a recording fixture',
             'architecture':'x86','entry_rva':hex(pe(exe.read_bytes())['entry_rva']),
             'sources':{path.name:sha(path) for path in sources+[native/'client455_tutorial_board.h']},
             'script_sha256':sha(Path(__file__)),'reference_sha256':sha(reference_path),

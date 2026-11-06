@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+Участок072: source CGUIBriefingWindow/provider,outline/portrait/pages/keys и
+реальныйscreen capture перенесены. CTutorialBoardprobe больше неиспользует
+rich Viewfixture. Ko/Ru3pages,realmousequeue,22viewedGPUframes,affectedGUI и
+exactnewPE/Create1 passed. ActualAvatar/world/Tutorialstage ещёнет;не force-retain.
+Полнаяpixel/window/currentstageguard/resource-reset/lifecycle/IME/layer приёмка
+остаётсяOPEN вместе свсеми игровымиразрывами.M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-briefing-window.md).
+
 Участок071: frame/key/animation sourcecontrols сrealresources иKo/Ru/GPUverified.
 070typingno-self-fillclaim отозван:source/fixture исправлены по2262E0,проверены
 80000redpixels. Самиordinarybriefing/window/capture/portrait/TutorialещёOPEN.

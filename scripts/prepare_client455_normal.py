@@ -216,6 +216,24 @@ def main():
                 first,last=section(raw,b'CGUIContainer::CGUIContainer()',b'CGUIContainer::CGUIContainer()');body=raw[first:last];body=body[:-1]+b'CGUIObject::DisableFocus();\r\n}'
                 raw=raw[:first]+body+raw[last:]+b'\r\n'+(native/'client455_gui_input_container.inc').read_bytes()
                 changes.append('455default focus-off,Add show inheritance,Remove focus-only cleanup;other two layers remain open')
+            if relative=='userinterface/guicontroller/guiscreen.h':
+                anchor=b'CGUIScreen();'
+                if raw.count(anchor)!=2:raise ValueError('Screen constructor boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid SetCapture455(CGUIWindow* window){m_capture455=window;if(window&&!IsAddedObject(window))m_capture455=nullptr;}\r\n\tCGUIWindow* GetCapture455()const{return m_capture455;}\r\n\tBOOL IsCaptureVisible455()const{return m_capture455&&m_capture455->IsShow();}',1)
+                anchor=b'HWND\t\t\t\tm_hWnd;'
+                if raw.count(anchor)!=1:raise ValueError('Screen storage boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tCGUIWindow* m_capture455=nullptr;')
+                changes.append('455screen capture pointer:validate main-list membership at assignment only;shown capture routes input and messages')
+            if relative=='userinterface/guicontroller/guiscreen.cpp':
+                first,last=section(raw,b'CGUIScreen::InputProc(',b'CGUIScreen::InputProc(');body=raw[first:last]
+                anchor=b'if( g_nLockDlgBoxCount > 0 &&'
+                if body.count(anchor)!=1:raise ValueError('Screen capture input boundary changed')
+                body=body.replace(anchor,b'if(IsCaptureVisible455()){m_capture455->InputProc();g_dwGUIInputID=m_capture455->GetID();}\r\n\telse '+anchor)
+                raw=raw[:first]+body+raw[last:]
+                first,last=section(raw,b'CGUIScreen::MsgProc(',b'CGUIScreen::MsgProc(')
+                replacement=(native/'client455_screen_message.inc').read_bytes().replace(b'LRESULT CGUIScreen::',b'CGUIScreen::',1)
+                raw=raw[:first]+replacement+raw[last:]
+                changes.append('455capture overrides ordinary windows after screen dialogs;captured ID regardless child return;MsgProc visible-only and modal short-circuit')
             if relative=='userinterface/mousedev.cpp':
                 first,last=section(raw,b'CMouseDev::Update(',b'CMouseDev::Update(');body=raw[first:last];anchor=b'\tif( l_bPress )'
                 if body.count(anchor)!=1:raise ValueError('Mouse update priority changed')
@@ -520,6 +538,9 @@ def main():
     controls_source=native/'client455_briefing_controls.cpp'
     controls_facade=root/'generated'/controls_source.name
     save(controls_facade,controls_source.read_bytes(),controls_source);facade_units.append(controls_facade)
+    window_source=native/'client455_briefing_window.cpp'
+    window_facade=root/'generated'/window_source.name
+    save(window_facade,window_source.read_bytes(),window_source);facade_units.append(window_facade)
     for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -552,6 +573,7 @@ def main():
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp','client455_gui_text_typing_board.h','client455_gui_text_typing_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_briefing_controls.h','client455_briefing_controls.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_briefing_window.h','client455_briefing_window.cpp','client455_screen_message.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

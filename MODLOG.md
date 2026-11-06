@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Briefing-window072. Source window/provider/pages/buttons/portraits/
+keys and actual Screen capture restored.32ranges/vtable212 equalpins,
+19listedfullasm+2captureasm;IDA18f99dcdsavedclosed. CTutorialBoardprobe now uses
+real sourceview,Avatar/stage stillrecordingfixture. Ko/Ru22GPUframes viewed,
+realmousequeue/portraittimers/cells/affectedGUI passed. PEbd50df91…/entry150350,
+182/20/31TU,0unresolved/exactCreate1. Actualstage/Avatar/world/fullwindow
+lifecycle andM9 OPEN. Next073 actualTutorial/fourstage integration.
+[Evidence](research/client455-briefing-window.md).
+
 2026-11-07 — Briefing-controls071. Restored frame/key/sheetanimation source
 controls,realresources/KoRu/GPU20frames/12uniqueviews.29ranges/3vtables equalpins,
 8fullasm. Corrected070children-onlyDraw assumption:base2262E0 paintsfill/image;
