@@ -1,0 +1,50 @@
+{
+  "status": "PARTIAL",
+  "ordinary_RVP_actor_geometry": "PASS_BOUNDED",
+  "real_actor_count": 12,
+  "shared_models": 4,
+  "stock_pose_updates": 70,
+  "distinct_pose_ticks": 9,
+  "restored_parts": 459,
+  "reviewed_frames": 11,
+  "visual_limit": "Stock ships and isolated animated model occupy few pixels at actual CAM distance;no fine visual parity claim",
+  "regressions": [
+    {
+      "race": "bellato",
+      "selected": 10,
+      "ticks": 364,
+      "native_sha256": "d09a729f1a61afa9eb66f868828d0b77ee515b675b506405e19538a69b390b15"
+    },
+    {
+      "race": "cora",
+      "selected": 9,
+      "ticks": 330,
+      "native_sha256": "de38991985649d925f942ae8e5fbaa94a2683e5c70c8ceb121d10f42ccd58cc9"
+    },
+    {
+      "race": "accretia",
+      "selected": 8,
+      "ticks": 262,
+      "native_sha256": "003deaebbdc15315a6483d61e7d13f7538f097cc7798265f618aab34b97c9363"
+    }
+  ],
+  "exactPE_Create1": "PASS",
+  "normal_link_sha256": "43283d4a1f71f63ec072431f8a7a3922a7571ee8a5cb68cd5f1fbc49492242f8",
+  "engine_report_sha256": "6583fcb1d8a1cb2d5ac2583179341c86dbecf2cf5f84568bdb2a1d17b00faf68",
+  "actor_native_sha256": "fdfda65c0ab0d40e41954f620afb25b43550d22f25e4df06081452a816e07cc8",
+  "reference_sha256": "5c1e26d888dd78613a181824559d73ccab6766a8454dace79b80feb3f9bbcdde",
+  "script_sha256": "90ca861d4e322235782c7790138d2d9862f59280dabac868b913b8465df013ba",
+  "gaps": [
+    "Separate particle/entity DrawEffectMat pass and global effect Create/Release/refcount/deferred lifecycle remain open;EFF binding alone is not fullFX",
+    "Magic,collision,shadow,ambient/event audio,swordtrace,screen,timer-rate providers explicitly refused;not waived fromM9",
+    "RVP material/light cache-reset8CE5D0 and full failure/undefined numeric domains unaccepted",
+    "Actor palette blendcount>4 orparts>70 rejected;original unchecked overflow/fatal policy not reproduced",
+    "Resource parser scanner078 and camera-only/pause failure gaps079 remain;full Tutorial/Avatar/QBI/fourstage/auth/gameplay/IME/M6F/M7/M9 open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

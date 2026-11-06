@@ -101,7 +101,7 @@ static int run(const char* race) {
             check(GetStateFullScreenEffect()==0x80000000u,"unloaded RVP cannot change render mode");RTMovieRelease();
             check(CopyFileA(originalCamera,"actors-open.cam",FALSE)!=FALSE,"actor fixture camera");
             FILE* unsupported=std::fopen("actors-open.rvp","wb");check(unsupported!=nullptr,"actor fixture");
-            std::fputs("[Object] *unit unit.msh bone unit.bn [PrepareTrack] no_camera [Track]",unsupported);std::fclose(unsupported);
+            std::fputs("[Object] *unit unit.msh bone unit.bn collision [PrepareTrack] no_camera [Track]",unsupported);std::fclose(unsupported);
             RTMovieCreate("actors-open.rvp",level);
             check(!IsLoadedRTMovie()&&IsLoadedRTCamera()&&RF455_RvpView().limitation[0],"unfinished actor provider explicitly refused");
             RTMovieRelease();SetStateFullScreenEffect(0);

@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+080: ordinary RVP resource/animation/dummy/culling/palette/model draw/EFF binding
+восстановлены в проверенном домене.12stock actors/4sharedmodels, отдельные
+9distinctpose ticks/459parts,11reviewedframes,3camera regressions иexactnewPE/
+Create1 прошли. Малые captures не доказывают детальную визуальную эквивалентность.
+Separateparticle/entitypass/sharedFXlifetime/audio/magic/collision/shadow/trace/
+screen/timer-rate, fullTutorial/game и все прежние gaps обязательны дляM9.
+Gate080 PARTIAL; M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-rvp-actor.md).
+
 079: ordinary RVP camera/timeline больше неstub. Три мира/27camera events/
 82commands, pause/flag16/reload/renderer ownership иintro26прошли.46GPUviews
 просмотрены;точнаяноваяPE/Create1passed. Actor/effect/audio/screen/timer providers

@@ -72,6 +72,12 @@ public:
     float GetAlpha(CHARACTEROBJECT*);void SetMaterial(CHARACTEROBJECT*,D3DMATERIAL9&);
     void AnimationReset(CHARACTEROBJECT*);void RematchParent(CHARACTEROBJECT*,CHARACTEROBJECT*);
     int ImportBoundBox(char*,float*,float*);void SetEyeVec(char*,CHARACTEROBJECT*,D3DXMATRIX);
+    // Source APIs for the recovered RVP registry path;not original C++ ABI.
+    RF455CharacterManager* CreatePart455(const char*);
+    CHARACTEROBJECT* RegisterBone455(const char*);CHARACTEROBJECT* LookupBone455(const char*);
+    CHARACTEROBJECT* RegisterMesh455(RF455CharacterManager*,const char*,CHARACTEROBJECT*);
+    CHARACTEROBJECT* LookupMesh455(RF455CharacterManager*,const char*);
+    void ModelBounds455(CHARACTEROBJECT*,float*,float*);
 };
 // Own public facade; real shared transparency storage belongs to the Hub.
 class AlphaMeshManager {public:void DrawAlpahMesh();};

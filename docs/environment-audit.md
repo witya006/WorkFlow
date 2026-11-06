@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, rvp-actor080: установок нет. IDA f9d34033 сохранена и закрыта;
+16 ranges совпадают между pins,1051 asm instructions получены полностью.
+Сцена12actors/4models и отдельные позы общей модели прошли проверки:
+9ticks/459parts,11просмотренных кадров,3camera regressions и exactPE/Create1.
+PEa03ae596…/entry150DC0/182-20-38TU/0unresolved; движок079 не менялся.
+MSBuild FileTracker и GPU InitR3Engine требуют запуска вне sandbox; два
+первых GPU timeout не считаются успехом. FullFX/audio/Tutorial/M9 остаются OPEN.
+[Доказательства](../research/client455-rvp-actor.md).
+
 Дополнение07.11, rvp-runtime079: установокнет. IDA6a789f6fsavedclosed;20ranges
 equalpins,full531+23+14+114asm. Engined85c8678…/67objects/9overlays +ownedfloat
 cameraheader сохраняет033. OrdinaryRVP3maps/27events/82commands, intro26,

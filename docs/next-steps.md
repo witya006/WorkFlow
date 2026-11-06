@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+080: RVP resource/animation/dummy/culling/palette/model draw/EFF binding
+подключены. Real neutralAS1:12actors/4sharedmodels/70pose+draw; отдельная сцена
+с настоящей анимацией:9distinct ticks/459restoredparts.11GPUframes просмотрены,
+3camera regressions/exactPE/Create1 прошли. Мало pixels на реальной дистанции
+камеры: детальная визуальная эквивалентность не доказана. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-rvp-actor.md).
+
+081: восстановить настоящий particle/entity DrawEffectMat pass и shared-effect
+Create/Release/refcount/deferred lifecycle; затем ambient/event audio,
+magic/trace/screen/timer_rate/collision/shadow и остальные RVP contracts.
+Далее настоящий CGP_Tutorial/Avatar/QBI/follow/localhandlers/fourstage/Login
+и остальные M6 области. Не добавлять fade tick:8D4340 не вызывается обычным455
+Frame/Render. Палитры2680/256stride,counts2400; shared lookup обязателен.
+Текущий gate checkpoint_client455_rvp_actor.py — PARTIAL;079 gate исторический.
+
+Предыдущий результат:
+
 079: настоящий ordinary RVP camera/timeline работает черезCLevel на3мирах:
 27camera events/82commands, floatpause/flag16/ownership/reload passed. Intro26,
 46viewedGPU иexactnewPE/Create1passed. Полныеactors/audio/Tutorial ещёOPEN.

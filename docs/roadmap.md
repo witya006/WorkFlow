@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+080: RVP resources/animation/dummy/culling/отдельные позы общих моделей/
+model draw/EFF подключены к обычному клиенту. Real12actors/4models,9distinct
+pose ticks/459restoredparts,11reviewedframes,3camera regressions иexactPE/Create1
+прошли. Полные particle/audio/Tutorial/game остаются OPEN. Далее081 — настоящий
+particle/entity pass иshared-effect lifecycle, затем остальной RVP иTutorial.
+M6/M6F/M7/M9 открыты; процент полноты не измерен.
+[Доказательства](../research/client455-rvp-actor.md).
+
+Предыдущий результат:
+
 079: ordinary RVP camera/timeline перенесён в production path. Три мира/
 27camera events, intro26,46viewedframes иточнаяPE/Create1passed. Actor/effect/
 audio/timer providers иполныйTutorial ещёOPEN;далее080. M6/M6F/M7/M9 открыты.
@@ -554,7 +564,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/080: полные RVP actor/Character/effect/audio/timer providers (camera/timeline079 работает), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/081: настоящий RVP particle/entity pass иshared-effect lifecycle, остальные audio/magic/trace/screen/timer/collision/shadow providers; CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать

@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+080: обычный RVP вызывает восстановленные загрузку Character, выбор ANI,
+dummy×scale, culling, сохранение/восстановление отдельных поз, material/EFF,
+настоящую отрисовку модели и transparency. Новые source APIs находятся в
+client455_normal_rvp.cpp: bone registry4264, BODY owned managers; регистрация
+сохраняет дубликаты, поиск возвращает первый exact match. Bounds fallback —
+реальные mesh bounds с Y/Z swap. Bone frame публикуется перед wrap; actor frame
+сбрасывается160 отдельно. Counts2400, palette slots2680/stride256/max70parts;
+count>4 — явный отказ вне принятого домена. SetFrustumNormalPlane добавлен после
+automatic camera. Fade setters связаны с tracks, но8D4340 имеет0xrefs и НЕ
+вызывается обычным455 Frame/Render. Предыдущая заметка о Render fade tick ошибочна.
+
+IDA f9d34033 saved/closed;16ranges equalpins/1051actualfullasm. Raw080initial/
+extra/flow и reference audit сохранены. Stock neutralAS1 имеет12actors/4models,
+VALID2-byte emptyBN; нельзя придумывать отсутствующие animation targets.
+Stock48ticks/70poses/70draws/391pixels. Controlled2actors: pinned real draw model,
+51meshes/56bones/max4320,actualDummy01/reset75;9distinctticks/459restoredparts/
+14isolatedpixels. Малые изображения не доказывают fine pixel parity.
+Final probe work/m9/c224c1d5/rvp-actor-001:exit0/warn0/Dmalloc270592 beforeafter,
+flag16/outerrenderer restored.5actor+6camera frames reviewed. Fresh RVP3maps:
+10/9/8selections,364/330/262ticks; exact new PE/Create1 и contracts прошли.
+PEa03ae596d5942d800d1fdce350330791226d59cfde67f17a404b0a57d0c51ddb,
+entry150DC0,size2082304,182/20/38TU/0unresolved; engine079 unchanged.
+Firstchance40080201/e06d recorded, полная failure parity открыта.
+
+Sandbox native GPU InitR3Engine зависает до сцены;2timeouts сохранены. Такой же
+probe вне sandbox работает. MSBuild FileTracker также требует escalation.
+Не перезапускать живой процесс по timeout наблюдения; здесь subprocess timeout
+подтвердил его завершение перед следующими диагностическими запусками.
+Loaded actor scenes показывают explicit limitation: отдельный particle/entity
+pass/sharedFX lifetime ещё OPEN. Magic/collision/shadow/ambientwav/trace/screen/
+timer-rate остаются Create refusals. Gate080 PARTIAL; older079/GUI/kernel
+reports historical, неизменённые широкие suites не повторялись.
+Далее081 — real particle/entity draw и sharedFX Create/Release/deferred lifetime,
+затем audio/restRVP, actualTutorial/Avatar/QBI/follow/fourstage/Login/game.
+M6/M6F/M7/M9 OPEN. Подробности research/client455-rvp-actor.md.
+
+Предыдущий результат:
+
 079: ordinary RVP camera/timeline теперь НЕ compiled stub. Production CLevel
 вызывает новые entry wrappers→client455_rvp_runtime.cpp вnormalfacade. 3worlds
 27camera events/26fade-in/29fade-out=82commands; ticks364/330/262,0warnings,

@@ -6,9 +6,19 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RVP-ACTOR-080",
+      "status": "partial",
+      "description": "Ordinary RVP actor resource/animation/dummy/culling/individual saved pose/model draw/EFF binding;full particles/audio/game remain open",
+      "reference": [{"rva":"0x4d4020","role":"actor load"},{"rva":"0x4d41e0","role":"animation selection"},{"rva":"0x4d4700","role":"save palette"},{"rva":"0x4d47f0","role":"restore palette"},{"rva":"0x531480","role":"register bone"},{"rva":"0x5313f0","role":"register mesh"}],
+      "implementation": ["scripts/native/client455_normal_rvp.cpp","scripts/native/client455_rvp_actor.h","scripts/native/client455_rvp_actor.cpp","scripts/native/client455_rvp_runtime.h","scripts/native/client455_rvp_runtime.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "16ranges equalpins/1051actualfullasm. Stock neutralAS1:12actors/4sharedmodels/70pose updates and draws. Separate real animated model:9distinct ticks/459restoredparts/14isolatedpixels. Eleven reviewed frames;fresh3camera regressions/exactnewPE/Create1;exit0/warn0/Dmalloc balanced.",
+      "evidence": ["inventory/client455-rvp-actor-reference.json","inventory/client455-rvp-actor-inputs.json","inventory/client455-rvp-actor-native.json","inventory/client455-rvp-actor-visual.json","inventory/client455-rvp-actor-checkpoint.json","research/client455-rvp-actor.md"],
+      "gaps": ["Separate particle/entity pass and sharedFX Create/Release/refcount/deferred lifetime remain required","Magic/collision/shadow/ambient and event audio/trace/screen/timer-rate still refused;not waived fromM9","Small GPU captures do not establish fine visual parity;palette parts>70/count>4 unsafe domains rejected;material/light cache reset and scanner/numeric/failure gaps remain","Full Tutorial/Avatar/QBI/follow/fourstage/Login/auth/gameplay/IME and all prior M6F/M7/M9 gaps"]
+    },
+    {
       "id": "CLIENT455-RVP-RUNTIME-079",
       "status": "partial",
-      "description": "Ordinary source RVP camera/timeline with actual CAM/CLevel/renderer;actor/effect/audio/timer providers explicitly unfinished",
+      "description": "Ordinary source RVP camera/timeline with actual CAM/CLevel/renderer;080 adds bounded normal actors,full effect/audio/timer still unfinished",
       "reference": [{"rva":"0x4d5ff0","role":"FrameMove"},{"rva":"0x4d5fa0","role":"Start"},{"rva":"0x4d1d90","role":"float seconds setter"},{"rva":"0x4d5510","role":"Render;corrected078identity"},{"rva":"0x4d8340","role":"Release;corrected078identity"}],
       "implementation": ["scripts/native/client455_rvp_runtime.h","scripts/native/client455_rvp_runtime.cpp","scripts/native/client455_rvp_engine.inc","scripts/build_client455_engine_startup.py","scripts/prepare_client455_normal.py","scripts/native/client455_normal_facade.cpp"],
       "verification": "20ranges equalpins/full531+23+14+114asm. Ordinary3maps/27camera events/82commands;floatpause/flag16/camera-only/explicitactor refusal/reload/nestedrenderer/Dmalloc passed. Intro26/display8/FSE18/46reviewedGPU/Create1. Actual player body is no longer compiled stub.",
