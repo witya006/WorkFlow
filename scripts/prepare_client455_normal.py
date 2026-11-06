@@ -49,6 +49,10 @@ def main():
         if source:row.update(input=source.relative_to(WS).as_posix(),input_sha256=sha(source.read_bytes()))
         if changes:row['changes']=changes
         records.append(row)
+    codec_reference=json.loads((WS/'inventory/client455-network-codec-reference.json').read_text())
+    defaults=WS/codec_reference['generated_defaults']['file']
+    if sha(defaults.read_bytes())!=codec_reference['generated_defaults']['sha256'] or sha((WS/'scripts/audit_client455_network_codec.py').read_bytes())!=codec_reference['script_sha256']:raise ValueError('Run current network codec audit before preparing')
+    save(root/'include/client455_network_defaults.h',defaults.read_bytes(),defaults)
     # Keep the kernel type names/allocations unchanged. Add named confirmed
     # fields only to the normal port headers, leaving all existing evidence valid.
     replacements={
@@ -142,13 +146,53 @@ def main():
                 if count!=1:raise ValueError('Normal close callback reset changed')
                 raw=raw[:start]+body+raw[end:]
                 changes.append('confirmed bounded455identifier/password setters;no credentials logged')
+                start,end=section(raw,b'CNetworkMgr::Create( void )',b'CNetworkMgr::Create( void )');body=raw[start:end]
+                first=body.index(b'_NET_TYPE_PARAM typeParam;');last=body.index(b'SetNetSystem( 1, &typeParam, "RF_CLIENT");',first)+len(b'SetNetSystem( 1, &typeParam, "RF_CLIENT");')
+                body=body[:first]+(native/'client455_network_config.inc').read_bytes()+body[last:]
+                if body.count(b'return TRUE;')!=1:raise ValueError('Network Create return changed')
+                body=body.replace(b'return TRUE;',b'return transportCreated;');raw=raw[:start]+body+raw[end:]
+                signature=b'CNetworkMgr::SendNetMessage(';start,end=section(raw,signature,signature);body=raw[start:end];at=body.index(b'{')+1
+                body=body[:at]+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/networking.h':
                 anchor=b'bool Connect(DWORD dwProID, DWORD dwSocketIndex, DWORD dwIP, WORD wPort);'
                 if raw.count(anchor)!=1:raise ValueError('Normal transport declaration changed')
                 raw=raw.replace(anchor,b'int ConnectRaw455(DWORD process,DWORD socketIndex,DWORD address,WORD port);\r\n\t'+anchor)
+                raw=raw.replace(b'#define max_process 3',b'#define max_process 6').replace(b'void SetNetSystem(',b'bool SetNetSystem(')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/networking.cpp':
                 signature=b'bool CNetWorking::Connect(';start,end=section(raw,signature,signature)
                 raw=raw[:start]+(native/'client455_network_transport.inc').read_bytes()+raw[end:]
+                start,end=section(raw,b'void CNetWorking::SetNetSystem(',b'void CNetWorking::SetNetSystem(');body=raw[start:end]
+                body=body.replace(b'void CNetWorking::SetNetSystem(',b'bool CNetWorking::SetNetSystem(')
+                anchor=b'm_Process[i].SetProcess(i, &pType[i], this);'
+                if body.count(anchor)!=1:raise ValueError('Transport process initialization changed')
+                body=body.replace(anchor,b'if(!m_Process[i].SetProcess(i, &pType[i], this))return false;')
+                body=body[:-1]+b'\r\n\treturn true;\r\n}';raw=raw[:start]+body+raw[end:]
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/netprocess.h':
+                raw=b'#include "client455_network_codec.h"\r\n#include <vector>\r\n#include <new>\r\n'+raw
+                start,end=section(raw,b'struct _NET_BUFFER',b'struct _NET_BUFFER');raw=raw[:start]+(native/'client455_network_buffer.inc').read_bytes()+raw[end+1:] if raw[end:end+1]==b';' else raw[:start]+(native/'client455_network_buffer.inc').read_bytes()+raw[end:]
+                pattern=rb'CNetSocket\s+m_NetSocket;'
+                raw,count=re.subn(pattern,lambda match:b'RF455NetworkCodec m_codec455;\r\n\tstd::vector<char> m_receiveScratch455,m_sendScratch455;\r\n\tunsigned char m_encoded455[20000],m_decoded455[20000];\r\n\t'+match[0],raw)
+                if count!=1:raise ValueError('NetProcess socket member changed')
+            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/netprocess.cpp':
+                signature=b'CNetProcess::SetProcess(';start,end=section(raw,signature,signature);body=raw[start:end]
+                anchor=b'm_NetSocket.SetSocket(&m_Type);'
+                if body.count(anchor)!=1:raise ValueError('Socket initialization changed')
+                body=body.replace(anchor,b'if(!m_NetSocket.SetSocket(&m_Type))return false;')
+                pattern=rb'(m_pSendBuffer\s*=\s*new _NET_BUFFER\s*\[m_Type.m_wSocketMaxNum\];)'
+                addition=b'\r\n\tm_receiveScratch455.resize(20000);m_sendScratch455.resize(1000000);\r\n\tfor(unsigned i=0;i<m_Type.m_wSocketMaxNum;++i){\r\n\t\tif(!m_pRecvBuffer[i].Configure(20000,20000,m_receiveScratch455.data()) || !m_pSendBuffer[i].Configure(1000000,1000000,m_sendScratch455.data()))return false;\r\n\t}'
+                body,count=re.subn(pattern,lambda match:match[0]+addition,body)
+                if count!=1:raise ValueError('Process buffer allocation changed')
+                raw=raw[:start]+body+raw[end:]
+                signature=b'CNetProcess::RecvThread(';start,end=section(raw,signature,signature);body=raw[start:end]
+                body=body.replace(b'MAX_NET_BUFFER',b'pNB->m_capacity').replace(b'MAX_EXTRA_BUFFER',b'pNB->m_extra');raw=raw[:start]+body+raw[end:]
+                signature=b'CNetProcess::LoadSendMsg(DWORD dwClientIndex, BYTE* pbyType';start,end=section(raw,signature,signature)
+                raw=raw[:start]+(native/'client455_network_send.inc').read_bytes()+raw[end:]
+                signature=b'CNetProcess::_PopRecvMsg(';start,end=section(raw,signature,signature);body=raw[start:end]
+                body=body.replace(b'pNB->GetPopPoint(&bMiss)',b'pNB->GetPopPoint(&bMiss,m_codec455.configured&&m_codec455.enabled)')
+                anchor=b'_MSG_HEADER* pHeader = (_MSG_HEADER*)pMsg;'
+                if body.count(anchor)!=1:raise ValueError('Receive packet publication changed')
+                body=body.replace(anchor,b'WORD wireSize;memcpy(&wireSize,pMsg,2);std::size_t decodedSize=0;\r\n\t\tif(!m_codec455.decode(pMsg,wireSize,m_decoded455,sizeof(m_decoded455),decodedSize)){PushCloseNode(wSocketIndex);return;}\r\n\t\t_MSG_HEADER* pHeader=(_MSG_HEADER*)m_decoded455;\r\n\t\tpMsg=(char*)m_decoded455;')
+                body=body.replace(b'pNB->AddPopPos(pHeader->m_wSize)',b'pNB->AddPopPos(wireSize)');raw=raw[:start]+body+raw[end:]
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='addcodebyyun/particlelist.cpp':
                 old=b'pd3dDevice->CopyRects(backbuf,&r,1,psurface[count],&pt)'
                 if raw.count(old)!=1:raise ValueError('Screenshot readback call changed')
@@ -214,7 +258,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -236,6 +280,8 @@ def main():
     for name in ['client455_sprites.cpp','client455_sprites.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['network_defaults']=codec_reference['generated_defaults']
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

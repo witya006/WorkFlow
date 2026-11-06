@@ -23,6 +23,36 @@
 
 ## Последний проверенный результат
 
+Network-codec051: AES192-CBC с разными ключами отправки/приёма подключён к
+normal CNetProcess::LoadSendMsg/_PopRecvMsg. Plain header LE16length/group/op;
+encrypted outer LE16length/BYTEpad/ciphertext. IV0 на каждый пакет, zero-padding
+без PKCS; aligned packet без дополнительного блока. Receive consumes wireSize,
+а dispatch получает inner header. Group21 выключает process0cipher, другие
+группы включают; это действие настоящего CNetworkMgr::SendNetMessage проверено.
+33code/7data ranges equalbothpins. Default schedules208bytes (rounds12) verified
+standard expansion; inverse schedule converted and verified, directional keys
+DIFFERENT. Generated private header underwork/network455; SHA in reference,
+sourceAES production, CNG только test oracle. Ключи в Git не добавлены.
+
+Два configuredprocesses, capacity6. _NET_BUFFER80bytes, dynamic main+extra,
+borrowed shared scratch, receive20000/send1000000. Реальный sender/receiver
+проверен с фрагментацией и wrap, native exit0. Старые12gamehandlers остаются;
+queued route/full236config semantics/send filters/throttle/internal security/
+threads/Close остаются OPEN. Target source slots2 configpointer Src+472 plus
+selector writes228/232 = stackoverwrite; ownsource это не воспроизводит.
+
+OwnPE71e644eb7948f54dcee7528ef69cefc59403d23cc49bfd656c77730abda5d405,
+x86/base400000/entry149ef0/2008576bytes;182client/20kernel/20facade,0unresolved.
+Engine879f9b75 unchanged. Korean/Russian WinMain startup и existingCreateEAX1
+atownRVA B40D8 (callB40D3→B3730), controlledstop beforegame-loop.
+IDA4c89c7ab closed/save=true; artifacts/client455-network-codec/reference.json
+иaes-block-tails.json. Audit/probe/checkpoint_client455_network_codec.py;
+research/client455-network-codec.md. M6/M6F/M7/M9 OPEN.
+Next052: event/accept sequencing и настоящий preengineConnect wait/pump;
+затем gatecrypto request/response569CD0/569D30, fullprotocol/UI/login.
+
+## Предыдущий результат — bootstrap050
+
 Bootstrap050: FG/USEFG nSize4→atol rawint иcountry instance policy восстановлены.
 WinMain Nation→Launcher→Language→FG→actualNetworkCreate→Instance→Engine/Miles.
 LateNetworkCreate удалён изexistingCreate:actualearlydebugstringровноодинраз.
@@ -774,17 +804,16 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
 
 ## Следующий шаг
 
-1. Участок051: точный455clienttransport/config/standard-queued routes, actual
-   pump/Accept/gatecrypto569CD0,framing/cipher. Основы050 готовы,неповторять.
-   Oldoneprocess/12handlers иwireID-PW13bytes ещё не455two/35/state50-32.
-   Сверятьпо455,boundedofflinepacketfixtures;серверынеразрабатывать.
-2. РеальныйConnectToServer7D1150 timeout/wait/pump передengine,затем target
-   Create/video/BGM/managers/fullUI/login/game tables. Необходитьconnect/auth
-   успехом. RawstandardTCP можетвернуть0наrefusalиз-заtargetclose-order;
-   проверятьconnectedflag. Fulltext/FT/ANSI/IME/layout/ILevel/world/actions/
-   startup-error/fullshutdown остаются обязательными. Character draw/normal
-   consumers/clock/effects033–041ужеинтегрированы;закрыватьоставшиесяgaps по
-   профильнымresearch,неповторятьготовыебольшиеисторическиеsuites.
+1. Участок052: event/Accept sequencing и реальный ConnectToServer7D1150
+   timeout/wait/pump перед engine. Raw0 на отказе из-за close-order не означает
+   connected; успех TCP проверять отдельно от аутентификации. Затем gatecrypto
+   request/reply569CD0/569D30 и оставшиеся wire layouts/35handlers. AES/формат
+   пакетов/буферы/two-process configuration051 уже готовы,неповторять.
+2. Full236config semantic mapping/standard-queued routes/filters/throttle/
+   backpressure/internal security/threads/Close остаются OPEN. Далее target
+   Create/video/BGM/managers/fullUI/login/game tables,FT/ANSI/IME/layout/ILevel/
+   world/actions/startup-error/fullshutdown. Нельзя обходить connect/auth успехом.
+   Сверять по455, использовать собственные packet fixtures; серверы не делать.
 3. Другие M6 client subsystems по client-features.json и client-acceptance.md;
    затем M6F/M7/M9. M8 исключён. Доказательств полноты клиента пока нет.
 
@@ -853,6 +882,8 @@ State renderer33836 — specularEnable, не fog; numeric29/146/143.
   fixtures не доказывают все unsafe/OOM/unwind/NaN/unmaskedFP/error domains.
 
 ## Где искать уже сделанное
+
+- Network AES/framing/rings: research/client455-network-codec.md; gate client455-network-codec-checkpoint.json.
 
 - Bootstrap/state/instance: research/client455-bootstrap.md, gate client455-bootstrap-checkpoint.json.
 

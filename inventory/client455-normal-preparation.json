@@ -3,8 +3,8 @@
   "original_sources": 180,
   "sources": 182,
   "manifest": "artifacts/client455-normal/sources.json",
-  "manifest_sha256": "9f251ea4bbca690923d3f361cb3f572d70f20f8d14412a74921c5cebe408ac86",
-  "script_sha256": "8ebae3824ef43d3193e37ce4233749b6c416b99e6cafdfa77ad72a27501e663a",
+  "manifest_sha256": "0dbfb94db5542ba3c51a7fcd658cea980182a8b974ccd60d6d32f4dd2412ba31",
+  "script_sha256": "07b56ce58c86bfe9fd89d1d35d17aeddd3d96294365aa7f86ac2be22de1efea8",
   "record_inputs": {
     "Character455.h": "6524d477c8a7836b6d9014427ac40d695e67d9e1cc6a89e8342ce92107220a2b",
     "client455_normal_model.inc": "abb57ec76679336aa536bbddd27679321e5ecbc978a36199c129b0bfc2a3cb34",
@@ -49,7 +49,12 @@
     "client455_network_state.cpp": "04650016cdaa476742bcb8053cfeb029c25f0c2cf07d257341f87da172dcaefd",
     "client455_network_state.h": "052c3e73aa5fa9cc1047c9c52577f17cb0e46b3e13889ebf5e9147c1e2838ef8",
     "client455_network_bridge.inc": "2c29dad5621592805a49976e9f48112fce12cbc34f09096f66dc876a9b911aeb",
-    "client455_network_transport.inc": "0904360613219db77a4fc13f5dfded8375533985b721189df6b0dba7ed12d96a"
+    "client455_network_transport.inc": "0904360613219db77a4fc13f5dfded8375533985b721189df6b0dba7ed12d96a",
+    "client455_network_codec.cpp": "d15ae7a39e97c4b90b87217d6cd54f1e1a2b4cf4bc8577fb5f0c706b972398d1",
+    "client455_network_codec.h": "76596aec34ab4bf5442e38e563ec6d354cedf5331a49b4f1c0b74cfbc2e157a0",
+    "client455_network_config.inc": "6cd9dee09f80d2ae6f9dced8c61cadce0140de8f838ec7f279e3c915b4bc3df5",
+    "client455_network_buffer.inc": "35198a184c9212d5c8fdb1700837a57c3fe1fe3c1c960b7c229cf943ad5619d0",
+    "client455_network_send.inc": "3ed5c31786fdaaf5d08b5fee47b4ca993dcc2814430c125ee646f10560b3b02e"
   },
   "legacy_character_linked": false,
   "baseline_modified": false,
@@ -142,5 +147,9 @@
       "sha256": "d42898392278f2f52b2ead52809bc11bde9119d57a38a1687f5f4783f0268fc1"
     }
   ],
+  "network_defaults": {
+    "file": "work/client455-port/network455/client455_network_defaults.h",
+    "sha256": "16467de8e0caeb03c12a42233ee52fa5e7e14803dc07ed8b6ac93ab657ec3c97"
+  },
   "precanonical_renderer_sha256": "b8e0b76a8a7c0869943a316a3f152d54da1f832a9f127665465b9a44ef68df34"
 }

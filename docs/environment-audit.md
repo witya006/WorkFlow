@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,network-codec051: установок нет.33функции/7диапазонов данных
+совпали между455pins; AES192 schedules обоих направлений проверены полностью.
+IDA4c89c7ab closed/save=true. Собственная библиотека реализует AES; Windows CNG
+использован только в проверочной программе. Буферы/формат пакетов подключены
+к normal CNetProcess; два процесса, вместимость6. Full PE71e644eb.../entry149ef0,
+182client/20kernel/20facade,0unresolved; зависимости движка сохранены. Own
+native codec/ring tests naturalexit0; существующий Create вернул1. Full455
+transport/handlers/auth/UI/M9 ещё открыты.
+[Доказательства](../research/client455-network-codec.md).
+
 Дополнение06.11,bootstrap050: новых установок нет.28диапазонов функций и11
 country vtables совпали между455pins; IDA d716d7fa/8102ad50 closed/save=true.
 MSVC x86 собрал182client/20kernel/19facade; ownPE3b93b0eb.../entry149010,

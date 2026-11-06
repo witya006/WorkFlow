@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id":"CLIENT455-NETWORK-CODEC-051",
+      "status":"partial",
+      "description":"Directional AES192-CBC and packet framing in actual normal send/receive consumers;dynamic80byte rings and2configured/6capacity network processes",
+      "reference":[{"rva":"0x4aa500","role":"AESencrypt"},{"rva":"0x4aaa70","role":"AESdecrypt"},{"rva":"0x4ab090","role":"CBCzeroIV/partialpad"},{"rva":"0x4acc60","role":"sendframe"},{"rva":"0x4ac3d0","role":"ringextraction"},{"rva":"0x4af480","role":"receive/dispatch"}],
+      "implementation":["scripts/native/client455_network_codec.cpp","scripts/native/client455_network_buffer.inc","scripts/native/client455_network_send.inc","scripts/native/client455_network_config.inc","scripts/prepare_client455_normal.py"],
+      "verification":"Complete active schedules verified frombothpins;CNG AES128/192/256 andreal directional192CBC/framing over16payload boundaries;actualnormal send wrap/fragmentedreceive wrap/dispatch;globalnetwork2processes/6capacity/20KBreceive/1MBsend;naturalexit0;ownexistingCreate returns1",
+      "evidence":["inventory/client455-network-codec-reference.json","inventory/client455-network-codec-native.json","inventory/client455-network-codec-checkpoint.json","research/client455-network-codec.md"],
+      "gaps":["Full236byteconfig semantic mapping,standard/queued transport/event/accept/pump/threads/Close","35handlers,gatecrypto request/reply consumers,wireID/PW13bytes vsstate50/32;authentication/login","Send filters/throttle/backpressure/internal security and allerror domains","TargetCreate outofboundsconfig2 stackwrites not reproduced;unsafe/OOM/overlap/concurrent domains not certified","PreengineConnectwait/fullUI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9"]
+    },
+    {
       "id":"CLIENT455-BOOTSTRAP-050",
       "status":"partial",
       "description":"FG rawint, country singleinstance policy, actual early NetworkCreate and per-process Connect/raw standardTCP state contract",

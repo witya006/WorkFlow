@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Network codec051. Recovered directional AES192-CBC packet framing
+and dynamic80-byte rings; wired actual normal sender/receiver and two configured
+processes with capacity6. Source AES matches independent CNG; real consumers pass
+fragmented/wrapped packet tests and natural exit0. ExistingCreate still returns1.
+Full transport/events/35handlers/authentication/UI/M9 remain open.
+[Evidence](research/client455-network-codec.md).
+
 2026-11-06 — Bootstrap050. Restored FG profile/instance policy, moved actual
 network creation before engine and recovered per-process Connect/raw results.
 Real full-object tests cover duplicate own processes/mutex, state callbacks and

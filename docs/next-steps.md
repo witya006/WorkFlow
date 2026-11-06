@@ -11,7 +11,22 @@ M0–M4 выполнены в описанных diagnostic compile предел
 helper/interior/weather участка. M6 в работе. M6F/M7/M9 открыты. Compilation,
 загрузка модели и uploads не являются финальной приёмкой клиента.
 
-Последний участок — bootstrap050: FG/USEFG rawint, instance policy и6process/
+Последний участок — network-codec051: AES192-CBC с разными ключами направлений,
+формат пакета и dynamic80byte rings подключены к normal отправке/приёму.
+Receive20КБ/send1МБ, два configuredпроцесса при вместимости6. Байты пакетов
+сверены с независимым CNG, настоящие методы прошли fragmentation/wrap/dispatch
+и naturalexit0. Новая полная PE71e644eb.../entry149ef0,0unresolved; existing
+Create вернул1. [Доказательства](../research/client455-network-codec.md).
+
+Далее052 — события/accept и реальный ConnectToServer7D1150 wait/pump/timeout
+перед движком. Проверять connected отдельно от raw0; подтверждённая потеря
+ошибки послеclosesocket сохраняется. Затем gatecrypto request/reply consumers
+569CD0/569D30, полные packet layouts/35handlers и вход. Ключи AES постоянные
+из pin, crypto reply не считать новым AESключом: функция569D30 stores byte+1/
+WORD+3, downstream пока UNKNOWN. Full236config semantics/queuedroute/filters/
+throttle/internal security/Close, UI/IME/world/gameplay/shutdown ещё обязательны.
+
+Предыдущий участок — bootstrap050: FG/USEFG rawint, instance policy и6process/
 4endpoint Connect state восстановлены. NetworkMgr.Create перенесён передengine,
 позднийдубликат удалён. Ownnative FG/filename/двапроцесса/mutex/state/actualTCP
 естественно exit0. Подтверждён455порядокclose→GetLastError:10061доclose,0после,
@@ -19,7 +34,7 @@ connectedfalse;это неуспешное соединение. ExactownPE3b93b
 182client/20kernel/19facade,0unresolved;existingCreateвернул1.17scoped gates
 PASS/PARTIAL. [Доказательства](../research/client455-bootstrap.md).
 
-Следом051 —455client transport Create/config236/two configured processes,
+Историческая очередь051 —455client transport Create/config236/two configured processes,
 standard/queued routing,pump/Accept/gate crypto request569CD0,framing/cipher и
 packet layouts. Старые12handlers/oneprocess/13byteID-PW ещёне45535handlers/
 twoprocess/state50-32. Затем настоящие ConnectToServer7D1150 timeout/wait/pump
@@ -485,6 +500,11 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Актуальный051: audit_client455_network_codec.py (проверяет и генерирует private
+constants из pin) → prepare_client455_normal.py → build → normal consumers →
+link. Затем probe_client455_network_codec.py и own startup/device/after-create
+пробы; checkpoint_client455_network_codec.py. Все Python через Invoke-Python.ps1.
 
 Актуальный050: audit_client455_bootstrap.py → prepare_client455_normal.py →
 build_client455_normal.py → probe_client455_normal_consumers.py →

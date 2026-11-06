@@ -1,0 +1,51 @@
+{
+  "scope": "Source AES/framing and actual normal send/receive rings/configuration;not full455transport/handlers/authentication",
+  "source": "scripts/native/client455_network_codec_probe.cpp",
+  "source_sha256": "94dd73a83f30cb047e9b5aef90bbc8e6a7987aebe029e9be9cd00dc6bc16afca",
+  "script_sha256": "b64e5afc970cad48cc02094e2c035a2c6fc648dca9d438251621b675e4c716f7",
+  "builder_sha256": "a96c21a061c5fc925ca50020772279f2b61b809fd1dadf034b1ec07bd779a5b3",
+  "sources": {
+    "client455_network_codec.h": "76596aec34ab4bf5442e38e563ec6d354cedf5331a49b4f1c0b74cfbc2e157a0",
+    "client455_network_codec.cpp": "d15ae7a39e97c4b90b87217d6cd54f1e1a2b4cf4bc8577fb5f0c706b972398d1",
+    "client455_network_config.inc": "6cd9dee09f80d2ae6f9dced8c61cadce0140de8f838ec7f279e3c915b4bc3df5",
+    "client455_network_buffer.inc": "35198a184c9212d5c8fdb1700837a57c3fe1fe3c1c960b7c229cf943ad5619d0",
+    "client455_network_send.inc": "3ed5c31786fdaaf5d08b5fee47b4ca993dcc2814430c125ee646f10560b3b02e"
+  },
+  "reference_sha256": "23335d2e0c5cfbb307ae45f382c0daa1b5973bbe752b454fbd2b5692e12023b8",
+  "normal_link_sha256": "e3610354d80f5097d570dd204bb1234dd33a59c20329973409f34046aa7cece9",
+  "architecture": "x86",
+  "entry_rva": "0xdf480",
+  "exe": {
+    "file": "work/m9/68b76764/network-codec-001/network-codec-probe.exe",
+    "sha256": "68b767643ceb6c8577734e1e02eec1d77044b6debaec8144c9e3ac315d7297c2"
+  },
+  "map": {
+    "file": "work/client455-port/network-codec-probe/network-codec-probe.map",
+    "sha256": "cb437b6e173ee3678f7397e304d8d3f8f5c5bd51b96a677827948e83ab022072"
+  },
+  "output": {
+    "file": "work/m9/68b76764/network-codec-001/result.json",
+    "sha256": "d2ef36c72ea24597a49b198d9c10bc5151d5020a0fdd76c55654e6460b39e47d"
+  },
+  "native": {
+    "status": "PASS",
+    "independent_cng_aes128_192_256": true,
+    "directional_cbc_zero_padding": true,
+    "payload_boundaries": 16,
+    "bounded_truncation_and_malformed": true,
+    "actual_send_ring_wrap": true,
+    "actual_receive_fragment_wrap_dispatch": true,
+    "real_network_processes": 2,
+    "process_capacity": 6,
+    "receive_buffer": 20000,
+    "send_buffer": 1000000,
+    "buffer_record_bytes": 80,
+    "normal_group21_cipher_toggle": true,
+    "authentication_performed": false
+  },
+  "natural_exit": 0,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

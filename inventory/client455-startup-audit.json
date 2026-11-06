@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "3b93b0ebab349dd0b2d41d970918d4933176eb33431ec547cb7a61db1439d738",
-    "bytes": 2004992,
+    "sha256": "71e644eb7948f54dcee7528ef69cefc59403d23cc49bfd656c77730abda5d405",
+    "bytes": 2008576,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x149010",
+    "entry_rva": "0x149ef0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "f1c2354cd763d5a53c58d4d9dbf8a7443918456281c11107b36bd0a36b398a87",
+  "normal_link_sha256": "e3610354d80f5097d570dd204bb1234dd33a59c20329973409f34046aa7cece9",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -23,91 +23,91 @@
       "imports": [
         {
           "name": "D3DXMatrixInverse",
-          "iat_rva": "0x1993cc"
+          "iat_rva": "0x19a3cc"
         },
         {
           "name": "D3DXMatrixTranspose",
-          "iat_rva": "0x1993d0"
+          "iat_rva": "0x19a3d0"
         },
         {
           "name": "D3DXMatrixScaling",
-          "iat_rva": "0x1993d4"
+          "iat_rva": "0x19a3d4"
         },
         {
           "name": "D3DXAssembleShaderFromFileA",
-          "iat_rva": "0x1993d8"
+          "iat_rva": "0x19a3d8"
         },
         {
           "name": "D3DXQuaternionMultiply",
-          "iat_rva": "0x1993dc"
+          "iat_rva": "0x19a3dc"
         },
         {
           "name": "D3DXQuaternionRotationAxis",
-          "iat_rva": "0x1993e0"
+          "iat_rva": "0x19a3e0"
         },
         {
           "name": "D3DXMatrixRotationQuaternion",
-          "iat_rva": "0x1993e4"
+          "iat_rva": "0x19a3e4"
         },
         {
           "name": "D3DXMatrixTranslation",
-          "iat_rva": "0x1993e8"
+          "iat_rva": "0x19a3e8"
         },
         {
           "name": "D3DXVec3Normalize",
-          "iat_rva": "0x1993ec"
+          "iat_rva": "0x19a3ec"
         },
         {
           "name": "D3DXCreateTextureFromFileInMemory",
-          "iat_rva": "0x1993f0"
+          "iat_rva": "0x19a3f0"
         },
         {
           "name": "D3DXCreateTextureFromFileExA",
-          "iat_rva": "0x1993f4"
+          "iat_rva": "0x19a3f4"
         },
         {
           "name": "D3DXCreateTexture",
-          "iat_rva": "0x1993f8"
+          "iat_rva": "0x19a3f8"
         },
         {
           "name": "D3DXLoadSurfaceFromSurface",
-          "iat_rva": "0x1993fc"
+          "iat_rva": "0x19a3fc"
         },
         {
           "name": "D3DXCreateRenderToSurface",
-          "iat_rva": "0x199400"
+          "iat_rva": "0x19a400"
         },
         {
           "name": "D3DXMatrixRotationZ",
-          "iat_rva": "0x199404"
+          "iat_rva": "0x19a404"
         },
         {
           "name": "D3DXMatrixPerspectiveFovLH",
-          "iat_rva": "0x199408"
+          "iat_rva": "0x19a408"
         },
         {
           "name": "D3DXMatrixLookAtLH",
-          "iat_rva": "0x19940c"
+          "iat_rva": "0x19a40c"
         },
         {
           "name": "D3DXMatrixRotationX",
-          "iat_rva": "0x199410"
+          "iat_rva": "0x19a410"
         },
         {
           "name": "D3DXCreateTextureFromFileA",
-          "iat_rva": "0x199414"
+          "iat_rva": "0x19a414"
         },
         {
           "name": "D3DXMatrixRotationY",
-          "iat_rva": "0x199418"
+          "iat_rva": "0x19a418"
         },
         {
           "name": "D3DXVec3Transform",
-          "iat_rva": "0x19941c"
+          "iat_rva": "0x19a41c"
         },
         {
           "name": "D3DXMatrixMultiply",
-          "iat_rva": "0x199420"
+          "iat_rva": "0x19a420"
         }
       ],
       "provider": {
@@ -124,7 +124,7 @@
       "imports": [
         {
           "name": "Direct3DCreate9",
-          "iat_rva": "0x1993c4"
+          "iat_rva": "0x19a3c4"
         }
       ],
       "provider": {
@@ -141,7 +141,7 @@
       "imports": [
         {
           "name": "DirectInput8Create",
-          "iat_rva": "0x19901c"
+          "iat_rva": "0x19a01c"
         }
       ],
       "provider": {
@@ -158,7 +158,7 @@
       "imports": [
         {
           "name": "timeGetTime",
-          "iat_rva": "0x199360"
+          "iat_rva": "0x19a360"
         }
       ],
       "provider": {
@@ -175,91 +175,91 @@
       "imports": [
         {
           "ordinal": 115,
-          "iat_rva": "0x199368"
+          "iat_rva": "0x19a368"
         },
         {
           "ordinal": 57,
-          "iat_rva": "0x19936c"
+          "iat_rva": "0x19a36c"
         },
         {
           "ordinal": 52,
-          "iat_rva": "0x199370"
+          "iat_rva": "0x19a370"
         },
         {
           "ordinal": 11,
-          "iat_rva": "0x199374"
+          "iat_rva": "0x19a374"
         },
         {
           "name": "WSAEventSelect",
-          "iat_rva": "0x199378"
+          "iat_rva": "0x19a378"
         },
         {
           "name": "WSACreateEvent",
-          "iat_rva": "0x19937c"
+          "iat_rva": "0x19a37c"
         },
         {
           "name": "WSACloseEvent",
-          "iat_rva": "0x199380"
+          "iat_rva": "0x19a380"
         },
         {
           "ordinal": 111,
-          "iat_rva": "0x199384"
+          "iat_rva": "0x19a384"
         },
         {
           "ordinal": 23,
-          "iat_rva": "0x199388"
+          "iat_rva": "0x19a388"
         },
         {
           "ordinal": 116,
-          "iat_rva": "0x19938c"
+          "iat_rva": "0x19a38c"
         },
         {
           "ordinal": 13,
-          "iat_rva": "0x199390"
+          "iat_rva": "0x19a390"
         },
         {
           "ordinal": 9,
-          "iat_rva": "0x199394"
+          "iat_rva": "0x19a394"
         },
         {
           "ordinal": 8,
-          "iat_rva": "0x199398"
+          "iat_rva": "0x19a398"
         },
         {
           "ordinal": 4,
-          "iat_rva": "0x19939c"
+          "iat_rva": "0x19a39c"
         },
         {
           "ordinal": 3,
-          "iat_rva": "0x1993a0"
+          "iat_rva": "0x19a3a0"
         },
         {
           "ordinal": 2,
-          "iat_rva": "0x1993a4"
+          "iat_rva": "0x19a3a4"
         },
         {
           "ordinal": 1,
-          "iat_rva": "0x1993a8"
+          "iat_rva": "0x19a3a8"
         },
         {
           "name": "WSAWaitForMultipleEvents",
-          "iat_rva": "0x1993ac"
+          "iat_rva": "0x19a3ac"
         },
         {
           "name": "WSAEnumNetworkEvents",
-          "iat_rva": "0x1993b0"
+          "iat_rva": "0x19a3b0"
         },
         {
           "ordinal": 19,
-          "iat_rva": "0x1993b4"
+          "iat_rva": "0x19a3b4"
         },
         {
           "ordinal": 16,
-          "iat_rva": "0x1993b8"
+          "iat_rva": "0x19a3b8"
         },
         {
           "ordinal": 22,
-          "iat_rva": "0x1993bc"
+          "iat_rva": "0x19a3bc"
         }
       ],
       "provider": {
@@ -276,19 +276,19 @@
       "imports": [
         {
           "name": "RegSetValueExA",
-          "iat_rva": "0x199000"
+          "iat_rva": "0x19a000"
         },
         {
           "name": "RegOpenKeyExA",
-          "iat_rva": "0x199004"
+          "iat_rva": "0x19a004"
         },
         {
           "name": "RegQueryValueExA",
-          "iat_rva": "0x199008"
+          "iat_rva": "0x19a008"
         },
         {
           "name": "RegCloseKey",
-          "iat_rva": "0x19900c"
+          "iat_rva": "0x19a00c"
         }
       ],
       "provider": {
@@ -305,83 +305,83 @@
       "imports": [
         {
           "name": "SetMapMode",
-          "iat_rva": "0x199024"
+          "iat_rva": "0x19a024"
         },
         {
           "name": "SetTextColor",
-          "iat_rva": "0x199028"
+          "iat_rva": "0x19a028"
         },
         {
           "name": "SetTextAlign",
-          "iat_rva": "0x19902c"
+          "iat_rva": "0x19a02c"
         },
         {
           "name": "CreateDIBSection",
-          "iat_rva": "0x199030"
+          "iat_rva": "0x19a030"
         },
         {
           "name": "ExtTextOutW",
-          "iat_rva": "0x199034"
+          "iat_rva": "0x19a034"
         },
         {
           "name": "GetTextExtentPoint32W",
-          "iat_rva": "0x199038"
+          "iat_rva": "0x19a038"
         },
         {
           "name": "GetObjectA",
-          "iat_rva": "0x19903c"
+          "iat_rva": "0x19a03c"
         },
         {
           "name": "SelectObject",
-          "iat_rva": "0x199040"
+          "iat_rva": "0x19a040"
         },
         {
           "name": "SetBkColor",
-          "iat_rva": "0x199044"
+          "iat_rva": "0x19a044"
         },
         {
           "name": "DeleteObject",
-          "iat_rva": "0x199048"
+          "iat_rva": "0x19a048"
         },
         {
           "name": "DeleteDC",
-          "iat_rva": "0x19904c"
+          "iat_rva": "0x19a04c"
         },
         {
           "name": "CreateCompatibleDC",
-          "iat_rva": "0x199050"
+          "iat_rva": "0x19a050"
         },
         {
           "name": "SetDeviceGammaRamp",
-          "iat_rva": "0x199054"
+          "iat_rva": "0x19a054"
         },
         {
           "name": "GetTextExtentPointA",
-          "iat_rva": "0x199058"
+          "iat_rva": "0x19a058"
         },
         {
           "name": "GetDeviceCaps",
-          "iat_rva": "0x19905c"
+          "iat_rva": "0x19a05c"
         },
         {
           "name": "CreateFontA",
-          "iat_rva": "0x199060"
+          "iat_rva": "0x19a060"
         },
         {
           "name": "AddFontResourceA",
-          "iat_rva": "0x199064"
+          "iat_rva": "0x19a064"
         },
         {
           "name": "GetDIBits",
-          "iat_rva": "0x199068"
+          "iat_rva": "0x19a068"
         },
         {
           "name": "RemoveFontResourceA",
-          "iat_rva": "0x19906c"
+          "iat_rva": "0x19a06c"
         },
         {
           "name": "GetStockObject",
-          "iat_rva": "0x199070"
+          "iat_rva": "0x19a070"
         }
       ],
       "provider": {
@@ -398,207 +398,207 @@
       "imports": [
         {
           "name": "KillTimer",
-          "iat_rva": "0x199290"
+          "iat_rva": "0x19a290"
         },
         {
           "name": "SetTimer",
-          "iat_rva": "0x199294"
+          "iat_rva": "0x19a294"
         },
         {
           "name": "LoadIconA",
-          "iat_rva": "0x199298"
+          "iat_rva": "0x19a298"
         },
         {
           "name": "LoadCursorA",
-          "iat_rva": "0x19929c"
+          "iat_rva": "0x19a29c"
         },
         {
           "name": "GetClassLongA",
-          "iat_rva": "0x1992a0"
+          "iat_rva": "0x19a2a0"
         },
         {
           "name": "SetWindowLongA",
-          "iat_rva": "0x1992a4"
+          "iat_rva": "0x19a2a4"
         },
         {
           "name": "GetWindowLongA",
-          "iat_rva": "0x1992a8"
+          "iat_rva": "0x19a2a8"
         },
         {
           "name": "SetRect",
-          "iat_rva": "0x1992ac"
+          "iat_rva": "0x19a2ac"
         },
         {
           "name": "ClipCursor",
-          "iat_rva": "0x1992b0"
+          "iat_rva": "0x19a2b0"
         },
         {
           "name": "SetCursor",
-          "iat_rva": "0x1992b4"
+          "iat_rva": "0x19a2b4"
         },
         {
           "name": "AdjustWindowRect",
-          "iat_rva": "0x1992b8"
+          "iat_rva": "0x19a2b8"
         },
         {
           "name": "TrackPopupMenuEx",
-          "iat_rva": "0x1992bc"
+          "iat_rva": "0x19a2bc"
         },
         {
           "name": "GetSubMenu",
-          "iat_rva": "0x1992c0"
+          "iat_rva": "0x19a2c0"
         },
         {
           "name": "DestroyMenu",
-          "iat_rva": "0x1992c4"
+          "iat_rva": "0x19a2c4"
         },
         {
           "name": "SetMenu",
-          "iat_rva": "0x1992c8"
+          "iat_rva": "0x19a2c8"
         },
         {
           "name": "GetMenu",
-          "iat_rva": "0x1992cc"
+          "iat_rva": "0x19a2cc"
         },
         {
           "name": "LoadMenuA",
-          "iat_rva": "0x1992d0"
+          "iat_rva": "0x19a2d0"
         },
         {
           "name": "TranslateAcceleratorA",
-          "iat_rva": "0x1992d4"
+          "iat_rva": "0x19a2d4"
         },
         {
           "name": "LoadAcceleratorsA",
-          "iat_rva": "0x1992d8"
+          "iat_rva": "0x19a2d8"
         },
         {
           "name": "EnableWindow",
-          "iat_rva": "0x1992dc"
+          "iat_rva": "0x19a2dc"
         },
         {
           "name": "GetDlgItem",
-          "iat_rva": "0x1992e0"
+          "iat_rva": "0x19a2e0"
         },
         {
           "name": "EndDialog",
-          "iat_rva": "0x1992e4"
+          "iat_rva": "0x19a2e4"
         },
         {
           "name": "DialogBoxParamA",
-          "iat_rva": "0x1992e8"
+          "iat_rva": "0x19a2e8"
         },
         {
           "name": "SetCursorPos",
-          "iat_rva": "0x1992ec"
+          "iat_rva": "0x19a2ec"
         },
         {
           "name": "SetWindowPos",
-          "iat_rva": "0x1992f0"
+          "iat_rva": "0x19a2f0"
         },
         {
           "name": "DestroyWindow",
-          "iat_rva": "0x1992f4"
+          "iat_rva": "0x19a2f4"
         },
         {
           "name": "CreateWindowExA",
-          "iat_rva": "0x1992f8"
+          "iat_rva": "0x19a2f8"
         },
         {
           "name": "RegisterClassA",
-          "iat_rva": "0x1992fc"
+          "iat_rva": "0x19a2fc"
         },
         {
           "name": "GetIconInfo",
-          "iat_rva": "0x199300"
+          "iat_rva": "0x19a300"
         },
         {
           "name": "ScreenToClient",
-          "iat_rva": "0x199304"
+          "iat_rva": "0x19a304"
         },
         {
           "name": "GetCursorPos",
-          "iat_rva": "0x199308"
+          "iat_rva": "0x19a308"
         },
         {
           "name": "ReleaseCapture",
-          "iat_rva": "0x19930c"
+          "iat_rva": "0x19a30c"
         },
         {
           "name": "SetCapture",
-          "iat_rva": "0x199310"
+          "iat_rva": "0x19a310"
         },
         {
           "name": "ReleaseDC",
-          "iat_rva": "0x199314"
+          "iat_rva": "0x19a314"
         },
         {
           "name": "GetDC",
-          "iat_rva": "0x199318"
+          "iat_rva": "0x19a318"
         },
         {
           "name": "GetSystemMetrics",
-          "iat_rva": "0x19931c"
+          "iat_rva": "0x19a31c"
         },
         {
           "name": "PostQuitMessage",
-          "iat_rva": "0x199320"
+          "iat_rva": "0x19a320"
         },
         {
           "name": "MessageBoxA",
-          "iat_rva": "0x199324"
+          "iat_rva": "0x19a324"
         },
         {
           "name": "GetWindowRect",
-          "iat_rva": "0x199328"
+          "iat_rva": "0x19a328"
         },
         {
           "name": "GetClientRect",
-          "iat_rva": "0x19932c"
+          "iat_rva": "0x19a32c"
         },
         {
           "name": "PeekMessageA",
-          "iat_rva": "0x199330"
+          "iat_rva": "0x19a330"
         },
         {
           "name": "DispatchMessageA",
-          "iat_rva": "0x199334"
+          "iat_rva": "0x19a334"
         },
         {
           "name": "TranslateMessage",
-          "iat_rva": "0x199338"
+          "iat_rva": "0x19a338"
         },
         {
           "name": "GetMessageA",
-          "iat_rva": "0x19933c"
+          "iat_rva": "0x19a33c"
         },
         {
           "name": "ShowCursor",
-          "iat_rva": "0x199340"
+          "iat_rva": "0x19a340"
         },
         {
           "name": "DefWindowProcA",
-          "iat_rva": "0x199344"
+          "iat_rva": "0x19a344"
         },
         {
           "name": "wsprintfA",
-          "iat_rva": "0x199348"
+          "iat_rva": "0x19a348"
         },
         {
           "name": "SendMessageA",
-          "iat_rva": "0x19934c"
+          "iat_rva": "0x19a34c"
         },
         {
           "name": "GetAsyncKeyState",
-          "iat_rva": "0x199350"
+          "iat_rva": "0x19a350"
         },
         {
           "name": "PostMessageA",
-          "iat_rva": "0x199354"
+          "iat_rva": "0x19a354"
         },
         {
           "name": "GetKeyState",
-          "iat_rva": "0x199358"
+          "iat_rva": "0x19a358"
         }
       ],
       "provider": {
@@ -615,31 +615,31 @@
       "imports": [
         {
           "name": "ImmSetConversionStatus",
-          "iat_rva": "0x199078"
+          "iat_rva": "0x19a078"
         },
         {
           "name": "ImmGetConversionStatus",
-          "iat_rva": "0x19907c"
+          "iat_rva": "0x19a07c"
         },
         {
           "name": "ImmGetCompositionStringA",
-          "iat_rva": "0x199080"
+          "iat_rva": "0x19a080"
         },
         {
           "name": "ImmReleaseContext",
-          "iat_rva": "0x199084"
+          "iat_rva": "0x19a084"
         },
         {
           "name": "ImmNotifyIME",
-          "iat_rva": "0x199088"
+          "iat_rva": "0x19a088"
         },
         {
           "name": "ImmGetContext",
-          "iat_rva": "0x19908c"
+          "iat_rva": "0x19a08c"
         },
         {
           "name": "ImmSetCompositionWindow",
-          "iat_rva": "0x199090"
+          "iat_rva": "0x19a090"
         }
       ],
       "provider": {
@@ -656,7 +656,7 @@
       "imports": [
         {
           "name": "GetOpenFileNameA",
-          "iat_rva": "0x199014"
+          "iat_rva": "0x19a014"
         }
       ],
       "provider": {
@@ -673,503 +673,503 @@
       "imports": [
         {
           "name": "ReadConsoleW",
-          "iat_rva": "0x199098"
+          "iat_rva": "0x19a098"
         },
         {
           "name": "GetConsoleMode",
-          "iat_rva": "0x19909c"
+          "iat_rva": "0x19a09c"
         },
         {
           "name": "DecodePointer",
-          "iat_rva": "0x1990a0"
+          "iat_rva": "0x19a0a0"
         },
         {
           "name": "GetFileType",
-          "iat_rva": "0x1990a4"
+          "iat_rva": "0x19a0a4"
         },
         {
           "name": "HeapAlloc",
-          "iat_rva": "0x1990a8"
+          "iat_rva": "0x19a0a8"
         },
         {
           "name": "HeapFree",
-          "iat_rva": "0x1990ac"
+          "iat_rva": "0x19a0ac"
         },
         {
           "name": "UnhandledExceptionFilter",
-          "iat_rva": "0x1990b0"
+          "iat_rva": "0x19a0b0"
         },
         {
           "name": "IsDebuggerPresent",
-          "iat_rva": "0x1990b4"
+          "iat_rva": "0x19a0b4"
         },
         {
           "name": "GetModuleFileNameW",
-          "iat_rva": "0x1990b8"
+          "iat_rva": "0x19a0b8"
         },
         {
           "name": "GetFullPathNameW",
-          "iat_rva": "0x1990bc"
+          "iat_rva": "0x19a0bc"
         },
         {
           "name": "GetDriveTypeW",
-          "iat_rva": "0x1990c0"
+          "iat_rva": "0x19a0c0"
         },
         {
           "name": "GetCommandLineW",
-          "iat_rva": "0x1990c4"
+          "iat_rva": "0x19a0c4"
         },
         {
           "name": "GetCommandLineA",
-          "iat_rva": "0x1990c8"
+          "iat_rva": "0x19a0c8"
         },
         {
           "name": "FreeLibraryAndExitThread",
-          "iat_rva": "0x1990cc"
+          "iat_rva": "0x19a0cc"
         },
         {
           "name": "ResumeThread",
-          "iat_rva": "0x1990d0"
+          "iat_rva": "0x19a0d0"
         },
         {
           "name": "ExitThread",
-          "iat_rva": "0x1990d4"
+          "iat_rva": "0x19a0d4"
         },
         {
           "name": "LCMapStringW",
-          "iat_rva": "0x1990d8"
+          "iat_rva": "0x19a0d8"
         },
         {
           "name": "GetLocaleInfoW",
-          "iat_rva": "0x1990dc"
+          "iat_rva": "0x19a0dc"
         },
         {
           "name": "IsValidLocale",
-          "iat_rva": "0x1990e0"
+          "iat_rva": "0x19a0e0"
         },
         {
           "name": "GetUserDefaultLCID",
-          "iat_rva": "0x1990e4"
+          "iat_rva": "0x19a0e4"
         },
         {
           "name": "EnumSystemLocalesW",
-          "iat_rva": "0x1990e8"
+          "iat_rva": "0x19a0e8"
         },
         {
           "name": "GetFileAttributesExW",
-          "iat_rva": "0x1990ec"
+          "iat_rva": "0x19a0ec"
         },
         {
           "name": "HeapReAlloc",
-          "iat_rva": "0x1990f0"
+          "iat_rva": "0x19a0f0"
         },
         {
           "name": "GetCurrentDirectoryW",
-          "iat_rva": "0x1990f4"
+          "iat_rva": "0x19a0f4"
         },
         {
           "name": "GetConsoleOutputCP",
-          "iat_rva": "0x1990f8"
+          "iat_rva": "0x19a0f8"
         },
         {
           "name": "GetTimeZoneInformation",
-          "iat_rva": "0x1990fc"
+          "iat_rva": "0x19a0fc"
         },
         {
           "name": "FindFirstFileExW",
-          "iat_rva": "0x199100"
+          "iat_rva": "0x19a100"
         },
         {
           "name": "FindNextFileW",
-          "iat_rva": "0x199104"
+          "iat_rva": "0x19a104"
         },
         {
           "name": "CreateThread",
-          "iat_rva": "0x199108"
+          "iat_rva": "0x19a108"
         },
         {
           "name": "HeapSize",
-          "iat_rva": "0x19910c"
+          "iat_rva": "0x19a10c"
         },
         {
           "name": "GetLocalTime",
-          "iat_rva": "0x199110"
+          "iat_rva": "0x19a110"
         },
         {
           "name": "GetModuleHandleExW",
-          "iat_rva": "0x199114"
+          "iat_rva": "0x19a114"
         },
         {
           "name": "TerminateProcess",
-          "iat_rva": "0x199118"
+          "iat_rva": "0x19a118"
         },
         {
           "name": "ExitProcess",
-          "iat_rva": "0x19911c"
+          "iat_rva": "0x19a11c"
         },
         {
           "name": "GetCurrentProcess",
-          "iat_rva": "0x199120"
+          "iat_rva": "0x19a120"
         },
         {
           "name": "InitializeCriticalSectionEx",
-          "iat_rva": "0x199124"
+          "iat_rva": "0x19a124"
         },
         {
           "name": "EncodePointer",
-          "iat_rva": "0x199128"
+          "iat_rva": "0x19a128"
         },
         {
           "name": "FlsFree",
-          "iat_rva": "0x19912c"
+          "iat_rva": "0x19a12c"
         },
         {
           "name": "SetFilePointerEx",
-          "iat_rva": "0x199130"
+          "iat_rva": "0x19a130"
         },
         {
           "name": "FlsGetValue",
-          "iat_rva": "0x199134"
+          "iat_rva": "0x19a134"
         },
         {
           "name": "FlsAlloc",
-          "iat_rva": "0x199138"
+          "iat_rva": "0x19a138"
         },
         {
           "name": "SetLastError",
-          "iat_rva": "0x19913c"
+          "iat_rva": "0x19a13c"
         },
         {
           "name": "RtlUnwind",
-          "iat_rva": "0x199140"
+          "iat_rva": "0x19a140"
         },
         {
           "name": "IsValidCodePage",
-          "iat_rva": "0x199144"
+          "iat_rva": "0x19a144"
         },
         {
           "name": "GetACP",
-          "iat_rva": "0x199148"
+          "iat_rva": "0x19a148"
         },
         {
           "name": "GetOEMCP",
-          "iat_rva": "0x19914c"
+          "iat_rva": "0x19a14c"
         },
         {
           "name": "GetCPInfo",
-          "iat_rva": "0x199150"
+          "iat_rva": "0x19a150"
         },
         {
           "name": "GetEnvironmentStringsW",
-          "iat_rva": "0x199154"
+          "iat_rva": "0x19a154"
         },
         {
           "name": "FreeEnvironmentStringsW",
-          "iat_rva": "0x199158"
+          "iat_rva": "0x19a158"
         },
         {
           "name": "SetEnvironmentVariableW",
-          "iat_rva": "0x19915c"
+          "iat_rva": "0x19a15c"
         },
         {
           "name": "SetStdHandle",
-          "iat_rva": "0x199160"
+          "iat_rva": "0x19a160"
         },
         {
           "name": "GetStringTypeW",
-          "iat_rva": "0x199164"
+          "iat_rva": "0x19a164"
         },
         {
           "name": "FlushFileBuffers",
-          "iat_rva": "0x199168"
+          "iat_rva": "0x19a168"
         },
         {
           "name": "CreateFileW",
-          "iat_rva": "0x19916c"
+          "iat_rva": "0x19a16c"
         },
         {
           "name": "SetEndOfFile",
-          "iat_rva": "0x199170"
+          "iat_rva": "0x19a170"
         },
         {
           "name": "InitializeSListHead",
-          "iat_rva": "0x199174"
+          "iat_rva": "0x19a174"
         },
         {
           "name": "GetSystemTimeAsFileTime",
-          "iat_rva": "0x199178"
+          "iat_rva": "0x19a178"
         },
         {
           "name": "GetCurrentThreadId",
-          "iat_rva": "0x19917c"
+          "iat_rva": "0x19a17c"
         },
         {
           "name": "GetCurrentProcessId",
-          "iat_rva": "0x199180"
+          "iat_rva": "0x19a180"
         },
         {
           "name": "GetStartupInfoW",
-          "iat_rva": "0x199184"
+          "iat_rva": "0x19a184"
         },
         {
           "name": "SetUnhandledExceptionFilter",
-          "iat_rva": "0x199188"
+          "iat_rva": "0x19a188"
         },
         {
           "name": "IsProcessorFeaturePresent",
-          "iat_rva": "0x19918c"
+          "iat_rva": "0x19a18c"
         },
         {
           "name": "SleepConditionVariableSRW",
-          "iat_rva": "0x199190"
+          "iat_rva": "0x19a190"
         },
         {
           "name": "WakeAllConditionVariable",
-          "iat_rva": "0x199194"
+          "iat_rva": "0x19a194"
         },
         {
           "name": "AcquireSRWLockExclusive",
-          "iat_rva": "0x199198"
+          "iat_rva": "0x19a198"
         },
         {
           "name": "ReleaseSRWLockExclusive",
-          "iat_rva": "0x19919c"
+          "iat_rva": "0x19a19c"
         },
         {
           "name": "LoadLibraryExA",
-          "iat_rva": "0x1991a0"
+          "iat_rva": "0x19a1a0"
         },
         {
           "name": "GetModuleHandleW",
-          "iat_rva": "0x1991a4"
+          "iat_rva": "0x19a1a4"
         },
         {
           "name": "VirtualQuery",
-          "iat_rva": "0x1991a8"
+          "iat_rva": "0x19a1a8"
         },
         {
           "name": "VirtualProtect",
-          "iat_rva": "0x1991ac"
+          "iat_rva": "0x19a1ac"
         },
         {
           "name": "GetSystemInfo",
-          "iat_rva": "0x1991b0"
+          "iat_rva": "0x19a1b0"
         },
         {
           "name": "RaiseException",
-          "iat_rva": "0x1991b4"
+          "iat_rva": "0x19a1b4"
         },
         {
           "name": "WideCharToMultiByte",
-          "iat_rva": "0x1991b8"
+          "iat_rva": "0x19a1b8"
         },
         {
           "name": "MultiByteToWideChar",
-          "iat_rva": "0x1991bc"
+          "iat_rva": "0x19a1bc"
         },
         {
           "name": "GetFullPathNameA",
-          "iat_rva": "0x1991c0"
+          "iat_rva": "0x19a1c0"
         },
         {
           "name": "QueryPerformanceFrequency",
-          "iat_rva": "0x1991c4"
+          "iat_rva": "0x19a1c4"
         },
         {
           "name": "QueryPerformanceCounter",
-          "iat_rva": "0x1991c8"
+          "iat_rva": "0x19a1c8"
         },
         {
           "name": "Process32Next",
-          "iat_rva": "0x1991cc"
+          "iat_rva": "0x19a1cc"
         },
         {
           "name": "Process32First",
-          "iat_rva": "0x1991d0"
+          "iat_rva": "0x19a1d0"
         },
         {
           "name": "GetProcessHeap",
-          "iat_rva": "0x1991d4"
+          "iat_rva": "0x19a1d4"
         },
         {
           "name": "LoadLibraryExW",
-          "iat_rva": "0x1991d8"
+          "iat_rva": "0x19a1d8"
         },
         {
           "name": "FlsSetValue",
-          "iat_rva": "0x1991dc"
+          "iat_rva": "0x19a1dc"
         },
         {
           "name": "CompareStringW",
-          "iat_rva": "0x1991e0"
+          "iat_rva": "0x19a1e0"
         },
         {
           "name": "WriteConsoleW",
-          "iat_rva": "0x1991e4"
+          "iat_rva": "0x19a1e4"
         },
         {
           "name": "InitializeCriticalSection",
-          "iat_rva": "0x1991e8"
+          "iat_rva": "0x19a1e8"
         },
         {
           "name": "Sleep",
-          "iat_rva": "0x1991ec"
+          "iat_rva": "0x19a1ec"
         },
         {
           "name": "GetModuleFileNameA",
-          "iat_rva": "0x1991f0"
+          "iat_rva": "0x19a1f0"
         },
         {
           "name": "GetModuleHandleA",
-          "iat_rva": "0x1991f4"
+          "iat_rva": "0x19a1f4"
         },
         {
           "name": "GetPrivateProfileIntA",
-          "iat_rva": "0x1991f8"
+          "iat_rva": "0x19a1f8"
         },
         {
           "name": "WritePrivateProfileStringA",
-          "iat_rva": "0x1991fc"
+          "iat_rva": "0x19a1fc"
         },
         {
           "name": "GetPrivateProfileStringA",
-          "iat_rva": "0x199200"
+          "iat_rva": "0x19a200"
         },
         {
           "name": "GetTickCount",
-          "iat_rva": "0x199204"
+          "iat_rva": "0x19a204"
         },
         {
           "name": "CreateFileA",
-          "iat_rva": "0x199208"
+          "iat_rva": "0x19a208"
         },
         {
           "name": "DeleteFileA",
-          "iat_rva": "0x19920c"
+          "iat_rva": "0x19a20c"
         },
         {
           "name": "SetFilePointer",
-          "iat_rva": "0x199210"
+          "iat_rva": "0x19a210"
         },
         {
           "name": "WriteFile",
-          "iat_rva": "0x199214"
+          "iat_rva": "0x19a214"
         },
         {
           "name": "CloseHandle",
-          "iat_rva": "0x199218"
+          "iat_rva": "0x19a218"
         },
         {
           "name": "MulDiv",
-          "iat_rva": "0x19921c"
+          "iat_rva": "0x19a21c"
         },
         {
           "name": "DeleteCriticalSection",
-          "iat_rva": "0x199220"
+          "iat_rva": "0x19a220"
         },
         {
           "name": "GetStdHandle",
-          "iat_rva": "0x199224"
+          "iat_rva": "0x19a224"
         },
         {
           "name": "ReadFile",
-          "iat_rva": "0x199228"
+          "iat_rva": "0x19a228"
         },
         {
           "name": "GetSystemTime",
-          "iat_rva": "0x19922c"
+          "iat_rva": "0x19a22c"
         },
         {
           "name": "CreateProcessA",
-          "iat_rva": "0x199230"
+          "iat_rva": "0x19a230"
         },
         {
           "name": "OutputDebugStringA",
-          "iat_rva": "0x199234"
+          "iat_rva": "0x19a234"
         },
         {
           "name": "EnterCriticalSection",
-          "iat_rva": "0x199238"
+          "iat_rva": "0x19a238"
         },
         {
           "name": "LeaveCriticalSection",
-          "iat_rva": "0x19923c"
+          "iat_rva": "0x19a23c"
         },
         {
           "name": "ResetEvent",
-          "iat_rva": "0x199240"
+          "iat_rva": "0x19a240"
         },
         {
           "name": "FindClose",
-          "iat_rva": "0x199244"
+          "iat_rva": "0x19a244"
         },
         {
           "name": "FindFirstFileA",
-          "iat_rva": "0x199248"
+          "iat_rva": "0x19a248"
         },
         {
           "name": "FindNextFileA",
-          "iat_rva": "0x19924c"
+          "iat_rva": "0x19a24c"
         },
         {
           "name": "lstrcpyA",
-          "iat_rva": "0x199250"
+          "iat_rva": "0x19a250"
         },
         {
           "name": "lstrcatA",
-          "iat_rva": "0x199254"
+          "iat_rva": "0x19a254"
         },
         {
           "name": "CreateDirectoryA",
-          "iat_rva": "0x199258"
+          "iat_rva": "0x19a258"
         },
         {
           "name": "GetVersionExA",
-          "iat_rva": "0x19925c"
+          "iat_rva": "0x19a25c"
         },
         {
           "name": "ReadProcessMemory",
-          "iat_rva": "0x199260"
+          "iat_rva": "0x19a260"
         },
         {
           "name": "OutputDebugStringW",
-          "iat_rva": "0x199264"
+          "iat_rva": "0x19a264"
         },
         {
           "name": "GetSystemDirectoryW",
-          "iat_rva": "0x199268"
+          "iat_rva": "0x19a268"
         },
         {
           "name": "FreeLibrary",
-          "iat_rva": "0x19926c"
+          "iat_rva": "0x19a26c"
         },
         {
           "name": "GetProcAddress",
-          "iat_rva": "0x199270"
+          "iat_rva": "0x19a270"
         },
         {
           "name": "LoadLibraryW",
-          "iat_rva": "0x199274"
+          "iat_rva": "0x19a274"
         },
         {
           "name": "GetFileSizeEx",
-          "iat_rva": "0x199278"
+          "iat_rva": "0x19a278"
         },
         {
           "name": "GetLastError",
-          "iat_rva": "0x19927c"
+          "iat_rva": "0x19a27c"
         },
         {
           "name": "ReleaseMutex",
-          "iat_rva": "0x199280"
+          "iat_rva": "0x19a280"
         },
         {
           "name": "CreateMutexA",
-          "iat_rva": "0x199284"
+          "iat_rva": "0x19a284"
         },
         {
           "name": "CreateToolhelp32Snapshot",
-          "iat_rva": "0x199288"
+          "iat_rva": "0x19a288"
         }
       ],
       "provider": {
@@ -1186,107 +1186,107 @@
       "imports": [
         {
           "name": "_AIL_set_named_sample_file@20",
-          "iat_rva": "0x1d9000"
+          "iat_rva": "0x1da000"
         },
         {
           "name": "_AIL_start_sample@4",
-          "iat_rva": "0x1d9004"
+          "iat_rva": "0x1da004"
         },
         {
           "name": "_AIL_stop_sample@4",
-          "iat_rva": "0x1d9008"
+          "iat_rva": "0x1da008"
         },
         {
           "name": "_AIL_set_sample_volume_pan@12",
-          "iat_rva": "0x1d900c"
+          "iat_rva": "0x1da00c"
         },
         {
           "name": "_AIL_set_sample_loop_count@8",
-          "iat_rva": "0x1d9010"
+          "iat_rva": "0x1da010"
         },
         {
           "name": "_AIL_active_sample_count@4",
-          "iat_rva": "0x1d9014"
+          "iat_rva": "0x1da014"
         },
         {
           "name": "_AIL_init_sample@4",
-          "iat_rva": "0x1d9018"
+          "iat_rva": "0x1da018"
         },
         {
           "name": "_AIL_close_stream@4",
-          "iat_rva": "0x1d901c"
+          "iat_rva": "0x1da01c"
         },
         {
           "name": "_AIL_service_stream@8",
-          "iat_rva": "0x1d9020"
+          "iat_rva": "0x1da020"
         },
         {
           "name": "_AIL_start_stream@4",
-          "iat_rva": "0x1d9024"
+          "iat_rva": "0x1da024"
         },
         {
           "name": "_AIL_pause_stream@8",
-          "iat_rva": "0x1d9028"
+          "iat_rva": "0x1da028"
         },
         {
           "name": "_AIL_set_stream_volume_pan@12",
-          "iat_rva": "0x1d902c"
+          "iat_rva": "0x1da02c"
         },
         {
           "name": "_AIL_set_stream_loop_count@8",
-          "iat_rva": "0x1d9030"
+          "iat_rva": "0x1da030"
         },
         {
           "name": "_AIL_stream_status@4",
-          "iat_rva": "0x1d9034"
+          "iat_rva": "0x1da034"
         },
         {
           "name": "_AIL_stream_info@20",
-          "iat_rva": "0x1d9038"
+          "iat_rva": "0x1da038"
         },
         {
           "name": "_AIL_release_sample_handle@4",
-          "iat_rva": "0x1d903c"
+          "iat_rva": "0x1da03c"
         },
         {
           "name": "_AIL_allocate_sample_handle@4",
-          "iat_rva": "0x1d9040"
+          "iat_rva": "0x1da040"
         },
         {
           "name": "_AIL_close_digital_driver@4",
-          "iat_rva": "0x1d9044"
+          "iat_rva": "0x1da044"
         },
         {
           "name": "_AIL_open_digital_driver@16",
-          "iat_rva": "0x1d9048"
+          "iat_rva": "0x1da048"
         },
         {
           "name": "_AIL_last_error@0",
-          "iat_rva": "0x1d904c"
+          "iat_rva": "0x1da04c"
         },
         {
           "name": "_AIL_set_preference@8",
-          "iat_rva": "0x1d9050"
+          "iat_rva": "0x1da050"
         },
         {
           "name": "_AIL_shutdown@0",
-          "iat_rva": "0x1d9054"
+          "iat_rva": "0x1da054"
         },
         {
           "name": "_AIL_startup@0",
-          "iat_rva": "0x1d9058"
+          "iat_rva": "0x1da058"
         },
         {
           "name": "_AIL_file_read@8",
-          "iat_rva": "0x1d905c"
+          "iat_rva": "0x1da05c"
         },
         {
           "name": "_AIL_open_stream@12",
-          "iat_rva": "0x1d9060"
+          "iat_rva": "0x1da060"
         },
         {
           "name": "_AIL_mem_free_lock@4",
-          "iat_rva": "0x1d9064"
+          "iat_rva": "0x1da064"
         }
       ],
       "provider": {
@@ -1303,19 +1303,19 @@
       "imports": [
         {
           "name": "ABuse_InitDic",
-          "iat_rva": "0x1d8fd0"
+          "iat_rva": "0x1d9fd0"
         },
         {
           "name": "ABuse_DecodeDic",
-          "iat_rva": "0x1d8fd4"
+          "iat_rva": "0x1d9fd4"
         },
         {
           "name": "ABuse_CheckAbuse",
-          "iat_rva": "0x1d8fd8"
+          "iat_rva": "0x1d9fd8"
         },
         {
           "name": "ABuse_LoadDic",
-          "iat_rva": "0x1d8fdc"
+          "iat_rva": "0x1d9fdc"
         }
       ],
       "provider": {
@@ -1332,19 +1332,19 @@
       "imports": [
         {
           "name": "Adv_LoadDic",
-          "iat_rva": "0x1d8fe4"
+          "iat_rva": "0x1d9fe4"
         },
         {
           "name": "Adv_InitDic",
-          "iat_rva": "0x1d8fe8"
+          "iat_rva": "0x1d9fe8"
         },
         {
           "name": "Adv_DecodeDic",
-          "iat_rva": "0x1d8fec"
+          "iat_rva": "0x1d9fec"
         },
         {
           "name": "Adv_CheckAbuse",
-          "iat_rva": "0x1d8ff0"
+          "iat_rva": "0x1d9ff0"
         }
       ],
       "provider": {
@@ -1361,7 +1361,7 @@
       "imports": [
         {
           "name": "?HookAllApps@@YGHHK@Z",
-          "iat_rva": "0x1d8ff8"
+          "iat_rva": "0x1d9ff8"
         }
       ],
       "provider": {
