@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Minimap-opacity067. Ordinary CGUIMiniMapWindow now owns EX and
+receives actual queued mouse/scroll events. Recovered style0/1,alignment80/80,
+known alpha groups/lists and Draw455;17ranges/2vtables equalpins,10fullasm.
+Ko/Ru81amounts/GPU/actual MouseDev path andaffectedGUI/Create1 passed. Main
+resource loaded withownedbridge toavoid legacyID4collision. Grid isasset,not
+terrain;fullmap/zoom555940/othercontrols/targetinput remainOPEN. NormalPE0def3dce…,
+entry14EFF0,182/20/27TU. Next068 parent/input contracts. M9OPEN.
+[Evidence](research/client455-minimap-opacity.md).
+
 2026-11-06 — Scrollbar-variants066. Added distinct EX/Var classes to ordinary
 source provider;EX base-composite snap versus plain-button positioning,no repeat,
 alpha and Var origin/extent/modes/vertical input/row2 verified with real objects.

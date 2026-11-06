@@ -23,6 +23,60 @@
 
 ## Последний проверенный результат
 
+Minimap-opacity067: new client455_minimap_opacity.{h,cpp},owner.inc +generator
+overlays normal CGUIMiniMapWindow header/body. Adds actual EX/IScrollObserver,
+known mapped frame/map CGUIContainers and gridbackground. Target7B2C60 wraps
+genericalignment7B2B80;it is NOT scrollbar skinhelper. Actualskin7B5450 styles0/1
+commonaction8:style0background12,thumb13/14,bottom15/16,top17/18;style1background6,
+thumb7directSPI (not statearray),top8/9,bottom10/11. Widthaddsarrowwidths,auto0,
+horizontal1. Realcommon gives194×13/button10 and192×15/button8.
+Init7059E0 centersEX relativeframe,theny+15,SetAmount80/80,observerandAdd. Main
+sprite5:0 frame400×18 and5:32 grid400×400 restored;avatar5:1 andclosecommon0.
+Source frameSkin ownCSprite bridgeslegacy id4inventory vs455id4main collision;
+lazyverifiedmainpath load,no global ID4 replacement. OwnspriteRelease in dtor.
+Other455controls/mapgeneration/assetmanager lifecycle stillOPEN.
+
+Scroll709E10: BYTE(signed32wrap255*(current+20)/100),then independent5558E0 zoom
+gate evenforeignsource. Alpha7099E0 appliesmapped title/frame/map/avatar/position/
+close and populated marker/tooltip lists,preservesRGB;EXalpha propagation.
+Backgroundalpha:alpha==100 ? truncate(alpha*.8) : truncate(alpha*.6). Extra0.7
+object/tooltipcontainers not assigned alpha withouttargetproof. Remaining455
+groups absent fromlegacyowner OPEN. Gate fields:eligible(alpha==100),suppression,
+ack. Ifnotsuppressed returneligible;elseifack clearsboth thenreturns0 thiscall.
+Positive555940 actualAvatar/world zoomconsumer explicitlythrows;notrestored,
+nevercallit a successful camera operation. Scroll0..80 cannotproducealpha100.
+Draw7099A0=container.Draw then dialogs;legacyFFmapgate/outline removed. This
+letsactualownerDraw test beforemapproducer;NO fullminimap/gameplay acceptance.
+
+17functionranges+2vtables equalpins,10completeasm. IDA7b53e450/b947042c savedclosed;
+idb_list0. Rawartifacts/client455-tutorial/minimap-*067. RealKo fallbackCommon
+mainDXT1,Ru localizedmainARGB21;inputpaths preserved inlab,not forcedlocalized.
+OwnPE c8d0f03ba214073f0d7f0e77972b5d4796b0dd983dbaff307f8aa7070e09f96e,
+x86entryE4380,Ko/Ru naturalexit0. All81queuedamounts,RGB/list alpha,bg100special,
+gateack/foreignsource,style0/1,literal/edge/negativeodd alignment verified.
+Real MouseDev.Update→window.InputProc→EX→EventProcess→owner:arrow80→79/alpha252,
+track→17/94,dragendpoint→78/249 duebase162vsvisible158,release snapsowntrack154.
+Buttons muted fixtureonly (unrelated audio nottested). Firststatefixture used
+PRESSED alone;corrected to HOVERED|PRESSED as actualInputProc does. No production
+button-state behavior altered. Grid frames24133/167218/167200Ko and21148/167236/
+167200Ru pixels viewedall6. Graypartialalpha is oldnull-map-sprite rectangle
+fallback;gridfrommain5:32,NOterrain/MapID56data. FullrenderparityOPEN.
+NormalPE0def3dce864ffe438eddf73abd84e17929121d2abb06f19921c8d37f9ef26e37,
+x86/base400000/entry14EFF0/2033664bytes,182/20/27TU,0unresolved/existingCreate1.
+Productionmap contains ownerScrollEvent/SetAlpha,EXSetAmount andnewfacadeprovider;
+EX is now retained byrealowner,Var canremainstripped. Sourcegenerator idempotent;
+oldignored064crt_multibyte.obj removed;CMake27sources/27objects,LIB/LIST andmap
+haveNO customadapter (standard__acrt_multibyte symbols arelibucrt,notthatfile).
+engineunchanged,canonical20kernels. Affectedscrollbar/variants/textboard/metrics/
+font/modal/tutorial-board andexactWinMain/TCPfixture/engine/D3D/Character/Create1
+passed,stopbeforeloop. Sevenboundedgates PARTIAL. NoinputEXE/serverchanges.
+Next068 GUIObject/Container input/show/focus/parentwiring;Add60BFA0→60D3D0 and
+SendMouse*/InputProc. Cached065baseSetAmount hasonlyoneobserverregister(self),
+EXhasfour;don'tassumefullpipelineorhelpermeaning. Thenrich/message sizing/
+briefing/actualTutorial/fourstage. Fullminimap/camera/allotherM6F/M7/M9 OPEN.
+
+## Предыдущий результат — scrollbar-variants066
+
 Scrollbar-variants066: CGUIScrollbar base state protected,SetSize virtual for
 455derived dispatch;existing static amount methods retained. New EX plainbutton
 added at ctor even total0;SetAmount0 removes observers but not child. Auto sizing

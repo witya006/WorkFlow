@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+Участок067: EX связан с обычным CGUIMiniMapWindow. Восстановлены opacity
+styles0/1,alignment,80/80Init,alpha mappings и Draw455. Настоящий MouseDev→owner→
+EX→queue путь,81amount и GPU прошли Ko/Ru;production providers retained,
+0def3dce…/existingCreate1. Остальные controls/карта/zoom555940/parent input455
+открыты. Далее068 — общий GUIObject/Container input/show/focus/parent wiring;
+затем production rich/message sizing/briefing и actual Tutorial/fourstage.
+[Доказательства](../research/client455-minimap-opacity.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок:
+
 Участок066: классы scrollbar EX/Var восстановлены в обычном source provider;
 Ko/Ru full-object/queued input/GPU проверки прошли. EX имеет подтверждённого
 владельца CGUIMiniMapWindow; его helper7B2C60 и настоящие события ещё не перенесены.
@@ -443,8 +453,8 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/067: подключить EX к настоящему CGUIMiniMapWindow455 через подтверждённый
-   helper7B2C60;восстановить parent input/show/focus routing. Затем production
+1. M6/068: восстановить общий GUIObject/Container input/show/focus/parent wiring;
+   сопоставить Add60BFA0 и его helper60D3D0 с observer/event dispatch. Затем production
    message sizing/rich callers и полный CGUIBriefingWindow:
    постраничный/временной текст, портреты и изображения клавиш.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/

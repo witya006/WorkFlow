@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+Участок067: обычный владелец миникарты получил EX opacity control,skin0/1,
+alignment,Init80/80,подтверждённые alpha mappings и Draw455. Реальный mouse→
+owner→EX→queue путь/81amount/пополненные lists/RGB/Ko-Ru GPU прошли. Production
+owner/EX/facade присутствуют в map;новая PE existingCreate1. На кадрах сетка
+из main5:32;нет terrain/dynamicmap56,partialalpha показывает старый nullsprite
+rectangle fallback. Полная карта/прочие controls и alpha groups/zoom555940/
+target parent pipeline не приняты. Положительный camera branch отказан явно.
+[Доказательства](../research/client455-minimap-opacity.md). M6/M6F/M7/M9 OPEN.
+
 Участок066: приняты bounded EX/Var source contracts и full-object Ko/Ru queued
 input/GPU пробы. EX plain/base track inconsistency,no repeat,alpha и Var sizing/
 origin/mode/release/row2 проверены. Это не интеграция minimap455:реальный owner

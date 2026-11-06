@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MINIMAP-OPACITY-067",
+      "status": "partial",
+      "description": "Actual minimap owner EX opacity control/styles/alignment/mapped alpha/Draw455;fullminimap and target parent input OPEN",
+      "reference": [{"rva":"0x3b5450","role":"opacity skin helper"},{"rva":"0x3b2b80","role":"generic alignment"},{"rva":"0x3059e0","role":"actual owner initialization"},{"rva":"0x309e10","role":"scroll receiver"},{"rva":"0x3099e0","role":"owner alpha"},{"rva":"0x3099a0","role":"Draw"},{"rva":"0x1558e0","role":"camera input gate"}],
+      "implementation": ["scripts/native/client455_minimap_opacity.h","scripts/native/client455_minimap_opacity.cpp","scripts/native/client455_minimap_opacity_owner.inc","scripts/prepare_client455_normal.py"],
+      "verification": "17ranges/2vtables equalpins,10completeasm;Ko/Ru actual owner and retained productionEX;81queued amounts,MouseDev-to-parent-to-EX input/drag/release,known populated lists/RGB,bg100 special,zoom gate state andexplicit missingconsumer refusal;6GPUframes viewed;affected GUI/exactPE existingCreate1 PASS",
+      "evidence": ["inventory/client455-minimap-opacity-reference.json","inventory/client455-minimap-opacity-native.json","inventory/client455-minimap-opacity-checkpoint.json","research/client455-minimap-opacity.md"],
+      "gaps": ["Full455minimap layout/othercontrols/additionalalpha groups/map generation/markers/tooltips not ported","Dynamic map sprite56 absent;partialalpha uses legacy nullsprite white rectangle fallback;grid ismain5:32 asset,not terrain","Actual positive camera zoom consumer555940/Avatar/world missing;explicit refusal instead of invented values","Full target GUIObject/Container parent input/show/focus/skin/alpha/clipping/lifecycle/FP/unsafe domains;production rich/briefing/Tutorial/fourstage/auth/gameplay;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-SCROLLBAR-VARIANTS-066",
       "status": "partial",
       "description": "Distinct EX/Var source contracts verified in full-object GUI probes;production minimap owner and complete parent input OPEN",

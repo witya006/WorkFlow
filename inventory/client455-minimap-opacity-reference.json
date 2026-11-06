@@ -1,0 +1,654 @@
+{
+  "scope": "Minimap opacity EX control and mapped legacy owner integration;full455minimap/world/parent input OPEN",
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x3b2c60",
+          "bytes": 50,
+          "sha256": "76efd904a39fe815288d9e731d9940874363160167ff1add76a427bbe570b816"
+        },
+        {
+          "rva": "0x3b2b80",
+          "bytes": 216,
+          "sha256": "c45a678d2d01d3d9a5c4aca164bb020b84be2ff4ccd20b8935ab839a7d273c15"
+        },
+        {
+          "rva": "0x3b5450",
+          "bytes": 508,
+          "sha256": "4671051ef26f03b7fce77b7c3233590d85be4f4f23deef585ef241658903c6a9"
+        },
+        {
+          "rva": "0x3b5650",
+          "bytes": 33,
+          "sha256": "5838159746cf76899dc316f2e0f2a920dfbb8dacd809e7a1994004edd95224fb"
+        },
+        {
+          "rva": "0x3b5680",
+          "bytes": 27,
+          "sha256": "c399ce0a452222bc50b12aca9f249e16860475a9481be832300262674405397b"
+        },
+        {
+          "rva": "0x21f5c0",
+          "bytes": 27,
+          "sha256": "2f65c753ca8fea4c4a527c410d2b88523b22990eb155b02f05b1401f3534f94c"
+        },
+        {
+          "rva": "0x21f5e0",
+          "bytes": 27,
+          "sha256": "7b0a12c1a32c0740c9bd5c16ae2e9f904799175a4907e97e9fdb4268e95060cb"
+        },
+        {
+          "rva": "0x220150",
+          "bytes": 28,
+          "sha256": "10ae80a377c0e4cf6609f7ec2bb257a1a7d747839c7f502456d0d1a4f2e07b25"
+        },
+        {
+          "rva": "0x305160",
+          "bytes": 1084,
+          "sha256": "c26fe48db94dc7aa9671dc80d36a40d6c64a8dfd1e9054e5098da7b435301faf"
+        },
+        {
+          "rva": "0x3059e0",
+          "bytes": 1989,
+          "sha256": "3e5f95d2c5a73952913ce84520872279f2c2c50322058cb3665ad90e991d95e0"
+        },
+        {
+          "rva": "0x3061e0",
+          "bytes": 337,
+          "sha256": "68ff77ba6554b39aa54619fb20d5434a861e86985f5b4d459af079687e93b65d"
+        },
+        {
+          "rva": "0x309e10",
+          "bytes": 117,
+          "sha256": "a0e81831259697e9153aacda4f9937e0c77da6bbc900a332d206a254da8a9092"
+        },
+        {
+          "rva": "0x3099e0",
+          "bytes": 1062,
+          "sha256": "71dd071afdff80a0d9b9e8b780e7b5a62453440d347b897173f5344ddc19f140"
+        },
+        {
+          "rva": "0x1558e0",
+          "bytes": 82,
+          "sha256": "372b802f570d7f77c9c69f3392bf9444f41d837a1582576b497ce610fc9f70ba"
+        },
+        {
+          "rva": "0x155940",
+          "bytes": 260,
+          "sha256": "8bffaaddd80b195507707d4a66d8a9a5cedb0f0193681b3b1c747d99b239c53e"
+        },
+        {
+          "rva": "0x3099a0",
+          "bytes": 54,
+          "sha256": "1b4b866e30e8ef646cbaa31c097ec2cdc6945c2fd84b1b3952207a279b215f31"
+        },
+        {
+          "rva": "0x25ea80",
+          "bytes": 164,
+          "sha256": "d0181ce34724f6996470aef976b5444b4ddab52794cbc1a95c4374cb97732956"
+        }
+      ],
+      "data": [
+        {
+          "rva": "0x6e4904",
+          "bytes": 4,
+          "role": "minimap scroll observer",
+          "sha256": "1d49233923d5d3ac0ae4a318f5486c9c8713b92a7e365657e7820144b3a77ba1"
+        },
+        {
+          "rva": "0x6e492c",
+          "bytes": 216,
+          "role": "minimap primary vtable",
+          "sha256": "010d0257a2cf883a4f76db50894830b0b57cf3f359011cace40e92ae5a89c0a5"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x3b2c60",
+          "bytes": 50,
+          "sha256": "76efd904a39fe815288d9e731d9940874363160167ff1add76a427bbe570b816"
+        },
+        {
+          "rva": "0x3b2b80",
+          "bytes": 216,
+          "sha256": "c45a678d2d01d3d9a5c4aca164bb020b84be2ff4ccd20b8935ab839a7d273c15"
+        },
+        {
+          "rva": "0x3b5450",
+          "bytes": 508,
+          "sha256": "4671051ef26f03b7fce77b7c3233590d85be4f4f23deef585ef241658903c6a9"
+        },
+        {
+          "rva": "0x3b5650",
+          "bytes": 33,
+          "sha256": "5838159746cf76899dc316f2e0f2a920dfbb8dacd809e7a1994004edd95224fb"
+        },
+        {
+          "rva": "0x3b5680",
+          "bytes": 27,
+          "sha256": "c399ce0a452222bc50b12aca9f249e16860475a9481be832300262674405397b"
+        },
+        {
+          "rva": "0x21f5c0",
+          "bytes": 27,
+          "sha256": "2f65c753ca8fea4c4a527c410d2b88523b22990eb155b02f05b1401f3534f94c"
+        },
+        {
+          "rva": "0x21f5e0",
+          "bytes": 27,
+          "sha256": "7b0a12c1a32c0740c9bd5c16ae2e9f904799175a4907e97e9fdb4268e95060cb"
+        },
+        {
+          "rva": "0x220150",
+          "bytes": 28,
+          "sha256": "10ae80a377c0e4cf6609f7ec2bb257a1a7d747839c7f502456d0d1a4f2e07b25"
+        },
+        {
+          "rva": "0x305160",
+          "bytes": 1084,
+          "sha256": "c26fe48db94dc7aa9671dc80d36a40d6c64a8dfd1e9054e5098da7b435301faf"
+        },
+        {
+          "rva": "0x3059e0",
+          "bytes": 1989,
+          "sha256": "3e5f95d2c5a73952913ce84520872279f2c2c50322058cb3665ad90e991d95e0"
+        },
+        {
+          "rva": "0x3061e0",
+          "bytes": 337,
+          "sha256": "68ff77ba6554b39aa54619fb20d5434a861e86985f5b4d459af079687e93b65d"
+        },
+        {
+          "rva": "0x309e10",
+          "bytes": 117,
+          "sha256": "a0e81831259697e9153aacda4f9937e0c77da6bbc900a332d206a254da8a9092"
+        },
+        {
+          "rva": "0x3099e0",
+          "bytes": 1062,
+          "sha256": "71dd071afdff80a0d9b9e8b780e7b5a62453440d347b897173f5344ddc19f140"
+        },
+        {
+          "rva": "0x1558e0",
+          "bytes": 82,
+          "sha256": "372b802f570d7f77c9c69f3392bf9444f41d837a1582576b497ce610fc9f70ba"
+        },
+        {
+          "rva": "0x155940",
+          "bytes": 260,
+          "sha256": "8bffaaddd80b195507707d4a66d8a9a5cedb0f0193681b3b1c747d99b239c53e"
+        },
+        {
+          "rva": "0x3099a0",
+          "bytes": 54,
+          "sha256": "1b4b866e30e8ef646cbaa31c097ec2cdc6945c2fd84b1b3952207a279b215f31"
+        },
+        {
+          "rva": "0x25ea80",
+          "bytes": 164,
+          "sha256": "d0181ce34724f6996470aef976b5444b4ddab52794cbc1a95c4374cb97732956"
+        }
+      ],
+      "data": [
+        {
+          "rva": "0x6e4904",
+          "bytes": 4,
+          "role": "minimap scroll observer",
+          "sha256": "1d49233923d5d3ac0ae4a318f5486c9c8713b92a7e365657e7820144b3a77ba1"
+        },
+        {
+          "rva": "0x6e492c",
+          "bytes": 216,
+          "role": "minimap primary vtable",
+          "sha256": "010d0257a2cf883a4f76db50894830b0b57cf3f359011cace40e92ae5a89c0a5"
+        }
+      ]
+    }
+  ],
+  "raw_evidence": [
+    {
+      "file": "artifacts/client455-tutorial/minimap-initial067.json",
+      "sha256": "4ad7fd0dcf6370a3137da867f2c9fafd62fe914ac429253de5cba26f0bc99ff0",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-helpers067.json",
+      "sha256": "6716e12aed43491087a996218009de182098b7fc8c307c77972b514825d37459",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-more067.json",
+      "sha256": "337f0098db86f5e62e6d1f374e519bf18873e1c386ec6e778790f9ca11a52b4c",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-bindings067.json",
+      "sha256": "ce70c26052f0d75b51a593014fe3ea8c288510f59cfabbbbf3f8c5a273e416af",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-opacity067.json",
+      "sha256": "616267d480e9af6767c4c7b01a5b50a043d0e7433be6f8f2d965cce7199576ff",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-accessors067.json",
+      "sha256": "60f3b18e8f3de4eaa700a2248051b1ecb5d23ad437e47f9671e91739b8d0a790",
+      "assemblies": []
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-opacity-asm067.json",
+      "sha256": "9a3a1429032894fcb4618a929937aaa506bb14fb2899277bc6f318d169a1aed7",
+      "assemblies": [
+        {
+          "rva": "0x3b5450",
+          "instructions": 159
+        },
+        {
+          "rva": "0x3b2b80",
+          "instructions": 87
+        },
+        {
+          "rva": "0x309e10",
+          "instructions": 39
+        },
+        {
+          "rva": "0x1558e0",
+          "instructions": 27
+        },
+        {
+          "rva": "0x3099e0",
+          "instructions": 294
+        }
+      ]
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-ranges067.json",
+      "sha256": "94d9507017db3d549606321d3a6190996b286f1809d73542c60649448e1d0779",
+      "assemblies": [
+        {
+          "rva": "0x3059e0",
+          "instructions": 538
+        },
+        {
+          "rva": "0x3061e0",
+          "instructions": 101
+        },
+        {
+          "rva": "0x305160",
+          "instructions": 354
+        }
+      ]
+    },
+    {
+      "file": "artifacts/client455-tutorial/minimap-drawing067.json",
+      "sha256": "2192d64cf4c9b021283507fc1588bc36584a8a4afc44f2d98c16ea28f0bf67c7",
+      "assemblies": [
+        {
+          "rva": "0x3099a0",
+          "instructions": 24
+        },
+        {
+          "rva": "0x25ea80",
+          "instructions": 59
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "nation": "Korea",
+      "folder": "ko-kr",
+      "language": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ko-kr\\NDLanguage.edf",
+        "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+      },
+      "common": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ko-kr\\common.spr",
+        "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523",
+        "geometry": {
+          "frame_counts": [
+            59,
+            136,
+            44,
+            18,
+            51,
+            41,
+            7,
+            69,
+            20,
+            30,
+            15,
+            7,
+            9,
+            1,
+            5
+          ],
+          "requested": {
+            "8:6": {
+              "width": 168,
+              "height": 15,
+              "texture_width": 256,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:7": {
+              "width": 8,
+              "height": 15,
+              "texture_width": 8,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:8": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:9": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:10": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:11": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:12": {
+              "width": 168,
+              "height": 13,
+              "texture_width": 256,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:13": {
+              "width": 10,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:14": {
+              "width": 10,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:15": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:16": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:17": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:18": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            }
+          }
+        }
+      },
+      "main": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\Common\\main.spr",
+        "sha256": "39aefe0ac1480df3e32360250db0fba22ec007eb9749b034dcf6334bb9daeb03",
+        "geometry": {
+          "frame_counts": [
+            13,
+            10,
+            16,
+            26,
+            20,
+            44,
+            20,
+            9,
+            4,
+            30,
+            2,
+            7,
+            7,
+            17,
+            4
+          ],
+          "requested": {
+            "5:0": {
+              "width": 400,
+              "height": 18,
+              "texture_width": 512,
+              "texture_height": 32,
+              "format": 827611204
+            },
+            "5:32": {
+              "width": 400,
+              "height": 400,
+              "texture_width": 512,
+              "texture_height": 512,
+              "format": 827611204
+            }
+          }
+        }
+      }
+    },
+    {
+      "nation": "Russia",
+      "folder": "ru-ru",
+      "language": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ru-ru\\NDLanguage.edf",
+        "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154"
+      },
+      "common": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ru-ru\\common.spr",
+        "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736",
+        "geometry": {
+          "frame_counts": [
+            59,
+            136,
+            44,
+            18,
+            51,
+            41,
+            7,
+            69,
+            20,
+            30,
+            15,
+            7,
+            9,
+            1,
+            5
+          ],
+          "requested": {
+            "8:6": {
+              "width": 168,
+              "height": 15,
+              "texture_width": 256,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:7": {
+              "width": 8,
+              "height": 15,
+              "texture_width": 8,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:8": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:9": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:10": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:11": {
+              "width": 12,
+              "height": 15,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 827611204
+            },
+            "8:12": {
+              "width": 168,
+              "height": 13,
+              "texture_width": 256,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:13": {
+              "width": 10,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:14": {
+              "width": 10,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:15": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:16": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:17": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            },
+            "8:18": {
+              "width": 13,
+              "height": 13,
+              "texture_width": 16,
+              "texture_height": 16,
+              "format": 894720068
+            }
+          }
+        }
+      },
+      "main": {
+        "file": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ru-ru\\main.spr",
+        "sha256": "68a147fc1f45baa394587653ef73c26904cf92254071a974f5b64bb1ab374fd1",
+        "geometry": {
+          "frame_counts": [
+            13,
+            10,
+            16,
+            26,
+            20,
+            44,
+            20,
+            9,
+            4,
+            30,
+            2,
+            7,
+            7,
+            17,
+            4
+          ],
+          "requested": {
+            "5:0": {
+              "width": 400,
+              "height": 18,
+              "texture_width": 512,
+              "texture_height": 32,
+              "format": 21
+            },
+            "5:32": {
+              "width": 400,
+              "height": 400,
+              "texture_width": 512,
+              "texture_height": 512,
+              "format": 21
+            }
+          }
+        }
+      }
+    }
+  ],
+  "script_sha256": "f69c2e0cdcada83a0b1f703f17e207a2ee6986997d6480dc88c1636852894454",
+  "facts": [
+    "7B2C60/7B2B80 are generic alignment helpers;7B5450 style0 configures common8frames12to18,horizontal,no auto thumb",
+    "Minimap Init centers opacity EX relative to frame then adds15y,sets80/80 and scroll observer",
+    "709E10 maps own current to BYTE(255*(current+20)/100),then checks camera zoom gate independently of source",
+    "7099E0 applies alpha to individual owned groups,EX and list contents;background multiplier0.8 only alpha100,otherwise0.6",
+    "5558E0 uses eligibility/suppression/ack state;positive555940 camera consumer still needs455world integration"
+  ],
+  "gaps": [
+    "Full455minimap layout/additional controls/map generation/markers/tooltips and all remaining alpha groups",
+    "Actual camera zoom consumer555940/Avatar/world and suppression setters;positive unsupported branch explicitly refused",
+    "Full parent input/show/focus and all skin/alpha/clipping/lifecycle/FP/unsafe domains;briefing/Tutorial/M6F/M9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

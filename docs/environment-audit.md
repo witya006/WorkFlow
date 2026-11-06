@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,minimap-opacity067: установок нет.17ranges/2vtable regions
+совпали между pins,10complete asm;IDA7b53e450/b947042c closed/save,sessioncount0.
+Main sprites:Ko fallbackCommon DXT1,Ru localizedARGB;frames5:0=400×18/5:32=400².
+Common8style0=194×13/style1=192×15. Production0def3dce…/entry14EFF0,
+182/20/27TU,0unresolved/existingCreate1. Ko/Ru real owner/queued mouse/GPU passed;
+source EX and opacity facade retained in production. Полный мир/карта OPEN.
+Удалён старый ignored client455_crt_multibyte.obj от эксперимента064:27CMake
+facade sources/27актуальныхobjects;LIB/LIST и production map не содержат этого
+адаптера. Найденные __acrt_multibyte symbols принадлежат обычному libucrt.
+[Доказательства](../research/client455-minimap-opacity.md).
+
 Дополнение06.11, scrollbar-variants066: установок нет.37function ranges и2vtable
 regions совпали между pins,13complete asm. IDA68442489/ef4ffb43 closed/save.
 Productionb24f1f09…/entry14E290,182/20/26TU,0unresolved/existingCreate1;

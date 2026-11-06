@@ -110,6 +110,42 @@ def main():
             if relative=='userinterface/guicontroller/guiscrollbar.cpp':
                 raw=(native/'client455_gui_scrollbar.cpp').read_bytes()
                 changes.append('455ordinary scrollbar composite thumb/layout/amount/x87 snap/mouse/timers;legacy parent-routing adapter')
+            if relative=='userinterface/gamewindow/etcwin/guiminimapwindow.h':
+                raw=raw.replace(b'#include "../../GUIController/GUIText.h"',b'#include "../../GUIController/GUIText.h"\r\n#include "../../GUIController/GUIScrollbar.h"')
+                anchor=b'class CGUIMiniMapWindow : public CGUIWindow'
+                if raw.count(anchor)!=1:raise ValueError('Minimap base boundary changed')
+                raw=raw.replace(anchor,anchor+b', public IScrollObserver')
+                raw,count=re.subn(rb'CGUIObject([ \t]+m_uiTitleBoard;)',rb'CGUIContainer\1',raw)
+                if count!=1:raise ValueError('Minimap frame storage changed')
+                raw,count=re.subn(rb'CGUIObject([ \t]+m_uiMiniMap;)',rb'CGUIContainer\1',raw)
+                if count!=1:raise ValueError('Minimap map container storage changed')
+                anchor=b'BOOL\t\t\t\tm_bCreated;'
+                if raw.count(anchor)!=1:raise ValueError('Minimap member boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tCGUIScrollbarEX m_opacityScrollbar455;\r\n\tCGUIObject m_mapBackground455;\r\n\tCSprite m_frameSkin455;\r\n\tBYTE m_alpha455=255;\r\n\tBOOL m_zoomEligible455=FALSE,m_suppressZoom455=FALSE,m_clearZoomSuppression455=FALSE;\r\n\tvoid InitOpacity455();')
+                anchor=b'void\tMouseEvent( _mouse_event & event );'
+                if raw.count(anchor)!=1:raise ValueError('Minimap event API changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid ScrollEvent(_scroll_event& event);\r\n\tvoid SetAlpha455(BYTE alpha);\r\n\tBYTE GetAlpha455()const{return m_alpha455;}\r\n\tBOOL TakeCameraZoomGate455();\r\n\tCGUIScrollbarEX& GetOpacityScrollbar455(){return m_opacityScrollbar455;}\r\n\tCGUIObject& GetMapBackground455(){return m_mapBackground455;}')
+                changes.append('455minimap opacity owner and mapped frame/map containers;other455controls/world remain open')
+            if relative=='userinterface/gamewindow/etcwin/guiminimapwindow.cpp':
+                raw=b'#include "client455_minimap_opacity.h"\r\n#include "client455_modal.h"\r\n#include "client455_sprites.h"\r\n#include <io.h>\r\n#include <stdexcept>\r\n'+raw
+                for method,expected in [(b'SetSprite(',b'void'),(b'Draw(',b'BOOL')]:
+                    signature=b'CGUIMiniMapWindow::'+method
+                    first,last=section(raw,signature,signature);begin=raw.rfind(b'\n',0,first-1)+1
+                    if raw[begin:first].strip()!=expected:raise ValueError('Minimap method return boundary changed')
+                    raw=raw[:begin]+b'//455implementation below.\r\n'+raw[last:]
+                first,last=section(raw,b'CGUIMiniMapWindow::Init(',b'CGUIMiniMapWindow::Init(')
+                body=raw[first:last]
+                for member in [b'm_uiTitle',b'm_uiCloseButton']:
+                    anchor=b'Add( &'+member+b' );'
+                    if body.count(anchor)!=1:raise ValueError('Minimap title hierarchy changed')
+                    body=body.replace(anchor,b'm_uiTitleBoard.'+anchor)
+                body=body[:-1]+b'\r\n\tInitOpacity455();\r\n}'
+                raw=raw[:first]+body+raw[last:]
+                first,last=section(raw,b'CGUIMiniMapWindow::~CGUIMiniMapWindow()',b'CGUIMiniMapWindow::~CGUIMiniMapWindow()')
+                body=raw[first:last];body=body[:-1]+b'\r\n\tm_frameSkin455.ReleaseSprite();\r\n}'
+                raw=raw[:first]+body+raw[last:]
+                raw+=b'\r\n'+(native/'client455_minimap_opacity_owner.inc').read_bytes()
+                changes.append('455minimap EX opacity setup/observer/alpha for mapped owner;fullmap/zoom consumer remains open')
             if relative=='userinterface/guicontroller/guibutton.h':
                 anchor=b'void\t\tSetLabel( char * pi_pLabel );'
                 if raw.count(anchor)!=1:raise ValueError('Button label API changed')
@@ -409,7 +445,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -441,6 +477,7 @@ def main():
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

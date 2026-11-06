@@ -7,6 +7,31 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок067: opacity EX теперь в обычном CGUIMiniMapWindow и production map.
+7B2C60 — только generic alignment,skinhelper7B5450. Styles0/1=194×13/192×15,
+Init:center frame then+15y,80/80,observer/Add. Alpha BYTE(255*(current+20)/100),
+background0.8 only alpha100,otherwise0.6;known mapped owner groups/lists preserve
+RGB. Draw7099A0=container+dialogs:legacy map-index gate/outline removed.
+NativeKo/Ru mouse→owner→EX→queue and81amount passed;dragendpoint78 because
+base162 vsvisible158 track,release realigns. Production0def3dce…/entry14EFF0,
+182/20/27TU,0unresolved/existingCreate1;affected GUI gates PARTIAL/pass.
+Main resource owned locally toavoid legacyid4=inventory collision;realKoCommon/
+Ru main used. Six640×480frames viewed. Grid is main5:32,not terrain;partialalpha
+white fallback comes from missing dynamicmap56/legacy GUIObject path. Fullmap,
+other455controls/alpha groups,zoom555940,resource lifecycle/parity OPEN.
+
+Далее068: target GUIObject/Container observer/input/show/focus/parent route.
+Start from Add60BFA0→60D3D0,observer setters60A450/6300C0 and actual SendMouse*/
+InputProc. Ordinary065 SetAmount asm has onlyone60A450(self);EX066 hasfour
+explicit registrations. Do not generalize EX wiring or assume Add60D3D0 meaning.
+Own0.7 path tested,not yet full455 pipeline. Then production rich/message sizing/
+fullbriefing and actualhost/Avatar/world/Tutorial/fourstage. Camera gate5558E0
+state restored;positive555940 branch explicitly refused pendingactualworld,
+not silent no-op. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-minimap-opacity.md).
+
+Предыдущий результат:
+
 Участок066: EX/Var source восстановлены и проверены с обычными клиентскими
 объектами/очередью/GPU,Ko/Ru naturalexit0. EX UpdateBar использует новый plain
 button,а input — inherited composite track;repeat отсутствует. Var сохраняет
