@@ -27,7 +27,7 @@ public:
 class CGUIScrollbar : public CGUIContainer, public IMouseObserver, public IMouseMotionObserver {
 public:
     enum Style {Vertical,Horizontal};
-private:
+protected:
     Style m_style=Vertical;
     CGUIButton m_top,m_bottom;
     CGUIScrollbarButton m_thumb;
@@ -51,7 +51,7 @@ public:
     void SetBottomArrowSize(POINT& size){m_bottom.SetSize(size);}
     int GetMinSize();
     void SetSize(POINT& size){SetSize(size.x,size.y);}
-    void SetSize(LONG width,LONG height);
+    virtual void SetSize(LONG width,LONG height);
     void SetBound(RECT& bound);
     void AddScrollHandler(IScrollObserver* observer){m_observer=observer;}
     void SetTopArrowSpriteInfo(SPRITE_INFO* images);
@@ -85,5 +85,57 @@ public:
     CGUIScrollbarButton& GetThumb455(){return m_thumb;}
     BOOL Draw();
     BOOL Draw(RECT& clipping);
+};
+
+//455 uses a plain button in addition to the inherited composite thumb.
+//Its input deliberately calls the nonvirtual base pixel-to-amount calculation.
+class CGUIScrollbarEX : public CGUIScrollbar {
+    CGUIButton m_button;
+    void CommitAmount455(int requested);
+public:
+    CGUIScrollbarEX();
+    using CGUIScrollbar::SetSize;
+    void SetSize(LONG width,LONG height) override;
+    void SetAmount(LONG total,LONG current);
+    void SetCurrentAmount(LONG current){SetAmount(m_total,current);}
+    void UpdateBar();
+    int GetScrollLength455() const;
+    CGUIButton& GetButton455(){return m_button;}
+    void SetAlpha455(BYTE alpha);
+    void MouseEvent(_mouse_event& event) override;
+    void MouseMotionEvent(_mouse_motion_event& event) override;
+};
+
+//Dormant in the pinned455 direct-call graph;keep its distinct contracts explicit.
+class CGUIScrollbarVar : public CGUIScrollbar {
+    CGUIObject m_capTop;
+    CGUIObjectEx m_middle;
+    CGUIObject m_capBottom;
+    SPRITE_INFO m_images[3][2]={};
+    LONG m_middleExtent=0,m_skinWidth=6,m_skinHeight=18;
+    DWORD m_pressed=0;
+    void ApplyMode455(DWORD mode);
+    void CommitAmount455(int requested);
+public:
+    CGUIScrollbarVar();
+    using CGUIScrollbar::SetSize;
+    void SetSize(LONG width,LONG height) override;
+    void SetSprite() override;
+    void SetSkin455(CSprite* sprite);
+    void SetSpriteInfo(SPRITE_INFO* image) override; //Original is a no-op.
+    virtual void SetTotalAmount(LONG total){SetAmount(total,m_current);}
+    virtual void SetCurrentAmount(LONG current){SetAmount(m_total,current);}
+    virtual void SetAmount(LONG total,LONG current);
+    int GetScrollLength455() const;
+    int CalculateAmount455(int distance);
+    LONG GetMiddleExtent455()const{return m_middleExtent;}
+    DWORD GetPressed455()const{return m_pressed;}
+    CGUIObject& GetTopCap455(){return m_capTop;}
+    CGUIObject& GetBottomCap455(){return m_capBottom;}
+    CGUIObjectEx& GetMiddle455(){return m_middle;}
+    void MouseEvent(_mouse_event& event) override;
+    void MouseMotionEvent(_mouse_motion_event& event) override;
+    BOOL Draw() override;
+    BOOL Draw(RECT& clipping) override{return Draw();}
 };
 #endif

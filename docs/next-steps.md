@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок066: EX/Var source восстановлены и проверены с обычными клиентскими
+объектами/очередью/GPU,Ko/Ru naturalexit0. EX UpdateBar использует новый plain
+button,а input — inherited composite track;repeat отсутствует. Var сохраняет
+два базовых arrow children,не делает UpdateBar в SetAmount;zero/negative extent,
+action2 row2 и skin state проверены. Var action15 недоступен обычному loader455
+actions<16;не менять guard. Horizontal track local неизвестен,explicit refusal.
+Productionb24f1f09…/entry14E290,182/20/26TU,0unresolved/existingCreate1;
+affected GUI PASS. Далее067: CGUIMiniMapWindow ctor705160/Init7059E0 и helper
+7B2C60 — настоящий EX caller;сопоставить оформление/amount80/current80/pos+15/
+observer и только затем переносить нужные связи в legacy owner. Parent input/
+show/focus routing ещё открыт;не выдавать компонентную пробу за minimap parity.
+После этого production message sizing/rich callers/fullbriefing и actual
+Tutorial/fourstage. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-scrollbar-variants.md).
+
+Предыдущий результат:
+
 Участок065: normal scrollbar и composite thumb source. Геометрия/min6×18/
 linear auto20/dynamic track/signed32 wrap, x87 snap/SSE2 conversion, queued
 mouse/drag/release/repeat clocks проверены на Ko/Ru. Real common action2 имеет

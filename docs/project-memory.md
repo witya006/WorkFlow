@@ -23,6 +23,53 @@
 
 ## Последний проверенный результат
 
+Scrollbar-variants066: CGUIScrollbar base state protected,SetSize virtual for
+455derived dispatch;existing static amount methods retained. New EX plainbutton
+added at ctor even total0;SetAmount0 removes observers but not child. Auto sizing
+has NO composite6x18 clamp,negative available minimum preserved. UpdateBar uses
+own plain button track63B050;Mouse/drag directly call BASE63A1A0 reading inherited
+composite size. No MOUSE_PRESSED repeat. Alpha on self/arrows/plain/basecomposite.
+Inherited Draw paints children then returnsFALSE when hidden unused composite
+Draw fails.625C70 show=0/6394A0 AND confirmed. Source label Draw outcome tested,
+not normalized toTRUE. Real owner CGUIMiniMapWindow ctor705160/Init7059E0.
+Its helper7B2C60,SetAmount80/80,posY+15,observer and ordinary source owner OPEN.
+
+Var: initializer virtual+24 is SetSprite63B310,NOT RemoveAll (vtableADB0FC);
+two base arrows remain. Caps common action15 frames0/1/2,pressed3/4/5. Row draw
+explicit common action2 frame1/4 and row2. Own source uses CSprite pointer adapter.
+SetSize keeps raw outer width/height,separate skin min6x18,cap heights from valid
+requested resource (invalid→0),NO amount/reflow. SetAmount adds3skins+basecomposite,
+sets origin and thumbheight=preferredHeight-total+caps with composite minimum;
+middleExtent=preferredHeight-total including0/negative;NO UpdateBar. Total0
+removes4children,retains extent. Draw0extent skips all;negative loop none then
+container.Draw. Vertical trackclick subtracts FULL thumbheight;drag commits then
+freepixel;release switches modes only. Horizontal tracklocal uninitialized:
+explicit throw,never inventvalue. Var ctor hasNO direct xrefs in IDB;indirectuse
+not excluded. Fullclient completeness still requires all known behavior.
+
+Target sprite loader8CFB90 actions<16 already proved048;therefore action15 cannot
+be supplied through ordinary loader. Ko/Ru selectedcommon15actions,action2=44.
+First fixture16actions correctly hit engineError/exit1;fixture changed to15 and
+tests preserve missingcap height0,not productionguard. Other early fixture
+assumption DrawTRUE corrected:EX hiddenbasecomposite returnsFALSE after painting.
+Shared UV width ratio now floatspill before finalUV,as6269A0. FullFPdomain OPEN.
+37ranges+2vtables equalpins,13fullasm;IDA68442489/ef4ffb43 closed/save.
+Raw artifacts/client455-tutorial/scrollbar-*066;research/client455-scrollbar-variants.md.
+OwnPE7d9b518cd492543317be036979821e12ee1e48a2556dbe81175235dc5c58f396,
+Ko/Ru naturalexit0,3GPUframes hashes equal:282/420/420pixels. Three earlier
+148e5bba frames viewed;latest7d9b518c frame hashes identical. EX realarrows/plain
+thumb;Var owned15action fixture action2 row2 green/cyan;missingcap intentional.
+NormalPEb24f1f0967de631da59f427df4c73908cf057621385238f88166e2f40b59db95,
+x86/base400000/entry14E290/2029568bytes,182/20/26TU,0unresolved/existingCreate1.
+All affected scrollbar/textboard/metrics/font/modal/tutorial-board probes passed;
+sixscopedcheckpointsPARTIAL;generator idempotent,canonical20kernels unchanged.
+Variants may be stripped from production until real455 minimap owner is ported;
+no forced retention. Next067 helper7B2C60/minimap and parentinput;thenrich/message
+sizing/briefing/actualTutorial/fourstage. No inputEXE/serverchanges/largeunchanged
+suites. All owned sessions closed,probes stopped. M6/M6F/M7/M9 remainOPEN.
+
+## Предыдущий результат — scrollbar065
+
 Scrollbar065: new native/client455_gui_scrollbar.{h,cpp} replace normal header/
 body. Ordinary classesCGUIScrollbar+CGUIScrollbarButton (container+3imageobjects),
 NOT simplelegacyCGUIButton. Defaultthumb6×18,minwidth6/minheight18;autoTRUE,

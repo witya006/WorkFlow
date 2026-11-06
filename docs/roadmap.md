@@ -12,6 +12,18 @@
 
 ## Текущий статус
 
+Участок066: классы scrollbar EX/Var восстановлены в обычном source provider;
+Ko/Ru full-object/queued input/GPU проверки прошли. EX имеет подтверждённого
+владельца CGUIMiniMapWindow; его helper7B2C60 и настоящие события ещё не перенесены.
+Var direct ctor xrefs отсутствуют;action15 не загружается ordinary loader455
+(actions<16),horizontal track читает uninitialized local. Пробы сохраняют эти
+ограничения. Productionb24f1f09…/existingCreate1;affected GUI PASS. Далее067 —
+EX minimap helper/owner и parent input,затем message sizing/rich callers/briefing/
+actual Tutorial/fourstage. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-scrollbar-variants.md).
+
+Предыдущий участок:
+
 Участок065: обычный scrollbar получил composite thumb, layout/amount/snapping/
 mouse/repeat rules455. Ko/Ru GPU/queued input, затронутые GUI probes и Create1
 прошли. EX/Var, полная parent routing и resource/skin parity ещё открыты.
@@ -431,8 +443,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/063: общий CGUITextBoard/CGUIScrollbar455 — строки/markup/перенос,
-   реальные метрики/размеры, scroll и ввод. Затем полный CGUIBriefingWindow:
+1. M6/067: подключить EX к настоящему CGUIMiniMapWindow455 через подтверждённый
+   helper7B2C60;восстановить parent input/show/focus routing. Затем production
+   message sizing/rich callers и полный CGUIBriefingWindow:
    постраничный/временной текст, портреты и изображения клавиш.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
    feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.

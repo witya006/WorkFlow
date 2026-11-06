@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, scrollbar-variants066: установок нет.37function ranges и2vtable
+regions совпали между pins,13complete asm. IDA68442489/ef4ffb43 closed/save.
+Productionb24f1f09…/entry14E290,182/20/26TU,0unresolved/existingCreate1;
+Ko/Ru EX/Var full-object/queue/GPU и затронутые GUI probes passed. Target
+loader8CFB90 требует actions<16;изменять этот предел ради Var action15 нельзя.
+Ранний invalid16action fixture завершился через Error;исправлен fixture15actions,
+production guard сохранён. [Доказательства](../research/client455-scrollbar-variants.md).
+
 Дополнение06.11, scrollbar065: установок нет.23ranges/2vtable prefixes/divisor
 совпали между pins,15complete asm; IDAbfcf8ee1/9775776a closed/save. Новая PE
 d38d74e0…/entry14E350,182/20/26TU,0unresolved/existingCreate1. Ko/Ru ordinary

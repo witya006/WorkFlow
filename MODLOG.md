@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Scrollbar-variants066. Added distinct EX/Var classes to ordinary
+source provider;EX base-composite snap versus plain-button positioning,no repeat,
+alpha and Var origin/extent/modes/vertical input/row2 verified with real objects.
+Var initializer+24=SetSprite,notRemoveAll. Target loader actions<16 retained;
+invalid16action fixture corrected to15,Var missing action15 not hidden. EX real
+minimap owner identified but not ported. Ko/Ru queued/D3D probes and affected GUI/
+existingCreate1 passed;productionb24f1f09…/entry14E290. Next067 minimap helper/
+owner,parent input;fullM9 OPEN. [Evidence](research/client455-scrollbar-variants.md).
+
 2026-11-06 — Scrollbar065. Ordinary geometry/linear thumb sizing,x87 snapping/
 SSE2int32 conversion,mouse/drag/repeat clocks and queued events ported. Composite
 thumb min6x18 and row2 tiling verified. Real common action2 has44frames,so

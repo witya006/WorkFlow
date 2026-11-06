@@ -1,5 +1,13 @@
 # Полнота восстановления RF_Online.bin
 
+Участок066: приняты bounded EX/Var source contracts и full-object Ko/Ru queued
+input/GPU пробы. EX plain/base track inconsistency,no repeat,alpha и Var sizing/
+origin/mode/release/row2 проверены. Это не интеграция minimap455:реальный owner
+и helper7B2C60 ещё открыты. Var ctor direct xrefs нет;action15 недоступен через
+loader455 actions<16;неизвестный horizontal local не подменяется значением.
+Новая production PE/existingCreate1 и затронутые GUI проверки прошли.
+[Доказательства](../research/client455-scrollbar-variants.md). M6/M6F/M7/M9 OPEN.
+
 Участок065: ordinary scrollbar geometry/amount/mouse/clock и composite thumb
 подключены; Ko/Ru queued GUI/GPU проверки прошли. Наличие23pinned ranges и
 этих тестов не закрывает EX/Var, parent input pipeline или полноту GUI455.

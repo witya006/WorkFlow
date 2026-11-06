@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-SCROLLBAR-VARIANTS-066",
+      "status": "partial",
+      "description": "Distinct EX/Var source contracts verified in full-object GUI probes;production minimap owner and complete parent input OPEN",
+      "reference": [{"rva":"0x23a2c0","role":"EX constructor"},{"rva":"0x23a750","role":"EX amount"},{"rva":"0x23aae0","role":"EX input"},{"rva":"0x23b2b0","role":"Var initialization"},{"rva":"0x23b760","role":"Var amount"},{"rva":"0x23bc40","role":"Var input"},{"rva":"0x305160","role":"actual minimap EX owner"},{"rva":"0x4cfb90","role":"loader action count guard"}],
+      "implementation": ["scripts/native/client455_gui_scrollbar.h","scripts/native/client455_gui_scrollbar.cpp"],
+      "verification": "37ranges/2vtables equalpins,13completeasm;Ko/Ru actual full-object queued events/clock/geometry/drag/release/EX alpha and no-repeat/Var row2 GPU;3frames282/420/420pixels equalprofiles;affected GUI and exact own PE existingCreate1 PASS",
+      "evidence": ["inventory/client455-scrollbar-variants-reference.json","inventory/client455-scrollbar-variants-native.json","inventory/client455-scrollbar-variants-checkpoint.json","research/client455-scrollbar-variants.md"],
+      "gaps": ["Production minimap455 owner/helper7B2C60 and real EX callers not ported;unused variant code may be stripped","Var no direct ctor xrefs;action15 cannot be supplied by target loader actions<16;fixture preserves missing caps","Horizontal Var tracklocal uninitialized,explicit refusal;full parent input/show/focus/skin/alpha/clipping/lifecycle/FP/unsafe domains OPEN","Production rich/message sizing/briefing/Avatar/world/Tutorial/fourstage/auth/gameplay;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-SCROLLBAR-065",
       "status": "partial",
       "description": "Ordinary scrollbar/composite thumb geometry,amount,x87 snap,mouse/clock rules;EX/Var and completeparent input OPEN",

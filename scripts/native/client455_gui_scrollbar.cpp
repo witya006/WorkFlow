@@ -1,4 +1,5 @@
 #include "userinterface/guicontroller/guiscrollbar.h"
+#include "userinterface/spritemgr.h"
 #include <algorithm>
 #include <cstdint>
 #include <stdexcept>
@@ -68,6 +69,34 @@ bool roundUnitUp(float amount,int rounded,int unit){
            fnstsw status}
     const unsigned flags=(status>>8)&0x41;return flags==1||flags==0x40;
 }
+int snapAmount(LONG total,WORD unit,int distance,int scrollLength){
+    const float amount=scaledDistance(total,distance,scrollLength);const int current=truncateTarget(amount);
+    if(current>=total)return total;
+    if(total<static_cast<int>(unit))return smallUpperHalf(amount,total)?total:0;
+    if(!unit)throw std::domain_error("Scrollbar zero adjustment modulo is outside verified domain");
+    int rounded=sub(current,current%unit);
+    if(roundUnitUp(amount,rounded,unit)){rounded=add(rounded,unit);if(rounded>total)rounded=total;}
+    return rounded;
+}
+void setAlpha(CGUIObject& object,BYTE alpha){object.SetARGB((object.GetARGB()&0xffffff)|(static_cast<DWORD>(alpha)<<24));}
+void setSizedImage(CGUIObject& object,SPRITE_INFO& image){
+    object.SetSpriteInfo(&image);auto* sprite=image.pSprite;
+    //626060's resize flag queries the requested action/frame;it does not clamp.
+    if(sprite&&image.wActionNo<sprite->GetMaxActions()&&image.wFrameNo<sprite->GetMaxFrames(image.wActionNo)&&sprite->GetSpriteOrgXL(image.wActionNo,image.wFrameNo))
+        object.SetSize(sprite->GetSpriteOrgXL(image.wActionNo,image.wFrameNo),sprite->GetSpriteOrgYL(image.wActionNo,image.wFrameNo));
+}
+LONG imageHeight(CGUIObject& object){
+    auto& image=*object.GetSpriteInfo();auto* sprite=image.pSprite;
+    return sprite&&image.wActionNo<sprite->GetMaxActions()&&image.wFrameNo<sprite->GetMaxFrames(image.wActionNo)?sprite->GetSpriteOrgYL(image.wActionNo,image.wFrameNo):0;
+}
+void drawRow(CGUIObject& object,CSprite* sprite,WORD action,WORD frame,LONG width,LONG x,LONG y){
+    if(!sprite||!object.IsShow())return;
+    sprite->SetAction(action);sprite->SetFrame(frame);
+    const float ratio=static_cast<float>(static_cast<double>(sprite->GetSpriteOrgXL())/sprite->GetSpriteXL());
+    float uv[2][2]={{0,static_cast<float>(static_cast<double>(width)/sprite->GetSpriteOrgXL()*ratio)},
+                   {static_cast<float>(2.0/sprite->GetSpriteOrgYL()*ratio),static_cast<float>(2.0/sprite->GetSpriteOrgYL()*ratio)}};
+    sprite->DrawSpriteUV(x,y,uv,x+width,y+1,object.GetARGB());
+}
 }
 RF455ScrollbarClock RF455_SetScrollbarClock(RF455ScrollbarClock provider){auto old=clockProvider;clockProvider=provider;return old;}
 
@@ -95,7 +124,7 @@ BOOL CGUIScrollbarButton::Draw(){
         m_segments[0].SetPos(m_ptPos.x,m_ptPos.y);m_segments[0].Draw();
         if(m_skin&&m_segments[1].IsShow()){
             const WORD frame=m_frames[1][m_pressed];m_skin->SetAction(2);m_skin->SetFrame(frame);
-            const double ratio=static_cast<double>(m_skin->GetSpriteOrgXL())/m_skin->GetSpriteXL();
+            const float ratio=static_cast<float>(static_cast<double>(m_skin->GetSpriteOrgXL())/m_skin->GetSpriteXL());
             float uv[2][2]={{0,static_cast<float>(static_cast<double>(m_ptSize.x)/m_skin->GetSpriteOrgXL()*ratio)},
                            {static_cast<float>(2.0/m_skin->GetSpriteOrgYL()*ratio),static_cast<float>(2.0/m_skin->GetSpriteOrgYL()*ratio)}};
             for(int i=0;i<m_ptSize.y-12;++i){const LONG y=m_ptPos.y+m_segments[0].GetSizeY()+i;m_skin->DrawSpriteUV(m_ptPos.x,y,uv,m_ptPos.x+m_ptSize.x,y+1,m_segments[1].GetARGB());}
@@ -162,13 +191,7 @@ void CGUIScrollbar::UpdateBar(){
     else m_thumb.m_ptPos.y=add(position,add(m_top.GetPosY(),m_top.GetSizeY()));
 }
 int CGUIScrollbar::CalcCurrentAmount(int distance){
-    const float amount=scaledDistance(m_total,distance,GetScrollLength455());const int current=truncateTarget(amount);
-    if(current>=m_total)return m_total;
-    if(m_total<static_cast<int>(m_unit))return smallUpperHalf(amount,m_total)?m_total:0;
-    if(!m_unit)throw std::domain_error("Scrollbar zero adjustment modulo is outside verified domain");
-    int rounded=sub(current,current%m_unit);
-    if(roundUnitUp(amount,rounded,m_unit)){rounded=add(rounded,m_unit);if(rounded>m_total)rounded=m_total;}
-    return rounded;
+    return snapAmount(m_total,m_unit,distance,GetScrollLength455());
 }
 void CGUIScrollbar::SendScrollEvent(WORD id){
     if(m_observer){_event_queue_data event;event.pEventHandler=m_observer;event.pSource=this;event.wEventID=id;CGUIObject::SendEvent(event);}
@@ -214,3 +237,127 @@ void CGUIScrollbar::SetBarSpriteInfo(SPRITE_INFO* image){m_thumb.SetSpriteInfo(i
 void CGUIScrollbar::SetSprite(CSprite* sprite){m_top.SetSprite(sprite);m_bottom.SetSprite(sprite);m_thumb.GetSpriteInfo()->pSprite=sprite;if(GetSpriteInfo()->pSprite)GetSpriteInfo()->pSprite=sprite;}
 BOOL CGUIScrollbar::Draw(RECT& clipping){return CGUIContainer::Draw(clipping)&&m_thumb.Draw(clipping);}
 BOOL CGUIScrollbar::Draw(){return CGUIContainer::Draw()&&m_thumb.Draw();}
+
+CGUIScrollbarEX::CGUIScrollbarEX(){
+    m_button.AddMouseEventHandler(this);m_button.AddMouseMotionEventHandler(this);
+    m_button.Show(IsShow());Add(&m_button);SetStyle(Vertical);
+}
+void CGUIScrollbarEX::SetSize(LONG width,LONG height){
+    CGUIObject::SetSize(width,height);
+    if(m_style){
+        m_top.SetPos(m_ptPos.x,m_ptPos.y+(height-m_top.GetSizeY())/2);
+        m_bottom.SetPos(m_ptPos.x+width-m_bottom.GetSizeX(),m_top.GetPosY());
+        m_button.SetPos(m_ptPos.x+m_top.GetSizeX(),m_ptPos.y);
+    }else{
+        m_top.SetPos(m_ptPos.x+(width-m_top.GetSizeX())/2,m_ptPos.y);
+        m_bottom.SetPos(m_top.GetPosX(),m_ptPos.y+height-m_bottom.GetSizeY());
+        m_button.SetPos(m_ptPos.x+(width-m_button.GetSizeX())/2,m_ptPos.y+m_top.GetSizeY());
+    }
+    SetAmount(m_total,m_current);
+}
+void CGUIScrollbarEX::SetAmount(LONG total,LONG current){
+    m_total=std::max<LONG>(0,total);m_current=std::max<LONG>(0,std::min(current,m_total));
+    if(!m_total){m_top.RemoveMouseEventHandler();m_bottom.RemoveMouseEventHandler();m_button.RemoveMouseEventHandler();RemoveMouseEventHandler();return;}
+    m_top.AddMouseEventHandler(this);m_bottom.AddMouseEventHandler(this);m_button.AddMouseEventHandler(this);AddMouseEventHandler(this);
+    if(!IsAddedObject(&m_button)){
+        if(m_style)m_button.SetPos(0,m_ptPos.y+(m_ptSize.y-m_button.GetSizeY())/2);
+        else m_button.SetPos(m_ptPos.x+(m_ptSize.x-m_button.GetSizeX())/2,0);
+        if(m_bEnableFocus)m_button.EnableFocus();else m_button.DisableFocus();
+        m_button.Show(IsShow());Add(&m_button);
+    }
+    if(m_autoThumb){
+        if(m_style)m_button.m_ptSize.x=std::max(m_minThumb,m_ptSize.x-m_top.GetSizeX()-m_bottom.GetSizeX()-m_total);
+        else m_button.m_ptSize.y=std::max(m_minThumb,m_ptSize.y-m_top.GetSizeY()-m_bottom.GetSizeY()-m_total);
+    }
+    //EX does not call composite SetSize:its plain button has no6x18 minimum.
+    UpdateBar();
+}
+int CGUIScrollbarEX::GetScrollLength455()const{
+    return m_style?m_ptSize.x-m_top.m_ptSize.x-m_bottom.m_ptSize.x-m_button.m_ptSize.x:m_ptSize.y-m_top.m_ptSize.y-m_bottom.m_ptSize.y-m_button.m_ptSize.y;
+}
+void CGUIScrollbarEX::UpdateBar(){
+    if(!m_total)throw std::domain_error("ScrollbarEX UpdateBar requires nonzero total");
+    const LONG position=multiply(m_current,GetScrollLength455())/m_total;
+    if(m_style)m_button.m_ptPos.x=add(position,add(m_top.GetPosX(),m_top.GetSizeX()));
+    else m_button.m_ptPos.y=add(position,add(m_top.GetPosY(),m_top.GetSizeY()));
+}
+void CGUIScrollbarEX::SetAlpha455(BYTE alpha){setAlpha(m_button,alpha);setAlpha(m_top,alpha);setAlpha(m_bottom,alpha);setAlpha(m_thumb,alpha);setAlpha(*this,alpha);}
+void CGUIScrollbarEX::CommitAmount455(int requested){
+    if(requested==m_current)return;SetCurrentAmount(requested);SendScrollEvent(requested<m_current?SCROLLED_UP:SCROLLED_DOWN);
+}
+void CGUIScrollbarEX::MouseEvent(_mouse_event& event){
+    if(event.id==MOUSE_STROKED){
+        if(event.source==&m_top||event.source==&m_bottom){m_strokedTime=clockNow();const LONG unit=m_arrowUnit?m_arrowUnit:m_unit;SetCurrentAmount(event.source==&m_top?sub(m_current,unit):add(m_current,unit));SendScrollEvent(event.source==&m_top?SCROLLED_UP:SCROLLED_DOWN);}
+        else if(event.source==&m_button)m_grabOffset=m_style?sub(event.xPos,m_button.GetPosX()):sub(event.yPos,m_button.GetPosY());
+        else if(event.source==this){const LONG distance=m_style?event.xPos-m_button.GetSizeX()/2-m_top.GetPosX()-m_top.GetSizeX():event.yPos-m_button.GetSizeY()/2-m_top.GetPosY()-m_top.GetSizeY();CommitAmount455(CalcCurrentAmount(std::max<LONG>(0,distance)));}
+    }else if((event.id==MOUSE_RELEASED||event.id==MOUSE_CLICKED)&&event.source==&m_button){
+        const LONG distance=m_style?event.xPos-m_grabOffset-m_top.GetPosX()-m_top.GetSizeX():event.yPos-m_grabOffset-m_top.GetPosY()-m_top.GetSizeY();const int amount=CalcCurrentAmount(std::max<LONG>(0,distance));
+        if(amount==m_current)UpdateBar();else CommitAmount455(amount);
+    }
+    //63AAE0 has no arrow-repeat/MOUSE_PRESSED branch.
+}
+void CGUIScrollbarEX::MouseMotionEvent(_mouse_motion_event& event){
+    if(event.id!=MOUSE_DRAG||event.source!=&m_button)return;
+    const LONG first=m_style?m_top.GetPosX()+m_top.GetSizeX():m_top.GetPosY()+m_top.GetSizeY();
+    const LONG last=m_style?m_bottom.GetPosX()-m_button.GetSizeX():m_bottom.GetPosY()-m_button.GetSizeY();
+    LONG position=sub(m_style?event.xPos:event.yPos,m_grabOffset);
+    if(position<first)position=first;else if(position>last)position=last;
+    CommitAmount455(CalcCurrentAmount(sub(position,first)));
+    if(m_style)m_button.m_ptPos.x=position;else m_button.m_ptPos.y=position;
+}
+
+CGUIScrollbarVar::CGUIScrollbarVar(){SetSprite();m_pressed=0;m_middleExtent=0;m_skinWidth=6;m_skinHeight=18;SetStyle(Vertical);}
+void CGUIScrollbarVar::SetSprite(){SetSkin455(gSpriteMgr.GetSprite(SP_ID_COMMON));}
+void CGUIScrollbarVar::SetSkin455(CSprite* sprite){
+    for(unsigned i=0;i<3;++i)for(unsigned mode=0;mode<2;++mode)m_images[i][mode]={sprite,15,static_cast<WORD>(i+3*mode)};
+    ApplyMode455(0);
+}
+void CGUIScrollbarVar::ApplyMode455(DWORD mode){
+    setSizedImage(m_capTop,m_images[0][mode]);setSizedImage(m_middle,m_images[1][mode]);setSizedImage(m_capBottom,m_images[2][mode]);
+}
+void CGUIScrollbarVar::SetSpriteInfo(SPRITE_INFO*){}
+void CGUIScrollbarVar::SetSize(LONG width,LONG height){
+    CGUIObject::SetSize(width,height);m_skinWidth=std::max<LONG>(6,width);m_skinHeight=std::max<LONG>(18,height);
+    m_capTop.SetSize(m_skinWidth,imageHeight(m_capTop));m_capBottom.SetSize(m_skinWidth,imageHeight(m_capBottom));
+    //This setter does not relayout,change the amount,or restore the old extent.
+}
+void CGUIScrollbarVar::SetAmount(LONG total,LONG current){
+    m_total=std::max<LONG>(0,total);m_current=std::max<LONG>(0,std::min(current,m_total));
+    if(!m_total){Remove(&m_capTop);Remove(&m_middle);Remove(&m_capBottom);Remove(&m_thumb);RemoveMouseEventHandler();return;}
+    for(CGUIObject* child:{&m_capTop,static_cast<CGUIObject*>(&m_middle),&m_capBottom}){if(!IsAddedObject(child))child->Show(IsShow());Add(child);}
+    AddMouseEventHandler(this);m_capTop.SetPos(m_ptPos.x,m_ptPos.y);
+    m_middle.SetPos(m_ptPos.x,m_capTop.GetPosY()+imageHeight(m_capTop));m_capBottom.SetPos(m_ptPos.x,m_middle.GetPosY()+m_middle.GetSizeY());
+    m_thumb.SetSize(m_capTop.GetSizeX(),add(sub(m_skinHeight,m_total),add(m_capTop.GetSizeY(),m_capBottom.GetSizeY())));
+    m_thumb.SetPos(m_ptPos.x,m_ptPos.y);if(!IsAddedObject(&m_thumb))m_thumb.Show(IsShow());Add(&m_thumb);
+    m_middleExtent=sub(m_skinHeight,m_total);m_thumb.AddMouseEventHandler(this);m_thumb.AddMouseMotionEventHandler(this);
+}
+int CGUIScrollbarVar::GetScrollLength455()const{
+    return m_style?m_ptSize.x-m_capTop.m_ptSize.x-m_capBottom.m_ptSize.x-m_middleExtent:m_ptSize.y-m_capTop.m_ptSize.y-m_capBottom.m_ptSize.y-m_middleExtent;
+}
+int CGUIScrollbarVar::CalculateAmount455(int distance){return snapAmount(m_total,m_unit,distance,GetScrollLength455());}
+void CGUIScrollbarVar::CommitAmount455(int requested){if(requested==m_current)return;SetCurrentAmount(requested);SendScrollEvent(requested<m_current?SCROLLED_UP:SCROLLED_DOWN);}
+void CGUIScrollbarVar::MouseEvent(_mouse_event& event){
+    if(event.id==MOUSE_STROKED){
+        if(event.source==&m_thumb){m_pressed=1;ApplyMode455(1);if(!m_style)m_grabOffset=sub(event.yPos,m_thumb.GetPosY());}
+        else if(event.source==this){
+            if(m_style)throw std::domain_error("ScrollbarVar horizontal track click reads an uninitialized target local");
+            const int requested=CalculateAmount455(std::max<LONG>(0,event.yPos-m_thumb.GetSizeY()-m_ptPos.y));CommitAmount455(requested);
+            if(!m_total)throw std::domain_error("ScrollbarVar track click requires nonzero total");
+            m_thumb.m_ptPos.y=add(multiply(requested,sub(m_ptSize.y,m_thumb.GetSizeY()))/m_total,m_ptPos.y);
+        }
+    }else if((event.id==MOUSE_RELEASED||event.id==MOUSE_CLICKED)&&event.source==&m_thumb){m_pressed=0;ApplyMode455(0);}
+}
+void CGUIScrollbarVar::MouseMotionEvent(_mouse_motion_event& event){
+    if(event.id!=MOUSE_DRAG||event.source!=&m_thumb)return;
+    LONG position=sub(event.yPos,m_grabOffset);const LONG end=m_ptPos.y+m_ptSize.y-m_thumb.GetSizeY();
+    if(position<m_ptPos.y)position=m_ptPos.y;else if(position>end)position=end;
+    CommitAmount455(CalculateAmount455(sub(position,m_ptPos.y)));m_thumb.m_ptPos.y=position;
+}
+BOOL CGUIScrollbarVar::Draw(){
+    if(!m_middleExtent||!m_middle.GetSpriteInfo()->pSprite)return FALSE;
+    m_capTop.SetPos(m_ptPos.x,m_thumb.GetPosY());
+    const LONG first=m_capTop.GetPosY()+imageHeight(m_capTop);
+    for(LONG i=0;i<m_middleExtent;++i)drawRow(m_middle,m_images[1][m_pressed].pSprite,2,m_images[1][m_pressed].wFrameNo,m_skinWidth,m_ptPos.x,first+i);
+    m_middle.SetPos(m_ptPos.x,m_thumb.GetPosY()+m_capTop.GetSizeY());m_capBottom.SetPos(m_ptPos.x,m_middle.GetPosY()+m_middleExtent);
+    return CGUIContainer::Draw();
+}
