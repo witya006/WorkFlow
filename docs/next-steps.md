@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок070: CGUITextTypingBoard source восстановлен,реальные GDI/D3D/full-object
+Ko/Ru traces прошли. Interval/delay/space/cursor/DBCS/resourceCP/DWORDwrap/zero/
+virtualClear иpartialrenderer verified;44GUI GPU hashes unchanged from069.
+Production8f009924…/entry150290,182/20/29TU,0unresolved/existingCreate1.
+Typing включён вnormalfacade,ноordinarybriefing instance ещё отсутствует;
+не force-retain unused code.10gatesPARTIAL. Negative/missingmarker/unsafe
+domains explicit OPEN. Далее071 — полный CGUIBriefingBoard/keywidget/portrait/
+frame/window иactual RF455TutorialBriefingView,затемAvatar/world/Tutorial/
+fourstage. [Доказательства](../research/client455-text-typing.md),
+[карта разбора](../research/client455-briefing-analysis.md).
+
+Предыдущий участок:
+
 Участок069: ordinary CGUIMessagebox.SetMsg plain/rich/colorFFE3E0D9 и natural
 pixel extent/order455 перенесены. Width/height читаются после ResizeToText;
 300/250 fallback only,requestedsize заменяется. Обычный wrapper передаёт

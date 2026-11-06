@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок070: CGUITextTypingBoard source interval/cursor/DBCS/space/timing и
+partialDraw восстановлены;actual full-object Ko/Ru/GPU passed. Source compiled
+in normalfacade,ordinary briefing instance ещё OPEN. Sharedrenderer extract
+сохранил44GUI GPU hashes069;Create1passed. Отрицательные/потерянные markers/
+unsafe domains не приняты. Полные briefing/key/portrait/Tutorial остаютсяOPEN.
+[Доказательства](../research/client455-text-typing.md). M6/M6F/M7/M9 OPEN.
+
 Участок069: ordinary modal.SetMsg plain/rich/colorFFE3E0D9/naturalpixel extent
 перенесены,wrapperformatted/close параметры доступны.300/250 fallbackonly;
 requestedsize заменяется послеextent. Ko/Ru12групп сGDIoracle и10viewedGPUframes,

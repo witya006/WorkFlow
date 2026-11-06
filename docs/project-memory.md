@@ -23,6 +23,36 @@
 
 ## Последний проверенный результат
 
+Text-typing070: CGUITextTypingBoard source added(h/cpp),normalfacade29TU.
+No production window instance yet;stripunusedallowed,no forceinclude. Actual
+full-object native usesfacade methods. State intervalWORD100/running0/finished0/
+start0/previous0/first,last0/cursorFFFF. Start target6475A0 signedrangecheck then
+WORDstores,clock+delay;negativeacceptedtargetrange explicitrefusal. Update647690
+shown/running/notfinished;absoluteDWORD start+loop checks,unsignedelapsed,
+previous0sentinel,spaces skippreviousincrement. BoundaryusesOLDfragmentStr
+atnewOffset:leadingfragmentspace canrevealBC inone tick. Resource language
+601F50/7B2450 DBCS,notambientCRT;firstglyphlead adds1,subsequent2/1 advances.
+Donewhen cursor>endmarker/sameoffset>=end. FinaltickretainspreviousTime.
+Clear647BD0 cursorFFFF+baseclear,retainsflags/timers;sourceClear nowvirtual.
+Draw647940 childrenwithoutself-fill,nochildUpdate;strictstart<cursor then
+inclusivepartialhelper645150. FirstASCIIcursor0 invisible,firstDBCS cursor1
+visible. SharedDrawLineTo455 extracted;smallfull-lineadapter inlines. Existing
+TextBoardgate nowchecksactualendpointprovider,notforce-retained oldsymbol.
+
+18ranges/1vtableequalpins,8completeasm;IDA37b9a025savedclosed. Ko/Ru42clockqueries,
+nativeexit0;14frames saved/8viewed,typedAB byteequalplainAB.44existingGPUframes
+equalcommit7115112checked in newgate. Ownprobe feb7b853ad6cb27e99249f83f74cb9b11ec4657fe3c325df805cd985cb49460e,
+entryE4A60. Production8f009924c882d5c87c2f6872c3c99b07ff98a9085bd6ca9643bf13832d6f0b4c,
+entry150290/2041856bytes/182client20kernel29facade/0unresolved/existingCreate1.
+Prep idempotentF7A4826F…;engine056same. AffectedGUI passed,10gatesPARTIAL.
+Firstchance40080201stillunknown;fullauth/world/gameplayOPEN. Next071 actual
+CGUIBriefingBoard/key/portrait/frame/window,RF455TutorialBriefingView;thenactual
+Avatar/world/Tutorial/fourstage. Fullstaticmap+raw references in
+research/client455-briefing-analysis.md;behaviordetailsclient455-text-typing.md.
+M6/M6F/M7/M9OPEN;negative/missingmarker/WORDoverflow/foreign/OOM domains notparity.
+
+Предыдущий участок069:
+
 Message-sizing069: ordinary CGUIMessagebox.SetMsg now takes explicit formatted
 bool(defaultFALSE),basefontFFE3E0D9,Clear→plain/markup→ResizeToText before reading
 dimensions. Null pointer no-op. Target701870 scroll branch reads natural size,

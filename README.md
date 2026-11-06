@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — message-sizing069: обычный SetMsg использует pixel extent,
+Последний участок M6 — text-typing070: восстановлен CGUITextTypingBoard,зависимость
+настоящего брифинга. NativeKo/Ru traces/GPU прошли;44кадра существующего GUI
+совпали с069,новая сборка сохранила Create1. Сам briefing/key/portrait/window
+provider ещё не подключён;далее071 — его восстановление.
+[Доказательства](research/client455-text-typing.md). M6/M9 открыты.
+
+Предыдущий участок M6 — message-sizing069: обычный SetMsg использует pixel extent,
 цвет455 и отдельный plain/rich параметр. Естественный размер вычисляется до
 scroll fallback;300/250 не являются общими пределами. Ko/Ru12групп и10кадров,
 затронутые GUI/Create1 проверки прошли. Пустой fragment extent явно unsupported,

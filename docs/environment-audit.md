@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11,text-typing070: установок нет.18ranges/1vtable equalpins,
+8fullasm;IDA37b9a025 savedclosed. Typing source compiled normalfacade,исполнен
+в full-object probe,ordinarybriefingещё OPEN. NativeKo/Ru/GPU traces passed,
+14frames saved/8viewed,44existingGUIhashes equal069. Production8f009924…,
+entry150290,182/20/29TU,0unresolved/existingCreate1;10gatesPARTIAL.
+[Доказательства](../research/client455-text-typing.md). Exception40080201unknown.
+
 Дополнение07.11,message-sizing069: установок нет.21ranges equalpins,15fullasm;
 IDAb852f877 saved/closed. Productionc22502fa…/entry150290,182/20/28TU,
 0unresolved/existingCreate1. Ko/Ru12групп real modal/GDI и10viewedGPUframes;

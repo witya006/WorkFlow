@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TEXT-TYPING-070",
+      "status": "partial",
+      "description": "Source CGUITextTypingBoard dependency with actual full-object GUI/GDI/D3D tests;ordinary briefing instance stillOPEN",
+      "reference": [{"rva":"0x247470","role":"constructor"},{"rva":"0x2475a0","role":"start"},{"rva":"0x247690","role":"update"},{"rva":"0x247940","role":"draw"},{"rva":"0x247bd0","role":"Clear"},{"rva":"0x245150","role":"partial line renderer"},{"rva":"0x201f50","role":"resource DBCS classifier"},{"rva":"0x333920","role":"actual briefing caller,unported"}],
+      "implementation": ["scripts/native/client455_gui_text_typing_board.h","scripts/native/client455_gui_text_typing_board.cpp","scripts/native/client455_gui_text_board.h","scripts/native/client455_gui_text_board.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "18ranges/1vtable equalpins,8completeasm;Ko/Ru native cursor/timer/space/DBCS/Clear/children traces,42clockqueries/profile;14frames saved/8viewed,partialAB byteequalindependentplainAB;44existingGUIframes equal069,exactownPE existingCreate1 PASS",
+      "evidence": ["inventory/client455-text-typing-reference.json","inventory/client455-text-typing-native.json","inventory/client455-text-typing-checkpoint.json","research/client455-text-typing.md","research/client455-briefing-analysis.md"],
+      "gaps": ["Actual CGUIBriefingWindow/key/portrait/frame/provider and production typing instance not yetconnected","Negative/missingmarker/WORDoverflow/foreign/OOM/reentrancy/failure domains explicitlyunsupported or unverified","FullGUI/IME/layers/Tutorial/Avatar/world/fourstage/auth/gameplay;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-MESSAGE-SIZING-069",
       "status": "partial",
       "description": "Ordinary modal SetMsg plain/rich,color,natural pixel extent and scroll/layout order;fullGUI/Tutorial OPEN",

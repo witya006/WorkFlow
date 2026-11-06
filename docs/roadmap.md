@@ -12,6 +12,14 @@
 
 ## Текущий статус
 
+Участок070: отсутствовавший CGUITextTypingBoard восстановлен как dependency
+настоящего брифинга. Ko/Ru componenttraces/GPU иsharedrenderer44unchangedframes
+passed,normal8f009924…/Create1. Ordinarybriefing instanceещёнет,10gatesPARTIAL.
+Далее071 — полный window/key/portrait/frame/provider,затемAvatar/world/Tutorial.
+[Доказательства](../research/client455-text-typing.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий участок:
+
 Участок069: обычный modal.SetMsg теперьplain/rich,pixel extent,color/order455;
 300/250 fallback only. Ordinary rich caller подключён,providersretained.
 Ko/RuGDI/12групп,10viewedframes,affectedGUI/Create1 passed. Productionc22502fa…,
@@ -473,9 +481,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/070: полный CGUIBriefingWindow: настоящий rich text/ресурсы/события/state,
+1. M6/071: полный CGUIBriefingWindow: настоящий rich text/ресурсы/события/state,
    постраничный/временной текст, портреты и изображения клавиш. Modal sizing/rich
-   caller перенесён069;учесть other layers/IME/base virtual size/wrapper gaps
+   caller перенесён069,typing dependency070;учесть other layers/IME/base virtual size/wrapper gaps
    по мере использования,не объявляя остальные окна соответствующими455.
 2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
    feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.

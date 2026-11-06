@@ -514,6 +514,9 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
+    typing_source=native/'client455_gui_text_typing_board.cpp'
+    typing_facade=root/'generated'/typing_source.name
+    save(typing_facade,typing_source.read_bytes(),typing_source);facade_units.append(typing_facade)
     for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -544,7 +547,7 @@ def main():
     report['network_defaults']=codec_reference['generated_defaults']
     for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_modal_message.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_text_metrics.h','client455_text_metrics.cpp','client455_gui_text_size.inc','client455_gui_text_metrics.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_gui_text_board.h','client455_gui_text_board.cpp','client455_gui_text_typing_board.h','client455_gui_text_typing_board.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_minimap_opacity.h','client455_minimap_opacity.cpp','client455_minimap_opacity_owner.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_gui_input.h','client455_gui_input.cpp','client455_gui_input_object.inc','client455_gui_input_container.inc','client455_gui_input_queue.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

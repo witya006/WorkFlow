@@ -26,10 +26,12 @@ class CGUITextBoard : public CGUIContainer, public IScrollObserver {
     void Layout(bool append);
     void AddLine(WORD fragment,WORD offset);
     void SetViewed(WORD line);
+    void InsertFragment(char* text,FONT_INFO* font,BOOL adjustView);
+protected:
     int VisibleLines() const;
     int Stride() const;
-    void InsertFragment(char* text,FONT_INFO* font,BOOL adjustView);
     BOOL DrawLine(WORD line,int x,int y,BYTE alpha);
+    BOOL DrawLineTo455(WORD line,int x,int y,WORD lastFragment,WORD lastOffset,BYTE alpha);
 public:
     CGUITextBoard();
     ~CGUITextBoard();
@@ -37,6 +39,7 @@ public:
     void SetMargin(int x,int y);
     void SetColumnGap(int gap);
     void SetAutoScroll(BOOL enabled){m_autoScroll=enabled;}
+    BOOL GetAutoScroll455() const{return m_autoScroll;}
     int GetMarginX(){return m_margin.x;}
     int GetMarginY(){return m_margin.y;}
     int GetColumnGap(){return m_gap;}
@@ -44,7 +47,7 @@ public:
     void SetBound(RECT& bound);
     void SetSize(LONG width,LONG height);
     void SetSize(POINT& size){SetSize(size.x,size.y);}
-    void Clear();
+    virtual void Clear();
     void InsertText(char* text);
     void InsertText(char* text,FONT_INFO* font);
     void InsertText(CGUITextInfo* text,BOOL adjustView=FALSE);

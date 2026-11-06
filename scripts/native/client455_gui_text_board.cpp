@@ -226,8 +226,13 @@ void CGUITextBoard::InsertFormatted455(char* value,FONT_INFO* base){
     }
 }
 BOOL CGUITextBoard::DrawLine(WORD line,int x,int y,BYTE alpha){
-    WORD fragment=0,offset=0,lastFragment=0,lastOffset=0;
-    if(!GetLineStart455(line,fragment,offset)||!GetLineEnd455(line,lastFragment,lastOffset))return FALSE;
+    WORD lastFragment=0,lastOffset=0;
+    if(!GetLineEnd455(line,lastFragment,lastOffset))return FALSE;
+    return DrawLineTo455(line,x,y,lastFragment,lastOffset,alpha);
+}
+BOOL CGUITextBoard::DrawLineTo455(WORD line,int x,int y,WORD lastFragment,WORD lastOffset,BYTE alpha){
+    WORD fragment=0,offset=0;
+    if(!GetLineStart455(line,fragment,offset))return FALSE;
     const DWORD mask=0x00ffffff|(static_cast<DWORD>(alpha)<<24);int advance=0;
     if(m_highlight)Draw2DRectangle(x,y,x+m_ptSize.x,y+Stride(),m_highlightColor);
     while(fragment<=lastFragment){

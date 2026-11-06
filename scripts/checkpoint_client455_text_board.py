@@ -70,7 +70,9 @@ def main():
         if sha(Path(row['file'])) != row['sha256']:
             raise ValueError('Changed resource or installed CRT source')
     mapping = (WS / link['map']['file']).read_text()
-    for symbol in ['InsertText@CGUITextBoard', 'Layout@CGUITextBoard', 'DrawLine@CGUITextBoard']:
+    # The full-line adapter now inlines; the shared endpoint renderer is also
+    # used by TextTypingBoard. Its actual production provider must remain.
+    for symbol in ['InsertText@CGUITextBoard', 'Layout@CGUITextBoard', 'DrawLineTo455@CGUITextBoard']:
         if not re.search(re.escape(symbol) + r'[^\r\n]*guitextboard\.obj', mapping):
             raise ValueError('Missing ordinary TextBoard provider: ' + symbol)
     if 'client455_crt_multibyte.obj' in mapping:

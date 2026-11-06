@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Text-typing070. Restored missing CGUITextTypingBoard dependency:
+WORD cursor/interval,delay/absoluteDWORD quirks,resourceDBCS,space/oldfragment
+rule,virtualClear retention,partialDraw.18ranges/1vtable equalpins,8fullasm;
+Ko/Ru ownnative/GPU passed,14frames saved/8viewed;44sharedGUI frames unchanged.
+Normal8f009924…/entry150290,182/20/29TU,existingCreate1. Compiled source only,
+ordinary briefing instance notyetconnected. Next071 actualwindow/key/portrait/
+frame/provider,thenAvatar/world/Tutorial/fourstage. M9OPEN.
+[Evidence](research/client455-text-typing.md).
+
 2026-11-07 — Message-sizing069. Replaced ordinary modal SetMsg with455
 plain/rich/basecolor/pixel extent and scroll/layout order. Natural positive
 extent bypasses300/250 fallback caps;ordinary wrapper forwards rich/close.
