@@ -1,27 +1,27 @@
 {
   "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
   "exe": "work/client455-port/startup-engine/contracts/contracts.exe",
-  "exe_sha256": "f2aff00898af2a8b0f210721f3beac732a8f389ac1fe09c118411deb9eb668b6",
-  "entry_rva": "0x8e8e0",
+  "exe_sha256": "fc9e53d59d0dbd5fa875c042feb6855854439de2a94236d748072346e2bad4ab",
+  "entry_rva": "0x72480",
   "source": "scripts/native/test_client455_startup_contracts.cpp",
   "source_sha256": "466e9898301f38a3c841960dcf550e569be2e6181047924f2837f5f460e2fb7d",
   "cases": [
     {
       "name": "success",
       "exit": 0,
-      "file": "work/m9/f2aff008/startup-contracts001/success.txt",
+      "file": "work/m9/fc9e53d5/startup-contracts001/success.txt",
       "sha256": "08fc71636c741921f53b686b30545f4328b42d51651cfac9db3d4b174631f3bd"
     },
     {
       "name": "s_false",
       "exit": 0,
-      "file": "work/m9/f2aff008/startup-contracts001/s_false.txt",
+      "file": "work/m9/fc9e53d5/startup-contracts001/s_false.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     },
     {
       "name": "e_fail",
       "exit": 0,
-      "file": "work/m9/f2aff008/startup-contracts001/e_fail.txt",
+      "file": "work/m9/fc9e53d5/startup-contracts001/e_fail.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     }
   ],
@@ -36,16 +36,24 @@
   },
   "libraries": [
     {
-      "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "18086e42c69b69913c289dffc33c332055f5c4a720533aac63153bb344604125"
+      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+      "sha256": "c8d4513c336130754d9be8b2fb712f698d4e04b0147c5acb7b9b279bd01dba43"
+    },
+    {
+      "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
+      "sha256": "99728d39109f515440a400d76a3c83eeb3316c88e34179009a80dab7914d9de0"
+    },
+    {
+      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
     },
     {
       "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
       "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
     },
     {
-      "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
-      "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+      "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+      "sha256": "d85c86784516872f8818c92d556bdf63a9dffaf6da559499cb3b3fddd772c347"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -56,15 +64,27 @@
       "sha256": "5ffde5a8eb5b5dc6f0e7e36ae10faca72e8b6f3be081b06148e8e47a7b41c990"
     },
     {
-      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "38bedf65ebd3c3caf7d3037352e1ef039e88684698cff5b9eb566fec3ddd2930"
+      "file": "work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+      "sha256": "3c66ac2c45b0c2061f89c8fd40695023599f078f5539d0f6b28abd8c7b0e3890"
+    },
+    {
+      "file": "work/client-build/recovered-imports/ABuse.lib",
+      "sha256": "305b471ff2867898480451a8ea48ad861cf7e7d3bfa707b07d5826700be815e9"
+    },
+    {
+      "file": "work/client-build/recovered-imports/Adv.lib",
+      "sha256": "7f972126e1590f230b6664a0df4bcb1c5558fe0caf5e6e9fa10aa885169a53e2"
+    },
+    {
+      "file": "work/client-build/recovered-imports/PDLL.lib",
+      "sha256": "2730b54a744c6326064aafd1a7eb3aa11f562b0d2253d98b46c405f0ec74a191"
     }
   ],
   "map": {
     "file": "work/client455-port/startup-engine/contracts/contracts.map",
-    "sha256": "e27088f6d93e24b599912d5ba5ca0ad1c6b61e95ee03568a8342832ea5159fb2"
+    "sha256": "1e5181fed669f1c4c5cbd7f5e149b8c5dd26eff86f50640b8439a387557cf7e4"
   },
-  "build_sha256": "bae9968208d865d2ec5f2098a362d359bcc573b03a5638841eac61ab9889be75",
+  "build_sha256": "6583fcb1d8a1cb2d5ac2583179341c86dbecf2cf5f84568bdb2a1d17b00faf68",
   "reference_sha256": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
   "status": "PASS",
   "color32_preserves_window_mode": true,

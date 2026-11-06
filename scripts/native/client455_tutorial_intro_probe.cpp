@@ -13,6 +13,8 @@
 #include "client455_tutorial_intro.h"
 #include "client455_fullscreen_effect.h"
 #include "client455_movie_state.h"
+#include "client455_rvp_runtime.h"
+#include "RTMovie.h"
 #include "jerror.h"
 #include "jmalloc.h"
 #include <cstdio>
@@ -71,7 +73,7 @@ static int run(const char* race){
     for(unsigned value=0;value<6;++value)check(RF455_GetTutorialIntroSequence(BYTE(value))==RF455_GetTutorialIntroSequence(BYTE(value&~1u)),"race grouping");check(!RF455_GetTutorialIntroSequence(6)&&!RF455_GetTutorialIntroSequence(255),"invalid race domain");
     unsigned captures=0,frames=0,applied=0,selected=0,fadeOuts=0;int memoryBefore=GetDmallocSize(),memoryAfter=0;const auto* sequence=RF455_GetTutorialIntroSequence(avatar.GetRace());FILE* trace=std::fopen("trace.jsonl","wb");check(trace!=nullptr,"trace");
     {
-        CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);check(land->Create()!=0,"land create");char path[260];std::sprintf(path,".\\Map\\%s\\%s.bsp",race,race);check(land->LoadLevel(path)!=0,"real land load");phase("world-loaded");
+        CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);check(land->Create()!=0,"land create");char path[260];std::sprintf(path,".\\Map\\%s\\%s.bsp",race,race);check(land->LoadLevel(path)!=0,"real land load");check(IsLoadedRTMovie()&&IsLoadedRTCamera()&&!RF455_RvpView().limitation[0],"ordinary RVP alongside intro");phase("world-loaded");
         Host host(screen);RF455TutorialIntro intro;R3SetTime(0);R3SetLoopTime(0.25f);SetFadeIn(0,2,1);check(intro.load(avatar.GetRace(),host),"real intro load");check(host.blocked&&!screen.IsShow()&&!screen.GetMouse()->IsShow()&&host.control==5&&state->mWideOn&&!state->mIsDrawLogo&&host.engineFlag==0x80000000u&&host.engineFloat==0.15f,"intro start bindings");
         std::vector<bool> captured(sequence->count,false);bool skip=false;
         for(unsigned tick=0;tick<800&&intro.active();++tick){

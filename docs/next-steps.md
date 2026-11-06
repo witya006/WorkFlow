@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+079: настоящий ordinary RVP camera/timeline работает черезCLevel на3мирах:
+27camera events/82commands, floatpause/flag16/ownership/reload passed. Intro26,
+46viewedGPU иexactnewPE/Create1passed. Полныеactors/audio/Tutorial ещёOPEN.
+[Доказательства](../research/client455-rvp-runtime.md).
+
+080: восстановить RVP Character/actor resource+animation+effect bindings,
+ambient/event audio, trace/screen/timer_rate и shared-effect/deferred-particle
+Create/Release/Render caches. Сейчас эти providers явноотклоняютCreate.
+Quake/blur код перенесён, но отдельный RVP fixture ещёнужен. Не терять scanner078/
+numeric/failure gaps. Затем настоящийCGP_Tutorial/Avatar/QBI/follow/localhandlers/
+fourstage/Login вместе. Не скрывать взаимодействиеRVP сintro: обычный FrameMove
+сбрасываетFOV/FSE;полныйstageorder455 ещёнепринят. Исправлениеподписей:
+8D5510=Render,8D8340=Release;8D1D90floatclock exactminusplayStart/30.
+M6/M6F/M7/M9 открыты;вход/полноценнаяигра остаются обязательнойцелью.
+
+Предыдущий результат:
+
 078: RVP source load-model/interpolation готова в ограниченном домене;44 файла,
 615 записей объектов/1569 команд и12 видов команд проверены независимо/native.
 Производственный RTMovie player остаётся заглушкой. PE/Create evidence из077

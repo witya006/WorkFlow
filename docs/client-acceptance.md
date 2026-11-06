@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+079: ordinary RVP camera/timeline больше неstub. Три мира/27camera events/
+82commands, pause/flag16/reload/renderer ownership иintro26прошли.46GPUviews
+просмотрены;точнаяноваяPE/Create1passed. Actor/effect/audio/screen/timer providers
+отклоняютсяявно,полныйRVP/Tutorial/игра ещёOPEN. SharedFX/cache/deferredlifecycle,
+Render8CE5D0reset,pausedautoCAMscratch,scanner078/numeric/failures неприкрыты.
+No-cameraRVP изменилintroFOV/FSE/GPU;полныйstageorder455ещёнесертифицирован.
+Render/Releaseподписи078исправлены. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-rvp-runtime.md).
+
 078: RVP load-model и интерполяция проверены на44originals/615actor-records/
 1569commands плюс all12 fixture. Это запись до resource/camera binding,
 не подтверждение работающего проигрывателя. Ordinary player остаётся stub,

@@ -3,12 +3,16 @@ import hashlib,json,subprocess
 from pathlib import Path
 from compare_client_binaries import WS,pe
 from client455_d3d9_port import ENGINE_DEFINITIONS
+from client455_normal_link_evidence import validate_normal_link
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     build=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text());info=json.loads((WS/'inventory/msvc-verification.json').read_text());sdk=json.loads((WS/'inventory/d3dx9-headers.json').read_text());base=WS/'work/client455-port';root=base/'startup-engine/contracts';root.mkdir(parents=True,exist_ok=True);engine=base/'source/R3Engine';dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat';exe=root/'contracts.exe';cpp=WS/'scripts/native/test_client455_startup_contracts.cpp';batch=root/'build.cmd';log=root/'build.txt'
     jpeg=json.loads((WS/'inventory/jpeg6b-build.json').read_text());x87=json.loads((WS/'inventory/client455-x87-math.json').read_text());libraries=[WS/build['library'],WS/jpeg['library'],WS/x87['library'],base/'dependencies/d3dx9_36.lib',engine/'mss32.lib',base/'normal/build/Release/RFClient455Facade.lib']
+    link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link)
+    libraries=[WS/row['file'] for row in link['libraries']]
     flags=' '.join('/I"'+str(p)+'"' for p in [engine,engine/'common',engine/'1stclass',engine/'2ndclass',engine/'extension',engine/'d3d/include',WS/sdk['include'],WS/'scripts/native']);flags+=' '+' '.join('/D'+v for v in ENGINE_DEFINITIONS)
+    flags+=' /FI"'+str(WS/build['camera_header_overlay']['file'])+'"'
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > "{root/"env.txt"}" 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 /D_CRT_SECURE_NO_WARNINGS {flags} /FI"{base/"port_std.hpp"}" "{cpp}" '+' '.join('"'+str(p)+'"' for p in libraries)+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /Fo"{root/"contracts.obj"}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{root/"contracts.map"}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
     result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=root,creationflags=subprocess.CREATE_NO_WINDOW)
     if result.returncode:raise ValueError('Startup contract build:'+str(log))

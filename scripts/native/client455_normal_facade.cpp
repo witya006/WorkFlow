@@ -65,6 +65,7 @@ Hub& hub(){static Hub value;return value;}
 CRender*& activeRenderer(){static CRender* value=nullptr;return value;}
 }
 struct CRender::Runtime {
+    CRender* previousRenderer=nullptr;
     RF455AnimationMemoryOps animationMemory=RF455_CrtAnimationMemoryOps();
     RF455LegacyScratch scratch;RF455CharacterLoadContext load;
     RF455PoseScratch poseScratch={};RF455PoseContext pose={};
@@ -99,8 +100,8 @@ ChAnimation* AnimationManager::GetAnimationData(char* name){return RF455_FindAni
 ChAnimation* AnimationManager::GetAnimationDataByNoPath(char* name){return RF455_FindAnimationSuffix(&native,name);}
 unsigned long AnimationManager::GetAnimationID(char* name){return RF455_FindAnimationIdByName(&native,name);}
 int AnimationManager::Init(){RF455_ResetAnimationCounters(&native);return 0;}
-CRender::CRender():m_TM(native.textures),runtime(nullptr){RF455_ConstructCharacterRenderer(&native);runtime=new Runtime(native);activeRenderer()=this;}
-CRender::~CRender(){const auto ops=memory();RF455_DestroyCharacterRenderer(&native,&ops);delete runtime;if(activeRenderer()==this)activeRenderer()=nullptr;}
+CRender::CRender():m_TM(native.textures),runtime(nullptr){RF455_ConstructCharacterRenderer(&native);auto* previous=activeRenderer();runtime=new Runtime(native);runtime->previousRenderer=previous;activeRenderer()=this;}
+CRender::~CRender(){const auto ops=memory();RF455_DestroyCharacterRenderer(&native,&ops);auto* previous=runtime->previousRenderer;delete runtime;if(activeRenderer()==this)activeRenderer()=previous;}
 CRender& CRender::GetRender(){if(!activeRenderer())throw std::runtime_error("455 Character renderer unavailable");return *activeRenderer();}
 ChInterface::ChInterface():CRender(){}
 void ChInterface::InitCharacter(IDirect3DDevice9* device){

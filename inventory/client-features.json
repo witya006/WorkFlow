@@ -6,24 +6,34 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RVP-RUNTIME-079",
+      "status": "partial",
+      "description": "Ordinary source RVP camera/timeline with actual CAM/CLevel/renderer;actor/effect/audio/timer providers explicitly unfinished",
+      "reference": [{"rva":"0x4d5ff0","role":"FrameMove"},{"rva":"0x4d5fa0","role":"Start"},{"rva":"0x4d1d90","role":"float seconds setter"},{"rva":"0x4d5510","role":"Render;corrected078identity"},{"rva":"0x4d8340","role":"Release;corrected078identity"}],
+      "implementation": ["scripts/native/client455_rvp_runtime.h","scripts/native/client455_rvp_runtime.cpp","scripts/native/client455_rvp_engine.inc","scripts/build_client455_engine_startup.py","scripts/prepare_client455_normal.py","scripts/native/client455_normal_facade.cpp"],
+      "verification": "20ranges equalpins/full531+23+14+114asm. Ordinary3maps/27camera events/82commands;floatpause/flag16/camera-only/explicitactor refusal/reload/nestedrenderer/Dmalloc passed. Intro26/display8/FSE18/46reviewedGPU/Create1. Actual player body is no longer compiled stub.",
+      "evidence": ["inventory/client455-rvp-runtime-reference.json","inventory/client455-rvp-runtime-bellato-native.json","inventory/client455-rvp-runtime-cora-native.json","inventory/client455-rvp-runtime-accretia-native.json","inventory/client455-rvp-runtime-visual.json","inventory/client455-rvp-runtime-checkpoint.json","research/client455-rvp-runtime.md"],
+      "gaps": ["Actor/Character/effect/ambient and event audio/trace/screen/timer-rate providers refused at Create;still mandatory","Full Create/Release sharedFX/deferredparticle lifecycle and Render material/light caches;RVP-specific quake/blur checks","PausedautoCAM undefined matrix and camera-only failure detachment;scanner078/numeric/failure domains notaccepted","Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay/IME and all prior M6F/M7/M9 gaps"]
+    },
+    {
       "id": "CLIENT455-RVP-078",
       "status": "partial",
-      "description": "RVP object/command load model and cursor interpolation; actual movie player remains a compiled stub",
+      "description": "RVP object/command load model and cursor interpolation;079 adds ordinary camera runtime,full actor/audio remains open",
       "reference": [{"rva":"0x4d69e0","role":"RVP Create parser/resource setup"},{"rva":"0x4d3e10","role":"20600-byte actor defaults"},{"rva":"0x4d4d80","role":"cursor key interpolation"},{"rva":"0x4d4e70","role":"track execution dependency"},{"rva":"0x4d5ff0","role":"full runtime frame dependency"}],
       "implementation": ["scripts/native/client455_rvp.h","scripts/native/client455_rvp.cpp"],
       "verification": "15ranges equalpins, full1722+85asm. All44 stock files/615actor records/1569commands match independent named-field/bit/string decoding. Own native46files, all12command kinds, malformed transactional/cursor interpolation passed. Ordinary PE unchanged077.",
       "evidence": ["inventory/client455-rvp-reference.json","inventory/client455-rvp-native.json","inventory/client455-rvp-checkpoint.json","research/client455-rvp.md"],
-      "gaps": ["Actual movie player, resource/CAM-dummy/Character/effect/audio binding and side effects; ordinary engine player is still disabled","Independent-if argument-keyword scanner fallthrough and complete numeric/malformed domains unaccepted","34 exact-path resource refs missing; failure behavior/use needs verification, not automatic asset substitution","Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay and all prior M6F/M7/M9 gaps remain"]
+      "gaps": ["Full RVP actor/dummy/Character/effect/audio binding and side effects;079 closes bounded camera/timeline path","Independent-if argument-keyword scanner fallthrough and complete numeric/malformed domains unaccepted","34 exact-path resource refs missing; failure behavior/use needs verification, not automatic asset substitution","Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay and all prior M6F/M7/M9 gaps remain"]
     },
     {
       "id": "CLIENT455-MOVIE-STATE-077",
       "status": "partial",
-      "description": "Positive RTMovie flags/display and separate defaultFOV; intro calls real engine, full RVP player remains a compiled stub",
+      "description": "Positive RTMovie flags/display and separate defaultFOV;intro calls real engine,079 adds bounded camera player",
       "reference": [{"rva":"0x4d4c30","role":"positive movie state"},{"rva":"0x4b4b10","role":"letterbox before fade"},{"rva":"0x4cd960","role":"logo after letterbox"},{"rva":"0x4c43d0","role":"default FOV reset"},{"rva":"0x4cdb20","role":"clear without wide viewport mutation"}],
       "implementation": ["scripts/native/client455_movie_state.h","scripts/native/client455_movie_state.inc","scripts/native/client455_clear_frame.inc","scripts/build_client455_engine_startup.py","scripts/native/client455_tutorial_intro_camera.cpp","scripts/prepare_client455_normal.py"],
       "verification": "13ranges/4asm equalpins. Flags8/GPU6; default/current projection, upper bits and raw Add/Remove; intro26/fullscreen18/40 reviewed frames/exactCreate1. Empty RTMovieFrameMove directly verified in linked own probe.",
       "evidence": ["inventory/client455-movie-state-reference.json","inventory/client455-movie-state-native.json","inventory/client455-movie-state-visual.json","inventory/client455-movie-state-checkpoint.json","research/client455-movie-state.md"],
-      "gaps": ["Actual RVP track/actor/audio player is disabled and must be restored; Bellato RVP resources exist","CGP_Tutorial/Avatar actor/QBI/follow/local handlers/fourstage/Login/game integration","Screen-size wrapper500/480 and percent-fov command; legacy0.7 movie callers still transitional","All prior Character/world/render/auth/IME/lifecycle/numeric/M6F/M7/M9 gaps remain"]
+      "gaps": ["Full RVP actor/effect/audio player remains required;079 camera/timeline runtime added;Bellato RVP resources exist","CGP_Tutorial/Avatar actor/QBI/follow/local handlers/fourstage/Login/game integration","Screen-size wrapper500/480 and percent-fov command; legacy0.7 movie callers still transitional","All prior Character/world/render/auth/IME/lifecycle/numeric/M6F/M7/M9 gaps remain"]
     },
     {
       "id": "CLIENT455-FULLSCREEN-EFFECT-076",

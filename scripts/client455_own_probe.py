@@ -12,6 +12,8 @@ def build_full_object_probe(name,source):
     normal=WS/'work/client455-port/normal';engine=WS/'work/client455-port/source/R3Engine';exe=root/f'{name}-probe.exe';obj=root/f'{name}-probe.obj';log=root/'build.txt'
     includes=[normal/'include',normal/'source',engine,engine/'common',engine/'1stclass',engine/'2ndclass',engine/'extension',engine/'d3d/include',WS/sdk['include']]
     flags=' '.join('/I"'+str(p)+'"' for p in includes)+' '+' '.join('/D'+v for v in sorted(set(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_EFFECT_LOG','RF_CLIENT_455_LOBBY_TRANSITION','RF_CLIENT_455_FRUSTUM'])))
+    engine_report=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
+    if 'camera_header_overlay' in engine_report:flags+=' /FI"'+str(WS/engine_report['camera_header_overlay']['file'])+'"'
     response=[]
     for line in (WS/link['link_response']['file']).read_text().splitlines():
         if line.startswith('"/OUT:'):line='"/OUT:'+str(exe)+'"'

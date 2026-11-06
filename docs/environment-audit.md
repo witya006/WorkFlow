@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, rvp-runtime079: установокнет. IDA6a789f6fsavedclosed;20ranges
+equalpins,full531+23+14+114asm. Engined85c8678…/67objects/9overlays +ownedfloat
+cameraheader сохраняет033. OrdinaryRVP3maps/27events/82commands, intro26,
+46viewedframes/Dmallocpassed. PE83c1793b…/entry150b20/182-20-36TU/0unresolved/
+exactCreate1/freshcontracts. Fullactors/audio/Tutorial/M9OPEN;подписи078исправлены:
+8D5510Render/8D8340Release. БольшиеunchangedGUI/kernel suites не повторялись.
+[Доказательства](../research/client455-rvp-runtime.md).
+
 Дополнение07.11, rvp078: установок нет. IDAa265e239savedclosed,15ranges equalpins,
 полные1722+85asminstructions. Новая x86 source library/probe проверила44RVP
 (615actor records/1569commands)+2fixtures/all12kinds/interpolation. Именованные

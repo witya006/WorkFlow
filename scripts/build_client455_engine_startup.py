@@ -11,6 +11,12 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
+    cameraHeader=base/'source/R3Engine/2ndclass/anicamera.h';ownedHeader=root/'include/anicamera455.h';ownedHeader.parent.mkdir(parents=True,exist_ok=True)
+    header=cameraHeader.read_bytes();anchor=b'void SetNowFrame( DWORD frame);'
+    if header.count(anchor)!=1:raise ValueError('Camera seconds declaration boundary changed')
+    header=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n').encode()+header.replace(anchor,anchor+b'\r\n\tvoid SetNowFrame(float seconds); //4558D1D90 float argument')
+    if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
+    if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
     for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp']:
         folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
@@ -62,22 +68,7 @@ def main():
             first,last=section(raw,b'void R3ClearFrameBuffer()',b'void R3ClearFrameBuffer()')
             raw=raw[:first]+(WS/'scripts/native/client455_clear_frame.inc').read_bytes()+raw[last:]
         elif filename=='rtmovie.cpp':
-            from prepare_client455_normal import section
-            raw=b'#include "client455_movie_state.h"\r\n'+raw
-            for name,value in [(b'NO_CAMERA',b'0x4'),(b'WIDE',b'0x1'),(b'LOGO',b'0x2')]:
-                raw,count=re.subn(rb'(#define\s+_RTM_FLAG_'+name+rb'\s+)0x[0-9a-fA-F]+',lambda m:m[1]+value,raw)
-                if count!=1:raise ValueError('RTMovie internal flag definition changed')
-            for anchor in [b'static DWORD stRTMovieFlag=0;',b'static DWORD stRTMState=0;']:
-                if raw.count(anchor)!=1:raise ValueError('RTMovie state boundary changed')
-                raw=raw.replace(anchor,b'')
-            # The old movie player is feature-gated and is not yet455-certified.
-            # Its real display/state APIs must not disappear into the stub branch.
-            for signature in [b'void RTMovieSetState(DWORD state)',b'DWORD RTMovieGetState()']:
-                for _ in range(2):
-                    first,last=section(raw,signature,signature);raw=raw[:first]+raw[last:]
-            raw=b'#include "RTMovie.h"\r\n#include "client455_movie_state.h"\r\nstatic DWORD stRTMovieFlag=0;\r\n'+(WS/'scripts/native/client455_movie_state.inc').read_bytes()+b'\r\n'+raw
-            first,last=section(raw,b'void RTMovieFrameMove()',b'void RTMovieFrameMove()');body=raw[first:last];at=body.index(b'{')+1
-            body=body[:at]+b'\r\n\tif(!stIsLoadedRTMovie)return; //4558D6036:CAM alone is not a loaded RVP movie'+body[at:];raw=raw[:first]+body+raw[last:]
+            raw=b'#include "RTMovie.h"\n#include "client455_movie_state.h"\n#include "client455_rvp_runtime.h"\n#include "r3move.h"\nstatic DWORD stRTMovieFlag=0;\n'+(WS/'scripts/native/client455_movie_state.inc').read_bytes()+b'\n'+(WS/'scripts/native/client455_rvp_engine.inc').read_bytes()
         elif filename=='r3util.cpp':
             from prepare_client455_normal import section
             first,last=section(raw,b'BOOL DrawFadeScreen()',b'BOOL DrawFadeScreen()');body=raw[first:last];at=body.index(b'{')+1
@@ -93,12 +84,22 @@ def main():
             anchor=b'SetFov(ani_camera->fov);'
             if raw.count(anchor)!=1:raise ValueError('Camera FOV firstframe boundary changed')
             raw=raw.replace(anchor,b'SetFov(ani_camera->fov*0.788f); //455:8D1B4C')
+            start,end=section(raw,b'void CAniCamera::SetNowFrame(',b'void CAniCamera::SetNowFrame(')
+            raw=raw[:start]+b'void CAniCamera::SetNowFrame(DWORD seconds){SetNowFrame(float(seconds));}\r\nvoid CAniCamera::SetNowFrame(float seconds){mStartTick=float((double(R3GetTime())-seconds)-double(mPlayStartFrame)/30.0);}\r\n'+raw[end:]
         target=root/'source'/filename;target.parent.mkdir(parents=True,exist_ok=True)
         if target.exists() and target.read_bytes()!=raw and sha(target)!=old.get(target.relative_to(WS).as_posix()):raise ValueError('Preserving changed derived source')
         if not target.exists() or target.read_bytes()!=raw:target.write_bytes(raw)
         derived.append({'file':target.relative_to(WS).as_posix(),'sha256':sha(target),'original':source.relative_to(WS).as_posix(),'original_sha256':sha(source)})
         cmakeText=cmakeText.replace(source.as_posix(),target.as_posix())
-    cmakeText=cmakeText.replace('R3Engine455','R3Engine455Startup');(root/'CMakeLists.txt').write_text(cmakeText)
+    cmakeText=cmakeText.replace('R3Engine455','R3Engine455Startup')
+    # Keep helper kernels that never declare CAniCamera free of legacy globals/
+    # using-directives. Every engine TU sees the same owned class declaration.
+    redirected={row['original']:row['file'] for row in derived}
+    for row in sources:
+        if not (WS/row['file']).is_relative_to(base/'source/R3Engine'):continue
+        actual=WS/redirected.get(row['file'],row['file'])
+        cmakeText+='\nset_property(SOURCE "'+actual.as_posix()+'" APPEND PROPERTY COMPILE_OPTIONS "/FI'+ownedHeader.as_posix()+'")\n'
+    (root/'CMakeLists.txt').write_text(cmakeText)
     info=json.loads((WS/'inventory/msvc-verification.json').read_text());cmake=Path(info['installation_path'])/'Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe';build=root/'build';oldLibrary=base/'build-vs2026/Release/R3Engine455.lib';oldHash=sha(oldLibrary)
     config=subprocess.run([str(cmake),'-S',str(root),'-B',str(build),'-G','Visual Studio 18 2026','-A','Win32','-T','v145','-DCMAKE_SYSTEM_VERSION=10.0.26100.0'],capture_output=True,timeout=120,creationflags=subprocess.CREATE_NO_WINDOW);(art/'configure.txt').write_bytes(config.stdout+config.stderr)
     if config.returncode:raise ValueError('Derived engine configure failed')
@@ -112,5 +113,7 @@ def main():
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
+    report['rvp_runtime']={name:sha(WS/'scripts/native'/name) for name in ['client455_rvp_runtime.h','client455_rvp_engine.inc']}
+    report['camera_header_overlay']={'file':ownedHeader.relative_to(WS).as_posix(),'sha256':sha(ownedHeader),'original':cameraHeader.relative_to(WS).as_posix(),'original_sha256':sha(cameraHeader)}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

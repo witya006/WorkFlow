@@ -3,14 +3,14 @@
   "original_sources": 180,
   "sources": 182,
   "manifest": "artifacts/client455-normal/sources.json",
-  "manifest_sha256": "8b7131160b05c966a4a13d5af9ebfa9ed651069233279393ed8219e5bbb3ac78",
-  "script_sha256": "809e5a565a4d5e915c6ef96d3aab9bc1db87b9876373169afb8ff88025aae667",
+  "manifest_sha256": "79960d6b5d10e703bb6065fe03c64e2fae9ac0c5d844752f47f53dd877245a66",
+  "script_sha256": "5015891af076ad9f8aef69bdb690ee9cc4221fa876411447efdf0f3b5e9c9a43",
   "record_inputs": {
     "Character455.h": "6524d477c8a7836b6d9014427ac40d695e67d9e1cc6a89e8342ce92107220a2b",
     "client455_normal_model.inc": "abb57ec76679336aa536bbddd27679321e5ecbc978a36199c129b0bfc2a3cb34",
     "client455_normal_mesh.inc": "ec61b937eca12bd2a70327f7c0276dc970375a2df8399f62ca97a767c1daceea",
     "client455_normal_animation.inc": "ea951ad733eb26e4a1bbc8d75bd657fb74f7059cc898a2b4839f2691b344fbce",
-    "client455_normal_facade.cpp": "b176ed943ac35abba63a630ce1c88dbf656fd81535ca105704c63fe3e092ca02",
+    "client455_normal_facade.cpp": "f13f05d4067e20f175ff4556d4cecb99477898c51b6a45c939d062b7a59e9ea3",
     "client455_normal_renderer_math.cpp": "06af50155273a09dec6241191746736179608295a3e1ce2f3e46e6566d481b79",
     "client455_normal_renderer_math.h": "fd8176f414e4270d9f02f9dbdda15222923b4e9dc6d22dcc1430ee44e3e4ca2b",
     "client455_normal_renderer_constants.h": "11a0aa411f4ad7418394f3144ee3f6d99770e5ad3c0589428e6237612bc281eb",
@@ -94,6 +94,10 @@
     "client455_tutorial_intro.h": "1c8f411b553091412e6ee4669ea0b84099ce0f717094decd7193828e766c6ec6",
     "client455_tutorial_intro.cpp": "4484fbba8dc62d37d794c82287a8c0f9bae8ccefbe5ed253914f3be18982646e",
     "client455_tutorial_intro_camera.cpp": "6adadbdcfea71c98a7287fdbf2a8979041dc5bc3f1bfb250ece3cd2fa88702a5",
+    "client455_rvp.h": "40cd37ada45303dc88b43b2ca06d2d5f6a8fe2ab3f15bf75a42e0dfbeb4bcaf2",
+    "client455_rvp.cpp": "aae4ad199a91b080c942fdd66cdc9fe6a58ce24bed129c5bda69313ac661b55e",
+    "client455_rvp_runtime.h": "3b1253fa3da6095a3fba27f38bdb687f98bb9f32779655a971f937ec27f1910b",
+    "client455_rvp_runtime.cpp": "7bc5de83da6453b9a4eb791bf9a9a8aa3069a54b263d8ff1fd8b057139b6e953",
     "client455_gui_scrollbar.h": "0f3484f73f7fcfe86b2749a169d1ee337fe6e23d90cf4430a56d554b4eb02a40",
     "client455_gui_scrollbar.cpp": "04944732c1cfecb3fefae11364f5cfd8793a6903b1315106746d038a873827fd",
     "client455_minimap_opacity.h": "d7b0009e31bbc5c7efdc84781d1821e51f3804b008fad2c70c89124601e955b5",
@@ -199,6 +203,12 @@
   "network_defaults": {
     "file": "work/client455-port/network455/client455_network_defaults.h",
     "sha256": "16467de8e0caeb03c12a42233ee52fa5e7e14803dc07ed8b6ac93ab657ec3c97"
+  },
+  "camera_header_overlay": {
+    "file": "work/client455-port/startup-engine/include/anicamera455.h",
+    "sha256": "144efafc2ebb4fdc27c4b8a99cf2d12c60f28b2e77dbae3b88a987ed07de9993",
+    "original": "work/client455-port/source/R3Engine/2ndclass/anicamera.h",
+    "original_sha256": "9f940a7f3afa96380a8edde4101079db49150812f690a584ddcb4b8a7fc7f3be"
   },
   "tutorial_intro_reference_sha256": "083775e97d5eb1c3c4b0ff49734aae7be8860f864f8dbe14a65f82c4b73a295f",
   "precanonical_renderer_sha256": "b8e0b76a8a7c0869943a316a3f152d54da1f832a9f127665465b9a44ef68df34"

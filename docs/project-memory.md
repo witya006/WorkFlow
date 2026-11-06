@@ -23,6 +23,38 @@
 
 ## Последний проверенный результат
 
+079: ordinary RVP camera/timeline теперь НЕ compiled stub. Production CLevel
+вызывает новые entry wrappers→client455_rvp_runtime.cpp вnormalfacade. 3worlds
+27camera events/26fade-in/29fade-out=82commands; ticks364/330/262,0warnings,
+exit0/Dmalloc270592 balance. Floatclock pause/flag16/finish/camera-only/actor
+explicitrefusal/reload/nestedrenderer restored passed. Intro realRVPassert,
+26cuts/357-325-258ticks и29GPU; display8/GPU6,FSE18,46reviewedframes total.
+ВАЖНО: исправлены неверные подписи078:8D5510=Render(call8E7C40),8D8340=Release
+(call8E7730). Raw ranges быливерны. New20ranges equalpins,fullasm531Frame+23Start+
+14SetNowFloat+114Release. IDA6a789f6fsavedclosed. Raw rvp-runtime079.json/*ranges.
+Owned anicamera455.h addsfloat SetNowFrame; fieldsunchanged. /FI only58legacy
+engineTU +normal/facade/probes, НЕ9independentkernels (less collision). 67objects/
+9overlays/base033preserved. Floatsetter EXACT now-seconds-playStart/30;double-start
+offset preserved,notcorrected. Pausemarksplayfalse;resumeStartFALSE. Releasekeeps
+loaded/play/pause scalars. FailedCAM-only ownerdetaches safely:failuregapexplicit.
+ChInterface secondowner real;ownfacade restores previousactive renderer onnested
+destroy;arbitraryout-of-order lifecycle remainsOPEN. RealSHOinputs nowcopied.
+RVPno-camera resetsFOV/FSE duringLevel.FrameMove,changesintroGPU;noinventedflag16
+tohideinteraction. OrdinaryTutorialowner/order stillOPEN;stage/QBI/followrecordings.
+PE83c1793bc8a6b2bb9e1fde2b42b986132f12c077ecaa4f42f75ad0c41037c117,
+entry150b20/2071552bytes/182-20-36TU/0unresolved/exactCreate1/freshcontracts.
+Engined85c86784516872f8818c92d556bdf63a9dffaf6da559499cb3b3fddd772c347.
+080: actualRVP actors/Character/animations/effects/ambient+eventaudio/swordtrace/
+screen/timerrate providers,currentlyexplicitCreate refusal. FullCreate/Release
+effectcache/deferredparticles andRender8CE5D0reset2caches stillOPEN;pausedautoCAM
+undefinedmatrix refused. Quake/blurcodeported,butRVPspecificscenario nottested;
+stocktests camera/fadeonly. Scanner078/numericunsafe+allpriorgaps remainOPEN.
+ThenrealCGP_Tutorial/Avatar/QBI/follow/localhandlers/fourstage/Login jointly.
+Latestgate checkpoint_client455_rvp_runtime.py;details research/client455-rvp-runtime.md.
+Oldgateshistorical;bigunchangedsuites notrerun. AllM6/M6F/M7/M9OPEN.
+
+Предыдущий результат:
+
 078: новая RVP load-model library, НЕ ordinary player. 15ranges equalpins,
 Create770lines in644+126 pages, fullasm1722 instructions in12pages +curve85.
 Raw artifacts/client455-progress/rvp078-paged.json. Большой одиночный disasm

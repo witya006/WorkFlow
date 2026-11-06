@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Rvp-runtime079. Ordinary CLevel now calls source camera/timeline
+player.3maps/27camera events/82commands, pause/flag16/reload/renderer ownership,
+intro26/display8/FSE18/46viewedGPU passed. PE83c1793b…/Create1;67engine/9overlays/
+ownedfloatcameraheader,033preserved. 20equalranges/full531+23+14+114asm;
+IDA6a789f6fclosed. Corrected078labels:8D5510Render/8D8340Release. Actor/effect/
+audio/timer providers refused;fullRVP/Tutorial/M9OPEN. Next080. research/client455-rvp-runtime.md.
+
 2026-11-07 — Rvp078. Source-owned RVP objects/12commands/interpolation restored;
 44originals/615actor-records/1569commands and2fixtures passed independent/native
 named-field checks. 15ranges equalpins, full1722+85asm; IDAa265e239closed.

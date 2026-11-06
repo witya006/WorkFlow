@@ -4,6 +4,7 @@ from pathlib import Path
 from PIL import Image
 from client455_own_probe import build_full_object_probe
 from compare_client_binaries import WS,pe
+from client455_runtime_inputs import copy_character_shaders
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -25,6 +26,7 @@ def main():
         staged=WS/row['file'];destination=run/staged.relative_to(inputs);destination.parent.mkdir(parents=True,exist_ok=True);os.link(staged,destination);row['file']=destination.relative_to(WS).as_posix()
     for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg']:
         destination=run/name;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(client/name,destination);records.append({'file':destination.relative_to(WS).as_posix(),'sha256':sha(destination)})
+    records+=copy_character_shaders(run)
     config=run/'R3Engine.ini';config.write_text('[Setup]\nLanguage=Korea\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');records.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config)})
     startup=subprocess.STARTUPINFO();startup.dwFlags=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     result=subprocess.run([str(target),args.race],cwd=run,capture_output=True,timeout=120,creationflags=subprocess.CREATE_NO_WINDOW,startupinfo=startup);console=run/'console.txt';console.write_bytes(result.stdout+result.stderr);output=run/'result.json';trace=run/'trace.jsonl';frames=[]

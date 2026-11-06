@@ -28,11 +28,11 @@ client455-rvp-checkpoint.json. Сессия IDA a265e239 сохранена и �
 | 0x4d4d10 | Увеличение массива треков, запись 56 bytes |
 | 0x4d4d80 | Поиск предыдущего/следующего ключа относительно consumed cursor |
 | 0x4d4e70 | Исполнение треков, включая no-camera gate и blur interpolation |
-| 0x4d5510 | Освобождение movie/resources |
+| 0x4d5510 | Render; исправлено в079 по телу и вызывающему level8E7C40 |
 | 0x4d5d80 / 0x4d5f10 / 0x4d5fa0 | Prepare, загрузка объектов, start |
 | 0x4d5ff0 | FrameMove: guards, ambient audio, track/camera, actors/effects, blur |
 | 0x4d69e0 | Create: CAM, RVP, объекты, подготовка и загрузка ресурсов |
-| 0x4d8340 | Render |
+| 0x4d8340 | Release; исправлено в079 по телу и вызывающему level8E7730 |
 
 Трек: arguments 0..47, kind byte48, frame float52, размер56. Найденные
 виды: camera1, fade-in2, fade-out3, quake5, blur10, timer-rate11,

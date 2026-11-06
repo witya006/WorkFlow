@@ -12,6 +12,13 @@
 
 ## Текущий статус
 
+079: ordinary RVP camera/timeline перенесён в production path. Три мира/
+27camera events, intro26,46viewedframes иточнаяPE/Create1passed. Actor/effect/
+audio/timer providers иполныйTutorial ещёOPEN;далее080. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-rvp-runtime.md).
+
+Предыдущий результат:
+
 078: перенесён RVP load-model/interpolation;44 файла/615 описаний объектов/
 1569 команд сверены независимо,12 команд проверены native. Ordinary player ещё
 compiled stub; PE из077. Далее079 — реальные runtime bindings/исполнение и
@@ -547,7 +554,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/079: настоящий RVP player (load-model078 готова, ordinary player ещё stub), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/080: полные RVP actor/Character/effect/audio/timer providers (camera/timeline079 работает), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать
