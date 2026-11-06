@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Tutorial-board061. Added CTutorialBoard control rules and concrete
+modal2/3 bridge into actual client GUI objects. Own x86 full-object harness
+rendered viewport640x480, naturalexit0; finish/quit/clock/DBCS/key rows/race-class
+selection checked. Captured legacy button sprite mismatch remains OPEN. Rich
+window and real stage/Avatar/Tutorial integration remain OPEN; production unchanged.
+[Evidence](research/client455-tutorial-board.md).
+
 2026-11-06 — Tutorial-actions060. Recovered QBI19–46 rules and composed all47
 processor families. Recording-host native exit0;99real programs/39864records
 prepare, without claiming playback. Equip map16, lifetimes, cursor/feedback/

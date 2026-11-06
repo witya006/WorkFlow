@@ -1,0 +1,130 @@
+{
+  "scope": "Board control rules,real client modal2/3 objects and D3D draw;visibility/rich/stage providers are test fixtures",
+  "architecture": "x86",
+  "entry_rva": "0xebd30",
+  "sources": {
+    "client455_tutorial_board.cpp": "33b1f9d3abb11754ad18956fdceefd31b69d34b10b1aa51db516ce7969c6c8b8",
+    "client455_tutorial_board_probe.cpp": "29953a44a3ac07fcb242c7d30b9e6c98abe4e7f0ef70b524f9d8f89c74baafde",
+    "client455_tutorial_board.h": "d0e715eff6122f47b00a7fddcda4c5182808ffbbcee71b9b6ed6f0fa654a9922"
+  },
+  "script_sha256": "360e15e5957aeef71e7e8dd7f43376a188732f28bfffc27369653b39fcc40a20",
+  "reference_sha256": "b7c0b679e222f2c5e8b440a4b3ec8286a9e0021e70aa0d5825a02f4765c5de90",
+  "normal_link_sha256": "6958baf5e0d1cc7a0d96a7fc8dc24a8e4a46bfc78e854e3e7ced37ca41a9a5d4",
+  "processor_report_sha256": "2e4555ff0b18e1570381787d66e11d0602f9c0730accad0b2b17953f402edb65",
+  "processor_library": {
+    "file": "work/client455-port/tutorial-actions-probe/RF455TutorialActions.lib",
+    "sha256": "8671a8469d699746b627df86a05a5195d7c2c206d19a9315b80ba355ae9f3a3c"
+  },
+  "objects": [
+    {
+      "file": "work/client455-port/tutorial-board-probe/client455_tutorial_board.obj",
+      "sha256": "8a2aa8ced449886d93b63f4175c266c55c2679f78ad6faefd548e3424b885640"
+    },
+    {
+      "file": "work/client455-port/tutorial-board-probe/client455_tutorial_board_probe.obj",
+      "sha256": "c09914cd1c82885b5e61f38f3fc670ad346e1192b11e4c3c44fe96f050b28714"
+    }
+  ],
+  "exe": {
+    "file": "work/m9/ed4fbf9d/tutorial-board-001/tutorial-board-probe.exe",
+    "sha256": "ed4fbf9de21341e7b9a5751cc1fb3c7181e82dc54ab5e318c144dccfd4bd78f4"
+  },
+  "map": {
+    "file": "work/client455-port/tutorial-board-probe/tutorial-board-probe.map",
+    "sha256": "e237de55195e619f0fa4aecde35a7712103abaf4785e0c2935850f54362eea0b"
+  },
+  "build_log": {
+    "file": "work/client455-port/tutorial-board-probe/build.txt",
+    "sha256": "04508d6c97e9918049480124de1f2312d91aeb334a77e805e00329ed4f8011b3"
+  },
+  "link_response": {
+    "file": "work/client455-port/tutorial-board-probe/link.rsp",
+    "sha256": "5c7a4a8d6e371c7968842c2c2756e0dd56087380e5da062767d7878e230bba69"
+  },
+  "output": {
+    "file": "work/m9/ed4fbf9d/tutorial-board-001/result.json",
+    "sha256": "ccda74eb2f60119ac46931ab53b4ef1dc0a28efa43144e5b7dc22d2510726ab4"
+  },
+  "frame": {
+    "file": "work/m9/ed4fbf9d/tutorial-board-001/modal2.bgra",
+    "sha256": "42942e677e8153d31800ca1635f3456fb3fe050e83ec2e2cd40d29986714f581",
+    "width": 640,
+    "height": 480,
+    "format": "BGRA8"
+  },
+  "preview": {
+    "file": "work/m9/ed4fbf9d/tutorial-board-001/modal2.png",
+    "sha256": "3bd1233cd85be0c1ec10eaa5c4f06b747dc8062357457b60cc65e8a932814b79"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/System/shader/Grass1.vsh",
+      "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/System/shader/grass1.vso",
+      "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/System/console.jpg",
+      "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/System/010.TTF",
+      "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/DataTable/ko-kr/NDLanguage.edf",
+      "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/SpriteImage/Common/mouse.spr",
+      "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/SpriteImage/ko-kr/common.spr",
+      "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/DataTable/en-gb/bw.scp",
+      "sha256": "1a6066976d9ab58ff849f96b741c3693e6b4da2377bf4f587cceae5f2015184c"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/DataTable/en-gb/cr.scp",
+      "sha256": "d56f50c41e6a1b08c17f77b70b738b894340aeaa5c0b3da91b68934f112abf3b"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/DataTable/en-gb/as.scp",
+      "sha256": "2ae575bcf59b206abeffd49bfb0e75978a4174ae88e51ce366918ce2665d1f21"
+    },
+    {
+      "file": "work/m9/ed4fbf9d/tutorial-board-001/R3Engine.ini",
+      "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "board_rules": true,
+    "real_modal2_and3": true,
+    "real_language441_and444": true,
+    "mbsnbcpy_and_bounds": true,
+    "key_guide_rows": true,
+    "quit_and_finish_order": true,
+    "report_clock_wrap": true,
+    "race_class_programs_prepared": 3,
+    "modal_colored_pixels": 17694,
+    "frame_width": 640,
+    "frame_height": 480,
+    "rich_view_is_test_fixture": true,
+    "production_host": false,
+    "full_briefing_window": false,
+    "full_Tutorial": false
+  },
+  "natural_exit": 0,
+  "normal_client_relinked": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M9": "OPEN"
+}

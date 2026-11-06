@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-BOARD-061",
+      "status": "partial",
+      "description": "CTutorialBoard control rules and concrete modal2/3 legacy-GUI bridge; full455 briefing and production host OPEN",
+      "reference": [{"rva":"0xa5c60","role":"frame and quit"},{"rva":"0xa5d40","role":"events and report clock"},{"rva":"0xa6080","role":"finish order"},{"rva":"0xa6190","role":"modal2"},{"rva":"0xa62a0","role":"modal3"},{"rva":"0xa6710","role":"key guide"}],
+      "implementation": ["scripts/native/client455_tutorial_board.h","scripts/native/client455_tutorial_board.cpp"],
+      "verification": "Own full-object x86 harness/D3D nativeexit0;real modal IDs/styles/alpha/text;ND441/444;DBCS/1023bound;finish/quit/timer wrap;3race-class programs;640x480viewport captured/viewed",
+      "evidence": ["inventory/client455-tutorial-board-reference.json","inventory/client455-tutorial-board-native.json","inventory/client455-tutorial-board-checkpoint.json","research/client455-tutorial-board.md"],
+      "gaps": ["Full CGUIBriefingWindow rich/paged/animated text, portraits and key images","Captured modal buttons use legacy sprite mappings;full455 GUI rendering/layout/fonts/input OPEN","Concrete stage/Avatar/capture providers,registration/event routing and ordinary Tutorial/fourstage","Progress-report uninitialized payload byte;no invented packet","Earlier itemtail25/camera276/helper/numeric/error gaps;full455/M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-ACTIONS-060",
       "status": "partial",
       "description": "Source-owned QBI UI/Equip/Cursor/Combat/Item rules and all47-family composition; recording host, not actual Tutorial/UI/world",

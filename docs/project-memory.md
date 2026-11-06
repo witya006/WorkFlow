@@ -23,6 +23,48 @@
 
 ## Последний проверенный результат
 
+Tutorial-board061: new native/client455_tutorial_board.{h,cpp}, source-owned
+CTutorialBoard derives actual CBaseBoard. Ordinary WinMain/Tutorial NOT wired;
+own full-object harness only. UI/stage providers explicit, missing rich/key
+provider returnsfalse; no empty fake CGUIBriefingWindow. Header's briefing
+interface is required future dependency. Initial safe own flags ready1/close0/
+busy0 match target InitWindow; constructor's raw uninitialized domain not claimed.
+Target window38; first relevantMsg two clock reads, shared unsigned elapsed
+strictly>60000 reports. Foreignwindow returns beforeclock. Report56BAE0 sends
+group1/op17 with uninitialized1byte payload: host notification only, NOpacket.
+Frame decrements shared signedpositive cooldown evenSkip; hiddenwindow input3.
+quitRequested &&cooldown0&&!busy&&currentQuest!=0→ND441/ID6003/style3,clearquit,
+busy1,cooldown5.1403result1forcefinish,thenbusy0;canceljustbusy0.
+Finish incomplete&&ready1&&!force→ND444/ID6001/style3,ready0. Second call,
+completedorforce→captureNULL,skip1,stagevt52,input1,unload,Avatarstage3 in order.
+1400/1402 setinput0 regardlessresult.1201 closeBlocked blocks; baseclose also
+requires nonzeroLPARAM,1202toggle. Message0/1 changes close-block only after
+successful realviewcall. Message2/3 uses concrete existing CGUIMessagebox:
+_mbsnbcpy serialized lengths,IDs6000/6002,styles3/4,alphaB0,durationFFFFFFFF.
+Own1023byte bound rejects unsafe overflow; embeddedNUL/DBCS949 pair/lead checked.
+Key FFFF hides;low17→{high,255},{17,high},otherwise{low,high}. Actual key imagesOPEN.
+startScript race/2 b/c/a,classw/r/f/s,unload-before-read,ordinal0/sharedrefresh;
+3realbw/cr/as prepared,failedloadclears,skipretains. NativeActionsFactory requires
+ActionsHost, so shared test fixture060 extracted to native/testing/actions_host.
+060rule sources unchanged, shortregression exit0; current lib8671a846…,
+PEb17c811d…/entry13F80. Generic own_probe builder unchanged after local experiment.
+061 ownPEed4fbf9de21341e7b9a5751cc1fb3c7181e82dc54ab5e318c144dccfd4bd78f4,
+entryEBD30,naturalexit0. RealclientGUI objects/text and D3Ddraw; stage/Avatar/
+rich-view are TEST fixtures. Actual viewport640×480/17694changed pixels exported;
+backbuffer640×500 has extra20rows, excluded from comparison (avoids falsepositives).
+PNG viewed: legacy button sprite mappings visibly wrong; modal rendering/font/
+layout/input455 NOTaccepted. Rich/paged/portrait/key-image panel stillOPEN.
+32functionranges+vtable+selectionstrings equalbothpins;9completeasm;
+IDA774fd3f4closed/save. Rawboard-*.json,061-*-asm underartifacts/client455-tutorial.
+Reports inventory/client455-tutorial-board-*, research/client455-tutorial-board.md.
+Checkpoint PARTIAL, canonical20kernels discovery passed. Production056 SHA56905e68…
+unchanged. Next062 actualmodal455 buttons/data/text/input then sharedGUI/full
+briefing, actual Avatar/world/frame/input/feedback/localhandlers/joint4stage.
+Olditemtail25/camera276/failedUIpoint/equip/numeric/error gaps retained.
+M6/M6F/M7/M9 OPEN. No server changes/inputEXE execution.
+
+## Предыдущий перенос — tutorial-actions060
+
 Tutorial-actions060: client455_tutorial_actions.{h,cpp};ActionsHost abstract
 extendsSpatialHost;Factory composes0–46. Native recordinghost,NOTrealUI/world.
 UI19open21closeforcebit4;20/22waitnotimeout. UI0/63/64→board0,5→7,6→3,11→17;

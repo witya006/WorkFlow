@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок061: CTutorialBoard получил source rules для frame/quit/finish/events/
+selection и настоящий modal2/3 GUI bridge. Own full-object x86 PEed4fbf9d…,
+entryEBD30, naturalexit0; viewport640×480 отрисован. Rich-view и Avatar/stage
+пока тестовые, полного обучения нет. На PNG видны старые назначения спрайтов
+кнопок; соответствие GUI455 ещё открыто. Далее062 — обычные модальные окна:
+данные/кнопки/текст/ввод, затем весь CGUIBriefingWindow и actualhost/Tutorial/
+fourstage. Report16BAE0 имеет uninitialized byte payload — не отправлять
+выдуманное значение. [Доказательства](../research/client455-tutorial-board.md).
+Production056 unchanged; M6/M6F/M7/M9 OPEN. ActionsHost060 выделен в test-only
+header, короткая регрессия прошла; остальные неизменённые suites не повторялись.
+
+Предыдущий результат:
+
 Участок060: ActionsFactory композирует все47семейств QBI;99реальных сценариев/
 39864records иsynthetic47 подготовлены. QBI UI19–22/Equip23–26/Cursor27–34/
 Combat35–39/Item40–46 rules прошли recording-host nativeexit0. Это НЕ реальный

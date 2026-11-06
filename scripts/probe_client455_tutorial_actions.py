@@ -79,7 +79,7 @@ def main():
         raise ValueError('Source item mapping differs from pinned 455 bytes')
     report = {'scope': 'QBI19to46 action rules and complete processor preparation with a recording host; actual UI/world Tutorial OPEN',
               'architecture': 'x86', 'entry_rva': hex(pe(exe.read_bytes())['entry_rva']),
-              'sources': {name: sha(native/name) for name in names + [probe.name, 'client455_tutorial_script.h', 'client455_tutorial_runtime.h', 'client455_tutorial_spatial.h', 'client455_tutorial_actions.h', 'testing/client455_tutorial_recording_host.h']},
+              'sources': {name: sha(native/name) for name in names + [probe.name, 'client455_tutorial_script.h', 'client455_tutorial_runtime.h', 'client455_tutorial_spatial.h', 'client455_tutorial_actions.h', 'testing/client455_tutorial_recording_host.h', 'testing/client455_tutorial_actions_host.h']},
               'script_sha256': sha(Path(__file__)), 'reference_sha256': sha(ref_path),
               'library': library.relative_to(WS).as_posix(), 'library_sha256': sha(library),
               'objects': [{'file': p.relative_to(WS).as_posix(), 'sha256': sha(p)} for p in objects],

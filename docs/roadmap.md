@@ -12,6 +12,13 @@
 
 ## Текущий статус
 
+Участок061: CTutorialBoard control и вызов настоящих модальных окон2/3
+проверены с обычными клиентскими объектами и D3D. Rich-view и stage/Avatar
+в harness тестовые. Видимое расхождение кнопочных спрайтов записано.
+Далее062 — обычные модальные окна455, затем полный briefing и реальный
+Tutorial/fourstage. [Доказательства](../research/client455-tutorial-board.md).
+M6/M6F/M7/M9 открыты.
+
 Участок060: QBI19–46 rules перенесены; composition47families/99programs prepared.
 Recording-host проверки прошли. Реальное исполнение сценариев/UI/Avatar/world
 и обычный Tutorial ещё открыты. Далее061 — CTutorialBoard/briefing и реальные
@@ -391,21 +398,15 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6: восстановить fullCharacter draw/state/constants/palette/material и shader
-   selection, затем связанный normal typedmodel/animation/renderer путь. Shader
-   bootstrap028 готов на HAL; не делать отдельную подмену CUnity manager.
-   В той же цепочке завершить staticCRTsin/полный actor lifecycle/transition consumers и
-   normal CUnity/CAniData calls. Коллекция AnimationManager/record ownership ready027;
-   async worker уточнять по callers, оба выбранных importer mode синхронные.
-   Key evaluators/основныеpose/transition/ramp/skinmatrices
-   source готовы:11pairs/132updates standalone/fullclient CPU,5sourceC APIs;
-   secondary state/effects подключены:36scalarcases/2realCoraBN/6updates;reference
-   staticCRTsin parity ещёopen. research/client455-secondary-motion.md. Затем skin/draw и
-   normal typed consumers. Framing/material/texture/sharedGPU/lifetime/MESH08route/
-   selected manager/rawIO/ANI/attachment/dispatcher source готовы; normal loader не переключать до согласования
-   ABI иconsumers. Полный455D3D9renderer иреальные model scenarios остаются в M6.
-2. Восстановить D3D9renderer/shaders/lighting455 вместе с Character consumers.
-3. По одному закрывать остальные M6 client subsystems и реальные acceptance scenarios.
+1. M6/062: обычные модальные окна455 — исправить подтверждённые назначения
+   кнопок, проверить их данные, текст и ввод. Затем полный CGUIBriefingWindow:
+   общий GUI-путь, постраничный/временной текст, портреты и изображения клавиш.
+2. Связать панель и47 QBI processors с настоящими Avatar/world/frame/input/
+   feedback/local handlers; подключить Tutorial и четыре обычных этапа клиента.
+   Затем полный интерфейс входа, аутентификация и переход в игровой мир.
+3. Завершить остальные M6 области и реальные сценарии приёмки, включая полные
+   Character/animation/effect/shader/lighting/lifecycle и численные разрывы.
+   Ранее открытые gaps сохраняются в client-acceptance.md и feature registry.
 4. M6F: завершить реестр возможностей/расхождений и доказательства полноты клиента.
 5. M7: закрепить воспроизводимую сборку;M9: финальная приёмка455 без модернизации графики.
 

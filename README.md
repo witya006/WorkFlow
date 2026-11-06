@@ -11,7 +11,13 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний участок M6 — tutorial-actions060: правила UI/Equip/Cursor/Combat/Item
+Последний участок M6 — tutorial-board061: восстановлено управление панелью,
+выходом и выбором сценария; сообщения2/3 открывают настоящие GUI-диалоги и
+проверены на D3D. На кадре обнаружены старые назначения кнопочных спрайтов.
+Полный briefing и подключение к игровому Tutorial ещё открыты.
+[Доказательства](research/client455-tutorial-board.md).
+
+Предыдущий участок M6 — tutorial-actions060: правила UI/Equip/Cursor/Combat/Item
 перенесены; фабрика охватывает47типов и подготавливает99реальных сценариев.
 Проверка — recording host. Настоящий UI/Avatar/world и ordinary Tutorial
 ещё открыты. [Доказательства](research/client455-tutorial-actions.md).

@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, tutorial-board061: установок нет.32 диапазона и board vtable/
+selection strings совпали между pins;9 полных asm. IDA774fd3f4 closed/save.
+Собственная x86 PEed4fbf9d…/entryEBD30 завершилась exit0. Настоящие GUI-диалоги
+отрисованы на D3D, viewport640×480 проверен отдельно от backbuffer640×500.
+Визуально подтверждены старые назначения кнопочных спрайтов — это открытый gap.
+Production PE056 не менялась. [Доказательства](../research/client455-tutorial-board.md).
+
 Дополнение06.11,tutorial-actions060: установок нет.50ranges/equip16/virtual
 bindings equalbothpins,11completeasm; IDA758bbebc closed/save. Own x86 lib
 71c8d650.../PEac630491.../entry13F80 naturalexit0;recordinghost,не actual UI.
