@@ -76,6 +76,67 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            if relative=='userinterface/guicontroller/guibutton.h':
+                anchor=b'void\t\tSetLabel( char * pi_pLabel );'
+                if raw.count(anchor)!=1:raise ValueError('Button label API changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid SetLabelMetrics455(int width,int height){m_cLabel.SetSize(width,height);SetLabelPos((GetSizeX()-width)/2,(GetSizeY()-height)/2);}')
+                changes.append('455modal caption uses measured GDI text extent rather than legacy byte-count geometry')
+                anchor=b'DWORD\t\t\tm_dwLabelColor[2];'
+                if raw.count(anchor)!=1:raise ValueError('Button caption colors changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tDWORD m_dwDisabledLabelColor455=0xff797979;')
+            if relative=='userinterface/guicontroller/guibutton.cpp':
+                first,last=section(raw,b'CGUIButtonEx::ResetLabelColor(',b'CGUIButtonEx::ResetLabelColor(')
+                raw=raw[:first]+b'CGUIButtonEx::ResetLabelColor(void)\r\n{m_cLabel.GetFont()->dwColor=(GetState()&DISABLED)?m_dwDisabledLabelColor455:m_dwLabelColor[(GetState()&HOVERED)?1:0];}\r\n'+raw[last:]
+                changes.append('confirmed455disabled caption color FF797979 before hover/normal colors')
+            if relative=='userinterface/guicontroller/guiobject.h':
+                anchor=b'BOOL\tIsActive( void )'
+                position=raw.find(anchor)
+                if position<0:raise ValueError('GUI active getter boundary changed')
+                line=raw.rfind(b'\n',0,position)+1
+                raw=raw[:line]+b'\tBOOL IsFocused455()const{return m_bEnableFocus&&m_bShow&&m_bActive&&s_pFocusedObject==this;}\r\n'+raw[line:]
+                changes.append('confirmed455show/active/enableFocus/static-focus predicate')
+            if relative=='userinterface/guicontroller/guiscrollbar.h':
+                anchor=b'void\tSetBarSize( POINT & pi_ptSize )'
+                position=raw.find(anchor)
+                if position<0:raise ValueError('Scrollbar bar API changed')
+                line=raw.rfind(b'\n',0,position)+1
+                raw=raw[:line]+b'\tvoid SetBarColor455(DWORD color){m_uiBar.SetARGB(color);}\r\n'+raw[line:]
+            if relative=='userinterface/guicontroller/guidialogbox.h':
+                raw,count=re.subn(rb'(BOOL[ \t]+m_bOpened[ \t]*;)',rb'\1\r\n\tBOOL m_allowClose455=FALSE; // Target base window starts with Escape disabled.',raw)
+                if count!=1:raise ValueError('Dialog storage boundary changed')
+                anchor=b'WORD\tGetResultMsg( void )'
+                position=raw.find(anchor)
+                if position<0:raise ValueError('Dialog result API changed')
+                line=raw.rfind(b'\n',0,position)+1
+                raw=raw[:line]+b'\tvoid SetAllowClose455(BOOL value){m_allowClose455=value;}\r\n\tBOOL GetAllowClose455()const{return m_allowClose455;}\r\n'+raw[line:]
+                changes.append('455Escape close permission;Escape result3 rather than legacy cancel2')
+            if relative=='userinterface/guicontroller/guidialogbox.cpp':
+                raw=b'#include "client455_modal.h"\r\n'+raw
+                first,last=section(raw,b'CGUIDialogBox::MsgProc(',b'CGUIDialogBox::MsgProc(')
+                # Preserve the original leading LRESULT outside the replaced span.
+                body=(native/'client455_dialog_input.inc').read_bytes().replace(b'LRESULT CGUIDialogBox::',b'CGUIDialogBox::',1)
+                raw=raw[:first]+body+raw[last:]
+                changes.append('455dialog Enter/Esc/YN/focused-chat-input gate;real GUI event queue retained')
+            if relative=='userinterface/guicontroller/guimessagebox.cpp':
+                raw=b'#include "client455_modal.h"\r\n'+raw
+                for anchor,argument in [(b'g_uiMsgBox[l_nAvailMsgBox].SetDuration( pi_pCreateInfo->wDurationTime );',b'pi_pCreateInfo->bAllowClose455'),
+                                         (b'g_uiMsgBox[l_nAvailMsgBox].SetDuration( pi_wDurationTime );',b'TRUE')]:
+                    if raw.count(anchor)!=1:raise ValueError('Modal close-permission wrapper changed')
+                    raw=raw.replace(anchor,anchor+b'\r\n\tg_uiMsgBox[l_nAvailMsgBox].SetAllowClose455('+argument+b');')
+                for method in [b'Init(',b'SetSprite(',b'SetAlpha(',b'SetBound(',b'Open(']:
+                    signature=b'CGUIMessagebox::'+method
+                    first,last=section(raw,signature,signature)
+                    # The return type is on a preceding line in the legacy TU.
+                    begin=raw.rfind(b'\n',0,first-1)+1
+                    if raw[begin:first].strip()!=b'void':raise ValueError('Modal method return boundary changed')
+                    raw=raw[:begin]+b'// 455implementation below.\r\n'+raw[last:]
+                raw+=b'\r\n'+(native/'client455_modal_init.inc').read_bytes()
+                changes.append('455normal modal button sprites/labels/outline/colors/geometry/Open;shared text and scrollbar algorithms remain open')
+            if relative=='userinterface/guicontroller/guimessagebox.h':
+                anchor=b'BOOL\t\t\tbLockOtherWin;'
+                if raw.count(anchor)!=1:raise ValueError('Modal create-info boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tBOOL bAllowClose455=TRUE;')
+                changes.append('typed455modal Escape permission/default reset for pooled windows')
             if relative=='gameprogress/cgameprogress.h':
                 raw,count=re.subn(rb'(BOOL\s+m_bIsLoadedData\s*;)',rb'\1\r\n\tDWORD m_nextStage455=0xffffffff; // Owned initial safety domain;target Init retains this field.',raw)
                 if count!=1:raise ValueError('Progress storage boundary changed')
@@ -317,7 +378,7 @@ def main():
     cmake+='target_include_directories(RFClient455Consumers PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\n'
     cmake+='target_compile_definitions(RFClient455Consumers PRIVATE '+' '.join(flags)+')\ntarget_compile_options(RFClient455Consumers PRIVATE /W3 /O2 /Gy /EHsc /Zc:forScope- /MP4 "/FI'+(port/'port_std.hpp').as_posix()+'")\nset_target_properties(RFClient455Consumers PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     facade_units=[]
-    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp']:
+    for name in ['client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     sources,kernel_evidence=kernel_sources(native);kernel_units=[]
@@ -345,6 +406,7 @@ def main():
     report['record_inputs']['client455_progress_loop.inc']=sha((native/'client455_progress_loop.inc').read_bytes())
     for name in ['client455_camera.h','client455_camera.cpp','client455_camera_load.inc','client455_camera_play.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['network_defaults']=codec_reference['generated_defaults']
+    for name in ['client455_modal.h','client455_modal.cpp','client455_modal_init.inc','client455_dialog_input.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     snapshot=art/'pre-canonical-renderer-gpu.json'
     if not snapshot.exists():snapshot.write_bytes((WS/'inventory/client455-normal-renderer-gpu.json').read_bytes())
     preserved=WS/'inventory/client455-normal-renderer-precanonical.json'

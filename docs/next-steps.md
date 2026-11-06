@@ -7,6 +7,17 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок062: обычные modal controls/outline/input перенесены в normal sources.
+Korea/Russia GUI/D3D probes exit0, исправлен видимый sprite mismatch061. Размеры
+67×21, captions106/107, цвета, margins7, Esc3/Enter1/YN/mouse1–3/nested/focus/
+pool/Open проверены. New production a5b1da0b…/entry14D300,182/20/24TU,
+0unresolved, existingCreate=1. Далее063 — общий text-board/scrollbar: markup/
+wrapping/metrics/sizing/input, затем полный briefing и actualhost/Tutorial/
+fourstage. FreeType/ANSI и прочие ранее открытые области сохраняются.
+[Доказательства](../research/client455-modal.md). M6/M6F/M7/M9 OPEN.
+
+Предыдущий результат:
+
 Участок061: CTutorialBoard получил source rules для frame/quit/finish/events/
 selection и настоящий modal2/3 GUI bridge. Own full-object x86 PEed4fbf9d…,
 entryEBD30, naturalexit0; viewport640×480 отрисован. Rich-view и Avatar/stage

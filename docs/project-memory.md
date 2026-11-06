@@ -23,6 +23,47 @@
 
 ## Последний проверенный результат
 
+Modal062: ordinary CGUIMessagebox/CGUIDialogBox modified via prepare_normal,
+not separate fake dialog. New native client455_modal.{h,cpp},modal_init.inc,
+dialog_input.inc. Bothbuttons commonID1/action1/frames0normal1hover2press3disabled;
+realko/ruframes67×21;closeaction0frames0/1/2(24×14). CaptionsND106/107,style32,
+GDI measuredcentering via RF455_MeasureLegacyText +ownedbuttonmetricsAPI.
+CGUIButtonEx disabledcaptionFF797979 beforehover/normal confirmed60BC70;
+newownedfielddefault;allnormalheaders/objects rebuilt consistently.
+FrameRGB222628/defaultalphaD8,outline6A6E72,width1/inset2;SetAlpha preservesRGB.
+Fullbodybounds,buttonmarginsright/bottom7,gap7. Scrollarrows action2frames0/1,2/3
+(12×8);thumb5×18/color70635D;shared scrollbar layout/input stilllegacy/OPEN.
+Open resetsOKcaption106/enablesOK only;Cancelcustomlabelretained.
+Target65C270 constructor closeflagDWORD83=0: owneddefaultFALSE,notTRUE!
+Wrappers explicitlysetallowclose; createinfo bAllowClose455 defaultsTRUE;
+pooled reusedwindow flagreset. Enter1,Esc3 iffallowclose(else return0,noevent).
+YNstyle3 only&&!focusedchat. IsFocused455=enableFocus/show/active/staticidentity
+proven627570. Legacyprimarychatinput wired via g_pUiChatWindow->GetInputField;
+fullMainGame455provider identity stillOPEN. Mouseobserverbindings+results1/2/3
+checked; nested dialogs dispatchbeforeparent.
+43functionranges/3vtables equalbothpins,8fullasm;IDA124615b8/14980562closed/save.
+Raw artifacts/client455-tutorial/modal-*062.json,062-*-asm. Reports inventory/
+client455-modal-*,research/client455-modal.md. Own modal PE d3ca9b9bc5781e4e75c9460d54ea52c93f514a0d9a71f33d5f8d621611442615,
+entryE3700,naturalexit0 forKorea/Russia. ActualGUI/GPUviewport640×480,
+normal/hover/disabledframes saved;normal20000changedpixels;Korean/RussianPNG
+viewed(oldwrongicon gone,labels readable). Text-board/render metricsFull455
+NOTaccepted: sharedwrapping/markup/sizing/scroll,FreeType/ANSI/Framewindow/
+lifecycle/wrappervariants remainOPEN. SourceGDI helper uses existingGDIroute;
+affectedfont046probeKo/RuGDIoracle/atlas/wideframe regression passed.
+Production normal nowa5b1da0b344c898c6b71079b64742ee08852e62eaaf7e206e55815540615d994,
+base400000/entry14D300/x86/2023936bytes,182client20kernel24facade,0unresolved.
+RequiredCUnity/CAnimationconsumerprobe passed beforelink. Ownstartup audit/
+decoded entry refreshed;exactnewPE TCPfixture→WinMain/engine/D3D/Character/
+existingCreate1, debuggerstopatB460A beforeloop;notauth/fullgame. Handledfirstchance
+exceptions retainedintrace;no fullstartup equivalence claim.
+No blanket159k suites. Canonical20kernels discovery/checkpoint PARTIAL.
+Next063 ordinary text-board/scrollbar455 (markup/wrapping/metrics/sizing/input),
+thenfullCGUIBriefingWindow,actualAvatar/world/frame/feedback/localhandlers/
+Tutorial/fourstage. Olditemtail25/camera276/cursor/numeric/errors retained.
+Historical061frame/report usedoldGUI;062fixesitsbuttonmapping. M6/M6F/M7/M9OPEN.
+
+## Предыдущий перенос — tutorial-board061
+
 Tutorial-board061: new native/client455_tutorial_board.{h,cpp}, source-owned
 CTutorialBoard derives actual CBaseBoard. Ordinary WinMain/Tutorial NOT wired;
 own full-object harness only. UI/stage providers explicit, missing rich/key

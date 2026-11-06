@@ -154,4 +154,12 @@ HRESULT RF455_DrawLegacyText(float position[4],const char*text,DWORD color,DWORD
     std::vector<wchar_t>wide(count);MultiByteToWideChar(cp,0,text,-1,wide.data(),count);return RF455_DrawText(position,wide.data(),color,flags,1,clip);
 }
 DWORD RF455_GetTextOutline(){return fonts[0].outline;}
+SIZE RF455_MeasureLegacyText(const char* text){
+    if(!text)return {0,0};
+    const unsigned cp=RF455_GetFontSettings().codepage;
+    const int count=MultiByteToWideChar(cp,0,text,-1,nullptr,0);
+    if(!count)return {0,0};
+    std::vector<wchar_t> wide(count);MultiByteToWideChar(cp,0,text,-1,wide.data(),count);
+    return fonts[0].measure(wide.data());
+}
 void RF455_SetTextOutline(DWORD value){fonts[0].outline=value&0xffffff;}

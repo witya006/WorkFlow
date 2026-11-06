@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок062: обычные modal button bindings/67×21/ND106–107, outline/colors/
+margins, Enter/Esc/Y/N и mouse1/2/3 проверены на реальных Korea/Russia GUI/D3D.
+Новая полная PE собирается, existingCreate=1. Ошибка спрайтов061 исправлена.
+Общий text-board/scrollbar, FreeType/ANSI, полный frame/lifecycle/provider и
+Tutorial/fourstage остаются открытыми. Это не приёмка полного GUI или игрового
+входа455. [Доказательства](../research/client455-modal.md). M6/M6F/M7/M9 OPEN.
+
 Участок061: приняты bounded правила управления CTutorialBoard и реальный вызов
 модальных GUI-диалогов2/3. Own full-object harness/D3D exit0. На кадре выявлены
 старые назначения спрайтов кнопок: внешнее соответствие455 не принято.

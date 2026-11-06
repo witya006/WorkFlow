@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Modal062. Ordinary CGUIMessagebox/CGUIDialogBox now use confirmed
+455button frames/dimensions/captions,outline/colors/margins and keyboard input.
+Korea/Russia full-object GUI/D3D probes exit0;mouse observers/results,nested/focus/
+pool/Open checked. GDI regression passed;new production PEa5b1da0b… links with
+0unresolved and passes existingCreate=1. Fulltext/scrollbar/Tutorial still OPEN.
+[Evidence](research/client455-modal.md).
+
 2026-11-06 — Tutorial-board061. Added CTutorialBoard control rules and concrete
 modal2/3 bridge into actual client GUI objects. Own x86 full-object harness
 rendered viewport640x480, naturalexit0; finish/quit/clock/DBCS/key rows/race-class

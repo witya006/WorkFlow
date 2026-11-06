@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11, modal062: установок нет.43 диапазона/3vtable совпали между pins,
+8полных asm; IDA124615b8/14980562 closed/save.182client/20kernel/24facade,
+0unresolved, production PEa5b1da0b…/entry14D300. Modal Korea/Russia own native
+exit0, кадры осмотрены; GDI regression passed. Точная PE прошла D3D/Character/
+existingCreate=1, stop до игрового цикла. [Доказательства](../research/client455-modal.md).
+
 Дополнение06.11, tutorial-board061: установок нет.32 диапазона и board vtable/
 selection strings совпали между pins;9 полных asm. IDA774fd3f4 closed/save.
 Собственная x86 PEed4fbf9d…/entryEBD30 завершилась exit0. Настоящие GUI-диалоги

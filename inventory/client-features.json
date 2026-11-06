@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MODAL-062",
+      "status": "partial",
+      "description": "Ordinary modal button/caption/outline/geometry/input contracts455;fulltext/scrollbar/game remain OPEN",
+      "reference": [{"rva":"0x3012c0","role":"Init and captions"},{"rva":"0x301420","role":"sprite binding"},{"rva":"0x301630","role":"layout"},{"rva":"0x20eb50","role":"keyboard"},{"rva":"0x20bc70","role":"disabled caption"},{"rva":"0x2215a0","role":"outline"}],
+      "implementation": ["scripts/native/client455_modal.cpp","scripts/native/client455_modal_init.inc","scripts/native/client455_dialog_input.inc","scripts/prepare_client455_normal.py"],
+      "verification": "Korea/Russia actualGUI/D3D nativeexit0;67x21/buttons/captions106107/states/outline/margins/keyboard/mouse/nested/chatfocus/pool/Open;PNGviewed;affectedGDIregression;newfullPE0unresolved/existingCreate1",
+      "evidence": ["inventory/client455-modal-reference.json","inventory/client455-modal-native.json","inventory/client455-modal-checkpoint.json","research/client455-modal.md"],
+      "gaps": ["Fulltext-board/markup/wrapping/metrics/scrollbar layout/input","FreeType/ANSI/fullcaptionmetrics/frame-window/lifecycle/wrapper variants","Full455MainGame chat provider identity","Briefing/Avatar/world/Tutorial/fourstage/authentication and priorunknown/error domains;M6F/M7/M9"]
+    },
+    {
       "id": "CLIENT455-TUTORIAL-BOARD-061",
       "status": "partial",
       "description": "CTutorialBoard control rules and concrete modal2/3 legacy-GUI bridge; full455 briefing and production host OPEN",
@@ -13,7 +23,7 @@
       "implementation": ["scripts/native/client455_tutorial_board.h","scripts/native/client455_tutorial_board.cpp"],
       "verification": "Own full-object x86 harness/D3D nativeexit0;real modal IDs/styles/alpha/text;ND441/444;DBCS/1023bound;finish/quit/timer wrap;3race-class programs;640x480viewport captured/viewed",
       "evidence": ["inventory/client455-tutorial-board-reference.json","inventory/client455-tutorial-board-native.json","inventory/client455-tutorial-board-checkpoint.json","research/client455-tutorial-board.md"],
-      "gaps": ["Full CGUIBriefingWindow rich/paged/animated text, portraits and key images","Captured modal buttons use legacy sprite mappings;full455 GUI rendering/layout/fonts/input OPEN","Concrete stage/Avatar/capture providers,registration/event routing and ordinary Tutorial/fourstage","Progress-report uninitialized payload byte;no invented packet","Earlier itemtail25/camera276/helper/numeric/error gaps;full455/M6F/M7/M9"]
+      "gaps": ["Full CGUIBriefingWindow rich/paged/animated text, portraits and key images","Modal button mapping from061 fixed by062;remainingfulltext/scrollbar/font/frame/provider domains OPEN","Concrete stage/Avatar/capture providers,registration/event routing and ordinary Tutorial/fourstage","Progress-report uninitialized payload byte;no invented packet","Earlier itemtail25/camera276/helper/numeric/error gaps;full455/M6F/M7/M9"]
     },
     {
       "id": "CLIENT455-TUTORIAL-ACTIONS-060",

@@ -32,3 +32,4 @@ void RF455_ReleaseTextResources();
 HRESULT RF455_DrawText(float position[4],const wchar_t*,DWORD,DWORD,float scale=1,const float*clip=nullptr);
 HRESULT RF455_DrawLegacyText(float position[4],const char*,DWORD,DWORD,const float*clip=nullptr);
 DWORD RF455_GetTextOutline();void RF455_SetTextOutline(DWORD);
+SIZE RF455_MeasureLegacyText(const char*);
