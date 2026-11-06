@@ -11,7 +11,12 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний перенос M6 — camera056: обычный CAniCamera загружает1.2/1.3,
+Последний участок M6 — tutorial-scripts057: восстановлен формат47команд SCP.
+Новая C++ библиотека прочитала99реальных сценариев и сохранила все байты;
+поля/границы проверены. Исполнение команд и подключение Tutorial ещё впереди.
+[Доказательства](research/client455-tutorial-scripts.md).
+
+Предыдущий перенос M6 — camera056: обычный CAniCamera загружает1.2/1.3,
 восстановлены FOV scale и playback boundaries455. Реальные камеры обучения/
 входа, GPU projection и release проверены; новая PE сохранила existingCreate=1.
 Полный Tutorial/fourstage/мир ещё открыты. [Доказательства](research/client455-camera.md).

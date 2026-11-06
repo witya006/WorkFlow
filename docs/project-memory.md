@@ -23,6 +23,36 @@
 
 ## Последний проверенный результат
 
+Tutorial-scripts057: самостоятельный source-owned SCP reader/writer47selectors.
+Не подключён к ordinary Tutorial/Avatar и не заменяет его исполнение. Legacy
+QUEST_INFO28types имеет другую нумерацию; не отправлять в него новые записи.
+Новые scripts/native/client455_tutorial_script.{h,cpp} хранят typed common/message
+fields и raw fixed payload/padding; не overlay target processor objects.
+Селектор и сохранённый dataType раздельные; fixed ID WORDoffset2, rich IDpacked.
+Всего99race/classfiles/9folders:812quests/39864instructions/36818strings/
+1471548textbytes.37real selectors; отсутствующие17/18/22/28/30/31/33/34/43/45
+synthetic. Decode→encode realbytes и independentPython semantic serialization
+совпали.47selectorfixture1069prefixes отвергнуты атомарно; zero/trailer,
+unknown/count/encodingbounds,semantic edits/maxWORDstring прошли. Nativeexit0.
+Generic DataTable/ko-kr/Tutorial.scp несовместим с reader:offset1215/request8365/
+size4742; происхождение неизвестно, targetboardformatter не генерирует егоимя.
+Audit хранит отдельную запись, native отвергает без изменения документа.
+19functionranges/10processor RTTI/prefixes b/c/a,suffixes w/r/f/s equalbothpins.
+Target RVA2AD30 loader,2A340 recordreader,1F1050 string,A5EC0 boardselection.
+OwnedIDA c257ee18,b0309dad closed/save. Rawignored artifacts/client455-tutorial/
+scripts-reference.json, qbi-asm.json(full700instructions),script-selection.json,
+methods-full.json; initial reference.json export has some truncated functions,
+use methods-full for saved complete Frame/Input/camera-sequence/board functions.
+Standalone lib4522a59b...; nativePEc3243ee3.../entryBB30. NormalPE/libraries056
+unchanged; no broad unchanged native suites rerun. Current SCP gatePARTIAL.
+Research/client455-tutorial-scripts.md and inventory/client455-tutorial-scripts-*
+contain evidence. Next058: scheduler/quest-state/CQBI processors, board/briefing,
+then Avatar/scene/client-localmessages andjoint4stage. All commands must be
+implemented before acceptance; wire parsing alone is not working Tutorial.
+M6/M6F/M7/M9OPEN. No server/inputEXE execution.
+
+## Предыдущий перенос — camera056
+
 Camera056: ordinary CAniCamera::LoadAniCamera/Play now455,basederivedengine
 5thoverlay anicamera.cpp;noheaderABI mix,classsize56/ownedprivate80camera
 record plus typedFOVdocument registry;targetprivatecamera88. Engine033source/

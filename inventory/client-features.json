@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-SCRIPTS-057",
+      "status": "partial",
+      "description": "Source-owned SCP47 selector reader/writer; typed common/message fields and lossless fixed records; not yet ordinary Tutorial integration",
+      "reference": [{"rva":"0x2ad30","role":"SCP loader"},{"rva":"0x2a340","role":"47selector records"},{"rva":"0x1f1050","role":"WORD string"},{"rva":"0xa5ec0","role":"board filename selection"}],
+      "implementation": ["scripts/native/client455_tutorial_script.h","scripts/native/client455_tutorial_script.cpp"],
+      "verification": "Own x86 library/nativeexit0;99real files/812quests/39864instructions lossless+independent Python semantic equality;47synthetic selectors/atomic bounds/semantic edits/maximum WORD string",
+      "evidence": ["inventory/client455-tutorial-scripts-reference.json","inventory/client455-tutorial-scripts-native.json","inventory/client455-tutorial-scripts-checkpoint.json","research/client455-tutorial-scripts.md"],
+      "gaps": ["CQBI execution/quest scheduling/CTutorialBoard/CGUIBriefingWindow and actual Avatar/Tutorial integration","Fixed fields beyond common type/id not yet all semantically named","Unselected ko-kr/Tutorial.scp incompatible; provenance/runtime use unknown","Malformed atomic rejection differs from unchecked original state;OOM/error domains not certified","Full scene/4stage/real authentication/gameplay/M6F/M7/M9"]
+    },
+    {
       "id":"CLIENT455-CAMERA-056",
       "status":"partial",
       "description":"Ordinary CAniCamera1.2/1.3 loader,typed materialization,FOVscale and playback/loop/reverse/stop;explicitrelease",

@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-06 — Tutorial-scripts057. Restored a source-owned47-selector SCP reader
+and writer. All99 race/class files roundtrip losslessly; named fields match an
+independent parser. Synthetic missing selectors and bounded failures pass.
+Generic ko-kr/Tutorial.scp recorded as incompatible/unselected, not relabelled.
+Command execution/board/ordinary Tutorial remain open; production PE unchanged.
+[Evidence](research/client455-tutorial-scripts.md).
+
 2026-11-06 — Camera056. Ordinary CAniCamera nowreads1.2/1.3 typedpayloads and
 preserves confirmed455playback/FOV quirks. Fourreal1.2CAM plus synthetic1.3
 roundtrip/materialize/play/GPUprojection/release pass,naturalexit0. Source033

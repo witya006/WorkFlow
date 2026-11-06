@@ -1,5 +1,12 @@
 # Полнота восстановления RF_Online.bin
 
+Участок057: принят bounded wire reader47селекторов SCP, lossless99realfiles
+и семантическая сверка именованных полей. Эта самостоятельная библиотека пока
+не подключена к обычному Tutorial. Исполнение команд, CTutorialBoard, Avatar,
+scene иfourstage остаются обязательными открытыми критериями. Неподходящий
+ko-kr/Tutorial.scp учтён отдельно. [Доказательства](../research/client455-tutorial-scripts.md).
+M6/M6F/M7/M9 открыты.
+
 Участок056: ordinary CAniCamera1.2/1.3/read/play/FOVscale/release принят в
 описанном bounded домене.4real1.2CAM и synthetic1.3 проверены с настоящим
 D3D9 projection. Fullcamera matrix/FOV-updater consumer8D5FF0, fullTutorial/

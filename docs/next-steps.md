@@ -7,6 +7,19 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+Участок057 восстановил данные обучения: SCP47 reader/writer, typed message
+fields, fixed record preservation.99realfiles/812quests/39864instructions,
+37real selectors+10synthetic, независимая семантическая и byte equality сверка
+прошли. Код собран отдельно; production PE56905e68... не менялась. Новый reader
+ещё не подключён к обычному Tutorial; старый QUEST_INFO28 типов несовместим.
+Generic ko-kr/Tutorial.scp отклонён/учтён, его совместимость неизвестна.
+Далее058 — scheduler/состояния заданий иCQBI processors, CTutorialBoard/
+CGUIBriefingWindow, затем Avatar/сцена/Tutorial messages/fourstage. Не пропускать
+неизвестные команды и не направлять новые коды в старый ProcessQuest.
+[Доказательства](../research/client455-tutorial-scripts.md). M6/M6F/M7/M9 открыты.
+
+Предыдущий результат:
+
 Участок056: ordinary CAniCamera loader1.2/1.3/play/FOVscale/release восстановлен.
 FullownPE56905e68.../entry14ACA0/0unresolved,existingCreate1. Derivedengine
 91bdf0c7.../67units/5overlays;033 preserved. Далее057 — Tutorial scene/Avatar/

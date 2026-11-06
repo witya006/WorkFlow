@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение06.11,tutorial-scripts057: новых установок нет.19диапазонов функций,
+CQBI RTTI и selector strings совпали между pins. Own x86 SCP library собрана,
+99realfiles/47synthetic selectors/semantic fields/bounds проверены, naturalexit0.
+IDA c257ee18/b0309dad закрыты/save. Production PE не менялась; Tutorial runtime
+не принят. [Доказательства](../research/client455-tutorial-scripts.md).
+
 Дополнение06.11,camera056: установок нет.12ranges equalbothpins;IDAc449e061
 closed/save. Derivedengine67units/5overlays91bdf0c7...;033unchanged. FullownPE
 56905e68.../entry14ACA0,182client/20kernel/23facade,0unresolved. RealCAM1.2/
