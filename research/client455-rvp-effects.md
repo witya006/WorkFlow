@@ -23,7 +23,7 @@ Key contracts:
 |---|---|
 | `90D4C0` / `50D4C0` | Second model particle/entity draw pass |
 | `7BD560` / `3BD560` | Lazy particle load and six-instance cloning |
-| `8D6900` / `4D6900` | Shared FX creation/reference increment |
+| `8D6900` / `4D6900` | Shared FX cache destruction (signature corrected082) |
 | `8D8340` / `4D8340` | Reference decrement and deferred destruction |
 | `8DAE60` / `4DAE60` | Particle constructor, 1296 bytes |
 | `BF8148` / `7F8148` | Entity Y/Z matrix, pinned 64 bytes |
@@ -31,6 +31,11 @@ Key contracts:
 The scroll multiplier stored as a double is exactly the promoted float
 `0.0005000000237487257`, followed by double30. It must not be replaced by the
 nearest double0.0005. The timer persists outside the cache lifetime.
+
+Correction082: the earlier acquire label for8D6900 was wrong; it calls release
+and vector destructors. Create8D69E0 allocates via8D6870 and increments the
+reference count at8D6C57. This corrects the address attribution, not the measured
+deferred release behavior implemented by the source adapter.
 
 ## Implemented source and boundaries
 

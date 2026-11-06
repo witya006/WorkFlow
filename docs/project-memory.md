@@ -23,6 +23,39 @@
 
 ## Последний проверенный результат
 
+082: ordinaryRVP immediate audio иtimer_rate подключены креальномуMiles/clock.
+20-byteIMrecords,128+32growth,occupiedнеочищаетсяindividualrelease;sourceoverlay
+r3sound.cpp используетactualexistingdigitaldriver. MP3 musicgate/rawloopflag/
+metadata mismatch/globalvolumeonlyonPlay/fixedpan0.5 verified. Ambientиспользует
+предыдущуюматрицудоflag16;start/update/stoplatch работаетприpaused/gatedtracks.
+WaveпредпочитаетCAMdummy,actorfallbackисключаетпоследнего;Prepareдвойной. Timer11
+camera-dependent:flag4 consumes/skips;ExtractдоPlayвидитпредыдущийframe.
+
+В44stockRVP:0ambient/210events/2existingWAV. TARGET8BEEC0 non-MP3branch НЕсоздаёт
+handle,такчтоRVPWAVчерез8BF070непроигрывается. Не заменять“исправленным”WAVloader;
+это не утверждениеобобычномPlayWave/всёмзвукеигры. RealMP3fixtureдляпроверкиbackend
+изSnd. Nativework/m9/59e544a3/rvp-audio-001:exit0/warn0/decoder165ms,129boundary,
+2ambientstarts/2stops/4events,actualtimeScale.5,Dmalloc785169balance. Никакого
+fakeaudiosink;PCMoutputнеписался,fullaudibleparityнеутверждать.
+
+IDA f1d662d0savedclosed/list0;18equalranges/1665actualasm/770Createpseudolines.
+CORRECTION081:8D6900 — cache destructor,8D6870 ctor;Create8D69E0increment8D6C57.
+Referencefact/researchtable/registrylabelисправлены. Runtime lifetimeнеизменён.
+Engine9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769,
+67objects/12overlays/baseline033preserved. PE7489e8c7cc27765d58ff43a6736179ef682ac2fbea72606b65de8981df1c2552,
+entry1512B0/2094592bytes/182-20-40TU/0unresolved;freshstartup/contracts/exactCreate1.
+Freshactor269ticks/185draws/148particle/6entity;3maps364/330/262ticks,15GPUviews.
+Old081/080gateshistorical;currentgateclient455-rvp-audio-checkpoint.json PARTIAL.
+
+Далее083 — actualCGP_Tutorial lifecycle/frame/input/Avatar/QBI/follow/localhandlers/
+feedback/board47 иfourstage/Login. ТриTutorialRVP используют уже проверенныеcamera/
+fade;неоткладыватьинтеграциюрадиunusedmagic/trace. Magic/throw/collision/shadow/trace/
+screen,advancedFX/globalChef/materiallight,fullMilesinit/PlayWave/streaming/audio
+failure иFP/scanner/fullgame остаютсяобязательнымиM6/M9,приоритетнеотмена.
+Подробности research/client455-rvp-audio.md. M6/M6F/M7/M9 OPEN.
+
+Предыдущий результат:
+
 081: настоящий отдельный RVP particle/entity DrawEffectMat и sharedFX
 Create/refcount/deferred Release подключены к обычному клиенту. EFF-кэш отдельно
 от прочих владельцев;17ChefRPK разрешают283/300particle и61/64entity definitions,

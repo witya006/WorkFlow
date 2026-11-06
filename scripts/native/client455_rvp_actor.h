@@ -19,6 +19,7 @@ struct RF455RvpActorRuntime {
     float low[3]={},high[3]={},matrix[4][4]={};
     bool visible=false;
     unsigned poseUpdates=0,draws=0,animationSelections=0;
+    unsigned waveHandle=0;bool wavePlaying=false;
     std::vector<RF455RvpPalette> palette;
 };
 void RF455_LoadRvpActor(RF455RvpActorRuntime&,const RF455RvpActor&,ChInterface&,

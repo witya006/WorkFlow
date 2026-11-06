@@ -24,7 +24,7 @@ def main():
     header=header.replace(b'#include "c_vector.h"\r\n',b'#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders).encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp']:
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp']:
         folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
@@ -83,6 +83,12 @@ def main():
             raw=raw[:first]+body[:at]+bars+body[at:]+raw[last:]
         elif filename=='r3particle.cpp':raw=particle_source(raw)
         elif filename=='entity.cpp':raw=entity_source(raw)
+        elif filename=='r3sound.cpp':
+            marker=b'static _IM_WAVE_LIST *stIM_WaveList=NULL;'
+            if raw.count(marker)!=1:raise ValueError('Immediate sound table source changed')
+            start=raw.rfind(b'typedef struct{',0,raw.index(marker))
+            if start<0:raise ValueError('Immediate sound record boundary missing')
+            raw=raw[:start]+(WS/'scripts/native/client455_sound_im.inc').read_bytes()+b'\r\n#endif\r\n'
         else:
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_camera.h').as_posix()+'"\n#include <utility>\n').encode()+raw
@@ -129,5 +135,6 @@ def main():
     report['particle_headers']=particleHeaders
     report['particle_header_overlay']={'file':ownedParticleHeader.relative_to(WS).as_posix(),'sha256':sha(ownedParticleHeader),'extra_consumer':'scripts/native/client455_weather.cpp'}
     report['particle_port']={'script':{'file':'scripts/client455_particle_port.py','sha256':sha(WS/'scripts/client455_particle_port.py')}}
+    report['immediate_sound']={name:sha(WS/'scripts/native'/name) for name in ['client455_sound_im.h','client455_sound_im.inc']}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

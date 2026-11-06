@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+082: реальные RVP immediateMiles/ambient/event/timer_rate подключены иbounded
+проверены;3maps/actorFX/15GPUviews/exactnewPE/Create1passed. StockWAVcompiledbranch
+не создаёт handle,что сохранено;fullsound acceptance ещёOPEN. Далее083 — actual
+Tutorial/Avatar/QBI/fourstage/Loginintegration;остальныеFX/RVP/audio остаютсявM6.
+M6/M6F/M7/M9 OPEN,процентвсегоклиентаещёнеизмерен.
+[Доказательства](../research/client455-rvp-audio.md).
+
+Предыдущий результат:
+
 081: подключены базовые particle/entity RVP passes иsharedFX deferred lifecycle.
 Stockclip269ticks/148particle/6entitydraws,15reviewedframes,3карты иноваяPE/Create1
 прошли. Исправлен ABI weather helper1148/208->1296/212 ипроверены actual allocations.
@@ -574,9 +583,12 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/082: ambient/event audio иостальные RVP magic/trace/screen/timer/collision/shadow providers; advancedparticle/entitymath/globalChef lifecycle/material-lightreset; CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/083: actualCGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
+   Затемостальные RVP magic/throw/trace/screen/collision/shadow providers,
+   advancedparticle/entitymath/globalChef lifecycle/material-lightreset иfullaudio;
+   ихприоритетпослеTutorialintegration неотменяетполнотуM6/M9.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать
    screen/window lifecycle,capture,currentstage guard,device-reset/resources,
    otherlayers/IME/basevirtualsize/wrappers,не объявляя весьGUI соответствующим455.

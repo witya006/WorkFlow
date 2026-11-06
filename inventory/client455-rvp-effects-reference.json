@@ -332,13 +332,13 @@
       "sha256": "08e67c5f59fa6ce2b31634e73261553db4b7175b30f6b4629868c0da12c9cee8"
     }
   ],
-  "script_sha256": "50687b454208d85edd564bdb6f5e949d9acdba0cc03cfe688908a8086b0b49bd",
+  "script_sha256": "97a1b009ab7bc4d9ce5b34cdfc9b4d1c1eb745815899d860c9e2c1a12771e1f4",
   "facts": [
     "90D4C0 is a second model FX pass after geometry; three particle IDs at effect+220/236/252 and entity ID at+268; mesh matrix+4830 and EFF pointer+5455",
     "Particle slots lazily load once, clone six1296-byte particles and select cycle modulo6; attempted load failure is sticky",
     "Loop precedes new rotation/create position; a false Loop returns from the entire model pass; RGB is forced white preserving alpha",
     "Entity lazy load restores textures; inverse pinned YZ matrix precedes model/world matrix; scrolling timer persists outside cache lifetime",
-    "8D6900 creates shared cache if absent and increments refs;8D8340 decrements positive refs without destruction, then a later zero-ref release frees it even without level",
+    "Correction082:8D6900 is the cache destructor,not acquire;Create8D69E0 allocates via8D6870 and increments refs at8D6C57;8D8340 decrements positive refs,then a later zero-ref release frees it even without level",
     "Cache reads entity.ini,particle.ini,unit.ini; particle duplicate registration overwrites metadata,entity duplicate registration keeps first; ABSAXIS scans float bits into DWORD",
     "CParticle size1296:elapsed140/live144/curve340/special472/flag1224/createpos1256/combine1268/light1292; ctor zeroes1296 then gravity-15/light-1",
     "CEntity size212:ctor also clears object152,new expanded vertex count168,frame208; legacy sizes1148/208 cannot be used unchanged"

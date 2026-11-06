@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "14af5e53fd4f639d5afa42e81d38ccb041bd14706d55bfa1b1c4c51763bd5c22",
+  "library_sha256": "9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -345,6 +345,12 @@
       "sha256": "07f2320076c7f4665614934b8ca381d548d475c8b70dd46ff25e9733f651e85b",
       "original": "work/client455-port/source/R3Engine/1stclass/entity.cpp",
       "original_sha256": "8e93ec7ea4c249a4a255ec40ac72b6ab3b5890927f350a0c1c38fba1881cd645"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3sound.cpp",
+      "sha256": "d6795a6fc86f66bc4d77b34c104e3f369f8004802afe353b83b045d30e326d29",
+      "original": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
+      "original_sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
     }
   ],
   "baseline_library": {
@@ -353,13 +359,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "eb36440fe574a1d771080cd247eabcf2b0750948025e3d641e2af31b0580d40a"
+    "sha256": "9c8970b665d339b10203f8d130f3977f3ad8e8b5cba5a0e333bfe98e8b837323"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "f563aceffde063d4fb3d2a3312b48704961799eb408dab8b0f2d7625be876f62"
+    "sha256": "f63536c3f2d19c94c6c03d93dbdc497ff94f0747c889aa40e14c5aacdc520c70"
   },
-  "script_sha256": "adb6539a96ece05b196becef118e8938a2179a50d81a763fcd7c5ab1879a9e85",
+  "script_sha256": "0bf4a3fab03bb58df794f6671ff8992f4c4195afcb019c616dcaf2e3df3c1ff7",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -386,7 +392,7 @@
     "client455_clear_frame.inc": "a84e9a12c98eba4935f3ebc73ffa08d287416de432334dd9aacdaaf4fd8b9fb8"
   },
   "rvp_runtime": {
-    "client455_rvp_runtime.h": "1dd19977f7478f6a1fe62d1e8400ddfd9e318faee55b9e071c6d13d328055261",
+    "client455_rvp_runtime.h": "a0c387ef767c32400e44da48c38f75a419a88fddd7badc8411846745c047de5e",
     "client455_rvp_engine.inc": "7e74d56fc08d567d3ace4044307f355042be6dd514f2ed4ab4fa86cf1b916b7b"
   },
   "camera_header_overlay": {
@@ -419,5 +425,9 @@
       "file": "scripts/client455_particle_port.py",
       "sha256": "90646cae5ef9be3d961e0a13c1970256491bc1c45bea8d35607a2aa333e0d798"
     }
+  },
+  "immediate_sound": {
+    "client455_sound_im.h": "08914689430454ee74ba0a9f7731891389072207e59990a159f305e7a760190e",
+    "client455_sound_im.inc": "6abe65db406fa8e51502318c91d0bcbc2c2b93b000132b2075b35355a403ed78"
   }
 }

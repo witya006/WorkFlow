@@ -10,6 +10,7 @@ struct RF455RvpRuntimeView {
     const char* limitation;
     std::size_t actors;
     std::uint32_t visibleActors,poseUpdates,actorDraws;
+    std::uint32_t waveEvents,ambientStarts,ambientStops;
 };
 struct RF455RvpActorRuntime;
 const RF455RvpActorRuntime* RF455_RvpActorState(std::size_t);

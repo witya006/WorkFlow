@@ -39,7 +39,7 @@ def main():
             'Particle slots lazily load once, clone six1296-byte particles and select cycle modulo6; attempted load failure is sticky',
             'Loop precedes new rotation/create position; a false Loop returns from the entire model pass; RGB is forced white preserving alpha',
             'Entity lazy load restores textures; inverse pinned YZ matrix precedes model/world matrix; scrolling timer persists outside cache lifetime',
-            '8D6900 creates shared cache if absent and increments refs;8D8340 decrements positive refs without destruction, then a later zero-ref release frees it even without level',
+            'Correction082:8D6900 is the cache destructor,not acquire;Create8D69E0 allocates via8D6870 and increments refs at8D6C57;8D8340 decrements positive refs,then a later zero-ref release frees it even without level',
             'Cache reads entity.ini,particle.ini,unit.ini; particle duplicate registration overwrites metadata,entity duplicate registration keeps first; ABSAXIS scans float bits into DWORD',
             'CParticle size1296:elapsed140/live144/curve340/special472/flag1224/createpos1256/combine1268/light1292; ctor zeroes1296 then gravity-15/light-1',
             'CEntity size212:ctor also clears object152,new expanded vertex count168,frame208; legacy sizes1148/208 cannot be used unchanged'],

@@ -3,6 +3,9 @@
 #include "client455_rvp.h"
 #include "client455_rvp_actor.h"
 #include "client455_rvp_effects.h"
+#include "client455_rvp_audio.h"
+#include "client455_loop_clock.h"
+#include "r3sound.h"
 #include "client455_camera.h"
 #include "client455_movie_state.h"
 #include "client455_fullscreen_effect.h"
@@ -17,6 +20,7 @@
 #include <utility>
 
 namespace {
+struct WaveBinding {unsigned id=0,dummy=0xffffffffu,actor=0xffffffffu;};
 struct Movie {
     CLevel* level=nullptr;
     bool loaded=false,playing=false,paused=false;
@@ -26,8 +30,10 @@ struct Movie {
     RF455CharacterManager* body=nullptr;
     RF455RvpEffects* effects=nullptr;
     std::vector<RF455RvpActorRuntime> actors;
+    std::vector<WaveBinding> waves;
     std::size_t cursor=0;
     unsigned cameras=0,fadeIns=0,fadeOuts=0;
+    unsigned waveEvents=0,ambientStarts=0,ambientStops=0;
     float blur=0;
     std::string limitation;
     CAniCamera* camera(){return level?&level->mAutoAniCam:nullptr;}
@@ -50,6 +56,13 @@ void extract(Movie& value,float frame) {
                 SetFadeOut(0,float(double(track.value)/30),1);++value.fadeOuts;break;
             case RF455RvpKind::Quake:R3EnvironmentQuake(track.first,track.second);break;
             case RF455RvpKind::Blur:value.blur=track.first;break;
+            case RF455RvpKind::TimerRate:RF455_SetEngineLoopTimeScale(track.first);break;
+            case RF455RvpKind::Wave: {
+                const auto& wave=value.waves.at(value.cursor);float matrix[4][4];
+                if(wave.actor==0xffffffffu)value.camera()->GetDummyMatrix(matrix,wave.dummy,value.camera()->GetNowFrame());
+                else std::memcpy(matrix,value.actors.at(wave.actor).matrix,sizeof(matrix));
+                RF455_PlayRvpWave(wave.id,matrix[3],track.first);++value.waveEvents;break;
+            }
             case RF455RvpKind::Animation:
                 RF455_RvpActorAnimation(value.actors.at(track.actor),value.data.actors.at(track.actor),*value.renderer,*value.animations,track.value);break;
             case RF455RvpKind::CharacterFadeIn: {
@@ -79,7 +92,7 @@ RF455RvpRuntimeView RF455_RvpView() {
     unsigned visible=0,poses=0,draws=0;for(const auto& actor:value.actors){visible+=actor.visible;poses+=actor.poseUpdates;draws+=actor.draws;}
     return {value.loaded,camera,value.playing,value.paused,value.data.tracks.size(),value.cursor,
         value.cameras,value.fadeIns,value.fadeOuts,camera?value.camera()->GetNowFrame():0,
-        value.blur,value.limitation.c_str(),value.actors.size(),visible,poses,draws};
+        value.blur,value.limitation.c_str(),value.actors.size(),visible,poses,draws,value.waveEvents,value.ambientStarts,value.ambientStops};
 }
 const RF455RvpActorRuntime* RF455_RvpActorState(std::size_t index){const auto& actors=movie().actors;return index<actors.size()?&actors[index]:nullptr;}
 void RF455_RvpCreate(char* path,CLevel* level) {
@@ -87,6 +100,7 @@ void RF455_RvpCreate(char* path,CLevel* level) {
     if(value.level&&value.level!=level)throw std::logic_error("RVP previous owner was not released");
     value.level=level;value.loaded=false;value.limitation.clear();
     value.cameras=value.fadeIns=value.fadeOuts=0;value.data={};value.cursor=0;
+    value.waves.clear();value.waveEvents=value.ambientStarts=value.ambientStops=0;
     if(!path||!level)return;
     std::string cameraPath(path);const auto dot=cameraPath.find_last_of('.');
     if(dot!=std::string::npos)cameraPath.resize(dot);cameraPath+=".cam";
@@ -96,11 +110,12 @@ void RF455_RvpCreate(char* path,CLevel* level) {
     // Mandatory unfinished providers are refused before loaded=true. There is
     // no fake animation/effect/audio callback in this production path.
     if(data.flags&8){value.limitation="RVP screen provider remains open";return;}
-    for(const auto& actor:data.actors)if((actor.flags&(2|4|8))||!actor.wave.empty()||!actor.swordTrace.empty()){
-        value.limitation="RVP magic/collision/shadow/ambient-audio/trace providers remain open";return;
+    for(const auto& actor:data.actors)if((actor.flags&(2|4|8))||!actor.swordTrace.empty()){
+        value.limitation="RVP magic/collision/shadow/trace providers remain open";return;
     }
     RF455RvpDocument bound;bound.flags=data.flags;bound.totalFrame=data.totalFrame;bound.actors=std::move(data.actors);
-    for(auto track:data.tracks) {
+    std::vector<WaveBinding> waves;
+    for(auto track:data.tracks) {WaveBinding wave;
         if(track.kind==RF455RvpKind::Camera) {
             const auto name=track.reference.empty()?std::string():track.reference.substr(1);
             DWORD found=0xffffffffu;
@@ -110,16 +125,27 @@ void RF455_RvpCreate(char* path,CLevel* level) {
             }
             if(found==0xffffffffu){Warning("RVP camera not found",&track.reference[0]);continue;}
             track.value=found;
-        } else if(track.kind!=RF455RvpKind::FadeIn&&track.kind!=RF455RvpKind::FadeOut&&
+        } else if(track.kind==RF455RvpKind::Wave){
+            const auto name=track.reference.empty()?std::string():track.reference.substr(1);
+            wave.dummy=value.camera()->GetDummyID(const_cast<char*>(name.c_str()),FALSE);
+            if(wave.dummy==0xffffffffu){
+                //The original actor fallback intentionally excludes the last actor.
+                for(unsigned i=0;i+1<bound.actors.size();++i)if(!(bound.actors[i].flags&2)&&bound.actors[i].name==track.reference){wave.actor=i;break;}
+                if(wave.actor==0xffffffffu){Warning("RVP wave target not found",const_cast<char*>(track.reference.c_str()));continue;}
+            }
+        } else if(track.kind!=RF455RvpKind::TimerRate&&track.kind!=RF455RvpKind::FadeIn&&track.kind!=RF455RvpKind::FadeOut&&
                   track.kind!=RF455RvpKind::Quake&&track.kind!=RF455RvpKind::Blur&&
                   track.kind!=RF455RvpKind::Animation&&track.kind!=RF455RvpKind::CharacterFadeIn&&track.kind!=RF455RvpKind::CharacterFadeOut) {
             value.limitation="RVP Character/effect/audio/timer-rate provider remains open";return;
         }
-        bound.tracks.push_back(std::move(track));
+        bound.tracks.push_back(std::move(track));waves.push_back(wave);
     }
     std::unique_ptr<ChInterface> renderer(new ChInterface);renderer->InitCharacter(GetD3dDevice());
     value.renderer=std::move(renderer);
     value.data=std::move(bound);value.actors.clear();value.actors.resize(value.data.actors.size());
+    value.waves=std::move(waves);
+    for(unsigned i=0;i<value.actors.size();++i)if(!value.data.actors[i].wave.empty())value.actors[i].waveHandle=IM_LoadWave(const_cast<char*>(value.data.actors[i].wave.c_str()),1);
+    for(unsigned i=0;i<value.data.tracks.size();++i)if(value.data.tracks[i].kind==RF455RvpKind::Wave)value.waves[i].id=IM_LoadWave(const_cast<char*>(value.data.tracks[i].resource.c_str()),0);
     value.animations.reset(new AnimationManager);value.body=value.renderer->CreatePart455("BODY");
     value.effects=&RF455_AcquireRvpEffects();
     if(!value.actors.empty()) {
@@ -130,7 +156,7 @@ void RF455_RvpCreate(char* path,CLevel* level) {
             if(actor.dummy==0xffffffffu){value.limitation="RVP actor dummy binding failed;failure domain unaccepted";value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;return;}
             RF455_LoadRvpActor(actor,source,*value.renderer,value.body,*value.animations);
         }
-        value.limitation="RVP actor and basic particle/entity passes active;advanced FX/audio and global resource lifetime parity remain open";
+        value.limitation="RVP actor/basic FX/immediate audio active;advanced FX and global resource lifetime parity remain open";
     }
     RF455_AddMovieFlags(value.data.flags);
     if(value.data.flags&1)GetR3State()->mWideOn=TRUE;
@@ -146,7 +172,15 @@ void RF455_RvpStart(bool beginning) {
 }
 void RF455_RvpPause(bool paused){movie().paused=paused;}
 void RF455_RvpFrameMove() {
-    auto& value=movie();if(!ready(value)||!value.loaded||(RF455_GetMovieState()&16))return;
+    auto& value=movie();if(!ready(value)||!value.loaded)return;
+    //Ambient sound uses the previous actor matrix, even while flag16 suspends tracks/camera.
+    for(unsigned i=0;i<value.actors.size();++i){auto& actor=value.actors[i];if(!actor.waveHandle)continue;
+        const float volume=RF455_RvpVolume(actor.matrix[3],value.data.actors[i].waveDistance),pan=RF455_RvpPan(actor.matrix[3]);
+        if(volume>0){if(!actor.wavePlaying){actor.wavePlaying=true;IM_SetLoopCntWave(actor.waveHandle,0);IM_PlayWave(actor.waveHandle,volume,pan);++value.ambientStarts;}
+            else IM_SetWaveVolumeAndPan(actor.waveHandle,volume,pan);}
+        else if(actor.wavePlaying){actor.wavePlaying=false;IM_StopWave(actor.waveHandle);++value.ambientStops;}
+    }
+    if(RF455_GetMovieState()&16)return;
     const float frame=float(double(value.camera()->GetNowFrame())*30);
     extract(value,frame);float matrix[4][4];bool playing=false;
     if(value.paused||!value.playing) {
@@ -186,6 +220,6 @@ void RF455_RvpRelease() {
     // that failure-domain divergence is tracked, not accepted as full parity.
     value.level=nullptr;
     if(!value.loaded)return;
-    value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;value.effects=nullptr;value.data={};value.cursor=0;value.blur=0;
+    value.actors.clear();value.renderer.reset();value.animations.reset();value.body=nullptr;value.effects=nullptr;IM_ReleaseAllWaves();value.waves.clear();value.data={};value.cursor=0;value.blur=0;
     RF455_RemoveMovieFlags(0xffffffffu);
 }

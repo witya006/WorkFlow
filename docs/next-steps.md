@@ -7,6 +7,22 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+082: настоящие immediateMiles/RVP audio иtimer_rate перенесены вboundedдомене.
+RealMP3decoder/loop/volume/ownership,2ambientstarts/2stops/4events/129boundary,
+3maps/actorFX/15reviewedframes/exactPE/Create1passed. Stock210WAVevents регистрируют
+nohandle в455compiledbranch;невыдаватьэто заотсутствиефайлов иливесьзвукклиента.
+Полные audio/FX/Tutorial/game/M9 OPEN. Gate082 PARTIAL.
+[Доказательства](../research/client455-rvp-audio.md).
+
+083: actualCGP_Tutorial Load/Create/Destroy/Frame/Input,realAvatar/QBI/follow/
+localhandlers/feedback/board47 иfour-stage/Login transitions. ТриTutorialRVP уже
+используютработающиеcamera/fade;unusedmagic/traceнеявляютсяусловиемначалаэтой
+интеграции. СохранитьобязательнуюочередьостальныхRVP/advancedFX/globalChef/
+material-lightreset иполногоMiles/PlayWave/streaming/failure/numericparity.
+Не забыть:8D6900cacheDESTRUCTOR,Create8D69E0increment8D6C57;081labelисправлен.
+
+Предыдущий результат:
+
 081: базовые RVP particle/entity passes и sharedFX deferred lifetime работают.
 Полный stockclip269ticks/148particle/6isolatedentitydraws,15reviewedframes,
 3maps/exactPE/Create1passed. Coraheap corruption из-за старых weather allocations

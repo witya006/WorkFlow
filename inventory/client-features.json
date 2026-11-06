@@ -6,10 +6,20 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RVP-AUDIO-082",
+      "status": "partial",
+      "description": "Actual Miles immediate-wave table and ordinary RVP ambient/event/timer-rate route;compiled WAV no-handle behavior preserved;full audio/game open",
+      "reference": [{"rva":"0x4beec0","role":"20-byte immediate-wave registration"},{"rva":"0x4bde00","role":"Miles MP3 load"},{"rva":"0x4bf070","role":"play;caller pan ignored"},{"rva":"0x4bda50","role":"raw volume fixedpan0.5"},{"rva":"0x4d5ff0","role":"ambient before flag16"},{"rva":"0x4b3cb0","role":"actual timer_rate setter"}],
+      "implementation": ["scripts/native/client455_sound_im.h","scripts/native/client455_sound_im.inc","scripts/native/client455_rvp_audio.h","scripts/native/client455_rvp_audio.cpp","scripts/native/client455_rvp_runtime.cpp","scripts/build_client455_engine_startup.py","scripts/prepare_client455_normal.py"],
+      "verification": "18equalranges/1665actualasm/770Createpseudolines. Real Miles MP3 decoder clock/volume/loop;129capacity boundary;2ambientstarts/2stops/4events/actualtimeScale.5;Dmalloc785169balanced/warn0/exit0. Fresh3maps/actorFX/15GPUviews/exactPE/Create1. Stock44RVP/210events/2existingWAV compile to no-handle registration.",
+      "evidence": ["inventory/client455-rvp-audio-reference.json","inventory/client455-rvp-audio-inputs.json","inventory/client455-rvp-audio-native.json","inventory/client455-rvp-audio-checkpoint.json","research/client455-rvp-audio.md"],
+      "gaps": ["No reference runtime or output PCM capture;not full audible-output equivalence","Full Miles init/3D provider/PlayWave/music/streaming/device lifecycle/failure/OOM/invalidIDs and full FP/scanner domains remain open","Magic/throw/collision/shadow/trace/screen/advancedFX/globalChef/materiallight and all earlier gaps remain mandatory","ActualTutorial/Avatar/QBI/fourstage/Login/auth/gameplay/IME and M6F/M7/M9 remain open"]
+    },
+    {
       "id": "CLIENT455-RVP-EFFECTS-081",
       "status": "partial",
       "description": "Ordinary basic particle/entity RVP pass, shared FX references/deferred release and coordinated particle/entity ABI;fullFX/audio/game open",
-      "reference": [{"rva":"0x50d4c0","role":"particle/entity pass"},{"rva":"0x3bd560","role":"lazy six-particle load"},{"rva":"0x4d6900","role":"shared acquire"},{"rva":"0x4d8340","role":"deferred release"},{"rva":"0x4dae60","role":"1296-byte particle constructor"}],
+      "reference": [{"rva":"0x50d4c0","role":"particle/entity pass"},{"rva":"0x3bd560","role":"lazy six-particle load"},{"rva":"0x4d6900","role":"cache destructor;acquire label corrected082"},{"rva":"0x4d8340","role":"deferred release"},{"rva":"0x4dae60","role":"1296-byte particle constructor"}],
       "implementation": ["scripts/native/client455_rvp_effects.h","scripts/native/client455_rvp_effects.cpp","scripts/native/client455_rvp_runtime.cpp","scripts/native/client455_rvp_actor.cpp","scripts/client455_particle_port.py","scripts/build_client455_engine_startup.py","scripts/prepare_client455_normal.py"],
       "verification": "18equalranges/2960actualasm;owned1296/212 layout and fullparticle ctor oracle. Stock269ticks/148particle draws;isolated realENTITY1 sixdraws/50pixels;15reviewedframes/3camera maps/exactPE/Create1. Weather ABI heapcorruption fixed and actual old/new allocation instructions verified1148/208->1296/212. Exit0/warn0/Dmallocbalanced.",
       "evidence": ["inventory/client455-rvp-effects-reference.json","inventory/client455-particle-inputs.json","inventory/client455-particle-layout.json","inventory/client455-particle-abi-fix.json","inventory/client455-rvp-effects-checkpoint.json","research/client455-rvp-effects.md"],

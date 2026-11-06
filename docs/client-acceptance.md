@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+082: actualMiles immediateaudio/RVP ambient/event/timer_rate работаютвпроверенном
+домене. RealMP3decoder/status/loop/volume,129boundary,2ambientstarts/2stops/4events,
+3maps/actorFX/15viewedframes/exactPE/Create1passed. StockRVP2WAV/210events имеют
+nohandle вcompiled455branch:поведениеперенесено,неэкстраполироватьнаPlayWave/весь
+звук. FullMilesinit/3D/PlayWave/music/streaming/audiooutputPCM/failures/x87/scanner
+ещёOPEN. 8D6900label081corrected:cacheDESTRUCTOR. ПолныйTutorial/Avatar/QBI/fourstage/
+Login/auth/gameplay/FX ивсе прежниеразрывы обязательны. Gate082PARTIAL;M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-rvp-audio.md).
+
 081: базовый отдельный RVP particle/entity pass иsharedFX deferred lifetime
 подключены;269stockticks/148particle/6isolatedentitydraws,15reviewedframes,
 3maps/exactPE/Create1passed. CParticle/CEntity1296/212 иactual weather allocations

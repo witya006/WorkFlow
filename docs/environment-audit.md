@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, rvp-audio082: новых установок нет. IDAf1d662d0 saved/closed/list0;
+18equalranges/1665actualasm/770Create decompilelines. Actual Miles driver/MP3
+decoder clock/volume/loop и ordinary RVP ambient/event/timer проверены; WAV immediate
+branch в455 подтверждённо не создаёт handle. Nativeexit0/warn0/Dmalloc785169balance.
+Engine9caa283a…/67objects/12overlays,PE7489e8c7…/entry1512B0/182-20-40TU/
+0unresolved/exactCreate1;3maps/actorFX/15reviewedframespassed. 8D6900 — destructor,
+прежняя acquire-подпись081 исправлена. Fullsound/Tutorial/game/M9 OPEN.
+[Доказательства](../research/client455-rvp-audio.md).
+
 Дополнение07.11, rvp-effects081: новых установок нет. IDA2710bd78 сохранена/
 закрыта;18 ranges совпадают между pins,2960 полных asm instructions сохранены.
 Собственные CParticle/CEntity1296/212, полный ctor oracle и базовые RVP FX
