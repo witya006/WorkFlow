@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "4553f4016e40d2803bee9a91661961206ef00b59f2ac395c564dcd311dc6f204",
+    "sha256": "b377d2ac419ff52f5ad61ca22d78231fb90e64aa822dd3206958bc6dee69c082",
     "bytes": 2043904,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x150860",
+    "entry_rva": "0x1508a0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "d19c2959f11109f739124094f3d4b5454be158efe23b74a175baf37b91d0728c",
+  "normal_link_sha256": "eb632f16dd5d82b3becab9795476363ae23b256e11a853b7d74803d2926e27c0",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1423,7 +1423,7 @@
   "source_inputs": [
     {
       "file": "work/client455-port/normal/source/mainapp.cpp",
-      "sha256": "dd3c8635a3a6cea3287270167be9fda21358aa745543338f7ab34712914de388"
+      "sha256": "fddaed2ed043f73c54440cb6fcf2c9b55b4b55e6441b7e0b2993a8ee4d4153e4"
     },
     {
       "file": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
@@ -1435,7 +1435,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
-      "sha256": "8ecb2f7f678fb29ebda8736f3a2b020d81844f1bd401105cb0f0396263ae9c5e"
+      "sha256": "3df7011bad29411b3f112507a33e79ba00f4fdbadca133db2acb4779652f9171"
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3dwrapper.cpp",
@@ -1459,7 +1459,15 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "c2d974739249f0301654899ecb2c2acf934bd64a5323775b65b6cad33533762c"
+      "sha256": "8c1bc5e8ff4a82d37d0215d2400a31e9936a9077bd8de432303f4c416aead127"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/rtmovie.cpp",
+      "sha256": "349696eba1ffaf7ca8e8504f8e94b04406e4d2ee0d05602cf8700d6e9398c1d3"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3util.cpp",
+      "sha256": "71feb9221ac929a23836da435394f87a03066fbfecaf622a9adbacaf2473d939"
     }
   ],
   "normal_winmain_executed": false,
@@ -1468,5 +1476,5 @@
   "M6": "OPEN",
   "M9": "OPEN",
   "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
-  "startup_engine_build_sha256": "5596b45c0b799f06c34b77c21b61b0b4cf2c9ac0b0843874f26696fe0e7c1f49"
+  "startup_engine_build_sha256": "bae9968208d865d2ec5f2098a362d359bcc573b03a5638841eac61ab9889be75"
 }

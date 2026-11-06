@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "2df1e50eafb559452c4c610815e3c9534cc6eb0d1f5186e0c876cd7ab3576592",
+  "library_sha256": "18086e42c69b69913c289dffc33c332055f5c4a720533aac63153bb344604125",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -282,7 +282,7 @@
   "derived_sources": [
     {
       "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
-      "sha256": "8ecb2f7f678fb29ebda8736f3a2b020d81844f1bd401105cb0f0396263ae9c5e",
+      "sha256": "3df7011bad29411b3f112507a33e79ba00f4fdbadca133db2acb4779652f9171",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
       "original_sha256": "c45e62c4668a404ce946b0d3d89cca09fd8ac03d91aa2b705651505f7c1d521b"
     },
@@ -318,9 +318,21 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "c2d974739249f0301654899ecb2c2acf934bd64a5323775b65b6cad33533762c",
+      "sha256": "8c1bc5e8ff4a82d37d0215d2400a31e9936a9077bd8de432303f4c416aead127",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
       "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/rtmovie.cpp",
+      "sha256": "349696eba1ffaf7ca8e8504f8e94b04406e4d2ee0d05602cf8700d6e9398c1d3",
+      "original": "work/client455-port/source/R3Engine/extension/rtmovie.cpp",
+      "original_sha256": "c5b7ff4063d2a85833d8373ce86d8240bdf6eaf4c49abffa28abc72731dcb3ee"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3util.cpp",
+      "sha256": "71feb9221ac929a23836da435394f87a03066fbfecaf622a9adbacaf2473d939",
+      "original": "work/client455-port/source/R3Engine/2ndclass/r3util.cpp",
+      "original_sha256": "8fcdb6c14ff863a602aa0c27fd0cd97d1ce6b935908c3138ee4cb6fc62ec8afa"
     }
   ],
   "baseline_library": {
@@ -329,13 +341,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "72242e9a00f1b0bd2bbd0043ace67ce816ff622cd44dad3f445f567f77b89bd7"
+    "sha256": "ee7813ac9a5a8a3691938faa0ccb8a20f11394b04ae185aaf7dadbba1aa2376c"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "27f436142d5fdbd97480bbae4639ffa897672360688d35171e1fe270539b9110"
+    "sha256": "4cd062ddcf75aadaffc5d6b62db313a47ff31e35f90f7d27e23b802e94fa0678"
   },
-  "script_sha256": "0beb5613eff3250d6e2db7e56b0f3aa99af632851582594703e2f3328c0b3655",
+  "script_sha256": "9aa91592b60472e5f18d071d4e2aaaa89151d24f24d67681ba04abaf8a1acd75",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -355,5 +367,10 @@
   "fullscreen_effect": {
     "client455_fullscreen_effect.h": "db8149cd423614c8e7d9370ba76f68ec2cc5dc8888e6336918537b2c12c0dd0a",
     "client455_fullscreen_motion.inc": "a27d6331f011baf6aa626a19054544e3f7cae9356a5c1de0ab4bc6874601c857"
+  },
+  "movie_state": {
+    "client455_movie_state.h": "0cd28576536b2fed95ff945e9771bf0516f7a374d5a0c9d9425339c45dbb4f3f",
+    "client455_movie_state.inc": "f334097bd9d60dbcab3e4092cf7f381d3bfecf40b8cf5c8a40071759c0d97ea9",
+    "client455_clear_frame.inc": "a84e9a12c98eba4935f3ebc73ffa08d287416de432334dd9aacdaaf4fd8b9fb8"
   }
 }

@@ -12,6 +12,7 @@
 #include "mainapp.h"
 #include "client455_tutorial_intro.h"
 #include "client455_fullscreen_effect.h"
+#include "client455_movie_state.h"
 #include "jerror.h"
 #include "jmalloc.h"
 #include <cstdio>
@@ -38,10 +39,10 @@ static unsigned capture(const char* name){
 }
 struct Selection{unsigned ordinal,start,end;float tick;};
 struct Fade{bool out;float seconds;};
-// Stage/QBI/follow/camera-control callbacks remain explicit recordings. Fullscreen
-// mode/density now call the real engine backend;camera/fade/UI/world are real.
+// Stage/QBI/follow callbacks remain explicit recordings. Movie flags,fullscreen
+// mode/density,camera/fade/UI/world now use the real shared engine APIs.
 struct Host final : RF455TutorialIntroCameraHost {
-    CGUIScreen& screen;bool blocked=false;unsigned scripts=0,follows=0,applied=0,engineFlag=0,control=6;float engineFloat=0;
+    CGUIScreen& screen;bool blocked=false;unsigned scripts=0,follows=0,applied=0,engineFlag=0,control=0;float engineFloat=0;
     std::vector<Selection> selections;std::vector<Fade> fades;std::vector<unsigned> finishOrder;
     explicit Host(CGUIScreen& value):screen(value){}
     void selectCamera(std::uint32_t ordinal,std::uint32_t start,std::uint32_t end,std::uint32_t flag)override{check(flag==1,"final-stop");selections.push_back({ordinal,start,end,R3GetTime()});RF455TutorialIntroCameraHost::selectCamera(ordinal,start,end,flag);}
@@ -50,8 +51,8 @@ struct Host final : RF455TutorialIntroCameraHost {
     void fadeOut(std::uint32_t color,float seconds,float density)override{check(!color&&density==1,"fade-out arguments");fades.push_back({true,seconds});if(!seconds)finishOrder.push_back(1);RF455TutorialIntroCameraHost::fadeOut(color,seconds,density);}
     void setEngineRenderFlag(std::uint32_t flag)override{RF455TutorialIntroCameraHost::setEngineRenderFlag(flag);engineFlag=flag;check(GetStateFullScreenEffect()==flag,"real fullscreen mode binding");if(!flag)finishOrder.push_back(8);}
     void setEngineFloat8CE9D0(float value)override{RF455TutorialIntroCameraHost::setEngineFloat8CE9D0(value);engineFloat=value;check(RF455_GetFullScreenEffectDensity()==value,"real fullscreen density binding");if(value==0.25f)finishOrder.push_back(9);}
-    std::uint32_t cameraControlFlags()override{return control;}
-    void setCameraControlFlags(std::uint32_t value)override{control=value;if(!(value&1))finishOrder.push_back(10);}
+    std::uint32_t cameraControlFlags()override{return RF455TutorialIntroCameraHost::cameraControlFlags();}
+    void setCameraControlFlags(std::uint32_t value)override{RF455TutorialIntroCameraHost::setCameraControlFlags(value);control=cameraControlFlags();check(control==value,"real movie flags binding");if(!(value&1))finishOrder.push_back(10);}
     void blockStageInput(bool value)override{blocked=value;if(!value)finishOrder.push_back(3);}
     void showScreen(bool value)override{screen.Show(value?TRUE:FALSE);if(value)finishOrder.push_back(4);}
     void showMouse(bool value)override{screen.GetMouse()->Show(value?TRUE:FALSE);if(value)finishOrder.push_back(5);}
@@ -71,7 +72,7 @@ static int run(const char* race){
     unsigned captures=0,frames=0,applied=0,selected=0,fadeOuts=0;int memoryBefore=GetDmallocSize(),memoryAfter=0;const auto* sequence=RF455_GetTutorialIntroSequence(avatar.GetRace());FILE* trace=std::fopen("trace.jsonl","wb");check(trace!=nullptr,"trace");
     {
         CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);check(land->Create()!=0,"land create");char path[260];std::sprintf(path,".\\Map\\%s\\%s.bsp",race,race);check(land->LoadLevel(path)!=0,"real land load");phase("world-loaded");
-        Host host(screen);RF455TutorialIntro intro;R3SetTime(0);R3SetLoopTime(0.25f);SetFadeIn(0,2,1);check(intro.load(avatar.GetRace(),host),"real intro load");check(host.blocked&&!screen.IsShow()&&!screen.GetMouse()->IsShow()&&host.control==7&&host.engineFlag==0x80000000u&&host.engineFloat==0.15f,"intro start bindings");
+        Host host(screen);RF455TutorialIntro intro;R3SetTime(0);R3SetLoopTime(0.25f);SetFadeIn(0,2,1);check(intro.load(avatar.GetRace(),host),"real intro load");check(host.blocked&&!screen.IsShow()&&!screen.GetMouse()->IsShow()&&host.control==5&&state->mWideOn&&!state->mIsDrawLogo&&host.engineFlag==0x80000000u&&host.engineFloat==0.15f,"intro start bindings");
         std::vector<bool> captured(sequence->count,false);bool skip=false;
         for(unsigned tick=0;tick<800&&intro.active();++tick){
             R3SetTime(tick*0.25f);intro.frame(host,skip);++frames;
@@ -81,7 +82,7 @@ static int run(const char* race){
         }
         check(!intro.active()&&host.scripts==1&&host.follows==1&&intro.ordinal()==sequence->count,"natural intro completion");check(captures==sequence->count&&host.selections.size()==sequence->count,"all real cameras reached and captured");
         for(unsigned index=0;index<sequence->count;++index){const auto& row=host.selections[index];const auto& expected=sequence->segments[index];check(row.ordinal==index&&row.start==expected.start&&row.end==expected.end,"ordinal and interval,not record label");}
-        for(const auto& fade:host.fades)fadeOuts+=fade.out&&fade.seconds==2;check(fadeOuts==sequence->count,"one fade-out per cut");check(host.finishOrder==std::vector<unsigned>({1,2,3,4,5,6,8,9,10,11}),"full finish call order and same-frame follow");check(host.control==6&&host.engineFloat==0.25f,"unrelated control bits preserved");applied=host.applied;selected=unsigned(host.selections.size());
+        for(const auto& fade:host.fades)fadeOuts+=fade.out&&fade.seconds==2;check(fadeOuts==sequence->count,"one fade-out per cut");check(host.finishOrder==std::vector<unsigned>({1,2,3,4,5,6,8,9,10,11}),"full finish call order and same-frame follow");check(host.control==4&&!state->mWideOn&&!state->mIsDrawLogo&&host.engineFloat==0.25f,"unrelated movie bits preserved");applied=host.applied;selected=unsigned(host.selections.size());
         Host skipped(screen);RF455TutorialIntro skipIntro;R3SetTime(250);check(skipIntro.load(avatar.GetRace(),skipped),"skip intro load");skip=true;skipIntro.frame(skipped,skip);check(skipIntro.active()&&!skip&&skipIntro.ordinal()==0xffff&&skipped.scripts==0,"skip consumed after camera,completion deferred");skipIntro.frame(skipped,skip);check(!skipIntro.active()&&skipped.scripts==1&&skipped.follows==1,"skip finish on following tick");
         check(skipIntro.load(avatar.GetRace(),skipped)&&skipIntro.ordinal()==0xffff,"reload retains counters");skipIntro.frame(skipped,skip);check(!skipIntro.active()&&skipped.scripts==2,"retained sentinel finishes reloaded intro");skipIntro.initCounters();check(!skipIntro.ordinal()&&!skipIntro.pending(),"explicit init resets only counters");
         // Drive the actual fade-out wait/completion on a controlled engine clock.

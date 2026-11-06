@@ -1,5 +1,14 @@
 # Полнота восстановления RF_Online.bin
 
+077: приняты ограниченные RTMovie positive flags/display/defaultFOV contracts.
+Реальный intro backend, flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров
+и точная PE/Create1 прошли. Это не полный RVP: собственный RTMovieFrameMove
+подтверждён как пустая compiled stub. Stage/QBI/follow пока recordings в probe.
+Полные RVP/Tutorial/Avatar/fourstage/вход/игра и прежние gaps остаются открытыми;
+добавлены wrapper screen500/viewport480 и %fov. M6/M6F/M7/M9 OPEN.
+Процент полноты не вычислен: реестр возможностей пока неполный.
+[Доказательства](../research/client455-movie-state.md).
+
 076: ordinaryFullScreenEffect motion branch/density/Beginresult перенесены.
 GPU18/target-depth-viewport-UI/lowVRAM512 иrealintro26/34viewedframes passed.
 Intro mode/densityactualbackend,ноstage/QBI/follow/cameraControlsещёrecordings.

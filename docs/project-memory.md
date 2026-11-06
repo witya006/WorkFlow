@@ -23,6 +23,33 @@
 
 ## Последний проверенный результат
 
+077: movie-state/display/defaultFOV восстановлены. 8D4C30 — положительные
+RTMovie flags wide1/logo2/no-camera4, не общий camera-control. Полный request
+11641C4 отдельно; getter читает internal11641B4, setter сохраняет верхние биты.
+Raw Add/Remove не меняют wide/logo/projection. DrawFadeScreen рисует полосы
+до fade-zero return; logo после полос. Default/current FOV отдельные, init и
+MainApp.LoadData=0.6; SetDefaultFov читает default, не current animated FOV.
+Clear455 не меняет wide viewport. Derived engine67TU/9overlays, baseline033
+сохранён; library18086e42c69b69913c289dffc33c332055f5c4a720533aac63153bb344604125.
+13ranges/4fullasm equalpins, IDA70b16df7closed/listempty. Flags8/GPU6,
+intro3worlds26cameras/357-325-258ticks/Dmalloc270592, fullscreen18, reviewed40
+passed. CameraHost movie flags реальные; stage/QBI/follow остаются recordings.
+PEb377d2ac419ff52f5ad61ca22d78231fb90e64aa822dd3206958bc6dee69c082,
+entry1508a0/2043904bytes/182-20-34TU/0unresolved/exactCreate1/freshcontracts.
+ВАЖНО: RTMOVIE player compiled OUT. Собственный RTMovieFrameMove RVAcefe0,
+bytes558bec5dc3… = empty body. StateAPI восстановлен вне featureguard, но
+проигрыватель НЕ восстановлен. Bellato .rvp [Object] существует. Следующий078:
+настоящий RVP track/actor/audio и CGP_Tutorial owner/Avatar/QBI/follow/fourstage;
+не включать слепо старый define и не выдавать callbacks за игровых providers.
+Direct InitR3D3D fixture stateScreenY500 vs viewport480: проверка явно задаёт
+640×480, wrapper не исправлен. %fov command7E3B10 unported. Legacy0.7 inverted
+RTMovie request API отдельно от positive455, его callers ещё не сертифицированы.
+Все прежние gaps/M6/M6F/M7/M9 OPEN. Детали research/client455-movie-state.md;
+checkpoint_client455_movie_state.py. Старые gates исторические, большие
+неизменённые suites не повторялись. Число проверок не процент полноты.
+
+Предыдущий результат:
+
 076: restoredordinaryFullscreen motion branch (existingenginefunction,notnew
 replacementrenderer). stFullScreenEffectState==target1163FB0,real==FB4,old==FB8;
 stMain==1163FE8,stBlur==1163FC0. 8CED70SetState copiesDWORD/resetsoldonlyif0.

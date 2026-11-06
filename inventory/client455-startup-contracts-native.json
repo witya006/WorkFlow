@@ -1,27 +1,27 @@
 {
   "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
   "exe": "work/client455-port/startup-engine/contracts/contracts.exe",
-  "exe_sha256": "bc9d411882f96b86236454e8d559c84e9efc191a0aeabafe56a78ba258b09ef4",
-  "entry_rva": "0x8e920",
+  "exe_sha256": "f2aff00898af2a8b0f210721f3beac732a8f389ac1fe09c118411deb9eb668b6",
+  "entry_rva": "0x8e8e0",
   "source": "scripts/native/test_client455_startup_contracts.cpp",
   "source_sha256": "466e9898301f38a3c841960dcf550e569be2e6181047924f2837f5f460e2fb7d",
   "cases": [
     {
       "name": "success",
       "exit": 0,
-      "file": "work/m9/bc9d4118/startup-contracts001/success.txt",
+      "file": "work/m9/f2aff008/startup-contracts001/success.txt",
       "sha256": "08fc71636c741921f53b686b30545f4328b42d51651cfac9db3d4b174631f3bd"
     },
     {
       "name": "s_false",
       "exit": 0,
-      "file": "work/m9/bc9d4118/startup-contracts001/s_false.txt",
+      "file": "work/m9/f2aff008/startup-contracts001/s_false.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     },
     {
       "name": "e_fail",
       "exit": 0,
-      "file": "work/m9/bc9d4118/startup-contracts001/e_fail.txt",
+      "file": "work/m9/f2aff008/startup-contracts001/e_fail.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     }
   ],
@@ -37,7 +37,7 @@
   "libraries": [
     {
       "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "2df1e50eafb559452c4c610815e3c9534cc6eb0d1f5186e0c876cd7ab3576592"
+      "sha256": "18086e42c69b69913c289dffc33c332055f5c4a720533aac63153bb344604125"
     },
     {
       "file": "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
@@ -57,14 +57,14 @@
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "11c89864e862c490d7c96a9f66b842bcb6db92ad3838a6bfa68fd98e9d7efc91"
+      "sha256": "38bedf65ebd3c3caf7d3037352e1ef039e88684698cff5b9eb566fec3ddd2930"
     }
   ],
   "map": {
     "file": "work/client455-port/startup-engine/contracts/contracts.map",
-    "sha256": "6d23f58261111ffc615f526a717f25a30b63e579ba50a5afc6a4c733f427c878"
+    "sha256": "e27088f6d93e24b599912d5ba5ca0ad1c6b61e95ee03568a8342832ea5159fb2"
   },
-  "build_sha256": "5596b45c0b799f06c34b77c21b61b0b4cf2c9ac0b0843874f26696fe0e7c1f49",
+  "build_sha256": "bae9968208d865d2ec5f2098a362d359bcc573b03a5638841eac61ab9889be75",
   "reference_sha256": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
   "status": "PASS",
   "color32_preserves_window_mode": true,

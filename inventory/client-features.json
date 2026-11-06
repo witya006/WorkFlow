@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MOVIE-STATE-077",
+      "status": "partial",
+      "description": "Positive RTMovie flags/display and separate defaultFOV; intro calls real engine, full RVP player remains a compiled stub",
+      "reference": [{"rva":"0x4d4c30","role":"positive movie state"},{"rva":"0x4b4b10","role":"letterbox before fade"},{"rva":"0x4cd960","role":"logo after letterbox"},{"rva":"0x4c43d0","role":"default FOV reset"},{"rva":"0x4cdb20","role":"clear without wide viewport mutation"}],
+      "implementation": ["scripts/native/client455_movie_state.h","scripts/native/client455_movie_state.inc","scripts/native/client455_clear_frame.inc","scripts/build_client455_engine_startup.py","scripts/native/client455_tutorial_intro_camera.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "13ranges/4asm equalpins. Flags8/GPU6; default/current projection, upper bits and raw Add/Remove; intro26/fullscreen18/40 reviewed frames/exactCreate1. Empty RTMovieFrameMove directly verified in linked own probe.",
+      "evidence": ["inventory/client455-movie-state-reference.json","inventory/client455-movie-state-native.json","inventory/client455-movie-state-visual.json","inventory/client455-movie-state-checkpoint.json","research/client455-movie-state.md"],
+      "gaps": ["Actual RVP track/actor/audio player is disabled and must be restored; Bellato RVP resources exist","CGP_Tutorial/Avatar actor/QBI/follow/local handlers/fourstage/Login/game integration","Screen-size wrapper500/480 and percent-fov command; legacy0.7 movie callers still transitional","All prior Character/world/render/auth/IME/lifecycle/numeric/M6F/M7/M9 gaps remain"]
+    },
+    {
       "id": "CLIENT455-FULLSCREEN-EFFECT-076",
       "status": "partial",
       "description": "Actual fullscreen motion branch/density/BeginScene result and real intro mode-density backend;fullpostprocess/stage open",

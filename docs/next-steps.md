@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+077: реальные RTMovie flags/display/defaultFOV подключены к движку и intro.
+Flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров/точная PE Create=1
+прошли. Полный RVP player подтверждён как compiled stub; M9 не достигнут.
+[Доказательства](../research/client455-movie-state.md).
+
+078: восстановить настоящий RVP track/actor/audio consumer и CGP_Tutorial
+Load/Create/Frame/Input/Destroy с реальными Avatar/QBI/local-feedback/follow,
+затем four-stage factory/nextDWORD/Login вместе. Bellato RVP [Object] имеется;
+просто включить старый RTMOVIE define недостаточно. Учесть отдельный default
+FOV, положительные movie flags и переходный legacy API. Не заменять реальные
+провайдеры пустыми callbacks. Wrapper screen/viewport (500/480 в fixture),
+%fov command, extra render targets/reset и все прежние gaps остаются в очереди.
+Следующий приоритет — сквозной игровой путь; полный реестр ещё не позволяет
+вычислить достоверный процент восстановления. M6/M6F/M7/M9 открыты.
+
+Предыдущий результат:
+
 076: настоящаяmotion-ветка FullScreenEffect455 перенесена;mode/densitycallbacks
 intro больше незаписывающиезаглушки. GPU18/failedBegin/lowVRAM512/restoreUI и
 3worlds/26cameras/34viewedframes passed. PE/Create1passed;M9недостигнут.

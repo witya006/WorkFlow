@@ -66,6 +66,8 @@ public:
     void fadeOut(std::uint32_t,float,float)override;
     void setEngineRenderFlag(std::uint32_t)override;
     void setEngineFloat8CE9D0(float)override;
+    std::uint32_t cameraControlFlags()override;
+    void setCameraControlFlags(std::uint32_t)override;
     const float* position()const{return m_position;}
     const float* viewMatrix()const{return &m_matrix[0][0];}
     CAniCamera& camera(){return *m_camera;}

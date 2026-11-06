@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+077: восстановлены RTMovie flags, полосы/логотип и default FOV; intro связан
+с движком. Flags8/GPU6/intro26/fullscreen18/40 просмотренных кадров/Create1
+прошли. Полный RVP player пока compiled stub; Tutorial/game integration открыта.
+Далее 078 — реальный RVP и Tutorial owner. M0–M5 закрыты в своих ограниченных
+критериях; M6/M6F/M7/M9 открыты. Процент полноты пока не измерен.
+[Доказательства](../research/client455-movie-state.md).
+
+Предыдущий результат:
+
 076: восстановлен настоящийfullscreen motion-проход455;intro mode/density
 связанысдвижком. GPU18/3worlds26cameras/34viewedframes/failedBegin/lowVRAM512
 passed,PE/Create1passed. ActualTutorialowner/QBI/cameraControls/factory ещёOPEN.
@@ -530,7 +539,7 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/075: настоящийCGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
+1. M6/078: настоящий RVP player (сейчас compiled stub), CGP_Tutorial Load/Create/cameraintro/frame/input иrealAvatar/
    localhandlers/feedback/board47QBI/fourstagefactory. BSPbackend/owner/reload074
    проверены натрёхкартах;полныеILevel/Empty/INS/игровоймир ещёOPEN.
 2. Полный интерфейс входа,аутентификация ипереход вигровой мир. Учитывать

@@ -11,12 +11,17 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp']:
-        source=base/'source/R3Engine'/('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp'] else '2ndclass')/filename;raw=source.read_bytes()
+    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp']:
+        folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
+        source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
             if raw.count(anchor)!=1:raise ValueError('Legacy forced fullscreen changed')
             raw=raw.replace(anchor,b'GetR3State()->mRenderBits = 32; // 455:8ED5A0;preserve configured window mode')
+            raw=b'#include "client455_movie_state.h"\r\n'+raw
+            anchor=b'\tInitCore();'
+            if raw.count(anchor)!=1:raise ValueError('Core initialization FOV boundary changed')
+            raw=raw.replace(anchor,anchor+b'\r\n\tRF455_SetDefaultCameraFov(0.6f);GetR3State()->mFov=0.6f; //4558C3477/7D')
         elif filename=='r3d3dwrapper.cpp':
             anchor=b'\tCreate(hInstance);'
             if raw.count(anchor)!=1:raise ValueError('Legacy Create wrapper changed')
@@ -50,6 +55,34 @@ def main():
             body,count=re.subn(pattern,b'stTexSize = 512; //4558CD9F4,independent of legacy video-memory level',body,flags=re.S)
             if count!=1:raise ValueError('Full-screen texture size boundary changed')
             raw=raw[:first]+body+raw[last:]
+            raw=b'#include "client455_movie_state.h"\r\n'+raw
+            raw+=b'\r\nstatic float st455DefaultCameraFov=0.6f;\r\nvoid RF455_SetDefaultCameraFov(float value){st455DefaultCameraFov=value;}\r\nfloat RF455_GetDefaultCameraFov(){return st455DefaultCameraFov;}\r\n'
+            first,last=section(raw,b'void SetDefaultFov()',b'void SetDefaultFov()')
+            raw=raw[:first]+b'void SetDefaultFov(){SetFov(RF455_GetDefaultCameraFov());}'+raw[last:]
+            first,last=section(raw,b'void R3ClearFrameBuffer()',b'void R3ClearFrameBuffer()')
+            raw=raw[:first]+(WS/'scripts/native/client455_clear_frame.inc').read_bytes()+raw[last:]
+        elif filename=='rtmovie.cpp':
+            from prepare_client455_normal import section
+            raw=b'#include "client455_movie_state.h"\r\n'+raw
+            for name,value in [(b'NO_CAMERA',b'0x4'),(b'WIDE',b'0x1'),(b'LOGO',b'0x2')]:
+                raw,count=re.subn(rb'(#define\s+_RTM_FLAG_'+name+rb'\s+)0x[0-9a-fA-F]+',lambda m:m[1]+value,raw)
+                if count!=1:raise ValueError('RTMovie internal flag definition changed')
+            for anchor in [b'static DWORD stRTMovieFlag=0;',b'static DWORD stRTMState=0;']:
+                if raw.count(anchor)!=1:raise ValueError('RTMovie state boundary changed')
+                raw=raw.replace(anchor,b'')
+            # The old movie player is feature-gated and is not yet455-certified.
+            # Its real display/state APIs must not disappear into the stub branch.
+            for signature in [b'void RTMovieSetState(DWORD state)',b'DWORD RTMovieGetState()']:
+                for _ in range(2):
+                    first,last=section(raw,signature,signature);raw=raw[:first]+raw[last:]
+            raw=b'#include "RTMovie.h"\r\n#include "client455_movie_state.h"\r\nstatic DWORD stRTMovieFlag=0;\r\n'+(WS/'scripts/native/client455_movie_state.inc').read_bytes()+b'\r\n'+raw
+            first,last=section(raw,b'void RTMovieFrameMove()',b'void RTMovieFrameMove()');body=raw[first:last];at=body.index(b'{')+1
+            body=body[:at]+b'\r\n\tif(!stIsLoadedRTMovie)return; //4558D6036:CAM alone is not a loaded RVP movie'+body[at:];raw=raw[:first]+body+raw[last:]
+        elif filename=='r3util.cpp':
+            from prepare_client455_normal import section
+            first,last=section(raw,b'BOOL DrawFadeScreen()',b'BOOL DrawFadeScreen()');body=raw[first:last];at=body.index(b'{')+1
+            bars=b'\r\n\tif(GetR3State()->mWideOn){const LONG width=LONG(GetR3State()->mScreenXsize),height=LONG(GetR3State()->mScreenYsize);const LONG image=LONG(double(0.55f)*GetR3State()->mScreenXsize);const LONG border=LONG(double(GetR3State()->mScreenYsize)-image)/2;Draw2DRectangle(0,0,width,border,0xff000000);Draw2DRectangle(0,height-border,width,height,0xff000000);}\r\n'
+            raw=raw[:first]+body[:at]+bars+body[at:]+raw[last:]
         else:
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_camera.h').as_posix()+'"\n#include <utility>\n').encode()+raw
@@ -78,5 +111,6 @@ def main():
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
+    report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
     (WS/'inventory/client455-startup-engine-build.json').write_text(json.dumps(report,indent=2)+'\n');print('PASS:derived67engine units;033source/library preserved;455color32/Create policy built')
 if __name__=='__main__':main()

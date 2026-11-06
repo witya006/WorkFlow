@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 07.11, movie-state077: новых установок нет. 13 ranges/4 asm equalpins;
+IDA70b16df7 закрыта, idb_list пуст. Engine67TU/9overlays/18086e42… сохраняет033.
+Flags8/GPU6/intro3worlds26cameras/fullscreen18/40 просмотренных кадров прошли.
+PEb377d2ac…/entry1508a0/182-20-34TU/0unresolved/exactCreate1, свежие startup contracts.
+Подтверждено: RTMOVIE player отключён при компиляции, state/display API перенесены
+вне featureguard. FullRVP/Tutorial/game и M9 открыты; wrapper500/480 и %fov
+не исправлены. Большие неизменённые suites не повторялись.
+[Доказательства](../research/client455-movie-state.md).
+
 Дополнение07.11,fullscreen-effect076: установокнет.11ranges/default0.25 equalpins,
 4fullasm;IDAf1ac7cc2savedclosed. Derivedengine67TU/7overlays/2df1e50e… сохраняет033.
 RealFSE GPU18/lowVRAM512/failedBegin/target-depth-viewport-UIpassed;realintro3worlds

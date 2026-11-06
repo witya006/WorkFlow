@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Movie-state077. Positive RTMovie flags/display/defaultFOV source
+restored and intro bound to actual engine. Engine67/9overlays, baseline033
+preserved. Flags8/GPU6/intro26/fullscreen18/40 reviewed frames/Create1 passed.
+PEb377d2ac…; IDA70b16df7 closed. Full RVP player confirmed compiled stub;
+RVP/Tutorial/QBI/follow/fourstage/game/M9 remain OPEN. Next078 actual providers.
+Details research/client455-movie-state.md.
+
 2026-11-07 — Fullscreen-effect076. Actualmotionbranch/density/Beginreturn,
 fixed512targets;11ranges/default/4asm equalpins,IDAf1ac7cc2savedclosed.
 Sourceengine67/7overlays,033preserved. GPU18+realintro3maps/26cameras,

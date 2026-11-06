@@ -358,6 +358,10 @@ def main():
                 raw=raw[:start]+body+raw[end:]
                 changes.append('confirmed455 unload early return before level creation;full ILevel ownership port remains open')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='mainapp.cpp':
+                first,last=section(raw,b'CMainApp::LoadData(',b'CMainApp::LoadData(');body=raw[first:last];anchor=b'\tm_bLoadedAllData = TRUE;'
+                if body.count(anchor)!=1:raise ValueError('MainApp default FOV boundary changed')
+                body=body.replace(anchor,anchor+b'\r\n\tRF455_SetDefaultCameraFov(0.6f);SetDefaultFov(); //4557D1BCB/D1');raw=raw[:first]+body+raw[last:]
+                raw=b'#include "client455_movie_state.h"\r\n'+raw
                 first,last=section(raw,b'CMainApp::GameMainLoop(',b'CMainApp::GameMainLoop(');body=raw[first:last]
                 replacement=(b'if(!m_pGameProgress->IsCreated()){\r\n\t\t\tif(!m_pGameProgress->Create())return FALSE;\r\n\t\t\tif(_GetAvatar())_GetAvatar()->SetClientStage455(RF455_FromLegacyStage(m_byGameProgressID));\r\n\t\t}')
                 body,count=re.subn(rb'if\( !m_pGameProgress->IsCreated\(\) \)\s+m_pGameProgress->Create\(\);',lambda _:replacement,body)
