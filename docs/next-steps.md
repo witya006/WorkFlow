@@ -7,51 +7,52 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-103 PARTIAL: восстановлена звуковая зависимость ядерного прицеливания —
-tagged3D audio с настоящим Miles,30 каналами и кэшем64 записей. CMainApp
-открывает provider/listener в обычном Create; точная новая PE проходит Create→1.
-157 проверок реального WAV/меток/остановки/LRU проходят. Статус58, account,
-hotbar7/storage3 сохранены;6 просмотренных кадров hover побайтно равны102.
-Новая PEcf7ac5e0…/entry159670,182client/20kernels/58facade,0unresolved.
-Gate: inventory/client455-tagged-audio-checkpoint.json;102 теперь исторический.
-Сам эффект и отмена ядерного прицеливания ещё не подключены. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-tagged-audio.md).
+104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
+выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
+скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.
+36 целевых проверок проходят; status58/audio157/account/hotbar7/storage3 сохранены.
+Новая PE0419f2c0…/entry15a1f0: 182 client / 20 kernel / 59 facade, unresolved 0,
+прежний Create→1. Шесть просмотренных hover кадров побайтно равны103.
+Текущий gate: inventory/client455-magic-checkpoint.json; gate103 исторический.
+Полная отрисовка эффекта и отмена прицеливания ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-magic.md).
 
-RF455TaggedAudio — собственный член CMainApp. Prepare задаёт поиск Miles
-до AIL_startup; Open/Close подключены в обычные Create/Destroy и retained в PE.
-Play/Stop проверены через того же владельца в native run, nuclear consumer
-пока не перенесён. Старый untagged2D кэш остаётся отдельной непринятой веткой.
-Сохранены30 tags/handles на record280,64 LRU, подавление duplicate/stale tags,
-включая метку жертвы уже после смены ключа; Stop не очищает tag, Collect хранит
-общий empty accumulator на весь проход. Нулевая нормализация даёт NaN, как455.
-Native использует настоящий Radar_00.wav и muted Miles; слышимый выход не записан.
-Provider: Miles Fast2D; ordinary startup debug string ready:7969 подтверждён.
-7969 token registrations и7932 simple-path строки — разные измерения; полной
-tokenizer/alias parity пока нет. ADPCM/ASI, прочие sound APIs/room/listener,
-смешанные consumers, startup timing/error UI/unsafe/shutdown остаются OPEN.
-Target открывает provider до D3D; собственный порт сейчас в CMainApp Create после
-D3D. Own Close освобождает все handles; target kind-reset quirk ещё не принят.
-18 полных функций/1520asm/18 equal ranges, native IDA6a70bd2b saved/closed/list0.
-Raw: artifacts/client455-progress/tagged-audio103-*. Engine546a7529…/67 unchanged;
-033baseline сохранён, отдельного старого082derived library snapshot нет.
-PEcf7ac5e0ede16f1cc382d8a15ec03f479f9c1a62cbd3fb6ce4aa39999946ccb6,
-2149888bytes, base400000, WinMainb7a60, afterCreateb7bd4. Offline Create1 до game loop.
-6 fresh hover frames viewed/byte-equal102; остальные32 GUI кадра и большие
-world/audio/159k suites не повторялись. Original/server не менялись, input EXE
-не исполнялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_tagged_audio.py.
+CProcessMagic занимает 3004 байта: tracks64×46 на offset60, control24 на36,
+axis bytes9/10, stateDWORD4 с очисткой только lowBYTE у пустой выборки. Parser
+останавливается на end внутри архивного FILE; добавлены axis/blur/parabola/multi
+и двойной billboard bit. Собственные 65th-track refusal и RAII close отличаются
+от unchecked target; общий unsafe/RNG/FP/node lifetime домен ещё открыт.
+Общая зависимость EffectInfo выросла48→56: tailDWORD48=0/52=FFFFFFFF, семантика
+неизвестна. CMagicList448→456 подтверждён ctor и arrayinitializer256×456.
+Выбранные методы действительно берутся из own client objects; legacy engine
+headers16/48 не означают full private ABI acceptance. Cache Start/Disappear,
+состояние1→2 и полный Dmalloc release проверены в native fixture без GPU effect.
+Настоящий cue1358041136: EffectEntity59.rpk/member weapon_1\nuclear\c\nuclear_land_mag02.spt,
+662 байта, SHA7459ef92…; entity IDs90061/90063/90062/90066/90065/90064.
+Native использует реальные таблицы и архив, группу пока устанавливает стенд.
+19 полных функций / 2988 asm / 19 equal ranges + 41-byte initializer обеих455;
+IDA session20a3b068 saved/closed/list0. Raw: artifacts/client455-progress/magic104-*.
+PE0419f2c0b86f69f23b3c1635791a25f4b21ebdf5d4ea04e7f975f4273ae259d5,
+2153984bytes, base400000, WinMainb84d0, afterCreateb8644. Exact offline Create1
+до game loop; обычный Miles Fast2D ready:7969 сохранён. Engine546a7529…/67
+не менялся;033baseline сохранён, отдельного старого082 library snapshot нет.
+Шесть свежих hover кадров просмотрены/byte-equal103; остальные32 GUI кадра и
+большие world/audio/159k suites не повторялись. Original/server без изменений,
+input EXE не исполнялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_magic.py.
 
-Далее104 — обязательная зависимость эффекта прицела: CProcessMagic/CMagicList,
-parser/cache/lifecycle и настоящий cue1358041136. Старый _MAX_MAGIC_TRACK16,
-target имеет64 child IDs, tracks stride46/base60; старый StartMagicEffectType
-нельзя считать эквивалентным без переноса. После эффекта связать actual nuclear
-pending/position/frame/cancel owner с tagged sound и сообщениемC1A; true predicate
-и pending0 до этого остаются явным отказом.
-Затем —64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
+Далее105 — ordinary effect RPK group/owner/bootstrap и реальный entity/particle
+путь: FrameMove, matrices, render и device lifecycle. Затем связать nuclear
+pending/position/frame/cancel с tagged sound и сообщением C1A; true predicate
+до переноса продолжает явно отказывать до изменения hover.
+Затем — 64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
 typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
 Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
 lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/
 Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
 финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
+
+Исторические101–103: research/client455-board-hover.md, client455-player-status.md,
+client455-tagged-audio.md; baselines before104 — artifacts/client455-progress/.
 
 Историческая точка097 и её очередь (timer часть теперь выполнена098):
 

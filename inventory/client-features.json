@@ -6,9 +6,63 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-TAGGED-AUDIO-103",
+      "id": "CLIENT455-MAGIC-104",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Client magic64/process3004/EffectInfo56/runtime456/parser/selector/control and real archived aiming cue through ordinary cache; full rendering and nuclear owner open",
+      "reference": [
+        {
+          "rva": "0x3d3910",
+          "role": "parser"
+        },
+        {
+          "rva": "0x3d5890",
+          "role": "timeline selector"
+        },
+        {
+          "rva": "0x1e35c0",
+          "role": "EffectInfo constructor"
+        },
+        {
+          "rva": "0x689250",
+          "role": "256x456 array initializer"
+        },
+        {
+          "rva": "0x3d8970",
+          "role": "start matrix"
+        },
+        {
+          "rva": "0x3e4060",
+          "role": "effect group getter"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_magic_port.py",
+        "scripts/native/client455_magic_control.h",
+        "scripts/native/client455_magic_control.cpp",
+        "scripts/native/client455_magic_parser_extra.inc",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "19 functions/2988 instructions/19 equal ranges plus initializer; 36 native checks, six real packed cue tracks, cache start/disappear. PE0419f2c0/182-20-59/0 unresolved/Create1. Status58/audio157/account/hotbar7/storage3 and six viewed byte-equal hover frames pass. Full effect render not tested; other32 GUI/bulk suites not rerun.",
+      "evidence": [
+        "inventory/client455-magic-reference.json",
+        "inventory/client455-magic-native.json",
+        "inventory/client455-magic-checkpoint.json",
+        "research/client455-magic.md"
+      ],
+      "gaps": [
+        "Fullworldeffect FrameMove/matrix/entity/particle/render/axis/blur/parabola/multi dispatch anddevice lifecycle notyetrestored/accepted",
+        "EffectInfo tail meanings/producers andallgame/queue consumers remainunknown/unmigrated;onlylayout/ctor/commonsetter partialwrites confirmed",
+        "Ordinary effectRPK group/bootstrap notrestored;lab setsactualgroup manually;target explicitlyselectsEffectgroup beforeexistence/start",
+        "Othermagiccache/policy/zero-input/failure/OOM/unsafe/concurrency/FP/RNG/legacyRand1-Rand2alias andcontrolnode lifetime domains remainopen",
+        "Own65thtrack explicitrefusal/RAIIclose differsfromtargetunchecked overflow;engineextensionlegacy16/EffectInfo48 definitions remainunlinked forselectedclientmethods,notfullprivateABI acceptance",
+        "Nuclear pending/cancel/messageC1A/hover truepredicate andallpreviousclientacceptance gaps remainmandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-TAGGED-AUDIO-103",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Real MainApp tagged3D audio dependency/provider/listener/30channels/64LRU;fullnuclear/effect/audio/bootstrap remainopen",
       "reference": [
         {

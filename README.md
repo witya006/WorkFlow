@@ -11,6 +11,18 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
+104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
+выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
+скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.
+36 целевых проверок проходят; status58/audio157/account/hotbar7/storage3 сохранены.
+Новая PE0419f2c0…/entry15a1f0: 182 client / 20 kernel / 59 facade, unresolved 0,
+прежний Create→1. Шесть просмотренных hover кадров побайтно равны103.
+Текущий gate: inventory/client455-magic-checkpoint.json; gate103 исторический.
+Полная отрисовка эффекта и отмена прицеливания ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](research/client455-magic.md).
+
+Исторический103:
+
 103 PARTIAL: восстановлена звуковая зависимость ядерного прицеливания —
 tagged3D audio с настоящим Miles,30 каналами и кэшем64 записей. CMainApp
 открывает provider/listener в обычном Create; точная новая PE проходит Create→1.

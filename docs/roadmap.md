@@ -12,23 +12,21 @@
 
 ## Текущий статус
 
-103 PARTIAL: восстановлена звуковая зависимость ядерного прицеливания —
-tagged3D audio с настоящим Miles,30 каналами и кэшем64 записей. CMainApp
-открывает provider/listener в обычном Create; точная новая PE проходит Create→1.
-157 проверок реального WAV/меток/остановки/LRU проходят. Статус58, account,
-hotbar7/storage3 сохранены;6 просмотренных кадров hover побайтно равны102.
-Новая PEcf7ac5e0…/entry159670,182client/20kernels/58facade,0unresolved.
-Gate: inventory/client455-tagged-audio-checkpoint.json;102 теперь исторический.
-Сам эффект и отмена ядерного прицеливания ещё не подключены. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-tagged-audio.md).
+104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
+выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
+скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.
+36 целевых проверок проходят; status58/audio157/account/hotbar7/storage3 сохранены.
+Новая PE0419f2c0…/entry15a1f0: 182 client / 20 kernel / 59 facade, unresolved 0,
+прежний Create→1. Шесть просмотренных hover кадров побайтно равны103.
+Текущий gate: inventory/client455-magic-checkpoint.json; gate103 исторический.
+Полная отрисовка эффекта и отмена прицеливания ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-magic.md).
 
-Далее104 — обязательная зависимость эффекта прицела: CProcessMagic/CMagicList,
-parser/cache/lifecycle и настоящий cue1358041136. Старый _MAX_MAGIC_TRACK16,
-target имеет64 child IDs, tracks stride46/base60; старый StartMagicEffectType
-нельзя считать эквивалентным без переноса. После эффекта связать actual nuclear
-pending/position/frame/cancel owner с tagged sound и сообщениемC1A; true predicate
-и pending0 до этого остаются явным отказом.
-Затем —64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
+Далее105 — ordinary effect RPK group/owner/bootstrap и реальный entity/particle
+путь: FrameMove, matrices, render и device lifecycle. Затем связать nuclear
+pending/position/frame/cancel с tagged sound и сообщением C1A; true predicate
+до переноса продолжает явно отказывать до изменения hover.
+Затем — 64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
 typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
 Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
 lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/

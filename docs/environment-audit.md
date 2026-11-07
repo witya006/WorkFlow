@@ -1,5 +1,17 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, magic104: установленный native IDA MCP дал19 полных функций,
+2988 инструкций,19 равных диапазонов и41-byte initializer обеих455; session20a3b068
+saved/closed/list0. Новых установок нет. Own parser64/process3004/EffectInfo56/
+runtime456 и реальный шестидорожечный cue из EffectEntity59.rpk проверены36 CPU
+checks. Обычный cache Start/Disappear работает; группа архива пока задаётся стендом.
+PE0419f2c0…/entry15a1f0/182-20-59/0unresolved/Create1 с прежним Fast2D ready:7969.
+Status58/audio157/account/hotbar7/storage3 и6 viewed byte-equal103 hover frames
+проходят. Engine546a… неизменён. Full effect render/bootstrap/nuclear cancel
+остаются OPEN. Original/server не менялись, input EXE не исполнялись.
+Gate104 current,103 historical; M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-magic.md).
+
 Дополнение07.11, tagged-audio103: действующий native IDA MCP подтвердил
 18functions/1520asm/18equalranges;session6a70bd2b saved/closed/list0. Установок
 нет. В копиях доступны реальные Miles M3D providers; фактически открыт Fast2D.
