@@ -7,28 +7,29 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-094: реальные physical metadata и handoff к actualCGUIInventoryBoard проверены.
-Обычный TakeInItem вызывает общий fields core455; payload handoff пока только
-own-entry caller, полного CItemBoard.Add нет.566metadata/520race-level/16real
-icons/3 просмотренных GPU,clone/clear/Dmalloc,hotbar/storage/account и новая
-PE85a909e3…/entry152d60/182-20-49/Create1 проходят. IDA4f540aaf savedclosed/list0.
-Current gate:inventory/client455-item-icon-metadata-checkpoint.json;
-093 runtimegate historical. [Доказательства](../research/client455-item-icon-metadata.md).
+095: actualMainApp registry и typed quantity/usable fanout проверены.160keys,
+duplicates/first-remove/currentkey/emptybucket/rawWORD-BYTE,3 просмотренных GPU;
+094metadata566/race520/16icons повторён,3 кадра byte-equal. Hotbar/storage/account
+и новая PEe2741f24…/entry1530e0/182-20-50/Create1 проходят. IDA22f5e8a7 closed/list0.
+Current gate:inventory/client455-icon-links-checkpoint.json;094 runtimehistorical.
+Typed setters/find retained inordinaryPE;registration пока unused,own-entry
+регистрирует actualCGUIItemcopies явно. Это ещё не fullLinker/Macro UI.
+[Доказательства](../research/client455-icon-links.md).
 
-Далее095: полный CItemBoard.Add479320 и shared icon state/владение. Target требует
-notifications Linker6/Macro35/Vending27 и перенос cooldown/grade/quantity. Нельзя
-подставить успешные no-op вместо отсутствующих35/27. Согласованно перенести
-wrapper IsEqualItemType и mixed callers; не кастовать typedbase к старым классам.
-Exploratory decompilation сохранена в ignored artifacts/client455-progress/
-item-owners094-exploration.json; функции500590/5007E0/668A90/48E3B0/48BF50 и
-setter propagation61A8C0/61A960 требуют полного asm/pin/EH подтверждения перед
-переносом. Полный inventory event/remove flow пока не проверен.
-Затем normal tablebootstrap/profile, fullLinker5x10/input/use/download, SF/Quest
-units и остальные GUIItem children/followers/targetUnit lifecycle. Все прежние
-36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны.
-Не повторять unchanged world/audio/159k/093atlas/092icon/2013owner/SF1447bulk
-без нового расхождения;094 новые575/520 cases уже проверяют изменённый участок.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_item_icon_metadata.py.
+Далее096: реальные CLinkBoard/CMacroBoard Add-Remove: clone/refcount/lifecycle и
+регистрация копий. Target500590/5007E0/4F3240/4F3440 выбранные функции подтверждены
+asm/pins095; для полного переноса собрать остальные transitive contracts. Потом
+Vending27/fullCItemBoard.Add479320 notifications/cooldown/grade/quantity. Нельзя
+подставить успешные no-op вместо отсутствующих35/27. Согласованно перенести wrapper
+IsEqualItemType и mixedcallers,не кастовать typedbase к старымCSFItem/CBoardItem.
+Удалять регистрацию до смены key/destruction;graph оставляет пустые buckets.
+Target erase(end())UB не принят,source явноотказывает;не скрывать этот разрыв.
+Затем normal tablebootstrap/profile,fullLinker5x10/input/use/download,SF/Quest
+units/GUIItemchildren/targetUnit lifecycle. Все прежние36boards/Trunk/protocol/
+Tutorial/QBI/fourstage/Login/auth/game gaps обязательны.
+Не повторять unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447bulk
+без нового риска;проверять изменённый участок и затронутых владельцев.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_icon_links.py.
 
 Предыдущий перенос090:
 

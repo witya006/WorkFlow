@@ -1,0 +1,44 @@
+{
+  "native_sha256": "c2f69f5fb049f4551516d9bd4f395f13c5a9c39e4b15a868a33e3bc8fa78d120",
+  "script_sha256": "46e6ff3c5c9f5a77b0ec233ec096bab9907d872c9f5c14adc5ace5d2b431fdf2",
+  "sheet": {
+    "file": "work/m9/3553bcbf/icon-links-001/links-contact.png",
+    "sha256": "9e1f730943ce2f337f19a27ce878bfe7ad624c21a02651b2edd80dceb8b3d27d"
+  },
+  "frames": [
+    {
+      "file": "work/m9/3553bcbf/icon-links-001/links-before.bgra",
+      "sha256": "f7d746928613a81ab88ad44a85e2e03ec168c8c7f182912a36c38f45aebdf5a6",
+      "preview": {
+        "file": "work/m9/3553bcbf/icon-links-001/links-before.png",
+        "sha256": "174be9a0c2ed5029411d5273b5ab45f9718b2175c786233ce3c07b443aac9a28"
+      }
+    },
+    {
+      "file": "work/m9/3553bcbf/icon-links-001/links-detached.bgra",
+      "sha256": "c89255a7f88853ce095a7dc595d947cc8bc9f0439ea052dbdda3696792f56b01",
+      "preview": {
+        "file": "work/m9/3553bcbf/icon-links-001/links-detached.png",
+        "sha256": "ca89ba2a031a66bf7024d64aa1260c0f93625552f08ad7a13721b73889fb5685"
+      }
+    },
+    {
+      "file": "work/m9/3553bcbf/icon-links-001/links-propagated.bgra",
+      "sha256": "4689fc0d72c05ea817b32db68fbe3accbc59daa846eeab58188baa4f9e6ccc2f",
+      "preview": {
+        "file": "work/m9/3553bcbf/icon-links-001/links-propagated.png",
+        "sha256": "b382fa7990e0d24611b36fe568af83ec1e96856a7dab512f861d2130ed1ddc0a"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 3,
+  "observations": [
+    "A real inventory icon and two explicitly registered CGUIItem copies draw the same real item image",
+    "Quantity255 and unusable tint propagate to both registered copies",
+    "After unregistering the middle copy it retains gray255 while the original and other copy become white2"
+  ],
+  "reference_executable_capture": false,
+  "ordinary_Linker_Macro_registration": false,
+  "full_client": false
+}

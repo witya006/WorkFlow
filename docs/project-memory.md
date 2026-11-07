@@ -23,6 +23,45 @@
 
 ## Последний проверенный результат
 
+095 PARTIAL. Current gate inventory/client455-icon-links-checkpoint.json.
+RF455IconLinks actualg_MainApp field beforem_items455/UI,source-owned map/vector,
+notfullprivateUIManagerABI. Key=((itemID&0fffffff)<<28)|(index&0fffffff)|
+(uint64(BYTEtype)<<60),bits56..59zero/toptypebits truncate. Register appends
+duplicates;remove recomputesCURRENTkey,erasesFIRSTpointer,retains emptybucket.
+No auto-reindex/destructor unregister;owners mustremove beforeidentitychange/
+destruction. Missingkey removefalse;existingkey absentmember/emptybucket target
+erase(end())UB explicitlyrefusedbylogic_error,trackedgap. Typed SetNum writes
+selfWORD thenregisteredmembers(nullguard);SetUsable rawBYTE,no nullguard.
+Unregisteredinitiator canupdate group;registeredcopy cannotupdate unregistered
+original. Untypedlegacy setters remainlocal. Not a source-pointer/parentgraph;
+actualregistrationcallers Linker6/Macro35,nothover.
+
+22equalpinranges/1154asm/160binaryoperandkeyoracles. ActualMainApp registry tests
+duplicates/order/maskedaliases/rawWORD/rawBYTE/remove/currentidentity/2unsafe
+refusals/clearedlifetimes pass. ActualEDF-backed CGUIInventoryBoard original+
+2explicitlyregisteredCGUIItemcopies/3GPUframesviewed;detachedcopy staysgray255
+whileotherswhite2. Allpayloads released,registry cleared,Dmalloc balanced.
+094metadata566/race520/16icons repeatedonnewfacade;3rawframes byte-equal to old
+reviewed094,baseline artifacts/client455-progress/item-metadata094-before095.json.
+094visualreport retained withbaselineprovenance;094runtimegate historical.
+Hotbar7/storage3/account/newexactPEearly/Create1pass. PE SHA
+e2741f24ead98890bbf59f6b70bb98f4b3388f999d0950c81c3d388123be4a77,
+2109440bytes/x86/entry1530e0/WinMainb7730/afterCreateb789a,182/20/50TU,
+0unresolved,engine082 unchanged. OrdinaryPE retains SetNum455c8d20/
+SetUsable455c8d60/findc8db0;register/unregister unuseduntil realowners migrated.
+IDA22f5e8a7savedclosed/list0;configuredprobe passed. No unchangedworld/audio/159k/
+093atlas/092icon/2013owner/SF1447bulk rerun. M6/M6F/M7/M9remainOPEN.
+
+Next096: actualLinker/MacroAdd-Remove clone/ownership/registration,coordinate
+typedwrapperkind andmixedcallers. Then Vending27/fullCItemBoard.Add mandatory
+notifications/cooldowns,normaltablebootstrap,fullLinker5x10/use/input/download.
+Do not claim testedcopies asrealLinker UI or add successfulno-op providers.
+DedicatedSF/Quest/fullGUIItemchildren/remainingboards/Trunk/protocol/Tutorial/
+QBI/fourstage/Login/auth/game andpreviousgaps mandatory. Progress,notblocked/
+notcomplete. Research research/client455-icon-links.md.
+
+Исторический результат094 (runtime gate historical after095):
+
 094 PARTIAL. Current gate inventory/client455-item-icon-metadata-checkpoint.json.
 RF455BasicIconMetadata actualBasic0/2/3/4: Data72classification/76sprite,
 NormalBYTE92quantity/others1,gradeData152 onlyequipmentkind1..10,requiredlevel

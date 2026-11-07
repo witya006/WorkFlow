@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+095: восстановлен общий реестр иконок и обновление количества/доступности.
+160 key cases/duplicates/remove/3 просмотренных GPU, прежний инвентарь и новая
+PE/Create1 проходят. Typed setters есть в ordinaryPE; реальные Linker/Macro
+Add-Remove ещё не регистрируют копии. Далее096 — эти владельцы, обязательный
+Vending27/fullCItemBoard.Add, затем normalbootstrap. Gate095 текущий;094 runtime
+исторический. M6/M6F/M7/M9 открыты; общего процента пока нет.
+[Доказательства](../research/client455-icon-links.md).
+
+Исторический результат094:
+
 094: реальные metadata физического предмета передаются существующему владельцу
 иконок инвентаря. Ordinary TakeInItem вызывает общий fields core455.566 metadata/
 520 race-level/16 actualicons/3 просмотренных GPU, владение/очистка и новая

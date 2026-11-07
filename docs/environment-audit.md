@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, icon-links095:22 equal ranges/1154asm/160 key oracles;
+IDA22f5e8a7 savedclosed/list0, configured MCP probe прошёл. Новых установок нет.
+182client/20kernels/50facade,0unresolved;PEe2741f24…/entry1530e0/Create1.
+ActualMainApp registry/typed fanout/duplicates/remove/3 просмотренных GPU прошли;
+094 metadata повторён, его3 raw кадра byte-equal. Hotbar/storage/account проходят.
+SetNum/SetUsable/find живут в ordinaryPE; register/unregister пока unused,
+actualLinker/Macro Add-Remove не подключены. Gate095 текущий,094 runtimehistorical.
+World/audio/159k/старые bulk не повторялись;originals/server без изменений.
+[Доказательства](../research/client455-icon-links.md).
+
 Дополнение07.11, item-icon-metadata094:28 equal ranges/1138asm/15 decoded reads,
 IDA4f540aaf savedclosed/list0;configured MCP probe прошёл. Новых установок нет.
 182client/20kernels/49facade TU,0unresolved;PE85a909e3…/entry152d60/Create1.

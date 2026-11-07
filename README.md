@@ -11,7 +11,16 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний перенос — item-icon-metadata094: реальные поля предмета доходят до
+Последний перенос — icon-links095: восстановлен общий реестр иконок и обновление
+количества/доступности у зарегистрированных копий.160 key cases, три просмотренных
+GPU кадра и прежний инвентарь прошли; его три кадра не изменились. Новая PE/Create1
+и затронутые network/storage/account проверки проходят. Реальные Linker/Macro
+Add/Remove ещё не подключены. Далее096 — эти владельцы и fullCItemBoard.Add.
+Текущий gate — inventory/client455-icon-links-checkpoint.json;094 runtimegate
+исторический. M6/M6F/M7/M9 открыты.
+[Доказательства](research/client455-icon-links.md).
+
+Предыдущий перенос — item-icon-metadata094: реальные поля предмета доходят до
 CGUIInventoryBoard; обычный TakeInItem использует общий проверенный core455.
 566 metadata/520 race-level сценариев,16 реальных владельцев иконок,3 просмотренных
 GPU кадра, сеть/хранение и новая PE/Create1 проходят. Полный CItemBoard.Add и

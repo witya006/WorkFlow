@@ -6,9 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ITEM-ICON-METADATA-094",
+      "id": "CLIENT455-ICON-LINKS-095",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "ActualMainApp semantic icon registry and typed quantity/usable fanout;ordinaryLinker-Macro registration stillopen",
+      "reference": [{"rva":"0x3ae520","role":"register append"},{"rva":"0x3ae690","role":"remove first currentkey member"},{"rva":"0x3ae780","role":"query"},{"rva":"0x21a8c0","role":"WORD quantity fanout"},{"rva":"0x21a960","role":"rawBYTE usable fanout"},{"rva":"0xf3240","role":"MacroAdd registration caller"},{"rva":"0x100590","role":"LinkerAdd registration caller"}],
+      "implementation": ["scripts/native/client455_icon_links.h","scripts/native/client455_icon_links.cpp","scripts/native/client455_item_icon_members.inc","scripts/client455_icon_links_port.py","scripts/prepare_client455_normal.py"],
+      "verification": "22equalpinranges/1154asm/160binaryoperandkeyoracles;actualMainApp registry duplicates/order/maskedaliases/firstremove/emptybucket/currentidentity/WORD/rawBYTE/2unsafe refusals pass. Realinventoryoriginal+2explicitlyregisteredCGUIItemcopies/3GPUframes viewed;unregisteredcopystaysgray255 whileotherswhite2;Dmalloc balanced.094metadata566/race520/16icons repeated,3previousframes byte-equal. Freshhotbar7/storage3/account/newPEe2741f24/entry1530e0/182-20-50/Create1pass. Typedsetters/find retainedinordinaryPE;register-unregister unuseduntilactualowners port. IDA22f5e8a7savedclosed/list0;configuredMCPpassed. No unchangedworld/audio/159k/oldbulk rerun.",
+      "evidence": ["inventory/client455-icon-links-reference.json","inventory/client455-icon-links-native.json","inventory/client455-icon-links-visual-review.json","inventory/client455-icon-links-checkpoint.json","research/client455-icon-links.md"],
+      "gaps": ["Existingbucket absentmember removal targeterase(end())UB explicitlyrefusedbysource;fullprivateUIManagerABI/OOM/concurrency/shutdown notaccepted","No automaticidentity reindex/destructorunregister;realLinker6/Macro35 Add-Remove andfullCItemBoard.Add/Vending27 notifications notported","Normal registration strippedunused;own-entry actualcopies registeredexplicitly,notfullLinkerUI","Untypedlegacy/mixedderivedcallers/normalbootstrap/fullGUIItem/SF-Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game/M6F/M7/M9 mandatory;094runtimegatehistorical/staticproofsretained"]
+    },
+    {
+      "id": "CLIENT455-ITEM-ICON-METADATA-094",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-ICON-LINKS-095",
       "description": "Real Basic icon metadata and existing inventory20 owner handoff;ordinaryTakeInItem retains shared fields core;fullCItemBoard.Add stillopen",
       "reference": [{"rva":"0x16940","role":"classification72"},{"rva":"0x65ea0","role":"sprite76"},{"rva":"0x5fde0","role":"grade152"},{"rva":"0x5ffc0","role":"requiredlevel offsets"},{"rva":"0x4e80","role":"NormalBYTEquantity"},{"rva":"0x273390","role":"inventory core"},{"rva":"0x21ca50","role":"race-level predicate"},{"rva":"0x79320","role":"fullAdd dependency evidence only"}],
       "implementation": ["scripts/native/client455_item_icon_metadata.h","scripts/native/client455_item_icon_metadata.cpp","scripts/native/client455_item_payloads.h","scripts/client455_item_metadata_port.py","scripts/prepare_client455_normal.py"],

@@ -1,5 +1,19 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Icon-links095. ActualMainApp owns semantic icon buckets;production
+typed quantity/usable setters update registered copies.22equalranges/1154asm/
+160keys;duplicates/first-remove/currentidentity/emptybucket/WORD/rawBYTE pass.
+ThreeGPUframes viewed with realinventory original and2explicitlyregisteredcopies;
+unregistered copy staysgray255 whileothers become white2;Dmalloc balanced.
+094metadata566/race520/16icons passes with3byte-equalpreviousframes. Hotbar7/
+storage3/account/newPEe2741f24/entry1530e0/182-20-50/Create1pass. IDA22f5e8a7
+savedclosed/list0;configuredMCPpassed. Typedsetters/find retainedinordinaryPE;
+register/unregister unused untilactualLinker/MacroAdd-Remove port. Targetunsafe
+erase(end()) refusedexplicitly,trackedgap. Gate095current/094runtimehistorical.
+No unchangedworld/audio/159k/oldbulk rerun;no originals/serverwrites. Next096
+actualowners/registration/fullAdd/Vending27 thenbootstrap;M6/M6F/M7/M9OPEN.
+[Evidence](research/client455-icon-links.md).
+
 2026-11-07 — Item-icon-metadata094. Actual Basic metadata and inventory20 core
 restored;ordinaryTakeInItem calls productionfields helper.566metadata/520race-level/
 9Quest+SFrefusal/16realiconowners/3viewedGPU/clone-clear-Dmalloc pass. Fullpayload

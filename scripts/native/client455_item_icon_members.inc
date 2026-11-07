@@ -5,6 +5,8 @@
     CGUIObject m_gradeFrame455;
     BOOL DrawTypedIcon455(RECT*);
     void SetTypedSprite455();
+    void SetNum455(WORD);
+    void SetUsable455(BYTE);
 public:
     void SetObjectIndex455(DWORD index,BOOL typed=TRUE){m_objectIndex455=index;if(typed){m_typedIcon455=TRUE;m_bySpriteSize=64;}}
     DWORD GetObjectIndex455()const{return m_objectIndex455;}

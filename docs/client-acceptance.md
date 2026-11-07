@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+095 PARTIAL: source-owned registry в actualMainApp группирует зарегистрированные
+иконки по type/itemID/index;typed SetNum/SetUsable/find включены в ordinaryPE.
+160 key cases, duplicates/first-remove/current-key/emptybucket,WORD/rawBYTE,
+3 просмотренных GPU и точная новая PE/Create1 проходят.094 metadata повторён,
+3 кадра byte-equal,hotbar/storage/account проходят. Probe регистрирует реальные
+copies явно; ordinaryLinker/Macro Add-Remove всё ещё не подключены, registration
+в обычной PE unused. Unsafe erase(end()) target заменён явным отказом и учтён
+как разрыв. FullCItemBoard.Add/Vending27/normalbootstrap/полные owners/UI/Tutorial/
+Login/auth/game и все прежние gaps обязательны. Gate095 текущий,094 runtime
+исторический;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-icon-links.md).
+
+Исторический результат094:
+
 094 PARTIAL: physical metadata читает реальные owner tables,inventory20 core
 включён в ordinary TakeInItem. Actual CGUIInventoryBoard принимает source-owned
 payload wrapper,выставляет индекс/grade/quantity/usable и рисует16 реальных

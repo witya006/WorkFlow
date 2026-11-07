@@ -1,0 +1,120 @@
+{
+  "status": "PARTIAL",
+  "scope": "Semantic icon buckets and typed quantity/usable fanout with actualMainApp owner;fullLinker/Macro registration callers not ported",
+  "script_sha256": "e2a0c32c8525c17e86af45a0d274e02edcb9a348a63b42f8919c96ec2c71c91b",
+  "reference_sha256": "caab6ae30eeb655bc396f0668f48a0730d7afa579fe5619eeab9e515d45726a6",
+  "native_sha256": "c2f69f5fb049f4551516d9bd4f395f13c5a9c39e4b15a868a33e3bc8fa78d120",
+  "sources": [
+    {
+      "file": "scripts/native/client455_icon_links.h",
+      "sha256": "0e0b95edbd3df12989f7c880caec90c466238a44c50ed0e7347953eecea0a4c1"
+    },
+    {
+      "file": "scripts/native/client455_icon_links.cpp",
+      "sha256": "75380cefb87bd463207f7591975fcd4dec097f88050c932e8bb142983fe7cf2c"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "bddb881493ae5cb8e28451a2c62d181147db2f13d879b9b77dfde5ee622e9903"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "036fb1cb318d02cb63b86d77782441863b8dbf0cca9bda493a39207bf8aeceea",
+      "input": "work/client455-port/source/RF_Client/mainapp.h",
+      "input_sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "named ordinary pre-engine network creation entry"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.h",
+      "sha256": "2f085c1b3be12244e7f9b05c7973f26601100d944710e8a140df026d097b0885",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "input_sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_icon_links.cpp",
+      "sha256": "75380cefb87bd463207f7591975fcd4dec097f88050c932e8bb142983fe7cf2c",
+      "input": "scripts/native/client455_icon_links.cpp",
+      "input_sha256": "75380cefb87bd463207f7591975fcd4dec097f88050c932e8bb142983fe7cf2c"
+    }
+  ],
+  "session": {
+    "file": "artifacts/client455-progress/icon-links095-session.json",
+    "sha256": "7ee373419caeae8f16a66a91f769bd52390f4d354a3569cefaa77f661a2711c9"
+  },
+  "normal_link_sha256": "72e838dfde5f5f7963e826edc7bde7e1ad6006dfc2e4d94e6de80d39849b0086",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e2741f24ead98890bbf59f6b70bb98f4b3388f999d0950c81c3d388123be4a77",
+    "bytes": 2109440,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1530e0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "c7dbc038b9eac22221dea699fcd546d630708c9c0a147e4f00b15fae6531296b",
+    "client455-normal-build": "06825cede455539dcfd3176c0eab7530d6b4d94da9c1baf1faf67ddcd49ee78f",
+    "client455-normal-consumers": "35f6abbd6467533d43a41c46518ad330bcbf713746c6e01ca6c3781453673f11",
+    "client455-own-entry": "9f1b172dbc0f710f206ee55300e0735c84dd207478fa41f926ef177282a775b7",
+    "client455-startup-audit": "bcbf1aa4658f1ed0d5363f9f1755d098d3b01d62b2abe8a74430a14ee2497917",
+    "client455-startup-native": "0264efa880ba7f40cb95f800ebf90ee09d7cc8d374d2cecb8eab9adc233004d3",
+    "client455-ui-startup-native": "427823f483785c432382abfdc518ef79b5488f8bb98d3d193be1cbdb43b918d2",
+    "client455-hotbar-native": "853fb22fe7b37b06232eb18ab0fd09f36386edfa092e19cd2399da8703112994",
+    "client455-storage-native": "b58da27485d3b1f7119a65aa7723dabef7cd65c373d9ddc1166b88e50e185f5c",
+    "client455-account-native": "b4251d2c6dce56533fd9486c445e23cc69951ca1662b7567a1d9c19c34c4fe51",
+    "client455-item-icon-metadata-native": "8fecfdf718a5d25e8cad04a3560b233d149921a7c6547c3cc10e837085b1cd82",
+    "client455-icon-links-visual-review": "e8fa9e0096f77357624d1a8b7e67c462b165cc771ffcc47e6c7a7b8299a6e9cd"
+  },
+  "selected_ranges": 22,
+  "assembly_instructions": 1154,
+  "key_oracles": 160,
+  "registered_real_copies": 2,
+  "viewed_GPU_frames": 3,
+  "ordinary_fanout_retained": {
+    "SetNum455@CGUIItem": true,
+    "SetUsable455@CGUIItem": true,
+    "find@RF455IconLinks": true
+  },
+  "normal_registration_retained": false,
+  "previous094_metadata_baseline": {
+    "file": "artifacts/client455-progress/item-metadata094-before095.json",
+    "sha256": "3ccdead0d6bd69946c73a16323e3d539a608164754cbfaef698c265d54f545b8"
+  },
+  "previous094_visual_review": {
+    "file": "inventory/client455-item-icon-metadata-visual-review.json",
+    "sha256": "1a64b6a636e8eb343797f1b094b8aa22c33e3d89d49e7170cca41f87ad1e1ffc"
+  },
+  "previous094_frames_byte_equal": true,
+  "ordinary_Linker_Macro_registration": false,
+  "previous094gate": "historical runtime after source/link/reports changed;static metadata proofs and visual evidence retained",
+  "unchanged_world_audio_159k_093atlas_092icon_2013owner_1447SF_suites_rerun": false,
+  "gaps": [
+    "Existingbucket removal of absentmember/emptyvector is undefined in target;source explicitlythrows instead of erasing end()",
+    "Identity must be stable during registration;target doesnotreindex or auto-unregister on keychange/destruction;owners must coordinate removal",
+    "CMainApp sourceowns registry before UI/data members,not the completeprivateUIManager ABI;fullshutdown/reset/OOM/concurrency notaccepted",
+    "Typed setter paths connected in ordinary client;actual Linker/Macro Add-Remove registration and fullCItemBoard.Add remainopen",
+    "Untypedlegacy setters/mixedpayload consumers/fullGUIItemchildren/Linker5x10/Macro/Vending/normalbootstrap/Tutorial/Login/auth/game and priorM6F/M7/M9 gaps mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
