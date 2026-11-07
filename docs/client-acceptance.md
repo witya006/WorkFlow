@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+092 PARTIAL: typed CBoardObject передаёт индекс и цвет рамки CGUIItem; выбранный
+core Draw рисует настоящие inventory/item.spr455. Уточнено: GUIItem1240 — рамка,
+не caption.256 grade/120 quantity boundaries/8 widths/9 просмотренных GPU кадров
+и Dmalloc reload проходят. Владельцы2013/data575/SF1447/hotbar/storage/account
+и точная новая PE/Create1 проходят. Автоматический itemID→atlas ещё открыт:
+GPU тест передаёт явную SPRITE_INFO. Полные GUIItem timers/overlays/shake/copy,
+base virtual SetSize, mixed payload consumers, normal bootstrap, Linker5x10/
+hover/input/use/cooldowns/download и все игровые разрывы остаются обязательными.
+Gate092 текущий;091 runtimegate исторический. M6/M6F/M7/M9 OPEN. Общая доля
+восстановления не измерена; локальные проверки не задают процент всего клиента.
+[Доказательства](../research/client455-item-icon.md).
+
+Исторический результат091:
+
 091 PARTIAL: обычные CItemObject592/CBoardObject620 теперь используют реальные
 общие payload/data owners и менеджер CMainApp.2013 bind/clone/pack-removal
 сценариев, два whole620byte oracle, signed BYTE/retired-primary-empty guard и

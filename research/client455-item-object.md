@@ -1,5 +1,12 @@
 # Item-object091 — ordinary typed shared owners
 
+Runtime gate091 is historical after092; current evidence is
+[item-icon092](client455-item-icon.md). Its fresh regression reruns all2013
+owners and the production data/SF entries. Nonnull typed icon index/grade binding
+is now implemented in092. Correction to the old caption hypothesis: GUIItem1240
+is a sprite grade border, not text. Automatic atlas/fullGUI/mixed consumers remain
+open. The following text records the bounded091 result and its static references.
+
 2026-11-07. **PARTIAL**, M6. Actual ordinary classes now implement
 CItemObject592/CBoardObject620 over the common resource base090. They use a
 real item manager owned by CMainApp. This is no longer only the087 raw-record

@@ -20,7 +20,7 @@ def main():
         console=run/'console.txt';console.write_bytes(result.stdout+result.stderr);output=run/'result.json'
         runs.append(dict(name=name,source=record(source),exe=record(target),map=record(exe.with_suffix('.map')),inputs=inputs,console=record(console),output=record(output) if output.exists() else None,
             architecture=pe(exe.read_bytes())['architecture'],natural_exit=result.returncode,native=json.loads(output.read_text()) if output.exists() else None))
-    report=dict(scope='Ordinary typed item592/board620/CMainApp manager and actual pack removal/null-icon domain;production providers also pass previous payload/SF data probes',
+    report=dict(scope='Ordinary typed item592/board620/CMainApp manager and actual pack removal/selected icon index-grade binding;production providers also pass previous payload/SF data probes',
         script_sha256=sha(Path(__file__)),builder_sha256=sha(WS/'scripts/client455_own_probe.py'),reference_sha256=sha(WS/'inventory/client455-item-object-reference.json'),
         normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),runs=runs,input_exe_executed=False,server_modified=False,M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')
     (WS/'inventory/client455-item-object-native.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(dict(exits=[r['natural_exit'] for r in runs],native=[r['native'] for r in runs])))

@@ -23,7 +23,44 @@
 
 ## Последний проверенный результат
 
-091 PARTIAL. Current ordinary gate:
+092 PARTIAL. Current gate inventory/client455-item-icon-checkpoint.json.
+Ordinary CBoardObject.SetIcon/Refresh/SetIndex now update actual typed CGUIItem
+index and grade-frame color. Correction: targetGUIItem1240 is a CGUIObject grade
+BORDER, not caption/text; prior091 wording was a hypothesis, now disproved.
+Typed core Draw:cell64, preservealpha white/666666 tint, targetinventory6/action3/
+frame2(width<64)or3(width>=64), mainimage then selected WORDquantity. Quantity>1
+types0/2/7 unclipped but0/7 clipped;zero onlytype0; hidden0/noimage1 skipsframe.
+Separate real CSpriteMgr targetID0..54 cache uses existing localized/Common
+paths and CSprite load/release; legacyIDs retained for oldcallers. Only6/8draw
+accepted. Missing assets remain explicit;fullspriteUnit targetmanager57 notclaimed.
+Selectedsource-owned metadata/frame is NOT completeprivateGUIItemABI. Base
+CGUIObject.SetSize remainsnonvirtual;typedCGUIItem pointer paths only. CGUISFItem
+and other old mixed Create/consumers are not thereby migrated. SetData copies
+new selectedfields;fulltarget copy/update/shake/timers/overlays/hover notaccepted.
+
+22equalpinranges/1740asm/RTTI/jumptable/EHwindows;256gradeoracle decodedfrom
+binary MOV EAX immediates. RealCommoninventory4actions/33frames,item1/40 passed
+roundtrip. IDAaa30c75csavedclosed/list0. Native256grades/120quantity/8signedwidth/
+POINTgeometry/actualwrapperbind-clone-rebind-clear/copy pass. NineactualGPUframes
+viewed at32/64sizes, tintalpha128, clipping, quantity65535, hidden/noimage;Dmalloc
+load-unload-reload balanced. GPU usesexplicitSPRITE_INFO,NOTautomaticatlasfactory.
+NewPE e540395b8f05fce56b9b7eec8e46ee1b555cbd18f9ad41fd692b54c74de45308,
+2107392bytes/x86/entry152a30/WinMainb7630/afterCreateb779a;182client/20kernels,
+oneextra facadeTU,0unresolved,engine082unchanged. Freshowners2013/data575/SF1447/
+hotbar7/storage3/account and exactPEearlyKorea949/localTCP/Miles/Create1 pass.
+Firstchanceevents retained;nogame loop acceptance. Worlds/audio/159k unchanged
+suites notrerun. Old091runtimegate historical;its staticrefs/byteoracles retained.
+See research/client455-item-icon.md. AllM6/M6F/M7/M9remainOPEN,percentageunknown.
+
+Next093: actual spriteUnit/classification→atlas callbacks7B0570/7B0400 and typed
+board/hover/Linker consumers;then normal data bootstrap order/profile,mixed
+payload migration. FullGUI/Questnames/5x10/input/use/cooldowns/download/oldbelt/
+36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game remainmandatory.
+No server/original input writes. Goalprogress,notblocked/notcomplete.
+
+Исторический результат091 (runtime gate historical after092):
+
+091 PARTIAL. Previous ordinary gate:
 inventory/client455-item-object-checkpoint.json. Commit090 was progress;
 091 now moves actual ordinary classes to shared ownership, not only raw kernels.
 

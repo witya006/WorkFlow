@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-icon092. Ordinary typed wrappers now bindGUIItem index and
+grade-border color. Corrected priorcaption hypothesis:1240 is spritegradeframe.
+CoreDraw uses real455inventory/item sprites;256grades/120quantityboundaries/
+8signedwidths/9viewedGPUframes/reloadDmalloc and production2013owners/575payloads/
+1447SF pass. Hotbar/storage/account and newPEe540395b…/Create1 pass.22equalranges/
+1740asm/RTTI,IDAaa30c75csavedclosed/list0. Core typed metadata is notfullGUIItemABI;
+automatic item atlas, optionalwidgets/mixedconsumers/bootstrap/fullgame stillopen.
+Currentgate092;091runtimehistorical,staticrefs retained. No unchangedworld/audio/
+159k rerun;no serverwrites. Next093 atlascallbacks/typedconsumers thenbootstrap.
+[Evidence](research/client455-item-icon.md).
+
 2026-11-07 — Item-object091. Ordinary CItemObject592/CBoardObject620 share actual
 payloads through a CMainApp-owned manager.2013 real bind/clone/pack-removal cases,
 two620byteoracles/signedBYTE/retired-primary guard/hotbar keys pass. Production

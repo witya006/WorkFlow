@@ -6,8 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-ITEM-ICON-092",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "description": "Ordinary typed board icon index/grade border and core sprite draw;automatic itemID-to-atlas and fullGUIItem remain open",
+      "reference": [{"rva":"0x6b7e0","role":"board icon refresh"},{"rva":"0x21cca0","role":"BYTE grade colors"},{"rva":"0x21d070","role":"grade setter"},{"rva":"0x21b240","role":"position"},{"rva":"0x21b450","role":"signed width frame selection"},{"rva":"0x21b6b0","role":"unclipped core draw"},{"rva":"0x21b910","role":"clipped core draw"}],
+      "implementation": ["scripts/client455_item_icon_port.py","scripts/native/client455_item_icon.h","scripts/native/client455_item_icon.cpp","scripts/native/client455_item_icon_members.inc","scripts/native/client455_target_sprites.inc","scripts/native/client455_item_object.cpp","scripts/prepare_client455_normal.py"],
+      "verification": "22equalpinranges/1740asm/RTTI/jumptable;256gradeoracle decodedfromMOV EAX immediates. Native256grades/120quantities/8signedwidths/POINTgeometry/actualboardclone-rebind-clear/SetData pass. Realinventory33/item40frames roundtrip;9GPUframes viewed at32/64sizes,alpha128/clip/WORD65535/hidden;Dmalloc reloadbalanced. Freshproduction2013owners/575payloads/1447SF/hotbar7/storage3/account and exactPEe540395b/entry152a30/0unresolved/Create1 pass. Engine082 unchanged;world/audio/159k not rerun. IDAaa30c75csavedclosed/list0.",
+      "evidence": ["inventory/client455-item-icon-reference.json","inventory/client455-item-icon-native.json","inventory/client455-item-icon-visual-review.json","inventory/client455-item-icon-checkpoint.json","research/client455-item-icon.md"],
+      "gaps": ["Automatic classification/itemID-to-atlas callbacks and fullspriteUnit lifecycle remain open;GPU uses explicitSPRITE_INFO","Selected source-owned GUIItem metadata/frame notcompleteprivateABI;timers/overlays/shake/copy/base virtualSetSize remain open","Mixed legacy payload binding stillrefused;normal tablebootstrap,typedhover/Linker5x10/input/use/cooldowns/download remain open","Prior Questsentence/Gesture/Macro/36boards/Trunk/itemprotocol/Tutorial/QBI/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps mandatory;091runtimegate historical,staticreferences retained"]
+    },
+    {
       "id": "CLIENT455-ITEM-OBJECT-091",
       "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-ITEM-ICON-092",
       "description": "Ordinary CItemObject592/CBoardObject620 share actual payloads through CMainApp manager;null-icon lifecycle and real pack removal verified",
       "reference": [{"rva":"0x6af20","role":"item resource constructor"},{"rva":"0x6afe0","role":"Clear"},{"rva":"0x6b010","role":"bind/retain/name"},{"rva":"0x6b1b0","role":"board wrapper constructor"},{"rva":"0x6b570","role":"clone"},{"rva":"0x6b5e0","role":"copy"},{"rva":"0x6bc90","role":"derived setter"}],
       "implementation": ["scripts/client455_item_object_port.py","scripts/native/client455_item_object.h","scripts/native/client455_item_object.cpp","scripts/native/client455_client_items.h","scripts/native/client455_board_object.inc","scripts/native/client455_hotbar_bridge.inc","scripts/prepare_client455_normal.py"],

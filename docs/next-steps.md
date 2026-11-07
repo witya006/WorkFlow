@@ -7,23 +7,26 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-091: CItemObject592/CBoardObject620 вошли в обычный клиент. Менеджер и данные
-принадлежат CMainApp;2013 реальных владельцев/клонов проверены через production
-CObjectPack. Два whole-record oracle, границы signed BYTE, guarded retired pointer
-и независимые hotbar keys проходят. Прежние data575/SF1447 теперь проверяются
-прямо на production facade. PE7d7ff847…/entry152070/182-20-46/0unresolved/Create1.
-Current gate:inventory/client455-item-object-checkpoint.json;090 historical.
-[Доказательства](../research/client455-item-object.md).
+092: CBoardObject связан с индексом и цветом рамки typed CGUIItem. Core Draw
+рисует настоящие inventory/item.spr455:256 цветов,120 границ количества,8 размеров,
+9 просмотренных GPU кадров и повторное освобождение спрайтов проходят. Уточнение:
+GUIItem1240 — рамка, не caption. Автоматическая фабрика itemID→atlas ещё открыта;
+native GPU тест использует явную SPRITE_INFO. Полный GUIItem ABI не принят.
+PE e540395b…/entry152a30/182client-20kernels/0unresolved/Create1. Владельцы2013,
+data575/SF1447/hotbar/storage/account проходят на production facade.
+Current gate:inventory/client455-item-icon-checkpoint.json;091 runtimehistorical.
+[Доказательства](../research/client455-item-icon.md).
 
-Далее092: реальный item icon/caption owner и typed board/hover/Linker consumers;
-затем подключить RF455ClientItems.loadFiles к подтверждённому порядку455
-bootstrap/языковому профилю. Сейчас вызов loader проверен через own entry,
-обычный WinMain новые item tables ещё не загружает. Nonnull typed icons и binding
-к старым mixed класcам явно отказывают. Не обходить эти границы успешным no-op.
-Мигрировать mixed Clear/Create: новая база снимает icon. Затем полный Linker
-5x10/input/use/cooldowns/download/oldbelt/Tutorial. Все прежние gaps обязательны.
-Для дальнейших предметных проверок использовать production facade: старые
-087–089 runners с отдельной item.lib больше не являются текущим gate.
+Далее093: реальные spriteUnit/classification→atlas callbacks7B0570/7B0400,
+typed board/hover/Linker consumers. Затем подключить RF455ClientItems.loadFiles
+к подтверждённому порядку455 bootstrap/языковому профилю. Обычный WinMain новые
+item tables ещё не загружает. Binding к старым mixed классам пока отказывает;
+мигрировать Clear/Create и потребление payload, не обходить границы no-op.
+Полные GUIItem timers/overlays/shake/copy/base virtualSetSize и полный Linker
+5x10/input/use/cooldowns/download/oldbelt/Tutorial остаются обязательными.
+Для предметных проверок использовать production facade;087–089 runners с
+отдельной item.lib исторические. Не повторять неизменённые world/audio/159k
+suites без нового расхождения. Процент всего клиента пока не измерен.
 
 Предыдущий перенос090:
 
@@ -1051,7 +1054,8 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. После085: реальные Linker/hotbar, замена неперенесённых belt consumers и общие
+1. После092: автоматический item atlas и typed board/hover/Linker consumers,
+   normal table bootstrap; затем полные Linker/hotbar, замена belt consumers и общие
    UI/board/Avatar owners;identity Force3/Animus4 уже перенесена. Фабрика пока17/53,
    Trunk и остальные36 providers не приняты. Далее настоящий Tutorial owner,
    QBI host/follow/input/frame/feedback/local handlers, четыре этапа и переходы.

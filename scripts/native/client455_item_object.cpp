@@ -9,6 +9,7 @@
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
 #include "client455_item_object.h"
+#include "client455_item_icon.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -57,12 +58,11 @@ void CBoardObject::SetItem455(RF455ManagedItem* item){
     if(item){SetIndex(item->header().serial);SetServerIndex(item->header().field8);RefreshIcon455();}
 }
 void CBoardObject::SetIndex(DWORD index){CObject::SetIndex(index);if(m_pSharedItem455)m_pSharedItem455->header().serial=index;
-    if(m_uiIcon&&(m_pSharedItem455||typeid(*this)==typeid(CBoardObject)))throw std::logic_error("455 item icon index provider is not restored");}
+    if(m_uiIcon)m_uiIcon->SetObjectIndex455(index,m_pSharedItem455||typeid(*this)==typeid(CBoardObject));}
 void CBoardObject::SetIcon(CGUIItem* icon){m_uiIcon=icon;RefreshIcon455();}
 void CBoardObject::RefreshIcon455(){
-    // Legacy GUIItem has neither455 object-index nor inline caption provider.
-    // Do not silently claim the real icon refresh when a typed item reaches it.
-    if(m_uiIcon&&(m_pSharedItem455||typeid(*this)==typeid(CBoardObject)))throw std::logic_error("455 item icon/caption owner is not restored");
+    if(m_uiIcon){m_uiIcon->SetObjectIndex455(GetIndex(),m_pSharedItem455||typeid(*this)==typeid(CBoardObject));
+        m_uiIcon->SetGradeFrameColor455(RF455_ItemGradeColor(m_uiIcon->GetGrade455()));}
 }
 BOOL CBoardObject::IsEqual(DWORD index){return m_dwIndex==index;}
 BOOL CBoardObject::IsEqual(CBoardObject* other){if(!other)return FALSE;

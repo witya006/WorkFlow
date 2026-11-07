@@ -12,6 +12,17 @@
 
 ## Текущий статус
 
+092: предмет связан с индексом и цветной рамкой иконки; основной Draw использует
+реальные спрайты455.256 цветов/120 границ количества/8 размеров/9 просмотренных
+GPU кадров и повторная выгрузка проходят. Владельцы2013/data575/SF1447,
+hotbar/storage/account и новая PE/Create1 проходят. Далее093 — автоматический
+atlas/cell и typed board/hover/Linker consumers, затем normal bootstrap.
+Полные игровые цепочки ещё открыты; M6/M6F/M7/M9 не закрыты. Общий процент
+не измерен. Gate092 текущий,091 runtimegate исторический.
+[Доказательства](../research/client455-item-icon.md).
+
+Исторический результат091:
+
 091: actualordinary CItemObject592/CBoardObject620, менеджер CMainApp и общий
 payload связаны.2013 владельцев/клонов, production pack removal, byteoracles,
 данные/SF, hotbar/storage/account и новая PE/Create1 проходят. Иконки/legacy

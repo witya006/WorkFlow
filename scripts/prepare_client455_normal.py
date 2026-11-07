@@ -10,6 +10,7 @@ from client455_d3d9_port import ENGINE_DEFINITIONS
 from audit_client455_normal_character_api import code_only
 from client455_resource_object_port import port_resource_object
 from client455_item_object_port import port_item_object
+from client455_item_icon_port import port_item_icon
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -86,6 +87,8 @@ def main():
             if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             raw,item_changed=port_item_object(raw,relative,native,section)
             if item_changed:changes.append('455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported')
+            raw,icon_changed=port_item_icon(raw,relative,native,section)
+            if icon_changed:changes.append('455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open')
             if relative=='gameobject/board/common/clinkboard.h':
                 raw=b'#include "client455_hotbar.h"\r\n'+raw
                 anchor=b'CGUIForceBeltWindow\t\tm_uiLinkWindow;'
@@ -691,9 +694,9 @@ def main():
     for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
-    for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp']:
+    for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-        if name=='client455_item_object.cpp':cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
+        if name in ['client455_item_object.cpp','client455_item_icon.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     header_report=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())['camera_header_overlay'];camera_header=WS/header_report['file']
     if sha(camera_header.read_bytes())!=header_report['sha256']:raise ValueError('Changed owned camera header')
@@ -741,6 +744,8 @@ def main():
     for name in ['client455_object_copy.inc','client455_resource_object_ctor.inc','client455_resource_object_copy.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['resource_object_port_sha256']=sha((WS/'scripts/client455_resource_object_port.py').read_bytes())
     report['item_object_port_sha256']=sha((WS/'scripts/client455_item_object_port.py').read_bytes())
+    report['item_icon_port_sha256']=sha((WS/'scripts/client455_item_icon_port.py').read_bytes())
+    for name in ['client455_item_icon.h','client455_item_icon.cpp','client455_item_icon_members.inc','client455_target_sprites.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_client_items.h','client455_item_object.h','client455_board_object.inc','client455_item_object.cpp','client455_item_ownership.h','client455_item_ownership.cpp','client455_skill_force_items.h','client455_skill_force_items.cpp','client455_item_payloads.h','client455_item_payloads.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['camera_header_overlay']=header_report
     report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())

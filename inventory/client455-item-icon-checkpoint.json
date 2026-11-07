@@ -1,0 +1,135 @@
+{
+  "status": "PARTIAL",
+  "scope": "Typed icon index, BYTE grade color map, grade-border geometry and core draw/quantity;not completeCGUIItem/automatic item-atlas factory",
+  "script_sha256": "432aec0f4f6710ea9e1a5b4d1bc78da13ebe97b0ff96d78a41f90a451be56f04",
+  "reference_sha256": "2b8c2d182318549276980b1e9a826968de71bbcda290189a30a33f4ad7b6f7ea",
+  "native_sha256": "8cf06d25eab37851a05da83a914ac19f4231581fab40828c224108ba5c849db6",
+  "session": {
+    "file": "artifacts/client455-progress/item-icon092-session.json",
+    "sha256": "29e5b3513549e532e5499379e4480a879d50b642b7ef58922031a32ca9f2ffee"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_icon.h",
+      "sha256": "6266624e6b8784857233c5bf442e391c1360319cc62dc3efe4650f89360d7d6e"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "b4aa9175657bec442010c01ccc47e6767c07c2b5f292cd65fbf1bd8274ae9dcf"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "a3491eee7f9e075c8db490094516866ff3b9a1331b686eaa86ceb1523eb0bd1d"
+    },
+    {
+      "file": "scripts/native/client455_target_sprites.inc",
+      "sha256": "8c2dc582d1fa90e1370fe554f4dd4d435f40a21ae7512364997e44f7403e91e5"
+    },
+    {
+      "file": "scripts/native/client455_item_object.cpp",
+      "sha256": "ada46d08cd621d48f8b6be13bf180936a67478afe50db3ee8a14d88c61895451"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.h",
+      "sha256": "9ce3304cf89acaa615758c85a82e722e7e7cda6343878195b159e761e0164eb7",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "input_sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.cpp",
+      "sha256": "1bbd972591e8c6420b69be364cd005863c9db8382fc7b6075db07b3cef458f5a",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "input_sha256": "5f8c76708819fee9b88e8db524512c5f16575dcb3c116580d8258ba2403a521f",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/spritemgr.h",
+      "sha256": "e92bedc5772cca0341c7dec338b42a46f640d57202346c99b6d075e0e969c32a",
+      "input": "work/client455-port/source/RF_Client/userinterface/spritemgr.h",
+      "input_sha256": "8ec55b54edb8759e6b2af1f61dd372ea6ea4c771217376b0531ea3e7eced3bea",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/spritemgr.cpp",
+      "sha256": "bad187895115d75291243f39acd1b271b2f6fcf6134689c592dc440a168cc761",
+      "input": "work/client455-port/source/RF_Client/userinterface/spritemgr.cpp",
+      "input_sha256": "13a8fc77873fb8e24b0357e14779c1400213469819449e00b7dba3875d91e63e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "confirmed455localized/Common sprite route for actual startup mouse/common consumers;other legacyUI groups open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_icon.cpp",
+      "sha256": "b4aa9175657bec442010c01ccc47e6767c07c2b5f292cd65fbf1bd8274ae9dcf",
+      "input": "scripts/native/client455_item_icon.cpp",
+      "input_sha256": "b4aa9175657bec442010c01ccc47e6767c07c2b5f292cd65fbf1bd8274ae9dcf"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_object.cpp",
+      "sha256": "ada46d08cd621d48f8b6be13bf180936a67478afe50db3ee8a14d88c61895451",
+      "input": "scripts/native/client455_item_object.cpp",
+      "input_sha256": "ada46d08cd621d48f8b6be13bf180936a67478afe50db3ee8a14d88c61895451"
+    }
+  ],
+  "normal_link_sha256": "f5336190baed8ce9cecbad8f57405d24530a015cfe42edb770cbd12d9eb8287e",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e540395b8f05fce56b9b7eec8e46ee1b555cbd18f9ad41fd692b54c74de45308",
+    "bytes": 2107392,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x152a30",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "5d752e2ab1d771140f16fe664aad6b44862895436dc1289daf2ddab11e0ee5f6",
+    "client455-normal-build": "b50dc8d821df38fab81e8c329ab4f1b6a9d848eb4d3ca59e92e599eb5dd53a00",
+    "client455-normal-consumers": "efcc04864ce5b95cbf38e43bed8126a939b1a4cd21666e2bed909a12a6e8a00b",
+    "client455-own-entry": "c682fb7d06ebc5bf6ff0a8573c6b1dde776e34418b87e1dd07191dee1c4d4d45",
+    "client455-startup-audit": "d2fafb14287c55074038e0c4a25883c310a3f8e6f746b2992520fb525851f5d6",
+    "client455-startup-native": "1570798e5d1a10b7bdc02e280922d5da8655a44ad1313405d20abc40b2a802a0",
+    "client455-ui-startup-native": "9dd79e0b0f1aba36337dd0e67dd17b53483b3f881675e04a612ac54820afc96c",
+    "client455-hotbar-native": "f8fd370442ce8cfad4f2ecb473c5b8fd374c842d2da70a94258259fdf4124a9a",
+    "client455-storage-native": "c697d27a3fa875bdd5cd6ae316671505b672f6c15d11f0d0ab0b72011f34effe",
+    "client455-account-native": "22792ab1d37b608fb5aa2bc10f9c3d4d2147072c468d1d295bbff2c3b5705e42",
+    "client455-item-object-native": "4a0c772f57c1eee26949e0a39151fb5bad46d6d8158f4e7dbd0adbf19807cb78",
+    "client455-item-icon-visual-review": "3b227319c854d84445e8f064c30d84f113cad04c80fbfb26e6d1a9482fb4856d"
+  },
+  "selected_ranges": 22,
+  "actual_instructions": 1740,
+  "grade_values": 256,
+  "quantity_cases": 120,
+  "signed_width_cases": 8,
+  "viewed_GPU_frames": 9,
+  "production_owner2013_payload575_SF1447_regression": "PASS_BOUNDED",
+  "previous091gate": "historical runtime gate after changed normal/report/source;static references and whole-record oracles retained",
+  "unchanged_world_audio_159k_suites_rerun": false,
+  "gaps": [
+    "Automatic itemID/classification toatlas-frame callback7B0570/7B0400 and fullspriteUnit lifecycle remain unported",
+    "BaseCGUIObject SetSize remains legacy nonvirtual;typedCGUIItem/derived pointer path only;completebase dispatch/size96ABI not claimed",
+    "GUIItem constructor/copy/update/shake/cooldowns/optionalchildren and full hover/Linker5x10/input/use/download remain open",
+    "Normal data bootstrap/mixed legacy consumers/Quest sentence expansion/fullTutorial/Login/auth/game and prior M6F/M7/M9 gaps remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
