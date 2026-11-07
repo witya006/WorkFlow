@@ -61,15 +61,18 @@ public:
     RF455ItemDataSpan rawData()const{return data;}
 };
 
-// Concrete source-owned primary/auxiliary caches. The selected Create domain
-// currently implements factory selector1 (SF);other five payload factories,
-// Gesture/Macro creation and ordinary game-global binding remain required.
+// Concrete source-owned primary/auxiliary caches. Fresh payload creation is
+// implemented by the SF and basic-item modules. Gesture/Macro,live callbacks
+// and ordinary game-global binding remain required.
+class RF455ItemDataStore;
 class RF455SourceItemManager final:public RF455ItemOwnershipHost {
     std::list<std::unique_ptr<RF455ManagedItem>> primary,gestures;
     static bool erase(std::list<std::unique_ptr<RF455ManagedItem>>&,RF455ItemHeader*);
 public:
     ~RF455SourceItemManager();
     RF455SkillForceItem* createSkillForce(const RF455SkillForceData&,std::uint8_t,std::uint32_t);
+    RF455ManagedItem* createPayload(const RF455ItemDataStore&,std::uint8_t selector,std::uint8_t type,
+                                    std::uint32_t index,const RF455SkillForceData* sf=nullptr);
     std::size_t size()const{return primary.size();}
     void clear();
     bool primaryCacheEmpty()override{return primary.empty();}

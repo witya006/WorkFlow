@@ -23,6 +23,46 @@
 
 ## Последний проверенный результат
 
+089 PARTIAL_SOURCE_RUNTIME: client455_item_payloads.h/cpp даёт Item47/Quest12/
+Character7 owners/readers и freshNormal0/Animus2/Unit3/UnitParts4/Quest5 payloads.
+RF455SourceItemManager.createPayload selector1 делегируетrealSF088;прочие
+selectors вне2..5 defaultNormal0 (неGesture). Primary concrete/087clone-release.
+Wholebyteoracles76049items/3NDItemprofiles иQuest12/Character7;575selected
+factory-clone-lifetimes/99AnimusXP boundaries проходят standalone/fullobject.
+Та же новаяRF455ItemPayloads.lib проходит unchangedSF1447probe в обоих режимах;
+4naturalexit0/buildwarnings0/MAPprovidersverified. Обычный игровой binding нет.
+
+RootItem —48sections Htag/Ibytes/Ioffset10bytes: F100..F12D→0..45,F12F→46,
+F130→47workstarts+47workcounts,F12E unmappedskip;next=offset+bytes+10.
+InstalledTaiwan virtualslot160→82C490 returns1→segmented. Flatbranch — generated
+fixture изactualtables,неотдельныйoriginal. NDnames skip44/45 безчтенияcount;
+copymin(localcount,basecount)64bytes@row8,extras skip/shorttail unchanged.
+Zh-twkind27=32vs31 корректноskip,ko/ru shortcounts НЕошибка как вSF.
+Descriptions/dungeons:zh-tw68084/100,ko63821/100,ru52255/0и11185ignoredtail.
+Questframe7=2895x424;F0000000..2→count-9..-7,F0000003..5→count-3..-1.
+Characterframe6=648x95;AnimusXP scans81perBYTEtype. FreshClear data16null→
+type255→actualnull;неplaceholder. Metadata можетчитать beyondstride только
+внутриactualtableowner;внеегоexplicitout_of_range,неfailureparity.
+Freshsizes200/136/192/100/116,dispatchopaquetoken/unwrittenbytespreserved.
+Questname()explicitthrows:target468450→6057B0/605A70 sentenceexpansion ещёнет.
+
+50equalpinranges/1796actualasm/19bodies,noncontiguousEH15bytewindows included.
+Rawitem-payloads089-reference-complete/session.json underartifacts/client455-progress.
+IDA877755f1savedclosed/list0. Gateinventory/client455-item-payloads-checkpoint.json.
+088runtimegate historical:sharedSFheader changed,newlibSFregression принят089;
+static088reference valid. Production086PE82625b3e…/normal-link/hotbargate current,
+неизменённые GPU/startup/159k suites неповторялись. M6/M6F/M7/M9OPEN.
+
+Далее090: realgame-globalmanager/CItemObject/CResObject lifecycle/typedboard-
+hover owners,потом ordinaryLinker5x10/input/use/cooldown/download/oldbelt/Tutorial.
+НеreinterpretcastlegacyCBoardObject (неCResObject) в455wrapper. Fullpayload
+copy/mutation/network/UI,Gesture/Macro,Questlocalizedsentenceprovider/other
+Characterconsumers/reloadduplicateoldowner/OOM/unwind/unsafe/privateABI ивсе
+прежниеgaps обязательны. Процентвсегоклиента невычислен:реестр неполный.
+Все вводыоригиналыimmutable,серверныефайлы untouched.
+
+Предыдущая source-основа088 (runtimegate historical,regression обновлён089):
+
 088 PARTIAL_SOURCE_RUNTIME: client455_skill_force_items.h/cpp — realSF160
 factory selector1,5ownedtables иconcreteRF455SourceItemManager;087clone/release
 теперь проверен на настоящихSFpayloads,неrecordinghost.1447rows/1447wrappers,
@@ -50,12 +90,10 @@ startup passed CRT/WinMain/950/
 6997NDLanguage/localTCP/sound1,стопдоD3D;SFgameownerэтимнезапущен.
 OldGPU/Korea-startup/159k suites неповторялись;PE82625b3e…/normal-link unchanged.
 
-Далее089: remaining5payloadfactories(physical/Animus/Unit/UnitParts/Quest),
-actualItem/Questframing+metadata;потом game-global/CItemObject/CResObject/
-typedboard-hover owners и Linker5x10view/input/cooldown/download/oldbelt/Tutorial.
-RootItem.edf exploratorysimple47tables parse НЕПРОШЁЛ(естьprefix),невыдумывать
-формат;Questmulti-section. Cachedfuturectors/helpers вskill-force088-followup.json,
-передновымпортомпроверятьranges. SFearlier4XP/mastery tables/liveicon/recreate/
+Очередь088 поfreshfactories/Item/Questframing выполнена089 bounded;game-global/
+CItemObject/CResObject/typedboard-hover/Linker/Tutorial ещёOPEN. Cachedfuturectors/
+helpers вskill-force088-followup.json;передновымпортомпроверятьranges.
+SFearlier4XP/mastery tables/liveicon/recreate/
 reloadleakpointerlifetime/unsafeOOMunwind ивсепрежниеgapsOPEN. M6/M6F/M7/M9OPEN.
 
 Предыдущая source-основа:

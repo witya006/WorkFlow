@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+089: realItem47/76049rows,Quest12/Character7 readers и Normal/Animus/Unit/
+UnitParts/Quest freshfactory связываются с concreteprimarymanager/087ownership.
+575selectedfactories/clones/lifetimes,99AnimusXP boundaries,3wholeNDItem corpora
+прошли standalone/full-object;SF1447regression с той же новой.lib тоже exit0.
+Production086/егоgate current;088runtimegate исторический по sourcehashes.
+Это dependency source-runtime,не обычный игровой путь. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-item-payloads.md).
+
+Далее090: CItemObject/CResObject resource lifecycle и реальные game-global/
+typedboard-hover owners;подключить sourcepayloads к ordinaryLinker,затем5x10
+view/use/input/cooldown/download/oldbelt/Tutorial. Не reinterpretcast legacy
+CBoardObject в455wrapper. Полные payloadcopy/mutation/network/UI,Questlocalized
+sentenceexpansion/Gesture/Macro/Characterconsumers/reload/OOM/unsafe ивсе прежние
+gaps сохраняются. Не повторять неизменённыеGPU/startup/159k suites без причины.
+
+Предыдущая source-основа088:
+
 088: sourceSF factory selector1/5tables и concreteprimarymanager связаны с087
 clone/release.1447realpayloads/wrappers,wholetablebyteoracle,standalone/fullobject
 exit0. RootSkillForce и NDzh-tw согласованы;originalconfigTaiwan. Новаяearly
@@ -14,13 +31,8 @@ PE Taiwan/950/6997/localTCP/sound1 passed доD3D. Ko/ru countfail4/1 иprefixwr
 проверены;не исправлять входы выдуманнымистроками. Production086/gate current.
 [Доказательства](../research/client455-skill-force-items.md).
 
-Далее089: другие5payloadfactories/ихmetadata и настоящие Item/Quest readers.
-RootItem не начинается простыми47count-strideblocks;смотреть targetloader,
-не принимать exploratoryparse за формат. Quest имеетнесколькосекций. Затем
-game-global manager/CItemObject/CResObject/typedboard-hover owners,Linker/
-5x10view/input/cooldown/download/oldbelt/Tutorial. SFmastery/XP/liveicon/recreate/
-reload/unsafe errors покаopen. Старые GPU/Korea-startup/159k suites безновой
-причины не повторять;новая Taiwanearlyпроверка — отдельный нужный сценарий.
+Очередь088 по остальным freshfactories/readers выполнена089 в ограниченном
+домене;SFmastery/XP/liveicon/recreate/reload/unsafe и ordinarybinding ещёOPEN.
 
 Предыдущая source-основа:
 

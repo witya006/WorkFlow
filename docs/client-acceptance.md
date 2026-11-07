@@ -1,5 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
+089 PARTIAL_SOURCE_RUNTIME: реальные Item47/Quest12/Character7 readers и пять
+freshpayloadfactories работают с concreteprimarymanager/087clone-release.
+Полные bytes76049 itemrows/3NDItemprofiles,575selectedfactories/ownedwrappers,
+99AnimusXP boundaries прошли standalone/full-object. SF1447regression проходит
+с той же новой библиотекой. Это не ordinarygame binding/полные gameplayметоды.
+Questname требует sentenceprovider и явноthrows;NDQuest/полный Character,
+reload/duplicateowner/OOM/unsafe/privateABI и все прежние gaps остаются.
+Production086/gate current;088runtimegate исторический по sourcehashes,
+static088reference сохранён. GPU/startup/159k suites не повторялись.
+M6/M6F/M7/M9OPEN;реестр неполный,общий процент не вычислен.
+[Доказательства](../research/client455-item-payloads.md).
+
 088 PARTIAL_SOURCE_RUNTIME: concreteSF factory selector1/5data tables/primary
 manager связаны с087wrapperclone/release.1447realpayloads/wrappers/целые
 локализованныеbytes прошли standalone/full-object;host уженеrecording дляSF.

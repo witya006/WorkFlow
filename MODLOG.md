@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-payloads089. Source Item47/76049rows,Quest12/Character7
+readers and five fresh factories/actualprimarymanager/087ownership pass575
+selected factory-clone-lifetimes,99AnimusXP boundaries,three completeNDItem
+byteoracles,standalone/full-object. Same new.lib passes unchangedSF1447probe;
+allfour exit0/buildwarnings0.50equalranges/1796asm/IDA877755f1savedclosed.
+Ordinary086/gate unchanged;088runtimegate historical after sharedheaderchange,
+staticreference valid/new-librarySFregression here. No unchangedGPU/startup/
+159k suites repeated. Realgameowners/fullpayloads/Queststrings/Tutorial/M9OPEN.
+Next090 CItemObject/CResObject/ordinaryowners. No server writes.
+[Evidence](research/client455-item-payloads.md).
+
 2026-11-07 — Skill-force088. Concrete SF selector1 factory/data owner/primary
 manager now drive087clone/release on1447actualrows/ownedwrappers;notrecordinghost.
 Standalone/fullobject whole-tablebytes/last-owner erase passed.35equalranges/

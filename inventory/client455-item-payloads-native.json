@@ -1,0 +1,701 @@
+{
+  "scope": "Concrete fresh payload/readers/manager and087owned wrappers on real Item/Quest/Character files;SF regression on same new library;ordinary game binding open",
+  "script_sha256": "09518a94cd3a833c204980c37afd7ff5268a3805b50ea8508bc115de8d5ad14b",
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "reference_sha256": "f311033adf7e35a2fb965ca0654fa1574b2dfc251acb3599d937d0ab1c3aba5f",
+  "SF_reference_sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216",
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_ownership.cpp",
+      "sha256": "eaaf367f2cbe8a15d8a93886071b847c36f9165e6c21a1a5a13ce28c89b35b86"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.cpp",
+      "sha256": "b0e34e8cf19d5c963368451cdf6a2f2892b355323bf44d4bed7a6209977b0896"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "71059bb255e1fda7b861efe71d0e23f21d74875bc44bd636e7a66c5d9a3dd1e3"
+    },
+    {
+      "file": "scripts/native/client455_item_ownership.h",
+      "sha256": "4f44b344fb55c23252c6a3a4112dd27ac351a0c72bf9adc8e5da8aaeeb2cbfa4"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.h",
+      "sha256": "7e2751de64dfd501dc08beee107ab6c30de22328ad5cdafc6b5e2d2d844aee59"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "7b954a4107a1b6cdbf5694b3a0dc99eb5b9601fec0221d85fc7c8ee46fb08e42"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads_probe.cpp",
+      "sha256": "cd068292d3936ba39173257d1502fd642fcfa53221d0c11c60b04b1e0af04ac9"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items_probe.cpp",
+      "sha256": "75193276e9c077705e8941c6919529c78378226b5f9cc6c531c6287dd28c749d"
+    },
+    {
+      "file": "work/client455-port/item-payloads/item-payloads-full-entry.cpp",
+      "sha256": "5f25b36b7df0176f946622efbaa005340e3c7b253411f4dca516a6a2788aae5d"
+    },
+    {
+      "file": "work/client455-port/item-payloads/item-payloads-sf-full-entry.cpp",
+      "sha256": "176a0752877b40ea5908f5feb48f9dc71636fb13bc10cefedccac082bd735299"
+    }
+  ],
+  "library": "work/client455-port/item-payloads/RF455ItemPayloads.lib",
+  "library_sha256": "671b14b037b833a05a090ab44731c460aae7fa29d1086a1ddca2e06710b0b9fd",
+  "objects": [
+    {
+      "file": "work/client455-port/item-payloads/client455_item_ownership.obj",
+      "sha256": "52c10fe801607de1bcf5bc247ddf69640ab86d1579a8e5650480162328dbc727"
+    },
+    {
+      "file": "work/client455-port/item-payloads/client455_skill_force_items.obj",
+      "sha256": "ebea4e52493d6a3807c780b3ee73e2a2fff90dbde5ce97c50bf915e6454ce08b"
+    },
+    {
+      "file": "work/client455-port/item-payloads/client455_item_payloads.obj",
+      "sha256": "10cab6868715c79e4ca7e2f1eeb26c42d35b8fc2405452746fe8e419f595ec3e"
+    },
+    {
+      "file": "work/client455-port/item-payloads/client455_item_payloads_probe.obj",
+      "sha256": "4bcc37f458bc57d78ab7ff081d4f75d0f82adb1b52ac23ddcb3351b1d98e036f"
+    },
+    {
+      "file": "work/client455-port/item-payloads/client455_skill_force_items_probe.obj",
+      "sha256": "8d283bad0642d663d540d0a0fe2b647e9bf20ff589cc1e6387c5a35f18c9e1cb"
+    }
+  ],
+  "edf_dependency": {
+    "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
+    "sha256": "ef3cf9616c4206ab5d6f98d1c1be61024c1d36fa7bfff60d0d31c55bff3c42c3"
+  },
+  "edf_source_sha256": "2b682480518970fea04e22cea27b09728ab3c0b113d36024c8b6c813200a7824",
+  "build_log": {
+    "file": "work/client455-port/item-payloads/build.txt",
+    "sha256": "44eede8b7f9be55f88c86c6f0fe54fa368191d62ca149d3ad9c84f7541436316"
+  },
+  "runs": [
+    {
+      "probe": "item-payloads",
+      "mode": "standalone",
+      "exe": {
+        "file": "work/m9/5df773ca/item-payloads-001/item-payloads-probe.exe",
+        "sha256": "5df773cadd6829029d8964cda5dd61f90121e195d9f84537cdb7f3a2158828d5"
+      },
+      "map": {
+        "file": "work/client455-port/item-payloads/item-payloads-probe.map",
+        "sha256": "b28e35bcc948c019c3523f9045e4c80f2f67513877e7f8aea8f14dfbd9ef648b"
+      },
+      "console": {
+        "file": "work/m9/5df773ca/item-payloads-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/5df773ca/item-payloads-001/result.json",
+        "sha256": "caa951bcf2746f09ca277aa322054d5231da226cd2b47841d729c60e66fcfc37"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/quest.edf",
+          "sha256": "e0cb98b5e54730ae005bba69f505b90011334716d6c2aac04b18f2358f239336"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/character.edf",
+          "sha256": "fba4eaf87e008b800c4ce7d97612dfd36823c0528adec43ca789bbdc0c8e3fcc"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/nd-zh-tw.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/nd-ko-kr.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/nd-ru-ru.edf",
+          "sha256": "587a3eb6ff82881c866b731d51dedc49a0f434f504da46b1dfccbe2e5d19a6ea"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/base.tables",
+          "sha256": "fb289ff25b5e3b0e1f7bf774513bca9f90c3966cd313082fdaf7f3474e2b5a3e"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/flat.edf",
+          "sha256": "97b38fbbabf2f17d21c0bd59b8d42b9fdb10cea52ef282fd1a34279a64026e4e"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/zh-tw.tables",
+          "sha256": "ecbf013817f546edee40e31b8878bc2488a054f3523fed2abffc9dc2ba11835e"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/zh-tw.descriptions",
+          "sha256": "db8210df6935814e8a60132e6b016b86d6a58feaa4d4db71a8ebabc5b77cd8de"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ko-kr.tables",
+          "sha256": "e62e97b41f852586343b92f1bc5bac1747bae48747572934d7784942207c9493"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ko-kr.descriptions",
+          "sha256": "e9657cb440da3551831d28203c31b2fa77900e275acd7c526a1293e06b22c191"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ru-ru.tables",
+          "sha256": "29e917bd002574e7cd1dea286653defc15f601a4fe8e3fd0a7e88d382eef0516"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ru-ru.descriptions",
+          "sha256": "e3dfc2a1e02bcb1ce49dee24544d58c9a407fc2fbbadd7c0ec8f2a024ce356ed"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/quest.tables",
+          "sha256": "d683fd3d33bbc7a8d849be517815509114f1453910ed05184071a3e1ed520744"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/character.tables",
+          "sha256": "85081255b7658134cfd446ee4329cb39483fe0a9ec2b90e169783dee35c42ba0"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/cases.bin",
+          "sha256": "c11b4dcf196f252efb2aa4a2ec64a13aa75c6f461522c911b7db9ca3bed219d4"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/levels.bin",
+          "sha256": "55a8769ae860ce9a3e5ef093200763dce5871d4f644a81823ba9d3073539019a"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/unknown.edf",
+          "sha256": "0b22f383cfb2eb9274e4890bf4241bcae03250a8b594080da9d56fe14f7530f9"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/bad-offset.edf",
+          "sha256": "f1ea9184b0112d569d0cb932ec94cf8a3238ca502506eb53de20f20ecb3f8d88"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/base.edf",
+          "sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/zh-tw.edf",
+          "sha256": "b87b6b2911df9734215077453299301e72f697b82891946c63eaeb5074c362d5"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ko-kr.edf",
+          "sha256": "f1a2e92f42a28291d94c872a4e8045f6067a6105278d1c049a9447b04368e210"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ru-ru.edf",
+          "sha256": "838b5448b11f313d2bfc2fd0644d573fe78dcf087f6f2e8e47bb70a8781f4c49"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/zh-tw.golden",
+          "sha256": "dc6012acf034bd64f1d223815ded753fd6a351fb3528fd4a473637507a928494"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ko-kr.golden",
+          "sha256": "6f8d04a7b416919effab3608662b8b69b4bcb4bbe147f06c2be9b59bcfb81964"
+        },
+        {
+          "file": "work/m9/5df773ca/item-payloads-001/ru-ru.golden",
+          "sha256": "f73b1844aaaf1400b7dc1023a051556e11222384fa287d37684084db572efa22"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "real_item_rows": 76049,
+        "real_item_tables": 47,
+        "real_quest_frames": 12,
+        "real_character_frames": 7,
+        "real_quest_rows": 2895,
+        "fresh_factory_cases": 575,
+        "fresh_payloads": 575,
+        "bounded_unsafe_cases": 0,
+        "cloned_wrappers": 575,
+        "Animus_level_cases": 99,
+        "NDItem_locales": 3,
+        "concrete_primary_manager": true,
+        "whole_table_byte_oracles": true,
+        "source_SF_dispatch": true,
+        "ordinary_game_binding": false,
+        "Quest_sentence_expansion": false,
+        "full_payload_gameplay": false,
+        "full_client": false
+      },
+      "architecture": "x86"
+    },
+    {
+      "probe": "item-payloads",
+      "mode": "full_object",
+      "exe": {
+        "file": "work/m9/3b3349c0/item-payloads-001/item-payloads-probe.exe",
+        "sha256": "3b3349c0293e6adbb75a89215bdc3fd949750e1366787b9c59113aa1912d2e1d"
+      },
+      "map": {
+        "file": "work/client455-port/item-payloads-probe/item-payloads-probe.map",
+        "sha256": "4b1e243ed0fdb993d1a0b3950707ffaa7a1a3b763087016aa8ed405d794d5f02"
+      },
+      "console": {
+        "file": "work/m9/3b3349c0/item-payloads-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/3b3349c0/item-payloads-001/result.json",
+        "sha256": "caa951bcf2746f09ca277aa322054d5231da226cd2b47841d729c60e66fcfc37"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/quest.edf",
+          "sha256": "e0cb98b5e54730ae005bba69f505b90011334716d6c2aac04b18f2358f239336"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/character.edf",
+          "sha256": "fba4eaf87e008b800c4ce7d97612dfd36823c0528adec43ca789bbdc0c8e3fcc"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/nd-zh-tw.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/nd-ko-kr.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/nd-ru-ru.edf",
+          "sha256": "587a3eb6ff82881c866b731d51dedc49a0f434f504da46b1dfccbe2e5d19a6ea"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/base.tables",
+          "sha256": "fb289ff25b5e3b0e1f7bf774513bca9f90c3966cd313082fdaf7f3474e2b5a3e"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/flat.edf",
+          "sha256": "97b38fbbabf2f17d21c0bd59b8d42b9fdb10cea52ef282fd1a34279a64026e4e"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/zh-tw.tables",
+          "sha256": "ecbf013817f546edee40e31b8878bc2488a054f3523fed2abffc9dc2ba11835e"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/zh-tw.descriptions",
+          "sha256": "db8210df6935814e8a60132e6b016b86d6a58feaa4d4db71a8ebabc5b77cd8de"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ko-kr.tables",
+          "sha256": "e62e97b41f852586343b92f1bc5bac1747bae48747572934d7784942207c9493"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ko-kr.descriptions",
+          "sha256": "e9657cb440da3551831d28203c31b2fa77900e275acd7c526a1293e06b22c191"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ru-ru.tables",
+          "sha256": "29e917bd002574e7cd1dea286653defc15f601a4fe8e3fd0a7e88d382eef0516"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ru-ru.descriptions",
+          "sha256": "e3dfc2a1e02bcb1ce49dee24544d58c9a407fc2fbbadd7c0ec8f2a024ce356ed"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/quest.tables",
+          "sha256": "d683fd3d33bbc7a8d849be517815509114f1453910ed05184071a3e1ed520744"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/character.tables",
+          "sha256": "85081255b7658134cfd446ee4329cb39483fe0a9ec2b90e169783dee35c42ba0"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/cases.bin",
+          "sha256": "c11b4dcf196f252efb2aa4a2ec64a13aa75c6f461522c911b7db9ca3bed219d4"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/levels.bin",
+          "sha256": "55a8769ae860ce9a3e5ef093200763dce5871d4f644a81823ba9d3073539019a"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/unknown.edf",
+          "sha256": "0b22f383cfb2eb9274e4890bf4241bcae03250a8b594080da9d56fe14f7530f9"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/bad-offset.edf",
+          "sha256": "f1ea9184b0112d569d0cb932ec94cf8a3238ca502506eb53de20f20ecb3f8d88"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/base.edf",
+          "sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/zh-tw.edf",
+          "sha256": "b87b6b2911df9734215077453299301e72f697b82891946c63eaeb5074c362d5"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ko-kr.edf",
+          "sha256": "f1a2e92f42a28291d94c872a4e8045f6067a6105278d1c049a9447b04368e210"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ru-ru.edf",
+          "sha256": "838b5448b11f313d2bfc2fd0644d573fe78dcf087f6f2e8e47bb70a8781f4c49"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/zh-tw.golden",
+          "sha256": "dc6012acf034bd64f1d223815ded753fd6a351fb3528fd4a473637507a928494"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ko-kr.golden",
+          "sha256": "6f8d04a7b416919effab3608662b8b69b4bcb4bbe147f06c2be9b59bcfb81964"
+        },
+        {
+          "file": "work/m9/3b3349c0/item-payloads-001/ru-ru.golden",
+          "sha256": "f73b1844aaaf1400b7dc1023a051556e11222384fa287d37684084db572efa22"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "real_item_rows": 76049,
+        "real_item_tables": 47,
+        "real_quest_frames": 12,
+        "real_character_frames": 7,
+        "real_quest_rows": 2895,
+        "fresh_factory_cases": 575,
+        "fresh_payloads": 575,
+        "bounded_unsafe_cases": 0,
+        "cloned_wrappers": 575,
+        "Animus_level_cases": 99,
+        "NDItem_locales": 3,
+        "concrete_primary_manager": true,
+        "whole_table_byte_oracles": true,
+        "source_SF_dispatch": true,
+        "ordinary_game_binding": false,
+        "Quest_sentence_expansion": false,
+        "full_payload_gameplay": false,
+        "full_client": false
+      },
+      "architecture": "x86"
+    },
+    {
+      "probe": "item-payloads-sf",
+      "mode": "standalone",
+      "exe": {
+        "file": "work/m9/5233f3ce/item-payloads-sf-001/item-payloads-sf-probe.exe",
+        "sha256": "5233f3cefd9012f6566defbdbd3f3efd9cbd206e57139bc20114a2d67feb3fad"
+      },
+      "map": {
+        "file": "work/client455-port/item-payloads/item-payloads-sf-probe.map",
+        "sha256": "dde22096365e27d83199a7e20ea99eec0e8a4fa81bcdedfbbe59d589c23b5d7d"
+      },
+      "console": {
+        "file": "work/m9/5233f3ce/item-payloads-sf-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/5233f3ce/item-payloads-sf-001/result.json",
+        "sha256": "6219c6167b2a5bfffaa00fb818e182196bd6f8dc183bc123a42b22b8de0ab2d2"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/quest.edf",
+          "sha256": "e0cb98b5e54730ae005bba69f505b90011334716d6c2aac04b18f2358f239336"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/character.edf",
+          "sha256": "fba4eaf87e008b800c4ce7d97612dfd36823c0528adec43ca789bbdc0c8e3fcc"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/nd-zh-tw.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/nd-ko-kr.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/nd-ru-ru.edf",
+          "sha256": "587a3eb6ff82881c866b731d51dedc49a0f434f504da46b1dfccbe2e5d19a6ea"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/base.tables",
+          "sha256": "fb289ff25b5e3b0e1f7bf774513bca9f90c3966cd313082fdaf7f3474e2b5a3e"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/flat.edf",
+          "sha256": "97b38fbbabf2f17d21c0bd59b8d42b9fdb10cea52ef282fd1a34279a64026e4e"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/zh-tw.tables",
+          "sha256": "ecbf013817f546edee40e31b8878bc2488a054f3523fed2abffc9dc2ba11835e"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/zh-tw.descriptions",
+          "sha256": "db8210df6935814e8a60132e6b016b86d6a58feaa4d4db71a8ebabc5b77cd8de"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ko-kr.tables",
+          "sha256": "e62e97b41f852586343b92f1bc5bac1747bae48747572934d7784942207c9493"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ko-kr.descriptions",
+          "sha256": "e9657cb440da3551831d28203c31b2fa77900e275acd7c526a1293e06b22c191"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ru-ru.tables",
+          "sha256": "29e917bd002574e7cd1dea286653defc15f601a4fe8e3fd0a7e88d382eef0516"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ru-ru.descriptions",
+          "sha256": "e3dfc2a1e02bcb1ce49dee24544d58c9a407fc2fbbadd7c0ec8f2a024ce356ed"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/quest.tables",
+          "sha256": "d683fd3d33bbc7a8d849be517815509114f1453910ed05184071a3e1ed520744"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/character.tables",
+          "sha256": "85081255b7658134cfd446ee4329cb39483fe0a9ec2b90e169783dee35c42ba0"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/cases.bin",
+          "sha256": "c11b4dcf196f252efb2aa4a2ec64a13aa75c6f461522c911b7db9ca3bed219d4"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/levels.bin",
+          "sha256": "55a8769ae860ce9a3e5ef093200763dce5871d4f644a81823ba9d3073539019a"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/unknown.edf",
+          "sha256": "0b22f383cfb2eb9274e4890bf4241bcae03250a8b594080da9d56fe14f7530f9"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/bad-offset.edf",
+          "sha256": "f1ea9184b0112d569d0cb932ec94cf8a3238ca502506eb53de20f20ecb3f8d88"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/base.edf",
+          "sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/zh-tw.edf",
+          "sha256": "b87b6b2911df9734215077453299301e72f697b82891946c63eaeb5074c362d5"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ko-kr.edf",
+          "sha256": "f1a2e92f42a28291d94c872a4e8045f6067a6105278d1c049a9447b04368e210"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ru-ru.edf",
+          "sha256": "838b5448b11f313d2bfc2fd0644d573fe78dcf087f6f2e8e47bb70a8781f4c49"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/zh-tw.golden",
+          "sha256": "dc6012acf034bd64f1d223815ded753fd6a351fb3528fd4a473637507a928494"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ko-kr.golden",
+          "sha256": "6f8d04a7b416919effab3608662b8b69b4bcb4bbe147f06c2be9b59bcfb81964"
+        },
+        {
+          "file": "work/m9/5233f3ce/item-payloads-sf-001/ru-ru.golden",
+          "sha256": "f73b1844aaaf1400b7dc1023a051556e11222384fa287d37684084db572efa22"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "real_tables": 5,
+        "real_SF_payloads": 1447,
+        "cloned_wrappers": 1447,
+        "concrete_primary_manager": true,
+        "recording_host": false,
+        "real_table_borrowing": true,
+        "matching_localization": "zh-tw",
+        "Korea_count_mismatch_table": 4,
+        "Russia_count_mismatch_table": 1,
+        "prefix_localization_writes": true,
+        "actual_last_owner_erase": true,
+        "duplicate_factory_requests": true,
+        "source_factory_selector": 1,
+        "all_payload_factories": false,
+        "ordinary_Linker_bound": false,
+        "actual_Tutorial": false
+      },
+      "architecture": "x86"
+    },
+    {
+      "probe": "item-payloads-sf",
+      "mode": "full_object",
+      "exe": {
+        "file": "work/m9/49fbb67e/item-payloads-sf-001/item-payloads-sf-probe.exe",
+        "sha256": "49fbb67e7c6b403b455c1490b0a4d0202399b7326376fa372f254236a7bf4bfa"
+      },
+      "map": {
+        "file": "work/client455-port/item-payloads-sf-probe/item-payloads-sf-probe.map",
+        "sha256": "da9fd3aef5609d255b796891d9465c2d8c3bb633275860db8fdd4ec41b1ff322"
+      },
+      "console": {
+        "file": "work/m9/49fbb67e/item-payloads-sf-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/49fbb67e/item-payloads-sf-001/result.json",
+        "sha256": "6219c6167b2a5bfffaa00fb818e182196bd6f8dc183bc123a42b22b8de0ab2d2"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/quest.edf",
+          "sha256": "e0cb98b5e54730ae005bba69f505b90011334716d6c2aac04b18f2358f239336"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/character.edf",
+          "sha256": "fba4eaf87e008b800c4ce7d97612dfd36823c0528adec43ca789bbdc0c8e3fcc"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/nd-zh-tw.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/nd-ko-kr.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/nd-ru-ru.edf",
+          "sha256": "587a3eb6ff82881c866b731d51dedc49a0f434f504da46b1dfccbe2e5d19a6ea"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/base.tables",
+          "sha256": "fb289ff25b5e3b0e1f7bf774513bca9f90c3966cd313082fdaf7f3474e2b5a3e"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/flat.edf",
+          "sha256": "97b38fbbabf2f17d21c0bd59b8d42b9fdb10cea52ef282fd1a34279a64026e4e"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/zh-tw.tables",
+          "sha256": "ecbf013817f546edee40e31b8878bc2488a054f3523fed2abffc9dc2ba11835e"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/zh-tw.descriptions",
+          "sha256": "db8210df6935814e8a60132e6b016b86d6a58feaa4d4db71a8ebabc5b77cd8de"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ko-kr.tables",
+          "sha256": "e62e97b41f852586343b92f1bc5bac1747bae48747572934d7784942207c9493"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ko-kr.descriptions",
+          "sha256": "e9657cb440da3551831d28203c31b2fa77900e275acd7c526a1293e06b22c191"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ru-ru.tables",
+          "sha256": "29e917bd002574e7cd1dea286653defc15f601a4fe8e3fd0a7e88d382eef0516"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ru-ru.descriptions",
+          "sha256": "e3dfc2a1e02bcb1ce49dee24544d58c9a407fc2fbbadd7c0ec8f2a024ce356ed"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/quest.tables",
+          "sha256": "d683fd3d33bbc7a8d849be517815509114f1453910ed05184071a3e1ed520744"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/character.tables",
+          "sha256": "85081255b7658134cfd446ee4329cb39483fe0a9ec2b90e169783dee35c42ba0"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/cases.bin",
+          "sha256": "c11b4dcf196f252efb2aa4a2ec64a13aa75c6f461522c911b7db9ca3bed219d4"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/levels.bin",
+          "sha256": "55a8769ae860ce9a3e5ef093200763dce5871d4f644a81823ba9d3073539019a"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/unknown.edf",
+          "sha256": "0b22f383cfb2eb9274e4890bf4241bcae03250a8b594080da9d56fe14f7530f9"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/bad-offset.edf",
+          "sha256": "f1ea9184b0112d569d0cb932ec94cf8a3238ca502506eb53de20f20ecb3f8d88"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/base.edf",
+          "sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/zh-tw.edf",
+          "sha256": "b87b6b2911df9734215077453299301e72f697b82891946c63eaeb5074c362d5"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ko-kr.edf",
+          "sha256": "f1a2e92f42a28291d94c872a4e8045f6067a6105278d1c049a9447b04368e210"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ru-ru.edf",
+          "sha256": "838b5448b11f313d2bfc2fd0644d573fe78dcf087f6f2e8e47bb70a8781f4c49"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/zh-tw.golden",
+          "sha256": "dc6012acf034bd64f1d223815ded753fd6a351fb3528fd4a473637507a928494"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ko-kr.golden",
+          "sha256": "6f8d04a7b416919effab3608662b8b69b4bcb4bbe147f06c2be9b59bcfb81964"
+        },
+        {
+          "file": "work/m9/49fbb67e/item-payloads-sf-001/ru-ru.golden",
+          "sha256": "f73b1844aaaf1400b7dc1023a051556e11222384fa287d37684084db572efa22"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "real_tables": 5,
+        "real_SF_payloads": 1447,
+        "cloned_wrappers": 1447,
+        "concrete_primary_manager": true,
+        "recording_host": false,
+        "real_table_borrowing": true,
+        "matching_localization": "zh-tw",
+        "Korea_count_mismatch_table": 4,
+        "Russia_count_mismatch_table": 1,
+        "prefix_localization_writes": true,
+        "actual_last_owner_erase": true,
+        "duplicate_factory_requests": true,
+        "source_factory_selector": 1,
+        "all_payload_factories": false,
+        "ordinary_Linker_bound": false,
+        "actual_Tutorial": false
+      },
+      "architecture": "x86"
+    }
+  ],
+  "normal_link_sha256": "e8a1d2dfd6ca1bb25a85140809abb07bc3233a612e0c559c0131562d8432a669",
+  "normal_client_relinked": false,
+  "ordinary_Linker_changed": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -12,6 +12,17 @@
 
 ## Текущий статус
 
+089: realItem47/76049rows,Quest12/Character7 readers и пять freshpayloadfactories
+с concreteprimarymanager/087ownership прошли575factory-clone-lifetimes/
+99AnimusXP/3NDItemwholebyteoracles,standalone/full-object. SF1447regression с
+новой.lib проходит. Production086/егоgate current;ordinarygameowners ещёнет.
+Далее090 — CItemObject/CResObject/реальные board-hover-game owners,Linker5x10/
+input/use/cooldowns/download/oldbelt/Tutorial. Полныеpayloadmethods/Queststrings/
+все прежние gaps сохраняются;M6/M6F/M7/M9OPEN. Процент всего клиента не измерен.
+[Доказательства](../research/client455-item-payloads.md).
+
+Предыдущая source-основа088:
+
 088: sourceSF factory/конкретныйmanager и087ownership работают на1447 реальных
 записях5 таблиц. Standalone/full-object byteoracle/last-owner erase прошли.
 УстановленныйprofileTaiwan/zh-tw подтверждён;новый earlyWinMain950/localTCP/
@@ -644,9 +655,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/089: остальные пять payloadfactories(physical/Animus/Unit/UnitParts/Quest),
-   реальные Item/Quest readers и metadata. SF/primarymanager088 уже работают
-   на1447realrows;ordinarygame-global binding ещё открыт. Далее
+1. M6/090: freshpayloadfactories/readers089 проверены в ограниченном домене;
+   fullpayloadmethods/Questlocalizedsentenceexpansion остаются обязательными.
+   SF/primarymanager088+089 работают на1447realrows;ordinarygame-global binding
+   ещё открыт. Восстановить
    CItemObject/CResObject lifecycle и typedboard/hover ownership. Sourcekernels
    087 теперь проверены с concreteSFhost088,ordinarybinding ещё впереди. Затем5x10CGUILinkWindow,
    use/input/cooldowns/download, oldbelt consumers и common gameplay providers.

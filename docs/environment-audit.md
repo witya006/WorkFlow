@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, item-payloads089: новых установок нет. IDA877755f1 saved/closed/
+list0;50equalranges/1796 полных инструкций, EH windows закреплены отдельно.
+Ownx86/MT library: realItem76049/47tables,Quest12/Character7,3полных NDItem,
+575factory/clone/lifetime и99AnimusXP проходят standalone/full-object.
+UnchangedSFprobe1447 проходит с той же новой библиотекой;все4exit0,build warnings0.
+088runtimegate исторический после изменения общего header;staticreference сохранён,
+SFregression подтверждён089. Ordinary086/егоgate неизменны;GPU/startup/159k
+не повторялись. Никакого нового разрешения или установки для следующего шага
+не требуется. Gameowners/fullpayloads/Queststrings/Tutorial/M9OPEN.
+[Доказательства](../research/client455-item-payloads.md).
+
 Дополнение07.11, skill-force088: новых установок нет. IDAcd8baa1a saved/closed/
 list0.35equalranges/1224actualasm,включая отдельно pinned EH-tail windows.
 Concrete SF factory/manager/087clone-release:1447actualpayloads и ownedwrappers,
