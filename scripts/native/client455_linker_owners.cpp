@@ -71,6 +71,7 @@ BOOL CLinkBoard::AddTypedObject455(BYTE bank,BYTE slot,CBoardObject* original){
 BOOL CLinkBoard::RemoveTypedObject455(BYTE bank,BYTE slot){
     if(bank>=5||slot>=10||!m_linkerOwned455[10*bank+slot])return FALSE;
     auto* icon=LinkerIcon455(bank,slot);RF455_GameIconLinks().unregisterIcon(*icon);
+    RemoveCooldownObject455(GetObject(bank,slot));
     m_uiLinkWindow.LinkerIcons455().takeOut(bank,slot);
     const BOOL result=m_listItemPack[bank].Remove(slot);m_linkerOwned455[10*bank+slot]=false;return result;
 }

@@ -8,19 +8,80 @@
     {
       "id": "CLIENT455-LINKER-COOLDOWN-099",
       "status": "partial",
-      "phase": "STATIC_ONLY_NOT_IMPLEMENTED",
-      "runtime_gate_current": false,
-      "description": "Pinned selected Linker virtuals/cache/original-owner routes andrequiredreadyanimation dependency;production098 remainsunchanged",
-      "reference": [{"rva":"0x101c30","role":"cache admission/timer route"},{"rva":"0x101750","role":"expiry/pending animation queue"},{"rva":"0x1019e0","role":"bank root membership"},{"rva":"0x1007e0","role":"remove partialreset"},{"rva":"0x102190","role":"original-owner lookup"},{"rva":"0x102330","role":"equal lookup"},{"rva":"0x100f80","role":"actual bank-slot use entry"},{"rva":"0x21af30","role":"ready animation configuration"},{"rva":"0x228bd0","role":"animation Update"},{"rva":"0x4c6f40","role":"mode3 blend"}],
-      "implementation": [],
-      "verification": "Staticonly:79canonicalfunctions/5906asm/82equalranges onbothpins,20customvirtuals;real common13:0 original1024x640/texture1024x1024/8x5cells128/FPS34. AdmissionmembershipvsIsShow,erase+outerincrement,removevs expiry reset,rawSFgate andownerlookup distinctions pinned. IDA31e85147 savedclosed/list0. No production changes/newruntime acceptance/GPU-bulk reruns.",
-      "evidence": ["inventory/client455-linker-cooldown-reference.json","research/client455-linker-cooldown.md","scripts/audit_client455_linker_cooldown.py"],
-      "gaps": ["Implement source-owned readychild/GUIObjectAni Update/UV/one-shot/centering/mode3draw withconsistent owntexture API/overlay","Then realCLinkBoard cache/FrameMove/Remove/typedBegin/originalowners andactualuse-remove-swap-hoverhandlers;legacy nonvirtualUse entry mustbe handled deliberately","Pendingend-sentinel/unsafe/OOM/concurrency andbroader gate114A070 meaning unaccepted;liveinventory-equip-SF-Animus/lock/Macro/Vending/fullAdd/bootstrap/allpreviousclientM6-M6F-M7-M9 gaps mandatory"]
+      "phase": "RUNTIME_SELECTED",
+      "runtime_gate_current": true,
+      "description": "Ordinary Linker cooldowncache/originallookup/SFgroupdelay andsource-owned readychild withactualmode3 draw;fullhandlers/game open",
+      "reference": [
+        {
+          "rva": "0x101c30",
+          "role": "cache admission/timer route"
+        },
+        {
+          "rva": "0x101750",
+          "role": "expiry/pending animation queue"
+        },
+        {
+          "rva": "0x1019e0",
+          "role": "bank root membership"
+        },
+        {
+          "rva": "0x1007e0",
+          "role": "remove partialreset"
+        },
+        {
+          "rva": "0x102190",
+          "role": "original-owner lookup"
+        },
+        {
+          "rva": "0x102330",
+          "role": "equal lookup"
+        },
+        {
+          "rva": "0x100f80",
+          "role": "actual bank-slot use entry"
+        },
+        {
+          "rva": "0x21af30",
+          "role": "ready animation configuration"
+        },
+        {
+          "rva": "0x228bd0",
+          "role": "animation Update"
+        },
+        {
+          "rva": "0x4c6f40",
+          "role": "mode3 blend"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_gui_animation.h",
+        "scripts/native/client455_gui_animation.cpp",
+        "scripts/native/client455_linker_cooldown.h",
+        "scripts/native/client455_linker_cooldown.cpp",
+        "scripts/client455_linker_cooldown_port.py",
+        "scripts/build_client455_engine_startup.py",
+        "scripts/client455_gui_timer_port.py",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "Base79functions/5906asm/82equalranges plus8/248/12;132state/48grid/6newviewedGPU,20inheritedbyteequalreviewedframes pass. Actualglobalpack stagedoffline/SFCPUicons synthetic. Preservesadmission/occupiedcache/partialremove/fullzeroexpiry/pendingerasequirk/sourceidentityvsequalseriallookup/SFgroup/gate. Ownnonvirtualtextureoverlay sharedengine/client;033preserved,derived082replaced.182-20-56/0unresolved/newPE6b30676b/entry157830/engine546a7529/hotbar7/storage3/account/contracts/Create1pass. IDAfa7d0341 savedclosed/list0.",
+      "evidence": [
+        "inventory/client455-linker-cooldown-reference.json",
+        "inventory/client455-ready-cooldown-reference.json",
+        "inventory/client455-ready-cooldown-native.json",
+        "inventory/client455-ready-cooldown-visual-review.json",
+        "inventory/client455-ready-cooldown-checkpoint.json",
+        "research/client455-ready-cooldown.md"
+      ],
+      "gaps": [
+        "Fullactualuse/remove/swap/hover/MsgProc/liveinventory-equip-SF-Animus callbacks/Avatarpotioncache/flag21lock/Macro35/Vending27/fullAdd/bootstrap mandatory",
+        "GenericanimationclippedDraw/otherblend/privateABI/fullGUIItemchildren/lifecycle/reset/FPunsafe/OOM/concurrency/shutdown/pendingstalepointers notaccepted",
+        "Broaderrawgate114A070meaning/livewriter unknown;allpriorclientM6-M6F-M7-M9gaps open;no fullclientpercentage"
+      ]
     },
     {
       "id": "CLIENT455-GUI-TIMER-098",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "description": "Actualtyped ordinaryCGUIItem timer state/update/copy/conditionalempty/registry fanout/radialdraw/labels andtypedLinkerquery;fullgamehandlers stillopen",
       "reference": [{"rva":"0x229730","role":"ctor partialwrites"},{"rva":"0x229880","role":"reset"},{"rva":"0x229920","role":"start"},{"rva":"0x229960","role":"update wrap/signed remainder"},{"rva":"0x229a10","role":"context label"},{"rva":"0x229d70","role":"radial triangles"},{"rva":"0x22a3c0","role":"whole clip"},{"rva":"0x21ad60","role":"timer copy"},{"rva":"0x21bc20","role":"start fanout"},{"rva":"0x21bd10","role":"stop fanout"},{"rva":"0x21bb80","role":"conditional empty"},{"rva":"0x72b128","role":"CW027f"}],
       "implementation": ["scripts/native/client455_gui_timer.h","scripts/native/client455_gui_timer.cpp","scripts/native/client455_item_icon.cpp","scripts/native/client455_item_icon_members.inc","scripts/native/client455_icon_links.cpp","scripts/native/client455_linker_owners.cpp","scripts/native/client455_linker_window.cpp","scripts/client455_gui_timer_port.py","scripts/prepare_client455_normal.py"],

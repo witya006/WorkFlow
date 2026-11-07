@@ -7,43 +7,47 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-098 PARTIAL: ordinary CGUIItem получил source-owned timer455:state/clockwrap/
-signedremaining,отдельныйUpdate,копирование/conditionalempty,registry start-stop,
-круговой Draw/wholeclip и подпись. ActualLinker query больше не throws для typed
-icons.175state/112labels/57rays/171triangles и29 просмотренныхGPU проходят.
-НоваяPEd943ef46…/entry156570/182-20-54/0unresolved/Create1;hotbar7/storage3/
-account/window097/owners096/metadata094/icon092 targeted pass.11из23 прежних
-кадров меняются из-за исправленного order image→grade;12 byte-equal.
-Current gate:inventory/client455-gui-timer-checkpoint.json;097runtimehistorical.
-IDA316a9b70 savedclosed/list0. [Доказательства](../research/client455-gui-timer.md).
+099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
+владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
+лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
+GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
+Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-ready-cooldown.md).
 
-Работа099:79functions/5906asm/82equalranges/20customvirtuals закреплены;
-inventory/client455-linker-cooldown-reference.json имеет статус STATIC_ONLY_NOT_IMPLEMENTED.
-Raw artifacts/client455-progress/linker-cooldown099-reference.json иextra.json,
-session31e85147 savedclosed/list0. Production098 не менялась;её GPU/bulk не
-повторялись. [Разбор](../research/client455-linker-cooldown.md).
+Обычные BeginDelayAnimation/FrameMove/Remove подключены к новому cache.
+Admission=attached bank row OR activebank;каждый свободный matching slot читает
+свой clock;occupied record сохраняется при повторном старте timer. Expiry
+обнуляет20байт,Remove толькоptr/start. Pending erase + outer increment сохранён.
+Original nonphysical lookup ищет фактический payloadpointer, equal — serial;
+SFgroup использует rawdataBYTE15 иForce/Skillpack поBYTE12,не atlas itemID.
+Rawgate114A070 по умолчанию0;nonzero+SF подавляет весь start,livewriter ещёOPEN.
+Readychild — отдельный windowchild,не всегда рисуемая часть GUIItem.Draw;
+он имеет свой Update. SetData сбрасывает его playback,SetPos центрирует signed.
+Общий source-owned CSprite overlay forced в engine/client после port_std.hpp;
+никаких private targetABI casts. Старыйengine033/source сохранены;derived082
+заменён на546a7529… без отдельного snapshot старойlib. Границы описаны вresearch.
 
-Сначала099: source-owned GUIObjectAni-compatible readycue/mode3 drawing.
-GUIItem+1040,atlas1/action13/frame0,лист1024x640/texture1024x1024,8x5 клетки128,
-34FPS/no-loop/initialstopped. Targetblend3=SRCALPHA/ONE;legacyDrawSpriteUV иначе.
-Нужен согласованный owntexture API/overlay,безprivate targetABI casts. Затем
-Linker cooldown cache501C30/FrameMove501750 и actualhandlers use/remove/swap/hover;
-затем liveSF/Animuscallbacks/flag21lock/Macro35/Vending27/fullCItemBoard.Add и
-normal table bootstrap. Typed timer готов в выбранном обычном домене; fullGUIItem
-children/shake/copy-empty/lifecycle и CPU-selected SSEtan/FP-exception numeric
-domains ещё open. Stopfanout проверен сfullobjects,в обычнойPE пока unused.
-Не принимать decompiler prototypes за ABI:5019E0 — rootmembership,не IsShow.
-Admission=attached row OR activebank;matching=virtualkind/code+serial index.
-Remove очищаетpointer/start,expiry весь20-byte record. Pending erase возвращает
-next,затем5018f8 ещё increment;обычный erase-withoutincrement меняет поведение.
-Rawgate114A070 default0;смысл beyondSFsuppression не назван. CObjectBoard.UI_UseRequest
-в исходном0.7 nonvirtual,а targetCLinkBoard имеет bank/slot handler500F80 вvtable;
-не подставлять методы по совпадению позиции/названия. Live inventory/equip/SF/
-Animus/Macro provider chains тоже обязательны,не заменять recording успехом.
-Все прежние gaps/M6/M6F/M7/M9 обязательны. Проверка: Invoke-Python.ps1
-scripts/checkpoint_client455_gui_timer.py. Не повторять unchangedworld/audio/159k/
-093atlas/2013owner/SF1447/095manual без нового риска.092 повторён здесь только
-из-за реального изменения порядка отрисовки рамки.
+Далее100: actualuse/remove/swap/hoverhandlers и MsgProc по targetvtable/455codes.
+Сначала подтвердить контракты реальных источников inventory/equip/SF/Animus и
+Avatar potioncache;не заменять их recording успешным ответом. Потом flag21lock,
+Macro35/Vending27/fullCItemBoard.Add и normal table bootstrap. Legacy
+CObjectBoard.UI_UseRequest nonvirtual;target500F80 bank-slot entry требует
+согласованного переноса,а не сопоставления по названию. Статические тела099 уже
+в artifacts/client455-progress/linker-cooldown099-reference.json/extra.json.
+Дополнительные8 функций в ready-cooldown099-additional.json.
+
+Generic animation clippedDraw/другиеblend,полный GUIItem children/shake/copy-empty/
+lifecycle/deviceReset,FPnumeric/unsafe/OOM/concurrency/pending stale pointers
+не приняты. Все прежниеSF/Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/
+Login/auth/game gaps остаются обязательными. Проверка текущего результата:
+Invoke-Python.ps1 scripts/checkpoint_client455_ready_cooldown.py.
+Не повторять unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447/095manual
+без нового риска.20 кадров timer/window/owners/metadata проверены по hashes,
+их старые visualreview manifests остаются baseline и связаны новым checkpoint.
+
 
 Историческая точка097 и её очередь (timer часть теперь выполнена098):
 

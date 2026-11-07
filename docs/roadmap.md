@@ -12,16 +12,18 @@
 
 ## Текущий статус
 
-098: таймеры реальных иконок и их копий подключены к ordinaryCGUIItem:
-копирование/обновление/start-stop fanout/сброс/круг/подпись.175state/112labels/
-57rays и29просмотренныхGPU, затронутые компоненты и новаяPE/Create1 проходят.
-Далее099 — cooldowncache и игровые обработчики панели,затем livecallbacks/
-lock/Macro/Vending/fullAdd/bootstrap. Gate098 current,097 runtimehistorical.
-M6/M6F/M7/M9 открыты. [Доказательства](../research/client455-gui-timer.md).
+099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
+владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
+лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
+GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
+Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-ready-cooldown.md).
 
-Работа099: статически закреплены79 функций панели и зависимости. Перед
-cooldowncache/handlers восстанавливается анимация готовности455 и её blend3.
-Production/gate098 пока неизменны. [Разбор](../research/client455-linker-cooldown.md).
+Далее100 — actualuse/remove/swap/hover иlive callbacks/potion cache;затем
+lock/Macro/Vending/fullAdd/normalbootstrap. Общего процента клиента нет.
 
 Исторический результат097:
 

@@ -1,0 +1,296 @@
+{
+  "status": "PARTIAL",
+  "scope": "Source-owned ready-animation,mode3 draw andordinary Linker cooldown records/timer routes;fullhandlers/gameplay remain open",
+  "script_sha256": "a17e3f814118469608aaf6fdf3bf182a1948c6f3fcd58ea42b02823efb0d533c",
+  "reference": {
+    "file": "inventory/client455-ready-cooldown-reference.json",
+    "sha256": "8054b860c0b809dc11cac37310338d47dfb66f3a8580e8a89d88b0e80d03ed3c"
+  },
+  "static_base": {
+    "file": "inventory/client455-linker-cooldown-reference.json",
+    "sha256": "a4a3ac6dca403463b45f525e9fc6348dc92d054ad8d932654047a4ac95c81aa1"
+  },
+  "native": {
+    "file": "inventory/client455-ready-cooldown-native.json",
+    "sha256": "87c6e15a3aab318f76ca295ff9005a8030865afae0983441a756370ab465368a"
+  },
+  "visual": {
+    "file": "inventory/client455-ready-cooldown-visual-review.json",
+    "sha256": "1422a9f46c31b9fabc49edd7d83383f39cac138939be4ced905f5ac216506681"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_gui_animation.h",
+      "sha256": "2787098407236efd92fc045db2f307d6b97434739a8ec022d3d1a633fe2963d9"
+    },
+    {
+      "file": "scripts/native/client455_gui_animation.cpp",
+      "sha256": "957fd88d0c6773985389c092c7d47a39417155fedfa8937e8ecaacf43d4cd326"
+    },
+    {
+      "file": "scripts/native/client455_linker_cooldown.h",
+      "sha256": "1485cfbad77a23804cc973303e3f71caf3d588545e61a22cbe507b82bcd9ae8a"
+    },
+    {
+      "file": "scripts/native/client455_linker_cooldown.cpp",
+      "sha256": "3ed43865c9daa9a8004468ecc690b2e390f5d0ff4ebeeebc9e8594cbb4362aa6"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "c4a1c8080929c6611d8f18aa59f77594713f94c15688974e6f3cbc27f698463a"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "829093ca5e4c77190cb224cebdd28b84b22bcf55eb10c246dce1fe42447fa607"
+    },
+    {
+      "file": "scripts/native/client455_item_atlas.cpp",
+      "sha256": "c6073f47bf8471ebfa7826ff1a1034c69eabc1d12bb9e5b4cbdd52c85b5eb17b"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.cpp",
+      "sha256": "6ad43f8df10f5147ad31b5559a3ba259d14a89bd49e570f6c8e8a79cbc03bf84"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.h",
+      "sha256": "cd3e42cae399a57273a8ac938289195ab433ef61c9f2361c3add3cda627a4242",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.h",
+      "input_sha256": "74d1d6439b5aa7a75e852c06f43c70f050f93097285d590b918562e52765cac5",
+      "changes": [
+        "455fifty-key delta upload state/API;fullLinker ownership/UI/input remains open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen",
+        "455banked Linker window layout/controls/input dispatch replaces old8slot view;fullgame item actions remainopen",
+        "455typed cooldown cache/FrameMove/Remove/original owner timer routes;fullgame handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.cpp",
+      "sha256": "8ef87e22d2813e34e2d57491b1de4f58434757dafd9b1a4376af4c083ac55a82",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "input_sha256": "d4ef8c7e37cf7ff74b3e78606330111f90eef4eeff9aba908bc7e24f90f6d4df",
+      "changes": [
+        "ordinaryLinker FrameMove5second delta save/group13op17;other455frame/cooldown/UI/clone behaviors still open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen",
+        "455banked Linker window layout/controls/input dispatch replaces old8slot view;fullgame item actions remainopen",
+        "455typed cooldown cache/FrameMove/Remove/original owner timer routes;fullgame handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/cboard.h",
+      "sha256": "6c67fdf18ec948c6f35588e1f1a7f32d7177987cb1d2e940d0e272ecf767cc7e",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/cboard.h",
+      "input_sha256": "078cbcabf16826ef9910aaec8a41029eea79c481777edde32d0a72dec3429d61",
+      "changes": [
+        "455typed cooldown cache/FrameMove/Remove/original owner timer routes;fullgame handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.h",
+      "sha256": "af958075be562887eea5f35d203303416aebd5b02ac679247573dd41fc81114e",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "input_sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "455typed timer state/update/copy/conditional reset and registry fanout;full gameplay handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.cpp",
+      "sha256": "af5a622aade8525bc7ba2542e881e3dddb25288c103b4b2e199a3f358794a2b9",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "input_sha256": "5f8c76708819fee9b88e8db524512c5f16575dcb3c116580d8258ba2403a521f",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "455typed timer state/update/copy/conditional reset and registry fanout;full gameplay handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_gui_animation.cpp",
+      "sha256": "957fd88d0c6773985389c092c7d47a39417155fedfa8937e8ecaacf43d4cd326",
+      "input": "scripts/native/client455_gui_animation.cpp",
+      "input_sha256": "957fd88d0c6773985389c092c7d47a39417155fedfa8937e8ecaacf43d4cd326"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_linker_cooldown.cpp",
+      "sha256": "3ed43865c9daa9a8004468ecc690b2e390f5d0ff4ebeeebc9e8594cbb4362aa6",
+      "input": "scripts/native/client455_linker_cooldown.cpp",
+      "input_sha256": "3ed43865c9daa9a8004468ecc690b2e390f5d0ff4ebeeebc9e8594cbb4362aa6"
+    }
+  ],
+  "retained": {
+    "BeginTypedDelay455@CLinkBoard": "BeginTypedDelay455@CLinkBoard@@QAEXAAVRF455ManagedItem@@KJ@Z 004c8010 f   RFClient455Facade:client455_linker_cooldown.obj",
+    "ProcessCooldowns455@CLinkBoard": "ProcessCooldowns455@CLinkBoard@@QAEXXZ 004c85b0 f   RFClient455Facade:client455_linker_cooldown.obj",
+    "FindOriginalTyped455@CLinkBoard": "FindOriginalTyped455@CLinkBoard@@QAEPAVCBoardObject@@AAVRF455ManagedItem@@H@Z 004c8400 f   RFClient455Facade:client455_linker_cooldown.obj",
+    "Update@RF455GuiAnimation": "Update@RF455GuiAnimation@@UAEXXZ 004ccc00 f   RFClient455Facade:client455_gui_animation.obj",
+    "Draw@RF455GuiAnimation": "Draw@RF455GuiAnimation@@UAEHAAUtagRECT@@@Z 004cca90 f   RFClient455Facade:client455_gui_animation.obj"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/ready-cooldown099-session.json",
+    "sha256": "cda95e6f1cb68fd4d09327876ba9e87f262d376794cc5b9c66ba11d5a4cb70ea"
+  },
+  "normal_link_sha256": "da3af58074eacc7510e30c70eae3731da16e76da6f70376ceaf9aac0357ba822",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "6b30676b54424e15bdb60e296794b3e9ac9861ba24745e2df0798e5e947a4212",
+    "bytes": 2139648,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x157830",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "519b5b3e851933393b0ff0cff4aa915efca1ced11ee8cd6840d0344148a9486e"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "2efd1c6fc3dfa216131963a87d9a1a8a60efd69516f7982541864687e04a82d4"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "14b6b6556898c7599824ef575cbb147551f602bd509dacb05b28296ac4ccba6b"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "da3af58074eacc7510e30c70eae3731da16e76da6f70376ceaf9aac0357ba822"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "3b9747196a46991da933b18133deb180f4b7441a617e5d7c1e2e239daf3a6020"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "1bc37014030d3a78d50c2de462baf3c77da5c238450cf6c6434721ab3d6acd91"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "a8973168a4f7e9d83a01cf98546db9839718fb36a23aca798715dbb8cbf50127"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "f5c5054caf56463375c4bd7b3720d26095e796124d86121dcaf09a652f813e80"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "351354f08200d7664dd0dab45115c6d277a30fa4f39bb0f2b85a3027b6017132"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "70eff08adbe90ba7459f98f332097de998ffe812aefb5f49a3c580f32b34ee48"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "b80c8e0f777cfb1a7f0502bd254dc0f1ec1bd966619bb8504997b74ed49870c0"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "aa6a368473f1e411e54eb03b4a2bf5a9060c8209a9f9dbf03d29d926f1afd886"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "ef2aa8ecb14c90158e8f2f0b2fd39e24a81422b67a02155ce2672064eb82c440"
+    }
+  },
+  "derived_engine_sha256": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "baseline033": {
+    "file": "work/client455-port/build-vs2026/Release/R3Engine455.lib",
+    "sha256": "fba3d77db954750118dbfb5dbb66e5606c3c79398ebe8d502b5fb61d7cad7369"
+  },
+  "state_cases": 132,
+  "grid_cases": 48,
+  "new_viewed_GPU_frames": 6,
+  "inherited_byte_equal_reviewed_frames": 20,
+  "regressions": [
+    {
+      "name": "client455-linker-window",
+      "baseline": {
+        "file": "artifacts/client455-progress/window097-before099.json",
+        "sha256": "5c2ce9032b9c2d50a347e5210c38b91afd07a29cf140bfe73692bedfe627fb2f"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-linker-window-visual-review.json",
+        "sha256": "13437d7cde96404303a7a5fc7a363f8b286de24028a3d2bb888b984304b083de"
+      },
+      "current": {
+        "file": "inventory/client455-linker-window-native.json",
+        "sha256": "6f73ac957275fd9e2c07fddc2190238ccb93550599cb6b390f696c681eef7e0c"
+      },
+      "byte_equal_frames": 8
+    },
+    {
+      "name": "client455-linker-owners",
+      "baseline": {
+        "file": "artifacts/client455-progress/owners096-before099.json",
+        "sha256": "3eace81453577e6d5d2da097fb5f18006f9f3f7c2a83bdd384230004cebe4159"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-linker-owners-visual-review.json",
+        "sha256": "9654937859437c2dd3bcd780e9c56581840554b5f31ce61cfdc8e875ddc68f23"
+      },
+      "current": {
+        "file": "inventory/client455-linker-owners-native.json",
+        "sha256": "c452b85a07eb83bba293d544e071a7b56ad2d1f4eacd4d668b79cb643d9d49b7"
+      },
+      "byte_equal_frames": 3
+    },
+    {
+      "name": "client455-item-icon-metadata",
+      "baseline": {
+        "file": "artifacts/client455-progress/metadata094-before099.json",
+        "sha256": "7e6ec61d3a303d793e1db9a92483e882ab458329adc18df873e17b01b4d80d4f"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-item-icon-metadata-visual-review.json",
+        "sha256": "d751749d56390d6b9789fafb68c353df5d2dc91497a8f890fb3cd47e39d18f53"
+      },
+      "current": {
+        "file": "inventory/client455-item-icon-metadata-native.json",
+        "sha256": "8684a4aac4adeb39585f3772323d709b75654feb27f2684320d6f22612763a58"
+      },
+      "byte_equal_frames": 3
+    },
+    {
+      "name": "client455-gui-timer",
+      "baseline": {
+        "file": "artifacts/client455-progress/timer098-before099.json",
+        "sha256": "b041f102a3d0c006be2c1c49fb20a058eecb6f9710c435cc00bfe553b02a1aea"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-gui-timer-visual-review.json",
+        "sha256": "7e9d924bd471f8a34a2c1f5ebbcc5118fdca994dcbad759724c4430258541316"
+      },
+      "current": {
+        "file": "inventory/client455-gui-timer-native.json",
+        "sha256": "4e3058cbf5d12e06c592c7d7ac23af21ee2c1953e4ca9743122fb9823249cabb"
+      },
+      "byte_equal_frames": 6
+    }
+  ],
+  "selected_base_ranges": 82,
+  "additional_ranges": 12,
+  "additional_instructions": 248,
+  "previous098gate": "Historical runtime after source/link/derived engine changed; static proofs and20byte-equal frames retained",
+  "old082_derived_library_snapshot_retained": false,
+  "unchanged_world_audio_159k_093atlas_092icon_2013owner_1447SF_095manual_suites_rerun": false,
+  "gaps": [
+    "Full gameplay use/remove/swap/hover handlers/live source-board callbacks/lock/potion cache/Macro/Vending/fullAdd/bootstrap remain mandatory",
+    "Generic animation clipped draw andblend modes other than ready3 remain explicit refusals",
+    "Complete privateABI/FP-numeric/unsafe/OOM/concurrency/shutdown andallpriorclient gaps not accepted"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -23,44 +23,68 @@
 
 ## Последний проверенный результат
 
-Работа099: STATIC_ONLY_NOT_IMPLEMENTED. Production/runtimegate остаётся098,
-PEd943ef46…/engine082 не менялись;нет нового runtime acceptance.79canonical
-functions/5906asm/82equalranges,20customvtableentries закреплены пообоимpins.
-Audit scripts/audit_client455_linker_cooldown.py → inventory/client455-linker-
-cooldown-reference.json;research/client455-linker-cooldown.md. Raw ignored
-artifacts/client455-progress/linker-cooldown099-reference.json +extra.json,
-session31e85147 savedclosed/list0. Exploration/predicates files вспомогательные.
+099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
+владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
+лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
+GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
+Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-ready-cooldown.md).
 
-Следующая actualdependency передcache:GUIObjectAni-compatible readychild
-GUIItem+1040. Configure61AF30:atlas1/action13/frame0,128x128,8columns5rows,
-FPS34,noLoop,initialstopped,blend3. Реальный commonSPR frame1024x640,texture
-1024x1024 =>U/Vcellspan.125,не1/5поY. Центрирование61B240 signeddivision.
-Readychild добавляется кrootwindow приexpiry;не частьordinaryGUIItem.Draw.
-LegacyCGUIObjectAni.Update и alpha-onlyDrawSpriteUV неэквивалентны. Mode3
-8C6F40=SRCALPHA/ONE;нужен согласованныйsourceAPItexture/overlayбезtargetcasts.
-Oldengine033/source сохранять;новыйoverlayстроитьтолькоderivedstartupengine,
-единаяclassdeclaration для engine/client TUs(пример existingcamera overlay).
-Не использовать private-access hacks/zeroarea hidden draw/recordingprovider.
+Production099 source:client455_gui_animation.h/.cpp +client455_linker_cooldown.h/.cpp;
+port scripts/client455_linker_cooldown_port.py. Prepare182/20/56,0errors/unresolved.
+NewPE6b30676b54424e15bdb60e296794b3e9ac9861ba24745e2df0798e5e947a4212,
+2139648bytes/x86/base400000/entry157830/WinMainb7580/afterCreateb76ea.
+Engine546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a;
+67objects. Adds nonvirtual GetFrameTexture455 via shared2dsprite455.h,forced
+through anicamera455.h AFTER port_std.hpp inallengine/clientTUs. Old033lib/source
+preserved;derived082lib was overwritten bybuilder,no separateoldlibsnapshot.
+Historical082linkedPE/labs retained;do notclaim082binary unchanged.
 
-Cache501C30 admission=window.IsAddedObject(bankrow) ORactivebank(5019E0),не
-IsShow/pinflagsalone.50records20:bankBYTE/ptr/start/offset/duration;bank/padding
-ctor502AE0 unwritten. Matchesvirtualkind/code thenwrapperindex vsCItemserial+4;
-occupiedrecord неперезаписывается;каждоесовпадениесвойclock. Remove5007E0
-clears ptr/start only;FrameMove501750 unsignedwrapelapsed>=duration thenmemzero20.
-Rawglobalgate114A070 ctor0,nonzero+kind1 suppresseswhole501C30;broadermeaningunknown.
-Pendingerase502C50 incrementsinputiterator,returnsnext;outer5018F8 thenincrements
-again. Adjacentstoppedcues могутостатьсянаследующийframe;end/sentinel/OOM/unsafe
-domainsещёopen. Не"исправлять" наудобныйstd::list erase loop. Actualboardkind/code
-predicates46B370/46B3C0 иserialcompare46D630 закрепленывextra сvtableAAC13C.
-Ownerlookup502190physical boards1/0/5;equal5023301/0;SF3/7,Animus4,kind6board22,
-Macro7board35. SourceCObjectBoard.UI_UseRequest nonvirtual,actual500F80bank-slot
-handler вtargetvtable;простоеoffset-nameсопоставлениестарыхprotectedhooks неверно.
-Далееcache/actualhandlers/liveinventory-equip-SF-Animuscallbacks/lock/Macro/Vending/
-fullAdd/bootstrap;allpriorclientgaps и M6/M6F/M7/M9 OPEN. Progress,notblocked.
+Static099 base79functions/5906asm/82equalranges remains historical
+STATIC_ONLY_NOT_IMPLEMENTED. Newref ready-cooldown8functions/248asm/12equalranges,
+sessionfa7d0341 savedclosed/list0. Currentruntime proof separate:newcheckpoint.
+AS99fixture132rows,AG99fixture48rows;actualordinaryBeginDelay/FrameMove/Remove,
+globalBoardManager sourcepack/originallookup,actualregisteredclonefanout,
+active/attached/hidden,occupiedcache,partialRemove/fullExpiry andpendingerasequirk.
+6newGPU viewed;20 previouswindow8/owners3/metadata3/timer6rawframes byte-equal,
+oldvisualreview manifests inheritedbycheckpoint,not fresh nativehash reviews.
+Hotbar7/storage3/account andfreshenginecontracts/PECreate1 pass. No159k/world/
+audio/093atlas/092icon/2013owner/SF1447/095manual repeats.
 
-Последний runtime результат098:
+Ready configuration:atlas1/action13/frame0,original1024x640,texture1024²,
+8x5cells128,FPS34,noloop,initialstopped,blend3SRCALPHA/ONE. UV mustwrite raw
+m_fSpriteUV;legacy SetSpriteU/V requires sprite andrescales,not applicable.
+SinglefinalF32 x87 frameadvance. Childonlywindow.Update,notGUIItem.Update.
+SetData resetsreadyplayback;SetPos centers signed;Sizealone doesnotrecenter.
+Draw ownD3D quad FVF324/stride28/half-pixel;postalphaFALSE/wrap/ZTRUE verified.
+Genericotherblend/clippedDraw explicitlyrefuse;fullprivateABI/numeric/reset/
+resource-lifecycle notaccepted. ConfigureReady purestate/lazyactualtextureDraw.
 
-098 PARTIAL. Currentgate inventory/client455-gui-timer-checkpoint.json.
+Cache50x20:bank/ptr/start/offset/duration;ctor leaves bank/padding unwritten.
+Admission actualIsAddedObject(bankrow) ORactive;occupied notoverwritten,each
+matchingfreeentry ownclock,offset-1→0. kind/dataDWORD+4/wrapperindex vsserial+4,
+not atlasID72. Remove clears ptr/start;expiry unsignedwrap thenzeroall20.
+Ready windowchild queuedafterexpiry;pendingerase returnsnext thenouter++ again,
+including explicit modeledsentinel wrap. Completeunsafe/stalepointer/OOM notaccepted.
+Nonphysical original(FALSE) uses actualpayloadpointer;equal(TRUE) seriallookup;
+physicalboards1/0/5 vselqual1/0,SF3/7,Animus4,kind6board22,kind7board35.
+SFforcepack=rawBYTE12category0/1→0,2→1,…5→4,else255;Skillpack=BYTE12;
+group=BYTE15,subtype2singlesource. Rawgate114A070 default0/nonzero+SF suppressall.
+Livegatewriter/Avatarpotioncache stillOPEN;Potion11 explicitlyrefuses.
+Labstages actualglobalsourcepacks manually,not fullCItemBoard.Add/bootstrap.
+SFgroup twoCPUicons synthetic,actualpayloads/boardpack;not fullSFUI acceptance.
+
+Next100:actualuse/remove/swap/hover/MsgProc,vtablebank-slot500F80 vslegacynonvirtual
+UI_UseRequest;liveSF/Animus/inventory/equipcallbacks,Avatarpotioncache,flag21lock,
+Macro35/Vending27/fullAdd/bootstrap. Knownstatic099handlers alreadycached.
+Allpriorclientgaps/M6/M6F/M7/M9 OPEN. Progress,notblocked. Fullclient%unknown.
+
+Исторический runtime098 (его gate после099 исторический):
+
+098 PARTIAL. Historicalgate inventory/client455-gui-timer-checkpoint.json.
 Typed ordinary CGUIItem owns RF455GuiTimer child;olduntyped timer unchanged.
 Source-owned selectedstate28,not private208ABI:duration/start/offset/rawstarted/
 double remaining/floatangle. Reset leaves geometry/show/vertices;ctor leavesXY.

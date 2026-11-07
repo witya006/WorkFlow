@@ -1,5 +1,11 @@
 # Перезарядки и игровые обработчики панели — работа099
 
+Дополнение: выбранная ready-animation/cache часть перенесена и проверена в
+[ready-cooldown099](client455-ready-cooldown.md). Текущий runtime gate —
+inventory/client455-ready-cooldown-checkpoint.json. Ниже сохранён исторический
+статический аудит;его STATIC_ONLY_NOT_IMPLEMENTED manifest не переименован в
+runtime proof. Очередь actualhandlers/livecallbacks/fullAdd/bootstrap остаётся.
+
 2026-11-07. Статический аудит перед переносом; код production пока остаётся098.
 M6/M6F/M7/M9 OPEN. Нельзя считать этот документ реализацией перезарядок или
 приёмкой Linker. Текущий runtime gate — client455-gui-timer-checkpoint.json.

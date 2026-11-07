@@ -15,7 +15,8 @@ bool RF455_ItemQuantityVisible(std::uint8_t type,std::uint16_t quantity,bool ena
     return enabled&&((quantity>1&&(type==0||type==7||(!clipped&&type==2)))||(!quantity&&type==0));
 }
 void CGUIItem::SetGrade455(BYTE grade){m_grade455=grade;m_gradeFrame455.SetARGB(RF455_ItemGradeColor(grade));}
-void CGUIItem::SetPos(LONG x,LONG y){CGUIObject::SetPos(x,y);m_gradeFrame455.SetPos(x,y);m_timer455.SetPos(x,y);}
+void CGUIItem::SetPos(LONG x,LONG y){CGUIObject::SetPos(x,y);m_gradeFrame455.SetPos(x,y);m_timer455.SetPos(x,y);
+    m_readyCue455.SetPos(x+(m_ptSize.x-m_readyCue455.GetSizeX())/2,y+(m_ptSize.y-m_readyCue455.GetSizeY())/2);}
 void CGUIItem::SetSize(LONG width,LONG height){
     CGUIObject::SetSize(width,height);m_gradeFrame455.SetSize(width,height);m_timer455.SetSize(width,height);
     //61B450 selects the two grade-frame cells by signed displayed width.

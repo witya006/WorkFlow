@@ -13,6 +13,15 @@ def main():
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
     from client455_particle_port import headers,particle_source,entity_source
     particleHeaders=headers(base,root,previous)
+    # One declaration is forced into every engine/client consumer through the
+    # existing shared camera overlay. Add only an own inline texture accessor;
+    # CSprite layout and virtual dispatch remain unchanged.
+    spriteInput=base/'source/R3Engine/2ndclass/2dsprite.h';spriteHeader=root/'include/2dsprite455.h';spriteHeader.parent.mkdir(parents=True,exist_ok=True)
+    spriteRaw=spriteInput.read_bytes();spriteAnchor=b'\tchar *GetFileName();'
+    if spriteRaw.count(spriteAnchor)!=1:raise ValueError('Own sprite texture accessor anchor')
+    spriteRaw=spriteRaw.replace(spriteAnchor,spriteAnchor+b'\r\n\tvoid* GetFrameTexture455()const{return mPageSPrite?(mFrames[0]?mFrameInfo[0][mPage].Tex:nullptr):(mActions?mFrameInfo[mNowAction][mNowFrame].Tex:nullptr);}\r\n')
+    if spriteHeader.exists() and spriteHeader.read_bytes()!=spriteRaw and sha(spriteHeader)!=previous.get('sprite_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed own sprite declaration')
+    if not spriteHeader.exists() or spriteHeader.read_bytes()!=spriteRaw:spriteHeader.write_bytes(spriteRaw)
     ownedParticleHeader=root/'include/particle455.h'
     particlePrefix=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders)).encode()
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
@@ -22,6 +31,8 @@ def main():
     if header.count(anchor)!=1:raise ValueError('Camera seconds declaration boundary changed')
     header=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n').encode()+header.replace(anchor,anchor+b'\r\n\tvoid SetNowFrame(float seconds); //4558D1D90 float argument')
     header=header.replace(b'#include "c_vector.h"\r\n',b'#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders).encode(),1)
+    firstInclude=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode()
+    header=header.replace(firstInclude,firstInclude+('#include "'+spriteHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
     for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp']:
@@ -132,6 +143,7 @@ def main():
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
     report['rvp_runtime']={name:sha(WS/'scripts/native'/name) for name in ['client455_rvp_runtime.h','client455_rvp_engine.inc']}
     report['camera_header_overlay']={'file':ownedHeader.relative_to(WS).as_posix(),'sha256':sha(ownedHeader),'original':cameraHeader.relative_to(WS).as_posix(),'original_sha256':sha(cameraHeader)}
+    report['sprite_header_overlay']={'file':spriteHeader.relative_to(WS).as_posix(),'sha256':sha(spriteHeader),'original':spriteInput.relative_to(WS).as_posix(),'original_sha256':sha(spriteInput)}
     report['particle_headers']=particleHeaders
     report['particle_header_overlay']={'file':ownedParticleHeader.relative_to(WS).as_posix(),'sha256':sha(ownedParticleHeader),'extra_consumer':'scripts/native/client455_weather.cpp'}
     report['particle_port']={'script':{'file':'scripts/client455_particle_port.py','sha256':sha(WS/'scripts/client455_particle_port.py')}}

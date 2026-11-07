@@ -5,11 +5,13 @@
     BYTE m_ownerContext455=0;
     CGUIObject m_gradeFrame455;
     RF455GuiTimer m_timer455;
+    RF455GuiAnimation m_readyCue455;
     BOOL DrawTypedIcon455(RECT*);
     void SetTypedSprite455();
     void SetNum455(WORD);
     void SetUsable455(BYTE);
 public:
+    RF455GuiAnimation& ReadyCue455(){return m_readyCue455;}
     RF455GuiTimer& Timer455(){return m_timer455;}
     void BeginDelayAnimation455(DWORD,LONG elapsed=-1);
     void StopDelayAnimation455();

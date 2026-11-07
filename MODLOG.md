@@ -1,5 +1,20 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Ready-cooldown099 runtime selected. OrdinaryCLinkBoard now has
+50records/cacheadmission/expiry/partialremove/originallookup/SFgroupdelay routes;
+GUIItem readychild draws real455sheet128px/8x5/FPS34/SRCALPHA-ONE. Sourceowned
+state/loop/UV/copy-reset/centering andtargetpendingerasequirk preserved.
+132state/48grid/6viewedGPU pass;20previousreviewedframes byteequal. Actualglobal
+sourcepack manuallystaged,syntheticSFCpuicons;notfullAdd/bootstrap/game acceptance.
+AddedconsistentnonvirtualCSprite texturegetter overlay toderivedengine/client;
+old033/source retained,derived082lib replaced,no separateoldsnapshot. Engine546a…,
+newPE6b30676b…/entry157830/182-20-56/0unresolved;hotbar7/storage3/account/engine
+contracts/Create1 pass. IDAfa7d0341 savedclosed/list0;8additionalfunctions/248asm/
+12equalranges beyondstatic09979/5906/82. Newgate099 current;098runtimehistorical.
+Fullhandlers/livecallbacks/potion/lock/Macro/Vending/fullAdd/bootstrap/M9OPEN.
+No unchangedworld/audio/159k/bulk reruns/serverwrites/inputEXEexecution.
+[Evidence](research/client455-ready-cooldown.md).
+
 2026-11-07 — Linker-cooldown099 static audit.79canonicalfunctions/5906asm/
 82equalranges/20customvirtualentries pinned onbothclients. Admission=rootrow
 membership ORactive,notIsShow. Readychild1040 uses realcommon13:0 sheet1024x640/

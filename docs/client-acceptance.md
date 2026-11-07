@@ -1,9 +1,21 @@
 # Полнота восстановления RF_Online.bin
 
-099 STATIC_ONLY_NOT_IMPLEMENTED:79functions/5906asm/82equalranges иactualready
-sheet geometry закреплены. Это исследование дляследующегопереноса,не новый
-runtime результат. Production/gate098 current;GUIanimation-readycue/cooldowncache/
-actualhandlers и все остальныеgaps обязательны. [Разбор](../research/client455-linker-cooldown.md).
+099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
+владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
+лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
+GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
+Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-ready-cooldown.md).
+
+Это source-owned CPU/GPU evidence,не capture оригинального455. Глобальные
+исходные packs вlab размещены явно;это не normal bootstrap/fullCItemBoard.Add.
+SFgroup uses synthetic CPUicons,actualsourcepayloads. Fullgenericanimation
+clippedDraw/otherblend/privateABI/FPunsafe/OOM/reset/shutdown ещёOPEN.
+
+Исторический результат098:
 
 098 PARTIAL: actualtyped CGUIItem timer455 state/update/copy/conditionalempty,
 registry start-stop fanout,радиальныйDraw/wholeclip/контекстная подпись и typed
@@ -14,7 +26,7 @@ Grade draw order исправлен:11из23 прежних кадров изм�
 unsafe numeric/privateABI,прочие GUIItemchildren/shake/fullcopy-empty/lifecycle,
 cooldowncache/actualhandlers/livecallbacks/lock/Macro/Vending/fullAdd/bootstrap
 и все прежние клиентские gaps обязательны. Stopfanout normalPE пока unused.
-Gate098 current,097runtimehistorical;M6/M6F/M7/M9 OPEN.
+Gate098 runtimehistorical после099;M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-gui-timer.md).
 
 Исторический результат097:
