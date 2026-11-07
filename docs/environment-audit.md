@@ -1,5 +1,13 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, аудит099: действующий nativeIDA MCP подтвердил79 выбранных
+функций/5906asm/82equalranges,20customLinkervtableentries и ready-sheet geometry.
+Session31e85147 savedclosed/list0. Новых установок/изменений production нет;
+текущая PE/engine/gate098 сохраняются. Original/server/inputEXE без изменений.
+Это STATIC_ONLY_NOT_IMPLEMENTED, не новый runtime milestone. Следующая зависимость:
+targetGUIanimation/readycue/mode3 перед cooldowncache и handlers.
+[Доказательства](../research/client455-linker-cooldown.md).
+
 Дополнение07.11, gui-timer098:32 equal ranges/29functions/2791asm; установленное
 IDA MCP работает, session316a9b70 savedclosed/list0. Новых установок нет.
 Typed timer в ordinaryCGUIItem:175state/112label/57radial(171triangles),actualcopy/

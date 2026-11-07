@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Linker-cooldown099 static audit.79canonicalfunctions/5906asm/
+82equalranges/20customvirtualentries pinned onbothclients. Admission=rootrow
+membership ORactive,notIsShow. Readychild1040 uses realcommon13:0 sheet1024x640/
+texture1024x1024/8x5/128/FPS34/blend3SRCALPHA-ONE;legacyAni/Draw differ.
+Foundrequireddependencybeforeactualcache/handlers;erase/outerincrement quirk,
+remove partialreset vs expiry fullreset anddistinctlookup routes recorded.
+IDA31e85147 savedclosed/list0. Production/gate098 unchanged,noGPU/bulkreruns.
+STATIC_ONLY_NOT_IMPLEMENTED;M6/M6F/M7/M9OPEN;next ownreadycue+cache+handlers.
+[Evidence](research/client455-linker-cooldown.md).
+
 2026-11-07 — GUI-timer098. ActualtypedCGUIItem now owns state/update/copy/reset/
 radialdraw/labels andrealregistry fanout;typedLinker query restored.32equalranges/
 29functions/2791asm;175state/112label/57rays/171triangles pass. Clockwrap/signed

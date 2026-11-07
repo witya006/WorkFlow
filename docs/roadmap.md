@@ -19,6 +19,10 @@
 lock/Macro/Vending/fullAdd/bootstrap. Gate098 current,097 runtimehistorical.
 M6/M6F/M7/M9 открыты. [Доказательства](../research/client455-gui-timer.md).
 
+Работа099: статически закреплены79 функций панели и зависимости. Перед
+cooldowncache/handlers восстанавливается анимация готовности455 и её blend3.
+Production/gate098 пока неизменны. [Разбор](../research/client455-linker-cooldown.md).
+
 Исторический результат097:
 
 097: actualокно панели быстрого доступа5×10 включено вместо legacy8slots.

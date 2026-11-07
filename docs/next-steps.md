@@ -17,11 +17,29 @@ account/window097/owners096/metadata094/icon092 targeted pass.11из23 преж�
 Current gate:inventory/client455-gui-timer-checkpoint.json;097runtimehistorical.
 IDA316a9b70 savedclosed/list0. [Доказательства](../research/client455-gui-timer.md).
 
-Далее099: Linker cooldown cache501C30 и actualhandlers use/remove/swap/hover;
+Работа099:79functions/5906asm/82equalranges/20customvirtuals закреплены;
+inventory/client455-linker-cooldown-reference.json имеет статус STATIC_ONLY_NOT_IMPLEMENTED.
+Raw artifacts/client455-progress/linker-cooldown099-reference.json иextra.json,
+session31e85147 savedclosed/list0. Production098 не менялась;её GPU/bulk не
+повторялись. [Разбор](../research/client455-linker-cooldown.md).
+
+Сначала099: source-owned GUIObjectAni-compatible readycue/mode3 drawing.
+GUIItem+1040,atlas1/action13/frame0,лист1024x640/texture1024x1024,8x5 клетки128,
+34FPS/no-loop/initialstopped. Targetblend3=SRCALPHA/ONE;legacyDrawSpriteUV иначе.
+Нужен согласованный owntexture API/overlay,безprivate targetABI casts. Затем
+Linker cooldown cache501C30/FrameMove501750 и actualhandlers use/remove/swap/hover;
 затем liveSF/Animuscallbacks/flag21lock/Macro35/Vending27/fullCItemBoard.Add и
 normal table bootstrap. Typed timer готов в выбранном обычном домене; fullGUIItem
 children/shake/copy-empty/lifecycle и CPU-selected SSEtan/FP-exception numeric
 domains ещё open. Stopfanout проверен сfullobjects,в обычнойPE пока unused.
+Не принимать decompiler prototypes за ABI:5019E0 — rootmembership,не IsShow.
+Admission=attached row OR activebank;matching=virtualkind/code+serial index.
+Remove очищаетpointer/start,expiry весь20-byte record. Pending erase возвращает
+next,затем5018f8 ещё increment;обычный erase-withoutincrement меняет поведение.
+Rawgate114A070 default0;смысл beyondSFsuppression не назван. CObjectBoard.UI_UseRequest
+в исходном0.7 nonvirtual,а targetCLinkBoard имеет bank/slot handler500F80 вvtable;
+не подставлять методы по совпадению позиции/названия. Live inventory/equip/SF/
+Animus/Macro provider chains тоже обязательны,не заменять recording успехом.
 Все прежние gaps/M6/M6F/M7/M9 обязательны. Проверка: Invoke-Python.ps1
 scripts/checkpoint_client455_gui_timer.py. Не повторять unchangedworld/audio/159k/
 093atlas/2013owner/SF1447/095manual без нового риска.092 повторён здесь только

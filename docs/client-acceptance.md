@@ -1,5 +1,10 @@
 # Полнота восстановления RF_Online.bin
 
+099 STATIC_ONLY_NOT_IMPLEMENTED:79functions/5906asm/82equalranges иactualready
+sheet geometry закреплены. Это исследование дляследующегопереноса,не новый
+runtime результат. Production/gate098 current;GUIanimation-readycue/cooldowncache/
+actualhandlers и все остальныеgaps обязательны. [Разбор](../research/client455-linker-cooldown.md).
+
 098 PARTIAL: actualtyped CGUIItem timer455 state/update/copy/conditionalempty,
 registry start-stop fanout,радиальныйDraw/wholeclip/контекстная подпись и typed
 Linkerquery подключены.175state/112label/57rays/171triangles,29viewedGPU,

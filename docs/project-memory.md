@@ -23,6 +23,43 @@
 
 ## Последний проверенный результат
 
+Работа099: STATIC_ONLY_NOT_IMPLEMENTED. Production/runtimegate остаётся098,
+PEd943ef46…/engine082 не менялись;нет нового runtime acceptance.79canonical
+functions/5906asm/82equalranges,20customvtableentries закреплены пообоимpins.
+Audit scripts/audit_client455_linker_cooldown.py → inventory/client455-linker-
+cooldown-reference.json;research/client455-linker-cooldown.md. Raw ignored
+artifacts/client455-progress/linker-cooldown099-reference.json +extra.json,
+session31e85147 savedclosed/list0. Exploration/predicates files вспомогательные.
+
+Следующая actualdependency передcache:GUIObjectAni-compatible readychild
+GUIItem+1040. Configure61AF30:atlas1/action13/frame0,128x128,8columns5rows,
+FPS34,noLoop,initialstopped,blend3. Реальный commonSPR frame1024x640,texture
+1024x1024 =>U/Vcellspan.125,не1/5поY. Центрирование61B240 signeddivision.
+Readychild добавляется кrootwindow приexpiry;не частьordinaryGUIItem.Draw.
+LegacyCGUIObjectAni.Update и alpha-onlyDrawSpriteUV неэквивалентны. Mode3
+8C6F40=SRCALPHA/ONE;нужен согласованныйsourceAPItexture/overlayбезtargetcasts.
+Oldengine033/source сохранять;новыйoverlayстроитьтолькоderivedstartupengine,
+единаяclassdeclaration для engine/client TUs(пример existingcamera overlay).
+Не использовать private-access hacks/zeroarea hidden draw/recordingprovider.
+
+Cache501C30 admission=window.IsAddedObject(bankrow) ORactivebank(5019E0),не
+IsShow/pinflagsalone.50records20:bankBYTE/ptr/start/offset/duration;bank/padding
+ctor502AE0 unwritten. Matchesvirtualkind/code thenwrapperindex vsCItemserial+4;
+occupiedrecord неперезаписывается;каждоесовпадениесвойclock. Remove5007E0
+clears ptr/start only;FrameMove501750 unsignedwrapelapsed>=duration thenmemzero20.
+Rawglobalgate114A070 ctor0,nonzero+kind1 suppresseswhole501C30;broadermeaningunknown.
+Pendingerase502C50 incrementsinputiterator,returnsnext;outer5018F8 thenincrements
+again. Adjacentstoppedcues могутостатьсянаследующийframe;end/sentinel/OOM/unsafe
+domainsещёopen. Не"исправлять" наудобныйstd::list erase loop. Actualboardkind/code
+predicates46B370/46B3C0 иserialcompare46D630 закрепленывextra сvtableAAC13C.
+Ownerlookup502190physical boards1/0/5;equal5023301/0;SF3/7,Animus4,kind6board22,
+Macro7board35. SourceCObjectBoard.UI_UseRequest nonvirtual,actual500F80bank-slot
+handler вtargetvtable;простоеoffset-nameсопоставлениестарыхprotectedhooks неверно.
+Далееcache/actualhandlers/liveinventory-equip-SF-Animuscallbacks/lock/Macro/Vending/
+fullAdd/bootstrap;allpriorclientgaps и M6/M6F/M7/M9 OPEN. Progress,notblocked.
+
+Последний runtime результат098:
+
 098 PARTIAL. Currentgate inventory/client455-gui-timer-checkpoint.json.
 Typed ordinary CGUIItem owns RF455GuiTimer child;olduntyped timer unchanged.
 Source-owned selectedstate28,not private208ABI:duration/start/offset/rawstarted/
