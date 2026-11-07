@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+084: восстановлена доказательная карта зависимостей Tutorial/common init:
+фабрика455 создаёт53 объекта, текущая source —18. У Force/Animus изменились
+ID; обычный quest briefing и Tutorial имеют разных владельцев.92 диапазона,
+RTTI/vptr и1514 asm закреплены; восемь source-only запусков прошли. Это аудит,
+runtime083 не менялся. Далее085 — перенос storage/board контрактов и общих
+UI/Avatar providers для actual Tutorial. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-tutorial-integration.md).
+
+Предыдущий результат:
+
 083: восстановлена 64-битная валюта Avatar → инвентарь с форматированием и
 выравниванием455. Korea/Russia, затронутые account/actor/FX и точная новая
 PE/Create=1 проверены. Это зависимость настоящего Tutorial, который ещё не
@@ -593,7 +603,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/084: actualCGP_Tutorial shared UI/board/Avatar init, Load/Create/cameraintro/
+1. M6/085: actual455 storage/board identities/factory и common gameplay providers.
+   Force source4→4553,Animus5→4; не создавать конфликт старого belt/Force.
+   Далее actualCGP_Tutorial shared UI/board/Avatar init, Load/Create/cameraintro/
    frame/input/Destroy, QBI host/follow/localhandlers/feedback/CTutorialBoard и
    fourstagefactory. Money083 готов в ограниченном домене; ID окна38, QBI47 типов.
    BSPbackend/owner/reload074

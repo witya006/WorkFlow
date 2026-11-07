@@ -23,6 +23,45 @@
 
 ## Последний проверенный результат
 
+084 — AUDIT_OPEN, runtime083 не менялся. Настоящий Tutorial Create5586D0
+вызывает общий UI5467D0/boards5477C0/Avatar5488F0. Точное подключение требует
+другой общей фабрики:455 Create4FB920 allocates53 objects/limit56,source18/limit19.
+GetBoard4FD860 public2→equipment1;physical2/23/30 в этомCreate не назначены.
+17same-named source registry classes не дают parity.36 target names отсутствуют
+в текущей фабрике, не утверждать отсутствие всех их исходников/поведения.
+
+КРИТИЧНО: Force455id3/source4;Animus455id4/source5. Старый sourceid3 — CBeltBoard,
+нет same-named target factory class. Targetslot5 — CTrunkBoard,slot19 CJournalBoard.
+Не передавать QBI board3 напрямую в oldGetBoard. Не менять только enumчисла:
+появится collision сbelt; перенести storage/protocol consumers/factory вместе.
+CQuestBriefingBoard ctor49B550 registry20 и dedicatedCTutorialBoard4A5AE0 —
+разные RTTI/vptr/lifecycle, хотя InitWindow обоих38. QBI47 — отдельное число.
+CommonAvatar требует nameplate/charinfo/equipment/4gauge consumers, не толькоmoney.
+
+92equalpinranges;1514actual fullasm4funcs (1388/27/44/55);53primary vptr stores
+decoded/RTTIconfirmedbothpins. Все выбранные pseudocodeполные;rawtutorial084-*.json
+и reusedtutorial083-initial.json вartifacts/client455-progress. IDA14d8cac3
+savedclosed/list0. Inventoryclient455-tutorial-integration.json хранит все53IDs,
+class/ctorRVA/allocation/vptr/RTTI/sha,source comparisons и пять mandatoryhost
+interfaces. Research/client455-tutorial-integration.md описывает границы.
+
+Native actualsource factory probe: embeddedrealCMainApp.CNetworkMgr Create до
+boards;8stagedruns exit0/identical18objects/alias2/rangeguard. ProbePE
+1e7484980582af6a430f820a263fca529a8cc09d71312a2ee8f5b40df8495e22.
+Source sizeofMainGame65984/Avatar19280/Tutorialsemantic32/briefing2736 — неABIparity.
+Ошибки fixture:безnetworkowner getterECX0;затем localnetwork stackoverflow.
+Обе исправлены вprobe;не считать багом production startup. Старые GPU/159k suites
+не повторялись;source083 normalPE иengine082 unchanged,oldmoneygatecurrent.
+
+Далее085: реальная migration storage/board contracts/factory, общие UI/Avatar
+owners/gauges/nameplate/processor dependencies;затем concreteQBI/follow/handlers
+и actualTutorial lifecycle/fourstage/Login. Не заменять host recordings/IDonly.
+Полный реестр остальных gameplay/GUI/Character/audio/FX/IME/numeric gaps обязателен;
+M6/M6F/M7/M9OPEN,процентнеизмерен. Эта итерация дала новое доказательство разрывов,
+не новый работающий Tutorial и не принятую подсистему.
+
+Предыдущий результат:
+
 083: actual Avatar → inventory currency fields/API теперь signed64; значения
 выше32бит не теряются. Форматирование группами3 и wider-title x−10−amountWidth,
 rowY перенесены. Для negative target использует FILD→double→fabs→truncation:
@@ -47,7 +86,7 @@ Engine9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769
 159k suites тоже. Gateclient455-money-checkpoint.json PARTIAL/current;
 old082gatehistorical. Research/client455-money.md содержит пределы доказательств.
 
-Далее084: настоящий CGP_Tutorial со shared UI/board/Avatar preparation5488F0
+Очередь после083: настоящий CGP_Tutorial со shared UI/board/Avatar preparation5488F0
 (Create5586D0 не вызывает statshelper5588C0), concrete QBI/follow/localhandlers/
 feedback/frame/input/Destroy иfourstage/Login. Нового полного владельца083нет.
 CORRECTION: CTutorialBoard InitWindow ID38. «47» означает QBI selectors, не

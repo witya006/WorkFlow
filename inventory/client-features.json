@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-TUTORIAL-INTEGRATION-084",
+      "status": "open",
+      "description": "Evidence map for actual Tutorial/common UI/board/Avatar integration;target/source board contracts differ;production runtime unchanged",
+      "reference": [{"rva":"0x1586d0","role":"actual Tutorial Create"},{"rva":"0x1467d0","role":"common UI"},{"rva":"0x1477c0","role":"common boards"},{"rva":"0x1488f0","role":"common Avatar preparation"},{"rva":"0xfb920","role":"53-object target registry factory"},{"rva":"0xfd860","role":"56-ID getter/equipment alias"},{"rva":"0xa5ae0","role":"dedicated Tutorial owner constructor"}],
+      "implementation": [],
+      "verification": "AUDIT_OPEN:92equalpinranges/1514completeasm/53primary-vptr writes and PE RTTI. Actual source constructor/RTTI probe eight exit0 runs:18objects under19IDs;17same-named classes,Force4vs3/Animus5vs4. No Tutorial runtime acceptance or production change.",
+      "evidence": ["inventory/client455-tutorial-integration.json","inventory/client455-tutorial-dependencies-native.json","research/client455-tutorial-integration.md"],
+      "gaps": ["Port actual455 storage/board identities and factory;numeric forwarding QBI3 currently selects legacy CBeltBoard instead of Force","36 target class names absent from current registry are not a full source-file/feature absence claim;17matching names do not establish behavior equivalence","Separate QuestBriefing registry20 from dedicated Tutorial despite common window38;restore sharedUI/Avatar/nameplate/gauges/realprocessors","Actual Tutorial/QBIhost/follow/localhandlers/fourstage/Login/gameplay and all earlier M6F/M7/M9 requirements remain open"]
+    },
+    {
       "id": "CLIENT455-MONEY-083",
       "status": "partial",
       "description": "Actual signed64 Avatar/inventory money API, grouping and title alignment;dependency of Tutorial, not complete currency protocol or stage",

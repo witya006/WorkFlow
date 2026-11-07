@@ -1,5 +1,15 @@
 # Полнота восстановления RF_Online.bin
 
+084 AUDIT_OPEN: common Tutorial init требует53 объектов фабрики455; текущая
+source фабрика содержит18. У17 совпадают имена, эквивалентность поведения не
+принята;36 других имён отсутствуют в этой фабрике, что не является полным
+инвентарём отсутствующих исходников/функций. Force source4/target3 иAnimus5/4
+нельзя передавать в QBI host без восстановления контрактов. QuestBriefing20 и
+Tutorial — разные владельцы с window38.92 pinned ranges/1514 actual asm/RTTI
+и восемь source-only запусков дают карту разрывов. Production PE083 неизменна;
+actual Tutorial/common UI/Avatar/factory не приняты. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-tutorial-integration.md).
+
 083: цепочка signed64 Avatar → инвентарь, группировка и геометрия сумм
 восстановлены. Проверены 184 случая двух локалей/четырёх режимов округления,
 шесть кадров валюты и девять actor кадров; свежие account/actor/FX и exact

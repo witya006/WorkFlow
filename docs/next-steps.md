@@ -7,6 +7,25 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+084: аудит настоящего Tutorial/common init завершён как AUDIT_OPEN.92 диапазона
+совпали между pins;1514 actual asm и primary-vptr/RTTI дают карту53 объектов
+фабрики455. Реальная source фабрика создаёт18 под19 IDs; у17 совпали имена,
+но это не доказательство поведения. Force:source4/4553;Animus:source5/4554.
+Прямая передача QBI board3 в старый GetBoard откроет CBeltBoard. Отдельные
+CQuestBriefingBoard(slot20) и CTutorialBoard используют window38. Source-only
+probe с настоящим network owner прошёл восемь одинаковых запусков. Runtime083
+не менялся; полноценные Tutorial/игра ещё открыты.
+[Доказательства](../research/client455-tutorial-integration.md).
+
+Далее085: перенести контракт455 storage/board IDs и фабрику с учётом реальных
+типов/протокольных потребителей, не менять две константы с конфликтом слотов.
+Восстановить общие gameplay UI/board/Avatar providers, gauges/char-info/nameplate
+и реальные processors. Затем concrete QBI/follow/localhandlers и actual
+CGP_Tutorial lifecycle/fourstage/Login. Остальные классы/функции тоже обязательны
+дляM9; отсутствующее имя в текущей фабрике не равно отсутствию всей функции.
+
+Предыдущий результат:
+
 083: восстановлена настоящая цепочка 64-битной валюты Avatar → инвентарь,
 форматирование с измеренными x87 особенностями и выравнивание сумм. По 92
 проверки Korea/Russia и шесть просмотренных кадров; свежие account/actor/FX,
@@ -15,7 +34,7 @@ logic не разрабатывать; серверные исходники т�
 Полные Tutorial, валюта в протоколе/торговле и игра ещё открыты.
 [Доказательства](../research/client455-money.md).
 
-Далее 084: настоящий CGP_Tutorial и его shared UI/board/Avatar preparation,
+Очередь после083: настоящий CGP_Tutorial и его shared UI/board/Avatar preparation,
 QBI host/follow/local handlers/feedback, frame/input/lifecycle и четыре этапа
 с переходами Login. Фактический Create5586D0 вызывает Avatar5488F0, не5588C0.
 Окно CTutorialBoard имеет ID38; «47» означает число селекторов QBI, а не
@@ -911,7 +930,9 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. После money083: общий UI/board/Avatar init и настоящий Tutorial owner,
+1. После аудита084: перенос storage/board контрактов455 и нужных общих владельцев;
+   Force/Animus IDs отличаются, QBI numeric passthrough в legacyGetBoard неверен.
+   Далее общий UI/board/Avatar init и настоящий Tutorial owner,
    QBI host/follow/input/frame/feedback/local handlers, четыре этапа и переходы.
    Восстановленные controls/briefing/camera/world/RVP не исследовать заново без
    новых расхождений; связать их с настоящим владельцем. ID окна38, QBI47 типов.
