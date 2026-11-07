@@ -1,5 +1,18 @@
 # Полнота восстановления RF_Online.bin
 
+093 PARTIAL: обычный typedCGUIItem.SetSprite выбирает target8/19 и страницу/
+ячейку через реальные Item/UnitParts/Default callbacks.880 oracle cases incl
+signedwidth/WORDrowwrap/partialwrites/fallback,4 просмотренных GPU кадра и9
+byte-equal кадров092 проходят. Owners2013/data575/SF1447/hotbar/storage/account
+и новая PE/Create1 проходят. GPU sample ID заданы явно: actual payload→icon
+metadata/игровые окна ещё не подключены. Полные GUIItem children, targetUnit57
+lifecycle, mixed consumers, normalbootstrap, inventory/hover/Linker/Tutorial/
+Login/auth/gameplay и все прежние gaps обязательны. Gate093 текущий,092 runtime
+historical; M6/M6F/M7/M9 OPEN. Это движение внутриM6, не полнота всего клиента.
+[Доказательства](../research/client455-item-atlas.md).
+
+Исторический результат092:
+
 092 PARTIAL: typed CBoardObject передаёт индекс и цвет рамки CGUIItem; выбранный
 core Draw рисует настоящие inventory/item.spr455. Уточнено: GUIItem1240 — рамка,
 не caption.256 grade/120 quantity boundaries/8 widths/9 просмотренных GPU кадров

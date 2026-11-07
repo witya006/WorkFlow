@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+093 PARTIAL. Current gate inventory/client455-item-atlas-checkpoint.json.
+Normal typedCGUIItem.SetSprite routesItem8/UnitParts19 bytype5,uses own
+itemID/spriteID/type andpreservesdisplayedsize;emptyFFFFFFFF earlyreturn.
+Actual targetcallbacks7B0620/7B0A40/7B05E0 implemented in production facade.
+New other30 map;weaponext29..31->page30/consume13->34/otherext2>1023rebase to
+page37(-1024)or39(-2048). Unknownouterkinddefaultpage0,unknownphysicalkind
+fails. Geometry uses signed dimensions/width, unsignedIDdivision,WORDrowtruncate
+BEFORE signedheightcompare;rawpartialwrites retained,manager failure resets
+action/frame0 while retainingactualsprite. Missingunit leavesoutputunchanged.
+Width0/negative/INTMIN/65535/65536 tested;no unsafe input EXE execution.
+
+18equalpinranges/1001asm/2switchtables/47C6decodedbyte stores;realitem40pages/
+unitparts7/inventory sprite roundtrip,880oraclecases/563failures/2actualWORDrow
+wraps pass. FourGPUframes viewed:16syntheticmetadataautomaticicons32/64,
+unitparts,stockDefaultfallback,emptyID. This is NOTrealpayloadmetadata binding.
+Nine092frames reproducedbyte-equal to savedpreviousvisualbaseline; Dmalloc
+load/unload/reloadbalanced. FullGUIItem61AF30children/timers/lock/commoninit and
+privateABI/fulltargetUnit57lifecycle remainopen;known55filenamecache reused.
+NewPE dbd71f6a2b6252f924ccffbb78b344d8f24006102e108ba64f051deab83d4bf1,
+2108416bytes/x86/entry152d60/WinMainb7670/afterCreateb77da,182client/20kernels,
+oneextra facadeTU,0unresolved. Engine082 unchanged. Freshowners2013/data575/
+SF1447/hotbar7/storage3/account/earlyKorea949/localTCP/Miles/exactPECreate1 pass.
+Firstchanceevents recorded,game loopnotaccepted. Worlds/audio/159k notrerun.
+IDA4c6c7c2csavedclosed/list0. Configured MCPprobe66tools/10functions/decomp/close
+passes withescalatedexecution after sandboxworkercode2;nativeconnectorworked,
+noinstallation/config changes. Runtime092gate historical;staticrefs andviewed
+framebaseline retained. M6/M6F/M7/M9OPEN;goalprogress/notblocked/notcomplete.
+
+Next094: actual payload->icon metadata/getters and typedboard/hover/Linker owners,
+then normal tablebootstrap order/profile andmixedconsumers. Do NOTmistake
+syntheticSetItemID/SpriteID GPU samples for actual inventory integration. Full
+GUIItemchildren/Questnames/Linker5x10/input/use/cooldown/download/oldbelt/36boards/
+Trunk/itemprotocol/Tutorial/QBI/fourstage/Login/auth/game and priorgaps mandatory.
+Research research/client455-item-atlas.md;all source edits underwork/canonical
+trackedpatches;original/server inputs unchanged,localGitonly.
+
+Исторический результат092 (runtimegate historical after093):
+
 092 PARTIAL. Current gate inventory/client455-item-icon-checkpoint.json.
 Ordinary CBoardObject.SetIcon/Refresh/SetIndex now update actual typed CGUIItem
 index and grade-frame color. Correction: targetGUIItem1240 is a CGUIObject grade

@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-atlas093. Production typedGUIItem.SetSprite now selectsactual
+target8/19atlas cells automatically viaItem/UnitParts/Default callbacks.18equal
+ranges/1001asm/47decodedC6stores;880cases/563failures/2WORDrowwraps pass. FourGPU
+frames viewed/16syntheticmetadataicons,9previous092frames byte-equal;Dmalloc
+reloadbalanced. Owners2013/data575/SF1447/hotbar/storage/account/newPEdbd71f6a/
+Create1 pass. IDA4c6c7c2cclosed/list0;configuredMCPprobe passed aftersandbox
+worker startupfailure;noinstallation/configchanges. Actualpayloadmetadata/full
+children/typedgameowners/bootstrap/M9remainOPEN. Currentgate093/092historical.
+No unchangedworld/audio/159k rerun,no serverwrites. Next094payload->iconowners.
+[Evidence](research/client455-item-atlas.md).
+
 2026-11-07 — Item-icon092. Ordinary typed wrappers now bindGUIItem index and
 grade-border color. Corrected priorcaption hypothesis:1240 is spritegradeframe.
 CoreDraw uses real455inventory/item sprites;256grades/120quantityboundaries/

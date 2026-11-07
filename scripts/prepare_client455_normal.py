@@ -694,9 +694,9 @@ def main():
     for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
-    for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp']:
+    for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-        if name in ['client455_item_object.cpp','client455_item_icon.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
+        if name in ['client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
     header_report=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())['camera_header_overlay'];camera_header=WS/header_report['file']
     if sha(camera_header.read_bytes())!=header_report['sha256']:raise ValueError('Changed owned camera header')
@@ -745,6 +745,7 @@ def main():
     report['resource_object_port_sha256']=sha((WS/'scripts/client455_resource_object_port.py').read_bytes())
     report['item_object_port_sha256']=sha((WS/'scripts/client455_item_object_port.py').read_bytes())
     report['item_icon_port_sha256']=sha((WS/'scripts/client455_item_icon_port.py').read_bytes())
+    for name in ['client455_item_atlas.h','client455_item_atlas.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_item_icon.h','client455_item_icon.cpp','client455_item_icon_members.inc','client455_target_sprites.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_client_items.h','client455_item_object.h','client455_board_object.inc','client455_item_object.cpp','client455_item_ownership.h','client455_item_ownership.cpp','client455_skill_force_items.h','client455_skill_force_items.cpp','client455_item_payloads.h','client455_item_payloads.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['camera_header_overlay']=header_report

@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, item-atlas093: обычный клиент собирает настоящий автоматический
+выбор страницы/ячейки.18 equal ranges/1001 asm/47 decoded stores;880 сценариев,
+4 просмотренных GPU кадра,9 byte-equal кадров092, owners/data/SF/hotbar/storage/
+account и новая PE dbd71f6a…/Create1 проходят. IDA4c6c7c2c savedclosed/list0.
+Дополнительно configured MCP probe подтвердил66 tools/10functions/decompilation/
+smoke close. Его первый worker code2 в sandbox устранён разрешённым повторным
+запуском того же probe; переустановки и правки конфигурации не было. Новых
+установок нет; originals/server не менялись. Текущий gate093,092 historical.
+[Доказательства](../research/client455-item-atlas.md).
+
 Дополнение07.11, item-icon092: новых установок нет. IDA aa30c75c сохранена/
 закрыта, список сессий пуст;22 диапазона/1740 инструкций и RTTI закреплены.
 Поле GUIItem1240 уточнено: это цветная рамка, прежняя гипотеза caption неверна.

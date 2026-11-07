@@ -4,6 +4,7 @@
     BOOL m_typedIcon455=FALSE,m_gradeFrameVisible455=TRUE;
     CGUIObject m_gradeFrame455;
     BOOL DrawTypedIcon455(RECT*);
+    void SetTypedSprite455();
 public:
     void SetObjectIndex455(DWORD index,BOOL typed=TRUE){m_objectIndex455=index;if(typed){m_typedIcon455=TRUE;m_bySpriteSize=64;}}
     DWORD GetObjectIndex455()const{return m_objectIndex455;}

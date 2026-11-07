@@ -6,9 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ITEM-ICON-092",
+      "id": "CLIENT455-ITEM-ATLAS-093",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Production typedGUIItem.SetSprite automatically selects actual455item/unitparts atlas through restored callbacks;payload-to-icon metadata stillopen",
+      "reference": [{"rva":"0x3b0620","role":"item atlas selection"},{"rva":"0x3b0a40","role":"unitparts atlas selection"},{"rva":"0x3b05e0","role":"default reference"},{"rva":"0x3b0570","role":"callback dispatch/failure fallback"},{"rva":"0x21af30","role":"GUIItem.SetSprite core"}],
+      "implementation": ["scripts/native/client455_item_atlas.h","scripts/native/client455_item_atlas.cpp","scripts/client455_item_icon_port.py","scripts/native/client455_item_icon_members.inc","scripts/prepare_client455_normal.py"],
+      "verification": "18equalpinranges/17functions/1001asm/2switchtables/47decodedC6stores. Realitem40/unitparts7pages and inventory roundtrip;880cases/563callbackfailures/2WORDrowwraps/rawpartialwrites/managerfallback pass. FourGPUframes viewed with16automaticmetadata icons32/64/unitparts/stockDefault/emptyID;Dmallocreloadbalanced. Nine092frames byte-equal. Freshowners2013/data575/SF1447/hotbar/storage/account/newPEdbd71f6a/entry152d60/Create1 pass. IDA4c6c7c2csavedclosed/list0;configuredMCPprobe66tools/10functions/decomp/close passed after sandboxworkerstartup failure. No unchangedworld/audio/159k rerun.",
+      "evidence": ["inventory/client455-item-atlas-reference.json","inventory/client455-item-atlas-native.json","inventory/client455-item-atlas-visual-review.json","inventory/client455-item-atlas-checkpoint.json","research/client455-item-atlas.md"],
+      "gaps": ["GPUmetadata explicitlysynthetic;actual payload getters/typedboard-hover-Linker owners and normal tablebootstrap remainopen","Full61AF30children/timer/common/lock initializers,GUIItemcopy/update/shake/base virtualSetSize andprivateABI stillopen","Known55filenamecache reused;fulltargetUnit57/registration/reload/error lifecycle remainsopen","Prior Questsentence/fullpayloadgameplay/36boards/Trunk/itemprotocol/Linker5x10/input/use/cooldowns/download/Tutorial/QBI/fourstage/Login/auth/game/M6F/M7/M9 mandatory;092runtimegate historical/staticreferences retained"]
+    },
+    {
+      "id": "CLIENT455-ITEM-ICON-092",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-ITEM-ATLAS-093",
       "description": "Ordinary typed board icon index/grade border and core sprite draw;automatic itemID-to-atlas and fullGUIItem remain open",
       "reference": [{"rva":"0x6b7e0","role":"board icon refresh"},{"rva":"0x21cca0","role":"BYTE grade colors"},{"rva":"0x21d070","role":"grade setter"},{"rva":"0x21b240","role":"position"},{"rva":"0x21b450","role":"signed width frame selection"},{"rva":"0x21b6b0","role":"unclipped core draw"},{"rva":"0x21b910","role":"clipped core draw"}],
       "implementation": ["scripts/client455_item_icon_port.py","scripts/native/client455_item_icon.h","scripts/native/client455_item_icon.cpp","scripts/native/client455_item_icon_members.inc","scripts/native/client455_target_sprites.inc","scripts/native/client455_item_object.cpp","scripts/prepare_client455_normal.py"],

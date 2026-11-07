@@ -1,0 +1,124 @@
+{
+  "status": "PARTIAL",
+  "scope": "455item/unitparts/default atlas callbacks and typedGUIItem automatic core sprite selection;fullGUIItem children/gameplay still open",
+  "script_sha256": "102ab379d7aa4e31d2bac80c39ca5206475cb7ac2abe69818de6a0811d521c6b",
+  "reference_sha256": "395fdbbd7bf4e5f7e24b31bf45706edbffa5c0e63b9c138e7c3e8ca847d59828",
+  "native_sha256": "49df71eb903f1678d17aa65021c4e8ab4225b78e8900659eb496a15d77327a95",
+  "session": {
+    "file": "artifacts/client455-progress/item-atlas093-session.json",
+    "sha256": "28c4234b20d6469911ab1b1f15f33d2c9a6258466e224ac9fb9d843863acacd8"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_atlas.h",
+      "sha256": "1ec28d222507c22f3d406b17f86414ded9d3eee67f0ffb1d3f6ab52c9f5b0af7"
+    },
+    {
+      "file": "scripts/native/client455_item_atlas.cpp",
+      "sha256": "c4e122d2dc1520cd716f612b910b8864bdd77dfb0bde6d9c4515030a640eea2c"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.h",
+      "sha256": "6266624e6b8784857233c5bf442e391c1360319cc62dc3efe4650f89360d7d6e"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "b4aa9175657bec442010c01ccc47e6767c07c2b5f292cd65fbf1bd8274ae9dcf"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "400ee33bf84153632c497679ecac9bcb6c1690f111baf3e84643e5fd1c758007"
+    },
+    {
+      "file": "scripts/native/client455_target_sprites.inc",
+      "sha256": "8c2dc582d1fa90e1370fe554f4dd4d435f40a21ae7512364997e44f7403e91e5"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.h",
+      "sha256": "3c24e292ecf3807d8e7b26a3ad0c6659b4d366bb0b3fc6ee0d4c79f30f1bded6",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "input_sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.cpp",
+      "sha256": "fc573178ac791df74f22019797ffb9bafdebcb4887cc86353bdab3c66488b8fb",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "input_sha256": "5f8c76708819fee9b88e8db524512c5f16575dcb3c116580d8258ba2403a521f",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/spritemgr.h",
+      "sha256": "7ddae62acaa9759b60d8eb01baad26f5081b967768dfcbe6a38f7640861d1b52",
+      "input": "work/client455-port/source/RF_Client/userinterface/spritemgr.h",
+      "input_sha256": "8ec55b54edb8759e6b2af1f61dd372ea6ea4c771217376b0531ea3e7eced3bea",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_atlas.cpp",
+      "sha256": "c4e122d2dc1520cd716f612b910b8864bdd77dfb0bde6d9c4515030a640eea2c",
+      "input": "scripts/native/client455_item_atlas.cpp",
+      "input_sha256": "c4e122d2dc1520cd716f612b910b8864bdd77dfb0bde6d9c4515030a640eea2c"
+    }
+  ],
+  "normal_link_sha256": "9f04fd579edf3a4c7bcef97a1772fd536f26b169272185596a52de1435ba03e4",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "dbd71f6a2b6252f924ccffbb78b344d8f24006102e108ba64f051deab83d4bf1",
+    "bytes": 2108416,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x152d60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "7656948608107dbe41cd3d75c717356c8b74f476fe133ed555cdea4d9b1d5337",
+    "client455-normal-build": "853a8b936779419035b7ae7281316213047b16a328c676a28d11fec8f0ad91d2",
+    "client455-normal-consumers": "0fd179e8eea85d4968279622cca4bdd62e2f1c03d4dd195e6a9a9b732b4360e2",
+    "client455-own-entry": "489f7795dbd5366948a9e39de706b02ec3a0e701223b3f5b7d24ee4e91154413",
+    "client455-startup-audit": "b8cf117e32fde753f531ee0915911f7f8f4975c89aeab34892f79f2f486842af",
+    "client455-startup-native": "75ea361594b8449030e4d0a2d4bcd1734921e6b3194410bbf5a2630ff310e67b",
+    "client455-ui-startup-native": "c9388beffd10b6c5625e0e11622c50934db241721b3454b644f8eb05c31da028",
+    "client455-hotbar-native": "2d83e8637f3d9372c988e947b3f908ba02e4196e3d2b16e71f42a5ed0297feb9",
+    "client455-storage-native": "64f31a42fa70be47ef25573de5ae77c689d3e1ef454c0c7721dbf2aa97b7ad15",
+    "client455-account-native": "f8ca3f87c7b2de0eb4d71dd60303cffe55c2cad8d442124de78a65a051423070",
+    "client455-item-object-native": "48dc67d6b9980428c310727780df5cded2b9ae1ffee823394e6d51b1fb43fd6d",
+    "client455-item-icon-native": "e493d5f7aa593370abd58fefcc15ba0d58102fab716e3994bf7bfafb1ac55f12",
+    "client455-item-atlas-visual-review": "a44688a048d1b86d8a68b098fed4bdeb2c4e2b1d2bcd2028e921506e198dabc8"
+  },
+  "selected_ranges": 18,
+  "assembly_instructions": 1001,
+  "decoded_stores": 47,
+  "atlas_cases": 880,
+  "viewed_GPU_frames": 4,
+  "unchanged092_GPU_frame_hashes": 9,
+  "production_owner2013_data575_SF1447": "PASS_BOUNDED",
+  "previous092gate": "historical runtime after newsource/link/reports;staticreferences and priorvisualframebaseline retained",
+  "unchanged_world_audio_159k_suites_rerun": false,
+  "gaps": [
+    "Core typedSetSprite omits remaining61AF30 timer/overlay/common/lock child initialization;fullprivateGUIItemABI stillopen",
+    "Source targetcache has55knownfilename slots;target manager has57slots;completeUnit registration/reload/error lifecycle remainsopen",
+    "Actual payload-to-icon metadata/typedboard-hover/Linker integration,mixedconsumers and normal tablebootstrap remainopen",
+    "Quest sentence expansion/fullpayload gameplay/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game and priorM6F/M7/M9 gaps mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
