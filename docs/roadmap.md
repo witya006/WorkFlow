@@ -12,6 +12,17 @@
 
 ## Текущий статус
 
+088: sourceSF factory/конкретныйmanager и087ownership работают на1447 реальных
+записях5 таблиц. Standalone/full-object byteoracle/last-owner erase прошли.
+УстановленныйprofileTaiwan/zh-tw подтверждён;новый earlyWinMain950/localTCP/
+sound1 проходит. Ko/ru counts mismatch верноотклоняются сprefixwrites.
+Production086 не менялась. Далее089 — другиеpayloadfactories/data readers,
+realgame-global/CItemObject/CResObject/board/hover ownership,затемLinker/UI/
+Tutorial. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-skill-force-items.md).
+
+Предыдущая source-основа:
+
 087: source-основа владения предметами92/wrapper620 проверена по24ranges/
 579asm,3whole-record oracle/12сценариям/7 границам. Точная библиотека проходит
 standalone/full-object entry с recording managerhost;обычный клиент086 не менялся.
@@ -633,9 +644,11 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/088: реальные deriveditem factories/managers и virtualpredicates,
+1. M6/089: остальные пять payloadfactories(physical/Animus/Unit/UnitParts/Quest),
+   реальные Item/Quest readers и metadata. SF/primarymanager088 уже работают
+   на1447realrows;ordinarygame-global binding ещё открыт. Далее
    CItemObject/CResObject lifecycle и typedboard/hover ownership. Sourcekernels
-   087 проверены с recordinghost,ordinarybinding ещё впереди. Затем5x10CGUILinkWindow,
+   087 теперь проверены с concreteSFhost088,ordinarybinding ещё впереди. Затем5x10CGUILinkWindow,
    use/input/cooldowns/download, oldbelt consumers и common gameplay providers.
    Delta-save/периодическая отправка086 проверены в ограниченном домене;
    identity085 Force3/Animus4 уже работает. Остальные36 target factory classes,

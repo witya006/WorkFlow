@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, skill-force088: новых установок нет. IDAcd8baa1a saved/closed/
+list0.35equalranges/1224actualasm,включая отдельно pinned EH-tail windows.
+Concrete SF factory/manager/087clone-release:1447actualpayloads и ownedwrappers,
+whole five-table byteoracle,standalone/full-object,exit0. Host уже concrete дляSF.
+Original R3Engine.ini выбираетTaiwan;zh-tw counts совпадают сroot1447,ko/ru
+fail наtable4/1 ссохранениемprefixwrites. Новая earlyTaiwan PE проверка950/
+6997NDLanguage/localTCP/sound1 прошла доD3D. Production086 неизменна,егоgate
+current;неизменённыеGPU/Korea-startup/159k suites не повторялись. OrdinarySF/
+Linker/остальные payloadfactories/game/M9OPEN.
+[Доказательства](../research/client455-skill-force-items.md).
+
 Дополнение07.11, item-ownership087: новых установок нет. IDA65f54fa4 сохранена/
 закрыта/list0;24 equalpinranges/579 полных asm,8 constructor stores декодированы
 в oracle. Sourceбиблиотека x86/MT:3whole-record сравнения92/620bytes,12 lifetime

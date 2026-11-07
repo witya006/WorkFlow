@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Skill-force088. Concrete SF selector1 factory/data owner/primary
+manager now drive087clone/release on1447actualrows/ownedwrappers;notrecordinghost.
+Standalone/fullobject whole-tablebytes/last-owner erase passed.35equalranges/
+1224asm pluspinnednoncontiguousEHwindows;IDAcd8baa1aclosed. Rootcountsmatchzh-tw;
+originaliniTaiwan. New exactPEearlyTaiwan/950/6997/localTCP/sound1 passed before
+D3D. Ko/ru mismatch4/1 andprefixwrites preserved;originals/config unchanged.
+Ordinary086/itsgate current;otherpayloadfactories/ordinarybinding/fullgame/M9OPEN.
+[Evidence](research/client455-skill-force-items.md).
+
 2026-11-07 — Item-ownership087. Selected source CItem92/boardwrapper620
 copy/clone/refcount/release kernels verified:24equalranges/579asm,8decoded
 constructor stores/3whole-recordoracles/12lifetimecases/7BYTEboundaries.

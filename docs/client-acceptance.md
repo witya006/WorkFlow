@@ -1,5 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
+088 PARTIAL_SOURCE_RUNTIME: concreteSF factory selector1/5data tables/primary
+manager связаны с087wrapperclone/release.1447realpayloads/wrappers/целые
+локализованныеbytes прошли standalone/full-object;host уженеrecording дляSF.
+OriginalprofileTaiwan8/zh-tw,новаяearlyPE950/6997/localTCP/sound1 проверка
+прошла доD3D. Rootcounts88/84/504/60/711:ko/ru несовместимы наtable4/1,
+провереныправильныйотказ иprefixwrites,безподгонкиданных/конфига. Это ограничение
+входного комплекта,не требование придумывать новые строки для codeparity.
+Полныеordinaryowners/SFgameplay/другие5payloadfactories/5x10GUI/Tutorial/game
+ещёOPEN. Production086/егоgate current;старыеGPU/Korea-startup/159k suites
+не повторялись. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-skill-force-items.md).
+
 087 PARTIAL_SOURCE_FOUNDATION: выбраны/перенесены recordcopy/clone/refrelease
 правила CItem92/CBoardObject620,включая signedBYTE и primarycache-empty guard.
 3 whole-record oracle/12 lifetime сценариев/7 границ прошли standalone и с

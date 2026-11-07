@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+088: sourceSF factory selector1/5tables и concreteprimarymanager связаны с087
+clone/release.1447realpayloads/wrappers,wholetablebyteoracle,standalone/fullobject
+exit0. RootSkillForce и NDzh-tw согласованы;originalconfigTaiwan. Новаяearly
+PE Taiwan/950/6997/localTCP/sound1 passed доD3D. Ko/ru countfail4/1 иprefixwrites
+проверены;не исправлять входы выдуманнымистроками. Production086/gate current.
+[Доказательства](../research/client455-skill-force-items.md).
+
+Далее089: другие5payloadfactories/ихmetadata и настоящие Item/Quest readers.
+RootItem не начинается простыми47count-strideblocks;смотреть targetloader,
+не принимать exploratoryparse за формат. Quest имеетнесколькосекций. Затем
+game-global manager/CItemObject/CResObject/typedboard-hover owners,Linker/
+5x10view/input/cooldown/download/oldbelt/Tutorial. SFmastery/XP/liveicon/recreate/
+reload/unsafe errors покаopen. Старые GPU/Korea-startup/159k suites безновой
+причины не повторять;новая Taiwanearlyпроверка — отдельный нужный сценарий.
+
+Предыдущая source-основа:
+
 087: source kernels CItem92/CBoardObject620 copy/clone/refrelease готовы.
 24equalranges/579asm/8decodedctorstores;3 whole-record oracle,12 lifetime
 сценариев,7 BYTEграниц;та же библиотека прошла standalone/full-object entry.
@@ -14,7 +31,7 @@ Host менеджера recording;не объявлять ordinaryLinker/пол�
 Production086/его hotbar gate сохранены,старые GPU/startup/159k suites не повторялись.
 [Доказательства](../research/client455-item-ownership.md).
 
-Далее088: concrete derivedpayload factories/managers/virtualpredicates,
+Очередь после087: concrete derivedpayload factories/managers/virtualpredicates,
 CItemObject/CResObject lifecycle,typedwrapper/board/hover providers. Подключить
 087kernels к реальным владельцам;затемLinker clone/remove/use/input/cooldowns/
 download и5x10CGUILinkWindow. Targetwrapper наследует resourceobject,legacy —

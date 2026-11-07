@@ -23,6 +23,43 @@
 
 ## Последний проверенный результат
 
+088 PARTIAL_SOURCE_RUNTIME: client455_skill_force_items.h/cpp — realSF160
+factory selector1,5ownedtables иconcreteRF455SourceItemManager;087clone/release
+теперь проверен на настоящихSFpayloads,неrecordinghost.1447rows/1447wrappers,
+same.libstandalone/fullobject,wholelocalizedtablebyteoracles/alternating
+origin-linkrelease/last-owner erase/duplicatefactoryrequests/guardfailurespassed.
+Dispatchword остаётсяowner token,неcallabletargetvtbl/полныйprivateC++ABI.
+Ordinarygame-global SF/Linkerowners ещёнеподключены;Production086/егоgate current.
+
+TargetrootSkillForce.edf — именноDataTable/SkillForce.edf;5tables сmanager+48
+до+96. Counts88/84/504/60/711,strides1100/1124/1124/1124/1124,1447rows.
+Subtype1→table0,0→1,2→2,3→3,5→4. FreshSFtype0 serial/field8=ordinal;
+1/5 bothORF0000000;2/3 serialORF0000000,field8raw,level1. GetDTIndex=firstDWORD
+borrowedrow,неordinal. Clear fresh counters only;iconBoard108null.
+Locale5FB670 ignores2ndheaderDWORD,writesname32@112/text512@524,наcountmismatch
+returns0 сохраняяprefixwrites. Ko fails table4(640vs711),Ru table1(77vs84).
+Zh-tw counts matchallfive. OriginalR3Engine.ini УЖЕ Language=Taiwan;mapping8/
+zh-tw verified. Не менятьконфиг/оригиналы и не padlabels. Countmatchневлечёт
+fullversion/localeproof. Ko-kr/SkillForce.edf другойlayout/counts,неfallback.
+
+35equalpinranges/1224fullasm,noncontiguousEHtailinstructionwindows15bytes
+тожеpinned (невыкидывать поheadsize!). Rawskill-force088-reference/session/followup
+вartifacts/client455-progress;IDAcd8baa1asavedclosed/list0.
+Gate inventory/client455-skill-force-items-checkpoint.json. New exactPEearlyTaiwan
+startup passed CRT/WinMain/950/
+6997NDLanguage/localTCP/sound1,стопдоD3D;SFgameownerэтимнезапущен.
+OldGPU/Korea-startup/159k suites неповторялись;PE82625b3e…/normal-link unchanged.
+
+Далее089: remaining5payloadfactories(physical/Animus/Unit/UnitParts/Quest),
+actualItem/Questframing+metadata;потом game-global/CItemObject/CResObject/
+typedboard-hover owners и Linker5x10view/input/cooldown/download/oldbelt/Tutorial.
+RootItem.edf exploratorysimple47tables parse НЕПРОШЁЛ(естьprefix),невыдумывать
+формат;Questmulti-section. Cachedfuturectors/helpers вskill-force088-followup.json,
+передновымпортомпроверятьranges. SFearlier4XP/mastery tables/liveicon/recreate/
+reloadleakpointerlifetime/unsafeOOMunwind ивсепрежниеgapsOPEN. M6/M6F/M7/M9OPEN.
+
+Предыдущая source-основа:
+
 087 PARTIAL_SOURCE_FOUNDATION: scripts/native/client455_item_ownership.h/cpp
 дают rawdata92/620 copy/clone/BYTEretain/drop/selectedrelease. Это records,
 dispatchwords — opaque tokens,неcallabletargetvtables/полный C++ABI.
