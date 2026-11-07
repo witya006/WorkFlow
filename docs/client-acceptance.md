@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+096 PARTIAL: actual CLinkBoard Add/Remove/Clear создаёт/удаляет typed clones,
+banked icons и registry links;50 реальных владельцев/3 просмотренных GPU,
+original-owner release/last-owner cleanup/Dmalloc и точная PE/Create1 проходят.
+Register/unregister теперь retained в ordinaryPE.095registry/094metadata
+повторены,6 raw кадров byte-equal;hotbar/storage/account проходят. Новые icons
+живут в actualwindow member;fullCGUILinkWindow layout/scale/input ещё не включён
+вместо legacy8slot draw. SF/Animus CPU icons synthetic,live callbacks/lock/potion
+cooldown явноrefused;fullcopy/empty/shutdown/privateABI/typedmixedcallers/Macro/
+Vending/fullCItemBoard.Add/bootstrap/Tutorial/Login/auth/game и прежние gaps
+обязательны. Gate096 current,095 runtimehistorical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-linker-owners.md).
+
+Исторический результат095:
+
 095 PARTIAL: source-owned registry в actualMainApp группирует зарегистрированные
 иконки по type/itemID/index;typed SetNum/SetUsable/find включены в ordinaryPE.
 160 key cases, duplicates/first-remove/current-key/emptybucket,WORD/rawBYTE,

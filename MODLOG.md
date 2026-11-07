@@ -1,5 +1,19 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Linker-owners096. OrdinaryCLinkBoard Add/Remove/Clear now clone/own
+typed wrappers and bankedwindow icons,register/unregister via095.21equalranges/
+1105asm;50ownedclones/5x10/originalrelease/lastowner/destructor/3viewedGPU pass.
+Freshnullcallbacks0/1/2 tested with syntheticSF-AnimusCPUicons;Animusfactory uses
+permittedphysicaltable metadata,notfullAnimusUI. Fourmissingprovider refusals
+tested;no successno-ops. FullCGUILinkWindowlayout/input/scale/livecallbacks/lock/
+cooldown/Macro/Vending/fullAdd stillopen.095registry/094metadata fresh,6frames
+byte-equal;hotbar7/storage3/account/newPE613a6e97/entry153bd0/182-20-51/Create1pass.
+Normalregister/unregister nowretained/actualLinkerbound. IDAbb7e4b5e savedclosed/
+list0;no newinstalls/originals/serverwrites or unchangedworld/audio/159k/bulk reruns.
+Gate096 current,095runtimehistorical;next097 fullwindow/remainingowners then
+Macro-Vending/fullAdd/bootstrap. M6/M6F/M7/M9OPEN.
+[Evidence](research/client455-linker-owners.md).
+
 2026-11-07 — Icon-links095. ActualMainApp owns semantic icon buckets;production
 typed quantity/usable setters update registered copies.22equalranges/1154asm/
 160keys;duplicates/first-remove/currentidentity/emptybucket/WORD/rawBYTE pass.

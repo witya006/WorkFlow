@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+096: ordinary CLinkBoard подключён к clone/icon/registry ownership.50 копий,
+удаление оригинала/очистка,3 просмотренных GPU и новая PE/Create1 проходят.
+095registry/094inventory сохраняют все6 кадров. Полное окно/ввод/live callbacks/
+Macro ещё открыты. Далее097 — настоящий CGUILinkWindow и оставшиеся связи,
+затем Macro/Vending/fullCItemBoard.Add/normalbootstrap. Gate096 current,095
+runtimehistorical. M6/M6F/M7/M9 открыты;общего процента пока нет.
+[Доказательства](../research/client455-linker-owners.md).
+
+Исторический результат095:
+
 095: восстановлен общий реестр иконок и обновление количества/доступности.
 160 key cases/duplicates/remove/3 просмотренных GPU, прежний инвентарь и новая
 PE/Create1 проходят. Typed setters есть в ordinaryPE; реальные Linker/Macro

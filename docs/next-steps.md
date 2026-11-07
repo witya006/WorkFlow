@@ -7,29 +7,31 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-095: actualMainApp registry и typed quantity/usable fanout проверены.160keys,
-duplicates/first-remove/currentkey/emptybucket/rawWORD-BYTE,3 просмотренных GPU;
-094metadata566/race520/16icons повторён,3 кадра byte-equal. Hotbar/storage/account
-и новая PEe2741f24…/entry1530e0/182-20-50/Create1 проходят. IDA22f5e8a7 closed/list0.
-Current gate:inventory/client455-icon-links-checkpoint.json;094 runtimehistorical.
-Typed setters/find retained inordinaryPE;registration пока unused,own-entry
-регистрирует actualCGUIItemcopies явно. Это ещё не fullLinker/Macro UI.
-[Доказательства](../research/client455-icon-links.md).
+096: actual CLinkBoard Add/Remove/Clear typed ownership подключён.50 clones/icons
+в5×10 storage реального window member;registryregister/unregister теперь retained
+и actualLinkerbound в ordinaryPE. Originalrelease/lastowner/3 просмотренных GPU,
+095registry/094metadata(6byte-equalframes),hotbar/storage/account и новая
+PE613a6e97…/entry153bd0/182-20-51/Create1 проходят. IDAbb7e4b5eclosed/list0.
+Current gate:inventory/client455-linker-owners-checkpoint.json;095 runtimehistorical.
+Fullwindowdrawing/layout/input/livecallbacks ещё open;4missingproviders явно
+refused. SF/AnimusCPU icons synthetic;не выдавать их за полные originalwindows.
+[Доказательства](../research/client455-linker-owners.md).
 
-Далее096: реальные CLinkBoard/CMacroBoard Add-Remove: clone/refcount/lifecycle и
-регистрация копий. Target500590/5007E0/4F3240/4F3440 выбранные функции подтверждены
-asm/pins095; для полного переноса собрать остальные transitive contracts. Потом
-Vending27/fullCItemBoard.Add479320 notifications/cooldown/grade/quantity. Нельзя
-подставить успешные no-op вместо отсутствующих35/27. Согласованно перенести wrapper
-IsEqualItemType и mixedcallers,не кастовать typedbase к старымCSFItem/CBoardItem.
-Удалять регистрацию до смены key/destruction;graph оставляет пустые buckets.
-Target erase(end())UB не принят,source явноотказывает;не скрывать этот разрыв.
-Затем normal tablebootstrap/profile,fullLinker5x10/input/use/download,SF/Quest
-units/GUIItemchildren/targetUnit lifecycle. Все прежние36boards/Trunk/protocol/
-Tutorial/QBI/fourstage/Login/auth/game gaps обязательны.
-Не повторять unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447bulk
-без нового риска;проверять изменённый участок и затронутых владельцев.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_icon_links.py.
+Далее097: actualCGUILinkWindow Init/scale/layout5×10/bankcontrols/selection/MsgProc,
+подключить bankedicons к ordinarydrawing/input вместо legacy8slots. Затем full
+GUIItemcopy/emptychildren/timer/lock/followers/cooldown,liveSF/Animusowner callbacks.
+Exploratorydecomp saved (ещё не asm/pincomplete) в ignored artifacts/client455-
+progress/linker-window096-exploration.json:667770/667980/667C70/669410/669570/669190,
+Macro4F3240/4F3440,callbacks6C6A80/6AEF80,cooldown501C30. Scale1 сейчас admitted;
+target min(width/1024,1). Earlytypeddestructorcleanup/emptyfields не fullshutdown.
+Macro35specialtextkind7 и Vending27 mandatory до fullCItemBoard.Add479320
+notifications/cooldown/grade/quantity;потом normaltablebootstrap. Не подставлять
+успешные no-op. Согласованно переносить wrapperkind/mixedcasts. Удалять registration
+до keychange/destruction;сохранять известный unsafe erase(end()) разрыв095.
+Остальные SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game
+gaps обязательны. Не повторять unchangedworld/audio/159k/093atlas/092icon/
+2013owner/SF1447bulk без нового риска.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_linker_owners.py.
 
 Предыдущий перенос090:
 

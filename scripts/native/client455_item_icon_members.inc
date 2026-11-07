@@ -2,6 +2,7 @@
     DWORD m_objectIndex455=0xffffffff;
     BYTE m_grade455=0;
     BOOL m_typedIcon455=FALSE,m_gradeFrameVisible455=TRUE;
+    BYTE m_ownerContext455=0;
     CGUIObject m_gradeFrame455;
     BOOL DrawTypedIcon455(RECT*);
     void SetTypedSprite455();
@@ -17,6 +18,8 @@ public:
     void ShowGradeFrame455(BOOL visible){m_gradeFrameVisible455=visible;}
     void SetIconType455(BYTE type){m_typedIcon455=TRUE;m_byIconType=type;m_bySpriteSize=64;}
     BOOL UsesTypedIcon455()const{return m_typedIcon455;}
+    void SetOwnerContext455(BYTE context){m_ownerContext455=context;}
+    BYTE GetOwnerContext455()const{return m_ownerContext455;}
     void SetPos(LONG,LONG) override;
     void SetPos(POINT& point) override{SetPos(point.x,point.y);}
     virtual void SetSize(LONG,LONG);

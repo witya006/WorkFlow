@@ -1,0 +1,145 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary CLinkBoard typed clone/registration/removal and actualwindow banked icon storage;fullCGUILinkWindow and livecallbacks stillopen",
+  "script_sha256": "422dbae896d815fa5af3c92f39510bad1baf19b2daa1822ede5e49104ae708ca",
+  "reference_sha256": "9d7f04b125fdbaaba5c8f952a5e556b847d5e67f7eebee048736da635ee1b6f0",
+  "native_sha256": "f980bf18e720da0bc7c961c3cafcbb50ce10f585494eef93365b845299f06661",
+  "sources": [
+    {
+      "file": "scripts/native/client455_linker_owners.h",
+      "sha256": "f40f5ffe95a955e55da112d1e388e7c68f956e3be821de16ae0da2a4e6c07f83"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.cpp",
+      "sha256": "45cfba06e3c03afb970dde8ecd6a34f29321895530945238f5e9a7cf934c6a12"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "7578d4545274c5dffb8c239c0ee39f3449528fdd3fb6ee3a958d528ad77496ac"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.h",
+      "sha256": "ba546366fc2f1d17068b6555c8cb635ea5aff24ee44321d11e285b228056d56b",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.h",
+      "input_sha256": "74d1d6439b5aa7a75e852c06f43c70f050f93097285d590b918562e52765cac5",
+      "changes": [
+        "455fifty-key delta upload state/API;fullLinker ownership/UI/input remains open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.cpp",
+      "sha256": "ec52c296638c3ce32a61ee4b5331afb31649fe6faa288d9c2dcf5a8bfb2412f3",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "input_sha256": "d4ef8c7e37cf7ff74b3e78606330111f90eef4eeff9aba908bc7e24f90f6d4df",
+      "changes": [
+        "ordinaryLinker FrameMove5second delta save/group13op17;other455frame/cooldown/UI/clone behaviors still open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/gamewindow/guiforcebeltwindow.h",
+      "sha256": "01162dd596365add8b0d2202f76096a944c7e8e010bc7bd6b9594169a60cf22c",
+      "input": "work/client455-port/source/RF_Client/userinterface/gamewindow/guiforcebeltwindow.h",
+      "input_sha256": "356b5e188b2693b3c593ea8d237eea74ea552f726bf0125c59965eff2e617993",
+      "changes": [
+        "455upload window-state metadata only;legacy8slot visual is not fullCGUILinkWindow",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_linker_owners.cpp",
+      "sha256": "45cfba06e3c03afb970dde8ecd6a34f29321895530945238f5e9a7cf934c6a12",
+      "input": "scripts/native/client455_linker_owners.cpp",
+      "input_sha256": "45cfba06e3c03afb970dde8ecd6a34f29321895530945238f5e9a7cf934c6a12"
+    }
+  ],
+  "session": {
+    "file": "artifacts/client455-progress/linker-owners096-session.json",
+    "sha256": "7cda452d31fc4a63e02134d53b412e43acf1d51328365ad45b65309bb0104833"
+  },
+  "normal_link_sha256": "77b24bd8ea180813a7d772a328cc312e9b69f3375ca703cd885b06556bba4fbf",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "613a6e973a94659c767feda5c3a422139d970429ae0e3478623a85932b87520a",
+    "bytes": 2113536,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x153bd0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "a94bbea1fe63c6aedb3a95a6e16f8b90edcca88db8d036da671316839fcfbbee",
+    "client455-normal-build": "43f80ffed55e2178b247cd9584bcd7ab81db2574f97016c58de1993946556f25",
+    "client455-normal-consumers": "5f7d6e505ddb64e1999b841c59322e9594be2374c0b0fd252601b563f2a029ea",
+    "client455-own-entry": "8f6ce4039621639ba207925c5a68ef5658a8aebf10256fab67a082d2b12eb27d",
+    "client455-startup-audit": "240bf563b8faaf1cc1e89d2e38ff1f488745f47aa37093db27679949b06f6aea",
+    "client455-startup-native": "b75ba790fb312b63fad98fece9777d6bd126d4ede44486cd4a794da74b733f2e",
+    "client455-ui-startup-native": "0a64f925381c18fa4f0d8c4dc69e1ead2def4f6fc5b1df5cd3d51100a2de7100",
+    "client455-hotbar-native": "1eda9807787a05a917b119814adf65fb53467f349e458f53ea0d97edbe6538af",
+    "client455-storage-native": "d60c0b400a9f21fa80cb968eb1c003a253d71e4f3e3470c0d95298357220f133",
+    "client455-account-native": "2ec6403acc671d26d8ad0cd7570a4dda81ec275d66b71bb11da33d22e568d67d",
+    "client455-item-icon-metadata-native": "090d8a8f92ed1f4d16ed16b5a255b1cc918989509f9bef3618ddf8657816cc6f",
+    "client455-icon-links-native": "41648e60ece4236998df3df221e0379b00524ce970fdcb36e2b06e6589d2d110",
+    "client455-linker-owners-visual-review": "ef2569d2461f7be5fe0ec69e4dd1f72217bc3c5ee58cf307314982c2a5fc564a"
+  },
+  "selected_ranges": 21,
+  "assembly_instructions": 1105,
+  "owned_clones": 50,
+  "fresh_null_callback_cases": 3,
+  "SF_Animus_icons_synthetic": true,
+  "explicit_missing_provider_refusals": 4,
+  "viewed_GPU_frames": 3,
+  "normal_registration_retained": true,
+  "ordinary_CLinkBoard_binding": true,
+  "full_Linker_window": false,
+  "inherited_visual_evidence": [
+    {
+      "current": "client455-icon-links-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/icon-links095-before096.json",
+        "sha256": "c2f69f5fb049f4551516d9bd4f395f13c5a9c39e4b15a868a33e3bc8fa78d120"
+      },
+      "visual": {
+        "file": "inventory/client455-icon-links-visual-review.json",
+        "sha256": "e8fa9e0096f77357624d1a8b7e67c462b165cc771ffcc47e6c7a7b8299a6e9cd"
+      },
+      "raw_frames_byte_equal": true
+    },
+    {
+      "current": "client455-item-icon-metadata-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-metadata094-before095.json",
+        "sha256": "3ccdead0d6bd69946c73a16323e3d539a608164754cbfaef698c265d54f545b8"
+      },
+      "visual": {
+        "file": "inventory/client455-item-icon-metadata-visual-review.json",
+        "sha256": "1a64b6a636e8eb343797f1b094b8aa22c33e3d89d49e7170cca41f87ad1e1ffc"
+      },
+      "raw_frames_byte_equal": true
+    }
+  ],
+  "previous095gate": "historical runtime after source/link/reports changed;static registry proofs retained",
+  "unchanged_world_audio_159k_093atlas_092icon_2013owner_1447SF_suites_rerun": false,
+  "gaps": [
+    "Full CGUILinkWindow Init/layout/scale/controls/input notwired;banked sourceowned icons are realwindow members but not connected to ordinary legacy8slot drawing",
+    "Live SF/Animus source-board callbacks,locked-item overlay and potion11 cooldown provider explicitly refuse;fresh null callback paths supported",
+    "Full GUIItem.SetData/empty child-timer-shake-lock state and targetprivateABI remainopen;source copies selectedmetadata/grade only",
+    "Target Remove cooldownrecord cleanup and source earlytyped cleanup before window destruction differ until fullcooldown/shutdown migration",
+    "Untyped legacy borrowed path preserved until coordinated kind/caller migration;Macro/Vending/fullCItemBoard.Add/bootstrap/Tutorial/Login/game/M6F/M7/M9 mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

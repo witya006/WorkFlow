@@ -23,6 +23,55 @@
 
 ## Последний проверенный результат
 
+096 PARTIAL. Current gate inventory/client455-linker-owners-checkpoint.json.
+Actual CLinkBoard.Add/Remove/Clear typedhooks nowclone/own CBoardObject wrappers,
+windowmember RF455LinkerIconSlots owns50CGUIItem. Real5banks/10slots storage;
+fullCGUILinkWindow Init/layout/scale/controls/input NOTyetwired,ordinarylegacy
+draw still8oldslots. Probe drawsselectedactualboundiconsattestpositions,notfullUI.
+Source contextBYTE1360 stored2. AddExist typedfalse,target500570;AddNew detaches
+originalref,clones,packAdd failuredeletesattempt;successcopyicon38x38/refnull,
+wrapperSetIcon/register/physicalgrade. Remove unregisters beforelocalempty then
+packdelete. Emptyindex/itemIDFFFFFFFF,num1,refnull,framecolor0;gradeBYTEkept.
+Typedsourceearlydestructorcleanup differsfromtargetuntilfullshutdownorder port.
+Untypedlegacyborrowedpath remains;kindpredicate/mixedcasts notmigrated.
+
+21equalpinranges/1105asm. Asm500590 confirms packs+16*bank hiddenbydecompiler.
+50distinctclones/icons/refs51,occupiedclonecleanup/all50fanout/originalrelease
+retains49copies/ordinaryClear-lastowner/destructor/Dmallocpass. ThreeGPUframes
+viewed:realinventoryoriginal+twoactualLinkerboundcopies;gray255fanout;Remove4/9
+clearslastimage. Freshnullcallbackcases0/1/2pass:SF/AnimusCPUicons deliberately
+synthetic;Animus permissivefactory2onrealphysicaltable1,row3848,notcanonical
+AnimusUIevidence. Fourexplicitmissingproviderrefusals leave noowner/registration:
+flag21lock,potiondata88=11 cooldown,nonnullSFiconBoard,nonnullAnimusstate96.
+These providers required,notreplacedbysuccessfulno-op. Scale1admitted;fullscale
+min(screenwidth/1024,1) notconnected. SourceGetIteminvalidcoords boundednull,
+targetuncheckedpointerarithmetic;unsafe/OOM/concurrency/privateABI notaccepted.
+
+095registry160/094metadata566+520/16icons repeated,newsourcefacade:allnative
+results unchanged,6rawframes byte-equal previousreviewed. Baselines095graph:
+artifacts/client455-progress/icon-links095-before096.json;metadataoriginal094:
+item-metadata094-before095.json. Oldvisualreports retained,096gatecheckslineage.
+Hotbar7/storage3/account/newexactPEearly/Create1pass. PE SHA
+613a6e973a94659c767feda5c3a422139d970429ae0e3478623a85932b87520a,
+2113536bytes/x86/entry153bd0/WinMainb7830/afterCreateb799a,182/20/51TU,
+0unresolved/engine082unchanged. NormalAddTypedc6250/RemoveTypedc65a0 nowretained;
+registryregisterc96d0/unregisterc9810 nowretainedandactualLinkerbound (095gapclosed).
+IDAbb7e4b5esavedclosed/list0;no newinstalls/serverwrites/inputEXEexecution.
+095runtimegate historical/staticproofs retained. No unchangedworld/audio/159k/
+093atlas/092icon/2013owner/SF1447bulk rerun. M6/M6F/M7/M9OPEN.
+
+Next097: completeactualCGUILinkWindow Init/scale/layout5x10/bankcontrols/selection/
+MsgProc andordinarydrawing/input;remainingGUIItemcopy/emptychildren/timer/lock/
+cooldown/followers andliveSF/Animusowner callbacks. Macro35specialtextkind7 and
+Vending27 mandatorybeforefullCItemBoard.Add thennormaltablebootstrap. Coordinate
+wrapperkind/mixedcastmigration. Savedexploratorydecomp (notasm/pincomplete):
+artifacts/client455-progress/linker-window096-exploration.json includeswindow
+667770/667980/667C70/669410/669570/669190,Macro andcallbacks. Allprevious36boards/
+Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game/M6F/M7/M9gaps mandatory.
+Research research/client455-linker-owners.md. Progress,notblocked/notcomplete.
+
+Исторический результат095 (runtime gate historical after096):
+
 095 PARTIAL. Current gate inventory/client455-icon-links-checkpoint.json.
 RF455IconLinks actualg_MainApp field beforem_items455/UI,source-owned map/vector,
 notfullprivateUIManagerABI. Key=((itemID&0fffffff)<<28)|(index&0fffffff)|

@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, linker-owners096:21 equal ranges/1105asm;IDA bb7e4b5e savedclosed,
+list0. Actual CLinkBoard Add/Remove/Clear/50clones/5×10/window icon owner/registry
+и3 просмотренных GPU проходят. NormalPE613a6e97…/entry153bd0/182-20-51/0unresolved/
+Create1;registration теперь retained в ordinaryPE.095registry/094metadata fresh,
+6 raw кадров byte-equal. Hotbar/storage/account проходят. Полное window layout/
+input/livecallbacks/cooldown/Macro ещё open;4missingproviders явноотказывают.
+Новых установок нет;originals/server без изменений. Gate096 current,095 runtime
+historical;world/audio/159k/старые bulk не повторялись.
+[Доказательства](../research/client455-linker-owners.md).
+
 Дополнение07.11, icon-links095:22 equal ranges/1154asm/160 key oracles;
 IDA22f5e8a7 savedclosed/list0, configured MCP probe прошёл. Новых установок нет.
 182client/20kernels/50facade,0unresolved;PEe2741f24…/entry1530e0/Create1.
