@@ -1,5 +1,18 @@
 # Полнота восстановления RF_Online.bin
 
+091 PARTIAL: обычные CItemObject592/CBoardObject620 теперь используют реальные
+общие payload/data owners и менеджер CMainApp.2013 bind/clone/pack-removal
+сценариев, два whole620byte oracle, signed BYTE/retired-primary-empty guard и
+новые hotbar keys прошли. Прежние data575/SF1447 проверены на production
+providers, без второго архива. Hotbar/storage/account и новая PE/Create1 прошли.
+Это проверка ядра владения без иконок: typed icon/caption и mixed-derived binding
+явно отказывают;9 Quest name случаев требуют sentence provider. loadFiles
+реально читает EDF, но ещё не вызван обычным bootstrap. Full inventory/hover/
+Linker UI/input/download/gameplay не приняты. Legacy Clear теперь вызывает
+новую базу и снимает icon; старые mixed Create/consumers надо мигрировать.
+Gate091 текущий;090 runtimegate исторический. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-item-object.md).
+
 090 PARTIAL: actualordinary CObject80/CResObject584 ctor/copy/name64/virtual
 Clear/flags/effectID lifecycle восстановлены. Два whole-record oracle/28offsets/
 160flags (20retain/140clear/48receiptreset),hotbar/storage/account/actorFX/

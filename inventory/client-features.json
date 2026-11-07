@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-ITEM-OBJECT-091",
+      "status": "partial",
+      "description": "Ordinary CItemObject592/CBoardObject620 share actual payloads through CMainApp manager;null-icon lifecycle and real pack removal verified",
+      "reference": [{"rva":"0x6af20","role":"item resource constructor"},{"rva":"0x6afe0","role":"Clear"},{"rva":"0x6b010","role":"bind/retain/name"},{"rva":"0x6b1b0","role":"board wrapper constructor"},{"rva":"0x6b570","role":"clone"},{"rva":"0x6b5e0","role":"copy"},{"rva":"0x6bc90","role":"derived setter"}],
+      "implementation": ["scripts/client455_item_object_port.py","scripts/native/client455_item_object.h","scripts/native/client455_item_object.cpp","scripts/native/client455_client_items.h","scripts/native/client455_board_object.inc","scripts/native/client455_hotbar_bridge.inc","scripts/prepare_client455_normal.py"],
+      "verification": "21equalpinranges/444asm/IDA157b5ed2savedclosed. Two620byteoracles/2013 real bind-clone-productionpack-removal cases/7signedBYTE/retired-primaryguard/independenthotbarkeys pass. Data575/SF1447 probes now link production facade;all3exit0. NewPE7d7ff847/182-20-46/0unresolved/Create1;hotbar/storage/account regressions pass. Engine082 unchanged;GPU/audio/159k not rerun.",
+      "evidence": ["inventory/client455-item-object-reference.json","inventory/client455-item-object-native.json","inventory/client455-item-object-checkpoint.json","research/client455-item-object.md"],
+      "gaps": ["Typed item icon/caption provider and binding to old mixed derived payload consumers explicitly refused until migrated","loadFiles reads real EDF but normal bootstrap does not yet call it;full game initialization/manager shutdown remains open","Actual inventory/hover/Linker Add-remove ownership/5x10UI/input/use/cooldowns/download still required;legacy borrowed paths not accepted","Nine Quest name cases refuse missing sentence provider with cleanup;full Quest/Gesture/Macro/payload gameplay unimplemented","All previous resource/36boards/Trunk/itemprotocol/Tutorial/QBI/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps mandatory;090runtimegate historical after newlink,static base references retained"]
+    },
+    {
       "id": "CLIENT455-RESOURCE-OBJECT-090",
       "status": "partial",
       "description": "Actual ordinary common CObject80/CResObject584 constructors/copies/name64/virtualClear/flags/effect-ID lifecycle;prerequisite for real itemwrappers",

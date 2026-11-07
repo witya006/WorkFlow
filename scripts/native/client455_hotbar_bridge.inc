@@ -1,5 +1,11 @@
 DWORD CLinkBoard::HotbarReference455(CBoardObject* object){
     if(!object)return RF455_EMPTY_HOTBAR_REFERENCE;
+    if(auto* shared=object->GetItem455()){
+        if(shared->header().kind==0)return RF455_EncodeHotbarReference(0,0,0,object->GetServerIndex());
+        if(auto* sf=dynamic_cast<RF455SkillForceItem*>(shared))return RF455_EncodeHotbarReference(1,sf->record().subtype,sf->tableIndex(),0);
+        if(shared->header().kind==2)if(auto* item=dynamic_cast<RF455BasicItem*>(shared))return RF455_EncodeHotbarReference(2,0,item->tableIndex(),0);
+        return RF455_EMPTY_HOTBAR_REFERENCE;
+    }
     if(auto* item=dynamic_cast<CBoardItem*>(object))
         return RF455_EncodeHotbarReference(0,0,0,item->GetServerIndex());
     if(auto* item=dynamic_cast<CSFItem*>(object))

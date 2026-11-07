@@ -22,20 +22,20 @@ struct Cursor {
     }
 };
 int tableForTag(unsigned tag){if(tag>=0xf100&&tag<=0xf12d)return int(tag-0xf100);return tag==0xf12f?46:-1;}
-bool array(Cursor& c,std::array<std::uint32_t,47>& out){return c.read(out.data(),47*4);}
+bool readWorkArray455(Cursor& c,std::array<std::uint32_t,47>& out){return c.read(out.data(),47*4);}
 std::uint32_t field(RF455ItemDataSpan row,std::size_t at){
     if(!row.data||at>row.size||row.size-at<4)throw std::out_of_range("455 item metadata field outside row");
     return u32(row.data+at);
 }
-unsigned byte(RF455ItemDataSpan row,std::size_t at){
+unsigned metadataByte455(RF455ItemDataSpan row,std::size_t at){
     if(!row.data||at>=row.size)throw std::out_of_range("455 item metadata byte outside row");return row.data[at];
 }
-bool equipment(RF455ItemDataSpan row){const auto kind=byte(row,88);return kind>=1&&kind<=10;}
-bool split(RF455ItemDataSpan row){switch(byte(row,88)){
+bool equipment(RF455ItemDataSpan row){const auto kind=metadataByte455(row,88);return kind>=1&&kind<=10;}
+bool split(RF455ItemDataSpan row){switch(metadataByte455(row,88)){
     case 13:case 16:case 17:case 20:case 22:case 23:case 26:case 30:case 31:case 32:case 34:case 35:return true;
     default:return false;}}
 std::uint32_t maxDurability(RF455ItemDataSpan row){
-    const auto kind=byte(row,88);
+    const auto kind=metadataByte455(row,88);
     if(equipment(row)||kind==27||kind==19)return field(row,168);
     if(kind==15)return field(row,152);
     if(kind==11||kind==33)return field(row,160);
@@ -64,7 +64,7 @@ bool RF455ItemDataStore::loadItemEdf(const void* raw,std::size_t size,bool segme
                 if(!section.table(next[number]))return false;seen[number]=true;
             }else if(tag==0xf130){
                 if(directory)throw std::logic_error("455 duplicate item directory lifetime is not restored");
-                if(!array(section,starts)||!array(section,counts))return false;directory=true;
+                if(!readWorkArray455(section,starts)||!readWorkArray455(section,counts))return false;directory=true;
             }
             const auto end=std::uint64_t(offset)+bytes+10;
             if(end>plain.size()||std::uint64_t(processed)+bytes+10>plain.size())return false;
@@ -72,7 +72,7 @@ bool RF455ItemDataStore::loadItemEdf(const void* raw,std::size_t size,bool segme
         }
     }else{
         for(auto& table:next)if(!c.table(table))return false;
-        if(!array(c,starts)||!array(c,counts))return false;
+        if(!readWorkArray455(c,starts)||!readWorkArray455(c,counts))return false;
     }
     items=std::move(next);workStarts=starts;workCounts=counts;itemLoaded=true;return true;
 }
@@ -170,7 +170,7 @@ bool RF455BasicItem::create(const RF455ItemDataStore& source,std::uint8_t type,s
     if(payloadKind==3||payloadKind==4)put(state.get(),92,maxDurability(metadata));
     if(payloadKind==0){
         if(!split(metadata)){const auto maximum=maxDurability(metadata);put(state.get(),96,maximum);put(state.get(),104,maximum);put(state.get(),108,0);}
-        if(equipment(metadata))state[112]=static_cast<unsigned char>(byte(metadata,160));
+        if(equipment(metadata))state[112]=static_cast<unsigned char>(metadataByte455(metadata,160));
     }
     return true;
 }

@@ -1,5 +1,10 @@
 # Resource-object090 — ordinary common base migration
 
+Update091: this runtime gate is historical after the typed item-wrapper rebuild.
+The current ordinary gate is `inventory/client455-item-object-checkpoint.json`.
+The common-base static evidence/oracles remain applicable; the620-byte wrapper
+oracles extend them. See `research/client455-item-object.md` for current scope.
+
 2026-11-07. **PARTIAL**, within M6. This changes actual ordinary client
 classes, not a parallel record-only runtime. M6/M6F/M7/M9 remain OPEN.
 

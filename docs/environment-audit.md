@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение 07.11, item-object091: новых установок нет. IDA157b5ed2 сохранена
+и закрыта, список сессий пуст. Закреплены21 диапазон/444 инструкции. Обычные
+классы CItemObject592/CBoardObject620 и менеджер CMainApp собраны:182/20/46
+объектов,0 unresolved. PE7d7ff847…/entry152070, Create=1. Проверены2013
+владельцев/клонов через реальный pack,575 payload/SF1447 из production facade,
+hotbar/storage/account. Новые runtime checks больше не линкуют вторую item.lib.
+Начальные конфликты имён array/byte и флаги старых заголовков исправлены в порте.
+Иконки, normal bootstrap и mixed consumers явно остаются открытыми. Gate091
+текущий,090 исторический. Неизменённые GPU/audio/159k suites не повторялись.
+[Доказательства](../research/client455-item-object.md).
+
 Дополнение07.11, resource-object090: новых установок нет. IDA65c60c5d saved/
 closed/list0;23equalranges/765asm/21decodedstores/7floatconstants. Ordinary
 CObject80/CResObject584 перенесены;182/20/42objects/0unresolved. NewPEdc6f2c62…,

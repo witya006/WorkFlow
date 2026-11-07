@@ -45,6 +45,7 @@ class RF455ManagedItem {
 public:
     virtual ~RF455ManagedItem()=default;
     virtual RF455ItemHeader& header()=0;
+    virtual const char* name()const=0;
     bool isKind(std::uint8_t kind){return header().kind==kind;} //404D10
 };
 class RF455SkillForceItem final:public RF455ManagedItem {

@@ -23,6 +23,74 @@
 
 ## Последний проверенный результат
 
+091 PARTIAL. Current ordinary gate:
+inventory/client455-item-object-checkpoint.json. Commit090 was progress;
+091 now moves actual ordinary classes to shared ownership, not only raw kernels.
+
+CItemObject derives from real CResObject584, has RF455ManagedItem* at584 and
+field588, size592. CBoardObject derives from it, size620: using BYTE592,
+icon596,17 ctor-zeroed bytes600..616. Copy preserves padding593..595/617..619,
+does not retain; Clone retains after copy. CItemObject destructor calls qualified
+Clear before CRes destructor. Clear first invalidates object index, then uses
+087 release with actual CMainApp manager; test primary-empty before dereferencing
+retired payload. Setter calls virtual Clear→assign→retain→name. Board setter adds
+serial/secondary ID; SetIndex updates shared serial. Base identity requires same
+nonnull payload. Equal sizes do not prove target private CItem ABI: managed
+payload is a source-typed API with its own polymorphic object/record storage.
+
+RF455ClientItems (data/SF/manager) declared BEFORE other CMainApp game members,
+so those destruct before manager/data. loadFiles really reads Item/NDItem/Quest/
+Character/SF, verified with actual stagedfiles; NOT yet called by normal bootstrap.
+Do not claim automatic gameplay loading or full game-global shutdown acceptance.
+Four backends now compile into normal production facade (46 TUs total).
+New facade TU needs _NEW_UI_, matching engine/client definitions,/Zc:forScope-
+and SpriteMgr include. Initial117 then1 compile errors were port context issues,
+fixed. Internal payload helper names array/byte renamed to avoid Windows/STD
+collisions; algorithms unchanged. RF455ManagedItem now has virtual const name().
+
+Legacy CBoardItem/CSFItem/Animus/UnitParts/Unit retain compatibility tags through
+virtual getters, no extra base tag field. Clones retain after copy; Clear chains
+new base. Their old embedded payloads/methods are NOT final455 runtime.
+Binding a new payload to a mixed derived wrapper explicitly throws.
+Typed nonnull icon/caption provider also throws: legacyGUIItem lacks target
+index/inline caption. Unbound legacy icon setters still callable, but Clear now
+detaches icon; mixed Create/callers require migration. Quest name still throws
+for missing sentence provider; nine cases verify refusal plus owner cleanup.
+Do not paper over any of these missing providers with success/no-op.
+
+HotbarReference455 handles owned physical/SF/Animus before legacy RTTI path,
+preserving unmasked OR. Full ordinary Linker Add/remove/view/input/cooldowns/
+download and hover remain unported/legacy borrowed paths. Tests use actual
+CObjectPack from a CLinkBoard container, not its incomplete Add/UI integration.
+
+21equalpinranges/444actualasm/14bodies/EH windows;raw item-object091-reference/
+session under artifacts/client455-progress. IDA157b5ed2 savedclosed/list0.
+Two whole620byte constructor/copy oracles extend unchanged090 base oracle.
+Actual CMainApp data manager + typed wrappers:1447SF +566other owners=2013
+clones/alternating production pack Remove/dtor/last-owner erase pass. Seven
+signedBYTE cases/primary-empty retired pointer/base-vs-board setter/independent
+hotbar keys/mixed+icon refusal tested. Data575/76049rows/3locales/99XP and SF1447
+probes pass on PRODUCTION facade, not a separately linked item.lib. All3 exit0.
+Old087–089 separate-library runners are historical; don't rerun them as current
+production evidence or claim their providers survived the canonical integration.
+
+NewPE SHA7d7ff847b49d28a2d24a203d1a9b863a5ff273e10a82eda9d3d7e7c94ecb3bc0,
+2104832bytes/x86/entry152070/WinMainB6FE0/afterCreateB714A,
+182client/20kernel/46facade/0unresolved. Engine9caa283a… unchanged082.
+Fresh normalconsumers/hotbar7packets/storage3runs/Avataraccount and exactPEearly
+Korea949/localTCP/sound/D3D/Create1 pass. First-chance events recorded; no game
+loop acceptance. Unchanged GPU/maps/audio/159k suites not rerun;090 visual
+evidence historical for that link.090 runtimegate now historical after new
+normal reports; its static base evidence/oracles retained.
+
+Next092: real item icon/caption source owner, typed board/hover/Linker consumers;
+then normal data bootstrap order/profile and mixed payload consumers. Finish
+5x10GUI/input/use/cooldowns/download/oldbelt/Tutorial. All full resource/payload/
+Quest/Gesture/Macro/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game/
+M6F/M7/M9 gaps mandatory. Server files/originals untouched. Goal remains active.
+
+Предыдущий перенос090 (runtime gate historical):
+
 090 PARTIAL/currentordinarygateinventory/client455-resource-object-checkpoint.json.
 Обнаружена общаяобязательнаязависимость itemwrappers:legacyCObject48/CRes472,
 target80/584. Теперь actualordinarybases80/584: name64 (globalMAX_NAME32 не

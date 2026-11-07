@@ -7,6 +7,26 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+091: CItemObject592/CBoardObject620 вошли в обычный клиент. Менеджер и данные
+принадлежат CMainApp;2013 реальных владельцев/клонов проверены через production
+CObjectPack. Два whole-record oracle, границы signed BYTE, guarded retired pointer
+и независимые hotbar keys проходят. Прежние data575/SF1447 теперь проверяются
+прямо на production facade. PE7d7ff847…/entry152070/182-20-46/0unresolved/Create1.
+Current gate:inventory/client455-item-object-checkpoint.json;090 historical.
+[Доказательства](../research/client455-item-object.md).
+
+Далее092: реальный item icon/caption owner и typed board/hover/Linker consumers;
+затем подключить RF455ClientItems.loadFiles к подтверждённому порядку455
+bootstrap/языковому профилю. Сейчас вызов loader проверен через own entry,
+обычный WinMain новые item tables ещё не загружает. Nonnull typed icons и binding
+к старым mixed класcам явно отказывают. Не обходить эти границы успешным no-op.
+Мигрировать mixed Clear/Create: новая база снимает icon. Затем полный Linker
+5x10/input/use/cooldowns/download/oldbelt/Tutorial. Все прежние gaps обязательны.
+Для дальнейших предметных проверок использовать production facade: старые
+087–089 runners с отдельной item.lib больше не являются текущим gate.
+
+Предыдущий перенос090:
+
 090: ordinaryобщие CObject80/CResObject584 восстановлены до selectedctor/copy/
 name64/flags/effectclear. Это обнаруженная обязательная зависимость будущего
 CItemObject;старыеparent sizes48/472 мешали корректному переносу. NewPEdc6f2c62…,

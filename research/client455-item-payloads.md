@@ -1,5 +1,11 @@
 # Item payloads089 — source readers and fresh factories
 
+Update091: payload/SF/ownership backends now compile into the ordinary production
+facade. Their unchanged real-data probes are rerun against those providers by
+`probe_client455_item_object.py` and checked by the091 gate. Earlier separate
+item-library runtime reports are historical; do not treat them as the current
+canonical provider evidence. See `research/client455-item-object.md`.
+
 Update090: the089 runtime checkpoint is historical after the ordinary common
 base/dependency rebuild. The unchanged source was rerun in all four modes with
 current dependencies; renewed runtime evidence is checked by

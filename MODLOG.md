@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-object091. Ordinary CItemObject592/CBoardObject620 share actual
+payloads through a CMainApp-owned manager.2013 real bind/clone/pack-removal cases,
+two620byteoracles/signedBYTE/retired-primary guard/hotbar keys pass. Production
+data575/SF1447 entries pass without a second item archive;hotbar/storage/account
+and exact newPE7d7ff847…/Create1 pass.21equalranges/444asm,IDA157b5ed2closed.
+Initial facade flags/include/name collisions fixed. Icons/mixed callers/normal
+table bootstrap remain explicit gaps;next092. Currentgate091;090historical.
+No unchangedGPU/audio/159k suites rerun;no server writes.
+[Evidence](research/client455-item-object.md).
+
 2026-11-07 — Resource-object090. Ordinary CObject80/CResObject584 ctor/copy/
 name64/virtualClear/flags/effectclear replace legacy48/472 base contracts.
 23equalranges/765asm/21decodedstores/7floatconstants,IDA65c60c5dsavedclosed.

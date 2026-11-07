@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+091: actualordinary CItemObject592/CBoardObject620, менеджер CMainApp и общий
+payload связаны.2013 владельцев/клонов, production pack removal, byteoracles,
+данные/SF, hotbar/storage/account и новая PE/Create1 проходят. Иконки/legacy
+mixed consumers/автоматическая загрузка таблиц ещё открыты; далее092 — их
+интеграция и typed board/hover/Linker, затем Tutorial. Gate091 текущий;
+090 runtimegate исторический. M6/M6F/M7/M9 остаются открытыми.
+[Доказательства](../research/client455-item-object.md).
+
+Предыдущий перенос090:
+
 090: ordinaryобщие CObject80/CResObject584 ctor/copy/name64/flags/effectclear
 перенесены какнеобходимыйparent для itemwrappers. Wholebytes/160flags,
 hotbar/storage/account/actorFX/3worlds/15viewedframes/exactnewPECreate1 и
@@ -665,8 +675,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/091: общие CObject80/CResObject584090 перенесены;реальные itemwrappers/
-   gameowners ещёоткрыты. Freshpayloadfactories/readers089 проверены в ограниченном домене;
+1. M6/092: typed item/board wrappers091 и common bases090 перенесены в
+   ограниченном домене; завершить реальные icon/caption/board-hover/Linker
+   consumers и normal bootstrap новых таблиц. Freshpayloadfactories/readers089 проверены в ограниченном домене;
    fullpayloadmethods/Questlocalizedsentenceexpansion остаются обязательными.
    SF/primarymanager088+089 работают на1447realrows;ordinarygame-global binding
    ещё открыт. Восстановить

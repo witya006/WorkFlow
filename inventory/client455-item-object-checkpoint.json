@@ -1,0 +1,169 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual ordinary typed item592/board620/shared payload manager and source pack lifetime/null-icon domain;full gameplay owners still open",
+  "script_sha256": "aa551666b787a92d6ca66fb308e91cc7372883a7923d19b5579b9836598909be",
+  "reference_sha256": "7711de03e280dc1514db221db6828f303904337c8c529623f24e1f6daa9b89fa",
+  "native_sha256": "23f808ade31b707812cfd656b51e9fdc0296026a29309829d231679d3a2389af",
+  "session": {
+    "file": "artifacts/client455-progress/item-object091-session.json",
+    "sha256": "058c80f1ea8362bd864ae36da0b9bd56d2b623deda5279cd9f2764fe8aacb311"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_client_items.h",
+      "sha256": "484b16779bb729527c665e53560a53382948a79b3a1e6391ccdc38435b78eff8"
+    },
+    {
+      "file": "scripts/native/client455_item_object.h",
+      "sha256": "e5f33b5000ffceb4d321d880affc76f9de625539155fa38c8d821f6c04655696"
+    },
+    {
+      "file": "scripts/native/client455_board_object.inc",
+      "sha256": "0133ca305c2f45e3f4fb595712361039eef1fe11e81a7a07cf8ae33376d5f9ea"
+    },
+    {
+      "file": "scripts/native/client455_item_object.cpp",
+      "sha256": "3be2fcb243481b58ecf146b1e3a580355b32278233996445db6175c6cc08e9fc"
+    },
+    {
+      "file": "scripts/native/client455_item_ownership.h",
+      "sha256": "4f44b344fb55c23252c6a3a4112dd27ac351a0c72bf9adc8e5da8aaeeb2cbfa4"
+    },
+    {
+      "file": "scripts/native/client455_item_ownership.cpp",
+      "sha256": "eaaf367f2cbe8a15d8a93886071b847c36f9165e6c21a1a5a13ce28c89b35b86"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.h",
+      "sha256": "00630e0cbdcc46ebb2290bb72f0bed742cf5cca6e49da3c32cf2648a623fab8f"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.cpp",
+      "sha256": "b0e34e8cf19d5c963368451cdf6a2f2892b355323bf44d4bed7a6209977b0896"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "7b954a4107a1b6cdbf5694b3a0dc99eb5b9601fec0221d85fc7c8ee46fb08e42"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "e275d427204e93b4bc8885f7a795b6e423dcba9ca9ae8c23b7eaf9db9866f20b"
+    },
+    {
+      "file": "scripts/native/client455_hotbar_bridge.inc",
+      "sha256": "ac178c41d02889bfaa1bb88880d5d579fc131221202aeda6c7033a5fcfbb1d01"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/item/citemdata.h",
+      "sha256": "d58a5d127ff4263d38c097b3a43b4b8a07ba45bba097fd0833f183e2c10fceb8",
+      "input": "work/client455-port/source/RF_Client/item/citemdata.h",
+      "input_sha256": "4f6d2f60d5783d3fadb88dfa49693b896975149f627c823b4539619da61deeb1",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/item/citemdata.cpp",
+      "sha256": "1ca559726bd6b535587d118bbf76c8f1d1c7be3dd7fc4897e5d9071896fb0227",
+      "input": "work/client455-port/source/RF_Client/item/citemdata.cpp",
+      "input_sha256": "96cd63459038eecaa7d10a824eef4cdf8d84eadb1a1d558019ad40f4886649c3",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "603a759d0ed6a3b848b45d118082551783ff2c31b5ef42342751b408974271e4",
+      "input": "work/client455-port/source/RF_Client/mainapp.h",
+      "input_sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported",
+        "named ordinary pre-engine network creation entry"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.cpp",
+      "sha256": "e3968c25ac56cc5f37b369cc39b7ed4f1e9bf41e6122d27bd268bfe3938991ce",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "input_sha256": "d4ef8c7e37cf7ff74b3e78606330111f90eef4eeff9aba908bc7e24f90f6d4df",
+      "changes": [
+        "ordinaryLinker FrameMove5second delta save/group13op17;other455frame/cooldown/UI/clone behaviors still open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_object.cpp",
+      "sha256": "3be2fcb243481b58ecf146b1e3a580355b32278233996445db6175c6cc08e9fc",
+      "input": "scripts/native/client455_item_object.cpp",
+      "input_sha256": "3be2fcb243481b58ecf146b1e3a580355b32278233996445db6175c6cc08e9fc"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_ownership.cpp",
+      "sha256": "eaaf367f2cbe8a15d8a93886071b847c36f9165e6c21a1a5a13ce28c89b35b86",
+      "input": "scripts/native/client455_item_ownership.cpp",
+      "input_sha256": "eaaf367f2cbe8a15d8a93886071b847c36f9165e6c21a1a5a13ce28c89b35b86"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_skill_force_items.cpp",
+      "sha256": "b0e34e8cf19d5c963368451cdf6a2f2892b355323bf44d4bed7a6209977b0896",
+      "input": "scripts/native/client455_skill_force_items.cpp",
+      "input_sha256": "b0e34e8cf19d5c963368451cdf6a2f2892b355323bf44d4bed7a6209977b0896"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_payloads.cpp",
+      "sha256": "e275d427204e93b4bc8885f7a795b6e423dcba9ca9ae8c23b7eaf9db9866f20b",
+      "input": "scripts/native/client455_item_payloads.cpp",
+      "input_sha256": "e275d427204e93b4bc8885f7a795b6e423dcba9ca9ae8c23b7eaf9db9866f20b"
+    }
+  ],
+  "normal_link_sha256": "20c070cae3c9c41f16b5cf1778355352ab69635cac7b81c10412115818104ab4",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7d7ff847b49d28a2d24a203d1a9b863a5ff273e10a82eda9d3d7e7c94ecb3bc0",
+    "bytes": 2104832,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x152070",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "10ac0da20833b01841a3c662e9ea8c0cfce0e7b870f5711b62089ca045dfb094",
+    "client455-normal-build": "9a45a5473407f754eb01a91f87382e5009e7f66d2cd51f7867b0d3991ad88b0e",
+    "client455-normal-consumers": "b4c9246840fc5e84f83dacb2614ac5df14f01b9e085efb93de0ae13b663448ff",
+    "client455-own-entry": "92611ecdf4f2d3fa01882d798763f66872fb66636c72e5e09d2e6c8c60a21912",
+    "client455-startup-audit": "2d54997c48c4e4e9dac05c9551a1ddeca2d45e01da8ec8a7ad94b09c9becbe89",
+    "client455-startup-native": "e659ed0ed908ca777c7eb659a2753a89bd8385e4505ff78a2e6bcbc64d7f3c2b",
+    "client455-ui-startup-native": "d599dd316b5b40ac21d3dfd11a5a44d0272dc8d2039fe993ae4fbe4d197a6ee7",
+    "client455-hotbar-native": "3e4a507b23f88ec3b2e650dd288e5402007de26c213484780508fef604e3ea3d",
+    "client455-storage-native": "9e63abd7a859c4bfdd5ec8c2a93ec3fa6ae3bef0728a5d4ceaf7548efb2d9f59",
+    "client455-account-native": "99bae863bd7edaa55382b8da9e0fd17a79198c9e1a3eb5bd40646b8a4c8cc9cc"
+  },
+  "selected_functions": 21,
+  "assembly_instructions": 444,
+  "real_typed_owners": 2013,
+  "whole_record_oracles": 2,
+  "Quest_name_refusals": 9,
+  "production_payload575_SF1447_regression": "PASS_BOUNDED",
+  "engine_unchanged_sha256": "9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769",
+  "previous090gate": "historical after new normal link/reports;its static base reference/oracles retained",
+  "unchanged_GPU_audio_159k_suites_rerun": false,
+  "gaps": [
+    "Actual icon/caption refresh refuses nonnull icons on typed wrappers;legacy mixed derived payload binding explicitly refused",
+    "CMainApp owns the new manager/data,loadFiles is real but not wired into normal gameplay bootstrap yet",
+    "Full inventory/hover/Linker5x10 ownership/view/input/cooldowns/download and legacy payload consumption remain open",
+    "Quest sentence names/full payload gameplay/Gesture/Macro/36boards/Trunk/protocol/Tutorial/Login/auth/game and prior M6F/M7/M9 requirements remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
