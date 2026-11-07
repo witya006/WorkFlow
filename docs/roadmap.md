@@ -12,30 +12,30 @@
 
 ## Текущий статус
 
-102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
-флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
-брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
-GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
-эта ветка явно отказывает до изменения предмета на курсоре.
-Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
-0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
-проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
-Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
-[Доказательства](../research/client455-player-status.md).
+103 PARTIAL: восстановлена звуковая зависимость ядерного прицеливания —
+tagged3D audio с настоящим Miles,30 каналами и кэшем64 записей. CMainApp
+открывает provider/listener в обычном Create; точная новая PE проходит Create→1.
+157 проверок реального WAV/меток/остановки/LRU проходят. Статус58, account,
+hotbar7/storage3 сохранены;6 просмотренных кадров hover побайтно равны102.
+Новая PEcf7ac5e0…/entry159670,182client/20kernels/58facade,0unresolved.
+Gate: inventory/client455-tagged-audio-checkpoint.json;102 теперь исторический.
+Сам эффект и отмена ядерного прицеливания ещё не подключены. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-tagged-audio.md).
 
-Далее103: восстановить владельца ядерного прицеливания (global1028AC8+12):
-pending, начало/отмену, позицию и FrameMove, реальные effect/audio API и сообщениеC1A.
-Перед переносом подтвердить API7D9730/7D91A0/7E22F0/8BEE60/8BD590; связать владельца
-с обычным клиентом. True predicate/pending0 тоже пока не принят.
-Затем — полные64-битные сетевые получатели флагов455, остальные действия44DEE0,
-Linker use/remove/swap/hover/MsgProc и очередь операций; typed quantity/backups/
-network callers, inventory/equip/SF/Animus, potion cache, Macro/Vending/fullAdd,
-обычный bootstrap и Quest sentence provider.
-Все прежние gaps обязательны: full GUIItem, три слоя tooltip, lifecycle/reset,
-private ABI, FP/unsafe/OOM/concurrency/shutdown, SF/Quest/36boards/Trunk/protocol,
-Tutorial/QBI/fourstage/Login/auth/game. Общего процента готовности нет.
+Далее104 — обязательная зависимость эффекта прицела: CProcessMagic/CMagicList,
+parser/cache/lifecycle и настоящий cue1358041136. Старый _MAX_MAGIC_TRACK16,
+target имеет64 child IDs, tracks stride46/base60; старый StartMagicEffectType
+нельзя считать эквивалентным без переноса. После эффекта связать actual nuclear
+pending/position/frame/cancel owner с tagged sound и сообщениемC1A; true predicate
+и pending0 до этого остаются явным отказом.
+Затем —64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
+typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
+Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
+lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/
+Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
+финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
 
-Этапы M0–M9 и конечная цель сохраняются.
+Этапы M0–M9 сохраняются.
 
 Исторический результат097:
 

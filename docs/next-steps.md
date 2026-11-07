@@ -7,49 +7,51 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
-флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
-брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
-GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
-эта ветка явно отказывает до изменения предмета на курсоре.
-Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
-0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
-проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
-Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
-[Доказательства](../research/client455-player-status.md).
+103 PARTIAL: восстановлена звуковая зависимость ядерного прицеливания —
+tagged3D audio с настоящим Miles,30 каналами и кэшем64 записей. CMainApp
+открывает provider/listener в обычном Create; точная новая PE проходит Create→1.
+157 проверок реального WAV/меток/остановки/LRU проходят. Статус58, account,
+hotbar7/storage3 сохранены;6 просмотренных кадров hover побайтно равны102.
+Новая PEcf7ac5e0…/entry159670,182client/20kernels/58facade,0unresolved.
+Gate: inventory/client455-tagged-audio-checkpoint.json;102 теперь исторический.
+Сам эффект и отмена ядерного прицеливания ещё не подключены. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-tagged-audio.md).
 
-Общий core — client455_player_status.h; prepare вызывает port_player_status
-для собственной копии CPlayer. Подтверждённое поле17708/0x452c имеет тип DWORD.
-Predicate сравнивает его младший BYTE с2/6/10; при null Avatar возвращает false.
-Приоритет64-битных флагов: bit16→10; иначе bit17 и первый bit33..40→2..9;
-при отсутствии подтипа старое значение сохраняется. Иначе bit42→1, иначе0.
-Конструктор455 поле не инициализирует. Собственное состояние known=false
-явно отказывает чтению до первого производителя. Названия ролей неизвестны.
-Остальные действия SetServerStatusFlag пока унаследованы от старого клиента;
-их соответствие455 и полные64-битные сетевые получатели ещё не приняты.
-CPU probe использует настоящий Avatar и bare wrapper; GPU probe — настоящую
-EDF иконку и Avatar со статусом0. Ядерная ветка отказывает до изменения hover.
-Статика:17 полных функций,2036 инструкций,17 равных диапазонов и1 диагностический.
-IDA session100f46bb сохранена/закрыта; idb_list вернул0. Raw evidence:
-artifacts/client455-progress/player-status102-*. Шесть свежих кадров просмотрены
-и побайтно равны101; остальные32 GUI кадра101 и большие suites не повторялись.
-Engine546a7529…/67 объектов не менялся; baseline033 сохранён. Отдельного snapshot
-старой derived library082 по-прежнему нет. Собственная PE:
-5f1f0f770f9dd395bb31ea8044b72ae9eb53b40ece8481cfc39b366674030df1,
-2144768bytes, base400000, WinMainb7a30, afterCreateb7b9a; офлайн Create1 до game loop.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_player_status.py.
+RF455TaggedAudio — собственный член CMainApp. Prepare задаёт поиск Miles
+до AIL_startup; Open/Close подключены в обычные Create/Destroy и retained в PE.
+Play/Stop проверены через того же владельца в native run, nuclear consumer
+пока не перенесён. Старый untagged2D кэш остаётся отдельной непринятой веткой.
+Сохранены30 tags/handles на record280,64 LRU, подавление duplicate/stale tags,
+включая метку жертвы уже после смены ключа; Stop не очищает tag, Collect хранит
+общий empty accumulator на весь проход. Нулевая нормализация даёт NaN, как455.
+Native использует настоящий Radar_00.wav и muted Miles; слышимый выход не записан.
+Provider: Miles Fast2D; ordinary startup debug string ready:7969 подтверждён.
+7969 token registrations и7932 simple-path строки — разные измерения; полной
+tokenizer/alias parity пока нет. ADPCM/ASI, прочие sound APIs/room/listener,
+смешанные consumers, startup timing/error UI/unsafe/shutdown остаются OPEN.
+Target открывает provider до D3D; собственный порт сейчас в CMainApp Create после
+D3D. Own Close освобождает все handles; target kind-reset quirk ещё не принят.
+18 полных функций/1520asm/18 equal ranges, native IDA6a70bd2b saved/closed/list0.
+Raw: artifacts/client455-progress/tagged-audio103-*. Engine546a7529…/67 unchanged;
+033baseline сохранён, отдельного старого082derived library snapshot нет.
+PEcf7ac5e0ede16f1cc382d8a15ec03f479f9c1a62cbd3fb6ce4aa39999946ccb6,
+2149888bytes, base400000, WinMainb7a60, afterCreateb7bd4. Offline Create1 до game loop.
+6 fresh hover frames viewed/byte-equal102; остальные32 GUI кадра и большие
+world/audio/159k suites не повторялись. Original/server не менялись, input EXE
+не исполнялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_tagged_audio.py.
 
-Далее103: восстановить владельца ядерного прицеливания (global1028AC8+12):
-pending, начало/отмену, позицию и FrameMove, реальные effect/audio API и сообщениеC1A.
-Перед переносом подтвердить API7D9730/7D91A0/7E22F0/8BEE60/8BD590; связать владельца
-с обычным клиентом. True predicate/pending0 тоже пока не принят.
-Затем — полные64-битные сетевые получатели флагов455, остальные действия44DEE0,
-Linker use/remove/swap/hover/MsgProc и очередь операций; typed quantity/backups/
-network callers, inventory/equip/SF/Animus, potion cache, Macro/Vending/fullAdd,
-обычный bootstrap и Quest sentence provider.
-Все прежние gaps обязательны: full GUIItem, три слоя tooltip, lifecycle/reset,
-private ABI, FP/unsafe/OOM/concurrency/shutdown, SF/Quest/36boards/Trunk/protocol,
-Tutorial/QBI/fourstage/Login/auth/game. Общего процента готовности нет.
+Далее104 — обязательная зависимость эффекта прицела: CProcessMagic/CMagicList,
+parser/cache/lifecycle и настоящий cue1358041136. Старый _MAX_MAGIC_TRACK16,
+target имеет64 child IDs, tracks stride46/base60; старый StartMagicEffectType
+нельзя считать эквивалентным без переноса. После эффекта связать actual nuclear
+pending/position/frame/cancel owner с tagged sound и сообщениемC1A; true predicate
+и pending0 до этого остаются явным отказом.
+Затем —64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
+typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
+Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
+lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/
+Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
+финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
 
 Историческая точка097 и её очередь (timer часть теперь выполнена098):
 

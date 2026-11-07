@@ -6,9 +6,62 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-PLAYER-STATUS-102",
+      "id": "CLIENT455-TAGGED-AUDIO-103",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Real MainApp tagged3D audio dependency/provider/listener/30channels/64LRU;fullnuclear/effect/audio/bootstrap remainopen",
+      "reference": [
+        {
+          "rva": "0x4beb00",
+          "role": "provider initialization"
+        },
+        {
+          "rva": "0x4bd080",
+          "role": "tagged play"
+        },
+        {
+          "rva": "0x4bd590",
+          "role": "tagged stop"
+        },
+        {
+          "rva": "0x4bcd60",
+          "role": "cache collect"
+        },
+        {
+          "rva": "0x4f4060",
+          "role": "LRU hit"
+        },
+        {
+          "rva": "0x11d5d0",
+          "role": "orientation normalization"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_tagged_audio.h",
+        "scripts/native/client455_tagged_audio.cpp",
+        "scripts/client455_tagged_audio_port.py",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "18functions/1520asm/18equalranges;157realMilesCPU/30channels/64LRU/actualRadarWAV/mutedlab/stale-victimtags. OrdinaryPEcf7ac5e0/182-20-58/0unresolved/Create1 hasactualFast2Dprovider. Status58/account/hotbar7/storage3/6viewedbyteequalGPU pass;other32GUI/bulk suites notrerun.",
+      "evidence": [
+        "inventory/client455-tagged-audio-reference.json",
+        "inventory/client455-tagged-audio-native.json",
+        "inventory/client455-tagged-audio-checkpoint.json",
+        "research/client455-tagged-audio.md"
+      ],
+      "gaps": [
+        "Nuclear aiming owner/cancel/messageC1A/effect pipeline notyetwired;oldmagic16tracks/record layout differsfrom45564tracks",
+        "Legacy untagged2D consumers remain separate;sharedfullaudio owner/startup timing/errorMessageBoxes andallAPIs parity notaccepted",
+        "ADPCM/ASI branches,roomchanges/listenerupdates/fullcachefailure/unsafe/OOM/concurrency/numericx87 parity andallshutdownquirks notfullyvalidated",
+        "Full manifest tokenizer/comments/invalidnames andalias parity notaccepted;7969 runtime registrations include tokensoutside7932 simple relative-path rows",
+        "Owned Close releasesall3Dhandles;target ReleaseWaveList clearskindinsidechannel loop,soexactbugcompatibility remainsopen",
+        "Allprevious GUI/board/handlers/bootstrap/client acceptance gaps remain mandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-PLAYER-STATUS-102",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual CPlayer DWORD status/full64bit producer andordinaryAvatar hover falsepredicate; nuclearowner/fullstatus/wirereceivers remainopen",
       "reference": [
         {

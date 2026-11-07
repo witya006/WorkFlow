@@ -1,0 +1,169 @@
+{
+  "status": "PARTIAL",
+  "scope": "Tagged3D-wave dependency of nuclear aiming;actual service in ordinary CMainApp;fullnuclear/effects/audio remainopen",
+  "script_sha256": "4311c83aa94f8224fe1e015245a465f00ccbe74af4ffdccaf6f73e689400516d",
+  "session": {
+    "file": "artifacts/client455-progress/tagged-audio103-session.json",
+    "sha256": "93943ccc17a44a3d05954c8b81b7376c5bad601b450904e0d929a956c79479ec"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_tagged_audio.h",
+      "sha256": "6e4737e035dc391cfd8a952ac7b34088258ca58b1354764e5f41ef5a387d9d03"
+    },
+    {
+      "file": "scripts/native/client455_tagged_audio.cpp",
+      "sha256": "a2825b8f35a5518a2ea1f043d837d70ad0226670967d795b9f565762f37454cd"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "44ddbeee0974bf6ab2d19c9d1ba442614b9aee322acfc87ba2188d1b4af02999",
+      "input": "work/client455-port/source/RF_Client/mainapp.h",
+      "input_sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "named ordinary pre-engine network creation entry",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.cpp",
+      "sha256": "6f93f8e14eeae2ccd76c604f874a911324ba988d721dd2889c4cb3a08d6ea4d0",
+      "input": "work/client455-port/source/RF_Client/mainapp.cpp",
+      "input_sha256": "231ef9d4f8ceb906292df9d07af90158416503d6c52a1de83a552f04d6a25e38",
+      "changes": [
+        "455country launcher before language;typed network fields;remove late legacy launcher read;full connection order remains open",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_tagged_audio.cpp",
+      "sha256": "a2825b8f35a5518a2ea1f043d837d70ad0226670967d795b9f565762f37454cd",
+      "input": "scripts/native/client455_tagged_audio.cpp",
+      "input_sha256": "a2825b8f35a5518a2ea1f043d837d70ad0226670967d795b9f565762f37454cd"
+    }
+  ],
+  "retained": {
+    "Open@RF455TaggedAudio": "Open@RF455TaggedAudio@@QAE_NPBD0@Z 004d00e0 f   RFClient455Facade:client455_tagged_audio.obj",
+    "Close@RF455TaggedAudio": "Close@RF455TaggedAudio@@QAEXXZ 004cfec0 f   RFClient455Facade:client455_tagged_audio.obj",
+    "RF455_PrepareTaggedAudio": "RF455_PrepareTaggedAudio@@YAXPBD@Z 004d0320 f   RFClient455Facade:client455_tagged_audio.obj"
+  },
+  "normal_link_sha256": "68193581b03fd9c0d5eadc995ba68f62c6dd8dd02fec3eb5ad746ffdf11e2c33",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cf7ac5e0ede16f1cc382d8a15ec03f479f9c1a62cbd3fb6ce4aa39999946ccb6",
+    "bytes": 2149888,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x159670",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "tagged-audio-reference": {
+      "file": "inventory/client455-tagged-audio-reference.json",
+      "sha256": "6ec740dbe93296a0228bf1287cd2b34fd940ad76bdfddf7a46bf2d09f26f4405"
+    },
+    "tagged-audio-native": {
+      "file": "inventory/client455-tagged-audio-native.json",
+      "sha256": "34c3c34b283084eebde27c329c1b10a573bfc55086a1e5cd516c490519501d73"
+    },
+    "player-status-native": {
+      "file": "inventory/client455-player-status-native.json",
+      "sha256": "1f50b59c98eb261be4835cab5df85c1cdbe5b5f4c7739bcecb704648f308e473"
+    },
+    "board-hover-native": {
+      "file": "inventory/client455-board-hover-native.json",
+      "sha256": "ed3ca03b10c7d90e5fec91547da1807e4ad70e72b1077c1cfbed9a6170eec171"
+    },
+    "board-hover-visual-review": {
+      "file": "inventory/client455-board-hover-visual-review.json",
+      "sha256": "ecdc267a70b7bff8fadcc6299758dfbe4730a044a7cd062ab3d279d6008195f5"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "78995daf81edc8bb4e44694e7d267b3fc66975399e04ee05561c01562ef1b1ea"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "81d5a356d7a2067c1f07cfe0e560dd8dbb544be5ba334bce3eee71c78d6cca8b"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "236af69d0e0119c5f22569ab357957d98523cb2c491bfdb25d2e4063857adf86"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "68193581b03fd9c0d5eadc995ba68f62c6dd8dd02fec3eb5ad746ffdf11e2c33"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "cfae1ccc39a111a3b3a6d76ee47a172cc4ede887f172def18cce65e404930e27"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "a6294cb066bbe98180037a5d5101fbb4ad97e1b188cfc46d535c8008a9278639"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "61359a9cf7773e00d576b9ddee096560ed394dd185bbc32a74f9b99df40f9861"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "f5bbb8977444f37e16b4ca40758b64d74196ed39b4b41e48591d3b2e7c7e1933"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "6420862bb6d4f08a7321d1d5c2876e80c7cb89bbedbcce3c3640b5f2c0344d68"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "67e72b5bfbd470991f90dd9ce7a78bf5b20c8d50be35501779defc5f3123ed44"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "09007f09687f985d9f10385988820d0a958e528573720868389c5db82adba6ae"
+    }
+  },
+  "CPU_checks": 157,
+  "real_Miles": true,
+  "ordinary_provider": "RF455 TaggedAudio:ready:7969:Miles Fast 2D Positional Audio",
+  "channels": 30,
+  "cache_capacity": 64,
+  "viewed_GPU_frames": 6,
+  "byte_equal_hover_frames": 6,
+  "baseline": {
+    "file": "artifacts/client455-progress/client455-board-hover-native-before103.json",
+    "sha256": "e6d1b70a2234c521e81bd3267445db961281df7cfed054ef6b627e6fd2add0c3"
+  },
+  "previous102_checkpoint": {
+    "file": "artifacts/client455-progress/client455-player-status-checkpoint-before103.json",
+    "sha256": "9fbebffc8251ff02002a77df85894eda929b6076f8da22a44cc1bca3a7c47255"
+  },
+  "previous102_runtime_gate": "HISTORICAL",
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "other32_GUI_frames_rerun": false,
+  "gaps": [
+    "Nuclear aiming owner/cancel/messageC1A/effect pipeline notyetwired;oldmagic16tracks/record layout differsfrom45564tracks",
+    "Legacy untagged2D consumers remain separate;sharedfullaudio owner/startup timing/errorMessageBoxes andallAPIs parity notaccepted",
+    "ADPCM/ASI branches,roomchanges/listenerupdates/fullcachefailure/unsafe/OOM/concurrency/numericx87 parity andallshutdownquirks notfullyvalidated",
+    "Full manifest tokenizer/comments/invalidnames andalias parity notaccepted;7969 runtime registrations include tokensoutside7932 simple relative-path rows",
+    "Owned Close releasesall3Dhandles;target ReleaseWaveList clearskindinsidechannel loop,soexactbugcompatibility remainsopen",
+    "Allprevious GUI/board/handlers/bootstrap/client acceptance gaps remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

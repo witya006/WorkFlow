@@ -1,0 +1,95 @@
+{
+  "scope": "Actual MainApp tagged audio owner/Miles provider/listener/PCM/30sample channels/64LRU;muted lab,not audible-output capture or full nuclear/audio parity",
+  "source": {
+    "file": "scripts/native/client455_tagged_audio_probe.cpp",
+    "sha256": "2eb2c0bf47fb5f1abc1d332fc5ad17b7aec38211e28c0122ce292060b30be24e"
+  },
+  "script_sha256": "58f2190b1ef547922224251cbe031ad69a42d570db9f879c518387ed5cf00725",
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "normal_link_sha256": "68193581b03fd9c0d5eadc995ba68f62c6dd8dd02fec3eb5ad746ffdf11e2c33",
+  "exe": {
+    "file": "work/m9/a156705f/tagged-audio-001/tagged-audio-probe.exe",
+    "sha256": "a156705f878bf40427169090e1ffbeb922c77a3be56bfdba3f5c51718f0ef895"
+  },
+  "map": {
+    "file": "work/m9/a156705f/tagged-audio-001/tagged-audio-probe.map",
+    "sha256": "51291fe68009ae793d54dfe9d19a41607d434273f3769913c9c0f44d03f062ee"
+  },
+  "architecture": "x86",
+  "console": {
+    "file": "work/m9/a156705f/tagged-audio-001/console.txt",
+    "sha256": "4bae3ffffd93c97950c32e065abccef95b3cfee31036e0c557115a60cc768e24"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/Snd/msssoft.m3d",
+      "sha256": "5dcbf188c30ae1ac6a3d5b7fac4a25e831c9a495683b044f5141c4bdbc83f607",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msssoft.m3d"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/Snd/msseax.m3d",
+      "sha256": "62e0e34435b9705eedc73660e64564138d8276dcf7b08dfbaac05c592b67e6d3",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msseax.m3d"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/Snd/mssmp3.asi",
+      "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\mssmp3.asi"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/Snd/WaveList.spt",
+      "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\WaveList.spt"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/Snd/Character/Newclear/Radar_00.wav",
+      "sha256": "57667b9c351c8d08098c752fb3f6c700cb9691969a055dbfd9745f0eea61d82f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Character\\Newclear\\Radar_00.wav"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/R3Engine.ini",
+      "sha256": "a4346b42d8733c4dafab0ad55bcd0c1a882fd16fd4925ebcc8669cfd093d5373"
+    },
+    {
+      "file": "work/m9/a156705f/tagged-audio-001/fixture.spt",
+      "sha256": "8d9270e3c80337e0d34b2b479033e26cf964f6a6bc9919db117992b54faab2dc"
+    }
+  ],
+  "output": {
+    "file": "work/m9/a156705f/tagged-audio-001/result.json",
+    "sha256": "7bf28788eb468b827ab8824a6ca14952a188211dc79faea1cf8a9551d10eb406"
+  },
+  "natural_exit": 0,
+  "native": {
+    "status": "PASS",
+    "checks": 157,
+    "manifest_records": 7969,
+    "real_Miles_provider_listener_samples": true,
+    "actual_MainApp_owner": true,
+    "real_radar_WAV": true,
+    "muted_lab": true,
+    "duplicate_and_stale_tags": true,
+    "targeted_stop": true,
+    "relative_3D_position": true,
+    "channels": 30,
+    "cache_capacity": 64,
+    "LRU_reuse": true,
+    "full_nuclear_aiming": false,
+    "full_audio_parity": false,
+    "audible_output_capture": false,
+    "full_client": false
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN",
+  "reference_sha256": "6ec740dbe93296a0228bf1287cd2b34fd940ad76bdfddf7a46bf2d09f26f4405",
+  "runtime_inputs_sha256": "cef8d854b27fd37b5cbb192bb5145bd799b9c50d486ec41bc8254840cf48d58b"
+}

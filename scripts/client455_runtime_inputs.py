@@ -2,7 +2,18 @@
 import hashlib
 import json
 import shutil
+from pathlib import Path
 from compare_client_binaries import WS
+
+
+def copy_tagged_sound_providers(run):
+    client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
+    records=[]
+    for name in ['Snd/msssoft.m3d','Snd/msseax.m3d','Snd/mssmp3.asi']:
+        original,target=client/name,run/name;target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(original,target)
+        records.append(dict(file=target.relative_to(WS).as_posix(),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),original=str(original)))
+    return records
 
 
 def copy_character_shaders(run):

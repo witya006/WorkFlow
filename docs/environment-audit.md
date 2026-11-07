@@ -1,5 +1,18 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, tagged-audio103: действующий native IDA MCP подтвердил
+18functions/1520asm/18equalranges;session6a70bd2b saved/closed/list0. Установок
+нет. В копиях доступны реальные Miles M3D providers; фактически открыт Fast2D.
+Новый CMainApp sound owner проходит157 проверок WAV/30channels/64LRU и обычный
+Create→1 (debug ready:7969). Source PEcf7ac5e0…/entry159670/182-20-58/0unresolved.
+Status58/account/hotbar7/storage3 проходят;6 viewedGPU byte-equal102. Engine546a…
+не менялся. Для обнаружения providers путь нужно задать до AIL_startup;
+неуспешные пробы сохранены отдельно, в итоговую приёмку не включены. Новый
+native audio harness закрывает Miles через RAII. Полные nuclear effect/cancel,
+весь звук/startup/unsafe/shutdown ещё OPEN. Original/server/inputEXE без изменений/
+не исполнялись. Gate103 current,102 historical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-tagged-audio.md).
+
 Дополнение07.11, player-status102: действующий nativeIDA MCP подтвердил
 17functions/2036asm/17equalranges и1diagnosticrange обеих455;session100f46bb
 savedclosed/list0. Новых установок нет;engine546a… неизменён. ActualAvatar
