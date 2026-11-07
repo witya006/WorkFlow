@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, storage085: новых установок нет. IDA64b119a2 saved/closed/list0;
+10 дополнительных диапазонов обоих pins/25 полных asm physical-item guard и
+53 primary-vptr/RTTI из084 проверены. Реальная source фабрика имеет17 классов
+под правильными455 IDs/limit56;старый CBeltBoard удалён из фабрики. Три native
+запуска, account и exactnewPE/Create1 прошли. PE89924a1c…/entry14F490/182-20-41TU,
+0unresolved. Engine9caa283a… неизменён, его contracts reused;старые GPU suites
+не повторялись. Неперенесённые oldbelt callers явно отклоняются, fullfactory/
+itemprotocol/Tutorial/M9 открыты.
+[Доказательства](../research/client455-storage.md).
+
 Дополнение 07.11, tutorial-integration084: установок и изменений runtime нет.
 IDA14d8cac3 сохранена/закрыта, список пуст. Проверены92 диапазона обоих pins,
 1514 полных asm instructions четырёх функций и primary-vptr/RTTI53 объектов.

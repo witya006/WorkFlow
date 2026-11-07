@@ -1,5 +1,15 @@
 # Полнота восстановления RF_Online.bin
 
+085 PARTIAL: canonical Force3/Animus4/limit56 и ReturnItem eligibility0/1/5
+перенесены. Три actual-source запуска проверяют17 реальных классов/пакеты/
+256BYTE IDs/legacybelt refusal; account и exactnewPE/Create1 прошли. Старый
+CBeltBoard не регистрируется; marker255 не является validwireID. Оставшиеся
+старые MainGame.Create_Board/BeltList пути явно отказывают и требуют455 замены.
+Это не приёмка fullfactory (36 target classes missing), Trunk/hotbar/trade/
+itempacket/DB/полного ReturnItem/GUI/Tutorial/gameplay. Engine contracts reused,
+старые GPU/159k suites не переобъявлены свежими085. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-storage.md).
+
 084 AUDIT_OPEN: common Tutorial init требует53 объектов фабрики455; текущая
 source фабрика содержит18. У17 совпадают имена, эквивалентность поведения не
 принята;36 других имён отсутствуют в этой фабрике, что не является полным

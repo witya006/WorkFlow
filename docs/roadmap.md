@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+085: source использует Force3/Animus4 и capacity56;17 реальных классов стоят под
+правильными IDs455. Отдельный старый belt выведен из фабрики, его устаревшие
+callers явно отклоняются. Физический ReturnItem guard0/1/5, три native запуска,
+account и новаяPE/Create1 прошли. Полные itemprotocol/53-classfactory/Tutorial
+ещё открыты. Далее086 — реальные Linker/hotbar/общие providers и замена oldbelt
+путей. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-storage.md).
+
+Предыдущий результат:
+
 084: восстановлена доказательная карта зависимостей Tutorial/common init:
 фабрика455 создаёт53 объекта, текущая source —18. У Force/Animus изменились
 ID; обычный quest briefing и Tutorial имеют разных владельцев.92 диапазона,
@@ -603,8 +613,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/085: actual455 storage/board identities/factory и common gameplay providers.
-   Force source4→4553,Animus5→4; не создавать конфликт старого belt/Force.
+1. M6/086: реальные Linker/hotbar455, oldbelt consumers и common gameplay providers;
+   identity085 Force3/Animus4 уже работает. Остальные36 target factory classes,
+   Trunk и полный item/DB protocol остаются обязательными.
    Далее actualCGP_Tutorial shared UI/board/Avatar init, Load/Create/cameraintro/
    frame/input/Destroy, QBI host/follow/localhandlers/feedback/CTutorialBoard и
    fourstagefactory. Money083 готов в ограниченном домене; ID окна38, QBI47 типов.

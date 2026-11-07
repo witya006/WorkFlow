@@ -23,6 +23,44 @@
 
 ## Последний проверенный результат
 
+085 PARTIAL/currentgateclient455-storage-checkpoint.json. Source canonical
+storage IDs0Inv/1Equip/2Embellish/3Force/4Animus/5Trunk/6Linker;capacity56,
+POS_NUM7/STORAGE_NUM6. Старый BELT=255 — INVALID migration marker,неwireID.
+CBoardManager.Create больше не создаётCBeltBoard;17same-named target classes
+занимают correct455 slots. _GetBeltBoard явноthrow logic_error до миграцииcaller.
+ФизическийReturnItem guard4FEF50 (RVAFEF50) принимает0/1/5;real4FEF90callee.
+Два legacytrade lookup helpers ограниченыInventory/Equip после удаленияbelt;
+это не новаяtrade455реализация. GetBoard2aliases1;GetObject2неalias,какtarget.
+
+ВАЖНО: oldMainGame.Create_Board иBeltListdownload ещё вызывают старыйgetter,
+теперьявноотказывают. Ихнельзя считать working455 илиacceptedTutorial. 36target
+classes,включаяTrunk5,отсутствуют. Packet/DBlayouts/hotbar/fullreturn effects/
+trade/GUI/всеостальныеcommonproviders остаютсяOPEN;старыйпояс не заменятьForce.
+Падениеcount18→17 — удалениеobsoleteкласса,непроцентрегресса/готовности.
+
+Reference:10additionalequalpinranges/25actualfullasmguard,53vptrRTTI084revalidated.
+Rawstorage085-reference/session.json вartifacts/client455-progress;selected
+queuepseudocode only,queue не реализована. IDA64b119a2 savedclosed/list0.
+Nativework/m9/a7723312/storage-001/002/003:exit0/identical17classes/18publiclookups,
+256BYTEdomain,Force6x20/Animus1x10/Inventory5x20/Equip1x16 basepacks,retiredgetter
+throws;полныеSF/UI/object insertion/network transferнеприняты. Перваяprobecompile
+потребовалаmissingheaders;изменёнтолькоtestfixture,productionнеподгонялся.
+
+CurrentPE SHA89924a1c95d2b3f2e0a09f2e19cc223e00f1454bac866d79cf19ae3a8d00a031,
+2084864bytes/entry14F490/182client-20kernel-41facade/0unresolved. Freshconsumer
+ANI/BBX,account/Avatarstage/logintransform иexactPEearlyTCP/sound/D3D/Create1.
+WinMainB53B0/afterCreateB551A. Firstchanceexceptionsrecorded,неfailureparity.
+Engine9caa283a… unchanged082/startupcontracts reused. Actor/money/maps/audioGPU
+и159k suites не повторялись. Gates083/084 historical for old normal link.
+Research/client455-storage.md и checkpoint хранятsourcehashes/retiredcallerlist.
+
+Далее086: настоящий455Linker/hotbar и миграцияoldbeltconsumers,commonUI/board/
+Avatar owners;затемQBI/follow/localhandlers/actualTutoriallifecycle/fourstage/Login.
+Trunk/остальные36factoryclasses иfullitemprotocol обязательныM9,неwaived.
+M6/M6F/M7/M9OPEN;процентнеизмерен. Не объявлять fullstorage восстановленным.
+
+Предыдущий результат:
+
 084 — AUDIT_OPEN, runtime083 не менялся. Настоящий Tutorial Create5586D0
 вызывает общий UI5467D0/boards5477C0/Avatar5488F0. Точное подключение требует
 другой общей фабрики:455 Create4FB920 allocates53 objects/limit56,source18/limit19.
@@ -53,7 +91,7 @@ Source sizeofMainGame65984/Avatar19280/Tutorialsemantic32/briefing2736 — неA
 Обе исправлены вprobe;не считать багом production startup. Старые GPU/159k suites
 не повторялись;source083 normalPE иengine082 unchanged,oldmoneygatecurrent.
 
-Далее085: реальная migration storage/board contracts/factory, общие UI/Avatar
+Очередь после084: реальная migration storage/board contracts/factory, общие UI/Avatar
 owners/gauges/nameplate/processor dependencies;затем concreteQBI/follow/handlers
 и actualTutorial lifecycle/fourstage/Login. Не заменять host recordings/IDonly.
 Полный реестр остальных gameplay/GUI/Character/audio/FX/IME/numeric gaps обязателен;

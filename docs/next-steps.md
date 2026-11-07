@@ -7,6 +7,24 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+085: канонические IDs перенесены в source:Force3/Animus4/Trunk5/Linker6, таблица56.
+Реальные17 существующих target-named classes теперь на правильных местах;
+старый CBeltBoard из фабрики удалён. Guard возврата предметов принимает0/1/5.
+Три actual-source запуска/256BYTE IDs/реальные pack objects,account и новая
+PE/Create1 прошли. Это ограниченный перенос идентичностей, не полная фабрика,
+layout протокола/DB, hotbar или обучение. Gate085 PARTIAL.
+[Доказательства](../research/client455-storage.md).
+
+Далее086: реальные Linker/hotbar455 и старые belt callers, общие UI/board/
+Avatar providers. Старый MainGame.Create_Board/BeltList download остаются
+неперенесёнными и теперь явно отказывают на старом поясe; не считать их455
+инициализацией. Trunk5 и ещё35 target classes отсутствуют в фабрике. После
+нужных владельцев — concreteQBI/follow/localhandlers иactualTutorial/fourstage/
+Login. Все остальные M6/M9 gaps сохраняются. Gates083/084 исторические по link;
+их неизменённые GPU/159k suites без причины не перезапускать.
+
+Предыдущий результат:
+
 084: аудит настоящего Tutorial/common init завершён как AUDIT_OPEN.92 диапазона
 совпали между pins;1514 actual asm и primary-vptr/RTTI дают карту53 объектов
 фабрики455. Реальная source фабрика создаёт18 под19 IDs; у17 совпали имена,
@@ -17,7 +35,7 @@ probe с настоящим network owner прошёл восемь одинак
 не менялся; полноценные Tutorial/игра ещё открыты.
 [Доказательства](../research/client455-tutorial-integration.md).
 
-Далее085: перенести контракт455 storage/board IDs и фабрику с учётом реальных
+Очередь после084: перенести контракт455 storage/board IDs и фабрику с учётом реальных
 типов/протокольных потребителей, не менять две константы с конфликтом слотов.
 Восстановить общие gameplay UI/board/Avatar providers, gauges/char-info/nameplate
 и реальные processors. Затем concrete QBI/follow/localhandlers и actual
@@ -930,9 +948,9 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. После аудита084: перенос storage/board контрактов455 и нужных общих владельцев;
-   Force/Animus IDs отличаются, QBI numeric passthrough в legacyGetBoard неверен.
-   Далее общий UI/board/Avatar init и настоящий Tutorial owner,
+1. После085: реальные Linker/hotbar, замена неперенесённых belt consumers и общие
+   UI/board/Avatar owners;identity Force3/Animus4 уже перенесена. Фабрика пока17/53,
+   Trunk и остальные36 providers не приняты. Далее настоящий Tutorial owner,
    QBI host/follow/input/frame/feedback/local handlers, четыре этапа и переходы.
    Восстановленные controls/briefing/camera/world/RVP не исследовать заново без
    новых расхождений; связать их с настоящим владельцем. ID окна38, QBI47 типов.

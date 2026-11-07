@@ -80,6 +80,40 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            if relative=='network/protocol/characterdb.h':
+                raw=b'#include "client455_storage.h"\r\n'+raw
+                anchor=b'enum { INVEN = 0, EQUIP, EMBELLISH, BELT, FORCE, ANIMUS, LINKER };'
+                if raw.count(anchor)!=1:raise ValueError('Legacy storage enum boundary changed')
+                raw=raw.replace(anchor,b'enum { INVEN=0,EQUIP=1,EMBELLISH=2,FORCE=3,ANIMUS=4,TRUNK=5,LINKER=6,BELT=RF455_REMOVED_LEGACY_BELT };')
+                anchor=b'enum { STORAGE_NUM = ANIMUS+1 };'
+                if raw.count(anchor)!=1:raise ValueError('Storage count boundary changed')
+                raw=raw.replace(anchor,b'enum { STORAGE_NUM = RF455_STORAGE_COUNT };')
+                changes.append('455logical storage IDs Force3/Animus4/Trunk5;oldBelt INVALID255,not a wire-layout migration')
+            if relative=='define.h':
+                raw=b'#include "client455_storage.h"\r\n'+raw
+                raw,count=re.subn(rb'(#define\s+MAX_BOARD_TYPE\s+)\( 19 \)',rb'\1( RF455_BOARD_COUNT )',raw)
+                if count!=1:raise ValueError('Legacy board-count boundary changed')
+                changes.append('455public board capacity56;registered classes tracked separately')
+            if relative=='gameobject/board/common/cboardmanager.h':
+                raw=b'#include "client455_storage.h"\r\n'+raw
+                raw,count=re.subn(rb'(#define\s+_GetBeltBoard\(\)\s+)[^\r\n]+',rb'\1RF455_RejectRemovedLegacyBelt()',raw)
+                if count!=1:raise ValueError('Legacy belt getter boundary changed')
+                changes.append('retired potion-belt getter explicitly refuses unrecovered legacy callers')
+            if relative=='gameobject/board/common/cboardmanager.cpp':
+                raw,count=re.subn(rb'\tm_listBoard\[IBT_ITEM_BELT\][^\r\n]+\r?\n',b'\t//455: no separate legacy potion-belt object.\r\n',raw)
+                if count!=1:raise ValueError('Legacy belt factory boundary changed')
+                anchor=b'if( !( pi_byBoardType == IBT_INVENTORY || pi_byBoardType == IBT_EQUIP || pi_byBoardType == IBT_ITEM_BELT ) )'
+                if raw.count(anchor)!=1:raise ValueError('ReturnItemToItemBoard guard boundary changed')
+                raw=raw.replace(anchor,b'if( !RF455_IsPhysicalItemStorage(pi_byBoardType) )')
+                changes.append('actual17existing class constructors now occupy455IDs;legacyBelt removed;ReturnItem guard0/1/5 from4FEF50;36class providers remain open')
+            if relative=='gameobject/board/itemboard/citemboard.cpp':
+                # These legacy helpers applied to Inventory/Equip/Belt. Retire
+                # the missing Belt explicitly;do not turn its sentinel into a
+                # numeric upper bound accepting arbitrary board IDs.
+                anchor=b'if( m_byBoardType > IBT_ITEM_BELT )'
+                if raw.count(anchor)!=2:raise ValueError('Legacy trade lookup boundaries changed')
+                raw=raw.replace(anchor,b'if( m_byBoardType != IBT_INVENTORY && m_byBoardType != IBT_EQUIP )')
+                changes.append('legacy trade lookups retain inventory/equip domain after belt retirement;full455trade/trunk remains open')
             if relative=='userinterface/guicontroller/guitextboard.h':
                 raw=(native/'client455_gui_text_board.h').read_bytes()
                 changes.append('455TextBoard fragment/line caches,WORD indices,markup and pixel layout source interfaces')
@@ -664,6 +698,7 @@ def main():
     for name in ['client455_rvp_effects.h','client455_rvp_effects.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp_audio.h','client455_rvp_audio.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_money.h','client455_money.cpp','client455_inventory_money.inc','client455_inventory_gold.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_storage.h']=sha((native/'client455_storage.h').read_bytes())
     report['camera_header_overlay']=header_report
     report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
