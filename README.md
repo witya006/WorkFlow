@@ -11,7 +11,16 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-Последний перенос — item-atlas093: typed CGUIItem сам выбирает изображение по
+Последний перенос — item-icon-metadata094: реальные поля предмета доходят до
+CGUIInventoryBoard; обычный TakeInItem использует общий проверенный core455.
+566 metadata/520 race-level сценариев,16 реальных владельцев иконок,3 просмотренных
+GPU кадра, сеть/хранение и новая PE/Create1 проходят. Полный CItemBoard.Add и
+игровые связи ещё открыты. Далее095 — shared icon state и Add/Linker/Macro/Vending,
+затем bootstrap. Current gate — inventory/client455-item-icon-metadata-checkpoint.json;
+093 runtimegate исторический. M6/M6F/M7/M9 открыты.
+[Доказательства](research/client455-item-icon-metadata.md).
+
+Предыдущий перенос — item-atlas093: typed CGUIItem сам выбирает изображение по
 itemID/spriteID/type через восстановленные callbacks455.880 граничных сценариев,
 4 просмотренных GPU кадра,9 неизменных кадров092, предметы/данные/сеть и новая
 PE/Create1 проходят. Далее094 — реальные payload metadata и игровые владельцы

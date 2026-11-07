@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, item-icon-metadata094:28 equal ranges/1138asm/15 decoded reads,
+IDA4f540aaf savedclosed/list0;configured MCP probe прошёл. Новых установок нет.
+182client/20kernels/49facade TU,0unresolved;PE85a909e3…/entry152d60/Create1.
+566 real metadata/520 race-level/16 actualinventory iconowners/3 просмотренных
+GPU кадров, clone/clear/Dmalloc,hotbar/storage/account проходят. Common fields
+core сохранён в ordinaryPE; полный payload handoff пока только own-entry caller,
+обычный CItemBoard.Add не перенесён. Его host-контракты Linker6/Macro35/Vending27
+закреплены. 159k/world/audio/старые bulk не повторялись. Gate094 текущий,
+093 historical. Originals/server без изменений.
+[Доказательства](../research/client455-item-icon-metadata.md).
+
 Дополнение07.11, item-atlas093: обычный клиент собирает настоящий автоматический
 выбор страницы/ячейки.18 equal ranges/1001 asm/47 decoded stores;880 сценариев,
 4 просмотренных GPU кадра,9 byte-equal кадров092, owners/data/SF/hotbar/storage/

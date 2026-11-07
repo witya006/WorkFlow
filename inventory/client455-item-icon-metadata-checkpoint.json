@@ -1,0 +1,115 @@
+{
+  "status": "PARTIAL",
+  "scope": "Basic physical icon fields/race-level predicate and real inventory icon-owner handoff;not fullCItemBoard.Add or fullgame",
+  "script_sha256": "b72a002a2148011b3152150e6997f715014df7fd1fc0a7512e3828297714d96c",
+  "reference_sha256": "a25d8ca0cdd77df042628d2efbc9a7842aa5dd88166d1f31d8889a53e8b532c7",
+  "native_sha256": "3ccdead0d6bd69946c73a16323e3d539a608164754cbfaef698c265d54f545b8",
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_icon_metadata.h",
+      "sha256": "c8341dac8a50eb99f57c923f7b465c7cddb4ae5413f4c70b3dd36647c6ebbf1c"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_metadata.cpp",
+      "sha256": "87ae81a04ec87014615e3faac987a5a96319b84feef5079eb22e755389b0597d"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "9a7001573ce7891e71fdd9be0cb0bc28296282e3ee43d0aea125c48abc17efd8"
+    },
+    {
+      "file": "scripts/native/client455_item_atlas.cpp",
+      "sha256": "c4e122d2dc1520cd716f612b910b8864bdd77dfb0bde6d9c4515030a640eea2c"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "b4aa9175657bec442010c01ccc47e6767c07c2b5f292cd65fbf1bd8274ae9dcf"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/userinterface/gamewindow/guiinventorywindow.h",
+      "sha256": "6975d7bc8efe947d2e8a9bc337daca3497318f6fa169c2aab0562903a44e984a",
+      "input": "work/client455-port/source/RF_Client/userinterface/gamewindow/guiinventorywindow.h",
+      "input_sha256": "3b0770918bae5748dc3d5bd26f1a12b69c313ff163cc7528c8de7adc3e2301d6",
+      "changes": [
+        "455realbasicpayload metadata to existing inventory icon owner;fullboardevent and sideeffect integration remainsopen",
+        "455signed64 inventory money fields and API"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/gamewindow/guiinventorywindow.cpp",
+      "sha256": "71b556e306c4120b74ca09d5e5453e6b3e9a1e7bc8d50a08cd51599c2a77eb0b",
+      "input": "work/client455-port/source/RF_Client/userinterface/gamewindow/guiinventorywindow.cpp",
+      "input_sha256": "73bef08951455061a1414c20a8808ff8b330af0c78e42e5f6e1a7b37a5ed2bce",
+      "changes": [
+        "455realbasicpayload metadata to existing inventory icon owner;fullboardevent and sideeffect integration remainsopen",
+        "455grouped signed64 money labels positioned before wider title with10pixel gap;no legacy fixed318/335 coordinates"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_icon_metadata.cpp",
+      "sha256": "87ae81a04ec87014615e3faac987a5a96319b84feef5079eb22e755389b0597d",
+      "input": "scripts/native/client455_item_icon_metadata.cpp",
+      "input_sha256": "87ae81a04ec87014615e3faac987a5a96319b84feef5079eb22e755389b0597d"
+    }
+  ],
+  "session": {
+    "file": "artifacts/client455-progress/item-metadata094-session.json",
+    "sha256": "0e9d51fbfd9a3c848fd0cfa50075ac5e1522e105e73280c57542fe6a5d81262d"
+  },
+  "normal_link_sha256": "7cfc08adcf3b563b7752ff42c80f12a8258553f28f33890331d61a395ae2361e",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "85a909e356f40f713d2f785fca2a973c920034f15bf5926c2149ba8374de9685",
+    "bytes": 2108416,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x152d60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "131a079bc936679b0bfc267400e3f2da0a6ab4136c20a54047ca1da47bd55a95",
+    "client455-normal-build": "63a2f85c99e2ca727b34e35333b9926a3c8586317e503923bafabe807660ab8c",
+    "client455-normal-consumers": "bcc80cadaeeac574432a40a6f11b178bb10c9039d801b7bb97c5034ee9525a61",
+    "client455-own-entry": "1725697b6964aad924eed20544291464e5d4b0666064d4f492884743448c42ac",
+    "client455-startup-audit": "d6552bdd59b4aae6faf1a84c60dba3d3119c0cf50c1060667692de0a9d020b73",
+    "client455-startup-native": "e17f12bb8bce1a1c9ec7306cb5de8726c79b21bb804d443da98e01470d441616",
+    "client455-ui-startup-native": "e5c107aeef86335b7399d8a286c3cd248d343f73fc14ff39812ab9da03baf6c7",
+    "client455-hotbar-native": "e94ed51e0cc145331c182ecaa72c4feb6c8661ba95a135eb8ea1edaa39110cd8",
+    "client455-storage-native": "f103f69fd43543bed7c36bb643fc01832fd74c2d8134aaf3830eadce876dcbf9",
+    "client455-account-native": "994983c3248bb7c2a73078c16bbf585411d75a7d9a8ce2beb79a233cece045a8",
+    "client455-item-icon-metadata-visual-review": "1a64b6a636e8eb343797f1b094b8aa22c33e3d89d49e7170cca41f87ad1e1ffc"
+  },
+  "selected_ranges": 28,
+  "assembly_instructions": 1138,
+  "decoded_offsets": 15,
+  "real_metadata_cases": 566,
+  "Quest_refusals": 9,
+  "race_level_cases": 520,
+  "actual_inventory_icon_owners": 16,
+  "viewed_GPU_frames": 3,
+  "ordinary_inventory_fields_core_retained": true,
+  "normal_basic_metadata_reader_retained": false,
+  "full_payload_to_board_event_binding": false,
+  "previous093gate": "historical runtime after new source/link/reports;static atlas evidence retained",
+  "unchanged_world_audio_159k_093atlas_092icon_2013owner_1447SF_suites_rerun": false,
+  "gaps": [
+    "SF/Quest dedicated metadata/units remainexplicit;Basic2/3/4 metadata is not fullAnimus/MAUwindow integration",
+    "Inventory handoff uses actualCGUIInventoryBoard and caller race;full ordinaryCItemBoard.Add clone/notifications/cooldown/board6-35-27 dependencies and event/remove integration remainopen",
+    "Global legacyboard IsEqualItemType and mixedderived consumers need coordinatedmigration;do not cast typedbasewrappers to oldpayloadclasses",
+    "FullGUIItemchildren/copy/sharedquantity-usability propagation/targetUnit57lifecycle/normalbootstrap/Linker/Tutorial/Login/auth/game and priorM6F/M7/M9 gaps remainmandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

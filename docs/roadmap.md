@@ -12,6 +12,17 @@
 
 ## Текущий статус
 
+094: реальные metadata физического предмета передаются существующему владельцу
+иконок инвентаря. Ordinary TakeInItem вызывает общий fields core455.566 metadata/
+520 race-level/16 actualicons/3 просмотренных GPU, владение/очистка и новая
+PE/Create1 проходят. Полный CItemBoard.Add/общие уведомления ещё открыты.
+Далее095 — shared icon state и реальные Add/Linker6/Macro35/Vending27 contracts,
+затем normal bootstrap. Gate094 текущий;093 runtimegate historical.
+M6/M6F/M7/M9 открыты; общего процента пока нет.
+[Доказательства](../research/client455-item-icon-metadata.md).
+
+Исторический результат093:
+
 093: typed CGUIItem.SetSprite автоматически выбирает страницу/ячейку455 по своим
 данным. Item/UnitParts/Default callbacks перенесены;880 случаев,4 просмотренных
 GPU кадра и9 неизменных кадров092 проходят. Owners/data/SF/hotbar/storage/account

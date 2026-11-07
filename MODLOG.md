@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-icon-metadata094. Actual Basic metadata and inventory20 core
+restored;ordinaryTakeInItem calls productionfields helper.566metadata/520race-level/
+9Quest+SFrefusal/16realiconowners/3viewedGPU/clone-clear-Dmalloc pass. Fullpayload
+handoff is verifiedown-entry on actualwindow/sourcepack,not fullCItemBoard.Add;
+reader/handoff stillnormalunused. Hotbar/storage/account/newPE85a909e3/Create1pass.
+28equalranges/1138asm/15decodedreads;IDA4f540aafclosed/list0. Userfield8bits also
+existsinlegacy;earlierdifference wording corrected. No unchanged159k/world/audio/
+oldbulk rerun. Currentgate094/093runtimehistorical. Next095 actualAdd/sharedicon
+state/Linker6-Macro35-Vending27,thenbootstrap. No originals/serverwrites.
+[Evidence](research/client455-item-icon-metadata.md).
+
 2026-11-07 — Item-atlas093. Production typedGUIItem.SetSprite now selectsactual
 target8/19atlas cells automatically viaItem/UnitParts/Default callbacks.18equal
 ranges/1001asm/47decodedC6stores;880cases/563failures/2WORDrowwraps pass. FourGPU

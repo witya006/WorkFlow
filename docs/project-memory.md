@@ -23,6 +23,50 @@
 
 ## Последний проверенный результат
 
+094 PARTIAL. Current gate inventory/client455-item-icon-metadata-checkpoint.json.
+RF455BasicIconMetadata actualBasic0/2/3/4: Data72classification/76sprite,
+NormalBYTE92quantity/others1,gradeData152 onlyequipmentkind1..10,requiredlevel
+kind88-dependent. ReadbasicSF/Quest explicitlythrows; no inventedcommonvtbl.
+rawMetadata accessor preserves existing table-owner extent,not just rowstride.
+Racepredicate uses mask0ff00000 (already present inlegacy too,not a difference),
+user0..4/5..10/default andBYTElevel-required255 rules. Source arrays/data untouched.
+CGUIInventoryBoard.TakeInItemFields455 is called by ORDINARY existingTakeInItem
+withactualAvatar race;normalMAPretains it atRVA c8ae0. Sharedcore sets typed0/
+cell64,ID/sprite/quantity,stickyrequiredFF,autoSprite/display32,usable/trademark.
+TakeInItem455(rawpayloadwrapper,caller race) reads metadata, rejectsquantity0/
+wrongkind/null/slots20+, bindsgrade/index. InvalidID succeedswindow butGetItem
+null detachesicon. Raw core quantity0 allowed;parent handoff rejects0,as455.
+FullCItemBoard.Add is NOT connected;basicreader+handoff strippedfromnormalPE as
+unused,while own-entry invokes sameproductionfacade. Do notforce-retain code
+or mistake this actualwindow handoff for full inventory/event acceptance.
+
+28equalranges/22functions/1138asm/15decodedreads/vtables;IDA4f540aafsavedclosed/
+list0,configuredMCPprobe66tools/10functions/decomp/closepassed. 566realbasic
+metadata/9Questrefusals+SFrefusal/520race-levelcases,16realpayload-ownerclones/
+actualCObjectPack/actualCGUIInventoryBoard icons pass. ThreeGPUframes viewed:
+real non-placeholder data,quantity255+grade11 update,clear. Inputstagedfiles
+unchanged;copieddata memory edits restored;allpayload ownersfreed,Dmallocbaseline.
+Initialprobe incorrectly assumedfirstsampleequipment;selectedequipment byreal
+kind88. Sampleslaterimproved to nonzero/non-first rows for meaningfulimages.
+NewPE85a909e356f40f713d2f785fca2a973c920034f15bf5926c2149ba8374de9685,
+2108416bytes/x86/entry152d60/WinMainb7540/afterCreateb76aa,182/20/49TU,
+0unresolved;engine082unchanged. Freshhotbar7/storage3/account/earlyKorea949/
+localTCP/Miles/exactPECreate1passed;firstchanceeventsretained,nogameloopacceptance.
+World/audio/159k/093atlas/092icon/2013owner/1447SFbulk unchanged,notrerun.
+Runtime093gate historical;staticproofs retained. M6/M6F/M7/M9remainOPEN.
+
+Next095: fullCItemBoard.Add/realownership and sharediconstate contracts. Target
+479320 has mandatoryLinker6/Macro35/Vending27 notifications and cooldown/grade/
+quantity propagation;sourcefactory35/27 notaccepted. Coordinate globalwrapper
+IsEqualItemType (stilllegacytag) with mixedcallers,neverstatic_cast typedbase to
+oldCSFItem/CBoardItem. Restore missingactualclientproviders ratherthan successful
+no-ops. Then ordinarytablebootstrap,fullLinker5x10/use/input/download,dedicated
+SF/Quest,GUIItemchildren/followers,remainingboards/Trunk/protocol/Tutorial/QBI/
+fourstage/Login/auth/game. No serverwrites/inputEXEexecution/publication. Progress,
+notblocked/notcomplete. Research research/client455-item-icon-metadata.md.
+
+Исторический результат093 (runtime gate historical after094):
+
 093 PARTIAL. Current gate inventory/client455-item-atlas-checkpoint.json.
 Normal typedCGUIItem.SetSprite routesItem8/UnitParts19 bytype5,uses own
 itemID/spriteID/type andpreservesdisplayedsize;emptyFFFFFFFF earlyreturn.

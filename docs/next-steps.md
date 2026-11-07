@@ -7,27 +7,28 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-093: production typedCGUIItem.SetSprite сам выбирает target8/19atlas и ячейку
-по itemID/spriteID/type.880 сценариев,4 просмотренных GPU кадра/16 иконок,
-9 byte-equal кадров092 и освобождение памяти проходят. Новые страницы и
-signedwidth/WORDrowwrap/partialwrites/fallback перенесены по бинарнику.
-PE dbd71f6a…/entry152d60/182client-20kernels/0unresolved/Create1. Владельцы2013,
-data575/SF1447/hotbar/storage/account проходят. Настроенный IDA MCP подтверждён;
-сессия4c6c7c2c сохранена/закрыта/list0. Current gate:
-inventory/client455-item-atlas-checkpoint.json;092 runtimegate historical.
-[Доказательства](../research/client455-item-atlas.md).
+094: реальные physical metadata и handoff к actualCGUIInventoryBoard проверены.
+Обычный TakeInItem вызывает общий fields core455; payload handoff пока только
+own-entry caller, полного CItemBoard.Add нет.566metadata/520race-level/16real
+icons/3 просмотренных GPU,clone/clear/Dmalloc,hotbar/storage/account и новая
+PE85a909e3…/entry152d60/182-20-49/Create1 проходят. IDA4f540aaf savedclosed/list0.
+Current gate:inventory/client455-item-icon-metadata-checkpoint.json;
+093 runtimegate historical. [Доказательства](../research/client455-item-icon-metadata.md).
 
-Далее094: подтвердить реальные payload→icon metadata/getters, подключить typed
-board/hover/Linker owners. В093 GPU данные заданы синтетически; не выдавать это
-за готовый инвентарь. Затем RF455ClientItems.loadFiles в подтверждённом порядке
-normal bootstrap/языкового профиля. Обычный WinMain новые таблицы ещё не грузит.
-Полная61AF30инициализация children/timers/common/lock, GUIItemcopy/shake/base
-virtualSetSize, targetUnit57 lifecycle и mixed Clear/Create/consumers открыты.
-Далее полный Linker5x10/input/use/cooldowns/download/oldbelt/Tutorial. Прежние
-Quest/36boards/Trunk/protocol/fourstage/Login/auth/game gaps обязательны.
-Использовать production facade;087–089 separate item.lib runners исторические.
-Не повторять unchanged world/audio/159k без нового расхождения.
-Проверка текущей точки: Invoke-Python.ps1 scripts/checkpoint_client455_item_atlas.py.
+Далее095: полный CItemBoard.Add479320 и shared icon state/владение. Target требует
+notifications Linker6/Macro35/Vending27 и перенос cooldown/grade/quantity. Нельзя
+подставить успешные no-op вместо отсутствующих35/27. Согласованно перенести
+wrapper IsEqualItemType и mixed callers; не кастовать typedbase к старым классам.
+Exploratory decompilation сохранена в ignored artifacts/client455-progress/
+item-owners094-exploration.json; функции500590/5007E0/668A90/48E3B0/48BF50 и
+setter propagation61A8C0/61A960 требуют полного asm/pin/EH подтверждения перед
+переносом. Полный inventory event/remove flow пока не проверен.
+Затем normal tablebootstrap/profile, fullLinker5x10/input/use/download, SF/Quest
+units и остальные GUIItem children/followers/targetUnit lifecycle. Все прежние
+36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны.
+Не повторять unchanged world/audio/159k/093atlas/092icon/2013owner/SF1447bulk
+без нового расхождения;094 новые575/520 cases уже проверяют изменённый участок.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_item_icon_metadata.py.
 
 Предыдущий перенос090:
 
@@ -1055,7 +1056,7 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. После093: реальные payload→icon metadata и typed board/hover/Linker consumers,
+1. После094: полныйCItemBoard.Add/sharediconstate/typedboard-hover-Linker consumers,
    normal table bootstrap; затем полные Linker/hotbar, замена belt consumers и общие
    UI/board/Avatar owners;identity Force3/Animus4 уже перенесена. Фабрика пока17/53,
    Trunk и остальные36 providers не приняты. Далее настоящий Tutorial owner,

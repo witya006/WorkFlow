@@ -1,5 +1,10 @@
 # Item-atlas093 — автоматический выбор изображения
 
+Runtime gate093 исторический после [metadata094](client455-item-icon-metadata.md).
+Его static atlas proof сохраняется; неизменённые880/4GPU suites не повторялись.
+094 проверяет реальный payload→inventory icon handoff и подключает общий fields
+core к ordinaryTakeInItem. Полный CItemBoard.Add ещё открыт. Ниже — результат093.
+
 2026-11-07. **PARTIAL, M6**. В обычный клиент перенесены callbacks выбора
 страницы и ячейки для предметов, деталей MAU и обычных спрайтов. Typed CGUIItem
 вызывает их из настоящего SetSprite по своим itemID/spriteID/type. Явная

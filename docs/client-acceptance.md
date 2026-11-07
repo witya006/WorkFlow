@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+094 PARTIAL: physical metadata читает реальные owner tables,inventory20 core
+включён в ordinary TakeInItem. Actual CGUIInventoryBoard принимает source-owned
+payload wrapper,выставляет индекс/grade/quantity/usable и рисует16 реальных
+предметов.566 metadata/520 race-level/9 Quest+SF refusal/3 просмотренных GPU,
+clone/clear/last-owner/Dmalloc и новая PE/Create1 проходят. Basic reader/handoff
+пока не вызывается полным CItemBoard.Add и удаляется normal linker как unused;
+own-entry тест использует production facade. Полный event flow/notifications/
+cooldowns/sharedfollowers/Linker6/Macro35/Vending27/SF/Quest/остальные boards/
+bootstrap/Tutorial/Login/auth/game и прежние gaps обязательны. Gate094 текущий,
+093 runtimehistorical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-item-icon-metadata.md).
+
+Исторический результат093:
+
 093 PARTIAL: обычный typedCGUIItem.SetSprite выбирает target8/19 и страницу/
 ячейку через реальные Item/UnitParts/Default callbacks.880 oracle cases incl
 signedwidth/WORDrowwrap/partialwrites/fallback,4 просмотренных GPU кадра и9

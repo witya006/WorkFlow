@@ -56,5 +56,6 @@ public:
     std::uint32_t tableIndex()const;
     const char* name()const;
     RF455ItemDataSpan rawData()const{return data;}
+    RF455ItemDataSpan rawMetadata()const{return metadata;}
     RF455ItemDataSpan recordBytes()const{return {state.get(),stateSize};}
 };

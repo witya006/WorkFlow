@@ -6,9 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ITEM-ATLAS-093",
+      "id": "CLIENT455-ITEM-ICON-METADATA-094",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Real Basic icon metadata and existing inventory20 owner handoff;ordinaryTakeInItem retains shared fields core;fullCItemBoard.Add stillopen",
+      "reference": [{"rva":"0x16940","role":"classification72"},{"rva":"0x65ea0","role":"sprite76"},{"rva":"0x5fde0","role":"grade152"},{"rva":"0x5ffc0","role":"requiredlevel offsets"},{"rva":"0x4e80","role":"NormalBYTEquantity"},{"rva":"0x273390","role":"inventory core"},{"rva":"0x21ca50","role":"race-level predicate"},{"rva":"0x79320","role":"fullAdd dependency evidence only"}],
+      "implementation": ["scripts/native/client455_item_icon_metadata.h","scripts/native/client455_item_icon_metadata.cpp","scripts/native/client455_item_payloads.h","scripts/client455_item_metadata_port.py","scripts/prepare_client455_normal.py"],
+      "verification": "28equalpinranges/22functions/1138asm/15decodedreads/vtables.566actualmetadata/9Quest+SFrefusals/520race-levelcases/16realEDF-backedpayloads/sourcepackclones/actualinventoryicons and3viewedGPU pass;qty0-255/stickyFF/invalidID/slotbounds/clear/lastowner/Dmalloc tested. OrdinaryTakeInItem calls fields core retainedinPE;reader/handoff stillstrippednormalunused andtestedown-entry. Freshhotbar7/storage3/account/newPE85a909e3/entry152d60/182-20-49/Create1 pass. IDA4f540aafsavedclosed/list0;configuredMCPpassed. No unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447bulk rerun.",
+      "evidence": ["inventory/client455-item-icon-metadata-reference.json","inventory/client455-item-icon-metadata-native.json","inventory/client455-item-icon-metadata-visual-review.json","inventory/client455-item-icon-metadata-checkpoint.json","research/client455-item-icon-metadata.md"],
+      "gaps": ["FullordinaryCItemBoard.Add clone/notifications/cooldown/sharediconstate remainsopen;mandatoryLinker6/Macro35/Vending27 providers notcomplete","Basic2/3/4 metadata is not fullAnimus/MAUwindow integration;SF/Quest dedicated metadata explicitlyrefused","Legacywrapperkind predicates and mixedderived callers need coordinatedmigration;normalbootstrap and fullinventory/hover/Linker stillopen","FullGUIItemchildren/followers/targetUnit57/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/gameplay/M6F/M7/M9mandatory;093runtimegate historical/staticproofsretained"]
+    },
+    {
+      "id": "CLIENT455-ITEM-ATLAS-093",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-ITEM-ICON-METADATA-094",
       "description": "Production typedGUIItem.SetSprite automatically selects actual455item/unitparts atlas through restored callbacks;payload-to-icon metadata stillopen",
       "reference": [{"rva":"0x3b0620","role":"item atlas selection"},{"rva":"0x3b0a40","role":"unitparts atlas selection"},{"rva":"0x3b05e0","role":"default reference"},{"rva":"0x3b0570","role":"callback dispatch/failure fallback"},{"rva":"0x21af30","role":"GUIItem.SetSprite core"}],
       "implementation": ["scripts/native/client455_item_atlas.h","scripts/native/client455_item_atlas.cpp","scripts/client455_item_icon_port.py","scripts/native/client455_item_icon_members.inc","scripts/prepare_client455_normal.py"],
