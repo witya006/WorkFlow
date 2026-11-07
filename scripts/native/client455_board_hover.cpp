@@ -9,6 +9,7 @@
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
 #include "client455_board_hover.h"
+#include "client455_player_status.h"
 #include <memory>
 #include <stdexcept>
 #include <typeinfo>
@@ -20,12 +21,16 @@ struct RF455BoardHoverState {
     ~RF455BoardHoverState(){previous.reset();operation.reset();}
 };
 BOOL RF455_IsOwnBoardObject455(CBoardObject* object){return object&&typeid(*object)==typeid(CBoardObject);}
+bool RF455_AvatarRequiresHoverCancel(){
+    auto* avatar=_GetAvatar();
+    return avatar&&RF455_RequiresHoverCancelStatus(avatar->GetStatusCode455());
+}
 namespace {
 void requireHoverCancellation(){
-    //52B810 returnsfalse when there isno actual avatar. Its live branch reads
-    //the455action-state andmaycancel an effect/sound-backed pending action.
-    //That live producer/owner isnot yet migrated;never substitute a no-op.
-    if(_GetAvatar())throw std::logic_error("455 hover requires migrated live avatar action-state/cancellation owners");
+    // The false branch never consults the nuclear aiming owner. The true
+    // branch still needs its actual pending/effect/sound/message lifecycle.
+    if(RF455_AvatarRequiresHoverCancel())
+        throw std::logic_error("455 hover requires migrated nuclear aiming cancellation owner");
 }
 }
 void CBoardManager::InitHover455(){m_hoverState455=new RF455BoardHoverState;}

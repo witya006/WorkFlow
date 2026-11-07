@@ -12,20 +12,30 @@
 
 ## Текущий статус
 
-101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
-два backup object и screen icon handoff. Проверены замена/очистка/возврат
-в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
-bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
-32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
-Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
-Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
-исторический. Live Avatar cancel,полная operation queue и игровые handlers
-ещё не восстановлены. M6/M6F/M7/M9 открыты.
-[Доказательства](../research/client455-board-hover.md).
+102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
+флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
+брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
+GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
+эта ветка явно отказывает до изменения предмета на курсоре.
+Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
+0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
+проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
+Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
+[Доказательства](../research/client455-player-status.md).
 
-Следом102 — liveAvatar cancel owners,затем actualhandlers/operationqueue и
-оставшиесяproviders/fullAdd/bootstrap. Внутренняяочередьуточнена по455;
-этапыM0–M9 и конечнаяцель не менялись.
+Далее103: восстановить владельца ядерного прицеливания (global1028AC8+12):
+pending, начало/отмену, позицию и FrameMove, реальные effect/audio API и сообщениеC1A.
+Перед переносом подтвердить API7D9730/7D91A0/7E22F0/8BEE60/8BD590; связать владельца
+с обычным клиентом. True predicate/pending0 тоже пока не принят.
+Затем — полные64-битные сетевые получатели флагов455, остальные действия44DEE0,
+Linker use/remove/swap/hover/MsgProc и очередь операций; typed quantity/backups/
+network callers, inventory/equip/SF/Animus, potion cache, Macro/Vending/fullAdd,
+обычный bootstrap и Quest sentence provider.
+Все прежние gaps обязательны: full GUIItem, три слоя tooltip, lifecycle/reset,
+private ABI, FP/unsafe/OOM/concurrency/shutdown, SF/Quest/36boards/Trunk/protocol,
+Tutorial/QBI/fourstage/Login/auth/game. Общего процента готовности нет.
+
+Этапы M0–M9 и конечная цель сохраняются.
 
 Исторический результат097:
 

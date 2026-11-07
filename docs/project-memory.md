@@ -23,65 +23,52 @@
 
 ## Последний проверенный результат
 
-101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
-два backup object и screen icon handoff. Проверены замена/очистка/возврат
-в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
-bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
-32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
-Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
-Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
-исторический. Live Avatar cancel,полная operation queue и игровые handlers
-ещё не восстановлены. M6/M6F/M7/M9 открыты.
-[Доказательства](../research/client455-board-hover.md).
+102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
+флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
+брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
+GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
+эта ветка явно отказывает до изменения предмета на курсоре.
+Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
+0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
+проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
+Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
+[Доказательства](../research/client455-player-status.md).
 
-Source client455_board_hover.h/.cpp +client455_board_hover_port.py inprepare;
-manager/screen headers andbodies wired. Copy455 initem_object.cpp +board_object.inc,
-sizeof620/vtable unchanged. Manager hasownpointerstate/2uniqueowned620backups,
-legacyCBoardItembackup retainedonlyforunportedcallers;notprivate320ABI.
-HeaderGetHoverObject usesnewgetter;legacyGetHoverItem refusesownbasecasts,
-legacyDeletedgetter refusesalltypedmode untilcallersmigrate. Sourceforexisting
-nonatomicmixedpaths remainsunaccepted. NewAddTyped forwardsactualCLinkBoard
-only;otherexistingadmittedboardproviders refuse,missingrawslots return0.
+Общий core — client455_player_status.h; prepare вызывает port_player_status
+для собственной копии CPlayer. Подтверждённое поле17708/0x452c имеет тип DWORD.
+Predicate сравнивает его младший BYTE с2/6/10; при null Avatar возвращает false.
+Приоритет64-битных флагов: bit16→10; иначе bit17 и первый bit33..40→2..9;
+при отсутствии подтипа старое значение сохраняется. Иначе bit42→1, иначе0.
+Конструктор455 поле не инициализирует. Собственное состояние known=false
+явно отказывает чтению до первого производителя. Названия ролей неизвестны.
+Остальные действия SetServerStatusFlag пока унаследованы от старого клиента;
+их соответствие455 и полные64-битные сетевые получатели ещё не приняты.
+CPU probe использует настоящий Avatar и bare wrapper; GPU probe — настоящую
+EDF иконку и Avatar со статусом0. Ядерная ветка отказывает до изменения hover.
+Статика:17 полных функций,2036 инструкций,17 равных диапазонов и1 диагностический.
+IDA session100f46bb сохранена/закрыта; idb_list вернул0. Raw evidence:
+artifacts/client455-progress/player-status102-*. Шесть свежих кадров просмотрены
+и побайтно равны101; остальные32 GUI кадра101 и большие suites не повторялись.
+Engine546a7529…/67 объектов не менялся; baseline033 сохранён. Отдельного snapshot
+старой derived library082 по-прежнему нет. Собственная PE:
+5f1f0f770f9dd395bb31ea8044b72ae9eb53b40ece8481cfc39b366674030df1,
+2144768bytes, base400000, WinMainb7a30, afterCreateb7b9a; офлайн Create1 до game loop.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_player_status.py.
 
-Native Copy620 null/overwrite/self/wholebytes/references,managerctorpartialIDs,
-SetHover/replace/ClearOperation/dualbackupfallback/ReturnHover andactualscreen
-Draw/cursor/picking/sourceTooltipclear passed.5realpayloadkinds0..4 +bare40;
-nonphysicalCPUicons synthetic. Questaliasf0000000 createsbutwrapper stillrefuses
-missingnameprovider/noleak. Sourceboardlist stagedbylab;not fullfactory/bootstrap.
-Native network owner Create/Destroy requiredforbroaderitemcases,offline/noauth.
-6newGPU viewed;32oldframehashes equal (lock6/ready6/timer6/window8/owners3/metadata3).
-Oldreviews boundbybefore101 snapshots andcheckpoint100;notnewreviewsofunchangedpixels.
-Hotbar7/storage3/account/currentPECreate1 pass;unchangedicon092/world/audio/159k/
-atlas093/2013owner/SF1447/095manual notrerun. Allowners/registry/Dmalloc0.
+Далее103: восстановить владельца ядерного прицеливания (global1028AC8+12):
+pending, начало/отмену, позицию и FrameMove, реальные effect/audio API и сообщениеC1A.
+Перед переносом подтвердить API7D9730/7D91A0/7E22F0/8BEE60/8BD590; связать владельца
+с обычным клиентом. True predicate/pending0 тоже пока не принят.
+Затем — полные64-битные сетевые получатели флагов455, остальные действия44DEE0,
+Linker use/remove/swap/hover/MsgProc и очередь операций; typed quantity/backups/
+network callers, inventory/equip/SF/Animus, potion cache, Macro/Vending/fullAdd,
+обычный bootstrap и Quest sentence provider.
+Все прежние gaps обязательны: full GUIItem, три слоя tooltip, lifecycle/reset,
+private ABI, FP/unsafe/OOM/concurrency/shutdown, SF/Quest/36boards/Trunk/protocol,
+Tutorial/QBI/fourstage/Login/auth/game. Общего процента готовности нет.
 
-NewPEe77ec7e7d33c9ed0f5cff3f44d066ddc64ce86446cd5cd36ba5b7165ff211d8d,
-2144768bytes/x86/base400000/entry1586b0/WinMainb7940/afterCreateb7aaa;
-182client/20kernels/57facade/0unresolved. Derivedengine546a7529… unchanged,
-baseline033/source preserved. Prior082derivedlib snapshot stillnotretained.
-23functions/1156asm/23equalranges;f131119f savedclosed/list0. Raw board-hover101-
-reference.json andsession.json ignored;smallreference/native/visual/checkpoint
-in inventory/client455-board-hover-*.json. research/client455-board-hover.md.
-
-Criticalsemantics: firstbackup+248=previous,lastremoved;second+252=operation.
-GetHoverObject4FE2B0 fallsbackSECOND4FE2F0 whennoactualhover. Nullhovercopies
-first,clearssecond,deleteshover,screen.Remove;replaceonlydelete/remove/clone/add,
-no previouscopy. Copy620 clearsdestfirst;selfcopythenhasnocopyeffect/retainsif
-stillshared,notaretainingclone. Sourceownedexactbasewrappers only,notoldderived.
-Drawscreen center usesdouble truncation beforemanager64/40resize;Size doesn't
-recenter;rawflag21 lock notnormalized. Screen Update doesn'tupdatecatchedtimer;
-manager.FrameMove does beforeboards. Add4FD660 rawboard2 notGetBoardalias1,
-admit<16/35/36/38/39,alwaysreturn0 evenafteractualAdd. Don't"fix"thesequirks.
-
-Next102: liveavatarpredicate/cancelowners. Currentcode explicitlyrefuses ANY
-nonnullactualAvatar beforemutations. Pinned52B810 null=>false;otherwise lowBYTE
-41E290(field17708/0x452c) equals2/6/10,ANDglobal1028AC8+12 pendingflag(4FD640)
-then52AB50/52AC40 clear/effect/sound/messageC1A. Meaning/fieldwriters/ownerclass
-stillunknown;don'tsubstitutelegacyIsDeath/CombatState. Restorethisthenactual
-use/remove/swap/hover/MsgProc/operationqueue4FDCB0 +list4FF200. Target500F80 bank-
-slotUse vslegacynonvirtualAPI. Full3tooltipcontext/producers remainopen;source
-RemoveTooltip onlyclearsactualcurrentlegacycontext. Needtypedquantity/backups/
-networkcallers,inventory/equip/SF/Animus,potioncache,Macro/Vending/fullAdd/bootstrap,
-Questnames/allpreviousclientgaps. Progress,notblocked;M6/M6F/M7/M9 OPEN.
+Исторический101 подробно сохранён вresearch/client455-board-hover.md и
+artifacts/client455-progress/client455-board-hover-*-before102.json.
 
 ## Исторический результат100
 

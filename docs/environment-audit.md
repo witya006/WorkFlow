@@ -1,5 +1,17 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, player-status102: действующий nativeIDA MCP подтвердил
+17functions/2036asm/17equalranges и1diagnosticrange обеих455;session100f46bb
+savedclosed/list0. Новых установок нет;engine546a… неизменён. ActualAvatar
+status producer/getter/falsepredicate иordinaryhover проходят58CPU/6viewedGPU;
+6кадров byte-equal101. SourceSetServerStatusFlag теперьULONGLONG,остальныеeffects
+покаlegacy;full455wire receivers иnuclear cancelowner ещёOPEN. NewPE5f1f0f77…/
+entry1587b0/182-20-57/0unresolved/Create1;account/hotbar7/storage3 pass.
+ПервыйCPUlab безnetworkowner упалвlegacySetTextColor;стенд исправлен штатным
+Create/Destroy,безподменыproduction. Original/server/inputEXE безизменений/
+неисполнялись. Gate102current/101historical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-player-status.md).
+
 Дополнение07.11, board-hover101: native IDA MCP подтвердил23 functions/1156asm/
 23equalranges. Sessionf131119f savedclosed/list0. Новых установок нет;engine546a…
 не менялся. Copy620/dualbackups/ordinarymanager-screen/ReturnHover в source,

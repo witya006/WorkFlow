@@ -15,6 +15,7 @@
 #include "client455_linker_cooldown.h"
 #include "client455_nation_paths.h"
 #include "client455_language.h"
+#include "client455_player_status.h"
 #include "jmalloc.h"
 #include <cstdio>
 #include <cstring>
@@ -36,6 +37,7 @@ template struct MemberAccess<TooltipCount,&CGUIScreen::m_byTooltipStringNum>;
 struct NetworkMember{using Type=CNetworkMgr CMainApp::*;friend Type access(NetworkMember);};
 template struct MemberAccess<NetworkMember,&CMainApp::m_cNetworkMgr>;
 struct NetworkScope{CNetworkMgr& network=g_MainApp.*access(NetworkMember{});NetworkScope(){check(network.Create()!=0,"actual network owner initialization");}~NetworkScope(){network.Destroy();}};
+struct AvatarScope{CAvatar avatar;CAvatar* previous=g_pAvatar;AvatarScope(){avatar.ApplyStatusFlags455(0);g_pAvatar=&avatar;}~AvatarScope(){g_pAvatar=previous;}};
 struct PickObserver:CGUIWindow{std::vector<BOOL> events;void PickingObjectEvent(BOOL value)override{events.push_back(value);}};
 static int run(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
@@ -45,6 +47,7 @@ static int run(){
     check(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData(),"language");InitR3Engine();
     GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();
     check(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)),"device");NetworkScope network;const auto baseline=GetDmallocSize();
+    AvatarScope liveAvatar;check(_GetAvatar()==&liveAvatar.avatar&&!RF455_AvatarRequiresHoverCancel(),"actual ordinary avatar false predicate");
     auto oldClock=RF455_SetGuiInputClock(clock455);gScreen.SetSize(1024,768);gScreen.RemoveTooltip();
     unsigned routes=0,refusals=0,kinds=0;
     for(unsigned id=0;id<256;++id){const bool expected=id<=15||id==0x23||id==0x24||id==0x26||id==0x27;
@@ -131,7 +134,7 @@ static int run(){
     check(routes==256&&refusals==2&&kinds==5,"coverage");links.clear();gSpriteMgr.UnloadTargetSprites455();
     check(GetDmallocSize()==baseline,"sprite allocations balanced");R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();RF455_SetGuiInputClock(oldClock);
     FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");
-    std::fprintf(out,"{\"status\":\"PASS\",\"copy620\":true,\"actual_EDF_owner\":true,\"ordinary_SetHover_ClearOperation_ReturnHover\":true,\"dual_backups_operation_fallback\":true,\"replacement_release_order\":true,\"screen_notifications_cursor_tooltip\":true,\"ordinary_FrameMove_hover_update\":true,\"raw_lock_flag21\":true,\"forward_board_BYTE_cases\":%u,\"AddObject_false_after_success\":true,\"rawslot_not_equipalias\":true,\"mixed_legacy_refusals\":%u,\"item_kind_size_cases\":%u,\"nonphysical_CPU_icons_synthetic\":true,\"empty_wrapper_size_case\":true,\"Quest_name_refusal\":true,\"emptyID0_negativehalf\":true,\"GPU_frames\":6,\"actual_avatar_null\":true,\"live_avatar_cancellation\":false,\"full_operation_queue\":false,\"full_three_layer_tooltips\":false,\"all_owners_released\":true,\"sprite_allocator_balanced\":true,\"full_gameplay_handlers\":false,\"full_client\":false}\n",routes,refusals,kinds);
+std::fprintf(out,"{\"status\":\"PASS\",\"copy620\":true,\"actual_EDF_owner\":true,\"ordinary_SetHover_ClearOperation_ReturnHover\":true,\"dual_backups_operation_fallback\":true,\"replacement_release_order\":true,\"screen_notifications_cursor_tooltip\":true,\"ordinary_FrameMove_hover_update\":true,\"raw_lock_flag21\":true,\"forward_board_BYTE_cases\":%u,\"AddObject_false_after_success\":true,\"rawslot_not_equipalias\":true,\"mixed_legacy_refusals\":%u,\"item_kind_size_cases\":%u,\"nonphysical_CPU_icons_synthetic\":true,\"empty_wrapper_size_case\":true,\"Quest_name_refusal\":true,\"emptyID0_negativehalf\":true,\"GPU_frames\":6,\"actual_avatar_null_fastpath_checked\":true,\"actual_live_ordinary_avatar\":true,\"live_avatar_cancellation\":false,\"full_operation_queue\":false,\"full_three_layer_tooltips\":false,\"all_owners_released\":true,\"sprite_allocator_balanced\":true,\"full_gameplay_handlers\":false,\"full_client\":false}\n",routes,refusals,kinds);
     std::fclose(out);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* info){if(info->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;std::fprintf(stderr,"exception=%08lx ownRVA=%08lx\n",info->ExceptionRecord->ExceptionCode,DWORD(info->ExceptionRecord->ExceptionAddress)-DWORD(GetModuleHandleA(nullptr)));return EXCEPTION_EXECUTE_HANDLER;}

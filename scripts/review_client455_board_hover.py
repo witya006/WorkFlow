@@ -23,8 +23,8 @@ def main():
                                   'The item iscentered before its64px resize,matching the target order;rawflag21 lock remainsvisible',
                                   'Ordinary manager FrameMove updates the catched timer once;replacement copies the original state',
                                   'Clear removes the catched item andrestores the real mouse sprite;ReturnHover creates real registered Linker copies',
-                                  'The probe uses actualnull-avatar path/offline network initialization;nonphysical size/lifetime cases use synthetic CPU icons',
-                                  'Liveavatar cancellation/fulloperationqueue/three-layer tooltips/gameplay remain unaccepted'],
+                                  'The probe checks the null-avatar fast path then uses an actual ordinary avatar with status0 andoffline network initialization;nonphysical size/lifetime cases use synthetic CPU icons',
+                                  'Nuclear aiming cancellation/fulloperationqueue/three-layer tooltips/gameplay remain unaccepted'],
                     reference_executable_capture=False,full_gameplay_handlers=False,full_client=False)
         (WS/'inventory/client455-board-hover-visual-review.json').write_text(json.dumps(report,indent=2)+'\n')
 

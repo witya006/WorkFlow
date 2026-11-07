@@ -6,9 +6,62 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-BOARD-HOVER-101",
+      "id": "CLIENT455-PLAYER-STATUS-102",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual CPlayer DWORD status/full64bit producer andordinaryAvatar hover falsepredicate; nuclearowner/fullstatus/wirereceivers remainopen",
+      "reference": [
+        {
+          "rva": "0x4dee0",
+          "role": "64bitflagproducer"
+        },
+        {
+          "rva": "0x1e290",
+          "role": "DWORDgetter"
+        },
+        {
+          "rva": "0x4f090",
+          "role": "DWORDsetter"
+        },
+        {
+          "rva": "0x4a750",
+          "role": "no status initialization in constructor"
+        },
+        {
+          "rva": "0x12b810",
+          "role": "null/lowBYTEpredicate"
+        },
+        {
+          "rva": "0x12ab50",
+          "role": "pending cancellation dependency"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_player_status.h",
+        "scripts/client455_player_status_port.py",
+        "scripts/native/client455_board_hover.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "17completefunctions/2036asm/17equalranges+diagnostic,58CPU/8subtypes/12DWORD-lowBYTE,actualAvatar64bitsetter/hover/screen,nuclearrefusalbeforemutation;6viewedGPU byte-equal101,currentPE5f1f0f77/182-20-57/0unresolved/Create1/account/hotbar7/storage3 pass. Other32GUI101/bulk suites notrerun.",
+      "evidence": [
+        "inventory/client455-player-status-reference.json",
+        "inventory/client455-player-status-native.json",
+        "inventory/client455-player-status-checkpoint.json",
+        "inventory/client455-board-hover-native.json",
+        "inventory/client455-board-hover-visual-review.json",
+        "research/client455-player-status.md"
+      ],
+      "gaps": [
+        "Status code human-readable rank names remain unconfirmed;not legacy attack mode",
+        "Other44DEE0status effects andfull64bit455network receivers notported;sourceSetServerStatusFlag retainslegacy sideeffects",
+        "Nuclear map/aiming producer/pending/effect/sound/message lifecycle notyetported;truepredicate remains explicitrefusal",
+        "Allprevious fullclient andGUI/board/handlers/bootstrap gaps remain mandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-BOARD-HOVER-101",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Own ordinary typed hover/Copy620/dual backups/screen handoff/ReturnHover toactualLinker;liveAvatar/fulloperationqueue/gamehandlers remainopen",
       "reference": [
         {

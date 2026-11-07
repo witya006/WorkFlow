@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+Работа102 — 102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
+флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
+брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
+GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
+эта ветка явно отказывает до изменения предмета на курсоре.
+Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
+0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
+проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
+Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
+[Доказательства](research/client455-player-status.md).
+
 2026-11-07 — Board-hover101. Restored own Copy620 andordinary typedmanager/
 screen ownership withtwo backups,operationfallback,replace/clear/return,rawlock/
 center-before-resize andone manager timerUpdate. ActualLinkerforward returns0

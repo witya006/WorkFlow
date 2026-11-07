@@ -7,53 +7,49 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
-два backup object и screen icon handoff. Проверены замена/очистка/возврат
-в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
-bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
-32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
-Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
-Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
-исторический. Live Avatar cancel,полная operation queue и игровые handlers
-ещё не восстановлены. M6/M6F/M7/M9 открыты.
-[Доказательства](../research/client455-board-hover.md).
+102 PARTIAL: восстановлены поле статуса персонажа, его вычисление из64-битных
+флагов и условие отмены перетаскивания. Настоящий обычный Avatar теперь может
+брать, отпускать и возвращать предмет. Прошли58 CPU проверок;6 просмотренных
+GPU кадров побайтно совпали с101. Отмена ядерного прицеливания ещё не перенесена:
+эта ветка явно отказывает до изменения предмета на курсоре.
+Новая PE:5f1f0f77…, entry1587b0;182 клиентских/20 kernel/57 facade модулей,
+0 неразрешённых символов; прежний Create вернул1. Account, hotbar7 и storage3
+проходят. Текущий gate: inventory/client455-player-status-checkpoint.json.
+Gate101 теперь исторический. M6/M6F/M7/M9 остаются открытыми.
+[Доказательства](../research/client455-player-status.md).
 
-Source-owned state содержитprevious иoperation backup. Target320privateABI
-не копировался на manager. Typed wrappers620 используютClear→memcpy620→retain;
-selfcopy наблюдаетужеclearedsource. NullCopy no-op. Targetoldpayloadcasts не
-использовать:legacyGetHoverItem/deletedgetter явноотказывают,нужныtypedcallers.
-GetHoverObject=actualhover ORnonemptySECONDoperationbackup,неprevious. Nullhover
-copiesprevious,clearsoperation,then deleteshover/removesicon. Replacement не
-обновляетprevious. Ctor толькоorg/tarboardFF,остальныеIDs сначала0;ClearOperation
-обнуляетpointers/ставит6IDsFF,сохраняетoperationtype.
-Screen center-before-resize,64для0/3/4 иначе40,rawflag21,FrameMove1timerUpdate
-иcursor/picking/source-tooltipclear проверены. Полные3tooltip layers не приняты.
-Add forwardsrawslots(id<16,35/36/38/39),неGetBoard2→equip1;всегдаreturn0 даже
-приуспехе. Реальный destination покаCLinkBoard;прочиеexistingtypedproviders
-явноотказывают доfullAdd. Bare/5kinds CPU проверены;nonphysicalicons synthetic,
-не fullSF/Animus/Unit UI. Questvalidalias покаexplicitnamerefusal/noownerleak.
-32старыхframehashes совпали;ихoldreviews наследуютсячерезbefore101 manifests/
-checkpoint100. Unchangedicon092/world/audio/159k/atlas093/2013owner/SF1447/095manual
-не повторялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_board_hover.py.
+Общий core — client455_player_status.h; prepare вызывает port_player_status
+для собственной копии CPlayer. Подтверждённое поле17708/0x452c имеет тип DWORD.
+Predicate сравнивает его младший BYTE с2/6/10; при null Avatar возвращает false.
+Приоритет64-битных флагов: bit16→10; иначе bit17 и первый bit33..40→2..9;
+при отсутствии подтипа старое значение сохраняется. Иначе bit42→1, иначе0.
+Конструктор455 поле не инициализирует. Собственное состояние known=false
+явно отказывает чтению до первого производителя. Названия ролей неизвестны.
+Остальные действия SetServerStatusFlag пока унаследованы от старого клиента;
+их соответствие455 и полные64-битные сетевые получатели ещё не приняты.
+CPU probe использует настоящий Avatar и bare wrapper; GPU probe — настоящую
+EDF иконку и Avatar со статусом0. Ядерная ветка отказывает до изменения hover.
+Статика:17 полных функций,2036 инструкций,17 равных диапазонов и1 диагностический.
+IDA session100f46bb сохранена/закрыта; idb_list вернул0. Raw evidence:
+artifacts/client455-progress/player-status102-*. Шесть свежих кадров просмотрены
+и побайтно равны101; остальные32 GUI кадра101 и большие suites не повторялись.
+Engine546a7529…/67 объектов не менялся; baseline033 сохранён. Отдельного snapshot
+старой derived library082 по-прежнему нет. Собственная PE:
+5f1f0f770f9dd395bb31ea8044b72ae9eb53b40ece8481cfc39b366674030df1,
+2144768bytes, base400000, WinMainb7a30, afterCreateb7b9a; офлайн Create1 до game loop.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_player_status.py.
 
-Следом102: live Avatar predicate/cancel chain передactualhandlers. Target52B810
-возвращаетfalseдляnullAvatar;иначе lowBYTEgetter41E290(field17708/0x452c) сравнивает
-с2/6/10. Затемglobal1028AC8+12 pendingflag getter4FD640 иcancel52AB50/52AC40:
-сброс3DWORD,effect7D9730,sound8BD590/messageC1A. Полныйсмыслстатусов/производители
-поля/типвладельца ещёнепроверены. НоваяреализацияпокаотказываетприпоnonnullAvatar
-доизмененияhover;не считатьэтоготовойигрой,неподставлятьIsDeath/CombatState.
-Raw23completefunctions вartifacts/client455-progress/board-hover101-reference.json,
-первичнаяexploration hover100-full-exploration.json остаётсяисторической.
-
-Дальшеactualuse/remove/swap/hover/MsgProc и manageroperationqueue4FDCB0/
-constructorlist4FF200/factory56boards. Нужныtypedquantity/backup/networkcallers,
-liveinventory/equip/SF/Animus providers,potioncache,Macro35/Vending27/fullCItemBoard.Add,
-normalbootstrap. Source UI_UseRequest nonvirtual;target500F80bank-slot entry требует
-согласованногопереноса. Quest sentenceprovider иfull3tooltiplayers обязательны.
-Все прежниеGUIItem children/shake/clone-empty/lifecycle/reset/privateABI/FPnumeric/
-unsafe/OOM/concurrency/shutdown,SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/
-fourstage/Login/auth/game gaps сохраняются. Полнаяприёмка455/M9 ещёвпереди.
-
+Далее103: восстановить владельца ядерного прицеливания (global1028AC8+12):
+pending, начало/отмену, позицию и FrameMove, реальные effect/audio API и сообщениеC1A.
+Перед переносом подтвердить API7D9730/7D91A0/7E22F0/8BEE60/8BD590; связать владельца
+с обычным клиентом. True predicate/pending0 тоже пока не принят.
+Затем — полные64-битные сетевые получатели флагов455, остальные действия44DEE0,
+Linker use/remove/swap/hover/MsgProc и очередь операций; typed quantity/backups/
+network callers, inventory/equip/SF/Animus, potion cache, Macro/Vending/fullAdd,
+обычный bootstrap и Quest sentence provider.
+Все прежние gaps обязательны: full GUIItem, три слоя tooltip, lifecycle/reset,
+private ABI, FP/unsafe/OOM/concurrency/shutdown, SF/Quest/36boards/Trunk/protocol,
+Tutorial/QBI/fourstage/Login/auth/game. Общего процента готовности нет.
 
 Историческая точка097 и её очередь (timer часть теперь выполнена098):
 

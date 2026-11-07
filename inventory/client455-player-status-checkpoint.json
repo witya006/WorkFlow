@@ -1,0 +1,175 @@
+{
+  "status": "PARTIAL",
+  "scope": "CPlayer status DWORD producer/getter and hover predicate; nuclear aiming owner still requires restoration",
+  "script_sha256": "2752661155abeff691cdd640e887e3d22ecf78871f3b9c265ad2864c062b97a3",
+  "sources": [
+    {
+      "file": "scripts/native/client455_player_status.h",
+      "sha256": "b2f6b279d71340d55810238222cb5f7083ff5b7bd3ab48b9aa4d776915767c28"
+    },
+    {
+      "file": "scripts/native/client455_board_hover.cpp",
+      "sha256": "724af8b9de87d84763ef1bcb331b63d93d629c8798cf6c849521ea40e0af0a64"
+    },
+    {
+      "file": "scripts/native/client455_board_hover.h",
+      "sha256": "993d2a41b784a2dd9a73c8a3fbf33dfd0af22b68e90632c430842adc033b7cf1"
+    }
+  ],
+  "providers": [
+    {
+      "file": "work/client455-port/normal/source/character/player/cplayer.h",
+      "sha256": "4ab056174532cb83b68e0773383be97d197d5c667cae2ff1067d81dbe1cc3ab5",
+      "input": "work/client455-port/source/RF_Client/character/player/cplayer.h",
+      "input_sha256": "612076d0e2313ae9758e41207d248211c46f2cbf64365df8285412b37ebd7038",
+      "changes": [
+        "455player status DWORD getter/full64bit flags producer;remaining status sideeffects and455wire receivers stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/character/player/cplayer.cpp",
+      "sha256": "a958662407ec96a14b4bd315a4b8201410ba38464f20d32dc46bb7d894a47b42",
+      "input": "work/client455-port/source/RF_Client/character/player/cplayer.cpp",
+      "input_sha256": "660b52ab622a22f9282468a5a311f3b63799642fb9cb451e3ae7ff9aa55ea01e",
+      "changes": [
+        "455player status DWORD getter/full64bit flags producer;remaining status sideeffects and455wire receivers stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/include/client455_player_status.h",
+      "sha256": "b2f6b279d71340d55810238222cb5f7083ff5b7bd3ab48b9aa4d776915767c28",
+      "input": "scripts/native/client455_player_status.h",
+      "input_sha256": "b2f6b279d71340d55810238222cb5f7083ff5b7bd3ab48b9aa4d776915767c28"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_board_hover.cpp",
+      "sha256": "724af8b9de87d84763ef1bcb331b63d93d629c8798cf6c849521ea40e0af0a64",
+      "input": "scripts/native/client455_board_hover.cpp",
+      "input_sha256": "724af8b9de87d84763ef1bcb331b63d93d629c8798cf6c849521ea40e0af0a64"
+    }
+  ],
+  "retained": {
+    "SetServerStatusFlag@CPlayer@@QAEX_K@Z": "SetServerStatusFlag@CPlayer@@QAEX_K@Z 004530b0 f   cplayer.obj",
+    "SetTypedHover455@CBoardManager": "SetTypedHover455@CBoardManager@@QAEPAVCBoardObject@@PAV2@@Z 004c54d0 f   RFClient455Facade:client455_board_hover.obj"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/player-status102-session.json",
+    "sha256": "2855266b03ffa17b6f9180d4a21d6c2161df1194dad05cb71c44618f800b63c0"
+  },
+  "normal_link_sha256": "c9b6a5bd6e68b10c8db8cd9af96b12cf2e16bf552aad8409ae7ce03c8c556418",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "5f1f0f770f9dd395bb31ea8044b72ae9eb53b40ece8481cfc39b366674030df1",
+    "bytes": 2144768,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1587b0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "player-status-reference": {
+      "file": "inventory/client455-player-status-reference.json",
+      "sha256": "196f74307cc6aa5fe11dc0106bacfd668ab5e0deca7db0e7a80a859cf0612c73"
+    },
+    "player-status-native": {
+      "file": "inventory/client455-player-status-native.json",
+      "sha256": "c18a9365c7537daff230e6f8c4470b4bfb170b755fc1fe26a94a40b5c32bfb57"
+    },
+    "board-hover-native": {
+      "file": "inventory/client455-board-hover-native.json",
+      "sha256": "e6d1b70a2234c521e81bd3267445db961281df7cfed054ef6b627e6fd2add0c3"
+    },
+    "board-hover-visual-review": {
+      "file": "inventory/client455-board-hover-visual-review.json",
+      "sha256": "280ea04ada8d629b7e822d07c86387e3395876b76c8f0eac86afd000f4bdb233"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "093ec0023b277617a29e75c117c521fe3da5aff2f5534a30362170c31dfe96ea"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "9143a73f2d6fe816f7f666ce734da37653ed7b18aa3f1459792ac3e5310ae306"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "b3f4ca55f9a6ea6a3f0a1352f76db219f5a9f56659c6a05d9d41b8e7e6fd86a0"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "c9b6a5bd6e68b10c8db8cd9af96b12cf2e16bf552aad8409ae7ce03c8c556418"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "af08c286d5132a511787e9b40c5dd99d1b6570bf43c924a93384670448023fcd"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "6b28661784cca2fbecd0ec5d1b01eca660e6925d9e818f88e8040b46d4400c5e"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "d2e0dbaef808c21ad0aaa074dade872c5cd07376052fc3e652454cae98f0e14c"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "63eda1d79f4dd12e9f35fc6aeb010dbc5649b69adf1a7aaead28abe47087ed65"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "61e07827a107294802a1c6339a3c28db75a92fb0dc3d882f567de09235262fb2"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "19bfdc66c01b56eab27aea5ef89034371d19754411547a0c56bc6c89d024875a"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "3d37bb6f767b526eabe1ae0230b5ca9eba5f625818928a423259f95bd4e9cde1"
+    }
+  },
+  "CPU_checks": 58,
+  "flag_subtypes": 8,
+  "DWORD_lowBYTE_cases": 12,
+  "selected_functions": 17,
+  "instructions": 2036,
+  "equal_ranges": 17,
+  "extra_equal_diagnostic_ranges": 1,
+  "actual_hover_avatar": "Nonnull ordinary Avatar/status0;true nuclear predicate remains explicitrefusal",
+  "viewed_GPU_frames": 6,
+  "byte_equal_hover_frames": 6,
+  "baseline": {
+    "file": "artifacts/client455-progress/client455-board-hover-native-before102.json",
+    "sha256": "ef023503fe2a890962815538ddd3bf2f6cab9330c4d501263cd671a834159a4f"
+  },
+  "baseline_visual": {
+    "file": "artifacts/client455-progress/client455-board-hover-visual-review-before102.json",
+    "sha256": "2254d3f8eb63df55e69e6ad8753d35610f06ce6ac5dc481f7094ecd960854cef"
+  },
+  "previous101_checkpoint": {
+    "file": "artifacts/client455-progress/client455-board-hover-checkpoint-before102.json",
+    "sha256": "80defdb24bde6ccf65b93699a664330e29cde3da3574b55f6722b458cbc443a2"
+  },
+  "previous101_runtime_gate": "HISTORICAL",
+  "previous101_other32_GPU_frames_rerun": false,
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "gaps": [
+    "Status code human-readable rank names remain unconfirmed;not legacy attack mode",
+    "Other44DEE0status effects andfull64bit455network receivers notported;sourceSetServerStatusFlag retainslegacy sideeffects",
+    "Nuclear map/aiming producer/pending/effect/sound/message lifecycle notyetported;truepredicate remains explicitrefusal",
+    "Allprevious fullclient andGUI/board/handlers/bootstrap gaps remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

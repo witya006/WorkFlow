@@ -18,6 +18,7 @@ from client455_linker_window_port import port_linker_window
 from client455_gui_timer_port import port_gui_timer
 from client455_linker_cooldown_port import port_linker_cooldown
 from client455_board_hover_port import port_board_hover
+from client455_player_status_port import port_player_status
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -138,6 +139,8 @@ def main():
             raw,cooldown_changed=port_linker_cooldown(raw,relative,section)
             raw,hover_changed=port_board_hover(raw,relative,section)
             if hover_changed:changes.append('455typed hover/dualbackup/screen icon ownership;liveavatar cancellation/fullqueue/gameplay remainopen')
+            raw,status_changed=port_player_status(raw,relative,section)
+            if status_changed:changes.append('455player status DWORD getter/full64bit flags producer;remaining status sideeffects and455wire receivers stillopen')
             if cooldown_changed:changes.append('455typed cooldown cache/FrameMove/Remove/original owner timer routes;fullgame handlers remainopen')
             if relative=='network/protocol/characterdb.h':
                 raw=b'#include "client455_storage.h"\r\n'+raw
@@ -779,6 +782,8 @@ def main():
     report['linker_cooldown_port_sha256']=sha((WS/'scripts/client455_linker_cooldown_port.py').read_bytes())
     for name in ['client455_linker_cooldown.h','client455_linker_cooldown.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['board_hover_port_sha256']=sha((WS/'scripts/client455_board_hover_port.py').read_bytes())
+    report['player_status_port_sha256']=sha((WS/'scripts/client455_player_status_port.py').read_bytes())
+    report['record_inputs']['client455_player_status.h']=sha((native/'client455_player_status.h').read_bytes())
     for name in ['client455_board_hover.h','client455_board_hover.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_linker_window.h','client455_linker_window.cpp','client455_image_text.h','client455_image_text.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_linker_owners.h','client455_linker_owners.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
