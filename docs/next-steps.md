@@ -7,6 +7,27 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+090: ordinaryобщие CObject80/CResObject584 восстановлены до selectedctor/copy/
+name64/flags/effectclear. Это обнаруженная обязательная зависимость будущего
+CItemObject;старыеparent sizes48/472 мешали корректному переносу. NewPEdc6f2c62…,
+entry1500e0/182-20-42/0unresolved/Create1. Wholebytes/160flags,hotbar/storage/
+Avatar-account,actorFX/3worlds/15viewedframes и renewedpayload575/SF1447 прошли.
+Текущий gateinventory/client455-resource-object-checkpoint.json;086/088/089
+runtimegates исторические после link/dependencies,staticreferences сохранены.
+Worldrunner staging Character shaders исправлен;159k/audio suites не повторялись.
+[Доказательства](../research/client455-resource-object.md).
+
+Далее091: actualCItemObject→CResObject иCBoardObjectwrapper ctor/Clear/SetItem/
+copy/clone/dtor,game-global payloadmanager/typedboard-hover owners. Подключить
+087–089 к ordinarygame path;затемLinker5x10/input/use/cooldown/download/oldbelt/
+Tutorial. LegacyCBoardObject покаостаётсяmixedmodel,не620wrapper. Общиеbase
+defaults/copies проверены,полныеresource/render-name/advancedFX/reset/unwind
+и все прежние payload/Quest/Gesture/Macro/36boards/game gaps обязательны.
+Cachedfuturebodies:artifacts/client455-progress/res-object090-future-item-owners.json;
+частьquery былавнутрифункции — получитьcanonicalrange передпортом.
+
+Предыдущий source-runtime089:
+
 089: realItem47/76049rows,Quest12/Character7 readers и Normal/Animus/Unit/
 UnitParts/Quest freshfactory связываются с concreteprimarymanager/087ownership.
 575selectedfactories/clones/lifetimes,99AnimusXP boundaries,3wholeNDItem corpora

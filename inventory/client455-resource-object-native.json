@@ -1,0 +1,72 @@
+{
+  "scope": "Actual ordinary CObject80/CResObject584 construction/copy/name/flags/effect-clear on source providers;live FX cache/game/itemwrapper not accepted",
+  "script_sha256": "4ff180f93027a8de0604a611799caa1617b149fc9f114ade2828a49fdfe1b2d6",
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "source": {
+    "file": "scripts/native/client455_resource_object_probe.cpp",
+    "sha256": "f6554e1b8eeb8dd1258e6660d6bebccfb66bea12d9ef657f898612e64191f724"
+  },
+  "reference_sha256": "df63437ed136929733bdf0af03b035dd506415fc1d15e8653d43a7c01b973f21",
+  "exe": {
+    "file": "work/m9/6813fefb/resource-object-001/resource-object-probe.exe",
+    "sha256": "6813fefbf43820863a06c5662ced33d4fc20c20f2cd94fb9970466dcfbf83cdf"
+  },
+  "map": {
+    "file": "work/client455-port/resource-object-probe/resource-object-probe.map",
+    "sha256": "7fe8a06cb317be5ad18773d9605f58164d91ef430155fa1684514949037c900f"
+  },
+  "console": {
+    "file": "work/m9/6813fefb/resource-object-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/6813fefb/resource-object-001/result.json",
+    "sha256": "753e0b4afb0cde1098eecc1b6640e79044e946050923cf9555692ea9785f2082"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/6813fefb/resource-object-001/constructed.bin",
+      "sha256": "ee4a905196a8e71fa62f891ed0cf937ec4aa6b62cab0bfd31b54f5abd68e2d12"
+    },
+    {
+      "file": "work/m9/6813fefb/resource-object-001/copy-source.bin",
+      "sha256": "a167aa2bd071c94390c39a72c3b52bff037557194a85e5ad38a0bc0cd7e53f5f"
+    },
+    {
+      "file": "work/m9/6813fefb/resource-object-001/copied.bin",
+      "sha256": "8a46267bd4be5c16737154af992b4c25de41183824ce808605fa5038eaaecbaa"
+    },
+    {
+      "file": "work/m9/6813fefb/resource-object-001/flags.bin",
+      "sha256": "e33ca07e209cb3c3ab4fd1bd5436710b436e866b477012d36d407eb01adf02e5"
+    }
+  ],
+  "architecture": "x86",
+  "native": {
+    "status": "PASS",
+    "CObject_size": 80,
+    "CResObject_size": 584,
+    "named_offsets": 28,
+    "whole_record_oracles": 2,
+    "flag_cases": 160,
+    "effect_retained_cases": 20,
+    "effect_cleared_cases": 140,
+    "receive_reset_cases": 48,
+    "real_timeGetTime": true,
+    "name_capacity": 64,
+    "virtual_base_clear": true,
+    "real_effect_clear_provider": true,
+    "live_effect_cache_loaded": false,
+    "actual_item_wrapper_binding": false,
+    "full_resource_methods": false,
+    "full_client": false
+  },
+  "natural_exit": 0,
+  "normal_link_sha256": "9b74ea78c7fa4f5d9a5a3852cedf529fefbd20ce163f5e41cae0febf81682259",
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Resource-object090. Ordinary CObject80/CResObject584 ctor/copy/
+name64/virtualClear/flags/effectclear replace legacy48/472 base contracts.
+23equalranges/765asm/21decodedstores/7floatconstants,IDA65c60c5dsavedclosed.
+NewPEdc6f2c62…/entry1500e0/182-20-42/0unresolved/exactCreate1. Two584byteoracles/
+160flags,hotbar/storage/account,actorFX/3worlds and renewedpayload575/SF1447 pass;
+15GPUframes viewed. Firstworld lab omitted Character.shaders;runnerstaging fixed,
+production unchanged bythatfix. Currentgate090;086/088/089runtimegates historical.
+No159k/audio reruns/serverwrites. Next091 actualitemwrappers/owners;M9OPEN.
+[Evidence](research/client455-resource-object.md).
+
 2026-11-07 — Item-payloads089. Source Item47/76049rows,Quest12/Character7
 readers and five fresh factories/actualprimarymanager/087ownership pass575
 selected factory-clone-lifetimes,99AnimusXP boundaries,three completeNDItem

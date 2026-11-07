@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+090: ordinaryобщие CObject80/CResObject584 ctor/copy/name64/flags/effectclear
+перенесены какнеобходимыйparent для itemwrappers. Wholebytes/160flags,
+hotbar/storage/account/actorFX/3worlds/15viewedframes/exactnewPECreate1 и
+renewedpayload575/SF1447 прошли. Gate090current;old086/088/089runtimegates
+historical. Далее091 — actualCItemObject/CBoardObject/board-hover-game owners,
+Linker5x10/input/use/cooldowns/download/oldbelt/Tutorial. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-resource-object.md).
+
+Предыдущий source-runtime089:
+
 089: realItem47/76049rows,Quest12/Character7 readers и пять freshpayloadfactories
 с concreteprimarymanager/087ownership прошли575factory-clone-lifetimes/
 99AnimusXP/3NDItemwholebyteoracles,standalone/full-object. SF1447regression с
@@ -655,7 +665,8 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/090: freshpayloadfactories/readers089 проверены в ограниченном домене;
+1. M6/091: общие CObject80/CResObject584090 перенесены;реальные itemwrappers/
+   gameowners ещёоткрыты. Freshpayloadfactories/readers089 проверены в ограниченном домене;
    fullpayloadmethods/Questlocalizedsentenceexpansion остаются обязательными.
    SF/primarymanager088+089 работают на1447realrows;ordinarygame-global binding
    ещё открыт. Восстановить

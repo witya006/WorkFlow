@@ -23,6 +23,59 @@
 
 ## Последний проверенный результат
 
+090 PARTIAL/currentordinarygateinventory/client455-resource-object-checkpoint.json.
+Обнаружена общаяобязательнаязависимость itemwrappers:legacyCObject48/CRes472,
+target80/584. Теперь actualordinarybases80/584: name64 (globalMAX_NAME32 не
+менятьдляпротокола),ctor clearsonlyfirst32namebytes/оставляетtail32;SetName
+clear/copy64/nullpreserve;CObjectcopy сохраняетpadding5..7/копируетname64.
+VirtualClear invalidatesindexonly. CRes addsconstructor timestamp244/state84@500,
+removesunusedblinktimes8/reordersfields:flags116/animation140/scale240/created244/
+interp248/material288/light356/alpha468/blink472/hide476/text480/receive484/
+effects492/state500. Profileuses existingRF455_InitializeSecondaryState,
+sourceCAnimation100helperunchanged. CRescopybase+rawresourcebytes80..583;
+newownC++vtables,неcallabletargetaddresses. Fullresource methods/privateABI open.
+
+Enable/Disable effectguard: (flags&0x21000)||!(flags&2),неoldflags&~2.
+Enable additionally resetsreceipt whenserver-out10000;Disable doesnot. Existing
+DeleteEffectIDactualprovider clearsbothIDs aftercallbacks. RenderName passes
+name directly,obsolete32byte sprintfbufferremoved;fullmetrics stillunported.
+Generatedcopiesonly via scripts/client455_resource_object_port.py+prepare.
+
+23equalpinranges/765actualasm/14bodies/21decodedC6C7stores/7floatconstants/EH
+windows pinned;rawres-object090-reference-complete/session underartifacts.
+IDA65c60c5dsavedclosed/list0. Twofull584byteoracles/28namedoffsets/160flags
+(20retain/140clear/48receiptreset)/actualtimeGetTime/name/null/baseClear/dtorpass.
+Commonprobe liveMagiccacheempty:невыдаватьзаfullpopulatedFXacceptance.
+
+NewordinaryPEdc6f2c6293c91cab28b8b4689f9261a8d3d82039162ab309944c26df1087034e,
+2093568bytes/x86/base400000/entry1500e0/WinMainB5B40/afterCreateB5CAA,
+182client/20kernel/42facade/0unresolved. Engine9caa283a… unchanged082.
+Freshnormalconsumers/hotbar7actualpackets/storage3runs/Avataraccount passed.
+Actor12/269ticks/185draws/148particle/6entity/9viewedGPU and3worlds/6viewedGPU/
+reload/collision/memorybalancepassed. Firstworld35aad37f/world-bellato-001 failed
+beforeload:oldrunner omitted requiredCharacter.sho;copy_character_shaders now
+stagesverifiedinputs andall3passed,noadditionalproductionfix. NewexactPEearly
+Korea949/localTCP/sound1/D3D/normalCreate1passed;firstchanceeventsrecorded,
+normalgame loopnotreached. No159k/audio suitesrerun.
+
+089sourcepayloads UNCHANGED butnative4runs regenerated againstnewdependency/
+fullobjectset:575factories/99XP/3NDItem andSF1447pass. 086/088/089runtimegates
+historical afternewnormal/reporthashes;staticreferencesvalid,current090gate
+includesrenewed089native. Do notrunoldhardcoded086gates ascurrentacceptance.
+
+Далее091: actualCItemObject/CBoardObject typedsource lifecycle/realgame-global
+manager,board/hoverowners;связать087–089сordinarypath,thenLinker5x10/input/use/
+cooldown/download/oldbelt/Tutorial. LegacyCBoardObjectstillmixedmodel,не620wrapper.
+Cacheartifacts/client455-progress/res-object090-future-item-owners.json:
+46AF20ctor/46AF70dtor/46AFE0Clear/46B010setter/46B1B0boardctor/46B4C0Clear/
+46B570clone/46BC90setter. Somequeriesinterior→verifycanonicalrangesbeforeport.
+SetItemvirtualClear→retain→name;derivedsettersetsindex/serverindex/iconrefresh;
+dtorCItemObjectcallsitsClearthenCResdtor. Preserve087primarycacheguard/signedBYTE.
+Allfullresource/payload/Queststrings/Gesture/Macro/36boards/Trunk/protocol/
+Tutorial/QBI/fourstage/Login/auth/game/M6F/M7/M9 gapsmandatory. Serveruntouched.
+
+Предыдущий source-runtime089 (currentregressionrenewed090):
+
 089 PARTIAL_SOURCE_RUNTIME: client455_item_payloads.h/cpp даёт Item47/Quest12/
 Character7 owners/readers и freshNormal0/Animus2/Unit3/UnitParts4/Quest5 payloads.
 RF455SourceItemManager.createPayload selector1 делегируетrealSF088;прочие

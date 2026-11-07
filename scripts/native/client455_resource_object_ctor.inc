@@ -1,0 +1,13 @@
+CResObject::CResObject(){
+    ZeroMemory(m_vecPos,sizeof(m_vecPos));ZeroMemory(m_vecPrevPos,sizeof(m_vecPrevPos));ZeroMemory(m_vecRot,sizeof(m_vecRot));
+    ResetStatusFlag();m_pBone=nullptr;m_pBBox=nullptr;
+    m_dwBoneFrame=160;m_dwOldBoneFrame=0;m_dwFrameNumForAStopTime=0;
+    m_fScale=1.0f;m_dwCreatedTime455=timeGetTime();m_dwTextColor=0xffffffff;
+    m_bIsAniInterpolation=FALSE;m_pAniIPInfo=nullptr;
+    ZeroMemory(&m_d3dMaterial,sizeof(m_d3dMaterial));ZeroMemory(&m_d3dLight,sizeof(m_d3dLight));
+    m_dwLightColor=m_dwPrevLightColor=0xffffffff;m_fAlphaDensity=1.0f;
+    m_bIsBlink=m_bIsHide=FALSE;m_bIsReceiveFixPositionMsg=FALSE;m_dwReceiveFixPositionMsgTime=0;
+    m_dwEffectID[0]=m_dwEffectID[1]=0;
+    RF455_InitializeSecondaryState(m_secondaryState455);
+    Enable(0x20000180);Disable(0x31811);
+}

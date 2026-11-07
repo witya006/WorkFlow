@@ -1,5 +1,11 @@
 # Item payloads089 — source readers and fresh factories
 
+Update090: the089 runtime checkpoint is historical after the ordinary common
+base/dependency rebuild. The unchanged source was rerun in all four modes with
+current dependencies; renewed runtime evidence is checked by
+`inventory/client455-resource-object-checkpoint.json`. Static089 references
+remain applicable. See `research/client455-resource-object.md` for current state.
+
 2026-11-07. CLIENT ONLY. Status: **PARTIAL_SOURCE_RUNTIME**, not an ordinary
 game integration or complete item subsystem. M6/M6F/M7/M9 remain OPEN.
 

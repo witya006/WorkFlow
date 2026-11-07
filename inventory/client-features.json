@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-RESOURCE-OBJECT-090",
+      "status": "partial",
+      "description": "Actual ordinary common CObject80/CResObject584 constructors/copies/name64/virtualClear/flags/effect-ID lifecycle;prerequisite for real itemwrappers",
+      "reference": [{"rva":"0x3ccb70","role":"CObject constructor"},{"rva":"0x5dd0","role":"CObject copy"},{"rva":"0x3ccfa0","role":"resource constructor"},{"rva":"0x5100","role":"resource copy"},{"rva":"0x3ce5b0","role":"Enable"},{"rva":"0x3ce620","role":"Disable"},{"rva":"0x3cefe0","role":"effect-ID clear"}],
+      "implementation": ["scripts/client455_resource_object_port.py","scripts/native/client455_object_copy.inc","scripts/native/client455_resource_object_ctor.inc","scripts/native/client455_resource_object_copy.inc","scripts/prepare_client455_normal.py"],
+      "verification": "23equalpinranges/765actualasm/21decodedstores/7floatconstants. Two whole584byteoracles/28offsets/160flags/name64/baseClear/dtor pass;20retain/140clear/48receiptreset. NewPEdc6f2c62/182-20-42/0unresolved/Create1;hotbar/storage/account/actorFX/3worlds/15viewedframes and renewedpayload575/SF1447 pass. Engine082 unchanged. World lab Character shader staging fixed;production unchanged bythatfix. IDA65c60c5dsavedclosed/list0.",
+      "evidence": ["inventory/client455-resource-object-reference.json","inventory/client455-resource-object-native.json","inventory/client455-resource-object-checkpoint.json","research/client455-resource-object.md"],
+      "gaps": ["ActualCItemObject/CBoardObject620/typedboard-hover-game owners/ordinaryLinker binding still required;legacyboardmixedmodel remains","Fullresource rendering/name metrics/lighting/advancedFX/reset/OOM/unwind/privateABI domains remain open;commonprobe liveMagiccache empty","086/088/089runtimegates historical after normal/dependency/report changes;staticreferences remain valid and089runtime regression renewed here","All previous payload/Queststrings/Gesture/Macro/36boardclasses/Trunk/fullitemprotocol/Tutorial/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps remain mandatory"]
+    },
+    {
       "id": "CLIENT455-ITEM-PAYLOADS-089",
       "status": "partial",
       "description": "Real Item47/Quest12/Character7 readers and five fresh payload factories with concrete manager and087clone-release;ordinary086 remains current",

@@ -1,0 +1,108 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary common-object80/resource584 ctor-copy-name-flags-effect lifecycle;actual itemwrapper/owners still open",
+  "script_sha256": "c065a1cffe7b2d4c924ae6a15835290c1cfb6418e67c1afe9579a6219b457f13",
+  "reference_sha256": "df63437ed136929733bdf0af03b035dd506415fc1d15e8653d43a7c01b973f21",
+  "native_sha256": "38579dd5718f2d883662a5e5e5d0728d723d99c1dc8cf8da45e9dc99da68a0dd",
+  "session": {
+    "file": "artifacts/client455-progress/res-object090-session.json",
+    "sha256": "8bd1c63f64efe38d8faa5b7dfa478bc4117db0ba89b45c8665a3e2204bcbc41b"
+  },
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/cobject.h",
+      "sha256": "f5539e0868443b736141d50252a8b88fe2e7a48d67ba5b884a086fe8ee225576",
+      "input": "work/client455-port/source/RF_Client/cobject.h",
+      "input_sha256": "23f8998eb0e08f6dcf1f2741721619277b9c484c60572253334dccddaf19193f",
+      "changes": [
+        "455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/cobject.cpp",
+      "sha256": "e25679afa4fc822d18a6b453ad859cd325299ce918351f8f701427013dc6717b",
+      "input": "work/client455-port/source/RF_Client/cobject.cpp",
+      "input_sha256": "7ed21e592be04841f93b89a68c2d853a3ea623450483aab37c2b625f614d7230",
+      "changes": [
+        "455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/cresobject.h",
+      "sha256": "7a4e52ca5c3edcc1328e29f4681b00443d2827fd726cfb553b9afc5d853db42a",
+      "input": "work/client455-port/source/RF_Client/cresobject.h",
+      "input_sha256": "c9eecb72d63a4d3bf4aad7ce3a638507960519be62c9380a5e0f9bb17477bd91",
+      "changes": [
+        "455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/cresobject.cpp",
+      "sha256": "5ff01d4199d8c43ef173d848a3de93fa20680beb9921af3f07321f4735d0fcc2",
+      "input": "work/client455-port/source/RF_Client/cresobject.cpp",
+      "input_sha256": "14b045abd3684848820eeead5b3a464bd11f832bc408ffc27fafa6674c2dacda",
+      "changes": [
+        "455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open",
+        "production TU split; extracted method bytes unchanged"
+      ]
+    }
+  ],
+  "normal_link_sha256": "9b74ea78c7fa4f5d9a5a3852cedf529fefbd20ce163f5e41cae0febf81682259",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "dc6f2c6293c91cab28b8b4689f9261a8d3d82039162ab309944c26df1087034e",
+    "bytes": 2093568,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1500e0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "engine_unchanged_sha256": "9caa283a6bf8a2fa1c9a05251b6cad451296bb03bda8a1860c22a872e88fe769",
+  "selected_functions": 23,
+  "assembly_instructions": 765,
+  "whole_record_oracles": 2,
+  "flag_cases": 160,
+  "fresh_evidence": {
+    "client455-normal-build": "5fe9b77f5918e141797c9842aa3dd0bebc81d02fb54b67ef2514d7bb0a883b1d",
+    "client455-normal-consumers": "dab6e580e6660878a3fc8f24e888f430a49f494d5a3381a672e3df6e23b27096",
+    "client455-normal-preparation": "cf0a2e015ca81501c2ca967828da332a5f5c3ed13a17d0e2af7463bf8abccd6b",
+    "client455-own-entry": "28e577eadd7fdc94b3bdd38dd5a597bb74a530637b0d18cbc441e3934fe1a712",
+    "client455-startup-audit": "441f8093cf5487a497a775376adabd86b231594992f53dcef29623b6c681d4cf",
+    "client455-startup-native": "bb6dc44485209f7b12a02f5782487bebdabb91fe101603f3aa1c161d0e666030",
+    "client455-ui-startup-native": "ef9f33729bc745cdd9809404ca95837503e5c213cba99448499c0d0272827d44",
+    "client455-hotbar-native": "83211e794890744c7f11690fa0768bca2e89093014a0d5ef230dbade64049c2f",
+    "client455-storage-native": "cb6c215006ff7898eef884343c979f1781e1d860ae6fe87e685e7204b746f78b",
+    "client455-account-native": "11a85d046154d147c86e1e96aaf40adc34991b300c487c24d9727144238538eb",
+    "client455-rvp-actor-native": "5e26d53f5633045e7ca0313ee8c9f437d9b67becea6b590e5b582b3e17eaef4f",
+    "client455-rvp-actor-visual": "495f62136979ae199a8a157c6968f481c31a161cfd46f1247da18a4ee7d98cdf",
+    "client455-world-visual": "a56bf5d8dff802adedbbc662a0e168a8bb82091875cadb478285bfd2176d5a49",
+    "client455-item-payloads-native": "92baf194593f10434b8273f3448e89735bb660e606758d3e0e050d487655f381",
+    "client455-world-bellato-native": "3d4cc2f166ab2db10ce35930eb97e7976b4723b68751e8a365151c21d9d6e986",
+    "client455-world-cora-native": "bc4091b200b647b5cad3d85996aff21090ba16720c874b91ded94eb9aed4b44f",
+    "client455-world-accretia-native": "aa738bceb532c93ebe52ac4d37b76af4e8f3d1f106e30bf194ee1e42d283fcbc"
+  },
+  "viewed_actor_frames": 9,
+  "viewed_world_frames": 6,
+  "renewed_payloads575_SF1447": "PASS_BOUNDED",
+  "fixture_correction": "Initial world-bellato run lacked Character shaders;added existing verified shader inputs to lab only;production unchanged by this fix",
+  "earlier_gates": "086ordinary and088/089source gates historical after new normal/source-dependency reports;their static references retained",
+  "gaps": [
+    "Fullresource methods/render-name metrics/currentlegacyderivedconsumer behavior remain required",
+    "ActualCItemObject/CBoardObject620 payload/board/hover/Linker owners still required",
+    "Selected source resource lifecycle is not all shader/lighting/FX/reset/OOM/unwind/privateABI equivalence",
+    "All previous storage/item/Tutorial/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps remain mandatory"
+  ],
+  "unchanged_159k_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

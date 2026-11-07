@@ -1,5 +1,18 @@
 # Полнота восстановления RF_Online.bin
 
+090 PARTIAL: actualordinary CObject80/CResObject584 ctor/copy/name64/virtual
+Clear/flags/effectID lifecycle восстановлены. Два whole-record oracle/28offsets/
+160flags (20retain/140clear/48receiptreset),hotbar/storage/account/actorFX/
+3worlds и exactnewPE/Create1 прошли.15GPUframes просмотрены;089payload575/SF1447
+обновлены на новом link/dependencyset. Live magiccache не загружен commonprobe;
+весьFX/privateABI/resourceRenderName metrics/reset/unwind не принят.
+Обычные CItemObject/CBoardObject620/board-hover/Linkerowners ещёнеперенесены.
+Предварительное обещание090 закрыть этих владельцев перенесено в091 после
+подтверждения обязательного общего layout/lifecycle разрыва48/472→80/584.
+Gate090 текущий;086/088/089 runtimegates исторические после сменыlink/reports,
+staticreferences действуют. M6/M6F/M7/M9OPEN;все прежние gaps обязательны.
+[Доказательства](../research/client455-resource-object.md).
+
 089 PARTIAL_SOURCE_RUNTIME: реальные Item47/Quest12/Character7 readers и пять
 freshpayloadfactories работают с concreteprimarymanager/087clone-release.
 Полные bytes76049 itemrows/3NDItemprofiles,575selectedfactories/ownedwrappers,

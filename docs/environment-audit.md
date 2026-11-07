@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, resource-object090: новых установок нет. IDA65c60c5d saved/
+closed/list0;23equalranges/765asm/21decodedstores/7floatconstants. Ordinary
+CObject80/CResObject584 перенесены;182/20/42objects/0unresolved. NewPEdc6f2c62…,
+2093568bytes/entry1500e0/WinMainB5B40/Create1;engine082 неизменён. Whole-record/
+160flags,hotbar/storage/account,actorFX/3worlds и renewed575/1447payloads прошли.
+15GPUframes просмотрены. Первый world run выявил пропуск Character shaders
+встаром lab runner;staging исправлен,production этойправкой не менялся.
+Текущий gate090;086/088/089 runtimegates исторические.159k/audio безпричины
+не повторялись. Реальные itemwrapper/gameowners и M9 ещёOPEN.
+[Доказательства](../research/client455-resource-object.md).
+
 Дополнение07.11, item-payloads089: новых установок нет. IDA877755f1 saved/closed/
 list0;50equalranges/1796 полных инструкций, EH windows закреплены отдельно.
 Ownx86/MT library: realItem76049/47tables,Quest12/Character7,3полных NDItem,

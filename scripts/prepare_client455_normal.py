@@ -8,6 +8,7 @@ from pathlib import Path
 from compare_client_binaries import WS
 from client455_d3d9_port import ENGINE_DEFINITIONS
 from audit_client455_normal_character_api import code_only
+from client455_resource_object_port import port_resource_object
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -80,6 +81,8 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            raw,resource_changed=port_resource_object(raw,relative,native,section)
+            if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             if relative=='gameobject/board/common/clinkboard.h':
                 raw=b'#include "client455_hotbar.h"\r\n'+raw
                 anchor=b'CGUIForceBeltWindow\t\tm_uiLinkWindow;'
@@ -729,6 +732,8 @@ def main():
     for name in ['client455_money.h','client455_money.cpp','client455_inventory_money.inc','client455_inventory_gold.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_storage.h']=sha((native/'client455_storage.h').read_bytes())
     for name in ['client455_hotbar.h','client455_hotbar.cpp','client455_hotbar_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_object_copy.inc','client455_resource_object_ctor.inc','client455_resource_object_copy.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['resource_object_port_sha256']=sha((WS/'scripts/client455_resource_object_port.py').read_bytes())
     report['camera_header_overlay']=header_report
     report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
