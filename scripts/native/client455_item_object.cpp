@@ -64,6 +64,7 @@ void CBoardObject::RefreshIcon455(){
     if(m_uiIcon){m_uiIcon->SetObjectIndex455(GetIndex(),m_pSharedItem455||typeid(*this)==typeid(CBoardObject));
         m_uiIcon->SetGradeFrameColor455(RF455_ItemGradeColor(m_uiIcon->GetGrade455()));}
 }
+void CBoardObject::RefreshLock455(){if(m_pSharedItem455&&m_uiIcon)m_uiIcon->SetLock455(m_pSharedItem455->header().flag21?1:0);}
 BOOL CBoardObject::IsEqual(DWORD index){return m_dwIndex==index;}
 BOOL CBoardObject::IsEqual(CBoardObject* other){if(!other)return FALSE;
     if(m_pSharedItem455||other->m_pSharedItem455)return m_pSharedItem455&&m_pSharedItem455==other->m_pSharedItem455;

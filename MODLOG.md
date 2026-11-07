@@ -1,5 +1,18 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-lock100 dependency. Restored actualflag21lockchild onordinary
+GUIItem/CBoardObject/LinkerAdd:real52/0/0 DXT1 original8x12/texture8x16,rawBYTE
+visibility vsnormalizedwrapperflag,position/copy/empty/Remove/unclippedlock in
+clippeditemDraw. Targetresize handledbyownBindLock;legacybaseunchanged.
+17functions/1610asm/17equalranges;IDA5eef459d savedclosed/list0.256raw/256wrapper/
+18geometry/6newviewedGPU pass,35previousreviewedframes byteequal. Three other
+providerrefusals retained.182-20-56/0unresolved/newPE49882fc3/entry157aa0/Create1,
+hotbar7/storage3/account pass;engine546a unchanged. Gate100current,099historical.
+Exploredhovermanagerdualbackup dependency,notimplemented;next101typedhover/
+screen thenfullhandlers/livecallbacks/potion/Macro/Vending/fullAdd/bootstrap.
+No unchanged159k/world/audio/bulk reruns;nooriginal/serverwrites/inputEXEexecute.
+M6/M6F/M7/M9OPEN. [Evidence](research/client455-item-lock.md).
+
 2026-11-07 — Ready-cooldown099 runtime selected. OrdinaryCLinkBoard now has
 50records/cacheadmission/expiry/partialremove/originallookup/SFgroupdelay routes;
 GUIItem readychild draws real455sheet128px/8x5/FPS34/SRCALPHA-ONE. Sourceowned

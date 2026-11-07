@@ -1,0 +1,239 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual GUIItem lock child andtyped wrapper/Linker lock refresh;not full drag/use handlers",
+  "script_sha256": "5e867b8a8bf7dae5eb1a905ee1ed45dd95c90bd1ec1cac935126ba601d28db0d",
+  "reference": {
+    "file": "inventory/client455-item-lock-reference.json",
+    "sha256": "063e65ba545049a1c5a90fdfd0110a39759153a8ba16fbd4a4eb9a7b604a079a"
+  },
+  "native": {
+    "file": "inventory/client455-item-lock-native.json",
+    "sha256": "6d71c5713fdd7371cf08cc826d80fe76b2b67e5389b51e9f657f032518b155bb"
+  },
+  "visual": {
+    "file": "inventory/client455-item-lock-visual-review.json",
+    "sha256": "90e1e9463531783a553e5d6df7131f7a8e931a3eb82c4a964f40d9bcad25057b"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/item-lock100-session.json",
+    "sha256": "7e3ca620364d3b46a2c068fa770b2422d3bad18be3d22e3a84fde10800c26594"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "4a17a6e36a54f22163c16fad59f940287b9de6fe9eda1d72c1f9b1da5ed09391"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "ba2d003a50915f6d3a7fd87f22ebcf03b561b5ca8c6319e28cf8b6f01c73a735"
+    },
+    {
+      "file": "scripts/native/client455_item_atlas.cpp",
+      "sha256": "5024cfd9d56c053edfe4bacc6c8a89793600079f8aac6a7091fe487e193cf18b"
+    },
+    {
+      "file": "scripts/native/client455_item_object.cpp",
+      "sha256": "e731b5f8eab97bff5f21c5f4f67e2b252fc5841b38833c885741dd1fd45b09c2"
+    },
+    {
+      "file": "scripts/native/client455_board_object.inc",
+      "sha256": "5d75d0fa6f61eef42007fd2296aaff59e528983d155bf8ef2696a9e55bf14b24"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.cpp",
+      "sha256": "9ae0606a190f437a6c05e792dff1111dfde55a3d535a64d9aab1672660c8f7d1"
+    }
+  ],
+  "retained": {
+    "SetLock455@CGUIItem": "SetLock455@CGUIItem@@QAEXE@Z 004cd690 f   RFClient455Facade:client455_item_icon.obj",
+    "BindLock455@CGUIItem": "BindLock455@CGUIItem@@QAEXPAU_sprite_info@@@Z 004cd270 f   RFClient455Facade:client455_item_icon.obj",
+    "RefreshLock455@CBoardObject": "RefreshLock455@CBoardObject@@QAEXXZ 004c4930 f   RFClient455Facade:client455_item_object.obj"
+  },
+  "resource_staging_helper": {
+    "file": "scripts/client455_runtime_inputs.py",
+    "sha256": "923193d26a68370d75954c01c7da86928ffe2a2a0e0fb5b325abda32a16f1375"
+  },
+  "normal_link_sha256": "9c9e1f7d8512f64474c12919b40c527845b01f24470417926205364a1a45c996",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "49882fc3ef2ba826495dfbdff675a4ef30fa99dcced4557f50222d11fd306083",
+    "bytes": 2140160,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x157aa0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "3be61d1e2530ff5c05cf7e93a645d7a4af65880b24c1b9b8f4dcaf8690d2bb22"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "d3085b1ea8d5e376959e094dac9b893e4d082ec98ec79ab9bd097ff66676eebb"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "7975e55966a1805843cdce800c55b65c7d08d559c32a1e4df7788474a96b261a"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "9c9e1f7d8512f64474c12919b40c527845b01f24470417926205364a1a45c996"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "ca125aa45853fe04fcc9df3bed749580933ded43795420f3c94c6214f86f976b"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "ae6db2628a90f6d11078343838a5ff33d944cdbb30efdf01e9bf2ba799428089"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "9c1bd13aa993cb0662ef9a8da9186d241d2cead1e508f7a79245901db0917ffe"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "5e35cadc51d9defe56dfff78a07f4178e52ced5a8715ceef7f4ad79429987c5f"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "74eae7fd4215836659f5df93c2923c5847ba98710e11b2b82085ed9b9246b027"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "516519ef00b6b671a2fbd84804c2013d00be2849fc24e85cabb5bd5a00815048"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "1e5db539e82ad350ac2a9e72b14984a963d8d374a108aed6b9fe5f1e53d18a2a"
+    }
+  },
+  "previous099_checkpoint": {
+    "file": "artifacts/client455-progress/client455-ready-cooldown-checkpoint-before100.json",
+    "sha256": "4cdc811a89cc281c7c7b25e12f05edbeb2a119b95a5ae9bcf84ed12d65b75192"
+  },
+  "regressions": [
+    {
+      "name": "ready-cooldown",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-ready-cooldown-native-before100.json",
+        "sha256": "87c6e15a3aab318f76ca295ff9005a8030865afae0983441a756370ab465368a"
+      },
+      "current": {
+        "file": "inventory/client455-ready-cooldown-native.json",
+        "sha256": "535245971c662c08307fb2c7d8912531fb17979c14fb5c31ee722a941a7f9215"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-ready-cooldown-visual-review.json",
+        "sha256": "1422a9f46c31b9fabc49edd7d83383f39cac138939be4ced905f5ac216506681"
+      },
+      "byte_equal_frames": 6
+    },
+    {
+      "name": "linker-window",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-linker-window-native-before100.json",
+        "sha256": "6f73ac957275fd9e2c07fddc2190238ccb93550599cb6b390f696c681eef7e0c"
+      },
+      "current": {
+        "file": "inventory/client455-linker-window-native.json",
+        "sha256": "8bb24ad0df4987627c25185826845a731c29ff272d111ffa448d48725769991b"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-linker-window-visual-review.json",
+        "sha256": "13437d7cde96404303a7a5fc7a363f8b286de24028a3d2bb888b984304b083de"
+      },
+      "byte_equal_frames": 8
+    },
+    {
+      "name": "linker-owners",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-linker-owners-native-before100.json",
+        "sha256": "c452b85a07eb83bba293d544e071a7b56ad2d1f4eacd4d668b79cb643d9d49b7"
+      },
+      "current": {
+        "file": "inventory/client455-linker-owners-native.json",
+        "sha256": "1248418f3545221264f7713462f5d31113b689d3d41876530cde34d2198e89fb"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-linker-owners-visual-review.json",
+        "sha256": "9654937859437c2dd3bcd780e9c56581840554b5f31ce61cfdc8e875ddc68f23"
+      },
+      "byte_equal_frames": 3
+    },
+    {
+      "name": "item-icon-metadata",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-item-icon-metadata-native-before100.json",
+        "sha256": "8684a4aac4adeb39585f3772323d709b75654feb27f2684320d6f22612763a58"
+      },
+      "current": {
+        "file": "inventory/client455-item-icon-metadata-native.json",
+        "sha256": "5fd393fd9a9c41946c98ef381b489c0ba64ec5b25a00c33ed3b00e30f7364505"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-item-icon-metadata-visual-review.json",
+        "sha256": "d751749d56390d6b9789fafb68c353df5d2dc91497a8f890fb3cd47e39d18f53"
+      },
+      "byte_equal_frames": 3
+    },
+    {
+      "name": "gui-timer",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-gui-timer-native-before100.json",
+        "sha256": "4e3058cbf5d12e06c592c7d7ac23af21ee2c1953e4ca9743122fb9823249cabb"
+      },
+      "current": {
+        "file": "inventory/client455-gui-timer-native.json",
+        "sha256": "6d2d0d76bbf09700651b1c15e61aef46377b008f9bb241105ab82c5e407996ba"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-gui-timer-visual-review.json",
+        "sha256": "7e9d924bd471f8a34a2c1f5ebbcc5118fdca994dcbad759724c4430258541316"
+      },
+      "byte_equal_frames": 6
+    },
+    {
+      "name": "item-icon",
+      "baseline": {
+        "file": "artifacts/client455-progress/client455-item-icon-native-before100.json",
+        "sha256": "95c264361b96e80e47218932bc39b05c3439f619bfdb57d6e9f3f661f22cba38"
+      },
+      "current": {
+        "file": "inventory/client455-item-icon-native.json",
+        "sha256": "9e5d2b044dd894c4a0e55f953e8dbf2217330e13b4d94c723c726308e88e4f5c"
+      },
+      "inherited_review": {
+        "file": "inventory/client455-item-icon-visual-review.json",
+        "sha256": "05c6d3547ee74fd9c1db76d6959e971f627387f25b610c66767e9b3d02e70b8b"
+      },
+      "byte_equal_frames": 9
+    }
+  ],
+  "new_viewed_GPU_frames": 6,
+  "inherited_byte_equal_reviewed_frames": 35,
+  "direct_BYTE_cases": 256,
+  "wrapper_flag21_cases": 256,
+  "geometry_cases": 18,
+  "selected_ranges": 17,
+  "instructions": 1610,
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "previous099gate": "Historical runtime after client source/link changed;static proofs and35reviewed frames retained",
+  "gaps": [
+    "Typed hover manager/screen drag/actual use-remove-swap-hover/MsgProc/livecallbacks/potioncache/Macro/Vending/fullAdd/bootstrap remain mandatory",
+    "FullGUIItemchildren/privateABI/deviceReset/numeric/unsafe/OOM/concurrency/shutdown andallpriorclientgaps remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

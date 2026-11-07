@@ -37,7 +37,6 @@ RF455ItemDataSpan data(RF455ManagedItem& item){
     throw std::logic_error("455 Linker payload data provider is not restored");
 }
 void requireLinkerProviders(RF455ManagedItem& item){
-    if(item.header().flag21)throw std::logic_error("455 Linker item lock overlay provider is not restored");
     if(auto* sf=dynamic_cast<RF455SkillForceItem*>(&item)){
         if(sf->record().iconBoard)throw std::logic_error("455 live SF source-board state callback is not restored");
     }else if(item.isKind(2)){
@@ -65,6 +64,7 @@ BOOL CLinkBoard::AddTypedObject455(BYTE bank,BYTE slot,CBoardObject* original){
     if(!m_uiLinkWindow.LinkerIcons455().takeIn(bank,slot,source))throw std::logic_error("455 admitted Linker icon handoff failed");
     auto* icon=LinkerIcon455(bank,slot);owned->SetIcon(icon);RF455_GameIconLinks().registerIcon(*icon);
     icon->SetOwnerContext455(2);
+    owned->RefreshLock455();
     icon->SetGrade455(owned->GetItem455()->isKind(0)?RF455_ReadBasicIconMetadata(*owned->GetItem455()).grade:0);
     return TRUE;
 }

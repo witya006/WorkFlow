@@ -23,12 +23,60 @@
 
 ## Последний проверенный результат
 
+100 PARTIAL: восстановлен значок блокировки предмета по flag21 в обычных
+CGUIItem/CBoardObject/CLinkBoard. Реальный sprite52 содержит glyph8×12 на
+texture8×16. Проверены копирование, позиция, Empty/Remove и отдельный Draw
+при обрезке изображения.256 значений BYTE setter,256 wrapper flags,18 geometry
+cases и6 новых просмотренных GPU кадров проходят;35 прежних кадров byte-equal.
+Новая PE49882fc3…/entry157aa0/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate — inventory/client455-item-lock-checkpoint.json;099 runtime
+исторический. Full drag/use/remove/swap/hover/MsgProc,live callbacks,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-item-lock.md).
+
+Source:CItemObject/CBoardObject layout620 unchanged;nonvirtualRefreshLock455
+added inclient455_item_object.cpp +board_object.inc. GUIItem hasownCGUIObject
+m_lockFrame455;ConfigureLock455/BindLock455/SetLock455 initem_icon.cpp;
+item_icon_port copiesdescriptor/rawShow andhideschildctor. LinkerAdd calls
+RefreshLock455 beforefinalgrade;flag21 refusal removed,other3 retained.
+Real52/0/0 DXT1glyph original8x12/texture8x16 stagedbycopy_item_icon_skins
+fromnewref.8ownrunners updated,notlegacyinputs. Targetresize is explicitBind;
+globallegacyGUIbase unchanged. Clippedlock normalDraw is intentional455quirk.
+Empty andRemove preserveShow;Draw exitswhenimageabsent. Native explicitlyshows
+actualinventory/copy/Linkericons;notnormal fullwindow/bootstrap acceptance.
+256rawBYTE/256normalizedflag21/18geometry/6newviewedGPU pass;allowners/Dmalloc0.
+35 oldGPUframes byte-equal:ready6/timer6/window8/owners3/metadata3/icon9.
+Oldreviews inheritedusinghashchain099/098;currentcheckpoint validatesbaselines.
+Owners096 now3providerrefusals,plusactualflag21Add;syntheticSF/AnimusCPUicons
+remainqualified. Hotbar7/storage3/account/currentPECreate1 pass. No159k/world/
+audio/atlas093/2013owner/SF1447/manual095 repeats. Icon092 rerun justifiedclipchange.
+
+NewPE49882fc3ef2ba826495dfbdff675a4ef30fa99dcced4557f50222d11fd306083,
+2140160bytes/x86/base400000/entry157aa0/WinMainb7610/afterCreateb777a,
+182client/20kernels/56facade/0unresolved. Derivedengine546a7529… unchanged;
+baseline033/source preserved. Prior082derivedlib snapshot stillnotretained.
+17functions/1610asm/17equalranges,actualItemLock.spr exactroundtrip;IDA5eef459d
+savedclosed/list0. inventory/client455-item-lock-reference/native/visual-review/
+checkpoint.json;research/client455-item-lock.md. Allclientmilestones stillopen.
+
+Next101:typedhovermanager/screen beforeactualhandlers. Exploratoryraw ignored
+hover100-full-exploration.json:180asm4FE020 +decomp dependencies (not fullpin).
+Targetmanager hover+244/backup+248/otherbackup+252;nullhover copies620 firstbackup,
+clearssecond via4FE5C0(0),deleteshover,screen.RemoveObject. Legacy singleCBoardItem
+backup/rawGetHoverItem cast incompatible. Needconstructor/dtor/Copy620/backup/
+ClearOperation/ReturnHover/managerstorage IDs audit andreal screen632210/632370,
+PickingObjectEvent/cursor/tooltip/center/cancelstate2-6-10chain. No successful
+recording/no-op;keepallgame dependencies. Thenactualuse/remove/swap/hover/MsgProc,
+livecallbacks/potioncache/Macro/Vending/fullAdd/bootstrap. M6/M6F/M7/M9 OPEN.
+
+## Исторический результат099
+
 099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
 владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
 лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
 GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
 Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
-Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+Исторический gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
 исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
 Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
 [Доказательства](../research/client455-ready-cooldown.md).

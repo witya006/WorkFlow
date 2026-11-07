@@ -1,0 +1,69 @@
+{
+  "native_sha256": "6d71c5713fdd7371cf08cc826d80fe76b2b67e5389b51e9f657f032518b155bb",
+  "script_sha256": "91f7804e091110887206ce3f2869917b89332d914491addd032df44e86d228d6",
+  "sheet": {
+    "file": "work/m9/5cbd9361/item-lock-001/lock-contact.png",
+    "sha256": "9dffdcf7cf6d1178da85926d80673d7e2e83ee3164b43075aaee817aa9cc203f"
+  },
+  "frames": [
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-empty.bgra",
+      "sha256": "fcbc7f66618682898ca78a03b8cc23a854c387236aa16a78c58798f7f7aba211",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-empty.png",
+        "sha256": "163a0e09fa4c560287287118be604fb9d4de6a21ec30fbcebcc97f52299555d9"
+      }
+    },
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-off.bgra",
+      "sha256": "6b139c5cc30246591d21ad64f22e14170fe89b818a4065b0285e67f3654284b5",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-off.png",
+        "sha256": "265d0a3f93b206b7ba347a02812f09d476f23ddbf2216ab229642688ba87f3f2"
+      }
+    },
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-on.bgra",
+      "sha256": "9c1b0af0a4262b187ce0056e98350824d2bea39c266aa318fd867dc6d0f7472d",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-on.png",
+        "sha256": "6b8e41fc6145827e98ea6a12ef2dd0187a973c4e2798dbdeec8f943a3f093bca"
+      }
+    },
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-outside-clip.bgra",
+      "sha256": "048c7f76efbf05127b96fb1d23b12ac20a76460b87125d568788f85b27470aa5",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-outside-clip.png",
+        "sha256": "356d743b574f90df4a8abd8bc4d837284e276037c98755fdf1bb0f7285e4d1bd"
+      }
+    },
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-partial-clip.bgra",
+      "sha256": "7d520d573c0d19651b84da1fef4c9b4e0faf612c6330d45feb89a905315471e8",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-partial-clip.png",
+        "sha256": "fd2063a4570c4504dd5538f631ba57221eb3394d4ac584cc480b1ef75f88be06"
+      }
+    },
+    {
+      "file": "work/m9/5cbd9361/item-lock-001/lock-removed.bgra",
+      "sha256": "348a550dc66a7e05d12d4cd76f1e08cfe357e259035ebae33e322a0fa45f41d9",
+      "preview": {
+        "file": "work/m9/5cbd9361/item-lock-001/lock-removed.png",
+        "sha256": "e0bda1fb4f601b2775ebebd680bcbbe02969ee4c35d49778bee4c1ccb739ec0a"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 6,
+  "observations": [
+    "Real sprite52/action0/frame0 contains an8x12 lock glyph on8x16texture",
+    "Actual EDF inventory icon andits copies receive the small lock in the upper right corner",
+    "Normal lock drawing survives both partial image clipping andcomplete image clip rejection",
+    "Empty andremoved slots stop drawing while their lock childstate remains preserved"
+  ],
+  "reference_executable_capture": false,
+  "full_drag_handlers": false,
+  "full_client": false
+}

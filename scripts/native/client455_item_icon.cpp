@@ -16,7 +16,22 @@ bool RF455_ItemQuantityVisible(std::uint8_t type,std::uint16_t quantity,bool ena
 }
 void CGUIItem::SetGrade455(BYTE grade){m_grade455=grade;m_gradeFrame455.SetARGB(RF455_ItemGradeColor(grade));}
 void CGUIItem::SetPos(LONG x,LONG y){CGUIObject::SetPos(x,y);m_gradeFrame455.SetPos(x,y);m_timer455.SetPos(x,y);
-    m_readyCue455.SetPos(x+(m_ptSize.x-m_readyCue455.GetSizeX())/2,y+(m_ptSize.y-m_readyCue455.GetSizeY())/2);}
+    m_readyCue455.SetPos(x+(m_ptSize.x-m_readyCue455.GetSizeX())/2,y+(m_ptSize.y-m_readyCue455.GetSizeY())/2);
+    m_lockFrame455.SetPos(LONG(DWORD(x)+DWORD(m_ptSize.x)-DWORD(m_lockFrame455.GetSizeX())-3),LONG(DWORD(y)+3));}
+void CGUIItem::BindLock455(SPRITE_INFO* info){
+    m_lockFrame455.SetSpriteInfo(info);
+    if(info&&info->pSprite){const auto width=info->pSprite->GetSpriteOrgXL(info->wActionNo,info->wFrameNo);
+        if(width)m_lockFrame455.SetSize(width,info->pSprite->GetSpriteOrgYL(info->wActionNo,info->wFrameNo));}
+}
+void CGUIItem::ConfigureLock455(){
+    auto* sprite=gSpriteMgr.GetTargetSprite455(52);
+    if(!sprite||!sprite->GetMaxActions()||!sprite->GetMaxFrames(0))throw std::runtime_error("455 actual item-lock sprite missing");
+    SPRITE_INFO info={sprite,0,0};BindLock455(&info);
+}
+void CGUIItem::SetLock455(BYTE visible){
+    m_lockFrame455.Show(visible);
+    m_lockFrame455.SetPos(LONG(DWORD(GetPosX())+DWORD(GetSizeX())-DWORD(m_lockFrame455.GetSizeX())-3),LONG(DWORD(GetPosY())+3));
+}
 void CGUIItem::SetSize(LONG width,LONG height){
     CGUIObject::SetSize(width,height);m_gradeFrame455.SetSize(width,height);m_timer455.SetSize(width,height);
     //61B450 selects the two grade-frame cells by signed displayed width.
@@ -36,13 +51,15 @@ BOOL CGUIItem::DrawTypedIcon455(RECT* clip){
         if(clip)m_gradeFrame455.Draw(*clip);else m_gradeFrame455.Draw();
     }};
     if(clip)drawGrade();
-    const BOOL drawn=clip?CGUIObject::Draw(*clip):CGUIObject::Draw();if(!drawn)return FALSE;
+    if(clip)CGUIObject::Draw(*clip);else CGUIObject::Draw();
     if(!clip)drawGrade();
     if(RF455_ItemQuantityVisible(m_byIconType,m_wNum,m_bDrawItemNum!=0,clip!=nullptr)){
         char number[8];std::snprintf(number,sizeof(number),"%u",unsigned(m_wNum));DrawR3Hangul(m_ptPos.x,m_ptPos.y+m_ptSize.y-12,number,0xffffffff,32);
     }
     if(clip)m_timer455.Draw(*clip);else m_timer455.Draw();
-    DrawTimerLabel455(clip);return TRUE;
+    DrawTimerLabel455(clip);
+    //61BB38 deliberately uses normal Draw even in the clipped item route.
+    m_lockFrame455.Draw();return TRUE;
 }
 void CGUIItem::Update(){CGUIObject::Update();if(m_typedIcon455)m_timer455.Update();}
 BOOL CGUIItem::DrawTimerLabel455(RECT* clip){

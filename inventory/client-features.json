@@ -6,10 +6,59 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-ITEM-LOCK-100",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "description": "Source-owned actual flag21 lock child,typed wrapper refresh andordinaryLinker Add;full draghandlers remain open",
+      "reference": [
+        {
+          "rva": "0x21d120",
+          "role": "rawvisibility/position"
+        },
+        {
+          "rva": "0x6bcf0",
+          "role": "normalizedwrapperrefresh"
+        },
+        {
+          "rva": "0x62d20",
+          "role": "itemflag21"
+        },
+        {
+          "rva": "0x226060",
+          "role": "sprite binding resize"
+        },
+        {
+          "rva": "0x21b910",
+          "role": "clipped item callsnormal lock Draw"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_item_icon.cpp",
+        "scripts/native/client455_item_icon_members.inc",
+        "scripts/native/client455_item_object.cpp",
+        "scripts/native/client455_board_object.inc",
+        "scripts/native/client455_linker_owners.cpp",
+        "scripts/client455_item_icon_port.py"
+      ],
+      "verification": "17functions/1610asm/17equalranges;actualsprite52/0/0 original8x12/texture8x16.256raw/256normalized/18geometry/6newviewedGPU/35inheritedbyteequalreviewedframes pass. Actual EDF inventory/copy/ordinaryLinkerAddRemove/registry/lastowner/Dmalloc checked. Remaining3providerrefusals explicit. NewPE49882fc3/entry157aa0/182-20-56/0unresolved/Create1/hotbar7/storage3/account pass;engine546a unchanged. IDA5eef459d savedclosed/list0.",
+      "evidence": [
+        "inventory/client455-item-lock-reference.json",
+        "inventory/client455-item-lock-native.json",
+        "inventory/client455-item-lock-visual-review.json",
+        "inventory/client455-item-lock-checkpoint.json",
+        "research/client455-item-lock.md"
+      ],
+      "gaps": [
+        "Typed hover manager/screen beforefulluse/remove/swap/hover/MsgProc;dualbackup/cancel-state/sourcecallbacks notimplemented",
+        "Liveinventory-equip-SF-Animus/potioncache/Macro35/Vending27/fullAdd/bootstrap andallpreviousclientgaps mandatory",
+        "Invalidsprite descriptors/privateABI/fullGUIItemchildren/lifecycle/reset/FPunsafe/OOM/concurrency/shutdown notaccepted;M6/M6F/M7/M9open"
+      ]
+    },
+    {
       "id": "CLIENT455-LINKER-COOLDOWN-099",
       "status": "partial",
       "phase": "RUNTIME_SELECTED",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "description": "Ordinary Linker cooldowncache/originallookup/SFgroupdelay andsource-owned readychild withactualmode3 draw;fullhandlers/game open",
       "reference": [
         {

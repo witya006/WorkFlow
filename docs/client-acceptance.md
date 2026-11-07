@@ -1,11 +1,27 @@
 # Полнота восстановления RF_Online.bin
 
+100 PARTIAL: восстановлен значок блокировки предмета по flag21 в обычных
+CGUIItem/CBoardObject/CLinkBoard. Реальный sprite52 содержит glyph8×12 на
+texture8×16. Проверены копирование, позиция, Empty/Remove и отдельный Draw
+при обрезке изображения.256 значений BYTE setter,256 wrapper flags,18 geometry
+cases и6 новых просмотренных GPU кадров проходят;35 прежних кадров byte-equal.
+Новая PE49882fc3…/entry157aa0/182client-20kernels-56facade/0unresolved/Create1.
+Текущий gate — inventory/client455-item-lock-checkpoint.json;099 runtime
+исторический. Full drag/use/remove/swap/hover/MsgProc,live callbacks,potion cache,
+Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-item-lock.md).
+
+Lock child принят только в описанном домене. Invalid sprite descriptors,
+полный privateABI/fullGUI/lifecycle/reset/unsafe/OOM/concurrency/shutdown
+не приняты. Native source GPU не является reference executable capture.
+M6/M6F/M7/M9 OPEN. Исторический результат099:
+
 099 PARTIAL: обычный CLinkBoard получил50 записей перезарядки, поиск исходного
 владельца, запуск таймеров и вспышку готовности. Ready child использует настоящий
 лист455,40 клеток128px,34FPS и blend3.132 сценария анимации/48 сетки и6 новых
 GPU кадров проходят;20 прежних просмотренных кадров побайтно сохранены.
 Новая PE6b30676b…/entry157830/182client-20kernels-56facade/0unresolved/Create1.
-Текущий gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
+Исторический gate: inventory/client455-ready-cooldown-checkpoint.json;098 runtime
 исторический. Игровые use/remove/swap/hover,live callbacks,lock,potion cache,
 Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
 [Доказательства](../research/client455-ready-cooldown.md).

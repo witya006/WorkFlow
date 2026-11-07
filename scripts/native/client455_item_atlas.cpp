@@ -65,6 +65,6 @@ void CGUIItem::SetTypedSprite455(){
     const BYTE targetID=m_byIconType==5?19:8;
     const DWORD classification=targetID==19?m_dwItemID:(std::uint32_t(m_byIconType)<<28)|(m_dwItemID&0x0fffffff);
     gSpriteMgr.GetTargetSpriteInfo455(targetID,m_dwSpriteID,classification,m_bySpriteSize,selected);
-    SetSpriteInfo(&selected);m_readyCue455.ConfigureReady455();SetSize(displayed.x,displayed.y);
+    SetSpriteInfo(&selected);m_readyCue455.ConfigureReady455();ConfigureLock455();SetSize(displayed.x,displayed.y);
     //Other61AF30 child/timer/lock-skin initializers remain tracked separately.
 }

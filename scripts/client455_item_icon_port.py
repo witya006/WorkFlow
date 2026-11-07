@@ -8,6 +8,8 @@ def port_item_icon(raw,relative,native,section):
     if relative=='userinterface/guicontroller/guiitem.h':
         once(b'\tCGUIItem();',b'\tCGUIItem();\r\n'+(native/'client455_item_icon_members.inc').read_bytes());changed=True
     elif relative=='userinterface/guicontroller/guiitem.cpp':
+        begin,end=section(raw,b'CGUIItem::CGUIItem(',b'CGUIItem::CGUIItem(');body=raw[begin:end];at=body.index(b'{')+1
+        raw=raw[:begin]+body[:at]+b'\r\n\tm_lockFrame455.Show(FALSE);'+body[at:]+raw[end:]
         begin,end=section(raw,b'CGUIItem::SetSprite( void )',b'CGUIItem::SetSprite( void )');body=raw[begin:end];at=body.index(b'{')+1
         raw=raw[:begin]+body[:at]+b'\r\n\tif(m_typedIcon455){SetTypedSprite455();return;}'+body[at:]+raw[end:]
         for signature in [b'CGUIItem::Draw( void )',b'CGUIItem::Draw( RECT & pi_rtClipping )']:
@@ -15,7 +17,7 @@ def port_item_icon(raw,relative,native,section):
             call=b'\r\n\tif(m_typedIcon455)return DrawTypedIcon455('+ (b'nullptr' if b'void' in signature else b'&pi_rtClipping')+b');'
             raw=raw[:begin]+body[:at]+call+body[at:]+raw[end:]
         begin,end=section(raw,b'CGUIItem::SetData(',b'CGUIItem::SetData(');body=raw[begin:end]
-        body=body[:-1]+b'\r\n\tm_objectIndex455=pi_pItem->m_objectIndex455;m_grade455=pi_pItem->m_grade455;m_typedIcon455=pi_pItem->m_typedIcon455;\r\n\tm_gradeFrameVisible455=pi_pItem->m_gradeFrameVisible455;m_gradeFrame455=pi_pItem->m_gradeFrame455;\r\n}'
+        body=body[:-1]+b'\r\n\tm_objectIndex455=pi_pItem->m_objectIndex455;m_grade455=pi_pItem->m_grade455;m_typedIcon455=pi_pItem->m_typedIcon455;\r\n\tm_gradeFrameVisible455=pi_pItem->m_gradeFrameVisible455;m_gradeFrame455=pi_pItem->m_gradeFrame455;\r\n\tBindLock455(pi_pItem->m_lockFrame455.GetSpriteInfo());m_lockFrame455.Show(pi_pItem->m_lockFrame455.IsShow());\r\n}'
         raw=raw[:begin]+body+raw[end:];changed=True
     elif relative=='userinterface/spritemgr.h':
         once(b'\tCSpriteUnitList\t\tm_listSpriteUnit;',b'\tCSpriteUnitList\t\tm_listSpriteUnit;\r\n\tCSprite* m_targetSprites455[55]={};')

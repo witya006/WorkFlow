@@ -5,7 +5,7 @@ from PIL import Image
 from audit_client455_item_payloads import record
 from checkpoint_client455_rvp_effects import check,load,require,sha
 from client455_own_probe import build_full_object_probe
-from client455_runtime_inputs import copy_character_shaders
+from client455_runtime_inputs import copy_character_shaders,copy_item_icon_skins
 from compare_client_binaries import WS,pe
 
 def main():
@@ -17,7 +17,7 @@ def main():
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
     for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/zh-tw/NDLanguage.edf']:
         original,dest=client/name,run/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,dest);inputs.append(record(dest))
-    inputs+=copy_character_shaders(run);config=run/'R3Engine.ini';config.write_text('[Setup]\nLanguage=Taiwan\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n');inputs.append(record(config))
+    inputs+=copy_character_shaders(run);inputs+=copy_item_icon_skins(run);config=run/'R3Engine.ini';config.write_text('[Setup]\nLanguage=Taiwan\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n');inputs.append(record(config))
     startup=subprocess.STARTUPINFO();startup.dwFlags=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     try:result=subprocess.run([str(target)],cwd=run,capture_output=True,timeout=90,creationflags=subprocess.CREATE_NO_WINDOW,startupinfo=startup)
     finally:

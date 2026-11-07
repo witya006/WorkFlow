@@ -1,5 +1,16 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, item-lock100: установленный IDA MCP подтвердил17 функций/
+1610 инструкций/17 равных диапазонов обеих455. Session5eef459d savedclosed/list0.
+Новых установок нет;engine546a7529… не менялся. Typed GUIItem получил actual
+sprite52/8×12 lock child;CBoardObject refresh иобычныйLinker.Add подключены.
+256raw/256normalized/18geometry/6viewedGPU и35byte-equal прежних кадров проходят.
+Новая PE49882fc3…/entry157aa0/182-20-56/0unresolved/Create1;hotbar7/storage3/
+account проходят. Из4 прежних provider refusals остаются3:SF/Animus callbacks
+иpotioncache. Originals/server без изменений,inputEXE не исполнялись.
+Gate100 current,099runtimehistorical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-item-lock.md).
+
 Дополнение07.11, ready-cooldown099: установленный IDA MCP подтвердил ещё8
 функций/248asm/12равных диапазонов обеих455, поверх статических79/5906/82.
 Sessionfa7d0341 savedclosed/list0. Новых установок нет. Derived startup engine

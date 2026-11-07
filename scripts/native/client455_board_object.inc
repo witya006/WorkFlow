@@ -25,5 +25,6 @@ public:
     virtual CGUIItem* GetIcon(){return m_uiIcon;}
     void BeginDelayAnimation(DWORD);
     void RefreshIcon455();
+    void RefreshLock455();
 };
 static_assert(sizeof(CBoardObject)==620,"455 typed board wrapper");

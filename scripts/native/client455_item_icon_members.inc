@@ -6,11 +6,16 @@
     CGUIObject m_gradeFrame455;
     RF455GuiTimer m_timer455;
     RF455GuiAnimation m_readyCue455;
+    CGUIObject m_lockFrame455;
     BOOL DrawTypedIcon455(RECT*);
     void SetTypedSprite455();
+    void BindLock455(SPRITE_INFO*);
     void SetNum455(WORD);
     void SetUsable455(BYTE);
 public:
+    void ConfigureLock455();
+    void SetLock455(BYTE visible);
+    CGUIObject& LockGlyph455(){return m_lockFrame455;}
     RF455GuiAnimation& ReadyCue455(){return m_readyCue455;}
     RF455GuiTimer& Timer455(){return m_timer455;}
     void BeginDelayAnimation455(DWORD,LONG elapsed=-1);
