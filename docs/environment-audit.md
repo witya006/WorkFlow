@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, item-ownership087: новых установок нет. IDA65f54fa4 сохранена/
+закрыта/list0;24 equalpinranges/579 полных asm,8 constructor stores декодированы
+в oracle. Sourceбиблиотека x86/MT:3whole-record сравнения92/620bytes,12 lifetime
+сценариев и7 границ BYTE прошли отдельно и через ту же библиотеку с полным
+набором клиентских объектов. Host менеджера recording; обычный Linker/полные
+factory/destructor ещё не связаны. ProductionPE086/его gate не менялись;
+неизменённые GPU/startup/159k suites не повторялись. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-item-ownership.md).
+
 Дополнение07.11, hotbar086: новых установок нет. IDA811039d6 saved/closed/list0;
 45 выбранных диапазонов равны между pins,640 полных asm instructions сохранены.
 Обычный Linker delta-save/периодическая отправка проверены на настоящих объектах

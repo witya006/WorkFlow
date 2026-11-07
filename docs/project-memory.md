@@ -23,6 +23,37 @@
 
 ## Последний проверенный результат
 
+087 PARTIAL_SOURCE_FOUNDATION: scripts/native/client455_item_ownership.h/cpp
+дают rawdata92/620 copy/clone/BYTEretain/drop/selectedrelease. Это records,
+dispatchwords — opaque tokens,неcallabletargetvtables/полный C++ABI.
+TargetCItem ctor45FC80 не пишет bytes22..85/padding13..15/86..87;copy405E70
+сохраняет destinationpadding. Wrappercopy46B5E0 иparents сохраняют padding5..7,
+593..595/617..619;resourcefields покаopaque. Targetwrapper inherits
+CItemObject→CResObject→CObject,legacyCBoardObject толькоCObject:неreinterpretcast.
+
+Release46B090 сначалаquery PRIMARYcache C0C020 (list+4,count+12);еслиempty,
+неdrop инеnull wrapperpointer,дажеGesture. ИначеBYTE--wrap;MOVSXAL signed<=0
+вызываетvirtualIsKind6,primary469960 илиgesture46A040/cacheC0BFF4;затемnull
+pointer,дажеcachemiss. Clone46B570 alloc620/copy+retain толькоприallocation.
+Семантикуglobalcacheempty не переименовывать вshutdownflag/обычныйshared_ptr.
+
+24equalpinranges/579fullasm/8rawdecodedctorstores;raw item-ownership087-reference
+и-session вartifacts/client455-progress,IDA65f54fa4savedclosed/list0. Sameexact
+library standalone/fullobject probes exit0:3whole-recordoracle/12lifetimecases/
+7BYTEboundaries. Hostrecording;actualderivedfactory/predicates/destructors и
+ordinaryLinker binding OPEN. Fullprobe links same.lib through pragma;initial
+combinedTU inlinedawayAPIs,checkpoint caught;onlyprobe packaging changed.
+Gateclient455-item-ownership-checkpoint.json, research/client455-item-ownership.md.
+Production086/normal-link/его hotbar gate currentunchanged;GPU/startup/159k
+suites не повторялись. Далее088 realfactories/managers/CItemObject/CResObject/
+typedboard-hover owners,затем5x10view/input/cooldown/download/oldbelt/Tutorial.
+Cachedfactory469AD0/4697B0/469720 и дополнительные helpers сохранены в ignored
+artifacts/client455-progress/item-ownership087-followup.json;передпортомновых
+тел проверитьranges/pins,не считатьвсеcachedhelpers accepted087.
+M6/M6F/M7/M9OPEN;087неordinaryruntimeacceptance.
+
+Последний перенос в обычный клиент:
+
 086 PARTIAL/currentgateclient455-hotbar-checkpoint.json. OrdinaryCLinkBoard
 снимает5x10 keys из sourceobjects и отправляет delta group13/op17 через actual
 networkowner/sendring/AES. Encodertags4/SFtype/3;Gesture5/Macro6 пока pureonly.
@@ -42,7 +73,7 @@ Native7actualpackets/storage3runs/account/exactPE/Create1 passed;hotbar probe
 GPU/159k suites не повторялись.085/083 gates historical постарой normal-link.
 
 TargetLinker500590 clones620bytewrapper/retainsunderlyingitem;oldsource borrowed
-objects/EmptyAll и8-slotCGUIForceBeltWindow неэквивалентны. Далее087: общийitem/
+objects/EmptyAll и8-slotCGUIForceBeltWindow неэквивалентны. Очередь после086: общийitem/
 wrapper ownership+5x10CGUILinkWindow, input/use/cooldown/download,oldbelt callers;
 затемactualTutorial. OldMainGame.Create_Board/BeltList getter всёещёthrows;
 36factoryclasses includingTrunk/fullitemprotocol/GUI/Tutorial/game ивсе прежние

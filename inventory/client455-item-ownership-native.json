@@ -1,0 +1,171 @@
+{
+  "scope": "Selected CItem record/copy/clone/reference release with independent byte oracles and recording manager host;ordinary Linker integration remains open",
+  "script_sha256": "76f5a9fba2f41e27bdf06dbf1242b5dfb5f7e3446677bbb8c65ea1db01428e40",
+  "reference_sha256": "dc3229c77778293bf76022c2791c63d074601b0702c781dfdb742990a1749365",
+  "sources": [
+    {
+      "file": "scripts/native/client455_item_ownership.cpp",
+      "sha256": "eaaf367f2cbe8a15d8a93886071b847c36f9165e6c21a1a5a13ce28c89b35b86"
+    },
+    {
+      "file": "scripts/native/client455_item_ownership.h",
+      "sha256": "4f44b344fb55c23252c6a3a4112dd27ac351a0c72bf9adc8e5da8aaeeb2cbfa4"
+    },
+    {
+      "file": "scripts/native/client455_item_ownership_probe.cpp",
+      "sha256": "972ce3070e6d9b473971856e8270a61aaa76d7b099952d3d4587115c628fd48e"
+    },
+    {
+      "file": "work/client455-port/item-ownership/full-object-entry.cpp",
+      "sha256": "c01816140cae2ee9d97f31195805b66d34ac09cf806230ce53c4fe7d74f65109"
+    }
+  ],
+  "library": "work/client455-port/item-ownership/RF455ItemOwnership.lib",
+  "library_sha256": "31e40f23bcece61fcc203ec12386ca74d42abe8b8d97355f1f17c02195d5a7ce",
+  "build_log": {
+    "file": "work/client455-port/item-ownership/build.txt",
+    "sha256": "0e49d1b1e09b1b26ffbcd4f51b5a5f0ec675d169821d590cb46a5716a9565d2f"
+  },
+  "objects": [
+    {
+      "file": "work/client455-port/item-ownership/item-ownership.obj",
+      "sha256": "a4462ba6af5bc1621f36afd9abb8b53d83a5bd9c88e4c3d02a30a0ec713cd572"
+    },
+    {
+      "file": "work/client455-port/item-ownership/probe.obj",
+      "sha256": "a3b3a675640797d40d006f57ded10d02ac7de66dab069f1115f6391a1c20a21e"
+    }
+  ],
+  "runs": [
+    {
+      "mode": "standalone",
+      "exe": {
+        "file": "work/m9/586ac18a/item-ownership-001/item-ownership-probe.exe",
+        "sha256": "586ac18a969352676fd03c3a2ccf863b6821a5d289d2ab24c55b8adcaa1783c5"
+      },
+      "map": {
+        "file": "work/client455-port/item-ownership/item-ownership-probe.map",
+        "sha256": "7acee4401f1d6bd3c95148c38b0233b76af443ec8744ab397c34dc91645e5ca3"
+      },
+      "console": {
+        "file": "work/m9/586ac18a/item-ownership-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/586ac18a/item-ownership-001/result.json",
+        "sha256": "e601dacfa122e7f06318f4bd07468ebd31a741f959e98cc95305f7a0bb629486"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/586ac18a/item-ownership-001/header-initialized.bin",
+          "sha256": "2e17fe11e83def4e16c96f11dd14309c37216c205095d8398e7d6659d68a9542"
+        },
+        {
+          "file": "work/m9/586ac18a/item-ownership-001/header-source.bin",
+          "sha256": "2f4ac2663ceea0e9dd22721d110b2d6a565e000b1069436c7e723ca09a9af2f6"
+        },
+        {
+          "file": "work/m9/586ac18a/item-ownership-001/header-copied.bin",
+          "sha256": "39fff86648ec974593ab2bc5f054fde144bca238a6c28541ba18197fd0fa38b5"
+        },
+        {
+          "file": "work/m9/586ac18a/item-ownership-001/board-source.bin",
+          "sha256": "bce296b26bbd06c03d3cdd9d9b4cd14832e5cd66307004badc626a6666951218"
+        },
+        {
+          "file": "work/m9/586ac18a/item-ownership-001/board-copied.bin",
+          "sha256": "6c740381237677174bcd4ffb3227d74345a9edccbcd47c8530d2d9a62eaaffce"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "item_record_bytes": 92,
+        "wrapper_record_bytes": 620,
+        "whole_record_oracles": 3,
+        "lifetime_scenarios": 12,
+        "ref_boundary_cases": 7,
+        "primary_empty_guard": true,
+        "signed_byte_release": true,
+        "shared_payload": true,
+        "independent_wrapper_state": true,
+        "allocation_failure": true,
+        "recording_host": true,
+        "ordinary_Linker_bound": false,
+        "actual_item_factory": false,
+        "real_item_destructors": false
+      },
+      "architecture": "x86"
+    },
+    {
+      "mode": "full_object",
+      "exe": {
+        "file": "work/m9/0a8c2690/item-ownership-001/item-ownership-probe.exe",
+        "sha256": "0a8c26902c5df9fecdee3220676e4d53c110631ce0f601ebc2d518c86077b672"
+      },
+      "map": {
+        "file": "work/client455-port/item-ownership-probe/item-ownership-probe.map",
+        "sha256": "755cdd646c9e6e29dc07800d3ad707c367b5bb3837bca4e2763de4217380eacf"
+      },
+      "console": {
+        "file": "work/m9/0a8c2690/item-ownership-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/0a8c2690/item-ownership-001/result.json",
+        "sha256": "e601dacfa122e7f06318f4bd07468ebd31a741f959e98cc95305f7a0bb629486"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/0a8c2690/item-ownership-001/header-initialized.bin",
+          "sha256": "2e17fe11e83def4e16c96f11dd14309c37216c205095d8398e7d6659d68a9542"
+        },
+        {
+          "file": "work/m9/0a8c2690/item-ownership-001/header-source.bin",
+          "sha256": "2f4ac2663ceea0e9dd22721d110b2d6a565e000b1069436c7e723ca09a9af2f6"
+        },
+        {
+          "file": "work/m9/0a8c2690/item-ownership-001/header-copied.bin",
+          "sha256": "39fff86648ec974593ab2bc5f054fde144bca238a6c28541ba18197fd0fa38b5"
+        },
+        {
+          "file": "work/m9/0a8c2690/item-ownership-001/board-source.bin",
+          "sha256": "bce296b26bbd06c03d3cdd9d9b4cd14832e5cd66307004badc626a6666951218"
+        },
+        {
+          "file": "work/m9/0a8c2690/item-ownership-001/board-copied.bin",
+          "sha256": "6c740381237677174bcd4ffb3227d74345a9edccbcd47c8530d2d9a62eaaffce"
+        }
+      ],
+      "natural_exit": 0,
+      "native": {
+        "status": "PASS",
+        "item_record_bytes": 92,
+        "wrapper_record_bytes": 620,
+        "whole_record_oracles": 3,
+        "lifetime_scenarios": 12,
+        "ref_boundary_cases": 7,
+        "primary_empty_guard": true,
+        "signed_byte_release": true,
+        "shared_payload": true,
+        "independent_wrapper_state": true,
+        "allocation_failure": true,
+        "recording_host": true,
+        "ordinary_Linker_bound": false,
+        "actual_item_factory": false,
+        "real_item_destructors": false
+      },
+      "architecture": "x86"
+    }
+  ],
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "normal_link_sha256": "e8a1d2dfd6ca1bb25a85140809abb07bc3233a612e0c559c0131562d8432a669",
+  "normal_client_relinked": false,
+  "ordinary_Linker_changed": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

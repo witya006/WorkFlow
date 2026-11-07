@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-ITEM-OWNERSHIP-087",
+      "status": "partial",
+      "description": "Selected source item92/wrapper620 copy/clone/refcount/release foundation;recording ownership host,ordinary086unchanged",
+      "reference": [{"rva":"0x5fc80","role":"CItem header constructor"},{"rva":"0x5e70","role":"CItem header copy"},{"rva":"0x6b570","role":"620-byte clone and retain"},{"rva":"0x6b090","role":"primary-cache guard/signed-byte reference release"},{"rva":"0x6b5e0","role":"wrapper copy including resource parents"}],
+      "implementation": ["scripts/native/client455_item_ownership.h","scripts/native/client455_item_ownership.cpp"],
+      "verification": "24equalpinranges/579completeasm/8decodedctorstores;3whole-recordoracles/12lifetimecases/7BYTEboundaries. Same standalone.lib verified separately and with full-client object set;recordinghost. IDA65f54fa4savedclosed/list0. Production086/its gate unchanged;oldGPU/startup/159k suites not rerun.",
+      "evidence": ["inventory/client455-item-ownership-reference.json","inventory/client455-item-ownership-native.json","inventory/client455-item-ownership-checkpoint.json","research/client455-item-ownership.md"],
+      "gaps": ["Actual derivedpayload factories/managers/virtualpredicates and real item destructors remain required;host is recording","Opaque resourcebase copy is not full CItemObject/CResObject clear/draw/destructor lifecycle or callable C++ABI","Ordinary Linker/board/hover ownership binding and5x10view/use/input/cooldowns/download still open","All086 storage/itemprotocol/oldbelt/36factoryclasses/Tutorial/fourstage/Login/auth/gameplay and prior M6F/M7/M9 requirements remain mandatory"]
+    },
+    {
       "id": "CLIENT455-HOTBAR-086",
       "status": "partial",
       "description": "Ordinary Linker50-key delta-save and periodic upload through actual group13/op17 send ring/AES;full ownership/view/input open",

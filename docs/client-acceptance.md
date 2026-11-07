@@ -1,5 +1,15 @@
 # Полнота восстановления RF_Online.bin
 
+087 PARTIAL_SOURCE_FOUNDATION: выбраны/перенесены recordcopy/clone/refrelease
+правила CItem92/CBoardObject620,включая signedBYTE и primarycache-empty guard.
+3 whole-record oracle/12 lifetime сценариев/7 границ прошли standalone и с
+полным набором клиентских объектов через ту же отдельную библиотеку.
+Managerhost recording:actualderivedfactory/virtualpredicates/destructors и
+ordinaryLinker binding остаютсяOPEN. Opaque resource fields копируются,полный
+CResObject lifecycle не принят. Production086 и его текущий gate сохранены;
+GPU/startup/159k suites не повторялись. Все086/прежние gaps обязательныM9.
+[Доказательства](../research/client455-item-ownership.md).
+
 086 PARTIAL: ordinaryCLinkBoard delta-save50ячеек/5секунд и group13/op17
 перенесены. Семь actual send-ring/AES пакетов,drag suppression,cache-before-send,
 rawflags и FrameMove проверены. Три storage запуска/account/exactnewPE/Create1

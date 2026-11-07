@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+087: source-основа владения предметами92/wrapper620 проверена по24ranges/
+579asm,3whole-record oracle/12сценариям/7 границам. Точная библиотека проходит
+standalone/full-object entry с recording managerhost;обычный клиент086 не менялся.
+Далее088 — реальные derivedpayload factories/managers/virtualpredicates и
+CItemObject/CResObject lifecycle,typedboard/hover ownership;затем полный
+Linker/5x10GUI/input/download и Tutorial. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-item-ownership.md).
+
+Последний перенос в обычный клиент:
+
 086: ordinaryLinker delta-save/периодическая отправка group13/op17 работают
 через настоящий send ring/AES.7 пакетов/50ячеек/cache-before-failure/drag/FrameMove,
 storage/account и новаяPE/Create1 прошли. Это часть Linker:целевые ownedclones,
@@ -623,7 +633,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/087: common item/wrapper ownership и настоящий5x10 CGUILinkWindow,
+1. M6/088: реальные deriveditem factories/managers и virtualpredicates,
+   CItemObject/CResObject lifecycle и typedboard/hover ownership. Sourcekernels
+   087 проверены с recordinghost,ordinarybinding ещё впереди. Затем5x10CGUILinkWindow,
    use/input/cooldowns/download, oldbelt consumers и common gameplay providers.
    Delta-save/периодическая отправка086 проверены в ограниченном домене;
    identity085 Force3/Animus4 уже работает. Остальные36 target factory classes,

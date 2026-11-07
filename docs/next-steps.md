@@ -7,13 +7,29 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+087: source kernels CItem92/CBoardObject620 copy/clone/refrelease готовы.
+24equalranges/579asm/8decodedctorstores;3 whole-record oracle,12 lifetime
+сценариев,7 BYTEграниц;та же библиотека прошла standalone/full-object entry.
+Host менеджера recording;не объявлять ordinaryLinker/полный lifecycle готовыми.
+Production086/его hotbar gate сохранены,старые GPU/startup/159k suites не повторялись.
+[Доказательства](../research/client455-item-ownership.md).
+
+Далее088: concrete derivedpayload factories/managers/virtualpredicates,
+CItemObject/CResObject lifecycle,typedwrapper/board/hover providers. Подключить
+087kernels к реальным владельцам;затемLinker clone/remove/use/input/cooldowns/
+download и5x10CGUILinkWindow. Targetwrapper наследует resourceobject,legacy —
+толькоCObject:reinterpretcast старого объекта недопустим. Старыеbeltcallers,
+36factoryclasses/fullitems/Tutorial/game ивсе прежние gaps обязательныM9.
+
+Последний перенос в обычный клиент:
+
 086: обычный Linker формирует изменения50ячеек и отправляет group13/op17
 через настоящий send ring/AES. Drag/cache-before-failure/периодический FrameMove
 проверены;7пакетов/storage3runs/account/exactnewPE/Create1 прошли. Gate086PARTIAL.
 Это сохранение панели,не полные target ownership/UI/input/cooldowns/restore.
 [Доказательства](../research/client455-hotbar.md).
 
-Далее087: восстановить общий targetitem/wrapper contract и ownedclone/refcount,
+Очередь после086: восстановить общий targetitem/wrapper contract и ownedclone/refcount,
 5x10CGUILinkWindow, use/input/cooldown/deferredicons/download. Legacy objects
 пока borrowed,view8slots;простое delete/copy даст другой lifecycle.
 Заменить oldMainGame.Create_Board/BeltList пути,сейчас явно отклоняемые.

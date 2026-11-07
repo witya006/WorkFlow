@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Item-ownership087. Selected source CItem92/boardwrapper620
+copy/clone/refcount/release kernels verified:24equalranges/579asm,8decoded
+constructor stores/3whole-recordoracles/12lifetimecases/7BYTEboundaries.
+Exact same.lib passes standalone/full-object entry;managerhost recording,
+actualfactory/predicates/destructors/ordinaryLinker binding stillOPEN.
+Primarycache-empty guard and signedBYTEwrap retained. IDA65f54fa4savedclosed.
+Production086 and its gate unchanged;GPU/startup/159k suites not rerun.
+Next088 concreteowners/resource lifecycle/view. M9OPEN.
+[Evidence](research/client455-item-ownership.md).
+
 2026-11-07 — Hotbar086. Ordinary source CLinkBoard now uploads50-key deltas
 through actual group13/op17 send ring/AES with target drag/cache-before-failure
 and periodic FrameMove semantics.45equalpinranges/640fullasm,IDA811039d6closed.
