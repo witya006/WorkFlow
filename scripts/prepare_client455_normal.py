@@ -80,6 +80,35 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            if relative=='gameobject/board/common/clinkboard.h':
+                raw=b'#include "client455_hotbar.h"\r\n'+raw
+                anchor=b'CGUIForceBeltWindow\t\tm_uiLinkWindow;'
+                if raw.count(anchor)!=1:raise ValueError('Linker window member changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tRF455HotbarDelta m_hotbarDelta455;\r\n\tDWORD m_hotbarUploadTime455=0;')
+                anchor=b'\tCLinkBoard();'
+                if raw.count(anchor)!=1:raise ValueError('Linker public API boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tstatic DWORD HotbarReference455(CBoardObject*);\r\n\tRF455HotbarSnapshot CaptureHotbar455();\r\n\tvoid ResetHotbarUpload455();\r\n\tBOOL UploadHotbar455();\r\n\tRF455HotbarWindowState& HotbarWindowState455(){return m_uiLinkWindow.HotbarState455();}')
+                changes.append('455fifty-key delta upload state/API;fullLinker ownership/UI/input remains open')
+            if relative=='gameobject/board/common/clinkboard.cpp':
+                first,last=section(raw,b'CLinkBoard::CLinkBoard(',b'CLinkBoard::CLinkBoard(')
+                raw=raw[:first]+b'CLinkBoard::CLinkBoard(){ResetHotbarUpload455();}'+raw[last:]
+                first,last=section(raw,b'CLinkBoard::FrameMove(',b'CLinkBoard::FrameMove(')
+                raw=raw[:first]+b'CLinkBoard::FrameMove(){\r\n\tCObjectBoard::FrameMove();\r\n\tif(RF455_HotbarUploadDue(timeGetTime(),m_hotbarUploadTime455)){UploadHotbar455();m_hotbarUploadTime455=timeGetTime();}\r\n}'+raw[last:]
+                raw+=b'\r\n'+(native/'client455_hotbar_bridge.inc').read_bytes()
+                changes.append('ordinaryLinker FrameMove5second delta save/group13op17;other455frame/cooldown/UI/clone behaviors still open')
+            if relative=='userinterface/gamewindow/guiforcebeltwindow.h':
+                raw=b'#include "client455_hotbar.h"\r\n'+raw
+                anchor=b'BOOL\t\t\t\tm_bCreated;'
+                if raw.count(anchor)!=1:raise ValueError('Legacy Linker view state boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tRF455HotbarWindowState m_hotbarState455;')
+                anchor=b'\tCGUIForceBeltWindow();'
+                if raw.count(anchor)!=1:raise ValueError('Legacy Linker view API boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tRF455HotbarWindowState& HotbarState455(){return m_hotbarState455;}')
+                changes.append('455upload window-state metadata only;legacy8slot visual is not fullCGUILinkWindow')
+            if relative=='userinterface/gamewindow/guiforcebeltwindow.cpp':
+                first,last=section(raw,b'CGUIForceBeltWindow::Init(',b'CGUIForceBeltWindow::Init(')
+                raw=raw[:last-1]+b'\r\n\tm_hotbarState455.initialized();\r\n'+raw[last-1:]
+                changes.append('CGUILinkWindow455 upload metadata initialized to active0/fiveflags1 after realviewInit;otherbankevents unported')
             if relative=='network/protocol/characterdb.h':
                 raw=b'#include "client455_storage.h"\r\n'+raw
                 anchor=b'enum { INVEN = 0, EQUIP, EMBELLISH, BELT, FORCE, ANIMUS, LINKER };'
@@ -653,7 +682,7 @@ def main():
     cmake+='set_source_files_properties("'+intro_camera_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     for name in ['client455_tutorial_intro.cpp','client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp']:
+    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -699,6 +728,7 @@ def main():
     for name in ['client455_rvp_audio.h','client455_rvp_audio.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_money.h','client455_money.cpp','client455_inventory_money.inc','client455_inventory_gold.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_storage.h']=sha((native/'client455_storage.h').read_bytes())
+    for name in ['client455_hotbar.h','client455_hotbar.cpp','client455_hotbar_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['camera_header_overlay']=header_report
     report['tutorial_intro_reference_sha256']=sha((WS/'inventory/client455-tutorial-intro-reference.json').read_bytes())
     for name in ['client455_gui_scrollbar.h','client455_gui_scrollbar.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

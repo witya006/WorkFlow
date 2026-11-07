@@ -1,5 +1,16 @@
 # Полнота восстановления RF_Online.bin
 
+086 PARTIAL: ordinaryCLinkBoard delta-save50ячеек/5секунд и group13/op17
+перенесены. Семь actual send-ring/AES пакетов,drag suppression,cache-before-send,
+rawflags и FrameMove проверены. Три storage запуска/account/exactnewPE/Create1
+прошли. Legacy view остаётся8-slot,source objects borrowed; это не приёмка
+целевых ownedclones/5x10GUI/input/cooldowns/download или игрового Linker.
+Gesture/Macro — только pureencoder,actual providers отсутствуют. Oldbelt paths,
+36factoryclasses/fullitems/Tutorial/игра и все прежние gaps обязательны.
+Engine unchanged082;старые GPU/159k suites не переобъявлены свежими086.
+Текущий gate hotbar086;085 исторический по старой normal-link. M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-hotbar.md).
+
 085 PARTIAL: canonical Force3/Animus4/limit56 и ReturnItem eligibility0/1/5
 перенесены. Три actual-source запуска проверяют17 реальных классов/пакеты/
 256BYTE IDs/legacybelt refusal; account и exactnewPE/Create1 прошли. Старый

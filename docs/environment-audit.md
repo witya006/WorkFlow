@@ -1,5 +1,14 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, hotbar086: новых установок нет. IDA811039d6 saved/closed/list0;
+45 выбранных диапазонов равны между pins,640 полных asm instructions сохранены.
+Обычный Linker delta-save/периодическая отправка проверены на настоящих объектах
+и send ring/AES:7 пакетов,50 ячеек,максимум202байта. Три storage запуска,
+account и exactnewPE/Create1 прошли. PE82625b3e…/entry14FD60/182-20-42TU/
+0unresolved;engine9caa283a… неизменён082, contracts reused. Старые GPU/159k suites
+не повторялись. FullLinker ownership/UI/input/oldbelt/Tutorial/M9 открыты.
+[Доказательства](../research/client455-hotbar.md).
+
 Дополнение07.11, storage085: новых установок нет. IDA64b119a2 saved/closed/list0;
 10 дополнительных диапазонов обоих pins/25 полных asm physical-item guard и
 53 primary-vptr/RTTI из084 проверены. Реальная source фабрика имеет17 классов

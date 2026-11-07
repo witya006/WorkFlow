@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Hotbar086. Ordinary source CLinkBoard now uploads50-key deltas
+through actual group13/op17 send ring/AES with target drag/cache-before-failure
+and periodic FrameMove semantics.45equalpinranges/640fullasm,IDA811039d6closed.
+Seven exactpackets/storage3runs/account/exactnewPE/Create1 passed. PE82625b3e…,
+182/20/42TU,engine9caa283a…unchanged082;oldGPU/159k suites not rerun.
+FullLinker wrapperownership/5x10view/input/cooldowns/download/oldbelt/Tutorial
+remainOPEN. Next087 actualownership+view. [Evidence](research/client455-hotbar.md).
+
 2026-11-07 — Rvp-runtime079. Ordinary CLevel now calls source camera/timeline
 player.3maps/27camera events/82commands, pause/flag16/reload/renderer ownership,
 intro26/display8/FSE18/46viewedGPU passed. PE83c1793b…/Create1;67engine/9overlays/

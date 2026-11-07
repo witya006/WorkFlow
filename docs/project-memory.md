@@ -23,6 +23,33 @@
 
 ## Последний проверенный результат
 
+086 PARTIAL/currentgateclient455-hotbar-checkpoint.json. OrdinaryCLinkBoard
+снимает5x10 keys из sourceobjects и отправляет delta group13/op17 через actual
+networkowner/sendring/AES. Encodertags4/SFtype/3;Gesture5/Macro6 пока pureonly.
+Wire2+4n,max202,fullDWORDcache/WORDwireindex;ORindex безмаски. Drag сorigin6
+подавляет oldkey;кэш обновляется до send,включаяfailure. Statepacked activeOR
+rawbankflags<<(7-bank),неboolnormalize. Windowmetadata Init0/flags1;realbank
+widgets/events не перенесены. FrameMove unsignednow-last>5000,clockupdate после
+вызова независимо отрезультата. Fullcooldown/deferredicons ещё не перенесены.
+
+Native7actualpackets/storage3runs/account/exactPE/Create1 passed;hotbar probe
+не запускает listener/workers/auth. SourceSF/Animus tables controlledfixture,
+неfullDBloading.45equalpinranges/640fullasm;rawhotbar086-{reference,asm,session}
+вartifacts/client455-progress. IDA811039d6 savedclosed/list0. CurrentPE
+82625b3ef5c237900146f65531a701a3451d3dbec292a65eef2ed5ece83df6f8,
+2091008bytes/entry14FD60/WinMainB57D0/afterCreateB593A;182client/20kernel/42facade,
+0unresolved. Engine9caa283a…unchanged082/contractsreused. Oldactor/money/maps/audio
+GPU/159k suites не повторялись.085/083 gates historical постарой normal-link.
+
+TargetLinker500590 clones620bytewrapper/retainsunderlyingitem;oldsource borrowed
+objects/EmptyAll и8-slotCGUIForceBeltWindow неэквивалентны. Далее087: общийitem/
+wrapper ownership+5x10CGUILinkWindow, input/use/cooldown/download,oldbelt callers;
+затемactualTutorial. OldMainGame.Create_Board/BeltList getter всёещёthrows;
+36factoryclasses includingTrunk/fullitemprotocol/GUI/Tutorial/game ивсе прежние
+gaps обязательны. M6/M6F/M7/M9OPEN;процентнеизмерен. research/client455-hotbar.md.
+
+Предыдущий результат085 (исторический gate по normal-link):
+
 085 PARTIAL/currentgateclient455-storage-checkpoint.json. Source canonical
 storage IDs0Inv/1Equip/2Embellish/3Force/4Animus/5Trunk/6Linker;capacity56,
 POS_NUM7/STORAGE_NUM6. Старый BELT=255 — INVALID migration marker,неwireID.
@@ -54,7 +81,7 @@ Engine9caa283a… unchanged082/startupcontracts reused. Actor/money/maps/audioGP
 и159k suites не повторялись. Gates083/084 historical for old normal link.
 Research/client455-storage.md и checkpoint хранятsourcehashes/retiredcallerlist.
 
-Далее086: настоящий455Linker/hotbar и миграцияoldbeltconsumers,commonUI/board/
+Очередь после085: настоящий455Linker/hotbar и миграцияoldbeltconsumers,commonUI/board/
 Avatar owners;затемQBI/follow/localhandlers/actualTutoriallifecycle/fourstage/Login.
 Trunk/остальные36factoryclasses иfullitemprotocol обязательныM9,неwaived.
 M6/M6F/M7/M9OPEN;процентнеизмерен. Не объявлять fullstorage восстановленным.

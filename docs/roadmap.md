@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+086: ordinaryLinker delta-save/периодическая отправка group13/op17 работают
+через настоящий send ring/AES.7 пакетов/50ячеек/cache-before-failure/drag/FrameMove,
+storage/account и новаяPE/Create1 прошли. Это часть Linker:целевые ownedclones,
+5x10GUI/input/cooldowns/download и oldbelt callers ещё не перенесены. Далее087 —
+commonitem/wrapper ownership и настоящий CGUILinkWindow,затем Tutorial integration.
+36factoryclasses/Trunk/fullitems и все прежние gaps сохраняются;M6/M6F/M7/M9OPEN.
+[Доказательства](../research/client455-hotbar.md).
+
+Предыдущий результат:
+
 085: source использует Force3/Animus4 и capacity56;17 реальных классов стоят под
 правильными IDs455. Отдельный старый belt выведен из фабрики, его устаревшие
 callers явно отклоняются. Физический ReturnItem guard0/1/5, три native запуска,
@@ -613,7 +623,9 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/086: реальные Linker/hotbar455, oldbelt consumers и common gameplay providers;
+1. M6/087: common item/wrapper ownership и настоящий5x10 CGUILinkWindow,
+   use/input/cooldowns/download, oldbelt consumers и common gameplay providers.
+   Delta-save/периодическая отправка086 проверены в ограниченном домене;
    identity085 Force3/Animus4 уже работает. Остальные36 target factory classes,
    Trunk и полный item/DB protocol остаются обязательными.
    Далее actualCGP_Tutorial shared UI/board/Avatar init, Load/Create/cameraintro/

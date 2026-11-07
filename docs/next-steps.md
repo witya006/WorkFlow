@@ -7,6 +7,23 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+086: обычный Linker формирует изменения50ячеек и отправляет group13/op17
+через настоящий send ring/AES. Drag/cache-before-failure/периодический FrameMove
+проверены;7пакетов/storage3runs/account/exactnewPE/Create1 прошли. Gate086PARTIAL.
+Это сохранение панели,не полные target ownership/UI/input/cooldowns/restore.
+[Доказательства](../research/client455-hotbar.md).
+
+Далее087: восстановить общий targetitem/wrapper contract и ownedclone/refcount,
+5x10CGUILinkWindow, use/input/cooldown/deferredicons/download. Legacy objects
+пока borrowed,view8slots;простое delete/copy даст другой lifecycle.
+Заменить oldMainGame.Create_Board/BeltList пути,сейчас явно отклоняемые.
+Затем commonUI/Avatar/QBI/follow/localhandlers/actualTutorial/fourstage/Login.
+Trunk5/остальные35factoryclasses/fullitems и все прежние gaps обязательныM9.
+Gate085 исторический по normal-link;engine082 unchanged,старые GPU/159k
+проверки без изменения зависимостей не повторять. M6/M6F/M7/M9OPEN.
+
+Предыдущий результат:
+
 085: канонические IDs перенесены в source:Force3/Animus4/Trunk5/Linker6, таблица56.
 Реальные17 существующих target-named classes теперь на правильных местах;
 старый CBeltBoard из фабрики удалён. Guard возврата предметов принимает0/1/5.
@@ -15,7 +32,7 @@ PE/Create1 прошли. Это ограниченный перенос иден
 layout протокола/DB, hotbar или обучение. Gate085 PARTIAL.
 [Доказательства](../research/client455-storage.md).
 
-Далее086: реальные Linker/hotbar455 и старые belt callers, общие UI/board/
+Очередь после085: реальные Linker/hotbar455 и старые belt callers, общие UI/board/
 Avatar providers. Старый MainGame.Create_Board/BeltList download остаются
 неперенесёнными и теперь явно отказывают на старом поясe; не считать их455
 инициализацией. Trunk5 и ещё35 target classes отсутствуют в фабрике. После

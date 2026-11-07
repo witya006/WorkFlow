@@ -6,6 +6,16 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-HOTBAR-086",
+      "status": "partial",
+      "description": "Ordinary Linker50-key delta-save and periodic upload through actual group13/op17 send ring/AES;full ownership/view/input open",
+      "reference": [{"rva":"0x1003c0","role":"reference key"},{"rva":"0x18bb90","role":"delta save"},{"rva":"0x1004e0","role":"window-state packing"},{"rva":"0x101750","role":"periodic branch and unported cooldown/deferred-icon passes"}],
+      "implementation": ["scripts/native/client455_hotbar.h","scripts/native/client455_hotbar.cpp","scripts/native/client455_hotbar_bridge.inc","scripts/prepare_client455_normal.py"],
+      "verification": "45equalpinranges/640completeasm/IDA811039d6savedclosed. Actual source5x10 objects/7exactsendringAESpackets,drag/cache-before-failure/rawflags/ordinaryFrameMove;storage3runs/account/exactnewPE/Create1. 182/20/42TU,zero unresolved,engineunchanged082;oldGPU/159k suites not rerun.",
+      "evidence": ["inventory/client455-hotbar-native.json","inventory/client455-hotbar-checkpoint.json","research/client455-hotbar.md"],
+      "gaps": ["Legacy borrowedobjects/8-slot view differ from target620-byte ownedwrappers and5x10 CGUILinkWindow;clone/refcount/input/use/cooldowns/deferredicons still required","Windowstate metadata bound to Init,not fullbankwidget/event effects or persistence restore/download","Gesture/Macro tags only pureencoder;realproviders absent","OldMainGame.Create_Board/BeltList explicitly refuse oldbelt;36factoryclasses includingTrunk5/fullitemDBtradeprotocol remain open","ActualTutorial/commonUI/Avatar/QBI/follow/localhandlers/fourstage/Login/auth/gameplay and all previous M6F/M7/M9 requirements remain mandatory"]
+    },
+    {
       "id": "CLIENT455-STORAGE-085",
       "status": "partial",
       "description": "Canonical source board/storage identities,17 actual registered classes and physical-return eligibility;old belt retired;full factory/protocol/Tutorial open",
