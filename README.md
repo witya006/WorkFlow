@@ -11,16 +11,19 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
-100 PARTIAL: восстановлен значок блокировки предмета по flag21 в обычных
-CGUIItem/CBoardObject/CLinkBoard. Реальный sprite52 содержит glyph8×12 на
-texture8×16. Проверены копирование, позиция, Empty/Remove и отдельный Draw
-при обрезке изображения.256 значений BYTE setter,256 wrapper flags,18 geometry
-cases и6 новых просмотренных GPU кадров проходят;35 прежних кадров byte-equal.
-Новая PE49882fc3…/entry157aa0/182client-20kernels-56facade/0unresolved/Create1.
-Текущий gate — inventory/client455-item-lock-checkpoint.json;099 runtime
-исторический. Full drag/use/remove/swap/hover/MsgProc,live callbacks,potion cache,
-Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
-[Доказательства](research/client455-item-lock.md).
+101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
+два backup object и screen icon handoff. Проверены замена/очистка/возврат
+в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
+bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
+32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
+Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
+Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
+исторический. Live Avatar cancel,полная operation queue и игровые handlers
+ещё не восстановлены. M6/M6F/M7/M9 открыты.
+[Доказательства](research/client455-board-hover.md).
+
+Исторический100: значок блокировки flag21,256raw/256normalized/18geometry/
+6новыхGPU/35сохранённыхкадров. [Разбор](research/client455-item-lock.md).
 
 Исторический099: source-owned ready-animation и cache50×20,132state/48grid/
 6новыхGPU и20сохранённыхкадров были проверены. [Разбор](research/client455-ready-cooldown.md).

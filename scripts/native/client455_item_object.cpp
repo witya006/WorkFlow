@@ -72,4 +72,16 @@ BOOL CBoardObject::IsEqual(CBoardObject* other){if(!other)return FALSE;
     return GetItemType()==other->GetItemType()&&m_dwIndex==other->m_dwIndex;}
 CBoardObject* CBoardObject::New(){return new(std::nothrow) CBoardObject;}
 CBoardObject* CBoardObject::Clone(){auto* result=new(std::nothrow) CBoardObject(*this);if(result)result->RetainSharedItem455();return result;}
+void CBoardObject::Copy455(const CBoardObject* source){
+    if(!source)return;
+    if(typeid(*this)!=typeid(CBoardObject)||typeid(*source)!=typeid(CBoardObject))
+        throw std::logic_error("455 board Copy requires source-owned base wrappers");
+    Clear();
+    //46B660 copies the complete620-byte wrapper,including padding and borrowed
+    //resource/icon pointers,then retains the shared payload. Both objects here
+    //have the same own C++ type;this isnot a cast of a target private object.
+    //Self-copy observes the already-cleared source;the target memcpy hasno
+    //further effect there. Avoid an overlapping C++ memcpy for that case.
+    if(source!=this)std::memcpy(this,source,sizeof(CBoardObject));RetainSharedItem455();
+}
 void CBoardObject::BeginDelayAnimation(DWORD time){if(m_uiIcon)m_uiIcon->BeginDelayAnimation(time);}

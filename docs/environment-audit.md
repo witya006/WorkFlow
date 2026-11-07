@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, board-hover101: native IDA MCP подтвердил23 functions/1156asm/
+23equalranges. Sessionf131119f savedclosed/list0. Новых установок нет;engine546a…
+не менялся. Copy620/dualbackups/ordinarymanager-screen/ReturnHover в source,
+5payloadkinds+bare/256boardIDs/6viewedGPU проходят,32previousframes byte-equal.
+Offline native network owner инициализируется штатно,безauthentication/remote.
+182-20-57/0unresolved/PEe77ec7e7…/entry1586b0/Create1;hotbar7/storage3/account pass.
+LiveAvatar state/cancel,operationqueue,three-layer tooltip/gameplay не приняты.
+Original/server без изменений,inputEXE не исполнялись. Gate101current,100historical;
+M6/M6F/M7/M9 OPEN. [Доказательства](../research/client455-board-hover.md).
+
 Дополнение07.11, item-lock100: установленный IDA MCP подтвердил17 функций/
 1610 инструкций/17 равных диапазонов обеих455. Session5eef459d savedclosed/list0.
 Новых установок нет;engine546a7529… не менялся. Typed GUIItem получил actual

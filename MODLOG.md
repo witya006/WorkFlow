@@ -1,5 +1,18 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Board-hover101. Restored own Copy620 andordinary typedmanager/
+screen ownership withtwo backups,operationfallback,replace/clear/return,rawlock/
+center-before-resize andone manager timerUpdate. ActualLinkerforward returns0
+aftersuccess;rawslot2keptseparatefromGetBoardalias.23functions/1156asm/23equalranges;
+IDAf131119f savedclosed/list0.5kinds+bare/256IDs/mixedrefusals/Questnamerefusal/
+6newviewedGPU pass;32previousframes byteequal. Offline network owner initialized.
+182-20-57/0unresolved/PEe77ec7e7/entry1586b0/Create1/hotbar7/storage3/account pass.
+Engine546a unchanged;nooriginal/serverwrites/inputEXEs/newinstalls/remotes.
+OnlyactualnullAvatarbranch admitted;livepredicate/cancel/queue/3tooltipcontexts/
+gamehandlers/fullAdd/bootstrap remainmandatory. Gate101current,100historical;
+M6/M6F/M7/M9OPEN;next102livecancelowners thenhandlers/queue/providers.
+[Evidence](research/client455-board-hover.md).
+
 2026-11-07 — Item-lock100 dependency. Restored actualflag21lockchild onordinary
 GUIItem/CBoardObject/LinkerAdd:real52/0/0 DXT1 original8x12/texture8x16,rawBYTE
 visibility vsnormalizedwrapperflag,position/copy/empty/Remove/unclippedlock in

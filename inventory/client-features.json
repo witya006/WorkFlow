@@ -6,9 +6,74 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ITEM-LOCK-100",
+      "id": "CLIENT455-BOARD-HOVER-101",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Own ordinary typed hover/Copy620/dual backups/screen handoff/ReturnHover toactualLinker;liveAvatar/fulloperationqueue/gamehandlers remainopen",
+      "reference": [
+        {
+          "rva": "0x6b660",
+          "role": "Copy620"
+        },
+        {
+          "rva": "0xfb560",
+          "role": "managerconstructor"
+        },
+        {
+          "rva": "0xfe020",
+          "role": "hoverownership"
+        },
+        {
+          "rva": "0xfe2b0",
+          "role": "hover ORsecondbackup"
+        },
+        {
+          "rva": "0xfe5c0",
+          "role": "operationbackup"
+        },
+        {
+          "rva": "0x232210",
+          "role": "screen Add"
+        },
+        {
+          "rva": "0x232370",
+          "role": "screen Remove"
+        },
+        {
+          "rva": "0xfd660",
+          "role": "rawslots/falseafterforward"
+        },
+        {
+          "rva": "0x12b810",
+          "role": "unmigratedliveAvatarpredicate"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_board_hover.h",
+        "scripts/native/client455_board_hover.cpp",
+        "scripts/client455_board_hover_port.py",
+        "scripts/native/client455_item_object.cpp",
+        "scripts/native/client455_board_object.inc",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "23functions/1156asm/23equalranges;Copywhole620/null/overwrite/self/refcounts,dualbackups/fallback,replace/clear/actualReturnHover/Add,screen/cursor/picking/timer/rawlock pass.5realpayloadkinds/bare withsyntheticnonphysicalCPUicons;Questname refuses/noownerleak.6newGPUviewed,32oldrawframesbyteequal. Actualnullavatar/offlineNetworkowner;sourceboardtable manuallystaged.182-20-57/0unresolved/PEe77ec7e7/entry1586b0/Create1/hotbar7/storage3/account pass. Engine546a unchanged;f131119f savedclosed/list0.",
+      "evidence": [
+        "inventory/client455-board-hover-reference.json",
+        "inventory/client455-board-hover-native.json",
+        "inventory/client455-board-hover-visual-review.json",
+        "inventory/client455-board-hover-checkpoint.json",
+        "research/client455-board-hover.md"
+      ],
+      "gaps": [
+        "ANYnonnullAvatar currentlyrefusesuntilactualstate17708/lowBYTE2-6-10/cancel-effect-sound owners restored;notgameplayacceptance",
+        "Fulloperationqueue/three-layer tooltips/otherboardAdd/mixedlegacyquantity-backup-networkcallers/use-remove-swap-hover/MsgProc/livecallbacks/potion/Macro/Vending/fullAdd/bootstrap/Questnames mandatory",
+        "Notprivate320ABI/fullGUIItemchildren/lifecycle/reset/FPunsafe/OOM/concurrency/shutdown;allpriorM6-M6F-M7-M9clientgaps open"
+      ]
+    },
+    {
+      "id": "CLIENT455-ITEM-LOCK-100",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Source-owned actual flag21 lock child,typed wrapper refresh andordinaryLinker Add;full draghandlers remain open",
       "reference": [
         {

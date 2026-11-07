@@ -23,13 +23,75 @@
 
 ## Последний проверенный результат
 
+101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
+два backup object и screen icon handoff. Проверены замена/очистка/возврат
+в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
+bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
+32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
+Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
+Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
+исторический. Live Avatar cancel,полная operation queue и игровые handlers
+ещё не восстановлены. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-board-hover.md).
+
+Source client455_board_hover.h/.cpp +client455_board_hover_port.py inprepare;
+manager/screen headers andbodies wired. Copy455 initem_object.cpp +board_object.inc,
+sizeof620/vtable unchanged. Manager hasownpointerstate/2uniqueowned620backups,
+legacyCBoardItembackup retainedonlyforunportedcallers;notprivate320ABI.
+HeaderGetHoverObject usesnewgetter;legacyGetHoverItem refusesownbasecasts,
+legacyDeletedgetter refusesalltypedmode untilcallersmigrate. Sourceforexisting
+nonatomicmixedpaths remainsunaccepted. NewAddTyped forwardsactualCLinkBoard
+only;otherexistingadmittedboardproviders refuse,missingrawslots return0.
+
+Native Copy620 null/overwrite/self/wholebytes/references,managerctorpartialIDs,
+SetHover/replace/ClearOperation/dualbackupfallback/ReturnHover andactualscreen
+Draw/cursor/picking/sourceTooltipclear passed.5realpayloadkinds0..4 +bare40;
+nonphysicalCPUicons synthetic. Questaliasf0000000 createsbutwrapper stillrefuses
+missingnameprovider/noleak. Sourceboardlist stagedbylab;not fullfactory/bootstrap.
+Native network owner Create/Destroy requiredforbroaderitemcases,offline/noauth.
+6newGPU viewed;32oldframehashes equal (lock6/ready6/timer6/window8/owners3/metadata3).
+Oldreviews boundbybefore101 snapshots andcheckpoint100;notnewreviewsofunchangedpixels.
+Hotbar7/storage3/account/currentPECreate1 pass;unchangedicon092/world/audio/159k/
+atlas093/2013owner/SF1447/095manual notrerun. Allowners/registry/Dmalloc0.
+
+NewPEe77ec7e7d33c9ed0f5cff3f44d066ddc64ce86446cd5cd36ba5b7165ff211d8d,
+2144768bytes/x86/base400000/entry1586b0/WinMainb7940/afterCreateb7aaa;
+182client/20kernels/57facade/0unresolved. Derivedengine546a7529… unchanged,
+baseline033/source preserved. Prior082derivedlib snapshot stillnotretained.
+23functions/1156asm/23equalranges;f131119f savedclosed/list0. Raw board-hover101-
+reference.json andsession.json ignored;smallreference/native/visual/checkpoint
+in inventory/client455-board-hover-*.json. research/client455-board-hover.md.
+
+Criticalsemantics: firstbackup+248=previous,lastremoved;second+252=operation.
+GetHoverObject4FE2B0 fallsbackSECOND4FE2F0 whennoactualhover. Nullhovercopies
+first,clearssecond,deleteshover,screen.Remove;replaceonlydelete/remove/clone/add,
+no previouscopy. Copy620 clearsdestfirst;selfcopythenhasnocopyeffect/retainsif
+stillshared,notaretainingclone. Sourceownedexactbasewrappers only,notoldderived.
+Drawscreen center usesdouble truncation beforemanager64/40resize;Size doesn't
+recenter;rawflag21 lock notnormalized. Screen Update doesn'tupdatecatchedtimer;
+manager.FrameMove does beforeboards. Add4FD660 rawboard2 notGetBoardalias1,
+admit<16/35/36/38/39,alwaysreturn0 evenafteractualAdd. Don't"fix"thesequirks.
+
+Next102: liveavatarpredicate/cancelowners. Currentcode explicitlyrefuses ANY
+nonnullactualAvatar beforemutations. Pinned52B810 null=>false;otherwise lowBYTE
+41E290(field17708/0x452c) equals2/6/10,ANDglobal1028AC8+12 pendingflag(4FD640)
+then52AB50/52AC40 clear/effect/sound/messageC1A. Meaning/fieldwriters/ownerclass
+stillunknown;don'tsubstitutelegacyIsDeath/CombatState. Restorethisthenactual
+use/remove/swap/hover/MsgProc/operationqueue4FDCB0 +list4FF200. Target500F80 bank-
+slotUse vslegacynonvirtualAPI. Full3tooltipcontext/producers remainopen;source
+RemoveTooltip onlyclearsactualcurrentlegacycontext. Needtypedquantity/backups/
+networkcallers,inventory/equip/SF/Animus,potioncache,Macro/Vending/fullAdd/bootstrap,
+Questnames/allpreviousclientgaps. Progress,notblocked;M6/M6F/M7/M9 OPEN.
+
+## Исторический результат100
+
 100 PARTIAL: восстановлен значок блокировки предмета по flag21 в обычных
 CGUIItem/CBoardObject/CLinkBoard. Реальный sprite52 содержит glyph8×12 на
 texture8×16. Проверены копирование, позиция, Empty/Remove и отдельный Draw
 при обрезке изображения.256 значений BYTE setter,256 wrapper flags,18 geometry
 cases и6 новых просмотренных GPU кадров проходят;35 прежних кадров byte-equal.
 Новая PE49882fc3…/entry157aa0/182client-20kernels-56facade/0unresolved/Create1.
-Текущий gate — inventory/client455-item-lock-checkpoint.json;099 runtime
+Исторический gate — inventory/client455-item-lock-checkpoint.json;099 runtime
 исторический. Full drag/use/remove/swap/hover/MsgProc,live callbacks,potion cache,
 Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
 [Доказательства](../research/client455-item-lock.md).

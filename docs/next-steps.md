@@ -7,48 +7,52 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-100 PARTIAL: восстановлен значок блокировки предмета по flag21 в обычных
-CGUIItem/CBoardObject/CLinkBoard. Реальный sprite52 содержит glyph8×12 на
-texture8×16. Проверены копирование, позиция, Empty/Remove и отдельный Draw
-при обрезке изображения.256 значений BYTE setter,256 wrapper flags,18 geometry
-cases и6 новых просмотренных GPU кадров проходят;35 прежних кадров byte-equal.
-Новая PE49882fc3…/entry157aa0/182client-20kernels-56facade/0unresolved/Create1.
-Текущий gate — inventory/client455-item-lock-checkpoint.json;099 runtime
-исторический. Full drag/use/remove/swap/hover/MsgProc,live callbacks,potion cache,
-Macro/Vending/fullAdd/bootstrap ещё обязательны. M6/M6F/M7/M9 открыты.
-[Доказательства](../research/client455-item-lock.md).
+101 PARTIAL: в обычном клиенте восстановлены Copy620, предмет на курсоре,
+два backup object и screen icon handoff. Проверены замена/очистка/возврат
+в actual Linker, timer Update и освобождение ссылок. Пять payload kinds,
+bare wrapper,256 board IDs и6 новых просмотренных GPU кадров проходят;
+32 прежних кадра побайтно сохранены. Quest sentence provider ещё отказывает.
+Новая PEe77ec7e7…/entry1586b0/182client-20kernels-57facade/0unresolved/Create1.
+Текущий gate — inventory/client455-board-hover-checkpoint.json;100 runtime
+исторический. Live Avatar cancel,полная operation queue и игровые handlers
+ещё не восстановлены. M6/M6F/M7/M9 открыты.
+[Доказательства](../research/client455-board-hover.md).
 
-Lock child готов в выбранном домене:raw BYTE visibility,wrapper nonzero→1,
-sprite52/action0/frame0,position x+width-8-3,y+3. SetPos/setter обновляют его;
-Size alone оставляет позицию. SetData копирует descriptor/Show,получает original
-dimensions ипереприменяет destinationpos. Empty/Remove оставляют child state,
-а пустое изображение предотвращает Draw. Clipped GUIItem всё равно вызывает
-обычный lock.Draw;ранний выход после image rejection был неверным и убран.
-Target SetSpriteInfo умеет resize поSPR original dimensions,legacy не умеет:
-это реализовано локальным BindLock455,без глобальной подмены GUIбазы.
-engine546a7529…/baseline033/source сохранены.35 прежних кадров связаны сreview
-через before100native manifests и checkpoint099;не перезаписывать старые reviews
-как будто они просмотрены заново. Icon092 повторён из-за изменения clip return.
+Source-owned state содержитprevious иoperation backup. Target320privateABI
+не копировался на manager. Typed wrappers620 используютClear→memcpy620→retain;
+selfcopy наблюдаетужеclearedsource. NullCopy no-op. Targetoldpayloadcasts не
+использовать:legacyGetHoverItem/deletedgetter явноотказывают,нужныtypedcallers.
+GetHoverObject=actualhover ORnonemptySECONDoperationbackup,неprevious. Nullhover
+copiesprevious,clearsoperation,then deleteshover/removesicon. Replacement не
+обновляетprevious. Ctor толькоorg/tarboardFF,остальныеIDs сначала0;ClearOperation
+обнуляетpointers/ставит6IDsFF,сохраняетoperationtype.
+Screen center-before-resize,64для0/3/4 иначе40,rawflag21,FrameMove1timerUpdate
+иcursor/picking/source-tooltipclear проверены. Полные3tooltip layers не приняты.
+Add forwardsrawslots(id<16,35/36/38/39),неGetBoard2→equip1;всегдаreturn0 даже
+приуспехе. Реальный destination покаCLinkBoard;прочиеexistingtypedproviders
+явноотказывают доfullAdd. Bare/5kinds CPU проверены;nonphysicalicons synthetic,
+не fullSF/Animus/Unit UI. Questvalidalias покаexplicitnamerefusal/noownerleak.
+32старыхframehashes совпали;ихoldreviews наследуютсячерезbefore101 manifests/
+checkpoint100. Unchangedicon092/world/audio/159k/atlas093/2013owner/SF1447/095manual
+не повторялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_board_hover.py.
 
-Далее101 — CBoardManager typed hover ownership и CGUIScreen catched icon,затем
-actualuse/remove/swap/hover/MsgProc. Legacy manager содержит CBoardItem backup,
-а455 имеет hover+244/backup+248/backup+252;SetHoverObject0xfe020 обрабатывает
-ихраздельно. Raw180asm+decomp exploration:artifacts/client455-progress/
-hover100-full-exploration.json. Это ещё не полный pinned audit/реализация.
-Нужны canonical ranges/assembly ctor/dtor/Copy620/backup-clear,screen632210/
-632370 notifications и cancel-state chain52B810/52AB50. Не считать один legacy
-backup эквивалентом двух;GetHoverItem rawCBoardItem cast опасен дляtypedwrapper.
-Сохранить реальные owners и освобождение ссылок;не добавлять recording/no-op
-вместо игровых действий. После этогоactual500F80bank-slotUse/vtable и455codes,
-liveinventory/equip/SF/Animus callbacks,Avatar potioncache,Macro35,Vending27,
-fullCItemBoard.Add,normalbootstrap. Source UI_UseRequest nonvirtual;не подменять
-entry по совпадению имени. Статические handlers099 уже сохранены.
+Следом102: live Avatar predicate/cancel chain передactualhandlers. Target52B810
+возвращаетfalseдляnullAvatar;иначе lowBYTEgetter41E290(field17708/0x452c) сравнивает
+с2/6/10. Затемglobal1028AC8+12 pendingflag getter4FD640 иcancel52AB50/52AC40:
+сброс3DWORD,effect7D9730,sound8BD590/messageC1A. Полныйсмыслстатусов/производители
+поля/типвладельца ещёнепроверены. НоваяреализацияпокаотказываетприпоnonnullAvatar
+доизмененияhover;не считатьэтоготовойигрой,неподставлятьIsDeath/CombatState.
+Raw23completefunctions вartifacts/client455-progress/board-hover101-reference.json,
+первичнаяexploration hover100-full-exploration.json остаётсяисторической.
 
-Все прежние GUIItem children/shake/fullcopy-empty/lifecycle/deviceReset,
-privateABI/FPnumeric/unsafe/OOM/concurrency/shutdown,fullSF/Quest/36boards/Trunk/
-protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. Проверка:
-Invoke-Python.ps1 scripts/checkpoint_client455_item_lock.py. Не повторять
-unchangedworld/audio/159k/atlas093/2013owner/SF1447/manual095 без нового риска.
+Дальшеactualuse/remove/swap/hover/MsgProc и manageroperationqueue4FDCB0/
+constructorlist4FF200/factory56boards. Нужныtypedquantity/backup/networkcallers,
+liveinventory/equip/SF/Animus providers,potioncache,Macro35/Vending27/fullCItemBoard.Add,
+normalbootstrap. Source UI_UseRequest nonvirtual;target500F80bank-slot entry требует
+согласованногопереноса. Quest sentenceprovider иfull3tooltiplayers обязательны.
+Все прежниеGUIItem children/shake/clone-empty/lifecycle/reset/privateABI/FPnumeric/
+unsafe/OOM/concurrency/shutdown,SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/
+fourstage/Login/auth/game gaps сохраняются. Полнаяприёмка455/M9 ещёвпереди.
 
 
 Историческая точка097 и её очередь (timer часть теперь выполнена098):

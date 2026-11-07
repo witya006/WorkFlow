@@ -15,6 +15,7 @@ public:
     virtual BOOL IsEqual(CBoardObject*);
     virtual CBoardObject* New();
     virtual CBoardObject* Clone();
+    void Copy455(const CBoardObject*);
     virtual BOOL IsEqualItemType(BYTE kind){return GetItemType()==kind;}
     // Compatibility discriminator for the still-unported mixed derived classes.
     // Base455 wrapper returns0;payload kind is GetItem455()->header().kind.
