@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+097 PARTIAL:ordinary CLinkBoard использует новый actualbanked window hierarchy,
+Init/Draw/layout/scale/bankcontrols/MouseEvent/PostMessage и bitmap numbers.
+21layout/1050icons/320cycle/48events/1792glyphcases/GUI observerqueue/8viewedGPU
+проходят.50actualclones/16realoriginals,096owners/094metadata(6byte-equalframes),
+hotbar/storage/account/newPE/Create1 pass. Пять кадров окна и три glyph frames
+не являются reference capture или whole-game acceptance. Use callback native
+recording;actual use/remove/swap/hover handlers/typedtimer/cooldown/livecallbacks/
+lock/Macro/Vending/fullAdd/bootstrap/Tutorial/Login/auth/game и прежние gaps
+обязательны. Negative50C signed-byte behavior сохранён поasm;unsafe domain не
+принят. Gate097 current,096 runtimehistorical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-linker-window.md).
+
+Исторический результат096:
+
 096 PARTIAL: actual CLinkBoard Add/Remove/Clear создаёт/удаляет typed clones,
 banked icons и registry links;50 реальных владельцев/3 просмотренных GPU,
 original-owner release/last-owner cleanup/Dmalloc и точная PE/Create1 проходят.

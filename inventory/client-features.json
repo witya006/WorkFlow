@@ -6,9 +6,21 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-LINKER-OWNERS-096",
+      "id": "CLIENT455-LINKER-WINDOW-097",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actualbanked455window replaces legacy8slots inordinaryCLinkBoard;Init-Draw-layout-controls-mouse dispatch andbitmapnumbers;fullgameplayhandlers stillopen",
+      "reference": [{"rva":"0x267770","role":"Init"},{"rva":"0x267c70","role":"scaled layout"},{"rva":"0x269570","role":"expanded hierarchy"},{"rva":"0x269190","role":"select bank"},{"rva":"0x2692e0","role":"sparse cycle"},{"rva":"0x2697c0","role":"mouse dispatch"},{"rva":"0x2428e0","role":"glyph mapping"},{"rva":"0x2429e0","role":"image-text draw"},{"rva":"0x242b50","role":"clipped persistent UV"},{"rva":"0x101beb","role":"signed bank-message JGE"}],
+      "implementation": ["scripts/native/client455_linker_window.h","scripts/native/client455_linker_window.cpp","scripts/native/client455_image_text.h","scripts/native/client455_image_text.cpp","scripts/native/client455_linker_owners.h","scripts/native/client455_linker_owners.cpp","scripts/client455_linker_window_port.py","scripts/prepare_client455_normal.py"],
+      "verification": "51equalranges/36functions/3509asm/14doubles/integergeometry/glyphMOVvalues/signed50Cbranch.21layout-1050icons/320sparsecycles/48events/1792glyphs/actualPostMessage/registeredGUIobserverqueue pass.50actualownedclones/16realoriginals;Potion11excludedwhilecooldownrefuses.8GPUframesviewed:5actualwindowstates+3glyphnormal-clip-afterclip states;Dmallocbalanced.096owners/094metadata fresh,6frames byte-equal;hotbar7/storage3/account/newPE9d8b57ad/entry155690/182-20-53/Create1pass. OrdinaryInit-Layout-MouseEvent/image-textdraw retained.IDAa69bf228+secondarymessage savedclosed/list0.No unchangedworld/audio/159k/bulk/095manualreruns.",
+      "evidence": ["inventory/client455-linker-window-reference.json","inventory/client455-linker-window-native.json","inventory/client455-linker-window-visual-review.json","inventory/client455-linker-window-checkpoint.json","research/client455-linker-window.md"],
+      "gaps": ["Actualitem-use/remove/swap/hoverhandlers andtypedtimer/cooldown/liveSF-Animus callbacks/lock stillopen;Use nativecallbackRECORDING,notgameplay","FullGUIItemcopy/emptychildren/followers/privateABI/resize-deviceReset-shutdown/unsafe-OOM-concurrency/completeimage-text allocator-numericdomains notaccepted","Negative50C storeslowBYTE aftersignedcomparison;no subsequentmalformedbank safetyclaim;targetclipformula/persistentV preserved","Legacykind/mixedcasts/Macro35/Vending27/fullCItemBoard.Add/bootstrap/SF-Quest/remainingboards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game/M6F/M7/M9 mandatory;096runtimegatehistorical/staticproofs retained"]
+    },
+    {
+      "id": "CLIENT455-LINKER-OWNERS-096",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-LINKER-WINDOW-097",
       "description": "Actual ordinaryCLinkBoard typed clone/icon/registration/removal owners in5x10window storage;fullwindow controls/layout/input notyetwired",
       "reference": [{"rva":"0x100570","role":"exist false"},{"rva":"0x100590","role":"clone bind register"},{"rva":"0x1007e0","role":"unregister clear delete"},{"rva":"0x268a90","role":"banked icon handoff"},{"rva":"0x268bd0","role":"banked icon empty"},{"rva":"0x267440","role":"bank-slot icon address"},{"rva":"0x64360","role":"SF nullable owner callback"},{"rva":"0x648b0","role":"Animus nullable owner callback"}],
       "implementation": ["scripts/native/client455_linker_owners.h","scripts/native/client455_linker_owners.cpp","scripts/native/client455_item_icon_members.inc","scripts/client455_linker_owners_port.py","scripts/prepare_client455_normal.py"],

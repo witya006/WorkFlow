@@ -1,0 +1,155 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual Linker window banked layout/controls/input dispatch and image-text glyph drawing;gameplay item actions/timers/livecallbacks stillopen",
+  "script_sha256": "7108927348d9e1fb4080ea0a325ea3ac89df078eb0b5143cba93814c48f01bb5",
+  "reference_sha256": "a38add8f533c404fc52708ee4cdd085bbfbe3317218383c1ca0e3e8cad211a1e",
+  "native_sha256": "529dbe1f9d7d1486ec6472446d76e51afc30b9e6324b06cecae1430d92dd5323",
+  "sources": [
+    {
+      "file": "scripts/native/client455_linker_window.h",
+      "sha256": "e0639e716b45815c0d8ca25ad6e1c4cec6826dcab654ebfad33047b3aaff457a"
+    },
+    {
+      "file": "scripts/native/client455_linker_window.cpp",
+      "sha256": "dea89ab4e15a7df551a6ecdd0bf084a5a6a6937e5ca5544054edabe32d82df0f"
+    },
+    {
+      "file": "scripts/native/client455_image_text.h",
+      "sha256": "b8f806614729c5aaef304cc16266b03beba44c8d1457415033867c0cbd722f39"
+    },
+    {
+      "file": "scripts/native/client455_image_text.cpp",
+      "sha256": "265e9523591bda9fbbc400d500bf8932d648784d173e6424df359851afb2ce1a"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.h",
+      "sha256": "aa67ee33212375add30f186547c65cd2ca77e505a8eb72514425adeb3a1b9c8b"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.cpp",
+      "sha256": "5c8fe600ce75822dd79c879454adcffcf90b16d99515a0f2fd7c146a15454fb1"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.h",
+      "sha256": "716318fd24b5ea7d37b666fd3cc857e2b59a097e1da75e7872d205663636a16c",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.h",
+      "input_sha256": "74d1d6439b5aa7a75e852c06f43c70f050f93097285d590b918562e52765cac5",
+      "changes": [
+        "455fifty-key delta upload state/API;fullLinker ownership/UI/input remains open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen",
+        "455banked Linker window layout/controls/input dispatch replaces old8slot view;fullgame item actions remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/clinkboard.cpp",
+      "sha256": "0eaf17a35b25d3263c2ce89c06214163a4cf9680b3e3867b87e252cb900f7757",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/clinkboard.cpp",
+      "input_sha256": "d4ef8c7e37cf7ff74b3e78606330111f90eef4eeff9aba908bc7e24f90f6d4df",
+      "changes": [
+        "ordinaryLinker FrameMove5second delta save/group13op17;other455frame/cooldown/UI/clone behaviors still open",
+        "455actual Linker typed clone/banked icon/registration/removal;fullwindow/livecallbacks remainopen",
+        "455banked Linker window layout/controls/input dispatch replaces old8slot view;fullgame item actions remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_linker_window.cpp",
+      "sha256": "dea89ab4e15a7df551a6ecdd0bf084a5a6a6937e5ca5544054edabe32d82df0f",
+      "input": "scripts/native/client455_linker_window.cpp",
+      "input_sha256": "dea89ab4e15a7df551a6ecdd0bf084a5a6a6937e5ca5544054edabe32d82df0f"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_image_text.cpp",
+      "sha256": "265e9523591bda9fbbc400d500bf8932d648784d173e6424df359851afb2ce1a",
+      "input": "scripts/native/client455_image_text.cpp",
+      "input_sha256": "265e9523591bda9fbbc400d500bf8932d648784d173e6424df359851afb2ce1a"
+    }
+  ],
+  "session": {
+    "file": "artifacts/client455-progress/linker-window097-session.json",
+    "sha256": "cd7d6e349e9a581000ab4394c098d8d846c6077f4d34c05925eab78cc188efc5"
+  },
+  "normal_link_sha256": "6da5b378584da83fc70a6c9fb6974a6938bd5e3f993e9d23fc706db424b2b133",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "9d8b57ad0ebb735aea477d99c9eebff05381d359f3086e7e137f6fbbfb702622",
+    "bytes": 2121216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x155690",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "8d49af8d1d9c9ec821fa49c986d2ab7c521128cbf21b24e1d5281d9a88a2b106",
+    "client455-normal-build": "cb4c4b73ff9df9622664d44e533ccc44ec1fdef5d64ede01ffe05fa0298b0ab8",
+    "client455-normal-consumers": "afa5b9156a8840221d8223c1d26bbce99d9887215b4aa75ac205034dd29992a2",
+    "client455-own-entry": "a26d56c86070671a3b3fedb631d403e110863b1ff059cd2157c867245bc4d0bf",
+    "client455-startup-audit": "3c07e59885771aa5f23385893e4460257877a96577490216055683560ade1bca",
+    "client455-startup-native": "a5d898e2e9df4a577268b4ec4cf3bd0b48a4f55a03acf593b16c16c0b5013f2b",
+    "client455-ui-startup-native": "3f6bb2b14b98c5f28aa64c5c81914710e53e5669faae46c64933d6cbfa7fae85",
+    "client455-hotbar-native": "e755b56bc595cdeabb512994a8f8677d4a837f1f5f66f7f978ec6f27f465d3f9",
+    "client455-storage-native": "6522b6a12a0beb65b961776b24d56b34d3ae9e536193b2eed95b016d23dc4b38",
+    "client455-account-native": "278831c159f284f51ad3fc535a8008f4df9bbe9a6ba77d5eeb36ee0c1bc305d7",
+    "client455-item-icon-metadata-native": "2b35b43a943d55fb935277bdb3ff80da46617d9f76ef049bef6910724523c379",
+    "client455-linker-owners-native": "4875788ec3ff5b362c4f31d3475c9a8d9d3efc4e6d4f9d36afb255c82a638031",
+    "client455-linker-window-visual-review": "ab04dab28cc2e52b1d42cdef7475b5c8181cd53ea32c606e34ba931946f972fd"
+  },
+  "selected_ranges": 51,
+  "assembly_instructions": 3509,
+  "layout_cases": 21,
+  "actual_icon_geometry": 1050,
+  "cycle_cases": 320,
+  "event_cases": 48,
+  "glyph_cases": 1792,
+  "viewed_GPU_frames": 8,
+  "ordinary_window_binding": true,
+  "gameplay_use_callback_recording": true,
+  "actual_gameplay_item_actions": false,
+  "inherited_visual_evidence": [
+    {
+      "current": "client455-linker-owners-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/linker-owners096-before097.json",
+        "sha256": "f980bf18e720da0bc7c961c3cafcbb50ce10f585494eef93365b845299f06661"
+      },
+      "visual": {
+        "file": "inventory/client455-linker-owners-visual-review.json",
+        "sha256": "ef2569d2461f7be5fe0ec69e4dd1f72217bc3c5ee58cf307314982c2a5fc564a"
+      },
+      "raw_frames_byte_equal": true
+    },
+    {
+      "current": "client455-item-icon-metadata-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-metadata094-before095.json",
+        "sha256": "3ccdead0d6bd69946c73a16323e3d539a608164754cbfaef698c265d54f545b8"
+      },
+      "visual": {
+        "file": "inventory/client455-item-icon-metadata-visual-review.json",
+        "sha256": "1a64b6a636e8eb343797f1b094b8aa22c33e3d89d49e7170cca41f87ad1e1ffc"
+      },
+      "raw_frames_byte_equal": true
+    }
+  ],
+  "previous096gate": "historical runtime after source/link/reports changed;static ownership proofs retained",
+  "unchanged_world_audio_159k_093atlas_092icon_2013owner_1447SF_095manual_suites_rerun": false,
+  "gaps": [
+    "Full privateGUIItem/Window ABI,unsafe zero-width image-text/OOM/concurrency/reset/lifetime domains notaccepted",
+    "Window emits455messages;complete CLinkBoard item-event handlers/use/cooldown/typed timer/liveSF-Animus callbacks/lock stillrequired;typed timer callers explicitlyrefuse",
+    "CGUIImageText clipped formula preserves target observed behavior;all numeric/allocator/error domains notaccepted",
+    "Untyped legacy/mixedkind callers/Macro35/Vending27/fullCItemBoard.Add/bootstrap/remainingboards/Trunk/protocol/Tutorial/Login/auth/game/M6F/M7/M9 remainmandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

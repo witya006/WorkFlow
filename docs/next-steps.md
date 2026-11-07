@@ -7,31 +7,31 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-096: actual CLinkBoard Add/Remove/Clear typed ownership подключён.50 clones/icons
-в5×10 storage реального window member;registryregister/unregister теперь retained
-и actualLinkerbound в ordinaryPE. Originalrelease/lastowner/3 просмотренных GPU,
-095registry/094metadata(6byte-equalframes),hotbar/storage/account и новая
-PE613a6e97…/entry153bd0/182-20-51/Create1 проходят. IDAbb7e4b5eclosed/list0.
-Current gate:inventory/client455-linker-owners-checkpoint.json;095 runtimehistorical.
-Fullwindowdrawing/layout/input/livecallbacks ещё open;4missingproviders явно
-refused. SF/AnimusCPU icons synthetic;не выдавать их за полные originalwindows.
-[Доказательства](../research/client455-linker-owners.md).
+097: actualbanked window вместо legacy8slots,Init/Draw/layout/scale/controls/
+MouseEvent/PostMessage/bitmapnumbers подключены.21layout/1050icons/320cycles/
+48events/1792glyphs/actualGUIobserverqueue/8просмотренныхGPU pass.16actualoriginals/
+50admittedclones.096owners/094metadata fresh,6frames byte-equal;hotbar/storage/
+account/newPE9d8b57ad…/entry155690/182-20-53/Create1 проходят. IDAa69bf228+message
+savedclosed/list0. Currentgate:inventory/client455-linker-window-checkpoint.json;
+096runtimehistorical. NativeUse callback recording,actualitemactions ещёOPEN.
+[Доказательства](../research/client455-linker-window.md).
 
-Далее097: actualCGUILinkWindow Init/scale/layout5×10/bankcontrols/selection/MsgProc,
-подключить bankedicons к ordinarydrawing/input вместо legacy8slots. Затем full
-GUIItemcopy/emptychildren/timer/lock/followers/cooldown,liveSF/Animusowner callbacks.
-Exploratorydecomp saved (ещё не asm/pincomplete) в ignored artifacts/client455-
-progress/linker-window096-exploration.json:667770/667980/667C70/669410/669570/669190,
-Macro4F3240/4F3440,callbacks6C6A80/6AEF80,cooldown501C30. Scale1 сейчас admitted;
-target min(width/1024,1). Earlytypeddestructorcleanup/emptyfields не fullshutdown.
-Macro35specialtextkind7 и Vending27 mandatory до fullCItemBoard.Add479320
-notifications/cooldown/grade/quantity;потом normaltablebootstrap. Не подставлять
-успешные no-op. Согласованно переносить wrapperkind/mixedcasts. Удалять registration
-до keychange/destruction;сохранять известный unsafe erase(end()) разрыв095.
-Остальные SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game
-gaps обязательны. Не повторять unchangedworld/audio/159k/093atlas/092icon/
-2013owner/SF1447bulk без нового риска.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_linker_owners.py.
+Далее098: восстановить actualCGUITimer/typedGUIItemtimer state/copy/reset/draw/
+fanout,Linkercooldowncache и actualhandlers455use/remove/swap/hover. Покаtyped
+timercallers явноthrows,не ложныйуспех. Новыйwindow ужеэмитирует455codes(504/
+510/512/3327...),не менять globallegacy enums без согласованного consumer port.
+Negative50C имеетsignedJGE/lowBYTE semantics;не"исправлять" его вunsignedguard.
+Timer exploratorydecomp (неasm/pincomplete) в ignored artifacts/client455-progress/
+linker-timer097-exploration.json:61BC20fanout->61BCB0;41EED0->41EF00started+216;
+629880обнуляет дополнительные targetfields. Legacytimer не считать эквивалентным.
+Потом liveSF/Animuscallbacks/flag21lock/fullcopy-emptychildren/followers,
+Macro35specialtextkind7 и Vending27 обязательны до fullCItemBoard.Add479320
+notifications;затем normaltablebootstrap. Fullresize/deviceReset/windowlifecycle/
+privateABI/unsafe/OOM/concurrency ещёOPEN. Согласованно переносить wrapperkind/
+mixedcasts;не подставлятьsuccessfulno-op. ОстальныеSF/Quest/36boards/Trunk/
+protocol/Tutorial/QBI/fourstage/Login/auth/game gaps mandatory. Не повторять
+unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447/095manual безновогориска.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_linker_window.py.
 
 Предыдущий перенос090:
 

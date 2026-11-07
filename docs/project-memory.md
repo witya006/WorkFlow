@@ -23,6 +23,65 @@
 
 ## Последний проверенный результат
 
+097 PARTIAL. Current gate inventory/client455-linker-window-checkpoint.json.
+ActualCLinkBoard embeds CGUILinkWindow455 (old8slotview no longer actualmember),
+constructorbindsowner,InitWindowcallsactualInit/bottomright,bank50C updatesactual
+boardactivebank. Window hierarchy attaches real50iconowners096 to5bankcontainers,
+mainrow,expand/all/prev-next/pin/select controls and bitmapglyphs. Layoutscale
+min(width/1024,1);main481x46,row461x46,icon38,offset24,step44. Preservetruncation
+AFTER origin+offset fornegativepositions. Expandedactivebankinmainrow,otherraw
+nonzero flags0..4 stackup;cyclechecks4neighbors. Flags rawintnotbool.
+
+Window MouseEvent/PostMessage codes455:drag502,Alt512,Ctrl510,left504,hover501,
+Shift-right3327;right noShift/noDrag delegatesrealboardUseRequest. NativeUse
+callback RECORDING subclass,notgameplay;fullitemhandlers/typedtimer stillopen.
+Registeredobserver verifiedvia actualSendMouseEvent->GUIqueue->MouseEvent.
+LegacyCGUISFItemtimer checks cannotcastnewCGUIItem;RF455_LinkerIconDelaying455
+explicitlythrowsfortypedtimer untilrealproviderrestored,keepslegacyderivedquery.
+No false-success timer. Target50C signedJGE atRVA101beb acceptsnegativeLPARAM
+thenstoreslowBYTE;-1->255/-255->1tested. Sourceunsignedguardcorrected. Window
+SelectBankBYTE rejects>=5;malformedboardbank subsequentuse notaccepted.
+
+CGUIImageText455 readsrealatlas1/action7/frame3/cell7x9,numbersffcabaa6. Unknown/
+out-of-sheetglyph255keepsblankposition;realzh-twframe lacksall19codes. Glyphmap
+MOVoperandschecked. ClippedDrawpreservesobservedtargetnonidealUVandpersistentV
+usedbynextnormalDraw;doNOT"fix" clippingformula silently. Fullallocator/numeric/
+unsafezero-width/privateABI stillopen. Windowuseslocalizedzh-tw/main.spr and
+common.spr,notCommonversions. SourcepixelreviewdoesnotexecutereferenceEXE.
+
+51equalranges:36functions/3509asm+14doubles+21byte50Cbranchwindow;integergeometry
+and9glyphMOVvaluesdecoded.21layout/1050actualicons/320sparsecycles/48events/
+1792glyphs and8GPUframesviewed:5windowstates+normal/clip/afterclip text.16real
+inventoryoriginals/50actualadmittedclones;Potion11excludedfromwindowfixturedue
+requiredcooldownproviderrefusal096. ActualInitWindow/Draw/banknotifications/
+ownerrelease/Dmallocpassed. IDAa69bf228andsecondarymessage session savedclosed/
+list0. Rawref linker-window097-reference.json/message-assembly.json inartifacts.
+
+096owners50 and094metadata566/race520/16icons repeated,newfacade;6rawframes
+byte-equalpreviousreviews. Baseline096 artifacts/client455-progress/linker-
+owners096-before097.json;metadataoriginal094 unchangedbaseline. Hotbar7/storage3/
+account/newexactPEearly/Create1pass. PE SHA
+9d8b57ad0ebb735aea477d99c9eebff05381d359f3086e7e137f6fbbfb702622,
+2121216bytes/x86/entry155690/WinMainb73e0/afterCreateb754a,182/20/53TU,
+0unresolved/engine082unchanged. NormalInitc6d50/Layoutc6f90/MouseEventc7570,
+ImageTextDrawcfe60/clipcfcc0 retained.096runtimegate historical/staticproofs
+retained. No unchangedworld/audio/159k/093atlas/092icon/2013owner/SF1447/095manual
+reruns. AllpriorM6/M6F/M7/M9gapsmandatory. Progress,notblocked/notcomplete.
+
+Next098: actualCGUITimer/typedGUIItemtimer state/copy/reset/draw/fanout,
+Linkercooldowncache andactualnew455item-use/remove/swap/hoverhandlers. Then
+liveSF/Animus source-boardcallbacks,flag21lock/remainingchildren/followers,
+Macro35specialtextkind7/Vending27/fullCItemBoard.Add notifications andnormal
+tablebootstrap. Coordinatewrapperkind/mixedcasts. Savedexploratorytimerdecomp:
+artifacts/client455-progress/linker-timer097-exploration.json.61BC20self+registry
+fanout calls61BCB0;41EED0->41EF00readstartedofchild+216.629880clears96/100/104/
+108/double112/float120;legacytimerlayout/methods differ,verifybeforeborrowing.
+Fullresize/deviceReset/windowlifecycle/privateABI/unsafe/OOM/concurrency still
+open;remainingboards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game remain
+required. Research research/client455-linker-window.md.
+
+Исторический результат096 (runtime gate historical after097):
+
 096 PARTIAL. Current gate inventory/client455-linker-owners-checkpoint.json.
 Actual CLinkBoard.Add/Remove/Clear typedhooks nowclone/own CBoardObject wrappers,
 windowmember RF455LinkerIconSlots owns50CGUIItem. Real5banks/10slots storage;

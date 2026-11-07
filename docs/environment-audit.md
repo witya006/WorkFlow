@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, linker-window097:51 equal ranges/36functions/3509asm/14doubles/
+signed50C branch. ActualCLinkBoard window member заменён на banked455 view;
+21layout/1050icons/320cycles/48events/1792glyphs/8 просмотренных GPU проходят.
+096owners/094metadata fresh,6rawframes byte-equal;hotbar/storage/account/newPE
+9d8b57ad…/entry155690/182-20-53/0unresolved/Create1 pass. IDAa69bf228 и message
+session savedclosed/list0. Новых установок нет;originals/server без изменений.
+Fullgame actions/timers/livecallbacks/Macro remainopen;Use nativecallbackrecording.
+Gate097 current,096 runtimehistorical;unchangedworld/audio/159k/bulk не повторены.
+[Доказательства](../research/client455-linker-window.md).
+
 Дополнение07.11, linker-owners096:21 equal ranges/1105asm;IDA bb7e4b5e savedclosed,
 list0. Actual CLinkBoard Add/Remove/Clear/50clones/5×10/window icon owner/registry
 и3 просмотренных GPU проходят. NormalPE613a6e97…/entry153bd0/182-20-51/0unresolved/

@@ -1,5 +1,19 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — Linker-window097. ActualCLinkBoard now embeds banked455window,
+ordinaryInit/Draw/layout/scale/controls/MouseEvent/PostMessage/bitmap numbers.
+51equalranges/36functions/3509asm/14doubles plus signed50C JGEwindow.21layout/
+1050icons/320cycles/48events/1792glyphs/realGUIobserverqueue/8viewedGPU pass.
+16actualoriginals/50admittedclones;Potion11excludedwhilecooldownrefuses.Use native
+recording,notactualgameplay.096owners/094metadata fresh,6rawframes byte-equal;
+hotbar7/storage3/account/newPE9d8b57ad/entry155690/182-20-53/Create1pass.
+Image-text clipformula andpersistentV preserved;negative50C storeslowBYTE after
+signedcomparison,correctedfromunsignedguard. Typedtimer/livecallbacks/fullactions/
+lock/Macro/Vending/fullAdd/bootstrap remainopen. IDAa69bf228+message savedclosed/
+list0;no newinstalls/serverwrites/inputEXEs or unchangedworld/audio/159k/bulkreruns.
+Gate097 current,096runtimehistorical;next098timer/cooldown/actualhandlers.M9OPEN.
+[Evidence](research/client455-linker-window.md).
+
 2026-11-07 — Linker-owners096. OrdinaryCLinkBoard Add/Remove/Clear now clone/own
 typed wrappers and bankedwindow icons,register/unregister via095.21equalranges/
 1105asm;50ownedclones/5x10/originalrelease/lastowner/destructor/3viewedGPU pass.

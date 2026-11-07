@@ -12,6 +12,16 @@
 
 ## Текущий статус
 
+097: actualокно панели быстрого доступа5×10 включено вместо legacy8slots.
+Раскрытие/выбор/закрепление/масштаб/ввод/номера и8просмотренных GPU проходят;
+владельцы/инвентарь/сеть и новая PE/Create1 сохранены. Игровые actions/timer/
+cooldown/livecallbacks ещё открыты. Далее098 — эти обработчики,затем Macro/
+Vending/fullAdd/normalbootstrap. Gate097 current,096 runtimehistorical.
+M6/M6F/M7/M9 открыты;общего процента пока нет.
+[Доказательства](../research/client455-linker-window.md).
+
+Исторический результат096:
+
 096: ordinary CLinkBoard подключён к clone/icon/registry ownership.50 копий,
 удаление оригинала/очистка,3 просмотренных GPU и новая PE/Create1 проходят.
 095registry/094inventory сохраняют все6 кадров. Полное окно/ввод/live callbacks/

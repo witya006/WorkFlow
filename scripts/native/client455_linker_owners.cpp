@@ -20,7 +20,7 @@ BOOL RF455LinkerIconSlots::takeIn(BYTE bank,BYTE slot,CGUIItem* source){
     icon->SetData(source);
     //61AA10 finishes by reapplying the destination position to its children.
     icon->SetPos(icon->m_ptPos.x,icon->m_ptPos.y);
-    icon->SetSize(38,38);icon->SetRefItem(nullptr);return TRUE;
+    icon->SetSize(Size455(),Size455());icon->SetRefItem(nullptr);return TRUE;
 }
 BOOL RF455LinkerIconSlots::takeOut(BYTE bank,BYTE slot){
     auto* icon=get(bank,slot);if(!icon)return FALSE;

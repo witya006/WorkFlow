@@ -1,0 +1,86 @@
+{
+  "native_sha256": "529dbe1f9d7d1486ec6472446d76e51afc30b9e6324b06cecae1430d92dd5323",
+  "script_sha256": "e04090ea0ef81f82788552e8ba1726249c7b07501801b72b95790fb29f717219",
+  "sheet": {
+    "file": "work/m9/49a3438e/linker-window-001/window-contact.png",
+    "sha256": "125e997e7362b83d601242e99ba1c011a2d3a3d44db77da08ccf03505fecfec1"
+  },
+  "frames": [
+    {
+      "file": "work/m9/49a3438e/linker-window-001/glyph-after-clip.bgra",
+      "sha256": "1d2f972f85ef1e90b83dc61b768c3aee439e62d7c56f2de3a948576e5f93aff9",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/glyph-after-clip.png",
+        "sha256": "2fb37d1cd08fff171388847d0f048e5cba59009c1d1a15701ce2aefcdb398b39"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/glyph-clipped.bgra",
+      "sha256": "0ea2c0a919cee86888a29c4d5876627d1820331b7dd3b0a645e739c7db718864",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/glyph-clipped.png",
+        "sha256": "e06156e62cd42f4b123f265b8340918332a65880fb007112e0c4a67e8851b06f"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/glyph-normal.bgra",
+      "sha256": "3e2026589f87d304c5f2251ab32d1e39d449f919997bfed81276673e25881b43",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/glyph-normal.png",
+        "sha256": "2d794b451761801d0e0ff34f82944c22ae8d1e02aa9138f85036269178a28d7f"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/window-collapsed.bgra",
+      "sha256": "ad8447d5ae4be266e5b1617b8919d07a57fdfb8d5f5fc7386d785a1179418be5",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/window-collapsed.png",
+        "sha256": "dd9ee78393da587fa8ba93cb1e53a76deac781ce3e6e0f6e0e31b7f3a8df3e4c"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/window-expanded.bgra",
+      "sha256": "2d99b9d18caea1067c756e3f3c1b580d2dcc5cffef03991bb39201ff8cb597c8",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/window-expanded.png",
+        "sha256": "fb1555abfec92f4371575d2144b8c928844ca5eca5ec10dbf3cc41255ed29878"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/window-pinned-subset.bgra",
+      "sha256": "1666fcc1235a4bfddb1546ecdcaf85c6a24e29818c8a2a99add441ead6a09b17",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/window-pinned-subset.png",
+        "sha256": "89b6a1f3f71b59bb6fed0dd573ffc2558d162f152ea1d287455b0b2079e1aeba"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/window-scaled640.bgra",
+      "sha256": "b05a3e3516498623256d27063dde9ccd5dd2c80a46ec4c62a4d711b11e5e00aa",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/window-scaled640.png",
+        "sha256": "161053d650bb4169632e2051d119d8631a4a604e4f2b375ccce82ec152523dae"
+      }
+    },
+    {
+      "file": "work/m9/49a3438e/linker-window-001/window-selected3.bgra",
+      "sha256": "33c0ca251274ecfd9a24c6dc28133ea466fe565bf7c0c47e05485ff681d5e0cd",
+      "preview": {
+        "file": "work/m9/49a3438e/linker-window-001/window-selected3.png",
+        "sha256": "4bf1c9d82187f459877f3b03fc2ef37435162d827fc59d51bf16f03ba4170e64"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 8,
+  "observations": [
+    "Ordinary CGUIWindow hierarchy draws the real455main/common sprites,bank glyphs and actualowned item icons",
+    "Collapsed and five-bank expanded layouts,selection3,pinned subset and640-width scaling are visible",
+    "Fixture uses16actualinventory originals and50admitted clones;Potion11 icons are excluded because their cooldown provider explicitlyrefuses",
+    "Image-text draws mapped symbols with a gap for an unknown character;clipping changes UV state retained by the following normal draw"
+  ],
+  "reference_executable_capture": false,
+  "actual_gameplay_item_actions": false,
+  "full_Linker": false,
+  "full_client": false
+}
