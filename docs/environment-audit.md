@@ -1,5 +1,18 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, effect-resources105: native IDA MCP подтвердил14 полных
+функций/1315 инструкций/14 равных диапазонов и41-byte initializer обеих455;
+session e536890b saved/closed/list0. Новых установок нет. Ordinary effect archive
+owner/selection работает; реальные6 R3E models/5 particle recipes/10 clones
+и D3D textures загружены.66 checks проходят.6 legacy R3T warnings остаются
+gap;9728 байт process-owned texture tables отдельно освобождены public API
+в стенде,Dmalloc balanced. Full GPU effect/FrameMove/nuclear ещё OPEN.
+Новая PE015a25c2…/entry15a320/182-20-59/unresolved0/Create1/Fast2D ready:7969;
+magic36/status58/audio157/account/hotbar7/storage3 и6 viewed byte-equal104
+hover frames проходят. Engine546a… неизменён. Original/server не менялись,
+input EXE не исполнялись. Gate105 current,104 historical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-effect-resources.md).
+
 Дополнение07.11, magic104: установленный native IDA MCP дал19 полных функций,
 2988 инструкций,19 равных диапазонов и41-byte initializer обеих455; session20a3b068
 saved/closed/list0. Новых установок нет. Own parser64/process3004/EffectInfo56/

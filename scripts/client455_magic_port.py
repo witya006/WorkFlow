@@ -65,8 +65,36 @@ def port_magic(raw,relative,native,section):
         old=b'IsExistFile(path)'
         if raw.count(old)!=1:raise ValueError('Magic cache resource existence')
         raw=raw.replace(old,b'RF455_ResourceExists(path)')
+        once(b'\t\tif( !RF455_ResourceExists(path))',
+             b'\t\tRF455_SetResourceGroup(GetEffectResourceGroup455());\r\n\t\tif( !RF455_ResourceExists(path))')
         old=b'stMagicList[stMLcnt].mMagicPtr=get_magic;'
         if raw.count(old)!=1:raise ValueError('Magic cache zero-track boundary')
         raw=raw.replace(old,old+b'\r\n\tif(!get_magic->mTrackNum)return 0;')
+        return raw,True
+    if relative=='addcodebyjang/effectentitylist.h':
+        raw=b'struct RF455_RpkGroup;\r\nRF455_RpkGroup* GetEffectResourceGroup455();\r\n'+raw
+        return raw,True
+    if relative=='addcodebyjang/effectentitylist.cpp':
+        raw=b'#include "client455_resource_io.h"\r\n'+raw
+        anchor=b'static DWORD stEntityNum;'
+        at=raw.index(anchor)
+        end=raw.index(b'\n',at)+1
+        raw=raw[:end]+b'''\r\nnamespace {\r\nstruct EffectResourceGroup455 : RF455_RpkGroup {\r\n    ~EffectResourceGroup455(){Release();}\r\n};\r\nEffectResourceGroup455 effectResources455;\r\n}\r\nRF455_RpkGroup* GetEffectResourceGroup455(){return &effectResources455;}\r\n'''+raw[end:]
+        once(b'stMaxEntityNum=768;',b'stMaxEntityNum=768;\r\n\tif(stEffectEntityList)Dfree(stEffectEntityList);')
+        once(b'memset(stEffectEntityList,0,sizeof(_EFFECT_ENTITY_LIST)*stMaxEntityNum );',
+             b'memset(stEffectEntityList,0,sizeof(_EFFECT_ENTITY_LIST)*stMaxEntityNum );\r\n\teffectResources455.Release();\r\n\teffectResources455.LoadDirectory(".\\\\effect\\\\");')
+        import re
+        raw,count=re.subn(rb'(void ReleaseEffectEntityList\(\)\r?\n\{)',
+                          rb'\1\r\n\teffectResources455.Release();',raw)
+        if count!=1:raise ValueError('Effect group release entry')
+        once(b'\t\tif( stEffectEntityList[real_id].Entity->LoadEntity(',
+             b'\t\tRF455_SetResourceGroup(&effectResources455);\r\n\t\tif( stEffectEntityList[real_id].Entity->LoadEntity(')
+        once(b'\t\tif(!particle->LoadParticleSPT(',
+             b'\t\tRF455_SetResourceGroup(&effectResources455);\r\n\t\tif(!particle->LoadParticleSPT(')
+        # Target clears NO_LOOP/END only in the finite-emission branch. An
+        # always-live template retains its flags, including a pre-existing END.
+        once(b'flag = (flag&~_PARTICLE_ATTR_END);',b'// 455: preserve flags outside the finite-emission branch.')
+        once(b'particle->SetParticleAttr(_PARTICLE_ATTR_NO_LOOP|flag);',
+             b'particle->SetParticleAttr((flag&~(_PARTICLE_ATTR_END|_PARTICLE_ATTR_NO_LOOP))|_PARTICLE_ATTR_NO_LOOP);')
         return raw,True
     return raw,False

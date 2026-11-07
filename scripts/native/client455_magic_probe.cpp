@@ -36,7 +36,7 @@ static int run(){
     initial.unknown48_455=123;initial.unknown52_455=456;initial.SetMyself(nullptr);initial.SetTarget(nullptr);
     check(initial.unknown48_455==123&&initial.unknown52_455==456,"existing effect setters preserve newtail");
     InitR3Engine();SetWarningMessageProc(warning);const auto baseline=GetDmallocSize();
-    RF455_RpkGroup group;group.LoadDirectory(".\\Effect\\");check(group.count==1,"actual archive group");auto* previous=RF455_SetResourceGroup(&group);
+    RF455_RpkGroup group;group.LoadDirectory(".\\Effect\\");check(group.count==1,"actual archive group");auto* previous=RF455_GetResourceGroup();RF455_SetResourceGroup(&group);
     CreateEffectsList(".\\Effect\\EffectEntityList.spt");CreateMagicSptList(".\\Effect\\MagicSptList.spt");
     check(IsExistFromMagicSpt(1358041136)!=0,"actual cue mapping");
     CProcessMagic cue;std::memset(&cue,0,sizeof(cue));cue.mFlag=0x12345678;cue.mState=0xabcdef55;

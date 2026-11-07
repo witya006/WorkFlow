@@ -1,5 +1,17 @@
 # RF Online client reconstruction journal
 
+Работа105 — 105 PARTIAL: восстановлен штатный владелец архивов Effect и автоматический
+выбор группы при запуске эффекта/первой загрузке entity и particle. Обычный
+прицел читает настоящий cue и загружает6 моделей/5 particle recipes/10 clones
+с реальными D3D текстурами.66 проверок проходят;6 legacy R3T release warnings
+и полный FrameMove/render остаются открытыми. Глобальные texture tables
+освобождает отдельный owner: в стенде память возвращается к исходной.
+PE015a25c2…/entry15a320,182 client/20 kernel/59 facade,unresolved0/Create1.
+Magic36/status58/audio157/account/hotbar7/storage3 и6 просмотренных hover кадров
+сохранены; кадры побайтно равны104. Gate105 current,104 historical.
+M6/M6F/M7/M9 OPEN. Полное ядерное прицеливание ещё не принято.
+[Доказательства](research/client455-effect-resources.md).
+
 Работа104 — 104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
 выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
 скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.

@@ -6,9 +6,60 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-MAGIC-104",
+      "id": "CLIENT455-EFFECT-RESOURCES-105",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary client effect archive owner/bootstrap/selection, real six-model aiming dependencies and D3D texture restoration; full effect world runtime and nuclear owner remain open",
+      "reference": [
+        {
+          "rva": "0x3e4840",
+          "role": "table and archive bootstrap"
+        },
+        {
+          "rva": "0x3e4bc0",
+          "role": "release"
+        },
+        {
+          "rva": "0x3e4390",
+          "role": "lazy entity"
+        },
+        {
+          "rva": "0x3e4590",
+          "role": "particle template/clone"
+        },
+        {
+          "rva": "0x3d8970",
+          "role": "ordinary start selects group"
+        },
+        {
+          "rva": "0x689590",
+          "role": "static group initializer"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_magic_port.py",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "14 functions/1315 instructions/14 equal ranges plus initializer. 66 native checks, actual6 models/5 recipes/10 clones/D3D textures; GPU handles released, global texture tables9728 bytes separately torn down in lab. Six legacy R3T warnings unaccepted. PE015a25c2/182-20-59/unresolved0/Create1. Magic36/status58/audio157/account/hotbar7/storage3/six viewed byte-equal hover frames pass; other32 GUI and bulk suites not rerun.",
+      "evidence": [
+        "inventory/client455-effect-resources-reference.json",
+        "inventory/client455-effect-resources-native.json",
+        "inventory/client455-effect-resources-checkpoint.json",
+        "research/client455-effect-resources.md"
+      ],
+      "gaps": [
+        "Full effect FrameMove/matrices/entity/particle/render/axis/blur/parabola/multi dispatch and device reset remain unaccepted",
+        "Nuclear owner pending/position/cancel/tagged sound/messageC1A and hover truepredicate remain unported",
+        "Group enumeration order/first FindFirst omission/unsafe names/over255 archives/OOM are inherited bounded-contract gaps",
+        "Reinitializing a table with cached entities preserves target table-only-free leak; zero-record table/failed reads/global shutdown need broader acceptance",
+        "Six legacy R3T release warnings observed; GPU handles do release, but target warning parity is unverified. Global texture tables9728 bytes need separate process-owner teardown, performed explicitly by the lab",
+        "Other caches/resource groups/private ABI/EffectInfo tail semantics and all previous client-acceptance gaps remain mandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-MAGIC-104",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Client magic64/process3004/EffectInfo56/runtime456/parser/selector/control and real archived aiming cue through ordinary cache; full rendering and nuclear owner open",
       "reference": [
         {

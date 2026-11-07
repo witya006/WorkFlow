@@ -1,0 +1,174 @@
+{
+  "status": "PARTIAL",
+  "scope": "Client-owned effect RPK group bootstrap/release/selection and actual lazy entity/particle cache; full effect world runtime open",
+  "script_sha256": "0ab3c0722ca773f8f2dfc0d8f15dcdefd8e361f24b9ab04e6e7feb17c260dfb0",
+  "session": {
+    "file": "artifacts/client455-progress/effect105-session.json",
+    "sha256": "457225cb93c13d8ad9faaa8b2c36ab2e09182bbf1434f627e18d53b946208e18"
+  },
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/addcodebyjang/effectentitylist.h",
+      "sha256": "abc0e3be70316d3623b50fc474f281c104e78cbfedf76c13f5637a03e253014a",
+      "input": "work/client455-port/source/RF_Client/addcodebyjang/effectentitylist.h",
+      "input_sha256": "f148e6ab07810502e88db51ad87599e79cd8856002a942772dd61bc990297d9b",
+      "changes": [
+        "455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/addcodebyjang/effectentitylist.cpp",
+      "sha256": "ba5abb5f20079123f3c78be7f8d7cf1fe44cc2a0e45cf5c525308be267ec5a20",
+      "input": "work/client455-port/source/RF_Client/addcodebyjang/effectentitylist.cpp",
+      "input_sha256": "dcfefe69fc13add750584960b33cfba4491edb58a954afb4508dbf8921ca0810",
+      "changes": [
+        "455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/addcodebyjang/effectcore.cpp",
+      "sha256": "6ea8f681fcf8bfe4978dcf50522a8917100b7d2f2224287da5b5690b1b136280",
+      "input": "work/client455-port/source/RF_Client/addcodebyjang/effectcore.cpp",
+      "input_sha256": "46c80444e05abd90d5d6cc7104520dfeb4c7ba505b40357fde3d07da0d8f07ce",
+      "changes": [
+        "455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen"
+      ]
+    }
+  ],
+  "retained": {
+    "GetEffectResourceGroup455": "GetEffectResourceGroup455@@YAPAURF455_RpkGroup@@XZ 00462460 f   effectentitylist.obj",
+    "LoadEffectEntityList@@": "LoadEffectEntityList@@YAXPAD@Z 00462a40 f   effectentitylist.obj",
+    "ReleaseEffectEntityList@@": "ReleaseEffectEntityList@@YAXXZ 00462d30 f   effectentitylist.obj",
+    "GetEntityFromEffectEntityList@@": "GetEntityFromEffectEntityList@@YAPAVCEntity@@K@Z 00462470 f   effectentitylist.obj",
+    "GetParticleFromEffectEntityList@@": "GetParticleFromEffectEntityList@@YAPAVCParticle@@KQAY03M@Z 004627d0 f   effectentitylist.obj",
+    "StartMagicEffect@@YAKQAMMKPAXK@Z": "StartMagicEffect@@YAKQAMMKPAXK@Z 00461fd0 f   effectcore.obj"
+  },
+  "normal_link_sha256": "e44a777a89b2a99172b2980518ee809b3ac6e47e5860e11fb8c22d29d8bd0b11",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "015a25c2b580ea606652fdfd82cf17d5b0b0de8e25920203b7722b64ea2750db",
+    "bytes": 2154496,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x15a320",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "effect-resources-reference": {
+      "file": "inventory/client455-effect-resources-reference.json",
+      "sha256": "97c3ba182b1e6fe97d976e6ac0ebbe78da0754ec3e1ee92ab9dcc8c3a124d532"
+    },
+    "effect-resources-native": {
+      "file": "inventory/client455-effect-resources-native.json",
+      "sha256": "e3e4d67eabb7ea295aea8e5bfc346c38806880573ac2cf01c7708ce16a9112c4"
+    },
+    "magic-native": {
+      "file": "inventory/client455-magic-native.json",
+      "sha256": "8e2f6d296b977e5a86c515c928c7f304fbb81e8f49e64993c946cf73760ede3b"
+    },
+    "player-status-native": {
+      "file": "inventory/client455-player-status-native.json",
+      "sha256": "2950ed6b5bd97805c2969e3ab09eef07357ada7b700d017d61678ee206acdde7"
+    },
+    "tagged-audio-native": {
+      "file": "inventory/client455-tagged-audio-native.json",
+      "sha256": "a6041668e6b0280c6a8800b918033516bfb63cd2e6b33f76c467bba330578769"
+    },
+    "board-hover-native": {
+      "file": "inventory/client455-board-hover-native.json",
+      "sha256": "77206afb373e95a457559b4bf818e63dfa85c2562d7081fc4089be1b56fd4db1"
+    },
+    "board-hover-visual-review": {
+      "file": "inventory/client455-board-hover-visual-review.json",
+      "sha256": "aa08e0bda32956842a7301ba11cbc9910954ea2e5209324162fb6e3baad19e91"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "35c00e26ab0ea00d455affb9cb8525f871b82732d7ba4cc566786b06a5dd250b"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "6555acaf6d634664a6d5a2d95a5fca32b071016cb5f4a072eb7943e95ead56b5"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "d541514c1f54a223476c339a4c80f300a5a6358932731c6671e3ba1d4cb9fad7"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "e44a777a89b2a99172b2980518ee809b3ac6e47e5860e11fb8c22d29d8bd0b11"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "43d8e86095517e8d5ff4db5c58389b6d68374974c7425143b92e4c61a9ab0478"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "18cc28e376e9cc90d77a90b0c4af35821904f865cb8bfd735325ff8498bb3aa8"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "63c125d7bb209e8a838b1155752eb0150bc4afa5b0daadd90bbdad187b9bf063"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "ddda7cc5db3cc726a427ee3ea6fcdf6c5fc3298251b8d3d58bb386557804a9c4"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "3d3650e75adfdb04e17c6e4c2ca225aaeca395c4f7d94708e0b774d0685efe81"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "d280fdd3fdfb3a08931473a0d85cec86a65a12e2d47976294dc1fabbca912c5b"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "312b324c6893dc55c0a20e97f6738f70ff637058c1487cf90c669a72221f0ae7"
+    }
+  },
+  "CPU_checks": 66,
+  "real_R3E_models": 6,
+  "real_particle_recipes": 5,
+  "real_particle_clones": 10,
+  "D3D_textures_restored": true,
+  "GPU_effect_drawn": false,
+  "legacy_R3T_release_warnings": 6,
+  "explicit_global_texture_table_teardown": true,
+  "retained_global_texture_cache_bytes": 9728,
+  "viewed_GPU_frames": 6,
+  "byte_equal_hover_frames": 6,
+  "baseline": {
+    "file": "artifacts/client455-progress/client455-board-hover-native-before105.json",
+    "sha256": "728d30dc7a5f034e8d0d48be6971eb46939dd6192e9f68ce5fa143586d5955ff"
+  },
+  "previous104_checkpoint": {
+    "file": "artifacts/client455-progress/client455-magic-checkpoint-before105.json",
+    "sha256": "1f3a6ce35b32a9d29010617e00b5094a239d8eaba6b9358306cc2ea3b974c0e9"
+  },
+  "previous104_runtime_gate": "HISTORICAL",
+  "ordinary_audio_provider": "RF455 TaggedAudio:ready:7969:Miles Fast 2D Positional Audio",
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "other32_GUI_frames_rerun": false,
+  "gaps": [
+    "Full effect FrameMove/matrices/entity/particle/render/axis/blur/parabola/multi dispatch and device reset remain unaccepted",
+    "Nuclear owner pending/position/cancel/tagged sound/messageC1A and hover truepredicate remain unported",
+    "Group enumeration order/first FindFirst omission/unsafe names/over255 archives/OOM are inherited bounded-contract gaps",
+    "Reinitializing a table with cached entities preserves target table-only-free leak; zero-record table/failed reads/global shutdown need broader acceptance",
+    "Six legacy R3T release warnings observed; GPU handles do release, but target warning parity is unverified. Global texture tables9728 bytes need separate process-owner teardown, performed explicitly by the lab",
+    "Other caches/resource groups/private ABI/EffectInfo tail semantics and all previous client-acceptance gaps remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

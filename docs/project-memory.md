@@ -23,52 +23,54 @@
 
 ## Последний проверенный результат
 
-104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
-выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
-скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.
-36 целевых проверок проходят; status58/audio157/account/hotbar7/storage3 сохранены.
-Новая PE0419f2c0…/entry15a1f0: 182 client / 20 kernel / 59 facade, unresolved 0,
-прежний Create→1. Шесть просмотренных hover кадров побайтно равны103.
-Текущий gate: inventory/client455-magic-checkpoint.json; gate103 исторический.
-Полная отрисовка эффекта и отмена прицеливания ещё открыты. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-magic.md).
+105 PARTIAL: восстановлен штатный владелец архивов Effect и автоматический
+выбор группы при запуске эффекта/первой загрузке entity и particle. Обычный
+прицел читает настоящий cue и загружает6 моделей/5 particle recipes/10 clones
+с реальными D3D текстурами.66 проверок проходят;6 legacy R3T release warnings
+и полный FrameMove/render остаются открытыми. Глобальные texture tables
+освобождает отдельный owner: в стенде память возвращается к исходной.
+PE015a25c2…/entry15a320,182 client/20 kernel/59 facade,unresolved0/Create1.
+Magic36/status58/audio157/account/hotbar7/storage3 и6 просмотренных hover кадров
+сохранены; кадры побайтно равны104. Gate105 current,104 historical.
+M6/M6F/M7/M9 OPEN. Полное ядерное прицеливание ещё не принято.
+[Доказательства](../research/client455-effect-resources.md).
 
-CProcessMagic занимает 3004 байта: tracks64×46 на offset60, control24 на36,
-axis bytes9/10, stateDWORD4 с очисткой только lowBYTE у пустой выборки. Parser
-останавливается на end внутри архивного FILE; добавлены axis/blur/parabola/multi
-и двойной billboard bit. Собственные 65th-track refusal и RAII close отличаются
-от unchecked target; общий unsafe/RNG/FP/node lifetime домен ещё открыт.
-Общая зависимость EffectInfo выросла48→56: tailDWORD48=0/52=FFFFFFFF, семантика
-неизвестна. CMagicList448→456 подтверждён ctor и arrayinitializer256×456.
-Выбранные методы действительно берутся из own client objects; legacy engine
-headers16/48 не означают full private ABI acceptance. Cache Start/Disappear,
-состояние1→2 и полный Dmalloc release проверены в native fixture без GPU effect.
-Настоящий cue1358041136: EffectEntity59.rpk/member weapon_1\nuclear\c\nuclear_land_mag02.spt,
-662 байта, SHA7459ef92…; entity IDs90061/90063/90062/90066/90065/90064.
-Native использует реальные таблицы и архив, группу пока устанавливает стенд.
-19 полных функций / 2988 asm / 19 equal ranges + 41-byte initializer обеих455;
-IDA session20a3b068 saved/closed/list0. Raw: artifacts/client455-progress/magic104-*.
-PE0419f2c0b86f69f23b3c1635791a25f4b21ebdf5d4ea04e7f975f4273ae259d5,
-2153984bytes, base400000, WinMainb84d0, afterCreateb8644. Exact offline Create1
-до game loop; обычный Miles Fast2D ready:7969 сохранён. Engine546a7529…/67
-не менялся;033baseline сохранён, отдельного старого082 library snapshot нет.
-Шесть свежих hover кадров просмотрены/byte-equal103; остальные32 GUI кадра и
-большие world/audio/159k suites не повторялись. Original/server без изменений,
-input EXE не исполнялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_magic.py.
+Текущий gate: inventory/client455-effect-resources-checkpoint.json.
+Обычные LoadEffectEntityList/ReleaseEffectEntityList владеют группой268 байт;
+StartMagicEffect выбирает её перед existence/parser, lazy entity/particle перед
+Load. Cache hits сохраняют caller active group. Static owner остаётся валидным
+пустым после Release, destructor освобождает индексы при завершении процесса.
+Particle конечная ветка очищает NO_LOOP/END перед NO_LOOP; always-live сохраняет
+flags. Target table-only-free при reload уже загруженных entity остаётся gap.
+В fixture104 прежняя группа теперь сохраняется через Get: Set возвращает новую.
+Native загрузил все6 R3E/R3M/R3T из настоящего EffectEntity59.rpk;24 archive members
+закреплены SHA. Все6 GPU handles освобождаются. После effect destroy остаются
+9728 байт global texture tables64×144+64×8; явный public R3ReleasePreTextures
+в стенде возвращает Dmalloc270592→270592. В production effect destroy этот вызов
+не добавлен.6 legacy R3T warnings не скрыты; target warning parity ещё неизвестна.
+14 полных функций/1315 asm/14 equal ranges +41-byte initializer обеих455.
+IDA e536890b saved/closed/list0;raw artifacts/client455-progress/effect105-*.
+PE015a25c2b580ea606652fdfd82cf17d5b0b0de8e25920203b7722b64ea2750db,
+2154496bytes,base400000,WinMainb85a0,afterCreateb8714;offline Create1 до game loop,
+обычный Miles Fast2D ready:7969. Engine546a7529…/67 не менялся;033baseline сохранён,
+отдельного старого082 library snapshot нет.6 fresh hover frames просмотрены и
+byte-equal104;остальные32 GUI кадра и большие world/audio/159k suites не повторялись.
+Новая GPU effect scene не проверялась. Original/server без изменений,input EXE
+не исполнялись. Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_effect_resources.py.
 
-Далее105 — ordinary effect RPK group/owner/bootstrap и реальный entity/particle
-путь: FrameMove, matrices, render и device lifecycle. Затем связать nuclear
-pending/position/frame/cancel с tagged sound и сообщением C1A; true predicate
-до переноса продолжает явно отказывать до изменения hover.
-Затем — 64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
-typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
+Далее106 — target texture release warnings и полный EffectList/FrameMove/
+matrices/entity/particle/render path настоящего шестидорожечного прицела, затем
+device lifecycle. После этого — nuclear pending/position/frame/cancel с tagged
+sound и сообщением C1A; true predicate пока явно отказывает до изменения hover.
+Затем —64-битные455 receivers/остальные44DEE0 effects,Linker handlers/queue,
+typed quantity/backups/network callers,inventory/equip/SF/Animus,potion cache,
 Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
-lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/
+lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/
 Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
 финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
 
-Исторические101–103: research/client455-board-hover.md, client455-player-status.md,
-client455-tagged-audio.md; baselines before104 — artifacts/client455-progress/.
+Исторические101–104: research/client455-{board-hover,player-status,tagged-audio,magic}.md;
+baselines before105 — artifacts/client455-progress/.
 
 ## Исторический результат100
 

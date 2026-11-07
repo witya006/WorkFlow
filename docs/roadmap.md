@@ -12,24 +12,26 @@
 
 ## Текущий статус
 
-104 PARTIAL: восстановлены формат эффекта на 64 дорожки, parser и временная
-выборка CProcessMagic, EffectInfo56 и runtime456. Обычный кэш читает настоящий
-скрипт ядерного прицела из RPK: все шесть дорожек проверены побайтно.
-36 целевых проверок проходят; status58/audio157/account/hotbar7/storage3 сохранены.
-Новая PE0419f2c0…/entry15a1f0: 182 client / 20 kernel / 59 facade, unresolved 0,
-прежний Create→1. Шесть просмотренных hover кадров побайтно равны103.
-Текущий gate: inventory/client455-magic-checkpoint.json; gate103 исторический.
-Полная отрисовка эффекта и отмена прицеливания ещё открыты. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-magic.md).
+105 PARTIAL: восстановлен штатный владелец архивов Effect и автоматический
+выбор группы при запуске эффекта/первой загрузке entity и particle. Обычный
+прицел читает настоящий cue и загружает6 моделей/5 particle recipes/10 clones
+с реальными D3D текстурами.66 проверок проходят;6 legacy R3T release warnings
+и полный FrameMove/render остаются открытыми. Глобальные texture tables
+освобождает отдельный owner: в стенде память возвращается к исходной.
+PE015a25c2…/entry15a320,182 client/20 kernel/59 facade,unresolved0/Create1.
+Magic36/status58/audio157/account/hotbar7/storage3 и6 просмотренных hover кадров
+сохранены; кадры побайтно равны104. Gate105 current,104 historical.
+M6/M6F/M7/M9 OPEN. Полное ядерное прицеливание ещё не принято.
+[Доказательства](../research/client455-effect-resources.md).
 
-Далее105 — ordinary effect RPK group/owner/bootstrap и реальный entity/particle
-путь: FrameMove, matrices, render и device lifecycle. Затем связать nuclear
-pending/position/frame/cancel с tagged sound и сообщением C1A; true predicate
-до переноса продолжает явно отказывать до изменения hover.
-Затем — 64-битные455 receivers/остальные44DEE0 effects, Linker handlers/queue,
-typed quantity/backups/network callers, inventory/equip/SF/Animus, potion cache,
+Далее106 — target texture release warnings и полный EffectList/FrameMove/
+matrices/entity/particle/render path настоящего шестидорожечного прицела, затем
+device lifecycle. После этого — nuclear pending/position/frame/cancel с tagged
+sound и сообщением C1A; true predicate пока явно отказывает до изменения hover.
+Затем —64-битные455 receivers/остальные44DEE0 effects,Linker handlers/queue,
+typed quantity/backups/network callers,inventory/equip/SF/Animus,potion cache,
 Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
-lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown, SF/Quest/36boards/
+lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/
 Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
 финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
 
