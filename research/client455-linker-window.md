@@ -1,7 +1,9 @@
 # Окно панели быстрого доступа — 097
 
 2026-11-07. M6 PARTIAL; M6/M6F/M7/M9 OPEN.
-Current gate: `inventory/client455-linker-window-checkpoint.json`.
+Historical097 gate: `inventory/client455-linker-window-checkpoint.json`.
+After098 current runtime gate is `inventory/client455-gui-timer-checkpoint.json`;
+selected window proofs retained, new sourceGPU frames reviewed after grade-order correction.
 Только клиент; inputs/originals/server не менялись, input EXE не исполнялись.
 
 Обычный CLinkBoard теперь содержит CGUILinkWindow455 вместо старого окна8 ячеек.

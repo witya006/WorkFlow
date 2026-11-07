@@ -23,6 +23,43 @@
 
 ## Последний проверенный результат
 
+098 PARTIAL. Currentgate inventory/client455-gui-timer-checkpoint.json.
+Typed ordinary CGUIItem owns RF455GuiTimer child;olduntyped timer unchanged.
+Source-owned selectedstate28,not private208ABI:duration/start/offset/rawstarted/
+double remaining/floatangle. Reset leaves geometry/show/vertices;ctor leavesXY.
+Start -1→offset0,other signedoffsets rawDWORD;separate clock forself/everymember,
+duplicates/selfmembers restartagain. Update wrapDWORD,signed difference clamped0,
+unsigned completion;completion leavesangle. Draw never updates/readsclock.
+61AD60 state+3vertices copy;SetData reapplies destinationpos. Empty resets only
+ifstarted;stoppednonzero remainder survives. Stop resets self/allmembers always.
+TypedCGUISFItem query/SetPos/Size/Draw and actualLinker query use this timer.
+
+Radial Draw target629D70:5 independent sectors45/135/225/315/360,finiteFPTAN
+defaultpath;decoded CW027f atRVA72b128 (initial133f hypothesis rejected),double
+pi3.141592741012573 atRVA6da958,float radians andtan spills. CPU-selected SSEtan,
+FPexceptions/NaN/unmaskednumeric domains stillopen;do notclaim fullCRT equivalence.
+Whole timer clip rejects partialrect;label hasseparate16-square scaled test.
+Labels strictthresholds:0/60000/3600000 unit3 empty;secondsfloor(ms/1000)+1,
+so45000→46;red<10/yellowothers,white minutes/hours. Context0/1/5 vs2/3 vs4
+positions/scales;unknown leavesoutputs partial anddraw explicitlyrefuses.
+Unclipped image→gradeframe order corrected per61B6B0;clipped grade→image retained.
+
+32equalranges/29functions/2791asm;175state/112label/57rays/171triangles pass.
+Native verifiesctorXY/copy/conditionalempty/derivedtyped update,separate clock
+fanout duplicate/self andactual2clones query.29GPUframes viewed:timer6/window8/
+owners3/metadata3/icon9.11of23previousrawframes changed bygradeorder;12byteequal
+(glyph3/metadataempty1/icon8). Stopfanout availableinfullobjectprobe,unusednormalPE.
+NewPEd943ef46fdd2dcc700ad051502462fe056e7464eff7dcf7458ddc746f4cc0d21,
+2134016bytes/x86/entry156570/WinMainb74a0/afterCreateb760a,182/20/54TU,
+0unresolved/engine082same. Hotbar7/storage3/account/ownPEearly/Create1pass.
+IDA316a9b70 savedclosed/list0;rawartifacts gui-timer098-reference/session.json.
+097runtimegate historical/staticproofs retained;new current098. No unchangedworld/
+audio/159k/093atlas/2013owner/1447SF/095manual reruns. Originals/server untouched.
+Next099 cooldowncache501C30/actualhandlers thenlivecallbacks/lock/Macro/Vending/
+fullAdd/bootstrap;allpriorgaps mandatory,M6/M6F/M7/M9 OPEN. Progress,notblocked.
+
+Исторический результат097:
+
 097 PARTIAL. Current gate inventory/client455-linker-window-checkpoint.json.
 ActualCLinkBoard embeds CGUILinkWindow455 (old8slotview no longer actualmember),
 constructorbindsowner,InitWindowcallsactualInit/bottomright,bank50C updatesactual
@@ -2561,6 +2598,10 @@ Error UI/OOM/device-loss/reset/normal fullrenderer и acceptance ещё откр
   без animated draw. research/client455-pose-source.md и pose-checkpoint.json.
 
 ## Следующий шаг
+
+Текущий шаг099: cooldowncache501C30,actualLinker use/remove/swap/hover,затем
+liveSF/Animuscallbacks/lock/Macro35/Vending27/fullAdd/bootstrap. Подробнее в начале
+этого файла и docs/next-steps.md. Ниже сохранена историческая очередь066:
 
 1. Участок066: scrollbarEX/Var/parentinput/callers, затем production message sizing/richcallers/full
    briefing и actual Tutorial/world/UI/Avatar/localhandlers/fullfourstage/explicitnext,

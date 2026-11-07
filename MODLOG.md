@@ -1,5 +1,18 @@
 # RF Online client reconstruction journal
 
+2026-11-07 — GUI-timer098. ActualtypedCGUIItem now owns state/update/copy/reset/
+radialdraw/labels andrealregistry fanout;typedLinker query restored.32equalranges/
+29functions/2791asm;175state/112label/57rays/171triangles pass. Clockwrap/signed
+remainder/strictthresholds/rawBOOL/partialwrites/duplicates preserved. Decoded
+CW027f corrects exploratory133f assumption;CPU-selected SSEtan/FPexceptions open.
+Unclippedgradeorder corrected toimage→frame per61B6B0;clippedretained.29GPUframes
+viewed,11of23oldframes change/12equal;targeted092rerun justifiedbylayerchange.
+NewPEd943ef46/entry156570/182-20-54/0unresolved/Create1,hotbar7/storage3/account
+pass. IDA316a9b70 savedclosed/list0. No unchangedworld/audio/159k/bulk reruns.
+Gate098current,097runtimehistorical;next099cooldowncache/actualhandlers then
+livecallbacks/lock/Macro/Vending/fullAdd/bootstrap. M6/M6F/M7/M9OPEN.
+[Evidence](research/client455-gui-timer.md).
+
 2026-11-07 — Linker-window097. ActualCLinkBoard now embeds banked455window,
 ordinaryInit/Draw/layout/scale/controls/MouseEvent/PostMessage/bitmap numbers.
 51equalranges/36functions/3509asm/14doubles plus signed50C JGEwindow.21layout/

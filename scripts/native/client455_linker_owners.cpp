@@ -25,7 +25,8 @@ BOOL RF455LinkerIconSlots::takeIn(BYTE bank,BYTE slot,CGUIItem* source){
 BOOL RF455LinkerIconSlots::takeOut(BYTE bank,BYTE slot){
     auto* icon=get(bank,slot);if(!icon)return FALSE;
     // 61BB80 resets identity/quantity locally, after the owning board unregisters.
-    // The remaining target child/timer/reset fields are tracked as open.
+    // Other target children/reset fields remain open.
+    icon->ResetTimerOnEmpty455();
     icon->SetObjectIndex455(0xffffffff);icon->SetItemID(0xffffffff);
     icon->m_wNum=1;icon->SetRefItem(nullptr);icon->SetGradeFrameColor455(0);return TRUE;
 }

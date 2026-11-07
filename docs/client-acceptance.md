@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+098 PARTIAL: actualtyped CGUIItem timer455 state/update/copy/conditionalempty,
+registry start-stop fanout,радиальныйDraw/wholeclip/контекстная подпись и typed
+Linkerquery подключены.175state/112label/57rays/171triangles,29viewedGPU,
+window/owners/metadata/icon/hotbar/storage/account/newPE/Create1 pass.
+Grade draw order исправлен:11из23 прежних кадров изменились,12 byte-equal.
+Это sourceGPU,не reference capture. Target CPU-selected SSEtan/FPexceptions/
+unsafe numeric/privateABI,прочие GUIItemchildren/shake/fullcopy-empty/lifecycle,
+cooldowncache/actualhandlers/livecallbacks/lock/Macro/Vending/fullAdd/bootstrap
+и все прежние клиентские gaps обязательны. Stopfanout normalPE пока unused.
+Gate098 current,097runtimehistorical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-gui-timer.md).
+
+Исторический результат097:
+
 097 PARTIAL:ordinary CLinkBoard использует новый actualbanked window hierarchy,
 Init/Draw/layout/scale/bankcontrols/MouseEvent/PostMessage и bitmap numbers.
 21layout/1050icons/320cycle/48events/1792glyphcases/GUI observerqueue/8viewedGPU

@@ -4,11 +4,18 @@
     BOOL m_typedIcon455=FALSE,m_gradeFrameVisible455=TRUE;
     BYTE m_ownerContext455=0;
     CGUIObject m_gradeFrame455;
+    RF455GuiTimer m_timer455;
     BOOL DrawTypedIcon455(RECT*);
     void SetTypedSprite455();
     void SetNum455(WORD);
     void SetUsable455(BYTE);
 public:
+    RF455GuiTimer& Timer455(){return m_timer455;}
+    void BeginDelayAnimation455(DWORD,LONG elapsed=-1);
+    void StopDelayAnimation455();
+    void ResetTimerOnEmpty455(){if(m_timer455.IsStarted455())m_timer455.Reset455();}
+    BOOL DrawTimerLabel455(RECT*);
+    void Update()override;
     void SetObjectIndex455(DWORD index,BOOL typed=TRUE){m_objectIndex455=index;if(typed){m_typedIcon455=TRUE;m_bySpriteSize=64;}}
     DWORD GetObjectIndex455()const{return m_objectIndex455;}
     void SetGrade455(BYTE grade);

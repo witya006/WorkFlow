@@ -1,0 +1,322 @@
+{
+  "native_sha256": "b041f102a3d0c006be2c1c49fb20a058eecb6f9710c435cc00bfe553b02a1aea",
+  "script_sha256": "90b426baa3e095b31f8b67558d16abb0d357270a57d8bcc35bb99cb921baa81a",
+  "sheet": {
+    "file": "work/m9/9b82f2a8/gui-timer-001/timer-contact.png",
+    "sha256": "e1aab00e54b4b9282954908d1a66366a45fadc8683a89961fbac762389434562"
+  },
+  "frames": [
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-45seconds.bgra",
+      "sha256": "5d5605060f495558da3725fda5bd41290ee5d92654965278db241d52b9ec2fd9",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-45seconds.png",
+        "sha256": "cc1814a549775bff43b4fbef9a6eba986175fbccb38dc02365dbc32d4bb88131"
+      }
+    },
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-9seconds.bgra",
+      "sha256": "44e1ff170ee8f32c7131c2b833fca855c40f9ddb434c7261c9b0119f334d21b3",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-9seconds.png",
+        "sha256": "7fdaf37cec81eec16638591c8dfad8f8631854151bf6fa0c95e2b308e846146f"
+      }
+    },
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-idle.bgra",
+      "sha256": "1550356b7cde7112f5ea14d00aeafe534a59b08011d438fec118e29e4b1525f4",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-idle.png",
+        "sha256": "e3720faeddaf90f504a50b9912358acaba959ee5fcefe7fcd630b36b77b919eb"
+      }
+    },
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-minute.bgra",
+      "sha256": "91baec2d84c4e2e74f0704c1233418210629b9bd9b62f77771545923161493e7",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-minute.png",
+        "sha256": "d233012a70f80e153cdb472721b5efa369434182a0a3242d29c00b079257bafd"
+      }
+    },
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-partial-clip.bgra",
+      "sha256": "19061ab0e209a974c57b08d038cdbbb0101f10e6041c7a488b168320844a7034",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-partial-clip.png",
+        "sha256": "b5f28f3b2793884b5fc4d4997075983d346c89eb362a1c7f1f6479207fbd7945"
+      }
+    },
+    {
+      "file": "work/m9/9b82f2a8/gui-timer-001/timer-reset.bgra",
+      "sha256": "1550356b7cde7112f5ea14d00aeafe534a59b08011d438fec118e29e4b1525f4",
+      "preview": {
+        "file": "work/m9/9b82f2a8/gui-timer-001/timer-reset.png",
+        "sha256": "e3720faeddaf90f504a50b9912358acaba959ee5fcefe7fcd630b36b77b919eb"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 6,
+  "regressions": [
+    {
+      "current": "client455-linker-window-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/linker-window097-before098.json",
+        "sha256": "529dbe1f9d7d1486ec6472446d76e51afc30b9e6324b06cecae1430d92dd5323"
+      },
+      "frames": [
+        {
+          "name": "glyph-after-clip.bgra",
+          "before": "1d2f972f85ef1e90b83dc61b768c3aee439e62d7c56f2de3a948576e5f93aff9",
+          "after": "1d2f972f85ef1e90b83dc61b768c3aee439e62d7c56f2de3a948576e5f93aff9",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "glyph-clipped.bgra",
+          "before": "0ea2c0a919cee86888a29c4d5876627d1820331b7dd3b0a645e739c7db718864",
+          "after": "0ea2c0a919cee86888a29c4d5876627d1820331b7dd3b0a645e739c7db718864",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "glyph-normal.bgra",
+          "before": "3e2026589f87d304c5f2251ab32d1e39d449f919997bfed81276673e25881b43",
+          "after": "3e2026589f87d304c5f2251ab32d1e39d449f919997bfed81276673e25881b43",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "window-collapsed.bgra",
+          "before": "ad8447d5ae4be266e5b1617b8919d07a57fdfb8d5f5fc7386d785a1179418be5",
+          "after": "977d8df84af5d321593714e845d07651d1f95336be42f7273ef0fbd6e7e23b08",
+          "changed_pixels": 333,
+          "bounds": [
+            109,
+            305,
+            496,
+            341
+          ]
+        },
+        {
+          "name": "window-expanded.bgra",
+          "before": "2d99b9d18caea1067c756e3f3c1b580d2dcc5cffef03991bb39201ff8cb597c8",
+          "after": "2c883b51fce650a5703948d98b217366b40c4ed869a74e0c3f0329d08fd8ef44",
+          "changed_pixels": 1670,
+          "bounds": [
+            109,
+            121,
+            541,
+            341
+          ]
+        },
+        {
+          "name": "window-pinned-subset.bgra",
+          "before": "1666fcc1235a4bfddb1546ecdcaf85c6a24e29818c8a2a99add441ead6a09b17",
+          "after": "7696eac2c5d4519907eccb82db8873143aff050e96ae6fa820b6af435085e8a5",
+          "changed_pixels": 996,
+          "bounds": [
+            109,
+            213,
+            541,
+            341
+          ]
+        },
+        {
+          "name": "window-scaled640.bgra",
+          "before": "b05a3e3516498623256d27063dde9ccd5dd2c80a46ec4c62a4d711b11e5e00aa",
+          "after": "9fac966144a87e0d5d3001191d8daa93f37f75d7038fb02db0a103f3102ae9ec",
+          "changed_pixels": 444,
+          "bounds": [
+            91,
+            246,
+            360,
+            325
+          ]
+        },
+        {
+          "name": "window-selected3.bgra",
+          "before": "33c0ca251274ecfd9a24c6dc28133ea466fe565bf7c0c47e05485ff681d5e0cd",
+          "after": "73ba6bcc7fd715664eec8ab62678a95513d06ba607773e1b1f23cf9304afe687",
+          "changed_pixels": 1670,
+          "bounds": [
+            109,
+            121,
+            541,
+            341
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-linker-owners-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/linker-owners097-before098.json",
+        "sha256": "4875788ec3ff5b362c4f31d3475c9a8d9d3efc4e6d4f9d36afb255c82a638031"
+      },
+      "frames": [
+        {
+          "name": "owners-before.bgra",
+          "before": "c4ae645641cb1a1ff8cf255c224fd8333e241c89cdcf775c60c7fd4e8ad21327",
+          "after": "8b13a4531afd8e89317cecec41946eeaadc4573d644287db8bebb3e40c8756ac",
+          "changed_pixels": 84,
+          "bounds": [
+            33,
+            50,
+            329,
+            66
+          ]
+        },
+        {
+          "name": "owners-removed.bgra",
+          "before": "3f140800661da62af78f47f3754c7f935b9739127fbc3f4c7deb391e13695fd9",
+          "after": "57918f054c02c1a8cb1a91aba3b305de8de58217b823cd684660abcd3bf0fb74",
+          "changed_pixels": 56,
+          "bounds": [
+            33,
+            50,
+            199,
+            66
+          ]
+        },
+        {
+          "name": "owners-updated.bgra",
+          "before": "25fe7b5e903e86a715e38256ef79e94dd9f98fbdb6dc03ba4d84fb4ab6298c6a",
+          "after": "671aa3d2dcf18637fd4b05438d630f9dfab1dd5309887ab99bb9e6ec5caa94ae",
+          "changed_pixels": 84,
+          "bounds": [
+            33,
+            50,
+            329,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-item-icon-metadata-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-metadata097-before098.json",
+        "sha256": "2b35b43a943d55fb935277bdb3ff80da46617d9f76ef049bef6910724523c379"
+      },
+      "frames": [
+        {
+          "name": "metadata-empty.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "metadata-real-items.bgra",
+          "before": "95cb6bacd6a77892a2f4a180a2b6e94bce8fee69be969d85a3be66d89cfcb1e4",
+          "after": "42fb787d9d8e4ed05cfdae217ed54d96497f6ff880e67c57e1f25bdabb6644fc",
+          "changed_pixels": 393,
+          "bounds": [
+            25,
+            25,
+            503,
+            120
+          ]
+        },
+        {
+          "name": "metadata-updated-item.bgra",
+          "before": "13576b99471618dbe00fd58c1cfe60a0d7b646473c9f48ae25c1a763436f5fea",
+          "after": "86d6c5006cbc56466631c6ab954be039a181f0dd045eb58328ff1f651872f3f2",
+          "changed_pixels": 393,
+          "bounds": [
+            25,
+            25,
+            503,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-item-icon-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-icon092-before098.json",
+        "sha256": "e493d5f7aa593370abd58fefcc15ba0d58102fab716e3994bf7bfafb1ac55f12"
+      },
+      "frames": [
+        {
+          "name": "icons-clipped.bgra",
+          "before": "bbb71d59d599e2f9ee9124f4c4995578bab14a7aff6fccf2940a8849801d44de",
+          "after": "bbb71d59d599e2f9ee9124f4c4995578bab14a7aff6fccf2940a8849801d44de",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-full.bgra",
+          "before": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "after": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-grades.bgra",
+          "before": "329dde052f06eb48243b18ed3fb730b1b10bf4282d6721a48c736c17f41b8064",
+          "after": "c0169a4ff12a03f66b5ad1fa952860bd6548731a9eb9a836255f412e14434042",
+          "changed_pixels": 49,
+          "bounds": [
+            185,
+            25,
+            487,
+            167
+          ]
+        },
+        {
+          "name": "icons-hidden.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-no-border.bgra",
+          "before": "aad872b037af638402cbf860739d10405b83b8dcebd8afabe7d7958a9289e2a7",
+          "after": "aad872b037af638402cbf860739d10405b83b8dcebd8afabe7d7958a9289e2a7",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-no-image.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-quantity-hidden.bgra",
+          "before": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "after": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-quantity.bgra",
+          "before": "208acb2831e6a9f5273e92c446670bb25f6d3d53f8d1d5fa77c7427df2109097",
+          "after": "208acb2831e6a9f5273e92c446670bb25f6d3d53f8d1d5fa77c7427df2109097",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-unusable.bgra",
+          "before": "3a26357e4f5227ed0f79904c013bd92871fe6fa8b802bcdde9e6a98b83c0c59f",
+          "after": "3a26357e4f5227ed0f79904c013bd92871fe6fa8b802bcdde9e6a98b83c0c59f",
+          "changed_pixels": 0,
+          "bounds": null
+        }
+      ]
+    }
+  ],
+  "observations": [
+    "Real EDF inventory original and two owned Linker copies display the separate timer states",
+    "At45000ms the target rounds the displayed seconds up to46;the9000ms fixture has8000ms remaining and displays red9;white1m is visible",
+    "Partially clipped icon renders while the whole timer is rejected;label has its separate16-square clip test;reset returns exactly to idle pixels",
+    "Unclipped grade-frame order corrected to image then frame per61B6B0;clipped order remains frame then image"
+  ],
+  "reference_executable_capture": false,
+  "full_client": false
+}

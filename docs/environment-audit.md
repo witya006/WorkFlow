@@ -1,5 +1,15 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение07.11, gui-timer098:32 equal ranges/29functions/2791asm; установленное
+IDA MCP работает, session316a9b70 savedclosed/list0. Новых установок нет.
+Typed timer в ordinaryCGUIItem:175state/112label/57radial(171triangles),actualcopy/
+Update/empty/registryfanout/Linkerquery проходят.29GPUframes просмотрены:6 новых
+и23 затронутых. Grade-frame order исправлен по455;11 прежних кадров изменились,
+12 byte-equal, изменения учтены отдельно.182/20/54TU,0unresolved;PEd943ef46…/
+entry156570/Create1 pass;hotbar7/storage3/account проходят. Originals/server
+без изменений,inputEXE не исполнялись. Gate098 current,097 runtimehistorical.
+[Доказательства](../research/client455-gui-timer.md).
+
 Дополнение07.11, linker-window097:51 equal ranges/36functions/3509asm/14doubles/
 signed50C branch. ActualCLinkBoard window member заменён на banked455 view;
 21layout/1050icons/320cycles/48events/1792glyphs/8 просмотренных GPU проходят.

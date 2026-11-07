@@ -44,3 +44,10 @@ void CGUIItem::SetUsable455(BYTE value){
     m_byUsable=value;const auto* group=RF455_GameIconLinks().find(*this);if(!group)return;
     for(auto* member:*group)member->m_byUsable=value;
 }
+void CGUIItem::BeginDelayAnimation455(DWORD duration,LONG elapsed){
+    const auto start=[&](CGUIItem* icon){icon->m_timer455.State455().duration=duration;icon->m_timer455.Start455(elapsed);};
+    start(this);const auto* group=RF455_GameIconLinks().find(*this);if(group)for(auto* member:*group)if(member)start(member);
+}
+void CGUIItem::StopDelayAnimation455(){
+    m_timer455.Reset455();const auto* group=RF455_GameIconLinks().find(*this);if(group)for(auto* member:*group)if(member)member->m_timer455.Reset455();
+}

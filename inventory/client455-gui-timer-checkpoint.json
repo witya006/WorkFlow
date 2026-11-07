@@ -1,0 +1,400 @@
+{
+  "status": "PARTIAL",
+  "scope": "Selected GUI timer state/update/default finite radial path/label/copy/fanout,typed ordinary icon integration",
+  "script_sha256": "454ee0dcdb5bb3af41ce5bbbc07aa8b7474d476d16b8f8490dbf94086f0b2fd8",
+  "reference_sha256": "9ff37e000d6ae7087d21cd1e7ba7212c406b2c4a332eb8b28e33b2af2fec4dc6",
+  "native_sha256": "b041f102a3d0c006be2c1c49fb20a058eecb6f9710c435cc00bfe553b02a1aea",
+  "visual_sha256": "7e9d924bd471f8a34a2c1f5ebbcc5118fdca994dcbad759724c4430258541316",
+  "sources": [
+    {
+      "file": "scripts/native/client455_gui_timer.h",
+      "sha256": "471686de60c7c2e540193c83f566155c8cbb2306efa6842c12e6437817463c40"
+    },
+    {
+      "file": "scripts/native/client455_gui_timer.cpp",
+      "sha256": "5d4ce04a5329a6c182dfc89e40fb555b718a139c0799edf5598ee0b78c0d14ca"
+    },
+    {
+      "file": "scripts/native/client455_item_icon.cpp",
+      "sha256": "315f86a7e34aa77abe02b29783704f468fd1c1f0690fe3fd0ed7621f44eb8698"
+    },
+    {
+      "file": "scripts/native/client455_item_icon_members.inc",
+      "sha256": "2d862405e2a457e07bd063cc2b5450ee41408765e25062338dda001e32d77b2e"
+    },
+    {
+      "file": "scripts/native/client455_icon_links.cpp",
+      "sha256": "08824e3b53f8b716c7804c5e312f641e43a29e83a498f066138ebaaea20bd3ed"
+    },
+    {
+      "file": "scripts/native/client455_linker_owners.cpp",
+      "sha256": "6336551ee98ad40722da2ab0231a7faf187b62d22f786b104f173b5bf50875e4"
+    },
+    {
+      "file": "scripts/native/client455_linker_window.cpp",
+      "sha256": "e533d90d7f3d0264c137554ebdaea681fa7927cc9a26116253ad025eb96051d8"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.h",
+      "sha256": "9a2e725bca21e1803157678cc33b302c33209b7410f79d07d8695eda9434eab9",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.h",
+      "input_sha256": "b2a3fd02192b526615fbacecd1d98fa0be05b1f2d21ae24b865725c0a0aabb8e",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "455typed timer state/update/copy/conditional reset and registry fanout;full gameplay handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/guicontroller/guiitem.cpp",
+      "sha256": "f258f8cfc7697fcad7b2afeebaef0f81a3bd3c2a0c66a7f148aaa99552ef9e64",
+      "input": "work/client455-port/source/RF_Client/userinterface/guicontroller/guiitem.cpp",
+      "input_sha256": "5f8c76708819fee9b88e8db524512c5f16575dcb3c116580d8258ba2403a521f",
+      "changes": [
+        "455typed icon object-index/grade-frame and target sprite registry;fullGUIItem/mixed callers open",
+        "455typed timer state/update/copy/conditional reset and registry fanout;full gameplay handlers remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_gui_timer.cpp",
+      "sha256": "5d4ce04a5329a6c182dfc89e40fb555b718a139c0799edf5598ee0b78c0d14ca",
+      "input": "scripts/native/client455_gui_timer.cpp",
+      "input_sha256": "5d4ce04a5329a6c182dfc89e40fb555b718a139c0799edf5598ee0b78c0d14ca"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_item_icon.cpp",
+      "sha256": "315f86a7e34aa77abe02b29783704f468fd1c1f0690fe3fd0ed7621f44eb8698",
+      "input": "scripts/native/client455_item_icon.cpp",
+      "input_sha256": "315f86a7e34aa77abe02b29783704f468fd1c1f0690fe3fd0ed7621f44eb8698"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_icon_links.cpp",
+      "sha256": "08824e3b53f8b716c7804c5e312f641e43a29e83a498f066138ebaaea20bd3ed",
+      "input": "scripts/native/client455_icon_links.cpp",
+      "input_sha256": "08824e3b53f8b716c7804c5e312f641e43a29e83a498f066138ebaaea20bd3ed"
+    }
+  ],
+  "retained": {
+    "BeginDelayAnimation455@CGUIItem": "BeginDelayAnimation455@CGUIItem@@QAEXKJ@Z 004caa10 f   RFClient455Facade:client455_icon_links.obj",
+    "Start455@RF455GuiTimer": "Start455@RF455GuiTimer@@QAEXJ@Z 004cbd50 f   RFClient455Facade:client455_gui_timer.obj",
+    "Update@RF455GuiTimer": "Update@RF455GuiTimer@@UAEXXZ 004cbd80 f   RFClient455Facade:client455_gui_timer.obj",
+    "DrawWithSink455@RF455GuiTimer": "DrawWithSink455@RF455GuiTimer@@QAEHP6AXPAXPBU_D3DR3TLVERTEX_TEX1@@@Z0PBUtagRECT@@@Z 004cb430 f   RFClient455Facade:client455_gui_timer.obj"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/gui-timer098-session.json",
+    "sha256": "6e4fdc30876f947bf751379f59a7a657594ece597be42b559420125091727553"
+  },
+  "normal_link_sha256": "072128a253a2de995d1b4c1853ca2a4cdbdba868ee5ad2ae539588ad1d0753b6",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d943ef46fdd2dcc700ad051502462fe056e7464eff7dcf7458ddc746f4cc0d21",
+    "bytes": 2134016,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x156570",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "client455-normal-preparation": "f68cc068ed7369e60efc327bfa755f804d0b3dbe537b0187606705552e49738d",
+    "client455-normal-build": "c7d3c1ba76fb9e42dd49aecc5ece0dcc8aa77e9a0f6cf202e99ed0f18f939252",
+    "client455-normal-consumers": "f170dcfeead4e826978a537580b2cec4be8d39e6e0818f16e2956eda7b47777c",
+    "client455-own-entry": "8bdf6ddabf4db59ce2e819c202a997f3d57090f989d7a38ab9104d3e08913402",
+    "client455-startup-audit": "836781f55e2873f1a8d0013f14a3a965abbf091a6eb6b4dc22ec1c86a40cd1d1",
+    "client455-startup-native": "85e84ad3f7a0047d87322c70516fe5477892ecfa16c7de0800e4d2da16bfce66",
+    "client455-ui-startup-native": "c6ae057de6711e396a603d4afd55096ec3a7070084782e67f152d8b5a207ac44",
+    "client455-hotbar-native": "9342f57eb9683b8945645b11a25663dd707ccb2c2bac71527d1dde9d6f8a1e79",
+    "client455-storage-native": "63c4b76f4bd299a17e639d1e5ebe841790ec564093089063bba514f84a695b00",
+    "client455-account-native": "ff45e5d49d7ed99cba8e8f43aa15efb46f92e067ddcb9c3923d98746cadc03b5",
+    "client455-linker-window-native": "5c2ce9032b9c2d50a347e5210c38b91afd07a29cf140bfe73692bedfe627fb2f",
+    "client455-linker-window-visual-review": "13437d7cde96404303a7a5fc7a363f8b286de24028a3d2bb888b984304b083de",
+    "client455-linker-owners-native": "3eace81453577e6d5d2da097fb5f18006f9f3f7c2a83bdd384230004cebe4159",
+    "client455-linker-owners-visual-review": "9654937859437c2dd3bcd780e9c56581840554b5f31ce61cfdc8e875ddc68f23",
+    "client455-item-icon-metadata-native": "7e6ec61d3a303d793e1db9a92483e882ab458329adc18df873e17b01b4d80d4f",
+    "client455-item-icon-metadata-visual-review": "d751749d56390d6b9789fafb68c353df5d2dc91497a8f890fb3cd47e39d18f53",
+    "client455-item-icon-native": "95c264361b96e80e47218932bc39b05c3439f619bfdb57d6e9f3f661f22cba38",
+    "client455-item-icon-visual-review": "05c6d3547ee74fd9c1db76d6959e971f627387f25b610c66767e9b3d02e70b8b"
+  },
+  "selected_ranges": 32,
+  "assembly_instructions": 2791,
+  "state_cases": 175,
+  "label_cases": 112,
+  "radial_cases": 57,
+  "radial_triangles": 171,
+  "viewed_GPU_frames": 29,
+  "layer_order_baselines": [
+    {
+      "current": "client455-linker-window-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/linker-window097-before098.json",
+        "sha256": "529dbe1f9d7d1486ec6472446d76e51afc30b9e6324b06cecae1430d92dd5323"
+      },
+      "frames": [
+        {
+          "name": "glyph-after-clip.bgra",
+          "before": "1d2f972f85ef1e90b83dc61b768c3aee439e62d7c56f2de3a948576e5f93aff9",
+          "after": "1d2f972f85ef1e90b83dc61b768c3aee439e62d7c56f2de3a948576e5f93aff9",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "glyph-clipped.bgra",
+          "before": "0ea2c0a919cee86888a29c4d5876627d1820331b7dd3b0a645e739c7db718864",
+          "after": "0ea2c0a919cee86888a29c4d5876627d1820331b7dd3b0a645e739c7db718864",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "glyph-normal.bgra",
+          "before": "3e2026589f87d304c5f2251ab32d1e39d449f919997bfed81276673e25881b43",
+          "after": "3e2026589f87d304c5f2251ab32d1e39d449f919997bfed81276673e25881b43",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "window-collapsed.bgra",
+          "before": "ad8447d5ae4be266e5b1617b8919d07a57fdfb8d5f5fc7386d785a1179418be5",
+          "after": "977d8df84af5d321593714e845d07651d1f95336be42f7273ef0fbd6e7e23b08",
+          "changed_pixels": 333,
+          "bounds": [
+            109,
+            305,
+            496,
+            341
+          ]
+        },
+        {
+          "name": "window-expanded.bgra",
+          "before": "2d99b9d18caea1067c756e3f3c1b580d2dcc5cffef03991bb39201ff8cb597c8",
+          "after": "2c883b51fce650a5703948d98b217366b40c4ed869a74e0c3f0329d08fd8ef44",
+          "changed_pixels": 1670,
+          "bounds": [
+            109,
+            121,
+            541,
+            341
+          ]
+        },
+        {
+          "name": "window-pinned-subset.bgra",
+          "before": "1666fcc1235a4bfddb1546ecdcaf85c6a24e29818c8a2a99add441ead6a09b17",
+          "after": "7696eac2c5d4519907eccb82db8873143aff050e96ae6fa820b6af435085e8a5",
+          "changed_pixels": 996,
+          "bounds": [
+            109,
+            213,
+            541,
+            341
+          ]
+        },
+        {
+          "name": "window-scaled640.bgra",
+          "before": "b05a3e3516498623256d27063dde9ccd5dd2c80a46ec4c62a4d711b11e5e00aa",
+          "after": "9fac966144a87e0d5d3001191d8daa93f37f75d7038fb02db0a103f3102ae9ec",
+          "changed_pixels": 444,
+          "bounds": [
+            91,
+            246,
+            360,
+            325
+          ]
+        },
+        {
+          "name": "window-selected3.bgra",
+          "before": "33c0ca251274ecfd9a24c6dc28133ea466fe565bf7c0c47e05485ff681d5e0cd",
+          "after": "73ba6bcc7fd715664eec8ab62678a95513d06ba607773e1b1f23cf9304afe687",
+          "changed_pixels": 1670,
+          "bounds": [
+            109,
+            121,
+            541,
+            341
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-linker-owners-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/linker-owners097-before098.json",
+        "sha256": "4875788ec3ff5b362c4f31d3475c9a8d9d3efc4e6d4f9d36afb255c82a638031"
+      },
+      "frames": [
+        {
+          "name": "owners-before.bgra",
+          "before": "c4ae645641cb1a1ff8cf255c224fd8333e241c89cdcf775c60c7fd4e8ad21327",
+          "after": "8b13a4531afd8e89317cecec41946eeaadc4573d644287db8bebb3e40c8756ac",
+          "changed_pixels": 84,
+          "bounds": [
+            33,
+            50,
+            329,
+            66
+          ]
+        },
+        {
+          "name": "owners-removed.bgra",
+          "before": "3f140800661da62af78f47f3754c7f935b9739127fbc3f4c7deb391e13695fd9",
+          "after": "57918f054c02c1a8cb1a91aba3b305de8de58217b823cd684660abcd3bf0fb74",
+          "changed_pixels": 56,
+          "bounds": [
+            33,
+            50,
+            199,
+            66
+          ]
+        },
+        {
+          "name": "owners-updated.bgra",
+          "before": "25fe7b5e903e86a715e38256ef79e94dd9f98fbdb6dc03ba4d84fb4ab6298c6a",
+          "after": "671aa3d2dcf18637fd4b05438d630f9dfab1dd5309887ab99bb9e6ec5caa94ae",
+          "changed_pixels": 84,
+          "bounds": [
+            33,
+            50,
+            329,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-item-icon-metadata-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-metadata097-before098.json",
+        "sha256": "2b35b43a943d55fb935277bdb3ff80da46617d9f76ef049bef6910724523c379"
+      },
+      "frames": [
+        {
+          "name": "metadata-empty.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "metadata-real-items.bgra",
+          "before": "95cb6bacd6a77892a2f4a180a2b6e94bce8fee69be969d85a3be66d89cfcb1e4",
+          "after": "42fb787d9d8e4ed05cfdae217ed54d96497f6ff880e67c57e1f25bdabb6644fc",
+          "changed_pixels": 393,
+          "bounds": [
+            25,
+            25,
+            503,
+            120
+          ]
+        },
+        {
+          "name": "metadata-updated-item.bgra",
+          "before": "13576b99471618dbe00fd58c1cfe60a0d7b646473c9f48ae25c1a763436f5fea",
+          "after": "86d6c5006cbc56466631c6ab954be039a181f0dd045eb58328ff1f651872f3f2",
+          "changed_pixels": 393,
+          "bounds": [
+            25,
+            25,
+            503,
+            120
+          ]
+        }
+      ]
+    },
+    {
+      "current": "client455-item-icon-native",
+      "baseline": {
+        "file": "artifacts/client455-progress/item-icon092-before098.json",
+        "sha256": "e493d5f7aa593370abd58fefcc15ba0d58102fab716e3994bf7bfafb1ac55f12"
+      },
+      "frames": [
+        {
+          "name": "icons-clipped.bgra",
+          "before": "bbb71d59d599e2f9ee9124f4c4995578bab14a7aff6fccf2940a8849801d44de",
+          "after": "bbb71d59d599e2f9ee9124f4c4995578bab14a7aff6fccf2940a8849801d44de",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-full.bgra",
+          "before": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "after": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-grades.bgra",
+          "before": "329dde052f06eb48243b18ed3fb730b1b10bf4282d6721a48c736c17f41b8064",
+          "after": "c0169a4ff12a03f66b5ad1fa952860bd6548731a9eb9a836255f412e14434042",
+          "changed_pixels": 49,
+          "bounds": [
+            185,
+            25,
+            487,
+            167
+          ]
+        },
+        {
+          "name": "icons-hidden.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-no-border.bgra",
+          "before": "aad872b037af638402cbf860739d10405b83b8dcebd8afabe7d7958a9289e2a7",
+          "after": "aad872b037af638402cbf860739d10405b83b8dcebd8afabe7d7958a9289e2a7",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-no-image.bgra",
+          "before": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "after": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-quantity-hidden.bgra",
+          "before": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "after": "fb486d84d3f9d8ccda2c24df74c7354087f044242af04c5a0e858f7708ddb384",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-quantity.bgra",
+          "before": "208acb2831e6a9f5273e92c446670bb25f6d3d53f8d1d5fa77c7427df2109097",
+          "after": "208acb2831e6a9f5273e92c446670bb25f6d3d53f8d1d5fa77c7427df2109097",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "name": "icons-unusable.bgra",
+          "before": "3a26357e4f5227ed0f79904c013bd92871fe6fa8b802bcdde9e6a98b83c0c59f",
+          "after": "3a26357e4f5227ed0f79904c013bd92871fe6fa8b802bcdde9e6a98b83c0c59f",
+          "changed_pixels": 0,
+          "bounds": null
+        }
+      ]
+    }
+  ],
+  "stop_fanout_present_in_full_object_probe_but_unused_in_normal_PE": true,
+  "previous097gate": "historical runtime after source/link/reports changed;static window proofs retained",
+  "unchanged_world_audio_159k_093atlas_2013owner_1447SF_095manual_suites_rerun": false,
+  "gaps": [
+    "Target CPU-selected SSE tan/FP exceptions/NaN/unsafe numeric/private ABI not accepted",
+    "Other GUIItem children/shake/lock and complete copy/empty/lifecycle remain open",
+    "Linker cooldown cache,actual use/remove/swap/hover handlers/live callbacks/Macro/Vending/full Add/bootstrap/remaining client gaps still mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

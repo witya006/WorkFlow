@@ -12,6 +12,15 @@
 
 ## Текущий статус
 
+098: таймеры реальных иконок и их копий подключены к ordinaryCGUIItem:
+копирование/обновление/start-stop fanout/сброс/круг/подпись.175state/112labels/
+57rays и29просмотренныхGPU, затронутые компоненты и новаяPE/Create1 проходят.
+Далее099 — cooldowncache и игровые обработчики панели,затем livecallbacks/
+lock/Macro/Vending/fullAdd/bootstrap. Gate098 current,097 runtimehistorical.
+M6/M6F/M7/M9 открыты. [Доказательства](../research/client455-gui-timer.md).
+
+Исторический результат097:
+
 097: actualокно панели быстрого доступа5×10 включено вместо legacy8slots.
 Раскрытие/выбор/закрепление/масштаб/ввод/номера и8просмотренных GPU проходят;
 владельцы/инвентарь/сеть и новая PE/Create1 сохранены. Игровые actions/timer/

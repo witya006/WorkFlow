@@ -23,6 +23,7 @@ void align(CGUIObject& object,CGUIObject& anchor,int vertical){const LONG x=anch
     const LONG y=vertical==-2?anchor.GetPosY():vertical==-3?anchor.GetPosY()+anchor.GetSizeY()-object.GetSizeY():anchor.GetPosY()+(anchor.GetSizeY()-object.GetSizeY())/2;object.SetPos(x,y);}
 }
 BOOL RF455_LinkerIconDelaying455(CGUIItem* icon){
+    if(icon->UsesTypedIcon455())return icon->Timer455().IsStarted455();
     if(auto* legacy=dynamic_cast<CGUISFItem*>(icon))return legacy->IsDelayAnimation();
     throw std::logic_error("455 typed Linker timer and gameplay input provider is not restored");
 }

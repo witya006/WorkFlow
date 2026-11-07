@@ -7,6 +7,28 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
+098 PARTIAL: ordinary CGUIItem получил source-owned timer455:state/clockwrap/
+signedremaining,отдельныйUpdate,копирование/conditionalempty,registry start-stop,
+круговой Draw/wholeclip и подпись. ActualLinker query больше не throws для typed
+icons.175state/112labels/57rays/171triangles и29 просмотренныхGPU проходят.
+НоваяPEd943ef46…/entry156570/182-20-54/0unresolved/Create1;hotbar7/storage3/
+account/window097/owners096/metadata094/icon092 targeted pass.11из23 прежних
+кадров меняются из-за исправленного order image→grade;12 byte-equal.
+Current gate:inventory/client455-gui-timer-checkpoint.json;097runtimehistorical.
+IDA316a9b70 savedclosed/list0. [Доказательства](../research/client455-gui-timer.md).
+
+Далее099: Linker cooldown cache501C30 и actualhandlers use/remove/swap/hover;
+затем liveSF/Animuscallbacks/flag21lock/Macro35/Vending27/fullCItemBoard.Add и
+normal table bootstrap. Typed timer готов в выбранном обычном домене; fullGUIItem
+children/shake/copy-empty/lifecycle и CPU-selected SSEtan/FP-exception numeric
+domains ещё open. Stopfanout проверен сfullobjects,в обычнойPE пока unused.
+Все прежние gaps/M6/M6F/M7/M9 обязательны. Проверка: Invoke-Python.ps1
+scripts/checkpoint_client455_gui_timer.py. Не повторять unchangedworld/audio/159k/
+093atlas/2013owner/SF1447/095manual без нового риска.092 повторён здесь только
+из-за реального изменения порядка отрисовки рамки.
+
+Историческая точка097 и её очередь (timer часть теперь выполнена098):
+
 097: actualbanked window вместо legacy8slots,Init/Draw/layout/scale/controls/
 MouseEvent/PostMessage/bitmapnumbers подключены.21layout/1050icons/320cycles/
 48events/1792glyphs/actualGUIobserverqueue/8просмотренныхGPU pass.16actualoriginals/
@@ -1059,7 +1081,8 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
 
 ## Очередь M6 → M9
 
-1. После094: полныйCItemBoard.Add/sharediconstate/typedboard-hover-Linker consumers,
+1. После098: Linker cooldowncache/actualitemhandlers/livecallbacks/lock,Macro35/
+   Vending27/fullCItemBoard.Add/typedhover consumers,
    normal table bootstrap; затем полные Linker/hotbar, замена belt consumers и общие
    UI/board/Avatar owners;identity Force3/Animus4 уже перенесена. Фабрика пока17/53,
    Trunk и остальные36 providers не приняты. Далее настоящий Tutorial owner,
@@ -1108,6 +1131,15 @@ gate inventory/client455-character-manager-checkpoint.json историческ�
   immutable lab сохранены. Текущую scoped GPU regression не подменять полным M5.
 
 ## Воспроизведение последнего модуля
+
+Текущий098: audit_client455_gui_timer.py → prepare_client455_normal.py →
+build_client455_normal.py → probe_client455_normal_consumers.py →
+link_client455_normal.py → probe_client455_gui_timer.py. Затем затронутые097/
+096/094/092,hotbar/storage/account и exact startup/Create1; review scripts
+сначала составляют контактные листы,после просмотра --record-reviewed.
+Gate: checkpoint_client455_gui_timer.py. Все Python через Invoke-Python.ps1.
+
+Историческая команда065:
 
 Актуальный065: audit_client455_scrollbar.py → prepare_client455_normal.py →
 build_client455_normal.py → probe_client455_normal_consumers.py →
