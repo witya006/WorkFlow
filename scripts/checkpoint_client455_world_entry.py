@@ -46,7 +46,7 @@ def main():
         actual_authentication_performed=False,client_bootstrap_accepted=False,character_selection_accepted=False,full_client=False,
         shared_asset_staging=dict(component=native['shared_asset_staging'],ordinary=run['shared_asset_staging']),
         fresh_evidence={name:record(WS/f'inventory/client455-{name}.json') for name in names},snapshot=ref['snapshot'],
-        gaps=ref['gaps']+['Legacy registered-character request7/reply8 differs from455request8/reply9;restore payload/dispatcher together',
+        gaps=ref['gaps']+['Full registered-character/selection acceptance requires its separate gate and real bootstrap/UI consumers',
                            'All historical stage/UI/world/gameplay/lifecycle gaps and docs/client-acceptance.md'],
         input_exe_executed=False,server_modified=False,M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')
     (WS/'inventory/client455-world-entry-checkpoint.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')

@@ -1,10 +1,10 @@
 {
   "scope": "Actual ordinary account methods,send/receive rings,decoded dispatcher and pending dialog on own in-memory fixture;not authentication;58-byte world entry request and bounded12-byte reply via real encrypted/ring dispatcher;not auth/bootstrap/selection acceptance",
   "architecture": "x86",
-  "entry_rva": "0x1716b0",
+  "entry_rva": "0x173470",
   "source": "scripts/native/client455_account_probe.cpp",
-  "source_sha256": "1fc268120edfe23a2cc5694990a4af27621efdde60d763d4f57d692c27cd3b3e",
-  "script_sha256": "36dbae359d08c3c51efe6fa04f7903bb4e530ca7846c6cd67b1966f3c6eecb05",
+  "source_sha256": "3b307de0ab783c2b09f2db4f912af5501b07e92a0ace6313825d2805e5bda38e",
+  "script_sha256": "1f57e3a74fe5224523365813cda1f188fa7afa1ea2118fb2aca7ce56fb1f4d64",
   "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
   "sources": {
     "client455_account.h": "f38d1d0eb0289401f87bf69c11a768d8dff2c0e2447794108b9eb2fb07438d80",
@@ -13,49 +13,137 @@
     "client455_account_dispatch.inc": "54f6cb238f7f3d8211dd717ae6bd578856701b5849f8af93e624ff3471f629bc"
   },
   "exe": {
-    "file": "work/m9/b504359f/account-001/account-probe.exe",
-    "sha256": "b504359f4cc8c93bfca2b95a24daafce3ae5ec62b3b16ae1ee47951900347688"
+    "file": "work/m9/3cd21e07/account-001/account-probe.exe",
+    "sha256": "3cd21e0751ee1563fe98b39d5b07d3a54c5f2e2945aec0d95ef7e54a8a69d35a"
   },
   "map": {
     "file": "work/client455-port/account-probe/account-probe.map",
-    "sha256": "982d245a2277c2c6077f3295f27ee58f327ed3e2a5162f3dd73c0472ecffaa10"
+    "sha256": "85cec9caed6c9eb3eb91c1cc1d3a58ea7f457b99975c10fbf354aba52be69c32"
   },
   "inputs": [
     {
-      "file": "work/m9/b504359f/account-001/System/shader/Grass1.vsh",
+      "file": "work/m9/3cd21e07/account-001/System/shader/Grass1.vsh",
       "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
     },
     {
-      "file": "work/m9/b504359f/account-001/System/shader/grass1.vso",
+      "file": "work/m9/3cd21e07/account-001/System/shader/grass1.vso",
       "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
     },
     {
-      "file": "work/m9/b504359f/account-001/System/console.jpg",
+      "file": "work/m9/3cd21e07/account-001/System/console.jpg",
       "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
     },
     {
-      "file": "work/m9/b504359f/account-001/System/010.TTF",
+      "file": "work/m9/3cd21e07/account-001/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
     },
     {
-      "file": "work/m9/b504359f/account-001/DataTable/ko-kr/NDLanguage.edf",
+      "file": "work/m9/3cd21e07/account-001/DataTable/ko-kr/NDLanguage.edf",
       "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
     },
     {
-      "file": "work/m9/b504359f/account-001/SpriteImage/Common/mouse.spr",
+      "file": "work/m9/3cd21e07/account-001/SpriteImage/Common/mouse.spr",
       "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
     },
     {
-      "file": "work/m9/b504359f/account-001/SpriteImage/ko-kr/common.spr",
+      "file": "work/m9/3cd21e07/account-001/SpriteImage/ko-kr/common.spr",
       "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
     },
     {
-      "file": "work/m9/b504359f/account-001/R3Engine.ini",
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic.sho",
+      "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_normal.sho",
+      "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_norm_spec.sho",
+      "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_shadow.sho",
+      "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_Bump.sho",
+      "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_BumpEffect.sho",
+      "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_Scroll.sho",
+      "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_DScroll.sho",
+      "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_EnvScroll.sho",
+      "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_GradeEffect.sho",
+      "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_GradeEnvEffect.sho",
+      "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/sh_basic_alpha.sho",
+      "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/Scatter.vso",
+      "sha256": "eee9e9786da4201d5c4d2dd58d9bc9af7ef81f3cc5dbae326d6de291fc8a60af",
+      "original": "E:/RFOnlineTrash/RFOnline/System/shader/Scatter.vso"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/Scatter.vsh",
+      "sha256": "7a4e233746b1792668360784ececccd6a349d79518c6f884a36c2d5b301b4df6",
+      "original": "E:/RFOnlineTrash/RFOnline/System/shader/Scatter.vsh"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/sun.dds",
+      "sha256": "f70290eae5954cbde36936698ba9048fbd05d9caa66376c19807ba515ecdf589",
+      "original": "E:/RFOnlineTrash/RFOnline/System/sun.dds"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/init.r3o",
+      "sha256": "a7d551a5a7dce2a6bbb8887fbc0e0a2c68dc83dff7bab1443b0eef51ab01353c",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\init.r3o"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/vFraction.sho",
+      "sha256": "bf34a801f63093bffc9a8c3ee0516226b05c5472ab7c1674f9335e526f485e55",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vFraction.sho"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/vPlazma.sho",
+      "sha256": "dcf81c12074884495ee3d40af81fe6cb93cfb8201b896b1bc6db31ae17b84642",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vPlazma.sho"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/pFraction.sho",
+      "sha256": "49051362d06fe92a4b113dacba6e6cd4a382e951170962855289d0fe1e25eecd",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pFraction.sho"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/System/shader/pPlazma.sho",
+      "sha256": "f10f9817b1fd0803df578526e6d4465725718d61918659a09e38ef291b13a803",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pPlazma.sho"
+    },
+    {
+      "file": "work/m9/3cd21e07/account-001/R3Engine.ini",
       "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
     }
   ],
   "output": {
-    "file": "work/m9/b504359f/account-001/result.json",
+    "file": "work/m9/3cd21e07/account-001/result.json",
     "sha256": "9c7a0e28d9ce27c58e219b9280b0f22b42556ab3643ea7dbc5606460bf4c623e"
   },
   "native": {
@@ -79,7 +167,7 @@
     "authentication_performed": false
   },
   "reference_sha256": "dd40aa3f2e260abe599c9ebaf5be1dec3ad20c305e2a8454bf8038eea5bcaac8",
-  "normal_link_sha256": "462255de38c99f610844ecca7951f5abb8e2eb2834013491411c64521c3038b1",
+  "normal_link_sha256": "89ea54a6d2729d6775666b0c2050d8511b4f508f513d555f61b41d7541656ad0",
   "natural_exit": 0,
   "authentication_performed": false,
   "input_exe_executed": false,
@@ -91,9 +179,31 @@
     "client455_world_entry.inc": "b9bf486ceccbf88fd2ca52e944f17401bf12ff958005881da1e6c98a13d79f78",
     "client455_world_entry_probe.inc": "c466d7e996e7fc13962ece3e8293366c03ea5dea139748dc8f100946b06714ee"
   },
+  "registered_character_sources": {
+    "client455_registered_characters.h": "5fdcc8b18286776734aa610bb8d543ccd4e0b0ce73d76c67f4e3fe5af25a49ae",
+    "client455_registered_characters.inc": "d0506623686b07307698132e12105da5af3e9dd6c6d8b417f9bc52a1aec41d96",
+    "client455_registered_characters_probe.inc": "abcbdd85a8d36c0d4b24b674a95ff2c243c244970965cc8f09e7d97377e7e114"
+  },
+  "registered_character_output": {
+    "file": "work/m9/3cd21e07/account-001/registered-characters-result.json",
+    "sha256": "ec73d1acead4acf482c9fe7d457240075d1c6d91b6f25f9e216962c44c2a96a4"
+  },
+  "registered_character_native": {
+    "status": "PASS",
+    "response_bytes": 506,
+    "record_stride": 164,
+    "actual_Avatar_records": 3,
+    "actual_request1_8": true,
+    "actual_encrypted_receiver1_9": true,
+    "fragment_wrap": true,
+    "full64bit_money_time": true,
+    "level0_tutorial_writer": true,
+    "zero_count_retains_state": true,
+    "bootstrap_or_visual_selection_accepted": false
+  },
   "world_entry_reference_sha256": "81fb9be0a49f7f285ea785b286823ff249b458645f31abf8197257fbdc0b3e77",
   "world_entry_output": {
-    "file": "work/m9/b504359f/account-001/world-entry-result.json",
+    "file": "work/m9/3cd21e07/account-001/world-entry-result.json",
     "sha256": "497e5a69b4d1fb9f4839622ce04cc4dd468e953034a3e791c8e832ca43d4c817"
   },
   "world_entry_native": {
@@ -112,8 +222,8 @@
     "bootstrap_or_selection_accepted": false
   },
   "shared_asset_staging": {
-    "assets": 7,
-    "linked_bytes": 7596159,
+    "assets": 27,
+    "linked_bytes": 7994233,
     "new_pool_bytes": 0,
     "adopted_bytes": 0,
     "private_files": 0

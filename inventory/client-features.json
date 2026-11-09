@@ -6,9 +6,53 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-WORLD-ENTRY-139",
+      "id": "CLIENT455-REGISTERED-CHARACTERS-140",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary registered-character1/8 request and1/9 reply506/three164-byte records applied to real Avatar objects;full bootstrap/classes/appearance/selection remain open",
+      "implementation": [
+        "scripts/native/client455_registered_characters.h",
+        "scripts/native/client455_registered_characters.inc",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "reference": [
+        {
+          "rva": "0x16add0",
+          "role": "Request group1/op8"
+        },
+        {
+          "rva": "0x16ae40",
+          "role": "Reply506/actor fields/equipment/latest timestamp/tutorial writer"
+        },
+        {
+          "rva": "0x16b4d0",
+          "role": "Record164 constructor and serial offset17"
+        },
+        {
+          "rva": "0x6b2e10",
+          "role": "Equipment part map1,2,3,4,5,7,6,8"
+        }
+      ],
+      "verification": "9fullfunc/623instructions/72positive CFG blocks and bodies equal in two pinned455x86 binaries. Actual normal request/real AES/ring fragment-wrap receiver apply three records to real Avatar objects;bounded/null/count4/invalidslot/zero-count,CP949name,64bit money/time and level0 tutorial flag pass. Own PEa3002fc4 ordinary WinMain/Title/Login frame70/3203ms viewed,no fatal. Real character shaders staged through shared pool;no full455table bootstrap,appearance,class-tier or selection UI acceptance.",
+      "evidence": [
+        "inventory/client455-registered-characters-reference.json",
+        "inventory/client455-account-native.json",
+        "inventory/client455-registered-characters-checkpoint.json",
+        "inventory/client455-login-frame-native.json",
+        "research/client455-registered-characters.md"
+      ],
+      "gaps": [
+        "Actual bootstrap5E7BE0/all table loaders and3selector consumers",
+        "Full class-tier/appearance/item/resource consumers and ordinary selection UI",
+        "Full auth/error/UI/stage/world/gameplay/lifecycle and all client-acceptance gaps;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-WORLD-ENTRY-139",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-REGISTERED-CHARACTERS-140",
+      "historical_runtime_snapshot": "artifacts/client455-progress/before140/manifest.json",
       "description": "Ordinary455world-entry request58/reply12,table selectors and actual encrypted dispatcher;bootstrap/auth/selection not accepted",
       "implementation": [
         "scripts/native/client455_world_entry.h",

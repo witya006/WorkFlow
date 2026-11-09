@@ -3,16 +3,16 @@
   "scope": "Ordinary world-entry request58/reply12,core dispatcher,selectors and response callback;not authentication/bootstrap/selection acceptance",
   "script": {
     "file": "scripts/checkpoint_client455_world_entry.py",
-    "sha256": "b745f840e03af29f79f7cf62eae97ade0ad4ac427bca0053d06499381b22041f"
+    "sha256": "e0e3a28d9115c2ded88d7330e3d5412cf54110bd59229278d1bcff54cbe1f59a"
   },
-  "normal_link_sha256": "462255de38c99f610844ecca7951f5abb8e2eb2834013491411c64521c3038b1",
+  "normal_link_sha256": "89ea54a6d2729d6775666b0c2050d8511b4f508f513d555f61b41d7541656ad0",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "eb84c16bd41447d4afb150d856108ea16915932cebbf4a496b49cb838c6370c8",
-    "bytes": 2270208,
+    "sha256": "a3002fc48427f09cb1cb7c2f57c95696162d1099ce7714e890f1053d1c321607",
+    "bytes": 2271744,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x16fc30",
+    "entry_rva": "0x1703f0",
     "sections": [
       ".text",
       ".rdata",
@@ -22,9 +22,9 @@
     ]
   },
   "ordinary_methods_rva": {
-    "SystemMsg_EnterWorldRequest_zone": "0x4c940",
-    "SystemMsg_EnterWorldResult_zone": "0x4ca00",
-    "DispatchWorldEntry455": "0x4c3a0"
+    "SystemMsg_EnterWorldRequest_zone": "0x4d0e0",
+    "SystemMsg_EnterWorldResult_zone": "0x4d1a0",
+    "DispatchWorldEntry455": "0x4c720"
   },
   "request_payload_bytes": 58,
   "response_payload_bytes": 12,
@@ -54,8 +54,8 @@
   "full_client": false,
   "shared_asset_staging": {
     "component": {
-      "assets": 7,
-      "linked_bytes": 7596159,
+      "assets": 27,
+      "linked_bytes": 7994233,
       "new_pool_bytes": 0,
       "adopted_bytes": 0,
       "private_files": 0
@@ -75,35 +75,35 @@
     },
     "account-native": {
       "file": "inventory/client455-account-native.json",
-      "sha256": "97efce60bf34743f7ffc8e7ef3a4cfc6438ba1ab83b9db759c14d822af73b775"
+      "sha256": "a0a7491773d72d33745456f1a1f25a50e8fa246fcc9f531a4ae86d410c1f5cac"
     },
     "login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
-      "sha256": "6bdc6b285345502ecad762c7ec9b5354f3bbfeab8801ee22b4a2b8a359e6b6c4"
+      "sha256": "a56f94da8b7dbc45e2b4e4e6dcb1fee56d216699be6f159e870a9d1866326f67"
     },
     "login-frame-native": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "fe27197d79e62c2b16a385a8563e40c7547888e8c5cfff311760ae7e3d531ca3"
+      "sha256": "64394e782a715825aabee66add142bcf5c33d50bb6e614f93da37f9a6fe29739"
     },
     "login-visual": {
       "file": "inventory/client455-login-visual.json",
-      "sha256": "8679dbbf61357548eb942494b713f3ee4b43ec71e649240103cba0705a71c662"
+      "sha256": "cb7552d1b9e72de7eaae65efd9731973c18f47a0262fce6229a951af4ab59e53"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "06fdb1f2550ada4bf2aeb7785bbe6bfe3dad53a8aa1039fd1d5bb1e6bfccd472"
+      "sha256": "45713efa2af6d0196908a975dc5e6cc2e9c268ad06d02fe73abcdc9361841289"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "d87b8d46965bdd6f9df8bbe0aa988af5eaa6d7935ee94a6c057cff961fdf4646"
+      "sha256": "ac45c5907dc8120621bc123d930f4960a971da302b7348ad131448fcee540681"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "b1d824c31d5971a43fb1325c7859b1bcfa091951cb42905e4248cacc0a94cee0"
+      "sha256": "537304926f8935636166361c6a45fbf9945cc162f387d39aa91177050957deb8"
     },
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "462255de38c99f610844ecca7951f5abb8e2eb2834013491411c64521c3038b1"
+      "sha256": "89ea54a6d2729d6775666b0c2050d8511b4f508f513d555f61b41d7541656ad0"
     },
     "startup-engine-build": {
       "file": "inventory/client455-startup-engine-build.json",
@@ -111,15 +111,15 @@
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "d00b11cd787ca945ef98ef817910ec5921a4fb7e63062b72dbc9d7bb9d0d875a"
+      "sha256": "52e7c348bf7f55ebaae47a24c6fd331da6e873fc3b6974ec913ed8fd1b58e334"
     },
     "startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "76af222680772a314deabff05fd87e44524d63c156dda389a9ae23263a9b9a6c"
+      "sha256": "6f2276abe6b5cb0f000931d78148a5ab3adc6dc96ff8c93ce369f212e86d95b3"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "332494171b51ed0ba7694403122cc2e4960f00608eecc83b65839c203cd20868"
+      "sha256": "fb953e63d3eb1d9019265d43589b9382586348a39c44c904a62390078da2c994"
     }
   },
   "snapshot": {
@@ -130,7 +130,7 @@
     "Real responseв†’client bootstrap5E7BE0 and its selector consumers",
     "Full Login state handling,all tables and actual selection/world flow",
     "Other core/35processor payloads and all historical client-acceptance gaps",
-    "Legacy registered-character request7/reply8 differs from455request8/reply9;restore payload/dispatcher together",
+    "Full registered-character/selection acceptance requires its separate gate and real bootstrap/UI consumers",
     "All historical stage/UI/world/gameplay/lifecycle gaps and docs/client-acceptance.md"
   ],
   "input_exe_executed": false,

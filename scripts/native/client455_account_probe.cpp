@@ -17,6 +17,7 @@
 #include <cstdio>
 #include <cstring>
 #include <vector>
+#include <exception>
 extern CMainApp g_MainApp;
 template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
 #define FIELD(Tag,TypeName,Class,member) struct Tag{using Type=TypeName Class::*;friend Type access(Tag);};template struct MemberAccess<Tag,&Class::member>;
@@ -73,6 +74,7 @@ struct StageBinding {
     ~StageBinding(){g_pAvatar=previousAvatar;g_MainApp.*access(StageMember{})=previousStage;g_MainApp.*access(StageIdMember{})=previousId;g_MainApp.*access(CreatedMember{})=previousCreated;g_MainApp.*access(LoadedMember{})=previousLoaded;g_MainApp.*access(ActiveMember{})=previousActive;}
 };
 #include "client455_world_entry_probe.inc"
+#include "client455_registered_characters_probe.inc"
 static int avatarStageChecks(CNetworkMgr& network,_NET_BUFFER& send){
     CAvatar avatar;REQUIRE(avatar.GetClientStage455()==0&&avatar.GetSkipTutorial455()==0);
     StageFixture stage;StageBinding binding(avatar,stage);
@@ -100,7 +102,7 @@ static int avatarStageChecks(CNetworkMgr& network,_NET_BUFFER& send){
     type[0]=4;type[1]=31;REQUIRE(!network.SendNetMessage(0,type,&payload,1)&&take(send).empty()&&codec.enabled);
     return 0;
 }
-int main(){
+static int run(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     RF455AccountHandshake seed;BYTE wrap[3]={255,254,255};REQUIRE(RF455_ReadAccountSeed(seed,wrap,3)&&seed.delta==0&&seed.mask==1);
     REQUIRE(!RF455_ReadAccountSeed(seed,wrap,2)&&seed.delta==0&&seed.mask==1);
@@ -160,8 +162,10 @@ int main(){
     network.m_account455.zoneRequestMode=4;network.SendRequestMsg();REQUIRE(_IsOpenedDialogBox(nullptr,0xf100));network.m_account455.zoneRequestMode=-1;network.ReceiveResponseMsg();REQUIRE(!network.IsSendRequestMsg()&&_IsOpenedDialogBox(nullptr,0xf100));
     network.m_account455.zoneRequestMode=3;network.ReceiveResponseMsg();REQUIRE(!_IsOpenedDialogBox(nullptr,0xf100));(network.*access(Active{}))[0]=0;
     REQUIRE(worldEntryChecks(network,process,send,receive)==0);
+    REQUIRE(registeredCharacterChecks(network,process,send,receive)==0);
     REQUIRE(avatarStageChecks(network,send)==0);
     process.*access(SendBuffer{})=nullptr;process.*access(ReceiveBuffer{})=nullptr;process.*access(Owner{})=nullptr;process.m_NetSocket.GetSocket(0)->m_bAccept=false;
     REQUIRE((g_MainApp.*access(Unload{}))());g_pUiSpriteMgr=nullptr;g_pUiScreen=nullptr;R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* out=std::fopen("result.json","wb");REQUIRE(out);std::fputs("{\"status\":\"PASS\",\"actual_gate_accept_request\":true,\"actual_fragment_wrap_seed_dispatch\":true,\"actual_request_dialog_open_close\":true,\"actual_account_send_receive\":true,\"login_bytes\":342,\"world_stride\":72,\"world_capacity\":300,\"bounded_world_reload\":true,\"maximum_valid_signed_count\":127,\"ticket_profile_packet\":true,\"mode2_packer_branch\":true,\"actual_Avatar_stage_skip\":true,\"actual_MainApp_Create_gate\":true,\"legacy_main2_maps_to455_main3\":true,\"actual_login_Tutorial_transform\":true,\"full_fourstage_factory\":false,\"authentication_performed\":false}\n",out);std::fclose(out);return 0;
 }
+int main(){try{return run();}catch(const std::exception& error){std::fprintf(stderr,"Account exception: %s\n",error.what());return 2;}}

@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Registered characters140 PARTIAL. Ordinary request1/8 and reply1/9
+use fixed506-byte payload/three164-byte records;real Avatar name/race/level/
+64bit money-time/tutorial writer restored.9fullfunc/623instructions/72CFG equal
+both pins. Actual encrypted/ring fragment-wrap receiver and three Avatar pass.
+Missing probe Character shaders resolved by staging real inputs via shared pool,
+27assets/newpool0. Own PEa3002fc4 build/link/unresolved0;fresh ordinary Login
+frame70/3203ms viewed. Full table bootstrap/classes/appearance/selection remain
+open. Assessment stays25%(20–35%);142overlapping records are not completion.
+Next141 real bootstrap and ordinary selection. M6/M6F/M7/M9 OPEN.
+[Evidence](research/client455-registered-characters.md),[assessment](docs/roadmap.md).
+
 2026-11-10 — Scene resources137,shared asset staging and functional baseline.
 Ordinary restore/release owns5targets andPerbMap;capture helper added,full
 Fraction/BBoShasi/particle callers remain open. Current ownPE42213f08/engine

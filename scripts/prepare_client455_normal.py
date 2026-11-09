@@ -558,9 +558,14 @@ def main():
                 }
                 for signature,definition in definitions.items():
                     first,last=section(raw,signature,signature);raw=raw[:first]+definition+raw[last:]
+                first,last=section(raw,b'struct _reged_char_result_zone',b'struct _reged_char_result_zone')
+                raw=raw[:first]+b'struct _reged_char_result_zone { BYTE byRetCode,byCharNum,headerReserved455[12]; BYTE RegedList[3][164]; _reged_char_result_zone():byCharNum(0){} int size(){return 506;} }'+raw[last:]
+                for name,value in [(b'reged_char_request_zone',8),(b'reged_char_result_zone',9)]:
+                    raw,count=re.subn(rb'(#define\s+'+name+rb'\s+)\d+',lambda match:match[1]+str(value).encode(),raw)
+                    if count!=1:raise ValueError('Registered-character protocol number changed')
                 changes.append('455packed world entry protocol declarations:request58/reply12;explicit byte codec remains the reader/writer')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr.h':
-                raw=b'#include "client455_world_entry.h"\r\n#include "client455_account.h"\r\n'+raw
+                raw=b'#include "client455_registered_characters.h"\r\n#include "client455_world_entry.h"\r\n#include "client455_account.h"\r\n'+raw
                 first,last=section(raw,b'struct WORLD_SERVER_INFO',b'struct WORLD_SERVER_INFO')
                 raw=raw[:first]+b'using WORLD_SERVER_INFO=RF455WorldInfo;'+raw[last+1:]
                 raw,count=re.subn(rb'(#define\s+MAX_WORLD_SERVER\s+\(\s*)100\b',rb'\g<1>300',raw)
@@ -570,7 +575,7 @@ def main():
                 raw=raw.replace(b'AccountMsg_LoginAccountRequest_cllo( void )',b'AccountMsg_LoginAccountRequest_cllo( const char* ticket=nullptr )')
                 anchor=b'\tCNetworkMgr();'
                 if raw.count(anchor)!=1:raise ValueError('Account public declaration boundary changed')
-                raw=raw.replace(anchor,b'\tRF455WorldEntry m_worldEntry455;\r\n\tbool DispatchWorldEntry455(char*,std::size_t);\r\n\tRF455AccountHandshake m_account455;\r\n\tBOOL DispatchTutorial455(DWORD,BYTE*,void*,int);\r\n\tBOOL AccountMsg_CryptoSeedRequest455();\r\n\tbool DispatchAccount455(BYTE,char*,std::size_t);\r\n'+anchor)
+                raw=raw.replace(anchor,b'\tRF455RegisteredCharacters m_registered455;\r\n\tbool DispatchRegisteredCharacters455(char*,std::size_t);\r\n\tRF455WorldEntry m_worldEntry455;\r\n\tbool DispatchWorldEntry455(char*,std::size_t);\r\n\tRF455AccountHandshake m_account455;\r\n\tBOOL DispatchTutorial455(DWORD,BYTE*,void*,int);\r\n\tBOOL AccountMsg_CryptoSeedRequest455();\r\n\tbool DispatchAccount455(BYTE,char*,std::size_t);\r\n'+anchor)
                 for name,size in [(b'm_pID',51),(b'm_pPassword',33)]:
                     raw,count=re.subn(rb'\b'+name+rb'\[32\]',name+b'['+str(size).encode()+b']',raw)
                     if count!=1:raise ValueError('Normal network credential storage changed')
@@ -605,7 +610,7 @@ def main():
                 for method in [b'CNetworkMgr::SendRequestMsg(',b'CNetworkMgr::ReceiveResponseMsg(']:
                     start,end=section(raw,method,method);a,b=section(dispatch,method,method);raw=raw[:start]+dispatch[a:b]+raw[end:]
                 start,end=section(raw,b'CNetworkMgr::AnalysisServerPacket(',b'CNetworkMgr::AnalysisServerPacket(');body=raw[start:end];at=body.index(b'{')+1
-                body=body[:at]+nl+b'\tif(!pMsgHeader || pMsgHeader->m_wSize<4)return false;'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==2)return DispatchWorldEntry455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==21)return DispatchAccount455(pMsgHeader->m_byType[1],pi_pMsg,pMsgHeader->m_wSize-4);'+body[at:]
+                body=body[:at]+nl+b'\tif(!pMsgHeader || pMsgHeader->m_wSize<4)return false;'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==9)return DispatchRegisteredCharacters455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==2)return DispatchWorldEntry455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==21)return DispatchAccount455(pMsgHeader->m_byType[1],pi_pMsg,pMsgHeader->m_wSize-4);'+body[at:]
                 new_methods=dispatch[dispatch.index(b'BOOL CNetworkMgr::AccountMsg_CryptoSeedRequest455'):]
                 raw=raw[:start]+body+raw[end:]+nl+new_methods
                 start,end=section(raw,b'CNetworkMgr::CloseClientCheck(',b'CNetworkMgr::CloseClientCheck(');body=raw[start:end]
@@ -631,6 +636,13 @@ def main():
                     raw=raw[:first]+entry_bridge[a:b]+raw[last:]
                 raw+=b'\r\n'+entry_bridge[entry_bridge.index(b'bool CNetworkMgr::DispatchWorldEntry455'):]
                 changes.append('455world entry58-byte request/version/signature/key transform and12-byte reply/selectors;bounded actual1/2 dispatch;bootstrap consumers remain open')
+                registered_bridge=(native/'client455_registered_characters.inc').read_bytes()
+                for method in [b'SystemMsg_RegedCharRequest_zone',b'SystemMsg_RegedCharResult_zone']:
+                    signature=b'CNetworkMgr::'+method+b'('
+                    first,last=section(raw,signature,signature);a,b=section(registered_bridge,signature,signature)
+                    raw=raw[:first]+registered_bridge[a:b]+raw[last:]
+                raw+=b'\r\n'+registered_bridge[registered_bridge.index(b'bool CNetworkMgr::DispatchRegisteredCharacters455'):]
+                changes.append('455registered-character1/8 request andbounded1/9 reply506:three164-byte records,64-bitmoney/timestamps,actual Avatar fields/gear/level0 tutorial writer;bootstrap/visualdata remain open')
                 bridge=(native/'client455_account_bridge.inc').read_bytes()
                 for method in [b'JoinAccountRequest_cllo',b'JoinAccountResult_locl',b'LoginAccountRequest_cllo',b'LoginAccountResult_locl',b'WorldListRequest_cllo',b'WorldListResult_locl',b'SelectWorldRequest_cllo',b'SelectWorldResult_locl',b'PushCloseRequest_cllo',b'PushCloseResult_locl']:
                     signature=b'CNetworkMgr::AccountMsg_'+method+b'('
@@ -874,6 +886,7 @@ def main():
     report['nuclear_registry_port_sha256']=sha((WS/'scripts/client455_nuclear_registry_port.py').read_bytes())
     report['nuclear_receiver_port_sha256']=sha((WS/'scripts/client455_nuclear_receiver_port.py').read_bytes())
     for name in ['client455_world_entry.h','client455_world_entry.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_registered_characters.h','client455_registered_characters.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_registry.h','client455_nuclear_registry.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_minimap.h','client455_nuclear_minimap.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
