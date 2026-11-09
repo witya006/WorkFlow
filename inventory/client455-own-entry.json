@@ -2,11 +2,11 @@
   "scope": "Decoded instruction checkpoints in the exact own linked PE;not reference behavior acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "6992349ec4aac6700582e520c95fd4be4163dd6b81dd1871b3c6271ff205f25c",
-    "bytes": 2225152,
+    "sha256": "406b400eca46385e7c436e5beca1275e8a519a9b4794c3bf9fa49d362b7933c4",
+    "bytes": 2225664,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1670a0",
+    "entry_rva": "0x167320",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "10fcda73bd28721eef38414d089a31392cf09d47a8a00f408800cd66e5da7d23",
+  "normal_link_sha256": "4151e8109cb38ecdeaf93de9a3c760c5a0818c2ebe259c0e7cdd7a1c202b1dfa",
   "script_sha256": "0addad4a9079ee705ad6f784ef6691f95b313805ecf93d3ee81289f2a0ad999a",
   "tool": {
     "file": "C:\\Program Files\\Microsoft Visual Studio\\18\\Professional\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x86\\dumpbin.exe",
@@ -32,7 +32,7 @@
     },
     "d3d": {
       "name": "?InitR3D3D@R3D3dWrapper@@QAEJPAUHINSTANCE__@@K@Z",
-      "rva": "0x152d80"
+      "rva": "0x153010"
     },
     "create": {
       "name": "?Create@CMainApp@@QAEHXZ",
@@ -48,7 +48,7 @@
     },
     "engine": {
       "name": "?InitR3Engine@@YAXH@Z",
-      "rva": "0x14e220"
+      "rva": "0x14e4c0"
     }
   },
   "points": {
@@ -69,9 +69,9 @@
     "before_engine": {
       "rva": "0xb99e4",
       "call_rva": "0xb99e4",
-      "target_rva": "0x14e220",
+      "target_rva": "0x14e4c0",
       "bytes": 5,
-      "sha256": "bfe79012b193f990638e7e76081c02d17ec56dd8e8e6af37b9dfcfd4a0418363"
+      "sha256": "3262a80f7fcbd19ac7497db40355efc13e44e0c2b0fed1c65c4af76f0fa05349"
     },
     "after_sound": {
       "rva": "0xb9a02",
@@ -83,7 +83,7 @@
     "after_d3d": {
       "rva": "0xb9a12",
       "call_rva": "0xb9a0d",
-      "target_rva": "0x152d80",
+      "target_rva": "0x153010",
       "bytes": 2,
       "sha256": "043b5c16f0c4129abe8ea534766c2117090a2f144dcc6fe6f25719f50ea562e1"
     },
@@ -105,11 +105,11 @@
   "disassembly": [
     {
       "file": "artifacts/client455-startup/own-main-disassembly.txt",
-      "sha256": "5b326a82869038fcd5aefd4a700b5f6178c4f8f2ecf49fad3ef024b607b178b5"
+      "sha256": "94b67227a700879e058cacfc847187346eec4fbbe58e0d62be7ec11a478d08ff"
     },
     {
       "file": "artifacts/client455-startup/own-create-disassembly.txt",
-      "sha256": "914f6487e00647344393d6b70712c3560bbe88f581f070b8a87b7768422047bc"
+      "sha256": "3d018fa508e977c933b7e5507e0312430da3673072f4456908e1adec2e6e8fec"
     }
   ]
 }

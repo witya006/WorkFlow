@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "scope": "Selected455 quake/sway/attenuation and actual map CLevel view publication order;own native output vs static455 oracle,not execution of455",
+  "script_sha256": "b1f63101c34413e95660f0f5b2bc8feca4eb2fc814948bb9b587cb08e779ec11",
+  "oracle": {
+    "file": "scripts/quake455.py",
+    "sha256": "f4f66282e40b66c8b3ab832c4b613089fad4e198595923451b4861e9c4aa032a"
+  },
+  "source": {
+    "file": "scripts/native/client455_quake_probe.cpp",
+    "sha256": "e5fc017b0ab6c078521c6744af34e78420235b8928a8c30b7f5739361ff91385"
+  },
+  "normal_link_sha256": "4151e8109cb38ecdeaf93de9a3c760c5a0818c2ebe259c0e7cdd7a1c202b1dfa",
+  "engine_report_sha256": "a2fc954a196064692f8e5fc928dc83625a2200861362bd3493374f4692d86184",
+  "exe": {
+    "file": "work/m9/3a4d089f/quake-001/quake-probe.exe",
+    "sha256": "3a4d089fb027500e13c42c706be62fa069cd1a07442ad8490bdadd902ef82f4c"
+  },
+  "map": {
+    "file": "work/m9/3a4d089f/quake-001/quake-probe.map",
+    "sha256": "58aab914e2a3c8520b2298cd90c638a459f696bbe9d8b475a093a79a727b731d"
+  },
+  "architecture": "x86",
+  "trace": {
+    "file": "work/m9/3a4d089f/quake-001/trace.json",
+    "sha256": "0b24fb7ac9cde346778783bbbdd1f22d300ed4def46d5af7658fa166cd9307ce"
+  },
+  "console": {
+    "file": "work/m9/3a4d089f/quake-001/console.txt",
+    "sha256": "b8228cf50f413720d38c2e7f89d5f93740674219b05a92d3b992b9709fb4498c"
+  },
+  "verdict": {
+    "events": 142,
+    "operations": {
+      "heading": 3,
+      "vector": 101,
+      "matrix": 5,
+      "start": 10,
+      "seed": 1,
+      "sway": 2,
+      "stop": 2,
+      "view": 8,
+      "density": 10
+    },
+    "scalar_comparisons": 2921,
+    "exact_scalars": 2921,
+    "max_absolute_error": 0.0,
+    "transcendental_absolute_tolerance": 2e-05,
+    "transcendental_relative_tolerance": 5e-07,
+    "integer_control_exact": true,
+    "nontranscendental_state_exact": true
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

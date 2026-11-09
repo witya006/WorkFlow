@@ -1,0 +1,177 @@
+{
+  "status": "PARTIAL",
+  "scope": "Selected quake/sway/attenuation,map previous-view publication and successful map-load sway stop;full camera/gameplay/world acceptance open",
+  "script_sha256": "3a912b986e0318a9206192fd80a1c506c5dd96dc0fc74be0850a069d9f6eb228",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "406b400eca46385e7c436e5beca1275e8a519a9b4794c3bf9fa49d362b7933c4",
+    "bytes": 2225664,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167320",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "4151e8109cb38ecdeaf93de9a3c760c5a0818c2ebe259c0e7cdd7a1c202b1dfa",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9ae6ace8b0f34718c7708c4d62847b54b6310d3e0c254216028f0bb317279b74"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before119.lib",
+    "sha256": "dce960bd12d8f82257edd760ebdbc73127b1f372b01a178141028cd397b4e656"
+  },
+  "native_cpu": {
+    "events": 142,
+    "operations": {
+      "heading": 3,
+      "vector": 101,
+      "matrix": 5,
+      "start": 10,
+      "seed": 1,
+      "sway": 2,
+      "stop": 2,
+      "view": 8,
+      "density": 10
+    },
+    "scalar_comparisons": 2921,
+    "exact_scalars": 2921,
+    "max_absolute_error": 0.0,
+    "transcendental_absolute_tolerance": 2e-05,
+    "transcendental_relative_tolerance": 5e-07,
+    "integer_control_exact": true,
+    "nontranscendental_state_exact": true
+  },
+  "actual_effect": {
+    "frames": 545,
+    "quake_onset_frames": [
+      79
+    ],
+    "duration": 5,
+    "attenuated_density": 135.14439392089844,
+    "active_frames": 151,
+    "moved_frames": 151,
+    "scalar_comparisons": 26160,
+    "exact_scalars": 26160,
+    "max_absolute_error": 0,
+    "device_view_exact": true,
+    "successful_map_load_stops_sway": true
+  },
+  "viewed_GPU_frames": 5,
+  "own_retained_calls": [
+    {
+      "symbol": "?SetViewMatrix@CLevel@@QAEXPAUD3DXMATRIX@@@Z",
+      "rva": "0x104ec0",
+      "bytes": 224,
+      "sha256": "32f7c8e7744470335773f902722163d00e5ad6cc83436b8e4574a4ef0997106c",
+      "target": "?R3GetQuakeVector@@YAXQAM@Z",
+      "target_rva": "0xf6a00",
+      "calls": [
+        "0x104f09"
+      ],
+      "disassembly": {
+        "file": "artifacts/client455-progress/quake119-own-view.txt",
+        "sha256": "4ee9805819d09b161fc7aed480171cb5af41425807af532a20f8e363b51bcbf4"
+      }
+    },
+    {
+      "symbol": "?LoadLevel@CLevel@@QAEXPAD@Z",
+      "rva": "0x103a70",
+      "bytes": 1792,
+      "sha256": "c9dec8ac12903064b742bd1d304d23ebe11a8cf355d4fad202b3f94a88d6d930",
+      "target": "?RF455_StopCameraSway@@YAXXZ",
+      "target_rva": "0xf51d0",
+      "calls": [
+        "0x104109"
+      ],
+      "disassembly": {
+        "file": "artifacts/client455-progress/quake119-own-load.txt",
+        "sha256": "dcb66aeb08c1ab36968849554a4a52bbd90d2366f8d9107e1a68c3c58858db33"
+      }
+    }
+  ],
+  "map_checks": 2692,
+  "map_geometry_cases": 330,
+  "warning_count": 20,
+  "previous118_gate": {
+    "file": "artifacts/client455-progress/client455-texture-lifetime-checkpoint-before119.json",
+    "sha256": "526419a772a4522872d67db0854a7e89f1ec7a5a13f1966e2378ebd3379815da"
+  },
+  "old_runtime_gates": "HISTORICAL;new actual registry/camera/map/startup only;older texture649/receivers/Character/bulk not rerun",
+  "fresh_evidence": {
+    "quake-reference": {
+      "file": "inventory/client455-quake-reference.json",
+      "sha256": "ec6a709e6f6bd5488bb94e860473326cd883b3aca368ba5b80a6a617d8995eca"
+    },
+    "quake-native": {
+      "file": "inventory/client455-quake-native.json",
+      "sha256": "deefa2020c50edb2446a1e29f41675e7fe8175d3e138c9bb67bd2ccf0a991f47"
+    },
+    "quake-effects-native": {
+      "file": "inventory/client455-quake-effects-native.json",
+      "sha256": "39c7bff8b6eef6d6b15efa8a56a3e1b2ed786e7c6504f53a34db27555bfeb70c"
+    },
+    "quake-visual-review": {
+      "file": "inventory/client455-quake-visual-review.json",
+      "sha256": "5bc2d604e4e602f9478d2bbbc654cf7a34a324b256507cfb8a04c5dc64f08449"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "a2fc954a196064692f8e5fc928dc83625a2200861362bd3493374f4692d86184"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "5ec0bc06eaa511509f1f8aa02a54299279eadf50ff7b5e2d5ba1631b242a79fa"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "4151e8109cb38ecdeaf93de9a3c760c5a0818c2ebe259c0e7cdd7a1c202b1dfa"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "4a2996e3df60fdbd1129c1885c73babb06c26a491447cfd3ca172c3abe897a9f"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "b13ee2cd5f6b6d80b797fcbb28b52679b67b320777ff313f6baa764b516eb5cb"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "2f5aa32dc47d6f4aec857addb0ffee75f38d3f320f65a9d1b9fc7d4204ca276b"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "5e5cbf220a00b0aec7bac825b9007357aa6f36a564b6da32b56cfdf854912f00"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "f2dcb1405bd9753a4e3c5e6efaa4d6a100ede983f22947700371a25450b79b68"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "108cbe68be64d8ce4dc6bc151106404b5dd006709bad68fe0258333b49d422a4"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "c3ff2c4eb52a0bf167d6baa3430542f45c25c7b16fea39a0307ae808276e9fe9"
+    }
+  },
+  "gaps": [
+    "Sway activation/control writer7E2AD0 observed statically but not restored to ordinary game input/action flow",
+    "Empty-level8E7850 and INS variants have separate behavior;map CLevel proof does not accept them",
+    "Provider timer/toggle negative branch/live game timing/full world frame/light/compositing and allFP/oldCRT/privateABI/NaN/zero-heading/modulo0/overflow/RNG-interleaving remain open",
+    "All previous client acceptance gaps;M6/M6F/M7/M9 open"
+  ],
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

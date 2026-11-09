@@ -65,8 +65,13 @@ def main():
             raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
         elif filename=='level.cpp':
             from prepare_client455_normal import section
+            raw=('#include "'+(WS/'scripts/native/client455_quake.h').as_posix()+'"\r\n').encode()+raw
             first,last=section(raw,b'CLevel::~CLevel()',b'CLevel::~CLevel()')
             raw=raw[:first]+(WS/'scripts/native/client455_level_destroy.inc').read_bytes()+raw[last:]
+            first,last=section(raw,b'void CLevel::SetViewMatrix(',b'void CLevel::SetViewMatrix(')
+            raw=raw[:first]+(WS/'scripts/native/client455_level_view.inc').read_bytes()+raw[last:]
+            raw,count=re.subn(rb'(?m)^(\s*)mIsLoadedBsp=TRUE;\r?\n(\s*)ClearDynamicLight',rb'\1RF455_StopCameraSway();\n\1mIsLoadedBsp=TRUE;\n\2ClearDynamicLight',raw)
+            if count!=1:raise ValueError('455 successful map-load sway reset boundary')
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
             raw=b'#include "client455_fullscreen_effect.h"\r\n'+raw
@@ -93,6 +98,11 @@ def main():
             raw=b'#include "RTMovie.h"\n#include "client455_movie_state.h"\n#include "client455_rvp_runtime.h"\n#include "r3move.h"\nstatic DWORD stRTMovieFlag=0;\n'+(WS/'scripts/native/client455_movie_state.inc').read_bytes()+b'\n'+(WS/'scripts/native/client455_rvp_engine.inc').read_bytes()
         elif filename=='r3util.cpp':
             from prepare_client455_normal import section
+            raw=('#include "'+(WS/'scripts/native/client455_quake.h').as_posix()+'"\r\n').encode()+raw
+            first=raw.index(b'static float stQuakeTime;');last,end=section(raw,b'void R3EnvironmentQuake(',b'void R3EnvironmentQuake(')
+            raw=raw[:first]+(WS/'scripts/native/client455_quake.inc').read_bytes()+raw[end:]
+            first,last=section(raw,b'float GetDensityFromPos(',b'float GetDensityFromPos(')
+            raw=raw[:first]+(WS/'scripts/native/client455_quake_density.inc').read_bytes()+raw[last:]
             first,last=section(raw,b'BOOL DrawFadeScreen()',b'BOOL DrawFadeScreen()');body=raw[first:last];at=body.index(b'{')+1
             bars=b'\r\n\tif(GetR3State()->mWideOn){const LONG width=LONG(GetR3State()->mScreenXsize),height=LONG(GetR3State()->mScreenYsize);const LONG image=LONG(double(0.55f)*GetR3State()->mScreenXsize);const LONG border=LONG(double(GetR3State()->mScreenYsize)-image)/2;Draw2DRectangle(0,0,width,border,0xff000000);Draw2DRectangle(0,height-border,width,height,0xff000000);}\r\n'
             raw=raw[:first]+body[:at]+bars+body[at:]+raw[last:]
@@ -143,6 +153,7 @@ def main():
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
+    report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}

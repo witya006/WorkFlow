@@ -1,22 +1,20 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-118 PARTIAL: подтверждена очистка20 effect и132 world COM texture объектов.
-21 cache owner/24 release calls дают4 shared decrements и20 точных предупреждений
-455;конечные records/handles/stacks совпали с независимым target oracle.
-Исправлены Warning CP949 label и отсутствие callback:возврат без диалога.
-Освобождение текстур сохранено.18equalbodies/18fullasm/999instructions+55byte tail;
-17new/874,IDA savedclosed/list0. Registry109+texture649 PASS,5GPU viewed.
-Managed handles152→132→0,обе таблицы освобождены,tracked Dmalloc→0 в этом lab.
-Full CRT/COM/GPU balance/device lifecycle этим не доказан. Engine67 теперь
-dce960bd…;код изменён толькоjerror.obj,65members byteequal,r3text timestamp-only.
-Старый546a7529… сохранён как artifacts/client455-progress/engine-before118.lib.
-Own PE6992349e…/entry1670a0/182client-20kernel-70facade/unresolved0/Create1.
-Map2692/330 повторно PASS с новым engine;startup contracts/window/device PASS.
-Warning20 сохранены;159k/прочие широкие suites не повторялись. M6/M6F/M7/M9 OPEN.
-Следующая119 — actual world frame/camera quake/light/compositing;остальные
-texture/device/reset/independent paths и полный map UI остаются открытыми.
+119 PARTIAL: восстановлены quake/sway/attenuation и порядок map view.
+Реальный архивный impact запускает quake на кадре79: duration5, attenuation
+135.14439392089844 при script density150,151активный кадр из545. CLevel→D3D
+view подтверждён. CPU142события/2921скаляров и runtime26160скаляров совпали
+численно точно с отдельным static455 oracle;это не выполнение455 и не весьFP.
+18equalbodies/18fullasm/2600instructions,17new/1971;IDAsavedclosed/list0.
+Пять GPU кадров просмотрены;map2692/330/canonical,ANI/BBX consumers,
+startup/contracts/window/device/existingCreate1 PASS. Engine67 9ae6ace8…:
+толькоr3util.obj+level.obj изменены,65members byteequal. Own PE406b400e…,
+entry167320/182client-20kernel-70facade/unresolved0. Old118engine/PE сохранены.
+20штатных R3T warnings сохранены;старые texture649/receiver/Character/bulk
+suites не повторялись. Fullworld/timer/control/Empty/INS и M6/M6F/M7/M9 OPEN.
+Следующая120 — actualworld frame/camera timer/control/light/compositing.
 
-[Доказательства118](../research/client455-texture-lifetime.md).
+[Доказательства119](../research/client455-quake.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

@@ -30,8 +30,17 @@
 #if defined(RF455_TEXTURE_LIFETIME_PROBE)
 #include "client455_texture_lifetime_trace.h"
 #endif
+#if defined(RF455_QUAKE_PROBE)
+#include "client455_quake_trace.h"
+#endif
 extern CMainApp g_MainApp;
 static unsigned checks=0,warnings=0;
+static void advanceEffects119(){
+    FrameMoveAllEffectsList();
+#if defined(RF455_QUAKE_PROBE)
+    RF455_QuakeFrame119();
+#endif
+}
 static void check(bool ok,const char* why){++checks;if(!ok)throw std::runtime_error(why);}
 static void phase(const char* name){std::fprintf(stderr,"phase:%s checks=%u\n",name,checks);std::fflush(stderr);}
 static void warning(char* value){++warnings;
@@ -89,8 +98,16 @@ static int run(){
     RF455_PrepareTaggedAudio(state->SoundPath);check(InitR3SoundSystem(".\\Snd\\WaveList.spt")!=0,"Miles driver");SetGlobalWavVolume(0);auto& audio=g_MainApp.TaggedAudio455();check(audio.Open(".\\Snd\\WaveList.spt",state->SoundPath),"tagged provider");state->mSoundOn=TRUE;
     unsigned pixels[5]={},drain=0;
     {
-        ChInterface renderer;renderer.InitCharacter(GetD3dDevice());CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);check(land->Create()&&land->LoadLevel(".\\Map\\neutralAS1\\neutralAS1.bsp"),"real BSP");
+        ChInterface renderer;renderer.InitCharacter(GetD3dDevice());CCamera camera;g_pCamera=&camera;std::unique_ptr<CLand> land(new CLand);
+#if defined(RF455_QUAKE_PROBE)
+        RF455_QuakeBeforeWorld119();
+#endif
+        check(land->Create()&&land->LoadLevel(".\\Map\\neutralAS1\\neutralAS1.bsp"),"real BSP");
         D3DXVECTOR3 eye(0,120,-220),focus(0,0,0),up(0,1,0);D3DXMatrixLookAtLH(&state->mMatView,&eye,&focus,&up);D3DXMatrixInverse(&state->mInvMatView,nullptr,&state->mMatView);D3DXMatrixPerspectiveFovLH(&state->mMatProj,D3DX_PI/3,640.f/480,1,30000);D3DXMatrixMultiply(&state->mMatViewProj,&state->mMatView,&state->mMatProj);GetD3dDevice()->SetTransform(D3DTS_VIEW,&state->mMatView);GetD3dDevice()->SetTransform(D3DTS_PROJECTION,&state->mMatProj);gMouse.x=320;gMouse.y=240;
+
+#if defined(RF455_QUAKE_PROBE)
+        RF455_QuakeBegin119(land->GetLevel());
+#endif
         CreateEffectsList(".\\Effect\\EffectEntityList.spt");CreateMagicSptList(".\\Effect\\MagicSptList.spt");R3SetLoopTime(1.0/30);auto& owner=RF455_NuclearContainer();auto& aim=owner.Aiming();check(&aim==&RF455_NuclearAiming()&&owner.Size()==0,"actual MainApp container and existing aiming access share owner");
         float pos[3]={0,0,10},moved[3]={20,0,10},zeros[3]={};
         check(!owner.ClearAll()&&!owner.ResetRecords()&&!owner.Find(0,0)&&!owner.Position(0,0),"empty lookup/clear/reset");
@@ -111,9 +128,9 @@ static int run(){
         auto* flightScript=static_cast<CProcessMagic*>(flight->mMagicPtr);auto* blastScript=static_cast<CProcessMagic*>(blast->mMagicPtr);check(flightScript->mTrackNum==1&&blastScript->mTrackNum==15,"real archived track counts");check(flightScript->mMagicTrack[0].Pos[1]==-70,"real missile local offset");
         bool quake=false;for(unsigned i=0;i<blastScript->mTrackNum;++i){const auto& t=blastScript->mMagicTrack[i];if(t.Flag&_MT_FLAG_QUAKE)quake=t.Time==2.6f&&t.QuakeTime==5&&t.QuakeDensity==150;}check(quake,"actual impact quake control track");
         check(playing(audio.Inspect(277036))&&playing(audio.Inspect(277038))&&audio.Inspect(277036).tag==0&&audio.Inspect(277038).tag==0,"real missile/explosion one-shot sound");
-        for(unsigned i=1;i<=15;++i){R3SetTime(i/30.0);ClearDynamicLight();FrameMoveAllEffectsList();}check(GetEffectListCnt()>6,"real launch and impact children scheduled");pixels[0]=capture("registry-flight-impact.bgra");check(pixels[0]>20,"visible actual effects");
+        for(unsigned i=1;i<=15;++i){R3SetTime(i/30.0);ClearDynamicLight();advanceEffects119();}check(GetEffectListCnt()>6,"real launch and impact children scheduled");pixels[0]=capture("registry-flight-impact.bgra");check(pixels[0]>20,"visible actual effects");
         const auto beforeReset=GetMagicListCnt();check(owner.ResetRecords()&&owner.Size()==4&&!owner.Find(0,0)->radar&&!owner.Find(0,0)->launch&&!owner.Find(0,0)->impact&&same(owner.Position(0,0),pos)&&owner.Find(0,0)->countdown==5,"reset retains position/countdown and detaches effect handles");check(GetMagicListCnt()==beforeReset&&GetMagicListFromID(launch)->mState==0&&GetMagicListFromID(impact)->mState==0,"reset does not kill launch/impact");
-        for(unsigned i=16;i<=90;++i){R3SetTime(i/30.0);ClearDynamicLight();FrameMoveAllEffectsList();}pixels[1]=capture("registry-impact-late.bgra");check(pixels[1]>20,"late actual explosion visible");
+        for(unsigned i=16;i<=90;++i){R3SetTime(i/30.0);ClearDynamicLight();advanceEffects119();}pixels[1]=capture("registry-impact-late.bgra");check(pixels[1]>20,"late actual explosion visible");
         check(owner.ClearAll()&&!owner.Size()&&!owner.ClearAll(),"full clear drops records after reset");
         phase("messages");auto* language=RF455_GetNormalLanguagePack();
         for(BYTE race:{BYTE(0),BYTE(1),BYTE(2),BYTE(255)}){
@@ -126,10 +143,10 @@ static int run(){
         Sleep(1050);owner.FrameMove();check(owner.Find(0,1)->countdown==1&&owner.Find(2,0)->countdown==3&&RF455_SystemMessageCounters().main==beforeClock+1,"ascending key consumes shared real tick");char expected[512];std::snprintf(expected,sizeof(expected),language->get(0xc17),2);check(text(chat.GetChatBoard455(0)).find(expected)!=std::string::npos,"real C17 oldcount2 dispatched");center.FrameMoveAt(timeGetTime(),.05f);pixels[2]=capture("registry-countdown.bgra",&chat,&center);clear(chat,center);
         Sleep(1050);owner.ClearAll();owner.Add(1,0);owner.SetCountdown(1,0,4);owner.FrameMove();check(owner.Find(1,0)->countdown==3,"shared clock survives ClearAll/new record");
         std::snprintf(expected,sizeof(expected),language->get(0xc17),4);check(text(chat.GetChatBoard455(0)).find(expected)!=std::string::npos,"real C17 after recreation");owner.ClearAll();clear(chat,center);
-        phase("drain");while((GetEffectListCnt()||GetMagicListCnt())&&drain<1200){++drain;R3SetTime(3+drain/30.0);ClearDynamicLight();FrameMoveAllEffectsList();}check(!GetEffectListCnt()&&!GetMagicListCnt()&&drain<1200,"detached flight/explosion/radar naturally drain");pixels[3]=capture("registry-cleared.bgra");check(!pixels[3],"all effect pixels cleared");
+        phase("drain");while((GetEffectListCnt()||GetMagicListCnt())&&drain<1200){++drain;R3SetTime(3+drain/30.0);ClearDynamicLight();advanceEffects119();}check(!GetEffectListCnt()&&!GetMagicListCnt()&&drain<1200,"detached flight/explosion/radar naturally drain");pixels[3]=capture("registry-cleared.bgra");check(!pixels[3],"all effect pixels cleared");
         // Destructor follows target ClearAll: pending0, no independent aiming Clear.
         {RF455NuclearContainer local;local.Add(3,0);local.SetPosition(3,0,pos);check(local.Radar(3,0,1)&&local.Find(3,0)->radar,"scoped record radar");}check(!playing(audio.Inspect(277034)),"container destructor stops record radar tag2");
-        for(unsigned i=0;i<300&&(GetEffectListCnt()||GetMagicListCnt());++i)FrameMoveAllEffectsList();check(!GetEffectListCnt()&&!GetMagicListCnt(),"destructor radar drains");pixels[4]=capture("registry-destructor-cleared.bgra");check(!pixels[4],"destructor radar pixels cleared");
+        for(unsigned i=0;i<300&&(GetEffectListCnt()||GetMagicListCnt());++i)advanceEffects119();check(!GetEffectListCnt()&&!GetMagicListCnt(),"destructor radar drains");pixels[4]=capture("registry-destructor-cleared.bgra");check(!pixels[4],"destructor radar pixels cleared");
 #if defined(RF455_TEXTURE_LIFETIME_PROBE)
         RF455_TextureBeforeCache118();
 #endif

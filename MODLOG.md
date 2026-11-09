@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Camera quake119. Ported interpolation/sway/distance decay and
+map previous-view publish order;successful map load stops sway.18fullasm/2600
+instructions equalboth455,IDAsavedclosed/list0. CPU142events/2921exactscalars;
+real archived impact545frames/onset79/151active/26160exactscalars/CLevel→D3Dview.
+5GPUviewed/maps2692/330/Create1. Engine67onlyr3util+level changed,65byteequal.
+OwnPE406b400e/182-20-70/unresolved0;exact118engine/PE retained. Fullworld/timer/
+control/Empty/INS/FP/CRT/allclient/M9 acceptance open.
+[research/client455-quake.md](research/client455-quake.md).
+
+
 2026-11-09 — Texture lifetime118. Matched target R3T shared-counter/release
 behavior and preserved20warnings. Fixed Warning CP949 label and no-callback
 return.18fullasm/999instructions+55tail;IDAsavedclosed/list0. Actual109+649,

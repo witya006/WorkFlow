@@ -6,9 +6,59 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-TEXTURE-LIFETIME-118",
+      "id": "CLIENT455-CAMERA-QUAKE-119",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Selected455 quake/sway/attenuation and map previous-view publication restored;real archived impact drives CLevel and D3D view;full camera/world/gameplay open",
+      "reference": [
+        {
+          "rva": "0x4b4660",
+          "role": "Quake start"
+        },
+        {
+          "rva": "0x4b4390",
+          "role": "Quake vector"
+        },
+        {
+          "rva": "0x4b40f0",
+          "role": "Sway"
+        },
+        {
+          "rva": "0x4eb7f0",
+          "role": "Map view publication"
+        },
+        {
+          "rva": "0x3da4b0",
+          "role": "Actual effect scheduler"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_quake.h",
+        "scripts/native/client455_quake.inc",
+        "scripts/native/client455_quake_density.inc",
+        "scripts/native/client455_level_view.inc",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "18equalbodies/18fullasm/2600instructions,17new/1971;IDAsavedclosed/list0. CPU142events/2921exactscalars;actual545frames/onset79/151active/26160exactscalars/deviceviewexact/5GPUviewed/map2692/330/Create1. Engine67 onlyr3util+level changed,65byteequal;ownPE406b400e. Older bulk/texture649 not rerun.",
+      "evidence": [
+        "inventory/client455-quake-reference.json",
+        "inventory/client455-quake-native.json",
+        "inventory/client455-quake-effects-native.json",
+        "inventory/client455-quake-visual-review.json",
+        "inventory/client455-quake-checkpoint.json",
+        "research/client455-quake.md"
+      ],
+      "gaps": [
+        "Sway activation/control writer7E2AD0 observed statically but not restored to ordinary game input/action flow",
+        "Empty-level8E7850 and INS variants have separate behavior;map CLevel proof does not accept them",
+        "Provider timer/toggle negative branch/live game timing/full world frame/light/compositing and allFP/oldCRT/privateABI/NaN/zero-heading/modulo0/overflow/RNG-interleaving remain open",
+        "All previous client acceptance gaps;M6/M6F/M7/M9 open"
+      ]
+    },
+    {
+      "id": "CLIENT455-TEXTURE-LIFETIME-118",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "TargetWarning label/no-callback semantics restored;actual21cache owners/20FX+132world COM teardown and shared-counter behavior verified;full device lifecycle open",
       "reference": [
         {
