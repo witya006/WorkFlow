@@ -11,6 +11,20 @@
 Основная папка: `E:\RFOnlineTrash\Source\WorkFlow`.
 Репозиторий локальный; публикация и remote не настроены.
 
+112 PARTIAL_COMPONENT: подтверждён настоящий вход начала прицела — client
+Nuclear processor,group60/opcode0/result0,а не input callback.45body ranges/
+22fullasm/903instructions совпали между двумя455;ctor/vtable/RTTI подтверждены.
+Восстановлен C++decoder всех9 payload layouts:2429 коротких native assertions
+PASS,включая packed14/count0..255/short/null/float bits. Это отдельный source
+component,ordinary receiver ещё не подключён. Runtime111/PE031df367…/engine
+неизменены,его suites не повторены. Guard использует action category5 и internal
+Character DWORD640&3,а не status17708/serverflags;нужны реальные writers/UI.
+Следующая113 — actual network receiver+guard/selection/dialog/record owners.
+Component gate:nuclear-wire-checkpoint; runtime gate111 current. M6/M6F/M7/M9 OPEN.
+[Доказательства112](research/client455-nuclear-protocol.md).
+
+Последний runtime результат111:
+
 111 PARTIAL: обычный formatter подключён к actual Login и четырём панелям
 чата/центру экрана. Обычный typed hover у настоящего Avatar с pending1 теперь
 отменяет реальный прицел/звук,обнуляет координаты и выводит C1A до item mutation.
@@ -20,8 +34,7 @@
 равны109. InsertText455 теперь удержан обычной PE. CE7 core проверен вlab,
 но его game-action registration ещё нет и helper удалён ordinary linker.
 Gate111 current,109 historical. Tutorial только routing kernel;полные stages/
-Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее112 — привязка
-начала прицеливания к обычному игровому действию. M6/M6F/M7/M9 OPEN.
+Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее113 — actual network receiver/guard для начала прицеливания. M6/M6F/M7/M9 OPEN.
 [Доказательства111](research/client455-message-runtime.md).
 
 Историческое исследование110:

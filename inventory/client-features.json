@@ -6,6 +6,59 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-NUCLEAR-WIRE-112",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "normal_receiver_integrated": false,
+      "description": "Actual Nuclear network receiver chain/RTTI and all9 payload reads pinned; bounded x86 C++decoder implemented and tested separately. Ordinary runtime111 unchanged;receiver/guard/UI/record integration still open",
+      "reference": [
+        {
+          "rva": "0x1c5800",
+          "role": "group60 receiver"
+        },
+        {
+          "rva": "0x1c5910",
+          "role": "opcode0 branch"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "role": "CE7 start helper"
+        },
+        {
+          "rva": "0x1c5730",
+          "role": "actual processor ctor"
+        },
+        {
+          "rva": "0x3db60",
+          "role": "action/internalflag guard"
+        },
+        {
+          "rva": "0x3a060",
+          "role": "Character constructor initializesinternal640"
+        },
+        {
+          "rva": "0x161000",
+          "role": "Network processor factory"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_nuclear_wire.h",
+        "scripts/native/client455_nuclear_wire.cpp"
+      ],
+      "verification": "45pinned bodyranges/45completepseudocode/22fullasm/903instructions equalbothpins;5E8edges,actual Nuclear RTTI/vtable/constructor and internalDWORD640store0. IDAa49d0cbcsavedclosed/list0. Own x86 /W4/WX decoder library/test:2429checks/9layouts/all256results/all256counts/prefixes/rawfloatbits/packed14;not live packet capture or normal receiver acceptance. Runtime111PE/engine unchanged,no native/GPUbulk reruns.",
+      "evidence": [
+        "inventory/client455-nuclear-protocol-reference.json",
+        "inventory/client455-nuclear-wire-native.json",
+        "inventory/client455-nuclear-wire-checkpoint.json",
+        "research/client455-nuclear-protocol.md"
+      ],
+      "gaps": [
+        "Ordinary CNetworkMgr/Nuclear class registration/receipt and full opcode handlers remain open;not an input callback task",
+        "Guard internalflags640 differs from playerstatus17708/server64 flags;all actual producers/selected-item serial/send endpoint/dialog owners required",
+        "Record32 map/lifecycle/FX/frame/list/command/finalposition and all previous client-acceptance gaps remain mandatory;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
       "id": "CLIENT455-MESSAGE-RUNTIME-111",
       "status": "partial",
       "runtime_gate_current": true,
@@ -52,7 +105,7 @@
         "research/client455-message-runtime.md"
       ],
       "gaps": [
-        "CE7 game-action registration/callback not restored;next112 then command/response/list12/finalposition/othercancels",
+        "Actual outer caller identified112:group60/opcode0/result0 Nuclear network receiver,not input callback;receiver/Characterinternalguard/dialog/record integration next113,then command/finalposition/othercancels",
         "Full Login/auth/secondaryUI/Tutorial/fourstage factory and complete ordinary scene/bootstrap not accepted",
         "Full chat filterUI/input/send/IME/save/legacycallers/numericID overload and previous gameplay/protocol gaps remain",
         "Own formatted cap1024/provider guards do not accept unsafe/OOM/CRT/privateABI/FP/concurrency/shutdown/fullstage teardown;M6/M6F/M7/M9OPEN"

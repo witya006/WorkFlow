@@ -20,6 +20,20 @@ artifacts/; ignoring не backup. Источник истины — файлы,�
 
 ## Последний проверенный результат
 
+112 PARTIAL_COMPONENT: подтверждён настоящий вход начала прицела — client
+Nuclear processor,group60/opcode0/result0,а не input callback.45body ranges/
+22fullasm/903instructions совпали между двумя455;ctor/vtable/RTTI подтверждены.
+Восстановлен C++decoder всех9 payload layouts:2429 коротких native assertions
+PASS,включая packed14/count0..255/short/null/float bits. Это отдельный source
+component,ordinary receiver ещё не подключён. Runtime111/PE031df367…/engine
+неизменены,его suites не повторены. Guard использует action category5 и internal
+Character DWORD640&3,а не status17708/serverflags;нужны реальные writers/UI.
+Следующая113 — actual network receiver+guard/selection/dialog/record owners.
+Component gate:nuclear-wire-checkpoint; runtime gate111 current. M6/M6F/M7/M9 OPEN.
+[Доказательства112](../research/client455-nuclear-protocol.md).
+
+Последний runtime результат111:
+
 111 PARTIAL: обычный formatter подключён к actual Login и четырём панелям
 чата/центру экрана. Обычный typed hover у настоящего Avatar с pending1 теперь
 отменяет реальный прицел/звук,обнуляет координаты и выводит C1A до item mutation.
@@ -29,8 +43,7 @@ artifacts/; ignoring не backup. Источник истины — файлы,�
 равны109. InsertText455 теперь удержан обычной PE. CE7 core проверен вlab,
 но его game-action registration ещё нет и helper удалён ordinary linker.
 Gate111 current,109 historical. Tutorial только routing kernel;полные stages/
-Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее112 — привязка
-начала прицеливания к обычному игровому действию. M6/M6F/M7/M9 OPEN.
+Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее113 — actual network receiver/guard для начала прицеливания. M6/M6F/M7/M9 OPEN.
 
 Текущий gate: inventory/client455-message-dispatch-checkpoint.json.
 Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_message_dispatch.py.
@@ -59,9 +72,12 @@ snapshots сохранены. Ошибочные lab attempts не выданы 
 
 ## Следующая работа
 
-1. Работа112: получить target callers/registration callback RVA1c5ab0 и
-   подключить начало прицеливания к обычному игровому действию. CE7 core и его
-   effect/Miles/message цепочка уже готовы; не повторять исследование110.
+1. Работа113: перенести CNetMsgProcessor_Nuclear/group60 в ordinary receive
+   path с decoder112 и core111. Восстановить actual internal Character flag
+   producers/guard,selected-item serial/base send mapping и реальный nuclear
+   dialog open/close;затем record32 registry/остальные opcodes/frame. Начало
+   вызывается result0 opcode0,не input callback. Сохранить branches1/2/error/
+   blocked;не считать их обслуженными no-op.45 bodies уже pinned,не переисследовать.
 2. Nuclear command/response/list12/finalposition,прочие input cancellation и
    fullworld placement/light/qualityUI/blur/advancedFX/device lifecycle.
 3. Actual Tutorial/common UI/board/Avatar/Create/camera/QBI47/fourstage factory,
@@ -83,3 +99,8 @@ concurrency/shutdown остаются открыты. Новая cap1024 safety 
 provider checks не принимают unsafe domain. Все прочие известные gaps сохраняются
 в client-acceptance.md,client-features.json и подробных research;ничего не снято
 из конечной цели. Серверы не являются блокером клиентского восстановления.
+
+Component112: inventory/client455-nuclear-wire-checkpoint.json;проверка
+Invoke-Python.ps1 scripts/checkpoint_client455_nuclear_wire.py. Source decoder
+не находится в normal PE.2429 assertions — один короткий native run,не AI calls.
+Подробные payload/guard/record contracts и gaps в research/client455-nuclear-protocol.md.

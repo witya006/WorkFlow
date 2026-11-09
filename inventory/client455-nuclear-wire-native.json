@@ -1,0 +1,67 @@
+{
+  "status": "PASS_SELECTED_DECODER",
+  "scope": "Bounded source decoder for nine native-confirmed group60 layouts; receiver/guard/UI/owner integration not accepted",
+  "script_sha256": "61041b260243947046f57449047cfa18cca540a7bb8643cab1051f02b5fa6d0d",
+  "reference_sha256": "2f2660a839598e8def35ca69568bec6e2561950d0b3a5df64c66ef4f0c1110a6",
+  "sources": [
+    {
+      "file": "scripts/native/client455_nuclear_wire.h",
+      "sha256": "b75ae17d5a62f168c299d2736a30b8c1d560e3fe7bd4f11a5b257dfbbe44032c"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_wire.cpp",
+      "sha256": "c193328f57d6ca06ef4718a0c57e4a54fe35b81477ba640cc44eb07d9b82e263"
+    },
+    {
+      "file": "scripts/native/test_client455_nuclear_wire.cpp",
+      "sha256": "0281553daa4f592e2cd270112e759dfdb2957a5aea01df72fa027b43d3899f52"
+    }
+  ],
+  "object": {
+    "file": "work/recovered/client455/nuclear-wire/wire.obj",
+    "sha256": "c192df9eca6933a193266a143fe3821ea64f12523bca6ac08757927bc67565e7"
+  },
+  "library": {
+    "file": "work/recovered/client455/nuclear-wire/RF455NuclearWire.lib",
+    "sha256": "329cee0b26201f7a2280a2586c2f64601c4e2ef8ca0436a5618a9b2037192161"
+  },
+  "build_log": {
+    "file": "work/recovered/client455/nuclear-wire/build.txt",
+    "sha256": "ca36f357fcd6e27a81c36c896338c905df14ef5fc149f06a383b63c47b6aaa0b"
+  },
+  "exe": {
+    "file": "work/m9/95e80a57/nuclear-wire-001/nuclear-wire-probe.exe",
+    "sha256": "95e80a5729d64b5418dffc98edc5209ee4c7292f8d62f94d42a64adfd8462e19"
+  },
+  "output": {
+    "file": "work/m9/95e80a57/nuclear-wire-001/result.json",
+    "sha256": "407f7d917abbecede56ea6a7f9615e2da4db6fe3c3cfde9a446e4496a4964702"
+  },
+  "console": {
+    "file": "work/m9/95e80a57/nuclear-wire-001/console.txt",
+    "sha256": "2991063ec617323267336efd302aadde2b16ce02bf97f921fede3db083ebdda2"
+  },
+  "natural_exit": 0,
+  "native": {
+    "status": "PASS",
+    "checks": 2429,
+    "opcodes": 9,
+    "all_result_bytes": 256,
+    "all_list_counts": 256,
+    "list_max_rows": 9,
+    "short_prefixes": true,
+    "null_and_unknown": true,
+    "float_bits_preserved": true,
+    "packed14": true,
+    "output_unchanged_on_failure": true,
+    "normal_receiver_integrated": false,
+    "full_client": false
+  },
+  "normal_receiver_integrated": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

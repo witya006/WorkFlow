@@ -1,5 +1,9 @@
 # Общий вывод и живая отмена прицеливания — работа111
 
+Дополнение112: внешняя registration гипотеза уточнена — это реальный network
+receiver group60/opcode0,result0. См. [nuclear protocol112](client455-nuclear-protocol.md).
+Следующая реализация113,а не добавление input callback. Runtime111 пока current.
+
 2026-11-09. **PARTIAL**. Подтверждённые в110 контракты перенесены в ordinary
 source: общий formatter, actual Login member/draw и MainGame chat/center.
 Обычный typed hover теперь отменяет настоящее прицеливание у actual Avatar,

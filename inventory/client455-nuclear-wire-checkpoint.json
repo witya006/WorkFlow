@@ -1,0 +1,68 @@
+{
+  "status": "PARTIAL_COMPONENT",
+  "scope": "Bounded source decoder for nine native-confirmed group60 layouts; receiver/guard/UI/owner integration not accepted",
+  "script_sha256": "2d1e1208f0ee74becd05e972e80592201081e75213ae8e2048e7a3ef276191a4",
+  "reference": {
+    "file": "inventory/client455-nuclear-protocol-reference.json",
+    "sha256": "2f2660a839598e8def35ca69568bec6e2561950d0b3a5df64c66ef4f0c1110a6"
+  },
+  "decoder": {
+    "file": "inventory/client455-nuclear-wire-native.json",
+    "sha256": "4e8918e5dc27657e2a7db4b3e7f3621ec22129244580fe5c50bd03f6268ed353"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_nuclear_wire.h",
+      "sha256": "b75ae17d5a62f168c299d2736a30b8c1d560e3fe7bd4f11a5b257dfbbe44032c"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_wire.cpp",
+      "sha256": "c193328f57d6ca06ef4718a0c57e4a54fe35b81477ba640cc44eb07d9b82e263"
+    },
+    {
+      "file": "scripts/native/test_client455_nuclear_wire.cpp",
+      "sha256": "0281553daa4f592e2cd270112e759dfdb2957a5aea01df72fa027b43d3899f52"
+    }
+  ],
+  "library": {
+    "file": "work/recovered/client455/nuclear-wire/RF455NuclearWire.lib",
+    "sha256": "329cee0b26201f7a2280a2586c2f64601c4e2ef8ca0436a5618a9b2037192161"
+  },
+  "native_checks": 2429,
+  "current_runtime_gate": {
+    "file": "inventory/client455-message-dispatch-checkpoint.json",
+    "sha256": "5d1e2654bb1744bf8b0560ede924081afd47de8b13ce943a123ed2b32ba05414",
+    "work": 111
+  },
+  "ordinary_executable_unchanged": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "031df3676c9bed977f660d79fe535666af9cb52cfc4e5b1a61b3f04841df831c",
+    "bytes": 2197504,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x161590",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "normal_receiver_integrated": false,
+  "next_work": 113,
+  "next_action": "Restore actual Nuclear processor/ordinary group60 routing with real Character action/internal flags and UI/selection/record owners; do not invent an input callback or ignore nonzero branches",
+  "gaps": [
+    "Only bytes read by handlers establish minimum accepted-input boundaries;target unsafe short/null behavior not accepted",
+    "All internal flag producers,selection/dialog/network send/otheropcode owner/record FX/frame integration remain mandatory",
+    "Full client and all previous client-acceptance gaps remain open"
+  ],
+  "unchanged_runtime_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
