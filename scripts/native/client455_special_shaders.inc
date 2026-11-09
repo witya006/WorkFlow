@@ -68,7 +68,7 @@ IDirect3DPixelShader9* RF455_GetSpecialPixelShader(unsigned index){
 }
 int RF455_LoadSpecialShaderBinary(){
     FILE* f=std::fopen("./system/shader/init.r3o","rb");
-    if(!f){specialWarning455("Missing init.r3o;Init.r3s fallback is not yet restored");return -1;}
+    if(!f)return RF455_LoadSpecialShaderText();
     initSpecial455();char path[256];int count=0;std::fread(path,256,1,f);std::fread(&count,4,1,f);
     for(int i=0;i<count;++i){
         char name[256];std::fread(name,256,1,f);char* dot=std::strrchr(name,'.');if(dot)*dot=0;std::strcat(name,".sho");char file[256];std::strcpy(file,path);std::strcat(file,name);
@@ -100,3 +100,4 @@ int RF455_LoadSpecialShaderBinary(){
     //905220 does NOT publish count to1175780. Slot0 is valid even for count0.
     return std::fclose(f);
 }
+#include "client455_special_shader_text.inc"

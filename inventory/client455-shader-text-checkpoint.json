@@ -1,0 +1,172 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary binary->text special-shader fallback,FromFile compiler,typed object parameters and named program services",
+  "script": {
+    "file": "scripts/checkpoint_client455_shader_text.py",
+    "sha256": "e0efd77c4530c9007969d4169ce229af856798ff137dfa2c72d47784d3312145"
+  },
+  "reference": {
+    "file": "inventory/client455-shader-text-reference.json",
+    "sha256": "6643a87243dfc56b9796d80a0f294a2a9711d63ad035f4715c70c5dc893b63e6"
+  },
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "5cf2c4bd34bdb13a47ceda24f093722207bd16543ee4512808a2be29893e8251"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d77ffe02b4d4fc6bf7a982dadeda9efb6bdbbef954ed6da7d66baa2575d274b7",
+    "bytes": 2267136,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16f0c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "f19dfe6f896c657e00da5c00d7bd795e18e4e419f0eb3cf0e3053d0d1417c7da",
+  "text_fallback": {
+    "programs": 4,
+    "objects": 3,
+    "active_parameters": 11,
+    "inactive_parameter_types": 4,
+    "parameter_bytes": 196,
+    "object_bytes": 1964,
+    "exact_adjacent_records": true,
+    "actual_sources_bytecode_equal": true,
+    "text_fallback_via_ordinary_restore": true,
+    "named_bind_cases": 8,
+    "custom_path_reset_preserved": true,
+    "fx_list_count_only": true,
+    "inclusive_object_index": true,
+    "feof_newline_duplicate_object": true,
+    "missing_text_preserves_tables": true,
+    "mixed_compile_failure_skipped": true,
+    "binary_restored": true,
+    "handles_balanced": true,
+    "table_allocations_balanced": true,
+    "full_special_renderer": false
+  },
+  "ordinary_restore_calls": [
+    {
+      "call_rva": "0x10f407",
+      "target_rva": "0x110fe0",
+      "operation": "release"
+    },
+    {
+      "call_rva": "0x10f40c",
+      "target_rva": "0x111050",
+      "operation": "load"
+    }
+  ],
+  "own_fallback_call": {
+    "from_rva": "0x111050",
+    "site_rva": "0x111084",
+    "target_rva": "0x111630"
+  },
+  "ordinary_material_regression": {
+    "actual_draw_cases": 51,
+    "layers": [
+      1,
+      2,
+      7
+    ],
+    "real_distinct_textures": 7,
+    "PS18_exact": true,
+    "PS17_selected_times_exact": true,
+    "raw_matrices_and_inverse_view_row4": true,
+    "unchanged_VS12_VS13": true,
+    "texture_cleanup_and_retained_lightmap": true,
+    "real_particle_light_loader_and_update": true,
+    "material_light_selector_retention": true,
+    "whole_DWORD_splat_shader_index64": true,
+    "splat_cases": 2,
+    "splat_passes": 6,
+    "actual_source_pairs": 2,
+    "GPU_frames": 4,
+    "full_special_renderer": false,
+    "unowned_PS6w_certified": false
+  },
+  "fresh_GPU_frames": 4,
+  "reused_review_pixels_byte_equal135": true,
+  "new_visual_inspection": false,
+  "shared_headers_changed": false,
+  "full_client_recompile_needed": false,
+  "previous135_gate": {
+    "file": "artifacts/client455-progress/before136/inventory/client455-material-shaders-checkpoint.json",
+    "sha256": "a984c0feb1ef8fa785d8b1f3dff4e29c55e8e11a4e7f052e0eb4108ea782bfa3"
+  },
+  "snapshot": {
+    "file": "artifacts/client455-progress/before136/manifest.json",
+    "sha256": "de3640e7014a0f4906b510c7d7022827e6f04253fbf13ecb79a5ca1c4eb65ea6"
+  },
+  "fresh_evidence": {
+    "shader-text-reference": {
+      "file": "inventory/client455-shader-text-reference.json",
+      "sha256": "6643a87243dfc56b9796d80a0f294a2a9711d63ad035f4715c70c5dc893b63e6"
+    },
+    "shader-text-native": {
+      "file": "inventory/client455-shader-text-native.json",
+      "sha256": "83cecec0c11c10d0a18d288bde7cfc14f4be7e2887239cff19149f649b1e2b1e"
+    },
+    "material-shaders-native": {
+      "file": "inventory/client455-material-shaders-native.json",
+      "sha256": "21b83131dcc3b4b9e672f40d6c2f4d27cf86e2fb2bac769d56c4470648076104"
+    },
+    "material-shaders-visual-review": {
+      "file": "inventory/client455-material-shaders-visual-review.json",
+      "sha256": "ce0dc7332fbae925db6d8110175da13a20d2b8de01b828ce610c27c29269b996"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "f19dfe6f896c657e00da5c00d7bd795e18e4e419f0eb3cf0e3053d0d1417c7da"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "f0f3805853de53e95b62ca34386e45f770e76d0e844d911aa04ff007532e2820"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "7899264bd68d07314118e19cc52dbe3ae3218110181764e4ec11d6106a3e239b"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "3df67b1841538821ddef69bdbc9488e612e056aac619aaecc03890c7aed2c8e7"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "9c6e6c4710a01a7bf1d7b81786d66850327f838303c9771d51b9a95dcc516e50"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "5d2ebc574a0a52ee2734420f1d3d6351aea8f3df3c62c486e21f635f80907d5d"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "37e4237cda87e263bd9887618ec5e9103535933772bcc8d2159b202a42c3191f"
+    }
+  },
+  "gaps": [
+    "PS6 reads four floats starting at color+20 in a32-byte light allocation;its fourth lane lies outside the object and is not certified. No fabricated alpha value is introduced",
+    "The supplied Fraction/Plazma programs do not consume PS18. Actual GPU register delivery is proven;all consumers of the new specular fields/full appearance are not certified",
+    "VS12/13 and PS16 were explicit lab initial states and remain untouched by the restored consumer. Their complete ordinary producers,other shader objects/unused lanes are open",
+    "Global particle light owner is restored;the separate per-BSP light list and its producers/positive object-light routing remain open. Full particle advanced providers other than [light] remain rejected",
+    "Full world/stages/Login/auth/protocol/Character/gameplay and every remaining client-acceptance requirement are still open",
+    "Text Init.r3s/FromFile/named lookup and selected failure/EOF semantics restored. Full numeric CRT parsing,malformed/overflow/OOM and all failure COM ownership remain unverified",
+    "Typed object parameters are stored faithfully;no automatic GPU upload was found in8C9230. Actual VS12/13 writers occur in Fraction/refraction render owners8CDE30/8CE0A0;those complete draw owners and their unowned lanes remain open",
+    "Positive binary FX/caps/real D3D9 Reset/lost-device/full splat combinations,per-BSP light owner and all remaining client-acceptance gaps remain open"
+  ],
+  "unchanged_bulk_suites_rerun": false,
+  "full_special_renderer": false,
+  "full_client": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

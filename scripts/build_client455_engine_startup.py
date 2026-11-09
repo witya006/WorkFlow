@@ -340,7 +340,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['map_entity_owner']={'file':'scripts/native/client455_map_entity_owner.inc','sha256':sha(WS/'scripts/native/client455_map_entity_owner.inc')}
     report['material_header_overlay']={'file':materialKey,'sha256':sha(materialHeader),'original':materialInput.relative_to(WS).as_posix(),'original_sha256':sha(materialInput)}
     report['material_port_script']={'file':'scripts/client455_material_port.py','sha256':sha(WS/'scripts/client455_material_port.py')}
-    report['special_shader_owner']={name:sha(WS/'scripts/native'/name) for name in ['client455_special_shaders.h','client455_special_shaders.inc','client455_shader_key.h']}
+    report['special_shader_owner']={name:sha(WS/'scripts/native'/name) for name in ['client455_special_shaders.h','client455_special_shaders.inc','client455_special_shader_text.inc','client455_shader_key.h']}
     report['material_shader_draw']={name:sha(WS/'scripts/native'/name) for name in ['client455_material_shaders.h','client455_material_shaders.inc','client455_shader_lights.h','client455_shader_lights.inc']}
     report['material_shader_port_script']={'file':'scripts/client455_material_shader_port.py','sha256':sha(WS/'scripts/client455_material_shader_port.py')}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}

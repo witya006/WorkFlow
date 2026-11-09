@@ -1,0 +1,330 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Ordinary binary->text special-shader fallback,FromFile compiler,typed object parameters and named program services",
+  "script": {
+    "file": "scripts/audit_client455_shader_text.py",
+    "sha256": "fb66c4f22a886bfecb6330fe2e1e0195c271225fcea1500972d82816ff6b4a3e"
+  },
+  "contract_verifier": {
+    "file": "scripts/audit_client455_lighting_consumers.py",
+    "sha256": "6bb2c1e7ae2c15f0ab784460ed578359ac014925be5edd7722ebb9b44bc611ee"
+  },
+  "raw": {
+    "file": "artifacts/client455-progress/shader-text136-reference.json",
+    "sha256": "56e0af04d0f8182f990dbf0eee3e722112eb0af6590ac1a79c1b292450fbcfc9"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/shader-text136-session.json",
+    "sha256": "cf3be07965481b375f432d1fd38947df0d0227e6fc925b45df5a737efbcedf08"
+  },
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x503670",
+          "rva": "0x503670",
+          "bytes": 89,
+          "sha256": "4b193463a17628e5723be35cf5c36966eb1e9cb8ec4cf6e2ad529d1604f4cdbd"
+        },
+        {
+          "owner_rva": "0x503d40",
+          "rva": "0x503d40",
+          "bytes": 120,
+          "sha256": "347b34835cdeb7b32ee77219e70dde1820c76763cf41136451fa5501af18be77"
+        },
+        {
+          "owner_rva": "0x503dc0",
+          "rva": "0x503dc0",
+          "bytes": 120,
+          "sha256": "83b8caf4aafa3eaf49c98b429fb2f07d692ba4016e2ca91ca0334d1bb12f174b"
+        },
+        {
+          "owner_rva": "0x504080",
+          "rva": "0x504080",
+          "bytes": 160,
+          "sha256": "89fd236999e4fba1a5226eac7722d7d0240bcf26c65086a13bc2e2ba0cf004d2"
+        },
+        {
+          "owner_rva": "0x5041e0",
+          "rva": "0x5041e0",
+          "bytes": 160,
+          "sha256": "9c7be27bf9def4cc6614c549848e51118ed581e8f2b2eedeb7916d99accadf30"
+        },
+        {
+          "owner_rva": "0x504590",
+          "rva": "0x504590",
+          "bytes": 403,
+          "sha256": "072521e34f1f25a82eaa8f92014662d24eceb668fb898ac6bbc05b25fd28ef9d"
+        },
+        {
+          "owner_rva": "0x504b60",
+          "rva": "0x504b60",
+          "bytes": 1696,
+          "sha256": "a0b981b4dd8134285879a9664b74867be10732c38e5a437c7c3c6048c4f74189"
+        }
+      ],
+      "type_table": {
+        "rva": "0x7f8018",
+        "hex": "b898b30060d8aa00b498b3004cd8aa00b098b300ac98b300a898b300a098b300"
+      },
+      "type_names": [
+        {
+          "rva": "0x7398b8",
+          "name": "n",
+          "sha256": "481daf8515fdae90077119892b048315b0360444bdf88df302520322541847aa"
+        },
+        {
+          "rva": "0x6ad860",
+          "name": "b",
+          "sha256": "1e57b933b0a78203e21d41cc4b16d731b255b04058d48a4ac2731f0089312129"
+        },
+        {
+          "rva": "0x7398b4",
+          "name": "i",
+          "sha256": "e8902c7331527e223bf3d97d077ed97fcd7ac3d38f289b5b3ba4d97ea510db05"
+        },
+        {
+          "rva": "0x6ad84c",
+          "name": "f",
+          "sha256": "887a0529fd9d76eb33c0ec808c05daaf32fa9f5e21e4c32224fb4bfaaa0af385"
+        },
+        {
+          "rva": "0x7398b0",
+          "name": "v",
+          "sha256": "924310d6e64a28d18d5eb0933cd24dcaea16af5a2674f1f11bc0805d80c12069"
+        },
+        {
+          "rva": "0x7398ac",
+          "name": "m44",
+          "sha256": "04e90ba4b92a2b7509a42c31d1bad002c7a8fc6e8c496d60abbeb1e2b5108a44"
+        },
+        {
+          "rva": "0x7398a8",
+          "name": "t",
+          "sha256": "3776096e9733584bd622e7e6417b65ba6640f8a8b809f475cd15ed5923cce3f6"
+        },
+        {
+          "rva": "0x7398a0",
+          "name": "timer",
+          "sha256": "366064218e833695f9d100a0f294f753367ee743f9cf7f229fe39a0d509f6f02"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x503670",
+          "rva": "0x503670",
+          "bytes": 89,
+          "sha256": "4b193463a17628e5723be35cf5c36966eb1e9cb8ec4cf6e2ad529d1604f4cdbd"
+        },
+        {
+          "owner_rva": "0x503d40",
+          "rva": "0x503d40",
+          "bytes": 120,
+          "sha256": "347b34835cdeb7b32ee77219e70dde1820c76763cf41136451fa5501af18be77"
+        },
+        {
+          "owner_rva": "0x503dc0",
+          "rva": "0x503dc0",
+          "bytes": 120,
+          "sha256": "83b8caf4aafa3eaf49c98b429fb2f07d692ba4016e2ca91ca0334d1bb12f174b"
+        },
+        {
+          "owner_rva": "0x504080",
+          "rva": "0x504080",
+          "bytes": 160,
+          "sha256": "89fd236999e4fba1a5226eac7722d7d0240bcf26c65086a13bc2e2ba0cf004d2"
+        },
+        {
+          "owner_rva": "0x5041e0",
+          "rva": "0x5041e0",
+          "bytes": 160,
+          "sha256": "9c7be27bf9def4cc6614c549848e51118ed581e8f2b2eedeb7916d99accadf30"
+        },
+        {
+          "owner_rva": "0x504590",
+          "rva": "0x504590",
+          "bytes": 403,
+          "sha256": "072521e34f1f25a82eaa8f92014662d24eceb668fb898ac6bbc05b25fd28ef9d"
+        },
+        {
+          "owner_rva": "0x504b60",
+          "rva": "0x504b60",
+          "bytes": 1696,
+          "sha256": "a0b981b4dd8134285879a9664b74867be10732c38e5a437c7c3c6048c4f74189"
+        }
+      ],
+      "type_table": {
+        "rva": "0x7f8018",
+        "hex": "b898b30060d8aa00b498b3004cd8aa00b098b300ac98b300a898b300a098b300"
+      },
+      "type_names": [
+        {
+          "rva": "0x7398b8",
+          "name": "n",
+          "sha256": "481daf8515fdae90077119892b048315b0360444bdf88df302520322541847aa"
+        },
+        {
+          "rva": "0x6ad860",
+          "name": "b",
+          "sha256": "1e57b933b0a78203e21d41cc4b16d731b255b04058d48a4ac2731f0089312129"
+        },
+        {
+          "rva": "0x7398b4",
+          "name": "i",
+          "sha256": "e8902c7331527e223bf3d97d077ed97fcd7ac3d38f289b5b3ba4d97ea510db05"
+        },
+        {
+          "rva": "0x6ad84c",
+          "name": "f",
+          "sha256": "887a0529fd9d76eb33c0ec808c05daaf32fa9f5e21e4c32224fb4bfaaa0af385"
+        },
+        {
+          "rva": "0x7398b0",
+          "name": "v",
+          "sha256": "924310d6e64a28d18d5eb0933cd24dcaea16af5a2674f1f11bc0805d80c12069"
+        },
+        {
+          "rva": "0x7398ac",
+          "name": "m44",
+          "sha256": "04e90ba4b92a2b7509a42c31d1bad002c7a8fc6e8c496d60abbeb1e2b5108a44"
+        },
+        {
+          "rva": "0x7398a8",
+          "name": "t",
+          "sha256": "3776096e9733584bd622e7e6417b65ba6640f8a8b809f475cd15ed5923cce3f6"
+        },
+        {
+          "rva": "0x7398a0",
+          "name": "timer",
+          "sha256": "366064218e833695f9d100a0f294f753367ee743f9cf7f229fe39a0d509f6f02"
+        }
+      ]
+    }
+  ],
+  "full_assembly": 7,
+  "instructions": 872,
+  "verified_ranges": 7,
+  "CFG_complete": true,
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "5cf2c4bd34bdb13a47ceda24f093722207bd16543ee4512808a2be29893e8251"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d77ffe02b4d4fc6bf7a982dadeda9efb6bdbbef954ed6da7d66baa2575d274b7",
+    "bytes": 2267136,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16f0c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "f19dfe6f896c657e00da5c00d7bd795e18e4e419f0eb3cf0e3053d0d1417c7da",
+  "snapshot": {
+    "file": "artifacts/client455-progress/before136/manifest.json",
+    "sha256": "de3640e7014a0f4906b510c7d7022827e6f04253fbf13ecb79a5ca1c4eb65ea6"
+  },
+  "changed_members": [
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj"
+  ],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "timestamp_only_members": [
+    "R3Engine455Startup.dir\\Release\\r3render.obj"
+  ],
+  "shared_headers_changed": false,
+  "gaps": [
+    "PS6 reads four floats starting at color+20 in a32-byte light allocation;its fourth lane lies outside the object and is not certified. No fabricated alpha value is introduced",
+    "The supplied Fraction/Plazma programs do not consume PS18. Actual GPU register delivery is proven;all consumers of the new specular fields/full appearance are not certified",
+    "VS12/13 and PS16 were explicit lab initial states and remain untouched by the restored consumer. Their complete ordinary producers,other shader objects/unused lanes are open",
+    "Global particle light owner is restored;the separate per-BSP light list and its producers/positive object-light routing remain open. Full particle advanced providers other than [light] remain rejected",
+    "Full world/stages/Login/auth/protocol/Character/gameplay and every remaining client-acceptance requirement are still open",
+    "Text Init.r3s/FromFile/named lookup and selected failure/EOF semantics restored. Full numeric CRT parsing,malformed/overflow/OOM and all failure COM ownership remain unverified",
+    "Typed object parameters are stored faithfully;no automatic GPU upload was found in8C9230. Actual VS12/13 writers occur in Fraction/refraction render owners8CDE30/8CE0A0;those complete draw owners and their unowned lanes remain open",
+    "Positive binary FX/caps/real D3D9 Reset/lost-device/full splat combinations,per-BSP light owner and all remaining client-acceptance gaps remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

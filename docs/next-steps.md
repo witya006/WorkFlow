@@ -1,37 +1,34 @@
 # Следующие шаги
 
-Обновлено2026-11-10. **135 PARTIAL M6**.
-Текущий gate: inventory/client455-material-shaders-checkpoint.json.
-Доказательства: research/client455-material-shaders.md.
-Обычный BSP draw использует специальные шейдеры,PS18,семь текстур и свет,
-загружаемый из particle SPT. Выбранные ordinary/special splat cases проходят.
-Новая PE38c85019…/unresolved0/existingCreate1. M6/M6F/M7/M9 OPEN.
-M9 уже определён:финальная приёмка клиента455 без модернизации графики.
+Обновлено2026-11-10. **136 PARTIAL M6**.
+Gate: inventory/client455-shader-text-checkpoint.json.
+Доказательства: research/client455-shader-text.md.
+Обычный Init.r3o→Init.r3s fallback,FromFile compile,typed parameters иnamed shader
+lookup/bind работают.4реальных программы/3objects/11values,выбранные failures/EOF
+quirks проверены. НоваяPEd77ffe02…/unresolved0/existingCreate1. M6/M6F/M7/M9 OPEN.
+M9 уже определён:финальная приёмка455клиента без модернизации графики.
 
-1. 136:полный Init.r3s fallback904B60 и file compiler904590. Восстановить
-   параметризацию объектов и обычные writers VS12/13/PS16,положительный выбор
-   других программ. Эти регистры пока задавались только как условия стенда.
-2. Per-BSP light list:его parser/owner и положительный light_object routing.
-   Global particle light owner уже работает. PS6.w читает за32-byte record;
-   компоненту не подменять выдуманным alpha,не объявлять её сертифицированной.
-3. Positive FX/caps/failures/OOM/overflow/invalid indices/truncated files,
-   настоящий D3D9 Reset/lost-device,все splat combinations/unused register lanes.
-   Stock Fraction/Plazma не читают PS18:передача доказана,все specular consumers нет.
-4. Сохранить прежнюю очередь:CRT matherr/errno/unmasked/NaN/status;visibility/
-   alpha/fade/camera/world/localfog/lensflare/INS/Planet;Tutorial/Avatar/Create/
-   QBI/IME/stages/Login/auth/protocol/Character/gameplay. Вся client-acceptance.md
-   обязательна,далееM7/M9. Сборка и selected labs не означают полную приёмку.
+1. 137:полные Fraction/refraction render owners8CDE30/8CE0A0 иresource capture
+   lifecycle. Они задаютVS12/13,а неmaterial object parameters. Проследить Plazma
+   owner8CE2A0/PS16;не выдумывать defaults изначения неинициализированных lanes.
+2. Восстановить обычные particle azirang/refraction producers изSPT,которые пока
+   отклоняются;использовать уже восстановленные named shader services.
+3. Отдельный per-BSP light list/owner/positive light_object route. Global particle
+   light owner135 работает;PS6.w за границей32-byte объекта остаётся uncertified.
+4. Positive binaryFX/caps/errors/OOM/overflow/malformed input/полный CRT numeric
+   parsing/реальный deviceReset/full splat combinations/unused lanes. Сохранять
+   прежние world/visibility/stage/Login/auth/protocol/Character/gameplay gaps.
+   Вся client-acceptance.md обязательна доM7/M9;сборка иselected labs не финал.
 
-Перед136 сохранить exact135 engine/PE/MAP/rsp/reports/shared headers.
-135 общие заголовки не менялись:182/20 не пересобирались. Payload изменён только
-вr3render/r3particle/renderparticle из67engine units. Новые header changes требуют
-engine->prepare normal->build normal->probe consumers->link.
-Все11кадров135 свежие:4материала+2Bellato просмотрены,5world-frame равны134
-и используют прежний review. Bellato reload отличается от старого capture;
-он просмотрен,но pixel equivalence не заявляется. Другие старые suites исторические.
+Перед137 — exact136engine/PE/MAP/rsp/reports/shared headers backup.
+136 изменился толькоr3d3d8.obj payload;общие headers не менялись,182/20 не rebuilt.
+Private shader header расширен,layout1964/196 подтверждён. Если изменятся общие
+headers:engine->prepare normal->build normal->probe consumers->link.
+4freshGPUframes136 byteequal135;newvisualinspection false. ПолнаяBellato/
+world-frame135 — исторические результаты,не fresh136. Bulk159k не повторять.
 
-CLIENT ONLY. Server read-only,originals immutable,inputEXE never,workcopies,
+CLIENT ONLY,server read-only,originals immutable,inputEXE never,workcopies,
 localGit/no push,no subagents. Native/GPU sequential;timeout неrestart,
-опросить тот же handle. Не повторять159k unchanged checks.
-IDA6540261b saved/closed/list0. MCP<=100asm/page +all positive CFG/tails.
-Python только scripts/Invoke-Python.ps1 file.py. Остальные инварианты — в памяти.
+опросить тот жеhandle. IDAe67d2585saved/closed/list0.
+Python scripts/Invoke-Python.ps1 file.py. MCP<=100asm/page +allpositiveCFG/tails;
+JSON<=20kchunks. Остальные инварианты — вproject-memory.md иего истории.

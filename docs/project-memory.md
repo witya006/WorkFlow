@@ -1,108 +1,100 @@
 # Память проекта
 
-Обновлено2026-11-10. **135 PARTIAL M6**,CLIENT455-MATERIAL-SHADERS-135.
-Gate: inventory/client455-material-shaders-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_material_shaders.py.
-Доказательства: research/client455-material-shaders.md.
-Полная предыдущая память: research/project-memory-before135.md.
-Предыдущий134 — progress,commit ad3f5d7. Текущий135 — progress.
+Обновлено2026-11-10. **136 PARTIAL M6**,CLIENT455-SHADER-TEXT-136.
+Gate: inventory/client455-shader-text-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_shader_text.py.
+Доказательства: research/client455-shader-text.md.
+Полная предыдущая память: research/project-memory-before136.md.
+Предыдущий135 — progress,commit f14f0dd. Текущий136 — progress.
 
-## Цель и ограничения
+## Цель/правила
 
 CLIENT ONLY:поддерживаемые исходники и свойRF_Online.bin с полным поведением455.
-M9 УЖЕ определён:финальная приёмка без модернизации графики. Старый Goal M9/M4
-устарел. M0–M4diagnostic/selectedM5 завершены;M6/M6F/M7/M9 OPEN;M8 не нужен.
+M9 УЖЕ определён:финальная приёмка без модернизации графики. GoalM9/M4устарел.
+M0–M4diagnostic/selectedM5завершены;M6/M6F/M7/M9 OPEN,M8 не нужен.
 Build/Create1/selected labs не закрывают docs/client-acceptance.md.
 Server только читать reference;не менять/собирать/восстанавливать,включая копии.
-Originals immutable,inputEXE never execute,workcopies,localGit/no push/remote.
-Subagents только явно. Python scripts/Invoke-Python.ps1 file.py,не-c/-m.
-VS2026modernMSVCx86. Native/GPU sequential;timeout неrestart,опросить тот же handle.
-Перед runtime edits exactengine/PE/MAP/rsp/reports/shared headers backup.
-Ignored!=backup. Не повторять159k unchanged suites. Updates короткоRU<=60s.
-rg--files перед неизвестными файлами. Не передавать Windows shell path globs вrg.
+Originals immutable,inputEXE never,workcopies,localGit/no push/remote,no subagents.
+Python scripts/Invoke-Python.ps1 file.py,не-c/-m. VS2026MSVCx86.
+Native/GPU sequential;timeout неrestart,опросить тот жеhandle. UpdatesRU<=60s.
+Exactengine/PE/MAP/rsp/reports/shared headers backup перед edits. Ignored!=backup.
+Не повторять159k unchanged suites. rg--files перед неизвестными файлами,
+безshell path globs вrg. Сохранять actualevidence вinventory/research.
 
-## Подтверждено135
+## Текущее136
 
 Primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
 secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
-x86/base400000.12fullasm/2063instructions/13ranges equalboth455;fullpcode/CFG.
-Новые VA:8B11E0,8B2E40,8B2E70,8B2EB0,8B2EE0,8B2FE0,8B3040,
-8C7E40,8C7FA0,8C7FE0,8E6950,8DB5B0. Последний — полный particle SPT loader.
-8C94A0/8C9230 полные proofs наследованы из134/133 с pinned raw/session checks.
-Raw438584chars:artifacts/client455-progress/material-shader135-reference.json.
-Session6540261b saved/closed/list0;живых native jobs нет.
-MCP<=100asm/page AND unique/count/done/allpositiveCFG/tails. Неalias firstpage.
-JSON<=20k chunks черезNode. Не угадывать имена helpers/сигнатуры/пути.
+x86/base400000.7fullasm/872instructions/7ranges equalboth455+8typename strings.
+VA904B60/904590/903670/904080/9041E0/903D40/903DC0.
+Raw184694chars:artifacts/client455-progress/shader-text136-reference.json;
+sessionshader-text136-session.json. Ownede67d2585saved/closed/list0,no live jobs.
+MCP<=100asm/page AND unique/count/done/allpositiveCFG/tails. Неaliasfirstpage.
+JSON<=20k chunks viaNode. Extra903E90/8CDE30/8CE0A0/8CEDC0pcode/xrefs неfullASMclaim.
 
-New material_shaders.inc включён перед настоящим DrawOneMatGroup,через
-client455_material_shader_port.py. Настоящий CBsp::RenderMatGroup вызывает этот
-путь. Special01000000:bind matrices/textures/programs/draw/cleanup. Splat40
-после base draw не теряется;ordinary fixed base и special base проверены.
-Shader index=wholeDWORDflag-01000001;light index=BYTE(flag>>8)-1,mode=BYTE(flag).
-Ordinary shader не сбрасывает последний light selector. Special+splat01000041
-даётobject64,не0. Dispatcher WORD->getter->object снова:двойная индирекция.
-Binary Init.r3o count0 сохраняется;getter<=count допускаетslot0. Registry128rows.
-Lightmap slot=layerCount;cleanup только0..count-1/VS/PS. Lightmap остаётся.
-Raw matricesVS0proj/4view/8world,безtranspose. VS/PS15=полная inverse-view row4
-1158038 (matrix1158008),включая _44. FallbackVS18 та же строка.
-PS18xy signedSHORTscroll/256,z/w floats приANY mask800001/800002. PS17=bumpxyz,timew.
-Fog disable не имеет local restore. VS12/13/PS16 consumer не пишет.
+New client455_special_shader_text.inc включён втотжеr3d3d8owner. Обычный binary
+loader приmissingInit.r3o вызываетtextfallback;temporarynotrestoreddiagnostic удалён.
+FromFileA(main,profile,flags0),actualdevice CreateVS/PS;noSHOdecode/noextensionrewrite.
+Named binding exactcase-sensitive,missing1retainsstage,nullclearsreturns0.
+Named constant tables borrowedlookup/null. Positive binder callers дальше137.
 
-Shader light record32:scale0=1,radius4=10,pos8=0,RGB20=255. Power/radius пишут+4.
-Particle parser [light] загружает/добавляет запись иставитflag100000/mLightID1292.
-CParticle header1296 уже существовал,не расширялся. Другие advanced providers
-пока отклоняются. DrawCParticle выбираетsource.mLightID,но пишет destination0;
-RGB*=first.scale черезx87FMUL/FSTP,position=world row4. Global list живёт до
-destructor;per-BSP список отдельный. Count+101pointers,append<=100,overflow count--,
-get толькоnegativeguard,clear count0/retainslots. Overflow/OOM/malformedOPEN.
-PS6fourthfloat за32-byte allocation:невыдумыватьalpha,неclaimcertification.
-VS18fourthfloat=color.r лежит внутри записи. НаPS6 проверены толькоRGB3.
+Text quirks904B60:каждый новый non-[path]tag сбрасываетpath наdefault;custompath
+практически discarded. [fx_list] читаетcountбезFXbody. [sh_list] публикуетcount,
+binaryНЕпубликует. Header firstID>=0 дваWORD,negative firstID→wholeDWORDsecond.
+Parameter196: name128/typeDWORD128/value64bytes132. Object1964/10params.
+Types n0/b1/i2/f3/v4/m445/t6/timer7/unknown9. Только1..5consumevalue/advancecursor;
+0/6/7/9 перезаписываюттотжеslot,хвостимениотstrcpyостается. Cursor1175784 reset
+послеobject,невrelease/init. Сохранитьwhile(!feof)ordering:final[sh_list]+newline
+дублируетпустыеobjects;withoutnewlineнетповтора. Не исправлятьэто всовместимомport.
+Missingtext предупреждает доinit/reset,сохраняяпредыдущиетаблицы.
+Compilefailure skipsrecord/continueslist. ПолныеfailureCOMownership/CRTnumeric/OOM
+иunsafe malformed/overflowdomainsOPEN;неclaimбезутечкивообще.
 
-## Сборка и проверки
+Native work/m9/66261fdd/shader-text-001:actual Invalidate/Restore безbinary выбирает
+text,4realFromFileprograms bytecodeexactbaselinebinary,3adjacentobjects5892bytes,
+10firstparams+sentinel/negativeheader,11activevalues/4inactivetypes,8namedbindcases,
+newline2objects/tightEOF1,missingtextpreservestables,mixedmissingVS skipped.
+Binary staging restored. Handles439→439,Dmalloc623360→623360,warnings2intentional.
+Optional prepare_run callback добавленgenericnative runner;defaultNone поведение
+другихscenariosсохраняет. Fixtures толькоwork/,actualdecodedsourceSHApinned.
 
-Engine fefffffa5a03ee7fa60ddc907317182b38583901cb3ca163df35f2cd220ed8a9.
-PE38c850199a27d9213094d7faa83d1d4cd7f127e0bfa2821cec576d1cc1ec9766,
-2263552bytes/entry16E5B0/WinMainB9900/afterCreateB9A74/unresolved0.
-67engine/22derived,толькоr3render/r3particle/renderparticle payload changed.
-renderparticle.cpp необходимо включать И вgeneration filenames И в1stclass list;
-ранний тест обнаружил пропуск,исправлено. Shared headers unchanged,182/20 не rebuilt.
-Exact134 snapshot49files:artifacts/client455-progress/before135/manifest.json.
+Engine5cf2c4bd34bdb13a47ceda24f093722207bd16543ee4512808a2be29893e8251.
+PEd77ffe02b4d4fc6bf7a982dadeda9efb6bdbbef954ed6da7d66baa2575d274b7,
+2267136bytes/entry16F0C0/WinMainB9900/afterCreateB9A74/unresolved0.
+67engine/22derived,onlyr3d3d8.objpayloadchanged. Private shaderheaderaddedtype/APIs;
+sharedcamera/material/particle/vertex unchanged,182/20 не rebuilt.
+Exact135snapshot51files:artifacts/client455-progress/before136/manifest.json.
 
-Native work/m9/259e4d8e/material-shaders-001:51actualBSPdrawcases/layers1,2,7/
-7distinctactualtextures/8flags/3times/lightfallback+producer/selectorretention/
-exactPS18+selectedPS17/2SPT real loads/DrawCParticle source1->destination0/
-2splatcases6DIP/wholeindex64. Warnings0. Four fresh controlled GPUframes inspected.
-Fraction/light похожи,Plazma ярче,splat затемняет. Изолированная группа1111pixels,
-не полный455кадр. Stock4SHO не читаютPS18:delivery proven,all specular consumers нет.
-VS12/13/PS16 — явные lab initial conditions,неproduction defaults.
-Plazma черезперестановку actualbinarylist;original staging восстановлен.
+Fresh material regression work/m9/b2586533/material-shaders-001:51actualBSPcases/
+7textures/PS18/particlelight/splat2cases6DIP/warnings0.4raw+PNGbyteequalreviewed135,
+reviewявноreused/no newinspection. Полнаяworld/Bellato135исторические,неfresh136.
+Earlysound1/window/device/existingCreate1/contracts/providersPASScurrentPE.
 
-Fresh world-frame work/m9/0d44ffcd/world-frame-001:76queue/16clock±1/5frames
-byteequal134,review reused. Consumed world-input manifest immutable alias
-artifacts/client455-progress/world-bellato-before135.json (точнототжеSHA),чтобы
-обновление mutable inventory Bellato не испортило provenance.
-Fresh full Bellato work/m9/ecb1fd7a/world-bellato-001:98020vertices/85661faces/
-5455leaves/666groups/1187entities/render+reload+release;memory623360→11089471→
-11089471→623360. Два кадра просмотрены,первый byteequal старому capture,reload
-отличается;byte-equivalence reload/455 не заявляется,время стенда не фиксировано.
-Всего13511freshframes:6newinspected+5reviewreused. Старые остальные suites исторические.
-Earlysound1/window/device/existingCreate1/contracts/providers PASS.
+## Следующий137/инварианты
 
-## Далее136/прежние инварианты
+FullFraction/refractionowners8CDE30/8CE0A0:copytarget,bindvFraction.sho/pFraction.sho,
+rawmatrices,VS12inverse-viewrow4/VS13viewport. Particleazirangdrawusesstacklanes;
+непридумыватьdefaults. Plazma8CE2A0/PS16покапроследить. FXAA8CEDC0usesnamedPS
+constanttableWIDTH/HEIGHT;fullFXAAownerOPEN. 903E90parameter-mutationfloat→int→float
+quirk/no directxrefsinselectedquery,неproofполнойнедостижимости.
+Далееper-BSP lightlist/positive light_object. Globalparticlelight135готов.
+8C9230НЕuploadobjectparams;неinvent automaticconstants. VS12/13/PS16labseed135
+неproductiondefaults. PS6.wза32bytes uncertified;first3RGB/VS18fourth=color.rproven.
+AllpreviousCRT/visibility/alpha/fog/world/stage/Login/auth/protocol/Character/
+gameplay gapsretain. PositivebinaryFX/caps/failures/OOM/overflow/badinput/realResetOPEN.
 
-Full Init.r3s904B60/filecompiler904590,shader-object params/обычные writersVS12/13/
-PS16. Затем per-BSP light list иpositive light_object route. PositiveFX/caps/
-failures/OOM/overflow/invalidindices/truncation/realReset remain OPEN.
-Все прежние CRT/visibility/camera/world/stages/Login/auth/protocol/Character/
-gameplay acceptance gaps остаются. Не сужатьM9доselectedlabs.
-133material526/7layers54/serialized46,_MAX_MATERIALS2048,typo flikering tokens.
-Shared material overlay послеport_std,доparticle/vertex. Неcast332->526.
-132mapauto-litflag40 producer сохранён;missingtrade_bel76 не подменять.
-131lightinverse485/transform132/normalizer136 proofs сохранены;CRT nearest FSQRT/
-callerPC/storecallerRC,fullmatherr/errno/unmasked/NaN/status остаются открыты.
-128fog/orbitlag/oldfogtint/289grid/negativeZ/19hMie сохранены.
-129uppercaseFOG/ENV/lowercaseweather,fullDWORDweather/BSS retention сохранены.
-SetViewMatrix не обновляетinverse/viewproj,публиковать их явно при lab camera.
-TemporaryCLevel должен жить дольше активной карты:destructor globalfree.
-D3D observers patch FULLoriginalvtable57/82/83,restorebeforeforward/Get;неclone119.
-M6/M6F/M7/M9 OPEN.
+135DrawOneMatGroup specialflag01000000,wholeDWORDindexflag-01000001;lightindex
+BYTE(flag>>8)-1/modeBYTE(flag),ordinaryshaderretainsmode;special+splat→index64.
+Doubleobjectindirection,inclusive<=objectcount0→slot0. Cleanuptextures0..count-1/
+VS/PS,retainlightmapslotcount. RawVS0/4/8matrices,VS/PS15fullinverse-viewrow4.
+PS18signedSHORT/256,ANYmasks800001/800002;PS17bumpxyz/timew. Fogoffnotlocalrestore.
+Globalparticlelightrecord32/scale1/radius10/pos0/RGB255,power-radiuswrite+4.
+DrawCParticle sourceID→destination0/x87multiply/worldrow4. List101slots/append<=100/
+overflowcount--/getnegativeonly/clearretainslots. CParticle1296headerunchanged.
+133material526/7layers54/wire46,_MAX_MATERIALS2048/typo flikering tokens.
+Overlayпослеport_stdдопarticle/vertex,неcast332->526.132auto-litproducerretained,
+missingtrade_bel76несубститутить.131lightmath485/132/136proofsretain/fullCRTmathOPEN.
+128fog/orbitlag/oldfogtint/289grid/negativeZ/19hMie,129casefoldweather/BSSretain.
+SetViewMatrixнепишетinverse/viewproj,labпубликуетявно. TemporaryCLevelmustoutlive
+activemap/destructorglobalfree. D3DobserverspatchFULLvtable57/82/83,
+restorebeforeforward/Get;неclone119. M6/M6F/M7/M9OPEN.
