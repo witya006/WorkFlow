@@ -4,6 +4,7 @@ import json
 import shutil
 from pathlib import Path
 from compare_client_binaries import WS
+from client455_asset_staging import stage_asset
 
 
 def copy_tagged_sound_providers(run):
@@ -11,7 +12,7 @@ def copy_tagged_sound_providers(run):
     records=[]
     for name in ['Snd/msssoft.m3d','Snd/msseax.m3d','Snd/mssmp3.asi']:
         original,target=client/name,run/name;target.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copyfile(original,target)
+        stage_asset(original,target)
         records.append(dict(file=target.relative_to(WS).as_posix(),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),original=str(original)))
     return records
 
@@ -25,7 +26,7 @@ def copy_character_shaders(run):
             raise ValueError('Changed actual Character shader input')
         target = run / 'System/shader' / (row['name'] + '.sho')
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(original, target)
+        stage_asset(original,target,row['sha256'],owned_immutable=original)
         records.append(dict(file=target.relative_to(WS).as_posix(), sha256=row['sha256']))
     return records+copy_sky_resources(run)
 
@@ -39,7 +40,7 @@ def copy_sky_resources(run):
         if hashlib.sha256(source.read_bytes()).hexdigest()!=row['sha256']:
             raise ValueError('Changed pinned sky resource')
         target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True)
-        shutil.copyfile(source,target)
+        stage_asset(source,target,row['sha256'],owned_immutable=source)
         records.append(dict(file=target.relative_to(WS).as_posix(),sha256=row['sha256'],original=row['original']))
     return records+copy_special_shaders(run)
 
@@ -50,7 +51,7 @@ def copy_special_shaders(run):
     for row in reference['inputs']:
         source=WS/row['file']
         if hashlib.sha256(source.read_bytes()).hexdigest()!=row['sha256']:raise ValueError('Changed special shader input')
-        target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+        target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True);stage_asset(source,target,row['sha256'],owned_immutable=source)
         records.append(dict(file=target.relative_to(WS).as_posix(),sha256=row['sha256'],original=row['original']))
     return records
 
@@ -66,7 +67,7 @@ def copy_item_icon_skins(run):
             raise ValueError('Changed actual item-lock sprite input')
         target = run/row['runtime_relative']
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(original, target)
+        stage_asset(original,target,row['sha256'],owned_immutable=original)
         records.append(dict(file=target.relative_to(WS).as_posix(), sha256=row['sha256']))
     if len(records) != 1:
         raise ValueError('Actual item-lock sprite input required')

@@ -1,6 +1,7 @@
 """Run exact own normal PE in a private lab, stop before any graphics window."""
 import argparse,hashlib,json,os,re,shutil,subprocess
 from pathlib import Path
+from client455_asset_staging import stage_asset,staging_stats
 from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
@@ -33,12 +34,12 @@ def main():
         original=Path(module['provider']['file']);copy=run/original.name
         if not module['delayed'] and original.parent==Path('C:/Windows/SysWOW64'):continue
         if sha(original)!=module['provider']['sha256']:raise ValueError('Changed delayed DLL')
-        shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference runtime DLL'})
+        stage_asset(original,copy,module['provider']['sha256']);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference runtime DLL'})
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
     for relative in ['Snd/WaveList.spt','mssmp3.asi','System/010.TTF',f'DataTable/{country["folder"]}/NDLanguage.edf']:
         original=client/relative;copy=run/relative
         if not original.is_file():raise ValueError('Required startup input missing:'+relative)
-        copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference input'})
+        copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference input'})
     config=run/'R3Engine.ini';config.write_text(f'[Setup]\nLanguage={args.nation}\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');inputs.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config),'kind':'own lab config'})
     connectionConfig=run/'DataTable/ClientSystem.ini';connectionConfig.parent.mkdir(parents=True,exist_ok=True);connectionConfig.write_text('[Network]\nConnectTime=5\n',encoding='ascii');inputs.append({'file':connectionConfig.relative_to(WS).as_posix(),'sha256':sha(connectionConfig),'kind':'own transport timeout'})
     if beforeConnect:
@@ -60,6 +61,7 @@ def main():
     report['loaded_modules']=[m for m in modules if Path(m['path']).name.lower() in [p.name.lower() for p in [target,run/'mss32.dll',run/'mssmp3.asi']]]
     point=entry['points'][pointName];report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['tcp_fixture']=transport.report();report['before_connect']=beforeConnect;report['network_stage_reached']=any(e.get('value','').startswith('RF455 Network:Create:') for e in events);report['connection_attempted']=not beforeConnect;report['transport_connected']='RF455 Connect:connected' in [e.get('value') for e in events];report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py');report['script_sha256']=sha(Path(__file__))
     report['scope']='Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance'
+    report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
     if beforeConnect:report['scope']='Exact own WinMain nation/launcher/language/FG/networkCreate/instance;stopped at decoded call before Connect;not sound or successful connection acceptance'
     report['own_checkpoints']=[{'name':'WinMain','rva':hex(mainVa-base),'bytes':1,'sha256':hashlib.sha256(read_va(raw,mainVa,1)).hexdigest()},{'name':'before_client_connect' if beforeConnect else 'after_sound_before_d3d','rva':hex(stopVa-base),'bytes':point['bytes'],'sha256':point['sha256']}]
     report['nation']=args.nation;report['language_debug']=[e for e in events if e['kind']=='debug_string' and (e['value'].startswith('.\\DataTable\\') or e['value'].startswith('RF455 NDLanguage:'))]

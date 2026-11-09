@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Scene resources137,shared asset staging and functional baseline.
+Ordinary restore/release owns5targets andPerbMap;capture helper added,full
+Fraction/BBoShasi/particle callers remain open. Current ownPE42213f08/engine
+708c892e/unresolved0/fresh existingCreate1;actual resource/copy/fullscreen checks
+and5reviewed views pass. Shared inputs reuse owned copies;originals independent,
+configs/exes private. Old directories were not deleted. Planning estimate25%
+(20–35%) over12weighted systems;next anchors Title/Login→selection→world→gameplay.
+Initial138 Title/movie evidence is explicitly AUDIT_OPEN. M6/M6F/M7/M9 OPEN.
+[Evidence](research/client455-scene-capture.md),[assessment](docs/roadmap.md).
+
 2026-11-10 — Material layout133. Seven runtime54 layers/material526 restored;
 binary read46 prefix retained. Extra floats are specular flickering scale/speed,
 text flags800001/800002;shader/light DWORD packing and2048guard restored.

@@ -240,6 +240,11 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
             body,count=re.subn(pattern,b'stTexSize = 512; //4558CD9F4,independent of legacy video-memory level',body,flags=re.S)
             if count!=1:raise ValueError('Full-screen texture size boundary changed')
             raw=raw[:first]+body+raw[last:]
+            raw=b'#include "client455_scene_capture.h"\n'+raw
+            first,last=section(raw,b'void ReleaseFullScreenEffect()',b'void ReleaseFullScreenEffect()')
+            raw=raw[:first]+raw[last:]
+            first,last=section(raw,b'void InitFullScreenEffect()',b'void InitFullScreenEffect()')
+            raw=raw[:first]+(WS/'scripts/native/client455_scene_capture.inc').read_bytes()+raw[last:]
             raw=b'#include "client455_movie_state.h"\r\n'+raw
             raw+=b'\r\nstatic float st455DefaultCameraFov=0.6f;\r\nvoid RF455_SetDefaultCameraFov(float value){st455DefaultCameraFov=value;}\r\nfloat RF455_GetDefaultCameraFov(){return st455DefaultCameraFov;}\r\n'
             first,last=section(raw,b'void SetDefaultFov()',b'void SetDefaultFov()')
@@ -348,6 +353,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
+    report['scene_capture']={name:sha(WS/'scripts/native'/name) for name in ['client455_scene_capture.h','client455_scene_capture.inc']}
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
     report['rvp_runtime']={name:sha(WS/'scripts/native'/name) for name in ['client455_rvp_runtime.h','client455_rvp_engine.inc']}
     report['camera_header_overlay']={'file':ownedHeader.relative_to(WS).as_posix(),'sha256':sha(ownedHeader),'original':cameraHeader.relative_to(WS).as_posix(),'original_sha256':sha(cameraHeader)}

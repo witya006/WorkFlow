@@ -8,6 +8,7 @@ from client455_own_probe import build_full_object_probe
 from client455_runtime_inputs import copy_character_shaders,copy_tagged_sound_providers
 from compare_client_binaries import WS,pe
 from rpk455 import Rpk
+from client455_asset_staging import stage_asset,staging_stats
 
 
 def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-registry',report_name='client455-nuclear-registry-native',extra_world_manifest=None,extra_runtime_files=(),expected_frames=5,prepare_run=None):
@@ -20,8 +21,7 @@ def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-
         if dest in paths:return
         paths.add(dest);dest.parent.mkdir(parents=True,exist_ok=True)
         require(not expected or sha(original)==expected,'Pinned original input '+str(original))
-        if immutable:os.link(immutable,dest)
-        else:shutil.copyfile(original,dest)
+        stage_asset(original,dest,expected,owned_immutable=immutable)
         inputs.append(dict(**record(dest),original=str(original)))
     world_manifest=WS/'inventory/client455-rvp-actor-native.json'
     for row in load('client455-rvp-actor-native')['inputs']:
@@ -61,6 +61,7 @@ def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-
         preview=path.with_suffix('.png');Image.frombytes('RGBA',(640,480),path.read_bytes(),'raw','BGRA').convert('RGB').save(preview);frames.append(dict(**record(path),preview=record(preview)))
     for row in inputs:check(row)
     report=dict(scope='Actual stage-owned registry record32/FX/tag2/launch/impact/shared process clock in full-object lab;ordinary receiver assessed separately,full stage/world lifecycle remain open',source=record(source),script_sha256=sha(Path(__file__)),builder_sha256=sha(WS/'scripts/client455_own_probe.py'),runtime_inputs_sha256=sha(WS/'scripts/client455_runtime_inputs.py'),world_input_manifest=record(world_manifest),archive_input_manifest=record(resources),generic_entity_dependencies=dependencies,normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),map=record(mapping),architecture=pe(target.read_bytes())['architecture'],console=record(console),inputs=inputs,inputs_unchanged=True,output=record(output) if output.exists() else None,frames=frames,native=json.loads(output.read_text()) if output.exists() else None,natural_exit=result.returncode,input_exe_executed=False,server_modified=False,M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')
+    report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
     (WS/'inventory'/f'{report_name}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(dict(exit=result.returncode,run=str(run),native=report['native'],stderr=result.stderr.decode(errors='replace')[-4000:])))
     require(not result.returncode and report['native'] and report['native']['status']=='PASS' and len(frames)==expected_frames,'Own native status/frame count failure')
     return report

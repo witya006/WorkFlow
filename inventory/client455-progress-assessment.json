@@ -1,0 +1,592 @@
+{
+  "schema": 1,
+  "assessment_date": "2026-11-10",
+  "scope_version": 1,
+  "scope": "Full client455 behavior/source/build through M9,no graphics modernization,no server work",
+  "estimate_kind": "Engineering planning judgement for known functional scope;not measured equivalence coverage",
+  "weighted_low": 18.95,
+  "weighted_high": 33.55,
+  "weighted_midpoint": 26.25,
+  "communicated_point_percent": 25,
+  "communicated_range_percent": [
+    20,
+    35
+  ],
+  "communicated_remaining_percent": 75,
+  "confidence": "Useful planning estimate;unknown455features and integration can change the remaining scope. No calibrated calendar forecast.",
+  "interpretation": "Stage numbers are unequal sizes. M0-M5 completion is not five ninths of the full client. Existing legacy code receives no455credit without evidence.",
+  "domains": [
+    {
+      "id": "startup",
+      "title": "Запуск и конфигурация",
+      "weight": 3,
+      "estimate_low": 65,
+      "estimate_high": 80,
+      "completed_full_domain": false,
+      "done": [
+        "Собственная PE,CRT/WinMain,Miles,окно/D3D;existing Create проходил на136"
+      ],
+      "remaining": [
+        "Полный порядок startup/ошибки/профили/launcher и связь с экранами455"
+      ],
+      "evidence": [
+        "client455-normal-link",
+        "client455-ui-startup-native",
+        "client455-startup-native",
+        "client455-startup-contracts-native"
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Форматы и загрузка данных",
+      "weight": 7,
+      "estimate_low": 50,
+      "estimate_high": 65,
+      "completed_full_domain": false,
+      "done": [
+        "RPK/EDF/helper SPT/BSP/EBP,модели/ANI и выбранные реальные ресурсы читаются"
+      ],
+      "remaining": [
+        "Полная опись455,все загрузочные ветки/таблицы/ошибки и обычный bootstrap"
+      ],
+      "evidence": [
+        "client455-world-checkpoint",
+        "client455-material-layout-checkpoint",
+        "client455-item-payloads-checkpoint"
+      ]
+    },
+    {
+      "id": "world",
+      "title": "Рендер и мир",
+      "weight": 12,
+      "estimate_low": 35,
+      "estimate_high": 50,
+      "completed_full_domain": false,
+      "done": [
+        "D3D9,выбранные карты Bellato/Cora/Accretia,камера/свет/погода/материалы/эффекты вlab"
+      ],
+      "remaining": [
+        "Полные visibility/camera/collision,ILevel/Empty/INS,refraction/FX/device reset и игровой мир"
+      ],
+      "evidence": [
+        "client455-world-checkpoint",
+        "client455-world-frame-checkpoint",
+        "client455-material-shaders-checkpoint",
+        "client455-shader-text-checkpoint",
+        "client455-fullscreen-effect-native"
+      ]
+    },
+    {
+      "id": "character",
+      "title": "Персонажи и анимация",
+      "weight": 10,
+      "estimate_low": 30,
+      "estimate_high": 45,
+      "completed_full_domain": false,
+      "done": [
+        "Исходные MESH/BN/ANI загрузчики,менеджеры,pose/skinning и выбранные normal draw маршруты"
+      ],
+      "remaining": [
+        "Полный actor lifecycle,игровой выбор/экипировка/состояния/анимации и все consumers"
+      ],
+      "evidence": [
+        "client455-normal-renderer-checkpoint",
+        "client455-normal-accounting-checkpoint",
+        "client455-animation-checkpoint"
+      ]
+    },
+    {
+      "id": "ui",
+      "title": "Ввод и интерфейс",
+      "weight": 10,
+      "estimate_low": 20,
+      "estimate_high": 35,
+      "completed_full_domain": false,
+      "done": [
+        "GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover"
+      ],
+      "remaining": [
+        "Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи"
+      ],
+      "evidence": [
+        "client455-font-checkpoint",
+        "client455-gui-input-checkpoint",
+        "client455-item-icon-metadata-checkpoint"
+      ]
+    },
+    {
+      "id": "audio",
+      "title": "Звук",
+      "weight": 2,
+      "estimate_low": 35,
+      "estimate_high": 55,
+      "completed_full_domain": false,
+      "done": [
+        "Miles init,selected tagged/RVP playback и звук выбранных эффектов"
+      ],
+      "remaining": [
+        "Все sound events/3D/music/settings и полный lifecycle"
+      ],
+      "evidence": [
+        "client455-tagged-audio-checkpoint",
+        "client455-rvp-audio-checkpoint"
+      ]
+    },
+    {
+      "id": "network",
+      "title": "Клиентская сеть",
+      "weight": 12,
+      "estimate_low": 10,
+      "estimate_high": 25,
+      "completed_full_domain": false,
+      "done": [
+        "Codec/AES/пакеты/часть transport/rings;selected ordinary Nuclear receiver"
+      ],
+      "remaining": [
+        "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
+      ],
+      "evidence": [
+        "client455-network-codec-checkpoint",
+        "client455-nuclear-receiver-checkpoint"
+      ]
+    },
+    {
+      "id": "login",
+      "title": "Вход и выбор персонажа",
+      "weight": 10,
+      "estimate_low": 0,
+      "estimate_high": 10,
+      "completed_full_domain": false,
+      "done": [
+        "Инициализация и части legacy Login существуют;target stage contracts описаны"
+      ],
+      "remaining": [
+        "Полный Title/Login/character selection/auth→world поток455 не пройден"
+      ],
+      "evidence": [
+        "client455-progress-base-checkpoint",
+        "client455-network-codec-checkpoint"
+      ]
+    },
+    {
+      "id": "gameplay",
+      "title": "Игровые действия",
+      "weight": 15,
+      "estimate_low": 0,
+      "estimate_high": 15,
+      "completed_full_domain": false,
+      "done": [
+        "Selected Character flags/Nuclear aiming и отдельные обработчики"
+      ],
+      "remaining": [
+        "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455"
+      ],
+      "evidence": [
+        "client455-character-flags-checkpoint",
+        "client455-nuclear-receiver-checkpoint"
+      ]
+    },
+    {
+      "id": "items",
+      "title": "Предметы,NPC,квесты",
+      "weight": 10,
+      "estimate_low": 15,
+      "estimate_high": 30,
+      "completed_full_domain": false,
+      "done": [
+        "Реальные таблицы/payload/owners/icons и выбранный inventory handoff"
+      ],
+      "remaining": [
+        "Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов"
+      ],
+      "evidence": [
+        "client455-item-object-checkpoint",
+        "client455-item-icon-metadata-checkpoint",
+        "client455-skill-force-items-checkpoint"
+      ]
+    },
+    {
+      "id": "social",
+      "title": "Чат,группы,гильдии",
+      "weight": 4,
+      "estimate_low": 10,
+      "estimate_high": 25,
+      "completed_full_domain": false,
+      "done": [
+        "Профиль/фильтры/перенос/вывод в4панели и системные сообщения"
+      ],
+      "remaining": [
+        "Полный ввод/отправка/получение чата и клиенские группы/гильдии"
+      ],
+      "evidence": [
+        "client455-chat-checkpoint",
+        "client455-message-dispatch-checkpoint"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "title": "Переходы и устойчивость",
+      "weight": 5,
+      "estimate_low": 10,
+      "estimate_high": 25,
+      "completed_full_domain": false,
+      "done": [
+        "Selected reload/release карт,моделей иGPU ресурсов"
+      ],
+      "remaining": [
+        "Все4stages,смена локаций,disconnect/reconnect,lost/reset,выход/освобождение"
+      ],
+      "evidence": [
+        "client455-progress-base-checkpoint",
+        "client455-world-checkpoint",
+        "client455-fullscreen-effect-native"
+      ]
+    }
+  ],
+  "complete_acceptance_domains": 0,
+  "domain_count": 12,
+  "evidence": {
+    "client455-normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "884d3283f878d3522aacc775df8cdb85f31cdbac1aa6c25962ae21dd7b0ce308",
+      "status": null,
+      "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "88c32fabe1ea5c60048246f9c6f33c4ab85856fa7972e2db0f66a1e21a90f6a8",
+      "status": null,
+      "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "9c67d03348c7e30f6e4a96d80a5c9082e364d07c71d7445f9bb3c51cf9e25930",
+      "status": null,
+      "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "bac6ccccb1df8025036d2129871ecee616b5d457b76aa31825071c7b0e707c73",
+      "status": "PASS",
+      "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-world-checkpoint": {
+      "file": "inventory/client455-world-checkpoint.json",
+      "sha256": "61ef048c2e55812d9d3f57c40e5d38b692a15f8ecdf9f4dc1beae45fc3002d51",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-material-layout-checkpoint": {
+      "file": "inventory/client455-material-layout-checkpoint.json",
+      "sha256": "fd4487bc05a87e89d32ebd9380125022ddcd05d75f49c69f6f7ee6e6c444c94f",
+      "status": "PARTIAL",
+      "scope": "Runtime material526/seven54-byte layers with46-byte serialized prefix and actual text metadata writers",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-item-payloads-checkpoint": {
+      "file": "inventory/client455-item-payloads-checkpoint.json",
+      "sha256": "8b958f82fcab891b0475e8f3cd5211711a3a1893c44f39b9490bea1692ee5bb5",
+      "status": "PARTIAL_SOURCE_RUNTIME",
+      "scope": "Real Item47/Quest12/Character7 readers and five fresh payload states with concrete manager/087clone-release;ordinary086 current",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-world-frame-checkpoint": {
+      "file": "inventory/client455-world-frame-checkpoint.json",
+      "sha256": "72bcf17b04fbb39c99ee3841a18a878665cea70c473cec1652f3670d3cb48fd1",
+      "status": "PARTIAL",
+      "scope": "Actual CLevel/INS dispatch distinction,map view correction and selected dynamic-light queue/render contracts;full world/gameplay open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-material-shaders-checkpoint": {
+      "file": "inventory/client455-material-shaders-checkpoint.json",
+      "sha256": "a984c0feb1ef8fa785d8b1f3dff4e29c55e8e11a4e7f052e0eb4108ea782bfa3",
+      "status": "PARTIAL",
+      "scope": "Ordinary BSP special material dispatch/PS18/particle light producer and selected fixed splat passes",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-shader-text-checkpoint": {
+      "file": "inventory/client455-shader-text-checkpoint.json",
+      "sha256": "0cecf0568160a430fe6316dba629bef4ad9ff4a5da63484b6b4a65fd17661b0f",
+      "status": "PARTIAL",
+      "scope": "Ordinary binary->text special-shader fallback,FromFile compiler,typed object parameters and named program services",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-fullscreen-effect-native": {
+      "file": "inventory/client455-fullscreen-effect-native.json",
+      "sha256": "957d914a6ee6b64babd596cd238e5d18aaea10a0490643c1c3b9a09b0cd44a44",
+      "status": null,
+      "scope": "Real R3BeginScene/FullScreenEffect/R3EndScene texture/depth/viewport/UI and density paths;not water/bloom/fullgame acceptance",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-normal-renderer-checkpoint": {
+      "file": "inventory/client455-normal-renderer-checkpoint.json",
+      "sha256": "fae8ec12de7660d5c4712884217e4240e86e539c318406c94708e544f1628a9c",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-normal-accounting-checkpoint": {
+      "file": "inventory/client455-normal-accounting-checkpoint.json",
+      "sha256": "531b2fdae1d49f56b85c0b14946ab4ec957fa9a4baf2d6933f5bcea599e6b5c0",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-animation-checkpoint": {
+      "file": "inventory/client455-animation-checkpoint.json",
+      "sha256": "ddae01c317e8c797c33bb5563f17b94ad4f3b9409a14db5f706479c634795944",
+      "status": null,
+      "scope": "Selected ANI/framing/rawIO/record/lifetime/attachment/character dispatcher,not full pose/normal runtime orM9",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-font-checkpoint": {
+      "file": "inventory/client455-font-checkpoint.json",
+      "sha256": "8d7c2870f6934cef7c4e66d62123098529605e7b50f0ec53776c02092f87359e",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-gui-input-checkpoint": {
+      "file": "inventory/client455-gui-input-checkpoint.json",
+      "sha256": "6f47b9af4238907f6d3c5c8be5731f4d2559478efc2daf9ccba50dd81df60dc7",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-item-icon-metadata-checkpoint": {
+      "file": "inventory/client455-item-icon-metadata-checkpoint.json",
+      "sha256": "82a3f29345b01be990c64823deffd7ab4386d195670c1b199b815201fb09f4be",
+      "status": "PARTIAL",
+      "scope": "Basic physical icon fields/race-level predicate and real inventory icon-owner handoff;not fullCItemBoard.Add or fullgame",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-tagged-audio-checkpoint": {
+      "file": "inventory/client455-tagged-audio-checkpoint.json",
+      "sha256": "df11efca5b8d39c41d930f5718f7b090262e69ec6b98fc2dd30d51f30a06d95e",
+      "status": "PARTIAL",
+      "scope": "Tagged3D-wave dependency of nuclear aiming;actual service in ordinary CMainApp;fullnuclear/effects/audio remainopen",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-rvp-audio-checkpoint": {
+      "file": "inventory/client455-rvp-audio-checkpoint.json",
+      "sha256": "2e8e0452764d6865267ef7f8303e84edd3683d90bc7811452c21540436e649eb",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-network-codec-checkpoint": {
+      "file": "inventory/client455-network-codec-checkpoint.json",
+      "sha256": "8169452d595526c76af4ed3199656d1de0157c852e60f056242474770be41291",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-nuclear-receiver-checkpoint": {
+      "file": "inventory/client455-nuclear-receiver-checkpoint.json",
+      "sha256": "abb82d7f98dc65e9ea68b266aca3259bd815b4ca86b61db7a302a031d0250356",
+      "status": "PARTIAL",
+      "scope": "Actual group60 handlers,original selection/serial/type33 inventory use and stage-owned registry;full stage/auth/inventory/world acceptance remains open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-progress-base-checkpoint": {
+      "file": "inventory/client455-progress-base-checkpoint.json",
+      "sha256": "dd867186c0dd2da50c26b783b2cdb71782c9b2805d8c161f6b00369743f04704",
+      "status": "PARTIAL",
+      "scope": null,
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-character-flags-checkpoint": {
+      "file": "inventory/client455-character-flags-checkpoint.json",
+      "sha256": "3f1476888145a9efc747da36de15e22ea02901cf52727c0bf66554b83d4029e4",
+      "status": "PARTIAL",
+      "scope": "Character flag owner/any-none/selected64bit producer prerequisites; actual MiniMap marker identity,not full action/movement/receiver acceptance",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-item-object-checkpoint": {
+      "file": "inventory/client455-item-object-checkpoint.json",
+      "sha256": "189c4855d8858edf7f03d27e32ae9336a8b8f0ce8375a0b02d6e355f950a912d",
+      "status": "PARTIAL",
+      "scope": "Actual ordinary typed item592/board620/shared payload manager and source pack lifetime/null-icon domain;full gameplay owners still open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-skill-force-items-checkpoint": {
+      "file": "inventory/client455-skill-force-items-checkpoint.json",
+      "sha256": "4964d5227c5df081541ad7bddb4134029d37b4a6e5b648ba3e45089e7fa3613e",
+      "status": "PARTIAL_SOURCE_RUNTIME",
+      "scope": "Concrete selector1 SF payload/data/manager and087owned-wrapper kernels on real files;ordinary086 remains current",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-chat-checkpoint": {
+      "file": "inventory/client455-chat-checkpoint.json",
+      "sha256": "63fb671e73823583b8faf06a1165e0a29d0f962fd7db275e1551d3782b4f5762",
+      "status": "PARTIAL",
+      "scope": "Chat profile36/font16/prefix18,4pane/category14 insertion and target wrapping; full input/UI/dispatch remains open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-message-dispatch-checkpoint": {
+      "file": "inventory/client455-message-dispatch-checkpoint.json",
+      "sha256": "5d1e2654bb1744bf8b0560ede924081afd47de8b13ce943a123ed2b32ba05414",
+      "status": "PARTIAL",
+      "scope": "Actual ordinary formatter/MainApp/Login/4pane and live Avatar+real item+neutralAS1+effect6+Miles cancellation; Tutorial kernel only,CE7 registration/full stages remain open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    }
+  },
+  "observed_facts": {
+    "client_compilation_units": 182,
+    "engine_compilation_units": 67,
+    "canonical_kernel_objects": 20,
+    "unresolved_symbols": 0,
+    "own_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "42213f081aceb9f1630add0c9d4a77deab330f1ca43936a85fee4c97c5c7cf89",
+      "bytes": 2267648,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x16f1c0",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "engine_sha256": "708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870",
+    "references": [
+      {
+        "file": "work/client-reference/current/RF_Online.bin",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86"
+      },
+      {
+        "file": "work/client-reference/reference-backup/RF_Online.bin",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86"
+      }
+    ],
+    "last_completed_checkpoint": "inventory/client455-scene-capture-checkpoint.json",
+    "current_work": "137 scene capture checkpoint PARTIAL;138 ordinary Title/Login investigation OPEN",
+    "existing_Create_proved_on_current_PE": true,
+    "full_Login_character_selection_world_flow_proved": false,
+    "normal_movement_combat_inventory_flow_proved": false
+  },
+  "registry": {
+    "file": "inventory/client-features.json",
+    "sha256": "08a4e0553b0dc19ba5f159ed172851d05a1286014d8c11920339ad196f413f58",
+    "entries": 139,
+    "statuses": {
+      "partial": 107,
+      "partial_component": 2,
+      "audit_open": 1,
+      "open": 2,
+      "implemented": 23,
+      "verified": 2,
+      "described": 2
+    },
+    "complete_denominator": false,
+    "contains_historical_and_overlapping_records": true,
+    "marked_current": [
+      "CLIENT455-SCENE-CAPTURE-137"
+    ],
+    "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
+  },
+  "input_readiness": {
+    "available": [
+      "legacy0.7client/R3Engine sources",
+      "two pinned455x86reference binaries",
+      "installed455assets",
+      "working modern x86 build and IDA/HexRays"
+    ],
+    "reconstructed": [
+      "Character interface and multiple455source implementations"
+    ],
+    "missing": [
+      "original full455source/SDK",
+      "complete455feature/packet/state inventory",
+      "complete expected end-to-end scenario set/resource manifest"
+    ],
+    "build_blocking_unresolved_dependencies": 0,
+    "byte_identical_output_required": false
+  },
+  "next_acceptance_anchors": [
+    {
+      "id": "A",
+      "result": "Ordinary own client displays and handles the455Title/Login UI",
+      "status": "OPEN",
+      "criterion": "Real stage factory/Avatar/UI/input/frame/lifecycle integrated;not just Create1"
+    },
+    {
+      "id": "B",
+      "result": "Client auth/character selection reaches and leaves its455screens correctly",
+      "status": "OPEN",
+      "criterion": "Pinned expected client packet/state transitions and error paths;server development excluded"
+    },
+    {
+      "id": "C",
+      "result": "Selected character enters a real map and responds to movement/camera/input",
+      "status": "OPEN",
+      "criterion": "One ordinary game loop owns stage/world/actor/animation/control/collision"
+    },
+    {
+      "id": "D",
+      "result": "Target/attack/skill/inventory/chat work through ordinary producers and receivers",
+      "status": "OPEN",
+      "criterion": "Connected scenarios with explicit expected states;selected lab helpers alone insufficient"
+    },
+    {
+      "id": "E",
+      "result": "Remaining maps/classes/features/lifecycle accepted;repeatable build finalized",
+      "status": "OPEN",
+      "criterion": "All12domains/known gaps and docs/client-acceptance.md;M6F/M7/M9 complete"
+    }
+  ],
+  "planning_adjustment": "Prioritize connected observable client scenarios;keep unresolved numerical/edge/failure fidelity work in backlog until its dependent functional route is integrated. Do not discard any M9 requirement.",
+  "forecast": {
+    "remaining_to_completed_functional_scope_ratio_approx": [
+      2,
+      4
+    ],
+    "calendar_deadline": null,
+    "reason": "Four elapsed days and microscopic tests do not calibrate the larger integration tasks. Re-estimate after first complete Login/character/map scenario."
+  },
+  "script": {
+    "file": "scripts/assess_client455_progress.py",
+    "sha256": "7d84ef2c0f6827af6016138c4abd4efd6a5ad2790a91971a2200816bc3da54db"
+  },
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

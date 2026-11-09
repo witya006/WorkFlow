@@ -1,6 +1,7 @@
 """Run exact own PE through real window/device init;stop before client Create."""
 import argparse,ctypes,hashlib,json,re,shutil,subprocess
 from pathlib import Path
+from client455_asset_staging import stage_asset,staging_stats
 from compare_client_binaries import WS,pe
 from build_client455_x87_math import read_va
 from client455_normal_link_evidence import validate_normal_link
@@ -26,23 +27,23 @@ def main():
     for item in early['lab_inputs']:
         original=WS/item['file'];relative=original.relative_to(oldRoot);copy=run/relative
         if sha(original)!=item['sha256']:raise ValueError('Changed private startup input')
-        copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+        copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy,item['sha256'],owned_immutable=original);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
     for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg']:
         original=client/name;copy=run/name
         if not original.is_file():raise ValueError('Missing actual startup resource:'+name)
-        copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+        copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     inputs+=copy_sky_resources(run)
     if args.after_create:
         for name in ['SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
-            original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+            original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if partialCreate:
         inputs+=copy_tagged_sound_providers(run)
         shaders=json.loads((WS/'inventory/client455-shaders-reference.json').read_text())
         for row in shaders['programs']:
             original=WS/row['copy'];copy=run/'System/shader'/(row['name']+'.sho')
             if sha(original)!=row['sha256']:raise ValueError('Changed actual Character shader')
-            shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+            stage_asset(original,copy,row['sha256'],owned_immutable=original);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     layout=contracts['layout'];state=symbol(mapping,'?stState@@3U_R3ENGINE_STATE@@A')-base;app=symbol(mapping,'?g_MainApp@@3VCMainApp@@A')-base
     values=[state+layout['state_fullscreen'],state+layout['state_renderbits'],app,layout['ready'],layout['window'],layout['device'],layout['windowed'],int(entry['points']['after_sound']['rva'],16),int(entry['points']['after_d3d']['rva'],16),symbol(mapping,'?g_ifCharIF@@3PAVChInterface@@A')-base,layout['character_device']]
     plan=run/'device.plan';plan.write_text(' '.join(f'{value:x}' for value in values)+'\n',encoding='ascii');inputs.append({'file':plan.relative_to(WS).as_posix(),'sha256':sha(plan)})
@@ -61,6 +62,7 @@ def main():
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report();report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
     report['lab_font_registration_removed']=fontRegistrationRemoved
+    report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
     report['scope']='Exact own normal PE through Character manager creation;stop before character data manager construction;not complete Create or455acceptance' if args.create else report['scope']
     if args.after_create:report['scope']='Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance'
