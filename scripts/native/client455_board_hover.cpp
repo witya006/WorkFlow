@@ -10,6 +10,7 @@
 #include "mainapp.h"
 #include "client455_board_hover.h"
 #include "client455_player_status.h"
+#include "client455_nuclear_aiming.h"
 #include <memory>
 #include <stdexcept>
 #include <typeinfo>
@@ -27,10 +28,10 @@ bool RF455_AvatarRequiresHoverCancel(){
 }
 namespace {
 void requireHoverCancellation(){
-    // The false branch never consults the nuclear aiming owner. The true
-    // branch still needs its actual pending/effect/sound/message lifecycle.
-    if(RF455_AvatarRequiresHoverCancel())
-        throw std::logic_error("455 hover requires migrated nuclear aiming cancellation owner");
+    // Pending0 is the target's no-cancel path even for status2/6/10. The
+    // pending branch still needs the real localized C1A output before mutation.
+    if(RF455_AvatarRequiresHoverCancel()&&RF455_NuclearAiming().pending)
+        throw std::logic_error("455 pending hover cancellation requires localized C1A message provider");
 }
 }
 void CBoardManager::InitHover455(){m_hoverState455=new RF455BoardHoverState;}

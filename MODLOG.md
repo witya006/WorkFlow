@@ -1,5 +1,18 @@
 # RF Online client reconstruction journal
 
+Работа107 — 107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
+командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
+tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
+Pending0 разрешает hover при соответствующем статусе; pending1 пока отказывает
+до мутации из-за отсутствующего C1A message provider. Игровых command producers
+ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
+Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
+resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
+просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
+Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](research/client455-nuclear-aiming.md).
+
+
 Работа106 — 106 PARTIAL: настоящий прицел455 обновляется и рисуется через обычный
 effectcore в контрольной D3D сцене: вращающийся радар/волна,6 tracks,90 ticks.
 После обычной отмены children/master исчезают за62 ticks, кадр очищается.

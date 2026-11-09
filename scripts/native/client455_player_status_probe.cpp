@@ -9,6 +9,7 @@
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
 #include "client455_player_status.h"
+#include "client455_nuclear_aiming.h"
 #include <cstdio>
 #include <stdexcept>
 extern CMainApp g_MainApp;
@@ -69,12 +70,18 @@ static int run(){
     check(hovered&&hovered!=&source&&gScreen.ExistObject(),"live ordinary avatar actual hover handoff");
     for(DWORD code:{2u,6u,10u,0x102u}){
         avatar.SetStatusCode455(code);
-        check(refuses([&]{manager.SetHoverObject(nullptr);})&&manager.GetHoverObject()==hovered&&gScreen.ExistObject(),"unported nuclear owner refuses before hover mutation");
+        check(!refuses([&]{manager.SetHoverObject(nullptr);})&&!manager.GetHoverObject()&&!gScreen.ExistObject(),"actual pending0 permits target-status hover clear");
+        hovered=manager.SetHoverObject(&source);
+        // Synthetic pending bit only exercises the explicit missing-message
+        // refusal; the real aiming start/world/effect/audio path has its own lab.
+        RF455_NuclearAiming().pending=1;
+        check(refuses([&]{manager.SetHoverObject(nullptr);})&&manager.GetHoverObject()==hovered&&gScreen.ExistObject(),"pending cancellation refuses before mutation until C1A port");
+        RF455_NuclearAiming().pending=0;
     }
     avatar.ApplyStatusFlags455(0);manager.SetHoverObject(nullptr);manager.ClearHoverBackups455();
     check(!manager.GetHoverObject()&&!gScreen.ExistObject(),"live ordinary avatar clears real hover andscreen");
     FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"output");
-    std::fprintf(out,"{\"status\":\"PASS\",\"checks\":%u,\"flag_subtypes\":%u,\"DWORD_lowBYTE_cases\":%u,\"actual_avatar\":true,\"ordinary_64bit_status_setter\":true,\"unknown_state_refusal\":true,\"stale_no_subtype\":true,\"actual_hover_and_screen\":true,\"nuclear_refusal_before_mutation\":true,\"full_nuclear_owner\":false,\"full_status_sideeffects\":false,\"full_455_wire_receivers\":false,\"full_client\":false}\n",checks,branches,lowCases);
+    std::fprintf(out,"{\"status\":\"PASS\",\"checks\":%u,\"flag_subtypes\":%u,\"DWORD_lowBYTE_cases\":%u,\"actual_avatar\":true,\"ordinary_64bit_status_setter\":true,\"unknown_state_refusal\":true,\"stale_no_subtype\":true,\"actual_hover_and_screen\":true,\"pending_zero_allows_hover_clear\":true,\"nuclear_refusal_before_mutation\":true,\"full_nuclear_owner\":false,\"full_status_sideeffects\":false,\"full_455_wire_receivers\":false,\"full_client\":false}\n",checks,branches,lowCases);
     std::fclose(out);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* info){if(info->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;std::fprintf(stderr,"exception=%08lx ownRVA=%08lx\n",info->ExceptionRecord->ExceptionCode,DWORD(info->ExceptionRecord->ExceptionAddress)-DWORD(GetModuleHandleA(nullptr)));return EXCEPTION_EXECUTE_HANDLER;}

@@ -1,5 +1,20 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение09.11,nuclear107: новых установок нет. Native IDA session7cb76d0f
+saved/closed/list0;19functions/1670asm/19equalranges/2pickslots обеих455.
+107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
+командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
+tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
+Pending0 разрешает hover при соответствующем статусе; pending1 пока отказывает
+до мутации из-за отсутствующего C1A message provider. Игровых command producers
+ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
+Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
+resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
+просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
+Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-nuclear-aiming.md).
+
+
 Дополнение09.11,effect-runtime106: по сохранённому выводу native IDA MCP от07.11 проверены16 полных
 функций/2546 инструкций/16 равных диапазонов+2data обеих455;ed41bb12 saved/
 closed/list0. Установок нет. Own effect512/scheduling/lifecycle/render passes

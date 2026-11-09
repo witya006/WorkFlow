@@ -12,6 +12,20 @@
 
 ## Текущий статус
 
+107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
+командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
+tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
+Pending0 разрешает hover при соответствующем статусе; pending1 пока отказывает
+до мутации из-за отсутствующего C1A message provider. Игровых command producers
+ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
+Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
+resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
+просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
+Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-nuclear-aiming.md).
+
+Исторический106:
+
 106 PARTIAL: настоящий прицел455 обновляется и рисуется через обычный
 effectcore в контрольной D3D сцене: вращающийся радар/волна,6 tracks,90 ticks.
 После обычной отмены children/master исчезают за62 ticks, кадр очищается.
@@ -20,13 +34,15 @@ effectcore в контрольной D3D сцене: вращающийся ра
 Предупреждения R3T подтверждены в коде455 и сохранены; память стенда освобождена.
 Новая PE12ca86c5…/entry15ab00/182-20-59/unresolved0/Create1. Адресные регрессии
 resources66/magic36/status58/audio157/account/hotbar7/storage3 проходят.
-Gate106 current,105 historical. Full nuclear owner/world pipeline/device
+Gate106 historical,105 historical. Full nuclear owner/world pipeline/device
 lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-effect-runtime.md).
 
-Далее107 — actual nuclear pending/position/frame/cancel owner: связать
-восстановленные эффект и tagged sound, затем C1A/hover true predicate. Сейчас
-эта ветка hover продолжает явно отказывать до изменения предмета.
+Далее108 — настоящий localized C1A/CE7 message/notification pipeline и
+pending1 hover cancellation. Не подменять пустым legacy _SetSystemMsg(DWORD)
+или chat-only выводом. Затем command/response producers, list12/container,
+final position commit и остальные input cancels. Target orthographic picking,
+menu dummy/unsafe FP и полный shutdown остаются открытыми.
 Обязательны world pass placement/dynamic-light compositing,quality option/UI,
 blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
 receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/

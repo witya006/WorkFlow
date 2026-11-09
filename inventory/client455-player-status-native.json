@@ -3,29 +3,29 @@
   "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
   "source": {
     "file": "scripts/native/client455_player_status_probe.cpp",
-    "sha256": "667190671c6f8234803512411458bd8cb11758816375fcfe9ab37b7652550342"
+    "sha256": "44543b96cd233acc40821cba04f5ea81d7fa434f04d77a486c37a5ecf9698b62"
   },
   "exe": {
-    "file": "work/m9/78f4f5e2/player-status-001/player-status-probe.exe",
-    "sha256": "78f4f5e225a487ab10b6480a83b5c8fbbd9b4b2a4886f725bdd667f762e06adf"
+    "file": "work/m9/3ed64962/player-status-001/player-status-probe.exe",
+    "sha256": "3ed649620e57a91050da01d815d3de7401fa2a3a5b646d9f1e27517f4a644113"
   },
   "map": {
     "file": "work/client455-port/player-status-probe/player-status-probe.map",
-    "sha256": "0ab46816611dbc865588e52046951179720b66d961cb975bd73a1dc56e399776"
+    "sha256": "d4784239657d7cf08eed502ea389238360b7dd7827506e46dc98d9f35efd1f5b"
   },
   "architecture": "x86",
   "console": {
-    "file": "work/m9/78f4f5e2/player-status-001/console.txt",
+    "file": "work/m9/3ed64962/player-status-001/console.txt",
     "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "output": {
-    "file": "work/m9/78f4f5e2/player-status-001/result.json",
-    "sha256": "c8acc81cc87c1a1179554f9efe9dff300ed86e52c97e3df32b244953070b71ee"
+    "file": "work/m9/3ed64962/player-status-001/result.json",
+    "sha256": "79c91694873043cc8f9d3e4d2000c0a2244fa03af95467301c001e0421bd5918"
   },
   "natural_exit": 0,
   "native": {
     "status": "PASS",
-    "checks": 58,
+    "checks": 62,
     "flag_subtypes": 8,
     "DWORD_lowBYTE_cases": 12,
     "actual_avatar": true,
@@ -33,13 +33,14 @@
     "unknown_state_refusal": true,
     "stale_no_subtype": true,
     "actual_hover_and_screen": true,
+    "pending_zero_allows_hover_clear": true,
     "nuclear_refusal_before_mutation": true,
     "full_nuclear_owner": false,
     "full_status_sideeffects": false,
     "full_455_wire_receivers": false,
     "full_client": false
   },
-  "normal_link_sha256": "cc7272a7f73774df6f5e22428738cd6592417f094d2026776748bca5b17c1386",
+  "normal_link_sha256": "6c56aaedee41a0f664fe7e30d378cb5526e43dd502b96e62ca6eeea242f1b7f5",
   "reference_sha256": "196f74307cc6aa5fe11dc0106bacfd668ab5e0deca7db0e7a80a859cf0612c73",
   "input_exe_executed": false,
   "server_modified": false,

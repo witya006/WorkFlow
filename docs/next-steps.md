@@ -7,48 +7,43 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-106 PARTIAL: настоящий прицел455 обновляется и рисуется через обычный
-effectcore в контрольной D3D сцене: вращающийся радар/волна,6 tracks,90 ticks.
-После обычной отмены children/master исчезают за62 ticks, кадр очищается.
-Восстановлены512 активных эффектов, eviction/release и два render passes.
-Просмотрены4 новых кадра эффекта и6 hover кадров; hover byte-equal105.
-Предупреждения R3T подтверждены в коде455 и сохранены; память стенда освобождена.
-Новая PE12ca86c5…/entry15ab00/182-20-59/unresolved0/Create1. Адресные регрессии
-resources66/magic36/status58/audio157/account/hotbar7/storage3 проходят.
-Gate106 current,105 historical. Full nuclear owner/world pipeline/device
-lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-effect-runtime.md).
+107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
+командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
+tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
+Pending0 разрешает hover при соответствующем статусе; pending1 пока отказывает
+до мутации из-за отсутствующего C1A message provider. Игровых command producers
+ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
+Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
+resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
+просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
+Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-nuclear-aiming.md).
 
-Текущий gate: inventory/client455-effect-runtime-checkpoint.json.
-Обычный effectcore получил schedule quality0/1/2 с target whitelist/duplicate
-ветвями, state0/2/4 master cleanup, уведомление children при DeleteMagicList,
-time0 STOP/NO_LOOP и отрицательный release/delete.512 child records по136байт;
-при513-м освобождается oldest particle. На границе257/256 master немедленно
-освобождаются children,а сдвиг сохраняет все256 актуальных уникальных IDs. Оpaque mask4C4B400/states3+5,alpha и
-безусловный entityfade pass восстановлены. Legacy RenderAll вызывает passes
-подряд; placement вокруг остальных world passes ещё не принят. Quality kernel
-проверен прямыми вызовами, option455/UI producer пока не подключён; ordinary
-default2 подтверждён data. Screen blur runtime явно отказывает до своего переноса.
-16 functions/2546asm/16 equal ranges+2data ranges обеих455; native IDAed41bb12
-saved/closed/list0. Raw artifacts/client455-progress/effect-runtime106-*.
-R3T release warning RVA7394c4 и последующее освобождение GPU есть в оригинале.
-Actual cue6/realmodels6/recipes5,90 FrameMove и90 dynamiclight inserts;light
-compositing на мире не проверен.4 просмотренных GPU frames,600461 изменённый
-пиксель суммарно/0 послеcancel,62 ticks drain.573 native assertions включают512
-проверок release в capacity test;не AI calls и не повтор159k suite.
-GPU handles освобождены,9728 байт global texture tables отдельно закрыты public
-API в стенде,Dmalloc270592→270592. Shared curve ownership/полный shutdown OPEN.
-PE12ca86c5445bb7c89e58864d653c72020095b3136d3f0832e7245cccdca65b1a,
-2156544bytes,base400000,WinMainb8de0,afterCreateb8f54. Offline Create1 до game
-loop;Fast2D ready:7969 сохранён. Engine546a7529…/67 неизменён;033baseline сохранён,
-старого082 library snapshot нет.6 fresh hover frames viewed/byte-equal105;
-остальные32 GUI кадра и большие world/audio/159k suites не повторялись.
-Original/server не менялись,input EXE не исполнялись. Проверка:
-Invoke-Python.ps1 scripts/checkpoint_client455_effect_runtime.py.
+Текущий gate: inventory/client455-nuclear-aiming-checkpoint.json.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_nuclear_aiming.py.
+IDA7cb76d0f saved/closed/list0;19functions/1670asm/19equalranges/2pickslots.
+Raw artifacts/client455-progress/nuclear107-*. Broad writer scan partial (2M cap),
+не полное покрытие callers. Core20 является member настоящего MainApp; целый
+32byte targetcontainer/list12 ABI ещё не принят. FrameMove/Clear retained в PE,
+SetPending без игровых producers удалён linker. Frame hook стоит перед ordinary
+effects update,но полный frame order не принят. Отдельная команда SetPosition
+не меняется при визуальном движении курсора. Missing cue всё равно включает
+звук; Clear с handle0 его не останавливает — target quirk проверен.
+Нативный lab: work/m9/a3a3c42f/nuclear-aiming-001;29checks,7warnings(6R3T+
+expected missing cue),90 drain ticks,realneutralAS1/Miles,soundmuted,memorybalanced.
+PEd09eec8dd10a35dbd2bb07523901e0b66dc250dec611fee7efe231800b749c9d,
+2157056bytes,base400000,WinMainb8ed0,afterCreateb9044;Fast2D ready7969.
+Engine546a7529…/67 unchanged;033baseline сохранён,старого082snapshot нет.
+4 effect-runtime GPU frames (отдельная controlled scene,не BSP lab) и6 hover
+просмотрены;hover byteequal106. Большие159k/world/audio/остальные32GUI suites
+не повторялись. Gate106 snapshot в artifacts,егоruntimegate historical.
+Original/server не менялись,inputEXE не исполнялись. Полные сведения в research.
 
-Далее107 — actual nuclear pending/position/frame/cancel owner: связать
-восстановленные эффект и tagged sound, затем C1A/hover true predicate. Сейчас
-эта ветка hover продолжает явно отказывать до изменения предмета.
+Далее108 — настоящий localized C1A/CE7 message/notification pipeline и
+pending1 hover cancellation. Не подменять пустым legacy _SetSystemMsg(DWORD)
+или chat-only выводом. Затем command/response producers, list12/container,
+final position commit и остальные input cancels. Target orthographic picking,
+menu dummy/unsafe FP и полный shutdown остаются открытыми.
 Обязательны world pass placement/dynamic-light compositing,quality option/UI,
 blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
 receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/
