@@ -6,6 +6,67 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-SKY-LIGHTING-RUNTIME-128",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "description": "Ordinary lighting frame,day/night and289point software fog,real endpoint loaders,map texture-factor bind",
+      "reference": [
+        {
+          "rva": "0x4b1f20",
+          "role": "Ordinary lighting/fog chain"
+        },
+        {
+          "rva": "0x4b2670",
+          "role": "CPU sky color"
+        },
+        {
+          "rva": "0x4b1640",
+          "role": "Previous-fog packed lighting"
+        },
+        {
+          "rva": "0x4e7c40",
+          "role": "Ordinary map texture factor"
+        },
+        {
+          "rva": "0x50aed0",
+          "role": "R3X endpoint loader"
+        },
+        {
+          "rva": "0x50a4d0",
+          "role": "Case-sensitive script endpoints"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_lighting.h",
+        "scripts/native/client455_sky_lighting.inc",
+        "scripts/native/client455_sky_lighting_math.h",
+        "scripts/native/client455_sky_atmosphere.inc",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "Revalidated17fullasm/1538instructions/CFG and3fullcontext-body byte ranges both455;runtime inserted into ordinary frame/loaders/mapdraw.4script+5valid1invalidR3X,27MiePC24/53/64,5ordinary+3nontrivialfogframes,867CPUcolors/3aggregates exact selectedPC24 arithmetic using actual SunColor inputs;29actualBSPsubmissions.20GPUviewed/15regressionpixels byteequal126.3enginepayload changes/63byteequal/sharedheadersunchanged;PE052f7387/entry16B900/unresolved0/ANI-BBX/startupCreate1PASS.",
+      "evidence": [
+        "inventory/client455-sky-lighting-runtime-reference.json",
+        "inventory/client455-sky-lighting-inputs.json",
+        "inventory/client455-sky-lighting-native.json",
+        "inventory/client455-sky-lighting-visual-review.json",
+        "inventory/client455-sky-lighting-checkpoint.json",
+        "research/client455-sky-lighting-runtime.md"
+      ],
+      "gaps": [
+        "Ordinary frame/both fog branches/real loaders/map tint bind integrated;full material flag8000 and remaining CPU tint consumers remain open",
+        "Exposure helper is used by actual frame and tested in lab,but target CLevel DWORD-owner setter/game producers are not yet connected;do not claim ordinary gameplay exposure handling",
+        "Previous-orbit Sun position computed,but full lens-flare consumer and local fog-volume acceptance remain open",
+        "Default/selected Mie path restored;indirect day/night parameter writers and full shader/CRT transcendental/FP/RC/NaN/Inf/status-flag parity remain open",
+        "Software visible RGB follows selected arithmetic;unused reference transform/extinction FP side effects are not yet reproduced",
+        "INS/Planet/full world visibility/materials/device lost-reset/OOM/stages/auth/protocol/Character/gameplay and complete client455 acceptance remain open",
+        "Missing original neutralBtrade_bel.r3e warning remains;invalid R3X lab warning is deliberate and counted separately"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
       "id": "CLIENT455-SKY-LIGHTING-127",
       "status": "partial_component",
       "runtime_gate_current": false,
@@ -56,12 +117,13 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "runtime_followup": "CLIENT455-SKY-LIGHTING-RUNTIME-128"
     },
     {
       "id": "CLIENT455-SKY-ATMOSPHERE-126",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "description": "Ordinary sky atmosphere prepass/resources and selected Sun scalar update",
       "reference": [
         {
@@ -113,7 +175,8 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "superseded_by": "CLIENT455-SKY-LIGHTING-RUNTIME-128"
     },
     {
       "id": "CLIENT455-SKY-MATERIAL-125",

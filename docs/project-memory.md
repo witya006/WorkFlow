@@ -1,143 +1,106 @@
 # Память проекта
 
-Обновлено 2026-11-09.
+Обновлено 2026-11-10.
 
-127 PARTIAL_COMPONENT,current research/source arithmetic;runtime126 remains current.
-Audit: inventory/client455-sky-lighting-reference.json.
-Command:scripts/Invoke-Python.ps1 scripts/audit_client455_sky_lighting.py.
-Evidence:research/client455-sky-lighting.md. Previous memory/steps:*before127.md.
-No runtime source/build changes127. Exact engine/PE hashes below unchanged.
-
-17fullasm/1538instructions/17ranges equalboth455;allpositiveCFGstarts covered.
-14newasm/777instructions;8B1F20/8B1640/900B00 reused126/761instructions.
-Rawsky-lighting127-reference/session.json;IDA63ea5f70savedclosed/list0.
-MCPconfiguredsmoke4970a219closed,66tools. 8B1220unrecognizedfunction→fallback
-60998total;EXCLUDED fromselected,onlyexact7byteFLD/RET boundedbytes used.
-
-Criticalframeorder:900CD0computesSunposition fromPREVIOUSorbit/scale/currentfar,
-thennewSunstate/night/angles,then8B1640 tint usesPREVIOUSfog,thennewfog.
-DoNOTsynchronizeawayone-frame lag. Far forposition is1157C88,notSunrender1400.
-GetSunPosition8B1620 consumer8CB460lensflareOPEN. PackedBF734C/BF7350 initial
-FFFFFFFF/getters8B1820/8B1830;secondno directxrefs. Avoidunprovedambientlabels.
-8B30B0 enabled→CPUcolor modulation /256,alpha preserved;disabledreturnsbase.
-DrawMap8E7C40 setsTEXTUREFACTOR=tint beforeBSP;material8C80A0flag8000/global
-1157CB8 also consumes. INS/Planet separate. Exposure setter8B1210 called8E77B0:
-DWORD stored inthis145,lowBYTE/255 passed. IdentifyactualownAPI beforewiring.
-
-Fogflag2:currentColorD38/dayD58/nightD5C,currentStartD30/dayD48/nightD4C,
-currentEndD34/dayD50/nightD54 in1157xxx. R3Xflag4 setsday/current/main/far;
-flag8 setsnight;InitCorezeroesboth endpoints. Don'tenable legacyspatialFog2 code.
-Withoutflag2:CPU17x17=289samples,gridcenter8,step1290,cappedradius4,height5160.
-8B2670 softwareRayleigh/Mie/scattering;notGPUreadback. Normalize/dot(0,-1,0),
-exp2negativeLengthBeta/log2,phase reciprocal-sqrt cubed,clamp/scatter*Sun*intensity.
-AggregateunsignedRGB/divisor trunc(count*float(exposure*.899999976+.899999976)),
-clampchannels255. TargetNOzero-divisor fallback;don'tsilentlyreturnblack/default.
-
-Newclient455_sky_lighting_math.h not yetincludedengine:quartertint/directalpha,
-weightedfogfloats/channels (complementkeptx87extended),/256modulation,divisor with
-unsignedcountcorrection. Probeec0a5c6b/sky-lighting-math-001:129cases=36Sun45fog
-24filter24divisor,PC24/53/64nearest-even,Fractionoracleexactbits/CWrestored,
-3zerodivisors exposed. No actualDIV0 executed. OtherRC/FP/NaN/Inf/CRT open.
-Next128:wirewholechain+realR3X/script endpoints/exposure/mapGPU-CPUconsumers/
-software289point fog. Saveexact126engine/PE/MAP/rsp/reportsbeforeanyruntimeedit.
-No broad/nativeworld/GPU reruns127 because runtime unchanged. M6/M9OPEN.
-
-## Текущий ordinary runtime126
-
-126 PARTIAL M6: actual atmosphere prepass/resources and selected Sun scalar update.
-Current gate: inventory/client455-sky-atmosphere-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_atmosphere.py.
-Доказательства: research/client455-sky-atmosphere.md.
-Полная предыдущая память/шаги: research/project-memory-before126.md и
-research/next-steps-before126.md. Gate125 теперь исторический.
+128 PARTIAL M6: ordinary lighting frame + both fog branches + real endpoint
+loaders + map TEXTUREFACTOR bind. Gate inventory/client455-sky-lighting-checkpoint.json.
+Command:scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_lighting.py.
+Evidence:research/client455-sky-lighting-runtime.md. Runtime126/компонент127
+теперь исторические;полная память/шаги до128:research/*before128.md.
 
 ## Цель и ограничения
 
-Только CLIENT RF_Online.bin,R3Engine и клиентские ресурсы. M9 УЖЕ определён:
-полная приёмка клиента455 без модернизации графики;не повторять старый вопрос Goal.
-M0–M4 diagnostic/выбранныйM5 завершены;M6/M6F/M7/M9 OPEN,M8 не нужен.
-Build/Create1/компонентные labs не означают полной приёмки.
-Серверные исходники только читать:не менять,не собирать,не восстанавливать.
-InputEXE никогда не запускать;оригиналы неизменны;копии подwork/.
-Локальный Git,безremote/push/publish. Subagents только по явному запросу.
-Python:scripts/Invoke-Python.ps1 file.py,не-c/-m. Primary VS2026 MSVC x86.
-Native/GPU jobs последовательно,дождаться terminal;timeout не повод для restart.
-Перед изменением engine сохранять exactengine/PE/MAP/linkrsp/reports.
-159k/широкие unchanged suites не повторять без нового риска.
-Пользователю кратко по-русски,обновления не реже60s.
+Только CLIENT RF_Online.bin/R3Engine/client tools. M9 УЖЕ определён:полная
+приёмка клиента455 без модернизации графики. Не повторять старый вопрос Goal.
+M0–M4 diagnostic/selectedM5 завершены;M6/M6F/M7/M9 OPEN,M8 не нужен.
+Build/Create1/component labs не означают полной приёмки.
+Server только читать как reference;не менять/не собирать/не восстанавливать.
+InputEXE never execute;originals immutable;copies underwork/. Git local only,
+безremote/push/publish. Subagents только по явному запросу.
+Python:scripts/Invoke-Python.ps1 file.py,не-c/-m. PrimaryVS2026 MSVC x86.
+Native/GPU jobs sequential/дождатьсяterminal;timeout не поводrestart.
+Перед runtime edit сохранить exactengine/PE/MAP/linkrsp/reports;ignored!=backup.
+Не повторять159k/unchanged broad suites без нового риска. Пользователю краткоRU,
+обновление<=60s. MCPasm<=100/page +actual lengths/count/unique +everypositive
+CFGblockstart coverage (нижнийchunk901760у9018B0 пропускался приheadquery).
+MCPrawsave20kchunkspercall,неодинoversizedJS. OwnedIDAsavedclosed.
 
-## Текущее доказательство126
+## Доказательства128
 
-16fullasm/2029instructions/19ranges equalbothpinned455x86/base400000.
-SelectedVA:900DA0,901900,8B1840,901450,9017F0,901410,9013D0,901BC0,
-8B1260,8B1280,8D88D0,900B00,8B19F0,9018B0,8B1640,8B1F20.
-Raw artifacts/client455-progress/sky-atmosphere126-reference.json/session.json;
-IDA d09e1f5b savedclosed/list0. Full8B1F20 pcode/asm reused125+newCFG.
-Critical: cursor/total alone insufficient! Every positive CFG blockstart must occur
-inasm. 9018B0 lowerchunk901760..9017EF missed byheadrequest;query901760 gives70
-instructions vshead7. 8B1260/1280 tails900C90/900CB0. Audit unionsbody+CFG,
-skipszeroexternalblocks. Disasm<=100/page;MCPrawsave20kchunkspertoolcall.
+17fullasm/1538instructions/17ranges +3wholecontextbyte bodies equalboth455.
+Primaryb1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558;
+x86/base400000. Reused127raw sky-lighting127-reference/session.json,
+IDA63ea5f70savedclosed/list0;no newIDA128. Context8C3400sizeAC8/90A4D0size9F6/
+90AED0size28B wholebytescompared,NOT fullasmclaim. 8B1220notIDAfunction;
+exclude60998fallback disasm count;onlyexact7byteFLD/RET boundedgetter.
 
-Source client455_sky_atmosphere.h/.inc included once in derivedlevel;ordinary
-FrameMove calls UpdateSunValues afterclock/night;CSkyBox calls actual prepass.
-Resources actualScatter.vso612/vsh2647/sunDDS349652 frompinned455inputs.
-Sun256x256/9mips/ARGB/pool1format21;not512. Dome65x65/4225vertices/8192tris,
-20bytestride/VB84500/IB49152/usage8/poolMANAGED. Sun36bytestride;
-BF7878declaration40bytes vsDomeBF78A024bytes. GetFunctionshaderbyteequal612.
-OrdinaryD3Drestore createsafterInitFullScreenEffect,invalidate releasesfirst.
-Explicitrelease/recreate/missingshader andfinaldevicecallbackrelease checked;
-NOT fulllost-reset/OOM/reentry/caps acceptance.
+New client455_sky_lighting.h/.inc appendedafteratmosphereinc inordinarylevel.cpp.
+FrameMove:AdvanceDayClock→UpdateSkyLighting. Innerorder:
+previousorbit/scale+CURRENTfar→Sunposition;newSun/Mie/night;packedTint usesOLDfog;
+thennewfog. Preserveone-frame lag. PositionfarNOT1400 Sunrenderdistance.
+R3Xflag4 day endpoints,flag8 night;absencepreservesprevious. InitCorezeroesthem.
+FOG_COLOR-only fillsCURRENT/main5/5000 butNOTdaydistances. Main scriptdispatch
+case-sensitive:legacystruprremoved;foghandlerat originalfogblock;lateweather/env
+callbackremainslate. Don't addduplicateearlyweathercallback.
 
-Flags areR3XsceneFlags offset524,notmovie. Texttokenscase-sensitive:
-no_sun1/no_sky_color4/use_fog_fog2=2. LoadLevelresetafterfopen/fclose success.
-PrepassVIEWtranslation0/near10/far60000/depth-zwrite-alphatest0;restoreexactglobal
-anddeviceVIEW/PROJ+recomputeViewProj. Shaderbind/constants evenifflag4suppressesdome.
-Flag1suppressesSun. flags5/7 preserveVS;outerbranchclearsVS/PSotherwise.
-SunretainsScattershader intoitsdraw;doNOTfixit. Finalhelper preservesVS anduses
-oldVB/IBcache;dome bypassescache,so doNOTclaimallbuffersunbound.
-GeneralordinarySetVPIPTex1 legacy24/FVF clearVS remains renderergap.
+Fogflag2weightedendpoints usesextendedx87complement;elseCPU289samples17x17,
+center8/step1290/cappedradius4/height5160. Actual4B2670 Rayleigh/Mie arithmetic,
+x87floatspills/positiveFSQRT;modernCRTpow/log/SunColor paritystillOPEN.
+SampleroracleusesACTUALSunColor input,so867exactpackedresults DONOTproveCRT
+SunColor equivalence. SoftwaretestsPC24 only;Mie27boundarycasesPC24/53/64.
+Unusedreferenceprojection/extinctionFPsideeffects omitted→explicitgap.
+Unsignedaggregate/divisor exposure*.899999976+.899999976/clamp255;
+NOzero-divisor successfallback. NegativeZ0 mustremain-0 inoracle/geometry.
+Mieexact19hfloatboundary.7916666865348816 gives0 betweenneighbor nonzero values;
+doNOTsmooth. InitialdayMie0/night.03;indirectwritersopen.
 
-Sun scalar x87helpers:orbit/theta/phi/scale/alpha/intensity,denominatorfloatspills.
-72boundaryPC24/53/64 nearest-even cases+5liveFrameMove profiles exactbits via
-independentFractionoracle. Coeffs/initialparams selected restored;nightMieBF7354=.03
-filebacked/dayMieBSS0,selected transitions. Indirectconsole/filewriters OPEN.
-SunColor modernCRT cos/exp/pow;fullCRT/x87transcendental/allFPparity OPEN.
-Onlyc0/c4/direction/reflectance constants nativelycompared;notallirradiance/colors.
+TintBF734C/directBF7350 initialFFFFFFFF. DrawMapRendersetsTEXTUREFACTOR=tint
+beforeBSP. Actualmaterial8000/1157CB8 stages andCPUtint consumers not restored.
+RF455_ApplySkyTint andSetSkyFogExposureColor retained inMAP, butsymbolretention
+DOESNOTproveactualgamecallers. ExposurehelperlowBYTE/255 usedbyrealframe/lab;
+targetCLevelDWORDowner atthis145/8E77B0/gameproducers stillOPEN.
+GetSunPosition8B1620 consumer8CB460lensflare andlocalfog-volumeacceptance OPEN.
 
-Engine744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55,
-67/17derived. Changedpayloads level/skybox/r3d3d8/r3vertexbuffer/client455_weather;
-62byteequal/0timestamponly;sharedheaders/layoutunchanged.
-OwnPE4dd76810b62a7137004f75e4cbd2490361a0d0180a1682e42cfa766de0626a5c,
-2245632bytes/x86/base400000/entry16A440/WinMainB98B0/afterCreateB9A24.
-182client/20kernel unchanged,ANI2/BBXfresh+normalrelink/unresolved0/noCharacterMR/
-noFORCE. Freshimports/own-entry/sound1/window/device/existingCreate1/contractsPASS.
-Handledfirstchance40080201/E06D7363/406D1388retained. InputEXEneverexecuted.
-Exact125 engine/PE/MAP/linkrsp andbefore126reports preserved inartifacts.
-Buildergenerated-source-hashes ledger recordsownwrites sofailedbuildgenerationcan
-resume;unknownexternaldrift stillrefused. Sourcebaseline033unchanged.
+Enginedf47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06,
+67/18derived;onlylevel/core/r3materialpayloadchanged,63byteequal/0timestamp-only.
+Sharedheaders/layoutunchanged;182client20kernel preserved,ANI2/BBXfresh+relink.
+PE052f73878f4082c6cab3ad532b08ecb3ec8f250dbd0622a3db83efa5157933ce,
+2251264bytes/x86/base400000/entry16B900/WinMainB98B0/afterCreateB9A24/
+unresolved0/noCharacterMR/noFORCE. Own-entry/imports/sound1/window/device/
+existingCreate1/contractsPASS;handled40080201/E06D7363/406D1388retained.
+Exact126engine/PE/MAP/rsp+21reports backedup *before128* beforeedits.
 
-Atmospherework/m9/4847c2b2/sky-atmosphere-001:16prepass branches;4dome/8Sun draws,
-fullmeshmaxerror0/indexbyteequal/shaderbyteequal;72scalar+5live;5GPUviewed.
-Disablednoonbyteequal125sky2-noon. Native1missingtrade_bel warning.
-Materialwork/m9/40ad6a14/sky-material-001:60profile/3frame/36material/26draw/
-10zeroalpha/unloadedPASS;5GPUviewed. Materialunitcases setflags5;normalframes
-include newatmosphere. Worldwork/m9/a841e924/world-frame-001:76queue/16clock,
-5GPUviewed/byteequal125/6oldwarnings. Fadework/m9/6ffedb56/sky-fade-001:
-90frames+27helper/5GPUviewed/byteequal125/0warnings. Total20GPUviewed.
-Original neutralBtrade_bel.r3e absent;doNOTsubstitute. Otherbulks historical.
+Currentnative work/m9/a92d3696/sky-lighting-001:4actualLoadMainMaterial cases,
+5validR3X+1invalidversion;27Mie3precision;5ordinary+3nontrivialfogframes;
+867actualCPU samples/3aggregates exact selectedPC24;disabledpreserves;
+previousFogTint,previousOrbitPosition;29actualBSPsubmissions/firstTFbind=tint.
+Nativewarnings2=1deliberatebadR3X+1originalmissingtrade_bel. Earlierc637cfe4
+capturepassed beforeextra3fogframes;finala92d3696 authoritative. Oracle-0Z fix
+used --verify-existing;no production workaround. Nativeprototype/far/scope
+compile errors corrected. No livejobs remain afterlastpoll.
 
-Labobserver patchesoriginalFULLvtable slots82/83/restoresaroundforward/Get and
-pageprotections. DoNOTclone119slots(privateD3Dentriesexist). Productionunpatched.
-Failedfixture512/poolassumptions andearliermissingr3math/mainmacro errors corrected;
-no productionworkaround. Earlier125 cloneAV trialsretained.
+ActualneutralBcamera pinned109548bytes/SHA4d71c20bdab6507a03904bc77c3d9cac16d062e666c923f71d7370b3030f6044.
+R3Xfixtureswere loadedBEFORErealneutralB;absentnight setpreservesfixturevalues.
+Don'tmislabel114/6004 asdatafromneutralB. ActualR3Xdaydata independentlychecked.
+5lightingGPUviewed. Worldc8b19052/sky-fade120a008a/material5e4340d4:
+15GPUviewed/byteequal126. World76queue16clock/6oldwarnings;fade90+27/0warnings;
+material60profiles3frames36cases/1missingwarning. Total20GPUviewed.
+Old12616prepass/resourcecases historical,not rerun becauseprepass/resources
+unchanged. Otherbulksnotrerun. Originaltrade_bel.r3e absent;don'tsubstitute.
+Labobservers originalFULLD3Dvtable slots57/82/restoredaroundforward/Get and
+pageprotections. NEVERclone119slots(privateD3Dentriesexist). Productionunpatched.
 
-## Следующий участок128
+## Следующий участок129
 
-Restore remaining8B1F20 lightingtail:lightcolors/exposureBF734C/BF7350,
-day-nightfog/position/lensflare andactualwriters. Reviewalreadycomplete127asm before
-newIDAreads;onlyreadadditionalcallees/writers whenneeded. KeepSunColorFP/CRT,
-indirectMieparams/fullshaderconstants andfullreset explicitgaps.
-INS/Planet/generalrenderer/worldvisibility/texture lifetime/auth/stages/protocol/
-Character/gameplay/fullclientacceptance remainOPEN. DoNOTclaimM6/M9 complete.
-Preservecorrections120ordinaryCURRENTview/INSpreviousview,skyvslot17;
-121BSPguards/batches,122inverseaffineleaf,123projection,124fade,125materials.
+Traceactual8E77B0 CLevel exposureDWORDowner/gamecallers and8B30B0CPUtintcallers;
+material8C80A0flag8000/global1157CB8 stages. Packed *weather/*haze/
+*special_weather tags90AD04/90AD6A/90ADD3→1157D3C are also nothandled bycurrent
+weather callback;traceactualproducer route,not assumed direct exposure writes.
+Bindrealowners,not just helper symbols.
+Ifclass/sharedlayout changes→full182client/20kernel rebuild asrequired.
+Thenlensflare8CB460/localfogvolumes/indirectparams/fullshader/CRT/FP/statusflags.
+INS/Planet/fullworld/visibility/alpha/texture/device lost-reset-OOM/stages/auth/
+protocol/Character/gameplay/client-acceptance allremainOPEN. Don'tmarkM6/M9done.
+Preserve120 ordinaryCURRENTview/INSpreviousview;121BSP/122inverse/123projection/
+124fade/125materials/126prepass. Budgetunbounded,goalactive;no pause/block/completion.

@@ -1,0 +1,191 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Ordinary lighting frame,day/night and289point software fog,real endpoint loaders,map texture-factor bind",
+  "script_sha256": "2b73cf9906a4b78132797c5c6a821458c28f95aba23c2cdccc8fabffd6cc38fd",
+  "reference127": {
+    "file": "inventory/client455-sky-lighting-reference.json",
+    "sha256": "ab6add8e2c30c323539645e84de6f076d8f7f6df8a820e8857163733b6e8fcdb"
+  },
+  "raw": {
+    "file": "artifacts/client455-progress/sky-lighting127-reference.json",
+    "sha256": "791f5967e570c11b2489778476da5b3b1eb0eb8c05d719044e7fe63d9a02a141"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/sky-lighting127-session.json",
+    "sha256": "31337836a52c8f051435cc0855161a00f1039cc2b3e85e6d3b171aceb319fb93"
+  },
+  "full_assembly": 17,
+  "instructions": 1538,
+  "context_bodies": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": [
+        {
+          "rva": "0x4c3400",
+          "bytes": 2760,
+          "sha256": "3a715bd336a2f8c9d9268959ba0182a04c838d870a34af2e1c367d0a1d18b6c5"
+        },
+        {
+          "rva": "0x50a4d0",
+          "bytes": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        },
+        {
+          "rva": "0x50aed0",
+          "bytes": 651,
+          "sha256": "ae026d4137f610b37f636856e5bf9801aa0da855d21d98f215dcc9f6e59c7463"
+        }
+      ],
+      "full_assembly_claimed": false
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": [
+        {
+          "rva": "0x4c3400",
+          "bytes": 2760,
+          "sha256": "3a715bd336a2f8c9d9268959ba0182a04c838d870a34af2e1c367d0a1d18b6c5"
+        },
+        {
+          "rva": "0x50a4d0",
+          "bytes": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        },
+        {
+          "rva": "0x50aed0",
+          "bytes": 651,
+          "sha256": "ae026d4137f610b37f636856e5bf9801aa0da855d21d98f215dcc9f6e59c7463"
+        }
+      ],
+      "full_assembly_claimed": false
+    }
+  ],
+  "sources": [
+    {
+      "file": "scripts/native/client455_sky_lighting.h",
+      "sha256": "0b6e2ff3fd85254e1a436731c6243cf692bfd7393c03ba0aabaa2239ceeb1d0c"
+    },
+    {
+      "file": "scripts/native/client455_sky_lighting.inc",
+      "sha256": "2af67147d69a6d778658d75a6904dc3e6e64304c84e96f43198634c4fdd2f985"
+    },
+    {
+      "file": "scripts/native/client455_sky_lighting_math.h",
+      "sha256": "9fca9525ca517f12524e77eec8e47f790eb3f73b019f235bd2f296b823a1cd8c"
+    },
+    {
+      "file": "scripts/native/client455_sky_atmosphere.inc",
+      "sha256": "d20951b93419b9dadeb6437793299470af4e2ce5fd74e00cc8fc002fc210c20e"
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "df47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before128.lib",
+    "sha256": "744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55"
+  },
+  "payload_changed_members": [
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj"
+  ],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "timestamp_only_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj"
+  ],
+  "headers_unchanged": true,
+  "ordinary_symbols_retained": [
+    "RF455_UpdateSkyLighting",
+    "RF455_SampleSkyColor",
+    "RF455_LoadSkyFogEndpoints",
+    "RF455_ReadSkyFogToken",
+    "RF455_GetSkyTintColor"
+  ],
+  "CPU_tint_helper_retained": true,
+  "exposure_color_setter_retained": true,
+  "gaps": [
+    "Ordinary frame/both fog branches/real loaders/map tint bind integrated;full material flag8000 and remaining CPU tint consumers remain open",
+    "Exposure helper is used by actual frame and tested in lab,but target CLevel DWORD-owner setter/game producers are not yet connected;do not claim ordinary gameplay exposure handling",
+    "Previous-orbit Sun position computed,but full lens-flare consumer and local fog-volume acceptance remain open",
+    "Default/selected Mie path restored;indirect day/night parameter writers and full shader/CRT transcendental/FP/RC/NaN/Inf/status-flag parity remain open",
+    "Software visible RGB follows selected arithmetic;unused reference transform/extinction FP side effects are not yet reproduced",
+    "INS/Planet/full world visibility/materials/device lost-reset/OOM/stages/auth/protocol/Character/gameplay and complete client455 acceptance remain open",
+    "Missing original neutralBtrade_bel.r3e warning remains;invalid R3X lab warning is deliberate and counted separately"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

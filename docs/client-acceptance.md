@@ -1,17 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
-127 PARTIAL_COMPONENT: подтверждён порядок обновления освещения и тумана455,
-включая использование предыдущего FogColor и предыдущих параметров Sun.17fullasm/1538instructions equalboth455.
-Подготовлен source math component:129 точных случаев PC24/53/64 проходят.
-Он ещё НЕ подключён к ordinary frame;текущий runtime и gate остаются126.
-Engine744733c2…/PE4dd76810…/entry16A440 неизменны;20GPU/Create1 evidence126.
-Source audit: inventory/client455-sky-lighting-reference.json.
-Runtime gate: inventory/client455-sky-atmosphere-checkpoint.json.
-Далее128 — полная интеграция lighting/fog/289point software branch и consumers.
-M6/M6F/M7/M9 OPEN;полная приёмка освещения не заявлена.
+128 PARTIAL M6: освещение и обе ветки тумана подключены к обычному кадру.
+Реальные R3X/script loaders восстанавливают day/night endpoints;карта получает
+packed tint перед BSP. Сохранён порядок с предыдущим FogColor/orbit.
+867 CPU samples/3 fog aggregates,27 Mie cases,5+3 actual frames проходят.
+20 GPU кадров просмотрены;15 material/fade/world кадров byte-equal126.
+Engine67/18derived:изменены level/core/r3material,63 объекта byte-equal126.
+PE052f7387…/entry16B900/unresolved0;ANI/BBX/startup/existingCreate1 PASS.
+Gate: inventory/client455-sky-lighting-checkpoint.json.
+Далее129 — actual exposure owner/game callers,material8000 и CPU tint consumers.
+Full lighting/CRT/FP/device/world/client acceptance и M6/M6F/M7/M9 OPEN.
 
-[Доказательства127](../research/client455-sky-lighting.md).
-[Runtime126](../research/client455-sky-atmosphere.md).
+[Доказательства128](../research/client455-sky-lighting-runtime.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

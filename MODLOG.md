@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Ordinary lighting128. Selected lighting chain/bothfog branches
+and real endpoint loaders connected to ordinary frame;previousFog/orbit order
+preserved.867CPUcolors/3aggregates exactselectedPC24;27Mie3precision/4scripts/
+5valid1invalidR3X/5+3frames/29BSPsubmissions PASS.20GPUviewed,15regressionframes
+byteequal126. Engine df47c24a/3changed63same/headersunchanged;PE052f7387/
+entry16B900/unresolved0/ANI-BBX/startupCreate1PASS. Actual exposure/game tint
+consumers and full lighting/CRT/FP/M9 remainOPEN.
+[Evidence](research/client455-sky-lighting-runtime.md).
+
 2026-11-09 — Lighting127 source component.17fullasm/1538instructions equalboth455,
 CFGcomplete;previous-Sun/previous-fog frameorder,flag2 endpoint interpolation and
 289point softwarefog contracts confirmed.129exact source math cases pass in

@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55",
+  "library_sha256": "df47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -318,7 +318,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
-      "sha256": "6b663c4be205765d2b583026642eb6346a1d8e706c017e01c707d5adc54bd3e3",
+      "sha256": "3b34da03ed0ad2e9ec6123775c66e7ec5fbf50ec69589729253c8aa40651d281",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
     },
@@ -366,7 +366,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/core.cpp",
-      "sha256": "a73c95b477f24c12d826afcca6add17862114aaf84711ddeecc0c9d8d79f21e2",
+      "sha256": "cb1beca1fc74e209f62a6e58bc307c3c562d7dc3164c879b542a07bfd5f74d52",
       "original": "work/client455-port/source/R3Engine/1stclass/core.cpp",
       "original_sha256": "30f384cc288edeaa22566e5d60881bc8267dcc9da005bf3ee0a50c3dbc620b47"
     },
@@ -381,6 +381,12 @@
       "sha256": "29677019aabda55539df964644fac2b6e7e158f2fa07a086d1eaf4a8e32d5129",
       "original": "work/client455-port/source/R3Engine/1stclass/r3vertexbuffer.cpp",
       "original_sha256": "34524e9cfe9908db5b93c47251dee5a7f868eaf9fd0d174e6ba685f29bc4d85e"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3material.cpp",
+      "sha256": "efdf139e92419ce84b00929ddff7b5d9fc5b90d06e3582c73cdc92a674fe2c54",
+      "original": "work/client455-port/source/R3Engine/1stclass/r3material.cpp",
+      "original_sha256": "1a5a6ea5df2c5324affe7de6fe2036846dfbb98babcbfcb0f7fb9f948796ac9a"
     }
   ],
   "baseline_library": {
@@ -389,13 +395,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "a86d77ff0538a8986d93b470d381be7e5fc339ee41d8bcedbb8b5694a2cf7f37"
+    "sha256": "f9e65435945e1194033daaf788f6402b045625a18aa35b91caccd3c7f5b2da48"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "911499b71a7818a56fef90b24437a551012a977b1b3cefd7a1c0f5c387609932"
+    "sha256": "f5f99d5a2ff913c71c068c2f662209e27520aa16924914a6bacd3d7786437907"
   },
-  "script_sha256": "05526f7e42695385a8320cfe0fcff743962395f25273bbb73ee3b74fad759900",
+  "script_sha256": "7b7781ff965ee2e618370799428bb733ecd3b337870879193c9c1711459a8bbe",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -439,7 +445,12 @@
   },
   "sky_atmosphere": {
     "client455_sky_atmosphere.h": "be1af94b986d3f68f461042196932148514724006d740ee770064e15f7b1885e",
-    "client455_sky_atmosphere.inc": "2efd80979e4ca5cacceb1480c05d414abdfd3f42f2126171d62f980eb2996e81"
+    "client455_sky_atmosphere.inc": "d20951b93419b9dadeb6437793299470af4e2ce5fd74e00cc8fc002fc210c20e"
+  },
+  "sky_lighting": {
+    "client455_sky_lighting.h": "0b6e2ff3fd85254e1a436731c6243cf692bfd7393c03ba0aabaa2239ceeb1d0c",
+    "client455_sky_lighting.inc": "2af67147d69a6d778658d75a6904dc3e6e64304c84e96f43198634c4fdd2f985",
+    "client455_sky_lighting_math.h": "9fca9525ca517f12524e77eec8e47f790eb3f73b019f235bd2f296b823a1cd8c"
   },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",

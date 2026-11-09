@@ -1,0 +1,263 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary lighting frame,day/night and289point software fog,real endpoint loaders,map texture-factor bind",
+  "script_sha256": "eae0efa978622fcb811c35df1e168b6ecc6428c4a34dc2bb106eab05eaf9baf4",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "052f73878f4082c6cab3ad532b08ecb3ec8f250dbd0622a3db83efa5157933ce",
+    "bytes": 2251264,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16b900",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "92e56f4f1fddd47f961fc31de0a9c31c73642b03b8ce15c85c7207b1790ea8eb",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "df47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before128.lib",
+    "sha256": "744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55"
+  },
+  "lighting": {
+    "status": "PASS_SELECTED",
+    "text_cases": 4,
+    "R3X_valid_cases": 5,
+    "R3X_invalid_version": 1,
+    "mie_cases": 27,
+    "mie_precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "software_precision_bits": [
+      24
+    ],
+    "ordinary_frames": 5,
+    "additional_fog_frames": 3,
+    "software_samples": 867,
+    "selected_software_packed_bits_exact": true,
+    "software_aggregate_cases": 3,
+    "previous_fog_tint": true,
+    "previous_orbit_position": true,
+    "disabled_preserves": true,
+    "actual_map_submissions": 29,
+    "actual_texture_factor_bind": true,
+    "GPU_frames": 5,
+    "full_lighting": false,
+    "all_CRT_FP_inputs": false
+  },
+  "material": {
+    "profile_cases": 60,
+    "actual_frame_profiles": 3,
+    "material_cases": 36,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "exact_night_bits": true,
+    "dawnEnd_discontinuity": true,
+    "actual_indexed_draws": 26,
+    "zero_alpha_cases": 10,
+    "cleanup_masks": "TFACTOR1C/reset18;20alone does not set alpha stages",
+    "device_view_restored": true,
+    "caller_view_translation_zeroed": true,
+    "direct_unloaded_state": true,
+    "GPU_frames": 5,
+    "actual_neutralB_sky2": true,
+    "distinct_day_frames": 4,
+    "visible_changed_bytes": {
+      "sky2-midnight.bgra": 479337,
+      "sky2-morning.bgra": 486084,
+      "sky2-noon.bgra": 461415,
+      "sky2-evening.bgra": 483373,
+      "sky2-unloaded.bgra": 0
+    },
+    "full_atmosphere": false,
+    "all_FP_inputs": false
+  },
+  "fade": {
+    "frame_cases": 90,
+    "shared_helper_cases": 27,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "rounding": "nearest/even;integer conversion truncates and restoresCW",
+    "active_frames": 60,
+    "idle_frames": 30,
+    "exact_state_and_device_bits": true,
+    "actual_quad_colors": true,
+    "legacy_SSE_alpha_differences": 0,
+    "legacy_SSE_fog_differences": 8,
+    "GPU_frames": 5,
+    "finished_sky_byte_equal": true,
+    "covered_RGB": [
+      32,
+      64,
+      96
+    ],
+    "full_sky_renderer": false,
+    "all_FP_inputs": false
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "world_frames_byte_equal126": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "fade_frames_byte_equal126": [
+    "fade-base.bgra",
+    "fade-covered.bgra",
+    "fade-done.bgra",
+    "fade-middle.bgra",
+    "fade-return.bgra"
+  ],
+  "material_frames_byte_equal126": [
+    "sky2-evening.bgra",
+    "sky2-midnight.bgra",
+    "sky2-morning.bgra",
+    "sky2-noon.bgra",
+    "sky2-unloaded.bgra"
+  ],
+  "viewed_GPU_frames": 20,
+  "previous126_gate": {
+    "file": "artifacts/client455-progress/client455-sky-atmosphere-checkpoint-before128.json",
+    "sha256": "5756753482f42d4919036edb0c6a8f2cd8f1511b09ca607d1f139e62f96d498a"
+  },
+  "fresh_evidence": {
+    "sky-lighting-runtime-reference": {
+      "file": "inventory/client455-sky-lighting-runtime-reference.json",
+      "sha256": "9885fff4dcbe4431109426a4cc5998c955f1e32ecbd762058d80d6749354aa11"
+    },
+    "sky-lighting-inputs": {
+      "file": "inventory/client455-sky-lighting-inputs.json",
+      "sha256": "296e037377b510bc809e6950b783660e337a09f760018d21a31a788ac42ba0e3"
+    },
+    "sky-lighting-native": {
+      "file": "inventory/client455-sky-lighting-native.json",
+      "sha256": "f858ba2a36b9b067df5b980bf9d500b48e77a7d193f98b9af5bb080e81e6a45a"
+    },
+    "sky-lighting-visual-review": {
+      "file": "inventory/client455-sky-lighting-visual-review.json",
+      "sha256": "074d1200ddb9af7f10b55cf9b0479b856f765164552ebc5347a718a4897a93ca"
+    },
+    "sky-material-native": {
+      "file": "inventory/client455-sky-material-native.json",
+      "sha256": "773ea6c876684d759c662cdb443cb626ab6ab38bda947cde4e4d40ceab707172"
+    },
+    "sky-material-visual-review": {
+      "file": "inventory/client455-sky-material-visual-review.json",
+      "sha256": "e0a18959b1589a1b17d307eac3b3768d5dc206e50cb0c115cbae6f4ad64b32ac"
+    },
+    "sky-fade-native": {
+      "file": "inventory/client455-sky-fade-native.json",
+      "sha256": "f084646386e3fa889890b2405073c2cd9063c5739f298805fb1de77d57d56255"
+    },
+    "sky-fade-visual-review": {
+      "file": "inventory/client455-sky-fade-visual-review.json",
+      "sha256": "59e015030d9c0087cbdbb9ff96f99e4e97268278c1ba6b1a516da8004a479f71"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "3d5edeff625a234d3e8acf1bd1df208c6072f0a1128a398354d8e0c5a1e11aef"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "75c01f3071ceecbef7e15ada16e3e02980831804844fc9869145bc14b87f133a"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "788293b1ce4776567083b617af0a1b56fd961d2c068b9746c31f65c9712c73ab"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "1dc9909bb9fe0f28bea74fe975f2bce666a7f9c6dd345439d7852c24ad476624"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "efc015223caeb96db44c67c23a4657b1dd5631859feb4c903f9dcf30619a83ef"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "92e56f4f1fddd47f961fc31de0a9c31c73642b03b8ce15c85c7207b1790ea8eb"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "11b5ed2f066c6ffb7edda7ab17a21a4aadf0bd489f39109f33985e6e963e3d25"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "bbdb63b5f9bf68c49832301c12d2b0ded161492b7e3a294e1ba234c7fcc5b5ca"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "2a241f3cc2fa3014e3da045246fc3ad4a530d3d4facf2476aec8068c063cc185"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "0bc32f091f7bc208e35fe996ac22cf96ae121d415fa9b940d536d2bbede976d9"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "0fe9d8c9dff94356a417b8cc2b7eb4652fe59487d892bba0ecfc029f6185d261"
+    }
+  },
+  "historical_prepass_resource_tests": "126 selected16state/resource cases retained as historical evidence;unchanged prepass/resources not broadly rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "full_lighting": false,
+  "full_world": false,
+  "gaps": [
+    "Ordinary frame/both fog branches/real loaders/map tint bind integrated;full material flag8000 and remaining CPU tint consumers remain open",
+    "Exposure helper is used by actual frame and tested in lab,but target CLevel DWORD-owner setter/game producers are not yet connected;do not claim ordinary gameplay exposure handling",
+    "Previous-orbit Sun position computed,but full lens-flare consumer and local fog-volume acceptance remain open",
+    "Default/selected Mie path restored;indirect day/night parameter writers and full shader/CRT transcendental/FP/RC/NaN/Inf/status-flag parity remain open",
+    "Software visible RGB follows selected arithmetic;unused reference transform/extinction FP side effects are not yet reproduced",
+    "INS/Planet/full world visibility/materials/device lost-reset/OOM/stages/auth/protocol/Character/gameplay and complete client455 acceptance remain open",
+    "Missing original neutralBtrade_bel.r3e warning remains;invalid R3X lab warning is deliberate and counted separately"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

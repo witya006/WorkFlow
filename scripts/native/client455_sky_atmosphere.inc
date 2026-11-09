@@ -218,8 +218,27 @@ void RF455_UpdateSunValues(){
     // The file-backed night parameter is.03;day parameter starts zero in BSS.
     // Console/indirect writers are not claimed by this initial-state path.
     float mie=0;
-    if(day>.7708333333333334 && day<.7916666865348816){const float difference=.02999999932944775f;const float elapsed=spill(double(day)-.7708333333333334);mie=spill(double(difference)*(double(elapsed)/.02083335258066654));}
-    else if(day>.7916666865348816 && day<.8333333134651184)mie=spill(double(.02999999932944775f)*(1.0-(double(day)-.7916666865348816)/.04166662693023682));
+    if(day>.7708333333333334 && day<.7916666865348816){
+        const double start=.7708333333333334,duration=.02083335258066654;
+        const float difference=.02999999932944775f;float elapsed;
+        __asm{fld day
+            fsub start
+            fstp elapsed
+            fld elapsed
+            fdiv duration
+            fmul difference
+            fstp mie}
+    }else if(day>.7916666865348816 && day<.8333333134651184){
+        const double start=.7916666865348816,duration=.04166662693023682;
+        const float difference=.02999999932944775f;
+        __asm{fld day
+            fsub start
+            fdiv duration
+            fld1
+            fsubrp st(1),st
+            fmul difference
+            fstp mie}
+    }
     skyParams[4]=mie;
 }
 

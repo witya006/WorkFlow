@@ -61,8 +61,8 @@ def main():
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -101,11 +101,17 @@ def main():
             from prepare_client455_normal import section
             raw=b'#include "client455_sky_atmosphere.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_atmosphere.inc').read_bytes()
+            raw=b'#include "client455_sky_lighting.h"\n'+raw
+            raw+=b'\n'+(WS/'scripts/native/client455_sky_lighting.inc').read_bytes()
             raw=b'#include "client455_sky_day.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_day.inc').read_bytes()
             clockAnchor=b'    RF455_AdvanceDayClock();'
             if raw.count(clockAnchor)!=1:raise ValueError('Ordinary sky day frame boundary')
-            raw=raw.replace(clockAnchor,clockAnchor+b'\n    RF455_UpdateSkyNightWeight();\n    RF455_UpdateSunValues();')
+            raw=raw.replace(clockAnchor,clockAnchor+b'\n    RF455_UpdateSkyLighting();')
+            first,last=section(raw,b'void CLevel::DrawMapRender()',b'void CLevel::DrawMapRender()');body=raw[first:last]
+            drawAnchor=b'\tmBsp->DrawBspRender();'
+            if body.count(drawAnchor)!=1:raise ValueError('Ordinary map texture-factor boundary')
+            raw=raw[:first]+body.replace(drawAnchor,b'    GetD3dDevice()->SetRenderState(D3DRS_TEXTUREFACTOR,RF455_GetSkyTintColor());\n'+drawAnchor)+raw[last:]
             loadFirst,loadLast=section(raw,b'void CLevel::LoadLevel(',b'void CLevel::LoadLevel(');loadBody=raw[loadFirst:loadLast]
             if loadBody.count(b'\tfclose(fp);')!=1:raise ValueError('Map scene flags reset boundary')
             raw=raw[:loadFirst]+loadBody.replace(b'\tfclose(fp);',b'\tfclose(fp);\n    state->mEnvironmentSceneFlags=0;')+raw[loadLast:]
@@ -123,9 +129,24 @@ def main():
             raw,count=re.subn(rb'(?m)^(\s*)mIsLoadedBsp=TRUE;\r?\n(\s*)ClearDynamicLight',rb'\1RF455_StopCameraSway();\n\1mIsLoadedBsp=TRUE;\n\2ClearDynamicLight',raw)
             if count!=1:raise ValueError('455 successful map-load sway reset boundary')
         elif filename=='core.cpp':
+            raw=b'#include "client455_sky_lighting.h"\n'+raw
             anchor=b'memset(&stState,0,sizeof(_R3ENGINE_STATE));'
             if raw.count(anchor)!=1:raise ValueError('Core initialization boundary')
-            raw=raw.replace(anchor,anchor+b'\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
+            raw=raw.replace(anchor,anchor+b'\n    RF455_ResetSkyFogEndpoints();\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
+        elif filename=='r3material.cpp':
+            from prepare_client455_normal import section
+            raw=b'#include "client455_sky_lighting.h"\n#include "client455_weather_format.h"\n'+raw
+            first,last=section(raw,b'static _R3MATERIAL* LoadIndependenceMaterial(',b'static _R3MATERIAL* LoadIndependenceMaterial(');body=raw[first:last]
+            tokenAnchor=b'\t\tstrupr(hole);'
+            if body.count(tokenAnchor)!=1:raise ValueError('Actual case-sensitive material token dispatch boundary')
+            body=body.replace(tokenAnchor,b'        //455 material tags are case-sensitive here.')
+            fogFirst=body.index(b'        if (!strcmp(hole,"*FOG_START"))')
+            fogLast=body.index(b'        if (!strcmp(hole,"*NO_FOG_SKY"))',fogFirst)
+            body=body[:fogFirst]+b'        RF455_ReadSkyFogToken(fp,hole);\n'+body[fogLast:]
+            raw=raw[:first]+body+raw[last:]
+            anchor=b'    state->mEnvironmentSceneFlags=ext_mat.mSceneFlags;'
+            if raw.count(anchor)!=1:raise ValueError('R3X day/night endpoint boundary')
+            raw=raw.replace(anchor,anchor+b'\n    RF455_LoadSkyFogEndpoints(ext_mat);')
         elif filename=='skybox.cpp':
             from prepare_client455_normal import section
             raw=b'#include "client455_sky_day.h"\n#include "client455_sky_fade_math.h"\n#include "client455_sky_atmosphere.h"\n'+raw
@@ -254,6 +275,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['sky_fade']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_fade_math.h','client455_sky_fade.inc']}
     report['sky_material']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_day.h','client455_sky_day.inc','client455_map_sky.inc','client455_sky_material.inc']}
     report['sky_atmosphere']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_atmosphere.h','client455_sky_atmosphere.inc']}
+    report['sky_lighting']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_lighting.h','client455_sky_lighting.inc','client455_sky_lighting_math.h']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}
