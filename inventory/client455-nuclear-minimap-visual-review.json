@@ -1,0 +1,128 @@
+{
+  "native_sha256": "582105445ef8af59288859d9e07e408d3cdfddc9e4d8f2ec5ee6e40e03825092",
+  "script_sha256": "2f347a426a3210c990efb0b82e3df0487518f5dd410cbf8936b7e3cb1d84d308",
+  "sheet": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-contact.png",
+    "sha256": "738fd22832d0b816f30baa9d32adb615968fd7d91eb44d9699e6824b3369c4b6"
+  },
+  "frames": [
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-clear-again.bgra",
+      "sha256": "cc8c464f4c27805015ba51403a2b627b72cfae83b6beef1bd7bbdc631b985f0b",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-clear-again.png",
+        "sha256": "7381301fb95d5407b6accc98b0b76fab041c0676ff8182f945fc0a56f690dc78"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-cleared.bgra",
+      "sha256": "cc8c464f4c27805015ba51403a2b627b72cfae83b6beef1bd7bbdc631b985f0b",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-cleared.png",
+        "sha256": "7381301fb95d5407b6accc98b0b76fab041c0676ff8182f945fc0a56f690dc78"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-first.bgra",
+      "sha256": "ddad1f5cdb6c73413018917df02507b8650b80a1175ad7a9f20fd15581b573ca",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-first.png",
+        "sha256": "485f7259ce85ddd94bd8f781bb35a166e06bb3b24df234bc474e7ca70a5b4a84"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-mature.bgra",
+      "sha256": "28e2cd79ff985865064fd1f62275eb888befe0d28916c46a43b8ec0d7e0931b5",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-mature.png",
+        "sha256": "90ef4600a5027c4ac05fc4aa3e16136ae9de0a92ff1847993ce02ec6dc1bf8f3"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-three-owners.bgra",
+      "sha256": "c9393624ed61537f73e6f0c96cb23eef991915b6931962b675b40bb6bf38d326",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-three-owners.png",
+        "sha256": "0cfd9123892dfb325bc146dbede2ede7f7743487634633c7e7ac3210d4104933"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-warm.bgra",
+      "sha256": "9a72468e1bedca53b92b5e8a1231453fb0eaa446d62537f3f4465e5d812072b8",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-warm.png",
+        "sha256": "7f0f792502abafcd76affe5b06814f2247f8783d12608281c232a841c0810921"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 6,
+  "observations": [
+    "Actual three marker roots belong to the existing MiniMap map container",
+    "First position precedes icon/font configuration;initial background width remains zero",
+    "Repeated display uses retained icon size/font metrics and preserves draw-count pulse",
+    "Ordinary draw pulses icon alpha after drawing;empty shown markers continue pulsing",
+    "Removing children clears the map and retains their internal UI state",
+    "Coordinates/geometry are typed lab inputs;registry/race/world producer/ordinary receiver/fullminimap not accepted"
+  ],
+  "reference_executable_capture": false,
+  "full_minimap": false,
+  "normal_receiver": false,
+  "full_client": false,
+  "opacity_native_sha256": "680ccc35d42003c9a06a81d28fd45863568fae715f03c4b2563059e6001a18ce",
+  "opacity_sheet": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/opacity-regression-contact.png",
+    "sha256": "6ed52d30d21312c40a2628a2801fba85a084352f86deb9188b02c0b7df3c1b84"
+  },
+  "opacity_frames": [
+    {
+      "file": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-full.bgra",
+      "sha256": "4ee0254358a29a9fe520913e4c30edf2eb725a6156625fb1c3e8020a38badb09",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-full.png",
+      "preview_sha256": "bf507524751f22fdfba363f65ad75057cf744b242348fac6b68e745da1ed25b9"
+    },
+    {
+      "file": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-half.bgra",
+      "sha256": "b1e43c39a29bc2db4f3a3c4d54a53bf18a587241558dcbaa47e04e9baa37a491",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-half.png",
+      "preview_sha256": "124892e007af7da010a33088daa0869fd12512ee28caed36fbf46d1153de921b"
+    },
+    {
+      "file": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-low.bgra",
+      "sha256": "c2fb6d979e0fae4ab21db8347b940511c6215bbffd9c8c2a6e75a451957c0ec1",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ko-kr-001/minimap-opacity-low.png",
+      "preview_sha256": "bc28d2799c953ad8edfd3e257a39acd553d38caf206187e127837f84c340a757"
+    },
+    {
+      "file": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-full.bgra",
+      "sha256": "9a5fb5859eb1b6a5b7aa3a07571732106793757bc70eac13e8b4755fdf1c12a9",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-full.png",
+      "preview_sha256": "c758b4995260549bf0e123e038dd442d9061778d180ae69375a8b7afcbd9af09"
+    },
+    {
+      "file": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-half.bgra",
+      "sha256": "86d384392cdbf7879bfa334ab6eafd3e0bfbba0b8a13a8e6aedea7234997ae8d",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-half.png",
+      "preview_sha256": "3e568b94f918b343c7639a2ff68b53c88cda3a5077b17d4f27d4719bf9da7d7a"
+    },
+    {
+      "file": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-low.bgra",
+      "sha256": "17181efb28efc36be6a03613aa97ef388c15a31186950f8e4b2e2d67c724d2e3",
+      "width": 640,
+      "height": 480,
+      "preview": "work/m9/c9811d8d/opacity-ru-ru-001/minimap-opacity-low.png",
+      "preview_sha256": "f68806e6362d174fcb24e97231db4b3553a44fa79152011a379b40fcdec40c4d"
+    }
+  ],
+  "opacity_reviewed_frames": 6
+}

@@ -1,19 +1,20 @@
 # RF Online: исследовательская рабочая область
 
-113 PARTIAL: в actual CCharacter/CPlayer восстановлены internal flags,
-any/none и ordinary IsDeath guard; selected64bit control producer подключён
-до преобразования статуса.173 целевые native проверки PASS; source clock
-проверен на actual Avatar,полный movement/SetAction pipeline ещё открыт.
-Новая own PE4c81042a…/entry1616c0/182client-20kernel-65facade/unresolved0/Create1.
-Свежие status62/message83/center69/6hover и15 просмотренных GPU кадров;
-10 center/hover кадров побайтно равны111. Engine67/decoder112 неизменены.
-Уточнён реальный UI owner: три CGUINuclearBomb внутри существующей MiniMap,
-а не отдельный dialog. Их source integration и обычный Nuclear receiver
-остаются открытыми. Далее114 — marker owners/transforms/records,затем
-group60/result branches/selection/send. Runtime gate113 current;111 и112
-runtime assertions historical. M6/M6F/M7/M9 OPEN.
+114 PARTIAL: existing MiniMap владеет3 настоящими NuclearBomb marker owners.
+В ordinary source подключены Init/bounds/virtual Draw; typed position/show/
+geometry проверены в full-object lab на real24x24 main sprite и7x9 imagefont.
+Сохранены first-position-before-configuration и alpha255→4 после обычного Draw;
+empty shown marker продолжает pulse,clipped Draw alpha не меняет.702 native PASS.
+26equalbodyranges/24fullasm/2594instructions,19newfullasm/2028instructions;
+IDA savedclosed/list0. Own PE7f9ba520…/entry161ae0/182client-20kernel-66facade/
+unresolved0/Create1. Fresh Korea+Russia opacity81/message83,17viewedGPU;
+11opacity/message frames byteequal previous. Engine67 неизменён.
+Registry/race lookup,worldgeometry588 producer и ordinary group60 receiver
+ещё не подключены;show/geometry helpers stripped from ordinary PE.
+Runtime gate114 current,113 historical;M6/M6F/M7/M9 OPEN.
+Далее115 — actual record32/registry/FX/tag2 audio/lifecycle/frame,затем receive.
 
-[Доказательства113](research/client455-character-flags.md).
+[Доказательства114](research/client455-nuclear-minimap.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 
@@ -37,7 +38,7 @@ component,ordinary receiver ещё не подключён. Runtime111/PE031df36
 неизменены,его suites не повторены. Guard использует action category5 и internal
 Character DWORD640&3,а не status17708/serverflags;нужны реальные writers/UI.
 Следующая113 — actual network receiver+guard/selection/dialog/record owners.
-Component112 historical; runtime gate113 current (см. начало). M6/M6F/M7/M9 OPEN.
+Component112 historical; runtime gate114 current (см. начало). M6/M6F/M7/M9 OPEN.
 [Доказательства112](research/client455-nuclear-protocol.md).
 
 Исторический runtime результат111:

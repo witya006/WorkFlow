@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "4c81042a5a001d6a99ac33859061ae00ce6a55028da11797f7e3d845bb444393",
-    "bytes": 2197504,
+    "sha256": "7f9ba520ddbb801decf11a18502e00dacfffd04434e9eefd985dc8b7992db62b",
+    "bytes": 2200064,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1616c0",
+    "entry_rva": "0x161ae0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "100ad2aa05563c016220e9125802f340c26338349ba8d94bc83c2a885b5b98a0",
+  "normal_link_sha256": "6f5d8c47eb57bbad2bb22c5f4857c0b95e61f6bdab6a515bb3ec41528aab892a",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1206,163 +1206,163 @@
       "imports": [
         {
           "name": "_AIL_close_3D_provider@4",
-          "iat_rva": "0x20673c"
-        },
-        {
-          "name": "_AIL_release_3D_sample_handle@4",
-          "iat_rva": "0x206740"
-        },
-        {
-          "name": "_AIL_start_3D_sample@4",
-          "iat_rva": "0x206744"
-        },
-        {
-          "name": "_AIL_end_3D_sample@4",
-          "iat_rva": "0x206748"
-        },
-        {
-          "name": "_AIL_set_3D_sample_volume@8",
-          "iat_rva": "0x20674c"
-        },
-        {
-          "name": "_AIL_set_3D_room_type@8",
-          "iat_rva": "0x206750"
-        },
-        {
-          "name": "_AIL_open_3D_listener@4",
-          "iat_rva": "0x206754"
-        },
-        {
-          "name": "_AIL_close_3D_listener@4",
-          "iat_rva": "0x206758"
-        },
-        {
-          "name": "_AIL_set_3D_position@16",
-          "iat_rva": "0x20675c"
-        },
-        {
-          "name": "_AIL_set_3D_orientation@28",
           "iat_rva": "0x206760"
         },
         {
-          "name": "_AIL_startup@0",
+          "name": "_AIL_release_3D_sample_handle@4",
           "iat_rva": "0x206764"
         },
         {
-          "name": "_AIL_shutdown@0",
+          "name": "_AIL_start_3D_sample@4",
           "iat_rva": "0x206768"
         },
         {
-          "name": "_AIL_set_preference@8",
+          "name": "_AIL_end_3D_sample@4",
           "iat_rva": "0x20676c"
         },
         {
-          "name": "_AIL_open_3D_provider@4",
+          "name": "_AIL_set_3D_sample_volume@8",
           "iat_rva": "0x206770"
         },
         {
-          "name": "_AIL_open_digital_driver@16",
+          "name": "_AIL_set_3D_room_type@8",
           "iat_rva": "0x206774"
         },
         {
-          "name": "_AIL_close_digital_driver@4",
+          "name": "_AIL_open_3D_listener@4",
           "iat_rva": "0x206778"
         },
         {
-          "name": "_AIL_allocate_sample_handle@4",
+          "name": "_AIL_close_3D_listener@4",
           "iat_rva": "0x20677c"
         },
         {
-          "name": "_AIL_release_sample_handle@4",
+          "name": "_AIL_set_3D_position@16",
           "iat_rva": "0x206780"
         },
         {
-          "name": "_AIL_init_sample@4",
+          "name": "_AIL_set_3D_orientation@28",
           "iat_rva": "0x206784"
         },
         {
-          "name": "_AIL_set_named_sample_file@20",
+          "name": "_AIL_startup@0",
           "iat_rva": "0x206788"
         },
         {
-          "name": "_AIL_start_sample@4",
+          "name": "_AIL_shutdown@0",
           "iat_rva": "0x20678c"
         },
         {
-          "name": "_AIL_stop_sample@4",
+          "name": "_AIL_set_preference@8",
           "iat_rva": "0x206790"
         },
         {
-          "name": "_AIL_set_sample_volume_pan@12",
+          "name": "_AIL_open_3D_provider@4",
           "iat_rva": "0x206794"
         },
         {
-          "name": "_AIL_set_sample_loop_count@8",
+          "name": "_AIL_open_digital_driver@16",
           "iat_rva": "0x206798"
         },
         {
-          "name": "_AIL_open_stream@12",
+          "name": "_AIL_close_digital_driver@4",
           "iat_rva": "0x20679c"
         },
         {
-          "name": "_AIL_close_stream@4",
+          "name": "_AIL_allocate_sample_handle@4",
           "iat_rva": "0x2067a0"
         },
         {
-          "name": "_AIL_service_stream@8",
+          "name": "_AIL_release_sample_handle@4",
           "iat_rva": "0x2067a4"
         },
         {
-          "name": "_AIL_start_stream@4",
+          "name": "_AIL_init_sample@4",
           "iat_rva": "0x2067a8"
         },
         {
-          "name": "_AIL_pause_stream@8",
+          "name": "_AIL_set_named_sample_file@20",
           "iat_rva": "0x2067ac"
         },
         {
-          "name": "_AIL_set_stream_volume_pan@12",
+          "name": "_AIL_start_sample@4",
           "iat_rva": "0x2067b0"
         },
         {
-          "name": "_AIL_set_stream_loop_count@8",
+          "name": "_AIL_stop_sample@4",
           "iat_rva": "0x2067b4"
         },
         {
-          "name": "_AIL_stream_status@4",
+          "name": "_AIL_set_sample_volume_pan@12",
           "iat_rva": "0x2067b8"
         },
         {
-          "name": "_AIL_stream_info@20",
+          "name": "_AIL_set_sample_loop_count@8",
           "iat_rva": "0x2067bc"
         },
         {
-          "name": "_AIL_stop_3D_sample@4",
+          "name": "_AIL_open_stream@12",
           "iat_rva": "0x2067c0"
         },
         {
-          "name": "_AIL_enumerate_3D_providers@12",
+          "name": "_AIL_close_stream@4",
           "iat_rva": "0x2067c4"
         },
         {
-          "name": "_AIL_active_sample_count@4",
+          "name": "_AIL_service_stream@8",
           "iat_rva": "0x2067c8"
         },
         {
-          "name": "_AIL_set_redist_directory@4",
+          "name": "_AIL_start_stream@4",
           "iat_rva": "0x2067cc"
         },
         {
-          "name": "_AIL_file_read@8",
+          "name": "_AIL_pause_stream@8",
           "iat_rva": "0x2067d0"
         },
         {
-          "name": "_AIL_last_error@0",
+          "name": "_AIL_set_stream_volume_pan@12",
           "iat_rva": "0x2067d4"
         },
         {
-          "name": "_AIL_mem_free_lock@4",
+          "name": "_AIL_set_stream_loop_count@8",
           "iat_rva": "0x2067d8"
+        },
+        {
+          "name": "_AIL_stream_status@4",
+          "iat_rva": "0x2067dc"
+        },
+        {
+          "name": "_AIL_stream_info@20",
+          "iat_rva": "0x2067e0"
+        },
+        {
+          "name": "_AIL_stop_3D_sample@4",
+          "iat_rva": "0x2067e4"
+        },
+        {
+          "name": "_AIL_enumerate_3D_providers@12",
+          "iat_rva": "0x2067e8"
+        },
+        {
+          "name": "_AIL_active_sample_count@4",
+          "iat_rva": "0x2067ec"
+        },
+        {
+          "name": "_AIL_set_redist_directory@4",
+          "iat_rva": "0x2067f0"
+        },
+        {
+          "name": "_AIL_file_read@8",
+          "iat_rva": "0x2067f4"
+        },
+        {
+          "name": "_AIL_last_error@0",
+          "iat_rva": "0x2067f8"
+        },
+        {
+          "name": "_AIL_mem_free_lock@4",
+          "iat_rva": "0x2067fc"
         }
       ],
       "provider": {
@@ -1379,19 +1379,19 @@
       "imports": [
         {
           "name": "ABuse_InitDic",
-          "iat_rva": "0x20670c"
+          "iat_rva": "0x206730"
         },
         {
           "name": "ABuse_DecodeDic",
-          "iat_rva": "0x206710"
+          "iat_rva": "0x206734"
         },
         {
           "name": "ABuse_CheckAbuse",
-          "iat_rva": "0x206714"
+          "iat_rva": "0x206738"
         },
         {
           "name": "ABuse_LoadDic",
-          "iat_rva": "0x206718"
+          "iat_rva": "0x20673c"
         }
       ],
       "provider": {
@@ -1408,19 +1408,19 @@
       "imports": [
         {
           "name": "Adv_LoadDic",
-          "iat_rva": "0x206720"
+          "iat_rva": "0x206744"
         },
         {
           "name": "Adv_InitDic",
-          "iat_rva": "0x206724"
+          "iat_rva": "0x206748"
         },
         {
           "name": "Adv_DecodeDic",
-          "iat_rva": "0x206728"
+          "iat_rva": "0x20674c"
         },
         {
           "name": "Adv_CheckAbuse",
-          "iat_rva": "0x20672c"
+          "iat_rva": "0x206750"
         }
       ],
       "provider": {
@@ -1437,7 +1437,7 @@
       "imports": [
         {
           "name": "?HookAllApps@@YGHHK@Z",
-          "iat_rva": "0x206734"
+          "iat_rva": "0x206758"
         }
       ],
       "provider": {

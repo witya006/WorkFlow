@@ -1,5 +1,10 @@
 # Character flags and actual MiniMap nuclear owner — work113
 
+Дополнение114: этот результат исторический. Текущий runtime gate —
+`inventory/client455-nuclear-minimap-checkpoint.json`; marker owners/Init/bounds/
+Draw перенесены. Registry/worldgeometry/ordinary receiver остаются открыты.
+См. [MiniMap114](client455-nuclear-minimap.md).
+
 2026-11-09. CLIENT ONLY. Result **PARTIAL**, M6/M6F/M7/M9 OPEN.
 Current gate: `inventory/client455-character-flags-checkpoint.json`.
 Reproduce with `scripts/Invoke-Python.ps1 scripts/checkpoint_client455_character_flags.py`.

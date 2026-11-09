@@ -1,0 +1,173 @@
+{
+  "scope": "Actual MiniMap3marker owners/init/bounds and typed post-lookup operations,real main/common sprites and natural alpha pulse;registry/race/world-geometry producer/ordinary receiver remain open",
+  "script_sha256": "283f4342e4c4fff7dd0434e9b0ba6b4acddf1c6ddbaf2fbb07e3eadec2b21fe7",
+  "source": {
+    "file": "scripts/native/client455_nuclear_minimap_probe.cpp",
+    "sha256": "dcf9e2740899d7d05f38f1c65fcbd147d5bd075af38c64fde47123a8c542a0f8"
+  },
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "normal_link_sha256": "6f5d8c47eb57bbad2bb22c5f4857c0b95e61f6bdab6a515bb3ec41528aab892a",
+  "exe": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-minimap-probe.exe",
+    "sha256": "6db1774408f798d226a3b751a5cabb592f26985a7d4df0eab28de0c333ef335e"
+  },
+  "map": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-minimap-probe.map",
+    "sha256": "7b2d1308f3548aa09ef1a78f29b10a198d6ef8ed1fdf3761f2455ba649084a5f"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/System/shader/Grass1.vsh",
+      "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\shader\\Grass1.vsh"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/System/shader/grass1.vso",
+      "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\shader\\grass1.vso"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/System/console.jpg",
+      "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\console.jpg"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/System/010.TTF",
+      "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\010.TTF"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/DataTable/ko-kr/NDLanguage.edf",
+      "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ko-kr\\NDLanguage.edf"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/SpriteImage/Common/mouse.spr",
+      "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\Common\\mouse.spr"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/SpriteImage/ko-kr/common.spr",
+      "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ko-kr\\common.spr"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/SpriteImage/Common/main.spr",
+      "sha256": "39aefe0ac1480df3e32360250db0fba22ec007eb9749b034dcf6334bb9daeb03",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\Common\\main.spr"
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/R3Engine.ini",
+      "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9"
+    }
+  ],
+  "console": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/6db17744/nuclear-minimap-001/result.json",
+    "sha256": "ce585cf53439212175777e6617d1891f50cc672db97b34913a5b416fa3042daa"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 702,
+    "actual_MiniMap_three_owners": true,
+    "actual_bound_fanout": true,
+    "root_inputflag_and_child_propagation": true,
+    "typed_geometry_and_position_API": true,
+    "first_position_before_configure": true,
+    "real_sprite4_main5_frame43": true,
+    "real_imagefont7x9": true,
+    "draw_alpha_states": 256,
+    "alpha_after_ordinary_not_clipped_Draw": true,
+    "empty_draw_still_advances_alpha": true,
+    "missing_record_retains_UI": true,
+    "hide_preserves_child_state": true,
+    "icon_size": [
+      24,
+      24
+    ],
+    "GPU_frames": 6,
+    "first_changed_pixels": 566,
+    "warm_changed_pixels": 2217,
+    "registry_race_lookup": false,
+    "ordinary_geometry_world_producer": false,
+    "normal_receiver": false,
+    "full_minimap": false,
+    "full_client": false
+  },
+  "frames": [
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-clear-again.bgra",
+      "sha256": "cc8c464f4c27805015ba51403a2b627b72cfae83b6beef1bd7bbdc631b985f0b",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-clear-again.png",
+        "sha256": "7381301fb95d5407b6accc98b0b76fab041c0676ff8182f945fc0a56f690dc78"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-cleared.bgra",
+      "sha256": "cc8c464f4c27805015ba51403a2b627b72cfae83b6beef1bd7bbdc631b985f0b",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-cleared.png",
+        "sha256": "7381301fb95d5407b6accc98b0b76fab041c0676ff8182f945fc0a56f690dc78"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-first.bgra",
+      "sha256": "ddad1f5cdb6c73413018917df02507b8650b80a1175ad7a9f20fd15581b573ca",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-first.png",
+        "sha256": "485f7259ce85ddd94bd8f781bb35a166e06bb3b24df234bc474e7ca70a5b4a84"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-mature.bgra",
+      "sha256": "28e2cd79ff985865064fd1f62275eb888befe0d28916c46a43b8ec0d7e0931b5",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-mature.png",
+        "sha256": "90ef4600a5027c4ac05fc4aa3e16136ae9de0a92ff1847993ce02ec6dc1bf8f3"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-three-owners.bgra",
+      "sha256": "c9393624ed61537f73e6f0c96cb23eef991915b6931962b675b40bb6bf38d326",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-three-owners.png",
+        "sha256": "0cfd9123892dfb325bc146dbede2ede7f7743487634633c7e7ac3210d4104933"
+      }
+    },
+    {
+      "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-warm.bgra",
+      "sha256": "9a72468e1bedca53b92b5e8a1231453fb0eaa446d62537f3f4465e5d812072b8",
+      "preview": {
+        "file": "work/m9/6db17744/nuclear-minimap-001/nuclear-map-warm.png",
+        "sha256": "7f0f792502abafcd76affe5b06814f2247f8783d12608281c232a841c0810921"
+      }
+    }
+  ],
+  "natural_exit": 0,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN",
+  "header_compatibility_build": {
+    "source": {
+      "file": "scripts/native/client455_linker_window_probe.cpp",
+      "sha256": "b62e46ac17aa6b5de676719539d6c877e58a4b9b96d2f9f11a7060aa097c2a01"
+    },
+    "exe": {
+      "file": "work/client455-port/linker-window-compat-probe/linker-window-compat-probe.exe",
+      "sha256": "090638032e9b55e547fbe9f37b9dffe9bbd8b6548328adac8d651e740348ef27"
+    },
+    "map": {
+      "file": "work/client455-port/linker-window-compat-probe/linker-window-compat-probe.map",
+      "sha256": "72436149e4028c503da59373b9c8aebe8ed28e11d89944b63fd0ae0451c1f5c5"
+    },
+    "executed": false
+  }
+}

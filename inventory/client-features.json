@@ -6,9 +6,77 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-CHARACTER-FLAGS-113",
+      "id": "CLIENT455-NUCLEAR-MINIMAP-114",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual3NuclearBomb children in existing MiniMap;ordinary Init/bounds/virtualDraw retained;typed show/position/geometry and real sprite/font/alpha in fullobject lab. Registry/race/worldgeometry/receiver remain open,helpers stripped without callers",
+      "reference": [
+        {
+          "rva": "0x3059e0",
+          "role": "actual MiniMap Init3roots"
+        },
+        {
+          "rva": "0x3067a0",
+          "role": "bounds fanout"
+        },
+        {
+          "rva": "0x306810",
+          "role": "geometry fanout"
+        },
+        {
+          "rva": "0x30c360",
+          "role": "scale retention/recompute"
+        },
+        {
+          "rva": "0x30bfe0",
+          "role": "position before configure"
+        },
+        {
+          "rva": "0x30bd80",
+          "role": "sprite/font/layer setup"
+        },
+        {
+          "rva": "0x30bec0",
+          "role": "ordinaryDraw/afterdraw BYTEalpha"
+        },
+        {
+          "rva": "0x20cb50",
+          "role": "inherited clipped Draw"
+        },
+        {
+          "rva": "0x3c9240",
+          "role": "worldgeometry588 producer unported"
+        },
+        {
+          "rva": "0x12b3e0",
+          "role": "race/index position lookup unported"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_nuclear_minimap_port.py",
+        "scripts/native/client455_nuclear_minimap.h",
+        "scripts/native/client455_nuclear_minimap.cpp",
+        "scripts/native/client455_image_text.h",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "26selectedbodyranges/24fullasm/2594instructions equalbothpins,19newfullasm/2028instructions;constructorRTTI/vtables slot40ordinary/36clip;IDAsavedclosed/list0. Native702/realMiniMap3roots/24x24main5frame43/7x9imagefont/firstbackgroundW0/all256alpha states/6viewedGPU. Fresh2nationopacity81/message83/17viewedGPU/11framesbyteequal/Create1/PE7f9ba520/182-20-66/unresolved0. Engine unchanged,no bulk reruns.",
+      "evidence": [
+        "inventory/client455-nuclear-minimap-reference.json",
+        "inventory/client455-nuclear-minimap-native.json",
+        "inventory/client455-nuclear-minimap-visual-review.json",
+        "inventory/client455-nuclear-minimap-checkpoint.json",
+        "research/client455-nuclear-minimap.md"
+      ],
+      "gaps": [
+        "Real registry/race/record32/FX/audio/frame/lifetime/normal group60 receiver missing;typed UI consumes lookup result in lab only",
+        "Worldgeometry588 record loader/producer3c9240 and full map controls/input/world remain unported;do not substitute legacy hardcoded8map data",
+        "Owned bounds checks/missing resources/finite admitted coordinates do not accept target OOB/unsafe/overflow/FP/OOM/privateABI;all previous client-acceptance gaps and M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-CHARACTER-FLAGS-113",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual Character flag owner/any-none/ordinary IsDeath guard and selected64bit control/status producer; source clock/8action traces checked in full-object lab; actual MiniMap marker identity pinned,normal Nuclear receiver remains open",
       "reference": [
         {
@@ -61,7 +129,8 @@
         "Full SetAction/internal flag producers and movement-controller/frame/bit1 clock consumer remain open;action traces use callbacks,not full animation/effect pipeline",
         "Normal Nuclear receiver,selected item serial/send,MiniMap3markers/transforms/record32/opcodes/frame source integration remain open",
         "All remaining64bit status sideeffects/privateABI/unsafe domains and all client-acceptance gaps remain;M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "runtime_superseded_by": "CLIENT455-NUCLEAR-MINIMAP-114"
     },
     {
       "id": "CLIENT455-NUCLEAR-WIRE-112",
