@@ -1,35 +1,38 @@
 # Следующие шаги
 
-Обновлено 2026-11-10.
+Обновлено 2026-11-10. **129 PARTIAL M6**.
+Gate: inventory/client455-weather-owner-checkpoint.json.
+Доказательства: research/client455-weather-owner.md; hashes в project-memory.md.
+90scriptcases/virtual ordinary map owner/5fogaggregates/25GPUviewed PASS.
+Full182client20kernel/ANI-BBX/exact PE existingCreate1 PASS;20oldframes byteequal128.
+M9 уже определён: полная приёмка клиента455 без модернизации графики.
+M6/M6F/M7/M9 OPEN;128 runtime gate исторический.
 
-128 PARTIAL M6: ordinary lighting/bothfogbranches/realendpointloaders/mapTF.
-867CPU samples+3aggregates/27Mie/4scripts/5valid1invalidR3X/5+3frames/29BSP PASS.
-20GPUviewed,15oldframesbyteequal126;ANI/BBX/startup/existingCreate1 PASS.
-Gate:inventory/client455-sky-lighting-checkpoint.json.
-Evidence:research/client455-sky-lighting-runtime.md;hashes:project-memory.md.
-M9 уже определён:полная приёмка клиента455 без модернизации графики.
-M6/M6F/M7/M9 OPEN. Source127/runtime126 historical.
+1. Участок130: material8C80A0 flag8000 и actual CPU tint8B30B0 consumers.
+   1157CB8 точно D3DCAPS9.TextureOpCaps bit21=BUMPENVMAP, а не sunlight toggle.
+   Material offset216 не приравнивать к legacy m_dwFlag без доказательства.
+   CPU callers8E3630/8E3F10 используют this+100 color/this+104 flags40/20;
+   сначала подтвердить owner/layout и действительные callers по сохранённому129raw,
+   затем реализовать в обычной цепочке и проверить реальный draw/color consumer.
+2. Установить причину тонких полос геометрии в neutralB weather scene: текущая
+   actual .cam смотрит вверх. Разделить camera/projection/material/BSP evidence;
+   passing fog owner не означает правильную отрисовку мира.
+3. Lensflare8CB460/current Sun consumer,localfogvolumes,indirect day/night params,
+   fullshaderconstants/CRT transcendental/x87/rounding/statusflags/reset.
+4. INS/Planet/worldvisibility/alpha/entity/shadow/textures/device lifecycle;
+   Tutorial/Avatar/Create/camera/QBI47/IME/four stages/Login/auth/protocol/
+   Character/gameplay и остальные client-acceptance gaps.
+5. M6/M6F закрыть по полной матрице, затемM7 и финальнаяM9.
 
-1. Участок129: actual exposure CLevel DWORD owner/setter8E77B0 и game callers;
-   CPUtint8B30B0 callers;material8C80A0flag8000/global1157CB8 stages. Также
-   восстановить packed *weather/*haze/*special_weather producers из90A4D0,
-   не привязывать их к exposure по догадке. Восстановить
-   реальные цепочки и условия,не считать сохранённый вMAP helper доказательством
-   вызова. Сначала читать127/128 evidence,добирать только нужныеcallee/writers.
-2. Lensflare8CB460/current Sun position consumer,localfogvolumes,indirect day/night
-   parameter writers/fullshaderconstants/CRT/FP/rounding/statusflags иreset.
-3. INS/Planet/worldvisibility/alpha/entity/shadow/texture lifetime;остальные
-   client-acceptance gaps:Tutorial/Avatar/Create/camera/QBI47/IME/fourstages/
-   Login/auth/protocol/Character/gameplay. Сервер не входит в задачи.
-4. M6/M6F закрыть по полной матрице,затемM7 и финальнаяM9.
-
-Before129 preserveexact128engine/PE/MAP/rsp/reports. Sharedlayoutchange→full182build.
+Before130 preserve exact129engine/PE/MAP/rsp/reports. Sharedlayoutchange требует
+полной пересборки182client/20kernel. Scripts/Invoke-Python.ps1 file.py.
 Onlyclient/serverread-only/inputEXEnever/originalimmutable/workcopies/localGitnopush.
-Python:scripts/Invoke-Python.ps1 file.py;subagentsтолько по явномузапросу.
-NativeGPUjobssequential/дождатьсяterminal/timeoutнеповодrestart. MCPasm<=100/page+
-length/count/unique+allpositiveCFGstarts;lowerchunksmissedbyheadquerypossible.
-OwnedIDAsavedclosed;MCPrawsave20kchunkspercall. Neverclone119D3Dvtable slots.
-No159k/unchangedbulk reruns withoutnewrisk. Existingmissingtrade_bel warningkeep.
-Software867checks useactualSunColor andPC24;fullCRT/allFPnotaccepted.
-NegativeZzero remains-0. Fog_COLORdefaults don'tfilldaydistances. Preserveoldfog/
-oldorbit lag. Fixtureinheritednightvalues aren't originalneutralBnightparameters.
+Subagents только по явному запросу. Native/GPU jobs sequential; timeout не restart.
+MCP<=100asm/page и fullCFG positiveblockstarts,включая EHtails; save/close owned.
+Не alias firstpage.asm.lines с aggregate при сборке многостраничного raw.
+Не угадывать имена файлов: rg --files. Не повторять159k/unchanged bulk suites.
+Сохранить previousfog/orbit lag, -0Z, Mie19h discontinuity, absent endpoint retention.
+FOG/ENV tags CASE-INSENSITIVE:90A5EDuppercase затем90ACEClowercase дляweather/flags.
+Existing missing trade_bel warning сохранить. Global weather BSS0 не сбрасывать
+вInitCore/R3X; mask только целевойBYTE перед OR полного shifted DWORD.
+Не читать CLevel weather доload/setter; source ABI overlay не target layout claim.

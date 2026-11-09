@@ -1,106 +1,117 @@
 # Память проекта
 
-Обновлено 2026-11-10.
+Обновлено 2026-11-10. **129 PARTIAL M6**.
+Текущий gate: inventory/client455-weather-owner-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_weather_owner.py.
+Доказательства: research/client455-weather-owner.md.
+128 runtime gate исторический. Память до129: research/project-memory-before129.md.
 
-128 PARTIAL M6: ordinary lighting frame + both fog branches + real endpoint
-loaders + map TEXTUREFACTOR bind. Gate inventory/client455-sky-lighting-checkpoint.json.
-Command:scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_lighting.py.
-Evidence:research/client455-sky-lighting-runtime.md. Runtime126/компонент127
-теперь исторические;полная память/шаги до128:research/*before128.md.
+## Цель и правила
 
-## Цель и ограничения
+CLIENT ONLY: поддерживаемые исходники и свой RF_Online.bin с полным функционалом
+и поведением закреплённого455. M9 УЖЕ определён: финальная приёмка без
+модернизации графики. Старый вопрос из Goal не повторять. M0–M4 diagnostic и
+selectedM5 завершены; M6/M6F/M7/M9 OPEN, M8 не нужен. Build/Create1/partial lab
+не означают полноту. docs/client-acceptance.md задаёт итоговые доказательства.
+Server только read-only reference; не менять, не собирать, не восстанавливать.
+Input EXE never execute; originals immutable; копии под work/. Git local only,
+без remote/push/publish. Subagents только по прямому запросу пользователя.
+Python: scripts/Invoke-Python.ps1 file.py, не -c/-m. VS2026 MSVC x86 primary.
+Native/GPU jobs последовательно; дождаться terminal. Timeout не повод restart.
+Перед runtime edit сохранить exact engine/PE/MAP/rsp/reports; ignored!=backup.
+Не повторять159k/unchanged bulk suites без нового риска. Пользователю кратко RU,
+updates <=60s. Для имён файлов сначала rg --files; не угадывать Windows glob paths.
 
-Только CLIENT RF_Online.bin/R3Engine/client tools. M9 УЖЕ определён:полная
-приёмка клиента455 без модернизации графики. Не повторять старый вопрос Goal.
-M0–M4 diagnostic/selectedM5 завершены;M6/M6F/M7/M9 OPEN,M8 не нужен.
-Build/Create1/component labs не означают полной приёмки.
-Server только читать как reference;не менять/не собирать/не восстанавливать.
-InputEXE never execute;originals immutable;copies underwork/. Git local only,
-безremote/push/publish. Subagents только по явному запросу.
-Python:scripts/Invoke-Python.ps1 file.py,не-c/-m. PrimaryVS2026 MSVC x86.
-Native/GPU jobs sequential/дождатьсяterminal;timeout не поводrestart.
-Перед runtime edit сохранить exactengine/PE/MAP/linkrsp/reports;ignored!=backup.
-Не повторять159k/unchanged broad suites без нового риска. Пользователю краткоRU,
-обновление<=60s. MCPasm<=100/page +actual lengths/count/unique +everypositive
-CFGblockstart coverage (нижнийchunk901760у9018B0 пропускался приheadquery).
-MCPrawsave20kchunkspercall,неодинoversizedJS. OwnedIDAsavedclosed.
+## Подтверждённое129
 
-## Доказательства128
+Primary SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+x86/base0x400000. 6fullasm/1546instructions/7byte ranges equalboth455.
+Полные CFG + pcode. Constructor EH tail RVA65E0D0/99bytes включён отдельно,
+не ограничиваться contiguous function size. MCP asm <=100/page, сверять
+count/unique/done И каждый positive CFG block start, включая lower chunks.
+Raw artifacts/client455-progress/weather-owner129-reference/session.json;
+IDA d9c525ac saved/closed/list0. Configured smoke66tools/72442979 closed PASS.
+Raw JSON20k chunks. Первую script asm page collector alias-ил с общим массивом:
+duplicate suffix проверен против остальных7 страниц, first page восстановлен
+до returned100count; untrimmed capture сохранён. Не повторять этот alias bug.
 
-17fullasm/1538instructions/17ranges +3wholecontextbyte bodies equalboth455.
-Primaryb1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
-secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558;
-x86/base400000. Reused127raw sky-lighting127-reference/session.json,
-IDA63ea5f70savedclosed/list0;no newIDA128. Context8C3400sizeAC8/90A4D0size9F6/
-90AED0size28B wholebytescompared,NOT fullasmclaim. 8B1220notIDAfunction;
-exclude60998fallback disasm count;onlyexact7byteFLD/RET boundedgetter.
+Actual map8EA220: читает1157D3C при8EA685, virtual slot15(+3C) при8EA68A,
+call8EA690; затем ResetTexMemSize8EA692→8F1700, BSP8EA6A7→8FDEA0.
+VtableB384D0→setter8E77B0: retainedDWORD this+244, lowBYTE/255→8B1210 exposure.
+Нет прямыхcall xrefs кsetter, но это НЕ отсутствие вызова. INS8ED220/Planet915290
+имеют другие owner paths и пока не перенесены. Прямой ctor weather default
+не найден; свой getter читать только после load/setter.
 
-New client455_sky_lighting.h/.inc appendedafteratmosphereinc inordinarylevel.cpp.
-FrameMove:AdvanceDayClock→UpdateSkyLighting. Innerorder:
-previousorbit/scale+CURRENTfar→Sunposition;newSun/Mie/night;packedTint usesOLDfog;
-thennewfog. Preserveone-frame lag. PositionfarNOT1400 Sunrenderdistance.
-R3Xflag4 day endpoints,flag8 night;absencepreservesprevious. InitCorezeroesthem.
-FOG_COLOR-only fillsCURRENT/main5/5000 butNOTdaydistances. Main scriptdispatch
-case-sensitive:legacystruprremoved;foghandlerat originalfogblock;lateweather/env
-callbackremainslate. Don't addduplicateearlyweathercallback.
+Packed global1157D3C: BSS0, InitCore/R3X его не обнуляют. Три producers в90A4D0:
+weather90AD04/haze90AD6A/special_weather90ADD3. atof double*255, trunc64, lowDWORD;
+clear targetBYTE затем OR FULLDWORD<<0/8/16 без clamp/mask-byte. Возможен spill.
+Новые weather_parameters.h/.inc и level_weather.inc. Source-owned CLevel overlay
+level455.h: virtual SetWeatherColor455/GetWeatherColor455, DWORD в конец класса.
+Старые members не сдвинуты; source sizeof/vtable изменены. Не заявлять target ABI.
 
-Fogflag2weightedendpoints usesextendedx87complement;elseCPU289samples17x17,
-center8/step1290/cappedradius4/height5160. Actual4B2670 Rayleigh/Mie arithmetic,
-x87floatspills/positiveFSQRT;modernCRTpow/log/SunColor paritystillOPEN.
-SampleroracleusesACTUALSunColor input,so867exactpackedresults DONOTproveCRT
-SunColor equivalence. SoftwaretestsPC24 only;Mie27boundarycasesPC24/53/64.
-Unusedreferenceprojection/extinctionFPsideeffects omitted→explicitgap.
-Unsignedaggregate/divisor exposure*.899999976+.899999976/clamp255;
-NOzero-divisor successfallback. NegativeZ0 mustremain-0 inoracle/geometry.
-Mieexact19hfloatboundary.7916666865348816 gives0 betweenneighbor nonzero values;
-doNOTsmooth. InitialdayMie0/night.03;indirectwritersopen.
+ВАЖНОЕ исправление126/128: FOG/ENV НЕ case-sensitive. Реальный90A5ED _strupr
+перед FOG/ENV,90ACEC _strlwr перед weather/scene flags. Uppercase вызов возвращён;
+late weather callback после ENV. Filename скопирован до lower; consumed arguments
+не получают новый uppercase. Старые исторические claims ошибочны и помечены.
 
-TintBF734C/directBF7350 initialFFFFFFFF. DrawMapRendersetsTEXTUREFACTOR=tint
-beforeBSP. Actualmaterial8000/1157CB8 stages andCPUtint consumers not restored.
-RF455_ApplySkyTint andSetSkyFogExposureColor retained inMAP, butsymbolretention
-DOESNOTproveactualgamecallers. ExposurehelperlowBYTE/255 usedbyrealframe/lab;
-targetCLevelDWORDowner atthis145/8E77B0/gameproducers stillOPEN.
-GetSunPosition8B1620 consumer8CB460lensflare andlocalfog-volumeacceptance OPEN.
+1157CB8 — hardware D3DCAPS9.TextureOpCaps offset144,bit21=BUMPENVMAP0x00200000.
+НЕ общий sunlight enable, НЕ DOT3/луминанс. SDK d3d9caps.h pinned in reference.
+Material8C80A0 flag8000 читает offset216 целевого материала; не подставлять
+legacy m_dwFlag по имени. CPUfilter8B30B0 directcallers8E3630/8E3F10 обращаются
+this+100 color/this+104 flags40/20; ownership ещё не доказан. Pcode сохранён
+в129raw. Это следующий130, пока не реализовано.
 
-Enginedf47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06,
-67/18derived;onlylevel/core/r3materialpayloadchanged,63byteequal/0timestamp-only.
-Sharedheaders/layoutunchanged;182client20kernel preserved,ANI2/BBXfresh+relink.
-PE052f73878f4082c6cab3ad532b08ecb3ec8f250dbd0622a3db83efa5157933ce,
-2251264bytes/x86/base400000/entry16B900/WinMainB98B0/afterCreateB9A24/
-unresolved0/noCharacterMR/noFORCE. Own-entry/imports/sound1/window/device/
-existingCreate1/contractsPASS;handled40080201/E06D7363/406D1388retained.
-Exact126engine/PE/MAP/rsp+21reports backedup *before128* beforeedits.
+## Точная сборка и проверки129
 
-Currentnative work/m9/a92d3696/sky-lighting-001:4actualLoadMainMaterial cases,
-5validR3X+1invalidversion;27Mie3precision;5ordinary+3nontrivialfogframes;
-867actualCPU samples/3aggregates exact selectedPC24;disabledpreserves;
-previousFogTint,previousOrbitPosition;29actualBSPsubmissions/firstTFbind=tint.
-Nativewarnings2=1deliberatebadR3X+1originalmissingtrade_bel. Earlierc637cfe4
-capturepassed beforeextra3fogframes;finala92d3696 authoritative. Oracle-0Z fix
-used --verify-existing;no production workaround. Nativeprototype/far/scope
-compile errors corrected. No livejobs remain afterlastpoll.
+Shared FI header changed → full182client/20kernel rebuild PASS, errors0.
+Engine67/18derived SHA9b366d8ffab4a9cf4192b87d2f7c5dcda5ba74b278a94ccc92db0bf05e4baced.
+49 payload changes/10timestamp-only/8byteequal128; не описывать как3changes.
+PEd678c71bcfd68cd6ee6752277d2afffdfc81957a1c14a551698836df2ffca4a7,
+2251264bytes/x86/base400000/entry16BAB0/WinMainB98B0/afterCreateB9A24.
+Unresolved0/no CharacterMR/no FORCE. ANI2/BBX,own-entry/imports,sound1,
+window/device/existingCreate1/contracts PASS; known handled first-chance exceptions
+сохранены. Полный Create/bootstrap/game loop не принят.
 
-ActualneutralBcamera pinned109548bytes/SHA4d71c20bdab6507a03904bc77c3d9cac16d062e666c923f71d7370b3030f6044.
-R3Xfixtureswere loadedBEFORErealneutralB;absentnight setpreservesfixturevalues.
-Don'tmislabel114/6004 asdatafromneutralB. ActualR3Xdaydata independentlychecked.
-5lightingGPUviewed. Worldc8b19052/sky-fade120a008a/material5e4340d4:
-15GPUviewed/byteequal126. World76queue16clock/6oldwarnings;fade90+27/0warnings;
-material60profiles3frames36cases/1missingwarning. Total20GPUviewed.
-Old12616prepass/resourcecases historical,not rerun becauseprepass/resources
-unchanged. Otherbulksnotrerun. Originaltrade_bel.r3e absent;don'tsubstitute.
-Labobservers originalFULLD3Dvtable slots57/82/restoredaroundforward/Get and
-pageprotections. NEVERclone119slots(privateD3Dentriesexist). Productionunpatched.
+Weather work/m9/bd1e90f3/weather-owner-001:90 actual scripts/PC24-53-64,
+casefold FOG/ENV/flags,virtual owner+ordinary neutralB map load,5fog aggregates.
+1445 ORACLE grid points не поштучно захваченные native colors; SunColor взят
+наблюдаемый, полная CRT equivalence не доказана. Software aggregates PC24.
+5GPU weather frames с actual BSP draws/blue0,64,128,192,255 просмотрены.
+Параметр0x00BF3F7F унаследован из нашего script fixture, не original neutralB data.
+Warning1 — original missing trade_bel.r3e, не заменён. NeutralB camera109548bytes
+SHA4d71c20bdab6507a03904bc77c3d9cac16d062e666c923f71d7370b3030f6044.
+Камера смотрит вверх; тонкие полосы геометрии — открытый world/camera/material
+visual gap. Не выдавать этот кадр за full world acceptance.
+Первый weather lab09c97674 упал: второй CLevel destructor освобождал global map
+resources. Исправлен ТОЛЬКО lab lifetime: второй owner живёт до конца основной
+карты; production destructor не трогать ради теста. Итоговый bd1e90f3 PASS.
 
-## Следующий участок129
+Lighting6f38030b:867 captured CPU colors/3aggregates/27Mie/4scripts/5valid1badR3X,
+5ordinary+3fogframes/29BSP PASS. Старый lowercaseFOG expected исправлен.
+World78346d12:76queue/16clock/6oldwarnings. Fade43b94c91:90+27/no warnings.
+Materialba00650e:60profiles/3frames/36materials/1missingwarning. Все25GPUviewed;
+20 previous lighting/world/fade/material frames byteequal128. Общие прежние
+bulk suites не повторялись. Перед изменениями exact128 engine/PE/MAP/rsp,
+21reports в artifacts/client455-progress/*before129*. Игнорирование не backup.
+No live native/build/IDA jobs remain после terminal polling.
 
-Traceactual8E77B0 CLevel exposureDWORDowner/gamecallers and8B30B0CPUtintcallers;
-material8C80A0flag8000/global1157CB8 stages. Packed *weather/*haze/
-*special_weather tags90AD04/90AD6A/90ADD3→1157D3C are also nothandled bycurrent
-weather callback;traceactualproducer route,not assumed direct exposure writes.
-Bindrealowners,not just helper symbols.
-Ifclass/sharedlayout changes→full182client/20kernel rebuild asrequired.
-Thenlensflare8CB460/localfogvolumes/indirectparams/fullshader/CRT/FP/statusflags.
-INS/Planet/fullworld/visibility/alpha/texture/device lost-reset-OOM/stages/auth/
-protocol/Character/gameplay/client-acceptance allremainOPEN. Don'tmarkM6/M9done.
-Preserve120 ordinaryCURRENTview/INSpreviousview;121BSP/122inverse/123projection/
-124fade/125materials/126prepass. Budgetunbounded,goalactive;no pause/block/completion.
+## Сохранить контракты128 и дальнейшую работу
+
+FrameMove clock→lighting; previousorbit/currentfar→Sunposition; newSun/Mie/night;
+packedTint использует OLDfog, затем новыйfog. Не устранять one-frame lag.
+Sunposition far не Sun-draw distance1400. Fogflag2 weighted endpoints, иначе
+17x17 grid289/center8/step1290/radius4/height5160, unsignedsum/exposure divisor,
+clamp255; NOzero-divisor successfallback. NegativeZzero=-0, не менять на+0.
+Mie exact19h boundary .7916666865348816→0 между ненулевыми соседями.
+R3Xflag4 day/8night; absent endpoint set preserves previous. FOG_COLOR-only
+current/main defaults5/5000 НЕ заполняют day distances. Fixture inherited night
+не называть исходными данными карты. ModernCRT/полные FP/statusflags OPEN;
+unused transform/extinction FP effects omitted and explicitly tracked.
+Lab observer patch originalFULL D3D vtable slots57/82/83, restore around Get/forward,
+НЕ clone119slots: есть private driver entries. Production vtable не патчить.
+
+Следующий130: material8000 and actual CPU tint owners/consumers, не helper symbols.
+Затемlensflare8CB460/localfog/indirect parameters/fullshader/CRT/FP/reset,
+INS/Planet/world visibility/alpha/textures/stages/auth/protocol/Character/gameplay.
+Полная client acceptance остаётся незавершённой; goal active, не pause/block/complete.

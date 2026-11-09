@@ -1,17 +1,16 @@
 # Аудит окружения — 04.11.2026
 
-128 PARTIAL M6: освещение и обе ветки тумана подключены к обычному кадру.
-Реальные R3X/script loaders восстанавливают day/night endpoints;карта получает
-packed tint перед BSP. Сохранён порядок с предыдущим FogColor/orbit.
-867 CPU samples/3 fog aggregates,27 Mie cases,5+3 actual frames проходят.
-20 GPU кадров просмотрены;15 material/fade/world кадров byte-equal126.
-Engine67/18derived:изменены level/core/r3material,63 объекта byte-equal126.
-PE052f7387…/entry16B900/unresolved0;ANI/BBX/startup/existingCreate1 PASS.
-Gate: inventory/client455-sky-lighting-checkpoint.json.
-Далее129 — actual exposure owner/game callers,material8000 и CPU tint consumers.
-Full lighting/CRT/FP/device/world/client acceptance и M6/M6F/M7/M9 OPEN.
-
-[Доказательства128](../research/client455-sky-lighting-runtime.md).
+129 PARTIAL M6: восстановлены три packed weather producer и настоящий
+виртуальный владелец CLevel при обычной загрузке карты. Исправлен регистр
+FOG/ENV/scene tags: uppercase перед FOG/ENV, lowercase перед weather/flags.
+90 script cases/3 precision,5 fog aggregates и25 просмотренных GPU кадров PASS.
+20 прежних кадров byte-equal128;полная182/20 сборка и exact PE Create1 PASS.
+PE d678c71b…/entry16BAB0/unresolved0;engine9b366d8f…/67 объектов.
+Текущий gate: inventory/client455-weather-owner-checkpoint.json.
+[Доказательства129](../research/client455-weather-owner.md).
+Далее130: material8000 и CPU tint consumers;тонкие полосы геометрии neutralB
+зафиксированы как открытая world/camera/material проблема.
+Full lighting/CRT/FP/world/client acceptance и M6/M6F/M7/M9 OPEN.
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

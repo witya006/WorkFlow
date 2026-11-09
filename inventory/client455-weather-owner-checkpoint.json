@@ -1,0 +1,308 @@
+{
+  "status": "PARTIAL",
+  "scope": "Packed script weather and ordinary map CLevel virtual owner,including tag-fold correction",
+  "script_sha256": "89a0f3f01964c6eccdf60ffb9a9aacb6afa1efe12fb6b23fa3b19c00366115c5",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d678c71bcfd68cd6ee6752277d2afffdfc81957a1c14a551698836df2ffca4a7",
+    "bytes": 2251264,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16bab0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "784daf2031d92f5e86e93b89326abdab3b62625e5c54de9b1ef1a6c81a42dcf8",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9b366d8ffab4a9cf4192b87d2f7c5dcda5ba74b278a94ccc92db0bf05e4baced"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before129.lib",
+    "sha256": "df47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06"
+  },
+  "weather": {
+    "packed_cases": 90,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "case_folded_FOG_ENV_weather": true,
+    "virtual_owner": true,
+    "ordinary_map_load": true,
+    "ordinary_frames": 5,
+    "oracle_grid_samples": 1445,
+    "software_aggregate_cases": 5,
+    "individual_sample_outputs_compared": false,
+    "software_precision_bits": [
+      24
+    ],
+    "GPU_frames": 5,
+    "full_lighting": false,
+    "all_CRT_FP_inputs": false
+  },
+  "lighting": {
+    "status": "PASS_SELECTED",
+    "text_cases": 4,
+    "R3X_valid_cases": 5,
+    "R3X_invalid_version": 1,
+    "mie_cases": 27,
+    "mie_precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "software_precision_bits": [
+      24
+    ],
+    "ordinary_frames": 5,
+    "additional_fog_frames": 3,
+    "software_samples": 867,
+    "selected_software_packed_bits_exact": true,
+    "software_aggregate_cases": 3,
+    "previous_fog_tint": true,
+    "previous_orbit_position": true,
+    "disabled_preserves": true,
+    "actual_map_submissions": 29,
+    "actual_texture_factor_bind": true,
+    "GPU_frames": 5,
+    "full_lighting": false,
+    "all_CRT_FP_inputs": false
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "fade": {
+    "frame_cases": 90,
+    "shared_helper_cases": 27,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "rounding": "nearest/even;integer conversion truncates and restoresCW",
+    "active_frames": 60,
+    "idle_frames": 30,
+    "exact_state_and_device_bits": true,
+    "actual_quad_colors": true,
+    "legacy_SSE_alpha_differences": 0,
+    "legacy_SSE_fog_differences": 8,
+    "GPU_frames": 5,
+    "finished_sky_byte_equal": true,
+    "covered_RGB": [
+      32,
+      64,
+      96
+    ],
+    "full_sky_renderer": false,
+    "all_FP_inputs": false
+  },
+  "material": {
+    "profile_cases": 60,
+    "actual_frame_profiles": 3,
+    "material_cases": 36,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "exact_night_bits": true,
+    "dawnEnd_discontinuity": true,
+    "actual_indexed_draws": 26,
+    "zero_alpha_cases": 10,
+    "cleanup_masks": "TFACTOR1C/reset18;20alone does not set alpha stages",
+    "device_view_restored": true,
+    "caller_view_translation_zeroed": true,
+    "direct_unloaded_state": true,
+    "GPU_frames": 5,
+    "actual_neutralB_sky2": true,
+    "distinct_day_frames": 4,
+    "visible_changed_bytes": {
+      "sky2-midnight.bgra": 479337,
+      "sky2-morning.bgra": 486084,
+      "sky2-noon.bgra": 461415,
+      "sky2-evening.bgra": 483373,
+      "sky2-unloaded.bgra": 0
+    },
+    "full_atmosphere": false,
+    "all_FP_inputs": false
+  },
+  "viewed_GPU_frames": 25,
+  "regression_frames_byte_equal128": {
+    "client455-sky-lighting-native": [
+      "lighting-disabled.bgra",
+      "lighting-dusk.bgra",
+      "lighting-fog2.bgra",
+      "lighting-midnight.bgra",
+      "lighting-noon.bgra"
+    ],
+    "client455-world-frame-native": [
+      "frame-base.bgra",
+      "frame-cleared.bgra",
+      "frame-effects.bgra",
+      "frame-magic.bgra",
+      "frame-regular.bgra"
+    ],
+    "client455-sky-fade-native": [
+      "fade-base.bgra",
+      "fade-covered.bgra",
+      "fade-done.bgra",
+      "fade-middle.bgra",
+      "fade-return.bgra"
+    ],
+    "client455-sky-material-native": [
+      "sky2-evening.bgra",
+      "sky2-midnight.bgra",
+      "sky2-morning.bgra",
+      "sky2-noon.bgra",
+      "sky2-unloaded.bgra"
+    ]
+  },
+  "previous128_gate": {
+    "file": "artifacts/client455-progress/client455-sky-lighting-checkpoint-before129.json",
+    "sha256": "88e8a6b57b29b96ebad971d4a2208c9cd99ba8c39b25d76150586abb20b2a893"
+  },
+  "fresh_evidence": {
+    "weather-owner-reference": {
+      "file": "inventory/client455-weather-owner-reference.json",
+      "sha256": "99fc936191d4df35e70e932f40cd71c8e703a2022a8a3344d867049b8ece3a4c"
+    },
+    "weather-owner-native": {
+      "file": "inventory/client455-weather-owner-native.json",
+      "sha256": "f6005c64e0ee1ee86a2cccaac732dab2d150b746fde7301f605b26423f2676db"
+    },
+    "weather-owner-visual-review": {
+      "file": "inventory/client455-weather-owner-visual-review.json",
+      "sha256": "2cd835e0daa770c7a06ebb29306fb0118bcf42c7cf00562a45808159b694cb40"
+    },
+    "sky-lighting-inputs": {
+      "file": "inventory/client455-sky-lighting-inputs.json",
+      "sha256": "296e037377b510bc809e6950b783660e337a09f760018d21a31a788ac42ba0e3"
+    },
+    "sky-lighting-native": {
+      "file": "inventory/client455-sky-lighting-native.json",
+      "sha256": "a2580f1d5f296b7c60975f25084563f98a46ca003b4752dc51cd9aa61149f22e"
+    },
+    "sky-lighting-visual-review": {
+      "file": "inventory/client455-sky-lighting-visual-review.json",
+      "sha256": "f0130b45eb2c81240e645f7ade08711ff7dde35489da96326509a910859363e0"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "55e28946cc6a4bd3c2f19060a65e13f99666664e1ba2a49ba346d4a9c1c96530"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "90cf03d2627f6a30078017c60f8b364b99970aa008406b2a289231959627be01"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "84fff1a764c82c5c1ffa4ce3ae945a0b24ea241821689b3a464fbb4577e20429"
+    },
+    "sky-fade-native": {
+      "file": "inventory/client455-sky-fade-native.json",
+      "sha256": "74c3fabef4b0d180d43ae4e6144e910e36310264eb41aed5b622fb732dbb9c6d"
+    },
+    "sky-fade-visual-review": {
+      "file": "inventory/client455-sky-fade-visual-review.json",
+      "sha256": "37687e35f807ab5ecc47c4809e62e09c00500611727e509366d8eabfc774b359"
+    },
+    "sky-material-native": {
+      "file": "inventory/client455-sky-material-native.json",
+      "sha256": "fe0fab51d6bd273083657e56277db3cdc99d1966ea3f46e5db924b75f0dc88b3"
+    },
+    "sky-material-visual-review": {
+      "file": "inventory/client455-sky-material-visual-review.json",
+      "sha256": "dbd3ca70ced1347e88fdc9c601efd25726ae60b128b7f2cdd380a75cb57061c2"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "1522743d0d4812859e902332f3f1ce36b8b50a9be3f9d100bc02f3ab157f57f3"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "08f5105a3efa677fc80007e33c89b1050470cdfa8c011b00b9da8010d84d1862"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "00fccada36ac1455103d3fe02f728430ee72aa1b52933647f4a237da7a1837d3"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "784daf2031d92f5e86e93b89326abdab3b62625e5c54de9b1ef1a6c81a42dcf8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "99fb2847e3565f0cc698132b023c4e00eec00007c216b701bdbf39ef85e2b669"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "aff21c7cdc61217b28f2faa602a286ad331f45da785f8e733b7b4ee3d15a2220"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "2d9ff49cb9741e727b3fe89742a15508447d03b39313f342ed87892920cb8f36"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "bd5b3fe8656213160f0451e230a4443ac691343a1d7122a89a03a65301a993fe"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "6b86d8d4ec1500ba2e7d5a5c1a6fad74938c01daed5924e823eedd7501e0e6aa"
+    }
+  },
+  "shared_headers_changed": true,
+  "client_objects": 182,
+  "kernel_objects": 20,
+  "casefold_correction": "126/128 case-sensitive script claims were wrong:90A5ED uppercase before FOG/ENV,90ACEC lowercase before weather/scene flags",
+  "gaps": [
+    "INS/Planet weather owners and other gameplay virtual callers remain open",
+    "Material8000/CPU tint consumers and lensflare/local fog volumes remain open;1157CB8 is hardware BUMPENVMAP capability,not ordinary lighting enable",
+    "Finite selected packed conversion and software fog are covered;all CRT/x87/RC/NaN/Inf/overflow/status-flag parity remains open",
+    "Class overlay is source-owned ABI,not a claim of target binary CLevel layout or identical virtual slot numbers",
+    "Selected neutralB camera looks upward with thin geometry strips visible;world/camera/material fidelity is not accepted",
+    "Full lighting/world/device reset/stages/auth/protocol/Character/gameplay/client455 acceptance remain open"
+  ],
+  "unchanged_bulk_suites_rerun": false,
+  "full_lighting": false,
+  "full_world": false,
+  "full_client": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

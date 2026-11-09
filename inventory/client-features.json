@@ -6,9 +6,60 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-SKY-LIGHTING-RUNTIME-128",
+      "id": "CLIENT455-WEATHER-OWNER-129",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Packed script producers and actual ordinary CLevel map weather owner;case-fold correction",
+      "reference": [
+        {
+          "rva": "0x4e77b0",
+          "role": "Per-level DWORD and low-byte exposure"
+        },
+        {
+          "rva": "0x4ea220",
+          "role": "Ordinary map virtual call before reset/BSP"
+        },
+        {
+          "rva": "0x50a4d0",
+          "role": "Uppercase FOG/ENV then lowercase packed weather/flags"
+        },
+        {
+          "rva": "0x4c42d0",
+          "role": "Hardware BUMPENVMAP capability,not day-light enable"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_weather_parameters.h",
+        "scripts/native/client455_weather_parameters.inc",
+        "scripts/native/client455_level_weather.inc",
+        "scripts/native/client455_weather.cpp",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "6fullasm/1546instructions/7ranges including99-byte ctorEHtail equal both455.90 actual script cases/PC24-53-64;ordinary map virtual owner/5 fog aggregate comparisons,1445 oracle grid points not individual native-color comparisons.25GPUviewed/20previousframes byteequal128;full182client20kernel/currentANI-BBX/startup/existingCreate1PASS.67engine49payload10timestamp8equal;PEd678c71b/entry16BAB0/unresolved0.",
+      "evidence": [
+        "inventory/client455-weather-owner-reference.json",
+        "inventory/client455-weather-owner-native.json",
+        "inventory/client455-weather-owner-visual-review.json",
+        "inventory/client455-weather-owner-checkpoint.json",
+        "research/client455-weather-owner.md"
+      ],
+      "gaps": [
+        "INS/Planet weather owners and other gameplay virtual callers remain open",
+        "Material8000/CPU tint consumers and lensflare/local fog volumes remain open;1157CB8 is hardware BUMPENVMAP capability,not ordinary lighting enable",
+        "Finite selected packed conversion and software fog are covered;all CRT/x87/RC/NaN/Inf/overflow/status-flag parity remains open",
+        "Class overlay is source-owned ABI,not a claim of target binary CLevel layout or identical virtual slot numbers",
+        "Selected neutralB camera looks upward with thin geometry strips visible;world/camera/material fidelity is not accepted",
+        "Full lighting/world/device reset/stages/auth/protocol/Character/gameplay/client455 acceptance remain open"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-SKY-LIGHTING-RUNTIME-128",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary lighting frame,day/night and289point software fog,real endpoint loaders,map texture-factor bind",
       "reference": [
         {
@@ -64,7 +115,9 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "superseded_by": "CLIENT455-WEATHER-OWNER-129",
+      "casefold_correction": "129 corrects the case-sensitive FOG/ENV claim;original128 evidence is historical at commit03b2b91 and exact before129 snapshots"
     },
     {
       "id": "CLIENT455-SKY-LIGHTING-127",

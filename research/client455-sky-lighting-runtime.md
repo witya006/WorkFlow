@@ -1,5 +1,10 @@
 # Обычный кадр освещения и тумана455 — участок128
 
+Исторический результат128; текущий gate — weather-owner129.
+Исправление129: MainMaterial делает uppercase перед FOG/ENV и lowercase
+перед weather/scene flags. Старое утверждение ниже о case-sensitive tags
+ошибочно. [Текущие доказательства](client455-weather-owner.md).
+
 **PARTIAL M6**. Расчёты127 подключены к обычному CLevel::FrameMove и обоим
 реальным загрузчикам материалов. Работают смешивание day/night endpoints и
 программный туман по289 точкам. В DrawMapRender добавлена привязка packed tint

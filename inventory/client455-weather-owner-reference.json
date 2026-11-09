@@ -1,0 +1,338 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Packed script weather and ordinary map CLevel virtual owner,including tag-fold correction",
+  "script_sha256": "8a24a874e0398fdd9596adf1f42e48f2daa0c482069734fd35d362403bf6e321",
+  "raw": {
+    "file": "artifacts/client455-progress/weather-owner129-reference.json",
+    "sha256": "04778287e84153a8d968ae018d7f235e0484b6f6f1ba94ff6c982ed1df0ca199"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/weather-owner129-session.json",
+    "sha256": "9a074b221f636435a6cea3a0eaff3111f5596343a8b095753094769b6c12c638"
+  },
+  "reused_sources": [
+    {
+      "file": "artifacts/client455-progress/sky-lighting127-reference.json",
+      "sha256": "791f5967e570c11b2489778476da5b3b1eb0eb8c05d719044e7fe63d9a02a141"
+    },
+    {
+      "file": "artifacts/client455-progress/sky-material125-reference.json",
+      "sha256": "c348613bd8ac59664047377761476cd17417d2bc3e35ebddbad838c7c1b414d7"
+    },
+    {
+      "file": "artifacts/client455-progress/sky-atmosphere126-reference.json",
+      "sha256": "0b2a8b3d339ede95153ea78990e9bbcb61ee291a76256923601590c10b85ee21"
+    }
+  ],
+  "full_assembly": 6,
+  "instructions": 1546,
+  "verified_ranges": 7,
+  "CFG_complete": true,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": [
+        {
+          "owner_rva": "0x4b1210",
+          "rva": "0x4b1210",
+          "bytes": 11,
+          "sha256": "d0733cda10cc001a14bf7d0c880727c5bc79f7de092081c47c0a4a10e96a3b58"
+        },
+        {
+          "owner_rva": "0x4c42d0",
+          "rva": "0x4c42d0",
+          "bytes": 175,
+          "sha256": "418549855cc593bf3e4ba6db1249a0fb1acd0cedea24b8e8fc10604dd3bf8ec3"
+        },
+        {
+          "owner_rva": "0x4e77b0",
+          "rva": "0x4e77b0",
+          "bytes": 48,
+          "sha256": "6bf7d646b87b564721ea35758912428dd8bffa924a877180b92298bc569cad7c"
+        },
+        {
+          "owner_rva": "0x4e9f40",
+          "rva": "0x4e9f40",
+          "bytes": 285,
+          "sha256": "666bceead7795e03c96e833f3336e17d5613c180ab97789238dbdfd29bcd9cc7"
+        },
+        {
+          "owner_rva": "0x4e9f40",
+          "rva": "0x65e0d0",
+          "bytes": 99,
+          "sha256": "7244594bde6dffbcadc1f4a06e76bc87db6c6544b1aaaf256ef64d7ef4c25102"
+        },
+        {
+          "owner_rva": "0x4ea220",
+          "rva": "0x4ea220",
+          "bytes": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        },
+        {
+          "owner_rva": "0x50a4d0",
+          "rva": "0x50a4d0",
+          "bytes": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        }
+      ],
+      "context": [
+        {
+          "rva": "0x7384c8",
+          "bytes": 32,
+          "hex": "e0998e0010798e00b0778e00f0a08e00107a8e00407c8e00a07b8e00907c8e00"
+        },
+        {
+          "rva": "0x4ea683",
+          "bytes": 41,
+          "hex": "8b17a13c7d15018b523c508bcfffd2e8697000008b8f580100006a008d84241802000050e8f4370100"
+        },
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4ea692",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea6a7",
+          "target_rva": "0x4fdea0"
+        },
+        {
+          "rva": "0x4e77d7",
+          "target_rva": "0x4b1210"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": [
+        {
+          "owner_rva": "0x4b1210",
+          "rva": "0x4b1210",
+          "bytes": 11,
+          "sha256": "d0733cda10cc001a14bf7d0c880727c5bc79f7de092081c47c0a4a10e96a3b58"
+        },
+        {
+          "owner_rva": "0x4c42d0",
+          "rva": "0x4c42d0",
+          "bytes": 175,
+          "sha256": "418549855cc593bf3e4ba6db1249a0fb1acd0cedea24b8e8fc10604dd3bf8ec3"
+        },
+        {
+          "owner_rva": "0x4e77b0",
+          "rva": "0x4e77b0",
+          "bytes": 48,
+          "sha256": "6bf7d646b87b564721ea35758912428dd8bffa924a877180b92298bc569cad7c"
+        },
+        {
+          "owner_rva": "0x4e9f40",
+          "rva": "0x4e9f40",
+          "bytes": 285,
+          "sha256": "666bceead7795e03c96e833f3336e17d5613c180ab97789238dbdfd29bcd9cc7"
+        },
+        {
+          "owner_rva": "0x4e9f40",
+          "rva": "0x65e0d0",
+          "bytes": 99,
+          "sha256": "7244594bde6dffbcadc1f4a06e76bc87db6c6544b1aaaf256ef64d7ef4c25102"
+        },
+        {
+          "owner_rva": "0x4ea220",
+          "rva": "0x4ea220",
+          "bytes": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        },
+        {
+          "owner_rva": "0x50a4d0",
+          "rva": "0x50a4d0",
+          "bytes": 2550,
+          "sha256": "2a08b9162c0db4863a8d94bf9b9eff282ab68c7a771ea4dc7d31a17bbd90a9f3"
+        }
+      ],
+      "context": [
+        {
+          "rva": "0x7384c8",
+          "bytes": 32,
+          "hex": "e0998e0010798e00b0778e00f0a08e00107a8e00407c8e00a07b8e00907c8e00"
+        },
+        {
+          "rva": "0x4ea683",
+          "bytes": 41,
+          "hex": "8b17a13c7d15018b523c508bcfffd2e8697000008b8f580100006a008d84241802000050e8f4370100"
+        },
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4ea692",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea6a7",
+          "target_rva": "0x4fdea0"
+        },
+        {
+          "rva": "0x4e77d7",
+          "target_rva": "0x4b1210"
+        }
+      ]
+    }
+  ],
+  "SDK_caps": {
+    "file": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\shared\\d3d9caps.h",
+    "sha256": "ce1d3698749e228cb952651ddfe03f75915f0d322c6d88ae01b9139102624a4f",
+    "field_offset": 144,
+    "mask": "0x00200000",
+    "meaning": "D3DTEXOPCAPS_BUMPENVMAP"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_weather_parameters.h",
+      "sha256": "e3e0d4b8eefb57a7a1a8273e9d4f430d3fe74805a9fbc65d23aa0ec5141727af"
+    },
+    {
+      "file": "scripts/native/client455_weather_parameters.inc",
+      "sha256": "f5ce854d7c3bd256df832e9948a69577dd8974bb2ab1164d7d2db4ce8ba9cb4c"
+    },
+    {
+      "file": "scripts/native/client455_level_weather.inc",
+      "sha256": "46bbd045cce8ada35f4a42ca573d579f75f4149835c7ab953b6b9355ee4686b1"
+    },
+    {
+      "file": "scripts/native/client455_weather.cpp",
+      "sha256": "23f67cd8c8dbcde75166ae8510817e683b9176e896817019e6c8bdc4aee3f8ee"
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9b366d8ffab4a9cf4192b87d2f7c5dcda5ba74b278a94ccc92db0bf05e4baced"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before129.lib",
+    "sha256": "df47c24a32abef705eb38b34299f0508093357f38af0add0e8b68987824b7c06"
+  },
+  "payload_changed_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj"
+  ],
+  "timestamp_only_members": [
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj"
+  ],
+  "shared_headers_changed": true,
+  "client_objects": 182,
+  "kernel_objects": 20,
+  "level_header_overlay": {
+    "file": "work/client455-port/startup-engine/include/level455.h",
+    "sha256": "44b61607b1aece1873a00e6e1e98cf9bc0eee15373611675623eff848a104de8",
+    "original": "work/client455-port/source/R3Engine/2ndclass/level.h",
+    "original_sha256": "e9b8bc126e790d81d3edb71fe726975f2d8cd0b42fc6c428eecefe6b12fd075d"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d678c71bcfd68cd6ee6752277d2afffdfc81957a1c14a551698836df2ffca4a7",
+    "bytes": 2251264,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16bab0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "casefold_correction": "126/128 case-sensitive script claims were wrong:90A5ED uppercase before FOG/ENV,90ACEC lowercase before weather/scene flags",
+  "gaps": [
+    "INS/Planet weather owners and other gameplay virtual callers remain open",
+    "Material8000/CPU tint consumers and lensflare/local fog volumes remain open;1157CB8 is hardware BUMPENVMAP capability,not ordinary lighting enable",
+    "Finite selected packed conversion and software fog are covered;all CRT/x87/RC/NaN/Inf/overflow/status-flag parity remains open",
+    "Class overlay is source-owned ABI,not a claim of target binary CLevel layout or identical virtual slot numbers",
+    "Selected neutralB camera looks upward with thin geometry strips visible;world/camera/material fidelity is not accepted",
+    "Full lighting/world/device reset/stages/auth/protocol/Character/gameplay/client455 acceptance remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

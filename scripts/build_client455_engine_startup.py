@@ -49,6 +49,16 @@ def main():
     particlePrefix+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
     if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
+    levelInput=base/'source/R3Engine/2ndclass/level.h';levelHeader=root/'include/level455.h'
+    levelRaw=levelInput.read_bytes();levelAnchor=b'\tCLevel();'
+    if levelRaw.count(levelAnchor)!=1:raise ValueError('CLevel weather declaration boundary')
+    levelRaw=levelRaw.replace(levelAnchor,b'\tvirtual void SetWeatherColor455(DWORD color);\n\tDWORD GetWeatherColor455()const{return mWeatherColor455;}\n'+levelAnchor)
+    levelEnd=levelRaw.rfind(b'};')
+    levelRaw=levelRaw[:levelEnd]+b'private:\n\tDWORD mWeatherColor455; //populated by successful load or explicit setter\n'+levelRaw[levelEnd:]
+    levelKey=levelHeader.relative_to(WS).as_posix()
+    if levelHeader.exists() and levelHeader.read_bytes()!=levelRaw and sha(levelHeader) not in {previous.get('level_header_overlay',{}).get('sha256'),generated.get(levelKey)}:raise ValueError('Preserving changed owned level declaration')
+    if not levelHeader.exists() or levelHeader.read_bytes()!=levelRaw:levelHeader.write_bytes(levelRaw)
+    generated[levelKey]=sha(levelHeader);generationFile.write_text(json.dumps(generated,indent=2)+'\n')
     cameraHeader=base/'source/R3Engine/2ndclass/anicamera.h';ownedHeader=root/'include/anicamera455.h';ownedHeader.parent.mkdir(parents=True,exist_ok=True)
     header=cameraHeader.read_bytes();anchor=b'void SetNowFrame( DWORD frame);'
     if header.count(anchor)!=1:raise ValueError('Camera seconds declaration boundary changed')
@@ -59,6 +69,7 @@ def main():
     header=header.replace(firstInclude,firstInclude+('#include "'+coreHeader.as_posix()+'"\r\n').encode(),1)
     header+=('\r\n#include "'+bspHeader.as_posix()+'"\r\n').encode()
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
+    header+=('#include "'+levelHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
     for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp']:
@@ -102,7 +113,15 @@ def main():
             raw=b'#include "client455_sky_atmosphere.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_atmosphere.inc').read_bytes()
             raw=b'#include "client455_sky_lighting.h"\n'+raw
+            raw=b'#include "client455_weather_parameters.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_lighting.inc').read_bytes()
+            raw+=b'\n'+(WS/'scripts/native/client455_level_weather.inc').read_bytes()
+            weatherAnchor=b'\tmBsp->LoadBsp(real_bsp_name);'
+            if raw.count(weatherAnchor)!=1:raise ValueError('Successful ordinary map weather owner boundary')
+            weatherAt=raw.index(weatherAnchor);resetAnchor=b'\tResetTexMemSize();'
+            resetAt=raw.rfind(resetAnchor,0,weatherAt)
+            if resetAt<0 or raw[resetAt+len(resetAnchor):weatherAt].strip():raise ValueError('Map weather/reset ordering changed')
+            raw=raw[:resetAt]+b'    SetWeatherColor455(RF455_GetMaterialWeather());\n'+raw[resetAt:]
             raw=b'#include "client455_sky_day.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_day.inc').read_bytes()
             clockAnchor=b'    RF455_AdvanceDayClock();'
@@ -138,8 +157,9 @@ def main():
             raw=b'#include "client455_sky_lighting.h"\n#include "client455_weather_format.h"\n'+raw
             first,last=section(raw,b'static _R3MATERIAL* LoadIndependenceMaterial(',b'static _R3MATERIAL* LoadIndependenceMaterial(');body=raw[first:last]
             tokenAnchor=b'\t\tstrupr(hole);'
-            if body.count(tokenAnchor)!=1:raise ValueError('Actual case-sensitive material token dispatch boundary')
-            body=body.replace(tokenAnchor,b'        //455 material tags are case-sensitive here.')
+            if body.count(tokenAnchor)!=1:raise ValueError('Actual uppercase material token dispatch boundary')
+            #45590A5ED folds each newly read tag to uppercase before FOG/ENV.
+            #The late weather callback folds the then-current token to lowercase.
             fogFirst=body.index(b'        if (!strcmp(hole,"*FOG_START"))')
             fogLast=body.index(b'        if (!strcmp(hole,"*NO_FOG_SKY"))',fogFirst)
             body=body[:fogFirst]+b'        RF455_ReadSkyFogToken(fp,hole);\n'+body[fogLast:]
@@ -276,6 +296,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['sky_material']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_day.h','client455_sky_day.inc','client455_map_sky.inc','client455_sky_material.inc']}
     report['sky_atmosphere']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_atmosphere.h','client455_sky_atmosphere.inc']}
     report['sky_lighting']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_lighting.h','client455_sky_lighting.inc','client455_sky_lighting_math.h']}
+    report['weather_parameters']={name:sha(WS/'scripts/native'/name) for name in ['client455_weather_parameters.h','client455_weather_parameters.inc','client455_level_weather.inc','client455_weather.cpp']}
+    report['level_header_overlay']={'file':levelHeader.relative_to(WS).as_posix(),'sha256':sha(levelHeader),'original':levelInput.relative_to(WS).as_posix(),'original_sha256':sha(levelInput)}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

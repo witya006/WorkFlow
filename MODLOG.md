@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Weather owner129. Packed script producers→ordinary virtual CLevel
+owner→fog exposure connected. Corrected earlier126/128 case-sensitive claim:
+90A5ED uppercase before FOG/ENV,90ACEC lowercase before weather/scene flags.
+6fullasm/1546instructions/7ranges including99-byte ctorEHtail equalboth455.
+90scriptcases/5fogaggregates/25GPUviewed/20oldframesstable/full182-20/Create1PASS.
+Engine9b366d8f/49payload10timestamp8same;PEd678c71b/entry16BAB0/unresolved0.
+NeutralB thin geometry strips remain an explicit visual gap;material8000/CPU
+consumers/INS/Planet/full lighting/world/M9 OPEN. No unchanged bulk suites.
+[Evidence](research/client455-weather-owner.md).
+
 2026-11-10 — Ordinary lighting128. Selected lighting chain/bothfog branches
 and real endpoint loaders connected to ordinary frame;previousFog/orbit order
 preserved.867CPUcolors/3aggregates exactselectedPC24;27Mie3precision/4scripts/

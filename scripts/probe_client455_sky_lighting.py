@@ -76,14 +76,14 @@ def verify(run, native):
     expected = [
         (endpoint(0,0,0xff123456), endpoint(0,0,0), endpoint(5,5000,0xff123456), 6000, 0, True),
         (endpoint(12.5,1000.5,0xff123456), endpoint(110,6000.25,0xffba9876), endpoint(12.5,1000.5,0xff123456), 1000.5, 2, True),
-        (endpoint(0,0,0), endpoint(0,0,0), endpoint(0,0,0xff000000), 6000, 0, False),
+        (endpoint(900,10000,0xff010203), endpoint(0,0,0), endpoint(900,10000,0xff010203), 10000, 0, True),
         (endpoint(4.5,400,0xff0b0d11), endpoint(2.5,200,0xff030507), endpoint(4.5,400,0xff0b0d11), 400, 0, True),
     ]
     for row, (day, dark, current, far_value, flags, enabled) in zip(texts, expected):
         require(row['day_fog'] == day and row['night_fog'] == dark and row['fog'] == current
                 and row['far'] == bits(far_value) and row['flags'] == flags and row['enabled'] == enabled,
                 'Exact script endpoints/case/default ownership '+str(row['id']))
-        require(row['main'] == (endpoint(0,0,0) if row['id'] == 2 else current), 'Actual main-fog defaults')
+        require(row['main'] == current, 'Actual main-fog defaults and case-folded tags')
     binary = [x for x in rows if x['kind'] == 'r3x']
     require(len(binary) == 5 and native['native']['R3X_cases'] == 6, 'Five valid R3X cases and rejected invalid version')
     day, dark = endpoint(0,0,0), endpoint(0,0,0)
