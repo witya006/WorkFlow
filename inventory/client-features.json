@@ -6,6 +6,59 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MESSAGE-RUNTIME-111",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "description": "Ordinary formatted entry/actual Login member/draw and actual4pane/center; live actualAvatar+EDF item hover cancels effect6/Miles and emits C1A before mutation. CE7 core lab accepted but game-action registration missing,helper stripped in normal PE",
+      "reference": [
+        {
+          "rva": "0x1e47a0",
+          "role": "formatter"
+        },
+        {
+          "rva": "0x1e4a60",
+          "role": "common routes"
+        },
+        {
+          "rva": "0x140400",
+          "role": "Login primary256"
+        },
+        {
+          "rva": "0x13cb40",
+          "role": "Login Render"
+        },
+        {
+          "rva": "0xfe020",
+          "role": "ordinary hover C1A"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "role": "CE7 core,registration open"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_message_dispatch_port.py",
+        "scripts/native/client455_message_dispatch.h",
+        "scripts/native/client455_message_dispatch.cpp",
+        "scripts/native/client455_board_hover.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "Target22fullasm/1254instr/22bodies+46byteEH equalbothpins.83nativechecks/actual stage objects/manual MainApp providers/actualAvatar+EDFitem+neutralAS1+6FX+Miles/5viewedGPU. Tutorial kernel only,not instance. OwnPE031df367/182-20-64/0unresolved/Create1;decoded ordinary formatter/LoginDraw/hoverCancel/clear-before-message/center-before-common;InsertText455 retained,CE7helper stripped. Freshcenter69/status62/6hover,15viewedGPU,10regressionframes byteequal109;engine unchanged,no bulk reruns.",
+      "evidence": [
+        "inventory/client455-message-dispatch-reference.json",
+        "inventory/client455-message-dispatch-native.json",
+        "inventory/client455-message-dispatch-visual-review.json",
+        "inventory/client455-message-dispatch-checkpoint.json",
+        "research/client455-message-runtime.md"
+      ],
+      "gaps": [
+        "CE7 game-action registration/callback not restored;next112 then command/response/list12/finalposition/othercancels",
+        "Full Login/auth/secondaryUI/Tutorial/fourstage factory and complete ordinary scene/bootstrap not accepted",
+        "Full chat filterUI/input/send/IME/save/legacycallers/numericID overload and previous gameplay/protocol gaps remain",
+        "Own formatted cap1024/provider guards do not accept unsafe/OOM/CRT/privateABI/FP/concurrency/shutdown/fullstage teardown;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
       "id": "CLIENT455-MESSAGE-DISPATCH-110",
       "status": "audit_open",
       "runtime_gate_current": false,
@@ -54,7 +107,7 @@
     {
       "id": "CLIENT455-CHAT-109",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "description": "Actual MainGame-owned chat profile36/styles/font16/prefix18 and initialization; selected filter/wrap/typed insertion in actual four CGUIChatWindow boards. Normal init retained; InsertText455 still only exercised by full-object native lab, legacy producers unported",
       "reference": [
         {
@@ -111,7 +164,9 @@
         "Literal target script paths missing for nation3/9/10;similar filenames not substituted;full regional bootstrap unverified",
         "Common C1A/CE7/login/Tutorial dispatch/live pending1 hover and nuclear command/list12/finalposition still open",
         "Unsafe/null/OOM/malformed scripts/CRTstartup/sharedscratch/privateABI/concurrency/fullstage teardown and all previous client-acceptance gaps remain mandatory;M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "runtime_superseded_by": "CLIENT455-MESSAGE-RUNTIME-111",
+      "current_integration_evidence": "inventory/client455-message-dispatch-checkpoint.json"
     },
     {
       "id": "CLIENT455-CENTER-MESSAGES-108",
@@ -172,7 +227,7 @@
         "All previous client-acceptance gaps remain mandatory; M6/M6F/M7/M9 OPEN"
       ],
       "runtime_superseded_by": "CLIENT455-CHAT-109",
-      "current_integration_evidence": "inventory/client455-chat-checkpoint.json"
+      "current_integration_evidence": "inventory/client455-message-dispatch-checkpoint.json"
     },
     {
       "id": "CLIENT455-NUCLEAR-AIMING-107",
@@ -222,7 +277,8 @@
         "Perspective loaded BSP domain only; orthographic/menu dummy/null/unsafe FP/OOM/privateABI remain open",
         "FrameMove before ordinary effects and Clear before audio close are integrated; full world frame/render/light/qualityUI/blur/device/shutdown order not accepted",
         "All previous effect/audio/GUI/network/client-acceptance gaps remain mandatory; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "current_integration_evidence": "inventory/client455-message-dispatch-checkpoint.json"
     },
     {
       "id": "CLIENT455-EFFECT-RUNTIME-106",

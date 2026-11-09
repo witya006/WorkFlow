@@ -12,6 +12,21 @@
 
 ## Текущий статус
 
+111 PARTIAL: обычный formatter подключён к actual Login и четырём панелям
+чата/центру экрана. Обычный typed hover у настоящего Avatar с pending1 теперь
+отменяет реальный прицел/звук,обнуляет координаты и выводит C1A до item mutation.
+83 целевые проверки с реальным EDF предметом/BSP/6effects/Miles проходят.
+Новая PE031df367…/entry161590/182client-20kernel-64facade/unresolved0/Create1.
+Свежие center69/status62 и15 просмотренных GPU кадров;10 center/hover побайтно
+равны109. InsertText455 теперь удержан обычной PE. CE7 core проверен вlab,
+но его game-action registration ещё нет и helper удалён ordinary linker.
+Gate111 current,109 historical. Tutorial только routing kernel;полные stages/
+Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее112 — привязка
+начала прицеливания к обычному игровому действию. M6/M6F/M7/M9 OPEN.
+[Доказательства111](../research/client455-message-runtime.md).
+
+Историческое исследование110:
+
 Исследование110: общий dispatch и настоящие C1A/CE7/Login цепочки подтверждены
 на двух455:22 функции/22fullasm/1254instructions,22bodies+46-byte EH region,
 23 decoded calls и RTTI CGP_LogIn. Login пишет256-byte сообщение и рисует его
@@ -19,7 +34,7 @@
 При отмене C1A идёт после Clear эффекта/звука,до hover mutation. При начале CE7
 идёт после request-state clear,до SetPending;повторное начало снова пишет CE7.
 Важно:legacy MainGame2→target3 через существующий bridge,не Tutorial2.
-Это AUDIT_OPEN:обычный source/runtime ещё не изменён. Gate109 остаётся текущим.
+Это AUDIT_OPEN:обычный source/runtime ещё не изменён. На момент110 gate109 оставался текущим.
 Далее111 — перенести подтверждённую цепочку с actual Login/chat/center и live
 hover/effect/Miles,а не повторять аудит. M6/M6F/M7/M9 OPEN.
 [Доказательства110](../research/client455-message-dispatch.md).
@@ -31,7 +46,7 @@ hover/effect/Miles,а не повторять аудит. M6/M6F/M7/M9 OPEN.
 Профиль/init подключены к обычному MainGame; новый InsertText455 пока вызывается
 только full-object lab, игровые legacy callers ещё не перенесены.
 Свежие center69/6hover/Create1 проходят;10 кадров побайтно равны108.
-PE ef33b250…/entry160400/182-20-63/unresolved0. Gate109 current,108 historical.
+PE ef33b250…/entry160400/182-20-63/unresolved0. Gate109 historical,108 historical.
 Общий C1A/CE7 dispatch, live pending1 hover и полный chat UI открыты.
 M6/M6F/M7/M9 OPEN; дальнейший участок111 — перенос общих сообщений и отмены прицела.
 [Доказательства109](../research/client455-chat.md).
@@ -77,7 +92,8 @@ Gate106 historical,105 historical. Full nuclear owner/world pipeline/device
 lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-effect-runtime.md).
 
-Реализация111 — common system-message dispatch5E47A0/5E4A60 и реальные C1A/CE7
+Историческая очередь111 (selected цепочка выполнена;следующий112 — CE7 registration):
+common system-message dispatch5E47A0/5E4A60 и реальные C1A/CE7
 callers с actual chat/center sinks,login/Tutorial routes и live pending1 hover.
 Готовый typed insertion позволяет продолжать эту цепочку; не ждать оформления
 всех14filter controls. Full filterUI/colors/GM/category7 network sideeffects,
@@ -824,7 +840,8 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/111: перенос общего system-message dispatch, реальные C1A/CE7 и отмена прицела;
+1. M6/112: game-action registration начала прицеливания; C1A hover и общий
+   вывод111 готовы в выбранном домене. Далее nuclear command/list12/finalposition;
    профиль и selected insertion109 уже доступны. Далее оставшиеся игровые
    связи чата, nuclear command/list12/finalposition и прежняя очередь.
    Typed item/board wrappers091 и common bases090 перенесены в
