@@ -1,4 +1,6 @@
 #pragma once
+#ifndef RF455_NUCLEAR_AIMING_H
+#define RF455_NUCLEAR_AIMING_H
 #include <windows.h>
 #include <cstddef>
 
@@ -16,3 +18,4 @@ struct RF455NuclearAiming {
 static_assert(sizeof(RF455NuclearAiming)==20&&offsetof(RF455NuclearAiming,pending)==4
               &&offsetof(RF455NuclearAiming,position)==8,"455 aiming member20");
 RF455NuclearAiming& RF455_NuclearAiming();
+#endif

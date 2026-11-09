@@ -6,9 +6,86 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-NUCLEAR-MINIMAP-114",
+      "id": "CLIENT455-NUCLEAR-REGISTRY-115",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual record32/registry/FX/tag2/shared process clock and real C15/C17 in fullobject lab;ordinary frame/shutdown retained,proper stage ownership/receiver/world/texturelifetime open",
+      "reference": [
+        {
+          "rva": "0x12a680",
+          "role": "record32 ctor/unknownDWORD12"
+        },
+        {
+          "rva": "0x12a7e0",
+          "role": "shared process countdown"
+        },
+        {
+          "rva": "0x12a890",
+          "role": "launch"
+        },
+        {
+          "rva": "0x12a930",
+          "role": "impact"
+        },
+        {
+          "rva": "0x12a9d0",
+          "role": "radar tag2"
+        },
+        {
+          "rva": "0x12aa90",
+          "role": "reset detaches handles"
+        },
+        {
+          "rva": "0x12ad70",
+          "role": "container ctor"
+        },
+        {
+          "rva": "0x12ae00",
+          "role": "container dtor"
+        },
+        {
+          "rva": "0x12ae70",
+          "role": "ordered records then aim frame"
+        },
+        {
+          "rva": "0x12b3e0",
+          "role": "race/index lookup"
+        },
+        {
+          "rva": "0x14638c",
+          "role": "target MainGame init call"
+        },
+        {
+          "rva": "0x14b059",
+          "role": "target late Render call"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_nuclear_registry_port.py",
+        "scripts/native/client455_nuclear_registry.h",
+        "scripts/native/client455_nuclear_registry.cpp",
+        "scripts/native/client455_nuclear_aiming.h",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "34bodyranges/31fullasm/1394instructions+3EHtails equalbothpins,30newfullasm/1339instructions;IDAsavedclosed/list0. Registry109/5GPU/real3FX/Miles/C15/C17/sharedclock;aim29/marker702/message83/16viewedGPU/11framesbyteequal114. OwnPE52c2a7c5/182-20-67/unresolved0/Create1;engine unchanged,no bulk reruns.20R3Trelease warnings:fulltexturelifetime unproven.",
+      "evidence": [
+        "inventory/client455-nuclear-registry-reference.json",
+        "inventory/client455-nuclear-registry-native.json",
+        "inventory/client455-nuclear-registry-visual-review.json",
+        "inventory/client455-nuclear-registry-checkpoint.json",
+        "research/client455-nuclear-registry.md"
+      ],
+      "gaps": [
+        "Actual group60 receiver/selected serial/send/dialog/minimap consumers absent;record operations run in fullobject lab and helpers stripped from ordinary PE",
+        "MainApp bridge temporary;target MainGame birth/destruction/fullstage lifetime not restored",
+        "20R3Trelease warnings during registry teardown;complete texture ownership/memory balance unproven",
+        "Worldgeometry588/fulltrajectory/cameraquake/light/compositing/quality/blur/advancedFX/device and all prior acceptance gaps remain;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-NUCLEAR-MINIMAP-114",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual3NuclearBomb children in existing MiniMap;ordinary Init/bounds/virtualDraw retained;typed show/position/geometry and real sprite/font/alpha in fullobject lab. Registry/race/worldgeometry/receiver remain open,helpers stripped without callers",
       "reference": [
         {
@@ -71,7 +148,8 @@
         "Real registry/race/record32/FX/audio/frame/lifetime/normal group60 receiver missing;typed UI consumes lookup result in lab only",
         "Worldgeometry588 record loader/producer3c9240 and full map controls/input/world remain unported;do not substitute legacy hardcoded8map data",
         "Owned bounds checks/missing resources/finite admitted coordinates do not accept target OOB/unsafe/overflow/FP/OOM/privateABI;all previous client-acceptance gaps and M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "superseded_by": "CLIENT455-NUCLEAR-REGISTRY-115"
     },
     {
       "id": "CLIENT455-CHARACTER-FLAGS-113",

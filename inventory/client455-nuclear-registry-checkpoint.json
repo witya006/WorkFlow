@@ -1,0 +1,499 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual record32/registry/FX/tag2/shared countdown and target stage callsites;ordinary receiver/full stage lifecycle/world acceptance remain open",
+  "script_sha256": "668dbd23d856652870ba3ac7d4a5800fe3bd2b34b280e850f4e609662b683f6d",
+  "sources": [
+    {
+      "file": "scripts/native/client455_nuclear_registry.h",
+      "sha256": "7865364f78c849e472886a6fec2f3563731d29fb5dc9188b29747b83553dd6fa"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_registry.cpp",
+      "sha256": "7bca5a06ea5f652e12d1e4eac5ea0e181b118b7d905570eec15162f850ae353b"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_aiming.h",
+      "sha256": "e417c2a6c4f23170864561c206fdf13513d030e41f4445b6a237e2b23d7a26c3"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "c5424483e4c5296b934ef0e95df9182764df31f9c90e71c88ade4f0e2381ab3b",
+      "input": "work/client455-port/source/RF_Client/mainapp.h",
+      "input_sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "named ordinary pre-engine network creation entry",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen",
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.cpp",
+      "sha256": "c87d35ecaf5a64e17e60f298839b70db79ff77e9ce675414b37e34291f6d4bbd",
+      "input": "work/client455-port/source/RF_Client/mainapp.cpp",
+      "input_sha256": "231ef9d4f8ceb906292df9d07af90158416503d6c52a1de83a552f04d6a25e38",
+      "changes": [
+        "455country launcher before language;typed network fields;remove late legacy launcher read;full connection order remains open",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen",
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+      "sha256": "dacd740bd1feb5e902fc778025c9892cb5b1e4d8747e45b79bd4a75faa96082a",
+      "input": "work/client455-port/source/RF_Client/gameprogress/cgp_maingame.cpp",
+      "input_sha256": "115e853abb9ce929a66771da6b528ebb450df2407f1b2b23fd80bc470d976256",
+      "changes": [
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455center message stage owner/queue/update/draw andlate aiming frame;C1A/fullchat dispatch remainopen",
+        "455chat profile36/prefix18/font16 andselected real4pane insert/wrap;legacycallers/filterUI/fulldispatch remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_nuclear_registry.cpp",
+      "sha256": "7bca5a06ea5f652e12d1e4eac5ea0e181b118b7d905570eec15162f850ae353b",
+      "input": "scripts/native/client455_nuclear_registry.cpp",
+      "input_sha256": "7bca5a06ea5f652e12d1e4eac5ea0e181b118b7d905570eec15162f850ae353b"
+    },
+    {
+      "file": "work/client455-port/normal/include/client455_nuclear_registry.h",
+      "sha256": "7865364f78c849e472886a6fec2f3563731d29fb5dc9188b29747b83553dd6fa",
+      "input": "scripts/native/client455_nuclear_registry.h",
+      "input_sha256": "7865364f78c849e472886a6fec2f3563731d29fb5dc9188b29747b83553dd6fa"
+    }
+  ],
+  "normal_link_sha256": "3f2cf645ef8936d10f44924b5c8cc5b28e3e79a14d1d9485bc5fe90e2d054477",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "52c2a7c55aa7491045306b67a9b541c1cb2cce75f2568d7448337dda9a1a60f4",
+    "bytes": 2203648,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x162800",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "own_decoded_calls": [
+    {
+      "function": "?Render@CGP_MainGame@@MAEJXZ",
+      "rva": "0x26fe0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/registry115-own-0.txt",
+        "sha256": "21110e0ca99c91dc5a2bb95c2e358dbf4a611950987a1826024985bc6f65b4ad"
+      },
+      "edges": [
+        {
+          "rva": "0x26ffd",
+          "target_rva": "0x1083d0"
+        },
+        {
+          "rva": "0x2700a",
+          "target_rva": "0x108370"
+        },
+        {
+          "rva": "0x27019",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x27054",
+          "target_rva": "0x39100"
+        },
+        {
+          "rva": "0x2706b",
+          "target_rva": "0x113c40"
+        },
+        {
+          "rva": "0x27075",
+          "target_rva": "0x2ad90"
+        },
+        {
+          "rva": "0x27084",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x2708f",
+          "target_rva": "0x1cc30"
+        },
+        {
+          "rva": "0x27099",
+          "target_rva": "0x2b200"
+        },
+        {
+          "rva": "0x270a8",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x270b3",
+          "target_rva": "0x65c00"
+        },
+        {
+          "rva": "0x270c5",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x270d4",
+          "target_rva": "0x39150"
+        },
+        {
+          "rva": "0x270e3",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x270e8",
+          "target_rva": "0x6cbc0"
+        },
+        {
+          "rva": "0x270f7",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x27101",
+          "target_rva": "0xc5340"
+        },
+        {
+          "rva": "0x2710b",
+          "target_rva": "0x2b2e0"
+        },
+        {
+          "rva": "0x27116",
+          "target_rva": "0x5c210"
+        },
+        {
+          "rva": "0x2711b",
+          "target_rva": "0x107ca0"
+        },
+        {
+          "rva": "0x2712a",
+          "target_rva": "0x11e680"
+        },
+        {
+          "rva": "0x2713e",
+          "target_rva": "0x1cca0"
+        },
+        {
+          "rva": "0x27152",
+          "target_rva": "0xd210"
+        },
+        {
+          "rva": "0x2715d",
+          "target_rva": "0x5ff90"
+        },
+        {
+          "rva": "0x2716e",
+          "target_rva": "0x2bb0"
+        },
+        {
+          "rva": "0x27179",
+          "target_rva": "0x27970"
+        },
+        {
+          "rva": "0x27186",
+          "target_rva": "0x27710"
+        },
+        {
+          "rva": "0x2718b",
+          "target_rva": "0xf2d80"
+        },
+        {
+          "rva": "0x27190",
+          "target_rva": "0x67e00"
+        },
+        {
+          "rva": "0x271a0",
+          "target_rva": "0xc8690"
+        },
+        {
+          "rva": "0x271a7",
+          "target_rva": "0xc85e0"
+        },
+        {
+          "rva": "0x271b2",
+          "target_rva": "0xcc960"
+        },
+        {
+          "rva": "0x271b7",
+          "target_rva": "0x1084e0"
+        },
+        {
+          "rva": "0x271c2",
+          "target_rva": "0x100180"
+        },
+        {
+          "rva": "0x271cc",
+          "target_rva": "0x11e4d0"
+        },
+        {
+          "rva": "0x271d1",
+          "target_rva": "0x6a090"
+        },
+        {
+          "rva": "0x271d6",
+          "target_rva": "0x10d820"
+        },
+        {
+          "rva": "0x271e9",
+          "target_rva": "0x161bc0"
+        }
+      ]
+    },
+    {
+      "function": "?Destroy@CMainApp@@QAEHXZ",
+      "rva": "0xb8d00",
+      "disassembly": {
+        "file": "artifacts/client455-progress/registry115-own-1.txt",
+        "sha256": "3e1f3e265d9de4270ecd14d9ff181516b4d724adacd72241621020abceeff46c"
+      },
+      "edges": [
+        {
+          "rva": "0xb8d09",
+          "target_rva": "0xc8530"
+        },
+        {
+          "rva": "0xb8d14",
+          "target_rva": "0xd78c0"
+        },
+        {
+          "rva": "0xb8d1f",
+          "target_rva": "0xd81a0"
+        },
+        {
+          "rva": "0xb8d69",
+          "target_rva": "0xc34c0"
+        },
+        {
+          "rva": "0xb8d7e",
+          "target_rva": "0xd210"
+        },
+        {
+          "rva": "0xb8d92",
+          "target_rva": "0x6eb80"
+        },
+        {
+          "rva": "0xb8d97",
+          "target_rva": "0x6eaf0"
+        },
+        {
+          "rva": "0xb8d9c",
+          "target_rva": "0x6e9d0"
+        },
+        {
+          "rva": "0xb8da1",
+          "target_rva": "0xc4540"
+        },
+        {
+          "rva": "0xb8da6",
+          "target_rva": "0xc45c0"
+        },
+        {
+          "rva": "0xb8dab",
+          "target_rva": "0xc4580"
+        },
+        {
+          "rva": "0xb8db0",
+          "target_rva": "0x6eb30"
+        }
+      ]
+    },
+    {
+      "function": "?FrameMove@RF455NuclearContainer@@QAEXXZ",
+      "rva": "0xc85e0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/registry115-own-2.txt",
+        "sha256": "10b7205d7aeb94563079d597be9460ccbf4dd08c4fad9292ed394b01725ab7ae"
+      },
+      "edges": [
+        {
+          "rva": "0xc8652",
+          "target_rva": "0xd1ff0"
+        },
+        {
+          "rva": "0xc8659",
+          "target_rva": "0xd28c0"
+        },
+        {
+          "rva": "0xc865f",
+          "target_rva": "0xc8260"
+        },
+        {
+          "rva": "0xc866a",
+          "target_rva": "0xc84e0"
+        },
+        {
+          "rva": "0xc867d",
+          "target_rva": "0xd7910"
+        }
+      ]
+    }
+  ],
+  "native_registry_checks": 109,
+  "aim_regression_checks": 29,
+  "marker_regression_checks": 702,
+  "message_regression_checks": 83,
+  "viewed_GPU_frames": 16,
+  "byte_equal_prior_marker_message_frames": 11,
+  "baselines": [
+    {
+      "file": "artifacts/client455-progress/client455-nuclear-minimap-native-before115.json",
+      "sha256": "ac3ac4caad5d33b3506926164a5c6fbb195c29e67997e515760c67b2754486cf"
+    },
+    {
+      "file": "artifacts/client455-progress/client455-message-dispatch-native-before115.json",
+      "sha256": "11429cd0ace5fa889ea8d127bfff607cc8959477e3b12b1c670360cd98b98771"
+    }
+  ],
+  "ordinary_registry_frame_and_shutdown": true,
+  "record_creation_FX_messages_in_fullobject_lab": true,
+  "ordinary_receiver": false,
+  "full_stage_lifecycle": false,
+  "full_world_effects": false,
+  "registry_R3T_release_warnings": 20,
+  "complete_registry_texture_lifetime": false,
+  "previous114_gate": {
+    "file": "artifacts/client455-progress/client455-nuclear-minimap-checkpoint-before115.json",
+    "sha256": "dc095f1132eba830cdded220212b6d47a76c77f26f1a59379070fb8ecec005e5"
+  },
+  "previous114_runtime_gate": "HISTORICAL",
+  "historical_not_rerun": {
+    "magic-native": {
+      "file": "inventory/client455-magic-native.json",
+      "sha256": "01b7ff508ace7fdb23797226f572239f2b41307dff3cba5c9186ab310174a001"
+    },
+    "effect-resources-native": {
+      "file": "inventory/client455-effect-resources-native.json",
+      "sha256": "f07bf474dc820c0bfcf29c75dcd810e5e3efa92cdd1c70230a6c4144107da14c"
+    },
+    "effect-runtime-native": {
+      "file": "inventory/client455-effect-runtime-native.json",
+      "sha256": "ed963a091c5bae1ead1a38f80159a9823317b52458c4779ceca9b44ae8a06602"
+    },
+    "tagged-audio-native": {
+      "file": "inventory/client455-tagged-audio-native.json",
+      "sha256": "9c9cad16062448aca60119e81517722e8945f617a7106cc3ae8a09415f9a8002"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "3e4e2c0b332d1b60755d390dd7dbe395b9a3ab81d227992be53c0f9dc98b0de5"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "ddfc304c784306f0f0be09111adfe21018ac9e862c3fe110770460238dc862b3"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "fe3b0967261397ffeda934148a5ba4a0db63beebbe9d043862817301bab42a05"
+    },
+    "nuclear-aiming-native": {
+      "file": "artifacts/client455-progress/client455-nuclear-aiming-native-historical-before115.json",
+      "sha256": "aef654d1d25d0ab32146bde101c97ee4d44457372d5422bc3070a36631c0c9cb"
+    },
+    "chat-native-109": {
+      "file": "artifacts/client455-progress/client455-chat-native-before111.json",
+      "sha256": "33be1c7d9d3aa30c702135ae3d4c0da3d0001da9b84cd7e3064465b1047b54f6"
+    },
+    "chat-review-109": {
+      "file": "artifacts/client455-progress/client455-chat-visual-review-before111.json",
+      "sha256": "c579e0051a72ff7ef064f737d8f1f2c8f63ae0978cc3fa8800911efa4f5c7677"
+    },
+    "character-flags-native": {
+      "file": "artifacts/client455-progress/client455-character-flags-native-before114.json",
+      "sha256": "a232bf600d1aea7ad180a777e4e094d9d6a7ba324ae921fab2a5c0d8686da8dc"
+    },
+    "character-flags-reference": {
+      "file": "artifacts/client455-progress/client455-character-flags-reference-before114.json",
+      "sha256": "ae164b392267a340723dea7c3edc2fc243fa602288607efba94e4886f5071c8f"
+    },
+    "minimap-opacity-native": {
+      "file": "artifacts/client455-progress/client455-minimap-opacity-native-before115.json",
+      "sha256": "080dc728f1b11199538a6611136019ce6fdd91550f173453bc1bf72dc03c1648"
+    },
+    "nuclear-minimap-reference": {
+      "file": "artifacts/client455-progress/client455-nuclear-minimap-reference-before115.json",
+      "sha256": "8fe2e803de9243b28bb83a6a1dbebb3cfa7ef2b0e06a84ce4be5bf5b0a6aa828"
+    }
+  },
+  "fresh_evidence": {
+    "nuclear-registry-reference": {
+      "file": "inventory/client455-nuclear-registry-reference.json",
+      "sha256": "86353aef5bbc13204217d714229ad2ce19912008c6eaf1f48ea9713963184096"
+    },
+    "nuclear-registry-native": {
+      "file": "inventory/client455-nuclear-registry-native.json",
+      "sha256": "dd18306dbc8121130ff697b971ea5911fe5721a5309b87bb8f7fc097d2645672"
+    },
+    "nuclear-registry-visual-review": {
+      "file": "inventory/client455-nuclear-registry-visual-review.json",
+      "sha256": "285d46092171b3dbf66f676f5637bc5c1144738392a7c1c1a78621741f7d2138"
+    },
+    "nuclear-aiming-native": {
+      "file": "inventory/client455-nuclear-aiming-native.json",
+      "sha256": "2870fda5d5d7d1d8b782bfd1d78c8d1c8df6838d6258c46086455ba9ef9d7dea"
+    },
+    "nuclear-minimap-native": {
+      "file": "inventory/client455-nuclear-minimap-native.json",
+      "sha256": "b7d536e243f48fbe3dd27cb388854a3fd1c8e79264a9e177621757185c8aa452"
+    },
+    "message-dispatch-native": {
+      "file": "inventory/client455-message-dispatch-native.json",
+      "sha256": "a099f5d5e0f481b2ba3fd4b62ee62bdfcd67dff81915ae2db0fab47665d32b2e"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "fb19a3476017535c947afd6940c4f7da9d0b915d68eae7bd532cb724f6f1af59"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "10886b0857f0861519e23921f8daae617bf9e6e082fd0d6ea61bf2381f628b73"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "565e7ebd762728e769910011b01a75b3888d6976a47a014470328a96e225ac29"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "3f2cf645ef8936d10f44924b5c8cc5b28e3e79a14d1d9485bc5fe90e2d054477"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "58a694998abc49503cc6e5d67209c6bbcc60435f9b0d9fa8b955cc950f3e14f4"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "28560b5b41d01b8a597cbfe2d8a75c8527a37fe939985a185ef146ac74ce736e"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "8943a8ccc80fb64702e1c6e4d3601199825640e7f854b1e4f298acc528c1ca0a"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "74ac44d3b809ce410103e3133f205d939e1b10ba13810df5e0d6a29230caf198"
+    }
+  },
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "gaps": [
+    "Actual group60 receiver/selected item serial/send/dialog/minimap registry consumers remain open",
+    "Proper stage-owned container birth/destruction and full world effects/trajectory/camera quake/compositing/reset acceptance remain open",
+    "Full private STL ABI,unknown DWORD12 producers,unsafe/null/OOM/FP/concurrency and all prior client-acceptance gaps remain open",
+    "Registry lab emits20 legacy R3T-release warnings during teardown;complete texture ownership/memory balance not accepted",
+    "All prior Character/action/movement/64bit status/fullminimap and client-acceptance gaps remain"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

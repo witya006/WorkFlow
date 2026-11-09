@@ -1,20 +1,21 @@
 # Полнота восстановления RF_Online.bin
 
-114 PARTIAL: existing MiniMap владеет3 настоящими NuclearBomb marker owners.
-В ordinary source подключены Init/bounds/virtual Draw; typed position/show/
-geometry проверены в full-object lab на real24x24 main sprite и7x9 imagefont.
-Сохранены first-position-before-configuration и alpha255→4 после обычного Draw;
-empty shown marker продолжает pulse,clipped Draw alpha не меняет.702 native PASS.
-26equalbodyranges/24fullasm/2594instructions,19newfullasm/2028instructions;
-IDA savedclosed/list0. Own PE7f9ba520…/entry161ae0/182client-20kernel-66facade/
-unresolved0/Create1. Fresh Korea+Russia opacity81/message83,17viewedGPU;
-11opacity/message frames byteequal previous. Engine67 неизменён.
-Registry/race lookup,worldgeometry588 producer и ordinary group60 receiver
-ещё не подключены;show/geometry helpers stripped from ordinary PE.
-Runtime gate114 current,113 historical;M6/M6F/M7/M9 OPEN.
-Далее115 — actual record32/registry/FX/tag2 audio/lifecycle/frame,затем receive.
+115 PARTIAL: восстановлены nuclear record32/registry, radar/tag2, launch/impact,
+общий process countdown и C15/C17 через настоящие chat/center providers.
+Ordinary MainGame frame и MainApp shutdown подключены; создание записей/FX
+проверено в full-object lab. Target stage lifetime и ordinary group60 receiver
+ещё открыты; MainApp holder временный, receiver helpers stripped from own PE.
+34equalbodyranges/31fullasm/1394instructions+3EHtails,IDA savedclosed/list0.
+Native109/aim29/marker702/message83 PASS;16GPU viewed,11frames byteequal114.
+Own PE52c2a7c5…/entry162800/182client-20kernel-67facade/unresolved0/Create1.
+Engine67 неизменён. Registry lab даёт20 R3T release warnings при teardown:
+полное владение текстурами/баланс памяти не приняты. Fullworld/trajectory/
+camera/light,worldgeometry588 и все прочие client-acceptance gaps остаются.
+Current runtime gate115;114 historical. M6/M6F/M7/M9 OPEN.
+Далее116: actual group60 receiver/selection/dialog/send/registry/MiniMap,
+proper MainGame ownership; отдельно разобрать R3T texture teardown.
 
-[Доказательства114](../research/client455-nuclear-minimap.md).
+[Доказательства115](../research/client455-nuclear-registry.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 
