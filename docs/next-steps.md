@@ -1,44 +1,47 @@
 # Следующие шаги
 
-Обновлено 2026-11-10. **138 PARTIAL; M6 открыт.**
-Gate: inventory/client455-login-checkpoint.json.
-Собственная сборка ba23dd6d… проходит обычный WinMain→Title→Login и показывает
-реальную lobby/окно ожидания. Root Add теперь скрывает зарегистрированные окна
-по455; наложение лишних панелей устранено. Frame70/3203ms просмотрен, no fatal.
-Engine137 не изменён, сборка182/20 и link0/unresolved0. Полный Login455 не принят.
-Доказательства: research/client455-login.md.
-M6/M6F/M7/M9 OPEN. Оценка готовности около25%(20–35%),не новое доказательство
-эквивалентности;inventory/client455-progress-assessment.json.
+Обновлено 2026-11-10. **139 PARTIAL; M6 открыт.**
+Gate: inventory/client455-world-entry-checkpoint.json.
+Доказательства: research/client455-world-entry.md.
+Own eb84c16b… /182client/20kernels/link0/unresolved0;engine137unchanged.
+Обычные world-entry request58/reply12 иselectors перенесены,8fullfunc/2pins.
+Actual encrypted/ring dispatcher:short/null/fragment wrap/ошибка242/успех0 PASS.
+Обычный WinMain→Title→Login показываетlobby/waiting;TCP fixture получил67bytes,
+ответов0. Это не приёмка auth/bootstrap/selection. Модернизация графики не нужна.
+Оценка остаётся25%(20–35%);полных принятых систем0/12.
 
-1. **139/A–B: response→bootstrap→selection.** Проверить настоящий клиентский
-   обработчик ответа входа и его переход в загрузку данных/выбор персонажа.
-   Diagnostic flow: artifacts/client455-progress/login138-reference/flow-diagnostic.json.
-   Target init5401D0: обычный state6, logout state7; getter53EF80 читает byte435973,
-   consumer53D0F0 при result0/state6 вызывает5E7BE0. Это пока pcode, не fullproof.
-   Начать с сетевого producer/dispatcher для этого результата и real client table
-   bootstrap, затем экран выбора. Не обходить ожидание и не форсировать успех.
-   Серверные исходники/код не менять. Country slot284 во всех11профилях false;
-   не включать legacy reconnect безусловно.
-   Full Title/movie/factory4/next-stage остаются открыты. Legacy factory3/modulo.
-   Create53BB20 имеет разбитую IDB границу и ложную CRT-аннотацию: использовать ASM.
-   РеальныйAVI и начальные Title данные есть в research/client455-title-initial.md;
-   не включать недостижимый primary FrameMove fade, не переписывать CRT/COM.
-2. **B:** clientauth/selection packet/state transitions/errors,безserverwork.
-3. **C:** ordinaryworld/avatar/camera/input/movement/collision/animation loop.
-4. **D:** target/attack/skills/items/chat,затемfullNPC/quests/social.
-5. **E:** remainingfeatures/maps/classes/lifecycle/reset/errors/fidelity,
-   M6F/M7/M9 finalsource/build/acceptance. M9 уже определён,не спрашивать снова.
+1. **140/A–B: настоящий bootstrap и registered-character.**
+   Consumer53D0F0 при result0/state6 вызывает5E7BE0. Собрать выбранные полные
+   ASM/CFG/ranges и переносить его реальные client table loaders,локаль/профили,
+   в том числе cashShop/NPCShop/quest selectors из m_worldEntry455.
+   Source legacy потребители всё ещё отличаются;не force success/не bypass загрузку.
+   Данные: artifacts/client455-progress/login138-reference/flow-diagnostic.json.
+   Затем восстановить registered-character request1/8 (56ADD0),reply1/9 (56AE40):
+   legacy номера1/7 и1/8,форматы/consumers тоже требуют переноса.
+   Не просто перенумеровать старые packets. Проверить реальный экран выбора.
+2. **A остаток:** full455Title/movie/factory4/explicitnext,все10Login windows,
+   system sprite5/layout/focus/input. Legacy factory3/modulo ещё остаётся.
+   Create53BB20 brokenIDB/JUMPOUT/ложнаяCRT-аннотация:использовать реальные инструкции.
+   Target5401D0 initstate6 normal/7logout. Country slot284false во всех11profiles:
+   не включать legacy reconnect безусловно. Title557F80 exit/jump безусловны,
+   не включать deadfade. РеальныйAVI существует;standardSDK COM при наличии.
+3. **B:** полные клиентские auth/selection/error/state переходы иwire consumers.
+4. **C:** ordinaryworld/avatar/camera/input/movement/collision/animation loop.
+5. **D:** target/attack/skills/items/chat,затемfullNPC/quests/social.
+6. **E:** remainingfeatures/maps/classes/lifecycle/reset/errors/fidelity,
+   M6F/M7/M9 полнаяприёмка ивоспроизводимаясборка. M9 уже определён.
 
-Технический backlog:fullFraction/particleazirang/BBoShasi;per-BSPlight;
-positivebinaryFX/caps/failures;worldvisibility/INS/Empty/fullCharacter/UI/protocol.
-Все прежние gaps сохранены. Не расширять137 бесконечными микроконтрактами
-вместоordinaryfunctionalroute. Числоassertions не прогресс всего клиента.
+Все прежние client-acceptance gaps сохранены. Технический backlog включает
+fullFraction/particle/BBoShasi,INS/Empty/visibility/lighting/device lifecycle,
+fullCharacter/UI/protocol,CRT/FP/failures где влияют на поведение.
+Число assertions не процент готовности;не повторять159k unchanged suites.
+Приоритет — связанные наблюдаемые сценарии обычного клиента.
 
-Asset staging уже общий дляruntimeinputs/generic/early/device/fullscreen;
-оригиналы не hardlinked,configs/exes private. Старые151GiBlogical каталоги не
-удалены. До очистки — reachability текущих/historical evidence иinputs.
-До каждого нового большого scenario использовать shared staging.
-Exact137snapshot уже сохранён: artifacts/client455-progress/before138/manifest.json,
-47 файлов. Не перезаписывать его новой сборкой. Нативных jobs нет.
-Before-root snapshot13files/4.66MB: artifacts/client455-progress/login138-before-window-registration/manifest.json.
-IDA5a0405db/5818692d saved/closed; idb_list count0. Остальные инварианты вproject-memory/AGENTS.
+Exact138snapshot47files уже сохранён в artifacts/client455-progress/before139/.
+Exact137/before138 иbefore-root13files также сохранены;не перезаписывать их.
+Перед новыми runtime changes140 можно использовать snapshot_client455_runtime.py
+140 client455-world-entry-checkpoint. Не клонировать installed client.
+Shared staging используется ordinary startup/Login/account,новыхpool bytes0.
+Старые151GiBlogical/42.29GiBunique не очищались;до удаления нужна reachability.
+Оригиналы immutable,serverreadonly,server development запрещён.
+IDAe71a49ca saved/closed/list0;nativejobs нет. Остальные правила — AGENTS.md.

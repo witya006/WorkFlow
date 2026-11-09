@@ -1,144 +1,114 @@
 # Память проекта
 
-Обновлено 2026-11-10. **138 PARTIAL; M6 открыт.**
-Текущий gate: inventory/client455-login-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_login.py.
-Доказательства: research/client455-login.md. Предыдущий gate137 historical; snapshot
-artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json.
-Предыдущая подробная память: research/project-memory-before137.md.
-137 зафиксирован commit f33d025; промежуточный138/оценка — commit8c22e34.
+Обновлено 2026-11-10. **139 PARTIAL; M6 открыт.**
+Gate: inventory/client455-world-entry-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_world_entry.py.
+Доказательства: research/client455-world-entry.md.
+Предыдущая подробная память: research/project-memory-before139.md.
+Последний commit до139: c121c4f (ordinary Login/root registration138).
 
-## Цель и границы
+## Цель и ограничения
 
 CLIENT ONLY: поддерживаемые исходники и собственный RF_Online.bin с полным
-функционалом и поведением закреплённого455. M9 определён: финальная приёмка
-без модернизации графики. Устаревшую формулировку goal про неопределённыйM9/M4
-не использовать. M0–M4/selectedM5 достигнуты; M6/M6F/M7/M9 OPEN,M8 не нужен.
-Server только читать reference; не изменять/собирать/восстанавливать даже копии.
-Originals immutable; input EXEs никогда не выполнять; работа только под work/.
-LocalGit,no push/remote/publication. Subagents запрещены без прямой просьбы.
+функционалом/поведением закреплённого455. M9 уже определён: финальная приёмка
+без модернизации графики. Устаревшее goal-описание про M4/неизвестныйM9 не применять.
+M0–M4/selectedM5 достигнуты; M6/M6F/M7/M9 OPEN;M8 не требуется.
+Server только читать reference, не изменять/строить/восстанавливать даже копии.
+Оригиналы immutable; input EXEs никогда не выполнять. Работа под work/.
+LocalGit, no push/remote/publication. Не делегировать без прямой просьбы.
 
-## Оценка и рабочий приоритет
+## Текущий139
 
-По прямой просьбе пользователя дана инженерная оценка: около25%,диапазон20–35%,
-остаток около75%. Это планирование по12системам,не процент функций/байтов/тестов.
-Фиксированные веса100%,weighted18.95–33.55%; полных принятых областей0/12.
-Script scripts/assess_client455_progress.py; inventory/client455-progress-assessment.json.
-После обновления registry140исторических/пересекающихся записей;не знаменатель
-готовности. Full Login→selection→world→gameplay ещё не принят.
-Приоритет A: ordinaryTitle/Login; B: clientauth/selection; C: world/avatar/
-control/movement; D: combat/items/chat/NPC/quests/social; E: fullM6F/M7/M9.
-CRT/FP/failure gaps не отменены,но не подменяют связанный видимый сценарий.
-Остаток2–4объёма закрытого поведения — не прогноз календарных дней.
+Own PE eb84c16bd41447d4afb150d856108ea16915932cebbf4a496b49cb838c6370c8,
+x86/base400000/entry16FC30/2270208bytes.182client/20kernels build/link0/unresolved0.
+Engine137 SHA708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870
+не менялся. Header-зависимые client/facade объекты пересобраны.
+Primary SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
 
-## Завершённый частичный138 и следующий139
+Восстановлен обычный world-entry group1/op1 request58 и group1/op2 reply12.
+Request: account@0,keys@4,fullscreen@20,version126455@21,signature33bytes@25.
+Keymask=(k0+k2-k1-k3)*12AB34CC modulo32;каждый key XORmask.
+До отправки close-request flag435992=1. Reply:result0/grade1/kind2;
+cashShop flag3/indexWORD4,NPC6/7,quest9/10;nonzero flag→uint16index,zero→-1.
+Результат/grade/seen/selectors пишутся даже при ошибке;ReceiveResponseMsg идёт
+до записи kind. CNetworkMgr.m_worldEntry455 хранит данные для следующего bootstrap.
+Own packed protocol headers58/12; bounded actual AnalysisServerPacket1/2.
+Новые client455_world_entry.h/.inc; pure reader не мутирует state для short/null.
+Полные8functions/1372instructions/225positive CFGblocks равны2pins.
+RVA16A840 request,16A960 reply,16AAD0 kind,4ADAC0 keys,13EF80/13ED80 result,
+162AC0 pending response,162F50 full core dispatcher.
+Raw artifacts/client455-progress/world-entry139-reference/session.json.
 
-Root CGUIScreen::Add перенесён: null/no-op, AlwaysTop→AddFront455 иначе Add,
-SetParent(this), затем Show(FALSE), в том числе при duplicate registration.
-Подтверждение:5fullfunc/221instructions/21positive CFGblocks, все тела равны2pins.
-Raw registration-full.json и audit_client455_login_registration.py; ref report
-inventory/client455-login-registration-reference.json. GenericContainer.Add не менялся.
-Own PE ba23dd6de02e9b050f3651fd522e69f7ed8e2ab3acd977f4aa801bcfe2c7793b,
-entry16F640,size2269184;engine137unchanged.182/20 build/link0/unresolved0.
-Свежий normal-consumer ANI/BBX/ownWinMain/Miles/providers иordinary Login PASS.
-Latest run work/m9/ba23dd6d/login-frame002:frame70/3203ms/640x500,created1/loaded1,
-Renderreturnaftercapture иownexit observed,no fatal. PNG0bf6ec51… просмотрен:
-real lobby/waitingdialog;перекрывающиеся unopened panels отсутствуют.
-Target all10windows/input/auth/factory4/Title ещё OPEN. Готовность остаётся25%.
-43shared assets/44.2MBlinked/newpool0;без клонирования всего клиента.
-Diagnostic first_* report fields — aliases;правильное имяlogin_render_returned_after_capture.
-13file/4.66MB before-root snapshot и47file exact137 snapshot сохранены.
-IDA5a0405db/5818692d saved/closed,list0;nativejobs нет.
+Свежий account full-object native PASS:fixed62-byte plain oracle,fullscreen,
+short0..11/null,24 result/selector combinations,fragmented/wrapped encrypted
+receiver,ошибка242 иуспех0,real pending dialog close. Это искусственные входные
+байты,не реальная auth/session. Native report inventory/client455-account-native.json,
+отдельный world_entry_output. Standalone probe пропускает WinMain,поэтому явно
+задаёт g_bIsWindowed;не путать этот client global с состоянием engine wrapper.
 
-139: client response→bootstrap→selection. Diagnostic flow-diagnostic.json:
-5401D0 initstate6 normal/7logout;53EF80 byte435973;53D0F0 result0/state6→5E7BE0.
-Это pcode research,неfullASM/CFG/equality. Следом найти real producer/dispatcher,
-перенести client data bootstrap и выбор персонажа;не force UI/auth success.
-Create53BB20 brokenfunction/JUMPOUT/ложнаяCRT аннотация,использовать ASM.
-Country slot284false во всех11профилях;не force legacyreconnect. Server readonly.
+Свежий own WinMain/Miles/providers/ordinary Login PASS:
+work/m9/eb84c16b/login-frame001,created1/loaded1,frame70/3204ms/640x500,
+Renderreturn/ownexit observed,no fatal. PNGfe5073d2… просмотрен:lobby/waiting,
+unopened panels отсутствуют. TCP fixture получил67bytes (138получал35),ответов0.
+Component7assets/ordinary43assets shared,newpool0. Reference EXEs не выполнялись.
+IDAe71a49ca saved/closed,list0. Native jobs нет. Exact138 snapshot47files before139.
 
-### История ранних наблюдений138 (до исправления root)
+## Следующий140: bootstrap и реальные данные выбора персонажа
 
-Before138 snapshot47files сохранён;137commit f33d025. OrdinarySpriteMgr теперь
-legacy7→target3(login),8→2(loading),3→4(main),0/1unchanged. Без null guards
-исправлены два реальных nativecrashes изmissing sprite files. В CgpLogin.Render
-добавлен opt-in diagnostic PNGcapture послеEndScene;обычныйрежимне рисуетextra.
-Debugger следуетреальному WinMain→Title→LoginCreate→Render,затемточкевозврата.
-ТекущаяPE9adc8d0d…(current normal-link),engine137неизменён.182/20build/link0.
-Actual run work/m9/9adc8d0d/login-frame001:55inputs,real lobby10files+titlelogo,
-captureframe70/3203ms/640x500,created1/loaded1,returnaftercapture,no fatal.
-PNGviewed:реальнаяlobby/логотип/UI,НОокнаперекрываются;этоНЕfull455LoginUI.
-Старыйversionlabel0.738неисправлялсякосметически. Далееtargetvisibility/window
-init/layer routing;Titlemovie/fourstage/auth остаютсяOPEN. Data refs/failures:
-artifacts/client455-progress/login138-before-sprite-route.json,
-login138-after-sprite-route.json,login138-lobby-frame.json.
-IDA621d88dc saved/closed;idb_list count0. Raw diagnostic pcode9functions/pages:
-artifacts/client455-progress/login138-reference/session.json. Это не fullASM/
-secondary acceptance. Root RTTI CGUIScreen TD BD5D1C→COL B808B4→vtable ADAD8C,
-slot208→630A60 (RVA230A60),slot40→632430. Root Add вызывает Add/Insert,SetParent,
-затем Show(0);genericContainer.Add сам по себе Show(parent) остаётся правильным.
-В legacyRoot.Add финального Hide нет: вероятная причина всех открытых окон.
-Следом проверить fullASM/CFG и две pins до изменения,не просто скрывать панели.
-Нативныхjobпослеlogin-frame001нет. Probe --login-frame --settle-ms3200 --with-lobby.
+Target result getter53EF80 читаетbyte435973;consumer53D0F0 при result0/state6
+вызывает5E7BE0. Этот data bootstrap и его3selector consumers пока не перенесены.
+Есть diagnostic pcode в artifacts/client455-progress/login138-reference/flow-diagnostic.json;
+нужно полное выбранное ASM/CFG/equality и ordinary source integration.
+Registered-character target request1/8 (56ADD0),reply1/9 (56AE40),а legacy1/7 и1/8.
+Восстановить payload/dispatcher/consumers вместе,не просто перенумеровать.
+Далее actual character selection→world/control/combat/inventory/chat.
+Не bypass waiting/не force success;не писать server logic.
+Other core/35processor payloads и bootstrap/error consumers ещё legacy/partial.
 
-## Завершённое137
+Target init5401D0:state6 normal,7logout. Country slot284false во всех11profiles;
+не включать legacy reconnect безусловно. Create53BB20 имеет brokenIDB boundary,
+JUMPOUT/ложную CRT-аннотацию;для переноса использовать реальные инструкции.
+Full Title/movie/factory4/explicitnext ещё OPEN;legacyfactory3/modulo.
+Target Title.FrameMove557F80 безусловно exit/jump:не включать deadfade.
+CcrLogo.dat/реальныйAVI существуют;не переписывать CRT/COM вместо functionalroute.
+Full455UI:10Login windows/layout/focus/input/system sprite5 ещё OPEN.
+138root Add уже исправлен:AlwaysTop front/append,SetParent,Show(FALSE).
+Legacy label0.738 не менять косметически как доказательство455.
 
-Обычные InitFullScreenEffect/ReleaseFullScreenEffect владеют5targets:
-screen size+Z,512²+Z,512²безZ,512²+Z,256²безZ;PerbMap load/release.
-Capture-current helper портирован,но ordinary game caller ещё не подключён.
-Full Fraction/particle/BBoShasi routing иdraw owners НЕ перенесены.
-Primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
-secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558;
-x86/base400000.12fullfunc/1855instructions/13equalranges,включая8инструкций
-lower chunk8CD830. All positive CFG starts covered;<=100asm/page.
-Raw artifacts/client455-progress/refraction137-reference/session.json.
-IDA b4737bcb saved/closed/list0. Exact136snapshot47files:before137/manifest.json.
-Engine708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870;
-PE42213f081aceb9f1630add0c9d4a77deab330f1ca43936a85fee4c97c5c7cf89,
-2267648bytes/entry16F1C0/unresolved0.67engine/onlyr3d3d8.obj payload changed.
-Shared headers unchanged;182client/20kernels не rebuild137.
-Fresh own WinMain/Miles1/window/D3D/existingCreate1/contracts/providers PASS.
-Native work/m9/21083b2f/fullscreen-effect-001:5targets/8configs/3resize cases/
-2captures/18fullscreen frames/5GPUviews inspected/warnings0.
-Missing PerbMap loose file confirmed;positive32x16DDS is synthetic fixture only.
-Capture8CE020 retains surface reference/ignores HRESULTs;lab compensates it
-separately. Не claim balanced productioncapture. Initialwrapper640x500 before
-viewport640x480;realReset/lost/failures remain open.8CE2A0 is Fraction,notPlazma.
-8CE0A0 unowned stack lanes remain;never invent defaults.
-Material/world/Bellato135–136 результаты historical,не fresh137 regressions.
+## Оценка и приоритет
 
-## Исходное исследование Title138 (история)
+Около25%,диапазон20–35%,остаток75%:инженерная оценка12систем,не функция tests/bytes.
+Полных принятых областей0/12. inventory/client455-progress-assessment.json.
+A ordinaryTitle/Login;B auth/selection;C world/avatar/input/movement;
+D combat/items/chat/NPC/quests/social;E fullM6F/M7/M9. Все старые gaps сохранены.
+CRT/FP/failure fidelity остаётся backlog и не заменяет связанный игровой сценарий.
+Не повторять159k неизменённых проверок. Проверять затронутое и выполнять
+обязательные зависимости сборки;не обещать календарный срок по микро-тестам.
 
-research/client455-title-initial.md;raw title138-initial/session.json.
-20diagnostic pcode functions плюс2small instruction contexts;не fullASM/CFG/
-secondary range acceptance. IDA9bfd18c8 saved/closed/list0. Native jobs нет.
-Current source factory3legacy stages/modulo;455factory4/explicit next.
-Legacy Title почти пуст. TargetCreate157CE0 allocates32-byte movie owner,
-читаетlocale CcrLogo.dat иAVI,используетDirectShow/CTextureRenderer376.
-Title fields послеbase24:movie24,escape28,flag32,ARGB36,field40.
-В primary FrameMove157F80 безусловно пишетexit1 иjump epilogue:не включать
-недостижимую длинную video/fade ветку,но Create/Render этим не отменяются.
-Реальные ko-kr/ru-ru CcrLogo.dat иccrinc.AVI878592bytes существуют.
-Следующее действие: actual ordinary Title→Login/first Login LoadData/UI,
-проверить стандартную SDK movie dependency перед реверсом всех COM baseclasses.
-Не заявлять видимые455экраны или полную4stagefactory уже готовыми.
+## Операционные правила
 
-## Место и проверки
+VS2026/MSVCx86. Python: scripts/Invoke-Python.ps1 file.py,не-c/-m.
+Native/GPU jobs последовательно;timeout не termination,проверять тот жеhandle.
+IDA:owned work copies,session на каждомcall,ASM≤100/page ивсе positiveCFG/tails,
+save/close;MCP raw писать≤20kchunks. rg--files перед неизвестными путями;
+использовать rg --glob при фильтрации каталогов,не path wildcard в PowerShell.
+Общие исходные assets через client455_asset_staging.py,только owned copies;
+configs/exes private. Snapshot13before-root и47before138/before139 сохранены.
+Storage snapshot150.95GiBlogical/42.29GiBunique;hardlinks повторяются в сумме.
+Старые большие каталоги не удалялись;до очистки нужна reachability evidence/inputs.
+Не hardlink originals;Windows fileidentity через os.stat(path),не DirEntry.stat.
 
-scripts/client455_asset_staging.py подключён к runtime_inputs,generic runner,
-earlystartup,device/existingCreate иfullscreen. Pool work/shared-runtime-inputs
-adopts SHA-verified ownedcopies;never hardlinks originals. Configs/exes private.
-5boundary/fileidentity cases PASS. Latest earlystartup newpool208896bytes;
-existingCreate36assets/newpool0;fullscreen11assets/newpool0. Ничего старого
-не удалялось. Storage audit snapshot150.95GiBlogical/42.29GiBunique:
-m9=134.19/26.20GiB,oldgraphics12.39GiB,sourceport0.42GiB.
-НаWindows DirEntry.stat даёт zero inode/link fields;дляhardlinks os.stat(path).
-До очистки построить reachability current/historical evidence;не удалять inputs
-по одному возрасту. Остальные крупные stagers переводить по мере использования.
+## Движок и сохранённые ограничения
 
-Python: scripts/Invoke-Python.ps1 file.py,не-c/-m. VS2026MSVCx86.
-Native/GPU jobs последовательно;timeout не termination,опросить тотжеhandle.
-MCP JSON<=20kchunks;ASM<=100/page плюс все positiveCFG/tails;save/close ownIDA.
-rg--files перед неизвестными именами,безshellpathglobs наWindows.
-Не повторять159k unchanged suites. Targeted checks после изменений;обновлять
-актуальные evidence/docs. Legacy originals иserver files не изменять.
+Перенесены selected render/model/animation/material/audio/effects/maps,не целый мир.
+FullFraction/particle/BBoShasi,INS/Empty/visibility/collision/device lifecycle ещё OPEN.
+Пять scene targets137/capture helper существуют;ordinarycapture caller ещё не доказан.
+Capture8CE020 сохраняет surface ref/игнорирует HRESULT;только lab компенсирует.
+Synthetic PerbMap не считать455asset. Wrapper initially640x500/viewport640x480 open.
+CLevel::SetViewMatrix не inverse/viewproj;publishcamera отдельно.
+TemporaryCLevel должен переживать activemap;destructor освобождает global resources.
+Material526/serialized46/MAX2048;не исправлять specular_flikering typo/OR bits.
+ShaderPS6 fourthlane и прочие unowned stack lanes не выдумывать.
+Остальные факты/доказательства — research/project-memory-before139.md,
+research/project-memory-before137.md,docs/client-acceptance.md.

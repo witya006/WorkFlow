@@ -140,7 +140,7 @@
       "estimate_high": 25,
       "completed_full_domain": false,
       "done": [
-        "Codec/AES/пакеты/часть transport/rings;selected ordinary Nuclear receiver"
+        "Codec/AES/transport/rings,selected Nuclear receiver;обычные world-entry запрос58/ответ12 и выбор вариантов таблиц"
       ],
       "remaining": [
         "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
@@ -248,7 +248,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "30cede85a5746780cfdae1914085625a61ade2cef2e41465ecb4f08ff6107801",
+      "sha256": "462255de38c99f610844ecca7951f5abb8e2eb2834013491411c64521c3038b1",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -264,7 +264,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "c4b0a6375adc72064dbe73a8723b0f62cb306655371f254381d2adc89bc5053c",
+      "sha256": "76af222680772a314deabff05fd87e44524d63c156dda389a9ae23263a9b9a6c",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -470,11 +470,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "ba23dd6de02e9b050f3651fd522e69f7ed8e2ab3acd977f4aa801bcfe2c7793b",
-      "bytes": 2269184,
+      "sha256": "eb84c16bd41447d4afb150d856108ea16915932cebbf4a496b49cb838c6370c8",
+      "bytes": 2270208,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x16f640",
+      "entry_rva": "0x16fc30",
       "sections": [
         ".text",
         ".rdata",
@@ -496,16 +496,16 @@
         "architecture": "x86"
       }
     ],
-    "last_completed_checkpoint": "inventory/client455-login-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-world-entry-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "138 ordinary Login PARTIAL:real lobby/waiting dialog;root registration fixed;next455network-response/bootstrap/selection integration",
+    "current_work": "139 PARTIAL:ordinary455world-entry58/12 protocol integrated and tested;next real bootstrap/registered-character response/selection",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "b11f80187269db10e4238ed5d901fdeb618fba78b5460b515c288072ceae0f50",
+      "sha256": "fe27197d79e62c2b16a385a8563e40c7547888e8c5cfff311760ae7e3d531ca3",
       "fresh_for_current_PE": true,
       "frame": {
-        "file": "work/m9/ba23dd6d/login-frame002/login-frame.png",
-        "sha256": "0bf6ec516f28045e235ea6353811c02aa9d24f1d4fef9ef8c6e378ddc822ca7c"
+        "file": "work/m9/eb84c16b/login-frame001/login-frame.png",
+        "sha256": "fe5073d23ef1e0035c8d11e39c40f96f6b9e15124a37c4e927b0695802ce5537"
       },
       "capture": {
         "result": 0,
@@ -513,14 +513,14 @@
         "height": 500,
         "format": 22,
         "frame_index": 70,
-        "elapsed_ms": 3203,
+        "elapsed_ms": 3204,
         "requested_delay_ms": 3200
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa78f3f0",
-        "vtable": "0x212bc0",
+        "object": "0xae10648",
+        "vtable": "0x852bc0",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -537,10 +537,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "eda7d51f534c063f9847b0d402e996560707e20ad25bca72f84d838a155e4009",
-    "entries": 140,
+    "sha256": "e1cb41ca1740d98dd53400a8ede295da9bf950e9b7f0747e5d8fd2ea743a4f60",
+    "entries": 141,
     "statuses": {
-      "partial": 108,
+      "partial": 109,
       "partial_component": 2,
       "audit_open": 1,
       "open": 2,
@@ -551,7 +551,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ORDINARY-LOGIN-138"
+      "CLIENT455-WORLD-ENTRY-139"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -643,7 +643,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "4e223d253cf16ae450b321c385fb6b37fd875d004c6a7534f769ae6b5f1a0578"
+    "sha256": "6855c21ce6831606dca6e3bd53040ee0d9907e91a8787cccc3e4dfb3a19a8cf2"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

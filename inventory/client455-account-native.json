@@ -1,10 +1,10 @@
 {
-  "scope": "Actual ordinary account methods,send/receive rings,decoded dispatcher and pending dialog on own in-memory fixture;not authentication",
+  "scope": "Actual ordinary account methods,send/receive rings,decoded dispatcher and pending dialog on own in-memory fixture;not authentication;58-byte world entry request and bounded12-byte reply via real encrypted/ring dispatcher;not auth/bootstrap/selection acceptance",
   "architecture": "x86",
-  "entry_rva": "0x15bf90",
+  "entry_rva": "0x1716b0",
   "source": "scripts/native/client455_account_probe.cpp",
-  "source_sha256": "2ce85a58779c92c8e33cf1cde2dd90a632e0d0d6d5ff9050c0f7d7d05e7fde21",
-  "script_sha256": "fd87017514ed80d9b01aba51e220fe2bb01d1822e6a63af45e3bf11732fb013d",
+  "source_sha256": "1fc268120edfe23a2cc5694990a4af27621efdde60d763d4f57d692c27cd3b3e",
+  "script_sha256": "36dbae359d08c3c51efe6fa04f7903bb4e530ca7846c6cd67b1966f3c6eecb05",
   "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
   "sources": {
     "client455_account.h": "f38d1d0eb0289401f87bf69c11a768d8dff2c0e2447794108b9eb2fb07438d80",
@@ -13,49 +13,49 @@
     "client455_account_dispatch.inc": "54f6cb238f7f3d8211dd717ae6bd578856701b5849f8af93e624ff3471f629bc"
   },
   "exe": {
-    "file": "work/m9/9e7efded/account-001/account-probe.exe",
-    "sha256": "9e7efded0fa0318c621a8a9eae26411db967e7b42d67b262c3fa8a47d2757aba"
+    "file": "work/m9/b504359f/account-001/account-probe.exe",
+    "sha256": "b504359f4cc8c93bfca2b95a24daafce3ae5ec62b3b16ae1ee47951900347688"
   },
   "map": {
     "file": "work/client455-port/account-probe/account-probe.map",
-    "sha256": "608c42be5518e0d7a3a80b6df6f5545cc78611348ebd200277d9684aad3ec7df"
+    "sha256": "982d245a2277c2c6077f3295f27ee58f327ed3e2a5162f3dd73c0472ecffaa10"
   },
   "inputs": [
     {
-      "file": "work/m9/9e7efded/account-001/System/shader/Grass1.vsh",
+      "file": "work/m9/b504359f/account-001/System/shader/Grass1.vsh",
       "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
     },
     {
-      "file": "work/m9/9e7efded/account-001/System/shader/grass1.vso",
+      "file": "work/m9/b504359f/account-001/System/shader/grass1.vso",
       "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
     },
     {
-      "file": "work/m9/9e7efded/account-001/System/console.jpg",
+      "file": "work/m9/b504359f/account-001/System/console.jpg",
       "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
     },
     {
-      "file": "work/m9/9e7efded/account-001/System/010.TTF",
+      "file": "work/m9/b504359f/account-001/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
     },
     {
-      "file": "work/m9/9e7efded/account-001/DataTable/ko-kr/NDLanguage.edf",
+      "file": "work/m9/b504359f/account-001/DataTable/ko-kr/NDLanguage.edf",
       "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
     },
     {
-      "file": "work/m9/9e7efded/account-001/SpriteImage/Common/mouse.spr",
+      "file": "work/m9/b504359f/account-001/SpriteImage/Common/mouse.spr",
       "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
     },
     {
-      "file": "work/m9/9e7efded/account-001/SpriteImage/ko-kr/common.spr",
+      "file": "work/m9/b504359f/account-001/SpriteImage/ko-kr/common.spr",
       "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
     },
     {
-      "file": "work/m9/9e7efded/account-001/R3Engine.ini",
+      "file": "work/m9/b504359f/account-001/R3Engine.ini",
       "sha256": "e231ddaa3b92e20fd0cfb7f5549ae742ebdd144f37ee15df1af7d8b74af70524"
     }
   ],
   "output": {
-    "file": "work/m9/9e7efded/account-001/result.json",
+    "file": "work/m9/b504359f/account-001/result.json",
     "sha256": "9c7a0e28d9ce27c58e219b9280b0f22b42556ab3643ea7dbc5606460bf4c623e"
   },
   "native": {
@@ -79,11 +79,44 @@
     "authentication_performed": false
   },
   "reference_sha256": "dd40aa3f2e260abe599c9ebaf5be1dec3ad20c305e2a8454bf8038eea5bcaac8",
-  "normal_link_sha256": "6c56aaedee41a0f664fe7e30d378cb5526e43dd502b96e62ca6eeea242f1b7f5",
+  "normal_link_sha256": "462255de38c99f610844ecca7951f5abb8e2eb2834013491411c64521c3038b1",
   "natural_exit": 0,
   "authentication_performed": false,
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "world_entry_sources": {
+    "client455_world_entry.h": "be211bc9f7dd1fbc08f89db7ed0f1f1da286215f1ee49505fc9e146bfc43e888",
+    "client455_world_entry.inc": "b9bf486ceccbf88fd2ca52e944f17401bf12ff958005881da1e6c98a13d79f78",
+    "client455_world_entry_probe.inc": "c466d7e996e7fc13962ece3e8293366c03ea5dea139748dc8f100946b06714ee"
+  },
+  "world_entry_reference_sha256": "81fb9be0a49f7f285ea785b286823ff249b458645f31abf8197257fbdc0b3e77",
+  "world_entry_output": {
+    "file": "work/m9/b504359f/account-001/world-entry-result.json",
+    "sha256": "497e5a69b4d1fb9f4839622ce04cc4dd468e953034a3e791c8e832ca43d4c817"
+  },
+  "world_entry_native": {
+    "status": "PASS",
+    "ordinary_request_bytes": 58,
+    "ordinary_response_bytes": 12,
+    "request_golden_frame": true,
+    "fullscreen_flag": true,
+    "short_lengths_checked": 12,
+    "null_rejected": true,
+    "result_flag_combinations": 24,
+    "fragmented_wrapped_encrypted_receiver": true,
+    "request_dialog_closed": true,
+    "failure_response_selectors_retained": true,
+    "authentication_performed": false,
+    "bootstrap_or_selection_accepted": false
+  },
+  "shared_asset_staging": {
+    "assets": 7,
+    "linked_bytes": 7596159,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "asset_staging_script_sha256": "ed948c1db7c1944fa4f4ad3293f3997351209b34b470d0e29e9d28605551aad8"
 }

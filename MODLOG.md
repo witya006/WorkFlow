@@ -844,3 +844,10 @@ both pins. Recovered root Add removes overlapping unopened Login panels in
 ordinary own PEba23dd6d…;real lobby/waiting frame70/3203ms viewed,no fatal.
 43shared assets,new pool bytes0. Full Title/Login/auth/selection/world/M9 OPEN.
 Evidence: research/client455-login.md;inventory/client455-login-checkpoint.json.
+
+2026-11-10 — world entry139 PARTIAL. Request group1/op1 now58bytes;reply1/2
+now12bytes with cashShop/NPCShop/quest selectors.8fullfunc/1372instructions/
+225positive CFGblocks equal2pins. Actual ordinary encrypted send67wirebytes
+(before35);bounded receiver/fragment wrap/dialog/failure and success fields PASS.
+Own PEeb84c16b…,engine137 unchanged,ordinary Login fresh. Bootstrap/selection/
+full455/M9 OPEN. research/client455-world-entry.md;world-entry-checkpoint.json.

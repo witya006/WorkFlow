@@ -72,6 +72,7 @@ struct StageBinding {
     StageBinding(CAvatar& avatar,StageFixture& stage){g_pAvatar=&avatar;g_MainApp.*access(StageMember{})=&stage;g_MainApp.*access(CreatedMember{})=TRUE;g_MainApp.*access(LoadedMember{})=TRUE;g_MainApp.*access(ActiveMember{})=FALSE;}
     ~StageBinding(){g_pAvatar=previousAvatar;g_MainApp.*access(StageMember{})=previousStage;g_MainApp.*access(StageIdMember{})=previousId;g_MainApp.*access(CreatedMember{})=previousCreated;g_MainApp.*access(LoadedMember{})=previousLoaded;g_MainApp.*access(ActiveMember{})=previousActive;}
 };
+#include "client455_world_entry_probe.inc"
 static int avatarStageChecks(CNetworkMgr& network,_NET_BUFFER& send){
     CAvatar avatar;REQUIRE(avatar.GetClientStage455()==0&&avatar.GetSkipTutorial455()==0);
     StageFixture stage;StageBinding binding(avatar,stage);
@@ -158,6 +159,7 @@ int main(){
     (network.*access(Active{}))[0]=2;network.m_account455.zoneRequestMode=-1;network.SendRequestMsg();REQUIRE(network.IsSendRequestMsg()&&!_IsOpenedDialogBox(nullptr,0xf100));network.ReceiveResponseMsg();
     network.m_account455.zoneRequestMode=4;network.SendRequestMsg();REQUIRE(_IsOpenedDialogBox(nullptr,0xf100));network.m_account455.zoneRequestMode=-1;network.ReceiveResponseMsg();REQUIRE(!network.IsSendRequestMsg()&&_IsOpenedDialogBox(nullptr,0xf100));
     network.m_account455.zoneRequestMode=3;network.ReceiveResponseMsg();REQUIRE(!_IsOpenedDialogBox(nullptr,0xf100));(network.*access(Active{}))[0]=0;
+    REQUIRE(worldEntryChecks(network,process,send,receive)==0);
     REQUIRE(avatarStageChecks(network,send)==0);
     process.*access(SendBuffer{})=nullptr;process.*access(ReceiveBuffer{})=nullptr;process.*access(Owner{})=nullptr;process.m_NetSocket.GetSocket(0)->m_bAccept=false;
     REQUIRE((g_MainApp.*access(Unload{}))());g_pUiSpriteMgr=nullptr;g_pUiScreen=nullptr;R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();

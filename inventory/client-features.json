@@ -6,9 +6,51 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ORDINARY-LOGIN-138",
+      "id": "CLIENT455-WORLD-ENTRY-139",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary455world-entry request58/reply12,table selectors and actual encrypted dispatcher;bootstrap/auth/selection not accepted",
+      "implementation": [
+        "scripts/native/client455_world_entry.h",
+        "scripts/native/client455_world_entry.inc",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "reference": [
+        {
+          "rva": "0x16a840",
+          "role": "Request58/account/keys/fullscreen/version/signature"
+        },
+        {
+          "rva": "0x16a960",
+          "role": "Reply12/result/grade/table selectors/seen/pending/kind"
+        },
+        {
+          "rva": "0x4adac0",
+          "role": "Modulo32 key transform"
+        },
+        {
+          "rva": "0x162f50",
+          "role": "Full core incoming dispatcher group1/op2"
+        }
+      ],
+      "verification": "8fullfunc/1372instructions/225positive CFG blocks and bodies equal in two pinned455x86 binaries. Actual normal methods/real send-AES-receive rings/dispatcher and pending dialog pass fixed request oracle,full/window flags,short0..11/null,24result/selector combinations,fragment/wrap,error242 and result0. Own PEeb84c16b ordinary WinMain/Title/Login sends67wirebytes (before35);real lobby/waiting frame viewed,no fatal. No authenticated peer or complete bootstrap/selection.",
+      "evidence": [
+        "inventory/client455-world-entry-reference.json",
+        "inventory/client455-account-native.json",
+        "inventory/client455-world-entry-checkpoint.json",
+        "inventory/client455-login-frame-native.json",
+        "research/client455-world-entry.md"
+      ],
+      "gaps": [
+        "Actual bootstrap5E7BE0/all table loaders and3selector consumers",
+        "Registered-character targetrequest1/8/reply1/9,payload and real selection;legacy1/7 and1/8 remain",
+        "Full auth/error/UI/stage/world/gameplay/lifecycle and all client-acceptance gaps;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-ORDINARY-LOGIN-138",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary own client renders a real lobby/waiting dialog;localized sprite paths and455root registration remove overlapping unopened panels",
       "implementation": [
         "scripts/prepare_client455_normal.py",
@@ -51,7 +93,8 @@
         "All10Login windows/layout/input/focus/layers/system sprite5",
         "Actual response→client bootstrap→selection→world flow",
         "Full game and all historical client-acceptance gaps;M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "superseded_by": "CLIENT455-WORLD-ENTRY-139"
     },
     {
       "id": "CLIENT455-SCENE-CAPTURE-137",

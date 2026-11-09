@@ -1,7 +1,10 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий частичный gate138: inventory/client455-login-checkpoint.json.
-Обычный WinMain→Title→Login собственной ba23dd6d… показывает реальную lobby;
+Текущий частичный gate139: inventory/client455-world-entry-checkpoint.json.
+Request58/reply12 world-entry перенесены;валидные/короткие/fragmented encrypted
+ответы проверены через обычные buffers/dispatcher. Ordinary TCP отправка67bytes
+наблюдалась;auth/bootstrap/selection не приняты. research/client455-world-entry.md.
+Обычный WinMain→Title→Login собственной eb84c16b… показывает реальную lobby;
 лишние панели больше не открываются одновременно после переноса root Add455.
 Ввод/авторизация/выбор персонажа/мир и полная455UI не приняты.
 Исследование и оставшийся стык response→bootstrap→selection: research/client455-login.md.
