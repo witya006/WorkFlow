@@ -1,6 +1,6 @@
 # Аудит окружения — 04.11.2026
 
-Дополнение 10.11.2026: текущий собственный клиент a3002fc4… собирается и
+Дополнение 10.11.2026: текущий собственный клиент b3f769a9… собирается и
 показывает реальную lobby/окно ожидания в обычном Login. Root-регистрация окон
 перенесена по455; лишние панели больше не открываются одновременно.
 Восстановлены обычные запрос58/ответ12 входа455 и их encrypted dispatcher.
@@ -8,13 +8,21 @@
 Реальный receiver применяет имена/уровни/деньги64/tutorial flag к3 Avatar.
 В probe добавлены настоящие Character shaders; их отсутствие было причиной
 ошибки инициализации. Итоговый probe PASS, новые bytes shared pool0.
-Полная приёмка остаётся открытой. Gate: inventory/client455-registered-characters-checkpoint.json.
+Resource141:полный каталог9 групп,регистрация1267bones/10483meshes/18872ANI;
+5 реальных player BN и1 archived player ANI загружены. Fresh ordinary Login PASS.
+Полная приёмка остаётся открытой. Gate: inventory/client455-resource-catalog-checkpoint.json.
 Оценка всего клиента: около25% (20–35%), см. roadmap.md и
 inventory/client455-progress-assessment.json. Для сборки неразрешённых зависимостей
 нет; полного исходного комплекта455 и полной карты его поведения пока нет.
-Последняя IDA сессия2a850a2f saved/closed; idb_list count0. Новых установок нет.
+Последняя IDA сессия731ffc14 saved/closed; idb_list count0. Новых установок нет.
 9 полных функций/623 инструкции/72 CFG блока списка персонажей равны двум455.
 Полные bootstrap/classes/appearance/selection ещё не приняты; см. research/client455-registered-characters.md.
+Resource141:7fullfunc/934instructions/108CFG иEHtails равны2pins. Часть ссылок
+каталога не разрешилась:503BN/592BBX/25ANI после RFS lookup;это частичная опись,
+не все assets и не доказательство обязательности каждого пути. Пять player BN есть.
+Shared suffixes расширены BN/BBX/ANI/MSH/RFS;на первом staging+53.1MB,повторы0.
+research/client455-resource-catalog.md. Account140 evidence сохранён before141,
+его неизменённый suite на новой PE не повторялся.
 Исторические проверки137 ниже не являются повторной проверкой всех систем новой PE.
 
 M6 — частично: восстановлены пять ресурсов кадра и их освобождение.

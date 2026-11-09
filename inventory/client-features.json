@@ -6,9 +6,43 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-REGISTERED-CHARACTERS-140",
+      "id": "CLIENT455-RESOURCE-CATALOG-141",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary nine-group Resource.edf registration/player skeleton checks/ANI metadata;five real player skeletons and one real archived ANI loaded;full bootstrap/selection open",
+      "implementation": [
+        "scripts/client455_resource_catalog_port.py",
+        "scripts/native/client455_resource_catalog.h",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "reference": [
+        {"rva": "0x208550", "role": "Nine-group Resource.edf loader"},
+        {"rva": "0x2079c0", "role": "Bone records and missing player path predicate"},
+        {"rva": "0x207cb0", "role": "Mesh parents/default/model branches and player skeleton validation"},
+        {"rva": "0x2081c0", "role": "Animation registration and event metadata"},
+        {"rva": "0x1e7be0", "role": "Bootstrap owner;only the Resource branch is integrated in this unit"}
+      ],
+      "verification": "7fullfunc/934instructions/108positive CFG blocks,including EH tails,equal in both455pins. Real ordinary manager reads all30623catalog rows,registers1267bones/10483meshes/18872ANI;one missing NPC parent explains the skipped mesh. Five actual player skeletons and one real RFS player ANI loaded. Fresh own PEb3f769a9 WinMain/Login frame70/3219ms viewed,no fatal. Old account140 snapshot preserved;unchanged account suite not rerun.",
+      "evidence": [
+        "inventory/client455-resource-catalog-reference.json",
+        "inventory/client455-resource-catalog-native.json",
+        "inventory/client455-resource-catalog-checkpoint.json",
+        "inventory/client455-login-frame-native.json",
+        "research/client455-resource-catalog.md"
+      ],
+      "gaps": [
+        "Remaining bootstrap ItemCash/ItemSet/Item/character/quest/table owners and ordinary selection",
+        "Full appearance/classes/item consumers and legacy resource getters/error UI/quit policy",
+        "1120checked unresolved resource references;not a complete asset inventory or proof they are all required at runtime",
+        "All historical client-acceptance gaps;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-REGISTERED-CHARACTERS-140",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-RESOURCE-CATALOG-141",
+      "historical_runtime_snapshot": "artifacts/client455-progress/before141/manifest.json",
       "description": "Ordinary registered-character1/8 request and1/9 reply506/three164-byte records applied to real Avatar objects;full bootstrap/classes/appearance/selection remain open",
       "implementation": [
         "scripts/native/client455_registered_characters.h",

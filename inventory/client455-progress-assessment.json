@@ -44,7 +44,7 @@
       "estimate_high": 65,
       "completed_full_domain": false,
       "done": [
-        "RPK/EDF/helper SPT/BSP/EBP,модели/ANI и выбранные реальные ресурсы читаются"
+        "RPK/EDF/helper SPT/BSP/EBP,модели/ANI читаются;штатный Resource.edf регистрирует9групп/30623записи,5скелетов рас реально загружены"
       ],
       "remaining": [
         "Полная опись455,все загрузочные ветки/таблицы/ошибки и обычный bootstrap"
@@ -52,7 +52,8 @@
       "evidence": [
         "client455-world-checkpoint",
         "client455-material-layout-checkpoint",
-        "client455-item-payloads-checkpoint"
+        "client455-item-payloads-checkpoint",
+        "client455-resource-catalog-checkpoint"
       ]
     },
     {
@@ -252,7 +253,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "89ea54a6d2729d6775666b0c2050d8511b4f508f513d555f61b41d7541656ad0",
+      "sha256": "fd9daeda744f4344cf88e5861d5fddccad037e8b1eb10aa6bdd2de94d7d0323e",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -268,7 +269,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "6f2276abe6b5cb0f000931d78148a5ab3adc6dc96ff8c93ce369f212e86d95b3",
+      "sha256": "dea73c037f8744ceb2253c78d17d6f741870914d9087ed3172dcc65fb2b98bc9",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -304,6 +305,14 @@
       "status": "PARTIAL_SOURCE_RUNTIME",
       "scope": "Real Item47/Quest12/Character7 readers and five fresh payload states with concrete manager/087clone-release;ordinary086 current",
       "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-resource-catalog-checkpoint": {
+      "file": "inventory/client455-resource-catalog-checkpoint.json",
+      "sha256": "3dcbb095e9c6beaa31a0a3cb58728c7e4deadd2660e28ff97b442491310fb7d5",
+      "status": "PARTIAL",
+      "scope": "Ordinary Resource.edf catalog/manager registration/player bone validation/ANI event metadata;not whole bootstrap or selection",
+      "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-world-frame-checkpoint": {
@@ -367,7 +376,7 @@
       "sha256": "1923a255f644860861e2b105b16a44db51f32252c33eb961409c264267f036a9",
       "status": "PARTIAL",
       "scope": "Registered-character1/8 request and1/9 fixed506-byte reply/three164-byte records/real Avatar fields;not full bootstrap/classes/appearance/selection",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -431,12 +440,12 @@
       "sha256": "0b7acc9d7ec29282176d356ac1057597b5ea44e5bb9eac1304c66151477053b1",
       "status": "PARTIAL",
       "scope": "Ordinary world-entry request58/reply12,core dispatcher,selectors and response callback;not authentication/bootstrap/selection acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
-      "sha256": "a56f94da8b7dbc45e2b4e4e6dcb1fee56d216699be6f159e870a9d1866326f67",
+      "sha256": "d1aedfd0fc796a387e50271f0d7f88046a9a1a8b61bc08deb4661fcc7b5de279",
       "status": "PARTIAL",
       "scope": "Ordinary own WinMain/Title/Login render with real lobby and recovered root registration;not complete455Title/Login/auth",
       "fresh_for_current_PE": true,
@@ -498,11 +507,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "a3002fc48427f09cb1cb7c2f57c95696162d1099ce7714e890f1053d1c321607",
-      "bytes": 2271744,
+      "sha256": "b3f769a9b551a81099ca0ef01b92ac96b47bc5048d6ea9594e21a56a97d8d00c",
+      "bytes": 2272768,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x1703f0",
+      "entry_rva": "0x170760",
       "sections": [
         ".text",
         ".rdata",
@@ -524,16 +533,16 @@
         "architecture": "x86"
       }
     ],
-    "last_completed_checkpoint": "inventory/client455-registered-characters-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-resource-catalog-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "140 PARTIAL:ordinary registered-character1/8 request,1/9 reply506 and3real Avatar consumers;next real bootstrap/classes/appearance/selection",
+    "current_work": "141 PARTIAL:ordinary Resource.edf nine-group registration/five real player skeletons+ANI;next remaining bootstrap/item/class data and selection",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "64394e782a715825aabee66add142bcf5c33d50bb6e614f93da37f9a6fe29739",
+      "sha256": "ab9fc8c394a6304c438cd798e9dde379ed8fd4700ce6e43eff52b52901648153",
       "fresh_for_current_PE": true,
       "frame": {
-        "file": "work/m9/a3002fc4/login-frame001/login-frame.png",
-        "sha256": "8ed172376020b2512ffec06a09ff174a07809d5fad9e43ac10b5aa9108bfe289"
+        "file": "work/m9/b3f769a9/login-frame001/login-frame.png",
+        "sha256": "3de508afd3e9bfe0559856abb876411f6159f8945c9be9a15aced1bffcf49734"
       },
       "capture": {
         "result": 0,
@@ -541,14 +550,14 @@
         "height": 500,
         "format": 22,
         "frame_index": 70,
-        "elapsed_ms": 3203,
+        "elapsed_ms": 3219,
         "requested_delay_ms": 3200
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xab4f330",
-        "vtable": "0x603bc0",
+        "object": "0xaa06198",
+        "vtable": "0x5d3bc0",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -565,10 +574,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "c5103e30c68b107557e11725bdb0c5c79b2be04316aa9161f4c55bf555e509e4",
-    "entries": 142,
+    "sha256": "d10a7d7de04e284cb4e42a239fce867ef62c2d09dc645b9d0290cf332f7961e1",
+    "entries": 143,
     "statuses": {
-      "partial": 110,
+      "partial": 111,
       "partial_component": 2,
       "audit_open": 1,
       "open": 2,
@@ -579,7 +588,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-REGISTERED-CHARACTERS-140"
+      "CLIENT455-RESOURCE-CATALOG-141"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -604,6 +613,9 @@
     "complete455_behavior_inputs_proven": false,
     "available_reference_binaries": 2,
     "original_complete455_source_sets": 0,
+    "checked_unresolved_resource_references": 1120,
+    "resource_inventory_complete": false,
+    "resource_reference_scope": "Catalog bone/BBX references and a selected ANI search,including target RFS lookup;not a complete client asset inventory",
     "assembly_status": "Current selected client build is possible;this does not prove full455source completeness",
     "behavior_specification_status": "Incomplete:complete feature/packet/state/resource/scenario inventory is still missing;no defensible percentage for that missing denominator",
     "original455source_completeness_percent": null
@@ -682,7 +694,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "f035c3c8426cd566238e7565195b06057866ce4aa175a3400997f1c517d39fda"
+    "sha256": "59727137cad906caecea6ab95cbc51cbfe41703a23d863d3f54c0fb3d4ed728c"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

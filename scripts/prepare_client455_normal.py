@@ -31,6 +31,7 @@ from client455_nuclear_minimap_port import port_nuclear_minimap
 from client455_nuclear_registry_port import port_nuclear_registry
 from client455_nuclear_receiver_port import port_nuclear_receiver
 from client455_map_data_port import port_map_data
+from client455_resource_catalog_port import port_resource_catalog
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -109,6 +110,8 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            raw,catalog_changed=port_resource_catalog(raw,relative,section)
+            if catalog_changed:changes.append('455Resource.edf nine groups/260-328-244 records;player bone missing/shape checks and84-byte ANI events;bounded preflight and own list accessor')
             raw,resource_changed=port_resource_object(raw,relative,native,section)
             if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             raw,item_changed=port_item_object(raw,relative,native,section)
@@ -887,6 +890,8 @@ def main():
     report['nuclear_receiver_port_sha256']=sha((WS/'scripts/client455_nuclear_receiver_port.py').read_bytes())
     for name in ['client455_world_entry.h','client455_world_entry.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_registered_characters.h','client455_registered_characters.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['resource_catalog_port_sha256']=sha((WS/'scripts/client455_resource_catalog_port.py').read_bytes())
+    report['record_inputs']['client455_resource_catalog.h']=sha((native/'client455_resource_catalog.h').read_bytes())
     for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_registry.h','client455_nuclear_registry.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_minimap.h','client455_nuclear_minimap.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

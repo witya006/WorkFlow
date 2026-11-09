@@ -1,0 +1,130 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary Resource.edf catalog/manager registration/player bone validation/ANI event metadata;not whole bootstrap or selection",
+  "script": {
+    "file": "scripts/checkpoint_client455_resource_catalog.py",
+    "sha256": "3acda72df0af6f1227109cb4b5871b6f905894f5b19cd6eb4a8e0fba5c0babf1"
+  },
+  "normal_link_sha256": "fd9daeda744f4344cf88e5861d5fddccad037e8b1eb10aa6bdd2de94d7d0323e",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b3f769a9b551a81099ca0ef01b92ac96b47bc5048d6ea9594e21a56a97d8d00c",
+    "bytes": 2272768,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x170760",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "component": {
+    "status": "PASS",
+    "groups": 9,
+    "rows": [
+      1267,
+      10484,
+      18872
+    ],
+    "registered": [
+      1267,
+      10483,
+      18872
+    ],
+    "player_bones_loaded": 5,
+    "real_player_animation": true,
+    "all_catalog_row_bytes": true,
+    "full_bootstrap_or_selection": false
+  },
+  "ordinary_methods_rva": {
+    "CCharResDataMgr::LoadData": "0x58780",
+    "CCharResData::LoadBoneDataList": "0x58590",
+    "CCharResData::LoadMeshDataList": "0x588c0",
+    "CCharResData::LoadAniDataList": "0x583c0"
+  },
+  "fresh_evidence": {
+    "resource-catalog-reference": {
+      "file": "inventory/client455-resource-catalog-reference.json",
+      "sha256": "9b6944603e6078434905ffbf4b15e1ddeb43622ae7dabd8d3f84574675c497d9"
+    },
+    "resource-catalog-native": {
+      "file": "inventory/client455-resource-catalog-native.json",
+      "sha256": "4faf1ef74c1ffb4c6c5413a4383c708c28e1f35bbcd7973a546957308b6f496e"
+    },
+    "login-checkpoint": {
+      "file": "inventory/client455-login-checkpoint.json",
+      "sha256": "d1aedfd0fc796a387e50271f0d7f88046a9a1a8b61bc08deb4661fcc7b5de279"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "ab9fc8c394a6304c438cd798e9dde379ed8fd4700ce6e43eff52b52901648153"
+    },
+    "login-visual": {
+      "file": "inventory/client455-login-visual.json",
+      "sha256": "1fa628ab719aba51f4ab73ae66461e0dd3e902a54e4c85686941fd94882f979e"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "65f33061c975ba97f0c89b486a5cf7e533d0f378beace8e5ba1c6ae28dc63f6f"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "6ad3536ff91e4edb07bca5d646a6924751841e06269942595baa3e42b20daa98"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "a060269453b7e3441d2e5b0edc42e77f015cfcaf0697c1c2cb10b778696eb75a"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "fd9daeda744f4344cf88e5861d5fddccad037e8b1eb10aa6bdd2de94d7d0323e"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "8ce443ea42b313edfae8a034a78dd7b4cdfb09dcb309416f4538992ac2fddbe3"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "dea73c037f8744ceb2253c78d17d6f741870914d9087ed3172dcc65fb2b98bc9"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "3b27f471696c60c1a9752affd86cf4ae534b2705b4f387ea385e96671dc504bf"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "ee7cbfad570ecb61ad8ca8095924c37ca721c7350f16419c6da4167341ac30ff"
+    }
+  },
+  "snapshot": {
+    "file": "artifacts/client455-progress/before141/manifest.json",
+    "sha256": "f771963a41d67b1e6f059486aa70babe4a62cbf658b454fa9b890d9c8beb3668"
+  },
+  "historical_base": {
+    "file": "artifacts/client455-progress/before141/inventory/client455-registered-characters-checkpoint.json",
+    "sha256": "1923a255f644860861e2b105b16a44db51f32252c33eb961409c264267f036a9"
+  },
+  "account_protocol_rerun_on_this_PE": false,
+  "full_bootstrap": false,
+  "full_character_appearance": false,
+  "ordinary_selection_UI_accepted": false,
+  "full_client": false,
+  "checked_missing_resource_references": 1120,
+  "missing_resource_inventory_is_complete": false,
+  "resolved_archive_members": 7,
+  "gaps": [
+    "Full data bootstrap and455class/appearance/item consumers",
+    "All error UI/quit policy and unsafe malformed target inputs",
+    "Ordinary selection/auth/world/gameplay/full client acceptance",
+    "Remaining legacy resource getters/consumers and all client-acceptance gaps"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

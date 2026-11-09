@@ -1,11 +1,11 @@
 # Память проекта
 
-Обновлено 2026-11-10. **140 PARTIAL; M6 открыт.**
-Gate: inventory/client455-registered-characters-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_registered_characters.py.
-Доказательства: research/client455-registered-characters.md.
+Обновлено 2026-11-10. **141 PARTIAL; M6 открыт.**
+Gate: inventory/client455-resource-catalog-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_resource_catalog.py.
+Доказательства: research/client455-resource-catalog.md.
 Предыдущая подробная память: research/project-memory-before139.md.
-Последний commit до140: 1299b89 (world-entry139).
+Последний commit до141: bc26576 (registered characters140/оценка).
 
 ## Цель и ограничения
 
@@ -17,7 +17,39 @@ Server только читать reference, не изменять/строить
 Оригиналы immutable; input EXEs никогда не выполнять. Работа под work/.
 LocalGit, no push/remote/publication. Не делегировать без прямой просьбы.
 
-## Текущий140
+## Текущий141
+
+Own PE b3f769a9b551a81099ca0ef01b92ac96b47bc5048d6ea9594e21a56a97d8d00c,
+x86/base400000/entry170760/2272768bytes.182client/20kernels/link0/unresolved0.
+Engine137 unchanged. Resource.edf9groups/30623rows:1267bones/10484meshes/18872ANI.
+Actual normal manager registers1267/10483/18872;one NPC mesh20483 skips before
+AddMesh because parent20483 absent in catalog,not a missing-file workaround.
+Five player BN actually loaded/counts30,25,29,38,30/firstmesh name5;real archived
+playerANI ID1090849056 loaded. All raw catalog arrays match independent fingerprints
+aftertargetmodel parent-2→ownID mutation. Rest ANI are metadata registrations,
+not18872executed animation files. Full classes/appearance/selection remain OPEN.
+Added player missing-path case-sensitive find>0 and explicit-parent shape checks,
+bounded preflight for unsafe input domain;own GetResourceList missing return fixed.
+Legacy260/328/244/84 metadata already match;do not invent a new row format.
+Full7functions/934instructions/108positiveCFG inclEHtails equalbothpins.
+RVA208550 manager,2079C0 bone,207CB0 mesh,2081C0 ANI,1E7BE0 bootstrap owner.
+Raw artifacts/client455-progress/resource-catalog141-reference/session.json.
+IDA731ffc14 saved/closed/list0;nativejobs none.
+
+Resource references checked partially:1120 unresolved afterloose/RFS lookup,
+503BN/592BBX/25ANI. Seven archived members resolved. This is NOT all assets or
+proof each unresolved reference is required in game. Five playerBN exist.
+Staged1668assets/81MBlogical;firstpool+53.1MB/repeatedsuccessfulrun0,5smallprivate.
+Added BN/BBX/ANI/MSH/RFS immutable suffixes;no originals hardlinks/full client clone.
+Fresh WinMain/Miles/providers/Login frame70/3219ms,640x500,exit/no fatal.
+PNG3de508af… viewed:lobby/waiting/unopened panels hidden,no selection acceptance.
+Account140 unchanged suite NOT rerun on141;exact140snapshot49files before141.
+Probe first assumed case-insensitive bone lookup wrongly:sourceCharacter manager
+keeps exact names and separate records;ANI manager normalizes. Oracle corrected,
+production managers not changed to satisfy that mistaken test.
+Full errorUI/quit policy/resource getters/remaining bootstrap still OPEN.
+
+## Сохранённый140 (историческая база)
 
 Own PE a3002fc48427f09cb1cb7c2f57c95696162d1099ce7714e890f1053d1c321607,
 x86/base400000/entry1703F0/2271744bytes.182client/20kernels build/link0/unresolved0.
@@ -68,7 +100,7 @@ unopened panels отсутствуют.139TCP fixture получил67bytes (138
 Reference EXEs не выполнялись. IDA2a850a2f saved/closed,list0. Native jobs нет.
 Exact139 snapshot49files before140;exact138 snapshot47files before139 сохранены.
 
-## Следующий141: bootstrap и реальные данные выбора персонажа
+## Следующий142: оставшийся bootstrap и реальные данные выбора персонажа
 
 Target result getter53EF80 читаетbyte435973;consumer53D0F0 при result0/state6
 вызывает5E7BE0. Этот data bootstrap и его3selector consumers пока не перенесены.
@@ -82,6 +114,9 @@ Legacy CDataMgr count/stride иResource260/328/244/9groups лишь частич
 нельзя загружать455Item через старую запись/embedded descriptions без переносаND.
 Class setter412140 отличается от legacy SetClassDTIndexByStrDTCode;
 весь class-tier/appearance/resource/item consumer ещё не принят.
+Resource branch141 уже интегрирована;остальные table owners ещё legacy/partial.
+Начать с ItemCash/ItemSet/Item47+NDItem иправильной country segmented branch,
+переиспользовать существующий RF455ItemDataStore;не кастовать455raw в old ITEM_DATA.
 Далее actual character selection→world/control/combat/inventory/chat.
 Не bypass waiting/не force success;не писать server logic.
 Other core/35processor payloads и bootstrap/error consumers ещё legacy/partial.
@@ -104,7 +139,7 @@ A ordinaryTitle/Login;B auth/selection;C world/avatar/input/movement;
 D combat/items/chat/NPC/quests/social;E fullM6F/M7/M9. Все старые gaps сохранены.
 CRT/FP/failure fidelity остаётся backlog и не заменяет связанный игровой сценарий.
 Отчёты разделяют:собирается/проверено отдельно/работает обычно/полностью принято.
-Список142исторических/пересекающихся работ не знаменатель готовности.
+Список143исторических/пересекающихся работ не знаменатель готовности.
 Для текущей сборки зависимости обеспечены;полных source455/SDK0комплектов,
 referencePE2. Полная feature/packet/state/resource/scenario опись не завершена.
 Не повторять159k неизменённых проверок. Проверять затронутое и выполнять
@@ -118,7 +153,7 @@ IDA:owned work copies,session на каждомcall,ASM≤100/page ивсе posi
 save/close;MCP raw писать≤20kchunks. rg--files перед неизвестными путями;
 использовать rg --glob при фильтрации каталогов,не path wildcard в PowerShell.
 Общие исходные assets через client455_asset_staging.py,только owned copies;
-configs/exes private. Snapshot13before-root,47before138/before139 и49before140 сохранены.
+configs/exes private. Snapshot13before-root,47before138/before139 и49before140/before141 сохранены.
 Storage snapshot150.95GiBlogical/42.29GiBunique;hardlinks повторяются в сумме.
 Старые большие каталоги не удалялись;до очистки нужна reachability evidence/inputs.
 Не hardlink originals;Windows fileidentity через os.stat(path),не DirEntry.stat.

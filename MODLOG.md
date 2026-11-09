@@ -1,5 +1,17 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Resource catalog141 PARTIAL. Ordinary Resource.edf nine groups/
+260-328-244 rows and84-byte event owner confirmed. Added target player bone
+missing/shape checks and bounded preflight;fixed own missing-return accessor.
+7fullfunc/934instructions/108CFG including EH tails equalboth455. Actual manager
+registers1267bones/10483meshes/18872ANI;missing NPC parent20483 explains1skip.
+Five real player BN+one archivedANI loaded,full rows match independent fingerprints.
+1120checked unresolved references503BN/592BBX/25ANI remain;not full asset inventory.
+Shared suffixes BN/BBX/ANI/MSH/RFS,firstpool+53.1MB/repeats0. Own PEb3f769a9
+ordinary Login frame70/3219ms viewed,no fatal.140account snapshot49 preserved;
+unchanged account suite not rerun. Next142 remaining bootstrap/item/class data.
+25%(20–35%),M6/M6F/M7/M9 OPEN. [Evidence](research/client455-resource-catalog.md).
+
 2026-11-10 — Registered characters140 PARTIAL. Ordinary request1/8 and reply1/9
 use fixed506-byte payload/three164-byte records;real Avatar name/race/level/
 64bit money-time/tutorial writer restored.9fullfunc/623instructions/72CFG equal
