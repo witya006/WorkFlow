@@ -15,6 +15,12 @@ def main():
     generated=json.loads(generationFile.read_text()) if generationFile.exists() else {}
     from client455_particle_port import headers,particle_source,entity_source
     import client455_lighting_port as lighting130
+    import client455_material_port as material133
+    materialInput=base/'source/R3Engine/1stclass/r3material.h';materialHeader=root/'include/r3material455.h'
+    materialRaw=material133.header(materialInput.read_bytes());materialKey=materialHeader.relative_to(WS).as_posix()
+    if materialHeader.exists() and materialHeader.read_bytes()!=materialRaw and sha(materialHeader) not in {previous.get('material_header_overlay',{}).get('sha256'),generated.get(materialKey)}:raise ValueError('Preserving changed material declaration')
+    if not materialHeader.exists() or materialHeader.read_bytes()!=materialRaw:materialHeader.write_bytes(materialRaw)
+    generated[materialKey]=sha(materialHeader);generationFile.write_text(json.dumps(generated,indent=2)+'\n')
     particleHeaders=headers(base,root,previous)
     vertexInput=base/'source/R3Engine/1stclass/r3d3d8.h';vertexHeader=root/'include/r3d3d8455.h'
     vertexRaw=lighting130.vertex_header(vertexInput.read_bytes())
@@ -55,6 +61,7 @@ def main():
     particlePrefix=particlePrefix.replace(b'#include "c_vector.h"\r\n',('#include "'+coreHeader.as_posix()+'"\r\n#include "c_vector.h"\r\n').encode(),1)
     particlePrefix+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     particlePrefix=particlePrefix.replace(('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode(),('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "'+vertexHeader.as_posix()+'"\r\n').encode(),1)
+    particlePrefix=particlePrefix.replace(('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode(),('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "'+materialHeader.as_posix()+'"\r\n').encode(),1)
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
     if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
     levelInput=base/'source/R3Engine/2ndclass/level.h';levelHeader=root/'include/level455.h'
@@ -79,6 +86,7 @@ def main():
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     header+=('#include "'+levelHeader.as_posix()+'"\r\n').encode()
     header=header.replace(firstInclude,firstInclude+('#include "'+vertexHeader.as_posix()+'"\r\n').encode(),1)
+    header=header.replace(firstInclude,firstInclude+('#include "'+materialHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
     for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp']:
@@ -165,6 +173,7 @@ def main():
             if raw.count(anchor)!=1:raise ValueError('Core initialization boundary')
             raw=raw.replace(anchor,anchor+b'\n    RF455_ResetSkyFogEndpoints();\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
         elif filename=='r3material.cpp':
+            raw=material133.material(raw)
             from prepare_client455_normal import section
             raw=b'#include "client455_sky_lighting.h"\n#include "client455_weather_format.h"\n'+raw
             first,last=section(raw,b'static _R3MATERIAL* LoadIndependenceMaterial(',b'static _R3MATERIAL* LoadIndependenceMaterial(');body=raw[first:last]
@@ -320,6 +329,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['lighting_port_script']={'file':'scripts/client455_lighting_port.py','sha256':sha(WS/'scripts/client455_lighting_port.py')}
     report['light_direction']={name:sha(WS/'scripts/native'/name) for name in ['client455_light_direction.h','client455_light_direction.inc']}
     report['map_entity_owner']={'file':'scripts/native/client455_map_entity_owner.inc','sha256':sha(WS/'scripts/native/client455_map_entity_owner.inc')}
+    report['material_header_overlay']={'file':materialKey,'sha256':sha(materialHeader),'original':materialInput.relative_to(WS).as_posix(),'original_sha256':sha(materialInput)}
+    report['material_port_script']={'file':'scripts/client455_material_port.py','sha256':sha(WS/'scripts/client455_material_port.py')}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

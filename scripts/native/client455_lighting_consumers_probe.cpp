@@ -11,9 +11,8 @@ void AfterRenderOneLayer(CVertexBuffer*,_BSP_MAT_GROUP*);
 void GetBumpFactor(Vector4f);
 void ExtractVertex(WORD,int,Vector3f*,void*,Vector3f,float);
 static_assert(sizeof(_D3DR3VERTEX_TEX1)==36&&offsetof(_D3DR3VERTEX_TEX1,nx)==12&&offsetof(_D3DR3VERTEX_TEX1,color)==24&&offsetof(_D3DR3VERTEX_TEX1,u)==28,"455 vertex layout");
-//Typed source records retain the legacy allocation ABI. Target455 has a
-//526-byte runtime record;field correspondence must be proved,not cast to it.
-static_assert(sizeof(_R3MATERIAL)==332&&offsetof(_R3MATERIAL,m_Layer)+sizeof(_ONE_LAYER)+offsetof(_ONE_LAYER,m_dwFlag)==208,"own material layer1 flag,not top-level material flag");
+//133 restores the runtime54/526 layout from reader,initializer and field writers.
+static_assert(sizeof(_R3MATERIAL)==526&&sizeof(_ONE_LAYER)==54&&offsetof(_R3MATERIAL,m_Layer)+sizeof(_ONE_LAYER)+offsetof(_ONE_LAYER,m_dwFlag)==216,"455 material layer1 flag,not top-level material flag");
 static void floats130(FILE* f,const float* p,unsigned n){std::fputc('[',f);for(unsigned i=0;i<n;++i)std::fprintf(f,"%s%u",i?",":"",bits125(p[i]));std::fputc(']',f);}
 static DWORD stage130(IDirect3DDevice9* d,DWORD slot,D3DTEXTURESTAGESTATETYPE s){DWORD v;check(SUCCEEDED(d->GetTextureStageState(slot,s,&v)),"stage130");return v;}
 static DWORD render130(IDirect3DDevice9* d,D3DRENDERSTATETYPE s){DWORD v;check(SUCCEEDED(d->GetRenderState(s,&v)),"render130");return v;}

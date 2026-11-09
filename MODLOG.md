@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Material layout133. Seven runtime54 layers/material526 restored;
+binary read46 prefix retained. Extra floats are specular flickering scale/speed,
+text flags800001/800002;shader/light DWORD packing and2048guard restored.
+5fullasm/1438instructions/5ranges equalboth455 plusguardcontext. Actual adjacent
+binary/text records exact1052bytes each,7layers,3badversions close file handles.
+Sharedheaderchanged/full182-20rebuild/ANI-BBX/unresolved0/Create1PASS.
+Enginefa88420d/42payload17timestamp8same;PEb9002c4c/entry16CC90.
+34freshraw+PNG pixelsbyteequal132;no newvisualinspection/unchangedbulks.
+Specialmaterialshader8C9230 consumer/fullpipeline,all7GPUlayers/CRT/clientOPEN.
+[Evidence](research/client455-material-layout.md).
+
 2026-11-10 — Map entity owner132. Ordinary EBP record Flag72 bit40 is copied
 to successful CEntity+104 before RestoreTexMem;failed/particle branch unchanged.
 5fullasm/1665instructions/5ranges equalboth455;1025unchanged instructions reused130.

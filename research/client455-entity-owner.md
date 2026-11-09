@@ -1,5 +1,10 @@
 # Map entity owner132 — включение освещения из EBP
 
+Runtime132 исторический после133. Текущий gate:
+`inventory/client455-material-layout-checkpoint.json`.
+Перенос EBP flags и его static proofs сохранены;133 восстанавливает настоящий
+material526/layer54 layout и выполняет свежую проверку map owner.
+
 2026-11-10. **PARTIAL M6**. В обычном CBsp::LoadEntities восстановлен перенос
 bit0x40 из записи карты в успешно загруженный CEntity. Раньше старые исходники
 передавали только map-color и shader flags, поэтому новые fixed/LitGrass методы

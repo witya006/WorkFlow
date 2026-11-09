@@ -6,14 +6,14 @@ from checkpoint_client455_rvp_effects import check,require,sha
 from compare_client_binaries import WS
 
 
-def reuse(prefix,snapshot,reference_prefix=None):
+def reuse(prefix,snapshot,reference_prefix=None,expected_frames=5):
     native_file=WS/f'inventory/client455-{prefix}-native.json';native=json.loads(native_file.read_text())
     previous_native=WS/f'artifacts/client455-progress/client455-{reference_prefix or prefix}-native-{snapshot}.json'
     previous_review=WS/f'artifacts/client455-progress/client455-{reference_prefix or prefix}-visual-review-{snapshot}.json'
     old=json.loads(previous_native.read_text());review=json.loads(previous_review.read_text())
-    require(review['reviewed'] and review['reviewed_frames']==5 and review['native_sha256']==sha(previous_native),'Verified previous visual review '+prefix)
+    require(review['reviewed'] and review['reviewed_frames']==expected_frames and review['native_sha256']==sha(previous_native),'Verified previous visual review '+prefix)
     check(review['sheet']);before={Path(x['file']).name:x for x in old['frames']}
-    require(len(native['frames'])==len(before)==5 and not native['natural_exit'] and native.get('status') in ['PASS','PASS_SELECTED'],'Completed fresh frame capture '+prefix)
+    require(len(native['frames'])==len(before)==expected_frames and not native['natural_exit'] and native.get('status') in ['PASS','PASS_SELECTED'],'Completed fresh frame capture '+prefix)
     for row in native['frames']:
         oldrow=before[Path(row['file']).name]
         for item in [row,row['preview'],oldrow,oldrow['preview']]:check(item)
@@ -26,9 +26,9 @@ def reuse(prefix,snapshot,reference_prefix=None):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('prefix',nargs='+');parser.add_argument('--snapshot',required=True);parser.add_argument('--reference-prefix');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('prefix',nargs='+');parser.add_argument('--snapshot',required=True);parser.add_argument('--reference-prefix');parser.add_argument('--frames',type=int,default=5);args=parser.parse_args()
     require(not args.reference_prefix or len(args.prefix)==1,'Explicit reference prefix applies to one new capture')
-    for prefix in args.prefix:reuse(prefix,args.snapshot,args.reference_prefix);print(prefix+':5 fresh frames byte-identical to previously reviewed pixels')
+    for prefix in args.prefix:reuse(prefix,args.snapshot,args.reference_prefix,args.frames);print(prefix+':'+str(args.frames)+' fresh frames byte-identical to previously reviewed pixels')
 
 
 if __name__=='__main__':main()

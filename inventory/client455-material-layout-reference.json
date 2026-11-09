@@ -1,0 +1,284 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "script": {
+    "file": "scripts/audit_client455_material_layout.py",
+    "sha256": "08a1470ffcb8f3955e1a99825dc48eec0941b21b8d8989169424a38e69c077a1"
+  },
+  "scope": "Runtime material526/seven54-byte layers with46-byte serialized prefix and actual text metadata writers",
+  "raw": {
+    "file": "artifacts/client455-progress/material-layout133-reference.json",
+    "sha256": "17088376dd9287517a4f31a7a5c76f5048f1773a9baa3c5e2379343aa08e2bdc"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/material-layout133-session.json",
+    "sha256": "136fe0a73f631ee66dfc20ec1e931f5f26708f8e163d4365c876797fe7c2f7fb"
+  },
+  "full_assembly": 5,
+  "instructions": 1438,
+  "verified_ranges": 5,
+  "CFG_complete": true,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x4c9230",
+          "rva": "0x4c9230",
+          "bytes": 505,
+          "sha256": "cfb9ec595b83cfff1a231f548e2f4a2d9a801fd66d9fb1cfd594ad52746a7fa5"
+        },
+        {
+          "owner_rva": "0x509400",
+          "rva": "0x509400",
+          "bytes": 199,
+          "sha256": "740aff2152a046f15d729dc2bd7e361983383771381023c2b3ef51ff93a92866"
+        },
+        {
+          "owner_rva": "0x509500",
+          "rva": "0x509500",
+          "bytes": 2876,
+          "sha256": "de536c3d5c313cfd8f86873204f3a9dd8e36513f92d99333512ebb285929c68b"
+        },
+        {
+          "owner_rva": "0x50a040",
+          "rva": "0x50a040",
+          "bytes": 1150,
+          "sha256": "ba8c2f96d5a142ab31835a7e6a20c0a7be2717794433ffefe317f9d9e1d33cab"
+        },
+        {
+          "owner_rva": "0x50b1c0",
+          "rva": "0x50b1c0",
+          "bytes": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        }
+      ],
+      "material_limit_context": {
+        "rva": "0x50a627",
+        "bytes": 32,
+        "hex": "8be883c41081fd00080000896c24107c1268d48daa0068549eb300e8e968feff",
+        "full_function_assembly_claimed": false
+      }
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x4c9230",
+          "rva": "0x4c9230",
+          "bytes": 505,
+          "sha256": "cfb9ec595b83cfff1a231f548e2f4a2d9a801fd66d9fb1cfd594ad52746a7fa5"
+        },
+        {
+          "owner_rva": "0x509400",
+          "rva": "0x509400",
+          "bytes": 199,
+          "sha256": "740aff2152a046f15d729dc2bd7e361983383771381023c2b3ef51ff93a92866"
+        },
+        {
+          "owner_rva": "0x509500",
+          "rva": "0x509500",
+          "bytes": 2876,
+          "sha256": "de536c3d5c313cfd8f86873204f3a9dd8e36513f92d99333512ebb285929c68b"
+        },
+        {
+          "owner_rva": "0x50a040",
+          "rva": "0x50a040",
+          "bytes": 1150,
+          "sha256": "ba8c2f96d5a142ab31835a7e6a20c0a7be2717794433ffefe317f9d9e1d33cab"
+        },
+        {
+          "owner_rva": "0x50b1c0",
+          "rva": "0x50b1c0",
+          "bytes": 429,
+          "sha256": "f5188619915ba361010f33453c8a4d3dc3cd4dc354f69ab0c9a11b29bb81d5b2"
+        }
+      ],
+      "material_limit_context": {
+        "rva": "0x50a627",
+        "bytes": 32,
+        "hex": "8be883c41081fd00080000896c24107c1268d48daa0068549eb300e8e968feff",
+        "full_function_assembly_claimed": false
+      }
+    }
+  ],
+  "material_header": {
+    "file": "work/client455-port/startup-engine/include/r3material455.h",
+    "sha256": "5949afe698be538818e1cc88033ca8e1e6c2d909f3f80cfec52b71947d57389f",
+    "original": "work/client455-port/source/R3Engine/1stclass/r3material.h",
+    "original_sha256": "3f442dede599cf86a8a0228df51d45a59c67deda281c7de7ab76df7cb9cfa3ae"
+  },
+  "port_script": {
+    "file": "scripts/client455_material_port.py",
+    "sha256": "4f95489eee977cb9fd0bc8b252f427b417c488d3ac7da746ed87dbc8dddb3f9a"
+  },
+  "generated_source": {
+    "file": "work/client455-port/startup-engine/source/r3material.cpp",
+    "sha256": "34502c3dc567342cab64f87777038ae184a0ce421ad76ce14f2b2a84ba401f8c",
+    "original": "work/client455-port/source/R3Engine/1stclass/r3material.cpp",
+    "original_sha256": "1a5a6ea5df2c5324affe7de6fe2036846dfbb98babcbfcb0f7fb9f948796ac9a"
+  },
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "fa88420ddcc370d58758aea65431f530463f3ed855f957f3829e0dc580f2946c"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before133.lib",
+    "sha256": "b710d6c802cc8ead4be3ce171e54789abc6d9f6ca80feb02d52aae4fec677974"
+  },
+  "changed_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj"
+  ],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj"
+  ],
+  "timestamp_only_members": [
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "shared_headers_changed": true,
+  "client_objects": 182,
+  "kernel_objects": 20,
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b9002c4c0bc962af89c72bc7f6768f2b8610c8ffcc3ceed3d3ddbcced3a61e0a",
+    "bytes": 2256384,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16cc90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "8baaacc38b3fb9b364e4dd67d49420ad3f2f77fbe08741d4f294c93f2e2226e0",
+  "retained_light_math": [
+    {
+      "name": "_RF455_MatrixInvert",
+      "rva": "0x1ab1c0",
+      "reference_rva": "0x4bfbc0",
+      "bytes": 485,
+      "sha256": "1ae0944a1b915fdf1edb5bb4596a624c924d00160db3e72b5c8bc63cb62176b9",
+      "relocated": [
+        {
+          "offset": "0x21",
+          "kind": "absolute epsilon",
+          "target_rva": "0x1f89e0"
+        }
+      ]
+    },
+    {
+      "name": "_RF455_Vector3fTransform",
+      "rva": "0x1ab3b0",
+      "reference_rva": "0x4c0980",
+      "bytes": 132,
+      "sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+      "relocated": []
+    },
+    {
+      "name": "_RF455_NormalizeLightVector",
+      "rva": "0x132330",
+      "reference_rva": "0x11d5d0",
+      "bytes": 136,
+      "sha256": "461966d25836892d4b7cc484a81beab539c5e323aa642638aa1b2d65aa67a012",
+      "relocated": [
+        {
+          "offset": "0x3a",
+          "kind": "relative CALL to selected finite sqrt policy",
+          "target_rva": "0x132470"
+        }
+      ]
+    }
+  ],
+  "previous132_gate": {
+    "file": "artifacts/client455-progress/client455-entity-owner-checkpoint-before133.json",
+    "sha256": "3abbd15739f658cf8008ff128a3ec5b93e9cbf3b843ee6098bc78656d4b58740"
+  },
+  "gaps": [
+    "Selected finite PC24 geometry and lighting are covered;full GetNormal/decompressor/CRT/FP/RC/NaN/Inf/status flags remain open",
+    "LitGrass reads19.xyz and21/22 only;original3-register stack overreads leave other lanes unspecified. Source uses deterministic unused lanes;complete state-consumer analysis remains open",
+    "Legacy Grass loader/caps failure paths and full shader lifecycle/device reset/OOM remain open",
+    "Inverse/transform and normalizer bodies are instruction-identical except selected sqrt CALL. Finite masked12PC/RC values verified;old CRT matherr/errno/precision-error dispatch,unmasked exceptions and complete NaN/Inf/status-flag parity remain open",
+    "Actual caller ignores failed affine inverse and then consumes unspecified stack data;no deterministic fallback added. Failed caller output is not accepted",
+    "Earlier130 described Vector3fTransform as legacy;the source already used the exact455x87 wrapper.131 reuses that backend and replaces the D3DX inverse and separate entity normalizer",
+    "Map EBP bit40 producer is connected and selected actual NeutralB owners/routes verified;other game/effect/entity flag writers and full visibility/fade/alpha/camera acceptance remain open",
+    "Physical93 EBP files include alternate/duplicate maps;1584lit rows/82shader rows are data inventory counts,not unique models or completed gameplay scenarios",
+    "Runtime seven54-byte layers/material526 and46-byte binary prefix restored. Special material shader8C9230 reads specular fields into PS18.zw;its full special shader owner/draw pipeline is not yet ported",
+    "Main text material guard2048 is pinned by partial context;full main text parser assembly beyond prior evidence,all CRT numeric conversions,reload/invalid indices/truncation/OOM and complete material/render behavior remain open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
