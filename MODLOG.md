@@ -836,3 +836,11 @@ readbacks agree. Detailed addresses, pins, contracts and remaining gaps:
 This is partial M6. Full effect/transparent/batch/CPU/shadow routes and coupled
 normal typed model/animation/renderer migration remain open. Earlier session
 evidence is indexed in [docs/project-memory.md](docs/project-memory.md).
+
+2026-11-10 — ordinary Login138 PARTIAL. Primary455 x86 SHA b1b5febf…,
+root registration RVA230A60,RTTI/vtable RVA6DAD8C:AlwaysTop front/append,
+SetParent,then Show(FALSE). Fivefullfunc/221instructions/21CFGblocks match
+both pins. Recovered root Add removes overlapping unopened Login panels in
+ordinary own PEba23dd6d…;real lobby/waiting frame70/3203ms viewed,no fatal.
+43shared assets,new pool bytes0. Full Title/Login/auth/selection/world/M9 OPEN.
+Evidence: research/client455-login.md;inventory/client455-login-checkpoint.json.

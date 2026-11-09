@@ -6,9 +6,57 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-SCENE-CAPTURE-137",
+      "id": "CLIENT455-ORDINARY-LOGIN-138",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary own client renders a real lobby/waiting dialog;localized sprite paths and455root registration remove overlapping unopened panels",
+      "implementation": [
+        "scripts/prepare_client455_normal.py",
+        "scripts/native/client455_login_capture.inc",
+        "scripts/probe_client455_device_startup.py",
+        "scripts/native/own_client_startup_debugger.cpp"
+      ],
+      "reference": [
+        {
+          "rva": "0x230a60",
+          "role": "Root Add:AlwaysTop/front or append,SetParent,Show(FALSE)"
+        },
+        {
+          "rva": "0x230ad0",
+          "role": "Window AlwaysTop accessor"
+        },
+        {
+          "rva": "0x20bfa0",
+          "role": "Main-list Container Add"
+        },
+        {
+          "rva": "0x20c040",
+          "role": "Main-list Container AddFront"
+        },
+        {
+          "rva": "0x140350",
+          "role": "Login sprite requests0,1,3,2,4,5"
+        }
+      ],
+      "verification": "Five complete functions/221instructions/21positive CFG blocks and bodies equal in two pinned455x86 binaries. Own PEba23dd6d/182client/20kernels/link0/unresolved0/engine137 unchanged. Actual WinMain→Title→Login created1/loaded1→settled frame70/3203ms→Render return,exit observed,no fatal. Frame viewed:real lobby and waiting dialog,previous unopened panels absent.43shared assets/new pool bytes0. No full455Login acceptance.",
+      "evidence": [
+        "inventory/client455-login-registration-reference.json",
+        "inventory/client455-login-frame-native.json",
+        "inventory/client455-login-visual.json",
+        "inventory/client455-login-checkpoint.json",
+        "research/client455-login.md"
+      ],
+      "gaps": [
+        "Full target Title/movie/four-stage factory",
+        "All10Login windows/layout/input/focus/layers/system sprite5",
+        "Actual response→client bootstrap→selection→world flow",
+        "Full game and all historical client-acceptance gaps;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-SCENE-CAPTURE-137",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary five scene-resource owners and selected captured-frame helper;full refraction/stages remain open",
       "implementation": [
         "scripts/native/client455_scene_capture.inc",
@@ -37,7 +85,8 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "superseded_by": "CLIENT455-ORDINARY-LOGIN-138"
     },
     {
       "id": "CLIENT455-SHADER-TEXT-136",

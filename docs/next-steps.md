@@ -1,26 +1,28 @@
 # Следующие шаги
 
-Обновлено 2026-11-10. **138 в работе; M6 открыт.**
-Последний завершённый частичный gate — 137, сохранён в
-artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json.
-Текущая собственная сборка 9adc8d0d… дошла через обычный WinMain/Title до
-Login и показала реальные lobby/логотип/UI после 3,2с; панели перекрываются.
-Это не приёмка Login455. Свежий отчёт: inventory/client455-login-frame-native.json.
+Обновлено 2026-11-10. **138 PARTIAL; M6 открыт.**
+Gate: inventory/client455-login-checkpoint.json.
+Собственная сборка ba23dd6d… проходит обычный WinMain→Title→Login и показывает
+реальную lobby/окно ожидания. Root Add теперь скрывает зарегистрированные окна
+по455; наложение лишних панелей устранено. Frame70/3203ms просмотрен, no fatal.
+Engine137 не изменён, сборка182/20 и link0/unresolved0. Полный Login455 не принят.
+Доказательства: research/client455-login.md.
 M6/M6F/M7/M9 OPEN. Оценка готовности около25%(20–35%),не новое доказательство
 эквивалентности;inventory/client455-progress-assessment.json.
 
-1. **138/A: ordinary Title/Login.** Current legacy factory3/modulo против455four/
-   explicitnext;Titlelegacy почти пуст. Target читаетCcrLogo.dat исоздаётmovie.
-   Начальные данные:research/client455-title-initial.md.20pcode/2contexts ещёне
-   fullproof/source. В primaryFrameMove exit/jump безусловны:не включатьdeadfade.
-   РеальныйAVI существует. OrdinaryTitle→Login/отрисовка уже наблюдались;
-   следующий шаг — регистрация/видимость окон. Target CGUIScreen primary vtable
-   VA ADAD8C, Add slot208→630A60: диагностическая декомпиляция заканчивается
-   Show(0), в отличие от текущего legacy CGUIScreen::Add. Сначала собрать полные
-   ASM/CFG и проверить тела на двух pins, затем переносить семантику. Не скрывать
-   окна произвольным списком. Raw: artifacts/client455-progress/login138-reference/.
-   Полная Title/four-stage factory/auth/UI цепь ещё открыта;
-   использоватьstandardSDKmovie baseclasses при наличии,не переписывать CRT/COM.
+1. **139/A–B: response→bootstrap→selection.** Проверить настоящий клиентский
+   обработчик ответа входа и его переход в загрузку данных/выбор персонажа.
+   Diagnostic flow: artifacts/client455-progress/login138-reference/flow-diagnostic.json.
+   Target init5401D0: обычный state6, logout state7; getter53EF80 читает byte435973,
+   consumer53D0F0 при result0/state6 вызывает5E7BE0. Это пока pcode, не fullproof.
+   Начать с сетевого producer/dispatcher для этого результата и real client table
+   bootstrap, затем экран выбора. Не обходить ожидание и не форсировать успех.
+   Серверные исходники/код не менять. Country slot284 во всех11профилях false;
+   не включать legacy reconnect безусловно.
+   Full Title/movie/factory4/next-stage остаются открыты. Legacy factory3/modulo.
+   Create53BB20 имеет разбитую IDB границу и ложную CRT-аннотацию: использовать ASM.
+   РеальныйAVI и начальные Title данные есть в research/client455-title-initial.md;
+   не включать недостижимый primary FrameMove fade, не переписывать CRT/COM.
 2. **B:** clientauth/selection packet/state transitions/errors,безserverwork.
 3. **C:** ordinaryworld/avatar/camera/input/movement/collision/animation loop.
 4. **D:** target/attack/skills/items/chat,затемfullNPC/quests/social.
@@ -38,4 +40,5 @@ Asset staging уже общий дляruntimeinputs/generic/early/device/fullscr
 До каждого нового большого scenario использовать shared staging.
 Exact137snapshot уже сохранён: artifacts/client455-progress/before138/manifest.json,
 47 файлов. Не перезаписывать его новой сборкой. Нативных jobs нет.
-IDA621d88dc saved/closed; idb_list count0. Остальные инварианты вproject-memory/AGENTS.
+Before-root snapshot13files/4.66MB: artifacts/client455-progress/login138-before-window-registration/manifest.json.
+IDA5a0405db/5818692d saved/closed; idb_list count0. Остальные инварианты вproject-memory/AGENTS.

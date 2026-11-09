@@ -90,13 +90,17 @@ def main():
     if loginProbe:
         name='client455-login-create-native' if args.login_create else 'client455-login-render-native'
         if args.login_frame:name='client455-login-frame-native'
-        report.update(scope='Actual ordinary own WinMain through Title transition to the first Login method;not455stage/UI/auth acceptance',login_method=loginSymbol,login_checkpoint_rva=hex(stopVa-base),login_checkpoint_bytes_sha256=hashlib.sha256(read_va(raw,stopVa,16)).hexdigest(),stage_state=next((e for e in events if e['kind']=='stage_state'),{}),reached_first_login=bool(summary.get('final_checkpoint_reached')))
-        report['first_login_frame_completed']=args.login_frame and bool(summary.get('final_checkpoint_reached')) and any(e['name']=='after_first_login_render' for e in markers)
+        report.update(scope='Actual ordinary own WinMain through Title to Login;frame mode captures after the configured delay and observes a following Render return;not455stage/UI/auth acceptance',login_method=loginSymbol,login_checkpoint_rva=hex(stopVa-base),login_checkpoint_bytes_sha256=hashlib.sha256(read_va(raw,stopVa,16)).hexdigest(),stage_state=next((e for e in events if e['kind']=='stage_state'),{}),reached_first_login=bool(summary.get('final_checkpoint_reached')))
+        report['login_render_returned_after_capture']=args.login_frame and bool(summary.get('final_checkpoint_reached')) and any(e['name']=='after_login_render_following_capture' for e in markers)
+        #Compatibility aliases for earlier local evidence readers;not frame1.
+        report['first_login_frame_completed']=report['login_render_returned_after_capture']
         png,meta=run/'login-frame.png',run/'login-frame.json'
         report['captured_frame']={'file':png.relative_to(WS).as_posix(),'sha256':sha(png)} if png.exists() else None
         report['capture_result']=json.loads(meta.read_text()) if meta.exists() else None
         report['capture_metadata']={'file':meta.relative_to(WS).as_posix(),'sha256':sha(meta)} if meta.exists() else None
         report['first_login_frame_captured']=bool(report['first_login_frame_completed'] and report['captured_frame'] and report['capture_result'] and report['capture_result']['result']>=0)
+        report['login_frame_captured']=report['first_login_frame_captured']
+        report['legacy_first_frame_field_names_are_aliases']=True
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
     (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n')
     display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}

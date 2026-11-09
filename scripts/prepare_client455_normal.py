@@ -348,6 +348,15 @@ def main():
                 raw=raw[:first]+signature+b'\r\n{auto* screen=CGUIScreen::GetSingletonPtr();if(!screen)return FALSE;return PostMessage(screen->GetHWND(),pi_uMsg,m_dwID,pi_lParam);}\r\n'+raw[last:]
                 changes.append('455PostUIMessage checks Screen singleton,not current game stage;actual target45FBD0/65EFB0')
             if relative=='userinterface/guicontroller/guiscreen.cpp':
+                first,last=section(raw,b'CGUIScreen::Add( CGUIWindow * pi_pWindow )',b'CGUIScreen::Add( CGUIWindow * pi_pWindow )')
+                body=(b'CGUIScreen::Add( CGUIWindow * pi_pWindow )\r\n{\r\n'
+                    b'\tif(!pi_pWindow)return;\r\n'
+                    b'\tif(pi_pWindow->IsAlwaysTop())CGUIContainer::AddFront455(pi_pWindow);\r\n'
+                    b'\telse CGUIContainer::Add(pi_pWindow);\r\n'
+                    b'\tpi_pWindow->SetParent(this);\r\n'
+                    b'\tpi_pWindow->Show(FALSE);\r\n}\r\n')
+                raw=raw[:first]+body+raw[last:]
+                changes.append('455root registration630A60:AlwaysTop/front or append,SetParent then Show(FALSE);null no-op and duplicate sideeffects preserved')
                 first,last=section(raw,b'CGUIScreen::InputProc(',b'CGUIScreen::InputProc(');body=raw[first:last]
                 anchor=b'if( g_nLockDlgBoxCount > 0 &&'
                 if body.count(anchor)!=1:raise ValueError('Screen capture input boundary changed')

@@ -2,11 +2,11 @@
   "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "9adc8d0db6ee8567323cc9942f441e0516b1000235d87561af832b40450a3b14",
+    "sha256": "ba23dd6de02e9b050f3651fd522e69f7ed8e2ab3acd977f4aa801bcfe2c7793b",
     "bytes": 2269184,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x16f580",
+    "entry_rva": "0x16f640",
     "sections": [
       ".text",
       ".rdata",
@@ -15,80 +15,80 @@
       ".reloc"
     ]
   },
-  "staged_executable": "work\\m9\\9adc8d0d\\startup001\\RF_Online.bin",
-  "normal_link_sha256": "bac8348e6ebb04966c61a8dcc39733630bc94baba40553c2e4afd28b50c43a2f",
-  "audit_sha256": "d204bccfa08c581b8bf1afc5989bba16e2f0c80c5a6650b9c90506a372ab9ba0",
+  "staged_executable": "work\\m9\\ba23dd6d\\startup002\\RF_Online.bin",
+  "normal_link_sha256": "30cede85a5746780cfdae1914085625a61ade2cef2e41465ecb4f08ff6107801",
+  "audit_sha256": "b0e0e40098243daddb0b5a14907ca9f0ebd10e58e841239d213a61ae571ac5dd",
   "debugger": {
     "file": "work/tools/own-client-startup/own-startup-debugger.exe",
-    "sha256": "74acf704e97bde0a7745606852cdb5809dead8502f383910264d9b50d8ab5927",
+    "sha256": "4c742203fea3682787cc1b8446ad5b005e3de9455a7c0fc9c672f20eff247e1b",
     "source": "scripts/native/own_client_startup_debugger.cpp",
-    "source_sha256": "73e0c8be7798958c5723c79112f68edd9120c2503a81c3dea7099bc13890357c"
+    "source_sha256": "8879f42c7de95c34d9f8f08b9f98fedeacc29fad2ff58313f58a8c75f64197cb"
   },
   "lab_inputs": [
     {
-      "file": "work/m9/9adc8d0d/startup001/RF_Online.bin",
-      "sha256": "9adc8d0db6ee8567323cc9942f441e0516b1000235d87561af832b40450a3b14",
+      "file": "work/m9/ba23dd6d/startup002/RF_Online.bin",
+      "sha256": "ba23dd6de02e9b050f3651fd522e69f7ed8e2ab3acd977f4aa801bcfe2c7793b",
       "kind": "own executable"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/mss32.dll",
+      "file": "work/m9/ba23dd6d/startup002/mss32.dll",
       "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/abuse.dll",
+      "file": "work/m9/ba23dd6d/startup002/abuse.dll",
       "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/adv.dll",
+      "file": "work/m9/ba23dd6d/startup002/adv.dll",
       "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/pdll.dll",
+      "file": "work/m9/ba23dd6d/startup002/pdll.dll",
       "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/Snd/WaveList.spt",
+      "file": "work/m9/ba23dd6d/startup002/Snd/WaveList.spt",
       "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/mssmp3.asi",
+      "file": "work/m9/ba23dd6d/startup002/mssmp3.asi",
       "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/System/010.TTF",
+      "file": "work/m9/ba23dd6d/startup002/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/DataTable/ko-kr/NDLanguage.edf",
+      "file": "work/m9/ba23dd6d/startup002/DataTable/ko-kr/NDLanguage.edf",
       "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/R3Engine.ini",
+      "file": "work/m9/ba23dd6d/startup002/R3Engine.ini",
       "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9",
       "kind": "own lab config"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/DataTable/ClientSystem.ini",
+      "file": "work/m9/ba23dd6d/startup002/DataTable/ClientSystem.ini",
       "sha256": "b8a1bfbc4a4490b0237f97258922d2259fbb2803b6af020442a3e9611d7efb6b",
       "kind": "own transport timeout"
     },
     {
-      "file": "work/m9/9adc8d0d/startup001/System/DefaultSet.tmp",
-      "sha256": "8056a05196c326081438f844c96b1735f29a9d33d767f118561fa482bd889cb8",
+      "file": "work/m9/ba23dd6d/startup002/System/DefaultSet.tmp",
+      "sha256": "df5bdfeb7a15826bc58dc8ee4dbfe07e4b64dc6cea08713685e57464bae5ef0a",
       "kind": "synthetic offline launcher fixture;not authentication"
     }
   ],
   "events": {
-    "file": "work/m9/9adc8d0d/startup001/debug-events.jsonl",
-    "sha256": "f4b6c99141ce862513d373f90459002c36797ab47fb0ab89cf5aa32612e711f3"
+    "file": "work/m9/ba23dd6d/startup002/debug-events.jsonl",
+    "sha256": "de9599a4a322bc2dc7d8042108d72b7a95d96d198a91ce146169ab8b6d776bef"
   },
   "debugger_exit": 0,
   "summary": {
@@ -101,13 +101,13 @@
     {
       "kind": "checkpoint",
       "name": "WinMain",
-      "rva": "0xb9ba0",
-      "eax": 20476244
+      "rva": "0xb9c40",
+      "eax": 26702164
     },
     {
       "kind": "checkpoint",
       "name": "after_sound_before_d3d",
-      "rva": "0xb9cf2",
+      "rva": "0xb9d92",
       "eax": 1
     }
   ],
@@ -131,7 +131,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x12fdf88"
+      "parameter1": "0x183e0b0"
     },
     {
       "kind": "exception",
@@ -147,9 +147,9 @@
   "loaded_modules": [
     {
       "kind": "module",
-      "base": "0x30000",
+      "base": "0x840000",
       "bytes": 15720448,
-      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\9adc8d0d\\startup001\\RF_Online.bin"
+      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\ba23dd6d\\startup002\\RF_Online.bin"
     },
     {
       "kind": "module",
@@ -259,11 +259,11 @@
       "matches_audited_provider": true
     }
   ],
-  "loaded_module_count": 69,
-  "own_entry_sha256": "a2591c8677b447ec4c7383f4e8eec0bc5f6571955b0b28ab96092ac79b03578c",
+  "loaded_module_count": 67,
+  "own_entry_sha256": "92194d642f6b7bb8a8fcb1a09119a58444a7c6a605e405bc931e929c71a4616f",
   "tcp_fixture": {
     "enabled": true,
-    "loopback_port": 55720,
+    "loopback_port": 57715,
     "accepted_connections": 1,
     "bytes_received": 0,
     "bytes_sent": 0,
@@ -287,13 +287,13 @@
   "own_checkpoints": [
     {
       "name": "WinMain",
-      "rva": "0xb9ba0",
+      "rva": "0xb9c40",
       "bytes": 1,
       "sha256": "a25513c7e0f6eaa80a3337ee18081b9e2ed09e00af8531c8f7bb2542764027e7"
     },
     {
       "name": "after_sound_before_d3d",
-      "rva": "0xb9cf2",
+      "rva": "0xb9d92",
       "bytes": 3,
       "sha256": "2fd40b052ecdb09c0b4b6c5745e92654c7f03e8bf0bf726ef470fa45fe5b20d0"
     }

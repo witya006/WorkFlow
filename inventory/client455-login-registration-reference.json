@@ -1,0 +1,124 @@
+{
+  "status": "STATIC_CONFIRMED_PARTIAL",
+  "scope": "Root screen registration and six Login sprite requests;not complete455Login/UI acceptance",
+  "evidence": {
+    "file": "artifacts/client455-progress/login138-reference/registration-full.json",
+    "sha256": "63a3fa2215c8866846d66951416d6bea5e810a691e0a4a238432d7f67a97e6c2"
+  },
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x230a60",
+          "bytes": 102,
+          "instructions": 42,
+          "positive_cfg_blocks": 7,
+          "sha256": "d8571f5277d6536e0526dda31efef007a04f7f69390c17371074c7af6d5c2443"
+        },
+        {
+          "rva": "0x230ad0",
+          "bytes": 28,
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "sha256": "137b27de3dea7876056c53104c91bed3e9ed4c62d01f87b0f03955d95c171881"
+        },
+        {
+          "rva": "0x20bfa0",
+          "bytes": 150,
+          "instructions": 61,
+          "positive_cfg_blocks": 6,
+          "sha256": "0e29f7b76791b588332226bc297e0da07fdb6cb3cc2260ec3016b6bd8c21892e"
+        },
+        {
+          "rva": "0x20c040",
+          "bytes": 175,
+          "instructions": 70,
+          "positive_cfg_blocks": 6,
+          "sha256": "0569f11b9d4b65e36a44c86c298b6456750185f3d3288cb98f383302b8441c51"
+        },
+        {
+          "rva": "0x140350",
+          "bytes": 108,
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "sha256": "b81769a6b0d726a8fbfd5b5637f311a1dc210acad5cc15972200676c19dc7cd8"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x230a60",
+          "bytes": 102,
+          "instructions": 42,
+          "positive_cfg_blocks": 7,
+          "sha256": "d8571f5277d6536e0526dda31efef007a04f7f69390c17371074c7af6d5c2443"
+        },
+        {
+          "rva": "0x230ad0",
+          "bytes": 28,
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "sha256": "137b27de3dea7876056c53104c91bed3e9ed4c62d01f87b0f03955d95c171881"
+        },
+        {
+          "rva": "0x20bfa0",
+          "bytes": 150,
+          "instructions": 61,
+          "positive_cfg_blocks": 6,
+          "sha256": "0e29f7b76791b588332226bc297e0da07fdb6cb3cc2260ec3016b6bd8c21892e"
+        },
+        {
+          "rva": "0x20c040",
+          "bytes": 175,
+          "instructions": 70,
+          "positive_cfg_blocks": 6,
+          "sha256": "0569f11b9d4b65e36a44c86c298b6456750185f3d3288cb98f383302b8441c51"
+        },
+        {
+          "rva": "0x140350",
+          "bytes": 108,
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "sha256": "b81769a6b0d726a8fbfd5b5637f311a1dc210acad5cc15972200676c19dc7cd8"
+        }
+      ]
+    }
+  ],
+  "full_functions": 5,
+  "full_instructions": 221,
+  "positive_cfg_blocks": 21,
+  "screen_vtable_rva": "0x6dad8c",
+  "registration_rva": "0x230a60",
+  "contracts": [
+    "Null registration is a no-op",
+    "AlwaysTop selects main-list front insertion;otherwise append",
+    "Container insertion deduplicates and temporarily inherits parent visibility",
+    "Root registration always calls child SetParent(root),then virtual Show(FALSE),even for a duplicate",
+    "Login sprite loading releases the manager,then requests target IDs0,1,3,2,4,5"
+  ],
+  "gaps": [
+    "Full root window/draw-layer/input/focus/state integration",
+    "Full455window init/layout and all10Login windows",
+    "System sprite group5 and all remaining legacy-to-target UI callers",
+    "Four stages,Title movie,auth/selection/world flow"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN",
+  "script": {
+    "file": "scripts/audit_client455_login_registration.py",
+    "sha256": "f090a61aa62e2cfd606790b0a9b96426cbac1cb12f9ebf5c152f79b035c98543"
+  }
+}

@@ -1,13 +1,12 @@
 # Память проекта
 
-Обновлено 2026-11-10. **138 в работе; M6 открыт.**
-Свежая обычная Login observation: inventory/client455-login-frame-native.json.
-Завершённый partial gate137 теперь historical для текущей PE; exact snapshot
+Обновлено 2026-11-10. **138 PARTIAL; M6 открыт.**
+Текущий gate: inventory/client455-login-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_login.py.
+Доказательства: research/client455-login.md. Предыдущий gate137 historical; snapshot
 artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_scene_capture.py.
-Доказательства: research/client455-scene-capture.md.
 Предыдущая подробная память: research/project-memory-before137.md.
-Предыдущий завершённый участок136,commit f32bc32.137 — progress.
+137 зафиксирован commit f33d025; промежуточный138/оценка — commit8c22e34.
 
 ## Цель и границы
 
@@ -25,14 +24,40 @@ LocalGit,no push/remote/publication. Subagents запрещены без пря�
 остаток около75%. Это планирование по12системам,не процент функций/байтов/тестов.
 Фиксированные веса100%,weighted18.95–33.55%; полных принятых областей0/12.
 Script scripts/assess_client455_progress.py; inventory/client455-progress-assessment.json.
-После обновления registry139исторических/пересекающихся записей;не знаменатель
+После обновления registry140исторических/пересекающихся записей;не знаменатель
 готовности. Full Login→selection→world→gameplay ещё не принят.
 Приоритет A: ordinaryTitle/Login; B: clientauth/selection; C: world/avatar/
 control/movement; D: combat/items/chat/NPC/quests/social; E: fullM6F/M7/M9.
 CRT/FP/failure gaps не отменены,но не подменяют связанный видимый сценарий.
 Остаток2–4объёма закрытого поведения — не прогноз календарных дней.
 
-## Текущее незавершённое138
+## Завершённый частичный138 и следующий139
+
+Root CGUIScreen::Add перенесён: null/no-op, AlwaysTop→AddFront455 иначе Add,
+SetParent(this), затем Show(FALSE), в том числе при duplicate registration.
+Подтверждение:5fullfunc/221instructions/21positive CFGblocks, все тела равны2pins.
+Raw registration-full.json и audit_client455_login_registration.py; ref report
+inventory/client455-login-registration-reference.json. GenericContainer.Add не менялся.
+Own PE ba23dd6de02e9b050f3651fd522e69f7ed8e2ab3acd977f4aa801bcfe2c7793b,
+entry16F640,size2269184;engine137unchanged.182/20 build/link0/unresolved0.
+Свежий normal-consumer ANI/BBX/ownWinMain/Miles/providers иordinary Login PASS.
+Latest run work/m9/ba23dd6d/login-frame002:frame70/3203ms/640x500,created1/loaded1,
+Renderreturnaftercapture иownexit observed,no fatal. PNG0bf6ec51… просмотрен:
+real lobby/waitingdialog;перекрывающиеся unopened panels отсутствуют.
+Target all10windows/input/auth/factory4/Title ещё OPEN. Готовность остаётся25%.
+43shared assets/44.2MBlinked/newpool0;без клонирования всего клиента.
+Diagnostic first_* report fields — aliases;правильное имяlogin_render_returned_after_capture.
+13file/4.66MB before-root snapshot и47file exact137 snapshot сохранены.
+IDA5a0405db/5818692d saved/closed,list0;nativejobs нет.
+
+139: client response→bootstrap→selection. Diagnostic flow-diagnostic.json:
+5401D0 initstate6 normal/7logout;53EF80 byte435973;53D0F0 result0/state6→5E7BE0.
+Это pcode research,неfullASM/CFG/equality. Следом найти real producer/dispatcher,
+перенести client data bootstrap и выбор персонажа;не force UI/auth success.
+Create53BB20 brokenfunction/JUMPOUT/ложнаяCRT аннотация,использовать ASM.
+Country slot284false во всех11профилях;не force legacyreconnect. Server readonly.
+
+### История ранних наблюдений138 (до исправления root)
 
 Before138 snapshot47files сохранён;137commit f33d025. OrdinarySpriteMgr теперь
 legacy7→target3(login),8→2(loading),3→4(main),0/1unchanged. Без null guards
@@ -82,7 +107,7 @@ viewport640x480;realReset/lost/failures remain open.8CE2A0 is Fraction,notPlazma
 8CE0A0 unowned stack lanes remain;never invent defaults.
 Material/world/Bellato135–136 результаты historical,не fresh137 regressions.
 
-## Следующий138: обычный стартовый сценарий
+## Исходное исследование Title138 (история)
 
 research/client455-title-initial.md;raw title138-initial/session.json.
 20diagnostic pcode functions плюс2small instruction contexts;не fullASM/CFG/
