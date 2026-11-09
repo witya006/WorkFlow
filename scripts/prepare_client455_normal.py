@@ -23,6 +23,7 @@ from client455_tagged_audio_port import port_tagged_audio
 from client455_magic_port import port_magic
 from client455_effect_runtime_port import port_effect_runtime
 from client455_nuclear_aiming_port import port_nuclear_aiming
+from client455_center_messages_port import port_center_messages
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -675,6 +676,8 @@ def main():
             if effect_runtime_changed:changes.append('455effect512/schedule-quality-owner/disappear/eviction andtwo renderpasses;fullworldpipeline/blur/device lifecycle remainopen')
             raw,nuclear_changed=port_nuclear_aiming(raw,relative,native,section)
             if nuclear_changed:changes.append('455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen')
+            raw,center_changed=port_center_messages(raw,relative)
+            if center_changed:changes.append('455center message stage owner/queue/update/draw andlate aiming frame;C1A/fullchat dispatch remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
             if source.name.lower() in ['global.cpp','cresobject.cpp']:
@@ -727,7 +730,7 @@ def main():
     cmake+='set_source_files_properties("'+intro_camera_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     for name in ['client455_tutorial_intro.cpp','client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp','client455_tagged_audio.cpp','client455_magic_control.cpp','client455_nuclear_aiming.cpp']:
+    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp','client455_tagged_audio.cpp','client455_magic_control.cpp','client455_nuclear_aiming.cpp','client455_center_messages.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name=='client455_nuclear_aiming.cpp':cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
@@ -800,6 +803,8 @@ def main():
     report['magic_port_sha256']=sha((WS/'scripts/client455_magic_port.py').read_bytes())
     report['effect_runtime_port_sha256']=sha((WS/'scripts/client455_effect_runtime_port.py').read_bytes())
     report['nuclear_aiming_port_sha256']=sha((WS/'scripts/client455_nuclear_aiming_port.py').read_bytes())
+    report['center_messages_port_sha256']=sha((WS/'scripts/client455_center_messages_port.py').read_bytes())
+    for name in ['client455_center_messages.h','client455_center_messages.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_aiming.h','client455_nuclear_aiming.cpp','client455_magic_move.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_effect_disappear.inc','client455_effect_schedule.inc','client455_effect_passes.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_magic_control.h','client455_magic_control.cpp','client455_magic_parser_extra.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

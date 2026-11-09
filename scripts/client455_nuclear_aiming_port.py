@@ -14,9 +14,9 @@ def port_nuclear_aiming(raw,relative,native,section):
     if relative=='mainapp.cpp':
         once(b'm_taggedAudio455.Close();',b'm_nuclearAiming455.Clear();\r\n\tm_taggedAudio455.Close();')
         return raw,True
-    if relative=='addcodebyjang/foreffect.cpp':
+    if relative=='gameprogress/cgp_maingame.cpp':
         raw=b'#include "client455_nuclear_aiming.h"\r\n'+raw
-        once(b'FrameMoveAllEffectsList();',b'RF455_NuclearAiming().FrameMove();\r\n\tFrameMoveAllEffectsList();')
+        once(b'\t\t_GetUIScreen()->Draw();',b'\t\t_GetUIScreen()->Draw();\r\n\t\tRF455_NuclearAiming().FrameMove();')
         return raw,True
     if relative=='addcodebyjang/effectcore.cpp':
         start,end=section(raw,b'BOOL MovePosMagicEffect(',b'BOOL MovePosMagicEffect(')

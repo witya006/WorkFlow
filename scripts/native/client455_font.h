@@ -36,7 +36,10 @@ HRESULT RF455_DrawLegacyText(float position[4],const char*,DWORD,DWORD,const flo
 DWORD RF455_GetTextOutline();void RF455_SetTextOutline(DWORD);
 SIZE RF455_MeasureLegacyText(const char*);
 SIZE RF455_MeasureTextAnsi(const char*);
+SIZE RF455_MeasureTextAnsiFlags(const char*,DWORD flags);
+HRESULT RF455_DrawTextAnsiScaled(float position[4],const char*,DWORD color,DWORD flags,float scale);
 int RF455_FitTextAnsi(const char*, int maximumWidth);
 RF455FontSnapshot RF455_GetNormalFontSnapshot();
+RF455FontSnapshot RF455_GetFontSnapshotFlags(DWORD flags);
 bool RF455_TextResourcesReady();
 void RF455_SetTextReadyCallback(void (*)());

@@ -1,5 +1,9 @@
 # Контроллер ядерного прицеливания455 — работа107
 
+Runtime gate107 исторический после [center108](client455-system-messages.md).
+В108 ранний aiming hook исправлен на late Render и проверен в own PE;
+описание107 ниже относится к исторической реализации.
+
 **PARTIAL, M6.** В CMainApp восстановлен20-байтный core прицеливания:
 effect handle, pending и независимая командная позиция. Он использует настоящие
 gMouse/CLevel/BSP, обычный effectcore и tagged Miles. FrameMove включён перед

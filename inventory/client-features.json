@@ -6,9 +6,68 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-NUCLEAR-AIMING-107",
+      "id": "CLIENT455-CENTER-MESSAGES-108",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual MainGame center-message member/lifecycle,queue64/active84/max3,medium GDI draw/fade; selected late aiming hook fixed. Full C1A dispatch/chat/live hover remains open",
+      "reference": [
+        {
+          "rva": "0x5b1a0",
+          "role": "Add"
+        },
+        {
+          "rva": "0x14d900",
+          "role": "Update"
+        },
+        {
+          "rva": "0x14dcb0",
+          "role": "Draw"
+        },
+        {
+          "rva": "0x1459e0",
+          "role": "owner ctor"
+        },
+        {
+          "rva": "0x14d7e0",
+          "role": "owner dtor"
+        },
+        {
+          "rva": "0x4c6380",
+          "role": "font metrics fourth flags argument"
+        },
+        {
+          "rva": "0x14b059",
+          "role": "late nuclear frame"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_center_messages_port.py",
+        "scripts/client455_nuclear_aiming_port.py",
+        "scripts/native/client455_center_messages.h",
+        "scripts/native/client455_center_messages.cpp",
+        "scripts/native/client455_font.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "25selected/21fullasm/2914instructions/25equalranges. Actual MainGame member and offline network Create,69nativechecks/SBCS+DBCS/queue/fade/GDIoracle/4viewedGPU/pixels1673-4455-4236-0;owner unbound. PE5ad0b484/182-20-61/unresolved0/Create1;own decoded calls centerUpdate beforeeffects,lateaiming beforecenterDraw,noearlyaiming. Fresh BSP29/status62/6viewedhover byteequal107. Other unchanged native suites retained historical,not rerun.",
+      "evidence": [
+        "inventory/client455-system-messages-reference.json",
+        "inventory/client455-center-messages-native.json",
+        "inventory/client455-center-messages-visual-review.json",
+        "inventory/client455-center-messages-checkpoint.json",
+        "research/client455-system-messages.md"
+      ],
+      "gaps": [
+        "Full4pane chat/category14/style18/wrapping/data providers and common C1A/CE7/login/Tutorial dispatch not restored; Add no game producers and stripped from finalPE",
+        "Pending1 hover still explicitly refuses before mutation until full dispatch; nuclear command/list12/final position/other cancellation paths unported",
+        "Existing uncreated legacy MainGame Destroy leaks its other legacy allocations; no full stage teardown/memory balance claim",
+        "Selected placement and source owner accepted; full world/camera/font reset/privateABI/FP/OOM/CRT startup/concurrency/shutdown not accepted",
+        "All previous client-acceptance gaps remain mandatory; M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-NUCLEAR-AIMING-107",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "MainApp-owned aiming20 with real BSP cursor, ordinary effect movement and tagged Miles; pending0 hover accepted, pending1 explicitly refuses until full C1A provider",
       "reference": [
         {

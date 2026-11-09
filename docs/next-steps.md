@@ -7,51 +7,51 @@ logic не разрабатывать; серверные исходники т�
 
 ## Текущая точка
 
-107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
-командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
-tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
-Pending0 разрешает hover при соответствующем статусе; pending1 пока отказывает
-до мутации из-за отсутствующего C1A message provider. Игровых command producers
-ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
-Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
-resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
-просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
-Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-nuclear-aiming.md).
+108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
+queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
+69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
+пуст. Это прямой Add в actual stage member,не полный C1A/chat dispatch.
+Прицел перенесён из early effects update в late Render после UI;порядок
+подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
+проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
+Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
+этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-system-messages.md).
 
-Текущий gate: inventory/client455-nuclear-aiming-checkpoint.json.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_nuclear_aiming.py.
-IDA7cb76d0f saved/closed/list0;19functions/1670asm/19equalranges/2pickslots.
-Raw artifacts/client455-progress/nuclear107-*. Broad writer scan partial (2M cap),
-не полное покрытие callers. Core20 является member настоящего MainApp; целый
-32byte targetcontainer/list12 ABI ещё не принят. FrameMove/Clear retained в PE,
-SetPending без игровых producers удалён linker. Frame hook стоит перед ordinary
-effects update,но полный frame order не принят. Отдельная команда SetPosition
-не меняется при визуальном движении курсора. Missing cue всё равно включает
-звук; Clear с handle0 его не останавливает — target quirk проверен.
-Нативный lab: work/m9/a3a3c42f/nuclear-aiming-001;29checks,7warnings(6R3T+
-expected missing cue),90 drain ticks,realneutralAS1/Miles,soundmuted,memorybalanced.
-PEd09eec8dd10a35dbd2bb07523901e0b66dc250dec611fee7efe231800b749c9d,
-2157056bytes,base400000,WinMainb8ed0,afterCreateb9044;Fast2D ready7969.
-Engine546a7529…/67 unchanged;033baseline сохранён,старого082snapshot нет.
-4 effect-runtime GPU frames (отдельная controlled scene,не BSP lab) и6 hover
-просмотрены;hover byteequal106. Большие159k/world/audio/остальные32GUI suites
-не повторялись. Gate106 snapshot в artifacts,егоruntimegate historical.
-Original/server не менялись,inputEXE не исполнялись. Полные сведения в research.
+Текущий gate: inventory/client455-center-messages-checkpoint.json.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_center_messages.py.
+Статическая опора расширена до25functions/21fullasm/2914instructions/25equalranges
+двух x86 pins. Native IDA ffcaa552 и20210106 saved/closed/list0;raw messages108-*.
+Второй проход подтвердил center field+177440 и скрытый4-й argument8C6380:flags
+80000010 выбирает medium font,а не основной9pt. Все данные и namespaces в research.
+MainGame member создан после UI members,ctor/dtor bind/unbind registry;современный
+STL не объявлен old24byte ABI. Actual stage constructor требует offline network
+Create,без Connect. Legacy Destroy до created возвращается без освобождения
+других legacy allocations;это известный full stage teardown gap,не скрыт.
+Native69:records84/chunks64/capacity3,CRT SBCS и DBCS949,500/501ms иflood>5,
+3600/3601ms,одна eviction заupdate,unsigned age,unclamped factor,GDIoracle,
+реальные C1A/CE7,4GPU/1673-4455-4236-0pixels/6final drain ticks/ownerunbound.
+CRT mode независим от NDLanguage949;продукт не форсирует корейский CRT. Стенд
+временно проверяет оба режима и восстанавливает исходный. Glyphs реальные.
+Own PE5ad0b484484113803e2620a0a46eb91dd0ec11d918cf9e72cde5bc39a3d87c02,
+2160128bytes/base400000/WinMainb8f30/afterCreateb90a4. Source и decoded own CALLS
+дают centerUpdate262dd <effects265f8;lateaiming27207 <centerDraw27212. В foreffect
+aiming вызова больше нет. Это selected placement,не полныйworldframe acceptance.
+Add пока без игровых producers удалён linker;native вызывает реальный stage
+member напрямую. C1A dispatch иlivehover ещё не готовы. BSP29/status62 и6hover
+проверены заново;4center+6hover просмотрены. Неизменённые magic36/resources66/
+runtime573/audio157/account/hotbar7/storage3 оставлены historical107,не заявлены
+новой runtime acceptance. Большие159k/world/audio и остальные32GUI не повторены.
+Engine546a7529…/67 unchanged;033baseline сохранён,082snapshot по-прежнему нет.
+Original/server не менялись,inputEXE не исполнялись. M9 не переопределён.
 
-Исследование108:21 выбранная функция/17fullasm/2284instructions/21equalranges
-обеих455;IDAffcaa552 saved/closed/list0. См. research/client455-system-messages.md
-и inventory/client455-system-messages-reference.json. Runtime gate остаётся107.
-Подтверждено расхождение hook:455 вызывает nuclear Frame в конце Render после
-UI Draw (RVA14b059), наша107 — до effects update. Перенести hook без дублирования.
-Center owner:pending64/active84/max3,queue/pacing/fade;chat4panes/14categories/
-style18/wrapping требуют переноса.108 пока static analysis,не новый runtime.
-
-Далее108 — настоящий localized C1A/CE7 message/notification pipeline и
-pending1 hover cancellation. Не подменять пустым legacy _SetSystemMsg(DWORD)
-или chat-only выводом. Затем command/response producers, list12/container,
-final position commit и остальные input cancels. Target orthographic picking,
-menu dummy/unsafe FP и полный shutdown остаются открытыми.
+Далее109 — настоящий4pane chat:14categories/style18 records/wrapping746020,
+их data providers и lifecycle;затем common5E47A0/5E4A60 dispatch с login/Tutorial
+sinks и реальные C1A/CE7 callers. Pending1 hover пока явно отказывает до мутации;
+не заменять полную цепочку пустым _SetSystemMsg(DWORD) или center-only выводом.
+После этого — nuclear command/response producers,list12/container,final position
+commit и остальные input cancels. Target orthographic picking/menu dummy,
+full stage teardown,privateABI/OOM/FP/CRT initialization остаются открытыми.
 Обязательны world pass placement/dynamic-light compositing,quality option/UI,
 blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
 receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/

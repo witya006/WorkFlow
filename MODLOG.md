@@ -1,5 +1,17 @@
 # RF Online client reconstruction journal
 
+Работа108 — 108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
+queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
+69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
+пуст. Это прямой Add в actual stage member,не полный C1A/chat dispatch.
+Прицел перенесён из early effects update в late Render после UI;порядок
+подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
+проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
+Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
+этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](research/client455-system-messages.md).
+
+
 Исследование108:21selected functions/17fullasm/2284instructions/21equalranges,
 native IDAffcaa552 saved/closed/list0. Подтверждены center-message queue64,
 active84/max3,update/fade/draw,lifetime и C1A dispatch через4pane chat.

@@ -1,5 +1,19 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение09.11,center108: новых установок нет. IDA20210106 saved/closed/list0;
+25 selected/21fullasm/2914instructions/25equalranges.
+108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
+queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
+69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
+пуст. Это прямой Add в actual stage member,не полный C1A/chat dispatch.
+Прицел перенесён из early effects update в late Render после UI;порядок
+подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
+проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
+Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
+этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-system-messages.md).
+
+
 Исследование108,09.11: native IDAffcaa552 saved/closed/list0;21 выбранный диапазон
 обеих455 совпадает,17fullasm/2284instructions. Новых установок/запусков inputEXE
 нет. Выявлен подтверждённый early/late aiming hook gap; сообщения пока только

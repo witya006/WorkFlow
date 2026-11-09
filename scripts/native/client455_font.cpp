@@ -173,8 +173,14 @@ SIZE RF455_MeasureLegacyText(const char* text){
     return fonts[0].measure(wide.data());
 }
 SIZE RF455_MeasureTextAnsi(const char* text){return fonts[0].measureAnsi(text);}
+SIZE RF455_MeasureTextAnsiFlags(const char* text,DWORD flags){return fonts[(flags&0x40000000)?2:((flags&0x80000000)?1:0)].measureAnsi(text);}
+HRESULT RF455_DrawTextAnsiScaled(float position[4],const char* text,DWORD color,DWORD flags,float scale){
+    const unsigned cp=RF455_GetFontSettings().codepage;const int count=MultiByteToWideChar(cp,0,text,-1,nullptr,0);if(!count)return E_FAIL;
+    std::vector<wchar_t> wide(count);MultiByteToWideChar(cp,0,text,-1,wide.data(),count);return RF455_DrawText(position,wide.data(),color,flags,scale);
+}
 int RF455_FitTextAnsi(const char* text,int maximumWidth){return fonts[0].fitAnsi(text,maximumWidth);}
 RF455FontSnapshot RF455_GetNormalFontSnapshot(){return fonts[0].snapshot();}
+RF455FontSnapshot RF455_GetFontSnapshotFlags(DWORD flags){return fonts[(flags&0x40000000)?2:((flags&0x80000000)?1:0)].snapshot();}
 bool RF455_TextResourcesReady(){return loaded&&fonts[0].snapshot().font!=nullptr;}
 void RF455_SetTextReadyCallback(void(*callback)()){textReadyCallback=callback;}
 void RF455_SetTextOutline(DWORD value){fonts[0].outline=value&0xffffff;}

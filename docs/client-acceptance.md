@@ -1,5 +1,18 @@
 # Полнота восстановления RF_Online.bin
 
+108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
+queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
+69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
+пуст. Это прямой Add в actual stage member,не полный C1A/chat dispatch.
+Прицел перенесён из early effects update в late Render после UI;порядок
+подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
+проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
+Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
+этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-system-messages.md).
+
+Исторический107:
+
 107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
 командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
 tagged Miles Radar.29 реальных проверок проходят; память785169→785169.
@@ -8,7 +21,7 @@ Pending0 разрешает hover при соответствующем стат
 ещё нет; SetPending проверен в full-object lab, но удалён из обычной PE linker.
 Новая PEd09eec8d…/entry15adc0/182-20-60/unresolved0/Create1. Status62/magic36/
 resources66/audio157/runtime573/account/hotbar7/storage3 проходят;10 GPU frames
-просмотрены,6 hover побайтно равны106. Gate107 current,106 historical.
+просмотрены,6 hover побайтно равны106. Gate107 historical,106 historical.
 Full nuclear/world/message/device/client acceptance ещё открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-nuclear-aiming.md).
 

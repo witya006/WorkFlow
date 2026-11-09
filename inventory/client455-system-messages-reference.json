@@ -1,14 +1,22 @@
 {
-  "status": "CONFIRMED_SELECTED_ANALYSIS_ONLY",
-  "scope": "Center-message queue/84byte record/lifecycle and C1A dispatch dependencies; no message runtime restored in108 yet",
-  "script_sha256": "e1f70b19362d0a51e61e70ef155fa5718b7065a4b0e3d525b5be5cbc2dd15b64",
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Center-message queue/84byte record/lifecycle, medium-font measurement, stage owner and C1A dispatch dependencies; full message runtime requires separate native evidence",
+  "script_sha256": "e75b3ebb32fe021fa73f3607e4b142116fe00df79a392131be8733684dbc78be",
   "raw_evidence": {
     "file": "artifacts/client455-progress/messages108-reference.json",
     "sha256": "4ced197c91e0e123879a0990579d4939d68e8be905aebadf7a8926acbbbf3d24"
   },
+  "additional_evidence": {
+    "file": "artifacts/client455-progress/messages108-implementation-reference.json",
+    "sha256": "77a7986b068f5c844157fc3872cacc30ec5bccd354f798037bae1d8eff6728ad"
+  },
   "session": {
     "file": "artifacts/client455-progress/messages108-session.json",
     "sha256": "df19c20a8a4a34608192fd8cd9f1091c68bd18fb011a38aed73aa5df97938810"
+  },
+  "implementation_session": {
+    "file": "artifacts/client455-progress/messages108-implementation-session.json",
+    "sha256": "fe28aa28678cdabf86927ba02be655ccc9be776ede94861cbbbc6ac33e5d25e1"
   },
   "references": [
     {
@@ -120,6 +128,26 @@
           "rva": "0x5ba60",
           "bytes": 22,
           "sha256": "e43da52f371a5e604ed5cb5fe556423c71ae9859f66390bad3fbee2196492131"
+        },
+        {
+          "rva": "0x1454e0",
+          "bytes": 700,
+          "sha256": "bdbb6eec5b66303919684ab44ac437e514d6c93981734035016ec083b0cc764f"
+        },
+        {
+          "rva": "0x145a50",
+          "bytes": 686,
+          "sha256": "11d126fad7b537cc76bc728b2d7fb1d096de4b1ff6fdfcd83784975f908150d8"
+        },
+        {
+          "rva": "0x4c6380",
+          "bytes": 125,
+          "sha256": "c02c8df0fac3e6a54c221371e2ae212573175af935c90ae28c8bf88873df49e1"
+        },
+        {
+          "rva": "0x4c6020",
+          "bytes": 137,
+          "sha256": "117e6a2d37c9d5c9cae7731de9f437d90836efb9458d570553a435e9928b8b1d"
         }
       ]
     },
@@ -232,13 +260,33 @@
           "rva": "0x5ba60",
           "bytes": 22,
           "sha256": "e43da52f371a5e604ed5cb5fe556423c71ae9859f66390bad3fbee2196492131"
+        },
+        {
+          "rva": "0x1454e0",
+          "bytes": 700,
+          "sha256": "bdbb6eec5b66303919684ab44ac437e514d6c93981734035016ec083b0cc764f"
+        },
+        {
+          "rva": "0x145a50",
+          "bytes": 686,
+          "sha256": "11d126fad7b537cc76bc728b2d7fb1d096de4b1ff6fdfcd83784975f908150d8"
+        },
+        {
+          "rva": "0x4c6380",
+          "bytes": 125,
+          "sha256": "c02c8df0fac3e6a54c221371e2ae212573175af935c90ae28c8bf88873df49e1"
+        },
+        {
+          "rva": "0x4c6020",
+          "bytes": 137,
+          "sha256": "117e6a2d37c9d5c9cae7731de9f437d90836efb9458d570553a435e9928b8b1d"
         }
       ]
     }
   ],
-  "selected_functions": 21,
-  "complete_assembly_functions": 17,
-  "instructions": 2284,
+  "selected_functions": 25,
+  "complete_assembly_functions": 21,
+  "instructions": 2914,
   "pseudocode_only_functions": 4,
   "frame_order": {
     "center_update_rva": "0x14a242",
@@ -247,32 +295,33 @@
     "nuclear_container_frame_rva": "0x14b059",
     "center_draw_rva": "0x14b065"
   },
-  "current_source_timing_matches_target": false,
+  "current_source_timing_matches_target": true,
   "current_sources": [
     {
       "file": "work/client455-port/normal/source/addcodebyjang/foreffect.cpp",
-      "sha256": "48cc48820e983d706e63861323267a6310af35acdd62040962b3ae9c74e5a918"
+      "sha256": "048658e9e48bb5942635d9d9440e8dd1ed8ba754def597e85008046f025d65a9"
     },
     {
       "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
-      "sha256": "115e853abb9ce929a66771da6b528ebb450df2407f1b2b23fd80bc470d976256"
+      "sha256": "2d88771ceabcb7839e18220ca9915fba9ef029abb48e6c127cb50b7ebba95d97"
     }
   ],
   "facts": [
     "Center owner consists of two list12 members: pending64byte chunks then up to3 active84byte records; constructor/destructor bind/unbind singleton C0BD60",
-    "Text chunks use actual _mbsnbcpy with59byte limit and zeroed60byte buffer; immediate short message only when pending queue is empty",
+    "Text chunks use actual _mbsnbcpy with59byte limit and zeroed60byte buffer; ambient CRT multibyte mode is independent of NDLanguage codepage; immediate short message only when pending queue is empty",
     "Active record x0/y4/text60@8/colorDWORD68/timeDWORD72/scaleFloat76=1/alphaFloat80=0",
     "Update promotes at most one queued chunk when active empty, newest age>500ms, or pending queue>5; iterates active newest-to-oldest",
     "Update uses unbounded float factor loopTime*4.5, newest scale1 and others0.8, line targetY200-index*fontHeight, centering and alpha fade; age>=3600ms fades to0",
     "Deletes at most one oldest active record per update only if age>3600ms and alpha<=0.01; Draw oldest-to-newest uses font flags80000010 and own scale",
     "5E47A0 formats buffer then routes stage3/other non0/1/2 into center withcolorFFCC1F00, then common chat/login dispatch5E4A60",
     "Stage1 uses real login progress message sink; stage3 and stage2 have separate sequence counters; actual chat InsertText745B80 has4panes,14message categories,style18byte records and wrapping dependency746020",
-    "Actual target aiming container Frame runs at end of Render after UI Draw, then center Draw; current107 early ordinary effect hook is confirmed mismatch and must move"
+    "Target MainGame embeds center owner at byte177440,constructor/destructor own its lifetime; message measure8C6380 has a fourth flags argument hidden by old decompiler prototype,80000010 selects actual medium font",
+    "Actual target aiming container Frame runs at end of Render after UI Draw, then center Draw; migrated source timing is separately recorded and full world runtime remains unaccepted"
   ],
   "gaps": [
-    "108 message owner,queue,update/draw,stage lifetime and C1A/CE7 caller integration not implemented yet",
+    "Message owner runtime/GPU/stage lifetime and C1A/CE7 caller integration require current native/checkpoint evidence",
     "Target4pane chat/style records/wrapping and login/Tutorial sinks cannot be replaced by legacy chat-only output",
-    "Move current aiming update hook to confirmed late Render position; full world pipeline/camera/render reset integration still requires acceptance",
+    "Full world pipeline/camera/render reset integration requires runtime acceptance beyond the selected late Render source hook",
     "Command/response producers,list12 nuclear container,final position commit and all previous client-acceptance gaps remain open"
   ],
   "input_exe_executed": false,
