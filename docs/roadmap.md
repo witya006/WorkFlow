@@ -1,21 +1,22 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-115 PARTIAL: восстановлены nuclear record32/registry, radar/tag2, launch/impact,
-общий process countdown и C15/C17 через настоящие chat/center providers.
-Ordinary MainGame frame и MainApp shutdown подключены; создание записей/FX
-проверено в full-object lab. Target stage lifetime и ordinary group60 receiver
-ещё открыты; MainApp holder временный, receiver helpers stripped from own PE.
-34equalbodyranges/31fullasm/1394instructions+3EHtails,IDA savedclosed/list0.
-Native109/aim29/marker702/message83 PASS;16GPU viewed,11frames byteequal114.
-Own PE52c2a7c5…/entry162800/182client-20kernel-67facade/unresolved0/Create1.
-Engine67 неизменён. Registry lab даёт20 R3T release warnings при teardown:
-полное владение текстурами/баланс памяти не приняты. Fullworld/trajectory/
-camera/light,worldgeometry588 и все прочие client-acceptance gaps остаются.
-Current runtime gate115;114 historical. M6/M6F/M7/M9 OPEN.
-Далее116: actual group60 receiver/selection/dialog/send/registry/MiniMap,
-proper MainGame ownership; отдельно разобрать R3T texture teardown.
+116 PARTIAL: ordinary Nuclear group60 factory/receiver обрабатывает все9
+форматов пакетов. MainGame владеет реестром; static MainApp holder убран.
+Подключены original-item serial→encrypted send, actual category33 inventory
+use completion и registry lookup→MiniMap. Empty-cursor C1A и сохранение
+operation при nonempty hover backup восстановлены; это не отдельный dialog.
+44equalbodyranges/42fullasm/2473instructions+Init EH;18newasm/1354instructions.
+IDA savedclosed/list0. Native101/registry109/aim30/marker702/message83 PASS;
+20GPU viewed,11marker/message frames byteequal115. Actual encrypted receive
+ring и send19 bytes сверены с независимым Windows CNG (plain frame6).
+Own PEc67a3154…/entry164370/182client-20kernel-69facade/unresolved0/Create1.
+Engine67 unchanged. Full socket/auth/inventory/stage/world/texture lifecycle
+не приняты;20R3T warnings в каждом nuclear lab остаются. Worldgeometry588
+producer пока отсутствует,geometry задаётся lab. Current gate116;115 historical.
+M6/M6F/M7/M9 OPEN. Далее117 — actual worldgeometry588/обычная геометрия
+MiniMap;разобрать R3T release warnings до приёмки полного texture lifetime.
 
-[Доказательства115](../research/client455-nuclear-registry.md).
+[Доказательства116](../research/client455-nuclear-receiver.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

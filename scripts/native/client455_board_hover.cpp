@@ -27,13 +27,11 @@ bool RF455_AvatarRequiresHoverCancel(){
     auto* avatar=_GetAvatar();
     return avatar&&RF455_RequiresHoverCancelStatus(avatar->GetStatusCode455());
 }
-namespace {
-void requireHoverCancellation(){
+void RF455_RequireHoverCancellation(){
     // Target cancels effect/sound/position, then emits localized C1A through
     // actual center/chat/login providers, all before the item mutation.
     if(RF455_AvatarRequiresHoverCancel()&&RF455_NuclearAiming().pending)
         RF455_CancelNuclearForHover();
-}
 }
 void CBoardManager::InitHover455(){m_hoverState455=new RF455BoardHoverState;}
 void CBoardManager::DestroyHover455(){delete m_hoverState455;m_hoverState455=nullptr;}
@@ -67,7 +65,7 @@ CBoardObject* CBoardManager::SetTypedHover455(CBoardObject* source){
         throw std::logic_error("455 hover requires the actual typed source icon");
     if(m_pHoverObject&&!RF455_IsOwnBoardObject455(m_pHoverObject))
         throw std::logic_error("455 mixed legacy hover replacement requires migration");
-    requireHoverCancellation();m_hoverState455->typed=true;
+    RF455_RequireHoverCancellation();m_hoverState455->typed=true;
     if(source){
         if(m_pHoverObject){delete m_pHoverObject;m_pHoverObject=nullptr;gScreen.RemoveTypedHoverIcon455();}
         m_pHoverObject=source->Clone();

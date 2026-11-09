@@ -6,9 +6,82 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-NUCLEAR-REGISTRY-115",
+      "id": "CLIENT455-NUCLEAR-RECEIVER-116",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary Nuclear group60/all9 handlers,real original-item serial/AES send,type33 use completion/hover-backup cancellation,registry\u2192MiniMap and MainGame owner;full socket/auth/inventory/stage/world/texture lifecycle unaccepted",
+      "reference": [
+        {
+          "rva": "0x1c5800",
+          "role": "actual processor"
+        },
+        {
+          "rva": "0x1c59d0",
+          "role": "marker selector,not dialog"
+        },
+        {
+          "rva": "0xb950",
+          "role": "original object232"
+        },
+        {
+          "rva": "0x70690",
+          "role": "original storage board229"
+        },
+        {
+          "rva": "0xfad00",
+          "role": "actual conditional UI_UseResult"
+        },
+        {
+          "rva": "0x75a90",
+          "role": "inventory virtual124"
+        },
+        {
+          "rva": "0x757d0",
+          "role": "empty nuclear callback"
+        },
+        {
+          "rva": "0x17140",
+          "role": "use record field4 clear"
+        },
+        {
+          "rva": "0x145d00",
+          "role": "MainGame Init bind"
+        },
+        {
+          "rva": "0x1496d0",
+          "role": "MainGame Destroy release"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_nuclear_receiver_port.py",
+        "scripts/native/client455_nuclear_receiver.h",
+        "scripts/native/client455_nuclear_receiver.cpp",
+        "scripts/native/client455_player_use.h",
+        "scripts/native/client455_nuclear_registry.h",
+        "scripts/native/client455_nuclear_registry.cpp",
+        "scripts/native/client455_board_hover.h",
+        "scripts/native/client455_board_hover.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "44body/42fullasm/2473instructions+InitEH equalbothpins;18newasm/1354instructions/IDAsavedclosed/list0. Receiver101/registry109/aim30/marker702/message83;20viewedGPU/11framesbyteequal115. Actual receive ring and19byte AES192 serial send vs Windows CNG. PEc67a3154/182-20-69/unresolved0/Create1;engine unchanged,no bulk reruns.",
+      "evidence": [
+        "inventory/client455-nuclear-receiver-reference.json",
+        "inventory/client455-nuclear-receiver-native.json",
+        "inventory/client455-nuclear-receiver-visual-review.json",
+        "inventory/client455-nuclear-receiver-checkpoint.json",
+        "research/client455-nuclear-receiver.md"
+      ],
+      "gaps": [
+        "Worldgeometry588 loader/producer still absent;lab-supplied geometry doesnot accept ordinary live marker position",
+        "Only selected type33 inventory completion/use-field4 lane;other inventory kinds/using record producers/complete flow remain open",
+        "Full stage/auth/socket/reset/world/frame/trajectory/camera/light/privateABI/unsafe domains remain unaccepted;uncreated own cleanup not target leak/dangling parity",
+        "20R3Tteardown warnings in nuclear labs;full texture lifetime/memory balance unproven;all prior acceptance gaps and M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-NUCLEAR-REGISTRY-115",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual record32/registry/FX/tag2/shared process clock and real C15/C17 in fullobject lab;ordinary frame/shutdown retained,proper stage ownership/receiver/world/texturelifetime open",
       "reference": [
         {
@@ -80,7 +153,8 @@
         "MainApp bridge temporary;target MainGame birth/destruction/fullstage lifetime not restored",
         "20R3Trelease warnings during registry teardown;complete texture ownership/memory balance unproven",
         "Worldgeometry588/fulltrajectory/cameraquake/light/compositing/quality/blur/advancedFX/device and all prior acceptance gaps remain;M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "superseded_by": "CLIENT455-NUCLEAR-RECEIVER-116"
     },
     {
       "id": "CLIENT455-NUCLEAR-MINIMAP-114",

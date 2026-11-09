@@ -62,4 +62,7 @@ public:
     void FrameMove();
 };
 RF455NuclearContainer& RF455_NuclearContainer();
+RF455NuclearContainer* RF455_GetNuclearContainer();
+void RF455_BindNuclearContainer(RF455NuclearContainer*);
+void RF455_UnbindNuclearContainer(RF455NuclearContainer*);
 #endif

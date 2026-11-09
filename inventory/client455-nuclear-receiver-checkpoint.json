@@ -1,0 +1,1491 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual group60 handlers,original selection/serial/type33 inventory use and stage-owned registry;full stage/auth/inventory/world acceptance remains open",
+  "script_sha256": "6d46311288570c4e3d7f1b18c11494320e43b7a968504d1319fc244052d79bac",
+  "sources": [
+    {
+      "file": "scripts/native/client455_nuclear_receiver.h",
+      "sha256": "d66ff2182779be38b5d60c1a53b484447867ac0d737075aaf07536eff87106a3"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_receiver.cpp",
+      "sha256": "2c1256e79e345f16c783a60b764170f767b0b0c3c8da31e35048e68fd8d6ad30"
+    },
+    {
+      "file": "scripts/native/client455_player_use.h",
+      "sha256": "4aa58381b14cc11219954bd962a17ccc7b543b8cc2540478fd4889c1ca6495d0"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_registry.h",
+      "sha256": "a229d8caa7c06c6f36c02e13643b118c8e78403713a56db0315cc0fe9d37e539"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_registry.cpp",
+      "sha256": "6836ed354a8bc4ebc544322656487f97960533ab92b58afbf580d0fbb4c1b9b1"
+    },
+    {
+      "file": "scripts/native/client455_board_hover.h",
+      "sha256": "31b13366d29b01812c6fb3482859aed6b472416dd0ac23503d6eb3a298f31240"
+    },
+    {
+      "file": "scripts/native/client455_board_hover.cpp",
+      "sha256": "65fc1e7d8d174c411dca9bad2f42c630585d41024be552425ba7a34fcfddc242"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_wire.h",
+      "sha256": "b75ae17d5a62f168c299d2736a30b8c1d560e3fe7bd4f11a5b257dfbbe44032c"
+    },
+    {
+      "file": "scripts/native/client455_nuclear_wire.cpp",
+      "sha256": "c193328f57d6ca06ef4718a0c57e4a54fe35b81477ba640cc44eb07d9b82e263"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "8d227758e695e4cf1ce857652553d835e684c0b8fa3c84ba8de28657fc9579fe",
+      "input": "work/client455-port/source/RF_Client/mainapp.h",
+      "input_sha256": "38ebe67adfc65bb64c5d5b4a64202a8ecfe3a9ba1a3f1f37e0ce43685de22c1c",
+      "changes": [
+        "455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported",
+        "455semantic icon registry/CMainApp owner and typed quantity-usable fanout;Linker-Macro owner registration remainsopen",
+        "named ordinary pre-engine network creation entry",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen",
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.cpp",
+      "sha256": "a6dfe25735f32ddae2177e28a7dba2d0e7efb7564b23992e0ee673b2ee95769f",
+      "input": "work/client455-port/source/RF_Client/mainapp.cpp",
+      "input_sha256": "231ef9d4f8ceb906292df9d07af90158416503d6c52a1de83a552f04d6a25e38",
+      "changes": [
+        "455country launcher before language;typed network fields;remove late legacy launcher read;full connection order remains open",
+        "455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen",
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.h",
+      "sha256": "d8f380ebc12b015ec5efa404aa78e2e783ebb49c5767a0acad26c6dd5d75130a",
+      "input": "work/client455-port/source/RF_Client/gameprogress/cgp_maingame.h",
+      "input_sha256": "f32623b5fd119b053916eac24bab6198a57f27fd6298d9cedd9ca6f35626b37c",
+      "changes": [
+        "455center message stage owner/queue/update/draw andlate aiming frame;C1A/fullchat dispatch remainopen",
+        "455chat profile36/prefix18/font16 andselected real4pane insert/wrap;legacycallers/filterUI/fulldispatch remainopen",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+      "sha256": "ac7c5451b2b692b479b143933cf58d87c10d9a52f0a661dc5775eefdb79298b6",
+      "input": "work/client455-port/source/RF_Client/gameprogress/cgp_maingame.cpp",
+      "input_sha256": "115e853abb9ce929a66771da6b528ebb450df2407f1b2b23fd80bc470d976256",
+      "changes": [
+        "455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen",
+        "455center message stage owner/queue/update/draw andlate aiming frame;C1A/fullchat dispatch remainopen",
+        "455chat profile36/prefix18/font16 andselected real4pane insert/wrap;legacycallers/filterUI/fulldispatch remainopen",
+        "455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/character/player/cplayer.h",
+      "sha256": "ac2cd702b39266f73acc706bdd71685bef189437fc2a97171b0d5282926f9089",
+      "input": "work/client455-port/source/RF_Client/character/player/cplayer.h",
+      "input_sha256": "612076d0e2313ae9758e41207d248211c46f2cbf64365df8285412b37ebd7038",
+      "changes": [
+        "455player status DWORD getter/full64bit flags producer;remaining status sideeffects and455wire receivers stillopen",
+        "455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/network/cnetworkmgr.cpp",
+      "sha256": "4bcf1338103e69cd8b6fee1cec075b9b1c0d250456ab9d3a8edf15c24596b199",
+      "input": "work/client455-port/source/RF_Client/network/cnetworkmgr.cpp",
+      "input_sha256": "3e9dc553fb149dd4673a10538281438340dcac488918a5d5699aa65713d79a12",
+      "changes": [
+        "confirmed bounded455identifier/password setters;no credentials logged",
+        "455actual Avatar stage2+skip0 gates localTutorial route;knownignored packets swallowed,1/17directtransport,missing localhandlers explicitly fail",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/network/cnetworkmgr.h",
+      "sha256": "921fc8367b3d591b0882f530b6503fd2ad09e73e03749ad3875e08d4d28ff67f",
+      "input": "work/client455-port/source/RF_Client/network/cnetworkmgr.h",
+      "input_sha256": "863707de5869cfba293afb7481827759c6779075cfa7820b036a20074f55d8d6",
+      "changes": [
+        "455source-owned identifier51/password33 storage;wire protocols still pending",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/cboard.cpp",
+      "sha256": "226cd0c889b66681b3d7f8b58afe143006783ebc466b519c3234daea7645de12",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/cboard.cpp",
+      "input_sha256": "2fa01aa57a5f5ea71fba9e558b396f3b6ce84992ca054d3a7609e3afe8dd7146",
+      "changes": [
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/cboardmanager.cpp",
+      "sha256": "8cd1b926d8cb18bbdcae89f2159f4751460386472e7d89beb86f6df4a187b72d",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/common/cboardmanager.cpp",
+      "input_sha256": "7c5ad17bf3fd0bc8ee698f6749ade970b6209158968ec4bd5d9f21dab8e8f63c",
+      "changes": [
+        "455typed hover/dualbackup/screen icon ownership;liveavatar cancellation/fullqueue/gameplay remainopen",
+        "actual17existing class constructors now occupy455IDs;legacyBelt removed;ReturnItem guard0/1/5 from4FEF50;36class providers remain open",
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/itemboard/cinventoryboard.cpp",
+      "sha256": "2d466a9271b9b37cccd8402d1aad58688468efd12f4173f65ea05e312a6d8d68",
+      "input": "work/client455-port/source/RF_Client/gameobject/board/itemboard/cinventoryboard.cpp",
+      "input_sha256": "55cee2f02f729421766485e103e93c0fcd42d090c8c1518990ceb2ba50fb5e2a",
+      "changes": [
+        "455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_nuclear_receiver.cpp",
+      "sha256": "2c1256e79e345f16c783a60b764170f767b0b0c3c8da31e35048e68fd8d6ad30",
+      "input": "scripts/native/client455_nuclear_receiver.cpp",
+      "input_sha256": "2c1256e79e345f16c783a60b764170f767b0b0c3c8da31e35048e68fd8d6ad30"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_nuclear_registry.cpp",
+      "sha256": "6836ed354a8bc4ebc544322656487f97960533ab92b58afbf580d0fbb4c1b9b1",
+      "input": "scripts/native/client455_nuclear_registry.cpp",
+      "input_sha256": "6836ed354a8bc4ebc544322656487f97960533ab92b58afbf580d0fbb4c1b9b1"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_nuclear_wire.cpp",
+      "sha256": "c193328f57d6ca06ef4718a0c57e4a54fe35b81477ba640cc44eb07d9b82e263",
+      "input": "scripts/native/client455_nuclear_wire.cpp",
+      "input_sha256": "c193328f57d6ca06ef4718a0c57e4a54fe35b81477ba640cc44eb07d9b82e263"
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_board_hover.cpp",
+      "sha256": "65fc1e7d8d174c411dca9bad2f42c630585d41024be552425ba7a34fcfddc242",
+      "input": "scripts/native/client455_board_hover.cpp",
+      "input_sha256": "65fc1e7d8d174c411dca9bad2f42c630585d41024be552425ba7a34fcfddc242"
+    }
+  ],
+  "normal_link_sha256": "7ae60bf6c384012aacd958af0daf8c86a0ee0faa0ca5e2d103cf7ed3db428929",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c67a3154fc99f21044d186393a1d66ac83ace1a06a6f412d1352483e1ef5cdda",
+    "bytes": 2211840,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x164370",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "own_decoded_calls": [
+    {
+      "function": "?Init@CGP_MainGame@@UAEXXZ",
+      "rva": "0x268c0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-0.txt",
+        "sha256": "7dad0e6b0fba1fe6756e4cbe212c5e1a6219216cb6da440f0e7920ad863097bd"
+      },
+      "edges": [
+        {
+          "rva": "0x269a7",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x269bf",
+          "target_rva": "0x2c490"
+        },
+        {
+          "rva": "0x269d7",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x269ef",
+          "target_rva": "0x5f290"
+        },
+        {
+          "rva": "0x26a07",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26a1f",
+          "target_rva": "0x5f2e0"
+        },
+        {
+          "rva": "0x26a3a",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26a52",
+          "target_rva": "0x1eee0"
+        },
+        {
+          "rva": "0x26a6d",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26a85",
+          "target_rva": "0x513e0"
+        },
+        {
+          "rva": "0x26aa0",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26ab8",
+          "target_rva": "0x2bc50"
+        },
+        {
+          "rva": "0x26ad3",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26aeb",
+          "target_rva": "0x5bf70"
+        },
+        {
+          "rva": "0x26b03",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26b1b",
+          "target_rva": "0x5bf40"
+        },
+        {
+          "rva": "0x26b33",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26b5a",
+          "target_rva": "0x1636d0"
+        },
+        {
+          "rva": "0x26ba6",
+          "target_rva": "0xc8760"
+        },
+        {
+          "rva": "0x26bae",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x26bb9",
+          "target_rva": "0xc8e10"
+        }
+      ]
+    },
+    {
+      "function": "?Destroy@CGP_MainGame@@UAEHXZ",
+      "rva": "0x25e80",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-1.txt",
+        "sha256": "0100c7f012e6c2e5a209d923c9cda4e388027778d2f5f74566c053a3cfc992a4"
+      },
+      "edges": [
+        {
+          "rva": "0x25e8e",
+          "target_rva": "0x27580"
+        },
+        {
+          "rva": "0x25e95",
+          "target_rva": "0xd3b0"
+        },
+        {
+          "rva": "0x25fd0",
+          "target_rva": "0x2d30"
+        },
+        {
+          "rva": "0x25fdb",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x25fef",
+          "target_rva": "0x5f3e0"
+        },
+        {
+          "rva": "0x25ff7",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x2600b",
+          "target_rva": "0x1f280"
+        },
+        {
+          "rva": "0x26016",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x2603a",
+          "target_rva": "0x2bd20"
+        },
+        {
+          "rva": "0x26045",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x26059",
+          "target_rva": "0x5c260"
+        },
+        {
+          "rva": "0x26064",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x26074",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x2607e",
+          "target_rva": "0xc8ed0"
+        }
+      ]
+    },
+    {
+      "function": "??_GCGP_MainGame@@UAEPAXI@Z",
+      "rva": "0x25030",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-2.txt",
+        "sha256": "79bdf447880731d789c5af37da4255cecadb0a35c92257714f8e7573cddd3981"
+      },
+      "edges": [
+        {
+          "rva": "0x25063",
+          "target_rva": "0x25e80"
+        },
+        {
+          "rva": "0x2506a",
+          "target_rva": "0xc8ed0"
+        },
+        {
+          "rva": "0x25075",
+          "target_rva": "0xcd8c0"
+        },
+        {
+          "rva": "0x25080",
+          "target_rva": "0x960a0"
+        },
+        {
+          "rva": "0x2508b",
+          "target_rva": "0x8d130"
+        },
+        {
+          "rva": "0x25096",
+          "target_rva": "0x8ee40"
+        },
+        {
+          "rva": "0x250a1",
+          "target_rva": "0x9afe0"
+        },
+        {
+          "rva": "0x250ac",
+          "target_rva": "0xa6b10"
+        },
+        {
+          "rva": "0x250b7",
+          "target_rva": "0x8d3e0"
+        },
+        {
+          "rva": "0x250c2",
+          "target_rva": "0x98e80"
+        },
+        {
+          "rva": "0x250cd",
+          "target_rva": "0x92380"
+        },
+        {
+          "rva": "0x250d8",
+          "target_rva": "0x90e60"
+        },
+        {
+          "rva": "0x250e3",
+          "target_rva": "0x9cab0"
+        },
+        {
+          "rva": "0x250ee",
+          "target_rva": "0x6f4b0"
+        },
+        {
+          "rva": "0x250f9",
+          "target_rva": "0x820b0"
+        },
+        {
+          "rva": "0x25104",
+          "target_rva": "0x70550"
+        },
+        {
+          "rva": "0x2510f",
+          "target_rva": "0x73030"
+        },
+        {
+          "rva": "0x2511a",
+          "target_rva": "0x730f0"
+        },
+        {
+          "rva": "0x25125",
+          "target_rva": "0xcb070"
+        },
+        {
+          "rva": "0x25130",
+          "target_rva": "0x7f110"
+        },
+        {
+          "rva": "0x2513e",
+          "target_rva": "0xc8760"
+        },
+        {
+          "rva": "0x25146",
+          "target_rva": "0x163720"
+        },
+        {
+          "rva": "0x25150",
+          "target_rva": "0x20380"
+        },
+        {
+          "rva": "0x25161",
+          "target_rva": "0x163720"
+        }
+      ]
+    },
+    {
+      "function": "?SetHoverObject@CBoardManager@@QAEPAVCBoardObject@@PAV2@@Z",
+      "rva": "0x13f10",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-3.txt",
+        "sha256": "a607a5ef738ef5fea97d2b9615871b20e3de7c1116229aae019b632d2a570914"
+      },
+      "edges": [
+        {
+          "rva": "0x13f17",
+          "target_rva": "0xc6e60"
+        },
+        {
+          "rva": "0x13f20",
+          "target_rva": "0xc6e30"
+        },
+        {
+          "rva": "0x13f32",
+          "target_rva": "0xc72f0"
+        },
+        {
+          "rva": "0x13f82",
+          "target_rva": "0x9e7a0"
+        },
+        {
+          "rva": "0x13f98",
+          "target_rva": "0xc6840"
+        },
+        {
+          "rva": "0x1405d",
+          "target_rva": "0x9f4e0"
+        },
+        {
+          "rva": "0x14071",
+          "target_rva": "0xc6f60"
+        }
+      ]
+    },
+    {
+      "function": "?Render@CGP_MainGame@@MAEJXZ",
+      "rva": "0x272d0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-4.txt",
+        "sha256": "3ae5d9daf9d8519a778c85eeec74957fca75b3d2d6d7c3a298c95ec72acd7a9e"
+      },
+      "edges": [
+        {
+          "rva": "0x272ed",
+          "target_rva": "0x109f30"
+        },
+        {
+          "rva": "0x272fa",
+          "target_rva": "0x109ed0"
+        },
+        {
+          "rva": "0x27309",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x27344",
+          "target_rva": "0x39430"
+        },
+        {
+          "rva": "0x2735b",
+          "target_rva": "0x1157c0"
+        },
+        {
+          "rva": "0x27365",
+          "target_rva": "0x2b080"
+        },
+        {
+          "rva": "0x27374",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x2737f",
+          "target_rva": "0x1cde0"
+        },
+        {
+          "rva": "0x27389",
+          "target_rva": "0x2b4f0"
+        },
+        {
+          "rva": "0x27398",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x273a3",
+          "target_rva": "0x66000"
+        },
+        {
+          "rva": "0x273b5",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x273c4",
+          "target_rva": "0x39480"
+        },
+        {
+          "rva": "0x273d3",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x273d8",
+          "target_rva": "0x6cfb0"
+        },
+        {
+          "rva": "0x273e7",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x273f1",
+          "target_rva": "0xc5490"
+        },
+        {
+          "rva": "0x273fb",
+          "target_rva": "0x2b5d0"
+        },
+        {
+          "rva": "0x27406",
+          "target_rva": "0x5c5f0"
+        },
+        {
+          "rva": "0x2740b",
+          "target_rva": "0x109800"
+        },
+        {
+          "rva": "0x2741a",
+          "target_rva": "0x120200"
+        },
+        {
+          "rva": "0x2742e",
+          "target_rva": "0x1ce50"
+        },
+        {
+          "rva": "0x27442",
+          "target_rva": "0xd3b0"
+        },
+        {
+          "rva": "0x2744d",
+          "target_rva": "0x60380"
+        },
+        {
+          "rva": "0x2745e",
+          "target_rva": "0x2d30"
+        },
+        {
+          "rva": "0x27469",
+          "target_rva": "0x27c60"
+        },
+        {
+          "rva": "0x27476",
+          "target_rva": "0x27a00"
+        },
+        {
+          "rva": "0x2747b",
+          "target_rva": "0xf48e0"
+        },
+        {
+          "rva": "0x27480",
+          "target_rva": "0x681e0"
+        },
+        {
+          "rva": "0x27490",
+          "target_rva": "0xc8e30"
+        },
+        {
+          "rva": "0x27497",
+          "target_rva": "0xc8a50"
+        },
+        {
+          "rva": "0x274a2",
+          "target_rva": "0xcdb30"
+        },
+        {
+          "rva": "0x274a7",
+          "target_rva": "0x10a040"
+        },
+        {
+          "rva": "0x274b2",
+          "target_rva": "0x101ce0"
+        },
+        {
+          "rva": "0x274bc",
+          "target_rva": "0x120050"
+        },
+        {
+          "rva": "0x274c1",
+          "target_rva": "0x6a480"
+        },
+        {
+          "rva": "0x274c6",
+          "target_rva": "0x10f380"
+        },
+        {
+          "rva": "0x274d9",
+          "target_rva": "0x163730"
+        }
+      ]
+    },
+    {
+      "function": "?AnalysisServerPacket@CNetworkMgr@@IAE_NPAU_MSG_HEADER@@PAD@Z",
+      "rva": "0x45730",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-5.txt",
+        "sha256": "643e25f760500a5fcc9be1c186a69e7bda18dcf1c5621056061a0912dc1af271"
+      },
+      "edges": [
+        {
+          "rva": "0x457bb",
+          "target_rva": "0x4b770"
+        },
+        {
+          "rva": "0x457d3",
+          "target_rva": "0x4b860"
+        },
+        {
+          "rva": "0x457fb",
+          "target_rva": "0xd2bc0"
+        },
+        {
+          "rva": "0x4580d",
+          "target_rva": "0x47110"
+        },
+        {
+          "rva": "0x45825",
+          "target_rva": "0x4ba10"
+        },
+        {
+          "rva": "0x4583d",
+          "target_rva": "0x4b990"
+        },
+        {
+          "rva": "0x45855",
+          "target_rva": "0x4ba50"
+        },
+        {
+          "rva": "0x4586a",
+          "target_rva": "0xd2b80"
+        },
+        {
+          "rva": "0x458a7",
+          "target_rva": "0x4b770"
+        },
+        {
+          "rva": "0x458b8",
+          "target_rva": "0x4b860"
+        },
+        {
+          "rva": "0x458c9",
+          "target_rva": "0x4bb20"
+        },
+        {
+          "rva": "0x458da",
+          "target_rva": "0x4ba10"
+        },
+        {
+          "rva": "0x458eb",
+          "target_rva": "0x4b990"
+        },
+        {
+          "rva": "0x458fc",
+          "target_rva": "0x4ba50"
+        },
+        {
+          "rva": "0x4590d",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x45935",
+          "target_rva": "0x4bf70"
+        },
+        {
+          "rva": "0x45946",
+          "target_rva": "0x4bff0"
+        },
+        {
+          "rva": "0x45957",
+          "target_rva": "0x4c0d0"
+        },
+        {
+          "rva": "0x45968",
+          "target_rva": "0x4c1c0"
+        },
+        {
+          "rva": "0x45979",
+          "target_rva": "0x4bd20"
+        },
+        {
+          "rva": "0x4598a",
+          "target_rva": "0x4be50"
+        },
+        {
+          "rva": "0x4599b",
+          "target_rva": "0x4c520"
+        },
+        {
+          "rva": "0x459ac",
+          "target_rva": "0x4ba50"
+        },
+        {
+          "rva": "0x459bd",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x459d6",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x459e0",
+          "target_rva": "0x2b80"
+        },
+        {
+          "rva": "0x459f1",
+          "target_rva": "0x47860"
+        },
+        {
+          "rva": "0x45a02",
+          "target_rva": "0x476a0"
+        },
+        {
+          "rva": "0x45a33",
+          "target_rva": "0x4f640"
+        },
+        {
+          "rva": "0x45a44",
+          "target_rva": "0x4e5e0"
+        },
+        {
+          "rva": "0x45a55",
+          "target_rva": "0x4f250"
+        },
+        {
+          "rva": "0x45a66",
+          "target_rva": "0x4f0c0"
+        },
+        {
+          "rva": "0x45a77",
+          "target_rva": "0x4f6a0"
+        },
+        {
+          "rva": "0x45a88",
+          "target_rva": "0x4f0e0"
+        },
+        {
+          "rva": "0x45a99",
+          "target_rva": "0x4ed10"
+        },
+        {
+          "rva": "0x45aaa",
+          "target_rva": "0x4f100"
+        },
+        {
+          "rva": "0x45abb",
+          "target_rva": "0x4f790"
+        },
+        {
+          "rva": "0x45acc",
+          "target_rva": "0x4e4c0"
+        },
+        {
+          "rva": "0x45add",
+          "target_rva": "0x4a280"
+        },
+        {
+          "rva": "0x45aee",
+          "target_rva": "0x4b230"
+        },
+        {
+          "rva": "0x45aff",
+          "target_rva": "0x49fc0"
+        },
+        {
+          "rva": "0x45b10",
+          "target_rva": "0x4b360"
+        },
+        {
+          "rva": "0x45b21",
+          "target_rva": "0x4a0f0"
+        },
+        {
+          "rva": "0x45b32",
+          "target_rva": "0x4abc0"
+        },
+        {
+          "rva": "0x45b43",
+          "target_rva": "0x4ada0"
+        },
+        {
+          "rva": "0x45b54",
+          "target_rva": "0x4ae60"
+        },
+        {
+          "rva": "0x45b65",
+          "target_rva": "0x4a3a0"
+        },
+        {
+          "rva": "0x45b76",
+          "target_rva": "0x4a070"
+        },
+        {
+          "rva": "0x45b87",
+          "target_rva": "0x4b500"
+        },
+        {
+          "rva": "0x45b98",
+          "target_rva": "0x4a250"
+        },
+        {
+          "rva": "0x45ba9",
+          "target_rva": "0x4ad50"
+        },
+        {
+          "rva": "0x45bba",
+          "target_rva": "0x4a590"
+        },
+        {
+          "rva": "0x45bcb",
+          "target_rva": "0x4a870"
+        },
+        {
+          "rva": "0x45bdc",
+          "target_rva": "0x4a830"
+        },
+        {
+          "rva": "0x45bed",
+          "target_rva": "0x4a770"
+        },
+        {
+          "rva": "0x45bfe",
+          "target_rva": "0x4aaf0"
+        },
+        {
+          "rva": "0x45c0f",
+          "target_rva": "0x4a470"
+        },
+        {
+          "rva": "0x45c20",
+          "target_rva": "0x4b0d0"
+        },
+        {
+          "rva": "0x45c31",
+          "target_rva": "0x4a400"
+        },
+        {
+          "rva": "0x45c42",
+          "target_rva": "0x4af00"
+        },
+        {
+          "rva": "0x45c53",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x45c7b",
+          "target_rva": "0x4cee0"
+        },
+        {
+          "rva": "0x45c8c",
+          "target_rva": "0x4d7c0"
+        },
+        {
+          "rva": "0x45c9d",
+          "target_rva": "0x4cd70"
+        },
+        {
+          "rva": "0x45cae",
+          "target_rva": "0x4c5d0"
+        },
+        {
+          "rva": "0x45cbf",
+          "target_rva": "0x4cb90"
+        },
+        {
+          "rva": "0x45cd0",
+          "target_rva": "0x4d760"
+        },
+        {
+          "rva": "0x45ce1",
+          "target_rva": "0x4cd00"
+        },
+        {
+          "rva": "0x45cf2",
+          "target_rva": "0x4c570"
+        },
+        {
+          "rva": "0x45d03",
+          "target_rva": "0x4da60"
+        },
+        {
+          "rva": "0x45d14",
+          "target_rva": "0x4caa0"
+        },
+        {
+          "rva": "0x45d25",
+          "target_rva": "0x4d610"
+        },
+        {
+          "rva": "0x45d36",
+          "target_rva": "0x4ce10"
+        },
+        {
+          "rva": "0x45d47",
+          "target_rva": "0x4d900"
+        },
+        {
+          "rva": "0x45d58",
+          "target_rva": "0x4d7e0"
+        },
+        {
+          "rva": "0x45d69",
+          "target_rva": "0x4cd90"
+        },
+        {
+          "rva": "0x45d7a",
+          "target_rva": "0x4c5f0"
+        },
+        {
+          "rva": "0x45d8b",
+          "target_rva": "0x4da30"
+        },
+        {
+          "rva": "0x45d9c",
+          "target_rva": "0x4c9c0"
+        },
+        {
+          "rva": "0x45dad",
+          "target_rva": "0x4c7a0"
+        },
+        {
+          "rva": "0x45dbe",
+          "target_rva": "0x4c650"
+        },
+        {
+          "rva": "0x45dcf",
+          "target_rva": "0x4d580"
+        },
+        {
+          "rva": "0x45de0",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x45e5b",
+          "target_rva": "0x460d9"
+        },
+        {
+          "rva": "0x45e65",
+          "target_rva": "0x2b80"
+        },
+        {
+          "rva": "0x45f16",
+          "target_rva": "0x488c0"
+        },
+        {
+          "rva": "0x45f27",
+          "target_rva": "0x48ae0"
+        },
+        {
+          "rva": "0x45f38",
+          "target_rva": "0x492f0"
+        },
+        {
+          "rva": "0x45f49",
+          "target_rva": "0x49510"
+        },
+        {
+          "rva": "0x45f5a",
+          "target_rva": "0x48250"
+        },
+        {
+          "rva": "0x45f6b",
+          "target_rva": "0x48470"
+        },
+        {
+          "rva": "0x45f7c",
+          "target_rva": "0x486a0"
+        },
+        {
+          "rva": "0x45f8d",
+          "target_rva": "0x486e0"
+        },
+        {
+          "rva": "0x45f9e",
+          "target_rva": "0x490e0"
+        },
+        {
+          "rva": "0x45faf",
+          "target_rva": "0x49100"
+        },
+        {
+          "rva": "0x45fc0",
+          "target_rva": "0x49120"
+        },
+        {
+          "rva": "0x45fd1",
+          "target_rva": "0x48d10"
+        },
+        {
+          "rva": "0x45fe2",
+          "target_rva": "0x49750"
+        },
+        {
+          "rva": "0x45ff3",
+          "target_rva": "0x48e10"
+        },
+        {
+          "rva": "0x46004",
+          "target_rva": "0x48fa0"
+        },
+        {
+          "rva": "0x46015",
+          "target_rva": "0x48020"
+        },
+        {
+          "rva": "0x46026",
+          "target_rva": "0x47f40"
+        },
+        {
+          "rva": "0x46037",
+          "target_rva": "0x49780"
+        },
+        {
+          "rva": "0x46048",
+          "target_rva": "0x47ef0"
+        },
+        {
+          "rva": "0x460b7",
+          "target_rva": "0x4f9d0"
+        },
+        {
+          "rva": "0x460c8",
+          "target_rva": "0x2b80"
+        },
+        {
+          "rva": "0x460e0",
+          "target_rva": "0x47380"
+        }
+      ]
+    },
+    {
+      "function": "?AnalysisServerPacket@CNetMsgProcessor_Nuclear@@UAE_NPAU_MSG_HEADER@@PAD@Z",
+      "rva": "0xceee0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-6.txt",
+        "sha256": "8857f59f984446f063c62548167cd055ea7b08a3fb7ee5d4fb163a1e3601b79a"
+      },
+      "edges": [
+        {
+          "rva": "0xcef73",
+          "target_rva": "0x165280"
+        },
+        {
+          "rva": "0xcefc1",
+          "target_rva": "0xe04d0"
+        },
+        {
+          "rva": "0xcefea",
+          "target_rva": "0x163730"
+        },
+        {
+          "rva": "0xceff5",
+          "target_rva": "0xc8e30"
+        },
+        {
+          "rva": "0xcf01b",
+          "target_rva": "0xcf3d0"
+        },
+        {
+          "rva": "0xcf029",
+          "target_rva": "0x140b0"
+        },
+        {
+          "rva": "0xcf03b",
+          "target_rva": "0xcf660"
+        },
+        {
+          "rva": "0xcf046",
+          "target_rva": "0xc91b0"
+        },
+        {
+          "rva": "0xcf053",
+          "target_rva": "0xcf5e0"
+        },
+        {
+          "rva": "0xcf064",
+          "target_rva": "0x140b0"
+        },
+        {
+          "rva": "0xcf077",
+          "target_rva": "0xc88a0"
+        },
+        {
+          "rva": "0xcf07c",
+          "target_rva": "0xcf660"
+        },
+        {
+          "rva": "0xcf099",
+          "target_rva": "0xc9140"
+        },
+        {
+          "rva": "0xcf09e",
+          "target_rva": "0xcf5b0"
+        },
+        {
+          "rva": "0xcf0be",
+          "target_rva": "0xc8d00"
+        },
+        {
+          "rva": "0xcf0c3",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf0cf",
+          "target_rva": "0x140b0"
+        },
+        {
+          "rva": "0xcf0e2",
+          "target_rva": "0xc8c00"
+        },
+        {
+          "rva": "0xcf0e7",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf0f3",
+          "target_rva": "0x140b0"
+        },
+        {
+          "rva": "0xcf0fd",
+          "target_rva": "0xdb200"
+        },
+        {
+          "rva": "0xcf112",
+          "target_rva": "0xc8e60"
+        },
+        {
+          "rva": "0xcf117",
+          "target_rva": "0xcf660"
+        },
+        {
+          "rva": "0xcf12c",
+          "target_rva": "0xcf5e0"
+        },
+        {
+          "rva": "0xcf142",
+          "target_rva": "0xc8b00"
+        },
+        {
+          "rva": "0xcf147",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf153",
+          "target_rva": "0x140b0"
+        },
+        {
+          "rva": "0xcf16d",
+          "target_rva": "0xc91b0"
+        },
+        {
+          "rva": "0xcf182",
+          "target_rva": "0xc8e60"
+        },
+        {
+          "rva": "0xcf187",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf18c",
+          "target_rva": "0xcf660"
+        },
+        {
+          "rva": "0xcf1a1",
+          "target_rva": "0xcf5e0"
+        },
+        {
+          "rva": "0xcf1b7",
+          "target_rva": "0xc8ff0"
+        },
+        {
+          "rva": "0xcf1bc",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf1c3",
+          "target_rva": "0xc90b0"
+        },
+        {
+          "rva": "0xcf1ca",
+          "target_rva": "0xc89a0"
+        },
+        {
+          "rva": "0xcf1f2",
+          "target_rva": "0xc8e20"
+        },
+        {
+          "rva": "0xcf213",
+          "target_rva": "0xd87f0"
+        },
+        {
+          "rva": "0xcf22c",
+          "target_rva": "0xc88a0"
+        },
+        {
+          "rva": "0xcf287",
+          "target_rva": "0xc91b0"
+        },
+        {
+          "rva": "0xcf29c",
+          "target_rva": "0xcefe0"
+        },
+        {
+          "rva": "0xcf2a9",
+          "target_rva": "0x470d0"
+        },
+        {
+          "rva": "0xcf2bb",
+          "target_rva": "0x163730"
+        },
+        {
+          "rva": "0xcf2d1",
+          "target_rva": "0x24fa0"
+        },
+        {
+          "rva": "0xcf2e2",
+          "target_rva": "0x165a00"
+        }
+      ]
+    },
+    {
+      "function": "?UI_UseResult@CObjectBoard@@QAEXH@Z",
+      "rva": "0x123e0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/receiver116-own-7.txt",
+        "sha256": "524061e630bf6c054cdecf8353e153956708b54a24b81d350fa6c27409d24a64"
+      },
+      "edges": [
+        {
+          "rva": "0x123f3",
+          "target_rva": "0xc6c60"
+        },
+        {
+          "rva": "0x12401",
+          "target_rva": "0x13140"
+        }
+      ]
+    }
+  ],
+  "own_receiver_vtable": {
+    "rva": "0x1cbe80",
+    "bytes": 8,
+    "sha256": "19f25fed0f2682cbc2e7bd73bb959f786027822d66f39127a0c169751d044ad0"
+  },
+  "retained_normal_consumers": [
+    "?Launch@RF455NuclearContainer@@QAEHEE@Z",
+    "?Impact@RF455NuclearContainer@@QAEHEE@Z",
+    "?NotifyRace@RF455NuclearContainer@@QAEHEE@Z",
+    "?Position@RF455NuclearContainer@@QBEPBMEE@Z",
+    "?SetNuclearMarker455@CGUIMiniMapWindow@@QAEXEHPBM@Z",
+    "?RF455_ReadNuclearPayload@@YA_NEPBXIAAURF455NuclearWireMessage@@@Z"
+  ],
+  "receiver_checks": 101,
+  "registry_checks": 109,
+  "aim_checks": 30,
+  "marker_checks": 702,
+  "message_checks": 83,
+  "viewed_GPU_frames": 20,
+  "byte_equal_prior_marker_message_frames": 11,
+  "baselines": [
+    {
+      "file": "artifacts/client455-progress/client455-nuclear-minimap-native-before116.json",
+      "sha256": "b7d536e243f48fbe3dd27cb388854a3fd1c8e79264a9e177621757185c8aa452"
+    },
+    {
+      "file": "artifacts/client455-progress/client455-message-dispatch-native-before116.json",
+      "sha256": "a099f5d5e0f481b2ba3fd4b62ee62bdfcd67dff81915ae2db0fab47665d32b2e"
+    }
+  ],
+  "ordinary_Nuclear_factory_receiver": true,
+  "MainGame_registry_owner": true,
+  "selected_type33_item_use": true,
+  "full_socket_auth": false,
+  "full_inventory_use": false,
+  "full_stage_lifecycle": false,
+  "full_world_effects": false,
+  "R3T_release_warnings_per_nuclear_lab": 20,
+  "complete_texture_lifetime": false,
+  "previous115_gate": {
+    "file": "artifacts/client455-progress/client455-nuclear-registry-checkpoint-before116.json",
+    "sha256": "66d9695531b5ccf3ff8ad49faea0f2fdb02d074d3c300d24c4356553c248f3d1"
+  },
+  "previous115_runtime_gate": "HISTORICAL",
+  "historical_not_rerun": {
+    "magic-native": {
+      "file": "inventory/client455-magic-native.json",
+      "sha256": "01b7ff508ace7fdb23797226f572239f2b41307dff3cba5c9186ab310174a001"
+    },
+    "effect-resources-native": {
+      "file": "inventory/client455-effect-resources-native.json",
+      "sha256": "f07bf474dc820c0bfcf29c75dcd810e5e3efa92cdd1c70230a6c4144107da14c"
+    },
+    "effect-runtime-native": {
+      "file": "inventory/client455-effect-runtime-native.json",
+      "sha256": "ed963a091c5bae1ead1a38f80159a9823317b52458c4779ceca9b44ae8a06602"
+    },
+    "tagged-audio-native": {
+      "file": "inventory/client455-tagged-audio-native.json",
+      "sha256": "9c9cad16062448aca60119e81517722e8945f617a7106cc3ae8a09415f9a8002"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "3e4e2c0b332d1b60755d390dd7dbe395b9a3ab81d227992be53c0f9dc98b0de5"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "ddfc304c784306f0f0be09111adfe21018ac9e862c3fe110770460238dc862b3"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "fe3b0967261397ffeda934148a5ba4a0db63beebbe9d043862817301bab42a05"
+    },
+    "nuclear-aiming-native": {
+      "file": "artifacts/client455-progress/client455-nuclear-aiming-native-historical-before115.json",
+      "sha256": "aef654d1d25d0ab32146bde101c97ee4d44457372d5422bc3070a36631c0c9cb"
+    },
+    "chat-native-109": {
+      "file": "artifacts/client455-progress/client455-chat-native-before111.json",
+      "sha256": "33be1c7d9d3aa30c702135ae3d4c0da3d0001da9b84cd7e3064465b1047b54f6"
+    },
+    "chat-review-109": {
+      "file": "artifacts/client455-progress/client455-chat-visual-review-before111.json",
+      "sha256": "c579e0051a72ff7ef064f737d8f1f2c8f63ae0978cc3fa8800911efa4f5c7677"
+    },
+    "character-flags-native": {
+      "file": "artifacts/client455-progress/client455-character-flags-native-before114.json",
+      "sha256": "a232bf600d1aea7ad180a777e4e094d9d6a7ba324ae921fab2a5c0d8686da8dc"
+    },
+    "character-flags-reference": {
+      "file": "artifacts/client455-progress/client455-character-flags-reference-before114.json",
+      "sha256": "ae164b392267a340723dea7c3edc2fc243fa602288607efba94e4886f5071c8f"
+    },
+    "minimap-opacity-native": {
+      "file": "artifacts/client455-progress/client455-minimap-opacity-native-before115.json",
+      "sha256": "080dc728f1b11199538a6611136019ce6fdd91550f173453bc1bf72dc03c1648"
+    },
+    "nuclear-minimap-reference": {
+      "file": "artifacts/client455-progress/client455-nuclear-minimap-reference-before115.json",
+      "sha256": "8fe2e803de9243b28bb83a6a1dbebb3cfa7ef2b0e06a84ce4be5bf5b0a6aa828"
+    }
+  },
+  "fresh_evidence": {
+    "nuclear-receiver-reference": {
+      "file": "inventory/client455-nuclear-receiver-reference.json",
+      "sha256": "bd54f5bbf4e1803f220c685cfc7f6d96461b5100e990cfd584ed07a7fbb79d2d"
+    },
+    "nuclear-receiver-native": {
+      "file": "inventory/client455-nuclear-receiver-native.json",
+      "sha256": "160ff3772c7c223a55fa28758cf7adc9c73f443dc924659cca906cabd1474925"
+    },
+    "nuclear-receiver-visual-review": {
+      "file": "inventory/client455-nuclear-receiver-visual-review.json",
+      "sha256": "2b019ceee9cb643a60c7eb8ca76a73444b437fd9088ff98805bb404c2fe04517"
+    },
+    "nuclear-registry-native": {
+      "file": "inventory/client455-nuclear-registry-native.json",
+      "sha256": "80801fbc73b6129e05a5c162e5370a60c6cf62df32eaaff04f4cb38711ee51e4"
+    },
+    "nuclear-aiming-native": {
+      "file": "inventory/client455-nuclear-aiming-native.json",
+      "sha256": "c00ba7001df0be427271a91ac96ec1999041ae49aae98ff2a9c19c1c0b4529ba"
+    },
+    "nuclear-minimap-native": {
+      "file": "inventory/client455-nuclear-minimap-native.json",
+      "sha256": "768423b5c3172342f3eee48c0a43bf326b9ca8a9e90d441b05223bc9ea17b8a3"
+    },
+    "message-dispatch-native": {
+      "file": "inventory/client455-message-dispatch-native.json",
+      "sha256": "9c941a775136e9db44190948725db08c0a75def45a0c6da9c30ec163c459b27c"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "70db92b073ac9bf0de16d087ce10e4241188f021b905e3772770250ce4af105b"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "c9e10bf176d8f38917110a20f5099e161c224cdc3a4acea6a19c1cf425f26a36"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "c9391a655bbec285d8c7b8dd4d011c2be5fafa9fb71ffc74763ee810b62c76a8"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "7ae60bf6c384012aacd958af0daf8c86a0ee0faa0ca5e2d103cf7ed3db428929"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "f70ed86623eb641cc677de43eb81f4651db736e8844ab53dc6faed2cabf7e2fb"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "ff4fab406b3885e097f280d96ad574db3c5ff9f8eb108fb04f7655d4f2cc50fc"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "de6384e19e81d6427513ce72776c110ffbeb8b538f9b17ec2acde61eb2fa1838"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "68d84d6f59f1aa7b89cffcf2d2a60e24777d6f2615214dd701ef2eaa18b917d4"
+    }
+  },
+  "engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "gaps": [
+    "Only selected nuclear category33 inventory completion is restored;all other inventory use branches/full target using-item record and producers remain open",
+    "Own invalid/post-release pointer and uncreated-stage cleanup differ from unsafe target leak/dangling domains;full normal stage lifecycle/world/bootstrap/auth still unaccepted",
+    "Unchecked malformed input/index/FP/OOM/concurrency/privateABI and all prior client-acceptance gaps remain;20registry R3T teardown warnings still require follow-up",
+    "Worldgeometry588 data producer/loader,full world frame/trajectory/quake/light/quality and all prior client-acceptance gaps remain"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

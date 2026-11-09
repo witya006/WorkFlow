@@ -1,88 +1,106 @@
 # Следующие шаги
 
-115 PARTIAL: восстановлены nuclear record32/registry, radar/tag2, launch/impact,
-общий process countdown и C15/C17 через настоящие chat/center providers.
-Ordinary MainGame frame и MainApp shutdown подключены; создание записей/FX
-проверено в full-object lab. Target stage lifetime и ordinary group60 receiver
-ещё открыты; MainApp holder временный, receiver helpers stripped from own PE.
-34equalbodyranges/31fullasm/1394instructions+3EHtails,IDA savedclosed/list0.
-Native109/aim29/marker702/message83 PASS;16GPU viewed,11frames byteequal114.
-Own PE52c2a7c5…/entry162800/182client-20kernel-67facade/unresolved0/Create1.
-Engine67 неизменён. Registry lab даёт20 R3T release warnings при teardown:
-полное владение текстурами/баланс памяти не приняты. Fullworld/trajectory/
-camera/light,worldgeometry588 и все прочие client-acceptance gaps остаются.
-Current runtime gate115;114 historical. M6/M6F/M7/M9 OPEN.
-Далее116: actual group60 receiver/selection/dialog/send/registry/MiniMap,
-proper MainGame ownership; отдельно разобрать R3T texture teardown.
+Обновлено2026-11-09.
 
-[Доказательства115](../research/client455-nuclear-registry.md).
+116 PARTIAL: ordinary Nuclear group60 factory/receiver обрабатывает все9
+форматов пакетов. MainGame владеет реестром; static MainApp holder убран.
+Подключены original-item serial→encrypted send, actual category33 inventory
+use completion и registry lookup→MiniMap. Empty-cursor C1A и сохранение
+operation при nonempty hover backup восстановлены; это не отдельный dialog.
+44equalbodyranges/42fullasm/2473instructions+Init EH;18newasm/1354instructions.
+IDA savedclosed/list0. Native101/registry109/aim30/marker702/message83 PASS;
+20GPU viewed,11marker/message frames byteequal115. Actual encrypted receive
+ring и send19 bytes сверены с независимым Windows CNG (plain frame6).
+Own PEc67a3154…/entry164370/182client-20kernel-69facade/unresolved0/Create1.
+Engine67 unchanged. Full socket/auth/inventory/stage/world/texture lifecycle
+не приняты;20R3T warnings в каждом nuclear lab остаются. Worldgeometry588
+producer пока отсутствует,geometry задаётся lab. Current gate116;115 historical.
+M6/M6F/M7/M9 OPEN. Далее117 — actual worldgeometry588/обычная геометрия
+MiniMap;разобрать R3T release warnings до приёмки полного texture lifetime.
+
+[Доказательства116](../research/client455-nuclear-receiver.md).
 
 ## Цель и ограничения
 
-Только клиент RF_Online.bin и его R3Engine/asset dependencies. /Goal M9 уже
-определён: финальная приёмка полного функционала/поведения pinned455 без
-модернизации графики. M0–M4 diagnostic и выбранный M5 завершены; M6/M6F/M7/M9
-открыты, M8 не требуется. Не переуточнять M9 по устаревшему тексту Goal.
-Серверные исходники только читать;не менять,не собирать и не восстанавливать.
-Originals immutable,input EXE не исполнять. Работать в own copies под work/.
-Git локальный,remote/push/publish не разрешены. Субагенты не разрешены.
-Python через scripts/Invoke-Python.ps1. Проверять изменённый участок/зависимости;
-159173 assertions не являются запросами к ИИ,число проверок не процент полноты.
-Raw assets/IDB/traces в ignored work/artifacts; ignoring не backup.
+CLIENT ONLY: RF_Online.bin/R3Engine/client resource dependencies. /Goal M9 уже
+определён: финальная приёмка полного pinned455 без модернизации графики.
+M0–M4 diagnostic/выбранный M5 завершены;M6/M6F/M7/M9 OPEN,M8 не нужен.
+Не переуточнять M9 по старому тексту Goal. Серверы только читать как справочник;
+не менять/не собирать. Originals immutable,input EXE не исполнять. Work copies
+только work/. Git локальный,no remote/push/publish;subagents не разрешены.
+Python scripts/Invoke-Python.ps1. Число assertions не процент полноты/не AI calls.
+Не повторять159k/broad suites без конкретной причины. Ignoring не backup.
 
-## Проверяемое текущее состояние
+## Текущее проверяемое состояние
 
-Current gate: inventory/client455-nuclear-registry-checkpoint.json.
-Command: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_nuclear_registry.py.
-Evidence: research/client455-nuclear-registry.md. Both455 x86/base400000,
-primaryb1b5febf…/secondary46528aac…;34bodyranges/31fullasm/1394instructions,
-30newfullasm/1339instructions+3EHtails. IDA7f76f2ac savedclosed/list0.
-Own PE52c2a7c55aa7491045306b67a9b541c1cb2cce75f2568d7448337dda9a1a60f4,
-2203648bytes/entry162800/WinMainb9380/afterCreateb94f4,182/20/67/unresolved0.
-Ordinary late MainGame Render→registry.FrameMove;ordinary shutdown→ClearAll.
-Target container is MainGame-owned,own holder is temporary MainApp bridge;
-proper stage lifetime/receiver/record producer are NOT accepted. Launch/Notify
-helpers remain stripped from ordinary PE. Native links exact full object set.
+Gate inventory/client455-nuclear-receiver-checkpoint.json.
+Command scripts/Invoke-Python.ps1 scripts/checkpoint_client455_nuclear_receiver.py.
+Evidence research/client455-nuclear-receiver.md. Both455 x86/base400000,
+primaryb1b5febf…/secondary46528aac…;44body/42fullasm/2473instructions,
+18newasm/1354instructions;Init EH A2BAE0..A2BCAC. IDAe7a74d3f savedclosed/list0.
+Own PEc67a3154fc99f21044d186393a1d66ac83ace1a06a6f412d1352483e1ef5cdda,
+2211840bytes,entry164370,WinMainb94e0,afterCreateb9654;182/20/69/unresolved0.
+Ordinary factory registers CNetMsgProcessor_Nuclear;slot4 Analysis retained.
+Ordinary group60 dispatch/all9 payload handlers,stage Init/Destroy/deleting
+destructor/common hover cancellation/late registry frame decoded in own PE.
+Launch/impact/notify/position/marker/decoder now retained,not stripped helpers.
 
-Registry109/5GPU:work/m9/8159c8c3/nuclear-registry-001. Actual15impact tracks,
-real Miles3sounds,tag1/tag2,record32/unknownDWORD12 untouched,WORD keys,
-shared clock/signed counts/wrap/999/1000/no catchup/C15/C17/clear/lifetimes.
-Two real1050ms waits prove sorted first-positive record consumes shared tick
-and process clock survives ClearAll/new records. Detached effects drain321ticks.
-Both final effect frames empty.20 R3T release warnings during teardown remain
-an explicit gap;complete texture ownership and registry memory balance unproven.
-Existing aim29:work/m9/675361e3/nuclear-aiming-001,scoped balance retained.
-Marker702/6GPU:work/m9/6bea5e91/nuclear-minimap-001;Linker header build passes.
-Messages83/5GPU:work/m9/929aae5f/message-output-001.16fresh GPU viewed;
-11marker/message frames byteequal114. Own Create1:work/m9/52c2a7c5/
-startup001 andui-startup001. No original executable captures/game acceptance.
+MainGame owns unique_ptr registry created/bound in Init and released from
+Destroy;MainApp compatibility accessors forward to it. Own uncreated-stage
+cleanup/unbind differs from target early-Destroy leak/dangling global domain;
+full stage factory/Create/reset/reentry/auth/world teardown NOT accepted.
+Nuclear payload operations are exercised via actual ordinary dispatcher in a
+full-object lab with manually initialized real stage/UI/Avatar/item providers,
+not a complete authenticated game session or external server implementation.
+
+Current runs:receiver101/4GPU work/m9/db12263f/nuclear-receiver-001;
+registry109/5GPU work/m9/440c1dd3/nuclear-registry-001;
+aim30 work/m9/fd28f6f7/nuclear-aiming-001 (real offline network+MainGame fixture,
+scoped785169/785169 balance,missingcue quirk preserved);
+marker702/6GPU work/m9/2142407c/nuclear-minimap-001;
+message83/5GPU work/m9/7d269cfc/message-output-001.
+20GPU viewed,11marker/message frames byteequal115. Receiver center direct-draw
+batch overlaps initial positions;full frame/layout not accepted. Final pixels0.
+Registry/effects R3T teardown warnings20 remain;do not claim full memory balance.
+Actual6byte serial plainframe becomes19byte AES192 packet equal independent CNG;
+one actual encrypted receive-ring input decrypts/routes to ordinary processor.
+No authenticated peer/listener/transport worker is claimed by this lab.
 
 Engine67 unchanged546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a;
-033baseline present,082derived snapshot still absent. Older14style/opacity/81
-and Character173/status62/center69/hover6/decoder2429/chat385/BSP29/magic36/
-resources66/runtime573/audio157/account/hotbar7/storage3 are historical evidence,
-not fresh current-runtime acceptance. No broad159k/world/audio/other32GUI reruns.
-Before115 snapshots under artifacts/client455-progress;historical aim report
-CRLF bytes restored only after exact recorded SHA match,see research115.
+033baseline present,082derived snapshot still absent. Older opacity81,Character173/
+status62/center69/decoder2429/chat385/BSP29/magic36/resources66/runtime573/audio157/
+account/hotbar7/storage3 remain historical. Exact115 report bytes archived as
+artifacts/client455-progress/*-before116.json BEFORE mutations;do not overwrite.
+
+## Исправленные трактовки112
+
+5C59D0 is MiniMap marker selection +2DC4+index*540,not a nuclear dialog.
+470690 reads original storage board BYTE229,not inventory visibility.
+Result1 GetOrgObject232→payload584→serialDWORD4 lowWORD;not hover244/backup252.
+Result2 originalboard0→actual CObjectBoard::UI_UseResult(TRUE),not OpenInventory.
+Actual CInventoryBoard vtableAAC50C+124→475A90:category33→4757D0(empty),then
+475E10→417140 clears only player+17848 recordDWORD4=FFFFFFFF. Other use lanes/
+producers/full inventory use remain open,not a620byte wrapper Clear/item consume.
+UI_UseResult clears operation only if actual hover/backup absent. Empty-cursor
+SetHoverObject must still C1A-cancel pending aim before marker update;now wired.
+Only selected nuclear category33 typed completion accepted;others throw explicit
+unrestored-domain error. Historical112 raw data/JSON kept;current interpretation
+and corrected RVAs are in research116/reference116.
 
 ## Следующая очередь
 
-1. Работа116: connect actual Nuclear group60 receiver/all9 decoder112 layouts,
-   actual guard113,selected item serial/base send,dialog,registry115,MiniMap114.
-   Result0/1/2/error/blocked and opcodes3..10 all matter. Do not redo112 audit.
-   Proper MainGame registry birth/destruction must accompany stage integration;
-   do not accept temporary MainApp holder as target full lifetime.
-2. Investigate20 R3T release warnings:legacy R3ReleaseTextureMem warns on R3T
-   path and still frees. Confirm target texture/ref ownership and correct the
-   affected client/engine source if needed;no blanket suppression or lifetime claim.
-3. Restore worldgeometry588 actual record loader/producer3c9240 (fields552/556/
-   560/564),full trajectory/camera quake/light/quality/blur/advancedFX/device reset.
-   Do not substitute legacy hardcoded8map constants or lab inputs for live data.
-4. Actual Tutorial/common UI/Avatar/Create/camera/QBI47/fourstage factory,
-   Login/auth/game flow;Linker/queue/Macro/Vending/inventory/equip/SF/Animus/
-   Quest/36boards/Trunk/fullprotocol;remaining Character/action/movement/status.
-5. Finish M6 gaps/completeness matrixM6F,freeze M7,perform full M9 acceptance
-   without graphics modernization. Build/Create1/component labs do not complete M9.
+1. Работа117: actual worldgeometry588 loader/producer7C9240,fields552/556/560/564,
+   ordinary SetNuclearMapGeometry producer. Current lab supplies bounds/geometry;
+   source receiver linkage is not proof of correct ordinary live marker position.
+   No legacy hardcoded8map substitutes. Keep already pinned114 getter/112 handlers.
+2. Trace20 R3T warnings against actual455 texture/ref ownership;legacy release
+   warning still frees. Fix confirmed client/engine mismatch,never blanket suppress.
+3. Full frame/trajectory/camera quake/light/compositing/quality/blur/advancedFX/
+   device lifecycle;input and actual Tutorial/Avatar/Create/camera/QBI47/four stages.
+4. Full Login/auth/game flow,Linker/queue/Macro/Vending/inventory/equip/SF/Animus/
+   Quest/36boards/Trunk/protocol;remaining Character/action/movement/64bit status.
+5. Complete M6/M6F matrix,freeze M7,full M9 acceptance without graphics change.
+   Build/Create1/component labs do not complete M9. All prior acceptance gaps stay.
 
 ## Сохраняемые особенности и gaps
 
@@ -98,7 +116,7 @@ Retained wave tags can suppress tag2 restart while tag1 keeps same cache alive.
 Marker init owns3roots;virtual slot40 ordinary Draw pulses BYTE(alpha+5) after
 draw,including255→4;slot36 clipped Draw doesnotpulse. First position precedes
 font/icon setup:backgroundwidth0,then7x9 cellmetrics. Slot88 mouseinput0,notfocus.
-Actual lookup→marker receive/worldgeometry producer still absent in ordinary PE.
+Ordinary lookup→marker receiver now connected;worldgeometry producer still absent.
 
 14filter UI/colors/GM/category7 sideeffects,input/send/IME/save/legacychat callers
 and numeric _SetSystemMsg(DWORD) remain open. Literal paths en-gb/Csea.txt,
@@ -109,4 +127,5 @@ device lifecycle/CRT/privateABI/unsafe/null/OOM/FP/overflow/concurrency/shutdown
 unaccepted. Cap1024/ready checks do not accept unsafe domains. All prior gaps in
 client-acceptance.md/client-features.json/research remain;servers are not blockers.
 
-Прежняя очередь: [before115](../research/next-steps-before115.md).
+
+[Состояние before116](../research/next-steps-before116.md).

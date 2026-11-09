@@ -1,5 +1,10 @@
 # Ядерное прицеливание: настоящий сетевой вход и decoder — работа112
 
+**Исторический этап. Current runtime gate116:** [receiver116](client455-nuclear-receiver.md).
+Result2 — original storage board0/actual UI_UseResult(TRUE),а не открытие
+инвентаря/отдельного dialog;5C59D0 — marker MiniMap. Registry теперь stage-owned;
+ordinary receiver/lookup connected,full world geometry/stage/auth/texture lifecycle OPEN.
+
 Дополнение113: ниже сохранён результат112. Текущий runtime gate —
 `inventory/client455-character-flags-checkpoint.json`;111 historical.
 Actual Character guard/selected control producers перенесены в113.

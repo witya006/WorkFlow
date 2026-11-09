@@ -1,5 +1,10 @@
 # Actual MiniMap nuclear markers — work114
 
+**Исторический этап. Current runtime gate116:** [receiver116](client455-nuclear-receiver.md).
+Result2 — original storage board0/actual UI_UseResult(TRUE),а не открытие
+инвентаря/отдельного dialog;5C59D0 — marker MiniMap. Registry теперь stage-owned;
+ordinary receiver/lookup connected,full world geometry/stage/auth/texture lifecycle OPEN.
+
 2026-11-09. CLIENT ONLY. **PARTIAL**, M6/M6F/M7/M9 OPEN.
 Previous goal turn113 made progress: local commit `6b9d631` restored selected
 Character flag owners/guard and identified the actual MiniMap marker owner.

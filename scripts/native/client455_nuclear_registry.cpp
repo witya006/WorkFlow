@@ -8,6 +8,7 @@
 #include "gameprogress/cgameprogress.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "gameprogress/cgp_maingame.h"
 #include "addcodebyjang/effectcore.h"
 #include "client455_nuclear_registry.h"
 #include "client455_language.h"
@@ -19,6 +20,7 @@ extern CMainApp g_MainApp;
 namespace {
 WORD key(BYTE race,BYTE index){return static_cast<WORD>((DWORD(race)<<8)|index);}
 RF455NuclearCountdownClock processClock;
+RF455NuclearContainer* currentContainer=nullptr;
 void radar(RF455NuclearRecord& record,BOOL on){
     if(on){
         if(record.radar){SetDisapearTimeMagicEffect(record.radar,0);record.radar=0;}
@@ -37,7 +39,14 @@ void reset(RF455NuclearRecord& record){
 }
 bool zeroPosition(const RF455NuclearRecord& record){return record.position[0]==0&&record.position[1]==0&&record.position[2]==0;}
 }
-RF455NuclearContainer& RF455_NuclearContainer(){return g_MainApp.Nuclear455();}
+RF455NuclearContainer* RF455_GetNuclearContainer(){return currentContainer;}
+void RF455_BindNuclearContainer(RF455NuclearContainer* value){currentContainer=value;}
+void RF455_UnbindNuclearContainer(RF455NuclearContainer* value){if(currentContainer==value)currentContainer=nullptr;}
+RF455NuclearContainer& RF455_NuclearContainer(){if(!currentContainer)throw std::logic_error("455 nuclear stage owner unavailable");return *currentContainer;}
+void CGP_MainGame::ReleaseNuclear455(){
+    auto* owned=m_nuclear455.get();if(!owned)return;
+    m_nuclear455.reset();RF455_UnbindNuclearContainer(owned);
+}
 RF455NuclearContainer::~RF455NuclearContainer(){ClearAll();}
 const RF455NuclearRecord* RF455NuclearContainer::Find(BYTE race,BYTE index)const{
     const auto found=records.find(key(race,index));return found==records.end()?nullptr:found->second.get();

@@ -8,6 +8,7 @@
 #include "gameprogress/cgameprogress.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "gameprogress/cgp_maingame.h"
 #include "addcodebyjang/effectcore.h"
 #include "addcodebyjang/effectentitylist.h"
 #include "client455_nuclear_aiming.h"
@@ -22,6 +23,8 @@
 #include <memory>
 #include <stdexcept>
 extern CMainApp g_MainApp;
+template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
+struct NetworkMember{using Type=CNetworkMgr CMainApp::*;friend Type access(NetworkMember);};template struct MemberAccess<NetworkMember,&CMainApp::m_cNetworkMgr>;
 extern CEffectList* GetEffectListFromID(DWORD);
 static unsigned checks=0,warnings=0;
 static void check(bool value,const char* message){++checks;if(!value)throw std::runtime_error(message);}
@@ -35,6 +38,7 @@ static int run(){
     check(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)),"device");R3SetViewPort(0,0,640,480);
     RF455_PrepareTaggedAudio(state->SoundPath);check(InitR3SoundSystem(".\\Snd\\WaveList.spt")!=0,"real Miles driver");SetGlobalWavVolume(0);
     auto& audio=g_MainApp.TaggedAudio455();check(audio.Open(".\\Snd\\WaveList.spt",state->SoundPath),"real tagged provider/listener");
+    auto* previousApp=g_pMainApp;g_pMainApp=&g_MainApp;auto& network=g_MainApp.*access(NetworkMember{});check(network.Create()!=0,"real offline network provider for actual stage Init");std::unique_ptr<CGP_MainGame> stage(new CGP_MainGame);
     unsigned drain=0;int before=0,after=0;
     {
         ChInterface renderer;renderer.InitCharacter(GetD3dDevice());before=GetDmallocSize();
@@ -76,9 +80,9 @@ static int run(){
         DestroyEffectsList();DestroyMagicSptList();check(land->Destroy()!=0,"ordinary world teardown");RTMovieRelease();g_pCamera=nullptr;
         after=GetDmallocSize();std::fprintf(stderr,"memory:%d/%d\n",before,after);check(before==after,"scoped world/effect allocations released");
     }
-    RF455_ReleaseNormalCharacterSharedResources();audio.Close();ReleaseR3SoundSystem();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
+    stage.reset();network.Destroy();g_pMainApp=previousApp;RF455_ReleaseNormalCharacterSharedResources();audio.Close();ReleaseR3SoundSystem();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");
-    std::fprintf(out,"{\"status\":\"PASS\",\"checks\":%u,\"warnings\":%u,\"owner_bytes\":20,\"actual_MainApp_owner\":true,\"real_world_cursor\":true,\"real_Miles_radar\":true,\"real_effect_children\":6,\"track_offsets_preserved\":true,\"repeated_pending_retains\":true,\"pending_zero_retains_visual_and_sound\":true,\"clear_stops_with_handle\":true,\"missing_effect_sound_quirk\":true,\"scoped_memory_balanced\":true,\"memory_before\":%d,\"memory_after\":%d,\"drain_ticks\":%u,\"muted_lab\":true,\"C1A_message\":false,\"full_nuclear_owner\":false,\"full_world_frame_order\":false,\"full_client\":false}\n",checks,warnings,before,after,drain);std::fclose(out);return 0;
+    std::fprintf(out,"{\"status\":\"PASS\",\"checks\":%u,\"warnings\":%u,\"owner_bytes\":20,\"actual_MainGame_owner\":true,\"real_world_cursor\":true,\"real_Miles_radar\":true,\"real_effect_children\":6,\"track_offsets_preserved\":true,\"repeated_pending_retains\":true,\"pending_zero_retains_visual_and_sound\":true,\"clear_stops_with_handle\":true,\"missing_effect_sound_quirk\":true,\"scoped_memory_balanced\":true,\"memory_before\":%d,\"memory_after\":%d,\"drain_ticks\":%u,\"muted_lab\":true,\"C1A_message\":false,\"full_nuclear_owner\":false,\"full_world_frame_order\":false,\"full_client\":false}\n",checks,warnings,before,after,drain);std::fclose(out);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* p){if(p->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;std::fprintf(stderr,"exception=%08lx ownRVA=%08lx\n",p->ExceptionRecord->ExceptionCode,DWORD(p->ExceptionRecord->ExceptionAddress)-DWORD(GetModuleHandleA(nullptr)));return EXCEPTION_EXECUTE_HANDLER;}
 static int guarded(){__try{return run();}__except(filter(GetExceptionInformation())){return 99;}}

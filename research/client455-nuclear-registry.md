@@ -1,5 +1,10 @@
 # Nuclear registry115 — record32, effects and shared countdown
 
+**Исторический этап. Current runtime gate116:** [receiver116](client455-nuclear-receiver.md).
+Result2 — original storage board0/actual UI_UseResult(TRUE),а не открытие
+инвентаря/отдельного dialog;5C59D0 — marker MiniMap. Registry теперь stage-owned;
+ordinary receiver/lookup connected,full world geometry/stage/auth/texture lifecycle OPEN.
+
 Status: **PARTIAL**. M6/M6F/M7/M9 remain OPEN. Current runtime gate:
 `inventory/client455-nuclear-registry-checkpoint.json`. Previous114 gate is
 historical. This restores a required client subsystem; it does not accept the

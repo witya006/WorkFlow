@@ -1,0 +1,2414 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Actual group60 handlers,original selection/serial/type33 inventory use and stage-owned registry;full stage/auth/inventory/world acceptance remains open",
+  "script_sha256": "265db187553fc3ee05179872c886da771ccac71c6a2f3bb76ae0b556f9f65a07",
+  "raw": {
+    "file": "artifacts/client455-progress/nuclear116-reference.json",
+    "sha256": "f9e5377ce2615e7e6184aa271a86c7072e74731af231733fb567068164b5ba47"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/nuclear116-session.json",
+    "sha256": "14e0213e6a4e19334914f163b3c0afc61e14b06d1923d4d03fe93cd85e904ccd"
+  },
+  "cached_reference": [
+    {
+      "file": "inventory/client455-nuclear-protocol-reference.json",
+      "sha256": "2f2660a839598e8def35ca69568bec6e2561950d0b3a5df64c66ef4f0c1110a6"
+    },
+    {
+      "file": "inventory/client455-message-dispatch-reference.json",
+      "sha256": "726aec2d91f9eeb091b97e23722d8794b4b3bd4d7f873b2d7f5a59babe205e8e"
+    },
+    {
+      "file": "inventory/client455-nuclear-registry-reference.json",
+      "sha256": "86353aef5bbc13204217d714229ad2ce19912008c6eaf1f48ea9713963184096"
+    }
+  ],
+  "selected_functions": 44,
+  "full_assembly_functions": 42,
+  "instructions": 2473,
+  "new_assembly_functions": 18,
+  "new_instructions": 1354,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x6290",
+          "bytes": 41,
+          "sha256": "3f2c474d9669ceb5c55ab6418af2eed7d75bbd968ae10f342d900e84de75008a"
+        },
+        {
+          "rva": "0xb200",
+          "bytes": 25,
+          "sha256": "bdecf3ca80d56ad846df0bf96f0cfac1d5ec90e0c09b4ce08f7001a7abda437b"
+        },
+        {
+          "rva": "0xb950",
+          "bytes": 28,
+          "sha256": "2770b0f5e74da95e0dbb448e6f3a5f9c604a18acaf11c384307cbfe847e763c8"
+        },
+        {
+          "rva": "0x10fa0",
+          "bytes": 45,
+          "sha256": "9bbef6c2c032171959e9a10e89b43f99fe317b7146edeb21d9b6d583be711bfd"
+        },
+        {
+          "rva": "0x12000",
+          "bytes": 28,
+          "sha256": "8cdb7b81179d9eacea6fa02f65ff6105e1d5631ac1e4852d9220e4de57a02953"
+        },
+        {
+          "rva": "0x17140",
+          "bytes": 29,
+          "sha256": "40e53f894310e678b144542ba36a4afc9e59fd416aa192313bbca78f2f7154a0"
+        },
+        {
+          "rva": "0x1b350",
+          "bytes": 34,
+          "sha256": "bf3ef7f0bf25040286950cdabed5cfd526d6c11a4c10733cad601edbb0e2e719"
+        },
+        {
+          "rva": "0x1c630",
+          "bytes": 28,
+          "sha256": "027b1892fb9bcfa1e6365e4e8e2a2a8e4b02477eca3a7c465c489bb6fee38d60"
+        },
+        {
+          "rva": "0x20300",
+          "bytes": 176,
+          "sha256": "bba003d0734ea748989bf40e31cc733419627d342d14c4688add3353875c0f44"
+        },
+        {
+          "rva": "0x20ec0",
+          "bytes": 36,
+          "sha256": "48870f0d222faef723eb8df4f90fa6eb184ff4c3e80e7518833ed8d2097eb64e"
+        },
+        {
+          "rva": "0x3da10",
+          "bytes": 43,
+          "sha256": "cda1591dd45d425b8fbd9921f5ee451208154d015791992e2984f598203e6159"
+        },
+        {
+          "rva": "0x3db60",
+          "bytes": 66,
+          "sha256": "7f5e643826670fc1caeefefc309d189a425d56a71fb51c563d5db6620b4334de"
+        },
+        {
+          "rva": "0x70690",
+          "bytes": 28,
+          "sha256": "28e6eb6adacfef3292da35a6f79bdce1115c52d63269fb97b210738ff60bb911"
+        },
+        {
+          "rva": "0x757d0",
+          "bytes": 19,
+          "sha256": "235c3b5ea14d399161cb74af3f33264fbf624fc7dea5b41db4b08670d1f89408"
+        },
+        {
+          "rva": "0x75a90",
+          "bytes": 786,
+          "sha256": "ebecea2b220a26644a657f416ee12a4d6e27bd38b6d1a004bf4f779c0c848c24"
+        },
+        {
+          "rva": "0x75e10",
+          "bytes": 33,
+          "sha256": "ede5ee85988c571035dceeb25c8bcf7439e96a71c9449469f6b76c912fc4e2e4"
+        },
+        {
+          "rva": "0xfad00",
+          "bytes": 64,
+          "sha256": "a6e70c415264b1263a11151ef5791ccba469f213c8e69caaf218e2ec619c1346"
+        },
+        {
+          "rva": "0xfd860",
+          "bytes": 62,
+          "sha256": "69481fdbe1b679d0ae5ee161999ac5d2fc1c820ed96e89f81008f32812a6358c"
+        },
+        {
+          "rva": "0xfe020",
+          "bytes": 623,
+          "sha256": "088d59dd4b93eb03b894e0035ed83d193e9a0a75a4da85e6a7ae9e3bb8bc204a"
+        },
+        {
+          "rva": "0xfe2b0",
+          "bytes": 52,
+          "sha256": "464f491164fa7141cace232da484bb2d94f0bf37dd73e6024e574cdbe9f17e4b"
+        },
+        {
+          "rva": "0xfe2f0",
+          "bytes": 61,
+          "sha256": "16c29420978110a3a442a1db97577ade28b04b8f489104d9bd28fc04c5904c89"
+        },
+        {
+          "rva": "0xfe330",
+          "bytes": 115,
+          "sha256": "0fd1a27b5195bc422d3406d734463312330fe6aa9a1d05893bbbaa5e324c872b"
+        },
+        {
+          "rva": "0x12b870",
+          "bytes": 89,
+          "sha256": "0f90475b753c134284a763a8bfa4aca96bce897fba89171d7b16665c247637fa"
+        },
+        {
+          "rva": "0x145d00",
+          "bytes": 1919,
+          "sha256": "28fc7fa442e7c4761017509241c75dce62cd994fb503a1fc3a46e5e83dae4ca3"
+        },
+        {
+          "rva": "0x1496d0",
+          "bytes": 1172,
+          "sha256": "e0f9f9c09026f376473a2d029f5550b049d58cf6d7d4b31abd3caef51db7843d"
+        },
+        {
+          "rva": "0x1c5590",
+          "bytes": 372,
+          "sha256": "9f26199e21a8e7232fd13ab84d84b0f355860882366d89ba98e35957a970711c"
+        },
+        {
+          "rva": "0x1c5730",
+          "bytes": 39,
+          "sha256": "ffe87cf79fe15d316f3229c0527530af2f5e607df3c4c77d6407de89be88781a"
+        },
+        {
+          "rva": "0x1c57a0",
+          "bytes": 36,
+          "sha256": "2a9d821f8be6a79a186c088c472ac60bbb1671904a6489011ee116d843e37c1b"
+        },
+        {
+          "rva": "0x1c57d0",
+          "bytes": 43,
+          "sha256": "8a338bdd300fc3be2f6ce102ad3411014bc0d73ee290ddea9f0c17aaed3f32a0"
+        },
+        {
+          "rva": "0x1c5800",
+          "bytes": 225,
+          "sha256": "95990347edb05c3931aa86a02f92e8f297d54f2bfb03ee7e5b0a03a606cee3ef"
+        },
+        {
+          "rva": "0x1c5910",
+          "bytes": 184,
+          "sha256": "2a793a1f1ee28ccc9e055c90b5ce31e0165b2d863fd3d8f0874be444c4dbb787"
+        },
+        {
+          "rva": "0x1c59d0",
+          "bytes": 54,
+          "sha256": "d6201cc92749363cc712881f6b9f7caaaa1354f2c4eb182045549cfd11bff281"
+        },
+        {
+          "rva": "0x1c5a10",
+          "bytes": 101,
+          "sha256": "a18d4a5b3bc26c4932c561b4c6f2f2e06fcefd11423ecc07692971de54eec81a"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "bytes": 91,
+          "sha256": "e0d4f4ec58fe745fc431e6a0ae695d6054685f133a65d793cef2cfad99dda961"
+        },
+        {
+          "rva": "0x1c5bd0",
+          "bytes": 82,
+          "sha256": "2b10bd91c8883835106e03ce5b007b9cbaa395d67d65d34395a518c7e4172be1"
+        },
+        {
+          "rva": "0x1c5c30",
+          "bytes": 221,
+          "sha256": "71ca6d31cd69a431a6953e97799b01ca5cfb878ccf5c18af471b19af24dc5347"
+        },
+        {
+          "rva": "0x1c5d10",
+          "bytes": 98,
+          "sha256": "4bb88a6c85b9c83626244317d1a69df4d99a216ca609046bd9bc2d8d9b5a454a"
+        },
+        {
+          "rva": "0x1c5d80",
+          "bytes": 98,
+          "sha256": "3623394ded0e4c468ccf30bcfa22845756c5be744a11c39ff1cf4e1a08121989"
+        },
+        {
+          "rva": "0x1c5df0",
+          "bytes": 65,
+          "sha256": "8fee25ac02a85fed53a83241cdf6ac33779023840a11f94a2cd0562504f17a95"
+        },
+        {
+          "rva": "0x1c5e40",
+          "bytes": 151,
+          "sha256": "cdafdb200263937fe3f3503d74792ba93cc300ed380bf91164c9398a4463d6c9"
+        },
+        {
+          "rva": "0x1c5ee0",
+          "bytes": 95,
+          "sha256": "0a2c693fec236d025a98f04ed15896b35ed4ed7ee86b46a7cd0b95b6607f7654"
+        },
+        {
+          "rva": "0x1c5f40",
+          "bytes": 95,
+          "sha256": "7660979dd3e39a87247bfd180cf343a1b0bcb2a3833c2c03ca0d61aac6dbc867"
+        },
+        {
+          "rva": "0x1c5fa0",
+          "bytes": 300,
+          "sha256": "069c85234125a1d1b41de3a6f5e8078b06c1cfdbdd3f0629d835dcf682c9b49a"
+        },
+        {
+          "rva": "0x1e5c10",
+          "bytes": 28,
+          "sha256": "c2dd3ed43b12dad15d72bd33b8e511d413a45e55cfe7f18431621efec2d5cde9"
+        }
+      ],
+      "tails": [
+        {
+          "owner_rva": "0x145d00",
+          "rva": "0x62bae0",
+          "bytes": 460,
+          "sha256": "39248a06083b39069fc37a34d9a488656278bb4c702a7016755deef97d79f024"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x1c5844",
+          "target_rva": "0x1c5910"
+        },
+        {
+          "rva": "0x1c5855",
+          "target_rva": "0x1c5d80"
+        },
+        {
+          "rva": "0x1c5863",
+          "target_rva": "0x1c5c30"
+        },
+        {
+          "rva": "0x1c5871",
+          "target_rva": "0x1c5df0"
+        },
+        {
+          "rva": "0x1c587f",
+          "target_rva": "0x1c5e40"
+        },
+        {
+          "rva": "0x1c588d",
+          "target_rva": "0x1c5d10"
+        },
+        {
+          "rva": "0x1c589b",
+          "target_rva": "0x1c5ee0"
+        },
+        {
+          "rva": "0x1c58a9",
+          "target_rva": "0x1c5f40"
+        },
+        {
+          "rva": "0x1c58b7",
+          "target_rva": "0x1c5fa0"
+        },
+        {
+          "rva": "0x1c58ca",
+          "target_rva": "0x162d40"
+        },
+        {
+          "rva": "0x1c5928",
+          "target_rva": "0x3db60"
+        },
+        {
+          "rva": "0x1c593a",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0x1c5945",
+          "target_rva": "0x12b870"
+        },
+        {
+          "rva": "0x1c5953",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5962",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5968",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c597f",
+          "target_rva": "0x1c5ab0"
+        },
+        {
+          "rva": "0x1c5994",
+          "target_rva": "0x1c5a10"
+        },
+        {
+          "rva": "0x1c59a9",
+          "target_rva": "0x1c5bd0"
+        },
+        {
+          "rva": "0x1c59ba",
+          "target_rva": "0x1c5590"
+        },
+        {
+          "rva": "0x1c5ac5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5ad4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5ada",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5aeb",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0x1c5aff",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x1c55a5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c55d7",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c55dd",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c55f4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c55fa",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5611",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5617",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c562e",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5634",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c564b",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5651",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5668",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c566e",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5685",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c568b",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c569f",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56a5",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56b9",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56bf",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56d3",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56d9",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56ed",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56f3",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c573f",
+          "target_rva": "0x17ea30"
+        },
+        {
+          "rva": "0x1c57b8",
+          "target_rva": "0x17eaa0"
+        },
+        {
+          "rva": "0x1c57ed",
+          "target_rva": "0x17eac0"
+        },
+        {
+          "rva": "0x3db71",
+          "target_rva": "0x6290"
+        },
+        {
+          "rva": "0x3db7f",
+          "target_rva": "0x3da10"
+        },
+        {
+          "rva": "0x3da2a",
+          "target_rva": "0x1e5c10"
+        },
+        {
+          "rva": "0x1c5a1f",
+          "target_rva": "0x1c5a80"
+        },
+        {
+          "rva": "0x1c5a29",
+          "target_rva": "0xb950"
+        },
+        {
+          "rva": "0x1c5a2f",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x1c5a47",
+          "target_rva": "0xb200"
+        },
+        {
+          "rva": "0x1c5a59",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5a69",
+          "target_rva": "0x1c57d0"
+        },
+        {
+          "rva": "0x1c5be1",
+          "target_rva": "0x70690"
+        },
+        {
+          "rva": "0x1c5bf6",
+          "target_rva": "0xfd860"
+        },
+        {
+          "rva": "0x1c5bfd",
+          "target_rva": "0xfad00"
+        },
+        {
+          "rva": "0x1c5c08",
+          "target_rva": "0x12b870"
+        },
+        {
+          "rva": "0x1c5c16",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c59f8",
+          "target_rva": "0x30bf30"
+        },
+        {
+          "rva": "0x1c5c4b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5c56",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5c7b",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c5c86",
+          "target_rva": "0x1c630"
+        },
+        {
+          "rva": "0x1c5ca3",
+          "target_rva": "0x12b690"
+        },
+        {
+          "rva": "0x1c5cbd",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c5cd7",
+          "target_rva": "0x12b740"
+        },
+        {
+          "rva": "0x1c5ce2",
+          "target_rva": "0x1c630"
+        },
+        {
+          "rva": "0x1c5cff",
+          "target_rva": "0x12b690"
+        },
+        {
+          "rva": "0x1c5d2b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5d4a",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x1c5d64",
+          "target_rva": "0x12b5e0"
+        },
+        {
+          "rva": "0x1c5d9b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5db4",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5dc0",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x1c5dd4",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5e0b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5e23",
+          "target_rva": "0x12b4a0"
+        },
+        {
+          "rva": "0x1c5e5b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5e6b",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x1c5e85",
+          "target_rva": "0x12b5e0"
+        },
+        {
+          "rva": "0x1c5e90",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5eb1",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5ec9",
+          "target_rva": "0x12b540"
+        },
+        {
+          "rva": "0x1c5ef8",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5f19",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5f31",
+          "target_rva": "0x12b080"
+        },
+        {
+          "rva": "0x1c5f58",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5f79",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5f91",
+          "target_rva": "0x12b080"
+        },
+        {
+          "rva": "0x1c5fc8",
+          "target_rva": "0x12b290"
+        },
+        {
+          "rva": "0x1c5fd3",
+          "target_rva": "0x12b1c0"
+        },
+        {
+          "rva": "0x1c600f",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c6036",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c60b9",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x20ed8",
+          "target_rva": "0x12000"
+        },
+        {
+          "rva": "0xfad24",
+          "target_rva": "0xfe2b0"
+        },
+        {
+          "rva": "0xfad32",
+          "target_rva": "0xfe330"
+        },
+        {
+          "rva": "0xfe2d8",
+          "target_rva": "0xfe2f0"
+        },
+        {
+          "rva": "0xfe341",
+          "target_rva": "0xfe020"
+        },
+        {
+          "rva": "0x75aa1",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75aac",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75ab7",
+          "target_rva": "0x70690"
+        },
+        {
+          "rva": "0x75ac2",
+          "target_rva": "0xfd8e0"
+        },
+        {
+          "rva": "0x75ad9",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x75af2",
+          "target_rva": "0x10fa0"
+        },
+        {
+          "rva": "0x75b24",
+          "target_rva": "0x4de0"
+        },
+        {
+          "rva": "0x75b4b",
+          "target_rva": "0x75df0"
+        },
+        {
+          "rva": "0x75b74",
+          "target_rva": "0xfb530"
+        },
+        {
+          "rva": "0x75b8f",
+          "target_rva": "0xfae00"
+        },
+        {
+          "rva": "0x75ba1",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x75bc8",
+          "target_rva": "0x10fa0"
+        },
+        {
+          "rva": "0x75bdc",
+          "target_rva": "0x20dd0"
+        },
+        {
+          "rva": "0x75be5",
+          "target_rva": "0x60880"
+        },
+        {
+          "rva": "0x75bf8",
+          "target_rva": "0x31e0"
+        },
+        {
+          "rva": "0x75c07",
+          "target_rva": "0x9760"
+        },
+        {
+          "rva": "0x75c15",
+          "target_rva": "0x60880"
+        },
+        {
+          "rva": "0x75c3c",
+          "target_rva": "0xb200"
+        },
+        {
+          "rva": "0x75c45",
+          "target_rva": "0x5c780"
+        },
+        {
+          "rva": "0x75c5f",
+          "target_rva": "0xfd860"
+        },
+        {
+          "rva": "0x75c66",
+          "target_rva": "0x101c30"
+        },
+        {
+          "rva": "0x75c76",
+          "target_rva": "0x6b8e0"
+        },
+        {
+          "rva": "0x75c91",
+          "target_rva": "0x20300"
+        },
+        {
+          "rva": "0x75c9d",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75ca8",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75cb1",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75cbe",
+          "target_rva": "0x61670"
+        },
+        {
+          "rva": "0x75cd8",
+          "target_rva": "0x20300"
+        },
+        {
+          "rva": "0x75ce4",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75cef",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75cf8",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75d0f",
+          "target_rva": "0x75e40"
+        },
+        {
+          "rva": "0x75d1d",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75d28",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75d31",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75d4d",
+          "target_rva": "0x75920"
+        },
+        {
+          "rva": "0x75d5b",
+          "target_rva": "0x75eb0"
+        },
+        {
+          "rva": "0x75d65",
+          "target_rva": "0x73140"
+        },
+        {
+          "rva": "0x75d6f",
+          "target_rva": "0x757d0"
+        },
+        {
+          "rva": "0x75d7d",
+          "target_rva": "0x75f90"
+        },
+        {
+          "rva": "0x75d8b",
+          "target_rva": "0x761f0"
+        },
+        {
+          "rva": "0x75d96",
+          "target_rva": "0x75e10"
+        },
+        {
+          "rva": "0x75e25",
+          "target_rva": "0x17140"
+        },
+        {
+          "rva": "0x10fb8",
+          "target_rva": "0x4de0"
+        },
+        {
+          "rva": "0x145e43",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145e67",
+          "target_rva": "0x159e20"
+        },
+        {
+          "rva": "0x145ece",
+          "target_rva": "0x1464a0"
+        },
+        {
+          "rva": "0x145ee5",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145f09",
+          "target_rva": "0x1f0580"
+        },
+        {
+          "rva": "0x145f54",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145f78",
+          "target_rva": "0x1ef6e0"
+        },
+        {
+          "rva": "0x145fc3",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145fe7",
+          "target_rva": "0x94f80"
+        },
+        {
+          "rva": "0x146032",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146056",
+          "target_rva": "0xa3030"
+        },
+        {
+          "rva": "0x1460a1",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1460c5",
+          "target_rva": "0xd2630"
+        },
+        {
+          "rva": "0x146110",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146134",
+          "target_rva": "0xe6c10"
+        },
+        {
+          "rva": "0x146182",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1461a6",
+          "target_rva": "0xf6960"
+        },
+        {
+          "rva": "0x1461f4",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14620f",
+          "target_rva": "0xe83f0"
+        },
+        {
+          "rva": "0x146257",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146272",
+          "target_rva": "0x99440"
+        },
+        {
+          "rva": "0x1462b7",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1462d2",
+          "target_rva": "0x12e2e0"
+        },
+        {
+          "rva": "0x146314",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14632f",
+          "target_rva": "0x130c90"
+        },
+        {
+          "rva": "0x146371",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14638c",
+          "target_rva": "0x12ad70"
+        },
+        {
+          "rva": "0x1463e3",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1463fe",
+          "target_rva": "0x1178a0"
+        },
+        {
+          "rva": "0x14642e",
+          "target_rva": "0x14c980"
+        },
+        {
+          "rva": "0x146435",
+          "target_rva": "0x3ae280"
+        },
+        {
+          "rva": "0x146461",
+          "target_rva": "0x1414f0"
+        },
+        {
+          "rva": "0x146468",
+          "target_rva": "0x126160"
+        },
+        {
+          "rva": "0x62baf7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb17",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb37",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb57",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb77",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb97",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbb7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbd7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbf4",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc11",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc2e",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc4b",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc68",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc85",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc9d",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x1496f8",
+          "target_rva": "0x3ca220"
+        },
+        {
+          "rva": "0x149706",
+          "target_rva": "0x18740"
+        },
+        {
+          "rva": "0x14970e",
+          "target_rva": "0x149160"
+        },
+        {
+          "rva": "0x149716",
+          "target_rva": "0x138fd0"
+        },
+        {
+          "rva": "0x14972b",
+          "target_rva": "0x149d70"
+        },
+        {
+          "rva": "0x149733",
+          "target_rva": "0x149ee0"
+        },
+        {
+          "rva": "0x149764",
+          "target_rva": "0x149b70"
+        },
+        {
+          "rva": "0x1497a7",
+          "target_rva": "0x149bb0"
+        },
+        {
+          "rva": "0x1497ef",
+          "target_rva": "0x149bf0"
+        },
+        {
+          "rva": "0x149841",
+          "target_rva": "0x149c30"
+        },
+        {
+          "rva": "0x149936",
+          "target_rva": "0x149c70"
+        },
+        {
+          "rva": "0x149979",
+          "target_rva": "0x149cb0"
+        },
+        {
+          "rva": "0x1499af",
+          "target_rva": "0x471e91"
+        },
+        {
+          "rva": "0x1499ea",
+          "target_rva": "0x149cf0"
+        },
+        {
+          "rva": "0x149b23",
+          "target_rva": "0x149d30"
+        },
+        {
+          "rva": "0xfe032",
+          "target_rva": "0x12b810"
+        },
+        {
+          "rva": "0xfe045",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0xfe057",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0xfe066",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0xfe06c",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0xfe0db",
+          "target_rva": "0x232370"
+        },
+        {
+          "rva": "0xfe102",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe10e",
+          "target_rva": "0x232210"
+        },
+        {
+          "rva": "0xfe119",
+          "target_rva": "0xfe290"
+        },
+        {
+          "rva": "0xfe128",
+          "target_rva": "0xb140"
+        },
+        {
+          "rva": "0xfe178",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe19c",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe1be",
+          "target_rva": "0x12000"
+        },
+        {
+          "rva": "0xfe1d5",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe1e6",
+          "target_rva": "0x62d20"
+        },
+        {
+          "rva": "0xfe1ef",
+          "target_rva": "0x21d120"
+        },
+        {
+          "rva": "0xfe218",
+          "target_rva": "0x6b660"
+        },
+        {
+          "rva": "0xfe222",
+          "target_rva": "0xfe5c0"
+        },
+        {
+          "rva": "0xfe278",
+          "target_rva": "0x232370"
+        },
+        {
+          "rva": "0x12b882",
+          "target_rva": "0x1e290"
+        }
+      ],
+      "inventory_identity": {
+        "class_name": "CInventoryBoard",
+        "vtable_rva": "0x6ac50c",
+        "locator_rva": "0x77be64",
+        "descriptor_rva": "0x7ccfdc",
+        "decorated_type": ".?AVCInventoryBoard@@"
+      },
+      "inventory_vtable": {
+        "rva": "0x6ac50c",
+        "bytes": 160,
+        "sha256": "d4a220d7166dd43ba4375a6b49c81ef95538f39815e1053898f0092e67b6dc32"
+      }
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x6290",
+          "bytes": 41,
+          "sha256": "3f2c474d9669ceb5c55ab6418af2eed7d75bbd968ae10f342d900e84de75008a"
+        },
+        {
+          "rva": "0xb200",
+          "bytes": 25,
+          "sha256": "bdecf3ca80d56ad846df0bf96f0cfac1d5ec90e0c09b4ce08f7001a7abda437b"
+        },
+        {
+          "rva": "0xb950",
+          "bytes": 28,
+          "sha256": "2770b0f5e74da95e0dbb448e6f3a5f9c604a18acaf11c384307cbfe847e763c8"
+        },
+        {
+          "rva": "0x10fa0",
+          "bytes": 45,
+          "sha256": "9bbef6c2c032171959e9a10e89b43f99fe317b7146edeb21d9b6d583be711bfd"
+        },
+        {
+          "rva": "0x12000",
+          "bytes": 28,
+          "sha256": "8cdb7b81179d9eacea6fa02f65ff6105e1d5631ac1e4852d9220e4de57a02953"
+        },
+        {
+          "rva": "0x17140",
+          "bytes": 29,
+          "sha256": "40e53f894310e678b144542ba36a4afc9e59fd416aa192313bbca78f2f7154a0"
+        },
+        {
+          "rva": "0x1b350",
+          "bytes": 34,
+          "sha256": "bf3ef7f0bf25040286950cdabed5cfd526d6c11a4c10733cad601edbb0e2e719"
+        },
+        {
+          "rva": "0x1c630",
+          "bytes": 28,
+          "sha256": "027b1892fb9bcfa1e6365e4e8e2a2a8e4b02477eca3a7c465c489bb6fee38d60"
+        },
+        {
+          "rva": "0x20300",
+          "bytes": 176,
+          "sha256": "bba003d0734ea748989bf40e31cc733419627d342d14c4688add3353875c0f44"
+        },
+        {
+          "rva": "0x20ec0",
+          "bytes": 36,
+          "sha256": "48870f0d222faef723eb8df4f90fa6eb184ff4c3e80e7518833ed8d2097eb64e"
+        },
+        {
+          "rva": "0x3da10",
+          "bytes": 43,
+          "sha256": "cda1591dd45d425b8fbd9921f5ee451208154d015791992e2984f598203e6159"
+        },
+        {
+          "rva": "0x3db60",
+          "bytes": 66,
+          "sha256": "7f5e643826670fc1caeefefc309d189a425d56a71fb51c563d5db6620b4334de"
+        },
+        {
+          "rva": "0x70690",
+          "bytes": 28,
+          "sha256": "28e6eb6adacfef3292da35a6f79bdce1115c52d63269fb97b210738ff60bb911"
+        },
+        {
+          "rva": "0x757d0",
+          "bytes": 19,
+          "sha256": "235c3b5ea14d399161cb74af3f33264fbf624fc7dea5b41db4b08670d1f89408"
+        },
+        {
+          "rva": "0x75a90",
+          "bytes": 786,
+          "sha256": "ebecea2b220a26644a657f416ee12a4d6e27bd38b6d1a004bf4f779c0c848c24"
+        },
+        {
+          "rva": "0x75e10",
+          "bytes": 33,
+          "sha256": "ede5ee85988c571035dceeb25c8bcf7439e96a71c9449469f6b76c912fc4e2e4"
+        },
+        {
+          "rva": "0xfad00",
+          "bytes": 64,
+          "sha256": "a6e70c415264b1263a11151ef5791ccba469f213c8e69caaf218e2ec619c1346"
+        },
+        {
+          "rva": "0xfd860",
+          "bytes": 62,
+          "sha256": "69481fdbe1b679d0ae5ee161999ac5d2fc1c820ed96e89f81008f32812a6358c"
+        },
+        {
+          "rva": "0xfe020",
+          "bytes": 623,
+          "sha256": "088d59dd4b93eb03b894e0035ed83d193e9a0a75a4da85e6a7ae9e3bb8bc204a"
+        },
+        {
+          "rva": "0xfe2b0",
+          "bytes": 52,
+          "sha256": "464f491164fa7141cace232da484bb2d94f0bf37dd73e6024e574cdbe9f17e4b"
+        },
+        {
+          "rva": "0xfe2f0",
+          "bytes": 61,
+          "sha256": "16c29420978110a3a442a1db97577ade28b04b8f489104d9bd28fc04c5904c89"
+        },
+        {
+          "rva": "0xfe330",
+          "bytes": 115,
+          "sha256": "0fd1a27b5195bc422d3406d734463312330fe6aa9a1d05893bbbaa5e324c872b"
+        },
+        {
+          "rva": "0x12b870",
+          "bytes": 89,
+          "sha256": "0f90475b753c134284a763a8bfa4aca96bce897fba89171d7b16665c247637fa"
+        },
+        {
+          "rva": "0x145d00",
+          "bytes": 1919,
+          "sha256": "28fc7fa442e7c4761017509241c75dce62cd994fb503a1fc3a46e5e83dae4ca3"
+        },
+        {
+          "rva": "0x1496d0",
+          "bytes": 1172,
+          "sha256": "e0f9f9c09026f376473a2d029f5550b049d58cf6d7d4b31abd3caef51db7843d"
+        },
+        {
+          "rva": "0x1c5590",
+          "bytes": 372,
+          "sha256": "9f26199e21a8e7232fd13ab84d84b0f355860882366d89ba98e35957a970711c"
+        },
+        {
+          "rva": "0x1c5730",
+          "bytes": 39,
+          "sha256": "ffe87cf79fe15d316f3229c0527530af2f5e607df3c4c77d6407de89be88781a"
+        },
+        {
+          "rva": "0x1c57a0",
+          "bytes": 36,
+          "sha256": "2a9d821f8be6a79a186c088c472ac60bbb1671904a6489011ee116d843e37c1b"
+        },
+        {
+          "rva": "0x1c57d0",
+          "bytes": 43,
+          "sha256": "8a338bdd300fc3be2f6ce102ad3411014bc0d73ee290ddea9f0c17aaed3f32a0"
+        },
+        {
+          "rva": "0x1c5800",
+          "bytes": 225,
+          "sha256": "95990347edb05c3931aa86a02f92e8f297d54f2bfb03ee7e5b0a03a606cee3ef"
+        },
+        {
+          "rva": "0x1c5910",
+          "bytes": 184,
+          "sha256": "2a793a1f1ee28ccc9e055c90b5ce31e0165b2d863fd3d8f0874be444c4dbb787"
+        },
+        {
+          "rva": "0x1c59d0",
+          "bytes": 54,
+          "sha256": "d6201cc92749363cc712881f6b9f7caaaa1354f2c4eb182045549cfd11bff281"
+        },
+        {
+          "rva": "0x1c5a10",
+          "bytes": 101,
+          "sha256": "a18d4a5b3bc26c4932c561b4c6f2f2e06fcefd11423ecc07692971de54eec81a"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "bytes": 91,
+          "sha256": "e0d4f4ec58fe745fc431e6a0ae695d6054685f133a65d793cef2cfad99dda961"
+        },
+        {
+          "rva": "0x1c5bd0",
+          "bytes": 82,
+          "sha256": "2b10bd91c8883835106e03ce5b007b9cbaa395d67d65d34395a518c7e4172be1"
+        },
+        {
+          "rva": "0x1c5c30",
+          "bytes": 221,
+          "sha256": "71ca6d31cd69a431a6953e97799b01ca5cfb878ccf5c18af471b19af24dc5347"
+        },
+        {
+          "rva": "0x1c5d10",
+          "bytes": 98,
+          "sha256": "4bb88a6c85b9c83626244317d1a69df4d99a216ca609046bd9bc2d8d9b5a454a"
+        },
+        {
+          "rva": "0x1c5d80",
+          "bytes": 98,
+          "sha256": "3623394ded0e4c468ccf30bcfa22845756c5be744a11c39ff1cf4e1a08121989"
+        },
+        {
+          "rva": "0x1c5df0",
+          "bytes": 65,
+          "sha256": "8fee25ac02a85fed53a83241cdf6ac33779023840a11f94a2cd0562504f17a95"
+        },
+        {
+          "rva": "0x1c5e40",
+          "bytes": 151,
+          "sha256": "cdafdb200263937fe3f3503d74792ba93cc300ed380bf91164c9398a4463d6c9"
+        },
+        {
+          "rva": "0x1c5ee0",
+          "bytes": 95,
+          "sha256": "0a2c693fec236d025a98f04ed15896b35ed4ed7ee86b46a7cd0b95b6607f7654"
+        },
+        {
+          "rva": "0x1c5f40",
+          "bytes": 95,
+          "sha256": "7660979dd3e39a87247bfd180cf343a1b0bcb2a3833c2c03ca0d61aac6dbc867"
+        },
+        {
+          "rva": "0x1c5fa0",
+          "bytes": 300,
+          "sha256": "069c85234125a1d1b41de3a6f5e8078b06c1cfdbdd3f0629d835dcf682c9b49a"
+        },
+        {
+          "rva": "0x1e5c10",
+          "bytes": 28,
+          "sha256": "c2dd3ed43b12dad15d72bd33b8e511d413a45e55cfe7f18431621efec2d5cde9"
+        }
+      ],
+      "tails": [
+        {
+          "owner_rva": "0x145d00",
+          "rva": "0x62bae0",
+          "bytes": 460,
+          "sha256": "39248a06083b39069fc37a34d9a488656278bb4c702a7016755deef97d79f024"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x1c5844",
+          "target_rva": "0x1c5910"
+        },
+        {
+          "rva": "0x1c5855",
+          "target_rva": "0x1c5d80"
+        },
+        {
+          "rva": "0x1c5863",
+          "target_rva": "0x1c5c30"
+        },
+        {
+          "rva": "0x1c5871",
+          "target_rva": "0x1c5df0"
+        },
+        {
+          "rva": "0x1c587f",
+          "target_rva": "0x1c5e40"
+        },
+        {
+          "rva": "0x1c588d",
+          "target_rva": "0x1c5d10"
+        },
+        {
+          "rva": "0x1c589b",
+          "target_rva": "0x1c5ee0"
+        },
+        {
+          "rva": "0x1c58a9",
+          "target_rva": "0x1c5f40"
+        },
+        {
+          "rva": "0x1c58b7",
+          "target_rva": "0x1c5fa0"
+        },
+        {
+          "rva": "0x1c58ca",
+          "target_rva": "0x162d40"
+        },
+        {
+          "rva": "0x1c5928",
+          "target_rva": "0x3db60"
+        },
+        {
+          "rva": "0x1c593a",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0x1c5945",
+          "target_rva": "0x12b870"
+        },
+        {
+          "rva": "0x1c5953",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5962",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5968",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c597f",
+          "target_rva": "0x1c5ab0"
+        },
+        {
+          "rva": "0x1c5994",
+          "target_rva": "0x1c5a10"
+        },
+        {
+          "rva": "0x1c59a9",
+          "target_rva": "0x1c5bd0"
+        },
+        {
+          "rva": "0x1c59ba",
+          "target_rva": "0x1c5590"
+        },
+        {
+          "rva": "0x1c5ac5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5ad4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5ada",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5aeb",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0x1c5aff",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x1c55a5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c55d7",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c55dd",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c55f4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c55fa",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5611",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5617",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c562e",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5634",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c564b",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5651",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5668",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c566e",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5685",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c568b",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c569f",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56a5",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56b9",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56bf",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56d3",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56d9",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c56ed",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c56f3",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c573f",
+          "target_rva": "0x17ea30"
+        },
+        {
+          "rva": "0x1c57b8",
+          "target_rva": "0x17eaa0"
+        },
+        {
+          "rva": "0x1c57ed",
+          "target_rva": "0x17eac0"
+        },
+        {
+          "rva": "0x3db71",
+          "target_rva": "0x6290"
+        },
+        {
+          "rva": "0x3db7f",
+          "target_rva": "0x3da10"
+        },
+        {
+          "rva": "0x3da2a",
+          "target_rva": "0x1e5c10"
+        },
+        {
+          "rva": "0x1c5a1f",
+          "target_rva": "0x1c5a80"
+        },
+        {
+          "rva": "0x1c5a29",
+          "target_rva": "0xb950"
+        },
+        {
+          "rva": "0x1c5a2f",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x1c5a47",
+          "target_rva": "0xb200"
+        },
+        {
+          "rva": "0x1c5a59",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5a69",
+          "target_rva": "0x1c57d0"
+        },
+        {
+          "rva": "0x1c5be1",
+          "target_rva": "0x70690"
+        },
+        {
+          "rva": "0x1c5bf6",
+          "target_rva": "0xfd860"
+        },
+        {
+          "rva": "0x1c5bfd",
+          "target_rva": "0xfad00"
+        },
+        {
+          "rva": "0x1c5c08",
+          "target_rva": "0x12b870"
+        },
+        {
+          "rva": "0x1c5c16",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c59f8",
+          "target_rva": "0x30bf30"
+        },
+        {
+          "rva": "0x1c5c4b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5c56",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5c7b",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c5c86",
+          "target_rva": "0x1c630"
+        },
+        {
+          "rva": "0x1c5ca3",
+          "target_rva": "0x12b690"
+        },
+        {
+          "rva": "0x1c5cbd",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c5cd7",
+          "target_rva": "0x12b740"
+        },
+        {
+          "rva": "0x1c5ce2",
+          "target_rva": "0x1c630"
+        },
+        {
+          "rva": "0x1c5cff",
+          "target_rva": "0x12b690"
+        },
+        {
+          "rva": "0x1c5d2b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5d4a",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x1c5d64",
+          "target_rva": "0x12b5e0"
+        },
+        {
+          "rva": "0x1c5d9b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5db4",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5dc0",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x1c5dd4",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5e0b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5e23",
+          "target_rva": "0x12b4a0"
+        },
+        {
+          "rva": "0x1c5e5b",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5e6b",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x1c5e85",
+          "target_rva": "0x12b5e0"
+        },
+        {
+          "rva": "0x1c5e90",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5eb1",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5ec9",
+          "target_rva": "0x12b540"
+        },
+        {
+          "rva": "0x1c5ef8",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5f19",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5f31",
+          "target_rva": "0x12b080"
+        },
+        {
+          "rva": "0x1c5f58",
+          "target_rva": "0x1b350"
+        },
+        {
+          "rva": "0x1c5f79",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c5f91",
+          "target_rva": "0x12b080"
+        },
+        {
+          "rva": "0x1c5fc8",
+          "target_rva": "0x12b290"
+        },
+        {
+          "rva": "0x1c5fd3",
+          "target_rva": "0x12b1c0"
+        },
+        {
+          "rva": "0x1c600f",
+          "target_rva": "0x1c59d0"
+        },
+        {
+          "rva": "0x1c6036",
+          "target_rva": "0x12af00"
+        },
+        {
+          "rva": "0x1c60b9",
+          "target_rva": "0x12b330"
+        },
+        {
+          "rva": "0x20ed8",
+          "target_rva": "0x12000"
+        },
+        {
+          "rva": "0xfad24",
+          "target_rva": "0xfe2b0"
+        },
+        {
+          "rva": "0xfad32",
+          "target_rva": "0xfe330"
+        },
+        {
+          "rva": "0xfe2d8",
+          "target_rva": "0xfe2f0"
+        },
+        {
+          "rva": "0xfe341",
+          "target_rva": "0xfe020"
+        },
+        {
+          "rva": "0x75aa1",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75aac",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75ab7",
+          "target_rva": "0x70690"
+        },
+        {
+          "rva": "0x75ac2",
+          "target_rva": "0xfd8e0"
+        },
+        {
+          "rva": "0x75ad9",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x75af2",
+          "target_rva": "0x10fa0"
+        },
+        {
+          "rva": "0x75b24",
+          "target_rva": "0x4de0"
+        },
+        {
+          "rva": "0x75b4b",
+          "target_rva": "0x75df0"
+        },
+        {
+          "rva": "0x75b74",
+          "target_rva": "0xfb530"
+        },
+        {
+          "rva": "0x75b8f",
+          "target_rva": "0xfae00"
+        },
+        {
+          "rva": "0x75ba1",
+          "target_rva": "0x20ec0"
+        },
+        {
+          "rva": "0x75bc8",
+          "target_rva": "0x10fa0"
+        },
+        {
+          "rva": "0x75bdc",
+          "target_rva": "0x20dd0"
+        },
+        {
+          "rva": "0x75be5",
+          "target_rva": "0x60880"
+        },
+        {
+          "rva": "0x75bf8",
+          "target_rva": "0x31e0"
+        },
+        {
+          "rva": "0x75c07",
+          "target_rva": "0x9760"
+        },
+        {
+          "rva": "0x75c15",
+          "target_rva": "0x60880"
+        },
+        {
+          "rva": "0x75c3c",
+          "target_rva": "0xb200"
+        },
+        {
+          "rva": "0x75c45",
+          "target_rva": "0x5c780"
+        },
+        {
+          "rva": "0x75c5f",
+          "target_rva": "0xfd860"
+        },
+        {
+          "rva": "0x75c66",
+          "target_rva": "0x101c30"
+        },
+        {
+          "rva": "0x75c76",
+          "target_rva": "0x6b8e0"
+        },
+        {
+          "rva": "0x75c91",
+          "target_rva": "0x20300"
+        },
+        {
+          "rva": "0x75c9d",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75ca8",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75cb1",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75cbe",
+          "target_rva": "0x61670"
+        },
+        {
+          "rva": "0x75cd8",
+          "target_rva": "0x20300"
+        },
+        {
+          "rva": "0x75ce4",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75cef",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75cf8",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75d0f",
+          "target_rva": "0x75e40"
+        },
+        {
+          "rva": "0x75d1d",
+          "target_rva": "0x70a50"
+        },
+        {
+          "rva": "0x75d28",
+          "target_rva": "0x731c0"
+        },
+        {
+          "rva": "0x75d31",
+          "target_rva": "0xfa290"
+        },
+        {
+          "rva": "0x75d4d",
+          "target_rva": "0x75920"
+        },
+        {
+          "rva": "0x75d5b",
+          "target_rva": "0x75eb0"
+        },
+        {
+          "rva": "0x75d65",
+          "target_rva": "0x73140"
+        },
+        {
+          "rva": "0x75d6f",
+          "target_rva": "0x757d0"
+        },
+        {
+          "rva": "0x75d7d",
+          "target_rva": "0x75f90"
+        },
+        {
+          "rva": "0x75d8b",
+          "target_rva": "0x761f0"
+        },
+        {
+          "rva": "0x75d96",
+          "target_rva": "0x75e10"
+        },
+        {
+          "rva": "0x75e25",
+          "target_rva": "0x17140"
+        },
+        {
+          "rva": "0x10fb8",
+          "target_rva": "0x4de0"
+        },
+        {
+          "rva": "0x145e43",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145e67",
+          "target_rva": "0x159e20"
+        },
+        {
+          "rva": "0x145ece",
+          "target_rva": "0x1464a0"
+        },
+        {
+          "rva": "0x145ee5",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145f09",
+          "target_rva": "0x1f0580"
+        },
+        {
+          "rva": "0x145f54",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145f78",
+          "target_rva": "0x1ef6e0"
+        },
+        {
+          "rva": "0x145fc3",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x145fe7",
+          "target_rva": "0x94f80"
+        },
+        {
+          "rva": "0x146032",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146056",
+          "target_rva": "0xa3030"
+        },
+        {
+          "rva": "0x1460a1",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1460c5",
+          "target_rva": "0xd2630"
+        },
+        {
+          "rva": "0x146110",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146134",
+          "target_rva": "0xe6c10"
+        },
+        {
+          "rva": "0x146182",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1461a6",
+          "target_rva": "0xf6960"
+        },
+        {
+          "rva": "0x1461f4",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14620f",
+          "target_rva": "0xe83f0"
+        },
+        {
+          "rva": "0x146257",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x146272",
+          "target_rva": "0x99440"
+        },
+        {
+          "rva": "0x1462b7",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1462d2",
+          "target_rva": "0x12e2e0"
+        },
+        {
+          "rva": "0x146314",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14632f",
+          "target_rva": "0x130c90"
+        },
+        {
+          "rva": "0x146371",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x14638c",
+          "target_rva": "0x12ad70"
+        },
+        {
+          "rva": "0x1463e3",
+          "target_rva": "0x47954e"
+        },
+        {
+          "rva": "0x1463fe",
+          "target_rva": "0x1178a0"
+        },
+        {
+          "rva": "0x14642e",
+          "target_rva": "0x14c980"
+        },
+        {
+          "rva": "0x146435",
+          "target_rva": "0x3ae280"
+        },
+        {
+          "rva": "0x146461",
+          "target_rva": "0x1414f0"
+        },
+        {
+          "rva": "0x146468",
+          "target_rva": "0x126160"
+        },
+        {
+          "rva": "0x62baf7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb17",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb37",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb57",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb77",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bb97",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbb7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbd7",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bbf4",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc11",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc2e",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc4b",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc68",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc85",
+          "target_rva": "0x146480"
+        },
+        {
+          "rva": "0x62bc9d",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x1496f8",
+          "target_rva": "0x3ca220"
+        },
+        {
+          "rva": "0x149706",
+          "target_rva": "0x18740"
+        },
+        {
+          "rva": "0x14970e",
+          "target_rva": "0x149160"
+        },
+        {
+          "rva": "0x149716",
+          "target_rva": "0x138fd0"
+        },
+        {
+          "rva": "0x14972b",
+          "target_rva": "0x149d70"
+        },
+        {
+          "rva": "0x149733",
+          "target_rva": "0x149ee0"
+        },
+        {
+          "rva": "0x149764",
+          "target_rva": "0x149b70"
+        },
+        {
+          "rva": "0x1497a7",
+          "target_rva": "0x149bb0"
+        },
+        {
+          "rva": "0x1497ef",
+          "target_rva": "0x149bf0"
+        },
+        {
+          "rva": "0x149841",
+          "target_rva": "0x149c30"
+        },
+        {
+          "rva": "0x149936",
+          "target_rva": "0x149c70"
+        },
+        {
+          "rva": "0x149979",
+          "target_rva": "0x149cb0"
+        },
+        {
+          "rva": "0x1499af",
+          "target_rva": "0x471e91"
+        },
+        {
+          "rva": "0x1499ea",
+          "target_rva": "0x149cf0"
+        },
+        {
+          "rva": "0x149b23",
+          "target_rva": "0x149d30"
+        },
+        {
+          "rva": "0xfe032",
+          "target_rva": "0x12b810"
+        },
+        {
+          "rva": "0xfe045",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0xfe057",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0xfe066",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0xfe06c",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0xfe0db",
+          "target_rva": "0x232370"
+        },
+        {
+          "rva": "0xfe102",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe10e",
+          "target_rva": "0x232210"
+        },
+        {
+          "rva": "0xfe119",
+          "target_rva": "0xfe290"
+        },
+        {
+          "rva": "0xfe128",
+          "target_rva": "0xb140"
+        },
+        {
+          "rva": "0xfe178",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe19c",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe1be",
+          "target_rva": "0x12000"
+        },
+        {
+          "rva": "0xfe1d5",
+          "target_rva": "0xb170"
+        },
+        {
+          "rva": "0xfe1e6",
+          "target_rva": "0x62d20"
+        },
+        {
+          "rva": "0xfe1ef",
+          "target_rva": "0x21d120"
+        },
+        {
+          "rva": "0xfe218",
+          "target_rva": "0x6b660"
+        },
+        {
+          "rva": "0xfe222",
+          "target_rva": "0xfe5c0"
+        },
+        {
+          "rva": "0xfe278",
+          "target_rva": "0x232370"
+        },
+        {
+          "rva": "0x12b882",
+          "target_rva": "0x1e290"
+        }
+      ],
+      "inventory_identity": {
+        "class_name": "CInventoryBoard",
+        "vtable_rva": "0x6ac50c",
+        "locator_rva": "0x77be64",
+        "descriptor_rva": "0x7ccfdc",
+        "decorated_type": ".?AVCInventoryBoard@@"
+      },
+      "inventory_vtable": {
+        "rva": "0x6ac50c",
+        "bytes": 160,
+        "sha256": "d4a220d7166dd43ba4375a6b49c81ef95538f39815e1053898f0092e67b6dc32"
+      }
+    }
+  ],
+  "corrections": [
+    "5C59D0 selects actual MiniMap marker at+2DC4+index*540;not a separate nuclear dialog",
+    "Result2 reads original storage boardBYTE229;zero invokes actual CObjectBoard UI_UseResult(TRUE),not an inventory-visible query/open",
+    "Result1 reads original board object232,not hover244/backup252;payload584\u2192serialDWORD4 is sent as little-endian WORD",
+    "Type33 inventory branch4757D0 is empty,then475E10\u2192417140 writes only player use recordDWORD4=FFFFFFFF;not a shared-item release/full620byte Clear",
+    "Base UI_UseResult clears operation only when actual hover/backup is absent;ClearOperation may C1A-cancel aiming even with empty cursor"
+  ],
+  "gaps": [
+    "Only selected nuclear category33 inventory completion is restored;all other inventory use branches/full target using-item record and producers remain open",
+    "Own invalid/post-release pointer and uncreated-stage cleanup differ from unsafe target leak/dangling domains;full normal stage lifecycle/world/bootstrap/auth still unaccepted",
+    "Unchecked malformed input/index/FP/OOM/concurrency/privateABI and all prior client-acceptance gaps remain;20registry R3T teardown warnings still require follow-up"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

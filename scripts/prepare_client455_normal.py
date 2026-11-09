@@ -29,6 +29,7 @@ from client455_message_dispatch_port import port_message_dispatch
 from client455_character_flags_port import port_character_flags
 from client455_nuclear_minimap_port import port_nuclear_minimap
 from client455_nuclear_registry_port import port_nuclear_registry
+from client455_nuclear_receiver_port import port_nuclear_receiver
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -699,6 +700,8 @@ def main():
             if nuclear_map_changed:changes.append('455MiniMap owns3 NuclearBomb markers/actual bounds/init andpost-lookup UI operations;registry/worldgeometry/receiver remainopen')
             raw,nuclear_registry_changed=port_nuclear_registry(raw,relative)
             if nuclear_registry_changed:changes.append('455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen')
+            raw,nuclear_receive_changed=port_nuclear_receiver(raw,relative,section)
+            if nuclear_receive_changed:changes.append('455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
             if source.name.lower() in ['global.cpp','cresobject.cpp']:
@@ -751,9 +754,9 @@ def main():
     cmake+='set_source_files_properties("'+intro_camera_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     for name in ['client455_tutorial_intro.cpp','client455_avatar_stage.cpp','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_contracts.cpp','client455_normal_shadow.cpp','client455_normal_effect_tables.cpp','client455_effect_tables.cpp','client455_effects.cpp','client455_normal_effects.cpp','client455_character_clock.cpp','client455_normal_clock.cpp','client455_normal_accounting.cpp','client455_nation_paths.cpp','client455_language.cpp','client455_font_settings.cpp','client455_font.cpp','client455_sprites.cpp','client455_launcher.cpp','client455_bootstrap.cpp','client455_network_state.cpp','client455_network_codec.cpp','client455_connection.cpp','client455_account.cpp','client455_camera.cpp','client455_modal.cpp','client455_text_metrics.cpp','client455_gui_text_metrics.cpp','client455_minimap_opacity.cpp','client455_gui_input.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp','client455_tagged_audio.cpp','client455_magic_control.cpp','client455_nuclear_aiming.cpp','client455_center_messages.cpp','client455_chat_profile.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_minimap.cpp','client455_nuclear_registry.cpp']:
+    for name in ['client455_rvp.cpp','client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_normal_rvp.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp','client455_money.cpp','client455_hotbar.cpp','client455_tagged_audio.cpp','client455_magic_control.cpp','client455_nuclear_aiming.cpp','client455_center_messages.cpp','client455_chat_profile.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_minimap.cpp','client455_nuclear_registry.cpp','client455_nuclear_receiver.cpp','client455_nuclear_wire.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
-        if name in ['client455_nuclear_aiming.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_registry.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
+        if name in ['client455_nuclear_aiming.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_registry.cpp','client455_nuclear_receiver.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
@@ -830,6 +833,8 @@ def main():
     report['character_flags_port_sha256']=sha((WS/'scripts/client455_character_flags_port.py').read_bytes())
     report['nuclear_minimap_port_sha256']=sha((WS/'scripts/client455_nuclear_minimap_port.py').read_bytes())
     report['nuclear_registry_port_sha256']=sha((WS/'scripts/client455_nuclear_registry_port.py').read_bytes())
+    report['nuclear_receiver_port_sha256']=sha((WS/'scripts/client455_nuclear_receiver_port.py').read_bytes())
+    for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_registry.h','client455_nuclear_registry.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_minimap.h','client455_nuclear_minimap.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_character_flags.h','client455_character_flags.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
