@@ -1,0 +1,19 @@
+//8EA7AC..8EA9A8:mode follows sky2 file existence,not LoadEntity success.
+strcpy(tempname,state->MapPath);
+strcat(tempname,buf);
+strcat(tempname,"\\sky2\\");
+strcat(tempname,mMapName);
+strcat(tempname,"sky2.r3e");
+ResetTexMemSize();
+if(IsExistFile(tempname)){
+    RF455_SetSkyDayEnabled(1);
+    mSkyBox->LoadSkyBox(tempname);
+}else{
+    RF455_SetSkyDayEnabled(0);
+    strcpy(tempname,state->MapPath);
+    strcat(tempname,buf);
+    strcat(tempname,"\\sky\\");
+    strcat(tempname,mMapName);
+    strcat(tempname,"sky.r3e");
+    if(IsExistFile(tempname))mSkyBox->LoadSkyBox(tempname);
+}

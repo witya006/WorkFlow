@@ -2,11 +2,11 @@
 
 Обновлено 2026-11-09.
 
-124 PARTIAL M6: восстановлены sky fade state/x87/color/alpha в ordinaryr3util.
-Current gate: inventory/client455-sky-fade-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_fade.py.
-Доказательства: research/client455-sky-fade.md.
-Предыдущая память и шаги: research/project-memory-before124.md и next-steps-before124.md.
+125 PARTIAL M6: ordinarysky2/legacyfallback,actualnightweight,materialflags.
+Currentgate: inventory/client455-sky-material-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_material.py.
+Доказательства: research/client455-sky-material.md.
+Предыдущая память/шаги: research/project-memory-before125.md,next-steps-before125.md.
 
 ## Цель и ограничения
 
@@ -23,7 +23,63 @@ Primary VS2026 x86;VC6 fallback. Native/GPU jobs последовательно,
 Перед rebuild сохранять exact engine/PE/reports. Ignored файл не backup.
 Не повторять159k/старые broad suites без причины. Пользователю — коротко по-русски.
 
-## Текущие доказательства124
+## Текущие доказательства125
+
+8completebodies/pcode/fullasm/1696instructions equalbothpinned455.
+8B1F20(546),8EA220(675),8E7910(70),8B12A0(3),8B12B0(2),8B1240(2),
+900AB0(15),9157E0(383). Skyasm/pcode reused123;8B1F20pcode124.
+Actualreadonlyliterals/calls/bodyranges,CRTstubA95770→profile1154DF4/ctor900AB0,
+readonlyinitializerpointerAA8700,initialBF7344=1 checkedbothpins.
+Rawsky-material125-reference/session.json. IDA58629015savedclosed/list0.
+No inputEXEexecuted. Previous124verifiedprogress(commit156cf28);125progress.
+
+Newsourceclient455_sky_day.h/.inc,map_sky.inc,sky_material.inc.
+Ordinarymapfirstsky2/fileexists→enable1 evenifLoadfails;elseenable0/legacy sky.
+FrameMoveexistingactualclockprefix→actualnightweight,disabledpreservesprevious.
+Exact dawnEnd.3333333432674408 is1,nextfloat0;donotsmooth.
+Flags4 colorTFACTOR/MODULATE,elseDIFFUSE/MODULATE2X;8alpha,10/20inverse override;
+alpha0skip;mask1Csetup/mask18cleanup;20alone DOESNOTsetalphastages.
+DeviceVIEWrestored,callerviewtranslationleftzero. DirectunloadedsetsCOLOROP4/VIEW
+unchangedinput andpreservesdepth. Fullspecialprepass8B1840 remainsABSENT.
+Onlynightweightsliceoflightingtail restored,notwholeprofile/shaders/fog/sun.
+
+Enginea11b2823ce9afd5be2e576f0d16b75fb20a49e236b260b8776e4dc635e7ee927,
+67/16derived,onlylevel.obj+skybox.obj payloadchanged;65byteequal/0timestamp-only.
+Shareddeclarations/layouts/182client20kernel unchanged;freshANI2/BBX+normalrelink.
+PEf61859245bea55d93fc2cb28bdf570a7afa4b06142d0bcd81ba6835df18b0b9c,
+2229248bytes/x86/base400000/entry167ED0;WinMainB98B0/afterCreateB9A24/unresolved0.
+Exact124engine/PE/reports*before125*preserved. Before126alsobackupmap/linkrsp.
+
+work/m9/22a774bc/sky-material-001:60profilePC24/53/64nearest-even,3actualframe
+clockprofiles,36materialcases/12flags,26indexedsubmissions/10alpha0skips,
+VIEWmutations/depth/masks/directunloaded,5neutralBsky2GPUviewed4distincttimes.
+LegacyBellatoactualmode0,neutralBactualmode1.20sky2directoriesinventory,
+not20acceptedmapnames.25neutralBfiles/64224177bytes stagedunderwork.
+1warning originalMap/Entity/e_neutrala/trade_bel/trade_bel.r3e absent;notreplaced.
+
+Labcloned119publicD3DvtablecausedAV0x40;failed334a01e3,c56d12a2 keptwithdebug.
+CorrectownobserverpatchesonlyoriginalDrawIndexedPrimitiveslot82 inownprocess,
+restoresfunctionaroundforward/Get andpageprotections;no productionworkaround.
+Successful43661caf then22a774bc addedunloadedcoverage.
+DoNOTclone119slotsforcallsusingprivateD3Dentries.
+RawMCPsavepayload>64k wasrejected;resolvedby20kchunks,not an externalblocker.
+
+Worldwork/m9/9c0ee635/world-frame-001:76queue/16OSclock±1/rayhit/16FXlightframes/
+3ValidateDeviceS_OK,5GPUviewedandbyteequal124,6existingwarnings.
+Fadework/m9/05075415/sky-fade-001:90state+27helper/3precision/exactfog-quad,
+5GPUviewedandbyteequal124,warnings0.15GPUreviewedtotal125.
+FreshexactPEstartup sound1/window/device/existingCreate1/contractsPASS.
+Handledfirstchance40080201/E06D7363/406D1388retained. Maps2692/projection12/other
+unchangedbulkhistorical,notrerun. No livejobs/ownedIDAremain.
+
+Next126:8B1840specialatmosphereprepass and actualprofile/resource/device lifecycle.
+Uses1154DF4 andsecondowner1154E64,9017F0/900DA0 branches,view/proj/
+shader/VB-IBrestore. Cached124pcodeexploratory;verifyfullasm/bothpins.
+Checkmeaning/writers1157D40 flags,doNOTassumemovieflags.
+Lightingtail8B1F20sunmatrices/exposure/scattering/lightcolor/day-nightfogOPEN.
+INS/Planet distinctowners/allRC/NaN/Inf/lostreset/fullrenderer/stage/auth/gameOPEN.
+
+## Исторические доказательства124 (gate заменён125)
 
 4 полные функции/282instructions equalbothpins: SetFadeSky8B58A0,
 DrawFadeSKy8B5900,GetColorToColorAlpha8B5780,SetFadeFactor8B49B0.

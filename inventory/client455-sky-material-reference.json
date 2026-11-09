@@ -1,0 +1,1429 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Ordinary sky2/legacy selection,enable state,night-weight slice and sky material flags;fullatmosphere remains open",
+  "script_sha256": "f5dc17685290a6953b52e108d1d1ebf20780a19916afd8dfebe3ed715e64d802",
+  "raw": {
+    "file": "artifacts/client455-progress/sky-material125-reference.json",
+    "sha256": "c348613bd8ac59664047377761476cd17417d2bc3e35ebddbad838c7c1b414d7"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/sky-material125-session.json",
+    "sha256": "7190706bcd6360457472d219e36bd045961d0d0138562afdd087f06c7a1635aa"
+  },
+  "full_assembly": 8,
+  "instructions": 1696,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4b1240",
+          "bytes": 6,
+          "sha256": "87b7828615e93a0e7f7056244c08ad59a9f423455c7ef39aa94607e62557e468"
+        },
+        {
+          "rva": "0x4b12a0",
+          "bytes": 10,
+          "sha256": "37c9114e72010e19a0ee472d04dea38bba56cb71a5526ec43f1ec922acce6302"
+        },
+        {
+          "rva": "0x4b12b0",
+          "bytes": 6,
+          "sha256": "f1e4784d548a580a5cf20766c5602136377413bdfd6695d89c1b919099d062be"
+        },
+        {
+          "rva": "0x4b1f20",
+          "bytes": 1866,
+          "sha256": "eb46d0a44c1ab7d7a8a8c18de7881344ef2dc551f24c12e5bbdbe92e2ecb71fb"
+        },
+        {
+          "rva": "0x4e7910",
+          "bytes": 252,
+          "sha256": "e22b878962d81568336bfef3c12b62ab616888c0122c912ad3c601054edd9bbb"
+        },
+        {
+          "rva": "0x4ea220",
+          "bytes": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        },
+        {
+          "rva": "0x500ab0",
+          "bytes": 46,
+          "sha256": "4717d127d5717b9b06367df95b0a574dfb78bd51d1f6c5624adce75d03db16b5"
+        },
+        {
+          "rva": "0x5157e0",
+          "bytes": 1279,
+          "sha256": "cc82599d5cc9761e7e2643ba8303eab2759cc98017e9f6142cf6014622a037b8"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4b2032",
+          "target_rva": "0x500cd0"
+        },
+        {
+          "rva": "0x4b22cc",
+          "target_rva": "0x5019d0"
+        },
+        {
+          "rva": "0x4b235d",
+          "target_rva": "0x4b1640"
+        },
+        {
+          "rva": "0x4b24fd",
+          "target_rva": "0x474500"
+        },
+        {
+          "rva": "0x4b2576",
+          "target_rva": "0x4b2670"
+        },
+        {
+          "rva": "0x4ea245",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4ea271",
+          "target_rva": "0x472c1b"
+        },
+        {
+          "rva": "0x4ea286",
+          "target_rva": "0x474a43"
+        },
+        {
+          "rva": "0x4ea2a9",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4ea2bc",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4ea2cc",
+          "target_rva": "0x474903"
+        },
+        {
+          "rva": "0x4ea2f4",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea301",
+          "target_rva": "0x4b32b0"
+        },
+        {
+          "rva": "0x4ea3eb",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea3fa",
+          "target_rva": "0x4ed580"
+        },
+        {
+          "rva": "0x4ea42d",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea474",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea481",
+          "target_rva": "0x4b32b0"
+        },
+        {
+          "rva": "0x4ea4b4",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea4cc",
+          "target_rva": "0x50b940"
+        },
+        {
+          "rva": "0x4ea4fd",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea535",
+          "target_rva": "0x4f2260"
+        },
+        {
+          "rva": "0x4ea53c",
+          "target_rva": "0x50b6a0"
+        },
+        {
+          "rva": "0x4ea542",
+          "target_rva": "0x4f33b0"
+        },
+        {
+          "rva": "0x4ea54a",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea5e5",
+          "target_rva": "0x50b8c0"
+        },
+        {
+          "rva": "0x4ea5ed",
+          "target_rva": "0x50b6a0"
+        },
+        {
+          "rva": "0x4ea5f6",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea62d",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea663",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea677",
+          "target_rva": "0x50b940"
+        },
+        {
+          "rva": "0x4ea692",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea6a7",
+          "target_rva": "0x4fdea0"
+        },
+        {
+          "rva": "0x4ea6c7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea6fc",
+          "target_rva": "0x4ff280"
+        },
+        {
+          "rva": "0x4ea701",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea722",
+          "target_rva": "0x4e88f0"
+        },
+        {
+          "rva": "0x4ea727",
+          "target_rva": "0x4ed580"
+        },
+        {
+          "rva": "0x4ea735",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4ea757",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea781",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea791",
+          "target_rva": "0x4fdcd0"
+        },
+        {
+          "rva": "0x4ea796",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea7a7",
+          "target_rva": "0x4f98a0"
+        },
+        {
+          "rva": "0x4ea7ac",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea890",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea89e",
+          "target_rva": "0x4b12a0"
+        },
+        {
+          "rva": "0x4ea8b2",
+          "target_rva": "0x4b12a0"
+        },
+        {
+          "rva": "0x4ea987",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea99e",
+          "target_rva": "0x515680"
+        },
+        {
+          "rva": "0x4ea9a3",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea9ae",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea9b3",
+          "target_rva": "0x4f36d0"
+        },
+        {
+          "rva": "0x4ea9b8",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea9e7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaa17",
+          "target_rva": "0x4d69e0"
+        },
+        {
+          "rva": "0x4eaa1e",
+          "target_rva": "0x4d4c30"
+        },
+        {
+          "rva": "0x4eaa47",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaa73",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4eaa88",
+          "target_rva": "0x50bbf0"
+        },
+        {
+          "rva": "0x4eaab7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaaf2",
+          "target_rva": "0x4b3130"
+        },
+        {
+          "rva": "0x4eaaf9",
+          "target_rva": "0x4b40d0"
+        },
+        {
+          "rva": "0x4eab09",
+          "target_rva": "0x4b46e0"
+        },
+        {
+          "rva": "0x4eab1a",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4eab38",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4e7916",
+          "target_rva": "0x4d5ff0"
+        },
+        {
+          "rva": "0x4e795f",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4e7979",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4e7992",
+          "target_rva": "0x4c55a0"
+        },
+        {
+          "rva": "0x4e7997",
+          "target_rva": "0x4c2a90"
+        },
+        {
+          "rva": "0x4e799c",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4e79a5",
+          "target_rva": "0x4ff720"
+        },
+        {
+          "rva": "0x4e79ad",
+          "target_rva": "0x4b1f20"
+        },
+        {
+          "rva": "0x4e79b2",
+          "target_rva": "0x4b46e0"
+        },
+        {
+          "rva": "0x4e79b7",
+          "target_rva": "0x4c64e0"
+        },
+        {
+          "rva": "0x4e79de",
+          "target_rva": "0x4fe4b0"
+        },
+        {
+          "rva": "0x4e79e9",
+          "target_rva": "0x4cad00"
+        },
+        {
+          "rva": "0x4e79f4",
+          "target_rva": "0x4fda70"
+        },
+        {
+          "rva": "0x4e79f9",
+          "target_rva": "0x4bc5b0"
+        },
+        {
+          "rva": "0x5157ed",
+          "target_rva": "0x4e0850"
+        },
+        {
+          "rva": "0x5157f2",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x515904",
+          "target_rva": "0x4b12b0"
+        },
+        {
+          "rva": "0x51590d",
+          "target_rva": "0x4b1840"
+        },
+        {
+          "rva": "0x51596d",
+          "target_rva": "0x4c64f0"
+        },
+        {
+          "rva": "0x515975",
+          "target_rva": "0x4c6b10"
+        },
+        {
+          "rva": "0x5159c0",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x5159f4",
+          "target_rva": "0x4f47b0"
+        },
+        {
+          "rva": "0x5159fc",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x515ab3",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515b0a",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515b68",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515c35",
+          "target_rva": "0x4e33c0"
+        }
+      ],
+      "numeric_literals": [
+        {
+          "rva": "0x6a96e8",
+          "bytes": 8,
+          "hex": "0000000000002440"
+        },
+        {
+          "rva": "0x6a9700",
+          "bytes": 8,
+          "hex": "0000000000003e40"
+        },
+        {
+          "rva": "0x6a9890",
+          "bytes": 8,
+          "hex": "0000000000408f40"
+        },
+        {
+          "rva": "0x6a9b98",
+          "bytes": 8,
+          "hex": "000000000000f83f"
+        },
+        {
+          "rva": "0x6a9bb8",
+          "bytes": 8,
+          "hex": "000000c0ccccec3f"
+        },
+        {
+          "rva": "0x6a9bd0",
+          "bytes": 8,
+          "hex": "0000000000001040"
+        },
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        },
+        {
+          "rva": "0x6aaef8",
+          "bytes": 8,
+          "hex": "000000000000d03f"
+        },
+        {
+          "rva": "0x6b007c",
+          "bytes": 4,
+          "hex": "0000803e"
+        },
+        {
+          "rva": "0x6d1cb0",
+          "bytes": 4,
+          "hex": "0000c842"
+        },
+        {
+          "rva": "0x6da090",
+          "bytes": 8,
+          "hex": "0000000000003040"
+        },
+        {
+          "rva": "0x6e5c90",
+          "bytes": 8,
+          "hex": "0000000000002040"
+        },
+        {
+          "rva": "0x6e8e90",
+          "bytes": 8,
+          "hex": "000000000018f540"
+        },
+        {
+          "rva": "0x6edc40",
+          "bytes": 4,
+          "hex": "cdcccc3e"
+        },
+        {
+          "rva": "0x6edd00",
+          "bytes": 4,
+          "hex": "00008040"
+        },
+        {
+          "rva": "0x7369b0",
+          "bytes": 4,
+          "hex": "0000804f"
+        },
+        {
+          "rva": "0x7369d8",
+          "bytes": 8,
+          "hex": "000000000028b440"
+        },
+        {
+          "rva": "0x7369e0",
+          "bytes": 8,
+          "hex": "0000000000289440"
+        },
+        {
+          "rva": "0x7369e8",
+          "bytes": 8,
+          "hex": "000000200000c03f"
+        },
+        {
+          "rva": "0x7369f0",
+          "bytes": 4,
+          "hex": "abaaaa3e"
+        },
+        {
+          "rva": "0x7369f8",
+          "bytes": 8,
+          "hex": "000000a0aaaaca3f"
+        },
+        {
+          "rva": "0x736a00",
+          "bytes": 8,
+          "hex": "000000605555eb3f"
+        },
+        {
+          "rva": "0x736a08",
+          "bytes": 8,
+          "hex": "000000005455a53f"
+        },
+        {
+          "rva": "0x736a10",
+          "bytes": 8,
+          "hex": "000000a0aaaaea3f"
+        },
+        {
+          "rva": "0x736a18",
+          "bytes": 4,
+          "hex": "cdcccc3c"
+        },
+        {
+          "rva": "0x736a20",
+          "bytes": 8,
+          "hex": "000000006666c63f"
+        },
+        {
+          "rva": "0x736a28",
+          "bytes": 4,
+          "hex": "3333933f"
+        },
+        {
+          "rva": "0x736a30",
+          "bytes": 8,
+          "hex": "000000403333ef3f"
+        },
+        {
+          "rva": "0x736a38",
+          "bytes": 4,
+          "hex": "cdccccbd"
+        },
+        {
+          "rva": "0x736a40",
+          "bytes": 8,
+          "hex": "000000a09999b9bf"
+        },
+        {
+          "rva": "0x736a48",
+          "bytes": 8,
+          "hex": "000000a05655953f"
+        },
+        {
+          "rva": "0x736a50",
+          "bytes": 8,
+          "hex": "abaaaaaaaaaae83f"
+        },
+        {
+          "rva": "0x736a58",
+          "bytes": 8,
+          "hex": "000000005655b53f"
+        },
+        {
+          "rva": "0x736a60",
+          "bytes": 8,
+          "hex": "000000a0aaaae63f"
+        },
+        {
+          "rva": "0x736a68",
+          "bytes": 4,
+          "hex": "5555353f"
+        },
+        {
+          "rva": "0x736a6c",
+          "bytes": 4,
+          "hex": "0000c03e"
+        },
+        {
+          "rva": "0x736a70",
+          "bytes": 8,
+          "hex": "000000a09999993f"
+        },
+        {
+          "rva": "0x736a78",
+          "bytes": 8,
+          "hex": "000000606666ee3f"
+        },
+        {
+          "rva": "0x736a80",
+          "bytes": 8,
+          "hex": "000000605555e13f"
+        },
+        {
+          "rva": "0x736a88",
+          "bytes": 8,
+          "hex": "000000605555e93f"
+        },
+        {
+          "rva": "0x7f7348",
+          "bytes": 4,
+          "hex": "00004040"
+        },
+        {
+          "rva": "0x7f7354",
+          "bytes": 4,
+          "hex": "8fc2f53c"
+        }
+      ],
+      "initialization": [
+        {
+          "rva": "0x7f7344",
+          "bytes": 4,
+          "hex": "01000000"
+        },
+        {
+          "rva": "0x695770",
+          "bytes": 10,
+          "hex": "b9f44d1501e836b3e6ff"
+        },
+        {
+          "rva": "0x6a86f4",
+          "bytes": 28,
+          "hex": "6057a900506a8600b0a586007057a9009057a900b057a900d057a900"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4b1240",
+          "bytes": 6,
+          "sha256": "87b7828615e93a0e7f7056244c08ad59a9f423455c7ef39aa94607e62557e468"
+        },
+        {
+          "rva": "0x4b12a0",
+          "bytes": 10,
+          "sha256": "37c9114e72010e19a0ee472d04dea38bba56cb71a5526ec43f1ec922acce6302"
+        },
+        {
+          "rva": "0x4b12b0",
+          "bytes": 6,
+          "sha256": "f1e4784d548a580a5cf20766c5602136377413bdfd6695d89c1b919099d062be"
+        },
+        {
+          "rva": "0x4b1f20",
+          "bytes": 1866,
+          "sha256": "eb46d0a44c1ab7d7a8a8c18de7881344ef2dc551f24c12e5bbdbe92e2ecb71fb"
+        },
+        {
+          "rva": "0x4e7910",
+          "bytes": 252,
+          "sha256": "e22b878962d81568336bfef3c12b62ab616888c0122c912ad3c601054edd9bbb"
+        },
+        {
+          "rva": "0x4ea220",
+          "bytes": 2342,
+          "sha256": "3381cecd97cf3446ace51af964e9140c8b84cf742f39e8c9385278f00d6561f9"
+        },
+        {
+          "rva": "0x500ab0",
+          "bytes": 46,
+          "sha256": "4717d127d5717b9b06367df95b0a574dfb78bd51d1f6c5624adce75d03db16b5"
+        },
+        {
+          "rva": "0x5157e0",
+          "bytes": 1279,
+          "sha256": "cc82599d5cc9761e7e2643ba8303eab2759cc98017e9f6142cf6014622a037b8"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4b2032",
+          "target_rva": "0x500cd0"
+        },
+        {
+          "rva": "0x4b22cc",
+          "target_rva": "0x5019d0"
+        },
+        {
+          "rva": "0x4b235d",
+          "target_rva": "0x4b1640"
+        },
+        {
+          "rva": "0x4b24fd",
+          "target_rva": "0x474500"
+        },
+        {
+          "rva": "0x4b2576",
+          "target_rva": "0x4b2670"
+        },
+        {
+          "rva": "0x4ea245",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4ea271",
+          "target_rva": "0x472c1b"
+        },
+        {
+          "rva": "0x4ea286",
+          "target_rva": "0x474a43"
+        },
+        {
+          "rva": "0x4ea2a9",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4ea2bc",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4ea2cc",
+          "target_rva": "0x474903"
+        },
+        {
+          "rva": "0x4ea2f4",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea301",
+          "target_rva": "0x4b32b0"
+        },
+        {
+          "rva": "0x4ea3eb",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea3fa",
+          "target_rva": "0x4ed580"
+        },
+        {
+          "rva": "0x4ea42d",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea474",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea481",
+          "target_rva": "0x4b32b0"
+        },
+        {
+          "rva": "0x4ea4b4",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea4cc",
+          "target_rva": "0x50b940"
+        },
+        {
+          "rva": "0x4ea4fd",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea535",
+          "target_rva": "0x4f2260"
+        },
+        {
+          "rva": "0x4ea53c",
+          "target_rva": "0x50b6a0"
+        },
+        {
+          "rva": "0x4ea542",
+          "target_rva": "0x4f33b0"
+        },
+        {
+          "rva": "0x4ea54a",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea5e5",
+          "target_rva": "0x50b8c0"
+        },
+        {
+          "rva": "0x4ea5ed",
+          "target_rva": "0x50b6a0"
+        },
+        {
+          "rva": "0x4ea5f6",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea62d",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea663",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea677",
+          "target_rva": "0x50b940"
+        },
+        {
+          "rva": "0x4ea692",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea6a7",
+          "target_rva": "0x4fdea0"
+        },
+        {
+          "rva": "0x4ea6c7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea6fc",
+          "target_rva": "0x4ff280"
+        },
+        {
+          "rva": "0x4ea701",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea722",
+          "target_rva": "0x4e88f0"
+        },
+        {
+          "rva": "0x4ea727",
+          "target_rva": "0x4ed580"
+        },
+        {
+          "rva": "0x4ea735",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4ea757",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4ea781",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea791",
+          "target_rva": "0x4fdcd0"
+        },
+        {
+          "rva": "0x4ea796",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea7a7",
+          "target_rva": "0x4f98a0"
+        },
+        {
+          "rva": "0x4ea7ac",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea890",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea89e",
+          "target_rva": "0x4b12a0"
+        },
+        {
+          "rva": "0x4ea8b2",
+          "target_rva": "0x4b12a0"
+        },
+        {
+          "rva": "0x4ea987",
+          "target_rva": "0x4b3720"
+        },
+        {
+          "rva": "0x4ea99e",
+          "target_rva": "0x515680"
+        },
+        {
+          "rva": "0x4ea9a3",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea9ae",
+          "target_rva": "0x4f1700"
+        },
+        {
+          "rva": "0x4ea9b3",
+          "target_rva": "0x4f36d0"
+        },
+        {
+          "rva": "0x4ea9b8",
+          "target_rva": "0x4f16f0"
+        },
+        {
+          "rva": "0x4ea9e7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaa17",
+          "target_rva": "0x4d69e0"
+        },
+        {
+          "rva": "0x4eaa1e",
+          "target_rva": "0x4d4c30"
+        },
+        {
+          "rva": "0x4eaa47",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaa73",
+          "target_rva": "0x4e75d0"
+        },
+        {
+          "rva": "0x4eaa88",
+          "target_rva": "0x50bbf0"
+        },
+        {
+          "rva": "0x4eaab7",
+          "target_rva": "0x4b3270"
+        },
+        {
+          "rva": "0x4eaaf2",
+          "target_rva": "0x4b3130"
+        },
+        {
+          "rva": "0x4eaaf9",
+          "target_rva": "0x4b40d0"
+        },
+        {
+          "rva": "0x4eab09",
+          "target_rva": "0x4b46e0"
+        },
+        {
+          "rva": "0x4eab1a",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4eab38",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4e7916",
+          "target_rva": "0x4d5ff0"
+        },
+        {
+          "rva": "0x4e795f",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4e7979",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4e7992",
+          "target_rva": "0x4c55a0"
+        },
+        {
+          "rva": "0x4e7997",
+          "target_rva": "0x4c2a90"
+        },
+        {
+          "rva": "0x4e799c",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4e79a5",
+          "target_rva": "0x4ff720"
+        },
+        {
+          "rva": "0x4e79ad",
+          "target_rva": "0x4b1f20"
+        },
+        {
+          "rva": "0x4e79b2",
+          "target_rva": "0x4b46e0"
+        },
+        {
+          "rva": "0x4e79b7",
+          "target_rva": "0x4c64e0"
+        },
+        {
+          "rva": "0x4e79de",
+          "target_rva": "0x4fe4b0"
+        },
+        {
+          "rva": "0x4e79e9",
+          "target_rva": "0x4cad00"
+        },
+        {
+          "rva": "0x4e79f4",
+          "target_rva": "0x4fda70"
+        },
+        {
+          "rva": "0x4e79f9",
+          "target_rva": "0x4bc5b0"
+        },
+        {
+          "rva": "0x5157ed",
+          "target_rva": "0x4e0850"
+        },
+        {
+          "rva": "0x5157f2",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x515904",
+          "target_rva": "0x4b12b0"
+        },
+        {
+          "rva": "0x51590d",
+          "target_rva": "0x4b1840"
+        },
+        {
+          "rva": "0x51596d",
+          "target_rva": "0x4c64f0"
+        },
+        {
+          "rva": "0x515975",
+          "target_rva": "0x4c6b10"
+        },
+        {
+          "rva": "0x5159c0",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x5159f4",
+          "target_rva": "0x4f47b0"
+        },
+        {
+          "rva": "0x5159fc",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x515ab3",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515b0a",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515b68",
+          "target_rva": "0x4b1240"
+        },
+        {
+          "rva": "0x515c35",
+          "target_rva": "0x4e33c0"
+        }
+      ],
+      "numeric_literals": [
+        {
+          "rva": "0x6a96e8",
+          "bytes": 8,
+          "hex": "0000000000002440"
+        },
+        {
+          "rva": "0x6a9700",
+          "bytes": 8,
+          "hex": "0000000000003e40"
+        },
+        {
+          "rva": "0x6a9890",
+          "bytes": 8,
+          "hex": "0000000000408f40"
+        },
+        {
+          "rva": "0x6a9b98",
+          "bytes": 8,
+          "hex": "000000000000f83f"
+        },
+        {
+          "rva": "0x6a9bb8",
+          "bytes": 8,
+          "hex": "000000c0ccccec3f"
+        },
+        {
+          "rva": "0x6a9bd0",
+          "bytes": 8,
+          "hex": "0000000000001040"
+        },
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        },
+        {
+          "rva": "0x6aaef8",
+          "bytes": 8,
+          "hex": "000000000000d03f"
+        },
+        {
+          "rva": "0x6b007c",
+          "bytes": 4,
+          "hex": "0000803e"
+        },
+        {
+          "rva": "0x6d1cb0",
+          "bytes": 4,
+          "hex": "0000c842"
+        },
+        {
+          "rva": "0x6da090",
+          "bytes": 8,
+          "hex": "0000000000003040"
+        },
+        {
+          "rva": "0x6e5c90",
+          "bytes": 8,
+          "hex": "0000000000002040"
+        },
+        {
+          "rva": "0x6e8e90",
+          "bytes": 8,
+          "hex": "000000000018f540"
+        },
+        {
+          "rva": "0x6edc40",
+          "bytes": 4,
+          "hex": "cdcccc3e"
+        },
+        {
+          "rva": "0x6edd00",
+          "bytes": 4,
+          "hex": "00008040"
+        },
+        {
+          "rva": "0x7369b0",
+          "bytes": 4,
+          "hex": "0000804f"
+        },
+        {
+          "rva": "0x7369d8",
+          "bytes": 8,
+          "hex": "000000000028b440"
+        },
+        {
+          "rva": "0x7369e0",
+          "bytes": 8,
+          "hex": "0000000000289440"
+        },
+        {
+          "rva": "0x7369e8",
+          "bytes": 8,
+          "hex": "000000200000c03f"
+        },
+        {
+          "rva": "0x7369f0",
+          "bytes": 4,
+          "hex": "abaaaa3e"
+        },
+        {
+          "rva": "0x7369f8",
+          "bytes": 8,
+          "hex": "000000a0aaaaca3f"
+        },
+        {
+          "rva": "0x736a00",
+          "bytes": 8,
+          "hex": "000000605555eb3f"
+        },
+        {
+          "rva": "0x736a08",
+          "bytes": 8,
+          "hex": "000000005455a53f"
+        },
+        {
+          "rva": "0x736a10",
+          "bytes": 8,
+          "hex": "000000a0aaaaea3f"
+        },
+        {
+          "rva": "0x736a18",
+          "bytes": 4,
+          "hex": "cdcccc3c"
+        },
+        {
+          "rva": "0x736a20",
+          "bytes": 8,
+          "hex": "000000006666c63f"
+        },
+        {
+          "rva": "0x736a28",
+          "bytes": 4,
+          "hex": "3333933f"
+        },
+        {
+          "rva": "0x736a30",
+          "bytes": 8,
+          "hex": "000000403333ef3f"
+        },
+        {
+          "rva": "0x736a38",
+          "bytes": 4,
+          "hex": "cdccccbd"
+        },
+        {
+          "rva": "0x736a40",
+          "bytes": 8,
+          "hex": "000000a09999b9bf"
+        },
+        {
+          "rva": "0x736a48",
+          "bytes": 8,
+          "hex": "000000a05655953f"
+        },
+        {
+          "rva": "0x736a50",
+          "bytes": 8,
+          "hex": "abaaaaaaaaaae83f"
+        },
+        {
+          "rva": "0x736a58",
+          "bytes": 8,
+          "hex": "000000005655b53f"
+        },
+        {
+          "rva": "0x736a60",
+          "bytes": 8,
+          "hex": "000000a0aaaae63f"
+        },
+        {
+          "rva": "0x736a68",
+          "bytes": 4,
+          "hex": "5555353f"
+        },
+        {
+          "rva": "0x736a6c",
+          "bytes": 4,
+          "hex": "0000c03e"
+        },
+        {
+          "rva": "0x736a70",
+          "bytes": 8,
+          "hex": "000000a09999993f"
+        },
+        {
+          "rva": "0x736a78",
+          "bytes": 8,
+          "hex": "000000606666ee3f"
+        },
+        {
+          "rva": "0x736a80",
+          "bytes": 8,
+          "hex": "000000605555e13f"
+        },
+        {
+          "rva": "0x736a88",
+          "bytes": 8,
+          "hex": "000000605555e93f"
+        },
+        {
+          "rva": "0x7f7348",
+          "bytes": 4,
+          "hex": "00004040"
+        },
+        {
+          "rva": "0x7f7354",
+          "bytes": 4,
+          "hex": "8fc2f53c"
+        }
+      ],
+      "initialization": [
+        {
+          "rva": "0x7f7344",
+          "bytes": 4,
+          "hex": "01000000"
+        },
+        {
+          "rva": "0x695770",
+          "bytes": 10,
+          "hex": "b9f44d1501e836b3e6ff"
+        },
+        {
+          "rva": "0x6a86f4",
+          "bytes": 28,
+          "hex": "6057a900506a8600b0a586007057a9009057a900b057a900d057a900"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "scripts/native/client455_sky_day.h",
+      "sha256": "25b81df3193d1abf8a27001206942c54f6f0accaccfc676015e81c89b4c71715"
+    },
+    {
+      "file": "scripts/native/client455_sky_day.inc",
+      "sha256": "4dab2fdcea8981513a57906fab574ffe5bec5c4430897ae4965f11e83980f0e8"
+    },
+    {
+      "file": "scripts/native/client455_map_sky.inc",
+      "sha256": "b527f897c6c6b9ffd5a8f39f3de646657839eb7d385735c5158753aea6076774"
+    },
+    {
+      "file": "scripts/native/client455_sky_material.inc",
+      "sha256": "15d40fdbda7309d5f9ec60a7c6d1c89b81eaf7c13f2920829b9933f952b6886a"
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "a11b2823ce9afd5be2e576f0d16b75fb20a49e236b260b8776e4dc635e7ee927"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before125.lib",
+    "sha256": "9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f"
+  },
+  "payload_changed_members": [
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj"
+  ],
+  "timestamp_only_members": [],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "headers_unchanged": true,
+  "gaps": [
+    "Only night-weight slice of8B1F20 lighting tail restored;sun matrices,exposure/scattering/light colors/day-night fog and other lighting updates remain open",
+    "Enabled special atmosphere prepass8B1840 is absent,not replaced by a success/no-op implementation;full sky2 images are not455visual equivalence",
+    "Ordinary CLevel map selection restored;INS/Planet selection/update owners remain separate gaps",
+    "Finite nearest/even night cases and selected material/layer submissions verified;allRC/NaN/Inf/OOM/lost-reset/recreate/reentry and full renderer/gameplay/client-acceptance remain open",
+    "NeutralB references missing original e_neutrala/trade_bel/trade_bel.r3e;warning retained,not silently substituted"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

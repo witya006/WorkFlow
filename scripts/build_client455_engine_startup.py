@@ -59,8 +59,8 @@ def main():
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -97,6 +97,15 @@ def main():
             raw=raw[:start]+body[:at]+b'\nD3DXMatrixIdentity(&mWorldMatrix455);D3DXMatrixIdentity(&mInverseWorldMatrix455);'+body[at:]+raw[end:]
         elif filename=='level.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_sky_day.h"\n'+raw
+            raw+=b'\n'+(WS/'scripts/native/client455_sky_day.inc').read_bytes()
+            clockAnchor=b'    RF455_AdvanceDayClock();'
+            if raw.count(clockAnchor)!=1:raise ValueError('Ordinary sky day frame boundary')
+            raw=raw.replace(clockAnchor,clockAnchor+b'\n    RF455_UpdateSkyNightWeight();')
+            skyAt=raw.index(b'\t\tstrcat(tempname,"\\\\sky\\\\");');skyFirst=raw.rfind(b'\t\tstrcpy(tempname,state->MapPath);',0,skyAt)
+            skyEnd=raw.index(b'\t\tmSkyTexMemSize+= GetNowTexMemSize();',skyAt)
+            if skyFirst<0:raise ValueError('Ordinary map sky selection boundary')
+            raw=raw[:skyFirst]+(WS/'scripts/native/client455_map_sky.inc').read_bytes()+b'\n'+raw[skyEnd:]
             raw=('#include "'+(WS/'scripts/native/client455_quake.h').as_posix()+'"\r\n').encode()+raw
             first,last=section(raw,b'CLevel::~CLevel()',b'CLevel::~CLevel()')
             raw=raw[:first]+(WS/'scripts/native/client455_level_destroy.inc').read_bytes()+raw[last:]
@@ -110,6 +119,11 @@ def main():
             anchor=b'memset(&stState,0,sizeof(_R3ENGINE_STATE));'
             if raw.count(anchor)!=1:raise ValueError('Core initialization boundary')
             raw=raw.replace(anchor,anchor+b'\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
+        elif filename=='skybox.cpp':
+            from prepare_client455_normal import section
+            raw=b'#include "client455_sky_day.h"\n#include "client455_sky_fade_math.h"\n'+raw
+            first,last=section(raw,b'void CSkyBox::DrawSkyBox(',b'void CSkyBox::DrawSkyBox(')
+            raw=raw[:first]+(WS/'scripts/native/client455_sky_material.inc').read_bytes()+raw[last:]
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
             raw=b'#include "client455_bsp_light.h"\n'+raw
@@ -214,6 +228,7 @@ def main():
     report['bsp_leaf']={'client455_bsp_leaf.inc':sha(WS/'scripts/native/client455_bsp_leaf.inc')}
     report['sky_projection']={'client455_sky_projection.inc':sha(WS/'scripts/native/client455_sky_projection.inc')}
     report['sky_fade']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_fade_math.h','client455_sky_fade.inc']}
+    report['sky_material']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_day.h','client455_sky_day.inc','client455_map_sky.inc','client455_sky_material.inc']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

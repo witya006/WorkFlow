@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Sky material125. Ordinary sky2 selection/legacyfallback,
+actual night-weight slice and flags4/8/10h/20h restored.8fullasm/1696instructions
+equalboth455;60profile/3frame/36material+directunloaded cases,26actualdraws/
+10zeroskips.5realneutralBsky2+5fade+5worldGPUviewed;fade/worldbyteequal124.
+OwnlabvtablecloneAVfixed inobserveronly. NeutralBoriginaltrade_bel missing/1warning.
+Enginea11b2823/onlylevel+skyboxchanged/65byteequal;PEf6185924/entry167ED0/
+unresolved0/ANI-BBX/startupCreate1PASS. Sun/atmosphere/fullM9OPEN.
+[Evidence](research/client455-sky-material.md).
+
 2026-11-09 — Sky fade124. Restored x87 sky fade state, color interpolation
 and alpha packing in ordinary engine r3util;4fullasm/282instructions equal both455.
 90actual frames+27helper cases/3precision modes/exactstate-fog-quad;8demonstrated

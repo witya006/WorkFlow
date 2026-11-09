@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f",
+  "library_sha256": "a11b2823ce9afd5be2e576f0d16b75fb20a49e236b260b8776e4dc635e7ee927",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -318,7 +318,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
-      "sha256": "0944ee741ae2c99e8bc5f688e9f277fd35ab3f3211302b9ccc4d7343eb45de29",
+      "sha256": "c15cc468f559f12ed5dac00f1f2d0271b4b7869693163c395e4ecd02cdff5ef2",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
     },
@@ -369,6 +369,12 @@
       "sha256": "a73c95b477f24c12d826afcca6add17862114aaf84711ddeecc0c9d8d79f21e2",
       "original": "work/client455-port/source/R3Engine/1stclass/core.cpp",
       "original_sha256": "30f384cc288edeaa22566e5d60881bc8267dcc9da005bf3ee0a50c3dbc620b47"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/skybox.cpp",
+      "sha256": "22f969e5110daccd251809eb62e12a1b508958ed0d697be92e85054c9c823417",
+      "original": "work/client455-port/source/R3Engine/1stclass/skybox.cpp",
+      "original_sha256": "724dfbc3b3472cc6577067467cb0935ac64c92a3a401bd8acfd62a19c0a31557"
     }
   ],
   "baseline_library": {
@@ -377,13 +383,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "24f457e2d52c8409678639072d8004695f68bfba93786fd0c4b9cc9ffe776537"
+    "sha256": "78fdebab0a3051172d061c2533f3edf031644875260d6e598ddab8a69e36e3bc"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "4fde2e029ce07a64ae429a07deb4854fb70755c4ac98193125d46db199a404d1"
+    "sha256": "698e8bb089beb88dbd519fb4f6b0795ecdeeb7140f3efaff548316380074672a"
   },
-  "script_sha256": "75595c296bf3599f716b0bd0bf56c77209b64d05e14a5dde316cd8902fb482a6",
+  "script_sha256": "729ea32c9ef8dc7ef3e5a16b28af86ffe098ace29facdc343c886f6bd57776d4",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -418,6 +424,12 @@
   "sky_fade": {
     "client455_sky_fade_math.h": "aba6db72af319380c91e47022e00989ab960f218ad12b976f99bc09e7935801b",
     "client455_sky_fade.inc": "dc06584709e81edb13e5840a8c673440d4c5e68cff7adc4e963836500979dc25"
+  },
+  "sky_material": {
+    "client455_sky_day.h": "25b81df3193d1abf8a27001206942c54f6f0accaccfc676015e81c89b4c71715",
+    "client455_sky_day.inc": "4dab2fdcea8981513a57906fab574ffe5bec5c4430897ae4965f11e83980f0e8",
+    "client455_map_sky.inc": "b527f897c6c6b9ffd5a8f39f3de646657839eb7d385735c5158753aea6076774",
+    "client455_sky_material.inc": "15d40fdbda7309d5f9ec60a7c6d1c89b81eaf7c13f2920829b9933f952b6886a"
   },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",

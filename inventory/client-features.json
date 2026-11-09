@@ -6,9 +6,55 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-SKY-FADE-124",
+      "id": "CLIENT455-SKY-MATERIAL-125",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary sky2 selection/legacyfallback,actual night-weight slice and materialflags;fullatmosphere remains open",
+      "reference": [
+        {
+          "rva": "0x4ea220",
+          "role": "Ordinary map sky2 selection"
+        },
+        {
+          "rva": "0x4b1f20",
+          "role": "Night-weight slice within fulllightingframe"
+        },
+        {
+          "rva": "0x5157e0",
+          "role": "Sky material draw"
+        },
+        {
+          "rva": "0x4e7910",
+          "role": "Ordinary frame caller"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_day.h",
+        "scripts/native/client455_sky_day.inc",
+        "scripts/native/client455_map_sky.inc",
+        "scripts/native/client455_sky_material.inc",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "8fullasm/1696instructions equalboth455,initializerstub/table/defaultchecked;IDA58629015savedclosed/list0.60profile/3frame/36material/directunloaded,26actualdraws/10zeroskips;5actualneutralBsky2+5fade+5worldGPUviewed/fade-worldbyteequal124.Onlylevel+skyboxchanged/65byteequal/headersunchanged;PEf6185924/unresolved0/ANI-BBX/startupCreate1. LabcloneAVfixed inobserveronly,originaltrade_bel missingwarning retained.",
+      "evidence": [
+        "inventory/client455-sky-material-reference.json",
+        "inventory/client455-sky-material-native.json",
+        "inventory/client455-sky-material-visual-review.json",
+        "inventory/client455-sky-material-checkpoint.json",
+        "research/client455-sky-material.md"
+      ],
+      "gaps": [
+        "Only night-weight slice of8B1F20 lighting tail restored;sun matrices,exposure/scattering/light colors/day-night fog and other lighting updates remain open",
+        "Enabled special atmosphere prepass8B1840 is absent,not replaced by a success/no-op implementation;full sky2 images are not455visual equivalence",
+        "Ordinary CLevel map selection restored;INS/Planet selection/update owners remain separate gaps",
+        "Finite nearest/even night cases and selected material/layer submissions verified;allRC/NaN/Inf/OOM/lost-reset/recreate/reentry and full renderer/gameplay/client-acceptance remain open",
+        "NeutralB references missing original e_neutrala/trade_bel/trade_bel.r3e;warning retained,not silently substituted"
+      ]
+    },
+    {
+      "id": "CLIENT455-SKY-FADE-124",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary sky fade state and x87 color/alpha/fog arithmetic restored;full sky/atmosphere remains open",
       "reference": [
         {

@@ -1,0 +1,219 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary sky2/legacy selection,enable state,night-weight slice and sky material flags;fullatmosphere remains open",
+  "script_sha256": "97538e65d077dd89119b59829fbbb72c95035ef334d812ba1d2418aaaa2e6118",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f61859245bea55d93fc2cb28bdf570a7afa4b06142d0bcd81ba6835df18b0b9c",
+    "bytes": 2229248,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "3d9082a38608fc9eb2bd623fac6f99e16b41894b665723b53748be6da3151ec0",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "a11b2823ce9afd5be2e576f0d16b75fb20a49e236b260b8776e4dc635e7ee927"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before125.lib",
+    "sha256": "9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f"
+  },
+  "material": {
+    "profile_cases": 60,
+    "actual_frame_profiles": 3,
+    "material_cases": 36,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "exact_night_bits": true,
+    "dawnEnd_discontinuity": true,
+    "actual_indexed_draws": 26,
+    "zero_alpha_cases": 10,
+    "cleanup_masks": "TFACTOR1C/reset18;20alone does not set alpha stages",
+    "device_view_restored": true,
+    "caller_view_translation_zeroed": true,
+    "direct_unloaded_state": true,
+    "GPU_frames": 5,
+    "actual_neutralB_sky2": true,
+    "distinct_day_frames": 4,
+    "visible_changed_bytes": {
+      "sky2-midnight.bgra": 330481,
+      "sky2-morning.bgra": 429102,
+      "sky2-noon.bgra": 338031,
+      "sky2-evening.bgra": 428172,
+      "sky2-unloaded.bgra": 0
+    },
+    "full_atmosphere": false,
+    "all_FP_inputs": false
+  },
+  "fade": {
+    "frame_cases": 90,
+    "shared_helper_cases": 27,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "rounding": "nearest/even;integer conversion truncates and restoresCW",
+    "active_frames": 60,
+    "idle_frames": 30,
+    "exact_state_and_device_bits": true,
+    "actual_quad_colors": true,
+    "legacy_SSE_alpha_differences": 0,
+    "legacy_SSE_fog_differences": 8,
+    "GPU_frames": 5,
+    "finished_sky_byte_equal": true,
+    "covered_RGB": [
+      32,
+      64,
+      96
+    ],
+    "full_sky_renderer": false,
+    "all_FP_inputs": false
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "world_frames_byte_equal124": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "fade_frames_byte_equal124": [
+    "fade-base.bgra",
+    "fade-covered.bgra",
+    "fade-done.bgra",
+    "fade-middle.bgra",
+    "fade-return.bgra"
+  ],
+  "viewed_GPU_frames": 15,
+  "previous124_gate": {
+    "file": "artifacts/client455-progress/client455-sky-fade-checkpoint-before125.json",
+    "sha256": "c446538df9a271e798afc89faf7cbc8eac3175cf9790403d37f361386b6a3542"
+  },
+  "fresh_evidence": {
+    "sky-material-reference": {
+      "file": "inventory/client455-sky-material-reference.json",
+      "sha256": "4b6d070dcc632d208a214262fd6968b429dfb7fea553680295f35f213e406ff2"
+    },
+    "sky-material-inputs": {
+      "file": "inventory/client455-sky-material-inputs.json",
+      "sha256": "adaf4c691c7665b06f2af591ccea982b1696066e522cbf66d37d44c3a3290723"
+    },
+    "sky-material-native": {
+      "file": "inventory/client455-sky-material-native.json",
+      "sha256": "0bfa45f62a95f3d0bd74863a0bd2d9e1156a8a11af489ce4e980ef3bb3accd29"
+    },
+    "sky-material-visual-review": {
+      "file": "inventory/client455-sky-material-visual-review.json",
+      "sha256": "65b2e1730894695112c87594a3cdcaf1891c8a8864dfcd998590efef0724e0ea"
+    },
+    "sky-fade-native": {
+      "file": "inventory/client455-sky-fade-native.json",
+      "sha256": "00938dcaf4348525d746482cf6c2db5e8d5ecf01089c0874fd13a197c1690bf8"
+    },
+    "sky-fade-visual-review": {
+      "file": "inventory/client455-sky-fade-visual-review.json",
+      "sha256": "d74866127fa03a8b79971fd65de1c9b39980166d5c14b3428ea41155128fc1ab"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "04fe11dc71a52d52cbfffc1ff1fae96ee8d0ea7f8a8b369fe9c5ed14c8d83402"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "24cad707db13e97fff1f17832b312236d536a0feb592dcda074585eb3e6a56db"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "2fe99e545e0f534728f20d925e746af359776b06f313808f301c73704ed4509c"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "3efb81646ae52b5c33da697ea87bb063e87f9df00d0c4a402d5a1db57a108f24"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "559158acfe76b7ac98df1fd2ef2605c608478eeeb41759c57461afa0d7dc2b26"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "3d9082a38608fc9eb2bd623fac6f99e16b41894b665723b53748be6da3151ec0"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "8628c6a2173142b53092a10a2f201bbb57884771a30dc20d6aee5b6b1f5495f0"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "d817fb0f19d364cc9ca1b8b8124d8587df7d0f462996df4a604dd5ca18788939"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "f562c64fa484a708db6620d97623626e718fef6cc0997e5f4cfc7258209b1999"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "80711b33cfa33e0f81e11b782d12f80e11eaca20465e474544c4519b64759c1b"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "e2e287d2636f891516b3c14b3bbfb1095b2bbfae96acc64ff12c535f7b8fa735"
+    }
+  },
+  "full_sky_renderer": false,
+  "full_atmosphere": false,
+  "full_world": false,
+  "gaps": [
+    "Only night-weight slice of8B1F20 lighting tail restored;sun matrices,exposure/scattering/light colors/day-night fog and other lighting updates remain open",
+    "Enabled special atmosphere prepass8B1840 is absent,not replaced by a success/no-op implementation;full sky2 images are not455visual equivalence",
+    "Ordinary CLevel map selection restored;INS/Planet selection/update owners remain separate gaps",
+    "Finite nearest/even night cases and selected material/layer submissions verified;allRC/NaN/Inf/OOM/lost-reset/recreate/reentry and full renderer/gameplay/client-acceptance remain open",
+    "NeutralB references missing original e_neutrala/trade_bel/trade_bel.r3e;warning retained,not silently substituted"
+  ],
+  "historical_suites": "Map2692/projection12/otherunchangedBSP/Character/bulk historical,not rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
