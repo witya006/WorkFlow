@@ -1,5 +1,13 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Sky fade124. Restored x87 sky fade state, color interpolation
+and alpha packing in ordinary engine r3util;4fullasm/282instructions equal both455.
+90actual frames+27helper cases/3precision modes/exactstate-fog-quad;8demonstrated
+legacySSE fog differences.5realBellato fadeGPU+5worldGPU viewed,world byteequal123.
+Onlyr3util.obj changed/66membersbyteequal. Engine9e1b9c67/PE38ba1441/entry167A00/
+unresolved0;freshANI-BBX/startup/Create1PASS. Materials/dayprofile/specialprepass
+and fullsky/M9OPEN. [Evidence](research/client455-sky-fade.md).
+
 2026-11-09 — Sky projection123. Restored ordinary CLevel slot17 wrapper:near2,
 loadedguard/fade,world perspective/ortho restore/frustum;real InitCore flag0/scale5.
 6fullasm/1435instructions equalboth455,IDAsavedclosed/list0.12cases/24actualbinds,

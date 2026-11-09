@@ -6,9 +6,53 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-SKY-PROJECTION-123",
+      "id": "CLIENT455-SKY-FADE-124",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary sky fade state and x87 color/alpha/fog arithmetic restored;full sky/atmosphere remains open",
+      "reference": [
+        {
+          "rva": "0x4b58a0",
+          "role": "SetFadeSky"
+        },
+        {
+          "rva": "0x4b5900",
+          "role": "DrawFadeSKy"
+        },
+        {
+          "rva": "0x4b5780",
+          "role": "GetColorToColorAlpha"
+        },
+        {
+          "rva": "0x4b49b0",
+          "role": "SetFadeFactor"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_fade.inc",
+        "scripts/native/client455_sky_fade_math.h",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "4fullasm/282instructions equalboth455;IDA7f86f1acsavedclosed/list0.90actualframes+27helpercases/3precision/exactstate-fog-quad/independentrationaloracle;8demonstratedoldSSEfogdifferences.5realBellatofadeGPU+5worldGPUviewed,worldbyteequal123;freshANI-BBX/PE38ba1441/unresolved0/startupCreate1.Onlyr3util.objchanged/66byteequal;unchangedheaders/182client20kernel. No159k/broadsuitesrerun.",
+      "evidence": [
+        "inventory/client455-sky-fade-reference.json",
+        "inventory/client455-sky-fade-native.json",
+        "inventory/client455-sky-fade-visual-review.json",
+        "inventory/client455-sky-fade-checkpoint.json",
+        "research/client455-sky-fade.md"
+      ],
+      "gaps": [
+        "Full sky material flags4/8/10h/20h and actual day/night profile remain OPEN;target night coefficient comes from1154E08 in8B1F20,not directly from a guessed fraction",
+        "Special sky/atmosphere prepass8B1840 is gated byBF7344 set by map owners;sun/lensflare/scattering update/render/cleanup not restored;do not substitute a no-op",
+        "Full Draw2DSprite/render-state/lost-device/reset/reentry behavior is not proved by quad color and fog checks",
+        "Finite nearest/even selected inputs under24/53/64bits verified;NaN/Inf/overflow/otherRC modes and all caller states remain unaccepted",
+        "All remaining client-acceptance requirements,M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-SKY-PROJECTION-123",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary CLevel sky wrapper:near2,loadedguard/fade,perspective or orthographic restore/frustum;real state defaults0/5;fullsky/fade/renderer open",
       "reference": [
         {

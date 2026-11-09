@@ -142,6 +142,18 @@ def main():
             raw=b'#include "RTMovie.h"\n#include "client455_movie_state.h"\n#include "client455_rvp_runtime.h"\n#include "r3move.h"\nstatic DWORD stRTMovieFlag=0;\n'+(WS/'scripts/native/client455_movie_state.inc').read_bytes()+b'\n'+(WS/'scripts/native/client455_rvp_engine.inc').read_bytes()
         elif filename=='r3util.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_sky_fade_math.h"\n'+raw
+            first,last=section(raw,b'DWORD GetColorToColorAlpha(',b'DWORD GetColorToColorAlpha(')
+            raw=raw[:first]+b'DWORD GetColorToColorAlpha(DWORD source,DWORD destination,float alpha){return RF455_FadeColor(source,destination,alpha);}\n'+raw[last:]
+            alphaAnchor=b'(DWORD)(alpha*255)'
+            first,last=section(raw,b'void SetFadeFactor(',b'void SetFadeFactor(');body=raw[first:last]
+            if body.count(alphaAnchor)!=1:raise ValueError('Fade factor alpha conversion boundary')
+            raw=raw[:first]+body.replace(alphaAnchor,b'RF455_FadeAlphaByte(alpha)')+raw[last:]
+            first,last=section(raw,b'void SetFadeSky(',b'void SetFadeSky(')
+            # FtoDW remains between the two original functions.
+            raw=raw[:first]+raw[last:]
+            first,last=section(raw,b'BOOL DrawFadeSKy()',b'BOOL DrawFadeSKy()')
+            raw=raw[:first]+(WS/'scripts/native/client455_sky_fade.inc').read_bytes()+raw[last:]
             raw=('#include "'+(WS/'scripts/native/client455_quake.h').as_posix()+'"\r\n').encode()+raw
             first=raw.index(b'static float stQuakeTime;');last,end=section(raw,b'void R3EnvironmentQuake(',b'void R3EnvironmentQuake(')
             raw=raw[:first]+(WS/'scripts/native/client455_quake.inc').read_bytes()+raw[end:]
@@ -201,6 +213,7 @@ def main():
     report['bsp_light']={name:sha(WS/'scripts/native'/name) for name in ['client455_bsp_light.h','client455_bsp_fields.inc','client455_bsp_light.inc']}
     report['bsp_leaf']={'client455_bsp_leaf.inc':sha(WS/'scripts/native/client455_bsp_leaf.inc')}
     report['sky_projection']={'client455_sky_projection.inc':sha(WS/'scripts/native/client455_sky_projection.inc')}
+    report['sky_fade']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_fade_math.h','client455_sky_fade.inc']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

@@ -1,16 +1,17 @@
 # Аудит окружения — 04.11.2026
 
-123 PARTIAL: восстановлен ordinary CLevel sky/projection wrapper:near2,
-loaded guard,fade ивозвратperspective/ortho сfrustum refresh. Initflag0/scale5
-подтверждены.6fullasm/1435instructions равны двум455;IDA saved/closed/list0.
-12cases/24actualD3Dbinds,5настоящихskyGPU+5world/lightGPU просмотрены.
-Loaded sky controls byteequal;world frames byteequal122;maps2692/330,ANI/BBX,
-точная новаяPE startup/window/device/Create1 PASS. Engine67/15derivede826ee1a…;
-ownPE182ecac6…/entry1679A0/182client20kernel/unresolved0. Fullsky/fade/renderer
-иM6/M6F/M7/M9 OPEN. Текущийgate:inventory/client455-sky-projection-checkpoint.json.
-Далее124 — actual sky material/render-state flow иfade.
+124 PARTIAL: восстановлены переходы затемнения неба и арифметика x87.
+4 полные функции / 282 инструкции сверены с двумя455.
+90 кадров состояний +27 проверок общих функций в трёх режимах точности проходят;
+точные значения тумана и цвета quad подтверждены реальным D3D.
+5 кадров неба +5 кадров мира просмотрены; мир побайтно равен123.
+Движок67/15derived: изменён толькоr3util.obj, остальные66 побайтно прежние.
+Новая PE38ba1441…/entry167A00/unresolved0; ANI/BBX и startup/Create1 PASS.
+Материалы неба, полная атмосфера и M6/M6F/M7/M9 остаются OPEN.
+Текущий gate: inventory/client455-sky-fade-checkpoint.json.
+Далее125 — фактическое состояние дня/ночи, его владельцы и материалы неба.
 
-[Доказательства123](../research/client455-sky-projection.md).
+[Доказательства124](../research/client455-sky-fade.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

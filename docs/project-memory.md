@@ -2,11 +2,11 @@
 
 Обновлено 2026-11-09.
 
-123 PARTIAL M6: восстановлен ordinary sky projection wrapper;fullsky/renderer/M9 OPEN.
-Current gate: inventory/client455-sky-projection-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_projection.py.
-Подробности research/client455-sky-projection.md. Прежние память/следующие шаги:
-research/project-memory-before123.md, research/next-steps-before123.md.
+124 PARTIAL M6: восстановлены sky fade state/x87/color/alpha в ordinaryr3util.
+Current gate: inventory/client455-sky-fade-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_fade.py.
+Доказательства: research/client455-sky-fade.md.
+Предыдущая память и шаги: research/project-memory-before124.md и next-steps-before124.md.
 
 ## Цель и ограничения
 
@@ -23,7 +23,45 @@ Primary VS2026 x86;VC6 fallback. Native/GPU jobs последовательно,
 Перед rebuild сохранять exact engine/PE/reports. Ignored файл не backup.
 Не повторять159k/старые broad suites без причины. Пользователю — коротко по-русски.
 
-## Доказательства123
+## Текущие доказательства124
+
+4 полные функции/282instructions equalbothpins: SetFadeSky8B58A0,
+DrawFadeSKy8B5900,GetColorToColorAlpha8B5780,SetFadeFactor8B49B0.
+Read-only literals/calls/ranges checked;rawsky-fade124-reference/session.json.
+OwnedIDA7f86f1ac savedclosed/list0. ВходныеEXE не запускались.
+
+Engine9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f;
+67/15derived,толькоr3util.obj payloadchanged,66byteequal.
+Headers/182client/20kernel неизменны,normalrelink послеfreshANI2/BBX smoke.
+PE38ba1441b77774edd02da237c83e99dac5a62181c1c99e756f156c498e8f0047,
+2227200bytes,x86/base400000/entry167A00;WinMainB98B0/afterCreateB9A24,unresolved0.
+Previous123exact engine/PE/reports *before124* сохранены.
+
+work/m9/d42443cf/sky-fade-001:90actualstateframes(60active/30idle)+27sharedhelper
+cases;PC24/53/64 nearest/even,integertruncationCWrestore,exactstate/fog/quad.
+Independent rational oracle rounds targetoperations/spills. 8oldSSEfog differences;
+alpha27cases noold/newdifference,не выдумывать её. 5realBellatoskyGPUviewed:
+base/middle/covered/return/done;coveredRGB96/64/32,donebyteequalbase,warnings0.
+InitialCW127(PC24). Earlyframealpha0 stilldraws/fog;nextcallidle returnsTRUE.
+Lab prototype missing corrected;alpha-difference assumption removed afterevidence;
+verifier-only fixes reusedsuccessfulnative (--verify-existing),productionnotweakened.
+
+work/m9/dbc48543/world-frame-001:76queue/16clock±1/rayhit/16FXlightframes/
+3ValidateDeviceS_OK,5GPUviewedandbyteequal123,6existingwarnings.
+ExactPEstartup sound1/window/device/existingCreate1/contractsPASS;handledfirstchance
+40080201/E06D7363/406D1388 recorded. Maps2692/projection12/sky123/bulk historical,
+not rerun because onlyr3util changed.10GPUviewedtotal124;no livejobs/IDAsessions.
+
+Next125:materialflags4/8/10h/20h requireactualdayprofile/enable/owners.
+Exploratorypcode8B1240 returns1154DF4;nightweight+20=1154E08 from8B1F20.
+ExistingRF455_AdvanceDayClock restores ONLY256byteprefix,notlightingtail.
+BF7344/getter8B12B0 gates8B1840 specialprepass/sun/lensflare/scattering.
+Theseexploratorynewfunctions notfullasmpinproofyet. Verifywriters/ordering,
+restore actualstate andconsumers;donotfakefractionprovider/no-op prepass.
+Fullsky/unloadedcleanup/texturedfadeGPU/allRC/NaN/lostreset andclientgapsOPEN.
+Currentgoalturnclassifiedprogress;prioratlasexplanationconversationonly.
+
+## Исторические доказательства123 (gate заменён124)
 
 Pin455 x86/base400000:
 primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;

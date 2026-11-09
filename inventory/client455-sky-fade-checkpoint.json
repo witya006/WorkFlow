@@ -1,0 +1,171 @@
+{
+  "status": "PARTIAL",
+  "scope": "Sky fade state transitions and x87 numeric/color/alpha contract;full sky/atmosphere remains open",
+  "script_sha256": "f71439cb2f0b5447590564e6caddac868470e1b3f67b6e7b56ca2828162af1d1",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "38ba1441b77774edd02da237c83e99dac5a62181c1c99e756f156c498e8f0047",
+    "bytes": 2227200,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167a00",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "b23a651f89fa5b43da1b3a77551020136e15686c45e2f3a728f1b1ccac57f757",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before124.lib",
+    "sha256": "e826ee1aaf9bb6b6f1f10a3470c411357f85eacf846b2436e9fa1aac1fe279cd"
+  },
+  "fade": {
+    "frame_cases": 90,
+    "shared_helper_cases": 27,
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "rounding": "nearest/even;integer conversion truncates and restoresCW",
+    "active_frames": 60,
+    "idle_frames": 30,
+    "exact_state_and_device_bits": true,
+    "actual_quad_colors": true,
+    "legacy_SSE_alpha_differences": 0,
+    "legacy_SSE_fog_differences": 8,
+    "GPU_frames": 5,
+    "finished_sky_byte_equal": true,
+    "covered_RGB": [
+      32,
+      64,
+      96
+    ],
+    "full_sky_renderer": false,
+    "all_FP_inputs": false
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "world_frames_byte_equal123": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "viewed_GPU_frames": 10,
+  "previous123_gate": {
+    "file": "artifacts/client455-progress/client455-sky-projection-checkpoint-before124.json",
+    "sha256": "a61495b741d0ba08de8fcd10f4a1d0c0dd0938d96e25bc05ba5a32956d90377b"
+  },
+  "fresh_evidence": {
+    "sky-fade-reference": {
+      "file": "inventory/client455-sky-fade-reference.json",
+      "sha256": "538839b0402eea4f591046cee2a8b076175f34a31c1cae70ad12fe15df1ce952"
+    },
+    "sky-fade-native": {
+      "file": "inventory/client455-sky-fade-native.json",
+      "sha256": "f95fea75142324f3a50b483170d841a09288ed3f17ee5d5b7a6a610cacd9368a"
+    },
+    "sky-fade-visual-review": {
+      "file": "inventory/client455-sky-fade-visual-review.json",
+      "sha256": "8960a4d6911a6cbb9dcc93a3f41828cf5a1cd3f72522001bbf1e8b68af8d5359"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "2974f9336dcd3a0f3f46eba5b305dd280ed300139e2e1813ae47f5be51becc41"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "892c82a90b422c4d422a4f29dcb2e1a925f75728dedd0d5cc2537d5b9f0c28c3"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "89c0ea4433a193943c395b0dc7f93b88dce7af088c2747752327798c39def5af"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "6272cafb8f126247f2b024a838bec94686a1f89f410743a97871d534a4bf3f51"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "f7062672ce229b4aed0034c52263c977b3aab0ca1eac76ea354154dda4581f05"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "b23a651f89fa5b43da1b3a77551020136e15686c45e2f3a728f1b1ccac57f757"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "6fdcf1cfa913f35076b2ddd87164c808d645841157e6d43072ddebb46bcd4c7e"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "0030c02eb769f104c560f3909864df8026b10b2c329a952a415b774aee577d88"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "5f094cbc036e7093ea5880cff0a1e840aff4905b8568ae13d6f463189c8eb438"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "d49c8b1e5117078c28a73c37a41dcc1a170283bca985e074f409d54773ff8fac"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "a9cd1d21653fafea6ec41db238683d10c7861052670de027abb1ff8324a3204c"
+    }
+  },
+  "full_sky_renderer": false,
+  "full_atmosphere": false,
+  "full_fade": false,
+  "full_world": false,
+  "gaps": [
+    "Full sky material flags4/8/10h/20h and actual day/night profile remain OPEN;target night coefficient comes from1154E08 in8B1F20,not directly from a guessed fraction",
+    "Special sky/atmosphere prepass8B1840 is gated byBF7344 set by map owners;sun/lensflare/scattering update/render/cleanup not restored;do not substitute a no-op",
+    "Full Draw2DSprite/render-state/lost-device/reset/reentry behavior is not proved by quad color and fog checks",
+    "Finite nearest/even selected inputs under24/53/64bits verified;NaN/Inf/overflow/otherRC modes and all caller states remain unaccepted",
+    "All remaining client-acceptance requirements,M6/M6F/M7/M9 OPEN"
+  ],
+  "historical_suites": "Map2692/projection12/loadedsky123/BSPleaf140/geometry33/quake/texture/Character/bulk historical,not rerun without new cause",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

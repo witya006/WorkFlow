@@ -1,0 +1,398 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Sky fade state transitions and x87 numeric/color/alpha contract;full sky/atmosphere remains open",
+  "script_sha256": "afb4ee46736464c840ef4a66292ed65a89cd10c7d728efe75e03f13b4940c4f9",
+  "raw": {
+    "file": "artifacts/client455-progress/sky-fade124-reference.json",
+    "sha256": "0a7ab10e59bbed692a255042d21117549f019490a7cadc13d33c36e173becca9"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/sky-fade124-session.json",
+    "sha256": "03ba7cca2af4eba391bb0778b2d18f433e610c91237ee9919e50fa6ae27c15ff"
+  },
+  "full_assembly": 4,
+  "instructions": 282,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4b49b0",
+          "bytes": 143,
+          "sha256": "07349d024de2d8b93861a54fe3ba877c3b26fc84916bfc189d77b08706b16ba8"
+        },
+        {
+          "rva": "0x4b5780",
+          "bytes": 286,
+          "sha256": "758f26804580786f39697ec24da9c9b8c6f8fc27b10bdde61e3e5cdd52ad0be1"
+        },
+        {
+          "rva": "0x4b58a0",
+          "bytes": 65,
+          "sha256": "392206a87dd7fb51fd44c831b404998277c0a75b64c4dfcb9c7d451193968dc2"
+        },
+        {
+          "rva": "0x4b5900",
+          "bytes": 483,
+          "sha256": "e86e42ee7bb4234cdae3df22c14b8f365ab4aebd91d7e35ad7abfbd68b5afbbf"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4b58b5",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b49fa",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a06",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a10",
+          "target_rva": "0x4d1200"
+        },
+        {
+          "rva": "0x4b4a1d",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a29",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a33",
+          "target_rva": "0x4d11a0"
+        },
+        {
+          "rva": "0x4b5925",
+          "target_rva": "0x4b3e30"
+        },
+        {
+          "rva": "0x4b5949",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5994",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5a0c",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5a2a",
+          "target_rva": "0x4b49b0"
+        },
+        {
+          "rva": "0x4b5a43",
+          "target_rva": "0x4ed730"
+        },
+        {
+          "rva": "0x4b5a49",
+          "target_rva": "0x4b5780"
+        },
+        {
+          "rva": "0x4b5a53",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4b5a9e",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4b5abd",
+          "target_rva": "0x4c49e0"
+        }
+      ],
+      "numeric_literals": [
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        },
+        {
+          "rva": "0x6b0060",
+          "bytes": 8,
+          "hex": "0000000000001840"
+        },
+        {
+          "rva": "0x6da944",
+          "bytes": 4,
+          "hex": "9a99193f"
+        },
+        {
+          "rva": "0x736b58",
+          "bytes": 8,
+          "hex": "000000e0e2361a3f"
+        },
+        {
+          "rva": "0x736b78",
+          "bytes": 4,
+          "hex": "95bfd633"
+        },
+        {
+          "rva": "0x736b7c",
+          "bytes": 4,
+          "hex": "28a019bf"
+        },
+        {
+          "rva": "0x736b80",
+          "bytes": 8,
+          "hex": "0000000000c08240"
+        },
+        {
+          "rva": "0x736b88",
+          "bytes": 4,
+          "hex": "28a0193f"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4b49b0",
+          "bytes": 143,
+          "sha256": "07349d024de2d8b93861a54fe3ba877c3b26fc84916bfc189d77b08706b16ba8"
+        },
+        {
+          "rva": "0x4b5780",
+          "bytes": 286,
+          "sha256": "758f26804580786f39697ec24da9c9b8c6f8fc27b10bdde61e3e5cdd52ad0be1"
+        },
+        {
+          "rva": "0x4b58a0",
+          "bytes": 65,
+          "sha256": "392206a87dd7fb51fd44c831b404998277c0a75b64c4dfcb9c7d451193968dc2"
+        },
+        {
+          "rva": "0x4b5900",
+          "bytes": 483,
+          "sha256": "e86e42ee7bb4234cdae3df22c14b8f365ab4aebd91d7e35ad7abfbd68b5afbbf"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4b58b5",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b49fa",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a06",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a10",
+          "target_rva": "0x4d1200"
+        },
+        {
+          "rva": "0x4b4a1d",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a29",
+          "target_rva": "0x472b70"
+        },
+        {
+          "rva": "0x4b4a33",
+          "target_rva": "0x4d11a0"
+        },
+        {
+          "rva": "0x4b5925",
+          "target_rva": "0x4b3e30"
+        },
+        {
+          "rva": "0x4b5949",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5994",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5a0c",
+          "target_rva": "0x4b3e50"
+        },
+        {
+          "rva": "0x4b5a2a",
+          "target_rva": "0x4b49b0"
+        },
+        {
+          "rva": "0x4b5a43",
+          "target_rva": "0x4ed730"
+        },
+        {
+          "rva": "0x4b5a49",
+          "target_rva": "0x4b5780"
+        },
+        {
+          "rva": "0x4b5a53",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4b5a9e",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4b5abd",
+          "target_rva": "0x4c49e0"
+        }
+      ],
+      "numeric_literals": [
+        {
+          "rva": "0x6aa3e8",
+          "bytes": 8,
+          "hex": "0000000000e06f40"
+        },
+        {
+          "rva": "0x6b0060",
+          "bytes": 8,
+          "hex": "0000000000001840"
+        },
+        {
+          "rva": "0x6da944",
+          "bytes": 4,
+          "hex": "9a99193f"
+        },
+        {
+          "rva": "0x736b58",
+          "bytes": 8,
+          "hex": "000000e0e2361a3f"
+        },
+        {
+          "rva": "0x736b78",
+          "bytes": 4,
+          "hex": "95bfd633"
+        },
+        {
+          "rva": "0x736b7c",
+          "bytes": 4,
+          "hex": "28a019bf"
+        },
+        {
+          "rva": "0x736b80",
+          "bytes": 8,
+          "hex": "0000000000c08240"
+        },
+        {
+          "rva": "0x736b88",
+          "bytes": 4,
+          "hex": "28a0193f"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "scripts/native/client455_sky_fade_math.h",
+      "sha256": "aba6db72af319380c91e47022e00989ab960f218ad12b976f99bc09e7935801b"
+    },
+    {
+      "file": "scripts/native/client455_sky_fade.inc",
+      "sha256": "dc06584709e81edb13e5840a8c673440d4c5e68cff7adc4e963836500979dc25"
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9e1b9c677ee4d9fe62f01e3186a3a481489950d3afccd02e1c83561febf7fb9f"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before124.lib",
+    "sha256": "e826ee1aaf9bb6b6f1f10a3470c411357f85eacf846b2436e9fa1aac1fe279cd"
+  },
+  "payload_changed_members": [
+    "R3Engine455Startup.dir\\Release\\r3util.obj"
+  ],
+  "timestamp_only_members": [],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "gaps": [
+    "Full sky material flags4/8/10h/20h and actual day/night profile remain OPEN;target night coefficient comes from1154E08 in8B1F20,not directly from a guessed fraction",
+    "Special sky/atmosphere prepass8B1840 is gated byBF7344 set by map owners;sun/lensflare/scattering update/render/cleanup not restored;do not substitute a no-op",
+    "Full Draw2DSprite/render-state/lost-device/reset/reentry behavior is not proved by quad color and fog checks",
+    "Finite nearest/even selected inputs under24/53/64bits verified;NaN/Inf/overflow/otherRC modes and all caller states remain unaccepted",
+    "All remaining client-acceptance requirements,M6/M6F/M7/M9 OPEN"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
