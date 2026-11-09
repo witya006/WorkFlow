@@ -27,6 +27,20 @@ def copy_character_shaders(run):
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(original, target)
         records.append(dict(file=target.relative_to(WS).as_posix(), sha256=row['sha256']))
+    return records+copy_sky_resources(run)
+
+
+def copy_sky_resources(run):
+    """Device restoration now owns actual455 atmosphere resources as well."""
+    reference=json.loads((WS/'inventory/client455-sky-atmosphere-inputs.json').read_text())
+    records=[]
+    for row in reference['inputs']:
+        source=WS/row['file']
+        if hashlib.sha256(source.read_bytes()).hexdigest()!=row['sha256']:
+            raise ValueError('Changed pinned sky resource')
+        target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(source,target)
+        records.append(dict(file=target.relative_to(WS).as_posix(),sha256=row['sha256'],original=row['original']))
     return records
 
 

@@ -11,6 +11,8 @@ def main():
         source=Path(match[1]);sources.append({'file':source.relative_to(WS).as_posix(),'sha256':sha(source)})
     if len(sources)!=67:raise ValueError('Base engine source list changed')
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
+    generationFile=root/'generated-source-hashes.json'
+    generated=json.loads(generationFile.read_text()) if generationFile.exists() else {}
     from client455_particle_port import headers,particle_source,entity_source
     particleHeaders=headers(base,root,previous)
     coreInput=base/'source/R3Engine/1stclass/core.h';coreHeader=root/'include/core455.h'
@@ -59,8 +61,8 @@ def main():
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -97,11 +99,16 @@ def main():
             raw=raw[:start]+body[:at]+b'\nD3DXMatrixIdentity(&mWorldMatrix455);D3DXMatrixIdentity(&mInverseWorldMatrix455);'+body[at:]+raw[end:]
         elif filename=='level.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_sky_atmosphere.h"\n'+raw
+            raw+=b'\n'+(WS/'scripts/native/client455_sky_atmosphere.inc').read_bytes()
             raw=b'#include "client455_sky_day.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_sky_day.inc').read_bytes()
             clockAnchor=b'    RF455_AdvanceDayClock();'
             if raw.count(clockAnchor)!=1:raise ValueError('Ordinary sky day frame boundary')
-            raw=raw.replace(clockAnchor,clockAnchor+b'\n    RF455_UpdateSkyNightWeight();')
+            raw=raw.replace(clockAnchor,clockAnchor+b'\n    RF455_UpdateSkyNightWeight();\n    RF455_UpdateSunValues();')
+            loadFirst,loadLast=section(raw,b'void CLevel::LoadLevel(',b'void CLevel::LoadLevel(');loadBody=raw[loadFirst:loadLast]
+            if loadBody.count(b'\tfclose(fp);')!=1:raise ValueError('Map scene flags reset boundary')
+            raw=raw[:loadFirst]+loadBody.replace(b'\tfclose(fp);',b'\tfclose(fp);\n    state->mEnvironmentSceneFlags=0;')+raw[loadLast:]
             skyAt=raw.index(b'\t\tstrcat(tempname,"\\\\sky\\\\");');skyFirst=raw.rfind(b'\t\tstrcpy(tempname,state->MapPath);',0,skyAt)
             skyEnd=raw.index(b'\t\tmSkyTexMemSize+= GetNowTexMemSize();',skyAt)
             if skyFirst<0:raise ValueError('Ordinary map sky selection boundary')
@@ -121,11 +128,26 @@ def main():
             raw=raw.replace(anchor,anchor+b'\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
         elif filename=='skybox.cpp':
             from prepare_client455_normal import section
-            raw=b'#include "client455_sky_day.h"\n#include "client455_sky_fade_math.h"\n'+raw
+            raw=b'#include "client455_sky_day.h"\n#include "client455_sky_fade_math.h"\n#include "client455_sky_atmosphere.h"\n'+raw
             first,last=section(raw,b'void CSkyBox::DrawSkyBox(',b'void CSkyBox::DrawSkyBox(')
             raw=raw[:first]+(WS/'scripts/native/client455_sky_material.inc').read_bytes()+raw[last:]
+        elif filename=='r3vertexbuffer.cpp':
+            raw+=b'''\n//4558C64F0:prepass binding changes the declaration without clearing its shader.
+void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration9* declaration){
+    auto* device=GetD3dDevice();
+    if(vb!=stOldVB){device->SetStreamSource(0,static_cast<IDirect3DVertexBuffer9*>(vb),0,36);stOldVB=static_cast<BYTE*>(vb);}
+    if(ib!=stOldIB){device->SetIndices(static_cast<IDirect3DIndexBuffer9*>(ib));stOldIB=static_cast<BYTE*>(ib);}
+    device->SetVertexDeclaration(declaration);
+}
+'''
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_sky_atmosphere.h"\n'+raw
+            first,last=section(raw,b'HRESULT D3D_R3RestoreDevice()',b'HRESULT D3D_R3RestoreDevice()');body=raw[first:last];anchor=b'\tInitFullScreenEffect();'
+            if body.count(anchor)!=1:raise ValueError('Sky resources restore boundary')
+            raw=raw[:first]+body.replace(anchor,anchor+b'\n    RF455_CreateSkyResources();')+raw[last:]
+            first,last=section(raw,b'HRESULT D3D_R3InvalidateDevice()',b'HRESULT D3D_R3InvalidateDevice()');body=raw[first:last];at=body.index(b'{')+1
+            raw=raw[:first]+body[:at]+b'\n    RF455_ReleaseSkyResources();'+body[at:]+raw[last:]
             raw=b'#include "client455_bsp_light.h"\n'+raw
             anchor=b'\tstPd3dDevice=pd3dDevice;'
             if raw.count(anchor)!=1:raise ValueError('BSP light declaration device init boundary')
@@ -197,8 +219,10 @@ def main():
             start,end=section(raw,b'void CAniCamera::SetNowFrame(',b'void CAniCamera::SetNowFrame(')
             raw=raw[:start]+b'void CAniCamera::SetNowFrame(DWORD seconds){SetNowFrame(float(seconds));}\r\nvoid CAniCamera::SetNowFrame(float seconds){mStartTick=float((double(R3GetTime())-seconds)-double(mPlayStartFrame)/30.0);}\r\n'+raw[end:]
         target=root/'source'/filename;target.parent.mkdir(parents=True,exist_ok=True)
-        if target.exists() and target.read_bytes()!=raw and sha(target)!=old.get(target.relative_to(WS).as_posix()):raise ValueError('Preserving changed derived source')
+        key=target.relative_to(WS).as_posix()
+        if target.exists() and target.read_bytes()!=raw and sha(target) not in {old.get(key),generated.get(key)}:raise ValueError('Preserving changed derived source')
         if not target.exists() or target.read_bytes()!=raw:target.write_bytes(raw)
+        generated[key]=sha(target);generationFile.write_text(json.dumps(generated,indent=2)+'\n')
         derived.append({'file':target.relative_to(WS).as_posix(),'sha256':sha(target),'original':source.relative_to(WS).as_posix(),'original_sha256':sha(source)})
         cmakeText=cmakeText.replace(source.as_posix(),target.as_posix())
     cmakeText=cmakeText.replace('R3Engine455','R3Engine455Startup')
@@ -229,6 +253,7 @@ def main():
     report['sky_projection']={'client455_sky_projection.inc':sha(WS/'scripts/native/client455_sky_projection.inc')}
     report['sky_fade']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_fade_math.h','client455_sky_fade.inc']}
     report['sky_material']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_day.h','client455_sky_day.inc','client455_map_sky.inc','client455_sky_material.inc']}
+    report['sky_atmosphere']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_atmosphere.h','client455_sky_atmosphere.inc']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

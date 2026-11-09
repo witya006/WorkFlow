@@ -33,6 +33,7 @@ static int run125(){
     {
         phase("before-bellato125");CCamera camera;g_pCamera=&camera;CLand land;check(land.Create()!=0,"land");char path[]=".\\Map\\bellato\\bellato.bsp";check(land.LoadLevel(path)!=0,"Bellato");phase("bellato-loaded125");auto& level=*land.GetLevel();auto& sky=*level.mSkyBox;check(sky.IsLoaded455()&&!RF455_GetSkyDayEnabled(),"actual legacy sky fallback disables day updates");auto& entity=sky.*access(SkyEntity125{});auto& count=sky.*access(SkyCount125{});auto& sort=sky.*access(SkySort125{});const int savedCount=count;const short first=sort[0];check(savedCount>0,"actual sky groups");const int selected=sort[0];const short mtl=entity.GetMatGroup()[selected].MtlId;check(mtl>=0,"actual material");auto& mat=entity.mMat[mtl];const DWORD oldFlag=mat.m_dwFlag;count=1;
         state->mFov=.6f;state->mAsfectRatio=4.f/3;state->mNear=17;state->mFar=6000;D3DXMatrixIdentity(&state->mMatView);D3DXMatrixPerspectiveFovLH(&state->mMatProj,state->mFov,state->mAsfectRatio,state->mNear,state->mFar);D3DXMatrixInverse(&state->mInvMatView,nullptr,&state->mMatView);D3DXMatrixMultiply(&state->mMatViewProj,&state->mMatView,&state->mMatProj);R3SetTime(.5f);R3SetLoopTime(1.f/30);state->mFogColor=0xff2468ac;state->mIsFog=FALSE;state->mIsNoFogSky=FALSE;
+        state->mEnvironmentSceneFlags=5; //Isolate materials:both atmospheric passes suppressed.
         Hook125 hook(d);
         for(DWORD millis:{43200000u,23400000u,0u}){
             hook.pause();tick125=millis;RF455_SetSkyDayEnabled(1);D3DXMATRIX identity;D3DXMatrixIdentity(&identity);level.SetViewMatrix(&identity);level.FrameMove();std::fprintf(out,"{\"kind\":\"frame_profile\",\"cw\":%u,\"day\":%u,\"night\":%u}\n",cw125(),bits125(RF455_GetDayFraction()),bits125(RF455_GetSkyNightWeight()));hook.resume();
@@ -50,4 +51,6 @@ static int run125(){
     }
     RF455_ClockTickSource=provider;std::fclose(out);g_MainApp.ReleaseR3D3D();ReleaseR3Engine();FILE* result=std::fopen("result.json","wb");check(result!=nullptr,"result");std::fprintf(result,"{\"status\":\"PASS\",\"profile_cases\":%u,\"material_cases\":%u,\"precision_modes\":3,\"actual_frame_profiles\":3,\"GPU_frames\":5,\"actual_neutralB_sky2\":true,\"Bellato_fallback\":true,\"warnings\":%u,\"full_atmosphere\":false}\n",profiles,materials,warnings);std::fclose(result);return 0;
 }
+#ifndef RF455_SKY_MATERIAL_NO_MAIN
 int main(){try{return run125();}catch(const std::exception& e){std::fprintf(stderr,"sky-material125:%s\n",e.what());return 1;}}
+#endif

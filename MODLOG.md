@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Atmosphere126. Actual prepass/resources/Sun scalar update integrated
+in ordinary client.16fullasm/2029instructions/19ranges equal both455;positiveCFG
+coverage includes lowerchunks missed byheadquery.16prepass branches/72Sun boundary
+cases/full4225vertex8192triangle buffers/shader612byteequal;20GPUviewed.
+Material/fade/world/Create1PASS,world-fadebyteequal125. Engine744733c2/5payload
+changed/62byteequal/headersunchanged;PE4dd76810/entry16A440/unresolved0.
+Full lighting/fog/FP-CRT/reset andM9OPEN. Originalmissingtrade_bel warningretained.
+[Evidence](research/client455-sky-atmosphere.md).
+
 2026-11-09 — Sky material125. Ordinary sky2 selection/legacyfallback,
 actual night-weight slice and flags4/8/10h/20h restored.8fullasm/1696instructions
 equalboth455;60profile/3frame/36material+directunloaded cases,26actualdraws/

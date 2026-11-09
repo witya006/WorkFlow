@@ -17,8 +17,7 @@ void CSkyBox::DrawSkyBox(void* view_matrix){
         device->SetTransform(D3DTS_VIEW,static_cast<const D3DMATRIX*>(view_matrix));
         return;
     }
-    // The enabled special atmosphere prepass8B1840 is still an explicit gap.
-    // No placeholder prepass or success result is substituted for it here.
+    if(RF455_GetSkyDayEnabled())RF455_DrawSkyAtmosphere();
     auto* view=static_cast<D3DMATRIX*>(view_matrix);D3DMATRIX saved;
     memcpy(&saved,view,sizeof(saved));view->_41=view->_42=view->_43=0;
     device->SetTransform(D3DTS_VIEW,view);

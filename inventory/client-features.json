@@ -6,9 +6,66 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-SKY-MATERIAL-125",
+      "id": "CLIENT455-SKY-ATMOSPHERE-126",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary sky atmosphere prepass/resources and selected Sun scalar update",
+      "reference": [
+        {
+          "rva": "0x4b1840",
+          "role": "Actual atmosphere prepass"
+        },
+        {
+          "rva": "0x501450",
+          "role": "Actual dome geometry"
+        },
+        {
+          "rva": "0x500da0",
+          "role": "Sun draw"
+        },
+        {
+          "rva": "0x4b1f20",
+          "role": "Selected Sun scalar updates within full lighting chain"
+        },
+        {
+          "rva": "0x4b1260",
+          "role": "Device-owned sky resource creation"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_atmosphere.h",
+        "scripts/native/client455_sky_atmosphere.inc",
+        "scripts/native/client455_sky_material.inc",
+        "scripts/native/client455_weather.cpp",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "16fullasm/2029instructions/19ranges equal both455,allpositiveCFGblockstarts covered including lower function chunks;IDA d09e1f5b savedclosed/list0.16prepass branches/72Sun boundary cases/5live profiles/complete4225vertex and8192triangle geometry/shader612byte equal;20GPUviewed. Material60profile/3frame/36case/unloaded;world andfade pixels equal125;ANI-BBX/startup/Create1PASS.5engine payload changes/62byteequal/sharedheadersunchanged;PE4dd76810/entry16A440/unresolved0.",
+      "evidence": [
+        "inventory/client455-sky-atmosphere-reference.json",
+        "inventory/client455-sky-atmosphere-inputs.json",
+        "inventory/client455-sky-atmosphere-native.json",
+        "inventory/client455-sky-atmosphere-visual-review.json",
+        "inventory/client455-sky-atmosphere-checkpoint.json",
+        "research/client455-sky-atmosphere.md"
+      ],
+      "gaps": [
+        "Only selected atmosphere/Sun update restored;remaining8B1F20 light colors,exposure globals,day/night fog,light position and lens flare remain open",
+        "Scattering parameters use confirmed initial values and day transition;indirect console/file parameter writers and dynamic day/night Mie controls remain open",
+        "SunColor uses modern CRT transcendental operations;full x87/CRT pow/cos/exp and allFP/RC parity is not accepted",
+        "Selected Sun helper uses correct36byte target declaration;general legacy vertex helpers and other renderer consumers remain separate work",
+        "Resource creation/release/recreate and missing shader selected paths checked;full lost/reset/OOM/reentry/capability changes remain open",
+        "Own GPU readbacks are not running reference455 visual equivalence;INS/Planet/full world/stages/auth/gameplay/Character/fullclient acceptance remain open",
+        "Missing original e_neutrala/trade_bel/trade_bel.r3e warning retained without substitution"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-SKY-MATERIAL-125",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary sky2 selection/legacyfallback,actual night-weight slice and materialflags;fullatmosphere remains open",
       "reference": [
         {
@@ -49,7 +106,8 @@
         "Ordinary CLevel map selection restored;INS/Planet selection/update owners remain separate gaps",
         "Finite nearest/even night cases and selected material/layer submissions verified;allRC/NaN/Inf/OOM/lost-reset/recreate/reentry and full renderer/gameplay/client-acceptance remain open",
         "NeutralB references missing original e_neutrala/trade_bel/trade_bel.r3e;warning retained,not silently substituted"
-      ]
+      ],
+      "superseded_by": "CLIENT455-SKY-ATMOSPHERE-126"
     },
     {
       "id": "CLIENT455-SKY-FADE-124",

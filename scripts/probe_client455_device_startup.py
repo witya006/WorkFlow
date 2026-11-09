@@ -7,7 +7,7 @@ from client455_normal_link_evidence import validate_normal_link
 from audit_client455_own_entry import validated_entry
 from client455_launcher_fixture import stage_launcher
 from client455_tcp_fixture import TcpAcceptanceFixture
-from client455_runtime_inputs import copy_tagged_sound_providers
+from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def symbol(mapping,name):
@@ -32,6 +32,7 @@ def main():
         original=client/name;copy=run/name
         if not original.is_file():raise ValueError('Missing actual startup resource:'+name)
         copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+    inputs+=copy_sky_resources(run)
     if args.after_create:
         for name in ['SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})

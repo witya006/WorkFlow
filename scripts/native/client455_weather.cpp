@@ -25,6 +25,9 @@ bool RF455_ReadExtMaterial(FILE* file,RF455_ExtMaterial* material) {
 
 void RF455_ReadWeatherTokens(FILE* file,char* token) {
     _R3ENGINE_STATE* state=GetR3State();
+    if (!strcmp(token,"*no_sun")) state->mEnvironmentSceneFlags|=1;
+    if (!strcmp(token,"*no_sky_color")) state->mEnvironmentSceneFlags|=4;
+    if (!strcmp(token,"*use_fog_fog2")) state->mEnvironmentSceneFlags|=2;
     if (!strcmp(token,"*ENVIRONMENT")) { fscanf(file,"%s",token); strcpy(state->mEnvEntityNames[0],token); }
     if (!strcmp(token,"*ENVIRONMENT_ID")) { fscanf(file,"%s",token); state->mEnvIDs[0]=(DWORD)atoi(token); }
     if (!strcmp(token,"*ENVIRONMENT2")) { fscanf(file,"%s",token); strcpy(state->mEnvEntityNames[1],token); }

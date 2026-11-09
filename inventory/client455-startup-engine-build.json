@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "a11b2823ce9afd5be2e576f0d16b75fb20a49e236b260b8776e4dc635e7ee927",
+  "library_sha256": "744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -276,7 +276,7 @@
     },
     {
       "file": "scripts/native/client455_weather.cpp",
-      "sha256": "bae812e92b8fbe5f2b753c85ce08c504812f71d18e9d7e7807d1821ee2ddf5d8"
+      "sha256": "21312db9227ce55937fb67899dce456876f102b224571b83299dd3292b836170"
     }
   ],
   "derived_sources": [
@@ -318,13 +318,13 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
-      "sha256": "c15cc468f559f12ed5dac00f1f2d0271b4b7869693163c395e4ecd02cdff5ef2",
+      "sha256": "6b663c4be205765d2b583026642eb6346a1d8e706c017e01c707d5adc54bd3e3",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "8b02db45a421f62549214e440981956c8236e19ace73b10db9a55fa06e4fcb32",
+      "sha256": "8988fcf77c355f4f874d2be67e86444481bac23ccb2041d43e8cb387676562a7",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
       "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
     },
@@ -372,9 +372,15 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/skybox.cpp",
-      "sha256": "22f969e5110daccd251809eb62e12a1b508958ed0d697be92e85054c9c823417",
+      "sha256": "73fb9e1a43e727a84fb0fee728ea34dc0f11b0c9b6033bc240ba65c7cc3e2748",
       "original": "work/client455-port/source/R3Engine/1stclass/skybox.cpp",
       "original_sha256": "724dfbc3b3472cc6577067467cb0935ac64c92a3a401bd8acfd62a19c0a31557"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3vertexbuffer.cpp",
+      "sha256": "29677019aabda55539df964644fac2b6e7e158f2fa07a086d1eaf4a8e32d5129",
+      "original": "work/client455-port/source/R3Engine/1stclass/r3vertexbuffer.cpp",
+      "original_sha256": "34524e9cfe9908db5b93c47251dee5a7f868eaf9fd0d174e6ba685f29bc4d85e"
     }
   ],
   "baseline_library": {
@@ -383,13 +389,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "78fdebab0a3051172d061c2533f3edf031644875260d6e598ddab8a69e36e3bc"
+    "sha256": "a86d77ff0538a8986d93b470d381be7e5fc339ee41d8bcedbb8b5694a2cf7f37"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "698e8bb089beb88dbd519fb4f6b0795ecdeeb7140f3efaff548316380074672a"
+    "sha256": "911499b71a7818a56fef90b24437a551012a977b1b3cefd7a1c0f5c387609932"
   },
-  "script_sha256": "729ea32c9ef8dc7ef3e5a16b28af86ffe098ace29facdc343c886f6bd57776d4",
+  "script_sha256": "05526f7e42695385a8320cfe0fcff743962395f25273bbb73ee3b74fad759900",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -429,7 +435,11 @@
     "client455_sky_day.h": "25b81df3193d1abf8a27001206942c54f6f0accaccfc676015e81c89b4c71715",
     "client455_sky_day.inc": "4dab2fdcea8981513a57906fab574ffe5bec5c4430897ae4965f11e83980f0e8",
     "client455_map_sky.inc": "b527f897c6c6b9ffd5a8f39f3de646657839eb7d385735c5158753aea6076774",
-    "client455_sky_material.inc": "15d40fdbda7309d5f9ec60a7c6d1c89b81eaf7c13f2920829b9933f952b6886a"
+    "client455_sky_material.inc": "9f1bcb542302d24d7ea5f38cc4251298f4d4f0562491de36ce301f5dc644b544"
+  },
+  "sky_atmosphere": {
+    "client455_sky_atmosphere.h": "be1af94b986d3f68f461042196932148514724006d740ee770064e15f7b1885e",
+    "client455_sky_atmosphere.inc": "2efd80979e4ca5cacceb1480c05d414abdfd3f42f2126171d62f980eb2996e81"
   },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",
