@@ -6,9 +6,52 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-BSP-LEAF-122",
+      "id": "CLIENT455-SKY-PROJECTION-123",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary CLevel sky wrapper:near2,loadedguard/fade,perspective or orthographic restore/frustum;real state defaults0/5;fullsky/fade/renderer open",
+      "reference": [
+        {
+          "rva": "0x4e7a10",
+          "role": "Actual ordinary sky wrapper,slot17"
+        },
+        {
+          "rva": "0x4c3400",
+          "role": "Stateinit flag0/scale5"
+        },
+        {
+          "rva": "0x515660",
+          "role": "Loadedgetter"
+        },
+        {
+          "rva": "0x4c2a90",
+          "role": "Frustumrefresh"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_projection.inc",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "6equalbodies/6fullasm/1435instructions+actualvtable/ctor;IDA5b615f3esavedclosed/list0.12cases/24actualprojectionbinds/default0scale5/ortho+perspectivefrustum.5realBellatoskyGPU loaded/translation/worldnear3000/ortho byteequal+unloaded exactclearRGB;5worldlightGPU byteequal122/76queue/16clock/maps2692/330/ANI-BBX/Create1. Full67engine/182client20kernel rebuild;PE182ecac6/unresolved0. Old159k/broad suites notrerun.",
+      "evidence": [
+        "inventory/client455-sky-projection-reference.json",
+        "inventory/client455-sky-projection-native.json",
+        "inventory/client455-sky-world-native.json",
+        "inventory/client455-sky-world-visual-review.json",
+        "inventory/client455-sky-projection-checkpoint.json",
+        "research/client455-sky-projection.md"
+      ],
+      "gaps": [
+        "Selected ordinary CLevel sky wrapper/state init restored;full CSkyBox/entity/fade numeric/render behavior is not accepted by this wrapper alone",
+        "Direct orthographic stores were searched in8B0000..940000;InitCore false/scale5 verified,indirect/alias/UI/console writers and other ray/Character/alpha consumers remain open",
+        "Source-owned state extension changes layout;all own consumers must rebuild,not a target privateABI overlay",
+        "AllFP/NaN/zero scale/invalid near-far/OOM/lost-device/reset/reentry and full world/Character/stages/auth/gameplay/client-acceptance gaps remain;M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-BSP-LEAF-122",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual CBsp inverse-affine GetLeafNum restored;instance/INS/Planet owners separated by constructors/vtables/RTTI;fullrenderer open",
       "reference": [
         {
@@ -48,7 +91,8 @@
         "INS reader returns0 on all normal exits in the pinned body;its side effects,Error paths,console selection and full ILevel/INS/Planet source remain open;absence of assets is not completeness proof",
         "Finite affine examples do not accept allFP/CRT/NaN/singular/unsafe IDs/recursive cycles/concurrency/OOM/privateABI domains",
         "Full ordinary projection/sky/alpha/shadow/device reset,Character/stages/input/auth/protocol/gameplay and previous client-acceptance gaps remain;M9 OPEN"
-      ]
+      ],
+      "historical_after": "CLIENT455-SKY-PROJECTION-123"
     },
     {
       "id": "CLIENT455-LIGHT-GEOMETRY-121",

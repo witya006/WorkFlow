@@ -1,0 +1,36 @@
+"""Current partialM6 checkpoint for ordinary sky projection and actual sky pixels."""
+import json
+from pathlib import Path
+from audit_client455_item_payloads import record
+from checkpoint_client455_rvp_effects import check,load,require,sha
+from client455_normal_link_evidence import validate_normal_link
+from compare_client_binaries import WS
+from probe_client455_sky_projection import verify as verify_projection
+from probe_client455_sky_world import verify as verify_sky
+from probe_client455_world_frame import verify as verify_world
+
+
+def main():
+    ref=load('client455-sky-projection-reference');require(ref['status']=='CONFIRMED_SELECTED' and ref['script_sha256']==sha(WS/'scripts/audit_client455_sky_projection.py') and ref['full_assembly']==6 and ref['instructions']==1435,'Current target sky projection proof')
+    for row in [ref[x] for x in ['raw','session','source','engine','old_engine','core_header','sky_header']]:check(row)
+    link=load('client455-normal-link');require(validate_normal_link(link)=='PASS','Exact own normal client link');lh=sha(WS/'inventory/client455-normal-link.json');engine=load('client455-startup-engine-build');require(engine['library_sha256']==ref['engine']['sha256'] and any(x['file']==engine['library'] and x['sha256']==ref['engine']['sha256'] for x in link['libraries']),'New engine retained');require('DrawSkyBoxRender@CLevel' in (WS/link['map']['file']).read_text(errors='replace'),'Ordinary PE retains restored sky wrapper')
+    build=load('client455-normal-build');consumers=load('client455-normal-consumers');require(not build['build_exit'] and build['objects']==182 and build['canonical_kernel_objects']==20 and consumers['normal_build_sha256']==sha(WS/'inventory/client455-normal-build.json') and consumers['native']['status']=='PASS','Full normal182/20 rebuild and fresh ANI-BBX consumers')
+    projection=load('client455-sky-projection-native');require(projection['status']=='PASS_SELECTED' and not projection['natural_exit'] and projection['normal_link_sha256']==lh and projection['engine_report_sha256']==sha(WS/'inventory/client455-startup-engine-build.json') and projection['script_sha256']==sha(WS/'scripts/probe_client455_sky_projection.py'),'New actual device projection probe')
+    for row in [projection[x] for x in ['source','included_source','exe','map','trace','console','output']]+projection['inputs']:check(row)
+    require(verify_projection((WS/projection['exe']['file']).parent)==projection['verdict'] and projection['verdict']['cases']==12,'Closed-form matrix/frustum oracle reproduced')
+    sky=load('client455-sky-world-native');sr=load('client455-sky-world-visual-review');require(sky['status']=='PASS_SELECTED' and sky['normal_link_sha256']==lh and sky['native']['actual_Bellato_sky'] and not sky['native']['warnings'] and not sky['natural_exit'] and sky['driver_script']['sha256']==sha(WS/'scripts/probe_client455_sky_world.py') and sky['script_sha256']==sha(WS/'scripts/probe_client455_nuclear_registry.py'),'Actual loaded Bellato sky')
+    for row in [sky[x] for x in ['source','included_source','driver_script','exe','map','console','output']]+sky['inputs']:check(row)
+    sky_verdict=verify_sky((WS/sky['exe']['file']).parent);require(sky_verdict==sky['verdict'] and sr['reviewed'] and sr['reviewed_frames']==5 and sr['native_sha256']==sha(WS/'inventory/client455-sky-world-native.json'),'Actual loaded/unloaded/near/ortho/translation controls and visual review');check(sr['sheet'])
+    for row in sr['frames']:check(row);check(row['preview'])
+    world=load('client455-world-frame-native');validation=load('client455-world-frame-verification');review=load('client455-world-frame-visual-review');require(world['status']=='PASS' and world['normal_link_sha256']==lh and validation['native_sha256']==review['native_sha256']==sha(WS/'inventory/client455-world-frame-native.json') and validation['status']=='PASS_SELECTED' and review['reviewed'] and review['reviewed_frames']==5,'Current real-world light regression')
+    for row in [world[x] for x in ['source','included_source','driver_script','oracle','exe','map','console','output','world_manifest']]+world['trace']+world['inputs']+[validation[x] for x in ['diagnostic','texture','texture_preview']]:check(row)
+    require(verify_world((WS/world['exe']['file']).parent)==world['verdict']==validation['verdict'],'Actual world/clock/light oracle');check(review['sheet']);oldworld=json.loads((WS/'artifacts/client455-progress/client455-world-frame-native-before123.json').read_text());oldframes={Path(x['file']).name:x for x in oldworld['frames']};same=[]
+    for row in review['frames']:
+        check(row);check(row['preview']);old=oldframes[Path(row['file']).name];check(old);require(row['sha256']==old['sha256'],'Ordinary matched world images preserved');same.append(Path(row['file']).name)
+    maps=load('client455-map-data-native');require(maps['normal_link_sha256']==lh and maps['native']['checks']==2692 and maps['native']['geometry_cases']==330 and maps['canonical_equal'] and not maps['natural_exit'],'Actual map regression');check(maps['output']);check(maps['canonical_actual'])
+    early,ui,contracts=load('client455-startup-native'),load('client455-ui-startup-native'),load('client455-startup-contracts-native');require(contracts['build_sha256']==sha(WS/'inventory/client455-startup-engine-build.json') and early['normal_link_sha256']==ui['normal_link_sha256']==lh and not early['debugger_exit'] and early['sound_return']==1 and not ui['debugger_exit'] and ui['completed_existing_client_create'] and any(x['name']=='after_client_create' and x['eax']==1 for x in ui['markers']) and all(x['first_chance']==1 for x in ui['exceptions']),'Exact own PE startup/window/device/Create1');check(early['events']);check(ui['events'])
+    old=WS/'artifacts/client455-progress/client455-bsp-leaf-checkpoint-before123.json';require(old.exists(),'Historical122 gate preserved');fresh=['sky-projection-reference','sky-projection-native','sky-world-native','sky-world-visual-review','world-frame-native','world-frame-verification','world-frame-visual-review','startup-engine-build','normal-preparation','normal-build','normal-consumers','normal-link','own-entry','startup-audit','startup-native','startup-contracts-native','ui-startup-native','map-data-native']
+    out=dict(status='PARTIAL',scope=ref['scope'],script_sha256=sha(Path(__file__)),normal_executable=link['executable'],normal_link_sha256=lh,engine=ref['engine'],old_engine=ref['old_engine'],projection=projection['verdict'],visible_sky=sky_verdict,world=world['verdict'],viewed_GPU_frames=10,world_frames_byte_equal122=same,previous122_gate=record(old),fresh_evidence={x:record(WS/f'inventory/client455-{x}.json') for x in fresh},full_world=False,full_sky_renderer=False,full_fade=False,gaps=ref['gaps'],historical_suites='BSPleaf140/lightgeometry33/quake/explosion/texture/receiver/Character/bulk historical,not rerun',unchanged_bulk_suites_rerun=False,input_exe_executed=False,server_modified=False,M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN');(WS/'inventory/client455-sky-projection-checkpoint.json').write_text(json.dumps(out,indent=2)+'\n');print('PARTIAL:12projection cases/24actualbinds/near2/perspective+ortho/frustum;realBellato5sky+5lightGPUviewed/maps2692/Create1;fullrenderer+M9OPEN')
+
+
+if __name__=='__main__':main()

@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "2fa70824eb20d19588c5043b438f12176f49e61065b31e68175da588e80bc1e4",
+  "library_sha256": "e826ee1aaf9bb6b6f1f10a3470c411357f85eacf846b2436e9fa1aac1fe279cd",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -318,7 +318,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
-      "sha256": "b7c35c3c056d3cb6979b9a9a9dbad66536d5ce605a12babf64b5b90e3a13f249",
+      "sha256": "0944ee741ae2c99e8bc5f688e9f277fd35ab3f3211302b9ccc4d7343eb45de29",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
     },
@@ -363,6 +363,12 @@
       "sha256": "c14c2fc71fdccebcf3f53d8702928752f8f059e833ca05d4a34ac27d7392037a",
       "original": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
       "original_sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/core.cpp",
+      "sha256": "a73c95b477f24c12d826afcca6add17862114aaf84711ddeecc0c9d8d79f21e2",
+      "original": "work/client455-port/source/R3Engine/1stclass/core.cpp",
+      "original_sha256": "30f384cc288edeaa22566e5d60881bc8267dcc9da005bf3ee0a50c3dbc620b47"
     }
   ],
   "baseline_library": {
@@ -371,13 +377,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "383091aaa54e64f2f72dd700aec266cf560c442ee48647e77f18bf2c05eeb550"
+    "sha256": "24f457e2d52c8409678639072d8004695f68bfba93786fd0c4b9cc9ffe776537"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "17c00443478f7e60b2b4bb5762fa1347bdc28c53f08cbaa8b7cdce4d54f6d503"
+    "sha256": "23914a137b3c356fa658c6c32ad09166067907d243dc96f79e0983847eba83e0"
   },
-  "script_sha256": "5861b1237230f86fba3c4ff16204bf3de675892bdefbf5e6fc957b014edd8f0b",
+  "script_sha256": "493088c332132095d6c92c0c02d9d8c50865f77d47c98636ecf9dfd6081f2a14",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -406,6 +412,21 @@
   "bsp_leaf": {
     "client455_bsp_leaf.inc": "e1b3d91c8fe439f1df7c5627b9c8bc2a6f899f0e0b87cd2e9b90ee4a300588ff"
   },
+  "sky_projection": {
+    "client455_sky_projection.inc": "56d0601cff6edb2fa4a28490518d4e5acd13cb9be83d592bd46ae996deb50edb"
+  },
+  "core_header_overlay": {
+    "file": "work/client455-port/startup-engine/include/core455.h",
+    "sha256": "63bb96daf47dec1fc059b9e6fb212c462f2c63875aca41a70c3c35214041051d",
+    "original": "work/client455-port/source/R3Engine/1stclass/core.h",
+    "original_sha256": "04c982553f9c2e7b5b9fdf6f2572e355526b53cff4a551933e1dcfb64ee96786"
+  },
+  "sky_header_overlay": {
+    "file": "work/client455-port/startup-engine/include/skybox455.h",
+    "sha256": "3fa7616bb1c7f6783268fafcf09937b6e0d426fba1f6b14e438625bf475d590d",
+    "original": "work/client455-port/source/R3Engine/1stclass/skybox.h",
+    "original_sha256": "f2de2b9685c69c191c2754b4dbac86ad0cebdb7b5163813d24e32b148b9e08b3"
+  },
   "bsp_header_overlay": {
     "file": "work/client455-port/startup-engine/include/r3bsp455.h",
     "sha256": "93e07fdf42856c75d119f761ce8e58714b6061ae7f4ebcd2bdc1d62b2a810b5e",
@@ -432,7 +453,7 @@
   },
   "camera_header_overlay": {
     "file": "work/client455-port/startup-engine/include/anicamera455.h",
-    "sha256": "a9f715e9f069134360f72e85b749bcee8b7ab5c8252dd0189916fc34fbd85145",
+    "sha256": "2b4115719b28a83751d0871d593371414633046253818460a0843e5fdb598998",
     "original": "work/client455-port/source/R3Engine/2ndclass/anicamera.h",
     "original_sha256": "9f940a7f3afa96380a8edde4101079db49150812f690a584ddcb4b8a7fc7f3be"
   },
@@ -458,7 +479,7 @@
   ],
   "particle_header_overlay": {
     "file": "work/client455-port/startup-engine/include/particle455.h",
-    "sha256": "dfe90e10faebcef8daaa2fb71e37965b9845fc7bb7cb2173a1985846f3211399",
+    "sha256": "605261392f2b34aeb5e9bf8f311fcacf54304e1d07b24eb4af812d9a8b315cf4",
     "extra_consumer": "scripts/native/client455_weather.cpp"
   },
   "particle_port": {

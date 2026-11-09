@@ -1,17 +1,16 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-122 PARTIAL: восстановлен world→local через сохранённую inverse матрицу
-в настоящем CBsp::GetLeafNum.140коротких случаев/1680байтXYZ/leafIDs проходят.
-13полных asm/971инструкция совпали между двумя455;IDA saved/closed/list0.
-Подтверждены отдельные instance/planet владельцы;INS source gap сохранён.
-Настоящая Bellato:76queue/16OSclock/5просмотренныхGPU byteequal121.
-Карты2692/330 иточная новаяPE startup/window/device/Create1 PASS.
-Engine67/14derived2fa70824…:толькоbsp.obj изменён,66byteequal.
-OwnPEb0b13a09…/entry167600/182client-20kernel/unresolved0.
-FullReadyBsp/renderer/M6/M6F/M7/M9 OPEN. Текущийgate:
-inventory/client455-bsp-leaf-checkpoint.json. Далее123 — ordinarysky/projection.
+123 PARTIAL: восстановлен ordinary CLevel sky/projection wrapper:near2,
+loaded guard,fade ивозвратperspective/ortho сfrustum refresh. Initflag0/scale5
+подтверждены.6fullasm/1435instructions равны двум455;IDA saved/closed/list0.
+12cases/24actualD3Dbinds,5настоящихskyGPU+5world/lightGPU просмотрены.
+Loaded sky controls byteequal;world frames byteequal122;maps2692/330,ANI/BBX,
+точная новаяPE startup/window/device/Create1 PASS. Engine67/15derivede826ee1a…;
+ownPE182ecac6…/entry1679A0/182client20kernel/unresolved0. Fullsky/fade/renderer
+иM6/M6F/M7/M9 OPEN. Текущийgate:inventory/client455-sky-projection-checkpoint.json.
+Далее124 — actual sky material/render-state flow иfade.
 
-[Доказательства122](../research/client455-bsp-leaf.md).
+[Доказательства123](../research/client455-sky-projection.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

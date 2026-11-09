@@ -1,0 +1,59 @@
+{
+  "reviewed": true,
+  "reviewed_frames": 5,
+  "script_sha256": "85412e372969340c56e6be7ebf38f33bd9b608c283276c005705e0432bf1144b",
+  "native_sha256": "879949982297a45a24524d295d69150e1430d8a2fbff67170e0a175cc7093cf1",
+  "sheet": {
+    "file": "work/m9/001219e8/sky-world-001/sky-contact.png",
+    "sha256": "ed57aeff8ad1f20cbee868ea082d2d337eba9a13073e087df9abf73f7d1f25fb"
+  },
+  "frames": [
+    {
+      "file": "work/m9/001219e8/sky-world-001/sky-base.bgra",
+      "sha256": "d9f8e68e3ffe80b5513fa01e9284f1abbdd739760260a32d9488665413338858",
+      "preview": {
+        "file": "work/m9/001219e8/sky-world-001/sky-base.png",
+        "sha256": "dd9c991680e5f9121dc89cf906bb473a4c48986b3374c76dcb9c81237d1cda70"
+      }
+    },
+    {
+      "file": "work/m9/001219e8/sky-world-001/sky-near3000.bgra",
+      "sha256": "d9f8e68e3ffe80b5513fa01e9284f1abbdd739760260a32d9488665413338858",
+      "preview": {
+        "file": "work/m9/001219e8/sky-world-001/sky-near3000.png",
+        "sha256": "dd9c991680e5f9121dc89cf906bb473a4c48986b3374c76dcb9c81237d1cda70"
+      }
+    },
+    {
+      "file": "work/m9/001219e8/sky-world-001/sky-ortho.bgra",
+      "sha256": "d9f8e68e3ffe80b5513fa01e9284f1abbdd739760260a32d9488665413338858",
+      "preview": {
+        "file": "work/m9/001219e8/sky-world-001/sky-ortho.png",
+        "sha256": "dd9c991680e5f9121dc89cf906bb473a4c48986b3374c76dcb9c81237d1cda70"
+      }
+    },
+    {
+      "file": "work/m9/001219e8/sky-world-001/sky-translated.bgra",
+      "sha256": "d9f8e68e3ffe80b5513fa01e9284f1abbdd739760260a32d9488665413338858",
+      "preview": {
+        "file": "work/m9/001219e8/sky-world-001/sky-translated.png",
+        "sha256": "dd9c991680e5f9121dc89cf906bb473a4c48986b3374c76dcb9c81237d1cda70"
+      }
+    },
+    {
+      "file": "work/m9/001219e8/sky-world-001/sky-unloaded.bgra",
+      "sha256": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+      "preview": {
+        "file": "work/m9/001219e8/sky-world-001/sky-unloaded.png",
+        "sha256": "bd1d5a89e6f7e242f53455b32e2b461b027b7e5e9a326f3c98fbed170eed2f51"
+      }
+    }
+  ],
+  "observations": [
+    "Actual loaded Bellato sky is visible against the exact unloaded clear control",
+    "Translation/world-near3000/orthographic-restore controls are byte-identical to the base sky frame",
+    "No pixel comparison against running455 or fullsky/fade/renderer parity is claimed"
+  ],
+  "reference_executable_capture": false,
+  "full_renderer": false
+}

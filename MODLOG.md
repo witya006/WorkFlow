@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Sky projection123. Restored ordinary CLevel slot17 wrapper:near2,
+loadedguard/fade,world perspective/ortho restore/frustum;real InitCore flag0/scale5.
+6fullasm/1435instructions equalboth455,IDAsavedclosed/list0.12cases/24actualbinds,
+5realBellatoskyGPU/translation-near3000-ortho byteequal/clearRGB exact;5worldlight
+GPU byteequal122/maps2692/330/ANI-BBX/Create1. Engine67/15derivede826ee1a,
+full182client20kernel rebuild/PE182ecac6/unresolved0. Ownobserver vptr issue
+and unusedX-byte oracle corrected;production workaround absent. Fullsky/fade/M9OPEN.
+[research/client455-sky-projection.md](research/client455-sky-projection.md).
+
 2026-11-09 — BSP leaf122. Restored inverse-affine GetLeafNum using supplied
 inverse,source455 math and targetleaf0 fallback.13fullasm/971instructions
 equalboth455;instance/INS/Planet owners separated,INS normal reader returns0

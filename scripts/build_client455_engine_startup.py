@@ -13,6 +13,18 @@ def main():
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
     from client455_particle_port import headers,particle_source,entity_source
     particleHeaders=headers(base,root,previous)
+    coreInput=base/'source/R3Engine/1stclass/core.h';coreHeader=root/'include/core455.h'
+    coreRaw=coreInput.read_bytes();coreAnchor=b'\tD3DXMATRIX mMatProj;'
+    coreAt=coreRaw.index(b'\n',coreRaw.index(coreAnchor))+1
+    coreRaw=coreRaw[:coreAt]+b'\tBOOL mOrthographic;float mOrthographicScale; //455 state,source-owned layout\n'+coreRaw[coreAt:]
+    if coreHeader.exists() and coreHeader.read_bytes()!=coreRaw and sha(coreHeader)!=previous.get('core_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed core declaration')
+    if not coreHeader.exists() or coreHeader.read_bytes()!=coreRaw:coreHeader.write_bytes(coreRaw)
+    skyInput=base/'source/R3Engine/1stclass/skybox.h';skyHeader=root/'include/skybox455.h'
+    skyRaw=skyInput.read_bytes();skyAnchor=b'\tvoid DrawSkyBox('
+    if skyRaw.count(skyAnchor)!=1:raise ValueError('Sky loaded getter boundary')
+    skyRaw=skyRaw.replace(skyAnchor,b'\tBOOL IsLoaded455()const{return mIsSkyLoad;}\n'+skyAnchor)
+    if skyHeader.exists() and skyHeader.read_bytes()!=skyRaw and sha(skyHeader)!=previous.get('sky_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed sky declaration')
+    if not skyHeader.exists() or skyHeader.read_bytes()!=skyRaw:skyHeader.write_bytes(skyRaw)
     bspInput=base/'source/R3Engine/1stclass/r3bsp.h';bspHeader=root/'include/r3bsp455.h'
     bspRaw=bspInput.read_bytes();bspAnchor=b'\tvoid SaveExtBsp('
     if bspRaw.count(bspAnchor)!=1:raise ValueError('CBsp owned matrix declaration boundary')
@@ -31,6 +43,8 @@ def main():
     ownedParticleHeader=root/'include/particle455.h'
     particlePrefix=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders)).encode()
     particlePrefix+=('#include "'+bspHeader.as_posix()+'"\r\n').encode()
+    particlePrefix=particlePrefix.replace(b'#include "c_vector.h"\r\n',('#include "'+coreHeader.as_posix()+'"\r\n#include "c_vector.h"\r\n').encode(),1)
+    particlePrefix+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
     if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
     cameraHeader=base/'source/R3Engine/2ndclass/anicamera.h';ownedHeader=root/'include/anicamera455.h';ownedHeader.parent.mkdir(parents=True,exist_ok=True)
@@ -40,11 +54,13 @@ def main():
     header=header.replace(b'#include "c_vector.h"\r\n',b'#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders).encode(),1)
     firstInclude=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode()
     header=header.replace(firstInclude,firstInclude+('#include "'+spriteHeader.as_posix()+'"\r\n').encode(),1)
+    header=header.replace(firstInclude,firstInclude+('#include "'+coreHeader.as_posix()+'"\r\n').encode(),1)
     header+=('\r\n#include "'+bspHeader.as_posix()+'"\r\n').encode()
+    header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -86,8 +102,14 @@ def main():
             raw=raw[:first]+(WS/'scripts/native/client455_level_destroy.inc').read_bytes()+raw[last:]
             first,last=section(raw,b'void CLevel::SetViewMatrix(',b'void CLevel::SetViewMatrix(')
             raw=raw[:first]+(WS/'scripts/native/client455_level_view.inc').read_bytes()+raw[last:]
+            first,last=section(raw,b'void CLevel::DrawSkyBoxRender()',b'void CLevel::DrawSkyBoxRender()')
+            raw=raw[:first]+(WS/'scripts/native/client455_sky_projection.inc').read_bytes()+raw[last:]
             raw,count=re.subn(rb'(?m)^(\s*)mIsLoadedBsp=TRUE;\r?\n(\s*)ClearDynamicLight',rb'\1RF455_StopCameraSway();\n\1mIsLoadedBsp=TRUE;\n\2ClearDynamicLight',raw)
             if count!=1:raise ValueError('455 successful map-load sway reset boundary')
+        elif filename=='core.cpp':
+            anchor=b'memset(&stState,0,sizeof(_R3ENGINE_STATE));'
+            if raw.count(anchor)!=1:raise ValueError('Core initialization boundary')
+            raw=raw.replace(anchor,anchor+b'\n\tstState.mOrthographic=FALSE;stState.mOrthographicScale=5.0f; //4558C3614/20')
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
             raw=b'#include "client455_bsp_light.h"\n'+raw
@@ -178,6 +200,9 @@ def main():
     report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}
     report['bsp_light']={name:sha(WS/'scripts/native'/name) for name in ['client455_bsp_light.h','client455_bsp_fields.inc','client455_bsp_light.inc']}
     report['bsp_leaf']={'client455_bsp_leaf.inc':sha(WS/'scripts/native/client455_bsp_leaf.inc')}
+    report['sky_projection']={'client455_sky_projection.inc':sha(WS/'scripts/native/client455_sky_projection.inc')}
+    report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
+    report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}

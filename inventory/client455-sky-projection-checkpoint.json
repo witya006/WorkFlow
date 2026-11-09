@@ -1,0 +1,188 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary CLevel near2 sky projection,conditional loaded sky/fade and perspective/orthographic restoration;fullrenderer open",
+  "script_sha256": "830c1ccf97d11ca69739df2cac85b67a1dc28e57ed70bad30393735459fcfff6",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "182ecac65696d4ffdf3d8b7c7029aeb8befb54cf9c056912419e618449a3e26f",
+    "bytes": 2227200,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1679a0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "b3f398d182d8f4282c6dff4f839ae563627a63b8a4cf8cafc8968b9241b995ef",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "e826ee1aaf9bb6b6f1f10a3470c411357f85eacf846b2436e9fa1aac1fe279cd"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before123.lib",
+    "sha256": "2fa70824eb20d19588c5043b438f12176f49e61065b31e68175da588e80bc1e4"
+  },
+  "projection": {
+    "cases": 12,
+    "projection_binds": 24,
+    "temporary_sky_near": 2,
+    "initial_flag": 0,
+    "initial_scale": 5,
+    "perspective_frustum_unchanged": true,
+    "orthographic_frustum_refreshed": true,
+    "actual_device_state_exact": true,
+    "matrix_tolerance": "2e-6 absolute+2e-6 relative",
+    "plane_tolerance": ".002 absolute+2e-6 relative",
+    "full_renderer": false
+  },
+  "visible_sky": {
+    "frames": 5,
+    "actual_Bellato_sky": true,
+    "loaded_controls_byte_equal": true,
+    "unloaded_control_exact": true,
+    "clear_pixel": [
+      48,
+      32,
+      16,
+      0
+    ],
+    "unused_backbuffer_byte": 0,
+    "changed_bytes": 921600,
+    "full_sky_equivalence": false
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "viewed_GPU_frames": 10,
+  "world_frames_byte_equal122": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "previous122_gate": {
+    "file": "artifacts/client455-progress/client455-bsp-leaf-checkpoint-before123.json",
+    "sha256": "cac4a5f9c1283a9fddeb8160b96db61621a431a85dad05ed1eaa967a6118532c"
+  },
+  "fresh_evidence": {
+    "sky-projection-reference": {
+      "file": "inventory/client455-sky-projection-reference.json",
+      "sha256": "d9ffeb39d39aa85e1bcab554cdc957ec4e44f93549295195f8cdb1604d9156ff"
+    },
+    "sky-projection-native": {
+      "file": "inventory/client455-sky-projection-native.json",
+      "sha256": "9112404094a02d74f914f90669dff1d7efd308b50257354e4542fe6e1c728d1c"
+    },
+    "sky-world-native": {
+      "file": "inventory/client455-sky-world-native.json",
+      "sha256": "879949982297a45a24524d295d69150e1430d8a2fbff67170e0a175cc7093cf1"
+    },
+    "sky-world-visual-review": {
+      "file": "inventory/client455-sky-world-visual-review.json",
+      "sha256": "acaaab1373d20bc2ddd6f7848f2ee942b27138d1f55bb33215865953ad408073"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "a395d229437eb39d15fc44a820e2708b9d5c0959e0268890858dbafb29992c48"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "1062cd9d3c7eb36678980a9a02a949dca1c007b108f071bdc4e4168dcff350d6"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "d82842ed7a799437e551642751ba373700b8315dfdacef2725a66ee325451c74"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "095e8e118d24ec6d45d9648e570832c7ac4945d409bcbfef5b2845a162153a9c"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "e02fa42d81e11ae21bb7c7f9e6846cda8bc3dc742152ffeb4821d27247e053f4"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "45c50247763a671ca310e3a95992a702e4dbb097e53ad6d9409796a214978714"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "e58fcd16f55d597b239a6a6ec538d0d019fb1420a5a487b216842b39bf1a0907"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "b3f398d182d8f4282c6dff4f839ae563627a63b8a4cf8cafc8968b9241b995ef"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "816d7f4307c68aa9a3a6e15a15f83a2736116dc35c9c20965bd2aa3700a67299"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "00c6c925cc649de946833abff06e0e2a00f22fc09b03a4eecdf3fd4c6cfa4fa2"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "3954b05f503c835fcdab6ed5c53063996840088831dac0a48e494d1449546bee"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "f7d3f50c3c53d0344254eabf4621bdd37138a0474270ca2284b2363468f185b8"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "d7478eabd8404c219e87dd8ac7f59cd7ab460bb1c0613dbf62826dafe052de4f"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "b26d585c61dc3fd685ddc89d3b71f94ed9c463b060032aab8ad03ec89a3ae4e2"
+    }
+  },
+  "full_world": false,
+  "full_sky_renderer": false,
+  "full_fade": false,
+  "gaps": [
+    "Selected ordinary CLevel sky wrapper/state init restored;full CSkyBox/entity/fade numeric/render behavior is not accepted by this wrapper alone",
+    "Direct orthographic stores were searched in8B0000..940000;InitCore false/scale5 verified,indirect/alias/UI/console writers and other ray/Character/alpha consumers remain open",
+    "Source-owned state extension changes layout;all own consumers must rebuild,not a target privateABI overlay",
+    "AllFP/NaN/zero scale/invalid near-far/OOM/lost-device/reset/reentry and full world/Character/stages/auth/gameplay/client-acceptance gaps remain;M9 OPEN"
+  ],
+  "historical_suites": "BSPleaf140/lightgeometry33/quake/explosion/texture/receiver/Character/bulk historical,not rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

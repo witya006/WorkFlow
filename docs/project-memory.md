@@ -2,11 +2,11 @@
 
 Обновлено 2026-11-09.
 
-122 PARTIAL M6: восстановлен inverse-affine GetLeafNum;полные renderer/M9 OPEN.
-Current gate: inventory/client455-bsp-leaf-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_bsp_leaf.py.
-Подробности research/client455-bsp-leaf.md. Прежние память/следующие шаги:
-research/project-memory-before122.md, research/next-steps-before122.md.
+123 PARTIAL M6: восстановлен ordinary sky projection wrapper;fullsky/renderer/M9 OPEN.
+Current gate: inventory/client455-sky-projection-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_projection.py.
+Подробности research/client455-sky-projection.md. Прежние память/следующие шаги:
+research/project-memory-before123.md, research/next-steps-before123.md.
 
 ## Цель и ограничения
 
@@ -23,58 +23,70 @@ Primary VS2026 x86;VC6 fallback. Native/GPU jobs последовательно,
 Перед rebuild сохранять exact engine/PE/reports. Ignored файл не backup.
 Не повторять159k/старые broad suites без причины. Пользователю — коротко по-русски.
 
-## Доказательства122
+## Доказательства123
 
 Pin455 x86/base400000:
 primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
-secondary 46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
-13 equal bodies/13 full asm/971 instructions:11 new/742+2 cached120/229.
-Raw bsp-leaf122-reference/session.json в artifacts/client455-progress/.
-Owned IDA279e61eb saved/closed/list0. Нет живых процессов/сессий этого участка.
-MCP disasm<=100..120;проверять len/count/sum/total/unique,не только cursor.done.
-Decompiler register prototypes/Concurrency имена не являются доказательством ABI.
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+6 full bodies/6fullasm/1435instructions +actualvtable/ctor equalbothpins.
+Read-onlyfloat/doubleliterals сверены,AAA450=5. Rawsky-projection123-reference/
+session.json вartifacts/client455-progress/. IDA5b615f3e saved/closed/list0.
+Нет живых процессов/IDA сессий этого участка. MCPdisasm<=100..120,проверить
+len/count/sum/total/unique. Cursor.done иdecompiler register ABI не доказательства.
 
-CBsp::GetLeafNum target8FAF00:affine transform world→local через inverse+436,
-mTempSearchOk=-1,SearchNode1. 8C0980 не делит наW. SearchNode8FAE20 продолжает
-после leaf0,ранний stop только leaf>0. Source использует существующий
-Vector3fTransform/source455 math и собственную inverse из121.
-Instance ctor8EABF0/RTTI CInstanceNode,276byte nodes,world+84/inverse+148.
-Offset8EADC0:coords*30000,localbounds±15000,27nodes уINS.
-INS ctor8ECFA0→B3872C/load9=8ED220/draw18=8EC850.
-Planet ctor912000→B3A0BC/draw18=913800;RTTI CPlanetLevel,27nodes stride260.
-Не путать этих владельцев с ordinary CLevel. Их12settercallers не дают
-основания придумывать новый matrix writer вобычной карте.
-INS reader8EB5E0 во всех нормальных выходах возвращает0. SuppliedMap.ins/.wld
-не найдены. Но sideeffects/Error/ctor/destructor/ILevel/console/fullINS остаются
-gaps:source CLand.ins отказ по-прежнему не target parity. Не удалять изM9.
-Planet ctor caller8E2500 имеет load/capture команды;полныйconsole/reachability
-не приняты. Все эти выводы отделены от реальной реализации GetLeafNum.
+Ordinary CLevel8E9F40→vtableB38494 sky slot17→8E7A10. Slot15 был догадкой,
+отвергнут до принятия audit;не повторять. Wrapper:persp(FOV,aspect,near2,far),
+SetPROJ;loadedgetter915660→DrawSkybox9157E0;DrawFadeSky8B5900;restorepersp
+сconfiguredNear,либоflag!=0 identity→OrthoLH(width/scale,height/scale,-5000,5000)
+→frustum8C2A90;последнийSetPROJвобоихрежимах. Perspectiveнеrefreshfrustum.
+InitCore8C3400 подтверждёнflag0/scale5.15+15xref,ограниченный regexpstores scan
+8B0000..940000 нашёлinit;не исчерпывающаяклассификация/alias/UIwritersproof.
+Source-owned core header+8bytes aftermMatProj:BOOLmOrthographic/floatScale,
+realInitCore0/5. Skyheader добавил реальный IsLoaded455 безlayoutchange.
+Это собственныйstate,неtargetprivateABIoverlay. Другие Character/ray/alpha/
+UIorthographicconsumers остаются открытыми.
 
-Engine67/14derived:
-2fa70824eb20d19588c5043b438f12176f49e61065b31e68175da588e80bc1e4.
-От121 изменён только bsp.obj,66 members byteequal,все shared overlays прежние.
-Normal182client+20kernel objects/build report неизменены;новый engine relink.
-Own PEb0b13a09b36ec625202244d3998c4581b702caa508c9cd38a329a0e9c5485af9,
-2226176bytes/x86/base400000/entry167600,WinMainb98b0/afterCreateb9a24,
-unresolved0,безCharacterMR/FORCE. Exact121 engine12534d28…/PE933c276a…
-в engine-before122.lib/normal-before122.bin;reports *-before122.json.
-Baseline033 есть;старый082derivedsnapshot отсутствует,этотgap остаётся.
+Engine67/15derived:
+e826ee1aaf9bb6b6f1f10a3470c411357f85eacf846b2436e9fa1aac1fe279cd.
+Sharedheader изменился:все67engine+182client+20kernel/facade пересобраны.
+42COFFpayloadchanged,17timestamp-only,8byteequal;не утверждать42semanticchanges.
+OwnPE182ecac65696d4ffdf3d8b7c7029aeb8befb54cf9c056912419e618449a3e26f,
+2227200bytes/x86/base400000/entry1679A0,WinMainB98B0/afterCreateB9A24,
+182client/20kernel/unresolved0,безCharacterMR/FORCE.
+Exact122engine2fa70824…/PEb0b13a09… вengine-before123.lib/normal-before123.bin,
+reports*-before123.json. Baseline033 есть;082derivedsnapshotстарыйотсутствует/gap.
 
-Leaf work/m9/1e5a3366/bsp-leaf-001:
-140finite cases/1680exactlocalXYZbytes,allleafIDs,7affinematrices,4topologies,
-5points;leaf0 fallback,unrelatedworld/suppliedinverse,independentowner identity.
-NoGPU,только ownfullobjectclient. Nonfinite/allFP/unsafe domains не приняты.
-World work/m9/52d6745b/world-frame-001:
-76queueops/16OSclock±1/rayhit/16archivedFX light frames;5GPU просмотрены,
-все byteequal121. Base==clear;magic151256/regular146637/FX646571bytes diff.
-3ValidateDevice S_OK/1pass/CULL3/ZFUNC4,6warnings сохранены.
-Map work/m9/a3fb1290/map-data-001:2692/330/110maps/canonicalPASS.
-Exact new PE ownentry/imports/startup sound1/contracts/window/device/Create1PASS.
-Handledfirstchanceexceptions сохранены. Это не fullbootstrap/auth/game.
-Oldgeometry33/ANI-BBX/quake/explosion/texture/receiver/Character/159k исторические,
-не повторялись. Gate121 исторический after122. Не запускать его какcurrent.
-121 lightgeometry/ownedmatrices/declaration implementation сохранена безизменения;
-подробные caps/quirks в research/client455-light-geometry.md и memory-before122.
+Projectionwork/m9/bae558a3/sky-projection-001:
+12cases/24actualD3DPROJbinds/unloadedsky,defaults0/5,persp+ortho/frustum,
+finaldevice/source matrix exact;closedformmatrix abs2e-6+rel2e-6,
+plane abs.002+rel2e-6. Свойlabobserverвозвращает originalvptrна времяреального
+SetTransform/GetTransform. ИначеонвызывалAV;productionworkaroundне добавлен.
+Не использоватькопию119slots приforwardреальнымD3Dметодамбезoriginalvptr.
+
+Skywork/m9/001219e8/sky-world-001:
+actualBellatoIsLoaded=true/307200pixels,5GPUviewed:base/translatedX+1000/
+worldNear3000/ortho byteequal,реальныйReleaseSkyBox→uniformclear.
+Loaded-vs-clear921600bytes diff,warnings0. ClearBGRA[48,32,16,0].
+Unused4thbyte0неFF:ошибочныйoracle исправлен,повторёнтолькоverifier
+(--verify-existing),native ужеPASS. Не придумывать alpha дляXbackbuffer.
+
+Worldwork/m9/9ca60b60/world-frame-001:
+76queueops/16OSclock±1/rayhit/16FXlightframes,5GPUviewedиbyteequal122.
+Base==clear,magic151256/regular146637/FX646571bytesdiff.
+3ValidateDeviceS_OK/1pass/CULL3/ZFUNC4,6warningsсохранены.
+Mapwork/m9/6a0283fa/map-data-001:2692/330/110maps/canonicalPASS.
+FreshnormalANI2/BBX+exactownentry/imports/startupsound1/contracts/window/device/
+existingCreate1PASS. Обработанныеfirstchance40080201/E06D7363/406D1388сохранены.
+Итого10GPUviewed123. Ground/lightкадрысами поне доказываютвидимоеsky.
+OldBSPleaf140/lightgeometry33/quake/explosion/texture/receiver/Character/159k
+исторические,неповторены. Gate122historicalafter123. Fullbootstrap/auth/gameOPEN.
+
+Предыдущие компоненты сохранены:121regular/magiclightcaps/batches/ownedmatrices/
+explicitdeclaration;122GetLeafNumworld→inverse→SearchNode1,leaf0неearlystop,
+affineбезWdivide. Instance/Planetowners отдельные:INSB3872C/ctor8ECFA0,
+CInstanceNodenodes276;PlanetB3A0BC/ctor912000/nodes260. INSreader8EB5E0
+нормальновсегда0,ноsourceCLand.ins отказ/ILevel/console/sideeffects остаютсяgaps.
+Подробности research/client455-bsp-leaf.md иmemory-before123.
 
 ## Важные прежние решения
 
@@ -95,25 +107,22 @@ GoMMOaudit толькоinitialize/toolslist/studio_status,безInstall/publish.
 Headers normal/include через<...>,неподключать второйскопированный#pragmaonceпуть.
 Search сначалаrg --files;неугадыватьимена/пути и не передавать literal*.py вrgWindows.
 
-## Далее123
+## Далее124
 
-Приоритет — ordinary CLevel sky/projection8E7A10:temporary near2 sky,
-DrawFadeSky,restoreperspective либоorthographic +frustum refresh.
-Legacy wrapper отличается. До новогоstate проверить writers ортографических
-flag/scale и существующиеAPIs;не добавлять фиктивные дефолты дляпроходатеста.
-Raw122 уже содержит полный47line pcode8E7A10,частичный sky9157E0/85of114,
-fullgetter915660,fade8B5900/66lines,frustum8C2A90/64lines;asm этихновыхsky
-тел ещёнеполучен. Это поиск,непринятый source/runtime компонент.
+Полный actual sky material/render-state flow9157E0 и связанныйfade8B5900.
+Raw123содержитполныеpcode/asm1435selected,включаяsky/fade/frustum.
+СравнитьlegacyCSkyBox/CEntity:flags/animatedmaterials/alpha/fog/viewrestore,
+перенести реальные различия ипроверить видимыеactualskyassets.
+Wrapper123 не считать полнойприёмкойCSkyBox/entity/fade/orthopipeline.
 
-Полный ReadyBspRender8FE4B0 по-прежнему не перенесён:local camera,inverse,
-cache owners,world-awarefrustum/visibility/alpha/entity cache,ordinarycallers.
-GetLeafNum не считать восстановлениемвсейподсистемы. INS/Planet/ILevel gaps
-сохранены;не тратить следующийучасток на выдуманныйordinarymatrixwriter.
+Затем fullReadyBspRender8FE4B0:local-camera/inverse/cacheowners/world-frustum/
+visibility/alpha/entitycache;projection/sky/shadow/device lost/reset/recreate/error.
+Не переносить affineпоправку повсюду бездоказательствапространствааргумента.
+INS/Planet/ILevel gaps сохранены. Не изобретатьordinarymatrixwriter.
 
-Полныеprojection/sky/alpha/shadow/device-reset/recreate/error,
-trajectory/quality/blur/advancedFX/independenttextureflag8 OPEN.
-MapUI/layers/selected/special/reset/sprites/avatar/portal/region/scroll;
-Tutorial/Avatar/Create/QBI47/IME/input/fourstages/Login/auth/fullprotocol;
-Linker/queue/Macro/Vending/inventory/equip/SF/Animus/Quest/36boards/Trunk;
-Character/action/movement/status64 и вся docs/client-acceptance.md.
-InvalidIDs/NaN/allFP/CRT/concurrency/RNG/OOM не выдавать за принятые.
+Полныеtrajectory/quality/blur/advancedFX/independenttextureflag8,
+MapUI/layers/selected/special/reset/sprites/avatar/portal/region/scroll,
+Tutorial/Avatar/Create/QBI47/IME/input/fourstages/Login/auth/fullprotocol,
+Linker/queue/Macro/Vending/inventory/equip/SF/Animus/Quest/36boards/Trunk,
+Character/action/movement/status64 иdocs/client-acceptance.md OPEN.
+AllFP/NaN/scale0/unsafeIDs/CRT/concurrency/RNG/OOM/privateABIневыдаватьзапринятое.
