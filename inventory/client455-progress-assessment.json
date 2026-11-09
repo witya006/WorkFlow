@@ -24,7 +24,7 @@
       "estimate_high": 80,
       "completed_full_domain": false,
       "done": [
-        "Собственная PE,CRT/WinMain,Miles,окно/D3D;existing Create проходил на136"
+        "Собственная PE,CRT/WinMain,Miles,окно/D3D;обычный запуск достиг создания и отрисовки Login"
       ],
       "remaining": [
         "Полный порядок startup/ошибки/профили/launcher и связь с экранами455"
@@ -158,7 +158,7 @@
       "estimate_high": 10,
       "completed_full_domain": false,
       "done": [
-        "Инициализация и части legacy Login существуют;target stage contracts описаны"
+        "Обычный собственный клиент показывает реальную lobby/логотип/UI;окна перекрываются,455Login не принят"
       ],
       "remaining": [
         "Полный Title/Login/character selection/auth→world поток455 не пройден"
@@ -248,7 +248,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "884d3283f878d3522aacc775df8cdb85f31cdbac1aa6c25962ae21dd7b0ce308",
+      "sha256": "bac8348e6ebb04966c61a8dcc39733630bc94baba40553c2e4afd28b50c43a2f",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -259,12 +259,12 @@
       "sha256": "88c32fabe1ea5c60048246f9c6f33c4ab85856fa7972e2db0f66a1e21a90f6a8",
       "status": null,
       "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "9c67d03348c7e30f6e4a96d80a5c9082e364d07c71d7445f9bb3c51cf9e25930",
+      "sha256": "a4fe70f98314be057f633f03321f673c72ba8a5c6c67ce045a289127be599a0e",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -331,7 +331,7 @@
       "sha256": "957d914a6ee6b64babd596cd238e5d18aaea10a0490643c1c3b9a09b0cd44a44",
       "status": null,
       "scope": "Real R3BeginScene/FullScreenEffect/R3EndScene texture/depth/viewport/UI and density paths;not water/bloom/fullgame acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-normal-renderer-checkpoint": {
@@ -470,11 +470,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "42213f081aceb9f1630add0c9d4a77deab330f1ca43936a85fee4c97c5c7cf89",
-      "bytes": 2267648,
+      "sha256": "9adc8d0db6ee8567323cc9942f441e0516b1000235d87561af832b40450a3b14",
+      "bytes": 2269184,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x16f1c0",
+      "entry_rva": "0x16f580",
       "sections": [
         ".text",
         ".rdata",
@@ -496,9 +496,42 @@
         "architecture": "x86"
       }
     ],
-    "last_completed_checkpoint": "inventory/client455-scene-capture-checkpoint.json",
-    "current_work": "137 scene capture checkpoint PARTIAL;138 ordinary Title/Login investigation OPEN",
-    "existing_Create_proved_on_current_PE": true,
+    "last_completed_checkpoint": "artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json",
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
+    "current_work": "138 ordinary Title/Login PARTIAL:real lobby/logo/UI rendered;overlapping windows;not455Login acceptance",
+    "ordinary_login_observation": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "8d5d4945c936a75e1aa53e1ec237a0e95788b7c6588d0289e074a9c147f86021",
+      "fresh_for_current_PE": true,
+      "frame": {
+        "file": "work/m9/9adc8d0d/login-frame001/login-frame.png",
+        "sha256": "f22b5b098ba993bf7ae990b2e61d21dd27656b2aa8a35657d36453e584483d91"
+      },
+      "capture": {
+        "result": 0,
+        "width": 640,
+        "height": 500,
+        "format": 22,
+        "frame_index": 70,
+        "elapsed_ms": 3203,
+        "requested_delay_ms": 3200
+      },
+      "stage_state": {
+        "kind": "stage_state",
+        "read": true,
+        "object": "0xb190e90",
+        "vtable": "0xc72bc0",
+        "exit": 0,
+        "created": 1,
+        "loaded": 1,
+        "next": 4294967295
+      },
+      "ui_visually_inspected": true,
+      "ui_accepted": false,
+      "known_visible_problem": "Overlapping legacy windows;full455layout/state/input/auth remains open",
+      "return_checkpoint": "Return after the diagnostic capture;not necessarily the first frame"
+    },
+    "existing_Create_proved_on_current_PE": false,
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
@@ -538,7 +571,34 @@
       "complete expected end-to-end scenario set/resource manifest"
     ],
     "build_blocking_unresolved_dependencies": 0,
-    "byte_identical_output_required": false
+    "byte_identical_output_required": false,
+    "assembly_status": "Current selected client build is possible;this does not prove full455source completeness",
+    "behavior_specification_status": "Incomplete:complete feature/packet/state/resource/scenario inventory is still missing",
+    "original455source_completeness_percent": null
+  },
+  "uncertainty": {
+    "known_incomplete": [
+      "ordinary455Login/auth/selection",
+      "full actor/world/control/combat integration",
+      "full protocol consumers",
+      "NPC/quests/social and all variants",
+      "stage/map/device/disconnect lifecycle"
+    ],
+    "isolated_checks_not_full_acceptance": [
+      "world rendering",
+      "skinning/animation",
+      "item owners/icons/hover",
+      "chat/system messages",
+      "selected effects/audio/network handlers"
+    ],
+    "not_yet_fully_inventoried": [
+      "complete455feature inventory",
+      "complete packets/state transitions",
+      "all resource families and locale/profile branches",
+      "all ordinary end-to-end expected outcomes"
+    ],
+    "range_is_engineering_judgement": true,
+    "range_is_statistical_confidence_interval": false
   },
   "next_acceptance_anchors": [
     {
@@ -583,7 +643,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "7d84ef2c0f6827af6016138c4abd4efd6a5ad2790a91971a2200816bc3da54db"
+    "sha256": "24a6cdc83d91ce5f512f6676b9f8b64c0c3de0710d3ee82424ae324dc982805a"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

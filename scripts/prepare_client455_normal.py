@@ -477,11 +477,21 @@ def main():
                 body=raw[start:end];anchor=b'\tif( pi_wSpriteID >= SP_ID_MINIMAP )'
                 if body.count(anchor)!=1:raise ValueError('Normal sprite entry changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'
-                bridge=(b'\t// IDs0/1 agree with455;other legacy UI groups still need semantic migration.'+nl+
-                    b'\tif(pi_wSpriteID==SP_ID_MOUSE || pi_wSpriteID==SP_ID_COMMON){'+nl+
-                    b'\t\tchar path[260];if(RF455_SelectSpritePath(pi_wSpriteID,path,sizeof(path)))LoadSprite(pi_wSpriteID,path);return;'+nl+b'\t}'+nl)
+                bridge=(b'\t// Preserve the legacy caller namespace;455 filenames use their own IDs.'+nl+
+                    b'\tunsigned target455=55;'+nl+
+                    b'\tswitch(pi_wSpriteID){case SP_ID_MOUSE:target455=0;break;case SP_ID_COMMON:target455=1;break;case SP_ID_LOADING:target455=2;break;case SP_ID_LOGIN:target455=3;break;case SP_ID_BELT:target455=4;break;}'+nl+
+                    b'\tif(target455<55){char path[260];if(RF455_SelectSpritePath(target455,path,sizeof(path)))LoadSprite(pi_wSpriteID,path);return;}'+nl)
                 body=body.replace(anchor,bridge+anchor);raw=b'#include "client455_sprites.h"'+nl+raw[:start]+body+raw[end:]
-                changes.append('confirmed455localized/Common sprite route for actual startup mouse/common consumers;other legacyUI groups open')
+                changes.append('455localized/Common mouse/common/loading/login/main paths,with explicit legacy->target ID bridge;remaining mixed UI migration open')
+            if relative=='gameprogress/cgp_login.cpp':
+                first,last=section(raw,b'CGP_LogIn::Render( void )',b'CGP_LogIn::Render( void )');body=raw[first:last]
+                anchor=b'\tR3EndScene();'
+                if body.count(anchor)!=1:raise ValueError('Login render diagnostic boundary changed')
+                body=body.replace(anchor,anchor+b'\n\tRF455_CaptureLoginFrameIfRequested();')
+                declaration=raw.rfind(b'HRESULT',0,first)
+                if declaration<0 or raw[declaration:first].strip()!=b'HRESULT':raise ValueError('Login render return declaration changed')
+                raw=raw[:declaration]+(native/'client455_login_capture.inc').read_bytes()+b'\n'+raw[declaration:first]+body+raw[last:]
+                changes.append('opt-in actual Login backbuffer capture after EndScene;no diagnostic sideeffects without RF455_CAPTURE_LOGIN=1')
             if source.name.lower()=='cland.cpp':
                 raw=b'#include <cstring>\r\n'+raw
                 first,last=section(raw,b'CLand::LoadLevel( char * pi_pLevelName )',b'CLand::LoadLevel( char * pi_pLevelName )')

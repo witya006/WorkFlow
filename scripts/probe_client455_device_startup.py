@@ -1,5 +1,5 @@
 """Run exact own PE through real window/device init;stop before client Create."""
-import argparse,ctypes,hashlib,json,re,shutil,subprocess
+import argparse,ctypes,hashlib,json,os,re,shutil,subprocess
 from pathlib import Path
 from client455_asset_staging import stage_asset,staging_stats
 from compare_client_binaries import WS,pe
@@ -16,12 +16,17 @@ def symbol(mapping,name):
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
 def main():
-    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');args=parser.parse_args();partialCreate=args.create or args.after_create
+    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
+    if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link);early=json.loads((WS/'inventory/client455-startup-native.json').read_text());contracts=json.loads((WS/'inventory/client455-startup-contracts-native.json').read_text());engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
     if early['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or contracts['build_sha256']!=sha(WS/'inventory/client455-startup-engine-build.json'):raise ValueError('Current early startup/contracts evidence required')
     entry=validated_entry();source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=base+int(entry['points']['after_create' if args.after_create else 'before_char_data' if args.create else 'after_d3d']['rva'],16)
+    loginSymbol='?Create@CGP_LogIn@@UAEHXZ' if args.login_create else '?Render@CGP_LogIn@@MAEJXZ'
+    if loginProbe:stopVa=symbol(mapping,loginSymbol)
     parent=WS/'work/m9'/sha(source)[:8];parent.mkdir(parents=True,exist_ok=True);index=1
     prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
+    if loginProbe:prefix='login-create' if args.login_create else 'login-render'
+    if args.login_frame:prefix='login-frame'
     while (parent/f'{prefix}{index:03d}').exists():index+=1
     run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
     for item in early['lab_inputs']:
@@ -34,9 +39,18 @@ def main():
         if not original.is_file():raise ValueError('Missing actual startup resource:'+name)
         copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     inputs+=copy_sky_resources(run)
-    if args.after_create:
+    if args.after_create or loginProbe:
         for name in ['SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+    if loginProbe:
+        for name in ['SpriteImage/ko-kr/login.spr','SpriteImage/ko-kr/loading.spr','SpriteImage/Common/main.spr']:
+            original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+    if args.with_lobby:
+        world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
+        for row in case['archives']:
+            if not row['path'].lower().startswith('map/lobby/'):continue
+            original=client/row['path'];copy=run/row['path'];owned=WS/'work/world455-inputs'/row['path'];stage_asset(original,copy,row['sha256'],owned_immutable=owned if owned.is_file() else None);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+        original=client/'System/titlelogo.tga';copy=run/'System/titlelogo.tga';stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if partialCreate:
         inputs+=copy_tagged_sound_providers(run)
         shaders=json.loads((WS/'inventory/client455-shaders-reference.json').read_text())
@@ -50,10 +64,13 @@ def main():
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
     output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['after_create'] if args.after_create else [])
+    if loginProbe:command+=['login_create' if args.login_create else 'login_frame' if args.login_frame else 'login_render']
+    environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None)
+    if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     with TcpAcceptanceFixture() as transport:
         fixture=stage_launcher(run,0,WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
         try:
-            result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW)
+            result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
         finally:
             removeFont=ctypes.WinDLL('gdi32.dll').RemoveFontResourceW;removeFont.argtypes=[ctypes.c_wchar_p];removeFont.restype=ctypes.c_int
             fontRegistrationRemoved=bool(removeFont(str(run/'System/010.TTF')))
@@ -70,5 +87,20 @@ def main():
     report['nation_paths']=[e for e in events if e['kind']=='debug_string']
     report['script_sha256']=sha(Path(__file__))
     name='client455-ui-startup-native' if args.after_create else 'client455-create-startup-native' if args.create else 'client455-device-startup-native'
-    (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps({'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}))
+    if loginProbe:
+        name='client455-login-create-native' if args.login_create else 'client455-login-render-native'
+        if args.login_frame:name='client455-login-frame-native'
+        report.update(scope='Actual ordinary own WinMain through Title transition to the first Login method;not455stage/UI/auth acceptance',login_method=loginSymbol,login_checkpoint_rva=hex(stopVa-base),login_checkpoint_bytes_sha256=hashlib.sha256(read_va(raw,stopVa,16)).hexdigest(),stage_state=next((e for e in events if e['kind']=='stage_state'),{}),reached_first_login=bool(summary.get('final_checkpoint_reached')))
+        report['first_login_frame_completed']=args.login_frame and bool(summary.get('final_checkpoint_reached')) and any(e['name']=='after_first_login_render' for e in markers)
+        png,meta=run/'login-frame.png',run/'login-frame.json'
+        report['captured_frame']={'file':png.relative_to(WS).as_posix(),'sha256':sha(png)} if png.exists() else None
+        report['capture_result']=json.loads(meta.read_text()) if meta.exists() else None
+        report['capture_metadata']={'file':meta.relative_to(WS).as_posix(),'sha256':sha(meta)} if meta.exists() else None
+        report['first_login_frame_captured']=bool(report['first_login_frame_completed'] and report['captured_frame'] and report['capture_result'] and report['capture_result']['result']>=0)
+        report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
+    (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n')
+    display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}
+    if loginProbe:display.update(stage_state=report['stage_state'],reached_first_login=report['reached_first_login'],exceptions=[e for e in exceptions if not e.get('first_chance')])
+    print(json.dumps(display))
+    if loginProbe and (not report['reached_first_login'] or (args.login_frame and not report['first_login_frame_captured'])):raise SystemExit(1)
 if __name__=='__main__':main()

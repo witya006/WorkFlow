@@ -1,0 +1,548 @@
+{
+  "scope": "Actual ordinary own WinMain through Title transition to the first Login method;not455stage/UI/auth acceptance",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "9adc8d0db6ee8567323cc9942f441e0516b1000235d87561af832b40450a3b14",
+    "bytes": 2269184,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16f580",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "staged_executable": "work/m9/9adc8d0d/login-frame001/RF_Online.bin",
+  "normal_link_sha256": "bac8348e6ebb04966c61a8dcc39733630bc94baba40553c2e4afd28b50c43a2f",
+  "engine_build_sha256": "8ce443ea42b313edfae8a034a78dd7b4cdfb09dcb309416f4538992ac2fddbe3",
+  "contracts_sha256": "bac6ccccb1df8025036d2129871ecee616b5d457b76aa31825071c7b0e707c73",
+  "early_startup_sha256": "a4fe70f98314be057f633f03321f673c72ba8a5c6c67ce045a289127be599a0e",
+  "debugger": {
+    "file": "work/tools/own-client-startup/own-startup-debugger.exe",
+    "sha256": "74acf704e97bde0a7745606852cdb5809dead8502f383910264d9b50d8ab5927",
+    "source": "scripts/native/own_client_startup_debugger.cpp",
+    "source_sha256": "73e0c8be7798958c5723c79112f68edd9120c2503a81c3dea7099bc13890357c"
+  },
+  "inputs": [
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/RF_Online.bin",
+      "sha256": "9adc8d0db6ee8567323cc9942f441e0516b1000235d87561af832b40450a3b14"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/abuse.dll",
+      "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/adv.dll",
+      "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/pdll.dll",
+      "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Snd/WaveList.spt",
+      "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/mssmp3.asi",
+      "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/010.TTF",
+      "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/DataTable/ko-kr/NDLanguage.edf",
+      "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/R3Engine.ini",
+      "sha256": "e557a9bd72a7f6fd9f2490d15ad92d7217b623d63bba6523795f97b9025368a9"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/DataTable/ClientSystem.ini",
+      "sha256": "b8a1bfbc4a4490b0237f97258922d2259fbb2803b6af020442a3e9611d7efb6b"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/Grass1.vsh",
+      "sha256": "e32d397802f965abd369097398932bb0388a1dcbdac182e2871a19517e23261f"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/grass1.vso",
+      "sha256": "a1ed1ece1616cefeef9f1093ec6169fc7423b1018efffc11f3de751528cef4d5"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/console.jpg",
+      "sha256": "318d33ecd7189d8c144ddf50eb30b3a1ef3be609aa95a5652e4d6a210f66f772"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/Scatter.vso",
+      "sha256": "eee9e9786da4201d5c4d2dd58d9bc9af7ef81f3cc5dbae326d6de291fc8a60af",
+      "original": "E:/RFOnlineTrash/RFOnline/System/shader/Scatter.vso"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/Scatter.vsh",
+      "sha256": "7a4e233746b1792668360784ececccd6a349d79518c6f884a36c2d5b301b4df6",
+      "original": "E:/RFOnlineTrash/RFOnline/System/shader/Scatter.vsh"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/sun.dds",
+      "sha256": "f70290eae5954cbde36936698ba9048fbd05d9caa66376c19807ba515ecdf589",
+      "original": "E:/RFOnlineTrash/RFOnline/System/sun.dds"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/init.r3o",
+      "sha256": "a7d551a5a7dce2a6bbb8887fbc0e0a2c68dc83dff7bab1443b0eef51ab01353c",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\init.r3o"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/vFraction.sho",
+      "sha256": "bf34a801f63093bffc9a8c3ee0516226b05c5472ab7c1674f9335e526f485e55",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vFraction.sho"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/vPlazma.sho",
+      "sha256": "dcf81c12074884495ee3d40af81fe6cb93cfb8201b896b1bc6db31ae17b84642",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vPlazma.sho"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/pFraction.sho",
+      "sha256": "49051362d06fe92a4b113dacba6e6cd4a382e951170962855289d0fe1e25eecd",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pFraction.sho"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/pPlazma.sho",
+      "sha256": "f10f9817b1fd0803df578526e6d4465725718d61918659a09e38ef291b13a803",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pPlazma.sho"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/SpriteImage/Common/mouse.spr",
+      "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/SpriteImage/ko-kr/common.spr",
+      "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/SpriteImage/ko-kr/login.spr",
+      "sha256": "0835c53915630a2f3b77ec786e76a15356c992ab365a54472abc7765229bedb7",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ko-kr\\login.spr"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/SpriteImage/ko-kr/loading.spr",
+      "sha256": "4188984d2c466351deea25e5eb49a3d643792e864c82f4462a23a6a17cc1bf37",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\ko-kr\\loading.spr"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/SpriteImage/Common/main.spr",
+      "sha256": "39aefe0ac1480df3e32360250db0fba22ec007eb9749b034dcf6334bb9daeb03",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\SpriteImage\\Common\\main.spr"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.bsp",
+      "sha256": "2ae548405f52d2bf697bbd2483faaf76a45584f04a013f84f59df581546cc5a8",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.bsp"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.cam",
+      "sha256": "756c1d914c895931cb3e4826f71048f16646cd15e32d0fd7491ced7708b4bef0",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.cam"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.ebp",
+      "sha256": "7050f4d8acdfbf76a449ea6d7fc324e0d2d0ed799d0b473c0ca89f034f54bc33",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.ebp"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.r3m",
+      "sha256": "351d6312a210dacdef30ec36f2e7c50da1d95a16e9aca8d661a09633a43e6f0f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.r3m"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.r3t",
+      "sha256": "d5f5dcdda28104fe71a52cdf3253d7c0d54b317e62915888a60b7181178cbfa2",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.r3t"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobby.r3x",
+      "sha256": "91903ca62367b1e88ef1272815774af7c2931d1a130d488357f07d1ce54e5c5d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobby.r3x"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/lobbyLgt.r3t",
+      "sha256": "1e2dd85ad1f9165c41ac2f1906404b3ce9ab7ae675dc66af49f45e9dfb65357e",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\lobbyLgt.r3t"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/Sky/lobbysky.r3e",
+      "sha256": "dea4b5ecd4d7d39e835bca92af60393dda5be9bbc1ec19fd4c5fd9fc9044b83e",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\Sky\\lobbysky.r3e"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/Sky/lobbysky.r3m",
+      "sha256": "c9b4e5c1ff560068172b3390d66ffec4abc01800ab246776ed3f1db6b85bf7fa",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\Sky\\lobbysky.r3m"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Map/lobby/Sky/lobbysky.r3t",
+      "sha256": "32270efe2ad7875116cbdda98712eb40db8333f29e434a1c06e28eb7e263d6e0",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Map\\lobby\\Sky\\lobbysky.r3t"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/titlelogo.tga",
+      "sha256": "1993b6d7417daec2aed2aa1babdbc02586f1bf757f6aa7580dd3785296d0b2f1",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\titlelogo.tga"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Snd/msssoft.m3d",
+      "sha256": "5dcbf188c30ae1ac6a3d5b7fac4a25e831c9a495683b044f5141c4bdbc83f607",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msssoft.m3d"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Snd/msseax.m3d",
+      "sha256": "62e0e34435b9705eedc73660e64564138d8276dcf7b08dfbaac05c592b67e6d3",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msseax.m3d"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/Snd/mssmp3.asi",
+      "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\mssmp3.asi"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic.sho",
+      "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_normal.sho",
+      "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_norm_spec.sho",
+      "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_shadow.sho",
+      "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_Bump.sho",
+      "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_BumpEffect.sho",
+      "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_Scroll.sho",
+      "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_DScroll.sho",
+      "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_EnvScroll.sho",
+      "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_GradeEffect.sho",
+      "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_GradeEnvEffect.sho",
+      "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/shader/sh_basic_alpha.sho",
+      "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/device.plan",
+      "sha256": "f1b5a7db258ae28369a3f6cb861e44cfb4b0bdb6983f741026007d878a894243"
+    },
+    {
+      "file": "work/m9/9adc8d0d/login-frame001/System/DefaultSet.tmp",
+      "sha256": "596535fc8a2cf7e6a8829d8c308940417ee01c327bb5073430ff8d617c5bdf5a",
+      "kind": "synthetic offline launcher fixture;not authentication"
+    }
+  ],
+  "events": {
+    "file": "work/m9/9adc8d0d/login-frame001/debug-events.jsonl",
+    "sha256": "848f36ba020076f8a9f8146ee88b69251b84a8754cd70ad0fda036c09fc62742"
+  },
+  "debugger_exit": 0,
+  "summary": {
+    "kind": "summary",
+    "main_reached": true,
+    "after_d3d_reached": true,
+    "final_checkpoint_reached": true,
+    "exit_observed": true
+  },
+  "render_configuration": {
+    "kind": "render_configuration",
+    "fullscreen": 0,
+    "render_bits": 32
+  },
+  "device_state": {
+    "kind": "device_state",
+    "read": true,
+    "ready": 1,
+    "window": "0x5f04e6",
+    "device": "0x5833f40",
+    "windowed": 1
+  },
+  "markers": [
+    {
+      "kind": "checkpoint",
+      "name": "WinMain",
+      "rva": "0xb9ba0",
+      "eax": 31683152
+    },
+    {
+      "kind": "checkpoint",
+      "name": "after_sound_before_d3d",
+      "rva": "0xb9cf2",
+      "eax": 1
+    },
+    {
+      "kind": "checkpoint",
+      "name": "after_d3d_before_create",
+      "rva": "0xb9d02",
+      "eax": 0
+    },
+    {
+      "kind": "checkpoint",
+      "name": "before_login_render",
+      "rva": "0x24690",
+      "eax": 13052864
+    },
+    {
+      "kind": "checkpoint",
+      "name": "before_login_render",
+      "rva": "0x24690",
+      "eax": 13052864
+    },
+    {
+      "kind": "checkpoint",
+      "name": "after_first_login_render",
+      "rva": "0x203f5",
+      "eax": 0
+    }
+  ],
+  "exceptions": [
+    {
+      "kind": "exception",
+      "code": "0x40080201",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 2147942487,
+      "parameter1": "0x19"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3dfd0"
+    },
+    {
+      "kind": "exception",
+      "code": "0x406d1388",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 4096,
+      "parameter1": "0x2113e330"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    },
+    {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 1,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x1d3f42c"
+    }
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN",
+  "own_entry_sha256": "a2591c8677b447ec4c7383f4e8eec0bc5f6571955b0b28ab96092ac79b03578c",
+  "partial_client_create": true,
+  "tcp_fixture": {
+    "enabled": true,
+    "loopback_port": 55737,
+    "accepted_connections": 1,
+    "bytes_received": 35,
+    "bytes_sent": 0,
+    "rf_protocol_responses": false,
+    "authentication_performed": false,
+    "thread_stopped": true
+  },
+  "tcp_fixture_sha256": "a65f6665ac87b4e1498461bc21a9db1228542fe4d4639f4da10598a0cd5a998f",
+  "lab_font_registration_removed": true,
+  "shared_asset_staging": {
+    "assets": 43,
+    "linked_bytes": 44211245,
+    "new_pool_bytes": 13582841,
+    "adopted_bytes": 0,
+    "private_files": 11
+  },
+  "asset_staging_script_sha256": "ed948c1db7c1944fa4f4ad3293f3997351209b34b470d0e29e9d28605551aad8",
+  "character_owner": {},
+  "completed_existing_client_create": false,
+  "nation_paths": [
+    {
+      "kind": "debug_string",
+      "value": ".\\DataTable\\ko-kr"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Launcher:ccr:1"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 NDLanguage:949:6851"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 FG:0"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Network:Create:1"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Instance:accepted"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Connect:start:5000"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Connect:connected"
+    },
+    {
+      "kind": "debug_string",
+      "value": "onecoreuap\\windows\\core\\color\\moderncolor\\winrt\\displaycolormanagement\\lib\\displaycolormanagement.cpp(34)\\Windows.Internal.Graphics.Display.DisplayColorManagement.dll!74549928: (caller: 745B3BDA) ReturnHr(1) tid(1ac8) 80070057 \u0413\u040f\u0413\u00a0\u0413\u00b0\u0413\u00a0\u0413\u00ac\u0413\u0490\u0413\u0406\u0413\u00b0 \u0413\u00a7\u0413\u00a0\u0413\u00a4\u0413\u00a0\u0413\u00ad \u0413\u00ad\u0413\u0490\u0413\u045e\u0413\u0490\u0413\u00b0\u0413\u00ad\u0413\u00ae.\r\n"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 Font:GDI:129:0"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 TaggedAudio:ready:7969:Miles Fast 2D Positional Audio"
+    },
+    {
+      "kind": "debug_string",
+      "value": "RF455 LoginFrame:00000000:640x500"
+    }
+  ],
+  "script_sha256": "0f417e8fdc0fd266e6c9bb2700d8b48b82c660401e8f1b44f9a69683e968639e",
+  "login_method": "?Render@CGP_LogIn@@MAEJXZ",
+  "login_checkpoint_rva": "0x24690",
+  "login_checkpoint_bytes_sha256": "cc85337f0b3fa30b02ffbf4ae24a3d386ec7c7abc96a5cc591d132908c878d68",
+  "stage_state": {
+    "kind": "stage_state",
+    "read": true,
+    "object": "0xb190e90",
+    "vtable": "0xc72bc0",
+    "exit": 0,
+    "created": 1,
+    "loaded": 1,
+    "next": 4294967295
+  },
+  "reached_first_login": true,
+  "first_login_frame_completed": true,
+  "captured_frame": {
+    "file": "work/m9/9adc8d0d/login-frame001/login-frame.png",
+    "sha256": "f22b5b098ba993bf7ae990b2e61d21dd27656b2aa8a35657d36453e584483d91"
+  },
+  "capture_result": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 70,
+    "elapsed_ms": 3203,
+    "requested_delay_ms": 3200
+  },
+  "capture_metadata": {
+    "file": "work/m9/9adc8d0d/login-frame001/login-frame.json",
+    "sha256": "9fa69c21cc95becbc9aea2fb24a6293c618ec4153f9f71b6fc5804e075c3b20e"
+  },
+  "first_login_frame_captured": true,
+  "observation_delay_ms": 3200,
+  "lobby_inputs_staged": true
+}

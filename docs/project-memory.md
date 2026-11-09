@@ -1,7 +1,9 @@
 # Память проекта
 
-Обновлено 2026-11-10. **137 PARTIAL M6**.
-Текущая проверка: inventory/client455-scene-capture-checkpoint.json.
+Обновлено 2026-11-10. **138 в работе; M6 открыт.**
+Свежая обычная Login observation: inventory/client455-login-frame-native.json.
+Завершённый partial gate137 теперь historical для текущей PE; exact snapshot
+artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json.
 Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_scene_capture.py.
 Доказательства: research/client455-scene-capture.md.
 Предыдущая подробная память: research/project-memory-before137.md.
@@ -29,6 +31,30 @@ Script scripts/assess_client455_progress.py; inventory/client455-progress-assess
 control/movement; D: combat/items/chat/NPC/quests/social; E: fullM6F/M7/M9.
 CRT/FP/failure gaps не отменены,но не подменяют связанный видимый сценарий.
 Остаток2–4объёма закрытого поведения — не прогноз календарных дней.
+
+## Текущее незавершённое138
+
+Before138 snapshot47files сохранён;137commit f33d025. OrdinarySpriteMgr теперь
+legacy7→target3(login),8→2(loading),3→4(main),0/1unchanged. Без null guards
+исправлены два реальных nativecrashes изmissing sprite files. В CgpLogin.Render
+добавлен opt-in diagnostic PNGcapture послеEndScene;обычныйрежимне рисуетextra.
+Debugger следуетреальному WinMain→Title→LoginCreate→Render,затемточкевозврата.
+ТекущаяPE9adc8d0d…(current normal-link),engine137неизменён.182/20build/link0.
+Actual run work/m9/9adc8d0d/login-frame001:55inputs,real lobby10files+titlelogo,
+captureframe70/3203ms/640x500,created1/loaded1,returnaftercapture,no fatal.
+PNGviewed:реальнаяlobby/логотип/UI,НОокнаперекрываются;этоНЕfull455LoginUI.
+Старыйversionlabel0.738неисправлялсякосметически. Далееtargetvisibility/window
+init/layer routing;Titlemovie/fourstage/auth остаютсяOPEN. Data refs/failures:
+artifacts/client455-progress/login138-before-sprite-route.json,
+login138-after-sprite-route.json,login138-lobby-frame.json.
+IDA621d88dc saved/closed;idb_list count0. Raw diagnostic pcode9functions/pages:
+artifacts/client455-progress/login138-reference/session.json. Это не fullASM/
+secondary acceptance. Root RTTI CGUIScreen TD BD5D1C→COL B808B4→vtable ADAD8C,
+slot208→630A60 (RVA230A60),slot40→632430. Root Add вызывает Add/Insert,SetParent,
+затем Show(0);genericContainer.Add сам по себе Show(parent) остаётся правильным.
+В legacyRoot.Add финального Hide нет: вероятная причина всех открытых окон.
+Следом проверить fullASM/CFG и две pins до изменения,не просто скрывать панели.
+Нативныхjobпослеlogin-frame001нет. Probe --login-frame --settle-ms3200 --with-lobby.
 
 ## Завершённое137
 

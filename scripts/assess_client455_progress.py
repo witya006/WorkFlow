@@ -15,7 +15,7 @@ def main():
     #revision; do not inflate readiness by splitting already completed work.
     rows=[
         ('startup','Запуск и конфигурация',3,65,80,
-         ['Собственная PE,CRT/WinMain,Miles,окно/D3D;existing Create проходил на136'],
+         ['Собственная PE,CRT/WinMain,Miles,окно/D3D;обычный запуск достиг создания и отрисовки Login'],
          ['Полный порядок startup/ошибки/профили/launcher и связь с экранами455'],
          ['client455-normal-link','client455-ui-startup-native','client455-startup-native','client455-startup-contracts-native']),
         ('data','Форматы и загрузка данных',7,50,65,
@@ -43,7 +43,7 @@ def main():
          ['Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers'],
          ['client455-network-codec-checkpoint','client455-nuclear-receiver-checkpoint']),
         ('login','Вход и выбор персонажа',10,0,10,
-         ['Инициализация и части legacy Login существуют;target stage contracts описаны'],
+         ['Обычный собственный клиент показывает реальную lobby/логотип/UI;окна перекрываются,455Login не принят'],
          ['Полный Title/Login/character selection/auth→world поток455 не пройден'],
          ['client455-progress-base-checkpoint','client455-network-codec-checkpoint']),
         ('gameplay','Игровые действия',15,0,15,
@@ -75,8 +75,17 @@ def main():
     high=sum(x['weight']*x['estimate_high'] for x in domains)/100
     registry=load('client-features');status=collections.Counter(x['status'] for x in registry['features'])
     normal,build,engine=load('client455-normal-link'),load('client455-normal-build'),load('client455-startup-engine-build')
-    latest='client455-shader-text-checkpoint'
-    if (WS/'inventory/client455-scene-capture-checkpoint.json').is_file() and load('client455-scene-capture-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):latest='client455-scene-capture-checkpoint'
+    #A new partial build must not silently select an even older checkpoint as
+    #current. Preserve the last completed partial checkpoint with its exact build.
+    latest='artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json'
+    assert (WS/latest).is_file()
+    login=load('client455-login-frame-native')
+    assert login['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json')
+    assert login['executable']['sha256']==normal['executable']['sha256']
+    assert login['reached_first_login'] and login['first_login_frame_completed'] and login['first_login_frame_captured']
+    assert login['capture_result']['result']==0
+    for record in (login['captured_frame'],login['capture_metadata']):
+        assert sha(WS/record['file'])==record['sha256']
     assert normal['link_exit']==0 and normal['unique_unresolved']==0 and build['objects']==182 and engine['objects']==67
     assert sha(WS/normal['executable']['file'])==normal['executable']['sha256']
     assert sha(WS/engine['library'])==engine['library_sha256']
@@ -91,13 +100,22 @@ def main():
         interpretation='Stage numbers are unequal sizes. M0-M5 completion is not five ninths of the full client. Existing legacy code receives no455credit without evidence.',
         domains=domains,complete_acceptance_domains=0,domain_count=len(domains),evidence=evidence,
         observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
-            last_completed_checkpoint='inventory/'+latest+'.json',current_work='137 scene capture checkpoint PARTIAL;138 ordinary Title/Login investigation OPEN',
+            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=True,current_work='138 ordinary Title/Login PARTIAL:real lobby/logo/UI rendered;overlapping windows;not455Login acceptance',
+            ordinary_login_observation=dict(file='inventory/client455-login-frame-native.json',sha256=sha(WS/'inventory/client455-login-frame-native.json'),fresh_for_current_PE=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Overlapping legacy windows;full455layout/state/input/auth remains open',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
         input_readiness=dict(available=['legacy0.7client/R3Engine sources','two pinned455x86reference binaries','installed455assets','working modern x86 build and IDA/HexRays'],
             reconstructed=['Character interface and multiple455source implementations'],
             missing=['original full455source/SDK','complete455feature/packet/state inventory','complete expected end-to-end scenario set/resource manifest'],
-            build_blocking_unresolved_dependencies=0,byte_identical_output_required=False),
+            build_blocking_unresolved_dependencies=0,byte_identical_output_required=False,
+            assembly_status='Current selected client build is possible;this does not prove full455source completeness',
+            behavior_specification_status='Incomplete:complete feature/packet/state/resource/scenario inventory is still missing',
+            original455source_completeness_percent=None),
+        uncertainty=dict(
+            known_incomplete=['ordinary455Login/auth/selection','full actor/world/control/combat integration','full protocol consumers','NPC/quests/social and all variants','stage/map/device/disconnect lifecycle'],
+            isolated_checks_not_full_acceptance=['world rendering','skinning/animation','item owners/icons/hover','chat/system messages','selected effects/audio/network handlers'],
+            not_yet_fully_inventoried=['complete455feature inventory','complete packets/state transitions','all resource families and locale/profile branches','all ordinary end-to-end expected outcomes'],
+            range_is_engineering_judgement=True,range_is_statistical_confidence_interval=False),
         next_acceptance_anchors=[
             dict(id='A',result='Ordinary own client displays and handles the455Title/Login UI',status='OPEN',criterion='Real stage factory/Avatar/UI/input/frame/lifecycle integrated;not just Create1'),
             dict(id='B',result='Client auth/character selection reaches and leaves its455screens correctly',status='OPEN',criterion='Pinned expected client packet/state transitions and error paths;server development excluded'),

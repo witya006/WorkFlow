@@ -35,7 +35,16 @@ int wmain(int argc,wchar_t** argv){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,argc==7?"after_client_create":"before_character_data",0,false}};
+    std::string finalLabel="before_character_data";bool captureLoginFrame=false,captureSeen=false;DWORD loginObject=0;
+    if(argc==7){
+        const std::wstring mode=argv[6];
+        if(mode==L"after_create")finalLabel="after_client_create";
+        else if(mode==L"login_create")finalLabel="before_login_create";
+        else if(mode==L"login_render")finalLabel="before_login_render";
+        else if(mode==L"login_frame"){finalLabel="before_login_render";captureLoginFrame=true;}
+        else{std::fclose(output);TerminateProcess(process.hProcess,0xe0434207);CloseHandle(process.hThread);CloseHandle(process.hProcess);return 208;}
+    }
+    std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_first_login_render",0,false}};
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+20000;
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}
@@ -70,12 +79,23 @@ int wmain(int argc,wchar_t** argv){
                         d3dReached=true;DWORD values[4]={};SIZE_T read=0;bool ok=true;for(unsigned i=0;i<4;++i)ok=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[2]+plan[3+i]),values+i,4,&read)&&read==4&&ok;
                         std::fprintf(output,"{\"kind\":\"device_state\",\"read\":%s,\"ready\":%lu,\"window\":\"0x%lx\",\"device\":\"0x%lx\",\"windowed\":%lu}\n",ok?"true":"false",values[0],values[1],values[2],values[3]);
                     }
-                    if(found==points || (deviceMode&&found->rva!=stopRva)){
+                    const bool loginEntry=captureLoginFrame&&found==points+3;
+                    if(found==points || (deviceMode&&found->rva!=stopRva&&found!=points+4)||loginEntry){
                         if(found==points)mainReached=true;
                         if(deviceMode&&found==points+1){DWORD full=0,bits=0;SIZE_T read=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[0]),&full,4,&read);ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[1]),&bits,4,&read);std::fprintf(output,"{\"kind\":\"render_configuration\",\"fullscreen\":%lu,\"render_bits\":%lu}\n",full,bits);}
+                        if(loginEntry){
+                            loginObject=context.Ecx;DWORD returnAddress=0;SIZE_T read=0;auto& after=points[4];
+                            const bool ok=!captureSeen||(ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(context.Esp),&returnAddress,4,&read)&&read==4&&returnAddress>=imageBase&&returnAddress-imageBase<imageSize(process.hProcess,imageBase)&&ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(returnAddress),&after.original,1,&read)&&read==1&&writeByte(process.hProcess,returnAddress,0xcc));
+                            if(ok&&captureSeen){after.rva=returnAddress-imageBase;after.active=true;std::fprintf(output,"{\"kind\":\"login_render_return_armed\",\"rva\":\"0x%lx\"}\n",after.rva);}
+                            else if(!ok){std::fputs("{\"kind\":\"login_return_breakpoint_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434208);terminating=true;}
+                        }
                         if(!SetThreadContext(thread,&context)){std::fputs("{\"kind\":\"set_context_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434204);terminating=true;}
                     }else {
                         stopReached=true;
+                        if(finalLabel=="before_login_create"||finalLabel=="before_login_render"){
+                            const DWORD object=captureLoginFrame?loginObject:context.Ecx;DWORD stage[6]={};SIZE_T stageRead=0;const bool stageOK=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(object),stage,sizeof(stage),&stageRead)&&stageRead==sizeof(stage);
+                            std::fprintf(output,"{\"kind\":\"stage_state\",\"read\":%s,\"object\":\"0x%lx\",\"vtable\":\"0x%lx\",\"exit\":%lu,\"created\":%lu,\"loaded\":%lu,\"next\":%lu}\n",stageOK?"true":"false",object,stage[0],stage[1],stage[3],stage[4],stage[5]);
+                        }
                         if(deviceMode&&found==points+3){DWORD owner=0,device=0;SIZE_T read=0;bool ok=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[9]),&owner,4,&read)&&read==4&&owner;ok=ok&&ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(owner+plan[10]),&device,4,&read)&&read==4;
                             std::fprintf(output,"{\"kind\":\"character_owner\",\"read\":%s,\"owner\":\"0x%lx\",\"device\":\"0x%lx\"}\n",ok?"true":"false",owner,device);}
                         TerminateProcess(process.hProcess,0xe0434200);terminating=true;
@@ -86,10 +106,21 @@ int wmain(int argc,wchar_t** argv){
                 std::fprintf(output,"{\"kind\":\"exception\",\"code\":\"0x%08lx\",\"first_chance\":%lu,\"address\":\"0x%zx\"",code,exception.dwFirstChance,address);
                 for(const auto& module:modules)if(address>=module.base && address-module.base<module.size){std::fprintf(output,",\"rva\":\"0x%zx\",\"module\":",address-module.base);quoted(output,module.path);break;}
                 if(exception.ExceptionRecord.NumberParameters>=2)std::fprintf(output,",\"parameter0\":%zu,\"parameter1\":\"0x%zx\"",static_cast<std::size_t>(exception.ExceptionRecord.ExceptionInformation[0]),static_cast<std::size_t>(exception.ExceptionRecord.ExceptionInformation[1]));std::fputs("}\n",output);
-                disposition=DBG_EXCEPTION_NOT_HANDLED;if(!exception.dwFirstChance){TerminateProcess(process.hProcess,0xe0434205);terminating=true;}
+                disposition=DBG_EXCEPTION_NOT_HANDLED;if(!exception.dwFirstChance){
+                    HANDLE faultThread=OpenThread(THREAD_GET_CONTEXT|THREAD_QUERY_INFORMATION,FALSE,event.dwThreadId);CONTEXT fault={};fault.ContextFlags=CONTEXT_CONTROL|CONTEXT_INTEGER;
+                    if(faultThread&&GetThreadContext(faultThread,&fault)){
+                        std::fprintf(output,"{\"kind\":\"fatal_context\",\"eax\":\"0x%lx\",\"ecx\":\"0x%lx\",\"edx\":\"0x%lx\",\"esi\":\"0x%lx\",\"edi\":\"0x%lx\",\"esp\":\"0x%lx\",\"own_stack_rva_candidates\":[",fault.Eax,fault.Ecx,fault.Edx,fault.Esi,fault.Edi,fault.Esp);
+                        DWORD words[64]={};SIZE_T bytes=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(fault.Esp),words,sizeof(words),&bytes);bool comma=false;DWORD ownSize=0;for(const auto& mod:modules)if(mod.base==imageBase)ownSize=mod.size;
+                        for(unsigned i=0;i<bytes/4;++i)if(words[i]>=imageBase&&words[i]-imageBase<ownSize){std::fprintf(output,"%s{\"stack_offset\":%u,\"rva\":\"0x%zx\"}",comma?",":"",i*4,words[i]-imageBase);comma=true;}
+                        std::fputs("]}\n",output);
+                    }
+                    if(faultThread)CloseHandle(faultThread);TerminateProcess(process.hProcess,0xe0434205);terminating=true;
+                }
             }
         }else if(event.dwDebugEventCode==OUTPUT_DEBUG_STRING_EVENT){
-            const auto& item=event.u.DebugString;if(!item.fUnicode&&item.nDebugStringLength&&item.nDebugStringLength<1024){char text[1024]={};SIZE_T read=0;if(ReadProcessMemory(process.hProcess,item.lpDebugStringData,text,item.nDebugStringLength,&read)&&read==item.nDebugStringLength){text[1023]=0;std::wstring value;for(unsigned char*c=reinterpret_cast<unsigned char*>(text);*c;++c)value.push_back(*c);std::fputs("{\"kind\":\"debug_string\",\"value\":",output);quoted(output,value);std::fputs("}\n",output);}}
+            const auto& item=event.u.DebugString;if(!item.fUnicode&&item.nDebugStringLength&&item.nDebugStringLength<1024){char text[1024]={};SIZE_T read=0;if(ReadProcessMemory(process.hProcess,item.lpDebugStringData,text,item.nDebugStringLength,&read)&&read==item.nDebugStringLength){text[1023]=0;std::wstring value;for(unsigned char*c=reinterpret_cast<unsigned char*>(text);*c;++c)value.push_back(*c);std::fputs("{\"kind\":\"debug_string\",\"value\":",output);quoted(output,value);std::fputs("}\n",output);
+                if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
+            }}
         }else if(event.dwDebugEventCode==EXIT_PROCESS_DEBUG_EVENT){std::fprintf(output,"{\"kind\":\"exit\",\"code\":\"0x%08lx\"}\n",event.u.ExitProcess.dwExitCode);exited=true;}
         std::fflush(output);if(!ContinueDebugEvent(event.dwProcessId,event.dwThreadId,disposition)){std::fprintf(output,"{\"kind\":\"continue_error\",\"error\":%lu}\n",GetLastError());break;}
     }
