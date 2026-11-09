@@ -1,5 +1,10 @@
 # Light direction131 — преобразование света LitGrass
 
+Runtime131 исторический после132. Текущий gate:
+`inventory/client455-entity-owner-checkpoint.json`.
+Math implementation и статические доказательства131 сохраняются;132 изменяет
+только BSP producer переноса освещения из реального EBP record.
+
 2026-11-10. **PARTIAL M6**. Обычный CEntity теперь использует подтверждённые
 455 affine inverse/transform и тело нормализации направления света. Для конечных
 неотрицательных аргументов sqrt восстановлена политика PC/RC старого CRT.

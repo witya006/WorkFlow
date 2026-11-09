@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Map entity owner132. Ordinary EBP record Flag72 bit40 is copied
+to successful CEntity+104 before RestoreTexMem;failed/particle branch unchanged.
+5fullasm/1665instructions/5ranges equalboth455;1025unchanged instructions reused130.
+93physicalEBP/3700rows/1584lit/82shader is inputinventory,not unique assets/completed maps.
+Two actualNeutralB loads:21flagged rows,20available owners,knownmissingtrade_bel.
+Ordinary visibility queue supplies alpha;4newGPUviewed/fixed-LitGrass realBSP routes.
+30fresholdpixels byteequal131/72directiondraws/Create1PASS;unchanged240CPU retained.
+Engineb710d6c8/1BSPpayload66same/headersstable;PEeed1a216/entry16C9C0/unresolved0.
+Next133:runtime materials extra8/capacity/shader lifecycle.Otherwriters/fullclientOPEN.
+[Evidence](research/client455-entity-owner.md).
+
 2026-11-10 — Light direction131. Ordinary CEntity uses existing exact455 affine
 inverse/transform and136-byte normalizer body with selected finite sqrt CW policy.
 Corrected130:Vector3fTransform was already exactx87,not legacy arithmetic.

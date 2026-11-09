@@ -110,6 +110,9 @@ def main():
             start,end=section(raw,b'void *GetDDSTexFromBuffer(',b'void *GetDDSTexFromBuffer(')
             raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
         elif filename=='bsp.cpp':
+            entityOwnerAnchor=b'\t\t\tmEntity[i].RestoreTexMem();'
+            if raw.count(entityOwnerAnchor)!=1:raise ValueError('Successful map entity light owner boundary')
+            raw=raw.replace(entityOwnerAnchor,(WS/'scripts/native/client455_map_entity_owner.inc').read_bytes()+b'\n'+entityOwnerAnchor)
             from prepare_client455_normal import section
             raw=b'#include "client455_bsp_light.h"\n'+raw
             start,end=section(raw,b'void CBsp::DrawDynamicLightSub(',b'void CBsp::DrawDynamicLightSub(');raw=raw[:start]+raw[end:]
@@ -316,6 +319,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['lighting_consumers']={name:sha(WS/'scripts/native'/name) for name in ['client455_entity_lighting.h','client455_entity_lighting.inc','client455_entity_normals.h','client455_lit_grass.inc']}
     report['lighting_port_script']={'file':'scripts/client455_lighting_port.py','sha256':sha(WS/'scripts/client455_lighting_port.py')}
     report['light_direction']={name:sha(WS/'scripts/native'/name) for name in ['client455_light_direction.h','client455_light_direction.inc']}
+    report['map_entity_owner']={'file':'scripts/native/client455_map_entity_owner.inc','sha256':sha(WS/'scripts/native/client455_map_entity_owner.inc')}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

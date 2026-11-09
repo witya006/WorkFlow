@@ -1,111 +1,115 @@
 # Память проекта
 
-Обновлено 2026-11-10. **131 PARTIAL M6**.
-Текущий gate: inventory/client455-light-direction-checkpoint.json.
-Проверка: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_light_direction.py.
-Доказательства: research/client455-light-direction.md.
-Runtime130 исторический, статические доказательства и изображения сохранены.
-Предыдущая полная память: research/project-memory-before131.md.
-Предыдущий goal turn130: progress, commit64636cd. Текущий131: progress.
+Обновлено 2026-11-10. **132 PARTIAL M6**.
+Gate: inventory/client455-entity-owner-checkpoint.json.
+Проверка: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_entity_owner.py.
+Доказательства: research/client455-entity-owner.md.
+Runtime131 исторический; source/math/static proofs сохраняются.
+Предыдущая полная память: research/project-memory-before132.md.
+Предыдущий goal turn131 — progress, commit91027ae. Текущий132 — progress.
 
-## Цель и правила
+## Цель и обязательные правила
 
 CLIENT ONLY: поддерживаемые исходники и свой RF_Online.bin с полным поведением455.
-M9 УЖЕ определён: финальная приёмка без модернизации графики. Не повторять вопрос
-из старого Goal. M0–M4 diagnostic/selectedM5 выполнены; M6/M6F/M7/M9 OPEN, M8 не нужен.
+M9 УЖЕ определён: финальная приёмка без модернизации графики. Старый Goal про M9/M4
+устарел. M0–M4 diagnostic/selectedM5 выполнены; M6/M6F/M7/M9 OPEN, M8 не нужен.
 Build/Create1/selected component не закрывают docs/client-acceptance.md.
-Server только читать как reference; не менять, не собирать, не восстанавливать.
+Server только читать reference; не менять/не собирать/не восстанавливать.
 Originals immutable, inputEXE never execute, copies under work/, Git local/no push.
 Subagents только по явному запросу. Python scripts/Invoke-Python.ps1 file.py, не -c/-m.
-VS2026 MSVC x86. Native/GPU jobs sequential; timeout не restart, дождаться terminal
-того же handle. Перед runtime edit exact engine/PE/MAP/rsp/reports backup.
+VS2026 MSVC x86. Native/GPU jobs sequential. Timeout не restart: опросить тот же
+handle до terminal. Перед runtime edit exact engine/PE/MAP/rsp/reports backup.
 Ignored != backup. Не повторять159k/unchanged bulk suites без нового риска.
-Updates коротко RU <=60s. rg --files перед неизвестными именами, не shell path globs.
+Короткие RU updates <=60s. rg --files перед неизвестными именами; не shell path globs.
 
-## Подтверждено131
+## Подтверждено132
 
-Primary SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b.
-Secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
-x86/base400000.10fullasm/411instructions/11ranges equalboth455:
-5primary315 +5CRT context96, полные CFG и все positive block starts.
-5primary pcode полны; CRT start_3 Hex-Rays failed, full CRT pcode НЕ заявлен.
-Raw/session artifacts/client455-progress/light-direction131-*.json.
-Owned session1ff3df20 saved/closed/list0. Live native jobs отсутствуют.
-MCP <=100asm/page, counts/unique/done AND all positiveCFG starts/tails; не alias
-firstpage.asm.lines и aggregate. Save JSON chunks <=20k via Node, не печатать весь raw.
+Primary SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+x86/base400000.5fullasm/1665instructions/5ranges equalboth455, completeCFG/pcode.
+640new instructions:8FF280 EBP load,8FDE00 streams,8F94A0 LoadEntities,8E08A0
+RestoreTexMem.1025instruction8E0A20 LoadEntity body reused from complete130 raw.
+Raw/session artifacts/client455-progress/entity-owner132-*.json. Session3022d6f4
+saved/closed/list0. No live native jobs. Source original files/server untouched.
+MCP <=100asm/page, counts/unique/done AND everypositiveCFGblockstart/tail.
+No firstpage.asm.lines/aggregate alias. Large raw JSON via <=20k Node chunks.
 
-VA8BFBC0 affine inverse и8C0980 transform уже были восстановлены в x87 library.
-130 ошибочно назвал Vector3fTransform legacy: actual source уже использовал точный
-wrapper.131 повторно использует этот backend, заменяет D3DX inverse и отдельный
-геометрический normalizer в light branch. Новая обычная цепочка:
-prepareEntityShader455 -> RF455_BuildLightDirection -> inverse -> zero translation
--> transform -> RF455_NormalizeLightVector -> RF455_LightSqrt.
-Main normalizer VA51D5D0/136bytes повторён инструкциями кроме CALL sqrt backend.
-Нормализатор геометрии130 НЕ менялся: у него другой порядок операций.
-Inverse guards0.001; caller игнорирует failure и потребляет unspecified stack bytes.
-НЕ добавлять fallback. Direct guard tests не доказывают output такого caller.
+Actual producer:84-byte _ENTITY_LIST.Flag offset72 bit40 -> CEntity.mFlag offset104.
+8F9690 test byte[ebx+eax+48h],40h (f644034840),8F969D OR[esi+ecx+68h],40h
+(834c0e6840). Only after successful nonparticle LoadEntity,before RestoreTexMem.
+Disabled shader clears ShaderID74 before deriving option2. All static get option20;
+only record bit40 is copied,not all record flags. Failed load retains20/22,not40.
+New client455_map_entity_owner.inc is inserted into generated CBsp::LoadEntities.
+No header/layout changes.
 
-Sqrt wrappers41DB70/41DB90 -> CRT874514/start87451D. __load_CW888DD5:
-temporaryCW=(callerCW&0x300)|0x7f. FSQRT nearest, callerPC сохранён; затем restore
-callerCW и float store с callerRC. Перенесена выбранная finite nonnegative policy.
-CRT matherr/errno/precision-error callbacks, unmasked exceptions, full NaN/Inf/
-status flags всё ещё OPEN; не заявлять полное sqrt/CRT equivalence.
-Normalizer sum x*x+y*y+z*z -> float square -> float sqrt -> double spill -> divs.
-Zero normal остаётся x87 indefinite, без нового направления по умолчанию.
+Physical Map/**/*.ebp inventory:93files/3700rows/1584static lit rows/82lit shader rows.
+These include alternate/duplicate maps;not unique assets or accepted gameplay.
+All original files SHA pinned;parser reads EBP20/84-byte entries independently.
+Actual neutralB:77entries/21lit/15lit shader. Known missing trade_bel atentry76
+hasflag40,so20available loadedlit owners per pass. Do not claim21loaded or fixinput.
+Native work/m9/76a8740b/entity-owner-001,2actual CLand/CLevel loads with shader1/0.
+All154runtime owner rows checked against actual EBP.4actualBSPdraws/4GPUframes viewed:
+b_gate entry62/instance3435 and b_tree04 entry1/instance0, fixed/LitGrass.
+No manual CEntityflag assignment. Actual shader dump300bytes equalsLitGrass1.
+Images are own lab,not reference455pixel comparison. Unknown thin geometry gap stays.
 
-240CPU:96normal+96affine+48guards в12PC/RC modes; independent Fraction oracle
-rounds each operation and sqrt via integer midpoint. Selected outputs bitexact.
-72actual LitGrass draws/6world transforms/12FPmodes: shader19.xyz bitexact.
-Main/CPU PE: inverse485/transform132/normalizer136 byteidentity except epsilon/
-verified sqrt CALL. CPU BuildLightDirection inlined; ordinary PE retains owner.
-New full-object GPU lab work/m9/27c783ee/light-direction-001.
-5frames +72draws/stock300byte shader/36stride/8materialcases/3bumptimes/5328
-geometry normals exact. CPU source is client455_light_direction_probe.cpp.
-One compile failure: wrong test helper control125; correct setCW125, fixed.
-One audit failure demanded noninlined CPU owner; now require only in ordinary PE.
+Harness corrections:generic runner now optional expected_frames(default5),owner uses4.
+Initial21loaded assertion wrong becauseknownmissinginput;actual20 proven.
+Initial directRenderOne before ordinaryqueue hadalpha0. Need SetCameraPos,
+SetViewMatrix, inverseview and viewproj from camera fixture, FrameMove,
+DrawMapRender/DrawMapEntitiesRender to compute visibility/fade Color. Then clear
+and render chosen actualinstance separately. CLevel::SetViewMatrix deliberately
+doesnot publish inverseview; ordinary R3Move camera does. Do not change production
+or manually set Color/flags to satisfy lab. Queue used,not fully accepted equivalent.
 
-## Текущая сборка и регрессии
+## Exact current build and evidence
 
-Engine9f33478968c77b1a81acd031c50acd2175e7e37d129a067d16257e810175011e.
-67objects/21derived,1payload(renderentity) changed/66byteequal130; no timestamps-only.
-Shared camera/vertex/particle/core/level headers unchanged;182client/20kernel objects
-preserved, no redundant full rebuild. Short ANI/BBX consumers rerun PASS.
-PEd1738f4e7516f33867c9fa7d3dc3219e684843dc49fec456e01eaa96783496b5.
-2255872bytes/x86/base400000/entry16C9B0/WinMainB98B0/afterCreateB9A24/unresolved0.
-No CharacterMR/no FORCE. Exact own-entry/providers/sound1/window/device/
-existingCreate1/contracts PASS. Known handled first-chance40080201/E06D7363/
-406D1388 remain; full bootstrap/game loop not accepted.
+Engineb710d6c802cc8ead4be3ce171e54789abc6d9f6ca80feb02d52aae4fec677974.
+67objects/21derived,1payload R3Engine455Startup.dir\\Release\\bsp.obj changed,
+66byteequal131/no timestamp-only. Sharedcamera/vertex/particle/core/level unchanged.
+182client/20kernel objects retained,no redundant full rebuild.
+PEeed1a216cb7ee90fccad50d883b9e779fea1be46229a6ed5b63d5d72cb3cf227.
+2255872bytes/x86/base400000/entry16C9C0/WinMainB98B0/afterCreateB9A24/unresolved0.
+No CharacterMR/FORCE. Exact own entry/providers/sound1/window/device/
+existingCreate1/contracts and shortANI/BBX PASS. Knownhandled exceptions
+40080201/E06D7363/406D1388 retained;fullbootstrap/gameloop notaccepted.
+Audit archive names are bsp.obj,not bsp.cpp.obj. Check actual archive member names.
 
-Fresh world76queue/16clock/6oldwarnings,material60profiles/36cases/1missing,
-fade90+27/0warnings,lighting867colors/3aggregates/27Mie/29BSP/2warnings,
-weather90scripts/5aggregates/1missing PASS. All30new raw+PNG framecontents byteequal
-reviewed130. Explicit review reuse, no new visual inspection. New CLI
-reuse_client455_visual_review.py light-direction --snapshot before131
---reference-prefix lighting-consumers. Same-prefix regressions use before131.
-Never reuse if pixels differ. Exact130 before131 snapshots include reports,
-engine/PE/MAP/rsp/sharedcamera+vertex headers and research memory/next backups.
-Prior130 gate is pinned historical. New feature CLIENT455-LIGHT-DIRECTION-131 current.
+Fresh72LitGrass directions/12FP modes/5entity paths/5328normalbits/8materialstates/
+3bumptimes PASS. Previous240CPU math proof unchanged/explicitly retained;three
+exactlinked bodies rechecked in newPE. Freshworld76queue/16clock/6oldwarnings,
+material60/36/1missing,fade90+27/0warnings,lighting867/3aggregates/27Mie/29BSP/
+2warnings,weather90/5aggregates/1missing PASS. All30freshraw+PNG contents
+byteequal reviewed131;explicit reviewreuse before132. Four newframes reviewed.
+Gate visuallyaccounted34. No159k/unchangedbulks rerun.
+Exact131 backups before132 include reports/engine/PE/MAP/rsp/sharedcamera+vertex
+headers and research memory/next backups. Feature CLIENT455-MAP-ENTITY-OWNER-132 current.
 
-## Следующие участки
+## Remaining/next133
 
-132: actual game writers/selection of CEntity flag40,typed owners and flags across
-real creation/load/callers; don't infer gameplay from lab flags. Then material
-runtime526/layer54/extra8/capacity vs source332/layer46/max4 and shader lifecycle.
-Serialized46 -> runtime54 confirmed at90B1C0; do not cast source to526.
-Broader slots plausible7, no constructor proof yet. LitGrass3-register overreads:
-shader reads19.xyz/21/22; source deterministic unused lanes, later consumer proof OPEN.
-Shader caps/failure/reset/OOM, exact CRT, lensflare/localfog/indirect params,
-INS/Planet/world visibility/camera/alpha/textures/UI/stages/auth/protocol/Character/
-gameplay/full client-acceptance remain OPEN. NeutralB upward camera/thin strips
-remain an explicit unknown fidelity gap; unchanged frames do not close it.
+133:materialruntime526/layer54/extra8/capacity vs source332/layer46/max4.
+90B1C0 reads46serialized bytes into54runtime slots. Do not cast source to526.
+Broader7slots plausible,needs constructor/reader/writer proof. Restore actual extra
+fields and layer limits,then shader caps/failure/reset/OOM and unused register lanes.
+Other game/effect flag40 writers,fullvisibility/fade/alpha/camera/world notaccepted.
+LitGrass original3-register overreads:shader reads19.xyz/21/22;source unusedlanes
+deterministic,complete state-consumer proof OPEN. Geometricdecompressor/GetNormal
+fullFP/status remains OPEN. NeutralB upwardcamera/thin strips unknownfidelitygap.
+INS/Planet/lensflare/localfog/indirectparams/UI/stages/auth/protocol/Character/
+gameplay andall client-acceptance gaps OPEN.
 
-Keep128 lighting lag: previousorbit/currentfar -> Sun position, then newSun/Mie;
-tint uses OLDfog, then newfog. Fogflag2 endpoints else289grid17x17; no zero-divisor
-fallback. NegativeZzero=-0; exact19h Mie discontinuity preserved. R3X4day/8night,
-absent endpoints retain previous; FOG_COLOR current/main5/5000 not day distances.
-129 tags uppercase90A5ED forFOG/ENV,lower90ACEC forweather/scene flags.
-Packedweather1157D3C BSS0 persistsInitCore/R3X, fullDWORD OR spill, no byte clamp.
-Missing trade_bel.r3e never substitute. Lab temporaryCLevel must outlive active map:
-its destructor releases global resources. D3D observers patch originalFULLvtable
-57/82/83, restore around forward/Get; never clone119 entries(private driver slots).
-Goal active; M6/M6F/M7/M9 OPEN. Don't pause/block/complete for partial progress.
+131 light math:existing exact RF455_MatrixInvert/Vector3fTransform reused;
+130 called transformlegacy incorrectly.51D5D0 normalizer136bytebody exact except
+selectedsqrt CALL. CRT tempCW=(callerCW&0x300)|0x7f; FSQRT nearest/callerPC,
+thenrestorecallerCW andfloatstore withcallerRC. Selectedfinite12PC/RC values exact.
+Full CRT matherr/errno/precisionerror/unmasked exceptions/NaNInf/status flags OPEN.
+Inverseguard0.001 failure ignored bytargetcaller,unspecified stackbytes;no fallback.
+
+Preserve128 previousorbit/currentfar ->Sunposition,newSun/Mie,tintOLDfog,thennewfog.
+Fogflag2 endpoints else289grid17x17,nozero-divisor fallback. NegativeZ0=-0;exact19h
+Mie discontinuity. R3X4day/8night,absentendpointretention,FOG_COLOR main5/5000notday.
+129 uppercase90A5ED FOG/ENV,lower90ACEC weather/scene flags;packedweather1157D3C
+BSS0 persistsInitCore/R3X,fullDWORD OR spill,no byteclamp. Missingtrade_bel no substitute.
+TemporaryCLevel mustoutliveactive map:destructor freesglobalresources.
+D3D observers patch originalFULLvtable57/82/83,restorearoundforward/Get;neverclone119
+entries(private driver slots). Goal active,M6/M6F/M7/M9OPEN;no completion onpartial.
