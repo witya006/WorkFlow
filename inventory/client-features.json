@@ -6,6 +6,52 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-MESSAGE-DISPATCH-110",
+      "status": "audit_open",
+      "runtime_gate_current": false,
+      "runtime_changed": false,
+      "description": "Pinned exact common dispatch,actual Login message/render,MainGame/Tutorial counters and C1A cancellation/CE7 arming order before ordinary source implementation111;runtime109 retained",
+      "reference": [
+        {
+          "rva": "0x1e47a0",
+          "role": "formatted system message"
+        },
+        {
+          "rva": "0x1e4a60",
+          "role": "stage routing"
+        },
+        {
+          "rva": "0x140400",
+          "role": "actual Login primary message256"
+        },
+        {
+          "rva": "0x13cb40",
+          "role": "actual Login Render"
+        },
+        {
+          "rva": "0xfe020",
+          "role": "hover cancel C1A"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "role": "arm CE7"
+        }
+      ],
+      "implementation": [
+        "scripts/audit_client455_message_dispatch.py"
+      ],
+      "verification": "22fullpseudocode/22fullasm/1254instructions,22bodies+46byteEHregion equalbothpins,23E8calls decoded,CGP_LogIn ctor vptr/RTTI/render slot confirmed. Owned analysis79b91993closed/list0;recovery5b785e72savedclosed/list0 with persisted response. Runtime109 PE/engine unchanged; no new native acceptance.",
+      "evidence": [
+        "inventory/client455-message-dispatch-reference.json",
+        "research/client455-message-dispatch.md"
+      ],
+      "gaps": [
+        "Ordinary formatter/common routing/Login sink/C1A/CE7 integration still open;next111 implementation,not repeat audit",
+        "Legacy source MainGame2 must map to target3; actual Tutorial/fourstage factory/login/auth/fullUI remain open",
+        "Formatted buffer overflow/CRTstartup/privateABI/concurrency/shutdown and all prior client-acceptance gaps remain mandatory;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
       "id": "CLIENT455-CHAT-109",
       "status": "partial",
       "runtime_gate_current": true,

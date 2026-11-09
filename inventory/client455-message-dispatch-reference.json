@@ -1,0 +1,556 @@
+{
+  "status": "AUDIT_OPEN",
+  "scope": "Complete selected dispatch/caller/login-message contracts; no source/runtime restoration claimed",
+  "script_sha256": "df6c11d2a9c23d4c4cf68fec38de3f42907828acf8835eb3efa0129a66ef91fe",
+  "raw": {
+    "file": "artifacts/client455-progress/dispatch110-reference.json",
+    "sha256": "c2d0607776640b18e4b265a69e59ef6940c8b4e6ff2bbe3cbcfd9f5b7019ebc8"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/dispatch110-session.json",
+    "sha256": "ed4916f7aedc89e7d0337f629a16dfe19fa1b4b21f7a4a01081ebd4996c4d7f5"
+  },
+  "selected_functions": 22,
+  "full_assembly_functions": 22,
+  "instructions": 1254,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x1e47a0",
+          "bytes": 164,
+          "sha256": "4f206cbc2195fbbea819fcd7d612a90a68e9db5d0d02aeb3f24600fb88376932"
+        },
+        {
+          "rva": "0x1e4850",
+          "bytes": 87,
+          "sha256": "dd2665f6c1e979e9dac0de58df2ea0f7b46003535dcd0e0af6c058e713926bf2"
+        },
+        {
+          "rva": "0x1e48b0",
+          "bytes": 40,
+          "sha256": "aadb6d824ea09927d15efc9dd8c3501ccaaded2c8fb8f46e8372aa379f518e4f"
+        },
+        {
+          "rva": "0x1e48e0",
+          "bytes": 87,
+          "sha256": "806738cf78b934339b8209dfc5796f08952c3a18d4d81cd06d68aee5be89cef3"
+        },
+        {
+          "rva": "0x1e49a0",
+          "bytes": 77,
+          "sha256": "fc9207360c5878a7d058e8671ccb550ed6fa6f97fe530864150a9594047e5886"
+        },
+        {
+          "rva": "0x1e49f0",
+          "bytes": 98,
+          "sha256": "661206eeb716beaadb5389d8b0116b5d7aa4f39c480d27eb86ff6fef590619fc"
+        },
+        {
+          "rva": "0x1e4a60",
+          "bytes": 305,
+          "sha256": "36ff2067c806163bf883a798112489e0353ef501e699a7135380749e5c9e065d"
+        },
+        {
+          "rva": "0x13f780",
+          "bytes": 28,
+          "sha256": "c2951471b567c22df8845b42ab7545d72d49c556216689e6c2dccbd0e7dbab20"
+        },
+        {
+          "rva": "0x18f370",
+          "bytes": 28,
+          "sha256": "e45482fe5a6390d1ecac618a88245939ba65c68a4d0ec55e7a9de9211727f60b"
+        },
+        {
+          "rva": "0x140400",
+          "bytes": 80,
+          "sha256": "861022a7d1d1fdc71e9c33661ce2eba6a89c6d14e896c47f23893599e96d990e"
+        },
+        {
+          "rva": "0x140450",
+          "bytes": 80,
+          "sha256": "56f35a6f8033471a49c766363ca1cd8fec6d93e48fdd9596f4d09d84fe3d216d"
+        },
+        {
+          "rva": "0x1e5920",
+          "bytes": 103,
+          "sha256": "7335a88bb0782b39dcec4b426621119fdcf87085290bfcc3d7e3b1c32688be13"
+        },
+        {
+          "rva": "0x13b860",
+          "bytes": 118,
+          "sha256": "a5091ef8c89c9bdc7c856e8bb680b4e3ead59d2ab747ce29e201a40e164f1404"
+        },
+        {
+          "rva": "0x13b9b0",
+          "bytes": 363,
+          "sha256": "38ef442cbe63ba14340eff680ce39ece53d875c0e7ee1e355d54f077cbecd378"
+        },
+        {
+          "rva": "0x13cb40",
+          "bytes": 1230,
+          "sha256": "0edb47caee5329bce59630b8fde8fc7bdc69ad197ce3e580d7c3cfbc59eeb2e1"
+        },
+        {
+          "rva": "0xfe020",
+          "bytes": 623,
+          "sha256": "088d59dd4b93eb03b894e0035ed83d193e9a0a75a4da85e6a7ae9e3bb8bc204a"
+        },
+        {
+          "rva": "0x12ab50",
+          "bytes": 58,
+          "sha256": "e353d9942ab076f2fc808161b1e7b53e024baeb03e9a7af9eb4907686114f933"
+        },
+        {
+          "rva": "0xfd640",
+          "bytes": 25,
+          "sha256": "bdecf3ca80d56ad846df0bf96f0cfac1d5ec90e0c09b4ce08f7001a7abda437b"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "bytes": 91,
+          "sha256": "e0d4f4ec58fe745fc431e6a0ae695d6054685f133a65d793cef2cfad99dda961"
+        },
+        {
+          "rva": "0xfe610",
+          "bytes": 75,
+          "sha256": "4a7f85cdeadb05852c04428dfddbca1ee63fd34814ddebf8f74ece8bb074a7e9"
+        },
+        {
+          "rva": "0x12ac00",
+          "bytes": 51,
+          "sha256": "415138c3faa5eb5aaa0257ecb3ff1141171edcc2b610751eeb00a198757070c3"
+        },
+        {
+          "rva": "0x12ac40",
+          "bytes": 219,
+          "sha256": "78d3bb9b6f208d0efb7c68069441f9e6ee35e31f588a861f2bafa00ecc45eed9"
+        }
+      ],
+      "tails": [
+        {
+          "owner_rva": "0x13b860",
+          "rva": "0x62b110",
+          "bytes": 46,
+          "sha256": "18b08fa4f2401ccecf32a8d37cb027f16e0335b0ea27785170e4035111d8d0c5"
+        }
+      ],
+      "login_identity": {
+        "class_name": "CGP_LogIn",
+        "vtable_rva": "0x6b0014",
+        "locator_rva": "0x77e3c8",
+        "descriptor_rva": "0x7d1520",
+        "decorated_type": ".?AVCGP_LogIn@@"
+      },
+      "constructor_vptr_store": "c7001400ab00",
+      "sequence_format": {
+        "rva": "0x6d8244",
+        "bytes": 5,
+        "sha256": "cd7ce5cf16e2a4a916906bdbed48b89de2e03ce2800b9c7315b109d7c86f28b5"
+      },
+      "decoded_calls": [
+        {
+          "rva": "0x1e47cb",
+          "target_rva": "0x475203"
+        },
+        {
+          "rva": "0x1e47e3",
+          "target_rva": "0x13f780"
+        },
+        {
+          "rva": "0x1e4825",
+          "target_rva": "0x5b220"
+        },
+        {
+          "rva": "0x1e482c",
+          "target_rva": "0x5b1a0"
+        },
+        {
+          "rva": "0x1e4835",
+          "target_rva": "0x1e4a60"
+        },
+        {
+          "rva": "0x1e4a82",
+          "target_rva": "0x18f370"
+        },
+        {
+          "rva": "0x1e4a98",
+          "target_rva": "0x140400"
+        },
+        {
+          "rva": "0x1e4b28",
+          "target_rva": "0x345b80"
+        },
+        {
+          "rva": "0x1e4b85",
+          "target_rva": "0x345b80"
+        },
+        {
+          "rva": "0x140425",
+          "target_rva": "0x1e5920"
+        },
+        {
+          "rva": "0x13b8b5",
+          "target_rva": "0x13b9b0"
+        },
+        {
+          "rva": "0x13ce6c",
+          "target_rva": "0x3b24b0"
+        },
+        {
+          "rva": "0x13ceb1",
+          "target_rva": "0x4c6020"
+        },
+        {
+          "rva": "0xfe057",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0xfe066",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0xfe06c",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5ac5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5ad4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5ada",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5aeb",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0x1c5aff",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x12ab67",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x12ab74",
+          "target_rva": "0x12ac40"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x1e47a0",
+          "bytes": 164,
+          "sha256": "4f206cbc2195fbbea819fcd7d612a90a68e9db5d0d02aeb3f24600fb88376932"
+        },
+        {
+          "rva": "0x1e4850",
+          "bytes": 87,
+          "sha256": "dd2665f6c1e979e9dac0de58df2ea0f7b46003535dcd0e0af6c058e713926bf2"
+        },
+        {
+          "rva": "0x1e48b0",
+          "bytes": 40,
+          "sha256": "aadb6d824ea09927d15efc9dd8c3501ccaaded2c8fb8f46e8372aa379f518e4f"
+        },
+        {
+          "rva": "0x1e48e0",
+          "bytes": 87,
+          "sha256": "806738cf78b934339b8209dfc5796f08952c3a18d4d81cd06d68aee5be89cef3"
+        },
+        {
+          "rva": "0x1e49a0",
+          "bytes": 77,
+          "sha256": "fc9207360c5878a7d058e8671ccb550ed6fa6f97fe530864150a9594047e5886"
+        },
+        {
+          "rva": "0x1e49f0",
+          "bytes": 98,
+          "sha256": "661206eeb716beaadb5389d8b0116b5d7aa4f39c480d27eb86ff6fef590619fc"
+        },
+        {
+          "rva": "0x1e4a60",
+          "bytes": 305,
+          "sha256": "36ff2067c806163bf883a798112489e0353ef501e699a7135380749e5c9e065d"
+        },
+        {
+          "rva": "0x13f780",
+          "bytes": 28,
+          "sha256": "c2951471b567c22df8845b42ab7545d72d49c556216689e6c2dccbd0e7dbab20"
+        },
+        {
+          "rva": "0x18f370",
+          "bytes": 28,
+          "sha256": "e45482fe5a6390d1ecac618a88245939ba65c68a4d0ec55e7a9de9211727f60b"
+        },
+        {
+          "rva": "0x140400",
+          "bytes": 80,
+          "sha256": "861022a7d1d1fdc71e9c33661ce2eba6a89c6d14e896c47f23893599e96d990e"
+        },
+        {
+          "rva": "0x140450",
+          "bytes": 80,
+          "sha256": "56f35a6f8033471a49c766363ca1cd8fec6d93e48fdd9596f4d09d84fe3d216d"
+        },
+        {
+          "rva": "0x1e5920",
+          "bytes": 103,
+          "sha256": "7335a88bb0782b39dcec4b426621119fdcf87085290bfcc3d7e3b1c32688be13"
+        },
+        {
+          "rva": "0x13b860",
+          "bytes": 118,
+          "sha256": "a5091ef8c89c9bdc7c856e8bb680b4e3ead59d2ab747ce29e201a40e164f1404"
+        },
+        {
+          "rva": "0x13b9b0",
+          "bytes": 363,
+          "sha256": "38ef442cbe63ba14340eff680ce39ece53d875c0e7ee1e355d54f077cbecd378"
+        },
+        {
+          "rva": "0x13cb40",
+          "bytes": 1230,
+          "sha256": "0edb47caee5329bce59630b8fde8fc7bdc69ad197ce3e580d7c3cfbc59eeb2e1"
+        },
+        {
+          "rva": "0xfe020",
+          "bytes": 623,
+          "sha256": "088d59dd4b93eb03b894e0035ed83d193e9a0a75a4da85e6a7ae9e3bb8bc204a"
+        },
+        {
+          "rva": "0x12ab50",
+          "bytes": 58,
+          "sha256": "e353d9942ab076f2fc808161b1e7b53e024baeb03e9a7af9eb4907686114f933"
+        },
+        {
+          "rva": "0xfd640",
+          "bytes": 25,
+          "sha256": "bdecf3ca80d56ad846df0bf96f0cfac1d5ec90e0c09b4ce08f7001a7abda437b"
+        },
+        {
+          "rva": "0x1c5ab0",
+          "bytes": 91,
+          "sha256": "e0d4f4ec58fe745fc431e6a0ae695d6054685f133a65d793cef2cfad99dda961"
+        },
+        {
+          "rva": "0xfe610",
+          "bytes": 75,
+          "sha256": "4a7f85cdeadb05852c04428dfddbca1ee63fd34814ddebf8f74ece8bb074a7e9"
+        },
+        {
+          "rva": "0x12ac00",
+          "bytes": 51,
+          "sha256": "415138c3faa5eb5aaa0257ecb3ff1141171edcc2b610751eeb00a198757070c3"
+        },
+        {
+          "rva": "0x12ac40",
+          "bytes": 219,
+          "sha256": "78d3bb9b6f208d0efb7c68069441f9e6ee35e31f588a861f2bafa00ecc45eed9"
+        }
+      ],
+      "tails": [
+        {
+          "owner_rva": "0x13b860",
+          "rva": "0x62b110",
+          "bytes": 46,
+          "sha256": "18b08fa4f2401ccecf32a8d37cb027f16e0335b0ea27785170e4035111d8d0c5"
+        }
+      ],
+      "login_identity": {
+        "class_name": "CGP_LogIn",
+        "vtable_rva": "0x6b0014",
+        "locator_rva": "0x77e3c8",
+        "descriptor_rva": "0x7d1520",
+        "decorated_type": ".?AVCGP_LogIn@@"
+      },
+      "constructor_vptr_store": "c7001400ab00",
+      "sequence_format": {
+        "rva": "0x6d8244",
+        "bytes": 5,
+        "sha256": "cd7ce5cf16e2a4a916906bdbed48b89de2e03ce2800b9c7315b109d7c86f28b5"
+      },
+      "decoded_calls": [
+        {
+          "rva": "0x1e47cb",
+          "target_rva": "0x475203"
+        },
+        {
+          "rva": "0x1e47e3",
+          "target_rva": "0x13f780"
+        },
+        {
+          "rva": "0x1e4825",
+          "target_rva": "0x5b220"
+        },
+        {
+          "rva": "0x1e482c",
+          "target_rva": "0x5b1a0"
+        },
+        {
+          "rva": "0x1e4835",
+          "target_rva": "0x1e4a60"
+        },
+        {
+          "rva": "0x1e4a82",
+          "target_rva": "0x18f370"
+        },
+        {
+          "rva": "0x1e4a98",
+          "target_rva": "0x140400"
+        },
+        {
+          "rva": "0x1e4b28",
+          "target_rva": "0x345b80"
+        },
+        {
+          "rva": "0x1e4b85",
+          "target_rva": "0x345b80"
+        },
+        {
+          "rva": "0x140425",
+          "target_rva": "0x1e5920"
+        },
+        {
+          "rva": "0x13b8b5",
+          "target_rva": "0x13b9b0"
+        },
+        {
+          "rva": "0x13ce6c",
+          "target_rva": "0x3b24b0"
+        },
+        {
+          "rva": "0x13ceb1",
+          "target_rva": "0x4c6020"
+        },
+        {
+          "rva": "0xfe057",
+          "target_rva": "0x12ab50"
+        },
+        {
+          "rva": "0xfe066",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0xfe06c",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5ac5",
+          "target_rva": "0xfe610"
+        },
+        {
+          "rva": "0x1c5ad4",
+          "target_rva": "0x2023b0"
+        },
+        {
+          "rva": "0x1c5ada",
+          "target_rva": "0x1e47a0"
+        },
+        {
+          "rva": "0x1c5aeb",
+          "target_rva": "0xfd640"
+        },
+        {
+          "rva": "0x1c5aff",
+          "target_rva": "0x12ac00"
+        },
+        {
+          "rva": "0x12ab67",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x12ab74",
+          "target_rva": "0x12ac40"
+        }
+      ]
+    }
+  ],
+  "source_observations": [
+    {
+      "file": "work/client455-port/normal/source/global.cpp",
+      "sha256": "e10429f7b6c517023e35dc6753039a7eeb094c3d053e7532fa65f79b25a00079"
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.cpp",
+      "sha256": "fad31469249888813650d1cb7a29442153bb28525451ec27f818b71f69c33df9"
+    },
+    {
+      "file": "work/client455-port/normal/source/mainapp.h",
+      "sha256": "3935a6e87aa52285f6286d6f7e1f406925a350b7b6777c6a1fd0fa529c4cee33"
+    },
+    {
+      "file": "work/client455-port/normal/source/gameprogress/cgp_login.h",
+      "sha256": "a79812fcd4fa8b32358056e83a92011a113f43c89208b8cb0a74f6cbee06304d"
+    },
+    {
+      "file": "work/client455-port/normal/source/gameprogress/cgp_login.cpp",
+      "sha256": "d67e2e4fabde2942145db47d5915b8953a22d99e30d92963d38b937a4692c29f"
+    },
+    {
+      "file": "work/client455-port/normal/source/gameobject/board/common/cboardmanager.cpp",
+      "sha256": "489c648fbef91b5300a2118e8176dba58981e714bb2d1c642fcf60b05c6897a2"
+    },
+    {
+      "file": "scripts/native/client455_avatar_stage.cpp",
+      "sha256": "911220d653f137e8f69a473331fde2f81068193966f3766af40d50a8c08de3f7"
+    }
+  ],
+  "current_runtime_gate": {
+    "file": "inventory/client455-chat-checkpoint.json",
+    "sha256": "63fb671e73823583b8faf06a1165e0a29d0f962fd7db275e1551d3782b4f5762",
+    "work": 109,
+    "executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "ef33b250cdaba110d4cb22c726aa6a82703c41de34a98d2a7b6902532a4279c1",
+      "bytes": 2190848,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x160400",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    }
+  },
+  "confirmed": [
+    "System formatter:stage not0/1/2 emits centerFFCC1F00 then common dispatch; title suppresses center and chat",
+    "MainGame3 uses separate process DWORD sequence,style2/category caller;category9 chooses25;nonzero style overrides; Tutorial2 has separate counter and forcesstyle2/category3",
+    "Login1 updates real CGP_LogIn message256 at+372 through currentstage pointer; null clears; bounded copy zeroes256 and copies min(strlen+1,255)",
+    "Login Render draws nonempty message after UI,centered using screen width and real text width,screenheight-30,colorFFFFA670,flags32,scale1",
+    "Adjacent secondary message256 at+632 has an actual target quirk:null secondary setter clears primary+372",
+    "Hover C1A:statuspredicate+pending then Clear(position/effect/sound/pending),localized message/common dispatch,then item mutation",
+    "Arm CE7:clear request-process state,message/common dispatch,then start only ifpending0; repeated arm still outputs message",
+    "Legacy source formatted output remains oldchat-only and DWORD overload no-op; actual factory MainGame2 differs from target3; existing bridge maps2to3"
+  ],
+  "next_work": 111,
+  "next_action": "Implement common dispatch in ordinary source with actual login/4pane/center sinks and C1A/CE7 producers; verify actual stage mapping/counters/sideeffects/order,not a message journal",
+  "gaps": [
+    "No runtime integration from this audit; live pending1 hover/CE7 caller remains open",
+    "Full Tutorial/four-stage factory and login/auth/UI flow remain open; selected sink is not whole stage acceptance",
+    "Formatted buffer size/unsafe overflow/null/CRTstartup/concurrency/privateABI and all previous client-acceptance gaps remain open"
+  ],
+  "runtime_changed": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

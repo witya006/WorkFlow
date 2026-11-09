@@ -1,5 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
+Исследование110: общий dispatch и настоящие C1A/CE7/Login цепочки подтверждены
+на двух455:22 функции/22fullasm/1254instructions,22bodies+46-byte EH region,
+23 decoded calls и RTTI CGP_LogIn. Login пишет256-byte сообщение и рисует его
+внизу экрана; Tutorial2 имеет отдельный counter и фиксирует style2/category3.
+При отмене C1A идёт после Clear эффекта/звука,до hover mutation. При начале CE7
+идёт после request-state clear,до SetPending;повторное начало снова пишет CE7.
+Важно:legacy MainGame2→target3 через существующий bridge,не Tutorial2.
+Это AUDIT_OPEN:обычный source/runtime ещё не изменён. Gate109 остаётся текущим.
+Далее111 — перенести подтверждённую цепочку с actual Login/chat/center и live
+hover/effect/Miles,а не повторять аудит. M6/M6F/M7/M9 OPEN.
+[Доказательства110](../research/client455-message-dispatch.md).
+
 109 PARTIAL: восстановлены профиль36 стилей и вставка в четыре настоящие панели
 чата:14 категорий, настройки, фильтры и перенос строк.385 целевых проверок,
 8 реальных файлов/288 записей и5 просмотренных кадров чата проходят.
@@ -9,7 +21,7 @@
 Свежие center69/6hover/Create1 проходят;10 кадров побайтно равны108.
 PE ef33b250…/entry160400/182-20-63/unresolved0. Gate109 current,108 historical.
 Общий C1A/CE7 dispatch, live pending1 hover и полный chat UI открыты.
-M6/M6F/M7/M9 OPEN; дальнейший участок110 — общие сообщения и отмена прицела.
+M6/M6F/M7/M9 OPEN; дальнейший участок111 — перенос общих сообщений и отмены прицела.
 [Доказательства109](../research/client455-chat.md).
 
 Исторический108:

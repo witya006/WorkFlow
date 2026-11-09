@@ -1,5 +1,9 @@
 # Экранные сообщения455 — работа108, полный dispatch ещё открыт
 
+Дополнение110: профиль/selected insertion109 готовы; полный dispatch/callers
+исследован в [client455-message-dispatch.md](client455-message-dispatch.md).
+Следующий перенос111; старый runtime108 здесь исторический,текущий gate109.
+
 2026-11-09. **PARTIAL, M6.** В ordinary MainGame восстановлены владелец сообщений,
 очередь/движение/fade/medium GDI Draw. Прицел перенесён в late Render после UI.
 Full C1A/chat/live hover открыты; игровых message producers ещё нет.
