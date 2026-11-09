@@ -23,59 +23,62 @@
 
 ## Последний проверенный результат
 
-108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
-queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
-69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
-пуст. Это прямой Add в actual stage member,не полный C1A/chat dispatch.
-Прицел перенесён из early effects update в late Render после UI;порядок
-подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
-проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
-Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
-этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
-[Доказательства](../research/client455-system-messages.md).
+109 PARTIAL: восстановлены профиль36 стилей и вставка в четыре настоящие панели
+чата:14 категорий, настройки, фильтры и перенос строк.385 целевых проверок,
+8 реальных файлов/288 записей и5 просмотренных кадров чата проходят.
+Сохранены особенности455: fallback13, byte-lexer Taiwan и signed settings masks.
+Профиль/init подключены к обычному MainGame; новый InsertText455 пока вызывается
+только full-object lab, игровые legacy callers ещё не перенесены.
+Свежие center69/6hover/Create1 проходят;10 кадров побайтно равны108.
+PE ef33b250…/entry160400/182-20-63/unresolved0. Gate109 current,108 historical.
+Общий C1A/CE7 dispatch, live pending1 hover и полный chat UI открыты.
+M6/M6F/M7/M9 OPEN; дальнейший участок110 — общие сообщения и отмена прицела.
+[Доказательства109](../research/client455-chat.md).
 
-Текущий gate: inventory/client455-center-messages-checkpoint.json.
-Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_center_messages.py.
-Статическая опора расширена до25functions/21fullasm/2914instructions/25equalranges
-двух x86 pins. Native IDA ffcaa552 и20210106 saved/closed/list0;raw messages108-*.
-Второй проход подтвердил center field+177440 и скрытый4-й argument8C6380:flags
-80000010 выбирает medium font,а не основной9pt. Все данные и namespaces в research.
-MainGame member создан после UI members,ctor/dtor bind/unbind registry;современный
-STL не объявлен old24byte ABI. Actual stage constructor требует offline network
-Create,без Connect. Legacy Destroy до created возвращается без освобождения
-других legacy allocations;это известный full stage teardown gap,не скрыт.
-Native69:records84/chunks64/capacity3,CRT SBCS и DBCS949,500/501ms иflood>5,
-3600/3601ms,одна eviction заupdate,unsigned age,unclamped factor,GDIoracle,
-реальные C1A/CE7,4GPU/1673-4455-4236-0pixels/6final drain ticks/ownerunbound.
-CRT mode независим от NDLanguage949;продукт не форсирует корейский CRT. Стенд
-временно проверяет оба режима и восстанавливает исходный. Glyphs реальные.
-Own PE5ad0b484484113803e2620a0a46eb91dd0ec11d918cf9e72cde5bc39a3d87c02,
-2160128bytes/base400000/WinMainb8f30/afterCreateb90a4. Source и decoded own CALLS
-дают centerUpdate262dd <effects265f8;lateaiming27207 <centerDraw27212. В foreffect
-aiming вызова больше нет. Это selected placement,не полныйworldframe acceptance.
-Add пока без игровых producers удалён linker;native вызывает реальный stage
-member напрямую. C1A dispatch иlivehover ещё не готовы. BSP29/status62 и6hover
-проверены заново;4center+6hover просмотрены. Неизменённые magic36/resources66/
-runtime573/audio157/account/hotbar7/storage3 оставлены historical107,не заявлены
-новой runtime acceptance. Большие159k/world/audio и остальные32GUI не повторены.
-Engine546a7529…/67 unchanged;033baseline сохранён,082snapshot по-прежнему нет.
-Original/server не менялись,inputEXE не исполнялись. M9 не переопределён.
+Текущий gate: inventory/client455-chat-checkpoint.json.
+Проверка: Invoke-Python.ps1 scripts/checkpoint_client455_chat.py.
+44 выбранных диапазона/31fullasm/3615instructions совпадают в двух x86 pins;
+IDA0fc06123/d8a4c249 saved/closed/list0. Точная PE2190848bytes,
+ef33b250cdaba110d4cb22c726aa6a82703c41de34a98d2a7b6902532a4279c1,
+base400000/WinMainb9060/afterCreateb91d4; own profile-init CALL RVA25d30.
+Font16/prefix18/4panes/36styles/14categories, DefModeOn и ChatMode перенесены
+в выбранном домене. Сохранены style13 body-default, style26 filter bypass,
+ambient CRT949 prefix split, zero-indent/double-LF/unfittable-glyph quirks.
+Все8 файлов проверены побайтно;288 records сверены отдельным oracle в Korean
+language context с explicit paths, а не восемью regional bootstrap.
+Taiwan UTF16BOM пропускается без Unicode decoding, как target lexer:36defaults.
+Точных путей en-gb/Csea.txt,en-us/Csua.txt,th-th/Csth.txt в комплекте нет;
+подмена похожими файлами не доказана. Оригинальный GameSetting.ini не менялся;
+native использует собственные fixture INI, включая high bit→-2147467265.
+Final native385: work/m9/2f82b06d/chat-001;5GPU/2704-2596-2592-10118-0pixels.
+Full-object lab использует actual MainGame profile и actual4boards, cleanup
+fragment/profile принят. Legacy uncreated-stage teardown других allocations
+остаётся gap. NormalPE содержит init,но новый InsertText455 без producers
+удалён linker;старые style/category callers молча не перенаправлены.
+Свежие69center/6hover и exactown startup/Create1 приняты;15GPU просмотрены,
+10center/hover побайтно равны108. BSP/Miles29/status62 — historical108;
+magic36/resources66/runtime573/audio157/account/hotbar7/storage3 — historical107.
+Большие159k/world/audio/остальные32GUI не повторялись. Engine546a7529…/67
+неизменён;033baseline сохранён,082snapshot по-прежнему нет. Original/server
+не менялись,inputEXE не исполнялись. Подробности — research/client455-chat.md.
 
-Далее109 — настоящий4pane chat:14categories/style18 records/wrapping746020,
-их data providers и lifecycle;затем common5E47A0/5E4A60 dispatch с login/Tutorial
-sinks и реальные C1A/CE7 callers. Pending1 hover пока явно отказывает до мутации;
-не заменять полную цепочку пустым _SetSystemMsg(DWORD) или center-only выводом.
-После этого — nuclear command/response producers,list12/container,final position
-commit и остальные input cancels. Target orthographic picking/menu dummy,
-full stage teardown,privateABI/OOM/FP/CRT initialization остаются открытыми.
-Обязательны world pass placement/dynamic-light compositing,quality option/UI,
-blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
-receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/
-network callers,inventory/equip/SF/Animus,potion cache,Macro/Vending/fullAdd/
-bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/lifecycle/reset/
-privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/Trunk/protocol/
-Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 — финальная приёмка
-полного клиента455 без модернизации графики; цель не сужена.
+Далее110 — common system-message dispatch5E47A0/5E4A60 и реальные C1A/CE7
+callers с actual chat/center sinks,login/Tutorial routes и live pending1 hover.
+Готовый typed insertion позволяет продолжать эту цепочку; не ждать оформления
+всех14filter controls. Full filterUI/colors/GM/category7 network sideeffects,
+legacy style/category callers,input/send/IME/save остаются обязательны.
+Pending1 пока явно отказывает до мутации: не заменять полную цепочку пустым
+_SetSystemMsg(DWORD) или только center-only выводом. Затем nuclear command/
+response producers,list12/container,finalposition и остальные input cancels.
+Target orthographic picking/menu dummy,full stage teardown,privateABI/OOM/FP/
+CRT initialization остаются открыты. Обязательны world pass placement/dynamic
+light compositing,quality option/UI,blur/advanced axis/parabola/multi/curve/
+device lifecycle. Затем64-битные455 receivers/остальные44DEE0 effects,Linker
+handlers/queue,typed quantity/backups/network callers,inventory/equip/SF/Animus,
+potion cache,Macro/Vending/fullAdd/bootstrap/Quest provider. Все прежние
+fullGUIItem/tooltip/lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown,
+SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps
+сохраняются. M9 — полный клиент455 без модернизации графики; цель не сужена.
 
 Исторические101–105: research/client455-{board-hover,player-status,tagged-audio,magic,effect-resources}.md;
 baselines before106 — artifacts/client455-progress/.

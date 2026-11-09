@@ -1,0 +1,63 @@
+{
+  "native_sha256": "33be1c7d9d3aa30c702135ae3d4c0da3d0001da9b84cd7e3064465b1047b54f6",
+  "script_sha256": "9447f9ebe6ee96c33d07400607e22176972bf4df4fb7e34ef81a8890411253af",
+  "sheet": {
+    "file": "work/m9/2f82b06d/chat-001/chat-contact.png",
+    "sha256": "c17699b706d09a681cb8337ecd15161551c1c48f83eb51f487ce0c8f58addcf0"
+  },
+  "frames": [
+    {
+      "file": "work/m9/2f82b06d/chat-001/chat-cleared.bgra",
+      "sha256": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+      "preview": {
+        "file": "work/m9/2f82b06d/chat-001/chat-cleared.png",
+        "sha256": "bd1d5a89e6f7e242f53455b32e2b461b027b7e5e9a326f3c98fbed170eed2f51"
+      }
+    },
+    {
+      "file": "work/m9/2f82b06d/chat-001/chat-forced.bgra",
+      "sha256": "e9db10c260d2dcc2121dd5de42b8259c46a2c1773ac9921e7950da378e47c854",
+      "preview": {
+        "file": "work/m9/2f82b06d/chat-001/chat-forced.png",
+        "sha256": "eacce32f8394ca60eb18ae87e4fb8d26f4f1da087ed08da57c6a3ee6145acf24"
+      }
+    },
+    {
+      "file": "work/m9/2f82b06d/chat-001/chat-party.bgra",
+      "sha256": "47ea2c500f14ea325e308ac9924f73b977b54ae9a11b6d1233a5382f6fae4cac",
+      "preview": {
+        "file": "work/m9/2f82b06d/chat-001/chat-party.png",
+        "sha256": "6efe73ed28d92d88bd366e8d80258cf439eef281e2163d4994bbd4f51d53406f"
+      }
+    },
+    {
+      "file": "work/m9/2f82b06d/chat-001/chat-system.bgra",
+      "sha256": "f33f89a081d28a24a6511c2c5ed3c6e4a16c248115f53bb276cc72ee825f55e2",
+      "preview": {
+        "file": "work/m9/2f82b06d/chat-001/chat-system.png",
+        "sha256": "bf4540c121fc637dfc4cba54941ce5087e644004799522a257a44e7177e3889e"
+      }
+    },
+    {
+      "file": "work/m9/2f82b06d/chat-001/chat-wrapped.bgra",
+      "sha256": "06bc159a149b5e71ed33b76cbf63c0505c53fb5797d751a04dbbf13fb9da748d",
+      "preview": {
+        "file": "work/m9/2f82b06d/chat-001/chat-wrapped.png",
+        "sha256": "afba68f41874655e4cda32a678d04acf4567bb9d32e52450eb7ec12877bb7cca"
+      }
+    }
+  ],
+  "reviewed": true,
+  "reviewed_frames": 5,
+  "observations": [
+    "Real C1A with SYSTEM font routes to actual panes0/3;other panes stay empty",
+    "Real localized party marker and separate body route to panes0/1",
+    "Style26 bypasses all pane filters and renders the yellow friend message in all four panes",
+    "Long mixed Korean/ASCII text wraps and all panes clear in the final frame",
+    "The four boards use a synthetic grid for simultaneous inspection; full chat-window layout/input/filter controls and common C1A dispatch remain open"
+  ],
+  "reference_executable_capture": false,
+  "full_chat_UI": false,
+  "full_C1A_dispatch": false,
+  "full_client": false
+}

@@ -6,9 +6,71 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-CENTER-MESSAGES-108",
+      "id": "CLIENT455-CHAT-109",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual MainGame-owned chat profile36/styles/font16/prefix18 and initialization; selected filter/wrap/typed insertion in actual four CGUIChatWindow boards. Normal init retained; InsertText455 still only exercised by full-object native lab, legacy producers unported",
+      "reference": [
+        {
+          "rva": "0x343570",
+          "role": "profile ctor"
+        },
+        {
+          "rva": "0x343850",
+          "role": "profile init"
+        },
+        {
+          "rva": "0x343d30",
+          "role": "actual window ctor"
+        },
+        {
+          "rva": "0x345b80",
+          "role": "typed InsertText"
+        },
+        {
+          "rva": "0x345f40",
+          "role": "raw insertion"
+        },
+        {
+          "rva": "0x346020",
+          "role": "wrap"
+        },
+        {
+          "rva": "0x343c00",
+          "role": "signed DefModeOn persistence"
+        },
+        {
+          "rva": "0x3fbf40",
+          "role": "byte lexer"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_chat_port.py",
+        "scripts/native/client455_chat_profile.h",
+        "scripts/native/client455_chat_profile.cpp",
+        "scripts/native/client455_chat_window.h",
+        "scripts/native/client455_chat_window.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "44ranges/31fullasm/3615instructions equalbothpins; two owned IDA sessions savedclosed/list0.385nativechecks/8stock scripts/288record oracle rows/5viewedGPU in Koreancontext,not8regionalboots. Default13/TaiwanBOMbytelexer/DBCS/style26/wrap quirks/highDWORDsigned settings preserved. PEef33b250/182-20-63/unresolved0/Create1;own initCALL RVA25d30;new InsertText455 stripped withoutgameproducers. Freshcenter69+6hover/10viewedframes byteequal108;total15GPU. BSP29/status62historical108;other unchanged suites historical107,no bulk reruns.",
+      "evidence": [
+        "inventory/client455-chat-reference.json",
+        "inventory/client455-chat-native.json",
+        "inventory/client455-chat-visual-review.json",
+        "inventory/client455-chat-checkpoint.json",
+        "research/client455-chat.md"
+      ],
+      "gaps": [
+        "Full legacy network/chat style/category callers,14filter UI controls/colors/GM/category7 sideeffects/input/send/IME/save not migrated",
+        "Literal target script paths missing for nation3/9/10;similar filenames not substituted;full regional bootstrap unverified",
+        "Common C1A/CE7/login/Tutorial dispatch/live pending1 hover and nuclear command/list12/finalposition still open",
+        "Unsafe/null/OOM/malformed scripts/CRTstartup/sharedscratch/privateABI/concurrency/fullstage teardown and all previous client-acceptance gaps remain mandatory;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-CENTER-MESSAGES-108",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Actual MainGame center-message member/lifecycle,queue64/active84/max3,medium GDI draw/fade; selected late aiming hook fixed. Full C1A dispatch/chat/live hover remains open",
       "reference": [
         {
@@ -57,12 +119,14 @@
         "research/client455-system-messages.md"
       ],
       "gaps": [
-        "Full4pane chat/category14/style18/wrapping/data providers and common C1A/CE7/login/Tutorial dispatch not restored; Add no game producers and stripped from finalPE",
+        "Selected profile/styles/filter/wrap/4pane typed insertion restored109; full UI/legacycallers/common C1A/CE7/login/Tutorial dispatch still open; Add no game producers",
         "Pending1 hover still explicitly refuses before mutation until full dispatch; nuclear command/list12/final position/other cancellation paths unported",
         "Existing uncreated legacy MainGame Destroy leaks its other legacy allocations; no full stage teardown/memory balance claim",
         "Selected placement and source owner accepted; full world/camera/font reset/privateABI/FP/OOM/CRT startup/concurrency/shutdown not accepted",
         "All previous client-acceptance gaps remain mandatory; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "runtime_superseded_by": "CLIENT455-CHAT-109",
+      "current_integration_evidence": "inventory/client455-chat-checkpoint.json"
     },
     {
       "id": "CLIENT455-NUCLEAR-AIMING-107",

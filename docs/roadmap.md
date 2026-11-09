@@ -12,6 +12,20 @@
 
 ## Текущий статус
 
+109 PARTIAL: восстановлены профиль36 стилей и вставка в четыре настоящие панели
+чата:14 категорий, настройки, фильтры и перенос строк.385 целевых проверок,
+8 реальных файлов/288 записей и5 просмотренных кадров чата проходят.
+Сохранены особенности455: fallback13, byte-lexer Taiwan и signed settings masks.
+Профиль/init подключены к обычному MainGame; новый InsertText455 пока вызывается
+только full-object lab, игровые legacy callers ещё не перенесены.
+Свежие center69/6hover/Create1 проходят;10 кадров побайтно равны108.
+PE ef33b250…/entry160400/182-20-63/unresolved0. Gate109 current,108 historical.
+Общий C1A/CE7 dispatch, live pending1 hover и полный chat UI открыты.
+M6/M6F/M7/M9 OPEN; дальнейший участок110 — общие сообщения и отмена прицела.
+[Доказательства109](../research/client455-chat.md).
+
+Исторический108:
+
 108 PARTIAL: в настоящем CGP_MainGame восстановлен владелец экранных сообщений:
 queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
 69 проверок и4 просмотренных GPU кадра реальных C1A/CE7 проходят;после fade кадр
@@ -19,7 +33,7 @@ queue64/active84/max3,59-byte CRT split,pacing500ms,fade3600ms и medium GDI16.
 Прицел перенесён из early effects update в late Render после UI;порядок
 подтверждён вызовами в собственной PE. BSP/Miles29/status62/6hover/Create1
 проходят;hover побайтно равен107. PE5ad0b484…/entry15b6d0/182-20-61/unresolved0.
-Gate108 current,107 historical. Full chat/C1A/live pending1 hover,полный teardown
+Gate108 historical,107 historical. Full chat/C1A/live pending1 hover,полный teardown
 этапа и другие client-acceptance gaps открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-system-messages.md).
 
@@ -51,21 +65,23 @@ Gate106 historical,105 historical. Full nuclear owner/world pipeline/device
 lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-effect-runtime.md).
 
-Далее109 — настоящий4pane chat:14categories/style18 records/wrapping746020,
-их data providers и lifecycle;затем common5E47A0/5E4A60 dispatch с login/Tutorial
-sinks и реальные C1A/CE7 callers. Pending1 hover пока явно отказывает до мутации;
-не заменять полную цепочку пустым _SetSystemMsg(DWORD) или center-only выводом.
-После этого — nuclear command/response producers,list12/container,final position
-commit и остальные input cancels. Target orthographic picking/menu dummy,
-full stage teardown,privateABI/OOM/FP/CRT initialization остаются открытыми.
-Обязательны world pass placement/dynamic-light compositing,quality option/UI,
-blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
-receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/
-network callers,inventory/equip/SF/Animus,potion cache,Macro/Vending/fullAdd/
-bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/lifecycle/reset/
-privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/Trunk/protocol/
-Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 — финальная приёмка
-полного клиента455 без модернизации графики; цель не сужена.
+Далее110 — common system-message dispatch5E47A0/5E4A60 и реальные C1A/CE7
+callers с actual chat/center sinks,login/Tutorial routes и live pending1 hover.
+Готовый typed insertion позволяет продолжать эту цепочку; не ждать оформления
+всех14filter controls. Full filterUI/colors/GM/category7 network sideeffects,
+legacy style/category callers,input/send/IME/save остаются обязательны.
+Pending1 пока явно отказывает до мутации: не заменять полную цепочку пустым
+_SetSystemMsg(DWORD) или только center-only выводом. Затем nuclear command/
+response producers,list12/container,finalposition и остальные input cancels.
+Target orthographic picking/menu dummy,full stage teardown,privateABI/OOM/FP/
+CRT initialization остаются открыты. Обязательны world pass placement/dynamic
+light compositing,quality option/UI,blur/advanced axis/parabola/multi/curve/
+device lifecycle. Затем64-битные455 receivers/остальные44DEE0 effects,Linker
+handlers/queue,typed quantity/backups/network callers,inventory/equip/SF/Animus,
+potion cache,Macro/Vending/fullAdd/bootstrap/Quest provider. Все прежние
+fullGUIItem/tooltip/lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown,
+SF/Quest/36boards/Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps
+сохраняются. M9 — полный клиент455 без модернизации графики; цель не сужена.
 
 Этапы M0–M9 сохраняются.
 
@@ -796,7 +812,10 @@ M2/M3 можно вести до получения toolchain. M1 — восст
 
 ## Ближайшая очередь
 
-1. M6/092: typed item/board wrappers091 и common bases090 перенесены в
+1. M6/110: общий system-message dispatch, реальные C1A/CE7 и отмена прицела;
+   профиль и selected insertion109 уже доступны. Далее оставшиеся игровые
+   связи чата, nuclear command/list12/finalposition и прежняя очередь.
+   Typed item/board wrappers091 и common bases090 перенесены в
    ограниченном домене; завершить реальные icon/caption/board-hover/Linker
    consumers и normal bootstrap новых таблиц. Freshpayloadfactories/readers089 проверены в ограниченном домене;
    fullpayloadmethods/Questlocalizedsentenceexpansion остаются обязательными.
