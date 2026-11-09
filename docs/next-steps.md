@@ -2,21 +2,21 @@
 
 Обновлено2026-11-09.
 
-117 PARTIAL: восстановлен обычный CLand::LoadData для Map/NDMap110 и
-двух дополнительных разделов: 660 подписей,257919 байт изображений. Массивы
-588/288/96/84 динамические; реальные maxima54 портала/62 зоны превышают старые50.
-UI_SetMinimap получает bounds из BSP node1 и размеры/смещение из map record;
-старые8map tables/clamp удалены. Декодированы обычные PE вызовы loader/geometry.
-12equalbodies/12fullasm/1850instructions (9new/1284);2IDA sessions savedclosed/list0.
-Native2692 PASS: весь canonical output равен независимому reader,330 случаев
-геометрии для110 карт на3 реальных BSP node fixtures. Полный BSP load/GPU здесь
-не повторялся. Из9 supplied NDMap только zh-tw имеет110;ko-kr100,остальные31
-отвергаются точно по count gate,без подстановок. Это подтверждено actual CLand.
-Own PEfd8b5070…/entry1670c0/182client-20kernel-70facade/unresolved0/Create1.
-Engine67 unchanged;116 runtime gate historical,старые Nuclear/GPU/159k не повторялись.
-Full map UI/layer manager consumers/gameplay/texture lifetime не приняты.
-M6/M6F/M7/M9 OPEN. Следующая118 — actual texture/ref ownership и20 R3T warnings
-последнего nuclear lab116; затем полный world/frame и map UI consumer flow.
+118 PARTIAL: подтверждена очистка20 effect и132 world COM texture объектов.
+21 cache owner/24 release calls дают4 shared decrements и20 точных предупреждений
+455;конечные records/handles/stacks совпали с независимым target oracle.
+Исправлены Warning CP949 label и отсутствие callback:возврат без диалога.
+Освобождение текстур сохранено.18equalbodies/18fullasm/999instructions+55byte tail;
+17new/874,IDA savedclosed/list0. Registry109+texture649 PASS,5GPU viewed.
+Managed handles152→132→0,обе таблицы освобождены,tracked Dmalloc→0 в этом lab.
+Full CRT/COM/GPU balance/device lifecycle этим не доказан. Engine67 теперь
+dce960bd…;код изменён толькоjerror.obj,65members byteequal,r3text timestamp-only.
+Старый546a7529… сохранён как artifacts/client455-progress/engine-before118.lib.
+Own PE6992349e…/entry1670a0/182client-20kernel-70facade/unresolved0/Create1.
+Map2692/330 повторно PASS с новым engine;startup contracts/window/device PASS.
+Warning20 сохранены;159k/прочие широкие suites не повторялись. M6/M6F/M7/M9 OPEN.
+Следующая119 — actual world frame/camera quake/light/compositing;остальные
+texture/device/reset/independent paths и полный map UI остаются открытыми.
 
 ## Цель и ограничения
 
@@ -32,57 +32,65 @@ Python: scripts/Invoke-Python.ps1. Assertions не процент полноты
 
 ## Следующая очередь
 
-1. Работа118: проследить20 R3T release warnings последнего nuclear lab116 до
-   actual455 texture/ref ownership. В старом engine warning не предотвращает
-   освобождение. Не подавлять сообщения без доказанного исправления;engine67
-   менять только при подтверждённом расхождении и целевой проверке.
-2. Полный world/frame/trajectory/camera quake/light/compositing/quality/blur/
-   advancedFX/device lifecycle. Затем map UI_SetMinimap/OpenMinimapWindow,
-   selected/special/reset/sprite/avatar/portal/region/scroll и два layer manager
-   consumers. Geometry-only330 не закрывают эту цепочку. Не менять supplied
-   несовместимые NDMap и не подменять110 фиктивными строками.
-3. Actual Tutorial/Avatar/Create/camera/QBI47/input/four stage lifetime,
-   Login/auth/game flow и полный сетевой протокол. Только клиент.
-4. Linker/queue/Macro/Vending/inventory/equip/SF/Animus/Quest/36boards/Trunk,
-   остальные Character/action/movement/64-bit status. Все известные contracts
-   и gaps сохраняются в client-acceptance.md/feature registry/research.
-5. Завершить матрицу M6/M6F, зафиксировать M7 и провести полную M9 приёмку
-   клиента455 без модернизации графики;один build/Create/component lab не достаточен.
+1. Работа119: actual world frame/camera quake/light/compositing. Сначала
+   настоящий runtime provider quake изimpact track(time2.6,duration5,density150),
+   его state writers и камера;одна проверка metadata не принимает поведение.
+2. Продолжить trajectory/quality/blur/advancedFX,independent flag8 texture path,
+   device lost/reset/reentry/shutdown и shadow/render-target owners. Сохранить
+   targetshared-counter quirks;не подавлять штатные warnings ради зелёного теста.
+3. Полные map UI_SetMinimap/OpenMinimapWindow/selected/special/reset/sprite/
+   avatar/portal/region/scroll и два layer manager consumers. Не подменять
+   supplied несовместимые NDMap и не дополнять110фиктивными строками.
+4. ActualTutorial/Avatar/Create/camera/QBI47/input/four stages,Login/auth/game
+   flow/полный клиентский протокол;Linker/queue/Macro/Vending/inventory/equip/
+   SF/Animus/Quest/36boards/Trunk/Character/action/movement/64-bit status.
+5. Завершить матрицу M6/M6F,зафиксировать M7 и провести полную M9 приёмку
+   клиента455 без модернизации графики. Build/Create1/частныеlabs недостаточны.
 
 ## Текущее проверяемое состояние
 
-Gate inventory/client455-map-data-checkpoint.json;
-scripts/Invoke-Python.ps1 scripts/checkpoint_client455_map_data.py.
-Подробности research/client455-map-data.md. Native work/m9/6bbf7812/map-data-001,
-2692 checks/110maps/103+7layers/660labels/257919imagebytes/330geometry cases.
-Оба потока718859/116750 разобраны полностью; bytes равны независимому reader.
-Геометрия проверена на скопированных node1 настоящих bellato/cora/accretia,
-не на новом полном BSP load/render. Новых GPU frames0. Обычный PE содержит
-CLand.LoadData→RF455_LoadMapData→ParseMapData и UI_SetMinimap→SetMapBound/
-SetNuclearMapGeometry455. ApplyMiniMapGeometry455 встроен MSVC в ordinarycaller.
-Отказ8 supplied NDMap count31/100 — реальное поведение loader110. Только zh-tw110
-совместим с корневым Map110; регион всей установки этим отдельно не доказан.
-Два layer раздела пока source-owned data; actual global manager/UI handoff открыт.
-Полный MiniMap reset/index/special/avatar/portal/region/scroll/device lifecycle
-не перенесён. Безопасный parser guard/atomic failure не доказывает опасные target
-read/OOM/overflow/partial-state/reload/leak/private ABI домены.
+Gate inventory/client455-texture-lifetime-checkpoint.json;
+scripts/Invoke-Python.ps1 scripts/checkpoint_client455_texture_lifetime.py.
+Подробности research/client455-texture-lifetime.md. Native texture-lifetime
+work/m9/5f3f4c71/texture-lifetime-001:registry109/texture649,5GPU viewed,
+21owners/24image releases/4shared decrements/20warnings;20effect+132world COM
+refs released,каждая последняя lab pin Release возвращает0. Managed slots
+152→132→0;global table pointersNULL/counts1/1. Tracked Dmalloc23092316→20842680→
+785169→0. Это scope данного пути,не всеCRT/COM/GPU/driver/device lifetimes.
 
-Обычная сборка:182 client,20 kernel,70 facade,unresolved0,без CharacterMR/FORCE.
-PEfd8b507032e9023a284852ff151ec486b413e5568226e0aa2f12be790a5c9ced,
-2225152bytes,x86/base400000,entry1670c0,WinMainb98b0,afterCreateb9a24.
-Exact own PE startup/device/existingCreate1 PASS;полныйbootstrap/auth/game не принят.
-Engine67 unchanged546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a;
-033baseline существует,082derivedsnapshot отсутствует — старый gap остаётся.
+18full functions/18fullasm/999instructions и55byte shared system-texture tail
+равны в обоих455,17new/874. Cached105 release-body125 проверен перед reuse.
+TargetWarning4F1160 callback suffix bytes3c2db0e6b0ed;без callback нетMessageBox.
+Oldsource имелerror label иdialog fallback — оба исправлены толькоWarning,
+в generated jerror.cpp. Игнорирование No_warning и точныеcallbackbytes проверены.
+Сами20R3T warnings соответствуют target и не подавлены. Actual stack содержит
+ReleaseEffectEntityList→CEntity.ReleaseTexMem→R3ReleaseTextureMem для каждого.
+Полный texture/device/reset/independentflag8/OOM/unsafe lifecycle остаётся открыт.
+Собственная IDA99708884 savedclosed/list0. Raw texture118-reference/session.json
+в artifacts/client455-progress/. Оригинальные EXE не исполнялись.
 
-Контракты116 Nuclear factory/all9handlers/MainGame owner/type33 item use/AES
-и их доказательства сохраняются в research/client455-nuclear-receiver.md.
-116 runtime gate теперь HISTORICAL_NOT_RERUN: receiver101/registry109/aim30/
-marker702/message83/20viewedGPU,не свежая проверка117. Последние nuclear labs116
-давали20 R3T warnings при teardown;117 не доказывает их устранение или общий
-memory balance. Старые Character/world/audio/GUI/159k suites не повторялись.
-Снимок gate до изменения: artifacts/client455-progress/
-client455-nuclear-receiver-checkpoint-before117.json. Raw analysis и sessions
-map117-reference.json/map117-session.json там же; обе IDA sessions savedclosed/list0.
+Engine67/librarydce960bd12d8f82257edd760ebdbc73127b1f372b01a178141028cd397b4e656,
+13derivedsources. Codechanged толькоjerror.obj;65members совпали полностью,
+r3text.obj толькоCOFF timestamp4/5/6,весь остальнойpayload идентичен.
+Точный engine67A546a7529… сохранён в artifacts/client455-progress/engine-before118.lib.
+033baseline существует;082derivedsnapshot отсутствует,этот oldgap не закрыт.
+Old117 PEfd8b5070… сохранён как artifacts/client455-progress/normal-before118.bin.
+
+Текущий обычный RF_Online.bin6992349ec4aac6700582e520c95fd4be4163dd6b81dd1871b3c6271ff205f25c,
+2225152bytes,x86/base400000,entry1670a0,WinMainb98b0,afterCreateb9a24;
+182client/20kernel/70facade/unresolved0,безCharacterMR/FORCE. ExactownPE startup,
+startup contracts,window/device/existingCreate1 PASS;full bootstrap/auth/game нет.
+Fresh map work/m9/0c2b25cb/map-data-001:2692checks/330geometry/canonical bytes PASS.
+Map/NDMap110+103/7layers/660labels/257919imagebytes сохранены;onlyzh-tw110 paired
+сrootMap110;8supplied ND31/100 отклоняются,безподстановок. Регион установки этим
+отдельно не доказан. Полный mapUI/layer consumers ещё не перенесён. Map projection
+по3actualBSPnodefixtures;полный actualneutralAS1 load используется registry lab.
+
+Контракты116 factory/all9 Nuclear handlers/MainGame owner/type33use/AES сохраняются
+в research/client455-nuclear-receiver.md. Их receiver101/aim30/marker702/message83
+runtime остаётся историческим,не повторялся на118. Currentregistry109 повторён.
+Старые Character/wholeworld/audio/GUI/159k suites не повторялись. Previous117gate
+snapshot artifacts/client455-progress/client455-map-data-checkpoint-before118.json.
 
 ## Сохраняемые особенности и gaps
 
@@ -105,5 +113,5 @@ _SetSystemMsg(DWORD) открыты. en-gb/Csea.txt,en-us/Csua.txt,th-th/Csth.tx
 Full Login/secondary UI,actualTutorial,uncreatedstage failure unwind,shareddevice
 lifecycle/CRT/privateABI/unsafe/null/OOM/FP/overflow/concurrency/shutdown не приняты.
 Cap1024/ready guards не принимают unsafe domains. Все прежние gaps остаются;
-серверы не являются blocker. Архив состояния116:research/project-memory-before117.md
-и research/next-steps-before117.md. Старые детали доступны через research116 и ранее.
+серверы не являются blocker. Архив состояния117:research/project-memory-before118.md
+и research/next-steps-before118.md. Старые детали доступны через research116/117 и ранее.

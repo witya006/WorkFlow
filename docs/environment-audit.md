@@ -1,22 +1,22 @@
 # Аудит окружения — 04.11.2026
 
-117 PARTIAL: восстановлен обычный CLand::LoadData для Map/NDMap110 и
-двух дополнительных разделов: 660 подписей,257919 байт изображений. Массивы
-588/288/96/84 динамические; реальные maxima54 портала/62 зоны превышают старые50.
-UI_SetMinimap получает bounds из BSP node1 и размеры/смещение из map record;
-старые8map tables/clamp удалены. Декодированы обычные PE вызовы loader/geometry.
-12equalbodies/12fullasm/1850instructions (9new/1284);2IDA sessions savedclosed/list0.
-Native2692 PASS: весь canonical output равен независимому reader,330 случаев
-геометрии для110 карт на3 реальных BSP node fixtures. Полный BSP load/GPU здесь
-не повторялся. Из9 supplied NDMap только zh-tw имеет110;ko-kr100,остальные31
-отвергаются точно по count gate,без подстановок. Это подтверждено actual CLand.
-Own PEfd8b5070…/entry1670c0/182client-20kernel-70facade/unresolved0/Create1.
-Engine67 unchanged;116 runtime gate historical,старые Nuclear/GPU/159k не повторялись.
-Full map UI/layer manager consumers/gameplay/texture lifetime не приняты.
-M6/M6F/M7/M9 OPEN. Следующая118 — actual texture/ref ownership и20 R3T warnings
-последнего nuclear lab116; затем полный world/frame и map UI consumer flow.
+118 PARTIAL: подтверждена очистка20 effect и132 world COM texture объектов.
+21 cache owner/24 release calls дают4 shared decrements и20 точных предупреждений
+455;конечные records/handles/stacks совпали с независимым target oracle.
+Исправлены Warning CP949 label и отсутствие callback:возврат без диалога.
+Освобождение текстур сохранено.18equalbodies/18fullasm/999instructions+55byte tail;
+17new/874,IDA savedclosed/list0. Registry109+texture649 PASS,5GPU viewed.
+Managed handles152→132→0,обе таблицы освобождены,tracked Dmalloc→0 в этом lab.
+Full CRT/COM/GPU balance/device lifecycle этим не доказан. Engine67 теперь
+dce960bd…;код изменён толькоjerror.obj,65members byteequal,r3text timestamp-only.
+Старый546a7529… сохранён как artifacts/client455-progress/engine-before118.lib.
+Own PE6992349e…/entry1670a0/182client-20kernel-70facade/unresolved0/Create1.
+Map2692/330 повторно PASS с новым engine;startup contracts/window/device PASS.
+Warning20 сохранены;159k/прочие широкие suites не повторялись. M6/M6F/M7/M9 OPEN.
+Следующая119 — actual world frame/camera quake/light/compositing;остальные
+texture/device/reset/independent paths и полный map UI остаются открытыми.
 
-[Доказательства117](../research/client455-map-data.md).
+[Доказательства118](../research/client455-texture-lifetime.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

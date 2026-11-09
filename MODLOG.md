@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Texture lifetime118. Matched target R3T shared-counter/release
+behavior and preserved20warnings. Fixed Warning CP949 label and no-callback
+return.18fullasm/999instructions+55tail;IDAsavedclosed/list0. Actual109+649,
+21owners/24calls/4shared/20FX+132world COM releases/lastpins0/trackedDmalloc0;
+5GPUviewed,map2692/330/Create1. Engine67dce960bd:onlyjerror code changed,
+65membersbyteequal,r3text timestamp-only. Oldengine/PE snapshots retained.
+Full device/texture/world/gameplay/M9 acceptance remains open.
+[research/client455-texture-lifetime.md](research/client455-texture-lifetime.md).
+
+
 2026-11-09 — Map data117. Ordinary CLand loads real Map/NDMap110 and both
 appended sections:660 labels/257919 image bytes. Dynamic588/288/96/84 owners;
 actual maxima54portals/62mines. Real BSP bounds/map geometry reach ordinary

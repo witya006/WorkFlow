@@ -27,11 +27,18 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+#include "client455_texture_lifetime_trace.h"
+#endif
 extern CMainApp g_MainApp;
 static unsigned checks=0,warnings=0;
 static void check(bool ok,const char* why){++checks;if(!ok)throw std::runtime_error(why);}
 static void phase(const char* name){std::fprintf(stderr,"phase:%s checks=%u\n",name,checks);std::fflush(stderr);}
-static void warning(char* value){++warnings;std::fprintf(stderr,"warning:%s\n",value);}
+static void warning(char* value){++warnings;
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+    RF455_TextureWarning118(value);
+#endif
+    std::fprintf(stderr,"warning:%s\n",value);}
 static void error(char* value){throw std::runtime_error(value);}
 static bool same(const float* a,const float* b){return !std::memcmp(a,b,12);}
 template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
@@ -123,9 +130,22 @@ static int run(){
         // Destructor follows target ClearAll: pending0, no independent aiming Clear.
         {RF455NuclearContainer local;local.Add(3,0);local.SetPosition(3,0,pos);check(local.Radar(3,0,1)&&local.Find(3,0)->radar,"scoped record radar");}check(!playing(audio.Inspect(277034)),"container destructor stops record radar tag2");
         for(unsigned i=0;i<300&&(GetEffectListCnt()||GetMagicListCnt());++i)FrameMoveAllEffectsList();check(!GetEffectListCnt()&&!GetMagicListCnt(),"destructor radar drains");pixels[4]=capture("registry-destructor-cleared.bgra");check(!pixels[4],"destructor radar pixels cleared");
-        DestroyEffectsList();DestroyMagicSptList();check(land->Destroy()!=0,"world teardown");RTMovieRelease();g_pCamera=nullptr;
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+        RF455_TextureBeforeCache118();
+#endif
+        DestroyEffectsList();DestroyMagicSptList();
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+        RF455_TextureAfterCache118();
+#endif
+        check(land->Destroy()!=0,"world teardown");RTMovieRelease();g_pCamera=nullptr;
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+        RF455_TextureAfterWorld118();
+#endif
     }
     audio.Close();ReleaseR3SoundSystem();gSpriteMgr.UnloadTargetSprites455();RF455_ReleaseNormalCharacterSharedResources();scope.bind(nullptr);g_pUiChatWindow=nullptr;game.reset();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
+#if defined(RF455_TEXTURE_LIFETIME_PROBE)
+    RF455_TextureAfterEngine118();
+#endif
     FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");std::fprintf(out,"{\"status\":\"PASS\",\"checks\":%u,\"warnings\":%u,\"actual_stage_registry\":true,\"record_bytes\":32,\"unknown_DWORD12_untouched\":true,\"unsigned_WORD_keys\":true,\"real_radar_tag2_and_aiming_tag1\":true,\"real_launch_impact_scripts\":true,\"impact_tracks\":15,\"target_reset_detaches_launch_impact\":true,\"real_C15_C17_and_literal\":true,\"shared_process_clock_and_sorted_order\":true,\"clock_survives_clear\":true,\"natural_effect_drain\":%u,\"GPU_frames\":5,\"pixels\":[%u,%u,%u,%u,%u],\"muted_lab\":true,\"ordinary_receiver\":false,\"full_stage_lifecycle\":false,\"full_world_effects\":false,\"full_client\":false}\n",checks,warnings,drain,pixels[0],pixels[1],pixels[2],pixels[3],pixels[4]);std::fclose(out);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* p){if(p->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;std::fprintf(stderr,"exception=%08lx ownRVA=%08lx checks=%u\n",p->ExceptionRecord->ExceptionCode,DWORD(p->ExceptionRecord->ExceptionAddress)-DWORD(GetModuleHandleA(nullptr)),checks);return EXCEPTION_EXECUTE_HANDLER;}

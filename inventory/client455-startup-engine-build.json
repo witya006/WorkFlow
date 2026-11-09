@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "library_sha256": "dce960bd12d8f82257edd760ebdbc73127b1f372b01a178141028cd397b4e656",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -281,6 +281,12 @@
   ],
   "derived_sources": [
     {
+      "file": "work/client455-port/startup-engine/source/jerror.cpp",
+      "sha256": "c3274e8d20a175226e01fad94b95e7277ed5fb5546886667d1b1b85f123e0cab",
+      "original": "work/client455-port/source/R3Engine/common/jerror.cpp",
+      "original_sha256": "97d78148deb50c7ca40e2afbb198087b78d580ed065b54f7856493b44aa969ba"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
       "sha256": "3df7011bad29411b3f112507a33e79ba00f4fdbadca133db2acb4779652f9171",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
@@ -359,23 +365,26 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "9c8970b665d339b10203f8d130f3977f3ad8e8b5cba5a0e333bfe98e8b837323"
+    "sha256": "05eba24be66462a8716264dfd5c868a77aab23001b0c59e12b0ae5b25166d796"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "25cdea1f0aa7ad2a6c2eaa6fec005eea65df46d16b1a856b04f2f65e3bd84fd8"
+    "sha256": "06543cf2f2368376d1fb701eec87a96fc7d9af0ece1cbc15737b421393d3c8b6"
   },
-  "script_sha256": "74abce46f35df4a2643d37de7098e4769a5a4cf12d24e9f8381ce6dace8e3a4c",
+  "script_sha256": "0f1535b1faa8154cc3d2651ab73c48adfaa3dcceeb1ae9f44c70410736363d2b",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
   "M9": "OPEN",
   "text_bridge": {
     "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
-    "client455_font.h": "1d264a5cade77c9211b93d1dd4379f9c662dedbd3c439a06a5f2353e4f0000e5"
+    "client455_font.h": "5ccbd3ecc3362d6b4e16c990fe9ab5dd3cea993be6f0ba984523ab97e0065cef"
   },
   "sprite_texture": {
     "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"
+  },
+  "warning": {
+    "client455_warning.inc": "fcd1246218d83494d77cb02d152c7d6eb11d8cefc5cec8929acff3d615c87d6e"
   },
   "camera": {
     "client455_camera.h": "ddfd150a5c90dd29a9d6dc2ad9a4f584f05480240467cd4a32289124571a1b8e",

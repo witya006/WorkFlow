@@ -1,0 +1,129 @@
+{
+  "status": "PARTIAL",
+  "scope": "Texture registry/shared counter/cache owner/global table teardown and target Warning callback semantics;full device/texture lifecycle remains open",
+  "script_sha256": "311046de34c6df22b234728cd6f7d1aa25c63ca6d02b1fd68d3868e05d279ff4",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "6992349ec4aac6700582e520c95fd4be4163dd6b81dd1871b3c6271ff205f25c",
+    "bytes": 2225152,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1670a0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "10fcda73bd28721eef38414d089a31392cf09d47a8a00f408800cd66e5da7d23",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "dce960bd12d8f82257edd760ebdbc73127b1f372b01a178141028cd397b4e656"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before118.lib",
+    "sha256": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a"
+  },
+  "native_registry_checks": 109,
+  "native_texture_observations": 649,
+  "actual_effect_owners": 21,
+  "texture_calls": 24,
+  "shared_decrements": 4,
+  "warning_count": 20,
+  "effect_COM_releases": 20,
+  "world_COM_releases": 132,
+  "tracked_Dmalloc_final": 0,
+  "viewed_GPU_frames": 5,
+  "map_checks": 2692,
+  "map_geometry_cases": 330,
+  "warning_fixes": [
+    "Exact CP949 warning label",
+    "Return without dialog when callback absent"
+  ],
+  "own_warning": {
+    "symbol": "?Warning@@YAXPAD0@Z",
+    "rva": "0x125b70",
+    "bytes": 128,
+    "sha256": "80394be607ee0d38cb2917d7ce97652f7d2badbb8814a6765dae80c0ccbf6d17",
+    "disassembly": {
+      "file": "artifacts/client455-progress/texture118-own-warning.txt",
+      "sha256": "b5a8f344440e9641a805312f64a2c4ef265b79ef8578517646037393bfb7e1c9"
+    }
+  },
+  "full_memory_balance": false,
+  "full_device_lifecycle": false,
+  "previous117_gate": {
+    "file": "artifacts/client455-progress/client455-map-data-checkpoint-before118.json",
+    "sha256": "8f85bf98452939bb7e3c837b2f11334f196f9ccc8eb2508cfacd0d16d9904c49"
+  },
+  "old_runtime_gates": "HISTORICAL;fresh registry/map/startup on new engine;other older suites not rerun",
+  "fresh_evidence": {
+    "texture-lifetime-reference": {
+      "file": "inventory/client455-texture-lifetime-reference.json",
+      "sha256": "28a4abd71c09606abfe19c6cd28e051f2ef989ab26d91f50c286b35fb5fbae63"
+    },
+    "texture-lifetime-native": {
+      "file": "inventory/client455-texture-lifetime-native.json",
+      "sha256": "17558bdbfe81178387be39d06e92f2a3d34d7d092218d1c6b6545636058c95a3"
+    },
+    "texture-lifetime-verification": {
+      "file": "inventory/client455-texture-lifetime-verification.json",
+      "sha256": "a0020d1ebf1ad9bc6e14f457ba76851a77c8644ec58719f827973ce4dbb6a6c1"
+    },
+    "texture-lifetime-visual-review": {
+      "file": "inventory/client455-texture-lifetime-visual-review.json",
+      "sha256": "60cbd04541acea614d5a159406056e986d07bacddf5ed6d89621f97ff7624b86"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "29c37fe52b257e6c21b3f056962cee321997d9c57e97433bc062a100e3dd0562"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "10fcda73bd28721eef38414d089a31392cf09d47a8a00f408800cd66e5da7d23"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "ff50dadadb58b91c8050aebd4f99d3dce549bab3bda71e866d90e11b1ae814b5"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "d5036a478107b823bd8d67be20a8261b765ef4617602db0fc0a1b2bb9d0672b3"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "3e48e387d752af3d9e9fc28a774373f052fc88a7cb21141ac485ff1efa69105b"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "e446543a65d8420e4ac98a523776e0b3d7af1b6c7f8b9cd03676a58a400b58ce"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "6e952d23d0c6b54a75e17760e023d55ca184ded1adff4f5269575c5e1ea4c691"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "cb976fef1af11453675f4eade4b4e4adf2453281aeb56199c28e1e8ea26429cc"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "6ac1dae37c9d368994fce6f3909fed8fab5b6c46b153c1e23577dadb549e53c3"
+    }
+  },
+  "gaps": [
+    "Runtime trace covers managed effect/world textures;independent flag8 branch only static,pointer/OOM/concurrency/reset/reentry/invalid-ID domains remain open",
+    "Selected normal teardown and tracked Dmalloc0 do not establish all CRT/COM/GPU memory balance or full device reset/shadow/render-target lifecycle",
+    "Unbounded target Warning buffer/null input/unchecked ranges and incidental return/private ABI behavior are not accepted",
+    "All previous client acceptance gaps,full world frame/gameplay/auth/normal stage flows and M6/M6F/M7/M9 remain open"
+  ],
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "script_sha256": "17b0e0f9635419e1db845e111dd70fe906c055c8ecf9893968ed2b56010bd4c8",
+  "oracle": {
+    "file": "scripts/texture_release455.py",
+    "sha256": "ed4bf38222d375a5165446b9003b78f00c4c5e47906c841a19b3f6c9f53fbd0b"
+  },
+  "native_sha256": "17558bdbfe81178387be39d06e92f2a3d34d7d092218d1c6b6545636058c95a3",
+  "reference_sha256": "28a4abd71c09606abfe19c6cd28e051f2ef989ab26d91f50c286b35fb5fbae63",
+  "trace": {
+    "file": "work/m9/5f3f4c71/texture-lifetime-001/texture-trace.json",
+    "sha256": "e82edac7586669203c21dd47d5df3607c9cb060045194134640886ddfb82c4c4"
+  },
+  "owners": 21,
+  "texture_calls": 24,
+  "shared_decrements": 4,
+  "exact_warnings": 20,
+  "effect_COM_releases": 20,
+  "world_COM_releases": 132,
+  "all_last_pins_release_to_zero": true,
+  "post_cache_exact": true,
+  "stack_roles": [
+    {
+      "symbol": "?R3ReleaseTextureMem@@YAXH@Z",
+      "begin_rva": "0x11e980",
+      "end_rva": "0x11ead0"
+    },
+    {
+      "symbol": "?ReleaseTexMem@CEntity@@QAEXXZ",
+      "begin_rva": "0x123940",
+      "end_rva": "0x123a10"
+    },
+    {
+      "symbol": "?ReleaseEffectEntityList@@YAXXZ",
+      "begin_rva": "0x5af20",
+      "end_rva": "0x5b080"
+    }
+  ],
+  "tracked_Dmalloc_final": 0,
+  "full_memory_balance": false,
+  "full_device_lifecycle": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

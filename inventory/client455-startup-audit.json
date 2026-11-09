@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "fd8b507032e9023a284852ff151ec486b413e5568226e0aa2f12be790a5c9ced",
+    "sha256": "6992349ec4aac6700582e520c95fd4be4163dd6b81dd1871b3c6271ff205f25c",
     "bytes": 2225152,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1670c0",
+    "entry_rva": "0x1670a0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "9196e703dbf40018561bb19e16447ce1c78d3f2e0bbf5c26471386ec6ca04501",
+  "normal_link_sha256": "10fcda73bd28721eef38414d089a31392cf09d47a8a00f408800cd66e5da7d23",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1538,6 +1538,10 @@
       "sha256": "5b1eec67f0b51ab8f8528f348009cdf5cbad6202800fb280e9155fd8c77ea7e0"
     },
     {
+      "file": "work/client455-port/startup-engine/source/jerror.cpp",
+      "sha256": "c3274e8d20a175226e01fad94b95e7277ed5fb5546886667d1b1b85f123e0cab"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
       "sha256": "3df7011bad29411b3f112507a33e79ba00f4fdbadca133db2acb4779652f9171"
     },
@@ -1592,5 +1596,5 @@
   "M6": "OPEN",
   "M9": "OPEN",
   "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
-  "startup_engine_build_sha256": "3b9747196a46991da933b18133deb180f4b7441a617e5d7c1e2e239daf3a6020"
+  "startup_engine_build_sha256": "29c37fe52b257e6c21b3f056962cee321997d9c57e97433bc062a100e3dd0562"
 }

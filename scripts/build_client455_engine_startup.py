@@ -35,10 +35,14 @@ def main():
     header=header.replace(firstInclude,firstInclude+('#include "'+spriteHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp']:
-        folder='1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass')
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
-        if filename=='r3enginekernel.cpp':
+        if filename=='jerror.cpp':
+            from prepare_client455_normal import section
+            start,end=section(raw,b'void Warning(',b'void Warning(')
+            raw=raw[:start]+(WS/'scripts/native/client455_warning.inc').read_bytes()+raw[end:]
+        elif filename=='r3enginekernel.cpp':
             anchor=b'GetR3State()->mbFullScreen = TRUE;'
             if raw.count(anchor)!=1:raise ValueError('Legacy forced fullscreen changed')
             raw=raw.replace(anchor,b'GetR3State()->mRenderBits = 32; // 455:8ED5A0;preserve configured window mode')
@@ -138,6 +142,7 @@ def main():
     report={'scope':'Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open','architecture':'x86','build_exit':0,'objects':67,'library':library.relative_to(WS).as_posix(),'library_sha256':sha(library),'base_cmake':{'file':template.relative_to(WS).as_posix(),'sha256':sha(template)},'base_sources':sources,'derived_sources':derived,'baseline_library':{'file':oldLibrary.relative_to(WS).as_posix(),'sha256':oldHash},'cmake':{'file':(root/'CMakeLists.txt').relative_to(WS).as_posix(),'sha256':sha(root/'CMakeLists.txt')},'log':{'file':log.relative_to(WS).as_posix(),'sha256':sha(log)},'script_sha256':sha(WS/'scripts/build_client455_engine_startup.py'),'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
+    report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}

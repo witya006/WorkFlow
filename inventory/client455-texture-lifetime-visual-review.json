@@ -1,0 +1,65 @@
+{
+  "reviewed": true,
+  "reviewed_frames": 5,
+  "script_sha256": "891409650477bd7272171087200697c43f0c9d92ab4e3e2170d47759a7dbdaac",
+  "native_sha256": "17558bdbfe81178387be39d06e92f2a3d34d7d092218d1c6b6545636058c95a3",
+  "sheet": {
+    "file": "work/m9/5f3f4c71/texture-lifetime-001/texture-lifetime-contact.png",
+    "sha256": "5890565e0e48c175e3c173874e2e1d863479e9e45e629f1d7271404042bd9d07"
+  },
+  "frames": [
+    {
+      "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-cleared.bgra",
+      "sha256": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+      "preview": {
+        "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-cleared.png",
+        "sha256": "bd1d5a89e6f7e242f53455b32e2b461b027b7e5e9a326f3c98fbed170eed2f51"
+      }
+    },
+    {
+      "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-countdown.bgra",
+      "sha256": "7d115067167f6d0f511482974a0de739e65b26cf2a6fa587beee45697d435840",
+      "preview": {
+        "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-countdown.png",
+        "sha256": "aaca6342957780320ebaf00b1702ba6a4d52f242add9c446158e815c16a844b5"
+      }
+    },
+    {
+      "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-destructor-cleared.bgra",
+      "sha256": "568a46db68defab0dca2de340de897b10628f3201e6d77ae8e37fc0284777413",
+      "preview": {
+        "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-destructor-cleared.png",
+        "sha256": "bd1d5a89e6f7e242f53455b32e2b461b027b7e5e9a326f3c98fbed170eed2f51"
+      }
+    },
+    {
+      "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-flight-impact.bgra",
+      "sha256": "ad451d5fa724ba0045b0b9cbf313d8a407c3f7762cca8ba614905145f0dced9d",
+      "preview": {
+        "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-flight-impact.png",
+        "sha256": "2f2070376df1780cc95be25cbab1d48b8a49715a6c27d7b006edd271861f731e"
+      }
+    },
+    {
+      "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-impact-late.bgra",
+      "sha256": "2bfab17a6a7e059b535a2d684496a193b08d030f78e1711eadd443827dccd0f0",
+      "preview": {
+        "file": "work/m9/5f3f4c71/texture-lifetime-001/registry-impact-late.png",
+        "sha256": "8024dd9846948f49f13fa0bc7239eee10a038294af49f31ee1261ae60fbd1a17"
+      }
+    }
+  ],
+  "byte_equal_historical_frames": [
+    "registry-cleared.bgra",
+    "registry-destructor-cleared.bgra"
+  ],
+  "observations": [
+    "Actual flight/impact frames contain the nuclear effect geometry/particles",
+    "Countdown UI is visible with actual locale text/numeric marker",
+    "Both post-drain/post-destructor frames are empty",
+    "Nonempty particle frames are not asserted byte-identical across seeded/timed runs"
+  ],
+  "reference_executable_capture": false,
+  "full_world_effects": false,
+  "full_client": false
+}
