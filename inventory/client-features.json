@@ -6,9 +6,63 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-WORLD-FRAME-120",
+      "id": "CLIENT455-LIGHT-GEOMETRY-121",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Selected BSP regular/magic geometry filters,caps,deduplication,batches,owned world/inverse and real declaration restored;ordinary placed transform owners and fullrenderer open",
+      "reference": [
+        {
+          "rva": "0x4fe980",
+          "role": "Regular geometry"
+        },
+        {
+          "rva": "0x4fec90",
+          "role": "Magic geometry"
+        },
+        {
+          "rva": "0x4fdca0",
+          "role": "World/inverse copies"
+        },
+        {
+          "rva": "0x4fc230",
+          "role": "Bounded leaf producer"
+        },
+        {
+          "rva": "0x4bbed0",
+          "role": "Root bounds inclusion"
+        },
+        {
+          "rva": "0x4c4ec0",
+          "role": "Explicit vertex declaration"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_bsp_fields.inc",
+        "scripts/native/client455_bsp_light.inc",
+        "scripts/native/client455_bsp_light.h",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "12equalbodies/12fullasm/1725instructions,7new/712;IDAbec9ad05savedclosed/list0.33smallfixtures/all1580880actualvertexbytes/caps+filters+dedup+batches/matrixcopies/declarationCOMcreate-release. Bellato76queue/16OSclock±1/5viewedGPU byteequal120/maps2692/330/ANI-BBX/Create1. Engine67/14derived12534d28/PE933c276a/entry167630/182client20kernel/unresolved0. Broad159k and unchanged old suites not rerun.",
+      "evidence": [
+        "inventory/client455-light-geometry-reference.json",
+        "inventory/client455-light-geometry-native.json",
+        "inventory/client455-light-geometry-checkpoint.json",
+        "inventory/client455-world-frame-native.json",
+        "inventory/client455-world-frame-verification.json",
+        "inventory/client455-world-frame-visual-review.json",
+        "research/client455-light-geometry.md"
+      ],
+      "gaps": [
+        "Full placed BSP/ILevel/INS/Empty transform writers and inverse-matrix consumers are not ported;the source-owned128-byte extension is not target private-layout parity",
+        "Finite fixture geometry and actual Bellato lighting do not prove all leaf recursion/oblique planes/invalid IDs/NaN/FP modes/CRT/concurrency or unsafe target domains",
+        "Selected declaration create/release is verified;full lost-device/reset/recreate/failure/OOM/error paths and renderer pipeline remain open",
+        "Full world/Character/input/stages/auth/protocol/gameplay and all other client-acceptance gaps remain;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-WORLD-FRAME-120",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Corrected CLevel current-view by actual ctor/vtable;Bellato light queue,live clock±1,regular/magic projected light and archivedFX verified;known target geometry differences not yet ported",
       "reference": [
         {
@@ -54,7 +108,8 @@
         "Confirmed unported geometry differences:regular light skipsAttr0x10,leafcap128,facecap5000;magic skipsAttr0x30,requires bboxwidth<=1000/both endpoints inside root bounds,saturates faceindex2999,batch2000;target uses owned CBsp worldmatrix and explicit declaration;legacy path still differs",
         "Full map frame/calculations/environment/projection/sky/alpha/shadow/device/reset/lighting/Character/gameplay not proven by selected queue and GPU examples",
         "AllFP/oldCRT/invalid counts/OOM/NaN/concurrency/RNG interleaving and previous client-acceptance gaps remain open"
-      ]
+      ],
+      "historical_after": "CLIENT455-LIGHT-GEOMETRY-121;selected geometry gaps restored in121,fullworld stillOPEN"
     },
     {
       "id": "CLIENT455-CAMERA-QUAKE-119",

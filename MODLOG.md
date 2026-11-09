@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — BSP light geometry121. Restored selected regular/magic guards,
+leaf128/256,face5000/saturation3000,batches3000/2001,owned world/inverse and
+explicit D3D9 declaration with ordinary create/release.12fullasm/1725instructions
+equalboth455,7new/712;IDAsavedclosed/list0.33smallfixtures/1580880vertexbytes,
+Bellato76queue/16OSclock/5viewedGPU byteequal120,maps2692/330/ANI-BBX/Create1.
+Engine67/14derived12534d28;PE933c276a/182client20kernel/unresolved0.
+Exact120engine/PE preserved;sharedheader causes wider COFF payload/relocation
+changes,no single-object claim. Placed transform owners/fullrenderer/M9 OPEN.
+[research/client455-light-geometry.md](research/client455-light-geometry.md).
+
 2026-11-09 — World frame120. Corrected119wrong class assignment:ordinary
 CLevel ctor/vtable/owner prove current-view8E7850;previous-view8EB7F0 is INS.
 119previous-view acceptance retracted.26fullasm/2772instructions+2vtables equal

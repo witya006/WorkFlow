@@ -1,0 +1,417 @@
+{
+  "status": "PARTIAL",
+  "scope": "Selected regular/magic BSP light geometry guards,deduplication,batches,owned world/inverse matrices and explicit declaration;full renderer remains open",
+  "script_sha256": "6d110878238517cd26fddf1a09433df66b494656431310b91ec3da8b7b9b576d",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "933c276a79a6dce22677bb9b09aefef07f5b8e062b6f146aff770d878fe85df3",
+    "bytes": 2226176,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167630",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "ec89f303f32c1e2a29dc44055d7b76860141c0f091b31c54874251b9ef53616a",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "12534d28dfeccda98c5e2cdffecc6621ffde7b3a95810501f2a513f01911e810"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before121.lib",
+    "sha256": "7c828f7767bfa5a36ce0d8df2f2f133fc91a235284115c49c75e496a289252e9"
+  },
+  "geometry": {
+    "cases": 33,
+    "emitted_bytes": 1580880,
+    "case_results": [
+      {
+        "name": "regular-flags",
+        "vertices": 18,
+        "batches": [
+          18
+        ]
+      },
+      {
+        "name": "regular-duplicates",
+        "vertices": 15,
+        "batches": [
+          15
+        ]
+      },
+      {
+        "name": "regular-polygon-sizes",
+        "vertices": 777,
+        "batches": [
+          777
+        ]
+      },
+      {
+        "name": "regular-faces-999",
+        "vertices": 2997,
+        "batches": [
+          2997
+        ]
+      },
+      {
+        "name": "regular-faces-1000",
+        "vertices": 3000,
+        "batches": [
+          3000
+        ]
+      },
+      {
+        "name": "regular-faces-1001",
+        "vertices": 3003,
+        "batches": [
+          3000,
+          3
+        ]
+      },
+      {
+        "name": "regular-faces-4999",
+        "vertices": 14997,
+        "batches": [
+          3000,
+          3000,
+          3000,
+          3000,
+          2997
+        ]
+      },
+      {
+        "name": "regular-faces-5000",
+        "vertices": 15000,
+        "batches": [
+          3000,
+          3000,
+          3000,
+          3000,
+          3000
+        ]
+      },
+      {
+        "name": "regular-faces-5001",
+        "vertices": 15000,
+        "batches": [
+          3000,
+          3000,
+          3000,
+          3000,
+          3000
+        ]
+      },
+      {
+        "name": "regular-leaf-cap",
+        "vertices": 384,
+        "batches": [
+          384
+        ]
+      },
+      {
+        "name": "regular-zero-box",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "regular-width1000",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "regular-width1000plus",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "regular-tall-only",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "regular-outside-root",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "regular-owned-transform",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "magic-flags",
+        "vertices": 9,
+        "batches": [
+          9
+        ]
+      },
+      {
+        "name": "magic-duplicates",
+        "vertices": 15,
+        "batches": [
+          15
+        ]
+      },
+      {
+        "name": "magic-polygon-sizes",
+        "vertices": 777,
+        "batches": [
+          777
+        ]
+      },
+      {
+        "name": "magic-faces-666",
+        "vertices": 1998,
+        "batches": [
+          1998
+        ]
+      },
+      {
+        "name": "magic-faces-667",
+        "vertices": 2001,
+        "batches": [
+          2001
+        ]
+      },
+      {
+        "name": "magic-faces-668",
+        "vertices": 2004,
+        "batches": [
+          2001,
+          3
+        ]
+      },
+      {
+        "name": "magic-faces-2999",
+        "vertices": 8997,
+        "batches": [
+          2001,
+          2001,
+          2001,
+          2001,
+          993
+        ]
+      },
+      {
+        "name": "magic-faces-3000",
+        "vertices": 9000,
+        "batches": [
+          2001,
+          2001,
+          2001,
+          2001,
+          996
+        ]
+      },
+      {
+        "name": "magic-faces-3002",
+        "vertices": 9006,
+        "batches": [
+          2001,
+          2001,
+          2001,
+          2001,
+          1002
+        ]
+      },
+      {
+        "name": "magic-leaf-cap",
+        "vertices": 768,
+        "batches": [
+          768
+        ]
+      },
+      {
+        "name": "magic-zero-box",
+        "vertices": 0,
+        "batches": []
+      },
+      {
+        "name": "magic-width1000",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "magic-width1000plus",
+        "vertices": 0,
+        "batches": []
+      },
+      {
+        "name": "magic-tall-only",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "magic-outside-root",
+        "vertices": 0,
+        "batches": []
+      },
+      {
+        "name": "magic-owned-transform",
+        "vertices": 3,
+        "batches": [
+          3
+        ]
+      },
+      {
+        "name": "magic-tail-overwrite",
+        "vertices": 9012,
+        "batches": [
+          2001,
+          2001,
+          2001,
+          2001,
+          1008
+        ]
+      }
+    ],
+    "every_vertex_byte_equal": true,
+    "owned_world_and_inverse_exact": true,
+    "actual_declaration_exact": true
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "viewed_GPU_frames": 5,
+  "identity_world_frames_byte_equal120": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "previous120_gate": {
+    "file": "artifacts/client455-progress/client455-world-frame-checkpoint-before121.json",
+    "sha256": "72bcf17b04fbb39c99ee3841a18a878665cea70c473cec1652f3670d3cb48fd1"
+  },
+  "fresh_evidence": {
+    "light-geometry-reference": {
+      "file": "inventory/client455-light-geometry-reference.json",
+      "sha256": "90238f132cba76008686aa6984784c83b5cc50e58231fd097cb386619d0732bf"
+    },
+    "light-geometry-native": {
+      "file": "inventory/client455-light-geometry-native.json",
+      "sha256": "d3f12dea4da517dedde882c428b03bb783d9383538fdf551cf30988913d741d9"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "a2a599989b9429b5328e8a88e6d247ec18efd39e34fc4c2eae3579d6829b01d0"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "373e6ccdd131eddfcc379144ebc9aa4c369f0b9e8881ea782a61f61dafa510f4"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "a33ca2521233a3f21b4d98d2db56fea2e4819e216d1d84fbd863ca04f0eb299d"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "fd884222ad1dca1315ad809b2e471ec98517327620cc0b106cae9fea9c720b78"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "d01913cde691fbd3810227acdcf75e4257357fc525b5a060b9570a548fc706be"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "c0e242f98e587665a7124fab0f3ef97896b0dfdb31e6ee01816b61d8dc0cca43"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "ec89f303f32c1e2a29dc44055d7b76860141c0f091b31c54874251b9ef53616a"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "fed2767c956cc1802a3fd87b80c68f6613362c03b22939e04ebd499f5894ee04"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "f3f4e06bb34e0f1c12ab65928d842e6f3e5378216820c43f40088eeaaab1110c"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "7cd55969a3544a5131bcf608ad994a14d302f2070aca8f4cd250b3fe38b354df"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "a4081b4ddf267fd0113b78c298f8d252c92fa308e1998f78dd6637923c1b18ff"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "b140a7408b2a370f19bc8a8a8545acec34f6abaef2ff1337f68ee27f7ae8e8c0"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "b00af5b672239a111bd75b522b22461ba4dc156e20c386268afd6c2caaed8c34"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "d17a8170917ac75506e2c59a437183412977db276fa4e143efc32c1e1cdcbfbe"
+    }
+  },
+  "selected_geometry_differences_restored": true,
+  "placed_transform_game_owners_restored": false,
+  "full_world": false,
+  "full_renderer": false,
+  "gaps": [
+    "Full placed BSP/ILevel/INS/Empty transform writers and inverse-matrix consumers are not ported;the source-owned128-byte extension is not target private-layout parity",
+    "Finite fixture geometry and actual Bellato lighting do not prove all leaf recursion/oblique planes/invalid IDs/NaN/FP modes/CRT/concurrency or unsafe target domains",
+    "Selected declaration create/release is verified;full lost-device/reset/recreate/failure/OOM/error paths and renderer pipeline remain open",
+    "Full world/Character/input/stages/auth/protocol/gameplay and all other client-acceptance gaps remain;M6/M6F/M7/M9 OPEN"
+  ],
+  "old_runtime_gates": "HISTORICAL;120camera correction retained;CPUquake/explosion/texture/receiver/Character/bulk not rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

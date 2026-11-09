@@ -2,31 +2,31 @@
 
 Обновлено 2026-11-09.
 
-120 завершён как частичный результат M6. Исправлена привязка камеры119:
-обычный CLevel использует текущую view;INS — предыдущую. Проверены настоящие
-световые проходы Bellato,архивный эффект и оба знака тряски от OS clock.
-Актуальное доказательство: inventory/client455-world-frame-checkpoint.json.
-Память и точные hashes: docs/project-memory.md;подробности:research/client455-world-frame.md.
-M9 — полная приёмка клиента455 без модернизации графики;уже определён,не спрашивать.
+121 завершён как частичный результат M6: выбранные geometry guards/caps/batches,
+собственные world/inverse и explicit declaration перенесены. 33 небольших случая,
+настоящая Bellato/5GPU/maps/ANI-BBX/Create1 проходят. Fullrenderer не принят.
+Актуальный gate: inventory/client455-light-geometry-checkpoint.json.
+Доказательства:research/client455-light-geometry.md;hashes:docs/project-memory.md.
+M9 уже определён:финальная приёмка полного клиента455 без модернизации графики.
 
-1. Участок121:перенести реальные отличия световой геометрии.
-   Regular8FE980:Attr0x10/leaf128/face5000. Magic8FEC90:Attr0x30,NormalY>0,
-   width<=1000/обаBBoxконца внутриroot,face saturation2999,batch2000.
-   Сначала проверить writers CBsp.worldmatrix this+372 и декларацию;старый
-   source использует identity/FVF,не выдавать это за полную эквивалентность.
-2. Проверить границы на малых воспроизводимых BSP fixtures и реальном Bellato.
-   Сохранить target quirks;не подавлять warnings. Переиспользовать120matched
-   controls,не возвращаться к metadata-only proof или большому159k прогону.
-3. Затем полный ILevel/Empty/INS и frame/projection/sky/alpha/shadow/device reset,
+1. Участок122:проверить реальные владельцы world/inverse CBsp иILevel/Empty/INS
+   по constructor→vtable→callers. Setter8FDCA0/source готов,ordinary game writers
+   ещё не перенесены.12xref кандидатов не означают12 доказанных классов.
+2. Восстановить подтверждённый ordinary owner/transform path и обратные
+   координаты;проверить на малом примере и настоящем ресурсе. Не объявлять
+   source-owned128-byte расширение эквивалентным target privateABI.
+3. Затем полные frame/projection/sky/alpha/shadow/device reset/recreate/error,
    trajectory/quality/blur/advancedFX/independenttextureflag8.
-4. Полные map UI/layer consumers;Tutorial/Avatar/Create/camera input/QBI47/IME/
-   four stages/Login/auth/fullprotocol/Character и остальные client-acceptance gaps.
-5. Закрыть M6/M6F только по полной матрице,затем M7 и финальная M9.
+4. Полные mapUI/layer consumers,Tutorial/Avatar/Create/camera input/QBI47/IME,
+   fourstages/Login/auth/fullprotocol/Character и прочие client-acceptance gaps.
+5. M6/M6F закрывать только по полной матрице,затем M7 и финальная M9.
 
-Вся работа только над клиентом;серверы читать как reference,не менять/собирать.
-Входные EXE не запускать. Рабочие копии подwork/. Локальный Git безpush/publish.
-Python через scripts/Invoke-Python.ps1 file.py. Subagents только по явному запросу.
-Обычные native/GPU jobs последовательно. Header из normal/include подключать
-через <...>,если он уже включён:копия scripts/native с #pragma once — другой путь
-и может дать дубли типов. До rebuild сохранять exact engine/PE/report snapshots.
-MCPdisasm<=120 instructions и проверка полноты;constructor/vtable прежде имени.
+Correction120 сохранить:обычный CLevel CURRENTview,INS PREVIOUSview.
+Геометрию121 не откатывать на identity/FVF;явныеtargetquirks сохранены.
+Больше159k/старыеbroad suites не нужны без изменения или конкретного риска.
+Только клиент;серверы read-only. Не запускать inputEXE. Рабочие copies подwork/.
+Локальный Gitбезpush. Pythonчерезscripts/Invoke-Python.ps1 file.py.
+Subagentsтолько появномузапросу. Native/GPU jobsпоследовательно.
+Передrebuild exactengine/PE/report snapshots;ignoredнеbackup.
+Общийheader изменён→полнаяnormalbuild182,не толькоconsumersprobe.
+MCPdisasm<=120,проверитьcounts/unique;owned IDAсохранять/закрывать.

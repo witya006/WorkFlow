@@ -1,20 +1,17 @@
 # RF Online: исследовательская рабочая область
 
-120 PARTIAL: исправлена ошибка119 в привязке метода камеры.
-Обычный CLevel подтверждён constructor→vtable→dispatch: B38494/slot27→8E7850,
-он использует текущую view. 8EB7F0 относится к INS. Прежний вывод отозван.
-26 полных тел/26 asm/2772 инструкции и две vtable равны между двумя455.
-На настоящей Bellato проверены76 операций очереди света,16 измерений OS clock
-с обоими знаками30fps,обычный/магический свет и архивный эффект. Base и clear
-кадры побайтно равны;световые кадры отличаются.10 GPU кадров просмотрены.
-Corrected quake142 events/2921 exact scalars;actual impact545 frames/onset79/
-151active. Карты2692/330,ANI/BBX и startup/contracts/window/device/Create1 PASS.
-Engine67 7c828f77…: изменён только level.obj,66 members byteequal.
-Own PE0806b113…/entry167320/182client-20kernel-70facade/unresolved0.
-Известные отличия световой геометрии ещё не перенесены;полный renderer и
-M6/M6F/M7/M9 OPEN. Следующая121 — эти geometry guards/batches и CBsp world matrix.
+121 PARTIAL: перенесены выбранные отличия световой геометрии455:фильтры,
+leaf/face caps,порции вершин,насыщение magic и собственные матрицы BSP.
+12 полных asm/1725 инструкций совпали между двумя455;IDA saved/closed/list0.
+33 небольших примера проверили1580880 байт отправленных вершин.
+Настоящая Bellato:76queue/16OSclock/5 просмотренных GPU кадров,побайтно равных120.
+Карты2692/330,ANI/BBX,точная новая PE startup/window/device/Create1 проходят.
+Engine67/14derived12534d28…;own PE933c276a…/entry167630/182client-20kernel/unresolved0.
+Игровые transform owners,полные ILevel/INS/Empty/renderer иM6/M6F/M7/M9 OPEN.
+Текущий gate:inventory/client455-light-geometry-checkpoint.json.
+Следующая122 — реальные владельцы world/inverse и их обычные callers.
 
-[Доказательства120](research/client455-world-frame.md).
+[Доказательства121](research/client455-light-geometry.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

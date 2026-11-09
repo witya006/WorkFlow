@@ -2,112 +2,106 @@
 
 Обновлено 2026-11-09.
 
-120 PARTIAL: исправлена ошибка119 в привязке метода камеры.
-Обычный CLevel подтверждён constructor→vtable→dispatch: B38494/slot27→8E7850,
-он использует текущую view. 8EB7F0 относится к INS. Прежний вывод отозван.
-26 полных тел/26 asm/2772 инструкции и две vtable равны между двумя455.
-На настоящей Bellato проверены76 операций очереди света,16 измерений OS clock
-с обоими знаками30fps,обычный/магический свет и архивный эффект. Base и clear
-кадры побайтно равны;световые кадры отличаются.10 GPU кадров просмотрены.
-Corrected quake142 events/2921 exact scalars;actual impact545 frames/onset79/
-151active. Карты2692/330,ANI/BBX и startup/contracts/window/device/Create1 PASS.
-Engine67 7c828f77…: изменён только level.obj,66 members byteequal.
-Own PE0806b113…/entry167320/182client-20kernel-70facade/unresolved0.
-Известные отличия световой геометрии ещё не перенесены;полный renderer и
-M6/M6F/M7/M9 OPEN. Следующая121 — эти geometry guards/batches и CBsp world matrix.
+121 PARTIAL M6: выбранные отличия световой геометрии перенесены.
+Current gate: inventory/client455-light-geometry-checkpoint.json.
+Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_light_geometry.py.
+Подробности research/client455-light-geometry.md. Прежние память/следующие шаги:
+research/project-memory-before121.md, research/next-steps-before121.md.
 
-## Цель и правила
+## Цель и ограничения
 
 Только клиент RF_Online.bin, R3Engine и нужные клиентские ресурсы/инструменты.
-M9 уже определён пользователем: финальная приёмка полного клиента455 без
-модернизации графики. Старое уточнение в тексте Goal не задавать повторно.
-M0–M4 diagnostic и выбранный M5 завершены; M6/M6F/M7/M9 открыты, M8 не нужен.
-Сборка, Create1 и отдельные labs не означают полную приёмку.
+M9 УЖЕ определён: финальная приёмка полного клиента455 без модернизации графики.
+Не повторять устаревший вопрос из текста Goal. M0–M4 diagnostic и выбранныйM5
+завершены;M6/M6F/M7/M9 OPEN,M8 не нужен. Build/Create1/lab не означают приёмку.
 
-Серверные исходники можно только читать как справочник. Не менять, не собирать,
-не восстанавливать серверы/БД. Оригиналы неизменны. Входные EXE не запускать;
-работать с копиями под work/. Без remote/push/publish. Subagents только по
-явному запросу. Python: scripts/Invoke-Python.ps1 file.py, без -c/-m.
-Первый build — R3Engine Win32 RTMovie Release; primary VS2026 x86, VC6 fallback.
-Не повторять159k/широкие suites без причины. Ignoring не backup:
-сохранять mutable engine/PE до rebuild. Native/GPU jobs запускать последовательно.
+Серверные файлы только читать как reference:не менять,не собирать,не восстанавливать.
+Оригиналы неизменны;работать подwork/. Входные EXE никогда не запускать.
+Локальный Git,безremote/push/publish. Subagents только по явному запросу.
+Python только scripts/Invoke-Python.ps1 file.py,без-c/-m.
+Primary VS2026 x86;VC6 fallback. Native/GPU jobs последовательно,дождаться terminal.
+Перед rebuild сохранять exact engine/PE/reports. Ignored файл не backup.
+Не повторять159k/старые broad suites без причины. Пользователю — коротко по-русски.
 
-## Актуальные доказательства
-
-Gate inventory/client455-world-frame-checkpoint.json, команда:
-scripts/Invoke-Python.ps1 scripts/checkpoint_client455_world_frame.py.
-Подробности research/client455-world-frame.md. Предыдущая память сохранена:
-research/project-memory-before120.md и research/next-steps-before120.md.
+## Доказательства121
 
 Pin455 x86/base400000:
-b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
-secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
-Raw world-frame120-reference/session/extra-session.json в artifacts/client455-progress/.
-IDA94e4ad3e и b2c3029d saved/closed/list0. GetBBox8B4700..8B4751 определён
-в рабочей IDB после проверки байтов. Все26 asm получены страницами<=120,
-проверены len(lines)==count,sum==total,unique;MCP может молча усекать большие ответы.
-Не верить одному cursor.done и не называть метод по соседству:нужны owner,
-constructor,vtable/slot,полный body. Hex-Rays register prototypes/Concurrency
-имена в этих функциях могут быть неверными;не переносить как доказанный ABI.
-Открывать только копии IDB, session передавать каждому вызову, закрывать owned.
+primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary 46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+12equalbodies/12fullasm/1725instructions:7new/712+5cached120/1013.
+Raw light-geometry121-reference/session.json в artifacts/client455-progress/.
+Owned IDAbec9ad05 saved/closed/list0. Новых открытых сессий/процессов нет.
+Каждый MCPanalysis сsession;disasm<=120 иlen/sum/total/unique проверять.
+Нельзя верить cursor.done безчисел;он может молча усечь ответ.
+Имена decompiler/Concurrency и register prototypes не являются доказательством ABI.
 
-Ошибка119: предыдущая view принадлежит INS8EB7F0(B3872C), не обычному CLevel.
-CLand7C8600→new584→8E9F40→vtableB38494:load9=8EA220,frame14=8E7910,
-draw18=8E7C40,view27=8E7850(current-view). Исправлены source и oracle.
-Старое утверждение119 отозвано в research119 и feature registry.
-Остальные quake/sway алгоритмы сохранены. Start/stop sway удерживает старые
-цели;period0→.02. Успешный map load выключает sway. Actual gameplay writer7E2AD0
-пока не подключён. Нулевое направление,modulo0,allFP/CRT/RNG interleaving открыты.
+Regular8FE980:skipAttr0x10,leafcap128,valid signed→uint leaf check,facecap5000;
+VNum0..2 тоже учитывается,fan triangles,color0/stride16,batch3000.
+Magic8FEC90:skipAttr0x30,NormalY>0,Xwidth<=1000 (неY/Z),обаBBoxконца внутриroot1,
+zeroBBoxreturn,leaf256,seen saturation2999 с перезаписью последнегоID,batch>=2000
+послеwholetriangle→реально2001. Sharedscratch5000,неreentrant.
+CBsp target world+372/inverse+436:8FDCA0 копирует64+64байта,неинвертирует.
+8F66B0 identity обеих.12xrefcaller candidates;полные2caller8EAF60/8EB040.
+SourceCBsp расширенсвоими128байтами,неtargetoffsetoverlay/privateABIclone.
+Setterпроверенlab;обычные игровыеtransformowners ещёнеподключены.
+Explicit COMdeclaration XYZ FLOAT3@0/colorD3DCOLOR@12/END созданаordinarydevice
+иreleaseordinaryteardown;полныйreset/OOM/targetErrorflow не принят.
 
-Engine67/13derived:
-7c828f7767bfa5a36ce0d8df2f2f133fc91a235284115c49c75e496a289252e9.
-От119 изменён только level.obj,66 members побайтно равны. Точные119engine
-9ae6ace8…/PE406b400e… сохранены в engine-before120.lib иnormal-before120.bin.
-Baseline033 сохранён;старый082derivedsnapshot отсутствует,этот gap открыт.
-Own PE0806b113f1da0025c32dae2b327fefd920a2183fad01437e77b900818f75c9dd,
-2225664bytes,x86/base400000/entry167320,WinMainb98b0/afterCreateb9a24;
-182client/20kernel/70facade/unresolved0,безCharacterMR иFORCE.
+Engine67/14derived:
+12534d28dfeccda98c5e2cdffecc6621ffde7b3a95810501f2a513f01911e810.
+OwnPE933c276a79a6dce22677bb9b09aefef07f5b8e062b6f146aff770d878fe85df3,
+2226176bytes/x86/base400000/entry167630,WinMainb98b0/afterCreateb9a24;
+182client/20kernel/unresolved0,безCharacterMR/FORCE.
+Sharedheader требует полнойnormalrebuild! Только consumers probe НЕ пересобирает182TU.
+Все67engine+182client+20kernel пересобраны.8archivebyteequal,24timestamp-only,
+35otherpayload;19runtime-section/rawrelocation differences. Не говорить«только3
+codeobjectschanged» безсимволическойнормализации. Lists inreferenceaudit.
+Exact120engine7c828f77…/PE0806b113… сохранены engine-before121.lib/normal-before121.bin.
+Baseline033 есть;старый082derivedsnapshot отсутствует — gapсохранён.
 
-World work/m9/6e19ea9b/world-frame-001:76queue operations совпали с target
-oracle;16 OS clock samples дают±1 и правильный quake.5 GPU кадров просмотрены:
-base==clear;отclear отличаются151256bytes magic,146637 regular,646571FX.
-16/16 archived aiming frames наполняют очередь после реального CLevel clear.
-ValidateDevice S_OK/onepass/CULL3/ZFUNC4. Реальная texture512 DXT1 alpha255,
-36leaf/811face refs/735upward. Изображение текстуры сохранено из устройства.
-Fixture camera смотрит на подтверждённый Bellato spawn2466,277,-1129.
-Обязательно согласовать view/inverse/viewproj:пропущенный inverse ранее делал
-свет невидимым. Это был дефект fixture,не повод менять production свет.
-До нового кадра нужен FrameMove:FX меняют WORLD. Default System/dlight.dds
-в комплекте нет;target conditional NULL путь сохранён. Используется настоящий
-texture аргумент из архивного эффекта,не подмена.6 штатных texture warnings.
+Geometry work/m9/cf87be57/light-geometry-001:
+33cases/1580880actualvertexbytes exact target-derivedPythonoracle,
+allbatches/filters/caps/dups/polygons/root/width/tallY/matrix/declarationPASS.
+Capture documented44/83/87slots только OWNlabD3Ddevice,restorevtable.
+Неinput455execution. ActualdeclarationGetDeclaration+create/releasePASS.
+World work/m9/6047792e/world-frame-001:
+76queueops/16OSclock±1/realBellato+archivedFX;5GPUviewed иbyteequal120.
+Base==clear;diffclear magic151256/regular146637/FX646571bytes.
+ValidateDevice S_OK/1pass/CULL3/ZFUNC4,6warningsсохранены.
+Map work/m9/06e31dc3/map-data-001:2692/330/110maps/canonicalPASS.
+Fresh normalANI2+BBX,imports/ownentry/startup sound1/contracts/window/device/
+existingCreate1PASS. Handledfirst-chanceexceptionsсохранены.
+Old CPUquake142/explosion545/texture649/receiver101/aim30/marker702/message83/
+Character/159k исторические,неповторены. Current gate120 исторический after121.
 
-Corrected CPU work/m9/11d9e9d7/quake-001:142events/2921exactscalars.
-Explosion work/m9/21d0f1cc/quake-effects-001:545frames,onset79,151active,
-26160exactscalars,CLevel→D3D;ещё5 GPU просмотрены,20warnings сохранены.
-Fresh map work/m9/35ffaa62/map-data-001:2692/330/canonical PASS.
-ANI/BBX consumers иexactownstartup/contracts/window/device/existingCreate1 PASS.
-Full bootstrap/auth/game не принят;first-chance exceptions были обработаны.
-Старые texture649/receiver101/aim30/marker702/message83/Character/159k и broad
-suites исторические,не повторены. Их gate не запускать как текущий.
+## Важные прежние решения
 
-## Далее121 — сначала реальные отличия, затем другие подсистемы
+Ошибка119 отозвана120: ordinaryCLevel ctor8E9F40→vtableB38494/slot27→8E7850
+CURRENTinputview;INS ctor8ECFA0→B3872C/slot27→8EB7F0 PREVIOUSglobalview.
+CLand7C8600 alloc584/call7C8703;ordinaryload9/frame14/draw18 confirmed.
+Не возвращать ошибочнуюINSpreviousview вCLevel. Default System/dlight.dds отсутствует;
+targetNULLconditional сохранён,worldfixture использует настоящуюtextureизFX.
+Контрольнаяcamera Bellatospawn2466,277,-1129:согласоватьview/inverse/viewproj.
+До каждогоframe FrameMove/resetWORLD:FXменяютWORLD. Пропускinverse раньшебыл
+дефектомfixture,непричинойменятьproductionlight.
 
-Regular light8FE980:skipAttr0x10,leaf cap128,face cap5000.
-Magic8FEC90:skipAttr0x30 иNormalY>0,BBoxwidth<=1000,оба конца внутриroot bounds,
-saturation faceindex2999,triangle batch2000. Target использует CBsp worldmatrix
-this+372 и explicit D3D9 declaration. Legacy backend ещё отличается.
-Исследовать writers этой матрицы, затем переносить source и проверить границы
-на реальных/малых fixtures. Видимый пример света не закрывает эти guards/batches.
+Nuclearrecord32,unknownDWORD12untouched,unsignedWORDkeys,Resetdetachlaunch/impact,
+одинprocessclock;type33byte1use/group60all9/AES. Statusguard internal640&3.
+Map110+ND110 совместимы suppliedzh-tw;8ND31/100reject,неподменятьлокали.
+Warning CP949suffix3c2db0e6b0ed,nocallbackreturn;R3Tsharedcounterнепереписывать.
+GoMMOaudit толькоinitialize/toolslist/studio_status,безInstall/publish.
+Headers normal/include через<...>,неподключать второйскопированный#pragmaonceпуть.
+Search сначалаrg --files;неугадыватьимена/пути и не передавать literal*.py вrgWindows.
 
-Полные ILevel/Empty/INS,frame/projection/sky/alpha/shadow/device reset,
-trajectory/quality/blur/advancedFX/independenttextureflag8 ещё открыты.
-Map UI/layer managers:selected/special/reset/sprites/avatar/portal/region/scroll.
-Tutorial/Avatar/Create/QBI47/IME/input/four stages/Login/auth/fullprotocol;
+## Далее122
+
+Начать реальные владельцыworld/inverse иILevel/Empty/INS:ctor/vtable/callers,
+обычныйpathианалогичныйsourceowner прежде изменения. Selectedsetterготов,
+но fullplacedrender/коллизии/обратнаяматрица ещёнепортированы.
+Полныеframe/projection/sky/alpha/shadow/device-reset/recreate/error,
+trajectory/quality/blur/advancedFX/independenttextureflag8 OPEN.
+MapUI/layerselected/special/reset/sprites/avatar/portal/region/scroll;
+Tutorial/Avatar/Create/QBI47/IME/input/fourstages/Login/auth/fullprotocol;
 Linker/queue/Macro/Vending/inventory/equip/SF/Animus/Quest/36boards/Trunk;
-Character/action/movement/status64. Полная матрица docs/client-acceptance.md.
-
-Сохранять особенности:Nuclearrecord32,unknownDWORD12untouched,unsignedWORDkeys,
-Resetdetach launch/impact,один process clock;type33byte1use/group60all9/AES.
-Map110+ND110 compatible только suppliedzh-tw,8ND31/100 отклоняются;не подменять.
-WarningCP949suffix3c2db0e6b0ed,nocallbackreturn;shared R3T counter не переписывать.
-GoMMO audit только initialize/toolslist/studio_status,безInstall/publish.
+Character/action/movement/status64 ився docs/client-acceptance.md.
+InvalidIDs/NaN/allFP/CRT/concurrency/RNG/OOM невыдаватьзапринятые.

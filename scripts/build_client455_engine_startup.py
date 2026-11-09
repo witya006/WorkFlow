@@ -13,6 +13,12 @@ def main():
     previous=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text()) if (WS/'inventory/client455-startup-engine-build.json').exists() else {};old={row['file']:row['sha256'] for row in previous.get('derived_sources',[])};derived=[]
     from client455_particle_port import headers,particle_source,entity_source
     particleHeaders=headers(base,root,previous)
+    bspInput=base/'source/R3Engine/1stclass/r3bsp.h';bspHeader=root/'include/r3bsp455.h'
+    bspRaw=bspInput.read_bytes();bspAnchor=b'\tvoid SaveExtBsp('
+    if bspRaw.count(bspAnchor)!=1:raise ValueError('CBsp owned matrix declaration boundary')
+    bspRaw=bspRaw.replace(bspAnchor,(WS/'scripts/native/client455_bsp_fields.inc').read_bytes()+b'\n'+bspAnchor)
+    if bspHeader.exists() and bspHeader.read_bytes()!=bspRaw and sha(bspHeader)!=previous.get('bsp_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed own BSP declaration')
+    if not bspHeader.exists() or bspHeader.read_bytes()!=bspRaw:bspHeader.write_bytes(bspRaw)
     # One declaration is forced into every engine/client consumer through the
     # existing shared camera overlay. Add only an own inline texture accessor;
     # CSprite layout and virtual dispatch remain unchanged.
@@ -24,6 +30,7 @@ def main():
     if not spriteHeader.exists() or spriteHeader.read_bytes()!=spriteRaw:spriteHeader.write_bytes(spriteRaw)
     ownedParticleHeader=root/'include/particle455.h'
     particlePrefix=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders)).encode()
+    particlePrefix+=('#include "'+bspHeader.as_posix()+'"\r\n').encode()
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
     if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
     cameraHeader=base/'source/R3Engine/2ndclass/anicamera.h';ownedHeader=root/'include/anicamera455.h';ownedHeader.parent.mkdir(parents=True,exist_ok=True)
@@ -33,10 +40,11 @@ def main():
     header=header.replace(b'#include "c_vector.h"\r\n',b'#include "c_vector.h"\r\n'+''.join('#include "'+(WS/row['file']).as_posix()+'"\r\n' for row in particleHeaders).encode(),1)
     firstInclude=('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode()
     header=header.replace(firstInclude,firstInclude+('#include "'+spriteHeader.as_posix()+'"\r\n').encode(),1)
+    header+=('\r\n#include "'+bspHeader.as_posix()+'"\r\n').encode()
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -63,6 +71,13 @@ def main():
             from prepare_client455_normal import section
             start,end=section(raw,b'void *GetDDSTexFromBuffer(',b'void *GetDDSTexFromBuffer(')
             raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
+        elif filename=='bsp.cpp':
+            from prepare_client455_normal import section
+            raw=b'#include "client455_bsp_light.h"\n'+raw
+            start,end=section(raw,b'void CBsp::DrawDynamicLightSub(',b'void CBsp::DrawDynamicLightSub(');raw=raw[:start]+raw[end:]
+            start,end=section(raw,b'void CBsp::DrawMagicLightSub(',b'void CBsp::DrawMagicLightSub(');raw=raw[:start]+(WS/'scripts/native/client455_bsp_light.inc').read_bytes()+raw[end:]
+            start,end=section(raw,b'void CBsp::ClearVariable()',b'void CBsp::ClearVariable()');body=raw[start:end];at=body.index(b'{')+1
+            raw=raw[:start]+body[:at]+b'\nD3DXMatrixIdentity(&mWorldMatrix455);D3DXMatrixIdentity(&mInverseWorldMatrix455);'+body[at:]+raw[end:]
         elif filename=='level.cpp':
             from prepare_client455_normal import section
             raw=('#include "'+(WS/'scripts/native/client455_quake.h').as_posix()+'"\r\n').encode()+raw
@@ -74,6 +89,12 @@ def main():
             if count!=1:raise ValueError('455 successful map-load sway reset boundary')
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_bsp_light.h"\n'+raw
+            anchor=b'\tstPd3dDevice=pd3dDevice;'
+            if raw.count(anchor)!=1:raise ValueError('BSP light declaration device init boundary')
+            raw=raw.replace(anchor,anchor+b'\n\t{const HRESULT hr=RF455_CreateBspLightDeclaration(pd3dDevice);if(FAILED(hr))return hr;}')
+            start,end=section(raw,b'HRESULT D3D_R3DeleteDevice()',b'HRESULT D3D_R3DeleteDevice()');body=raw[start:end];at=body.index(b'{')+1
+            raw=raw[:start]+body[:at]+b'\n\tRF455_ReleaseBspLightDeclaration();'+body[at:]+raw[end:]
             raw=b'#include "client455_fullscreen_effect.h"\r\n'+raw
             anchor=b'static DWORD stTexSize;'
             if raw.count(anchor)!=1:raise ValueError('Full-screen effect state boundary changed')
@@ -154,6 +175,8 @@ def main():
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
     report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}
+    report['bsp_light']={name:sha(WS/'scripts/native'/name) for name in ['client455_bsp_light.h','client455_bsp_fields.inc','client455_bsp_light.inc']}
+    report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}

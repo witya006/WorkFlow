@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "0806b113f1da0025c32dae2b327fefd920a2183fad01437e77b900818f75c9dd",
-    "bytes": 2225664,
+    "sha256": "933c276a79a6dce22677bb9b09aefef07f5b8e062b6f146aff770d878fe85df3",
+    "bytes": 2226176,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x167320",
+    "entry_rva": "0x167630",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "179511eb3de1d9895c281cf625965c56c2e115064509d1aa36149822a900dc61",
+  "normal_link_sha256": "ec89f303f32c1e2a29dc44055d7b76860141c0f091b31c54874251b9ef53616a",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -1567,7 +1567,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "8c1bc5e8ff4a82d37d0215d2400a31e9936a9077bd8de432303f4c416aead127"
+      "sha256": "8b02db45a421f62549214e440981956c8236e19ace73b10db9a55fa06e4fcb32"
     },
     {
       "file": "work/client455-port/startup-engine/source/rtmovie.cpp",
@@ -1588,6 +1588,10 @@
     {
       "file": "work/client455-port/startup-engine/source/r3sound.cpp",
       "sha256": "d6795a6fc86f66bc4d77b34c104e3f369f8004802afe353b83b045d30e326d29"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/bsp.cpp",
+      "sha256": "413a280f60a07454097228623afa1f8dda56c7660b7f08ea5fe42846023e9bc5"
     }
   ],
   "normal_winmain_executed": false,
@@ -1596,5 +1600,5 @@
   "M6": "OPEN",
   "M9": "OPEN",
   "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
-  "startup_engine_build_sha256": "5439d597075fe2e5f02ac9d830f6040d7f25e8b4088827c80be2532144fc9e1f"
+  "startup_engine_build_sha256": "fd884222ad1dca1315ad809b2e471ec98517327620cc0b106cae9fea9c720b78"
 }

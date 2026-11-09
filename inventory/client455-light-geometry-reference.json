@@ -1,0 +1,777 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "scope": "Selected regular/magic BSP light geometry guards,deduplication,batches,owned world/inverse matrices and explicit declaration;full renderer remains open",
+  "script_sha256": "bbb29e6b8f8e1aabdaa1e93275c7dd90aa659606591f8ab6688ac34ad6787707",
+  "raw": {
+    "file": "artifacts/client455-progress/light-geometry121-reference.json",
+    "sha256": "f8b42cb7e8610c38807e8070b7cfc849ef990d73020f7c2a8a1abaac266f9a09"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/light-geometry121-session.json",
+    "sha256": "4dcfd0536daf61a1caad2e442ca92079e31cd52e25b490319e662c6a5f411f11"
+  },
+  "cached_raw": {
+    "file": "artifacts/client455-progress/world-frame120-reference.json",
+    "sha256": "2956e1c5683bc8d2d25a292c34553f55f0e64038539b45c89f52b6fcec130599"
+  },
+  "cached_reference": {
+    "file": "artifacts/client455-progress/client455-world-frame-reference-before121.json",
+    "sha256": "b3bb2fd24e89ab1d5d7365ffed07abe7c93d7cc9b926c0e38642edc33eddd559"
+  },
+  "new_full_assembly": 7,
+  "new_instructions": 712,
+  "full_assembly": 12,
+  "instructions": 1725,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4bbed0",
+          "bytes": 168,
+          "sha256": "7c0c123232757ce25ac9d75582cc31edb9959a17cfeb6ed97f483670f0de2601"
+        },
+        {
+          "rva": "0x4c4ec0",
+          "bytes": 1748,
+          "sha256": "4c6d0638894377d7438ce13e66619330e3db8339e89f31c7b2ce2c738be5fc0c"
+        },
+        {
+          "rva": "0x4eaf60",
+          "bytes": 114,
+          "sha256": "94a7f173d73cc838105d2a4749a755d79be9d792eb4234ccff22a0f78eca33ad"
+        },
+        {
+          "rva": "0x4eb040",
+          "bytes": 71,
+          "sha256": "c8303b2f51493df1ef9d17310cb7efc5ba7ba09d2f2fd89ff9b6fa6704dcbe4d"
+        },
+        {
+          "rva": "0x4f66b0",
+          "bytes": 288,
+          "sha256": "025205c01852c729fd0542c6930c50ed912fb3379d4fbade2e6f75542cccc096"
+        },
+        {
+          "rva": "0x4f67d0",
+          "bytes": 167,
+          "sha256": "6cdfb098c27a79cfa8b8ffbb883d1fb9e44e5b8f19cb911a9ab076a4995022a7"
+        },
+        {
+          "rva": "0x4fbad0",
+          "bytes": 129,
+          "sha256": "c7b733fdf02d59ac9b60391899170a0e39022244fc933fed94f4a606145df7fb"
+        },
+        {
+          "rva": "0x4fbb60",
+          "bytes": 1729,
+          "sha256": "ef71abc482ebec55875899589b479a6753c2af81f20145ee509150710be0f788"
+        },
+        {
+          "rva": "0x4fc230",
+          "bytes": 225,
+          "sha256": "0e23c96342f7469cccb4e5dd671a477fd3511388df7f5234da5d19551c08860b"
+        },
+        {
+          "rva": "0x4fdca0",
+          "bytes": 43,
+          "sha256": "507adece6dce0287d729f51abe8af8f720466d171a2a44789a1c5d7d94528246"
+        },
+        {
+          "rva": "0x4fe980",
+          "bytes": 769,
+          "sha256": "81694144d1edf45764236670627496ab6f44baaca8f709f7b22cac20efa5013b"
+        },
+        {
+          "rva": "0x4fec90",
+          "bytes": 961,
+          "sha256": "a9e050c3034eab43cfbfda81c9ce7950d1f9e947eca988ef7b415a5081af3a7b"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4fc2fc",
+          "target_rva": "0x4fbb60"
+        },
+        {
+          "rva": "0x4eaf71",
+          "target_rva": "0x4c2c90"
+        },
+        {
+          "rva": "0x4eaf8e",
+          "target_rva": "0x4fdca0"
+        },
+        {
+          "rva": "0x4eafb3",
+          "target_rva": "0x4fe4b0"
+        },
+        {
+          "rva": "0x4eafbe",
+          "target_rva": "0x4cad00"
+        },
+        {
+          "rva": "0x4eafc9",
+          "target_rva": "0x4fda70"
+        },
+        {
+          "rva": "0x4eb051",
+          "target_rva": "0x4c2c90"
+        },
+        {
+          "rva": "0x4eb06e",
+          "target_rva": "0x4fdca0"
+        },
+        {
+          "rva": "0x4eb080",
+          "target_rva": "0x4fb6c0"
+        },
+        {
+          "rva": "0x4fbb48",
+          "target_rva": "0x4fbb60"
+        },
+        {
+          "rva": "0x4fbba5",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbbb6",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbdad",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbdbe",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbfb5",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbfc6",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fc1d8",
+          "target_rva": "0x4fbad0"
+        },
+        {
+          "rva": "0x4fc20f",
+          "target_rva": "0x4fbad0"
+        },
+        {
+          "rva": "0x4fe985",
+          "target_rva": "0x478fd0"
+        },
+        {
+          "rva": "0x4fe9c7",
+          "target_rva": "0x4fc230"
+        },
+        {
+          "rva": "0x4feb40",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4feb57",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4feb73",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec0a",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec21",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec3d",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec73",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4fec95",
+          "target_rva": "0x478fd0"
+        },
+        {
+          "rva": "0x4fed32",
+          "target_rva": "0x4bbed0"
+        },
+        {
+          "rva": "0x4fed51",
+          "target_rva": "0x4bbed0"
+        },
+        {
+          "rva": "0x4fed77",
+          "target_rva": "0x4fc230"
+        },
+        {
+          "rva": "0x4fef12",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fef29",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fef45",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fefd4",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fefeb",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4ff007",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4ff043",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4f678c",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f679e",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f67aa",
+          "target_rva": "0x4c0030"
+        },
+        {
+          "rva": "0x4f67b6",
+          "target_rva": "0x4c0030"
+        },
+        {
+          "rva": "0x4f67fb",
+          "target_rva": "0x4e7150"
+        },
+        {
+          "rva": "0x4f680e",
+          "target_rva": "0x502e80"
+        },
+        {
+          "rva": "0x4f6826",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f6843",
+          "target_rva": "0x47292a"
+        },
+        {
+          "rva": "0x4f6853",
+          "target_rva": "0x4c6830"
+        },
+        {
+          "rva": "0x4f685f",
+          "target_rva": "0x4f66b0"
+        },
+        {
+          "rva": "0x65e36b",
+          "target_rva": "0x47284c"
+        },
+        {
+          "rva": "0x65e38b",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4c4f84",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4c544b",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5476",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54a1",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54cf",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54fa",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5525",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5553",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5585",
+          "target_rva": "0x4f0f30"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "rva": "0x4bbed0",
+          "bytes": 168,
+          "sha256": "7c0c123232757ce25ac9d75582cc31edb9959a17cfeb6ed97f483670f0de2601"
+        },
+        {
+          "rva": "0x4c4ec0",
+          "bytes": 1748,
+          "sha256": "4c6d0638894377d7438ce13e66619330e3db8339e89f31c7b2ce2c738be5fc0c"
+        },
+        {
+          "rva": "0x4eaf60",
+          "bytes": 114,
+          "sha256": "94a7f173d73cc838105d2a4749a755d79be9d792eb4234ccff22a0f78eca33ad"
+        },
+        {
+          "rva": "0x4eb040",
+          "bytes": 71,
+          "sha256": "c8303b2f51493df1ef9d17310cb7efc5ba7ba09d2f2fd89ff9b6fa6704dcbe4d"
+        },
+        {
+          "rva": "0x4f66b0",
+          "bytes": 288,
+          "sha256": "025205c01852c729fd0542c6930c50ed912fb3379d4fbade2e6f75542cccc096"
+        },
+        {
+          "rva": "0x4f67d0",
+          "bytes": 167,
+          "sha256": "6cdfb098c27a79cfa8b8ffbb883d1fb9e44e5b8f19cb911a9ab076a4995022a7"
+        },
+        {
+          "rva": "0x4fbad0",
+          "bytes": 129,
+          "sha256": "c7b733fdf02d59ac9b60391899170a0e39022244fc933fed94f4a606145df7fb"
+        },
+        {
+          "rva": "0x4fbb60",
+          "bytes": 1729,
+          "sha256": "ef71abc482ebec55875899589b479a6753c2af81f20145ee509150710be0f788"
+        },
+        {
+          "rva": "0x4fc230",
+          "bytes": 225,
+          "sha256": "0e23c96342f7469cccb4e5dd671a477fd3511388df7f5234da5d19551c08860b"
+        },
+        {
+          "rva": "0x4fdca0",
+          "bytes": 43,
+          "sha256": "507adece6dce0287d729f51abe8af8f720466d171a2a44789a1c5d7d94528246"
+        },
+        {
+          "rva": "0x4fe980",
+          "bytes": 769,
+          "sha256": "81694144d1edf45764236670627496ab6f44baaca8f709f7b22cac20efa5013b"
+        },
+        {
+          "rva": "0x4fec90",
+          "bytes": 961,
+          "sha256": "a9e050c3034eab43cfbfda81c9ce7950d1f9e947eca988ef7b415a5081af3a7b"
+        }
+      ],
+      "decoded_calls": [
+        {
+          "rva": "0x4fc2fc",
+          "target_rva": "0x4fbb60"
+        },
+        {
+          "rva": "0x4eaf71",
+          "target_rva": "0x4c2c90"
+        },
+        {
+          "rva": "0x4eaf8e",
+          "target_rva": "0x4fdca0"
+        },
+        {
+          "rva": "0x4eafb3",
+          "target_rva": "0x4fe4b0"
+        },
+        {
+          "rva": "0x4eafbe",
+          "target_rva": "0x4cad00"
+        },
+        {
+          "rva": "0x4eafc9",
+          "target_rva": "0x4fda70"
+        },
+        {
+          "rva": "0x4eb051",
+          "target_rva": "0x4c2c90"
+        },
+        {
+          "rva": "0x4eb06e",
+          "target_rva": "0x4fdca0"
+        },
+        {
+          "rva": "0x4eb080",
+          "target_rva": "0x4fb6c0"
+        },
+        {
+          "rva": "0x4fbb48",
+          "target_rva": "0x4fbb60"
+        },
+        {
+          "rva": "0x4fbba5",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbbb6",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbdad",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbdbe",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbfb5",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fbfc6",
+          "target_rva": "0x4bf560"
+        },
+        {
+          "rva": "0x4fc1d8",
+          "target_rva": "0x4fbad0"
+        },
+        {
+          "rva": "0x4fc20f",
+          "target_rva": "0x4fbad0"
+        },
+        {
+          "rva": "0x4fe985",
+          "target_rva": "0x478fd0"
+        },
+        {
+          "rva": "0x4fe9c7",
+          "target_rva": "0x4fc230"
+        },
+        {
+          "rva": "0x4feb40",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4feb57",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4feb73",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec0a",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec21",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec3d",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fec73",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4fec95",
+          "target_rva": "0x478fd0"
+        },
+        {
+          "rva": "0x4fed32",
+          "target_rva": "0x4bbed0"
+        },
+        {
+          "rva": "0x4fed51",
+          "target_rva": "0x4bbed0"
+        },
+        {
+          "rva": "0x4fed77",
+          "target_rva": "0x4fc230"
+        },
+        {
+          "rva": "0x4fef12",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fef29",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fef45",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fefd4",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4fefeb",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4ff007",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4ff043",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4f678c",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f679e",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f67aa",
+          "target_rva": "0x4c0030"
+        },
+        {
+          "rva": "0x4f67b6",
+          "target_rva": "0x4c0030"
+        },
+        {
+          "rva": "0x4f67fb",
+          "target_rva": "0x4e7150"
+        },
+        {
+          "rva": "0x4f680e",
+          "target_rva": "0x502e80"
+        },
+        {
+          "rva": "0x4f6826",
+          "target_rva": "0x4728b0"
+        },
+        {
+          "rva": "0x4f6843",
+          "target_rva": "0x47292a"
+        },
+        {
+          "rva": "0x4f6853",
+          "target_rva": "0x4c6830"
+        },
+        {
+          "rva": "0x4f685f",
+          "target_rva": "0x4f66b0"
+        },
+        {
+          "rva": "0x65e36b",
+          "target_rva": "0x47284c"
+        },
+        {
+          "rva": "0x65e38b",
+          "target_rva": "0x4722f1"
+        },
+        {
+          "rva": "0x4c4f84",
+          "target_rva": "0x4c49e0"
+        },
+        {
+          "rva": "0x4c544b",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5476",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54a1",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54cf",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c54fa",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5525",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5553",
+          "target_rva": "0x4f0f30"
+        },
+        {
+          "rva": "0x4c5585",
+          "target_rva": "0x4f0f30"
+        }
+      ]
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "12534d28dfeccda98c5e2cdffecc6621ffde7b3a95810501f2a513f01911e810"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before121.lib",
+    "sha256": "7c828f7767bfa5a36ce0d8df2f2f133fc91a235284115c49c75e496a289252e9"
+  },
+  "timestamp_only_members": [
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderentity.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj"
+  ],
+  "sources": [
+    {
+      "file": "scripts/native/client455_bsp_light.h",
+      "sha256": "62a9413cc70cd80da111f17ecedcb148c8ea64e03c72de7bbc2c0efda2c3ac85"
+    },
+    {
+      "file": "scripts/native/client455_bsp_fields.inc",
+      "sha256": "fdc93c063224563aed51812d2cbc4764774d410c952659f41ec454ab9a0b9bf1"
+    },
+    {
+      "file": "scripts/native/client455_bsp_light.inc",
+      "sha256": "bf780e950b6d0af158dc3cbafa042248f4772f678046de7962466148c8bb97cd"
+    }
+  ],
+  "header_overlay": {
+    "file": "work/client455-port/startup-engine/include/r3bsp455.h",
+    "sha256": "93e07fdf42856c75d119f761ce8e58714b6061ae7f4ebcd2bdc1d62b2a810b5e",
+    "original": "work/client455-port/source/R3Engine/1stclass/r3bsp.h",
+    "original_sha256": "b78dc256012be5a0e529e1d38e406281a5691ae46a3cc850c65027f891ba7e6f"
+  },
+  "matrix_contract": {
+    "target_world_offset": 372,
+    "target_inverse_offset": 436,
+    "copy_bytes_each": 64,
+    "source_layout_equivalence": false
+  },
+  "gaps": [
+    "Full placed BSP/ILevel/INS/Empty transform writers and inverse-matrix consumers are not ported;the source-owned128-byte extension is not target private-layout parity",
+    "Finite fixture geometry and actual Bellato lighting do not prove all leaf recursion/oblique planes/invalid IDs/NaN/FP modes/CRT/concurrency or unsafe target domains",
+    "Selected declaration create/release is verified;full lost-device/reset/recreate/failure/OOM/error paths and renderer pipeline remain open",
+    "Full world/Character/input/stages/auth/protocol/gameplay and all other client-acceptance gaps remain;M6/M6F/M7/M9 OPEN"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN",
+  "payload_changed_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj"
+  ],
+  "runtime_section_or_relocation_changed_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj"
+  ]
+}

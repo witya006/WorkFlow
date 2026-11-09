@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "7c828f7767bfa5a36ce0d8df2f2f133fc91a235284115c49c75e496a289252e9",
+  "library_sha256": "12534d28dfeccda98c5e2cdffecc6621ffde7b3a95810501f2a513f01911e810",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -324,7 +324,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "8c1bc5e8ff4a82d37d0215d2400a31e9936a9077bd8de432303f4c416aead127",
+      "sha256": "8b02db45a421f62549214e440981956c8236e19ace73b10db9a55fa06e4fcb32",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
       "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
     },
@@ -357,6 +357,12 @@
       "sha256": "d6795a6fc86f66bc4d77b34c104e3f369f8004802afe353b83b045d30e326d29",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
       "original_sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/bsp.cpp",
+      "sha256": "413a280f60a07454097228623afa1f8dda56c7660b7f08ea5fe42846023e9bc5",
+      "original": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
+      "original_sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
     }
   ],
   "baseline_library": {
@@ -365,13 +371,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "05eba24be66462a8716264dfd5c868a77aab23001b0c59e12b0ae5b25166d796"
+    "sha256": "383091aaa54e64f2f72dd700aec266cf560c442ee48647e77f18bf2c05eeb550"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "1c213c589b577de824b3f506e14f7a385bdcf33e6a4e4255f70a031eab1286b2"
+    "sha256": "b498d4088d6b2b4bed0002b581a7ad2bf1fd6726239a8a69854f5986961a56f3"
   },
-  "script_sha256": "4392ac7742634d25a2869948121a43a1c856fad0baf1193f1b83c549a5e1c200",
+  "script_sha256": "9edae35f8c2ce7d33195e92bc397a0ab02bdf22e819f2588468239e0178b63bc",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -391,6 +397,17 @@
     "client455_quake.inc": "2dce23ab348ac2bf875b8810b96b49f76f35c80eb60b4f395fa49c73784521cf",
     "client455_quake_density.inc": "45bb12cdb72d0e9801f571bab09c92647aef4546a86cecae0f4baadcc0e423be",
     "client455_level_view.inc": "3ac83e7dc1dd40ac660f84daf8ee1bbc9d28da24a143470568ed7be7c3322555"
+  },
+  "bsp_light": {
+    "client455_bsp_light.h": "62a9413cc70cd80da111f17ecedcb148c8ea64e03c72de7bbc2c0efda2c3ac85",
+    "client455_bsp_fields.inc": "fdc93c063224563aed51812d2cbc4764774d410c952659f41ec454ab9a0b9bf1",
+    "client455_bsp_light.inc": "bf780e950b6d0af158dc3cbafa042248f4772f678046de7962466148c8bb97cd"
+  },
+  "bsp_header_overlay": {
+    "file": "work/client455-port/startup-engine/include/r3bsp455.h",
+    "sha256": "93e07fdf42856c75d119f761ce8e58714b6061ae7f4ebcd2bdc1d62b2a810b5e",
+    "original": "work/client455-port/source/R3Engine/1stclass/r3bsp.h",
+    "original_sha256": "b78dc256012be5a0e529e1d38e406281a5691ae46a3cc850c65027f891ba7e6f"
   },
   "camera": {
     "client455_camera.h": "ddfd150a5c90dd29a9d6dc2ad9a4f584f05480240467cd4a32289124571a1b8e",
@@ -412,7 +429,7 @@
   },
   "camera_header_overlay": {
     "file": "work/client455-port/startup-engine/include/anicamera455.h",
-    "sha256": "14961bea48d5a073fc2f37d21a02c66286117e26f54a001deb2b2883586fe961",
+    "sha256": "a9f715e9f069134360f72e85b749bcee8b7ab5c8252dd0189916fc34fbd85145",
     "original": "work/client455-port/source/R3Engine/2ndclass/anicamera.h",
     "original_sha256": "9f940a7f3afa96380a8edde4101079db49150812f690a584ddcb4b8a7fc7f3be"
   },
@@ -438,7 +455,7 @@
   ],
   "particle_header_overlay": {
     "file": "work/client455-port/startup-engine/include/particle455.h",
-    "sha256": "d9ef937cd0aa0affb48f88fc09410753435728dbde34ef1cad27d3f704bc53ab",
+    "sha256": "dfe90e10faebcef8daaa2fb71e37965b9845fc7bb7cb2173a1985846f3211399",
     "extra_consumer": "scripts/native/client455_weather.cpp"
   },
   "particle_port": {
