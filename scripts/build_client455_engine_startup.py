@@ -204,6 +204,13 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
 '''
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_special_shaders.h"\n'+raw
+            raw+=b'\n'+(WS/'scripts/native/client455_special_shaders.inc').read_bytes()
+            first,last=section(raw,b'HRESULT D3D_R3RestoreDevice()',b'HRESULT D3D_R3RestoreDevice()');body=raw[first:last];anchor=b'\tInitFullScreenEffect();'
+            if body.count(anchor)!=1:raise ValueError('Special shader restore boundary')
+            raw=raw[:first]+body.replace(anchor,anchor+b'\n    RF455_ReleaseSpecialShaders();\n    RF455_LoadSpecialShaderBinary();')+raw[last:]
+            first,last=section(raw,b'HRESULT D3D_R3InvalidateDevice()',b'HRESULT D3D_R3InvalidateDevice()');body=raw[first:last];at=body.index(b'{')+1
+            raw=raw[:first]+body[:at]+b'\n    RF455_ReleaseSpecialShaders();'+body[at:]+raw[last:]
             raw=b'#include "client455_entity_lighting.h"\n'+raw
             raw=raw.replace(b'pd3dDevice->GetDeviceCaps(&caps);',b'pd3dDevice->GetDeviceCaps(&caps);\n    RF455_SetLightingCaps(&caps);')
             raw=b'#include "client455_sky_atmosphere.h"\n'+raw
@@ -331,6 +338,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['map_entity_owner']={'file':'scripts/native/client455_map_entity_owner.inc','sha256':sha(WS/'scripts/native/client455_map_entity_owner.inc')}
     report['material_header_overlay']={'file':materialKey,'sha256':sha(materialHeader),'original':materialInput.relative_to(WS).as_posix(),'original_sha256':sha(materialInput)}
     report['material_port_script']={'file':'scripts/client455_material_port.py','sha256':sha(WS/'scripts/client455_material_port.py')}
+    report['special_shader_owner']={name:sha(WS/'scripts/native'/name) for name in ['client455_special_shaders.h','client455_special_shaders.inc','client455_shader_key.h']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

@@ -41,6 +41,17 @@ def copy_sky_resources(run):
         target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(source,target)
         records.append(dict(file=target.relative_to(WS).as_posix(),sha256=row['sha256'],original=row['original']))
+    return records+copy_special_shaders(run)
+
+
+def copy_special_shaders(run):
+    """The ordinary restore callback loads the pinned init.r3o shader registry."""
+    reference=json.loads((WS/'inventory/client455-special-shaders-inputs.json').read_text());records=[]
+    for row in reference['inputs']:
+        source=WS/row['file']
+        if hashlib.sha256(source.read_bytes()).hexdigest()!=row['sha256']:raise ValueError('Changed special shader input')
+        target=run/row['runtime_relative'];target.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(source,target)
+        records.append(dict(file=target.relative_to(WS).as_posix(),sha256=row['sha256'],original=row['original']))
     return records
 
 

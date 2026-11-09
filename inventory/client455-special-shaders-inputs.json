@@ -1,0 +1,121 @@
+{
+  "scope": "Actual455 special-material binary shader inputs;not Character shaders",
+  "script": {
+    "file": "scripts/prepare_client455_special_shaders.py",
+    "sha256": "e3d2f4f7004b063b4276325e40321ffe8fcb7f1145446c082b396f1b03c3b69d"
+  },
+  "decoder": {
+    "file": "scripts/shader455.py",
+    "sha256": "e0f4cd0bfbe1ed39b6a6e706ca853a776f76a6ab798560b74d09ea19f0010017"
+  },
+  "key_header": {
+    "file": "scripts/native/client455_shader_key.h",
+    "sha256": "09d4e6ddca6bee868aae3e0857899fe64bf6b94024a590de3271e824dfe26866"
+  },
+  "init": {
+    "path": "./System/shader/",
+    "effects": [],
+    "stages": [
+      {
+        "kind": "vertex",
+        "name": "vFraction.shr",
+        "profile": "vs_2_0"
+      },
+      {
+        "kind": "vertex",
+        "name": "vPlazma.shr",
+        "profile": "vs_2_0"
+      },
+      {
+        "kind": "pixel",
+        "name": "pFraction.shr",
+        "profile": "ps_2_0"
+      },
+      {
+        "kind": "pixel",
+        "name": "pPlazma.shr",
+        "profile": "ps_2_0"
+      }
+    ],
+    "objects": [],
+    "bytes": 1424
+  },
+  "inputs": [
+    {
+      "file": "work/client-reference/special-shaders455/init.r3o",
+      "sha256": "a7d551a5a7dce2a6bbb8887fbc0e0a2c68dc83dff7bab1443b0eef51ab01353c",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\init.r3o",
+      "runtime_relative": "System/shader/init.r3o"
+    },
+    {
+      "file": "work/client-reference/special-shaders455/vFraction.sho",
+      "sha256": "bf34a801f63093bffc9a8c3ee0516226b05c5472ab7c1674f9335e526f485e55",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vFraction.sho",
+      "runtime_relative": "System/shader/vFraction.sho"
+    },
+    {
+      "file": "work/client-reference/special-shaders455/vPlazma.sho",
+      "sha256": "dcf81c12074884495ee3d40af81fe6cb93cfb8201b896b1bc6db31ae17b84642",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\vPlazma.sho",
+      "runtime_relative": "System/shader/vPlazma.sho"
+    },
+    {
+      "file": "work/client-reference/special-shaders455/pFraction.sho",
+      "sha256": "49051362d06fe92a4b113dacba6e6cd4a382e951170962855289d0fe1e25eecd",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pFraction.sho",
+      "runtime_relative": "System/shader/pFraction.sho"
+    },
+    {
+      "file": "work/client-reference/special-shaders455/pPlazma.sho",
+      "sha256": "f10f9817b1fd0803df578526e6d4465725718d61918659a09e38ef291b13a803",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\pPlazma.sho",
+      "runtime_relative": "System/shader/pPlazma.sho"
+    }
+  ],
+  "programs": [
+    {
+      "name": "vFraction.sho",
+      "decoded": {
+        "file": "work/client-reference/special-shaders455/vFraction.hlsl",
+        "sha256": "5a99a77db19499336df3bc8e6c851ab412703559edcc4da5088ddf9480e08843"
+      },
+      "encrypted": {
+        "file": "work/client-reference/special-shaders455/vFraction.sho",
+        "sha256": "bf34a801f63093bffc9a8c3ee0516226b05c5472ab7c1674f9335e526f485e55"
+      }
+    },
+    {
+      "name": "vPlazma.sho",
+      "decoded": {
+        "file": "work/client-reference/special-shaders455/vPlazma.hlsl",
+        "sha256": "df10f422e94c4964f3444d9d9b3817b7dd431e8da7335123e580df3786f1c701"
+      },
+      "encrypted": {
+        "file": "work/client-reference/special-shaders455/vPlazma.sho",
+        "sha256": "dcf81c12074884495ee3d40af81fe6cb93cfb8201b896b1bc6db31ae17b84642"
+      }
+    },
+    {
+      "name": "pFraction.sho",
+      "decoded": {
+        "file": "work/client-reference/special-shaders455/pFraction.hlsl",
+        "sha256": "f1313993910d0afd22c041ef6a56f2a3c3dccb3291365dff7931f77f63d9c27f"
+      },
+      "encrypted": {
+        "file": "work/client-reference/special-shaders455/pFraction.sho",
+        "sha256": "49051362d06fe92a4b113dacba6e6cd4a382e951170962855289d0fe1e25eecd"
+      }
+    },
+    {
+      "name": "pPlazma.sho",
+      "decoded": {
+        "file": "work/client-reference/special-shaders455/pPlazma.hlsl",
+        "sha256": "d42439ad6c26c6f320c137205c97d766765a0d30edca43010a78035e91835c09"
+      },
+      "encrypted": {
+        "file": "work/client-reference/special-shaders455/pPlazma.sho",
+        "sha256": "f10f9817b1fd0803df578526e6d4465725718d61918659a09e38ef291b13a803"
+      }
+    }
+  ]
+}
