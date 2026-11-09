@@ -1,5 +1,14 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — BSP leaf122. Restored inverse-affine GetLeafNum using supplied
+inverse,source455 math and targetleaf0 fallback.13fullasm/971instructions
+equalboth455;instance/INS/Planet owners separated,INS normal reader returns0
+without claiming fullbranch acceptance.140finitecases/1680exactXYZbytes;
+Bellato76queue/16clock/5viewedGPU byteequal121/maps2692/Create1.
+Engine2fa70824 onlybsp.obj changed,66byteequal;headers/clientbuild unchanged.
+PEb0b13a09/unresolved0,IDAsavedclosed/list0. Fullrenderer/M9 OPEN.
+[research/client455-bsp-leaf.md](research/client455-bsp-leaf.md).
+
 2026-11-09 — BSP light geometry121. Restored selected regular/magic guards,
 leaf128/256,face5000/saturation3000,batches3000/2001,owned world/inverse and
 explicit D3D9 declaration with ordinary create/release.12fullasm/1725instructions

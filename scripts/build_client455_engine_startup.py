@@ -76,6 +76,7 @@ def main():
             raw=b'#include "client455_bsp_light.h"\n'+raw
             start,end=section(raw,b'void CBsp::DrawDynamicLightSub(',b'void CBsp::DrawDynamicLightSub(');raw=raw[:start]+raw[end:]
             start,end=section(raw,b'void CBsp::DrawMagicLightSub(',b'void CBsp::DrawMagicLightSub(');raw=raw[:start]+(WS/'scripts/native/client455_bsp_light.inc').read_bytes()+raw[end:]
+            start,end=section(raw,b'short CBsp::GetLeafNum(',b'short CBsp::GetLeafNum(');raw=raw[:start]+(WS/'scripts/native/client455_bsp_leaf.inc').read_bytes()+raw[end:]
             start,end=section(raw,b'void CBsp::ClearVariable()',b'void CBsp::ClearVariable()');body=raw[start:end];at=body.index(b'{')+1
             raw=raw[:start]+body[:at]+b'\nD3DXMatrixIdentity(&mWorldMatrix455);D3DXMatrixIdentity(&mInverseWorldMatrix455);'+body[at:]+raw[end:]
         elif filename=='level.cpp':
@@ -176,6 +177,7 @@ def main():
     report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
     report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}
     report['bsp_light']={name:sha(WS/'scripts/native'/name) for name in ['client455_bsp_light.h','client455_bsp_fields.inc','client455_bsp_light.inc']}
+    report['bsp_leaf']={'client455_bsp_leaf.inc':sha(WS/'scripts/native/client455_bsp_leaf.inc')}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}

@@ -1,0 +1,149 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual inverse-affine BSP leaf lookup and distinct CInstanceNode/INS/CPlanetLevel owners;full world open",
+  "script_sha256": "928b10fb840ed5e634a3c6cd7a0070787bc2566ff61d1875ee059f3da5f9e839",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b0b13a09b36ec625202244d3998c4581b702caa508c9cd38a329a0e9c5485af9",
+    "bytes": 2226176,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167600",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "21fee936a22404acd9e5b42c3c20af1ce4bd8757a8969c329b109162b6ee4314",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "2fa70824eb20d19588c5043b438f12176f49e61065b31e68175da588e80bc1e4"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before122.lib",
+    "sha256": "12534d28dfeccda98c5e2cdffecc6621ffde7b3a95810501f2a513f01911e810"
+  },
+  "leaf": {
+    "cases": 140,
+    "local_scalar_bytes_exact": 1680,
+    "all_leaf_ids_exact": true,
+    "independent_owners": true,
+    "target_leaf_zero_fallback_preserved": true,
+    "affine_no_w_divide": true
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "viewed_GPU_frames": 5,
+  "identity_world_frames_byte_equal121": [
+    "frame-base.bgra",
+    "frame-cleared.bgra",
+    "frame-effects.bgra",
+    "frame-magic.bgra",
+    "frame-regular.bgra"
+  ],
+  "previous121_gate": {
+    "file": "artifacts/client455-progress/client455-light-geometry-checkpoint-before122.json",
+    "sha256": "89a37bf529e8424f682e47e7cf3a4f60a703c0205c297c8c15a2876939bd3f24"
+  },
+  "fresh_evidence": {
+    "bsp-leaf-reference": {
+      "file": "inventory/client455-bsp-leaf-reference.json",
+      "sha256": "f2c0a00b559dbf5e18f62e5c7df9b80554584cb0f73577d79bff514dc61d03a1"
+    },
+    "bsp-leaf-native": {
+      "file": "inventory/client455-bsp-leaf-native.json",
+      "sha256": "74dd58cdd0af9bbef5f8340fb0f59a1cb7c6fee1b48232c0b7050e8b3e50a888"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "a2b6361c38d4300572ffbe9972d196dfea737889d2ac77c92293e2fb21a09188"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "555e50d269755f4003bb52eb3b147c4beb6ef51b9b60873c77745010f1198bc7"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "efa66ec8c1033d449d00a62a46e01c18804d30b9ebc0b96ec886df224313799e"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "494c2bd4055dcea1b18067095699592ffa46e2b8733381789d22c6e3a68334ec"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "21fee936a22404acd9e5b42c3c20af1ce4bd8757a8969c329b109162b6ee4314"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "bcc3f79ab3fb84f263fa530c9f0fb1c1246f7441296a1da68e30661d724241e6"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "6bb7935c6eec34dc8eddbeed9c0b0fec15187e727715bcee88224c607588f179"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "6f0c9b669102d1f2afaa9b951e43bf8b6f07964fffe93fec93e751eeb7692617"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "6883ff7fa9246c5787f25e0d224d9103e72ca565dbd6efdb6aeeaa87977cd710"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "ea0d55418d745f32b33b5652e815e45ef2204d815783cb80f5860b85b455477f"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "1e7205143c55692340880dd66f7201850b4839c573d7db0182a29bc199b31aca"
+    }
+  },
+  "normal_client_build_unchanged": true,
+  "ordinary_placed_transform_owners_restored": false,
+  "full_world": false,
+  "full_renderer": false,
+  "gaps": [
+    "Full ReadyBspRender local camera/visibility/frustum/alpha/entity cache and placed-instance owners are not restored by GetLeafNum alone",
+    "INS reader returns0 on all normal exits in the pinned body;its side effects,Error paths,console selection and full ILevel/INS/Planet source remain open;absence of assets is not completeness proof",
+    "Finite affine examples do not accept allFP/CRT/NaN/singular/unsafe IDs/recursive cycles/concurrency/OOM/privateABI domains",
+    "Full ordinary projection/sky/alpha/shadow/device reset,Character/stages/input/auth/protocol/gameplay and previous client-acceptance gaps remain;M9 OPEN"
+  ],
+  "historical_suites": "Lightgeometry33/ANI-BBX/quake/explosion/texture/Character/receiver/bulk historical,not rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

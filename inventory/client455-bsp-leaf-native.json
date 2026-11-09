@@ -1,0 +1,55 @@
+{
+  "status": "PASS_SELECTED",
+  "scope": "Actual own CBsp::GetLeafNum,owned inverse matrix and selected finite leaf topologies;fullBSP/renderer open",
+  "script_sha256": "cb64c3d5225447253f59c48acc963ee1a3e791f1c5be729f5ca4751a6815e9a0",
+  "source": {
+    "file": "scripts/native/client455_bsp_leaf_probe.cpp",
+    "sha256": "086876e38215b430bd90929c4786eb761367faeac5c164dc2ab749ad58c8e4e8"
+  },
+  "included_source": {
+    "file": "scripts/native/client455_world_probe.cpp",
+    "sha256": "5cf656e086ff6c54bc829f89f74b0776c1b163645c439461b16ed45556bd9d68"
+  },
+  "oracle": {
+    "file": "scripts/bsp_leaf455.py",
+    "sha256": "c24a2597111d0e4e04785faad1ebca30b5beaee3af1dbeccc9acb93fd8751a3c"
+  },
+  "exe": {
+    "file": "work/m9/1e5a3366/bsp-leaf-001/bsp-leaf-probe.exe",
+    "sha256": "1e5a3366b0fcbd4fec521f06663abbd22638a141a368198d3168626f82c2a7a2"
+  },
+  "map": {
+    "file": "work/m9/1e5a3366/bsp-leaf-001/bsp-leaf-probe.map",
+    "sha256": "03951a091f984b0467422456c554717ec7412b199dbc0294cda77e59337d1db3"
+  },
+  "fixture": {
+    "file": "work/m9/1e5a3366/bsp-leaf-001/fixtures.bin",
+    "sha256": "7341e449c027fbbf1ee3ce4b6512ea983666ad8a59320e0394d84ca4c3cc0e46"
+  },
+  "trace": {
+    "file": "work/m9/1e5a3366/bsp-leaf-001/leaf.jsonl",
+    "sha256": "866f3e5ebad7d4ae942861c917345628cb569814f49821583c6dbe1b5ac98d08"
+  },
+  "console": {
+    "file": "work/m9/1e5a3366/bsp-leaf-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "normal_link_sha256": "21fee936a22404acd9e5b42c3c20af1ce4bd8757a8969c329b109162b6ee4314",
+  "engine_report_sha256": "494c2bd4055dcea1b18067095699592ffa46e2b8733381789d22c6e3a68334ec",
+  "natural_exit": 0,
+  "verdict": {
+    "cases": 140,
+    "local_scalar_bytes_exact": 1680,
+    "all_leaf_ids_exact": true,
+    "independent_owners": true,
+    "target_leaf_zero_fallback_preserved": true,
+    "affine_no_w_divide": true
+  },
+  "GPU_frames": 0,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

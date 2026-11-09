@@ -1,17 +1,17 @@
 # Полнота восстановления RF_Online.bin
 
-121 PARTIAL: перенесены выбранные отличия световой геометрии455:фильтры,
-leaf/face caps,порции вершин,насыщение magic и собственные матрицы BSP.
-12 полных asm/1725 инструкций совпали между двумя455;IDA saved/closed/list0.
-33 небольших примера проверили1580880 байт отправленных вершин.
-Настоящая Bellato:76queue/16OSclock/5 просмотренных GPU кадров,побайтно равных120.
-Карты2692/330,ANI/BBX,точная новая PE startup/window/device/Create1 проходят.
-Engine67/14derived12534d28…;own PE933c276a…/entry167630/182client-20kernel/unresolved0.
-Игровые transform owners,полные ILevel/INS/Empty/renderer иM6/M6F/M7/M9 OPEN.
-Текущий gate:inventory/client455-light-geometry-checkpoint.json.
-Следующая122 — реальные владельцы world/inverse и их обычные callers.
+122 PARTIAL: восстановлен world→local через сохранённую inverse матрицу
+в настоящем CBsp::GetLeafNum.140коротких случаев/1680байтXYZ/leafIDs проходят.
+13полных asm/971инструкция совпали между двумя455;IDA saved/closed/list0.
+Подтверждены отдельные instance/planet владельцы;INS source gap сохранён.
+Настоящая Bellato:76queue/16OSclock/5просмотренныхGPU byteequal121.
+Карты2692/330 иточная новаяPE startup/window/device/Create1 PASS.
+Engine67/14derived2fa70824…:толькоbsp.obj изменён,66byteequal.
+OwnPEb0b13a09…/entry167600/182client-20kernel/unresolved0.
+FullReadyBsp/renderer/M6/M6F/M7/M9 OPEN. Текущийgate:
+inventory/client455-bsp-leaf-checkpoint.json. Далее123 — ordinarysky/projection.
 
-[Доказательства121](../research/client455-light-geometry.md).
+[Доказательства122](../research/client455-bsp-leaf.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

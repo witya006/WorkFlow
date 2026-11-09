@@ -6,9 +6,54 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-LIGHT-GEOMETRY-121",
+      "id": "CLIENT455-BSP-LEAF-122",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Actual CBsp inverse-affine GetLeafNum restored;instance/INS/Planet owners separated by constructors/vtables/RTTI;fullrenderer open",
+      "reference": [
+        {
+          "rva": "0x4faf00",
+          "role": "World-to-local leaf query"
+        },
+        {
+          "rva": "0x4fae20",
+          "role": "Leaf0 fallback"
+        },
+        {
+          "rva": "0x4c0980",
+          "role": "Affine XYZ noWdivide"
+        },
+        {
+          "rva": "0x4eb5e0",
+          "role": "INS reader normal returns0"
+        },
+        {
+          "rva": "0x512000",
+          "role": "Distinct Planet ctor"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_bsp_leaf.inc",
+        "scripts/build_client455_engine_startup.py"
+      ],
+      "verification": "13equalbodies/13fullasm/971instructions;11new/742;IDA279e61ebsavedclosed/list0.140finitequeries/1680exactXYZbytes/leaf0quirk/7affinematrices/independentowners. RealBellato76queue/16clock/5viewedGPU byteequal121/maps2692/330/Create1. Engine67onlybsp changed66byteequal,headers/client182+20unchanged. PEb0b13a09/unresolved0. No unchangedbroad suites rerun.",
+      "evidence": [
+        "inventory/client455-bsp-leaf-reference.json",
+        "inventory/client455-bsp-leaf-native.json",
+        "inventory/client455-bsp-leaf-checkpoint.json",
+        "research/client455-bsp-leaf.md"
+      ],
+      "gaps": [
+        "Full ReadyBspRender local camera/visibility/frustum/alpha/entity cache and placed-instance owners are not restored by GetLeafNum alone",
+        "INS reader returns0 on all normal exits in the pinned body;its side effects,Error paths,console selection and full ILevel/INS/Planet source remain open;absence of assets is not completeness proof",
+        "Finite affine examples do not accept allFP/CRT/NaN/singular/unsafe IDs/recursive cycles/concurrency/OOM/privateABI domains",
+        "Full ordinary projection/sky/alpha/shadow/device reset,Character/stages/input/auth/protocol/gameplay and previous client-acceptance gaps remain;M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-LIGHT-GEOMETRY-121",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Selected BSP regular/magic geometry filters,caps,deduplication,batches,owned world/inverse and real declaration restored;ordinary placed transform owners and fullrenderer open",
       "reference": [
         {
@@ -57,7 +102,8 @@
         "Finite fixture geometry and actual Bellato lighting do not prove all leaf recursion/oblique planes/invalid IDs/NaN/FP modes/CRT/concurrency or unsafe target domains",
         "Selected declaration create/release is verified;full lost-device/reset/recreate/failure/OOM/error paths and renderer pipeline remain open",
         "Full world/Character/input/stages/auth/protocol/gameplay and all other client-acceptance gaps remain;M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "historical_after": "CLIENT455-BSP-LEAF-122"
     },
     {
       "id": "CLIENT455-WORLD-FRAME-120",

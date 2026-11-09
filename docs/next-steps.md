@@ -2,31 +2,28 @@
 
 Обновлено 2026-11-09.
 
-121 завершён как частичный результат M6: выбранные geometry guards/caps/batches,
-собственные world/inverse и explicit declaration перенесены. 33 небольших случая,
-настоящая Bellato/5GPU/maps/ANI-BBX/Create1 проходят. Fullrenderer не принят.
-Актуальный gate: inventory/client455-light-geometry-checkpoint.json.
-Доказательства:research/client455-light-geometry.md;hashes:docs/project-memory.md.
-M9 уже определён:финальная приёмка полного клиента455 без модернизации графики.
+122 завершён как частичный результат M6. Восстановлен inverse-affine
+GetLeafNum;140 коротких случаев,настоящая Bellato/5GPU/maps/Create1 проходят.
+Подтверждены отдельные INS/Planet владельцы,их source gaps сохранены.
+Gate:inventory/client455-bsp-leaf-checkpoint.json.
+Доказательства:research/client455-bsp-leaf.md;hashes:docs/project-memory.md.
+M9 уже определён:полная приёмка клиента455 без модернизации графики.
 
-1. Участок122:проверить реальные владельцы world/inverse CBsp иILevel/Empty/INS
-   по constructor→vtable→callers. Setter8FDCA0/source готов,ordinary game writers
-   ещё не перенесены.12xref кандидатов не означают12 доказанных классов.
-2. Восстановить подтверждённый ordinary owner/transform path и обратные
-   координаты;проверить на малом примере и настоящем ресурсе. Не объявлять
-   source-owned128-byte расширение эквивалентным target privateABI.
-3. Затем полные frame/projection/sky/alpha/shadow/device reset/recreate/error,
-   trajectory/quality/blur/advancedFX/independenttextureflag8.
-4. Полные mapUI/layer consumers,Tutorial/Avatar/Create/camera input/QBI47/IME,
-   fourstages/Login/auth/fullprotocol/Character и прочие client-acceptance gaps.
-5. M6/M6F закрывать только по полной матрице,затем M7 и финальная M9.
+1. Участок123:обычный CLevel sky/projection8E7A10. Проверить writers
+   orthographic flag/scale и реальные APIs,затем temporary near2/fade/restore
+   perspective либоortho/frustum. Сохранить target quirks и согласоватьGPU.
+2. Полные ReadyBspRender/local-camera/world-frustum/alpha/entity caches,
+   projection/sky/shadow/device lost/reset/recreate/error. Один GetLeafNum не
+   закрывает BSP. INS reader normal0 не закрывает sideeffects/ILevel/console.
+3. Затем trajectory/quality/blur/advancedFX/independenttextureflag8;
+   полные mapUI/layer consumers,Tutorial/Avatar/Create/camera/QBI47/IME,
+   fourstages/Login/auth/fullprotocol/Character и client-acceptance gaps.
+4. M6/M6F закрывать по полной матрице,затемM7 и финальнаяM9.
 
-Correction120 сохранить:обычный CLevel CURRENTview,INS PREVIOUSview.
-Геометрию121 не откатывать на identity/FVF;явныеtargetquirks сохранены.
-Больше159k/старыеbroad suites не нужны без изменения или конкретного риска.
-Только клиент;серверы read-only. Не запускать inputEXE. Рабочие copies подwork/.
-Локальный Gitбезpush. Pythonчерезscripts/Invoke-Python.ps1 file.py.
-Subagentsтолько появномузапросу. Native/GPU jobsпоследовательно.
-Передrebuild exactengine/PE/report snapshots;ignoredнеbackup.
-Общийheader изменён→полнаяnormalbuild182,не толькоconsumersprobe.
-MCPdisasm<=120,проверитьcounts/unique;owned IDAсохранять/закрывать.
+Correction120 сохранить:ordinaryCLevel CURRENTview,INS PREVIOUSview.
+Геометрия121 и inverse122 сохранены. Не повторять159k/старыеbroad suites безпричины.
+Только клиент;серверы read-only;inputEXE не запускать;copies подwork/.
+Локальный Git безpush. Python через scripts/Invoke-Python.ps1 file.py.
+Subagents только появномузапросу. Native/GPU последовательно с terminalhandle.
+До rebuild exactengine/PE/report snapshots. Общийheader изменился→полнаяnormalbuild.
+MCPdisasm<=120;проверитьcounts/unique;ownedIDA сохранять/закрывать.
