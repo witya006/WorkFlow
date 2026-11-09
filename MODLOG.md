@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Lighting127 source component.17fullasm/1538instructions equalboth455,
+CFGcomplete;previous-Sun/previous-fog frameorder,flag2 endpoint interpolation and
+289point softwarefog contracts confirmed.129exact source math cases pass in
+PC24/53/64 nearest-even. Not yet ordinary integration;runtime126 unchanged.
+MCP66tools/ownedIDAsessionssavedclosed. Full lighting/M9OPEN.
+[Evidence](research/client455-sky-lighting.md).
+
 2026-11-09 — Atmosphere126. Actual prepass/resources/Sun scalar update integrated
 in ordinary client.16fullasm/2029instructions/19ranges equal both455;positiveCFG
 coverage includes lowerchunks missed byheadquery.16prepass branches/72Sun boundary

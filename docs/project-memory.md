@@ -2,6 +2,48 @@
 
 Обновлено 2026-11-09.
 
+127 PARTIAL_COMPONENT,current research/source arithmetic;runtime126 remains current.
+Audit: inventory/client455-sky-lighting-reference.json.
+Command:scripts/Invoke-Python.ps1 scripts/audit_client455_sky_lighting.py.
+Evidence:research/client455-sky-lighting.md. Previous memory/steps:*before127.md.
+No runtime source/build changes127. Exact engine/PE hashes below unchanged.
+
+17fullasm/1538instructions/17ranges equalboth455;allpositiveCFGstarts covered.
+14newasm/777instructions;8B1F20/8B1640/900B00 reused126/761instructions.
+Rawsky-lighting127-reference/session.json;IDA63ea5f70savedclosed/list0.
+MCPconfiguredsmoke4970a219closed,66tools. 8B1220unrecognizedfunction→fallback
+60998total;EXCLUDED fromselected,onlyexact7byteFLD/RET boundedbytes used.
+
+Criticalframeorder:900CD0computesSunposition fromPREVIOUSorbit/scale/currentfar,
+thennewSunstate/night/angles,then8B1640 tint usesPREVIOUSfog,thennewfog.
+DoNOTsynchronizeawayone-frame lag. Far forposition is1157C88,notSunrender1400.
+GetSunPosition8B1620 consumer8CB460lensflareOPEN. PackedBF734C/BF7350 initial
+FFFFFFFF/getters8B1820/8B1830;secondno directxrefs. Avoidunprovedambientlabels.
+8B30B0 enabled→CPUcolor modulation /256,alpha preserved;disabledreturnsbase.
+DrawMap8E7C40 setsTEXTUREFACTOR=tint beforeBSP;material8C80A0flag8000/global
+1157CB8 also consumes. INS/Planet separate. Exposure setter8B1210 called8E77B0:
+DWORD stored inthis145,lowBYTE/255 passed. IdentifyactualownAPI beforewiring.
+
+Fogflag2:currentColorD38/dayD58/nightD5C,currentStartD30/dayD48/nightD4C,
+currentEndD34/dayD50/nightD54 in1157xxx. R3Xflag4 setsday/current/main/far;
+flag8 setsnight;InitCorezeroesboth endpoints. Don'tenable legacyspatialFog2 code.
+Withoutflag2:CPU17x17=289samples,gridcenter8,step1290,cappedradius4,height5160.
+8B2670 softwareRayleigh/Mie/scattering;notGPUreadback. Normalize/dot(0,-1,0),
+exp2negativeLengthBeta/log2,phase reciprocal-sqrt cubed,clamp/scatter*Sun*intensity.
+AggregateunsignedRGB/divisor trunc(count*float(exposure*.899999976+.899999976)),
+clampchannels255. TargetNOzero-divisor fallback;don'tsilentlyreturnblack/default.
+
+Newclient455_sky_lighting_math.h not yetincludedengine:quartertint/directalpha,
+weightedfogfloats/channels (complementkeptx87extended),/256modulation,divisor with
+unsignedcountcorrection. Probeec0a5c6b/sky-lighting-math-001:129cases=36Sun45fog
+24filter24divisor,PC24/53/64nearest-even,Fractionoracleexactbits/CWrestored,
+3zerodivisors exposed. No actualDIV0 executed. OtherRC/FP/NaN/Inf/CRT open.
+Next128:wirewholechain+realR3X/script endpoints/exposure/mapGPU-CPUconsumers/
+software289point fog. Saveexact126engine/PE/MAP/rsp/reportsbeforeanyruntimeedit.
+No broad/nativeworld/GPU reruns127 because runtime unchanged. M6/M9OPEN.
+
+## Текущий ordinary runtime126
+
 126 PARTIAL M6: actual atmosphere prepass/resources and selected Sun scalar update.
 Current gate: inventory/client455-sky-atmosphere-checkpoint.json.
 Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_sky_atmosphere.py.
@@ -89,10 +131,10 @@ pageprotections. DoNOTclone119slots(privateD3Dentriesexist). Productionunpatched
 Failedfixture512/poolassumptions andearliermissingr3math/mainmacro errors corrected;
 no productionworkaround. Earlier125 cloneAV trialsretained.
 
-## Следующий участок127
+## Следующий участок128
 
 Restore remaining8B1F20 lightingtail:lightcolors/exposureBF734C/BF7350,
-day-nightfog/position/lensflare andactualwriters. Reviewalreadycompleteasm before
+day-nightfog/position/lensflare andactualwriters. Reviewalreadycomplete127asm before
 newIDAreads;onlyreadadditionalcallees/writers whenneeded. KeepSunColorFP/CRT,
 indirectMieparams/fullshaderconstants andfullreset explicitgaps.
 INS/Planet/generalrenderer/worldvisibility/texture lifetime/auth/stages/protocol/

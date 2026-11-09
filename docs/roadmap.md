@@ -1,18 +1,17 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-126 PARTIAL: восстановлены настоящий атмосферный проход, ресурсы купола/солнца
-и выбранные расчёты движения солнца в обычном клиенте.
-16 полных функций /2029 инструкций и19 диапазонов совпали на двух455;
-CFG проверен, включая блоки ниже адреса начала функции. IDA saved/closed/list0.
-16 вариантов прохода,72 граничных Sun случая,4225 вершин/8192 треугольника PASS.
-20 GPU кадров просмотрены;world/fade побайтно равны125. Materials/Create1 PASS.
-Engine67/17derived:5 изменённых объектов,62 побайтно прежние;headers неизменны.
-PE4dd76810…/entry16A440/unresolved0;ANI/BBX/звук/окно/устройство PASS.
-Полное освещение,туман,FP/CRT и lost/reset ещё OPEN. M6/M6F/M7/M9 OPEN.
-Gate: inventory/client455-sky-atmosphere-checkpoint.json.
-Далее127 — оставшаяся цепочка8B1F20: свет/туман/exposure и владельцы параметров.
+127 PARTIAL_COMPONENT: подтверждён порядок обновления освещения и тумана455,
+включая использование предыдущего FogColor и предыдущих параметров Sun.17fullasm/1538instructions equalboth455.
+Подготовлен source math component:129 точных случаев PC24/53/64 проходят.
+Он ещё НЕ подключён к ordinary frame;текущий runtime и gate остаются126.
+Engine744733c2…/PE4dd76810…/entry16A440 неизменны;20GPU/Create1 evidence126.
+Source audit: inventory/client455-sky-lighting-reference.json.
+Runtime gate: inventory/client455-sky-atmosphere-checkpoint.json.
+Далее128 — полная интеграция lighting/fog/289point software branch и consumers.
+M6/M6F/M7/M9 OPEN;полная приёмка освещения не заявлена.
 
-[Доказательства126](../research/client455-sky-atmosphere.md).
+[Доказательства127](../research/client455-sky-lighting.md).
+[Runtime126](../research/client455-sky-atmosphere.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

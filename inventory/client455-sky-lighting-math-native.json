@@ -1,0 +1,83 @@
+{
+  "scope": "Selected lighting arithmetic source component;ordinary runtime remains126",
+  "script_sha256": "b0d8a87e2c519002fee5d0161837e94ebf0aff819038d903c160b35a65b29953",
+  "sources": [
+    {
+      "file": "scripts/native/client455_sky_lighting_math_probe.cpp",
+      "sha256": "21bc098b74ddec85d9196268347f348a6acf88602468c62251ab7f88399ae85a"
+    },
+    {
+      "file": "scripts/native/client455_sky_lighting_math.h",
+      "sha256": "9fca9525ca517f12524e77eec8e47f790eb3f73b019f235bd2f296b823a1cd8c"
+    },
+    {
+      "file": "scripts/native/client455_sky_fade_math.h",
+      "sha256": "aba6db72af319380c91e47022e00989ab960f218ad12b976f99bc09e7935801b"
+    }
+  ],
+  "oracle": {
+    "file": "scripts/probe_client455_sky_fade.py",
+    "sha256": "d0966592dd13bde0b785bc02185c9fbd1323e92520b2e584ab8a741b84df9e11"
+  },
+  "exe": {
+    "file": "work/m9/ec0a5c6b/sky-lighting-math-001/sky-lighting-math-probe.exe",
+    "sha256": "ec0a5c6be88b30c07e58ff225a98e4cf5bd226df4adc15bf31ba622df126755e"
+  },
+  "trace": {
+    "file": "work/m9/ec0a5c6b/sky-lighting-math-001/lighting-math.jsonl",
+    "sha256": "8ea43b3682c9e7a01249dbb11c70a4c064be21dd297776dacbd99dc307989a0b"
+  },
+  "build_log": {
+    "file": "work/m9/ec0a5c6b/sky-lighting-math-001/build.txt",
+    "sha256": "add376fd35bd765a6f06ae7f23129502dcef64e829c50a1394ce71dcbcd3c0dd"
+  },
+  "architecture": "x86",
+  "natural_exit": 0,
+  "verdict": {
+    "status": "PASS_COMPONENT",
+    "cases": 129,
+    "cases_by_kind": {
+      "sun": 36,
+      "fog": 45,
+      "filter": 24,
+      "divisor": 24
+    },
+    "precision_bits": [
+      24,
+      53,
+      64
+    ],
+    "exact_selected_bits": true,
+    "preserved_control_word": true,
+    "zero_divisors": 3,
+    "ordinary_runtime_integrated": false,
+    "full_lighting": false,
+    "all_FP_inputs": false
+  },
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "744733c27378f78731ce68653ca4755e8d2dcb22a53bc6b44741292a21133e55"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "4dd76810b62a7137004f75e4cbd2490361a0d0180a1682e42cfa766de0626a5c",
+    "bytes": 2245632,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16a440",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_runtime_integrated": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

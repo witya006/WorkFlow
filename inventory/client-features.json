@@ -6,6 +6,59 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-SKY-LIGHTING-127",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "ordinary_runtime_integrated": false,
+      "description": "Confirmed ordinary455 lighting/fog contracts and exact selected source arithmetic",
+      "reference": [
+        {
+          "rva": "0x4b1f20",
+          "role": "Full lighting frame order and two fog branches"
+        },
+        {
+          "rva": "0x4b1640",
+          "role": "Packed lighting colors using previous fog"
+        },
+        {
+          "rva": "0x4b2670",
+          "role": "Software sky sampling"
+        },
+        {
+          "rva": "0x500cd0",
+          "role": "Previous-frame Sun position"
+        },
+        {
+          "rva": "0x4b30b0",
+          "role": "Conditional CPU tint modulation /256"
+        },
+        {
+          "rva": "0x4e7c40",
+          "role": "Ordinary map texture-factor consumer"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_sky_lighting_math.h"
+      ],
+      "verification": "17fullasm/1538instructions/17ranges both455/CFGcomplete;IDA63ea5f70savedclosed/list0;129exactselected arithmetic cases inPC24/53/64 nearest-even. Ordinaryruntime126 engine/PE unchanged;no repeatedbroad suites/GPU.",
+      "evidence": [
+        "inventory/client455-sky-lighting-reference.json",
+        "inventory/client455-sky-lighting-math-native.json",
+        "research/client455-sky-lighting.md"
+      ],
+      "gaps": [
+        "Arithmetic is a separate source component,not yet called by ordinary frame;runtime gate remains126",
+        "Restore full289point software scattering fog and flag2 endpoint ownership together with ordinary frame order and previous-frame Sun position",
+        "Wire actual R3X/text endpoints,exposure setter,map texture-factor consumer and packed-tint consumers;other INS/Planet owners remain separate",
+        "Modern CRT SunColor/scattering transcendental parity,allFP/RC/NaN/Inf and full lighting/reset/stage/gameplay/client acceptance remain open",
+        "Zero divisor has no target fallback;do not silently substitute a successful black/default fog result"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
       "id": "CLIENT455-SKY-ATMOSPHERE-126",
       "status": "partial",
       "runtime_gate_current": true,
