@@ -1,5 +1,10 @@
 # Lighting consumers130 — геометрия и освещение объектов
 
+Runtime130 исторический после131: текущий gate —
+`inventory/client455-light-direction-checkpoint.json`.
+Статические доказательства130 сохраняются. Уточнение131: Vector3fTransform уже
+использовал точный x87 backend; заменены D3DX inverse и light normalizer.
+
 2026-11-10. **PARTIAL M6**. В обычные клиентские методы CEntity подключены
 модуляция цвета карты, fixed-function light и Grass/LitGrass. Восстановлены
 36-byte vertices с нормалями и capability-gated pre/after bump materials.

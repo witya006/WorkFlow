@@ -1,5 +1,17 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Light direction131. Ordinary CEntity uses existing exact455 affine
+inverse/transform and136-byte normalizer body with selected finite sqrt CW policy.
+Corrected130:Vector3fTransform was already exactx87,not legacy arithmetic.
+10fullasm/411instructions/11ranges equalboth455;3linked bodies verified except
+epsilon/CALL relocations.240CPU/12PC-RC modes and72actual indexed LitGrass draws
+match independent rational oracle.30freshraw+PNG contents byteequal130;explicit
+review reuse. Engine9f334789/1payload66same/sharedheadersstable;PEd1738f4e/
+entry16C9B0/unresolved0/ANI-BBX/existingCreate1PASS. Full CRT matherr/errno/status
+flags and invalid affine caller output remainOPEN. Next:actualflag40 producers,
+runtime material fields/capacity and remaining client acceptance.M6/M9OPEN.
+[Evidence](research/client455-light-direction.md).
+
 2026-11-10 — Lighting consumers130. Normal36 geometry and actual entity fixed/
 Grass/LitGrass consumers plus capability-gated bump pre/after restored.
 17fullasm/3450instructions/18ranges equalboth455.5328selectedPC24 normals bitexact;

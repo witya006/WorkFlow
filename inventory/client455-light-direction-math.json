@@ -1,0 +1,68 @@
+{
+  "status": "PASS_SELECTED",
+  "script": {
+    "file": "scripts/probe_client455_light_direction_math.py",
+    "sha256": "9e4c79c5b06aea436418745651e3ac961f0f175dffe7f855c0ceb8594855cd0d"
+  },
+  "oracle": {
+    "file": "scripts/lit_transform455.py",
+    "sha256": "bee14b80100cac6b0d4d64506fe00247f0b1a976b08b66f131b10ca2031a6323"
+  },
+  "source": {
+    "file": "scripts/native/client455_light_direction_probe.cpp",
+    "sha256": "47c6b5c4ab41d4d937f72ec70bd47cbc497b4187b024c3320f642fe5da1afb9d"
+  },
+  "implementation": [
+    {
+      "file": "scripts/native/client455_light_direction.h",
+      "sha256": "ca20b4437c0475ff16b4d28046798540cf0078fa94ca855037f601db6f93953a"
+    },
+    {
+      "file": "scripts/native/client455_light_direction.inc",
+      "sha256": "00ddb914d8d79d1234d8f8bce2da126d4232f81ac7524c919ca843a2798a3289"
+    }
+  ],
+  "exe": {
+    "file": "work/client455-port/light-direction-math/light-direction-math.exe",
+    "sha256": "79fc8bea3cb3b4dcab3ce0c542ca728f08b6fc0cd5832c51d9a9ea148e966d0f"
+  },
+  "object": {
+    "file": "work/client455-port/light-direction-math/math.obj",
+    "sha256": "21773a182ebe89655ad9b5390c20e2ffe76c70e5b6b9c02febdca6874d4f8623"
+  },
+  "map": {
+    "file": "work/client455-port/light-direction-math/math.map",
+    "sha256": "19877e56bb97d473667e11922250cc25c53b9a3e0717709e88cf3308a85f0bf6"
+  },
+  "console": {
+    "file": "work/client455-port/light-direction-math/console.txt",
+    "sha256": "b7c3e4d62e7ac728cf1c5a308ef6eae2276fb95b53dd9810c36fddcedcf009c9"
+  },
+  "trace": {
+    "file": "work/client455-port/light-direction-math/trace.jsonl",
+    "sha256": "26f8b7bdfcdb2a3dcfb48bdba4a14702402a8c37bad2e8d51255c937008b0d41"
+  },
+  "x87_library": {
+    "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+    "sha256": "17df2c3b8e082a0cf7f60c18c21a46bc5cff21a8dce6046b8312f9a169edfc06"
+  },
+  "native": {
+    "status": "PASS",
+    "cases": 240,
+    "failures": 0,
+    "FP_modes": 12,
+    "full_CRT": false
+  },
+  "verdict": {
+    "cases": 240,
+    "normal_vectors": 96,
+    "affine_directions": 96,
+    "rejected_affine_guards": 48,
+    "FP_modes": 12,
+    "finite_output_bits_exact": true,
+    "full_CRT": false,
+    "status_flag_equivalence": false
+  },
+  "input_exe_executed": false,
+  "server_modified": false
+}

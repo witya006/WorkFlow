@@ -1,6 +1,7 @@
 #include "client455_sky_lighting.h"
 #include "client455_entity_lighting.h"
 #include "client455_entity_normals.h"
+#include "client455_light_direction.inc"
 #include "r3util.h"
 
 //4558E3630. The light branch takes priority over the map-color-only branch.
@@ -42,9 +43,7 @@ static void prepareEntityShader455(DWORD flags,DWORD mapColor,float addFrame,_EN
     if(list->ShaderID!=1&&list->ShaderID!=2)return;
     const float alpha=float(double(color>>24)/255.0);const DWORD tint=RF455_ApplySkyTint(mapColor);
     if(flags&0x40){
-        D3DXMATRIX inverse;D3DXMatrixInverse(&inverse,nullptr,reinterpret_cast<D3DXMATRIX*>(world));
-        inverse._41=inverse._42=inverse._43=0;
-        float direction[3];Vector3fTransform(direction,GetR3State()->mMainLightNomal,inverse.m);RF455_NormalizeEntityNormal(direction);
+        float direction[3];RF455_BuildLightDirection(direction,world,GetR3State()->mMainLightNomal);
         RF455_SetLitGrass(addFrame,list->Factor,alpha,tint,direction);
     }else SetGrassVS(addFrame,list->Factor,alpha,tint);
 }

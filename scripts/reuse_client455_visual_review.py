@@ -6,10 +6,10 @@ from checkpoint_client455_rvp_effects import check,require,sha
 from compare_client_binaries import WS
 
 
-def reuse(prefix,snapshot):
+def reuse(prefix,snapshot,reference_prefix=None):
     native_file=WS/f'inventory/client455-{prefix}-native.json';native=json.loads(native_file.read_text())
-    previous_native=WS/f'artifacts/client455-progress/client455-{prefix}-native-{snapshot}.json'
-    previous_review=WS/f'artifacts/client455-progress/client455-{prefix}-visual-review-{snapshot}.json'
+    previous_native=WS/f'artifacts/client455-progress/client455-{reference_prefix or prefix}-native-{snapshot}.json'
+    previous_review=WS/f'artifacts/client455-progress/client455-{reference_prefix or prefix}-visual-review-{snapshot}.json'
     old=json.loads(previous_native.read_text());review=json.loads(previous_review.read_text())
     require(review['reviewed'] and review['reviewed_frames']==5 and review['native_sha256']==sha(previous_native),'Verified previous visual review '+prefix)
     check(review['sheet']);before={Path(x['file']).name:x for x in old['frames']}
@@ -26,8 +26,9 @@ def reuse(prefix,snapshot):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('prefix',nargs='+');parser.add_argument('--snapshot',required=True);args=parser.parse_args()
-    for prefix in args.prefix:reuse(prefix,args.snapshot);print(prefix+':5 fresh frames byte-identical to previously reviewed pixels')
+    parser=argparse.ArgumentParser();parser.add_argument('prefix',nargs='+');parser.add_argument('--snapshot',required=True);parser.add_argument('--reference-prefix');args=parser.parse_args()
+    require(not args.reference_prefix or len(args.prefix)==1,'Explicit reference prefix applies to one new capture')
+    for prefix in args.prefix:reuse(prefix,args.snapshot,args.reference_prefix);print(prefix+':5 fresh frames byte-identical to previously reviewed pixels')
 
 
 if __name__=='__main__':main()

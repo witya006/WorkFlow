@@ -315,6 +315,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['vertex_header_overlay']={'file':vertexHeader.relative_to(WS).as_posix(),'sha256':sha(vertexHeader),'original':vertexInput.relative_to(WS).as_posix(),'original_sha256':sha(vertexInput)}
     report['lighting_consumers']={name:sha(WS/'scripts/native'/name) for name in ['client455_entity_lighting.h','client455_entity_lighting.inc','client455_entity_normals.h','client455_lit_grass.inc']}
     report['lighting_port_script']={'file':'scripts/client455_lighting_port.py','sha256':sha(WS/'scripts/client455_lighting_port.py')}
+    report['light_direction']={name:sha(WS/'scripts/native'/name) for name in ['client455_light_direction.h','client455_light_direction.inc']}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

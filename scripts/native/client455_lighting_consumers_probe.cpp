@@ -76,8 +76,13 @@ static int run130(){
             check(SUCCEEDED(d->EndScene())&&!samples125.empty(),"actual entity submissions130");const unsigned pixels=capture(names[i]);D3DMATERIAL9 m;d->GetMaterial(&m);float constants[24];d->GetVertexShaderConstantF(19,constants,6);
             std::fprintf(out,"{\"kind\":\"frame\",\"id\":%u,\"flags\":%u,\"sky_tint\":%u,\"expected_tint\":%u,\"actual_factor\":%u,\"draws\":%u,\"pixels\":%u,\"shader_bytes\":%u,\"stride\":%u,\"material\":",i,flags[i],RF455_GetSkyTintColor(),wanted,samples125.front().render[0],unsigned(samples125.size()),pixels,shaderBytes130,stride130);floats130(out,reinterpret_cast<float*>(&m),17);std::fputs(",\"constants\":",out);floats130(out,constants,24);std::fprintf(out,",\"color_op\":%u,\"post\":[%u,%u,%u,%u,%u]}\n",samples125.front().stage[0],render130(d,D3DRS_LIGHTING),render130(d,D3DRS_COLORVERTEX),render130(d,D3DRS_DIFFUSEMATERIALSOURCE),render130(d,D3DRS_SPECULARENABLE),render130(d,D3DRS_EMISSIVEMATERIALSOURCE));
         }
+#ifdef RF455_LIGHT_EXTRA
+        RF455_LIGHT_EXTRA(entity,world);
+#endif
         entity.ReleaseEntity();land.Destroy();g_pCamera=nullptr;
     }
     RF455_ClockTickSource=provider;std::fclose(out);g_MainApp.ReleaseR3D3D();ReleaseR3Engine();FILE* result=std::fopen("result.json","wb");check(result!=nullptr,"result130");std::fprintf(result,"{\"status\":\"PASS\",\"material_cases\":8,\"frames\":5,\"warnings\":%u,\"full_lighting\":false}\n",warnings);std::fclose(result);return 0;
 }
+#ifndef RF455_LIGHTING_CONSUMERS_NO_MAIN
 int main(){try{return run130();}catch(const std::exception& e){std::fprintf(stderr,"lighting130:%s\n",e.what());return 1;}}
+#endif

@@ -1,0 +1,378 @@
+{
+  "status": "CONFIRMED_SELECTED",
+  "script": {
+    "file": "scripts/audit_client455_light_direction.py",
+    "sha256": "48fad118597bf87630998d6ac0cfcedf2d6edea1cbc713322326c77327edf23f"
+  },
+  "scope": "Exact light affine inverse/transform and normalizer body with selected finite CRT sqrt rounding policy;actual LitGrass consumers",
+  "raw": {
+    "file": "artifacts/client455-progress/light-direction131-reference.json",
+    "sha256": "55199bafd81c3490757eff23c2623902c6b37969acbe3e7bf751a6eb28c785eb"
+  },
+  "session": {
+    "file": "artifacts/client455-progress/light-direction131-session.json",
+    "sha256": "760e8ad5958da868e60e20430663b86cad1c95445a5b75e432ade53d79a0246c"
+  },
+  "full_assembly": 10,
+  "primary_functions": 5,
+  "primary_instructions": 315,
+  "CRT_context_instructions": 96,
+  "verified_ranges": 11,
+  "CFG_complete": true,
+  "CRT_decompilation_complete": false,
+  "references": [
+    {
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x4bfbc0",
+          "rva": "0x4bfbc0",
+          "bytes": 485,
+          "sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee"
+        },
+        {
+          "owner_rva": "0x4c0980",
+          "rva": "0x4c0980",
+          "bytes": 132,
+          "sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d"
+        },
+        {
+          "owner_rva": "0x11d5d0",
+          "rva": "0x11d5d0",
+          "bytes": 136,
+          "sha256": "a09eb8c2261d32427aa450e8aa5a0e4515e5a2161e7270ef75b98c8a85550d52"
+        },
+        {
+          "owner_rva": "0x1db70",
+          "rva": "0x1db70",
+          "bytes": 31,
+          "sha256": "b206f5a0f56d99f848f0c8f9671459c458240ba44906caacd266b27765853cb8"
+        },
+        {
+          "owner_rva": "0x1db90",
+          "rva": "0x1db90",
+          "bytes": 39,
+          "sha256": "1a9399395343ca9cababa3a90fec42bd542097f8aae6bd26488c19cd8b13136a"
+        },
+        {
+          "owner_rva": "0x474514",
+          "rva": "0x474514",
+          "bytes": 9,
+          "sha256": "cf030336a393aacd02b4fa3c048019120fcc472a0a34eaf6afe806db89f73c14"
+        },
+        {
+          "owner_rva": "0x47451d",
+          "rva": "0x47451d",
+          "bytes": 157,
+          "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+        },
+        {
+          "owner_rva": "0x47451d",
+          "rva": "0x488e5e",
+          "bytes": 55,
+          "sha256": "b5f4f182d45d3d13ae930e80d57e676c2624c84b26c970d1659353230499032f"
+        },
+        {
+          "owner_rva": "0x488e05",
+          "rva": "0x488e05",
+          "bytes": 67,
+          "sha256": "49756c88592603c59a91d5ecf8589dab665fc8a2ad0f138e5d6e3c3b05c21169"
+        },
+        {
+          "owner_rva": "0x488dd5",
+          "rva": "0x488dd5",
+          "bytes": 23,
+          "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+        },
+        {
+          "owner_rva": "0x488dec",
+          "rva": "0x488dec",
+          "bytes": 25,
+          "sha256": "aa52f4d21b2566043e4bd412c92f5bb8740c0e1013ee1b2489818d41af086f20"
+        }
+      ]
+    },
+    {
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "ranges": [
+        {
+          "owner_rva": "0x4bfbc0",
+          "rva": "0x4bfbc0",
+          "bytes": 485,
+          "sha256": "5e4b6dfe0e8899c227141332996045737920cd666d533bb9038b9fdaabc24bee"
+        },
+        {
+          "owner_rva": "0x4c0980",
+          "rva": "0x4c0980",
+          "bytes": 132,
+          "sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d"
+        },
+        {
+          "owner_rva": "0x11d5d0",
+          "rva": "0x11d5d0",
+          "bytes": 136,
+          "sha256": "a09eb8c2261d32427aa450e8aa5a0e4515e5a2161e7270ef75b98c8a85550d52"
+        },
+        {
+          "owner_rva": "0x1db70",
+          "rva": "0x1db70",
+          "bytes": 31,
+          "sha256": "b206f5a0f56d99f848f0c8f9671459c458240ba44906caacd266b27765853cb8"
+        },
+        {
+          "owner_rva": "0x1db90",
+          "rva": "0x1db90",
+          "bytes": 39,
+          "sha256": "1a9399395343ca9cababa3a90fec42bd542097f8aae6bd26488c19cd8b13136a"
+        },
+        {
+          "owner_rva": "0x474514",
+          "rva": "0x474514",
+          "bytes": 9,
+          "sha256": "cf030336a393aacd02b4fa3c048019120fcc472a0a34eaf6afe806db89f73c14"
+        },
+        {
+          "owner_rva": "0x47451d",
+          "rva": "0x47451d",
+          "bytes": 157,
+          "sha256": "e1cd07d1210f8b649ed3eb237f28e0a31784ae5878ec9da76628a3239e387504"
+        },
+        {
+          "owner_rva": "0x47451d",
+          "rva": "0x488e5e",
+          "bytes": 55,
+          "sha256": "b5f4f182d45d3d13ae930e80d57e676c2624c84b26c970d1659353230499032f"
+        },
+        {
+          "owner_rva": "0x488e05",
+          "rva": "0x488e05",
+          "bytes": 67,
+          "sha256": "49756c88592603c59a91d5ecf8589dab665fc8a2ad0f138e5d6e3c3b05c21169"
+        },
+        {
+          "owner_rva": "0x488dd5",
+          "rva": "0x488dd5",
+          "bytes": 23,
+          "sha256": "e6ec999d45c3c78e22ed722d9cdd003ca3e8685d7954a7d030915df1e55eb902"
+        },
+        {
+          "owner_rva": "0x488dec",
+          "rva": "0x488dec",
+          "bytes": 25,
+          "sha256": "aa52f4d21b2566043e4bd412c92f5bb8740c0e1013ee1b2489818d41af086f20"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "file": "scripts/native/client455_light_direction.h",
+      "sha256": "ca20b4437c0475ff16b4d28046798540cf0078fa94ca855037f601db6f93953a"
+    },
+    {
+      "file": "scripts/native/client455_light_direction.inc",
+      "sha256": "00ddb914d8d79d1234d8f8bce2da126d4232f81ac7524c919ca843a2798a3289"
+    },
+    {
+      "file": "scripts/native/client455_entity_lighting.inc",
+      "sha256": "80fe06c62b73a2cd735168cb190680b2c467f6227e6ba543094fb238b89c6285"
+    }
+  ],
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "9f33478968c77b1a81acd031c50acd2175e7e37d129a067d16257e810175011e"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before131.lib",
+    "sha256": "6751765f42dc448ae54f8ee51cdb30a7ca07ba863cf87697cc6dd1149cd1653d"
+  },
+  "changed_members": [
+    "R3Engine455Startup.dir\\Release\\renderentity.obj"
+  ],
+  "timestamp_only_members": [],
+  "unchanged_members": [
+    "R3Engine455Startup.dir\\Release\\client455_weather.obj",
+    "R3Engine455Startup.dir\\Release\\client455_resource_io.obj",
+    "R3Engine455Startup.dir\\Release\\client455_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_map_time.obj",
+    "R3Engine455Startup.dir\\Release\\client455_time_commands.obj",
+    "R3Engine455Startup.dir\\Release\\client455_animation_timing.obj",
+    "R3Engine455Startup.dir\\Release\\client455_loop_clock.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum_system.obj",
+    "R3Engine455Startup.dir\\Release\\client455_frustum.obj",
+    "R3Engine455Startup.dir\\Release\\dxutil.obj",
+    "R3Engine455Startup.dir\\Release\\d3dutil.obj",
+    "R3Engine455Startup.dir\\Release\\rtmovie.obj",
+    "R3Engine455Startup.dir\\Release\\particlelist.obj",
+    "R3Engine455Startup.dir\\Release\\effectentitylist.obj",
+    "R3Engine455Startup.dir\\Release\\effectcore.obj",
+    "R3Engine455Startup.dir\\Release\\cswordtrace.obj",
+    "R3Engine455Startup.dir\\Release\\collisionutil.obj",
+    "R3Engine455Startup.dir\\Release\\cmagicscript.obj",
+    "R3Engine455Startup.dir\\Release\\characterobj.obj",
+    "R3Engine455Startup.dir\\Release\\r3util.obj",
+    "R3Engine455Startup.dir\\Release\\r3text.obj",
+    "R3Engine455Startup.dir\\Release\\r3sound.obj",
+    "R3Engine455Startup.dir\\Release\\r3move.obj",
+    "R3Engine455Startup.dir\\Release\\r3font.obj",
+    "R3Engine455Startup.dir\\Release\\r3enginekernel.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dwrapper.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dapp.obj",
+    "R3Engine455Startup.dir\\Release\\movecamera.obj",
+    "R3Engine455Startup.dir\\Release\\level.obj",
+    "R3Engine455Startup.dir\\Release\\extdummy.obj",
+    "R3Engine455Startup.dir\\Release\\console.obj",
+    "R3Engine455Startup.dir\\Release\\anicamera.obj",
+    "R3Engine455Startup.dir\\Release\\2dsprite.obj",
+    "R3Engine455Startup.dir\\Release\\toolcollision.obj",
+    "R3Engine455Startup.dir\\Release\\specialparticle.obj",
+    "R3Engine455Startup.dir\\Release\\soundentity.obj",
+    "R3Engine455Startup.dir\\Release\\skybox.obj",
+    "R3Engine455Startup.dir\\Release\\renderparticle.obj",
+    "R3Engine455Startup.dir\\Release\\renderflag.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexshader.obj",
+    "R3Engine455Startup.dir\\Release\\r3vertexbuffer.obj",
+    "R3Engine455Startup.dir\\Release\\r3render.obj",
+    "R3Engine455Startup.dir\\Release\\r3particle.obj",
+    "R3Engine455Startup.dir\\Release\\r3material.obj",
+    "R3Engine455Startup.dir\\Release\\r3lightmap.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3dtex.obj",
+    "R3Engine455Startup.dir\\Release\\r3d3d8.obj",
+    "R3Engine455Startup.dir\\Release\\r3alpha.obj",
+    "R3Engine455Startup.dir\\Release\\procedural.obj",
+    "R3Engine455Startup.dir\\Release\\multilayer.obj",
+    "R3Engine455Startup.dir\\Release\\entity.obj",
+    "R3Engine455Startup.dir\\Release\\cpathfinder.obj",
+    "R3Engine455Startup.dir\\Release\\core.obj",
+    "R3Engine455Startup.dir\\Release\\collision.obj",
+    "R3Engine455Startup.dir\\Release\\bsp.obj",
+    "R3Engine455Startup.dir\\Release\\animation.obj",
+    "R3Engine455Startup.dir\\Release\\r3profiler.obj",
+    "R3Engine455Startup.dir\\Release\\r3math.obj",
+    "R3Engine455Startup.dir\\Release\\r3input.obj",
+    "R3Engine455Startup.dir\\Release\\r3dinput.obj",
+    "R3Engine455Startup.dir\\Release\\jpegfile.obj",
+    "R3Engine455Startup.dir\\Release\\jmalloc.obj",
+    "R3Engine455Startup.dir\\Release\\jerror.obj",
+    "R3Engine455Startup.dir\\Release\\commonutil.obj",
+    "R3Engine455Startup.dir\\Release\\cjcache.obj",
+    "R3Engine455Startup.dir\\Release\\b_sort.obj"
+  ],
+  "shared_headers_changed": false,
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d1738f4e7516f33867c9fa7d3dc3219e684843dc49fec456e01eaa96783496b5",
+    "bytes": 2255872,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x16c9b0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "7ebf7823ca9bd344229162bb4fb71a998cc788a3e009f90eebbfa12621fb663a",
+  "linked_bodies": [
+    {
+      "name": "_RF455_MatrixInvert",
+      "rva": "0x1aaee0",
+      "reference_rva": "0x4bfbc0",
+      "bytes": 485,
+      "sha256": "14258011379f4c8cfada09503f77b575d1d3253fd8c23cf543a36cccdcdd159e",
+      "relocated": [
+        {
+          "offset": "0x21",
+          "kind": "absolute epsilon",
+          "target_rva": "0x1f8930"
+        }
+      ]
+    },
+    {
+      "name": "_RF455_Vector3fTransform",
+      "rva": "0x1ab0d0",
+      "reference_rva": "0x4c0980",
+      "bytes": 132,
+      "sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+      "relocated": []
+    },
+    {
+      "name": "_RF455_NormalizeLightVector",
+      "rva": "0x132330",
+      "reference_rva": "0x11d5d0",
+      "bytes": 136,
+      "sha256": "461966d25836892d4b7cc484a81beab539c5e323aa642638aa1b2d65aa67a012",
+      "relocated": [
+        {
+          "offset": "0x3a",
+          "kind": "relative CALL to selected finite sqrt policy",
+          "target_rva": "0x132470"
+        }
+      ]
+    }
+  ],
+  "CPU_linked_bodies": [
+    {
+      "name": "_RF455_MatrixInvert",
+      "rva": "0x1990",
+      "reference_rva": "0x4bfbc0",
+      "bytes": 485,
+      "sha256": "189a5efa351020864dc792af9738bfbf08d9585f94361732420b377113b0a8ef",
+      "relocated": [
+        {
+          "offset": "0x21",
+          "kind": "absolute epsilon",
+          "target_rva": "0x18500"
+        }
+      ]
+    },
+    {
+      "name": "_RF455_Vector3fTransform",
+      "rva": "0x1b80",
+      "reference_rva": "0x4c0980",
+      "bytes": 132,
+      "sha256": "835cd320ffad1ad3327555e01726985cba50ccffaf13e7ddeb12fb502000fc6d",
+      "relocated": []
+    },
+    {
+      "name": "_RF455_NormalizeLightVector",
+      "rva": "0x1030",
+      "reference_rva": "0x11d5d0",
+      "bytes": 136,
+      "sha256": "593aa78f3053d74d252ebf42fb2d4c7cb9187a33273526568440e0218496972f",
+      "relocated": [
+        {
+          "offset": "0x3a",
+          "kind": "relative CALL to selected finite sqrt policy",
+          "target_rva": "0x1000"
+        }
+      ]
+    }
+  ],
+  "previous130_gate": {
+    "file": "artifacts/client455-progress/client455-lighting-consumers-checkpoint-before131.json",
+    "sha256": "bb515c0b63a4c2ed8ca3e5e9f41c59f82fc19915a98ea8782cfc74d01750be41"
+  },
+  "gaps": [
+    "Selected finite PC24 geometry and lighting are covered;full GetNormal/decompressor/CRT/FP/RC/NaN/Inf/status flags remain open",
+    "Source material records are332/46bytes with4 slots;target runtime records526/54bytes read46 serialized bytes per layer. Extra runtime fields and broader layer capacity remain open",
+    "LitGrass reads19.xyz and21/22 only;original3-register stack overreads leave other lanes unspecified. Source uses deterministic unused lanes;complete state-consumer analysis remains open",
+    "Legacy Grass loader/caps failure paths and full shader lifecycle/device reset/OOM remain open",
+    "Actual CEntity methods are connected;game producers of flag40 and broader shader selection,full map visibility/entity ownership/world/camera/alpha/material acceptance,INS/Planet/lensflare/localfog and remaining client acceptance remain open",
+    "Inverse/transform and normalizer bodies are instruction-identical except selected sqrt CALL. Finite masked12PC/RC values verified;old CRT matherr/errno/precision-error dispatch,unmasked exceptions and complete NaN/Inf/status-flag parity remain open",
+    "Actual caller ignores failed affine inverse and then consumes unspecified stack data;no deterministic fallback added. Failed caller output is not accepted",
+    "Earlier130 described Vector3fTransform as legacy;the source already used the exact455x87 wrapper.131 reuses that backend and replaces the D3DX inverse and separate entity normalizer"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

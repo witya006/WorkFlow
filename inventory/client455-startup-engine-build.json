@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "6751765f42dc448ae54f8ee51cdb30a7ca07ba863cf87697cc6dd1149cd1653d",
+  "library_sha256": "9f33478968c77b1a81acd031c50acd2175e7e37d129a067d16257e810175011e",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -419,7 +419,7 @@
     "file": "artifacts/client455-startup-engine/build.txt",
     "sha256": "cb27fb97aefb01d0e2717a2fe822d306a2d253c172385e808f978aeafc899ae2"
   },
-  "script_sha256": "e28a934a3a7b9ee79beff65cedb4505afd07320eec769adc8b3a8f168aa00dc7",
+  "script_sha256": "9bfc90bb20b894244a781aafbeac825848a1428ce64cb1791a2ce2c46eddba20",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -490,13 +490,17 @@
   },
   "lighting_consumers": {
     "client455_entity_lighting.h": "17eda1831500c08fb48b14ea7eabccfefcf882c4ade3b6293b774558142fa8e2",
-    "client455_entity_lighting.inc": "717540715b083d960a2063afb8a99d7cdd39c63eddf7acfe0aa84c0e1f960d73",
+    "client455_entity_lighting.inc": "80fe06c62b73a2cd735168cb190680b2c467f6227e6ba543094fb238b89c6285",
     "client455_entity_normals.h": "0ab4216b1f177d03f0ada3d28dc06081c8b0ebe8a3df098f942398342a5998cd",
     "client455_lit_grass.inc": "d0de8f38ca4d776e50318fa0f24925c637f0e058a2c82c3d1fb1025d4058853f"
   },
   "lighting_port_script": {
     "file": "scripts/client455_lighting_port.py",
     "sha256": "2f2179b47b28e447f5735d9299238f8ae39f618d62b8c50ed0bbccda645be4ee"
+  },
+  "light_direction": {
+    "client455_light_direction.h": "ca20b4437c0475ff16b4d28046798540cf0078fa94ca855037f601db6f93953a",
+    "client455_light_direction.inc": "00ddb914d8d79d1234d8f8bce2da126d4232f81ac7524c919ca843a2798a3289"
   },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",
