@@ -6,9 +6,63 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-EFFECT-RESOURCES-105",
+      "id": "CLIENT455-EFFECT-RUNTIME-106",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary effect512/scheduling/lifecycle and two render passes drive/draw real aiming cue; effect cancellation drains children/master. Full nuclear owner/world order/device reset remain open",
+      "reference": [
+        {
+          "rva": "0x3da4b0",
+          "role": "magic scheduler"
+        },
+        {
+          "rva": "0x3d8410",
+          "role": "disappear"
+        },
+        {
+          "rva": "0x3d8800",
+          "role": "master removal"
+        },
+        {
+          "rva": "0x3db4e0",
+          "role": "opaque"
+        },
+        {
+          "rva": "0x3db640",
+          "role": "alpha/fade"
+        },
+        {
+          "rva": "0x4f2d10",
+          "role": "target R3T release/warning"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_effect_runtime_port.py",
+        "scripts/native/client455_effect_schedule.inc",
+        "scripts/native/client455_effect_disappear.inc",
+        "scripts/native/client455_effect_passes.inc",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "16 functions/2546 asm/16 equal ranges+2data. Actual cue6/90FrameMove/90dynamiclight inserts/4viewedGPU/62cancel drain/clear0pixels/capacity512/513 eviction and master256/257 forced child release with all256 surviving IDs;573 native assertions including512 release checks. Target R3T warning confirmed. Global texture teardown explicit in lab. PE12ca86c5/182-20-59/unresolved0/Create1. Resources66/magic36/status58/audio157/account/hotbar7/storage3/six viewed byte-equal hover frames pass; bulk suites not rerun.",
+      "evidence": [
+        "inventory/client455-effect-runtime-reference.json",
+        "inventory/client455-effect-runtime-native.json",
+        "inventory/client455-effect-runtime-visual-review.json",
+        "inventory/client455-effect-runtime-checkpoint.json",
+        "research/client455-effect-runtime.md"
+      ],
+      "gaps": [
+        "Screen-blur runtime provider explicitly refuses; advanced motion/axis/parabola/multi/curve/RNG/unsafe/FP domains remain open",
+        "Quality kernel is source-owned and directly exercised; 455 option-field/UI producer not wired, default2 used in ordinary process",
+        "Legacy RenderAll calls the restored passes consecutively; placement around other world passes and full dynamic-light compositing/device reset remain unaccepted",
+        "Nuclear pending/position/cancel/tagged sound/messageC1A owner remains unported; effect cancellation alone does not close that feature",
+        "Other cache/zero-input/OOM/shared curve pointers/concurrency/shutdown/private ABI and all previous client-acceptance gaps remain mandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-EFFECT-RESOURCES-105",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary client effect archive owner/bootstrap/selection, real six-model aiming dependencies and D3D texture restoration; full effect world runtime and nuclear owner remain open",
       "reference": [
         {

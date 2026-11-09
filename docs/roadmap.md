@@ -1,6 +1,6 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-Обновлено 2026-11-07. По прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
+Обновлено 2026-11-09. По прямому указанию пользователя: работа ИСКЛЮЧИТЕЛЬНО НАД КЛИЕНТОМ.
 Старые клиентские исходники и R3Engine — база, клиент 455 — объект реверса.
 Серверы, БД и серверная логика вне задачи. Прежний серверный план отменён.
 Серверные исходники разрешены исключительно для чтения как справочник клиентских
@@ -12,28 +12,29 @@
 
 ## Текущий статус
 
-105 PARTIAL: восстановлен штатный владелец архивов Effect и автоматический
-выбор группы при запуске эффекта/первой загрузке entity и particle. Обычный
-прицел читает настоящий cue и загружает6 моделей/5 particle recipes/10 clones
-с реальными D3D текстурами.66 проверок проходят;6 legacy R3T release warnings
-и полный FrameMove/render остаются открытыми. Глобальные texture tables
-освобождает отдельный owner: в стенде память возвращается к исходной.
-PE015a25c2…/entry15a320,182 client/20 kernel/59 facade,unresolved0/Create1.
-Magic36/status58/audio157/account/hotbar7/storage3 и6 просмотренных hover кадров
-сохранены; кадры побайтно равны104. Gate105 current,104 historical.
-M6/M6F/M7/M9 OPEN. Полное ядерное прицеливание ещё не принято.
-[Доказательства](../research/client455-effect-resources.md).
+106 PARTIAL: настоящий прицел455 обновляется и рисуется через обычный
+effectcore в контрольной D3D сцене: вращающийся радар/волна,6 tracks,90 ticks.
+После обычной отмены children/master исчезают за62 ticks, кадр очищается.
+Восстановлены512 активных эффектов, eviction/release и два render passes.
+Просмотрены4 новых кадра эффекта и6 hover кадров; hover byte-equal105.
+Предупреждения R3T подтверждены в коде455 и сохранены; память стенда освобождена.
+Новая PE12ca86c5…/entry15ab00/182-20-59/unresolved0/Create1. Адресные регрессии
+resources66/magic36/status58/audio157/account/hotbar7/storage3 проходят.
+Gate106 current,105 historical. Full nuclear owner/world pipeline/device
+lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-effect-runtime.md).
 
-Далее106 — target texture release warnings и полный EffectList/FrameMove/
-matrices/entity/particle/render path настоящего шестидорожечного прицела, затем
-device lifecycle. После этого — nuclear pending/position/frame/cancel с tagged
-sound и сообщением C1A; true predicate пока явно отказывает до изменения hover.
-Затем —64-битные455 receivers/остальные44DEE0 effects,Linker handlers/queue,
-typed quantity/backups/network callers,inventory/equip/SF/Animus,potion cache,
-Macro/Vending/fullAdd/bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/
-lifecycle/reset/privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/
-Trunk/protocol/Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 —
-финальная приёмка полного клиента455 без модернизации графики; цель не сужена.
+Далее107 — actual nuclear pending/position/frame/cancel owner: связать
+восстановленные эффект и tagged sound, затем C1A/hover true predicate. Сейчас
+эта ветка hover продолжает явно отказывать до изменения предмета.
+Обязательны world pass placement/dynamic-light compositing,quality option/UI,
+blur/advanced axis/parabola/multi/curve/device lifecycle. Затем —64-битные455
+receivers/остальные44DEE0 effects,Linker handlers/queue,typed quantity/backups/
+network callers,inventory/equip/SF/Animus,potion cache,Macro/Vending/fullAdd/
+bootstrap и Quest provider. Все прежние fullGUIItem/tooltip/lifecycle/reset/
+privateABI/FPunsafe/OOM/concurrency/shutdown,SF/Quest/36boards/Trunk/protocol/
+Tutorial/QBI/fourstage/Login/auth/game gaps обязательны. M9 — финальная приёмка
+полного клиента455 без модернизации графики; цель не сужена.
 
 Этапы M0–M9 сохраняются.
 

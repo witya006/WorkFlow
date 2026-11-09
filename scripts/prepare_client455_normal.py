@@ -21,6 +21,7 @@ from client455_board_hover_port import port_board_hover
 from client455_player_status_port import port_player_status
 from client455_tagged_audio_port import port_tagged_audio
 from client455_magic_port import port_magic
+from client455_effect_runtime_port import port_effect_runtime
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -669,6 +670,8 @@ def main():
             if tagged_changed:changes.append('455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen')
             raw,magic_changed=port_magic(raw,relative,native,section)
             if magic_changed:changes.append('455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen')
+            raw,effect_runtime_changed=port_effect_runtime(raw,relative,native,section)
+            if effect_runtime_changed:changes.append('455effect512/schedule-quality-owner/disappear/eviction andtwo renderpasses;fullworldpipeline/blur/device lifecycle remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
             if source.name.lower() in ['global.cpp','cresobject.cpp']:
@@ -791,6 +794,8 @@ def main():
     report['player_status_port_sha256']=sha((WS/'scripts/client455_player_status_port.py').read_bytes())
     report['tagged_audio_port_sha256']=sha((WS/'scripts/client455_tagged_audio_port.py').read_bytes())
     report['magic_port_sha256']=sha((WS/'scripts/client455_magic_port.py').read_bytes())
+    report['effect_runtime_port_sha256']=sha((WS/'scripts/client455_effect_runtime_port.py').read_bytes())
+    for name in ['client455_effect_disappear.inc','client455_effect_schedule.inc','client455_effect_passes.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_magic_control.h','client455_magic_control.cpp','client455_magic_parser_extra.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_tagged_audio.h','client455_tagged_audio.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_player_status.h']=sha((native/'client455_player_status.h').read_bytes())

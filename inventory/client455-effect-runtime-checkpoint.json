@@ -1,0 +1,186 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary effect512/scheduling quality owner, disappear/eviction/lifecycle and opaque/alpha selection; actual cue rendering and cancellation require native evidence, full client remains open",
+  "script_sha256": "4afe23642120a91f9ccde731740f2b69dc8b5433fec82aa3e8b689f9b243ddb9",
+  "session": {
+    "file": "artifacts/client455-progress/effect-runtime106-session.json",
+    "sha256": "b97292660e0729f9b6ad76dabd8e292dc60524116fbe765b430957a480381fec"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_effect_disappear.inc",
+      "sha256": "ea455982ca10c8e1731203a022663d0221f3eeadc6739cb424801a0663e5accb"
+    },
+    {
+      "file": "scripts/native/client455_effect_schedule.inc",
+      "sha256": "6804853fc970a78b10d69933a136e81be4305496694a1fc3baa389478b8f288e"
+    },
+    {
+      "file": "scripts/native/client455_effect_passes.inc",
+      "sha256": "72f05d814504c776aa2b9c43c3724b9160c20e887e21b7a291184d1fd6f0b0c3"
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/addcodebyjang/effectcore.h",
+      "sha256": "1b61408498443e93e8269f1d1e45d5b591e4078e9b8fc4522cd20bbdf7392e88",
+      "input": "work/client455-port/source/RF_Client/addcodebyjang/effectcore.h",
+      "input_sha256": "142a77c96ce4cde5addfe9751cbaacad985360428be3e3b0bcb0019f3962cf9f",
+      "changes": [
+        "455effect512/schedule-quality-owner/disappear/eviction andtwo renderpasses;fullworldpipeline/blur/device lifecycle remainopen"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/addcodebyjang/effectcore.cpp",
+      "sha256": "7658741b78592bb7c747fa93a7190948c2c386d56c7aa84ac1e4304afd8bfbae",
+      "input": "work/client455-port/source/RF_Client/addcodebyjang/effectcore.cpp",
+      "input_sha256": "46c80444e05abd90d5d6cc7104520dfeb4c7ba505b40357fde3d07da0d8f07ce",
+      "changes": [
+        "455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen",
+        "455effect512/schedule-quality-owner/disappear/eviction andtwo renderpasses;fullworldpipeline/blur/device lifecycle remainopen"
+      ]
+    }
+  ],
+  "retained": {
+    "FrameMoveMagicEffects@@": "FrameMoveMagicEffects@@YAXXZ 00460eb0 f   effectcore.obj",
+    "FrameMoveAllEffectsList@@": "FrameMoveAllEffectsList@@YAXXZ 00460850 f   effectcore.obj",
+    "RenderAllEffectsList@@": "RenderAllEffectsList@@YAXXZ 00461a90 f   effectcore.obj",
+    "RenderAlphaEffects455@@": "RenderAlphaEffects455@@YAXXZ 00461bc0 f   effectcore.obj",
+    "SetDisapearTimeEffect@@": "SetDisapearTimeEffect@@YAHKM@Z 00462210 f   effectcore.obj",
+    "DeleteMagicList@@YAXKH@Z": "DeleteMagicList@@YAXKH@Z  00460550 f   effectcore.obj"
+  },
+  "normal_link_sha256": "cc7272a7f73774df6f5e22428738cd6592417f094d2026776748bca5b17c1386",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "12ca86c5445bb7c89e58864d653c72020095b3136d3f0832e7245cccdca65b1a",
+    "bytes": 2156544,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x15ab00",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "effect-runtime-reference": {
+      "file": "inventory/client455-effect-runtime-reference.json",
+      "sha256": "1835546e2a56dcca57dd69912e331ad79a536834e2a5263324f3187ae4dcb424"
+    },
+    "effect-runtime-native": {
+      "file": "inventory/client455-effect-runtime-native.json",
+      "sha256": "0d3e46335865579634685af50bb9733c81a9313c7b100e93de0abb5738c7a5e9"
+    },
+    "effect-runtime-visual-review": {
+      "file": "inventory/client455-effect-runtime-visual-review.json",
+      "sha256": "0dce26affd7070b2d9f3b4f659a65248ebb60222c28fee7a55036d8acda30a56"
+    },
+    "effect-resources-native": {
+      "file": "inventory/client455-effect-resources-native.json",
+      "sha256": "f62529ff68a203538bc03735b673534608471a8ea36d8576615c2482c6d9c7d4"
+    },
+    "magic-native": {
+      "file": "inventory/client455-magic-native.json",
+      "sha256": "7581d642b121658fd6fcabba6d284bc0329593163367e319b38be5f004c3fadb"
+    },
+    "player-status-native": {
+      "file": "inventory/client455-player-status-native.json",
+      "sha256": "a44a1218e79356f326ccd770a2f7246d6c88be4af8734c0c72a5c67a4a6cbd79"
+    },
+    "tagged-audio-native": {
+      "file": "inventory/client455-tagged-audio-native.json",
+      "sha256": "c032963eabef0211f25d7fa1b756101c1c335f802908f782e3ee94a4f9d0177e"
+    },
+    "board-hover-native": {
+      "file": "inventory/client455-board-hover-native.json",
+      "sha256": "15279ac2c0b89dfccca0294206b1e4a578b19212c514e149766065be898f043c"
+    },
+    "board-hover-visual-review": {
+      "file": "inventory/client455-board-hover-visual-review.json",
+      "sha256": "3b940a491a83ca7970ccd36304a482aac826ddd3e8e414059fcc471f7b02ff31"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "ac263bd73bf39b609e7c4ba114c1c00f51ba504ccf5c90b737732d0d4b4c3322"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "9ec2b25fefb53187c179e64613e3624aaa0d816712fe5b79d62641b76124741b"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "a548553e9ce7661ecc5408ad05d444b0f6d76ff194da9800d32ab0a3dc2f55f9"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "cc7272a7f73774df6f5e22428738cd6592417f094d2026776748bca5b17c1386"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "30d93d0143a6f258916d1f88f4093fd0daa2a5bdf90d9825f99927eed9b7f056"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "4a5e8684efa54ed29e8ab1aff9d0fef3f6712021c3916ba76107ad3c80bad39d"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "f54d7a7db57ec784d49599db663ebe49f83bac1236b63686f35cea11bf750e09"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "927da2c3e7e0d38f113067228da50bae96aba05084bf513007d41f932b458a04"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "c6c1c3398d0b0a03bf8e1ab98305398ec13491ee5b9fda03e64f547435932fb1"
+    },
+    "hotbar-native": {
+      "file": "inventory/client455-hotbar-native.json",
+      "sha256": "18503acf7e16e23a982116b1db6afbebf33b951fe71ef0eae63883e69795ee6b"
+    },
+    "storage-native": {
+      "file": "inventory/client455-storage-native.json",
+      "sha256": "5f9423e50267f85b5acf56e3c01bfebbeb4a67613ceef199dbe33a6482b2b3b6"
+    }
+  },
+  "CPU_checks": 573,
+  "master_capacity": 256,
+  "all256_master_survivors_checked": true,
+  "actual_effect_GPU_frames": 4,
+  "byte_equal_hover_GPU_frames": 6,
+  "viewed_GPU_frames": 10,
+  "cancellation_drain_ticks": 62,
+  "effect_capacity": 512,
+  "target_R3T_release_warning_confirmed": true,
+  "explicit_global_texture_table_teardown": true,
+  "baseline": {
+    "file": "artifacts/client455-progress/client455-board-hover-native-before106.json",
+    "sha256": "77206afb373e95a457559b4bf818e63dfa85c2562d7081fc4089be1b56fd4db1"
+  },
+  "previous105_checkpoint": {
+    "file": "artifacts/client455-progress/client455-effect-resources-checkpoint-before106.json",
+    "sha256": "957bfe8eb95fa47d59572255f8bbb57d39d7a92b4c00032380f820e455590ed3"
+  },
+  "previous105_runtime_gate": "HISTORICAL",
+  "ordinary_audio_provider": "RF455 TaggedAudio:ready:7969:Miles Fast 2D Positional Audio",
+  "derived_engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "other32_GUI_frames_rerun": false,
+  "gaps": [
+    "Screen-blur runtime provider explicitly refuses; advanced motion/axis/parabola/multi/curve/RNG/unsafe/FP domains remain open",
+    "Quality kernel is source-owned and directly exercised; 455 option-field/UI producer not wired, default2 used in ordinary process",
+    "Legacy RenderAll calls the restored passes consecutively; placement around other world passes and full dynamic-light compositing/device reset remain unaccepted",
+    "Nuclear pending/position/cancel/tagged sound/messageC1A owner remains unported; effect cancellation alone does not close that feature",
+    "Other cache/zero-input/OOM/shared curve pointers/concurrency/shutdown/private ABI and all previous client-acceptance gaps remain mandatory"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

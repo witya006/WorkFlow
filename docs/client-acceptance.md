@@ -1,5 +1,19 @@
 # Полнота восстановления RF_Online.bin
 
+106 PARTIAL: настоящий прицел455 обновляется и рисуется через обычный
+effectcore в контрольной D3D сцене: вращающийся радар/волна,6 tracks,90 ticks.
+После обычной отмены children/master исчезают за62 ticks, кадр очищается.
+Восстановлены512 активных эффектов, eviction/release и два render passes.
+Просмотрены4 новых кадра эффекта и6 hover кадров; hover byte-equal105.
+Предупреждения R3T подтверждены в коде455 и сохранены; память стенда освобождена.
+Новая PE12ca86c5…/entry15ab00/182-20-59/unresolved0/Create1. Адресные регрессии
+resources66/magic36/status58/audio157/account/hotbar7/storage3 проходят.
+Gate106 current,105 historical. Full nuclear owner/world pipeline/device
+lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-effect-runtime.md).
+
+Исторический105:
+
 105 PARTIAL: восстановлен штатный владелец архивов Effect и автоматический
 выбор группы при запуске эффекта/первой загрузке entity и particle. Обычный
 прицел читает настоящий cue и загружает6 моделей/5 particle recipes/10 clones

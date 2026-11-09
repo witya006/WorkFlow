@@ -1,5 +1,18 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение09.11,effect-runtime106: по сохранённому выводу native IDA MCP от07.11 проверены16 полных
+функций/2546 инструкций/16 равных диапазонов+2data обеих455;ed41bb12 saved/
+closed/list0. Установок нет. Own effect512/scheduling/lifecycle/render passes
+рисует настоящий прицел в controlled D3D scene:4 viewedGPU,ordinary cancel
+drain62/clear0pixels;6hover viewed/byte-equal105. R3T warning и GPU release
+подтверждены в оригинале. Native573 assertions/90ticks/capacity513→512/memory
+balanced с отдельнымglobaltexture teardown проходят. Full nuclear owner/world
+pass placement/blur/qualityUI/device lifecycle ещё OPEN. PE12ca86c5…/entry15ab00/
+182-20-59/unresolved0/Create1/Fast2D7969;resources66/magic36/status58/audio157/
+account/hotbar7/storage3 pass. Engine546a… неизменён. Original/server без изменений,
+input EXE не исполнялись. Gate106 current,105 historical;M6/M6F/M7/M9 OPEN.
+[Доказательства](../research/client455-effect-runtime.md).
+
 Дополнение07.11, effect-resources105: native IDA MCP подтвердил14 полных
 функций/1315 инструкций/14 равных диапазонов и41-byte initializer обеих455;
 session e536890b saved/closed/list0. Новых установок нет. Ordinary effect archive
