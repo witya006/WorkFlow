@@ -1,5 +1,12 @@
 # Ядерное прицеливание: настоящий сетевой вход и decoder — работа112
 
+Дополнение113: ниже сохранён результат112. Текущий runtime gate —
+`inventory/client455-character-flags-checkpoint.json`;111 historical.
+Actual Character guard/selected control producers перенесены в113.
+UI owner уточнён: три CGUINuclearBomb внутри существующей MiniMap,
+а не отдельный dialog. Их source integration и ordinary receiver ещё открыты.
+Подробно: [Character flags113](client455-character-flags.md).
+
 2026-11-09. **PARTIAL_COMPONENT**. Восстановлен C++decoder всех девяти входящих
 форматов группы60. Исправлена гипотеза предыдущей очереди: начало CE7 вызывается
 ответом сетевого обработчика, а не установленным input callback. Ordinary

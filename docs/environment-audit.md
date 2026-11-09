@@ -1,5 +1,22 @@
 # Аудит окружения — 04.11.2026
 
+113 PARTIAL: в actual CCharacter/CPlayer восстановлены internal flags,
+any/none и ordinary IsDeath guard; selected64bit control producer подключён
+до преобразования статуса.173 целевые native проверки PASS; source clock
+проверен на actual Avatar,полный movement/SetAction pipeline ещё открыт.
+Новая own PE4c81042a…/entry1616c0/182client-20kernel-65facade/unresolved0/Create1.
+Свежие status62/message83/center69/6hover и15 просмотренных GPU кадров;
+10 center/hover кадров побайтно равны111. Engine67/decoder112 неизменены.
+Уточнён реальный UI owner: три CGUINuclearBomb внутри существующей MiniMap,
+а не отдельный dialog. Их source integration и обычный Nuclear receiver
+остаются открытыми. Далее114 — marker owners/transforms/records,затем
+group60/result branches/selection/send. Runtime gate113 current;111 и112
+runtime assertions historical. M6/M6F/M7/M9 OPEN.
+
+[Доказательства113](../research/client455-character-flags.md).
+
+Ниже сохранена история предыдущих этапов; текущий gate указан выше.
+
 Дополнение09.11,chat109: новых установок нет. Две native IDA сессии saved/closed/list0;44 ranges/31fullasm/3615instructions,8 script inputs.
 
 Историческое дополнение09.11,center108: новых установок нет. IDA20210106 saved/closed/list0;
@@ -13,10 +30,10 @@ component,ordinary receiver ещё не подключён. Runtime111/PE031df36
 неизменены,его suites не повторены. Guard использует action category5 и internal
 Character DWORD640&3,а не status17708/serverflags;нужны реальные writers/UI.
 Следующая113 — actual network receiver+guard/selection/dialog/record owners.
-Component gate:nuclear-wire-checkpoint; runtime gate111 current. M6/M6F/M7/M9 OPEN.
+Component112 historical; runtime gate113 current (см. начало). M6/M6F/M7/M9 OPEN.
 [Доказательства112](../research/client455-nuclear-protocol.md).
 
-Последний runtime результат111:
+Исторический runtime результат111:
 
 111 PARTIAL: обычный formatter подключён к actual Login и четырём панелям
 чата/центру экрана. Обычный typed hover у настоящего Avatar с pending1 теперь
@@ -26,7 +43,7 @@ Component gate:nuclear-wire-checkpoint; runtime gate111 current. M6/M6F/M7/M9 OP
 Свежие center69/status62 и15 просмотренных GPU кадров;10 center/hover побайтно
 равны109. InsertText455 теперь удержан обычной PE. CE7 core проверен вlab,
 но его game-action registration ещё нет и helper удалён ordinary linker.
-Gate111 current,109 historical. Tutorial только routing kernel;полные stages/
+Gate111 historical после113,109 historical. Tutorial только routing kernel;полные stages/
 Login/auth/chat UI и прочие client-acceptance gaps открыты. Далее113 — actual network receiver/guard для начала прицеливания. M6/M6F/M7/M9 OPEN.
 [Доказательства111](../research/client455-message-runtime.md).
 

@@ -1,0 +1,53 @@
+{
+  "scope": "Actual Character internal flag owner/any-none/IsDeath/selected server control writers; action traces use callback kernel,full action/movement/status/receiver not accepted",
+  "script_sha256": "0add3042ca7c18c4b3d28cbcd67c6cc7035506def39487a6ad3491fd2d52ca75",
+  "source": {
+    "file": "scripts/native/client455_character_flags_probe.cpp",
+    "sha256": "4ae4b4ca70cc7f60000cd1eeca36b131babcb598a52e2c5c4ad2ad6420db8d7a"
+  },
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "normal_link_sha256": "100ad2aa05563c016220e9125802f340c26338349ba8d94bc83c2a885b5b98a0",
+  "exe": {
+    "file": "work/m9/cbbfcf95/character-flags-001/character-flags-probe.exe",
+    "sha256": "cbbfcf959f7551971c051871e84e7105bb222aaf5d5eac242346bc77fc06277c"
+  },
+  "map": {
+    "file": "work/m9/cbbfcf95/character-flags-001/character-flags-probe.map",
+    "sha256": "d9f3edb43795d459882f9e02e554818750dd28ad5b7c03cddadb83f1768320a3"
+  },
+  "architecture": "x86",
+  "console": {
+    "file": "work/m9/cbbfcf95/character-flags-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/cbbfcf95/character-flags-001/result.json",
+    "sha256": "29313db9a0e13fbafc0c5698afb715846ccaf315b53cea2957c39acd5a062f18"
+  },
+  "native": {
+    "status": "PASS",
+    "checks": 173,
+    "target_trace_cases": 8,
+    "actual_Avatar": true,
+    "actual_ordinary_IsDeath": true,
+    "action_highnibbles": 16,
+    "internal_masks": 8,
+    "any_none_semantics": true,
+    "source_flag_clock": true,
+    "ordinary64bit_producer": true,
+    "control_before_status": true,
+    "action_transitions_kernel_only": true,
+    "full_movement_controller": false,
+    "full_action_pipeline": false,
+    "full_455_status_writer": false,
+    "normal_nuclear_receiver": false,
+    "full_client": false
+  },
+  "natural_exit": 0,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

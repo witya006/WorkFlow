@@ -6,6 +6,64 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-CHARACTER-FLAGS-113",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "description": "Actual Character flag owner/any-none/ordinary IsDeath guard and selected64bit control/status producer; source clock/8action traces checked in full-object lab; actual MiniMap marker identity pinned,normal Nuclear receiver remains open",
+      "reference": [
+        {
+          "rva": "0x3d960",
+          "role": "enable flags/clock before OR"
+        },
+        {
+          "rva": "0x3d9d0",
+          "role": "clear"
+        },
+        {
+          "rva": "0x3da40",
+          "role": "none-mask predicate"
+        },
+        {
+          "rva": "0x3da70",
+          "role": "toggle virtual writers"
+        },
+        {
+          "rva": "0x3db60",
+          "role": "action/internal guard,cached112"
+        },
+        {
+          "rva": "0x4dee0",
+          "role": "selected server writer,cached102"
+        },
+        {
+          "rva": "0x305160",
+          "role": "actual MiniMap owns3 markers"
+        },
+        {
+          "rva": "0x30bbb0",
+          "role": "actual NuclearBomb constructor"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_character_flags_port.py",
+        "scripts/native/client455_character_flags.h",
+        "scripts/native/client455_character_flags.cpp",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "30ranges/29pcode/14fullasm/760instructions+2EHtails equalbothpins;CPlayer/MiniMap/NuclearBomb RTTI;IDA savedclosed/list0. Native173 actualAvatar/ordinaryguard/8masks16categories/clock/8callback traces;freshstatus62/message83/center69/6hover/15viewedGPU,10framebyteequal111,exactPE4c81042a/Create1/182-20-65/unresolved0. Engine/decoder unchanged,no bulk reruns.",
+      "evidence": [
+        "inventory/client455-character-flags-reference.json",
+        "inventory/client455-character-flags-native.json",
+        "inventory/client455-character-flags-checkpoint.json",
+        "research/client455-character-flags.md"
+      ],
+      "gaps": [
+        "Full SetAction/internal flag producers and movement-controller/frame/bit1 clock consumer remain open;action traces use callbacks,not full animation/effect pipeline",
+        "Normal Nuclear receiver,selected item serial/send,MiniMap3markers/transforms/record32/opcodes/frame source integration remain open",
+        "All remaining64bit status sideeffects/privateABI/unsafe domains and all client-acceptance gaps remain;M6/M6F/M7/M9OPEN"
+      ]
+    },
+    {
       "id": "CLIENT455-NUCLEAR-WIRE-112",
       "status": "partial_component",
       "runtime_gate_current": false,
@@ -61,7 +119,7 @@
     {
       "id": "CLIENT455-MESSAGE-RUNTIME-111",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "description": "Ordinary formatted entry/actual Login member/draw and actual4pane/center; live actualAvatar+EDF item hover cancels effect6/Miles and emits C1A before mutation. CE7 core lab accepted but game-action registration missing,helper stripped in normal PE",
       "reference": [
         {
@@ -109,7 +167,8 @@
         "Full Login/auth/secondaryUI/Tutorial/fourstage factory and complete ordinary scene/bootstrap not accepted",
         "Full chat filterUI/input/send/IME/save/legacycallers/numericID overload and previous gameplay/protocol gaps remain",
         "Own formatted cap1024/provider guards do not accept unsafe/OOM/CRT/privateABI/FP/concurrency/shutdown/fullstage teardown;M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "runtime_superseded_by": "CLIENT455-CHARACTER-FLAGS-113"
     },
     {
       "id": "CLIENT455-MESSAGE-DISPATCH-110",
@@ -4454,7 +4513,7 @@
         "Independent Python prepared bytes/80profiles;all source mip contents vsdirect pinned D3DX9_36;RGB frames and four BMP quadrants",
         "Real managed COM growth50/alias/pathduplicates/exact delete/cumulative accounting/Clear capacity/Init retained vector",
         "RFCfallback1mip/FFFFFFFFcolorKey;missing/empty cubeFlag preservation;real cube orphan observed+released bytest wrapper",
-        "3real MESH08models/97parts→source material requests→actual texture cache/D3D9objects;59positive IDs"
+        "3real MESH08models/97parts\u0432\u2020\u2019source material requests\u0432\u2020\u2019actual texture cache/D3D9objects;59positive IDs"
       ],
       "gaps": [
         "Normal model-loader/skeleton/animation/skinning/draw/publication/destructor not integrated;shared buffer source unit separately tracked by CHARACTER455-SHARED-GPU-017",
@@ -4594,7 +4653,7 @@
       "scenarios": [
         "Byte-exact mesh destructor state/orderedCOM+heaprelease;20interleavedpairs/168zero/five reverse strings preserving otherbytes",
         "Flags0..7,reverse array/cookiecount,empty/overflow/null allocation,owned/borrowed arrays,count retention;actual modernCRT allocation tracking",
-        "Connected12paired real models/393parts→materials/header/matrix/GPU→local/external parent→bone resolution→scratchfree→publish536then532",
+        "Connected12paired real models/393parts\u0432\u2020\u2019materials/header/matrix/GPU\u0432\u2020\u2019local/external parent\u0432\u2020\u2019bone resolution\u0432\u2020\u2019scratchfree\u0432\u2020\u2019publish536then532",
         "276real HALuploads/117zeroindexparts/59actualtexturebindings,pointer flags/blend identities/counts/selfpointer checked;paired fixtures useexternal names,not fullBN",
         "Own null-allocation cleanup in3stages/partial flag,reload oldpointer overwrite withoutfree,empty model publication,truncated ownederror;source fullclient result matchescomponent"
       ],
@@ -4725,7 +4784,7 @@
       ],
       "scenarios": [
         "12realBN455records and5synthetic4records:whole720part/28model/payload sizes+bytes,unwritten bytes preserved through ownedA5allocator",
-        "Plain28vertex/88face/424physique andcompact100names/40physique→424expanded,strncpy99+NUL,negativeinfluences skip,x87sNaNquieting/negativezero/1ULP in12maskedFPmodes",
+        "Plain28vertex/88face/424physique andcompact100names/40physique\u0432\u2020\u2019424expanded,strncpy99+NUL,negativeinfluences skip,x87sNaNquieting/negativezero/1ULP in12maskedFPmodes",
         "Zero dictionary skipsallphysique;zero geometry stillallocates;empty model cookienonnull;partdtorordered5pointerfree/null andmodel reversearray/free/null12/20",
         "All1183prefix truncations atPAGE_NOACCESS,all7allocation failures,oversize dictionary/count/influence/index errors,output+consumed unchanged,ownheap0,trailing accepted"
       ],
