@@ -55,6 +55,14 @@ Engine546a7529…/67 unchanged;033baseline сохранён,старого082sna
 не повторялись. Gate106 snapshot в artifacts,егоruntimegate historical.
 Original/server не менялись,inputEXE не исполнялись. Полные сведения в research.
 
+Исследование108:21 выбранная функция/17fullasm/2284instructions/21equalranges
+обеих455;IDAffcaa552 saved/closed/list0. См. research/client455-system-messages.md
+и inventory/client455-system-messages-reference.json. Runtime gate остаётся107.
+Подтверждено расхождение hook:455 вызывает nuclear Frame в конце Render после
+UI Draw (RVA14b059), наша107 — до effects update. Перенести hook без дублирования.
+Center owner:pending64/active84/max3,queue/pacing/fade;chat4panes/14categories/
+style18/wrapping требуют переноса.108 пока static analysis,не новый runtime.
+
 Далее108 — настоящий localized C1A/CE7 message/notification pipeline и
 pending1 hover cancellation. Не подменять пустым legacy _SetSystemMsg(DWORD)
 или chat-only выводом. Затем command/response producers, list12/container,

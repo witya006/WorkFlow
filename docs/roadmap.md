@@ -38,6 +38,11 @@ Gate106 historical,105 historical. Full nuclear owner/world pipeline/device
 lifecycle ещё открыты. M6/M6F/M7/M9 OPEN.
 [Доказательства](../research/client455-effect-runtime.md).
 
+108 начат исследованием:21selected/17fullasm/2284instructions/21equalranges.
+Подтверждён late Render hook прицела после UI: нынешний early update hook107
+нужно переместить. Center queue/84byte record/fade и4pane chat ещё не перенесены.
+[Статическая опора108](../research/client455-system-messages.md). Runtime107 current.
+
 Далее108 — настоящий localized C1A/CE7 message/notification pipeline и
 pending1 hover cancellation. Не подменять пустым legacy _SetSystemMsg(DWORD)
 или chat-only выводом. Затем command/response producers, list12/container,

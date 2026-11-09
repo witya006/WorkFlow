@@ -82,6 +82,14 @@ hotbar7/storage3 прошли. Просмотрены4 новых GPU frames э�
 frames не повторялись. Контрольные4GPU frames относятся к effect-runtime lab,
 а не к новому BSP/Miles lab, который не делает GPU captures.
 
+## Уточнение108: подтверждённый порядок кадра
+
+[Исследование сообщений108](client455-system-messages.md) установило, что455
+вызывает nuclear container Frame в конце Render после UI Draw (RVA14b059).
+Текущий early effects update hook107 с ним не совпадает и требует переноса,
+без второго вызова. Это конкретизирует прежний full_world_frame_order=false;
+core/BSP/Miles lab и runtime gate107 не доказывали соответствие полного кадра.
+
 ## Оставшиеся требования
 
 108: восстановить настоящий C1A/CE7 message/notification dispatch, lifecycle

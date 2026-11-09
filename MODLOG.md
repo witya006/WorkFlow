@@ -1,5 +1,12 @@
 # RF Online client reconstruction journal
 
+Исследование108:21selected functions/17fullasm/2284instructions/21equalranges,
+native IDAffcaa552 saved/closed/list0. Подтверждены center-message queue64,
+active84/max3,update/fade/draw,lifetime и C1A dispatch через4pane chat.
+Выявлено конкретное расхождение107: nuclear Frame должен идти в late Render
+после UI Draw,а не в early effects update. Исправление и message runtime ещё
+открыты; текущий runtime gate107. [Подробности](research/client455-system-messages.md).
+
 Работа107 — 107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
 командная позиция, курсор через настоящий BSP, перемещение6 частей эффекта и
 tagged Miles Radar.29 реальных проверок проходят; память785169→785169.

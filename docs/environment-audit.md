@@ -1,5 +1,11 @@
 # Аудит окружения — 04.11.2026
 
+Исследование108,09.11: native IDAffcaa552 saved/closed/list0;21 выбранный диапазон
+обеих455 совпадает,17fullasm/2284instructions. Новых установок/запусков inputEXE
+нет. Выявлен подтверждённый early/late aiming hook gap; сообщения пока только
+исследованы. Runtime gate107 остаётся current.
+[Доказательства108](../research/client455-system-messages.md).
+
 Дополнение09.11,nuclear107: новых установок нет. Native IDA session7cb76d0f
 saved/closed/list0;19functions/1670asm/19equalranges/2pickslots обеих455.
 107 PARTIAL: в CMainApp восстановлен core прицеливания20: pending, отдельная
