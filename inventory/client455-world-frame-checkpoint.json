@@ -1,0 +1,182 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual CLevel/INS dispatch distinction,map view correction and selected dynamic-light queue/render contracts;full world/gameplay open",
+  "script_sha256": "694936a38f2a0edbdc20064896f2a5addfda2edd99ab1507fb9e95ef9be48a7a",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "0806b113f1da0025c32dae2b327fefd920a2183fad01437e77b900818f75c9dd",
+    "bytes": 2225664,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x167320",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "179511eb3de1d9895c281cf625965c56c2e115064509d1aa36149822a900dc61",
+  "engine": {
+    "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
+    "sha256": "7c828f7767bfa5a36ce0d8df2f2f133fc91a235284115c49c75e496a289252e9"
+  },
+  "old_engine": {
+    "file": "artifacts/client455-progress/engine-before120.lib",
+    "sha256": "9ae6ace8b0f34718c7708c4d62847b54b6310d3e0c254216028f0bb317279b74"
+  },
+  "correction119": "119 misidentified8EB7F0 as ordinary map and8E7850 as Empty;actual ordinary CLevel ctor/vtable/owner prove8E7850,INS prove8EB7F0.119previous-view acceptance is retracted;current source uses input/current view",
+  "native_cpu": {
+    "events": 142,
+    "operations": {
+      "heading": 3,
+      "vector": 101,
+      "matrix": 5,
+      "start": 10,
+      "seed": 1,
+      "sway": 2,
+      "stop": 2,
+      "view": 8,
+      "density": 10
+    },
+    "scalar_comparisons": 2921,
+    "exact_scalars": 2921,
+    "max_absolute_error": 0.0,
+    "transcendental_absolute_tolerance": 2e-05,
+    "transcendental_relative_tolerance": 5e-07,
+    "integer_control_exact": true,
+    "nontranscendental_state_exact": true
+  },
+  "actual_impact": {
+    "frames": 545,
+    "quake_onset_frames": [
+      79
+    ],
+    "duration": 5,
+    "attenuated_density": 135.14439392089844,
+    "active_frames": 151,
+    "moved_frames": 151,
+    "scalar_comparisons": 26160,
+    "exact_scalars": 26160,
+    "max_absolute_error": 0,
+    "device_view_exact": true,
+    "successful_map_load_stops_sway": true
+  },
+  "world": {
+    "queue_operations": 76,
+    "live_clock_samples": 16,
+    "clock_signs": [
+      -1,
+      1
+    ],
+    "world": {
+      "world": "bellato",
+      "actual_clock": true,
+      "positive_and_negative_toggle": true,
+      "ray_hit": true,
+      "FX_light_frames": 16,
+      "light_point": [
+        1159340032,
+        1133256064,
+        3297583104
+      ]
+    },
+    "changed_bytes_from_matched_clear": {
+      "frame-base.bgra": 0,
+      "frame-cleared.bgra": 0,
+      "frame-effects.bgra": 646571,
+      "frame-magic.bgra": 151256,
+      "frame-regular.bgra": 146637
+    },
+    "full_world_equivalence": false
+  },
+  "viewed_GPU_frames": 10,
+  "previous119_gate": {
+    "file": "artifacts/client455-progress/client455-quake-checkpoint-before120.json",
+    "sha256": "ba86a74fd16c6f91d3fe70384878d3506d5b62e1b9531248c62f7377dc4e4acb"
+  },
+  "fresh_evidence": {
+    "world-frame-reference": {
+      "file": "inventory/client455-world-frame-reference.json",
+      "sha256": "b3bb2fd24e89ab1d5d7365ffed07abe7c93d7cc9b926c0e38642edc33eddd559"
+    },
+    "world-frame-native": {
+      "file": "inventory/client455-world-frame-native.json",
+      "sha256": "d73f7844802ea44bbe19f4eae3aac1285245758da194f2ff22391dd634007534"
+    },
+    "world-frame-verification": {
+      "file": "inventory/client455-world-frame-verification.json",
+      "sha256": "7d947e15ec5c94f73fba12ea6a24ef62d0b02c06af0f3783d38a06d108b80808"
+    },
+    "world-frame-visual-review": {
+      "file": "inventory/client455-world-frame-visual-review.json",
+      "sha256": "7a4823b9569111ef62ac07194bef51e8509762f66471953332efaeac7810583b"
+    },
+    "quake-native": {
+      "file": "inventory/client455-quake-native.json",
+      "sha256": "0064f1c79d1f7d6a00cb2ea9f44cd8dec6cb4fba0501ae6ad031e3333e1d0a39"
+    },
+    "quake-effects-native": {
+      "file": "inventory/client455-quake-effects-native.json",
+      "sha256": "7190dd598102607d80fc235e46088a1bec806a8a51cd9b8a0ce7d81a06d0da5d"
+    },
+    "quake-visual-review": {
+      "file": "inventory/client455-quake-visual-review.json",
+      "sha256": "a2af2c90041447212eb2b3be054a20a0ca97892fa95f917fb8b61beb171996f0"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "5439d597075fe2e5f02ac9d830f6040d7f25e8b4088827c80be2532144fc9e1f"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "179511eb3de1d9895c281cf625965c56c2e115064509d1aa36149822a900dc61"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "da01ee300e453ef0d6203cce21263a11e3fc0f5015841733f3929fd20b584230"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "020e18e9a0a8f3e91428b7f1b985c2568cc8ebbbdc46a2dd3648d4268fda918b"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "d6185cb669a6a04c0ade3b00467caf442c5a2a909b3984f11d1571bb90569a5e"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "cd4ea2691cd12316da6968ca29e7af2cfa1fef22cd61c2dca4b41a3eab8d3a50"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "feace62b11094fd5c9b5d4f5bb1a3c2cfaa845663375668eb5d79bea2f4490d2"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "c422d27763ad4d99ad728e5b36c4a8093863334172b7cb25566ca9eaaa022f01"
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "e5c8d30a28be872c1a7c65a6fa364f5cc26400796cb033b138ba6515d718119b"
+    }
+  },
+  "known_geometry_differences_restored": false,
+  "full_world": false,
+  "full_renderer": false,
+  "gaps": [
+    "FullILevel/Empty/INS source and all virtual methods remain unported;selected dispatch proof is not privateABI parity",
+    "Confirmed unported geometry differences:regular light skipsAttr0x10,leafcap128,facecap5000;magic skipsAttr0x30,requires bboxwidth<=1000/both endpoints inside root bounds,saturates faceindex2999,batch2000;target uses owned CBsp worldmatrix and explicit declaration;legacy path still differs",
+    "Full map frame/calculations/environment/projection/sky/alpha/shadow/device/reset/lighting/Character/gameplay not proven by selected queue and GPU examples",
+    "AllFP/oldCRT/invalid counts/OOM/NaN/concurrency/RNG interleaving and previous client-acceptance gaps remain open"
+  ],
+  "old_runtime_gates": "HISTORICAL;119previous-view claim retracted;older texture/receiver/Character/bulk not rerun",
+  "unchanged_bulk_suites_rerun": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

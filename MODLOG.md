@@ -1,5 +1,15 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — World frame120. Corrected119wrong class assignment:ordinary
+CLevel ctor/vtable/owner prove current-view8E7850;previous-view8EB7F0 is INS.
+119previous-view acceptance retracted.26fullasm/2772instructions+2vtables equal
+both455;2IDAsavedclosed/list0.76light queue ops/16realOSclock±1/Bellato visible
+magic+regular+archivedFX light/exactclearcontrol;10GPUviewed/maps2692/Create1.
+Engine67onlylevel.obj changed,66byteequal;ownPE0806b113. Known target geometry
+guards/batches/worldmatrix differences remain unported;full renderer/M9 OPEN.
+[research/client455-world-frame.md](research/client455-world-frame.md).
+
+
 2026-11-09 — Camera quake119. Ported interpolation/sway/distance decay and
 map previous-view publish order;successful map load stops sway.18fullasm/2600
 instructions equalboth455,IDAsavedclosed/list0. CPU142events/2921exactscalars;

@@ -10,7 +10,7 @@ from compare_client_binaries import WS,pe
 from rpk455 import Rpk
 
 
-def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-registry',report_name='client455-nuclear-registry-native'):
+def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-registry',report_name='client455-nuclear-registry-native',extra_world_manifest=None):
     source=WS/'scripts/native'/source_name;exe=build_full_object_probe(probe_name,source);holder=WS/'work/m9'/sha(exe)[:8];index=1
     while(holder/f'{probe_name}-{index:03d}').exists():index+=1
     run=holder/f'{probe_name}-{index:03d}';run.mkdir(parents=True);target=run/exe.name;shutil.copyfile(exe,target);mapping=target.with_suffix('.map');shutil.copyfile(exe.with_suffix('.map'),mapping)
@@ -26,6 +26,11 @@ def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-
     world_manifest=WS/'inventory/client455-rvp-actor-native.json'
     for row in load('client455-rvp-actor-native')['inputs']:
         if 'original' in row:check(row);copy(Path(row['original']),row['sha256'],WS/row['file'])
+    if extra_world_manifest:
+        for row in load(extra_world_manifest)['inputs']:
+            parts=Path(row['file']).parts
+            if 'Map' not in parts:continue
+            check(row);copy(client.joinpath(*parts[parts.index('Map'):]),row['sha256'],WS/row['file'])
     # Nuclear59 is pinned by the accepted resource reference. Generic entity1
     # has a separate archive: find its actual directory rather than guessing.
     resources=WS/'inventory/client455-map-resources.json';archive_manifest=json.loads(resources.read_text())

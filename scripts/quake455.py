@@ -57,6 +57,8 @@ class Quake:
         elif op=='vector':out=self.vector(dt,row['toggle'])
         elif op=='matrix':out=self.matrix(dt,p)
         elif op=='view':
+            #CLevel B38494 slot27 ->8E7850;INS has a different publish order.
+            self.heading=(p[10],p[8])
             delta=self.vector(dt,row['toggle']);out=p[:]
             for i in range(3):out[12+i]=f(out[12+i]+delta[i])
             self.heading=(out[10],out[8]);out=out*2

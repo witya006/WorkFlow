@@ -1,20 +1,20 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-119 PARTIAL: восстановлены quake/sway/attenuation и порядок map view.
-Реальный архивный impact запускает quake на кадре79: duration5, attenuation
-135.14439392089844 при script density150,151активный кадр из545. CLevel→D3D
-view подтверждён. CPU142события/2921скаляров и runtime26160скаляров совпали
-численно точно с отдельным static455 oracle;это не выполнение455 и не весьFP.
-18equalbodies/18fullasm/2600instructions,17new/1971;IDAsavedclosed/list0.
-Пять GPU кадров просмотрены;map2692/330/canonical,ANI/BBX consumers,
-startup/contracts/window/device/existingCreate1 PASS. Engine67 9ae6ace8…:
-толькоr3util.obj+level.obj изменены,65members byteequal. Own PE406b400e…,
-entry167320/182client-20kernel-70facade/unresolved0. Old118engine/PE сохранены.
-20штатных R3T warnings сохранены;старые texture649/receiver/Character/bulk
-suites не повторялись. Fullworld/timer/control/Empty/INS и M6/M6F/M7/M9 OPEN.
-Следующая120 — actualworld frame/camera timer/control/light/compositing.
+120 PARTIAL: исправлена ошибка119 в привязке метода камеры.
+Обычный CLevel подтверждён constructor→vtable→dispatch: B38494/slot27→8E7850,
+он использует текущую view. 8EB7F0 относится к INS. Прежний вывод отозван.
+26 полных тел/26 asm/2772 инструкции и две vtable равны между двумя455.
+На настоящей Bellato проверены76 операций очереди света,16 измерений OS clock
+с обоими знаками30fps,обычный/магический свет и архивный эффект. Base и clear
+кадры побайтно равны;световые кадры отличаются.10 GPU кадров просмотрены.
+Corrected quake142 events/2921 exact scalars;actual impact545 frames/onset79/
+151active. Карты2692/330,ANI/BBX и startup/contracts/window/device/Create1 PASS.
+Engine67 7c828f77…: изменён только level.obj,66 members byteequal.
+Own PE0806b113…/entry167320/182client-20kernel-70facade/unresolved0.
+Известные отличия световой геометрии ещё не перенесены;полный renderer и
+M6/M6F/M7/M9 OPEN. Следующая121 — эти geometry guards/batches и CBsp world matrix.
 
-[Доказательства119](../research/client455-quake.md).
+[Доказательства120](../research/client455-world-frame.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

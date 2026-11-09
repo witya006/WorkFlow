@@ -6,9 +6,60 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-CAMERA-QUAKE-119",
+      "id": "CLIENT455-WORLD-FRAME-120",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Corrected CLevel current-view by actual ctor/vtable;Bellato light queue,live clock±1,regular/magic projected light and archivedFX verified;known target geometry differences not yet ported",
+      "reference": [
+        {
+          "rva": "0x738494",
+          "role": "Actual CLevel vtable"
+        },
+        {
+          "rva": "0x4e7850",
+          "role": "Actual CLevel view"
+        },
+        {
+          "rva": "0x73872c",
+          "role": "Separate INS vtable"
+        },
+        {
+          "rva": "0x4b4820",
+          "role": "Light queue"
+        },
+        {
+          "rva": "0x4fe980",
+          "role": "Regular geometry,known gaps"
+        },
+        {
+          "rva": "0x4fec90",
+          "role": "Magic geometry,known gaps"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_level_view.inc",
+        "scripts/quake455.py"
+      ],
+      "verification": "26equalbodies/26fullasm/2772instructions,2vtables;2IDAsavedclosed/list0.76queue operations/16OSclock±1/5BellatoGPU/exactclearcontrol+5impactGPU/545impactframes/142CPUevents. Engine67onlylevel.obj changed,66byteequal;ownPE0806b113/maps2692/330/Create1.",
+      "evidence": [
+        "inventory/client455-world-frame-reference.json",
+        "inventory/client455-world-frame-native.json",
+        "inventory/client455-world-frame-verification.json",
+        "inventory/client455-world-frame-visual-review.json",
+        "inventory/client455-world-frame-checkpoint.json",
+        "research/client455-world-frame.md"
+      ],
+      "gaps": [
+        "FullILevel/Empty/INS source and all virtual methods remain unported;selected dispatch proof is not privateABI parity",
+        "Confirmed unported geometry differences:regular light skipsAttr0x10,leafcap128,facecap5000;magic skipsAttr0x30,requires bboxwidth<=1000/both endpoints inside root bounds,saturates faceindex2999,batch2000;target uses owned CBsp worldmatrix and explicit declaration;legacy path still differs",
+        "Full map frame/calculations/environment/projection/sky/alpha/shadow/device/reset/lighting/Character/gameplay not proven by selected queue and GPU examples",
+        "AllFP/oldCRT/invalid counts/OOM/NaN/concurrency/RNG interleaving and previous client-acceptance gaps remain open"
+      ]
+    },
+    {
+      "id": "CLIENT455-CAMERA-QUAKE-119",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Selected455 quake/sway/attenuation and map previous-view publication restored;real archived impact drives CLevel and D3D view;full camera/world/gameplay open",
       "reference": [
         {
@@ -53,7 +104,8 @@
         "Empty-level8E7850 and INS variants have separate behavior;map CLevel proof does not accept them",
         "Provider timer/toggle negative branch/live game timing/full world frame/light/compositing and allFP/oldCRT/privateABI/NaN/zero-heading/modulo0/overflow/RNG-interleaving remain open",
         "All previous client acceptance gaps;M6/M6F/M7/M9 open"
-      ]
+      ],
+      "correction120": "Previous-view claim for ordinary CLevel RETRACTED:8EB7F0 is INS;ctor/vtable/owner prove ordinary CLevel8E7850/current-view. See CLIENT455-WORLD-FRAME-120"
     },
     {
       "id": "CLIENT455-TEXTURE-LIFETIME-118",
