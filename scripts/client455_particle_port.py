@@ -38,6 +38,7 @@ def headers(base,root,previous):
     return records
 
 def particle_source(raw):
+    raw=b'#include "client455_shader_lights.h"\n'+raw
     from prepare_client455_normal import section
     for token,new in [
         (b'CParticle::~CParticle()',b'CParticle::~CParticle(){if(mCurvePoints)Dfree(mCurvePoints);if(mElement)Dfree(mElement);mElement=NULL;mCurvePoints=NULL;}'),
@@ -60,14 +61,17 @@ def particle_source(raw):
            !strcmp(hole,"azirang_pos")||!strcmp(hole,"azirang_width")||
            !strcmp(hole,"azirang_height")||!strcmp(hole,"azirang_amplitude")||
            !strcmp(hole,"azirang_time")||!strcmp(hole,"azirang_variance")||
-           !strcmp(hole,"[light]")||!strcmp(hole,"use_combine_scale")) {
+           !strcmp(hole,"use_combine_scale")) {
             fclose(fp);ReleaseEntity();ReleaseParticle();
             Warning(name,"<-455 advanced particle provider remains open");return FALSE;
         }
 '''.replace(b'\n',b'\r\n')
-    body=body[:at]+reject+body[at:]
+    body=body[:at]+reject+b'        if(!strcmp(hole,"[light]")){light455=RF455_ReadShaderLight(fp);mFlag|=0x100000u;}\n'+body[at:]
+    at=body.index(b'{')+1;body=body[:at]+b'\n    RF455ShaderLight* light455=nullptr;'+body[at:]
+    end_anchor=b'\tfclose(fp);\n\n\treturn TRUE;'
+    body=replace_once(body,end_anchor,b'    if(light455)mLightID=RF455_AppendShaderLight(light455);\n'+end_anchor)
     raw=raw[:start]+body+raw[end:]
-    return raw
+    return raw+b'\n'+(WS/'scripts/native/client455_shader_lights.inc').read_bytes()
 
 def entity_source(raw):
     from prepare_client455_normal import section

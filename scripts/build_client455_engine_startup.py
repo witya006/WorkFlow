@@ -16,6 +16,7 @@ def main():
     from client455_particle_port import headers,particle_source,entity_source
     import client455_lighting_port as lighting130
     import client455_material_port as material133
+    import client455_material_shader_port as shaders135
     materialInput=base/'source/R3Engine/1stclass/r3material.h';materialHeader=root/'include/r3material455.h'
     materialRaw=material133.header(materialInput.read_bytes());materialKey=materialHeader.relative_to(WS).as_posix()
     if materialHeader.exists() and materialHeader.read_bytes()!=materialRaw and sha(materialHeader) not in {previous.get('material_header_overlay',{}).get('sha256'),generated.get(materialKey)}:raise ValueError('Preserving changed material declaration')
@@ -89,8 +90,8 @@ def main():
     header=header.replace(firstInclude,firstInclude+('#include "'+materialHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp','renderparticle.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp','renderparticle.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -272,7 +273,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
         elif filename=='r3particle.cpp':raw=particle_source(raw)
         elif filename=='entity.cpp':raw=lighting130.entity(entity_source(raw))
         elif filename=='renderentity.cpp':raw=lighting130.render_entity(raw)
-        elif filename=='r3render.cpp':raw=lighting130.material(raw)
+        elif filename=='r3render.cpp':raw=shaders135.render(lighting130.material(raw))
+        elif filename=='renderparticle.cpp':raw=shaders135.particle_render(raw)
         elif filename=='r3vertexshader.cpp':raw=lighting130.shader(raw)
         elif filename=='r3sound.cpp':
             marker=b'static _IM_WAVE_LIST *stIM_WaveList=NULL;'
@@ -339,6 +341,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['material_header_overlay']={'file':materialKey,'sha256':sha(materialHeader),'original':materialInput.relative_to(WS).as_posix(),'original_sha256':sha(materialInput)}
     report['material_port_script']={'file':'scripts/client455_material_port.py','sha256':sha(WS/'scripts/client455_material_port.py')}
     report['special_shader_owner']={name:sha(WS/'scripts/native'/name) for name in ['client455_special_shaders.h','client455_special_shaders.inc','client455_shader_key.h']}
+    report['material_shader_draw']={name:sha(WS/'scripts/native'/name) for name in ['client455_material_shaders.h','client455_material_shaders.inc','client455_shader_lights.h','client455_shader_lights.inc']}
+    report['material_shader_port_script']={'file':'scripts/client455_material_shader_port.py','sha256':sha(WS/'scripts/client455_material_shader_port.py')}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

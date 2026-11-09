@@ -4,7 +4,7 @@
   "build_exit": 0,
   "objects": 67,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "ec4fcca5accbaa898e86053d441007e375f3503caa45bb9bd1ee7bded0d5f24c",
+  "library_sha256": "fefffffa5a03ee7fa60ddc907317182b38583901cb3ca163df35f2cd220ed8a9",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -342,7 +342,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3particle.cpp",
-      "sha256": "32a1ae449981e2f1e85e201375612412d1505a8232988b1c06be46bbd981a0dd",
+      "sha256": "80916506f1f9561e51f20be598439c9384307f7fb1ae9bd9130821b1911fb8b8",
       "original": "work/client455-port/source/R3Engine/1stclass/r3particle.cpp",
       "original_sha256": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16"
     },
@@ -390,7 +390,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3render.cpp",
-      "sha256": "6c76344eb28ddc8b6a0edbbe7a790fd7e7adc8865355efa943f6b551ae518ec3",
+      "sha256": "3e6e587017422a17a07ae63dd9f2c4f945af9aa3c9e13f027add38457e39868f",
       "original": "work/client455-port/source/R3Engine/1stclass/r3render.cpp",
       "original_sha256": "26015b5c628c7b5384a2cec25f3ffa518cef44893a21c43833eee5a8d662da92"
     },
@@ -405,6 +405,12 @@
       "sha256": "9478374b54d4158def0a1d4b9438e6db9fd7db266c1b9ae1220001bccfc578be",
       "original": "work/client455-port/source/R3Engine/1stclass/r3vertexshader.cpp",
       "original_sha256": "acb1adca40e26a6c0b70e19a929d76c51a801ebf7ecd64a638a2292911a6d85b"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/renderparticle.cpp",
+      "sha256": "086e0175644506cdc9dab4be4fd0a16089d46a79e9adb1dc8b7ca617f8b4cbc8",
+      "original": "work/client455-port/source/R3Engine/1stclass/renderparticle.cpp",
+      "original_sha256": "854a7417c8495ca390fc0e75c66c7a5707e1832608622f18999e090f6347e926"
     }
   ],
   "baseline_library": {
@@ -413,13 +419,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "27eed356db9b7820ce7ffa298ff3a58b7d0788316331630abd1ea2105a0864eb"
+    "sha256": "132f9b270dfbacd1c45796ac5d0c1b666c0a22c0b961ac72b1d67d371ecf7393"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "e04d208329fdba8f190a9c472052d1fc753ce91361e21b76a9625c090be0f8b7"
+    "sha256": "6a424dfb2e99f190f07d9b0ec251ff53df81c492bce431c7d7e9ee0262fbcdde"
   },
-  "script_sha256": "ea64c882128ec520dc50079a0233c97dedacc34a0ed989807b4ee41f20e0400e",
+  "script_sha256": "39481ca7cb49df5fd38c54e9fa310fa5757b86ef58195c50c44d43b77dfb866e",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -521,6 +527,16 @@
     "client455_special_shaders.inc": "c7252307587805c0e8cf9ffe62d8ebe7e1743c53f96cf093746c3f5f83681dcc",
     "client455_shader_key.h": "09d4e6ddca6bee868aae3e0857899fe64bf6b94024a590de3271e824dfe26866"
   },
+  "material_shader_draw": {
+    "client455_material_shaders.h": "ca65724598ca82a7c0a3b39ea62ecc994e9fab5b59458e7cbb1ecc0094818e8c",
+    "client455_material_shaders.inc": "09bd15e8cbe9fb782ee0305077210495686b2477397d7644014e665de62ad575",
+    "client455_shader_lights.h": "ddf1d216b6dc28cf638187d065eb44d331495f4b11236533a8a283cc8ccdd315",
+    "client455_shader_lights.inc": "16f5ada6d334bfe98bb5cc8e28591efaad5530345846c8d1489daf13ca383262"
+  },
+  "material_shader_port_script": {
+    "file": "scripts/client455_material_shader_port.py",
+    "sha256": "9f67a13f12ef10df7c53671be2f1a9ee382354389c88b080dcad10e699cc4974"
+  },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",
     "sha256": "63bb96daf47dec1fc059b9e6fb212c462f2c63875aca41a70c3c35214041051d",
@@ -591,7 +607,7 @@
   "particle_port": {
     "script": {
       "file": "scripts/client455_particle_port.py",
-      "sha256": "90646cae5ef9be3d961e0a13c1970256491bc1c45bea8d35607a2aa333e0d798"
+      "sha256": "381883447d7bcea3c15654756d8160fa852f6c9af15de8c2d05c8f14a48220cc"
     }
   },
   "immediate_sound": {
