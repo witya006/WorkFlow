@@ -21,7 +21,7 @@ def main():
     includes=[root/'include',root/'source',engine,engine/'1stclass',engine/'2ndclass',engine/'common',engine/'extension',engine/'d3d/include',WS/sdk['include']]
     source=WS/'scripts/native/client455_normal_consumers_probe.cpp';entry=root/'generated'/source.name;entry.write_bytes(source.read_bytes());exe=root/'build/normal-consumers-probe.exe';log=art/'consumer-probe-build.txt';batch=root/'generated/build-consumers-probe.cmd'
     definitions=sorted(set(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_FRUSTUM','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_EFFECT_LOG','RF_CLIENT_455_LOBBY_TRANSITION']))
-    flags='/Zc:forScope- '+' '.join('/D'+name for name in definitions)+' '+' '.join('/I"'+str(p)+'"' for p in includes)
+    flags='/Zc:forScope- '+' '.join('/D'+name for name in definitions)+' '+' '.join('/I"'+str(p)+'"' for p in includes)+' /FI"'+str(WS/startup['camera_header_overlay']['file'])+'"'
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-probe.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} /FI"{WS/"work/client455-port/port_std.hpp"}" "{entry}" '+ ' '.join('"'+str(p)+'"' for p in objects+libraries)+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
     result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=entry.parent,creationflags=subprocess.CREATE_NO_WINDOW)
     if result.returncode:raise ValueError('Normal consumers probe build failed:'+str(log))

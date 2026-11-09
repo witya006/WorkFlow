@@ -14,7 +14,14 @@ def main():
     generationFile=root/'generated-source-hashes.json'
     generated=json.loads(generationFile.read_text()) if generationFile.exists() else {}
     from client455_particle_port import headers,particle_source,entity_source
+    import client455_lighting_port as lighting130
     particleHeaders=headers(base,root,previous)
+    vertexInput=base/'source/R3Engine/1stclass/r3d3d8.h';vertexHeader=root/'include/r3d3d8455.h'
+    vertexRaw=lighting130.vertex_header(vertexInput.read_bytes())
+    vertexKey=vertexHeader.relative_to(WS).as_posix()
+    if vertexHeader.exists() and vertexHeader.read_bytes()!=vertexRaw and sha(vertexHeader) not in {previous.get('vertex_header_overlay',{}).get('sha256'),generated.get(vertexKey)}:raise ValueError('Preserving changed owned455 vertex declarations')
+    if not vertexHeader.exists() or vertexHeader.read_bytes()!=vertexRaw:vertexHeader.write_bytes(vertexRaw)
+    generated[vertexKey]=sha(vertexHeader);generationFile.write_text(json.dumps(generated,indent=2)+'\n')
     coreInput=base/'source/R3Engine/1stclass/core.h';coreHeader=root/'include/core455.h'
     coreRaw=coreInput.read_bytes();coreAnchor=b'\tD3DXMATRIX mMatProj;'
     coreAt=coreRaw.index(b'\n',coreRaw.index(coreAnchor))+1
@@ -47,6 +54,7 @@ def main():
     particlePrefix+=('#include "'+bspHeader.as_posix()+'"\r\n').encode()
     particlePrefix=particlePrefix.replace(b'#include "c_vector.h"\r\n',('#include "'+coreHeader.as_posix()+'"\r\n#include "c_vector.h"\r\n').encode(),1)
     particlePrefix+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
+    particlePrefix=particlePrefix.replace(('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n').encode(),('#include "'+(base/'port_std.hpp').as_posix()+'"\r\n#include "'+vertexHeader.as_posix()+'"\r\n').encode(),1)
     if ownedParticleHeader.exists() and ownedParticleHeader.read_bytes()!=particlePrefix and sha(ownedParticleHeader)!=previous.get('particle_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed particle prefix')
     if not ownedParticleHeader.exists() or ownedParticleHeader.read_bytes()!=particlePrefix:ownedParticleHeader.write_bytes(particlePrefix)
     levelInput=base/'source/R3Engine/2ndclass/level.h';levelHeader=root/'include/level455.h'
@@ -70,10 +78,11 @@ def main():
     header+=('\r\n#include "'+bspHeader.as_posix()+'"\r\n').encode()
     header+=('#include "'+skyHeader.as_posix()+'"\r\n').encode()
     header+=('#include "'+levelHeader.as_posix()+'"\r\n').encode()
+    header=header.replace(firstInclude,firstInclude+('#include "'+vertexHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp']:
-        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp']:
+        folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
             from prepare_client455_normal import section
@@ -183,6 +192,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
 '''
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
+            raw=b'#include "client455_entity_lighting.h"\n'+raw
+            raw=raw.replace(b'pd3dDevice->GetDeviceCaps(&caps);',b'pd3dDevice->GetDeviceCaps(&caps);\n    RF455_SetLightingCaps(&caps);')
             raw=b'#include "client455_sky_atmosphere.h"\n'+raw
             first,last=section(raw,b'HRESULT D3D_R3RestoreDevice()',b'HRESULT D3D_R3RestoreDevice()');body=raw[first:last];anchor=b'\tInitFullScreenEffect();'
             if body.count(anchor)!=1:raise ValueError('Sky resources restore boundary')
@@ -240,7 +251,10 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
             bars=b'\r\n\tif(GetR3State()->mWideOn){const LONG width=LONG(GetR3State()->mScreenXsize),height=LONG(GetR3State()->mScreenYsize);const LONG image=LONG(double(0.55f)*GetR3State()->mScreenXsize);const LONG border=LONG(double(GetR3State()->mScreenYsize)-image)/2;Draw2DRectangle(0,0,width,border,0xff000000);Draw2DRectangle(0,height-border,width,height,0xff000000);}\r\n'
             raw=raw[:first]+body[:at]+bars+body[at:]+raw[last:]
         elif filename=='r3particle.cpp':raw=particle_source(raw)
-        elif filename=='entity.cpp':raw=entity_source(raw)
+        elif filename=='entity.cpp':raw=lighting130.entity(entity_source(raw))
+        elif filename=='renderentity.cpp':raw=lighting130.render_entity(raw)
+        elif filename=='r3render.cpp':raw=lighting130.material(raw)
+        elif filename=='r3vertexshader.cpp':raw=lighting130.shader(raw)
         elif filename=='r3sound.cpp':
             marker=b'static _IM_WAVE_LIST *stIM_WaveList=NULL;'
             if raw.count(marker)!=1:raise ValueError('Immediate sound table source changed')
@@ -298,6 +312,9 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['sky_lighting']={name:sha(WS/'scripts/native'/name) for name in ['client455_sky_lighting.h','client455_sky_lighting.inc','client455_sky_lighting_math.h']}
     report['weather_parameters']={name:sha(WS/'scripts/native'/name) for name in ['client455_weather_parameters.h','client455_weather_parameters.inc','client455_level_weather.inc','client455_weather.cpp']}
     report['level_header_overlay']={'file':levelHeader.relative_to(WS).as_posix(),'sha256':sha(levelHeader),'original':levelInput.relative_to(WS).as_posix(),'original_sha256':sha(levelInput)}
+    report['vertex_header_overlay']={'file':vertexHeader.relative_to(WS).as_posix(),'sha256':sha(vertexHeader),'original':vertexInput.relative_to(WS).as_posix(),'original_sha256':sha(vertexInput)}
+    report['lighting_consumers']={name:sha(WS/'scripts/native'/name) for name in ['client455_entity_lighting.h','client455_entity_lighting.inc','client455_entity_normals.h','client455_lit_grass.inc']}
+    report['lighting_port_script']={'file':'scripts/client455_lighting_port.py','sha256':sha(WS/'scripts/client455_lighting_port.py')}
     report['core_header_overlay']={'file':coreHeader.relative_to(WS).as_posix(),'sha256':sha(coreHeader),'original':coreInput.relative_to(WS).as_posix(),'original_sha256':sha(coreInput)}
     report['sky_header_overlay']={'file':skyHeader.relative_to(WS).as_posix(),'sha256':sha(skyHeader),'original':skyInput.relative_to(WS).as_posix(),'original_sha256':sha(skyInput)}
     report['bsp_header_overlay']={'file':bspHeader.relative_to(WS).as_posix(),'sha256':sha(bspHeader),'original':bspInput.relative_to(WS).as_posix(),'original_sha256':sha(bspInput)}

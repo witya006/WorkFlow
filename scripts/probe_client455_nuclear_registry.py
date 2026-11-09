@@ -10,7 +10,7 @@ from compare_client_binaries import WS,pe
 from rpk455 import Rpk
 
 
-def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-registry',report_name='client455-nuclear-registry-native',extra_world_manifest=None):
+def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-registry',report_name='client455-nuclear-registry-native',extra_world_manifest=None,extra_runtime_files=()):
     source=WS/'scripts/native'/source_name;exe=build_full_object_probe(probe_name,source);holder=WS/'work/m9'/sha(exe)[:8];index=1
     while(holder/f'{probe_name}-{index:03d}').exists():index+=1
     run=holder/f'{probe_name}-{index:03d}';run.mkdir(parents=True);target=run/exe.name;shutil.copyfile(exe,target);mapping=target.with_suffix('.map');shutil.copyfile(exe.with_suffix('.map'),mapping)
@@ -48,6 +48,7 @@ def main(source_name='client455_nuclear_registry_probe.cpp',probe_name='nuclear-
     for name in ['mss32.dll','Snd/WaveList.spt','Snd/Character/Newclear/Radar_00.wav','Snd/Character/Newclear/Missile_00.wav','Snd/Character/Newclear/Newclear_00.wav','Effect/EffectEntityList.spt','Effect/MagicSptList.spt','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','DataTable/ko-kr/Cska.txt']:
         copy(client/name)
     inputs+=copy_character_shaders(run)+copy_tagged_sound_providers(run)
+    for relative in extra_runtime_files:copy(client/relative)
     config=run/'R3Engine.ini';config.write_text('[Setup]\nLanguage=Korea\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Path]\nSoundPath=.\\Snd\\\nEffectPath=.\\Effect\\\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');inputs.append(record(config))
     settings=run/'DataTable/GameSetting.ini';settings.write_text('[ChatMode]\nAll=0\nParty=0\nGuild=0\nSystem=0\n[DefModeOn]\nAll=0\n',encoding='ascii');before=run/'settings-before.ini';shutil.copyfile(settings,before);inputs.append(record(before))
     startup=subprocess.STARTUPINFO();startup.dwFlags=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0

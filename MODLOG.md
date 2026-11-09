@@ -1,5 +1,17 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Lighting consumers130. Normal36 geometry and actual entity fixed/
+Grass/LitGrass consumers plus capability-gated bump pre/after restored.
+17fullasm/3450instructions/18ranges equalboth455.5328selectedPC24 normals bitexact;
+5actual draw paths/pinned220-300byte shaders/8material cases PASS.5newGPUviewed,
+25oldpixel contents reused with byte equality proof. Full182/20/existingCreate1
+PASS. Engine6751765f/40payload19timestamp8same;PE52c25310/entry16C930/unresolved0.
+Both fixed/shader flag40 use MODULATE;fixed cleanup preserves LIGHTING and
+DIFFUSESOURCE,clears COLORVERTEX and enables SPECULAR. Actual GPU states verified.
+Exact lit inverse/normalizer,flag40 producers,material extra fields/layer capacity
+and full lighting/world/M9 remain OPEN. No unchanged bulk suites.
+[Evidence](research/client455-lighting-consumers.md).
+
 2026-11-10 — Weather owner129. Packed script producers→ordinary virtual CLevel
 owner→fog exposure connected. Corrected earlier126/128 case-sensitive claim:
 90A5ED uppercase before FOG/ENV,90ACEC lowercase before weather/scene flags.

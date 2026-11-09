@@ -1,0 +1,60 @@
+{
+  "reviewed": true,
+  "reviewed_frames": 5,
+  "script_sha256": "2b2f259726f908ef3ea47e1894a58bdd9a11ea9d9020467db8ff6da4660f53c9",
+  "native_sha256": "4f8bf49b7b6cb862e400b621664c7952035d06b01580d76ffabb813d59c104a7",
+  "sheet": {
+    "file": "work/m9/84c65e3f/lighting-consumers-001/lighting-consumers-contact.png",
+    "sha256": "ac1911372d94cbb53b6580e02f5f093342c44f8ad8b30387f2761533a16ddc28"
+  },
+  "frames": [
+    {
+      "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-disabled.bgra",
+      "sha256": "63f009e2b776886875438b60b6fc67888401f9d21808b838dcf9625610f1d84c",
+      "preview": {
+        "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-disabled.png",
+        "sha256": "03ca737cb872cef1cd4e84c62b77790a8f74b0e579fcdc991fb0298e07e8910b"
+      }
+    },
+    {
+      "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-grass.bgra",
+      "sha256": "df51d4d772f2fc949c10f8fe61ece6178d89c8b9f21544117cee93a08810b7b7",
+      "preview": {
+        "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-grass.png",
+        "sha256": "b2070b4e9e6a2d321d6c94701ca9327bc8ca2652d54a65b9c03f80f212b230aa"
+      }
+    },
+    {
+      "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-lit-fixed.bgra",
+      "sha256": "5587cd4533e133b112208c25f5ab54c64865d143c05bbd5905df49f177b5c497",
+      "preview": {
+        "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-lit-fixed.png",
+        "sha256": "be75f6c5148fe396c52a4d968368ec4a3782a8597d6820df52abee397e4457c5"
+      }
+    },
+    {
+      "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-lit-grass.bgra",
+      "sha256": "2e96b124a5f46ce69f63cc98c4cc97861eb8b604fab65fffcc69775cd3802b8b",
+      "preview": {
+        "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-lit-grass.png",
+        "sha256": "11bafd56d58f8a82fa4fc53d6e46ff824ccc5faf7f578ad227f402b1e5f7be6e"
+      }
+    },
+    {
+      "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-map-tint.bgra",
+      "sha256": "b4eebcf55823b6573d3061c6e77a930c76ea0402710f05e14508f4957549852e",
+      "preview": {
+        "file": "work/m9/84c65e3f/lighting-consumers-001/consumer-map-tint.png",
+        "sha256": "7f1ecf829246f65e7f771aa72de080bb2121c1bce3bf0d04990f1b37d30500f8"
+      }
+    }
+  ],
+  "observations": [
+    "Stock grass geometry is visible through ordinary CEntity fixed and shader methods",
+    "Disabled/day map tint,lit fixed,Grass1 and LitGrass1 are exercised",
+    "Actual submitted Grass shaders match pinned bytecode;no running455 pixel equivalence or full lighting acceptance is claimed"
+  ],
+  "reference_executable_capture": false,
+  "full_lighting": false,
+  "full_client": false
+}

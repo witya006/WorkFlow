@@ -1,16 +1,16 @@
 # Аудит окружения — 04.11.2026
 
-129 PARTIAL M6: восстановлены три packed weather producer и настоящий
-виртуальный владелец CLevel при обычной загрузке карты. Исправлен регистр
-FOG/ENV/scene tags: uppercase перед FOG/ENV, lowercase перед weather/flags.
-90 script cases/3 precision,5 fog aggregates и25 просмотренных GPU кадров PASS.
-20 прежних кадров byte-equal128;полная182/20 сборка и exact PE Create1 PASS.
-PE d678c71b…/entry16BAB0/unresolved0;engine9b366d8f…/67 объектов.
-Текущий gate: inventory/client455-weather-owner-checkpoint.json.
-[Доказательства129](../research/client455-weather-owner.md).
-Далее130: material8000 и CPU tint consumers;тонкие полосы геометрии neutralB
-зафиксированы как открытая world/camera/material проблема.
-Full lighting/CRT/FP/world/client acceptance и M6/M6F/M7/M9 OPEN.
+M6 — частично: восстановлены нормали геометрии и подключены потребители
+освещения объектов и материалов. На реальной модели проверены пять режимов
+отрисовки;5328 нормалей совпали побитно в выбранном режиме вычислений.
+На GPU подтверждено использование штатных шейдеров Grass1 и LitGrass1.
+Полная сборка182 клиентских/20 вспомогательных модулей и запуск до Create1 проходят.
+Пять новых кадров просмотрены;25 прежних кадров сохранились побайтно.
+RF_Online.bin:52c25310…;точные хеши и ограничения приведены в доказательствах.
+Текущая проверка: inventory/client455-lighting-consumers-checkpoint.json.
+[Доказательства участка130](../research/client455-lighting-consumers.md).
+Далее — точные преобразования света,игровые владельцы flag40 и оставшиеся
+параметры материалов/шейдеров. Полная приёмка M6/M6F/M7/M9 ещё не завершена.
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

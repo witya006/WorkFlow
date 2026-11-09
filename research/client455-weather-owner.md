@@ -1,5 +1,9 @@
 # Weather owner129 — обычная карта и параметры скрипта
 
+Исторический runtime129. Текущий gate — lighting-consumers130;
+weather owner заново проверен, кадры byte-equal129.
+[Текущие доказательства](client455-lighting-consumers.md).
+
 2026-11-10. **PARTIAL, M6**. Восстановлены три производителя packed weather,
 виртуальный setter CLevel и его настоящий вызов в обычной загрузке карты.
 Текущий gate: `inventory/client455-weather-owner-checkpoint.json`.

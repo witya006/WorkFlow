@@ -1,27 +1,27 @@
 {
   "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
   "exe": "work/client455-port/startup-engine/contracts/contracts.exe",
-  "exe_sha256": "d0226e94243e55d8424bd19fa1d5b00f4de502d74d33654462b046829c5f7cfa",
-  "entry_rva": "0x772e0",
+  "exe_sha256": "32dcdc3fcd13c0842de3c02590d95a06af2aaef633fb8e8521c5abcdc1905e7c",
+  "entry_rva": "0x78160",
   "source": "scripts/native/test_client455_startup_contracts.cpp",
   "source_sha256": "466e9898301f38a3c841960dcf550e569be2e6181047924f2837f5f460e2fb7d",
   "cases": [
     {
       "name": "success",
       "exit": 0,
-      "file": "work/m9/d0226e94/startup-contracts001/success.txt",
+      "file": "work/m9/32dcdc3f/startup-contracts001/success.txt",
       "sha256": "08fc71636c741921f53b686b30545f4328b42d51651cfac9db3d4b174631f3bd"
     },
     {
       "name": "s_false",
       "exit": 0,
-      "file": "work/m9/d0226e94/startup-contracts001/s_false.txt",
+      "file": "work/m9/32dcdc3f/startup-contracts001/s_false.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     },
     {
       "name": "e_fail",
       "exit": 0,
-      "file": "work/m9/d0226e94/startup-contracts001/e_fail.txt",
+      "file": "work/m9/32dcdc3f/startup-contracts001/e_fail.txt",
       "sha256": "33592cfb5dfe2dcc72fbb9ad86703e4a44b97fc19233d3bd917bc0c801ac4490"
     }
   ],
@@ -37,7 +37,7 @@
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "9a30a5ebf1c9ca46be0c5957cbc9970a275a0de8fcb53896f4d237fcaf93bf7a"
+      "sha256": "bd84188a4fa71bdeb1564c3c67db74968a4df27c1e6c0484eee5bc872d2a3d34"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
@@ -53,7 +53,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "9b366d8ffab4a9cf4192b87d2f7c5dcda5ba74b278a94ccc92db0bf05e4baced"
+      "sha256": "6751765f42dc448ae54f8ee51cdb30a7ca07ba863cf87697cc6dd1149cd1653d"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -82,9 +82,9 @@
   ],
   "map": {
     "file": "work/client455-port/startup-engine/contracts/contracts.map",
-    "sha256": "9b601a9846f337590c0d058c1eb6e0c9626242638553c91844c5b4a30141f6ed"
+    "sha256": "14f3044d7051c55847dbfa6891fadb857612baf5a4c627c3cd02776e1314bbb6"
   },
-  "build_sha256": "1522743d0d4812859e902332f3f1ce36b8b50a9be3f9d100bc02f3ab157f57f3",
+  "build_sha256": "ab0b0abafed3abea38829e5a36c82c4822322c593a9b7ebd1adbb702aae5a66b",
   "reference_sha256": "31921355ebbeb1cb885f08a89384a01d069a78616ca973affa6f1c1bc3505eec",
   "status": "PASS",
   "color32_preserves_window_mode": true,

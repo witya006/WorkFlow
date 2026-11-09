@@ -6,9 +6,65 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-WEATHER-OWNER-129",
+      "id": "CLIENT455-LIGHTING-CONSUMERS-130",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary entity sky modulation,normal36 geometry,lit fixed/Grass paths and capability-gated bump material pre/after consumers",
+      "reference": [
+        {
+          "rva": "0x4e0a20",
+          "role": "Normal36 geometry loader"
+        },
+        {
+          "rva": "0x4e3630",
+          "role": "Actual fixed-light/map-color material"
+        },
+        {
+          "rva": "0x4e3f10",
+          "role": "Actual Grass/LitGrass selector"
+        },
+        {
+          "rva": "0x4c7b10",
+          "role": "Bump material prepass"
+        },
+        {
+          "rva": "0x4c80a0",
+          "role": "Bump cleanup and sky tint"
+        }
+      ],
+      "implementation": [
+        "scripts/client455_lighting_port.py",
+        "scripts/build_client455_engine_startup.py",
+        "scripts/native/client455_entity_lighting.h",
+        "scripts/native/client455_entity_lighting.inc",
+        "scripts/native/client455_entity_normals.h",
+        "scripts/native/client455_lit_grass.inc"
+      ],
+      "verification": "17fullasm/3450instructions/18ranges equalboth455.5328 selectedPC24 normals bitexact;5actual paths/pinned220-300byte GPUshaders/8materialstates/3bumptimes.5newGPUviewed/25freshpreviouspixel contents reused with exact byteproof.67engine21derived/full182-20/ANI-BBX/exactPEexistingCreate1PASS. Full transforms/normalizer/materialcapacity/shaderlifecycle/client remainOPEN.",
+      "evidence": [
+        "inventory/client455-lighting-consumers-reference.json",
+        "inventory/client455-lighting-consumers-native.json",
+        "inventory/client455-lighting-consumers-visual-review.json",
+        "inventory/client455-lighting-consumers-checkpoint.json",
+        "research/client455-lighting-consumers.md"
+      ],
+      "gaps": [
+        "Selected finite PC24 geometry and lighting are covered;full GetNormal/decompressor/CRT/FP/RC/NaN/Inf/status flags remain open",
+        "Source material records are332/46bytes with4 slots;target runtime records526/54bytes read46 serialized bytes per layer. Extra runtime fields and broader layer capacity remain open",
+        "LitGrass reads19.xyz and21/22 only;original3-register stack overreads leave other lanes unspecified. Source uses deterministic unused lanes;complete state-consumer analysis remains open",
+        "Legacy Grass loader/caps failure paths and full shader lifecycle/device reset/OOM remain open",
+        "Target lit transform uses affine inverse8BFBC0 with0.001 guards,transform8C0980 and normalization51D5D0→41DB70→41DB90. Source currently uses D3DX inverse/legacy transform/x87 sqrt on selected affine input;exact guard/determinant/normalizer parity remains open",
+        "Actual CEntity methods are connected;game producers of flag40 and broader shader selection,full map visibility/entity ownership/world/camera/alpha/material acceptance,INS/Planet/lensflare/localfog and remaining client acceptance remain open"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-WEATHER-OWNER-129",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Packed script producers and actual ordinary CLevel map weather owner;case-fold correction",
       "reference": [
         {
@@ -54,7 +110,8 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "superseded_by": "CLIENT455-LIGHTING-CONSUMERS-130"
     },
     {
       "id": "CLIENT455-SKY-LIGHTING-RUNTIME-128",
