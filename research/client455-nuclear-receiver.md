@@ -1,5 +1,9 @@
 # Nuclear116 — ordinary receiver, selected item use and stage ownership
 
+Runtime gate116 исторический после [map117](client455-map-data.md).
+Static contracts сохранены;новая сборка/обычная геометрия и текущий gate в117.
+
+
 **PARTIAL. M6/M6F/M7/M9 OPEN.** Current gate is
 `inventory/client455-nuclear-receiver-checkpoint.json`;115 runtime gate is historical.
 The ordinary client now registers and dispatches the actual Nuclear group60

@@ -30,6 +30,7 @@ from client455_character_flags_port import port_character_flags
 from client455_nuclear_minimap_port import port_nuclear_minimap
 from client455_nuclear_registry_port import port_nuclear_registry
 from client455_nuclear_receiver_port import port_nuclear_receiver
+from client455_map_data_port import port_map_data
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -701,6 +702,8 @@ def main():
             raw,nuclear_registry_changed=port_nuclear_registry(raw,relative)
             if nuclear_registry_changed:changes.append('455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen')
             raw,nuclear_receive_changed=port_nuclear_receiver(raw,relative,section)
+            raw,map_data_changed=port_map_data(raw,relative,section)
+            if map_data_changed:changes.append('455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider')
             if nuclear_receive_changed:changes.append('455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
@@ -758,7 +761,7 @@ def main():
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_nuclear_aiming.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_registry.cpp','client455_nuclear_receiver.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
-    for name in ['client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:
+    for name in ['client455_map_data.cpp','client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -810,6 +813,8 @@ def main():
     for name in ['client455_hotbar.h','client455_hotbar.cpp','client455_hotbar_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_object_copy.inc','client455_resource_object_ctor.inc','client455_resource_object_copy.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['resource_object_port_sha256']=sha((WS/'scripts/client455_resource_object_port.py').read_bytes())
+    report['map_data_port_sha256']=sha((WS/'scripts/client455_map_data_port.py').read_bytes())
+    for name in ['client455_map_data.h','client455_map_data.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['item_object_port_sha256']=sha((WS/'scripts/client455_item_object_port.py').read_bytes())
     report['item_icon_port_sha256']=sha((WS/'scripts/client455_item_icon_port.py').read_bytes())
     report['item_metadata_port_sha256']=sha((WS/'scripts/client455_item_metadata_port.py').read_bytes())

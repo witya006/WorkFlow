@@ -1,22 +1,22 @@
 # Дорожная карта восстановления клиента RF Online 455
 
-116 PARTIAL: ordinary Nuclear group60 factory/receiver обрабатывает все9
-форматов пакетов. MainGame владеет реестром; static MainApp holder убран.
-Подключены original-item serial→encrypted send, actual category33 inventory
-use completion и registry lookup→MiniMap. Empty-cursor C1A и сохранение
-operation при nonempty hover backup восстановлены; это не отдельный dialog.
-44equalbodyranges/42fullasm/2473instructions+Init EH;18newasm/1354instructions.
-IDA savedclosed/list0. Native101/registry109/aim30/marker702/message83 PASS;
-20GPU viewed,11marker/message frames byteequal115. Actual encrypted receive
-ring и send19 bytes сверены с независимым Windows CNG (plain frame6).
-Own PEc67a3154…/entry164370/182client-20kernel-69facade/unresolved0/Create1.
-Engine67 unchanged. Full socket/auth/inventory/stage/world/texture lifecycle
-не приняты;20R3T warnings в каждом nuclear lab остаются. Worldgeometry588
-producer пока отсутствует,geometry задаётся lab. Current gate116;115 historical.
-M6/M6F/M7/M9 OPEN. Далее117 — actual worldgeometry588/обычная геометрия
-MiniMap;разобрать R3T release warnings до приёмки полного texture lifetime.
+117 PARTIAL: восстановлен обычный CLand::LoadData для Map/NDMap110 и
+двух дополнительных разделов: 660 подписей,257919 байт изображений. Массивы
+588/288/96/84 динамические; реальные maxima54 портала/62 зоны превышают старые50.
+UI_SetMinimap получает bounds из BSP node1 и размеры/смещение из map record;
+старые8map tables/clamp удалены. Декодированы обычные PE вызовы loader/geometry.
+12equalbodies/12fullasm/1850instructions (9new/1284);2IDA sessions savedclosed/list0.
+Native2692 PASS: весь canonical output равен независимому reader,330 случаев
+геометрии для110 карт на3 реальных BSP node fixtures. Полный BSP load/GPU здесь
+не повторялся. Из9 supplied NDMap только zh-tw имеет110;ko-kr100,остальные31
+отвергаются точно по count gate,без подстановок. Это подтверждено actual CLand.
+Own PEfd8b5070…/entry1670c0/182client-20kernel-70facade/unresolved0/Create1.
+Engine67 unchanged;116 runtime gate historical,старые Nuclear/GPU/159k не повторялись.
+Full map UI/layer manager consumers/gameplay/texture lifetime не приняты.
+M6/M6F/M7/M9 OPEN. Следующая118 — actual texture/ref ownership и20 R3T warnings
+последнего nuclear lab116; затем полный world/frame и map UI consumer flow.
 
-[Доказательства116](../research/client455-nuclear-receiver.md).
+[Доказательства117](../research/client455-map-data.md).
 
 Ниже сохранена история предыдущих этапов; текущий gate указан выше.
 

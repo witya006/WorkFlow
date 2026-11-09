@@ -1,5 +1,16 @@
 # RF Online client reconstruction journal
 
+2026-11-09 — Map data117. Ordinary CLand loads real Map/NDMap110 and both
+appended sections:660 labels/257919 image bytes. Dynamic588/288/96/84 owners;
+actual maxima54portals/62mines. Real BSP bounds/map geometry reach ordinary
+MiniMap;old8map tables/clamp removed.12equalbody/12fullasm/1850instructions,
+2IDAsavedclosed/list0. Native2692/330geometry cases/whole canonical equality;
+8incompatible locales refused,only suppliedzh-tw110 accepted. OwnPEfd8b5070/
+182-20-70/unresolved0/Create1;engine unchanged. No new GPU/fullworld/bulk run.
+Full mapUI/layer consumers/world/texture lifetime/M9 remain open.
+[research/client455-map-data.md](research/client455-map-data.md).
+
+
 112 PARTIAL_COMPONENT: подтверждён настоящий вход начала прицела — client
 Nuclear processor,group60/opcode0/result0,а не input callback.45body ranges/
 22fullasm/903instructions совпали между двумя455;ctor/vtable/RTTI подтверждены.

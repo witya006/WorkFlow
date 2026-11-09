@@ -6,10 +6,55 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-NUCLEAR-RECEIVER-116",
+      "id": "CLIENT455-MAP-DATA-117",
       "status": "partial",
       "runtime_gate_current": true,
-      "description": "Ordinary Nuclear group60/all9 handlers,real original-item serial/AES send,type33 use completion/hover-backup cancellation,registry\u2192MiniMap and MainGame owner;full socket/auth/inventory/stage/world/texture lifecycle unaccepted",
+      "description": "Actual Map/NDMap110 loader with dynamic588/288/96/84 records and both layer sections;ordinary BSP bound/map geometry producer;full UI/world/gameplay unaccepted",
+      "reference": [
+        {
+          "rva": "0x3caae0",
+          "role": "Map/NDMap reader110"
+        },
+        {
+          "rva": "0x3b3e90",
+          "role": "appended layer reader"
+        },
+        {
+          "rva": "0x3c9240",
+          "role": "actual world-to-MiniMap geometry"
+        },
+        {
+          "rva": "0x306810",
+          "role": "geometry fanout"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_map_data.h",
+        "scripts/native/client455_map_data.cpp",
+        "scripts/client455_map_data_port.py",
+        "scripts/prepare_client455_normal.py"
+      ],
+      "verification": "12equalbodies/12fullasm/1850instructions,9new/1284;2IDAsavedclosed/list0. Native2692 checks,all canonical bytes equal independent reader;330geometry cases/110maps/3actualBSPnodefixtures;8locale count refusals. OwnPEfd8b5070/182-20-70/unresolved0/Create1;engine unchanged;no newGPU/fullworld/bulk reruns.",
+      "evidence": [
+        "inventory/client455-map-data-reference.json",
+        "inventory/client455-map-data-native.json",
+        "inventory/client455-map-data-checkpoint.json",
+        "research/client455-map-data.md"
+      ],
+      "gaps": [
+        "Only supplied zh-tw NDMap count110 matches rootMap110;other supplied locale counts31/100 must fail,not silently remap",
+        "Legacy map UI reset/index/avatar/object/portal behavior remains partially unported;normal geometry connection alone does not accept fullMiniMap",
+        "Both layer sections are retained by the source map owner;their actual global manager/UI consumer handoff remains open",
+        "Record588/288/96/84 data layout does not certify untraced field semantics,portal race/movement/protocol or private ABI",
+        "Checked truncation/path/name/text/allocation guards and atomic failed loads do not accept target unsafe reads/overflow/OOM/partial state/repeated-load leaks",
+        "Texture R3T teardown warnings/full world effect lifecycle and all earlier client acceptance gaps remain"
+      ]
+    },
+    {
+      "id": "CLIENT455-NUCLEAR-RECEIVER-116",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "description": "Ordinary Nuclear group60/all9 handlers,real original-item serial/AES send,type33 use completion/hover-backup cancellation,registry→MiniMap and MainGame owner;full socket/auth/inventory/stage/world/texture lifecycle unaccepted",
       "reference": [
         {
           "rva": "0x1c5800",
@@ -76,7 +121,8 @@
         "Only selected type33 inventory completion/use-field4 lane;other inventory kinds/using record producers/complete flow remain open",
         "Full stage/auth/socket/reset/world/frame/trajectory/camera/light/privateABI/unsafe domains remain unaccepted;uncreated own cleanup not target leak/dangling parity",
         "20R3Tteardown warnings in nuclear labs;full texture lifetime/memory balance unproven;all prior acceptance gaps and M6/M6F/M7/M9OPEN"
-      ]
+      ],
+      "runtime_gate_superseded_by": "CLIENT455-MAP-DATA-117"
     },
     {
       "id": "CLIENT455-NUCLEAR-REGISTRY-115",
@@ -4734,7 +4780,7 @@
         "Independent Python prepared bytes/80profiles;all source mip contents vsdirect pinned D3DX9_36;RGB frames and four BMP quadrants",
         "Real managed COM growth50/alias/pathduplicates/exact delete/cumulative accounting/Clear capacity/Init retained vector",
         "RFCfallback1mip/FFFFFFFFcolorKey;missing/empty cubeFlag preservation;real cube orphan observed+released bytest wrapper",
-        "3real MESH08models/97parts\u0432\u2020\u2019source material requests\u0432\u2020\u2019actual texture cache/D3D9objects;59positive IDs"
+        "3real MESH08models/97partsв†’source material requestsв†’actual texture cache/D3D9objects;59positive IDs"
       ],
       "gaps": [
         "Normal model-loader/skeleton/animation/skinning/draw/publication/destructor not integrated;shared buffer source unit separately tracked by CHARACTER455-SHARED-GPU-017",
@@ -4874,7 +4920,7 @@
       "scenarios": [
         "Byte-exact mesh destructor state/orderedCOM+heaprelease;20interleavedpairs/168zero/five reverse strings preserving otherbytes",
         "Flags0..7,reverse array/cookiecount,empty/overflow/null allocation,owned/borrowed arrays,count retention;actual modernCRT allocation tracking",
-        "Connected12paired real models/393parts\u0432\u2020\u2019materials/header/matrix/GPU\u0432\u2020\u2019local/external parent\u0432\u2020\u2019bone resolution\u0432\u2020\u2019scratchfree\u0432\u2020\u2019publish536then532",
+        "Connected12paired real models/393partsв†’materials/header/matrix/GPUв†’local/external parentв†’bone resolutionв†’scratchfreeв†’publish536then532",
         "276real HALuploads/117zeroindexparts/59actualtexturebindings,pointer flags/blend identities/counts/selfpointer checked;paired fixtures useexternal names,not fullBN",
         "Own null-allocation cleanup in3stages/partial flag,reload oldpointer overwrite withoutfree,empty model publication,truncated ownederror;source fullclient result matchescomponent"
       ],
@@ -5005,7 +5051,7 @@
       ],
       "scenarios": [
         "12realBN455records and5synthetic4records:whole720part/28model/payload sizes+bytes,unwritten bytes preserved through ownedA5allocator",
-        "Plain28vertex/88face/424physique andcompact100names/40physique\u0432\u2020\u2019424expanded,strncpy99+NUL,negativeinfluences skip,x87sNaNquieting/negativezero/1ULP in12maskedFPmodes",
+        "Plain28vertex/88face/424physique andcompact100names/40physiqueв†’424expanded,strncpy99+NUL,negativeinfluences skip,x87sNaNquieting/negativezero/1ULP in12maskedFPmodes",
         "Zero dictionary skipsallphysique;zero geometry stillallocates;empty model cookienonnull;partdtorordered5pointerfree/null andmodel reversearray/free/null12/20",
         "All1183prefix truncations atPAGE_NOACCESS,all7allocation failures,oversize dictionary/count/influence/index errors,output+consumed unchanged,ownheap0,trailing accepted"
       ],

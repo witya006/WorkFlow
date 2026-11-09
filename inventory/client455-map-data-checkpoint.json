@@ -1,0 +1,342 @@
+{
+  "status": "PARTIAL",
+  "scope": "Exact selected Map/NDMap core and both appended layer streams;ordinary geometry producer;full map UI/world/gameplay acceptance open",
+  "script_sha256": "ac7ff05925ae2c9d763a8efa1a9e20a7154452842a7ff43b14edb2c109f345b8",
+  "sources": [
+    {
+      "file": "scripts/native/client455_map_data.h",
+      "sha256": "7016d0b3d1f8101bc49fcff79e1b7a406e71d759f2fde888c961e96ee946470c",
+      "bytes": 2729
+    },
+    {
+      "file": "scripts/native/client455_map_data.cpp",
+      "sha256": "e226091ae969b4ecaf9cb77df1ef4aa6e0bfc5c8672e3d6cd0815360c8a09452",
+      "bytes": 5814
+    }
+  ],
+  "generated_providers": [
+    {
+      "file": "work/client455-port/normal/source/cland.h",
+      "sha256": "aac2fd65326aec2c676b23c96e5cdbc06ba0e2053a2b8e819789bfb8e209711c",
+      "input": "work/client455-port/source/RF_Client/cland.h",
+      "input_sha256": "96ac56ec73d5f2276b0b3b97225e1a03d24a91997a0cba4890ce751b8796f0a6",
+      "changes": [
+        "455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/cland.cpp",
+      "sha256": "4518aecdd5bbfcaf815a5738e4cace0d510f44bf66132e4a83689a8ed2058983",
+      "input": "work/client455-port/source/RF_Client/cland.cpp",
+      "input_sha256": "13f565f86dd2b8a29dd6a8bdc1e68e8e01fba625bb8301e7d6e02cbc6d58a8c0",
+      "changes": [
+        "455BSP level ownership recreated per load and camera rebound;INS provider explicitly missing;fullILevel/Empty/INS stillopen",
+        "confirmed455 unload early return before level creation;full ILevel ownership port remains open",
+        "455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/source/userinterface/gamewindow/etcwin/guiminimapwindow.cpp",
+      "sha256": "1edd51a6c7f8e6cd6964186c5716c1af9cb0b361c29267f776d4f5cd2d836b98",
+      "input": "work/client455-port/source/RF_Client/userinterface/gamewindow/etcwin/guiminimapwindow.cpp",
+      "input_sha256": "18b5169d59e44fc4f6de74cc80c946ebc67344d2a1155a5ab926fc0fd9aab912",
+      "changes": [
+        "455minimap EX opacity setup/observer/alpha for mapped owner;fullmap/zoom consumer remains open",
+        "455MiniMap owns3 NuclearBomb markers/actual bounds/init andpost-lookup UI operations;registry/worldgeometry/receiver remainopen",
+        "455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider"
+      ]
+    },
+    {
+      "file": "work/client455-port/normal/generated/client455_map_data.cpp",
+      "sha256": "e226091ae969b4ecaf9cb77df1ef4aa6e0bfc5c8672e3d6cd0815360c8a09452",
+      "input": "scripts/native/client455_map_data.cpp",
+      "input_sha256": "e226091ae969b4ecaf9cb77df1ef4aa6e0bfc5c8672e3d6cd0815360c8a09452"
+    },
+    {
+      "file": "work/client455-port/normal/include/client455_map_data.h",
+      "sha256": "7016d0b3d1f8101bc49fcff79e1b7a406e71d759f2fde888c961e96ee946470c",
+      "input": "scripts/native/client455_map_data.h",
+      "input_sha256": "7016d0b3d1f8101bc49fcff79e1b7a406e71d759f2fde888c961e96ee946470c"
+    }
+  ],
+  "normal_link_sha256": "9196e703dbf40018561bb19e16447ce1c78d3f2e0bbf5c26471386ec6ca04501",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "fd8b507032e9023a284852ff151ec486b413e5568226e0aa2f12be790a5c9ced",
+    "bytes": 2225152,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1670c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "own_decoded_calls": [
+    {
+      "function": "?LoadData@CLand@@QAEHXZ",
+      "rva": "0x39330",
+      "disassembly": {
+        "file": "artifacts/client455-progress/map117-own-0.txt",
+        "sha256": "2d6b2751cba4433aa8322c80485b2af45b6b397f79d49c1bdbdad5180f9582a5",
+        "bytes": 2902
+      },
+      "edges": [
+        {
+          "rva": "0x39347",
+          "target_rva": "0xcfb10"
+        },
+        {
+          "rva": "0x39359",
+          "target_rva": "0x6bd0"
+        },
+        {
+          "rva": "0x3936e",
+          "target_rva": "0xd02a0"
+        },
+        {
+          "rva": "0x39386",
+          "target_rva": "0x166480"
+        },
+        {
+          "rva": "0x393a6",
+          "target_rva": "0x166480"
+        }
+      ]
+    },
+    {
+      "function": "?RF455_LoadMapData@@YA?AW4RF455MapLoad@@AAURF455MapData@@PBD1@Z",
+      "rva": "0xd02a0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/map117-own-1.txt",
+        "sha256": "ef645eb74480ad9f1db4f78ec0f38257b35321952ca5b0a9684eb8f513e6e256",
+        "bytes": 10435
+      },
+      "edges": [
+        {
+          "rva": "0xd032c",
+          "target_rva": "0xd23a0"
+        },
+        {
+          "rva": "0xd033f",
+          "target_rva": "0xd23a0"
+        },
+        {
+          "rva": "0xd0359",
+          "target_rva": "0xd7610"
+        },
+        {
+          "rva": "0xd0373",
+          "target_rva": "0xd7610"
+        },
+        {
+          "rva": "0xd0396",
+          "target_rva": "0xd04d0"
+        },
+        {
+          "rva": "0xd03da",
+          "target_rva": "0x166470"
+        },
+        {
+          "rva": "0xd0423",
+          "target_rva": "0x166470"
+        },
+        {
+          "rva": "0xd0468",
+          "target_rva": "0x166470"
+        },
+        {
+          "rva": "0xd04ad",
+          "target_rva": "0x166470"
+        }
+      ]
+    },
+    {
+      "function": "?UI_SetMinimap@CLand@@AAEXE@Z",
+      "rva": "0x39da0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/map117-own-2.txt",
+        "sha256": "c876a46306346055d7b2836ee20e2b2876d7d7feac40aac9125e58ac533d558a",
+        "bytes": 11508
+      },
+      "edges": [
+        {
+          "rva": "0x39dd9",
+          "target_rva": "0xc3930"
+        },
+        {
+          "rva": "0x39dfe",
+          "target_rva": "0xc36a0"
+        },
+        {
+          "rva": "0x39e96",
+          "target_rva": "0x90220"
+        },
+        {
+          "rva": "0x39ebf",
+          "target_rva": "0xd2770"
+        },
+        {
+          "rva": "0x39ed2",
+          "target_rva": "0x902c0"
+        },
+        {
+          "rva": "0x39ee6",
+          "target_rva": "0x904f0"
+        },
+        {
+          "rva": "0x39f79",
+          "target_rva": "0x8f730"
+        },
+        {
+          "rva": "0x39fe6",
+          "target_rva": "0x8f870"
+        },
+        {
+          "rva": "0x3a009",
+          "target_rva": "0x166480"
+        }
+      ]
+    },
+    {
+      "function": "?UI_SetMinimap@CLand@@AAEXE@Z",
+      "rva": "0x39da0",
+      "disassembly": {
+        "file": "artifacts/client455-progress/map117-own-3.txt",
+        "sha256": "c876a46306346055d7b2836ee20e2b2876d7d7feac40aac9125e58ac533d558a",
+        "bytes": 11508
+      },
+      "edges": [
+        {
+          "rva": "0x39dd9",
+          "target_rva": "0xc3930"
+        },
+        {
+          "rva": "0x39dfe",
+          "target_rva": "0xc36a0"
+        },
+        {
+          "rva": "0x39e96",
+          "target_rva": "0x90220"
+        },
+        {
+          "rva": "0x39ebf",
+          "target_rva": "0xd2770"
+        },
+        {
+          "rva": "0x39ed2",
+          "target_rva": "0x902c0"
+        },
+        {
+          "rva": "0x39ee6",
+          "target_rva": "0x904f0"
+        },
+        {
+          "rva": "0x39f79",
+          "target_rva": "0x8f730"
+        },
+        {
+          "rva": "0x39fe6",
+          "target_rva": "0x8f870"
+        },
+        {
+          "rva": "0x3a009",
+          "target_rva": "0x166480"
+        }
+      ]
+    }
+  ],
+  "native_checks": 2692,
+  "maps": 110,
+  "layer_counts": [
+    103,
+    7
+  ],
+  "labels": 660,
+  "image_bytes": 257919,
+  "ordinary_CLand_load": true,
+  "ordinary_geometry_provider": true,
+  "geometry_cases": 330,
+  "GPU_frames": 0,
+  "actual_BSP_nodes_as_fixture": true,
+  "full_BSP_load_rerun": false,
+  "incompatible_locales_rejected": 8,
+  "current_complete_texture_lifetime": false,
+  "previous116_gate": {
+    "file": "artifacts/client455-progress/client455-nuclear-receiver-checkpoint-before117.json",
+    "sha256": "abb82d7f98dc65e9ea68b266aca3259bd815b4ca86b61db7a302a031d0250356",
+    "bytes": 45197
+  },
+  "previous116_runtime_gate": "HISTORICAL_NOT_RERUN",
+  "fresh_evidence": {
+    "map-data-reference": {
+      "file": "inventory/client455-map-data-reference.json",
+      "sha256": "1b0a6288ba9314d9240ed1ac2bf8b25f1a1d7276b3243cc3e70c93387ae0535e",
+      "bytes": 82066
+    },
+    "map-data-native": {
+      "file": "inventory/client455-map-data-native.json",
+      "sha256": "0aba2302a2c83ce8266cb1407eb456bb1079097bcf32918efa48bc9db99e3fd3",
+      "bytes": 6070
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "e270bc9bea4543d764cdd6b6d4d96eb7b5f5635632da8435e4b9acbb77c97e75",
+      "bytes": 27148
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "321b6a8c2e5edac0890e790132e8c9e80f05590bb68fea5eafcc8eda33cf894a",
+      "bytes": 589
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "4f256bf6400ab0b49b499248d663db1a11c0f735c74e51272c224b5f49244093",
+      "bytes": 4059
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "9196e703dbf40018561bb19e16447ce1c78d3f2e0bbf5c26471386ec6ca04501",
+      "bytes": 3250
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "e2c5cd387fe2412801ddbbf23a64a0632b222d75979b555a80502d39562101fc",
+      "bytes": 3557
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "470cece530baf20c012d3487a18d75c55d84cbcac00045d5afc66523ad0ab2db",
+      "bytes": 40280
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "aac85023b98f3add2a21f6af194f00a9590ba8e3d428428596e8850754d14ba9",
+      "bytes": 10531
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "54cc39c2580d324141f19c69155e13a0d77fbd4a242e8a71dfda40dd7b96e742",
+      "bytes": 12329
+    }
+  },
+  "engine_unchanged": "546a7529b51139e856b1a108fcad7849c14b2d00563b7abbfdcc8db10026fa5a",
+  "unchanged_bulk_suites_rerun": false,
+  "gaps": [
+    "Only supplied zh-tw NDMap count110 matches rootMap110;other supplied locale counts31/100 must fail,not silently remap",
+    "Legacy map UI reset/index/avatar/object/portal behavior remains partially unported;normal geometry connection alone does not accept fullMiniMap",
+    "Both layer sections are retained by the source map owner;their actual global manager/UI consumer handoff remains open",
+    "Record588/288/96/84 data layout does not certify untraced field semantics,portal race/movement/protocol or private ABI",
+    "Checked truncation/path/name/text/allocation guards and atomic failed loads do not accept target unsafe reads/overflow/OOM/partial state/repeated-load leaks",
+    "Texture R3T teardown warnings/full world effect lifecycle and all earlier client acceptance gaps remain"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
