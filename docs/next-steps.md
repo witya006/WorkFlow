@@ -1,3 +1,45 @@
+# Продолжение M6 — настоящая фабрика панелей455 (166)
+
+165 завершён как PARTIAL_KNOWN_FAILURE. Inventory/20slot packs/16slot equipment
+views подключены. Native459bd43c:3расы/Taiwan/4просмотренных PNG,состояния,
+маски/reload,64bitmoney и6GUI/Win32 маршрутов проходят. Own96afbd62…/x86/
+entry182C50/2364928bytes;182/67/20/link0. Live auth/выбор result0 принят,
+Inventory.Init вернулся. Next RF455_RejectRemovedLegacyBelt в старом Create_Board.
+
+1. Читать research/client455-inventory-views.md и research/client455-storage.md.
+   Before166 уже сохранён:179files/7344900private+4005559sharedbytes.
+   Не перезаписывать и не копировать полный клиент/ассеты.
+2. Восстановить настоящий455MainGame/board factory и порядок создания по полным
+   ASM/CFG обоих pins. Исследование085 содержит53constructor/vptr/RTTI identities;
+   найти актуальные reference/raw/ownmanager files через rg --files и сверить
+   текущие регистрации,а не считать исторический17-object список полной фабрикой.
+3. Старый potion-belt storage отсутствует в455. Нельзя возвращать его в wire
+   enum,подменять Force3/Trunk5,удалять guard ради прохождения или отказываться
+   от potion/hotbar функционала M9. Нужны настоящие клиентские владельцы/связи455.
+   Это клиентская работа;серверные исходники/настройки не трогать.
+4. Текущий системный E06D7363/KernelBase RVA140B82 не является own fault RVA.
+   Own guard candidate28A61;verified E8call26BFD/return26C02→guard28A40.
+   Inventory ownvtable1F099C/slot6C→Init89A70. Source order и call corroborated;
+   candidate scan не unwind. Create_UI иInventoryInit вернулись;equipment Init
+   стоит после guard,live pack/equipment acceptance пока нет. World/M9OPEN.
+5. Все165gaps сохраняются:16UI equipment slots против15legacy backend;
+   basefield+332,extra pack arrays,full item/actions/tooltip/ready cues,
+   settings677DD0/highlight3325/3326,mouse/hittest/lifecycle/error domains.
+   Native сцена с пустыми владельцами не доказывает получение/применение items.
+6. Sprite44=SocketState.spr. Inventory action2 имеет11кадров0..10,но455
+   сохраняет inactive pressed descriptor11. Не подставлять другой кадр и не
+   отвергать normal Init из-за неактивного state. Полная pressed ветвь открыта.
+   На reload target сбрасывает masks/natural size:full provider restore открыт.
+7. После правильной фабрики — LoadData/avatar/control/world и реальные игровые
+   сценарии;остальные Options/Animus/actor/network/M6F gaps никуда не исчезли.
+   M9 давно определён,повторное уточнение не требуется.
+
+Анализ2461(+42)/651(+45),IDA37871,137выборочных partialbindings.25%(20–35%),0/12.
+Все4финальных PNG совпали с просмотренными;preEnter также просмотрен.
+IDA0/nativejobsdone/privatehandoff removed. Играть/запускать только свою PE.
+
+# История очереди165
+
 # Продолжение M6 — инвентарь455 и предметные панели (165)
 
 164 завершён как PARTIAL_KNOWN_FAILURE. Options455 подключён; четыре кадра,

@@ -8653,7 +8653,7 @@
       "id": "CLIENT455-OPTIONS-164",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-option-checkpoint.json",
         "inventory/client455-option-reference.json",
@@ -8670,6 +8670,32 @@
         "Player status first producer/full sideeffects and nuclear/world lifecycle remain separate open contracts;unknown status is not initialized to invented zero",
         "Complete UI/world/gameplay and extreme FP/overflow/OOM/lifecycle domains remain open",
         "Next old CGUIInventoryWindow initialization;world/gameplay not reached"
+      ]
+    },
+    {
+      "id": "CLIENT455-INVENTORY-VIEWS-165",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-inventory-checkpoint.json",
+        "inventory/client455-inventory-reference.json",
+        "inventory/client455-inventory-native.json"
+      ],
+      "description": "Inventory/20slot packs/16slot equipment views integrated andcomponent-tested;ordinary inventory Init returned after live selection,next removed legacyBelt guard in oldstage graph;world not entered",
+      "gaps": [
+        "Full item payload receivers/actions,trade/use/equip/pick/tooltip andown selected/ready cue behavior are not accepted by an empty-window probe",
+        "UI has16equipment slots while legacy ordinary board capacity is15;full455 equipment mapping/producer contract remains open,do not fabricate the sixteenth backend entry",
+        "Target equipment Init writes basefield+332=1;meaning/consumers are not yet reconstructed in own CGUIItemWindow",
+        "Target pack has additional arrays/state notrepresented by old source fields;full owner/lifecycle/settings equivalence remains open",
+        "Full root Open recursive child-visibility predicate is represented by admitted equipment leaf visibility only;arbitrary nested equipment-window domains unaccepted",
+        "Inventory settings serialization677DD0 andhighlight item/serial3325/3326 producers are notyet ported",
+        "Legacy RemovePack andremaining interaction methods retain oldsource adapters;they are not claimed equivalent455 behavior",
+        "Missing stock pressed frame11 is retained;full pressed rendering/error behavior remains unaccepted;Common inventory hasonly14equipment skin frames whilelocalized admitted sets have15",
+        "Full mouse mask/hittest andunbound-pointer/invalid-index/nonfinite/OOM/reentry/destruction domains remain open",
+        "Native three-race checks use Taiwan language/assets;not acceptance of all eleven locales",
+        "All previous455UI/actor/Animus/network/world/gameplay and M9 requirements remain mandatory",
+        "OldMainGame boardcreation requests removed legacyBelt;actual455stage ownership/registration isnext required work"
       ]
     }
   ],

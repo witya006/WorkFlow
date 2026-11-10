@@ -133,7 +133,8 @@
         "client455-char-info-checkpoint",
         "client455-recall-checkpoint",
         "client455-mob-control-checkpoint",
-        "client455-option-checkpoint"
+        "client455-option-checkpoint",
+        "client455-inventory-checkpoint"
       ]
     },
     {
@@ -276,7 +277,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "bb3fcbadb82ecc97b8b773b7dd4d0d404e5c1e0d3db5254cea6d07ec483f3214",
+      "sha256": "097220d8c88561097b441377320b6d307776a22d5fca6c9171f5cf35b661f21f",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -575,6 +576,14 @@
       "sha256": "f4537a0baa55ece59077a1ecc0b44adb67d86fdf0e2d712c774cfa81e916889b",
       "status": "PARTIAL_KNOWN_FAILURE",
       "scope": "Options455 controls/messages integrated;ordinary MainGame UI creation returned after accepted live selection;next old inventory initialization fails,world not entered",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-inventory-checkpoint": {
+      "file": "inventory/client455-inventory-checkpoint.json",
+      "sha256": "4c9ffc74d99c822add84a6fee21d3ced8a14cb007d8be23ff0e01612b3668e5b",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "Inventory/20slot packs/16slot equipment views integrated andcomponent-tested;ordinary inventory Init returned after live selection,next removed legacyBelt guard in oldstage graph;world not entered",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -698,7 +707,7 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "6b5e61e60632cc17ceedbeca5ea692bd789a9030c6f72da0ecc0b139b1838aff",
+      "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
       "bytes": 2364928,
       "architecture": "x86",
       "image_base": "0x400000",
@@ -727,18 +736,18 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "40695f64cb9582457117dfab804b82fbcc92e0fa1cabbcc3d4ddd3389d5aac73",
+      "sha256": "023ddeae7eab6e7cf19cdc7d5c850ccd11dbf2e6acf71e18c602327f4cc9ba05",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-option-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-inventory-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
-      "link_file": "artifacts/client455-progress/before165/inventory/client455-normal-link.json",
-      "link_sha256": "bb3fcbadb82ecc97b8b773b7dd4d0d404e5c1e0d3db5254cea6d07ec483f3214",
+      "link_file": "inventory/client455-normal-link.json",
+      "link_sha256": "097220d8c88561097b441377320b6d307776a22d5fca6c9171f5cf35b661f21f",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "6b5e61e60632cc17ceedbeca5ea692bd789a9030c6f72da0ecc0b139b1838aff",
+        "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
         "bytes": 2364928,
         "architecture": "x86",
         "image_base": "0x400000",
@@ -752,170 +761,225 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "40695f64cb9582457117dfab804b82fbcc92e0fa1cabbcc3d4ddd3389d5aac73"
+      "build_sha256": "023ddeae7eab6e7cf19cdc7d5c850ccd11dbf2e6acf71e18c602327f4cc9ba05"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
-      "kind": "UNHANDLED_IN_INVENTORY_AFTER_UI_CREATION",
-      "own_rva": "0x12f78f",
-      "code": "0xc0000005",
-      "resolved_stack_candidates": [
+      "normal_executable": {
+        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
+        "bytes": 2364928,
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "entry_rva": "0x182c50",
+        "sections": [
+          ".text",
+          ".rdata",
+          ".data",
+          ".fptable",
+          ".reloc"
+        ]
+      },
+      "exception": {
+        "kind": "exception",
+        "code": "0xe06d7363",
+        "first_chance": 0,
+        "address": "0x76f80b82",
+        "rva": "0x140b82",
+        "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+        "parameter0": 429065504,
+        "parameter1": "0x15efb9c"
+      },
+      "fault_rva_is_own": false,
+      "own_fault": null,
+      "candidates": [
         {
-          "rva": "0x12f78f",
-          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
-          "offset": "0x5f"
+          "rva": "0x219c04",
+          "symbol": "__TI2?AVlogic_error@std@@",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": "0c00000050514000",
+          "stack_offset": 28
         },
         {
-          "rva": "0x988e1",
-          "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
-          "offset": "0x61",
-          "stack_offset": 8
-        },
-        {
-          "rva": "0x8b150",
-          "symbol": "?SetSprite@CGUIInventoryWindow@@UAEXXZ",
-          "offset": "0x50",
-          "stack_offset": 32
-        },
-        {
-          "rva": "0x89c8d",
-          "symbol": "?Init@CGUIInventoryWindow@@UAEXXZ",
-          "offset": "0x28d",
+          "rva": "0x7c5954",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x358bf4",
+          "is_code": false,
+          "previous_eight_bytes": null,
           "stack_offset": 64
         },
         {
-          "rva": "0x12d62",
-          "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
-          "offset": "0x12",
-          "stack_offset": 80
+          "rva": "0x1a0d7b",
+          "symbol": "__malloc_base",
+          "offset": "0x3b",
+          "is_code": true,
+          "previous_eight_bytes": "2f01ff1550415e00",
+          "stack_offset": 72
         },
         {
-          "rva": "0x2f3aa",
-          "symbol": "?InitWindow@CInventoryBoard@@UAEXKHH@Z",
-          "offset": "0x1a",
-          "stack_offset": 92
+          "rva": "0x18354c",
+          "symbol": "___std_exception_copy",
+          "offset": "0x3c",
+          "is_code": true,
+          "previous_eight_bytes": "375356e824d40100",
+          "stack_offset": 88
         },
         {
-          "rva": "0x26b9d",
-          "symbol": "?Create@CGP_MainGame@@UAEHXZ",
-          "offset": "0x28d",
-          "stack_offset": 116
+          "rva": "0x18361d",
+          "symbol": "__CxxThrowException@8",
+          "offset": "0x6d",
+          "is_code": true,
+          "previous_eight_bytes": "7dfcff15b4415e00",
+          "stack_offset": 96
         },
         {
-          "rva": "0x46cd60",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "rva": "0x219c04",
+          "symbol": "__TI2?AVlogic_error@std@@",
           "offset": "0x0",
-          "stack_offset": 132
+          "is_code": false,
+          "previous_eight_bytes": "0c00000050514000",
+          "stack_offset": 136
         },
         {
-          "rva": "0x46cd60",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
-          "offset": "0x0",
+          "rva": "0x28a61",
+          "symbol": "?RF455_RejectRemovedLegacyBelt@@YAPAVCBeltBoard@@XZ",
+          "offset": "0x21",
+          "is_code": true,
+          "previous_eight_bytes": "45f450e84fab1500",
           "stack_offset": 144
         },
         {
+          "rva": "0x219c04",
+          "symbol": "__TI2?AVlogic_error@std@@",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": "0c00000050514000",
+          "stack_offset": 152
+        },
+        {
+          "rva": "0x1e50a8",
+          "symbol": "??_7logic_error@std@@6B@",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": "ffffffffac3f6100",
+          "stack_offset": 156
+        },
+        {
+          "rva": "0x26c02",
+          "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+          "offset": "0x2f2",
+          "is_code": true,
+          "previous_eight_bytes": "ff520ce83e1e0000",
+          "stack_offset": 172
+        },
+        {
           "rva": "0x46cd60",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
-          "stack_offset": 152
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 176
+        },
+        {
+          "rva": "0x46cd60",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 188
+        },
+        {
+          "rva": "0x46cd60",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 196
         },
         {
           "rva": "0xbcd42",
           "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
           "offset": "0x182",
-          "stack_offset": 172
+          "is_code": true,
+          "previous_eight_bytes": "00752e8b01ff5008",
+          "stack_offset": 216
         },
         {
           "rva": "0xbd390",
           "symbol": "_WinMain@16",
           "offset": "0x240",
-          "stack_offset": 180
+          "is_code": true,
+          "previous_eight_bytes": "cd8600e830f8ffff",
+          "stack_offset": 224
         },
         {
           "rva": "0x182c50",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
-          "stack_offset": 184
+          "is_code": true,
+          "previous_eight_bytes": "cccccccccccccccc",
+          "stack_offset": 228
         },
         {
           "rva": "0x22b1d8",
           "symbol": "___acrt_initial_locale_data",
           "offset": "0x0",
-          "stack_offset": 256
+          "is_code": false,
+          "previous_eight_bytes": "ffffffff00000000",
+          "stack_offset": 300
         },
         {
           "rva": "0x1a8b45",
           "symbol": "__ismbblead",
           "offset": "0x13",
-          "stack_offset": 272
+          "is_code": true,
+          "previous_eight_bytes": "086a00e89dffffff",
+          "stack_offset": 316
         },
         {
           "rva": "0x182ba0",
           "symbol": "?__scrt_common_main_seh@@YAHXZ",
           "offset": "0x140",
-          "stack_offset": 296
+          "is_code": true,
+          "previous_eight_bytes": "004000e8b0a5f3ff",
+          "stack_offset": 340
         },
         {
           "rva": "0x0",
           "symbol": "___ImageBase",
           "offset": "0x0",
-          "stack_offset": 300
-        },
-        {
-          "rva": "0x182c50",
-          "symbol": "_WinMainCRTStartup",
-          "offset": "0x0",
-          "stack_offset": 320
-        },
-        {
-          "rva": "0x182c50",
-          "symbol": "_WinMainCRTStartup",
-          "offset": "0x0",
-          "stack_offset": 324
-        },
-        {
-          "rva": "0x186b10",
-          "symbol": "__except_handler4",
-          "offset": "0x0",
-          "stack_offset": 356
-        },
-        {
-          "rva": "0x182c50",
-          "symbol": "_WinMainCRTStartup",
-          "offset": "0x0",
-          "stack_offset": 500
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 344
         }
       ],
       "stack_is_candidate_scan_not_unwind": true,
-      "verified_own_virtual_call": {
-        "return_rva": "0x12d62",
-        "instruction_rva": "0x12d5f",
-        "bytes": "ff506c",
-        "vtable_rva": "0x1f099c",
-        "slot_offset": "0x6c",
-        "callee": {
-          "rva": "0x89a00",
-          "symbol": "?Init@CGUIInventoryWindow@@UAEXXZ",
-          "offset": "0x0"
-        }
+      "kind": "REMOVED_LEGACY_BELT_GUARD_AFTER_INVENTORY",
+      "own_guard_rva": "0x28a61",
+      "verified_call": {
+        "return_rva": "0x26c02",
+        "instruction_rva": "0x26bfd",
+        "bytes": "e83e1e0000",
+        "callee_rva": "0x28a40"
       },
-      "verified_prior_Create_UI_call": {
+      "verified_prior_UI_call": {
         "return_rva": "0x26951",
-        "instruction_rva": "0x2694c",
-        "callee": {
-          "rva": "0x26ee0",
-          "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
-          "offset": "0x0"
-        }
+        "callee_rva": "0x26ee0"
       },
-      "cause": "Old inventory SetSprite/Init during board initialization;ordinary MainGame Create_UI including chat returned",
+      "inventory_vtable": {
+        "rva": "0x1f099c",
+        "slot_offset": "0x6c",
+        "init_rva": "0x89a70"
+      },
+      "cause": "Old0.7Create_Board stillrequests removedBelt after inventory andLinker initialization;restore actual455stage graph,do not bypass the guard",
       "whole_client_run_succeeded": false
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "40695f64cb9582457117dfab804b82fbcc92e0fa1cabbcc3d4ddd3389d5aac73"
+        "sha256": "023ddeae7eab6e7cf19cdc7d5c850ccd11dbf2e6acf71e18c602327f4cc9ba05"
       },
       "build_exit": 0,
       "errors": [],
@@ -925,7 +989,7 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "6b5e61e60632cc17ceedbeca5ea692bd789a9030c6f72da0ecc0b139b1838aff",
+        "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
         "bytes": 2364928,
         "architecture": "x86",
         "image_base": "0x400000",
@@ -942,187 +1006,242 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "40695f64cb9582457117dfab804b82fbcc92e0fa1cabbcc3d4ddd3389d5aac73"
+        "sha256": "023ddeae7eab6e7cf19cdc7d5c850ccd11dbf2e6acf71e18c602327f4cc9ba05"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Options455 controls/messages integrated;ordinary MainGame UI creation returned after accepted live selection;next old inventory initialization fails,world not entered",
+    "current_work": "Inventory/20slot packs/16slot equipment views integrated andcomponent-tested;ordinary inventory Init returned after live selection,next removed legacyBelt guard in oldstage graph;world not entered",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "7be2fb99c61f71e5ac5dc0bc23c59e67712166d01a327a52a132308d6b15c179",
+      "sha256": "ebb7961a5f15034bfdbf6beffbd9532850a0d5ecfc75fe974be68ce36f418225",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/6b5e61e6/selection-live-taiwan002/login-frame.png",
-        "sha256": "e7b7e65d3c89c7e76b85445b671cedeb298e42fc3284ac2358f588e42e823248"
+        "file": "work/m9/96afbd62/selection-live-taiwan001/login-frame.png",
+        "sha256": "8efdcb17c15b355e675720f5e94b8a07f02d0c1a15ceee08714fa9896e9a20aa"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 123,
-        "elapsed_ms": 8032,
+        "frame_index": 124,
+        "elapsed_ms": 8000,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
       "ui_visually_inspected": true,
       "ui_accepted": false,
       "known_next_failure": {
-        "kind": "UNHANDLED_IN_INVENTORY_AFTER_UI_CREATION",
-        "own_rva": "0x12f78f",
-        "code": "0xc0000005",
-        "resolved_stack_candidates": [
+        "normal_executable": {
+          "file": "work/client455-port/normal/build/RF_Online.bin",
+          "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
+          "bytes": 2364928,
+          "architecture": "x86",
+          "image_base": "0x400000",
+          "entry_rva": "0x182c50",
+          "sections": [
+            ".text",
+            ".rdata",
+            ".data",
+            ".fptable",
+            ".reloc"
+          ]
+        },
+        "exception": {
+          "kind": "exception",
+          "code": "0xe06d7363",
+          "first_chance": 0,
+          "address": "0x76f80b82",
+          "rva": "0x140b82",
+          "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+          "parameter0": 429065504,
+          "parameter1": "0x15efb9c"
+        },
+        "fault_rva_is_own": false,
+        "own_fault": null,
+        "candidates": [
           {
-            "rva": "0x12f78f",
-            "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
-            "offset": "0x5f"
+            "rva": "0x219c04",
+            "symbol": "__TI2?AVlogic_error@std@@",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": "0c00000050514000",
+            "stack_offset": 28
           },
           {
-            "rva": "0x988e1",
-            "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
-            "offset": "0x61",
-            "stack_offset": 8
-          },
-          {
-            "rva": "0x8b150",
-            "symbol": "?SetSprite@CGUIInventoryWindow@@UAEXXZ",
-            "offset": "0x50",
-            "stack_offset": 32
-          },
-          {
-            "rva": "0x89c8d",
-            "symbol": "?Init@CGUIInventoryWindow@@UAEXXZ",
-            "offset": "0x28d",
+            "rva": "0x7c5954",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x358bf4",
+            "is_code": false,
+            "previous_eight_bytes": null,
             "stack_offset": 64
           },
           {
-            "rva": "0x12d62",
-            "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
-            "offset": "0x12",
-            "stack_offset": 80
+            "rva": "0x1a0d7b",
+            "symbol": "__malloc_base",
+            "offset": "0x3b",
+            "is_code": true,
+            "previous_eight_bytes": "2f01ff1550415e00",
+            "stack_offset": 72
           },
           {
-            "rva": "0x2f3aa",
-            "symbol": "?InitWindow@CInventoryBoard@@UAEXKHH@Z",
-            "offset": "0x1a",
-            "stack_offset": 92
+            "rva": "0x18354c",
+            "symbol": "___std_exception_copy",
+            "offset": "0x3c",
+            "is_code": true,
+            "previous_eight_bytes": "375356e824d40100",
+            "stack_offset": 88
           },
           {
-            "rva": "0x26b9d",
-            "symbol": "?Create@CGP_MainGame@@UAEHXZ",
-            "offset": "0x28d",
-            "stack_offset": 116
+            "rva": "0x18361d",
+            "symbol": "__CxxThrowException@8",
+            "offset": "0x6d",
+            "is_code": true,
+            "previous_eight_bytes": "7dfcff15b4415e00",
+            "stack_offset": 96
           },
           {
-            "rva": "0x46cd60",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "rva": "0x219c04",
+            "symbol": "__TI2?AVlogic_error@std@@",
             "offset": "0x0",
-            "stack_offset": 132
+            "is_code": false,
+            "previous_eight_bytes": "0c00000050514000",
+            "stack_offset": 136
           },
           {
-            "rva": "0x46cd60",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
-            "offset": "0x0",
+            "rva": "0x28a61",
+            "symbol": "?RF455_RejectRemovedLegacyBelt@@YAPAVCBeltBoard@@XZ",
+            "offset": "0x21",
+            "is_code": true,
+            "previous_eight_bytes": "45f450e84fab1500",
             "stack_offset": 144
           },
           {
+            "rva": "0x219c04",
+            "symbol": "__TI2?AVlogic_error@std@@",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": "0c00000050514000",
+            "stack_offset": 152
+          },
+          {
+            "rva": "0x1e50a8",
+            "symbol": "??_7logic_error@std@@6B@",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": "ffffffffac3f6100",
+            "stack_offset": 156
+          },
+          {
+            "rva": "0x26c02",
+            "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+            "offset": "0x2f2",
+            "is_code": true,
+            "previous_eight_bytes": "ff520ce83e1e0000",
+            "stack_offset": 172
+          },
+          {
             "rva": "0x46cd60",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
-            "stack_offset": 152
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 176
+          },
+          {
+            "rva": "0x46cd60",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 188
+          },
+          {
+            "rva": "0x46cd60",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 196
           },
           {
             "rva": "0xbcd42",
             "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
             "offset": "0x182",
-            "stack_offset": 172
+            "is_code": true,
+            "previous_eight_bytes": "00752e8b01ff5008",
+            "stack_offset": 216
           },
           {
             "rva": "0xbd390",
             "symbol": "_WinMain@16",
             "offset": "0x240",
-            "stack_offset": 180
+            "is_code": true,
+            "previous_eight_bytes": "cd8600e830f8ffff",
+            "stack_offset": 224
           },
           {
             "rva": "0x182c50",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
-            "stack_offset": 184
+            "is_code": true,
+            "previous_eight_bytes": "cccccccccccccccc",
+            "stack_offset": 228
           },
           {
             "rva": "0x22b1d8",
             "symbol": "___acrt_initial_locale_data",
             "offset": "0x0",
-            "stack_offset": 256
+            "is_code": false,
+            "previous_eight_bytes": "ffffffff00000000",
+            "stack_offset": 300
           },
           {
             "rva": "0x1a8b45",
             "symbol": "__ismbblead",
             "offset": "0x13",
-            "stack_offset": 272
+            "is_code": true,
+            "previous_eight_bytes": "086a00e89dffffff",
+            "stack_offset": 316
           },
           {
             "rva": "0x182ba0",
             "symbol": "?__scrt_common_main_seh@@YAHXZ",
             "offset": "0x140",
-            "stack_offset": 296
+            "is_code": true,
+            "previous_eight_bytes": "004000e8b0a5f3ff",
+            "stack_offset": 340
           },
           {
             "rva": "0x0",
             "symbol": "___ImageBase",
             "offset": "0x0",
-            "stack_offset": 300
-          },
-          {
-            "rva": "0x182c50",
-            "symbol": "_WinMainCRTStartup",
-            "offset": "0x0",
-            "stack_offset": 320
-          },
-          {
-            "rva": "0x182c50",
-            "symbol": "_WinMainCRTStartup",
-            "offset": "0x0",
-            "stack_offset": 324
-          },
-          {
-            "rva": "0x186b10",
-            "symbol": "__except_handler4",
-            "offset": "0x0",
-            "stack_offset": 356
-          },
-          {
-            "rva": "0x182c50",
-            "symbol": "_WinMainCRTStartup",
-            "offset": "0x0",
-            "stack_offset": 500
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 344
           }
         ],
         "stack_is_candidate_scan_not_unwind": true,
-        "verified_own_virtual_call": {
-          "return_rva": "0x12d62",
-          "instruction_rva": "0x12d5f",
-          "bytes": "ff506c",
-          "vtable_rva": "0x1f099c",
-          "slot_offset": "0x6c",
-          "callee": {
-            "rva": "0x89a00",
-            "symbol": "?Init@CGUIInventoryWindow@@UAEXXZ",
-            "offset": "0x0"
-          }
+        "kind": "REMOVED_LEGACY_BELT_GUARD_AFTER_INVENTORY",
+        "own_guard_rva": "0x28a61",
+        "verified_call": {
+          "return_rva": "0x26c02",
+          "instruction_rva": "0x26bfd",
+          "bytes": "e83e1e0000",
+          "callee_rva": "0x28a40"
         },
-        "verified_prior_Create_UI_call": {
+        "verified_prior_UI_call": {
           "return_rva": "0x26951",
-          "instruction_rva": "0x2694c",
-          "callee": {
-            "rva": "0x26ee0",
-            "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
-            "offset": "0x0"
-          }
+          "callee_rva": "0x26ee0"
         },
-        "cause": "Old inventory SetSprite/Init during board initialization;ordinary MainGame Create_UI including chat returned",
+        "inventory_vtable": {
+          "rva": "0x1f099c",
+          "slot_offset": "0x6c",
+          "init_rva": "0x89a70"
+        },
+        "cause": "Old0.7Create_Board stillrequests removedBelt after inventory andLinker initialization;restore actual455stage graph,do not bypass the guard",
         "whole_client_run_succeeded": false
       },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
@@ -1134,11 +1253,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "bc39a0e7088163da645de13a8947a3de2143ba182763c752d3127c92e478674c",
-    "entries": 170,
+    "sha256": "3a4a7e556901be499fe1337bd9580c8ef717f227beed68ce5e95745e3b6f0318",
+    "entries": 171,
     "statuses": {
       "partial_component": 13,
-      "partial": 127,
+      "partial": 128,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1148,7 +1267,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-OPTIONS-164"
+      "CLIENT455-INVENTORY-VIEWS-165"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1218,7 +1337,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;170 overlapping historical records",
+        "measured": "12 domain planning map;171 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1380,7 +1499,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "a8c98e63152e3a5081edf34a6209c44e1da3df17135cd0a1244832ba8177470c"
+    "sha256": "0df182b1d9fb0bea9961c076e6c2094c252eef4586057de8ad63c35fcbd937a0"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

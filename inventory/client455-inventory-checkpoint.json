@@ -1,0 +1,352 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Inventory/20slot packs/16slot equipment views integrated andcomponent-tested;ordinary inventory Init returned after live selection,next removed legacyBelt guard in oldstage graph;world not entered",
+  "script": {
+    "file": "scripts/checkpoint_client455_inventory.py",
+    "sha256": "6322d35beaea266bd17639b546d5e9509aba2468ab768a1638e7c034e19baf0d"
+  },
+  "helpers": [
+    {
+      "file": "scripts/client455_ui_checkpoint.py",
+      "sha256": "79c4c8320ea71cff1d421b0667a1460fd2dd8775103a47fe646f6e599bcf4f5d"
+    },
+    {
+      "file": "scripts/inspect_client455_failure.py",
+      "sha256": "e985c17646126b4882ddede01cb47a7ae6c25f1bcd945025031d939787811651"
+    }
+  ],
+  "normal_link_sha256": "097220d8c88561097b441377320b6d307776a22d5fca6c9171f5cf35b661f21f",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
+    "bytes": 2364928,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x182c50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "ebb7961a5f15034bfdbf6beffbd9532850a0d5ecfc75fe974be68ce36f418225"
+  },
+  "fresh_evidence": {
+    "inventory-reference": {
+      "file": "inventory/client455-inventory-reference.json",
+      "sha256": "a5391f4d19cde9627de0fc877d8b5a6da7f87309cd23f684b6c38f947953194c"
+    },
+    "inventory-native": {
+      "file": "inventory/client455-inventory-native.json",
+      "sha256": "38d677131b471281b5421945e2ca48cf291695e587a763d6d7f07a2bb95dca1e"
+    },
+    "inventory-visual": {
+      "file": "inventory/client455-inventory-visual.json",
+      "sha256": "ec3eb91ff4a782d6090116d9626e830b6e510df9dc663a2855d7b406f8df8e6c"
+    },
+    "inventory-bindings": {
+      "file": "inventory/client455-inventory-bindings.json",
+      "sha256": "895ce1e163b367edfa49215884a1152f1fe0762e4ed09cdca4d694ca031a43f6"
+    },
+    "inventory-discovery": {
+      "file": "inventory/client455-inventory-discovery.json",
+      "sha256": "ddca4c44b673684da93f0561dca06d62c6ef080807d681c556ca4b8a64ad6982"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "1afa7b9b5c804093d2ec65650f9c1a070e49ee4f2e6bbf2eaba22276915b3c55"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "023ddeae7eab6e7cf19cdc7d5c850ccd11dbf2e6acf71e18c602327f4cc9ba05"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "a9fe7b8e81aee0dda6cdbc2f2720fe4f3446b68d0a5a80e6317834819a5a3809"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "097220d8c88561097b441377320b6d307776a22d5fca6c9171f5cf35b661f21f"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "0dd950d1b19f5969b4304bd8fb2753a37712c0e458813a90fc4b0a398fd42dc6"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "d5ac37dfb04c7ef112394cb2248d7c25b5f934a876b5e87b268e6fcd966bba47"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "223dee133c90d5e18400def138c6584fa976324f53b7360a3f4cc6fe32292313"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "145637ee7c2f524d12f9c0bbfe0ba5b632f9704670761e9f5e95c99e861d4b59"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "ebb7961a5f15034bfdbf6beffbd9532850a0d5ecfc75fe974be68ce36f418225"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before165/manifest.json",
+    "sha256": "3215ac8b3d30337d605b2c78bc23a1f3b94c4ea711f0ea81a32b8b3517afb488"
+  },
+  "post_selection_failure": {
+    "normal_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
+      "bytes": 2364928,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x182c50",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "exception": {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 0,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x15efb9c"
+    },
+    "fault_rva_is_own": false,
+    "own_fault": null,
+    "candidates": [
+      {
+        "rva": "0x219c04",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050514000",
+        "stack_offset": 28
+      },
+      {
+        "rva": "0x7c5954",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x358bf4",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 64
+      },
+      {
+        "rva": "0x1a0d7b",
+        "symbol": "__malloc_base",
+        "offset": "0x3b",
+        "is_code": true,
+        "previous_eight_bytes": "2f01ff1550415e00",
+        "stack_offset": 72
+      },
+      {
+        "rva": "0x18354c",
+        "symbol": "___std_exception_copy",
+        "offset": "0x3c",
+        "is_code": true,
+        "previous_eight_bytes": "375356e824d40100",
+        "stack_offset": 88
+      },
+      {
+        "rva": "0x18361d",
+        "symbol": "__CxxThrowException@8",
+        "offset": "0x6d",
+        "is_code": true,
+        "previous_eight_bytes": "7dfcff15b4415e00",
+        "stack_offset": 96
+      },
+      {
+        "rva": "0x219c04",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050514000",
+        "stack_offset": 136
+      },
+      {
+        "rva": "0x28a61",
+        "symbol": "?RF455_RejectRemovedLegacyBelt@@YAPAVCBeltBoard@@XZ",
+        "offset": "0x21",
+        "is_code": true,
+        "previous_eight_bytes": "45f450e84fab1500",
+        "stack_offset": 144
+      },
+      {
+        "rva": "0x219c04",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050514000",
+        "stack_offset": 152
+      },
+      {
+        "rva": "0x1e50a8",
+        "symbol": "??_7logic_error@std@@6B@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "ffffffffac3f6100",
+        "stack_offset": 156
+      },
+      {
+        "rva": "0x26c02",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x2f2",
+        "is_code": true,
+        "previous_eight_bytes": "ff520ce83e1e0000",
+        "stack_offset": 172
+      },
+      {
+        "rva": "0x46cd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 176
+      },
+      {
+        "rva": "0x46cd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 188
+      },
+      {
+        "rva": "0x46cd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 196
+      },
+      {
+        "rva": "0xbcd42",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "is_code": true,
+        "previous_eight_bytes": "00752e8b01ff5008",
+        "stack_offset": 216
+      },
+      {
+        "rva": "0xbd390",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "is_code": true,
+        "previous_eight_bytes": "cd8600e830f8ffff",
+        "stack_offset": 224
+      },
+      {
+        "rva": "0x182c50",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 228
+      },
+      {
+        "rva": "0x22b1d8",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "ffffffff00000000",
+        "stack_offset": 300
+      },
+      {
+        "rva": "0x1a8b45",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "is_code": true,
+        "previous_eight_bytes": "086a00e89dffffff",
+        "stack_offset": 316
+      },
+      {
+        "rva": "0x182ba0",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "is_code": true,
+        "previous_eight_bytes": "004000e8b0a5f3ff",
+        "stack_offset": 340
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 344
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "kind": "REMOVED_LEGACY_BELT_GUARD_AFTER_INVENTORY",
+    "own_guard_rva": "0x28a61",
+    "verified_call": {
+      "return_rva": "0x26c02",
+      "instruction_rva": "0x26bfd",
+      "bytes": "e83e1e0000",
+      "callee_rva": "0x28a40"
+    },
+    "verified_prior_UI_call": {
+      "return_rva": "0x26951",
+      "callee_rva": "0x26ee0"
+    },
+    "inventory_vtable": {
+      "rva": "0x1f099c",
+      "slot_offset": "0x6c",
+      "init_rva": "0x89a70"
+    },
+    "cause": "Old0.7Create_Board stillrequests removedBelt after inventory andLinker initialization;restore actual455stage graph,do not bypass the guard",
+    "whole_client_run_succeeded": false
+  },
+  "ordinary_inventory_connected": true,
+  "live_inventory_Init_returned": true,
+  "live_pack_Init_proved": false,
+  "live_equipment_Init_proved": false,
+  "live_advanced_past_prior_inventory_crash": true,
+  "live_selection_exchange_completed": true,
+  "main_game_ui_created": true,
+  "boards_created": false,
+  "world_entered": false,
+  "full_client": false,
+  "explicit_function_bindings": 25,
+  "component_frames_visually_inspected": true,
+  "source_Create_Board": {
+    "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+    "sha256": "ac7c5451b2b692b479b143933cf58d87c10d9a52f0a661dc5775eefdb79298b6"
+  },
+  "gaps": [
+    "Full item payload receivers/actions,trade/use/equip/pick/tooltip andown selected/ready cue behavior are not accepted by an empty-window probe",
+    "UI has16equipment slots while legacy ordinary board capacity is15;full455 equipment mapping/producer contract remains open,do not fabricate the sixteenth backend entry",
+    "Target equipment Init writes basefield+332=1;meaning/consumers are not yet reconstructed in own CGUIItemWindow",
+    "Target pack has additional arrays/state notrepresented by old source fields;full owner/lifecycle/settings equivalence remains open",
+    "Full root Open recursive child-visibility predicate is represented by admitted equipment leaf visibility only;arbitrary nested equipment-window domains unaccepted",
+    "Inventory settings serialization677DD0 andhighlight item/serial3325/3326 producers are notyet ported",
+    "Legacy RemovePack andremaining interaction methods retain oldsource adapters;they are not claimed equivalent455 behavior",
+    "Missing stock pressed frame11 is retained;full pressed rendering/error behavior remains unaccepted;Common inventory hasonly14equipment skin frames whilelocalized admitted sets have15",
+    "Full mouse mask/hittest andunbound-pointer/invalid-index/nonfinite/OOM/reentry/destruction domains remain open",
+    "Native three-race checks use Taiwan language/assets;not acceptance of all eleven locales",
+    "All previous455UI/actor/Animus/network/world/gameplay and M9 requirements remain mandatory",
+    "OldMainGame boardcreation requests removed legacyBelt;actual455stage ownership/registration isnext required work"
+  ],
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

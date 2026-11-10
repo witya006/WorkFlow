@@ -1,0 +1,400 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "96afbd6224f01bfc3d7427061a8471429e3e107e6c6b98968868fa3e2f6945cc",
+    "bytes": 2364928,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x182c50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x2766a0",
+      "symbol": "CGUIInventoryWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x89a70"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x276ac0",
+      "symbol": "CGUIInventoryWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b240"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x276b40",
+      "symbol": "CGUIInventoryWindow::Open",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a620"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x276ba0",
+      "symbol": "CGUIInventoryWindow::Close",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x89120"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x276c10",
+      "symbol": "CGUIInventoryWindow::SetEquipWindow",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x276cf0",
+      "symbol": "CGUIInventoryWindow::AddPack",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x88d90"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277120",
+      "symbol": "CGUIInventoryWindow::SetPackState",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8acb0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277200",
+      "symbol": "CGUIInventoryWindow::OpenDockingPack",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a680"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277320",
+      "symbol": "CGUIInventoryWindow::SetOpenOnlyOnePack",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8aad0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277990",
+      "symbol": "CGUIInventoryWindow::SetOwnDalant",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8abd0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277a50",
+      "symbol": "CGUIInventoryWindow::SetOwnGold",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8ac40"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277b10",
+      "symbol": "CGUIInventoryWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a400"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x277ce0",
+      "symbol": "CGUIInventoryWindow::PickingObjectEvent",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a860"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x272c90",
+      "symbol": "CGUIInventoryBoard::Init",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x89750"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x273140",
+      "symbol": "CGUIInventoryBoard::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b090"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x273730",
+      "symbol": "CGUIInventoryBoard::SetTradeItem",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b340"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x273830",
+      "symbol": "CGUIInventoryBoard::SetUselessSocket",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b480"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2738c0",
+      "symbol": "CGUIInventoryBoard::SetUselessItem",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b3c0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2746a0",
+      "symbol": "CGUIEquipWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x894b0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x274cf0",
+      "symbol": "CGUIEquipWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8ae60"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x274e80",
+      "symbol": "CGUIEquipWindow::Open",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a520"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x274ed0",
+      "symbol": "CGUIEquipWindow::Close",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x89080"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x275210",
+      "symbol": "CGUIEquipWindow::SetTradeItem",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b2e0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2752d0",
+      "symbol": "CGUIEquipWindow::SetUselessSocket",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8b430"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x275360",
+      "symbol": "CGUIEquipWindow::SetEmpty",
+      "source": {
+        "file": "scripts/native/client455_inventory.inc",
+        "sha256": "6e63afdb1e1ba8c9bdef5f38b1bb2b7d4d82f6046659c4850f7f6db0b048ba6f"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8a880"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual view geometry/owners/money/masks/window states tested;ordinary inventory Init returned;full payload/action/settings/lifecycle equivalence remains open",
+      "complete_equivalence": false
+    }
+  ],
+  "generator": {
+    "file": "scripts/checkpoint_client455_inventory.py",
+    "sha256": "6322d35beaea266bd17639b546d5e9509aba2468ab768a1638e7c034e19baf0d"
+  }
+}

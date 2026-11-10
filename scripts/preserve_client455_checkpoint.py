@@ -27,6 +27,7 @@ def main():
             for child in value.values():yield from source_records(child)
         elif isinstance(value,list):
             for child in value:yield from source_records(child)
+    files.update(source_records(gate))
     for evidence in gate['fresh_evidence'].values():
         files.update(source_records(json.loads((WS/evidence['file']).read_text())))
     files.update(['scripts/native/client455_actor_lighting.inc','scripts/client455_actor_lighting_port.py','scripts/native/client455_player_owner_probe.cpp','scripts/probe_client455_player_owner.py','scripts/prepare_client455_normal.py','work/client455-port/normal/source/cresobject.cpp','work/client455-port/normal/source/cresobject.h'])

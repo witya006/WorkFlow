@@ -1,3 +1,21 @@
+# Частичная165 — новые окна и подтверждённая граница
+
+11.11.2026. Частичная165: подключены настоящие виды инвентаря, сумок20slots и
+экипировки16slots. Native459bd43c:3расы/Taiwan/4просмотренных кадра,64bitmoney,
+маски/состояния/reload и6маршрутов событий проходят. Final own96afbd62…/x86/
+entry182C50/2364928bytes;182client/67engine/20kernels,build/link0.
+Live выбор принят, обычный Inventory.Init вернулся. Следом срабатывает собственный
+RF455_RejectRemovedLegacyBelt в старом Create_Board. Сумки/equipment Init в живом
+пути пока не доказаны;мир не достигнут. Дальше настоящая455фабрика/порядок board
+создания,не возврат удалённого старого storage. Potion/hotbar остаются в M9.
+52fullfunctions/4375instructions обоих pins. Анализ2461(+42)/651(+45) из37871;
+25новых выборочных partialbindings,24standalone,всего137в9реестрах. Это не
+готовность. M6/M6F/M7/M9OPEN,0/12,ориентир25%(20–35%) прежний.
+Staging32assets/16010369linkedbytes/0newpoolbytes. IDA18a8be40closed/list0,
+nativejobsdone/privatehandoff removed,server/originals без изменений.
+Gate inventory/client455-inventory-checkpoint.json:PARTIAL_KNOWN_FAILURE.
+Доказательства/полный остаток:research/client455-inventory-views.md.
+
 # Частичная164 — проверенная сборка и новая живая граница
 
 11.11.2026. Частичная164: окно настроек455 подключено к обычному клиенту.
