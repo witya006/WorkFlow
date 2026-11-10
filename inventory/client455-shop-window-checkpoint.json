@@ -1,0 +1,329 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Ordinary merchant window initialization returns after accepted character selection. Stock Taiwan layout, four money fields and paging over controlled items pass. Next live failure is the legacy player-to-player trade window.",
+  "script": {
+    "file": "scripts/checkpoint_client455_shop_window.py",
+    "sha256": "8468f21fece374babd29516178d2d438bbbfb6436ad92c8a71648838b9639b4d"
+  },
+  "normal_link_sha256": "dfc824cfc7cbc3412ade6ad7c060fbb6c2896e5c15dd80b8605d392ebf0febaa",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
+    "bytes": 2367488,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183430",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "a1d4a48643bf1c085e4af1ee907c9315646c8099b707f3a383694bd5ee2dab06"
+  },
+  "fresh_evidence": {
+    "shop-window-reference": {
+      "file": "inventory/client455-shop-window-reference.json",
+      "sha256": "d672b20d8524e278248495ab0200354700f6d88859ff9ca649ba1f5ee7797e26"
+    },
+    "shop-window-native": {
+      "file": "inventory/client455-shop-window-native.json",
+      "sha256": "8df1065e9c7b61d71df2f8434615ca8f5d44c3db7d5a14165bb7a6a5b2f8ef0c"
+    },
+    "shop-window-bindings": {
+      "file": "inventory/client455-shop-window-bindings.json",
+      "sha256": "097ed76275823cbd3668a076b161d9bc1d7a00412e263add0d3e1a2c4eb6ccf4"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "9afae6bae3925da754c2d96a6047835d7b19bfeeae40f0874d16c88d4f3039fc"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "43be9497054e8fd9a4e6ffd70b0f4ee5551225ffd48c3613346821b029ed911f"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "8ca06c862ea5f8ac353aee83644edcca02df9b6c886903eac24a4c09957a4488"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "dfc824cfc7cbc3412ade6ad7c060fbb6c2896e5c15dd80b8605d392ebf0febaa"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "b0b392c270ef3d2e029b0f26ec15ce4e1de51203084023234aeef1775a4ca438"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "28688d232c31cce84a3e2be3b3ab3fd1af32e9dcde71293b9bd8fc7e14866ce5"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "ad7b5fde96184314532f010d68834b1b6f33785fc84eb035f0bbe47614f7665c"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "a588d9c36b390b674b2717198ac5d80160de6d212ef04e84dd751356445f4e3a"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "a1d4a48643bf1c085e4af1ee907c9315646c8099b707f3a383694bd5ee2dab06"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before169/manifest.json",
+    "sha256": "30d58f1f620f008395405a3fe91eb5b03437fcc96a4c1e81abd77159234ced4c"
+  },
+  "component_frames_visually_inspected": true,
+  "live_merchant_initializer_returned": true,
+  "explicit_function_bindings": 12,
+  "standalone_symbols": 9,
+  "post_selection_failure": {
+    "normal_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
+      "bytes": 2367488,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x183430",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "exception": {
+      "kind": "exception",
+      "code": "0xc0000005",
+      "first_chance": 0,
+      "address": "0x75ff6f",
+      "rva": "0x12ff6f",
+      "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\7d348e69\\selection-live-taiwan001\\RF_Online.bin",
+      "parameter0": 0,
+      "parameter1": "0xfffffff8"
+    },
+    "fault_rva_is_own": true,
+    "own_fault": {
+      "rva": "0x12ff6f",
+      "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+      "offset": "0x5f",
+      "is_code": true,
+      "previous_eight_bytes": "088b45fc8b549044"
+    },
+    "candidates": [
+      {
+        "rva": "0x992b1",
+        "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+        "offset": "0x61",
+        "is_code": true,
+        "previous_eight_bytes": "114508e85f6c0900",
+        "stack_offset": 8
+      },
+      {
+        "rva": "0xb4b48",
+        "symbol": "?SetSprite@CGUITradeWindow@@UAEXXZ",
+        "offset": "0x128",
+        "is_code": true,
+        "previous_eight_bytes": "0500508b01ff5014",
+        "stack_offset": 32
+      },
+      {
+        "rva": "0xb3c32",
+        "symbol": "?Init@CGUITradeWindow@@UAEXXZ",
+        "offset": "0x5f2",
+        "is_code": true,
+        "previous_eight_bytes": "608b068bceff5018",
+        "stack_offset": 64
+      },
+      {
+        "rva": "0x1a128b",
+        "symbol": "__malloc_base",
+        "offset": "0x3b",
+        "is_code": true,
+        "previous_eight_bytes": "2f01ff1550415e00",
+        "stack_offset": 120
+      },
+      {
+        "rva": "0x1823bd",
+        "symbol": "??2@YAPAXI@Z",
+        "offset": "0xd",
+        "is_code": true,
+        "previous_eight_bytes": "750856e893940100",
+        "stack_offset": 144
+      },
+      {
+        "rva": "0x12a93",
+        "symbol": "?Create@CObjectBoard@@QAEXEEE@Z",
+        "offset": "0xe3",
+        "is_code": true,
+        "previous_eight_bytes": "6a0050e89d1d1700",
+        "stack_offset": 148
+      },
+      {
+        "rva": "0x12e62",
+        "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
+        "offset": "0x12",
+        "is_code": true,
+        "previous_eight_bytes": "c9742e8b01ff506c",
+        "stack_offset": 168
+      },
+      {
+        "rva": "0x57dea",
+        "symbol": "?InitWindow@CPlayerTradeBoard@@UAEXKHH@Z",
+        "offset": "0x1a",
+        "is_code": true,
+        "previous_eight_bytes": "894608e866b0fbff",
+        "stack_offset": 180
+      },
+      {
+        "rva": "0x2723b",
+        "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
+        "offset": "0x30b",
+        "is_code": true,
+        "previous_eight_bytes": "188b108bc8ff5208",
+        "stack_offset": 204
+      },
+      {
+        "rva": "0x26a58",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x48",
+        "is_code": true,
+        "previous_eight_bytes": "008bcfe8d8040000",
+        "stack_offset": 236
+      },
+      {
+        "rva": "0x46cd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 240
+      },
+      {
+        "rva": "0x46cd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 252
+      },
+      {
+        "rva": "0x46cd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 260
+      },
+      {
+        "rva": "0xbd302",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "is_code": true,
+        "previous_eight_bytes": "00752e8b01ff5008",
+        "stack_offset": 280
+      },
+      {
+        "rva": "0xbd950",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "is_code": true,
+        "previous_eight_bytes": "cd8600e830f8ffff",
+        "stack_offset": 288
+      },
+      {
+        "rva": "0x183430",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 292
+      },
+      {
+        "rva": "0x22b198",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "ffffffff00000000",
+        "stack_offset": 364
+      },
+      {
+        "rva": "0x1a9055",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "is_code": true,
+        "previous_eight_bytes": "086a00e89dffffff",
+        "stack_offset": 380
+      },
+      {
+        "rva": "0x183380",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "is_code": true,
+        "previous_eight_bytes": "004000e890a3f3ff",
+        "stack_offset": 404
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 408
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "ordinary_calls": [
+      {
+        "board": 9,
+        "window": 7,
+        "lookup_rva": "0x271ea",
+        "call_rva": "0x27203",
+        "return_rva": "0x27206",
+        "table_rva": "0x1ee970",
+        "slot": 8,
+        "callee_rva": "0x5c550",
+        "code": "6a09b9107c6200e8ead7feff8b108bc86a0068c80000006a07ff5208"
+      },
+      {
+        "board": 10,
+        "window": 24,
+        "lookup_rva": "0x2721f",
+        "call_rva": "0x27238",
+        "return_rva": "0x2723b",
+        "table_rva": "0x1ee540",
+        "slot": 8,
+        "callee_rva": "0x57dd0",
+        "code": "6a0ab9107c6200e8b5d7feff6a0068c80000006a188b108bc8ff5208"
+      }
+    ],
+    "kind": "PLAYER_TRADE_SKIN_AFTER_MERCHANT_WINDOW"
+  },
+  "full_factory": false,
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Ordinary NPC catalog, managed item ownership and full per-item metadata",
+    "Exact mouse, dialog and board dispatch, purchase/sale/repair and server results",
+    "Production sources for 64-bit money and PVP/points, locale and resource reload",
+    "Remaining MainGame board registrations, world entry and M9 acceptance"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

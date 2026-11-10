@@ -8740,7 +8740,7 @@
       "id": "CLIENT455-SKILL-FORCE-WINDOW-168",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-skill-force-window-checkpoint.json",
         "inventory/client455-skill-force-window-reference.json",
@@ -8752,6 +8752,24 @@
         "Remaining mastery names and levels, hotkey transfer, cooldowns, tooltips, skill/force use and network consumers",
         "Full resize/reload, scroll position and nonfinite/error cases for populated windows",
         "Equipment storage/ID migration, remaining MainGame registrations and complete gameplay acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-SHOP-WINDOW-169",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-shop-window-checkpoint.json",
+        "inventory/client455-shop-window-reference.json",
+        "inventory/client455-shop-window-native.json"
+      ],
+      "description": "Ordinary merchant window initialization returns after accepted character selection. Stock Taiwan layout, four money fields and paging over controlled items pass. Next live failure is the legacy player-to-player trade window.",
+      "gaps": [
+        "Ordinary NPC catalog, managed item ownership and full per-item metadata",
+        "Exact mouse, dialog and board dispatch, purchase/sale/repair and server results",
+        "Production sources for 64-bit money and PVP/points, locale and resource reload",
+        "Remaining MainGame board registrations, world entry and M9 acceptance"
       ]
     }
   ],

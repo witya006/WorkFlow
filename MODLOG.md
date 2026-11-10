@@ -1,3 +1,12 @@
+2026-11-11 — NPC merchant window 169, PARTIAL_KNOWN_FAILURE.
+Board 9 starts with 200 slots and window 7. Stock Taiwan skins and paging
+over 21 controlled rows per mode passed, with three reviewed frames. Live
+selection returns from the merchant initializer and reaches the legacy player
+trade skin crash at own RVA 12FF6F. Build 7d348e69… x86, entry 183430,
+no unresolved symbols. Both pins checked for 16 bodies and 1,989 instructions.
+Address coverage 2,517, complete listings 713, partial bindings 178.
+[Evidence and remaining work](research/client455-shop-window.md)
+
 2026-11-11 — Skill and Force windows 168, PARTIAL_KNOWN_FAILURE.
 Ordinary Skill and Force initializers use five tabs each and the recovered
 TabBoard. Three viewed frames, four stock localized EDF rows, three race cases

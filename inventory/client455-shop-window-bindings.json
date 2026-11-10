@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
+    "bytes": 2367488,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183430",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial shop initialization, layout and controlled row paging. Actual merchant gameplay open.",
+  "functions": [
+    {
+      "rva": "0x2987f0",
+      "symbol": "CGUIShopWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa9b60"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2990a0",
+      "symbol": "CGUIShopWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaaa20"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2991e0",
+      "symbol": "CGUIShopWindow::SetShopType",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaa9b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x299300",
+      "symbol": "CGUIShopWindow::SetTradeMode",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaae70"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x299d50",
+      "symbol": "CGUIShopWindow::UpdateShopBoard",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x299eb0",
+      "symbol": "CGUIShopWindow::SetCurrentShopBoard",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaa650"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x29a110",
+      "symbol": "CGUIShopWindow::SetDalant",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaa860"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x29a1b0",
+      "symbol": "CGUIShopWindow::SetGold",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaa920"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x29a250",
+      "symbol": "CGUIShopWindow::SetPvp455",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x29a2f0",
+      "symbol": "CGUIShopWindow::SetPoints455",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x299480",
+      "symbol": "CGUIShopWindow::TakeInBuyItem",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaafa0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x299930",
+      "symbol": "CGUIShopWindow::TakeInTradeItem",
+      "source": {
+        "file": "scripts/native/client455_shop_window.inc",
+        "sha256": "0e42de7457d67ba2ce8d7c1da7a4ad1e3d6c2ca8d7dca6806308d895ca58e64a"
+      },
+      "ordinary_symbol_rvas": [
+        "0xab130"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}
