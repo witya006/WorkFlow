@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T18:46:56.668503+00:00",
+  "measured_at_utc": "2026-11-10T19:26:08.990564+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2347,
-    "unique_functions_with_complete_assembly_cfg": 529,
-    "unique_pinned_code_bytes": 633618,
-    "reports": 164,
-    "code_range_occurrences": 3879,
+    "unique_functions_with_pinned_code": 2375,
+    "unique_functions_with_complete_assembly_cfg": 559,
+    "unique_pinned_code_bytes": 642672,
+    "reports": 165,
+    "code_range_occurrences": 3915,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -381,6 +381,10 @@
     {
       "file": "inventory/client455-minimap-opacity-reference.json",
       "sha256": "673d3e1f0184d3859aa443fa76a5e4dd40ed2fe5f37c08b1d60eaf451dc30290"
+    },
+    {
+      "file": "inventory/client455-mob-control-reference.json",
+      "sha256": "1cb3d755e4703c9645613c63a86511a6c554ae0b0e2f8843c52fb9147c4ee5dd"
     },
     {
       "file": "inventory/client455-modal-reference.json",
@@ -817,6 +821,18 @@
       "sha256": "17088376dd9287517a4f31a7a5c76f5048f1773a9baa3c5e2379343aa08e2bdc"
     },
     {
+      "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+      "sha256": "750a23bfe2d9d9a014b1b0bb8fe1f81c99144dc81fa89a5b935172b4fd12317a"
+    },
+    {
+      "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+      "sha256": "975f137075bc2f9232590fd7300ead36710702f09d47e8c84924d3e78c7d1ecc"
+    },
+    {
+      "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+      "sha256": "f6e0147ac2a80cd8ddd403038920d476d4a28ce3b72dd9a8afce9072aef5c60e"
+    },
+    {
       "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
       "sha256": "84f016bfea95efc3e531174072eeca509494063cb2dc1dc1823bbe4ca2acb9c9"
     },
@@ -892,7 +908,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "5e60ee19e81b796d97c4ce54b4e6925b81af088d7327d3db67abeba1715f7224"
+      "sha256": "6923ca560ad69185b5a45a027f0b50c0d5a959cfef65a27efb5c0bb317d81a0e"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -9276,6 +9292,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x711f0",
+      "ida_name": "sub_4711F0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x711f0",
+          "bytes": 223
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 71
+        }
+      ]
+    },
+    {
       "rva": "0x718f0",
       "ida_name": "sub_4718F0",
       "reports": [
@@ -9405,6 +9440,7 @@
       "rva": "0x7d890",
       "ida_name": "sub_47D890",
       "reports": [
+        "inventory/client455-mob-control-reference.json",
         "inventory/client455-modal-reference.json",
         "inventory/client455-nuclear-minimap-reference.json",
         "inventory/client455-scrollbar-variants-reference.json"
@@ -9415,7 +9451,12 @@
           "bytes": 48
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 21
+        }
+      ]
     },
     {
       "rva": "0x7fc30",
@@ -9500,6 +9541,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x8b580",
+      "ida_name": "sub_48B580",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8b580",
+          "bytes": 205
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 73
+        }
+      ]
     },
     {
       "rva": "0x8bbd0",
@@ -13048,6 +13108,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x14a690",
+      "ida_name": "sub_54A690",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x14a690",
+          "bytes": 31
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 17
+        }
+      ]
+    },
+    {
+      "rva": "0x14a6b0",
+      "ida_name": "sub_54A6B0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x14a6b0",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 19
+        }
+      ]
     },
     {
       "rva": "0x14a700",
@@ -16808,6 +16906,7 @@
       "rva": "0x20b430",
       "ida_name": "sub_60B430",
       "reports": [
+        "inventory/client455-mob-control-reference.json",
         "inventory/client455-modal-reference.json"
       ],
       "ranges": [
@@ -16816,7 +16915,12 @@
           "bytes": 177
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+          "instructions": 61
+        }
+      ]
     },
     {
       "rva": "0x20b4f0",
@@ -18342,6 +18446,7 @@
       "reports": [
         "inventory/client455-hud-reference.json",
         "inventory/client455-item-lock-reference.json",
+        "inventory/client455-mob-control-reference.json",
         "inventory/client455-modal-reference.json"
       ],
       "ranges": [
@@ -18353,6 +18458,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 55
+        },
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
           "instructions": 55
         }
       ]
@@ -18696,7 +18805,8 @@
       "ida_name": "sub_627AE0",
       "reports": [
         "inventory/client455-char-info-reference.json",
-        "inventory/client455-hud-reference.json"
+        "inventory/client455-hud-reference.json",
+        "inventory/client455-mob-control-reference.json"
       ],
       "ranges": [
         {
@@ -18711,6 +18821,10 @@
         },
         {
           "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 50
+        },
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
           "instructions": 50
         }
       ]
@@ -22265,6 +22379,280 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x2acfa0",
+      "ida_name": "sub_6ACFA0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2acfa0",
+          "bytes": 497
+        },
+        {
+          "rva": "0x63e000",
+          "bytes": 273
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 178
+        }
+      ]
+    },
+    {
+      "rva": "0x2ad1e0",
+      "ida_name": "sub_6AD1E0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ad1e0",
+          "bytes": 476
+        },
+        {
+          "rva": "0x63e120",
+          "bytes": 273
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 174
+        }
+      ]
+    },
+    {
+      "rva": "0x2ad3c0",
+      "ida_name": "sub_6AD3C0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ad3c0",
+          "bytes": 1655
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 496
+        }
+      ]
+    },
+    {
+      "rva": "0x2ada40",
+      "ida_name": "sub_6ADA40",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ada40",
+          "bytes": 390
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 121
+        }
+      ]
+    },
+    {
+      "rva": "0x2adbd0",
+      "ida_name": "sub_6ADBD0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2adbd0",
+          "bytes": 133
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x2adc60",
+      "ida_name": "sub_6ADC60",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2adc60",
+          "bytes": 140
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 50
+        }
+      ]
+    },
+    {
+      "rva": "0x2adcf0",
+      "ida_name": "sub_6ADCF0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2adcf0",
+          "bytes": 220
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 74
+        }
+      ]
+    },
+    {
+      "rva": "0x2addd0",
+      "ida_name": "sub_6ADDD0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2addd0",
+          "bytes": 220
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 74
+        }
+      ]
+    },
+    {
+      "rva": "0x2adeb0",
+      "ida_name": "sub_6ADEB0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2adeb0",
+          "bytes": 455
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 143
+        }
+      ]
+    },
+    {
+      "rva": "0x2ae080",
+      "ida_name": "sub_6AE080",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae080",
+          "bytes": 654
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 195
+        }
+      ]
+    },
+    {
+      "rva": "0x2ae310",
+      "ida_name": "sub_6AE310",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae310",
+          "bytes": 583
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 169
+        }
+      ]
+    },
+    {
+      "rva": "0x2ae560",
+      "ida_name": "sub_6AE560",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae560",
+          "bytes": 79
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x2ae5b0",
+      "ida_name": "sub_6AE5B0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae5b0",
+          "bytes": 357
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 106
+        }
+      ]
+    },
+    {
+      "rva": "0x2ae720",
+      "ida_name": "sub_6AE720",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae720",
+          "bytes": 142
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 49
+        }
+      ]
+    },
+    {
       "rva": "0x2ae7b0",
       "ida_name": "sub_6AE7B0",
       "reports": [
@@ -25039,6 +25427,158 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3b4670",
+      "ida_name": "sub_7B4670",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4670",
+          "bytes": 236
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 83
+        }
+      ]
+    },
+    {
+      "rva": "0x3b4760",
+      "ida_name": "sub_7B4760",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4760",
+          "bytes": 219
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 83
+        }
+      ]
+    },
+    {
+      "rva": "0x3b4840",
+      "ida_name": "sub_7B4840",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4840",
+          "bytes": 146
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+          "instructions": 56
+        }
+      ]
+    },
+    {
+      "rva": "0x3b48e0",
+      "ida_name": "sub_7B48E0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b48e0",
+          "bytes": 117
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+          "instructions": 45
+        }
+      ]
+    },
+    {
+      "rva": "0x3b4960",
+      "ida_name": "sub_7B4960",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4960",
+          "bytes": 136
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 51
+        }
+      ]
+    },
+    {
+      "rva": "0x3b49f0",
+      "ida_name": "sub_7B49F0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b49f0",
+          "bytes": 824
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 268
+        }
+      ]
+    },
+    {
+      "rva": "0x3b4d30",
+      "ida_name": "sub_7B4D30",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4d30",
+          "bytes": 117
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x3b4db0",
+      "ida_name": "sub_7B4DB0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b4db0",
+          "bytes": 114
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/support.json",
+          "instructions": 45
+        }
+      ]
+    },
+    {
       "rva": "0x3b4e30",
       "ida_name": "sub_7B4E30",
       "reports": [
@@ -25226,7 +25766,8 @@
         "inventory/client455-char-info-reference.json",
         "inventory/client455-character-flags-reference.json",
         "inventory/client455-hud-reference.json",
-        "inventory/client455-linker-window-reference.json"
+        "inventory/client455-linker-window-reference.json",
+        "inventory/client455-mob-control-reference.json"
       ],
       "ranges": [
         {
@@ -25242,6 +25783,10 @@
         {
           "file": "artifacts/client455-progress/hud159-reference/session.json",
           "instructions": 87
+        },
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
+          "instructions": 87
         }
       ]
     },
@@ -25249,7 +25794,8 @@
       "rva": "0x3b6110",
       "ida_name": "sub_7B6110",
       "reports": [
-        "inventory/client455-hud-reference.json"
+        "inventory/client455-hud-reference.json",
+        "inventory/client455-mob-control-reference.json"
       ],
       "ranges": [
         {
@@ -25260,6 +25806,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 34
+        },
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
           "instructions": 34
         }
       ]
@@ -27484,6 +28034,25 @@
       ]
     },
     {
+      "rva": "0x42c5e0",
+      "ida_name": "sub_82C5E0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42c5e0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 17
+        }
+      ]
+    },
+    {
       "rva": "0x42c670",
       "ida_name": "sub_82C670",
       "reports": [
@@ -28054,6 +28623,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x432ed0",
+      "ida_name": "sub_832ED0",
+      "reports": [
+        "inventory/client455-mob-control-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x432ed0",
+          "bytes": 67
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
+          "instructions": 29
+        }
+      ]
     },
     {
       "rva": "0x436cb0",
@@ -37820,8 +38408,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 37,
-    "unique_functions_with_complete_assembly_cfg": 39
+    "unique_functions_with_pinned_code": 28,
+    "unique_functions_with_complete_assembly_cfg": 30
   },
   "M6": "OPEN",
   "M9": "OPEN",

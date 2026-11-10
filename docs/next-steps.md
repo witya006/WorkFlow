@@ -1,4 +1,39 @@
-# Продолжение M6 — MobControl455 и остальной MainGame UI (163)
+# Продолжение M6 — OptionWindow455 и создание мира (164)
+
+163 завершён как PARTIAL_KNOWN_FAILURE. Настоящий MobControl455 подключён,
+16детей/3команды/4GPUкадра/локальные сообщения/общий менеджер движения проверены.
+34fullfunctions/3119instructions bothpins. Own ae592e21…/x86/entry1821E0/
+2362368bytes,182client/67engine/20kernels/link0. Живой выбор принят,
+MobControlInit вернулся; следующий oldOptionWindow.SetSprite/Init fatal
+own12ED3F/GetSpriteXL. Gate inventory/client455-mob-control-checkpoint.json.
+
+1. Перед164 сохранить exact163: preserve utility --previous before163
+   --destination before164 --checkpoint inventory/client455-mob-control-checkpoint.json.
+   Before163 уже135files, не перезаписывать и не копировать весь клиент/ассеты.
+2. Прочитать research/client455-mob-control.md. Найти OptionWindow source через
+   rg --files. Работать в tracked generator/native code, не derived копиях.
+3. Только pointer navigation: inventory/client455-option-discovery.json,
+   primaryvtableRVA6E4C1C; кандидаты VA7113C0/713060/714210
+   (RVA3113C0/313060/314210). Полный ASM/CFG, оба pins, owners/skins/контракты.
+   Не объявлять слот7 SetBound без проверки: предыдущий MobControl6AE720 был Update.
+4. Текущий отказ corroborated actualOption SetSprite9AA4A/Init9A219,
+   caller270C6=FF506C/return270C9,ownvtable1F0B60slot6C→Init998A0. Candidate scan
+   не unwind. Между MobControl иOption вернулись NpcIntroduce/MoveMap/Radar/
+   MapLoading.Init; это не полная приёмка их поведения.
+5. Далее полный MainGame UI/create, карта/avatar/control, затем gameplay.
+   М6F/M7/M9 и все прежние Gauge/CharInfo/Recall gaps сохраняются.
+6. MobControl partial: полные Animus providers, дополнительный resource setter
+   ещё не подключён к inventory/equipment producer4711F0, tooltip owner/style/
+   scheduling и крайние lifecycle/FP/overflow/OOM domains открыты. Legacy
+   SetMobState без observedbody не реализовывать по догадке.
+
+Общий MoveObjectMgr теперь455: настоящий timeGetTime, float-rounded sine,
+exactendpoint,zero timestamp/duration,waves,acceleration. Native replay —
+контролируемая проверка, не fullUI acceptance. PreEnter/fourGPUframes просмотрены.
+Функции2375(+28)/559(+30),91выборочный binding,IDA37870 прежний.25%(20–35%),0/12.
+IDA sessions0/nativejobsdone;server/originals без изменений,privatehandoff removed.
+
+# История очереди163 — MobControl455 и остальной MainGame UI
 
 162 завершён как PARTIAL_KNOWN_FAILURE, не как полный клиент. Настоящий Recall455
 подключён; восемь контрольных строк/HP/FP/EXP/состояния/scroll/resize/пять GPU-кадров

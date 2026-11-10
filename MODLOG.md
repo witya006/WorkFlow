@@ -1,3 +1,17 @@
+2026-11-11 — MobControl163 PARTIAL_KNOWN_FAILURE. Actual ordinary16children/
+threecommands,real skins,signed HP/FP,stepEXP,resource/name policy restored.
+Shared GUI move manager now455 reset/reuse,zero timestamp/duration,float-rounded
+sine/exact endpoint,waves/acceleration. Native10c89a6e/four inspected GPUframes/
+threeactualHWNDmessages/controlled movement replay PASS.34fullfunctions/3119
+instructions bothpins;countryvirtual53 checkedall11tables/bothpins. FullAnimus/
+equipmentresourceproducer/tooltippolicy remainopen. Own ae592e21…/x86/entry1821E0/
+2362368bytes/build-link0,live choice accepted;MobControlInit returned,next old
+Option.SetSprite/Init fatalown12ED3F. Caller/vtable/source corroborated,not unwind.
+2375(+28)address/559(+30)full evidence,22newpartialbindings/91selective total,
+not full-restoration count. Before163135files preserved;nativepool30assets/
+17904385linkedbytes/0newbytes. IDAe410717fclosed/list0,no server/original changes.
+World/M6F/M7/M9OPEN,0/12,coarse25%(20–35%) unchanged. research/client455-mob-control.md.
+
 2026-11-11 — Recall162 PARTIAL_KNOWN_FAILURE. Actual window/rows now integrated
 into ordinary CGUIRecallWindow: real skins,40byte records,DWORD HP/FP,EXP,state,
 scroll/resize and target stale content height. Native a5e7bd7a eight controlled

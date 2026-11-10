@@ -1,4 +1,41 @@
-# Частичная162 — Recall455 подключён, следующий отказ MobControl
+# Частичная163 — MobControl455 подключён, следующий отказ OptionWindow
+
+11.11.2026. Own ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a,
+x86/entry1821E0/2362368bytes,182client/67engine/20kernels/build-link0.
+client455_mob_control_port.py + native/client455_mob_control.h/.inc подключают
+реальные16детей/3commands/HP-FP/stepEXP/extraresource/clip. HP/FP signedclamp0,
+130x11/%6d / %d; EXP0..1/9pixelsteps/90pixelremainder/99.989998textcap.
+Korea name trims7bytes ifstrlen>7,other10preserve;countryvirtual53bothpins verified.
+Extra resource setter reproduces IMUL32wrap/signedIDIV;actual4711F0 producer
+equipped12/13 identified,ordinaryprovider ещё не перенесён. Tooltip IDs3CE/3CF/39D
+через legacyadapter,fullpolicyopen. SetMobState имеет только старую декларацию,
+observedcaller/body не найден,не придумывать реализацию.
+
+Shared native/client455_gui_move.inc заменяет обычный MoveObjectMgr,сохраняет
+avatar/filter код uiglobal. Reset/reuse record,timestamp0inactive,duration0immediate,
+halfPiDB0FC93F,sin(double) roundedfloat,exactendpoints,waves/accel. Production
+использует real timeGetTime; explicit clock API для воспроизводимого replay.
+Native10c89a6e/mob-control-001 PASS:16children/3actual HWND messages/4viewedGPUframes,
+signed/EXP/resource/namebranches иmovementreplay170/129/wrap/endpoints/accel.
+Controlledinitialresource стоит0/0 доsetter;не принимать заживойproducerstate.
+
+34fullfunctions/3119instructions bothpins;функции2375(+28)/559(+30),IDA37870.
+22новых partialbindings/18standalone,всего91выборочный,не totalrestored.
+Final live ae592e21/selection-live-taiwan001 auth/list/Enter/result0,
+MobControlInit вернулся;nextoldOptionSetSprite/Init own12ED3F/GetSpriteXL.
+Own caller270C6=FF506C/return270C9,vtable1F0B60slot6C→OptionInit998A0 проверены.
+Candidate stack scanнеunwind. Междунимивернулись4Init;это неfullbehaviorприёмка.
+PreEnterPNG просмотрен:освещённыйперсонаж/старыйBeta0.738UI. World/M9OPEN,
+0/12,25%(20–35%) прежние. Gate mob-control-checkpoint/currentassessment.
+
+Before163135files=7193032private+3623572sharedbytes;до164 snapshotexact163.
+Native30assets/17904385linkedbytes/0newpoolbytes. IDAe410717f saved/closed/list0,
+nativejobsdone,originals/servercode/config untouched,privatehandoffremoved.
+СледомOption455:primaryvtableRVA6E4C1C,VA7113C0/713060/714210 pointer-only.
+Уточнение прежнего MobControl6AE720:Update,неBound. Доказательства/продолжение:
+research/client455-mob-control.md,docs/next-steps.md. Навыки из обсуждения не установлены.
+
+# История162 — Recall455 подключён, следующий отказ MobControl
 
 11.11.2026. Own e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f,
 x86/entry181DA0/2360320bytes;182client/67engine/20kernels/build-link0.

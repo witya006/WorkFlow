@@ -1,4 +1,24 @@
-# Частичная162 —11.11.2026
+# Частичная163 —11.11.2026
+
+MobControl455 подключён к обычному клиенту:16детей/3команды,real13/4/1skins,
+signedHP-FP/stepEXP/resource/namepolicy/viewport. Общий MoveObjectMgr перенесён
+по455:zero-start/duration,sinefloat/exactendpoint,waves/acceleration,realclock.
+34fullfunctions/3119instructions bothpins,22countryvirtual53pointer proofs.
+Native10c89a6e/4viewedGPUframes/3actualHWNDmessages/movementreplay PASS.
+Own ae592e21…/x86/entry1821E0/2362368bytes,182client/67engine/20kernels/link0,
+consumer/entry/startup/earlyTaiwanPASS. Передdeviceprobe обновитьearlyevidence;
+guard старой162 не был продуктовым отказом. Live001 choice/result0,
+MobControlInit пройден;nextoldOption.SetSprite/Init fatalown12ED3F.
+Candidate stack scan corroborated caller/vtable/source,не unwind. Currentgate
+mob-control-checkpoint PARTIAL_KNOWN_FAILURE. World/M9OPEN,0/12,coarse25% прежний.
+FullAnimus/equipmentresourceproducer/tooltippolicy/edge domains открыты.
+Функции2375(+28)/559(+30),IDA37870,91выборочныйpartialbinding.
+Before163135files/7193032private+3623572sharedbytes. Native30assets/
+17904385linkedbytes/0newpoolbytes. IDAe410717fclosed/list0/nativejobsdone.
+Оригиналы/servercode/config не менялись;handoff удалён. Подробнее:
+research/client455-mob-control.md;дальшеOptionWindow455/очередь164.
+
+# История162 —11.11.2026
 
 Recall455 window/rows подключены к обычному CGUIRecallWindow. Natural skins,
 name/index/40byte record, HP/FP DWORD, EXP, cover, scroll/resize и target stale

@@ -131,7 +131,8 @@
         "client455-item-icon-metadata-checkpoint",
         "client455-char-info-values-checkpoint",
         "client455-char-info-checkpoint",
-        "client455-recall-checkpoint"
+        "client455-recall-checkpoint",
+        "client455-mob-control-checkpoint"
       ]
     },
     {
@@ -274,7 +275,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "c78d944e38cb6b2727c63be028ad78d492ddf86fb02de828f3b7b3578f02d097",
+      "sha256": "69f8ac8755d81a210ec0e39dee099fbdddd8d6eb2a8647b74be2d8a942e3f9df",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -557,6 +558,14 @@
       "sha256": "c96d6d31f294e452e489bb7e7f1567354e00c455576d93e5379916e1842f6cc6",
       "status": "PARTIAL_KNOWN_FAILURE",
       "scope": "Actual455Recall window/rows integrated;ordinary RecallInit returned after live selection,next oldMobControl fails;world not entered",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-mob-control-checkpoint": {
+      "file": "inventory/client455-mob-control-checkpoint.json",
+      "sha256": "8e37477612655d0070af315e8d82e95278ad1d52807f18805931e8f081061a37",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "Actual455MobControl andshared GUI movement integrated;ordinaryMobControlInit returned after live selection,next oldOption fails;world not entered",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -680,11 +689,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f",
-      "bytes": 2360320,
+      "sha256": "ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a",
+      "bytes": 2362368,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x181da0",
+      "entry_rva": "0x1821e0",
       "sections": [
         ".text",
         ".rdata",
@@ -709,22 +718,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "7c317a65347ed272ab5137b62bf4619e776af3d40280d0ac4dd8ea0c881a355e",
+      "sha256": "1b5d77fedbb9f067e8adb5bcbbee8c77cbf47f887987718821708e9752194976",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-recall-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-mob-control-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "c78d944e38cb6b2727c63be028ad78d492ddf86fb02de828f3b7b3578f02d097",
+      "link_sha256": "69f8ac8755d81a210ec0e39dee099fbdddd8d6eb2a8647b74be2d8a942e3f9df",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f",
-        "bytes": 2360320,
+        "sha256": "ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a",
+        "bytes": 2362368,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x181da0",
+        "entry_rva": "0x1821e0",
         "sections": [
           ".text",
           ".rdata",
@@ -734,151 +743,151 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "7c317a65347ed272ab5137b62bf4619e776af3d40280d0ac4dd8ea0c881a355e"
+      "build_sha256": "1b5d77fedbb9f067e8adb5bcbbee8c77cbf47f887987718821708e9752194976"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
       "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
-      "own_rva": "0x12e81f",
+      "own_rva": "0x12ed3f",
       "code": "0xc0000005",
       "resolved_stack_candidates": [
         {
-          "rva": "0x12e81f",
-          "symbol": "?GetSpriteOrgXL@CSprite@@QAEGKK@Z",
+          "rva": "0x12ed3f",
+          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
           "offset": "0x5f"
         },
         {
-          "rva": "0x98927",
-          "symbol": "?SetSpriteU@CGUIObjectEx@@QAEXMM@Z",
-          "offset": "0x37",
+          "rva": "0x988a1",
+          "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+          "offset": "0x61",
           "stack_offset": 8
         },
         {
-          "rva": "0x838b1",
-          "symbol": "?SetNumberSprite@CGUINumber@@QAEXPAU_sprite_info@@AAUtagPOINT@@@Z",
-          "offset": "0x31",
+          "rva": "0x9aa4a",
+          "symbol": "?SetSprite@CGUIOptionWindow@@UAEXXZ",
+          "offset": "0x2ca",
           "stack_offset": 32
         },
         {
-          "rva": "0x94d59",
-          "symbol": "?SetSprite@CGUIMobControl@@UAEXXZ",
-          "offset": "0x119",
-          "stack_offset": 52
+          "rva": "0x9a219",
+          "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
+          "offset": "0x979",
+          "stack_offset": 80
         },
         {
-          "rva": "0x94659",
-          "symbol": "?Init@CGUIMobControl@@UAEXXZ",
-          "offset": "0x329",
-          "stack_offset": 100
-        },
-        {
-          "rva": "0xa0193",
-          "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
-          "offset": "0x2e3",
-          "stack_offset": 124
-        },
-        {
-          "rva": "0x26d01",
+          "rva": "0x270c9",
           "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
-          "offset": "0x1b1",
-          "stack_offset": 156
+          "offset": "0x1e9",
+          "stack_offset": 112
         },
         {
-          "rva": "0x265c1",
+          "rva": "0x26951",
           "symbol": "?Create@CGP_MainGame@@UAEHXZ",
           "offset": "0x41",
+          "stack_offset": 136
+        },
+        {
+          "rva": "0x46bd60",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "stack_offset": 140
+        },
+        {
+          "rva": "0x46bd60",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "stack_offset": 152
+        },
+        {
+          "rva": "0x46bd60",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "stack_offset": 160
+        },
+        {
+          "rva": "0xbc2f2",
+          "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+          "offset": "0x182",
           "stack_offset": 180
         },
         {
-          "rva": "0x46bde0",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
-          "offset": "0x0",
-          "stack_offset": 184
-        },
-        {
-          "rva": "0x46bde0",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
-          "offset": "0x0",
-          "stack_offset": 196
-        },
-        {
-          "rva": "0x46bde0",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
-          "offset": "0x0",
-          "stack_offset": 204
-        },
-        {
-          "rva": "0xbc0b2",
-          "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
-          "offset": "0x182",
-          "stack_offset": 224
-        },
-        {
-          "rva": "0xbc700",
+          "rva": "0xbc940",
           "symbol": "_WinMain@16",
           "offset": "0x240",
-          "stack_offset": 232
+          "stack_offset": 188
         },
         {
-          "rva": "0x181da0",
+          "rva": "0x1821e0",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
-          "stack_offset": 236
+          "stack_offset": 192
         },
         {
-          "rva": "0xe313a",
-          "symbol": "?RF455_ParseMapData@@YA?AW4RF455MapLoad@@AAURF455MapData@@PBXI1I@Z",
-          "offset": "0xa1a",
-          "stack_offset": 296
+          "rva": "0x17313a",
+          "symbol": "?SetNoLodTextere@@YAXXZ",
+          "offset": "0x6a",
+          "stack_offset": 252
         },
         {
-          "rva": "0x22a258",
+          "rva": "0x22a1d8",
           "symbol": "___acrt_initial_locale_data",
           "offset": "0x0",
-          "stack_offset": 308
+          "stack_offset": 264
         },
         {
-          "rva": "0x1a7c75",
+          "rva": "0x1a80b5",
           "symbol": "__ismbblead",
           "offset": "0x13",
-          "stack_offset": 324
+          "stack_offset": 280
         },
         {
-          "rva": "0x181cf0",
+          "rva": "0x182130",
           "symbol": "?__scrt_common_main_seh@@YAHXZ",
           "offset": "0x140",
-          "stack_offset": 348
+          "stack_offset": 304
         },
         {
           "rva": "0x0",
           "symbol": "___ImageBase",
           "offset": "0x0",
-          "stack_offset": 352
+          "stack_offset": 308
+        },
+        {
+          "rva": "0x1821e0",
+          "symbol": "_WinMainCRTStartup",
+          "offset": "0x0",
+          "stack_offset": 328
+        },
+        {
+          "rva": "0x1821e0",
+          "symbol": "_WinMainCRTStartup",
+          "offset": "0x0",
+          "stack_offset": 332
         }
       ],
       "stack_is_candidate_scan_not_unwind": true,
       "verified_own_virtual_calls": [
         {
-          "return_rva": "0x26d01",
-          "instruction_rva": "0x26cfe",
+          "return_rva": "0x270c9",
+          "instruction_rva": "0x270c6",
           "bytes": "ff506c",
-          "vtable_rva": "0x1f066c",
+          "vtable_rva": "0x1f0b60",
           "slot_offset": "0x6c",
           "callee": {
-            "rva": "0x94330",
-            "symbol": "?Init@CGUIMobControl@@UAEXXZ",
+            "rva": "0x998a0",
+            "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
             "offset": "0x0"
           }
         }
       ],
-      "cause": "Next oldCGUIMobControl::SetSprite/Init numeric sprite consumer;Recall Init returned on the sequential MainGame::Create_UI path",
+      "cause": "Next oldCGUIOptionWindow::SetSprite/Init;prior windowInit returned on the sequential MainGame::Create_UI path",
       "whole_client_run_succeeded": false
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "7c317a65347ed272ab5137b62bf4619e776af3d40280d0ac4dd8ea0c881a355e"
+        "sha256": "1b5d77fedbb9f067e8adb5bcbbee8c77cbf47f887987718821708e9752194976"
       },
       "build_exit": 0,
       "errors": [],
@@ -888,11 +897,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f",
-        "bytes": 2360320,
+        "sha256": "ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a",
+        "bytes": 2362368,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x181da0",
+        "entry_rva": "0x1821e0",
         "sections": [
           ".text",
           ".rdata",
@@ -905,28 +914,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "7c317a65347ed272ab5137b62bf4619e776af3d40280d0ac4dd8ea0c881a355e"
+        "sha256": "1b5d77fedbb9f067e8adb5bcbbee8c77cbf47f887987718821708e9752194976"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Actual455Recall window/rows integrated;ordinary RecallInit returned after live selection,next oldMobControl fails;world not entered",
+    "current_work": "Actual455MobControl andshared GUI movement integrated;ordinaryMobControlInit returned after live selection,next oldOption fails;world not entered",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "f82dba1a44c4114a799f3e64325ad16b4430d598bc05952b97eea7c34e790ab8",
+      "sha256": "fc7a76cbf2734d54e484ae58f8a9e29a0b2b0613d0abc1ccd566b2f62398064f",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/e929b1ec/selection-live-taiwan002/login-frame.png",
-        "sha256": "d6fb5714bf560ec8a5e75b422b1fbaa4c2fc6f3094eb3cfeca93fdb90654089f"
+        "file": "work/m9/ae592e21/selection-live-taiwan001/login-frame.png",
+        "sha256": "7e89b590fd00af2ad505d1d69b440a62d6a1f5e6667805a4c69301b47d39acdd"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 122,
-        "elapsed_ms": 8031,
+        "frame_index": 124,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -934,139 +943,139 @@
       "ui_accepted": false,
       "known_next_failure": {
         "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
-        "own_rva": "0x12e81f",
+        "own_rva": "0x12ed3f",
         "code": "0xc0000005",
         "resolved_stack_candidates": [
           {
-            "rva": "0x12e81f",
-            "symbol": "?GetSpriteOrgXL@CSprite@@QAEGKK@Z",
+            "rva": "0x12ed3f",
+            "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
             "offset": "0x5f"
           },
           {
-            "rva": "0x98927",
-            "symbol": "?SetSpriteU@CGUIObjectEx@@QAEXMM@Z",
-            "offset": "0x37",
+            "rva": "0x988a1",
+            "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+            "offset": "0x61",
             "stack_offset": 8
           },
           {
-            "rva": "0x838b1",
-            "symbol": "?SetNumberSprite@CGUINumber@@QAEXPAU_sprite_info@@AAUtagPOINT@@@Z",
-            "offset": "0x31",
+            "rva": "0x9aa4a",
+            "symbol": "?SetSprite@CGUIOptionWindow@@UAEXXZ",
+            "offset": "0x2ca",
             "stack_offset": 32
           },
           {
-            "rva": "0x94d59",
-            "symbol": "?SetSprite@CGUIMobControl@@UAEXXZ",
-            "offset": "0x119",
-            "stack_offset": 52
+            "rva": "0x9a219",
+            "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
+            "offset": "0x979",
+            "stack_offset": 80
           },
           {
-            "rva": "0x94659",
-            "symbol": "?Init@CGUIMobControl@@UAEXXZ",
-            "offset": "0x329",
-            "stack_offset": 100
-          },
-          {
-            "rva": "0xa0193",
-            "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
-            "offset": "0x2e3",
-            "stack_offset": 124
-          },
-          {
-            "rva": "0x26d01",
+            "rva": "0x270c9",
             "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
-            "offset": "0x1b1",
-            "stack_offset": 156
+            "offset": "0x1e9",
+            "stack_offset": 112
           },
           {
-            "rva": "0x265c1",
+            "rva": "0x26951",
             "symbol": "?Create@CGP_MainGame@@UAEHXZ",
             "offset": "0x41",
+            "stack_offset": 136
+          },
+          {
+            "rva": "0x46bd60",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "stack_offset": 140
+          },
+          {
+            "rva": "0x46bd60",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "stack_offset": 152
+          },
+          {
+            "rva": "0x46bd60",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "stack_offset": 160
+          },
+          {
+            "rva": "0xbc2f2",
+            "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+            "offset": "0x182",
             "stack_offset": 180
           },
           {
-            "rva": "0x46bde0",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
-            "offset": "0x0",
-            "stack_offset": 184
-          },
-          {
-            "rva": "0x46bde0",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
-            "offset": "0x0",
-            "stack_offset": 196
-          },
-          {
-            "rva": "0x46bde0",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
-            "offset": "0x0",
-            "stack_offset": 204
-          },
-          {
-            "rva": "0xbc0b2",
-            "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
-            "offset": "0x182",
-            "stack_offset": 224
-          },
-          {
-            "rva": "0xbc700",
+            "rva": "0xbc940",
             "symbol": "_WinMain@16",
             "offset": "0x240",
-            "stack_offset": 232
+            "stack_offset": 188
           },
           {
-            "rva": "0x181da0",
+            "rva": "0x1821e0",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
-            "stack_offset": 236
+            "stack_offset": 192
           },
           {
-            "rva": "0xe313a",
-            "symbol": "?RF455_ParseMapData@@YA?AW4RF455MapLoad@@AAURF455MapData@@PBXI1I@Z",
-            "offset": "0xa1a",
-            "stack_offset": 296
+            "rva": "0x17313a",
+            "symbol": "?SetNoLodTextere@@YAXXZ",
+            "offset": "0x6a",
+            "stack_offset": 252
           },
           {
-            "rva": "0x22a258",
+            "rva": "0x22a1d8",
             "symbol": "___acrt_initial_locale_data",
             "offset": "0x0",
-            "stack_offset": 308
+            "stack_offset": 264
           },
           {
-            "rva": "0x1a7c75",
+            "rva": "0x1a80b5",
             "symbol": "__ismbblead",
             "offset": "0x13",
-            "stack_offset": 324
+            "stack_offset": 280
           },
           {
-            "rva": "0x181cf0",
+            "rva": "0x182130",
             "symbol": "?__scrt_common_main_seh@@YAHXZ",
             "offset": "0x140",
-            "stack_offset": 348
+            "stack_offset": 304
           },
           {
             "rva": "0x0",
             "symbol": "___ImageBase",
             "offset": "0x0",
-            "stack_offset": 352
+            "stack_offset": 308
+          },
+          {
+            "rva": "0x1821e0",
+            "symbol": "_WinMainCRTStartup",
+            "offset": "0x0",
+            "stack_offset": 328
+          },
+          {
+            "rva": "0x1821e0",
+            "symbol": "_WinMainCRTStartup",
+            "offset": "0x0",
+            "stack_offset": 332
           }
         ],
         "stack_is_candidate_scan_not_unwind": true,
         "verified_own_virtual_calls": [
           {
-            "return_rva": "0x26d01",
-            "instruction_rva": "0x26cfe",
+            "return_rva": "0x270c9",
+            "instruction_rva": "0x270c6",
             "bytes": "ff506c",
-            "vtable_rva": "0x1f066c",
+            "vtable_rva": "0x1f0b60",
             "slot_offset": "0x6c",
             "callee": {
-              "rva": "0x94330",
-              "symbol": "?Init@CGUIMobControl@@UAEXXZ",
+              "rva": "0x998a0",
+              "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
               "offset": "0x0"
             }
           }
         ],
-        "cause": "Next oldCGUIMobControl::SetSprite/Init numeric sprite consumer;Recall Init returned on the sequential MainGame::Create_UI path",
+        "cause": "Next oldCGUIOptionWindow::SetSprite/Init;prior windowInit returned on the sequential MainGame::Create_UI path",
         "whole_client_run_succeeded": false
       },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
@@ -1078,11 +1087,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "c7656e567b16dfe4b34946cb53f20645157b5a41587534ade8c745116e8efef0",
-    "entries": 168,
+    "sha256": "f22466083932a07501f312709f013e58a5bf76bd21774d1f3abbbc827fc244e8",
+    "entries": 169,
     "statuses": {
       "partial_component": 13,
-      "partial": 125,
+      "partial": 126,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1092,7 +1101,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-RECALL-162"
+      "CLIENT455-MOB-CONTROL-163"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1162,7 +1171,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;168 overlapping historical records",
+        "measured": "12 domain planning map;169 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1324,7 +1333,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "a342a8d375ad5d7aacfa567fd2cee12611a7fd5fda88e3951a89246b9e22e32e"
+    "sha256": "8aa944775e8ffad75a5f81fb216fb2271acf5bbd8db2a773a4543809d4322645"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

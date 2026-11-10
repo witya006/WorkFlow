@@ -1,4 +1,16 @@
-# Актуальная частичная проверка162 —11.11.2026
+# Актуальная частичная проверка163 —11.11.2026
+
+Gate client455-mob-control-checkpoint PARTIAL_KNOWN_FAILURE. Own ae592e21…:
+настоящие MobControl455/16детей/3команды иshared movement. Native4GPUframes,
+3actual HWND messages,signedHP/FP,EXP/resource/namepolicy иmovementreplay PASS.
+Live выбор принят,MobControlInit вернулся;nextoldOption.SetSprite/Init fatal
+own12ED3F/GetSpriteXL. Возврат промежуточных UIInit не закрывает их fullbehavior.
+World/fullUI/fullAnimus/equipmentresourceproducer/tooltippolicy/lifecycle/edge
+domains не приняты.0/12,25%(20–35%),M9OPEN. Функции2375/559 из37870 —охват
+анализа,91bindingsвыборочны,не totalrestored. Полные требования ниже сохраняются.
+[Доказательства163](../research/client455-mob-control.md).
+
+# Историческая частичная проверка162 —11.11.2026
 
 Gate client455-recall-checkpoint PARTIAL_KNOWN_FAILURE. Own e929b1ec… подключил
 настоящее окно Recall455 и его строки;8контрольных records/5просмотренных GPU

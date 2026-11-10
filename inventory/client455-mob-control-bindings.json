@@ -1,0 +1,355 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a",
+    "bytes": 2362368,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1821e0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x2acfa0",
+      "symbol": "CGUIMobControl::CGUIMobControl",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x31b0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ad1e0",
+      "symbol": "CGUIMobControl::~CGUIMobControl",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x941d0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ad3c0",
+      "symbol": "CGUIMobControl::Init",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94330"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ada40",
+      "symbol": "CGUIMobControl::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94f00"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2adbd0",
+      "symbol": "CGUIMobControl::SetMobName",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94e80"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2adc60",
+      "symbol": "CGUIMobControl::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94e00"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2adcf0",
+      "symbol": "CGUIMobControl::SetHP",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94dd0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2addd0",
+      "symbol": "CGUIMobControl::SetFP",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94da0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2adeb0",
+      "symbol": "CGUIMobControl::SetExp",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94b50"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ae080",
+      "symbol": "CGUIMobControl::SetResource455",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ae310",
+      "symbol": "CGUIMobControl::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94940"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ae560",
+      "symbol": "CGUIMobControl::IsCrossed",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94780"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ae5b0",
+      "symbol": "CGUIMobControl::OpenCmdBoard",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x94aa0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ae720",
+      "symbol": "CGUIMobControl::Update",
+      "source": {
+        "file": "scripts/native/client455_mob_control.inc",
+        "sha256": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x950c0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4670",
+      "symbol": "CGUIMoveObjectMgr::AddMoveObject455",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4760",
+      "symbol": "CGUIMoveObjectMgr::StartMoveAt455",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4840",
+      "symbol": "CGUIMoveObjectMgr::RemoveObject",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [
+        "0xc6fa0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b48e0",
+      "symbol": "CGUIMoveObjectMgr::RemoveAllObject",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [
+        "0xc6f40"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4960",
+      "symbol": "CGUIMoveObjectMgr::IsFinishedMove",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [
+        "0xc6f00"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b49f0",
+      "symbol": "CGUIMoveObjectMgr::FrameMoveAt455",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [
+        "0xc6cb0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4d30",
+      "symbol": "CGUIMoveObjectMgr::GetMoveObject",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [
+        "0xc6ed0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3b4db0",
+      "symbol": "CGUIMoveObjectMgr::GetMoveFinishedObject",
+      "source": {
+        "file": "scripts/native/client455_gui_move.inc",
+        "sha256": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual owners/movement/messages tested with controlled fields;ordinaryMobControlInit returned;wholeAnimus/providers/tooltip/edge domains not accepted",
+      "complete_equivalence": false
+    }
+  ],
+  "generator": {
+    "file": "scripts/checkpoint_client455_mob_control.py",
+    "sha256": "e72adcb97f0fb5d3a72e8fb37dbbc87bb19b99f61ee53d98f7fb29a506cd4e08"
+  },
+  "helpers": [
+    {
+      "file": "scripts/client455_ui_checkpoint.py",
+      "sha256": "79c4c8320ea71cff1d421b0667a1460fd2dd8775103a47fe646f6e599bcf4f5d"
+    }
+  ]
+}

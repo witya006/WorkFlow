@@ -45,6 +45,7 @@ from client455_premium_state_port import port_premium_state
 from client455_char_info_values_port import port_char_info_values
 from client455_char_info_port import port_char_info
 from client455_recall_port import port_recall
+from client455_mob_control_port import port_mob_control
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -798,6 +799,8 @@ def main():
             if char_info_changed:changes.append('455CharInfo outer window and three real tab pages,23borrowed value owners;dynamic action/equipment providers and fullgameplay remainopen')
             raw,recall_changed=port_recall(raw,relative,native)
             if recall_changed:changes.append('455Recall outer/typed row owners,summon skins,image numbers,list/range/resize;fullAnimus providers/board contracts remainopen')
+            raw,mob_control_changed=port_mob_control(raw,relative,native)
+            if mob_control_changed:changes.append('455MobControl real owners/skins/gauges/commands andshared GUI movement;fullAnimus gameplay andtooltip policy remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
             if source.name.lower() in ['global.cpp','cresobject.cpp']:
@@ -889,6 +892,7 @@ def main():
     for name in ['client455_gui_tab_board.cpp','client455_gui_tab_board.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_char_info.h','client455_char_info.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_recall_window.h','client455_recall_window.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_mob_control.h','client455_mob_control.inc','client455_gui_move.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

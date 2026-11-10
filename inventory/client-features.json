@@ -8610,7 +8610,7 @@
     {
       "id": "CLIENT455-RECALL-162",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "runtime_gate_last_verified": true,
       "description": "Actual455Recall window/rows integrated;ordinary RecallInit returned after live selection,next oldMobControl fails;world not entered",
       "implementation": [
@@ -8626,6 +8626,28 @@
       "full_client": false,
       "M6": "OPEN",
       "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-MOB-CONTROL-163",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-mob-control-checkpoint.json",
+        "inventory/client455-mob-control-reference.json",
+        "inventory/client455-mob-control-native.json"
+      ],
+      "description": "Actual455MobControl andshared GUI movement integrated;ordinaryMobControlInit returned after live selection,next oldOption fails;world not entered",
+      "gaps": [
+        "Full455Animus item/board/network gameplay producers andactualsummon scenario remainopen",
+        "Extra resource producer4711F0 identified butnot yet integrated into ordinary inventory/equipment provider",
+        "Tooltip uses actual localized IDs through legacy SetTooltip adapter;full455 tooltip owner/style/scheduling policy not accepted",
+        "Legacy SetMobState declaration hasno observed caller orstandalone body;do not invent a behavior binding",
+        "Uninitialized initial values andfullUI lifecycle/resource reload/error domains remainopen",
+        "Nonfinite/coordinate overflow/OOM andextreme timing/velocity domains not accepted;own rejects some outside admitted domains",
+        "Country name branch verified againstall11vtables;fullfont/country UI equivalence not accepted",
+        "Next oldOptionWindow,not yet accepted"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

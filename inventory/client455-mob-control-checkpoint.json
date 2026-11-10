@@ -1,0 +1,262 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Actual455MobControl andshared GUI movement integrated;ordinaryMobControlInit returned after live selection,next oldOption fails;world not entered",
+  "script": {
+    "file": "scripts/checkpoint_client455_mob_control.py",
+    "sha256": "e72adcb97f0fb5d3a72e8fb37dbbc87bb19b99f61ee53d98f7fb29a506cd4e08"
+  },
+  "helpers": [
+    {
+      "file": "scripts/client455_ui_checkpoint.py",
+      "sha256": "79c4c8320ea71cff1d421b0667a1460fd2dd8775103a47fe646f6e599bcf4f5d"
+    }
+  ],
+  "normal_link_sha256": "69f8ac8755d81a210ec0e39dee099fbdddd8d6eb2a8647b74be2d8a942e3f9df",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ae592e2181809f8fd06a17a5bcbf5b7b82c6185c4160b043f4e043f8416cb89a",
+    "bytes": 2362368,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1821e0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "fc7a76cbf2734d54e484ae58f8a9e29a0b2b0613d0abc1ccd566b2f62398064f"
+  },
+  "fresh_evidence": {
+    "mob-control-reference": {
+      "file": "inventory/client455-mob-control-reference.json",
+      "sha256": "1cb3d755e4703c9645613c63a86511a6c554ae0b0e2f8843c52fb9147c4ee5dd"
+    },
+    "mob-control-native": {
+      "file": "inventory/client455-mob-control-native.json",
+      "sha256": "67f62af4c1b3f86cf1ef92966cb55b81d0655e49ec9309234329ce65515ac42d"
+    },
+    "mob-control-visual": {
+      "file": "inventory/client455-mob-control-visual.json",
+      "sha256": "4fe132dcedd0cf3b52171e6382ba44a2461e19aaa1a24f5ee2fdc46daef367e6"
+    },
+    "mob-control-bindings": {
+      "file": "inventory/client455-mob-control-bindings.json",
+      "sha256": "9a3cea2e047ee282fa47c9fe6d527f28b58cc6e9c6cc28e743a998107ae6e7d0"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "32cf78bfdf66948bc84538bcf0086080c6a4f63560844869c9a3cab41b87bd30"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "1b5d77fedbb9f067e8adb5bcbbee8c77cbf47f887987718821708e9752194976"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "18ecb972f2325223cf466d6816bd0eb8478506f22318cb7adaccd42d82d0dc4a"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "69f8ac8755d81a210ec0e39dee099fbdddd8d6eb2a8647b74be2d8a942e3f9df"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "46ca870b00ab5897f6751846ecf5da76e5d552e4281ecc1d4d734654c807c083"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "144ca3c154a3aed08ad818810c9a18643fbf0ea47a950b5f82783d092e5b30d4"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "ae77eed2b74948a90f46d8d1359666e852670f558ed9a9e91548c68012e8b76a"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "7dac9ba7089c11d1bf1b55ad834bd8924c22509262e26b12ef08a8ebad090cae"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "fc7a76cbf2734d54e484ae58f8a9e29a0b2b0613d0abc1ccd566b2f62398064f"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before163/manifest.json",
+    "sha256": "9e0685b2346eaecd928dee45088dc4382a53b0647a45381a4df371edfc49785f"
+  },
+  "post_selection_failure": {
+    "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+    "own_rva": "0x12ed3f",
+    "code": "0xc0000005",
+    "resolved_stack_candidates": [
+      {
+        "rva": "0x12ed3f",
+        "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+        "offset": "0x5f"
+      },
+      {
+        "rva": "0x988a1",
+        "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+        "offset": "0x61",
+        "stack_offset": 8
+      },
+      {
+        "rva": "0x9aa4a",
+        "symbol": "?SetSprite@CGUIOptionWindow@@UAEXXZ",
+        "offset": "0x2ca",
+        "stack_offset": 32
+      },
+      {
+        "rva": "0x9a219",
+        "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
+        "offset": "0x979",
+        "stack_offset": 80
+      },
+      {
+        "rva": "0x270c9",
+        "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+        "offset": "0x1e9",
+        "stack_offset": 112
+      },
+      {
+        "rva": "0x26951",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x41",
+        "stack_offset": 136
+      },
+      {
+        "rva": "0x46bd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 140
+      },
+      {
+        "rva": "0x46bd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 152
+      },
+      {
+        "rva": "0x46bd60",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 160
+      },
+      {
+        "rva": "0xbc2f2",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "stack_offset": 180
+      },
+      {
+        "rva": "0xbc940",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "stack_offset": 188
+      },
+      {
+        "rva": "0x1821e0",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "stack_offset": 192
+      },
+      {
+        "rva": "0x17313a",
+        "symbol": "?SetNoLodTextere@@YAXXZ",
+        "offset": "0x6a",
+        "stack_offset": 252
+      },
+      {
+        "rva": "0x22a1d8",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "stack_offset": 264
+      },
+      {
+        "rva": "0x1a80b5",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "stack_offset": 280
+      },
+      {
+        "rva": "0x182130",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "stack_offset": 304
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "stack_offset": 308
+      },
+      {
+        "rva": "0x1821e0",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "stack_offset": 328
+      },
+      {
+        "rva": "0x1821e0",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "stack_offset": 332
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "verified_own_virtual_calls": [
+      {
+        "return_rva": "0x270c9",
+        "instruction_rva": "0x270c6",
+        "bytes": "ff506c",
+        "vtable_rva": "0x1f0b60",
+        "slot_offset": "0x6c",
+        "callee": {
+          "rva": "0x998a0",
+          "symbol": "?Init@CGUIOptionWindow@@UAEXXZ",
+          "offset": "0x0"
+        }
+      }
+    ],
+    "cause": "Next oldCGUIOptionWindow::SetSprite/Init;prior windowInit returned on the sequential MainGame::Create_UI path",
+    "whole_client_run_succeeded": false
+  },
+  "ordinary_MobControl_connected": true,
+  "live_advanced_past_prior_MobControl_crash": true,
+  "live_selection_exchange_completed": true,
+  "main_game_ui_created": false,
+  "world_entered": false,
+  "full_client": false,
+  "explicit_function_bindings": 22,
+  "component_frames_visually_inspected": true,
+  "source_Create_UI": {
+    "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+    "sha256": "ac7c5451b2b692b479b143933cf58d87c10d9a52f0a661dc5775eefdb79298b6"
+  },
+  "gaps": [
+    "Full455Animus item/board/network gameplay producers andactualsummon scenario remainopen",
+    "Extra resource producer4711F0 identified butnot yet integrated into ordinary inventory/equipment provider",
+    "Tooltip uses actual localized IDs through legacy SetTooltip adapter;full455 tooltip owner/style/scheduling policy not accepted",
+    "Legacy SetMobState declaration hasno observed caller orstandalone body;do not invent a behavior binding",
+    "Uninitialized initial values andfullUI lifecycle/resource reload/error domains remainopen",
+    "Nonfinite/coordinate overflow/OOM andextreme timing/velocity domains not accepted;own rejects some outside admitted domains",
+    "Country name branch verified againstall11vtables;fullfont/country UI equivalence not accepted",
+    "Next oldOptionWindow,not yet accepted"
+  ],
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
