@@ -1,173 +1,135 @@
 # Память проекта
 
-Обновлено 2026-11-10. **141 PARTIAL; M6 открыт.**
-Gate: inventory/client455-resource-catalog-checkpoint.json.
-Команда: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_resource_catalog.py.
-Доказательства: research/client455-resource-catalog.md.
-Предыдущая подробная память: research/project-memory-before139.md.
-Последний commit до141: bc26576 (registered characters140/оценка).
+Обновлено 2026-11-10. **142 PARTIAL; M6 открыт.**
+Gate: inventory/client455-item-bootstrap-checkpoint.json.
+Проверка: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_item_bootstrap.py.
+Доказательства: research/client455-item-bootstrap.md.
+Последний commit до142: 72f7041 (Resource141).
+Подробные старые факты: research/project-memory-before139.md и research/ по участкам.
 
 ## Цель и ограничения
 
 CLIENT ONLY: поддерживаемые исходники и собственный RF_Online.bin с полным
 функционалом/поведением закреплённого455. M9 уже определён: финальная приёмка
-без модернизации графики. Устаревшее goal-описание про M4/неизвестныйM9 не применять.
-M0–M4/selectedM5 достигнуты; M6/M6F/M7/M9 OPEN;M8 не требуется.
-Server только читать reference, не изменять/строить/восстанавливать даже копии.
-Оригиналы immutable; input EXEs никогда не выполнять. Работа под work/.
+без модернизации графики. Старое goal-описание про M4/неизвестныйM9 не применять.
+M0–M4/selectedM5 достигнуты; M6/M6F/M7/M9 OPEN; M8 не требуется.
+Server только читать reference; не изменять/строить/восстанавливать даже копии.
+Originals immutable; input EXEs никогда не выполнять. Работа под work/.
 LocalGit, no push/remote/publication. Не делегировать без прямой просьбы.
 
-## Текущий141
+## Текущий142
 
-Own PE b3f769a9b551a81099ca0ef01b92ac96b47bc5048d6ea9594e21a56a97d8d00c,
-x86/base400000/entry170760/2272768bytes.182client/20kernels/link0/unresolved0.
-Engine137 unchanged. Resource.edf9groups/30623rows:1267bones/10484meshes/18872ANI.
-Actual normal manager registers1267/10483/18872;one NPC mesh20483 skips before
-AddMesh because parent20483 absent in catalog,not a missing-file workaround.
-Five player BN actually loaded/counts30,25,29,38,30/firstmesh name5;real archived
-playerANI ID1090849056 loaded. All raw catalog arrays match independent fingerprints
-aftertargetmodel parent-2→ownID mutation. Rest ANI are metadata registrations,
-not18872executed animation files. Full classes/appearance/selection remain OPEN.
-Added player missing-path case-sensitive find>0 and explicit-parent shape checks,
-bounded preflight for unsafe input domain;own GetResourceList missing return fixed.
-Legacy260/328/244/84 metadata already match;do not invent a new row format.
-Full7functions/934instructions/108positiveCFG inclEHtails equalbothpins.
-RVA208550 manager,2079C0 bone,207CB0 mesh,2081C0 ANI,1E7BE0 bootstrap owner.
-Raw artifacts/client455-progress/resource-catalog141-reference/session.json.
-IDA731ffc14 saved/closed/list0;nativejobs none.
-
-Resource references checked partially:1120 unresolved afterloose/RFS lookup,
-503BN/592BBX/25ANI. Seven archived members resolved. This is NOT all assets or
-proof each unresolved reference is required in game. Five playerBN exist.
-Staged1668assets/81MBlogical;firstpool+53.1MB/repeatedsuccessfulrun0,5smallprivate.
-Added BN/BBX/ANI/MSH/RFS immutable suffixes;no originals hardlinks/full client clone.
-Fresh WinMain/Miles/providers/Login frame70/3219ms,640x500,exit/no fatal.
-PNG3de508af… viewed:lobby/waiting/unopened panels hidden,no selection acceptance.
-Account140 unchanged suite NOT rerun on141;exact140snapshot49files before141.
-Probe first assumed case-insensitive bone lookup wrongly:sourceCharacter manager
-keeps exact names and separate records;ANI manager normalizes. Oracle corrected,
-production managers not changed to satisfy that mistaken test.
-Full errorUI/quit policy/resource getters/remaining bootstrap still OPEN.
-
-## Сохранённый140 (историческая база)
-
-Own PE a3002fc48427f09cb1cb7c2f57c95696162d1099ce7714e890f1053d1c321607,
-x86/base400000/entry1703F0/2271744bytes.182client/20kernels build/link0/unresolved0.
+Own PE f0114c80b2a08bdb313113368c729b4a7cb4b4c0c05cdc193ee368edf627f2d1,
+x86/base400000/entry172C30/2283520bytes.182client/20kernels/build/link0/unresolved0.
 Engine137 SHA708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870
-не менялся. Header-зависимые client/facade объекты пересобраны.
+unchanged. Обязательный normal-consumer proof обновлён.
 Primary SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
 secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
 
-Восстановлен обычный world-entry group1/op1 request58 и group1/op2 reply12.
-Request: account@0,keys@4,fullscreen@20,version126455@21,signature33bytes@25.
-Keymask=(k0+k2-k1-k3)*12AB34CC modulo32;каждый key XORmask.
-До отправки close-request flag435992=1. Reply:result0/grade1/kind2;
-cashShop flag3/indexWORD4,NPC6/7,quest9/10;nonzero flag→uint16index,zero→-1.
-Результат/grade/seen/selectors пишутся даже при ошибке;ReceiveResponseMsg идёт
-до записи kind. CNetworkMgr.m_worldEntry455 хранит данные для следующего bootstrap.
-Own packed protocol headers58/12; bounded actual AnalysisServerPacket1/2.
-Новые client455_world_entry.h/.inc; pure reader не мутирует state для short/null.
-Полные8functions/1372instructions/225positive CFGblocks равны2pins.
-RVA16A840 request,16A960 reply,16AAD0 kind,4ADAC0 keys,13EF80/13ED80 result,
-162AC0 pending response,162F50 full core dispatcher.
-Raw artifacts/client455-progress/world-entry139-reference/session.json.
+Обычный Login вызывает CItemDataMgr.LoadBootstrap455:cash→set→Item47+ND.
+Порядок подтверждён декодированными CALL/JMP в production PE.
+Cash selector -1/default иначе полный DWORD decimal suffix; ND overlay DWORD16.
+При cashND count mismatch/отсутствующем ND base сохраняется; outer продолжает.
+Все11 country vslot160=true,включаяKorea;не выводить это только изTaiwan.
+4newfullfunctions/257instructions/27positiveCFG regions равны2pins;
+RVA1F8EC0 cash,2089E0 set,4329B0/42C490 profile true methods.
+Existing588instruction Item1FEE30 evidence089 переиспользован.
+Raw artifacts/client455-progress/item-bootstrap142-reference/session.json.
 
-Registered-character request1/8 и reply1/9 теперь подключены к обычному receiver.
-Payload506:header14+3×164. Name17,serialDWORD@17,race21,slot22,class5@23,
-level28,dalant64@29,gold64@37,baseShape45,equipment8×signed16@49,upgrade65,
-reserved83@73,lastConnection64@156. Нельзя считать имя21bytes.
-Decoder bounds/null/count>3 до мутации;slot>2 skip;duplicates ordered.
-Level0→1/skipTutorial0,else skip1;latest signed64 localmax0/strictgreater;
-count0 оставляет actors и прежнийlatest slot. Parts1,2,3,4,5,7,6,8.
-9fullfunctions/623instructions/72positive CFG равны2pins.
-RVA16ADD0 request,16AE40 response,16B4D0 recordctor,6B2E10 parts.
-Raw artifacts/client455-progress/registered140-reference/session.json.
+Six real full-object runs:ko-default/zh-default/ru-default/zh1/zh10/ko1.
+Cash1000rows,set1373,Item47/76049rows;independent alltable/name/description/
+work arrays CRC/consumed bounds PASS. Twelve real CBoardObject/payloads каждый:
+borrowed row/name,clone retains,last owner erases. Receiver world-entry supplies
+selector through actual12-byte decoder,не реальная auth.
+Russia cashND count mismatch иabsentkoND_1 дают false,base retained,Item PASS.
+Новый GetData455 accessor сейчас удержан только probe;LoadData inlined вbridge.
+Legacy ITEM_DATA/derived CBoardItem/CEquipItem/Avatar default/equipment consumers
+НЕ перенесены. Нельзя cast455raw встарые layouts или заявлять appearance/selection.
 
-Свежий account full-object native PASS,work/m9/3cd21e07/account-001:
-real3Avatar/CP949names/64money-time/tutorial writer,fragment/wrap encrypted
-receiver,short/null/count4/invalidslot/count0;world-entry и avatar-stage также PASS.
-Это искусственные входные байты,не реальная auth/session. Native report
-inventory/client455-account-native.json,отдельный registered_character_output.
-Первый probe падал без Character shaders:добавлен staging реальных shaderfiles,
-production initialization не отключалась.27assets shared,newpool0.
-Полные таблицы/class-tier/appearance/обычный экран выбора НЕ приняты.
-Standalone probe пропускает WinMain:явно задавать g_bIsWindowed,не путать сwrapper.
+Fresh WinMain/Miles/providers/ordinary Login PASS:work/m9/f0114c80/login-frame001,
+created1/loaded1,frame70/3234ms/640x500,Renderreturn/exit observed,no fatal.
+PNG276eb78c… просмотрен:lobby/ожидание,unopened panels hidden.
+Обычный success-response bootstrap в этом запуске не выполнялся.
+Wide unchanged account/resource/graphics suites не повторялись.
+Exact141 snapshot49files before142;140before141 и139before140 сохранены.
+IDAb958e3d1 saved/closed/list0;nativejobs нет.
 
-Свежий own WinMain/Miles/providers/ordinary Login PASS:
-work/m9/a3002fc4/login-frame001,created1/loaded1,frame70/3203ms/640x500,
-Renderreturn/ownexit observed,no fatal. PNG8ed17237… просмотрен:lobby/waiting,
-unopened panels отсутствуют.139TCP fixture получил67bytes (138получал35),ответов0.
-Reference EXEs не выполнялись. IDA2a850a2f saved/closed,list0. Native jobs нет.
-Exact139 snapshot49files before140;exact138 snapshot47files before139 сохранены.
+## Следующий143: character tables/classes и выбор персонажа
 
-## Следующий142: оставшийся bootstrap и реальные данные выбора персонажа
+Target53D0F0 result0/state6 calls1E7BE0. Initial item142 иResource141 интегрированы;
+остальные таблицы/связи ещё legacy/partial. Далее PlayerCharacter,SkillForce,
+Store(selector),Character7 иND/NDW overlays/class-tier lookup/names.
+Переиспользовать RF455ItemDataStore.character иRF455SkillForceData;не cast raw
+вlegacy CPlayerClass. Class setter412140 отличается отстарого helper.
+Затем typed item/Avatar equipment consumers иordinary appearance/selection.
+Не bypass waiting/не force success/не писать serverlogic.
 
-Target result getter53EF80 читаетbyte435973;consumer53D0F0 при result0/state6
-вызывает5E7BE0. Этот data bootstrap и его3selector consumers пока не перенесены.
-Complete diagnostic pcode сохранён также в registered140-reference/session.json;
-нужно полное выбранное ASM/CFG/equality и ordinary source integration.
-Порядок:ItemCash/ItemSetEffect/Item/Resource/character tables+boards/Quest/
-EventShip/NDMsgMonster/ItemTimer/country slot296/NDMsgEvent/EventSound/
-SpecialStore/ItemCollection/Map/5default effects/Avatar finalization/request1/8.
-ItemTimer и SpecialStore не подменять Exp/Combine. Роль slot296 неизвестна.
-Legacy CDataMgr count/stride иResource260/328/244/9groups лишь частично совпадают:
-нельзя загружать455Item через старую запись/embedded descriptions без переносаND.
-Class setter412140 отличается от legacy SetClassDTIndexByStrDTCode;
-весь class-tier/appearance/resource/item consumer ещё не принят.
-Resource branch141 уже интегрирована;остальные table owners ещё legacy/partial.
-Начать с ItemCash/ItemSet/Item47+NDItem иправильной country segmented branch,
-переиспользовать существующий RF455ItemDataStore;не кастовать455raw в old ITEM_DATA.
-Далее actual character selection→world/control/combat/inventory/chat.
-Не bypass waiting/не force success;не писать server logic.
-Other core/35processor payloads и bootstrap/error consumers ещё legacy/partial.
+Полный порядокbootstrap:ItemCash/ItemSetEffect/Item/Resource/character tables+
+boards/Quest/EventShip/NDMsgMonster/ItemTimer/country slot296/NDMsgEvent/
+EventSound/SpecialStore/ItemCollection/Map/5default effects/Avatar finalization/
+registered request. Рольslot296 неизвестна;ItemTimer/SpecialStore не Exp/Combine.
+Pcode root:artifacts/client455-progress/registered140-reference/session.json;
+Resource141 raw содержит полный ASM root. All remaining loaders need own evidence.
+Затем ordinary world/avatar/control/movement/collision→combat/items/chat/NPC/social.
 
-Target init5401D0:state6 normal,7logout. Country slot284false во всех11profiles;
-не включать legacy reconnect безусловно. Create53BB20 имеет brokenIDB boundary,
-JUMPOUT/ложную CRT-аннотацию;для переноса использовать реальные инструкции.
-Full Title/movie/factory4/explicitnext ещё OPEN;legacyfactory3/modulo.
-Target Title.FrameMove557F80 безусловно exit/jump:не включать deadfade.
-CcrLogo.dat/реальныйAVI существуют;не переписывать CRT/COM вместо functionalroute.
-Full455UI:10Login windows/layout/focus/input/system sprite5 ещё OPEN.
-138root Add уже исправлен:AlwaysTop front/append,SetParent,Show(FALSE).
-Legacy label0.738 не менять косметически как доказательство455.
+## Сохранённые реальные участки139–141
 
-## Оценка и приоритет
+World-entry request58/reply12 уже интегрированы. State m_worldEntry455 содержит
+cashShop/npcShop/quest selectors (-1 илиuint16). Request keys XOR mask
+(k0+k2-k1-k3)*12AB34CC modulo32,version126455,signature33bytes.
+Reply result/grade/seen/selectors пишутся даже приerror;ReceiveResponseMsg доkind.
+Registered request1/8/reply1/9,payload506=header14+3×164.
+Name17/serialDWORD17/race21/slot22/class5@23/level28/dalant64@29/gold64@37/
+baseShape45/equipment8×signed16@49/upgrade65/reserved83@73/lastConnection64@156.
+Level0→1/skipTutorial0,else skip1;latest signed64 localmax0/strictgreater.
+Count0 retainsactors/latest;parts1,2,3,4,5,7,6,8;class/appearance consumers open.
+Standalone account skipsWinMain:explicit g_bIsWindowed,не путать сenginewrapper.
 
-Около25%,диапазон20–35%,остаток75%:инженерная оценка12систем,не функция tests/bytes.
-Полных принятых областей0/12. inventory/client455-progress-assessment.json.
-A ordinaryTitle/Login;B auth/selection;C world/avatar/input/movement;
-D combat/items/chat/NPC/quests/social;E fullM6F/M7/M9. Все старые gaps сохранены.
-CRT/FP/failure fidelity остаётся backlog и не заменяет связанный игровой сценарий.
+Resource.edf9groups/30623rows:1267bones/10484meshes/18872ANI. Registered1267/
+10483/18872:oneNPC20483 missingparent skip. Five real playerBN shapes30/25/29/38/30
+andfirstmeshname5;real playerANI fromRFS loaded. OtherANI metadata only.
+Legacy260/328/244/84 rows match;bounded preflight/missing-player/shape checks added.
+Own GetResourceList missingreturn fixed;otherlegacy getters/errorUI/quit open.
+1120checked unresolvedrefs503BN/592BBX/25ANI afterloose/RFS lookup;not full asset
+inventory or proof each path required. Seven archived members resolved.
+Character manager keeps exact case/separate records;ANI normalizes/deduplicates.
+
+## Оценка, память и работа
+
+Около25%,диапазон20–35%,остаток75%:engineering estimate12systems,не tests/bytes.
+0/12 full acceptance;144historical/overlapping records не знаменатель.
+A Title/Login;B auth/selection;C world/control;D gameplay/NPC/social;E fullM9.
 Отчёты разделяют:собирается/проверено отдельно/работает обычно/полностью принято.
-Список143исторических/пересекающихся работ не знаменатель готовности.
-Для текущей сборки зависимости обеспечены;полных source455/SDK0комплектов,
-referencePE2. Полная feature/packet/state/resource/scenario опись не завершена.
-Не повторять159k неизменённых проверок. Проверять затронутое и выполнять
-обязательные зависимости сборки;не обещать календарный срок по микро-тестам.
+Сборочные зависимости обеспечены;fullsource455/SDK0sets,referencePE2.
+Feature/packet/state/resource/scenario inventory ещё неполон.
+Не повторять159k unchanged suites. Проверять затронутое/обязательные зависимости.
+CRT/FP/failures backlog сохраняется,но не заменяет связанный игровой сценарий.
 
-## Операционные правила
+VS2026/MSVCx86. Python scripts/Invoke-Python.ps1 file.py,не-c/-m.
+Native/GPU sequential;timeout не termination,poll тотжеhandle.
+IDA ownedworkcopies/sessioneverycall/ASM≤100+allpositiveCFG/tails/save-close.
+MCP rawchunks≤20k;rg --files --no-ignore для ignored work,перед неизвестнымpath.
+Не использовать PowerShell path wildcards вrg;filter через --glob.
+Shared staging толькоownedcopies;никакихhardlinks originals;configs/exes private.
+BN/BBX/ANI/MSH/RFS добавлены immutable. Resource firstpool+53.1MB,повторы0.
+Item142 newpool509445bytes/adopt46.2MBexistingowned,29refs/165MBlogical.
+Storage oldsnapshot150.95GiBlogical/42.29GiBunique,старое не удалялось.
+Before cleanup verifyevidence/inputreachability. Windowsidentity os.stat(path),
+неDirEntry.stat снулевыми inode/linkfields.
 
-VS2026/MSVCx86. Python: scripts/Invoke-Python.ps1 file.py,не-c/-m.
-Native/GPU jobs последовательно;timeout не termination,проверять тот жеhandle.
-IDA:owned work copies,session на каждомcall,ASM≤100/page ивсе positiveCFG/tails,
-save/close;MCP raw писать≤20kchunks. rg--files перед неизвестными путями;
-использовать rg --glob при фильтрации каталогов,не path wildcard в PowerShell.
-Общие исходные assets через client455_asset_staging.py,только owned copies;
-configs/exes private. Snapshot13before-root,47before138/before139 и49before140/before141 сохранены.
-Storage snapshot150.95GiBlogical/42.29GiBunique;hardlinks повторяются в сумме.
-Старые большие каталоги не удалялись;до очистки нужна reachability evidence/inputs.
-Не hardlink originals;Windows fileidentity через os.stat(path),не DirEntry.stat.
+## Движок/UI: не потерять ограничения
 
-## Движок и сохранённые ограничения
-
-Перенесены selected render/model/animation/material/audio/effects/maps,не целый мир.
-FullFraction/particle/BBoShasi,INS/Empty/visibility/collision/device lifecycle ещё OPEN.
-Пять scene targets137/capture helper существуют;ordinarycapture caller ещё не доказан.
-Capture8CE020 сохраняет surface ref/игнорирует HRESULT;только lab компенсирует.
-Synthetic PerbMap не считать455asset. Wrapper initially640x500/viewport640x480 open.
-CLevel::SetViewMatrix не inverse/viewproj;publishcamera отдельно.
-TemporaryCLevel должен переживать activemap;destructor освобождает global resources.
-Material526/serialized46/MAX2048;не исправлять specular_flikering typo/OR bits.
-ShaderPS6 fourthlane и прочие unowned stack lanes не выдумывать.
-Остальные факты/доказательства — research/project-memory-before139.md,
-research/project-memory-before137.md,docs/client-acceptance.md.
+FullFraction/particle/BBoShasi/INS/Empty/visibility/collision/device lifecycle OPEN.
+Scene targets137/capturehelper есть;ordinarycapture caller не доказан.
+Capture8CE020 retainsurface ref/ignoresHRESULT;толькоlab компенсирует.
+SyntheticPerbMap не455asset;wrapper640x500/viewport640x480 open.
+CLevel.SetViewMatrix неinverse/viewproj,publishcamera отдельно;temporaryCLevel
+должен переживатьactivemap,destructor freesglobals.
+Material526/serialized46/MAX2048;specular_flikering typo/ORbits сохранять.
+ShaderPS6 fourthlane/unownedstack lanes не выдумывать.
+FullTitle/movie/factory4/explicitnext OPEN;legacyfactory3/modulo остаётся.
+Title557F80 exit/jump unconditional,не включатьdeadfade. RealAVI/CcrLogo.dat есть.
+Login init5401D0 state6normal/7logout;country slot284false всех11,не force reconnect.
+Create53BB20 brokenIDB/JUMPOUT/falseCRT annotation:читать реальныеinstructions.
+Full455UI10windows/systemsprite5/layout/focus/input OPEN.
+RootAdd138 Show(FALSE)/AlwaysTop ужеперенесён. Legacylabel0.738 косметически не менять.

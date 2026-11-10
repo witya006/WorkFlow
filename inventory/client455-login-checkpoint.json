@@ -5,14 +5,14 @@
     "file": "scripts/checkpoint_client455_login.py",
     "sha256": "cd2edae3d01bab5999474a6af4976cfcf448df68a35cbef85a5f9acbc14c0e7f"
   },
-  "normal_link_sha256": "fd9daeda744f4344cf88e5861d5fddccad037e8b1eb10aa6bdd2de94d7d0323e",
+  "normal_link_sha256": "c9375ed1502fd0c66e349e9a0374a96e7b042213735e09313cbb8648b97478be",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "b3f769a9b551a81099ca0ef01b92ac96b47bc5048d6ea9594e21a56a97d8d00c",
-    "bytes": 2272768,
+    "sha256": "f0114c80b2a08bdb313113368c729b4a7cb4b4c0c05cdc193ee368edf627f2d1",
+    "bytes": 2283520,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x170760",
+    "entry_rva": "0x172c30",
     "sections": [
       ".text",
       ".rdata",
@@ -23,7 +23,7 @@
   },
   "engine_sha256": "708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870",
   "ordinary_root_registration": {
-    "rva": "0x9fd80",
+    "rva": "0x9f9e0",
     "source": {
       "file": "work/client455-port/normal/source/userinterface/guicontroller/guiscreen.cpp",
       "sha256": "6d1156b34bb4c206ef7f94b49f3b533b322ba7fe67bf90836f98131d984edcb9"
@@ -35,8 +35,8 @@
     "Actual normal Login render without overlapping unopened panels"
   ],
   "observed_frame": {
-    "file": "work/m9/b3f769a9/login-frame001/login-frame.png",
-    "sha256": "3de508afd3e9bfe0559856abb876411f6159f8945c9be9a15aced1bffcf49734"
+    "file": "work/m9/f0114c80/login-frame001/login-frame.png",
+    "sha256": "276eb78caf943a2af81d68b5f785f97ee8eb4a914d9b2f35df72ee9a168d57f9"
   },
   "capture": {
     "result": 0,
@@ -44,7 +44,7 @@
     "height": 500,
     "format": 22,
     "frame_index": 70,
-    "elapsed_ms": 3219,
+    "elapsed_ms": 3234,
     "requested_delay_ms": 3200
   },
   "fresh_evidence": {
@@ -54,27 +54,27 @@
     },
     "login-frame-native": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "ab9fc8c394a6304c438cd798e9dde379ed8fd4700ce6e43eff52b52901648153"
+      "sha256": "e5bf700f80cf62872c43bb6f87175b9b5d37233d8073afa67faec3704699662a"
     },
     "login-visual": {
       "file": "inventory/client455-login-visual.json",
-      "sha256": "1fa628ab719aba51f4ab73ae66461e0dd3e902a54e4c85686941fd94882f979e"
+      "sha256": "0070de82771b2697097f50a0315c3fe087a070991d87a392bd9b825d594ddc4b"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "65f33061c975ba97f0c89b486a5cf7e533d0f378beace8e5ba1c6ae28dc63f6f"
+      "sha256": "10f5fe071545fea9e75bda0b10d866ff182a5b43f9a5e09889dc048d45dacab9"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "6ad3536ff91e4edb07bca5d646a6924751841e06269942595baa3e42b20daa98"
+      "sha256": "bf8071d0c1a5a6229a7a96f0befddc537afa29363b3da8f2a73b4589cdfa1b8d"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "a060269453b7e3441d2e5b0edc42e77f015cfcaf0697c1c2cb10b778696eb75a"
+      "sha256": "8f829ee3ba61515ff71a0595ed76eae3bb1dfd2a11dec234a6c00e693e02b89e"
     },
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "fd9daeda744f4344cf88e5861d5fddccad037e8b1eb10aa6bdd2de94d7d0323e"
+      "sha256": "c9375ed1502fd0c66e349e9a0374a96e7b042213735e09313cbb8648b97478be"
     },
     "startup-engine-build": {
       "file": "inventory/client455-startup-engine-build.json",
@@ -82,15 +82,15 @@
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "ee7cbfad570ecb61ad8ca8095924c37ca721c7350f16419c6da4167341ac30ff"
+      "sha256": "36d0bb0ffdf18b7c92eca9ad2a7f5e77538f488d9c46aaa40e806251c10969f4"
     },
     "startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "dea73c037f8744ceb2253c78d17d6f741870914d9087ed3172dcc65fb2b98bc9"
+      "sha256": "afa04b2bbb2b31a509e6ae73ad35029d8ab8c56e3eae6e83dd429544ef7d606a"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "3b27f471696c60c1a9752affd86cf4ae534b2705b4f387ea385e96671dc504bf"
+      "sha256": "903e2d7efe6ba5e110b8998ab3c1847b20de364b9d1e910792199ec423363052"
     }
   },
   "snapshot": {

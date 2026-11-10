@@ -6,9 +6,44 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-RESOURCE-CATALOG-141",
+      "id": "CLIENT455-ITEM-BOOTSTRAP-142",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary Login initial cash/set/Item47+ND loading through the real ItemDataMgr;three locales/six selector-error cases and typed item owners;full legacy item/character/bootstrap/selection consumers open",
+      "implementation": [
+        "scripts/client455_item_bootstrap_port.py",
+        "scripts/native/client455_item_bootstrap.h",
+        "scripts/native/client455_item_bootstrap.inc",
+        "scripts/native/client455_client_items.h",
+        "scripts/native/client455_item_object.cpp"
+      ],
+      "reference": [
+        {"rva": "0x1f8ec0", "role": "Cash selector/default paths and localized DWORD16 overlay"},
+        {"rva": "0x2089e0", "role": "Set-effect single table loader"},
+        {"rva": "0x1fee30", "role": "Existing full588-instruction Item47/ND loader evidence reused"},
+        {"rva": "0x4329b0", "role": "Korea vslot160 returns1"},
+        {"rva": "0x42c490", "role": "Other10country vslot160 implementations return1"}
+      ],
+      "verification": "Four new full functions/257instructions/27CFG and11profile slots equalboth455pins;existing588-instruction Item loader evidence reused. Production bridge decodes cash->set->Item transfers in order. Six real cases ko/zh/ru/default/zh1/zh10/ko1 pass full47table/76049row/name/description/work-directory byte oracles and12real typed wrappers each. Russia cash count mismatch and absent ko NDItemCash_1 retain base1000rows and continue loading,as target. GetData455 accessor currently retained by full-object probe only;legacy CBoardItem consumers unmigrated. Own PEf0114c80 ordinary Login frame70/3234ms viewed,no fatal.",
+      "evidence": [
+        "inventory/client455-item-bootstrap-reference.json",
+        "inventory/client455-item-bootstrap-native.json",
+        "inventory/client455-item-bootstrap-checkpoint.json",
+        "inventory/client455-login-frame-native.json",
+        "research/client455-item-bootstrap.md"
+      ],
+      "gaps": [
+        "Legacy ITEM_DATA/derived CBoardItem/Avatar equipment consumers still unmigrated",
+        "Remaining character/class/quest/table bootstrap and ordinary selection/world",
+        "Full reload/failure/unsafe target domains and all client-acceptance gaps;M6/M6F/M7/M9 OPEN"
+      ]
+    },
+    {
+      "id": "CLIENT455-RESOURCE-CATALOG-141",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "superseded_by": "CLIENT455-ITEM-BOOTSTRAP-142",
+      "historical_runtime_snapshot": "artifacts/client455-progress/before142/manifest.json",
       "description": "Ordinary nine-group Resource.edf registration/player skeleton checks/ANI metadata;five real player skeletons and one real archived ANI loaded;full bootstrap/selection open",
       "implementation": [
         "scripts/client455_resource_catalog_port.py",

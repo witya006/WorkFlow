@@ -1,6 +1,11 @@
 # Полнота восстановления RF_Online.bin
 
-Текущий частичный gate141: inventory/client455-resource-catalog-checkpoint.json.
+Текущий частичный gate142: inventory/client455-item-bootstrap-checkpoint.json.
+Штатный Login подключён к cash→set→Item47+ND.6real locale/selector cases,
+76049raw rows/names/descriptions/work directory и12actual typed wrappers каждый PASS.
+Это вызов настоящего ItemDataMgr вfull-object probe;обычный Login success-response
+bootstrap ещё не пройден. Legacy ITEM_DATA/derived items/Avatar equipment OPEN.
+GetData455 accessor удержан probe,не ordinary gameplay. research/client455-item-bootstrap.md.
 Штатный Resource.edf загружает9 групп и регистрирует1267/10483/18872 bone/mesh/ANI.
 Пять реальных player skeletons и одна ANI из RFS загружены. Единственный mesh skip
 объясняется отсутствующим parent ID20483/NPC в исходном каталоге.
@@ -12,7 +17,7 @@ Request58/reply12 world-entry перенесены;валидные/коротк
 имена/уровни/64-битные деньги и время/tutorial writer. Полные классы/внешний вид,
 bootstrap и обычный экран выбора не приняты. research/client455-registered-characters.md.
 Account140 проверялся на своей PE;его снимок before141 сохранён,на новой PE suite
-не повторялся. Обычный WinMain→Title→Login собственной b3f769a9… показывает реальную lobby;
+не повторялся. Обычный WinMain→Title→Login собственной f0114c80… показывает реальную lobby;
 лишние панели больше не открываются одновременно после переноса root Add455.
 Ввод/авторизация/выбор персонажа/мир и полная455UI не приняты.
 Исследование и оставшийся стык response→bootstrap→selection: research/client455-login.md.

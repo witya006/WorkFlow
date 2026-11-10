@@ -19,9 +19,9 @@ def main():
          ['Полный порядок startup/ошибки/профили/launcher и связь с экранами455'],
          ['client455-normal-link','client455-ui-startup-native','client455-startup-native','client455-startup-contracts-native']),
         ('data','Форматы и загрузка данных',7,50,65,
-         ['RPK/EDF/helper SPT/BSP/EBP,модели/ANI читаются;штатный Resource.edf регистрирует9групп/30623записи,5скелетов рас реально загружены'],
+         ['RPK/EDF/helper SPT/BSP/EBP,модели/ANI;Resource9groups/5playerBN иначалоштатного item bootstrap:cash/set/Item47+ND в3локализациях'],
          ['Полная опись455,все загрузочные ветки/таблицы/ошибки и обычный bootstrap'],
-         ['client455-world-checkpoint','client455-material-layout-checkpoint','client455-item-payloads-checkpoint','client455-resource-catalog-checkpoint']),
+         ['client455-world-checkpoint','client455-material-layout-checkpoint','client455-item-payloads-checkpoint','client455-resource-catalog-checkpoint','client455-item-bootstrap-checkpoint']),
         ('world','Рендер и мир',12,35,50,
          ['D3D9,выбранные карты Bellato/Cora/Accretia,камера/свет/погода/материалы/эффекты вlab'],
          ['Полные visibility/camera/collision,ILevel/Empty/INS,refraction/FX/device reset и игровой мир'],
@@ -87,6 +87,8 @@ def main():
         latest='inventory/client455-registered-characters-checkpoint.json'
     if (WS/'inventory/client455-resource-catalog-checkpoint.json').is_file() and load('client455-resource-catalog-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
         latest='inventory/client455-resource-catalog-checkpoint.json'
+    if (WS/'inventory/client455-item-bootstrap-checkpoint.json').is_file() and load('client455-item-bootstrap-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
+        latest='inventory/client455-item-bootstrap-checkpoint.json'
     login=load('client455-login-frame-native')
     assert login['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json')
     assert login['executable']['sha256']==normal['executable']['sha256']
@@ -108,7 +110,7 @@ def main():
         interpretation='Stage numbers are unequal sizes. M0-M5 completion is not five ninths of the full client. Existing legacy code receives no455credit without evidence.',
         domains=domains,complete_acceptance_domains=0,domain_count=len(domains),evidence=evidence,
         observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
-            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='141 PARTIAL:ordinary Resource.edf nine-group registration/five real player skeletons+ANI;next remaining bootstrap/item/class data and selection',
+            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='142 PARTIAL:ordinary initial cash/set/Item47+ND path and6real locale/selector cases;next character/class tables,legacy item consumers and selection',
             ordinary_login_observation=dict(file='inventory/client455-login-frame-native.json',sha256=sha(WS/'inventory/client455-login-frame-native.json'),fresh_for_current_PE=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),

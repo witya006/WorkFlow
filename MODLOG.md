@@ -1,5 +1,18 @@
 # RF Online client reconstruction journal
 
+2026-11-10 — Initial item bootstrap142 PARTIAL. Ordinary Login now invokes real
+ItemDataMgr cash/set/Item47+ND path. Four newfullfunctions/257instructions/27CFG
+and11country vslot160=true pinnedboth;existing Item588asm reused. Cash selector
+uses fullDWORD decimal suffix;ND DWORD16 overlay/base retained oncount mismatch.
+Production CALL/JMP cash->set->Item order decoded. Six real ko/zh/ru/default/zh1/
+zh10/ko1 cases pass full47tables/76049rows/descriptions/work arrays and12actual
+typed wrappers each. Russia cashND count mismatch andmissing koND_1 continue
+Item loading. Legacy ITEM_DATA/derived items/Avatar equipment not migrated;
+GetData455 accessor probe-only. New PEf0114c80 ordinary Login frame70/3234ms
+viewed,no fatal;wide unchanged suites not rerun. Pool+509445bytes/adopt46.2MB.
+Before142 snapshot49 preserved. Next143 character tables/classes/appearance.
+25%(20–35%),M6/M6F/M7/M9 OPEN. [Evidence](research/client455-item-bootstrap.md).
+
 2026-11-10 — Resource catalog141 PARTIAL. Ordinary Resource.edf nine groups/
 260-328-244 rows and84-byte event owner confirmed. Added target player bone
 missing/shape checks and bounded preflight;fixed own missing-return accessor.

@@ -1,0 +1,28 @@
+"""Connect the455item owners to the actual Login bootstrap and ItemDataMgr."""
+def port_item_bootstrap(raw,relative,section):
+    if relative=='datatable/citemdatamgr.h':
+        raw=b'#include "client455_item_payloads.h"\n'+raw
+        anchor=b'\tBOOL\t\tLoadData( void );'
+        if raw.count(anchor)!=1:raise ValueError('Ordinary item loading API changed')
+        return raw.replace(anchor,anchor+b'\n\tBOOL LoadBootstrap455();\n\tRF455ItemDataSpan GetData455(DWORD,DWORD);'),True
+    if relative=='datatable/citemdatamgr.cpp':
+        anchor=b'#include "CItemDataMgr.h"'
+        if raw.count(anchor)!=1:raise ValueError('Ordinary item includes changed')
+        raw=raw.replace(anchor,anchor+b'\n#include "client455_client_items.h"\n#include "network/cnetworkmgr.h"')
+        signature=b'CItemDataMgr::LoadData( void )';first,last=section(raw,signature,signature)
+        raw=raw[:first]+b'CItemDataMgr::LoadData( void ){return RF455_GameItems().loadItemFiles()?TRUE:FALSE;}'+raw[last:]
+        raw+=b'''
+BOOL CItemDataMgr::LoadBootstrap455(){
+    auto& items=RF455_GameItems();
+    items.cashLoadResult=items.loadCashFiles(_GetNetworkMgr()->m_worldEntry455.cashShop);
+    items.setEffectLoadResult=items.loadSetEffectFile();
+    return LoadData();
+}
+RF455ItemDataSpan CItemDataMgr::GetData455(DWORD kind,DWORD index){return RF455_GameItems().data.getItem(kind,index);}
+'''
+        return raw,True
+    if relative=='gameprogress/cgp_login.cpp':
+        anchor=b'_GetItemDataMgr()->LoadData();'
+        if raw.count(anchor)!=1:raise ValueError('Ordinary Login item bootstrap boundary changed')
+        return raw.replace(anchor,b'_GetItemDataMgr()->LoadBootstrap455();'),True
+    return raw,False

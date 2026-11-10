@@ -10,11 +10,15 @@
 #include "mainapp.h"
 #include "client455_item_object.h"
 #include "client455_item_icon.h"
+#include "client455_item_bootstrap.h"
+#include "client455_language.h"
+#include "client455_nation_paths.h"
 #include <cstdio>
 #include <cstring>
 #include <new>
 #include <stdexcept>
 #include <typeinfo>
+#include <utility>
 
 extern CMainApp g_MainApp;
 RF455ClientItems& RF455_GameItems(){return g_MainApp.Items455();}
@@ -23,6 +27,7 @@ bool read(const char* name,std::vector<unsigned char>& out){FILE* f=std::fopen(n
     if(std::fseek(f,0,SEEK_END)){std::fclose(f);return false;}const auto n=std::ftell(f);if(n<0){std::fclose(f);return false;}
     std::rewind(f);out.resize(static_cast<std::size_t>(n));const bool okay=std::fread(out.data(),1,out.size(),f)==out.size();std::fclose(f);return okay;}
 }
+#include "client455_item_bootstrap.inc"
 bool RF455ClientItems::loadFiles(const char* item,const char* names,const char* quest,const char* character,const char* sf,const char* sfNames){
     std::vector<unsigned char> raw;
     if(!read(item,raw)||!data.loadItemEdf(raw.data(),raw.size(),true))return false;

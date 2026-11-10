@@ -1,0 +1,402 @@
+{
+  "scope": "Ordinary Login initial ItemCash/ItemSet/Item47+ND path and real typed item consumers;remaining bootstrap/legacy items/appearance open",
+  "reference_sha256": "bcc3934ffc7b2761edf709e37f7df79affe5f3c53db7d2a163fefbf67cbfcd50",
+  "source": {
+    "file": "scripts/native/client455_item_bootstrap_probe.cpp",
+    "sha256": "34b8a0ca06da75d28ec3eb12192c7cdfbc7a560b3a9c0866e183fddb1b49d2e2"
+  },
+  "script": {
+    "file": "scripts/probe_client455_item_bootstrap.py",
+    "sha256": "cbdaf2764fdfc07845f4ec7678760943b95bcb6990b3e8b47542876f2f6876dc"
+  },
+  "builder": {
+    "file": "scripts/client455_own_probe.py",
+    "sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9"
+  },
+  "normal_link_sha256": "c9375ed1502fd0c66e349e9a0374a96e7b042213735e09313cbb8648b97478be",
+  "architecture": "x86",
+  "map": {
+    "file": "work/client455-port/item-bootstrap-probe/item-bootstrap-probe.map",
+    "sha256": "a38fdf4755809a518c6eba2329450dde422e67181f3fc2ed2018d87dd5567aeb"
+  },
+  "runs": [
+    {
+      "name": "ko-kr-default",
+      "locale": "ko-kr",
+      "selector": -1,
+      "exe": {
+        "file": "work/m9/b7a04efe/ko-kr-default-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/DataTable/ItemCash.edf",
+          "sha256": "2456b875a1673be0bb4d4b91dc45dc530d7f9a256224dce3d2f9378dc45d132d",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/DataTable/ko-kr/NDItem.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ko-kr\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/DataTable/ko-kr/NDItemCash.edf",
+          "sha256": "6e63c4d6935c17148368cdf04683e47de674ae8da6bb23856d38df1240b2303d",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ko-kr\\NDItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-default-001/expected.bin",
+          "sha256": "2eea900f6faf0b902bb4e67ef4c1dbb5c4d63b2e5ac8059e27a52bdc53a824c0"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/ko-kr-default-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/ko-kr-default-001/result.json",
+        "sha256": "c478f62f90ef5ccb68eaff5478008326a66aaef7bd53cfe6bbc98ac271955fb0"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": -1,
+        "cash_loaded": true,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    },
+    {
+      "name": "zh-tw-default",
+      "locale": "zh-tw",
+      "selector": -1,
+      "exe": {
+        "file": "work/m9/b7a04efe/zh-tw-default-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/DataTable/ItemCash.edf",
+          "sha256": "2456b875a1673be0bb4d4b91dc45dc530d7f9a256224dce3d2f9378dc45d132d",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/DataTable/zh-tw/NDItem.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/DataTable/zh-tw/NDItemCash.edf",
+          "sha256": "407d472f2fe9973d2a0f0364a6ceb9ee633aaef0098de5e50503b7609dbba5e6",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-default-001/expected.bin",
+          "sha256": "eee0c2ae907994f99c8a0e464c52af625b31059761ad158e35f0ed4bda29a028"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/zh-tw-default-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/zh-tw-default-001/result.json",
+        "sha256": "c478f62f90ef5ccb68eaff5478008326a66aaef7bd53cfe6bbc98ac271955fb0"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": -1,
+        "cash_loaded": true,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    },
+    {
+      "name": "ru-ru-default",
+      "locale": "ru-ru",
+      "selector": -1,
+      "exe": {
+        "file": "work/m9/b7a04efe/ru-ru-default-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/DataTable/ItemCash.edf",
+          "sha256": "2456b875a1673be0bb4d4b91dc45dc530d7f9a256224dce3d2f9378dc45d132d",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/DataTable/ru-ru/NDItem.edf",
+          "sha256": "587a3eb6ff82881c866b731d51dedc49a0f434f504da46b1dfccbe2e5d19a6ea",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ru-ru\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/DataTable/ru-ru/NDItemCash.edf",
+          "sha256": "060a721232daf5fff36ad7561a516b27756fa237f372d4255502e2bcc2c11a78",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ru-ru\\NDItemCash.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ru-ru-default-001/expected.bin",
+          "sha256": "d0e1ae2f0d43da2de4176b27d5481077baa3a8e30ba1483050bde7ee0e3df61e"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/ru-ru-default-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/ru-ru-default-001/result.json",
+        "sha256": "eace3013b3aa35aeeaa4e657c03cd2ef15151291ae6e463c1aeb9e6c48119daf"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": -1,
+        "cash_loaded": false,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    },
+    {
+      "name": "zh-tw-1",
+      "locale": "zh-tw",
+      "selector": 1,
+      "exe": {
+        "file": "work/m9/b7a04efe/zh-tw-1-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/DataTable/ItemCash_1.edf",
+          "sha256": "bce2d8ed9be18a3826b528f34804729e5ccc0ef9d27cc4aba6ad10622514dc20",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash_1.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/DataTable/zh-tw/NDItem.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/DataTable/zh-tw/NDItemCash_1.edf",
+          "sha256": "a4ff473368ac5e9c030451a894151910a19f599d9f9e169f99e565e8d199e346",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItemCash_1.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-1-001/expected.bin",
+          "sha256": "07868ff7c45eb4fc37522478ebc4e0298dd411573b57270edd4ee7d41ec9ab0b"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/zh-tw-1-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/zh-tw-1-001/result.json",
+        "sha256": "3962e65bae6bf58a057a8371d0cd58bcd60f0064ddb466465d5027db68b5242a"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": 1,
+        "cash_loaded": true,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    },
+    {
+      "name": "zh-tw-10",
+      "locale": "zh-tw",
+      "selector": 10,
+      "exe": {
+        "file": "work/m9/b7a04efe/zh-tw-10-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/DataTable/ItemCash_10.edf",
+          "sha256": "d37ee3481b440a6ab5c0511615c7c137809b2647a16782df376eba3085e0c2ec",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash_10.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/DataTable/zh-tw/NDItem.edf",
+          "sha256": "ee5f57b9aaab264bc07c1f54ce58cc22add391b7a5a3c58bcf2d609b05378c06",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/DataTable/zh-tw/NDItemCash_10.edf",
+          "sha256": "373604245e7bd81ef1f2950b65d5a96092db12db968f86ee4a3533c425af11dc",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\NDItemCash_10.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/zh-tw-10-001/expected.bin",
+          "sha256": "c6f3a43a2719c8b21422eedf7a3eead4e9cb6f0beeaf5621c832197002a167c6"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/zh-tw-10-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/zh-tw-10-001/result.json",
+        "sha256": "7ba9967262e4d35036dbb44326c75692d5a1ebcbaff6662ef59ea31a520d6a9b"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": 10,
+        "cash_loaded": true,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    },
+    {
+      "name": "ko-kr-1",
+      "locale": "ko-kr",
+      "selector": 1,
+      "exe": {
+        "file": "work/m9/b7a04efe/ko-kr-1-001/item-bootstrap-probe.exe",
+        "sha256": "b7a04efee61bde88e53fff770bbd67ac9eceeb4100e139bb8415ac76f0a030dd"
+      },
+      "inputs": [
+        {
+          "file": "work/m9/b7a04efe/ko-kr-1-001/DataTable/Item.edf",
+          "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-1-001/DataTable/ItemSetEffect.edf",
+          "sha256": "eb3942b8bd10f1b7faff39e240ead824a1fa2a347445818ee920810ffa701e0f",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemSetEffect.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-1-001/DataTable/ItemCash_1.edf",
+          "sha256": "bce2d8ed9be18a3826b528f34804729e5ccc0ef9d27cc4aba6ad10622514dc20",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ItemCash_1.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-1-001/DataTable/ko-kr/NDItem.edf",
+          "sha256": "293025a59293f0f26213ea3597f71bf2b8c1ba2b100995d318a1550054da24ec",
+          "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\ko-kr\\NDItem.edf"
+        },
+        {
+          "file": "work/m9/b7a04efe/ko-kr-1-001/expected.bin",
+          "sha256": "71ea87477fc31390e1ae58850fed28092341b4ac7978b56b75bb0284a0ee17f5"
+        }
+      ],
+      "console": {
+        "file": "work/m9/b7a04efe/ko-kr-1-001/console.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "output": {
+        "file": "work/m9/b7a04efe/ko-kr-1-001/result.json",
+        "sha256": "89160c207e5ac2849b48d401221a84009fcfdfbb4d03840645180c642342adea"
+      },
+      "native": {
+        "status": "PASS",
+        "selector": 1,
+        "cash_loaded": false,
+        "cash_rows": 1000,
+        "set_effect_rows": 1373,
+        "item_tables": 47,
+        "item_rows": 76049,
+        "actual_typed_wrappers": 12,
+        "all_table_description_bytes": true,
+        "actual_reply_selector": true,
+        "full_bootstrap_or_legacy_consumers": false
+      },
+      "natural_exit": 0
+    }
+  ],
+  "shared_asset_staging": {
+    "assets": 29,
+    "linked_bytes": 165101584,
+    "new_pool_bytes": 509445,
+    "adopted_bytes": 46200039,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}
