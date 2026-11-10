@@ -58,10 +58,18 @@ def main(handoff=None,live_port=None,select_character=False):
         for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if select_character:
+        # MainGame initializes the confirmed country chat script after its UI.
+        # Stage its exact reference input; EDF-only bootstrap intentionally
+        # omits .txt files and must not be mistaken for a missing client port.
+        chat=json.loads((WS/'inventory/client455-chat-reference.json').read_text())
+        row=next(r for r in chat['inputs'] if r['runtime_relative'].startswith(f'DataTable/{country["folder"]}/'))
+        original=client/row['runtime_relative'];copy=run/row['runtime_relative']
+        stage_asset(original,copy,row['sha256'],owned_immutable=WS/row['file'])
+        inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
         #Only restored HUD/CharInfo skins;share owned pool copies,never clone
         #the entire client. Preserve target localized-before-Common selection.
         for folder in ['Common',country['folder']]:
-            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr']:
+            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','system.spr']:
                 original=client/'SpriteImage'/folder/filename
                 if not original.is_file():continue
                 copy=run/original.relative_to(client)

@@ -8,9 +8,11 @@
 #include "gameprogress/cgameprogress.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "gameprogress/cgp_maingame.h"
 #include "client455_player_status.h"
 #include "client455_nuclear_aiming.h"
 #include <cstdio>
+#include <memory>
 #include <stdexcept>
 extern CMainApp g_MainApp;
 template<class Tag,typename Tag::Type Member>struct MemberAccess{friend typename Tag::Type access(Tag){return Member;}};
@@ -22,8 +24,9 @@ template<class F>static bool refuses(F fn){try{fn();return false;}catch(const st
 static std::uint64_t bit(unsigned n){return std::uint64_t(1)<<n;}
 struct NetworkScope {
     CNetworkMgr& network=g_MainApp.*access(NetworkMember{});
-    NetworkScope(){check(network.Create()!=0,"actual network owner initialization");}
-    ~NetworkScope(){network.Destroy();}
+    CGUIScreen* oldScreen=g_pUiScreen;
+    NetworkScope(){g_pUiScreen=&gScreen;check(network.Create()!=0,"actual network owner initialization");}
+    ~NetworkScope(){network.Destroy();g_pUiScreen=oldScreen;}
 };
 struct AvatarBinding {
     CAvatar* old=g_pAvatar;
@@ -34,8 +37,19 @@ static int run(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     check(!_GetAvatar()&&!RF455_AvatarRequiresHoverCancel(),"actual null-avatar short circuit");
     NetworkScope network;
+    std::unique_ptr<CGP_MainGame> game(new CGP_MainGame);
+    check(RF455_GetNuclearContainer()==&game->Nuclear455(),"actual MainGame constructor binds the aiming owner before UI creation");
     CAvatar avatar;AvatarBinding binding(avatar);
     check(refuses([&]{avatar.GetStatusCode455();}),"constructor status has no confirmed initialization");
+    {
+        CBoardManager startup;
+        check(RF455_NuclearAiming().pending==0,"startup has no pending aiming");
+        check(!refuses([&]{startup.SetHoverObject(nullptr);})&&!startup.GetHoverObject(),"legal startup hover clear does not need an unknown status when no aiming is pending");
+        check(refuses([&]{avatar.GetStatusCode455();}),"startup clear does not fabricate a player status");
+        RF455_NuclearAiming().pending=1;
+        check(refuses([&]{startup.SetHoverObject(nullptr);})&&!startup.GetHoverObject(),"pending aiming still requires a known status before mutation");
+        RF455_NuclearAiming().pending=0;
+    }
     avatar.ApplyStatusFlags455(bit(17));
     check(refuses([&]{avatar.GetStatusCode455();}),"no subtype preserves unknown state");
     avatar.SetStatusCode455(0x12345678);avatar.ApplyStatusFlags455(bit(17)|bit(42));
@@ -72,10 +86,10 @@ static int run(){
         avatar.SetStatusCode455(code);
         check(!refuses([&]{manager.SetHoverObject(nullptr);})&&!manager.GetHoverObject()&&!gScreen.ExistObject(),"actual pending0 permits target-status hover clear");
         hovered=manager.SetHoverObject(&source);
-        // Synthetic pending bit only exercises the explicit missing-message
-        // refusal; the real aiming start/world/effect/audio path has its own lab.
+        // The real aiming/world/effect/audio/message path has its own lab.
+        // This CPU fixture deliberately has no language/message providers.
         RF455_NuclearAiming().pending=1;
-        check(refuses([&]{manager.SetHoverObject(nullptr);})&&manager.GetHoverObject()==hovered&&gScreen.ExistObject(),"pending cancellation refuses before mutation until C1A port");
+        check(refuses([&]{manager.SetHoverObject(nullptr);})&&manager.GetHoverObject()==hovered&&gScreen.ExistObject(),"pending cancellation still refuses missing message providers before hover mutation");
         RF455_NuclearAiming().pending=0;
     }
     avatar.ApplyStatusFlags455(0);manager.SetHoverObject(nullptr);manager.ClearHoverBackups455();

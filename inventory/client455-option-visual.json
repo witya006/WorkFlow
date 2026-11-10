@@ -1,0 +1,52 @@
+{
+  "status": "REVIEWED_PARTIAL",
+  "normal_link_sha256": "bb3fcbadb82ecc97b8b773b7dd4d0d404e5c1e0d3db5254cea6d07ec483f3214",
+  "native_report": {
+    "file": "inventory/client455-option-native.json",
+    "sha256": "3e55df401ec8cda168634c8cef1d265620d2acdbe0bb3ce0a07a31dc42845cb1"
+  },
+  "frames": [
+    {
+      "file": "work/m9/3a0954a6/option-001/option-korea-initial.bgra",
+      "sha256": "403ffb8a9a3b406ea01f88310d5e7e81545fa42b6ca206ac1619083de81181d9",
+      "preview": {
+        "file": "work/m9/3a0954a6/option-001/option-korea-initial.png",
+        "sha256": "dfe6abb1611a2845cbb223844eb9c678644e829132b9033fee027f7db396afb1"
+      }
+    },
+    {
+      "file": "work/m9/3a0954a6/option-001/option-korea-reload.bgra",
+      "sha256": "42eabfc7ded211976905529f6445ee058d118b8caec6d6dc6e0fc0b55d98b7e7",
+      "preview": {
+        "file": "work/m9/3a0954a6/option-001/option-korea-reload.png",
+        "sha256": "07a052c16e1db88a2cba3a9553790d7194a4ef13e39a131f8356c13da784f5cf"
+      }
+    },
+    {
+      "file": "work/m9/3a0954a6/option-001/option-korea-values.bgra",
+      "sha256": "70a7306a0b03f56e611abbfea6e2ca4f672c5650384f0e61410cb86520550436",
+      "preview": {
+        "file": "work/m9/3a0954a6/option-001/option-korea-values.png",
+        "sha256": "265005829f7cd698bd7bb25f128d99e2c67c3a69fa6064b3e65bbacd28e7ceb3"
+      }
+    },
+    {
+      "file": "work/m9/3a0954a6/option-001/option-taiwan-policy.bgra",
+      "sha256": "4a0ef73489b982a9bc4434ae8af8660fb1d59075bf4a481ee6e4fd42f2c40b69",
+      "preview": {
+        "file": "work/m9/3a0954a6/option-001/option-taiwan-policy.png",
+        "sha256": "b301f6c2ddfaa3e54d1ba51e32862908fa9f38246e75a108f2941ffad00301d2"
+      }
+    }
+  ],
+  "reviewed_by": "Codex visual inspection of all four final PNGs",
+  "observations": [
+    "Full options panel visible at800x600 with labels and controls",
+    "Sound/graphics values,radio selection and switches visibly change",
+    "Other-country policy removes rating button and two switches while deliberately reusing Korean language/assets",
+    "Skin reload resets display frames with retained state as separately checked by native probe"
+  ],
+  "full_settings_acceptance": false,
+  "full_Taiwan_localization_acceptance": false,
+  "full_client": false
+}

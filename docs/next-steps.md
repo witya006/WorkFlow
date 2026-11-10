@@ -1,37 +1,41 @@
-# Продолжение M6 — OptionWindow455 и создание мира (164)
+# Продолжение M6 — инвентарь455 и предметные панели (165)
 
-163 завершён как PARTIAL_KNOWN_FAILURE. Настоящий MobControl455 подключён,
-16детей/3команды/4GPUкадра/локальные сообщения/общий менеджер движения проверены.
-34fullfunctions/3119instructions bothpins. Own ae592e21…/x86/entry1821E0/
-2362368bytes,182client/67engine/20kernels/link0. Живой выбор принят,
-MobControlInit вернулся; следующий oldOptionWindow.SetSprite/Init fatal
-own12ED3F/GetSpriteXL. Gate inventory/client455-mob-control-checkpoint.json.
+164 завершён как PARTIAL_KNOWN_FAILURE. Options455 подключён; четыре кадра,
+реальные GUI/Win32 сообщения, значения/радио/reload и startup hover regression
+проверены. Own6b5e61e6…/x86/entry182C50/2364928bytes;182/67/20/link0.
+После принятого сервером выбора весь обычный MainGame::Create_UI вернулся,
+включая Chat.InitializeChat455. Следующий отказ — старый CGUIInventoryWindow
+при CInventoryBoard::InitWindow: ownRVA12F78F/GetSpriteXL+5F.
 
-1. Перед164 сохранить exact163: preserve utility --previous before163
-   --destination before164 --checkpoint inventory/client455-mob-control-checkpoint.json.
-   Before163 уже135files, не перезаписывать и не копировать весь клиент/ассеты.
-2. Прочитать research/client455-mob-control.md. Найти OptionWindow source через
-   rg --files. Работать в tracked generator/native code, не derived копиях.
-3. Только pointer navigation: inventory/client455-option-discovery.json,
-   primaryvtableRVA6E4C1C; кандидаты VA7113C0/713060/714210
-   (RVA3113C0/313060/314210). Полный ASM/CFG, оба pins, owners/skins/контракты.
-   Не объявлять слот7 SetBound без проверки: предыдущий MobControl6AE720 был Update.
-4. Текущий отказ corroborated actualOption SetSprite9AA4A/Init9A219,
-   caller270C6=FF506C/return270C9,ownvtable1F0B60slot6C→Init998A0. Candidate scan
-   не unwind. Между MobControl иOption вернулись NpcIntroduce/MoveMap/Radar/
-   MapLoading.Init; это не полная приёмка их поведения.
-5. Далее полный MainGame UI/create, карта/avatar/control, затем gameplay.
-   М6F/M7/M9 и все прежние Gauge/CharInfo/Recall gaps сохраняются.
-6. MobControl partial: полные Animus providers, дополнительный resource setter
-   ещё не подключён к inventory/equipment producer4711F0, tooltip owner/style/
-   scheduling и крайние lifecycle/FP/overflow/OOM domains открыты. Legacy
-   SetMobState без observedbody не реализовывать по догадке.
+1. Before165 уже сохранён:165files/6858255private+4295738sharedbytes.
+   Не перезаписывать и не клонировать полный клиент/ассеты. Exact164 gate:
+   inventory/client455-option-checkpoint.json; research/client455-options.md.
+2. Найти актуальные InventoryWindow/InventoryBoard sources через rg --files.
+   Работать в tracked generator/native source. Сначала подтвердить владельцев,
+   real skins/геометрию/сообщения по полным455 ASM/CFG и обоим pins.
+3. Текущий собственный Inventory vtableRVA1F099C/slot6C→Init89A00;
+   CBaseBoard.InitWindow call12D5F=FF506C/return12D62, затем actual failure.
+   SetSprite8B150/Init89C8D — кандидаты стека, не unwind. Прежний Create_UI
+   call2694C/return26951 раньше board call/return26B9D: обычный UI создан,
+   но это не full455UI acceptance и не мир. Нужна настоящая панель инвентаря,
+   без sprite alias, пустых заглушек и придуманного начального player status.
+4. После board/UI creation — LoadData, Avatar/control, затем игровые сценарии.
+   М6F/M7/M9 и все12полных областей остаются открыты. M9 уже определён.
+5. Options partial: backend применения/сохранения, EAX/special/newgraphics/
+   targeting, rating dialog/startup-board dismissal/logout condition producer.
+   Guild/detail-texture — unrepresented legacy adapters; внутренние сообщения
+   WM_APP8203/8210 не выдавать за455contracts и не возвращать их к collisions.
+6. Все прежние Gauge/CharInfo/Recall/MobControl/Animus/equipment/tooltip/status/
+   actor/network/lifecycle gaps сохраняются. CPU pending1 refusal теперь
+   означает отсутствие message providers в стенде, не отсутствие C1A handler.
+7. MCP может усекать массивы при сохранённых count/done. Проверять фактическую
+   длину; пользоваться возвращённым локальным output URL для полного ответа.
+   Запускать только свою PE. Сервер — только предоставленная среда проверки.
 
-Общий MoveObjectMgr теперь455: настоящий timeGetTime, float-rounded sine,
-exactendpoint,zero timestamp/duration,waves,acceleration. Native replay —
-контролируемая проверка, не fullUI acceptance. PreEnter/fourGPUframes просмотрены.
-Функции2375(+28)/559(+30),91выборочный binding,IDA37870 прежний.25%(20–35%),0/12.
-IDA sessions0/nativejobsdone;server/originals без изменений,privatehandoff removed.
+Функции2419(+44)/606(+47),IDA37871(+1getter boundary),112выборочных bindings.
+Ориентир25%(20–35%),0/12 без изменений. Не повторять неизменённые крупные suite.
+Все4OptionsPNG и final live preEnter просмотрены. IDA0/nativejobsdone,
+private handoff удалён, server/originals без изменений.
 
 # История очереди163 — MobControl455 и остальной MainGame UI
 

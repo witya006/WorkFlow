@@ -30,7 +30,10 @@ bool RF455_AvatarRequiresHoverCancel(){
 void RF455_RequireHoverCancellation(){
     // Target cancels effect/sound/position, then emits localized C1A through
     // actual center/chat/login providers, all before the item mutation.
-    if(RF455_AvatarRequiresHoverCancel()&&RF455_NuclearAiming().pending)
+    // Both target reads are pure. An inactive aiming owner cannot cancel:
+    // avoid demanding an as-yet unwritten player status during Create_UI.
+    // Pending aiming still requires the real status and message providers.
+    if(_GetAvatar()&&RF455_NuclearAiming().pending&&RF455_AvatarRequiresHoverCancel())
         RF455_CancelNuclearForHover();
 }
 void CBoardManager::InitHover455(){m_hoverState455=new RF455BoardHoverState;}

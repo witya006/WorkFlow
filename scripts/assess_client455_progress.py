@@ -42,7 +42,7 @@ def main():
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
-         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint','client455-char-info-values-checkpoint','client455-char-info-checkpoint','client455-recall-checkpoint','client455-mob-control-checkpoint']),
+         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint','client455-char-info-values-checkpoint','client455-char-info-checkpoint','client455-recall-checkpoint','client455-mob-control-checkpoint','client455-option-checkpoint']),
         ('audio','Звук',2,35,55,
          ['Miles init,selected tagged/RVP playback и звук выбранных эффектов'],
          ['Все sound events/3D/music/settings и полный lifecycle'],
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-option-checkpoint',
         'client455-mob-control-checkpoint',
         'client455-recall-checkpoint',
         'client455-char-info-checkpoint',
@@ -150,7 +151,7 @@ def main():
         file=WS/f'work/client-reference/{folder}/RF_Online.bin';assert sha(file)==pins[key]['sha256'] and pe(file.read_bytes())['architecture']=='x86'
         reference.append(dict(file=file.relative_to(WS).as_posix(),sha256=sha(file),architecture='x86'))
     storage=load('workspace-storage-audit')
-    survey_file=WS/'artifacts/client455-progress/assessment-2026-11-10/ida-survey.json'
+    survey_file=WS/'artifacts/client455-progress/function-coverage/ida-survey.json'
     survey=json.loads(survey_file.read_text())
     assert survey['metadata']['sha256']==reference[0]['sha256'] and survey['metadata']['arch']=='32'
     assert survey['statistics']['total_functions']>0

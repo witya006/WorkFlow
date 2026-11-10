@@ -1,3 +1,22 @@
+2026-11-11 — Options164, PARTIAL_KNOWN_FAILURE.
+11.11.2026. Частичная164: окно настроек455 подключено к обычному клиенту.
+Три звуковых и шесть графических регуляторов, радио/переключатели, настоящие
+skins/подписи/сообщения проверены; четыре GPU-кадра просмотрены. Исправлено
+чтение неизвестного статуса при очистке hover без активного прицеливания;
+начальное значение статуса не выдумывается. Точный chat script добавлен в стенд.
+Own6b5e61e6…/x86/entry182C50/2364928bytes,182client/67engine/20kernels,
+build/link0. Live002: выбор принят, весь обычный Create_UI включая чат вернулся;
+следующий отказ — старый CGUIInventoryWindow при создании предметных панелей,
+ownRVA12F78F/GetSpriteXL. Мир ещё не достигнут, полный UI455 не принят.
+Gate inventory/client455-option-checkpoint.json: PARTIAL_KNOWN_FAILURE.
+53полных функции/5879инструкций сверены по обоим pins. Усечённая CFG-выгрузка
+заменена полной, verifier проверяет фактическое число блоков. Функции2419(+44)
+адресных/606(+47) полных из37871;21новая выборочная partialbinding,112в8реестрах.
+Это охват анализа, не готовность. M6/M6F/M7/M9OPEN,0/12,ориентир25%(20–35%).
+Before165:165files/6858255private+4295738sharedbytes;клиент не клонировался.
+IDA76ab68ba saved/closed/list0,nativejobsdone,privatehandoff removed.
+Сервер и оригиналы не менялись. Доказательства: research/client455-options.md.
+
 2026-11-11 — MobControl163 PARTIAL_KNOWN_FAILURE. Actual ordinary16children/
 threecommands,real skins,signed HP/FP,stepEXP,resource/name policy restored.
 Shared GUI move manager now455 reset/reuse,zero timestamp/duration,float-rounded

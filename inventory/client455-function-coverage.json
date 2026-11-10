@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T19:26:08.990564+00:00",
+  "measured_at_utc": "2026-11-10T20:36:06.270411+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -12,19 +12,19 @@
     "image_base": "0x400000"
   },
   "ida_statistics": {
-    "total_functions": 37870,
+    "total_functions": 37871,
     "named_functions": 674,
     "library_functions": 1296,
-    "unnamed_functions": 35900,
+    "unnamed_functions": 35901,
     "total_strings": 12704,
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2375,
-    "unique_functions_with_complete_assembly_cfg": 559,
-    "unique_pinned_code_bytes": 642672,
-    "reports": 165,
-    "code_range_occurrences": 3915,
+    "unique_functions_with_pinned_code": 2419,
+    "unique_functions_with_complete_assembly_cfg": 606,
+    "unique_pinned_code_bytes": 660735,
+    "reports": 166,
+    "code_range_occurrences": 3973,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -447,6 +447,10 @@
       "sha256": "86353aef5bbc13204217d714229ad2ce19912008c6eaf1f48ea9713963184096"
     },
     {
+      "file": "inventory/client455-option-reference.json",
+      "sha256": "fe66eac277d667e8815440230271a64d623731f8745cae74ce0196a483014d9a"
+    },
+    {
       "file": "inventory/client455-player-equipment-reference.json",
       "sha256": "b35c7983d764b691eae1df0f1ced84d6f101ae96dbaa153e9943bfe473b20ed6"
     },
@@ -833,6 +837,14 @@
       "sha256": "f6e0147ac2a80cd8ddd403038920d476d4a28ce3b72dd9a8afce9072aef5c60e"
     },
     {
+      "file": "artifacts/client455-progress/option164-reference/option.json",
+      "sha256": "9691830dffe58b7cd471f5284b230f2c8f5433ad19a398a8db9a12e8316127ee"
+    },
+    {
+      "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+      "sha256": "75d53f91b0a17ea9466a6785fa6b7f5577ace394b3a1b2935af9e9851708aee5"
+    },
+    {
       "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
       "sha256": "84f016bfea95efc3e531174072eeca509494063cb2dc1dc1823bbe4ca2acb9c9"
     },
@@ -908,11 +920,11 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "6923ca560ad69185b5a45a027f0b50c0d5a959cfef65a27efb5c0bb317d81a0e"
+      "sha256": "a6c224abf0916793f985a9fc285670f8bc679fd1052a80ac1c1009f623251898"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
-      "sha256": "cb2a14ef06bac9ac3dc12d4ea81d7c9bc34661759d18f35adc2ce4b2bd565679"
+      "sha256": "4068bfbb1fb3c3d78f1c93f04729af33ea9f7f5a5c20db5b51f924a4dc22b293"
     }
   ],
   "excluded_unresolved": [
@@ -1487,6 +1499,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x6a40",
+      "ida_name": "sub_406A40",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x6a40",
+          "bytes": 82
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 29
+        }
+      ]
     },
     {
       "rva": "0x6cb0",
@@ -13218,6 +13249,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x14c440",
+      "ida_name": "sub_54C440",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x14c440",
+          "bytes": 83
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
       "rva": "0x14c980",
       "ida_name": "sub_54C980",
       "reports": [
@@ -18322,6 +18372,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x222300",
+      "ida_name": "sub_622300",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x222300",
+          "bytes": 38
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
       "rva": "0x2233c0",
       "ida_name": "sub_6233C0",
       "reports": [
@@ -21686,7 +21755,8 @@
       "rva": "0x266550",
       "ida_name": "sub_666550",
       "reports": [
-        "inventory/client455-char-info-reference.json"
+        "inventory/client455-char-info-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -21697,6 +21767,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/charinfo161-reference/charinfo.json",
+          "instructions": 16
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
           "instructions": 16
         }
       ]
@@ -22377,6 +22451,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x2823b0",
+      "ida_name": "sub_6823B0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2823b0",
+          "bytes": 35
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x2acfa0",
@@ -23940,6 +24033,489 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x310c80",
+      "ida_name": "sub_710C80",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x310c80",
+          "bytes": 954
+        },
+        {
+          "rva": "0x6466a0",
+          "bytes": 569
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 411
+        }
+      ]
+    },
+    {
+      "rva": "0x311080",
+      "ida_name": "sub_711080",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x311080",
+          "bytes": 817
+        },
+        {
+          "rva": "0x6468e0",
+          "bytes": 569
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 381
+        }
+      ]
+    },
+    {
+      "rva": "0x3113c0",
+      "ida_name": "sub_7113C0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3113c0",
+          "bytes": 7324
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 2050
+        }
+      ]
+    },
+    {
+      "rva": "0x313060",
+      "ida_name": "sub_713060",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313060",
+          "bytes": 985
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 299
+        }
+      ]
+    },
+    {
+      "rva": "0x313440",
+      "ida_name": "sub_713440",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313440",
+          "bytes": 98
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x3134b0",
+      "ida_name": "sub_7134B0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3134b0",
+          "bytes": 115
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 40
+        }
+      ]
+    },
+    {
+      "rva": "0x313530",
+      "ida_name": "sub_713530",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313530",
+          "bytes": 145
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 45
+        }
+      ]
+    },
+    {
+      "rva": "0x3135d0",
+      "ida_name": "sub_7135D0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3135d0",
+          "bytes": 61
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 24
+        }
+      ]
+    },
+    {
+      "rva": "0x313610",
+      "ida_name": "sub_713610",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313610",
+          "bytes": 126
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 42
+        }
+      ]
+    },
+    {
+      "rva": "0x313690",
+      "ida_name": "sub_713690",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313690",
+          "bytes": 106
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 40
+        }
+      ]
+    },
+    {
+      "rva": "0x313700",
+      "ida_name": "sub_713700",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313700",
+          "bytes": 181
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 54
+        }
+      ]
+    },
+    {
+      "rva": "0x3137c0",
+      "ida_name": "sub_7137C0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3137c0",
+          "bytes": 153
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x313860",
+      "ida_name": "sub_713860",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313860",
+          "bytes": 153
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x313900",
+      "ida_name": "sub_713900",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313900",
+          "bytes": 1442
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 435
+        }
+      ]
+    },
+    {
+      "rva": "0x313eb0",
+      "ida_name": "sub_713EB0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x313eb0",
+          "bytes": 571
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 170
+        }
+      ]
+    },
+    {
+      "rva": "0x3140f0",
+      "ida_name": "sub_7140F0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3140f0",
+          "bytes": 62
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 26
+        }
+      ]
+    },
+    {
+      "rva": "0x314130",
+      "ida_name": "sub_714130",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314130",
+          "bytes": 50
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 21
+        }
+      ]
+    },
+    {
+      "rva": "0x314170",
+      "ida_name": "sub_714170",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314170",
+          "bytes": 82
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x3141d0",
+      "ida_name": "sub_7141D0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3141d0",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 22
+        }
+      ]
+    },
+    {
+      "rva": "0x314210",
+      "ida_name": "sub_714210",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314210",
+          "bytes": 128
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 42
+        }
+      ]
+    },
+    {
+      "rva": "0x314290",
+      "ida_name": "sub_714290",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314290",
+          "bytes": 233
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 74
+        }
+      ]
+    },
+    {
+      "rva": "0x314380",
+      "ida_name": "sub_714380",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314380",
+          "bytes": 80
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x3143d0",
+      "ida_name": "sub_7143D0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3143d0",
+          "bytes": 174
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 57
+        }
+      ]
+    },
+    {
+      "rva": "0x314480",
+      "ida_name": "sub_714480",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x314480",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x3144a0",
+      "ida_name": "sub_7144A0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3144a0",
+          "bytes": 50
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/option.json",
+          "instructions": 22
+        }
+      ]
+    },
+    {
       "rva": "0x331cb0",
       "ida_name": "sub_731CB0",
       "reports": [
@@ -25360,7 +25936,8 @@
       "reports": [
         "inventory/client455-hud-reference.json",
         "inventory/client455-linker-window-reference.json",
-        "inventory/client455-minimap-opacity-reference.json"
+        "inventory/client455-minimap-opacity-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25372,6 +25949,10 @@
         {
           "file": "artifacts/client455-progress/hud159-reference/session.json",
           "instructions": 87
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 87
         }
       ]
     },
@@ -25379,7 +25960,8 @@
       "rva": "0x3b2c60",
       "ida_name": "sub_7B2C60",
       "reports": [
-        "inventory/client455-minimap-opacity-reference.json"
+        "inventory/client455-minimap-opacity-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25387,13 +25969,19 @@
           "bytes": 50
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 26
+        }
+      ]
     },
     {
       "rva": "0x3b2d80",
       "ida_name": "sub_7B2D80",
       "reports": [
-        "inventory/client455-char-info-reference.json"
+        "inventory/client455-char-info-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25404,6 +25992,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/charinfo161-reference/charinfo.json",
+          "instructions": 70
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
           "instructions": 70
         }
       ]
@@ -25611,7 +26203,8 @@
       "rva": "0x3b5650",
       "ida_name": "sub_7B5650",
       "reports": [
-        "inventory/client455-minimap-opacity-reference.json"
+        "inventory/client455-minimap-opacity-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25619,7 +26212,12 @@
           "bytes": 33
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x3b5680",
@@ -25636,11 +26234,31 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3b56a0",
+      "ida_name": "sub_7B56A0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b56a0",
+          "bytes": 492
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 156
+        }
+      ]
+    },
+    {
       "rva": "0x3b5890",
       "ida_name": "sub_7B5890",
       "reports": [
         "inventory/client455-char-info-reference.json",
-        "inventory/client455-modal-reference.json"
+        "inventory/client455-modal-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25652,6 +26270,10 @@
         {
           "file": "artifacts/client455-progress/charinfo161-reference/values.json",
           "instructions": 102
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 102
         }
       ]
     },
@@ -25659,7 +26281,8 @@
       "rva": "0x3b59e0",
       "ida_name": "sub_7B59E0",
       "reports": [
-        "inventory/client455-char-info-reference.json"
+        "inventory/client455-char-info-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25670,6 +26293,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/charinfo161-reference/values.json",
+          "instructions": 60
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
           "instructions": 60
         }
       ]
@@ -25692,7 +26319,8 @@
       "rva": "0x3b5d30",
       "ida_name": "sub_7B5D30",
       "reports": [
-        "inventory/client455-modal-reference.json"
+        "inventory/client455-modal-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25700,13 +26328,19 @@
           "bytes": 143
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 50
+        }
+      ]
     },
     {
       "rva": "0x3b5dc0",
       "ida_name": "sub_7B5DC0",
       "reports": [
-        "inventory/client455-char-info-reference.json"
+        "inventory/client455-char-info-reference.json",
+        "inventory/client455-option-reference.json"
       ],
       "ranges": [
         {
@@ -25717,6 +26351,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/charinfo161-reference/values.json",
+          "instructions": 73
+        },
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
           "instructions": 73
         }
       ]
@@ -28014,6 +28652,90 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x42b220",
+      "ida_name": "sub_82B220",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42b220",
+          "bytes": 497
+        },
+        {
+          "rva": "0x657cd0",
+          "bytes": 60
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 164
+        }
+      ]
+    },
+    {
+      "rva": "0x42b8c0",
+      "ida_name": "sub_82B8C0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42b8c0",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x42bb70",
+      "ida_name": "sub_82BB70",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42bb70",
+          "bytes": 24
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 14
+        }
+      ]
+    },
+    {
+      "rva": "0x42c000",
+      "ida_name": "sub_82C000",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42c000",
+          "bytes": 497
+        },
+        {
+          "rva": "0x657d10",
+          "bytes": 60
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 164
+        }
+      ]
+    },
+    {
       "rva": "0x42c490",
       "ida_name": "sub_82C490",
       "reports": [
@@ -28148,6 +28870,25 @@
       ]
     },
     {
+      "rva": "0x42c930",
+      "ida_name": "sub_82C930",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42c930",
+          "bytes": 21
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 14
+        }
+      ]
+    },
+    {
       "rva": "0x42c9b0",
       "ida_name": "sub_82C9B0",
       "reports": [
@@ -28189,6 +28930,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x42ca70",
+      "ida_name": "sub_82CA70",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42ca70",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
     },
     {
       "rva": "0x42ce90",
@@ -28370,6 +29130,29 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x42ead0",
+      "ida_name": "sub_82EAD0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42ead0",
+          "bytes": 497
+        },
+        {
+          "rva": "0x657e50",
+          "bytes": 60
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 164
+        }
+      ]
+    },
+    {
       "rva": "0x42ede0",
       "ida_name": "sub_82EDE0",
       "reports": [
@@ -28411,6 +29194,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x42eea0",
+      "ida_name": "sub_82EEA0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x42eea0",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
     },
     {
       "rva": "0x42f4b0",
@@ -28577,6 +29379,82 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x4324f0",
+      "ida_name": "sub_8324F0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4324f0",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x432550",
+      "ida_name": "sub_832550",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x432550",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x432670",
+      "ida_name": "sub_832670",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x432670",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x4327b0",
+      "ida_name": "sub_8327B0",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4327b0",
+          "bytes": 31
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
       "rva": "0x432970",
       "ida_name": "sub_832970",
       "reports": [
@@ -28625,6 +29503,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x432a50",
+      "ida_name": "sub_832A50",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x432a50",
+          "bytes": 24
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 14
+        }
+      ]
+    },
+    {
       "rva": "0x432ed0",
       "ida_name": "sub_832ED0",
       "reports": [
@@ -28640,6 +29537,25 @@
         {
           "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
           "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x433590",
+      "ida_name": "sub_833590",
+      "reports": [
+        "inventory/client455-option-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x433590",
+          "bytes": 21
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/option164-reference/dependencies.json",
+          "instructions": 14
         }
       ]
     },
@@ -38408,8 +39324,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 28,
-    "unique_functions_with_complete_assembly_cfg": 30
+    "unique_functions_with_pinned_code": 44,
+    "unique_functions_with_complete_assembly_cfg": 47
   },
   "M6": "OPEN",
   "M9": "OPEN",

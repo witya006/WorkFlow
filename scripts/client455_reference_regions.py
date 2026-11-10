@@ -12,7 +12,7 @@ def verify_regions(raw_file):
         starts={int(line['addr'],16) for line in lines};assert len(starts)==len(lines)==pages[0]['total_instructions']
         assert all(len(page['asm']['lines'])<=100 for page in pages)
         cfg=next(c for c in raw['cfg']['result'] if int(c['addr'],16)==addr)
-        assert cfg['cursor']['done'] and cfg['count']==cfg['total_blocks']
+        assert cfg['cursor']['done'] and cfg['count']==cfg['total_blocks']==len(cfg['blocks'])
         blocks=sorted((b for b in cfg['blocks'] if b['size']>0),key=lambda b:int(b['start'],16))
         assert all(int(b['start'],16) in starts for b in blocks)
         assert all(any(int(b['start'],16)<=a<int(b['end'],16) for b in blocks) for a in starts)

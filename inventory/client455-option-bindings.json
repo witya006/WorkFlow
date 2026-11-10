@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "6b5e61e60632cc17ceedbeca5ea692bd789a9030c6f72da0ecc0b139b1838aff",
+    "bytes": 2364928,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x182c50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x310c80",
+      "symbol": "CGUIOptionWindow::CGUIOptionWindow",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x99350"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x311080",
+      "symbol": "CGUIOptionWindow::~CGUIOptionWindow",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x99750"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3113c0",
+      "symbol": "CGUIOptionWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x99a10"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313060",
+      "symbol": "CGUIOptionWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b360"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313440",
+      "symbol": "CGUIOptionWindow::SetSoundOption",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b2d0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3134b0",
+      "symbol": "CGUIOptionWindow::GetSoundOption",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x999c0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313530",
+      "symbol": "CGUIOptionWindow::SetGraphicOption",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b230"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3135d0",
+      "symbol": "CGUIOptionWindow::GetGraphicOption",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313610",
+      "symbol": "CGUIOptionWindow::SwitchOn",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b5c0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313690",
+      "symbol": "CGUIOptionWindow::IsSwitchOn",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313700",
+      "symbol": "CGUIOptionWindow::SelectCamera",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b1a0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3137c0",
+      "symbol": "CGUIOptionWindow::SelectEax455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313860",
+      "symbol": "CGUIOptionWindow::SelectSpecial455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313900",
+      "symbol": "CGUIOptionWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9a920"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x313eb0",
+      "symbol": "CGUIOptionWindow::ScrollEvent",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b080"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x314210",
+      "symbol": "CGUIOptionWindow::Update",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9b610"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x314290",
+      "symbol": "CGUIOptionWindow::SetTargetingMode455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x314380",
+      "symbol": "CGUIOptionWindow::SetTargetingFilters455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3143d0",
+      "symbol": "CGUIOptionWindow::SetTargetingFilter455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x314480",
+      "symbol": "CGUIOptionWindow::GetTargetingMode455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3144a0",
+      "symbol": "CGUIOptionWindow::IsTargetingFilter455",
+      "source": {
+        "file": "scripts/native/client455_option_window.inc",
+        "sha256": "9158047f423e185aa4b8f5a87086252b9a646cfa4e86d6e0a9c2b47fd943c76b"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual options owner/controls/messages with controlled fields;ordinary UI creation returned;full settings/providers/edge domains open",
+      "complete_equivalence": false
+    }
+  ],
+  "generator": {
+    "file": "scripts/checkpoint_client455_option.py",
+    "sha256": "126428d2c5ea5ab8f632e1f5a64c6d709eca9061c7b9df483b7b6c158e477a97"
+  }
+}
