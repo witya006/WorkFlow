@@ -11,9 +11,12 @@ def main():
     source=WS/'scripts/native/client455_account_probe.cpp';exe=build_full_object_probe('account',source);client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']);parent=WS/'work/m9'/sha(exe)[:8];parent.mkdir(parents=True,exist_ok=True);index=1
     while (parent/f'account-{index:03d}').exists():index+=1
     run=parent/f'account-{index:03d}';run.mkdir();target=run/exe.name;shutil.copyfile(exe,target);inputs=[]
-    for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
+    for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','DataTable/Character.edf','DataTable/ko-kr/NDCharacter.edf','SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
         original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     inputs+=copy_character_shaders(run)
+    classes=json.loads((WS/'inventory/client455-avatar-classes-reference.json').read_text());expected=next(c['expected'] for c in classes['cases'] if c['locale']=='ko-kr');classSource=WS/expected['file']
+    if sha(classSource)!=expected['sha256']:raise ValueError('Changed class oracle')
+    classTarget=run/'registered-class-expected.bin';shutil.copyfile(classSource,classTarget);inputs.append({'file':classTarget.relative_to(WS).as_posix(),'sha256':sha(classTarget)})
     config=run/'R3Engine.ini';config.write_text('[Setup]\nLanguage=Korea\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n',encoding='ascii');inputs.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config)})
     startup=subprocess.STARTUPINFO();startup.dwFlags=subprocess.STARTF_USESHOWWINDOW;startup.wShowWindow=0
     try:result=subprocess.run([str(target)],cwd=run,capture_output=True,timeout=35,creationflags=subprocess.CREATE_NO_WINDOW,startupinfo=startup)
@@ -25,6 +28,7 @@ def main():
     report['world_entry_sources']={name:sha(WS/'scripts/native'/name) for name in ['client455_world_entry.h','client455_world_entry.inc','client455_world_entry_probe.inc']}
     report['registered_character_sources']={name:sha(WS/'scripts/native'/name) for name in ['client455_registered_characters.h','client455_registered_characters.inc','client455_registered_characters_probe.inc']}
     registered_result=run/'registered-characters-result.json';report['registered_character_output']={'file':registered_result.relative_to(WS).as_posix(),'sha256':sha(registered_result)};report['registered_character_native']=json.loads(registered_result.read_text())
+    report['real_registered_classes']=dict(rows=3,table_classes=165,actual_encrypted_receiver=True,source_reference_sha256=sha(WS/'inventory/client455-avatar-classes-reference.json'),full_appearance_accepted=False)
     report['world_entry_reference_sha256']=sha(WS/'inventory/client455-world-entry-reference.json')
     world_result=run/'world-entry-result.json';report['world_entry_output']={'file':world_result.relative_to(WS).as_posix(),'sha256':sha(world_result)};report['world_entry_native']=json.loads(world_result.read_text())
     report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')

@@ -1,5 +1,12 @@
 # Аудит окружения — 04.11.2026
 
+Дополнение144(10.11.2026):own ea25eea5… собран182/20/link0;
+Avatarclassindex/name writers165/3locales иencryptedreceiver3Avatarclasses PASS.
+Fresh ordinaryLogin70/3219ms inspected,nofatal.23textwidgets провереныкак
+ownerданных;полныйUIlayout/classskills/equipment/selection OPEN.
+IDA01ef697a saved/closed;новыхустановокнет.
+research/client455-avatar-classes.md;Gate inventory/client455-avatar-classes-checkpoint.json.
+
 Оценка10.11.2026: [progress-report.md](progress-report.md). Сборочные входы
 для выбраннойконфигурации обеспечены;полнота исходников/ресурсов/поведения455
 не доказана. 143 PARTIAL:сборка b41d50ff… иобычный Login проверены;14таблиц,

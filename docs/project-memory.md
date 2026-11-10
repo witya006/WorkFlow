@@ -1,5 +1,35 @@
 # Память проекта
 
+Текущий144 PARTIAL — inventory/client455-avatar-classes-checkpoint.json;
+research/client455-avatar-classes.md. Own ea25eea5222039073ddf7e7823219336080ae298fd78afa0e99b38a65584f812,
+x86/base400000/entry174FC0/2294784bytes;182client/20kernels/link0/unresolved0.
+Engine137 unchanged. Before144 сохраняет точную143базу49files.
+14fullfunc/460instructions/76CFG equal2pins;actual Avatar/165classes/3locales
+и23textwidgets PASS. Numeric slot0/no slot1 меняеттолькоlabel4;string меняет
+label4 thenbase/storedname5. Slot0/slot1exists меняетbase5;slot1 base0→label5
+thenclass1→label4;slots2/3 namesunchanged. UIabsent storedname не меняется.
+Copy32 zeroesall/copies≤31. CharInfolegacy Level/Guild/Attribute не затронуты.
+Отдельные23valuewidgets пока НЕ отрисованыкак455layout. CreateClassSkill
+callerесть,fullcallback ещёlegacy/unported;native tests board-absent Loginbranch.
+Protected test access черезderivedProbeAvatar;public APIрадиtests не меняли.
+SetClassName/SetAdvancedClassName455 inlined вproduction,не искатьотдельныйMAP.
+
+Affected account/registered suite fresh:3real classindices fromCharacter165
+примененыactualencrypted1/9receiver к3Avatar;UIabsent namesstayempty.
+Actualordinaryreceiver CALL кnewsetter декодирован. Probeaccount теперьstages
+Character/NDCharacter иAC44oracle. Fullappearance/auth не приняты.
+Fresh WinMain/Miles/Login70/3219ms/640x500 viewed:lobby/waiting,nofatal;
+ordinarysuccess bootstrap не исполнялся. Classstaging6refs/3.04MB/newpool0.
+IDA01ef697a saved/closed;livejobsнет. Оценка25%(20–35%),0/12fullacceptance.
+
+Следующий145:typed item/default/equipment→registered appearance,затем
+remainingbootstrap/selection. Snapshot144 черезsnapshot_client455_runtime.py
+145 client455-avatar-classes-checkpoint доизменений. LegacyITEM_DATA/CEquipItem
+layouts отличаются:не cast455rows и не подменятьappearance syntheticмоделью.
+Classskillcallback/полный23labelUI/остальныесценарии остаютсявbacklogM9.
+
+## Историческая база143
+
 Обновлено 10.11.2026. **143 PARTIAL; M6/M6F/M7/M9 OPEN.**
 Gate: inventory/client455-character-tables-checkpoint.json.
 Исследование: research/client455-character-tables.md. Оценка: docs/progress-report.md.

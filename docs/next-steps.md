@@ -1,5 +1,21 @@
 # Следующие шаги
 
+Текущий144 PARTIAL:inventory/client455-avatar-classes-checkpoint.json;
+research/client455-avatar-classes.md. Own ea25eea5…/182client/20kernels/link0.
+Actual Avatarclassindices/names165/3locales иencrypted1/9receiver3Avatar PASS.
+23textwidgets имеютотдельныеtargetиндексы;полныйlayout/render ещёopen.
+Classskillcallback ещёlegacy;полныеclasses/equipment/selection не приняты.
+Fresh ordinaryLogin70/3219ms viewed. Exact143вbefore144.
+
+**Далее145:**typed item/default/equipment иregistered-characterappearance;
+потомremainingbootstrap/ordinaryselection. Сначалаsnapshot144:
+scripts/Invoke-Python.ps1 scripts/snapshot_client455_runtime.py 145 client455-avatar-classes-checkpoint.
+Не cast455rows вlegacyITEM_DATA/CEquipItem;читатьреальныеmetadata/material/
+boneconsumer контракты. Полныйclassskillcallback и455CharInfo layout сохранить
+вbacklogM9;текущий23valueowner не означаетвидимыйцелыйUI.
+
+Исторические143/142ниже;M6/M6F/M7/M9 OPEN.
+
 Текущая оценка и конкретные опоры: docs/progress-report.md.
 **143 PARTIAL**:Gate inventory/client455-character-tables-checkpoint.json;
 research/client455-character-tables.md. Ownb41d50ff…/182client/20kernels/link0.

@@ -1092,3 +1092,8 @@ Fresh ownb41d50ff… Login/lobbyframe просмотрен. Полные Avatarc
 skillboardpopulation/bootstrap/selection не приняты;M6/M6F/M7/M9 OPEN.
 Gate inventory/client455-character-tables-checkpoint.json;
 research/client455-character-tables.md. Общаяоценка25%(20–35%) не меняется.
+Текущий144 PARTIAL:actual Avatarclassindex/name writers165/3locales иactual
+encrypted1/9receiver3real classindices PASS;ordinaryLogin viewed.
+Отдельные23textwidgets не доказывают455UIlayout/render. Classskillcallback,
+equipment/appearance/selection остаютсяopen.
+Gate inventory/client455-avatar-classes-checkpoint.json;research/client455-avatar-classes.md.

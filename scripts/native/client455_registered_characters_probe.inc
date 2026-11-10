@@ -1,11 +1,15 @@
 static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_NET_BUFFER& send,_NET_BUFFER& receive){
     static_assert(sizeof(_reged_char_result_zone)==506,"455fixed response declaration");
+    struct ClassExpected{DWORD index;char code[32],name[32];};ClassExpected classExpected[3];
+    FILE* classFile=std::fopen("registered-class-expected.bin","rb");REQUIRE(classFile);char classMagic[4];DWORD classHeader[3];
+    REQUIRE(std::fread(classMagic,1,4,classFile)==4&&!std::memcmp(classMagic,"AC44",4)&&std::fread(classHeader,4,3,classFile)==3&&classHeader[0]==165);
+    REQUIRE(std::fread(classExpected,sizeof(ClassExpected),3,classFile)==3);std::fclose(classFile);
     BYTE packet[506]={};packet[0]=0;packet[1]=3;for(unsigned i=2;i<14;++i)packet[i]=BYTE(0xa0+i);
     const auto put32=[](BYTE* p,std::uint32_t value){for(unsigned i=0;i<4;++i)p[i]=BYTE(value>>(8*i));};
     const auto put64=[](BYTE* p,std::uint64_t value){for(unsigned i=0;i<8;++i)p[i]=BYTE(value>>(8*i));};
     const std::uint64_t times[3]={0x200000005ull,0x100000066ull,0x100000064ull};
     for(unsigned i=0;i<3;++i){BYTE* row=packet+14+164*i;std::sprintf(reinterpret_cast<char*>(row),"fixture-%u",i);if(i==2){row[0]=0xb0;row[1]=0xa1;row[2]='2';row[3]=0;}put32(row+17,0x12340000+i);row[21]=BYTE(i);row[22]=BYTE(i);
-        std::memcpy(row+23,"BFB0",5);row[28]=i?BYTE(10+i):0;put64(row+29,0x100000001ull+i);put64(row+37,0x200000003ull+i);
+        REQUIRE(std::strlen(classExpected[i].code)<=4);std::memcpy(row+23,classExpected[i].code,5);row[28]=i?BYTE(10+i):0;put64(row+29,0x100000001ull+i);put64(row+37,0x200000003ull+i);
         for(unsigned j=0;j<16;++j)row[49+j]=255;for(unsigned j=0;j<83;++j)row[73+j]=BYTE(j+i);put64(row+156,times[i]);
     }
     RF455RegisteredCharacters previous;previous.result=71;previous.count=1;previous.records[0].dalant=999;
@@ -17,6 +21,7 @@ static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_
     std::fputs("registered:parsed\n",stderr);std::fflush(stderr);
     REQUIRE(!g_pAvatarDummy&&!g_ifCharIF&&!g_pBoneMgr&&!g_pCharDataMgr&&!g_pItemDataMgr);
     REQUIRE(_CreateCharIF(GetD3dDevice())&&_CreateBoneMgr()&&_CreateMeshMgr()&&_CreateAnimationMgr()&&_CreateBoundBoxMgr()&&_CreateCharDataMgr()&&_CreateItemDataMgr());
+    RF455CharacterTables classTables;REQUIRE(classTables.loadCharacterFiles(RF455_GameItems().data)&&!g_pUiCharInfoWindow);
     std::fputs("registered:owners\n",stderr);std::fflush(stderr);
     _CreateAvatarDummy();REQUIRE(g_pAvatarDummy);std::fputs("registered:avatars\n",stderr);std::fflush(stderr);
     (network.*access(Active{}))[0]=1;REQUIRE(network.SystemMsg_RegedCharRequest_zone());
@@ -31,6 +36,7 @@ static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_
     std::fputs("registered:after-receiver\n",stderr);std::fflush(stderr);
     REQUIRE(network.GetResultOfUserInfo()==0&&!network.IsSendRequestMsg()&&network.GetLastestAvatarIndex()==0);
     for(unsigned i=0;i<3;++i){auto* avatar=_GetAvatarDummy(i);REQUIRE(avatar->GetIndex()==i&&avatar->GetRace()==i);
+        REQUIRE(avatar->GetClassDTIndex(0)==classExpected[i].index&&avatar->GetClassName()[0]==0);
         REQUIRE(avatar->GetLevel()==(i?10+i:1)&&avatar->GetSkipTutorial455()==(i?1:0));
         REQUIRE(avatar->GetDalant()==__int64(0x100000001ull+i)&&avatar->GetGold()==__int64(0x200000003ull+i));
         REQUIRE(!std::strcmp(avatar->GetName(),parsed.records[i].name));

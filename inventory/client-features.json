@@ -6,9 +6,76 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-CHARACTER-TABLES-143",
+      "id": "CLIENT455-AVATAR-CLASSES-144",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary Avatar class index/name writers using real455tables;separate23text widgets;full class skill/CharInfo layout/equipment/selection open",
+      "implementation": [
+        "scripts/client455_avatar_classes_port.py",
+        "scripts/native/client455_avatar_classes.inc"
+      ],
+      "reference": [
+        {
+          "rva": "0x12050"
+        },
+        {
+          "rva": "0x12140"
+        },
+        {
+          "rva": "0x12260"
+        },
+        {
+          "rva": "0x12280"
+        },
+        {
+          "rva": "0x122c0"
+        },
+        {
+          "rva": "0x123a0"
+        },
+        {
+          "rva": "0x12580"
+        },
+        {
+          "rva": "0x125f0"
+        },
+        {
+          "rva": "0x12610"
+        },
+        {
+          "rva": "0x12640"
+        },
+        {
+          "rva": "0x12690"
+        },
+        {
+          "rva": "0x126c0"
+        },
+        {
+          "rva": "0x263370"
+        },
+        {
+          "rva": "0x1e5920"
+        }
+      ],
+      "verification": "14fullfunc/460instructions/76positiveCFG equal both pins.3real locales/165classes actual Avatar;numeric/string distinction,UI absent retention,bounds/copy/23widgets/legacy fields pass.Updated encrypted1/9receiver applies3real class indices to actual Avatar;production CALL decoded.Fresh ordinary Login70/3219ms inspected;182client/20kernels/link0/unresolved0.",
+      "evidence": [
+        "inventory/client455-avatar-classes-reference.json",
+        "inventory/client455-avatar-classes-native.json",
+        "inventory/client455-avatar-classes-checkpoint.json",
+        "inventory/client455-account-native.json",
+        "research/client455-avatar-classes.md"
+      ],
+      "gaps": [
+        "CreateClassSkill caller restored but existing production board implementation remains unported;tests cover board-absent branch",
+        "23value widgets own text state;full455CharInfo layout/input/render and other writers remain open",
+        "Equipment/registered appearance/full bootstrap/selection/world/gameplay and all client-acceptance/unsafe/concurrent domains open"
+      ]
+    },
+    {
+      "id": "CLIENT455-CHARACTER-TABLES-143",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary CharacterDataMgr Player/SF5/Store/Character7+ND loaders and typed class lookup;Avatar/equipment/selection consumers remain open",
       "implementation": [
         "scripts/client455_character_tables_port.py",
@@ -74,7 +141,8 @@
         "Actual Avatar class setters/names and legacy Player/Monster/Store/skill consumers remain unmigrated",
         "Skill/force board dimensions and owners restored;population/UI/game callbacks remain legacy",
         "Remaining bootstrap/selection/world/gameplay/client acceptance and full unsafe/reload domains"
-      ]
+      ],
+      "superseded_by": "CLIENT455-AVATAR-CLASSES-144"
     },
     {
       "id": "CLIENT455-ITEM-BOOTSTRAP-142",

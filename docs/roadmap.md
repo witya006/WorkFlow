@@ -2,6 +2,12 @@
 
 ## Рабочая оценка на 2026-11-10
 
+Последний144 PARTIAL:own ea25eea5…;actual Avatarclass writers/165classes/3locales,
+encryptedreceiver3realAvatarclasses иобычныйLogin проверены.
+Gate:inventory/client455-avatar-classes-checkpoint.json. Полныеclassskills/
+CharInfo layout/equipment/appearance/selection ещёopen;далее145equipment.
+Оценка25% сохраняется.
+
 Компактный отчёт с границами доказательств и готовностью исходных данных:
 [progress-report.md](progress-report.md). Частичный этап143 проверен в собственной
 сборке b41d50ff…:14 таблиц,165class lookups,реальные панели умений иобычный Login.
@@ -35,8 +41,8 @@ Gate:inventory/client455-character-tables-checkpoint.json.
 Компилируются 182 клиентские единицы, 67 движка и 20 дополнительных модулей;
 собственный RF_Online.bin линкуется без неразрешённых символов. Это полнота
 текущей сборки, а не полнота исходников 455. Полных принятых областей — 0/12.
-Реестр содержит 145 записей о локальных, часто исторических и пересекающихся
-работах: 113 partial, 2 partial_component, 23 implemented, 2 verified и 5 прочих.
+Реестр содержит 146 записей о локальных, часто исторических и пересекающихся
+работах: 114 partial, 2 partial_component, 23 implemented, 2 verified и 5 прочих.
 Это не 144 завершённые возможности клиента.
 Полный игровой сценарий вход→выбор персонажа→мир→игра ещё не принят.
 

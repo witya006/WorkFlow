@@ -890,3 +890,6 @@ full455/M9 OPEN. research/client455-world-entry.md;world-entry-checkpoint.json.
 2026-11-10 /143:normal CharacterDataMgr Player/SF5/Store/Character7+ND,
 typed class lookups иactualSFboards проверены;research/client455-character-tables.md.
 Ownb41d50ff… ordinaryLogin PASS;fullAvatarclass/equipment/selection/M9 OPEN.
+2026-11-10 /144:actual Avatarclassindex/name writers иencryptedregistered
+receiver3realclasses проверены. Own ea25eea5…/ordinaryLogin PASS.
+Полныеclassskills/UIlayout/equipment/selection/M9 OPEN;research/client455-avatar-classes.md.

@@ -96,7 +96,8 @@
         "client455-normal-renderer-checkpoint",
         "client455-normal-accounting-checkpoint",
         "client455-animation-checkpoint",
-        "client455-registered-characters-checkpoint"
+        "client455-registered-characters-checkpoint",
+        "client455-avatar-classes-checkpoint"
       ]
     },
     {
@@ -255,7 +256,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "ecc5930154cf2d8efde62f2dbe75c0882292028eb91645a86b61a6c684571f95",
+      "sha256": "534fb4a454930b7d4c028c35433edaa5efce934a7341900564c2d0eb68a9c17c",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -271,7 +272,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "e35c661011801da865ec8642fec8d93b66d71198a8498ab4a0a55331282472de",
+      "sha256": "3cb840a9f831c24b3239dfac8a917bfdbe74b340ada5048f326d9ac36069292a",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -330,7 +331,7 @@
       "sha256": "574705bb981ff0b13489f45dc8811adf128499ae9eb6b8cd81890bac0e88c282",
       "status": "PARTIAL",
       "scope": "Ordinary PlayerCharacter/SF5/Store/Character7+ND loaders,typed class lookups and source board dimensions;legacy character/skill population/Avatar/class UI consumers open",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-world-frame-checkpoint": {
@@ -395,6 +396,14 @@
       "status": "PARTIAL",
       "scope": "Registered-character1/8 request and1/9 fixed506-byte reply/three164-byte records/real Avatar fields;not full bootstrap/classes/appearance/selection",
       "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-avatar-classes-checkpoint": {
+      "file": "inventory/client455-avatar-classes-checkpoint.json",
+      "sha256": "3f90f2aa0c20c084feb8d1b538eca9b475b2857daf381089c82568374d7ff8be",
+      "status": "PARTIAL",
+      "scope": "Ordinary Avatar class index/name writers through real455class tables;dedicated23value widgets;full skill callback/CharInfo layout/equipment/selection open",
+      "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -463,7 +472,7 @@
     },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
-      "sha256": "4fe45b010b3990cba5a0b9325a11bf71b47b1eb0e31310a7ebcf727308fd2f61",
+      "sha256": "520bdbbacac6634c6fd076c39c70749fe14731c96dba07613340ede5652cb53b",
       "status": "PARTIAL",
       "scope": "Ordinary own WinMain/Title/Login render with real lobby and recovered root registration;not complete455Title/Login/auth",
       "fresh_for_current_PE": true,
@@ -525,11 +534,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "b41d50ffb5001c04a54dd0f16bd471c2bc0168e4b8757a52eca7a41067e0b4ec",
-      "bytes": 2293248,
+      "sha256": "ea25eea5222039073ddf7e7823219336080ae298fd78afa0e99b38a65584f812",
+      "bytes": 2294784,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x174cd0",
+      "entry_rva": "0x174fc0",
       "sections": [
         ".text",
         ".rdata",
@@ -553,20 +562,20 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "e6a8d07bfe1e9b65c9ced328ffec930263188a618a3cb20f44071306e927c550",
+      "sha256": "d14753a4d018d290dbccb1bf83822d3325fca05f9e032a8f3c65abf0e6e2bb93",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-character-tables-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-avatar-classes-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "143 PARTIAL:ordinary CharacterDataMgr/14tables/165class lookups/actual SF boards;4real cases+DBCS and ordinary Login pass. Next Avatar classes/equipment/remaining bootstrap/selection.",
+    "current_work": "144 PARTIAL:actual Avatar class index/name writers,3real locales and encrypted receiver applying real classes to3Avatar. Ordinary Login pass;next equipment/appearance/remaining bootstrap/selection. Full skill callback and455CharInfo layout remain open.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "9bf5c38cd1c12c5f30c601996b6876e99bcbdab164a8bba21f5a6b869f4277c9",
+      "sha256": "ea5f1ef1cec246dcb4e9d0170f7615da00e52758c17a48328c4bab5d3ef2d645",
       "fresh_for_current_PE": true,
       "frame": {
-        "file": "work/m9/b41d50ff/login-frame001/login-frame.png",
-        "sha256": "377e802cf1bfbfed894e16d59160bf58eb18242e055f681e00db92e88acc5d0b"
+        "file": "work/m9/ea25eea5/login-frame001/login-frame.png",
+        "sha256": "6cd8db33464a5cb853d5cda28d35b8c4c64ce244207225db495d4c887fe55fe1"
       },
       "capture": {
         "result": 0,
@@ -580,8 +589,8 @@
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xae1dcf0",
-        "vtable": "0x877b84",
+        "object": "0xb39fbc0",
+        "vtable": "0xe58b84",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -598,10 +607,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "dc98f0c6195b156d168db708dc937ed09d9fcbd29efd9f3800f3a13abf3abf55",
-    "entries": 145,
+    "sha256": "18245fb85247d35f5138536a744443a759c78f2f76b267d8b78a97a37c914a78",
+    "entries": 146,
     "statuses": {
-      "partial": 113,
+      "partial": 114,
       "partial_component": 2,
       "audit_open": 1,
       "open": 2,
@@ -612,7 +621,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-CHARACTER-TABLES-143"
+      "CLIENT455-AVATAR-CLASSES-144"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -678,7 +687,7 @@
   },
   "character_tables143": {
     "id": "143",
-    "status": "PARTIAL_NATIVE_VERIFIED",
+    "status": "PARTIAL_NATIVE_VERIFIED_ON_PRESERVED143",
     "reference_report": {
       "file": "inventory/client455-character-tables-reference.json",
       "sha256": "8d1fcf4dcdf22a0f05ec34bb87d01fb9b10c78af6086405ba2e48c0152204e57"
@@ -726,7 +735,7 @@
         "ignored_character_short_reads": 0
       }
     ],
-    "native_verified_on_current_build": true,
+    "native_verified_on_current_build": false,
     "not_claimed": [
       "Avatar class/equipment/UI migration",
       "normal successful bootstrap",
@@ -819,7 +828,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "8b96905178c03a41656c37a8ea33968fa0f8e5c3ccdc932b353d20ae1618979a"
+    "sha256": "dc7aadeb3ea3c525d6601cf1b27e824e8af8d0938038e82bf79c2d2a5e9b8b1d"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

@@ -1,0 +1,128 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary Avatar class index/name writers through real455class tables;dedicated23value widgets;full skill callback/CharInfo layout/equipment/selection open",
+  "script": {
+    "file": "scripts/checkpoint_client455_avatar_classes.py",
+    "sha256": "208de697f855dfdad1903c46a1bf84ad611fa0228c531103aa0ee522d102fa50"
+  },
+  "normal_link_sha256": "534fb4a454930b7d4c028c35433edaa5efce934a7341900564c2d0eb68a9c17c",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ea25eea5222039073ddf7e7823219336080ae298fd78afa0e99b38a65584f812",
+    "bytes": 2294784,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x174fc0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_methods_rva": {
+    "CAvatar::SetClassDTIndex": "0x95d0",
+    "CAvatar::SetClassDTIndexByStrDTCode": "0x9630",
+    "CAvatar::RefreshClassNames455": "0x9410",
+    "CAvatar::SetPrimaryClassName455": "0x9ee0",
+    "RF455ItemDataStore::classByCode": "0xcb920",
+    "RF455ItemDataStore::classByIndex": "0xcba30",
+    "CNetworkMgr::SystemMsg_RegedCharResult_zone": "0x4d7d0"
+  },
+  "ordinary_registered_class_calls": [
+    {
+      "rva": "0x4d8da",
+      "target_rva": "0x9630",
+      "bytes": "e851bdfbff"
+    }
+  ],
+  "fresh_evidence": {
+    "avatar-classes-reference": {
+      "file": "inventory/client455-avatar-classes-reference.json",
+      "sha256": "74123a0cc49b9ff59179420fc90b9f1b44b265e0a5e892e684a3c8d1c41aa98a"
+    },
+    "avatar-classes-native": {
+      "file": "inventory/client455-avatar-classes-native.json",
+      "sha256": "f20f50118835df31e78294b3ed2ce59b3b1a4d0c6c77deaecb60049fb76d5dcb"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "aaccf077606fb1cf4c806e25ba75b6d4d105e7e1ff3bb64087db3ee9542ca4a0"
+    },
+    "login-checkpoint": {
+      "file": "inventory/client455-login-checkpoint.json",
+      "sha256": "520bdbbacac6634c6fd076c39c70749fe14731c96dba07613340ede5652cb53b"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "ea5f1ef1cec246dcb4e9d0170f7615da00e52758c17a48328c4bab5d3ef2d645"
+    },
+    "login-visual": {
+      "file": "inventory/client455-login-visual.json",
+      "sha256": "8c2b60973eba07ea81046406bbc8399ecf9fc637ed65c18656a181c2e650db93"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "e70a4adef3bb03f5fb99f80b11a7bc6d34f895ceb7e40da06fe6531bf3fc67ce"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "d14753a4d018d290dbccb1bf83822d3325fca05f9e032a8f3c65abf0e6e2bb93"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "8864056d131bc6ffdcfcacab9c7f78a4701c7a58fd1a659c208667ecafd83546"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "534fb4a454930b7d4c028c35433edaa5efce934a7341900564c2d0eb68a9c17c"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "8ce443ea42b313edfae8a034a78dd7b4cdfb09dcb309416f4538992ac2fddbe3"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "3cb840a9f831c24b3239dfac8a917bfdbe74b340ada5048f326d9ac36069292a"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "afd6e96db2519a66b4975e5af8d4306b9d1fcd20d53249c38ec88d8bd5698fa4"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "e5598fe364e755c7ddfd0b539f5b9c2af53ca8be4a8367b20821a2c28f9d76de"
+    }
+  },
+  "snapshot": {
+    "file": "artifacts/client455-progress/before144/manifest.json",
+    "sha256": "c93fb9bdf18a4163108814d03f8f5c88d5123785056adc18755c0ae3bd69112d"
+  },
+  "historical_base": {
+    "file": "artifacts/client455-progress/before144/inventory/client455-character-tables-checkpoint.json",
+    "sha256": "574705bb981ff0b13489f45dc8811adf128499ae9eb6b8cd81890bac0e88c282"
+  },
+  "real_locales": 3,
+  "class_rows": 165,
+  "actual_registered_Avatar_classes": 3,
+  "actual_index_and_name_writers": true,
+  "text_widget_owners": 23,
+  "full_class_skill_callback": false,
+  "full455CharInfo_layout": false,
+  "full_equipment_appearance": false,
+  "full_bootstrap": false,
+  "ordinary_selection_UI_accepted": false,
+  "full_client": false,
+  "gaps": [
+    "CreateClassSkill caller restored but existing production board implementation remains unported;tests cover board-absent branch",
+    "23value widgets own text state;full455CharInfo layout/input/render and other writers remain open",
+    "Equipment/registered appearance/full bootstrap/selection/world/gameplay and all client-acceptance/unsafe/concurrent domains open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

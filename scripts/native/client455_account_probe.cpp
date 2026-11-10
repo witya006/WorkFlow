@@ -10,6 +10,8 @@
 #include "gameprogress/cgameprogress.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "client455_client_items.h"
+#include "client455_character_tables.h"
 #include "client455_account.h"
 #include "client455_language.h"
 #include "client455_nation_paths.h"

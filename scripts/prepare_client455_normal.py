@@ -34,6 +34,7 @@ from client455_map_data_port import port_map_data
 from client455_resource_catalog_port import port_resource_catalog
 from client455_item_bootstrap_port import port_item_bootstrap
 from client455_character_tables_port import port_character_tables
+from client455_avatar_classes_port import port_avatar_classes
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -118,6 +119,8 @@ def main():
             if item_bootstrap_changed:changes.append('455ordinary Login cash/set-effect/Item47+ND loading and typed table accessor;legacy ITEM_DATA consumers/remaining bootstrap still open')
             raw,character_tables_changed=port_character_tables(raw,relative,section)
             if character_tables_changed:changes.append('455ordinary character manager PlayerCharacter/SF5/Store/Character7+ND,class typed lookups and7-6 board dimensions;legacy character/item consumers still open')
+            raw,avatar_classes_changed=port_avatar_classes(raw,relative,section,native)
+            if avatar_classes_changed:changes.append('455Avatar class index/name writers and23dedicated value widgets;fullskillcallbacks/UIlayout still open')
             raw,resource_changed=port_resource_object(raw,relative,native,section)
             if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             raw,item_changed=port_item_object(raw,relative,native,section)
@@ -901,6 +904,8 @@ def main():
     report['item_bootstrap_port_sha256']=sha((WS/'scripts/client455_item_bootstrap_port.py').read_bytes())
     for name in ['client455_item_bootstrap.h','client455_item_bootstrap.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['character_tables_port_sha256']=sha((WS/'scripts/client455_character_tables_port.py').read_bytes())
+    report['avatar_classes_port_sha256']=sha((WS/'scripts/client455_avatar_classes_port.py').read_bytes())
+    report['record_inputs']['client455_avatar_classes.inc']=sha((native/'client455_avatar_classes.inc').read_bytes())
     for name in ['client455_character_tables.h','client455_character_tables.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_registry.h','client455_nuclear_registry.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
