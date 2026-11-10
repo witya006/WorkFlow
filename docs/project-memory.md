@@ -1,5 +1,21 @@
 # Память проекта
 
+Оценка10.11.2026: docs/progress-report.md — компактный текущий отчёт.
+Подтверждённая база142: PE f0114c80…;точный normal-build берётся изbefore143,
+если нынешний build-report уже143. Не смешивать доказательства разных сборок.
+143 WIP не учтён вготовности:PlayerCharacter/SF5/Store/Character7+ND иtyped
+class lookup написаны,15functions/1737instructions/193CFG regions равны2pins;
+Python oracle5cases проходит. Native/runtime новой реализации НЕ проверены.
+Последняя правка Character ignoredshortread была ПОСЛЕ успешной компиляции143:
+сначала prepare/build/normal-consumers/link,затем новый full-object probe/gate.
+Raw143 сохранён;IDA5fe0894d saved/closed. КлассыAvatar/UI/equipment не менялись.
+Данные143:SFko/ru localization false;Storezh/ru default false,zhStore_1 true;
+Characterko203/ru682 ignoredreads —targetRead не меняет cursor/destination
+приошибке,5FC260 игнорируетрезультат. Не заменять mincounts/repair/resync.
+В143 проверитьextra seek5EEAA0 при необходимости;полнаяunsafe equivalence open.
+Оценкаостаётся25%(20–35%),0/12 fullacceptance. Нет обоснованного срокаM9.
+Приоритет A→B→C→D→E;неизменённыеbulk suites не повторять ради счётчика.
+
 Обновлено 2026-11-10. **142 PARTIAL; M6 открыт.**
 Gate: inventory/client455-item-bootstrap-checkpoint.json.
 Проверка: scripts/Invoke-Python.ps1 scripts/checkpoint_client455_item_bootstrap.py.

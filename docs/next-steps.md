@@ -1,5 +1,14 @@
 # Следующие шаги
 
+Текущая оценка и конкретные опоры: docs/progress-report.md.
+143WIP:15selected functions и5Python-oracle cases подтверждены;новаяnative
+реализация/линковка/runtime НЕ приняты. Последняя правка после build:
+prepare→build→normal-consumer proof→link→full-object Player/SF/Store/Character
+probe→обычный Login→gate. Затем Avatarclass/equipment/UI иоставшийсяbootstrap.
+143не добавлен в25%. Последняя завершённая частичная сборка —142f0114c80…,
+точное build-evidence лежит вbefore143;не использовать изменённый build143
+длядоказательства142. IDA5fe0894d saved/closed;live nativejobs нет.
+
 Обновлено 2026-11-10. **142 PARTIAL; M6 открыт.**
 Gate: inventory/client455-item-bootstrap-checkpoint.json.
 Доказательства: research/client455-item-bootstrap.md.

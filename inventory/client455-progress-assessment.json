@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "assessment_date": "2026-11-10",
   "scope_version": 1,
   "scope": "Full client455 behavior/source/build through M9,no graphics modernization,no server work",
@@ -542,6 +542,12 @@
         "architecture": "x86"
       }
     ],
+    "exact_linked_build_evidence": {
+      "file": "artifacts/client455-progress/before143/inventory/client455-normal-build.json",
+      "sha256": "bf8071d0c1a5a6229a7a96f0befddc537afa29363b3da8f2a73b4589cdfa1b8d",
+      "matches_link_record": true
+    },
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-item-bootstrap-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "current_work": "142 PARTIAL:ordinary initial cash/set/Item47+ND path and6real locale/selector cases;next character/class tables,legacy item consumers and selection",
@@ -627,7 +633,106 @@
     "resource_reference_scope": "Catalog bone/BBX references and a selected ANI search,including target RFS lookup;not a complete client asset inventory",
     "assembly_status": "Current selected client build is possible;this does not prove full455source completeness",
     "behavior_specification_status": "Incomplete:complete feature/packet/state/resource/scenario inventory is still missing;no defensible percentage for that missing denominator",
-    "original455source_completeness_percent": null
+    "original455source_completeness_percent": null,
+    "practical_readiness": [
+      {
+        "area": "Build inputs for the selected x86 configuration",
+        "state": "READY",
+        "measured": "182/182 client and67/67 engine units;0 unresolved symbols in the exact linked build",
+        "limit": "Not completeness of original455source"
+      },
+      {
+        "area": "Binary reference for reverse engineering",
+        "state": "READY",
+        "measured": "2 pinned x86 binaries,hashes checked",
+        "limit": "Not all behavior has been mapped or compared"
+      },
+      {
+        "area": "Runtime assets and tables",
+        "state": "PARTIAL",
+        "measured": "Resource9groups/30623rows andItem47tables/76049rows;1120 checked unresolved resource references",
+        "limit": "No complete required-asset denominator;some locale/selector tables disagree"
+      },
+      {
+        "area": "Behavioral specification",
+        "state": "INCOMPLETE",
+        "measured": "12 domain planning map;144 overlapping historical records",
+        "limit": "Full feature/packet/state inventory still missing"
+      },
+      {
+        "area": "Acceptance scenarios",
+        "state": "INCOMPLETE",
+        "measured": "0/12 full domains accepted;ordinary Login lobby/waiting observed",
+        "limit": "No complete ordinary login/selection/world/gameplay chain"
+      }
+    ]
+  },
+  "unfinished_work": {
+    "id": "143",
+    "excluded_from_completion_estimate": true,
+    "status": "STATIC_CONFIRMED_NATIVE_RUNTIME_NOT_VERIFIED",
+    "reference_report": {
+      "file": "inventory/client455-character-tables-reference.json",
+      "sha256": "8d1fcf4dcdf22a0f05ec34bb87d01fb9b10c78af6086405ba2e48c0152204e57"
+    },
+    "static_functions": 15,
+    "real_input_diagnostics": [
+      {
+        "name": "ko-kr-default",
+        "results": {
+          "player": true,
+          "skill": false,
+          "store": true,
+          "character": true
+        },
+        "ignored_character_short_reads": 203
+      },
+      {
+        "name": "zh-tw-default",
+        "results": {
+          "player": true,
+          "skill": true,
+          "store": false,
+          "character": true
+        },
+        "ignored_character_short_reads": 0
+      },
+      {
+        "name": "ru-ru-default",
+        "results": {
+          "player": true,
+          "skill": false,
+          "store": false,
+          "character": true
+        },
+        "ignored_character_short_reads": 682
+      },
+      {
+        "name": "zh-tw-store1",
+        "results": {
+          "player": true,
+          "skill": true,
+          "store": true,
+          "character": true
+        },
+        "ignored_character_short_reads": 0
+      }
+    ],
+    "not_claimed": [
+      "Avatar class/equipment/UI migration",
+      "normal successful bootstrap",
+      "new linked/runtime accepted build"
+    ]
+  },
+  "storage": {
+    "audit_file": "inventory/workspace-storage-audit.json",
+    "audit_sha256": "ebd59f7f8a7d141271112e27bb41db3e31d821b4e865d4becb060d4724038a8e",
+    "audit_time_local": "2026-11-10 05:14:20",
+    "logical_gib": 150.95,
+    "unique_file_size_gib": 42.29,
+    "physical_allocation_measured": false,
+    "files_deleted": false,
+    "note": "Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement."
   },
   "uncertainty": {
     "known_incomplete": [
@@ -698,12 +803,14 @@
       2,
       4
     ],
+    "ratio_is_functional_scope_not_effort_or_time": true,
     "calendar_deadline": null,
-    "reason": "Four elapsed days and microscopic tests do not calibrate the larger integration tasks. Re-estimate after first complete Login/character/map scenario."
+    "remaining_hours": null,
+    "reason": "No defensible throughput sample for a complete integration scenario. Functional percentages do not imply the same ratio of time. Re-estimate after first complete Login/character/map scenario."
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "c65564ed9af7a8cf8b207d7c4ca2f5b912e4b60a1aaa5157952ab37dbed64e50"
+    "sha256": "d667ef83efc8bae64866208b9242162b18f88611e56f10650067f376880d593f"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
