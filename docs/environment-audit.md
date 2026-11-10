@@ -1,4 +1,14 @@
-# Актуализация146attachment —10.11.2026
+# Актуализация146conditions —10.11.2026
+
+Новыхустановокнет. Typed special/upgrade/combinedstats/weakpart source,
+52fullfunctions/2323instructions/357CFG equal2pins,6dataregionspinned.
+Native22realitems/independentmodifierbytes+totals/clone removal PASS.
+ТолькоCPU,3assetinputs,newpool7953bytes;GPU/models/texturesнеиспользовались.
+Ordinary145неизменна;owner skill/UI callbacks ещёнеподключены,fullM9OPEN.
+IDA71813681saved/closed/list0;nativejobsзавершены.
+research/client455-equipment-conditions.md;далееобычноеCPlayerProc/Avatarсоединение.
+
+# Предыдущая актуализация146attachment —10.11.2026
 
 Новыхустановокнет.23fullfunctions/1953instructions/223CFG иswitchтаблица
 равны2pins. Sourceпозицииэффектов+25реальныхмоделей/5races/5cloakmagic

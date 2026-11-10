@@ -22,8 +22,10 @@ Gate:inventory/client455-equipment-checkpoint.json.
 расчёт высоты по meshID, создание/освобождение эффектов и звук плаща.
 Добавлены позиции эффектов через настоящиеparts/posecaches:25моделей,
 пять вариантов персонажа,настоящий cloakmagic;ошибки undefined ещё открыты.
+Расчёт special/upgrade/combinedstats/weakpart проверен на22реальных предметах;
+владельцы skill/UI иобычные producers/consumers ещё не подключены.
 Обычная145сборка ещё не использует полный контроллер146.
-Ближайшее:состояния экипировки →CPlayerProc/Avatar →внешний вид/выбор.
+Ближайшее:соединить обработчики с CPlayerProc/Avatar →внешний вид/выбор.
 
 - [Опорная оценка и оставшийся объём](docs/progress-report.md).
 - [Короткая дорожная карта](docs/roadmap.md).
@@ -35,6 +37,7 @@ Gate:inventory/client455-equipment-checkpoint.json.
 - [ANI/fade146](research/client455-equipment-providers.md).
 - [Эффекты146](research/client455-equipment-effects.md).
 - [Привязки146](research/client455-equipment-attachment.md).
+- [Расчёт характеристик146](research/client455-equipment-conditions.md).
 
 Доказательства:inventory/ и research/. Большие входы/сборки/IDA — игнорируемые
 work/ и artifacts/. Python через scripts/Invoke-Python.ps1.

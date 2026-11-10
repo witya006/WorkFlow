@@ -1,4 +1,45 @@
-# Актуальное продолжение146:позиции эффектов проверены
+# Актуальное продолжение146:числовая цепочка условий проверена
+
+Gate inventory/client455-equipment-conditions-checkpoint.json PARTIAL_COMPONENT;
+research/client455-equipment-conditions.md. Sourceclient455_equipment_conditions.h.
+52fullfunctions/2323instructions/357CFG equal2pins;45newhelpers+7reusedcore
+fromequipment-providers146.6dataregions:switches,weights,virtualslots pinned.
+Native CPU source22realitems(21accepted),independent200modifierbytes/totals,
+66smallfrozencontracts PASS/exit0. Actualdetached clone survives originalpayload
+release andremoves special+upgrade. Only3assets/17921866logicalbytes,newpool7953.
+Own fixture7953bytes,not originalEDF edits. Nativecallbacksare recorders,notUI/game.
+
+Important numeric contracts:
+- Modifiers atcondition16/216 are200bytes/7categories;forcepower index3,normal4,
+  ranged5(category5/6/8/11),launcher6(category7). Do not reuselegacy5enum.
+- Armour weights1..5=.23/.22/.18/.17/.20;legacythird/fourthswapwrong.
+- Armour setpredicate virtual68→404EA0 isRUNTIMEpayload113,NOTmetadata160.
+  Metadata160stillcontrols460680upgradability. Bothpaths testedasdifferent.
+- Combine44C670 readsEMBEDDEDbaseplayerproc(CPlayer+5200),notcurrent44C630
+  pointerat5196. TargetCPlayerconstructor confirms currentptr defaults toembedded.
+- Specialhelpercase8signedbyte180,casttrunc/wrap thenowner virtual252. UIrefresh
+  beforeweakpart;weakdefault1/tiesfirst. Siegephysicalmultiply beforeflatbonus,
+  noforce multiply. ResetpreservesSFblock/setlevels/extra708..720.
+- Mounteddefence456 uninitialisedbyctor/reset;requireproducer. Mountedpower452
+  reset1,profilepower460/def464 reset1. Setvalues672..704 initiallyunknown,
+  selectors664/668 start0. Don't silently assign guessedvalues.
+- Noowner:outergatecanaccept/upgrade stillmutates;special/combine/weakskip.
+
+Nextpriority:actualordinary CPlayerProc/CPlayer/Avatar/equipment/frame/render/
+defaultsubstitution andregistered upgrades. Numericcoreand23positionhelpers
+arealreadyimplemented;do not spend anotherturn re-auditing them.
+Ownercallback:baseCPlayerAA8DDC/slot252→43E600 emptyverified;AvatarAA8C54/
+slot252→41A060→board7/490EB0→490950/412020/463740 updatesSkillpayloadlevels.
+AvatarRTTI:locatorB7A210/descriptorBCB0C0. Savedpcode+identities in
+equipment-conditions146-reference/owner-bindings-diagnostic.json;thoseAvatar
+calleesNOTyetfullASMconfirmed. GlobalAvatarUI41A8B0 andSF/potion/liveupgrades/
+setproducers/consumers stillopen. Hostcallbacks cannot remainrecorders inordinary.
+Useportrecipes forsourcecopies;do not reinterpretnewrows aslegacyITEM_DATA.
+M6/M6F/M7/M9OPEN;ordinary1451a355372…unchanged. Estimate25%(20–35%),0/12accepted,
+152overlappinghistoricalrecords. IDA71813681saved/closed/list0;nativejobsfinished.
+PreviousgoalturnPROGRESS:typedsource/nativeproof;no server/inputEXEactivity.
+
+# Предыдущее продолжение146:позиции эффектов проверены
 
 inventory/client455-equipment-attachment-checkpoint.json PARTIAL_COMPONENT;
 research/client455-equipment-attachment.md.23fullfunc/1953instructions/223CFG

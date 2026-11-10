@@ -1,0 +1,83 @@
+{
+  "scope": "Typed455equipment special/upgrade/combined stats/weak part source;ordinary actors/UI/network producers still open",
+  "reference_sha256": "21233d80fc9576ffc912d5dfbbaee76d58a4008e0ec2475f0682cb65fc992187",
+  "source": {
+    "file": "scripts/native/client455_equipment_conditions_probe.cpp",
+    "sha256": "9c2fca7aa85638f3404cb6b9c63dcbc16c0c2b6b3d0053e05d55d3485c7c8497"
+  },
+  "script": {
+    "file": "scripts/probe_client455_equipment_conditions.py",
+    "sha256": "bfb9acf06d0a8251f392a8ba5aeea0d56f904fea8c8739be0c986b01a4f1a1f0"
+  },
+  "builder": {
+    "file": "scripts/client455_own_probe.py",
+    "sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9"
+  },
+  "staging_script": {
+    "file": "scripts/client455_asset_staging.py",
+    "sha256": "dcc6ad0943a6d4f6082f53d0abfffd7a9dd409b5a46c77d293e4c1070c1ccff4"
+  },
+  "normal_link_sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
+  "exe": {
+    "file": "work/m9/7fa94d75/equipment-conditions-001/equipment-conditions-probe.exe",
+    "sha256": "7fa94d758287e49650ecd248fc8dd2421f0b8128c3842b45b28959bc9990e7c3"
+  },
+  "map": {
+    "file": "work/m9/7fa94d75/equipment-conditions-001/equipment-conditions-probe.map",
+    "sha256": "fa0a56d0dae3da6ebdbab3b1c8cf594eb3432b3eabd1d0495654a05f36060c8d"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/7fa94d75/equipment-conditions-001/DataTable/Item.edf",
+      "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf"
+    },
+    {
+      "file": "work/m9/7fa94d75/equipment-conditions-001/fixture.edf",
+      "sha256": "dc6aed63fa8eb1b12bf4a450290eebf963bbbeb30ef6bf135aaed03b29596db4"
+    },
+    {
+      "file": "work/m9/7fa94d75/equipment-conditions-001/expected.bin",
+      "sha256": "e0c88ab68d520baf543479aa3c0813e86a8505d4abcd275aeb07552b6b84e578"
+    },
+    {
+      "file": "work/m9/7fa94d75/equipment-conditions-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll"
+    }
+  ],
+  "console": {
+    "file": "work/m9/7fa94d75/equipment-conditions-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/7fa94d75/equipment-conditions-001/result.json",
+    "sha256": "103515a06574d05e7d6e11c2c04f05218e44a824096bb24dbf07bc8372619016"
+  },
+  "native": {
+    "status": "PASS",
+    "frozen_contracts": 66,
+    "real_item_cases": 22,
+    "accepted_items": 21,
+    "modifier_bytes_match_independent_oracle": true,
+    "totals_match_independent_oracle": true,
+    "set_predicate_is_runtime_byte113": true,
+    "detached_remove_after_payload_release": true,
+    "owner_callbacks_are_recorders": true,
+    "ordinary_player_connected": false,
+    "full_conditions_or_gameplay": false
+  },
+  "natural_exit": 0,
+  "shared_asset_staging": {
+    "assets": 3,
+    "linked_bytes": 17921866,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

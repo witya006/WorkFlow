@@ -14,23 +14,32 @@ Gate:inventory/client455-equipment-checkpoint.json. Login показывает �
   Реальные RPK/MagicSpt/Miles.
 - Создание в рассчитанной точке:inventory/client455-equipment-attachment-checkpoint.json.
   25реальных моделей/25namedpositions/5cloakmagic;targetfailureundefined остаётсяopen.
+- Числовая цепочка условий:inventory/client455-equipment-conditions-checkpoint.json.
+  Special/upgrades/totals/weakpart,22realitems,typedclone removal PASS;
+  actual owner skill/UI callbacks пока не подключены.
 - Обычная145PE неизменна. Ни один из этих отдельных компонентов не закрывает
   полный внешний вид и выбор персонажа.
 
 ## Очередь до ближайшего рубежаB
 
-1. Typed4411E0 conditions и потребители:4412A0/441840/4418D0/441970/441AC0/442460.
-   Их полная ASM уже в24function provider proof;не собирать заново без причины.
-2. Подключить actualCPlayerProc/CPlayer/Avatar/registered typed upgrades,
+1. Подключить actualCPlayerProc/CPlayer/Avatar/registered typed upgrades,
    ordinary frame/render/default substitution. Не кастовать455Item rows
    к старому CEquipItem/CNormalItem и не выдавать probe recorders за providers.
+   Числовые4411E0/4412A0/441840/4418D0/441970/441AC0/442460 ужеsourceverified
+   вclient455_equipment_conditions.h,52fullfunctions/22realitems. Не повторять аудит.
+   Host получает normalitems изembeddedbaseplayerproc44C670,неcurrent44C630.
+   Armour set usespayload113,неmetadata160;mounteddefence456 требуетproducer.
+   Ownercallbacks:AvatarvtableAA8C54/slot252→41A060→board7/490EB0.
+   Pcode savedinequipment-conditions146-reference/owner-bindings-diagnostic.json;
+   их callees ещё требуют completeproof/обычного подключения. GlobalUI41A8B0
+   иSF/potion/liveupgrade/set consumers остаютсяopen;не подставлятьno-op.
    Позиции7E0D10/7E22F0 и23helperfunctions ужеsource/nativeverified;
    теперь подключитьк actual effectbackend. Dummycache заполнять внастоящемframeproducer,
    а не при каждом lookup. Тип17=Spine→Spine1,18=default. Полные CAllEffectInfo
    attachment иundefined/errorfidelity сохраняются вM9backlog.
-3. Закончить загрузчики Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
+2. Закончить загрузчики Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
    EventSound/SpecialStore/ItemCollection/Map и Avatar finalization.
-4. Принять обычный список/внешний вид/выбор, UI/input и клиентские переходы/ошибки.
+3. Принять обычный список/внешний вид/выбор, UI/input и клиентские переходы/ошибки.
    Полные Title/Login455 рубежаA также остаются открыты.
    Не обходить загрузку, не принуждать успешный вход, сервер не разрабатывать.
 
@@ -48,7 +57,7 @@ Gate:inventory/client455-equipment-checkpoint.json. Login показывает �
   следующая собственная реплика пула;в реальном1024link failure повторныйrun
   прошёл с280новыми байтами. Старые стенды ещё не очищены.
 - Свежая дисковая опись154,86GiBlogical/42,85GiBunique;точнаяallocationне измерена.
-- IDA5c1cdbca saved/closed/list0;native jobs завершены.
+- IDA71813681 saved/closed/list0;native jobs завершены.
 - Полные renderer/physics/lifecycle/CRT-FP/ошибки сохраняются вM9backlog.
   Локальный сетевой приёмник не отвечал RFпротоколом:успешная авторизация не доказана.
 

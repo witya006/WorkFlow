@@ -944,3 +944,12 @@ Uninitialised targetfailurecoordinates remainexplicitlyundefined/notaccepted.
 Ordinary145/engineunchanged;noordinaryappearanceclaim. Newpoolbytes0.
 IDA5c1cdbca saved/closed/list0;nativeexit0. Nexttypedconditions→ordinaryintegration.
 Evidence:research/client455-equipment-attachment.md;equipment-attachment-checkpoint.json.
+
+2026-11-10 /146conditions:typed equipment special/upgrade/combinedstats/weakpart
+source52fullfunctions/2323instructions/357CFG equal2pins;6switch/weight/vtable
+regions. Runtimearmoursetpredicate=payload113,notmetadata160. Baseplayerproc
+44C670 always usedforstats evenwhencurrentresourceproc44C630 differs.
+22realitems/21accepted,independent200bytemodifier+totals anddetachedremoval pass.
+CPU path3assetinputs/newpool7953bytes;noGPU/clientcopy. Ownercallbacksremain
+recorders untilordinaryintegration. Ordinary145PEunchanged;M6/M9OPEN.
+IDA71813681saved/closed/list0;nativeexit0. Research:client455-equipment-conditions.md.
