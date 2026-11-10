@@ -1,4 +1,39 @@
-# Частичная161 — CharInfo455 подключён, следующий отказ Recall
+# Частичная162 — Recall455 подключён, следующий отказ MobControl
+
+11.11.2026. Own e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f,
+x86/entry181DA0/2360320bytes;182client/67engine/20kernels/build-link0.
+client455_recall_port.py + native/client455_recall_window.h/.inc подключают
+настоящие окно/строки Recall455 к обычному клиенту. _recall_info40bytes/name+0/
+index+4, fullDWORD HP/FP, real summon/common/item24 skins, cover/scroll/resize.
+Удаление намеренно сохраняет высоту content как455. EXP geometry не clamp100;
+числовой display cap99.989998. Initial target state/index undefined, own sentinel
+явно ограниченный выбор. TakeOutLink/settings/fullAnimusproviders ещё partial.
+
+Finalnative a5e7bd7a/recall-001 PASS: восемь контрольных записей, пять GPU-кадров
+просмотрены. Первый19efa851 ошибочно ожидал140px; реальные ширины132/132/89,
+исправлен oracle. 39fullfunctions/3039instructions bothpins; пять setter heads
+определены только в рабочей IDB по ASM, индекс37865→37870. HexRays positive-SP
+warnings не используются как доказательство; отсутствие xrefs не равно deadcode.
+
+Final live e929b1ec/selection-live-taiwan002: auth/list/Enter/result0,
+RecallInit вернулся; следующий fatal C0000005 own12E81F/GetSpriteOrgXL+5F внутри
+MobControl.SetSprite/Init. Это подтверждено own FF506C caller26CFE/return26D01 и
+own MobControlvtable1F066C/slot6C→Init94330, порядком source Create_UI. Кандидаты
+стека не unwind, старый RecallA0193 среди них не является доказанным caller.
+Первыйlive001 не дал stack candidates из-за чтения через границу доступной памяти;
+helper читает до256DWORD individually, сохраняет только ownPE RVAs;002 повторён.
+PreEnter002 PNG просмотрен, персонаж освещён, Beta0.738 label остаётся.
+
+Gate recall-checkpoint PARTIAL_KNOWN_FAILURE/current assessment. World/fullUI/
+M6F/M7/M9OPEN,0/12,25%(20–35%). Функции2347(+37)/529(+39),25новых частичных
+bindings/17standalone,всего69выборочных; не общий итог восстановления BIN.
+Before162124files=7189195private+3487736sharedbytes сохранён;до163 snapshot162.
+Native34assets/81615873linkedbytes/0newpoolbytes. IDAbac5c81d saved/closed/list0.
+Серверные файлы/настройки и оригиналы без изменений. Следом MobControl455:
+pointer-only vtableRVA6DFB24,VA6AD3C0/6ADA40/6AE720; сверять до переноса.
+Подробнее research/client455-recall.md. Обсуждавшиеся новые навыки не установлены.
+
+# История161 — CharInfo455 подключён, следующий отказ Recall
 
 11.11.2026. Own 3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08,
 x86/entry181DA0/2360320bytes;182client/67engine/20kernels/build-link0.

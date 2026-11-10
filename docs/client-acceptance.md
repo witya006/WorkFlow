@@ -1,4 +1,17 @@
-# Актуальная частичная проверка161 —11.11.2026
+# Актуальная частичная проверка162 —11.11.2026
+
+Gate client455-recall-checkpoint PARTIAL_KNOWN_FAILURE. Own e929b1ec… подключил
+настоящее окно Recall455 и его строки;8контрольных records/5просмотренных GPU
+кадров/HP-FP DWORD/EXP/cover/scroll/resize проходят. Live выбор принят, RecallInit
+вернулся; следующий отказ oldMobControl.SetSprite/Init numeric sprite consumer,
+own12E81F/GetSpriteOrgXL. Мир/полныйUI/полные Animus gameplay providers/settings/
+cursor-link/lifecycle не приняты. Target uninitialized index/state и FPкрая
+не объявлены эквивалентными own sentinel/bounded checks.0/12,25%(20–35%),M9OPEN.
+2347/529 из37870 — охват анализа,69bindings выборочны,не totalrestored.
+Пять новых IDAheads уточняют индекс;inputEXE bytes не менялись. Полные требования
+ниже сохраняются. [Доказательства162](../research/client455-recall.md).
+
+# Историческая частичная проверка161 —11.11.2026
 
 Gate client455-char-info-checkpoint PARTIAL_KNOWN_FAILURE. Own 3ebd9a7d…
 подключил настоящее CharInfo455:3pages/23value owners/real skins/race/layout.

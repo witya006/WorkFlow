@@ -1,4 +1,39 @@
-# Продолжение M6 — настоящий Recall455 и остальной MainGame UI (162)
+# Продолжение M6 — MobControl455 и остальной MainGame UI (163)
+
+162 завершён как PARTIAL_KNOWN_FAILURE, не как полный клиент. Настоящий Recall455
+подключён; восемь контрольных строк/HP/FP/EXP/состояния/scroll/resize/пять GPU-кадров
+проверены. Live auth/список/Enter1/14→1/15/22/result0: RecallInit вернулся,
+следом старый CGUIMobControl::SetSprite/Init падает в числовом sprite consumer.
+Own e929b1ec…/x86/entry181DA0/2360320bytes,182client/67engine/20kernels/link0.
+Gate inventory/client455-recall-checkpoint.json. Мир ещё не достигнут.
+
+1. Перед163 сохранить exact162: preserve utility --previous before162
+   --destination before163 --checkpoint inventory/client455-recall-checkpoint.json.
+   Before162 уже124files; не перезаписывать и не клонировать клиент/ассеты.
+2. Прочитать research/client455-recall.md. Следующий источник — обычный
+   CGUIMobControl; найти точный путь через rg --files. Править tracked generator/
+   native source, а не derived копии. Не чинить отсутствующую skin alias-ом.
+3. Pointer-only inventory/client455-mob-control-discovery.json: primary
+   vtableRVA6DFB24, кандидаты VA6AD3C0/6ADA40/6AE720 (RVA2AD3C0/2ADA40/2AE720).
+   Сначала полные инструкции/CFG и оба pins, затем реальные owners/skins/контракты.
+4. Текущий fatal ownRVA12E81F/GetSpriteOrgXL+5F. Связь с MobControl corroborated:
+   его SetSprite94D59/Init94659, caller26CFE=FF506C/return26D01 и own vtable
+   1F066C/slot6C→Init94330. Stack candidates не выдавать за unwind; RecallA0193
+   среди них может быть остаточным адресом. Наблюдение: world/UI ещё не завершены.
+5. Recall остаётся partial: полные Animus item/board/table/network producers,
+   реальный summon gameplay, settings save/restore, cursor/link/lifecycle и
+   непринятые FP/overflow/OOM ветки. CharInfo и Gauge gaps также сохраняются.
+6. После полного MainGame UI — настоящая карта/avatar/control, затем связанные
+   gameplay сценарии и полнота всех12областей. Сервер только среда пользователя.
+
+Адресный охват2347(+37), fullASM529(+39),69выборочных bindings. IDA37870(+5
+уточнённых function heads, не пять новых возможностей). Ориентир25%(20–35%),
+0/12,M9OPEN. Перед продолжением не повторять успешные неизменённые крупные suite.
+Последний live002 и пять final Recallframes просмотрены; private handoff удалён.
+Диагностическое чтение стека исправлено на DWORD chunks, а не игровой обход.
+IDA sessions0/nativejobsdone. Originals/servercode/config без изменений.
+
+# История очереди162 — настоящий Recall455 и остальной MainGame UI
 
 161:CharInfo455 outer/3pages/23owners подключён к обычному клиенту. Native3races/
 6GPUframes/input/resize/mastery/signedresist PASS.60fullfunctions/6095instructions

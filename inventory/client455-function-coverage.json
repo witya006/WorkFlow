@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T18:19:24.699145+00:00",
+  "measured_at_utc": "2026-11-10T18:46:56.668503+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -12,19 +12,19 @@
     "image_base": "0x400000"
   },
   "ida_statistics": {
-    "total_functions": 37865,
+    "total_functions": 37870,
     "named_functions": 674,
     "library_functions": 1296,
-    "unnamed_functions": 35895,
+    "unnamed_functions": 35900,
     "total_strings": 12704,
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2310,
-    "unique_functions_with_complete_assembly_cfg": 490,
-    "unique_pinned_code_bytes": 623820,
-    "reports": 163,
-    "code_range_occurrences": 3835,
+    "unique_functions_with_pinned_code": 2347,
+    "unique_functions_with_complete_assembly_cfg": 529,
+    "unique_pinned_code_bytes": 633618,
+    "reports": 164,
+    "code_range_occurrences": 3879,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -483,6 +483,10 @@
       "sha256": "8054b860c0b809dc11cac37310338d47dfb66f3a8580e8a89d88b0e80d03ed3c"
     },
     {
+      "file": "inventory/client455-recall-reference.json",
+      "sha256": "ecfb6f5ab5d9e6083998d60a30ea1fbfd264883f152f97c997130d1f715e920d"
+    },
+    {
       "file": "inventory/client455-registered-characters-reference.json",
       "sha256": "948467f94d0ab94db9db4ae80c1cd165ae5e17e93f1345fbd1941558b0e3c8cf"
     },
@@ -841,6 +845,14 @@
       "sha256": "267b2482fea624f4289d811fe6feaaac83f83db4f4e83df12f634bd15e4f3899"
     },
     {
+      "file": "artifacts/client455-progress/recall162-reference/recall.json",
+      "sha256": "9f398bfac6eecb0cd1b8df32e6ce28482b98496628daac65a72a20933f10a873"
+    },
+    {
+      "file": "artifacts/client455-progress/recall162-reference/callers.json",
+      "sha256": "fdfbbb0ef98fed0d416b73fe39cb2133a2150cc568384692e5bd0c074cfd266b"
+    },
+    {
       "file": "artifacts/client455-progress/resource-catalog141-reference/session.json",
       "sha256": "feb8533d9246319fb78fa095b1da4dff7717f162cafd2083260f146d2d00adb7"
     },
@@ -880,11 +892,11 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "989650dffd89aeb34e03541b7428bdadf00e8474e20aef4608708876d1f45fd8"
+      "sha256": "5e60ee19e81b796d97c4ce54b4e6925b81af088d7327d3db67abeba1715f7224"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
-      "sha256": "8d69380cbc5704e9dd9a90f41e59a2884d5ffb2fa5b8668d701caad9d5a15a3c"
+      "sha256": "cb2a14ef06bac9ac3dc12d4ea81d7c9bc34661759d18f35adc2ce4b2bd565679"
     }
   ],
   "excluded_unresolved": [
@@ -7392,6 +7404,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x64790",
+      "ida_name": "sub_464790",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x64790",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x648b0",
@@ -17192,7 +17223,8 @@
       "rva": "0x21a7d0",
       "ida_name": "sub_61A7D0",
       "reports": [
-        "inventory/client455-board-hover-reference.json"
+        "inventory/client455-board-hover-reference.json",
+        "inventory/client455-recall-reference.json"
       ],
       "ranges": [
         {
@@ -17200,7 +17232,12 @@
           "bytes": 56
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 26
+        }
+      ]
     },
     {
       "rva": "0x21a890",
@@ -17548,7 +17585,8 @@
       "rva": "0x21bdc0",
       "ida_name": "sub_61BDC0",
       "reports": [
-        "inventory/client455-linker-owners-reference.json"
+        "inventory/client455-linker-owners-reference.json",
+        "inventory/client455-recall-reference.json"
       ],
       "ranges": [
         {
@@ -17556,7 +17594,12 @@
           "bytes": 65
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 24
+        }
+      ]
     },
     {
       "rva": "0x21c020",
@@ -22222,6 +22265,691 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x2ae7b0",
+      "ida_name": "sub_6AE7B0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ae7b0",
+          "bytes": 1349
+        },
+        {
+          "rva": "0x63e2a0",
+          "bytes": 217
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 426
+        }
+      ]
+    },
+    {
+      "rva": "0x2aed40",
+      "ida_name": "sub_6AED40",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2aed40",
+          "bytes": 322
+        },
+        {
+          "rva": "0x63e380",
+          "bytes": 203
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 127
+        }
+      ]
+    },
+    {
+      "rva": "0x2aee90",
+      "ida_name": "sub_6AEE90",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2aee90",
+          "bytes": 234
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 75
+        }
+      ]
+    },
+    {
+      "rva": "0x2aef80",
+      "ida_name": "sub_6AEF80",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2aef80",
+          "bytes": 204
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 59
+        }
+      ]
+    },
+    {
+      "rva": "0x2af050",
+      "ida_name": "sub_6AF050",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af050",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x2af080",
+      "ida_name": "sub_6AF080",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af080",
+          "bytes": 81
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 31
+        }
+      ]
+    },
+    {
+      "rva": "0x2af0e0",
+      "ida_name": "sub_6AF0E0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af0e0",
+          "bytes": 96
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x2af140",
+      "ida_name": "sub_6AF140",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af140",
+          "bytes": 182
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 64
+        }
+      ]
+    },
+    {
+      "rva": "0x2af200",
+      "ida_name": "sub_6AF200",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af200",
+          "bytes": 182
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 64
+        }
+      ]
+    },
+    {
+      "rva": "0x2af2c0",
+      "ida_name": "sub_6AF2C0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af2c0",
+          "bytes": 308
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 95
+        }
+      ]
+    },
+    {
+      "rva": "0x2af430",
+      "ida_name": "sub_6AF430",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af430",
+          "bytes": 25
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x2af450",
+      "ida_name": "sub_6AF450",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af450",
+          "bytes": 350
+        },
+        {
+          "rva": "0x63e450",
+          "bytes": 161
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 120
+        }
+      ]
+    },
+    {
+      "rva": "0x2af5f0",
+      "ida_name": "sub_6AF5F0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af5f0",
+          "bytes": 505
+        },
+        {
+          "rva": "0x63e500",
+          "bytes": 175
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 170
+        }
+      ]
+    },
+    {
+      "rva": "0x2af7f0",
+      "ida_name": "sub_6AF7F0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2af7f0",
+          "bytes": 1062
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 311
+        }
+      ]
+    },
+    {
+      "rva": "0x2afc20",
+      "ida_name": "sub_6AFC20",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2afc20",
+          "bytes": 112
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 42
+        }
+      ]
+    },
+    {
+      "rva": "0x2afc90",
+      "ida_name": "sub_6AFC90",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2afc90",
+          "bytes": 343
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 106
+        }
+      ]
+    },
+    {
+      "rva": "0x2afdf0",
+      "ida_name": "sub_6AFDF0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2afdf0",
+          "bytes": 513
+        },
+        {
+          "rva": "0x63e5b0",
+          "bytes": 38
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 173
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0000",
+      "ida_name": "sub_6B0000",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0000",
+          "bytes": 27
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0020",
+      "ida_name": "sub_6B0020",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0020",
+          "bytes": 311
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 101
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0160",
+      "ida_name": "sub_6B0160",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0160",
+          "bytes": 79
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x2b01b0",
+      "ida_name": "sub_6B01B0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b01b0",
+          "bytes": 109
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0220",
+      "ida_name": "sub_6B0220",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0220",
+          "bytes": 109
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0290",
+      "ida_name": "sub_6B0290",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0290",
+          "bytes": 82
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 34
+        }
+      ]
+    },
+    {
+      "rva": "0x2b02f0",
+      "ida_name": "sub_6B02F0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b02f0",
+          "bytes": 79
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/callers.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0340",
+      "ida_name": "sub_6B0340",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0340",
+          "bytes": 312
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 92
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0480",
+      "ida_name": "sub_6B0480",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0480",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 48
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0510",
+      "ida_name": "sub_6B0510",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0510",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0530",
+      "ida_name": "sub_6B0530",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0530",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 48
+        }
+      ]
+    },
+    {
+      "rva": "0x2b05c0",
+      "ida_name": "sub_6B05C0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b05c0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x2b05f0",
+      "ida_name": "sub_6B05F0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b05f0",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 48
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0680",
+      "ida_name": "sub_6B0680",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0680",
+          "bytes": 537
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 158
+        }
+      ]
+    },
+    {
+      "rva": "0x2b08a0",
+      "ida_name": "sub_6B08A0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b08a0",
+          "bytes": 80
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x2b08f0",
+      "ida_name": "sub_6B08F0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b08f0",
+          "bytes": 225
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 73
+        }
+      ]
+    },
+    {
+      "rva": "0x2b09e0",
+      "ida_name": "sub_6B09E0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b09e0",
+          "bytes": 528
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 166
+        }
+      ]
+    },
+    {
+      "rva": "0x2b0bf0",
+      "ida_name": "sub_6B0BF0",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b0bf0",
+          "bytes": 62
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
       "rva": "0x2c8a20",
       "ida_name": "sub_6C8A20",
       "reports": [
@@ -24469,6 +25197,25 @@
         {
           "file": "artifacts/client455-progress/charinfo161-reference/values.json",
           "instructions": 37
+        }
+      ]
+    },
+    {
+      "rva": "0x3b5f60",
+      "ida_name": "sub_7B5F60",
+      "reports": [
+        "inventory/client455-recall-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b5f60",
+          "bytes": 67
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/recall162-reference/recall.json",
+          "instructions": 28
         }
       ]
     },
@@ -37073,8 +37820,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 48,
-    "unique_functions_with_complete_assembly_cfg": 51
+    "unique_functions_with_pinned_code": 37,
+    "unique_functions_with_complete_assembly_cfg": 39
   },
   "M6": "OPEN",
   "M9": "OPEN",

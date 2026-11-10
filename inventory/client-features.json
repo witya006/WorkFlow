@@ -8590,7 +8590,7 @@
     {
       "id": "CLIENT455-CHARINFO-161",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "runtime_gate_last_verified": true,
       "description": "Actual455CharInfo source integrated andInit returned after live selection;next oldRecallwindow fails;world not entered",
       "implementation": [
@@ -8601,6 +8601,26 @@
       "evidence": [
         "inventory/client455-char-info-checkpoint.json",
         "inventory/client455-char-info-reference.json"
+      ],
+      "world_entered": false,
+      "full_client": false,
+      "M6": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-RECALL-162",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Actual455Recall window/rows integrated;ordinary RecallInit returned after live selection,next oldMobControl fails;world not entered",
+      "implementation": [
+        "scripts/client455_recall_port.py",
+        "scripts/native/client455_recall_window.h",
+        "scripts/native/client455_recall_window.inc"
+      ],
+      "evidence": [
+        "inventory/client455-recall-checkpoint.json",
+        "inventory/client455-recall-reference.json"
       ],
       "world_entered": false,
       "full_client": false,

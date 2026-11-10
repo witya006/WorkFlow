@@ -1,4 +1,26 @@
-# Частичная161 —11.11.2026
+# Частичная162 —11.11.2026
+
+Recall455 window/rows подключены к обычному CGUIRecallWindow. Natural skins,
+name/index/40byte record, HP/FP DWORD, EXP, cover, scroll/resize и target stale
+content height восстановлены. 39fullASM/CFG/3039instructions совпали bothpins.
+Пять ранее не выделенных setter heads определены в рабочей IDB; индекс37870,
+не изменение input bytes. Positive-SP decomp warnings отмечены, использован ASM.
+Native finala5e7bd7a/8controlledrecords/5GPUframes PASS, кадры просмотрены.
+Первый oracle140px исправлен по реальным descriptor132/132/89; код не подменялся.
+Own e929b1ec…/x86/entry181DA0/2360320bytes,182client/67engine/20kernels/link0.
+Consumer/entry/startup/earlyTaiwan PASS. Live002 actualselection result0,
+RecallInit пройден; следующий oldMobControl числовой consumer падает own12E81F.
+Кандидаты стека corroborated own virtualcall/vtable/source order; не unwind.
+Stack helper исправлен после unreadable cross-boundary1024byte read на до256
+DWORD reads/ownPEaddresses only, rawstack/accountdata не сохраняются.
+Gate recall-checkpoint PARTIAL_KNOWN_FAILURE, world/M9OPEN,0/12,25%(20–35%).
+Полные Animus gameplay/table/network producers/settings/link/lifecycle открыты.
+Функции2347(+37)/529(+39),69выборочных partialbindings. Before162124files,
+7189195private+3487736sharedbytes;native34assets/81615873linkedbytes/0newpoolbytes.
+IDA bac5c81d saved/closed/list0; originals/servercode/config без изменений.
+Доказательства/очередь163:research/client455-recall.md,docs/next-steps.md.
+
+# История161 —11.11.2026
 
 CharInfo455 подключён к обычному CGUICharInfoWindow:3pages/23owners,real47/common,
 race/mastery/resist/extras/input/wheel/resize.60полных ASM/CFG/6095instructions

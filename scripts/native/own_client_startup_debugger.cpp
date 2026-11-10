@@ -150,9 +150,13 @@ int wmain(int argc,wchar_t** argv){
                     HANDLE faultThread=OpenThread(THREAD_GET_CONTEXT|THREAD_QUERY_INFORMATION,FALSE,event.dwThreadId);CONTEXT fault={};fault.ContextFlags=CONTEXT_CONTROL|CONTEXT_INTEGER;
                     if(faultThread&&GetThreadContext(faultThread,&fault)){
                         std::fprintf(output,"{\"kind\":\"fatal_context\",\"eax\":\"0x%lx\",\"ecx\":\"0x%lx\",\"edx\":\"0x%lx\",\"esi\":\"0x%lx\",\"edi\":\"0x%lx\",\"esp\":\"0x%lx\",\"own_stack_rva_candidates\":[",fault.Eax,fault.Ecx,fault.Edx,fault.Esi,fault.Edi,fault.Esp);
-                        DWORD words[256]={};SIZE_T bytes=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(fault.Esp),words,sizeof(words),&bytes);bool comma=false;DWORD ownSize=0;for(const auto& mod:modules)if(mod.base==imageBase)ownSize=mod.size;
-                        for(unsigned i=0;i<bytes/4;++i)if(words[i]>=imageBase&&words[i]-imageBase<ownSize){std::fprintf(output,"%s{\"stack_offset\":%u,\"rva\":\"0x%zx\"}",comma?",":"",i*4,words[i]-imageBase);comma=true;}
-                        std::fputs("]}\n",output);
+                        //A1024-byte read crossing the stack's committed end can
+                        //fail entirely even though its first words are readable.
+                        //Read bounded individual words;persist only own code RVAs.
+                        bool comma=false;DWORD ownSize=0;for(const auto& mod:modules)if(mod.base==imageBase)ownSize=mod.size;unsigned readable=0;
+                        for(unsigned i=0;i<256;++i){DWORD word=0;SIZE_T bytes=0;if(!ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(fault.Esp+i*4),&word,4,&bytes)||bytes!=4)break;++readable;
+                            if(word>=imageBase&&word-imageBase<ownSize){std::fprintf(output,"%s{\"stack_offset\":%u,\"rva\":\"0x%zx\"}",comma?",":"",i*4,word-imageBase);comma=true;}}
+                        std::fprintf(output,"],\"readable_stack_words\":%u}\n",readable);
                     }
                     if(faultThread)CloseHandle(faultThread);TerminateProcess(process.hProcess,0xe0434205);terminating=true;
                 }

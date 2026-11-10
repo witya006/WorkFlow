@@ -1,0 +1,255 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Actual455Recall window/rows integrated;ordinary RecallInit returned after live selection,next oldMobControl fails;world not entered",
+  "script": {
+    "file": "scripts/checkpoint_client455_recall.py",
+    "sha256": "dcc7c470e3aac70ca00721db8d6f1c586f5114948984df479f03f20869821fc4"
+  },
+  "normal_link_sha256": "c78d944e38cb6b2727c63be028ad78d492ddf86fb02de828f3b7b3578f02d097",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f",
+    "bytes": 2360320,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x181da0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "f82dba1a44c4114a799f3e64325ad16b4430d598bc05952b97eea7c34e790ab8"
+  },
+  "fresh_evidence": {
+    "recall-reference": {
+      "file": "inventory/client455-recall-reference.json",
+      "sha256": "ecfb6f5ab5d9e6083998d60a30ea1fbfd264883f152f97c997130d1f715e920d"
+    },
+    "recall-native": {
+      "file": "inventory/client455-recall-native.json",
+      "sha256": "596cc2bc635c7d95fda2285d96c5ca0f15566960f0cb40e32b5ef4d32f39eef2"
+    },
+    "recall-visual": {
+      "file": "inventory/client455-recall-visual.json",
+      "sha256": "7e71d7e558c4cf7ed8a84d9547040866df1e6a219a71120e4467dce8f710061e"
+    },
+    "recall-bindings": {
+      "file": "inventory/client455-recall-bindings.json",
+      "sha256": "7ab264121070e0ad1365466f168f5ca65dd810306c627d0b1b134d0767ca0ba9"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "088d05fccc56a901a16b637a574b113e1a0dde13cb9f1a08070741b580cdd822"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "7c317a65347ed272ab5137b62bf4619e776af3d40280d0ac4dd8ea0c881a355e"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "e133be1604cdfa83b13be29d4504d45222eddfdd9809132434b1923f9bde2e7d"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "c78d944e38cb6b2727c63be028ad78d492ddf86fb02de828f3b7b3578f02d097"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "d91f84edf42a55cf32466491ebeec1c1b3af8a41ebd1fe3dbd465d03ccb81d35"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "549669b7aecff416e6f4e48f05dcc3d2e7eab3e9ca4d562ea754dd22f3b8f1a7"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "8efa6e79acaf0808bfef40516074107c5be3f7969f31fd48f1eb4eca5449425d"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "74daa0af5aa34cdf076dc64f00317ad108dee08f962652014ba5366975416b96"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "f82dba1a44c4114a799f3e64325ad16b4430d598bc05952b97eea7c34e790ab8"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before162/manifest.json",
+    "sha256": "1901c2f628e5c436e927f2ef4dfe840077e12590d3f49a28161afe3466881eb5"
+  },
+  "post_selection_failure": {
+    "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+    "own_rva": "0x12e81f",
+    "code": "0xc0000005",
+    "resolved_stack_candidates": [
+      {
+        "rva": "0x12e81f",
+        "symbol": "?GetSpriteOrgXL@CSprite@@QAEGKK@Z",
+        "offset": "0x5f"
+      },
+      {
+        "rva": "0x98927",
+        "symbol": "?SetSpriteU@CGUIObjectEx@@QAEXMM@Z",
+        "offset": "0x37",
+        "stack_offset": 8
+      },
+      {
+        "rva": "0x838b1",
+        "symbol": "?SetNumberSprite@CGUINumber@@QAEXPAU_sprite_info@@AAUtagPOINT@@@Z",
+        "offset": "0x31",
+        "stack_offset": 32
+      },
+      {
+        "rva": "0x94d59",
+        "symbol": "?SetSprite@CGUIMobControl@@UAEXXZ",
+        "offset": "0x119",
+        "stack_offset": 52
+      },
+      {
+        "rva": "0x94659",
+        "symbol": "?Init@CGUIMobControl@@UAEXXZ",
+        "offset": "0x329",
+        "stack_offset": 100
+      },
+      {
+        "rva": "0xa0193",
+        "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+        "offset": "0x2e3",
+        "stack_offset": 124
+      },
+      {
+        "rva": "0x26d01",
+        "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+        "offset": "0x1b1",
+        "stack_offset": 156
+      },
+      {
+        "rva": "0x265c1",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x41",
+        "stack_offset": 180
+      },
+      {
+        "rva": "0x46bde0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 184
+      },
+      {
+        "rva": "0x46bde0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 196
+      },
+      {
+        "rva": "0x46bde0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "stack_offset": 204
+      },
+      {
+        "rva": "0xbc0b2",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "stack_offset": 224
+      },
+      {
+        "rva": "0xbc700",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "stack_offset": 232
+      },
+      {
+        "rva": "0x181da0",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "stack_offset": 236
+      },
+      {
+        "rva": "0xe313a",
+        "symbol": "?RF455_ParseMapData@@YA?AW4RF455MapLoad@@AAURF455MapData@@PBXI1I@Z",
+        "offset": "0xa1a",
+        "stack_offset": 296
+      },
+      {
+        "rva": "0x22a258",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "stack_offset": 308
+      },
+      {
+        "rva": "0x1a7c75",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "stack_offset": 324
+      },
+      {
+        "rva": "0x181cf0",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "stack_offset": 348
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "stack_offset": 352
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "verified_own_virtual_calls": [
+      {
+        "return_rva": "0x26d01",
+        "instruction_rva": "0x26cfe",
+        "bytes": "ff506c",
+        "vtable_rva": "0x1f066c",
+        "slot_offset": "0x6c",
+        "callee": {
+          "rva": "0x94330",
+          "symbol": "?Init@CGUIMobControl@@UAEXXZ",
+          "offset": "0x0"
+        }
+      }
+    ],
+    "cause": "Next oldCGUIMobControl::SetSprite/Init numeric sprite consumer;Recall Init returned on the sequential MainGame::Create_UI path",
+    "whole_client_run_succeeded": false
+  },
+  "ordinary_Recall_connected": true,
+  "live_advanced_past_prior_Recall_crash": true,
+  "live_selection_exchange_completed": true,
+  "main_game_ui_created": false,
+  "world_entered": false,
+  "full_client": false,
+  "explicit_function_bindings": 25,
+  "component_frames_visually_inspected": true,
+  "source_Create_UI": {
+    "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+    "sha256": "ac7c5451b2b692b479b143933cf58d87c10d9a52f0a661dc5775eefdb79298b6"
+  },
+  "gaps": [
+    "Full455Animus item/board/table/network producers and real summon gameplay remainopen",
+    "Existing TakeOutLink source adapter andcomplete cursor/link ownership not fully accepted",
+    "Custom455save/restore settings andfullUI lifecycle remainopen",
+    "Target initial unit state/index are uninitialized;own sentinel is a bounded source choice,not target equivalence",
+    "Nonfinite/overflow/OOM andunadmitted coordinate/sprite failure domains remainopen",
+    "Five previously unindexed setter heads identified fromprologues;noIDAxref observed isnot proof of deadcode;decompiler haspositive-SP warnings,source decisions use fullASM not that pseudocode",
+    "Next oldMobControl window,not yet accepted"
+  ],
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

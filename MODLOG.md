@@ -1,3 +1,18 @@
+2026-11-11 — Recall162 PARTIAL_KNOWN_FAILURE. Actual window/rows now integrated
+into ordinary CGUIRecallWindow: real skins,40byte records,DWORD HP/FP,EXP,state,
+scroll/resize and target stale content height. Native a5e7bd7a eight controlled
+records/five inspected GPU frames PASS; full Animus producers/settings/link open.
+39fullfunctions/3039instructions bothpins; five previously unindexed setter heads
+defined in owned IDB only,37865→37870. Positive-SP pseudocode not trusted.
+Own e929b1ec…/x86/entry181DA0/2360320bytes/build-link0. Live002 selection accepted,
+RecallInit returned; next actual oldMobControl numeric sprite failure own12E81F.
+Stack candidates corroborated caller/vtable/source,not unwind. Stack read boundary
+bug fixed in diagnostic helper and live repeated; credentials/rawstack not saved.
+2347(+37)address/529(+39)full evidence;25newpartial bindings/69selective total,
+not full-restoration count. Before162124files preserved,shared nativepool34assets/
+81615873linkedbytes/0newbytes. IDAbac5c81dclosed/list0,nooriginal/servercode edits.
+World/M6F/M7/M9OPEN,0/12,coarse25%(20–35%) unchanged. research/client455-recall.md.
+
 2026-11-11 — CharInfo161 PARTIAL_KNOWN_FAILURE. Actual ordinary window now uses
 three455pages(5/2/4sections),23value owners,real skins/race/mastery/resist/layout.
 Nativedb389785/3races/6GPUframes/input/resize PASS;final six images inspected.

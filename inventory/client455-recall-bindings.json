@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e929b1ec2f57f5a86415a1ce32d7992bcf6a47efeddd7813ea1bea5b8db8f19f",
+    "bytes": 2360320,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x181da0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x2ae7b0",
+      "symbol": "CGUIRecallUnit::CGUIRecallUnit",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f670"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2aee90",
+      "symbol": "CGUIRecallUnit::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0970"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2aef80",
+      "symbol": "CGUIRecallUnit::SetUnitState",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0b50"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af050",
+      "symbol": "CGUIRecallUnit::SetMobName",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af080",
+      "symbol": "CGUIRecallUnit::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0920"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af0e0",
+      "symbol": "CGUIRecallUnit::SetItem",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af140",
+      "symbol": "CGUIRecallUnit::SetHP",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0870"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af200",
+      "symbol": "CGUIRecallUnit::SetFP",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa07c0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af2c0",
+      "symbol": "CGUIRecallUnit::SetExp",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa06a0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2af7f0",
+      "symbol": "CGUIRecallWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9feb0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2afc20",
+      "symbol": "CGUIRecallWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0aa0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2afc90",
+      "symbol": "CGUIRecallWindow::SetBound",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa05a0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2afdf0",
+      "symbol": "CGUIRecallWindow::TakeInItem",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0bd0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0020",
+      "symbol": "CGUIRecallWindow::TakeOutItem",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0e10"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0340",
+      "symbol": "CGUIRecallWindow::UpdateScrollbar",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0f40"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0480",
+      "symbol": "CGUIRecallWindow::GetRecallUnitByIndex",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9fe70"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0530",
+      "symbol": "CGUIRecallWindow::GetRecallUnitByItemID",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b05f0",
+      "symbol": "CGUIRecallWindow::GetRecallUnitByEventObj",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9fe30"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0680",
+      "symbol": "CGUIRecallWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa01a0"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b08a0",
+      "symbol": "CGUIRecallWindow::ScrollEvent",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0580"
+      ],
+      "standalone_symbol_retained": true,
+      "retained_in_ordinary_executable": true,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0160",
+      "symbol": "CGUIRecallWindow::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b01b0",
+      "symbol": "CGUIRecallWindow::SetHP",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0220",
+      "symbol": "CGUIRecallWindow::SetFP",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b0290",
+      "symbol": "CGUIRecallWindow::SetExp",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b02f0",
+      "symbol": "CGUIRecallWindow::SetItemState",
+      "source": {
+        "file": "scripts/native/client455_recall_window.inc",
+        "sha256": "017b55d2b6faf500761217bf343bfb4acf4209064101386b6efb45832e9f0ff3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "retained_in_ordinary_executable": null,
+      "scope": "Actual row methods tested with controlled records;ordinary windowInit returned;wholeAnimus/providers/edge domains not accepted",
+      "complete_equivalence": false
+    }
+  ]
+}
