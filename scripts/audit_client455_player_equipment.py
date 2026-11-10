@@ -53,4 +53,5 @@ def main():
         production_controller_connected=False,full_player_appearance_or_draw=False,full_client=False,input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
     (WS/'inventory/client455-player-equipment-reference.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(functions=report['full_functions'],instructions=report['full_instructions'],blocks=report['positive_cfg_blocks'],both_pins_equal=True,production_controller_connected=False)))
-if __name__=='__main__':main()
+if __name__=='__main__':
+    raise SystemExit('Historical146 producer superseded:13-slot inference was wrong. Use audit_client455_player_visual.py;historical evidence remains archived.')

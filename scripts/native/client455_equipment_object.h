@@ -34,6 +34,7 @@ class RF455EquipmentObject:public CItemObject {
     CMesh* mesh455=nullptr;
     CMesh* originalMesh455=nullptr;
     DWORD field608455=0;
+    float random455;
     RF455EquipmentPlan plan455;
     BYTE renderMode455=255;
     BYTE overlayGrade455; //The target constructor does not initialize604.
@@ -47,6 +48,7 @@ public:
     bool Create455(BYTE type,DWORD encodedIndex);
     void SetItem455(RF455ManagedItem*) override;
     DWORD GetTableIndex455()const;
+    float GetRandom455()const{return random455;}
     BOOL Render() override;
     virtual BOOL Render455(const D3DXMATRIX&);
     BOOL RenderWithShadow455();

@@ -1,0 +1,239 @@
+{
+  "status": "PARTIAL",
+  "scope": "12 constructed player equipment objects,explicit unsafe index12 boundary,ctor/copy PRNG consumption andrace/helmet visibility guard;ordinary full player not connected",
+  "script": {
+    "file": "scripts/checkpoint_client455_player_visual.py",
+    "sha256": "d3cee05beac3ab68162f726796d107f169720ec9a49f08cab512bfb903f27697"
+  },
+  "normal_link_sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "0f6719640507fdff644002e543c4d4a921b6ac9fd252fd7feaec961f02eb33ec",
+    "bytes": 2316800,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x179660",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "player-visual-reference": {
+      "file": "inventory/client455-player-visual-reference.json",
+      "sha256": "52c028603541e27c2fcfff9d9dd989a8a74d3724bcce044027eb3f74841f70f2"
+    },
+    "player-visual-native": {
+      "file": "inventory/client455-player-visual-native.json",
+      "sha256": "31df3855068ed58f276042b75de1d516067150f1ed8b638788ccdd048611b218"
+    },
+    "equipment-draw-native": {
+      "file": "inventory/client455-equipment-draw-native.json",
+      "sha256": "0010d2d135b9a39587fb876f7d1455918c91015bfb1ae4989f982fa68f84fbc9"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "3b0c51aa3953a3b614f6a83046724dab2b1fec8b512eb435e98a55b46ab67e05"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "e997ef9c6aec2734cfc40184222a472f645cb73c0f96543551a8e31269aac439"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "0a9dfd70d87d5be53704d3401ee250b9fc14c69ec43ffae83902c630eebd5a56"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "7740dc91ab8db92b5be9bde3a457b0563192f9cbefab7bfa058fbe1e381e9a53"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "fc225818e90586dfe8fbd62ada2b8a724dc1df0d7d507570524f82fec35bbf31"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "53f35f1694f501ff81d19edf347f80887def0e5bfed4a016d282adcc6fdfa7dc"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "c81ae81bb52f4c9bb821dbd2146846d37dc101b337a826cf2958df7ba8358774"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "d0f1d94c12bb0f120d4c4a7f13b3f3603d787056dddeb85f3fd7f5f057a6d736"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "f8f32355c0d9fb3be86071eebe6192929411d5486f9bb202c94c871fc1e092b3"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "86198288fd2e6a6e19133a66e28fa3f2527e31d6c2b9388b36e039ca8b8a2c16"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "3d11de7da72dbad6b1cbebf0e7a60abdbaec99463345d7a01326a417e4cc490d"
+    },
+    "character-draw-build": {
+      "file": "inventory/client455-character-draw-build.json",
+      "sha256": "16097be5d648e3dcfcbbf350c7cfe7cdd7ad003d2e9277dbc348bd9e6b18562f"
+    },
+    "renderer-owner-build": {
+      "file": "inventory/client455-renderer-owner-build.json",
+      "sha256": "9925efb90b409e88dc6ea71b375b5dbffe885e3923c257bb8c45bd0e06cdfb92"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before150/manifest.json",
+    "sha256": "91e82f3064b9c81326f2d2588242093d3e37de6f266c7f4f8b03f728b5c81191"
+  },
+  "physical_equipment_slots": 12,
+  "previous13_slot_claim_superseded": true,
+  "unsafe_target_index12_accepted": false,
+  "visibility_cases": 24,
+  "constructor_rand_cases": 3,
+  "native": {
+    "status": "PASS",
+    "plan_cases": 51,
+    "real_models_loaded": 32,
+    "actual_default_creations": 30,
+    "gpu_texture_entries": 33,
+    "default_payload_owners": 6,
+    "payloads_after_teardown": 0,
+    "actual_resource_bindings": true,
+    "ordinary_Avatar_default_setter": true,
+    "player_controller_real_creations": 30,
+    "physical_equipment_slots": 12,
+    "unsafe_index12_refusal_cases": 3,
+    "unsafe_target_index12_accepted": false,
+    "visibility_cases": 24,
+    "constructor_rand_cases": 3,
+    "player_controller_production_connected": false,
+    "condition_animation_callbacks_are_probe_recorders": true,
+    "full_player_appearance_or_draw": false
+  },
+  "affected_draw_native": {
+    "status": "PASS",
+    "primary_draws": 7,
+    "overlay_draws": 14,
+    "matrix_draws": 7,
+    "visible_model_pixels": 2659,
+    "changed_overlay_pixels": 2659,
+    "actual_alpha_restore": true,
+    "fade_render_gate": true,
+    "queue_cap": 256,
+    "queue_palette_oracles": 16,
+    "metadata_cases": 8,
+    "unit_key_not_BYTE": true,
+    "virtualgrade_not_boolean": true,
+    "queue_four_matrix_aliasing": true,
+    "queue_shared_payload_teardown": true,
+    "actual_nonzero_particle_effects": false,
+    "full_player_appearance": false
+  },
+  "frames": [
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-alpha.png",
+      "sha256": "af4f1ab449441158493da102ad8881074a440cd248528ec68bb56f6689e9fb87"
+    },
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-base.png",
+      "sha256": "1f45e9e1afd079d8d438c30b895754b114518d42653b2f5d7cf589542b189eb2"
+    },
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-fade-done.png",
+      "sha256": "1f45e9e1afd079d8d438c30b895754b114518d42653b2f5d7cf589542b189eb2"
+    },
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-fade.png",
+      "sha256": "af4f1ab449441158493da102ad8881074a440cd248528ec68bb56f6689e9fb87"
+    },
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-matrix.png",
+      "sha256": "1f45e9e1afd079d8d438c30b895754b114518d42653b2f5d7cf589542b189eb2"
+    },
+    {
+      "file": "work/m9/e2014ded/equipment-draw-001/equipment-overlay.png",
+      "sha256": "e783029981b740ec60f588c14d4109bddcaecf72453ad80c75fb9784ed94f4a6"
+    }
+  ],
+  "same_six_controlled_frames_as149": true,
+  "ordinary_calls": [
+    {
+      "owner": "queue_clear",
+      "target": "clear",
+      "source_rva": "0x2b850",
+      "target_rva": "0xcb490",
+      "rva": "0x2b8f1",
+      "kind": "tail-JMP"
+    },
+    {
+      "owner": "queue_render",
+      "target": "render",
+      "source_rva": "0x2bda0",
+      "target_rva": "0xcb790",
+      "rva": "0x2be9f",
+      "kind": "CALL"
+    },
+    {
+      "owner": "equipment",
+      "target": "draw",
+      "source_rva": "0xcba60",
+      "target_rva": "0xcac80",
+      "rva": "0xcbaf2",
+      "kind": "CALL"
+    },
+    {
+      "owner": "draw",
+      "target": "overlay",
+      "source_rva": "0xcac80",
+      "target_rva": "0xc6f50",
+      "rva": "0xcb0c1",
+      "kind": "CALL"
+    }
+  ],
+  "ordinary_queue_entrypoints_connected": true,
+  "secondary_geometry_retained_in_normal_PE": true,
+  "ordinary_player_connected": false,
+  "complete_particle_registry": false,
+  "actual_nonzero_particle_effects": false,
+  "ordinary_Create": true,
+  "ordinary_Login_frame": {
+    "file": "work/m9/0f671964/login-frame001/login-frame.png",
+    "sha256": "183ca72f38ba7c37999e4f52029395d276f4fd57dfc04c5310c995f32294e8c9"
+  },
+  "ordinary_Login_capture": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 65,
+    "elapsed_ms": 3016,
+    "requested_delay_ms": 3000
+  },
+  "known_first_chance_exceptions": 9,
+  "unhandled_exceptions": 0,
+  "Login_visually_inspected": true,
+  "full_appearance_or_selection": false,
+  "full_client": false,
+  "gaps": [
+    "Ordinary CPlayerProc/CPlayer/Avatar ownership andequipment/frame/animation/render providers not yet connected",
+    "Animation owner/action/profile/condition/UI andnonzero particle registry remain open",
+    "Target index12 aliases processor state;unsafe target domain is not reproduced or accepted",
+    "Full constructor/destructor/CRT/FP/error/resource/world/client acceptance remains open"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

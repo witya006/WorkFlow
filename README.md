@@ -9,12 +9,12 @@
 Серверные исходники — справочник для чтения. Оригиналы не изменять.
 Работать под work/. Входные EXE не выполнять. Git локальный, без публикации.
 
-## Последняя проверенная обычная сборка149
+## Последняя проверенная обычная сборка150
 
-Own RF_Online.binf4e62e48…:x86/VS2026,182client/67engine/20modules,unresolved0.
+Own RF_Online.bin0f671964…:x86/VS2026,182client/67engine/20modules,unresolved0.
 Обычный WinMain →Title →Login показывает lobby/ожидание.
 Успешный вход, выбор персонажа и игровой цикл ещё не приняты.
-Gate:inventory/client455-equipment-draw-checkpoint.json.
+Gate:inventory/client455-player-visual-checkpoint.json.
 
 CCharacter20×30/13dummy проверен в настоящем коде; затронутые Avatar,
 registered receiver, Create и обычный Login прошли. Полный typed equipment
@@ -27,13 +27,17 @@ fade/alpha, источник уровня свечения и очередь с�
 
 ## Отдельные компоненты146
 
-Проверены контроллер13слотов и clone, настоящиеANI/pose/fallback/fade,
+Отдельно проверены контроллер12физических слотов и clone, ANI/pose/fallback/fade,
 расчёт высоты по meshID, создание/освобождение эффектов и звук плаща.
+Прежний неверный вывод13слотов исправлен в150.
 Добавлены позиции эффектов через настоящиеparts/posecaches:25моделей,
 пять вариантов персонажа,настоящий cloakmagic;ошибки undefined ещё открыты.
 Расчёт special/upgrade/combinedstats/weakpart проверен на22реальных предметах;
 владельцы skill/UI иобычные producers/consumers ещё не подключены.
-Обычная149сборка ещё не использует полный контроллер146.
+В150 проверены race/helmet visibility и PRNG конструктора/копирования.
+Обычная150сборка ещё не использует полный контроллер;
+индекс12 в эталоне выходит за массив и не считается принятым сценарием.
+[Исправление и актуальные доказательства150](research/client455-player-visual.md).
 Ближайшее:соединить обработчики с CPlayerProc/Avatar →внешний вид/выбор.
 
 - [Опорная оценка и оставшийся объём](docs/progress-report.md).

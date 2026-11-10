@@ -19,8 +19,10 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <cstdlib>
 
 extern CMainApp g_MainApp;
+static unsigned visualGateCases150=0,randCases150=0;
 static void require(bool value,const char* text){if(!value)throw std::runtime_error(text);}
 static unsigned word(FILE* f){unsigned n;require(std::fread(&n,4,1,f)==1,"Expected word");return n;}
 struct PlanCase{unsigned type,index,mesh,tableType,race,group,resultMesh,resultIndex;};
@@ -65,13 +67,37 @@ public:
     void detachedEffect(RF455PlayerEquipmentObject&,DWORD id)override{require(id==2,"Detach event2");events.push_back("detach2");}
     bool actionTypeOne()const override{return actionOne;}
 };
+static void constructorCases150(EquipmentHost146& host){
+    //Frozen from874144's214013/2531011recurrence,not from std::rand().
+    const unsigned seed=0x455;const int a=3660,b=150,c=7964;
+    std::srand(seed);{RF455EquipmentObject object;require(object.GetRandom455()==float(double(a)/100.0)&&std::rand()==b,"Actual46BE60randfieldandoneCRTconsumption");++randCases150;}
+    std::srand(seed);{RF455EquipmentObject source;RF455EquipmentObject copy(source);require(copy.GetRandom455()==source.GetRandom455()&&std::rand()==c,"Copiedvaluebutdestinationconstructorstillconsumesrand");++randCases150;}
+    const int after12=9923;
+    std::srand(seed);{RF455PlayerEquipment controller(host);require(RF455PlayerEquipment::PhysicalSlots==12&&std::rand()==after12,"4501B0constructs12objectsandconsumes12randcalls");++randCases150;}
+}
+static void visibilityCases150(EquipmentHost146& host){
+    RF455PlayerEquipment equipment(host);require(equipment.create(0,0)&&equipment.create(10,0)&&equipment.create(5,80),"Actualheadhairandnondefaulthelmetpayloads");
+    auto* helmet=dynamic_cast<RF455BasicItem*>(equipment.payload(5));require(helmet&&helmet->rawData().size>=240,"Actualhelmetvisibilityrecord");
+    auto* data=const_cast<unsigned char*>(helmet->rawData().data);DWORD oldIndex,oldMode;std::memcpy(&oldIndex,data,4);std::memcpy(&oldMode,data+236,4);
+    //This fixture changes only owned in-memory fields. Expected branching is
+    //a frozen truth table from450810,not a call to the reconstructed helper.
+    for(DWORD index:{79u,80u})for(DWORD mode:{0u,1u,2u,3u})for(BYTE race:{BYTE(0),BYTE(4),BYTE(5)}){
+        std::memcpy(data,&index,4);std::memcpy(data+236,&mode,4);bool head=true,hair=true;
+        if(index>=80){if(race==4)hair=false;else if(race==0){head=mode!=1&&mode!=2;hair=mode!=1&&mode!=3;}}
+        require(equipment.canRender(0,race)==head&&equipment.canRender(10,race)==hair,"450810visibilitytruth tablewithactualslotsandmetadata");++visualGateCases150;
+    }
+    std::memcpy(data,&oldIndex,4);std::memcpy(data+236,&oldMode,4);
+    auto* head=equipment.get(0);require(head&&head->GetMesh455()&&head->GetMesh455()->m_Load,"Actualheadmodel");head->Disable(2);require(!equipment.canRender(0,5),"Disabledslot");head->Enable(2);head->Enable(4096);require(!equipment.canRender(0,5),"Clippedslot");head->Disable(4096);
+    const DWORD oldLoad=head->GetMesh455()->m_Load;head->GetMesh455()->m_Load=0;require(!equipment.canRender(0,5),"Unloadedslot");head->GetMesh455()->m_Load=oldLoad;
+}
 static unsigned playerEquipment146(const std::vector<RealCase>& cases){
     CAvatar actor;actor.SetRace(0);EquipmentHost146 host(actor);host.bone=_GetBoneMgr()->GetBone(0,0);require(host.bone,"Actual player bone");
+    constructorCases150(host);visibilityCases150(host);host.events.clear();
     RF455PlayerEquipment equipment(host);unsigned real=0;
     for(const auto& c:cases){
         if(c.type>=6)continue;actor.SetRace(BYTE(c.index/16));host.bone=_GetBoneMgr()->GetBone(0,actor.GetRace());
-        require(equipment.create(BYTE(c.type),c.index),"Real13-slot creation");const BYTE slot=c.type==5?10:BYTE(c.type);
-        auto* value=equipment.get(slot);require(value&&value->GetItem455()&&value->GetMesh455()&&value->GetPlan455().meshID==c.resultMesh&&value->GetOwner455()==&actor,"Actual13-slot/race/model/owner binding");++real;
+        require(equipment.create(BYTE(c.type),c.index),"Real12-slot creation");const BYTE slot=c.type==5?10:BYTE(c.type);
+        auto* value=equipment.get(slot);require(value&&value->GetItem455()&&value->GetMesh455()&&value->GetPlan455().meshID==c.resultMesh&&value->GetOwner455()==&actor,"Actual12-slot/race/model/owner binding");++real;
     }
     require(!equipment.create(9,0)&&!equipment.create(11,0)&&!equipment.create(10,80)&&!equipment.create(13,0)&&!equipment.create(255,0),"Reserved and external slot bounds");
     actor.SetRace(0);host.bone=_GetBoneMgr()->GetBone(0,0);host.events.clear();host.scale=true;
@@ -91,7 +117,11 @@ static unsigned playerEquipment146(const std::vector<RealCase>& cases){
     require(equipment.putOff(46),"Type46 removal alias");
     host.events.clear();require(equipment.create(27,0)&&equipment.get(27)==equipment.get(11),"Type27 aliases slot11");
     require(equipment.putOff(27),"Type27 removal alias");
-    require(equipment.create(12,0)&&equipment.get(12),"Thirteenth storage slot");require(equipment.putOff(12),"Thirteenth removal");
+    unsigned unsafeRefusals=0;
+    try{equipment.create(12,0);}catch(const std::out_of_range&){++unsafeRefusals;}
+    try{equipment.get(12);}catch(const std::out_of_range&){++unsafeRefusals;}
+    try{equipment.putOff(12);}catch(const std::out_of_range&){++unsafeRefusals;}
+    require(unsafeRefusals==3,"Index12isoutside12constructedobjects;unsafeparitynotclaimed");
     require(equipment.create(10,0)&&equipment.get(10)&&!equipment.get(5),"Explicit hair slot maps to factory5 but getter does not remap5");
     require(equipment.putOff(10),"Hair removal");
     {
@@ -108,7 +138,7 @@ static unsigned playerEquipment146(const std::vector<RealCase>& cases){
     require(retained&&!retained->GetItem455()&&retained->GetMesh455(),"Factory failure retains successful resource creation");
     host.failFactory=false;require(!equipment.create(1,0x0fffffff)&&!equipment.get(1),"Metadata failure clears slot");
     require(!equipment.putOff(255)&&!equipment.get(255),"Getter/remove bounds");
-    for(unsigned part=0;part<13;++part)equipment.putOff(BYTE(part));
+    for(unsigned part=0;part<12;++part)equipment.putOff(BYTE(part));
     require(host.clones==host.removes&&host.rematches>=2,"All controller detach snapshots consumed");
     require(real==30,"Five races/six base models through actual controller");return real;
 }
@@ -128,7 +158,7 @@ static int run(){
     {
         CCharResDataMgr catalog;require(catalog.LoadData(),"Ordinary nine-group resource catalog");
         require(playerEquipment146(cases)==30,"Player equipment controller146");
-        require(RF455_GameItems().manager.size()==0,"13-slot controller teardown");
+        require(RF455_GameItems().manager.size()==0,"12-slot controller teardown");
         CAvatar avatar;
         require(!avatar.GetDefaultItem455(0)&&!avatar.GetDefaultItem455(6)&&!avatar.GetDefaultItem455(255),"Fresh default slots and bounds");
         require(!avatar.SetDefaultItem(BYTE(6),DWORD(0))&&!avatar.SetDefaultItem(BYTE(255),DWORD(0)),"Default setter bounds");
@@ -160,6 +190,6 @@ static int run(){
     require(RF455_GameItems().manager.size()==0,"Avatar teardown releases all default payloads");
     require(_DestroyBoundBoxMgr()&&_DestroyAnimationMgr()&&_DestroyMeshMgr()&&_DestroyBoneMgr()&&_DestroyCharIF(),"Resource teardown");
     g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
-    FILE* out=std::fopen("result.json","wb");require(out,"Output");std::fprintf(out,"{\"status\":\"PASS\",\"plan_cases\":%u,\"real_models_loaded\":%u,\"actual_default_creations\":%u,\"gpu_texture_entries\":%u,\"default_payload_owners\":6,\"payloads_after_teardown\":0,\"actual_resource_bindings\":true,\"ordinary_Avatar_default_setter\":true,\"player_controller_real_creations\":30,\"player_controller_production_connected\":false,\"condition_animation_callbacks_are_probe_recorders\":true,\"full_player_appearance_or_draw\":false}\n",unsigned(plans.size()),loaded,defaults,unsigned(textures.size()));std::fclose(out);return 0;
+    FILE* out=std::fopen("result.json","wb");require(out,"Output");std::fprintf(out,"{\"status\":\"PASS\",\"plan_cases\":%u,\"real_models_loaded\":%u,\"actual_default_creations\":%u,\"gpu_texture_entries\":%u,\"default_payload_owners\":6,\"payloads_after_teardown\":0,\"actual_resource_bindings\":true,\"ordinary_Avatar_default_setter\":true,\"player_controller_real_creations\":30,\"physical_equipment_slots\":12,\"unsafe_index12_refusal_cases\":3,\"unsafe_target_index12_accepted\":false,\"visibility_cases\":%u,\"constructor_rand_cases\":%u,\"player_controller_production_connected\":false,\"condition_animation_callbacks_are_probe_recorders\":true,\"full_player_appearance_or_draw\":false}\n",unsigned(plans.size()),loaded,defaults,unsigned(textures.size()),visualGateCases150,randCases150);std::fclose(out);return 0;
 }
 int main(){try{return run();}catch(const std::exception& error){std::fprintf(stderr,"Player equipment146: %s\n",error.what());return 2;}}

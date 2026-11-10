@@ -38,7 +38,7 @@ def main():
         ('character','Персонажи и анимация',10,30,45,
          ['Исходные MESH/BN/ANI загрузчики,менеджеры,pose/skinning и выбранные normal draw маршруты;список455 применяет имена/уровни/64-битные деньги/обучение к3реальным Avatar'],
          ['Полный actor lifecycle,игровой выбор/экипировка/состояния/анимации и все consumers'],
-         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint','client455-equipment-effects-checkpoint','client455-equipment-attachment-checkpoint','client455-equipment-conditions-checkpoint','client455-character-palette-checkpoint','client455-equipment-draw-checkpoint']),
+         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint','client455-equipment-effects-checkpoint','client455-equipment-attachment-checkpoint','client455-equipment-conditions-checkpoint','client455-character-palette-checkpoint','client455-equipment-draw-checkpoint','client455-player-visual-checkpoint']),
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
@@ -89,7 +89,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
-        'client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
+        'client455-player-visual-checkpoint','client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
         'client455-character-tables-checkpoint','client455-item-bootstrap-checkpoint',
         'client455-resource-catalog-checkpoint','client455-registered-characters-checkpoint',
         'client455-world-entry-checkpoint','client455-login-checkpoint']
@@ -155,7 +155,7 @@ def main():
                 executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},
                 build_file=runtime_build_file.relative_to(WS).as_posix(),build_sha256=sha(runtime_build_file)),
             candidate_runtime_status='CHECKED_PARTIAL' if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
-            current_work='Ordinary149 Create/Login andaffected registered receiver verified. Typed equipment default/matrix Render,fade/alpha,metadata overlay604 producer,DWORD unit effect key andretained queue pose/owners checked. Ordinary queue entrypoints andsecondary geometry are retained in the PE;full13-slot CPlayerProc/Avatar caller andordinary selection/world remain open. Nonzero equipment particle draws andcomplete dynamic registry are stillunverified;legacy registry is a known remaining dependency.',
+            current_work='Ordinary150 Create/Login and3Avatar verified. Previous13-slot inference corrected bycomplete targetctor/dtor:12constructedobjects;index12 aliases followingfields andisnotaccepted. Head/hair visibility andctor/copy PRNG checked;affected render regression preserves6frames. Ordinary queue entrypoints/secondary geometry retained,full12-slot CPlayerProc/Avatar owner/caller stillopen. Full selection/world andnonzero particles/dynamic registry remainunverified.',
             ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),

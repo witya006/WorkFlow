@@ -1,0 +1,442 @@
+{
+  "status": "PARTIAL_SOURCE_CORRECTION",
+  "scope": "12 constructed player equipment objects,explicit unsafe index12 boundary,ctor/copy PRNG consumption andrace/helmet visibility guard;ordinary full player not connected",
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x501b0",
+          "instructions": 62,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x501b0",
+              "bytes": 184,
+              "sha256": "922e04f50281094cd375b446b495ae130b4420b83d638aa52c83839d86ce7d00"
+            },
+            {
+              "rva": "0x620d50",
+              "bytes": 35,
+              "sha256": "273c09c2eb3d43b1709c72d55cc197a8ae96b2ca2a31319caf2d79630e4e717c"
+            }
+          ]
+        },
+        {
+          "rva": "0x502b0",
+          "instructions": 47,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x502b0",
+              "bytes": 116,
+              "sha256": "f7c1578bf19293e74ed589893d21e684bbd37eb9bbf12f50cbafedeab358df0e"
+            },
+            {
+              "rva": "0x620d80",
+              "bytes": 35,
+              "sha256": "6d038814db7a1c604a9e9b54b052b2c8db8d276921830b05137e241c6c56deb8"
+            }
+          ]
+        },
+        {
+          "rva": "0x50810",
+          "instructions": 171,
+          "positive_cfg_blocks": 40,
+          "regions": [
+            {
+              "rva": "0x50810",
+              "bytes": 531,
+              "sha256": "5f17843b2bee22c28247fab27e68dc59546406f1e89b4d4c4044ac295c75c401"
+            }
+          ]
+        },
+        {
+          "rva": "0x512c0",
+          "instructions": 44,
+          "positive_cfg_blocks": 9,
+          "regions": [
+            {
+              "rva": "0x512c0",
+              "bytes": 108,
+              "sha256": "bd1f7f752f24bb3cb6aeaf52c887cee45b51e667f24abdae055bf7e6574e8ee7"
+            }
+          ]
+        },
+        {
+          "rva": "0x51330",
+          "instructions": 49,
+          "positive_cfg_blocks": 8,
+          "regions": [
+            {
+              "rva": "0x51330",
+              "bytes": 144,
+              "sha256": "888cf52d3f97eeb112547e4f775364eae70e19572d80f52fc30fd649c66ea585"
+            }
+          ]
+        },
+        {
+          "rva": "0x50bd0",
+          "instructions": 85,
+          "positive_cfg_blocks": 10,
+          "regions": [
+            {
+              "rva": "0x50bd0",
+              "bytes": 267,
+              "sha256": "d6950eb20ec161d925c399fb7dc9fd97670cf142c9cc62e2202e861d89a38ece"
+            }
+          ]
+        },
+        {
+          "rva": "0x50ac0",
+          "instructions": 87,
+          "positive_cfg_blocks": 14,
+          "regions": [
+            {
+              "rva": "0x50ac0",
+              "bytes": 259,
+              "sha256": "73ec499f28364ab230cfb43731ba8acdea0434133d8c706a587e962c74b72ddf"
+            }
+          ]
+        },
+        {
+          "rva": "0x513e0",
+          "instructions": 13,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x513e0",
+              "bytes": 19,
+              "sha256": "235c3b5ea14d399161cb74af3f33264fbf624fc7dea5b41db4b08670d1f89408"
+            }
+          ]
+        },
+        {
+          "rva": "0x6d9b0",
+          "instructions": 61,
+          "positive_cfg_blocks": 13,
+          "regions": [
+            {
+              "rva": "0x6d9b0",
+              "bytes": 198,
+              "sha256": "38d7fbb19a51474f7f6acdd367b2e8b0a87cd3a0b361767d4a1ff0eef1f566d7"
+            }
+          ]
+        },
+        {
+          "rva": "0x6ebc0",
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x6ebc0",
+              "bytes": 25,
+              "sha256": "cc539e3dc2a7cc5825c1b5dbeaa14f3d8966288ae42cb47b86d1d8c80d90d242"
+            }
+          ]
+        },
+        {
+          "rva": "0x6be60",
+          "instructions": 50,
+          "positive_cfg_blocks": 5,
+          "regions": [
+            {
+              "rva": "0x6be60",
+              "bytes": 184,
+              "sha256": "57923dd406bf29ffd2ce698034332b282d585809fbca6c0d74c9f44d039719a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x501b0",
+          "instructions": 62,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x501b0",
+              "bytes": 184,
+              "sha256": "922e04f50281094cd375b446b495ae130b4420b83d638aa52c83839d86ce7d00"
+            },
+            {
+              "rva": "0x620d50",
+              "bytes": 35,
+              "sha256": "273c09c2eb3d43b1709c72d55cc197a8ae96b2ca2a31319caf2d79630e4e717c"
+            }
+          ]
+        },
+        {
+          "rva": "0x502b0",
+          "instructions": 47,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x502b0",
+              "bytes": 116,
+              "sha256": "f7c1578bf19293e74ed589893d21e684bbd37eb9bbf12f50cbafedeab358df0e"
+            },
+            {
+              "rva": "0x620d80",
+              "bytes": 35,
+              "sha256": "6d038814db7a1c604a9e9b54b052b2c8db8d276921830b05137e241c6c56deb8"
+            }
+          ]
+        },
+        {
+          "rva": "0x50810",
+          "instructions": 171,
+          "positive_cfg_blocks": 40,
+          "regions": [
+            {
+              "rva": "0x50810",
+              "bytes": 531,
+              "sha256": "5f17843b2bee22c28247fab27e68dc59546406f1e89b4d4c4044ac295c75c401"
+            }
+          ]
+        },
+        {
+          "rva": "0x512c0",
+          "instructions": 44,
+          "positive_cfg_blocks": 9,
+          "regions": [
+            {
+              "rva": "0x512c0",
+              "bytes": 108,
+              "sha256": "bd1f7f752f24bb3cb6aeaf52c887cee45b51e667f24abdae055bf7e6574e8ee7"
+            }
+          ]
+        },
+        {
+          "rva": "0x51330",
+          "instructions": 49,
+          "positive_cfg_blocks": 8,
+          "regions": [
+            {
+              "rva": "0x51330",
+              "bytes": 144,
+              "sha256": "888cf52d3f97eeb112547e4f775364eae70e19572d80f52fc30fd649c66ea585"
+            }
+          ]
+        },
+        {
+          "rva": "0x50bd0",
+          "instructions": 85,
+          "positive_cfg_blocks": 10,
+          "regions": [
+            {
+              "rva": "0x50bd0",
+              "bytes": 267,
+              "sha256": "d6950eb20ec161d925c399fb7dc9fd97670cf142c9cc62e2202e861d89a38ece"
+            }
+          ]
+        },
+        {
+          "rva": "0x50ac0",
+          "instructions": 87,
+          "positive_cfg_blocks": 14,
+          "regions": [
+            {
+              "rva": "0x50ac0",
+              "bytes": 259,
+              "sha256": "73ec499f28364ab230cfb43731ba8acdea0434133d8c706a587e962c74b72ddf"
+            }
+          ]
+        },
+        {
+          "rva": "0x513e0",
+          "instructions": 13,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x513e0",
+              "bytes": 19,
+              "sha256": "235c3b5ea14d399161cb74af3f33264fbf624fc7dea5b41db4b08670d1f89408"
+            }
+          ]
+        },
+        {
+          "rva": "0x6d9b0",
+          "instructions": 61,
+          "positive_cfg_blocks": 13,
+          "regions": [
+            {
+              "rva": "0x6d9b0",
+              "bytes": 198,
+              "sha256": "38d7fbb19a51474f7f6acdd367b2e8b0a87cd3a0b361767d4a1ff0eef1f566d7"
+            }
+          ]
+        },
+        {
+          "rva": "0x6ebc0",
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x6ebc0",
+              "bytes": 25,
+              "sha256": "cc539e3dc2a7cc5825c1b5dbeaa14f3d8966288ae42cb47b86d1d8c80d90d242"
+            }
+          ]
+        },
+        {
+          "rva": "0x6be60",
+          "instructions": 50,
+          "positive_cfg_blocks": 5,
+          "regions": [
+            {
+              "rva": "0x6be60",
+              "bytes": 184,
+              "sha256": "57923dd406bf29ffd2ce698034332b282d585809fbca6c0d74c9f44d039719a5"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 11,
+  "full_instructions": 684,
+  "positive_cfg_blocks": 107,
+  "raw": {
+    "file": "artifacts/client455-progress/player-visual150-reference/complete-session.json",
+    "sha256": "b78f4e7fb4125894e4eeda71304c3f3468a55b180a5c71894849dea738023572"
+  },
+  "script": {
+    "file": "scripts/audit_client455_player_visual.py",
+    "sha256": "e0351f35ff586b7f8ab63c4c9c4ee6657f8f313af234ed8a1a13ffa4fca591d2"
+  },
+  "decoder": {
+    "file": "scripts/decode_client455_cfg.py",
+    "sha256": "ad80b40b45ca65d3f0e6493f06505cdbf120e49aa6173386a9e479f51387d179"
+  },
+  "verifier": {
+    "file": "scripts/client455_reference_regions.py",
+    "sha256": "900b67213fe0aea10edbf01ea27636971fac63bcacf15a1ec09213bb49f67354"
+  },
+  "rand_reference": {
+    "references": [
+      {
+        "file": "work/client-reference/current/RF_Online.bin",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "rva": "0x474144",
+            "instructions": 9,
+            "positive_cfg_blocks": 1,
+            "regions": [
+              {
+                "rva": "0x474144",
+                "bytes": 34,
+                "sha256": "a4d0f90c86329758e67465c8c18d9baceeb36250abfd5da1b95cfba067767166"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "work/client-reference/reference-backup/RF_Online.bin",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "rva": "0x474144",
+            "instructions": 9,
+            "positive_cfg_blocks": 1,
+            "regions": [
+              {
+                "rva": "0x474144",
+                "bytes": 34,
+                "sha256": "a4d0f90c86329758e67465c8c18d9baceeb36250abfd5da1b95cfba067767166"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "full_functions": 1,
+    "full_instructions": 9,
+    "positive_cfg_blocks": 1
+  },
+  "rand_raw": {
+    "file": "artifacts/client455-progress/player-visual150-reference/rand-session.json",
+    "sha256": "a5e1d61301e0c87090cfc9581815b802108adcd9eeef8ae969403f0582ef2c79"
+  },
+  "target_rand_recurrence": {
+    "multiplier": 214013,
+    "increment": 2531011,
+    "shift": 16,
+    "mask": 32767,
+    "seed": 1109,
+    "first_values": [
+      3660,
+      150,
+      7964
+    ],
+    "thirteenth": 9923
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_player_equipment.h",
+      "sha256": "6d5cbbb04feb3600c65bf2c4b33a091037be34234fb43bb317a1c817bde140da"
+    },
+    {
+      "file": "scripts/native/client455_equipment_object.h",
+      "sha256": "f06a3501bb1353d4eed6ecfd66534376f180163ec6ea6484ae8003825c08c5f4"
+    },
+    {
+      "file": "scripts/native/client455_equipment_object.cpp",
+      "sha256": "c60d99eeddf4191942e3edcd8a51a02e37cc549d76944219a95cebe932bec37f"
+    },
+    {
+      "file": "scripts/native/client455_player_equipment_probe.cpp",
+      "sha256": "9f42ae4edd33b903d52d4a741261872a83c42c006b6607246a87f708225f1169"
+    }
+  ],
+  "preparer": {
+    "file": "scripts/prepare_client455_normal.py",
+    "sha256": "8845550b32b040fd36f893f97eb834ff1697265cbda989e70e09b35376fda73f"
+  },
+  "runtime_base": {
+    "file": "artifacts/client455-progress/before150/manifest.json",
+    "sha256": "91e82f3064b9c81326f2d2588242093d3e37de6f266c7f4f8b03f728b5c81191"
+  },
+  "physical_equipment_slots": 12,
+  "slot_bytes": 644,
+  "array_offset": 16,
+  "first_field_after_array": 7744,
+  "erroneous_previous_claim": "13constructedslots inferred fromgetter/create index<=12;superseded bycomplete constructor/destructor bodies",
+  "target_index12_is_constructed": false,
+  "own_index12_policy": "Explicit out_of_range;not accepted as target failure/memory-corruption equivalence",
+  "facts": [
+    "4501B0/4502B0 passcount12,stride644 tovector constructor/destructor;following state beginsat7744",
+    "46BE60 consumes rand()/100.0 andstoresfloat612;queue firstconstructs46BD60then46C130copies640bytes,so destinationstillconsumesrand",
+    "450810 filters hair/head fromrace,helmet rawmetadata236 andequipment/index<80 before empty/flags/meshload checks",
+    "450BD0 performs12equipment FrameMove/Animation/cache-save steps;451330rematchesweapon/shield andresetsmesh animation",
+    "4513E0 is a real empty player processor FrameMove;not a missing body",
+    "46D9B0/46D200 equipment FrameMove has actual effect/dummy/follow dependencies;not equivalent to inheritedCResObject movement"
+  ],
+  "gaps": [
+    "Ordinary CPlayerProc/CPlayer/Avatar ownership andequipment/frame/animation/render providers not yet connected",
+    "Animation owner/action/profile/condition/UI andnonzero particle registry remain open",
+    "Target index12 aliases processor state;unsafe target domain is not reproduced or accepted",
+    "Full constructor/destructor/CRT/FP/error/resource/world/client acceptance remains open"
+  ],
+  "full_player_appearance": false,
+  "ordinary_controller_connected": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

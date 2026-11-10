@@ -1,3 +1,26 @@
+# Текущая проверенная база150 —10.11.2026
+
+Own0f671964…/x86/entry179660,182client/67engine/20kernels,unresolved0.
+Gate inventory/client455-player-visual-checkpoint.json PARTIAL.
+Полные ctor/dtor455 исправили ошибку146:12физических слотов,не13.
+Index12 попадает в последующие поля;собственный явный отказ — известное
+ограничение,не принятая эквивалентность небезопасной ветке эталона.
+Перенесены visibility450810 и PRNG ctor/copy;24ветки видимости/3PRNG контракта
+проверены с настоящими ресурсами. Frozen PRNG oracle взят из бинарника.
+Свежие Create/Login/account3Avatar иdraw-regression прошли;6кадров совпадают149.
+Login65/3016ms просмотрен:lobby/ожидание,Beta0.738,безauth;9прежнихfirst-chance,
+unhandled0. Полное владение controller/Animation/Render/condition/UI в обычном
+CPlayerProc/Avatar,полный particle registry,выбор/мир/M9 остаются открытыми.
+FrameMove4513E0 реально пуст;семантика flag442440/bonus-owner ещё неизвестна.
+Точная149runtime сохранена до изменений:before150/manifest.json,52файла.
+Перед следующими ordinary edits сохранить150 вbefore151 с новым player-visual gate.
+IDA6a9e2ee9 saved/closed/list0;native jobs завершены,установок/удалений нет.
+Оригиналы/server неизменны. Оценка25%(20–35%),0/12полных областей без изменения.
+Последний полный замер storage остаётся16:34:07:156,14GiB по путям/42,96GiB
+уникальных файлов;не точное число занятых кластеров. Новые финальныеstaging pool0.
+Доказательства:research/client455-player-visual.md;оценка:docs/progress-report.md.
+Ниже сохранена история,её «текущие» формулировки относятся к своим версиям.
+
 # Текущее продолжение149 —10.11.2026
 
 Own f4e62e48…/entry179630/x86,182client-67engine-20kernels,unresolved0.

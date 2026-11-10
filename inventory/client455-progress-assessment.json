@@ -107,7 +107,8 @@
         "client455-equipment-attachment-checkpoint",
         "client455-equipment-conditions-checkpoint",
         "client455-character-palette-checkpoint",
-        "client455-equipment-draw-checkpoint"
+        "client455-equipment-draw-checkpoint",
+        "client455-player-visual-checkpoint"
       ]
     },
     {
@@ -266,7 +267,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "0ff7e7885e62c7777936bc128d1b0a8f035f60f3ef3c295e97b04c62d17525e4",
+      "sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -274,7 +275,7 @@
     },
     "client455-ui-startup-native": {
       "file": "inventory/client455-ui-startup-native.json",
-      "sha256": "5bd848d653eea7d1bc2b383a6973c412f8a28a77677301cd3dafa1255866d3c5",
+      "sha256": "86198288fd2e6a6e19133a66e28fa3f2527e31d6c2b9388b36e039ca8b8a2c16",
       "status": null,
       "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
       "fresh_for_current_PE": true,
@@ -282,7 +283,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "b670f36706763aca3ce3c93abb8fd3ca90ed5404a738c17e935b74746cdced22",
+      "sha256": "c81ae81bb52f4c9bb821dbd2146846d37dc101b337a826cf2958df7ba8358774",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -389,7 +390,7 @@
       "sha256": "76edde5493669598750a26f807a88156f7aa619be2336366cbb428faba95fed0",
       "status": "PARTIAL",
       "scope": "Typed equipment default/matrix Render,fade/alpha,overlay producer,retained effect queue and partial effect-draw adapter;full player and particle registry open",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-normal-renderer-checkpoint": {
@@ -486,6 +487,14 @@
       "status": "PARTIAL",
       "scope": "Actual ordinary Character20parts/30matrixpalettes/13dummyindices;full equipment/actor lifecycle remainsopen",
       "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-player-visual-checkpoint": {
+      "file": "inventory/client455-player-visual-checkpoint.json",
+      "sha256": "21be0feca6798dfaa636446c818fc83c7d1c4f386f654a29ce9f215e4f314e82",
+      "status": "PARTIAL",
+      "scope": "12 constructed player equipment objects,explicit unsafe index12 boundary,ctor/copy PRNG consumption andrace/helmet visibility guard;ordinary full player not connected",
+      "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -616,11 +625,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "f4e62e487286dae42623ba28babf6f52ba527eb7604a78ce8d2a9c9b259c1c9e",
+      "sha256": "0f6719640507fdff644002e543c4d4a921b6ac9fd252fd7feaec961f02eb33ec",
       "bytes": 2316800,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x179630",
+      "entry_rva": "0x179660",
       "sections": [
         ".text",
         ".rdata",
@@ -644,22 +653,22 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "e34e416647a998aa79dfa81843a9518e85a907103113b50c83854d77024823a1",
+      "sha256": "0a9dfd70d87d5be53704d3401ee250b9fc14c69ec43ffae83902c630eebd5a56",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-equipment-draw-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-player-visual-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "0ff7e7885e62c7777936bc128d1b0a8f035f60f3ef3c295e97b04c62d17525e4",
+      "link_sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "f4e62e487286dae42623ba28babf6f52ba527eb7604a78ce8d2a9c9b259c1c9e",
+        "sha256": "0f6719640507fdff644002e543c4d4a921b6ac9fd252fd7feaec961f02eb33ec",
         "bytes": 2316800,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x179630",
+        "entry_rva": "0x179660",
         "sections": [
           ".text",
           ".rdata",
@@ -669,18 +678,18 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "e34e416647a998aa79dfa81843a9518e85a907103113b50c83854d77024823a1"
+      "build_sha256": "0a9dfd70d87d5be53704d3401ee250b9fc14c69ec43ffae83902c630eebd5a56"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
-    "current_work": "Ordinary149 Create/Login andaffected registered receiver verified. Typed equipment default/matrix Render,fade/alpha,metadata overlay604 producer,DWORD unit effect key andretained queue pose/owners checked. Ordinary queue entrypoints andsecondary geometry are retained in the PE;full13-slot CPlayerProc/Avatar caller andordinary selection/world remain open. Nonzero equipment particle draws andcomplete dynamic registry are stillunverified;legacy registry is a known remaining dependency.",
+    "current_work": "Ordinary150 Create/Login and3Avatar verified. Previous13-slot inference corrected bycomplete targetctor/dtor:12constructedobjects;index12 aliases followingfields andisnotaccepted. Head/hair visibility andctor/copy PRNG checked;affected render regression preserves6frames. Ordinary queue entrypoints/secondary geometry retained,full12-slot CPlayerProc/Avatar owner/caller stillopen. Full selection/world andnonzero particles/dynamic registry remainunverified.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "f8b4814cafb2927ac019d3de4867f5db04671d1901c3de5e3cc8ba7628bd005e",
+      "sha256": "3d11de7da72dbad6b1cbebf0e7a60abdbaec99463345d7a01326a417e4cc490d",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/f4e62e48/login-frame001/login-frame.png",
-        "sha256": "b203686f4fef97ac884796f2a628d8573c496d3b6f8c8c46fdf98de2c538561c"
+        "file": "work/m9/0f671964/login-frame001/login-frame.png",
+        "sha256": "183ca72f38ba7c37999e4f52029395d276f4fd57dfc04c5310c995f32294e8c9"
       },
       "capture": {
         "result": 0,
@@ -694,8 +703,8 @@
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa7c1810",
-        "vtable": "0x20cba4",
+        "object": "0xa7adf68",
+        "vtable": "0x2acba4",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -712,10 +721,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "87ced4f22f5530ad3ff109238ec448386105335a1e77c6399092767d80604200",
-    "entries": 155,
+    "sha256": "51a69272ff2ddadfe4784a7f3fab60a252b2f466e429c959b6d4d944f0db6d9c",
+    "entries": 156,
     "statuses": {
-      "partial_component": 9,
+      "partial_component": 10,
       "partial": 116,
       "audit_open": 1,
       "open": 2,
@@ -726,7 +735,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-EQUIPMENT-DRAW-149"
+      "CLIENT455-PLAYER-VISUAL-150"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -796,7 +805,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;155 overlapping historical records",
+        "measured": "12 domain planning map;156 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -950,7 +959,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "cde1d6ffbfea39967c3b62d1c45b873ce881c16a7a1693edaa1d49d81f530316"
+    "sha256": "0936b5362b95735ed4aca7fdaf3e7ecf057307bd536f0c64a3c7085ffc72dc23"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

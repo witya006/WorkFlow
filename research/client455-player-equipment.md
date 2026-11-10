@@ -1,3 +1,9 @@
+Актуализация150,10.11.2026: **прежнее утверждение о13физических слотах ошибочно**.
+Полные ctor/dtor подтверждают12;index12 выходит за массив и попадает в поля
+процессора. Текущие исходники/проверки исправлены;historical146ниже не переписан.
+Использовать inventory/client455-player-visual-* и research/client455-player-visual.md.
+Старая программа аудита146 выведена из текущего workflow, чтобы не переиздать ошибку.
+
 # Player equipment146 — source component,production integration open
 
 Status:PARTIAL_COMPONENT. Ordinary runtime stays145,ownPE SHA256

@@ -113,13 +113,20 @@ public:
 };
 
 // Source reconstruction of453030/453100/4531E0/453550/453760/453AF0/453C40
-// and their getters/rematch rules. Storage has13slots;target render/animation
-// loops separately iterate12. This controller does not invent the missing
+// and their getters/rematch rules.4501B0/4502B0 construct/destroy12slots.
+// The guards also admit index12,but that address aliases the processor's
+// following fields,not a thirteenth constructed equipment object. That unsafe
+// target domain is reported explicitly rather than invented as valid storage.
+// This controller does not invent the missing
 // ordinary render or condition providers.
 class RF455PlayerEquipment {
+public:
+    enum {PhysicalSlots=12};
+private:
     RF455EquipmentCallbacks& host;
-    std::array<RF455PlayerEquipmentObject,13> slots;
+    std::array<RF455PlayerEquipmentObject,PhysicalSlots> slots;
     static BYTE alias(BYTE kind){return kind==27?11:kind==46?9:kind;}
+    static void constructedSlot(BYTE slot){if(slot==12)throw std::out_of_range("455 index12 aliases fields beyond12 constructed equipment slots");}
     static RF455BasicItem& basic(RF455ManagedItem* item){
         auto* value=dynamic_cast<RF455BasicItem*>(item);
         if(!value)throw std::logic_error("455 player equipment requires a basic payload");
@@ -159,13 +166,35 @@ public:
     explicit RF455PlayerEquipment(RF455EquipmentCallbacks& callbacks):host(callbacks){}
     virtual ~RF455PlayerEquipment()=default;
     virtual RF455PlayerEquipmentObject* get(BYTE type){
-        const BYTE part=alias(type);return part<=12&&!slots[part].IsEmpty()?&slots[part]:nullptr;
+        const BYTE part=alias(type);constructedSlot(part);return part<slots.size()&&!slots[part].IsEmpty()?&slots[part]:nullptr;
     }
     RF455ManagedItem* payload(BYTE type){auto* object=get(type);return object?object->GetItem455():nullptr;}
+    //450810:race-specific helmet/hair filtering precedes the actual slot's
+    //empty/render/clipped/loaded checks. This does not allocate missing poses.
+    bool canRender(BYTE slot,BYTE race){
+        constructedSlot(slot);if(slot>=slots.size())return false;
+        auto* helmet=payload(5);
+        const auto defaultHelmet=[&](){
+            if(!helmet||!helmet->header().data16)return false;
+            auto& normal=basic(helmet);const auto row=normal.rawMetadata();
+            if(!row.data||row.size<=88)throw std::out_of_range("455 helmet equipment metadata");
+            return row.data[88]>=1&&row.data[88]<=10&&normal.tableIndex()<80;
+        };
+        if(race==4&&slot==10&&helmet&&!defaultHelmet())return false;
+        if(race<4&&helmet&&(slot==0||slot==10)){
+            const auto row=basic(helmet).rawData();if(!row.data)return false;
+            if(row.size<240)throw std::out_of_range("455 helmet visibility metadata236");
+            DWORD mode;std::memcpy(&mode,row.data+236,4);
+            if((mode==1||(mode==2&&slot==0)||(mode==3&&slot==10))&&!defaultHelmet())return false;
+        }
+        auto& object=slots[slot];auto* mesh=object.GetMesh455();
+        return !object.IsEmpty()&&!object.IsDisable(2)&&!object.IsEnable(4096)&&mesh&&mesh->m_Load;
+    }
     bool create(BYTE type,DWORD index){
         if((type==9||type==10||type==11)&&(type!=10||index>=80))return false;
         if(type>12&&type!=27&&type!=46)return false;
         BYTE part=alias(type);if(part==5&&index<80)part=10;
+        constructedSlot(part);
         auto& object=slots[part];if(!object.IsEmpty())putOff(part);
         const BYTE factoryType=part==10?5:part==11?27:part==9?46:part;
         if(!object.Create455(factoryType,index|(DWORD(host.race())<<28))){object.Clear();return false;}
@@ -195,6 +224,7 @@ public:
     }
     virtual bool putOff(BYTE type){
         const BYTE part=alias(type);if(part>12)return false;
+        constructedSlot(part);
         auto& object=slots[part];auto* item=object.GetItem455();if(!item)return false;
         auto clone=host.clonePayload(item);const BYTE itemType=kind(item);
         if(itemType==8||itemType==46)host.detachedEffect(object,2);
