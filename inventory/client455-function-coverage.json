@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T23:02:41.468158+00:00",
+  "measured_at_utc": "2026-11-10T23:33:19.269002+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2479,
-    "unique_functions_with_complete_assembly_cfg": 673,
-    "unique_pinned_code_bytes": 687867,
-    "reports": 169,
-    "code_range_occurrences": 4056,
+    "unique_functions_with_pinned_code": 2501,
+    "unique_functions_with_complete_assembly_cfg": 697,
+    "unique_pinned_code_bytes": 695495,
+    "reports": 170,
+    "code_range_occurrences": 4083,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -583,6 +583,10 @@
       "sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216"
     },
     {
+      "file": "inventory/client455-skill-force-window-reference.json",
+      "sha256": "4e38e175cc5ec0a6886274578a33f17d2c7dea28c710f4f93956fb7952f629e6"
+    },
+    {
       "file": "inventory/client455-sky-atmosphere-reference.json",
       "sha256": "2bb2b35460cd6e2a1d752780d881d8d66aef956c66841511d903dc3cc28649b4"
     },
@@ -917,6 +921,10 @@
       "sha256": "0c5739e9eae759853a7c356c3abdb5e9371fa07d04de63e47e71b659c95edda1"
     },
     {
+      "file": "artifacts/client455-progress/skill-force168-reference.json",
+      "sha256": "448a18f86f2f8fa5491fd89fd15c8c3fe8bf6d07bd7830c395fae7714a607b41"
+    },
+    {
       "file": "artifacts/client455-progress/sky-atmosphere126-reference.json",
       "sha256": "0b2a8b3d339ede95153ea78990e9bbcb61ee291a76256923601590c10b85ee21"
     },
@@ -944,7 +952,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "378132673ce63c76ecd23675cbdce53fd0651df0628c25136beceac4f2bd35cb"
+      "sha256": "d9eeb3aed9ff9430f6a9db6bfe8f2cf1af88a18d3f06d4c09214f970d94777e5"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2471,6 +2479,7 @@
       "rva": "0x14450",
       "ida_name": "sub_414450",
       "reports": [
+        "inventory/client455-skill-force-window-reference.json",
         "inventory/client455-tutorial-actions-reference.json"
       ],
       "ranges": [
@@ -2479,7 +2488,12 @@
           "bytes": 56
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 27
+        }
+      ]
     },
     {
       "rva": "0x154f0",
@@ -9669,6 +9683,63 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x8d220",
+      "ida_name": "sub_48D220",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8d220",
+          "bytes": 113
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 42
+        }
+      ]
+    },
+    {
+      "rva": "0x8d490",
+      "ida_name": "sub_48D490",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8d490",
+          "bytes": 95
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 37
+        }
+      ]
+    },
+    {
+      "rva": "0x8e270",
+      "ida_name": "sub_48E270",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8e270",
+          "bytes": 245
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 90
+        }
+      ]
+    },
+    {
       "rva": "0x90140",
       "ida_name": "sub_490140",
       "reports": [
@@ -9695,6 +9766,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x903e0",
+      "ida_name": "sub_4903E0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x903e0",
+          "bytes": 94
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 36
+        }
+      ]
     },
     {
       "rva": "0x90650",
@@ -24355,9 +24445,326 @@
       ]
     },
     {
+      "rva": "0x2bff70",
+      "ida_name": "sub_6BFF70",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bff70",
+          "bytes": 324
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 96
+        }
+      ]
+    },
+    {
+      "rva": "0x2c00c0",
+      "ida_name": "sub_6C00C0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c00c0",
+          "bytes": 134
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x2c0150",
+      "ida_name": "sub_6C0150",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c0150",
+          "bytes": 146
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6200",
+      "ida_name": "sub_6C6200",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6200",
+          "bytes": 554
+        },
+        {
+          "rva": "0x6401b0",
+          "bytes": 161
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 185
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6570",
+      "ida_name": "sub_6C6570",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6570",
+          "bytes": 811
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 257
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6960",
+      "ida_name": "sub_6C6960",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6960",
+          "bytes": 126
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x2c69e0",
+      "ida_name": "sub_6C69E0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c69e0",
+          "bytes": 149
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 54
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6a80",
+      "ida_name": "sub_6C6A80",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6a80",
+          "bytes": 185
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 54
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6b70",
+      "ida_name": "sub_6C6B70",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6b70",
+          "bytes": 752
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 231
+        }
+      ]
+    },
+    {
+      "rva": "0x2c6f60",
+      "ida_name": "sub_6C6F60",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c6f60",
+          "bytes": 314
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 96
+        }
+      ]
+    },
+    {
+      "rva": "0x2c7240",
+      "ida_name": "sub_6C7240",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c7240",
+          "bytes": 108
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 40
+        }
+      ]
+    },
+    {
+      "rva": "0x2c72b0",
+      "ida_name": "sub_6C72B0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c72b0",
+          "bytes": 569
+        },
+        {
+          "rva": "0x640370",
+          "bytes": 38
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 203
+        }
+      ]
+    },
+    {
+      "rva": "0x2c7cb0",
+      "ida_name": "sub_6C7CB0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c7cb0",
+          "bytes": 613
+        },
+        {
+          "rva": "0x6404b0",
+          "bytes": 52
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 197
+        }
+      ]
+    },
+    {
+      "rva": "0x2c80b0",
+      "ida_name": "sub_6C80B0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c80b0",
+          "bytes": 1070
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 317
+        }
+      ]
+    },
+    {
+      "rva": "0x2c84e0",
+      "ida_name": "sub_6C84E0",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c84e0",
+          "bytes": 110
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x2c8550",
+      "ida_name": "sub_6C8550",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c8550",
+          "bytes": 361
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 111
+        }
+      ]
+    },
+    {
       "rva": "0x2c8a20",
       "ida_name": "sub_6C8A20",
       "reports": [
+        "inventory/client455-skill-force-window-reference.json",
         "inventory/client455-tutorial-actions-reference.json"
       ],
       "ranges": [
@@ -24366,7 +24773,12 @@
           "bytes": 425
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 120
+        }
+      ]
     },
     {
       "rva": "0x2c8c20",
@@ -24381,6 +24793,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x2c9570",
+      "ida_name": "sub_6C9570",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c9570",
+          "bytes": 370
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 102
+        }
+      ]
+    },
+    {
+      "rva": "0x2c9790",
+      "ida_name": "sub_6C9790",
+      "reports": [
+        "inventory/client455-skill-force-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2c9790",
+          "bytes": 134
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/skill-force168-reference.json",
+          "instructions": 46
+        }
+      ]
     },
     {
       "rva": "0x2f5bf0",
@@ -40601,8 +41051,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 16,
-    "unique_functions_with_complete_assembly_cfg": 16
+    "unique_functions_with_pinned_code": 22,
+    "unique_functions_with_complete_assembly_cfg": 24
   },
   "M6": "OPEN",
   "M9": "OPEN",

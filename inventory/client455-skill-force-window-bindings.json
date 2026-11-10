@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "83b60d77dcafcbb7193b4191ef81fd56a899547cfaec1a51cbe6b91ab51ce964",
+    "bytes": 2365440,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x182d80",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial Skill/Force windows and rows. Full production population and gameplay remain open.",
+  "functions": [
+    {
+      "rva": "0x2c7cb0",
+      "symbol": "CGUISFWindow::CreateSFBoard",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xac940"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c80b0",
+      "symbol": "CGUISFWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xacc10"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c84e0",
+      "symbol": "CGUISFWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xad7d0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c8550",
+      "symbol": "CGUISFWindow::SetBound",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xad2a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c8a20",
+      "symbol": "CGUISFWindow::SetCurBoardTab",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xad3b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c7240",
+      "symbol": "CGUISkillForceBoard::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xadb00"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c9570",
+      "symbol": "CGUISkillWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xacef0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c9790",
+      "symbol": "CGUISkillWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_skill_force_window.inc",
+        "sha256": "a1512befa291a10d05ca0ca00d179602596d8328118dab5ed24b0c6e962724b8"
+      },
+      "ordinary_symbol_rvas": [
+        "0xadb70"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bff70",
+      "symbol": "CGUIForceWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_force_window.inc",
+        "sha256": "f8935752a2b4d83f4a1fa5422795e05fa58e98ae4eb2f670ae7fbea10e092fe2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x83080"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c00c0",
+      "symbol": "CGUIForceWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_force_window.inc",
+        "sha256": "f8935752a2b4d83f4a1fa5422795e05fa58e98ae4eb2f670ae7fbea10e092fe2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x83210"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c0150",
+      "symbol": "CGUIForceWindow::SetRaceType",
+      "source": {
+        "file": "scripts/native/client455_force_window.inc",
+        "sha256": "f8935752a2b4d83f4a1fa5422795e05fa58e98ae4eb2f670ae7fbea10e092fe2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x831a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6200",
+      "symbol": "CGUISkFcUnit::CGUISkFcUnit",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [
+        "0xabd20"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6960",
+      "symbol": "CGUISkFcUnit::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [
+        "0xada00"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c69e0",
+      "symbol": "CGUISkFcUnit::SetSize",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6b70",
+      "symbol": "CGUISkFcUnit::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [
+        "0xad5f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6f60",
+      "symbol": "CGUISkFcUnit::SetExp",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [
+        "0xad470"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6a80",
+      "symbol": "CGUISkFcUnit::SetUnitState",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [
+        "0xadc00"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2c6570",
+      "symbol": "CGUISkFcUnit::SetKind455",
+      "source": {
+        "file": "scripts/native/client455_skill_force_row.inc",
+        "sha256": "14dd83de9c065b91ed39d4f5f9ebdae43a23b7df054c33337fb2a33e6c7b81a1"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    }
+  ]
+}

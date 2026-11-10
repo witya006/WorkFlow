@@ -1,3 +1,13 @@
+2026-11-11 — Skill and Force windows 168, PARTIAL_KNOWN_FAILURE.
+Ordinary Skill and Force initializers use five tabs each and the recovered
+TabBoard. Three viewed frames, four stock localized EDF rows, three race cases
+and the help HWND message passed in the component. Automatic population and
+gameplay remain open. Live selection reaches the legacy ShopWindow skin crash
+at own RVA 12F8BF. Build 83b60d77… x86, entry 182D80, no unresolved symbols.
+24 full functions and 2,518 instructions checked in both pins. Address coverage
+2,501 (+22), full listings 697 (+24), partial bindings 166. World and M9 open.
+[Evidence and remaining work](research/client455-skill-force-window.md)
+
 2026-11-11 — UnitTuning and UnitStorehouse 167, PARTIAL_KNOWN_FAILURE.
 Ordinary 455 client now activates tuning 8 × 200 and storehouse 1 × 4 with
 windows 34 and 35. Stock Taiwanese assets, three HWND messages and three GPU
