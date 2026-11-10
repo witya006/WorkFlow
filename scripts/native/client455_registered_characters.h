@@ -5,6 +5,16 @@
 
 constexpr std::size_t RF455RegisteredCharactersBytes=506;
 constexpr std::size_t RF455RegisteredCharacterStride=164;
+// The pinned handler copies506bytes from its receive buffer,then uses count
+// at offset1. The live compatible server omits unused trailing records. Bound
+// the active records before making that internal image;never read past a frame.
+inline bool RF455_ExpandRegisteredCharacters(const void* data,std::size_t bytes,std::uint8_t (&image)[RF455RegisteredCharactersBytes]){
+    if(!data||bytes<14)return false;
+    const auto* p=static_cast<const std::uint8_t*>(data);
+    if(p[1]>3||bytes<14+RF455RegisteredCharacterStride*p[1])return false;
+    std::memset(image,0,sizeof(image));
+    std::memcpy(image,p,bytes<sizeof(image)?bytes:sizeof(image));return true;
+}
 struct RF455RegisteredCharacter {
     char name[18]={},classCode[6]={}; // Keep wire bytes and a bounded local terminator.
     std::uint32_t serial=0xffffffff,baseShape=0;

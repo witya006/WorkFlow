@@ -61,4 +61,5 @@ public:
     RF455ItemDataSpan rawData()const{return data;}
     RF455ItemDataSpan rawMetadata()const{return metadata;}
     RF455ItemDataSpan recordBytes()const{return {state.get(),stateSize};}
+    void SetUpgradeLevel455(std::uint8_t);
 };

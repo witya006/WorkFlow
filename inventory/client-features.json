@@ -8332,8 +8332,8 @@
     {
       "id": "CLIENT455-PLAYER-OWNER-154",
       "status": "partial",
-      "runtime_gate_current": true,
-      "runtime_gate_last_verified": true,
+      "runtime_gate_current": false,
+      "runtime_gate_last_verified": false,
       "description": "Primary12-slot embedded equipment/frame/render andactualAvatar default clothing/skill callbacks;fullappearance/selection remainopen",
       "implementation": ["scripts/native/client455_player_owner.cpp", "scripts/client455_player_owner_port.py", "scripts/native/client455_player_equipment.h", "scripts/native/client455_equipment_object.cpp", "scripts/native/client455_skill_force_items.cpp"],
       "evidence": ["inventory/client455-player-owner-reference.json", "inventory/client455-player-owner-native.json", "inventory/client455-player-owner-render-native.json", "inventory/client455-player-owner-checkpoint.json", "research/client455-player-owner.md"],
@@ -8341,6 +8341,21 @@
       "primary_controller_connected": true,
       "full_Character_clone_lifecycle": false,
       "full_appearance_or_selection": false,
+      "full_client": false,
+      "M6": "OPEN", "M6F": "OPEN", "M7": "OPEN", "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-LIVE-LOGIN-155",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Live game-entry accepted;compact character reply andtyped upgrade repaired;equipped selection still fails",
+      "implementation": ["scripts/native/client455_registered_characters.h", "scripts/native/client455_registered_characters.inc", "scripts/native/client455_item_payloads.cpp", "scripts/native/client455_protocol_observation.h"],
+      "evidence": ["inventory/client455-live-login-checkpoint.json", "inventory/client455-live-launcher-native.json", "inventory/client455-login-frame-live-taiwan-native.json", "inventory/client455-account-native.json", "research/client455-live-launcher.md"],
+      "verification": "Actual launcher/game1/1→1/2(result0),178-byte registered reply;bounded compact encrypted receiver andnormal upgradeBYTE113 pass;ordinaryLogin and3oldassembledPNG pass;live equippedSetAction still fails",
+      "live_game_entry_accepted": true,
+      "live_selection_completed": false,
+      "world_entered": false,
       "full_client": false,
       "M6": "OPEN", "M6F": "OPEN", "M7": "OPEN", "M9": "OPEN"
     }

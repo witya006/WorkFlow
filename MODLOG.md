@@ -993,3 +993,18 @@ identifier/key/rawauthpackets notpersisted. Launcherx64base140000000/RVA24C2C0,
 24C7A0,24D0E0/13BE60 diagnostics;notcompleteASMproof orpinnedclientbehavior.
 OwnRFgame-auth remainsOPEN. No servercode/config changed,noinputEXEexecuted.
 research/client455-live-launcher.md;inventory/client455-live-server.json.
+
+2026-11-10 — Live login155 PARTIAL. Own da42b501…/x86/entry17F660,
+182client/67engine/20kernels/build-link0. Real launcher accepts testaccount;
+game1/1→1/2(result0) accepted;registered1/9 is178bytes. Fixed incorrect506
+minimum byvalidating14+164*count andpadding onlyunused slots. Not original
+unsafe-overread equivalence. Registered upgrade nowuses realtyped normal
+payload;462170 full16instructions/1CFG bothpins proves BYTE113 write only.
+Native compact encrypted fragmentation/boundaries andactual worn payload pass;
+three assembledPNG equal154;ordinaryTaiwan Login passes. Live selection still
+fails atGetEquipItem@CPlayerProc own10B23←CPlayer::SetAction555FE. World notentered.
+Gate inventory/client455-live-login-checkpoint.json;next targetcombat-mode
+animation/fade migration. M6/M6F/M7/M9OPEN;estimate25%(20–35%),0/12domains.
+Only observed archives staged throughsharedpool;noclient-widecopy/deletion.
+Password/rawpackets notsaved;private handoff removed. IDA9079cdac saved/closed,
+list0. No servermodifications orinputEXEexecution. See research/client455-live-launcher.md.

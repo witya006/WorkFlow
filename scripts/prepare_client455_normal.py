@@ -634,7 +634,7 @@ def main():
                 for method in [b'CNetworkMgr::SendRequestMsg(',b'CNetworkMgr::ReceiveResponseMsg(']:
                     start,end=section(raw,method,method);a,b=section(dispatch,method,method);raw=raw[:start]+dispatch[a:b]+raw[end:]
                 start,end=section(raw,b'CNetworkMgr::AnalysisServerPacket(',b'CNetworkMgr::AnalysisServerPacket(');body=raw[start:end];at=body.index(b'{')+1
-                body=body[:at]+nl+b'\tif(!pMsgHeader || pMsgHeader->m_wSize<4)return false;'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==9)return DispatchRegisteredCharacters455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==2)return DispatchWorldEntry455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==21)return DispatchAccount455(pMsgHeader->m_byType[1],pi_pMsg,pMsgHeader->m_wSize-4);'+body[at:]
+                body=body[:at]+nl+b'\tif(!pMsgHeader || pMsgHeader->m_wSize<4)return false;'+nl+b'\tRF455_ObserveProtocol("rx",pMsgHeader->m_byType[0],pMsgHeader->m_byType[1],pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==9)return DispatchRegisteredCharacters455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==1 && pMsgHeader->m_byType[1]==2)return DispatchWorldEntry455(pi_pMsg,pMsgHeader->m_wSize-4);'+nl+b'\tif(pMsgHeader->m_byType[0]==21)return DispatchAccount455(pMsgHeader->m_byType[1],pi_pMsg,pMsgHeader->m_wSize-4);'+body[at:]
                 new_methods=dispatch[dispatch.index(b'BOOL CNetworkMgr::AccountMsg_CryptoSeedRequest455'):]
                 raw=raw[:start]+body+raw[end:]+nl+new_methods
                 start,end=section(raw,b'CNetworkMgr::CloseClientCheck(',b'CNetworkMgr::CloseClientCheck(');body=raw[start:end]
@@ -648,10 +648,12 @@ def main():
                 if body.count(b'return TRUE;')!=1:raise ValueError('Network Create return changed')
                 body=body.replace(b'return TRUE;',b'return transportCreated;');raw=raw[:start]+body+raw[end:]
                 signature=b'CNetworkMgr::SendNetMessage(';start,end=section(raw,signature,signature);body=raw[start:end];at=body.index(b'{')+1
-                body=body[:at]+nl+b'\tif(_GetAvatar()&&_GetAvatar()->HandlesTutorialLocally455())return DispatchTutorial455(pi_dwClientIndex,pi_pType,pi_pMsg,pi_nSize);'+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
+                body=body[:at]+nl+b'\tif(pi_pType)RF455_ObserveProtocol("tx",pi_pType[0],pi_pType[1],pi_nSize);'+nl+b'\tif(_GetAvatar()&&_GetAvatar()->HandlesTutorialLocally455())return DispatchTutorial455(pi_dwClientIndex,pi_pType,pi_pMsg,pi_nSize);'+nl+b'\tm_Process[0].m_codec455.enabled=(pi_pType[0]!=21);'+body[at:];raw=raw[:start]+body+raw[end:]
+                raw=b'#include "client455_protocol_observation.h"\r\n'+raw
                 raw=b'#include "client455_avatar_stage.h"\r\n'+raw+b'\r\n'+(native/'client455_tutorial_dispatch.inc').read_bytes()
                 changes.append('455actual Avatar stage2+skip0 gates localTutorial route;knownignored packets swallowed,1/17directtransport,missing localhandlers explicitly fail')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/cnetworkmgr_masterservermsg.cpp':
+                raw=b'#include "client455_protocol_observation.h"\r\n'+raw
                 raw=b'#include "client455_account.h"\r\n#include "client455_avatar_stage.h"\r\n#include "client455_nation_paths.h"\r\n'+raw
                 entry_bridge=(native/'client455_world_entry.inc').read_bytes()
                 for method in [b'SystemMsg_EnterWorldRequest_zone',b'SystemMsg_EnterWorldResult_zone']:

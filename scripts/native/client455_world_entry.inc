@@ -12,6 +12,7 @@ void CNetworkMgr::SystemMsg_EnterWorldResult_zone( char* packet )
 {
     RF455WorldEntry decoded;
     if(!RF455_ReadWorldEntry(packet,RF455WorldEntryResponseBytes,decoded))return;
+    RF455_ObserveProtocol("world-result",decoded.result,0,0);
     const BYTE kind=decoded.kind;decoded.kind=m_worldEntry455.kind;
     m_worldEntry455=decoded;
     m_byResultOfEnterTheWorldServer=decoded.result;m_byAvatarGrade=decoded.grade;

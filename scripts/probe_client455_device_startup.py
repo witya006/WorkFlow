@@ -1,5 +1,5 @@
 """Run exact own PE through real window/device init;stop before client Create."""
-import argparse,ctypes,hashlib,json,os,re,shutil,subprocess
+import argparse,contextlib,ctypes,hashlib,json,os,re,shutil,subprocess
 from pathlib import Path
 from client455_asset_staging import stage_asset,staging_stats
 from compare_client_binaries import WS,pe
@@ -15,9 +15,10 @@ def symbol(mapping,name):
     match=re.search(re.escape(name)+r'\s+([0-9a-fA-F]{8})',mapping)
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
-def main():
+def main(handoff=None,live_port=None):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
+    if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
     countries=json.loads((WS/'inventory/client455-nation-paths-reference.json').read_text())['references'][0]['rows'];country=next((row for row in countries if row['setting']==args.nation),None)
     if country is None:raise ValueError('Unknown exact country setting:'+args.nation)
     earlyFile=WS/'inventory'/('client455-startup-native.json' if args.nation=='Korea' else f'client455-startup-{args.nation.lower()}-native.json')
@@ -30,6 +31,7 @@ def main():
     prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
     if loginProbe:prefix='login-create' if args.login_create else 'login-render'
     if args.login_frame:prefix='login-frame'
+    if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
     while (parent/f'{prefix}{index:03d}').exists():index+=1
     run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
@@ -63,6 +65,29 @@ def main():
             original=WS/row['copy'];copy=run/'System/shader'/(row['name']+'.sho')
             if sha(original)!=row['sha256']:raise ValueError('Changed actual Character shader')
             stage_asset(original,copy,row['sha256'],owned_immutable=original);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+    if handoff is not None:
+        #Only bootstrap data andthis locale,not another fullclient copy.
+        table_root=client/'DataTable'
+        tables=list(table_root.iterdir())+list((table_root/country['folder']).rglob('*'))
+        for original in sorted(tables):
+            if not original.is_file() or original.suffix.lower() not in {'.edf','.spt','.dat','.rfs'}:continue
+            copy=run/original.relative_to(client)
+            if any(r['file']==copy.relative_to(WS).as_posix() for r in inputs):continue
+            stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+        #Reuse the established catalog/equipment input lists and shared pool.
+        #The catalog needs actual skeletons,not missing-file fallback objects.
+        staged={r['file'] for r in inputs}
+        for manifest in ['resource-catalog','equipment','equipment-providers','equipment-effects','live-resource-inputs']:
+            if manifest=='live-resource-inputs':
+                file=WS/'inventory/client455-live-resource-inputs.json'
+                if not file.exists():continue
+            else:file=WS/f'inventory/client455-{manifest}-reference.json'
+            reference=json.loads(file.read_text())
+            for row in reference['inputs']:
+                original=Path(row['original']);copy=run/original.relative_to(client);relative=copy.relative_to(WS).as_posix()
+                if relative in staged:continue
+                stage_asset(original,copy,expected=row['sha256']);inputs.append({'file':relative,'sha256':sha(copy),'original':str(original)})
+                staged.add(relative)
     layout=contracts['layout'];state=symbol(mapping,'?stState@@3U_R3ENGINE_STATE@@A')-base;app=symbol(mapping,'?g_MainApp@@3VCMainApp@@A')-base
     values=[state+layout['state_fullscreen'],state+layout['state_renderbits'],app,layout['ready'],layout['window'],layout['device'],layout['windowed'],int(entry['points']['after_sound']['rva'],16),int(entry['points']['after_d3d']['rva'],16),symbol(mapping,'?g_ifCharIF@@3PAVChInterface@@A')-base,layout['character_device']]
     plan=run/'device.plan';plan.write_text(' '.join(f'{value:x}' for value in values)+'\n',encoding='ascii');inputs.append({'file':plan.relative_to(WS).as_posix(),'sha256':sha(plan)})
@@ -70,19 +95,30 @@ def main():
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
     output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['after_create'] if args.after_create else [])
     if loginProbe:command+=['login_create' if args.login_create else 'login_frame' if args.login_frame else 'login_render']
-    environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None)
+    environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None);environment.pop('RF455_OBSERVE_PROTOCOL',None)
+    if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
-    with TcpAcceptanceFixture() as transport:
-        fixture=stage_launcher(run,country['id'],WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
+    secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
+    with (contextlib.nullcontext(None) if handoff is not None else TcpAcceptanceFixture()) as transport:
+        if handoff is None:
+            fixture=stage_launcher(run,country['id'],WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
+        else:
+            if secretFile.exists() and secretFile.stat().st_nlink!=1:raise ValueError('Live handoff must be a private file')
+            secretFile.write_bytes(handoff);handoff=None
+            inputs=[r for r in inputs if r['file']!=secretFile.relative_to(WS).as_posix()]
         try:
-            result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
+            result=subprocess.run(command,cwd=run,capture_output=True,timeout=65 if live_port is not None else 40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
         finally:
+            if live_port is not None:
+                if not secretFile.resolve().is_relative_to((WS/'work/m9').resolve()):raise ValueError('Private handoff cleanup escaped lab')
+                secretFile.unlink(missing_ok=True);private_handoff_removed=not secretFile.exists()
             removeFont=ctypes.WinDLL('gdi32.dll').RemoveFontResourceW;removeFont.argtypes=[ctypes.c_wchar_p];removeFont.restype=ctypes.c_int
             fontRegistrationRemoved=bool(removeFont(str(run/'System/010.TTF')))
     (run/'console.txt').write_bytes(result.stdout+result.stderr)
     events=[json.loads(line) for line in output.read_text().splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});config=next((e for e in events if e['kind']=='render_configuration'),{});device=next((e for e in events if e['kind']=='device_state'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception']
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report();report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
+    report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report() if transport is not None else {'enabled':False};report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
+    if live_port is not None:report['live_server']={'host':'127.0.0.1','port':live_port,'real_launcher_handoff':True,'private_handoff_removed':private_handoff_removed,'full_game_authentication_verified':False}
     report['nation']=args.nation;report['early_startup_file']=earlyFile.relative_to(WS).as_posix();report['early_startup_sha256']=sha(earlyFile)
     report['lab_font_registration_removed']=fontRegistrationRemoved
     report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
@@ -90,7 +126,8 @@ def main():
     report['scope']='Exact own normal PE through Character manager creation;stop before character data manager construction;not complete Create or455acceptance' if args.create else report['scope']
     if args.after_create:report['scope']='Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance'
     report['completed_existing_client_create']=args.after_create and bool(markers) and markers[-1].get('eax')==1
-    report['nation_paths']=[e for e in events if e['kind']=='debug_string']
+    report['nation_paths']=[e for e in events if e['kind']=='debug_string' and e.get('value','').startswith(('RF455 ','.\\DataTable\\'))]
+    if live_port is not None:report['protocol_observations']=[e['value'] for e in events if e['kind']=='debug_string' and e.get('value','').startswith('RF455 Protocol:')]
     report['script_sha256']=sha(Path(__file__))
     name='client455-ui-startup-native' if args.after_create else 'client455-create-startup-native' if args.create else 'client455-device-startup-native'
     if loginProbe:
@@ -108,10 +145,12 @@ def main():
         report['login_frame_captured']=report['first_login_frame_captured']
         report['legacy_first_frame_field_names_are_aliases']=True
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
+    if live_port is not None:name=name.replace('-native','-live-native')
     if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
     (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n')
     display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}
     if loginProbe:display.update(stage_state=report['stage_state'],reached_first_login=report['reached_first_login'],exceptions=[e for e in exceptions if not e.get('first_chance')])
     print(json.dumps(display))
     if loginProbe and (not report['reached_first_login'] or (args.login_frame and not report['first_login_frame_captured'])):raise SystemExit(1)
+    return report
 if __name__=='__main__':main()

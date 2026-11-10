@@ -62,6 +62,13 @@ static int runOwner154(){
         require(avatar->GetBone()&&avatar->GetBone()->m_Load,"Owner real player skeleton");_GetCharIF()->FrameMove(avatar->GetBone());
         for(BYTE part:{BYTE(0),BYTE(1),BYTE(2),BYTE(3),BYTE(4),BYTE(10)}){
             require(avatar->PutOnEquipment(part,0),"Ordinary numeric equipment producer");auto* object=avatar->GetEquipItem455(part);require(object&&object->GetOwner455()==avatar.get()&&object->GetItem455()&&object->GetItem455()->header().references==1,"Ordinary typed slot/payload/actor ownership");}
+        auto* upgraded=dynamic_cast<RF455BasicItem*>(avatar->GetNormalItem455(1));require(upgraded,"Actual worn normal-item payload");
+        const auto stateBefore=upgraded->recordBytes();const std::vector<unsigned char> upgradeBefore(stateBefore.data,stateBefore.data+stateBefore.size);
+        for(BYTE value:{BYTE(0),BYTE(7),BYTE(160),BYTE(255)}){
+            upgraded->SetUpgradeLevel455(value);const auto after=upgraded->recordBytes();require(after.size==200&&after.data[113]==value,"462170 preserves full upgrade BYTE");
+            for(unsigned i=0;i<after.size;++i)if(i!=113)require(after.data[i]==upgradeBefore[i],"Upgrade setter changes only113");
+        }
+        upgraded->SetUpgradeLevel455(upgradeBefore[113]);
         CBaseProc& ordinary=*proc;ordinary.Animation();
         phase154("ordinary numeric producer andAnimation passed");
         {
@@ -111,7 +118,7 @@ static int runOwner154(){
     require(_DestroyBoundBoxMgr()&&_DestroyAnimationMgr()&&_DestroyMeshMgr()&&_DestroyBoneMgr()&&_DestroyCharIF(),"Owner resource teardown");g_pUiSpriteMgr=previousSprites;g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* output=std::fopen("result.json","wb");require(output,"Owner result");
     std::fprintf(output,"{\"status\":\"PASS\",\"primary_typed_controller_connected\":true,"
-        "\"ordinary_numeric_puton_baseputoff\":true,\"actual_Avatar_default_restore\":true,"
+        "\"ordinary_numeric_puton_baseputoff\":true,\"actual_Avatar_default_restore\":true,\"upgrade_BYTE_only113\":true,"
         "\"actual_actor_part_cache\":true,\"real_controlled_draws\":%u,\"visible_pixels\":%u,"
         "\"removal_changes_pixels\":%u,\"replacement_restores_frame\":%s,\"controlled_camera_and_lighting\":true,"
         "\"independent_member_copy_raw_links_no_rand_or_retain\":true,"

@@ -17,6 +17,20 @@ void quoted(FILE* f,const std::wstring& value){
 std::wstring fileName(HANDLE file){wchar_t path[32768];const DWORD n=file && file!=INVALID_HANDLE_VALUE?GetFinalPathNameByHandleW(file,path,32768,0):0;return n && n<32768?std::wstring(path,n):L"";}
 DWORD imageSize(HANDLE process,std::uintptr_t base){IMAGE_DOS_HEADER dos={};IMAGE_NT_HEADERS32 nt={};SIZE_T read=0;if(!ReadProcessMemory(process,reinterpret_cast<void*>(base),&dos,sizeof(dos),&read)||dos.e_magic!=IMAGE_DOS_SIGNATURE)return 0;if(!ReadProcessMemory(process,reinterpret_cast<void*>(base+dos.e_lfanew),&nt,sizeof(nt),&read)||nt.Signature!=IMAGE_NT_SIGNATURE)return 0;return nt.OptionalHeader.SizeOfImage;}
 bool writeByte(HANDLE process,std::uintptr_t address,BYTE value){SIZE_T written=0;DWORD original=0,discard=0;void* target=reinterpret_cast<void*>(address);if(!VirtualProtectEx(process,target,1,PAGE_EXECUTE_READWRITE,&original))return false;const bool ok=WriteProcessMemory(process,target,&value,1,&written) && written==1;VirtualProtectEx(process,target,1,original,&discard);return ok && FlushInstructionCache(process,target,1);}
+// Only code addresses from our own child: no registers, payloads or raw stack.
+void timeoutLocation(FILE* output,const PROCESS_INFORMATION& process,std::uintptr_t base,const std::vector<Module>& modules){
+    if(SuspendThread(process.hThread)==DWORD(-1))return;
+    CONTEXT context={};context.ContextFlags=CONTEXT_CONTROL;
+    if(GetThreadContext(process.hThread,&context)){
+        std::fprintf(output,"{\"kind\":\"timeout_location\",\"pc\":\"0x%lx\"",context.Eip);
+        for(const auto& mod:modules)if(context.Eip>=mod.base&&context.Eip-mod.base<mod.size){std::fprintf(output,",\"module\":");quoted(output,mod.path);std::fprintf(output,",\"rva\":\"0x%zx\"",context.Eip-mod.base);break;}
+        DWORD words[256]={};SIZE_T bytes=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(context.Esp),words,sizeof(words),&bytes);
+        const DWORD size=imageSize(process.hProcess,base);bool comma=false;std::fputs(",\"own_stack_rva_candidates\":[",output);
+        for(unsigned i=0;i<bytes/4;++i)if(words[i]>=base&&words[i]-base<size){std::fprintf(output,"%s{\"stack_offset\":%u,\"rva\":\"0x%zx\"}",comma?",":"",i*4,words[i]-base);comma=true;}
+        std::fputs("]}\n",output);
+    }
+    ResumeThread(process.hThread);
+}
 }
 int wmain(int argc,wchar_t** argv){
     if(argc!=5&&argc!=6&&argc!=7)return 201;FILE* output=nullptr;if(_wfopen_s(&output,argv[2],L"wb")||!output)return 202;
@@ -45,10 +59,11 @@ int wmain(int argc,wchar_t** argv){
         else{std::fclose(output);TerminateProcess(process.hProcess,0xe0434207);CloseHandle(process.hThread);CloseHandle(process.hProcess);return 208;}
     }
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
-    std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+20000;
+    char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
+    std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?45000:20000);
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}
-        if(GetTickCount64()>deadline && !terminating){std::fputs("{\"kind\":\"timeout\"}\n",output);TerminateProcess(process.hProcess,0xe0434201);terminating=true;}
+        if(GetTickCount64()>deadline && !terminating){timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"timeout\"}\n",output);TerminateProcess(process.hProcess,0xe0434201);terminating=true;}
         DEBUG_EVENT event={};if(!WaitForDebugEvent(&event,100)){if(GetLastError()!=ERROR_SEM_TIMEOUT){std::fprintf(output,"{\"kind\":\"wait_error\",\"error\":%lu}\n",GetLastError());break;}continue;}
         DWORD disposition=DBG_CONTINUE;
         if(event.dwDebugEventCode==CREATE_PROCESS_DEBUG_EVENT || event.dwDebugEventCode==LOAD_DLL_DEBUG_EVENT){

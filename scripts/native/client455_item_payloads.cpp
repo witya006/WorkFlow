@@ -188,6 +188,10 @@ RF455BasicItem::RF455BasicItem(std::uint8_t kind):payloadKind(kind){
     }else if(kind==5){p[92]=p[93]=255;std::memset(p+96,0,12);put(p,108,0);}
 }
 RF455ItemHeader& RF455BasicItem::header(){return *reinterpret_cast<RF455ItemHeader*>(state.get());}
+void RF455BasicItem::SetUpgradeLevel455(std::uint8_t value){
+    if(payloadKind!=0||stateSize!=200)throw std::logic_error("455 upgrade setter requires normal item payload");
+    state[113]=value; //462170: one BYTE write at71h,no clamp or callbacks.
+}
 bool RF455BasicItem::create(const RF455ItemDataStore& source,std::uint8_t type,std::uint32_t index){
     if(payloadKind==2){
         // Fresh464550 calls SetExperience while base data16 is null:virtual

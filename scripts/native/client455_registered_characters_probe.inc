@@ -18,6 +18,17 @@ static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_
     packet[1]=4;REQUIRE(!RF455_ReadRegisteredCharacters(packet,506,parsed)&&parsed.result==71);packet[1]=3;
     REQUIRE(RF455_ReadRegisteredCharacters(packet,506,parsed)&&parsed.count==3&&parsed.records[2].serial==0x12340002);
     REQUIRE(parsed.headerReserved[0]==0xa2&&parsed.records[2].dalant==0x100000003ll&&parsed.records[2].gold==0x200000005ll&&parsed.records[2].reserved[82]==84&&parsed.records[2].lastConnection==0x100000064ll);
+    BYTE expanded[506];std::memset(expanded,0x77,sizeof(expanded));
+    REQUIRE(!RF455_ExpandRegisteredCharacters(nullptr,506,expanded)&&expanded[0]==0x77);
+    for(unsigned count=0;count<=3;++count){
+        packet[1]=BYTE(count);const unsigned size=14+164*count;
+        REQUIRE(!RF455_ExpandRegisteredCharacters(packet,size-1,expanded)&&expanded[0]==0x77);
+        REQUIRE(RF455_ExpandRegisteredCharacters(packet,size,expanded)&&!std::memcmp(expanded,packet,size));
+        REQUIRE(RF455_ReadRegisteredCharacters(expanded,sizeof(expanded),parsed)&&parsed.count==count);
+        if(size<506)REQUIRE(expanded[size]==0&&expanded[505]==0);
+        std::memset(expanded,0x77,sizeof(expanded));
+    }
+    packet[1]=3;REQUIRE(RF455_ReadRegisteredCharacters(packet,506,parsed));
     std::fputs("registered:parsed\n",stderr);std::fflush(stderr);
     REQUIRE(!g_pAvatarDummy&&!g_ifCharIF&&!g_pBoneMgr&&!g_pCharDataMgr&&!g_pItemDataMgr);
     REQUIRE(_CreateCharIF(GetD3dDevice())&&_CreateBoneMgr()&&_CreateMeshMgr()&&_CreateAnimationMgr()&&_CreateBoundBoxMgr()&&_CreateCharDataMgr()&&_CreateItemDataMgr());
@@ -41,6 +52,16 @@ static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_
         REQUIRE(avatar->GetDalant()==__int64(0x100000001ull+i)&&avatar->GetGold()==__int64(0x200000003ull+i));
         REQUIRE(!std::strcmp(avatar->GetName(),parsed.records[i].name));
     }
+    // A178-byte one-record reply must traverse the real encrypted receiver,
+    // including a split header,while retaining the two absent actor slots.
+    packet[1]=1;network.SendRequestMsg();const auto beforeCompact=network.GetResultOfUserInfo();
+    REQUIRE(!network.DispatchRegisteredCharacters455(reinterpret_cast<char*>(packet),177)&&network.IsSendRequestMsg()&&network.GetResultOfUserInfo()==beforeCompact);
+    REQUIRE(peer.encode(0x0901,packet,178,wire,sizeof(wire),wireBytes));
+    push(receive,wire,2);(process.*access(Pop{}))(0);REQUIRE(network.IsSendRequestMsg());
+    push(receive,wire+2,wireBytes-2);(process.*access(Pop{}))(0);
+    REQUIRE(!network.IsSendRequestMsg()&&network.GetResultOfUserInfo()==0&&_GetAvatarDummy(2)->GetIndex()==2);
+    REQUIRE(!std::strcmp(_GetAvatarDummy(2)->GetName(),parsed.records[2].name));
+    packet[1]=3;
     // Invalid slots are skipped before actor mutation and timestamp selection.
     packet[14+164+22]=255;std::strcpy(reinterpret_cast<char*>(packet+14+164),"ignored");put64(packet+14+164+156,0x7fffffffffffffffull);
     REQUIRE(network.DispatchRegisteredCharacters455(reinterpret_cast<char*>(packet),506)&&network.GetLastestAvatarIndex()==0&&!std::strcmp(_GetAvatarDummy(1)->GetName(),"fixture-1"));
@@ -51,5 +72,5 @@ static int registeredCharacterChecks(CNetworkMgr& network,CNetProcess& process,_
     _DestroyAvatarDummy();REQUIRE(_DestroyItemDataMgr()&&_DestroyCharDataMgr()&&_DestroyBoundBoxMgr()&&_DestroyAnimationMgr()&&_DestroyMeshMgr()&&_DestroyBoneMgr()&&_DestroyCharIF());
     (network.*access(Active{}))[0]=0;
     FILE* out=std::fopen("registered-characters-result.json","wb");REQUIRE(out);
-    std::fputs("{\"status\":\"PASS\",\"response_bytes\":506,\"record_stride\":164,\"actual_Avatar_records\":3,\"actual_request1_8\":true,\"actual_encrypted_receiver1_9\":true,\"fragment_wrap\":true,\"full64bit_money_time\":true,\"level0_tutorial_writer\":true,\"zero_count_retains_state\":true,\"bootstrap_or_visual_selection_accepted\":false}\n",out);std::fclose(out);return 0;
+    std::fputs("{\"status\":\"PASS\",\"response_bytes\":506,\"record_stride\":164,\"actual_Avatar_records\":3,\"actual_request1_8\":true,\"actual_encrypted_receiver1_9\":true,\"fragment_wrap\":true,\"full64bit_money_time\":true,\"level0_tutorial_writer\":true,\"zero_count_retains_state\":true,\"compact_reply_sizes\":[14,178,342,506],\"truncated_active_records_rejected\":true,\"compact178_actual_encrypted_receiver\":true,\"bootstrap_or_visual_selection_accepted\":false}\n",out);std::fclose(out);return 0;
 }

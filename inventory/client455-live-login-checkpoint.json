@@ -1,0 +1,338 @@
+{
+  "status": "PARTIAL",
+  "scope": "Own live launcher/game-entry exchange and compact registered reply repair;ordinary offline Login/assembled render pass;live selection fails in equipped action",
+  "script": {
+    "file": "scripts/checkpoint_client455_live_login.py",
+    "sha256": "3964f088f2cc1a78e3a37cce3eac0374721d17c5d54a0179d4cdbdef6deecd1e"
+  },
+  "sources": [
+    {
+      "file": "scripts/prepare_client455_normal.py",
+      "sha256": "3fd5cbd0b08aa3e0b25e8bb442c28f75ae565d1806019fca3bbbc62805fa382c"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "5240baf7bce7f8b4ca9c1eece9246434b54bc50b0d9ef3aa137e62545a3d3ecf"
+    },
+    {
+      "file": "scripts/native/client455_registered_characters.h",
+      "sha256": "86c115975c1a3e6abc3a612f69e806163d6f78852ea257c457f77f3fcefaff5a"
+    },
+    {
+      "file": "scripts/native/client455_registered_characters.inc",
+      "sha256": "c94d48c55f6f394d6dcca2ecb5ac8c13193b64a7fd83dad6c95a4a1ea9e37115"
+    },
+    {
+      "file": "scripts/native/client455_registered_characters_probe.inc",
+      "sha256": "c19cee3d9c08ee2b1e1a82bffd3cebbc016db7bc81c057ea1d007d4ef9ff8d75"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "330f166e84c5f536edc5345d4d09b76282b1058fa798b205a48501e7852d489e"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "feff4e5e2c9805ddf5351ac03a5ba5bb135963c36aef721faefef01b913cf0a9"
+    },
+    {
+      "file": "scripts/native/client455_player_owner_probe.cpp",
+      "sha256": "aa2485e2ff952f0242062472c0936481e40e89b436de4cfd35466a436aaadd2a"
+    },
+    {
+      "file": "scripts/native/client455_world_entry.inc",
+      "sha256": "779acf47171e85122d569013b255a853fe376e971d2b1dfcc6aabec8dcbfbf44"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "cb0560dd088c47e562613100dc5803762ab0177cd74b0e05eec1038ba147cf4f"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "51590a6b85fd184d4d34c4c23a383bf23136af0774bbbcca7132984cd80265b5"
+    },
+    {
+      "file": "scripts/prepare_client455_live_resources.py",
+      "sha256": "abccac20759e70bde11292e1d51d3e788e484a91ad4c5f3ed62f6d31e7b0c8c2"
+    },
+    {
+      "file": "scripts/native/own_client_startup_debugger.cpp",
+      "sha256": "8efd4512aac2db25d6aeaebc8b514343c37c6dcc2e2cb75f381c18561649ed68"
+    }
+  ],
+  "normal_link_sha256": "9a925a7e725f3b4ed24137069a4dfdb5d8306a30cb0b98e98167d5521620a458",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad",
+    "bytes": 2347520,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17f660",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "70b4484600ae99ada0c8252d86b2bcd0febfc00671cb7ac4a553c12205efa042"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "07ae0bfb9f3bb30c36fe4e6b10aa248d492ba0d266322d6fba344a79e4445b2f"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "9a925a7e725f3b4ed24137069a4dfdb5d8306a30cb0b98e98167d5521620a458"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "da02147615cbe0b5d50161605e693c5b4b2bdd7df7b259a8f61aca797211620a"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "03e1b368b177552f9fa962989f511e146ed10e55f8d44af5467848f1aef8e200"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "273d3bb226ff1ed4be1a0ad75c0ddee5c931629accc7adef86804cfaa45cb0fd"
+    },
+    "player-owner-native": {
+      "file": "inventory/client455-player-owner-native.json",
+      "sha256": "d6800d88be94793f470e74f4717dfed322192426b75978a4e933104ebca154f8"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "e0f0281897f03ec3b363531e676ffb5ab009bfac3435b82414d761d550753d87"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "71995959e0f96ee84cb556f4ffb710d08ba19fd9f184929b40a774a39aa7684b"
+    },
+    "login-frame-taiwan-native": {
+      "file": "inventory/client455-login-frame-taiwan-native.json",
+      "sha256": "e7f7561137b45aa9d88ff5a6923519191819b00eff2ba3a8165732c2cc398cfa"
+    },
+    "login-frame-live-taiwan-native": {
+      "file": "inventory/client455-login-frame-live-taiwan-native.json",
+      "sha256": "1b2166302de6e650aac1c22160079ad1c6e13e92b79ba79eff17660a4eef9435"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "257d3ad236d8267fe92f5aa910dd56d4934710d04d6db7a43c00045e789fbdf9"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "ac7aed49ad802e05cb67f3e22e1323ae9ee50aca7b9ce4f1538854bc76ba3486"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "788a4e04dcd25f1ea6802832e2e6463f52b0fbe578ca7a533bdec3f32de43c68"
+    }
+  },
+  "proof": {
+    "raw": {
+      "file": "artifacts/client455-progress/live155-upgrade-reference/session.json",
+      "sha256": "3ee43f41eb99fd959749323c276d8d71d7f70c8d2266a95cda118df28cf51662"
+    },
+    "references": [
+      {
+        "file": "work/client-reference/current/RF_Online.bin",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "rva": "0x62170",
+            "instructions": 16,
+            "positive_cfg_blocks": 1,
+            "regions": [
+              {
+                "rva": "0x62170",
+                "bytes": 30,
+                "sha256": "0769b5d9ee16a0703427bc503f6fe5828dc4ab8661727b5e6332e6fb84c2f359"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "file": "work/client-reference/reference-backup/RF_Online.bin",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "functions": [
+          {
+            "rva": "0x62170",
+            "instructions": 16,
+            "positive_cfg_blocks": 1,
+            "regions": [
+              {
+                "rva": "0x62170",
+                "bytes": 30,
+                "sha256": "0769b5d9ee16a0703427bc503f6fe5828dc4ab8661727b5e6332e6fb84c2f359"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "full_functions": 1,
+    "full_instructions": 16,
+    "positive_cfg_blocks": 1
+  },
+  "registered_internal_copy_reference": {
+    "file": "inventory/client455-registered-characters-reference.json",
+    "sha256": "948467f94d0ab94db9db4ae80c1cd165ae5e17e93f1345fbd1941558b0e3c8cf"
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-login-frame-taiwan-native.json",
+    "sha256": "e7f7561137b45aa9d88ff5a6923519191819b00eff2ba3a8165732c2cc398cfa"
+  },
+  "ordinary_Login_frame": {
+    "file": "work/m9/da42b501/login-frame-taiwan001/login-frame.png",
+    "sha256": "a931952a113253d2470bd6eece398cb552dca5ed6c1c35711c1168b988032581"
+  },
+  "Login_visually_inspected": true,
+  "ordinary_Login": true,
+  "live_launcher_authentication_accepted": true,
+  "live_game_entry_accepted": true,
+  "live_registered_reply_bytes": 178,
+  "compact_packet_adaptation": "Zero-pad only absent unused slots after validating14+164*count;not a claim of original wire length orunsafe overread equivalence",
+  "protocol_observations": [
+    "RF455 Protocol:tx:1:1:58",
+    "RF455 Protocol:rx:1:2:12",
+    "RF455 Protocol:world-result:0:0:0",
+    "RF455 Protocol:tx:1:8:0",
+    "RF455 Protocol:rx:1:9:178",
+    "RF455 Protocol:rx:1:21:1"
+  ],
+  "live_failure": {
+    "file": "work/m9/da42b501/login-frame-live-taiwan001/debug-events.jsonl",
+    "unhandled_exception": true,
+    "resolved_stack_candidates": [
+      {
+        "stack_offset": 28,
+        "rva": "0x21550c",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "symbol_offset": 0
+      },
+      {
+        "stack_offset": 68,
+        "rva": "0x19d81b",
+        "symbol": "__malloc_base",
+        "symbol_offset": 59
+      },
+      {
+        "stack_offset": 84,
+        "rva": "0x6b1258",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "symbol_offset": 2393312
+      },
+      {
+        "stack_offset": 92,
+        "rva": "0x18034d",
+        "symbol": "__CxxThrowException@8",
+        "symbol_offset": 109
+      },
+      {
+        "stack_offset": 132,
+        "rva": "0x21550c",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "symbol_offset": 0
+      },
+      {
+        "stack_offset": 140,
+        "rva": "0x10b23",
+        "symbol": "?GetEquipItem@CPlayerProc@@UAEPAVCEquipItem@@E@Z",
+        "symbol_offset": 51
+      },
+      {
+        "stack_offset": 148,
+        "rva": "0x21550c",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "symbol_offset": 0
+      },
+      {
+        "stack_offset": 152,
+        "rva": "0x1e0dd8",
+        "symbol": "??_7logic_error@std@@6B@",
+        "symbol_offset": 0
+      },
+      {
+        "stack_offset": 168,
+        "rva": "0x555fe",
+        "symbol": "?SetAction@CPlayer@@UAEXKH@Z",
+        "symbol_offset": 142
+      },
+      {
+        "stack_offset": 192,
+        "rva": "0x6ba2",
+        "symbol": "?SetAction@CAvatar@@UAEXKH@Z",
+        "symbol_offset": 578
+      },
+      {
+        "stack_offset": 204,
+        "rva": "0x468d78",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "symbol_offset": 0
+      },
+      {
+        "stack_offset": 216,
+        "rva": "0x1699f",
+        "symbol": "?SetCombatMode@CCharacter@@UAEXE@Z",
+        "symbol_offset": 47
+      },
+      {
+        "stack_offset": 232,
+        "rva": "0xa11a",
+        "symbol": "?SetCombatMode@CAvatar@@UAEXE@Z",
+        "symbol_offset": 26
+      }
+    ]
+  },
+  "native_compact_receiver": {
+    "status": "PASS",
+    "response_bytes": 506,
+    "record_stride": 164,
+    "actual_Avatar_records": 3,
+    "actual_request1_8": true,
+    "actual_encrypted_receiver1_9": true,
+    "fragment_wrap": true,
+    "full64bit_money_time": true,
+    "level0_tutorial_writer": true,
+    "zero_count_retains_state": true,
+    "compact_reply_sizes": [
+      14,
+      178,
+      342,
+      506
+    ],
+    "truncated_active_records_rejected": true,
+    "compact178_actual_encrypted_receiver": true,
+    "bootstrap_or_visual_selection_accepted": false
+  },
+  "upgrade_BYTE_only113": true,
+  "equal_assembled_render_frames": 3,
+  "live_selection_completed": false,
+  "world_entered": false,
+  "full_player_appearance_or_selection": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "password_saved": false,
+  "raw_packets_saved": false,
+  "gaps": [
+    "Migrate equipped SetAction combat-mode transition from legacy GetEquipItem to typed owner/animation/fade after target verification",
+    "Remaining bootstrap/UI/class/actor/animation andselection flow",
+    "Full world/control/gameplay/protocol/lifecycle andall client-acceptance requirements"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

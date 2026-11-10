@@ -1,3 +1,26 @@
+# Частичная155: игровой вход принят, выбор ещё падает —10.11.2026
+
+Own da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad,
+x86/entry17F660/2347520bytes,182client/67engine/20kernels,build/link0.
+Gate inventory/client455-live-login-checkpoint.json PARTIAL. M6/M6F/M7/M9OPEN.
+Обычный Taiwan Login/кадр PASS;реальный launcher-auth accepted иgame1/1→1/2
+result0. Исправлены компактный1/9(178bytes) иlegacy registered upgrade.
+Bounded14+164*count→506 normalizer не считаетсяunsafe overread equivalence.
+462170 пишеттолькоBYTE113;16ASM instructions/1CFG обаpins,realpayload PASS.
+Три assembledPNG равны154;fullCharacter clone/appearance по-прежнемуOPEN.
+
+Live после1/9 доходитдовыбора иявноотказываетвlegacy GetEquipItem:
+own10B23←CPlayer::SetAction555FE,SetCombatMode/CAvatar stack. Следующим переносить
+combat-mode animation/fade черезtyped owner;унаследованный legacySetAnimation
+новомуwrapper не подходит. Живой мир не достигнут;1/21payload1 не принятцеликом.
+Live finalwork/m9/da42b501/login-frame-live-taiwan001;ordinary Login-frame-taiwan001;
+native playerownerwork/m9/ae382ba2/player-owner-001. Пароль/rawpackets не сохранены,
+handoff93 среальнымключом удалён. Сервер/оригиналы не менялись;IDA9079cdac saved/closed,list0.
+Resource manifest добавляет только наблюдённые зависимости и сохраняетпредыдущие;
+485missing catalog entries отсутствуютиуоригинала;ихблокирующаяроль не установлена.
+Передследующимordinaryedit сохранить155 вbefore156. Before155=точная154,52файла.
+Оценка25%(20–35%) неизменна,полныхобластей0/12. Ниже исторические записи.
+
 # Проверенная база154 и живая сеть —10.11.2026
 
 Own31d24ab9481f56218431661815cd58077b59fae7d79ad123dc0c5c8758bd5426,

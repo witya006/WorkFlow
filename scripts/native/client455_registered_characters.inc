@@ -25,7 +25,7 @@ void CNetworkMgr::SystemMsg_RegedCharResult_zone( char* packet )
                 else avatar->PutOffEquipment(parts[j]);
             }else{
                 avatar->PutOnEquipment(parts[j],static_cast<DWORD>(row.equipment[j]));
-                auto* item=avatar->GetNormalItem(parts[j]);if(item)item->SetLevel(row.upgrade[j]);
+                auto* item=dynamic_cast<RF455BasicItem*>(avatar->GetNormalItem455(parts[j]));if(item)item->SetUpgradeLevel455(row.upgrade[j]);
             }
         }
         avatar->PutOnEquipment(0,((row.baseShape>>20)&15)+16*row.race);
@@ -38,7 +38,9 @@ void CNetworkMgr::SystemMsg_RegedCharResult_zone( char* packet )
 
 bool CNetworkMgr::DispatchRegisteredCharacters455(char* packet,std::size_t bytes)
 {
+    BYTE image[RF455RegisteredCharactersBytes];
+    if(!RF455_ExpandRegisteredCharacters(packet,bytes,image))return false;
     RF455RegisteredCharacters parsed;
-    if(!RF455_ReadRegisteredCharacters(packet,bytes,parsed))return false;
-    SystemMsg_RegedCharResult_zone(packet);return true;
+    if(!RF455_ReadRegisteredCharacters(image,sizeof(image),parsed))return false;
+    SystemMsg_RegedCharResult_zone(reinterpret_cast<char*>(image));return true;
 }

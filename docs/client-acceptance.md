@@ -1,4 +1,14 @@
-# Актуальная частичная проверка154 —10.11.2026
+# Актуальная частичная проверка155 —10.11.2026
+
+Gate inventory/client455-live-login-checkpoint.json,own da42b501….
+Реальные launcher-auth/game-entry приняты сервером0.4.0. Compact1/9(178)
+иtyped upgrade исправлены;fragmented receiver/границы/onlyBYTE113 проходят.
+OrdinaryTaiwan Login и3assembledPNG PASS. Живой equipped selection ещёпадает
+вSetAction→legacyGetEquipItem;мир не достигнут. Ниоднаполнаяобласть не закрыта.
+Оценка25%(20–35%),M6/M6F/M7/M9OPEN. Все требованияниже сохраняются.
+Данные154 иниже исторические;не смешиватьсвежийобычныйLogin сживымпадением.
+
+# Историческая частичная проверка154 —10.11.2026
 
 Gate inventory/client455-player-owner-checkpoint.json,own31d24ab9….
 Primary12-slot owner/frame/render,Avatar default garment/SFcallback иcloak

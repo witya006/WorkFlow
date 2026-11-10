@@ -42,6 +42,19 @@ def receive(peer,size):
     return bytes(out)
 
 
+def marshal_v4x(account,identifier,key):
+    if len(key)!=16:raise ValueError('Missing live world key')
+    raw=bytearray(93);address=struct.unpack('<I',socket.inet_aton('127.0.0.1'))[0]
+    struct.pack_into('<I',raw,0,address^0xcb9c4b3a);struct.pack_into('<H',raw,4,27830^0x4fb6)
+    identifier=(identifier or 'acc').encode('utf-8')[:12];raw[6:6+len(identifier)]=identifier
+    struct.pack_into('<I',raw,57,account^0x6e65e0af)
+    masks=[0xcfcf22e6,0x5bbcde6f,0xacdf5eda,0xbccd1b37]
+    for i,mask in enumerate(masks):struct.pack_into('<I',raw,61+4*i,struct.unpack_from('<I',key,4*i)[0]^mask)
+    struct.pack_into('<H',raw,77,0^0x4b3a);struct.pack_into('<I',raw,79,account^0xc89c183a)
+    struct.pack_into('<I',raw,83,0xc89c183a);struct.pack_into('<H',raw,91,8^0x32d7)
+    return bytes(raw)
+
+
 def selfcheck():
     assert auth_request('ab','c')==bytes.fromhex('0e006c0300000200616201006300')
     sample=b'\1'+struct.pack('<I',7)+string('abc')+string('')+string('rf1:'+bytes(range(16)).hex())
@@ -54,12 +67,13 @@ def selfcheck():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--authenticate',action='store_true');parser.add_argument('--interactive',action='store_true');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--authenticate',action='store_true');parser.add_argument('--interactive',action='store_true');parser.add_argument('--own-login',action='store_true');args=parser.parse_args()
     selfcheck()
     if not args.authenticate:
         print('PASS:small valid/malformed launcher-wire examples');return
     #stdin rather than commandline/environment/source files. Neither the raw
-    #request norreply,account identifier,message orlogin key is written/logged.
+    #request norreply,account identifier,message orlogin key is logged. A live
+    #run writes only the game's private temporary handoff and removes it.
     print('Awaiting test credentials on stdin',flush=True)
     #URL-safe base64 avoids console key-translation of JSON punctuation.
     raw=base64.urlsafe_b64decode(getpass.getpass('Test credentials base64 (hidden): ')).decode('utf-8') if args.interactive else sys.stdin.readline()
@@ -83,10 +97,23 @@ def main():
         launcher=dict(file='E:/RFOnlineTrash/RFOnline/rflauncher.exe',sha256=hashlib.sha256(Path('E:/RFOnlineTrash/RFOnline/rflauncher.exe').read_bytes()).hexdigest()),
         script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),credentials_persisted=False,raw_packets_persisted=False,
         game_executable_started=False,server_files_modified=False,full_RF_protocol_verified=False,M6='OPEN',M9='OPEN')
-    del data,account,identifier,message,key
+    if args.own_login and accepted and complete:
+        handoff=marshal_v4x(account,identifier,key);del data,account,identifier,message,key
+        import probe_client455_device_startup
+        old_arguments=sys.argv
+        try:
+            sys.argv=['probe_client455_device_startup.py','--login-frame','--settle-ms','8000','--with-lobby','--nation','Taiwan']
+            try:game=probe_client455_device_startup.main(handoff=handoff,live_port=27830)
+            except SystemExit:
+                game=json.loads((WS/'inventory/client455-login-frame-live-taiwan-native.json').read_text())
+            report['own_live_run']={'report':'inventory/client455-login-frame-live-taiwan-native.json','reached_Login':game['reached_first_login'],'private_handoff_removed':game['live_server']['private_handoff_removed']}
+            report['game_executable_started']=True
+            report['scope']='Actual local launcher authentication followed by an own-client live handoff observation;not full game authentication acceptance'
+        finally:sys.argv=old_arguments;del handoff
+    else:del data,account,identifier,message,key
     (WS/'inventory/client455-live-launcher-native.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report))
-    if not accepted:raise SystemExit(1)
+    if not accepted or (args.own_login and not report.get('own_live_run',{}).get('reached_Login')):raise SystemExit(1)
 
 
 if __name__=='__main__':main()

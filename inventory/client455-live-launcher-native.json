@@ -1,6 +1,6 @@
 {
-  "scope": "One actual launcher authentication exchange withthe user-started local v0.4.0;not ownRFgame authentication",
-  "time_utc": "2026-11-10T12:59:38.288909+00:00",
+  "scope": "Actual local launcher authentication followed by an own-client live handoff observation;not full game authentication acceptance",
+  "time_utc": "2026-11-10T13:39:28.501589+00:00",
   "endpoint": {
     "host": "127.0.0.1",
     "port": 27831
@@ -16,12 +16,17 @@
     "file": "E:/RFOnlineTrash/RFOnline/rflauncher.exe",
     "sha256": "38e326588c37cdff5af4a34dfe3cee1aaa1c7aae3168b0ab8d2f9482b955451f"
   },
-  "script_sha256": "4e52321f7df04ec406e0d946dbd023cb01e22a978703a005eee113ac17768719",
+  "script_sha256": "cb0560dd088c47e562613100dc5803762ab0177cd74b0e05eec1038ba147cf4f",
   "credentials_persisted": false,
   "raw_packets_persisted": false,
-  "game_executable_started": false,
+  "game_executable_started": true,
   "server_files_modified": false,
   "full_RF_protocol_verified": false,
   "M6": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "own_live_run": {
+    "report": "inventory/client455-login-frame-live-taiwan-native.json",
+    "reached_Login": false,
+    "private_handoff_removed": true
+  }
 }

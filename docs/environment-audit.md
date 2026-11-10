@@ -1,3 +1,15 @@
+# Частичная155: реальный игровой вход —10.11.2026
+
+Own da42b501…/x86/entry17F660/2347520bytes;182client/67engine/20kernels,
+build/link0. Gate inventory/client455-live-login-checkpoint.json PARTIAL.
+Launcher27831 и игровой запрос1/1→ответ1/2(result0) работают на сервере0.4.0.
+Короткий1/9 ответ178 больше не отбрасывается;upgrade уtyped normal-item
+пишетBYTE113 по462170. Native encrypted receiver/границы и3прежних кадра PASS.
+Обычный Login проверен;живой выбор падает вequipped SetAction/legacyGetEquipItem.
+Это клиентская миграция,не нехватка SDK/сервера. Мир/M9OPEN. Пароль/пакеты
+не сохранены;временный ключевой handoff удалён. IDA session9079cdac saved/closed,list0.
+Данные ниже исторические. Полная storageопись не повторялась.
+
 # Проверенная154 и живая сеть —10.11.2026
 
 C2280 устранена:own31d24ab9…/x86/entry17F430/2347008bytes,
