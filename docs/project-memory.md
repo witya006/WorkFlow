@@ -1,3 +1,26 @@
+# Уточнение учёта функций и сохранённая разведка159
+
+11.11.2026. По запросу пользователя уточнён docs/function-coverage.md:
+индексация37865 / адресные материалы2231 / полный ASM-CFG403 различаются
+с переносом и соответствием поведения. 7 точных sourcebindings последних
+157–158 проверены по текущим SHA файлов; все complete_equivalence=false,
+один setter пока не подключён. Это выборочный учёт, не весь перенос и не
+ноль восстановленных функций. Повторный разбор не увеличивает уникальные
+функции; изменения состояния уже учтённых RVA показывать отдельно.
+Проверка отбрасывания неполных доказательств/реального156 PASS.
+
+Before159 уже сохранён: manifest92files,7,622,846bytes copied и2,680,893
+shared с immutableprior snapshot. Не перезаписывать. Ownsource/PE158 не менялись.
+В159 найдены RTTI/vtables MainGame/Gauge/GUIWindow/EquipBoard: скрипт
+discover_client455_hud.py и inventory/client455-hud-discovery.json.
+15 непроверенных decomp сохранены в
+artifacts/client455-progress/hud159-discovery/decomp-unverified.json.
+Это только разведка; не приняты fullASM/CFG/семантика, счётчики не повышать.
+Ориентир: Gauge SetSprite использует target main4/EtcUI49, Init создаёт
+четыре полосы; назначение четвёртой и полный MainGame route ещё проверить.
+Owned IDA ae5a3b1a saved/closed. Native тесты не запускались повторно.
+Следом настоящий HUD455, затем следующий реальный отказ. M9OPEN.
+
 # Частичная158 — сервер принял выбор, достигнут MainGame::Create_UI
 
 11.11.2026. Own df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf,

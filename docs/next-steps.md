@@ -10,9 +10,7 @@ retain+PRNG и3прежнихPNG проходят. Мир пока не дост
 
 Следующее:
 
-1. Доordinarysource edits159 сохранить точную158 вbefore159 через
-   scripts/preserve_client455_checkpoint.py --previous before158
-   --destination before159 --checkpoint inventory/client455-selection-checkpoint.json.
+1. Точная158 уже сохранена вbefore159/manifest.json (92files), не перезаписывать.
    Snapshotbefore158 хранит157(69files),не перезаписывать.
 2. Фактический следующий отказ ownRVA12C8AF/GetSpriteXL@CSprite+5F:
    CGUIObjectAni::SetSpriteInfo ← CGUIGaugeExpWindow::SetSprite/Init ←
@@ -24,6 +22,10 @@ retain+PRNG и3прежнихPNG проходят. Мир пока не дост
    Найти в455 настоящий HUD/gauge/main sprite/init/create routes и перенести
    потребителей/atlas/layout/lifetime. Не скрывать виджет и не переименовывать
    другую страницу под старуюskin. Server/SDK не является этим блокером.
+   Разведка159: inventory/client455-hud-discovery.json (только RTTI/pointers),
+   private hud159-discovery/decomp-unverified.json (15 непроверенных decomp).
+   Gauge ориентировочно использует target main4/EtcUI49 и четыре полосы.
+   Проверить полный ASM/CFG и назначение четвёртой; это не готовый перенос.
 4. После настоящего MainGame UI Create следовать следующему реальному
    пакету/загрузчику до карты/avatar/control. Live также принял8/5/9 —
    полный контракт этого сообщения ещё не проверен. ВходныеEXE не выполнять.
@@ -32,6 +34,9 @@ retain+PRNG и3прежнихPNG проходят. Мир пока не дост
 
 Счётчики2231(+6) адресных функций/403(+7) complete ASM/CFG из37865.
 Четыре новые sourcebindings не являются четырьмя полной equivalence.
+При отчёте разделять новые RVA, смену состояния уже учтённых функций,
+интеграцию в обычный клиент и практический результат. Точный общий итог
+перенесённых функций остаётся не установлен; 7 последних bindings — выборка.
 Research:research/client455-selection.md. M6/M6F/M7/M9OPEN,0/12,25%(20–35%).
 Ниже исторический план158.
 
