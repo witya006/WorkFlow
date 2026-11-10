@@ -16,9 +16,12 @@ def symbol(mapping,name):
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
 def main():
-    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
+    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
-    link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link);early=json.loads((WS/'inventory/client455-startup-native.json').read_text());contracts=json.loads((WS/'inventory/client455-startup-contracts-native.json').read_text());engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
+    countries=json.loads((WS/'inventory/client455-nation-paths-reference.json').read_text())['references'][0]['rows'];country=next((row for row in countries if row['setting']==args.nation),None)
+    if country is None:raise ValueError('Unknown exact country setting:'+args.nation)
+    earlyFile=WS/'inventory'/('client455-startup-native.json' if args.nation=='Korea' else f'client455-startup-{args.nation.lower()}-native.json')
+    link=json.loads((WS/'inventory/client455-normal-link.json').read_text());validate_normal_link(link);early=json.loads(earlyFile.read_text());contracts=json.loads((WS/'inventory/client455-startup-contracts-native.json').read_text());engine=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
     if early['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or contracts['build_sha256']!=sha(WS/'inventory/client455-startup-engine-build.json'):raise ValueError('Current early startup/contracts evidence required')
     entry=validated_entry();source=WS/link['executable']['file'];raw=source.read_bytes();base=pe(raw)['image_base'];mapping=(WS/link['map']['file']).read_text();mainVa=symbol(mapping,'_WinMain@16');stopVa=base+int(entry['points']['after_create' if args.after_create else 'before_char_data' if args.create else 'after_d3d']['rva'],16)
     loginSymbol='?Create@CGP_LogIn@@UAEHXZ' if args.login_create else '?Render@CGP_LogIn@@MAEJXZ'
@@ -27,6 +30,7 @@ def main():
     prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
     if loginProbe:prefix='login-create' if args.login_create else 'login-render'
     if args.login_frame:prefix='login-frame'
+    if args.nation!='Korea':prefix+='-'+args.nation.lower()
     while (parent/f'{prefix}{index:03d}').exists():index+=1
     run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
     for item in early['lab_inputs']:
@@ -41,10 +45,10 @@ def main():
     inputs+=copy_sky_resources(run)
     if args.after_create or loginProbe:
         inputs+=copy_grade_overlay_inputs(run)
-        for name in ['SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
+        for name in ['SpriteImage/Common/mouse.spr',f'SpriteImage/{country["folder"]}/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if loginProbe:
-        for name in ['SpriteImage/ko-kr/login.spr','SpriteImage/ko-kr/loading.spr','SpriteImage/Common/main.spr']:
+        for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if args.with_lobby:
         world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
@@ -69,7 +73,7 @@ def main():
     environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None)
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     with TcpAcceptanceFixture() as transport:
-        fixture=stage_launcher(run,0,WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
+        fixture=stage_launcher(run,country['id'],WS,transport.port);inputs=[r for r in inputs if r['file']!=fixture['file']]+[fixture]
         try:
             result=subprocess.run(command,cwd=run,capture_output=True,timeout=40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
         finally:
@@ -79,6 +83,7 @@ def main():
     events=[json.loads(line) for line in output.read_text().splitlines()] if output.exists() else [];summary=next((e for e in events if e['kind']=='summary'),{});config=next((e for e in events if e['kind']=='render_configuration'),{});device=next((e for e in events if e['kind']=='device_state'),{});markers=[e for e in events if e['kind']=='checkpoint'];exceptions=[e for e in events if e['kind']=='exception']
     report={'scope':'Exact own normal PE windowed D3D/device/restore callbacks;stop before client Create;not full455startup/game acceptance','executable':link['executable'],'staged_executable':(run/'RF_Online.bin').relative_to(WS).as_posix(),'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'engine_build_sha256':sha(WS/'inventory/client455-startup-engine-build.json'),'contracts_sha256':sha(WS/'inventory/client455-startup-contracts-native.json'),'early_startup_sha256':sha(WS/'inventory/client455-startup-native.json'),'debugger':early['debugger'],'inputs':inputs,'events':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output) if output.exists() else None},'debugger_exit':result.returncode,'summary':summary,'render_configuration':config,'device_state':device,'markers':markers,'exceptions':exceptions,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
     report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report();report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
+    report['nation']=args.nation;report['early_startup_file']=earlyFile.relative_to(WS).as_posix();report['early_startup_sha256']=sha(earlyFile)
     report['lab_font_registration_removed']=fontRegistrationRemoved
     report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
@@ -103,6 +108,7 @@ def main():
         report['login_frame_captured']=report['first_login_frame_captured']
         report['legacy_first_frame_field_names_are_aliases']=True
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
+    if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
     (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n')
     display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}
     if loginProbe:display.update(stage_state=report['stage_state'],reached_first_login=report['reached_first_login'],exceptions=[e for e in exceptions if not e.get('first_chance')])

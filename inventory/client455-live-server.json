@@ -1,0 +1,61 @@
+{
+  "scope": "Read-only live test environment;GoMMO behavior is not a substitute for pinned455client evidence",
+  "time_utc": "2026-11-10T13:01:10.6115391Z",
+  "server_reference": "E:\\RFOnlineTrash\\rf455-v0.4.0",
+  "endpoints": [
+    {
+      "address": "::",
+      "port": 27831,
+      "pid": 14888,
+      "executable": "E:\\RFOnlineTrash\\rf455-v0.4.0\\server\\windows\\gameserver.exe",
+      "path_matches_reference": true
+    },
+    {
+      "address": "::",
+      "port": 27830,
+      "pid": 14888,
+      "executable": "E:\\RFOnlineTrash\\rf455-v0.4.0\\server\\windows\\gameserver.exe",
+      "path_matches_reference": true
+    },
+    {
+      "address": "::",
+      "port": 8080,
+      "pid": 11728,
+      "executable": "E:\\RFOnlineTrash\\rf455-v0.4.0\\server\\windows\\webserver.exe",
+      "path_matches_reference": true
+    }
+  ],
+  "all_expected_ports_listening": true,
+  "client": {
+    "file": "E:\\RFOnlineTrash\\RFOnline\\RF_Online.bin",
+    "bytes": 8430808,
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86"
+  },
+  "client_matches_primary_pin": true,
+  "launcher": {
+    "file": "E:\\RFOnlineTrash\\RFOnline\\rflauncher.exe",
+    "bytes": 7138304,
+    "sha256": "38e326588c37cdff5af4a34dfe3cee1aaa1c7aae3168b0ab8d2f9482b955451f",
+    "architecture": "x64"
+  },
+  "launcher_matches_server_bundle": true,
+  "server_binaries": [
+    {
+      "file": "E:\\RFOnlineTrash\\rf455-v0.4.0\\server\\windows\\gameserver.exe",
+      "bytes": 22435840,
+      "sha256": "0b9c9099bdd90be23c7b6370e09b39c035d5c33ed4131ffb01a150b713e375c9",
+      "architecture": "x64"
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\rf455-v0.4.0\\server\\windows\\webserver.exe",
+      "bytes": 20819456,
+      "sha256": "5e6b8f57158fb237e1e2c41c4bc8bad91cb1186dc6114b52ca1a37c8d2a9b976",
+      "architecture": "x64"
+    }
+  ],
+  "user_confirmation": "User reports original client successfully entered this server world on2026-11-10;not an agent-observed game frame",
+  "script_sha256": "95f7ce3aa72d88957c414a8b5741d53eef3f5112d7a792a42ca92f50656dc46b",
+  "server_files_modified": false,
+  "credentials_or_packets_recorded": false
+}

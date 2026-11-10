@@ -1,3 +1,15 @@
+# Актуальная частичная проверка154 —10.11.2026
+
+Gate inventory/client455-player-owner-checkpoint.json,own31d24ab9….
+Primary12-slot owner/frame/render,Avatar default garment/SFcallback иcloak
+проверены в собственном входе среальными ресурсами иcontrolledcamera/light.
+Taiwan Create/Login/account3Avatar PASS;полные appearance/selection/world/gameplay
+ещё не приняты. FullCharacter clone lifecycleOPEN:cleanupадаптациитольковprobe.
+User-started0.4.0:ownTCP27830прошёл;launcher-auth27831accepted/key16.
+Это не game-auth своейPE инеполнаяэквивалентностьGoMMO/pinned455.
+Оценка25%(20–35%),0/12полныхобластей,M6/M6F/M7/M9OPEN.
+Все требования полноты ниже сохраняются. Следующие записи исторические.
+
 # Текущее состояние приёмки —10.11.2026
 
 Полностью принятых областей0/12. M6/M6F/M7/M9 OPEN.

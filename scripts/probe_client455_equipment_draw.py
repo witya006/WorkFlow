@@ -10,7 +10,7 @@ from audit_client455_language import decode
 from audit_client455_item_payloads import item_tables
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--report-label',choices=['equipment-draw','equipment-frame-render'],default='equipment-draw');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--report-label',choices=['equipment-draw','equipment-frame-render','player-owner-render'],default='equipment-draw');args=parser.parse_args()
     source=WS/'scripts/native/client455_equipment_draw_probe.cpp'
     exe=build_full_object_probe('equipment-draw',source)
     parent=WS/'work/m9'/sha(exe)[:8];index=1
@@ -46,8 +46,8 @@ def main():
         script=record(Path(__file__)),normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),map=record(mapping),inputs=inputs,
         console=record(console),output=record(output) if output.exists() else None,native=native,natural_exit=result.returncode,frames=frames,
         shared_asset_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
-    if args.report_label=='equipment-frame-render':
-        baseline=WS/'inventory/client455-equipment-draw-native.json'
+    if args.report_label!='equipment-draw':
+        baseline=WS/('inventory/client455-equipment-frame-render-native.json' if args.report_label=='player-owner-render' else 'inventory/client455-equipment-draw-native.json')
         before=json.loads(baseline.read_text());prior={Path(p['file']).name:p for p in before['frames']}
         assert len(prior)==len(frames)==6
         for row in frames:

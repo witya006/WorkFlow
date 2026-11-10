@@ -8305,7 +8305,7 @@
     {
       "id": "CLIENT455-EQUIPMENT-FRAME-153",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "runtime_gate_last_verified": true,
       "description": "Actual CMesh/CEquip frame/ANI/end transitions,dummy/always/event follow andequipment-position sound;ordinaryAvatar6deriveddefaults;full12-slot player stillopen",
       "implementation": [
@@ -8328,6 +8328,21 @@
       "ordinary_full_player_connected": false,
       "full_appearance_or_selection": false,
       "full_client": false
+    },
+    {
+      "id": "CLIENT455-PLAYER-OWNER-154",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Primary12-slot embedded equipment/frame/render andactualAvatar default clothing/skill callbacks;fullappearance/selection remainopen",
+      "implementation": ["scripts/native/client455_player_owner.cpp", "scripts/client455_player_owner_port.py", "scripts/native/client455_player_equipment.h", "scripts/native/client455_equipment_object.cpp", "scripts/native/client455_skill_force_items.cpp"],
+      "evidence": ["inventory/client455-player-owner-reference.json", "inventory/client455-player-owner-native.json", "inventory/client455-player-owner-render-native.json", "inventory/client455-player-owner-checkpoint.json", "research/client455-player-owner.md"],
+      "verification": "Both455pins/source/actualembeddedcontroller/defaultgarment/actorcache/GPU removal-replace frames/SFcallback/Miles;TaiwanCreate/Login/account3Avatar;6oldrenderframespreserved;initialliveTCP,notgameauth",
+      "primary_controller_connected": true,
+      "full_Character_clone_lifecycle": false,
+      "full_appearance_or_selection": false,
+      "full_client": false,
+      "M6": "OPEN", "M6F": "OPEN", "M7": "OPEN", "M9": "OPEN"
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

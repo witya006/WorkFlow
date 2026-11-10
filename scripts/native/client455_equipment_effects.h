@@ -47,6 +47,8 @@ public:
     }
 };
 static_assert(sizeof(RF455LoopSoundRegistry::Row)==128,"455 tracked loop row");
+void RF455_OpenEquipmentSounds455();
+void RF455_CloseEquipmentSounds455();
 
 struct RF455EquipmentEffectOwner {
     void* object=nullptr;std::uint32_t index=0xffffffff;std::uint8_t race=255;

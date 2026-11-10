@@ -1,4 +1,5 @@
 #include "client455_tagged_audio.h"
+#include "client455_equipment_effects.h"
 #include "r3enginekernel.h"
 #include "r3sound.h"
 #include "mss.h"
@@ -12,7 +13,7 @@
 #include <vector>
 #include <stdexcept>
 extern HDIGDRIVER stDigital;
-void RF455_PrepareTaggedAudio(const char* redist){AIL_set_redist_directory(redist);}
+void RF455_PrepareTaggedAudio(const char* redist){AIL_set_redist_directory(redist);RF455_OpenEquipmentSounds455();}
 namespace {
 struct Definition {std::uint32_t id;std::string file;unsigned char loop=0;};
 struct Wave {

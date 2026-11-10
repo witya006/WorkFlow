@@ -974,3 +974,22 @@ IDA71813681saved/closed/list0;nativeexit0. Research:client455-equipment-conditio
 151,10.11.2026:resolved442440 as network PremiumDWORD436028 and40BCE0 as Avatarcombatbonuses24712/24716. Ordinary57/12 state producer connected;full8functions/583instructions/64CFG equal2pins. Actual dispatcher/Avatar/boundaries57-49-1/12rates/NaN/-0 tested;Create/Login/account3Avatar pass. PremiumUI/icon481/post-updatecondition refresh andfullplayer stillopen. Ownd1e44bb9…/entry179970. IDAdfba038a savedclosed/list0;newpool0;originals/server unchanged. research/client455-premium-state.md.
 
 152,10.11.2026:restoredordinaryCharInfo fullDWORD/float stat writers14..18 and3actualbasicrow owners;WORD truncation/emptyfloatsetters removed.6fullfunctions/185instructions/9CFG equal2pins. Actualwindow/childregistration/currentAvatarcaller preserve70000/250000;full455metric/refresh/layout stillopen. FreshCreate/Login/account3AvatarPASS. Own579bc166…/entry179A40. IDAe3deb20c savedclosed/list0;smallprobe1DLL/newpool0;originals/server unchanged. research/client455-char-info-values.md.
+
+154,10.11.2026:primary12-slot CPlayerProc typedowner/frame/render andactualAvatar
+defaultgarment/SFcallback/cloak/Miles connected. Own31d24ab9…/x86/entry17F430,
+182client/67engine/20kernels/build-link0.24completefunctions/1859instructions/
+91positiveCFG matchboth455pins. Realcontrolled assembleddraw:19calls/12657pixels;
+remove3752changed,replacementexactPNG;6previousqueue/overlayframes equal153.
+Membercopy404A40/4042D0 no rand/AddRef,oldactor/currentProc links retained;
+queue527E70 differs. FullCharacterclone lifecycleOPEN;fixturecleanup explicitly
+compensated legacyaliases/refs,notaproductionfix. OrdinaryTaiwan Create/Login/
+account3AvatarPASS,Login195/3000ms/7firstchance/0unhandled. Fullappearance/
+selection/UI/particle/Siege/Unit/gameplay/M9OPEN. research/client455-player-owner.md.
+
+Liveclient evidence: user-startedrf455-v0.4.0,RFOnlineBIN matchesprimarypin;
+launcher38e32658… matchesbundle. OwnTCP27830→engine/Miles passes. Launcher-only
+6C/03→6C/04 acceptsprovidedtestaccount andreturns16byte rf1:key. Credentials,
+identifier/key/rawauthpackets notpersisted. Launcherx64base140000000/RVA24C2C0,
+24C7A0,24D0E0/13BE60 diagnostics;notcompleteASMproof orpinnedclientbehavior.
+OwnRFgame-auth remainsOPEN. No servercode/config changed,noinputEXEexecuted.
+research/client455-live-launcher.md;inventory/client455-live-server.json.

@@ -1,73 +1,81 @@
-# Продолжение M6 — обычный персонаж и выбор
+# Продолжение M6 — практический вход и обычный персонаж
 
-10.11.2026. Проверенная база153/3296a413…;182client/67engine/20kernels/link0.
-Gate:inventory/client455-equipment-frame-checkpoint.json PARTIAL.
-Оценка25%(20–35%);0/12полных областей. M6/M6F/M7/M9 открыты.
+10.11.2026. Проверенная база154: own31d24ab9…/x86/entry17F430,
+182 client / 67 engine / 20 kernels, build/link0. Контрольная точка:
+inventory/client455-player-owner-checkpoint.json PARTIAL.
+Оценка25%(20–35%), полных областей0/12. M6/M6F/M7/M9 OPEN.
 
-Сверка рабочих исходников:154 НЕ СОБИРАЕТСЯ, C2280 вcavatar.cpp:162.
-Новый владелец экипировки делает старое Avatar::Clone некорректным.
-Промежуточная линковка154 не была runtime-проверена и не является готовой базой.
-Exact153 уже сохранена вbefore154/manifest.json (53файла);не перезаписывать.
-Перед продолжением исправить копирование/владение по455,затем сборку и
-проверку полного player-owner пути. Не возвращать shallow copy ownedpointer.
+## Что изменилось в обычном коде
 
-## Что готово для следующего соединения
+Основной CPlayerProc владеет12типизированными объектами; подключены его
+numeric PutOn/base PutOff, Animation/FrameMove, часть render/material/pose,
+condition-host и Avatar→skill-board→SF→icon callback. Avatar PutOff возвращает
+базовую одежду0..4; missing cloak/Siege specialskill возвращаетfalse уже после
+снятия, как419BB0. Неперенесённые непустые specialskill/legacy paths явно отказаны.
+Сборочная C2280 устранена отдельным копированием owned state, без двойного владельца.
 
-- Typed controller12физических слотов,создание/clone/visibility и PRNG.
-  Index12 выходит за настоящий массив;собственный отказ не равен target failure.
-- Render/default+matrix,fade/alpha/grade/retained pose queue проверены отдельно.
-  Шесть кадров153 совпадают150. Полный particle registry всё ещё старый.
-- FrameMove/Animation/end transitions,однократные dummy,always state иevent
-  magic follow восстановлены. Реальные cloak mode3(create_type10) имode4
-  (Spine17),ANI иMiles проверены. Sound position берётся отequipment.
-  Виртуальный kind2 false у CMesh/CEquip;не путать сbyte4 иground wrapper.
-- Ordinary6default owners Avatar теперь производныеCEquip. Полное владение
-  экипировкой икадр основного CPlayerProc всё ещё используют старую модель.
-- Network Premium flag/Avatar benefits producer57/12 установлен;полные UI/
-  condition refresh открыты. Stat setters14..18 и3basic rows перенесены;
-  полные455metrics/23fieldlayout/41A8B0 refresh ещё нужны.
+В собственном полном объектном входе получен реальный собранный персонаж:
+19draws,12657visiblepixels; снятие меняет3752pixels, replacement PNG равен
+исходному. Камера/материал/свет контролируемые, позы не подменялись identity.
+Это не принятый полный анимированный персонаж в игровом мире.
 
-## Дальнейший порядок
+## Доступная практическая среда
 
-1. Подключить12-slot controller к настоящим CPlayerProc/CPlayer/Avatar иего
-   producers/consumers. Ближайший наблюдаемый результат — правильно одетый
-   персонаж в обычной сборке,затем работающий выбор. Не кастоватьRF455payload
-   илиmetadata в старыеCNormalItem/ITEM_DATA. Не оставлять успешные no-op hosts.
-2. Соединить уже готовые frame/ANI/dummy/effect/pose/Render сlive actor view,
-   текущим embedded processor иреальными condition/skill/UI owners.
-   4513E0 реально пуст.450BD0/451330 имеют отдельные зависимости.
-   Avatar virtual252→41A060→skillboard490EB0,typedSF accessor иinfo-window
-   update463740 нужны для condition-host. Pcode26owners сохранены в
-   artifacts/client455-progress/char-info152-reference/player-owner-diagnostics.json;
-   это диагностика,не полный ASM proof. MountHeight читает текущий wornmount
-   metadata mesh72,не tableindex и не произвольный detached object.
-3. Общий particle/entity registry:старыйg_Particle1024/5clones,targetvectors/
-   6clones/one-attempt failure. Default capacity неизвестна;не брать2000изRVP.
-   Ненулевые частицы иground wrapper пока не приняты.
-4. Довести bootstrap Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
-   EventSound/SpecialStore/ItemCollection/Map,Avatar finalization иполные
-   Title/Login/выбор455:ввод,ошибки,сообщения,переходы. Не обходить загрузку,
-   не принуждать успешный вход;сервер не разрабатывать.
-5. Затем C:карта/камера/управление/коллизии;D:атака/умения/предметы/чат;
-   E:остальные функции/классы/карты/устойчивость иполнаяM6F/M7/M9 приёмка.
+- Пользователь запустил E:/RFOnlineTrash/rf455-v0.4.0. Подтверждены процессы
+  именно из этой папки: TCP27830 game,27831 launcher,8080 website.
+- E:/RFOnlineTrash/RFOnline/RF_Online.bin совпадает с primary SHA b1b5febf…;
+  rflauncher.exe SHA38e32658… совпадает с комплектом сервера.
+- Пользователь подтвердил реальный вход оригинальным клиентом до мира.
+  Не выдавать это за собственный наблюдённый игровой проход.
+- Own Taiwan WinMain реально подключается к127.0.0.1:27830 и проходит engine/Miles.
+- Лаунчерный6C/03→6C/04 тестовый вход принят; получен16byte rf1:key.
+  Самостоятельный RF game-auth пока не проверен. Пароль/ключ/идентификатор
+  не сохранялись в файлах или Git; тестовые данные даны пользователем в чате.
+- Не запускать входные EXE. Лаунчер анализируется как данные; для own runtime
+  воспроизводится handoff93bytes. Не менять, строить или чинить сервер.
+  GoMMO поведение отделять от спецификации pinned455.
 
-## Сохранение и проверки
+## Следующее действие
 
-- Перед154 ordinary edits exact153 уже сохранена:
-  artifacts/client455-progress/before154/manifest.json,53файла.
-  Следующий snapshot только после проверенной154;старый не перезаписывать.
-  before153 — exact152,52файла;старые снимки не перезаписывать.
-- Новый frame auditor/runner/gate используют current sources. Старые146/150/
-  152gates состарымиSHA — исторические,не свежие проверки текущей PE.
-- Final frame:work/m9/55c69791/equipment-frame-001;render:
-  work/m9/07878f1a/equipment-draw-001. Контролируемыеkind9/46 — branch fixture,
-  не проверенные настоящиеSiege visuals. Callback host не productionCPlayerProc.
-- Fresh Create/Login/account3Avatar пройдены;Login65/3015ms просмотрен,
-  ожидание/Beta0.738/безauth.9прежнихfirst-chance,unhandled0.
-- Тестировать затронутое. Не повторять неизменённые159k/bulk suites.
-  Индекс12/queue заallocation/byteoverflow/неинициализированные позиции иCRT/
-  FP/OOM домены остаются gaps. Управляемый отказ не принимается как targetparity.
-- Последняя полная опись20:56:14,158.84GiB logical/43.19GiB unique files,
-  не точный filesystem allocation. Final staging pool0;ничего не удалено.
+1. Проверенная154 уже сохранена перед дальнейшими ordinary edits:
+   artifacts/client455-progress/before155/manifest.json,52файла.
+   Before154 — exact153,53файла; не перезаписывать.
+2. Передать живой handoff собственному изолированному клиенту: ServerClient.Login,
+   authreply identifier/serial, DecodeLoginKey rf1:, v4x Marshal93bytes.
+   Секреты только во временной приватной памяти/передаче; не включать их в
+   публичный манифест. Получить фактические сообщения/состояния own client.
+3. По наблюдаемому первому расхождению довести world-entry/bootstrap/registered
+   appearances. В registered_characters.inc ещё есть старый GetNormalItem/SetLevel;
+   оружие/часть actions/effects также имеют legacy consumers. Не cast raw455
+   в старые CNormalItem/ITEM_DATA и не принуждать успешный вход.
+4. Довести девять оставшихся участков bootstrap, финализацию Avatar, обычную
+   анимацию/материал/UI и экран выбора. Затем мир/камера/движение/коллизии,
+   бой/умения/предметы/чат, остальные12областей и M6F/M7/M9.
 
-Подробности:research/client455-equipment-frame.md;оценка:docs/progress-report.md.
+## Не потерять ограничения и доказательства
+
+- Target member copy404A40/4042D0 не вызывает rand/AddRef; queue527E70 вызывает.
+  У копии сохраняются старые actor/currentProc pointers. Full Character clone
+  lifecycle не принят: в probe очищались только fixture aliases трёх legacy
+  owned pointers; payload refs компенсированы после наблюдения no-retain.
+- Полные populated cloak/Siege specialskill unlink/board35/UI state/movement,
+  activeUnit/Siege flags, profile17796/action-category614 producers открыты.
+- Полный455CharInfo23fields/metrics/PremiumUI/SFwidget и его обычное population
+  не завершены; нынешний callback использует реальное существующее окно.
+- Particle registry всё ещё legacy1024/5clones вместо455vectors/6clones;
+  ground wrapper, ненулевые particle draw и полные shadows также открыты.
+- Taiwan Create/Login/account3Avatar PASS;Login195/3000ms просмотрен:
+  lobby/ожидание/Beta0.738,7firstchance(6C++/1threadname),unhandled0.
+  Шесть прежних renderPNG совпали153.
+- Korea повторный запуск встретил настоящее правило одного экземпляра,
+  когда пользователь держал оригинальный клиент. Taiwan использует собственную
+  штатную country policy; unconditional bypass не добавлен.
+- Первый неудачный собственный кадр ошибочно считал тёмную полосу фона
+  видимым объектом. Проверка усилена и реальные финальные изображения просмотрены.
+- Native final:work/m9/5544e512/player-owner-001; render6ebebfad/equipment-draw-001.
+  Последняя полная storage-опись20:56:14:158.84logical/43.19uniqueGiB,
+  не новый физический замер. Удалений0, новых полных копий клиента нет.
+- Проверять затронутое; не повторять159k неизменённых проверок.
+  Undefined/unsafe/CRT/FP/OOM/индекс12/lifecycle остаются явными M9 gaps.
+
+См.research/client455-player-owner.md иresearch/client455-live-launcher.md.

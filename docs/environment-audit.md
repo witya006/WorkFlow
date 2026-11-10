@@ -1,3 +1,17 @@
+# Проверенная154 и живая сеть —10.11.2026
+
+C2280 устранена:own31d24ab9…/x86/entry17F430/2347008bytes,
+182client/67engine/20kernels/build-link0. Gate player-owner-checkpoint PARTIAL.
+Primary12-slot CPlayerProc/frame/render/defaultgarment/SFcallback/cloak проверены
+на реальных ресурсах;полные appearance/selection/gameplay/M9 ещёOPEN.
+Taiwan Create/Login/account3Avatar PASS;Login195/3000ms,7firstchance,unhandled0.
+Пользователь запустил именноrf455-v0.4.0 ивошёлоригинальнымклиентом;порты/пути/
+хеши подтверждены. Own TCP27830→engine/Miles иlauncher-auth27831accepted/key16
+проверены отдельно;это не ownRFgameauth. Сервер не менять/строить.
+См.research/client455-player-owner.md,client455-live-launcher.md и
+inventory/client455-live-server.json. Ниже исторические записи,включаяисправленную
+ошибку154компиляции. Последняяполнаяstorageописьостаётся20:56:14,не новыйзамер.
+
 # Сверка20:56 — 10.11.2026
 
 Проверенная обычная база153 сохранена до154вbefore154 (53файла).

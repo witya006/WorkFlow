@@ -96,7 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
-        'client455-equipment-frame-checkpoint','client455-char-info-values-checkpoint','client455-premium-state-checkpoint','client455-player-visual-checkpoint','client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
+        'client455-player-owner-checkpoint','client455-equipment-frame-checkpoint','client455-char-info-values-checkpoint','client455-premium-state-checkpoint','client455-player-visual-checkpoint','client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
         'client455-character-tables-checkpoint','client455-item-bootstrap-checkpoint',
         'client455-resource-catalog-checkpoint','client455-registered-characters-checkpoint',
         'client455-world-entry-checkpoint','client455-login-checkpoint']
@@ -116,7 +116,7 @@ def main():
     runtime_normal=json.loads(runtime_link_file.read_text(encoding='utf-8-sig'))
     runtime_link_sha=sha(runtime_link_file)
     runtime_is_current=runtime_normal['executable']['sha256']==normal['executable']['sha256']
-    login_file=WS/'inventory/client455-login-frame-native.json'
+    login_file=WS/body.get('runtime_login_report',{}).get('file','inventory/client455-login-frame-native.json')
     login=json.loads(login_file.read_text(encoding='utf-8-sig'))
     if login['normal_link_sha256']!=runtime_link_sha:
         login_file=runtime_link_file.parent/'client455-login-frame-native.json'
@@ -167,16 +167,16 @@ def main():
             current_working_source=dict(status='BUILD_FAILED' if current_build['build_exit']!=0 else 'BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED',
                 build_report=dict(file=current_build_file.relative_to(WS).as_posix(),sha256=sha(current_build_file)),
                 build_exit=current_build['build_exit'],errors=current_build['errors'],
-                included_in_readiness_estimate=False,
+                included_in_readiness_estimate=runtime_is_current and sha(current_build_file)==runtime_normal['normal_build_sha256'],
                 issue='New owned equipment state makes Avatar copy construction invalid;copy ownership must be resolved before accepting154' if current_build['build_exit']!=0 else None),
             intermediate_candidate=dict(executable=normal['executable'],link_exit=normal['link_exit'],
                 linked_build_evidence_available=candidate_build_file is not None,
                 build_report=dict(file=candidate_build_file.relative_to(WS).as_posix(),sha256=sha(candidate_build_file)) if candidate_build_file else None,
                 runtime_verified=runtime_is_current,
                 superseded_by_later_source_build=sha(current_build_file)!=normal['normal_build_sha256']),
-            current_work='Ordinary153 Create/Login/account3Avatar verified. CMesh/CEquip frame/ANI/end transitions,dummy/always/motion effect follow andequipment-position sound verified withrealmodels/ANI/Miles;ordinary6Avatar defaults nowderivedCEquip. Sixrenderframes equal150. Primary12-slot CPlayerProc owner/providers/conditions/UI,complete455metrics/PremiumUI,selection/world/gameplay/particle registry remainopen. Overallfunctionalestimate unchanged.',
+            current_work='154primary12-slot CPlayerProc numeric item/pose/render routes connected;actual Avatar default clothing restore andskill-board callback verified onreal resources withcontrolled lighting. Own31d24ab9 x86/182client/67engine/20kernels/link0. OrdinaryTaiwan Create/Login/account3Avatar pass;195thframe at3000ms,7first-chance and0unhandled. Sixrenderframes equal153. Initial realTCP connection to user-started v0.4.0 server127.0.0.1:27830 passes,not authentication. Full legacy mixed consumers/Character clone lifecycle/Siege/particle registry/UI metrics/selection/world/gameplay remainopen. Overallfunctionalestimate unchanged.',
             ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
-            existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
+            existing_Create_proved_on_current_PE=load('client455-ui-startup-taiwan-native' if body.get('ordinary_nation')=='Taiwan' else 'client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-taiwan-native' if body.get('ordinary_nation')=='Taiwan' else 'client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
         binary_static_inventory=dict(file=survey_file.relative_to(WS).as_posix(),sha256=sha(survey_file),reference_sha256=survey['metadata']['sha256'],architecture='x86',image_base='0x400000',statistics=survey['statistics'],
             recovered_functions_percent=None,note='IDA-detected bodies include library code and wrappers;no validated exhaustive examined/reconstructed numerator. This count is not a455feature or completion denominator.'),

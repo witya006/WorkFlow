@@ -44,6 +44,10 @@ class RF455PlayerEquipmentObject:public RF455EquipmentObject {
         return host.findItemAnimation(id);
     }
 public:
+    RF455PlayerEquipmentObject()=default;
+    RF455PlayerEquipmentObject(const RF455PlayerEquipmentObject& source):RF455EquipmentObject(source,Copy455::EmbeddedMember),
+        fadeMode455(source.fadeMode455),fadeMaximum455(source.fadeMaximum455),fadeCurrent455(source.fadeCurrent455),animationHost455(source.animationHost455){}
+    void BindAnimationOwner455(RF455EquipmentAnimationCallbacks* host){animationHost455=host;}
     bool IsMeshWrapperKind455(BYTE kind)const override{return kind==1;}
     BOOL Render()override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render();}
     BOOL Render455(const D3DXMATRIX& matrix)override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render455(matrix);}
@@ -188,6 +192,10 @@ private:
     }
 public:
     explicit RF455PlayerEquipment(RF455EquipmentCallbacks& callbacks):host(callbacks){}
+    RF455PlayerEquipment(RF455EquipmentCallbacks& callbacks,const RF455PlayerEquipment& source):host(callbacks),slots(source.slots){}
+    RF455PlayerEquipmentObject& physical455(BYTE part){constructedSlot(part);if(part>=slots.size())throw std::out_of_range("455 physical equipment slot");return slots[part];}
+    bool createFrom455(CItemObject* source,bool requireNonempty){return createFrom(source,requireNonempty);}
+    void weaponAndShield455(BYTE part){weaponAndShield(part);}
     virtual ~RF455PlayerEquipment()=default;
     virtual RF455PlayerEquipmentObject* get(BYTE type){
         const BYTE part=alias(type);constructedSlot(part);return part<slots.size()&&!slots[part].IsEmpty()?&slots[part]:nullptr;

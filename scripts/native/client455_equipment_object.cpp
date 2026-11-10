@@ -24,10 +24,15 @@ RF455EquipmentPlan RF455_PlanEquipment(BYTE type,DWORD index,DWORD mesh){
     return out;
 }
 RF455EquipmentObject::RF455EquipmentObject(){SetObjectTypeID(2);Enable(41218);random455=static_cast<float>(double(std::rand())/100.0);}
-RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source):CItemObject(source),race455(source.race455),mesh455(source.mesh455),originalMesh455(source.originalMesh455),field608455(source.field608455),random455(source.random455),plan455(source.plan455),renderMode455(source.renderMode455),overlayGradeKnown455(source.overlayGradeKnown455),dummy455(source.dummy455){
+RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source):RF455EquipmentObject(source,Copy455::RetainedQueue){}
+RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source,Copy455 mode):CItemObject(source),race455(source.race455),mesh455(source.mesh455),originalMesh455(source.originalMesh455),field608455(source.field608455),random455(source.random455),plan455(source.plan455),renderMode455(source.renderMode455),overlayGradeKnown455(source.overlayGradeKnown455),dummy455(source.dummy455){
     //527E70 first constructs a destination46BD60/46BE60,then copies640bytes.
     //Its constructor's rand() is consumed even though612 is overwritten.
-    (void)std::rand();animationEffects455=source.animationEffects455;frameOwner455=source.frameOwner455;if(overlayGradeKnown455)overlayGrade455=source.overlayGrade455;RetainSharedItem455();
+    //4042D0/404F40 member copy does neither operation. In particular a copied
+    //CPlayerProc preserves raw actor/payload links;it is not an inventory clone.
+    if(mode==Copy455::RetainedQueue)(void)std::rand();
+    animationEffects455=source.animationEffects455;frameOwner455=source.frameOwner455;if(overlayGradeKnown455)overlayGrade455=source.overlayGrade455;
+    if(mode==Copy455::RetainedQueue)RetainSharedItem455();
 }
 bool RF455EquipmentObject::Create455(BYTE type,DWORD index){
     race455=BYTE(index>>28);const BYTE tableType=type==9?46:type;const DWORD tableIndex=index&0x0fffffff;

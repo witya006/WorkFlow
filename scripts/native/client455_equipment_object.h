@@ -47,6 +47,9 @@ class RF455EquipmentObject:public CItemObject {
     void UpdateAlwaysEffect455();
     bool CanRender455();
     void DrawWithEffect455(BYTE,const D3DXMATRIX*);
+protected:
+    enum class Copy455 {RetainedQueue,EmbeddedMember};
+    RF455EquipmentObject(const RF455EquipmentObject&,Copy455);
 public:
     RF455EquipmentObject();
     RF455EquipmentObject(const RF455EquipmentObject&);

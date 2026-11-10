@@ -82,6 +82,13 @@ bool RF455SkillForceItem::create(const RF455SkillForceData& source,std::uint8_t 
 }
 std::uint32_t RF455SkillForceItem::tableIndex()const{return data.data?u32(data.data):0xffffffff;}
 const char* RF455SkillForceItem::name()const{return data.data?reinterpret_cast<const char*>(data.data+112):nullptr;}
+std::uint8_t RF455SkillForceItem::EffectiveLevel455(bool baseOnly)const{
+    if(state.subtype==2)return 1;
+    if(baseOnly)return state.level;
+    const auto value=std::uint8_t(state.level+state.flag101);return value>7?7:value;
+}
+extern void RF455_UpdateSkillIconLevel455(void*,std::uint8_t);
+void RF455SkillForceItem::SetEquipmentLevel455(std::uint8_t value){state.flag101=value;if(state.iconBoard)RF455_UpdateSkillIconLevel455(state.iconBoard,EffectiveLevel455());}
 RF455SourceItemManager::~RF455SourceItemManager(){clear();}
 RF455SkillForceItem* RF455SourceItemManager::createSkillForce(const RF455SkillForceData& data,std::uint8_t subtype,std::uint32_t index){
     auto item=std::unique_ptr<RF455SkillForceItem>(new RF455SkillForceItem);

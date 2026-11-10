@@ -1,3 +1,45 @@
+# Проверенная база154 и живая сеть —10.11.2026
+
+Own31d24ab9481f56218431661815cd58077b59fae7d79ad123dc0c5c8758bd5426,
+x86/entry17F430/2347008bytes,182client/67engine/20kernels/build-link0.
+Gate inventory/client455-player-owner-checkpoint.json PARTIAL.
+Primary12-slot CPlayerProc подключён кnumeric/frame/pose/render иреальным
+Avatar/condition/skillboard owners. Default garment возврат0..4 восстановлен.
+Реальный кадр персонажа просмотрен;19draws/12657pixels;снятие3752changed,
+повторное надевание даёт exactPNG. Controlled camera/light,не fullworld actor.
+
+Member-copy404A40/4042D0 сохраняетстарыеactor/currentProc иpayload ссылки,
+не rand/AddRef;queue527E70 отличается. C2280 исправлена отдельным owned state.
+FullCharacter/Avatar clone lifecycle ещёOPEN:probe компенсация legacyowned
+aliases/refs толькодляcleanup,не productionfix. Другие mixedGetNormal/Equip,
+populatedcloak/Siege unlink/board35/UI/movement,Unit/particle/metrics OPEN.
+Native final work/m9/5544e512/player-owner-001;render6ebebfad/equipment-draw-001,
+6PNG равны153. Source proofs24functions/1859instructions/91CFG оба455pins.
+
+OrdinaryTaiwan Create/Login/account3Avatar PASS. Login195/3000ms просмотрен,
+ожидание/Beta0.738,7firstchance(6C++/1threadname),unhandled0. Korea повтор был
+остановлен правилом одного экземпляра при открытом оригинальном клиенте.
+Taiwan используетсвою штатную policy,не unconditional bypass.
+
+Пользователь запустил rf455-v0.4.0 иподтвердил originalclient worldentry.
+Read-only ports/processes/hash:именно0.4.0,27830game/27831launcher/8080web;
+RFOnline/RF_Online.bin SHAprimaryb1b5…;rflauncher38e32658… совпалскомплектом.
+OwnWinMain действительно TCPconnect27830→engine/Miles. Отдельныйlauncher
+auth6C/03→6C/04 accepted,получен16bytekey сprefix rf1:(DWORD976316018).
+Game-auth собственнойPE ещёНЕ проверен. Тестовые данные находятсятольковчате,
+не сохранятьих,accountID/key/rawpacketsврепозиторий. Серверне менять/строить.
+Новые отчёты:inventory/client455-live-server.json,client455-live-launcher-native.json.
+
+Exact154 уже сохранена вbefore155/manifest.json,52файла;не перезаписывать.
+Следующее:живойhandoff93bytes→ownclient,
+первоефактическоерасхождениеworld-entry/bootstrap/registeredappearance→выбор.
+Launcher private diagnostics artifacts/client455-progress/live-launcher155-reference;
+GoIDA ownedf8bfc9ee иRF sessionb8517972 savedclosed;idb_list0.
+Последняя storageописьостаётся20:56:14:158.84/43.19GiB,нефизическийзамер.
+Удалений0,wholeclientcopy0;обычнаяоценка25%(20–35%),0/12fullareas,M6/M9OPEN.
+Исследование:research/client455-player-owner.md иclient455-live-launcher.md.
+Ниже исторические записи;их «текущая» база относится к указанной версии.
+
 # Сверка готовности и текущих исходников — 10.11.2026
 
 Проверенная база остаётся153/3296a413…;25%(20–35%),0/12полных областей.

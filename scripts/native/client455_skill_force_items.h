@@ -4,6 +4,7 @@
 #include <list>
 #include <memory>
 #include <vector>
+class CGUISkFcUnit;
 
 struct RF455ItemDataSpan {const unsigned char* data=nullptr;std::size_t size=0;};
 struct RF455SkillForceTable {
@@ -60,6 +61,10 @@ public:
     std::uint32_t tableIndex()const;
     const char* name()const;
     RF455ItemDataSpan rawData()const{return data;}
+    std::uint8_t EffectiveLevel455(bool baseOnly=false)const;
+    void SetEquipmentLevel455(std::uint8_t);
+    //Only source-created CGUISkFcUnit pointers may be bound here.
+    void SetIconBoard455(CGUISkFcUnit* value){state.iconBoard=value;}
 };
 
 // Concrete source-owned primary/auxiliary caches. Fresh payload creation is
