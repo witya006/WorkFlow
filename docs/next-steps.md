@@ -1,4 +1,33 @@
-# Продолжение M6 — подключение настоящего CharInfo455 (161)
+# Продолжение M6 — настоящий Recall455 и остальной MainGame UI (162)
+
+161:CharInfo455 outer/3pages/23owners подключён к обычному клиенту. Native3races/
+6GPUframes/input/resize/mastery/signedresist PASS.60fullfunctions/6095instructions
+bothpins. Own 3ebd9a7d…/x86/entry181DA0/2360320bytes/build-link0. Живой выбор принят,
+CharInfoInit пройден;следующий oldRecall.SetSprite/Init fatal own12E8FF/GetSpriteXL.
+Gate inventory/client455-char-info-checkpoint.json PARTIAL_KNOWN_FAILURE.
+
+1. Перед162 сохранить exact161:preserve utility --previous before161
+   --destination before162 --checkpoint inventory/client455-char-info-checkpoint.json.
+   Before161 уже113files,неперезаписывать. Полный клиент/ассеты не копировать.
+2. Прочитать research/client455-char-info.md. Recall source:
+   work/client455-port/normal/source/userinterface/gamewindow/recall/guirecallwindow.cpp.
+   Не править derived source напрямую:новый port hook/native generation.
+3. Только pointer navigation:client455-recall-discovery.json,primary vtable6DFD14,
+   InitVA6AF7F0/SetSprite6AFC20/SetBound6AFC90. Собрать полные ASM/CFG/обаpins.
+   Legacy title inventory0/5 иresize7/2 не заменять skin alias/скрытием окна.
+4. Восстановить настоящие owners/layout/контракты Recall455,проверить реальные
+   summon/unit providers. Затем ordinarylive и следующий настоящий UIотказ.
+5. CharInfo остаётся partial:action/equipment content callbacks/tooltip/help,
+   mastery max/resist bounds producers,stat semantics17/18,lifecycle/FPedge domains.
+   Не считать typed component setters доказательством полноты ordinary producers.
+6. После полного MainGame UI — карта/avatar/control и связанные игровые сценарии.
+
+Адресный охват2310(+48),fullASM490(+51),44выборочныхbindings.14прежнихdependency
+bindings получилиordinaryownerpath,неявляютсяновыми14targetfunctions.0/12,M9OPEN.
+Последний live требует own-child background update message;первыйa51без1/14непринят.
+Драйвер не меняет OSfocus/глобальный ввод. Никаких server/original changes.
+
+# Историческое продолжение M6 — подключение настоящего CharInfo455 (161)
 
 160:CGUITabBoard455 source/component восстановлен,17functions/1318instructions
 bothpins,5section example/scroll/reflow/mouse/4GPUframes/RAII PASS.

@@ -1,3 +1,16 @@
+2026-11-11 — CharInfo161 PARTIAL_KNOWN_FAILURE. Actual ordinary window now uses
+three455pages(5/2/4sections),23value owners,real skins/race/mastery/resist/layout.
+Nativedb389785/3races/6GPUframes/input/resize PASS;final six images inspected.
+Header natural-height correction replaces earlier33923840/161a997c geometry;
+only highlight has1x4sheet.60referencefunctions/6095instructions bothpins. Own3ebd9a7d…/x86/
+entry181DA0/2360320bytes/build-link0;live selection accepted,CharInfo Init returned.
+Next actual failure oldRecall.SetSprite/Init,own12E8FF/GetSpriteXL;world/M9OPEN.
+2310(+48)address/490(+51)full function evidence;18newpartialbindings,14prior
+TabBoardbindings now connected ordinary owner path,not14newtargetfunctions.
+Firsta51live hadno1/14;owned-window background activation-message/delayedEnter
+driver fixed observation without OSfocus/globalkeys. Missingproviders remain
+explicit. Before161113files saved;IDAa2513525closed/list0,nooriginal/servercode edits.
+
 2026-11-11 — TabBoard160 PARTIAL_COMPONENT_ONLY. Actual expandable-section
 source,17functions/1318instructions both455pins. Five-section native example,
 real skins/NDLanguage/scroll/reflow/resize/RAII/four GPUframes pass. Style0

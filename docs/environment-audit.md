@@ -1,4 +1,23 @@
-# Частичная160 —11.11.2026
+# Частичная161 —11.11.2026
+
+CharInfo455 подключён к обычному CGUICharInfoWindow:3pages/23owners,real47/common,
+race/mastery/resist/extras/input/wheel/resize.60полных ASM/CFG/6095instructions
+совпалиbothpins. Nativefinaldb389785/3races/6GPUframes PASS,finalimages просмотрены.
+Naturalheightheaderисправлена:1x4sheetтолькодляhighlight;nativegeometryassertions.
+Ранние33923840/161a997cкадрынеподтверждаютгеометрию.18partialbindings;TabBoard ordinary.
+Own 3ebd9a7d…/x86/entry181DA0/2360320bytes,182client/67engine/20kernels/link0.
+Early/consumer/native PASS. Live actual1/14→1/15/22/result0,CharInfoInitпройден.
+Следом unhandledC0000005/own12E8FF вoldRecall.SetSprite/Init. Мир не достигнут.
+Gate char-info-checkpoint PARTIAL_KNOWN_FAILURE. Функции2310/490,coarse25%/0из12.
+ПолныйMainGameUI/игровыепровайдеры/M9OPEN. Updated assessment не используетстарый159.
+Before161113files сохранён;native30assets/15411905linkedbytes/0newpoolbytes.
+Перваяlivea51непослала1/14(inactiveGetMessage),непринята. Контролируемыйown-child
+background WM_ACTIVATEAPP передEnter восстановил тест без OSfocus/systemkeys.
+Buttons disabled descriptorисправлен,повторены затронутыепроверки. IDAa2513525
+saved/closed/list0;серверныйкод/настройки иoriginals безизменений.
+Доказательства/следующаянавигация:research/client455-char-info.md.
+
+# История160 —11.11.2026
 
 Настоящий TabBoard455 восстановленкакclientdependency:17fullfunctions/1318
 instructions bothpins;normalobject/libraries compiled/link0. Nativefinal

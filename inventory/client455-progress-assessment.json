@@ -129,7 +129,8 @@
         "client455-font-checkpoint",
         "client455-gui-input-checkpoint",
         "client455-item-icon-metadata-checkpoint",
-        "client455-char-info-values-checkpoint"
+        "client455-char-info-values-checkpoint",
+        "client455-char-info-checkpoint"
       ]
     },
     {
@@ -272,7 +273,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "88d9de04002641468761c02bf8861f2ab227d9a7732910d7cf7ba335e1e3b970",
+      "sha256": "8df1f03b15c0756d35d3e3c47f1333c46198cfa8ae3b09b3a8aaed05d33ca05f",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -542,6 +543,14 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-char-info-checkpoint": {
+      "file": "inventory/client455-char-info-checkpoint.json",
+      "sha256": "18bccd3ef9bc48cdb310ace3ff1214e14c307abf6cbcc191efec951ae9cf9ba1",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "Actual455CharInfo source integrated andInit returned after live selection;next oldRecallwindow fails;world not entered",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-tagged-audio-checkpoint": {
       "file": "inventory/client455-tagged-audio-checkpoint.json",
       "sha256": "df11efca5b8d39c41d930f5718f7b090262e69ec6b98fc2dd30d51f30a06d95e",
@@ -661,12 +670,12 @@
     "canonical_kernel_objects": 20,
     "unresolved_symbols": 0,
     "own_executable": {
-      "file": "artifacts/client455-progress/before160/work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
-      "bytes": 2349056,
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08",
+      "bytes": 2360320,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x17fa40",
+      "entry_rva": "0x181da0",
       "sections": [
         ".text",
         ".rdata",
@@ -690,23 +699,23 @@
     ],
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
-      "file": "artifacts/client455-progress/before160/inventory/client455-normal-build.json",
-      "sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4",
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "23b6092954957d7c21188e7609c5f85a131a9b2db55324d5a89081438eb09468",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": true,
-    "last_completed_checkpoint": "inventory/client455-hud-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": true,
+    "newer_build_is_not_the_accepted_runtime": false,
+    "last_completed_checkpoint": "inventory/client455-char-info-checkpoint.json",
+    "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
-      "link_file": "artifacts/client455-progress/before160/inventory/client455-normal-link.json",
-      "link_sha256": "2f3499b1dae6c7ef117577b6bb10f1f96419d515fa04f7ea28369183ebc11ab4",
+      "link_file": "inventory/client455-normal-link.json",
+      "link_sha256": "8df1f03b15c0756d35d3e3c47f1333c46198cfa8ae3b09b3a8aaed05d33ca05f",
       "executable": {
-        "file": "artifacts/client455-progress/before160/work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
-        "bytes": 2349056,
+        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "sha256": "3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08",
+        "bytes": 2360320,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17fa40",
+        "entry_rva": "0x181da0",
         "sections": [
           ".text",
           ".rdata",
@@ -715,39 +724,39 @@
           ".reloc"
         ]
       },
-      "build_file": "artifacts/client455-progress/before160/inventory/client455-normal-build.json",
-      "build_sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4"
+      "build_file": "inventory/client455-normal-build.json",
+      "build_sha256": "23b6092954957d7c21188e7609c5f85a131a9b2db55324d5a89081438eb09468"
     },
-    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
+    "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
       "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
-      "own_rva": "0x12c53f",
+      "own_rva": "0x12e8ff",
       "code": "0xc0000005",
       "resolved_own_symbols": [
         {
-          "rva": "0x12c53f",
-          "symbol": "?GetSpriteOrgXL@CSprite@@QAEGKK@Z",
+          "rva": "0x12e8ff",
+          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
           "offset": "0x5f"
         },
         {
-          "rva": "0x97288",
-          "symbol": "?SetSpriteInfo@CGUITileObject@@UAEXPAU_sprite_info@@@Z",
-          "offset": "0x68"
+          "rva": "0x982e1",
+          "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+          "offset": "0x61"
         },
         {
-          "rva": "0x74366",
-          "symbol": "?SetSprite@CGUICharInfoWindow@@UAEXXZ",
-          "offset": "0xc6"
+          "rva": "0xa094e",
+          "symbol": "?SetSprite@CGUIRecallWindow@@UAEXXZ",
+          "offset": "0x3e"
         },
         {
-          "rva": "0x73301",
-          "symbol": "?Init@CGUICharInfoWindow@@UAEXXZ",
-          "offset": "0xb61"
+          "rva": "0x9ffd7",
+          "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+          "offset": "0x337"
         },
         {
-          "rva": "0x26729",
+          "rva": "0x26753",
           "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
-          "offset": "0x179"
+          "offset": "0x1a3"
         },
         {
           "rva": "0x26021",
@@ -755,28 +764,63 @@
           "offset": "0x41"
         }
       ],
-      "cause": "Old CharInfo SetSprite still requests0.7 inventory action6/7;target CharInfo skin/layout consumer not ported",
+      "verified_own_calls": [
+        {
+          "return_rva": "0x982e1",
+          "instruction_rva": "0x982dc",
+          "sha256": "cb6580fabf2f7b58e8974742eaa8d079a7c1d72310eeda58f45f9e0930b77c24",
+          "callee": {
+            "rva": "0x12e8a0",
+            "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+            "offset": "0x0"
+          }
+        },
+        {
+          "return_rva": "0x26753",
+          "instruction_rva": "0x26750",
+          "instruction_bytes": "ff506c",
+          "vtable_rva": "0x1f1034",
+          "slot_offset": "0x6c",
+          "callee": {
+            "rva": "0x9fca0",
+            "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+            "offset": "0x0"
+          },
+          "kind": "Virtual call corroborated by actual fatal Init stack and own vtable"
+        },
+        {
+          "return_rva": "0x26021",
+          "instruction_rva": "0x2601c",
+          "sha256": "c9b501f5fa3b2af3604d6c342c01aeb029b96d0dacd94892e8875a5e766487ef",
+          "callee": {
+            "rva": "0x265b0",
+            "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+            "offset": "0x0"
+          }
+        }
+      ],
+      "cause": "Next old CGUIRecallWindow::SetSprite/Init consumer;CharInfo Init has returned on the sequential MainGame::Create_UI path",
       "whole_client_run_succeeded": false
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "238146c5cec8b90fc3e08b570e797fbefb0df8c0fc8fd6ab75530acaa52273a3"
+        "sha256": "23b6092954957d7c21188e7609c5f85a131a9b2db55324d5a89081438eb09468"
       },
       "build_exit": 0,
       "errors": [],
-      "included_in_readiness_estimate": false,
+      "included_in_readiness_estimate": true,
       "issue": null
     },
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "7354a9313c6eb43db1f267a8f575c456818021ad6284699984470285cc3c571e",
-        "bytes": 2349056,
+        "sha256": "3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08",
+        "bytes": 2360320,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17fa40",
+        "entry_rva": "0x181da0",
         "sections": [
           ".text",
           ".rdata",
@@ -789,48 +833,121 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "238146c5cec8b90fc3e08b570e797fbefb0df8c0fc8fd6ab75530acaa52273a3"
+        "sha256": "23b6092954957d7c21188e7609c5f85a131a9b2db55324d5a89081438eb09468"
       },
-      "runtime_verified": false,
+      "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "158 owndf69c7ef x86/182client/67engine/20kernels/link0. Actual addressed Enter sends1/14 andreceives1/15/22 success. FullWORD result/serial32/money64 consumer andtyped6default/11worn Avatar transfer integrated;skipTutorial copied. Native wire/4wallet routes/retained default and3priorPNG pass. Existing MainGame::Create_UI reached,then fatal ownRVA12C8AF inGetSpriteXL/gaugeExp:unported0.7skin/atlas. World isnotentered;run hasoneunhandled exception. Next:actual455MainGameUI/resources/create. Fullcallback/tutorialbranch/UI/factory/clone/particle/gameplay/M9 open. Estimate unchanged.",
+    "current_work": "Actual455CharInfo source integrated andInit returned after live selection;next oldRecallwindow fails;world not entered",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "bf8134e0b82881f821c6567d18159c70f50c00899448804da04461554580a2c8",
-      "fresh_for_current_PE": false,
+      "sha256": "952532c5ec4f93972e7bae130eab94dbd0af7bec1d3dde1cd6b27a0919b8311b",
+      "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/afb30309/selection-live-taiwan001/login-frame.png",
-        "sha256": "8f7f4d29fa46ac1186620511e325ff17f3c442a8abf9a3e4b93adef7f2f48093"
+        "file": "work/m9/3ebd9a7d/selection-live-taiwan001/login-frame.png",
+        "sha256": "a05cf48afd87713cfb1d3a312a4cf17a87895d2436e2423ce65dc377a21b813f"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 368,
-        "elapsed_ms": 8000,
+        "frame_index": 121,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
       "ui_visually_inspected": true,
       "ui_accepted": false,
-      "known_visible_problem": "Pre-Enter selection frame isvalid;afterEnter a known MainGame gauge UI failure prevents world creation",
+      "known_next_failure": {
+        "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+        "own_rva": "0x12e8ff",
+        "code": "0xc0000005",
+        "resolved_own_symbols": [
+          {
+            "rva": "0x12e8ff",
+            "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+            "offset": "0x5f"
+          },
+          {
+            "rva": "0x982e1",
+            "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+            "offset": "0x61"
+          },
+          {
+            "rva": "0xa094e",
+            "symbol": "?SetSprite@CGUIRecallWindow@@UAEXXZ",
+            "offset": "0x3e"
+          },
+          {
+            "rva": "0x9ffd7",
+            "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+            "offset": "0x337"
+          },
+          {
+            "rva": "0x26753",
+            "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+            "offset": "0x1a3"
+          },
+          {
+            "rva": "0x26021",
+            "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+            "offset": "0x41"
+          }
+        ],
+        "verified_own_calls": [
+          {
+            "return_rva": "0x982e1",
+            "instruction_rva": "0x982dc",
+            "sha256": "cb6580fabf2f7b58e8974742eaa8d079a7c1d72310eeda58f45f9e0930b77c24",
+            "callee": {
+              "rva": "0x12e8a0",
+              "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+              "offset": "0x0"
+            }
+          },
+          {
+            "return_rva": "0x26753",
+            "instruction_rva": "0x26750",
+            "instruction_bytes": "ff506c",
+            "vtable_rva": "0x1f1034",
+            "slot_offset": "0x6c",
+            "callee": {
+              "rva": "0x9fca0",
+              "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+              "offset": "0x0"
+            },
+            "kind": "Virtual call corroborated by actual fatal Init stack and own vtable"
+          },
+          {
+            "return_rva": "0x26021",
+            "instruction_rva": "0x2601c",
+            "sha256": "c9b501f5fa3b2af3604d6c342c01aeb029b96d0dacd94892e8875a5e766487ef",
+            "callee": {
+              "rva": "0x265b0",
+              "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+              "offset": "0x0"
+            }
+          }
+        ],
+        "cause": "Next old CGUIRecallWindow::SetSprite/Init consumer;CharInfo Init has returned on the sequential MainGame::Create_UI path",
+        "whole_client_run_succeeded": false
+      },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
-    "existing_Create_proved_on_current_PE": false,
+    "existing_Create_proved_on_current_PE": true,
     "existing_Create_proof_scope": "Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance",
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "13c2ffd23fcae6020e73d29c0143eb88a3fa40c2ab5bc165abce79a29010667e",
-    "entries": 166,
+    "sha256": "ccae7d0e4ce12767f88b5185d73aebc1116b1f37c24820be4a45eccdd5c4d12d",
+    "entries": 167,
     "statuses": {
       "partial_component": 13,
-      "partial": 123,
+      "partial": 124,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -840,7 +957,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-HUD-159"
+      "CLIENT455-CHARINFO-161"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -910,7 +1027,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;166 overlapping historical records",
+        "measured": "12 domain planning map;167 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1072,7 +1189,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "d3ce04f239dd3f0a1a7c9582427b88459acc7ff1d651daafa419b628e083d95e"
+    "sha256": "2d6bc581105bbcc413f5561fd14a18b47b1fd0caab4eaabea98db8b96eba736e"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

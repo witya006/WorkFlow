@@ -1,4 +1,33 @@
-# Частичная160 — настоящий TabBoard455, CharInfo ещё не подключён
+# Частичная161 — CharInfo455 подключён, следующий отказ Recall
+
+11.11.2026. Own 3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08,
+x86/entry181DA0/2360320bytes;182client/67engine/20kernels/build-link0.
+RF455CharInfoView подключён к настоящему CGUICharInfoWindow:3pages5/2/4sections,
+23value owners,mastery/resist/extras,real skins/race layout/mouse/wheel/resize.
+Nativedb389785:3races/6GPUframes PASS;все final images просмотрены/visualmanifest.
+Исправлена naturalheightheader:sheet1x4 относитсятолькокhighlight. Ранние33923840/
+161a997cкадрыгеометриюнеподтверждают;native проверяетheader/title/tab coordinates.
+60fullfunctions/6095instructions bothpins;18partialbindings,12standalone retained.
+14прежних TabBoardbindings подключены кordinary owner path,11standalone retained.
+
+Final live 3ebd9a7d/selection-live-taiwan001:auth/list/1/14→1/15/22/result0,
+CharInfoInit пройден;следом C0000005 вoldRecall.SetSprite/Init,own12E8FF/GetSpriteXL.
+Стек982E1→A094E→9FFD7→26753→26021;virtual FF506C/ownvtable1F1034slot6C сверены.
+World/fullUI/M6F/M7/M9OPEN,0/12,25%(20–35%). Gate char-info-checkpoint.
+Первый a51live не послал1/14 из-за inactive GetMessage;он не принят как проход.
+Owned-child driver теперь просит local WM_ACTIVATEAPP background updates перед
+отложенным Enter;OSfocus/globalkeys не меняются. FinalpreEnterPNG просмотрен.
+
+Открыты dynamic action/equipment providers/tooltip/help,mastery max/resist bounds
+уlegacycallers,fullmetrics17/18/lifecycle/malformeddomains. Не подставлять лимиты.
+Следом настоящий Recall455:primaryRTTIvtable6DFD14,Init6AF7F0/skin6AFC20/bound6AFC90.
+Pointerdiscovery не behavior proof. Source:gamewindow/recall/guirecallwindow.cpp.
+Функции2310(+48)/490(+51),44выборочныхbindings,необщийперенос. Coarse не повышен.
+Before161113files сохранён(6427189private+4047560sharedbytes). До162 snapshot161.
+Native sharedpool30assets/15.41MBlinked/0newbytes. Originals/servercode без изменений.
+IDAa2513525saved/closed/list0. Подробнее:research/client455-char-info.md.
+
+# История160 — настоящий TabBoard455, CharInfo ещё не подключён
 
 11.11.2026. Новая зависимость client455_gui_tab_board.h/.cpp:5-section пример,
 реальные skins/NDLanguage/GPU,раскрытие/membership,reflow,scroll observer,

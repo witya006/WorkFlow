@@ -1,4 +1,14 @@
-# Актуальная частичная проверка158 —11.11.2026
+# Актуальная частичная проверка161 —11.11.2026
+
+Gate client455-char-info-checkpoint PARTIAL_KNOWN_FAILURE. Own 3ebd9a7d…
+подключил настоящее CharInfo455:3pages/23value owners/real skins/race/layout.
+Native3races/6GPUframes/input/resize/mastery/resist PASS. Live1/14→1/15/22/result0,
+CharInfoInit пройден;следующий oldRecall.SetSprite/Init fatalown12E8FF/GetSpriteXL.
+World/control/fullUI/M9 не приняты.0/12,25%(20–35%). Открыты dynamic action/
+equipment providers,mastery max/resist bounds уlegacycallers,metrics/lifecycle/
+malformeddomains. Полные требования ниже сохраняются;счёт2310/490 —охватанализа.
+
+# Историческая частичная проверка158 —11.11.2026
 
 Gate selection-checkpoint PARTIAL_KNOWN_FAILURE,owndf69c7ef…/entry17FCD0.
 Реальный Enter/выбор1/14→1/15/22/result0 иtyped Avatar default/worn transfer

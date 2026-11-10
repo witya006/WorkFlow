@@ -8513,7 +8513,7 @@
     {
       "id": "CLIENT455-HUD-159",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "runtime_gate_last_verified": true,
       "description": "Actual455upper gauge panel integrated;real selection proceeds to next old CharInfo Init failure;world not entered",
       "implementation": [
@@ -8583,6 +8583,26 @@
       ],
       "ordinary_CharInfo_connected": false,
       "retained_in_ordinary_executable": false,
+      "full_client": false,
+      "M6": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-CHARINFO-161",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Actual455CharInfo source integrated andInit returned after live selection;next oldRecallwindow fails;world not entered",
+      "implementation": [
+        "scripts/client455_char_info_port.py",
+        "scripts/native/client455_char_info.h",
+        "scripts/native/client455_char_info.inc"
+      ],
+      "evidence": [
+        "inventory/client455-char-info-checkpoint.json",
+        "inventory/client455-char-info-reference.json"
+      ],
+      "world_entered": false,
       "full_client": false,
       "M6": "OPEN",
       "M9": "OPEN"

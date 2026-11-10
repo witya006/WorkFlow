@@ -1,0 +1,328 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Actual455CharInfo source integrated andInit returned after live selection;next oldRecallwindow fails;world not entered",
+  "script": {
+    "file": "scripts/checkpoint_client455_char_info.py",
+    "sha256": "1fc560d02ec5693e83035c69c78f263ef33620118f8c57b89d2b2186608701ba"
+  },
+  "normal_link_sha256": "8df1f03b15c0756d35d3e3c47f1333c46198cfa8ae3b09b3a8aaed05d33ca05f",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "3ebd9a7dcd40b4843352f75e505a585ec65149899891f3885380040703109b08",
+    "bytes": 2360320,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x181da0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "952532c5ec4f93972e7bae130eab94dbd0af7bec1d3dde1cd6b27a0919b8311b"
+  },
+  "fresh_evidence": {
+    "char-info-reference": {
+      "file": "inventory/client455-char-info-reference.json",
+      "sha256": "fb92a7c017fd254e894a505d76880207346e4e9294335b420ec3fa44c6a8a2a8"
+    },
+    "char-info-native": {
+      "file": "inventory/client455-char-info-native.json",
+      "sha256": "4764c9f45466afd6e770dbcf246a41f1076178fdbfd74d0989ecfaf8108edfb2"
+    },
+    "char-info-visual": {
+      "file": "inventory/client455-char-info-visual.json",
+      "sha256": "dd7a354bde388889217b3ec90858a3a213a51617128600ccb99371e8e8e8749f"
+    },
+    "char-info-bindings": {
+      "file": "inventory/client455-char-info-bindings.json",
+      "sha256": "ff7adb64d39efca90ced925d2e5710a9bd0109fc6de927d66126e11ea006857a"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "52ea6ba04cf495c0ecc4009660cdde99fec6bae935e6b861ec9bc86fa142a94c"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "23b6092954957d7c21188e7609c5f85a131a9b2db55324d5a89081438eb09468"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "fd8c9e49639b246f11c33432a53c5baf54068980fa69bf0cf99cb6c92ce9c30f"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "8df1f03b15c0756d35d3e3c47f1333c46198cfa8ae3b09b3a8aaed05d33ca05f"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "8ac383d124e8a9427a39f055da1ee739b287ebf98d9ca5162f0c287cf7e344cb"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "86f155412224fc897fdae0a5460a8d0c51096a7b7083112ca3229cf2c84f4474"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "f00a3d98c51d2bc991d3418ecb81a29442fd2aaf647337ea098fc21fc8eff287"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "e8e9c0a6fac67b8bb81307ad680e83b688da7271cbc0e893eb8534df51f0b782"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "952532c5ec4f93972e7bae130eab94dbd0af7bec1d3dde1cd6b27a0919b8311b"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "c7b8bb3137b4596d288da088e5e30f14ceea0eb96b0457baee72642caf9202ea"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before161/manifest.json",
+    "sha256": "e53f6709b27152d509a843b4eb330c6ace14533082c98cec92cd84d90fbaffcb"
+  },
+  "post_selection_failure": {
+    "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+    "own_rva": "0x12e8ff",
+    "code": "0xc0000005",
+    "resolved_own_symbols": [
+      {
+        "rva": "0x12e8ff",
+        "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+        "offset": "0x5f"
+      },
+      {
+        "rva": "0x982e1",
+        "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+        "offset": "0x61"
+      },
+      {
+        "rva": "0xa094e",
+        "symbol": "?SetSprite@CGUIRecallWindow@@UAEXXZ",
+        "offset": "0x3e"
+      },
+      {
+        "rva": "0x9ffd7",
+        "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+        "offset": "0x337"
+      },
+      {
+        "rva": "0x26753",
+        "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+        "offset": "0x1a3"
+      },
+      {
+        "rva": "0x26021",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x41"
+      }
+    ],
+    "verified_own_calls": [
+      {
+        "return_rva": "0x982e1",
+        "instruction_rva": "0x982dc",
+        "sha256": "cb6580fabf2f7b58e8974742eaa8d079a7c1d72310eeda58f45f9e0930b77c24",
+        "callee": {
+          "rva": "0x12e8a0",
+          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+          "offset": "0x0"
+        }
+      },
+      {
+        "return_rva": "0x26753",
+        "instruction_rva": "0x26750",
+        "instruction_bytes": "ff506c",
+        "vtable_rva": "0x1f1034",
+        "slot_offset": "0x6c",
+        "callee": {
+          "rva": "0x9fca0",
+          "symbol": "?Init@CGUIRecallWindow@@UAEXXZ",
+          "offset": "0x0"
+        },
+        "kind": "Virtual call corroborated by actual fatal Init stack and own vtable"
+      },
+      {
+        "return_rva": "0x26021",
+        "instruction_rva": "0x2601c",
+        "sha256": "c9b501f5fa3b2af3604d6c342c01aeb029b96d0dacd94892e8875a5e766487ef",
+        "callee": {
+          "rva": "0x265b0",
+          "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+          "offset": "0x0"
+        }
+      }
+    ],
+    "cause": "Next old CGUIRecallWindow::SetSprite/Init consumer;CharInfo Init has returned on the sequential MainGame::Create_UI path",
+    "whole_client_run_succeeded": false
+  },
+  "ordinary_CharInfo_connected": true,
+  "live_advanced_past_prior_CharInfo_crash": true,
+  "live_selection_exchange_completed": true,
+  "main_game_ui_created": false,
+  "world_entered": false,
+  "full_client": false,
+  "explicit_function_bindings": 18,
+  "tab_board_prior_binding_transitions": [
+    {
+      "reference_rva": "0x220230",
+      "symbol": "CGUITabBoard455::CGUITabBoard455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0x725d0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220360",
+      "symbol": "CGUITabBoard455::~CGUITabBoard455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xe9d20"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220410",
+      "symbol": "CGUITabBoard455::Init455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xe9f30"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220a60",
+      "symbol": "CGUITabBoard455::Clear455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220ad0",
+      "symbol": "CGUITabBoard455::SetSize",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea650"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220b60",
+      "symbol": "CGUITabBoard455::SetHeaderSprites455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea460"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220c00",
+      "symbol": "CGUITabBoard455::SetTitle455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea6f0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220d40",
+      "symbol": "CGUITabBoard455::IsOpened455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220db0",
+      "symbol": "CGUITabBoard455::SetOpened455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea5a0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x220fe0",
+      "symbol": "CGUITabBoard455::Reflow455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea2e0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x2211e0",
+      "symbol": "CGUITabBoard455::RepositionScroll455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x221300",
+      "symbol": "CGUITabBoard455::Content455",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xe9ef0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x2213f0",
+      "symbol": "CGUITabBoard455::ScrollEvent",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea410"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    },
+    {
+      "reference_rva": "0x221440",
+      "symbol": "CGUITabBoard455::MouseEvent",
+      "previous_standalone_retained": false,
+      "current_standalone_symbol_rvas": [
+        "0xea1b0"
+      ],
+      "ordinary_owner_path_now_connected": true,
+      "note": "Absence of a standalone symbol can mean inlining;not a new target function"
+    }
+  ],
+  "component_frames_visually_inspected": true,
+  "final_frames_identical_to_inspected": true,
+  "source_Create_UI": {
+    "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+    "sha256": "ac7c5451b2b692b479b143933cf58d87c10d9a52f0a661dc5775eefdb79298b6"
+  },
+  "gaps": [
+    "Action/equipment page content providers,interactions and tab hover/help-text producer not fully ported",
+    "Legacy mastery callers lack455maximum;legacy resistance callers lack signed bounds",
+    "Full metric/stat producers and semantic names17/18 remain unaccepted;real labels are average defense range/rate,not proof of accuracy/dodge",
+    "FullUI lifecycle/repeated cross-race refresh/nonfinite,overflow,zero-range andallocation failure domains not accepted",
+    "Remaining oldMainGame windows,world/control/gameplay andallM9requirements open",
+    "Next oldRecall/SummonsSelect window,not yet accepted"
+  ],
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

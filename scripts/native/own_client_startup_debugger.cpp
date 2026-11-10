@@ -50,7 +50,7 @@ int wmain(int argc,wchar_t** argv){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::string finalLabel="before_character_data";bool captureLoginFrame=false,captureSeen=false,selectionMode=false;DWORD loginObject=0;ULONGLONG selectionDeadline=0;
+    std::string finalLabel="before_character_data";bool captureLoginFrame=false,captureSeen=false,selectionMode=false;DWORD loginObject=0;ULONGLONG selectionDeadline=0,selectionSendAt=0;HWND selectionWindow=nullptr;
     if(argc==7){
         const std::wstring mode=argv[6];
         if(mode==L"after_create")finalLabel="after_client_create";
@@ -64,6 +64,12 @@ int wmain(int argc,wchar_t** argv){
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?180000:20000);
     while(!exited){
+        if(selectionSendAt&&GetTickCount64()>=selectionSendAt&&!terminating){
+            DWORD childPID=0;GetWindowThreadProcessId(selectionWindow,&childPID);
+            const bool valid=IsWindow(selectionWindow)&&childPID==process.dwProcessId;
+            const bool sent=valid&&PostMessageW(selectionWindow,WM_KEYDOWN,VK_RETURN,1)&&PostMessageW(selectionWindow,WM_KEYUP,VK_RETURN,0xc0000001);
+            std::fprintf(output,"{\"kind\":\"selection_key_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",valid?"true":"false",sent?"true":"false");std::fflush(output);selectionSendAt=0;
+        }
         if(selectionDeadline&&GetTickCount64()>selectionDeadline&&!terminating){
             timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"selection_observation_end\"}\n",output);TerminateProcess(process.hProcess,0xe0434200);terminating=true;
         }
@@ -106,9 +112,13 @@ int wmain(int argc,wchar_t** argv){
                             DWORD window=0,childPID=0;SIZE_T read=0;
                             const bool valid=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[2]+plan[4]),&window,4,&read)&&read==4&&window;
                             if(valid)GetWindowThreadProcessId(reinterpret_cast<HWND>(window),&childPID);
-                            //Addressed messages only:never change focus or emit system keyboard input.
-                            const bool sent=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_KEYDOWN,VK_RETURN,1)&&PostMessageW(reinterpret_cast<HWND>(window),WM_KEYUP,VK_RETURN,0xc0000001);
-                            std::fprintf(output,"{\"kind\":\"selection_key_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",valid&&childPID==process.dwProcessId?"true":"false",sent?"true":"false");
+                            //Addressed messages only:never change OS focus or emit
+                            //system keyboard input. The legacy inactive main loop
+                            //blocks in GetMessage,so request background updates
+                            //through its own activation-message handler first.
+                            const bool activated=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_ACTIVATEAPP,TRUE,0);
+                            std::fprintf(output,"{\"kind\":\"selection_background_update_requested\",\"own_child_validated\":%s,\"sent\":%s,\"OS_focus_changed\":false}\n",valid&&childPID==process.dwProcessId?"true":"false",activated?"true":"false");
+                            if(activated){selectionWindow=reinterpret_cast<HWND>(window);selectionSendAt=GetTickCount64()+1500;}
                             stopReached=true;selectionDeadline=GetTickCount64()+15000;
                         }
                         if(found==points)mainReached=true;
