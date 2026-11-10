@@ -1,3 +1,19 @@
+2026-11-11 — MainGame Linker startup166, PARTIAL_KNOWN_FAILURE.
+Actual ordinary startup now creates Linker6/five banks/ten slots/window3,
+activates0..4 and opens it. No obsolete separate Belt exists at this location;
+other legacy consumers retain their guards. Native7d430eab:50admitted clone
+owners/16real originals,actual window3 HWND-to-manager-to-bank4 route and8viewed
+GPUframes PASS. Shared staging38assets/79608818linkedbytes/0newpoolbytes.
+Own fe40637c…/x86/entry183720/2369024bytes,182/67/20/build-link0. Live choice
+accepted;Linker startup returned,next old UnitTuning.Init/SetSprite fails at
+ownGetSpriteXL13028F. World/fullfactory/M9OPEN. Complete6ASM/CFG/3032instructions
+bothpins;analysis2463(+2)/657(+6),IDA37871unchanged;137partialbindingsunchanged.
+Corrected old084factory undercount:53regex identities omitted explicit-this
+CBlackListBoard12bytes/slot30. All54allocation sites now checked;17sourceclasses,
+37missing owners,semantics of existing17not accepted. IDAa06985c9/5c316b5a
+saved/closed/list0;ownjobsdone/handoffremoved;server/originalsunchanged.
+research/client455-board-startup.md;inventory/client455-board-startup-checkpoint.json.
+
 2026-11-11 — Inventory views165, PARTIAL_KNOWN_FAILURE.
 11.11.2026. Частичная165: подключены настоящие виды инвентаря, сумок20slots и
 экипировки16slots. Native459bd43c:3расы/Taiwan/4просмотренных кадра,64bitmoney,

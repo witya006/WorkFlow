@@ -23,7 +23,9 @@ def main():
     def source_records(value):
         if isinstance(value,dict):
             path=value.get('file')
-            if isinstance(path,str) and path.startswith('scripts/') and value.get('sha256'):yield path
+            if isinstance(path,str) and value.get('sha256') and (path.startswith('scripts/') or
+                    (path.startswith('work/client455-port/normal/source/') and Path(path).suffix.lower() in {'.h','.cpp'})):
+                yield path
             for child in value.values():yield from source_records(child)
         elif isinstance(value,list):
             for child in value:yield from source_records(child)

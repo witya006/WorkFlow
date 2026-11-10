@@ -1,3 +1,42 @@
+# Продолжение M6 — UnitTuning и полный граф панелей455 (167)
+
+166: PARTIAL_KNOWN_FAILURE. Own fe40637c…/x86/entry183720/2369024bytes,
+182/67/20, build/link0. Новый обычный Linker startup5x10/window3 вернулся
+после принятого выбора. Следующий старый CGUIUnitTuningWindow::SetSprite/Init
+падает в GetSpriteXL ownRVA13028F. Мир и M9 открыты;0/12,25%(20–35%) прежние.
+
+1. Читать research/client455-board-startup.md и текущий board-startup-checkpoint.
+   Перед новой правкой использовать сохранённый точный before167:
+   197файлов,7502253новых/4150820общих байт, own fe40637c…;
+   before166 не перезаписывать. Не копировать полный клиент или набор ассетов.
+2. Найти файлы через rg --files. Текущие классы: board/shopboard/cunittuningboard
+   и userinterface/gamewindow/unit/guiunittuningwindow; не угадывать пути.
+   По полным455 ASM/CFG обоих pins восстановить окно, skins/owners/layout и
+   настоящий board startup. Target board12/window34,8packs/200slots;
+   старые UI ID/спрайтовые индексы не считать455 контрактом.
+3. Own candidates: SetSpriteB95F7, InitB7AD4, BaseInit12E62, CreateBoard26FC8.
+   Это scan, не unwind. Verified window vtable1F53D0/slot6C→InitB72A0;
+   BaseInit priorFF506C. Decoded prior E8call26F8B/ret26F90→Linker3CA00.
+   Не лечить ошибку подстановкой спрайта или пропуском окна.
+4. Фабрика455 всё ещё неполна:54target/17source classes/37missing. Семантика
+   имеющихся17 не принята. До MainGame inventory настоящая фабрика создаёт
+   окна20/50/21/5/52. Эти пути и поздний hotkey66CB20 с одним владельцем
+   остаются обязательными; текущие старые Belt consumers ещё имеют guards.
+   Прежний regex084 пропустил CBlackListBoard12bytes/slot30; старые53 — неполная
+   выборка, не полный размер фабрики. В166 подтверждены все54 allocation sites.
+5. Новый helperInitializeMainGame455 подключён и проверен:5x10,window3,50owners,
+   настоящая цепь HWND→manager→bank4. Native7d430eab/8кадров совпал с просмотренным
+   0c0ccbc4; полный item use/gameplay не принят. Старое исключение Potion11
+   в fixture не считать проверкой его поведения.
+6. Все165 inventory gaps и предыдущие actor/options/Animus/network/M6F gaps
+   сохраняются. Pack/equipment Init в живом пути ещё не доказаны — они после
+   UnitTuning. Затем LoadData/avatar/control/world и игровые сценарии.
+
+IDAa06985c9/5c316b5a saved/closed/list0; jobs завершены/handoff удалён. Shared staging:
+38assets/79608818linkedbytes/0newpoolbytes. Анализ2463(+2)/657(+6), индекс37871.
+
+# История очереди166
+
 # Продолжение M6 — настоящая фабрика панелей455 (166)
 
 165 завершён как PARTIAL_KNOWN_FAILURE. Inventory/20slot packs/16slot equipment

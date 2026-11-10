@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T21:35:50.291279+00:00",
+  "measured_at_utc": "2026-11-10T22:22:37.930161+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2461,
-    "unique_functions_with_complete_assembly_cfg": 651,
-    "unique_pinned_code_bytes": 673305,
-    "reports": 167,
-    "code_range_occurrences": 4032,
+    "unique_functions_with_pinned_code": 2463,
+    "unique_functions_with_complete_assembly_cfg": 657,
+    "unique_pinned_code_bytes": 674337,
+    "reports": 168,
+    "code_range_occurrences": 4039,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -85,6 +85,10 @@
     {
       "file": "inventory/client455-board-hover-reference.json",
       "sha256": "b21cf7f94767d10579e014f7525e7e90592a7f3606fc937ed64bc0fec04cc062"
+    },
+    {
+      "file": "inventory/client455-board-startup-reference.json",
+      "sha256": "3467a1f6e06c5b7436bf423cfd0faf41a999e322f6d406fe2cdd70ed26d8ce18"
     },
     {
       "file": "inventory/client455-bootstrap-reference.json",
@@ -721,6 +725,10 @@
       "sha256": "132fbf96f8865791cfca9b87701a7cc9a2a964dd4d5ee6b224a50ab13484be7f"
     },
     {
+      "file": "artifacts/client455-progress/board166-reference.json",
+      "sha256": "4de988a8e015f1322eb2d45f7ce7cf1908e8fee39c938467f7b59b03a1ba7753"
+    },
+    {
       "file": "artifacts/client455-progress/charinfo161-reference/charinfo.json",
       "sha256": "56ef9c4fc8649e287d53865d7d34f38225ccb6a411b606b96d0497b7ee69849e"
     },
@@ -928,7 +936,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "73c69b06f6ba35f6e287d6b66ae060e66e27b5db5c4f4d20968ec28e9b4a687b"
+      "sha256": "dc6657fa8a9614dc04eaaf25e0022eaa6e1d076c1d56320da6e0c8d5125be8e5"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -10479,6 +10487,7 @@
       "rva": "0xf92f0",
       "ida_name": "sub_4F92F0",
       "reports": [
+        "inventory/client455-board-startup-reference.json",
         "inventory/client455-tutorial-board-reference.json"
       ],
       "ranges": [
@@ -10487,7 +10496,12 @@
           "bytes": 359
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 112
+        }
+      ]
     },
     {
       "rva": "0xf9460",
@@ -10721,15 +10735,44 @@
       "rva": "0xfb920",
       "ida_name": "sub_4FB920",
       "reports": [
+        "inventory/client455-board-startup-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
         {
           "rva": "0xfb920",
           "bytes": 5588
+        },
+        {
+          "rva": "0x627f20",
+          "bytes": 768
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 1388
+        }
+      ]
+    },
+    {
+      "rva": "0xfcf00",
+      "ida_name": "sub_4FCF00",
+      "reports": [
+        "inventory/client455-board-startup-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xfcf00",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 18
+        }
+      ]
     },
     {
       "rva": "0xfcf90",
@@ -11121,6 +11164,7 @@
       "rva": "0x1002b0",
       "ida_name": "sub_5002B0",
       "reports": [
+        "inventory/client455-board-startup-reference.json",
         "inventory/client455-hotbar-checkpoint.json",
         "inventory/client455-linker-cooldown-reference.json",
         "inventory/client455-linker-window-reference.json"
@@ -11131,7 +11175,12 @@
           "bytes": 124
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 47
+        }
+      ]
     },
     {
       "rva": "0x100330",
@@ -13106,6 +13155,7 @@
       "rva": "0x1477c0",
       "ida_name": "sub_5477C0",
       "reports": [
+        "inventory/client455-board-startup-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
@@ -13114,7 +13164,12 @@
           "bytes": 4357
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 1400
+        }
+      ]
     },
     {
       "rva": "0x1488f0",
@@ -22479,6 +22534,25 @@
         {
           "file": "artifacts/client455-progress/hud159-reference/session.json",
           "instructions": 57
+        }
+      ]
+    },
+    {
+      "rva": "0x26cb20",
+      "ida_name": "sub_66CB20",
+      "reports": [
+        "inventory/client455-board-startup-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26cb20",
+          "bytes": 225
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 67
         }
       ]
     },
