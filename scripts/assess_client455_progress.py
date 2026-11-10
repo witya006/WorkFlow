@@ -28,9 +28,9 @@ def main():
          ['Полный порядок startup/ошибки/профили/launcher и связь с экранами455'],
          ['client455-normal-link','client455-ui-startup-native','client455-startup-native','client455-startup-contracts-native']),
         ('data','Форматы и загрузка данных',7,50,65,
-         ['RPK/EDF/helper SPT/BSP/EBP,модели/ANI;Resource9groups/5playerBN иначалоштатного item bootstrap:cash/set/Item47+ND в3локализациях'],
+         ['RPK/EDF/helper SPT/BSP/EBP,модели/ANI;Resource9groups/5playerBN,cash/set/Item47+ND;обычный CharacterDataMgr/14tables и165class lookups в3локализациях'],
          ['Полная опись455,все загрузочные ветки/таблицы/ошибки и обычный bootstrap'],
-         ['client455-world-checkpoint','client455-material-layout-checkpoint','client455-item-payloads-checkpoint','client455-resource-catalog-checkpoint','client455-item-bootstrap-checkpoint']),
+         ['client455-world-checkpoint','client455-material-layout-checkpoint','client455-item-payloads-checkpoint','client455-resource-catalog-checkpoint','client455-item-bootstrap-checkpoint','client455-character-tables-checkpoint']),
         ('world','Рендер и мир',12,35,50,
          ['D3D9,выбранные карты Bellato/Cora/Accretia,камера/свет/погода/материалы/эффекты вlab'],
          ['Полные visibility/camera/collision,ILevel/Empty/INS,refraction/FX/device reset и игровой мир'],
@@ -99,6 +99,8 @@ def main():
         latest='inventory/client455-resource-catalog-checkpoint.json'
     if (WS/'inventory/client455-item-bootstrap-checkpoint.json').is_file() and load('client455-item-bootstrap-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
         latest='inventory/client455-item-bootstrap-checkpoint.json'
+    if (WS/'inventory/client455-character-tables-checkpoint.json').is_file() and load('client455-character-tables-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
+        latest='inventory/client455-character-tables-checkpoint.json'
     login=load('client455-login-frame-native')
     assert login['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json')
     assert login['executable']['sha256']==normal['executable']['sha256']
@@ -116,6 +118,7 @@ def main():
     storage=load('workspace-storage-audit')
     wip_file=WS/'inventory/client455-character-tables-reference.json'
     wip=json.loads(wip_file.read_text()) if wip_file.is_file() else None
+    character_native_current=latest=='inventory/client455-character-tables-checkpoint.json'
     report=dict(schema=2,assessment_date=datetime.date.today().isoformat(),scope_version=1,scope='Full client455 behavior/source/build through M9,no graphics modernization,no server work',
         estimate_kind='Engineering planning judgement for known functional scope;not measured equivalence coverage',
         weighted_low=low,weighted_high=high,weighted_midpoint=(low+high)/2,communicated_point_percent=25,communicated_range_percent=[20,35],communicated_remaining_percent=75,
@@ -125,7 +128,7 @@ def main():
         observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
             exact_linked_build_evidence=dict(file=build_file.relative_to(WS).as_posix(),sha256=sha(build_file),matches_link_record=True),
             newer_build_is_not_the_accepted_runtime=sha(WS/'inventory/client455-normal-build.json')!=normal['normal_build_sha256'],
-            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='142 PARTIAL:ordinary initial cash/set/Item47+ND path and6real locale/selector cases;next character/class tables,legacy item consumers and selection',
+            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='143 PARTIAL:ordinary CharacterDataMgr/14tables/165class lookups/actual SF boards;4real cases+DBCS and ordinary Login pass. Next Avatar classes/equipment/remaining bootstrap/selection.',
             ordinary_login_observation=dict(file='inventory/client455-login-frame-native.json',sha256=sha(WS/'inventory/client455-login-frame-native.json'),fresh_for_current_PE=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
@@ -147,11 +150,12 @@ def main():
                 dict(area='Runtime assets and tables',state='PARTIAL',measured='Resource9groups/30623rows andItem47tables/76049rows;1120 checked unresolved resource references',limit='No complete required-asset denominator;some locale/selector tables disagree'),
                 dict(area='Behavioral specification',state='INCOMPLETE',measured='12 domain planning map;144 overlapping historical records',limit='Full feature/packet/state inventory still missing'),
                 dict(area='Acceptance scenarios',state='INCOMPLETE',measured='0/12 full domains accepted;ordinary Login lobby/waiting observed',limit='No complete ordinary login/selection/world/gameplay chain')]),
-        unfinished_work=dict(id='143',excluded_from_completion_estimate=True,status='STATIC_CONFIRMED_NATIVE_RUNTIME_NOT_VERIFIED' if wip else 'IN_PROGRESS',
+        character_tables143=dict(id='143',status='PARTIAL_NATIVE_VERIFIED' if character_native_current else 'STATIC_CONFIRMED_NATIVE_RUNTIME_NOT_VERIFIED',
             reference_report=dict(file=wip_file.relative_to(WS).as_posix(),sha256=sha(wip_file)) if wip else None,
             static_functions=wip['full_functions'] if wip else None,
             real_input_diagnostics=[dict(name=c['name'],results=c['results'],ignored_character_short_reads=c['ignored_character_short_reads']) for c in wip['cases'] if not c['dbcs_fixture']] if wip else [],
-            not_claimed=['Avatar class/equipment/UI migration','normal successful bootstrap','new linked/runtime accepted build']),
+            native_verified_on_current_build=character_native_current,
+            not_claimed=['Avatar class/equipment/UI migration','normal successful bootstrap','full class/selection/client acceptance']),
         storage=dict(audit_file='inventory/workspace-storage-audit.json',audit_sha256=sha(WS/'inventory/workspace-storage-audit.json'),audit_time_local=storage['time_local'],
             logical_gib=round(storage['groups']['total']['logical_bytes']/1024**3,2),unique_file_size_gib=round(storage['groups']['total']['unique_content_bytes']/1024**3,2),
             physical_allocation_measured=False,files_deleted=False,note='Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement.'),

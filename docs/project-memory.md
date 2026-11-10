@@ -1,20 +1,42 @@
 # Память проекта
 
-Оценка10.11.2026: docs/progress-report.md — компактный текущий отчёт.
-Подтверждённая база142: PE f0114c80…;точный normal-build берётся изbefore143,
-если нынешний build-report уже143. Не смешивать доказательства разных сборок.
-143 WIP не учтён вготовности:PlayerCharacter/SF5/Store/Character7+ND иtyped
-class lookup написаны,15functions/1737instructions/193CFG regions равны2pins;
-Python oracle5cases проходит. Native/runtime новой реализации НЕ проверены.
-Последняя правка Character ignoredshortread была ПОСЛЕ успешной компиляции143:
-сначала prepare/build/normal-consumers/link,затем новый full-object probe/gate.
-Raw143 сохранён;IDA5fe0894d saved/closed. КлассыAvatar/UI/equipment не менялись.
-Данные143:SFko/ru localization false;Storezh/ru default false,zhStore_1 true;
-Characterko203/ru682 ignoredreads —targetRead не меняет cursor/destination
-приошибке,5FC260 игнорируетрезультат. Не заменять mincounts/repair/resync.
-В143 проверитьextra seek5EEAA0 при необходимости;полнаяunsafe equivalence open.
-Оценкаостаётся25%(20–35%),0/12 fullacceptance. Нет обоснованного срокаM9.
-Приоритет A→B→C→D→E;неизменённыеbulk suites не повторять ради счётчика.
+Обновлено 10.11.2026. **143 PARTIAL; M6/M6F/M7/M9 OPEN.**
+Gate: inventory/client455-character-tables-checkpoint.json.
+Исследование: research/client455-character-tables.md. Оценка: docs/progress-report.md.
+Own b41d50ffb5001c04a54dd0f16bd471c2bc0168e4b8757a52eca7a41067e0b4ec,
+x86/base400000/entry174CD0/2293248bytes;182client/20kernels/link0/unresolved0.
+Engine137 unchanged. Exact142 сохранён вbefore143.
+
+Обычный CharacterDataMgr теперь читает PlayerCharacter→SF5→Store(selector)→
+Character7+ND;реальные skill/force boards7/6packs×20,masteries12/24,SF100.
+15fullfunctions/1737instructions/193CFG равны2pins. Четыре stock cases3locales
+иодин changed-name DBCS fixture:14tables CRC/165class lookups/5typedSF wrappers
+каждый PASS. Player5/Store1595(default),1651(_1);Character165/8/1999/36/324/81/648.
+SFko/ru false,Storezh/ru default false,zhStore1 true;prefix/base сохранены.
+Target Read1EE900 приshort не пишетdestination/cursor;CharacterND игнорирует
+результат,ko203/ru682 failedreads. Не менять наmincounts/repair/resync.
+Class lookup exactcase/code@12 илиindex@4,firstmatch;новыйaccessor probe-only.
+Legacy CPlayerClass/Player/Monster/Store/SF_DATA consumers НЕ перенесены,
+SF countslegacy0;boards выделены,ноне заполнены455items/classskills.
+
+Fresh WinMain/Miles/Login70/3219ms/640x500 inspected:lobby/waiting,
+unopenedpanels hidden,legacy label stays;no fatal. Success-response bootstrap
+иselection/appearance не приняты. Неизменённые142 suites не повторялись.
+Shared staging35refs/35.2MBlogical,+8.51MBnewpool/4.57MBadopt.
+IDA5fe0894d saved/closed/list0;nativejobs нет.
+
+Следующий144:actual Avatarclass setters/names,потом equipment/appearance и
+остальнойbootstrap/selection. Raw143 содержит diagnostic Avatar pcode,
+ноselectedfullASM/CFG дляsetters/UI ещё нужно собрать. MAX_AVATAR_CLASS_NUM=4.
+Target412140:slots0/1 имеютразные обновленияимён;412580 storedname@24196
+толькоеслиglobal1028B7C UIexists,412640 меняеттолькоUI. TargetUI66337023labels,
+legacyCharInfo14labels:slots4/5 тамLevel/Guild,не писатьtargetиндексывних.
+Не cast455raw вCPlayerClass. Full actor/item/UI/skills/bootstrap ещёopen.
+
+Оценкаостаётся25%(20–35%),0/12 fullacceptance. Измерять A→B→C→D→E;
+неизменённыеbulk suites не повторять ради счётчика. СрокM9 не калиброван.
+
+## Историческая база142
 
 Обновлено 2026-11-10. **142 PARTIAL; M6 открыт.**
 Gate: inventory/client455-item-bootstrap-checkpoint.json.

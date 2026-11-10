@@ -10,7 +10,7 @@ struct RF455ItemDescription {std::uint32_t index=0,code=0;std::vector<unsigned c
 struct RF455DungeonDescription {std::uint32_t index=0;std::array<unsigned char,64> name;std::vector<unsigned char> bytes;};
 
 class RF455ItemDataStore {
-    bool itemLoaded=false,itemLocalized=false,questLoaded=false,characterLoaded=false;
+    bool itemLoaded=false,itemLocalized=false,questLoaded=false,characterLoaded=false,characterLocalized=false;
     std::array<RF455RawItemTable,47> items;
     std::array<std::uint32_t,47> workStarts{},workCounts{};
     std::array<std::vector<RF455ItemDescription>,47> descriptions;
@@ -23,6 +23,9 @@ public:
     bool localizeItemEdf(const void*,std::size_t);
     bool loadQuestEdf(const void*,std::size_t);
     bool loadCharacterEdf(const void*,std::size_t);
+    bool localizeCharacterEdf(const void*,std::size_t,unsigned codepage);
+    RF455ItemDataSpan classByCode(const char*)const;
+    RF455ItemDataSpan classByIndex(std::uint32_t)const;
     RF455ItemDataSpan getItem(std::uint32_t,std::uint32_t)const;
     // Metadata helpers use unchecked offsets in the target. Preserve reads
     // crossing a declared row only while they remain in its actual table owner.

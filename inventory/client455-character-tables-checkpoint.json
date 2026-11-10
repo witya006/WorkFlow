@@ -1,0 +1,147 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary PlayerCharacter/SF5/Store/Character7+ND loaders,typed class lookups and source board dimensions;legacy character/skill population/Avatar/class UI consumers open",
+  "script": {
+    "file": "scripts/checkpoint_client455_character_tables.py",
+    "sha256": "9ccb31df84d741142c7e74c9e3786d90e5676fa6ed966b402561584ea3054865"
+  },
+  "normal_link_sha256": "ecc5930154cf2d8efde62f2dbe75c0882292028eb91645a86b61a6c684571f95",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b41d50ffb5001c04a54dd0f16bd471c2bc0168e4b8757a52eca7a41067e0b4ec",
+    "bytes": 2293248,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x174cd0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_methods_rva": {
+    "CCharacterDataMgr::LoadData": "0x1b1b0",
+    "RF455CharacterTables::loadPlayerFile": "0xcda70",
+    "RF455SkillForceData::loadFiles": "0xcac50",
+    "RF455CharacterTables::loadStoreFiles": "0xcdc90",
+    "RF455CharacterTables::loadCharacterFiles": "0xcd760",
+    "RF455ItemDataStore::localizeCharacterEdf": "0xcbfd0"
+  },
+  "ordinary_loader_transfers": [
+    {
+      "rva": "0x1b1dc",
+      "target": "RF455CharacterTables::loadPlayerFile",
+      "instruction": "call",
+      "bytes": "e88f280b00"
+    },
+    {
+      "rva": "0x1b2cc",
+      "target": "RF455SkillForceData::loadFiles",
+      "instruction": "call",
+      "bytes": "e87ff90a00"
+    },
+    {
+      "rva": "0x1b336",
+      "target": "RF455CharacterTables::loadStoreFiles",
+      "instruction": "call",
+      "bytes": "e855290b00"
+    },
+    {
+      "rva": "0x1b34a",
+      "target": "RF455CharacterTables::loadCharacterFiles",
+      "instruction": "call",
+      "bytes": "e811240b00"
+    }
+  ],
+  "fresh_evidence": {
+    "character-tables-reference": {
+      "file": "inventory/client455-character-tables-reference.json",
+      "sha256": "8d1fcf4dcdf22a0f05ec34bb87d01fb9b10c78af6086405ba2e48c0152204e57"
+    },
+    "character-tables-native": {
+      "file": "inventory/client455-character-tables-native.json",
+      "sha256": "6ae15ab368ecc592db28067d4de3735e966e969fb39110d684f982ad451a0723"
+    },
+    "login-checkpoint": {
+      "file": "inventory/client455-login-checkpoint.json",
+      "sha256": "4fe45b010b3990cba5a0b9325a11bf71b47b1eb0e31310a7ebcf727308fd2f61"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "9bf5c38cd1c12c5f30c601996b6876e99bcbdab164a8bba21f5a6b869f4277c9"
+    },
+    "login-visual": {
+      "file": "inventory/client455-login-visual.json",
+      "sha256": "c46a7a88fdcdf2ca635d7c86a001dd439c67017acd0c59e7c592e3bf920837de"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "4caa75b4c4e4477683938c7d4d50bf338151af1c143389108c5990d0e7f28412"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "e6a8d07bfe1e9b65c9ced328ffec930263188a618a3cb20f44071306e927c550"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "c4a9ee624f737e991ca1c42d72d02f54f68d6557b86cbb06b9553ec66a9a3655"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "ecc5930154cf2d8efde62f2dbe75c0882292028eb91645a86b61a6c684571f95"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "8ce443ea42b313edfae8a034a78dd7b4cdfb09dcb309416f4538992ac2fddbe3"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "e35c661011801da865ec8642fec8d93b66d71198a8498ab4a0a55331282472de"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "3aef95712687c511156b7e094fdd5bcf65c512650d8939f26afde3ff17ec4862"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "0e0fe3bbf00b6d7367d52a474f4a78121dea67b8b54928dc4fefd19ee7598906"
+    }
+  },
+  "snapshot": {
+    "file": "artifacts/client455-progress/before143/manifest.json",
+    "sha256": "c6b2632ffb9df68c2ab89f51fb113f0ae2fe7fb76e9f751c502cea4f7a617853"
+  },
+  "historical_base": {
+    "file": "artifacts/client455-progress/before143/inventory/client455-item-bootstrap-checkpoint.json",
+    "sha256": "a1e0516773b6c19e854d5aafb5f9c2d902248eddf0208cbc3d0dedb17550705b"
+  },
+  "real_cases": 4,
+  "synthetic_dbcs_cases": 1,
+  "locales": [
+    "ko-kr",
+    "zh-tw",
+    "ru-ru"
+  ],
+  "tables": 14,
+  "class_rows": 165,
+  "typed_sf_wrappers_per_case": 5,
+  "actual_manager_loader_connected": true,
+  "ordinary_success_response_bootstrap_executed": false,
+  "full_bootstrap": false,
+  "legacy_character_skill_consumers_migrated": false,
+  "full_class_equipment_selection": false,
+  "full_client": false,
+  "gaps": [
+    "Actual Avatar class setters/names and legacy Player/Monster/Store/skill consumers remain unmigrated",
+    "Skill/force board dimensions and owners restored;population/UI/game callbacks remain legacy",
+    "Remaining bootstrap/selection/world/gameplay/client acceptance and full unsafe/reload domains"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

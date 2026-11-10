@@ -124,6 +124,41 @@ bool RF455ItemDataStore::loadCharacterEdf(const void* raw,std::size_t size){
     for(auto& table:next)if(!c.table(table))return false;
     character=std::move(next);characterLoaded=true;return true;
 }
+bool RF455ItemDataStore::localizeCharacterEdf(const void* raw,std::size_t size,unsigned codepage){
+    if(characterLocalized)throw std::logic_error("455 Character relocalization lifetime remains unported");
+    if(!characterLoaded)return false;
+    std::vector<unsigned char> plain;if(!RF455_DecodeEdf(raw,size,plain))return false;Cursor c{plain.data(),plain.size()};
+    RF455LanguagePack language;language.codepage=codepage;
+    if(plain.size()<8)return false;std::uint32_t declared=0,ignored=0;
+    for(unsigned group=0;group<4;++group){c.word(declared);c.word(ignored);
+        auto& table=character[group];const unsigned minimum[4]={1532,97,40,44};if(table.count&&table.stride<minimum[group])return false;
+        for(std::uint32_t i=0;i<table.count;++i){auto* row=table.bytes.data()+std::size_t(i)*table.stride;
+            // 5FC260 ignores failed Read returns. A short read leaves both the
+            // destination and the cursor unchanged,including subsequent rows.
+            if(group==0){c.read(row+112,32);c.read(row+508,1024);}
+            else if(group==1){for(unsigned j=0;j<3;++j)c.read(row+1+32*j,32);}
+            else if(group==2){c.read(row+8,32);
+                if(row[39]){row[39]=0;if(language.isLead(reinterpret_cast<char*>(row+8),30))row[38]=0;}}
+            else c.read(row+12,32);
+        }
+        if(declared>table.count&&group<3){const std::size_t extra=declared-table.count;
+            // The second section deliberately skips32,not96,per extra row.
+            const std::size_t width=group==0?1056:32;if(extra>(c.size-c.at)/width||!c.skip(extra*width))return false;}
+    }
+    characterLocalized=true;return true;
+}
+RF455ItemDataSpan RF455ItemDataStore::classByCode(const char* code)const{
+    if(!code)return {};
+    for(std::uint32_t i=0;i<character[0].count;++i){auto row=character[0].get(i);
+        if(row.size<44)throw std::out_of_range("455 class code outside row");
+        if(std::memchr(row.data+12,0,32)&&!std::strcmp(reinterpret_cast<const char*>(row.data+12),code))return row;}
+    return {};
+}
+RF455ItemDataSpan RF455ItemDataStore::classByIndex(std::uint32_t index)const{
+    for(std::uint32_t i=0;i<character[0].count;++i){auto row=character[0].get(i);
+        if(row.size<8)throw std::out_of_range("455 class index outside row");if(u32(row.data+4)==index)return row;}
+    return {};
+}
 RF455ItemDataSpan RF455ItemDataStore::getItem(std::uint32_t kind,std::uint32_t index)const{return kind<47?items[kind].get(index):RF455ItemDataSpan{};}
 RF455ItemDataSpan RF455ItemDataStore::getItemExtent(std::uint32_t kind,std::uint32_t index)const{
     auto row=getItem(kind,index);if(!row.data)return {};

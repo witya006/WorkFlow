@@ -44,7 +44,7 @@
       "estimate_high": 65,
       "completed_full_domain": false,
       "done": [
-        "RPK/EDF/helper SPT/BSP/EBP,модели/ANI;Resource9groups/5playerBN иначалоштатного item bootstrap:cash/set/Item47+ND в3локализациях"
+        "RPK/EDF/helper SPT/BSP/EBP,модели/ANI;Resource9groups/5playerBN,cash/set/Item47+ND;обычный CharacterDataMgr/14tables и165class lookups в3локализациях"
       ],
       "remaining": [
         "Полная опись455,все загрузочные ветки/таблицы/ошибки и обычный bootstrap"
@@ -54,7 +54,8 @@
         "client455-material-layout-checkpoint",
         "client455-item-payloads-checkpoint",
         "client455-resource-catalog-checkpoint",
-        "client455-item-bootstrap-checkpoint"
+        "client455-item-bootstrap-checkpoint",
+        "client455-character-tables-checkpoint"
       ]
     },
     {
@@ -254,7 +255,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "c9375ed1502fd0c66e349e9a0374a96e7b042213735e09313cbb8648b97478be",
+      "sha256": "ecc5930154cf2d8efde62f2dbe75c0882292028eb91645a86b61a6c684571f95",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -270,7 +271,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "afa04b2bbb2b31a509e6ae73ad35029d8ab8c56e3eae6e83dd429544ef7d606a",
+      "sha256": "e35c661011801da865ec8642fec8d93b66d71198a8498ab4a0a55331282472de",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -321,6 +322,14 @@
       "sha256": "a1e0516773b6c19e854d5aafb5f9c2d902248eddf0208cbc3d0dedb17550705b",
       "status": "PARTIAL",
       "scope": "Ordinary Login initial ItemCash/ItemSet/Item47+ND path and real typed item consumers;remaining bootstrap/legacy items/appearance open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-character-tables-checkpoint": {
+      "file": "inventory/client455-character-tables-checkpoint.json",
+      "sha256": "574705bb981ff0b13489f45dc8811adf128499ae9eb6b8cd81890bac0e88c282",
+      "status": "PARTIAL",
+      "scope": "Ordinary PlayerCharacter/SF5/Store/Character7+ND loaders,typed class lookups and source board dimensions;legacy character/skill population/Avatar/class UI consumers open",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -454,7 +463,7 @@
     },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
-      "sha256": "4aa2b1460feedf0cd27de4ea397157385f17838b1fbeeffc170dab6eac363b2c",
+      "sha256": "4fe45b010b3990cba5a0b9325a11bf71b47b1eb0e31310a7ebcf727308fd2f61",
       "status": "PARTIAL",
       "scope": "Ordinary own WinMain/Title/Login render with real lobby and recovered root registration;not complete455Title/Login/auth",
       "fresh_for_current_PE": true,
@@ -516,11 +525,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "f0114c80b2a08bdb313113368c729b4a7cb4b4c0c05cdc193ee368edf627f2d1",
-      "bytes": 2283520,
+      "sha256": "b41d50ffb5001c04a54dd0f16bd471c2bc0168e4b8757a52eca7a41067e0b4ec",
+      "bytes": 2293248,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x172c30",
+      "entry_rva": "0x174cd0",
       "sections": [
         ".text",
         ".rdata",
@@ -543,21 +552,21 @@
       }
     ],
     "exact_linked_build_evidence": {
-      "file": "artifacts/client455-progress/before143/inventory/client455-normal-build.json",
-      "sha256": "bf8071d0c1a5a6229a7a96f0befddc537afa29363b3da8f2a73b4589cdfa1b8d",
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "e6a8d07bfe1e9b65c9ced328ffec930263188a618a3cb20f44071306e927c550",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": true,
-    "last_completed_checkpoint": "inventory/client455-item-bootstrap-checkpoint.json",
+    "newer_build_is_not_the_accepted_runtime": false,
+    "last_completed_checkpoint": "inventory/client455-character-tables-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "142 PARTIAL:ordinary initial cash/set/Item47+ND path and6real locale/selector cases;next character/class tables,legacy item consumers and selection",
+    "current_work": "143 PARTIAL:ordinary CharacterDataMgr/14tables/165class lookups/actual SF boards;4real cases+DBCS and ordinary Login pass. Next Avatar classes/equipment/remaining bootstrap/selection.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "e5bf700f80cf62872c43bb6f87175b9b5d37233d8073afa67faec3704699662a",
+      "sha256": "9bf5c38cd1c12c5f30c601996b6876e99bcbdab164a8bba21f5a6b869f4277c9",
       "fresh_for_current_PE": true,
       "frame": {
-        "file": "work/m9/f0114c80/login-frame001/login-frame.png",
-        "sha256": "276eb78caf943a2af81d68b5f785f97ee8eb4a914d9b2f35df72ee9a168d57f9"
+        "file": "work/m9/b41d50ff/login-frame001/login-frame.png",
+        "sha256": "377e802cf1bfbfed894e16d59160bf58eb18242e055f681e00db92e88acc5d0b"
       },
       "capture": {
         "result": 0,
@@ -565,14 +574,14 @@
         "height": 500,
         "format": 22,
         "frame_index": 70,
-        "elapsed_ms": 3234,
+        "elapsed_ms": 3219,
         "requested_delay_ms": 3200
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa8199c8",
-        "vtable": "0xfc5bc0",
+        "object": "0xae1dcf0",
+        "vtable": "0x877b84",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -589,10 +598,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "050eda1388f8bc5b9bf05c2dbfc25e28b57baa664e767fa49358984e2ee9157e",
-    "entries": 144,
+    "sha256": "dc98f0c6195b156d168db708dc937ed09d9fcbd29efd9f3800f3a13abf3abf55",
+    "entries": 145,
     "statuses": {
-      "partial": 112,
+      "partial": 113,
       "partial_component": 2,
       "audit_open": 1,
       "open": 2,
@@ -603,7 +612,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ITEM-BOOTSTRAP-142"
+      "CLIENT455-CHARACTER-TABLES-143"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -667,10 +676,9 @@
       }
     ]
   },
-  "unfinished_work": {
+  "character_tables143": {
     "id": "143",
-    "excluded_from_completion_estimate": true,
-    "status": "STATIC_CONFIRMED_NATIVE_RUNTIME_NOT_VERIFIED",
+    "status": "PARTIAL_NATIVE_VERIFIED",
     "reference_report": {
       "file": "inventory/client455-character-tables-reference.json",
       "sha256": "8d1fcf4dcdf22a0f05ec34bb87d01fb9b10c78af6086405ba2e48c0152204e57"
@@ -718,10 +726,11 @@
         "ignored_character_short_reads": 0
       }
     ],
+    "native_verified_on_current_build": true,
     "not_claimed": [
       "Avatar class/equipment/UI migration",
       "normal successful bootstrap",
-      "new linked/runtime accepted build"
+      "full class/selection/client acceptance"
     ]
   },
   "storage": {
@@ -810,7 +819,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "d667ef83efc8bae64866208b9242162b18f88611e56f10650067f376880d593f"
+    "sha256": "8b96905178c03a41656c37a8ea33968fa0f8e5c3ccdc932b353d20ae1618979a"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

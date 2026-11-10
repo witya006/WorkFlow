@@ -887,3 +887,6 @@ now12bytes with cashShop/NPCShop/quest selectors.8fullfunc/1372instructions/
 (before35);bounded receiver/fragment wrap/dialog/failure and success fields PASS.
 Own PEeb84c16b…,engine137 unchanged,ordinary Login fresh. Bootstrap/selection/
 full455/M9 OPEN. research/client455-world-entry.md;world-entry-checkpoint.json.
+2026-11-10 /143:normal CharacterDataMgr Player/SF5/Store/Character7+ND,
+typed class lookups иactualSFboards проверены;research/client455-character-tables.md.
+Ownb41d50ff… ordinaryLogin PASS;fullAvatarclass/equipment/selection/M9 OPEN.

@@ -1,15 +1,21 @@
 # Следующие шаги
 
 Текущая оценка и конкретные опоры: docs/progress-report.md.
-143WIP:15selected functions и5Python-oracle cases подтверждены;новаяnative
-реализация/линковка/runtime НЕ приняты. Последняя правка после build:
-prepare→build→normal-consumer proof→link→full-object Player/SF/Store/Character
-probe→обычный Login→gate. Затем Avatarclass/equipment/UI иоставшийсяbootstrap.
-143не добавлен в25%. Последняя завершённая частичная сборка —142f0114c80…,
-точное build-evidence лежит вbefore143;не использовать изменённый build143
-длядоказательства142. IDA5fe0894d saved/closed;live nativejobs нет.
+**143 PARTIAL**:Gate inventory/client455-character-tables-checkpoint.json;
+research/client455-character-tables.md. Ownb41d50ff…/182client/20kernels/link0.
+Player/SF5/Store/Character7+ND:14tables/165classlookups/actualSFboards,
+4real locale-selector cases+1DBCS fixture PASS. Fresh ordinary Login70/3219ms
+просмотрен. Exact142 вbefore143;егоширокиеsuites не повторялись. Fullbootstrap/
+Avatarclass/equipment/selection OPEN;оценка25% неизменна. IDA5fe0894d saved/closed.
 
-Обновлено 2026-11-10. **142 PARTIAL; M6 открыт.**
+**Далее144:**actual Avatar class setters/names,затемequipment/appearance иостальной
+bootstrap/selection. Сначала snapshot143 через snapshot_client455_runtime.py
+144 client455-character-tables-checkpoint. Raw143 содержит diagnostic Avatarpcode,
+ноfullASM/CFG setters/UI ещё нужны. MAX_AVATAR_CLASS_NUM=4 ужеесть.
+TargetUI23labels vslegacy14,slots4/5 legacyLevel/Guild:не писатьtargetиндексы.
+Typedclass rows@12code/@4index/@112name;не castraw вCPlayerClass.
+
+Историческая база142 ниже;M6 открыт.
 Gate: inventory/client455-item-bootstrap-checkpoint.json.
 Доказательства: research/client455-item-bootstrap.md.
 Own f0114c80… /182client/20kernels/link0/unresolved0;engine137unchanged.

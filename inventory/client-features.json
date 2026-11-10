@@ -6,9 +6,80 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-ITEM-BOOTSTRAP-142",
+      "id": "CLIENT455-CHARACTER-TABLES-143",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Ordinary CharacterDataMgr Player/SF5/Store/Character7+ND loaders and typed class lookup;Avatar/equipment/selection consumers remain open",
+      "implementation": [
+        "scripts/client455_character_tables_port.py",
+        "scripts/native/client455_character_tables.h",
+        "scripts/native/client455_character_tables.cpp",
+        "scripts/native/client455_item_payloads.cpp"
+      ],
+      "reference": [
+        {
+          "rva": "0x1fb330"
+        },
+        {
+          "rva": "0x1fb390"
+        },
+        {
+          "rva": "0x1fb4f0"
+        },
+        {
+          "rva": "0x1fbc80"
+        },
+        {
+          "rva": "0x1fb670"
+        },
+        {
+          "rva": "0x1fbd90"
+        },
+        {
+          "rva": "0x1fc260"
+        },
+        {
+          "rva": "0x1fc740"
+        },
+        {
+          "rva": "0x1faf70"
+        },
+        {
+          "rva": "0x1fafe0"
+        },
+        {
+          "rva": "0x1fb020"
+        },
+        {
+          "rva": "0x201f50"
+        },
+        {
+          "rva": "0x1fa7a0"
+        },
+        {
+          "rva": "0x33550"
+        },
+        {
+          "rva": "0x1ee900"
+        }
+      ],
+      "verification": "15 full reference bodies/1737instructions/193CFG blocks equal both455pins.4stock locale-selector cases+1changed DBCS fixture pass full-object actual manager/14tableCRC/165class lookups/5typed SF wrappers and real7x20/6x20 boards with12/24masteries/100SF entries.Production CALL order decoded.182client/20kernels,link0/unresolved0.Ordinary WinMain/Miles/Login frame70/3219ms inspected,no fatal.",
+      "evidence": [
+        "inventory/client455-character-tables-reference.json",
+        "inventory/client455-character-tables-native.json",
+        "inventory/client455-character-tables-checkpoint.json",
+        "research/client455-character-tables.md"
+      ],
+      "gaps": [
+        "Actual Avatar class setters/names and legacy Player/Monster/Store/skill consumers remain unmigrated",
+        "Skill/force board dimensions and owners restored;population/UI/game callbacks remain legacy",
+        "Remaining bootstrap/selection/world/gameplay/client acceptance and full unsafe/reload domains"
+      ]
+    },
+    {
+      "id": "CLIENT455-ITEM-BOOTSTRAP-142",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary Login initial cash/set/Item47+ND loading through the real ItemDataMgr;three locales/six selector-error cases and typed item owners;full legacy item/character/bootstrap/selection consumers open",
       "implementation": [
         "scripts/client455_item_bootstrap_port.py",
@@ -18,11 +89,26 @@
         "scripts/native/client455_item_object.cpp"
       ],
       "reference": [
-        {"rva": "0x1f8ec0", "role": "Cash selector/default paths and localized DWORD16 overlay"},
-        {"rva": "0x2089e0", "role": "Set-effect single table loader"},
-        {"rva": "0x1fee30", "role": "Existing full588-instruction Item47/ND loader evidence reused"},
-        {"rva": "0x4329b0", "role": "Korea vslot160 returns1"},
-        {"rva": "0x42c490", "role": "Other10country vslot160 implementations return1"}
+        {
+          "rva": "0x1f8ec0",
+          "role": "Cash selector/default paths and localized DWORD16 overlay"
+        },
+        {
+          "rva": "0x2089e0",
+          "role": "Set-effect single table loader"
+        },
+        {
+          "rva": "0x1fee30",
+          "role": "Existing full588-instruction Item47/ND loader evidence reused"
+        },
+        {
+          "rva": "0x4329b0",
+          "role": "Korea vslot160 returns1"
+        },
+        {
+          "rva": "0x42c490",
+          "role": "Other10country vslot160 implementations return1"
+        }
       ],
       "verification": "Four new full functions/257instructions/27CFG and11profile slots equalboth455pins;existing588-instruction Item loader evidence reused. Production bridge decodes cash->set->Item transfers in order. Six real cases ko/zh/ru/default/zh1/zh10/ko1 pass full47table/76049row/name/description/work-directory byte oracles and12real typed wrappers each. Russia cash count mismatch and absent ko NDItemCash_1 retain base1000rows and continue loading,as target. GetData455 accessor currently retained by full-object probe only;legacy CBoardItem consumers unmigrated. Own PEf0114c80 ordinary Login frame70/3234ms viewed,no fatal.",
       "evidence": [
@@ -36,7 +122,8 @@
         "Legacy ITEM_DATA/derived CBoardItem/Avatar equipment consumers still unmigrated",
         "Remaining character/class/quest/table bootstrap and ordinary selection/world",
         "Full reload/failure/unsafe target domains and all client-acceptance gaps;M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "superseded_by": "CLIENT455-CHARACTER-TABLES-143"
     },
     {
       "id": "CLIENT455-RESOURCE-CATALOG-141",
@@ -51,11 +138,26 @@
         "scripts/prepare_client455_normal.py"
       ],
       "reference": [
-        {"rva": "0x208550", "role": "Nine-group Resource.edf loader"},
-        {"rva": "0x2079c0", "role": "Bone records and missing player path predicate"},
-        {"rva": "0x207cb0", "role": "Mesh parents/default/model branches and player skeleton validation"},
-        {"rva": "0x2081c0", "role": "Animation registration and event metadata"},
-        {"rva": "0x1e7be0", "role": "Bootstrap owner;only the Resource branch is integrated in this unit"}
+        {
+          "rva": "0x208550",
+          "role": "Nine-group Resource.edf loader"
+        },
+        {
+          "rva": "0x2079c0",
+          "role": "Bone records and missing player path predicate"
+        },
+        {
+          "rva": "0x207cb0",
+          "role": "Mesh parents/default/model branches and player skeleton validation"
+        },
+        {
+          "rva": "0x2081c0",
+          "role": "Animation registration and event metadata"
+        },
+        {
+          "rva": "0x1e7be0",
+          "role": "Bootstrap owner;only the Resource branch is integrated in this unit"
+        }
       ],
       "verification": "7fullfunc/934instructions/108positive CFG blocks,including EH tails,equal in both455pins. Real ordinary manager reads all30623catalog rows,registers1267bones/10483meshes/18872ANI;one missing NPC parent explains the skipped mesh. Five actual player skeletons and one real RFS player ANI loaded. Fresh own PEb3f769a9 WinMain/Login frame70/3219ms viewed,no fatal. Old account140 snapshot preserved;unchanged account suite not rerun.",
       "evidence": [

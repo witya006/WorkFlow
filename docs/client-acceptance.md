@@ -1086,3 +1086,9 @@ research/client455-animation-dispatch.md. M6/M6F/M7/M9 открыты.
 Пока остаётся неизвестное или непроверенное поведение, безусловное утверждение
 «100% соответствие доказано» недопустимо. Итоговый отчёт должен указывать точные
 границы проверки, даже когда весь выявленный реестр закрыт.
+Текущий частичный этап143:ordinary CharacterDataMgr читает14таблиц иND,
+165classlookups иреальныеSFboards провереныв4stockcases+DBCSfixture.
+Fresh ownb41d50ff… Login/lobbyframe просмотрен. Полные Avatarclass/equipment/
+skillboardpopulation/bootstrap/selection не приняты;M6/M6F/M7/M9 OPEN.
+Gate inventory/client455-character-tables-checkpoint.json;
+research/client455-character-tables.md. Общаяоценка25%(20–35%) не меняется.

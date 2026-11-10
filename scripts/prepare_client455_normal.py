@@ -33,6 +33,7 @@ from client455_nuclear_receiver_port import port_nuclear_receiver
 from client455_map_data_port import port_map_data
 from client455_resource_catalog_port import port_resource_catalog
 from client455_item_bootstrap_port import port_item_bootstrap
+from client455_character_tables_port import port_character_tables
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -115,6 +116,8 @@ def main():
             if catalog_changed:changes.append('455Resource.edf nine groups/260-328-244 records;player bone missing/shape checks and84-byte ANI events;bounded preflight and own list accessor')
             raw,item_bootstrap_changed=port_item_bootstrap(raw,relative,section)
             if item_bootstrap_changed:changes.append('455ordinary Login cash/set-effect/Item47+ND loading and typed table accessor;legacy ITEM_DATA consumers/remaining bootstrap still open')
+            raw,character_tables_changed=port_character_tables(raw,relative,section)
+            if character_tables_changed:changes.append('455ordinary character manager PlayerCharacter/SF5/Store/Character7+ND,class typed lookups and7-6 board dimensions;legacy character/item consumers still open')
             raw,resource_changed=port_resource_object(raw,relative,native,section)
             if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             raw,item_changed=port_item_object(raw,relative,native,section)
@@ -813,7 +816,7 @@ def main():
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_nuclear_aiming.cpp','client455_chat_window.cpp','client455_message_dispatch.cpp','client455_character_flags.cpp','client455_nuclear_registry.cpp','client455_nuclear_receiver.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
         if name in ['client455_rvp_runtime.cpp','client455_rvp_actor.cpp','client455_rvp_effects.cpp','client455_rvp_audio.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
-    for name in ['client455_map_data.cpp','client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:
+    for name in ['client455_character_tables.cpp','client455_map_data.cpp','client455_item_ownership.cpp','client455_skill_force_items.cpp','client455_item_payloads.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
@@ -897,6 +900,8 @@ def main():
     report['record_inputs']['client455_resource_catalog.h']=sha((native/'client455_resource_catalog.h').read_bytes())
     report['item_bootstrap_port_sha256']=sha((WS/'scripts/client455_item_bootstrap_port.py').read_bytes())
     for name in ['client455_item_bootstrap.h','client455_item_bootstrap.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['character_tables_port_sha256']=sha((WS/'scripts/client455_character_tables_port.py').read_bytes())
+    for name in ['client455_character_tables.h','client455_character_tables.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_registry.h','client455_nuclear_registry.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_minimap.h','client455_nuclear_minimap.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
