@@ -1,5 +1,11 @@
 # Оценка восстановления клиента RF Online 455
 
+Дополнение160: восстановлен клиентский dependency TabBoard455 (expand/scroll/
+reflow/resize/GPU). Ordinary CharInfo ещё не подключён:живойрубеж остаётся159,
+а не объявляется новым успешнымпереходом. 2262(+16) адресных/439(+17) fullASM
+из37865.14новыхвыборочныхcomponentbindings,не14полныхordinaryimplementations.
+Оценка25%(20–35%) не повышена. [Доказательства160](../research/client455-tab-board.md).
+
 Последняя частичная159(11.11): own afb30309… перенёс верхнюю Gauge455,
 17children/реальные main-common-EtcUI/GPUпороги/перезагрузка проходят.
 Live Enter принят, прежняя Gauge пройдена;следующий fatal встаром CharInfo

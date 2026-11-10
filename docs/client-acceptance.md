@@ -1192,3 +1192,9 @@ instructions совпалиbothpins. Native actual17children/3GPUframes/цвет
 level/reload PASS. Live выбор принят,GaugeInit пройден;следом fatal старого
 CharInfo.SetSprite/Init. Это PARTIAL_KNOWN_FAILURE,не успешный полный запуск.
 World/control/fullUI/M6F/M7/M9OPEN. Gate:inventory/client455-hud-checkpoint.json.
+
+Частичная160: необходимый TabBoard455 восстановлен и проверен компонентно
+(17fullfunctions/1318instructions/реальныеskins/4GPUframes),но ещё не подключён
+кordinary CharInfo и не удержан вигровомPE. Это PARTIAL_COMPONENT_ONLY,
+не новый успешный игровой переход;последнийживойрубеж остаётся159.
+Gate:inventory/client455-tab-board-checkpoint.json. Полнаяприёмка/M9OPEN.

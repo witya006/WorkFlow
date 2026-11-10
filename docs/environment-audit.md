@@ -1,4 +1,20 @@
-# Частичная159 —11.11.2026
+# Частичная160 —11.11.2026
+
+Настоящий TabBoard455 восстановленкакclientdependency:17fullfunctions/1318
+instructions bothpins;normalobject/libraries compiled/link0. Nativefinal
+work/m9/a7aba19d/tab-board-001:раскрытие5sections/scroll/reflow/resize/ownership/
+4GPUframes PASS. Generic native content — явныйпример,неfullCharInfo.
+Новыйкласс НЕ удержанordinaryPE и ещё не подключён кстаромуокну. Gate
+inventory/client455-tab-board-checkpoint.json PARTIAL_COMPONENT_ONLY.
+Normal7354a931…/x86/entry17FA40/2349056bytes. Sectionsравны159кроме timestamp
+IMAGE_DEBUG_DIRECTORY210254,проверенногоравнымCOFFtime. Новыйliveнепроводился.
+Передправками exact159сохраненаbefore160/104files. Первыйminmacrocompileerror
+и неверныйreload oracle исправлены;новыеGPUкадры/реальныеproviders проверены.
+Функции2262(+16)/439(+17),14partialcomponentbindings. Оригиналы/serverбезизменений.
+IDA5f9b1aa3 saved/closed. ДальшеподключениеouterCharInfo/3pages/23values.
+Research:client455-tab-board.md;next-steps161. Полныйклиент/M9OPEN.
+
+# История159 —11.11.2026
 
 Own afb30309…/x86/entry17FA40/2349056bytes,182client/67engine/20kernels,
 build/link0. Настоящая верхняя панель455:main/common/EtcUI,4полосы/17children,

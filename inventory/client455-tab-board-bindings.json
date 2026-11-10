@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7354a9313c6eb43db1f267a8f575c456818021ad6284699984470285cc3c571e",
+    "bytes": 2349056,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17fa40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x220230",
+      "symbol": "CGUITabBoard455::CGUITabBoard455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.h",
+        "sha256": "f204ed0d26d714ffabea369670c1714eaf18b48ca23047e427afdcb91efb23d7"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220360",
+      "symbol": "CGUITabBoard455::~CGUITabBoard455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220410",
+      "symbol": "CGUITabBoard455::Init455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220a60",
+      "symbol": "CGUITabBoard455::Clear455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220ad0",
+      "symbol": "CGUITabBoard455::SetSize",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220b60",
+      "symbol": "CGUITabBoard455::SetHeaderSprites455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220c00",
+      "symbol": "CGUITabBoard455::SetTitle455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220d40",
+      "symbol": "CGUITabBoard455::IsOpened455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220db0",
+      "symbol": "CGUITabBoard455::SetOpened455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x220fe0",
+      "symbol": "CGUITabBoard455::Reflow455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2211e0",
+      "symbol": "CGUITabBoard455::RepositionScroll455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x221300",
+      "symbol": "CGUITabBoard455::Content455",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2213f0",
+      "symbol": "CGUITabBoard455::ScrollEvent",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x221440",
+      "symbol": "CGUITabBoard455::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_gui_tab_board.cpp",
+        "sha256": "c38a280b025b5012be9297719456d98858484ef5c01d9745d3280c177a997c83"
+      },
+      "scope": "Semantic dependency/component only;RAII/privateABI and unsafe domain gaps",
+      "retained_in_ordinary_executable": false,
+      "complete_equivalence": false
+    }
+  ]
+}

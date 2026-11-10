@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T16:51:07.489860+00:00",
+  "measured_at_utc": "2026-11-10T17:33:00.692272+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2246,
-    "unique_functions_with_complete_assembly_cfg": 422,
-    "unique_pinned_code_bytes": 600577,
-    "reports": 161,
-    "code_range_occurrences": 3749,
+    "unique_functions_with_pinned_code": 2262,
+    "unique_functions_with_complete_assembly_cfg": 439,
+    "unique_pinned_code_bytes": 605141,
+    "reports": 162,
+    "code_range_occurrences": 3771,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -603,6 +603,10 @@
       "sha256": "5311b79ae2c91b72edb76f537a9ba40f7a0779e95d894d8b9fa712ef18acbd22"
     },
     {
+      "file": "inventory/client455-tab-board-reference.json",
+      "sha256": "445d49180dfee4166325bc72bc5ef9d0c985bef40db30bdcd27c90465fb5c6fb"
+    },
+    {
       "file": "inventory/client455-tagged-audio-reference.json",
       "sha256": "6ec740dbe93296a0228bf1287cd2b34fd940ad76bdfddf7a46bf2d09f26f4405"
     },
@@ -845,6 +849,10 @@
       "sha256": "791f5967e570c11b2489778476da5b3b1eb0eb8c05d719044e7fe63d9a02a141"
     },
     {
+      "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+      "sha256": "cfe053868ac7aa47c073f8d2ba8ccfdd8c746e09ce11fe5df38c1fe5b0601253"
+    },
+    {
       "file": "artifacts/client455-progress/weather-owner129-reference.json",
       "sha256": "04778287e84153a8d968ae018d7f235e0484b6f6f1ba94ff6c982ed1df0ca199"
     },
@@ -856,7 +864,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "f312bb8bbacd3357fc1dd03358494af126b5cf78c037830ca5e63b298336368e"
+      "sha256": "3b14d49bb62348691b5ae7e704972dfb7a56f38a608c386547d7e202d0ca08e2"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -17755,7 +17763,8 @@
       "rva": "0x220150",
       "ida_name": "sub_620150",
       "reports": [
-        "inventory/client455-minimap-opacity-reference.json"
+        "inventory/client455-minimap-opacity-reference.json",
+        "inventory/client455-tab-board-reference.json"
       ],
       "ranges": [
         {
@@ -17763,7 +17772,336 @@
           "bytes": 28
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x220230",
+      "ida_name": "sub_620230",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220230",
+          "bytes": 231
+        },
+        {
+          "rva": "0x635e70",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 76
+        }
+      ]
+    },
+    {
+      "rva": "0x220360",
+      "ida_name": "sub_620360",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220360",
+          "bytes": 162
+        },
+        {
+          "rva": "0x635eb0",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 60
+        }
+      ]
+    },
+    {
+      "rva": "0x220410",
+      "ida_name": "sub_620410",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220410",
+          "bytes": 1186
+        },
+        {
+          "rva": "0x635ef0",
+          "bytes": 38
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 337
+        }
+      ]
+    },
+    {
+      "rva": "0x220940",
+      "ida_name": "sub_620940",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220940",
+          "bytes": 136
+        },
+        {
+          "rva": "0x635f20",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 56
+        }
+      ]
+    },
+    {
+      "rva": "0x2209d0",
+      "ida_name": "sub_6209D0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2209d0",
+          "bytes": 133
+        },
+        {
+          "rva": "0x635f60",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 55
+        }
+      ]
+    },
+    {
+      "rva": "0x220a60",
+      "ida_name": "sub_620A60",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220a60",
+          "bytes": 100
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x220ad0",
+      "ida_name": "sub_620AD0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220ad0",
+          "bytes": 135
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 49
+        }
+      ]
+    },
+    {
+      "rva": "0x220b60",
+      "ida_name": "sub_620B60",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220b60",
+          "bytes": 148
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 48
+        }
+      ]
+    },
+    {
+      "rva": "0x220c00",
+      "ida_name": "sub_620C00",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220c00",
+          "bytes": 306
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 84
+        }
+      ]
+    },
+    {
+      "rva": "0x220d40",
+      "ida_name": "sub_620D40",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220d40",
+          "bytes": 106
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 34
+        }
+      ]
+    },
+    {
+      "rva": "0x220db0",
+      "ida_name": "sub_620DB0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220db0",
+          "bytes": 554
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 140
+        }
+      ]
+    },
+    {
+      "rva": "0x220fe0",
+      "ida_name": "sub_620FE0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x220fe0",
+          "bytes": 498
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 133
+        }
+      ]
+    },
+    {
+      "rva": "0x2211e0",
+      "ida_name": "sub_6211E0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2211e0",
+          "bytes": 273
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 87
+        }
+      ]
+    },
+    {
+      "rva": "0x221300",
+      "ida_name": "sub_621300",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x221300",
+          "bytes": 81
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
+      "rva": "0x2213f0",
+      "ida_name": "sub_6213F0",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2213f0",
+          "bytes": 68
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x221440",
+      "ida_name": "sub_621440",
+      "reports": [
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x221440",
+          "bytes": 157
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/charinfo160-reference/tab-board.json",
+          "instructions": 54
+        }
+      ]
     },
     {
       "rva": "0x2214e0",
@@ -35728,8 +36066,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 15,
-    "unique_functions_with_complete_assembly_cfg": 19
+    "unique_functions_with_pinned_code": 16,
+    "unique_functions_with_complete_assembly_cfg": 17
   },
   "M6": "OPEN",
   "M9": "OPEN",

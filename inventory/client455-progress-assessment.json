@@ -272,7 +272,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "2f3499b1dae6c7ef117577b6bb10f1f96419d515fa04f7ea28369183ebc11ab4",
+      "sha256": "88d9de04002641468761c02bf8861f2ab227d9a7732910d7cf7ba335e1e3b970",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -661,7 +661,7 @@
     "canonical_kernel_objects": 20,
     "unresolved_symbols": 0,
     "own_executable": {
-      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "file": "artifacts/client455-progress/before160/work/client455-port/normal/build/RF_Online.bin",
       "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
       "bytes": 2349056,
       "architecture": "x86",
@@ -690,18 +690,18 @@
     ],
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
-      "file": "inventory/client455-normal-build.json",
+      "file": "artifacts/client455-progress/before160/inventory/client455-normal-build.json",
       "sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": false,
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-hud-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": false,
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
     "runtime_baseline": {
-      "link_file": "inventory/client455-normal-link.json",
+      "link_file": "artifacts/client455-progress/before160/inventory/client455-normal-link.json",
       "link_sha256": "2f3499b1dae6c7ef117577b6bb10f1f96419d515fa04f7ea28369183ebc11ab4",
       "executable": {
-        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "file": "artifacts/client455-progress/before160/work/client455-port/normal/build/RF_Online.bin",
         "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
         "bytes": 2349056,
         "architecture": "x86",
@@ -715,10 +715,10 @@
           ".reloc"
         ]
       },
-      "build_file": "inventory/client455-normal-build.json",
+      "build_file": "artifacts/client455-progress/before160/inventory/client455-normal-build.json",
       "build_sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4"
     },
-    "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
+    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
     "post_selection_failure": {
       "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
       "own_rva": "0x12c53f",
@@ -762,17 +762,17 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4"
+        "sha256": "238146c5cec8b90fc3e08b570e797fbefb0df8c0fc8fd6ab75530acaa52273a3"
       },
       "build_exit": 0,
       "errors": [],
-      "included_in_readiness_estimate": true,
+      "included_in_readiness_estimate": false,
       "issue": null
     },
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
+        "sha256": "7354a9313c6eb43db1f267a8f575c456818021ad6284699984470285cc3c571e",
         "bytes": 2349056,
         "architecture": "x86",
         "image_base": "0x400000",
@@ -789,16 +789,16 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "68a3e0288b01887a10d122e8cccfdb83843458e6aab33649dac0ecbe61b036f4"
+        "sha256": "238146c5cec8b90fc3e08b570e797fbefb0df8c0fc8fd6ab75530acaa52273a3"
       },
-      "runtime_verified": true,
+      "runtime_verified": false,
       "superseded_by_later_source_build": false
     },
     "current_work": "158 owndf69c7ef x86/182client/67engine/20kernels/link0. Actual addressed Enter sends1/14 andreceives1/15/22 success. FullWORD result/serial32/money64 consumer andtyped6default/11worn Avatar transfer integrated;skipTutorial copied. Native wire/4wallet routes/retained default and3priorPNG pass. Existing MainGame::Create_UI reached,then fatal ownRVA12C8AF inGetSpriteXL/gaugeExp:unported0.7skin/atlas. World isnotentered;run hasoneunhandled exception. Next:actual455MainGameUI/resources/create. Fullcallback/tutorialbranch/UI/factory/clone/particle/gameplay/M9 open. Estimate unchanged.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
       "sha256": "bf8134e0b82881f821c6567d18159c70f50c00899448804da04461554580a2c8",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "fresh_for_runtime_baseline": true,
       "frame": {
         "file": "work/m9/afb30309/selection-live-taiwan001/login-frame.png",
@@ -819,17 +819,17 @@
       "known_visible_problem": "Pre-Enter selection frame isvalid;afterEnter a known MainGame gauge UI failure prevents world creation",
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
-    "existing_Create_proved_on_current_PE": true,
+    "existing_Create_proved_on_current_PE": false,
     "existing_Create_proof_scope": "Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance",
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "90e7971135a039dbf1fc9d010fdca726b9c22d241c43f825f96ea3e9332c0820",
-    "entries": 165,
+    "sha256": "13c2ffd23fcae6020e73d29c0143eb88a3fa40c2ab5bc165abce79a29010667e",
+    "entries": 166,
     "statuses": {
-      "partial_component": 12,
+      "partial_component": 13,
       "partial": 123,
       "audit_open": 1,
       "open": 2,
@@ -910,7 +910,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;165 overlapping historical records",
+        "measured": "12 domain planning map;166 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {

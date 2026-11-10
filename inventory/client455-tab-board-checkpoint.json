@@ -1,0 +1,126 @@
+{
+  "status": "PARTIAL_COMPONENT_ONLY",
+  "scope": "Recovered actual455TabBoard dependency;ordinary CharInfo still unported",
+  "script": {
+    "file": "scripts/audit_client455_tab_board.py",
+    "sha256": "17eb1f898e4af6e611f08cc44e0fecdddb8b734315ff8a289f6f62e605c9ca81"
+  },
+  "normal_link_sha256": "88d9de04002641468761c02bf8861f2ab227d9a7732910d7cf7ba335e1e3b970",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7354a9313c6eb43db1f267a8f575c456818021ad6284699984470285cc3c571e",
+    "bytes": 2349056,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17fa40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_component_object": {
+    "file": "work/client455-port/normal/build/RFClient455Facade.dir/Release/client455_gui_tab_board.obj",
+    "sha256": "f7715feba771486e41893b9aa7209d925c1f3a0246ce32903bc69c4252fa18a7"
+  },
+  "fresh_evidence": {
+    "tab-board-reference": {
+      "file": "inventory/client455-tab-board-reference.json",
+      "sha256": "445d49180dfee4166325bc72bc5ef9d0c985bef40db30bdcd27c90465fb5c6fb"
+    },
+    "tab-board-bindings": {
+      "file": "inventory/client455-tab-board-bindings.json",
+      "sha256": "7df469e239110705215cc705c0393f93828ff136672a665dfcd38c5beff98f60"
+    },
+    "tab-board-native": {
+      "file": "inventory/client455-tab-board-native.json",
+      "sha256": "5a086897cddd64aa6f996863c5b9a831dc0ad590ed44a58ab4f333b52fd68dee"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "238146c5cec8b90fc3e08b570e797fbefb0df8c0fc8fd6ab75530acaa52273a3"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "53ccc7de9856dd9dad9cf1f4566944c293a1880bc46db538ab10fca5071488c0"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "88d9de04002641468761c02bf8861f2ab227d9a7732910d7cf7ba335e1e3b970"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "9060ecd4dc8f21fb5b204f98f269d1d5246993fd32a95850c5545bddb50a7cde"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before160/manifest.json",
+    "sha256": "82e5a03cd8ec1ccaab7a183c06d3e811f6ae90352980b4e2e13292b07f70a175"
+  },
+  "normal_sections_compared_before160": [
+    {
+      "name": ".text",
+      "raw_equal": true,
+      "equal_except_verified_debug_timestamp": true,
+      "differing_bytes": 0,
+      "first_differing_rvas": []
+    },
+    {
+      "name": ".rdata",
+      "raw_equal": false,
+      "equal_except_verified_debug_timestamp": true,
+      "differing_bytes": 2,
+      "first_differing_rvas": [
+        "0x210254",
+        "0x210255"
+      ]
+    },
+    {
+      "name": ".data",
+      "raw_equal": true,
+      "equal_except_verified_debug_timestamp": true,
+      "differing_bytes": 0,
+      "first_differing_rvas": []
+    },
+    {
+      "name": ".fptable",
+      "raw_equal": true,
+      "equal_except_verified_debug_timestamp": true,
+      "differing_bytes": 0,
+      "first_differing_rvas": []
+    },
+    {
+      "name": ".reloc",
+      "raw_equal": true,
+      "equal_except_verified_debug_timestamp": true,
+      "differing_bytes": 0,
+      "first_differing_rvas": []
+    }
+  ],
+  "verified_linker_debug_timestamp_rva": "0x210254",
+  "last_ordinary_runtime_checkpoint": {
+    "file": "artifacts/client455-progress/before160/inventory/client455-hud-checkpoint.json",
+    "sha256": "18aef0141b6d1c7657e2025ae14e07508643df5d05822395793a09e12097787a"
+  },
+  "component_source_verified": true,
+  "component_GPU_frames": 4,
+  "ordinary_CharInfo_connected": false,
+  "retained_in_ordinary_executable": false,
+  "explicit_function_bindings": 14,
+  "gaps": [
+    "Ordinary CharInfo455 outer window/3pages/23value owners/mastery/race producers not yet connected",
+    "Current normal executable does not retain TabBoard455;the component probe is the real caller",
+    "Unsafe target clear/reinit stale-list/empty-reflow/allocation failure andcoordinate-overflow domains not accepted",
+    "Full remaining MainGame UI/world/control/gameplay/client455 acceptance open"
+  ],
+  "world_entered": false,
+  "full_client": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

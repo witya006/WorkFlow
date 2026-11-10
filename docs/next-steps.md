@@ -1,4 +1,32 @@
-# Продолжение M6 — окно характеристик455 и создание мира (160)
+# Продолжение M6 — подключение настоящего CharInfo455 (161)
+
+160:CGUITabBoard455 source/component восстановлен,17functions/1318instructions
+bothpins,5section example/scroll/reflow/mouse/4GPUframes/RAII PASS.
+Но он ещё не используется старым CharInfo;в ordinary map нетего symbols.
+Normal7354a931…/x86/entry17FA40/2349056bytes/build-link0,182client/67engine/20kernels.
+Runtime sections прежней159сохраненыкроме verifiedlinkerdebugtimestamp210254.
+Последнийживойотказ159:CharInfo.SetSprite/Init → GetSpriteOrgXL12C53F.
+
+1. До161 сохранить точный160:preserve utility --previous before160
+   --destination before161 --checkpoint inventory/client455-tab-board-checkpoint.json.
+   Before160 уже104files,неперезаписывать. Нетнеобходимостиповторятьoldbulk/live159.
+2. research/client455-tab-board.md содержит подробную первичнуюнавигацию.
+   Raw44decomp:artifacts/client455-progress/charinfo160-reference/discovery-unverified.json.
+   OuterInit665F70/SetSprite666580/Bound666690/Mouse6667E0/Select6669A0,
+   MainBoardInit661800(356lines,естьtail)/Skin6630C0/Race6629F0.
+3. Сделать нормальные semantic owners трёхpage (5/2/4section);использовать
+   CGUITabBoard455 иреальные target47/common skins/animated headers/highlight.
+   Подключить23m_uiInfoValues455,mastery6+3,resist4/extra7 иactualproviders.
+   Не подменятьinnerboardстарымlayout и не скрыватьокно.
+4. Primarycountryvirtual61/83 иracename data записаныкаккандидаты:проверить
+   instructions/обаpins/factory доихпереноса. Непроверенныйdecompнедостаточен.
+5. ПослеfullCharInfoInit пройтиследующийнастоящийUIотказ,затем карта/avatar/control.
+   M9веськлиент,0/12,25%(20–35%). Sourcebindings26выборочно,необщийготовыйперенос.
+
+Функции2262(+16)/439(+17) из37865. Gate160 PARTIAL_COMPONENT_ONLY,
+runtimebaseline159 PARTIAL_KNOWN_FAILURE. Нижеистория160.
+
+# Историческое продолжение M6 — окно характеристик455 и создание мира (160)
 
 Частичная159 проверена: own afb30309…/x86/entry17FA40/2349056bytes,
 182client/67engine/20kernels/link0. Gate client455-hud-checkpoint:

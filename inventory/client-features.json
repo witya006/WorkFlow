@@ -8568,6 +8568,24 @@
       "full_client": false,
       "M6": "OPEN",
       "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-TABBOARD-160",
+      "status": "partial_component",
+      "description": "Recovered actual455TabBoard dependency;ordinary CharInfo still unported",
+      "implementation": [
+        "scripts/native/client455_gui_tab_board.h",
+        "scripts/native/client455_gui_tab_board.cpp"
+      ],
+      "evidence": [
+        "inventory/client455-tab-board-checkpoint.json",
+        "inventory/client455-tab-board-reference.json"
+      ],
+      "ordinary_CharInfo_connected": false,
+      "retained_in_ordinary_executable": false,
+      "full_client": false,
+      "M6": "OPEN",
+      "M9": "OPEN"
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

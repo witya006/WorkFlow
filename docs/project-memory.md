@@ -1,4 +1,34 @@
-# Частичная159 — верхняя панель455, следующий сбой CharInfo
+# Частичная160 — настоящий TabBoard455, CharInfo ещё не подключён
+
+11.11.2026. Новая зависимость client455_gui_tab_board.h/.cpp:5-section пример,
+реальные skins/NDLanguage/GPU,раскрытие/membership,reflow,scroll observer,
+resizeclamp,сохранённые borrowedchildren/RAII/Dmalloc. Nativefinal
+work/m9/a7aba19d/tab-board-001 exit0,4GPUframes/3frame relations PASS.
+Первый неверный fullreload equality oracle отклонён:style0 resetthumb6x18,
+zeroAmount сохраняетстарыйразмер. Новыйoracle проверяетэтотreset иheaders.
+
+FullASM/CFG17functions/1318instructions pinnedboth455.14partialsourcebindings.
+Generator подключаетобъекткfacade library,но normal map НЕ содержиткласс:
+старый CharInfo пока не используетего. Gate tab-board-checkpoint PARTIAL_COMPONENT_ONLY.
+Normal7354a9313c6eb43db1f267a8f575c456818021ad6284699984470285cc3c571e,
+x86/entry17FA40/2349056bytes,182client/67engine/20kernels/build-link0.
+Runtime sections равныexact159кроме проверенного linkerdebug timestamp
+RVA210254 (2byteschanged,field4bytes equalsCOFFtime вкаждомPE). Новыйliveнеповторялся;
+последний159стек CharInfo.SetSprite/Init остаётсяblocker. Assessment сохраняет159
+какhistorical acceptedpartialruntime.25%(20–35%),0/12,M6/M6F/M7/M9OPEN.
+
+Before160 сохранён104files:7027314copied/3366723shared;не перезаписывать.
+До161 snapshot160 через --checkpoint inventory/client455-tab-board-checkpoint.json.
+ПерваяcompileошибкаWindows minmacro исправлена;consumer/link/native PASS.
+Функции2262(+16)/439(+17) из37865;выборочно26sourcebindings,необщийперенос.
+
+Следом fullCharInfo outer/3pages/23valueowners/mastery/race/providers. Discovery
+RTTI3файла и44decompсохраненыprivate charinfo160-reference/discovery-unverified.json,
+это ещё не принятые полныеinstructions. Подробныеадреса/шаги/границы:
+research/client455-tab-board.md. Owned IDA5f9b1aa3 saved/closed;nativejobsdone.
+Оригиналы/сервер не менялись;общийpoolnative28assets/15.34MBlinked/0newbytes.
+
+# История159 — верхняя панель455, следующий сбой CharInfo
 
 11.11.2026. Own afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee,
 x86/base400000/entry17FA40/2349056bytes;182client/67engine/20kernels,build/link0.

@@ -852,6 +852,9 @@ def main():
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_player_owner.cpp','client455_equipment_object.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    for name in ['client455_gui_tab_board.cpp']:
+        source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source)
+        cmake+='target_sources(RFClient455Facade PRIVATE "'+facade.as_posix()+'")\nset_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cooldown_source=native/'client455_linker_cooldown.cpp';cooldown_facade=root/'generated'/cooldown_source.name
     save(cooldown_facade,cooldown_source.read_bytes(),cooldown_source)
     cmake+='target_sources(RFClient455Facade PRIVATE "'+cooldown_facade.as_posix()+'")\nset_source_files_properties("'+cooldown_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
@@ -877,6 +880,7 @@ def main():
     for name in ['client455_font_settings.cpp','client455_font_settings.h','client455_font.cpp','client455_font.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_sprites.cpp','client455_sprites.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_hud.inc','client455_hud_members.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_gui_tab_board.cpp','client455_gui_tab_board.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

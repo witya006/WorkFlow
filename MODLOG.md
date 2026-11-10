@@ -1,3 +1,20 @@
+2026-11-11 — TabBoard160 PARTIAL_COMPONENT_ONLY. Actual expandable-section
+source,17functions/1318instructions both455pins. Five-section native example,
+real skins/NDLanguage/scroll/reflow/resize/RAII/four GPUframes pass. Style0
+thumb reset differs from zero-amount retention;wrong initial reload equality
+oracle rejected and corrected from target evidence. Finalnative a7aba19d.
+Normal7354a931… builds/links,component object inlibrary,butnotretained inordinary
+PE/CharInfo. Runtime sections equal159except verified linker debugtimestamp
+RVA210254. No repeated live run;last ordinary failure remainsCharInfo159.
+Function2262(+16)/complete439(+17);14partialcomponent bindings,notfullclient.
+Before160104files preserved;no server/original changes,IDA5f9b1aa3closed/list0.
+
+2026-11-11 — HUD159 PARTIAL_KNOWN_FAILURE. Actualmain/common/EtcUI4-bar
+upperpanel/17children/level/charinfovalues restored. Native7ca856c6/GPU3frames/
+threshold7/reload pass. Ownafb30309… live selectionaccepted,priorGaugecrash
+passed;nextlegacyCharInfo.SetSprite/Init fatal12C53F. World/M9OPEN.
+19referencefunctions/1406instructions bothpins;2246/422functionevidence.
+
 2026-11-11 — Selection158 PARTIAL_KNOWN_FAILURE. FullASM/CFG6+3/689instructions
 both455pins,x86/base400000. 1/14oneBYTE/1/15reply22 (WORDresult,serial32,money64)
 andtyped6default/11worn Avatar transfer/skip flag restored. Actual addressed
