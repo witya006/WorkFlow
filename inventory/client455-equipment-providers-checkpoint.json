@@ -1,0 +1,63 @@
+{
+  "status": "PARTIAL_COMPONENT",
+  "scope": "Equipment animation selection/fallback/state and fade;full production item effects/conditions/appearance still open",
+  "evidence": {
+    "client455-equipment-providers-reference": {
+      "file": "inventory/client455-equipment-providers-reference.json",
+      "sha256": "bdf3c3c197f8ad73f063ef74a24db383bda6d28cca8d954376ef471e93267509"
+    },
+    "client455-equipment-providers-native": {
+      "file": "inventory/client455-equipment-providers-native.json",
+      "sha256": "632225bd146db9f70430fd2c1825c69f59d3c0b39ad149a6766f694961a58c84"
+    },
+    "client455-player-equipment-checkpoint": {
+      "file": "inventory/client455-player-equipment-checkpoint.json",
+      "sha256": "6c3741bae45a2fe241e42e4286bef774ff50b2c13eb1efc76d6f712e01be042b"
+    },
+    "client455-normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e"
+    }
+  },
+  "runtime_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+    "bytes": 2299904,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x175f50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_runtime_gate": "inventory/client455-equipment-checkpoint.json",
+  "ordinary_runtime_changed": false,
+  "real_animations": 48,
+  "real_models": 12,
+  "successful_animation_selections": 64,
+  "expected_animation_failures": 1,
+  "actual_pose_calls": 64,
+  "owner_lifts": 20,
+  "actual_animation_fade_source": true,
+  "full_item_animation_effects": false,
+  "full_condition_effects": false,
+  "production_controller_connected": false,
+  "full_player_appearance_or_draw": false,
+  "full_client": false,
+  "gaps": [
+    "Actual item animation effect provider46D3D0/cleanup/sound/attachment",
+    "Typed condition ApplyItemEffect4411E0 and full consumers",
+    "Ordinary CPlayerProc/Avatar/registered upgrades/animation/render/appearance/selection/bootstrap",
+    "All remaining client acceptance/M9 gaps"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

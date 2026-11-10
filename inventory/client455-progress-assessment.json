@@ -99,7 +99,8 @@
         "client455-registered-characters-checkpoint",
         "client455-avatar-classes-checkpoint",
         "client455-equipment-checkpoint",
-        "client455-player-equipment-checkpoint"
+        "client455-player-equipment-checkpoint",
+        "client455-equipment-providers-checkpoint"
       ]
     },
     {
@@ -418,9 +419,17 @@
     },
     "client455-player-equipment-checkpoint": {
       "file": "inventory/client455-player-equipment-checkpoint.json",
-      "sha256": "222d38c8aa3cb38447c0c9ceee0c96982b0d325504459dea63798da38e89208e",
+      "sha256": "6c3741bae45a2fe241e42e4286bef774ff50b2c13eb1efc76d6f712e01be042b",
       "status": "PARTIAL_COMPONENT",
       "scope": "13-slot source equipment controller and detached normal-item copy;required production condition/animation/effect providers remain open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-equipment-providers-checkpoint": {
+      "file": "inventory/client455-equipment-providers-checkpoint.json",
+      "sha256": "1b74be024d07c0bf739bcf7b1d34cf4b2d133e85018a6506ff7cca4b8c844d60",
+      "status": "PARTIAL_COMPONENT",
+      "scope": "Equipment animation selection/fallback/state and fade;full production item effects/conditions/appearance still open",
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
@@ -586,7 +595,7 @@
     "newer_build_is_not_the_accepted_runtime": false,
     "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "Ordinary runtime145 unchanged.146 source component:13-slot controller and detached normal-item clone verified with real assets;production animation/condition/effect providers and actual CPlayerProc integration still open. Full appearance/selection/bootstrap/world/M9 not accepted.",
+    "current_work": "Ordinary runtime145 unchanged.146 source controller/clone and real equipment ANI/pose/fallback/fade/mount-height source verified. Actual item animation effects,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
@@ -625,11 +634,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "d884fed346227e6879cee402941e4e263c3abf84c00ccd8ec6b1a12915b3fb7e",
-    "entries": 148,
+    "sha256": "0777d701fc989782a4f2753b017ebabd9fc4f480ac7cc3178e8af432ebc7cb48",
+    "entries": 149,
     "statuses": {
       "partial": 115,
-      "partial_component": 3,
+      "partial_component": 4,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -692,7 +701,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;148 overlapping historical records",
+        "measured": "12 domain planning map;149 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -846,7 +855,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "6df83d937f37997ad4fbac7f1fbbe25f952bf6490fd5babe39692208e2f5ddd7"
+    "sha256": "cd555779b2995ac999ae1b5976339159950dd6c9516267ac5533e01bd997f93c"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

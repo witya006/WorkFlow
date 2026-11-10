@@ -1,3 +1,8 @@
+146ANI/fade:новыхустановокнет.24fullfunc/2220instructions/373CFG equal2pins;
+реальныеANI/pose/fallback/failure/fade/lift прошли.13slotprobeпересобранPASS.
+IDA4ce73361savedclosed/list0;nativejobsнет. Ordinary145не менялся.
+Использован установленныйdumpbin +nativeIDA CFG/count дляполнойASMвыгрузки.
+
 146,10.11:новыхустановокнет.Отдельныйsourcecontroller13slots/normalclone
 прошёлfull-object nativeпроверку.32func/1640instructions/225CFG equal2pins.
 IDA7c61237d saved/closed/list0;nativeexit0.Ordinary145PEне менялся.

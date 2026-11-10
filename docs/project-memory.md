@@ -1,3 +1,42 @@
+#146продолжение:реальные ANI/fade готовы;ordinary145не менялся
+
+Новыйcomponentgate inventory/client455-equipment-providers-checkpoint.json;
+research/client455-equipment-providers.md.24fullfunctions/2220instructions/
+373CFG equal2pins.65realcases/48ANI/12models,64actualCResObject.Animation
+posecalls,1expectedinnerfailure,20realownerlifts/fades PASS. Publicwrapper
+returnsTRUE evenifinnerANIselectionfailed,targetbehaviorpreserved.
+SourceRF455PlayerEquipmentObject implements6DF10/6D2F0/6D730 +6E220/6E3A0
+andRF455_MountingHeight455(4B8F0/4B9B0). Do notrewrite theseagain.
+Headerchangedclassstate;affected13slotcontroller/clone reference/native/gate
+refreshed andPASS. Ordinary145PE1a355372…/engine137unchanged;no newLoginrun.
+ActualitemAnimationEffect callback remainsrecorder,typedconditions andordinary
+CPlayerProc/Avatar/registeredupgrades/render/selection notconnected. M6/M9OPEN.
+
+RealAccretiaCloakDEFAULT/USE/UNUSE andsiegekitDEFAULT haveANImaximum0;notload
+failure. Initialprobeassert(maximum>0) waswrong,correctoraclecomparesrealparsed
+maximum. Failedrunwork/m9/476e69b4 retained. No productionforce-successfix.
+ExporterpathsKoreanANSI:stripbasenameonbytesbeforeASCIIname decode.
+Firstpool+53036735bytes,repeat0;1738assetrefs/219147433logicalbytes;nooldcleanup.
+IDA4ce73361 saved/closed/list0;allnativehandles terminal0;noinputEXE/serveractivity.
+
+Next146actualitemeffects:46D3D0/6D660→7E22F0→7D8FF0/GetMagicListFromID
+and7E0D10 dummyposition,sound. Savedpcodecomplete inartifacts/client455-progress/
+equipment-providers146-reference/item-effects-diagnostic.json;fullASMstillneeded.
+406CB0=positionpointer80,4077E0=yaw108,NOTname/scale. IsExistFromMagicSpt
+matches7D5A60 family. Existing EffectCore hasrealportedmagic scheduling.
+Thenconditions4411E0 chain(fullASM24proof alreadycollected),ordinarycontroller/
+GetNormalItem-upgrades/render/selection. Do notclaim equippedappearance yet.
+
+FastfullASMworkflow nowavailable: nativeIDA basic_blocks +lookup_funcs +
+func_profile → scripts/decode_client455_cfg.py ownedraw → independentIDA
+instructioncount +allCFGbytes decodedbyinstalleddumpbin+bothpincomparison.
+Analyze_batch maypreviewonly10asm/blocks despitefalse truncated flag;neveruse
+itsASMpreview ascomplete. Newhelper accountswrappedlonginstructionbytes.
+This avoidsdozensofsmallMCPdisasm callswhilepreservingfullevidence.
+Overall25%(20–35%),0/12accepted;149overlappingrecordsnotdenominator.
+
+## Предыдущий146контроллер иобычная145база
+
 # Продолжение146 —компонент проверен,обычная сборка145
 
 146PARTIAL_COMPONENT:typed13slotcontroller anddetachednormalclone implemented.

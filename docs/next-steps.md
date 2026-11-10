@@ -1,3 +1,23 @@
+# Продолжить146:настоящие эффекты иусловия
+
+SourceвыборANI/fallback/frame state,реальныеposecalls,fade имонтирование
+уже проверены. Не разбиратьзаново6DF10/6D2F0/6D730/6E3A0.
+Gate inventory/client455-equipment-providers-checkpoint.json;
+research/client455-equipment-providers.md. Ordinary145 unchanged.
+
+Следующийстык:actual46D3D0/cleanup6D660,sound/attachment7E22F0/7E0D10,
+затемtyped4411E0conditionchain,actualCPlayerProc/CPlayer/Avatar/registered
+GetNormalItem-upgrades иordinaryframe/render/defaultsubstitution/selection.
+Providerraw24functions alreadyfullASM/CFG/equalpins. Новыеattachmentdiagnostics
+pcodeonly,вitem-effects-diagnostic.json;7E0D10complete128lines.
+Getposition406CB0=+80/Getyaw4077E0=+108. Не подменятьихname/scale.
+
+УскорятьсборASM черезdecode_client455_cfg.py(nativeIDA CFG+independentcount,
+dumpbin covers everybyte). Не использовать compactanalyze_batch previews.
+РеальныйANImaximum0 допустим ивосстановлен;не требоватьmaximum>0.
+Широкиеunchanged159kнаборы не повторять. M6/M6F/M7/M9OPEN;25%(20–35%).
+Ниже сохранены предыдущиеподробности;частьanimation/fade уже выполнена.
+
 # Продолжить146:подключить реальные обработчики
 
 Контроллер13слотов икопирование обычного предмета уже реализованы ипройдены

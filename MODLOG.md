@@ -1,3 +1,12 @@
+2026-11-10 — Equipment providers146 PARTIAL_COMPONENT. Actual ANI selection,
+fallback/frame state,pose calls,fade andmounting height source restored.
+24completefunctions/2220instructions/373CFG equalpins;65realcases/48ANI/
+12models,64realposecalls/1expectedinnerfailure/20ownerlifts pass. Zero-maximum
+ANI preserved. Affectedcontroller/clone rebuiltpass;ordinary145PEunchanged.
+Itemeffects/typedconditions/ordinaryappearance remainopen. Firstpool+53MB,
+repeat0. IDAclosed/list0,nooriginalEXE/serveractivity.
+[Evidence](research/client455-equipment-providers.md). M6/M6F/M7/M9OPEN.
+
 2026-11-10 — Player equipment146 PARTIAL_COMPONENT.13typedslots/controller
 andselected normal-item clone restored;32fullfunctions/1640instructions/225CFG
 match bothpins. Real Item/Resource/model/texture/controller executions,aliases,

@@ -7750,6 +7750,54 @@
       "M6F": "OPEN",
       "M7": "OPEN",
       "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-EQUIPMENT-PROVIDERS-146",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "ordinary_runtime_integrated": false,
+      "description": "Real equipment ANI selection/fallback/frame state,fade andmount-height source;actual item-effects/conditions/ordinary integration open",
+      "reference": [
+        {
+          "rva": "0x6df10",
+          "role": "Equipment animation wrapper/flags/lift"
+        },
+        {
+          "rva": "0x6d2f0",
+          "role": "Core ANI selection/fallback/state"
+        },
+        {
+          "rva": "0x6d730",
+          "role": "Actual group5 ANI lookup"
+        },
+        {
+          "rva": "0x6e3a0",
+          "role": "Fade update"
+        },
+        {
+          "rva": "0x4b8f0",
+          "role": "Mounting height"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_player_equipment.h"
+      ],
+      "verification": "24completefunctions/2220instructions/373CFG equalbothpins;65real cases/48ANI/12models;64realposecalls,1expectedinnerfailure,20actualownerheightchanges/fades PASS. Real zero-maximumANI preserved. Ordinary145 unchanged.",
+      "evidence": [
+        "inventory/client455-equipment-providers-reference.json",
+        "inventory/client455-equipment-providers-native.json",
+        "inventory/client455-equipment-providers-checkpoint.json",
+        "research/client455-equipment-providers.md"
+      ],
+      "gaps": [
+        "Required actual animation item-effect callback46D3D0 is a recorder inprobe",
+        "Typed conditions andproduction owner/global state bindings",
+        "Actual CPlayerProc/Avatar/registered upgrades/render/appearance/selection/bootstrap/M9"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."
