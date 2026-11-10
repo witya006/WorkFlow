@@ -100,7 +100,8 @@
         "client455-avatar-classes-checkpoint",
         "client455-equipment-checkpoint",
         "client455-player-equipment-checkpoint",
-        "client455-equipment-providers-checkpoint"
+        "client455-equipment-providers-checkpoint",
+        "client455-equipment-effects-checkpoint"
       ]
     },
     {
@@ -419,7 +420,7 @@
     },
     "client455-player-equipment-checkpoint": {
       "file": "inventory/client455-player-equipment-checkpoint.json",
-      "sha256": "6c3741bae45a2fe241e42e4286bef774ff50b2c13eb1efc76d6f712e01be042b",
+      "sha256": "fdeaeba99ec44e00dfe9be2898c6731efb8321a7d3d75d34ad940fdb75be0157",
       "status": "PARTIAL_COMPONENT",
       "scope": "13-slot source equipment controller and detached normal-item copy;required production condition/animation/effect providers remain open",
       "fresh_for_current_PE": false,
@@ -427,9 +428,17 @@
     },
     "client455-equipment-providers-checkpoint": {
       "file": "inventory/client455-equipment-providers-checkpoint.json",
-      "sha256": "1b74be024d07c0bf739bcf7b1d34cf4b2d133e85018a6506ff7cca4b8c844d60",
+      "sha256": "764b91b876dd33811c646447aa7c39a12f967c71316e7cfbbf3b715b6d0f264d",
       "status": "PARTIAL_COMPONENT",
       "scope": "Equipment animation selection/fallback/state and fade;full production item effects/conditions/appearance still open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-equipment-effects-checkpoint": {
+      "file": "inventory/client455-equipment-effects-checkpoint.json",
+      "sha256": "b0fced7662b9465ccf996d8a20c76af1ce1aeb4fa682f0de767dbcc1d77d1ed1",
+      "status": "PARTIAL_COMPONENT",
+      "scope": "Equipment animation effect ownership/cleanup/cloak sound control;ordinary player/typed conditions/complete attachment still open",
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
@@ -595,7 +604,7 @@
     "newer_build_is_not_the_accepted_runtime": false,
     "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "Ordinary runtime145 unchanged.146 source controller/clone and real equipment ANI/pose/fallback/fade/mount-height source verified. Actual item animation effects,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
+    "current_work": "Ordinary runtime145 unchanged.146 source controller/clone,real ANI/pose/fallback/fade/meshID-based mount height and item magic/sound ownership verified separately. Complete attachment positions,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
@@ -634,11 +643,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "0777d701fc989782a4f2753b017ebabd9fc4f480ac7cc3178e8af432ebc7cb48",
-    "entries": 149,
+    "sha256": "6d766adc8c581bd5dcc986c19ad4fafefa9f9957a2c6bb8dcc016c5d087cf590",
+    "entries": 150,
     "statuses": {
       "partial": 115,
-      "partial_component": 4,
+      "partial_component": 5,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -651,6 +660,23 @@
       "CLIENT455-EQUIPMENT-145"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
+  },
+  "binary_static_inventory": {
+    "file": "artifacts/client455-progress/assessment-2026-11-10/ida-survey.json",
+    "sha256": "9c56fb6f5a151dde14bc187c7dcf6a2bc6b5882931f79a7bb4933640b7095912",
+    "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "statistics": {
+      "total_functions": 37865,
+      "named_functions": 671,
+      "library_functions": 1296,
+      "unnamed_functions": 35898,
+      "total_strings": 12704,
+      "total_segments": 4
+    },
+    "recovered_functions_percent": null,
+    "note": "IDA-detected bodies include library code and wrappers;no validated exhaustive examined/reconstructed numerator. This count is not a455feature or completion denominator."
   },
   "input_readiness": {
     "available": [
@@ -701,7 +727,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;149 overlapping historical records",
+        "measured": "12 domain planning map;150 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -771,10 +797,10 @@
   },
   "storage": {
     "audit_file": "inventory/workspace-storage-audit.json",
-    "audit_sha256": "ebd59f7f8a7d141271112e27bb41db3e31d821b4e865d4becb060d4724038a8e",
-    "audit_time_local": "2026-11-10 05:14:20",
-    "logical_gib": 150.95,
-    "unique_file_size_gib": 42.29,
+    "audit_sha256": "93663009f9efae30cf2a926a79134e529537cadd5ab3a04c27183e7163fb4a3c",
+    "audit_time_local": "2026-11-10 12:40:16",
+    "logical_gib": 154.86,
+    "unique_file_size_gib": 42.85,
     "physical_allocation_measured": false,
     "files_deleted": false,
     "note": "Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement."
@@ -855,7 +881,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "cd555779b2995ac999ae1b5976339159950dd6c9516267ac5533e01bd997f93c"
+    "sha256": "dfa4ba5f1dc0138dd8824137fd267446d4c4470c4881068767420b60d68eb226"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

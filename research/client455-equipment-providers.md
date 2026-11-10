@@ -37,7 +37,9 @@ RF455PlayerEquipmentObject now implements:
  owner lift followsmode1/4 add,2/5 subtract;mode3 adds once iffglobalpendingflag
  was set,thenconsumes it. No unconditional lift forother modes.
 - RVA4B8F0/4B9B0 mounting height helper:race0/1=5.8f,2/3=5.0f,other=8.0f;
- existingmount withtable-index bits8..15=1 multipliesby0.75.
+ existingmount withmetadata meshID bits8..15=1 multipliesby0.75.416940 reads
+ meshDWORD72,not the Item table index. The previous provider used the wrong
+ join input;four additional real mount cases distinguish these values.
 - RVA6E220/6E3A0 realfade state:60defaultframes,mode1 decreases tomode3/alpha0,
  mode2 increases tomode4/alpha1;intermediate alpha=count/max andflag4enabled,
  terminalflag4disabled. These are no longer only recorded fade requests.
@@ -50,14 +52,15 @@ The target animation loader's full UI/quit policy onfailedfiles is notaccepted.
 
 ## Actual resources andexecution
 
-65real-input cases cover cloak5races×6modes,siegekit,mount4races,miningtool and
-one ordinaryarmor component withno standalone itemANI.48actualANI files and
-12actualmodels are accounted;all selected model/ANI/texture paths resolve
-throughloosefiles orRFS.12models are loaded forselection/pose checks,notfull
+69real-input cases cover cloak5races×6modes,siegekit,mount4races,miningtool,
+four real meshID/table-index height discriminators andone ordinaryarmor
+component withno standalone itemANI.52actualANI files and16actualmodels
+are accounted;all selected model/ANI/texture paths resolve
+throughloosefiles orRFS.16models are loaded forselection/pose checks,notfull
 assembled-character appearance.
 
-Native full-object run:64successful selections/64actualCResObject.Animation
-pose calls,1expected no-ANI failure,82corelookups and20actual ownerheight changes.
+Native full-object run:68successful selections/68actualCResObject.Animation
+pose calls,1expected no-ANI failure,86corelookups and24actual ownerheight changes.
 The lookupcounter covers coreselection calls;wrapper repeatlookups are additional.
 The publicwrapper returns true alsofor theexpectedinner failure. Modefallback,
 frame preservation,renderflag,sharedpayload lifetime andactualfade transitions
@@ -74,18 +77,18 @@ Exporter texture directories cancontain KoreanANSIbytes. Basename extraction
 is performed onbytes before decoding theresource-relative ASCIIbasename;
 no recoding oforiginalfiles oraccess toobsolete exporterdrives occurred.
 
-Inputs1728references plusUI/shaders inrun;1738stagedassets/219147433logicalbytes.
-Firstadditional ownedpoolbytes53036735;repeat0. No wholeclientcopy orolddata
+Current run:1747stagedassets/222051609logicalbytes;additional ownedpoolbytes
+1974946. Earlier initialpool+53036735/repeat0 is historical. No wholeclientcopy orolddata
 removal. Ordinary145PE/engine unchanged,soordinaryLogin was notrepeated.
-IDA4ce73361 saved/closed;finalsessionlist0;allnativehandles terminal0.
+IDA1049c6e2 saved/closed;finalsessionlist0;allnativehandles terminal0.
 No referenceEXEexecution/serverchanges.
 
 ## Remaining integration
 
-1. Actual item-animation effects46D3D0/cleanup6D660,sound andattachment;
- the effectcallback is stillrecorded. Source uses existing StartMagicEffect,
- GetMagicListFromID/IsExistFromMagicSpt families buttheir455contracts must be
- confirmed beforebinding them.406CB0 is positionpointer+80,4077E0 isyaw+108;
+1. Item-animation effect ownership/cleanup/sound now has a separate verified
+ source component:research/client455-equipment-effects.md. This ANI probe
+ still records its effectcallback;the two components need actual integration
+ andthe complete attachment-position provider.406CB0 is positionpointer+80,4077E0 isyaw+108;
  do notmislabel themname/scale basedondecompiler types.
 2. Typed conditions4411E0/4412A0/441840/4418D0/441970/441AC0/442460.
  Their selectedfullASM is alreadyinthe24function proof,notjustpcode.

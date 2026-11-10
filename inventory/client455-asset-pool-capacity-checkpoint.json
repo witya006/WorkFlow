@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "scope": "Native run completed after reaching existing1024link limit;one additional owned280byte replica;no original hardlinks",
+  "native": {
+    "file": "work/m9/19aa9d2d/player-equipment-001/player-equipment-probe.exe",
+    "sha256": "19aa9d2dcbc9e6759690d3f711eac101b5ffa54eadb6e22ef876eba8ff4860e1"
+  },
+  "rows": [
+    {
+      "file": "work/shared-runtime-inputs/7d/7ded70081ac0d129fb0226f78765d3d734612150bf72cbb1aacd354b7a3f5793",
+      "bytes": 280,
+      "links": 1024,
+      "identity": "281474976903722"
+    },
+    {
+      "file": "work/shared-runtime-inputs/7d/7ded70081ac0d129fb0226f78765d3d734612150bf72cbb1aacd354b7a3f5793.1",
+      "bytes": 280,
+      "links": 65,
+      "identity": "281474976913815"
+    },
+    {
+      "file": "work/m9/19aa9d2d/player-equipment-001/item/ModelItem/Mesh/CORA_WEAPON_MININGTOOL_255.BBX",
+      "bytes": 280,
+      "links": 65,
+      "identity": "281474976913815"
+    },
+    {
+      "file": "E:\\RFOnlineTrash\\RFOnline\\item\\ModelItem\\Mesh\\CORA_WEAPON_MININGTOOL_255.BBX",
+      "bytes": 280,
+      "links": 1,
+      "identity": "562949953464974"
+    }
+  ],
+  "new_pool_bytes": 280,
+  "files_deleted": false,
+  "source": {
+    "file": "scripts/client455_asset_staging.py",
+    "sha256": "dcc6ad0943a6d4f6082f53d0abfffd7a9dd409b5a46c77d293e4c1070c1ccff4"
+  },
+  "native_evidence": {
+    "file": "inventory/client455-player-equipment-native.json",
+    "sha256": "da3cb73aeca963bd9b6eb6065299bfb46394481f56c5b87ce70eced1e11fb53c"
+  },
+  "limit": 900
+}

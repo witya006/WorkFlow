@@ -8,9 +8,9 @@
 // The reference call at4539BD passes the EQUIPMENT object as this and its
 // player as arg0. The misleading decompiler call is not Player.SetPrevAction.
 class RF455PlayerEquipmentObject;
-inline float RF455_MountingHeight455(BYTE race,DWORD tableIndex=ID_INVALID){
+inline float RF455_MountingHeight455(BYTE race,DWORD meshID=ID_INVALID){
     float height=race<2?5.8f:race<4?5.0f:8.0f;
-    if(tableIndex!=ID_INVALID&&((tableIndex&0xff00)>>8)==1)height=static_cast<float>(height*0.75);
+    if(meshID!=ID_INVALID&&((meshID&0xff00)>>8)==1)height=static_cast<float>(height*0.75);
     return height;
 }
 class RF455EquipmentAnimationCallbacks {

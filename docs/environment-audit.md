@@ -1,3 +1,17 @@
+# Актуализация окружения —10.11.2026,146компоненты
+
+Новых установок не требовалось. Обычная145сборка1a355372…неизменна.
+Отдельные controller/ANI/fade/height/effect ownership компоненты проверены;
+fullappearance/selection/bootstrap/world/M9 ещё открыты.
+Состояние и оценка:docs/progress-report.md;очередь:docs/next-steps.md.
+IDA1049c6e2 сохранена/закрыта;idb_list0;nativejobsзавершены.
+
+Sharedassetpool упёрся вNTFS1024links у280byteBBX;ограниченные собственные
+реплики восстановилиstaging. ПовторныйnativePASS,+280bytes,оригиналотдельныйinode.
+Свежаяreadonlystorageопись:154.86GiBlogical/42.85GiBunique,ошибок0.
+Это суммафайловыхразмеров,не точнаяfilesystemallocation. Файлынеудалены.
+Ниже история;старые значения и «текущий» относятся к соответствующим версиям.
+
 146ANI/fade:новыхустановокнет.24fullfunc/2220instructions/373CFG equal2pins;
 реальныеANI/pose/fallback/failure/fade/lift прошли.13slotprobeпересобранPASS.
 IDA4ce73361savedclosed/list0;nativejobsнет. Ordinary145не менялся.

@@ -38,7 +38,7 @@ def main():
         ('character','Персонажи и анимация',10,30,45,
          ['Исходные MESH/BN/ANI загрузчики,менеджеры,pose/skinning и выбранные normal draw маршруты;список455 применяет имена/уровни/64-битные деньги/обучение к3реальным Avatar'],
          ['Полный actor lifecycle,игровой выбор/экипировка/состояния/анимации и все consumers'],
-         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint']),
+         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint','client455-equipment-effects-checkpoint']),
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
@@ -120,6 +120,10 @@ def main():
         file=WS/f'work/client-reference/{folder}/RF_Online.bin';assert sha(file)==pins[key]['sha256'] and pe(file.read_bytes())['architecture']=='x86'
         reference.append(dict(file=file.relative_to(WS).as_posix(),sha256=sha(file),architecture='x86'))
     storage=load('workspace-storage-audit')
+    survey_file=WS/'artifacts/client455-progress/assessment-2026-11-10/ida-survey.json'
+    survey=json.loads(survey_file.read_text())
+    assert survey['metadata']['sha256']==reference[0]['sha256'] and survey['metadata']['arch']=='32'
+    assert survey['statistics']['total_functions']>0
     wip_file=WS/'inventory/client455-character-tables-reference.json'
     wip=json.loads(wip_file.read_text()) if wip_file.is_file() else None
     character_native_current=latest=='inventory/client455-character-tables-checkpoint.json'
@@ -132,10 +136,12 @@ def main():
         observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
             exact_linked_build_evidence=dict(file=build_file.relative_to(WS).as_posix(),sha256=sha(build_file),matches_link_record=True),
             newer_build_is_not_the_accepted_runtime=sha(WS/'inventory/client455-normal-build.json')!=normal['normal_build_sha256'],
-            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='Ordinary runtime145 unchanged.146 source controller/clone and real equipment ANI/pose/fallback/fade/mount-height source verified. Actual item animation effects,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.',
+            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='Ordinary runtime145 unchanged.146 source controller/clone,real ANI/pose/fallback/fade/meshID-based mount height and item magic/sound ownership verified separately. Complete attachment positions,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.',
             ordinary_login_observation=dict(file='inventory/client455-login-frame-native.json',sha256=sha(WS/'inventory/client455-login-frame-native.json'),fresh_for_current_PE=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
+        binary_static_inventory=dict(file=survey_file.relative_to(WS).as_posix(),sha256=sha(survey_file),reference_sha256=survey['metadata']['sha256'],architecture='x86',image_base='0x400000',statistics=survey['statistics'],
+            recovered_functions_percent=None,note='IDA-detected bodies include library code and wrappers;no validated exhaustive examined/reconstructed numerator. This count is not a455feature or completion denominator.'),
         input_readiness=dict(available=['legacy0.7client/R3Engine sources','two pinned455x86reference binaries','installed455assets','working modern x86 build and IDA/HexRays'],
             reconstructed=['Character interface and multiple455source implementations'],
             missing=['original full455source/SDK','complete455feature/packet/state inventory','complete expected end-to-end scenario set/resource manifest'],

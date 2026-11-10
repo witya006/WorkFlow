@@ -1,3 +1,48 @@
+# Актуальная память —10.11.2026:оценка и146компоненты
+
+Текущая обычная PE145 по-прежнему1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d;
+equipment145gate current.182client/67engine/20modules/unresolved0.
+Обычный Login —lobby/ожидание,не успешный вход. M6/M6F/M7/M9 OPEN.
+ЦельM9 уже определена:полная приёмка клиента455 без модернизации графики.
+Старый текст objective вget_goal не повод повторно спрашивать M9.
+
+Оценка25%(20–35%),остаток65–80% известного функционального объёма.
+12фиксированных весов,0/12полных областей приняты.150пересекающихся записей
+реестра —не знаменатель возможностей. Статическая описьIDA37865функций
+(включая1296library) сохранена,но полной карты переноса всех тел нет.
+См.docs/progress-report.md иinventory/client455-progress-assessment.json.
+Никакой датыM9 из этих процентов не следует.
+
+146:добавлен отдельныйsourceMagic/sound ownership/cleanup/cloak looptracking.
+Gate inventory/client455-equipment-effects-checkpoint.json;research/client455-equipment-effects.md.
+22fullfunc/1489instructions/222CFG match2pins;realRPK/MagicSpt/Miles/nativePASS.
+4magicstarts/4expires/4waverequests/3samplestops. Attachmentpositionpending,
+ordinaryCPlayerProcfalse. Registry только отслеживаетостановку,неautoreplay.
+Основные RVA6D3D0/6D660/3DBD50/4BD5E0/4BD6A0/4BD780.
+
+Исправлена ошибкаheight:416940/RVA16940 читаетmetadataDWORD72meshID,
+а не индексItemстроки. Headerhelperтеперь принимаетmeshID.
+ANIprovider69cases/52ANI/16models/68poses/1expectedfailure/24liftsPASS.
+4новыхреальныхdiscriminatorcases отличаютindexотmeshbits8.
+Общийheaderзатронулcontroller;егоaudit/native/checkpointобновленыPASS.
+Ordinary145PEне менялась,Loginне повторялся.
+
+Общийпул достигNTFS1024links у280byteBBX. client455_asset_staging.py
+теперь используетограниченныеownedрепликис900links;nativeповторPASS,+280bytes.
+Репликаиrunоднафайловаязапись,оригиналотдельная/nlink1;capacitycheckpointсохранён.
+Failedrunнеудалён. Свежаяstorageопись154.86GiBlogical/42.85GiBunique,
+work/m9 26.70GiBunique/client-graphics-lab12.39GiB;группынельзяскладыватьиз-зассылок.
+Старыефайлынеудалены,новыхполныхclientcopiesнет.
+
+Следующийстык:полныйattachmentposition →typedconditions →actualCPlayerProc/
+Avatar/registeredupgrades/frame/render/appearance →bootstrap/selection.
+Подробнаяqueue толькоdocs/next-steps.md. Не повторятьуже доказанныеполныеbodies.
+Rawattachmentdiagnostic7DD140/7E0B90 сохранён вequipment-effects146-reference.
+IDA1049c6e2saved/closed/idb_list0;всенативныеjobsзавершены.
+ОригинальныеEXE/серверы не запускались/неизменялись.
+
+Ниже исторические записи. Их «current/next» относятся к своим прошлым версиям.
+
 #146продолжение:реальные ANI/fade готовы;ordinary145не менялся
 
 Новыйcomponentgate inventory/client455-equipment-providers-checkpoint.json;

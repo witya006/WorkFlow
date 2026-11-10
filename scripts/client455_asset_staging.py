@@ -8,6 +8,9 @@ from pathlib import Path
 from compare_client_binaries import WS
 
 ASSET_SUFFIXES={'.rpk','.rfs','.r3t','.bsp','.spr','.edf','.dds','.sho','.shr','.vsh','.vso','.ttf','.wav','.jpg','.png','.m3d','.asi','.dll','.spt','.r3o','.r3s','.bn','.bbx','.ani','.msh'}
+#NTFS permits1024links perfile. Identical small assets can reach that limit
+#across many paths,evenwithin one run. Keep bounded owned pool replicas.
+MAX_POOL_LINKS=900
 _owned=None
 _stats=dict(assets=0,linked_bytes=0,new_pool_bytes=0,adopted_bytes=0,private_files=0)
 
@@ -51,7 +54,10 @@ def stage_asset(source,target,expected=None,owned_immutable=None,pool_root=None)
         shutil.copyfile(source,target);_stats['private_files']+=1;return
     pool_root=Path(pool_root) if pool_root else WS/'work/shared-runtime-inputs'
     if not _inside_work(pool_root):raise ValueError('Asset pool must remain under work/')
-    pooled=pool_root/digest[:2]/digest
+    primary=pool_root/digest[:2]/digest;pooled=primary;replica=0
+    while pooled.exists() and pooled.stat().st_nlink>=MAX_POOL_LINKS:
+        if sha(pooled)!=digest:raise ValueError('Shared asset was modified: '+str(pooled))
+        replica+=1;pooled=primary.with_name(primary.name+'.'+str(replica))
     if not pooled.exists():
         pooled.parent.mkdir(parents=True,exist_ok=True)
         candidates=[Path(owned_immutable)] if owned_immutable is not None else []
@@ -62,7 +68,7 @@ def stage_asset(source,target,expected=None,owned_immutable=None,pool_root=None)
         adopted=None
         for candidate in dict.fromkeys(candidates):
             if not _inside_work(candidate):raise ValueError('Cannot adopt a hard link to an original installation')
-            if candidate.is_file() and sha(candidate)==digest:
+            if candidate.is_file() and candidate.stat().st_nlink<MAX_POOL_LINKS-1 and sha(candidate)==digest:
                 if not _inside_work(source) and os.path.samefile(candidate,source):continue
                 adopted=candidate;break
         if adopted is not None:

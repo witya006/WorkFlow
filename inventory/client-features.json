@@ -7782,7 +7782,7 @@
       "implementation": [
         "scripts/native/client455_player_equipment.h"
       ],
-      "verification": "24completefunctions/2220instructions/373CFG equalbothpins;65real cases/48ANI/12models;64realposecalls,1expectedinnerfailure,20actualownerheightchanges/fades PASS. Real zero-maximumANI preserved. Ordinary145 unchanged.",
+      "verification": "24completefunctions/2220instructions/373CFG equalbothpins;69real cases/52ANI/16models;68realposecalls,1expectedinnerfailure,24actualownerheightchanges/fades PASS. Height reads metadata meshID@72 via416940,not table index;4real discriminator cases. Real zero-maximumANI preserved. Ordinary145 unchanged.",
       "evidence": [
         "inventory/client455-equipment-providers-reference.json",
         "inventory/client455-equipment-providers-native.json",
@@ -7793,6 +7793,62 @@
         "Required actual animation item-effect callback46D3D0 is a recorder inprobe",
         "Typed conditions andproduction owner/global state bindings",
         "Actual CPlayerProc/Avatar/registered upgrades/render/appearance/selection/bootstrap/M9"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-EQUIPMENT-EFFECTS-146",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "ordinary_runtime_integrated": false,
+      "description": "Equipment item magic ownership/cleanup/cloak wave playback and loop tracking;complete attachment andordinary integration open",
+      "reference": [
+        {
+          "rva": "0x6d3d0",
+          "role": "Item animation effect ownership"
+        },
+        {
+          "rva": "0x6d660",
+          "role": "Magic/sound cleanup"
+        },
+        {
+          "rva": "0x3dbd50",
+          "role": "Sound request gating"
+        },
+        {
+          "rva": "0x4bd5e0",
+          "role": "Track loop sound"
+        },
+        {
+          "rva": "0x4bd6a0",
+          "role": "Untrack andstop sound"
+        },
+        {
+          "rva": "0x4bd780",
+          "role": "Stop tracked sounds retainingphysical row counts"
+        },
+        {
+          "rva": "0x16940",
+          "role": "Metadata meshID accessor"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_equipment_effects.h"
+      ],
+      "verification": "22complete functions/1489instructions/222CFG equalbothpins;real own native MagicSpt/RPK scheduling/expiration andMiles muted looped WAV/stop pass. Attachment-position provider andordinary player not connected.",
+      "evidence": [
+        "inventory/client455-equipment-effects-reference.json",
+        "inventory/client455-equipment-effects-native.json",
+        "inventory/client455-equipment-effects-checkpoint.json",
+        "research/client455-equipment-effects.md"
+      ],
+      "gaps": [
+        "Complete actual attachment position provider7E0D10/7E22F0 andbone/dummy ownership",
+        "Typed conditions andordinaryCPlayerProc/Avatar/registered/frame/render/selection/bootstrap",
+        "Unsafe overflow/OOM andallremainingM9 requirements"
       ],
       "M6": "OPEN",
       "M6F": "OPEN",

@@ -1,103 +1,55 @@
-# Продолжить146:настоящие эффекты иусловия
+# Следующая работа — связанный экран выбора персонажа
 
-SourceвыборANI/fallback/frame state,реальныеposecalls,fade имонтирование
-уже проверены. Не разбиратьзаново6DF10/6D2F0/6D730/6E3A0.
-Gate inventory/client455-equipment-providers-checkpoint.json;
-research/client455-equipment-providers.md. Ordinary145 unchanged.
+Обновлено10.11.2026. M6/M6F/M7/M9 OPEN. Около25%(20–35%),0/12полных областей.
+Текущая обычная сборка145:1a355372…;182client/67engine/20modules/unresolved0.
+Gate:inventory/client455-equipment-checkpoint.json. Login показывает ожидание;
+вход →выбор →мир ещё не пройден.
 
-Следующийстык:actual46D3D0/cleanup6D660,sound/attachment7E22F0/7E0D10,
-затемtyped4411E0conditionchain,actualCPlayerProc/CPlayer/Avatar/registered
-GetNormalItem-upgrades иordinaryframe/render/defaultsubstitution/selection.
-Providerraw24functions alreadyfullASM/CFG/equalpins. Новыеattachmentdiagnostics
-pcodeonly,вitem-effects-diagnostic.json;7E0D10complete128lines.
-Getposition406CB0=+80/Getyaw4077E0=+108. Не подменятьихname/scale.
+## Уже проверено в146
 
-УскорятьсборASM черезdecode_client455_cfg.py(nativeIDA CFG+independentcount,
-dumpbin covers everybyte). Не использовать compactanalyze_batch previews.
-РеальныйANImaximum0 допустим ивосстановлен;не требоватьmaximum>0.
-Широкиеunchanged159kнаборы не повторять. M6/M6F/M7/M9OPEN;25%(20–35%).
-Ниже сохранены предыдущиеподробности;частьanimation/fade уже выполнена.
+- Контроллер13слотов/normal clone:inventory/client455-player-equipment-checkpoint.json.
+- Реальные ANI/pose/fallback/fade/height:inventory/client455-equipment-providers-checkpoint.json.
+  69случаев/52ANI/16моделей;высота использует meshID@72 через416940,не table index.
+- Magic/sound ownership/cleanup/loop tracking:inventory/client455-equipment-effects-checkpoint.json.
+  Реальные RPK/MagicSpt/Miles;полная привязка эффекта к модели ещё открыта.
+- Обычная145PE неизменна. Ни один из этих отдельных компонентов не закрывает
+  полный внешний вид и выбор персонажа.
 
-# Продолжить146:подключить реальные обработчики
+## Очередь до ближайшего рубежаB
 
-Контроллер13слотов икопирование обычного предмета уже реализованы ипройдены
-на реальных ресурсах какPARTIAL_COMPONENT. Обычная145сборка неизменна.
-Gate:inventory/client455-player-equipment-checkpoint.json;
-research/client455-player-equipment.md. Не повторять уже закрытый32funcаудит.
-Exact145before146 уже сохранён;не перезаписывать snapshot146.
+1. Закончить actual position/attachment7E0D10/7E22F0 и bone/dummy providers.
+   Диагностика:artifacts/client455-progress/equipment-effects146-reference/
+   attachment-diagnostic.json иequipment-providers146-reference/item-effects-diagnostic.json.
+   Для ещё не подтверждённых callees нужны полные ASM/CFG и сравнение двухpins.
+   GetPosition406CB0=+80,GetYaw4077E0=+108;playerbone ищется черезequip0..9.
+2. Typed4411E0 conditions и потребители:4412A0/441840/4418D0/441970/441AC0/442460.
+   Их полная ASM уже в24function provider proof;не собирать заново без причины.
+3. Подключить actualCPlayerProc/CPlayer/Avatar/registered typed upgrades,
+   ordinary frame/render/default substitution. Не кастовать455Item rows
+   к старому CEquipItem/CNormalItem и не выдавать probe recorders за providers.
+4. Закончить загрузчики Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
+   EventSound/SpecialStore/ItemCollection/Map и Avatar finalization.
+5. Принять обычный список/внешний вид/выбор, UI/input и клиентские переходы/ошибки.
+   Полные Title/Login455 рубежаA также остаются открыты.
+   Не обходить загрузку, не принуждать успешный вход, сервер не разрабатывать.
 
-Теперь:полные animation/effect/condition providers46DF10→46D2F0→46D730,
-46D3D0,4411E0→441840/4418D0/441970/441AC0/442460;затемactualCPlayerProc/
-CPlayer/Avatar/registered receiver иtyped GetNormalItem/upgrades. Ни один
-probe-recorder callback не выдавать за готовую игровую реализацию.
-Providerdiagnostics лежитвartifacts/client455-progress/player-equipment146-reference/providers-diagnostic.json;
-441AC0 продолжитьсcursor100. ПолныеASM/CFG/equality этихproviders ещё нужны.
-Послеинтеграции —настоящий animation/render loop ивидимые одетые персонажи.
+ПослеB:персонаж в карте/управление(C) →связанные действия(D) →остальная полнота(E).
+Переоценить объём послеB/C;пока нет основания обещать датуM9.
 
-4539BD/453A80 записываетownerpointer вequipment588,НЕ Player.SetPrevAction.
-Kind братьmetadata88. CNormalItemClone ужеsource,не подменять полнымmemcpy200.
-Текущийordinarygate остаётся equipment145;общаяоценка25%(20–35%)не меняется.
-Ниже подробная основа145;исторические шагиsnapshot/разбораcontroller уже сделаны.
+## Практические ограничения
 
-# Следующие шаги —10.11.2026
+- Snapshot before146 уже сохранён50files;не перезаписывать.
+- ANI maximum0 допустим;exporterbasename выделять на байтах до ASCIIdecode.
+- Полные данные ASM:IDA basic_blocks+independent count →decode_client455_cfg.py.
+  Compactanalyze_batch preview не принимать за полную ASM.
+- Targeted checks для изменённых частей;не повторять неизменённые159k suites.
+- Shared staging только собственных копий. При пределе900ссылок используется
+  следующая собственная реплика пула;в реальном1024link failure повторныйrun
+  прошёл с280новыми байтами. Старые стенды ещё не очищены.
+- Свежая дисковая опись154,86GiBlogical/42,85GiBunique;точнаяallocationне измерена.
+- IDA1049c6e2 saved/closed/list0;native jobs завершены.
+- Полные renderer/physics/lifecycle/CRT-FP/ошибки сохраняются вM9backlog.
+  Локальный сетевой приёмник не отвечал RFпротоколом:успешная авторизация не доказана.
 
-Текущий результат145 PARTIAL; inventory/client455-equipment-checkpoint.json.
-Own1a355372…/x86/entry175F50/2299904bytes;182client/67engine/20modules/unresolved0.
-Обычный WinMain→Title→Login: lobby/ожидание, кадр70/3235мс просмотрен.
-Успешная авторизация, полная загрузка, внешний вид и выбор не приняты.
-M6/M6F/M7/M9 OPEN; ориентир25%(20–35%),0/12полных областей.
-См. progress-report.md, roadmap.md и research/client455-equipment.md.
-
-## Следующий участок146: экипировка и внешний вид
-
-1. Перед изменением runtime сохранить точную145базу:
-   scripts/Invoke-Python.ps1 scripts/snapshot_client455_runtime.py 146 client455-equipment-checkpoint.
-2. Разобрать полные инструкции/CFG контроллера CPlayerProc13слотов:
-   PutOn453030,Create453760,remove453550,getters4536C0/453730,
-   SetBone452FE0,rematch/weapon453280 иAvatar4198D0/4199D0.
-   Адреса VA для x86/base400000; в отчётах указывать RVA и SHA бинарника.
-   Diagnostic pcode есть в equipment145-reference/session.json; он не заменяет
-   доказательства всех веток. Проверить реальные перегрузки4531E0/453100.
-3. Восстановить создание/получение/снятие и типизированные игровые потребители,
-   затем rematch/weapon/shield/fade/animation/draw. Не cast455rows вlegacyструктуры.
-   Не считать наличие32загруженных моделей готовым внешним видом персонажа.
-4. Проверить изменённый путь на настоящих Item/Resource/BN/MSH/ANI/texture входах,
-   обычном обработчике списка персонажей и собственном кадре; обновить частичный gate.
-   Не запускать неизменённые159kнаборы ради счётчика.
-
-## До ближайшего принятого результата B
-
-- Полный класс/умения и игровые потребители: часть143/144 только таблицы/индексы/
-  имена; выделенные панели умений ещё не заполнены полной логикой455.
-- Обычный внешний вид и UI выбора: полный контроллер экипировки, слои/состояния/
-  анимация/отрисовка, данные всех3Avatar и правильные переходы/ошибки.
-- Остаток bootstrap:Quest/EventShip/NDMsgMonster/ItemTimer/country slot296/
-  NDMsgEvent/EventSound/SpecialStore/ItemCollection/Map/5default effects/
-  Avatar finalization/registered request. Рольslot296 ещё неизвестна.
-  ItemTimer/SpecialStore не подменять Exp/Combine. Не force success/не bypass.
-- FullTitle/movie/factory4/explicitnext,10Loginwindows/systemsprite5/layout/
-  focus/input остаются открыты. Legacyfactory3/modulo не считать455.
-
-После B: C персонаж→карта→управление, затем D связанные игровые действия,
-затем E все остальные требованияM6F/M7/M9. Обновлять оценку после B/C.
-Проверка условий входа — клиентская задача; серверные проекты не изменять/не собирать.
-
-## Текущие ограничения и данные
-
--145 подключает6typeddefaultslots; старые GetDefaultItem/UnsetDefaultItem/copy
- overload и полный private644ABI не восстановлены. Не заявлять fullappearance.
--1120 неразрешённых ссылок Resource141 — частичная опись, не1120доказанно
- обязательных отсутствующих файлов. В145 все33выбранные текстуры разрешены вRFT.
--Локальные подготовленные сетевые входы не равны настоящему успешному входу.
- ОбычныйLogin run отправил67байт, ответовRFпротокола не было.
--Engine137 неизменён;fullrefraction/particles/BBoShasi/INS/Empty/visibility/
- collision/device lifecycle ипрочие client-acceptance gaps сохранены.
--Exact144 сохранён before145; прежние snapshots не перезаписывать.
--Общие ресурсы новых стендов — через shared-runtime-inputs, только собственные
- копии. Оригиналы не hardlink. EXE/config/изменяемые fixtures частные.
--Старые150.95GiBlogical/42.29GiBunique не удалены; до очистки проверить
- содержимое дубликатов и достижимость доказательств. Не клонировать installedclient.
--IDA7dd394bb saved/closed;native jobs нет. Остальные правила — AGENTS.md.
-
-Прежние детали очереди сохранены в research/next-steps-before-assessment-2026-11-10.md;
-актуальный приоритет — этот файл и roadmap.md, не исторические «далее143/144».
+Полная оценка:docs/progress-report.md;план:docs/roadmap.md.
+Предыдущие подробности сохранены вresearch/next-steps-before-effects146.md.

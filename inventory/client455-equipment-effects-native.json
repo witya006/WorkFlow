@@ -1,0 +1,132 @@
+{
+  "scope": "Equipment animation effect ownership/cleanup/cloak sound control;ordinary player/typed conditions/complete attachment still open",
+  "reference_sha256": "e9b5ee554320ecb8b2ec13ccace3a3dcaf1889221bea0f77338587aedd5bbd94",
+  "source": {
+    "file": "scripts/native/client455_equipment_effects_probe.cpp",
+    "sha256": "7088695762731661f656c3c002dced4bcdd45494f21dfeff94aa196eab73bd27"
+  },
+  "script": {
+    "file": "scripts/probe_client455_equipment_effects.py",
+    "sha256": "1d1c582cc2015d08e68c2413c85b6b4b20971a02b36c6f12e13f9a7d6f5b58f1"
+  },
+  "builder": {
+    "file": "scripts/client455_own_probe.py",
+    "sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9"
+  },
+  "normal_link_sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
+  "exe": {
+    "file": "work/m9/e52464bf/equipment-effects-001/equipment-effects-probe.exe",
+    "sha256": "e52464bfcb3d0988eae80b94d1665f0337df26dd5579dbdd800117633f70366c"
+  },
+  "map": {
+    "file": "work/client455-port/equipment-effects-probe/equipment-effects-probe.map",
+    "sha256": "7cef39d5c123ab7f4033c49ba54cb8e5a81496a766c6ae1e9a31e951c83035fe"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Effect/MagicSptList.spt",
+      "sha256": "71ee31d6993c3735ee68c7fddf759687e86445388e8d18ea9014d1ca31cfb650",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Effect\\MagicSptList.spt"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/waveList.spt",
+      "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\waveList.spt"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Effect/EffectEntityList.spt",
+      "sha256": "87b5a829c4114bc913d1fbef431cebe5de37c332ddd59e919dddb7bc3b178759",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Effect\\EffectEntityList.spt"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Effect/EffectEntity21.rpk",
+      "sha256": "d802d33c8ec7eefa3e316116d17ced442d6daeab3c84e81ef04a0b036f22b254",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Effect\\EffectEntity21.rpk"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Effect/EffectEntity58.rpk",
+      "sha256": "d98f2e9c27b18a959a0add986f71a8fc6d0198226555bfd68ed6811d597d01c2",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Effect\\EffectEntity58.rpk"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/Item/Manteau/B_Default.wav",
+      "sha256": "7ae56be6014b37506ba581e6249340ba9df700c4f740dcb93a4f553dad0c9f7a",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Item\\Manteau\\B_Default.wav"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/Item/Manteau/B_Unequip.wav",
+      "sha256": "8aa31e1b41722249ca374e2505202a2535d08c8affaad2d15a7d01be35969604",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Item\\Manteau\\B_Unequip.wav"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/Item/Manteau/B_Use.wav",
+      "sha256": "aac8ca79a434032fcfce4cfaab6a7d9f9d8c4b8d35c89a409a3bcecda8e16784",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Item\\Manteau\\B_Use.wav"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/Character/Newclear/Radar_00.wav",
+      "sha256": "57667b9c351c8d08098c752fb3f6c700cb9691969a055dbfd9745f0eea61d82f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Character\\Newclear\\Radar_00.wav"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/msssoft.m3d",
+      "sha256": "5dcbf188c30ae1ac6a3d5b7fac4a25e831c9a495683b044f5141c4bdbc83f607",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msssoft.m3d"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/msseax.m3d",
+      "sha256": "62e0e34435b9705eedc73660e64564138d8276dcf7b08dfbaac05c592b67e6d3",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msseax.m3d"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/Snd/mssmp3.asi",
+      "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\mssmp3.asi"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+    },
+    {
+      "file": "work/m9/e52464bf/equipment-effects-001/R3Engine.ini",
+      "sha256": "39557f5faff3f615b5c9919a07fa3e070816785badf244c18b4968d907dc5385"
+    }
+  ],
+  "console": {
+    "file": "work/m9/e52464bf/equipment-effects-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/e52464bf/equipment-effects-001/result.json",
+    "sha256": "604d5ae85eec1781d57b284db93236635daf5be21e63157aa283587516d9e77e"
+  },
+  "native": {
+    "status": "PASS",
+    "actual_magic_starts": 4,
+    "actual_magic_expires": 4,
+    "wave_requests": 4,
+    "sample_stops": 3,
+    "tracked_adds": 1,
+    "tracked_removes": 2,
+    "real_cloak_WAV_loop_and_stop": true,
+    "physical_row_retention": true,
+    "stop_all_preserves_counts": true,
+    "creation_position_provider_pending": true,
+    "ordinary_player_connected": false,
+    "full_conditions": false,
+    "full_appearance": false
+  },
+  "natural_exit": 0,
+  "shared_asset_staging": {
+    "assets": 13,
+    "linked_bytes": 32212083,
+    "new_pool_bytes": 29546324,
+    "adopted_bytes": 1506276,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

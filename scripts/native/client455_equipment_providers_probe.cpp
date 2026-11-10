@@ -38,7 +38,7 @@ public:
     }
     void adjustOwnerHeight(RF455PlayerEquipmentObject& object,bool add)override{
         require(object.GetOwner455()==&actor,"Real own player for mount lift");
-        const float amount=RF455_MountingHeight455(actor.GetRace(),object.GetTableIndex455());
+        const float amount=RF455_MountingHeight455(actor.GetRace(),object.GetPlan455().meshID);
         actor.SetPosition(actor.GetPosX(),actor.GetPosY()+(add?amount:-amount),actor.GetPosZ());++lifts;
     }
     bool pendingOwnerLift()const override{return liftPending;}
@@ -48,7 +48,7 @@ class AnimationObject146:public RF455PlayerEquipmentObject {
 public:
     void seedFrames(){m_dwOldBoneFrame=77;m_dwBoneFrame=999;}
 };
-struct AnimationCase146{unsigned type,index,race,mode,effective,id,found,parts,maximum,tracks;};
+struct AnimationCase146{unsigned type,index,race,mode,effective,id,found,parts,maximum,tracks;float height;};
 static int run(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     FILE* file=std::fopen("expected.bin","rb");require(file,"Animation expected");char magic[4];require(std::fread(magic,1,4,file)==4&&!std::memcmp(magic,"EA46",4),"Animation fixture signature");
@@ -76,7 +76,7 @@ static int run(){
             require(object.SetEquipmentAnimation455(c.mode,host)&&host.effects==2,"Public equipment wrapper returns true even when inner selection fails");
             const bool special=c.type==8||c.type==46;
             if(special)require(bool(object.IsEnable(256))==(c.mode==0||c.mode==3),"Special animation render flag");
-            float expected=before;if(c.type==46){const float h=RF455_MountingHeight455(BYTE(c.race),object.GetTableIndex455());if(c.mode==1||c.mode==3||c.mode==4)expected+=h;else if(c.mode==2||c.mode==5)expected-=h;}
+            float expected=before;if(c.type==46){const float h=c.height;if(c.mode==1||c.mode==3||c.mode==4)expected+=h;else if(c.mode==2||c.mode==5)expected-=h;}
             require(std::abs(actor.GetPosY()-expected)<0.0001f,"Actual mount owner height change");
             if(c.type==46&&c.mode==3)require(!host.liftPending,"Mode3 consumes pending lift");lifts+=host.lifts;
         }

@@ -920,3 +920,16 @@ Ownb41d50ff… ordinaryLogin PASS;fullAvatarclass/equipment/selection/M9 OPEN.
 2026-11-10 /144:actual Avatarclassindex/name writers иencryptedregistered
 receiver3realclasses проверены. Own ea25eea5…/ordinaryLogin PASS.
 Полныеclassskills/UIlayout/equipment/selection/M9 OPEN;research/client455-avatar-classes.md.
+
+2026-11-10 /146: equipment magic/sound ownership andcleanup source verified
+against both pinned x86 binaries.22fullfunctions/1489instructions/222CFG;
+actual RPK magicqueue andMiles cloak WAV loop/stop pass. Complete attachment
+positions/typed conditions/ordinaryCPlayerProc/appearance remainopen.
+Fixed mountingheight input:416940/RVA16940 reads metadata meshID@72,not Item
+table index;4additional real discriminators pass.69ANI-provider cases/52ANI/
+16models/68poses/24height changes;ordinary145PE unchanged.
+NTFS1024link limit reached for280byte sharedBBX;bounded owned pool replicas
+allow next run withonly280newbytes,no original hardlinks. Fresh storageaudit:
+154.86GiB logical/42.85GiB unique file sizes,not exact diskallocation.
+IDA1049c6e2saved/closed/list0;native handles terminal;no originalEXE/server work.
+Evidence:research/client455-equipment-effects.md anddocs/progress-report.md.

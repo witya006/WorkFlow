@@ -29,6 +29,16 @@ def main():
     requests=[(8,0,race,mode) for race in range(5) for mode in range(6)]
     requests += [(27,0,4,mode) for mode in range(6)]+[(46,0,race,mode) for race in range(4) for mode in range(6)]
     requests += [(6,1820,0,mode) for mode in range(4)]+[(1,0,0,1)]
+    #416940 reads metadata.meshID,not the table index. Choose a real mount
+    #where their bits8..15 differ so that the height join is observable.
+    mount=items[46];height_mount=None
+    for index in range(mount['count']):
+        row=mount['data'][index*mount['stride']:(index+1)*mount['stride']]
+        mesh=struct.unpack_from('<I',row,72)[0]
+        if ((mesh>>8)&255)==1 and ((index>>8)&255)!=1 and (5,mesh&0xff0fffff) in meshes:
+            height_mount=index;break
+    assert height_mount is not None,'Real model-ID/table-index height discriminator'
+    requests += [(46,height_mount,race,4) for race in range(4)]
     for kind,index,race,mode in requests:
         item=items[kind];row=item['data'][index*item['stride']:(index+1)*item['stride']];mesh=struct.unpack_from('<I',row,72)[0]
         adjusted=(mesh&0xff0fffff)|(race<<20) if ((mesh>>16)&15) in [0,8] and ((mesh>>20)&255)!=10 and ((mesh>>8)&255)!=7 else mesh
@@ -54,7 +64,9 @@ def main():
                     #resource-directory basename;do not recode the prefix.
                     name=header[offset:offset+100].split(b'\0')[0].replace(b'\\',b'/').rsplit(b'/',1)[-1].decode('ascii')
                     if name:textures.add((directory,name))
-        cases.append(dict(type=kind,index=index,race=race,mode=mode,effective=effective,animation_id=selected,found=found,mesh_parts=loaded_models[relative],ani_maximum=ani_maximum,ani_tracks=ani_tracks))
+        f32=lambda value:struct.unpack('<f',struct.pack('<f',value))[0]
+        height=f32(f32(5.8 if race<2 else 5.0 if race<4 else 8.0)*(0.75 if ((mesh>>8)&255)==1 else 1.0))
+        cases.append(dict(type=kind,index=index,race=race,mode=mode,effective=effective,animation_id=selected,found=found,mesh_parts=loaded_models[relative],ani_maximum=ani_maximum,ani_tracks=ani_tracks,height=height,raw_mesh=mesh))
     fallbacks=[]
     for directory,name in textures:
         path=client/directory/name
@@ -63,11 +75,12 @@ def main():
             inputs.missing.discard(path.resolve().relative_to(client.resolve()).as_posix());fallbacks.append(dict(requested=path.relative_to(client).as_posix(),resolved=alternate.relative_to(client).as_posix()))
     assert not inputs.missing,inputs.missing
     target=WS/'artifacts/client455-equipment-providers';target.mkdir(exist_ok=True);expected=target/'expected.bin'
-    expected.write_bytes(b'EA46'+struct.pack('<I',len(cases))+b''.join(struct.pack('<10I',c['type'],c['index'],c['race'],c['mode'],c['effective'],c['animation_id'],c['found'],c['mesh_parts'],c['ani_maximum'],c['ani_tracks']) for c in cases))
+    expected.write_bytes(b'EA46'+struct.pack('<I',len(cases))+b''.join(struct.pack('<10If',c['type'],c['index'],c['race'],c['mode'],c['effective'],c['animation_id'],c['found'],c['mesh_parts'],c['ani_maximum'],c['ani_tracks'],c['height']) for c in cases))
     sources=[WS/'scripts/native'/name for name in ['client455_player_equipment.h','client455_normal_item_copy.h','client455_equipment_providers_probe.cpp']]
     report=dict(status='PARTIAL_COMPONENT_STATIC',scope='Equipment animation selection/fallback/state and fade;full production item effects/conditions/appearance still open',**proof,raw=record(raw),
         decoder_script=record(WS/'scripts/decode_client455_cfg.py'),regions_script=record(WS/'scripts/client455_reference_regions.py'),resource_script=record(WS/'scripts/client455_resource_inputs.py'),script=record(Path(__file__)),
         sources=[record(p) for p in sources],inputs=list(inputs.inputs.values()),cases=cases,selected_animations=needed_ani,selected_models=loaded_models,texture_fallbacks=fallbacks,missing=[],resolved_members=inputs.members,expected=record(expected),
+        height_input='metadata meshID@72 via416940,not table index',height_mesh_accessor_evidence=record(WS/'inventory/client455-equipment-effects-reference.json'),height_discriminator_mount_index=height_mount,
         ordinary_runtime_changed=False,production_controller_connected=False,full_item_animation_effects=False,full_condition_effects=False,full_player_appearance_or_draw=False,input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
     (WS/'inventory/client455-equipment-providers-reference.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(functions=proof['full_functions'],instructions=proof['full_instructions'],blocks=proof['positive_cfg_blocks'],cases=len(cases),real_animations=len(needed_ani),models=len(loaded_models),inputs=len(inputs.inputs),missing=0)))
