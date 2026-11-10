@@ -98,7 +98,8 @@
         "client455-animation-checkpoint",
         "client455-registered-characters-checkpoint",
         "client455-avatar-classes-checkpoint",
-        "client455-equipment-checkpoint"
+        "client455-equipment-checkpoint",
+        "client455-player-equipment-checkpoint"
       ]
     },
     {
@@ -415,6 +416,14 @@
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-player-equipment-checkpoint": {
+      "file": "inventory/client455-player-equipment-checkpoint.json",
+      "sha256": "222d38c8aa3cb38447c0c9ceee0c96982b0d325504459dea63798da38e89208e",
+      "status": "PARTIAL_COMPONENT",
+      "scope": "13-slot source equipment controller and detached normal-item copy;required production condition/animation/effect providers remain open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-font-checkpoint": {
       "file": "inventory/client455-font-checkpoint.json",
       "sha256": "8d7c2870f6934cef7c4e66d62123098529605e7b50f0ec53776c02092f87359e",
@@ -577,7 +586,7 @@
     "newer_build_is_not_the_accepted_runtime": false,
     "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "145 PARTIAL:typed equipment creation/resource binding and six ordinary Avatar default slots;32real models/33GPUtextures/30default creations. Fresh affected account and ordinary Login pass. Full Player equipment/draw/appearance/selection and remaining bootstrap open.",
+    "current_work": "Ordinary runtime145 unchanged.146 source component:13-slot controller and detached normal-item clone verified with real assets;production animation/condition/effect providers and actual CPlayerProc integration still open. Full appearance/selection/bootstrap/world/M9 not accepted.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
@@ -616,11 +625,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "12a7fdc2a83a205b4f1e66f798c7f799887b9cb930e28be7815bfa3d6ff843e5",
-    "entries": 147,
+    "sha256": "d884fed346227e6879cee402941e4e263c3abf84c00ccd8ec6b1a12915b3fb7e",
+    "entries": 148,
     "statuses": {
       "partial": 115,
-      "partial_component": 2,
+      "partial_component": 3,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -683,7 +692,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;147 overlapping historical records",
+        "measured": "12 domain planning map;148 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -837,7 +846,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "0bb9d9d76322e75029aa0ff66deeabf7b833f6e22fdfbc9cc93f818a5155e23b"
+    "sha256": "6df83d937f37997ad4fbac7f1fbbe25f952bf6490fd5babe39692208e2f5ddd7"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

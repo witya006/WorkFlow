@@ -7701,6 +7701,55 @@
         "Camera branch needs index18 while old console has17entries;do not writeOOB or claim full wrapper",
         "Client Create/UI/launcher/network/gameplay/device reset/fullscreen/show/normal shutdown and M6/M6F/M7/M9 remain open"
       ]
+    },
+    {
+      "id": "CLIENT455-PLAYER-EQUIPMENT-146",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "ordinary_runtime_integrated": false,
+      "description": "13-slot typed player equipment controller and detached normal-item clone;required production animation/condition/effect providers remain open",
+      "reference": [
+        {
+          "rva": "0x53760",
+          "role": "Core equipment creation/slot mapping/owner"
+        },
+        {
+          "rva": "0x53550",
+          "role": "Clone-before-clear/removal/effects order"
+        },
+        {
+          "rva": "0x53030",
+          "role": "Numeric equip path"
+        },
+        {
+          "rva": "0x61cc0",
+          "role": "CNormalItem detached clone"
+        },
+        {
+          "rva": "0x4bc0",
+          "role": "Normal-item selected-field copy"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_player_equipment.h",
+        "scripts/native/client455_normal_item_copy.h"
+      ],
+      "verification": "32fullfunctions/1640instructions/225CFG equalbothpins;full-object own native real Item/Resource/models/textures/controller andclone lifetime PASS. Ordinary145PE unchanged;not full appearance.",
+      "evidence": [
+        "inventory/client455-player-equipment-reference.json",
+        "inventory/client455-player-equipment-native.json",
+        "inventory/client455-player-equipment-checkpoint.json",
+        "research/client455-player-equipment.md"
+      ],
+      "gaps": [
+        "Required production animation/condition/effect providers;probe callbacks record their invocation only",
+        "Connect actual CPlayerProc/CPlayer/Avatar/registered receiver andtyped upgrades",
+        "Full animation/render/default substitution/selection/bootstrap/world/M9"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

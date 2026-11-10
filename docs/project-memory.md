@@ -1,3 +1,31 @@
+# Продолжение146 —компонент проверен,обычная сборка145
+
+146PARTIAL_COMPONENT:typed13slotcontroller anddetachednormalclone implemented.
+Gate inventory/client455-player-equipment-checkpoint.json;research/client455-player-equipment.md.
+32fullfunc/1640instructions/225CFG equalbothpins;nativefullobject Item/Resource/
+30actualcontrollerbasecreations/aliases8,9,10,11,12/bothwrapperoverloads/removal/
+cloneconsumers PASS.32modelrecords/33GPUtextures throughsharedinputs;newpool0.
+CurrentPE1a355372… andordinary145runtimegate unchanged;no new Loginrun necessary.
+
+IMPORTANT:4539BD passes equipmentthis andplayerarg into453A80;itstoresowner588.
+This is NOT Player.SetPrevAction despite misleadingpcode. Sourceclass exposes
+GetOwner455/SetOwner455. Kind=metadata88,notheaderkind12.13storage/diagnostic12render.
+Normalclone461CC0→404BC0→405CE0→405E70copieswrittenfields andreferencebyte;
+no managerinsertion/nosource retain. Nativeconsumer verifies copiedIDs/data/name/
+referencebyte afteroriginalslotrelease. Allocationpadding notnormalized.
+
+Nativehost uses realRematchParent andsourceClone. Animation/fade/action/condition/
+effect callbacks are recorders,NOT productionproviders. Controller not yetconnected
+actualCPlayerProc. Keepordinaryruntime145current;do notreplacewithcomponentgate.
+Next146phase:productionproviders46DF10/46D2F0/46D730/46D3D0 and4411E0typed
+condition chain;thenCPlayerProc/CPlayer/Avatar/registered GetNormalItem/upgrades,
+actual12slotframe/render/defaultsubstitution/ordinaryappearance andselection.
+FullASM32raw saved;providerdiagnostics separate,441AC0needs nextcursor100.
+Exact145before146(50files). IDA7c61237d saved/closed/list0;nativehandles terminal0.
+No server/originalEXE activity.25%(20–35%),0/12fullaccepted,M6/M6F/M7/M9OPEN.
+
+## Предыдущая актуальная база145 и ограничения
+
 # Актуальная память —10.11.2026,145PARTIAL
 
 Текущий gate:inventory/client455-equipment-checkpoint.json.

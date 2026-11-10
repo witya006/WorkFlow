@@ -1,3 +1,12 @@
+2026-11-10 — Player equipment146 PARTIAL_COMPONENT.13typedslots/controller
+andselected normal-item clone restored;32fullfunctions/1640instructions/225CFG
+match bothpins. Real Item/Resource/model/texture/controller executions,aliases,
+wrapper sharing andcloneconsumer lifetime pass. Own145ordinaryPE unchanged.
+Required production animation/condition/effect callbacks remain open;probe
+recorders are explicitly notgameplay.4539BD/453A80 stores equipmentowner588,
+notPlayer.SetPrevAction. No originalEXE/server changes;IDAclosed/list0,newpool0.
+[Evidence](research/client455-player-equipment.md).M6/M6F/M7/M9OPEN.
+
 2026-11-10 — Assessment and equipment145 PARTIAL. Final ownPE1a355372…:
 18fullfunctions/630instructions/60CFG match both pins;typed equipment resources
 and6ordinary Avatar default slots connected.32real models/33GPU textures/

@@ -1,3 +1,8 @@
+146,10.11:новыхустановокнет.Отдельныйsourcecontroller13slots/normalclone
+прошёлfull-object nativeпроверку.32func/1640instructions/225CFG equal2pins.
+IDA7c61237d saved/closed/list0;nativeexit0.Ordinary145PEне менялся.
+Actualproductionanimation/condition/effectproviders иappearance ещёopen.
+
 # Актуализация аудита —10.11.2026
 
 Последняя собственная x86сборка1a355372…/entry175F50:182client/67engine/

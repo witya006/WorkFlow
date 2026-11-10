@@ -1,3 +1,24 @@
+# Продолжить146:подключить реальные обработчики
+
+Контроллер13слотов икопирование обычного предмета уже реализованы ипройдены
+на реальных ресурсах какPARTIAL_COMPONENT. Обычная145сборка неизменна.
+Gate:inventory/client455-player-equipment-checkpoint.json;
+research/client455-player-equipment.md. Не повторять уже закрытый32funcаудит.
+Exact145before146 уже сохранён;не перезаписывать snapshot146.
+
+Теперь:полные animation/effect/condition providers46DF10→46D2F0→46D730,
+46D3D0,4411E0→441840/4418D0/441970/441AC0/442460;затемactualCPlayerProc/
+CPlayer/Avatar/registered receiver иtyped GetNormalItem/upgrades. Ни один
+probe-recorder callback не выдавать за готовую игровую реализацию.
+Providerdiagnostics лежитвartifacts/client455-progress/player-equipment146-reference/providers-diagnostic.json;
+441AC0 продолжитьсcursor100. ПолныеASM/CFG/equality этихproviders ещё нужны.
+Послеинтеграции —настоящий animation/render loop ивидимые одетые персонажи.
+
+4539BD/453A80 записываетownerpointer вequipment588,НЕ Player.SetPrevAction.
+Kind братьmetadata88. CNormalItemClone ужеsource,не подменять полнымmemcpy200.
+Текущийordinarygate остаётся equipment145;общаяоценка25%(20–35%)не меняется.
+Ниже подробная основа145;исторические шагиsnapshot/разбораcontroller уже сделаны.
+
 # Следующие шаги —10.11.2026
 
 Текущий результат145 PARTIAL; inventory/client455-equipment-checkpoint.json.

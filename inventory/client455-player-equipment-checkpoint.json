@@ -1,0 +1,59 @@
+{
+  "status": "PARTIAL_COMPONENT",
+  "scope": "13-slot source equipment controller and detached normal-item copy;required production condition/animation/effect providers remain open",
+  "static_functions": 32,
+  "static_instructions": 1640,
+  "positive_cfg_blocks": 225,
+  "evidence": {
+    "client455-player-equipment-reference": {
+      "file": "inventory/client455-player-equipment-reference.json",
+      "sha256": "f666b93d7178e82423f9a30fdc0bf85e944a5e607cabdfe7c0003cf2e47e5c35"
+    },
+    "client455-player-equipment-native": {
+      "file": "inventory/client455-player-equipment-native.json",
+      "sha256": "4994834af1470af2e8c5c4c43a60777e755705741a69fad7c0f3e7d56a9a0c4c"
+    },
+    "client455-equipment-checkpoint": {
+      "file": "inventory/client455-equipment-checkpoint.json",
+      "sha256": "758136ea93f09769ceee07c6d23948162174e78788543b524e06d61d326ae299"
+    },
+    "client455-normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e"
+    }
+  },
+  "runtime_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+    "bytes": 2299904,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x175f50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_runtime_gate": "inventory/client455-equipment-checkpoint.json",
+  "ordinary_runtime_changed": false,
+  "real_controller_model_creations": 30,
+  "source_clone_implemented": true,
+  "production_controller_connected": false,
+  "full_player_appearance_or_draw": false,
+  "ordinary_selection_accepted": false,
+  "full_client": false,
+  "gaps": [
+    "Production animation/condition/effect providers and actual CPlayerProc integration",
+    "Complete12-slot rendering/animation loop and other actor appearance consumers",
+    "Ordinary appearance/selection/bootstrap/world/gameplay and fullM9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
