@@ -21,7 +21,7 @@ void CNetworkMgr::SystemMsg_RegedCharResult_zone( char* packet )
         for(unsigned j=0;j<5;++j)avatar->SetDefaultItem(parts[j],((row.baseShape>>(4*j))&15)+16*row.race);
         for(unsigned j=0;j<8;++j){
             if(row.equipment[j]==-1){
-                if(j<5){auto* item=avatar->GetDefaultItem(parts[j]);if(item)avatar->PutOnEquipment(parts[j],item->GetDTIndex());}
+                if(j<5){auto* item=avatar->GetDefaultItem455(parts[j]);if(item&&item->GetItem455())avatar->PutOnEquipment(parts[j],item->GetTableIndex455());}
                 else avatar->PutOffEquipment(parts[j]);
             }else{
                 avatar->PutOnEquipment(parts[j],static_cast<DWORD>(row.equipment[j]));
@@ -29,7 +29,7 @@ void CNetworkMgr::SystemMsg_RegedCharResult_zone( char* packet )
             }
         }
         avatar->PutOnEquipment(0,((row.baseShape>>20)&15)+16*row.race);
-        auto* helmet=avatar->GetDefaultItem(5);if(helmet)avatar->PutOnEquipment(10,helmet->GetDTIndex());
+        auto* helmet=avatar->GetDefaultItem455(5);if(helmet&&helmet->GetItem455())avatar->PutOnEquipment(10,helmet->GetTableIndex455());
         avatar->SetAction(0x10000000,TRUE);avatar->SetLightColor(0xff808080);
         if(latest<row.lastConnection){m_dwLastestAvatarIndex=row.slot;latest=row.lastConnection;}
     }

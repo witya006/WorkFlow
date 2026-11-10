@@ -1,3 +1,17 @@
+# Актуализация аудита —10.11.2026
+
+Последняя собственная x86сборка1a355372…/entry175F50:182client/67engine/
+20additionalmodules,0unresolved. Новых установок не требовалось.
+145PARTIAL:32реальные модели,33GPU-текстуры,30вызовов обычного базового
+оснащения,6слотов Avatar; затронутый receiver и обычныйLogin проверены.
+Login frame70/3235ms просмотрен: lobby/ожидание;авторизация не выполнялась.
+FullPlayerProc/equipment/draw/selection/bootstrap/M9 OPEN.
+IDA7dd394bb saved/closed. Оригиналы/server не изменялись.
+
+Готовность исходных данных и оставшийся объём: [progress-report.md](progress-report.md).
+Gate:inventory/client455-equipment-checkpoint.json;research/client455-equipment.md.
+Далее сохранена история аудита; её прежние номера «текущего» не актуальны.
+
 # Аудит окружения — 04.11.2026
 
 Дополнение144(10.11.2026):own ea25eea5… собран182/20/link0;

@@ -1,3 +1,12 @@
+2026-11-10 — Assessment and equipment145 PARTIAL. Final ownPE1a355372…:
+18fullfunctions/630instructions/60CFG match both pins;typed equipment resources
+and6ordinary Avatar default slots connected.32real models/33GPU textures/
+30actual default creations/teardown verified;affected account andordinary Login
+frame70/3235ms pass. FullPlayerProc/appearance/selection remainopen.
+See research/client455-equipment.md. Assessment25%(20–35%),0/12fullaccepted;
+coarse scope unchanged. Roadmap compacted around A–E connectedclient scenarios;
+fulloldroadmap/queue archived. No referenceEXE/server changes or oldasset deletion.
+
 # RF Online client reconstruction journal
 
 2026-11-10 — Initial item bootstrap142 PARTIAL. Ordinary Login now invokes real

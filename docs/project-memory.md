@@ -1,3 +1,41 @@
+# Актуальная память —10.11.2026,145PARTIAL
+
+Текущий gate:inventory/client455-equipment-checkpoint.json.
+Own1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d,
+x86/base400000/entry175F50/2299904bytes;182client/67engine/20modules/unresolved0.
+Engine137 unchanged708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870.
+18fullfunc/630instructions/60CFG equal2pins.32realmodels/33GPUtextures/
+30actualAvatar.SetDefaultItem calls/6retainedpayloads/0afterteardown PASS.
+Strict meshlookup requires both LoadRealData return and m_Load;real type6/index32
+metadata mesh00A10320 absent:Create true,mesh/bone null — preserved455quirk.
+All33DDS requests resolve to realRFT. Resource group0meshes registered inmanager5.
+
+Ordinary registeredreceiver uses GetDefaultItem455;6sourceownedtypedslots added.
+FullCPlayerProc13slots/effects/rematch/fade/animation/draw,legacyGet/Unset/copy,
+completeprivate644ABI andequippedappearance not accepted.
+Affectedaccount/3Avatarclasses/currentPE PASS. OrdinaryWinMain/Miles/Login
+frame70/3235ms viewed:lobby/waiting. Loopback received67bytes,RFresponses0,
+authenticationfalse. Ordinarysuccessbootstrap/selection/world/gameplay stillopen.
+Exact144before145(50files) preserved. Sharedfirstpool+57,508,702bytes;repeat0.
+IDA7dd394bb saved/closed;nativejobs нет. Research:client455-equipment.md.
+
+User requested a candid assessment after4days,not test totals. Current estimate
+25%(20–35%),remaining65–80%known functional scope,0/12fullaccepted.
+Sources/build dependencies ready for selectedconfiguration;fulloriginal455SDK0,
+2pinnedPEavailable;fullfeature/packet/state/resource/scenario inventory incomplete.
+Assessment is explicitengineeringjudgement,fixed12weights,not measuredcoverage.
+Updated docs/progress-report.md and compactroadmap.md;historicalroadmap retained
+inresearch/roadmap-before-assessment-2026-11-10.md. Do not treat oldhistorical
+«next143/144/145» as currentwork. Do not reopenM9definition or developservers.
+
+Next146:snapshot145 via snapshot_client455_runtime.py 146 client455-equipment-checkpoint;
+thenactualPlayerProc13slots andappearance. Prioritize B selection,Cmap/control,
+Dgameplay,EfullM9. ATitle/Login stillpartial. No newbulk159k unchangedsuites.
+Reassess afterB/C. CalendarM9 notcalibrated. Current user-facingtask is assessment;
+do not claimM9complete or inflate percent for eachsmallpartialcomponent.
+
+## Сохранённая история и постоянные технические ограничения
+
 # Память проекта
 
 Текущий144 PARTIAL — inventory/client455-avatar-classes-checkpoint.json;

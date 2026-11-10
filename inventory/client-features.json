@@ -6,9 +6,90 @@
   "image_base": "0x400000",
   "features": [
     {
-      "id": "CLIENT455-AVATAR-CLASSES-144",
+      "id": "CLIENT455-EQUIPMENT-145",
       "status": "partial",
       "runtime_gate_current": true,
+      "description": "Typed equipment creation/resource binding and six ordinary Avatar default slots;full Player equipment/appearance/draw remains open",
+      "implementation": [
+        "scripts/client455_equipment_port.py",
+        "scripts/native/client455_equipment_object.h",
+        "scripts/native/client455_equipment_object.cpp",
+        "scripts/native/client455_registered_characters.inc"
+      ],
+      "reference": [
+        {
+          "rva": "0x19da0"
+        },
+        {
+          "rva": "0x1a000"
+        },
+        {
+          "rva": "0x19f00"
+        },
+        {
+          "rva": "0x8920"
+        },
+        {
+          "rva": "0x19f30"
+        },
+        {
+          "rva": "0x6db70"
+        },
+        {
+          "rva": "0x6bf60"
+        },
+        {
+          "rva": "0x6c190"
+        },
+        {
+          "rva": "0x6d810"
+        },
+        {
+          "rva": "0x6d860"
+        },
+        {
+          "rva": "0x6c100"
+        },
+        {
+          "rva": "0x21c9d0"
+        },
+        {
+          "rva": "0x21c9f0"
+        },
+        {
+          "rva": "0x21ca10"
+        },
+        {
+          "rva": "0x43c0"
+        },
+        {
+          "rva": "0x1e0a90"
+        },
+        {
+          "rva": "0x6be60"
+        },
+        {
+          "rva": "0x6db30"
+        }
+      ],
+      "verification": "18fullfunc/630instructions/60CFG and equipmentRTTI equal both455pins.32realmodels/33GPUtextures/30actual Avatar defaults/51branch plans pass;payload replacement/copy/reference release leaves0.Production default CALL decoded.Affected account and ordinary Login70/3203ms pass.182client/20kernels/link0/unresolved0;full draw/selection not claimed.",
+      "evidence": [
+        "inventory/client455-equipment-reference.json",
+        "inventory/client455-equipment-native.json",
+        "inventory/client455-equipment-checkpoint.json",
+        "research/client455-equipment.md"
+      ],
+      "gaps": [
+        "Full CPlayerProc creation/effect/weapon/rematch/fade/animation/draw consumers remain unported",
+        "Legacy GetDefaultItem/UnsetDefaultItem/copy overload and remaining gameplay item consumers remain open;ordinary registered receiver uses new typed getter",
+        "This is not complete private644byte CEquipObject ABI/constructor or full failure/concurrency equivalence",
+        "Full appearance/selection/bootstrap/world/gameplay/M9 open"
+      ]
+    },
+    {
+      "id": "CLIENT455-AVATAR-CLASSES-144",
+      "status": "partial",
+      "runtime_gate_current": false,
       "description": "Ordinary Avatar class index/name writers using real455tables;separate23text widgets;full class skill/CharInfo layout/equipment/selection open",
       "implementation": [
         "scripts/client455_avatar_classes_port.py",
@@ -70,7 +151,8 @@
         "CreateClassSkill caller restored but existing production board implementation remains unported;tests cover board-absent branch",
         "23value widgets own text state;full455CharInfo layout/input/render and other writers remain open",
         "Equipment/registered appearance/full bootstrap/selection/world/gameplay and all client-acceptance/unsafe/concurrent domains open"
-      ]
+      ],
+      "superseded_by": "CLIENT455-EQUIPMENT-145"
     },
     {
       "id": "CLIENT455-CHARACTER-TABLES-143",

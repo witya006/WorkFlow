@@ -97,7 +97,8 @@
         "client455-normal-accounting-checkpoint",
         "client455-animation-checkpoint",
         "client455-registered-characters-checkpoint",
-        "client455-avatar-classes-checkpoint"
+        "client455-avatar-classes-checkpoint",
+        "client455-equipment-checkpoint"
       ]
     },
     {
@@ -256,7 +257,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "534fb4a454930b7d4c028c35433edaa5efce934a7341900564c2d0eb68a9c17c",
+      "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -272,7 +273,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "3cb840a9f831c24b3239dfac8a917bfdbe74b340ada5048f326d9ac36069292a",
+      "sha256": "116c463772f241d6821edbbebca9d1a21b10d8a4d51a4941c85fc11940cb1db0",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -403,6 +404,14 @@
       "sha256": "3f90f2aa0c20c084feb8d1b538eca9b475b2857daf381089c82568374d7ff8be",
       "status": "PARTIAL",
       "scope": "Ordinary Avatar class index/name writers through real455class tables;dedicated23value widgets;full skill callback/CharInfo layout/equipment/selection open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-equipment-checkpoint": {
+      "file": "inventory/client455-equipment-checkpoint.json",
+      "sha256": "758136ea93f09769ceee07c6d23948162174e78788543b524e06d61d326ae299",
+      "status": "PARTIAL",
+      "scope": "Typed CEquipObject creation/resource binding and ordinary Avatar default slots;full player equipment/appearance/render still open",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -472,7 +481,7 @@
     },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
-      "sha256": "520bdbbacac6634c6fd076c39c70749fe14731c96dba07613340ede5652cb53b",
+      "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
       "status": "PARTIAL",
       "scope": "Ordinary own WinMain/Title/Login render with real lobby and recovered root registration;not complete455Title/Login/auth",
       "fresh_for_current_PE": true,
@@ -534,11 +543,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "ea25eea5222039073ddf7e7823219336080ae298fd78afa0e99b38a65584f812",
-      "bytes": 2294784,
+      "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+      "bytes": 2299904,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x174fc0",
+      "entry_rva": "0x175f50",
       "sections": [
         ".text",
         ".rdata",
@@ -562,20 +571,20 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "d14753a4d018d290dbccb1bf83822d3325fca05f9e032a8f3c65abf0e6e2bb93",
+      "sha256": "f5db19edf6d1ea63e0e53a0e6df0a7bb9c3b8ddea62e04dfbdfb13dac03438aa",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-avatar-classes-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "144 PARTIAL:actual Avatar class index/name writers,3real locales and encrypted receiver applying real classes to3Avatar. Ordinary Login pass;next equipment/appearance/remaining bootstrap/selection. Full skill callback and455CharInfo layout remain open.",
+    "current_work": "145 PARTIAL:typed equipment creation/resource binding and six ordinary Avatar default slots;32real models/33GPUtextures/30default creations. Fresh affected account and ordinary Login pass. Full Player equipment/draw/appearance/selection and remaining bootstrap open.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "ea5f1ef1cec246dcb4e9d0170f7615da00e52758c17a48328c4bab5d3ef2d645",
+      "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
       "fresh_for_current_PE": true,
       "frame": {
-        "file": "work/m9/ea25eea5/login-frame001/login-frame.png",
-        "sha256": "6cd8db33464a5cb853d5cda28d35b8c4c64ce244207225db495d4c887fe55fe1"
+        "file": "work/m9/1a355372/login-frame001/login-frame.png",
+        "sha256": "6b0d14b2375970d5f7f9a56b9304fbff4eeadcb01060952e6fac0db353f93b1a"
       },
       "capture": {
         "result": 0,
@@ -583,14 +592,14 @@
         "height": 500,
         "format": 22,
         "frame_index": 70,
-        "elapsed_ms": 3219,
+        "elapsed_ms": 3235,
         "requested_delay_ms": 3200
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xb39fbc0",
-        "vtable": "0xe58b84",
+        "object": "0xa961ab8",
+        "vtable": "0x6f9b84",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -607,10 +616,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "18245fb85247d35f5138536a744443a759c78f2f76b267d8b78a97a37c914a78",
-    "entries": 146,
+    "sha256": "12a7fdc2a83a205b4f1e66f798c7f799887b9cb930e28be7815bfa3d6ff843e5",
+    "entries": 147,
     "statuses": {
-      "partial": 114,
+      "partial": 115,
       "partial_component": 2,
       "audit_open": 1,
       "open": 2,
@@ -621,7 +630,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-AVATAR-CLASSES-144"
+      "CLIENT455-EQUIPMENT-145"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -674,7 +683,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;144 overlapping historical records",
+        "measured": "12 domain planning map;147 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -737,7 +746,7 @@
     ],
     "native_verified_on_current_build": false,
     "not_claimed": [
-      "Avatar class/equipment/UI migration",
+      "Full Avatar/class-skill/equipment/UI migration;selected144/145 paths have separate evidence",
       "normal successful bootstrap",
       "full class/selection/client acceptance"
     ]
@@ -814,7 +823,7 @@
     "distinguish_build_readiness_component_verification_and_full_acceptance": true,
     "test_or_function_counts_are_not_completion_percent": true,
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "The new packet/Avatar integration closes a local dependency,not a complete functional domain"
+    "unchanged_range_reason": "The new packet/Avatar/class/equipment integrations close local dependencies;ordinary selection/world/gameplay still unproved. Coarse scope estimate is unchanged."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -828,7 +837,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "dc7aadeb3ea3c525d6601cf1b27e824e8af8d0938038e82bf79c2d2a5e9b8b1d"
+    "sha256": "0bb9d9d76322e75029aa0ff66deeabf7b833f6e22fdfbc9cc93f818a5155e23b"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
