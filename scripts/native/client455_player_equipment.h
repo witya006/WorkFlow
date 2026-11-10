@@ -24,8 +24,9 @@ public:
 };
 class RF455PlayerEquipmentObject:public RF455EquipmentObject {
     BYTE fadeMode455=0,fadeMaximum455=60,fadeCurrent455=0;
+    RF455EquipmentAnimationCallbacks* animationHost455=nullptr;
     BYTE itemKind455()const{
-        if(!GetItem455())return 255;
+        if(!GetItem455()||!GetItem455()->header().data16)return 255;
         auto* item=dynamic_cast<RF455BasicItem*>(GetItem455());
         if(!item)throw std::logic_error("455 equipment animation requires a normal payload");
         const auto row=item->rawMetadata();if(row.size<=88)throw std::out_of_range("455 equipment animation metadata");
@@ -43,6 +44,7 @@ class RF455PlayerEquipmentObject:public RF455EquipmentObject {
         return host.findItemAnimation(id);
     }
 public:
+    bool IsMeshWrapperKind455(BYTE kind)const override{return kind==1;}
     BOOL Render()override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render();}
     BOOL Render455(const D3DXMATRIX& matrix)override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render455(matrix);}
     void SetOwner455(void* owner){m_dwItemField588455=static_cast<DWORD>(reinterpret_cast<std::uintptr_t>(owner));}
@@ -58,6 +60,7 @@ public:
     }
     //46DF10 deliberately ignores the inner animation result and returns true.
     bool SetEquipmentAnimation455(DWORD mode,RF455EquipmentAnimationCallbacks& host){
+        animationHost455=&host;
         const BYTE kind=itemKind455();
         if(kind==8||kind==46){
             if(mode==0||mode==3)Enable(256);
@@ -70,6 +73,27 @@ public:
             else if(mode==3&&host.pendingOwnerLift()){host.adjustOwnerHeight(*this,true);host.clearPendingOwnerLift();}
         }
         return true;
+    }
+    BOOL Animation(DWORD frame=ID_INVALID)override{
+        if(!GetItem455())return FALSE;
+        (void)itemKind455();return RF455EquipmentObject::Animation(frame);
+    }
+    void FrameMove()override{
+        RF455EquipmentObject::FrameMove();const BYTE kind=itemKind455();
+        const auto next=[&](DWORD mode){
+            if(!animationHost455)throw std::logic_error("455 equipment animation transition has no live owner provider");
+            SetEquipmentAnimation455(mode,*animationHost455);
+        };
+        const auto ended=[&](DWORD mode){return m_Animation.IsEqualID(mode)&&!m_Animation.IsAnimating();};
+        if(kind==8){
+            if(ended(4)||ended(1))next(3);
+            if(ended(2)||ended(5))next(0);
+        }else if(kind==9||kind==46){
+            if(ended(4))next(7);
+            if(ended(5))next(0);
+            if(ended(6))next(6);
+            for(DWORD mode=7;mode<=10;++mode)if(ended(mode))next(0);
+        }else if(ended(1)||ended(3)||ended(4))next(0);
     }
     void SetFade455(BYTE mode,BYTE maximum=60){
         fadeMode455=mode;fadeMaximum455=maximum?maximum:60;fadeCurrent455=mode==1?fadeMaximum455:0;

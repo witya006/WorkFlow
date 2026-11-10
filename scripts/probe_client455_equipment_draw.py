@@ -1,5 +1,5 @@
 """Verify actual equipment wrappers, GPU contribution and retained queue poses."""
-import ctypes,json,shutil,struct,subprocess
+import argparse,ctypes,json,shutil,struct,subprocess
 from pathlib import Path
 from compare_client_binaries import WS
 from client455_own_probe import build_full_object_probe
@@ -10,6 +10,7 @@ from audit_client455_language import decode
 from audit_client455_item_payloads import item_tables
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--report-label',choices=['equipment-draw','equipment-frame-render'],default='equipment-draw');args=parser.parse_args()
     source=WS/'scripts/native/client455_equipment_draw_probe.cpp'
     exe=build_full_object_probe('equipment-draw',source)
     parent=WS/'work/m9'/sha(exe)[:8];index=1
@@ -45,7 +46,14 @@ def main():
         script=record(Path(__file__)),normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),map=record(mapping),inputs=inputs,
         console=record(console),output=record(output) if output.exists() else None,native=native,natural_exit=result.returncode,frames=frames,
         shared_asset_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
-    text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text);(WS/'inventory/client455-equipment-draw-native.json').write_text(text)
+    if args.report_label=='equipment-frame-render':
+        baseline=WS/'inventory/client455-equipment-draw-native.json'
+        before=json.loads(baseline.read_text());prior={Path(p['file']).name:p for p in before['frames']}
+        assert len(prior)==len(frames)==6
+        for row in frames:
+            old=prior[Path(row['file']).name];assert sha(WS/old['file'])==old['sha256']==row['sha256'],'Equipment image changed: '+row['file']
+        report['render_regression']=dict(baseline=record(baseline),equal_frames=6,comparison='SHA256 of complete PNG bytes on same controlled GPU fixture')
+    text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text);(WS/f'inventory/client455-{args.report_label}-native.json').write_text(text)
     print(json.dumps(dict(exit=result.returncode,native=native,staging=report['shared_asset_staging'],console_tail=console.read_text(errors='replace')[-1200:],run=run.relative_to(WS).as_posix())))
     if result.returncode or not native or native['status']!='PASS':raise ValueError('Equipment render failed;inspect '+str(run))
     assert all(sha(WS/row['file'])==row['sha256'] for row in inputs)

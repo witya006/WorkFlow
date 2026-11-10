@@ -84,7 +84,7 @@ struct RF455EquipmentEffectState {
         if(magic){backend.expireMagic(magic,0.0f);magic=0;}
         if(sound){backend.stopWave(sound,0);backend.untrackLoop(sound,0);sound=0;}
     }
-    void process(const RF455EquipmentEffectOwner& owner,std::uint32_t rawMesh,
+    void process(const RF455EquipmentEffectOwner& owner,const float* equipmentPosition,std::uint32_t rawMesh,
                  std::uint8_t itemKind,bool renderFlag,std::uint32_t mode,RF455EquipmentEffectBackend& backend){
         if(!owner.object)return;
         const std::uint32_t mesh=(rawMesh&0xff0fffff)|(std::uint32_t(owner.race)<<20);
@@ -94,12 +94,12 @@ struct RF455EquipmentEffectState {
         const auto local=backend.localActor();if(local.index==0xffffffff)return;
         if(itemKind!=8||!mode)return;
         if(mode==3&&local.index==owner.index){
-            sound=id-3;backend.playWave(sound,owner.position,1);backend.trackLoop(sound,0);return;
+            sound=id-3;backend.playWave(sound,equipmentPosition,1);backend.trackLoop(sound,0);return;
         }
         if(local.index==owner.index){
-            backend.playWave(id,owner.position,0);
+            backend.playWave(id,equipmentPosition,0);
             if(mode==2&&local.walkMode==2&&local.action==0x10000001)backend.untrackLoop(id+1,0);
-        }else if(mode!=3)backend.playWave(id,owner.position,0);
+        }else if(mode!=3)backend.playWave(id,equipmentPosition,0);
         sound=0;
     }
 };

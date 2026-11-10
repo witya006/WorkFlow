@@ -8250,7 +8250,7 @@
     {
       "id": "CLIENT455-CHAR-INFO-VALUES-152",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "ordinary_runtime_integrated": true,
       "description": "Ordinary fullDWORD/float stat writers14..18 and3basicrow valueowners;full455metric getters/refresh/layout open",
       "reference": [
@@ -8299,7 +8299,35 @@
       "M6": "OPEN",
       "M6F": "OPEN",
       "M7": "OPEN",
-      "M9": "OPEN"
+      "M9": "OPEN",
+      "runtime_gate_last_verified": true
+    },
+    {
+      "id": "CLIENT455-EQUIPMENT-FRAME-153",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Actual CMesh/CEquip frame/ANI/end transitions,dummy/always/event follow andequipment-position sound;ordinaryAvatar6deriveddefaults;full12-slot player stillopen",
+      "implementation": [
+        "scripts/native/client455_equipment_frame.inc",
+        "scripts/native/client455_equipment_object.h",
+        "scripts/native/client455_equipment_object.cpp",
+        "scripts/native/client455_player_equipment.h",
+        "scripts/native/client455_equipment_effects.h",
+        "scripts/client455_equipment_port.py"
+      ],
+      "evidence": [
+        "inventory/client455-equipment-frame-reference.json",
+        "inventory/client455-equipment-frame-native.json",
+        "inventory/client455-equipment-frame-render-native.json",
+        "inventory/client455-equipment-frame-checkpoint.json",
+        "research/client455-equipment-frame.md"
+      ],
+      "verification": "13fullfunctions/969instructions/137CFG bothpins;realANI end transition/actor10/Spine17/Miles equipmentposition/dummy/copy/missingmagic and21controlledbranches;6renderPNG equal150;freshCreate/Login/account3Avatar. Nativehost isnot fullproductionplayer.",
+      "ordinary_Avatar_derived_defaults": true,
+      "ordinary_full_player_connected": false,
+      "full_appearance_or_selection": false,
+      "full_client": false
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

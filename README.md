@@ -9,12 +9,17 @@
 Серверные исходники — справочник для чтения. Оригиналы не изменять.
 Работать под work/. Входные EXE не выполнять. Git локальный, без публикации.
 
-## Последняя проверенная обычная сборка152
+## Последняя проверенная обычная сборка153
 
-Own RF_Online.bin579bc166…:x86/VS2026,182client/67engine/20modules,unresolved0.
+Own RF_Online.bin3296a413…:x86/VS2026,182client/67engine/20modules,unresolved0.
 Обычный WinMain →Title →Login показывает lobby/ожидание.
 Успешный вход, выбор персонажа и игровой цикл ещё не приняты.
-Gate:inventory/client455-char-info-values-checkpoint.json.
+Gate:inventory/client455-equipment-frame-checkpoint.json.
+В153 восстановлены Animation/FrameMove объектов экипировки,переходы конца ANI,
+привязка magic икоординаты WAV. Проверены настоящие модели/ANI/Miles;
+обычные6default owners Avatar теперь производныеCEquip. Шесть кадров равны150.
+Полный12-slot CPlayerProc ещё не подключён;выбор/мир/M9 открыты.
+[Доказательства153](research/client455-equipment-frame.md).
 В152 восстановлены full-DWORD/float stat setters14..18;три basic rows
 используют настоящие value owners. Полный455Avatar metric/layout ещё открыт.
 [Доказательства152](research/client455-char-info-values.md).
@@ -41,7 +46,7 @@ fade/alpha, источник уровня свечения и очередь с�
 Расчёт special/upgrade/combinedstats/weakpart проверен на22реальных предметах;
 владельцы skill/UI иобычные producers/consumers ещё не подключены.
 В150 проверены race/helmet visibility и PRNG конструктора/копирования.
-Обычная152сборка ещё не использует полный контроллер;
+Обычная153сборка ещё не использует полный контроллер;
 индекс12 в эталоне выходит за массив и не считается принятым сценарием.
 [Исправление и актуальные доказательства150](research/client455-player-visual.md).
 Ближайшее:соединить обработчики с CPlayerProc/Avatar →внешний вид/выбор.

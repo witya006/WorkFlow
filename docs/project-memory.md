@@ -1,3 +1,27 @@
+# Текущая проверенная база153 — 10.11.2026
+
+Own3296a413…/x86/entry17B430,182client/67engine/20kernels,unresolved0.
+Gate inventory/client455-equipment-frame-checkpoint.json PARTIAL.
+CMesh/CEquip получили реальные Animation/FrameMove/end transitions,
+однократный dummy scan,always state иследование event magic за actor/Spine/yaw.
+WAV использует equipment position,не actor position. Virtual120(kind2) false
+для обоих текущих wrappers;byte4=2 не означает ground. Полный ground открыт.
+Настоящие ANI/модели/Miles и21контролируемая ветка конца проверены.
+Обычные6default owners Avatar теперьCEquip;основной12-slot CPlayerProc ещё
+не подключён. Это зависимость полного персонажа,не закрытая appearance.
+Create/Login/account3Avatar PASS. Login65/3015ms просмотрен:ожидание/Beta0.738,
+безauth;профиль9first-chance прежний,unhandled0. Шесть render PNG равны150.
+Полные player/condition/UI/particle registry/выбор/мир/gameplay/M9 OPEN.
+Оценка25%(20–35%),0/12полных областей,без повышения.
+Доизменений exact152 сохранена вbefore153/manifest.json,52файла.
+Перед следующими ordinary edits snapshot154 сequipment-frame gate.
+OwnedIDA57ba692a сохранена/закрыта ранее;новыеIDA sessions здесь не открывались.
+Native jobs завершены. Оригиналы/server неизменны,входныеEXE не исполнялись.
+Последнийполный storageaudit16:34:07 —156.14GiB logical/42.96GiB unique file
+sizes,не замер кластеров. Первый153pool+280bytes,финальныеframe/renderpool0;
+новые собственныеEXE/maps/results есть. Старые стенды не удалялись.
+Доказательства research/client455-equipment-frame.md. Ниже сохранена история.
+
 # Текущая проверенная база152 —10.11.2026
 
 Own579bc166…/x86/entry179A40,182client/67engine/20kernels,unresolved0.

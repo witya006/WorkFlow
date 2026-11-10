@@ -1,6 +1,7 @@
 #pragma once
 #include "client455_item_object.h"
 #include "r3material.h"
+#include "client455_equipment_effects.h"
 #include <array>
 #include <memory>
 
@@ -25,6 +26,7 @@ struct RF455EquipmentPlan {
     DWORD tableIndex=0,meshID=0;BYTE tableType=0,race=255,resourceGroup=5;
 };
 RF455EquipmentPlan RF455_PlanEquipment(BYTE type,DWORD encodedIndex,DWORD meshID);
+struct RF455EffectPositionView;
 
 // Source-owned creation/resource/payload part of CEquipObject. Its target
 // private644-byte layout is not a C++ overlay. Render wrappers use actual
@@ -40,6 +42,9 @@ class RF455EquipmentObject:public CItemObject {
     BYTE overlayGrade455; //The target constructor does not initialize604.
     bool overlayGradeKnown455=false;
     std::array<BYTE,10> dummy455{};
+    RF455EquipmentEffectState animationEffects455;
+    const RF455EffectPositionView* frameOwner455=nullptr;
+    void UpdateAlwaysEffect455();
     bool CanRender455();
     void DrawWithEffect455(BYTE,const D3DXMATRIX*);
 public:
@@ -50,6 +55,15 @@ public:
     DWORD GetTableIndex455()const;
     float GetRandom455()const{return random455;}
     BOOL Render() override;
+    BOOL Animation(DWORD frame=ID_INVALID) override;
+    void FrameMove() override;
+    void BindFrameOwner455(const RF455EffectPositionView* view){frameOwner455=view;}
+    void ProcessAnimationEffect455(DWORD,RF455EquipmentEffectBackend&,const RF455EquipmentEffectOwner&);
+    DWORD AnimationMagic455()const{return animationEffects455.magic;}
+    DWORD AnimationSound455()const{return animationEffects455.sound;}
+    //CMeshObject virtual120 isfalse;CEquipObject accepts1. This discriminator
+    //is NOT CObject's byte4(which is2 for both wrappers).
+    virtual bool IsMeshWrapperKind455(BYTE)const{return false;}
     virtual BOOL Render455(const D3DXMATRIX&);
     BOOL RenderWithShadow455();
     BYTE EffectGrade455()const;

@@ -1,86 +1,65 @@
-# Продолжение M6 — внешний вид, выбор и обычный игровой маршрут
+# Продолжение M6 — обычный персонаж и выбор
 
-Обновлено10.11.2026. Последняя проверенная обычная сборка152/579bc166…,
-182client/67engine/20kernels,unresolved0.
-Gate:inventory/client455-char-info-values-checkpoint.json PARTIAL.
+10.11.2026. Проверенная база153/3296a413…;182client/67engine/20kernels/link0.
+Gate:inventory/client455-equipment-frame-checkpoint.json PARTIAL.
 Оценка25%(20–35%);0/12полных областей. M6/M6F/M7/M9 открыты.
 
-## Проверенная основа
+## Что готово для следующего соединения
 
-- Обычные Create/Login/account3Avatar прошли;Login65/3000ms просмотрен,
-  lobby/ожидание,Beta0.738. Авторизации/полного выбора/мира ещё нет.
-- Render/default+matrix,fade/alpha,grade604 и очередь поз/владельцев149
-  прошли свежую затронутую проверку150;шесть контролируемых кадров совпадают.
-- В150 исправлен неверный вывод146:полные ctor/dtor создают12объектов.
-  Index12 выходит за массив;собственный отказ не считается target failure parity.
-- Race/helmet visibility и PRNG создания/копирования проверены отдельно.
-  Полный контроллер пока не владеет обычными CPlayerProc/CPlayer/Avatar.
-
-- 151: network Premium flag и Avatar benefits/bonus floats подключены к обычному
-  dispatcher57/12. Никаких подстановок Premiumfalse/bonus0 вместо producers.
-  Полный Premium UI и post-update condition/UI refresh ещё не перенесены.
-
-- 152: fullDWORD/float stat setters14..18 итри basicrow owners перенесены;
-  старый ordinary Avatar caller проходит без16битного усечения. Полные455
-  metric getters/condition/mount/buff/refresh и23fieldlayout всё ещё нужны.
+- Typed controller12физических слотов,создание/clone/visibility и PRNG.
+  Index12 выходит за настоящий массив;собственный отказ не равен target failure.
+- Render/default+matrix,fade/alpha/grade/retained pose queue проверены отдельно.
+  Шесть кадров153 совпадают150. Полный particle registry всё ещё старый.
+- FrameMove/Animation/end transitions,однократные dummy,always state иevent
+  magic follow восстановлены. Реальные cloak mode3(create_type10) имode4
+  (Spine17),ANI иMiles проверены. Sound position берётся отequipment.
+  Виртуальный kind2 false у CMesh/CEquip;не путать сbyte4 иground wrapper.
+- Ordinary6default owners Avatar теперь производныеCEquip. Полное владение
+  экипировкой икадр основного CPlayerProc всё ещё используют старую модель.
+- Network Premium flag/Avatar benefits producer57/12 установлен;полные UI/
+  condition refresh открыты. Stat setters14..18 и3basic rows перенесены;
+  полные455metrics/23fieldlayout/41A8B0 refresh ещё нужны.
 
 ## Дальнейший порядок
 
-1. Соединить12-slot controller иготовые object Render/pose/ANI/fade с обычными
-   CPlayerProc/CPlayer/Avatar. Реальные owners/providers обязательны;recorders/
-   no-op callbacks из probes не переносить как готовую production-реализацию.
-   Ближайший видимый результат:правильно одетый персонаж в обычном клиенте.
-2. Подключить FrameMove/Animation/dummy/effect/sound/condition/UI consumers.
-   4513E0 — доказанно пустой processor FrameMove,не пропущенное тело.
-   450BD0/451330 и equipment46D200/46D9B0 имеют отдельные реальные зависимости.
-   Владельцы flag442440 и bonusfloats24712 теперь подтверждены и подключены:
-   network PremiumState455(),Avatar PremiumBenefits455().combatBonuses().
-   Полный condition-host и post-57/12 condition/UI refresh всё ещё нужны;
-   Premium window/icon481 остаются отдельным gap. Готовые stat setters152
-   не заменяют реальные455metric getters41BD40/41BE50/41BF60/41C0B0/41C1B0.
-   Avatar virtual252→41A060→skillboard490EB0,typed SF accessor иinfo-window
-   update463740 ещё требуют соединения. Pcode-only диагностика сохранена в
+1. Подключить12-slot controller к настоящим CPlayerProc/CPlayer/Avatar иего
+   producers/consumers. Ближайший наблюдаемый результат — правильно одетый
+   персонаж в обычной сборке,затем работающий выбор. Не кастоватьRF455payload
+   илиmetadata в старыеCNormalItem/ITEM_DATA. Не оставлять успешные no-op hosts.
+2. Соединить уже готовые frame/ANI/dummy/effect/pose/Render сlive actor view,
+   текущим embedded processor иреальными condition/skill/UI owners.
+   4513E0 реально пуст.450BD0/451330 имеют отдельные зависимости.
+   Avatar virtual252→41A060→skillboard490EB0,typedSF accessor иinfo-window
+   update463740 нужны для condition-host. Pcode26owners сохранены в
    artifacts/client455-progress/char-info152-reference/player-owner-diagnostics.json;
-   не выдавать её за полный ASM/production proof. Выбранный PRNG ctor/copy закрыт,
-   но полная PRNG-последовательность/CRT/lifecycle остаётся непроверенной.
-3. Перенести общий particle/entity registry:сейчас старыйg_Particle1024/5clones,
-   target — vectors/6clones/one-attempt failure. Constructor/default capacity
-   проверить;loader расширяет при count+1>3072,это не default2000 изRVP.
-   Ненулевые эффекты экипировки ещё не приняты.
+   это диагностика,не полный ASM proof. MountHeight читает текущий wornmount
+   metadata mesh72,не tableindex и не произвольный detached object.
+3. Общий particle/entity registry:старыйg_Particle1024/5clones,targetvectors/
+   6clones/one-attempt failure. Default capacity неизвестна;не брать2000изRVP.
+   Ненулевые частицы иground wrapper пока не приняты.
 4. Довести bootstrap Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
-   EventSound/SpecialStore/ItemCollection/Map,Avatar finalization иполный
-   Title/Login/выбор455:input,ошибки,клиентские сообщения,переходы.
-   Не обходить загрузку и не принуждать успешный вход. Сервер не разрабатывать.
+   EventSound/SpecialStore/ItemCollection/Map,Avatar finalization иполные
+   Title/Login/выбор455:ввод,ошибки,сообщения,переходы. Не обходить загрузку,
+   не принуждать успешный вход;сервер не разрабатывать.
 5. Затем C:карта/камера/управление/коллизии;D:атака/умения/предметы/чат;
-   E:остальные функции/классы/карты/устойчивость и полная M6F/M7/M9 приёмка.
+   E:остальные функции/классы/карты/устойчивость иполнаяM6F/M7/M9 приёмка.
 
-## Сохранение и целевые проверки
+## Сохранение и проверки
 
-- before152 — точная151runtime,52файла;before151 —150,53файла;
-  before150 —149,52файла;
-  before149 —148,также exact16sourceinputs;
-  before148 —147,before146 —145. Существующие снимки не перезаписывать.
-- **До следующих ordinary edits**:
-  snapshot_client455_runtime.py153 client455-char-info-values-checkpoint.
-- Текущий runtime gate не заменять старыми146/149gate с историческими SHA.
-  Старый13-slot вывод отменён;использовать новый player-visual auditor/runner.
-- Полные selectedRender62functions/6959instructions/650CFG уже исследованы.
-  Текущие11playerfunctions/684instructions/107CFG плюс полныйPRNG9instructions
-  также доказаны на2pins;не повторять готовый поиск без новой зависимости.
-- player-visual:work/m9/c6cec91b/player-visual-001;draw:work/m9/e2014ded/equipment-draw-001.
-  Новых poolbytes0. Не повторять неизменённые огромные suites ради счётчика.
-- Индекс12/queue writes за allocation,BYTEreference overflow иошибки CRT/FP/OOM
-  явно остаются gaps;не выдавать управляемый отказ за полную target parity.
-- Полный Premium state reference8functions/583instructions/64CFG уже проверен
-  на2pins;не повторять поиск владельцев. Native work/m9/00ff6e2a/premium-state-001,
-  однаDLL/newpoolbytes0. Разные минимальные payload57/49/1 подтверждены.
-- Stat writers152:6fullfunctions/185instructions/9CFG equal2pins;native
-  work/m9/5519fe61/char-info-values-001,однаDLL/newpool0. Не повторять готовый
-  поиск stat writers. FP/CRT/target stack-overflow domains остаются gaps.
-- IDAe3deb20c сохранена/закрыта,list0,native jobs завершены.
-  Оригиналы/сервер не менялись. Никакие старые стенды не удалены.
+- Перед следующими ordinary edits:
+  snapshot_client455_runtime.py154 client455-equipment-frame-checkpoint.
+  before153 — exact152,52файла;старые снимки не перезаписывать.
+- Новый frame auditor/runner/gate используют current sources. Старые146/150/
+  152gates состарымиSHA — исторические,не свежие проверки текущей PE.
+- Final frame:work/m9/55c69791/equipment-frame-001;render:
+  work/m9/07878f1a/equipment-draw-001. Контролируемыеkind9/46 — branch fixture,
+  не проверенные настоящиеSiege visuals. Callback host не productionCPlayerProc.
+- Fresh Create/Login/account3Avatar пройдены;Login65/3015ms просмотрен,
+  ожидание/Beta0.738/безauth.9прежнихfirst-chance,unhandled0.
+- Тестировать затронутое. Не повторять неизменённые159k/bulk suites.
+  Индекс12/queue заallocation/byteoverflow/неинициализированные позиции иCRT/
+  FP/OOM домены остаются gaps. Управляемый отказ не принимается как targetparity.
+- Последняя полная опись16:34:07,156.14GiB logical/42.96GiB unique files,
+  не точный filesystem allocation. Final staging pool0;ничего не удалено.
 
-Оценка/остаток/готовность исходных данных:progress-report.md.
-Текущие доказательства:research/client455-char-info-values.md;
-Premium producers:research/client455-premium-state.md;
-структура12слотов:research/client455-player-visual.md.
+Подробности:research/client455-equipment-frame.md;оценка:docs/progress-report.md.

@@ -1,3 +1,14 @@
+2026-11-10 — Equipment frame153 PARTIAL. Restored CMesh/CEquip Animation,
+FrameMove/end transitions,dummy/always/motion-effect follow andequipment-position
+WAV. Virtual120(kind2) isfalse forboth currentwrappers;byte4=2 isnotground.
+Ordinary6Avatar defaults nowderivedCEquip. Real ANI end→loop,actor10/Spine17,
+Miles,dummy/copy/missingmagic and21controlledbranches pass;6renderPNG equal150.
+Own3296a413…/182client/67engine/20kernels/link0;Create/Login/account3Avatar pass.
+Fullordinary12-slot player/providers/condition/UI/particles/selection/world/M9open.
+Before153 preservesexact152;storageauditunchanged16:34,newfinalpool0,no deletions.
+Two fixture expectation errors andrender-report baselinepath fixed,documented.
+[Evidence](research/client455-equipment-frame.md). Estimate25%(20–35%)unchanged.
+
 2026-11-10 — Equipment providers146 PARTIAL_COMPONENT. Actual ANI selection,
 fallback/frame state,pose calls,fade andmounting height source restored.
 24completefunctions/2220instructions/373CFG equalpins;65realcases/48ANI/

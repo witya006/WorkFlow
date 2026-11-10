@@ -25,8 +25,8 @@ def port_equipment(raw,relative,section):
         once(b'g_EFFUnitList.LoadEffectFileList(".\\\\CHEF\\\\Unit.ini");',b'g_EFFUnitList.LoadEffectFileList(".\\\\CHEF\\\\Unit.ini");\n\tg_EFFKitList.LoadEffectFileList(".\\\\CHEF\\\\Siege.ini");')
         return raw,True
     if relative=='character/avatar/cavatar.h':
-        raw=b'#include "client455_equipment_object.h"\n'+raw
-        once(b'CEquipItem\t\tm_pDefaultItem[MAX_DEFAULT_PART];',b'RF455EquipmentObject m_defaultItems455[6];\n\tCEquipItem\t\tm_pDefaultItem[MAX_DEFAULT_PART];')
+        raw=b'#include "client455_player_equipment.h"\n'+raw
+        once(b'CEquipItem\t\tm_pDefaultItem[MAX_DEFAULT_PART];',b'RF455PlayerEquipmentObject m_defaultItems455[6];\n\tCEquipItem\t\tm_pDefaultItem[MAX_DEFAULT_PART];')
         once(b'CEquipItem*\tGetDefaultItem( BYTE pi_byPartType );',b'''CEquipItem*\tGetDefaultItem( BYTE pi_byPartType );
     RF455EquipmentObject* GetDefaultItem455(BYTE part){return part<6&&!m_defaultItems455[part].IsEmpty()?&m_defaultItems455[part]:NULL;}''')
         return raw,True
