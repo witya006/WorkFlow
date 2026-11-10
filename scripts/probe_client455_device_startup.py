@@ -69,7 +69,7 @@ def main(handoff=None,live_port=None,select_character=False):
         #Only restored HUD/CharInfo skins;share owned pool copies,never clone
         #the entire client. Preserve target localized-before-Common selection.
         for folder in ['Common',country['folder']]:
-            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr']:
+            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr','unit.spr']:
                 original=client/'SpriteImage'/folder/filename
                 if not original.is_file():continue
                 copy=run/original.relative_to(client)

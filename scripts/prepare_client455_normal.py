@@ -49,6 +49,7 @@ from client455_mob_control_port import port_mob_control
 from client455_option_port import port_option
 from client455_inventory_port import port_inventory
 from client455_board_startup_port import port_board_startup
+from client455_unit_windows_port import port_unit_windows
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -809,6 +810,8 @@ def main():
             if inventory_changed:changes.append('455 inventory/20slot pack/16slot equipment view owners and real skins;full item actions/settings/lifecycle remain open')
             raw,board_startup_changed=port_board_startup(raw,relative,section,native)
             if board_startup_changed:changes.append('455 MainGame Linker startup five ten-slot banks/window3;target has no separate Belt at this point;full54-owner factory/later legacy bindings remain open')
+            raw,unit_windows_changed=port_unit_windows(raw,relative,section,native)
+            if unit_windows_changed:changes.append('455 unit tuning/storehouse views, board startup, localized labels and tuning command IDs')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
@@ -904,6 +907,8 @@ def main():
     for name in ['client455_mob_control.h','client455_mob_control.inc','client455_gui_move.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_option_window.h','client455_option_window.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_inventory.inc']=sha((native/'client455_inventory.inc').read_bytes())
+    for name in ['client455_unit_view_skin.h','client455_unit_tuning.inc','client455_unit_storehouse.inc']:
+        report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_linker_startup.inc']=sha((native/'client455_linker_startup.inc').read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

@@ -120,7 +120,7 @@
       "estimate_high": 35,
       "completed_full_domain": false,
       "done": [
-        "GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover;обычный Linker startup5x10/window3,50owners и сообщения через менеджер проверены"
+        "GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover;обычный Linker startup и инициализация UnitTuning/UnitStorehouse пройдены,следующий сбой в SkillWindow"
       ],
       "remaining": [
         "Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи"
@@ -135,7 +135,8 @@
         "client455-mob-control-checkpoint",
         "client455-option-checkpoint",
         "client455-inventory-checkpoint",
-        "client455-board-startup-checkpoint"
+        "client455-board-startup-checkpoint",
+        "client455-unit-windows-checkpoint"
       ]
     },
     {
@@ -278,7 +279,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "c9e465a004d7254bafc4b42fccbe988143d8181bf0b421cac5cd9ab567ce0c67",
+      "sha256": "05426a2353f9db84b04d646af13a7f7731a409b86dd316cba6562fae9caf732d",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -593,6 +594,14 @@
       "sha256": "36b75e3985d547a46b446c2edd65e6cc14d93799bbbbea51a47f8332f8062d17",
       "status": "PARTIAL_KNOWN_FAILURE",
       "scope": "Ordinary MainGame Linker now creates five ten-slot banks/window3;actual fifty owners and HWND-to-manager-to-bank4 route tested;live startup passes Linker and fails next old UnitTuning window;world not entered",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-unit-windows-checkpoint": {
+      "file": "inventory/client455-unit-windows-checkpoint.json",
+      "sha256": "2d706080dcc5a8b90160c3e7b0db0f793ef45ed8a5b24780b595075f6352b1dd",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "UnitTuning and UnitStorehouse actual stock views, pack activation and three HWND messages tested. Live selection passes both initializers and reaches SkillWindow skin failure.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -716,11 +725,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "fe40637c9b230f97057786b6c80f44365a9a12dd9373999558bd91b46490273b",
-      "bytes": 2369024,
+      "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+      "bytes": 2370048,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x183720",
+      "entry_rva": "0x183a80",
       "sections": [
         ".text",
         ".rdata",
@@ -745,22 +754,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "cc38b2a1757dfd98f05447ae386fbf65b6479832821d801f4fc700f46bac18a5",
+      "sha256": "aa90548e085a3c7d12c73a0ab9c501e930e6b38cb1fc1da515ed761bd3bc2d64",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-board-startup-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-unit-windows-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "c9e465a004d7254bafc4b42fccbe988143d8181bf0b421cac5cd9ab567ce0c67",
+      "link_sha256": "05426a2353f9db84b04d646af13a7f7731a409b86dd316cba6562fae9caf732d",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "fe40637c9b230f97057786b6c80f44365a9a12dd9373999558bd91b46490273b",
-        "bytes": 2369024,
+        "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+        "bytes": 2370048,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183720",
+        "entry_rva": "0x183a80",
         "sections": [
           ".text",
           ".rdata",
@@ -770,17 +779,17 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "cc38b2a1757dfd98f05447ae386fbf65b6479832821d801f4fc700f46bac18a5"
+      "build_sha256": "aa90548e085a3c7d12c73a0ab9c501e930e6b38cb1fc1da515ed761bd3bc2d64"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
       "normal_executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "fe40637c9b230f97057786b6c80f44365a9a12dd9373999558bd91b46490273b",
-        "bytes": 2369024,
+        "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+        "bytes": 2370048,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183720",
+        "entry_rva": "0x183a80",
         "sections": [
           ".text",
           ".rdata",
@@ -793,15 +802,15 @@
         "kind": "exception",
         "code": "0xc0000005",
         "first_chance": 0,
-        "address": "0xbc028f",
-        "rva": "0x13028f",
-        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\fe40637c\\selection-live-taiwan001\\RF_Online.bin",
+        "address": "0xb305ef",
+        "rva": "0x1305ef",
+        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\23332d3f\\selection-live-taiwan001\\RF_Online.bin",
         "parameter0": 0,
         "parameter1": "0xfffffff8"
       },
       "fault_rva_is_own": true,
       "own_fault": {
-        "rva": "0x13028f",
+        "rva": "0x1305ef",
         "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
         "offset": "0x5f",
         "is_code": true,
@@ -813,32 +822,40 @@
           "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
           "offset": "0x61",
           "is_code": true,
-          "previous_eight_bytes": "114508e80f6e0900",
+          "previous_eight_bytes": "114508e86f710900",
           "stack_offset": 8
         },
         {
-          "rva": "0xb95f7",
-          "symbol": "?SetSprite@CGUIUnitTuningWindow@@UAEXXZ",
-          "offset": "0x277",
+          "rva": "0xadffe",
+          "symbol": "?SetSprite@CGUISFWindow@@UAEXXZ",
+          "offset": "0x3e",
           "is_code": true,
           "previous_eight_bytes": "0500508b01ff5014",
           "stack_offset": 32
         },
         {
-          "rva": "0xb7ad4",
-          "symbol": "?Init@CGUIUnitTuningWindow@@UAEXXZ",
-          "offset": "0x834",
+          "rva": "0xae400",
+          "symbol": "?SetSprite@CGUISkillWindow@@UAEXXZ",
+          "offset": "0x10",
           "is_code": true,
-          "previous_eight_bytes": "008b068bceff5018",
+          "previous_eight_bytes": "578bf1e8c0fbffff",
           "stack_offset": 64
         },
         {
-          "rva": "0x1826ad",
-          "symbol": "??2@YAPAXI@Z",
-          "offset": "0xd",
+          "rva": "0xad375",
+          "symbol": "?Init@CGUISkillWindow@@UAEXXZ",
+          "offset": "0x145",
           "is_code": true,
-          "previous_eight_bytes": "750856e843970100",
-          "stack_offset": 84
+          "previous_eight_bytes": "ff8b068bceff5018",
+          "stack_offset": 96
+        },
+        {
+          "rva": "0x1e011f",
+          "symbol": "__ehhandler$?Init@CGUISkillWindow@@UAEXXZ",
+          "offset": "0x0",
+          "is_code": true,
+          "previous_eight_bytes": "c408c3cccccccccc",
+          "stack_offset": 140
         },
         {
           "rva": "0x12e62",
@@ -846,15 +863,15 @@
           "offset": "0x12",
           "is_code": true,
           "previous_eight_bytes": "c9742e8b01ff506c",
-          "stack_offset": 132
+          "stack_offset": 152
         },
         {
-          "rva": "0x26fc8",
+          "rva": "0x270e6",
           "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-          "offset": "0x98",
+          "offset": "0x1b6",
           "is_code": true,
-          "previous_eight_bytes": "238b108bc8ff5208",
-          "stack_offset": 144
+          "previous_eight_bytes": "068b108bc8ff5208",
+          "stack_offset": 164
         },
         {
           "rva": "0x26a58",
@@ -862,79 +879,79 @@
           "offset": "0x48",
           "is_code": true,
           "previous_eight_bytes": "008bcfe8d8040000",
-          "stack_offset": 168
+          "stack_offset": 196
         },
         {
-          "rva": "0x46dd60",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 172
+          "stack_offset": 200
         },
         {
-          "rva": "0x46dd60",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 184
+          "stack_offset": 212
         },
         {
-          "rva": "0x46dd60",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 192
+          "stack_offset": 220
         },
         {
-          "rva": "0xbd822",
+          "rva": "0xbdbb2",
           "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
           "offset": "0x182",
           "is_code": true,
           "previous_eight_bytes": "00752e8b01ff5008",
-          "stack_offset": 212
+          "stack_offset": 240
         },
         {
-          "rva": "0xbde70",
+          "rva": "0xbe200",
           "symbol": "_WinMain@16",
           "offset": "0x240",
           "is_code": true,
           "previous_eight_bytes": "dd8600e830f8ffff",
-          "stack_offset": 220
+          "stack_offset": 248
         },
         {
-          "rva": "0x183720",
+          "rva": "0x183a80",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
           "is_code": true,
           "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 224
+          "stack_offset": 252
         },
         {
-          "rva": "0x22c1d8",
+          "rva": "0x22c198",
           "symbol": "___acrt_initial_locale_data",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": "ffffffff00000000",
-          "stack_offset": 296
+          "stack_offset": 324
         },
         {
-          "rva": "0x1a95f5",
+          "rva": "0x1a9965",
           "symbol": "__ismbblead",
           "offset": "0x13",
           "is_code": true,
           "previous_eight_bytes": "086a00e89dffffff",
-          "stack_offset": 312
+          "stack_offset": 340
         },
         {
-          "rva": "0x183670",
+          "rva": "0x1839d0",
           "symbol": "?__scrt_common_main_seh@@YAHXZ",
           "offset": "0x140",
           "is_code": true,
-          "previous_eight_bytes": "004000e8c0a5f3ff",
-          "stack_offset": 336
+          "previous_eight_bytes": "004000e8f0a5f3ff",
+          "stack_offset": 364
         },
         {
           "rva": "0x0",
@@ -942,62 +959,104 @@
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 340
+          "stack_offset": 368
         },
         {
-          "rva": "0x183720",
+          "rva": "0x183a80",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
           "is_code": true,
           "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 360
+          "stack_offset": 388
         },
         {
-          "rva": "0x183720",
+          "rva": "0x183a80",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
           "is_code": true,
           "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 364
-        },
-        {
-          "rva": "0x1875c0",
-          "symbol": "__except_handler4",
-          "offset": "0x0",
-          "is_code": true,
-          "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 396
+          "stack_offset": 392
         }
       ],
       "stack_is_candidate_scan_not_unwind": true,
-      "kind": "UNIT_TUNING_SKIN_AFTER_FIVE_BANK_LINKER",
-      "verified_prior_linker_call": {
-        "call_rva": "0x26f8b",
-        "return_rva": "0x26f90",
-        "bytes": "e8705a0100",
-        "callee_rva": "0x3ca00"
+      "main_game_prefix": {
+        "file": "artifacts/client455-progress/unit167-own-prefix.txt",
+        "sha256": "24896623b528199ef4fccee6b689a6f36acba0e6b0daefe960c1f763918ff59c"
       },
-      "own_prefix_disassembly": {
-        "file": "artifacts/client455-progress/board166-own-prefix.txt",
-        "sha256": "6a8f8d5733cb33a7b36c73db45c4e587d8e77fd036606e77cf70adb9e1854a73"
-      },
-      "unit_tuning_vtable": {
-        "rva": "0x1f53d0",
-        "slot_offset": "0x6c",
-        "init_rva": "0xb72a0"
-      },
-      "verified_base_Init_call": {
+      "calls": [
+        {
+          "board": 12,
+          "window": 34,
+          "position": [
+            300,
+            0
+          ],
+          "call_rva": "0x26fc9",
+          "return_rva": "0x26fcc",
+          "bytes": "ff5208",
+          "table_rva": "0x1efd68",
+          "slot": 8,
+          "callee_rva": "0x617e0"
+        },
+        {
+          "board": 13,
+          "window": 35,
+          "position": [
+            300,
+            100
+          ],
+          "call_rva": "0x27040",
+          "return_rva": "0x27043",
+          "bytes": "ff5208",
+          "table_rva": "0x1efcfc",
+          "slot": 8,
+          "callee_rva": "0x617d0"
+        },
+        {
+          "board": 1,
+          "window": 90,
+          "position": [
+            0,
+            0
+          ],
+          "call_rva": "0x27072",
+          "return_rva": "0x27075",
+          "bytes": "ff5208",
+          "table_rva": "0x1e7b78",
+          "slot": 8,
+          "callee_rva": "0x1f350"
+        },
+        {
+          "board": 7,
+          "window": 6,
+          "position": [
+            200,
+            60
+          ],
+          "call_rva": "0x270e3",
+          "return_rva": "0x270e6",
+          "bytes": "ff5208",
+          "table_rva": "0x1efc3c",
+          "slot": 8,
+          "callee_rva": "0x5df70"
+        }
+      ],
+      "skill_virtual_init": {
         "return_rva": "0x12e62",
-        "bytes": "ff506c"
+        "bytes": "ff506c",
+        "table_rva": "0x1f4044",
+        "slot": 108,
+        "callee_rva": "0xad230"
       },
-      "cause": "Old CGUIUnitTuningWindow SetSprite/Init follows completed measured Linker startup;restore real455 window and remaining stage graph",
+      "kind": "SKILL_SKIN_AFTER_UNIT_WINDOWS",
+      "cause": "Legacy CGUISkillWindow::Init/SetSprite uses CGUISFWindow::SetSprite and reaches an invalid sprite frame",
       "whole_client_run_succeeded": false
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "cc38b2a1757dfd98f05447ae386fbf65b6479832821d801f4fc700f46bac18a5"
+        "sha256": "aa90548e085a3c7d12c73a0ab9c501e930e6b38cb1fc1da515ed761bd3bc2d64"
       },
       "build_exit": 0,
       "errors": [],
@@ -1007,11 +1066,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "fe40637c9b230f97057786b6c80f44365a9a12dd9373999558bd91b46490273b",
-        "bytes": 2369024,
+        "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+        "bytes": 2370048,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183720",
+        "entry_rva": "0x183a80",
         "sections": [
           ".text",
           ".rdata",
@@ -1024,28 +1083,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "cc38b2a1757dfd98f05447ae386fbf65b6479832821d801f4fc700f46bac18a5"
+        "sha256": "aa90548e085a3c7d12c73a0ab9c501e930e6b38cb1fc1da515ed761bd3bc2d64"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary MainGame Linker now creates five ten-slot banks/window3;actual fifty owners and HWND-to-manager-to-bank4 route tested;live startup passes Linker and fails next old UnitTuning window;world not entered",
+    "current_work": "UnitTuning and UnitStorehouse actual stock views, pack activation and three HWND messages tested. Live selection passes both initializers and reaches SkillWindow skin failure.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "77ca7801b38b987820df4e4314c1adefa51f787264a4605180687fc4b79064c7",
+      "sha256": "7b3cf4aa9005eacecb4067e27c64aaabf18a8a811b8a091ba0f17eaff2a4412b",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/fe40637c/selection-live-taiwan001/login-frame.png",
-        "sha256": "653d644bec4eddffc1f0fbe25fec623e1642f3c0ee37cfaa478bb7b5bf96f353"
+        "file": "work/m9/23332d3f/selection-live-taiwan001/login-frame.png",
+        "sha256": "cbe658dd2274bcfeb046336fb938c197a278bb0060fe258dd2a222a9b3dd4e0f"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 124,
-        "elapsed_ms": 8031,
+        "frame_index": 120,
+        "elapsed_ms": 8032,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1054,11 +1113,11 @@
       "known_next_failure": {
         "normal_executable": {
           "file": "work/client455-port/normal/build/RF_Online.bin",
-          "sha256": "fe40637c9b230f97057786b6c80f44365a9a12dd9373999558bd91b46490273b",
-          "bytes": 2369024,
+          "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+          "bytes": 2370048,
           "architecture": "x86",
           "image_base": "0x400000",
-          "entry_rva": "0x183720",
+          "entry_rva": "0x183a80",
           "sections": [
             ".text",
             ".rdata",
@@ -1071,15 +1130,15 @@
           "kind": "exception",
           "code": "0xc0000005",
           "first_chance": 0,
-          "address": "0xbc028f",
-          "rva": "0x13028f",
-          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\fe40637c\\selection-live-taiwan001\\RF_Online.bin",
+          "address": "0xb305ef",
+          "rva": "0x1305ef",
+          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\23332d3f\\selection-live-taiwan001\\RF_Online.bin",
           "parameter0": 0,
           "parameter1": "0xfffffff8"
         },
         "fault_rva_is_own": true,
         "own_fault": {
-          "rva": "0x13028f",
+          "rva": "0x1305ef",
           "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
           "offset": "0x5f",
           "is_code": true,
@@ -1091,32 +1150,40 @@
             "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
             "offset": "0x61",
             "is_code": true,
-            "previous_eight_bytes": "114508e80f6e0900",
+            "previous_eight_bytes": "114508e86f710900",
             "stack_offset": 8
           },
           {
-            "rva": "0xb95f7",
-            "symbol": "?SetSprite@CGUIUnitTuningWindow@@UAEXXZ",
-            "offset": "0x277",
+            "rva": "0xadffe",
+            "symbol": "?SetSprite@CGUISFWindow@@UAEXXZ",
+            "offset": "0x3e",
             "is_code": true,
             "previous_eight_bytes": "0500508b01ff5014",
             "stack_offset": 32
           },
           {
-            "rva": "0xb7ad4",
-            "symbol": "?Init@CGUIUnitTuningWindow@@UAEXXZ",
-            "offset": "0x834",
+            "rva": "0xae400",
+            "symbol": "?SetSprite@CGUISkillWindow@@UAEXXZ",
+            "offset": "0x10",
             "is_code": true,
-            "previous_eight_bytes": "008b068bceff5018",
+            "previous_eight_bytes": "578bf1e8c0fbffff",
             "stack_offset": 64
           },
           {
-            "rva": "0x1826ad",
-            "symbol": "??2@YAPAXI@Z",
-            "offset": "0xd",
+            "rva": "0xad375",
+            "symbol": "?Init@CGUISkillWindow@@UAEXXZ",
+            "offset": "0x145",
             "is_code": true,
-            "previous_eight_bytes": "750856e843970100",
-            "stack_offset": 84
+            "previous_eight_bytes": "ff8b068bceff5018",
+            "stack_offset": 96
+          },
+          {
+            "rva": "0x1e011f",
+            "symbol": "__ehhandler$?Init@CGUISkillWindow@@UAEXXZ",
+            "offset": "0x0",
+            "is_code": true,
+            "previous_eight_bytes": "c408c3cccccccccc",
+            "stack_offset": 140
           },
           {
             "rva": "0x12e62",
@@ -1124,15 +1191,15 @@
             "offset": "0x12",
             "is_code": true,
             "previous_eight_bytes": "c9742e8b01ff506c",
-            "stack_offset": 132
+            "stack_offset": 152
           },
           {
-            "rva": "0x26fc8",
+            "rva": "0x270e6",
             "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-            "offset": "0x98",
+            "offset": "0x1b6",
             "is_code": true,
-            "previous_eight_bytes": "238b108bc8ff5208",
-            "stack_offset": 144
+            "previous_eight_bytes": "068b108bc8ff5208",
+            "stack_offset": 164
           },
           {
             "rva": "0x26a58",
@@ -1140,79 +1207,79 @@
             "offset": "0x48",
             "is_code": true,
             "previous_eight_bytes": "008bcfe8d8040000",
-            "stack_offset": 168
+            "stack_offset": 196
           },
           {
-            "rva": "0x46dd60",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 172
+            "stack_offset": 200
           },
           {
-            "rva": "0x46dd60",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 184
+            "stack_offset": 212
           },
           {
-            "rva": "0x46dd60",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 192
+            "stack_offset": 220
           },
           {
-            "rva": "0xbd822",
+            "rva": "0xbdbb2",
             "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
             "offset": "0x182",
             "is_code": true,
             "previous_eight_bytes": "00752e8b01ff5008",
-            "stack_offset": 212
+            "stack_offset": 240
           },
           {
-            "rva": "0xbde70",
+            "rva": "0xbe200",
             "symbol": "_WinMain@16",
             "offset": "0x240",
             "is_code": true,
             "previous_eight_bytes": "dd8600e830f8ffff",
-            "stack_offset": 220
+            "stack_offset": 248
           },
           {
-            "rva": "0x183720",
+            "rva": "0x183a80",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
             "is_code": true,
             "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 224
+            "stack_offset": 252
           },
           {
-            "rva": "0x22c1d8",
+            "rva": "0x22c198",
             "symbol": "___acrt_initial_locale_data",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": "ffffffff00000000",
-            "stack_offset": 296
+            "stack_offset": 324
           },
           {
-            "rva": "0x1a95f5",
+            "rva": "0x1a9965",
             "symbol": "__ismbblead",
             "offset": "0x13",
             "is_code": true,
             "previous_eight_bytes": "086a00e89dffffff",
-            "stack_offset": 312
+            "stack_offset": 340
           },
           {
-            "rva": "0x183670",
+            "rva": "0x1839d0",
             "symbol": "?__scrt_common_main_seh@@YAHXZ",
             "offset": "0x140",
             "is_code": true,
-            "previous_eight_bytes": "004000e8c0a5f3ff",
-            "stack_offset": 336
+            "previous_eight_bytes": "004000e8f0a5f3ff",
+            "stack_offset": 364
           },
           {
             "rva": "0x0",
@@ -1220,55 +1287,97 @@
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 340
+            "stack_offset": 368
           },
           {
-            "rva": "0x183720",
+            "rva": "0x183a80",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
             "is_code": true,
             "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 360
+            "stack_offset": 388
           },
           {
-            "rva": "0x183720",
+            "rva": "0x183a80",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
             "is_code": true,
             "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 364
-          },
-          {
-            "rva": "0x1875c0",
-            "symbol": "__except_handler4",
-            "offset": "0x0",
-            "is_code": true,
-            "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 396
+            "stack_offset": 392
           }
         ],
         "stack_is_candidate_scan_not_unwind": true,
-        "kind": "UNIT_TUNING_SKIN_AFTER_FIVE_BANK_LINKER",
-        "verified_prior_linker_call": {
-          "call_rva": "0x26f8b",
-          "return_rva": "0x26f90",
-          "bytes": "e8705a0100",
-          "callee_rva": "0x3ca00"
+        "main_game_prefix": {
+          "file": "artifacts/client455-progress/unit167-own-prefix.txt",
+          "sha256": "24896623b528199ef4fccee6b689a6f36acba0e6b0daefe960c1f763918ff59c"
         },
-        "own_prefix_disassembly": {
-          "file": "artifacts/client455-progress/board166-own-prefix.txt",
-          "sha256": "6a8f8d5733cb33a7b36c73db45c4e587d8e77fd036606e77cf70adb9e1854a73"
-        },
-        "unit_tuning_vtable": {
-          "rva": "0x1f53d0",
-          "slot_offset": "0x6c",
-          "init_rva": "0xb72a0"
-        },
-        "verified_base_Init_call": {
+        "calls": [
+          {
+            "board": 12,
+            "window": 34,
+            "position": [
+              300,
+              0
+            ],
+            "call_rva": "0x26fc9",
+            "return_rva": "0x26fcc",
+            "bytes": "ff5208",
+            "table_rva": "0x1efd68",
+            "slot": 8,
+            "callee_rva": "0x617e0"
+          },
+          {
+            "board": 13,
+            "window": 35,
+            "position": [
+              300,
+              100
+            ],
+            "call_rva": "0x27040",
+            "return_rva": "0x27043",
+            "bytes": "ff5208",
+            "table_rva": "0x1efcfc",
+            "slot": 8,
+            "callee_rva": "0x617d0"
+          },
+          {
+            "board": 1,
+            "window": 90,
+            "position": [
+              0,
+              0
+            ],
+            "call_rva": "0x27072",
+            "return_rva": "0x27075",
+            "bytes": "ff5208",
+            "table_rva": "0x1e7b78",
+            "slot": 8,
+            "callee_rva": "0x1f350"
+          },
+          {
+            "board": 7,
+            "window": 6,
+            "position": [
+              200,
+              60
+            ],
+            "call_rva": "0x270e3",
+            "return_rva": "0x270e6",
+            "bytes": "ff5208",
+            "table_rva": "0x1efc3c",
+            "slot": 8,
+            "callee_rva": "0x5df70"
+          }
+        ],
+        "skill_virtual_init": {
           "return_rva": "0x12e62",
-          "bytes": "ff506c"
+          "bytes": "ff506c",
+          "table_rva": "0x1f4044",
+          "slot": 108,
+          "callee_rva": "0xad230"
         },
-        "cause": "Old CGUIUnitTuningWindow SetSprite/Init follows completed measured Linker startup;restore real455 window and remaining stage graph",
+        "kind": "SKILL_SKIN_AFTER_UNIT_WINDOWS",
+        "cause": "Legacy CGUISkillWindow::Init/SetSprite uses CGUISFWindow::SetSprite and reaches an invalid sprite frame",
         "whole_client_run_succeeded": false
       },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
@@ -1280,11 +1389,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "c7c2c952389dac8707bd16fbc114c560df1abebab245a655537321039a06e81c",
-    "entries": 172,
+    "sha256": "458bc1ba3f9d6f4f07e43054ffb1f8281acc99024eb3f8766c06c73825fdd16b",
+    "entries": 173,
     "statuses": {
       "partial_component": 13,
-      "partial": 129,
+      "partial": 130,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1294,7 +1403,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-BOARD-STARTUP-166"
+      "CLIENT455-UNIT-WINDOWS-167"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1364,7 +1473,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;172 overlapping historical records",
+        "measured": "12 domain planning map;173 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1512,7 +1621,7 @@
       "Changed estimate and its basis"
     ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "The new packet/Avatar/class/equipment integrations close local dependencies;ordinary selection/world/gameplay still unproved. Coarse scope estimate is unchanged."
+    "unchanged_range_reason": "Actual selection reaches SkillWindow after the two unit initializers. The full selection-to-world path and gameplay remain unproved. Coarse scope estimate is unchanged."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1526,7 +1635,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "8a5e85d48b9a2e798f842018e58b5fd92a8d6824162b8c0d40ca5e829e79acd9"
+    "sha256": "40afd1cc052c256286affc297565b40a91df60a1f1505d07a6b2205c96e46e18"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

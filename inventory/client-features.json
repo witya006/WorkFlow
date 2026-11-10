@@ -8702,7 +8702,7 @@
       "id": "CLIENT455-BOARD-STARTUP-166",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-board-startup-checkpoint.json",
         "inventory/client455-board-startup-reference.json",
@@ -8715,6 +8715,25 @@
         "Later MainGame legacy Belt/hotkey/global window bindings still refuse obsolete access",
         "Full one-owner hotkey binding66CB20 and shared screen ownership remain open",
         "All item actions,network producers,world/gameplay and prior M6F acceptance gaps remain mandatory"
+      ]
+    },
+    {
+      "id": "CLIENT455-UNIT-WINDOWS-167",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-unit-windows-checkpoint.json",
+        "inventory/client455-unit-windows-reference.json",
+        "inventory/client455-unit-windows-native.json"
+      ],
+      "description": "UnitTuning and UnitStorehouse actual stock views, pack activation and three HWND messages tested. Live selection passes both initializers and reaches SkillWindow skin failure.",
+      "gaps": [
+        "UnitTuning item providers, main-frame/repair/tuning transaction logic and complete network consumers",
+        "UnitStorehouse list row art/data, scrolling, selecting and delivery with actual units",
+        "Reload while panels contain active purchases and full window lifecycle/country checks",
+        "Remaining MainGame factory and window registrations, including the legacy dungeon mission ID colliding with 455 Animus",
+        "Actual world, gameplay and all prior M6F acceptance gaps"
       ]
     }
   ],

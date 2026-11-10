@@ -1,3 +1,13 @@
+2026-11-11 — UnitTuning and UnitStorehouse 167, PARTIAL_KNOWN_FAILURE.
+Ordinary 455 client now activates tuning 8 × 200 and storehouse 1 × 4 with
+windows 34 and 35. Stock Taiwanese assets, three HWND messages and three GPU
+frames verified. Live selection passes both initializers and reaches the old
+SkillWindow skin failure at own RVA 1305EF. Build 23332d3f… x86, entry 183A80,
+182 client / 67 engine / 20 shared modules, no unresolved symbols. The world
+and M9 remain open. Both pins checked for 16 functions and 3,815 instructions.
+Address coverage 2,479 (+16), full listings 673 (+16), partial bindings 148.
+[Evidence and remaining work](research/client455-unit-windows.md)
+
 2026-11-11 — MainGame Linker startup166, PARTIAL_KNOWN_FAILURE.
 Actual ordinary startup now creates Linker6/five banks/ten slots/window3,
 activates0..4 and opens it. No obsolete separate Belt exists at this location;

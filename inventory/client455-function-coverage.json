@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T22:22:37.930161+00:00",
+  "measured_at_utc": "2026-11-10T23:02:41.468158+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2463,
-    "unique_functions_with_complete_assembly_cfg": 657,
-    "unique_pinned_code_bytes": 674337,
-    "reports": 168,
-    "code_range_occurrences": 4039,
+    "unique_functions_with_pinned_code": 2479,
+    "unique_functions_with_complete_assembly_cfg": 673,
+    "unique_pinned_code_bytes": 687867,
+    "reports": 169,
+    "code_range_occurrences": 4056,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -691,6 +691,10 @@
       "sha256": "bf27aca3865bbe30148bb0956e139b8153a17ad72c0fe65fa78a5c83c6e66eed"
     },
     {
+      "file": "inventory/client455-unit-windows-reference.json",
+      "sha256": "34c2f1afa2fddaff19a60b4f9bd2c2604607a883e54c36fe8b3a032fcb137ab1"
+    },
+    {
       "file": "inventory/client455-weather-helper.json",
       "sha256": "b0e8a24ef07e1ec087a2e9ea5d57fb59c283948e58d587787272522a28382c22"
     },
@@ -925,6 +929,10 @@
       "sha256": "cfe053868ac7aa47c073f8d2ba8ccfdd8c746e09ce11fe5df38c1fe5b0601253"
     },
     {
+      "file": "artifacts/client455-progress/unit167-reference.json",
+      "sha256": "e7f457e29facb3d0735c5da151aadd987482fd0c39859b24beb54280a795990b"
+    },
+    {
       "file": "artifacts/client455-progress/weather-owner129-reference.json",
       "sha256": "04778287e84153a8d968ae018d7f235e0484b6f6f1ba94ff6c982ed1df0ca199"
     },
@@ -936,7 +944,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "dc6657fa8a9614dc04eaaf25e0022eaa6e1d076c1d56320da6e0c8d5125be8e5"
+      "sha256": "378132673ce63c76ecd23675cbdce53fd0651df0628c25136beceac4f2bd35cb"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -10244,6 +10252,48 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0xbd1b0",
+      "ida_name": "sub_4BD1B0",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xbd1b0",
+          "bytes": 68
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0xbe290",
+      "ida_name": "sub_4BE290",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xbe290",
+          "bytes": 704
+        },
+        {
+          "rva": "0x625210",
+          "bytes": 41
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 211
+        }
+      ]
     },
     {
       "rva": "0xbed00",
@@ -25390,6 +25440,272 @@
       ]
     },
     {
+      "rva": "0x32a700",
+      "ida_name": "sub_72A700",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32a700",
+          "bytes": 747
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 221
+        }
+      ]
+    },
+    {
+      "rva": "0x32a9f0",
+      "ida_name": "sub_72A9F0",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32a9f0",
+          "bytes": 99
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 37
+        }
+      ]
+    },
+    {
+      "rva": "0x32bb90",
+      "ida_name": "sub_72BB90",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32bb90",
+          "bytes": 4851
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 1332
+        }
+      ]
+    },
+    {
+      "rva": "0x32ce90",
+      "ida_name": "sub_72CE90",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32ce90",
+          "bytes": 1094
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 298
+        }
+      ]
+    },
+    {
+      "rva": "0x32d2e0",
+      "ida_name": "sub_72D2E0",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32d2e0",
+          "bytes": 1642
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 443
+        }
+      ]
+    },
+    {
+      "rva": "0x32d950",
+      "ida_name": "sub_72D950",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32d950",
+          "bytes": 1059
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 313
+        }
+      ]
+    },
+    {
+      "rva": "0x32e3d0",
+      "ida_name": "sub_72E3D0",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32e3d0",
+          "bytes": 143
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x32e460",
+      "ida_name": "sub_72E460",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32e460",
+          "bytes": 347
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 100
+        }
+      ]
+    },
+    {
+      "rva": "0x32e750",
+      "ida_name": "sub_72E750",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32e750",
+          "bytes": 90
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x32e940",
+      "ida_name": "sub_72E940",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32e940",
+          "bytes": 160
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 52
+        }
+      ]
+    },
+    {
+      "rva": "0x32e9e0",
+      "ida_name": "sub_72E9E0",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32e9e0",
+          "bytes": 177
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 54
+        }
+      ]
+    },
+    {
+      "rva": "0x32ec30",
+      "ida_name": "sub_72EC30",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32ec30",
+          "bytes": 305
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 89
+        }
+      ]
+    },
+    {
+      "rva": "0x32ed70",
+      "ida_name": "sub_72ED70",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x32ed70",
+          "bytes": 114
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 38
+        }
+      ]
+    },
+    {
+      "rva": "0x330050",
+      "ida_name": "sub_730050",
+      "reports": [
+        "inventory/client455-unit-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x330050",
+          "bytes": 1889
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/unit167-reference.json",
+          "instructions": 520
+        }
+      ]
+    },
+    {
       "rva": "0x331cb0",
       "ida_name": "sub_731CB0",
       "reports": [
@@ -40285,8 +40601,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 1,
-    "unique_functions_with_complete_assembly_cfg": 1
+    "unique_functions_with_pinned_code": 16,
+    "unique_functions_with_complete_assembly_cfg": 16
   },
   "M6": "OPEN",
   "M9": "OPEN",

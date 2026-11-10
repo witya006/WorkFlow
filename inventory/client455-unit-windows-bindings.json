@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183a80",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial unit view implementations; selected runtime coverage, complete unit gameplay open",
+  "functions": [
+    {
+      "rva": "0x32bb90",
+      "symbol": "CGUIUnitTuningWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb7480"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32d950",
+      "symbol": "CGUIUnitTuningWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb98f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32e3d0",
+      "symbol": "CGUIUnitTuningWindow::Select_Parts",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32e460",
+      "symbol": "CGUIUnitTuningWindow::Select_Bullet",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb90a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32e750",
+      "symbol": "CGUIUnitTuningWindow::SetPartsBuyingState",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb9860"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32e9e0",
+      "symbol": "CGUIUnitTuningWindow::SetBulletBuyingState",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb9260"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32ed70",
+      "symbol": "CGUIUnitTuningWindow::SetBackpackBulletBuyingState",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb9200"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32e940",
+      "symbol": "CGUIUnitTuningWindow::Enable_Shouler_Bullet",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb7160"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32ec30",
+      "symbol": "CGUIUnitTuningWindow::Enable_BackPack_Bullet",
+      "source": {
+        "file": "scripts/native/client455_unit_tuning.inc",
+        "sha256": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb7080"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32a700",
+      "symbol": "CGUIUnitStoreWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_unit_storehouse.inc",
+        "sha256": "c5d23cab5192ee8b60f355a8f3cef374031640a65f7c705eb53cfce28cbc42a4"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb5c30"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x32a9f0",
+      "symbol": "CGUIUnitStoreWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_unit_storehouse.inc",
+        "sha256": "c5d23cab5192ee8b60f355a8f3cef374031640a65f7c705eb53cfce28cbc42a4"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb6230"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}

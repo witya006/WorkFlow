@@ -1,0 +1,376 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "UnitTuning and UnitStorehouse actual stock views, pack activation and three HWND messages tested. Live selection passes both initializers and reaches SkillWindow skin failure.",
+  "script": {
+    "file": "scripts/checkpoint_client455_unit_windows.py",
+    "sha256": "0cf2d4ebe1ffd71d71edb970db1e241dc3ec1e9ecc5f7bb8dac5aeb58035793b"
+  },
+  "normal_link_sha256": "05426a2353f9db84b04d646af13a7f7731a409b86dd316cba6562fae9caf732d",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183a80",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "7b3cf4aa9005eacecb4067e27c64aaabf18a8a811b8a091ba0f17eaff2a4412b"
+  },
+  "fresh_evidence": {
+    "unit-windows-reference": {
+      "file": "inventory/client455-unit-windows-reference.json",
+      "sha256": "34c2f1afa2fddaff19a60b4f9bd2c2604607a883e54c36fe8b3a032fcb137ab1"
+    },
+    "unit-windows-native": {
+      "file": "inventory/client455-unit-windows-native.json",
+      "sha256": "8fb5028ee8c0c2629c88e7c68dddb99cdf8b9e1a6ceff72d3ab5de6ad1d81428"
+    },
+    "unit-windows-bindings": {
+      "file": "inventory/client455-unit-windows-bindings.json",
+      "sha256": "f0c70d8ea9b3f0d377cfc7742d81912e1bc3670db5c1c0d36c46dba70fec25fe"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "f2a6aca62246274949cf88ad9dd087d593db6864aeb0fcc41f949e90cda33836"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "aa90548e085a3c7d12c73a0ab9c501e930e6b38cb1fc1da515ed761bd3bc2d64"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "f5dad2db22a051a193bdb3863be20a39c0d3ef92c377feeb761861d8c07ce22a"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "05426a2353f9db84b04d646af13a7f7731a409b86dd316cba6562fae9caf732d"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "995c8efd6f8f7521fba916424238e0a79de0c55ad02fe54590b8baa2bc1b58f0"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "8c93d5a2d1ebedca68f296f588a030d56c9998602a3e3e62a9381da4afa31ea6"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "cf1db532fbb0ce82d9e32b91e9305298b1b3d71a73ba00e6c3e843d4a5eaac3d"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "49a668f8d445422de2aa1fd16f97922ee5f8a709a2b4391ec6436ed743e09788"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "7b3cf4aa9005eacecb4067e27c64aaabf18a8a811b8a091ba0f17eaff2a4412b"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before167/manifest.json",
+    "sha256": "4772240045631faf5f9adf3c9db67df585705e22a702fe7fbe940f16ff3406f7"
+  },
+  "component_frames_visually_inspected": true,
+  "live_unit_windows_returned_before_skill": true,
+  "post_selection_failure": {
+    "normal_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "23332d3f10f90f5b8864d5668828d804d9e69be4d62040e1ddf1f3190a90f90b",
+      "bytes": 2370048,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x183a80",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "exception": {
+      "kind": "exception",
+      "code": "0xc0000005",
+      "first_chance": 0,
+      "address": "0xb305ef",
+      "rva": "0x1305ef",
+      "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\23332d3f\\selection-live-taiwan001\\RF_Online.bin",
+      "parameter0": 0,
+      "parameter1": "0xfffffff8"
+    },
+    "fault_rva_is_own": true,
+    "own_fault": {
+      "rva": "0x1305ef",
+      "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+      "offset": "0x5f",
+      "is_code": true,
+      "previous_eight_bytes": "088b45fc8b549044"
+    },
+    "candidates": [
+      {
+        "rva": "0x99421",
+        "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+        "offset": "0x61",
+        "is_code": true,
+        "previous_eight_bytes": "114508e86f710900",
+        "stack_offset": 8
+      },
+      {
+        "rva": "0xadffe",
+        "symbol": "?SetSprite@CGUISFWindow@@UAEXXZ",
+        "offset": "0x3e",
+        "is_code": true,
+        "previous_eight_bytes": "0500508b01ff5014",
+        "stack_offset": 32
+      },
+      {
+        "rva": "0xae400",
+        "symbol": "?SetSprite@CGUISkillWindow@@UAEXXZ",
+        "offset": "0x10",
+        "is_code": true,
+        "previous_eight_bytes": "578bf1e8c0fbffff",
+        "stack_offset": 64
+      },
+      {
+        "rva": "0xad375",
+        "symbol": "?Init@CGUISkillWindow@@UAEXXZ",
+        "offset": "0x145",
+        "is_code": true,
+        "previous_eight_bytes": "ff8b068bceff5018",
+        "stack_offset": 96
+      },
+      {
+        "rva": "0x1e011f",
+        "symbol": "__ehhandler$?Init@CGUISkillWindow@@UAEXXZ",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "c408c3cccccccccc",
+        "stack_offset": 140
+      },
+      {
+        "rva": "0x12e62",
+        "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
+        "offset": "0x12",
+        "is_code": true,
+        "previous_eight_bytes": "c9742e8b01ff506c",
+        "stack_offset": 152
+      },
+      {
+        "rva": "0x270e6",
+        "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
+        "offset": "0x1b6",
+        "is_code": true,
+        "previous_eight_bytes": "068b108bc8ff5208",
+        "stack_offset": 164
+      },
+      {
+        "rva": "0x26a58",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x48",
+        "is_code": true,
+        "previous_eight_bytes": "008bcfe8d8040000",
+        "stack_offset": 196
+      },
+      {
+        "rva": "0x46dd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 200
+      },
+      {
+        "rva": "0x46dd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 212
+      },
+      {
+        "rva": "0x46dd20",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 220
+      },
+      {
+        "rva": "0xbdbb2",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "is_code": true,
+        "previous_eight_bytes": "00752e8b01ff5008",
+        "stack_offset": 240
+      },
+      {
+        "rva": "0xbe200",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "is_code": true,
+        "previous_eight_bytes": "dd8600e830f8ffff",
+        "stack_offset": 248
+      },
+      {
+        "rva": "0x183a80",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 252
+      },
+      {
+        "rva": "0x22c198",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "ffffffff00000000",
+        "stack_offset": 324
+      },
+      {
+        "rva": "0x1a9965",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "is_code": true,
+        "previous_eight_bytes": "086a00e89dffffff",
+        "stack_offset": 340
+      },
+      {
+        "rva": "0x1839d0",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "is_code": true,
+        "previous_eight_bytes": "004000e8f0a5f3ff",
+        "stack_offset": 364
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 368
+      },
+      {
+        "rva": "0x183a80",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 388
+      },
+      {
+        "rva": "0x183a80",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 392
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "main_game_prefix": {
+      "file": "artifacts/client455-progress/unit167-own-prefix.txt",
+      "sha256": "24896623b528199ef4fccee6b689a6f36acba0e6b0daefe960c1f763918ff59c"
+    },
+    "calls": [
+      {
+        "board": 12,
+        "window": 34,
+        "position": [
+          300,
+          0
+        ],
+        "call_rva": "0x26fc9",
+        "return_rva": "0x26fcc",
+        "bytes": "ff5208",
+        "table_rva": "0x1efd68",
+        "slot": 8,
+        "callee_rva": "0x617e0"
+      },
+      {
+        "board": 13,
+        "window": 35,
+        "position": [
+          300,
+          100
+        ],
+        "call_rva": "0x27040",
+        "return_rva": "0x27043",
+        "bytes": "ff5208",
+        "table_rva": "0x1efcfc",
+        "slot": 8,
+        "callee_rva": "0x617d0"
+      },
+      {
+        "board": 1,
+        "window": 90,
+        "position": [
+          0,
+          0
+        ],
+        "call_rva": "0x27072",
+        "return_rva": "0x27075",
+        "bytes": "ff5208",
+        "table_rva": "0x1e7b78",
+        "slot": 8,
+        "callee_rva": "0x1f350"
+      },
+      {
+        "board": 7,
+        "window": 6,
+        "position": [
+          200,
+          60
+        ],
+        "call_rva": "0x270e3",
+        "return_rva": "0x270e6",
+        "bytes": "ff5208",
+        "table_rva": "0x1efc3c",
+        "slot": 8,
+        "callee_rva": "0x5df70"
+      }
+    ],
+    "skill_virtual_init": {
+      "return_rva": "0x12e62",
+      "bytes": "ff506c",
+      "table_rva": "0x1f4044",
+      "slot": 108,
+      "callee_rva": "0xad230"
+    },
+    "kind": "SKILL_SKIN_AFTER_UNIT_WINDOWS",
+    "cause": "Legacy CGUISkillWindow::Init/SetSprite uses CGUISFWindow::SetSprite and reaches an invalid sprite frame",
+    "whole_client_run_succeeded": false
+  },
+  "boards_created": false,
+  "full_factory": false,
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "UnitTuning item providers, main-frame/repair/tuning transaction logic and complete network consumers",
+    "UnitStorehouse list row art/data, scrolling, selecting and delivery with actual units",
+    "Reload while panels contain active purchases and full window lifecycle/country checks",
+    "Remaining MainGame factory and window registrations, including the legacy dungeon mission ID colliding with 455 Animus",
+    "Actual world, gameplay and all prior M6F acceptance gaps"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}
