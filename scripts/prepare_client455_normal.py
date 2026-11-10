@@ -36,6 +36,7 @@ from client455_item_bootstrap_port import port_item_bootstrap
 from client455_character_tables_port import port_character_tables
 from client455_avatar_classes_port import port_avatar_classes
 from client455_equipment_port import port_equipment
+from client455_character_palette_port import port_character_palette
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -758,6 +759,8 @@ def main():
             if message_changed:changes.append('455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen')
             raw,flags_changed=port_character_flags(raw,relative,section)
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')
+            raw,palette_changed=port_character_palette(raw,relative,section)
+            if palette_changed:changes.append('455ordinary Character20parts/30matrixpalettes/13dummyindices;fullactor/equipment lifecycle remainsopen')
             raw,nuclear_map_changed=port_nuclear_minimap(raw,relative,section)
             if nuclear_map_changed:changes.append('455MiniMap owns3 NuclearBomb markers/actual bounds/init andpost-lookup UI operations;registry/worldgeometry/receiver remainopen')
             raw,nuclear_registry_changed=port_nuclear_registry(raw,relative)
@@ -909,6 +912,7 @@ def main():
     report['character_tables_port_sha256']=sha((WS/'scripts/client455_character_tables_port.py').read_bytes())
     report['avatar_classes_port_sha256']=sha((WS/'scripts/client455_avatar_classes_port.py').read_bytes())
     report['equipment_port_sha256']=sha((WS/'scripts/client455_equipment_port.py').read_bytes())
+    report['character_palette_port_sha256']=sha((WS/'scripts/client455_character_palette_port.py').read_bytes())
     for name in ['client455_equipment_object.h','client455_equipment_object.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_avatar_classes.inc']=sha((native/'client455_avatar_classes.inc').read_bytes())
     for name in ['client455_character_tables.h','client455_character_tables.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

@@ -6,10 +6,31 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-CHARACTER-PALETTE-147",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Actual ordinary CCharacter20parts/30palettes/13dummy;affected Avatar/registered/Create/Login verified;full equipment appearance open",
+      "implementation": [
+        "scripts/client455_character_palette_port.py"
+      ],
+      "evidence": [
+        "inventory/client455-character-palette-reference.json",
+        "inventory/client455-character-palette-native.json",
+        "inventory/client455-character-palette-checkpoint.json"
+      ],
+      "full_client": false,
+      "gaps": [
+        "Typed equipment mesh renderer",
+        "Ordinary CPlayerProc/Avatar/controller/frame/effects/conditions integration",
+        "Complete bootstrap/selection/world/gameplay/lifecycle/M9"
+      ]
+    },
+    {
       "id": "CLIENT455-EQUIPMENT-145",
       "status": "partial",
       "runtime_gate_current": false,
-      "runtime_gate_last_verified": true,
+      "runtime_gate_last_verified": false,
       "newer_candidate_runtime_validated": false,
       "historical_runtime_snapshot": "artifacts/client455-progress/before146/manifest.json",
       "description": "Typed equipment creation/resource binding and six ordinary Avatar default slots;full Player equipment/appearance/draw remains open",

@@ -1,0 +1,69 @@
+{
+  "scope": "Actual ordinary Character20parts/30matrixpalettes/13dummyindices;full equipment/actor lifecycle remainsopen",
+  "reference_sha256": "80429316b6ede801bf2d8f71afacd987d38be7ce164425c3f52b4ba7fef81eb0",
+  "source": {
+    "file": "scripts/native/client455_character_palette_probe.cpp",
+    "sha256": "7d00a46258b6289e07afcdec07782cff8ced493a7cd321b9a5c62b03a7748823"
+  },
+  "script": {
+    "file": "scripts/probe_client455_character_palette.py",
+    "sha256": "cf2262e2d10493cab73401dc3abf5a4f8756527824bf7426bf77034646d43aad"
+  },
+  "builder": {
+    "file": "scripts/client455_own_probe.py",
+    "sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9"
+  },
+  "staging_script": {
+    "file": "scripts/client455_asset_staging.py",
+    "sha256": "dcc6ad0943a6d4f6082f53d0abfffd7a9dd409b5a46c77d293e4c1070c1ccff4"
+  },
+  "normal_link_sha256": "5dd2ad4fe3bf71c96613e2fe5e0a44d07df68a7a9fd0e053ed3ac4cc86f53888",
+  "exe": {
+    "file": "work/m9/80bf5728/character-palette-001/character-palette-probe.exe",
+    "sha256": "80bf572885758bbefb1eee3225ee95bc8919eae011efc82fea73e264c859adfa"
+  },
+  "map": {
+    "file": "work/m9/80bf5728/character-palette-001/character-palette-probe.map",
+    "sha256": "d4851dffcc12d1e55f38f53789621625202f15f2aa6676e5b98a6e6d06d34bdc"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/80bf5728/character-palette-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll"
+    }
+  ],
+  "console": {
+    "file": "work/m9/80bf5728/character-palette-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/80bf5728/character-palette-001/result.json",
+    "sha256": "6f6f91ad40bd0898d268a48c269860510885b85630ab7e8298ec60c32da3668d"
+  },
+  "native": {
+    "status": "PASS",
+    "ordinary_character_groups": 20,
+    "palette_roundtrips": 600,
+    "dummy_slots": 13,
+    "actual_production_SetVertexBlending": true,
+    "two_actor_independence": true,
+    "grow_shrink_partial_restore": true,
+    "actual_teardown": true,
+    "full_player_equipment_or_appearance": false,
+    "checks": 165
+  },
+  "natural_exit": 0,
+  "shared_asset_staging": {
+    "assets": 1,
+    "linked_bytes": 349696,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

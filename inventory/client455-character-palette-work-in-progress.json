@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "date": "2026-11-10",
-  "status": "BUILD_PASS_RUNTIME_NOT_VALIDATED",
+  "status": "CLOSED_TARGETED_VERIFIED",
   "scope": "Ordinary CCharacter palette migration147;full equipment/appearance/lifecycle not accepted",
   "normal_link": {
     "file": "inventory/client455-normal-link.json",
@@ -55,5 +55,14 @@
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
-  "M9": "OPEN"
+  "M9": "OPEN",
+  "historical_fields_outside_resolution": true,
+  "old_build_log_availability": "Shared build log replaced by successful compile;old hash is historical only",
+  "resolution": {
+    "checkpoint": "inventory/client455-character-palette-checkpoint.json",
+    "probe": "PASS",
+    "ordinary_Create": "PASS",
+    "ordinary_Login": "FRAME_INSPECTED_PARTIAL",
+    "full_appearance_accepted": false
+  }
 }

@@ -1,3 +1,39 @@
+# Текущее продолжение147/148 — 10.11.2026
+
+Предыдущий goal-turn:PROGRESS — реальная поправка CCharacter,истинные native
+иобычный runtime147;карта следующего полного renderer сохранена.
+M9 определён:полный клиент455 без модернизации графики;не уточнять повторно.
+Цель остаётся активной. Оценка25%(20–35%),0/12полных областей принято.
+
+Последний runtime147:993978ffd58f5be96176f5ae03c36396048d04a27b4741c26582a5013268a5b1,
+x86/entry175EA0;182client/67engine/20modules/unresolved0.
+Gate:inventory/client455-character-palette-checkpoint.json.
+Настоящий CCharacter20parts×30palettes/13dummy проверен:независимость2акторов,
+рост/уменьшение/частичный отказ/освобождение. Avatar3локализации иregistered3Avatar PASS.
+Own Create/Login PASS,кадр66/3031ms просмотрен:lobby/ожидание,не полный455UI/auth.
+Девять известныхfirst-chance имеют тотже профиль145;unhandled0.
+C2079 probe исправлен include datatable/cresourcedatamgr.h.
+Account/Avatar maps теперь вуникальных run folders. Newassetpoolbytes0.
+
+147 не подключает полный controller146. Следующий148 — полноценный typed mesh
+renderer иordinary CPlayerProc/Avatar/slot/frame/animation/conditions/effects.
+27fullfunc/1827instructions/213CFG иvtable176bytes равны2pins:
+inventory/client455-equipment-render-reference.json;research/client455-equipment-render.md;
+raw equipment-render148-reference/session.json. Не повторять готовый аудит27func.
+ВАЖНО исправление:46D190 — Animation,НЕ Render;CEquipvtableAA8F64:
+24→46E120,28→46E520,32→46DBC0,148→46E160,152→46E1E0,156→46E1A0,172→46D8B0.
+46C200 — metadata getter. Render branches имеют отдельные scroll/time,
+fade выполняется приRender,не выдумывать общий backend с потерей overloadразличий.
+Далее проверить4overlaydescriptor×526bytes@113FC70/textures@11404A8,
+их loaders/writers,engine SetMeshEffect/kit/unit/queue иполное подключение.
+4513C0 targetпустой/return1:не придумывать здесь создание defaultmesh.
+
+Проверенная147 уже сохранена вbefore148/manifest.json:49точныхфайлов.
+Не перезаписыватьbefore148 иbefore146.
+Research148 покаAUDIT_OPEN,не реализованная отрисовка. M6/M6F/M7/M9OPEN.
+IDAeaa5fe38 saved/closed/list0;nativejobs завершены. Сервер/originals не менялись.
+Ниже история;старые «current145»/«candidate147failed» больше не текущие.
+
 # Продолжение после оценки — 10.11.2026
 
 Главная задача следующего отчёта — наблюдаемый результат обычного клиента.

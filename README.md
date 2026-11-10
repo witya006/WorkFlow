@@ -9,17 +9,16 @@
 Серверные исходники — справочник для чтения. Оригиналы не изменять.
 Работать под work/. Входные EXE не выполнять. Git локальный, без публикации.
 
-## Последняя проверенная обычная сборка145
+## Последняя проверенная обычная сборка147
 
-Own RF_Online.bin1a355372…:x86/VS2026,182client/67engine/20modules,unresolved0.
+Own RF_Online.bin993978ff…:x86/VS2026,182client/67engine/20modules,unresolved0.
 Обычный WinMain →Title →Login показывает lobby/ожидание.
 Успешный вход, выбор персонажа и игровой цикл ещё не приняты.
-Gate:inventory/client455-equipment-checkpoint.json.
+Gate:inventory/client455-character-palette-checkpoint.json.
 
-Кандидат147 (993978ff…) уже собран, но запуск ещё не проверен.
-Его отдельная программа проверки пока не компилируется (C2079).
-Он не заменяет проверенную базу145. Точное состояние сохранено в
-inventory/client455-character-palette-work-in-progress.json.
+CCharacter20×30/13dummy проверен в настоящем коде; затронутые Avatar,
+registered receiver, Create и обычный Login прошли. Полный typed equipment
+renderer пока отсутствует; карта148 сохранена, реализация и подключение впереди.
 
 ## Отдельные компоненты146
 
@@ -29,7 +28,7 @@ inventory/client455-character-palette-work-in-progress.json.
 пять вариантов персонажа,настоящий cloakmagic;ошибки undefined ещё открыты.
 Расчёт special/upgrade/combinedstats/weakpart проверен на22реальных предметах;
 владельцы skill/UI иобычные producers/consumers ещё не подключены.
-Обычная145сборка ещё не использует полный контроллер146.
+Обычная147сборка ещё не использует полный контроллер146.
 Ближайшее:соединить обработчики с CPlayerProc/Avatar →внешний вид/выбор.
 
 - [Опорная оценка и оставшийся объём](docs/progress-report.md).
