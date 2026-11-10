@@ -84,7 +84,14 @@ def main():
     high=sum(x['weight']*x['estimate_high'] for x in domains)/100
     registry=load('client-features');status=collections.Counter(x['status'] for x in registry['features'])
     normal,engine=load('client455-normal-link'),load('client455-startup-engine-build')
-    build_file,build=linked_build(normal)
+    current_build_file=WS/'inventory/client455-normal-build.json'
+    current_build=json.loads(current_build_file.read_text(encoding='utf-8-sig'))
+    try:
+        candidate_build_file,candidate_build=linked_build(normal)
+    except AssertionError:
+        #An unsuccessful new compile may have replaced the last candidate's
+        #build report. It must not invalidate or impersonate the saved runtime.
+        candidate_build_file=candidate_build=None
     #Keep the newest completed runtime checkpoint even while a newer candidate
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
@@ -121,12 +128,13 @@ def main():
         runtime_exe_file=runtime_link_file.parent.parent/runtime_normal['executable']['file']
     assert sha(runtime_exe_file)==runtime_normal['executable']['sha256']
     runtime_build_file,runtime_build=linked_build(runtime_normal)
-    assert runtime_build['objects']==182 and sha(runtime_build_file)==runtime_normal['normal_build_sha256']
+    assert runtime_build['build_exit']==0 and runtime_build['objects']==182 and sha(runtime_build_file)==runtime_normal['normal_build_sha256']
+    assert runtime_normal['link_exit']==0 and runtime_normal['unique_unresolved']==0
     assert login['reached_first_login'] and login['first_login_frame_completed'] and login['first_login_frame_captured']
     assert login['capture_result']['result']==0
     for record in (login['captured_frame'],login['capture_metadata']):
         assert sha(WS/record['file'])==record['sha256']
-    assert normal['link_exit']==0 and normal['unique_unresolved']==0 and build['objects']==182 and engine['objects']==67
+    assert engine['objects']==67
     assert sha(WS/normal['executable']['file'])==normal['executable']['sha256']
     assert sha(WS/engine['library'])==engine['library_sha256']
     pins=json.loads((WS/'config/client-target.json').read_text());reference=[]
@@ -141,20 +149,31 @@ def main():
     wip_file=WS/'inventory/client455-character-tables-reference.json'
     wip=json.loads(wip_file.read_text()) if wip_file.is_file() else None
     character_native_current=latest=='inventory/client455-character-tables-checkpoint.json'
-    report=dict(schema=3,assessment_date=datetime.date.today().isoformat(),scope_version=1,scope='Full client455 behavior/source/build through M9,no graphics modernization,no server work',
+    report=dict(schema=4,assessment_date=datetime.date.today().isoformat(),scope_version=1,scope='Full client455 behavior/source/build through M9,no graphics modernization,no server work',
         estimate_kind='Engineering planning judgement for known functional scope;not measured equivalence coverage',
         weighted_low=low,weighted_high=high,weighted_midpoint=(low+high)/2,communicated_point_percent=25,communicated_range_percent=[20,35],communicated_remaining_percent=75,
         confidence='Useful planning estimate;unknown455features and integration can change the remaining scope. No calibrated calendar forecast.',
         interpretation='Stage numbers are unequal sizes. M0-M5 completion is not five ninths of the full client. Existing legacy code receives no455credit without evidence.',
         domains=domains,complete_acceptance_domains=0,domain_count=len(domains),evidence=evidence,
-        observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
-            exact_linked_build_evidence=dict(file=build_file.relative_to(WS).as_posix(),sha256=sha(build_file),matches_link_record=True),
-            newer_build_is_not_the_accepted_runtime=not runtime_is_current or sha(WS/'inventory/client455-normal-build.json')!=normal['normal_build_sha256'],
+        observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=runtime_build['canonical_kernel_objects'],unresolved_symbols=0,own_executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},engine_sha256=engine['library_sha256'],references=reference,
+            compilation_and_link_facts_apply_to='Last completed partial runtime baseline,not unfinished working sources',
+            exact_linked_build_evidence=dict(file=runtime_build_file.relative_to(WS).as_posix(),sha256=sha(runtime_build_file),matches_link_record=True),
+            newer_build_is_not_the_accepted_runtime=not runtime_is_current or sha(current_build_file)!=normal['normal_build_sha256'],
             last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not runtime_is_current,
             runtime_baseline=dict(link_file=runtime_link_file.relative_to(WS).as_posix(),link_sha256=runtime_link_sha,
                 executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},
                 build_file=runtime_build_file.relative_to(WS).as_posix(),build_sha256=sha(runtime_build_file)),
             candidate_runtime_status='CHECKED_PARTIAL' if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
+            current_working_source=dict(status='BUILD_FAILED' if current_build['build_exit']!=0 else 'BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED',
+                build_report=dict(file=current_build_file.relative_to(WS).as_posix(),sha256=sha(current_build_file)),
+                build_exit=current_build['build_exit'],errors=current_build['errors'],
+                included_in_readiness_estimate=False,
+                issue='New owned equipment state makes Avatar copy construction invalid;copy ownership must be resolved before accepting154' if current_build['build_exit']!=0 else None),
+            intermediate_candidate=dict(executable=normal['executable'],link_exit=normal['link_exit'],
+                linked_build_evidence_available=candidate_build_file is not None,
+                build_report=dict(file=candidate_build_file.relative_to(WS).as_posix(),sha256=sha(candidate_build_file)) if candidate_build_file else None,
+                runtime_verified=runtime_is_current,
+                superseded_by_later_source_build=sha(current_build_file)!=normal['normal_build_sha256']),
             current_work='Ordinary153 Create/Login/account3Avatar verified. CMesh/CEquip frame/ANI/end transitions,dummy/always/motion effect follow andequipment-position sound verified withrealmodels/ANI/Miles;ordinary6Avatar defaults nowderivedCEquip. Sixrenderframes equal150. Primary12-slot CPlayerProc owner/providers/conditions/UI,complete455metrics/PremiumUI,selection/world/gameplay/particle registry remainopen. Overallfunctionalestimate unchanged.',
             ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
@@ -170,7 +189,7 @@ def main():
             checked_unresolved_resource_references=load('client455-resource-catalog-checkpoint')['checked_missing_resource_references'],
             resource_inventory_complete=False,
             resource_reference_scope='Catalog bone/BBX references and a selected ANI search,including target RFS lookup;not a complete client asset inventory',
-            assembly_status='Current selected client build is possible;this does not prove full455source completeness',
+            assembly_status='Saved153build is complete;current154working sources have a compile failure' if current_build['build_exit']!=0 else 'Selected client build is possible;this does not prove full455source completeness',
             behavior_specification_status='Incomplete:complete feature/packet/state/resource/scenario inventory is still missing;no defensible percentage for that missing denominator',
             original455source_completeness_percent=None,
             practical_readiness=[
@@ -204,6 +223,8 @@ def main():
             report_done_remaining_and_next_observable_result=True,
             distinguish_build_readiness_component_verification_and_full_acceptance=True,
             test_or_function_counts_are_not_completion_percent=True,
+            unfinished_or_failed_builds_are_not_completed_progress=True,
+            next_report_fields=['Observable ordinary-client result','Integrated versus standalone evidence','Remaining prerequisites to next anchor','Current source build health','Changed estimate and its basis'],
             recalculate_after='First complete ordinary Login/selection/map scenario,or a material scope discovery',
             unchanged_range_reason='The new packet/Avatar/class/equipment integrations close local dependencies;ordinary selection/world/gameplay still unproved. Coarse scope estimate is unchanged.'),
         forecast=dict(remaining_to_completed_functional_scope_ratio_approx=[2,4],ratio_is_functional_scope_not_effort_or_time=True,calendar_deadline=None,remaining_hours=None,

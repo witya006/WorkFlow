@@ -4,6 +4,13 @@
 Gate:inventory/client455-equipment-frame-checkpoint.json PARTIAL.
 Оценка25%(20–35%);0/12полных областей. M6/M6F/M7/M9 открыты.
 
+Сверка рабочих исходников:154 НЕ СОБИРАЕТСЯ, C2280 вcavatar.cpp:162.
+Новый владелец экипировки делает старое Avatar::Clone некорректным.
+Промежуточная линковка154 не была runtime-проверена и не является готовой базой.
+Exact153 уже сохранена вbefore154/manifest.json (53файла);не перезаписывать.
+Перед продолжением исправить копирование/владение по455,затем сборку и
+проверку полного player-owner пути. Не возвращать shallow copy ownedpointer.
+
 ## Что готово для следующего соединения
 
 - Typed controller12физических слотов,создание/clone/visibility и PRNG.
@@ -46,8 +53,9 @@ Gate:inventory/client455-equipment-frame-checkpoint.json PARTIAL.
 
 ## Сохранение и проверки
 
-- Перед следующими ordinary edits:
-  snapshot_client455_runtime.py154 client455-equipment-frame-checkpoint.
+- Перед154 ordinary edits exact153 уже сохранена:
+  artifacts/client455-progress/before154/manifest.json,53файла.
+  Следующий snapshot только после проверенной154;старый не перезаписывать.
   before153 — exact152,52файла;старые снимки не перезаписывать.
 - Новый frame auditor/runner/gate используют current sources. Старые146/150/
   152gates состарымиSHA — исторические,не свежие проверки текущей PE.
@@ -59,7 +67,7 @@ Gate:inventory/client455-equipment-frame-checkpoint.json PARTIAL.
 - Тестировать затронутое. Не повторять неизменённые159k/bulk suites.
   Индекс12/queue заallocation/byteoverflow/неинициализированные позиции иCRT/
   FP/OOM домены остаются gaps. Управляемый отказ не принимается как targetparity.
-- Последняя полная опись16:34:07,156.14GiB logical/42.96GiB unique files,
+- Последняя полная опись20:56:14,158.84GiB logical/43.19GiB unique files,
   не точный filesystem allocation. Final staging pool0;ничего не удалено.
 
 Подробности:research/client455-equipment-frame.md;оценка:docs/progress-report.md.

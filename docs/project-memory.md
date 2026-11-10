@@ -1,3 +1,19 @@
+# Сверка готовности и текущих исходников — 10.11.2026
+
+Проверенная база остаётся153/3296a413…;25%(20–35%),0/12полных областей.
+Незавершённая154 не включена: текущий build_exit1,C2280cavatar.cpp:162,
+Avatar copy/Clone после перехода к owned equipment state. Ранее154линковалась,
+но runtime не проверена. Exact153 сохранена before154/manifest.json,53файла.
+Далее: восстановить корректное копирование, собрать, проверить настоящий
+player-owner путь;затем обычные appearance/selection. Никаких shallow owned copies.
+Инструмент оценки теперь раздельно фиксирует preserved runtime,current failed
+build и intermediate candidate;старый запуск не выдаётся за свежую154.
+Свежая опись20:56:14:158.84GiB logical/43.19GiB unique file sizes,ошибок0,
+удалений0. Это не точная физическая аллокация. IDA21aeaaf3 сохранена/закрыта,
+idb_list0. Подробности:docs/progress-report.md иinventory/client455-progress-assessment.json.
+Приоритет отчётов:изменение обычного клиента/standalone/ближайший остаток/
+здоровье сборки/основание общей оценки. Полный455feature denominator ещё неизвестен.
+
 # Текущая проверенная база153 — 10.11.2026
 
 Own3296a413…/x86/entry17B430,182client/67engine/20kernels,unresolved0.

@@ -1,5 +1,5 @@
 {
-  "schema": 3,
+  "schema": 4,
   "assessment_date": "2026-11-10",
   "scope_version": 1,
   "scope": "Full client455 behavior/source/build through M9,no graphics modernization,no server work",
@@ -270,7 +270,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "9910c87348c56da48a005dbc4963cb5fd9461727b3eec579973c83b889fac54a",
+      "sha256": "4a56b20f8bdcb7aebd25fd8c8573af81aa23831fee6bb76cea59988b766fb88e",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -281,7 +281,7 @@
       "sha256": "f3015512ae13e78cd66faafa45edd3e42f388ca1b1f3bad02cd495edda1faf36",
       "status": null,
       "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-startup-native": {
@@ -289,7 +289,7 @@
       "sha256": "41e50fa421c2de6c7a321fc37cf1092ef5c1441aca76d53852a44d13c3e22f93",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-startup-contracts-native": {
@@ -505,7 +505,7 @@
       "sha256": "da4c30abc97d51ab30de70b01ea0430627cd4b33b241ecf87ddbc5061eb57a1d",
       "status": "PARTIAL",
       "scope": "CMesh/CEquip FrameMove,Animation,end transitions,dummy/always/motion effect ownership andequipment-position wave calls;ordinary fullplayer not yet connected",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -651,7 +651,7 @@
     "canonical_kernel_objects": 20,
     "unresolved_symbols": 0,
     "own_executable": {
-      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "file": "artifacts/client455-progress/before154/work/client455-port/normal/build/RF_Online.bin",
       "sha256": "3296a413924f854a30277203c84008a02dd7732caa6b5e8c91f9e77379ffd856",
       "bytes": 2326016,
       "architecture": "x86",
@@ -678,19 +678,20 @@
         "architecture": "x86"
       }
     ],
+    "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
-      "file": "inventory/client455-normal-build.json",
+      "file": "artifacts/client455-progress/before154/inventory/client455-normal-build.json",
       "sha256": "18babc171618574473a7e99f2d86e5ba3f6e0a02375a6eac18da2210a539bc3d",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": false,
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-equipment-frame-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": false,
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
     "runtime_baseline": {
-      "link_file": "inventory/client455-normal-link.json",
+      "link_file": "artifacts/client455-progress/before154/inventory/client455-normal-link.json",
       "link_sha256": "9910c87348c56da48a005dbc4963cb5fd9461727b3eec579973c83b889fac54a",
       "executable": {
-        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "file": "artifacts/client455-progress/before154/work/client455-port/normal/build/RF_Online.bin",
         "sha256": "3296a413924f854a30277203c84008a02dd7732caa6b5e8c91f9e77379ffd856",
         "bytes": 2326016,
         "architecture": "x86",
@@ -704,15 +705,55 @@
           ".reloc"
         ]
       },
-      "build_file": "inventory/client455-normal-build.json",
+      "build_file": "artifacts/client455-progress/before154/inventory/client455-normal-build.json",
       "build_sha256": "18babc171618574473a7e99f2d86e5ba3f6e0a02375a6eac18da2210a539bc3d"
     },
-    "candidate_runtime_status": "CHECKED_PARTIAL",
+    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
+    "current_working_source": {
+      "status": "BUILD_FAILED",
+      "build_report": {
+        "file": "inventory/client455-normal-build.json",
+        "sha256": "dd35c279e29dd140bc611b46287ab3c232829e20254f0ffd29b88ac1a2992fc4"
+      },
+      "build_exit": 1,
+      "errors": [
+        {
+          "file": "work/client455-port/normal/source/character/avatar/cavatar.cpp",
+          "line": 162,
+          "code": "C2280",
+          "message": "\"CAvatar::CAvatar(const CAvatar &)\": предпринята попытка ссылки на удаленную функцию"
+        }
+      ],
+      "included_in_readiness_estimate": false,
+      "issue": "New owned equipment state makes Avatar copy construction invalid;copy ownership must be resolved before accepting154"
+    },
+    "intermediate_candidate": {
+      "executable": {
+        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "sha256": "073e1bcb9c1a823525f44b567bb53f59e5f9aa81b6ba215d3ebe7a010fff4cb6",
+        "bytes": 2345984,
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "entry_rva": "0x17f190",
+        "sections": [
+          ".text",
+          ".rdata",
+          ".data",
+          ".fptable",
+          ".reloc"
+        ]
+      },
+      "link_exit": 0,
+      "linked_build_evidence_available": false,
+      "build_report": null,
+      "runtime_verified": false,
+      "superseded_by_later_source_build": true
+    },
     "current_work": "Ordinary153 Create/Login/account3Avatar verified. CMesh/CEquip frame/ANI/end transitions,dummy/always/motion effect follow andequipment-position sound verified withrealmodels/ANI/Miles;ordinary6Avatar defaults nowderivedCEquip. Sixrenderframes equal150. Primary12-slot CPlayerProc owner/providers/conditions/UI,complete455metrics/PremiumUI,selection/world/gameplay/particle registry remainopen. Overallfunctionalestimate unchanged.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "412ec82ccf7357cd220280295b3ffa78fda61bab70ecb5b11536ee1e67497e06",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "fresh_for_runtime_baseline": true,
       "frame": {
         "file": "work/m9/3296a413/login-frame001/login-frame.png",
@@ -742,7 +783,7 @@
       "known_visible_problem": "Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain",
       "return_checkpoint": "Return after the diagnostic capture;not necessarily the first frame"
     },
-    "existing_Create_proved_on_current_PE": true,
+    "existing_Create_proved_on_current_PE": false,
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
@@ -807,7 +848,7 @@
     "checked_unresolved_resource_references": 1120,
     "resource_inventory_complete": false,
     "resource_reference_scope": "Catalog bone/BBX references and a selected ANI search,including target RFS lookup;not a complete client asset inventory",
-    "assembly_status": "Current selected client build is possible;this does not prove full455source completeness",
+    "assembly_status": "Saved153build is complete;current154working sources have a compile failure",
     "behavior_specification_status": "Incomplete:complete feature/packet/state/resource/scenario inventory is still missing;no defensible percentage for that missing denominator",
     "original455source_completeness_percent": null,
     "practical_readiness": [
@@ -902,10 +943,10 @@
   },
   "storage": {
     "audit_file": "inventory/workspace-storage-audit.json",
-    "audit_sha256": "339c9c23b9a4589b9e0fe5f22bf75ec52133066cfaeced36d25ca49d753f076a",
-    "audit_time_local": "2026-11-10 16:34:07",
-    "logical_gib": 156.14,
-    "unique_file_size_gib": 42.96,
+    "audit_sha256": "f0de7aee78aef45e18922abf1e87cb1adfddb12f98246e47440a864a5c0dae2f",
+    "audit_time_local": "2026-11-10 20:56:14",
+    "logical_gib": 158.84,
+    "unique_file_size_gib": 43.19,
     "physical_allocation_measured": false,
     "files_deleted": false,
     "note": "Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement."
@@ -971,6 +1012,14 @@
     "report_done_remaining_and_next_observable_result": true,
     "distinguish_build_readiness_component_verification_and_full_acceptance": true,
     "test_or_function_counts_are_not_completion_percent": true,
+    "unfinished_or_failed_builds_are_not_completed_progress": true,
+    "next_report_fields": [
+      "Observable ordinary-client result",
+      "Integrated versus standalone evidence",
+      "Remaining prerequisites to next anchor",
+      "Current source build health",
+      "Changed estimate and its basis"
+    ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
     "unchanged_range_reason": "The new packet/Avatar/class/equipment integrations close local dependencies;ordinary selection/world/gameplay still unproved. Coarse scope estimate is unchanged."
   },
@@ -986,7 +1035,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "7e0cde0450408f079d6e09ef45b1711d71f6e8cf1e37f778fbbbc08c1dd09a17"
+    "sha256": "fcdbd2a76a9ee4bb0cf41fae680a5116ec4d6ad5ddda34384b9773c2810cecaf"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
