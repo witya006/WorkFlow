@@ -11,6 +11,7 @@ from audit_client455_normal_character_api import code_only
 from client455_resource_object_port import port_resource_object
 from client455_actor_lighting_port import port_actor_lighting
 from client455_selection_port import port_selection
+from client455_hud_port import port_hud
 from client455_item_object_port import port_item_object
 from client455_item_icon_port import port_item_icon
 from client455_item_metadata_port import port_item_metadata
@@ -141,6 +142,8 @@ def main():
             if actor_light_changed:changes.append('455actor BSP color/afterimage/blink material and negated directional light;unloaded-BSP undefined color and legacy one-argument blink callers remain unaccepted')
             raw,selection_changed=port_selection(raw,relative,native,section)
             if selection_changed:changes.append('4551/14 selection andbounded1/15 reply22:WORD result,serial32 andmoney64 toactual avatar/dummy;fullselection callback/state handoff remainsopen')
+            raw,hud_changed=port_hud(raw,relative,native,section)
+            if hud_changed:changes.append('455upper HUD main/common/EtcUI sprites,4gauges/image numbers/level;fullMainGame root/EXP/unit consumers open')
             raw,item_changed=port_item_object(raw,relative,native,section)
             if item_changed:changes.append('455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported')
             raw,icon_changed=port_item_icon(raw,relative,native,section)
@@ -873,6 +876,7 @@ def main():
     for name in ['client455_language.cpp','client455_language.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_font_settings.cpp','client455_font_settings.h','client455_font.cpp','client455_font.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_sprites.cpp','client455_sprites.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_hud.inc','client455_hud_members.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

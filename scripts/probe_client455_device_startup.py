@@ -57,6 +57,16 @@ def main(handoff=None,live_port=None,select_character=False):
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
         for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+    if select_character:
+        #Only the newly restored HUD skins;share owned pool copies,never clone
+        #the entire client. Preserve target localized-before-Common selection.
+        for folder in ['Common',country['folder']]:
+            for filename in ['main.spr','EtcUI.spr']:
+                original=client/'SpriteImage'/folder/filename
+                if not original.is_file():continue
+                copy=run/original.relative_to(client)
+                if any(row['file']==copy.relative_to(WS).as_posix() for row in inputs):continue
+                stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if args.with_lobby:
         world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
         for row in case['archives']:

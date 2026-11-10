@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee",
+    "bytes": 2349056,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17fa40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x26a0d0",
+      "symbol": "CGUIGaugeExpWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_hud.inc",
+        "sha256": "6e037c3d977f660fb527de9e22b3f545be8da019d457af3b73fb5318cce61a14"
+      },
+      "scope": "Actual target skins/GPU component;ordinary fullstage not yet accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x26a4a0",
+      "symbol": "CGUIGaugeExpWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_hud.inc",
+        "sha256": "6e037c3d977f660fb527de9e22b3f545be8da019d457af3b73fb5318cce61a14"
+      },
+      "scope": "Actual target skins/GPU component;ordinary fullstage not yet accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x26a5c0",
+      "symbol": "CGUIGaugeExpWindow::SetFourthColor455",
+      "source": {
+        "file": "scripts/native/client455_hud.inc",
+        "sha256": "6e037c3d977f660fb527de9e22b3f545be8da019d457af3b73fb5318cce61a14"
+      },
+      "scope": "Actual target skins/GPU component;ordinary fullstage not yet accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x26a6c0",
+      "symbol": "CGUIGaugeExpWindow::SetGauge",
+      "source": {
+        "file": "scripts/native/client455_hud.inc",
+        "sha256": "6e037c3d977f660fb527de9e22b3f545be8da019d457af3b73fb5318cce61a14"
+      },
+      "scope": "Actual target skins/GPU component;ordinary fullstage not yet accepted",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x26aa20",
+      "symbol": "CGUIGaugeExpWindow::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_hud.inc",
+        "sha256": "6e037c3d977f660fb527de9e22b3f545be8da019d457af3b73fb5318cce61a14"
+      },
+      "scope": "Actual target skins/GPU component;ordinary fullstage not yet accepted",
+      "complete_equivalence": false
+    }
+  ]
+}

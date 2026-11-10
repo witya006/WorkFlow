@@ -1,4 +1,31 @@
-# Продолжение M6 — игровой интерфейс и создание мира (159)
+# Продолжение M6 — окно характеристик455 и создание мира (160)
+
+Частичная159 проверена: own afb30309…/x86/entry17FA40/2349056bytes,
+182client/67engine/20kernels/link0. Gate client455-hud-checkpoint:
+PARTIAL_KNOWN_FAILURE. Верхняя Gauge455 восстановлена,17детей/3GPUкадра/
+семь пороговых случаев/перезагрузка PASS. Live Enter снова принят; затем
+ошибка own12C53F/GetSpriteOrgXL ← CGUITileObject::SetSpriteInfo ←
+CGUICharInfoWindow::SetSprite74366/Init73301 ← MainGame::Create_UI26729.
+
+1. До правок160 сохранить точную159 вbefore160 через preserve utility:
+   --previous before159 --destination before160
+   --checkpoint inventory/client455-hud-checkpoint.json. Before159 не менять.
+2. В старом CharInfo::SetSprite источник SP_ID_INVENTORY/action6/7 не
+   соответствует настоящему окну455. Перенести target47 charinfo.spr,
+   Init/layout/value owners/табуляцию/scroll и потребителей по исходному BIN.
+   Не скрывать окно,не подставлять чужуюskin и не считать staging полноценным переносом.
+3. После этого следовать следующему реальному отказу Create_UI/Create,
+   затем настоящая карта/avatar/control. Full MainGame UI_LoadSprite ещё старый;
+   target54BDF0 list записан в private decomp, полныйASMне принят.
+4. Gauge: lowerEXP/unit routes/caption/notice producers/hover flags и четвертый
+   gameplay provider всё ещё открыты. Четвёртая полоса НЕ объявлена EXP/DP.
+5. Счётчики2246(+15)/422(+19) из37865;5новых частичных bindings,выборочно12.
+   Полных областей0/12,25%(20–35%),M9OPEN. Server/originals не менять.
+
+Research:research/client455-hud.md. Новых native/IDA jobs не осталось.
+Ниже история159.
+
+# Историческое продолжение M6 — игровой интерфейс и создание мира (159)
 
 11.11.2026. Частичная158/df69c7ef…/x86/entry17FCD0/2349568bytes,
 182client/67engine/20kernels,build/link0. Gate selection-checkpoint:

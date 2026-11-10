@@ -1,4 +1,18 @@
-# Уточнение измерения прогресса —11.11.2026
+# Частичная159 —11.11.2026
+
+Own afb30309…/x86/entry17FA40/2349056bytes,182client/67engine/20kernels,
+build/link0. Настоящая верхняя панель455:main/common/EtcUI,4полосы/17children,
+image-text/уровень/пороговыецвета. NativeGPU3кадра/7threshold/reload/DmallocPASS,
+кадры просмотрены. 19функций/1406инструкций полных ASM/CFG совпалиboth455pins.
+Live Enter принят;прежний Gaugeсбой пройден. Следующийфатальныйотказ встаром
+CharInfo.SetSprite/Init,own12C53F/GetSpriteOrgXL. World/MainGameUI/M9OPEN.
+Gate:inventory/client455-hud-checkpoint.json,PARTIAL_KNOWN_FAILURE.
+Раннийstartup/consumer bridge PASS. Свежие2246(+15)/422(+19)functionevidence,
+пятьчастичныхbindings. Старые большие suites не повторялись. Before15992files
+сохранён;сервер/оригиналы без изменений,секреты/handoffнесохранены.
+IDA8c2a0833/7f0c7676 saved/closed. Research:client455-hud.md.
+
+# История уточнения измерения прогресса —11.11.2026
 
 Проверен дополнительный учёт функций:37865индекс/2231адресные материалы/
 403полный листинг-CFG. Self-test неполных доказательств и реального156 PASS.

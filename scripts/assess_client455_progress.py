@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-hud-checkpoint',
         'client455-selection-checkpoint',
         'client455-actor-lighting-checkpoint',
         'client455-combat-transition-checkpoint',

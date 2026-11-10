@@ -1,4 +1,38 @@
-# Уточнение учёта функций и сохранённая разведка159
+# Частичная159 — верхняя панель455, следующий сбой CharInfo
+
+11.11.2026. Own afb30309dbb1c14058ef0d9a2b9b8e055ff466ef3c3f4335846a1eb5518c41ee,
+x86/base400000/entry17FA40/2349056bytes;182client/67engine/20kernels,build/link0.
+Engine unchanged. Gate inventory/client455-hud-checkpoint.json PARTIAL_KNOWN_FAILURE.
+Before159=точная158/92files сохранён,не перезаписывать;до160 сохранить159.
+
+client455_hud_port.py+hud.inc/members.inc подключают настоящие Gauge Init/
+SetSprite/SetGauge/SetLevel к normal sources:main4/common1/EtcUI49,4полосы,
+17children,zero-max→1,unsignedclamp,signednumbers,уровеньBYTE/centering.
+Четвёртая vertical bottom anchored,цветпороги.2/.7. CharInfo value owners3/9..12.
+Использован существующий CGUIImageText455,не старый CGUINumber. Нет gaugeexp alias.
+FullASM/CFG11+8functions/1406instructions совпалиbothpins. Native
+work/m9/7ca856c6/hud-001:3GPUкадра просмотрены,threshold7/callbacks/reload,
+changed==reloaded!=initial,Dmallocbalanced. Не запускались прежние большие suites.
+
+Actual live work/m9/afb30309/selection-live-taiwan001:tx1/14→rx1/15/22/result0,
+GaugeInit пройден по порядку Create_UI. Следующий unhandledC0000005:
+own12C53F GetSpriteOrgXL ← Tile.SetSpriteInfo97288 ← CharInfo.SetSprite74366 /
+Init73301 ← Create_UI26729. Старый CharInfo использует inventory/action6/7.
+Мир/управление НЕ достигнуты,полныйUICreate не завершён. Handoff удалён.
+
+Function2246(+15) адресных/422(+19) fullASM-CFG из37865;5новыхчастичных
+sourcebindings,всеговыборочно12,полнаяequivalence/общийперенос не подсчитаны.
+Audit/research:client455-hud-reference/native/checkpoint иresearch/client455-hud.md.
+IDA8c2a0833/7f0c7676 saved/closed;nativejobs terminal. M6/M6F/M7/M9OPEN,
+0/12областей,25%(20–35%). Дальше настоящий CharInfo455/остальнойMainGameUI.
+
+По вопросу о навыках прочитаны первоисточники Habr→GitHub. find-skills —
+поиск/установка,не reverseengineer. improve-codebase-architecture — выборочный
+audit адаптеров/сборки/ownership,не массовыйрефакторинг до доказанного455behavior.
+grill-me — опрос о решениях;M9 уже определён. Последние два имеютзависимости
+grilling/codebase-design/domain-modeling. Установка пользователем ещё не запрошена.
+
+# История уточнения учёта функций и разведки159
 
 11.11.2026. По запросу пользователя уточнён docs/function-coverage.md:
 индексация37865 / адресные материалы2231 / полный ASM-CFG403 различаются

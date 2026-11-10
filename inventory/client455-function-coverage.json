@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T16:01:53.416819+00:00",
+  "measured_at_utc": "2026-11-10T16:51:07.489860+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2231,
-    "unique_functions_with_complete_assembly_cfg": 403,
-    "unique_pinned_code_bytes": 597008,
-    "reports": 160,
-    "code_range_occurrences": 3729,
+    "unique_functions_with_pinned_code": 2246,
+    "unique_functions_with_complete_assembly_cfg": 422,
+    "unique_pinned_code_bytes": 600577,
+    "reports": 161,
+    "code_range_occurrences": 3749,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -237,6 +237,10 @@
     {
       "file": "inventory/client455-hotbar-checkpoint.json",
       "sha256": "99a11aede20f9f83987ab96d89198683d22459d9b1fbc0c65733ee394bc7f8ab"
+    },
+    {
+      "file": "inventory/client455-hud-reference.json",
+      "sha256": "514ea88c08b9d036a983d822887ef3c7649a32c315100790bfe1f996fea9b627"
     },
     {
       "file": "inventory/client455-icon-links-reference.json",
@@ -757,6 +761,14 @@
       "sha256": "71f4b5446f4578277f9637635fab358a1e6b33b69d27d12f8520203f21c9c168"
     },
     {
+      "file": "artifacts/client455-progress/hud159-reference/session.json",
+      "sha256": "00c587a25b06f2f5c990ebf52fa38f9838c20f533b1f8d23e0b974bc26da37a5"
+    },
+    {
+      "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+      "sha256": "0075778e603a364e33cda504bcab6997419eeec78615b8d339777b2268fedf44"
+    },
+    {
       "file": "artifacts/client455-progress/item-bootstrap142-reference/session.json",
       "sha256": "694dde4d9cd78a620e3b60c0e9dc183d6a3d3f93c798ac27f2aa88786b544d47"
     },
@@ -844,7 +856,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "7d80d3706831af502884faa6bf24f3721a6b7fadcd21a9e22f382f3dc6253fc8"
+      "sha256": "f312bb8bbacd3357fc1dd03358494af126b5cf78c037830ca5e63b298336368e"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -12882,6 +12894,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x147790",
+      "ida_name": "sub_547790",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x147790",
+          "bytes": 40
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
       "rva": "0x1477c0",
       "ida_name": "sub_5477C0",
       "reports": [
@@ -17900,6 +17931,7 @@
       "rva": "0x226180",
       "ida_name": "sub_626180",
       "reports": [
+        "inventory/client455-hud-reference.json",
         "inventory/client455-item-lock-reference.json",
         "inventory/client455-modal-reference.json"
       ],
@@ -17909,12 +17941,18 @@
           "bytes": 169
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 55
+        }
+      ]
     },
     {
       "rva": "0x226230",
       "ida_name": "sub_626230",
       "reports": [
+        "inventory/client455-hud-reference.json",
         "inventory/client455-item-lock-reference.json",
         "inventory/client455-scrollbar-variants-reference.json"
       ],
@@ -17924,7 +17962,12 @@
           "bytes": 131
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 46
+        }
+      ]
     },
     {
       "rva": "0x2262e0",
@@ -18238,6 +18281,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x227ae0",
+      "ida_name": "sub_627AE0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x227ae0",
+          "bytes": 154
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 50
+        }
+      ]
+    },
+    {
+      "rva": "0x227e00",
+      "ida_name": "sub_627E00",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x227e00",
+          "bytes": 154
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 50
+        }
+      ]
     },
     {
       "rva": "0x2281b0",
@@ -20263,6 +20344,101 @@
       ]
     },
     {
+      "rva": "0x2633b0",
+      "ida_name": "sub_6633B0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2633b0",
+          "bytes": 81
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 31
+        }
+      ]
+    },
+    {
+      "rva": "0x263410",
+      "ida_name": "sub_663410",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x263410",
+          "bytes": 84
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x263470",
+      "ida_name": "sub_663470",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x263470",
+          "bytes": 109
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x2634e0",
+      "ida_name": "sub_6634E0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2634e0",
+          "bytes": 109
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x263550",
+      "ida_name": "sub_663550",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x263550",
+          "bytes": 109
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/callbacks.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
       "rva": "0x263850",
       "ida_name": "sub_663850",
       "reports": [
@@ -20736,6 +20912,124 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x269da0",
+      "ida_name": "sub_669DA0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x269da0",
+          "bytes": 387
+        },
+        {
+          "rva": "0x638910",
+          "bytes": 193
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 152
+        }
+      ]
+    },
+    {
+      "rva": "0x26a0d0",
+      "ida_name": "sub_66A0D0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26a0d0",
+          "bytes": 967
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 290
+        }
+      ]
+    },
+    {
+      "rva": "0x26a4a0",
+      "ida_name": "sub_66A4A0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26a4a0",
+          "bytes": 286
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 91
+        }
+      ]
+    },
+    {
+      "rva": "0x26a5c0",
+      "ida_name": "sub_66A5C0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26a5c0",
+          "bytes": 165
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 54
+        }
+      ]
+    },
+    {
+      "rva": "0x26a6c0",
+      "ida_name": "sub_66A6C0",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26a6c0",
+          "bytes": 459
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 148
+        }
+      ]
+    },
+    {
+      "rva": "0x26aa20",
+      "ida_name": "sub_66AA20",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26aa20",
+          "bytes": 189
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 57
+        }
+      ]
     },
     {
       "rva": "0x273390",
@@ -22804,6 +23098,7 @@
       "rva": "0x3b2b80",
       "ida_name": "sub_7B2B80",
       "reports": [
+        "inventory/client455-hud-reference.json",
         "inventory/client455-linker-window-reference.json",
         "inventory/client455-minimap-opacity-reference.json"
       ],
@@ -22813,7 +23108,12 @@
           "bytes": 216
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 87
+        }
+      ]
     },
     {
       "rva": "0x3b2c60",
@@ -22951,6 +23251,7 @@
       "ida_name": "sub_7B5FB0",
       "reports": [
         "inventory/client455-character-flags-reference.json",
+        "inventory/client455-hud-reference.json",
         "inventory/client455-linker-window-reference.json"
       ],
       "ranges": [
@@ -22959,7 +23260,31 @@
           "bytes": 349
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 87
+        }
+      ]
+    },
+    {
+      "rva": "0x3b6110",
+      "ida_name": "sub_7B6110",
+      "reports": [
+        "inventory/client455-hud-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3b6110",
+          "bytes": 83
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hud159-reference/session.json",
+          "instructions": 34
+        }
+      ]
     },
     {
       "rva": "0x3bb470",
@@ -35403,8 +35728,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 6,
-    "unique_functions_with_complete_assembly_cfg": 7
+    "unique_functions_with_pinned_code": 15,
+    "unique_functions_with_complete_assembly_cfg": 19
   },
   "M6": "OPEN",
   "M9": "OPEN",

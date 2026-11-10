@@ -1185,3 +1185,10 @@ encrypted1/9receiver3real classindices PASS;ordinaryLogin viewed.
 Отдельные23textwidgets не доказывают455UIlayout/render. Classskillcallback,
 equipment/appearance/selection остаютсяopen.
 Gate inventory/client455-avatar-classes-checkpoint.json;research/client455-avatar-classes.md.
+# Частичная проверка159, 11.11.2026
+
+Верхняя Gauge455 перенесена в обычные источники,19reference functions/1406
+instructions совпалиbothpins. Native actual17children/3GPUframes/цвета/числа/
+level/reload PASS. Live выбор принят,GaugeInit пройден;следом fatal старого
+CharInfo.SetSprite/Init. Это PARTIAL_KNOWN_FAILURE,не успешный полный запуск.
+World/control/fullUI/M6F/M7/M9OPEN. Gate:inventory/client455-hud-checkpoint.json.
