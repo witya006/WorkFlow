@@ -85,29 +85,43 @@ def main():
     registry=load('client-features');status=collections.Counter(x['status'] for x in registry['features'])
     normal,engine=load('client455-normal-link'),load('client455-startup-engine-build')
     build_file,build=linked_build(normal)
-    #A new partial build must not silently select an even older checkpoint as
-    #current. Preserve the last completed partial checkpoint with its exact build.
-    latest='artifacts/client455-progress/before138/inventory/client455-scene-capture-checkpoint.json'
-    assert (WS/latest).is_file()
-    if (WS/'inventory/client455-login-checkpoint.json').is_file() and load('client455-login-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-login-checkpoint.json'
-    if (WS/'inventory/client455-world-entry-checkpoint.json').is_file() and load('client455-world-entry-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-world-entry-checkpoint.json'
-    if (WS/'inventory/client455-registered-characters-checkpoint.json').is_file() and load('client455-registered-characters-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-registered-characters-checkpoint.json'
-    if (WS/'inventory/client455-resource-catalog-checkpoint.json').is_file() and load('client455-resource-catalog-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-resource-catalog-checkpoint.json'
-    if (WS/'inventory/client455-item-bootstrap-checkpoint.json').is_file() and load('client455-item-bootstrap-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-item-bootstrap-checkpoint.json'
-    if (WS/'inventory/client455-character-tables-checkpoint.json').is_file() and load('client455-character-tables-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-character-tables-checkpoint.json'
-    if (WS/'inventory/client455-avatar-classes-checkpoint.json').is_file() and load('client455-avatar-classes-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-avatar-classes-checkpoint.json'
-    if (WS/'inventory/client455-equipment-checkpoint.json').is_file() and load('client455-equipment-checkpoint')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'):
-        latest='inventory/client455-equipment-checkpoint.json'
-    login=load('client455-login-frame-native')
-    assert login['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json')
-    assert login['executable']['sha256']==normal['executable']['sha256']
+    #Keep the newest completed runtime checkpoint even while a newer candidate
+    #is awaiting its first runtime check. Resolve exact archived evidence rather
+    #than falsely calling an older screenshot fresh for the new executable.
+    checkpoint_names=[
+        'client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
+        'client455-character-tables-checkpoint','client455-item-bootstrap-checkpoint',
+        'client455-resource-catalog-checkpoint','client455-registered-characters-checkpoint',
+        'client455-world-entry-checkpoint','client455-login-checkpoint']
+    link_files=[WS/'inventory/client455-normal-link.json']+sorted(
+        (WS/'artifacts/client455-progress').glob('before*/inventory/client455-normal-link.json'),reverse=True)
+    links_by_hash={sha(path):path for path in link_files}
+    latest=runtime_link_file=None
+    for name in checkpoint_names:
+        path=WS/'inventory'/f'{name}.json'
+        if not path.is_file():continue
+        body=load(name)
+        if body.get('normal_link_sha256') in links_by_hash:
+            latest=path.relative_to(WS).as_posix()
+            runtime_link_file=links_by_hash[body['normal_link_sha256']]
+            break
+    assert latest and runtime_link_file,'No completed checkpoint with exact link evidence'
+    runtime_normal=json.loads(runtime_link_file.read_text(encoding='utf-8-sig'))
+    runtime_link_sha=sha(runtime_link_file)
+    runtime_is_current=runtime_normal['executable']['sha256']==normal['executable']['sha256']
+    login_file=WS/'inventory/client455-login-frame-native.json'
+    login=json.loads(login_file.read_text(encoding='utf-8-sig'))
+    if login['normal_link_sha256']!=runtime_link_sha:
+        login_file=runtime_link_file.parent/'client455-login-frame-native.json'
+        login=json.loads(login_file.read_text(encoding='utf-8-sig'))
+    assert login['normal_link_sha256']==runtime_link_sha
+    assert login['executable']['sha256']==runtime_normal['executable']['sha256']
+    runtime_exe_file=WS/runtime_normal['executable']['file']
+    if not runtime_exe_file.is_file() or sha(runtime_exe_file)!=runtime_normal['executable']['sha256']:
+        runtime_exe_file=runtime_link_file.parent.parent/runtime_normal['executable']['file']
+    assert sha(runtime_exe_file)==runtime_normal['executable']['sha256']
+    runtime_build_file,runtime_build=linked_build(runtime_normal)
+    assert runtime_build['objects']==182 and sha(runtime_build_file)==runtime_normal['normal_build_sha256']
     assert login['reached_first_login'] and login['first_login_frame_completed'] and login['first_login_frame_captured']
     assert login['capture_result']['result']==0
     for record in (login['captured_frame'],login['capture_metadata']):
@@ -127,7 +141,7 @@ def main():
     wip_file=WS/'inventory/client455-character-tables-reference.json'
     wip=json.loads(wip_file.read_text()) if wip_file.is_file() else None
     character_native_current=latest=='inventory/client455-character-tables-checkpoint.json'
-    report=dict(schema=2,assessment_date=datetime.date.today().isoformat(),scope_version=1,scope='Full client455 behavior/source/build through M9,no graphics modernization,no server work',
+    report=dict(schema=3,assessment_date=datetime.date.today().isoformat(),scope_version=1,scope='Full client455 behavior/source/build through M9,no graphics modernization,no server work',
         estimate_kind='Engineering planning judgement for known functional scope;not measured equivalence coverage',
         weighted_low=low,weighted_high=high,weighted_midpoint=(low+high)/2,communicated_point_percent=25,communicated_range_percent=[20,35],communicated_remaining_percent=75,
         confidence='Useful planning estimate;unknown455features and integration can change the remaining scope. No calibrated calendar forecast.',
@@ -135,9 +149,14 @@ def main():
         domains=domains,complete_acceptance_domains=0,domain_count=len(domains),evidence=evidence,
         observed_facts=dict(client_compilation_units=182,engine_compilation_units=67,canonical_kernel_objects=build['canonical_kernel_objects'],unresolved_symbols=0,own_executable=normal['executable'],engine_sha256=engine['library_sha256'],references=reference,
             exact_linked_build_evidence=dict(file=build_file.relative_to(WS).as_posix(),sha256=sha(build_file),matches_link_record=True),
-            newer_build_is_not_the_accepted_runtime=sha(WS/'inventory/client455-normal-build.json')!=normal['normal_build_sha256'],
-            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not latest.startswith('inventory/'),current_work='Ordinary runtime145 unchanged.146 controller/clone,real ANI/pose/fade/height,magic/sound ownership,creation positions andtyped equipment modifiers/totals/weakpart verified separately onrealinputs. Actual owner skill/UI/upgrade/set/SF producers andordinary frame/dummy/CPlayerProc integration/fullfailure fidelity remain open. Full appearance/selection/bootstrap/world/M9 not accepted.',
-            ordinary_login_observation=dict(file='inventory/client455-login-frame-native.json',sha256=sha(WS/'inventory/client455-login-frame-native.json'),fresh_for_current_PE=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
+            newer_build_is_not_the_accepted_runtime=not runtime_is_current or sha(WS/'inventory/client455-normal-build.json')!=normal['normal_build_sha256'],
+            last_completed_checkpoint=latest,last_completed_checkpoint_is_historical_for_current_PE=not runtime_is_current,
+            runtime_baseline=dict(link_file=runtime_link_file.relative_to(WS).as_posix(),link_sha256=runtime_link_sha,
+                executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},
+                build_file=runtime_build_file.relative_to(WS).as_posix(),build_sha256=sha(runtime_build_file)),
+            candidate_runtime_status='CHECKED_PARTIAL' if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
+            current_work='Last runtime-checked baseline145 preserved. New ordinary147 candidate compiles and links, but its palette probe failed to compile (incomplete CCharResDataMgr include);new runtime is unvalidated.146 components verified separately. Actual CPlayerProc/Avatar/equipment/frame integration and full selection/world/gameplay remain open.',
+            ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
         binary_static_inventory=dict(file=survey_file.relative_to(WS).as_posix(),sha256=sha(survey_file),reference_sha256=survey['metadata']['sha256'],architecture='x86',image_base='0x400000',statistics=survey['statistics'],

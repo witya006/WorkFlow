@@ -1,4 +1,33 @@
-# Актуальное продолжение146:числовая цепочка условий проверена
+# Продолжение после оценки — 10.11.2026
+
+Главная задача следующего отчёта — наблюдаемый результат обычного клиента.
+Плановая готовность25%(20–35%), остаток65–80%; 0/12полных областей принято.
+Полные исходники/SDK455 отсутствуют. Сборочные входы выбранной конфигурации
+обеспечены; полнота ресурсов и спецификации поведения ещё не установлена.
+Документы:progress-report.md, roadmap.md, next-steps.md.
+
+Последний проверенный runtime145/1a355372… сохранён в before146.
+Кандидат147/993978ff… уже собран182/67/20/link0, но runtime не проверен.
+Незавершённые изменения: CCharacter cache20parts×30palettes/13dummy.
+Palette probe не компилируется: C2079/CCharResDataMgr в mainapp.h.
+Не выдавать candidate за проверенную145. Три source-файла до изменения
+сохранены в character-palette147-source-before; отдельный WIP-report в inventory.
+
+Сначала исправить probe include и провести затронутые palette/Avatar/обычный запуск.
+Затем соединять уже проверенные146компоненты с CPlayerProc/Avatar/кадром.
+4513C0 SetEquipItemToDefaultMesh действительно пустой/return1 в455:
+не придумывать default-substitution; найти настоящий producer внешнего вида.
+Render diagnostics сохранены в character-palette147-reference/ordinary-render-diagnostic.json.
+Они не все имеют полное ASM-подтверждение. Полные ctor/lifecycle ещё открыты.
+
+IDA b6dd2ecb saved/closed/list0; активных native jobs нет.
+Новая дисковая опись155,29GiB по путям/42,87GiB уникальных файлов; удаления0.
+Сервер/originals не изменены. Большие неизменённые suites не повторять.
+Следующий функциональный рубежB: правильный список/внешний вид/выбор;
+послеB/C пересмотреть оценку и срок. Надёжного срокаM9 пока нет.
+Ниже сохранена история; она не должна перекрывать это продолжение.
+
+# Предыдущее продолжение146:числовая цепочка условий проверена
 
 Gate inventory/client455-equipment-conditions-checkpoint.json PARTIAL_COMPONENT;
 research/client455-equipment-conditions.md. Sourceclient455_equipment_conditions.h.

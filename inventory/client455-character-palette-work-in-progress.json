@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "date": "2026-11-10",
+  "status": "BUILD_PASS_RUNTIME_NOT_VALIDATED",
+  "scope": "Ordinary CCharacter palette migration147;full equipment/appearance/lifecycle not accepted",
+  "normal_link": {
+    "file": "inventory/client455-normal-link.json",
+    "sha256": "5dd2ad4fe3bf71c96613e2fe5e0a44d07df68a7a9fd0e053ed3ac4cc86f53888",
+    "bytes": 3250
+  },
+  "candidate_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "993978ffd58f5be96176f5ae03c36396048d04a27b4741c26582a5013268a5b1",
+    "bytes": 2299904,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x175ea0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "last_runtime_checked_checkpoint": {
+    "file": "inventory/client455-equipment-checkpoint.json",
+    "sha256": "758136ea93f09769ceee07c6d23948162174e78788543b524e06d61d326ae299",
+    "bytes": 4940
+  },
+  "preserved_runtime_link": {
+    "file": "artifacts/client455-progress/before146/inventory/client455-normal-link.json",
+    "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
+    "bytes": 3250
+  },
+  "static_reference": {
+    "file": "inventory/client455-character-palette-reference.json",
+    "sha256": "881d2572e08ec277d305036f462741d5354a06484d88cdb65485297cdc69e360",
+    "bytes": 9050
+  },
+  "probe_source": {
+    "file": "scripts/native/client455_character_palette_probe.cpp",
+    "sha256": "df58d9691379a64478ff5ff1f209494152679f6aff34b4039ebeaf22631eacaf",
+    "bytes": 5046
+  },
+  "failed_probe_build_log": {
+    "file": "work/client455-port/character-palette-probe/build.txt",
+    "sha256": "0feabeda3441f677b7f796b2b42a7590204cfdd60e5bc32dfed5501f80bea0df",
+    "bytes": 3519
+  },
+  "probe_status": "COMPILE_FAILED_C2079",
+  "failure": "CMainApp::m_cCharResDataMgr uses incomplete class CCharResDataMgr in mainapp.h",
+  "next_action": "Fix native-probe includes;run targeted palette and Avatar checks and own-client startup before promoting candidate",
+  "ida_session": "b6dd2ecb saved and closed;idb_list0",
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

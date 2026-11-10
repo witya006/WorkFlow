@@ -1,5 +1,5 @@
 {
-  "schema": 2,
+  "schema": 3,
   "assessment_date": "2026-11-10",
   "scope_version": 1,
   "scope": "Full client455 behavior/source/build through M9,no graphics modernization,no server work",
@@ -262,7 +262,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
+      "sha256": "5dd2ad4fe3bf71c96613e2fe5e0a44d07df68a7a9fd0e053ed3ac4cc86f53888",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -281,7 +281,7 @@
       "sha256": "116c463772f241d6821edbbebca9d1a21b10d8a4d51a4941c85fc11940cb1db0",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-startup-contracts-native": {
@@ -417,7 +417,7 @@
       "sha256": "758136ea93f09769ceee07c6d23948162174e78788543b524e06d61d326ae299",
       "status": "PARTIAL",
       "scope": "Typed CEquipObject creation/resource binding and ordinary Avatar default slots;full player equipment/appearance/render still open",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-player-equipment-checkpoint": {
@@ -529,7 +529,7 @@
       "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
       "status": "PARTIAL",
       "scope": "Ordinary own WinMain/Title/Login render with real lobby and recovered root registration;not complete455Title/Login/auth",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-character-flags-checkpoint": {
@@ -588,11 +588,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+      "sha256": "993978ffd58f5be96176f5ae03c36396048d04a27b4741c26582a5013268a5b1",
       "bytes": 2299904,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x175f50",
+      "entry_rva": "0x175ea0",
       "sections": [
         ".text",
         ".rdata",
@@ -616,17 +616,40 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "f5db19edf6d1ea63e0e53a0e6df0a7bb9c3b8ddea62e04dfbdfb13dac03438aa",
+      "sha256": "7873aeee255a37730295b027ff849bbf979c325ce3757ea9a4caa139548931fb",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": false,
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "Ordinary runtime145 unchanged.146 controller/clone,real ANI/pose/fade/height,magic/sound ownership,creation positions andtyped equipment modifiers/totals/weakpart verified separately onrealinputs. Actual owner skill/UI/upgrade/set/SF producers andordinary frame/dummy/CPlayerProc integration/fullfailure fidelity remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
+    "runtime_baseline": {
+      "link_file": "artifacts/client455-progress/before146/inventory/client455-normal-link.json",
+      "link_sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e",
+      "executable": {
+        "file": "artifacts/client455-progress/before146/work/client455-port/normal/build/RF_Online.bin",
+        "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+        "bytes": 2299904,
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "entry_rva": "0x175f50",
+        "sections": [
+          ".text",
+          ".rdata",
+          ".data",
+          ".fptable",
+          ".reloc"
+        ]
+      },
+      "build_file": "artifacts/client455-progress/before146/inventory/client455-normal-build.json",
+      "build_sha256": "f5db19edf6d1ea63e0e53a0e6df0a7bb9c3b8ddea62e04dfbdfb13dac03438aa"
+    },
+    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
+    "current_work": "Last runtime-checked baseline145 preserved. New ordinary147 candidate compiles and links, but its palette probe failed to compile (incomplete CCharResDataMgr include);new runtime is unvalidated.146 components verified separately. Actual CPlayerProc/Avatar/equipment/frame integration and full selection/world/gameplay remain open.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
+      "fresh_for_runtime_baseline": true,
       "frame": {
         "file": "work/m9/1a355372/login-frame001/login-frame.png",
         "sha256": "6b0d14b2375970d5f7f9a56b9304fbff4eeadcb01060952e6fac0db353f93b1a"
@@ -661,7 +684,7 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "fea9a629d286a2939b132992609850ba232e1076387da60f63ccfbd758aaf477",
+    "sha256": "8695074fdba39a10a9c31ffe8d873ca50f77125047d9e66aaea7c88286a66773",
     "entries": 152,
     "statuses": {
       "partial": 115,
@@ -674,9 +697,7 @@
     },
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
-    "marked_current": [
-      "CLIENT455-EQUIPMENT-145"
-    ],
+    "marked_current": [],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
   "binary_static_inventory": {
@@ -815,10 +836,10 @@
   },
   "storage": {
     "audit_file": "inventory/workspace-storage-audit.json",
-    "audit_sha256": "93663009f9efae30cf2a926a79134e529537cadd5ab3a04c27183e7163fb4a3c",
-    "audit_time_local": "2026-11-10 12:40:16",
-    "logical_gib": 154.86,
-    "unique_file_size_gib": 42.85,
+    "audit_sha256": "13c3e0d2aa41ea3437aec356922a89f9d7ab020c89221473260f8f1a256ff326",
+    "audit_time_local": "2026-11-10 14:12:21",
+    "logical_gib": 155.29,
+    "unique_file_size_gib": 42.87,
     "physical_allocation_measured": false,
     "files_deleted": false,
     "note": "Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement."
@@ -899,7 +920,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "65b90e67ca1a42330c3986d76b818859a4098a0110e4eb5bac097868db617695"
+    "sha256": "9903f491e783b4787e97bbf6a1947b899257a6f8b055d3645f5c6ea124c33db1"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

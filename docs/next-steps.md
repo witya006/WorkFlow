@@ -1,65 +1,58 @@
 # Следующая работа — связанный экран выбора персонажа
 
-Обновлено10.11.2026. M6/M6F/M7/M9 OPEN. Около25%(20–35%),0/12полных областей.
-Текущая обычная сборка145:1a355372…;182client/67engine/20modules/unresolved0.
-Gate:inventory/client455-equipment-checkpoint.json. Login показывает ожидание;
-вход →выбор →мир ещё не пройден.
+Обновлено 10.11.2026. Сейчас M6. Оценка: 25% (20–35%); 0/12 полных областей принято.
+M6F/M7/M9 открыты. Полная оценка: [progress-report.md](progress-report.md).
 
-## Уже проверено в146
+## Точное состояние продолжения
 
-- Контроллер13слотов/normal clone:inventory/client455-player-equipment-checkpoint.json.
-- Реальные ANI/pose/fallback/fade/height:inventory/client455-equipment-providers-checkpoint.json.
-  69случаев/52ANI/16моделей;высота использует meshID@72 через416940,не table index.
-- Magic/sound ownership/cleanup/loop tracking:inventory/client455-equipment-effects-checkpoint.json.
-  Реальные RPK/MagicSpt/Miles.
-- Создание в рассчитанной точке:inventory/client455-equipment-attachment-checkpoint.json.
-  25реальных моделей/25namedpositions/5cloakmagic;targetfailureundefined остаётсяopen.
-- Числовая цепочка условий:inventory/client455-equipment-conditions-checkpoint.json.
-  Special/upgrades/totals/weakpart,22realitems,typedclone removal PASS;
-  actual owner skill/UI callbacks пока не подключены.
-- Обычная145PE неизменна. Ни один из этих отдельных компонентов не закрывает
-  полный внешний вид и выбор персонажа.
+- Последний проверенный обычный запуск — версия 145, SHA-256 `1a355372…`.
+  Gate: `inventory/client455-equipment-checkpoint.json`.
+  Точные файлы сохранены в `artifacts/client455-progress/before146/`.
+- Более новая версия 147, SHA-256 `993978ff…`, собирается и линкуется.
+  Её запуск ещё не проверен. Native palette probe не компилируется: C2079,
+  неполный CCharResDataMgr в mainapp.h. Не называть эту версию принятой.
+- Изменения 147: настоящий CCharacter — 20 частей, 30 палитр, 13 dummy-индексов.
+  Статические доказательства семи функций есть; полные ctor/lifecycle не приняты.
+  Исходные три файла до переноса сохранены в
+  `artifacts/client455-progress/character-palette147-source-before/`.
+- Компоненты 146: контроллер/clone, ANI/fade/height, эффекты/звук,
+  точки привязки и числовые характеристики проверены отдельно.
+  Их полное обычное подключение не выполнено.
+- IDA b6dd2ecb сохранена и закрыта; список сессий пуст. Сборок и native runs нет.
 
-## Очередь до ближайшего рубежаB
+## Очередь до рубежа B
 
-1. Подключить actualCPlayerProc/CPlayer/Avatar/registered typed upgrades,
-   ordinary frame/render/default substitution. Не кастовать455Item rows
-   к старому CEquipItem/CNormalItem и не выдавать probe recorders за providers.
-   Числовые4411E0/4412A0/441840/4418D0/441970/441AC0/442460 ужеsourceverified
-   вclient455_equipment_conditions.h,52fullfunctions/22realitems. Не повторять аудит.
-   Host получает normalitems изembeddedbaseplayerproc44C670,неcurrent44C630.
-   Armour set usespayload113,неmetadata160;mounteddefence456 требуетproducer.
-   Ownercallbacks:AvatarvtableAA8C54/slot252→41A060→board7/490EB0.
-   Pcode savedinequipment-conditions146-reference/owner-bindings-diagnostic.json;
-   их callees ещё требуют completeproof/обычного подключения. GlobalUI41A8B0
-   иSF/potion/liveupgrade/set consumers остаютсяopen;не подставлятьno-op.
-   Позиции7E0D10/7E22F0 и23helperfunctions ужеsource/nativeverified;
-   теперь подключитьк actual effectbackend. Dummycache заполнять внастоящемframeproducer,
-   а не при каждом lookup. Тип17=Spine→Spine1,18=default. Полные CAllEffectInfo
-   attachment иundefined/errorfidelity сохраняются вM9backlog.
-2. Закончить загрузчики Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
-   EventSound/SpecialStore/ItemCollection/Map и Avatar finalization.
-3. Принять обычный список/внешний вид/выбор, UI/input и клиентские переходы/ошибки.
-   Полные Title/Login455 рубежаA также остаются открыты.
-   Не обходить загрузку, не принуждать успешный вход, сервер не разрабатывать.
+1. Закончить текущую проверку 147: исправить порядок заголовков native probe;
+   проверить настоящий кэш, затем затронутый обработчик Avatar и обычный запуск.
+   Не повторять 182-unit build, если изменяется только проверочная программа.
+   Только после свежего запуска повысить версию последней проверенной базы.
+2. Соединить существующие компоненты с настоящими CPlayerProc/CPlayer/Avatar,
+   созданием видимой экипировки, кадром/анимацией/отрисовкой и UI.
+   Не повторять уже выполненный аудит числовых и позиционных helpers.
+   Цель: обычный клиент показывает правильный одетый персонаж и меняет его состояние.
+3. Закончить загрузочную цепочку:
+   Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/EventSound/SpecialStore/
+   ItemCollection/Map и завершающую инициализацию Avatar.
+4. Закрыть Title/Login и выбор: ввод, список/внешний вид, выбор, состояния,
+   ошибки и клиентские переходы. Не подменять авторизацию принудительным успехом.
+5. Зафиксировать доказательства B и заново оценить остаток. Затем C: карта и управление,
+   D: связанные игровые действия, E: остальные возможности и полная приёмка.
 
-ПослеB:персонаж в карте/управление(C) →связанные действия(D) →остальная полнота(E).
-Переоценить объём послеB/C;пока нет основания обещать датуM9.
+## Важные сохранённые ограничения
 
-## Практические ограничения
-
-- Snapshot before146 уже сохранён50files;не перезаписывать.
-- ANI maximum0 допустим;exporterbasename выделять на байтах до ASCIIdecode.
-- Полные данные ASM:IDA basic_blocks+independent count →decode_client455_cfg.py.
-  Compactanalyze_batch preview не принимать за полную ASM.
-- Targeted checks для изменённых частей;не повторять неизменённые159k suites.
-- Shared staging только собственных копий. При пределе900ссылок используется
-  следующая собственная реплика пула;в реальном1024link failure повторныйrun
-  прошёл с280новыми байтами. Старые стенды ещё не очищены.
-- Свежая дисковая опись154,86GiBlogical/42,85GiBunique;точнаяallocationне измерена.
-- IDA71813681 saved/closed/list0;native jobs завершены.
-- Полные renderer/physics/lifecycle/CRT-FP/ошибки сохраняются вM9backlog.
-  Локальный сетевой приёмник не отвечал RFпротоколом:успешная авторизация не доказана.
-
-Полная оценка:docs/progress-report.md;план:docs/roadmap.md.
-Предыдущие подробности сохранены вresearch/next-steps-before-effects146.md.
+- Target 4513C0 SetEquipItemToDefaultMesh — проверенное пустое тело с return 1.
+  Не придумывать реализацию: искать настоящий путь создания внешнего вида.
+- Диагностика render/vtable сохранена:
+  `artifacts/client455-progress/character-palette147-reference/ordinary-render-diagnostic.json`.
+  В ней есть декомпиляции без полного ASM-подтверждения; это справка, не готовый перенос.
+- 146: embedded base player proc — 44C670, не current 44C630; metadata kind — offset 88;
+  armor-set predicate читает runtime payload113, не metadata160; height использует meshID@72.
+  Mounted defence, set/SF/potion/live-upgrade producers и owner skill/UI ещё открыты.
+- Заполнять dummy cache в настоящем producer кадра. Не выдавать recorder callbacks за backend.
+- Кэш CCharacter — 13 dummy slots; equipment dummy cache — отдельные 10 slots.
+- Полные renderer/physics/lifecycle/CRT-FP/ошибки остаются требованиями M9.
+- Общий пул ресурсов ограничивает число ссылок на собственную реплику.
+  Оригиналы независимы. Не создавать новые полные копии клиента для каждого запуска.
+- Серверные файлы только читать. Эталонные входные EXE не выполнять.
+- Проверять затронутые части; не повторять неизменённые большие suites ради счётчиков.
+- Опись места: 155,29 GiB по путям / 42,87 GiB уникальных файлов. Ничего не удалено.
