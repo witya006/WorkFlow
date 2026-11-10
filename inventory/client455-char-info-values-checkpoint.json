@@ -1,0 +1,144 @@
+{
+  "status": "PARTIAL",
+  "scope": "Ordinary CharInfo fullDWORD/float stat writers14..18 andbasicrow binding;full455metric producers/layout remainopen",
+  "script": {
+    "file": "scripts/checkpoint_client455_char_info_values.py",
+    "sha256": "d018d91fee1362ab5394019fa42a7f35f4d5e1eabdc3eebfdf454b84ec1a2efb"
+  },
+  "normal_link_sha256": "748661998ae8c341a163c93acca0a10256ed2748f5834aed7ae5be7c79824fb3",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "579bc1666cc88309e840deb752b5cab114efde2692fcb16decb9656c915d63e6",
+    "bytes": 2317824,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x179a40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "char-info-values-reference": {
+      "file": "inventory/client455-char-info-values-reference.json",
+      "sha256": "d66dc9cf7c29147bbf8d0cbe23e378bf26156c547df7f688d0f6a93de36115ea"
+    },
+    "char-info-values-native": {
+      "file": "inventory/client455-char-info-values-native.json",
+      "sha256": "fbf51691b8345ce2af4e9e6140b3907ed79a7731812e540bef3b594f89fe1a97"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "2b22c8f92659deedb928f9f4c8f52e404a1c9a7cbfe5fe66afecb94be00f38f4"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "f77d3cc3b0528859cda489524112023ca5fc688683961c81e8e0d00383088eab"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "85d515f8f382053b8dde55087714c74b7104c4136c8af25ddb360b2dcd684808"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "2bebb6e8cfa85b2f9aea99b06e6a298348f6f17d9a6c40e33eef7f89eecdf524"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "748661998ae8c341a163c93acca0a10256ed2748f5834aed7ae5be7c79824fb3"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "fc225818e90586dfe8fbd62ada2b8a724dc1df0d7d507570524f82fec35bbf31"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "53f35f1694f501ff81d19edf347f80887def0e5bfed4a016d282adcc6fdfa7dc"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "8d5a40525fbecd217449b13a0eb5748705bc8fcc279e814003c2e65c37686805"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "5d94710e5a03c3dc231dad223a981e2cc1ae7bc3b896e9fadd4583d52e9ceae8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "090b7163007329ccdc856f84774380d85257fe755674c2b5c583571e9837ab19"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "125b46cb68fbb9070eb9b6f166f62b7ee44c749dff18fe0181492d0b4338fe1d"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "5c5fea2586c626d99ce5eba4cddd9446823b7bdfe9bd1825ba6d2b7e012979a2"
+    },
+    "character-draw-build": {
+      "file": "inventory/client455-character-draw-build.json",
+      "sha256": "16097be5d648e3dcfcbbf350c7cfe7cdd7ad003d2e9277dbc348bd9e6b18562f"
+    },
+    "renderer-owner-build": {
+      "file": "inventory/client455-renderer-owner-build.json",
+      "sha256": "9925efb90b409e88dc6ea71b375b5dbffe885e3923c257bb8c45bd0e06cdfb92"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before152/manifest.json",
+    "sha256": "0cfe4055cdd84532dbbc72e51f5ccd0a3b0ebca9eeea7009c693fa67bd73ad8a"
+  },
+  "native": {
+    "status": "PASS",
+    "actual_window_value_owners": 5,
+    "full_DWORD_values_preserved": true,
+    "float_setters_not_empty": true,
+    "actual_basicrow_child_registration": 3,
+    "legacy_labels_preserved": true,
+    "actual_current_Avatar_caller": true,
+    "full455_Avatar_metric_producers": false,
+    "full455_Avatar_refresh": false,
+    "full455_window_layout": false,
+    "full_client": false
+  },
+  "ordinary_stat_writers_connected": true,
+  "full455_Avatar_metric_producers": false,
+  "full455_Avatar_refresh": false,
+  "full455_window_layout": false,
+  "ordinary_Create": true,
+  "ordinary_Login_frame": {
+    "file": "work/m9/579bc166/login-frame001/login-frame.png",
+    "sha256": "c4836c183887da18985fbcd280b369945bf9bf0065cdcf7181fc6869bf8fd69f"
+  },
+  "ordinary_Login_capture": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 65,
+    "elapsed_ms": 3000,
+    "requested_delay_ms": 3000
+  },
+  "Login_visually_inspected": true,
+  "known_first_chance_exceptions": 9,
+  "unhandled_exceptions": 0,
+  "ordinary_full_player_connected": false,
+  "full_appearance_or_selection": false,
+  "full_client": false,
+  "gaps": [
+    "Full455Avatar metric getters,mount/buff/condition providers andfull41A8B0 refresh are stillopen",
+    "Full23field455layout/labels/render,Hit/Avoid visible rows andremaining stat setters",
+    "Legacy comparativeWORDarray setters andupgradeannotations remainunported",
+    "Target16byte stack-overflow domains notaccepted;legacyNaN/Inf text spelling,allCRT/FP/locale failure fidelity unverified",
+    "Fullordinaryplayer/equipment/selection/world/gameplay/M9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

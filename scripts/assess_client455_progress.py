@@ -42,7 +42,7 @@ def main():
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
-         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint']),
+         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint','client455-char-info-values-checkpoint']),
         ('audio','Звук',2,35,55,
          ['Miles init,selected tagged/RVP playback и звук выбранных эффектов'],
          ['Все sound events/3D/music/settings и полный lifecycle'],
@@ -89,7 +89,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
-        'client455-premium-state-checkpoint','client455-player-visual-checkpoint','client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
+        'client455-char-info-values-checkpoint','client455-premium-state-checkpoint','client455-player-visual-checkpoint','client455-equipment-draw-checkpoint','client455-grade-overlay-checkpoint','client455-character-palette-checkpoint','client455-equipment-checkpoint','client455-avatar-classes-checkpoint',
         'client455-character-tables-checkpoint','client455-item-bootstrap-checkpoint',
         'client455-resource-catalog-checkpoint','client455-registered-characters-checkpoint',
         'client455-world-entry-checkpoint','client455-login-checkpoint']
@@ -155,7 +155,7 @@ def main():
                 executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},
                 build_file=runtime_build_file.relative_to(WS).as_posix(),build_sha256=sha(runtime_build_file)),
             candidate_runtime_status='CHECKED_PARTIAL' if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
-            current_work='Ordinary151 Create/Login/account3Avatar verified. Previously unknownflag442440 andAvatarbonus24712 producers resolved:network PremiumDWORD and57/12 benefit state nowconnected toactual ordinarynetwork/Avatar owners. FullpremiumUI/post-update condition refresh stillopen;full12-slot CPlayerProc/Avatar ownership/Animation/Render/condition integration,selection/world andnonzero particle registry remainopen. Overall functional estimate unchanged.',
+            current_work='Ordinary152 Create/Login/account3Avatar verified. FullDWORD/float stat writers14..18 and3actualbasicrow childowners connected;actualcurrentAvatar caller preserveshighvalues andfinitefloat text. Complete455metric getters/typedconditions/mount/buff/refresh/layout remainopen,asdoPremiumUI/postupdate refresh,primary12-slot playerownership/Animation/Render/providers,selection/world/gameplay/particle registry. Overallfunctionalestimate unchanged.',
             ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Only lobby/waiting state observed;legacy label and incomplete455layout/state/input/auth remain',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
             existing_Create_proved_on_current_PE=load('client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),

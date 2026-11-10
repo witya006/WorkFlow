@@ -1,13 +1,13 @@
 # Продолжение M6 — внешний вид, выбор и обычный игровой маршрут
 
-Обновлено10.11.2026. Последняя проверенная обычная сборка151/d1e44bb9…,
+Обновлено10.11.2026. Последняя проверенная обычная сборка152/579bc166…,
 182client/67engine/20kernels,unresolved0.
-Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
+Gate:inventory/client455-char-info-values-checkpoint.json PARTIAL.
 Оценка25%(20–35%);0/12полных областей. M6/M6F/M7/M9 открыты.
 
 ## Проверенная основа
 
-- Обычные Create/Login/account3Avatar прошли;Login65/3016ms просмотрен,
+- Обычные Create/Login/account3Avatar прошли;Login65/3000ms просмотрен,
   lobby/ожидание,Beta0.738. Авторизации/полного выбора/мира ещё нет.
 - Render/default+matrix,fade/alpha,grade604 и очередь поз/владельцев149
   прошли свежую затронутую проверку150;шесть контролируемых кадров совпадают.
@@ -19,6 +19,10 @@ Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
 - 151: network Premium flag и Avatar benefits/bonus floats подключены к обычному
   dispatcher57/12. Никаких подстановок Premiumfalse/bonus0 вместо producers.
   Полный Premium UI и post-update condition/UI refresh ещё не перенесены.
+
+- 152: fullDWORD/float stat setters14..18 итри basicrow owners перенесены;
+  старый ordinary Avatar caller проходит без16битного усечения. Полные455
+  metric getters/condition/mount/buff/refresh и23fieldlayout всё ещё нужны.
 
 ## Дальнейший порядок
 
@@ -32,7 +36,12 @@ Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
    Владельцы flag442440 и bonusfloats24712 теперь подтверждены и подключены:
    network PremiumState455(),Avatar PremiumBenefits455().combatBonuses().
    Полный condition-host и post-57/12 condition/UI refresh всё ещё нужны;
-   Premium window/icon481 остаются отдельным gap. Выбранный PRNG ctor/copy закрыт,
+   Premium window/icon481 остаются отдельным gap. Готовые stat setters152
+   не заменяют реальные455metric getters41BD40/41BE50/41BF60/41C0B0/41C1B0.
+   Avatar virtual252→41A060→skillboard490EB0,typed SF accessor иinfo-window
+   update463740 ещё требуют соединения. Pcode-only диагностика сохранена в
+   artifacts/client455-progress/char-info152-reference/player-owner-diagnostics.json;
+   не выдавать её за полный ASM/production proof. Выбранный PRNG ctor/copy закрыт,
    но полная PRNG-последовательность/CRT/lifecycle остаётся непроверенной.
 3. Перенести общий particle/entity registry:сейчас старыйg_Particle1024/5clones,
    target — vectors/6clones/one-attempt failure. Constructor/default capacity
@@ -47,11 +56,12 @@ Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
 
 ## Сохранение и целевые проверки
 
-- before151 — точная150runtime,53файла;before150 —149,52файла;
+- before152 — точная151runtime,52файла;before151 —150,53файла;
+  before150 —149,52файла;
   before149 —148,также exact16sourceinputs;
   before148 —147,before146 —145. Существующие снимки не перезаписывать.
 - **До следующих ordinary edits**:
-  snapshot_client455_runtime.py152 client455-premium-state-checkpoint.
+  snapshot_client455_runtime.py153 client455-char-info-values-checkpoint.
 - Текущий runtime gate не заменять старыми146/149gate с историческими SHA.
   Старый13-slot вывод отменён;использовать новый player-visual auditor/runner.
 - Полные selectedRender62functions/6959instructions/650CFG уже исследованы.
@@ -64,9 +74,13 @@ Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
 - Полный Premium state reference8functions/583instructions/64CFG уже проверен
   на2pins;не повторять поиск владельцев. Native work/m9/00ff6e2a/premium-state-001,
   однаDLL/newpoolbytes0. Разные минимальные payload57/49/1 подтверждены.
-- IDAdfba038a сохранена/закрыта,list0,native jobs завершены.
+- Stat writers152:6fullfunctions/185instructions/9CFG equal2pins;native
+  work/m9/5519fe61/char-info-values-001,однаDLL/newpool0. Не повторять готовый
+  поиск stat writers. FP/CRT/target stack-overflow domains остаются gaps.
+- IDAe3deb20c сохранена/закрыта,list0,native jobs завершены.
   Оригиналы/сервер не менялись. Никакие старые стенды не удалены.
 
 Оценка/остаток/готовность исходных данных:progress-report.md.
-Текущие доказательства:research/client455-premium-state.md;
+Текущие доказательства:research/client455-char-info-values.md;
+Premium producers:research/client455-premium-state.md;
 структура12слотов:research/client455-player-visual.md.

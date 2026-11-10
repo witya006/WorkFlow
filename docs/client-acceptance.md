@@ -2,8 +2,8 @@
 
 Полностью принятых областей0/12. M6/M6F/M7/M9 OPEN.
 Оценка25%(20–35%) является плановой,не измеренным соответствиемэталону.
-Последний проверенный partialgate151:inventory/client455-premium-state-checkpoint.json,
-ownd1e44bb9….32модели/33текстуры/6базовыхслотов не закрываютполный
+Последний проверенный partialgate152:inventory/client455-char-info-values-checkpoint.json,
+own579bc166….32модели/33текстуры/6базовыхслотов не закрываютполный
 внешнийвид,выбор,авторизациюилиигровоймир. ОбычныйLogin показываетожидание.
 [Точные опоры, остаток, исходные данные](progress-report.md).
 
@@ -23,6 +23,10 @@ Index12 — доступ за массив, его собственный отк
 151: ordinary network PremiumDWORD и Avatar benefit/bonus producers из57/12
 подключены и проверены. Полные Premium window/icon481,condition/UI refresh
 иостальнойCashShop не приняты. Полный ordinaryplayer по-прежнему открыт.
+
+152:ordinary stat writers14..18 перенесены с fullDWORD/float аргументами.
+Три basic rows подключены к value owners;настоящий текущий Avatar caller
+прошёл. Полный455metric/refresh/layout и весьперсонаж ещё не приняты.
 
 Все требования полноты ниже сохраняются. Исторические gates подтверждают только
 свой участок/свою сборку и не являются свежей проверкой всего текущего клиента.

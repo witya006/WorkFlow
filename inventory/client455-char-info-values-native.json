@@ -1,0 +1,68 @@
+{
+  "scope": "Ordinary CharInfo fullDWORD/float stat writers14..18 andbasicrow binding;full455metric producers/layout remainopen",
+  "reference": {
+    "file": "inventory/client455-char-info-values-reference.json",
+    "sha256": "d66dc9cf7c29147bbf8d0cbe23e378bf26156c547df7f688d0f6a93de36115ea"
+  },
+  "source": {
+    "file": "scripts/native/client455_char_info_values_probe.cpp",
+    "sha256": "a6a6e3e59d29387598becc5ba741eb60564051117872e049ae567b7aee12ba31"
+  },
+  "script": {
+    "file": "scripts/probe_client455_char_info_values.py",
+    "sha256": "1c04b23e458ccf280201f84d847b5337a28e74e55ae5af2357669b1b5af6499b"
+  },
+  "builder": {
+    "file": "scripts/client455_own_probe.py",
+    "sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9"
+  },
+  "normal_link_sha256": "748661998ae8c341a163c93acca0a10256ed2748f5834aed7ae5be7c79824fb3",
+  "exe": {
+    "file": "work/m9/5519fe61/char-info-values-001/char-info-values-probe.exe",
+    "sha256": "5519fe61988a6e1d6bc01efb93cb8c6774f991c8e56caed1fd2228358aa78b4f"
+  },
+  "map": {
+    "file": "work/m9/5519fe61/char-info-values-001/char-info-values-probe.map",
+    "sha256": "7b2e101098eb1fa8b01a6c0d11153a01cf417c25fdc1a5b79c9c38e745c1ce3e"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/5519fe61/char-info-values-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+    }
+  ],
+  "console": {
+    "file": "work/m9/5519fe61/char-info-values-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/5519fe61/char-info-values-001/result.json",
+    "sha256": "a96114047539b18809d6baeb7c8444b57a62b374cc99fc4fdf49175b52069400"
+  },
+  "native": {
+    "status": "PASS",
+    "actual_window_value_owners": 5,
+    "full_DWORD_values_preserved": true,
+    "float_setters_not_empty": true,
+    "actual_basicrow_child_registration": 3,
+    "legacy_labels_preserved": true,
+    "actual_current_Avatar_caller": true,
+    "full455_Avatar_metric_producers": false,
+    "full455_Avatar_refresh": false,
+    "full455_window_layout": false,
+    "full_client": false
+  },
+  "natural_exit": 0,
+  "shared_asset_staging": {
+    "assets": 1,
+    "linked_bytes": 349696,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

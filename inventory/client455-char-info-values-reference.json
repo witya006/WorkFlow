@@ -1,0 +1,224 @@
+{
+  "status": "PARTIAL_SOURCE",
+  "scope": "Ordinary CharInfo fullDWORD/float stat writers14..18 andbasicrow binding;full455metric producers/layout remainopen",
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x263370",
+          "instructions": 24,
+          "positive_cfg_blocks": 4,
+          "regions": [
+            {
+              "rva": "0x263370",
+              "bytes": 58,
+              "sha256": "d6c645d07236909ab44dc7214433fefd2400789bc953b256738636eb25428991"
+            }
+          ]
+        },
+        {
+          "rva": "0x263850",
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263850",
+              "bytes": 93,
+              "sha256": "8831c28ba4ec1d86fc7a45ef9f0dfc97cd6f9b450f319fd8b6f0cdcd3c14812f"
+            }
+          ]
+        },
+        {
+          "rva": "0x2638b0",
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x2638b0",
+              "bytes": 84,
+              "sha256": "9f30d37e23cc3b38edf00c4388da8468e671258d0662fd9833c0183d5bbb1603"
+            }
+          ]
+        },
+        {
+          "rva": "0x263910",
+          "instructions": 31,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263910",
+              "bytes": 80,
+              "sha256": "706f599e1a968275b3328431a2f50db58b753dbd524dba961764a3ee7fdab568"
+            }
+          ]
+        },
+        {
+          "rva": "0x263960",
+          "instructions": 32,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263960",
+              "bytes": 85,
+              "sha256": "6e0e44f0c2e7925d2ee1aaed2d680eb51f019dd7026b3fda74531948dc09db04"
+            }
+          ]
+        },
+        {
+          "rva": "0x2639c0",
+          "instructions": 32,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x2639c0",
+              "bytes": 85,
+              "sha256": "19a08c3897694eade00819d44609392c1044bd404d9810507ed5321c0c4d9aab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x263370",
+          "instructions": 24,
+          "positive_cfg_blocks": 4,
+          "regions": [
+            {
+              "rva": "0x263370",
+              "bytes": 58,
+              "sha256": "d6c645d07236909ab44dc7214433fefd2400789bc953b256738636eb25428991"
+            }
+          ]
+        },
+        {
+          "rva": "0x263850",
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263850",
+              "bytes": 93,
+              "sha256": "8831c28ba4ec1d86fc7a45ef9f0dfc97cd6f9b450f319fd8b6f0cdcd3c14812f"
+            }
+          ]
+        },
+        {
+          "rva": "0x2638b0",
+          "instructions": 33,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x2638b0",
+              "bytes": 84,
+              "sha256": "9f30d37e23cc3b38edf00c4388da8468e671258d0662fd9833c0183d5bbb1603"
+            }
+          ]
+        },
+        {
+          "rva": "0x263910",
+          "instructions": 31,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263910",
+              "bytes": 80,
+              "sha256": "706f599e1a968275b3328431a2f50db58b753dbd524dba961764a3ee7fdab568"
+            }
+          ]
+        },
+        {
+          "rva": "0x263960",
+          "instructions": 32,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x263960",
+              "bytes": 85,
+              "sha256": "6e0e44f0c2e7925d2ee1aaed2d680eb51f019dd7026b3fda74531948dc09db04"
+            }
+          ]
+        },
+        {
+          "rva": "0x2639c0",
+          "instructions": 32,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x2639c0",
+              "bytes": 85,
+              "sha256": "19a08c3897694eade00819d44609392c1044bd404d9810507ed5321c0c4d9aab"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 6,
+  "full_instructions": 185,
+  "positive_cfg_blocks": 9,
+  "raw": {
+    "file": "artifacts/client455-progress/char-info152-reference/session.json",
+    "sha256": "f7cd17d91c168331b4152ff5addc76ba12695566bc8b1442ef73429d6b0625dc"
+  },
+  "script": {
+    "file": "scripts/audit_client455_char_info_values.py",
+    "sha256": "178583676ba9b8ab7162ff31aa69ecb3c06ba4fad06008518a0e803aa326fba4"
+  },
+  "verifier": {
+    "file": "scripts/client455_reference_regions.py",
+    "sha256": "900b67213fe0aea10edbf01ea27636971fac63bcacf15a1ec09213bb49f67354"
+  },
+  "decoder": {
+    "file": "scripts/decode_client455_cfg.py",
+    "sha256": "ad80b40b45ca65d3f0e6493f06505cdbf120e49aa6173386a9e479f51387d179"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_char_info_values_port.py",
+      "sha256": "67fdb397378bb8ac2431ec1117f8db8e86e8a6308febe38bc0fc884f2e187aae"
+    },
+    {
+      "file": "scripts/native/client455_char_info_values.inc",
+      "sha256": "8b63b9a43fb81c5dbca4a4365f56683adf2045ccfab62626d7e4b791764a6a74"
+    }
+  ],
+  "preparer": {
+    "file": "scripts/prepare_client455_normal.py",
+    "sha256": "daba233850f7389c9441c3e60e6d28e1dbf38f37cf7e52102b97b6b0b7bd3877"
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before152/manifest.json",
+    "sha256": "0cfe4055cdd84532dbbc72e51f5ccd0a3b0ebca9eeea7009c693fa67bd73ad8a"
+  },
+  "facts": [
+    "663370 maps23valuefields at4120+124*index;selectedstat fields are14..18",
+    "663850/6638B0 format two full32bit words with signed%d - %d;663910 formats full32bit%d",
+    "663960 formatsfloat%.2f;6639C0 useslowDWORDof__ftol2_sse thenformats%d",
+    "Ordinary publicWORD parameter narrowing andempty Hit/Avoid setters are replaced",
+    "Ordinary basicrow layout/child registration/style use455valueowners14..16;oldcoordinates preserved temporarily"
+  ],
+  "gaps": [
+    "Full455Avatar metric getters,mount/buff/condition providers andfull41A8B0 refresh are stillopen",
+    "Full23field455layout/labels/render,Hit/Avoid visible rows andremaining stat setters",
+    "Legacy comparativeWORDarray setters andupgradeannotations remainunported",
+    "Target16byte stack-overflow domains notaccepted;legacyNaN/Inf text spelling,allCRT/FP/locale failure fidelity unverified",
+    "Fullordinaryplayer/equipment/selection/world/gameplay/M9"
+  ],
+  "full_455_Avatar_refresh": false,
+  "full_455_window_layout": false,
+  "full_client": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

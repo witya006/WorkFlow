@@ -1,3 +1,25 @@
+# Текущая проверенная база152 —10.11.2026
+
+Own579bc166…/x86/entry179A40,182client/67engine/20kernels,unresolved0.
+Gate inventory/client455-char-info-values-checkpoint.json PARTIAL.
+УстраненыWORDусечение Gen/Force/Def и пустые Hit/Avoid setters. Настоящие
+valueowners14..18 принимают fullDWORD/float;три ordinarybasic rows используют
+ихприInit/childregistration/style/position. Nativeactualwindow/currentAvatar
+caller PASS. 70000 сохраняется как70000,не4464. Полные455metric getters,
+mount/buff/typedconditions/refresh и23fieldlayout всё ещё не перенесены.
+LegacycomparativeWORDarray setters/upgradeannotations иCRT/FP/unsafe domains OPEN.
+Primary12-slot CPlayerProc ownership/Animation/FrameMove/Render/providers,
+particle registry,выбор/мир/gameplay/M9OPEN. Оценка25%(20–35%) неизменна.
+Свежие Create/Login/account3Avatar PASS;Login65/3000ms просмотрен,
+ожидание/Beta0.738,безauth;9прежнихfirst-chance,unhandled0.
+Exact151runtime сохранена доизменений:before152/manifest.json,52файла.
+Перед nextordinaryedits snapshot153 сchar-info-values gate. IDAe3deb20c
+savedclosed/list0;nativejobs завершены,установок/удалений нет,originals/server
+неизменны. ФинальныйsmallUIprobe:work/m9/5519fe61/char-info-values-001,pool0.
+Последнийstorageaudit16:34:07,156,14GiB logical/42,96GiB uniquefiles,не новыйзамер.
+Pcode-only26ownerfunctions сохранены рядомсraw длядальнейшего fullplayer bridge.
+Доказательства research/client455-char-info-values.md;нижесохраненаистория.
+
 # Текущая проверенная база151 —10.11.2026
 
 Own d1e44bb9…/x86/entry179970,182client/67engine/20kernels,unresolved0.
