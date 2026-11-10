@@ -20,8 +20,10 @@ Gate:inventory/client455-equipment-checkpoint.json.
 
 Проверены контроллер13слотов и clone, настоящиеANI/pose/fallback/fade,
 расчёт высоты по meshID, создание/освобождение эффектов и звук плаща.
+Добавлены позиции эффектов через настоящиеparts/posecaches:25моделей,
+пять вариантов персонажа,настоящий cloakmagic;ошибки undefined ещё открыты.
 Обычная145сборка ещё не использует полный контроллер146.
-Ближайшее:привязки эффектов/состояния →CPlayerProc/Avatar →внешний вид/выбор.
+Ближайшее:состояния экипировки →CPlayerProc/Avatar →внешний вид/выбор.
 
 - [Опорная оценка и оставшийся объём](docs/progress-report.md).
 - [Короткая дорожная карта](docs/roadmap.md).
@@ -32,6 +34,7 @@ Gate:inventory/client455-equipment-checkpoint.json.
 - [Контроллер146](research/client455-player-equipment.md).
 - [ANI/fade146](research/client455-equipment-providers.md).
 - [Эффекты146](research/client455-equipment-effects.md).
+- [Привязки146](research/client455-equipment-attachment.md).
 
 Доказательства:inventory/ и research/. Большие входы/сборки/IDA — игнорируемые
 work/ и artifacts/. Python через scripts/Invoke-Python.ps1.

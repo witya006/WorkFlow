@@ -7854,6 +7854,54 @@
       "M6F": "OPEN",
       "M7": "OPEN",
       "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-EQUIPMENT-ATTACHMENT-146",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "ordinary_runtime_integrated": false,
+      "description": "455creation positions usingplayer equipment bindings/NPC bones,weapon/damage points andactual magictranslation",
+      "reference": [
+        {
+          "rva": "0x3e0720",
+          "role": "Parent/blend binding name matcher"
+        },
+        {
+          "rva": "0x3e0b90",
+          "role": "Player/NPC named positions"
+        },
+        {
+          "rva": "0x3e0d10",
+          "role": "Creation type position"
+        },
+        {
+          "rva": "0x3e22f0",
+          "role": "Actual magic translation"
+        },
+        {
+          "rva": "0x3f2d60",
+          "role": "Equipment dummy marker initialization"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_effect_positions.h"
+      ],
+      "verification": "23completefunctions/1953instructions/223CFG equal2pins,17entryswitchverified. Native actual25bodymodels/25namedpositions/5races/5attachedcloakmagic andarchivedAccretiaANI pass.28frozencoordinate contracts;ordinary145unchanged.",
+      "evidence": [
+        "inventory/client455-equipment-attachment-reference.json",
+        "inventory/client455-equipment-attachment-native.json",
+        "inventory/client455-equipment-attachment-checkpoint.json",
+        "research/client455-equipment-attachment.md"
+      ],
+      "gaps": [
+        "Target missing-bone/weapon/bbox temporaries areundefined;own API reportsunknown/wrapperrejects,fullfailurefidelity open",
+        "Ordinary frame/dummy/effect producer andactual CPlayerProc/Avatar/registered upgrades/render/appearance/selection",
+        "Typed conditions andremaining M9 requirements"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

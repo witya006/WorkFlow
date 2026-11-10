@@ -1,4 +1,12 @@
-# Актуализация окружения —10.11.2026,146компоненты
+# Актуализация146attachment —10.11.2026
+
+Новыхустановокнет.23fullfunctions/1953instructions/223CFG иswitchтаблица
+равны2pins. Sourceпозицииэффектов+25реальныхмоделей/5races/5cloakmagic
+прошлиnative,новыеpoolbytes0. Ordinary145PEнеизменна;fullappearance/M9OPEN.
+IDA5c1cdbca saved/closed/list0;nativejobsзавершены. Подробности:
+research/client455-equipment-attachment.md;далееtypedconditions/ordinaryintegration.
+
+# Предыдущая актуализация —10.11.2026,146компоненты
 
 Новых установок не требовалось. Обычная145сборка1a355372…неизменна.
 Отдельные controller/ANI/fade/height/effect ownership компоненты проверены;

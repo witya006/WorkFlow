@@ -1,0 +1,60 @@
+{
+  "status": "PARTIAL_COMPONENT",
+  "scope": "455effect creation positions,player part-binding/NPC bone selection,weapon/damage points andreal magic translation;ordinary controller/conditions/appearance open",
+  "evidence": {
+    "client455-equipment-attachment-reference": {
+      "file": "inventory/client455-equipment-attachment-reference.json",
+      "sha256": "ea83127813c126493f8cf4017d67fa7a0be7afee10a48fc1d55004f994397b50"
+    },
+    "client455-equipment-attachment-native": {
+      "file": "inventory/client455-equipment-attachment-native.json",
+      "sha256": "ad923e16d884395b5aacc514690455568c8d6f2cb761aab5ebc569e6f1883407"
+    },
+    "client455-normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "957c455474280a09444e2121fb6a835361fb7608caaab9bb147aa09d42240f1e"
+    }
+  },
+  "runtime_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d",
+    "bytes": 2299904,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x175f50",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_runtime_gate": "inventory/client455-equipment-checkpoint.json",
+  "ordinary_runtime_changed": false,
+  "full_functions": 23,
+  "full_instructions": 1953,
+  "positive_cfg_blocks": 223,
+  "real_models": 25,
+  "real_named_positions": 25,
+  "real_attached_magic": 5,
+  "races": 5,
+  "actual_actor_pose_cache": true,
+  "actual_archived_ANI_pose": true,
+  "source_magic_translation": true,
+  "full_failure_fidelity": false,
+  "production_player_connected": false,
+  "full_player_appearance_or_draw": false,
+  "full_client": false,
+  "gaps": [
+    "Missing bone/weapon/bbox target temporaries areindeterminate;own wrapper rejects undefined translation,fullfailure fidelity open",
+    "Ordinary effect state/frame/dummy producers andactual CPlayerProc/Avatar/registered equipment integration",
+    "Typed4411E0 conditions andremaining bootstrap/appearance/selection/world/M9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

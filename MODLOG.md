@@ -933,3 +933,14 @@ allow next run withonly280newbytes,no original hardlinks. Fresh storageaudit:
 154.86GiB logical/42.85GiB unique file sizes,not exact diskallocation.
 IDA1049c6e2saved/closed/list0;native handles terminal;no originalEXE/server work.
 Evidence:research/client455-equipment-effects.md anddocs/progress-report.md.
+
+2026-11-10 /146attachment:23fullfunc/1953instructions/223CFG equal2pins,
+including2previouslyconfirmedfunctions;17-entryswitchpinned. Sourceplayerpart/
+NPC/weapon/damage position providers andactualmagictranslation pass:25realbody
+models/25namedpositions/5races/5cloakmagic/archivedAccretiaANI.28frozencoordcases.
+RVA3E0720/3E0B90/3E0D10/3E22F0/3F2D60. Type17Spine→Spine1;18default.
+Bindingmatchvalue doesnotselect anothercachematrix;worldbboxheight isscaledagain.
+Uninitialised targetfailurecoordinates remainexplicitlyundefined/notaccepted.
+Ordinary145/engineunchanged;noordinaryappearanceclaim. Newpoolbytes0.
+IDA5c1cdbca saved/closed/list0;nativeexit0. Nexttypedconditions→ordinaryintegration.
+Evidence:research/client455-equipment-attachment.md;equipment-attachment-checkpoint.json.

@@ -1,4 +1,30 @@
-# Актуальная память —10.11.2026:оценка и146компоненты
+# Актуальное продолжение146:позиции эффектов проверены
+
+inventory/client455-equipment-attachment-checkpoint.json PARTIAL_COMPONENT;
+research/client455-equipment-attachment.md.23fullfunc/1953instructions/223CFG
+equal2pins;21new +2reused7E0D10/7E22F0.17-entryswitch7E1134pinnedseparately.
+Source scripts/native/client455_effect_positions.h. Real25bodymodels/25named
+positions/5races/5cloakmagic/onearchivedAccretiaANI pass.28frozen coordinate
+contracts coveryaw/scale/fallback/binding-index/NPC/default.1694assetpaths,
+197618821logicalbytes,newpool0;ordinary145PE unchanged/no freshLoginneeded.
+
+Important:playernamedbone usesparent/blendnames ofequip0..9 thenFIRSTactorcached
+matrix fornode;returnedblendindex isnotused toselect contribution. NPCusesown
+mesh names/matrices.17=Spine→Spine1;18default retainsactorposition.7/Damage/
+weaponfallback usesworldbboxheight timesactorscaleagain,preserved455double-scale.
+Some targetfailurebranches copyuninitialisedtemporary. OwnAPI reportsdefined=false
+andmagicwrapperrejects;fullfailurefidelity explicitlynotaccepted. No inventedfallback.
+Dummycache initiallyzero;7F2D60 fills255 andmaps effect1/2/fire1..4,lastwins.
+Cacheproducer inordinaryframe isstillneeded. Headerrequiresactualnormaltypes.
+
+Next:typed4411E0chain fromexistingfullprovider24proof,thenactualCPlayerProc/
+Avatar/registered upgrades/frame/render/effectbackend integration. Do not re-audit
+these23position functions. M6/M6F/M7/M9OPEN;estimate25%(20–35%)unchanged.
+Registry151historicaloverlappingrecords. IDA5c1cdbca saved/closed/list0;
+native90813 terminal0;noothernativejobs/noinputEXE/serveractivity.
+PreviousgoalturnwasPROGRESS:sourceproviders+realnativeproof,notstatusonly.
+
+# Предыдущая память —10.11.2026:оценка и146компоненты
 
 Текущая обычная PE145 по-прежнему1a3553721149f8638812d636e2dfa3053d75b58a58c6310df72478050ab5670d;
 equipment145gate current.182client/67engine/20modules/unresolved0.

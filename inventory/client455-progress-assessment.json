@@ -101,7 +101,8 @@
         "client455-equipment-checkpoint",
         "client455-player-equipment-checkpoint",
         "client455-equipment-providers-checkpoint",
-        "client455-equipment-effects-checkpoint"
+        "client455-equipment-effects-checkpoint",
+        "client455-equipment-attachment-checkpoint"
       ]
     },
     {
@@ -442,6 +443,14 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-equipment-attachment-checkpoint": {
+      "file": "inventory/client455-equipment-attachment-checkpoint.json",
+      "sha256": "b1910138226c4ee12ef03e2bc30d7b227e44a80337651c8ad8676028036a9583",
+      "status": "PARTIAL_COMPONENT",
+      "scope": "455effect creation positions,player part-binding/NPC bone selection,weapon/damage points andreal magic translation;ordinary controller/conditions/appearance open",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-font-checkpoint": {
       "file": "inventory/client455-font-checkpoint.json",
       "sha256": "8d7c2870f6934cef7c4e66d62123098529605e7b50f0ec53776c02092f87359e",
@@ -604,7 +613,7 @@
     "newer_build_is_not_the_accepted_runtime": false,
     "last_completed_checkpoint": "inventory/client455-equipment-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
-    "current_work": "Ordinary runtime145 unchanged.146 source controller/clone,real ANI/pose/fallback/fade/meshID-based mount height and item magic/sound ownership verified separately. Complete attachment positions,typed conditions and ordinary CPlayerProc integration remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
+    "current_work": "Ordinary runtime145 unchanged.146 source controller/clone,real ANI/pose/fallback/fade/meshID-based height,item magic/sound ownership andcreation positions on25bodymodels/5races/actualcloakmagic verified separately. Typed conditions,ordinary frame/dummy/CPlayerProc integration andfullfailure fidelity remain open. Full appearance/selection/bootstrap/world/M9 not accepted.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
       "sha256": "d0efc41749579a6ab0a1be32f654dbbab6c279aa0e85ea823919d08f55c4d03f",
@@ -643,11 +652,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "6d766adc8c581bd5dcc986c19ad4fafefa9f9957a2c6bb8dcc016c5d087cf590",
-    "entries": 150,
+    "sha256": "73cca324bef8415e586cdcb21e4e92d0179a0137029c4400b68afbd01768be74",
+    "entries": 151,
     "statuses": {
       "partial": 115,
-      "partial_component": 5,
+      "partial_component": 6,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -727,7 +736,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;150 overlapping historical records",
+        "measured": "12 domain planning map;151 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -881,7 +890,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "dfa4ba5f1dc0138dd8824137fd267446d4c4470c4881068767420b60d68eb226"
+    "sha256": "846d3fb9f6927348ea627a208794124ba5c0fb7c53ec8b0a0f8e0ae3cc4b4b17"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
