@@ -1,3 +1,12 @@
+2026-11-11 — Function-evidence baseline, not restored-function count. Primary
+b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b/x86/base400000:
+IDA37,865; 2,222 unique owners with pinned code evidence, 393 with complete
+assembly/CFG, 158 reports. Deduped ranges;5 unresolved queries excluded.
+Implementation/equivalence totals remain unclassified; no false ready percent.
+docs/function-coverage.md and inventory/client455-function-coverage.json retain
+per-RVA evidence; history records future deltas. Targeted audit self-check PASS.
+Own156 unchanged; lighting157 remains next. Owned IDA saved/closed/list0.
+
 2026-11-10 — Equipment frame153 PARTIAL. Restored CMesh/CEquip Animation,
 FrameMove/end transitions,dummy/always/motion-effect follow andequipment-position
 WAV. Virtual120(kind2) isfalse forboth currentwrappers;byte4=2 isnotground.
