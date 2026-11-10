@@ -49,6 +49,8 @@ public:
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float);
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float,bool);
     void DrawCharacterMat(CHARACTEROBJECT*,D3DXMATRIX*,float);
+    void SetOverlayTextureMatrix455(const D3DXMATRIX&,bool environment);
+    void DrawCharacterOverlay455(CHARACTEROBJECT*,float*,float yaw,float scale,float scroll,bool unscaled);
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float);
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float,float);
     bool LoadRealData(CHARACTEROBJECT*,TextureManager*);
@@ -96,7 +98,7 @@ struct CHMEMORYINFO {DWORD m_TextureSize,m_TextureNum,m_VertexSize,m_VetexNum,m_
 extern AlphaMeshManager g_AMeshManager;
 // Read-only own view of confirmed counters. No private original global overlay.
 CHMEMORYINFO RF455_GetCharacterMemoryInfo();
-extern EffectList g_EFFMonList,g_EFFNPCList,g_EFFUnitList;
+extern EffectList g_EFFMonList,g_EFFNPCList,g_EFFUnitList,g_EFFKitList;
 extern EffectFileList g_EffectFileList;
 extern ItemEffectList g_EffectItemList;
 extern EffectPatternList g_PatternList;

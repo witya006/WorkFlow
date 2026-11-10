@@ -76,7 +76,9 @@
         "client455-world-frame-checkpoint",
         "client455-material-shaders-checkpoint",
         "client455-shader-text-checkpoint",
-        "client455-fullscreen-effect-native"
+        "client455-fullscreen-effect-native",
+        "client455-grade-overlay-checkpoint",
+        "client455-equipment-draw-checkpoint"
       ]
     },
     {
@@ -104,7 +106,8 @@
         "client455-equipment-effects-checkpoint",
         "client455-equipment-attachment-checkpoint",
         "client455-equipment-conditions-checkpoint",
-        "client455-character-palette-checkpoint"
+        "client455-character-palette-checkpoint",
+        "client455-equipment-draw-checkpoint"
       ]
     },
     {
@@ -263,7 +266,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "5dd2ad4fe3bf71c96613e2fe5e0a44d07df68a7a9fd0e053ed3ac4cc86f53888",
+      "sha256": "0ff7e7885e62c7777936bc128d1b0a8f035f60f3ef3c295e97b04c62d17525e4",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -271,7 +274,7 @@
     },
     "client455-ui-startup-native": {
       "file": "inventory/client455-ui-startup-native.json",
-      "sha256": "bd8524391df2b7f0a26fa063301197593b53e8745dbbf55b838ec6dd1c19dd6f",
+      "sha256": "5bd848d653eea7d1bc2b383a6973c412f8a28a77677301cd3dafa1255866d3c5",
       "status": null,
       "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
       "fresh_for_current_PE": true,
@@ -279,7 +282,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "b7b05eda3b51d3b62411e355f7d808f3467501d13956adeeffdbf6d260a2a5f0",
+      "sha256": "b670f36706763aca3ce3c93abb8fd3ca90ed5404a738c17e935b74746cdced22",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -287,7 +290,7 @@
     },
     "client455-startup-contracts-native": {
       "file": "inventory/client455-startup-contracts-native.json",
-      "sha256": "bac6ccccb1df8025036d2129871ecee616b5d457b76aa31825071c7b0e707c73",
+      "sha256": "53f35f1694f501ff81d19edf347f80887def0e5bfed4a016d282adcc6fdfa7dc",
       "status": "PASS",
       "scope": "Real derived engine color32 and Create exit protocol with test-only virtualCreate;not graphics/window acceptance",
       "fresh_for_current_PE": false,
@@ -371,6 +374,22 @@
       "status": null,
       "scope": "Real R3BeginScene/FullScreenEffect/R3EndScene texture/depth/viewport/UI and density paths;not water/bloom/fullgame acceptance",
       "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-grade-overlay-checkpoint": {
+      "file": "inventory/client455-grade-overlay-checkpoint.json",
+      "sha256": "bcbe1b9a7814af4b20a578c251618ab12f6b77a99569bd9d67422e70084084b9",
+      "status": "PARTIAL",
+      "scope": "Grade materials/UV shaders/secondary geometry andarchive-mode gate;full mesh-object renderer andordinary player stillopen",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-equipment-draw-checkpoint": {
+      "file": "inventory/client455-equipment-draw-checkpoint.json",
+      "sha256": "76edde5493669598750a26f807a88156f7aa619be2336366cbb428faba95fed0",
+      "status": "PARTIAL",
+      "scope": "Typed equipment default/matrix Render,fade/alpha,overlay producer,retained effect queue and partial effect-draw adapter;full player and particle registry open",
+      "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-normal-renderer-checkpoint": {
@@ -466,7 +485,7 @@
       "sha256": "8b0d5d70d3006ca07a00bd83d8ee2fe4d65a8e730a4079172ead5d54db46bd58",
       "status": "PARTIAL",
       "scope": "Actual ordinary Character20parts/30matrixpalettes/13dummyindices;full equipment/actor lifecycle remainsopen",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -597,11 +616,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "993978ffd58f5be96176f5ae03c36396048d04a27b4741c26582a5013268a5b1",
-      "bytes": 2299904,
+      "sha256": "f4e62e487286dae42623ba28babf6f52ba527eb7604a78ce8d2a9c9b259c1c9e",
+      "bytes": 2316800,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x175ea0",
+      "entry_rva": "0x179630",
       "sections": [
         ".text",
         ".rdata",
@@ -610,7 +629,7 @@
         ".reloc"
       ]
     },
-    "engine_sha256": "708c892e60c3bf7457389b40ac24b9a466958c9d232d9efaf497d1ac3232b870",
+    "engine_sha256": "4c6652a59c7172ad8f852d599c9a42183a5658d728ebd32959f65e1668b002b5",
     "references": [
       {
         "file": "work/client-reference/current/RF_Online.bin",
@@ -625,22 +644,22 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "7873aeee255a37730295b027ff849bbf979c325ce3757ea9a4caa139548931fb",
+      "sha256": "e34e416647a998aa79dfa81843a9518e85a907103113b50c83854d77024823a1",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-character-palette-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-equipment-draw-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "5dd2ad4fe3bf71c96613e2fe5e0a44d07df68a7a9fd0e053ed3ac4cc86f53888",
+      "link_sha256": "0ff7e7885e62c7777936bc128d1b0a8f035f60f3ef3c295e97b04c62d17525e4",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "993978ffd58f5be96176f5ae03c36396048d04a27b4741c26582a5013268a5b1",
-        "bytes": 2299904,
+        "sha256": "f4e62e487286dae42623ba28babf6f52ba527eb7604a78ce8d2a9c9b259c1c9e",
+        "bytes": 2316800,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x175ea0",
+        "entry_rva": "0x179630",
         "sections": [
           ".text",
           ".rdata",
@@ -650,33 +669,33 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "7873aeee255a37730295b027ff849bbf979c325ce3757ea9a4caa139548931fb"
+      "build_sha256": "e34e416647a998aa79dfa81843a9518e85a907103113b50c83854d77024823a1"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
-    "current_work": "Ordinary147 Character20x30palette/13dummy change verified on source and real Avatar/registered/Create/Login.146 equipment components remain separately verified;actual typed CPlayerProc/Avatar/draw/frame integration and full selection/world/gameplay remain open.",
+    "current_work": "Ordinary149 Create/Login andaffected registered receiver verified. Typed equipment default/matrix Render,fade/alpha,metadata overlay604 producer,DWORD unit effect key andretained queue pose/owners checked. Ordinary queue entrypoints andsecondary geometry are retained in the PE;full13-slot CPlayerProc/Avatar caller andordinary selection/world remain open. Nonzero equipment particle draws andcomplete dynamic registry are stillunverified;legacy registry is a known remaining dependency.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "71a4f456eeac472f4da598c6a0718029b6bc81df913be72228e4fbed72bcd0ca",
+      "sha256": "f8b4814cafb2927ac019d3de4867f5db04671d1901c3de5e3cc8ba7628bd005e",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/993978ff/login-frame001/login-frame.png",
-        "sha256": "355f36a983ab6ebcb70ba95e3fa73722336c4441c00d7a95966ed6834ee4ae15"
+        "file": "work/m9/f4e62e48/login-frame001/login-frame.png",
+        "sha256": "b203686f4fef97ac884796f2a628d8573c496d3b6f8c8c46fdf98de2c538561c"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 66,
-        "elapsed_ms": 3031,
+        "frame_index": 65,
+        "elapsed_ms": 3016,
         "requested_delay_ms": 3000
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa894108",
-        "vtable": "0x2f9b84",
+        "object": "0xa7c1810",
+        "vtable": "0x20cba4",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -693,11 +712,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "8b57a7e268ceba26a644d37a89472584576caee3eba3d57e64e064c278ef3286",
-    "entries": 153,
+    "sha256": "87ced4f22f5530ad3ff109238ec448386105335a1e77c6399092767d80604200",
+    "entries": 155,
     "statuses": {
+      "partial_component": 9,
       "partial": 116,
-      "partial_component": 7,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -707,7 +726,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-CHARACTER-PALETTE-147"
+      "CLIENT455-EQUIPMENT-DRAW-149"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -777,7 +796,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;153 overlapping historical records",
+        "measured": "12 domain planning map;155 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -847,10 +866,10 @@
   },
   "storage": {
     "audit_file": "inventory/workspace-storage-audit.json",
-    "audit_sha256": "13c3e0d2aa41ea3437aec356922a89f9d7ab020c89221473260f8f1a256ff326",
-    "audit_time_local": "2026-11-10 14:12:21",
-    "logical_gib": 155.29,
-    "unique_file_size_gib": 42.87,
+    "audit_sha256": "339c9c23b9a4589b9e0fe5f22bf75ec52133066cfaeced36d25ca49d753f076a",
+    "audit_time_local": "2026-11-10 16:34:07",
+    "logical_gib": 156.14,
+    "unique_file_size_gib": 42.96,
     "physical_allocation_measured": false,
     "files_deleted": false,
     "note": "Hard-linked paths repeat in logical totals. Unique file sizes are not an exact filesystem allocation measurement."
@@ -931,7 +950,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "ea1683ad90faf4d30f6b2a7455105026d7d18b709e00cd8de4bff36fac75ecfd"
+    "sha256": "cde1d6ffbfea39967c3b62d1c45b873ce881c16a7a1693edaa1d49d81f530316"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

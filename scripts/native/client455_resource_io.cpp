@@ -10,6 +10,7 @@ static_assert(offsetof(RF455_RpkNode,declaredSize)==52,"RPK declared size");
 static_assert(sizeof(RF455_RpkFile)==276,"RPK file owner x86");
 static_assert(sizeof(RF455_RpkGroup)==268,"RPK group owner x86");
 static RF455_RpkGroup* activeGroup=NULL;
+static BOOL archiveEnabled=FALSE;
 
 RF455_RpkFile::RF455_RpkFile() { memset(this,0,sizeof(*this)); }
 RF455_RpkGroup::RF455_RpkGroup() { memset(this,0,sizeof(*this)); }
@@ -124,7 +125,11 @@ FILE* RF455_RpkGroup::Open(char* path,const char* mode) const {
     return NULL;
 }
 
-RF455_RpkGroup* RF455_SetResourceGroup(RF455_RpkGroup* group) { return activeGroup=group; }
+RF455_RpkGroup* RF455_SetResourceGroup(RF455_RpkGroup* group) {
+    activeGroup=group;archiveEnabled=group!=NULL;return activeGroup;
+}
+BOOL RF455_SetResourceArchiveEnabled(BOOL enabled){return archiveEnabled=enabled;}
+BOOL RF455_GetResourceArchiveEnabled(){return archiveEnabled;}
 BOOL RF455_RpkGroup::Exists(char* path) const {
     _strlwr(path);
     for (DWORD i=0;i<count;++i)
@@ -133,7 +138,7 @@ BOOL RF455_RpkGroup::Exists(char* path) const {
 }
 RF455_RpkGroup* RF455_GetResourceGroup() { return activeGroup; }
 FILE* RF455_OpenResource(char* path,const char* mode) {
-    if (activeGroup) {
+    if (archiveEnabled && activeGroup) {
         FILE* fp=activeGroup->Open(path,mode);
         if (fp) return fp;
     }
@@ -141,7 +146,7 @@ FILE* RF455_OpenResource(char* path,const char* mode) {
 }
 BOOL RF455_ResourceExists(char* path) {
     if (!path || !*path) return FALSE;
-    if (activeGroup && activeGroup->Exists(path)) return TRUE;
+    if (archiveEnabled && activeGroup && activeGroup->Exists(path)) return TRUE;
     FILE* fp=fopen(path,"rb");
     if (!fp) return FALSE;
     fclose(fp);return TRUE;

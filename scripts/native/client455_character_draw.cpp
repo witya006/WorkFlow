@@ -76,6 +76,33 @@ extern "C" RF455CharacterDrawStatus RF455_DrawCharacter455(RF455CharacterDrawCon
     d->SetRenderState(D3DRS_FOGENABLE,FALSE);d->SetRenderState(D3DRS_ZENABLE,D3DZB_TRUE);d->SetRenderState(D3DRS_STENCILENABLE,FALSE);return RF_CHARACTER_DRAW_OK;
 }
 
+extern "C" RF455CharacterDrawStatus RF455_DrawCharacterOverlay455(RF455CharacterDrawContext* c,RF455CharacterStorage* model,const void* world){
+    using namespace rf455draw;
+    if(!valid(c)||!model||!world)return RF_CHARACTER_DRAW_ARGUMENT;
+    const unsigned now=c->math.ticks();
+    auto* meshes=get<RF455MeshStorage*>(model,536);
+    const unsigned count=get<unsigned>(model,532);
+    if(!meshes)return RF_CHARACTER_DRAW_OK;
+    const unsigned previous=c->globals->overlayPreviousTick?c->globals->overlayPreviousTick:now;
+    c->globals->overlayPhase=advance(c->globals->overlayPhase,now-previous);
+    c->globals->overlayPreviousTick=now;
+    bindDeclaration(c);
+    if(c->batchEnabled&&c->capturedModels.size()<2048)c->capturedModels.push_back(model);
+    for(unsigned part=0;part<count;++part){
+        auto* mesh=meshes+part;if(get<unsigned>(mesh,5567))continue;
+        if(c->batchEnabled&&!immediate(mesh)&&get<unsigned>(mesh,5759)<200){
+            const auto status=batch(c,mesh,model,world);if(status!=RF_CHARACTER_DRAW_OK)return status;continue;
+        }
+        projection(c);projectionConstants(c);
+        RF455_UploadCharacterPalette(c->state.device,mesh,world,nullptr,&c->math.matrix);
+        c->state.device->SetRenderState(D3DRS_CULLMODE,get<unsigned>(mesh,5143)?D3DCULL_NONE:D3DCULL_CW);
+        if(get<void*>(mesh,4506)||get<unsigned>(mesh,5086)){
+            const auto status=submit(c,mesh,world,nullptr);if(status!=RF_CHARACTER_DRAW_OK)return status;
+        }
+    }
+    select(c,0xffffffffu);return RF_CHARACTER_DRAW_OK;
+}
+
 extern "C" RF455CharacterDrawStatus RF455_FlushCharacterTransparency(RF455CharacterDrawContext* c){
     using namespace rf455draw;if(!valid(c))return RF_CHARACTER_DRAW_ARGUMENT;auto* q=c->transparent;if(!q->count)return RF_CHARACTER_DRAW_OK;auto* d=c->state.device;
     RF455_SetCharacterDrawState(&c->state);float identity[16];unit(identity);for(unsigned i=0;i<4;++i)d->SetTransform(static_cast<D3DTRANSFORMSTATETYPE>(256+i),reinterpret_cast<const D3DMATRIX*>(identity));bindDeclaration(c);projection(c);projectionConstants(c);

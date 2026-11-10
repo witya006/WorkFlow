@@ -1,3 +1,73 @@
+# Текущее продолжение149 —10.11.2026
+
+Own f4e62e48…/entry179630/x86,182client-67engine-20kernels,unresolved0.
+Gate inventory/client455-equipment-draw-checkpoint.json PARTIAL.
+Source Render(default/matrix)/fade/alpha/overlay604 producer иqueue pose/owners
+перенесены. Native actualmodel7/14/7draws,2659visible/changedRGB;6frames,
+8realunit/siege metadata cases,keyDWORD>255,grade113notbool;queuealiases/Start/
+retain/release/cap256 PASS. Base/overlay byte-equal preserved148fixture.
+Обычные queue Clear/Render реально вызывают новыеentrypoints;secondarygeometry
+теперь удержана PE. Full13-slot CPlayerProc/Avatar route ЕЩЁ НЕ ПОДКЛЮЧЁН.
+Particle adapter используетlegacyg_Particle1024/5clones;targetvectors/6clones/
+one-attempt failure. Ненулевыеparticle/entitydraws не проверены,полныйrendererOPEN.
+Обычные Create/Login/account registered3Avatar PASS;Login65/3016ms просмотрен,
+lobby/ожидание,Beta0.738.9прежнихfirst-chance,unhandled0;нетauth/selection/world.
+Оценка25%(20–35%) неизменна,0/12полных областей;M6/M6F/M7/M9OPEN.
+Далее ordinaryplayer/pose/animation/providers →appearance/selection;registry
+миграция отдельнообязательна. Queue/source proof ужеесть,не повторять.
+before149 содержитточную148runtime;16exact148sourceinputs дополнительно
+сохранены по прежнимSHA вbefore149/recovered-source/. До новыхordinaryedits
+snapshot150 сgateequipment-draw. IDA0a6749ce saved/closed/list0,jobsзавершены.
+Native final work/m9/0fdac5c0/equipment-draw-001,newpool0;оригиналы/serverнетронуты.
+Подробности:research/client455-equipment-draw.md. Нижеистория.
+
+# Текущее продолжение148A — 10.11.2026
+
+Переоценка по запросу пользователя: выбранная сборка обеспечена; полнота
+исходников455/ресурсов/спецификации не установлена. Около25%(20–35%) —
+плановое суждение по12фиксированным областям, остаток65–80%; не функция
+числа проверок или номеров этапов. Полных областей0/12, полный маршрут
+вход→выбор→мир→игровые действия не пройден. Надёжной датыM9 пока нет.
+Свежая опись16:34:07:156,14GiB по путям/42,96GiB уникальных файлов,
+ошибок0,удалений0. Подробные факты/остаток:docs/progress-report.md.
+
+PROGRESS:реальный source/backend иновая обычная сборка,не повтор статуса.
+Gate inventory/client455-grade-overlay-checkpoint.json PARTIAL.
+Own03637d6a…/entry1771C0;engine4c6652a5…;182/67/20/link0.
+4реальныхMST/DDS,UVshader9/10,c92,secondarygeometry92E140/92FBE0,
+archive flag8E75D0/E0 иOpen/Exists перенесены;21fullfunc/2863instr/239CFG/5data.
+Нативно:2104materialbytes/frozen oracle,shaderstate/lifecycle,layer6/malformed,
+7actual geometrydraws/2659bright modelpixels/2659changedRGB иarchiveflag1/0/17.
+Обычные source CreateEffect/DestroyEffect действительно CALL load/release.
+НО secondary geometry linker удаляет изобычнойPE:нет player-render caller.
+Полный mesh-object renderer иCPlayerProc/Avatar ещё отсутствуют;не завышать прогресс.
+Create/Login/account3Avatar новойPE PASS;Login66/3031ms просмотрен,ожидание,
+Beta0.738. Нетauth/selection/world.9старых first-chance,unhandled0.
+Оценка25%(20–35%),0/12полных областей;M6/M6F/M7/M9OPEN.
+
+Следующий148B:CMeshObject/CEquipObject Render()/matrix overloads/queue/shadow
+→типизированные146controller/ANI/fade/conditions/effects/positions
+→ordinary CPlayerProc/Avatar/frame/render/UI →Bselection.
+Не повторять готовый21+27function аудит. Подробности research/client455-grade-overlay.md.
+Archive sideeffect — НЕ SetReLoadState:проверены настоящие readers116E518,
+первоначальное предположение исправлено до приёмки. Group publication включает
+own adapter;полные455producer-writers ещё вM9backlog.
+
+Диагностика queue527E70/528090/528190,shadow46CF10,ctors46BD60/46BE60/46DB30
+есть в grade-overlay148-reference/additional-diagnostics.json (не полный ASM).
+Queue physical stride4matrices/node при BlendNumloop:не заменить на30 молча.
+Shadow делаетдвойной SetMaterial/SetMeshEffect. EffectList9298D0 keyDWORD,
+несмотряна char впсевдокоде:caller push EAX и927790читаетDWORD.
+Overlay604 неинициализирован ctor/init,нуженреальныйproducer;virtualgrade
+46D8B0→payloadvirtual68 —отдельный путь. 4513C0 пустой/return1,не выдумывать defaults.
+
+Перед ordinary edits:сохранить148 вbefore149;before148 уже содержит147.
+Финальный GPUprobe work/m9/6d651ce9/grade-overlay-001;source/native/report/frame.
+Послеосновного draw обязателен правильный caller state:одиночный overlay
+давалпустойкадр. ПроверкаRGB исключаетложныйуспех. Чёрнаяполосаневходит вмодель.
+Всеjobs завершены;IDA c6eeef7e savedclosed/list0;нет server/original изменения.
+Ниже история,которая не переопределяет это продолжение.
+
 # Текущее продолжение147/148 — 10.11.2026
 
 Предыдущий goal-turn:PROGRESS — реальная поправка CCharacter,истинные native

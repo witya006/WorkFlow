@@ -1,5 +1,10 @@
 # 148: карта отрисовки экипировки455
 
+Актуализация149: общие Render wrappers, источник overlay604 и очередь поз
+перенесены и проверены; полный player и particle registry ещё открыты.
+Текущее состояние: [client455-equipment-draw.md](client455-equipment-draw.md).
+Ниже сохранена исходная карта148; её очередь не является текущим планом.
+
 10.11.2026. AUDIT_OPEN. Реализация не перенесена,обычный внешний вид не принят.
 Исследование:inventory/client455-equipment-render-reference.json.
 Raw:artifacts/client455-progress/equipment-render148-reference/session.json.

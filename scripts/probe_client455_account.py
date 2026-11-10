@@ -4,7 +4,7 @@ from pathlib import Path
 from compare_client_binaries import WS,pe
 from client455_own_probe import build_full_object_probe
 from client455_asset_staging import stage_asset,staging_stats
-from client455_runtime_inputs import copy_character_shaders
+from client455_runtime_inputs import copy_character_shaders,copy_grade_overlay_inputs
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
@@ -14,6 +14,7 @@ def main():
     for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg','System/010.TTF','DataTable/ko-kr/NDLanguage.edf','DataTable/Character.edf','DataTable/ko-kr/NDCharacter.edf','SpriteImage/Common/mouse.spr','SpriteImage/ko-kr/common.spr']:
         original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     inputs+=copy_character_shaders(run)
+    inputs+=copy_grade_overlay_inputs(run)
     classes=json.loads((WS/'inventory/client455-avatar-classes-reference.json').read_text());expected=next(c['expected'] for c in classes['cases'] if c['locale']=='ko-kr');classSource=WS/expected['file']
     if sha(classSource)!=expected['sha256']:raise ValueError('Changed class oracle')
     classTarget=run/'registered-class-expected.bin';shutil.copyfile(classSource,classTarget);inputs.append({'file':classTarget.relative_to(WS).as_posix(),'sha256':sha(classTarget)})

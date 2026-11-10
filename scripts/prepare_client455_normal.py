@@ -109,6 +109,9 @@ def main():
         save(root/'include'/source.name,raw,source,changes)
     save(root/'include/Character.h',(native/'Character455.h').read_bytes(),native/'Character455.h')
     split_units=[]
+    for name in ['client455_grade_overlay.inc','client455_equipment_draw.inc']:
+        source=native/name
+        save(root/'include'/source.name,source.read_bytes(),source)
     for source in sorted((port/'source/RF_Client').rglob('*')):
         if not source.is_file():continue
         if source.suffix.lower() in ['.lib','.dsp','.dsw']:continue
@@ -913,7 +916,7 @@ def main():
     report['avatar_classes_port_sha256']=sha((WS/'scripts/client455_avatar_classes_port.py').read_bytes())
     report['equipment_port_sha256']=sha((WS/'scripts/client455_equipment_port.py').read_bytes())
     report['character_palette_port_sha256']=sha((WS/'scripts/client455_character_palette_port.py').read_bytes())
-    for name in ['client455_equipment_object.h','client455_equipment_object.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_equipment_object.h','client455_grade_overlay.inc','client455_equipment_draw.inc','client455_equipment_draw_lifecycle.h','client455_player_equipment.h','client455_equipment_object.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_avatar_classes.inc']=sha((native/'client455_avatar_classes.inc').read_bytes())
     for name in ['client455_character_tables.h','client455_character_tables.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_receiver.h','client455_nuclear_receiver.cpp','client455_nuclear_wire.h','client455_nuclear_wire.cpp','client455_player_use.h']:report['record_inputs'][name]=sha((native/name).read_bytes())

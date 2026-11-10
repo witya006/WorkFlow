@@ -152,6 +152,22 @@ void CRender::DrawCharacterMat(CHARACTEROBJECT* record,D3DXMATRIX* world,float){
     if(!record || !LoadRealData(record,&m_TM,false))return;runtime->camera();
     if(RF455_DrawCharacter455(&runtime->draw,record,world,nullptr)!=RF_CHARACTER_DRAW_OK)throw std::runtime_error("455 Character matrix draw failure");
 }
+void CRender::SetOverlayTextureMatrix455(const D3DXMATRIX& matrix,bool environment){
+    RF455_SelectCharacterShader(runtime->draw.shaders,environment?10:9,&runtime->draw.selected);
+    native.device->SetVertexShaderConstantF(92,&matrix.m[0][0],4);
+}
+void CRender::DrawCharacterOverlay455(CHARACTEROBJECT* record,float* position,float yaw,float scale,float,bool unscaled){
+    if(!record||record->opaque268||!LoadRealData(record,&m_TM,false))return;
+    if(native.effects.active){
+        float low[3],high[3];const auto* first=record->m_pMesh[0].bytes;
+        for(unsigned i=0;i<3;++i){float value;std::memcpy(&value,first+5471+4*i,4);low[i]=added(value,position[i]);std::memcpy(&value,first+5459+4*i,4);high[i]=added(value,position[i]);}
+        const auto* planes=reinterpret_cast<const float(*)[4]>(reinterpret_cast<const unsigned char*>(&native)+8736);
+        if(!RF455_IsNormalModelBoxVisible(low,high,planes))return;
+    }
+    float world[16],translation[16];
+    RF455_BuildNormalCharacterWorld(world,unscaled?translation:nullptr,position,yaw,scale,&hub().transforms);runtime->camera();
+    if(RF455_DrawCharacterOverlay455(&runtime->draw,record,world)!=RF_CHARACTER_DRAW_OK)throw std::runtime_error("455 Character overlay draw failure");
+}
 void CRender::DrawCharacterShadow(CHARACTEROBJECT* record,float* pos,float yaw,float alpha){DrawCharacterShadow(record,pos,yaw,alpha,1);}
 void CRender::DrawCharacterShadow(CHARACTEROBJECT* record,float*,float yaw,float,float scale){
     if(!record || !LoadRealData(record,&m_TM,false))return;const float zero[3]={};float world[16];RF455_BuildNormalCharacterWorld(world,nullptr,zero,yaw,scale,&hub().transforms);runtime->camera();

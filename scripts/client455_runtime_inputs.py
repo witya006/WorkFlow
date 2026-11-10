@@ -6,6 +6,17 @@ from pathlib import Path
 from compare_client_binaries import WS
 from client455_asset_staging import stage_asset
 
+def copy_grade_overlay_inputs(run,mutable_materials=False):
+    client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']);records=[]
+    for grade in ['B','A','C','D']:
+        for suffix in ['mst','dds']:
+            relative=f'Chef/GradeEffect/{grade}grade.{suffix}';original,target=client/relative,run/relative
+            target.parent.mkdir(parents=True,exist_ok=True)
+            if mutable_materials and suffix=='mst':shutil.copyfile(original,target)
+            else:stage_asset(original,target)
+            records.append(dict(file=target.relative_to(WS).as_posix(),sha256=hashlib.sha256(target.read_bytes()).hexdigest(),original=str(original),private_mutable_fixture=mutable_materials and suffix=='mst'))
+    return records
+
 
 def copy_tagged_sound_providers(run):
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])

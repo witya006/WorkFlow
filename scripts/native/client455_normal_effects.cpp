@@ -8,7 +8,7 @@ template<class T>void put(void* p,unsigned n,T value){std::memcpy(static_cast<un
 void accepted(const RF455EffectRead& r){if(r.status!=RF_EFFECT_OK && r.status!=RF_EFFECT_MISSING)throw std::runtime_error("455 EFF input outside confirmed bounded format");}
 void selected(CHARACTEROBJECT* model,const RF455EffectFileEntry& entry,int grade){if(model && model->m_MaxObj)RF455_ApplyEffectFile(&RF455_NormalEffects(),&CRender::GetRender().native,model,entry.file.c_str(),grade);}
 }
-EffectList g_EFFMonList,g_EFFNPCList,g_EFFUnitList;
+EffectList g_EFFMonList,g_EFFNPCList,g_EFFUnitList,g_EFFKitList;
 EffectFileList g_EffectFileList;
 void EffectList::LoadEffectFileList(char* file){lastRead=RF455_LoadEffectFileTable(&native,&RF455_NormalEffects(),file,false);accepted(lastRead);}
 void EffectFileList::LoadEffectFileList(char* file){lastRead=RF455_LoadEffectFileTable(&native,&RF455_NormalEffects(),file,true);accepted(lastRead);}

@@ -953,3 +953,7 @@ regions. Runtimearmoursetpredicate=payload113,notmetadata160. Baseplayerproc
 CPU path3assetinputs/newpool7953bytes;noGPU/clientcopy. Ownercallbacksremain
 recorders untilordinaryintegration. Ordinary145PEunchanged;M6/M9OPEN.
 IDA71813681saved/closed/list0;nativeexit0. Research:client455-equipment-conditions.md.
+
+2026-11-10 /148A:grade MST/DDS/shaders9-10/c92/secondarygeometry andarchiveflag restored;21fullfunctions/2863instructions/239CFG equal2pins. Real model RGB contribution verified. Ordinary lifecycleCALLs/Create/Login passed;typed player/mesh renderer/selection/M9 remainopen. Source+evidence:research/client455-grade-overlay.md. IDAc6eeef7e savedclosed/list0.
+
+149,10.11.2026:typed equipmentRender/default+matrix/fade/alpha/overlay604producer andretained posequeue source/native passed;actualmodel7/14/7draws and2659changedRGB. Ordinaryqueueentrypoints+secondarygeometry retained;Create/Login/account3AvatarPASS. Full13slotplayer andnonzero particle registry OPEN. Ownf4e62e48…/entry179630. research/client455-equipment-draw.md. IDA0a6749ce savedclosed/list0;newpool0;server/originals unchanged.

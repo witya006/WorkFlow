@@ -39,6 +39,9 @@ struct RF455_RpkGroup {
 
 RF455_RpkGroup* RF455_SetResourceGroup(RF455_RpkGroup* group);
 RF455_RpkGroup* RF455_GetResourceGroup();
+//8E75D0/8E75E0 andthe gated8E75F0/8E7680 loose-file fallback.
+BOOL RF455_SetResourceArchiveEnabled(BOOL enabled);
+BOOL RF455_GetResourceArchiveEnabled();
 FILE* RF455_OpenResource(char* path,const char* mode);
 BOOL RF455_ResourceExists(char* path);
 // End is checked before lowercasing, in both search and body loops.

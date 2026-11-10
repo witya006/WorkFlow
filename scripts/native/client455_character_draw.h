@@ -15,6 +15,7 @@ struct RF455CharacterDrawMath {
 };
 struct RF455CharacterDrawGlobals {
     float phase=0;unsigned previousTick=0,bumpEpoch=0;
+    float overlayPhase=0;unsigned overlayPreviousTick=0;
     float dynamicVertices[2048][8]={}; // zero-initialized persistent11DC9E0 scratch.
 };
 #pragma pack(push,4)
@@ -55,6 +56,8 @@ void RF455_ResetCharacterTransparency(RF455CharacterTransparency*);
 int RF455_QueueCharacterTransparency(RF455CharacterTransparency*,const RF455TransparentPacket*,const RF455MeshMatrixOps*);
 void RF455_SetCharacterEffectStage(RF455CharacterDrawContext*,unsigned stage,unsigned effect,DWORD textureFactor,float scroll);
 RF455CharacterDrawStatus RF455_DrawCharacter455(RF455CharacterDrawContext*,RF455CharacterStorage*,const void* world,const void* translationWorld);
+//92E140:retains the caller's overlay shader/textures and clears shaders at end.
+RF455CharacterDrawStatus RF455_DrawCharacterOverlay455(RF455CharacterDrawContext*,RF455CharacterStorage*,const void* world);
 RF455CharacterDrawStatus RF455_FlushCharacterTransparency(RF455CharacterDrawContext*);
 RF455CharacterDrawStatus RF455_FlushCharacterMeshBatch(RF455CharacterDrawContext*,RF455MeshStorage*);
 //92DB60, including its unusual Vec3Transform(normal,skin) and FVF restoration.

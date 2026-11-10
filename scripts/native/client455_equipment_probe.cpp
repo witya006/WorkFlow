@@ -70,4 +70,6 @@ static int run(){
     g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* out=std::fopen("result.json","wb");require(out,"Output");std::fprintf(out,"{\"status\":\"PASS\",\"plan_cases\":%u,\"real_models_loaded\":%u,\"actual_default_creations\":%u,\"gpu_texture_entries\":%u,\"default_payload_owners\":6,\"payloads_after_teardown\":0,\"actual_resource_bindings\":true,\"ordinary_Avatar_default_setter\":true,\"full_player_appearance_or_draw\":false}\n",unsigned(plans.size()),loaded,defaults,unsigned(textures.size()));std::fclose(out);return 0;
 }
+#ifndef RF455_EQUIPMENT_NO_MAIN
 int main(){try{return run();}catch(const std::exception& error){std::fprintf(stderr,"Equipment: %s\n",error.what());return 2;}}
+#endif

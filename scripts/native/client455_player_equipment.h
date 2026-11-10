@@ -43,6 +43,8 @@ class RF455PlayerEquipmentObject:public RF455EquipmentObject {
         return host.findItemAnimation(id);
     }
 public:
+    BOOL Render()override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render();}
+    BOOL Render455(const D3DXMATRIX& matrix)override{AdvanceFade455();return fadeMode455==3?TRUE:RF455EquipmentObject::Render455(matrix);}
     void SetOwner455(void* owner){m_dwItemField588455=static_cast<DWORD>(reinterpret_cast<std::uintptr_t>(owner));}
     void* GetOwner455()const{return reinterpret_cast<void*>(m_dwItemField588455);}
     //46D2F0:the effect precedes all animation mutation,including failure.

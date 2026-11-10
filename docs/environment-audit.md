@@ -1,3 +1,28 @@
+# Актуальная база149 —10.11.2026
+
+Ownf4e62e48…/x86/182client-67engine-20kernels/link0. Обычные Create/Login
+иaffectedaccount/registered3Avatar проверены;Login65/3016ms просмотрен.
+Новые sourceequipmentRender/fade/alpha/overlayproducer/retainedposequeue прошли
+actualGPU fixture. Обычные queueentrypoints/secondarygeometry удержаны PE.
+Fullplayer/selection/particle-registry/M9OPEN;новыхустановокнет.
+Сохранена148runtimeи16exactsourceinputs. IDA0a6749cesavedclosed/list0,jobsнет.
+Оригиналы/serverнеизменны. Подробности:research/client455-equipment-draw.md.
+Нижеистория;опись16:34:07 —последнийполныйзамер,не новыйпосле149.
+
+# Актуальная база148A — 10.11.2026
+
+Own03637d6a…/x86/182client-67engine-20kernels/unresolved0,
+engine4c6652a5…;Create/Login иaccount/registered3Avatar PASS.
+Grade materials/UV/secondarygeometry/archiveflag:source иGPUfixture
+снастоящеймоделью иизмеренной RGB-разницей проверены. LifecycleCALLs удержаны
+обычной PE;вторичная geometry функция ещё вызывается лишь probe.
+Full mesh-object Render/CPlayerProc/selection/world/M9 OPEN. Новых установок нет.
+IDA c6eeef7e savedclosed/list0;jobs завершены. Оригиналы/сервер не менялись.
+Опись16:34:07:156,14GiB по путям/42,96GiB уникальных файлов, ошибок0,
+удалений0. Новыефинальныеstaging не копировали ресурсы заново(newpoolbytes0).
+Подробнее:client455-grade-overlay.md вresearch иdocs/progress-report.md.
+Ниже история,не текущие статусы.
+
 # Актуальная база147 — 10.11.2026
 
 C2079 проверочной программы исправлен. Реальный CCharacter20×30/13dummy,

@@ -23,7 +23,7 @@ RF455EquipmentPlan RF455_PlanEquipment(BYTE type,DWORD index,DWORD mesh){
     return out;
 }
 RF455EquipmentObject::RF455EquipmentObject(){SetObjectTypeID(2);Enable(41218);}
-RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source):CItemObject(source),race455(source.race455),mesh455(source.mesh455),originalMesh455(source.originalMesh455),field608455(source.field608455),plan455(source.plan455){RetainSharedItem455();}
+RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source):CItemObject(source),race455(source.race455),mesh455(source.mesh455),originalMesh455(source.originalMesh455),field608455(source.field608455),plan455(source.plan455),renderMode455(source.renderMode455),overlayGradeKnown455(source.overlayGradeKnown455),dummy455(source.dummy455){if(overlayGradeKnown455)overlayGrade455=source.overlayGrade455;RetainSharedItem455();}
 bool RF455EquipmentObject::Create455(BYTE type,DWORD index){
     race455=BYTE(index>>28);const BYTE tableType=type==9?46:type;const DWORD tableIndex=index&0x0fffffff;
     const auto row=RF455_GameItems().data.getItem(tableType,tableIndex);if(!row.data)return false;
@@ -51,3 +51,5 @@ DWORD RF455EquipmentObject::GetTableIndex455()const{
     auto* item=dynamic_cast<RF455BasicItem*>(GetItem455());
     if(!item)throw std::logic_error("455 equipment requires a real basic item payload");return item->tableIndex();
 }
+#include "client455_grade_overlay.inc"
+#include "client455_equipment_draw.inc"

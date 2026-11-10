@@ -1,0 +1,165 @@
+{
+  "status": "PARTIAL",
+  "scope": "Grade materials/UV shaders/secondary geometry andarchive-mode gate;full mesh-object renderer andordinary player stillopen",
+  "script": {
+    "file": "scripts/checkpoint_client455_grade_overlay.py",
+    "sha256": "5add8f9cf6e8c1a7c1b7172301f791a256b13e1d6cefebf5c766f3a783c66aea"
+  },
+  "normal_link_sha256": "be30e3cf5e719cc614055c2b36a25d3483281abc0afb4cc6f2a40e866551b256",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "03637d6a6630c52aa6a966c777b5690679c10b2c2a6d6acf9888e16ed1761d91",
+    "bytes": 2306048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1771c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "grade-overlay-reference": {
+      "file": "inventory/client455-grade-overlay-reference.json",
+      "sha256": "9210eb8ca2bbe7da1d8f32d2b0d482e3f9c8a46d9a18469b60a72886a225432e"
+    },
+    "grade-overlay-native": {
+      "file": "inventory/client455-grade-overlay-native.json",
+      "sha256": "2dc35ddada73b6c23d3744d73c976b3bdb0c4c2d3118a07063cf0c425fb9c811"
+    },
+    "material-uv-native": {
+      "file": "inventory/client455-material-uv-native.json",
+      "sha256": "61c830f1cbb4033ded6ed910511d35be4ce4afd39271e4cb0ab6fee7814e6c16"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "511e95df0bad9f462e13e8c44aec97c0651aa2591e98b1d963e2d6ed6e1808c2"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "4c4370977b47457945fcf4c8875982fb035f033701465f33627649f3d7e89700"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "bdf4422733c8a43ddf3bfea85207c5621086dc37f11d0de33121404c281b2a32"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "0f5e84271cab2be8ab2e3ce625391e69a7b10be096e4eba42c0ccc5cc6d85c53"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "be30e3cf5e719cc614055c2b36a25d3483281abc0afb4cc6f2a40e866551b256"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "fc225818e90586dfe8fbd62ada2b8a724dc1df0d7d507570524f82fec35bbf31"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "53f35f1694f501ff81d19edf347f80887def0e5bfed4a016d282adcc6fdfa7dc"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "652814f288aa54310c9c2af74ea4423d7118a4e2e6c9a1fd92be153013c82b96"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "b4df3fa5d41d8dd32fd8b0cde77b0374677f0731115098fdec13b98bc155ee92"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "e14817a7dd3c8cbf69e52d8f79bb5935f9b752f4b5b31530017c34264d0f44bb"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "0447625d6e3c872432d4beb038d831e29a401cd02830d5ae031a5fa8095b19b1"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "f575429c055d6307d08ae283cd5b7b2928a1971cdc059db772580b2f3842bae2"
+    },
+    "character-draw-build": {
+      "file": "inventory/client455-character-draw-build.json",
+      "sha256": "16097be5d648e3dcfcbbf350c7cfe7cdd7ad003d2e9277dbc348bd9e6b18562f"
+    },
+    "renderer-owner-build": {
+      "file": "inventory/client455-renderer-owner-build.json",
+      "sha256": "9925efb90b409e88dc6ea71b375b5dbffe885e3923c257bb8c45bd0e06cdfb92"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before148/manifest.json",
+    "sha256": "b8e720dfd04013b2a183c9649ccb65edc46aa0a3261611a29a703b53d71ea7aa"
+  },
+  "ordinary_lifecycle_calls": [
+    {
+      "owner": "create",
+      "target": "load",
+      "call_rva": "0x6b740",
+      "target_rva": "0xca3e0"
+    },
+    {
+      "owner": "destroy",
+      "target": "release",
+      "call_rva": "0x6b8ef",
+      "target_rva": "0xca5e0"
+    }
+  ],
+  "ordinary_source_lifecycle_connected": true,
+  "lifecycle_execution_in_Login_observed": false,
+  "actual_materials": 4,
+  "actual_GPU_textures": 4,
+  "actual_model_overlay_draws": 7,
+  "controlled_pose": true,
+  "visible_model_pixels": 2659,
+  "changed_overlay_pixels": 2659,
+  "frame": {
+    "file": "work/m9/6d651ce9/grade-overlay-001/grade-model.png",
+    "sha256": "e783029981b740ec60f588c14d4109bddcaecf72453ad80c75fb9784ed94f4a6"
+  },
+  "baseline_frame": {
+    "file": "work/m9/6d651ce9/grade-overlay-001/grade-model-base.png",
+    "sha256": "1f45e9e1afd079d8d438c30b895754b114518d42653b2f5d7cf589542b189eb2"
+  },
+  "ordinary_Create": true,
+  "ordinary_Login_frame": {
+    "file": "work/m9/03637d6a/login-frame001/login-frame.png",
+    "sha256": "8239aff496ad0fca0cb832940b23288caa7d7f4883a1e70e1bcc1d27578fd532"
+  },
+  "ordinary_Login_capture": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 66,
+    "elapsed_ms": 3031,
+    "requested_delay_ms": 3000
+  },
+  "known_first_chance_exceptions": 9,
+  "unhandled_exceptions": 0,
+  "prior_exception_profile": {
+    "file": "artifacts/client455-progress/before148/inventory/client455-login-frame-native.json",
+    "sha256": "71a4f456eeac472f4da598c6a0718029b6bc81df913be72228e4fbed72bcd0ca"
+  },
+  "secondary_geometry_retained_in_normal_PE": false,
+  "ordinary_player_connected": false,
+  "full_mesh_object_renderer": false,
+  "full_appearance_or_selection": false,
+  "full_client": false,
+  "gaps": [
+    "CMeshObject/CEquipObject primary andmatrix Render wrappers,complete effects queue andgrade604 producer",
+    "Actual CPlayerProc/Avatar/controller/frame/animation/conditions andselection/world",
+    "All original archive-mode producers andnested owner policy",
+    "Unbounded tokens,malformed/OOM/EOF behavior,repeated load withoutdestroy andcomplete CRT/FP fidelity"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

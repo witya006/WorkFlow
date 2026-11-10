@@ -1,56 +1,60 @@
-# Следующая работа — отрисовка экипировки и связанный выбор персонажа
+# Продолжение M6 — полный персонаж и выбор
 
-10.11.2026. M6/M6F/M7/M9 открыты. Оценка25%(20–35%),0/12полных областей принято.
-Полная оценка: [progress-report.md](progress-report.md).
+Обновлено10.11.2026. Последняя проверенная обычная сборка149/f4e62e48…,
+182client/67engine/20kernels,unresolved0.
+Gate:inventory/client455-equipment-draw-checkpoint.json.
+Оценка25%(20–35%);0/12полных областей,M6/M6F/M7/M9 открыты.
 
-## Проверенная база147
+## Достигнуто
 
-Own x86 RF_Online.bin993978ff…;182client/67engine/20modules/unresolved0.
-Gate:inventory/client455-character-palette-checkpoint.json.
-Новый настоящий CCharacter имеет20parts×30palettes и13dummy. Source/native,
-Avatar3локализации,registered receiver3Avatar,Create иобычный Login прошли.
-Кадр66/3031ms просмотрен:lobby/ожидание,полный455UI ещё не принят.
-Девять first-chance исключений имеют прежний профиль145;необработанных нет.
-Начальная ошибка C2079 вprobe исправлена include cresourcedatamgr.h.
-Map-файлы Avatar/account теперь сохранены вуникальных папках запусков.
-Общий пул при этих проверках не пополнялся;большие suites не повторялись.
+- Перенесены Render(default/matrix), fade/alpha и источник overlay604:
+  slots6/7 читают metadata152, остальные пишут0; numeric effect grade — payload113.
+- Настоящий предмет рисуется новым object Render; видимое свечение и разные
+  matrix/default проходы проверены. Это предмет в контролируемой позе, не actor.
+- Очередь хранит позы и payload owners, сохраняет target4-matrix aliases,
+  предел256 и Start. Обычные Clear/Render вызывают новые entrypoints.
+- Вторичная геометрия теперь удержана обычной PE, но полный player caller отсутствует.
+- Обычные Create/Login и затронутый receiver3Avatar прошли; Login65/3016ms
+  просмотрен, ожидание/Beta0.738. Авторизации и полного выбора ещё нет.
 
-Предыдущая145 сохранена вbefore146. Проверенная147 сохранена вbefore148/manifest.json:49точныхфайлов.
-Не перезаписыватьbefore148 иbefore146.
+## Следующие действия
 
-## Ближайшая работа148
+1. Подключить готовый13-slot controller146 и новый Render к обычным
+   CPlayerProc/CPlayer/Avatar. Перенести реальные slot guards450810 и
+   pose restore43CDE0, setters позиции/масштаба и Render(default/matrix).
+   450330/450710 и источник overlay уже полностью исследованы; не повторять.
+2. Соединить реальные Animation/FrameMove, ANI/fade/height, effect/sound/
+   attachment/condition providers146 и их UI consumers. Требуемый результат:
+   правильно одетый персонаж в обычном клиентском маршруте.
+   В полном ctor/clone учесть rand()/100→612 из46BE60: нынешний wrapper/queue-copy
+   ещё не воспроизводит потребление PRNG; это известный gap, не принятый lifecycle.
+3. Перенести общий particle/entity registry. Сейчас adapter использует старый
+   g_Particle1024/5clones; target — динамические vectors/6clones и одноразовая
+   попытка загрузки. Проверить constructor/default capacity и loader/release.
+   7BE640/7BF060 расширяют при count+1>3072; не подставлять2000 из RVP.
+   Диагностика сохранена; ненулевые эффекты149 ещё НЕ проверены.
+4. Довести bootstrap Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/
+   EventSound/SpecialStore/ItemCollection/Map, Avatar finalization и UI выбора/
+   ошибки/переходы. Не обходить загрузку и не принуждать успешный вход.
+5. После выбора — карта/управление, связанный игровой цикл и полная приёмка
+   по docs/roadmap.md и docs/client-acceptance.md. Сервер не разрабатывать.
 
-1. Перенести полный typed equipment mesh renderer среальными providers.
-   Карта27полных функций/1827инструкций/213CFG иvtable176bytes совпала2pins.
-   inventory/client455-equipment-render-reference.json иresearch/client455-equipment-render.md.
-   Не тратить следующий turn на повтор этих27функций:полные pcode/ASM/CFG сохранены.
-2. Проверить overlay descriptors4×526bytes@113FC70/textures@11404A8 иих writers;
-   существующие providers Character455/normal_effects/kit/unit/эффектной очереди.
-   Не заменять неизвестные handlers пустыми. 46C470/46C940 — разные renderветки.
-3. Подключить к настоящим CPlayerProc/CPlayer/Avatar существующие13slotcontroller,
-   ANI/fade,условия,эффекты ипозиции;frame/animation/render иUI callbacks.
-   Цель — правильный одетый персонаж вобычном клиентском маршруте.
-4. Закончить bootstrap:Quest/EventShip/NDMsgMonster/ItemTimer/NDMsgEvent/EventSound/
-   SpecialStore/ItemCollection/Map иAvatar finalization.
-5. Принять Title/Login ивыбор:ввод/список/внешнийвид/выбор/ошибки/переходы.
-   Затем C:карта/управление,D:связанные игровые действия,E:полная приёмка.
-   Переоценить объём послеB/C. Не принуждать авторизацию к успеху;сервер не писать.
+## Сохранение и проверки
 
-## Подтверждённые ограничения
-
-- VtableAA8F64:Render24→46E120,Animation28→46E520,FrameMove32→46DBC0;
-  matrixRender148→46E160,matrixDraw152→46E1E0,normalDraw156→46E1A0,grade172→46D8B0.
-  46D190 — общая Animation,не Render;46C200 — metadata getter.
-- Render вызывает fade advancement до guard;fade3 возвращает1 безdraw.
-  Две drawветки имеют разные общие scroll/time иразный overlaydraw.
-- 4513C0 SetEquipItemToDefaultMesh действительно пустой/return1 в455.
-  Не придумывать default-substitution;искать настоящий producer внешнего вида.
-- 146компоненты проверены отдельно;ordinary CPlayerProc/skill/UI/liveupgrade/
-  set/SF/potion producers/consumers ещё не подключены полностью.
-  Baseitemsource44C670,неcurrent44C630;kindmetadata88;heightmeshIDmetadata72.
-- Characterdummy13 иequipmentdummy10 — отдельные кэши.
-- Полные renderer/physics/lifecycle/CRT-FP/ошибки остаются требованиямиM9.
-- Оригиналы/сервер только читать,входныеEXE не выполнять. Работать подwork/.
-- Sharedpool собственных копий;не создавать полную копию клиента накаждый запуск.
-  Опись14:12:21:155,29GiB попутям/42,87GiB уникальныхфайлов;удалений0.
-- IDAeaa5fe38 saved/closed/list0;активных jobs нет. Новыхустановок не нужно.
+- before149/manifest.json содержит148; before148 —147; before146 —145.
+  Дополнительно exact148 source hashes сохранены в before149/recovered-source/.
+- До следующих ordinary edits сохранить149:
+  snapshot_client455_runtime.py150 client455-equipment-draw-checkpoint.
+  Существующие снимки не перезаписывать.
+- Новый audit использует16новых+27render/19backend148 полных функций;
+  уникально62/6959instructions/650CFG. Не повторять готовое исследование.
+- Последняя nativeпроверка:work/m9/0fdac5c0/equipment-draw-001;
+  underlying model/frame fixtures неизменны. Новых poolbytes0.
+- Кадры base/overlay совпадают с сохранённым backend148. Полный character
+  appearance/selection этим не доказан. Registry/nonzero particles открыты.
+- Ошибка первых fixture-run: SetPosition(0,0,0) выбрал overload сNULLVector3f;
+  исправлено float-аргументами. Это не исправление production-клиента.
+- Проверять затронутое; неизменённые большие suites не повторять.
+- Queue byte-reference overflow и writes за allocation не считать безопасными
+  принятыми сценариями. Известные расхождения хранить в списке приёмки.
+- IDA0a6749ce saved/closed/list0, jobs завершены. Оригиналы/сервер не менялись.

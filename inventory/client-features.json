@@ -6,10 +6,30 @@
   "image_base": "0x400000",
   "features": [
     {
+      "id": "CLIENT455-GRADE-OVERLAY-148",
+      "status": "partial_component",
+      "runtime_gate_current": false,
+      "runtime_gate_last_verified": true,
+      "description": "Real grade material/UV/secondary geometry/archive-mode backend withcontrolled real-model RGB proof;source lifecycle connected;ordinary player mesh rendering open",
+      "implementation": [
+        "scripts/native/client455_grade_overlay.inc",
+        "scripts/native/client455_character_draw.cpp",
+        "scripts/native/client455_resource_io.cpp"
+      ],
+      "evidence": [
+        "inventory/client455-grade-overlay-reference.json",
+        "inventory/client455-grade-overlay-native.json",
+        "inventory/client455-grade-overlay-checkpoint.json"
+      ],
+      "ordinary_player_connected": false,
+      "secondary_geometry_retained_in_normal_PE": false,
+      "full_client": false
+    },
+    {
       "id": "CLIENT455-CHARACTER-PALETTE-147",
       "status": "partial",
-      "runtime_gate_current": true,
-      "runtime_gate_last_verified": true,
+      "runtime_gate_current": false,
+      "runtime_gate_last_verified": false,
       "description": "Actual ordinary CCharacter20parts/30palettes/13dummy;affected Avatar/registered/Create/Login verified;full equipment appearance open",
       "implementation": [
         "scripts/client455_character_palette_port.py"
@@ -3105,7 +3125,8 @@
         "Fullresource rendering/name metrics/lighting/advancedFX/reset/OOM/unwind/privateABI domains remain open;commonprobe liveMagiccache empty",
         "086/088/089runtimegates historical after normal/dependency/report changes;staticreferences remain valid and089runtime regression renewed here",
         "All previous payload/Queststrings/Gesture/Macro/36boardclasses/Trunk/fullitemprotocol/Tutorial/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-ITEM-PAYLOADS-089",
@@ -3160,7 +3181,8 @@
         "Quest localized sentence expansion explicitly unimplemented;other Character consumers/reload/duplicateowner/OOM/unwind/unsafe domains remain required",
         "Previous088runtimegate historical after sharedheaderchange;staticreference retained and SF regression renewed with089library",
         "All prior oldbelt/36boardclasses/Trunk/fullitemprotocol/Tutorial/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-SKILL-FORCE-ITEMS-088",
@@ -3208,7 +3230,8 @@
         "Ordinarygame-global/CItemObject/CResObject/board/hover/Linker binding/5x10view/input/download still required",
         "Ko/Ru counts differ from supplied root;correct failure is verified,successfullocale/fullgame acceptance is not claimed;do not fabricate asset labels",
         "All previous storage/oldbelt/36factoryclasses/Tutorial/fourstage/Login/auth/gameplay/M6F/M7/M9 gaps remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-ITEM-OWNERSHIP-087",
@@ -3252,7 +3275,8 @@
         "Opaque resourcebase copy is not full CItemObject/CResObject clear/draw/destructor lifecycle or callable C++ABI",
         "Ordinary Linker/board/hover ownership binding and5x10view/use/input/cooldowns/download still open",
         "All086 storage/itemprotocol/oldbelt/36factoryclasses/Tutorial/fourstage/Login/auth/gameplay and prior M6F/M7/M9 requirements remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-HOTBAR-086",
@@ -3294,7 +3318,8 @@
         "Gesture/Macro tags only pureencoder;realproviders absent",
         "OldMainGame.Create_Board/BeltList explicitly refuse oldbelt;36factoryclasses includingTrunk5/fullitemDBtradeprotocol remain open",
         "ActualTutorial/commonUI/Avatar/QBI/follow/localhandlers/fourstage/Login/auth/gameplay and all previous M6F/M7/M9 requirements remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-STORAGE-085",
@@ -3329,7 +3354,8 @@
         "Unrecovered oldMainGame.Create_Board/BeltList paths explicitly refuse retired belt;real455 replacements remain required",
         "Physical eligibility only;fullReturnItem/trade/trunk/hotbar/itempacket/DBrecord/protocol still open;255 is invalid marker,not validwirecode",
         "ActualTutorial/commonUI/Avatar/QBI/follow/localhandlers/fourstage/Login/auth/gameplay and all prior M6F/M7/M9 requirements remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-INTEGRATION-084",
@@ -3377,7 +3403,8 @@
         "36 target class names absent from current registry are not a full source-file/feature absence claim;17matching names do not establish behavior equivalence",
         "Separate QuestBriefing registry20 from dedicated Tutorial despite common window38;restore sharedUI/Avatar/nameplate/gauges/realprocessors",
         "Actual Tutorial/QBIhost/follow/localhandlers/fourstage/Login/gameplay and all earlier M6F/M7/M9 requirements remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-MONEY-083",
@@ -3429,7 +3456,8 @@
         "Full inventory Init/layout/sprites/other controls not accepted",
         "Unmasked x87 exceptions/status/CRT failures/foreign buffer domains remain open",
         "ActualTutorial/sharedAvatar/UI/board/QBIhost/follow/localhandlers/fourstage/Login/auth/gameplay and all prior gaps remain mandatory;window ID38 is not QBI selector count47"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-RVP-AUDIO-082",
@@ -3483,7 +3511,8 @@
         "Full Miles init/3D provider/PlayWave/music/streaming/device lifecycle/failure/OOM/invalidIDs and full FP/scanner domains remain open",
         "Magic/throw/collision/shadow/trace/screen/advancedFX/globalChef/materiallight and all earlier gaps remain mandatory",
         "ActualTutorial/Avatar/QBI/fourstage/Login/auth/gameplay/IME and M6F/M7/M9 remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-RVP-EFFECTS-081",
@@ -3534,7 +3563,8 @@
         "Original process-ownedChef/context/lifetime and densecache/failure/unwind differ from source adapter;material/lightreset8CE5D0 open",
         "No isolatedparticle readback or fine reference-runtime pixel equivalence claim",
         "Fullaudio/magic/collision/shadow/screen/timer/Tutorial/Avatar/QBI/fourstage/Login/auth/gameplay/IME and all earlier gaps remain mandatory"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-RVP-ACTOR-080",
@@ -3588,7 +3618,8 @@
         "Magic/collision/shadow/ambient and event audio/trace/screen/timer-rate still refused;not waived fromM9",
         "Small GPU captures do not establish fine visual parity;palette parts>70/count>4 unsafe domains rejected;material/light cache reset and scanner/numeric/failure gaps remain",
         "Full Tutorial/Avatar/QBI/follow/fourstage/Login/auth/gameplay/IME and all prior M6F/M7/M9 gaps"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-RVP-RUNTIME-079",
@@ -3639,7 +3670,8 @@
         "Full Create/Release sharedFX/deferredparticle lifecycle and Render material/light caches;RVP-specific quake/blur checks",
         "PausedautoCAM undefined matrix and camera-only failure detachment;scanner078/numeric/failure domains notaccepted",
         "Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay/IME and all prior M6F/M7/M9 gaps"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-RVP-078",
@@ -3683,7 +3715,8 @@
         "Independent-if argument-keyword scanner fallthrough and complete numeric/malformed domains unaccepted",
         "34 exact-path resource refs missing; failure behavior/use needs verification, not automatic asset substitution",
         "Full Tutorial/Avatar/QBI/follow/fourstage/auth/gameplay and all prior M6F/M7/M9 gaps remain"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-MOVIE-STATE-077",
@@ -3732,7 +3765,8 @@
         "CGP_Tutorial/Avatar actor/QBI/follow/local handlers/fourstage/Login/game integration",
         "Screen-size wrapper500/480 and percent-fov command; legacy0.7 movie callers still transitional",
         "All prior Character/world/render/auth/IME/lifecycle/numeric/M6F/M7/M9 gaps remain"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-FULLSCREEN-EFFECT-076",
@@ -3778,7 +3812,8 @@
         "Fullwater/bloom/extra455targets/shadowallocation/init/reset/COM-GPU-lifecycle/numericfailures",
         "CameraControls8D4C30 andactualCGP_Tutorial/Avataractor/QBI/follow/fourstage/Login integration",
         "Allpriorworld/Character/render/auth/gameplay/IME/M6F/M7/M9gaps"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-INTRO-075",
@@ -3832,7 +3867,8 @@
         "ActualCGP_Tutorial lifecycle/fourstage/Login/nextDWORD integration;provider compiled but not used in ordinaryfactory",
         "QBI/actions/localfeedback/Avatar actor/follow-camera andnewengine consumers require actualproviders",
         "Fullfade/render/matrix455parity,world/effects/Character/IME/auth/gameplay/lifecycle/M6F/M7/M9 remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-WORLD-074",
@@ -3884,7 +3920,8 @@
         "FullILevel/Empty/INS;INS explicitlyrefused;indexedmapextras andfullworldinterfaces",
         "Onlysky/opaque/camera0views,notfullalpha/effects/shaders/lighting/audio/lifecycle/455pixel equivalence",
         "FullTutorialstage/intro/Avatar/QBI/localhandlers/fourstage/auth/gameplay/IME/failures/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-AVATAR-STAGE-073",
@@ -3951,7 +3988,8 @@
         "FullCGP_Tutorial/world/BSP39/cameraintro/Avatar/QBI/fourstagefactory/nextDWORD;legacy3/modulo and explicitIDbridge remain",
         "Local4/5/7/13/17 handlers still explicitlyfail;only confirmedignored/1-17transport accepted",
         "SkipDWORD networkproducer,fullAvatar/Character/world/GUI/IME/renderer/lifecycle/auth/gameplay/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-BRIEFING-WINDOW-072",
@@ -4014,7 +4052,8 @@
         "Fullbasewindow lifecycle/input/sound/docking,resource21/31..33 device-reset/globalmanager;Screen singleton guard closed073",
         "Russian ND1059 extends beyond45pxbutton;original455pixel equivalence unproven",
         "GlobalvirtualSetSize,otherGUIlayers/IME/oldAni/unsafe/failure domains and allpreviousgameplay/M6F/M7/M9 gaps"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-BRIEFING-CONTROLS-071",
@@ -4073,7 +4112,8 @@
         "Legacy0.7Ani consumers and fullrotation/drawmodes/FP/unsafe/resource/failure domains",
         "PreInitframecolors targetunspecified,sourcezero notparity;higherrowcounts nottested",
         "FullGUI/IME/layers/auth/gameplay;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TEXT-TYPING-070",
@@ -4132,7 +4172,8 @@
         "Actual CGUIBriefingWindow/key/portrait/frame/provider and production typing instance not yetconnected",
         "Negative/missingmarker/WORDoverflow/foreign/OOM/reentrancy/failure domains explicitlyunsupported or unverified",
         "FullGUI/IME/layers/Tutorial/Avatar/world/fourstage/auth/gameplay;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-MESSAGE-SIZING-069",
@@ -4182,7 +4223,8 @@
         "GlobalbaseGUI.SetSize stillnonvirtual;typed modal SetSize/SetBoundbridge only",
         "All455wrapper variants/guards and callers/invalidgeometry/OOM/overflow/automatic scroll-attach edge domains",
         "ActualBriefing/Tutorial/Avatar/world/fourstage/auth/fullGUI/gameplay;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-GUI-INPUT-068",
@@ -4246,7 +4288,8 @@
         "FullGUIInput/IME/popup/combobox/focus/value80consumers and downstream7/8actions;preAdd-hidden legacycallers requiretargetcomparison",
         "FullprivateABI/destructorregistry/cross-thread/OOM/unsafe/failure domains;extrafirstchance40080201causeunknown",
         "Productionrich/message sizing/briefing/Avatar/world/Tutorial/fourstage/auth/fullminimap/camera;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-MINIMAP-OPACITY-067",
@@ -4300,7 +4343,8 @@
         "Dynamic map sprite56 absent;partialalpha uses legacy nullsprite white rectangle fallback;grid ismain5:32 asset,not terrain",
         "Actual positive camera zoom consumer555940/Avatar/world missing;explicit refusal instead of invented values",
         "Full target GUIObject/Container parent input/show/focus/skin/alpha/clipping/lifecycle/FP/unsafe domains;production rich/briefing/Tutorial/fourstage/auth/gameplay;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-SCROLLBAR-VARIANTS-066",
@@ -4356,7 +4400,8 @@
         "Var no direct ctor xrefs;action15 cannot be supplied by target loader actions<16;fixture preserves missing caps",
         "Horizontal Var tracklocal uninitialized,explicit refusal;full parent input/show/focus/skin/alpha/clipping/lifecycle/FP/unsafe domains OPEN",
         "Production rich/message sizing/briefing/Avatar/world/Tutorial/fourstage/auth/gameplay;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-SCROLLBAR-065",
@@ -4409,7 +4454,8 @@
         "Defaultcap44to49 absent fromselectedcommon action2;fullresource/skin/versionparity OPEN",
         "Legacy GetMinSize/SetScrollSpeed compatibility wrappers,allalpha/clipping/privateABI/lifecycle/unsafe/OOM/FP/nonSSE2 domains",
         "Productionrich/message sizing/fullbriefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorgaps;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TEXT-BOARD-064",
@@ -4463,7 +4509,8 @@
         "Other shared102DAB0 consumers and fullCRT locale/thread domains",
         "Malformed/OOM/unsafe/foreign-pointer/numeric/FreeType/fullother scale consumers",
         "Fullbriefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorunknown gaps;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TEXT-METRICS-063",
@@ -4510,7 +4557,8 @@
         "FreeType/Unicode metric branches and target16byte FONT_INFO/float scale/draw",
         "Fit helper production caller waits for TextBoard port;unsafe scratch/foreign-pointer/huge-input/error domains OPEN",
         "Full briefing/Avatar/world/Tutorial/fourstage/authentication/gameplay and priorunknown/numeric gaps;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-MODAL-062",
@@ -4560,7 +4608,8 @@
         "FreeType/ANSI/fullcaptionmetrics/frame-window/lifecycle/wrapper variants",
         "Full455MainGame chat provider identity",
         "Briefing/Avatar/world/Tutorial/fourstage/authentication and priorunknown/error domains;M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-BOARD-061",
@@ -4609,7 +4658,8 @@
         "Concrete stage/Avatar/capture providers,registration/event routing and ordinary Tutorial/fourstage",
         "Progress-report uninitialized payload byte;no invented packet",
         "Earlier itemtail25/camera276/helper/numeric/error gaps;full455/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-ACTIONS-060",
@@ -4658,7 +4708,8 @@
         "Cursor33/34 external completion and Combat39 counter/feedback writers",
         "Itemtail25/camera276/numeric/error domains from earlier stages",
         "Ordinary Tutorial/fourstage/full455/authentication/gameplay/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-SPATIAL-059",
@@ -4704,7 +4755,8 @@
         "Remaining28 selectors/board/briefing/Tutorial/fourstage",
         "CRT math/error/NaN/allFP domains not fully certified",
         "Full455/authentication/gameplay/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-RUNTIME-058",
@@ -4749,7 +4801,8 @@
         "Owner52 meaning/other context fields/raw reload/OOM/arbitrary callback invalidation",
         "Fixed message foreign-pointer domains deliberately rejected",
         "Full455/authentication/gameplay/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-TUTORIAL-SCRIPTS-057",
@@ -4790,7 +4843,8 @@
         "Unselected ko-kr/Tutorial.scp incompatible; provenance/runtime use unknown",
         "Malformed atomic rejection differs from unchecked original state;OOM/error domains not certified",
         "Full scene/4stage/real authentication/gameplay/M6F/M7/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-CAMERA-056",
@@ -4838,7 +4892,8 @@
         "Malformedatomicload differsfrom originalunsafe state/errors;OOM/concurrency notcertified",
         "Registrycontainer lifetime vsoriginalprivate88byte record;ownedAPI56andprivate80consistent",
         "M6F/M7/M9 andrealonlineauthentication"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-PROGRESS-BASE-055",
@@ -4883,7 +4938,8 @@
         "Dynamicparticleowner vslegacyfixed1024",
         "Ownnext initialFFFFFFFF vsoriginaluninitializeddomain;ownedMainLoopBOOL API retained",
         "M6F/M7/M9 andrealonlineauthentication"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-PROGRESS-054",
@@ -4922,7 +4978,8 @@
         "Explicit nextstage/mainloop/lifecycle/focus",
         "FullLoginUI/Create/worldstate/35handlers/countrybootstrap/realonlineauthentication",
         "Tutorial completion and all stage transitions requiredforM6F/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-ACCOUNT-053",
@@ -4970,7 +5027,8 @@
         "35handlers,remainingwire messages,notify11 targetquit/localizedsideeffects",
         "WorldUI value/status interpretation,world/gameplay/IME/lifecycle/M6F/M9",
         "Own bounded nullticket/malformed domains intentionallydo notreproduce undefinedmemorybehavior"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-CONNECTION-052",
@@ -5017,7 +5075,8 @@
         "Fulltransport/queued/filters/internalsecurity/threads/Close/errorlogging/ownership",
         "FullUI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9",
         "Boundedformatting vsunsafeoriginal,OOM/concurrency/CRT/error domains"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NETWORK-CODEC-051",
@@ -5069,7 +5128,8 @@
         "Send filters/throttle/backpressure/internal security and allerror domains",
         "TargetCreate outofboundsconfig2 stackwrites not reproduced;unsafe/OOM/overlap/concurrent domains not certified",
         "Fullcountrybootstrap/UI/FT/IME/ILevel/world/gameplay/shutdown/M6F/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-BOOTSTRAP-050",
@@ -5122,7 +5182,8 @@
         "FullpreengineConnectwait notyetwired;rawTCP0afterclosesocketonactualrefusal doesnotproveconnected",
         "FGpurpose beyondstoredint/fullcountryproviders/video/BGM/errorlogging",
         "FullUI/FT/ANSI/IME/ILevel/world/gameactions/shutdown/M6F/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-LAUNCHER-049",
@@ -5168,7 +5229,8 @@
         "LegacywireID/PW13bytes vsnewstate50/32;realconnect/auth/protocol/gameplay",
         "RejectedCCRsetter sideeffects/unsafe/OOM/oldCRT/nonASCII/errorlogging domains",
         "Full455Create/video/UI/FT/IME/world/shutdown/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-SPRITES-048",
@@ -5210,7 +5272,8 @@
         "Launcher/bootstrap/targetCreate/video/loginUI andclientnetwork",
         "Window/backbuffer sizing andfullshutdown",
         "Whole455gameplay/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-LIFECYCLE-047",
@@ -5244,7 +5307,8 @@
         "Created-state effects order/global clearing/two containers",
         "Actual fullWinMain early-error andgame shutdown",
         "Whole455UI/gameplay/network acceptance"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-FONT-GDI-046",
@@ -5289,7 +5353,8 @@
         "FullILevel/CMainApp shutdown;beforeCreate nullpointer fixed bylifecycle047",
         "Window/backbuffer sizing",
         "Whole455UI/gameplay acceptance"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-LANGUAGE-045",
@@ -5330,7 +5395,8 @@
         "Unsafe malformed/OOM/reload leakage domains",
         "Missing local en-us/th-th NDLanguage inputs",
         "Whole normal Create/gameplay/shutdown/M9"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NATION-PATHS-044",
@@ -5364,7 +5430,8 @@
         "ETCAction/factory/launcher policies",
         "Actual CRT/codepage agreement,font application,NDLanguage EDF",
         "Whole reference startup order and full normal Create/UI/gameplay/network/shutdown"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-SPT-001",
@@ -5401,7 +5468,8 @@
         "OOM",
         "non-ASCII locale/decimal conversion parity",
         "repeat successful-load lifecycle"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "WORLD-HELPER-002",
@@ -5453,7 +5521,8 @@
       "gaps": [
         "Reference455 startup FPU/caller environment; own D3D8 device/map/render consumer measured0x007F",
         "full helper loader/NaN/exception behavior outside the two exact math kernels"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "WORLD-HELPER-003",
@@ -5491,7 +5560,8 @@
       "gaps": [
         "full real particle/entity dependencies and GPU behavior",
         "Full map/calendar/root-transport/console/lighting domain; selected8/5 cache/load hook restored"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "MATH-X87-001",
@@ -5527,7 +5597,8 @@
       "gaps": [
         "Reference455 startup x87 environment; own device/map path measured0x007F",
         "other math functions and binary Character SDK internals remain outside this feature"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-R3X-002",
@@ -5568,7 +5639,8 @@
         "full lens/fog2/weather/haze rendering and scene fields",
         "other resource consumers/groups and full native/GPU resource parity",
         "unsafe short header/unbounded strings and complete malformed input domain"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "WORLD-WEATHER-004",
@@ -5629,7 +5701,8 @@
         "full particle455 implementation/curves/options and GPU parity",
         "unsafe asset-failure edges",
         "Full map/calendar/root-transport/console/lighting domain; selected8/5 cache/load hook restored"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-RPK-005",
@@ -5676,7 +5749,8 @@
         "other filesystems/locales, unsafe tables/paths/OOM/>256archives/repeat successful load leaks",
         "full resource manifest",
         "missing e_cauldron_boss_tower weather SPT used by3Tower R3X; no exact directory component in162installed RPK indexes"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-MAP-006",
@@ -5717,7 +5791,8 @@
       "gaps": [
         "complete geometry/index/animation/collision semantics",
         "all other material/texture formats and malformed inputs"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "PARTICLE-SCRIPT-007",
@@ -5741,7 +5816,8 @@
       "gaps": [
         "Complete particle455 options/curves/finalization",
         "Full455GPU/collision/emission parity; selected five real scripts now render through legacy engine"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "WORLD-CLOCK-008",
@@ -5788,7 +5864,8 @@
         "Complete CLand byte-index UI/camera/effects/failure path; selected packet/cache/load hook restored separately",
         "Selected time/real_time input restored separately; other local directives/full chat/root network remain open",
         "Old-CRT localtime32 timezone/DST/invalid/init domains,full lighting/sky/unmasked exceptions/reference startup FPU state"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT-MAP-TIME-009",
@@ -5845,7 +5922,8 @@
         "Byte0/value0 meaning and other field+24 consumers",
         "Old-CRT timezone/DST/localtime32/invalid/init domains",
         "Complete byte-index CLand UI/camera/effects/error sequence and root CNetworkMgr/socket/transport/other messages"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "INPUT-TIME-COMMANDS-010",
@@ -5895,7 +5973,8 @@
         "Complete chat/history/GUI key events and root transport",
         "Full old/modern CRT locale,non-ASCII and strtol/sscanf domains",
         "Complete455input equivalence outside selected time commands"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER-SOURCE-BINDINGS-011",
@@ -5951,7 +6030,8 @@
         "Full4555803byte class/64byte vertices/negative normals/inline state differ fromlegacy1072/36/heap;4known455binding kernels covered by CHARACTER455-BINDINGS-014",
         "Other binary-only Character routines and physical texture/triangle upload/GPU/D3D9renderer",
         "Unsafe bounds/OOM/failure/unwind/locale/alias domain and complete old/modern CRT ABI"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-MESH08-012",
@@ -5994,7 +6074,8 @@
         "ActualTextureManager/cache/texture loading,shared vertex/index buffers/rebase/publication/release;bone-vector ownership/debug/unwind andnormal loader integration",
         "Complete real model inventory/variants and error/lifecycle semantics",
         "Packed455mesh/D3D9buffer/render consumers and physical character GPU acceptance"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "DATA-MESH08-FRAMING-013",
@@ -6037,7 +6118,8 @@
         "Normal runtime model-loader not integrated;materials/bones/shared GPU buffers/publication/release tracked by DATA-MESH08-012",
         "Archived/RFS models and1850other-prefix loose models outside this census",
         "Explicit bounded errors are owned safety policy,not reference unchecked AV/OOM/debugbreak parity"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-BINDINGS-014",
@@ -6091,7 +6173,8 @@
         "Borrowed views;reference vector ownership/free anddebug logging need loader adapter",
         "Fixture skeleton pairing/basename extraction is not proof of game asset selection orfull BN loader",
         "Owned safety limit50/record validation is not reference unchecked overflow/OOM/AV equivalence;full capacity contract unknown"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-MESH-CPU-015",
@@ -6147,7 +6230,8 @@
         "This unit tests material requests withscripted callbacks;actual backend separately verified by CHARACTER455-TEXTURE-016",
         "Arbitrary matrix bit-equivalence/full condition domains/CPU-dispatch variation remain unproven;provider pinned toDLLSHA",
         "Own malformed/singular errors differ fromreference unchecked failures;unmasked FP/OOM/non-ASCII CRT locale/failure unwind remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-TEXTURE-016",
@@ -6223,7 +6307,8 @@
         "Known manager field layout only;private allocator/STL ABI/logger/global cache teardown/device reset lifecycle open",
         "Bounded malformed errors/percent rejection differ fromunchecked ref;OOM/nonASCII locale/unsafe failures not equivalent",
         "Fixture model/texture pairing andsmall texture corpus not full asset-selection or all RFS census;no original EXE execution/full dual-client behavior comparison"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-SHARED-GPU-017",
@@ -6299,7 +6384,8 @@
         "Synthetic lab declaration is not455shaders;capture byte comparisons are notGPUreadback ofWRITEONLYbuffers",
         "Full renderer reset/device-loss/opaque8192/private full renderer ABI/OOM/unsafe exception andinvalid-state domains open",
         "Explicit shared accounting storage corresponds toreference globals;full owner adapter still required;no reference EXE runtime comparison"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-MODEL-PIPELINE-018",
@@ -6366,7 +6452,8 @@
         "Full unchecked AV/debugbreak/OOM/std::bad_alloc/callback exceptions/unwind/logger/device-loss/reset domains open",
         "BN/skeleton loader/transforms/animation/skinning/455declaration/shaders/draw/gameplay not covered;uploads not full model rendering",
         "Selected manager/vector/delete-name/delete-ID/clear now tracked by CHARACTER455-MANAGER-019;full dispatcher and reference EXE runtime comparison remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-MANAGER-019",
@@ -6442,7 +6529,8 @@
         "Cache intentionally retains danglingpointers afterdelete/clear/dtor;unsafe stale dereferences andcaller lifecycle notcertified",
         "Ownbounds/percentlongname/nullallocation/shortloosefailure policies differfromuncheckedreference AV/OOM/exception/logger;exactRFSretryreindex/fullunwind open",
         "External skeleton names stilltooling golden;GPUuploads andborrowedtexture refresh do notprovefullCharacterdraw orreferenceEXEruntimeequivalence"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-LEGACY-READER-020",
@@ -6497,7 +6585,8 @@
         "Unwritten fields are allocator-dependent;A5 testfill isnot originalallocator behavior orprivateSTL/heapABI proof",
         "Ownbounds/influence<=4/index/nullallocation/statuscleanup differsfromunchecked AV/overflow/OOM/exception/logger/unmaskedFP domains",
         "No reference EXE execution/runtimeequivalence claim;seven pinnedbody ranges included importer/converter asdependencies,later implemented in021"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-LEGACY-RUNTIME-021",
@@ -6569,7 +6658,8 @@
         "Ownbounds/count/index/name/shortMTG/singularmatrix/nullallocation policies differfromuncheckedreference/AV/debugbreak/OOM/std::bad_alloc/callbackexception/fullunwind",
         "ASCII/finite-realUV fixture domain;full locale/nonASCII/unsafeformatstring andruntime assetselection unknown;realMTG absent inselected14realinputs",
         "GPUuploads/descriptors notcompleteCharacterdraw orreferenceEXEruntimecomparison;BNinitialstates notfull pose/animation equivalence"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-ANI-DISPATCH-022",
@@ -6646,7 +6736,8 @@
         "Own taggedunion rejectsundefinedANI-as-ObjectData28/MSH-as-ANI;InitVertex diagnostic printsdeterministicnumericarg instead ofreference missingarg undefinedformat",
         "Unsafe531310 direct-free wrapper notnormalownerroute;borrowedkeylifetime requiresmeshreleasebeforeANIowner;privateC++STL/heapABI andruntimeassetselection open",
         "Oneparentvalidationrawleak retained in source;test freesitonlyafterobservingstrandedblock. HALupload notanimateddraw orreferenceEXEruntimeequivalence"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-POSE-023",
@@ -6704,7 +6795,8 @@
         "One parent-ramp analytic childtranslation check allows1e-4 dueobservedD3DXinverse deviation;notallmathbitproof/arbitrarymatrices/NaN/unmaskedFP coverage",
         "Own span/count/pointer/singularmatrix/nullallocation policies differfromunchecked reference failure/exception/unwind;31+bone overlap unsafe domains notcertified",
         "CPUonly,not animateddraw ornormalWinMain acceptance;historical GPU/ANI/manager suites were not rerun onthislab"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-SECONDARY-024",
@@ -6755,7 +6847,8 @@
         "Independent scalar expectations onlyfinite/nearestPC53;arbitraryNaN/unmaskedFP/OOM/uncheckedpointer/name/exception/unwind domains andfull privateglobalsABI open",
         "Matrix tests checkcallflow/anglebits/finiteposes/selectedpreservedfields,not independently executedfullreference secondarymatrixgoldens",
         "CPUonly/nodraw,no normalWinMain orreferenceEXE execution;fullD3D9renderer/shaders/typedconsumers/M6F/M9 remainopen"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "ANIMATION455-TIMING-025",
@@ -6823,7 +6916,8 @@
         "Known84 initializer available tocomponent/lab butnormal actorsecondary binding notconnected;full secondaryclass size notclaimed",
         "MaskedFPresult/CW tested;unmaskedtraps/exceptionflags/unwind/OOM/privateABI notcertified",
         "Normal Character455 skin/draw/shaders/staticCRTsin/fullD3D9renderer/M6F/M9 remainopen;ownentry notnormalWinMain orreferenceEXE execution"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "LOOP-CLOCK455-026",
@@ -6902,7 +6996,8 @@
         "No independent original process timer-scheduling trace;no normalWinMain/referenceEXE execution;actualinitialQPC branch proved atcomponent withcontrolledproviders",
         "Arbitrary NaN payload-signalling/unmaskedFPexceptionstate/processCPUconditions/uncheckedcallbacks notcertified",
         "Fullactorlifecycle/secondarybinding/normal455CharacterABI/AnimationManager-worker/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "ANIMATION455-MANAGER-027",
@@ -6991,7 +7086,8 @@
         "Worker935450 noxref/immediateVA bothpins,not fullunreachable proof;bothselected importer routes synchronous,external async lifecycle stillunknown",
         "Long-percent-null names/missingbackslash/OOM guards differfromundefined unchecked reference domains;locale/nonASCII/allocator-privateC++STL/exceptionunwind notcertified",
         "Full normalCharacter455/skin-draw/shaders/D3D9renderer/M6F/M9 remainopen"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-SHADERS-028",
@@ -7074,7 +7170,8 @@
         "Known managerprefix28 notcomplete privateclass/globalABI;originalscheduler/CPU-FPU/compilerconditions notdynamicallycompared",
         "ModalshadererrorUI/engine logs/vertexcreatefailure-device-reset-OOM/uncheckedexception equivalence open;partialCOMleaks preservedwithtestcleanup only",
         "NormalWinMain/referenceEXE notexecuted;M6F/M7/M9 remainopen"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-DRAW-029",
@@ -7138,7 +7235,8 @@
         "Harnesscamera/CullNONE/depth fit notoriginalgame camera-visibility-lighting/frame equivalence",
         "Normaltypedmodel-animation-D3D9renderer migration/device-loss-reset/CRT-FPU/failureUI/fullprivateABI incomplete",
         "NormalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 remainopen"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-MAIN-DRAW-030",
@@ -7224,7 +7322,8 @@
         "Firstbump material scratch andzero-weight CPU initialtemp values undefinedinreference;explicit source zero seeds notoriginalstack parity",
         "Explicitlab modernMTsin-cos(double)->float isnot original staticCRT bitparity;unsafe-OOM-unmaskedFP-errorUI/fullprivateABI notcertified",
         "Syntheticbatch-shadow-CPU states are not alloriginalgame frames;normalWinMain/referenceEXE notexecuted;M6/M6F/M7/M9 open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "SCENE-FRUSTUM-031",
@@ -7260,7 +7359,8 @@
         "Fullnormalcamera/visibility/actorlifecycle/typedCharacter455-D3D9renderer integration",
         "CRT errno-matherr/unmasked exceptions/nonfinite normalization payloads",
         "Missingmathruntime failure policy differsfromoriginal mandatoryimport initialization"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CHARACTER455-RENDERER-OWNER-032",
@@ -7303,7 +7403,8 @@
         "NormaltypedChInterface-model-animation andengineD3D9device path",
         "Opaque methods/constructorunwind/device-reset/OOM/fullerrorUI-logger",
         "ModernMTtrig notoriginalstaticCRT parity;no originalgame frames compared;M6-M6F-M7-M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "ENGINE455-D3D9-PORT-033",
@@ -7331,7 +7432,8 @@
         "Full455state-camera-shader-resource-error behavior;reset-unwind-allfullscreenmodes",
         "SDK43headerinlines-fullABI36 notcertified;onlyactual importedexports checked",
         "No originalgame frame comparison;M6-M6F-M7-M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NORMAL-PORT-034",
@@ -7354,7 +7456,8 @@
         "Remaining named methods/data andunknown particle/entity slots",
         "High-level455pose-draw-state-wrapper verification;existing kernels reused",
         "NormalRF_Online linkage/runtime/gameplay/UI/network acceptance;M6-M6F-M7-M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NORMAL-RENDERER-035",
@@ -7378,7 +7481,8 @@
         "Remaining effects/reset/parent/eye/bounds/shadowtarget/time/texturepath/data contracts",
         "Original profiling-staticCRTtrig-FPspecial-errorpolicy andblendDuration initialization unproven",
         "Fullnormal lifecycle/batch/ortho/reset/fullscreen/gameplay/UI/network andoriginalgameframe parity;M6-M6F-M7-M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NORMAL-CONTRACTS-036",
@@ -7423,7 +7527,8 @@
         "Remaining effects/tables/particle slots/shadow targets/Character clock/accounting",
         "Normal blend enable/duration/elapsed producers and complete actor lifecycle",
         "Original failure/CRT policies, normal WinMain and gameplay/UI/network acceptance; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NORMAL-SHADOW-037",
@@ -7460,7 +7565,8 @@
         "Original Begin returns HRESULT0 on success, both actual callers use BOOL and skip End; test explicitly completes its own pass",
         "Ground projection91D630/GetShadow/reset/full failure and normal actor lifecycle open",
         "Effects/particle slots/Character clock/accounting and full455gameplay/UI/network acceptance remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-EFFECT-TABLES-038",
@@ -7501,7 +7607,8 @@
         "Loaded pattern grades9..35 are original uninitialized stack bytes; explicit errors preserve unknown status, not full equivalent behavior",
         "Invalid group/pattern/malformed/OOM policies not accepted as original unchecked behavior",
         "EFF binary loading/application and particle/entity slots, remaining client contracts and M9 acceptance open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-EFFECTS-039",
@@ -7553,7 +7660,8 @@
         "Original pattern tail grades9..35 remains explicitly unknown; no zero-success fallback",
         "Malformed/OOM/errorUI/logging/unwind and full normal WinMain/UI/network/gameplay acceptance open",
         "Character accounting and clock remain unresolved; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-CHARACTER-CLOCK-040",
@@ -7594,7 +7702,8 @@
         "Failed provider without supplied output, zero divisors/nonfinite/unmasked exceptions/process scheduling not accepted",
         "Reference frame methods924700/9248A0 and full actor lifecycle not restored by this unit",
         "Character memory accounting unresolved; normal WinMain/UI/network/gameplay/device reset and M6/M6F/M7/M9 remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-NORMAL-ACCOUNTING-041",
@@ -7645,7 +7754,8 @@
         "Unassociated32byte constructor doesnot prove eighth field/private global ABI; own read view exposes seven confirmed counters",
         "Original async races/diagnostic float formatting/allocator failure domains unproven",
         "Normal WinMain/runtime initialization and full device/actor/particle/UI/network/gameplay acceptance remain open; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-STARTUP-042",
@@ -7681,7 +7791,8 @@
         "D3D/window/Create/launcher/locale/data/UI/network/gameplay and normal shutdown not reached or accepted",
         "Full WaveList/Miles playback/music/3D API unproven; ABuse/Adv/PDLL runtime not reached",
         "Legacy root filter paths differ from localized candidates; verify target455policy before adaptation; M6/M6F/M7/M9 OPEN"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-DEVICE-STARTUP-043",
@@ -7724,7 +7835,8 @@
         "Target nation/launcher/language/network order and BGM/bootstrap data not restored;legacy whole startup not equivalent",
         "Camera branch needs index18 while old console has17entries;do not writeOOB or claim full wrapper",
         "Client Create/UI/launcher/network/gameplay/device reset/fullscreen/show/normal shutdown and M6/M6F/M7/M9 remain open"
-      ]
+      ],
+      "runtime_gate_current": false
     },
     {
       "id": "CLIENT455-PLAYER-EQUIPMENT-146",
@@ -7970,6 +8082,57 @@
         "Live upgrade/set/SF/potion producers andallcondition consumers",
         "Ordinary CPlayerProc/Avatar/registered/frame/render/appearance/selection/bootstrap/world/M9",
         "Uninitialised/OOM/out-of-owner/concurrent/fullFPfailurefidelity"
+      ],
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-EQUIPMENT-DRAW-149",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "ordinary_runtime_integrated": false,
+      "description": "Typed equipment Render/default+matrix/fade/alpha/grade producer andretained pose queue;full player andparticle registry open",
+      "reference": [
+        {
+          "rva": "0x6c260",
+          "role": "Default mesh Render"
+        },
+        {
+          "rva": "0x6c2e0",
+          "role": "Matrix mesh Render"
+        },
+        {
+          "rva": "0x506c0",
+          "role": "Write equipment overlay604"
+        },
+        {
+          "rva": "0x127e70",
+          "role": "Retained pose queue Add"
+        },
+        {
+          "rva": "0x128190",
+          "role": "Queue restore/effect render"
+        }
+      ],
+      "implementation": [
+        "scripts/native/client455_equipment_object.h",
+        "scripts/native/client455_equipment_draw.inc",
+        "scripts/native/client455_player_equipment.h",
+        "scripts/client455_equipment_port.py"
+      ],
+      "verification": "Actual model7/14/7draws andvisible2659pixel overlay;alpha/fade;8rawEDFunit/siege cases includingDWORDkey>255 andnumericgrade113;queue4-matrixaliases/Start/retain-release/cap256;ordinary Create/Login and3Avatarreceiver pass. Full player andnonzero particles notaccepted.",
+      "evidence": [
+        "inventory/client455-equipment-draw-reference.json",
+        "inventory/client455-equipment-draw-native.json",
+        "inventory/client455-equipment-draw-checkpoint.json",
+        "research/client455-equipment-draw.md"
+      ],
+      "gaps": [
+        "Full ordinary13-slot CPlayerProc/Avatar/pose/animation/frame/effect/condition/UI connection",
+        "Legacy global particle registry1024/5clones vs targetdynamicvectors/6clones/load-attempt semantics;nonzero effects unverified",
+        "Full appearance/selection/world/gameplay andclient-acceptance gaps"
       ],
       "M6": "OPEN",
       "M6F": "OPEN",
