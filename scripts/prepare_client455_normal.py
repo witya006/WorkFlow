@@ -37,6 +37,7 @@ from client455_character_tables_port import port_character_tables
 from client455_avatar_classes_port import port_avatar_classes
 from client455_equipment_port import port_equipment
 from client455_character_palette_port import port_character_palette
+from client455_premium_state_port import port_premium_state
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -772,6 +773,8 @@ def main():
             raw,map_data_changed=port_map_data(raw,relative,section)
             if map_data_changed:changes.append('455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider')
             if nuclear_receive_changed:changes.append('455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen')
+            raw,premium_state_changed=port_premium_state(raw,relative,native)
+            if premium_state_changed:changes.append('455ordinary network premium flag andAvatar benefit owners;57/12 state fields connected;full cash/premium UI andcondition refresh remain open')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
             if source.name.lower() in ['global.cpp','cresobject.cpp']:
@@ -915,6 +918,8 @@ def main():
     report['character_tables_port_sha256']=sha((WS/'scripts/client455_character_tables_port.py').read_bytes())
     report['avatar_classes_port_sha256']=sha((WS/'scripts/client455_avatar_classes_port.py').read_bytes())
     report['equipment_port_sha256']=sha((WS/'scripts/client455_equipment_port.py').read_bytes())
+    report['premium_state_port_sha256']=sha((WS/'scripts/client455_premium_state_port.py').read_bytes())
+    for name in ['client455_premium_state.h','client455_premium_state.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['character_palette_port_sha256']=sha((WS/'scripts/client455_character_palette_port.py').read_bytes())
     for name in ['client455_equipment_object.h','client455_grade_overlay.inc','client455_equipment_draw.inc','client455_equipment_draw_lifecycle.h','client455_player_equipment.h','client455_equipment_object.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_avatar_classes.inc']=sha((native/'client455_avatar_classes.inc').read_bytes())

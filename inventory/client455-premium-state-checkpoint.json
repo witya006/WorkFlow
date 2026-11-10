@@ -1,0 +1,150 @@
+{
+  "status": "PARTIAL",
+  "scope": "Actual CNetworkMgr premiumDWORD/Avatar benefit owners andselected57/12 state path;premium UI/refresh notimplemented",
+  "script": {
+    "file": "scripts/checkpoint_client455_premium_state.py",
+    "sha256": "646af78c48ec9f7813e73181773c059d2cf1a8bcba6f60ee6a4137e23b11b07b"
+  },
+  "normal_link_sha256": "b8bd0306302c01f76873c4e1a729c77cbde35d8378657d926dd06423d90c2e5f",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d1e44bb9a5b953d6fd40463f6c97250b0a72f4e235e08b91e182e7c8f7b6c7dd",
+    "bytes": 2317312,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x179970",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "premium-state-reference": {
+      "file": "inventory/client455-premium-state-reference.json",
+      "sha256": "f5b84730f72899adc96df31318300b3d68c016ac7e947f69d68723ef293ec124"
+    },
+    "premium-state-native": {
+      "file": "inventory/client455-premium-state-native.json",
+      "sha256": "7cb0147c752ef532c3d90ea6a45876a7de1dda119c16ca49a675c9d977c99885"
+    },
+    "account-native": {
+      "file": "inventory/client455-account-native.json",
+      "sha256": "1cdfb4f755732907f0269c39cdc17561f279ca3a8a8f83fa2af31ba2ae0ec0f0"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "d84b56bfc2276cca68f89e6118ab38338d7aacbd2f83c512e3c72e0b64512498"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "98a3c2d69ea1132cfc7c2c65641b2db447c4a1b5a4a31be81ec07ecd4bd9a193"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "8ebbb9aaf162611276cd47c87bb4817a711fe7962473ae61008bc38e15ce8661"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "b8bd0306302c01f76873c4e1a729c77cbde35d8378657d926dd06423d90c2e5f"
+    },
+    "startup-engine-build": {
+      "file": "inventory/client455-startup-engine-build.json",
+      "sha256": "fc225818e90586dfe8fbd62ada2b8a724dc1df0d7d507570524f82fec35bbf31"
+    },
+    "startup-contracts-native": {
+      "file": "inventory/client455-startup-contracts-native.json",
+      "sha256": "53f35f1694f501ff81d19edf347f80887def0e5bfed4a016d282adcc6fdfa7dc"
+    },
+    "startup-native": {
+      "file": "inventory/client455-startup-native.json",
+      "sha256": "2832a85accc8498950dbb7e2bf90c8e9649fdb66d3abc9d8c8255b466822fad7"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "f4bb781f6f220368d552faee79e2c17deeb04b38bc26376fff883b67a5db3501"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "3e49addf1656afd5051b84c789651073f32ea200af3cbc7297a06352463f2b4c"
+    },
+    "ui-startup-native": {
+      "file": "inventory/client455-ui-startup-native.json",
+      "sha256": "be3e1f936843edc959774b1ede4fb10227ecbb9fbc0694509fe4954ffbe73913"
+    },
+    "login-frame-native": {
+      "file": "inventory/client455-login-frame-native.json",
+      "sha256": "cc10448b2f6ee155a449b799cdc5881a7189a133cd72deae2181f99eed30d659"
+    },
+    "character-draw-build": {
+      "file": "inventory/client455-character-draw-build.json",
+      "sha256": "16097be5d648e3dcfcbbf350c7cfe7cdd7ad003d2e9277dbc348bd9e6b18562f"
+    },
+    "renderer-owner-build": {
+      "file": "inventory/client455-renderer-owner-build.json",
+      "sha256": "9925efb90b409e88dc6ea71b375b5dbffe885e3923c257bb8c45bd0e06cdfb92"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before151/manifest.json",
+    "sha256": "b24a9c2512b78befe271ebd267e56ec8299a428024ebf3702b87b773b519c60b"
+  },
+  "native": {
+    "status": "PASS",
+    "ordinary_network_dispatch": true,
+    "actual_Avatar_owner": true,
+    "enabled_payload_bytes": 57,
+    "disabled_payload_bytes": 49,
+    "ignored_payload_bytes": 1,
+    "states_checked": 5,
+    "benefit_cells": 12,
+    "other_columns_preserved": true,
+    "raw_DWORD_state": true,
+    "malformed_state_unchanged": true,
+    "NaN_and_negativezero_rate_oracles": true,
+    "raw_bonus_float_oracles": true,
+    "premium_UI_connected": false,
+    "post_update_condition_refresh_connected": false,
+    "full_handler": false,
+    "full_client": false
+  },
+  "ordinary_premium_state_connected": true,
+  "premium_UI_connected": false,
+  "post_update_condition_refresh_connected": false,
+  "full_handler": false,
+  "ordinary_Create": true,
+  "ordinary_Login_frame": {
+    "file": "work/m9/d1e44bb9/login-frame001/login-frame.png",
+    "sha256": "c21b423975d71fce703dfbd78dfa8157b273c65c2e510b8ade0df682d53ed6f7"
+  },
+  "ordinary_Login_capture": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 65,
+    "elapsed_ms": 3016,
+    "requested_delay_ms": 3000
+  },
+  "Login_visually_inspected": true,
+  "known_first_chance_exceptions": 9,
+  "unhandled_exceptions": 0,
+  "ordinary_full_player_connected": false,
+  "full_appearance_or_selection": false,
+  "full_client": false,
+  "gaps": [
+    "Target Premium window show/hide andicon481 effects notported",
+    "Post-packet owner virtual256 condition/UI refresh andfullcondition host notyetconnected",
+    "CompleteCashShop dispatcher/protocol andallpremium benefit producers/consumers remainopen",
+    "Constructor-unwritten benefit cells remainunknown;unsafe out-of-column/short-read targetmemorydomains notaccepted",
+    "Ordinary fullCPlayerProc/Avatar equipment/frame/render/selection/world/client/M9"
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

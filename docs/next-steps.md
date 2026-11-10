@@ -1,8 +1,8 @@
 # Продолжение M6 — внешний вид, выбор и обычный игровой маршрут
 
-Обновлено10.11.2026. Последняя проверенная обычная сборка150/0f671964…,
+Обновлено10.11.2026. Последняя проверенная обычная сборка151/d1e44bb9…,
 182client/67engine/20kernels,unresolved0.
-Gate:inventory/client455-player-visual-checkpoint.json PARTIAL.
+Gate:inventory/client455-premium-state-checkpoint.json PARTIAL.
 Оценка25%(20–35%);0/12полных областей. M6/M6F/M7/M9 открыты.
 
 ## Проверенная основа
@@ -16,6 +16,10 @@ Gate:inventory/client455-player-visual-checkpoint.json PARTIAL.
 - Race/helmet visibility и PRNG создания/копирования проверены отдельно.
   Полный контроллер пока не владеет обычными CPlayerProc/CPlayer/Avatar.
 
+- 151: network Premium flag и Avatar benefits/bonus floats подключены к обычному
+  dispatcher57/12. Никаких подстановок Premiumfalse/bonus0 вместо producers.
+  Полный Premium UI и post-update condition/UI refresh ещё не перенесены.
+
 ## Дальнейший порядок
 
 1. Соединить12-slot controller иготовые object Render/pose/ANI/fade с обычными
@@ -25,8 +29,10 @@ Gate:inventory/client455-player-visual-checkpoint.json PARTIAL.
 2. Подключить FrameMove/Animation/dummy/effect/sound/condition/UI consumers.
    4513E0 — доказанно пустой processor FrameMove,не пропущенное тело.
    450BD0/451330 и equipment46D200/46D9B0 имеют отдельные реальные зависимости.
-   Для flag442440 и bonusfloats24712 ещё не установлены owner/producers;
-   не подменять их false/0 или догадками. Выбранный PRNG ctor/copy закрыт,
+   Владельцы flag442440 и bonusfloats24712 теперь подтверждены и подключены:
+   network PremiumState455(),Avatar PremiumBenefits455().combatBonuses().
+   Полный condition-host и post-57/12 condition/UI refresh всё ещё нужны;
+   Premium window/icon481 остаются отдельным gap. Выбранный PRNG ctor/copy закрыт,
    но полная PRNG-последовательность/CRT/lifecycle остаётся непроверенной.
 3. Перенести общий particle/entity registry:сейчас старыйg_Particle1024/5clones,
    target — vectors/6clones/one-attempt failure. Constructor/default capacity
@@ -41,10 +47,11 @@ Gate:inventory/client455-player-visual-checkpoint.json PARTIAL.
 
 ## Сохранение и целевые проверки
 
-- before150 — точная149runtime,52файла;before149 —148,также exact16sourceinputs;
+- before151 — точная150runtime,53файла;before150 —149,52файла;
+  before149 —148,также exact16sourceinputs;
   before148 —147,before146 —145. Существующие снимки не перезаписывать.
 - **До следующих ordinary edits**:
-  snapshot_client455_runtime.py151 client455-player-visual-checkpoint.
+  snapshot_client455_runtime.py152 client455-premium-state-checkpoint.
 - Текущий runtime gate не заменять старыми146/149gate с историческими SHA.
   Старый13-slot вывод отменён;использовать новый player-visual auditor/runner.
 - Полные selectedRender62functions/6959instructions/650CFG уже исследованы.
@@ -54,8 +61,12 @@ Gate:inventory/client455-player-visual-checkpoint.json PARTIAL.
   Новых poolbytes0. Не повторять неизменённые огромные suites ради счётчика.
 - Индекс12/queue writes за allocation,BYTEreference overflow иошибки CRT/FP/OOM
   явно остаются gaps;не выдавать управляемый отказ за полную target parity.
-- IDA6a9e2ee9 сохранена/закрыта,list0,native jobs завершены.
+- Полный Premium state reference8functions/583instructions/64CFG уже проверен
+  на2pins;не повторять поиск владельцев. Native work/m9/00ff6e2a/premium-state-001,
+  однаDLL/newpoolbytes0. Разные минимальные payload57/49/1 подтверждены.
+- IDAdfba038a сохранена/закрыта,list0,native jobs завершены.
   Оригиналы/сервер не менялись. Никакие старые стенды не удалены.
 
 Оценка/остаток/готовность исходных данных:progress-report.md.
-Текущие доказательства:research/client455-player-visual.md.
+Текущие доказательства:research/client455-premium-state.md;
+структура12слотов:research/client455-player-visual.md.

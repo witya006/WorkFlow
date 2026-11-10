@@ -1,3 +1,24 @@
+# Текущая проверенная база151 —10.11.2026
+
+Own d1e44bb9…/x86/entry179970,182client/67engine/20kernels,unresolved0.
+Gate inventory/client455-premium-state-checkpoint.json PARTIAL.
+Установлены owners ранее неизвестных condition providers:442440 —network
+PremiumDWORD436028,40BCE0 —Avatar combat bonuses24712/24716. Настоящий
+producer57/12 подключён к обычному dispatcher иowned CNetworkMgr/Avatar state.
+Проверены включение/отключение/ignoredstatus,12ставок,DWORD иfloat-биты,
+границы payload57/49/1;неписаные поля явноunknown. Native actualowners PASS.
+Полные Premium UI/window/icon481/post-update condition refresh не подключены.
+Full12-slot CPlayerProc/Avatar owner/Animation/Render/condition/UI,particle
+registry,выбор/мир/игровойцикл/M9OPEN. Процент25%(20–35%) не меняется.
+Свежие normalCreate/Login/account3Avatar PASS;Login65/3016ms просмотрен,
+ожидание/Beta0.738,безauth.9прежнихfirst-chance,unhandled0.
+Exact150runtime сохранена до изменений:before151/manifest.json,53файла.
+Перед nextordinaryedits snapshot152 сpremium-state gate. IDAdfba038a savedclosed,
+list0,nativejobs завершены,установок/удалений нет,оригиналы/server неизменны.
+Новыефинальныеstaging pool0;полныйstorage audit по-прежнему16:34:07,
+156,14GiB logical/42,96GiB unique file sizes,не новый физический замер.
+Доказательства research/client455-premium-state.md;нижесохраненаистория.
+
 # Текущая проверенная база150 —10.11.2026
 
 Own0f671964…/x86/entry179660,182client/67engine/20kernels,unresolved0.

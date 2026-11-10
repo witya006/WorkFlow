@@ -10,8 +10,9 @@ CMainApp::GetDataFromLauncher( void )
         m_cNetworkMgr.SetAccountIndex(connection.account);
         DWORD keys[4];for(unsigned i=0;i<4;++i)keys[i]=connection.keys[i];
         m_cNetworkMgr.SetWorldServerKey(keys);
+        m_cNetworkMgr.SetPremiumState455(connection.premium);
     }
-    // worldIndex/personal/premium/mode are preserved in the source-owned455
+    // worldIndex/personal/mode are preserved in the source-owned455
     // state until the corresponding target network/UI consumers are ported.
     return TRUE;
 }

@@ -1,0 +1,71 @@
+{
+  "scope": "Actual CNetworkMgr premiumDWORD/Avatar benefit owners andselected57/12 state path;premium UI/refresh notimplemented",
+  "reference": {
+    "file": "inventory/client455-premium-state-reference.json",
+    "sha256": "f5b84730f72899adc96df31318300b3d68c016ac7e947f69d68723ef293ec124"
+  },
+  "source": {
+    "file": "scripts/native/client455_premium_state_probe.cpp",
+    "sha256": "4e210bff477e5c6f34d04bbceda37f7d67f1ede5841c20e07f76fe4f0bd52998"
+  },
+  "script": {
+    "file": "scripts/probe_client455_premium_state.py",
+    "sha256": "d4dc467a845703a0b566c439e3ad50a7a88d7c54653e32a149823701086d0848"
+  },
+  "normal_link_sha256": "b8bd0306302c01f76873c4e1a729c77cbde35d8378657d926dd06423d90c2e5f",
+  "exe": {
+    "file": "work/m9/00ff6e2a/premium-state-001/premium-state-probe.exe",
+    "sha256": "00ff6e2a9ea5b500f4333f41c8f95ac2a7c2fdac4379743087f7071dfe3b7c65"
+  },
+  "map": {
+    "file": "work/m9/00ff6e2a/premium-state-001/premium-state-probe.map",
+    "sha256": "84190a827e3ee722409ba96b01ed0ddbd9c6d171e925b7677ca26ca588c7ab7d"
+  },
+  "architecture": "x86",
+  "inputs": [
+    {
+      "file": "work/m9/00ff6e2a/premium-state-001/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d"
+    }
+  ],
+  "console": {
+    "file": "work/m9/00ff6e2a/premium-state-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/00ff6e2a/premium-state-001/result.json",
+    "sha256": "782057e584d7492029629b38f99033d45ab80561f24765244f268df7168a578d"
+  },
+  "native": {
+    "status": "PASS",
+    "ordinary_network_dispatch": true,
+    "actual_Avatar_owner": true,
+    "enabled_payload_bytes": 57,
+    "disabled_payload_bytes": 49,
+    "ignored_payload_bytes": 1,
+    "states_checked": 5,
+    "benefit_cells": 12,
+    "other_columns_preserved": true,
+    "raw_DWORD_state": true,
+    "malformed_state_unchanged": true,
+    "NaN_and_negativezero_rate_oracles": true,
+    "raw_bonus_float_oracles": true,
+    "premium_UI_connected": false,
+    "post_update_condition_refresh_connected": false,
+    "full_handler": false,
+    "full_client": false
+  },
+  "natural_exit": 0,
+  "shared_asset_staging": {
+    "assets": 1,
+    "linked_bytes": 349696,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "full_handler": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

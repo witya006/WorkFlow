@@ -165,7 +165,8 @@
         "client455-network-codec-checkpoint",
         "client455-nuclear-receiver-checkpoint",
         "client455-world-entry-checkpoint",
-        "client455-registered-characters-checkpoint"
+        "client455-registered-characters-checkpoint",
+        "client455-premium-state-checkpoint"
       ]
     },
     {
@@ -267,7 +268,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614",
+      "sha256": "b8bd0306302c01f76873c4e1a729c77cbde35d8378657d926dd06423d90c2e5f",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -275,7 +276,7 @@
     },
     "client455-ui-startup-native": {
       "file": "inventory/client455-ui-startup-native.json",
-      "sha256": "86198288fd2e6a6e19133a66e28fa3f2527e31d6c2b9388b36e039ca8b8a2c16",
+      "sha256": "be3e1f936843edc959774b1ede4fb10227ecbb9fbc0694509fe4954ffbe73913",
       "status": null,
       "scope": "Exact own normal PE after accepted offline launcher metadata and existing Create returned;stop before filters/game loop;not full455bootstrap/Create/UI acceptance",
       "fresh_for_current_PE": true,
@@ -283,7 +284,7 @@
     },
     "client455-startup-native": {
       "file": "inventory/client455-startup-native.json",
-      "sha256": "c81ae81bb52f4c9bb821dbd2146846d37dc101b337a826cf2958df7ba8358774",
+      "sha256": "2832a85accc8498950dbb7e2bf90c8e9649fdb66d3abc9d8c8255b466822fad7",
       "status": null,
       "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
       "fresh_for_current_PE": true,
@@ -494,7 +495,7 @@
       "sha256": "21be0feca6798dfaa636446c818fc83c7d1c4f386f654a29ce9f215e4f314e82",
       "status": "PARTIAL",
       "scope": "12 constructed player equipment objects,explicit unsafe index12 boundary,ctor/copy PRNG consumption andrace/helmet visibility guard;ordinary full player not connected",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-font-checkpoint": {
@@ -561,6 +562,14 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-premium-state-checkpoint": {
+      "file": "inventory/client455-premium-state-checkpoint.json",
+      "sha256": "0d2c74152998a06ac133370c7d5f2c0eab1a7339534f7ec8020e8a3d6ae8d7a0",
+      "status": "PARTIAL",
+      "scope": "Actual CNetworkMgr premiumDWORD/Avatar benefit owners andselected57/12 state path;premium UI/refresh notimplemented",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
       "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
@@ -625,11 +634,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "0f6719640507fdff644002e543c4d4a921b6ac9fd252fd7feaec961f02eb33ec",
-      "bytes": 2316800,
+      "sha256": "d1e44bb9a5b953d6fd40463f6c97250b0a72f4e235e08b91e182e7c8f7b6c7dd",
+      "bytes": 2317312,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x179660",
+      "entry_rva": "0x179970",
       "sections": [
         ".text",
         ".rdata",
@@ -653,22 +662,22 @@
     ],
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "0a9dfd70d87d5be53704d3401ee250b9fc14c69ec43ffae83902c630eebd5a56",
+      "sha256": "98a3c2d69ea1132cfc7c2c65641b2db447c4a1b5a4a31be81ec07ecd4bd9a193",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-player-visual-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-premium-state-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "f2adfa84e3f6a3f9d20532970a1924c575e2dd1b38622870e648ec0beaab4614",
+      "link_sha256": "b8bd0306302c01f76873c4e1a729c77cbde35d8378657d926dd06423d90c2e5f",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "0f6719640507fdff644002e543c4d4a921b6ac9fd252fd7feaec961f02eb33ec",
-        "bytes": 2316800,
+        "sha256": "d1e44bb9a5b953d6fd40463f6c97250b0a72f4e235e08b91e182e7c8f7b6c7dd",
+        "bytes": 2317312,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x179660",
+        "entry_rva": "0x179970",
         "sections": [
           ".text",
           ".rdata",
@@ -678,18 +687,18 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "0a9dfd70d87d5be53704d3401ee250b9fc14c69ec43ffae83902c630eebd5a56"
+      "build_sha256": "98a3c2d69ea1132cfc7c2c65641b2db447c4a1b5a4a31be81ec07ecd4bd9a193"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
-    "current_work": "Ordinary150 Create/Login and3Avatar verified. Previous13-slot inference corrected bycomplete targetctor/dtor:12constructedobjects;index12 aliases followingfields andisnotaccepted. Head/hair visibility andctor/copy PRNG checked;affected render regression preserves6frames. Ordinary queue entrypoints/secondary geometry retained,full12-slot CPlayerProc/Avatar owner/caller stillopen. Full selection/world andnonzero particles/dynamic registry remainunverified.",
+    "current_work": "Ordinary151 Create/Login/account3Avatar verified. Previously unknownflag442440 andAvatarbonus24712 producers resolved:network PremiumDWORD and57/12 benefit state nowconnected toactual ordinarynetwork/Avatar owners. FullpremiumUI/post-update condition refresh stillopen;full12-slot CPlayerProc/Avatar ownership/Animation/Render/condition integration,selection/world andnonzero particle registry remainopen. Overall functional estimate unchanged.",
     "ordinary_login_observation": {
       "file": "inventory/client455-login-frame-native.json",
-      "sha256": "3d11de7da72dbad6b1cbebf0e7a60abdbaec99463345d7a01326a417e4cc490d",
+      "sha256": "cc10448b2f6ee155a449b799cdc5881a7189a133cd72deae2181f99eed30d659",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/0f671964/login-frame001/login-frame.png",
-        "sha256": "183ca72f38ba7c37999e4f52029395d276f4fd57dfc04c5310c995f32294e8c9"
+        "file": "work/m9/d1e44bb9/login-frame001/login-frame.png",
+        "sha256": "c21b423975d71fce703dfbd78dfa8157b273c65c2e510b8ade0df682d53ed6f7"
       },
       "capture": {
         "result": 0,
@@ -703,8 +712,8 @@
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa7adf68",
-        "vtable": "0x2acba4",
+        "object": "0xad43570",
+        "vtable": "0x7fcba8",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -721,10 +730,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "51a69272ff2ddadfe4784a7f3fab60a252b2f466e429c959b6d4d944f0db6d9c",
-    "entries": 156,
+    "sha256": "4bb57b117c4dc2c691e40ebfcc0fc7744ffd5080d7af52d2a59b96618c300286",
+    "entries": 157,
     "statuses": {
-      "partial_component": 10,
+      "partial_component": 11,
       "partial": 116,
       "audit_open": 1,
       "open": 2,
@@ -735,7 +744,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-PLAYER-VISUAL-150"
+      "CLIENT455-PREMIUM-STATE-151"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -805,7 +814,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;156 overlapping historical records",
+        "measured": "12 domain planning map;157 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -959,7 +968,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "0936b5362b95735ed4aca7fdaf3e7ecf057307bd536f0c64a3c7085ffc72dc23"
+    "sha256": "ceb9eeb1651a2389c236315d4bce2dc8ff9fd85dd1bcb34c352f47cfa3683be0"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
