@@ -1,4 +1,13 @@
-# Актуальная частичная проверка156 —10.11.2026
+# Актуальная частичная проверка157 —11.11.2026
+
+Gate actor-lighting-checkpoint,own88dc3d11…/x86/entry17F850. Actual map actor
+light/material restored:12real lobbycases/gear/GPU PASS,3priorPNG unchanged.
+Live auth/character frame370/8000ms/unhandled0,Renderreturned. Сравнение просмотрено:
+персонаж больше не почти чёрный. Это не полная эквивалентность455UI/selection.
+Ввод выбора/переход в мир не проверены;known FP/undefined/clone/particle/lifecycle
+и все полные требования ниже сохраняются. M6/M6F/M7/M9OPEN,0/12.
+
+# Историческая частичная проверка156 —10.11.2026
 
 Gate inventory/client455-combat-transition-checkpoint.json,own68e02c3d….
 Живой вход/список/кадрвыбора проходят,364frames/8000ms,unhandled0.

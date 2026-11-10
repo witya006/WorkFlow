@@ -20,6 +20,9 @@ struct Sprites154{using Type=CSpriteMgr CMainApp::*;friend Type access154(Sprite
 struct CombatMode156{using Type=BYTE CCharacter::*;friend Type access154(CombatMode156);};template struct Access154<CombatMode156,&CCharacter::m_byCombatMode>;
 struct PrevCombat156{using Type=BYTE CCharacter::*;friend Type access154(PrevCombat156);};template struct Access154<PrevCombat156,&CCharacter::m_byPrevCombatMode>;
 struct SwitchCombat156{using Type=void(CPlayer::*)();friend Type access154(SwitchCombat156);};template struct Access154<SwitchCombat156,&CPlayer::SetAction_SwitchingCombatMode>;
+struct Material157{using Type=D3DMATERIAL9 CResObject::*;friend Type access154(Material157);};template struct Access154<Material157,&CResObject::m_d3dMaterial>;
+struct Light157{using Type=D3DLIGHT9 CResObject::*;friend Type access154(Light157);};template struct Access154<Light157,&CResObject::m_d3dLight>;
+struct Blink157{using Type=DWORD CResObject::*;friend Type access154(Blink157);};template struct Access154<Blink157,&CResObject::m_dwBlinkColor455>;
 
 static std::vector<unsigned char> read154(const char* name){std::ifstream file(name,std::ios::binary);require(bool(file),"Owner binary input");return {std::istreambuf_iterator<char>(file),std::istreambuf_iterator<char>()};}
 static void phase154(const char* name){std::fprintf(stderr,"Owner154:%s\n",name);std::fflush(stderr);}
@@ -128,6 +131,39 @@ static int runOwner154(){
         g_fFPS=savedFPS;avatar->SetUnitMountState(UMS_DISMOUNT);
         avatar->CPlayer::PutOffEquipment(6);avatar->CPlayer::PutOffEquipment(7);
         phase154("actual mounted combat-mode weapon/shield transitions passed");
+        {
+            CCamera camera;auto* savedCamera=g_pCamera;g_pCamera=&camera;
+            char map[]=".\\Map\\lobby\\lobby.bsp";require(scene.LoadLevel(map)&&g_pLevel->IsLoadedBsp(),"Actor157 actual lobby BSP");
+            const Vector3f direction={.2f,.7f,-.4f};SetMainLight(const_cast<float*>(direction));
+            FILE* trace=std::fopen("actor-lighting.jsonl","wb");require(trace,"Actor157 output");
+            const float positions[3][3]={{.2f,225,-64},{56,225,30},{-56,225,30}};
+            for(unsigned sample=0;sample<3;++sample){
+                avatar->SetPosition(positions[sample][0],positions[sample][1],positions[sample][2]);
+                Vector3f point={positions[sample][0],positions[sample][1],positions[sample][2]};
+                const DWORD mapColor=g_pLevel->mBsp->GetLightFromPoint(point,2);
+                for(unsigned mode=0;mode<4;++mode){
+                    const DWORD blink=0x7f204080;avatar->SetBlink455(mode!=0,blink);
+                    if(mode>=2)avatar->Enable(ROSF_AFTER_IMAGE_OF_OBJECT);else avatar->Disable(ROSF_AFTER_IMAGE_OF_OBJECT);
+                    if(mode==3)avatar->SetBlink455(FALSE,0x12345678);
+                    require(avatar.get()->*access154(Blink157{})==(mode==3?0x12345678:blink),"Explicit blink stores color evenwhendisabled");
+                    avatar->SetLightColorFromMap();
+                    const auto& actual=avatar.get()->*access154(Material157{});const auto& light=avatar.get()->*access154(Light157{});
+                    const DWORD color=mode>=2?0xffa0a0ff:mode==1?blink:mapColor;
+                    const float red=float((color>>16)&255),green=float((color>>8)&255),blue=float(color&255),alpha=float(color>>24);
+                    require(std::fabs(actual.Diffuse.r-(red/255.f+.15f))<.000001f&&std::fabs(actual.Diffuse.g-(green/255.f+.1f))<.000001f&&std::fabs(actual.Diffuse.b-(blue/255.f+.1f))<.000001f,"Pinned colored diffuse channels");
+                    require(std::fabs(actual.Ambient.r-(red/412.f+.2f))<.000001f&&std::fabs(actual.Ambient.g-(green/412.f+.2f))<.000001f&&std::fabs(actual.Ambient.b-(blue/412.f+.2f))<.000001f,"Pinned ambient divisor412 andlift");
+                    require(actual.Diffuse.a==alpha/255.f&&actual.Ambient.a==alpha/255.f&&actual.Specular.a==1&&actual.Power==10,"Actor alpha/specular power");
+                    require(actual.Specular.r==actual.Diffuse.r*.3f&&actual.Specular.g==actual.Diffuse.g*.3f&&actual.Specular.b==actual.Diffuse.b*.3f,"Actor specular follows updated diffuse");
+                    const float* mainLight=GetR3State()->mMainLightNomal;
+                    require(light.Direction.x==-mainLight[0]&&light.Direction.y==-mainLight[1]&&light.Direction.z==-mainLight[2]&&light.Ambient.r==1&&light.Ambient.g==1&&light.Ambient.b==1,"Actual directional/ambient light");
+                    float shader[4];require(SUCCEEDED(device->GetVertexShaderConstantF(10,shader,1))&&shader[0]==light.Direction.x&&shader[1]==light.Direction.y&&shader[2]==light.Direction.z,"Real CharIF publishes direction toGPU");
+                    for(BYTE part=0;part<12;++part)if(auto* object=avatar->GetEquipItem455(part))require(!std::memcmp(&(object->*access154(Material157{})),&actual,sizeof(actual)),"Actual processor propagates complete actor material to worn objects");
+                    std::fprintf(trace,"{\"sample\":%u,\"mode\":%u,\"map_color\":%lu,\"selected_color\":%lu,\"diffuse\":[%.9g,%.9g,%.9g],\"ambient\":[%.9g,%.9g,%.9g]}\n",sample,mode,mapColor,color,actual.Diffuse.r,actual.Diffuse.g,actual.Diffuse.b,actual.Ambient.r,actual.Ambient.g,actual.Ambient.b);
+                }
+            }
+            std::fclose(trace);avatar->SetBlink455(FALSE,0);avatar->Disable(ROSF_AFTER_IMAGE_OF_OBJECT);g_pCamera=savedCamera;
+            phase154("actual lobby color/actor material/equipment/GPU direction passed");
+        }
         sf[0]->SetIconBoard455(nullptr);g_pAvatar=previousAvatar;avatar.reset();
         //These wrappers were inserted through the actual pack cache,without
         //constructing the unported fullskill-window population. Match that
@@ -146,6 +182,7 @@ static int runOwner154(){
         "\"clone_cleanup_compensated_only_in_fixture\":true,\"full_Character_clone_lifecycle\":false,"
         "\"real_equipment_Avatar_skillboard_payload_icon_route\":true,\"controlled_owned_option_metadata\":true,"
         "\"production_cloak_magic_and_Miles\":true,\"cloak_missing_specialskill_returnsfalse_after_detach\":true,"
+        "\"actual_lobby_actor_lighting\":true,\"actor_lighting_cases\":12,\"explicit_blink_afterimage_priority\":true,\"actor_material_reaches_equipment_and_GPU\":true,"
         "\"legacy_mixed_consumers_complete\":false,\"full455_UI\":false,\"full_player_appearance_or_selection\":false,\"full_client\":false}\n",
         draws,visible,withoutPixels,restored?"true":"false");std::fclose(output);return 0;
 }

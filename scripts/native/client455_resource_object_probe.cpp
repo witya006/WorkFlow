@@ -21,7 +21,7 @@ struct Resource: CResObject {
     unsigned receive()const{return m_bIsReceiveFixPositionMsg;}
     unsigned receivedAt()const{return m_dwReceiveFixPositionMsgTime;}
     void offsets(){const unsigned expected[]={80,92,104,116,120,124,128,132,136,140,240,244,248,252,256,272,288,356,460,464,468,472,476,480,484,488,492,500};
-        const void* actual[]={&m_vecPos,&m_vecPrevPos,&m_vecRot,&m_dwStatusFlag,&m_pBone,&m_pBBox,&m_dwOldBoneFrame,&m_dwBoneFrame,&m_dwFrameNumForAStopTime,&m_Animation,&m_fScale,&m_dwCreatedTime455,&m_bIsAniInterpolation,&m_pAniIPInfo,&m_stPosYIPInfo,&m_stRotYIPInfo,&m_d3dMaterial,&m_d3dLight,&m_dwLightColor,&m_dwPrevLightColor,&m_fAlphaDensity,&m_bIsBlink,&m_bIsHide,&m_dwTextColor,&m_bIsReceiveFixPositionMsg,&m_dwReceiveFixPositionMsgTime,&m_dwEffectID,&m_secondaryState455};
+        const void* actual[]={&m_vecPos,&m_vecPrevPos,&m_vecRot,&m_dwStatusFlag,&m_pBone,&m_pBBox,&m_dwOldBoneFrame,&m_dwBoneFrame,&m_dwFrameNumForAStopTime,&m_Animation,&m_fScale,&m_dwCreatedTime455,&m_bIsAniInterpolation,&m_pAniIPInfo,&m_stPosYIPInfo,&m_stRotYIPInfo,&m_d3dMaterial,&m_d3dLight,&m_dwLightColor,&m_dwPrevLightColor,&m_fAlphaDensity,&m_bIsBlink,&m_dwBlinkColor455,&m_dwTextColor,&m_bIsReceiveFixPositionMsg,&m_dwReceiveFixPositionMsgTime,&m_dwEffectID,&m_secondaryState455};
         for(unsigned i=0;i<sizeof(expected)/sizeof(expected[0]);++i)check(static_cast<const char*>(actual[i])-reinterpret_cast<const char*>(this)==expected[i],"actual compiled named field offset");}
 };
 int main(){try{

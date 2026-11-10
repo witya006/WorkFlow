@@ -1,3 +1,41 @@
+# Частичная157 — освещение живого персонажа восстановлено
+
+11.11.2026. Own88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917,
+x86/base400000/entry17F850/2348544bytes;182client/67engine/20kernels,build/link0.
+Engine unchanged. Gate inventory/client455-actor-lighting-checkpoint.json PARTIAL.
+Full ASM/CFG3functions/208instructions на обоих pins:3CE7A0 actual map light,
+04D230 Player wrapper,3CEA00 fullBOOL/DWORD setter. Код в tracked
+client455_actor_lighting.inc/port.py, generated source через prepare script.
+Direction negated,ambient light RGB1,diffuse+.15/.1/.1,ambientRGB+.2,
+specular(updated diffuse*.3)/alpha1/power10;afterimage priority overblink.
+Header476 теперьDWORD m_dwBlinkColor455,resource/item584/592 сохранены.
+GetMatLightFromColor не менялся:ambientRGB/412,ноalpha BOTH /255;не повторять
+ошибку первого теста. NoBSP/nooverride color уоригиналаundefined,ownthrowexplicit.
+
+Native work/m9/5f0a7c7b/player-owner-001 exit0:actual lobby12cases,перенос материала
+вреальнуюэкипировку иGPUdirection PASS;3прежнихPNG равны156. OrdinaryTaiwanLogin
+work/m9/88dc3d11/login-frame-taiwan001 PASS. Live samehash login-frame-live-taiwan001:
+real auth/game0/character178,370frames/8000ms/unhandled0,Renderreturn PASS.
+Сравнение кадров156/157 просмотрено:персонажбольше непочтичёрный,лицо,
+одежда/оружие различимы. Не полнаяpixel/reference stageэквивалентность.
+Handoffудалён,секретынесохранены,сервер/оригиналынетрогались.
+
+Functionmetrics2 225(+3)/396(+3) из37 865;3точныепривязкикsource иruntime
+в actor-lighting-bindings.json. Дваlightingметода retained ordinary PE;
+SetBlink455 толькоnativeprobe,OPT:REFremoved ordinary;егоигровыеplayer/ground
+производители ещёнеперенесены. Fullsourcefunction/equivalence totals null.
+Functionhistory исправлен вschemaobject/measurements (list ломал generic
+manifest traversal);prepare/build послеfix прошли. Последнийnative staging
+newpool280bytes,не новаякопияклиента. Общаяstorageописьнеповторялась.
+
+Следующий158:сохранитьточную157 вbefore158 доordinaryedits,проверить target
+Logininput/Enter/request/reply/nextstage и перейти креальномуworld/control.
+Before157=156(50files) сохранён. M6/M6F/M7/M9OPEN,25%(20–35%),0/12.
+Research:research/client455-actor-lighting.md. Ниже исторические записи.
+IDA c28cc224 saved/closed/list0. Три установленные функции получили имена
+RF455_Actor_MapLight/Player_MapLight/Actor_BlinkColor в рабочей IDB; функции
+не добавлялись в бинарник, это имена доказанного разбора. IDA named674.
+
 # Учёт функций — 11.11.2026
 
 По запросу пользователя добавлены docs/function-coverage.md и машинные

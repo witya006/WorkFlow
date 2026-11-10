@@ -33,6 +33,11 @@ def main():
     for name in ['DataTable/SkillForce.edf','mss32.dll','System/010.TTF','System/console.jpg','System/shader/Grass1.vsh','System/shader/grass1.vso','DataTable/ko-kr/NDLanguage.edf']:
         stage_asset(client/name,run/name);inputs.append(dict(**record(run/name),original=str(client/name)))
     inputs+=copy_character_shaders(run)+copy_tagged_sound_providers(run)
+    world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text())
+    lobby=next(case for case in world['cases'] if case['case']=='level-lobby')
+    for row in lobby['archives']:
+        if not row['path'].lower().startswith('map/lobby/'):continue
+        dest=run/row['path'];stage_asset(client/row['path'],dest,row['sha256']);inputs.append(dict(**record(dest),original=str(client/row['path'])))
     config=run/'R3Engine.ini'
     config.write_text('[Setup]\nLanguage=Korea\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=TRUE\nMusic=FALSE\n[Path]\nSoundPath=.\\Snd\\\nEffectPath=.\\Effect\\\n',encoding='ascii')
     inputs.append(record(config))
@@ -51,7 +56,7 @@ def main():
         owner_port=record(WS/'scripts/client455_player_owner_port.py'),preparer=record(WS/'scripts/prepare_client455_normal.py'),
         normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),map=record(mapping),architecture=pe(target.read_bytes())['architecture'],
         inputs=inputs,resource_manifests=manifests,console=record(console),output=record(output) if output.exists() else None,native=native,frames=frames,
-        natural_exit=result.returncode,shared_asset_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
+        natural_exit=result.returncode,actor_lighting=record(run/'actor-lighting.jsonl') if (run/'actor-lighting.jsonl').exists() else None,shared_asset_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
     text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text)
     (WS/'inventory/client455-player-owner-native.json').write_text(text)
     print(json.dumps(dict(exit=result.returncode,native=native,frames=len(frames),staging=report['shared_asset_staging'],console_tail=console.read_text(errors='replace')[-1800:],run=run.relative_to(WS).as_posix())))

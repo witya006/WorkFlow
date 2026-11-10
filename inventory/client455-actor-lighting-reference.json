@@ -1,0 +1,166 @@
+{
+  "status": "STATIC_CONFIRMED_PARTIAL",
+  "scope": "Loaded-BSP or explicit-override actor map lighting;not full actor/ground-item state consumers",
+  "raw": {
+    "file": "artifacts/client455-progress/lighting157-reference/session.json",
+    "sha256": "3011a440541bf5b5ee0dca8230ec59e9450f70ea29e31ecaf64571ccbb1c6d13"
+  },
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x3ce7a0",
+          "instructions": 166,
+          "positive_cfg_blocks": 7,
+          "regions": [
+            {
+              "rva": "0x3ce7a0",
+              "bytes": 605,
+              "sha256": "1454563c7f5e155f55f554339d6be62487e6634ba4ae870020a3e8cc778d2212"
+            }
+          ]
+        },
+        {
+          "rva": "0x4d230",
+          "instructions": 23,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x4d230",
+              "bytes": 54,
+              "sha256": "268f62f989a5a9c6d3bddc606d8ab81938ab2914d2b503b8889243c0edf1a812"
+            }
+          ]
+        },
+        {
+          "rva": "0x3cea00",
+          "instructions": 19,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x3cea00",
+              "bytes": 45,
+              "sha256": "bae2c1e7e32a09c5570e00348747fcf2e4d7f7378038ec1542c935e2bfa19273"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x3ce7a0",
+          "instructions": 166,
+          "positive_cfg_blocks": 7,
+          "regions": [
+            {
+              "rva": "0x3ce7a0",
+              "bytes": 605,
+              "sha256": "1454563c7f5e155f55f554339d6be62487e6634ba4ae870020a3e8cc778d2212"
+            }
+          ]
+        },
+        {
+          "rva": "0x4d230",
+          "instructions": 23,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x4d230",
+              "bytes": 54,
+              "sha256": "268f62f989a5a9c6d3bddc606d8ab81938ab2914d2b503b8889243c0edf1a812"
+            }
+          ]
+        },
+        {
+          "rva": "0x3cea00",
+          "instructions": 19,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x3cea00",
+              "bytes": 45,
+              "sha256": "bae2c1e7e32a09c5570e00348747fcf2e4d7f7378038ec1542c935e2bfa19273"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 3,
+  "full_instructions": 208,
+  "positive_cfg_blocks": 9,
+  "numeric_literals": [
+    {
+      "rva": "0x6ecf08",
+      "bytes": 8,
+      "hex": "000000403333c33f",
+      "value": 0.15000000596046448
+    },
+    {
+      "rva": "0x6aa3a0",
+      "bytes": 8,
+      "hex": "000000a09999b93f",
+      "value": 0.10000000149011612
+    },
+    {
+      "rva": "0x6aa4b8",
+      "bytes": 8,
+      "hex": "000000a09999c93f",
+      "value": 0.20000000298023224
+    },
+    {
+      "rva": "0x6e5958",
+      "bytes": 8,
+      "hex": "000000403333d33f",
+      "value": 0.30000001192092896
+    }
+  ],
+  "script": {
+    "file": "scripts/audit_client455_actor_lighting.py",
+    "sha256": "9df004c9184d373bf387d32f5d8c40ea4ca63e49eea745f2ceb2cfb5c6886d2a"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_actor_lighting_port.py",
+      "sha256": "06e8a24c5801de1ee2d5883063a7af96e6712b2560e1bad24f1d3d5884086031"
+    },
+    {
+      "file": "scripts/native/client455_actor_lighting.inc",
+      "sha256": "41a9513fd2b40bc32d6fbcd4bf08ca7b34594dc68cf57cf070b1461c5ed7f50f"
+    },
+    {
+      "file": "scripts/prepare_client455_normal.py",
+      "sha256": "2b481925acaa76fc5aaa8585597ceaf58ab017e9af665f49f66ac14c7857bee2"
+    }
+  ],
+  "facts": [
+    "44D230 callsbase7CE7A0 thenactual current-processor material virtual96",
+    "GetLightFromPoint uses position80/84/88 anddiff2",
+    "After-image0x80000 colorFFA0A0FF overrides enabled blinkDWORD476",
+    "7CEA00 stores fullBOOL472 andDWORD476 evenwhendisabling",
+    "Light direction isnegated,ambient RGB is1;materialdiffuse adds.15/.1/.1,ambient adds.2",
+    "Specular RGB isupdateddiffuse*.3,alpha1,power10;thenactualCharIF SetLight"
+  ],
+  "gaps": [
+    "NoBSP/nooverride targetuninitialised color isnotreproduced;ownroute throws explicitly",
+    "Legacy one-argument SetBlink caller andplayer44DEE0 state producers areunported;explicit455color API isavailable",
+    "FullFP/NaN/Inf/statusflag parity andall actor/clone/world/gameplay acceptance remainopen"
+  ],
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before157/manifest.json",
+    "sha256": "e7821faf057e02a42ef508e15093136d31c90b8552faf4f973d0a7300eeffb8d"
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

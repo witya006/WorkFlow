@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "scope": "First explicit source bindings;historical function population remains unclassified",
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917",
+    "bytes": 2348544,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17f850",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "native_evidence": {
+    "file": "inventory/client455-player-owner-native.json",
+    "sha256": "cef31f706f8ebfbd6423cd8ec1b91f0b72b1172d36a21cf5e8d0d73f32189a0f"
+  },
+  "ordinary_evidence": {
+    "file": "inventory/client455-login-frame-live-taiwan-native.json",
+    "sha256": "c053c93e59f850eeb232b5cfdc1f0c335f4d9196992cc54eb7a89a24733f9585"
+  },
+  "functions": [
+    {
+      "rva": "0x3ce7a0",
+      "symbol": "CResObject::SetLightColorFromMap",
+      "source": {
+        "file": "scripts/native/client455_actor_lighting.inc",
+        "sha256": "41a9513fd2b40bc32d6fbcd4bf08ca7b34594dc68cf57cf070b1461c5ed7f50f"
+      },
+      "source_scope": "PARTIAL_DEFINED_COLOR_DOMAIN",
+      "retained_in_ordinary_executable": true,
+      "runtime_scope": "Native actual BSP plus ordinary live selection;no all-branches original comparison",
+      "complete_equivalence": false,
+      "reference": {
+        "file": "inventory/client455-actor-lighting-reference.json",
+        "sha256": "5d29bd09216fbf152b23acc117aa30dce680f5cbdb4e5e5325c16aaf7705588f"
+      }
+    },
+    {
+      "rva": "0x4d230",
+      "symbol": "CPlayer::SetLightColorFromMap",
+      "source": {
+        "file": "work/client455-port/normal/source/character/player/cplayer.cpp",
+        "sha256": "454ffcd671c98781433d4791dab3beaaf3a30f2742b11c894f4cea7989ec9f5d"
+      },
+      "source_scope": "EXISTING_WRAPPER_VERIFIED",
+      "retained_in_ordinary_executable": true,
+      "runtime_scope": "Native actual actor/processor material propagation andordinary live selection",
+      "complete_equivalence": false,
+      "reference": {
+        "file": "inventory/client455-actor-lighting-reference.json",
+        "sha256": "5d29bd09216fbf152b23acc117aa30dce680f5cbdb4e5e5325c16aaf7705588f"
+      }
+    },
+    {
+      "rva": "0x3cea00",
+      "symbol": "CResObject::SetBlink455",
+      "source": {
+        "file": "scripts/native/client455_actor_lighting.inc",
+        "sha256": "41a9513fd2b40bc32d6fbcd4bf08ca7b34594dc68cf57cf070b1461c5ed7f50f"
+      },
+      "source_scope": "METHOD_BODY_AVAILABLE_CALLERS_OPEN",
+      "retained_in_ordinary_executable": false,
+      "runtime_scope": "Native explicit method only;ordinary player state producers not ported",
+      "complete_equivalence": false,
+      "reference": {
+        "file": "inventory/client455-actor-lighting-reference.json",
+        "sha256": "5d29bd09216fbf152b23acc117aa30dce680f5cbdb4e5e5325c16aaf7705588f"
+      }
+    }
+  ]
+}

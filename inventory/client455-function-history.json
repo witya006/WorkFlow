@@ -1,18 +1,40 @@
-[
-  {
-    "measured_at_utc": "2026-11-10T14:59:26.066676+00:00",
-    "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
-    "kind": "BACKFILL_BASELINE",
-    "summary": {
-      "unique_functions_with_pinned_code": 2222,
-      "unique_functions_with_complete_assembly_cfg": 393,
-      "unique_pinned_code_bytes": 594292,
-      "reports": 158,
-      "code_range_occurrences": 3717,
-      "unresolved_queries": 5,
-      "implementation_count": null,
-      "ordinary_runtime_equivalence_count": null
+{
+  "schema_version": 1,
+  "measurements": [
+    {
+      "measured_at_utc": "2026-11-10T14:59:26.066676+00:00",
+      "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "kind": "BACKFILL_BASELINE",
+      "summary": {
+        "unique_functions_with_pinned_code": 2222,
+        "unique_functions_with_complete_assembly_cfg": 393,
+        "unique_pinned_code_bytes": 594292,
+        "reports": 158,
+        "code_range_occurrences": 3717,
+        "unresolved_queries": 5,
+        "implementation_count": null,
+        "ordinary_runtime_equivalence_count": null
+      },
+      "delta": null
     },
-    "delta": null
-  }
-]
+    {
+      "measured_at_utc": "2026-11-10T15:18:35.046015+00:00",
+      "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "kind": "MEASUREMENT",
+      "summary": {
+        "unique_functions_with_pinned_code": 2225,
+        "unique_functions_with_complete_assembly_cfg": 396,
+        "unique_pinned_code_bytes": 594996,
+        "reports": 159,
+        "code_range_occurrences": 3720,
+        "unresolved_queries": 5,
+        "implementation_count": null,
+        "ordinary_runtime_equivalence_count": null
+      },
+      "delta": {
+        "unique_functions_with_pinned_code": 3,
+        "unique_functions_with_complete_assembly_cfg": 3
+      }
+    }
+  ]
+}

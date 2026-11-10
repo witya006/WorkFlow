@@ -1,3 +1,17 @@
+# Частичная157 —11.11.2026
+
+Own88dc3d11…/x86/entry17F850/2348544bytes,182client/67engine/20kernels,
+build/link0. Gate actor-lighting-checkpoint PARTIAL. Исправлен actual actor
+map-light/material consumer; engine library не менялась. Native actual lobby
+12 случаев/gear/GPU и3прежнихPNG PASS. OrdinaryTaiwan Login иживой кадрвыбора
+370/8000ms без unhandled/следующийRenderreturn PASS. Сравнение156/157 просмотрено:
+персонаж больше не почти чёрный. Выбор/мир/full455stage ещёOPEN.
+MCP полный ASM/CFG3functions/208instructions,оба455pins совпали. Реестр функций
+2 225(+3)/396(+3);первые3sourcebindings сохранены,это не3полныхequivalence.
+Тестовый auth принят;handoffудалён,серверныефайлы/оригиналынеменялись.
+Послеисправленияформатаfunction-history общийprepare/build снова работает.
+Подробности:research/client455-actor-lighting.md;next-steps.md. Нижеистория.
+
 # Дополнение к аудиту прогресса —11.11.2026
 
 Добавлен воспроизводимый реестр функций оригинала: 37 865 выделено IDA,

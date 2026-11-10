@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T15:03:33.416556+00:00",
+  "measured_at_utc": "2026-11-10T15:26:26.584246+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
-    "sha256": "3af3cf243cf5089aa50bd691431dc94c7bc2040fdc158d886a5c64b2dc93fc35"
+    "sha256": "3f941724525dc11eff6448562b7b075046d61c6cf5504cfcb82f3fa90485faa7"
   },
   "reference": {
     "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
@@ -13,18 +13,18 @@
   },
   "ida_statistics": {
     "total_functions": 37865,
-    "named_functions": 671,
+    "named_functions": 674,
     "library_functions": 1296,
-    "unnamed_functions": 35898,
+    "unnamed_functions": 35895,
     "total_strings": 12704,
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2222,
-    "unique_functions_with_complete_assembly_cfg": 393,
-    "unique_pinned_code_bytes": 594292,
-    "reports": 158,
-    "code_range_occurrences": 3717,
+    "unique_functions_with_pinned_code": 2225,
+    "unique_functions_with_complete_assembly_cfg": 396,
+    "unique_pinned_code_bytes": 594996,
+    "reports": 159,
+    "code_range_occurrences": 3720,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -57,6 +57,10 @@
     {
       "file": "inventory/client455-account-reference.json",
       "sha256": "dd40aa3f2e260abe599c9ebaf5be1dec3ad20c305e2a8454bf8038eea5bcaac8"
+    },
+    {
+      "file": "inventory/client455-actor-lighting-reference.json",
+      "sha256": "5d29bd09216fbf152b23acc117aa30dce680f5cbdb4e5e5325c16aaf7705588f"
     },
     {
       "file": "inventory/client455-animation-manager-reference.json",
@@ -677,6 +681,10 @@
   ],
   "private_proofs": [
     {
+      "file": "artifacts/client455-progress/lighting157-reference/session.json",
+      "sha256": "3011a440541bf5b5ee0dca8230ec59e9450f70ea29e31ecaf64571ccbb1c6d13"
+    },
+    {
       "file": "artifacts/client455-progress/avatar-classes144-reference/session.json",
       "sha256": "132fbf96f8865791cfca9b87701a7cc9a2a964dd4d5ee6b224a50ab13484be7f"
     },
@@ -824,11 +832,11 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "34a3a29ddf9f043a1aab07b9e440f8883f7d0150a4d3c8dd449ac94491dc37b0"
+      "sha256": "a116a5d87374a65cb8e6b7825422c761dcf36d414f062621f48ce8b30f2c2ea7"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
-      "sha256": "9c56fb6f5a151dde14bc187c7dcf6a2bc6b5882931f79a7bb4933640b7095912"
+      "sha256": "8d69380cbc5704e9dd9a90f41e59a2884d5ffb2fa5b8668d701caad9d5a15a3c"
     }
   ],
   "excluded_unresolved": [
@@ -5769,6 +5777,25 @@
         {
           "file": "artifacts/client455-progress/equipment-conditions146-reference/session.json",
           "instructions": 21
+        }
+      ]
+    },
+    {
+      "rva": "0x4d230",
+      "ida_name": "RF455_Player_MapLight",
+      "reports": [
+        "inventory/client455-actor-lighting-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4d230",
+          "bytes": 54
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/lighting157-reference/session.json",
+          "instructions": 23
         }
       ]
     },
@@ -23494,6 +23521,44 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3ce7a0",
+      "ida_name": "RF455_Actor_MapLight",
+      "reports": [
+        "inventory/client455-actor-lighting-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ce7a0",
+          "bytes": 605
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/lighting157-reference/session.json",
+          "instructions": 166
+        }
+      ]
+    },
+    {
+      "rva": "0x3cea00",
+      "ida_name": "RF455_Actor_BlinkColor",
+      "reports": [
+        "inventory/client455-actor-lighting-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3cea00",
+          "bytes": 45
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/lighting157-reference/session.json",
+          "instructions": 19
+        }
+      ]
+    },
+    {
       "rva": "0x3cefe0",
       "ida_name": "sub_7CEFE0",
       "reports": [
@@ -35195,7 +35260,10 @@
       "complete_assembly_evidence": []
     }
   ],
-  "last_recorded_delta": null,
+  "last_recorded_delta": {
+    "unique_functions_with_pinned_code": 3,
+    "unique_functions_with_complete_assembly_cfg": 3
+  },
   "M6": "OPEN",
   "M9": "OPEN",
   "input_exe_executed": false,

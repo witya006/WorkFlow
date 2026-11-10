@@ -203,14 +203,15 @@ def report():
                    implementation_count=None, ordinary_runtime_equivalence_count=None)
     previous_file = WS/'inventory/client455-function-coverage.json'
     history_file = WS/'inventory/client455-function-history.json'
-    history = json.loads(history_file.read_text()) if history_file.exists() else []
+    history_document = json.loads(history_file.read_text()) if history_file.exists() else {'schema_version':1,'measurements':[]}
+    history = history_document if isinstance(history_document,list) else history_document['measurements']
     previous = history[-1] if history else None
     now = datetime.now(timezone.utc).isoformat()
     if previous is None or previous['summary'] != summary:
         delta = None if previous is None else {key:summary[key]-previous['summary'][key] for key in ('unique_functions_with_pinned_code','unique_functions_with_complete_assembly_cfg')}
         history.append(dict(measured_at_utc=now, reference_sha256=discovery['pin'],
                             kind='BACKFILL_BASELINE' if previous is None else 'MEASUREMENT', summary=summary, delta=delta))
-        history_file.write_text(json.dumps(history, indent=2)+'\n')
+    history_file.write_text(json.dumps(dict(schema_version=1,measurements=history), indent=2)+'\n')
     out = dict(schema_version=1, measured_at_utc=now, status='EVIDENCE_BASELINE_NOT_READINESS',
                generator=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()),
                reference=dict(sha256=discovery['pin'], architecture='x86', image_base='0x400000'),

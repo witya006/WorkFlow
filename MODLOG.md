@@ -1,3 +1,13 @@
+2026-11-11 — Actor lighting157 PARTIAL. Target primaryb1b5…/secondary4652…,
+x86/base400000,full ASM/CFG208instructions atRVA3CE7A0/04D230/3CEA00.
+Actual actor mapcolor/material/negated direction/ambient/specular restored;
+12real lobby/gear/GPU cases and3priorPNG pass. Own88dc3d11… live frame370/8000ms
+returnedwithout unhandled;viewed comparison shows character no longer nearlyblack.
+NoBSP undefined color,legacy blink producers,fullUI/selection/world/M9 open.
+3sourcebindings distinguish ordinary retained lighting from probe-only setter.
+Function evidence2,225(+3),complete CFG396(+3),not full equivalence count.
+Game/server/originals untouched;privatehandoff removed;engine library unchanged.
+
 2026-11-11 — Function-evidence baseline, not restored-function count. Primary
 b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b/x86/base400000:
 IDA37,865; 2,222 unique owners with pinned code evidence, 393 with complete
