@@ -1,4 +1,17 @@
-# Продолжение M6 — выбор экипированного персонажа
+# Продолжение M6 — освещение живого персонажа
+
+Сейчас156,own68e02c3d…,gate inventory/client455-combat-transition-checkpoint.json.
+Живой кадр выбора получен:364frames/8000ms,unhandled0. Пользователь подтвердил
+анимацию и сообщил почти чёрного персонажа;это видно на сохранённом кадре.
+Следующая задача157:проверить CResObject::SetLightColorFromMap,реальный цвет
+изlobbyBSP,GetMatLightFromColor,материал иCharIF constants. Не обходить маршрут
+постоянным белым материалом. Точная156 уже вbefore157,50файлов.
+SetAction weapon/shield,typed Login reads/fade иCreateEffect/DestroyEffect
+исправлены;ниже план155 исторический,не повторять уже исправленные участки.
+GameBarStoreзапрос устранён и подтверждён пользователем:HKCUcapture/DVR0;
+backup artifacts/environment/game-capture-20261110-232356-911.json.
+
+# Исторический план после155
 
 10.11.2026. Частичная контрольная точка155:
 inventory/client455-live-login-checkpoint.json, own da42b501…,

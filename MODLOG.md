@@ -1008,3 +1008,14 @@ animation/fade migration. M6/M6F/M7/M9OPEN;estimate25%(20–35%),0/12domains.
 Only observed archives staged throughsharedpool;noclient-widecopy/deletion.
 Password/rawpackets notsaved;private handoff removed. IDA9079cdac saved/closed,
 list0. No servermodifications orinputEXEexecution. See research/client455-live-launcher.md.
+
+2026-11-10 — Combat/Login156 PARTIAL. Own68e02c3d…/x86/entry17F710,
+build/link0. Target44BE00 weapon/shield transition,mounted behavior andFPS
+lowBYTE fade restored;typed Login reads andeffects Create/Destroy connected.
+Actual authenticated selection frame364/8000ms returnswithout unhandled
+exception;user observed animation andreported nearlyblack character. Next157
+maplight/material path. Initial throw diagnosis waswrong;actualcause was
+missing grade material initialization,nowfixed. Three native renderPNG equal155.
+Before157 exact156/50files;M6/M6F/M7/M9OPEN. GameBar popup fixed viacurrent-user
+capture/DVR0 withbackup;userconfirmed. No original/server changes,credentials
+orrawpackets saved. research/client455-combat-transition.md.

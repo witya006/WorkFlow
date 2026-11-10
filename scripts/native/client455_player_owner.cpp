@@ -142,7 +142,8 @@ RF455ManagedItem* CPlayerProc::GetNormalItem455(BYTE part){return Equipment455()
 BOOL CPlayerProc::PutOnTypedEquipment455(CItemObject* source,bool equipped){return equipped?Equipment455().putOnEquipment(source):Equipment455().putOnBoard(source);}
 BOOL CPlayerProc::CreateTypedEquipment455(CItemObject* source,bool requireNonempty){return Equipment455().createFrom455(source,requireNonempty);}
 void CPlayerProc::WeaponAndShield455(BYTE part){Equipment455().weaponAndShield455(part);}
-void CPlayerProc::SetItemAnimation455(BYTE part,DWORD mode){if(auto* object=GetEquipItem455(part))m_owner455->animation(*object,mode);}
+void CPlayerProc::SetItemAnimation455(RF455PlayerEquipmentObject& object,DWORD mode){m_owner455->animation(object,mode);}
+void CPlayerProc::SetItemAnimation455(BYTE part,DWORD mode){if(auto* object=GetEquipItem455(part))SetItemAnimation455(*object,mode);}
 void CPlayerProc::RenderEquipment455(){
     auto& state=*m_owner455;auto& actor=state.actor();
     for(unsigned i=0;i<RF455PlayerEquipment::PhysicalSlots;++i){if(!state.equipment.canRender(BYTE(i),actor.GetRace()))continue;

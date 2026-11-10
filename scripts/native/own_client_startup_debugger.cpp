@@ -60,7 +60,7 @@ int wmain(int argc,wchar_t** argv){
     }
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
-    std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?45000:20000);
+    std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?180000:20000);
     while(!exited){
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}
         if(GetTickCount64()>deadline && !terminating){timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"timeout\"}\n",output);TerminateProcess(process.hProcess,0xe0434201);terminating=true;}
@@ -125,7 +125,7 @@ int wmain(int argc,wchar_t** argv){
                     HANDLE faultThread=OpenThread(THREAD_GET_CONTEXT|THREAD_QUERY_INFORMATION,FALSE,event.dwThreadId);CONTEXT fault={};fault.ContextFlags=CONTEXT_CONTROL|CONTEXT_INTEGER;
                     if(faultThread&&GetThreadContext(faultThread,&fault)){
                         std::fprintf(output,"{\"kind\":\"fatal_context\",\"eax\":\"0x%lx\",\"ecx\":\"0x%lx\",\"edx\":\"0x%lx\",\"esi\":\"0x%lx\",\"edi\":\"0x%lx\",\"esp\":\"0x%lx\",\"own_stack_rva_candidates\":[",fault.Eax,fault.Ecx,fault.Edx,fault.Esi,fault.Edi,fault.Esp);
-                        DWORD words[64]={};SIZE_T bytes=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(fault.Esp),words,sizeof(words),&bytes);bool comma=false;DWORD ownSize=0;for(const auto& mod:modules)if(mod.base==imageBase)ownSize=mod.size;
+                        DWORD words[256]={};SIZE_T bytes=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(fault.Esp),words,sizeof(words),&bytes);bool comma=false;DWORD ownSize=0;for(const auto& mod:modules)if(mod.base==imageBase)ownSize=mod.size;
                         for(unsigned i=0;i<bytes/4;++i)if(words[i]>=imageBase&&words[i]-imageBase<ownSize){std::fprintf(output,"%s{\"stack_offset\":%u,\"rva\":\"0x%zx\"}",comma?",":"",i*4,words[i]-imageBase);comma=true;}
                         std::fputs("]}\n",output);
                     }

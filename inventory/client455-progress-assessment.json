@@ -272,7 +272,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "9a925a7e725f3b4ed24137069a4dfdb5d8306a30cb0b98e98167d5521620a458",
+      "sha256": "d97c6c970ac5d682ea28fd6dcd5ab801325a3a8e51a6ee408fef15f5e3d396f6",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -595,7 +595,7 @@
       "sha256": "d26aa7efb7294c78776d7cb0dbe87c85c84f2d65f5b627bb9696c2a4731ab82a",
       "status": "PARTIAL",
       "scope": "Own live launcher/game-entry exchange and compact registered reply repair;ordinary offline Login/assembled render pass;live selection fails in equipped action",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-login-checkpoint": {
@@ -662,11 +662,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad",
-      "bytes": 2347520,
+      "sha256": "68e02c3dcbf557c5a124e769c0c124884a71b50a367288b56efa3f6039807d55",
+      "bytes": 2348032,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x17f660",
+      "entry_rva": "0x17f710",
       "sections": [
         ".text",
         ".rdata",
@@ -691,22 +691,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "70b4484600ae99ada0c8252d86b2bcd0febfc00671cb7ac4a553c12205efa042",
+      "sha256": "945296ddfc140f719fc0f4a83f99300b2f816135a0025174cffbd6faad18bd15",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-live-login-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-combat-transition-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
-      "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "9a925a7e725f3b4ed24137069a4dfdb5d8306a30cb0b98e98167d5521620a458",
+      "link_file": "artifacts/client455-progress/before157/inventory/client455-normal-link.json",
+      "link_sha256": "d97c6c970ac5d682ea28fd6dcd5ab801325a3a8e51a6ee408fef15f5e3d396f6",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad",
-        "bytes": 2347520,
+        "sha256": "68e02c3dcbf557c5a124e769c0c124884a71b50a367288b56efa3f6039807d55",
+        "bytes": 2348032,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17f660",
+        "entry_rva": "0x17f710",
         "sections": [
           ".text",
           ".rdata",
@@ -716,14 +716,14 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "70b4484600ae99ada0c8252d86b2bcd0febfc00671cb7ac4a553c12205efa042"
+      "build_sha256": "945296ddfc140f719fc0f4a83f99300b2f816135a0025174cffbd6faad18bd15"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "70b4484600ae99ada0c8252d86b2bcd0febfc00671cb7ac4a553c12205efa042"
+        "sha256": "945296ddfc140f719fc0f4a83f99300b2f816135a0025174cffbd6faad18bd15"
       },
       "build_exit": 0,
       "errors": [],
@@ -733,11 +733,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad",
-        "bytes": 2347520,
+        "sha256": "68e02c3dcbf557c5a124e769c0c124884a71b50a367288b56efa3f6039807d55",
+        "bytes": 2348032,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17f660",
+        "entry_rva": "0x17f710",
         "sections": [
           ".text",
           ".rdata",
@@ -750,35 +750,35 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "70b4484600ae99ada0c8252d86b2bcd0febfc00671cb7ac4a553c12205efa042"
+        "sha256": "945296ddfc140f719fc0f4a83f99300b2f816135a0025174cffbd6faad18bd15"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "155 own da42b501 x86/182client/67engine/20kernels/link0. Live launcher auth andgame entry accepted byuser-started0.4.0. Compact178-byte character reply accepted after active-record validation/unused-slot padding;normal upgrade writes onlyBYTE113 as462170. Actual encrypted fragmented receiver andequipped payload pass;three assembled render images equal154. OrdinaryTaiwan Login renders without unhandled exception. Live equipped selection still fails inCPlayer::SetAction→legacyCPlayerProc::GetEquipItem;world not entered. Full bootstrap/selection/gameplay/Character clone lifecycle/Siege/particle/UI remainopen. Overall estimate unchanged.",
+    "current_work": "156 own68e02c3d x86/182client/67engine/20kernels/link0. Authenticated selection frame364/8000ms reached without unhandled exceptions;user observed animation andreported nearlyblack character. Typed weapon/shield combat transition andLogin reads/fade repaired;target effects init/destroy added,grade materials initialized. Native mounted transition/FPS andthree prior assembledPNG pass. Next:real maplighting/material path. Selection controls/world notverified;full455stage,SetAction,clone/particle/UI/lifecycle remainopen. Estimate unchanged.",
     "ordinary_login_observation": {
-      "file": "inventory/client455-login-frame-taiwan-native.json",
-      "sha256": "e7f7561137b45aa9d88ff5a6923519191819b00eff2ba3a8165732c2cc398cfa",
+      "file": "inventory/client455-login-frame-live-taiwan-native.json",
+      "sha256": "531d004a5eadfa68e8dfbc3842decaabaf27935b04be234dedb4be5460031cc3",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/da42b501/login-frame-taiwan001/login-frame.png",
-        "sha256": "a931952a113253d2470bd6eece398cb552dca5ed6c1c35711c1168b988032581"
+        "file": "work/m9/68e02c3d/login-frame-live-taiwan001/login-frame.png",
+        "sha256": "09cbc54d41231924a8da3fee952b4402fb3ef9a1fcd0100e4d7fe0c959a8377f"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 195,
-        "elapsed_ms": 3000,
-        "requested_delay_ms": 3000
+        "frame_index": 364,
+        "elapsed_ms": 8000,
+        "requested_delay_ms": 8000
       },
       "stage_state": {
         "kind": "stage_state",
         "read": true,
-        "object": "0xa6a2ed8",
-        "vtable": "0x7b2e4c",
+        "object": "0xa754cc8",
+        "vtable": "0x322e4c",
         "exit": 0,
         "created": 1,
         "loaded": 1,
@@ -795,11 +795,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "4b4690de8e7878e09f08b8b55c4dc5ad35a21634fd829becbce24fed1b8aca49",
-    "entries": 161,
+    "sha256": "0f3a4addf9b402082f0e54d2eea841a53653cbea96bc1ebd6b2a5633fbc3b116",
+    "entries": 162,
     "statuses": {
       "partial_component": 12,
-      "partial": 119,
+      "partial": 120,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -809,7 +809,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-LIVE-LOGIN-155"
+      "CLIENT455-COMBAT-TRANSITION-156"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -879,7 +879,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;161 overlapping historical records",
+        "measured": "12 domain planning map;162 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1041,7 +1041,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "86e8315191bf30d5f6fcba0e2c567bc47ad98d926db0d0a162f447428b7a95c4"
+    "sha256": "48b4a927eb99456ba1ab2e15155f4a135ea5dca0a61da1a6361ff0e9a9b6ab40"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

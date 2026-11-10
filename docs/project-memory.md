@@ -1,3 +1,28 @@
+# Частичная156: живой кадр выбора, неверное освещение —10.11.2026
+
+Own68e02c3dcbf557c5a124e769c0c124884a71b50a367288b56efa3f6039807d55,
+x86/entry17F710/2348032bytes. Gatecombat-transition-checkpoint PARTIAL.
+Live launcher/game-entry/character reply проходят;полученнастоящийкадрвыбора
+work/m9/68e02c3d/login-frame-live-taiwan001:364frames/8000ms,unhandled0.
+Пользовательувиделанимацию;персонажвиден,нослишкомтёмный. Мирещёнедостигнут.
+44BE00 переходоружия/щита восстановленбезстарогоUMSguard:animation2/1,
+fade1/2,lowBYTE(intFPS),0→60;нативныйmounted/unchanged тестпройден.
+Login используетtyped getters и12physicalslots. Target53BBCD/53BC1F
+подтвердилиCreateEffect/DestroyEffect,которыхневхваталодляgradematerials.
+Начальныйдиагнозтипапредметабылошибочным:общаяthrowветкавызываласьпри
+неинициализированныхgrade materials. Этоисправлено;временнаядиагностикаубрана.
+Полный455Login/SetActionнепринят;targetCreateхвостневерноразделёнIDA.
+Nativework/m9/076242a0/player-owner-001;3assembledPNGравны155.
+Before157 сохранена точная156,50файлов;before156=155,50файлов.
+Следующее:реальноеосвещениекарты→CResObject→material/CharIF,безподменыцвета.
+GameBarнеустановлен,GameDVRбыл1. По просьбепользователя AppCaptureEnabled
+иGameDVR_Enabled выставлены0 толькоHKCU;пользовательподтвердил,чтозапрос
+Storeисчез.Backup:artifacts/environment/game-capture-20261110-232356-911.json;
+возврат scripts/Set-GameCapture.ps1 -Restore -BackupPath <backup>.
+Пароли/ключи/rawpacketsнесохранены;handoffудалён;сервер/оригиналынетрогались.
+IDA95d6f34d/43f6123f saved/closed. M6/M6F/M7/M9OPEN,25%(20–35%),0/12.
+Нижеисторическиезаписи.
+
 # Частичная155: игровой вход принят, выбор ещё падает —10.11.2026
 
 Own da42b501a1ab0c68c9c47a3cf2c51479b43f251623de1d6d6813a4c9d743e4ad,

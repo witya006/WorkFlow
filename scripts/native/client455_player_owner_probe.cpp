@@ -17,6 +17,9 @@ struct Network154{using Type=CNetworkMgr CMainApp::*;friend Type access154(Netwo
 struct Packs154{using Type=CObjectPack* CObjectBoard::*;friend Type access154(Packs154);};template struct Access154<Packs154,&CObjectBoard::m_listItemPack>;
 struct LevelText154{using Type=CGUIText CGUISkFcUnit::*;friend Type access154(LevelText154);};template struct Access154<LevelText154,&CGUISkFcUnit::m_cLevelStr>;
 struct Sprites154{using Type=CSpriteMgr CMainApp::*;friend Type access154(Sprites154);};template struct Access154<Sprites154,&CMainApp::m_cSpriteMgr>;
+struct CombatMode156{using Type=BYTE CCharacter::*;friend Type access154(CombatMode156);};template struct Access154<CombatMode156,&CCharacter::m_byCombatMode>;
+struct PrevCombat156{using Type=BYTE CCharacter::*;friend Type access154(PrevCombat156);};template struct Access154<PrevCombat156,&CCharacter::m_byPrevCombatMode>;
+struct SwitchCombat156{using Type=void(CPlayer::*)();friend Type access154(SwitchCombat156);};template struct Access154<SwitchCombat156,&CPlayer::SetAction_SwitchingCombatMode>;
 
 static std::vector<unsigned char> read154(const char* name){std::ifstream file(name,std::ios::binary);require(bool(file),"Owner binary input");return {std::istreambuf_iterator<char>(file),std::istreambuf_iterator<char>()};}
 static void phase154(const char* name){std::fprintf(stderr,"Owner154:%s\n",name);std::fflush(stderr);}
@@ -107,6 +110,24 @@ static int runOwner154(){
         proc->SetItemAnimation455(8,4);auto* magic=GetMagicListFromID(cloak->AnimationMagic455());require(magic&&magic->mMagicPtr&&static_cast<CProcessMagic*>(magic->mMagicPtr)->mCreateType==17,"Production owner creates real Spine magic");ordinary.Animation();
         require(!avatar->PutOffEquipment(8)&&!avatar->GetEquipItem455(8),"Actual cloak removal returnsfalse after detaching when specialskill pack ismissing");ordinary.Animation();
         phase154("production cloak magic andMiles passed");
+        require(avatar->PutOnEquipment(6,0)&&avatar->PutOnEquipment(7,0),"Actual transition weapon andshield");
+        auto* transitionWeapon=avatar->GetEquipItem455(6);auto* transitionShield=avatar->GetEquipItem455(7);
+        require(transitionWeapon&&transitionShield,"Both embedded equipment wrappers populated");
+        const float savedFPS=g_fFPS;avatar->SetUnitMountState(UMS_MOUNT);
+        for(float fps:{0.0f,61.75f,316.75f})for(BYTE mode:{BYTE(0),BYTE(1)}){
+            g_fFPS=fps;avatar.get()->*access154(CombatMode156{})=mode;avatar.get()->*access154(PrevCombat156{})=BYTE(1-mode);
+            (avatar.get()->*access154(SwitchCombat156{}))();
+            BYTE maximum=BYTE(int(fps));if(!maximum)maximum=60;
+            for(auto* object:{transitionWeapon,transitionShield}){
+                require(object->GetFade455()==(mode?2:1)&&object->GetFadeFrame455()==(mode?0:maximum),"Mounted transition sets both real fade states withtruncated lowBYTE budget");
+                object->SetFade455(4,31);
+            }
+            avatar.get()->*access154(PrevCombat156{})=mode;(avatar.get()->*access154(SwitchCombat156{}))();
+            require(transitionWeapon->GetFade455()==4&&transitionShield->GetFade455()==4,"Unchanged combat state performs no fade write");
+        }
+        g_fFPS=savedFPS;avatar->SetUnitMountState(UMS_DISMOUNT);
+        avatar->CPlayer::PutOffEquipment(6);avatar->CPlayer::PutOffEquipment(7);
+        phase154("actual mounted combat-mode weapon/shield transitions passed");
         sf[0]->SetIconBoard455(nullptr);g_pAvatar=previousAvatar;avatar.reset();
         //These wrappers were inserted through the actual pack cache,without
         //constructing the unported fullskill-window population. Match that
@@ -118,7 +139,7 @@ static int runOwner154(){
     require(_DestroyBoundBoxMgr()&&_DestroyAnimationMgr()&&_DestroyMeshMgr()&&_DestroyBoneMgr()&&_DestroyCharIF(),"Owner resource teardown");g_pUiSpriteMgr=previousSprites;g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* output=std::fopen("result.json","wb");require(output,"Owner result");
     std::fprintf(output,"{\"status\":\"PASS\",\"primary_typed_controller_connected\":true,"
-        "\"ordinary_numeric_puton_baseputoff\":true,\"actual_Avatar_default_restore\":true,\"upgrade_BYTE_only113\":true,"
+        "\"ordinary_numeric_puton_baseputoff\":true,\"actual_Avatar_default_restore\":true,\"upgrade_BYTE_only113\":true,\"actual_mounted_weapon_shield_transition\":true,\"combat_transition_lowBYTE_FPS\":true,"
         "\"actual_actor_part_cache\":true,\"real_controlled_draws\":%u,\"visible_pixels\":%u,"
         "\"removal_changes_pixels\":%u,\"replacement_restores_frame\":%s,\"controlled_camera_and_lighting\":true,"
         "\"independent_member_copy_raw_links_no_rand_or_retain\":true,"

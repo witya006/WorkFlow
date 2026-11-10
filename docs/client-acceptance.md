@@ -1,4 +1,13 @@
-# Актуальная частичная проверка155 —10.11.2026
+# Актуальная частичная проверка156 —10.11.2026
+
+Gate inventory/client455-combat-transition-checkpoint.json,own68e02c3d….
+Живой вход/список/кадрвыбора проходят,364frames/8000ms,unhandled0.
+Пользователь увиделанимацию;персонажпочтичёрный. Переходоружия/щита,
+typedLogin accesses иeffects startup исправлены. FullUI/освещение/выбор/
+enterworld/gameplayнеприняты.25%(20–35%),0/12,M6/M6F/M7/M9OPEN.
+Нижеисторическиезаписи;все полные требованиясохраняются.
+
+# Историческая частичная проверка155 —10.11.2026
 
 Gate inventory/client455-live-login-checkpoint.json,own da42b501….
 Реальные launcher-auth/game-entry приняты сервером0.4.0. Compact1/9(178)

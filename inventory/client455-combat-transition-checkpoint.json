@@ -1,0 +1,151 @@
+{
+  "status": "PARTIAL",
+  "scope": "Typed equipped transition andLogin effects lifecycle reach a real authenticated character-selection frame;character lighting is incorrect",
+  "script": {
+    "file": "scripts/checkpoint_client455_combat_transition.py",
+    "sha256": "06b26b54f9638014d0da086e61bdda784c07814e0f695717b0e70107fc1bcf5c"
+  },
+  "normal_link_sha256": "d97c6c970ac5d682ea28fd6dcd5ab801325a3a8e51a6ee408fef15f5e3d396f6",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "68e02c3dcbf557c5a124e769c0c124884a71b50a367288b56efa3f6039807d55",
+    "bytes": 2348032,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17f710",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "fresh_evidence": {
+    "combat-transition-reference": {
+      "file": "inventory/client455-combat-transition-reference.json",
+      "sha256": "581b628b3640d5da56b953c8ace20ba9fade2090350dbb989c6fc7374288db76"
+    },
+    "player-owner-native": {
+      "file": "inventory/client455-player-owner-native.json",
+      "sha256": "ebd73ef8f6b1ad4ed82b3e507fcbdb3135f29cb52779f9b9fe205927a5565f85"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "945296ddfc140f719fc0f4a83f99300b2f816135a0025174cffbd6faad18bd15"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "24427d47ae1de17f96bc8e02835f154767ee01d2f0e619a952041d0e69d4105f"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "d97c6c970ac5d682ea28fd6dcd5ab801325a3a8e51a6ee408fef15f5e3d396f6"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "7d75a7511ef62ffc154b09f7c5bb4683f877456ef7afdb2263c49c5118531c07"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "9cecbab2164bddba13ebe4b54ef3120d50a0028984905b66d95a9f41f9d23b65"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "38bfb0705d20e577f52bd87370acbe8aeb4e9e5b6d5cc465d0ccd573e25f5f03"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "20b6f2d56fedb44490306a0f65b72fdc63f648db85f769a73f2a1b9f339dcbcb"
+    },
+    "login-frame-taiwan-native": {
+      "file": "inventory/client455-login-frame-taiwan-native.json",
+      "sha256": "ffef68333a342f481b642679eb150b79a2f9a4755faf2ff9df9390d6722f9df3"
+    },
+    "login-frame-live-taiwan-native": {
+      "file": "inventory/client455-login-frame-live-taiwan-native.json",
+      "sha256": "531d004a5eadfa68e8dfbc3842decaabaf27935b04be234dedb4be5460031cc3"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "a5fc97cfe48074e2cd79442f4a2ff25d52138365381b08416970e24a598de55f"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "ac7aed49ad802e05cb67f3e22e1323ae9ee50aca7b9ce4f1538854bc76ba3486"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "4cbeceaaa886ba36b2612fbfa52dcf47d353baed4a2f6a2d3ea6124a59f0b94f"
+    }
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-login-frame-live-taiwan-native.json",
+    "sha256": "531d004a5eadfa68e8dfbc3842decaabaf27935b04be234dedb4be5460031cc3"
+  },
+  "live_selection_frame": {
+    "file": "work/m9/68e02c3d/login-frame-live-taiwan001/login-frame.png",
+    "sha256": "09cbc54d41231924a8da3fee952b4402fb3ef9a1fcd0100e4d7fe0c959a8377f"
+  },
+  "live_capture": {
+    "result": 0,
+    "width": 640,
+    "height": 500,
+    "format": 22,
+    "frame_index": 364,
+    "elapsed_ms": 8000,
+    "requested_delay_ms": 8000
+  },
+  "live_frame_visually_inspected": true,
+  "live_game_entry_accepted": true,
+  "actual_character_visible": true,
+  "animation_observed_by_user": true,
+  "character_lighting_correct": false,
+  "live_selection_completed": false,
+  "world_entered": false,
+  "ordinary_Login": true,
+  "equal_assembled_render_frames": 3,
+  "native": {
+    "status": "PASS",
+    "primary_typed_controller_connected": true,
+    "ordinary_numeric_puton_baseputoff": true,
+    "actual_Avatar_default_restore": true,
+    "upgrade_BYTE_only113": true,
+    "actual_mounted_weapon_shield_transition": true,
+    "combat_transition_lowBYTE_FPS": true,
+    "actual_actor_part_cache": true,
+    "real_controlled_draws": 19,
+    "visible_pixels": 12657,
+    "removal_changes_pixels": 3752,
+    "replacement_restores_frame": true,
+    "controlled_camera_and_lighting": true,
+    "independent_member_copy_raw_links_no_rand_or_retain": true,
+    "clone_cleanup_compensated_only_in_fixture": true,
+    "full_Character_clone_lifecycle": false,
+    "real_equipment_Avatar_skillboard_payload_icon_route": true,
+    "controlled_owned_option_metadata": true,
+    "production_cloak_magic_and_Miles": true,
+    "cloak_missing_specialskill_returnsfalse_after_detach": true,
+    "legacy_mixed_consumers_complete": false,
+    "full455_UI": false,
+    "full_player_appearance_or_selection": false,
+    "full_client": false
+  },
+  "gaps": [
+    "Full44BB90 action rewrite/savedframe restore/flags and44BF30 fullprior-state fields not accepted",
+    "Transitional Login dummy scheduling andother legacy selection consumers are not a complete455stage port",
+    "Login Create target tail is incorrectly split byIDA;only lifecycle callsites/order are verified here,not a fullCreate function",
+    "Modes outside0/1 andnonfinite/out-of-int32 FPS domains remain unaccepted",
+    "Full client stages/appearance/selection/world/gameplay andall client-acceptance requirements",
+    "Ordinary character is nearly black:map lighting/material producer must be restored",
+    "Selection input/enter-world andfull455UI remain unverified"
+  ],
+  "full_client": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "private_handoff_removed": true,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

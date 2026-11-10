@@ -50,6 +50,8 @@ def main(handoff=None,live_port=None):
         for name in ['SpriteImage/Common/mouse.spr',f'SpriteImage/{country["folder"]}/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if loginProbe:
+        for name in ['Effect/EffectEntityList.spt','Effect/MagicSptList.spt']:
+            original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
         for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if args.with_lobby:
@@ -107,7 +109,7 @@ def main(handoff=None,live_port=None):
             secretFile.write_bytes(handoff);handoff=None
             inputs=[r for r in inputs if r['file']!=secretFile.relative_to(WS).as_posix()]
         try:
-            result=subprocess.run(command,cwd=run,capture_output=True,timeout=65 if live_port is not None else 40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
+            result=subprocess.run(command,cwd=run,capture_output=True,timeout=200 if live_port is not None else 40,creationflags=subprocess.CREATE_NO_WINDOW,env=environment)
         finally:
             if live_port is not None:
                 if not secretFile.resolve().is_relative_to((WS/'work/m9').resolve()):raise ValueError('Private handoff cleanup escaped lab')

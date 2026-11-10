@@ -1,0 +1,163 @@
+{
+  "status": "STATIC_CONFIRMED_PARTIAL",
+  "scope": "44BE00 embedded weapon/shield combat transition and46E220 fade;44BB90 whole root recorded butnot fully ported",
+  "raw": {
+    "file": "artifacts/client455-progress/combat-transition156-reference/session.json",
+    "sha256": "4d3ad9e98db87697030246dfeb244196752b8ea7aa0f3caf7a44539d002aec58"
+  },
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x4be00",
+          "instructions": 89,
+          "positive_cfg_blocks": 6,
+          "regions": [
+            {
+              "rva": "0x4be00",
+              "bytes": 301,
+              "sha256": "d4c9ad79dc68b518dc872cab71ad3d62d4d56c0d9cb634ee6031c75afa291516"
+            }
+          ]
+        },
+        {
+          "rva": "0x6e220",
+          "instructions": 37,
+          "positive_cfg_blocks": 7,
+          "regions": [
+            {
+              "rva": "0x6e220",
+              "bytes": 114,
+              "sha256": "3bd7abccc7ad8cef08a815734e61b1962db9081f0cd1d3ecbabae69505ad33cb"
+            }
+          ]
+        },
+        {
+          "rva": "0x4bb90",
+          "instructions": 99,
+          "positive_cfg_blocks": 15,
+          "regions": [
+            {
+              "rva": "0x4bb90",
+              "bytes": 319,
+              "sha256": "ec918a4a26a8f1f175432fdaef0c06d090691fd40a7427b04b4affda014bc5a9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x4be00",
+          "instructions": 89,
+          "positive_cfg_blocks": 6,
+          "regions": [
+            {
+              "rva": "0x4be00",
+              "bytes": 301,
+              "sha256": "d4c9ad79dc68b518dc872cab71ad3d62d4d56c0d9cb634ee6031c75afa291516"
+            }
+          ]
+        },
+        {
+          "rva": "0x6e220",
+          "instructions": 37,
+          "positive_cfg_blocks": 7,
+          "regions": [
+            {
+              "rva": "0x6e220",
+              "bytes": 114,
+              "sha256": "3bd7abccc7ad8cef08a815734e61b1962db9081f0cd1d3ecbabae69505ad33cb"
+            }
+          ]
+        },
+        {
+          "rva": "0x4bb90",
+          "instructions": 99,
+          "positive_cfg_blocks": 15,
+          "regions": [
+            {
+              "rva": "0x4bb90",
+              "bytes": 319,
+              "sha256": "ec918a4a26a8f1f175432fdaef0c06d090691fd40a7427b04b4affda014bc5a9"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 3,
+  "full_instructions": 225,
+  "positive_cfg_blocks": 28,
+  "script": {
+    "file": "scripts/audit_client455_combat_transition.py",
+    "sha256": "05be6c193f384c528dfb73431f18da88d0a43a4906a302170604c10d7ad5e7d3"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_player_owner_port.py",
+      "sha256": "b75511d32d6135defc317bb436ed6eb5e4454e0f3b9948f53522851773c50843"
+    },
+    {
+      "file": "scripts/native/client455_player_owner.cpp",
+      "sha256": "263dda5aa6084ba818f3263b7a52b46eca1ca602568453c117c27ada01a972a4"
+    },
+    {
+      "file": "scripts/native/client455_player_equipment.h",
+      "sha256": "fd989dff81e313cead923b39eafd3250d0bc52043fde5534b8c57515629047c4"
+    },
+    {
+      "file": "scripts/native/client455_player_owner_probe.cpp",
+      "sha256": "badd7cf5e7059b030415d060988aeadd35a7c793b98a6ffa1280b82e6cdc98d5"
+    }
+  ],
+  "facts": [
+    "Current612 equals previous613 returns before touching equipment",
+    "44BE00 doesnot have the old mounted-unit early return",
+    "Embedded processor5200 fetches both slots6/7 before mutations",
+    "Animation virtual160 occurs beforefade46E220,weapon before shield",
+    "Mode0 maps animation2/fade1;mode1 maps animation1/fade2",
+    "FPS float is converted byx87 truncation toint32,then lowBYTE passed separately aftereach animation",
+    "Fade budgetBYTE0 becomes60;fade1 starts atbudget,other fades start0"
+  ],
+  "gaps": [
+    "Full44BB90 action rewrite/savedframe restore/flags and44BF30 fullprior-state fields not accepted",
+    "Transitional Login dummy scheduling andother legacy selection consumers are not a complete455stage port",
+    "Login Create target tail is incorrectly split byIDA;only lifecycle callsites/order are verified here,not a fullCreate function",
+    "Modes outside0/1 andnonfinite/out-of-int32 FPS domains remain unaccepted",
+    "Full client stages/appearance/selection/world/gameplay andall client-acceptance requirements"
+  ],
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before156/manifest.json",
+    "sha256": "beef2c17641d887cc5fa4aa577ab3b587b1db3b33695ef56dcb5face4386d303"
+  },
+  "effects_lifecycle_calls": [
+    {
+      "call_rva": "0x13bbcd",
+      "target_rva": "0x3e8ed0",
+      "stage": "afterLoadData beforecreated=1"
+    },
+    {
+      "call_rva": "0x13bc1f",
+      "target_rva": "0x3e8f90",
+      "stage": "afterbaseDestroy beforecamera/UnloadData"
+    }
+  ],
+  "effects_diagnostics": {
+    "file": "artifacts/client455-progress/combat-transition156-reference/grade-startup-diagnostics.json",
+    "sha256": "c604c8537d1cc139af9306440a9c80c0037cb212a4df6073531a581370a5561d"
+  },
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

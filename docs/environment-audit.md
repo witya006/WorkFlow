@@ -1,3 +1,15 @@
+# Частичная156 и исправление Game Bar —10.11.2026
+
+Own68e02c3d…/x86/entry17F710/2348032bytes,build/link0;gate
+inventory/client455-combat-transition-checkpoint.json PARTIAL. Живой кадр
+выбора получен,анимация подтверждена пользователем,unhandled0;свет неверный.
+Win10Pro22H2/19045:GameBar package отсутствует,GameDVR_Enabled был1.
+По запросу пользователя выставлены HKCU GameDVR/AppCaptureEnabled=0 и
+System/GameConfigStore/GameDVR_Enabled=0;запросStore пересталпоявляться,
+подтверждено пользователем. Backup artifacts/environment/game-capture-20261110-232356-911.json,
+обратимый scripts/Set-GameCapture.ps1. Перезагрузки/переустановки не проводились.
+Следующаяпроверка — получение света изкарты иматериал персонажа. Данные ниже исторические.
+
 # Частичная155: реальный игровой вход —10.11.2026
 
 Own da42b501…/x86/entry17F660/2347520bytes;182client/67engine/20kernels,
