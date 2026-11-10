@@ -101,6 +101,15 @@ static int runOwner154(){
         require(avatar->PutOnEquipment(1,0),"Ordinary replacement producer");ordinary.Animation();avatar->SetLightColor(0xffffffff);proc->MaterialEquipment455();const auto again=frame("player-owner-restored.png");restored=again==dressed;require(restored,"Ordinary replace restores controlled frame");
         require(avatar->SetDefaultItem(BYTE(1),DWORD(0))&&avatar->PutOffEquipment(1),"Actual Avatar removal restores typed default clothing");
         require(avatar->GetEquipItem455(1)&&avatar->GetEquipItem455(1)->GetItem455()==avatar->GetDefaultItem455(1)->GetItem455()&&avatar->GetDefaultItem455(1)->GetItem455()->header().references==2,"Restored default andworn wrapper share the actual payload");
+        {
+            CAvatar receiver;auto* source=avatar->GetDefaultItem455(1);auto* item=source->GetItem455();const BYTE references=item->header().references;
+            std::srand(158);const int expected=std::rand();std::srand(158);
+            require(receiver.SetDefaultItem455(1,source)&&item->header().references==BYTE(references+1),"Actual selected default retains shared payload");
+            require(std::rand()==expected,"Retained default transfer consumes no PRNG");
+            auto* copied=receiver.GetDefaultItem455(1);require(copied&&copied!=source&&copied->GetItem455()==item&&copied->GetMesh455()==source->GetMesh455()&&copied->GetRandom455()==source->GetRandom455(),"Actual selected default copies base state/resources");
+            require(!receiver.SetDefaultItem455(6,source)&&!receiver.SetDefaultItem455(0,nullptr),"Selected default rejects invalidpart/null as419F50");
+            require(receiver.PutOnEquipment455(copied,true)&&receiver.GetEquipItem455(1)&&receiver.GetEquipItem455(1)->GetOwner455()==&receiver,"Selected actor receives typed worn default");
+        }
         //Controlled owned metadata selects the real equipment→Avatar→board→SF
         //producer. This is not a claim that all skill-board population is ported.
         require(avatar->CPlayer::PutOffEquipment(1),"Remove before changing owned metadata");auto metadata=RF455_GameItems().data.getItem(1,0);require(metadata.size>=196,"Owner option metadata");auto* own=const_cast<BYTE*>(metadata.data);BYTE saved[12];std::memcpy(saved,own+184,12);own[184]=1;own[185]=8;float bonus=2;std::memcpy(own+192,&bonus,4);

@@ -1,4 +1,13 @@
-# Частичная157 —11.11.2026
+# Частичная158 —11.11.2026
+
+Owndf69c7ef…/x86/entry17FCD0/2349568bytes,182client/67engine/20kernels/link0.
+Actualaddressed Enter and1/14→1/15/22/result0 работают;typed Avatar gear handoff
+дошёл доMainGame::Create_UI. Послеэтого unhandledC0000005/GetSpriteXL12C8AF:
+стараяGaugeExp skin/atlas ещёнеперенесена на455. Gate selection-checkpoint
+PARTIAL_KNOWN_FAILURE;worldnotentered. SDK/serverнепричинаэтогоотказа.
+Nativewire/wallet/defaultretain/PRNG и3priorPNG PASS;M9OPEN.69-filebefore158
+сохраняет157. IDAsaved/closed/list0. Секретынесохранены,handoffудалён,
+сервер/оригиналынеменялись. Research:client455-selection.md. Нижеистория.
 
 Own88dc3d11…/x86/entry17F850/2348544bytes,182client/67engine/20kernels,
 build/link0. Gate actor-lighting-checkpoint PARTIAL. Исправлен actual actor

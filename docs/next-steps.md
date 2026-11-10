@@ -1,4 +1,41 @@
-# Продолжение M6 — выбор персонажа и переход в мир (158)
+# Продолжение M6 — игровой интерфейс и создание мира (159)
+
+11.11.2026. Частичная158/df69c7ef…/x86/entry17FCD0/2349568bytes,
+182client/67engine/20kernels,build/link0. Gate selection-checkpoint:
+PARTIAL_KNOWN_FAILURE, не успешный полный прогон.
+Реальный адресный Enter принят:tx1/14/1→rx1/15/22/result0;новый22-byte
+receiver иtyped6default/11worn Avatar transfer/skipTutorial работают до
+следующего участка. Native4wallet routes/fragmented encryption/default
+retain+PRNG и3прежнихPNG проходят. Мир пока не достигнут.
+
+Следующее:
+
+1. Доordinarysource edits159 сохранить точную158 вbefore159 через
+   scripts/preserve_client455_checkpoint.py --previous before158
+   --destination before159 --checkpoint inventory/client455-selection-checkpoint.json.
+   Snapshotbefore158 хранит157(69files),не перезаписывать.
+2. Фактический следующий отказ ownRVA12C8AF/GetSpriteXL@CSprite+5F:
+   CGUIObjectAni::SetSpriteInfo ← CGUIGaugeExpWindow::SetSprite/Init ←
+   CGP_MainGame::Create_UI/Create ← CMainApp::GameMainLoop. Events:
+   work/m9/df69c7ef/selection-live-taiwan001/debug-events.jsonl.
+3. Причина в старом MainGame UI provider: SP_ID_GAUGE_EXP2 всё ещё ведёт
+   к ./SpriteImage/gaugeexp.spr. Его нет ни в original455, ни вlab, ни вzh-tw.
+   Текущий SpriteMgr bridge покрывает только пять system namespaces.
+   Найти в455 настоящий HUD/gauge/main sprite/init/create routes и перенести
+   потребителей/atlas/layout/lifetime. Не скрывать виджет и не переименовывать
+   другую страницу под старуюskin. Server/SDK не является этим блокером.
+4. После настоящего MainGame UI Create следовать следующему реальному
+   пакету/загрузчику до карты/avatar/control. Live также принял8/5/9 —
+   полный контракт этого сообщения ещё не проверен. ВходныеEXE не выполнять.
+5. Full7BB470 equipment-board1 virtual176/tutorial branch и полный target
+   Login NetworkInput/state/camera,clone/FP/lifecycle остаются требованиями.
+
+Счётчики2231(+6) адресных функций/403(+7) complete ASM/CFG из37865.
+Четыре новые sourcebindings не являются четырьмя полной equivalence.
+Research:research/client455-selection.md. M6/M6F/M7/M9OPEN,0/12,25%(20–35%).
+Ниже исторический план158.
+
+# Исторический план158 — выбор персонажа и переход в мир
 
 11.11.2026. Частичная157 завершена, own88dc3d11…/x86/entry17F850/2348544bytes,
 182client/67engine/20kernels/build-link0. Gate actor-lighting-checkpoint PARTIAL.

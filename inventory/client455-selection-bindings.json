@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf",
+    "bytes": 2349568,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17fcd0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x16b920",
+      "symbol": "CNetworkMgr::SystemMsg_SelCharRequest_zone",
+      "source": {
+        "file": "scripts/native/client455_selection.inc",
+        "sha256": "f1dd82bef1d7ebf6ee9c38b89362d3a1a77887a5bf810027536a0e55df40b396"
+      },
+      "scope": "Actual wire/native+live",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x16b9d0",
+      "symbol": "CNetworkMgr::SystemMsg_SelCharResult_zone",
+      "source": {
+        "file": "scripts/native/client455_selection.inc",
+        "sha256": "f1dd82bef1d7ebf6ee9c38b89362d3a1a77887a5bf810027536a0e55df40b396"
+      },
+      "scope": "Bounded22bytes/native+live;short unsafe domain not equivalent",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x19f50",
+      "symbol": "CAvatar::SetDefaultItem455",
+      "source": {
+        "file": "scripts/client455_selection_port.py",
+        "sha256": "48c50a44d5d109643a079420723ae3c07542c05cdf5aa03294b778d06720d0eb"
+      },
+      "scope": "Part<6/non-null plus retained base transfer/native+ordinary",
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x6c130",
+      "symbol": "RF455EquipmentObject::CopyRetainedState455",
+      "source": {
+        "file": "scripts/native/client455_equipment_object.cpp",
+        "sha256": "09ecd1464e054bc807d40086228d14b88e418490568a1d56d6ed9905ce522e69"
+      },
+      "scope": "Semantic base state/retain;raw vptr,padding,selfalias domains not equivalent",
+      "complete_equivalence": false
+    }
+  ]
+}

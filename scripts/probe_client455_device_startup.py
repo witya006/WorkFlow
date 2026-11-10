@@ -15,7 +15,7 @@ def symbol(mapping,name):
     match=re.search(re.escape(name)+r'\s+([0-9a-fA-F]{8})',mapping)
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
-def main(handoff=None,live_port=None):
+def main(handoff=None,live_port=None,select_character=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
@@ -31,6 +31,9 @@ def main(handoff=None,live_port=None):
     prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
     if loginProbe:prefix='login-create' if args.login_create else 'login-render'
     if args.login_frame:prefix='login-frame'
+    if select_character:
+        if handoff is None or not args.login_frame:raise ValueError('Selection observation needs actual live Login')
+        prefix='selection'
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
     while (parent/f'{prefix}{index:03d}').exists():index+=1
@@ -96,7 +99,7 @@ def main(handoff=None,live_port=None):
     debugger=WS/early['debugger']['file']
     if sha(debugger)!=early['debugger']['sha256']:raise ValueError('Changed own debugger')
     output=run/'debug-events.jsonl';command=[str(debugger),str(run/'RF_Online.bin'),str(output),f'{mainVa-base:x}',f'{stopVa-base:x}',str(plan)]+(['after_create'] if args.after_create else [])
-    if loginProbe:command+=['login_create' if args.login_create else 'login_frame' if args.login_frame else 'login_render']
+    if loginProbe:command+=['selection' if select_character else 'login_create' if args.login_create else 'login_frame' if args.login_frame else 'login_render']
     environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None);environment.pop('RF455_OBSERVE_PROTOCOL',None)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
@@ -147,6 +150,9 @@ def main(handoff=None,live_port=None):
         report['login_frame_captured']=report['first_login_frame_captured']
         report['legacy_first_frame_field_names_are_aliases']=True
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
+    if select_character:
+        name='client455-character-selection-native';report['scope']='Actual own Login then addressed Enter key in own child window;records real selection protocol andfirst following failure,not world acceptance'
+        report['selection_input']=[e for e in events if e['kind'] in ['selection_key_posted','selection_observation_end']]
     if live_port is not None:name=name.replace('-native','-live-native')
     if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
     (WS/f'inventory/{name}.json').write_text(json.dumps(report,indent=2)+'\n')

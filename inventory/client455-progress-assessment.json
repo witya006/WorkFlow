@@ -272,7 +272,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "5b796dc3b8470b17831ffbdb30be6bf04e07dbe4b9024908c693bd47544795a4",
+      "sha256": "f9d60979d2b512ead94a22709c0e34fb83a473ff39bc04d51cd4b5ffdc0462da",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -662,11 +662,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917",
-      "bytes": 2348544,
+      "sha256": "df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf",
+      "bytes": 2349568,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x17f850",
+      "entry_rva": "0x17fcd0",
       "sections": [
         ".text",
         ".rdata",
@@ -691,22 +691,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "62669ecef6c583e85cd690253b38497f1e0baddd413ea09c9a6d6090a5157a25",
+      "sha256": "007a522b3d2296996f08c07e29098f1b7fb5b0917dbb236e6f87e23872c764b5",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-actor-lighting-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-selection-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "5b796dc3b8470b17831ffbdb30be6bf04e07dbe4b9024908c693bd47544795a4",
+      "link_sha256": "f9d60979d2b512ead94a22709c0e34fb83a473ff39bc04d51cd4b5ffdc0462da",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917",
-        "bytes": 2348544,
+        "sha256": "df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf",
+        "bytes": 2349568,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17f850",
+        "entry_rva": "0x17fcd0",
         "sections": [
           ".text",
           ".rdata",
@@ -716,14 +716,53 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "62669ecef6c583e85cd690253b38497f1e0baddd413ea09c9a6d6090a5157a25"
+      "build_sha256": "007a522b3d2296996f08c07e29098f1b7fb5b0917dbb236e6f87e23872c764b5"
     },
-    "candidate_runtime_status": "CHECKED_PARTIAL",
+    "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
+    "post_selection_failure": {
+      "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+      "own_rva": "0x12c8af",
+      "code": "0xc0000005",
+      "resolved_own_symbols": [
+        {
+          "rva": "0x12c8af",
+          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+          "offset": "0x5f"
+        },
+        {
+          "rva": "0x97421",
+          "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+          "offset": "0x61"
+        },
+        {
+          "rva": "0x823d8",
+          "symbol": "?SetSprite@CGUIGaugeExpWindow@@UAEXXZ",
+          "offset": "0x68"
+        },
+        {
+          "rva": "0x81c2f",
+          "symbol": "?Init@CGUIGaugeExpWindow@@UAEXXZ",
+          "offset": "0x31f"
+        },
+        {
+          "rva": "0x26709",
+          "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+          "offset": "0x159"
+        },
+        {
+          "rva": "0x26021",
+          "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+          "offset": "0x41"
+        }
+      ],
+      "cause": "Legacy gauge-exp sprite consumer still uses0.7 SpriteImage/gaugeexp.spr andits atlas;file absent inoriginal455 andstagedlab",
+      "whole_client_run_succeeded": false
+    },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "62669ecef6c583e85cd690253b38497f1e0baddd413ea09c9a6d6090a5157a25"
+        "sha256": "007a522b3d2296996f08c07e29098f1b7fb5b0917dbb236e6f87e23872c764b5"
       },
       "build_exit": 0,
       "errors": [],
@@ -733,11 +772,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917",
-        "bytes": 2348544,
+        "sha256": "df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf",
+        "bytes": 2349568,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x17f850",
+        "entry_rva": "0x17fcd0",
         "sections": [
           ".text",
           ".rdata",
@@ -750,56 +789,48 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "62669ecef6c583e85cd690253b38497f1e0baddd413ea09c9a6d6090a5157a25"
+        "sha256": "007a522b3d2296996f08c07e29098f1b7fb5b0917dbb236e6f87e23872c764b5"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "157 own88dc3d11 x86/182client/67engine/20kernels/link0. Authenticated selection frame370/8000ms without unhandled exceptions;character visibly no longer nearlyblack after actual455actor map-light/material restoration. Actual lobby12cases verify source color/override priority,gear materials andGPU direction;3prior controlledPNG unchanged. 3explicit function/source bindings,one setter only exercised inprobe andnotretained inordinaryPE. Next:normal selection input andenter-world. Full455stage,SetAction,clone/particle/UI/lifecycle andM9 remainopen. Estimate unchanged.",
+    "current_work": "158 owndf69c7ef x86/182client/67engine/20kernels/link0. Actual addressed Enter sends1/14 andreceives1/15/22 success. FullWORD result/serial32/money64 consumer andtyped6default/11worn Avatar transfer integrated;skipTutorial copied. Native wire/4wallet routes/retained default and3priorPNG pass. Existing MainGame::Create_UI reached,then fatal ownRVA12C8AF inGetSpriteXL/gaugeExp:unported0.7skin/atlas. World isnotentered;run hasoneunhandled exception. Next:actual455MainGameUI/resources/create. Fullcallback/tutorialbranch/UI/factory/clone/particle/gameplay/M9 open. Estimate unchanged.",
     "ordinary_login_observation": {
-      "file": "inventory/client455-login-frame-live-taiwan-native.json",
-      "sha256": "c053c93e59f850eeb232b5cfdc1f0c335f4d9196992cc54eb7a89a24733f9585",
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "7807dbbb30151d227adad40bd98e1cd9528fcd00503cb600568a5223e042bb33",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/88dc3d11/login-frame-live-taiwan001/login-frame.png",
-        "sha256": "72b227ef72622318ee8925f7ef1938107638876042cc86da871df706eba5e925"
+        "file": "work/m9/df69c7ef/selection-live-taiwan001/login-frame.png",
+        "sha256": "753e6ad2327b0b31a84908977ad6f28e0cb42ec21a359063e5a7cf8c3a8de8e4"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 370,
+        "frame_index": 359,
         "elapsed_ms": 8000,
         "requested_delay_ms": 8000
       },
-      "stage_state": {
-        "kind": "stage_state",
-        "read": true,
-        "object": "0xb0abee0",
-        "vtable": "0x11c2e4c",
-        "exit": 0,
-        "created": 1,
-        "loaded": 1,
-        "next": 4294967295
-      },
+      "stage_state": {},
       "ui_visually_inspected": true,
       "ui_accepted": false,
-      "known_visible_problem": "Live authenticated character visible with restored selected actor light;legacy labels/full455UI andselection/world transition remain open",
-      "return_checkpoint": "Return after the diagnostic capture;not necessarily the first frame"
+      "known_visible_problem": "Pre-Enter selection frame isvalid;afterEnter a known MainGame gauge UI failure prevents world creation",
+      "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
-    "existing_Create_proved_on_current_PE": false,
+    "existing_Create_proved_on_current_PE": true,
+    "existing_Create_proof_scope": "Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance",
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "c3ab3d4757788711ee16ac660ecb0dbf631264a25edaf3841b68677165e10308",
-    "entries": 163,
+    "sha256": "d9d4eabfede31688e7974c83c79b04ad6da1cf2dab422ebc939bb0edd3063daf",
+    "entries": 164,
     "statuses": {
       "partial_component": 12,
-      "partial": 121,
+      "partial": 122,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -809,7 +840,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ACTOR-LIGHTING-157"
+      "CLIENT455-SELECTION-158"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -879,7 +910,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;163 overlapping historical records",
+        "measured": "12 domain planning map;164 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1041,7 +1072,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "b34da1986badac23215f5cb60f2fb0c45f9d8e1a4fc19fd3dc46d3fb93d0ae73"
+    "sha256": "22a240558d0c3dbba6ee670e38b5ba753a7ba2f1721de55e470af0ab82ff0881"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

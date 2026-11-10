@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-selection-checkpoint',
         'client455-actor-lighting-checkpoint',
         'client455-combat-transition-checkpoint',
         'client455-live-login-checkpoint',
@@ -166,7 +167,8 @@ def main():
             runtime_baseline=dict(link_file=runtime_link_file.relative_to(WS).as_posix(),link_sha256=runtime_link_sha,
                 executable={**runtime_normal['executable'],'file':runtime_exe_file.relative_to(WS).as_posix()},
                 build_file=runtime_build_file.relative_to(WS).as_posix(),build_sha256=sha(runtime_build_file)),
-            candidate_runtime_status='CHECKED_PARTIAL' if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
+            candidate_runtime_status=('CHECKED_PARTIAL_WITH_KNOWN_FAILURE' if body.get('post_selection_failure') else 'CHECKED_PARTIAL') if runtime_is_current else 'NOT_YET_RUNTIME_VALIDATED',
+            post_selection_failure=body.get('post_selection_failure'),
             current_working_source=dict(status='BUILD_FAILED' if current_build['build_exit']!=0 else 'BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED',
                 build_report=dict(file=current_build_file.relative_to(WS).as_posix(),sha256=sha(current_build_file)),
                 build_exit=current_build['build_exit'],errors=current_build['errors'],
@@ -177,9 +179,9 @@ def main():
                 build_report=dict(file=candidate_build_file.relative_to(WS).as_posix(),sha256=sha(candidate_build_file)) if candidate_build_file else None,
                 runtime_verified=runtime_is_current,
                 superseded_by_later_source_build=sha(current_build_file)!=normal['normal_build_sha256']),
-            current_work='157 own88dc3d11 x86/182client/67engine/20kernels/link0. Authenticated selection frame370/8000ms without unhandled exceptions;character visibly no longer nearlyblack after actual455actor map-light/material restoration. Actual lobby12cases verify source color/override priority,gear materials andGPU direction;3prior controlledPNG unchanged. 3explicit function/source bindings,one setter only exercised inprobe andnotretained inordinaryPE. Next:normal selection input andenter-world. Full455stage,SetAction,clone/particle/UI/lifecycle andM9 remainopen. Estimate unchanged.',
-            ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Live authenticated character visible with restored selected actor light;legacy labels/full455UI andselection/world transition remain open',return_checkpoint='Return after the diagnostic capture;not necessarily the first frame'),
-            existing_Create_proved_on_current_PE=load('client455-ui-startup-taiwan-native' if body.get('ordinary_nation')=='Taiwan' else 'client455-ui-startup-native').get('completed_existing_client_create',False) and load('client455-ui-startup-taiwan-native' if body.get('ordinary_nation')=='Taiwan' else 'client455-ui-startup-native')['normal_link_sha256']==sha(WS/'inventory/client455-normal-link.json'),full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
+            current_work='158 owndf69c7ef x86/182client/67engine/20kernels/link0. Actual addressed Enter sends1/14 andreceives1/15/22 success. FullWORD result/serial32/money64 consumer andtyped6default/11worn Avatar transfer integrated;skipTutorial copied. Native wire/4wallet routes/retained default and3priorPNG pass. Existing MainGame::Create_UI reached,then fatal ownRVA12C8AF inGetSpriteXL/gaugeExp:unported0.7skin/atlas. World isnotentered;run hasoneunhandled exception. Next:actual455MainGameUI/resources/create. Fullcallback/tutorialbranch/UI/factory/clone/particle/gameplay/M9 open. Estimate unchanged.',
+            ordinary_login_observation=dict(file=login_file.relative_to(WS).as_posix(),sha256=sha(login_file),fresh_for_current_PE=runtime_is_current,fresh_for_runtime_baseline=True,frame=login['captured_frame'],capture=login['capture_result'],stage_state=login['stage_state'],ui_visually_inspected=True,ui_accepted=False,known_visible_problem='Pre-Enter selection frame isvalid;afterEnter a known MainGame gauge UI failure prevents world creation',return_checkpoint='Return after the pre-Enter diagnostic capture;not successful world transition'),
+            existing_Create_proved_on_current_PE=runtime_is_current and bool(login['reached_first_login']),existing_Create_proof_scope='Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance',full_Login_character_selection_world_flow_proved=False,normal_movement_combat_inventory_flow_proved=False),
         registry=dict(file='inventory/client-features.json',sha256=sha(WS/'inventory/client-features.json'),entries=len(registry['features']),statuses=dict(status),complete_denominator=False,contains_historical_and_overlapping_records=True,marked_current=[x['id'] for x in registry['features'] if x.get('runtime_gate_current')],note='Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent.'),
         binary_static_inventory=dict(file=survey_file.relative_to(WS).as_posix(),sha256=sha(survey_file),reference_sha256=survey['metadata']['sha256'],architecture='x86',image_base='0x400000',statistics=survey['statistics'],
             recovered_functions_percent=None,note='IDA-detected bodies include library code and wrappers;no validated exhaustive examined/reconstructed numerator. This count is not a455feature or completion denominator.'),

@@ -10,6 +10,7 @@ from client455_d3d9_port import ENGINE_DEFINITIONS
 from audit_client455_normal_character_api import code_only
 from client455_resource_object_port import port_resource_object
 from client455_actor_lighting_port import port_actor_lighting
+from client455_selection_port import port_selection
 from client455_item_object_port import port_item_object
 from client455_item_icon_port import port_item_icon
 from client455_item_metadata_port import port_item_metadata
@@ -138,6 +139,8 @@ def main():
             if resource_changed:changes.append('455common object80/resource584 ctor-copy-lifecycle and visible-mesh effect guard;fullresource methods/item owners remain open')
             raw,actor_light_changed=port_actor_lighting(raw,relative,native,section)
             if actor_light_changed:changes.append('455actor BSP color/afterimage/blink material and negated directional light;unloaded-BSP undefined color and legacy one-argument blink callers remain unaccepted')
+            raw,selection_changed=port_selection(raw,relative,native,section)
+            if selection_changed:changes.append('4551/14 selection andbounded1/15 reply22:WORD result,serial32 andmoney64 toactual avatar/dummy;fullselection callback/state handoff remainsopen')
             raw,item_changed=port_item_object(raw,relative,native,section)
             if item_changed:changes.append('455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported')
             raw,icon_changed=port_item_icon(raw,relative,native,section)

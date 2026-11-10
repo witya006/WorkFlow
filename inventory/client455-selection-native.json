@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "exe": {
+    "file": "work/m9/836ac6ec/selection-001/selection-probe.exe",
+    "sha256": "836ac6ec885ae954b8a3f7efa77867a4c44b2783b24c6d9574adf3cdaedab1f2"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_selection_probe.cpp",
+      "sha256": "5e7a3d5585cba9f660b7f96d1512fe8f8f111ad51f407b758705192edcb3f959"
+    },
+    {
+      "file": "scripts/native/client455_selection.h",
+      "sha256": "58ed00cfa66e79ee28a6037bff1675b8136eeaa1e1e52397a9fd25fe34ac5d14"
+    },
+    {
+      "file": "scripts/native/client455_selection.inc",
+      "sha256": "f1dd82bef1d7ebf6ee9c38b89362d3a1a77887a5bf810027536a0e55df40b396"
+    }
+  ],
+  "script": {
+    "file": "scripts/probe_client455_selection.py",
+    "sha256": "2aae1a144fe05f0c6e85c05ce69a3907a72919517178b0fe723fa731f14b4dc6"
+  },
+  "normal_link_sha256": "f9d60979d2b512ead94a22709c0e34fb83a473ff39bc04d51cd4b5ffdc0462da",
+  "console": {
+    "file": "work/m9/836ac6ec/selection-001/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "output": {
+    "file": "work/m9/836ac6ec/selection-001/result.json",
+    "sha256": "d3aec2fc2c26f62dc8ed8f842f1e4819e414d7f995f34e5b60311f1aaaa61775"
+  },
+  "native": {
+    "status": "PASS",
+    "actual_selected_wire": true,
+    "actual_encrypted_fragmented_dispatch": true,
+    "actual_wallet_routes": 4,
+    "WORD_result_to_BYTE": true,
+    "full_client": false
+  },
+  "natural_exit": 0,
+  "shared_staging": {
+    "assets": 1,
+    "linked_bytes": 255479,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "input_exe_executed": false,
+  "authentication_performed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

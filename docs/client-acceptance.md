@@ -1,4 +1,13 @@
-# Актуальная частичная проверка157 —11.11.2026
+# Актуальная частичная проверка158 —11.11.2026
+
+Gate selection-checkpoint PARTIAL_KNOWN_FAILURE,owndf69c7ef…/entry17FCD0.
+Реальный Enter/выбор1/14→1/15/22/result0 иtyped Avatar default/worn transfer
+достигли существующегоMainGame::Create_UI. Послеэтого естьunhandledC0000005
+GetSpriteXL/GaugeExp legacy skin. Мир/полныйselectionstage ещёнеприняты.
+Nativewire/4wallet/defaultretained/PRNG и3priorPNG PASS. Полные требованияниже
+сохраняются;M6/M6F/M7/M9OPEN,0/12. Счёт2231/403 —охватанализа,неготовность.
+
+# Историческая частичная проверка157 —11.11.2026
 
 Gate actor-lighting-checkpoint,own88dc3d11…/x86/entry17F850. Actual map actor
 light/material restored:12real lobbycases/gear/GPU PASS,3priorPNG unchanged.

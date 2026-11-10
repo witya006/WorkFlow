@@ -53,6 +53,7 @@ protected:
 public:
     RF455EquipmentObject();
     RF455EquipmentObject(const RF455EquipmentObject&);
+    void CopyRetainedState455(const RF455EquipmentObject&);
     bool Create455(BYTE type,DWORD encodedIndex);
     void SetItem455(RF455ManagedItem*) override;
     DWORD GetTableIndex455()const;

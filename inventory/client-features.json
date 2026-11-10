@@ -8419,7 +8419,7 @@
     {
       "id": "CLIENT455-ACTOR-LIGHTING-157",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "runtime_gate_last_verified": true,
       "description": "Actual map actor material/directional light restored;live selection character is visibly no longer nearlyblack",
       "implementation": [
@@ -8438,6 +8438,71 @@
       "character_no_longer_nearly_black": true,
       "original_full_frame_equivalence": false,
       "live_selection_completed": false,
+      "world_entered": false,
+      "full_client": false,
+      "M6": "OPEN",
+      "M6F": "OPEN",
+      "M7": "OPEN",
+      "M9": "OPEN"
+    },
+    {
+      "id": "CLIENT455-SELECTION-158",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "runtime_gate_last_verified": true,
+      "description": "Live Enter/selection accepted andtyped Avatar gear transfer reaches existing MainGame UI creation;world notentered",
+      "implementation": [
+        "scripts/client455_selection_port.py",
+        "scripts/native/client455_selection.inc",
+        "scripts/native/client455_equipment_object.cpp"
+      ],
+      "evidence": [
+        "inventory/client455-selection-reference.json",
+        "inventory/client455-selection-checkpoint.json",
+        "research/client455-selection.md"
+      ],
+      "verification": "Actual addressed Enter,server1/15 success22,typed gear retained/default transfer;3priorPNG unchanged;next MainGame UI fatal explicitly open",
+      "post_selection_failure": {
+        "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+        "own_rva": "0x12c8af",
+        "code": "0xc0000005",
+        "resolved_own_symbols": [
+          {
+            "rva": "0x12c8af",
+            "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+            "offset": "0x5f"
+          },
+          {
+            "rva": "0x97421",
+            "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+            "offset": "0x61"
+          },
+          {
+            "rva": "0x823d8",
+            "symbol": "?SetSprite@CGUIGaugeExpWindow@@UAEXXZ",
+            "offset": "0x68"
+          },
+          {
+            "rva": "0x81c2f",
+            "symbol": "?Init@CGUIGaugeExpWindow@@UAEXXZ",
+            "offset": "0x31f"
+          },
+          {
+            "rva": "0x26709",
+            "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+            "offset": "0x159"
+          },
+          {
+            "rva": "0x26021",
+            "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+            "offset": "0x41"
+          }
+        ],
+        "cause": "Legacy gauge-exp sprite consumer still uses0.7 SpriteImage/gaugeexp.spr andits atlas;file absent inoriginal455 andstagedlab",
+        "whole_client_run_succeeded": false
+      },
+      "live_character_selection_accepted": true,
+      "existing_MainGame_Create_UI_reached": true,
       "world_entered": false,
       "full_client": false,
       "M6": "OPEN",

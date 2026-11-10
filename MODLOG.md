@@ -1,3 +1,12 @@
+2026-11-11 — Selection158 PARTIAL_KNOWN_FAILURE. FullASM/CFG6+3/689instructions
+both455pins,x86/base400000. 1/14oneBYTE/1/15reply22 (WORDresult,serial32,money64)
+andtyped6default/11worn Avatar transfer/skip flag restored. Actual addressed
+Enter viaownchild HWND/PID accepted byserver;MainGame::Create_UI reached,then
+legacy gauge skin fatal own12C8AF. Nativewire/4wallet/defaultretain/PRNG and
+3priorPNG pass;world/M9 remainopen. OwnDF69C7EF…/entry17FCD0;before158=157/69files.
+Functionevidence2231(+6)/complete403(+7);4sourcebindings,notfullequivalence.
+Server/originals unchanged,privatehandoffremoved. IDAb44716bd saved/closed/list0.
+
 2026-11-11 — Actor lighting157 PARTIAL. Target primaryb1b5…/secondary4652…,
 x86/base400000,full ASM/CFG208instructions atRVA3CE7A0/04D230/3CEA00.
 Actual actor mapcolor/material/negated direction/ambient/specular restored;

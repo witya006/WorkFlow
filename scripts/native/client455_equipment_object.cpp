@@ -25,6 +25,18 @@ RF455EquipmentPlan RF455_PlanEquipment(BYTE type,DWORD index,DWORD mesh){
 }
 RF455EquipmentObject::RF455EquipmentObject(){SetObjectTypeID(2);Enable(41218);random455=static_cast<float>(double(std::rand())/100.0);}
 RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source):RF455EquipmentObject(source,Copy455::RetainedQueue){}
+void RF455EquipmentObject::CopyRetainedState455(const RF455EquipmentObject& source){
+    //46C130 clears the destination,copies the640-byte base andretains payload.
+    //The caller's derived owner/fade fields are outside this base copy.
+    if(this==&source)throw std::logic_error("455 retained self-copy unsafe domain is not accepted");
+    Clear();CItemObject::operator=(source);
+    race455=source.race455;mesh455=source.mesh455;originalMesh455=source.originalMesh455;
+    field608455=source.field608455;random455=source.random455;plan455=source.plan455;
+    renderMode455=source.renderMode455;overlayGradeKnown455=source.overlayGradeKnown455;
+    if(overlayGradeKnown455)overlayGrade455=source.overlayGrade455;
+    dummy455=source.dummy455;animationEffects455=source.animationEffects455;frameOwner455=source.frameOwner455;
+    RetainSharedItem455();
+}
 RF455EquipmentObject::RF455EquipmentObject(const RF455EquipmentObject& source,Copy455 mode):CItemObject(source),race455(source.race455),mesh455(source.mesh455),originalMesh455(source.originalMesh455),field608455(source.field608455),random455(source.random455),plan455(source.plan455),renderMode455(source.renderMode455),overlayGradeKnown455(source.overlayGradeKnown455),dummy455(source.dummy455){
     //527E70 first constructs a destination46BD60/46BE60,then copies640bytes.
     //Its constructor's rand() is consumed even though612 is overwritten.

@@ -1,0 +1,164 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "Live Enter/selection accepted andtyped Avatar gear transfer reaches existing MainGame UI creation;world notentered",
+  "script": {
+    "file": "scripts/checkpoint_client455_selection.py",
+    "sha256": "4fb081eab2a7e2f39d0c27a5a9bab2fdacc316c0032ff98a846eba1bde940790"
+  },
+  "normal_link_sha256": "f9d60979d2b512ead94a22709c0e34fb83a473ff39bc04d51cd4b5ffdc0462da",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf",
+    "bytes": 2349568,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x17fcd0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "ordinary_nation": "Taiwan",
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "7807dbbb30151d227adad40bd98e1cd9528fcd00503cb600568a5223e042bb33"
+  },
+  "fresh_evidence": {
+    "selection-reference": {
+      "file": "inventory/client455-selection-reference.json",
+      "sha256": "3d0ba3e9b15a3f2b30b6aeeb1e3d3426c6e8d5792a7f3001ec93765e4be3a8c6"
+    },
+    "selection-bindings": {
+      "file": "inventory/client455-selection-bindings.json",
+      "sha256": "85927f25057e2ee36aa99f56734e11fec7d47a0d89aad594b62b1202323138d1"
+    },
+    "selection-native": {
+      "file": "inventory/client455-selection-native.json",
+      "sha256": "338feb8f394791cd4542de4adfb7d7ac4b7e3831081de98ac6594c8306ab0203"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "7807dbbb30151d227adad40bd98e1cd9528fcd00503cb600568a5223e042bb33"
+    },
+    "player-owner-native": {
+      "file": "inventory/client455-player-owner-native.json",
+      "sha256": "76ce16d9d7306f6f2a70dd93e3e035e3ca49d814a5961c4f4c12f63a9c7c16e5"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "007a522b3d2296996f08c07e29098f1b7fb5b0917dbb236e6f87e23872c764b5"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "12b71527f55820c33661c5f5b832f464ec1053b79edc773ae4234ed4ad8aa317"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "f9d60979d2b512ead94a22709c0e34fb83a473ff39bc04d51cd4b5ffdc0462da"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "55d2bceacc25c99a842e46c3d48c67313cbc5dbd03b5b294c204300a3c4dd5d6"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "dc2329a798034ea9f5eb5373d85987705f369f09e5045746055bef4c05eacb27"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "dec662ace967f9498049373f1672ffc00a37a07c8d5d521063fafba4415a66ff"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "b34d37f6579f3592c41c3d0b8a325aef4c211ea99aa2fd1cf8d7684a48f40691"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "3827db97aa20f7c864f3cf5ca8300a378942e5fcdb77d987e67d8d772170c041"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "eb8829382dd9e34cbd3e8b8d4c361856c7f81224cefce84be81a7d2e67a53fd7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before158/manifest.json",
+    "sha256": "735c65a07080770a92b15a9196a5a97ee12bdd1399ee9576481f91e8179c9236"
+  },
+  "post_selection_failure": {
+    "kind": "UNHANDLED_AFTER_SUCCESSFUL_SELECTION",
+    "own_rva": "0x12c8af",
+    "code": "0xc0000005",
+    "resolved_own_symbols": [
+      {
+        "rva": "0x12c8af",
+        "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+        "offset": "0x5f"
+      },
+      {
+        "rva": "0x97421",
+        "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
+        "offset": "0x61"
+      },
+      {
+        "rva": "0x823d8",
+        "symbol": "?SetSprite@CGUIGaugeExpWindow@@UAEXXZ",
+        "offset": "0x68"
+      },
+      {
+        "rva": "0x81c2f",
+        "symbol": "?Init@CGUIGaugeExpWindow@@UAEXXZ",
+        "offset": "0x31f"
+      },
+      {
+        "rva": "0x26709",
+        "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+        "offset": "0x159"
+      },
+      {
+        "rva": "0x26021",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x41"
+      }
+    ],
+    "cause": "Legacy gauge-exp sprite consumer still uses0.7 SpriteImage/gaugeexp.spr andits atlas;file absent inoriginal455 andstagedlab",
+    "whole_client_run_succeeded": false
+  },
+  "pre_selection_frame": {
+    "file": "work/m9/df69c7ef/selection-live-taiwan001/login-frame.png",
+    "sha256": "753e6ad2327b0b31a84908977ad6f28e0cb42ec21a359063e5a7cf8c3a8de8e4"
+  },
+  "pre_selection_frame_visually_inspected": true,
+  "ordinary_Login": true,
+  "actual_Enter_delivered": true,
+  "live_character_selection_accepted": true,
+  "typed_Avatar_transfer_passed_next_boundary": true,
+  "existing_MainGame_Create_UI_reached": true,
+  "unhandled_exceptions_after_selection": 1,
+  "live_selection_exchange_completed": true,
+  "live_selection_completed": false,
+  "full_selection_stage_accepted": false,
+  "world_entered": false,
+  "playable_world": false,
+  "equal_assembled_render_frames": 3,
+  "explicit_function_bindings": 4,
+  "gaps": [
+    "Full7BB470 equipment-board selection sideeffect/tutorial branch andcomplete53D0F0 state/camera/UI handoff remainunported",
+    "Retained self-copy/unsafe rawvptr/private-padding/all pointeralias lifecycle domains remainunaccepted",
+    "Old0.7Login state/factory/UI/camera policies remainpartial",
+    "Bounded22-byte decoder rejects unsafe short frames;target uncheckedcopy isnot accepted equivalence",
+    "Fullworld/control/gameplay/FP/clone/remaining clientacceptance open",
+    "MainGame0.7UI sprite/layout/provider migration isnext concrete blocker;do not stage renamedfake gauge skin"
+  ],
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "full_client": false,
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

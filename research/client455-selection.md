@@ -1,0 +1,80 @@
+# Выбор персонажа и передача Avatar: частичная158
+
+11.11.2026. Own df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf,
+x86/base400000/entry17FCD0,2349568bytes. 182client/67engine/20kernels,
+build/link0/unresolved0. Engine library не менялась. Gate selection-checkpoint:
+**PARTIAL_KNOWN_FAILURE**, мир ещё не достигнут, M9 OPEN.
+
+## Что перенесено
+
+Полный ASM/CFG6+3 функций/689 инструкций сверены с обоими455pins.
+Primary b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b;
+secondary46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558.
+Все адреса ниже — RVA x86/imagebase400000.
+
+- 16B920: запрос group1/op14 с одним BYTE слота. В0.7 opcode13.
+- 16B9D0: ответ group1/op15/22bytes: WORDresult0,serialDWORD2,
+  signed64Dalant6,Gold14. Result сохраняет только lowBYTE; serial и обе
+  суммы обновляются даже при ошибке, затем ReceiveResponse. При
+  mainAvatar.skipTutorial==1 получатель main, иначе выбранный dummy.
+  Исходный0.7ответ был6bytes и денег не обновлял.
+- 3BB470/3AA360/3AA5A0: сохранены event/mouse/keyboard тела. Enter VK13
+  и кнопка вызывают один callback. Полный455callback с equipment board1
+  virtual176 и отдельной Tutorial-ветвью пока не перенесён.
+- 019F50/01A000/06C130: default wrapper part<6/non-null; Clear destination,
+  copy base640, retain payload. Реализован semantic base copy без PRNG,
+  с сохранением derived owner/fade. Raw vptr/padding/self-alias domains не приняты.
+- В обычном post-selection handoff убраны legacy GetDefaultItem/GetEquipItem:
+  шесть typed defaults и11typed worn slots, copied skipTutorial, настоящие
+  менеджеры/счётчики ссылок. Полные stage/camera/UI/lifecycle остаются открыты.
+
+## Практические результаты
+
+Точный157 snapshot перед изменениями сохранён вbefore158:69files,
+7 560 626bytes новых копий и2 020 573bytes общих с неизменяемым предыдущим
+snapshot. Hardlinks связывают только snapshots собственных копий, не originals
+или изменяемые build outputs. Код дополнительно сохраняется локальным Git.
+
+Новый маленький native probe использует настоящие send/receive rings,
+codec, dispatcher и Avatar wallet. Проверены неполные22bytes, WORD256→BYTE0,
+signed64значения за32bit и четыре значения skipTutorial (0/1/2/FFFFFFFF).
+Зашифрованный ответ подаётся двумя фрагментами. Никакого реального аккаунта
+в этом probe нет. Финальный work/m9/836ac6ec/selection-001 exit0.
+
+Actual owner work/m9/7f0d9d32/player-owner-001 exit0: новый retained default
+проверяет счётчик ссылок/ресурс/PRNG и надевание на другого реального Avatar.
+Прежние ownership/frame/свет/skill/Miles сценарии проходят; три PNG равны157.
+Большие неизменённые suites не повторялись.
+
+Live runner после pre-Enter снимка и следующего Render return посылает
+WM_KEYDOWN/UP Enter только HWND своего child, проверив PID. Фокус и системный
+ввод не трогает. Это обычный MsgProc→CGUISelectCharacter→EventJoinGameFunc,
+а не прямой вызов обработчика или принудительное состояние/сетевой пакет.
+
+Первый candidate c0b63c86 подтвердил tx1/14/1,rx1/15/22,select-result0,
+затем отказал в legacy equipment handoff. После исправления final df69c7ef:
+реальный Enter/selection success проходят и stack достигает MainGame::Create_UI.
+Live work/m9/df69c7ef/selection-live-taiwan001. Pre-Enter кадр просмотрен,
+персонаж освещён. Также наблюдён8/5/9; его полный контракт ещё не принят.
+Секреты/rawpackets не сохранены, temporary handoff удалён. Сервер/оригиналы
+не менялись; запущены только свои EXE. IDAb44716bd saved/closed/list0.
+
+## Следующий реальный отказ
+
+После успеха выбора есть **одно необработанное C0000005**, ownRVA12C8AF:
+GetSpriteXL@CSprite+5F ← SetSpriteInfo@CGUIObjectAni ←
+SetSprite@CGUIGaugeExpWindow ← Init@CGUIGaugeExpWindow ←
+Create_UI@CGP_MainGame ← Create@CGP_MainGame ← GameMainLoop@CMainApp.
+Функции сопоставлены с текущим собственным link map, а не с адресами455.
+
+Create_UI вызывает UI_LoadSprite, но legacy SP_ID_GAUGE_EXP2 ещё использует
+`./SpriteImage/gaugeexp.spr`. Этот путь отсутствует и в original455, и вlab,
+также отсутствует localizedzh-tw/gaugeexp.spr. Имеющийся bridge маршрутизирует
+только первые пять system namespaces. Следующий159: восстановить настоящие
+455MainGame UI providers/atlas/layout/create, без переименования чужой
+страницы под старую skin и без скрытия падающего виджета. Затем настоящий
+world/avatar/control. Наличие MainGame::Create в стеке не означает мир.
+
+Функции с адресным доказательством2231(+6),полный листинг/CFG403(+7),из37865.
+Четыре новые source bindings — не четыре полностью эквивалентные функции.
+Плановая оценка25%(20–35%),0/12полных областей, M6/M6F/M7/M9OPEN.

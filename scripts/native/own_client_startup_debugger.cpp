@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#pragma comment(lib,"user32.lib")
 
 namespace {
 struct Module {std::uintptr_t base;DWORD size;std::wstring path;};
@@ -49,19 +50,23 @@ int wmain(int argc,wchar_t** argv){
         std::fprintf(output,"{\"kind\":\"create_error\",\"error\":%lu}\n",GetLastError());std::fclose(output);return 204;
     }
     DebugSetProcessKillOnExit(TRUE);std::fprintf(output,"{\"kind\":\"created\",\"pid\":%lu}\n",process.dwProcessId);std::fflush(output);
-    std::string finalLabel="before_character_data";bool captureLoginFrame=false,captureSeen=false;DWORD loginObject=0;
+    std::string finalLabel="before_character_data";bool captureLoginFrame=false,captureSeen=false,selectionMode=false;DWORD loginObject=0;ULONGLONG selectionDeadline=0;
     if(argc==7){
         const std::wstring mode=argv[6];
         if(mode==L"after_create")finalLabel="after_client_create";
         else if(mode==L"login_create")finalLabel="before_login_create";
         else if(mode==L"login_render")finalLabel="before_login_render";
         else if(mode==L"login_frame"){finalLabel="before_login_render";captureLoginFrame=true;}
+        else if(mode==L"selection"){finalLabel="before_login_render";captureLoginFrame=true;selectionMode=true;}
         else{std::fclose(output);TerminateProcess(process.hProcess,0xe0434207);CloseHandle(process.hThread);CloseHandle(process.hProcess);return 208;}
     }
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?180000:20000);
     while(!exited){
+        if(selectionDeadline&&GetTickCount64()>selectionDeadline&&!terminating){
+            timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"selection_observation_end\"}\n",output);TerminateProcess(process.hProcess,0xe0434200);terminating=true;
+        }
         if(terminating && GetTickCount64()>deadline+5000){std::fputs("{\"kind\":\"termination_timeout\"}\n",output);break;}
         if(GetTickCount64()>deadline && !terminating){timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"timeout\"}\n",output);TerminateProcess(process.hProcess,0xe0434201);terminating=true;}
         DEBUG_EVENT event={};if(!WaitForDebugEvent(&event,100)){if(GetLastError()!=ERROR_SEM_TIMEOUT){std::fprintf(output,"{\"kind\":\"wait_error\",\"error\":%lu}\n",GetLastError());break;}continue;}
@@ -95,7 +100,17 @@ int wmain(int argc,wchar_t** argv){
                         std::fprintf(output,"{\"kind\":\"device_state\",\"read\":%s,\"ready\":%lu,\"window\":\"0x%lx\",\"device\":\"0x%lx\",\"windowed\":%lu}\n",ok?"true":"false",values[0],values[1],values[2],values[3]);
                     }
                     const bool loginEntry=captureLoginFrame&&found==points+3;
-                    if(found==points || (deviceMode&&found->rva!=stopRva&&found!=points+4)||loginEntry){
+                    const bool selectionInput=selectionMode&&found==points+4&&!selectionDeadline;
+                    if(found==points || (deviceMode&&found->rva!=stopRva&&found!=points+4)||loginEntry||selectionInput){
+                        if(selectionInput){
+                            DWORD window=0,childPID=0;SIZE_T read=0;
+                            const bool valid=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[2]+plan[4]),&window,4,&read)&&read==4&&window;
+                            if(valid)GetWindowThreadProcessId(reinterpret_cast<HWND>(window),&childPID);
+                            //Addressed messages only:never change focus or emit system keyboard input.
+                            const bool sent=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_KEYDOWN,VK_RETURN,1)&&PostMessageW(reinterpret_cast<HWND>(window),WM_KEYUP,VK_RETURN,0xc0000001);
+                            std::fprintf(output,"{\"kind\":\"selection_key_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",valid&&childPID==process.dwProcessId?"true":"false",sent?"true":"false");
+                            stopReached=true;selectionDeadline=GetTickCount64()+15000;
+                        }
                         if(found==points)mainReached=true;
                         if(deviceMode&&found==points+1){DWORD full=0,bits=0;SIZE_T read=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[0]),&full,4,&read);ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[1]),&bits,4,&read);std::fprintf(output,"{\"kind\":\"render_configuration\",\"fullscreen\":%lu,\"render_bits\":%lu}\n",full,bits);}
                         if(loginEntry){

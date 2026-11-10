@@ -1,3 +1,48 @@
+# Частичная158 — сервер принял выбор, достигнут MainGame::Create_UI
+
+11.11.2026. Own df69c7efc4e996ce888bc95f45004073464caa5116dd7610d0ca8e35e1c21adf,
+x86/base400000/entry17FCD0/2349568bytes.182client/67engine/20kernels,build-link0.
+Engine unchanged. Gate selection-checkpoint PARTIAL_KNOWN_FAILURE,не fullPASS.
+Before158 сохранёнexact157/69files:7,560,626bytes copied и2,020,573shared only
+withimmutable prior snapshot. Originals/build outputs неhardlinked.
+
+FullASM/CFG6+3functions/689instructions pinnedboth455. RVA16B920 request1/14/1;
+16B9D0 response1/15/22:WORDresult0 lowBYTE stored,serialDWORD2,dalant64@6,
+gold64@14. Storesoccur evenonerror,beforeReceiveResponse. Main skipTutorial==1
+choosesmain,allotherDWORDvalues choosem_Course dummy. Boundedshort rejectsopen.
+Sourceprotocol declarations corrected13/14→14/15/22;dispatcherboundedguard.
+Source files:client455_selection.h/.inc/port.py. GetterSelectedSlot usesactual
+COURSE enumglobal withoutcrossTU typeguess. Native work/m9/836ac6ec/selection-001
+actual encrypted fragmented dispatch/4wallet routes/WORD256→BYTE0/signed64 PASS.
+
+Livec0b63c86 actualEnter→success hitoldGetEquipItem inAvatarhandoff. Fixedtyped
+6defaults/11worn transfer andcopiedskipTutorial. Target419F50→46C130 clears/copies
+base640/retains;sourceCopyRetainedState455 semanticbasecopy,derivedowner/fadeleft,
+noPRNG. GetDefault41A000 recorded. Nativeownerwork/m9/7f0d9d32/player-owner-001
+newdefaultref/PRNG/resources/otherAvatarwear PASS;3priorPNG equal157.
+Rawvptr/padding/selfcopy/aliases/allCloneLifecycle NOTaccepted. FullEventJoin7BB470
+stillhasunported equipment-board1virtual176/tutorialbranch;ordinarynonzero skip
+path exercised. Mouse7AA360/keyboard7AA5A0 recorded,notfullUIportclaim.
+
+Runneraddedselectionmode:afterrealLoginframe+followingRenderreturn posts
+WM_KEYDOWN/UP VK_RETURN onlytoownedchild HWND afterPIDcheck;nofocus/systeminput.
+Livefinalwork/m9/df69c7ef/selection-live-taiwan001:
+tx1/14/1→rx8/5/9→rx1/15/22→select-result0. Handoffremoved,noaccountkeys/rawpackets.
+PreEnterimageinspected,lightroutepreserved. OneUNHANDLED C0000005 afterselection:
+own12C8AF GetSpriteXL+5F ← SetSpriteInfo@CGUIObjectAni ← SetSprite/Init GaugeExp
+← Create_UI/Create MainGame ← GameMainLoop MainApp. Client reachesexisting
+MainGame creation,NOT renderedworld. OwnmapSHA2193f2158d2ba0ab1a6eff8fcd7aa4efdcff5d67bc05dcdf1d4c886d0d1d5eb9.
+LegacySP_ID_GAUGE_EXP2 requests./SpriteImage/gaugeexp.spr;absentinoriginal/lab/
+zh-tw. SpriteMgr bridge only5systemIDs. Needreal455HUD/atlas/provider/create,
+not renamedoldskin/hidingwidget. MainGame UI isthenext159.8/5/9contractstillopen.
+
+Functionevidence2231(+6)/complete403(+7),of37865;4newsourcebindings,totalsfull
+implementation/equivalence null. Activepoint158 explicitlyretainsknownfailure.
+Before159 preserveexact158 viautility;before158=157 staysimmutable. No server/
+originalmods,nobigunchangedsuites. IDAb44716bd saved/closed/list0,nativejobsdone.
+M6/M6F/M7/M9OPEN,25%(20–35%),0/12. Research:client455-selection.md.
+Ниже исторические записи.
+
 # Частичная157 — освещение живого персонажа восстановлено
 
 11.11.2026. Own88dc3d11da68117f327510e40162a27ab6e46089a1446b62af1416c56b3f9917,
