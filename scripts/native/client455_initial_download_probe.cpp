@@ -1,4 +1,5 @@
 #include "client455_initial_download.h"
+#include "client455_world_updates.h"
 
 #include <array>
 #include <cstdio>
@@ -227,6 +228,46 @@ void store()
     check(!RF455_ReadStoreDownload(bytes.data(), 33, packet) && packet.entries[1].position[1] == 0,
           "nonfinite store coordinates preserve previous state");
 }
+
+template<class Record, std::size_t Size>
+Record readWorldFixture(const std::array<char, Size>& bytes) {
+    Record record{};
+    check(!RF455_ReadWorldRecord(bytes.data(), Size - 1, record), "short world record");
+    check(!RF455_ReadWorldRecord(bytes.data(), Size + 1, record), "oversize world record");
+    check(!RF455_ReadWorldRecord(nullptr, Size, record), "null world record");
+    check(RF455_ReadWorldRecord(bytes.data(), Size, record), "valid world record");
+    return record;
+}
+
+void worldUpdates() {
+    std::array<char, 17> spawn{};
+    write(spawn, 0, std::uint16_t{321});
+    write(spawn, 2, std::uint16_t{42});
+    write(spawn, 4, std::uint32_t{0x12345678});
+    write(spawn, 8, std::int16_t{-4800});
+    write(spawn, 12, std::int16_t{4200});
+    write(spawn, 14, std::uint8_t{128});
+    write(spawn, 15, std::uint16_t{0x8041});
+    const auto actor = readWorldFixture<RF455MonsterSpawn>(spawn);
+    check(actor.record == 321 && actor.zoneIndex == 42 && actor.serial == 0x12345678 &&
+          actor.position[0] == -4800 && actor.position[2] == 4200 &&
+          actor.direction == 128 && actor.flags == 0x8041, "monster spawn layout");
+
+    std::array<char, 14> move{};
+    write(move, 0, std::uint32_t{0x12345678});
+    write(move, 6, std::int16_t{470});
+    write(move, 10, std::int16_t{-4500});
+    const auto motion = readWorldFixture<RF455MonsterMove>(move);
+    check(motion.serial == actor.serial && motion.current[1] == 470 &&
+          motion.targetXZ[0] == -4500, "monster movement layout");
+
+    std::array<char, 12> status{};
+    write(status, 0, std::uint32_t{0x87654321});
+    write(status, 4, std::uint64_t{0x8000000000004000});
+    const auto player = readWorldFixture<RF455PlayerStatusUpdate>(status);
+    check(player.serial == 0x87654321 && player.flags == 0x8000000000004000,
+          "64-bit player status layout");
+}
 }
 
 int main()
@@ -240,8 +281,10 @@ int main()
     linker();
     macroAndShout();
     store();
+    worldUpdates();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
               "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,\"store_stride\":16,"
+              "\"world_spawn_bytes\":17,\"world_move_bytes\":14,\"world_status_bytes\":12,"
               "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }

@@ -5,8 +5,8 @@
     "sha256": "abccac20759e70bde11292e1d51d3e788e484a91ad4c5f3ed62f6d31e7b0c8c2"
   },
   "observation": {
-    "file": "work/m9/da42b501/login-frame-live-taiwan001/debug-events.jsonl",
-    "sha256": "1876432f0545478d3b72a94ea4e6281daf3591646fafb74290811b548bf3657e"
+    "file": "work/m9/22421c33/world-walk-live-taiwan003/debug-events.jsonl",
+    "sha256": "d1f00b9aa7fc6aee394f31c3247fd02086255b76cf03e3173afcd59b110d3d2c"
   },
   "observations": [
     {
@@ -16,6 +16,10 @@
     {
       "file": "work/m9/da42b501/login-frame-live-taiwan001/debug-events.jsonl",
       "sha256": "1876432f0545478d3b72a94ea4e6281daf3591646fafb74290811b548bf3657e"
+    },
+    {
+      "file": "work/m9/22421c33/world-walk-live-taiwan003/debug-events.jsonl",
+      "sha256": "d1f00b9aa7fc6aee394f31c3247fd02086255b76cf03e3173afcd59b110d3d2c"
     }
   ],
   "requested": [
@@ -96,6 +100,8 @@
     "CHARACTER/MONSTER/BONE/ZAKAN.BN",
     "CHARACTER/MONSTER/BONE/ZELNAKAN.BN",
     "CHARACTER/MONSTER/BONE/ZELNAKANVAFERNIPPER.BN",
+    "CHARACTER/MONSTER/MESH/WING.MSH",
+    "CHARACTER/MONSTER/MESH/YOUNGFLEM.MSH",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_000.BN",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_001.BN",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_002.BN",
@@ -504,10 +510,61 @@
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_004.BN",
     "CHARACTER/UNIT/BONE/BALLISTA.BN",
     "CHARACTER/UNIT/BONE/TITAN.BN",
-    "ITEM/WEAPON/MESH/COM_WEAPON_TBOW_117.MSH",
-    "character/player/ani/belfemale_peace_stand_none_none_01_00.ani"
+    "character/monster/ani/youngflem_peacestand_01_00.ani",
+    "character/monster/ani/youngflem_peacewalk_01_00.ani",
+    "character/monster/ani/youngflem_warattack_01_00.ani",
+    "character/monster/ani/youngflem_warcorpse_01_00.ani",
+    "character/monster/ani/youngflem_wardie_01_00.ani"
   ],
   "inputs": [
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Ani\\RFSInfo.dat",
+      "relative": "Character/Monster/Ani/RFSInfo.dat",
+      "sha256": "668ab61544c9f51f695e3e51c3caf1c925662fee83461a61e2260928e438692c",
+      "bytes": 1043
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Ani\\YZMONA.RFS",
+      "relative": "Character/Monster/Ani/YZMONA.RFS",
+      "sha256": "d8a4407d50d509799f03c5cbf073801e60e4be0a560b7d4b7a49899537b07466",
+      "bytes": 388354
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Mesh\\RFSInfo.dat",
+      "relative": "Character/Monster/Mesh/RFSInfo.dat",
+      "sha256": "44f5f6f47291cdc159c234ed71a9425d35b37e32ab0f0df35acd5f12bde94f69",
+      "bytes": 945
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Mesh\\WXMONM.RFS",
+      "relative": "Character/Monster/Mesh/WXMONM.RFS",
+      "sha256": "e9183af2b30f6ede866ee7f3dce9a83115005f84e3b051709600686b3a1f3fdb",
+      "bytes": 421392
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Mesh\\YZMONM.RFS",
+      "relative": "Character/Monster/Mesh/YZMONM.RFS",
+      "sha256": "0054e27225922196648eed3b0d8934c2ab4f29689548dd517e7cc5fdf0e97575",
+      "bytes": 177084
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Tex\\EFMONT.RFS",
+      "relative": "Character/Monster/Tex/EFMONT.RFS",
+      "sha256": "bc0d819d9cc38449fa6ce41c6a5dabb958ea7d4885f9af4a4525d53924eba1b2",
+      "bytes": 1628916
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Tex\\RFSInfo.dat",
+      "relative": "Character/Monster/Tex/RFSInfo.dat",
+      "sha256": "fba2fdd96c0156dabbe58bb8021ab587ef4de4a6f6432805a54b22fd0bb481b8",
+      "bytes": 762
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Tex\\WXMONT.RFS",
+      "relative": "Character/Monster/Tex/WXMONT.RFS",
+      "sha256": "aa2ca9044f1bafafc9fb06f2412171280b08a7cada58eae12f4dece3fd382eb1",
+      "bytes": 524700
+    },
     {
       "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\BFETA.RFS",
       "relative": "Character/Player/Ani/BFETA.RFS",
@@ -707,6 +764,210 @@
       "archive": "Character/Player/Ani/BFETA.RFS",
       "offset": 874926,
       "bytes": 33490
+    },
+    {
+      "relative": "CHARACTER/MONSTER/MESH/WING.MSH",
+      "archive": "Character/Monster/Mesh/WXMONM.RFS",
+      "offset": 280752,
+      "bytes": 140640
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/Wing.rft",
+      "archive": "Character/Monster/Tex/WXMONT.RFS",
+      "offset": 175020,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/Wing.rft",
+      "archive": "Character/Monster/Tex/WXMONT.RFS",
+      "offset": 175020,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/Wing.rft",
+      "archive": "Character/Monster/Tex/WXMONT.RFS",
+      "offset": 175020,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/Wing.rft",
+      "archive": "Character/Monster/Tex/WXMONT.RFS",
+      "offset": 175020,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/MESH/YOUNGFLEM.MSH",
+      "archive": "Character/Monster/Mesh/YZMONM.RFS",
+      "offset": 68,
+      "bytes": 177016
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "CHARACTER/MONSTER/TEX/FLEM_LVL01.rft",
+      "archive": "Character/Monster/Tex/EFMONT.RFS",
+      "offset": 885620,
+      "bytes": 349680
+    },
+    {
+      "relative": "character/monster/ani/youngflem_peacestand_01_00.ani",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 181322,
+      "bytes": 14590
+    },
+    {
+      "relative": "character/monster/ani/youngflem_peacewalk_01_00.ani",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 195912,
+      "bytes": 13470
+    },
+    {
+      "relative": "character/monster/ani/youngflem_warattack_01_00.ani",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 209382,
+      "bytes": 27358
+    },
+    {
+      "relative": "character/monster/ani/youngflem_warcorpse_01_00.ani",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 236740,
+      "bytes": 9910
+    },
+    {
+      "relative": "character/monster/ani/youngflem_wardie_01_00.ani",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 263496,
+      "bytes": 43026
     }
   ],
   "missing": [

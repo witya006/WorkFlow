@@ -8985,7 +8985,7 @@
       "id": "CLIENT455-NEUTRALB-CAMERA-184",
       "area": "world",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-world-camera-checkpoint.json",
         "inventory/client455-world-camera-reference.json",
@@ -8996,6 +8996,38 @@
         "Physical mouse, horizontal rotation, sensitivity, UI exceptions and complete camera modes",
         "The avatar partially obstructs the view at the vertical limit. Original camera positioning and collision at that angle still require comparison.",
         "Movement response matching, world dispatch and remaining client scenarios"
+      ]
+    },
+    {
+      "id": "CLIENT455-WORLD-UPDATES-185",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "evidence": [
+        "inventory/client455-world-updates-checkpoint.json",
+        "inventory/client455-world-updates-reference.json"
+      ],
+      "description": "The live client routes selected world updates, applies its avatar status and accepts inbound 4/12 without a world action.",
+      "gaps": [
+        "World update consumers including 4/10 and 4/34 and the 4/3 local correction",
+        "Monster owner integration is tracked in the next checkpoint"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-DATA-186",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-data-checkpoint.json",
+        "inventory/client455-monster-data-reference.json",
+        "inventory/client455-character-tables-native.json"
+      ],
+      "description": "The ordinary Character.edf owner supplies monster rows. NeutralB created 17 monsters and applied 69 movement updates.",
+      "gaps": [
+        "Visible monster draw and animation comparison in a matching scene",
+        "Health fraction, level, effects, movement trajectory and the complete monster lifecycle",
+        "Remaining 455 world, gameplay and acceptance scenarios"
       ]
     }
   ],

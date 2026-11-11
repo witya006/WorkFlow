@@ -94,7 +94,7 @@
         "Исходные MESH/BN/ANI загрузчики,менеджеры,pose/skinning и выбранные normal draw маршруты;список455 применяет имена/уровни/64-битные деньги/обучение к3реальным Avatar"
       ],
       "remaining": [
-        "Полный actor lifecycle,игровой выбор/экипировка/состояния/анимации и все consumers"
+        "Полный actor lifecycle,видимость,здоровье и анимация монстров,игровой выбор/экипировка и все consumers"
       ],
       "evidence": [
         "client455-normal-renderer-checkpoint",
@@ -174,7 +174,7 @@
       "estimate_high": 25,
       "completed_full_domain": false,
       "done": [
-        "После выбора загружена NeutralB, принят ответ стартовой позиции3/2, продолжены входящие обновления мира"
+        "После выбора загружена NeutralB, принят ответ стартовой позиции3/2,созданы монстры и применены обновления движения"
       ],
       "remaining": [
         "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
@@ -192,7 +192,9 @@
         "client455-linker-download-checkpoint",
         "client455-macro-download-checkpoint",
         "client455-store-download-checkpoint",
-        "client455-avatar-world-checkpoint"
+        "client455-avatar-world-checkpoint",
+        "client455-world-updates-checkpoint",
+        "client455-monster-data-checkpoint"
       ]
     },
     {
@@ -296,7 +298,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8",
+      "sha256": "c833dbfa9590acb13c4b9e53870c978176584e999fb076d6417f71d7291a8189",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -782,6 +784,22 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-world-updates-checkpoint": {
+      "file": "inventory/client455-world-updates-checkpoint.json",
+      "sha256": "4f941f262f4295e5075405d5e93a24b1e7fe23c321ed87d50a830c249908ed59",
+      "status": "PARTIAL_LIVE_WORLD_UPDATE_DISPATCH",
+      "scope": "Ordinary NeutralB applies its avatar status, accepts the position no-op, and decodes monster spawn and movement.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-monster-data-checkpoint": {
+      "file": "inventory/client455-monster-data-checkpoint.json",
+      "sha256": "b871ceeb40c49bd9bead64010615cc4001a8d47c5bc763e2a06a03cfe7bedab8",
+      "status": "PARTIAL_LIVE_MONSTER_DATA",
+      "scope": "Ordinary NeutralB creates monsters using Character.edf rows and applies selected movement updates.",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
       "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
@@ -846,11 +864,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
-      "bytes": 2380800,
+      "sha256": "22421c338a8a35bbe8cdab472fed4bbb03afe1cd78363fa0e96e43150fa5ab30",
+      "bytes": 2382848,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x186630",
+      "entry_rva": "0x186cf0",
       "sections": [
         ".text",
         ".rdata",
@@ -875,22 +893,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6",
+      "sha256": "678938c67127c9f618b027b62ab7c235a679b4044c7691731da2056bdda62cbc",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-world-camera-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-monster-data-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8",
+      "link_sha256": "c833dbfa9590acb13c4b9e53870c978176584e999fb076d6417f71d7291a8189",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
-        "bytes": 2380800,
+        "sha256": "22421c338a8a35bbe8cdab472fed4bbb03afe1cd78363fa0e96e43150fa5ab30",
+        "bytes": 2382848,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x186630",
+        "entry_rva": "0x186cf0",
         "sections": [
           ".text",
           ".rdata",
@@ -900,7 +918,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
+      "build_sha256": "678938c67127c9f618b027b62ab7c235a679b4044c7691731da2056bdda62cbc"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -908,7 +926,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
+        "sha256": "678938c67127c9f618b027b62ab7c235a679b4044c7691731da2056bdda62cbc"
       },
       "build_exit": 0,
       "errors": [],
@@ -918,11 +936,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
-        "bytes": 2380800,
+        "sha256": "22421c338a8a35bbe8cdab472fed4bbb03afe1cd78363fa0e96e43150fa5ab30",
+        "bytes": 2382848,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x186630",
+        "entry_rva": "0x186cf0",
         "sections": [
           ".text",
           ".rdata",
@@ -935,20 +953,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
+        "sha256": "678938c67127c9f618b027b62ab7c235a679b4044c7691731da2056bdda62cbc"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary NeutralB right drags lower the camera elevation parameter to the 455 clamp and change the rendered scene.",
+    "current_work": "Ordinary NeutralB creates monsters using Character.edf rows and applies selected movement updates.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/client455-world-camera-live-taiwan-native.json",
-      "sha256": "964394dd00ba6c21ee89f12155fb776130fba1ac026b318d51910f644e1d4bf7",
+      "file": "artifacts/client455-progress/monster-data186/live.json",
+      "sha256": "db52519cdd9ad3b77ad71e64b5bda6dd2665407208445f3170793be1e819b06e",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/dad137eb/world-camera-live-taiwan001/login-frame.png",
-        "sha256": "895a185f6c5b47043fa0d3bf06cc0112c2a1e9776d00ccd8fbcfabd6cb428c7e"
+        "file": "work/m9/22421c33/world-walk-live-taiwan004/login-frame.png",
+        "sha256": "744958270fe5afa9eddeebee9a4b21b36998d49879005a63705c166b67b0920a"
       },
       "capture": {
         "result": 0,
@@ -956,7 +974,7 @@
         "height": 500,
         "format": 22,
         "frame_index": 122,
-        "elapsed_ms": 8016,
+        "elapsed_ms": 8000,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -972,11 +990,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "1c8b82d8773d7013db46ccdfdb6af53e89c5a86603a3c809603c0c57a28e5188",
-    "entries": 188,
+    "sha256": "cbc6a5d3b49efe2d5588bd8455846a17b318a784c2875afc58c4e678dc0c4c64",
+    "entries": 190,
     "statuses": {
       "partial_component": 13,
-      "partial": 145,
+      "partial": 147,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -986,7 +1004,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-NEUTRALB-CAMERA-184"
+      "CLIENT455-MONSTER-DATA-186"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1056,7 +1074,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;188 overlapping historical records",
+        "measured": "12 domain planning map;190 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1072,7 +1090,7 @@
     "status": "PARTIAL_NATIVE_VERIFIED_ON_PRESERVED143",
     "reference_report": {
       "file": "inventory/client455-character-tables-reference.json",
-      "sha256": "8d1fcf4dcdf22a0f05ec34bb87d01fb9b10c78af6086405ba2e48c0152204e57"
+      "sha256": "336abca693cabc2db6c04fd2ab93349de1648663ca0e640bc3d4b686d9cbacee"
     },
     "static_functions": 15,
     "real_input_diagnostics": [
@@ -1218,7 +1236,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "6fc330d973c0d59846c0579bcfe393ccb540ff64b5c9285791c7c366c9e42bfd"
+    "sha256": "6be8895d2649834fa7b8cb232abef9863feb7dfd19c6adfc36a46b3716069272"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

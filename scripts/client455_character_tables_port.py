@@ -1,7 +1,18 @@
-"""Load455character tables through the normal manager;legacy typed consumers open."""
+"""Load 455 character tables and adapt the monster records to the normal owner."""
+
+from client455_trade_ore_port import replace
+
+
 def port_character_tables(raw,relative,section):
     if relative=='datatable/ccharacterdatamgr.h':
         raw=b'#include "client455_character_tables.h"\n'+raw
+        raw=replace(raw,b'class CMonsterData : public BASE_DATA\n{',
+                    b'class CMonsterData : public BASE_DATA\n{\n\tfriend class CCharacterDataMgr;')
+        raw=replace(raw,b'CDataMgr \t\t\tm_listMonster;',b'std::vector<CMonsterData> m_monsters455;')
+        raw=replace(raw,b'( CMonsterData * )m_listMonster.GetData( pi_dwIndex )',
+                    b'pi_dwIndex < m_monsters455.size() ? &m_monsters455[pi_dwIndex] : nullptr')
+        raw=replace(raw,b'return m_listMonster.GetTotalNum();',
+                    b'return static_cast<DWORD>(m_monsters455.size());')
         anchor=b'\tDT_PlayerList \t\tm_listPlayer;'
         if raw.count(anchor)!=1:raise ValueError('Character data owner boundary changed')
         raw=raw.replace(anchor,b'\tRF455CharacterTables m_tables455;\n'+anchor)
@@ -9,10 +20,16 @@ def port_character_tables(raw,relative,section):
         if raw.count(anchor)!=1:raise ValueError('Character data public boundary changed')
         raw=raw.replace(anchor,anchor+b'\n\tconst RF455CharacterTables& Tables455()const{return m_tables455;}\n\tRF455ItemDataSpan GetClassData455(const char*);\n\tRF455ItemDataSpan GetClassData455ByIndex(DWORD);')
         return raw,True
+    if relative=='character/npc/cmonster.cpp':
+        # The 455 attribute initializer sets a health fraction, not a maximum
+        # loaded from the record. The legacy integer health owner needs its own port.
+        first=raw.index(b'\tSetMaxHP( m_pMonsterData->m_dwMaxHP );')
+        last=raw.index(b'\tSetScale( m_pMonsterData->m_fScale );',first)
+        return raw[:first]+raw[last:],True
     if relative!='datatable/ccharacterdatamgr.cpp':return raw,False
     anchor=b'#include "CCharacterDataMgr.h"'
     if raw.count(anchor)!=1:raise ValueError('Character includes changed')
-    raw=raw.replace(anchor,anchor+b'\n#include "client455_client_items.h"\n#include "client455_nation_paths.h"\n#include "client455_language.h"\n#include "network/cnetworkmgr.h"\n#include <string>')
+    raw=raw.replace(anchor,anchor+b'\n#include "client455_client_items.h"\n#include "client455_nation_paths.h"\n#include "client455_language.h"\n#include "network/cnetworkmgr.h"\n#include <cstring>\n#include <string>')
     def edit(signature,change):
         nonlocal raw
         first,last=section(raw,signature,signature);raw=raw[:first]+change(raw[first:last])+raw[last:]
@@ -43,10 +60,33 @@ def port_character_tables(raw,relative,section):
         auto& data=RF455_GameItems().data;
         const bool result=m_tables455.loadCharacterFiles(data);
         m_byMaxAnimusTypeNum=static_cast<BYTE>(data.characterTables()[6].count/81);
+
+        // The 455 type-1 table is indexed by row order. Own these legacy
+        // records for the lifetime of actors that retain a pointer to them.
+        const auto& monsters=data.characterTables()[2];
+        if (monsters.count && monsters.stride < 68) return FALSE;
+        m_monsters455.resize(monsters.count);
+        for (DWORD index=0; index<monsters.count; ++index) {
+            auto& monster=m_monsters455[index];
+            const auto* row=monsters.get(index).data;
+            std::memcpy(&monster.m_dwMeshID,row+4,sizeof(monster.m_dwMeshID));
+            std::memcpy(monster.m_pName,row+8,sizeof(monster.m_pName)-1);
+            std::memcpy(&monster.m_fAttackRange,row+56,sizeof(monster.m_fAttackRange));
+            monster.m_byMoveSpeed[0]=row[60];
+            monster.m_byMoveSpeed[1]=row[61];
+            monster.m_byWidth=row[62];
+            std::memcpy(&monster.m_fScale,row+64,sizeof(monster.m_fScale));
+            monster.m_dwEffectValue=ID_INVALID;
+            monster.m_dwAttackEffectMaterial=ID_INVALID;
+            monster.m_dwDefenceEffectMaterial=ID_INVALID;
+        }
         return result?TRUE:FALSE;
     }''')
-    # File IO lives in the shared source owner;the manager never casts rows to
-    # the old CPlayerClass/DT_CNMInfo/SF structures.
+    edit(b'CCharacterDataMgr::GetMonster( DWORD pi_dwIndex )',lambda _:b'''CCharacterDataMgr::GetMonster( DWORD pi_dwIndex ){
+        return GetMonsterByOrder(pi_dwIndex);
+    }''')
+    # File IO lives in the shared source owner. Serialized rows do not alias
+    # the legacy C++ objects.
     raw+=b'''
 RF455ItemDataSpan CCharacterDataMgr::GetClassData455(const char* code){return RF455_GameItems().data.classByCode(code);}
 RF455ItemDataSpan CCharacterDataMgr::GetClassData455ByIndex(DWORD index){return RF455_GameItems().data.classByIndex(index);}

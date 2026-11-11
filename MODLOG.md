@@ -1,3 +1,15 @@
+2026-11-11 — NeutralB 186, PARTIAL_LIVE_MONSTER_DATA.
+
+The normal character manager supplies monster records by table order.
+The live client created 17 monsters and applied 69 movement updates.
+[Evidence and remaining work](research/client455-monster-data.md)
+
+2026-11-11 — NeutralB 185, PARTIAL_LIVE_WORLD_UPDATE_DISPATCH.
+
+The client routed selected world messages and applied two avatar status
+updates. At this checkpoint the monster table owner still lacked data.
+[Evidence](research/client455-world-updates.md)
+
 2026-11-11 — NeutralB 184, PASS_LIVE_RIGHT_DRAG_ELEVATION.
 Restored the 455 ordinary right-drag vertical clamp and captured the
 sky in the live client. The avatar partially obstructs the extreme view.

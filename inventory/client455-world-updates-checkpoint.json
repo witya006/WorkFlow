@@ -1,0 +1,115 @@
+{
+  "status": "PARTIAL_LIVE_WORLD_UPDATE_DISPATCH",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "91fdb611c4e70bfb507b510b10890e7b85f6b3cdb6f2913098a58511e129ece1",
+    "bytes": 2381824,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1869f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "62a515ff3a9b0e2bd29ef95da727d4d9a13ba96974bdf36ea6c4fbc76992f4cc",
+  "scope": "Ordinary NeutralB applies its avatar status, accepts the position no-op, and decodes monster spawn and movement.",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "62a515ff3a9b0e2bd29ef95da727d4d9a13ba96974bdf36ea6c4fbc76992f4cc"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "2f7be5b4fdb5fdd93a19b5d2f5e4387a05c162b2544734773e4d54dbc8befd85"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "8f549e1a6a0b8e46612a862ff7e3a90cec916234883cf669e0e7b1e1a5b9888d"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "1330a837c745bca9cfc70f395a9573c1dafb64bd06ff5da39cb86ecb1e0fe2d3"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "64dde95f8336b8e841e628ef2ee253073363923fc3f24f87b863109c4d65ac1b"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "9e6c9e524e78670c528b00fd9aac8783f125ee79378880451f661b1a671e0d65"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "91f47d670fe7d8157a85eaba9fed0a15d69cceb2ac4850086b65c2df1ab0c611"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "6a525c47176a83404874d7925c603732bf6e7807c1d63d6eceb862aa0033243d"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "c5fa2a0acdb0a5c4db7971db7bc1fea7e1d3ba90fa47e38415de677ae6091bf4"
+    },
+    "world-updates-reference": {
+      "file": "inventory/client455-world-updates-reference.json",
+      "sha256": "a6336dceec394897d8d7c39ec893955f30b3966fbfffef147aa06fa3e0090d29"
+    },
+    "world-updates-live": {
+      "file": "artifacts/client455-progress/client455-world-walk-live-taiwan-native.json",
+      "sha256": "23b2b118faf73c30aedd3f7c27ddd9c3c4190184e6d1ed2c6ce53db2804f92c9"
+    },
+    "world-updates-raw": {
+      "file": "artifacts/client455-progress/position185-reference.json",
+      "sha256": "80699cb457b16755e588c891d6db57c2e30aff095847bbdac95fc903555b9d53"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/client455-world-walk-live-taiwan-native.json",
+    "sha256": "23b2b118faf73c30aedd3f7c27ddd9c3c4190184e6d1ed2c6ce53db2804f92c9"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_world_updates.py",
+    "sha256": "b63cd24e7c55c3319a27430009f14f4d476b8b83466ba18bede4af80ac6235bb"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "b33e1cdef1157f687c2aceea0b410e12db8ba7a07836269a4eeecbaa0cc78274"
+    },
+    {
+      "file": "scripts/native/client455_world_updates.h",
+      "sha256": "e7a43aa96047c8208c24351746556e6b675811d224812ea53c0f0e35072836a2"
+    },
+    {
+      "file": "scripts/native/client455_world_monster_spawn.inc",
+      "sha256": "603cf88296d447126cecdc6515a043fb32eeb43812142bd205ca412a4bd999c5"
+    },
+    {
+      "file": "scripts/native/client455_world_position.inc",
+      "sha256": "8bf903f973f947e1987efbdec8fef9bbdc52238da5842f98f39a1317b7322805"
+    }
+  ],
+  "own_symbols": {
+    "?InitMsg_MonsterSpawn455@CNetworkMgr@@IAE_NPBDI@Z": "0x4df70",
+    "?PositionMsg_MonsterMove455@CNetworkMgr@@IAE_NPBDI@Z": "0x514d0",
+    "?PositionMsg_PlayerStatus455@CNetworkMgr@@IAE_NPBDI@Z": "0x52100"
+  },
+  "monster_spawn_records": 17,
+  "monster_spawn_applied": 0,
+  "monster_move_records": 72,
+  "monster_move_applied": 0,
+  "avatar_status_updates_before_input": 2,
+  "accepted_noop": 60,
+  "refresh_packets_unported": 94,
+  "single_byte_updates_unported": 1,
+  "own_move_error_packets": 0,
+  "matched_server_movement_ack": false,
+  "own_avatar_walk_and_stop_verified": true,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

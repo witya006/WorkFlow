@@ -71,6 +71,23 @@ static int run(){
         checkTable(tables.players,expected[0]);checkTable(tables.stores,expected[1]);
         for(unsigned i=0;i<5;++i)checkTable(items.skillForce.records()[i],expected[2+i]);
         for(unsigned i=0;i<7;++i)checkTable(data.characterTables()[i],expected[7+i]);
+        const auto& monsters=data.characterTables()[2];
+        require(manager.GetTotalMonsterNum()==monsters.count&&monsters.count>4,
+                "Ordinary monster owner has the complete table");
+        for (DWORD index : {0u,1u,4u,monsters.count-1}) {
+            auto* row=manager.GetMonsterByOrder(index);
+            require(row&&row==manager.GetMonster(index)&&row==manager.GetCharacter(CTI_MONSTER,index),
+                    "Ordinary monster lookup preserves row identity");
+            CMonster actor;
+            actor.SetData(row);
+            float attackRange=0;
+            const auto* expectedRow=monsters.get(index).data;
+            std::memcpy(&attackRange,expectedRow+56,sizeof(attackRange));
+            require(actor.GetWidth()==expectedRow[62]&&actor.GetAttackRange(0)==attackRange,
+                    "Monster actor uses the decoded width and attack range");
+        }
+        require(manager.GetMonster(1)!=manager.GetMonster(4)&&!manager.GetMonster(monsters.count)
+                &&!manager.GetMonster(ID_INVALID),"Distinct monster rows and bounds");
         Crc desc;for(const auto& bytes:tables.storeDescriptions){desc.word(unsigned(bytes.size()));desc.add(bytes.data(),bytes.size());}
         require(desc.get()==descriptions&&manager.GetMaxAnimusTypeNum()==animus&&animus==8,"Store owned descriptions and animus group divisor81");
         checkBoard(manager.GetSkillBoard(),7,12);checkBoard(manager.GetForceBoard(),6,24);

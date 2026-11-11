@@ -21,6 +21,7 @@ def main():
     require(parsed['status'] == 'PASS', 'Native initial-download result')
     report = dict(status='PASS', native=parsed, source=record(source), script=record(Path(__file__)),
                   header=record(source.with_name('client455_initial_download.h')), executable=record(exe),
+                  world_header=record(source.with_name('client455_world_updates.h')),
                   console=record(console), normal_link_sha256=sha(WS / 'inventory/client455-normal-link.json'))
     (WS / 'inventory/client455-initial-download-native.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(parsed))

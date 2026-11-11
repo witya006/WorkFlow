@@ -1,0 +1,138 @@
+{
+  "status": "PARTIAL_LIVE_MONSTER_DATA",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "22421c338a8a35bbe8cdab472fed4bbb03afe1cd78363fa0e96e43150fa5ab30",
+    "bytes": 2382848,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x186cf0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "c833dbfa9590acb13c4b9e53870c978176584e999fb076d6417f71d7291a8189",
+  "scope": "Ordinary NeutralB creates monsters using Character.edf rows and applies selected movement updates.",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "c833dbfa9590acb13c4b9e53870c978176584e999fb076d6417f71d7291a8189"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "5ef021e105da26f61c973207ca2f646a194b30589a99f20d3291717be3f17819"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "678938c67127c9f618b027b62ab7c235a679b4044c7691731da2056bdda62cbc"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "7142fdf3b015b6a89a6dd52b9360a98c9deca94c0433e78ffe352ae4eaffb502"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "2a57cdadf1857e2c43fbe43ac1b0ba0d8a85c1f73e9e5a07ea44017988b2667b"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "309a5605c83d29f0f2f29275fbf0ce8b3b39407514022f15d32eda215e2db577"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "7003e3bd9fbd1d44748cbad0d23399fa0185dfddab6d4110c8c725a673a95f48"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "8e98b61b72c9a372043f46f8b07a8d9433423b7e9c2e833da1adbca781f46d86"
+    },
+    "character-tables-native": {
+      "file": "inventory/client455-character-tables-native.json",
+      "sha256": "bfee27be3bf632a058bcc80505d655e419390ebe88923938373a557ab237fcc5"
+    },
+    "monster-data-reference": {
+      "file": "inventory/client455-monster-data-reference.json",
+      "sha256": "1714a34d97c98ddc9d1c4f02b4392854e81ad3921c9b3736ba34dacaefd3f1bf"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "2180ce211fd9208018033adf9473533b2e20b4b099227a415c4cd92e2c80f5ec"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "8bb0af7344899737895be977296f032ff650ac3838fccba9d68f18957be22c3f"
+    },
+    "monster-data-live": {
+      "file": "artifacts/client455-progress/monster-data186/live.json",
+      "sha256": "db52519cdd9ad3b77ad71e64b5bda6dd2665407208445f3170793be1e819b06e"
+    },
+    "monster-data-raw": {
+      "file": "artifacts/client455-progress/monster-data186/reference.json",
+      "sha256": "dfbdd09b3dd1e56b865bc800de36daf02c846374fc9fe1adf8570a3b201520ed"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/monster-data186/live.json",
+    "sha256": "db52519cdd9ad3b77ad71e64b5bda6dd2665407208445f3170793be1e819b06e"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_data.py",
+    "sha256": "2c679a5cb9a04297212a37603915a9b7697739443258be5949a12d483d9c02c5"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_character_tables_port.py",
+      "sha256": "238f3f9c75e80851cd801151ba2470791239121a01a5d58035b5a9de22bf5096"
+    },
+    {
+      "file": "scripts/native/client455_character_tables_probe.cpp",
+      "sha256": "2f69ba0ee3842cb04531c51caa1460fb0699998e6441d8d43bf8b9779026000d"
+    },
+    {
+      "file": "scripts/native/client455_world_monster_spawn.inc",
+      "sha256": "33b20e11eda468c8b7f2997c80f313f9d6140999a204874c12be7febc64cd3dd"
+    }
+  ],
+  "spawn_records": 17,
+  "spawn_applied": 17,
+  "move_records": 69,
+  "move_applied": 69,
+  "observed_meshes": [
+    {
+      "record": 1,
+      "mesh": 0,
+      "width": 40,
+      "count": 15
+    },
+    {
+      "record": 4,
+      "mesh": 1,
+      "width": 60,
+      "count": 2
+    }
+  ],
+  "avatar_status_applied": 2,
+  "noops": 60,
+  "refresh_packets_unported": 87,
+  "single_byte_updates_unported": 1,
+  "scoped_avatar_walk_and_stop_verified": true,
+  "world_frames": [
+    {
+      "file": "work/m9/22421c33/world-walk-live-taiwan004/world-post-position.png",
+      "sha256": "3fca0e6678402019526767a5aed44a81acb2d24d67d6ae49e39f32d0c9ed79b4"
+    },
+    {
+      "file": "work/m9/22421c33/world-walk-live-taiwan004/world-post-position-settled.png",
+      "sha256": "59110936b13f80ed118bc5fdd6ae48423c39fc007391fe62c024cbea589df224"
+    }
+  ],
+  "full_monster_rendering_accepted": false,
+  "full_monster_combat_accepted": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

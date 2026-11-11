@@ -59,6 +59,7 @@ from client455_party_window_port import port_party_window
 from client455_target_windows_port import port_target_windows
 from client455_initial_download_port import port_initial_download
 from client455_camera_input_port import port_camera_input
+from client455_world_update_port import port_world_updates
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -839,6 +840,8 @@ def main():
             if initial_download_changed:changes.append('455 bounded base, inventory and Force download handlers and opcodes')
             raw,camera_input_changed=port_camera_input(raw,relative,section,native)
             if camera_input_changed:changes.append('455 ordinary right-drag camera pitch bounds and scoped live mouse observation')
+            raw,world_updates_changed=port_world_updates(raw,relative,native)
+            if world_updates_changed:changes.append('455 monster spawn, monster position, player status and acknowledged position no-op routes')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.

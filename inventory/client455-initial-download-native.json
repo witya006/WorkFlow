@@ -14,16 +14,19 @@
     "macro_bytes": 954,
     "shout_bytes": 650,
     "store_stride": 16,
+    "world_spawn_bytes": 17,
+    "world_move_bytes": 14,
+    "world_status_bytes": 12,
     "empty_and_error_results": true,
     "bad_sizes_rejected": true
   },
   "source": {
     "file": "scripts/native/client455_initial_download_probe.cpp",
-    "sha256": "024578b7fff28fac2a4559c60e2f5cb98f49efe6f476d9ec38325f6d29547e72"
+    "sha256": "ec00ffb01e0ca30008343939f138529fc83159d346a26ef4c39365e22266aa17"
   },
   "script": {
     "file": "scripts/probe_client455_initial_download.py",
-    "sha256": "2389f5cc2ebb0acb295e8300d264e80dcdd27e35d05164131f8e505ecaa96653"
+    "sha256": "8eb409f369ecc6b24393658cb2335c299711929c60094444b47d37abf63a3135"
   },
   "header": {
     "file": "scripts/native/client455_initial_download.h",
@@ -31,11 +34,15 @@
   },
   "executable": {
     "file": "work/client455-port/initial-download-probe/initial-download-probe.exe",
-    "sha256": "2e5d0f695b20b9af1d6c3287bdc9e106be0baffe6c29960242cb91dce98dab99"
+    "sha256": "d68c165905afbacb1a70bfd30a6060a0dedbba0e75e62b4e79f7af6350677e86"
+  },
+  "world_header": {
+    "file": "scripts/native/client455_world_updates.h",
+    "sha256": "e7a43aa96047c8208c24351746556e6b675811d224812ea53c0f0e35072836a2"
   },
   "console": {
     "file": "work/client455-port/initial-download-probe/probe-console.txt",
-    "sha256": "7c05b56e10a55718a1013a113583424ba5a7383715475175d9b69e9be889861d"
+    "sha256": "d2c920b348e981fe84da069d374f3ce5ce6c0c14677593232e0a237882e4638a"
   },
-  "normal_link_sha256": "93994cb622cb0400e011b181533f359566bbe3049e41e5de3417e3151b0d7787"
+  "normal_link_sha256": "c833dbfa9590acb13c4b9e53870c978176584e999fb076d6417f71d7291a8189"
 }
