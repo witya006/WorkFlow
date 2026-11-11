@@ -8794,7 +8794,7 @@
       "id": "CLIENT455-ITEM-WORK-171",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-item-work-checkpoint.json",
         "inventory/client455-item-work-reference.json",
@@ -8806,6 +8806,24 @@
         "Full crafting and upgrade requests, authoritative server results and managed item movement",
         "Remaining 455 error paths, locale/device reload behavior and all remaining MainGame startup owners",
         "World entry and M9 acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-SERVICE-WINDOWS-172",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-service-windows-checkpoint.json",
+        "inventory/client455-service-windows-reference.json",
+        "inventory/client455-service-windows-native.json"
+      ],
+      "description": "After accepted character selection, currency exchange, mining, promotion and the Linker attachment return. The next failure is the party member sprite. Live transactions and world entry remain open.",
+      "gaps": [
+        "Live currency transactions and all other item-trade subtypes; economy auxiliary value at payload offset 17",
+        "Full mining conditions, mining packets, timings, tool and resource result behavior",
+        "Ordinary promotion choices and skill owner data, promotion requests and results, related class-reset windows",
+        "Full Linker layout, key and action dispatch, all remaining MainGame owners, world entry and M9 acceptance"
       ]
     }
   ],

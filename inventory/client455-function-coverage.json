@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T00:49:33.668614+00:00",
+  "measured_at_utc": "2026-11-11T01:25:33.401942+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2562,
-    "unique_functions_with_complete_assembly_cfg": 758,
-    "unique_pinned_code_bytes": 721506,
-    "reports": 173,
-    "code_range_occurrences": 4147,
+    "unique_functions_with_pinned_code": 2605,
+    "unique_functions_with_complete_assembly_cfg": 802,
+    "unique_pinned_code_bytes": 734338,
+    "reports": 174,
+    "code_range_occurrences": 4193,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -571,6 +571,10 @@
       "sha256": "3d0ba3e9b15a3f2b30b6aeeb1e3d3426c6e8d5792a7f3001ec93765e4be3a8c6"
     },
     {
+      "file": "inventory/client455-service-windows-reference.json",
+      "sha256": "507c0ea1f1e0ca1352be2f2da1105185222770eb808d53bf1ea2f8e45c53be77"
+    },
+    {
       "file": "inventory/client455-shader-text-reference.json",
       "sha256": "6643a87243dfc56b9796d80a0f294a2a9711d63ad035f4715c70c5dc893b63e6"
     },
@@ -937,6 +941,10 @@
       "sha256": "0c5739e9eae759853a7c356c3abdb5e9371fa07d04de63e47e71b659c95edda1"
     },
     {
+      "file": "artifacts/client455-progress/service-windows172-reference.json",
+      "sha256": "0ff3a89a4b6d1a21748fe0e3e9cd8f4bf6a4f6e9e826c7063a6a6774cc27913a"
+    },
+    {
       "file": "artifacts/client455-progress/shop169-reference.json",
       "sha256": "75d4c42894056e0b2eb2b679c5399ed35d0cf14b1d9477bfeb609918cca0ecff"
     },
@@ -976,7 +984,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "c9a21380f3372b190a0498d44089c1e2da75199a71c4ccad25b342def8a930d6"
+      "sha256": "6ecf9c48e25c4e8305a00cd59c604ba631bafd839d7170439b5a4b77dd8ceb60"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -9986,6 +9994,101 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x91760",
+      "ida_name": "sub_491760",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x91760",
+          "bytes": 114
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 44
+        }
+      ]
+    },
+    {
+      "rva": "0x917e0",
+      "ida_name": "sub_4917E0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x917e0",
+          "bytes": 183
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 64
+        }
+      ]
+    },
+    {
+      "rva": "0x918a0",
+      "ida_name": "sub_4918A0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x918a0",
+          "bytes": 118
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 44
+        }
+      ]
+    },
+    {
+      "rva": "0x91920",
+      "ida_name": "sub_491920",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x91920",
+          "bytes": 104
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 38
+        }
+      ]
+    },
+    {
+      "rva": "0x91990",
+      "ida_name": "sub_491990",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x91990",
+          "bytes": 873
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 234
+        }
+      ]
+    },
+    {
       "rva": "0x91d80",
       "ida_name": "sub_491D80",
       "reports": [
@@ -10588,15 +10691,44 @@
       "rva": "0xea9a0",
       "ida_name": "sub_4EA9A0",
       "reports": [
+        "inventory/client455-service-windows-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
         {
           "rva": "0xea9a0",
           "bytes": 206
+        },
+        {
+          "rva": "0x626cd0",
+          "bytes": 60
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 75
+        }
+      ]
+    },
+    {
+      "rva": "0xeab30",
+      "ida_name": "sub_4EAB30",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xeab30",
+          "bytes": 233
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 71
+        }
+      ]
     },
     {
       "rva": "0xeb830",
@@ -12234,6 +12366,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x113230",
+      "ida_name": "sub_513230",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x113230",
+          "bytes": 53
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 25
+        }
+      ]
     },
     {
       "rva": "0x113f10",
@@ -15229,6 +15380,139 @@
         {
           "file": "artifacts/client455-progress/premium151-reference/session.json",
           "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x197f30",
+      "ida_name": "sub_597F30",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x197f30",
+          "bytes": 43
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 22
+        }
+      ]
+    },
+    {
+      "rva": "0x197f60",
+      "ida_name": "sub_597F60",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x197f60",
+          "bytes": 275
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 94
+        }
+      ]
+    },
+    {
+      "rva": "0x199160",
+      "ida_name": "sub_599160",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x199160",
+          "bytes": 70
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x1991b0",
+      "ida_name": "sub_5991B0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1991b0",
+          "bytes": 70
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x199200",
+      "ida_name": "sub_599200",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x199200",
+          "bytes": 293
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 109
+        }
+      ]
+    },
+    {
+      "rva": "0x199330",
+      "ida_name": "sub_599330",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x199330",
+          "bytes": 80
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x199380",
+      "ida_name": "sub_599380",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x199380",
+          "bytes": 167
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 55
         }
       ]
     },
@@ -22838,7 +23122,8 @@
       "rva": "0x26cb20",
       "ida_name": "sub_66CB20",
       "reports": [
-        "inventory/client455-board-startup-reference.json"
+        "inventory/client455-board-startup-reference.json",
+        "inventory/client455-service-windows-reference.json"
       ],
       "ranges": [
         {
@@ -22849,6 +23134,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/board166-reference.json",
+          "instructions": 67
+        },
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
           "instructions": 67
         }
       ]
@@ -23624,6 +23913,139 @@
       ]
     },
     {
+      "rva": "0x27fe80",
+      "ida_name": "sub_67FE80",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27fe80",
+          "bytes": 791
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 233
+        }
+      ]
+    },
+    {
+      "rva": "0x2801a0",
+      "ida_name": "sub_6801A0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2801a0",
+          "bytes": 292
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 88
+        }
+      ]
+    },
+    {
+      "rva": "0x2802d0",
+      "ida_name": "sub_6802D0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2802d0",
+          "bytes": 133
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 40
+        }
+      ]
+    },
+    {
+      "rva": "0x280360",
+      "ida_name": "sub_680360",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x280360",
+          "bytes": 49
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 20
+        }
+      ]
+    },
+    {
+      "rva": "0x2803a0",
+      "ida_name": "sub_6803A0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2803a0",
+          "bytes": 49
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 20
+        }
+      ]
+    },
+    {
+      "rva": "0x2803e0",
+      "ida_name": "sub_6803E0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2803e0",
+          "bytes": 75
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
+      "rva": "0x280430",
+      "ida_name": "sub_680430",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x280430",
+          "bytes": 172
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 58
+        }
+      ]
+    },
+    {
       "rva": "0x2823b0",
       "ida_name": "sub_6823B0",
       "reports": [
@@ -23639,6 +24061,424 @@
         {
           "file": "artifacts/client455-progress/option164-reference/dependencies.json",
           "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x28d960",
+      "ida_name": "sub_68D960",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28d960",
+          "bytes": 1387
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 396
+        }
+      ]
+    },
+    {
+      "rva": "0x28ded0",
+      "ida_name": "sub_68DED0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28ded0",
+          "bytes": 298
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 96
+        }
+      ]
+    },
+    {
+      "rva": "0x28e000",
+      "ida_name": "sub_68E000",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e000",
+          "bytes": 475
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 144
+        }
+      ]
+    },
+    {
+      "rva": "0x28e1e0",
+      "ida_name": "sub_68E1E0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e1e0",
+          "bytes": 129
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x28e270",
+      "ida_name": "sub_68E270",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e270",
+          "bytes": 688
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 200
+        }
+      ]
+    },
+    {
+      "rva": "0x28e560",
+      "ida_name": "sub_68E560",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e560",
+          "bytes": 107
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 39
+        }
+      ]
+    },
+    {
+      "rva": "0x28e5d0",
+      "ida_name": "sub_68E5D0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e5d0",
+          "bytes": 306
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 97
+        }
+      ]
+    },
+    {
+      "rva": "0x28e710",
+      "ida_name": "sub_68E710",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x28e710",
+          "bytes": 421
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 127
+        }
+      ]
+    },
+    {
+      "rva": "0x290af0",
+      "ida_name": "sub_690AF0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x290af0",
+          "bytes": 2641
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 751
+        }
+      ]
+    },
+    {
+      "rva": "0x291550",
+      "ida_name": "sub_691550",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291550",
+          "bytes": 186
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 63
+        }
+      ]
+    },
+    {
+      "rva": "0x291610",
+      "ida_name": "sub_691610",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291610",
+          "bytes": 21
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 13
+        }
+      ]
+    },
+    {
+      "rva": "0x291630",
+      "ida_name": "sub_691630",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291630",
+          "bytes": 21
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 13
+        }
+      ]
+    },
+    {
+      "rva": "0x291650",
+      "ida_name": "sub_691650",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291650",
+          "bytes": 21
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 13
+        }
+      ]
+    },
+    {
+      "rva": "0x291670",
+      "ida_name": "sub_691670",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291670",
+          "bytes": 41
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x2916a0",
+      "ida_name": "sub_6916A0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2916a0",
+          "bytes": 41
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x2916d0",
+      "ida_name": "sub_6916D0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2916d0",
+          "bytes": 244
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 75
+        }
+      ]
+    },
+    {
+      "rva": "0x2917d0",
+      "ida_name": "sub_6917D0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2917d0",
+          "bytes": 85
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x291830",
+      "ida_name": "sub_691830",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291830",
+          "bytes": 155
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 52
+        }
+      ]
+    },
+    {
+      "rva": "0x2918d0",
+      "ida_name": "sub_6918D0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2918d0",
+          "bytes": 157
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 52
+        }
+      ]
+    },
+    {
+      "rva": "0x291a10",
+      "ida_name": "sub_691A10",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291a10",
+          "bytes": 343
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 102
+        }
+      ]
+    },
+    {
+      "rva": "0x291ba0",
+      "ida_name": "sub_691BA0",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291ba0",
+          "bytes": 669
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 184
+        }
+      ]
+    },
+    {
+      "rva": "0x291e40",
+      "ida_name": "sub_691E40",
+      "reports": [
+        "inventory/client455-service-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x291e40",
+          "bytes": 99
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/service-windows172-reference.json",
+          "instructions": 36
         }
       ]
     },
@@ -42246,8 +43086,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 24,
-    "unique_functions_with_complete_assembly_cfg": 24
+    "unique_functions_with_pinned_code": 0,
+    "unique_functions_with_complete_assembly_cfg": 0
   },
   "M6": "OPEN",
   "M9": "OPEN",

@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+    "bytes": 2369024,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183da0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial exchange, mining, promotion and Linker attachment.",
+  "functions": [
+    {
+      "rva": "0x290af0",
+      "symbol": "CGUIExchangeWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x81ac0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291550",
+      "symbol": "CGUIExchangeWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82570"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291610",
+      "symbol": "CGUIExchangeWindow::SetRaceType",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291630",
+      "symbol": "CGUIExchangeWindow::InitEconomyRatePoint",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x3d2a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291650",
+      "symbol": "CGUIExchangeWindow::InsertEconomyRatePoint",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x820e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291670",
+      "symbol": "CGUIExchangeWindow::SetExchangeRate",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x824e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2916a0",
+      "symbol": "CGUIExchangeWindow::SetExchangeCommission",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x824c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2916d0",
+      "symbol": "CGUIExchangeWindow::SetExchangeAdjustbar",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82390"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2917d0",
+      "symbol": "CGUIExchangeWindow::SetTaxRate",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82930"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291830",
+      "symbol": "CGUIExchangeWindow::SetGold",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82500"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2918d0",
+      "symbol": "CGUIExchangeWindow::SetDalant",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82320"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291a10",
+      "symbol": "CGUIExchangeWindow::MouseEvent",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/npc/guiexchangewindow.cpp",
+        "sha256": "c4e00816e48f4b88ffe26f40c6493880a4cd7c11a3ed7b94f1dd52026efe7fad"
+      },
+      "ordinary_symbol_rvas": [
+        "0x820f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291ba0",
+      "symbol": "CGUIExchangeWindow::ScrollEvent",
+      "source": {
+        "file": "scripts/native/client455_exchange_window.inc",
+        "sha256": "e938541eb7c275b487c39f391791b6c57ed3840d3d9d5bb66bb470eeab1f1ece"
+      },
+      "ordinary_symbol_rvas": [
+        "0x82180"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x291e40",
+      "symbol": "CGUIExchangeWindow::ClosingDialogBox",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/npc/guiexchangewindow.cpp",
+        "sha256": "c4e00816e48f4b88ffe26f40c6493880a4cd7c11a3ed7b94f1dd52026efe7fad"
+      },
+      "ordinary_symbol_rvas": [
+        "0x81940"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x91760",
+      "symbol": "CExchangeBoard::InitWindow",
+      "source": {
+        "file": "work/client455-port/normal/source/gameobject/board/general/cboard_etc.cpp",
+        "sha256": "4ecdcdcdb21014b66bff0d7f1beb12a21fac18c3cda8e119b1e465da98619b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0x13a00"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x917e0",
+      "symbol": "CExchangeBoard::ExchangeMoney_Request",
+      "source": {
+        "file": "scripts/native/client455_exchange_board.inc",
+        "sha256": "7a08c39e280969bc9973b9176ea3123f84bb5c69825c336958ae8b9e6d585087"
+      },
+      "ordinary_symbol_rvas": [
+        "0x138e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x918a0",
+      "symbol": "CExchangeBoard::ExchangeMoney_Result",
+      "source": {
+        "file": "scripts/native/client455_exchange_board.inc",
+        "sha256": "7a08c39e280969bc9973b9176ea3123f84bb5c69825c336958ae8b9e6d585087"
+      },
+      "ordinary_symbol_rvas": [
+        "0x13970"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x91920",
+      "symbol": "CExchangeBoard::ClearExchange",
+      "source": {
+        "file": "work/client455-port/normal/source/gameobject/board/general/cboard_etc.cpp",
+        "sha256": "4ecdcdcdb21014b66bff0d7f1beb12a21fac18c3cda8e119b1e465da98619b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0x13890"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x91990",
+      "symbol": "CExchangeBoard::MsgProc",
+      "source": {
+        "file": "scripts/native/client455_exchange_board.inc",
+        "sha256": "7a08c39e280969bc9973b9176ea3123f84bb5c69825c336958ae8b9e6d585087"
+      },
+      "ordinary_symbol_rvas": [
+        "0x13ec0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27fe80",
+      "symbol": "CGUIMiningWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_mining_window.inc",
+        "sha256": "1e4cd02d81b379feb534be864875f32902fb2858fe1126ac58284f0fc1202e8e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x950a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2801a0",
+      "symbol": "CGUIMiningWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_mining_window.inc",
+        "sha256": "1e4cd02d81b379feb534be864875f32902fb2858fe1126ac58284f0fc1202e8e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x95420"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2802d0",
+      "symbol": "CGUIMiningWindow::SelectOre",
+      "source": {
+        "file": "scripts/native/client455_mining_window.inc",
+        "sha256": "1e4cd02d81b379feb534be864875f32902fb2858fe1126ac58284f0fc1202e8e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x953d0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x280360",
+      "symbol": "CGUIMiningWindow::Mining_On",
+      "source": {
+        "file": "scripts/native/client455_mining_window.inc",
+        "sha256": "1e4cd02d81b379feb534be864875f32902fb2858fe1126ac58284f0fc1202e8e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x952f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2803a0",
+      "symbol": "CGUIMiningWindow::Mining_Off",
+      "source": {
+        "file": "scripts/native/client455_mining_window.inc",
+        "sha256": "1e4cd02d81b379feb534be864875f32902fb2858fe1126ac58284f0fc1202e8e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x95290"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2803e0",
+      "symbol": "CGUIMiningWindow::EnableMiningButton",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/mining/guiminingwindow.cpp",
+        "sha256": "79d1c46a1c68f9afc93f2ae5616e61c8b213752002864201fb9e23802d8f9b5e"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x280430",
+      "symbol": "CGUIMiningWindow::MouseEvent",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/mining/guiminingwindow.cpp",
+        "sha256": "79d1c46a1c68f9afc93f2ae5616e61c8b213752002864201fb9e23802d8f9b5e"
+      },
+      "ordinary_symbol_rvas": [
+        "0x95350"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28d960",
+      "symbol": "CGUIClassChangeWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x79fb0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28ded0",
+      "symbol": "CGUIClassChangeWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a820"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e000",
+      "symbol": "CGUIClassChangeWindow::SetTotalClassNum",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7aba0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e1e0",
+      "symbol": "CGUIClassChangeWindow::SelectClass",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a520"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e270",
+      "symbol": "CGUIClassChangeWindow::SetSkillIcon",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a6b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e560",
+      "symbol": "CGUIClassChangeWindow::SetClassName",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a590"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e5d0",
+      "symbol": "CGUIClassChangeWindow::SetDescription",
+      "source": {
+        "file": "scripts/native/client455_class_change_window.inc",
+        "sha256": "42b9cf353117d0bea5ea362b89fe97b2028a1a3be701538e01132ca3c3f7bbfe"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a5f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x28e710",
+      "symbol": "CGUIClassChangeWindow::MouseEvent",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/npc/guiclasschangewindow.cpp",
+        "sha256": "091126af7f165d50b3babc50ff2ec8cd2adfb0fead9f316ffde71ffd5fd943cb"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7a410"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x199160",
+      "symbol": "CNetMsgProcessor_ItemTrade::ExchangeDalantForGoldRequest_clzo",
+      "source": {
+        "file": "work/client455-port/normal/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+        "sha256": "3eb74602316baebbba7b00e276e7cc695056536040f76093a6db5506d6e91f94"
+      },
+      "ordinary_symbol_rvas": [
+        "0x44060"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x1991b0",
+      "symbol": "CNetMsgProcessor_ItemTrade::ExchangeGoldForDalantRequest_clzo",
+      "source": {
+        "file": "work/client455-port/normal/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+        "sha256": "3eb74602316baebbba7b00e276e7cc695056536040f76093a6db5506d6e91f94"
+      },
+      "ordinary_symbol_rvas": [
+        "0x440b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x199200",
+      "symbol": "CNetMsgProcessor_ItemTrade::ExchangeMoneyResult_zocl",
+      "source": {
+        "file": "work/client455-port/normal/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+        "sha256": "3eb74602316baebbba7b00e276e7cc695056536040f76093a6db5506d6e91f94"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x26cb20",
+      "symbol": "CGUIHotKeyBoard::SetLinkWindow455",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/guihotkeyboard.cpp",
+        "sha256": "b043dc7539c44af56db5330e90e66b895c4de26b11561cd3c9d99a00ca58cb63"
+      },
+      "ordinary_symbol_rvas": [
+        "0x87070"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}

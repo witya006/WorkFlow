@@ -140,7 +140,8 @@
         "client455-skill-force-window-checkpoint",
         "client455-shop-window-checkpoint",
         "client455-trade-ore-checkpoint",
-        "client455-item-work-checkpoint"
+        "client455-item-work-checkpoint",
+        "client455-service-windows-checkpoint"
       ]
     },
     {
@@ -283,7 +284,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "c5044f60d96429556ee8432f9baebc3d08af4033ec46c2434fb3f20a86a61a10",
+      "sha256": "755e88775999aabd32bb1dd641203ba6082c53d9fba6d3e642f56235f0b97e28",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -638,6 +639,14 @@
       "sha256": "8bc15b0f5231604213f7a1dc7e9e5633c13783b9f7a652e84abbdeeccf1a2093",
       "status": "PARTIAL_KNOWN_FAILURE",
       "scope": "After accepted character selection, ordinary crafting and upgrade initializers return. The next failure is the item exchange window skin. Recipe data, transactions and world entry remain open.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-service-windows-checkpoint": {
+      "file": "inventory/client455-service-windows-checkpoint.json",
+      "sha256": "8bc18efae3844530261b9e169b7e2deb3a5e724732146d6bbcdc87e8c19e8a3a",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "After accepted character selection, currency exchange, mining, promotion and the Linker attachment return. The next failure is the party member sprite. Live transactions and world entry remain open.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -761,11 +770,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
-      "bytes": 2372608,
+      "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+      "bytes": 2369024,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x1844e0",
+      "entry_rva": "0x183da0",
       "sections": [
         ".text",
         ".rdata",
@@ -790,22 +799,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "75aaa114089f1e2c90bc401440f0a4cc3e540fabc2f9a72ae0888fe208cd2990",
+      "sha256": "749500641816a93a30e7129ad7120cdd64cfdacdc425b95e412a084b11fe916f",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-item-work-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-service-windows-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "c5044f60d96429556ee8432f9baebc3d08af4033ec46c2434fb3f20a86a61a10",
+      "link_sha256": "755e88775999aabd32bb1dd641203ba6082c53d9fba6d3e642f56235f0b97e28",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
-        "bytes": 2372608,
+        "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1844e0",
+        "entry_rva": "0x183da0",
         "sections": [
           ".text",
           ".rdata",
@@ -815,17 +824,17 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "75aaa114089f1e2c90bc401440f0a4cc3e540fabc2f9a72ae0888fe208cd2990"
+      "build_sha256": "749500641816a93a30e7129ad7120cdd64cfdacdc425b95e412a084b11fe916f"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
       "normal_executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
-        "bytes": 2372608,
+        "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1844e0",
+        "entry_rva": "0x183da0",
         "sections": [
           ".text",
           ".rdata",
@@ -838,95 +847,119 @@
         "kind": "exception",
         "code": "0xc0000005",
         "first_chance": 0,
-        "address": "0x8d0fff",
-        "rva": "0x130fff",
-        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\c9aeaf27\\selection-live-taiwan001\\RF_Online.bin",
+        "address": "0xd8088f",
+        "rva": "0x13088f",
+        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\917f69fb\\selection-live-taiwan001\\RF_Online.bin",
         "parameter0": 0,
-        "parameter1": "0xfffffff8"
+        "parameter1": "0xfffffff6"
       },
       "fault_rva_is_own": true,
       "own_fault": {
-        "rva": "0x130fff",
-        "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+        "rva": "0x13088f",
+        "symbol": "?GetSpriteOrgYL@CSprite@@QAEGKK@Z",
         "offset": "0x5f",
         "is_code": true,
         "previous_eight_bytes": "088b45fc8b549044"
       },
       "candidates": [
         {
-          "rva": "0x9a311",
-          "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
-          "offset": "0x61",
+          "rva": "0x99f37",
+          "symbol": "?SetSpriteV@CGUIObjectEx@@QAEXMM@Z",
+          "offset": "0x37",
           "is_code": true,
-          "previous_eight_bytes": "114508e88f6c0900",
+          "previous_eight_bytes": "ff0000e8f9680900",
           "stack_offset": 8
         },
         {
-          "rva": "0x82cf2",
-          "symbol": "?SetSprite@CGUIExchangeWindow@@UAEXXZ",
-          "offset": "0x172",
+          "rva": "0x9fc49",
+          "symbol": "?SetSprite@CGUIPartyMemberInfo@@UAEXXZ",
+          "offset": "0x99",
           "is_code": true,
-          "previous_eight_bytes": "0500508b01ff5014",
+          "previous_eight_bytes": "000000e8b7a2ffff",
           "stack_offset": 32
         },
         {
-          "rva": "0x81da7",
-          "symbol": "?Init@CGUIExchangeWindow@@UAEXXZ",
-          "offset": "0x997",
+          "rva": "0x9ee8a",
+          "symbol": "?Init@CGUIPartyMemberInfo@@QAEXHH@Z",
+          "offset": "0x28a",
           "is_code": true,
-          "previous_eight_bytes": "608b078bcfff5018",
-          "stack_offset": 80
+          "previous_eight_bytes": "608b068bceff5018",
+          "stack_offset": 72
         },
         {
-          "rva": "0x7af80",
-          "symbol": "?Show@CGUIContainer@@UAEXH@Z",
-          "offset": "0x20",
+          "rva": "0x9ef24",
+          "symbol": "?Init@CGUIPartyWindow@@UAEXXZ",
+          "offset": "0x64",
           "is_code": true,
-          "previous_eight_bytes": "4e08538b01ff5028",
-          "stack_offset": 116
+          "previous_eight_bytes": "0003cee8dcfcffff",
+          "stack_offset": 92
         },
         {
-          "rva": "0x7aeff",
-          "symbol": "?SetPos@CGUIContainer@@UAEXJJ@Z",
-          "offset": "0x2f",
+          "rva": "0x7b0ec",
+          "symbol": "?Add@CGUIContainer@@UAEXPAVCGUIObject@@@Z",
+          "offset": "0x3c",
           "is_code": true,
-          "previous_eight_bytes": "4508508b01ff5008",
-          "stack_offset": 124
+          "previous_eight_bytes": "8d4f54e834fcffff",
+          "stack_offset": 120
         },
         {
-          "rva": "0x12e62",
+          "rva": "0x7c6870",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x358ba0",
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 132
+        },
+        {
+          "rva": "0x12ef2",
           "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
           "offset": "0x12",
           "is_code": true,
           "previous_eight_bytes": "c9742e8b01ff506c",
-          "stack_offset": 184
+          "stack_offset": 156
         },
         {
-          "rva": "0x1398b",
-          "symbol": "?InitWindow@CExchangeBoard@@UAEXKHH@Z",
-          "offset": "0x1b",
+          "rva": "0x55408",
+          "symbol": "?InitWindow@CPartyBoard@@UAEXKHH@Z",
+          "offset": "0x18",
           "is_code": true,
-          "previous_eight_bytes": "897e08e8c5f4ffff",
-          "stack_offset": 196
+          "previous_eight_bytes": "ff7508e8d8dafbff",
+          "stack_offset": 168
         },
         {
-          "rva": "0x27354",
+          "rva": "0x2774d",
           "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-          "offset": "0x3e4",
+          "offset": "0x61d",
           "is_code": true,
-          "previous_eight_bytes": "0d8b108bc8ff5208",
-          "stack_offset": 224
+          "previous_eight_bytes": "008b016a13ff5008",
+          "stack_offset": 192
         },
         {
-          "rva": "0x26a98",
+          "rva": "0x27f08",
+          "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+          "offset": "0x6d8",
+          "is_code": true,
+          "previous_eight_bytes": "860081c10c170000",
+          "stack_offset": 216
+        },
+        {
+          "rva": "0x26c58",
           "symbol": "?Create@CGP_MainGame@@UAEHXZ",
           "offset": "0x48",
           "is_code": true,
           "previous_eight_bytes": "008bcfe8d8040000",
-          "stack_offset": 256
+          "stack_offset": 244
         },
         {
-          "rva": "0x46dcf0",
+          "rva": "0x46dcd0",
+          "symbol": "?g_MainApp@@3VCMainApp@@A",
+          "offset": "0x0",
+          "is_code": false,
+          "previous_eight_bytes": null,
+          "stack_offset": 248
+        },
+        {
+          "rva": "0x46dcd0",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
@@ -934,44 +967,36 @@
           "stack_offset": 260
         },
         {
-          "rva": "0x46dcf0",
+          "rva": "0x46dcd0",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 272
+          "stack_offset": 268
         },
         {
-          "rva": "0x46dcf0",
-          "symbol": "?g_MainApp@@3VCMainApp@@A",
-          "offset": "0x0",
-          "is_code": false,
-          "previous_eight_bytes": null,
-          "stack_offset": 280
-        },
-        {
-          "rva": "0xbe412",
+          "rva": "0xbdd02",
           "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
           "offset": "0x182",
           "is_code": true,
           "previous_eight_bytes": "00752e8b01ff5008",
-          "stack_offset": 300
+          "stack_offset": 288
         },
         {
-          "rva": "0xbea60",
+          "rva": "0xbe350",
           "symbol": "_WinMain@16",
           "offset": "0x240",
           "is_code": true,
           "previous_eight_bytes": "dc8600e830f8ffff",
-          "stack_offset": 308
+          "stack_offset": 296
         },
         {
-          "rva": "0x1844e0",
+          "rva": "0x183da0",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
           "is_code": true,
           "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 312
+          "stack_offset": 300
         },
         {
           "rva": "0x22c150",
@@ -979,81 +1004,78 @@
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": "2e000000ffffffff",
-          "stack_offset": 384
+          "stack_offset": 372
         },
         {
-          "rva": "0x1aa0f5",
+          "rva": "0x1a99a5",
           "symbol": "__ismbblead",
           "offset": "0x13",
           "is_code": true,
           "previous_eight_bytes": "086a00e89dffffff",
-          "stack_offset": 400
+          "stack_offset": 388
         },
         {
-          "rva": "0x184430",
+          "rva": "0x183cf0",
           "symbol": "?__scrt_common_main_seh@@YAHXZ",
           "offset": "0x140",
           "is_code": true,
-          "previous_eight_bytes": "004000e8f0a3f3ff",
-          "stack_offset": 424
-        },
-        {
-          "rva": "0x0",
-          "symbol": "___ImageBase",
-          "offset": "0x0",
-          "is_code": false,
-          "previous_eight_bytes": null,
-          "stack_offset": 428
-        },
-        {
-          "rva": "0x1844e0",
-          "symbol": "_WinMainCRTStartup",
-          "offset": "0x0",
-          "is_code": true,
-          "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 448
+          "previous_eight_bytes": "004000e820a4f3ff",
+          "stack_offset": 412
         }
       ],
       "stack_is_candidate_scan_not_unwind": true,
       "ordinary_calls": [
         {
-          "board": 14,
-          "window": 15,
-          "lookup_rva": "0x272db",
-          "return_rva": "0x272f4",
-          "code": "6a0eb9108c6200e8f9d6feff6a006a006a0f8b108bc8ff5208",
-          "callee_rva": "0x39bc0",
-          "vtable_rva": "0x1eafa0",
-          "slot": 8
-        },
-        {
-          "board": 15,
-          "window": 16,
-          "lookup_rva": "0x2730d",
-          "return_rva": "0x27326",
-          "code": "6a0fb9108c6200e8c7d6feff6a006a006a108b108bc8ff5208",
-          "callee_rva": "0x39040",
-          "vtable_rva": "0x1eacec",
-          "slot": 8
-        },
-        {
           "board": 16,
           "window": 13,
-          "lookup_rva": "0x2733b",
-          "return_rva": "0x27354",
-          "code": "6a10b9108c6200e899d6feff6a006a006a0d8b108bc8ff5208",
-          "callee_rva": "0x13970",
+          "lookup_rva": "0x274ff",
+          "return_rva": "0x27518",
+          "code": "6a10b9108c6200e845d6feff6a006a006a0d8b108bc8ff5208",
+          "callee_rva": "0x13a00",
           "vtable_rva": "0x1e7788",
+          "slot": 8
+        },
+        {
+          "board": 17,
+          "window": 11,
+          "lookup_rva": "0x27518",
+          "return_rva": "0x27531",
+          "code": "6a11b9108c6200e82cd6feff6a006a006a0b8b108bc8ff5208",
+          "callee_rva": "0x13a40",
+          "vtable_rva": "0x1e7768",
+          "slot": 8
+        },
+        {
+          "board": 18,
+          "window": 36,
+          "lookup_rva": "0x27531",
+          "return_rva": "0x2754d",
+          "code": "6a12b9108c6200e813d6feff6a6468c80000006a248b108bc8ff5208",
+          "callee_rva": "0x1ee10",
+          "vtable_rva": "0x1e7a40",
           "slot": 8
         }
       ],
-      "kind": "EXCHANGE_AFTER_ITEM_WORK_AND_UPGRADE"
+      "linker_attach": {
+        "callee_rva": "0x87070",
+        "call_rva": "0x275d2",
+        "code": "e899fa0500"
+      },
+      "party_call": {
+        "window": 19,
+        "return_rva": "0x2774d",
+        "code": "6a13ff5008",
+        "callee_rva": "0x553f0",
+        "vtable_rva": "0x1ef178",
+        "slot": 8
+      },
+      "kind": "PARTY_AFTER_SERVICE_WINDOWS"
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "75aaa114089f1e2c90bc401440f0a4cc3e540fabc2f9a72ae0888fe208cd2990"
+        "sha256": "749500641816a93a30e7129ad7120cdd64cfdacdc425b95e412a084b11fe916f"
       },
       "build_exit": 0,
       "errors": [],
@@ -1063,11 +1085,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
-        "bytes": 2372608,
+        "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1844e0",
+        "entry_rva": "0x183da0",
         "sections": [
           ".text",
           ".rdata",
@@ -1080,20 +1102,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "75aaa114089f1e2c90bc401440f0a4cc3e540fabc2f9a72ae0888fe208cd2990"
+        "sha256": "749500641816a93a30e7129ad7120cdd64cfdacdc425b95e412a084b11fe916f"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "After accepted character selection, ordinary crafting and upgrade initializers return. The next failure is the item exchange window skin. Recipe data, transactions and world entry remain open.",
+    "current_work": "After accepted character selection, currency exchange, mining, promotion and the Linker attachment return. The next failure is the party member sprite. Live transactions and world entry remain open.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "94d9d5f3c035861152c0f5f5b46ebbddb66744ac999ae74c2fd7c67acb83ddbe",
+      "sha256": "ccdc4789d8c9f6854cff233d1fbcfbf33bf2b564ebcf02b2e4e32f3038b957a1",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/c9aeaf27/selection-live-taiwan001/login-frame.png",
-        "sha256": "ab3e342c7faa4073fbb20ab4fe2a5e59562dea3f19269e5321307f1491fc5051"
+        "file": "work/m9/917f69fb/selection-live-taiwan001/login-frame.png",
+        "sha256": "57d290ae00dbff39d1a742311610fc0c74a238610311d2c6d6344005d8c63d17"
       },
       "capture": {
         "result": 0,
@@ -1101,7 +1123,7 @@
         "height": 500,
         "format": 22,
         "frame_index": 122,
-        "elapsed_ms": 8031,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1110,11 +1132,11 @@
       "known_next_failure": {
         "normal_executable": {
           "file": "work/client455-port/normal/build/RF_Online.bin",
-          "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
-          "bytes": 2372608,
+          "sha256": "917f69fb6c6cc5267328737f81664c8593ec35ec37fa538a48c9dd424f191088",
+          "bytes": 2369024,
           "architecture": "x86",
           "image_base": "0x400000",
-          "entry_rva": "0x1844e0",
+          "entry_rva": "0x183da0",
           "sections": [
             ".text",
             ".rdata",
@@ -1127,95 +1149,119 @@
           "kind": "exception",
           "code": "0xc0000005",
           "first_chance": 0,
-          "address": "0x8d0fff",
-          "rva": "0x130fff",
-          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\c9aeaf27\\selection-live-taiwan001\\RF_Online.bin",
+          "address": "0xd8088f",
+          "rva": "0x13088f",
+          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\917f69fb\\selection-live-taiwan001\\RF_Online.bin",
           "parameter0": 0,
-          "parameter1": "0xfffffff8"
+          "parameter1": "0xfffffff6"
         },
         "fault_rva_is_own": true,
         "own_fault": {
-          "rva": "0x130fff",
-          "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
+          "rva": "0x13088f",
+          "symbol": "?GetSpriteOrgYL@CSprite@@QAEGKK@Z",
           "offset": "0x5f",
           "is_code": true,
           "previous_eight_bytes": "088b45fc8b549044"
         },
         "candidates": [
           {
-            "rva": "0x9a311",
-            "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
-            "offset": "0x61",
+            "rva": "0x99f37",
+            "symbol": "?SetSpriteV@CGUIObjectEx@@QAEXMM@Z",
+            "offset": "0x37",
             "is_code": true,
-            "previous_eight_bytes": "114508e88f6c0900",
+            "previous_eight_bytes": "ff0000e8f9680900",
             "stack_offset": 8
           },
           {
-            "rva": "0x82cf2",
-            "symbol": "?SetSprite@CGUIExchangeWindow@@UAEXXZ",
-            "offset": "0x172",
+            "rva": "0x9fc49",
+            "symbol": "?SetSprite@CGUIPartyMemberInfo@@UAEXXZ",
+            "offset": "0x99",
             "is_code": true,
-            "previous_eight_bytes": "0500508b01ff5014",
+            "previous_eight_bytes": "000000e8b7a2ffff",
             "stack_offset": 32
           },
           {
-            "rva": "0x81da7",
-            "symbol": "?Init@CGUIExchangeWindow@@UAEXXZ",
-            "offset": "0x997",
+            "rva": "0x9ee8a",
+            "symbol": "?Init@CGUIPartyMemberInfo@@QAEXHH@Z",
+            "offset": "0x28a",
             "is_code": true,
-            "previous_eight_bytes": "608b078bcfff5018",
-            "stack_offset": 80
+            "previous_eight_bytes": "608b068bceff5018",
+            "stack_offset": 72
           },
           {
-            "rva": "0x7af80",
-            "symbol": "?Show@CGUIContainer@@UAEXH@Z",
-            "offset": "0x20",
+            "rva": "0x9ef24",
+            "symbol": "?Init@CGUIPartyWindow@@UAEXXZ",
+            "offset": "0x64",
             "is_code": true,
-            "previous_eight_bytes": "4e08538b01ff5028",
-            "stack_offset": 116
+            "previous_eight_bytes": "0003cee8dcfcffff",
+            "stack_offset": 92
           },
           {
-            "rva": "0x7aeff",
-            "symbol": "?SetPos@CGUIContainer@@UAEXJJ@Z",
-            "offset": "0x2f",
+            "rva": "0x7b0ec",
+            "symbol": "?Add@CGUIContainer@@UAEXPAVCGUIObject@@@Z",
+            "offset": "0x3c",
             "is_code": true,
-            "previous_eight_bytes": "4508508b01ff5008",
-            "stack_offset": 124
+            "previous_eight_bytes": "8d4f54e834fcffff",
+            "stack_offset": 120
           },
           {
-            "rva": "0x12e62",
+            "rva": "0x7c6870",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x358ba0",
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 132
+          },
+          {
+            "rva": "0x12ef2",
             "symbol": "?InitWindow@CBaseBoard@@UAEXKHH@Z",
             "offset": "0x12",
             "is_code": true,
             "previous_eight_bytes": "c9742e8b01ff506c",
-            "stack_offset": 184
+            "stack_offset": 156
           },
           {
-            "rva": "0x1398b",
-            "symbol": "?InitWindow@CExchangeBoard@@UAEXKHH@Z",
-            "offset": "0x1b",
+            "rva": "0x55408",
+            "symbol": "?InitWindow@CPartyBoard@@UAEXKHH@Z",
+            "offset": "0x18",
             "is_code": true,
-            "previous_eight_bytes": "897e08e8c5f4ffff",
-            "stack_offset": 196
+            "previous_eight_bytes": "ff7508e8d8dafbff",
+            "stack_offset": 168
           },
           {
-            "rva": "0x27354",
+            "rva": "0x2774d",
             "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-            "offset": "0x3e4",
+            "offset": "0x61d",
             "is_code": true,
-            "previous_eight_bytes": "0d8b108bc8ff5208",
-            "stack_offset": 224
+            "previous_eight_bytes": "008b016a13ff5008",
+            "stack_offset": 192
           },
           {
-            "rva": "0x26a98",
+            "rva": "0x27f08",
+            "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+            "offset": "0x6d8",
+            "is_code": true,
+            "previous_eight_bytes": "860081c10c170000",
+            "stack_offset": 216
+          },
+          {
+            "rva": "0x26c58",
             "symbol": "?Create@CGP_MainGame@@UAEHXZ",
             "offset": "0x48",
             "is_code": true,
             "previous_eight_bytes": "008bcfe8d8040000",
-            "stack_offset": 256
+            "stack_offset": 244
           },
           {
-            "rva": "0x46dcf0",
+            "rva": "0x46dcd0",
+            "symbol": "?g_MainApp@@3VCMainApp@@A",
+            "offset": "0x0",
+            "is_code": false,
+            "previous_eight_bytes": null,
+            "stack_offset": 248
+          },
+          {
+            "rva": "0x46dcd0",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
@@ -1223,44 +1269,36 @@
             "stack_offset": 260
           },
           {
-            "rva": "0x46dcf0",
+            "rva": "0x46dcd0",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 272
+            "stack_offset": 268
           },
           {
-            "rva": "0x46dcf0",
-            "symbol": "?g_MainApp@@3VCMainApp@@A",
-            "offset": "0x0",
-            "is_code": false,
-            "previous_eight_bytes": null,
-            "stack_offset": 280
-          },
-          {
-            "rva": "0xbe412",
+            "rva": "0xbdd02",
             "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
             "offset": "0x182",
             "is_code": true,
             "previous_eight_bytes": "00752e8b01ff5008",
-            "stack_offset": 300
+            "stack_offset": 288
           },
           {
-            "rva": "0xbea60",
+            "rva": "0xbe350",
             "symbol": "_WinMain@16",
             "offset": "0x240",
             "is_code": true,
             "previous_eight_bytes": "dc8600e830f8ffff",
-            "stack_offset": 308
+            "stack_offset": 296
           },
           {
-            "rva": "0x1844e0",
+            "rva": "0x183da0",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
             "is_code": true,
             "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 312
+            "stack_offset": 300
           },
           {
             "rva": "0x22c150",
@@ -1268,75 +1306,72 @@
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": "2e000000ffffffff",
-            "stack_offset": 384
+            "stack_offset": 372
           },
           {
-            "rva": "0x1aa0f5",
+            "rva": "0x1a99a5",
             "symbol": "__ismbblead",
             "offset": "0x13",
             "is_code": true,
             "previous_eight_bytes": "086a00e89dffffff",
-            "stack_offset": 400
+            "stack_offset": 388
           },
           {
-            "rva": "0x184430",
+            "rva": "0x183cf0",
             "symbol": "?__scrt_common_main_seh@@YAHXZ",
             "offset": "0x140",
             "is_code": true,
-            "previous_eight_bytes": "004000e8f0a3f3ff",
-            "stack_offset": 424
-          },
-          {
-            "rva": "0x0",
-            "symbol": "___ImageBase",
-            "offset": "0x0",
-            "is_code": false,
-            "previous_eight_bytes": null,
-            "stack_offset": 428
-          },
-          {
-            "rva": "0x1844e0",
-            "symbol": "_WinMainCRTStartup",
-            "offset": "0x0",
-            "is_code": true,
-            "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 448
+            "previous_eight_bytes": "004000e820a4f3ff",
+            "stack_offset": 412
           }
         ],
         "stack_is_candidate_scan_not_unwind": true,
         "ordinary_calls": [
           {
-            "board": 14,
-            "window": 15,
-            "lookup_rva": "0x272db",
-            "return_rva": "0x272f4",
-            "code": "6a0eb9108c6200e8f9d6feff6a006a006a0f8b108bc8ff5208",
-            "callee_rva": "0x39bc0",
-            "vtable_rva": "0x1eafa0",
-            "slot": 8
-          },
-          {
-            "board": 15,
-            "window": 16,
-            "lookup_rva": "0x2730d",
-            "return_rva": "0x27326",
-            "code": "6a0fb9108c6200e8c7d6feff6a006a006a108b108bc8ff5208",
-            "callee_rva": "0x39040",
-            "vtable_rva": "0x1eacec",
-            "slot": 8
-          },
-          {
             "board": 16,
             "window": 13,
-            "lookup_rva": "0x2733b",
-            "return_rva": "0x27354",
-            "code": "6a10b9108c6200e899d6feff6a006a006a0d8b108bc8ff5208",
-            "callee_rva": "0x13970",
+            "lookup_rva": "0x274ff",
+            "return_rva": "0x27518",
+            "code": "6a10b9108c6200e845d6feff6a006a006a0d8b108bc8ff5208",
+            "callee_rva": "0x13a00",
             "vtable_rva": "0x1e7788",
+            "slot": 8
+          },
+          {
+            "board": 17,
+            "window": 11,
+            "lookup_rva": "0x27518",
+            "return_rva": "0x27531",
+            "code": "6a11b9108c6200e82cd6feff6a006a006a0b8b108bc8ff5208",
+            "callee_rva": "0x13a40",
+            "vtable_rva": "0x1e7768",
+            "slot": 8
+          },
+          {
+            "board": 18,
+            "window": 36,
+            "lookup_rva": "0x27531",
+            "return_rva": "0x2754d",
+            "code": "6a12b9108c6200e813d6feff6a6468c80000006a248b108bc8ff5208",
+            "callee_rva": "0x1ee10",
+            "vtable_rva": "0x1e7a40",
             "slot": 8
           }
         ],
-        "kind": "EXCHANGE_AFTER_ITEM_WORK_AND_UPGRADE"
+        "linker_attach": {
+          "callee_rva": "0x87070",
+          "call_rva": "0x275d2",
+          "code": "e899fa0500"
+        },
+        "party_call": {
+          "window": 19,
+          "return_rva": "0x2774d",
+          "code": "6a13ff5008",
+          "callee_rva": "0x553f0",
+          "vtable_rva": "0x1ef178",
+          "slot": 8
+        },
+        "kind": "PARTY_AFTER_SERVICE_WINDOWS"
       },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
@@ -1347,11 +1382,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "cac9ca84243383d4680962614480740d4221279c4db3f5ac72a32acb78b37314",
-    "entries": 177,
+    "sha256": "8f1c591bddf5377851f3fde62663ac5aeb4e06141ac3fceb131c44689dc5e25d",
+    "entries": 178,
     "statuses": {
       "partial_component": 13,
-      "partial": 134,
+      "partial": 135,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1361,7 +1396,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ITEM-WORK-171"
+      "CLIENT455-SERVICE-WINDOWS-172"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1431,7 +1466,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;177 overlapping historical records",
+        "measured": "12 domain planning map;178 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1579,7 +1614,7 @@
       "Changed estimate and its basis"
     ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "Actual selection passes the crafting and upgrade initializers and reaches item exchange. Recipe population, transactions, world entry and gameplay remain unproved."
+    "unchanged_range_reason": "Actual selection passes currency exchange, mining, promotion and Linker attachment, then reaches the party member view. World entry and live gameplay remain unproved."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1593,7 +1628,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "7b925a0e663a537111d6d3513ec150383dcb62edf519d57c58ca1d46c40b4963"
+    "sha256": "efc20dbdf316eee98199994f0c71966c13d2b89c42f61ee27dd3413e550327b1"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

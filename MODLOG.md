@@ -1,3 +1,12 @@
+2026-11-11 — Currency exchange, mining, promotion and Linker 172, PARTIAL_KNOWN_FAILURE.
+Ordinary selection passes windows 13, 11 and 36 and attaches the single
+Linker. The next fault occurs in party window 19 at own RVA 13088F. Three
+Taiwan frames, eight messages, both currency directions and the 8/17-byte
+packet boundary pass on controlled inputs. Build 917f69fb… x86. Both pins
+agree on 45 bodies and 4,081 instructions. Address coverage 2,605, full
+listings 802, partial bindings 255. Live transactions and world entry remain open.
+[Evidence and remaining work](research/client455-service-windows.md)
+
 2026-11-11 — Crafting and upgrade windows 171, PARTIAL_KNOWN_FAILURE.
 Window 15 uses three recipe groups, 9/5/2 tabs and 20 visible cells.
 Window 16 uses six upgrade slots. Four Taiwan frames, 14 window messages

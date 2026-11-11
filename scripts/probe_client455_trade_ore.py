@@ -18,9 +18,19 @@ from compare_client_binaries import WS
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--item-work', action='store_true')
+    panel = parser.add_mutually_exclusive_group()
+    panel.add_argument('--item-work', action='store_true')
+    panel.add_argument('--service-windows', action='store_true')
     args = parser.parse_args()
-    name = 'item-work' if args.item_work else 'trade-ore'
+    if args.service_windows:
+        name = 'service-windows'
+        skins = ('exchange.spr', 'mining.spr', 'class.spr', 'main.spr')
+    elif args.item_work:
+        name = 'item-work'
+        skins = ('itemmake.spr', 'itemupgrade.spr')
+    else:
+        name = 'trade-ore'
+        skins = ('trade.spr', 'oreproc.spr')
     source = WS / 'scripts/native' / f'client455_{name.replace("-", "_")}_probe.cpp'
     exe = build_full_object_probe(name, source)
     parent = WS / 'work/m9' / sha(exe)[:8]
@@ -34,7 +44,6 @@ def main():
     client = Path(json.loads((WS / 'config/paths.json').read_text())['client_455'])
     names = ['mss32.dll', 'System/010.TTF', 'System/console.jpg', 'System/shader/Grass1.vsh',
              'System/shader/grass1.vso', 'DataTable/zh-tw/NDLanguage.edf']
-    skins = ('itemmake.spr', 'itemupgrade.spr') if args.item_work else ('trade.spr', 'oreproc.spr')
     names += [f'SpriteImage/{locale}/{skin}' for locale in ('Common', 'zh-tw')
               for skin in (*skins, 'common.spr', 'item.spr', 'inventory.spr', 'ItemLock.spr', 'SocketState.spr')]
     inputs = []
@@ -73,7 +82,7 @@ def main():
                   source=record(source), script=record(Path(__file__)), console=record(console),
                   output=record(output) if output.exists() else None, shared_staging=staging_stats(),
                   input_exe_executed=False, server_modified=False)
-    if args.item_work:
+    if args.item_work or args.service_windows:
         report['harness'] = record(source.with_name('client455_trade_ore_probe.cpp'))
     encoded = json.dumps(report, indent=2) + '\n'
     (run / 'probe-report.json').write_text(encoded)

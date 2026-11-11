@@ -52,7 +52,7 @@ void position(CGUIObject& object, LONG x, LONG y, LONG width, LONG height)
           object.GetSizeY() == height, "window or control geometry");
 }
 
-void capture(CGUIWindow& window, const char* path)
+void capture(CGUIWindow& window, const char* path, unsigned minimumVisible = 40000)
 {
     auto* device = GetD3dDevice();
     check(SUCCEEDED(device->Clear(0, nullptr, D3DCLEAR_TARGET, 0xff102030, 1, 0)) &&
@@ -78,7 +78,7 @@ void capture(CGUIWindow& window, const char* path)
     copy->UnlockRect();
     copy->Release();
     target->Release();
-    check(visible > 40000, "visible window");
+    check(visible > minimumVisible, "visible window");
 }
 
 void expectMouse(CGUIWindow& window, CGUIObject& object, WORD type, HWND sink, UINT msg, LPARAM arg)

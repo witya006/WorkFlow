@@ -54,6 +54,7 @@ from client455_skill_force_window_port import port_skill_force_window
 from client455_shop_window_port import port_shop_window
 from client455_trade_ore_port import port_trade_ore
 from client455_item_work_port import port_item_work
+from client455_service_windows_port import port_service_windows
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -824,6 +825,8 @@ def main():
             if trade_ore_changed:changes.append('455 player exchange and ore processing windows')
             raw,item_work_changed=port_item_work(raw,relative,section,native)
             if item_work_changed:changes.append('455 crafting panels and item upgrade view')
+            raw,service_windows_changed=port_service_windows(raw,relative,section,native)
+            if service_windows_changed:changes.append('455 currency exchange, mining and class promotion views and message contracts')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
@@ -922,7 +925,9 @@ def main():
     for name in ['client455_unit_view_skin.h','client455_unit_tuning.inc','client455_unit_storehouse.inc',
                  'client455_skill_force_window.inc','client455_force_window.inc','client455_skill_force_row.inc',
                  'client455_shop_window.inc','client455_player_trade_window.inc','client455_ore_window.inc',
-                 'client455_gui_page_board.h','client455_item_make.inc','client455_item_upgrade.inc']:
+                 'client455_gui_page_board.h','client455_item_make.inc','client455_item_upgrade.inc',
+                 'client455_exchange_window.inc','client455_exchange_board.inc','client455_mining_window.inc',
+                 'client455_class_change_window.inc']:
         report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_linker_startup.inc']=sha((native/'client455_linker_startup.inc').read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
