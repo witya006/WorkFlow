@@ -1,3 +1,13 @@
+2026-11-11 — Player exchange and ore processing 170, PARTIAL_KNOWN_FAILURE.
+Trade uses window 23 and 15 slots per side. Ore uses window 12, a 40-slot
+package and 20 visible results. Controlled offers, three messages, ore
+scrolling and three Taiwan frames pass. Live selection reaches the old
+ItemMakeWindow skin fault at own RVA 13066F after both initializers return.
+Build ad434f01… x86, no unresolved symbols. Both pins checked for 21 bodies
+and 2,929 instructions. Address coverage 2,538, complete listings 734,
+partial bindings 197. Transactions and world entry remain open.
+[Evidence and remaining work](research/client455-trade-ore.md)
+
 2026-11-11 — NPC merchant window 169, PARTIAL_KNOWN_FAILURE.
 Board 9 starts with 200 slots and window 7. Stock Taiwan skins and paging
 over 21 controlled rows per mode passed, with three reviewed frames. Live

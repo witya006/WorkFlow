@@ -42,7 +42,7 @@ def main():
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover;обычные инициализаторы навыков и Силы пройдены,следующий сбой в ShopWindow'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
-         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint','client455-char-info-values-checkpoint','client455-char-info-checkpoint','client455-recall-checkpoint','client455-mob-control-checkpoint','client455-option-checkpoint','client455-inventory-checkpoint','client455-board-startup-checkpoint','client455-unit-windows-checkpoint','client455-skill-force-window-checkpoint','client455-shop-window-checkpoint']),
+         ['client455-font-checkpoint','client455-gui-input-checkpoint','client455-item-icon-metadata-checkpoint','client455-char-info-values-checkpoint','client455-char-info-checkpoint','client455-recall-checkpoint','client455-mob-control-checkpoint','client455-option-checkpoint','client455-inventory-checkpoint','client455-board-startup-checkpoint','client455-unit-windows-checkpoint','client455-skill-force-window-checkpoint','client455-shop-window-checkpoint','client455-trade-ore-checkpoint']),
         ('audio','Звук',2,35,55,
          ['Miles init,selected tagged/RVP playback и звук выбранных эффектов'],
          ['Все sound events/3D/music/settings и полный lifecycle'],
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-trade-ore-checkpoint',
         'client455-shop-window-checkpoint',
         'client455-skill-force-window-checkpoint',
         'client455-unit-windows-checkpoint',
@@ -241,7 +242,7 @@ def main():
             unfinished_or_failed_builds_are_not_completed_progress=True,
             next_report_fields=['Observable ordinary-client result','Integrated versus standalone evidence','Remaining prerequisites to next anchor','Current source build health','Changed estimate and its basis'],
             recalculate_after='First complete ordinary Login/selection/map scenario,or a material scope discovery',
-            unchanged_range_reason='Actual selection passes merchant initialization and reaches player trade. Ordinary population, the selection-to-world path and gameplay remain unproved.'),
+            unchanged_range_reason='Actual selection passes the trade and ore initializers and reaches item crafting. Transactions, the selection-to-world path and gameplay remain unproved.'),
         forecast=dict(remaining_to_completed_functional_scope_ratio_approx=[2,4],ratio_is_functional_scope_not_effort_or_time=True,calendar_deadline=None,remaining_hours=None,
             reason='No defensible throughput sample for a complete integration scenario. Functional percentages do not imply the same ratio of time. Re-estimate after first complete Login/character/map scenario.'),
         script=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=sha(__file__)),M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')

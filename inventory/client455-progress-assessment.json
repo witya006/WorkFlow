@@ -138,7 +138,8 @@
         "client455-board-startup-checkpoint",
         "client455-unit-windows-checkpoint",
         "client455-skill-force-window-checkpoint",
-        "client455-shop-window-checkpoint"
+        "client455-shop-window-checkpoint",
+        "client455-trade-ore-checkpoint"
       ]
     },
     {
@@ -281,7 +282,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "dfc824cfc7cbc3412ade6ad7c060fbb6c2896e5c15dd80b8605d392ebf0febaa",
+      "sha256": "76a356e50634e0263fc4750ac62c0a0283ada7c80639c9134aa6107f7cd56c28",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -620,6 +621,14 @@
       "sha256": "4731157fd9a72aac6892c6f0a773330c6a7357aad1f9f7ac142cf3710ec71a61",
       "status": "PARTIAL_KNOWN_FAILURE",
       "scope": "Ordinary merchant window initialization returns after accepted character selection. Stock Taiwan layout, four money fields and paging over controlled items pass. Next live failure is the legacy player-to-player trade window.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-trade-ore-checkpoint": {
+      "file": "inventory/client455-trade-ore-checkpoint.json",
+      "sha256": "2d8e4441c2c083f7a898fc6b829309ad3ca37c8d13e86e5502cccfde96709de9",
+      "status": "PARTIAL_KNOWN_FAILURE",
+      "scope": "After accepted character selection, ordinary player trade and ore initializers return. The next live failure is the legacy item crafting skin. Transactions and world entry remain open.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -743,11 +752,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
-      "bytes": 2367488,
+      "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+      "bytes": 2369024,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x183430",
+      "entry_rva": "0x183af0",
       "sections": [
         ".text",
         ".rdata",
@@ -772,22 +781,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "43be9497054e8fd9a4e6ffd70b0f4ee5551225ffd48c3613346821b029ed911f",
+      "sha256": "ad2bb55ffe0b0295907b5c42e45c29082bf2cac57e47415e1281b869b1fe774a",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-shop-window-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-trade-ore-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "dfc824cfc7cbc3412ade6ad7c060fbb6c2896e5c15dd80b8605d392ebf0febaa",
+      "link_sha256": "76a356e50634e0263fc4750ac62c0a0283ada7c80639c9134aa6107f7cd56c28",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
-        "bytes": 2367488,
+        "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183430",
+        "entry_rva": "0x183af0",
         "sections": [
           ".text",
           ".rdata",
@@ -797,17 +806,17 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "43be9497054e8fd9a4e6ffd70b0f4ee5551225ffd48c3613346821b029ed911f"
+      "build_sha256": "ad2bb55ffe0b0295907b5c42e45c29082bf2cac57e47415e1281b869b1fe774a"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL_WITH_KNOWN_FAILURE",
     "post_selection_failure": {
       "normal_executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
-        "bytes": 2367488,
+        "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183430",
+        "entry_rva": "0x183af0",
         "sections": [
           ".text",
           ".rdata",
@@ -820,15 +829,15 @@
         "kind": "exception",
         "code": "0xc0000005",
         "first_chance": 0,
-        "address": "0x75ff6f",
-        "rva": "0x12ff6f",
-        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\7d348e69\\selection-live-taiwan001\\RF_Online.bin",
+        "address": "0x2b066f",
+        "rva": "0x13066f",
+        "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\ad434f01\\selection-live-taiwan001\\RF_Online.bin",
         "parameter0": 0,
         "parameter1": "0xfffffff8"
       },
       "fault_rva_is_own": true,
       "own_fault": {
-        "rva": "0x12ff6f",
+        "rva": "0x13066f",
         "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
         "offset": "0x5f",
         "is_code": true,
@@ -836,52 +845,28 @@
       },
       "candidates": [
         {
-          "rva": "0x992b1",
+          "rva": "0x993c1",
           "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
           "offset": "0x61",
           "is_code": true,
-          "previous_eight_bytes": "114508e85f6c0900",
+          "previous_eight_bytes": "114508e84f720900",
           "stack_offset": 8
         },
         {
-          "rva": "0xb4b48",
-          "symbol": "?SetSprite@CGUITradeWindow@@UAEXXZ",
-          "offset": "0x128",
+          "rva": "0x8e8ce",
+          "symbol": "?SetSprite@CGUIItemMakeWindow@@UAEXXZ",
+          "offset": "0x5e",
           "is_code": true,
           "previous_eight_bytes": "0500508b01ff5014",
           "stack_offset": 32
         },
         {
-          "rva": "0xb3c32",
-          "symbol": "?Init@CGUITradeWindow@@UAEXXZ",
-          "offset": "0x5f2",
+          "rva": "0x8defe",
+          "symbol": "?Init@CGUIItemMakeWindow@@UAEXXZ",
+          "offset": "0x18e",
           "is_code": true,
-          "previous_eight_bytes": "608b068bceff5018",
+          "previous_eight_bytes": "0200008b06ff5018",
           "stack_offset": 64
-        },
-        {
-          "rva": "0x1a128b",
-          "symbol": "__malloc_base",
-          "offset": "0x3b",
-          "is_code": true,
-          "previous_eight_bytes": "2f01ff1550415e00",
-          "stack_offset": 120
-        },
-        {
-          "rva": "0x1823bd",
-          "symbol": "??2@YAPAXI@Z",
-          "offset": "0xd",
-          "is_code": true,
-          "previous_eight_bytes": "750856e893940100",
-          "stack_offset": 144
-        },
-        {
-          "rva": "0x12a93",
-          "symbol": "?Create@CObjectBoard@@QAEXEEE@Z",
-          "offset": "0xe3",
-          "is_code": true,
-          "previous_eight_bytes": "6a0050e89d1d1700",
-          "stack_offset": 148
         },
         {
           "rva": "0x12e62",
@@ -889,103 +874,103 @@
           "offset": "0x12",
           "is_code": true,
           "previous_eight_bytes": "c9742e8b01ff506c",
-          "stack_offset": 168
+          "stack_offset": 80
         },
         {
-          "rva": "0x57dea",
-          "symbol": "?InitWindow@CPlayerTradeBoard@@UAEXKHH@Z",
+          "rva": "0x39bba",
+          "symbol": "?InitWindow@CItemWorkBoard@@UAEXKHH@Z",
           "offset": "0x1a",
           "is_code": true,
-          "previous_eight_bytes": "894608e866b0fbff",
-          "stack_offset": 180
+          "previous_eight_bytes": "894608e89692fdff",
+          "stack_offset": 92
         },
         {
-          "rva": "0x2723b",
+          "rva": "0x272f4",
           "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-          "offset": "0x30b",
+          "offset": "0x384",
           "is_code": true,
-          "previous_eight_bytes": "188b108bc8ff5208",
-          "stack_offset": 204
+          "previous_eight_bytes": "0f8b108bc8ff5208",
+          "stack_offset": 116
         },
         {
-          "rva": "0x26a58",
+          "rva": "0x26a98",
           "symbol": "?Create@CGP_MainGame@@UAEHXZ",
           "offset": "0x48",
           "is_code": true,
           "previous_eight_bytes": "008bcfe8d8040000",
-          "stack_offset": 236
+          "stack_offset": 148
         },
         {
-          "rva": "0x46cd20",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 240
+          "stack_offset": 152
         },
         {
-          "rva": "0x46cd20",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 252
+          "stack_offset": 164
         },
         {
-          "rva": "0x46cd20",
+          "rva": "0x46dd20",
           "symbol": "?g_MainApp@@3VCMainApp@@A",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 260
+          "stack_offset": 172
         },
         {
-          "rva": "0xbd302",
+          "rva": "0xbda02",
           "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
           "offset": "0x182",
           "is_code": true,
           "previous_eight_bytes": "00752e8b01ff5008",
-          "stack_offset": 280
+          "stack_offset": 192
         },
         {
-          "rva": "0xbd950",
+          "rva": "0xbe050",
           "symbol": "_WinMain@16",
           "offset": "0x240",
           "is_code": true,
-          "previous_eight_bytes": "cd8600e830f8ffff",
-          "stack_offset": 288
+          "previous_eight_bytes": "dd8600e830f8ffff",
+          "stack_offset": 200
         },
         {
-          "rva": "0x183430",
+          "rva": "0x183af0",
           "symbol": "_WinMainCRTStartup",
           "offset": "0x0",
           "is_code": true,
           "previous_eight_bytes": "cccccccccccccccc",
-          "stack_offset": 292
+          "stack_offset": 204
         },
         {
-          "rva": "0x22b198",
+          "rva": "0x22c198",
           "symbol": "___acrt_initial_locale_data",
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": "ffffffff00000000",
-          "stack_offset": 364
+          "stack_offset": 276
         },
         {
-          "rva": "0x1a9055",
+          "rva": "0x1a9705",
           "symbol": "__ismbblead",
           "offset": "0x13",
           "is_code": true,
           "previous_eight_bytes": "086a00e89dffffff",
-          "stack_offset": 380
+          "stack_offset": 292
         },
         {
-          "rva": "0x183380",
+          "rva": "0x183a40",
           "symbol": "?__scrt_common_main_seh@@YAHXZ",
           "offset": "0x140",
           "is_code": true,
-          "previous_eight_bytes": "004000e890a3f3ff",
-          "stack_offset": 404
+          "previous_eight_bytes": "004000e8d0a3f3ff",
+          "stack_offset": 316
         },
         {
           "rva": "0x0",
@@ -993,41 +978,73 @@
           "offset": "0x0",
           "is_code": false,
           "previous_eight_bytes": null,
-          "stack_offset": 408
+          "stack_offset": 320
+        },
+        {
+          "rva": "0x183af0",
+          "symbol": "_WinMainCRTStartup",
+          "offset": "0x0",
+          "is_code": true,
+          "previous_eight_bytes": "cccccccccccccccc",
+          "stack_offset": 340
+        },
+        {
+          "rva": "0x183af0",
+          "symbol": "_WinMainCRTStartup",
+          "offset": "0x0",
+          "is_code": true,
+          "previous_eight_bytes": "cccccccccccccccc",
+          "stack_offset": 344
+        },
+        {
+          "rva": "0x187990",
+          "symbol": "__except_handler4",
+          "offset": "0x0",
+          "is_code": true,
+          "previous_eight_bytes": "cccccccccccccccc",
+          "stack_offset": 376
         }
       ],
       "stack_is_candidate_scan_not_unwind": true,
       "ordinary_calls": [
         {
-          "board": 9,
-          "window": 7,
-          "lookup_rva": "0x271ea",
-          "call_rva": "0x27203",
-          "return_rva": "0x27206",
-          "table_rva": "0x1ee970",
-          "slot": 8,
-          "callee_rva": "0x5c550",
-          "code": "6a09b9107c6200e8ead7feff8b108bc86a0068c80000006a07ff5208"
+          "board": 10,
+          "window": 23,
+          "lookup_rva": "0x2725f",
+          "return_rva": "0x2727b",
+          "code": "6a0ab9108c6200e875d7feff6a0068c80000006a178b108bc8ff5208",
+          "callee_rva": "0x57e40",
+          "vtable_rva": "0x1ef540",
+          "slot": 8
         },
         {
-          "board": 10,
-          "window": 24,
-          "lookup_rva": "0x2721f",
-          "call_rva": "0x27238",
-          "return_rva": "0x2723b",
-          "table_rva": "0x1ee540",
-          "slot": 8,
-          "callee_rva": "0x57dd0",
-          "code": "6a0ab9107c6200e8b5d7feff6a0068c80000006a188b108bc8ff5208"
+          "board": 11,
+          "window": 12,
+          "lookup_rva": "0x272a9",
+          "return_rva": "0x272c2",
+          "code": "6a0bb9108c6200e82bd7feff6a006a006a0c8b108bc8ff5208",
+          "callee_rva": "0x39040",
+          "vtable_rva": "0x1ef020",
+          "slot": 8
+        },
+        {
+          "board": 14,
+          "window": 15,
+          "lookup_rva": "0x272db",
+          "return_rva": "0x272f4",
+          "code": "6a0eb9108c6200e8f9d6feff6a006a006a0f8b108bc8ff5208",
+          "callee_rva": "0x39ba0",
+          "vtable_rva": "0x1eafa0",
+          "slot": 8
         }
       ],
-      "kind": "PLAYER_TRADE_SKIN_AFTER_MERCHANT_WINDOW"
+      "kind": "ITEM_WORK_AFTER_TRADE_AND_ORE"
     },
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "43be9497054e8fd9a4e6ffd70b0f4ee5551225ffd48c3613346821b029ed911f"
+        "sha256": "ad2bb55ffe0b0295907b5c42e45c29082bf2cac57e47415e1281b869b1fe774a"
       },
       "build_exit": 0,
       "errors": [],
@@ -1037,11 +1054,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
-        "bytes": 2367488,
+        "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+        "bytes": 2369024,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183430",
+        "entry_rva": "0x183af0",
         "sections": [
           ".text",
           ".rdata",
@@ -1054,28 +1071,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "43be9497054e8fd9a4e6ffd70b0f4ee5551225ffd48c3613346821b029ed911f"
+        "sha256": "ad2bb55ffe0b0295907b5c42e45c29082bf2cac57e47415e1281b869b1fe774a"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary merchant window initialization returns after accepted character selection. Stock Taiwan layout, four money fields and paging over controlled items pass. Next live failure is the legacy player-to-player trade window.",
+    "current_work": "After accepted character selection, ordinary player trade and ore initializers return. The next live failure is the legacy item crafting skin. Transactions and world entry remain open.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "a1d4a48643bf1c085e4af1ee907c9315646c8099b707f3a383694bd5ee2dab06",
+      "sha256": "fb6efe1a6ebfd4e26ffc8bb030503c1f7f1d9f7ff69a990e4283b045ef305835",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/7d348e69/selection-live-taiwan001/login-frame.png",
-        "sha256": "01e3d48d4907135564912eb3ab96957bc5a2f53f71aceaca6dbdeda92e667297"
+        "file": "work/m9/ad434f01/selection-live-taiwan001/login-frame.png",
+        "sha256": "3d45fde962f056055bdeda260c2651781469a6073949e2044aceb4898681e880"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 120,
-        "elapsed_ms": 8000,
+        "frame_index": 123,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1084,11 +1101,11 @@
       "known_next_failure": {
         "normal_executable": {
           "file": "work/client455-port/normal/build/RF_Online.bin",
-          "sha256": "7d348e6995197df5066922086c2f697b578f90a1ad1f8de237990c8b60c30bbb",
-          "bytes": 2367488,
+          "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+          "bytes": 2369024,
           "architecture": "x86",
           "image_base": "0x400000",
-          "entry_rva": "0x183430",
+          "entry_rva": "0x183af0",
           "sections": [
             ".text",
             ".rdata",
@@ -1101,15 +1118,15 @@
           "kind": "exception",
           "code": "0xc0000005",
           "first_chance": 0,
-          "address": "0x75ff6f",
-          "rva": "0x12ff6f",
-          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\7d348e69\\selection-live-taiwan001\\RF_Online.bin",
+          "address": "0x2b066f",
+          "rva": "0x13066f",
+          "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\ad434f01\\selection-live-taiwan001\\RF_Online.bin",
           "parameter0": 0,
           "parameter1": "0xfffffff8"
         },
         "fault_rva_is_own": true,
         "own_fault": {
-          "rva": "0x12ff6f",
+          "rva": "0x13066f",
           "symbol": "?GetSpriteXL@CSprite@@QAEGKK@Z",
           "offset": "0x5f",
           "is_code": true,
@@ -1117,52 +1134,28 @@
         },
         "candidates": [
           {
-            "rva": "0x992b1",
+            "rva": "0x993c1",
             "symbol": "?SetSpriteInfo@CGUIObjectAni@@UAEXPAU_sprite_info@@@Z",
             "offset": "0x61",
             "is_code": true,
-            "previous_eight_bytes": "114508e85f6c0900",
+            "previous_eight_bytes": "114508e84f720900",
             "stack_offset": 8
           },
           {
-            "rva": "0xb4b48",
-            "symbol": "?SetSprite@CGUITradeWindow@@UAEXXZ",
-            "offset": "0x128",
+            "rva": "0x8e8ce",
+            "symbol": "?SetSprite@CGUIItemMakeWindow@@UAEXXZ",
+            "offset": "0x5e",
             "is_code": true,
             "previous_eight_bytes": "0500508b01ff5014",
             "stack_offset": 32
           },
           {
-            "rva": "0xb3c32",
-            "symbol": "?Init@CGUITradeWindow@@UAEXXZ",
-            "offset": "0x5f2",
+            "rva": "0x8defe",
+            "symbol": "?Init@CGUIItemMakeWindow@@UAEXXZ",
+            "offset": "0x18e",
             "is_code": true,
-            "previous_eight_bytes": "608b068bceff5018",
+            "previous_eight_bytes": "0200008b06ff5018",
             "stack_offset": 64
-          },
-          {
-            "rva": "0x1a128b",
-            "symbol": "__malloc_base",
-            "offset": "0x3b",
-            "is_code": true,
-            "previous_eight_bytes": "2f01ff1550415e00",
-            "stack_offset": 120
-          },
-          {
-            "rva": "0x1823bd",
-            "symbol": "??2@YAPAXI@Z",
-            "offset": "0xd",
-            "is_code": true,
-            "previous_eight_bytes": "750856e893940100",
-            "stack_offset": 144
-          },
-          {
-            "rva": "0x12a93",
-            "symbol": "?Create@CObjectBoard@@QAEXEEE@Z",
-            "offset": "0xe3",
-            "is_code": true,
-            "previous_eight_bytes": "6a0050e89d1d1700",
-            "stack_offset": 148
           },
           {
             "rva": "0x12e62",
@@ -1170,103 +1163,103 @@
             "offset": "0x12",
             "is_code": true,
             "previous_eight_bytes": "c9742e8b01ff506c",
-            "stack_offset": 168
+            "stack_offset": 80
           },
           {
-            "rva": "0x57dea",
-            "symbol": "?InitWindow@CPlayerTradeBoard@@UAEXKHH@Z",
+            "rva": "0x39bba",
+            "symbol": "?InitWindow@CItemWorkBoard@@UAEXKHH@Z",
             "offset": "0x1a",
             "is_code": true,
-            "previous_eight_bytes": "894608e866b0fbff",
-            "stack_offset": 180
+            "previous_eight_bytes": "894608e89692fdff",
+            "stack_offset": 92
           },
           {
-            "rva": "0x2723b",
+            "rva": "0x272f4",
             "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
-            "offset": "0x30b",
+            "offset": "0x384",
             "is_code": true,
-            "previous_eight_bytes": "188b108bc8ff5208",
-            "stack_offset": 204
+            "previous_eight_bytes": "0f8b108bc8ff5208",
+            "stack_offset": 116
           },
           {
-            "rva": "0x26a58",
+            "rva": "0x26a98",
             "symbol": "?Create@CGP_MainGame@@UAEHXZ",
             "offset": "0x48",
             "is_code": true,
             "previous_eight_bytes": "008bcfe8d8040000",
-            "stack_offset": 236
+            "stack_offset": 148
           },
           {
-            "rva": "0x46cd20",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 240
+            "stack_offset": 152
           },
           {
-            "rva": "0x46cd20",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 252
+            "stack_offset": 164
           },
           {
-            "rva": "0x46cd20",
+            "rva": "0x46dd20",
             "symbol": "?g_MainApp@@3VCMainApp@@A",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 260
+            "stack_offset": 172
           },
           {
-            "rva": "0xbd302",
+            "rva": "0xbda02",
             "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
             "offset": "0x182",
             "is_code": true,
             "previous_eight_bytes": "00752e8b01ff5008",
-            "stack_offset": 280
+            "stack_offset": 192
           },
           {
-            "rva": "0xbd950",
+            "rva": "0xbe050",
             "symbol": "_WinMain@16",
             "offset": "0x240",
             "is_code": true,
-            "previous_eight_bytes": "cd8600e830f8ffff",
-            "stack_offset": 288
+            "previous_eight_bytes": "dd8600e830f8ffff",
+            "stack_offset": 200
           },
           {
-            "rva": "0x183430",
+            "rva": "0x183af0",
             "symbol": "_WinMainCRTStartup",
             "offset": "0x0",
             "is_code": true,
             "previous_eight_bytes": "cccccccccccccccc",
-            "stack_offset": 292
+            "stack_offset": 204
           },
           {
-            "rva": "0x22b198",
+            "rva": "0x22c198",
             "symbol": "___acrt_initial_locale_data",
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": "ffffffff00000000",
-            "stack_offset": 364
+            "stack_offset": 276
           },
           {
-            "rva": "0x1a9055",
+            "rva": "0x1a9705",
             "symbol": "__ismbblead",
             "offset": "0x13",
             "is_code": true,
             "previous_eight_bytes": "086a00e89dffffff",
-            "stack_offset": 380
+            "stack_offset": 292
           },
           {
-            "rva": "0x183380",
+            "rva": "0x183a40",
             "symbol": "?__scrt_common_main_seh@@YAHXZ",
             "offset": "0x140",
             "is_code": true,
-            "previous_eight_bytes": "004000e890a3f3ff",
-            "stack_offset": 404
+            "previous_eight_bytes": "004000e8d0a3f3ff",
+            "stack_offset": 316
           },
           {
             "rva": "0x0",
@@ -1274,35 +1267,67 @@
             "offset": "0x0",
             "is_code": false,
             "previous_eight_bytes": null,
-            "stack_offset": 408
+            "stack_offset": 320
+          },
+          {
+            "rva": "0x183af0",
+            "symbol": "_WinMainCRTStartup",
+            "offset": "0x0",
+            "is_code": true,
+            "previous_eight_bytes": "cccccccccccccccc",
+            "stack_offset": 340
+          },
+          {
+            "rva": "0x183af0",
+            "symbol": "_WinMainCRTStartup",
+            "offset": "0x0",
+            "is_code": true,
+            "previous_eight_bytes": "cccccccccccccccc",
+            "stack_offset": 344
+          },
+          {
+            "rva": "0x187990",
+            "symbol": "__except_handler4",
+            "offset": "0x0",
+            "is_code": true,
+            "previous_eight_bytes": "cccccccccccccccc",
+            "stack_offset": 376
           }
         ],
         "stack_is_candidate_scan_not_unwind": true,
         "ordinary_calls": [
           {
-            "board": 9,
-            "window": 7,
-            "lookup_rva": "0x271ea",
-            "call_rva": "0x27203",
-            "return_rva": "0x27206",
-            "table_rva": "0x1ee970",
-            "slot": 8,
-            "callee_rva": "0x5c550",
-            "code": "6a09b9107c6200e8ead7feff8b108bc86a0068c80000006a07ff5208"
+            "board": 10,
+            "window": 23,
+            "lookup_rva": "0x2725f",
+            "return_rva": "0x2727b",
+            "code": "6a0ab9108c6200e875d7feff6a0068c80000006a178b108bc8ff5208",
+            "callee_rva": "0x57e40",
+            "vtable_rva": "0x1ef540",
+            "slot": 8
           },
           {
-            "board": 10,
-            "window": 24,
-            "lookup_rva": "0x2721f",
-            "call_rva": "0x27238",
-            "return_rva": "0x2723b",
-            "table_rva": "0x1ee540",
-            "slot": 8,
-            "callee_rva": "0x57dd0",
-            "code": "6a0ab9107c6200e8b5d7feff6a0068c80000006a188b108bc8ff5208"
+            "board": 11,
+            "window": 12,
+            "lookup_rva": "0x272a9",
+            "return_rva": "0x272c2",
+            "code": "6a0bb9108c6200e82bd7feff6a006a006a0c8b108bc8ff5208",
+            "callee_rva": "0x39040",
+            "vtable_rva": "0x1ef020",
+            "slot": 8
+          },
+          {
+            "board": 14,
+            "window": 15,
+            "lookup_rva": "0x272db",
+            "return_rva": "0x272f4",
+            "code": "6a0eb9108c6200e8f9d6feff6a006a006a0f8b108bc8ff5208",
+            "callee_rva": "0x39ba0",
+            "vtable_rva": "0x1eafa0",
+            "slot": 8
           }
         ],
-        "kind": "PLAYER_TRADE_SKIN_AFTER_MERCHANT_WINDOW"
+        "kind": "ITEM_WORK_AFTER_TRADE_AND_ORE"
       },
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
@@ -1313,11 +1338,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "b2e12cb5de98e2a93120df9ef869cca837f06c3f379a10e2fb53c512d6ebf20c",
-    "entries": 175,
+    "sha256": "c67a7641831cd4a5112f41a5a5a2a1ebfa3168c7654e6b196c97c2bf1946dda6",
+    "entries": 176,
     "statuses": {
       "partial_component": 13,
-      "partial": 132,
+      "partial": 133,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1327,7 +1352,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-SHOP-WINDOW-169"
+      "CLIENT455-TRADE-ORE-170"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1397,7 +1422,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;175 overlapping historical records",
+        "measured": "12 domain planning map;176 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1545,7 +1570,7 @@
       "Changed estimate and its basis"
     ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "Actual selection passes merchant initialization and reaches player trade. Ordinary population, the selection-to-world path and gameplay remain unproved."
+    "unchanged_range_reason": "Actual selection passes the trade and ore initializers and reaches item crafting. Transactions, the selection-to-world path and gameplay remain unproved."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1559,7 +1584,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "9ee8f3e5739ed89af546edba45358c201fc3c950b78958369749e945c0c4b4f4"
+    "sha256": "3e2fa391b0ad35c73f68174848cde15b1adfcdb8e9dfa86eff5ee39b6a5e60d1"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-10T23:56:17.073559+00:00",
+  "measured_at_utc": "2026-11-11T00:20:57.485298+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2517,
-    "unique_functions_with_complete_assembly_cfg": 713,
-    "unique_pinned_code_bytes": 702034,
-    "reports": 171,
-    "code_range_occurrences": 4101,
+    "unique_functions_with_pinned_code": 2538,
+    "unique_functions_with_complete_assembly_cfg": 734,
+    "unique_pinned_code_bytes": 711898,
+    "reports": 172,
+    "code_range_occurrences": 4122,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -671,6 +671,10 @@
       "sha256": "20903a53663838f9b04531b819934076084b2b0979eb2812202964391a2efb20"
     },
     {
+      "file": "inventory/client455-trade-ore-reference.json",
+      "sha256": "784201320d1d5716739cd54de82531012ea7fdc11075e3696f768bf8702182a3"
+    },
+    {
       "file": "inventory/client455-tutorial-actions-reference.json",
       "sha256": "db0d327c5b03d3a1393daa224afbc55013594a38dd6fa7e705b8328531f9a159"
     },
@@ -945,6 +949,10 @@
       "sha256": "cfe053868ac7aa47c073f8d2ba8ccfdd8c746e09ce11fe5df38c1fe5b0601253"
     },
     {
+      "file": "artifacts/client455-progress/trade-ore170-reference.json",
+      "sha256": "ff23c2e316ab3ea9a8615fb9ef2c404f1f0dd97afdfbe044fb829eac75bbb462"
+    },
+    {
       "file": "artifacts/client455-progress/unit167-reference.json",
       "sha256": "e7f457e29facb3d0735c5da151aadd987482fd0c39859b24beb54280a795990b"
     },
@@ -960,7 +968,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "dd28eaf222792f2c57009a87397bbc32ce378bf6f7e4129307a91cb55618bb43"
+      "sha256": "11216875b8059151e426adfdbb8b11f9766a0a617dda1828a9acbe80f07afb13"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -9602,6 +9610,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x82840",
+      "ida_name": "sub_482840",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x82840",
+          "bytes": 116
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 45
+        }
+      ]
+    },
+    {
       "rva": "0x83de0",
       "ida_name": "sub_483DE0",
       "reports": [
@@ -10308,6 +10335,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0xb5e30",
+      "ida_name": "sub_4B5E30",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xb5e30",
+          "bytes": 116
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 45
+        }
+      ]
     },
     {
       "rva": "0xb8140",
@@ -23513,6 +23559,120 @@
       ]
     },
     {
+      "rva": "0x2956d0",
+      "ida_name": "sub_6956D0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2956d0",
+          "bytes": 2131
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 611
+        }
+      ]
+    },
+    {
+      "rva": "0x295f30",
+      "ida_name": "sub_695F30",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x295f30",
+          "bytes": 176
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 62
+        }
+      ]
+    },
+    {
+      "rva": "0x2960b0",
+      "ida_name": "sub_6960B0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2960b0",
+          "bytes": 133
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x296140",
+      "ida_name": "sub_696140",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x296140",
+          "bytes": 758
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 208
+        }
+      ]
+    },
+    {
+      "rva": "0x296710",
+      "ida_name": "sub_696710",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x296710",
+          "bytes": 295
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 90
+        }
+      ]
+    },
+    {
+      "rva": "0x296840",
+      "ida_name": "sub_696840",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x296840",
+          "bytes": 75
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
       "rva": "0x296f70",
       "ida_name": "sub_696F70",
       "reports": [
@@ -26206,6 +26366,253 @@
         {
           "file": "artifacts/client455-progress/option164-reference/option.json",
           "instructions": 22
+        }
+      ]
+    },
+    {
+      "rva": "0x31fb20",
+      "ida_name": "sub_71FB20",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x31fb20",
+          "bytes": 3238
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 921
+        }
+      ]
+    },
+    {
+      "rva": "0x3207d0",
+      "ida_name": "sub_7207D0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3207d0",
+          "bytes": 342
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 109
+        }
+      ]
+    },
+    {
+      "rva": "0x320a20",
+      "ida_name": "sub_720A20",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x320a20",
+          "bytes": 194
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 62
+        }
+      ]
+    },
+    {
+      "rva": "0x320c40",
+      "ida_name": "sub_720C40",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x320c40",
+          "bytes": 179
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 57
+        }
+      ]
+    },
+    {
+      "rva": "0x320d00",
+      "ida_name": "sub_720D00",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x320d00",
+          "bytes": 179
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 57
+        }
+      ]
+    },
+    {
+      "rva": "0x320dc0",
+      "ida_name": "sub_720DC0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x320dc0",
+          "bytes": 302
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 84
+        }
+      ]
+    },
+    {
+      "rva": "0x320ef0",
+      "ida_name": "sub_720EF0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x320ef0",
+          "bytes": 148
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x321000",
+      "ida_name": "sub_721000",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321000",
+          "bytes": 194
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 62
+        }
+      ]
+    },
+    {
+      "rva": "0x321240",
+      "ida_name": "sub_721240",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321240",
+          "bytes": 133
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x3212d0",
+      "ida_name": "sub_7212D0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3212d0",
+          "bytes": 133
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x321360",
+      "ida_name": "sub_721360",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321360",
+          "bytes": 95
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 31
+        }
+      ]
+    },
+    {
+      "rva": "0x3213c0",
+      "ida_name": "sub_7213C0",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3213c0",
+          "bytes": 137
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x321450",
+      "ida_name": "sub_721450",
+      "reports": [
+        "inventory/client455-trade-ore-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321450",
+          "bytes": 790
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/trade-ore170-reference.json",
+          "instructions": 227
         }
       ]
     },
@@ -41371,8 +41778,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 16,
-    "unique_functions_with_complete_assembly_cfg": 16
+    "unique_functions_with_pinned_code": 21,
+    "unique_functions_with_complete_assembly_cfg": 21
   },
   "M6": "OPEN",
   "M9": "OPEN",

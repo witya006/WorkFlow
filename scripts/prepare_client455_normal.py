@@ -52,6 +52,7 @@ from client455_board_startup_port import port_board_startup
 from client455_unit_windows_port import port_unit_windows
 from client455_skill_force_window_port import port_skill_force_window
 from client455_shop_window_port import port_shop_window
+from client455_trade_ore_port import port_trade_ore
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -818,6 +819,8 @@ def main():
             if skill_force_changed:changes.append('455 shared Skill and Force tab-board owners, stock skins and ordinary startup IDs/capacities')
             raw,shop_changed=port_shop_window(raw,relative,section,native)
             if shop_changed:changes.append('455 merchant window, pager and ordinary startup package')
+            raw,trade_ore_changed=port_trade_ore(raw,relative,section,native)
+            if trade_ore_changed:changes.append('455 player exchange and ore processing windows')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.
@@ -915,7 +918,7 @@ def main():
     report['record_inputs']['client455_inventory.inc']=sha((native/'client455_inventory.inc').read_bytes())
     for name in ['client455_unit_view_skin.h','client455_unit_tuning.inc','client455_unit_storehouse.inc',
                  'client455_skill_force_window.inc','client455_force_window.inc','client455_skill_force_row.inc',
-                 'client455_shop_window.inc']:
+                 'client455_shop_window.inc','client455_player_trade_window.inc','client455_ore_window.inc']:
         report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_linker_startup.inc']=sha((native/'client455_linker_startup.inc').read_bytes())
     for name in ['client455_launcher.cpp','client455_launcher.h','client455_launcher_bridge.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

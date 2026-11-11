@@ -8758,7 +8758,7 @@
       "id": "CLIENT455-SHOP-WINDOW-169",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-shop-window-checkpoint.json",
         "inventory/client455-shop-window-reference.json",
@@ -8770,6 +8770,24 @@
         "Exact mouse, dialog and board dispatch, purchase/sale/repair and server results",
         "Production sources for 64-bit money and PVP/points, locale and resource reload",
         "Remaining MainGame board registrations, world entry and M9 acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-TRADE-ORE-170",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-trade-ore-checkpoint.json",
+        "inventory/client455-trade-ore-reference.json",
+        "inventory/client455-trade-ore-native.json"
+      ],
+      "description": "After accepted character selection, ordinary player trade and ore initializers return. The next live failure is the legacy item crafting skin. Transactions and world entry remain open.",
+      "gaps": [
+        "Trade and ore transactions through the real client protocol and managed item providers",
+        "64-bit player money entry, validation and packet ownership; legacy trade packets remain",
+        "Complete trade drag quantity, focus, locale and device reload behavior",
+        "Complete mining and item work owners, remaining startup registrations and game world"
       ]
     }
   ],

@@ -1,0 +1,269 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ad434f015fccf66d6807faae5cb993bd50b8e2b8e676559a1c8c0b4176d6392c",
+    "bytes": 2369024,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x183af0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial player trade and ore view. Live transactions remain open.",
+  "functions": [
+    {
+      "rva": "0x31fb20",
+      "symbol": "CGUITradeWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb3b50"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3207d0",
+      "symbol": "CGUITradeWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4e90"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x320dc0",
+      "symbol": "CGUITradeWindow::SetLock_Avatar",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4c50"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x320ef0",
+      "symbol": "CGUITradeWindow::SetAccept_Avatar",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb49c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321360",
+      "symbol": "CGUITradeWindow::SetLock_Other",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4ce0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3213c0",
+      "symbol": "CGUITradeWindow::SetAccept_Other",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4a30"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x320c40",
+      "symbol": "CGUITradeWindow::SetAvatarDalant",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4aa0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x320d00",
+      "symbol": "CGUITradeWindow::SetAvatarGold",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4b30"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321240",
+      "symbol": "CGUITradeWindow::SetOtherDalant",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4d60"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3212d0",
+      "symbol": "CGUITradeWindow::SetOtherGold",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4dd0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x320a20",
+      "symbol": "CGUITradeWindow::SetEnableSocketNum_Avatar",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4c10"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321000",
+      "symbol": "CGUITradeWindow::SetEnableSocketNum_Other",
+      "source": {
+        "file": "scripts/native/client455_player_trade_window.inc",
+        "sha256": "ab4c38550654b68d17b5b075f94143216088023495fb26fe70937930e11c6c35"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb4c30"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321450",
+      "symbol": "CGUITradeWindow::MouseEvent",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/player/guitradewindow.cpp",
+        "sha256": "2cc072703b4a9df04b3ea73e8c2089ef52cdad719f4447df3382c9dcb6deb45d"
+      },
+      "ordinary_symbol_rvas": [
+        "0xb45a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2956d0",
+      "symbol": "CGUIOreProcWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_ore_window.inc",
+        "sha256": "768e21cb684a2c3bffecb12c75db6484680f1068813ecc465dd9dcea511c1d3b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9c870"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x295f30",
+      "symbol": "CGUIOreProcWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_ore_window.inc",
+        "sha256": "768e21cb684a2c3bffecb12c75db6484680f1068813ecc465dd9dcea511c1d3b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9d0e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2960b0",
+      "symbol": "CGUIOreProcWindow::SetProcPrice",
+      "source": {
+        "file": "scripts/native/client455_ore_window.inc",
+        "sha256": "768e21cb684a2c3bffecb12c75db6484680f1068813ecc465dd9dcea511c1d3b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9d060"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x296710",
+      "symbol": "CGUIOreProcWindow::EnableDisposal",
+      "source": {
+        "file": "scripts/native/client455_ore_window.inc",
+        "sha256": "768e21cb684a2c3bffecb12c75db6484680f1068813ecc465dd9dcea511c1d3b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9c6f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x296140",
+      "symbol": "CGUIOreProcWindow::TakeInResultOre",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/npc/guioreprocwindow.cpp",
+        "sha256": "da33f96d9d700385c9aa08d1f64e176eb0f8892de30b717e5891b858b436c3c7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9d4b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x296840",
+      "symbol": "CGUIOreProcWindow::EnableProc",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/npc/guioreprocwindow.cpp",
+        "sha256": "da33f96d9d700385c9aa08d1f64e176eb0f8892de30b717e5891b858b436c3c7"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    }
+  ]
+}
