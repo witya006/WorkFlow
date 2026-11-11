@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T12:15:41.636412+00:00",
+  "measured_at_utc": "2026-11-11T12:34:17.907036+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2895,
-    "unique_functions_with_complete_assembly_cfg": 1115,
-    "unique_pinned_code_bytes": 813666,
-    "reports": 205,
-    "code_range_occurrences": 4575,
+    "unique_functions_with_pinned_code": 2897,
+    "unique_functions_with_complete_assembly_cfg": 1119,
+    "unique_pinned_code_bytes": 813770,
+    "reports": 206,
+    "code_range_occurrences": 4580,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -85,6 +85,10 @@
     {
       "file": "inventory/client455-avatar-classes-reference.json",
       "sha256": "74123a0cc49b9ff59179420fc90b9f1b44b265e0a5e892e684a3c8d1c41aa98a"
+    },
+    {
+      "file": "inventory/client455-avatar-health-reference.json",
+      "sha256": "95676de0f3a2a8ecef296b0508da93f591c51ff033ff183c58d1f8494302046f"
     },
     {
       "file": "inventory/client455-avatar-stage-reference.json",
@@ -881,6 +885,10 @@
       "sha256": "132fbf96f8865791cfca9b87701a7cc9a2a964dd4d5ee6b224a50ab13484be7f"
     },
     {
+      "file": "artifacts/client455-progress/avatar-health208/reference.json",
+      "sha256": "5db540c1b7b83f11b3aee2fba8f4b977733bf7a3d4d3b024a1ade546b90ce237"
+    },
+    {
       "file": "artifacts/client455-progress/avatar180-reference.json",
       "sha256": "1a48dda9f4e4523952e2e8df8f3d2034e2d3e4bb8a0c282a2a6864e35cf30218"
     },
@@ -1232,7 +1240,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "0446a2e1783e3cd5300d51223a5d96c5fa69e34fcb9618edc291297288a101f5"
+      "sha256": "d78be94479e5168e1f8dfdbfe89fe6977969f378bb3ac91092681df906499686"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -3482,9 +3490,29 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x1b500",
+      "ida_name": "sub_41B500",
+      "reports": [
+        "inventory/client455-avatar-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1b500",
+          "bytes": 60
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar-health208/reference.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
       "rva": "0x1b540",
       "ida_name": "sub_41B540",
       "reports": [
+        "inventory/client455-avatar-health-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
@@ -3493,12 +3521,18 @@
           "bytes": 193
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar-health208/reference.json",
+          "instructions": 61
+        }
+      ]
     },
     {
       "rva": "0x1b610",
       "ida_name": "sub_41B610",
       "reports": [
+        "inventory/client455-avatar-health-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
@@ -3507,7 +3541,12 @@
           "bytes": 60
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar-health208/reference.json",
+          "instructions": 25
+        }
+      ]
     },
     {
       "rva": "0x1b650",
@@ -7136,6 +7175,7 @@
       "rva": "0x47900",
       "ida_name": "sub_447900",
       "reports": [
+        "inventory/client455-avatar-health-reference.json",
         "inventory/client455-monster-force-damage-reference.json",
         "inventory/client455-monster-health-reference.json"
       ],
@@ -7146,6 +7186,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar-health208/reference.json",
+          "instructions": 99
+        },
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 99
@@ -20005,6 +20049,25 @@
         {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x1a7370",
+      "ida_name": "sub_5A7370",
+      "reports": [
+        "inventory/client455-avatar-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a7370",
+          "bytes": 44
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar-health208/reference.json",
+          "instructions": 20
         }
       ]
     },
@@ -49303,8 +49366,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 1,
-    "unique_functions_with_complete_assembly_cfg": 1
+    "unique_functions_with_pinned_code": 2,
+    "unique_functions_with_complete_assembly_cfg": 4
   },
   "M6": "OPEN",
   "M9": "OPEN",

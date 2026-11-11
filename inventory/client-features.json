@@ -9339,7 +9339,7 @@
       "id": "CLIENT455-CREATURE-ATTACKS-207",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-creature-attacks-checkpoint.json",
         "inventory/client455-creature-attacks-reference.json"
@@ -9349,6 +9349,22 @@
         "Live creature attack and its effects on the player",
         "Live hits against a surviving target",
         "Attack part, effect timing and actor-specific reaction parity"
+      ]
+    },
+    {
+      "id": "CLIENT455-AVATAR-HEALTH-208",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-avatar-health-checkpoint.json",
+        "inventory/client455-avatar-health-reference.json"
+      ],
+      "description": "Current local HP from event 11/14 reaches the actual life bar and character info. The ordinary impact leaves current avatar HP to the server update. A live shot on NeutralB passed.",
+      "gaps": [
+        "Live HP update after a hostile hit",
+        "Party HP indication, recovery and maximum resource events",
+        "Mounted combat, full avatar death and respawn"
       ]
     }
   ],

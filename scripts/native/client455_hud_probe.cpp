@@ -4,8 +4,94 @@
 #undef main
 #include "userinterface/gamewindow/guigaugeexpwindow.h"
 #include "userinterface/gamewindow/guicharinfowindow.h"
+#include "gameobject/manager/ccharactermgr.h"
+#include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
+#include "network/netmsgprocessor/event/cnetmsgprocessor_event.h"
+#include <array>
 extern CGUICharInfoWindow* g_pUiCharInfoWindow;
-static int hud159(){
+
+static void checkAvatarHealth(CGUIGaugeExpWindow& panel, CGUICharInfoWindow& info)
+{
+    ChInterface renderer;
+    auto* previousRenderer = g_ifCharIF;
+    g_ifCharIF = &renderer;
+    struct ResetAnimation {
+        ChInterface* previous;
+        ~ResetAnimation() {
+            _DestroyAnimationMgr();
+            g_ifCharIF = previous;
+        }
+    } resetAnimation{previousRenderer};
+    check(_CreateAnimationMgr(), "ordinary animation manager");
+    CCharacterMgr manager;
+    manager.CreateAvatar();
+    auto* avatar = _GetAvatar();
+    check(avatar != nullptr, "actual local player");
+    constexpr DWORD avatarSerial = 30214, monsterSerial = 30215;
+    avatar->SetCharTypeID(CTI_AVATAR);
+    avatar->SetIndex(avatarSerial);
+    avatar->SetUnitMountState(UMS_DISMOUNT);
+    auto* previous = g_pUiGaugeWindow;
+    g_pUiGaugeWindow = &panel;
+    struct ResetGauge {
+        CGUIGaugeExpWindow* previous;
+        ~ResetGauge() { g_pUiGaugeWindow = previous; }
+    } reset{previous};
+
+    avatar->SetMaxHP(160000);
+    avatar->SetHP(160000);
+    panel.SetGauge(CGUIGaugeExpWindow::FORCE_BAR, 200, 150);
+    panel.SetGauge(CGUIGaugeExpWindow::STAMINA_BAR, 100, 100);
+    auto* monster = manager.AddMonster(monsterSerial);
+    check(monster != nullptr, "ordinary attacker");
+    monster->SetIndex(monsterSerial);
+    CNetMsgProcessor_Combat combat;
+    constexpr LONG damage = 70000;
+    std::array<char, 15> hit{};
+    std::memcpy(hit.data(), &monsterSerial, sizeof monsterSerial);
+    hit[6] = CTI_PLAYER;
+    std::memcpy(hit.data() + 7, &avatarSerial, sizeof avatarSerial);
+    std::memcpy(hit.data() + 11, &damage, sizeof damage);
+    _MSG_HEADER hitHeader{19, {5, 13}};
+    check(combat.AnalysisServerPacket(&hitHeader, hit.data()), "ordinary incoming attack");
+    auto* impact = avatar->GetAttackerInfo(monster);
+    check(impact != nullptr, "incoming attack record");
+    impact->SetEffectFrameNum(1);
+    impact->SetDamaged(TRUE);
+    avatar->GetCombatState()->ProcessDamage();
+    const auto life = CGUIGaugeExpWindow::LIFE_BAR;
+    check(impact->GetCurDamagePoint() == damage && avatar->GetHP() == 160000 &&
+          panel.GetCurrentGauge(life) == 160000, "impact awaits an authoritative health update");
+    _GetEffectInfoList()->Clear();
+
+    CNetMsgProcessor_Event events;
+    std::array<char, 5> payload{};
+    const auto send = [&](DWORD hp, WORD bytes) {
+        std::memcpy(payload.data(), &hp, sizeof hp);
+        _MSG_HEADER header{WORD(4 + bytes), {11, 14}};
+        return events.AnalysisServerPacket(&header, payload.data());
+    };
+    check(!send(90000, 3) && !send(90000, 5) && avatar->GetHP() == 160000 &&
+          panel.GetCurrentGauge(life) == 160000, "invalid lengths preserve HP and HUD");
+    check(send(90000, 4) && avatar->GetHP() == 90000 && panel.GetCurrentGauge(life) == 90000,
+          "ordinary event applies all 32 bits to the player and HUD");
+    auto* bar = panel.GetAddedObject(2);
+    auto* sprite = bar->GetSpriteInfo()->pSprite;
+    check(bar->m_ptSize.x == LONG(double(sprite->GetSpriteOrgXL(0, 1)) * 0.5625) &&
+          !std::strcmp(info.GetInfoValue455(9)->GetString(), "90000 / 160000"),
+          "visible life gauge width and character sheet agree");
+    capture([&]() { check(panel.Draw() != 0, "draw updated health gauge"); }, "hud-avatar-health.bgra");
+
+    avatar->SetUnitMountState(UMS_MOUNT);
+    check(send(70000, 4) && avatar->GetHP() == 0 && panel.GetCurrentGauge(life) == 0,
+          "active unit gauge reads the unit owner");
+    avatar->SetUnitMountState(UMS_DISMOUNT);
+    check(avatar->GetHP() == 70000, "player HP received while mounted survives dismount");
+    check(send(0, 4) && avatar->GetHP() == 0 && panel.GetCurrentGauge(life) == 0,
+          "zero current HP reaches the gauge");
+}
+
+static int hud159(bool avatarHealth){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     check(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData(),"language");
     InitR3Engine();GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();
@@ -47,10 +133,16 @@ static int hud159(){
         check(panel.GetAddedObjectNum()==children,"sprite reload does not duplicate children");capture(draw,"hud-reloaded.bgra");
         panel.SetLevel(300);value(3,"44");check(panel.GetLevel()==44,"target BYTE level");
         panel.SetGauge(CGUIGaugeExpWindow::Bar(255),1,1);check(panel.GetAddedObjectNum()==17,"out-of-domain bar ignored");
+        if (avatarHealth) checkAvatarHealth(panel, info);
     }
     GetD3dDevice()->SetTexture(0,nullptr);gSpriteMgr.UnloadTargetSprites455();check(GetDmallocSize()==baseline,"sprite allocator balance");
     R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* f=std::fopen("result.json","wb");check(f!=nullptr,"report");
-    std::fprintf(f,"{\"status\":\"PASS\",\"actual_HUD_children\":17,\"actual_target_skins\":3,\"fourth_threshold_cases\":7,\"char_info_value_indices\":[3,9,10,11,12],\"sprite_reload\":true,\"GPU_frames\":3,\"initial_pixels\":%u,\"sprite_allocator_balanced\":true,\"full_MainGame\":false,\"full_client\":false}\n",pixels);std::fclose(f);return 0;
+    std::fprintf(f,"{\"status\":\"PASS\",\"actual_HUD_children\":17,\"actual_target_skins\":3,\"fourth_threshold_cases\":7,\"char_info_value_indices\":[3,9,10,11,12],\"sprite_reload\":true,\"GPU_frames\":%d,\"initial_pixels\":%u,\"sprite_allocator_balanced\":true,\"full_MainGame\":false,\"full_client\":false",avatarHealth ? 4 : 3,pixels);
+    if (avatarHealth)
+        std::fputs(",\"avatar_health\":{\"hp\":[160000,90000,70000,0],\"impact_damage\":70000,\"hp_after_impact\":160000,\"invalid_lengths\":2,\"mounted_player_hp_retained\":true}", f);
+    std::fputs("}\n", f);
+    std::fclose(f);
+    return 0;
 }
-int main(){try{return hud159();}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}
+int main(int argc, char** argv){try{return hud159(argc == 2 && !std::strcmp(argv[1], "--avatar-health"));}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}

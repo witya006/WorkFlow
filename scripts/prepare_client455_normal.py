@@ -62,6 +62,7 @@ from client455_camera_input_port import port_camera_input
 from client455_world_update_port import port_world_updates
 from client455_monster_force_port import port_monster_force
 from client455_monster_health_port import port_monster_health
+from client455_avatar_health_port import port_avatar_health
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
 from client455_armed_attack_port import port_armed_attack
@@ -850,6 +851,8 @@ def main():
             if monster_force_changed:changes.append('455 combat 5/9 monster Force owner and ordinary action')
             raw,monster_health_changed=port_monster_health(raw,relative,native)
             if monster_health_changed:changes.append('455 monster health fraction and 13/27, 13/29 consumers')
+            raw,avatar_health_changed=port_avatar_health(raw,relative)
+            if avatar_health_changed:changes.append('455 authoritative 11/14 avatar health and upper HUD')
             raw,combat_result_changed=port_combat_result_effect(raw,relative)
             if combat_result_changed:changes.append('455 combat result word, block sound and visibility')
             raw,critical_changed=port_monster_critical(raw,relative)
