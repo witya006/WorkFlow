@@ -9293,7 +9293,7 @@
       "id": "CLIENT455-AMMUNITION-IMPACT-204",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-ammunition-impact-checkpoint.json",
         "inventory/client455-ammunition-impact-reference.json"
@@ -9302,6 +9302,21 @@
       "gaps": [
         "A second attack in the same session and target health synchronization",
         "Ammunition type-16 gauge, auxiliary activation and supporting impact"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-TARGET-205",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-target-checkpoint.json",
+        "inventory/client455-monster-target-reference.json"
+      ],
+      "description": "On NeutralB the normal client requests the selected monster's HP, enters combat mode, applies the server's death and HP updates, and renders the impact.",
+      "gaps": [
+        "Live hits against a surviving target and ordinary multi-frame health changes",
+        "Target details for other character types, all death reasons and mode/pose branches"
       ]
     }
   ],

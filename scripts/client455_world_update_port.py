@@ -57,6 +57,7 @@ bool CAvatar::CheckTownAttack455(CCharacter& target)
         anchor = b'void\tInitMsg_MonsterCreate_zocl( char * pi_pMsg );'
         return replace(raw, anchor, anchor + b'''
     bool InitMsg_MonsterSpawn455(const char* bytes, std::size_t size);
+    bool InitMsg_MonsterDeath455(const char* bytes, std::size_t size);
     bool PositionMsg_MonsterMove455(const char* bytes, std::size_t size);
     bool PositionMsg_PlayerStatus455(const char* bytes, std::size_t size);
     bool PositionMsg_TownState455(const char* bytes, std::size_t size);'''), True
@@ -66,6 +67,10 @@ bool CAvatar::CheckTownAttack455(CCharacter& target)
         raw = replace(raw, b'\t\t\t\tcase object_real_fixpositon_zocl :\n\t\t\t\t\tPositionMsg_ObjectRealFixpositon_zocl( pi_pMsg );\n\t\t\t\t\tbreak;\n\n', b'')
         raw = replace(raw, b'case player_die_zocl :\n\t\t\t\t\tInitMsg_PlayerDie_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
                       b'case 16:\n\t\t\t\t\treturn InitMsg_MonsterSpawn455(pi_pMsg, pMsgHeader->m_wSize - 4);')
+        raw = replace(raw, b'case monster_destroy_zocl :\n\t\t\t\t\tInitMsg_MonsterDestroy_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
+                      b'case 17:\n\t\t\t\t\treturn true;')
+        raw = replace(raw, b'case other_new_view_zocl :\n\t\t\t\t\tInitMsg_OtherNewView_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
+                      b'case 24:\n\t\t\t\t\treturn InitMsg_MonsterDeath455(pi_pMsg, pMsgHeader->m_wSize - 4);')
         raw = replace(raw, b'case monster_move_zocl :\n\t\t\t\t\tPositionMsg_MonsterMove_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
                       b'''case 5:
                     return PositionMsg_MonsterMove455(pi_pMsg, pMsgHeader->m_wSize - 4);

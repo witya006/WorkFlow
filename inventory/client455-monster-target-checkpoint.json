@@ -1,0 +1,238 @@
+{
+  "status": "PARTIAL_LIVE_MONSTER_DEATH",
+  "scope": "Ordinary target request and monster death on NeutralB.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cb2c9c628275954cf5110c65dda00efe56ff02d2ca8c04c995917a765ba18b9f",
+    "bytes": 2401280,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18a660",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "d6f65f1fff5afd6439c9b923bfc54d4f351b5e669ec53cee6d6ada4441733aea",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/target205/live.json",
+    "sha256": "52f2d40daa518767ee4578f311d27cee2432113802caccc15a44423cc639eae4"
+  },
+  "observations": {
+    "target_requests": 3,
+    "target_cancels": 3,
+    "shots": 2,
+    "deaths": [
+      [
+        1032091,
+        0,
+        1
+      ],
+      [
+        1032092,
+        0,
+        1
+      ]
+    ],
+    "impacts": [
+      [
+        1032091,
+        22,
+        0
+      ],
+      [
+        1032092,
+        22,
+        0
+      ]
+    ],
+    "ammunition": [
+      [
+        7,
+        310,
+        309
+      ],
+      [
+        7,
+        309,
+        308
+      ]
+    ],
+    "retargets": [
+      [
+        1032091,
+        1,
+        1
+      ],
+      [
+        1032065,
+        0,
+        1
+      ],
+      [
+        1032092,
+        1,
+        2
+      ]
+    ],
+    "combat_mode_requests": 1,
+    "legacy_mode_requests": 0,
+    "target_health": [
+      [
+        1032091,
+        27,
+        10000
+      ],
+      [
+        1032091,
+        29,
+        0
+      ],
+      [
+        1032065,
+        27,
+        10000
+      ],
+      [
+        1032092,
+        27,
+        10000
+      ],
+      [
+        1032092,
+        29,
+        0
+      ]
+    ],
+    "target_errors": [],
+    "target_replies": 3,
+    "health_updates": 2,
+    "frames": [
+      {
+        "file": "work/m9/cb2c9c62/world-combat-live-taiwan001/world-impact-0.png",
+        "sha256": "6a946daaa20f56b99ddbcda217c090c697d57c77b5974414d7763d5c18e6bf5e"
+      },
+      {
+        "file": "work/m9/cb2c9c62/world-combat-live-taiwan001/world-impact-1.png",
+        "sha256": "749a8cc8a4f3f21ba320ef405c08d564627e39e15570219050051419767cabb3"
+      }
+    ]
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_target.py",
+    "sha256": "cc72e0428b43a152943bc268dc351be21a72fbf07e9de915ffb5844c0bcd5912"
+  },
+  "prior_death_observation": {
+    "file": "artifacts/client455-progress/target205/death-live.json",
+    "sha256": "70e723c88f888f9b2000bb56ad3dde55689252a94b1d8deca0eb537717017ff5"
+  },
+  "prior_mode_observation": {
+    "file": "artifacts/client455-progress/target205/mode-live.json",
+    "sha256": "f3001ce9da4d2fe621d84b151998e27be5cb08a89f7a66b88d6077c5044bd85a"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_target_windows_port.py",
+      "sha256": "6b98018be12d241335483afca6544115aa0448ace8dc7f3b9f6814eab612e42d"
+    },
+    {
+      "file": "scripts/client455_monster_health_port.py",
+      "sha256": "256ec968be2f0ff9d4be14777db9a889f2f52e51895ffd7a10b426f3e32f13b5"
+    },
+    {
+      "file": "scripts/client455_armed_attack_port.py",
+      "sha256": "1bb878bc0a49ceacfad7287499c4b544777f48284079983f532072a1bb693502"
+    },
+    {
+      "file": "scripts/client455_player_status_port.py",
+      "sha256": "0c66e63367cabd594d83a53b743d93a19292c0bc637dbd5b755f2a57998162fa"
+    },
+    {
+      "file": "scripts/client455_player_owner_port.py",
+      "sha256": "744f083770b89240b43628f122d938b6ce4fbef7604de54427346ee74f5deddf"
+    },
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "68a9856d8001c806c54b44f9d1cc1c4338aedabb53925fd2ba902dc42fe39712"
+    },
+    {
+      "file": "scripts/client455_camera_input_port.py",
+      "sha256": "236be3da7932ccb889478104bebfc39bd9014ef351de5d86beff5398aa940267"
+    },
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "115bce1bd674e7f15ae2a4a8b24edac9f859f534156a36c3fac9f8967a235885"
+    },
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "0b3141f6e255f2e48332a7c1ad55a0970743846a9ae39434569d1f1e5b18c3c9"
+    },
+    {
+      "file": "scripts/native/own_client_startup_debugger.cpp",
+      "sha256": "1b45e67101f73d0b63ac77eea64c7bc2fea4e76de04909d0c93cbdc122d17a4d"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "f2363e897ee64a6fb7de04461c2393970cb541603359f03cd32cbafcf70e2595"
+    },
+    {
+      "file": "scripts/native/client455_world_updates.h",
+      "sha256": "09d9fbc8cd3d9cfa64de8e7218bd5223863740e1cb493fadede3b35b62b33f58"
+    },
+    {
+      "file": "scripts/native/client455_world_monster_spawn.inc",
+      "sha256": "fe5a1a01948825eb1923d63a5d94348ba31aa896223c5ac39092d96926b80e8e"
+    },
+    {
+      "file": "scripts/native/client455_monster_health.inc",
+      "sha256": "d89eb99ecbad6ad2243b8b454c036d1108384ac429e20d988d2f5dc1fd96dd43"
+    },
+    {
+      "file": "scripts/native/client455_monster_health_dispatch.inc",
+      "sha256": "afa421fe956eac469e3b477fe463ad3e38684285e43539670815970730b0b147"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "d6f65f1fff5afd6439c9b923bfc54d4f351b5e669ec53cee6d6ada4441733aea"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "fafe4e57b0d82baec6e8be026c341c1ab752909040e487eaac87f1618561d477"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "126494ed581eef53d31b9ded6c95d7a59ff39d12a4e4ccce99e1f9e707e2818b"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "286dffda1eff22a0319b28e5cc6a7bf2a43759da595c1a201163e6c7829c9869"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "c908337656a1db74bc4b2cbca3328df4aad810942bb6f26c8f7440e63b66c372"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "a1f01e1574d47344ef15a58ea3f578a5f0cf2476721ec8e0bc99e5a917f74218"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "6668ee513fd780cc20efa22070000464323ef998821be62c2302ab5e5312980a"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "a441ba1621c3ffd8676fd6b68f69cf1453cb2292c96544563eef63bd2972622b"
+    },
+    "monster-target-reference": {
+      "file": "inventory/client455-monster-target-reference.json",
+      "sha256": "0a7085df8b0eff65622d1cee61583dc230fe863e549c399b5e111aabc2a50cb0"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

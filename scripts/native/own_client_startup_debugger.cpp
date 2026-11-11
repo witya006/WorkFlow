@@ -120,7 +120,7 @@ int wmain(int argc,wchar_t** argv){
                             const bool activated=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_ACTIVATEAPP,TRUE,0);
                             std::fprintf(output,"{\"kind\":\"selection_background_update_requested\",\"own_child_validated\":%s,\"sent\":%s,\"OS_focus_changed\":false}\n",valid&&childPID==process.dwProcessId?"true":"false",activated?"true":"false");
                             if(activated){selectionWindow=reinterpret_cast<HWND>(window);selectionSendAt=GetTickCount64()+1500;}
-                            stopReached=true;selectionDeadline=GetTickCount64()+(combat?24500:15000);
+                            stopReached=true;selectionDeadline=GetTickCount64()+(combat?38000:15000);
                         }
                         if(found==points)mainReached=true;
                         if(deviceMode&&found==points+1){DWORD full=0,bits=0;SIZE_T read=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[0]),&full,4,&read);ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[1]),&bits,4,&read);std::fprintf(output,"{\"kind\":\"render_configuration\",\"fullscreen\":%lu,\"render_bits\":%lu}\n",full,bits);}

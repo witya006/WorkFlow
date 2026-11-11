@@ -42,8 +42,24 @@ def port_target_windows(raw, relative, section, native):
     if relative == 'userinterface/gamewindow/dungeon/guidungeon.cpp':
         raw = remove_methods(raw, section, b'CGUIKillingCounter', [(b'SetSprite', b'void')])
         return raw + b'\n' + (native / 'client455_dungeon_counter.inc').read_bytes(), True
+    if relative == 'gameobject/manager/ctargetmgr.h':
+        anchor = b'\tCTarget\t\t\tm_Target;'
+        return replace(raw, anchor, b'\tbool m_monsterTargetRequested455 = false;\n' + anchor), True
     if relative == 'gameobject/manager/ctargetmgr.cpp':
         owner = b'CTargetMgr'
+        raw = patch_method(raw, section, owner, b'SetTarget', lambda body: replace(
+            body, b'\tm_Target.SetTarget( pi_pTarget );', b'''    const bool monster = pi_pTarget && pi_pTarget->IsEqualCharType(CTI_MONSTER);
+    const bool newMonster = monster && !m_Target.IsEqual(pi_pTarget);
+\tm_Target.SetTarget( pi_pTarget );
+    auto* network = _GetNetworkMgr();
+    auto* arrangement = network ? static_cast<CNetMsgProcessor_ItemArrangement*>(
+        network->GetNetMsgProcessor(NMP_ITEM_ARRANGE)) : nullptr;
+    if (arrangement && newMonster) {
+        if (arrangement->RequestMonsterTarget455(*pi_pTarget)) m_monsterTargetRequested455 = true;
+    } else if (!monster && m_monsterTargetRequested455) {
+        if (arrangement) arrangement->CancelMonsterTarget455();
+        m_monsterTargetRequested455 = false;
+    }'''))
         raw = patch_method(raw, section, owner, b'SetTarget_SetEnemyNpcUI', lambda body: replace(
             body, b'm_uiTargetInfoWindow.SetPower( GetResultOfCombatPowerComparisonWithAvatar( pi_pTarget ) );',
             b'''unsigned level = 0;
@@ -59,5 +75,5 @@ def port_target_windows(raw, relative, section, native):
             b'm_uiTargetInfoWindow.SetLevel455(pi_pTarget->GetLevel());'))
         raw = patch_method(raw, section, owner, b'SetTarget_SetMerchantUI', lambda body: replace(
             body, b'm_uiTargetInfoWindow.SetPower( 0xFF );', b'm_uiTargetInfoWindow.SetLevel455(0);'))
-        return raw, True
+        return b'#include "../../Network/NetMsgProcessor/Item/CNetMsgProcessor_ItemArrangement.h"\n' + raw, True
     return raw, False

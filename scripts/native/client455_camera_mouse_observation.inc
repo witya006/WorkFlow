@@ -54,7 +54,7 @@ private:
             state.combatButtonDown = false;
             return;
         }
-        if (elapsed < state.nextCombatClickAt || elapsed >= 18000 || state.combatTarget)
+        if (elapsed < state.nextCombatClickAt || elapsed >= 30000 || state.combatTarget)
             return;
         if (!draw.present) {
             if (!state.combatTarget) scanCombatView(state, elapsed);
@@ -85,14 +85,14 @@ private:
         const bool changed = phase != state.cameraPhase;
         previous = gMouse;
         active = true;
-        gMouse.x = step ? 190 : 320;
+        gMouse.x = step == 2 ? 230 : 430;
         gMouse.y = 250;
         if (step == 2) {
             if (changed) state.combatScanBaseYaw = _GetCamera()->GetYaw();
             const float perPixel = GetR3State()->mScreenXsize * (0.2f / 1024.0f);
             const int y = 250 + static_cast<int>((26.0f - state.combatScanBaseYaw) / perPixel);
             const int bottom = static_cast<int>(GetR3State()->mScreenYsize) - 45;
-            gMouse.y = y < 45 ? 45 : y > bottom ? bottom : y;
+            gMouse.y = y < 75 ? 75 : y > bottom ? bottom : y;
         }
         gMouse.z = 0;
         gMouse.button = step == 1 || step == 2 ? _RIGHT_BUTTON_DOWN :

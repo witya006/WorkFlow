@@ -6,11 +6,16 @@ void CMonster::ReceiveHealth455(WORD tenThousandths)
     m_targetHealth455 = fraction;
 }
 
+void CMonster::ApplyFinalHealthImpact455()
+{
+    if (m_targetHealth455 >= 0.0f) m_displayedHealth455 = m_targetHealth455;
+}
+
 void CMonster::ApplyForceHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames)
 {
     if (m_targetHealth455 < 0.0f) return;
     if (frames <= 1) {
-        m_displayedHealth455 = m_targetHealth455;
+        ApplyFinalHealthImpact455();
         return;
     }
     const float portion = static_cast<float>(double(currentDamage) / originalDamage);

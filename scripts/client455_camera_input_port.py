@@ -27,6 +27,12 @@ def port_camera_input(raw, relative, section, native):
         b'''    if (RF455_WorldObservation().combat)
         RF455_ObserveProtocol("combat-pick", pi_pChar->GetCharTypeID(), pi_pChar->GetIndex(), pi_bIsByKeyboard);
 \tg_pPickedObjectID[0] = pi_pChar->GetCharTypeID();'''))
+    raw = patch_method(raw, section, owner, b'ProcessMousePicking_Character_Monster', lambda body: replace(
+        body, b'\tif( m_bIsFreeTargetCombatMode )',
+        b'''    if (RF455_WorldObservation().combat)
+        RF455_ObserveProtocol("combat-monster-choice", _GetAvatar()->GetCombatMode(),
+                             m_bIsFreeTargetCombatMode, _GetAvatar()->IsRequestChangeToCombatMode());
+\tif( m_bIsFreeTargetCombatMode )'''))
     anchor = b'#include "CInputProcessMgr.h"'
     helper = (native / 'client455_camera_mouse_observation.inc').read_bytes()
     return replace(raw, anchor, anchor + b'\n#include "client455_protocol_observation.h"\n' + helper), True

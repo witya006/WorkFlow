@@ -21,3 +21,18 @@ bool CNetworkMgr::InitMsg_MonsterSpawn455(const char* bytes, std::size_t size) {
     RF455_ObserveProtocol("monster-spawn", packet.record, monster != nullptr, sizeof(packet));
     return true;
 }
+
+bool CNetworkMgr::InitMsg_MonsterDeath455(const char* bytes, std::size_t size)
+{
+    RF455MonsterDeath packet{};
+    if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;
+
+    auto* monster = _GetCharMgr()->GetMonster(packet.serial);
+    if (monster) {
+        monster->SetServerIndex(packet.zoneIndex);
+        monster->SetDeath(packet.reason);
+        monster->SetReceiveNetMsg("Death");
+    }
+    RF455_ObserveProtocol("monster-death", packet.serial, packet.reason, monster != nullptr);
+    return true;
+}

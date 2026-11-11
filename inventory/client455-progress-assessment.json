@@ -242,11 +242,11 @@
         "Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно",
         "На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы",
         "Штатная атака распознаёт лук в живом клиенте и проходит прежнее исключение экипировки",
-        "На NeutralB показано попадание на 22 урона, ответ сервера обновил остаток стрел с 313 до 312"
+        "На NeutralB подтверждены запрос HP цели, боевой режим, попадание, расход стрел и гибель монстра"
       ],
       "remaining": [
         "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455",
-        "Подтвердить обновление шкалы HP цели и повторный выстрел за один вход"
+        "Проверить обычную атаку по выжившей цели, остальные режимы боя и многокадровое изменение HP"
       ],
       "evidence": [
         "client455-character-flags-checkpoint",
@@ -264,7 +264,8 @@
         "client455-armed-attack-checkpoint",
         "client455-downloaded-items-checkpoint",
         "client455-primary-ammunition-checkpoint",
-        "client455-ammunition-impact-checkpoint"
+        "client455-ammunition-impact-checkpoint",
+        "client455-monster-target-checkpoint"
       ]
     },
     {
@@ -330,7 +331,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "c0f86d5c2c7adeb4e72463bc81c02036524413eab58418cbcafad2f7d45d7a83",
+      "sha256": "d6f65f1fff5afd6439c9b923bfc54d4f351b5e669ec53cee6d6ada4441733aea",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -989,6 +990,14 @@
       "sha256": "a96f249e3615173a8041950fb804a99f5bc518d318f9c2c34d1b61d4bb8d72b9",
       "status": "PARTIAL_LIVE_AMMUNITION_UPDATE",
       "scope": "Ordinary attacks apply server-authoritative equipped arrow counts on NeutralB.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-monster-target-checkpoint": {
+      "file": "inventory/client455-monster-target-checkpoint.json",
+      "sha256": "1ca9f383adca4fee65ba739eb68d46f77c3e72757eb04f9b5938719ba57a3dfe",
+      "status": "PARTIAL_LIVE_MONSTER_DEATH",
+      "scope": "Ordinary target request and monster death on NeutralB.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -1040,11 +1049,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "d8ad009f35d00a10f9e7a80ab1f69295e9524526170857a33cd0bd5235e62e7c",
+      "sha256": "cb2c9c628275954cf5110c65dda00efe56ff02d2ca8c04c995917a765ba18b9f",
       "bytes": 2401280,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x18a720",
+      "entry_rva": "0x18a660",
       "sections": [
         ".text",
         ".rdata",
@@ -1069,22 +1078,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "36c72389e5f259c0d19f4a2b88242e8e3808cbe49dcfa758e12a7e1b478a152d",
+      "sha256": "126494ed581eef53d31b9ded6c95d7a59ff39d12a4e4ccce99e1f9e707e2818b",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-ammunition-impact-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-monster-target-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "c0f86d5c2c7adeb4e72463bc81c02036524413eab58418cbcafad2f7d45d7a83",
+      "link_sha256": "d6f65f1fff5afd6439c9b923bfc54d4f351b5e669ec53cee6d6ada4441733aea",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "d8ad009f35d00a10f9e7a80ab1f69295e9524526170857a33cd0bd5235e62e7c",
+        "sha256": "cb2c9c628275954cf5110c65dda00efe56ff02d2ca8c04c995917a765ba18b9f",
         "bytes": 2401280,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18a720",
+        "entry_rva": "0x18a660",
         "sections": [
           ".text",
           ".rdata",
@@ -1094,7 +1103,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "36c72389e5f259c0d19f4a2b88242e8e3808cbe49dcfa758e12a7e1b478a152d"
+      "build_sha256": "126494ed581eef53d31b9ded6c95d7a59ff39d12a4e4ccce99e1f9e707e2818b"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -1102,7 +1111,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "36c72389e5f259c0d19f4a2b88242e8e3808cbe49dcfa758e12a7e1b478a152d"
+        "sha256": "126494ed581eef53d31b9ded6c95d7a59ff39d12a4e4ccce99e1f9e707e2818b"
       },
       "build_exit": 0,
       "errors": [],
@@ -1112,11 +1121,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "d8ad009f35d00a10f9e7a80ab1f69295e9524526170857a33cd0bd5235e62e7c",
+        "sha256": "cb2c9c628275954cf5110c65dda00efe56ff02d2ca8c04c995917a765ba18b9f",
         "bytes": 2401280,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18a720",
+        "entry_rva": "0x18a660",
         "sections": [
           ".text",
           ".rdata",
@@ -1129,28 +1138,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "36c72389e5f259c0d19f4a2b88242e8e3808cbe49dcfa758e12a7e1b478a152d"
+        "sha256": "126494ed581eef53d31b9ded6c95d7a59ff39d12a4e4ccce99e1f9e707e2818b"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary attacks apply server-authoritative equipped arrow counts on NeutralB.",
+    "current_work": "Ordinary target request and monster death on NeutralB.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/ammo204/live.json",
-      "sha256": "bdc393391a9f61452670e7520853562a3ffffc1216184ca26b0f87b858d7107b",
+      "file": "artifacts/client455-progress/target205/live.json",
+      "sha256": "52f2d40daa518767ee4578f311d27cee2432113802caccc15a44423cc639eae4",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/d8ad009f/world-combat-live-taiwan001/login-frame.png",
-        "sha256": "0f915bd47722d612d938e76ebc74367a3423a5b4ad31f0b674ad18c4e39696db"
+        "file": "work/m9/cb2c9c62/world-combat-live-taiwan001/login-frame.png",
+        "sha256": "cde1252e1ab78bd4e5ee35cfed0a2232cc78b6cf82217471c8c57278aeae3dd4"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 122,
-        "elapsed_ms": 8000,
+        "frame_index": 123,
+        "elapsed_ms": 8031,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1166,11 +1175,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "b693ef54cfa7b41888d987686bd8635d2a637ae00e0d2fa9dc280ef16d011100",
-    "entries": 208,
+    "sha256": "45b30efe0b578da18622330a29c850321eccd1b3ac60a3d2f708aa4d9d874d0c",
+    "entries": 209,
     "statuses": {
       "partial_component": 22,
-      "partial": 156,
+      "partial": 157,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1180,7 +1189,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-AMMUNITION-IMPACT-204"
+      "CLIENT455-MONSTER-TARGET-205"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1250,7 +1259,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;208 overlapping historical records",
+        "measured": "12 domain planning map;209 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1412,7 +1421,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "2decfecb98a006257e9cc20b68acf22cc9ad5633ab52def074c8d532a353ac37"
+    "sha256": "db8d2356c9755a73cf27a4c250e322e0e3fd95a5a988f53fadc429432941b73c"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

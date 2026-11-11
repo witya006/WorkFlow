@@ -90,6 +90,8 @@ def port_player_owner(raw,relative,section):
         first,last=section(raw,b'CAvatar::SetCombatMode(',b'CAvatar::SetCombatMode(')
         fragment=raw[first:last]
         for old,new in [
+            (b'CCharacter::SetCombatMode( pi_byCombatMode );',
+             b'CCharacter::SetCombatMode( pi_byCombatMode );\n\tif (pi_byCombatMode == CSI_COMBAT) SetRequestChangeToCombatMode(FALSE);'),
             (b'CNormalItem * pWeapon = GetNormalItem( IEPT_WEAPON );',
              b'const RF455ConditionItem weapon(GetNormalItem455(IEPT_WEAPON));'),
             (b'if( pWeapon )',b'if (weapon.valid)'),

@@ -11,6 +11,7 @@ def port_monster_health(raw, relative, native):
         return replace(raw, b'\tCMonster();',
                        b'\tCMonster();\n\tfloat GetHPRate() override { return m_displayedHealth455; }\n'
                        b'\tvoid ReceiveHealth455(WORD tenThousandths);\n'
+                       b'\tvoid ApplyFinalHealthImpact455();\n'
                        b'\tvoid ApplyForceHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames);'), True
     if relative == 'character/npc/cmonster.cpp':
         anchor = b'\t\tcase CAI_DAMAGED_MISS\t\t: return MET_DAMAGE_MISS;'
@@ -19,6 +20,11 @@ def port_monster_health(raw, relative, native):
         raw = replace(raw, b'\tSetScale( m_pMonsterData->m_fScale );',
                       b'\tif (m_targetHealth455 == -1.0f) m_displayedHealth455 = 1.0f;\n'
                       b'\tSetScale( m_pMonsterData->m_fScale );')
+        raw = replace(raw, b'\t\tm_pCombatState->SetRemainHP( 0 );',
+                      b'\t\tm_targetHealth455 = 0.0f;\n\t\tm_pCombatState->SetRemainHP( 0 );')
+        raw = replace(raw, b'\tif( IsEqualActionCategory( CAI_DEATH ) )\n\t{',
+                      b'\tif( IsEqualActionCategory( CAI_DEATH ) )\n\t{\n'
+                      b'\t\tif (m_byDestroyType == mon_destroy_code_die) ApplyFinalHealthImpact455();')
         return raw + b'\n' + (native / 'client455_monster_health.inc').read_bytes(), True
     if relative == 'character/character/ccharacter_relationinfo2.h':
         raw = replace(raw, b'class CAttackerInfo :',
@@ -29,6 +35,11 @@ def port_monster_health(raw, relative, native):
                        b'\tvoid AdvanceForceDamage455();\n'
                        b'\tDWORD GetOriginalForceDamage455() const { return m_forceOriginalDamage455; }'), True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
+        raw = replace(raw, b'\t\t\t\tProcessDamage_SetHP( l_pAttackerInfo );',
+                      b'''                if (m_pOwner->IsEqualCharType(CTI_MONSTER) && !l_pAttackerInfo->GetEffectFrameNum())
+                    static_cast<CMonster*>(m_pOwner)->ApplyFinalHealthImpact455();
+                else
+                    ProcessDamage_SetHP( l_pAttackerInfo );''')
         return replace(raw, b'''                if (force->IsAttackable() && l_pAttackerInfo->GetTotalDamagePoint())
                     l_pAttackerInfo->AdvanceForceDamage455();''',
                        b'''                if (!force->IsAttackable()) continue;
@@ -46,7 +57,8 @@ def port_monster_health(raw, relative, native):
                 }'''), True
     if relative == 'network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h':
         anchor = b'\t\t\t\tbool\tAnalysisServerPacket( _MSG_HEADER * pMsgHeader, char* pi_pMsg );'
-        return replace(raw, anchor, anchor + b'\nprivate:\n'
+        return replace(raw, anchor, anchor + b'\n\tBOOL RequestMonsterTarget455(CCharacter& target);\n'
+                       b'\tBOOL CancelMonsterTarget455();\nprivate:\n'
                        b'\tbool MonsterHealth455(BYTE opcode, const char* bytes, std::size_t size);\npublic:'), True
     if relative == 'network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.cpp':
         anchor = b'\t\tcase potionsocket_separation_result_zocl:'

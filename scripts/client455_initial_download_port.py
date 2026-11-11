@@ -179,7 +179,7 @@ def port_initial_download(raw, relative, section, native):
             body, b'\tif( IsPressedMoveKey() )', b'''    const RF455WalkKeyObservation walkKey(m_listKey[KM_MOVE_UP][1]);
     RF455CombatModifierObservation combatModifier;
     auto& observation = RF455_WorldObservation();
-    if (observation.combat && observation.combatTarget && observation.combatAttackKeys < 9 &&
+    if (observation.combat && observation.combatTarget && observation.combatAttackKeys < 16 &&
         observation.combatAmmunitionUpdates < 3) {
         const auto elapsed = GetTickCount64() - observation.acceptedAt;
         const DWORD key = m_listKey[KM_COMBAT_ATTACK][1];
@@ -191,7 +191,7 @@ def port_initial_download(raw, relative, section, native):
             RF455_ObserveProtocol("combat-target-ended", observation.combatPreviousTarget,
                                  target != nullptr, observation.combatAmmunitionUpdates);
         }
-        if (elapsed >= observation.nextCombatClickAt && elapsed < 20000 &&
+        if (elapsed >= observation.nextCombatClickAt && elapsed < 33000 &&
             key < 256 && target && target->IsEqualCharType(CTI_MONSTER) &&
             target->GetIndex() == observation.combatTarget && combatModifier.apply(m_listKey[KM_COMBAT_ATTACK][0])) {
             gScan[key] = TRUE;

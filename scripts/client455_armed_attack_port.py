@@ -42,6 +42,17 @@ def port_armed_attack(raw, relative, section, native):
             body, b'\tif( _GetGGI()->IsRequestProcess() || !IsEnable( ROSF_MOVABLE ) )',
             b'''    RF455_ObserveProtocol("combat-input", _GetGGI()->IsRequestProcess(), IsEnable(ROSF_MOVABLE), GetCombatMode());
 \tif( _GetGGI()->IsRequestProcess() || !IsEnable( ROSF_MOVABLE ) )'''))
+        edit(owner, b'SetRequestChangeToCombatMode', lambda body: body[:body.index(b'{') + 1] + b'''
+    if (!pi_bFlag) {
+        m_bIsRequestChangeToCombatMode = FALSE;
+        return;
+    }
+    if (m_bIsRequestChangeToCombatMode || GetCombatMode() != CSI_PEACE) return;
+
+    m_bIsRequestChangeToCombatMode = TRUE;
+    if (!m_pNMP_Combat->ModeChangeRequest_clzo(CSI_COMBAT)) m_bIsRequestChangeToCombatMode = FALSE;
+}
+''')
         edit(owner, b'GetAttackRange', weapon_condition)
         edit(owner, b'GetAttackDelay', lambda body: replace(
             body, b'CNormalItem * pWeapon\t= GetNormalItem( IEPT_WEAPON );\n\t\t\tif( pWeapon )\n\t\t\t\tdwAttackDelay += pWeapon->GetAttackDelay();',
@@ -200,6 +211,16 @@ def port_armed_attack(raw, relative, section, native):
 '''
 
         edit(b'CNetMsgProcessor_Combat', b'AttackGenRequest_clzo', request)
+        edit(b'CNetMsgProcessor_Combat', b'ModeChangeRequest_clzo',
+             lambda body: body[:body.index(b'{') + 1] + b'''
+    auto* avatar = _GetAvatar();
+    if (!avatar) return FALSE;
+
+    // 455 RVA 0x18c300 sends mode and the pose flag from the last player state.
+    BYTE payload[] = {pi_byCombatMode, avatar->GetCombatPose455()};
+    return CNetMsgProcessor_Base::SendNetMessage(ui_msg, 21, payload, sizeof payload);
+}
+''')
         anchor = b'\t\tcase attack_gen_result_zocl\t:'
         raw = replace(raw, anchor, b'''        case 6:
             _GetGGI()->SetRequestProcessState(FALSE);
