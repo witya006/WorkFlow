@@ -241,11 +241,12 @@
         "Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно",
         "Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно",
         "На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы",
-        "Штатная атака распознаёт лук в живом клиенте и проходит прежнее исключение экипировки"
+        "Штатная атака распознаёт лук в живом клиенте и проходит прежнее исключение экипировки",
+        "В живой экипировке размещены 315 стрел"
       ],
       "remaining": [
         "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455",
-        "Проверка боеприпасов останавливает атаку. Начальный обработчик разместил 0 из 21 предмета"
+        "Перенести выбор основного боеприпаса, затем проверить отправку атаки и ответ"
       ],
       "evidence": [
         "client455-character-flags-checkpoint",
@@ -260,7 +261,8 @@
         "client455-force-damage-render-checkpoint",
         "client455-monster-critical-checkpoint",
         "client455-live-combat-checkpoint",
-        "client455-armed-attack-checkpoint"
+        "client455-armed-attack-checkpoint",
+        "client455-downloaded-items-checkpoint"
       ]
     },
     {
@@ -271,7 +273,7 @@
       "estimate_high": 30,
       "completed_full_domain": false,
       "done": [
-        "Реальные таблицы/payload/owners/icons и выбранный inventory handoff"
+        "Таблицы, фабрика и значки размещают 8 предметов экипировки и 21 запись инвентаря при обычном входе"
       ],
       "remaining": [
         "Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов"
@@ -279,7 +281,8 @@
       "evidence": [
         "client455-item-object-checkpoint",
         "client455-item-icon-metadata-checkpoint",
-        "client455-skill-force-items-checkpoint"
+        "client455-skill-force-items-checkpoint",
+        "client455-downloaded-items-checkpoint"
       ]
     },
     {
@@ -325,7 +328,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "affccb6e13be5fc622f32d50325c2ec1615811df4460ad91159f8578259a6146",
+      "sha256": "e21320ca5c6eaf01959de92ae55772acdadbd7bb72d42e7d2a045b730ed41e5d",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -960,6 +963,14 @@
       "sha256": "18a06b91ad05bdf2ee037a75c08195ee86e9fca9d3998d7a14bef49c1ffecd4a",
       "status": "PARTIAL_LIVE_AMMUNITION_UNAVAILABLE",
       "scope": "The ordinary armed attack reaches typed bow and ammunition validation on NeutralB.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-downloaded-items-checkpoint": {
+      "file": "inventory/client455-downloaded-items-checkpoint.json",
+      "sha256": "7ccd9123e3e9a4a16d2d965bddf3bc6ce3f042c61391f49cacc2880a2b36e082",
+      "status": "PARTIAL_LIVE_INITIAL_ITEM_OWNERS",
+      "scope": "The normal client applies equipment and inventory rows before entering NeutralB.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -1011,11 +1022,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "f3a101bf271cedd141b8cb50b86f2909666cafd7703c41cc082af77a3f3d7ffb",
-      "bytes": 2393600,
+      "sha256": "f27d24987790ee46e6f0efe481fcccc4106196d2e8796147ecc2fab1ecddbb89",
+      "bytes": 2397696,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x1890f0",
+      "entry_rva": "0x1899f0",
       "sections": [
         ".text",
         ".rdata",
@@ -1040,22 +1051,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "88f4587c8ce3c497e4c0e6e547998e08dcb5c0d18e407676e294423027eda647",
+      "sha256": "b97d41a32a84c40b5ccdba6cf83cf513ea8cc79fec7df8622915130dd2ca762b",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-armed-attack-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-downloaded-items-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "affccb6e13be5fc622f32d50325c2ec1615811df4460ad91159f8578259a6146",
+      "link_sha256": "e21320ca5c6eaf01959de92ae55772acdadbd7bb72d42e7d2a045b730ed41e5d",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "f3a101bf271cedd141b8cb50b86f2909666cafd7703c41cc082af77a3f3d7ffb",
-        "bytes": 2393600,
+        "sha256": "f27d24987790ee46e6f0efe481fcccc4106196d2e8796147ecc2fab1ecddbb89",
+        "bytes": 2397696,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1890f0",
+        "entry_rva": "0x1899f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1065,7 +1076,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "88f4587c8ce3c497e4c0e6e547998e08dcb5c0d18e407676e294423027eda647"
+      "build_sha256": "b97d41a32a84c40b5ccdba6cf83cf513ea8cc79fec7df8622915130dd2ca762b"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -1073,7 +1084,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "88f4587c8ce3c497e4c0e6e547998e08dcb5c0d18e407676e294423027eda647"
+        "sha256": "b97d41a32a84c40b5ccdba6cf83cf513ea8cc79fec7df8622915130dd2ca762b"
       },
       "build_exit": 0,
       "errors": [],
@@ -1083,11 +1094,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "f3a101bf271cedd141b8cb50b86f2909666cafd7703c41cc082af77a3f3d7ffb",
-        "bytes": 2393600,
+        "sha256": "f27d24987790ee46e6f0efe481fcccc4106196d2e8796147ecc2fab1ecddbb89",
+        "bytes": 2397696,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1890f0",
+        "entry_rva": "0x1899f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1100,28 +1111,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "88f4587c8ce3c497e4c0e6e547998e08dcb5c0d18e407676e294423027eda647"
+        "sha256": "b97d41a32a84c40b5ccdba6cf83cf513ea8cc79fec7df8622915130dd2ca762b"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "The ordinary armed attack reaches typed bow and ammunition validation on NeutralB.",
+    "current_work": "The normal client applies equipment and inventory rows before entering NeutralB.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/armed201/live.json",
-      "sha256": "b8a31cde447131899e584b0890a1184ba2fd6fa8805f38e175634f1d4a5b3db7",
+      "file": "artifacts/client455-progress/download202/live.json",
+      "sha256": "3bf8633d02987173c906b35f5e129f3ae807447cf743143e05e4231a4fd3b0ee",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/f3a101bf/world-combat-live-taiwan001/login-frame.png",
-        "sha256": "6452ce1344c42a7dd60ae7427a1719ac872fb8fd1d799b673e0e96b82fa00a07"
+        "file": "work/m9/f27d2498/world-combat-live-taiwan001/login-frame.png",
+        "sha256": "de7db2887999b9f3a58042fbff75d4acc59ddeb9c12dfc59f5038583df7f991b"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 360,
-        "elapsed_ms": 8000,
+        "frame_index": 123,
+        "elapsed_ms": 8031,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1137,11 +1148,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "b271e9c5e0fc5e684485ff4216b61f9478e81949ac1ce153f33f39aaf759f95b",
-    "entries": 205,
+    "sha256": "f29c9b8740cb61d13f2d3f2eb851fcc7bce7ab7fcd42a815e7124e6a4463d44c",
+    "entries": 206,
     "statuses": {
       "partial_component": 22,
-      "partial": 153,
+      "partial": 154,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1151,7 +1162,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ARMED-ATTACK-201"
+      "CLIENT455-DOWNLOADED-ITEMS-202"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1221,7 +1232,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;205 overlapping historical records",
+        "measured": "12 domain planning map;206 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1383,7 +1394,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "fee5c930845ab7408925b056ea5668b0ac7c35057fcc23f8a2206eea6863b1b2"
+    "sha256": "439152210254dbf1ef7b52a0a1ffe4bc0aaad74ad073cdd4971d5d29558cb2f6"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

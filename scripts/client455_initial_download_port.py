@@ -16,6 +16,66 @@ RESULTS = (
 
 
 def port_initial_download(raw, relative, section, native):
+    if relative == 'gameobject/board/itemboard/citemboard.cpp':
+        owner = b'CItemBoard'
+        raw = patch_method(raw, section, owner, b'Add_ProcessExistObject', lambda body: body.replace(
+            b'{', b'''{
+    auto* existing = GetObject(pi_byTarPackNo, pi_byTarSocketNo);
+    if (pi_pOrgObject->GetItem455() || (existing && existing->GetItem455())) return FALSE;
+''', 1))
+        raw = patch_method(raw, section, owner, b'Add_ProcessNewObject', lambda body: body[:body.index(b'{') + 1] +
+                           b'\n' + (native / 'client455_download_board_add.inc').read_bytes() +
+                           body[body.index(b'{') + 1:])
+        raw = patch_method(raw, section, owner, b'Remove_ProcessRemoveQuantity', lambda body: body.replace(
+            b'{', b'''{
+    if (auto* payload = pi_pOrgObject->GetItem455()) {
+        const auto quantity = RF455_ReadBasicIconMetadata(*payload).quantity;
+        if (pi_byQuantity >= quantity) return FALSE;
+        static_cast<RF455BasicItem*>(payload)->SetDownloadValue455(quantity - pi_byQuantity, 0);
+        if (auto* icon = pi_pOrgObject->GetIcon()) icon->SetNum(quantity - pi_byQuantity);
+        return TRUE;
+    }
+''', 1))
+        raw = patch_method(raw, section, owner, b'Remove_ProcessRemoveObject', lambda body: replace(
+            body, b'\t_GetAvatar()->ApplyItemEffect_Jade(', b'\tif (!pi_pOrgObject->GetItem455()) _GetAvatar()->ApplyItemEffect_Jade('))
+        raw = raw.replace(b'static_cast< CBoardItem * >( GetObject( pi_byPackNo, pi_bySocketNo ) )',
+                          b'dynamic_cast< CBoardItem * >( GetObject( pi_byPackNo, pi_bySocketNo ) )')
+        raw = raw.replace(b'static_cast< CBoardItem * >( GetObjectByIndex( pi_dwIndex ) )',
+                          b'dynamic_cast< CBoardItem * >( GetObjectByIndex( pi_dwIndex ) )')
+        return b'#include "client455_item_icon_metadata.h"\n#include "client455_item_payloads.h"\n' + raw, True
+    if relative == 'gameobject/board/itemboard/cequipboard.cpp':
+        owner = b'CEquipBoard'
+        raw = patch_method(raw, section, owner, b'Add_ProcessNewObject', lambda body: replace(
+            body, b'\tCBoardItem * pOrgItem', b'''    if (auto* payload = pi_pOrgObject->GetItem455()) {
+        const BYTE part = CEPT_UI_TO_CLIENT[pi_byTarSocketNo];
+        if (part >= IEPT_RING) {
+            _GetAvatar()->ApplyBoardEquipmentEffect455(payload, true);
+            return TRUE;
+        }
+        if (_GetAvatar()->PutOnEquipment455(pi_pOrgObject)) return TRUE;
+        CItemBoard::Remove_ProcessRemoveObject(pi_byTarPackNo, pi_byTarSocketNo,
+                                               GetObject(pi_byTarPackNo, pi_byTarSocketNo));
+        return FALSE;
+    }
+\tCBoardItem * pOrgItem'''))
+        raw = patch_method(raw, section, owner, b'Remove_ProcessRemoveObject', lambda body: body[:body.index(b'{') + 1] +
+                           b'''
+    if (auto* payload = pi_pOrgObject->GetItem455()) {
+        const BYTE part = CEPT_UI_TO_CLIENT[pi_bySocketNo];
+        if (part < IEPT_RING) _GetAvatar()->PutOffEquipment455(part);
+        else _GetAvatar()->ApplyBoardEquipmentEffect455(payload, false);
+        return CItemBoard::Remove_ProcessRemoveObject(pi_byPackNo, pi_bySocketNo, pi_pOrgObject);
+    }
+''' + body[body.index(b'{') + 1:])
+        raw = replace(raw, b'static_cast< CBoardItem * >( GetObject( 0, pi_bySocketNo ) )',
+                      b'dynamic_cast< CBoardItem * >( GetObject( 0, pi_bySocketNo ) )')
+        return raw, True
+    if relative == 'character/player/cplayer.h':
+        anchor = b'void RefreshEquipmentConditions455(){m_clsPlayerProc.RefreshEquipmentConditions455();}'
+        return replace(raw, anchor, anchor + b'''
+    void ApplyBoardEquipmentEffect455(RF455ManagedItem* item, bool add) {
+        m_clsPlayerProc.ApplyTypedItemEffect455(item, add);
+    }'''), True
     if relative == 'network/protocol/pt_zone_client.h':
         for _, name, opcode in RESULTS:
             key = name + b'_download_result_zocl'

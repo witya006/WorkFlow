@@ -1,0 +1,115 @@
+{
+  "status": "PARTIAL_LIVE_INITIAL_ITEM_OWNERS",
+  "scope": "The normal client applies equipment and inventory rows before entering NeutralB.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f27d24987790ee46e6f0efe481fcccc4106196d2e8796147ecc2fab1ecddbb89",
+    "bytes": 2397696,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1899f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "e21320ca5c6eaf01959de92ae55772acdadbd7bb72d42e7d2a045b730ed41e5d",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/download202/live.json",
+    "sha256": "3bf8633d02987173c906b35f5e129f3ae807447cf743143e05e4231a4fd3b0ee"
+  },
+  "observations": {
+    "equipment_created": 8,
+    "equipment_placed": 8,
+    "bags": 3,
+    "inventory_rows": 21,
+    "inventory_placed": 21,
+    "equipped_ammunition": [
+      "equipped-ammunition:99:315:0"
+    ],
+    "inventory_ammunition": [],
+    "attacks_sent": 0,
+    "attack_results": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_downloaded_items.py",
+    "sha256": "c8322da4fdb98016d8541d175fc366afe7689326a5c94a7adf5244e51f93e773"
+  },
+  "first_attempt": {
+    "file": "artifacts/client455-progress/download202/first-live.json",
+    "sha256": "020dd209c35d59577ba3b29706d858e7ade45e0d17e8fc9f6c92a5288524cad9"
+  },
+  "primary_ammunition_static": {
+    "file": "artifacts/client455-progress/download202/primary-ammunition.json",
+    "sha256": "e96d39b2562ebaf02cfaf5682f166a046d599d872535a1bfa194c87a9806d914",
+    "architecture": "x86",
+    "validator_rva": "0x16770",
+    "match_rva": "0x60e70",
+    "auxiliary_rva": "0x70e10"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "0b0c13fdc01e086dc9711958198ec2c873a38538a47e93a7718283452cea4a89"
+    },
+    {
+      "file": "scripts/native/client455_initial_download.inc",
+      "sha256": "89bbadc48f4e6420991934bed019e9165af77e8457ff80faa2198efdf43db694"
+    },
+    {
+      "file": "scripts/native/client455_download_board_add.inc",
+      "sha256": "a96be3eacf694142dfb16e16ff89141f80aa8e5a1cc6433ef31f7bd7ee295604"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "1e522ae5a25e50a83836a6f85aa93a13da16ff57cadd6c68aa51eed2f0573947"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "edc4a75df21a8478ffd0515f25f855803d4e2004711ba679d408d33860c1936c"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "e21320ca5c6eaf01959de92ae55772acdadbd7bb72d42e7d2a045b730ed41e5d"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "d9f96829ca73155dfdd630a557d1332589c80ce72c69d9e425122e212fd05cd9"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "b97d41a32a84c40b5ccdba6cf83cf513ea8cc79fec7df8622915130dd2ca762b"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "d53a2eddf01e18e249813c19c4501db316fffb5cf2cec38fe1414ab646926262"
+    },
+    "downloaded-items-reference": {
+      "file": "inventory/client455-downloaded-items-reference.json",
+      "sha256": "822f9bceb7af9726cf3a16ac1f5362fecfb3788c7019b7b15f0db1ea7cc60168"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "ffe264a4f99e3ca82cf5f6625355ec69320e7b5093e8bca676a7d6e4f2663626"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "9cdebdb7b678da6636a0f2607f777fa1d2eb98b31d0b5a4422d0767109b7f388"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "47988557aec990a0d28f260eb0bf9b23bb5ba5eebb891cc1d004a756aa22b7da"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "6893307620961e75a8b0aa267e5ed98a2726adf42780f1b3318f88b9155a26d4"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

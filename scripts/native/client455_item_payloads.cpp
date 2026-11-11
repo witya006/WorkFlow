@@ -1,6 +1,10 @@
 #include "client455_item_payloads.h"
 #include "client455_language.h"
+#include <cstdio>
 #include <cstring>
+#include <ctime>
+#include <windows.h>
+#include <mmsystem.h>
 #include <new>
 #include <stdexcept>
 
@@ -192,6 +196,50 @@ void RF455BasicItem::SetUpgradeLevel455(std::uint8_t value){
     if(payloadKind!=0||stateSize!=200)throw std::logic_error("455 upgrade setter requires normal item payload");
     state[113]=value; //462170: one BYTE write at71h,no clamp or callbacks.
 }
+
+void RF455BasicItem::SetDownloadValue455(std::uint32_t value, std::uint32_t animusHigh)
+{
+    // Both initial replies use selector 0, including Animus entries.
+    if (metadataByte455(metadata, 88) == 24) {
+        put(state.get(), 104, value);
+        put(state.get(), 108, animusHigh);
+    } else if (split(metadata)) {
+        state[92] = static_cast<std::uint8_t>(value);
+    } else {
+        SetDownloadDurability455(value);
+    }
+}
+
+void RF455BasicItem::SetDownloadDurability455(std::uint32_t value)
+{
+    put(state.get(), 96, value);
+}
+
+void RF455BasicItem::SetDownloadModifiers455(std::uint32_t upgrade, std::uint8_t kind, std::uint32_t value,
+                                            bool timed, std::int64_t secondsRemaining)
+{
+    // 462190 records the socket count. Talik lookup and effect application
+    // need the original item-table and property providers.
+    if (equipment(metadata) && metadataByte455(metadata, 160))
+        state[112] = upgrade == 0xffffffff ? 0 : static_cast<std::uint8_t>(upgrade >> 28);
+    if (kind == 1 || kind == 2) {
+        state[184] = kind;
+        put(state.get(), 188, value);
+    }
+    auto& item = header();
+    item.flag21 = timed;
+    if (!timed) return;
+
+    const unsigned delay = secondsRemaining > 0 && secondsRemaining <= 3600
+        ? 3600000 - 1000 * static_cast<unsigned>(secondsRemaining) : 0;
+    item.field88 = timeGetTime() + delay;
+    const std::time_t expiry = std::time(nullptr) + delay / 1000;
+    std::tm local{};
+    if (localtime_s(&local, &expiry) == 0)
+        std::snprintf(reinterpret_cast<char*>(item.bytes22), sizeof item.bytes22, "%d/%d/%d %d:%d",
+                      local.tm_year + 1900, local.tm_mon + 1, local.tm_mday, local.tm_hour, local.tm_min);
+}
+
 bool RF455BasicItem::create(const RF455ItemDataStore& source,std::uint8_t type,std::uint32_t index){
     if(payloadKind==2){
         // Fresh464550 calls SetExperience while base data16 is null:virtual

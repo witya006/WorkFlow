@@ -63,4 +63,8 @@ public:
     RF455ItemDataSpan rawMetadata()const{return metadata;}
     RF455ItemDataSpan recordBytes()const{return {state.get(),stateSize};}
     void SetUpgradeLevel455(std::uint8_t);
+    void SetDownloadValue455(std::uint32_t value, std::uint32_t animusHigh);
+    void SetDownloadDurability455(std::uint32_t value);
+    void SetDownloadModifiers455(std::uint32_t upgrade, std::uint8_t kind, std::uint32_t value,
+                                 bool timed, std::int64_t secondsRemaining);
 };

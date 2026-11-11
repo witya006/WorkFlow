@@ -5,20 +5,34 @@
 #include "network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h"
 
 namespace {
-constexpr unsigned SupportedItemTables = 26;
+// 455 table IDs at RVA 0x6b3770.
+constexpr BYTE DownloadItemKinds[] = {
+    1, 2, 3, 4, 5, 7, 6, 8, 9, 10, 11, 12, 14, 13, 0, 18, 15, 16, 17,
+    19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 46
+};
 
-bool CreateDownloadedItem(CBoardItem& item, BYTE table, WORD index, DWORD serial)
+RF455BasicItem* CreateDownloadedItem(CBoardObject& item, BYTE table, WORD index, DWORD serial)
 {
-    if (table >= SupportedItemTables || !item.Create(IEPT_SERVER_TO_CLIENT[table], index)) return false;
-    item.SetIndex(serial);
-    item.SetServerIndex(serial);
-    return true;
+    if (table >= sizeof DownloadItemKinds) return nullptr;
+    auto* payload = static_cast<RF455BasicItem*>(RF455_GameItems().create(0, DownloadItemKinds[table], index));
+    if (payload) {
+        payload->header().serial = serial;
+        payload->header().field8 = serial;
+        item.SetItem455(payload);
+    }
+    return payload;
 }
 
-bool PutDownloadedAccessory(CEquipBoard& board, CBoardItem& item, int wireSlot)
+void SetDownloadedModifiers(RF455BasicItem& item, DWORD upgrade, const RF455ItemModifiers& modifiers)
+{
+    item.SetDownloadModifiers455(upgrade, modifiers.kind, modifiers.value, modifiers.timed != 0,
+                                 modifiers.secondsRemaining);
+}
+
+bool PutDownloadedAccessory(CEquipBoard& board, CBoardObject& item, BYTE kind, int wireSlot)
 {
     BYTE first;
-    switch (item.GetItemKind()) {
+    switch (kind) {
     case IEPT_RING: first = UIPT_RING_LEFT; break;
     case IEPT_AMULET: first = UIPT_AMULET_LEFT; break;
     case IEPT_BULLET: first = UIPT_BULLET_LEFT; break;
@@ -56,6 +70,7 @@ bool CNetworkMgr::InitMsg_BaseDownloadResult_zocl(const char* bytes, std::size_t
         camera->GetR3Camera()->SetPos(m_vecAvatarStartPos[0], m_vecAvatarStartPos[1], m_vecAvatarStartPos[2]);
 
     m_dwItemIndexForFirstItemSetting = 0;
+    unsigned placedCount = 0;
     static constexpr BYTE sockets[] = {UIPT_UPPER_PART, UIPT_LOWER_PART, UIPT_GLOVES, UIPT_SHOES,
                                        UIPT_HELMET, UIPT_SHIELD, UIPT_WEAPON, UIPT_CLOAK};
     for (unsigned i = 0; i < sizeof sockets; ++i) {
@@ -64,19 +79,25 @@ bool CNetworkMgr::InitMsg_BaseDownloadResult_zocl(const char* bytes, std::size_t
             equipment->Remove(0, sockets[i], 1);
             continue;
         }
-        CBoardItem item;
-        if (!CreateDownloadedItem(item, entry.table, entry.index, m_dwItemIndexForFirstItemSetting)) continue;
-        item.SetQuantity(1);
-        item.InsertTalikFromServerFlag(entry.upgrade);
-        equipment->Add(0, sockets[i], &item);
+        CBoardObject item;
+        auto* payload = CreateDownloadedItem(item, entry.table, entry.index, m_dwItemIndexForFirstItemSetting);
+        if (!payload) continue;
+        SetDownloadedModifiers(*payload, entry.upgrade, entry.modifiers);
+        if (equipment->Add(0, sockets[i], &item)) ++placedCount;
         ++m_dwItemIndexForFirstItemSetting;
     }
     for (const auto& entry : packet.accessories) {
-        CBoardItem item;
-        if (!CreateDownloadedItem(item, entry.table, entry.index, m_dwItemIndexForFirstItemSetting)) continue;
-        item.SetDurability(entry.durability);
-        item.SetQuantity(1);
-        PutDownloadedAccessory(*equipment, item, entry.slot);
+        CBoardObject item;
+        auto* payload = CreateDownloadedItem(item, entry.table, entry.index, m_dwItemIndexForFirstItemSetting);
+        if (!payload) continue;
+        const BYTE kind = DownloadItemKinds[entry.table];
+        payload->SetDownloadDurability455(entry.durability);
+        SetDownloadedModifiers(*payload, 0xffffffff, entry.modifiers);
+        if (PutDownloadedAccessory(*equipment, item, kind, entry.slot)) {
+            ++placedCount;
+            if (kind == IEPT_BULLET)
+                RF455_ObserveProtocol("equipped-ammunition", entry.index, entry.durability, 0);
+        }
         ++m_dwItemIndexForFirstItemSetting;
     }
 
@@ -96,7 +117,7 @@ bool CNetworkMgr::InitMsg_BaseDownloadResult_zocl(const char* bytes, std::size_t
         avatar->SetSpeed(CMM_MOVE_WALK, CHAR_SPEED_DEFAULT * data->m_fMoveWalkRate);
         avatar->SetSpeed(CMM_MOVE_RUN, CHAR_SPEED_DEFAULT * data->m_fMoveRunRate);
     }
-    RF455_ObserveProtocol("base-applied", packet.mapIndex, m_dwItemIndexForFirstItemSetting, 0);
+    RF455_ObserveProtocol("base-applied", packet.mapIndex, m_dwItemIndexForFirstItemSetting, placedCount);
     m_initialDownload455 = RF455DownloadStep::Inventory;
     return InitMsg_InvenDownloadRequest_clzo() != FALSE;
 }
@@ -130,21 +151,21 @@ bool CNetworkMgr::InitMsg_InvenDownloadResult_zocl(const char* bytes, std::size_
             }
 
             const DWORD serial = m_dwItemIndexForFirstItemSetting + i;
-            CBoardItem item;
-            if (!CreateDownloadedItem(item, entry.table, entry.index, serial)) continue;
-            if (item.GetItemKind() == IEPT_ANIMUS) {
-                item.SetCurMaxDurability(entry.countOrDurability);
-                item.SetDurability(entry.upgrade);
-            } else {
-                if (item.IsSplitable()) item.SetQuantity(static_cast<BYTE>(entry.countOrDurability));
-                else item.SetDurability(entry.countOrDurability);
-                if (item.GetItemKind() != IEPT_UNIT) item.InsertTalikFromServerFlag(entry.upgrade);
-            }
+            CBoardObject item;
+            auto* payload = CreateDownloadedItem(item, entry.table, entry.index, serial);
+            if (!payload) continue;
+            const BYTE kind = DownloadItemKinds[entry.table];
+            payload->SetDownloadValue455(entry.countOrDurability, entry.animusProgressHigh);
+            if (kind == IEPT_ANIMUS) payload->SetDownloadDurability455(entry.upgrade);
+            SetDownloadedModifiers(*payload, entry.upgrade, entry.modifiers);
             if (inventory->Add(bag, slot, &item)) {
                 placed[i] = true;
                 ++placedCount;
-                if (item.GetItemKind() == IEPT_UNIT)
+                if (kind == IEPT_UNIT)
                     _GetUnitStorehouseBoard()->AddUnitByIndex(static_cast<BYTE>(entry.upgrade), serial);
+                if (kind == IEPT_BULLET)
+                    RF455_ObserveProtocol("inventory-ammunition", entry.index, entry.countOrDurability,
+                                         bag * MAX_INVENTORY_SOCKET + slot);
             }
         }
     }

@@ -9247,7 +9247,7 @@
       "id": "CLIENT455-ARMED-ATTACK-201",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-armed-attack-checkpoint.json",
         "inventory/client455-armed-attack-reference.json"
@@ -9257,6 +9257,21 @@
         "Initial base equipment and inventory population",
         "Live range, eight-byte request, authoritative result and visible hit",
         "Secondary ammunition, selected weak zone and mounted variants"
+      ]
+    },
+    {
+      "id": "CLIENT455-DOWNLOADED-ITEMS-202",
+      "area": "items",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-downloaded-items-checkpoint.json",
+        "inventory/client455-downloaded-items-reference.json"
+      ],
+      "description": "Ordinary NeutralB entry applies eight equipped items and all 21 inventory rows, including 315 equipped arrows.",
+      "gaps": [
+        "Primary ammunition selection and live attack result",
+        "Special equipment slot, Talik effects and item interactions"
       ]
     }
   ],
