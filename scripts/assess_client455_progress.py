@@ -56,9 +56,9 @@ def main():
          ['Управление после входа, ошибки, полные варианты персонажей, регионов и переходов455'],
          ['client455-login-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-live-login-checkpoint','client455-avatar-world-checkpoint']),
         ('gameplay','Игровые действия',15,0,15,
-         ['Selected Character flags/Nuclear aiming и отдельные обработчики'],
+         ['Selected Character flags/Nuclear aiming и компонентное ограничение обычной атаки по 4/34'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint']),
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Реальные таблицы/payload/owners/icons и выбранный inventory handoff'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-town-state-checkpoint',
         'client455-world-refresh-checkpoint',
         'client455-monster-data-checkpoint',
         'client455-world-camera-checkpoint',

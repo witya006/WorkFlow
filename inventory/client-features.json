@@ -9034,7 +9034,7 @@
       "id": "CLIENT455-WORLD-REFRESH-187",
       "area": "world",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-world-refresh-checkpoint.json",
         "inventory/client455-world-refresh-reference.json",
@@ -9045,6 +9045,22 @@
         "Full object type mapping and expiration behavior",
         "Missing monster recovery request and full movement and rendering parity",
         "Town restriction consumers and local movement correction"
+      ]
+    },
+    {
+      "id": "CLIENT455-TOWN-STATE-188",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-town-state-checkpoint.json",
+        "inventory/client455-town-state-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "NeutralB applies 4/34 to the local avatar. The ordinary attack reads the same field. A textured monster is visible in the final live frame.",
+      "gaps": [
+        "A live attack denial in a town and full typed skill and Force activation checks",
+        "Monster animation and trajectory comparison and complete gameplay acceptance"
       ]
     }
   ],

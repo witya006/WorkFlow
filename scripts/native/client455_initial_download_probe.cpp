@@ -2,6 +2,7 @@
 #include "client455_world_updates.h"
 #include "gameobject/manager/ccharactermgr.h"
 #include "gameobject/manager/cgrounditemmanager.h"
+#include "gameobject/manager/ctargetmgr.h"
 #include "network/cnetworkmgr.h"
 
 #include <algorithm>
@@ -286,7 +287,63 @@ void worldUpdates() {
 class PositionProbeNetwork : public CNetworkMgr {
 public:
     using CNetworkMgr::PositionMsg_ObjectRefresh455;
+    using CNetworkMgr::PositionMsg_TownState455;
 };
+
+class TownProbeAvatar : public CAvatar {
+public:
+    using CAvatar::CheckTownAttack455;
+};
+
+template<class Tag, typename Tag::Type Member>
+struct TownProbeMember {
+    friend typename Tag::Type access(Tag) { return Member; }
+};
+struct SelectedTargetMember {
+    using Type = CTarget CTargetMgr::*;
+    friend Type access(SelectedTargetMember);
+};
+template struct TownProbeMember<SelectedTargetMember, &CTargetMgr::m_Target>;
+
+void townState() {
+    auto* previousAvatar = g_pAvatar;
+    auto* previousTargetManager = g_pTargetMgr;
+    auto avatar = std::make_unique<TownProbeAvatar>();
+    auto network = std::make_unique<PositionProbeNetwork>();
+    auto targets = std::make_unique<CTargetMgr>();
+    auto player = std::make_unique<CPlayer>();
+    auto monster = std::make_unique<CMonster>();
+    player->SetCharTypeID(CTI_PLAYER);
+    player->SetIndex(1234);
+    monster->SetIndex(2345);
+
+    g_pAvatar = nullptr;
+    const char town = 7;
+    check(!network->PositionMsg_TownState455(&town, 1), "town state needs the local avatar");
+    g_pAvatar = avatar.get();
+    g_pTargetMgr = targets.get();
+    check(avatar->GetTownState455() == 0xff && avatar->CheckTownAttack455(*player),
+          "fresh avatar permits ordinary attack at the town gate");
+    check(!network->PositionMsg_TownState455(nullptr, 1) &&
+          !network->PositionMsg_TownState455(&town, 0) &&
+          !network->PositionMsg_TownState455(&town, 2) && avatar->GetTownState455() == 0xff,
+          "town packet must have exactly one byte");
+    check(network->PositionMsg_TownState455(&town, 1) && avatar->GetTownState455() == 7,
+          "town packet keeps the exact value");
+    auto& selected = (*targets).*access(SelectedTargetMember{});
+    selected.SetTarget(player.get());
+    check(!avatar->CheckTownAttack455(*player) && targets->IsEmptyTarget(),
+          "town denies player attack and clears the selected player");
+    check(avatar->CheckTownAttack455(*monster), "town permits monster attack");
+    selected.SetTarget(monster.get());
+    check(!avatar->CheckTownAttack455(*player) && targets->IsEqualTarget(monster.get()),
+          "town leaves a different selected target alone");
+    const char clear = static_cast<char>(0xff);
+    check(network->PositionMsg_TownState455(&clear, 1) && avatar->GetTownState455() == 0xff &&
+          avatar->CheckTownAttack455(*player), "0xff restores the ordinary attack route");
+    g_pTargetMgr = previousTargetManager;
+    g_pAvatar = previousAvatar;
+}
 
 void refreshOwners() {
     auto* previousManager = g_pCharacterMgr;
@@ -354,9 +411,11 @@ int main()
     store();
     worldUpdates();
     refreshOwners();
+    townState();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
               "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,\"store_stride\":16,"
               "\"world_spawn_bytes\":17,\"world_move_bytes\":14,\"world_status_bytes\":12,\"world_refresh_bytes\":8,"
-              "\"refresh_owner_routes\":4,\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
+              "\"refresh_owner_routes\":4,\"town_state_gate\":true,"
+              "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }

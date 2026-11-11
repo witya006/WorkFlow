@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T05:45:57.603227+00:00",
+  "measured_at_utc": "2026-11-11T06:00:03.928677+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2725,
-    "unique_functions_with_complete_assembly_cfg": 931,
-    "unique_pinned_code_bytes": 779846,
-    "reports": 186,
-    "code_range_occurrences": 4337,
+    "unique_functions_with_pinned_code": 2734,
+    "unique_functions_with_complete_assembly_cfg": 940,
+    "unique_pinned_code_bytes": 781332,
+    "reports": 187,
+    "code_range_occurrences": 4347,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -715,6 +715,10 @@
       "sha256": "20903a53663838f9b04531b819934076084b2b0979eb2812202964391a2efb20"
     },
     {
+      "file": "inventory/client455-town-state-reference.json",
+      "sha256": "128a4fd53413bec5cdab0a2587cb3eb6e802d133216210081a0e60c6850cda32"
+    },
+    {
       "file": "inventory/client455-trade-ore-reference.json",
       "sha256": "784201320d1d5716739cd54de82531012ea7fdc11075e3696f768bf8702182a3"
     },
@@ -1049,6 +1053,10 @@
       "sha256": "da3a3c76ccf6a17efca5a727f89f7973600028a20c2f38f45ab59d96e200694f"
     },
     {
+      "file": "artifacts/client455-progress/town188/reference.json",
+      "sha256": "48c82b2ae619b522c58eb12ae5f44c3bc7d4035367ae9a660e3a1caa471575fc"
+    },
+    {
       "file": "artifacts/client455-progress/trade-ore170-reference.json",
       "sha256": "ff23c2e316ab3ea9a8615fb9ef2c404f1f0dd97afdfbe044fb829eac75bbb462"
     },
@@ -1080,7 +1088,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "64f1cbeeb2420245621ab8e0890c87c9014292fce4900c908921b9dc023b7388"
+      "sha256": "b0c02cad831fe79e3656f3c89c3405a40eadd6c3d8457c29e9dc4d00a1426888"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2574,6 +2582,25 @@
       ]
     },
     {
+      "rva": "0x12e40",
+      "ida_name": "sub_412E40",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x12e40",
+          "bytes": 208
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 73
+        }
+      ]
+    },
+    {
       "rva": "0x130d0",
       "ida_name": "sub_4130D0",
       "reports": [
@@ -2632,6 +2659,25 @@
       ]
     },
     {
+      "rva": "0x13550",
+      "ida_name": "sub_413550",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x13550",
+          "bytes": 393
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 144
+        }
+      ]
+    },
+    {
       "rva": "0x13700",
       "ida_name": "sub_413700",
       "reports": [
@@ -2644,6 +2690,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x13770",
+      "ida_name": "sub_413770",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x13770",
+          "bytes": 474
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 154
+        }
+      ]
     },
     {
       "rva": "0x14430",
@@ -7694,7 +7759,8 @@
       "rva": "0x63780",
       "ida_name": "sub_463780",
       "reports": [
-        "inventory/client455-player-owner-reference.json"
+        "inventory/client455-player-owner-reference.json",
+        "inventory/client455-town-state-reference.json"
       ],
       "ranges": [
         {
@@ -7705,6 +7771,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/player-owner154-reference/session.json",
+          "instructions": 38
+        },
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
           "instructions": 38
         }
       ]
@@ -7722,6 +7792,63 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x638f0",
+      "ida_name": "sub_4638F0",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x638f0",
+          "bytes": 66
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 27
+        }
+      ]
+    },
+    {
+      "rva": "0x63960",
+      "ida_name": "sub_463960",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x63960",
+          "bytes": 99
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 37
+        }
+      ]
+    },
+    {
+      "rva": "0x63ab0",
+      "ida_name": "sub_463AB0",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x63ab0",
+          "bytes": 112
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 43
+        }
+      ]
     },
     {
       "rva": "0x641f0",
@@ -13729,6 +13856,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x12e180",
+      "ida_name": "sub_52E180",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x12e180",
+          "bytes": 52
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
       "rva": "0x12f800",
       "ida_name": "sub_52F800",
       "reports": [
@@ -13741,6 +13887,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x12fe60",
+      "ida_name": "sub_52FE60",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x12fe60",
+          "bytes": 49
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 23
+        }
+      ]
+    },
+    {
+      "rva": "0x12fea0",
+      "ida_name": "sub_52FEA0",
+      "reports": [
+        "inventory/client455-town-state-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x12fea0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/town188/reference.json",
+          "instructions": 17
+        }
+      ]
     },
     {
       "rva": "0x138ed0",
@@ -45581,8 +45765,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 10,
-    "unique_functions_with_complete_assembly_cfg": 12
+    "unique_functions_with_pinned_code": 9,
+    "unique_functions_with_complete_assembly_cfg": 9
   },
   "M6": "OPEN",
   "M9": "OPEN",

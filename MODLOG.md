@@ -1,3 +1,9 @@
+2026-11-11 — NeutralB 188, PARTIAL_LIVE_TOWN_STATE.
+
+The avatar consumes 4/34 and checks the ordinary attack restriction.
+The live run shows a textured monster in the world.
+[Evidence and remaining work](research/client455-town-state.md)
+
 2026-11-11 — NeutralB 187, PARTIAL_LIVE_WORLD_REFRESH.
 
 The ordinary client applied 92 refresh updates to live objects.

@@ -62,3 +62,14 @@ bool CNetworkMgr::PositionMsg_PlayerStatus455(const char* bytes, std::size_t siz
     RF455_ObserveProtocol("player-status-update", player != nullptr, player && player == _GetAvatar(), sizeof(packet));
     return true;
 }
+
+bool CNetworkMgr::PositionMsg_TownState455(const char* bytes, std::size_t size) {
+    std::uint8_t townState = 0;
+    if (!RF455_ReadWorldRecord(bytes, size, townState)) return false;
+
+    auto* avatar = _GetAvatar();
+    if (!avatar) return false;
+    avatar->SetTownState455(townState);
+    RF455_ObserveProtocol("town-state", avatar->GetTownState455(), townState == 0xff, sizeof townState);
+    return true;
+}

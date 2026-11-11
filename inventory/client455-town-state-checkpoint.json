@@ -1,0 +1,119 @@
+{
+  "status": "PARTIAL_LIVE_TOWN_STATE",
+  "scope": "Ordinary live 4/34 updates the avatar. The native probe checks normal attacks.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c8151a0327d042a877545a0364bf161623898bb929c20fb3bbd033fa0c9f4049",
+    "bytes": 2382848,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x186e20",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "a1dc5389b60911ef68c9efa829afc2f592ffe313509da618aea1c841851da197",
+  "own_field": {
+    "symbols": {
+      "?NormalAttack@CAvatar@@QAEHPAVCCharacter@@@Z": "0x91d0",
+      "?PositionMsg_TownState455@CNetworkMgr@@IAE_NPBDI@Z": "0x52870"
+    },
+    "avatar_offset": "0x9001",
+    "write_rva": "0x5288b",
+    "attack_read_rva": "0x92cb"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "a1dc5389b60911ef68c9efa829afc2f592ffe313509da618aea1c841851da197"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "4c6314f574ac3c18413a76493b4c247629c7f17536d323429312dea718df465e"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "8e186eaf09781ad5f48ae75a7ef68bc6d51c506564c3d11c40d4f76571d08f57"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "e9c23bf9ee6d43cc860516c14bdc1f331b12ce470143e78e5d368baeb0fbc42f"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "57bb1f3755c799506bfee2d2822bb3f9f1c3142a92259b14a6802fcb53c5669c"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "8a3989411fe1541437e1682d087f9f846bdf1f1a891940f817a4e993c9440496"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "b5d23c1813a973aa77ad886e6820926d216915bc35c7e49078ef2c947eee679b"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "8310971f32acfbbeb6f7b7a8089384315d21b95aa9a12922ab16dc4d806dd1aa"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "966e13d7cf805c135be2e73b719bd1be0b71e5e24a913fd5e50ed0d146cc8005"
+    },
+    "town-state-reference": {
+      "file": "inventory/client455-town-state-reference.json",
+      "sha256": "128a4fd53413bec5cdab0a2587cb3eb6e802d133216210081a0e60c6850cda32"
+    },
+    "town-state-live": {
+      "file": "artifacts/client455-progress/town188/live.json",
+      "sha256": "3ec995c5902c5fff2e26774bd14e7eebfaa8a25d34be15aace29d9dd408c4583"
+    },
+    "town-state-raw": {
+      "file": "artifacts/client455-progress/town188/reference.json",
+      "sha256": "48c82b2ae619b522c58eb12ae5f44c3bc7d4035367ae9a660e3a1caa471575fc"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/town188/live.json",
+    "sha256": "3ec995c5902c5fff2e26774bd14e7eebfaa8a25d34be15aace29d9dd408c4583"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_town_state.py",
+    "sha256": "35adfa25ccb3b32a8d23387f636c1d9bf82321b75edec1057e86743f9e343e21"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "e96ce12007f6c792f8229b97a8aed83e2feab365ff6e735ae2c52d165862d884"
+    },
+    {
+      "file": "scripts/native/client455_world_position.inc",
+      "sha256": "d52d40c46fedbd614d73cb17ed3a79df5870bf193a0b2c9a144e38455c9e4124"
+    },
+    {
+      "file": "scripts/native/client455_initial_download_probe.cpp",
+      "sha256": "dc17fad49776b7d428c5f3aa61ad6fd3919bd36b4e0d14f160ad01a1bd4a96ff"
+    }
+  ],
+  "town_state_updates": [
+    {
+      "value": 255,
+      "outside": true,
+      "count": 1
+    }
+  ],
+  "refreshes": 97,
+  "monster_moves": 76,
+  "visible_monster_frame": {
+    "file": "work/m9/c8151a03/world-walk-live-taiwan001/world-post-position-settled.png",
+    "sha256": "c8410c0b654a447101e48e29e5b46b3fac56711d49fb49455e338b269f8e2579"
+  },
+  "live_attack_denial_verified": false,
+  "skill_force_town_checks_ported": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

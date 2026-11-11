@@ -3,6 +3,31 @@ from client455_trade_ore_port import replace
 
 
 def port_world_updates(raw, relative, native, section):
+    if relative == 'character/avatar/cavatar.h':
+        anchor = b'\tBYTE\t\t\tm_byAttackMode;'
+        raw = replace(raw, anchor, b'\tBYTE m_townState455 = 0xff;\n' + anchor)
+        anchor = b'\t\t\tRESULT\t\tNormalAttack( CCharacter * pi_pTarget );'
+        raw = replace(raw, anchor, anchor + b'''
+    void SetTownState455(BYTE state) { m_townState455 = state; }
+    BYTE GetTownState455() const { return m_townState455; }''')
+        anchor = b'\t\t\tRESULT\t\tCheckTargetConditionForAttack( CCharacter * pi_pTarget );'
+        return replace(raw, anchor, b'\t\t\tbool CheckTownAttack455(CCharacter& target);\n' + anchor), True
+    if relative == 'character/avatar/cavatar_combat.cpp':
+        anchor = (b'l_nResult = CheckAvatarConditionForAttack();\n'
+                  b'\tif( l_nResult != ARC_SUCCESS ) return l_nResult;')
+        raw = replace(raw, anchor, anchor + b'\n\tif (!CheckTownAttack455(*pi_pTarget)) return ARC_FAIL_STOP;')
+        return b'#include "client455_language.h"\n' + raw + b'''
+
+bool CAvatar::CheckTownAttack455(CCharacter& target)
+{
+    if (m_townState455 == 0xff || target.IsEqualCharType(CTI_MONSTER)) return true;
+
+    const char* message = RF455_GetNormalLanguagePack()->get(128);
+    if (message && *message) _SetSystemMsg("%s", message);
+    if (_GetTargetMgr()->IsEqualTarget(&target)) _GetTargetMgr()->SetTarget(nullptr);
+    return false;
+}
+''', True
     if relative == 'network/cnetworkmgr.h':
         raw = replace(raw, b'void\tPositionMsg_ObjectRealFixpositon_zocl( char * pi_pMsg );',
                       b'bool PositionMsg_ObjectRefresh455(const char* bytes, std::size_t size);')
@@ -10,7 +35,8 @@ def port_world_updates(raw, relative, native, section):
         return replace(raw, anchor, anchor + b'''
     bool InitMsg_MonsterSpawn455(const char* bytes, std::size_t size);
     bool PositionMsg_MonsterMove455(const char* bytes, std::size_t size);
-    bool PositionMsg_PlayerStatus455(const char* bytes, std::size_t size);'''), True
+    bool PositionMsg_PlayerStatus455(const char* bytes, std::size_t size);
+    bool PositionMsg_TownState455(const char* bytes, std::size_t size);'''), True
     if relative == 'network/cnetworkmgr.cpp':
         raw = replace(raw, b'case correct_position_zocl :\n\t\t\t\t\tbreak;',
                       b'case 10:\n\t\t\t\t\treturn PositionMsg_ObjectRefresh455(pi_pMsg, pMsgHeader->m_wSize - 4);')
@@ -24,7 +50,9 @@ def port_world_updates(raw, relative, native, section):
                     RF455_ObserveProtocol("position-noop", 4, 12, pMsgHeader->m_wSize - 4);
                     return true;
                 case 25:
-                    return PositionMsg_PlayerStatus455(pi_pMsg, pMsgHeader->m_wSize - 4);''')
+                    return PositionMsg_PlayerStatus455(pi_pMsg, pMsgHeader->m_wSize - 4);
+                case 34:
+                    return PositionMsg_TownState455(pi_pMsg, pMsgHeader->m_wSize - 4);''')
         return raw, True
     includes = b'#include "client455_world_updates.h"\n#include "client455_protocol_observation.h"\n'
     if relative == 'network/cnetworkmgr_initmsg.cpp':
