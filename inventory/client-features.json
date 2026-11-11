@@ -9172,7 +9172,7 @@
       "id": "CLIENT455-MONSTER-FORCE-IMPACT-196",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-force-impact-checkpoint.json",
         "inventory/client455-monster-force-impact-reference.json"
@@ -9181,6 +9181,21 @@
       "gaps": [
         "Live effects and damage text styling",
         "Critical and support effects, block consumer and auxiliary state"
+      ]
+    },
+    {
+      "id": "CLIENT455-COMBAT-RESULT-RENDER-197",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-combat-result-effect-checkpoint.json",
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "description": "The ordinary monster result queue renders BLOCK and MISS using the 455 atlas, suppresses a clipped bystander result and plays a real spatial BLOCK sample in a muted test. The same build walks on NeutralB.",
+      "gaps": [
+        "Real combat trigger and local-avatar visibility exception",
+        "Critical, support and exact positive damage display"
       ]
     }
   ],

@@ -236,7 +236,8 @@
         "Обработчик 5/9 назначает Силу, ставит цели в очередь и распределяет урон по тестовым кадрам",
         "Обычный диспетчер принимает долю HP монстра, компонентно проверены два кадра попадания и лечение",
         "Компонентно проверены разные эффекты для результата −2 и промаха на кадре попадания по монстру",
-        "Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах"
+        "Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах",
+        "Штатный рендер вывел BLOCK и MISS из атласа 455, компонентно проверены отсечение и звук блока"
       ],
       "remaining": [
         "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455"
@@ -249,7 +250,8 @@
         "client455-monster-force-damage-checkpoint",
         "client455-monster-health-checkpoint",
         "client455-monster-force-reaction-checkpoint",
-        "client455-monster-force-impact-checkpoint"
+        "client455-monster-force-impact-checkpoint",
+        "client455-combat-result-effect-checkpoint"
       ]
     },
     {
@@ -314,7 +316,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "ff6641084dff54a1690ce6a651e38cbc04b2026fe76ec75cac191d811f5a75ce",
+      "sha256": "ddc09dd9b328384ec451e10903d37f7ead545a73e3f6d9a0c762d46c9f94efa9",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -909,6 +911,14 @@
       "sha256": "afd5cc799f1a744d2b880414b9e4ebdf8a264ca7beb28997fc9347b95bf438b9",
       "status": "PARTIAL_COMPONENT_MONSTER_FORCE_IMPACT",
       "scope": "Positive 5/9 Force queues effect key, amount and range on the normal impact path.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-combat-result-effect-checkpoint": {
+      "file": "inventory/client455-combat-result-effect-checkpoint.json",
+      "sha256": "7aa1a5aba6ab033effcda1564616fa2dc8a2b827d4ddb7721a54838d83c3c764",
+      "status": "PARTIAL_COMPONENT_COMBAT_RESULT_RENDER",
+      "scope": "Monster Force BLOCK and MISS render with the original atlas and BLOCK uses a real muted Miles sample.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -960,11 +970,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "643554e2dd9263f2b54dcb7c20c8c523a81d5fb3e80d6cce4bd1cc0b1cba7d13",
-      "bytes": 2389504,
+      "sha256": "1e64dd9f10d8b0b477155faea6cbedb10799de457fbf4481c3f49d7a3bb9f2aa",
+      "bytes": 2390016,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x188160",
+      "entry_rva": "0x1884f0",
       "sections": [
         ".text",
         ".rdata",
@@ -989,22 +999,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "8bae5d7ebf063afacc6103521a01d81d7ec01d0b28585f8672c126d3cd8051fa",
+      "sha256": "c1e67ccafff201e79059f6a717cdb68dbe60c2073003e7bf6a47601b3150abfd",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-monster-force-impact-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-combat-result-effect-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "ff6641084dff54a1690ce6a651e38cbc04b2026fe76ec75cac191d811f5a75ce",
+      "link_sha256": "ddc09dd9b328384ec451e10903d37f7ead545a73e3f6d9a0c762d46c9f94efa9",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "643554e2dd9263f2b54dcb7c20c8c523a81d5fb3e80d6cce4bd1cc0b1cba7d13",
-        "bytes": 2389504,
+        "sha256": "1e64dd9f10d8b0b477155faea6cbedb10799de457fbf4481c3f49d7a3bb9f2aa",
+        "bytes": 2390016,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x188160",
+        "entry_rva": "0x1884f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1014,7 +1024,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "8bae5d7ebf063afacc6103521a01d81d7ec01d0b28585f8672c126d3cd8051fa"
+      "build_sha256": "c1e67ccafff201e79059f6a717cdb68dbe60c2073003e7bf6a47601b3150abfd"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -1022,7 +1032,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "8bae5d7ebf063afacc6103521a01d81d7ec01d0b28585f8672c126d3cd8051fa"
+        "sha256": "c1e67ccafff201e79059f6a717cdb68dbe60c2073003e7bf6a47601b3150abfd"
       },
       "build_exit": 0,
       "errors": [],
@@ -1032,11 +1042,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "643554e2dd9263f2b54dcb7c20c8c523a81d5fb3e80d6cce4bd1cc0b1cba7d13",
-        "bytes": 2389504,
+        "sha256": "1e64dd9f10d8b0b477155faea6cbedb10799de457fbf4481c3f49d7a3bb9f2aa",
+        "bytes": 2390016,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x188160",
+        "entry_rva": "0x1884f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1049,20 +1059,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "8bae5d7ebf063afacc6103521a01d81d7ec01d0b28585f8672c126d3cd8051fa"
+        "sha256": "c1e67ccafff201e79059f6a717cdb68dbe60c2073003e7bf6a47601b3150abfd"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Positive 5/9 Force queues effect key, amount and range on the normal impact path.",
+    "current_work": "Monster Force BLOCK and MISS render with the original atlas and BLOCK uses a real muted Miles sample.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/impact196/live.json",
-      "sha256": "cceb53fd7af7075925c817e46626a3e518527ec20c2093898871e787e2fe8ade",
+      "file": "artifacts/client455-progress/block197/live.json",
+      "sha256": "721a8e3007b3f0d5897106d92d50bc47abb75ef5d555470e7233d45c27823287",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/643554e2/world-walk-live-taiwan001/login-frame.png",
-        "sha256": "54d265b1daa56d7e3e749d55115521d8f7f90342ff1b66111a5e6800f3af7324"
+        "file": "work/m9/1e64dd9f/world-walk-live-taiwan001/login-frame.png",
+        "sha256": "7334133db00be229d51085015ea353138056c73cc955852e8c632a80aae0a24d"
       },
       "capture": {
         "result": 0,
@@ -1070,7 +1080,7 @@
         "height": 500,
         "format": 22,
         "frame_index": 123,
-        "elapsed_ms": 8016,
+        "elapsed_ms": 8031,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1086,10 +1096,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "b7ec8ff7da1a5b40956d9c0041f65fbfa8570d35a0f363e26e999da91e79dd95",
-    "entries": 200,
+    "sha256": "019def32992491c75dce9f34c78d16311aa39afad1cf9b856bc18a5095921d65",
+    "entries": 201,
     "statuses": {
-      "partial_component": 19,
+      "partial_component": 20,
       "partial": 151,
       "audit_open": 1,
       "open": 2,
@@ -1100,7 +1110,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-MONSTER-FORCE-IMPACT-196"
+      "CLIENT455-COMBAT-RESULT-RENDER-197"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1170,7 +1180,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;200 overlapping historical records",
+        "measured": "12 domain planning map;201 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1332,7 +1342,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "15b92e037cab43f7fef9f9a31c4a5486df588c057b0e316a3ec7eca01dbe7d63"
+    "sha256": "af460f821ed5b93f24c9c37c7b4533749a6df0eac97a55c91f10a839c69edb01"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

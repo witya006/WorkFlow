@@ -1,0 +1,245 @@
+{
+  "native": {
+    "status": "PASS",
+    "block_pixels": 4869,
+    "miss_pixels": 2687,
+    "real_block_sample": true,
+    "expired_pixels": 0,
+    "clipped_pixels": 0
+  },
+  "console": {
+    "file": "work/client455-port/combat-result-effect-probe/combat-result-effect.txt",
+    "sha256": "3e817573f5cdd37a6a867f76e699ea780cfdef20c1b3f330fc8d5cf425226605"
+  },
+  "frames": [
+    {
+      "word": "block",
+      "raw": {
+        "file": "work/client455-port/combat-result-effect-probe/block.bgra",
+        "sha256": "f32117efccac9466c795941bb3455f3fc3c21b2c0854eba72093d93474fd9398"
+      },
+      "preview": {
+        "file": "artifacts/client455-progress/block197/block.png",
+        "sha256": "76df93b139fb19620e303f166122c3cf7e76cad31308aab0cb74176ff6e03e1f"
+      },
+      "blue": 2675,
+      "warm": 1610
+    },
+    {
+      "word": "miss",
+      "raw": {
+        "file": "work/client455-port/combat-result-effect-probe/miss.bgra",
+        "sha256": "bd949c531746f2f87ec94237b633dd4d46edac3ba1dd84d9422522aabe8051fe"
+      },
+      "preview": {
+        "file": "artifacts/client455-progress/block197/miss.png",
+        "sha256": "cdb76223362ac77f551f0eb6be6a95338222cda3c5f11d6e4ecd9e4f9d094328"
+      },
+      "blue": 0,
+      "warm": 2282
+    }
+  ],
+  "inputs": [
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/msssoft.m3d",
+      "sha256": "5dcbf188c30ae1ac6a3d5b7fac4a25e831c9a495683b044f5141c4bdbc83f607",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msssoft.m3d"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/msseax.m3d",
+      "sha256": "62e0e34435b9705eedc73660e64564138d8276dcf7b08dfbaac05c592b67e6d3",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\msseax.m3d"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/mssmp3.asi",
+      "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\mssmp3.asi"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Effect/effectfont.dds",
+      "sha256": "db8d1c5f1b14e812563c21e206e71f58987fa697f150e24dc1733edb447cf7a8",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Effect\\effectfont.dds"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/WaveList.spt",
+      "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\WaveList.spt"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/mss32.dll",
+      "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\mss32.dll"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/Critical/block_00.wav",
+      "sha256": "7086a2e58039330fbd61a0481963e7afbf99379f97b54dc1d82df1bc3e3169ff",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Critical\\block_00.wav"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/Snd/Critical/block_01.wav",
+      "sha256": "54bbbb39c2d032f54bf09e309575cca9ef3ba62cbef87780a6ce2b66c139ca3b",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\Critical\\block_01.wav"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/R3Engine.ini",
+      "sha256": "a1a01413f02ac6b0b56b7f06d3f3fd203fe81ea47309dd0922bb493e39233f47"
+    }
+  ],
+  "real_clips": [
+    {
+      "file": "work/client455-port/combat-result-effect-probe/WING_WARFORCEATTACK_01_00.ANI",
+      "sha256": "ff9a4c0fa6132b3d2bd5fe936ed070e83b541b9bcfd487814181f6c9ce8b85b9",
+      "key": 4288,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    },
+    {
+      "file": "work/client455-port/combat-result-effect-probe/WING_WARFORCESUPPORT_01_00.ANI",
+      "sha256": "807d3f83371a62ccf909c42cd2677c88daaca7c4b31fffb814d6bc2ed597cbbb",
+      "key": 4304,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    }
+  ],
+  "regression": {
+    "impact": {
+      "status": "PASS",
+      "effect_id": "0x92000e",
+      "range": 0,
+      "checked_impacts": 2,
+      "total_damage": 70000,
+      "second_range": 1
+    },
+    "console": {
+      "file": "work/client455-port/combat-result-effect-probe/force-impact.txt",
+      "sha256": "af15059d417105c04f1977f374e57a35783bb253a33bbd354e22d42b9552564f"
+    }
+  },
+  "source": {
+    "file": "scripts/native/client455_monster_force_result_probe.cpp",
+    "sha256": "3a58fcb8d67d5adde86257ef4b99f8609f9ce15854e3017dc95ce91d18886b48"
+  },
+  "probe_executable": {
+    "file": "work/client455-port/combat-result-effect-probe/combat-result-effect-probe.exe",
+    "sha256": "92860fd4bccd32cb32457e5fe54e813e9c870f36e7495c53652a0e25d28ec88f",
+    "architecture": "x86"
+  },
+  "status": "PARTIAL_COMPONENT_COMBAT_RESULT_RENDER",
+  "scope": "Monster Force BLOCK and MISS render with the original atlas and BLOCK uses a real muted Miles sample.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1e64dd9f10d8b0b477155faea6cbedb10799de457fbf4481c3f49d7a3bb9f2aa",
+    "bytes": 2390016,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1884f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "ddc09dd9b328384ec451e10903d37f7ead545a73e3f6d9a0c762d46c9f94efa9",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "ddc09dd9b328384ec451e10903d37f7ead545a73e3f6d9a0c762d46c9f94efa9"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "6b0462769da3a53d46bb8230d784de1c8c925cfb49628d9a58916a6c6d534538"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "c1e67ccafff201e79059f6a717cdb68dbe60c2073003e7bf6a47601b3150abfd"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "1205a76a6a14f74ea412fef05fb14eaf9c2bc85bfc58bf127e31f60e9e68e5ff"
+    },
+    "combat-result-effect-reference": {
+      "file": "inventory/client455-combat-result-effect-reference.json",
+      "sha256": "098ffbc694efbaba98628cf3d11f4ad8822c678a26d42969caf57ec4c931eea0"
+    },
+    "skill-force-items-reference": {
+      "file": "inventory/client455-skill-force-items-reference.json",
+      "sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216"
+    },
+    "tagged-audio-reference": {
+      "file": "inventory/client455-tagged-audio-reference.json",
+      "sha256": "6ec740dbe93296a0228bf1287cd2b34fd940ad76bdfddf7a46bf2d09f26f4405"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "2aa1b1435d0e28374429a817c642e0ddea4ff025fa14c7d51259b54057e16ce1"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "ae9853b77bf1b1cfc3d70395462033f8f7910ed18906a33d52fa6d2091f17808"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "4e75569ffce508d0d8eec96c8beb4d6d998585c620d707e05f7bbbc667b99aa0"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "0701d7691556d3bee08551e83000fe6296cfe52507a0b295074aa30e5ab04e38"
+    },
+    "combat-result-effect-live": {
+      "file": "artifacts/client455-progress/block197/live.json",
+      "sha256": "721a8e3007b3f0d5897106d92d50bc47abb75ef5d555470e7233d45c27823287"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/block197/live.json",
+    "sha256": "721a8e3007b3f0d5897106d92d50bc47abb75ef5d555470e7233d45c27823287"
+  },
+  "live_smoke": {
+    "world_frames": [
+      {
+        "file": "work/m9/1e64dd9f/world-walk-live-taiwan001/world-post-position.png",
+        "sha256": "3284c548876835f2efcd4823c5f2bb8bc268cf2012c0fa21c723d4d2ed345835"
+      },
+      {
+        "file": "work/m9/1e64dd9f/world-walk-live-taiwan001/world-post-position-settled.png",
+        "sha256": "34b320c5391e464e4de0d1a48381c228016f38e29b83806c4c69c223a06ac187"
+      }
+    ],
+    "displacement": 73.22481819711155,
+    "observed_force_events": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_combat_result_effect.py",
+    "sha256": "be397d9551efbf22e616f2158bdcb91ddc31f6dbcabba35f2b940df3fdf733ca"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_combat_result_effect_port.py",
+      "sha256": "6a8d20401da8c252ebb1d034004e239334a31c0d37398e039b3819542c4b34d2"
+    },
+    {
+      "file": "scripts/native/client455_combat_result_effect_probe.inc",
+      "sha256": "02fa45a965e4357aed31f5b6b164c7c562029b0b5bdd61d1be82f0d4b4a29bab"
+    },
+    {
+      "file": "scripts/native/client455_equipment_effects.h",
+      "sha256": "41d68b33ff1ac2b25e10349294dd504c197e55e2e78baf0d400e02fb06085a14"
+    },
+    {
+      "file": "scripts/native/client455_player_owner.cpp",
+      "sha256": "16f24378521804434e07c886b4d880867f286ae99ec23d04e62bcc1a2b2ee4ce"
+    }
+  ],
+  "own_symbols": {
+    "?EFUtil_RenderStringMoveOut@@YAXXZ": "0x6ff30",
+    "?ExtractEffectInfo@CAllEffectInfo@@QAEXPAUEffectInfo@@@Z": "0x72490",
+    "?FrameMoveEffect@@YAXXZ": "0x74340",
+    "?RF455_PlayActorEffectSound@@YAXIPBMI@Z": "0xd8250"
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

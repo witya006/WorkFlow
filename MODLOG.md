@@ -1,3 +1,9 @@
+2026-11-11 — Monster combat result 197, PARTIAL_COMPONENT_COMBAT_RESULT_RENDER.
+
+The ordinary queue renders BLOCK and MISS with the pinned atlas.
+The graphics probe verifies text expiry and a real muted Miles sample.
+[Evidence](research/client455-combat-result-effect.md)
+
 2026-11-11 — Monster Force impact 196, PARTIAL_COMPONENT_MONSTER_FORCE_IMPACT.
 
 The normal impact consumer queues the Force key, range and per-frame damage.

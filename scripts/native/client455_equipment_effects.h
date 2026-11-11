@@ -65,6 +65,8 @@ struct RF455EquipmentSoundGate {
         if(previousID!=id||clock()-previousTime>=0.2){previousID=id;previousTime=static_cast<float>(clock());invoke(id,position,loop);}
     }
 };
+void RF455_PlayActorEffectSound(std::uint32_t id, const float* position, std::uint32_t loop);
+
 class RF455EquipmentEffectBackend {
 public:
     virtual ~RF455EquipmentEffectBackend()=default;

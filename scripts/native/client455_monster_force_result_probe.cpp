@@ -4,6 +4,20 @@
 #include "gameobject/board/common/cboardmanager.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
 #include "network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h"
+#include "addcodebyjang/foreffect.h"
+#include "addcodebyjang/effectutil.h"
+#include "addcodebyjang/effectutilfont.h"
+#include "cland.h"
+#include "ccamera.h"
+#include "datafile.h"
+#include "datatable/cresourcedatamgr.h"
+#include "input/imeedit.h"
+#include "gameprogress/cgameprogress.h"
+#include "userinterface/spritemgr.h"
+#include "network/cnetworkmgr.h"
+#include "mainapp.h"
+#include "r3sound.h"
+#include "mss.h"
 
 #include <array>
 #include <cmath>
@@ -11,12 +25,16 @@
 #include <cstdlib>
 #include <memory>
 
+extern CMainApp g_MainApp;
+
 namespace {
 void require(bool condition, const char* message) {
     if (condition) return;
     std::fprintf(stderr, "%s\n", message);
     std::exit(1);
 }
+
+#include "client455_combat_result_effect_probe.inc"
 
 bool sendHealth(CNetMsgProcessor_ItemArrangement& processor, DWORD serial, BYTE opcode, WORD fraction,
                 bool truncated = false) {
@@ -30,7 +48,7 @@ bool sendHealth(CNetMsgProcessor_ItemArrangement& processor, DWORD serial, BYTE 
     return processor.AnalysisServerPacket(&header, payload.data());
 }
 
-void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType) {
+void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType, bool retain = false) {
     target.SetMesh(1);
     auto* incoming = target.GetAttackerInfo(&wing);
     auto* effects = _GetEffectInfoList();
@@ -50,7 +68,7 @@ void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType) {
             "Queued effect key, actors and zero damage match the impact");
     target.GetCombatState()->ProcessDamage();
     require(effects->size() == 1, "A consumed impact does not repeat");
-    effects->Clear();
+    if (!retain) effects->Clear();
 }
 
 void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage) {
@@ -66,7 +84,7 @@ void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage) {
 }
 
 void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth, bool checkReaction,
-                 bool checkImpactEffect) {
+                 bool checkImpactEffect, CombatResultDisplay* display) {
     constexpr std::array<std::int32_t, 6> amounts{70000, 4500, 321, 1, -1, -2};
     std::array<CMonster*, amounts.size()> targets{};
     targets[0] = &primary;
@@ -164,20 +182,28 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
         require(targets[1]->GetHPRate() == 1.0f, "Health belongs to the addressed monster");
     }
     if (checkReaction) {
-        checkHitReaction(*targets[5], wing, 13);
-        checkHitReaction(*targets[4], wing, 4);
+        checkHitReaction(*targets[5], wing, 13, display != nullptr);
+        if (display) display->verifyVisible(*targets[5], true);
+        checkHitReaction(*targets[4], wing, 4, display != nullptr);
+        if (display) {
+            display->verifyVisible(*targets[4], false);
+            checkHitReaction(*targets[5], wing, 13, true);
+            display->verifyClipped(*targets[5]);
+        }
     }
 }
 }
 
 int main(int argc, char** argv) {
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
-    const bool checkReaction = argc == 6 && std::strcmp(argv[5], "--reaction") == 0;
+    const bool checkBlockRender = argc == 6 && std::strcmp(argv[5], "--block-render") == 0;
+    const bool checkReaction = checkBlockRender || (argc == 6 && std::strcmp(argv[5], "--reaction") == 0);
     const bool checkImpactEffect = argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0;
     require(argc == 5 || checkHealth || checkReaction || checkImpactEffect ||
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
+    auto display = checkBlockRender ? std::make_unique<CombatResultDisplay>() : nullptr;
     ChInterface renderer;
     g_ifCharIF = &renderer;
     require(_CreateMeshMgr() && _CreateAnimationMgr(), "Initialize normal asset managers");
@@ -204,12 +230,14 @@ int main(int argc, char** argv) {
     require(wing->GetMeshID() == 1, "Actor owns the registered mesh identity");
 
     if (argc == 6) {
-        checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect);
+        checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get());
         manager->Clear();
         manager.reset();
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
-        if (checkImpactEffect)
+        if (display)
+            display->report();
+        else if (checkImpactEffect)
             std::puts("{\"status\":\"PASS\",\"effect_id\":\"0x92000e\",\"range\":0,"
                       "\"checked_impacts\":2,\"total_damage\":70000,\"second_range\":1}");
         else if (checkReaction)

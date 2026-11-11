@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T08:11:04.930441+00:00",
+  "measured_at_utc": "2026-11-11T08:28:25.878169+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2807,
-    "unique_functions_with_complete_assembly_cfg": 1018,
-    "unique_pinned_code_bytes": 796045,
-    "reports": 194,
-    "code_range_occurrences": 4443,
+    "unique_functions_with_pinned_code": 2816,
+    "unique_functions_with_complete_assembly_cfg": 1027,
+    "unique_pinned_code_bytes": 804003,
+    "reports": 195,
+    "code_range_occurrences": 4456,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -153,6 +153,10 @@
     {
       "file": "inventory/client455-clock.json",
       "sha256": "c8987402338078d9b938dcf3f10780388c6d39009e47dc8ce9f435a346ed85e9"
+    },
+    {
+      "file": "inventory/client455-combat-result-effect-reference.json",
+      "sha256": "098ffbc694efbaba98628cf3d11f4ad8822c678a26d42969caf57ec4c931eea0"
     },
     {
       "file": "inventory/client455-combat-transition-reference.json",
@@ -865,6 +869,10 @@
       "sha256": "ef1008f350e536e1924e2ef22c8f5bbdf466138c3e1b3f300ac6279dbe7a4dc6"
     },
     {
+      "file": "artifacts/client455-progress/block197/reference.json",
+      "sha256": "c4b88408fa5de264b50d4e6398847b645e45e6c8245a4443eb0229ce9c45eed6"
+    },
+    {
       "file": "artifacts/client455-progress/combat-transition156-reference/session.json",
       "sha256": "4d3ad9e98db87697030246dfeb244196752b8ea7aa0f3caf7a44539d002aec58"
     },
@@ -1144,7 +1152,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "602443e8f9453391648b6152fc33a0a06bb1cce7d8c564e10d2e145491585e11"
+      "sha256": "07b17f2423725b56cdd2b1286b9b6dc97adaa3224b304e1ad171cc34302fbb54"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2679,6 +2687,29 @@
       ]
     },
     {
+      "rva": "0x129e0",
+      "ida_name": "sub_4129E0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x129e0",
+          "bytes": 728
+        },
+        {
+          "rva": "0x61f530",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 229
+        }
+      ]
+    },
+    {
       "rva": "0x12cc0",
       "ida_name": "sub_412CC0",
       "reports": [
@@ -2917,6 +2948,44 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/monster191/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x17270",
+      "ida_name": "sub_417270",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x17270",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x172a0",
+      "ida_name": "sub_4172A0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x172a0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
           "instructions": 15
         }
       ]
@@ -35024,6 +35093,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3ce670",
+      "ida_name": "sub_7CE670",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ce670",
+          "bytes": 40
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 20
+        }
+      ]
+    },
+    {
       "rva": "0x3ce7a0",
       "ida_name": "RF455_Actor_MapLight",
       "reports": [
@@ -35830,6 +35918,7 @@
       "rva": "0x3dbd50",
       "ida_name": "sub_7DBD50",
       "reports": [
+        "inventory/client455-combat-result-effect-reference.json",
         "inventory/client455-equipment-effects-reference.json"
       ],
       "ranges": [
@@ -35839,6 +35928,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 38
+        },
         {
           "file": "artifacts/client455-progress/equipment-effects146-reference/session.json",
           "instructions": 38
@@ -36230,6 +36323,82 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3e4ee0",
+      "ida_name": "sub_7E4EE0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e4ee0",
+          "bytes": 477
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 164
+        }
+      ]
+    },
+    {
+      "rva": "0x3e50c0",
+      "ida_name": "sub_7E50C0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e50c0",
+          "bytes": 4911
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 1301
+        }
+      ]
+    },
+    {
+      "rva": "0x3e6ed0",
+      "ida_name": "sub_7E6ED0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e6ed0",
+          "bytes": 505
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 158
+        }
+      ]
+    },
+    {
+      "rva": "0x3e70d0",
+      "ida_name": "sub_7E70D0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e70d0",
+          "bytes": 1100
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 268
+        }
+      ]
+    },
+    {
       "rva": "0x3e78b0",
       "ida_name": "sub_7E78B0",
       "reports": [
@@ -36355,6 +36524,7 @@
       "rva": "0x3e8ca0",
       "ida_name": "sub_7E8CA0",
       "reports": [
+        "inventory/client455-combat-result-effect-reference.json",
         "inventory/client455-monster-force-impact-reference.json"
       ],
       "ranges": [
@@ -36364,6 +36534,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 63
+        },
         {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 63
@@ -36411,9 +36585,29 @@
       ]
     },
     {
+      "rva": "0x3ec7e0",
+      "ida_name": "sub_7EC7E0",
+      "reports": [
+        "inventory/client455-combat-result-effect-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ec7e0",
+          "bytes": 85
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 36
+        }
+      ]
+    },
+    {
       "rva": "0x3ec840",
       "ida_name": "sub_7EC840",
       "reports": [
+        "inventory/client455-combat-result-effect-reference.json",
         "inventory/client455-monster-force-impact-reference.json"
       ],
       "ranges": [
@@ -36423,6 +36617,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/block197/reference.json",
+          "instructions": 50
+        },
         {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 50
@@ -47320,8 +47518,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 15,
-    "unique_functions_with_complete_assembly_cfg": 17
+    "unique_functions_with_pinned_code": 9,
+    "unique_functions_with_complete_assembly_cfg": 9
   },
   "M6": "OPEN",
   "M9": "OPEN",

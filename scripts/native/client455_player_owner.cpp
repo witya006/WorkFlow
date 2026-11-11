@@ -20,7 +20,7 @@ extern CMainApp g_MainApp;
 
 namespace {
 RF455LoopSoundRegistry equipmentLoops455;
-RF455EquipmentSoundGate equipmentSoundGate455;
+RF455EquipmentSoundGate actorEffectSoundGate455;
 bool pendingEquipmentLift455=false; //C0C090 BSS;no verified nonzero writer yet.
 RF455BasicItem& basicOwner455(RF455ManagedItem* item){
     auto* result=dynamic_cast<RF455BasicItem*>(item);
@@ -33,6 +33,13 @@ template<class T>T ownerField455(RF455ItemDataSpan row,unsigned offset){
 }
 void RF455_OpenEquipmentSounds455(){equipmentLoops455.open();}
 void RF455_CloseEquipmentSounds455(){equipmentLoops455.close();}
+
+void RF455_PlayActorEffectSound(std::uint32_t id, const float* position, std::uint32_t loop) {
+    actorEffectSoundGate455.play(id, position, loop, [] { return double(R3GetTime()); },
+        [](std::uint32_t key, const float* at, std::uint32_t repeat) {
+            g_MainApp.TaggedAudio455().Play(key, repeat, 0, at);
+        });
+}
 
 // Actual source owner for the embedded processor. Source object layouts are
 // independent of the private455ABI;no old CNormalItem/ITEM_DATA overlay is used.
@@ -124,7 +131,7 @@ public:
         result.index=local->GetIndex();result.action=local->GetAction();result.walkMode=local->GetWalkMode();return result;
     }
     void playWave(std::uint32_t id,const float* position,std::uint32_t loop)override{
-        equipmentSoundGate455.play(id,position,loop,[](){return double(R3GetTime());},[](std::uint32_t key,const float* at,std::uint32_t repeat){g_MainApp.TaggedAudio455().Play(key,repeat,0,at);});
+        RF455_PlayActorEffectSound(id, position, loop);
     }
     void stopWave(std::uint32_t id,std::uint32_t tag)override{g_MainApp.TaggedAudio455().Stop(id,tag);}
     void trackLoop(std::uint32_t id,std::uint32_t tag)override{equipmentLoops455.add(id,tag);}
