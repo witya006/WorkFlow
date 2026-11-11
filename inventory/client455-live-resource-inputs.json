@@ -2,11 +2,11 @@
   "scope": "Resource dependencies requested by owned live runs;not complete client assets or455equivalence",
   "script": {
     "file": "scripts/prepare_client455_live_resources.py",
-    "sha256": "585e4a614dac8e3fedd2f4ea70e091c133c35f5d1d4a29509cbe782731ed36c4"
+    "sha256": "b9e3bb55188b7b65b2c9c1bb98e00f98e58685f99783f152ec16e93a8302eb17"
   },
   "observation": {
-    "file": "work/m9/c8151a03/world-walk-live-taiwan001/debug-events.jsonl",
-    "sha256": "dddfb1ea7cf9e790fd60f9fc2989b39f4ae16d2c0857665e3456250caa1e3cfb"
+    "file": "work/m9/083a7892/world-combat-live-taiwan001/debug-events.jsonl",
+    "sha256": "bbd9bb7bbd41fe7fe08741c87d829414ed149b8d2bf840314dc8e989c42b71cc"
   },
   "observations": [
     {
@@ -24,6 +24,10 @@
     {
       "file": "work/m9/c8151a03/world-walk-live-taiwan001/debug-events.jsonl",
       "sha256": "dddfb1ea7cf9e790fd60f9fc2989b39f4ae16d2c0857665e3456250caa1e3cfb"
+    },
+    {
+      "file": "work/m9/083a7892/world-combat-live-taiwan001/debug-events.jsonl",
+      "sha256": "bbd9bb7bbd41fe7fe08741c87d829414ed149b8d2bf840314dc8e989c42b71cc"
     }
   ],
   "requested": [
@@ -538,7 +542,8 @@
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_003.BN",
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_004.BN",
     "CHARACTER/UNIT/BONE/BALLISTA.BN",
-    "CHARACTER/UNIT/BONE/TITAN.BN"
+    "CHARACTER/UNIT/BONE/TITAN.BN",
+    "character/player/ani/belfemale_combat_attack_tbow_middle_02_00.ani"
   ],
   "inputs": [
     {
@@ -594,6 +599,12 @@
       "relative": "Character/Monster/Tex/WXMONT.RFS",
       "sha256": "aa2ca9044f1bafafc9fb06f2412171280b08a7cada58eae12f4dece3fd382eb1",
       "bytes": 524700
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\BFATA.RFS",
+      "relative": "Character/Player/Ani/BFATA.RFS",
+      "sha256": "cadc718cdf7771a02728518c6c58fd1f5a9eaaf430a97691aec67f80ee5e34ab",
+      "bytes": 2828912
     },
     {
       "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\BFETA.RFS",
@@ -1160,6 +1171,12 @@
       "archive": "Character/Monster/Ani/YZMONA.RFS",
       "offset": 374804,
       "bytes": 13550
+    },
+    {
+      "relative": "character/player/ani/belfemale_combat_attack_tbow_middle_02_00.ani",
+      "archive": "Character/Player/Ani/BFATA.RFS",
+      "offset": 1586946,
+      "bytes": 31342
     }
   ],
   "missing": [

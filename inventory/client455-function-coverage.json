@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T10:31:38.229821+00:00",
+  "measured_at_utc": "2026-11-11T10:54:39.351455+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2872,
-    "unique_functions_with_complete_assembly_cfg": 1089,
-    "unique_pinned_code_bytes": 810801,
-    "reports": 201,
-    "code_range_occurrences": 4537,
+    "unique_functions_with_pinned_code": 2880,
+    "unique_functions_with_complete_assembly_cfg": 1099,
+    "unique_pinned_code_bytes": 811859,
+    "reports": 202,
+    "code_range_occurrences": 4551,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -61,6 +61,10 @@
     {
       "file": "inventory/client455-actor-lighting-reference.json",
       "sha256": "5d29bd09216fbf152b23acc117aa30dce680f5cbdb4e5e5325c16aaf7705588f"
+    },
+    {
+      "file": "inventory/client455-ammunition-impact-reference.json",
+      "sha256": "9ba0639f686a7a56b4c5afde2c2e3b39b1d11a0de14c76a6b913c847dc69a5be"
     },
     {
       "file": "inventory/client455-animation-manager-reference.json",
@@ -853,6 +857,10 @@
       "sha256": "3011a440541bf5b5ee0dca8230ec59e9450f70ea29e31ecaf64571ccbb1c6d13"
     },
     {
+      "file": "artifacts/client455-progress/ammo204/reference.json",
+      "sha256": "27689b973cf8b6acc509f862fa8fbc5e050a5462285df69ec1542a720a9d8ec4"
+    },
+    {
       "file": "artifacts/client455-progress/armed201/reference.json",
       "sha256": "15b3635929710e9ed276c7367da4aa12568efc139bed31621bed3117e20df216"
     },
@@ -1200,7 +1208,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "90c8e398f560d749faf0d8572d0158cdfd885a6d2fbce7ba69c1e0ca20e5d8d2"
+      "sha256": "3f1b3c349e1873a8df474116c34a8f9764f487daec450a9cc3244202c15576a4"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2477,6 +2485,7 @@
       "rva": "0x12000",
       "ida_name": "sub_412000",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-hotbar-checkpoint.json",
         "inventory/client455-item-ownership-reference.json",
         "inventory/client455-nuclear-receiver-reference.json",
@@ -2490,6 +2499,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 15
+        },
         {
           "file": "artifacts/client455-progress/player-owner154-reference/session.json",
           "instructions": 15
@@ -3940,6 +3953,7 @@
       "rva": "0x20ec0",
       "ida_name": "sub_420EC0",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-character-flags-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
@@ -3949,7 +3963,12 @@
           "bytes": 36
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 19
+        }
+      ]
     },
     {
       "rva": "0x20ef0",
@@ -3964,6 +3983,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x22610",
+      "ida_name": "sub_422610",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x22610",
+          "bytes": 25
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x22630",
+      "ida_name": "sub_422630",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x22630",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x22650",
@@ -10338,6 +10395,7 @@
       "rva": "0x6b280",
       "ida_name": "sub_46B280",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-tutorial-actions-reference.json"
       ],
       "ranges": [
@@ -10346,7 +10404,12 @@
           "bytes": 35
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 18
+        }
+      ]
     },
     {
       "rva": "0x6b2f0",
@@ -11705,6 +11768,7 @@
       "rva": "0x711f0",
       "ida_name": "sub_4711F0",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-mob-control-reference.json"
       ],
       "ranges": [
@@ -11715,8 +11779,31 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 71
+        },
+        {
           "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
           "instructions": 71
+        }
+      ]
+    },
+    {
+      "rva": "0x71850",
+      "ida_name": "sub_471850",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x71850",
+          "bytes": 81
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 33
         }
       ]
     },
@@ -11883,6 +11970,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x7bfe0",
+      "ida_name": "sub_47BFE0",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x7bfe0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 17
+        }
+      ]
     },
     {
       "rva": "0x7d890",
@@ -19511,6 +19617,25 @@
         {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x1a5910",
+      "ida_name": "sub_5A5910",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a5910",
+          "bytes": 106
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 39
         }
       ]
     },
@@ -29732,6 +29857,7 @@
       "rva": "0x2ae080",
       "ida_name": "sub_6AE080",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-mob-control-reference.json"
       ],
       "ranges": [
@@ -29741,6 +29867,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 195
+        },
         {
           "file": "artifacts/client455-progress/mob-control163-reference/mob-control.json",
           "instructions": 195
@@ -37200,6 +37330,7 @@
       "rva": "0x3dd140",
       "ida_name": "sub_7DD140",
       "reports": [
+        "inventory/client455-ammunition-impact-reference.json",
         "inventory/client455-equipment-attachment-reference.json"
       ],
       "ranges": [
@@ -37210,8 +37341,50 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 146
+        },
+        {
           "file": "artifacts/client455-progress/equipment-attachment146-reference/session.json",
           "instructions": 146
+        }
+      ]
+    },
+    {
+      "rva": "0x3e0500",
+      "ida_name": "sub_7E0500",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e0500",
+          "bytes": 206
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 70
+        }
+      ]
+    },
+    {
+      "rva": "0x3e0610",
+      "ida_name": "sub_7E0610",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e0610",
+          "bytes": 195
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 68
         }
       ]
     },
@@ -37824,6 +37997,25 @@
         {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 50
+        }
+      ]
+    },
+    {
+      "rva": "0x3ee370",
+      "ida_name": "sub_7EE370",
+      "reports": [
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ee370",
+          "bytes": 384
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ammo204/reference.json",
+          "instructions": 129
         }
       ]
     },
@@ -48761,7 +48953,7 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 9,
+    "unique_functions_with_pinned_code": 8,
     "unique_functions_with_complete_assembly_cfg": 10
   },
   "M6": "OPEN",

@@ -1,0 +1,166 @@
+{
+  "status": "PARTIAL_LIVE_AMMUNITION_UPDATE",
+  "scope": "Ordinary attacks apply server-authoritative equipped arrow counts on NeutralB.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "d8ad009f35d00a10f9e7a80ab1f69295e9524526170857a33cd0bd5235e62e7c",
+    "bytes": 2401280,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18a720",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "c0f86d5c2c7adeb4e72463bc81c02036524413eab58418cbcafad2f7d45d7a83",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/ammo204/live.json",
+    "sha256": "bdc393391a9f61452670e7520853562a3ffffc1216184ca26b0f87b858d7107b"
+  },
+  "observations": {
+    "shots_sent": 1,
+    "ammunition": [
+      {
+        "serial": 7,
+        "before": 313,
+        "after": 312
+      }
+    ],
+    "results": [
+      {
+        "targets": 1,
+        "resolved": 1,
+        "first_damage": 22
+      }
+    ],
+    "impacts": [
+      {
+        "target": 1032088,
+        "damage": 22,
+        "health_basis_points": 10000
+      }
+    ],
+    "frames": [
+      {
+        "file": "work/m9/d8ad009f/world-combat-live-taiwan001/world-impact-0.png",
+        "sha256": "261fdacf38c27b74e43be3a9b195a69a602e4ea765223b60934413a29c51a6c5"
+      }
+    ],
+    "later_attack_keys": 3,
+    "monster_health_messages": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_ammunition_impact.py",
+    "sha256": "4471051ba7f58af08286b0e6527b483b5aa4106baa982726d6977ca8db7610bc"
+  },
+  "first_attempt": {
+    "file": "artifacts/client455-progress/ammo204/first-live.json",
+    "sha256": "601e0c84e0c2ac79e7863576afd620aff45a046a17a30d4989ff9af5f479786c"
+  },
+  "first_impact": {
+    "file": "artifacts/client455-progress/ammo204/first-impact-live.json",
+    "sha256": "16c4425deceeea03e03e716b5e9dd9fd55ab5b6dc4ca88a3ce3ff492ab49a424"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_armed_attack_port.py",
+      "sha256": "3557d55ab44aa768024f9af09d685f7a79657cd9bd30ce9b2692a972442b6b6f"
+    },
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "3c046b1bfa2eb93f826017f8cc72652d23fcc053b4b69368bf8afc82d7caaddf"
+    },
+    {
+      "file": "scripts/prepare_client455_live_resources.py",
+      "sha256": "b9e3bb55188b7b65b2c9c1bb98e00f98e58685f99783f152ec16e93a8302eb17"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "88312b5b05f4304d9e18a0c84591fab0b3d2e061dd4445c064fa9ee8343cdeba"
+    },
+    {
+      "file": "scripts/native/client455_initial_download.inc",
+      "sha256": "d60b303ad2d0bd4a9faafc503361060c159d657a95ab7371dfa303f9873ae88f"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.h",
+      "sha256": "8eacd0a0ac3545389137b5d0156410700079f0c8a2fd454c8d34c5d412b5e7fc"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "11d8565b38436d7f6c7df7eeea84413a8663ee85cdbaf43234198cf56f547346"
+    },
+    {
+      "file": "scripts/native/client455_normal_attack_dispatch.inc",
+      "sha256": "be3b993694d216a2da4b03207fa19109b1958d8be0d71f1575a9eb3366d24304"
+    },
+    {
+      "file": "scripts/native/client455_weapon_effect_owner.inc",
+      "sha256": "d238c5a8e24489ba05f2bc71a5cb25b3120575bbb42388fb139b836b35ea0771"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "b5deda02de814f7cf29492011ebcb71b3eac8158e2e27c1d0c300467df0b9fd3"
+    },
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "08082585027c517b9fc77c06c71d3ad6df24d08513914e112a4a81a51d35528d"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "75e8264f1e46f25123713bc863ac143b8b66a4f1beafc84beb89d514746c7d7b"
+    },
+    {
+      "file": "scripts/native/own_client_startup_debugger.cpp",
+      "sha256": "82e9878ab62c031df797ee15b965afdc4e60b0676588025c1982b6907984b9d1"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "c0f86d5c2c7adeb4e72463bc81c02036524413eab58418cbcafad2f7d45d7a83"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "c29265645636ba14b0e5d5d5cb371c2c0f81de41d52e1b127176525671a931a0"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "36c72389e5f259c0d19f4a2b88242e8e3808cbe49dcfa758e12a7e1b478a152d"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "cb14a13124ebeb6c0c5feec53428c8341671f6f207a1b7c890a9873bc3eb1ccf"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "3da822d9f9a61e7ba87514cca997a652550ee9398979b46d0b9f750084b2cb9a"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "dbec606cabb4b700ebdc6a3c70fb5d40be5f6832d1659987a03716922575ee64"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "3042657578dc54a3eacb881e1e69db0ffbcc90737a4ddbcba23662b8b9a9eb08"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "2ac102bc3b9fd6a94059d890592cc38ae0a3b8e9e879946f432f192bdde7acf8"
+    },
+    "ammunition-impact-reference": {
+      "file": "inventory/client455-ammunition-impact-reference.json",
+      "sha256": "9ba0639f686a7a56b4c5afde2c2e3b39b1d11a0de14c76a6b913c847dc69a5be"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "2c5a5307ea649f394524986b55b3b43a2b1c29355cd4c6efefe88106864b8a52"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

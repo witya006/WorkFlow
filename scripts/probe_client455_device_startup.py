@@ -142,6 +142,13 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
                 copy=run/original.relative_to(client)
                 if any(row['file']==copy.relative_to(WS).as_posix() for row in inputs):continue
                 stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+    if observe_combat:
+        # Stock arrows for the NeutralB bow scenario and the damage atlas.
+        for name in ('Effect/EffectEntity6.rpk', 'Effect/effectfont.dds'):
+            original = client / name
+            copy = run / name
+            stage_asset(original, copy)
+            inputs.append({'file': copy.relative_to(WS).as_posix(), 'sha256': sha(copy), 'original': str(original)})
     if world_map_index is not None:
         inputs += stage_world_map(client, run, world_map_index)
     if args.with_lobby:
@@ -264,6 +271,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         if observe_monster or observe_combat:
             report['monster_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
                                       for frame in sorted(run.glob('world-monster-*.png'))]
+        if observe_combat:
+            report['combat_impact_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
+                                            for frame in sorted(run.glob('world-impact-*.png'))]
     if live_port is not None:name=name.replace('-native','-live-native')
     if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
     report_dir='artifacts/client455-progress' if observe_world else 'inventory'

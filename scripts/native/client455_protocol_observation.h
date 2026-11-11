@@ -38,8 +38,14 @@ struct RF455WorldObservation {
     bool combat = false;
     RF455MonsterDraw combatDraw;
     unsigned combatTarget = 0;
+    unsigned combatPreviousTarget = 0;
     unsigned combatClicks = 0;
     unsigned combatAttackKeys = 0;
+    unsigned combatAmmunitionUpdates = 0;
+    unsigned combatImpactFrames = 0;
+    unsigned combatImpactDamage = 0;
+    bool combatImpactPending = false;
+    float combatScanBaseYaw = 0;
     ULONGLONG nextCombatClickAt = 1280;
     bool combatButtonDown = false;
 };
@@ -47,6 +53,17 @@ struct RF455WorldObservation {
 inline RF455WorldObservation& RF455_WorldObservation() {
     static RF455WorldObservation state;
     return state;
+}
+
+inline void RF455_RecordCombatImpact(unsigned serial, unsigned damage, float health) {
+    auto& state = RF455_WorldObservation();
+    if (!state.combat || serial != state.combatTarget) return;
+    const unsigned basis = health >= 1.0f ? 10000 : health > 0.0f ? unsigned(health * 10000.0f + 0.5f) : 0;
+    RF455_ObserveProtocol("combat-impact", serial, damage, basis);
+    if (state.combatImpactFrames < 2) {
+        state.combatImpactDamage = damage;
+        state.combatImpactPending = true;
+    }
 }
 
 inline void RF455_RecordMonsterDraw(unsigned serial, unsigned mesh, unsigned animation, unsigned boneFrame,
@@ -59,6 +76,7 @@ inline void RF455_RecordMonsterDraw(unsigned serial, unsigned mesh, unsigned ani
     const bool clearOfMinimap = screenX < 0.5f || screenY < 0.35f;
     const bool clearOfStatus = screenX > -0.35f || screenY < 0.65f;
     if (state.combat && clearOfMinimap && clearOfStatus && !state.combatTarget &&
+        serial != state.combatPreviousTarget &&
         (!state.combatDraw.present || depth < state.combatDraw.depth)) state.combatDraw = draw;
 }
 

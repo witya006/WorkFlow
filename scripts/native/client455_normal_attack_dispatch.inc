@@ -64,3 +64,22 @@ bool CNetMsgProcessor_Combat::NormalAttackResult455(const char* bytes, std::size
                          packet.targetCount ? static_cast<unsigned>(packet.targets[0].damage) : 0);
     return true;
 }
+
+bool CNetMsgProcessor_Combat::AmmunitionRemaining455(const char* bytes, std::size_t size)
+{
+    if (!bytes || size != 2 * sizeof(WORD)) return false;
+    WORD serial, remaining;
+    std::memcpy(&serial, bytes, sizeof serial);
+    std::memcpy(&remaining, bytes + sizeof serial, sizeof remaining);
+
+    auto* board = _GetEquipBoard();
+    auto* object = board ? board->GetObjectByIndex(serial) : nullptr;
+    auto* item = object ? dynamic_cast<RF455BasicItem*>(object->GetItem455()) : nullptr;
+    if (!item || RF455ConditionItem(item).kind() != IEPT_BULLET) return true;
+    const DWORD previous = item->durability455();
+    item->SetDurability455(remaining);
+    RF455_ObserveProtocol("combat-ammunition-left", serial, previous, item->durability455());
+    auto& observation = RF455_WorldObservation();
+    if (observation.combat && remaining < previous) ++observation.combatAmmunitionUpdates;
+    return true;
+}

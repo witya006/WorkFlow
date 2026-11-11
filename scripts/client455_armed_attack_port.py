@@ -152,9 +152,17 @@ def port_armed_attack(raw, relative, section, native):
     if relative == 'network/netmsgprocessor/combat/cnetmsgprocessor_combat.h':
         anchor = b'\tbool MonsterForceResult455(const char* bytes, std::size_t size);'
         return replace(raw, anchor, anchor +
-                       b'\n\tbool NormalAttackResult455(const char* bytes, std::size_t size);'), True
+                       b'\n\tbool NormalAttackResult455(const char* bytes, std::size_t size);'
+                       b'\n\tbool AmmunitionRemaining455(const char* bytes, std::size_t size);'), True
 
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
+        edit(b'CCombatState', b'ProcessDamage', lambda body: replace(
+            body, b'ProcessDamage_SetDamageEffect( l_pAttackerInfo );',
+            b'''ProcessDamage_SetDamageEffect( l_pAttackerInfo );
+                if (l_pAttackerInfo->GetDamageType_AT() == CAT_NORMAL &&
+                    l_pAttackerInfo->GetEnemyCharTypeID() == CTI_AVATAR)
+                    RF455_RecordCombatImpact(m_pOwner->GetIndex(), l_pAttackerInfo->GetCurDamagePoint(),
+                                             m_pOwner->GetHPRate());'''))
         edit(b'CCombatState', b'ProcessDamage', lambda body: replace(
             body, b'm_pOwner->SetEffectInfo( CAI_DAMAGED_MISS );',
             b'''if (l_pAttackerInfo->GetDamageType_AT() == CAT_NORMAL)
@@ -162,7 +170,7 @@ def port_armed_attack(raw, relative, section, native):
                         ? CAI_DAMAGED_SPECIAL_HIT455 : CAI_DAMAGED_MISS455);
                 else
                     m_pOwner->SetEffectInfo(CAI_DAMAGED_MISS);'''))
-        return raw, True
+        return b'#include "client455_protocol_observation.h"\n' + raw, True
 
     if relative == 'network/netmsgprocessor/combat/cnetmsgprocessor_combat.cpp':
         def request(body):
@@ -199,12 +207,76 @@ def port_armed_attack(raw, relative, section, native):
         case 7:
             return pMsgHeader->m_wSize >= 4 &&
                    NormalAttackResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+        case 21:
+            return pMsgHeader->m_wSize >= 4 &&
+                   AmmunitionRemaining455(pi_pMsg, pMsgHeader->m_wSize - 4);
 
 ''' + anchor)
         anchor = b'#include "client455_monster_force_result.h"'
-        raw = replace(raw, anchor, anchor + b'\n#include "client455_normal_attack_result.h"')
+        raw = replace(raw, anchor, anchor + b'\n#include "client455_normal_attack_result.h"'
+                      b'\n#include "client455_equipment_conditions.h"')
         anchor = b'#include "client455_protocol_observation.h"'
         raw = replace(raw, anchor, anchor + b'\n\n' + (native / 'client455_normal_attack_dispatch.inc').read_bytes())
+        return raw, True
+
+    if relative == 'addcodebyjang/effectutil.h':
+        anchor = b'BOOL EFUtil_GetCharTransformFromIndex(Vector3f *get_pos,CCharacter *c_char,CEquipItem *item,DWORD id);'
+        return replace(raw, anchor, b'''class RF455PlayerEquipmentObject;
+struct RF455EffectEquipment {
+    RF455PlayerEquipmentObject* typed;
+    CEquipItem* legacy;
+    explicit operator bool() const { return typed || legacy; }
+    DWORD meshID() const;
+    DWORD material() const;
+    BYTE dummy(DWORD index) const;
+};
+RF455EffectEquipment EFUtil_Equipment455(CCharacter* actor, BYTE part);
+BOOL EFUtil_GetCharTransformFromIndex(Vector3f* position, CCharacter* actor,
+                                    const RF455EffectEquipment& item, DWORD id);
+''' + anchor), True
+
+    if relative == 'addcodebyjang/effectutil.cpp':
+        signature = b'BOOL EFUtil_GetCharTransformFromIndex(Vector3f *get_pos,CCharacter *c_char,CEquipItem *item,DWORD id)'
+        start = raw.index(signature)
+        end = raw.index(b'\nBOOL EFUtil_IsCollisionFarAttack', start)
+        body = raw[start:end]
+        body = replace(body, signature, b'static BOOL RF455_WeaponTransform(Vector3f *get_pos, CCharacter *c_char, int m)')
+        body = replace(body, b'\n\tint m;\n', b'')
+        at = body.index(b'\tif( !item )')
+        stop = body.index(b'\n\tppp3.x=0;', at)
+        body = body[:at] + b'''    if (m == 255 || m == 0)
+        goto EFUtil_GetCharTransformFromIndexError;
+''' + body[stop:]
+        body = replace(body, b'\tBBOX bbox;', b'\tBBOX bbox{};')
+        raw = raw[:start] + body + (native / 'client455_weapon_effect_owner.inc').read_bytes() + raw[end:]
+
+        for part in (b'CEPT_WEAPON', b'CEPT_UPPER_PART'):
+            marker = b'CEquipItem *pio_pItem = pl->GetEquipItem( ' + part + b' );'
+            start = raw.index(marker)
+            end = raw.index(b'\n\t}', start)
+            raw = raw[:start] + b'return EFUtil_Equipment455(pl, ' + part + b').material();' + raw[end:]
+
+        start = raw.index(b'static CEquipItem *GetEquipItem(CCharacter *ch)')
+        end = raw.index(b'BOOL EFUTIL_GetPosType(', start)
+        raw = raw[:start] + raw[end:]
+        end = raw.index(b'\n}', start)
+        body = raw[start:end]
+        body = replace(body, b'\tCEquipItem *item;', b'\tRF455EffectEquipment item{};')
+        body = body.replace(b'item = GetEquipItem(ch);', b'item = EFUtil_Equipment455(ch, CEPT_WEAPON);')
+        body = re.sub(rb'(_DUMMY_(?:TRACE|FIRE)[12]\);)\n\t\tVector3fCopy\(temp,pos\);',
+                      rb'\1\n\t\tif (item) Vector3fCopy(temp,pos);', body)
+        raw = raw[:start] + body + raw[end:]
+        return b'#include "client455_equipment_conditions.h"\n' + raw, True
+
+    if relative == 'addcodebyjang/foreffect.cpp':
+        for owner in (b'mSrc', b'mTar'):
+            raw = replace(raw, b'CEquipItem *' + owner + b'Item;', b'RF455EffectEquipment ' + owner + b'Item;')
+            raw = replace(raw, owner + b'Item = ((CPlayer*)' + owner + b')->GetEquipItem( CEPT_WEAPON );',
+                          owner + b'Item = EFUtil_Equipment455(' + owner + b', CEPT_WEAPON);')
+            raw = raw.replace(owner + b'Item->GetMeshID()', owner + b'Item.meshID()')
+        raw = replace(raw, b'CEquipItem *item = mSrcItem;', b'const auto& item = mSrcItem;')
+        raw = raw.replace(b'mSrcItem == NULL', b'!mSrcItem')
+        raw = replace(raw, b'((CPlayer *)mSrc)->GetEquipItem( CEPT_WEAPON )->GetMeshID()', b'mSrcItem.meshID()')
         return raw, True
 
     if relative == 'addcodebyjang/playerspecialeffect.cpp':

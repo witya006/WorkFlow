@@ -12,6 +12,8 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--events',required=True)
     parser.add_argument('--monster-animation-mesh',action='append',type=int,default=[])
+    parser.add_argument('--resource', action='append', default=[],
+                        help='Resolve only the selected paths observed in this run')
     args=parser.parse_args()
     events=(WS/args.events).resolve()
     if not events.is_relative_to((WS/'work/m9').resolve()) or events.name!='debug-events.jsonl':raise ValueError('Expected owned live-run events')
@@ -23,7 +25,12 @@ def main():
         text=event.get('value','')
         match=re.search(r'(?:FileName = |ImportMeshData\( )([^\r\n]*?\.(?:bn|ani|msh))(?= \[| \))',text,re.IGNORECASE)
         if match:requested.add(match[1].replace('\\','/').removeprefix('./'))
-    inputs={};directories={};members=[];missing=[];observations=[]
+    if args.resource:
+        selected = {name.casefold() for name in args.resource}
+        requested = {name for name in requested if name.casefold() in selected}
+        if {name.casefold() for name in requested} != selected:
+            raise ValueError('Selected resource must be present in owned diagnostics')
+    inputs={};directories={};members=[];missing=[];observations=[];previous={}
     def add(path):
         path=path.resolve()
         if not path.is_relative_to(client) or not path.is_file():raise ValueError('Invalid original resource dependency')
@@ -76,7 +83,7 @@ def main():
         members.append(dict(relative=relative,archive=archive.relative_to(client).as_posix(),offset=offset,bytes=size));return data
     resource=client/'DataTable/Resource.edf';add(resource);mesh_rows={}
     groups=catalog(decode(resource.read_bytes()))
-    animation_rows=[]
+    animation_rows=previous.get('selected_monster_animations', []) if manifest.exists() else []
     table=groups[1][2]
     for i in range(table['count']):
         start=i*table['stride']
@@ -85,7 +92,8 @@ def main():
         if key>>12 not in args.monster_animation_mesh:
             continue
         name=(cstring(row,8,128)+cstring(row,136,64)).replace('\\','/').removeprefix('./')
-        animation_rows.append(dict(mesh=key>>12,key=key,relative=name))
+        selection = dict(mesh=key>>12,key=key,relative=name)
+        if selection not in animation_rows:animation_rows.append(selection)
         requested.add(name)
     for tables in groups:
         table=tables[1]
@@ -110,6 +118,10 @@ def main():
                         if resolve(fallback) is not None:missing.remove(relative)
     observation=dict(file=events.relative_to(WS).as_posix(),sha256=sha(events))
     if observation not in observations:observations.append(observation)
+    if args.resource:
+        resolved = {name.casefold() for name in requested} - {name.casefold() for name in missing}
+        missing += [name for name in previous.get('missing', []) if name.casefold() not in resolved]
+        requested.update(previous.get('requested', []))
     report=dict(scope='Resource dependencies requested by owned live runs;not complete client assets or455equivalence',
         script=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=sha(Path(__file__))),
         observation=observation,observations=observations,requested=sorted(requested),

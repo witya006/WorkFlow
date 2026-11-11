@@ -9278,7 +9278,7 @@
       "id": "CLIENT455-LIVE-ORDINARY-ATTACK-203",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-primary-ammunition-checkpoint.json",
         "inventory/client455-primary-ammunition-reference.json"
@@ -9287,6 +9287,21 @@
       "gaps": [
         "Visible projectile and hit, health bar and repeated attacks",
         "5/21 remaining ammunition, auxiliary activation and supporting impact"
+      ]
+    },
+    {
+      "id": "CLIENT455-AMMUNITION-IMPACT-204",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-ammunition-impact-checkpoint.json",
+        "inventory/client455-ammunition-impact-reference.json"
+      ],
+      "description": "One ordinary NeutralB bow attack shows 22 damage in a rendered frame and applies the 5/21 ammunition update from 313 to 312.",
+      "gaps": [
+        "A second attack in the same session and target health synchronization",
+        "Ammunition type-16 gauge, auxiliary activation and supporting impact"
       ]
     }
   ],

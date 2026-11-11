@@ -206,11 +206,16 @@ void RF455BasicItem::SetDownloadValue455(std::uint32_t value, std::uint32_t anim
     } else if (split(metadata)) {
         state[92] = static_cast<std::uint8_t>(value);
     } else {
-        SetDownloadDurability455(value);
+        SetDurability455(value);
     }
 }
 
-void RF455BasicItem::SetDownloadDurability455(std::uint32_t value)
+std::uint32_t RF455BasicItem::durability455() const
+{
+    return u32(state.get() + 96);
+}
+
+void RF455BasicItem::SetDurability455(std::uint32_t value)
 {
     put(state.get(), 96, value);
 }

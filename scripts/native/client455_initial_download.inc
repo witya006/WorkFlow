@@ -99,7 +99,7 @@ bool CNetworkMgr::InitMsg_BaseDownloadResult_zocl(const char* bytes, std::size_t
         auto* payload = CreateDownloadedItem(item, entry.table, entry.index, m_dwItemIndexForFirstItemSetting);
         if (!payload) continue;
         const BYTE kind = DownloadItemKinds[entry.table];
-        payload->SetDownloadDurability455(entry.durability);
+        payload->SetDurability455(entry.durability);
         SetDownloadedModifiers(*payload, 0xffffffff, entry.modifiers);
         if (PutDownloadedAccessory(*equipment, item, kind, entry.slot)) {
             ++placedCount;
@@ -164,7 +164,7 @@ bool CNetworkMgr::InitMsg_InvenDownloadResult_zocl(const char* bytes, std::size_
             if (!payload) continue;
             const BYTE kind = DownloadItemKinds[entry.table];
             payload->SetDownloadValue455(entry.countOrDurability, entry.animusProgressHigh);
-            if (kind == IEPT_ANIMUS) payload->SetDownloadDurability455(entry.upgrade);
+            if (kind == IEPT_ANIMUS) payload->SetDurability455(entry.upgrade);
             SetDownloadedModifiers(*payload, entry.upgrade, entry.modifiers);
             if (inventory->Add(bag, slot, &item)) {
                 placed[i] = true;

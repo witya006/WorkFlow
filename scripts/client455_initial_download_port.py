@@ -179,18 +179,28 @@ def port_initial_download(raw, relative, section, native):
             body, b'\tif( IsPressedMoveKey() )', b'''    const RF455WalkKeyObservation walkKey(m_listKey[KM_MOVE_UP][1]);
     RF455CombatModifierObservation combatModifier;
     auto& observation = RF455_WorldObservation();
-    if (observation.combat && observation.combatTarget && observation.combatAttackKeys < 3) {
+    if (observation.combat && observation.combatTarget && observation.combatAttackKeys < 9 &&
+        observation.combatAmmunitionUpdates < 3) {
         const auto elapsed = GetTickCount64() - observation.acceptedAt;
         const DWORD key = m_listKey[KM_COMBAT_ATTACK][1];
         auto* target = _GetTargetMgr()->GetTarget();
-        if (elapsed >= observation.nextCombatClickAt && elapsed < 12000 &&
+        if (observation.combatImpactFrames && (!target || target->IsDeath())) {
+            observation.combatPreviousTarget = observation.combatTarget;
+            observation.combatTarget = 0;
+            observation.nextCombatClickAt = elapsed + 250;
+            RF455_ObserveProtocol("combat-target-ended", observation.combatPreviousTarget,
+                                 target != nullptr, observation.combatAmmunitionUpdates);
+        }
+        if (elapsed >= observation.nextCombatClickAt && elapsed < 20000 &&
             key < 256 && target && target->IsEqualCharType(CTI_MONSTER) &&
             target->GetIndex() == observation.combatTarget && combatModifier.apply(m_listKey[KM_COMBAT_ATTACK][0])) {
             gScan[key] = TRUE;
             m_bIsPressedKey = TRUE;
             ++observation.combatAttackKeys;
-            observation.nextCombatClickAt = elapsed + (observation.combatAttackKeys == 1 ? 2600 : 900);
+            observation.nextCombatClickAt = elapsed + (observation.combatAttackKeys == 1 ? 2600 : 1700);
             RF455_ObserveProtocol("combat-key", observation.combatAttackKeys, key, static_cast<unsigned>(elapsed));
+            RF455_ObserveProtocol("combat-key-state", _GetAvatar()->IsEnableMove(), target->IsDeath(),
+                                 _GetAvatar()->GetAction());
         }
     }
 \tif( IsPressedMoveKey() )'''))

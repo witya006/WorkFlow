@@ -56,7 +56,16 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
     constexpr ULONGLONG cameraDelays[] = {0, 1800, 3400};
     const auto elapsed = GetTickCount64() - state.acceptedAt;
     if (state.captureMonsters) RF455_SampleMonsterFrame(state, elapsed);
-    const auto delay = state.combat && sample == 5 ? 12000 : state.camera ? cameraDelays[sample] : delays[sample];
+    if (state.combatImpactPending) {
+        state.combatImpactPending = false;
+        const unsigned index = state.combatImpactFrames++;
+        char filename[40];
+        std::snprintf(filename, sizeof(filename), "world-impact-%u.png", index);
+        const auto capture = RF455_SaveWorldFrame(filename);
+        RF455_ObserveProtocol("combat-impact-frame", index, state.combatImpactDamage,
+                             static_cast<unsigned>(capture.result));
+    }
+    const auto delay = state.combat && sample == 5 ? 21000 : state.camera ? cameraDelays[sample] : delays[sample];
     if (elapsed < delay) return;
     --state.remaining;
 
