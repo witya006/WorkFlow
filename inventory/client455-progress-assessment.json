@@ -239,10 +239,12 @@
         "Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах",
         "Штатный рендер вывел BLOCK и MISS из атласа 455, компонентно проверены отсечение и звук блока",
         "Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно",
-        "Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно"
+        "Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно",
+        "На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы"
       ],
       "remaining": [
-        "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455"
+        "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455",
+        "Обычная атака останавливается при чтении экипировки до отправки запроса"
       ],
       "evidence": [
         "client455-character-flags-checkpoint",
@@ -255,7 +257,8 @@
         "client455-monster-force-impact-checkpoint",
         "client455-combat-result-effect-checkpoint",
         "client455-force-damage-render-checkpoint",
-        "client455-monster-critical-checkpoint"
+        "client455-monster-critical-checkpoint",
+        "client455-live-combat-checkpoint"
       ]
     },
     {
@@ -320,7 +323,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "ea2c2fb88619a4c6e73cc70a9230da4592770fccf1e74c3f006f1f8869255d52",
+      "sha256": "68f7cc89801348b81f81e24ce920a95dbeef69da9eba577e437743e3cde42168",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -939,6 +942,14 @@
       "sha256": "52c9c436d9a9914acbd57c95f51cd33cf9da2f3bebb324a52195359ff5015b5b",
       "status": "PARTIAL_COMPONENT_MONSTER_CRITICAL",
       "scope": "Force critical reaction on the monster target with actual 455 Wing clips and shock.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-live-combat-checkpoint": {
+      "file": "inventory/client455-live-combat-checkpoint.json",
+      "sha256": "0d4e30100f3216328a236fc17b91839f2096770a4f5583ed4ee63326640a4346",
+      "status": "PARTIAL_LIVE_ATTACK_BLOCKED",
+      "scope": "Live mouse target selection and first ordinary attack failure.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -989,7 +1000,7 @@
     "canonical_kernel_objects": 20,
     "unresolved_symbols": 0,
     "own_executable": {
-      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "file": "artifacts/client455-progress/before200/work/client455-port/normal/build/RF_Online.bin",
       "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
       "bytes": 2390528,
       "architecture": "x86",
@@ -1018,18 +1029,18 @@
     ],
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
-      "file": "inventory/client455-normal-build.json",
+      "file": "artifacts/client455-progress/before200/inventory/client455-normal-build.json",
       "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": false,
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-monster-critical-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": false,
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
     "runtime_baseline": {
-      "link_file": "inventory/client455-normal-link.json",
+      "link_file": "artifacts/client455-progress/before200/inventory/client455-normal-link.json",
       "link_sha256": "ea2c2fb88619a4c6e73cc70a9230da4592770fccf1e74c3f006f1f8869255d52",
       "executable": {
-        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "file": "artifacts/client455-progress/before200/work/client455-port/normal/build/RF_Online.bin",
         "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
         "bytes": 2390528,
         "architecture": "x86",
@@ -1043,30 +1054,30 @@
           ".reloc"
         ]
       },
-      "build_file": "inventory/client455-normal-build.json",
+      "build_file": "artifacts/client455-progress/before200/inventory/client455-normal-build.json",
       "build_sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
     },
-    "candidate_runtime_status": "CHECKED_PARTIAL",
+    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
     "post_selection_failure": null,
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
+        "sha256": "f21ad70c0a348b6b08934b4e21f0bd02d322c5b833f6abeaaaa6037e03d14358"
       },
       "build_exit": 0,
       "errors": [],
-      "included_in_readiness_estimate": true,
+      "included_in_readiness_estimate": false,
       "issue": null
     },
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
-        "bytes": 2390528,
+        "sha256": "c3c6df6b5fdaec0894ddb2c682f8a6b49b0b3744b16d95f812d8d32d0df38cad",
+        "bytes": 2391552,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x188650",
+        "entry_rva": "0x188ad0",
         "sections": [
           ".text",
           ".rdata",
@@ -1079,16 +1090,16 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
+        "sha256": "f21ad70c0a348b6b08934b4e21f0bd02d322c5b833f6abeaaaa6037e03d14358"
       },
-      "runtime_verified": true,
+      "runtime_verified": false,
       "superseded_by_later_source_build": false
     },
     "current_work": "Force critical reaction on the monster target with actual 455 Wing clips and shock.",
     "ordinary_login_observation": {
       "file": "artifacts/client455-progress/critical199/live.json",
       "sha256": "40082c70c6f3c8fa911cc79de7557df9a43ded65a75061e53ea6dc3f3e9509af",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "fresh_for_runtime_baseline": true,
       "frame": {
         "file": "work/m9/765fafe1/world-walk-live-taiwan001/login-frame.png",
@@ -1109,18 +1120,18 @@
       "known_next_failure": null,
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
-    "existing_Create_proved_on_current_PE": true,
+    "existing_Create_proved_on_current_PE": false,
     "existing_Create_proof_scope": "Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance",
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "cb8156650c34e7ad9acf52bb2f58d08fd133e868f6c5557ee54bd27850dedfae",
-    "entries": 203,
+    "sha256": "580baedd5817b2375796a6327fc9ed642b55c1010b68bba0bb46cfdb9fc9d53b",
+    "entries": 204,
     "statuses": {
       "partial_component": 22,
-      "partial": 151,
+      "partial": 152,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1200,7 +1211,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;203 overlapping historical records",
+        "measured": "12 domain planning map;204 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1362,7 +1373,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "16dc36eeff8ce7e04c3cd95a6ec1a2041861fde0c2259170873ab296a47f8995"
+    "sha256": "c7b731adbad45cd515c866cfe6e606d330ed58defe34bc935bc0eb101041cecf"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

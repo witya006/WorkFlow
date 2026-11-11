@@ -1,3 +1,9 @@
+2026-11-11 — Live combat observation 200, PARTIAL_LIVE_ATTACK_BLOCKED.
+
+Normal mouse picking selects Youngflem on NeutralB and shows its target
+window. The first attack hits the unmigrated equipment accessor.
+[Evidence](research/client455-live-combat.md)
+
 2026-11-11 — Monster critical hit 199, PARTIAL_COMPONENT_MONSTER_CRITICAL.
 
 The ordinary client objects select both Wing critical clips, queue the

@@ -19,6 +19,7 @@ struct RF455MonsterDraw {
     unsigned boneFrame = 0;
     float screenX = 0;
     float screenY = 0;
+    float depth = 0;
 };
 
 struct RF455WorldObservation {
@@ -34,6 +35,12 @@ struct RF455WorldObservation {
     unsigned monsterCaptures = 0;
     unsigned sampledMonster = 0;
     ULONGLONG nextMonsterCaptureAt = 0;
+    bool combat = false;
+    RF455MonsterDraw combatDraw;
+    unsigned combatTarget = 0;
+    unsigned combatClicks = 0;
+    ULONGLONG nextCombatClickAt = 1280;
+    bool combatButtonDown = false;
 };
 
 inline RF455WorldObservation& RF455_WorldObservation() {
@@ -42,11 +49,16 @@ inline RF455WorldObservation& RF455_WorldObservation() {
 }
 
 inline void RF455_RecordMonsterDraw(unsigned serial, unsigned mesh, unsigned animation, unsigned boneFrame,
-                                    float screenX, float screenY) {
+                                    float screenX, float screenY, float depth) {
     auto& state = RF455_WorldObservation();
-    if (!state.captureMonsters || !state.remaining || state.monsterDraw.present || state.monsterCaptures >= 3 ||
-        (state.monsterCaptures && serial != state.sampledMonster)) return;
-    state.monsterDraw = {true, serial, mesh, animation, boneFrame, screenX, screenY};
+    if (!state.captureMonsters || !state.remaining) return;
+    const RF455MonsterDraw draw{true, serial, mesh, animation, boneFrame, screenX, screenY, depth};
+    if (!state.monsterDraw.present && state.monsterCaptures < 3 &&
+        (!state.monsterCaptures || serial == state.sampledMonster)) state.monsterDraw = draw;
+    const bool clearOfMinimap = screenX < 0.49f || screenY < 0.35f;
+    if (state.combat && clearOfMinimap && state.combatClicks < 4 &&
+        (!state.combatTarget || serial == state.combatTarget) &&
+        (!state.combatDraw.present || depth < state.combatDraw.depth)) state.combatDraw = draw;
 }
 
 inline void RF455_ArmWorldObservation(BYTE mode) {
@@ -63,5 +75,8 @@ inline void RF455_ArmWorldObservation(BYTE mode) {
                        enabled[0] == '1';
         state.captureMonsters = walk && GetEnvironmentVariableA("RF455_CAPTURE_MONSTERS", enabled, sizeof(enabled)) == 1 &&
                                 enabled[0] == '1';
+        state.combat = state.captureMonsters &&
+                       GetEnvironmentVariableA("RF455_OBSERVE_COMBAT", enabled, sizeof(enabled)) == 1 &&
+                       enabled[0] == '1';
     }
 }

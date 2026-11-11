@@ -1,10 +1,14 @@
-// Supplies right drags to the owned run's normal UI and world mouse handlers.
+// Supplies bounded camera and combat gestures to the owned run's mouse handlers.
 class RF455CameraMouseObservation {
 public:
     RF455CameraMouseObservation() {
         auto& state = RF455_WorldObservation();
         if (!state.camera && !state.captureMonsters) return;
         const auto elapsed = GetTickCount64() - state.acceptedAt;
+        if (state.combat && elapsed >= 1200) {
+            sampleCombatClick(state, elapsed);
+            return;
+        }
         const auto end = state.captureMonsters ? 1200 : 3000;
         if (elapsed < 300 || elapsed >= end) return;
 
@@ -38,6 +42,61 @@ public:
     RF455CameraMouseObservation& operator=(const RF455CameraMouseObservation&) = delete;
 
 private:
+    void sampleCombatClick(RF455WorldObservation& state, ULONGLONG elapsed) {
+        const auto draw = state.combatDraw;
+        state.combatDraw = {};
+        if (state.combatButtonDown) {
+            previous = gMouse;
+            active = true;
+            gMouse.button = _LEFT_BUTTON_UP;
+            gMouse.LDBClick = FALSE;
+            gMouse.RDBClick = FALSE;
+            state.combatButtonDown = false;
+            return;
+        }
+        if (elapsed < state.nextCombatClickAt || elapsed >= 7800 || state.combatClicks >= 4)
+            return;
+        if (!draw.present) {
+            if (!state.combatTarget) scanCombatView(state, elapsed);
+            return;
+        }
+
+        const auto* viewport = GetR3State();
+        previous = gMouse;
+        active = true;
+        gMouse.x = static_cast<int>((1.0f + draw.screenX) * viewport->mScreenXsize * 0.5f);
+        gMouse.y = static_cast<int>((1.0f - draw.screenY) * viewport->mScreenYsize * 0.5f);
+        gMouse.z = 0;
+        gMouse.button = _LEFT_BUTTON_DOWN;
+        gMouse.LDBClick = FALSE;
+        gMouse.RDBClick = FALSE;
+        state.combatTarget = draw.serial;
+        state.nextCombatClickAt = elapsed + 900;
+        state.combatButtonDown = true;
+        RF455_ObserveProtocol("combat-click", ++state.combatClicks, draw.serial,
+                              static_cast<unsigned>(elapsed));
+    }
+
+    void scanCombatView(RF455WorldObservation& state, ULONGLONG elapsed) {
+        const auto offset = (elapsed - 1280) % 800;
+        if (offset >= 420) return;
+        const unsigned step = offset < 120 ? 0 : offset < 300 ? 1 : 2;
+        const auto phase = static_cast<unsigned>(100 + ((elapsed - 1280) / 800) * 3 + step);
+        const bool changed = phase != state.cameraPhase;
+        previous = gMouse;
+        active = true;
+        gMouse.x = step ? 60 : 320;
+        gMouse.y = 260;
+        gMouse.z = 0;
+        gMouse.button = step == 1 ? _RIGHT_BUTTON_DOWN : step == 2 && changed ? _RIGHT_BUTTON_UP : 0;
+        gMouse.LDBClick = FALSE;
+        gMouse.RDBClick = FALSE;
+        if (changed) {
+            state.cameraPhase = phase;
+            RF455_ObserveProtocol("combat-camera", phase, gMouse.x, gMouse.button);
+        }
+    }
+
     _MOUSE previous;
     bool active = false;
 };

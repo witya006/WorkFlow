@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T09:04:50.039705+00:00",
+  "measured_at_utc": "2026-11-11T09:22:22.318966+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2829,
-    "unique_functions_with_complete_assembly_cfg": 1043,
-    "unique_pinned_code_bytes": 806216,
-    "reports": 197,
-    "code_range_occurrences": 4482,
+    "unique_functions_with_pinned_code": 2845,
+    "unique_functions_with_complete_assembly_cfg": 1059,
+    "unique_pinned_code_bytes": 807908,
+    "reports": 198,
+    "code_range_occurrences": 4502,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -357,6 +357,10 @@
     {
       "file": "inventory/client455-linker-window-reference.json",
       "sha256": "a38add8f533c404fc52708ee4cdd085bbfbe3317218383c1ca0e3e8cad211a1e"
+    },
+    {
+      "file": "inventory/client455-live-combat-reference.json",
+      "sha256": "dc623a1486c478f439a079f5dea618764e86a5d727f248b9cc3296439a811d30"
     },
     {
       "file": "inventory/client455-live-login-checkpoint.json",
@@ -969,6 +973,10 @@
       "sha256": "53923e9ee78736e27d7761b08711ec75040ed2f5655d355033c7c7a9a55bf351"
     },
     {
+      "file": "artifacts/client455-progress/combat200/reference.json",
+      "sha256": "83e446d59e59e9958328cebc228d8eb9b51ab092ca85a1e0e67418abda02de29"
+    },
+    {
       "file": "artifacts/client455-progress/live155-upgrade-reference/session.json",
       "sha256": "3ee43f41eb99fd959749323c276d8d71d7f70c8d2266a95cda118df28cf51662"
     },
@@ -1168,7 +1176,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "cb311e0e38dde7e125e4951f28ae6c3e1ca569dc6dae8a1ebf927ed96d700522"
+      "sha256": "e2659f88edd182bd910c0e5745971b9d2fd5b55a7a390839cb5a3517a3618287"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2383,6 +2391,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0xf9a0",
+      "ida_name": "sub_40F9A0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xf9a0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
       "rva": "0x10fa0",
       "ida_name": "sub_410FA0",
       "reports": [
@@ -2955,6 +2982,25 @@
       ]
     },
     {
+      "rva": "0x16ae0",
+      "ida_name": "sub_416AE0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16ae0",
+          "bytes": 179
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 58
+        }
+      ]
+    },
+    {
       "rva": "0x17140",
       "ida_name": "sub_417140",
       "reports": [
@@ -3126,7 +3172,8 @@
       "rva": "0x19f30",
       "ida_name": "sub_419F30",
       "reports": [
-        "inventory/client455-equipment-reference.json"
+        "inventory/client455-equipment-reference.json",
+        "inventory/client455-live-combat-reference.json"
       ],
       "ranges": [
         {
@@ -3137,6 +3184,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/equipment145-reference/session.json",
+          "instructions": 15
+        },
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 15
         }
       ]
@@ -11114,6 +11165,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x70d80",
+      "ida_name": "sub_470D80",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x70d80",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 23
+        }
+      ]
+    },
+    {
       "rva": "0x71190",
       "ida_name": "sub_471190",
       "reports": [
@@ -13450,6 +13520,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0xff1c0",
+      "ida_name": "sub_4FF1C0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xff1c0",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 25
+        }
+      ]
     },
     {
       "rva": "0x1000d0",
@@ -16495,6 +16584,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x15bf50",
+      "ida_name": "sub_55BF50",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x15bf50",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
       "rva": "0x15c220",
       "ida_name": "sub_55C220",
       "reports": [
@@ -18541,9 +18649,29 @@
       ]
     },
     {
+      "rva": "0x1a4190",
+      "ida_name": "sub_5A4190",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a4190",
+          "bytes": 87
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 34
+        }
+      ]
+    },
+    {
       "rva": "0x1a41f0",
       "ida_name": "sub_5A41F0",
       "reports": [
+        "inventory/client455-live-combat-reference.json",
         "inventory/client455-monster-force-damage-reference.json"
       ],
       "ranges": [
@@ -18554,6 +18682,10 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 48
+        },
+        {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 48
         }
@@ -18563,6 +18695,7 @@
       "rva": "0x1a42d0",
       "ida_name": "sub_5A42D0",
       "reports": [
+        "inventory/client455-live-combat-reference.json",
         "inventory/client455-monster-force-result-reference.json"
       ],
       "ranges": [
@@ -18572,6 +18705,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 108
+        },
         {
           "file": "artifacts/client455-progress/combat192/reference.json",
           "instructions": 108
@@ -18598,9 +18735,29 @@
       ]
     },
     {
+      "rva": "0x1a44d0",
+      "ida_name": "sub_5A44D0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a44d0",
+          "bytes": 43
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 22
+        }
+      ]
+    },
+    {
       "rva": "0x1a4500",
       "ida_name": "sub_5A4500",
       "reports": [
+        "inventory/client455-live-combat-reference.json",
         "inventory/client455-monster-force-result-reference.json"
       ],
       "ranges": [
@@ -18611,8 +18768,88 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 144
+        },
+        {
           "file": "artifacts/client455-progress/combat192/reference.json",
           "instructions": 144
+        }
+      ]
+    },
+    {
+      "rva": "0x1a47b0",
+      "ida_name": "sub_5A47B0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a47b0",
+          "bytes": 339
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 104
+        }
+      ]
+    },
+    {
+      "rva": "0x1a4910",
+      "ida_name": "sub_5A4910",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a4910",
+          "bytes": 213
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 66
+        }
+      ]
+    },
+    {
+      "rva": "0x1a49f0",
+      "ida_name": "sub_5A49F0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a49f0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x1a4a10",
+      "ida_name": "sub_5A4A10",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a4a10",
+          "bytes": 171
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 52
         }
       ]
     },
@@ -18637,6 +18874,101 @@
         {
           "file": "artifacts/client455-progress/combat192/reference.json",
           "instructions": 62
+        }
+      ]
+    },
+    {
+      "rva": "0x1a54e0",
+      "ida_name": "sub_5A54E0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a54e0",
+          "bytes": 39
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x1a5510",
+      "ida_name": "sub_5A5510",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a5510",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x1a55a0",
+      "ida_name": "sub_5A55A0",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a55a0",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x1a5630",
+      "ida_name": "sub_5A5630",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a5630",
+          "bytes": 132
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 43
+        }
+      ]
+    },
+    {
+      "rva": "0x1a5a00",
+      "ida_name": "sub_5A5A00",
+      "reports": [
+        "inventory/client455-live-combat-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a5a00",
+          "bytes": 27
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/combat200/reference.json",
+          "instructions": 15
         }
       ]
     },
@@ -47849,8 +48181,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 10,
-    "unique_functions_with_complete_assembly_cfg": 13
+    "unique_functions_with_pinned_code": 16,
+    "unique_functions_with_complete_assembly_cfg": 16
   },
   "M6": "OPEN",
   "M9": "OPEN",

@@ -21,7 +21,7 @@ def port_world_updates(raw, relative, native, section):
             clip.x > -0.8f * clip.w && clip.x < 0.8f * clip.w &&
             clip.y > -0.38f * clip.w && clip.y < 0.55f * clip.w) {
             RF455_RecordMonsterDraw(GetIndex(), GetMeshID(), m_Animation.GetAniData()->m_Ident,
-                                    GetBoneFrame(), clip.x / clip.w, clip.y / clip.w);
+                                    GetBoneFrame(), clip.x / clip.w, clip.y / clip.w, clip.w);
         }
     }''')
         return b'#include "client455_protocol_observation.h"\n' + raw, True

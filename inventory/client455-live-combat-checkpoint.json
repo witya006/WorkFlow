@@ -1,0 +1,129 @@
+{
+  "status": "PARTIAL_LIVE_ATTACK_BLOCKED",
+  "scope": "Live mouse target selection and first ordinary attack failure.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c3c6df6b5fdaec0894ddb2c682f8a6b49b0b3744b16d95f812d8d32d0df38cad",
+    "bytes": 2391552,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x188ad0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "68f7cc89801348b81f81e24ce920a95dbeef69da9eba577e437743e3cde42168",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/combat200/live.json",
+    "sha256": "186aef0b960cc5d8f78dd084b0276209353ab5fd9fdc61fcc07c37c53d71862d"
+  },
+  "first_attempt": {
+    "file": "artifacts/client455-progress/combat200/first-live.json",
+    "sha256": "d83d4001a656a607f160c86d98baa5c2cb1d33e4ff6a352669ffcffec410fb35"
+  },
+  "saved_link_map": {
+    "file": "artifacts/client455-progress/combat200/normal.map",
+    "sha256": "d17b8686e1c894d90e556bab37041ab06e0a1ab7bdc6fd19045f8896b9cfb0ba"
+  },
+  "observations": {
+    "monster": 1032066,
+    "spawns": 16,
+    "click_ms": [
+      3344,
+      4266,
+      7188
+    ],
+    "monster_frames": [
+      {
+        "file": "work/m9/c3c6df6b/world-combat-live-taiwan001/world-monster-0.png",
+        "sha256": "ce2737d6df31b6718990660736c9eecb90168d46221cce21d92c505afdefa63c"
+      },
+      {
+        "file": "work/m9/c3c6df6b/world-combat-live-taiwan001/world-monster-1.png",
+        "sha256": "882ac1f0368701f24fa521dc23cf335001fe893dd1b641549ec9a75db2dc2c4f"
+      },
+      {
+        "file": "work/m9/c3c6df6b/world-combat-live-taiwan001/world-monster-2.png",
+        "sha256": "fc610ff4b1868aecf4b9f4543810d3784ea4919dc6b59f038ceadab1ca1638a6"
+      }
+    ],
+    "monster_animation_ids": [
+      0,
+      0,
+      16
+    ],
+    "mode_request_sent": true,
+    "ordinary_attack_sent": false,
+    "fatal_code": "0xe06d7363",
+    "stack_owners": [
+      {
+        "symbol": "?GetNormalItem@CPlayerProc@@UAEPAVCNormalItem@@E@Z",
+        "rva": "0x11c63",
+        "offset": "0x33"
+      },
+      {
+        "symbol": "?NormalAttack@CAvatar@@QAEHPAVCCharacter@@@Z",
+        "rva": "0x9314",
+        "offset": "0xc4"
+      },
+      {
+        "symbol": "?Attack@CAvatar@@QAEHEPAVCCharacter@@@Z",
+        "rva": "0x82b3",
+        "offset": "0x43"
+      },
+      {
+        "symbol": "?ProcessMousePicking_Character_Attack@CGP_MainGame@@QAEHPAVCCharacter@@H@Z",
+        "rva": "0x2da25",
+        "offset": "0xd5"
+      }
+    ]
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_live_combat.py",
+    "sha256": "df1aa12bd25c2a2b6bb50a04fc43faf51d9868355705e152774aa792c544afa2"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "68f7cc89801348b81f81e24ce920a95dbeef69da9eba577e437743e3cde42168"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "f2db25ee9b89c0a44dfef1993209a8a3e24ed026ac82a4dc3629117959d5aa9e"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "f21ad70c0a348b6b08934b4e21f0bd02d322c5b833f6abeaaaa6037e03d14358"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "def35aef74668a660aa9c304103c9638b699a3d6e09a28c56255de45bb4ea66b"
+    },
+    "live-combat-reference": {
+      "file": "inventory/client455-live-combat-reference.json",
+      "sha256": "dc623a1486c478f439a079f5dea618764e86a5d727f248b9cc3296439a811d30"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "69de1309a4d1d5ed2aa9e5c744cb2e6f0ffafb81e70c8086ccdfb9402cc47a30"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "08a965fb82a5623f3571cdcaaa116e3675af1c358e003faa4c2a7a1830df4c02"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "1c8ece6b9b8ac95329a71dab1017ca2d41c41a0ecf595d22277385fd64b43bcc"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "421c974ec59825e5f2e8bee746b781d1cf2d8cfbba6fa8c3c3dd23f915f1825a"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

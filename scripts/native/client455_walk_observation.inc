@@ -4,7 +4,7 @@ class RF455WalkKeyObservation {
 public:
     explicit RF455WalkKeyObservation(DWORD forwardKey) {
         auto& state = RF455_WorldObservation();
-        if (!state.walk || forwardKey != VK_UP || state.walkKeyReleased) return;
+        if (!state.walk || state.combat || forwardKey != VK_UP || state.walkKeyReleased) return;
         const auto elapsed = GetTickCount64() - state.acceptedAt;
         if (elapsed < 450) return;
         if (elapsed >= 1450) {

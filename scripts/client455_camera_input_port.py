@@ -22,6 +22,11 @@ def port_camera_input(raw, relative, section, native):
     raw = patch_method(raw, section, owner, b'InputProcess', lambda body: replace(
         body, b'\t_GetUIMouseDev()->Update();',
         b'\tconst RF455CameraMouseObservation cameraInput;\n\t_GetUIMouseDev()->Update();'))
+    raw = patch_method(raw, section, owner, b'ProcessMousePicking_Character', lambda body: replace(
+        body, b'\tg_pPickedObjectID[0] = pi_pChar->GetCharTypeID();',
+        b'''    if (RF455_WorldObservation().combat)
+        RF455_ObserveProtocol("combat-pick", pi_pChar->GetCharTypeID(), pi_pChar->GetIndex(), pi_bIsByKeyboard);
+\tg_pPickedObjectID[0] = pi_pChar->GetCharTypeID();'''))
     anchor = b'#include "CInputProcessMgr.h"'
     helper = (native / 'client455_camera_mouse_observation.inc').read_bytes()
     return replace(raw, anchor, anchor + b'\n#include "client455_protocol_observation.h"\n' + helper), True
