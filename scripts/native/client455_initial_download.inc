@@ -344,3 +344,81 @@ bool CNetworkMgr::InitMsg_MinerDownloadResult455(const char* bytes, std::size_t 
     BYTE type[] = {init_msg, 46};
     return SendNetMessage(NST_GAME_SERVER, type, nullptr, 0) != FALSE;
 }
+
+namespace {
+CBoardObject* FindLinkerItem(CObjectBoard& board, WORD serial)
+{
+    for (BYTE bank = 0; bank < board.GetMaxPackNum(); ++bank) {
+        for (BYTE slot = 0; slot < board.GetMaxSocketNum455(bank); ++slot) {
+            auto* item = board.GetObject(bank, slot);
+            if (item && item->GetServerIndex() == serial) return item;
+        }
+    }
+    return nullptr;
+}
+
+CBoardObject* FindLinkerOwner(BYTE kind, WORD index)
+{
+    switch (kind) {
+    case 0:
+    case 2: {
+        auto* skills = _GetSkillBoard();
+        for (BYTE bank = 0; bank < skills->GetMaxPackNum(); ++bank) {
+            for (BYTE slot = 0; slot < skills->GetMaxSocketNum455(bank); ++slot) {
+                auto* skill = dynamic_cast<CSFItem*>(skills->GetObject(bank, slot));
+                if (skill && skill->GetSFType() == kind && skill->GetDTIndex() == index &&
+                    !skill->IsEqualState(CSFItem::SFS_DEACTIVE)) return skill;
+            }
+        }
+        return nullptr;
+    }
+    case 1: {
+        auto* force = _GetForceBoard()->GetSFByDTIndex(index);
+        return force && !force->IsEqualState(CSFItem::SFS_DEACTIVE) ? force : nullptr;
+    }
+    case 3: {
+        auto* animus = _GetAnimusBoard()->GetAnimusByDTIndex(index);
+        return animus && !animus->IsEqualState(CAnimusItem::AIS_DEACTIVE) ? animus : nullptr;
+    }
+    case 4:
+        if (auto* item = FindLinkerItem(*_GetInventoryBoard(), index)) return item;
+        return FindLinkerItem(*_GetEquipBoard(), index);
+    default:
+        return nullptr;
+    }
+}
+}
+
+bool CNetworkMgr::InitMsg_LinkerDownloadResult455(const char* bytes, std::size_t size)
+{
+    RF455LinkerDownload packet{};
+    if (m_initialDownload455 != RF455DownloadStep::Linker || !RF455_ReadLinkerDownload(bytes, size, packet)) return false;
+    auto* board = _GetLinkBoard();
+    if (!board || !_GetSkillBoard() || !_GetForceBoard() || !_GetAnimusBoard() || !_GetInventoryBoard() || !_GetEquipBoard()) return false;
+    unsigned occupied = 0, applied = 0;
+    for (BYTE slot = 0; slot < 50; ++slot) {
+        const WORD value = packet.slots[slot];
+        if (value == 0xffff) continue;
+        ++occupied;
+        auto* owner = FindLinkerOwner(static_cast<BYTE>(value >> 12), value & 0xfff);
+        if (owner && board->Add(slot / 10, slot % 10, owner)) ++applied;
+    }
+    board->ResetHotbarUpload455();
+    const bool hasSavedWindows = packet.windows[1] != 0;
+    if (hasSavedWindows) {
+        auto& window = board->LinkerWindow455();
+        for (BYTE bank = 0; bank < 5; ++bank)
+            window.SetBankFlag455(bank, (packet.bankFlags >> (7 - bank)) & 1);
+        window.SelectBank455(packet.bankFlags & 7);
+        window.SetExpanded455(TRUE);
+    }
+    RF455_ObserveProtocol("linker-applied", occupied, applied, hasSavedWindows);
+    m_initialDownload455 = RF455DownloadStep::Macro;
+    // Both target requests carry one byte with no initialized value in the caller.
+    char reserved = 0;
+    BYTE macro[] = {init_msg, 49};
+    BYTE patriarchShout[] = {13, 104};
+    const BOOL macroSent = SendNetMessage(NST_GAME_SERVER, macro, &reserved, sizeof reserved);
+    const BOOL shoutSent = SendNetMessage(NST_GAME_SERVER, patriarchShout, &reserved, sizeof reserved);
+    return macroSent != FALSE && shoutSent != FALSE;
+}

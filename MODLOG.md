@@ -1,3 +1,8 @@
+2026-11-11 — Initial download 177, PARTIAL_WAITING_FOR_MACRO_AND_LINKER_OWNERS.
+Applied Linker bank settings. Two saved references remain unresolved.
+Received macro `3/50` and patriarch shout `13/105` in the ordinary client.
+[Evidence and remaining work](research/client455-linker-download.md)
+
 2026-11-11 — Initial download 176, PARTIAL_WAITING_FOR_LINKER_AND_ITEM_OWNERS.
 Applied supported mastery fields and resolved seven quest catalog records.
 The live client handled empty unit and miner lists and received `3/45`.

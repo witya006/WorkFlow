@@ -164,6 +164,24 @@ void specialAndMiner()
           !RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes.data(), 1, 2) &&
           !RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes.data(), 7, 0), "miner prefix and stride");
 }
+
+void linker()
+{
+    std::array<std::uint8_t, 157> bytes{};
+    write(bytes, 0, std::uint16_t{0xffff});
+    write(bytes, 98, std::uint16_t{0x4abc});
+    bytes[100] = 0xa4;
+    write(bytes, 105, std::uint32_t{0x87654321});
+    write(bytes, 133, std::uint32_t{0x12345678});
+    write(bytes, 153, std::uint32_t{0xffffffff});
+    RF455LinkerDownload decoded{};
+    check(RF455_ReadLinkerDownload(bytes.data(), bytes.size(), decoded) && decoded.slots[0] == 0xffff &&
+          decoded.slots[49] == 0x4abc && decoded.bankFlags == 0xa4 && decoded.windows[1] == 0x87654321 &&
+          decoded.menu == 0x12345678 && decoded.menuEntries[4] == 0xffffffff, "Linker slots and saved window fields");
+    check(!RF455_ReadLinkerDownload(bytes.data(), bytes.size() - 1, decoded) &&
+          !RF455_ReadLinkerDownload(bytes.data(), bytes.size() + 1, decoded) && decoded.slots[49] == 0x4abc,
+          "invalid Linker lengths preserve output");
+}
 }
 
 int main()
@@ -174,7 +192,8 @@ int main()
     mastery();
     quests();
     specialAndMiner();
+    linker();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
-              "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
+              "\"linker_bytes\":157,\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }

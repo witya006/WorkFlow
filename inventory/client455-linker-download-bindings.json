@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "168d141424b8e024395019976d17dace3bbb03b51b3d564ff1d8a47e059f144a",
+    "bytes": 2376192,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1855a0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x16ead0",
+      "symbol": "CNetworkMgr::InitMsg_LinkerDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "fe40c4e18081caf8a1f045cc44f31c0fa70a7ab1272f9157b46a5f00e8106ec9"
+      },
+      "ordinary_symbol_rvas": [
+        "0x53310"
+      ],
+      "complete_equivalence": false
+    }
+  ]
+}

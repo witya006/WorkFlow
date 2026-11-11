@@ -13,6 +13,10 @@ def port_linker_window(raw,relative,section):
         return raw,True
     if relative=='gameobject/board/common/clinkboard.cpp':
         once(b'CLinkBoard::CLinkBoard(){ResetHotbarUpload455();}',b'CLinkBoard::CLinkBoard(){m_uiLinkWindow.BindBoard455(this);ResetHotbarUpload455();}')
+        once(b'm_uiLinkWindow.TakeInItem( pi_byTarSocketNo, pi_pOrgObject->GetIcon() );',
+             b'm_uiLinkWindow.TakeInItem( pi_byTarPackNo, pi_byTarSocketNo, pi_pOrgObject->GetIcon() );')
+        once(b'm_uiLinkWindow.TakeOutItem( pi_bySocketNo );\n\tm_listItemPack[pi_byPackNo].Empty',
+             b'm_uiLinkWindow.TakeOutItem( pi_byPackNo, pi_bySocketNo );\n\tm_listItemPack[pi_byPackNo].Empty')
         raw,count=re.subn(rb'CGUISFItem(\s*\*\s*pIcon\s*=\s*m_uiLinkWindow.GetItem)',rb'CGUIItem\1',raw)
         if count!=3:raise ValueError('Legacy Linker icon caller types changed')
         if raw.count(b'pIcon->IsDelayAnimation()')!=2:raise ValueError('Legacy Linker timer callers changed')

@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <cstring>
 
-enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery, Quest, Special, Miner, Linker };
+enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery, Quest, Special, Miner, Linker, Macro };
 
 // Fixed-width x86 wire records from the 455 initial-download handlers.
 #pragma pack(push, 1)
@@ -126,6 +126,14 @@ struct RF455MinerDownloadEntry {
     std::uint16_t index;
     std::uint8_t quantity;
 };
+
+struct RF455LinkerDownload {
+    std::uint16_t slots[50];
+    std::uint8_t bankFlags;
+    std::uint32_t windows[8];
+    std::uint32_t menu;
+    std::uint32_t menuEntries[5];
+};
 #pragma pack(pop)
 
 static_assert(sizeof(RF455EquipmentEntry) == 21 && sizeof(RF455AccessoryEntry) == 20);
@@ -143,6 +151,15 @@ static_assert(sizeof(RF455UnitDownloadEntry) == 67 && offsetof(RF455UnitDownload
               offsetof(RF455UnitDownloadEntry, tractionDebt) == 53);
 static_assert(sizeof(RF455AnimusDownloadEntry) == 18 && offsetof(RF455AnimusDownloadEntry, hp) == 9);
 static_assert(sizeof(RF455MinerDownloadEntry) == 5);
+static_assert(sizeof(RF455LinkerDownload) == 157 && offsetof(RF455LinkerDownload, bankFlags) == 100 &&
+              offsetof(RF455LinkerDownload, windows) == 101 && offsetof(RF455LinkerDownload, menuEntries) == 137);
+
+inline bool RF455_ReadLinkerDownload(const void* data, std::size_t size, RF455LinkerDownload& out)
+{
+    if (!data || size != sizeof out) return false;
+    std::memcpy(&out, data, sizeof out);
+    return true;
+}
 
 template <class Entry>
 inline bool RF455_MatchDownloadList(const char* bytes, std::size_t size, std::size_t prefix)

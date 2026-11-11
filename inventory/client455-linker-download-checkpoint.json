@@ -1,0 +1,144 @@
+{
+  "status": "PARTIAL_WAITING_FOR_MACRO_AND_LINKER_OWNERS",
+  "scope": "The ordinary client applies Linker bank settings and receives the macro and patriarch shout replies. Two references were present and neither resolved to an available Linker owner.",
+  "script": {
+    "file": "scripts/checkpoint_client455_linker_download.py",
+    "sha256": "263566f25672119e087d44e8da73e70053f1d7337a642a3ad16d6f98b290bc1a"
+  },
+  "normal_link_sha256": "6ac79ceb02ce66d3d8945ad5e2d4d60d01a436fdc8ba294be47748a3ba284d7c",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "168d141424b8e024395019976d17dace3bbb03b51b3d564ff1d8a47e059f144a",
+    "bytes": 2376192,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1855a0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "66a8d57a425d39da41e3d7a551fdad53137ed1cdc5ccf7e98f90f7577c70d264"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "6ac79ceb02ce66d3d8945ad5e2d4d60d01a436fdc8ba294be47748a3ba284d7c"
+    },
+    "linker-download-reference": {
+      "file": "inventory/client455-linker-download-reference.json",
+      "sha256": "8e7f954b39a6a7fd0242e480714aad914195ae2f95f522026cfe4c1c2f3fea11"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "ee8dda0fd0dc5aa9610b4ad35120b077ea76c704b6598e6ce02e8982d513a67d"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "66a8d57a425d39da41e3d7a551fdad53137ed1cdc5ccf7e98f90f7577c70d264"
+    },
+    "linker-download-bindings": {
+      "file": "inventory/client455-linker-download-bindings.json",
+      "sha256": "e24b1de47ee48305b4ae77c578c69e56228cad9f80f57285b3a0ebbda0bc61a8"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "5019cdfd6a8988b3fb5b03f85ab38cadb3cf8ed4f4fae4f4c2576c20d22dad44"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "1208622fedbc49d5e8ada431d8c05a126d68ca2b66bed8d3d23b2a72c3d6392f"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "ecaf328974a0beb726ff28c6576dd5644c83ea573ab4ba8d6b370c6cad14e1af"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "59385348bc22e5d286f751c8627509580bacfa67c29993d866f960fb6ce37272"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "9622be16a112b168324eb012ce99ba7e5d2eafb4fae02593d95d0d4e08a3c49c"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "2ba3b4f5ad5c3a15713fbfec6040633c945b74d0f8f864c3f92d28dd14a06cb3"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "f0256fe94c3c647019cc6c9b3a0dcbaf3be3a5331f7eb49468a1e566d32ac444"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before177/manifest.json",
+    "sha256": "f3d62fe309cbef8f15314be069925518c526c7aa1032f727801ea42ed3cc8fb1"
+  },
+  "observed_sequence": [
+    "tx:1:14:1",
+    "rx:1:15:22",
+    "select-result:0:0:0",
+    "inventory-applied:3:21:0",
+    "force-applied:82:0:0",
+    "rx:3:8:322",
+    "mastery-applied:0:0:0",
+    "tx:3:11:0",
+    "rx:3:12:100",
+    "quest-decoded:0:7:7",
+    "tx:3:13:0",
+    "rx:3:14:1",
+    "special-decoded:14:0:0",
+    "tx:3:54:0",
+    "rx:3:55:2",
+    "miner-decoded:0:0:0",
+    "tx:3:46:0",
+    "rx:3:45:157",
+    "linker-applied:2:0:1",
+    "tx:3:49:1",
+    "tx:13:104:1",
+    "rx:3:50:954",
+    "rx:13:105:650"
+  ],
+  "explicit_function_bindings": 1,
+  "linker": {
+    "bytes": 157,
+    "decoded": true,
+    "present": 2,
+    "applied": 0,
+    "bank_settings_applied": true,
+    "additional_windows_restored": false
+  },
+  "macro": {
+    "bytes": 954,
+    "received": true,
+    "decoded": false
+  },
+  "patriarch_shout": {
+    "bytes": 650,
+    "received": true,
+    "decoded": false
+  },
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Live nonempty Linker slots and configured banks; gesture and macro owners; auxiliary window and menu settings",
+    "Macro and patriarch shout reply consumers and the subsequent initialization phases",
+    "Inventory, Force, quests, map creation and ordinary playable world"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

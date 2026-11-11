@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T03:08:10.523339+00:00",
+  "measured_at_utc": "2026-11-11T03:18:48.315372+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2667,
-    "unique_functions_with_complete_assembly_cfg": 865,
-    "unique_pinned_code_bytes": 766675,
-    "reports": 178,
-    "code_range_occurrences": 4264,
+    "unique_functions_with_pinned_code": 2675,
+    "unique_functions_with_complete_assembly_cfg": 874,
+    "unique_pinned_code_bytes": 768950,
+    "reports": 179,
+    "code_range_occurrences": 4274,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -333,6 +333,10 @@
     {
       "file": "inventory/client455-linker-cooldown-reference.json",
       "sha256": "a4a3ac6dca403463b45f525e9fc6348dc92d054ad8d932654047a4ac95c81aa1"
+    },
+    {
+      "file": "inventory/client455-linker-download-reference.json",
+      "sha256": "8e7f954b39a6a7fd0242e480714aad914195ae2f95f522026cfe4c1c2f3fea11"
     },
     {
       "file": "inventory/client455-linker-owners-reference.json",
@@ -877,6 +881,10 @@
       "sha256": "167487e88bd8c4b87afd67f544bbc083f84bc80eab5cf8cb877e69287db01697"
     },
     {
+      "file": "artifacts/client455-progress/linker177-reference.json",
+      "sha256": "53923e9ee78736e27d7761b08711ec75040ed2f5655d355033c7c7a9a55bf351"
+    },
+    {
       "file": "artifacts/client455-progress/live155-upgrade-reference/session.json",
       "sha256": "3ee43f41eb99fd959749323c276d8d71d7f70c8d2266a95cda118df28cf51662"
     },
@@ -1016,7 +1024,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "6d85f4660b99597cb26271ae6a23356e62693a2b77e920a83f67beb8fc088127"
+      "sha256": "004fe4f7b119897e1fa18424e7c125e677b4b122e1eca46ce234a0d38c9e108e"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -9839,6 +9847,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x8cc90",
+      "ida_name": "sub_48CC90",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8cc90",
+          "bytes": 217
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 73
+        }
+      ]
+    },
+    {
       "rva": "0x8d0e0",
       "ida_name": "sub_48D0E0",
       "reports": [
@@ -9906,6 +9933,44 @@
         {
           "file": "artifacts/client455-progress/skill-force168-reference.json",
           "instructions": 90
+        }
+      ]
+    },
+    {
+      "rva": "0x8f1a0",
+      "ida_name": "sub_48F1A0",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8f1a0",
+          "bytes": 194
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 68
+        }
+      ]
+    },
+    {
+      "rva": "0x8f340",
+      "ida_name": "sub_48F340",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x8f340",
+          "bytes": 241
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 81
         }
       ]
     },
@@ -11172,6 +11237,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0xfae40",
+      "ida_name": "sub_4FAE40",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xfae40",
+          "bytes": 90
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 36
+        }
+      ]
+    },
+    {
       "rva": "0xfb020",
       "ida_name": "sub_4FB020",
       "reports": [
@@ -11697,7 +11781,8 @@
       "ida_name": "sub_500330",
       "reports": [
         "inventory/client455-hotbar-checkpoint.json",
-        "inventory/client455-linker-cooldown-reference.json"
+        "inventory/client455-linker-cooldown-reference.json",
+        "inventory/client455-linker-download-reference.json"
       ],
       "ranges": [
         {
@@ -11705,7 +11790,12 @@
           "bytes": 131
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 46
+        }
+      ]
     },
     {
       "rva": "0x1003c0",
@@ -14800,6 +14890,48 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x166aa0",
+      "ida_name": "sub_566AA0",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x166aa0",
+          "bytes": 97
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 39
+        }
+      ]
+    },
+    {
+      "rva": "0x166b10",
+      "ida_name": "sub_566B10",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x166b10",
+          "bytes": 1234
+        },
+        {
+          "rva": "0x62cb50",
+          "bytes": 62
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 336
+        }
+      ]
+    },
+    {
       "rva": "0x168e30",
       "ida_name": "sub_568E30",
       "reports": [
@@ -15591,6 +15723,44 @@
         {
           "file": "artifacts/client455-progress/mastery-quests176-reference.json",
           "instructions": 288
+        }
+      ]
+    },
+    {
+      "rva": "0x16fb90",
+      "ida_name": "sub_56FB90",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16fb90",
+          "bytes": 83
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 36
+        }
+      ]
+    },
+    {
+      "rva": "0x16fed0",
+      "ida_name": "sub_56FED0",
+      "reports": [
+        "inventory/client455-linker-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16fed0",
+          "bytes": 57
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/linker177-reference.json",
+          "instructions": 26
         }
       ]
     },
@@ -44335,8 +44505,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 9,
-    "unique_functions_with_complete_assembly_cfg": 10
+    "unique_functions_with_pinned_code": 8,
+    "unique_functions_with_complete_assembly_cfg": 9
   },
   "M6": "OPEN",
   "M9": "OPEN",

@@ -36,7 +36,8 @@ def port_initial_download(raw, relative, section, native):
         anchor = b'bool\tInitMsg_CumDownloadResult_zocl(const char* packet, std::size_t bytes);'
         raw = replace(raw, anchor, anchor + b'\n\tbool InitMsg_QuestDownloadResult455(const char* packet, std::size_t bytes);'
                       b'\n\tbool InitMsg_SpecialDownloadResult455(BYTE subtype, const char* packet, std::size_t bytes);'
-                      b'\n\tbool InitMsg_MinerDownloadResult455(const char* packet, std::size_t bytes);')
+                      b'\n\tbool InitMsg_MinerDownloadResult455(const char* packet, std::size_t bytes);'
+                      b'\n\tbool InitMsg_LinkerDownloadResult455(const char* packet, std::size_t bytes);')
         return b'#include "client455_initial_download.h"\n' + raw, True
     if relative == 'network/cnetworkmgr.cpp':
         for name, key, _ in RESULTS:
@@ -48,6 +49,8 @@ def port_initial_download(raw, relative, section, native):
         raw = replace(raw, anchor, anchor + b'''\n
                 case 12:
                     return InitMsg_QuestDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+                case 45:
+                    return InitMsg_LinkerDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
                 case 55:
                     return InitMsg_MinerDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);''')
         anchor = b'case init_msg :\n\t\t\tswitch( pMsgHeader->m_byType[1] )'

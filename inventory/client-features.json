@@ -8882,7 +8882,7 @@
       "id": "CLIENT455-MASTERY-QUESTS-176",
       "area": "network",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-mastery-quests-checkpoint.json",
         "inventory/client455-mastery-quests-reference.json",
@@ -8894,6 +8894,23 @@
         "Quest catalog resolution does not restore the active journal, goals, progress, timers or text",
         "Populated unit, Animus and miner paths need data owners and live verification; miner items are not placed",
         "Linker slots and configuration, subsequent client startup, and entry into the playable world"
+      ]
+    },
+    {
+      "id": "CLIENT455-LINKER-DOWNLOAD-177",
+      "area": "network",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-linker-download-checkpoint.json",
+        "inventory/client455-linker-download-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "The ordinary client applies Linker bank settings and receives the macro and patriarch shout replies. Two references were present and neither resolved to an available Linker owner.",
+      "gaps": [
+        "Live nonempty Linker slots and configured banks; gesture and macro owners; auxiliary window and menu settings",
+        "Macro and patriarch shout reply consumers and the subsequent initialization phases",
+        "Inventory, Force, quests, map creation and ordinary playable world"
       ]
     }
   ],
