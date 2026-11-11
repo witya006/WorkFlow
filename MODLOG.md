@@ -1,3 +1,8 @@
+2026-11-11 — World startup 180, PARTIAL_LIVE_WORLD_STARTED_MOVEMENT_OPEN.
+Created the avatar, completed the first NeutralB scene, and processed `3/2`.
+The live session continued without a fatal exception. Movement remains open.
+[Evidence and remaining work](research/client455-avatar-world.md)
+
 2026-11-11 — Initial download 179, PARTIAL_MAP_LOADED_AVATAR_EQUIPMENT_FAILURE.
 Restored the store list map gate. Decoded 60 records and loaded the real
 NeutralB BSP. Avatar creation hit a legacy weapon consumer before `3/1`.

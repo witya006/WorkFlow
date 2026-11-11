@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T03:56:30.245638+00:00",
+  "measured_at_utc": "2026-11-11T04:11:14.687472+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2690,
-    "unique_functions_with_complete_assembly_cfg": 889,
-    "unique_pinned_code_bytes": 771524,
-    "reports": 181,
-    "code_range_occurrences": 4291,
+    "unique_functions_with_pinned_code": 2696,
+    "unique_functions_with_complete_assembly_cfg": 896,
+    "unique_pinned_code_bytes": 772678,
+    "reports": 182,
+    "code_range_occurrences": 4301,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -81,6 +81,10 @@
     {
       "file": "inventory/client455-avatar-stage-reference.json",
       "sha256": "fce5790978d0c436e89cf24c54330e38ceb3e4356a029bacbd3071d773763f38"
+    },
+    {
+      "file": "inventory/client455-avatar-world-reference.json",
+      "sha256": "72c88bb2ea102ae0941dc5157e06da0809d0845e6a19e18261b7f419e820ae76"
     },
     {
       "file": "inventory/client455-board-hover-reference.json",
@@ -777,6 +781,10 @@
       "sha256": "132fbf96f8865791cfca9b87701a7cc9a2a964dd4d5ee6b224a50ab13484be7f"
     },
     {
+      "file": "artifacts/client455-progress/avatar180-reference.json",
+      "sha256": "1a48dda9f4e4523952e2e8df8f3d2034e2d3e4bb8a0c282a2a6864e35cf30218"
+    },
+    {
       "file": "artifacts/client455-progress/board166-reference.json",
       "sha256": "4de988a8e015f1322eb2d45f7ce7cf1908e8fee39c938467f7b59b03a1ba7753"
     },
@@ -1040,7 +1048,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "d215603ec7257e358325a8707ed9206b7bb994ec7f93d136368dc504949a8ab4"
+      "sha256": "e152fe7b1b400affd2faf36ea9dcacb5f13deef77e00a153de08a5d551d0312e"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2843,6 +2851,25 @@
         {
           "file": "artifacts/client455-progress/player-owner154-reference/session.json",
           "instructions": 20
+        }
+      ]
+    },
+    {
+      "rva": "0x1b190",
+      "ida_name": "sub_41B190",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1b190",
+          "bytes": 70
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 26
         }
       ]
     },
@@ -5129,6 +5156,25 @@
       ]
     },
     {
+      "rva": "0x3d0d0",
+      "ida_name": "sub_43D0D0",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d0d0",
+          "bytes": 73
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 29
+        }
+      ]
+    },
+    {
       "rva": "0x3d530",
       "ida_name": "sub_43D530",
       "reports": [
@@ -6025,6 +6071,7 @@
       "rva": "0x4c5f0",
       "ida_name": "sub_44C5F0",
       "reports": [
+        "inventory/client455-avatar-world-reference.json",
         "inventory/client455-player-equipment-reference.json"
       ],
       "ranges": [
@@ -6034,6 +6081,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 22
+        },
         {
           "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
           "instructions": 22
@@ -9299,6 +9350,7 @@
       "rva": "0x6e220",
       "ida_name": "sub_46E220",
       "reports": [
+        "inventory/client455-avatar-world-reference.json",
         "inventory/client455-combat-transition-reference.json",
         "inventory/client455-equipment-providers-reference.json",
         "inventory/client455-player-equipment-reference.json",
@@ -9311,6 +9363,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 37
+        },
         {
           "file": "artifacts/client455-progress/combat-transition156-reference/session.json",
           "instructions": 37
@@ -13943,15 +13999,25 @@
       "rva": "0x1488f0",
       "ida_name": "sub_5488F0",
       "reports": [
+        "inventory/client455-avatar-world-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
         {
           "rva": "0x1488f0",
           "bytes": 1052
+        },
+        {
+          "rva": "0x62bcb0",
+          "bytes": 41
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 288
+        }
+      ]
     },
     {
       "rva": "0x1496d0",
@@ -24009,6 +24075,25 @@
       ]
     },
     {
+      "rva": "0x26ab70",
+      "ida_name": "sub_66AB70",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26ab70",
+          "bytes": 47
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 20
+        }
+      ]
+    },
+    {
       "rva": "0x26cb20",
       "ida_name": "sub_66CB20",
       "reports": [
@@ -30657,6 +30742,63 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x3478a0",
+      "ida_name": "sub_7478A0",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3478a0",
+          "bytes": 160
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 55
+        }
+      ]
+    },
+    {
+      "rva": "0x347940",
+      "ida_name": "sub_747940",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x347940",
+          "bytes": 19
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 13
+        }
+      ]
+    },
+    {
+      "rva": "0x347b20",
+      "ida_name": "sub_747B20",
+      "reports": [
+        "inventory/client455-avatar-world-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x347b20",
+          "bytes": 744
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/avatar180-reference.json",
+          "instructions": 224
+        }
+      ]
     },
     {
       "rva": "0x363090",
@@ -44816,7 +44958,7 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 7,
+    "unique_functions_with_pinned_code": 6,
     "unique_functions_with_complete_assembly_cfg": 7
   },
   "M6": "OPEN",

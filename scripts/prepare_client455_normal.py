@@ -787,7 +787,7 @@ def main():
             if nuclear_changed:changes.append('455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen')
             raw,center_changed=port_center_messages(raw,relative)
             if center_changed:changes.append('455center message stage owner/queue/update/draw andlate aiming frame;C1A/fullchat dispatch remainopen')
-            raw,chat_changed=port_chat(raw,relative)
+            raw,chat_changed=port_chat(raw,relative,section)
             if chat_changed:changes.append('455chat profile36/prefix18/font16 andselected real4pane insert/wrap;legacycallers/filterUI/fulldispatch remainopen')
             raw,message_changed=port_message_dispatch(raw,relative)
             if message_changed:changes.append('455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen')

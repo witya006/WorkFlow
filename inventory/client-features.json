@@ -8934,7 +8934,7 @@
       "id": "CLIENT455-STORE-DOWNLOAD-179",
       "area": "network",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-store-download-checkpoint.json",
         "inventory/client455-store-download-reference.json",
@@ -8946,6 +8946,23 @@
         "Avatar animation initialization still calls a legacy normal-item consumer for typed weapon equipment",
         "Start-position exchange, playable world, item owners, guild consumer and full acceptance",
         "The legacy repair request conflicted with the 455 store request and is disabled pending migration"
+      ]
+    },
+    {
+      "id": "CLIENT455-AVATAR-WORLD-180",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-avatar-world-checkpoint.json",
+        "inventory/client455-avatar-world-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "The ordinary client creates the avatar on NeutralB, completes its first scene, receives the accepted start position and keeps receiving world updates until the observation ends.",
+      "gaps": [
+        "Camera and movement input, observed avatar displacement and a post-spawn frame capture",
+        "Complete spawn response side effects and world update dispatch",
+        "NPCs, inventory, Force, Linker owners, quest journal, guild and complete chat behavior"
       ]
     }
   ],

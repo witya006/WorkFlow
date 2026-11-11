@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b001f830176e6727fd4d50456be967614d1c2188788e7177f49385b8f9d0f874",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x1b190",
+      "symbol": "CAvatar::SetCombatMode",
+      "source": {
+        "file": "work/client455-port/normal/source/character/avatar/cavatar_etc.cpp",
+        "sha256": "539f12d8ea54c0a609e1f33f6a0841757b3fe6174f01cfb3b6b186d929ca9f07"
+      },
+      "ordinary_symbol_rvas": [
+        "0xaca0"
+      ],
+      "linked_caller_rvas": [],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x1488f0",
+      "symbol": "CGP_MainGame::Create_Avatar",
+      "source": {
+        "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+        "sha256": "a38988b51377e34994c9397ff29858a7e546f2c1271e73c432c0ee0ddbde93e2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x27090"
+      ],
+      "linked_caller_rvas": [],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x3478a0",
+      "symbol": "CGUIChatInputWindow::Init",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/guichatwindow.cpp",
+        "sha256": "b1898a52a1756ca6421bea9e831eb433dca8407faac29713557aa0ec4067e2b2"
+      },
+      "ordinary_symbol_rvas": [],
+      "linked_caller_rvas": [
+        "0x7a970"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x347b20",
+      "symbol": "CGUIChatInputWindow::Draw",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/guichatwindow.cpp",
+        "sha256": "b1898a52a1756ca6421bea9e831eb433dca8407faac29713557aa0ec4067e2b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x79700"
+      ],
+      "linked_caller_rvas": [],
+      "complete_equivalence": false
+    }
+  ]
+}

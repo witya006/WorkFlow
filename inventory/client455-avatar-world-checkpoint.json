@@ -1,0 +1,144 @@
+{
+  "status": "PARTIAL_LIVE_WORLD_STARTED_MOVEMENT_OPEN",
+  "scope": "The ordinary client creates the avatar on NeutralB, completes its first scene, receives the accepted start position and keeps receiving world updates until the observation ends.",
+  "script": {
+    "file": "scripts/checkpoint_client455_avatar_world.py",
+    "sha256": "a7b89f5bb04d654dfd3d292a93b4bc2971ad058f788eebc1e4697944ec94c198"
+  },
+  "normal_link_sha256": "93994cb622cb0400e011b181533f359566bbe3049e41e5de3417e3151b0d7787",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b001f830176e6727fd4d50456be967614d1c2188788e7177f49385b8f9d0f874",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "1761dc2309e7cd01af78696683b22c7696b685d2236c4ccadcb8ef034da80bc7"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "93994cb622cb0400e011b181533f359566bbe3049e41e5de3417e3151b0d7787"
+    },
+    "avatar-world-reference": {
+      "file": "inventory/client455-avatar-world-reference.json",
+      "sha256": "72c88bb2ea102ae0941dc5157e06da0809d0845e6a19e18261b7f419e820ae76"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "5af3dec24c89b6f23f3dbadedc2343296425ee324561e024258e6fa70086d6e3"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "1761dc2309e7cd01af78696683b22c7696b685d2236c4ccadcb8ef034da80bc7"
+    },
+    "avatar-world-bindings": {
+      "file": "inventory/client455-avatar-world-bindings.json",
+      "sha256": "ec6e8a79bb212fd06e9176b80ab5fc2064bcc63aae9cf4a5a7c3c0f4c8e258ea"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "34a1f62ace4845a0a48bc81ec4dbada74a2a116739d715bae4a70d41190cd645"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "1bd95f276410647744602e79dc1e69847400138e7f761bb63d1a72ee8a1be28d"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "d237d7a26d99eaa45b9779b0c49723ec16baf5a4f57e1cc2426bba2866c14276"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "caadd278f016a86051fbab78359c90ef5ca351e4c2fe702d4f81193193d45ccc"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "b417fc1f5249be4579f5ed718b1fbf1b317fab0770f8a485dc8640760fd5d05e"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "2424a7e5d887ac09a5ac5ef073973716423b6a091b9b1bb41298e6167ded67a0"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "79cb2251ce862255cc0fe8d0d2a820f1e18f8ef1d20a1a40cfc0391611831078"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before180/manifest.json",
+    "sha256": "22aa560d9768374de2705dba6d710ee83eab6efbde41faa2ce6d399f9808180a"
+  },
+  "observed_sequence": [
+    "select-result:0:0:0",
+    "rx:3:45:157",
+    "linker-applied:2:0:1",
+    "tx:12:8:0",
+    "rx:12:9:961",
+    "store-applied:60:0:1",
+    "map-bsp:0:1:0",
+    "avatar-ready:0:0:0",
+    "tx:3:1:1",
+    "world-frame:0:0:0",
+    "rx:3:2:1",
+    "position-mode:0:0:0"
+  ],
+  "intermediate_failures": [
+    {
+      "file": "artifacts/client455-progress/avatar180-first-frame-failure.json",
+      "sha256": "01f406f9d233cb4ec675881b4fc7a8d13291ed19c4c0a4d89cc4bb81c6487383"
+    },
+    {
+      "file": "artifacts/client455-progress/avatar180-sky-failure.json",
+      "sha256": "cad9841fcb3d3b25ab8cc2d66205f1c016390a82e9aac704ab6d75483c1bd07d"
+    }
+  ],
+  "explicit_function_bindings": 4,
+  "map": {
+    "index": 0,
+    "bsp": {
+      "file": "work/m9/b001f830/selection-live-taiwan001/map/NeutralB/neutralB.bsp",
+      "sha256": "5e31da1df3ed3131def4866a6b95c604662596e514debe13ced958a4da72389f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\map\\NeutralB\\neutralB.bsp"
+    },
+    "lit_grass_shader": {
+      "file": "work/m9/b001f830/selection-live-taiwan001/System/Shader/LitGrass1.vso",
+      "sha256": "a56584fc8a5bb5b6783e526b04835c16a9712cacdfafe95031f74b723b155dbc",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\System\\Shader\\LitGrass1.vso"
+    }
+  },
+  "avatar_created": true,
+  "first_scene_completed": true,
+  "start_position_mode": 0,
+  "subsequent_packets": 276,
+  "world_started": true,
+  "movement_verified": false,
+  "world_frame_captured": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Camera and movement input, observed avatar displacement and a post-spawn frame capture",
+    "Complete spawn response side effects and world update dispatch",
+    "NPCs, inventory, Force, Linker owners, quest journal, guild and complete chat behavior"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -87,7 +87,28 @@ def port_player_owner(raw,relative,section):
         return raw,True
     if relative=='character/avatar/cavatar_etc.cpp':
         body(b'CAvatar::PutOffEquipment(',b'CAvatar::PutOffEquipment(BYTE part){return PutOffEquipment455(part);}')
+        first,last=section(raw,b'CAvatar::SetCombatMode(',b'CAvatar::SetCombatMode(')
+        fragment=raw[first:last]
+        for old,new in [
+            (b'CNormalItem * pWeapon = GetNormalItem( IEPT_WEAPON );',
+             b'const RF455ConditionItem weapon(GetNormalItem455(IEPT_WEAPON));'),
+            (b'if( pWeapon )',b'if (weapon.valid)'),
+            (b'pWeapon->IsEqualWeaponCategoryID( IWCT_MINE )',b'weapon.weaponCategory() == IWCT_MINE')]:
+            if fragment.count(old)!=1:raise ValueError('Avatar mining weapon anchor '+repr(old))
+            fragment=fragment.replace(old,new)
+        raw=raw[:first]+fragment+raw[last:]
         return raw,True
+    if relative=='gameprogress/cgp_maingame.cpp':
+        first,last=section(raw,b'CGP_MainGame::Create_Avatar(',b'CGP_MainGame::Create_Avatar(')
+        fragment=raw[first:last]
+        for old,new in [
+            (b'CEquipItem * pEquipItem = NULL;',b'RF455PlayerEquipmentObject* pEquipItem = nullptr;'),
+            (b'_GetAvatar()->GetEquipItem(',b'_GetAvatar()->GetEquipItem455('),
+            (b'pEquipItem->SetFadeMode(',b'pEquipItem->SetFade455(')]:
+            expected=1 if old.startswith(b'CEquipItem') else 2 if b'GetEquipItem' in old else 4
+            if fragment.count(old)!=expected:raise ValueError('MainGame avatar equipment anchor '+repr(old))
+            fragment=fragment.replace(old,new)
+        return raw[:first]+fragment+raw[last:],True
     if relative=='gameobject/board/skillforceboard/cskillboard.h':
         once(b'\tCSkillBoard();',b'\tCSkillBoard();\n\tvoid ApplyEquipmentLevel455(BYTE);')
         return raw,True

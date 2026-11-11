@@ -40,6 +40,7 @@ def stage_world_map(client, run, index):
     extensions = {'.bsp', '.cam', '.dds', '.ebp', '.r3m', '.r3t', '.r3x', '.rvp', '.spt'}
     paths = [p for p in (client / bsp.parent).iterdir() if p.is_file() and p.suffix.lower() in extensions]
     paths.extend((client/'Map/Entity').glob('*.rpk'))
+    paths.append(client/'System/Shader/LitGrass1.vso')
     if (client/minimap).is_file():
         paths.append(client/minimap)
     if not (client/bsp).is_file():

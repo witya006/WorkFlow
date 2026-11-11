@@ -74,6 +74,10 @@ def port_initial_download(raw, relative, section, native):
         return InitMsg_PatriarchShoutResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
     }
 ''')
+        raw = replace(raw, b'case new_pos_start_result_zocl :\n\t\t\t\t\tInitMsg_NewPosStartResult_zocl( pi_pMsg );',
+                      b'case new_pos_start_result_zocl :\n\t\t\t\t\tif (!pi_pMsg || pMsgHeader->m_wSize != 5) return false;'
+                      b'\n\t\t\t\t\tInitMsg_NewPosStartResult_zocl( pi_pMsg );'
+                      b'\n\t\t\t\t\tRF455_ObserveProtocol("position-mode", static_cast<BYTE>(pi_pMsg[0]), 0, 0);')
         return raw, True
     if relative == 'network/cnetworkmgr_systemmsg.cpp':
         raw = patch_method(raw, section, OWNER, b'InitMsg_BaseDownloadRequest_clzo', lambda body: replace(
@@ -97,9 +101,24 @@ def port_initial_download(raw, relative, section, native):
                       b'bool\nCNetMsgProcessor_ItemTrade::StoreListResult_clzo(const char* bytes, std::size_t size)')
         raw = patch_method(raw, section, TRADE_OWNER, b'StoreListResult_clzo', port_store_list)
         return b'#include "client455_initial_download.h"\n' + OBSERVATION + raw, True
+    if relative == 'gameprogress/cgp_maingame.h':
+        return replace(raw, b'BOOL\tm_bIsCompleteDataDownload;',
+                       b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;'), True
     if relative == 'gameprogress/cgp_maingame.cpp':
+        raw = patch_method(raw, section, b'CGP_MainGame', b'Init', lambda body: replace(
+            body, b'm_bIsCompleteDataDownload\t=', b'm_reportedWorldFrame455 = false;\n\tm_bIsCompleteDataDownload\t='))
         raw = patch_method(raw, section, b'CGP_MainGame', b'Create', lambda body: replace(
             body, b'\tLoadData();', b'\tif (!LoadData()) return FALSE;'))
+        raw = patch_method(raw, section, b'CGP_MainGame', b'Create_Avatar', lambda body: replace(
+            body, b'm_bIsCreated_Avatar = TRUE;', b'm_bIsCreated_Avatar = TRUE;\n\tRF455_ObserveProtocol("avatar-ready", 0, 0, 0);'))
+        def observe_render(body):
+            body = replace(body, b'if( R3BeginScene() )', b'const bool drewFrame = R3BeginScene() != FALSE;\n\tif (drewFrame)')
+            return replace(body, b'R3EndScene();', b'''R3EndScene();
+    if (drewFrame && !m_reportedWorldFrame455) {
+        m_reportedWorldFrame455 = true;
+        RF455_ObserveProtocol("world-frame", _GetLand()->GetMapIndex(), 0, 0);
+    }''')
+        raw = patch_method(raw, section, b'CGP_MainGame', b'Render', observe_render)
         raw = patch_method(raw, section, b'CGP_MainGame', b'LoadData', lambda body: replace(
             body, b'\t_GetLand()->LoadLevel();', b'''\tauto* land = _GetLand();
     const bool mapLoaded = land->LoadLevel() && land->GetLevel() && land->GetLevel()->IsLoadedBsp();

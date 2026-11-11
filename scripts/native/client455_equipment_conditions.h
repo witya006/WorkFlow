@@ -52,6 +52,7 @@ struct RF455ConditionItem {
         float value;std::memcpy(&value,record.data+offset,4);return value;
     }
     std::uint32_t defence()const{return armor()?field<std::uint32_t>(216):0;}
+    std::uint32_t weaponCategory()const{return kind()==6?field<std::uint32_t>(216):0xffffffffu;}
     std::uint32_t delay()const{
         const auto k=kind();return equipment()?field<std::uint32_t>(180):(k==40||k==41)?field<std::uint32_t>(224):k==27?field<std::uint32_t>(232):0;
     }
@@ -189,7 +190,7 @@ public:
                     }
                     total.attackDelay+=item.delay();
                 }else if(kind==6){
-                    const auto category=item.field<std::uint32_t>(216);unsigned attack=4;
+                    const auto category=item.weaponCategory();unsigned attack=4;
                     if(category==5||category==6||category==8||category==11)attack=5;else if(category==7)attack=6;
                     float factor=static_cast<float>(double(equipment.power[attack])+skillForce.power[attack]);
                     if(host.mountedState2())factor=static_cast<float>(double(mountedPower)-1.0+factor);
