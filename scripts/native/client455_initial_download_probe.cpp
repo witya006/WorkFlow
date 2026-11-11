@@ -182,6 +182,33 @@ void linker()
           !RF455_ReadLinkerDownload(bytes.data(), bytes.size() + 1, decoded) && decoded.slots[49] == 0x4abc,
           "invalid Linker lengths preserve output");
 }
+
+void macroAndShout()
+{
+    std::array<std::uint8_t, 954> bytes{};
+    write(bytes, 0, std::uint32_t{0x00070301});
+    write(bytes, 8, std::uint32_t{0xffffffff});
+    write(bytes, 20, std::uint32_t{0x12345678});
+    write(bytes, 140, std::uint32_t{0x00020407});
+    bytes[873] = 'M';
+    bytes[953] = 'x';
+    RF455MacroDownload macro{};
+    check(RF455_ReadMacroDownload(bytes.data(), bytes.size(), macro) && macro.automatic[0].board == 1 &&
+          macro.automatic[0].pack == 3 && macro.automatic[0].socket == 7 && macro.automatic[2].empty() &&
+          macro.automaticSettings[2] == 0x12345678 && macro.actions[29].board == 7 &&
+          macro.text[1][4][0] == 'M' && macro.text[1][4][80] == '\0', "macro references, settings and bounded text");
+    check(!RF455_ReadMacroDownload(bytes.data(), 953, macro) && macro.text[1][4][0] == 'M',
+          "truncated macro keeps previous value");
+
+    bytes[585] = 'S';
+    bytes[648] = '!';
+    bytes[649] = 'x';
+    RF455PatriarchShoutDownload shout{};
+    check(RF455_ReadPatriarchShoutDownload(bytes.data(), 650, shout) && shout.text[9][0] == 'S' &&
+          shout.text[9][63] == '!' && shout.text[9][64] == '\0', "shout stride and bounded text");
+    check(!RF455_ReadPatriarchShoutDownload(bytes.data(), 651, shout) && shout.text[9][0] == 'S',
+          "oversized shout keeps previous value");
+}
 }
 
 int main()
@@ -193,7 +220,9 @@ int main()
     quests();
     specialAndMiner();
     linker();
+    macroAndShout();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
-              "\"linker_bytes\":157,\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
+              "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,"
+              "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }

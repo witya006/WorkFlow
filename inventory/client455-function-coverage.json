@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T03:18:48.315372+00:00",
+  "measured_at_utc": "2026-11-11T03:30:25.961317+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2675,
-    "unique_functions_with_complete_assembly_cfg": 874,
-    "unique_pinned_code_bytes": 768950,
-    "reports": 179,
-    "code_range_occurrences": 4274,
+    "unique_functions_with_pinned_code": 2683,
+    "unique_functions_with_complete_assembly_cfg": 882,
+    "unique_pinned_code_bytes": 770251,
+    "reports": 180,
+    "code_range_occurrences": 4282,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -357,6 +357,10 @@
     {
       "file": "inventory/client455-loop-clock-reference.json",
       "sha256": "ad8d8e63ec2d359d9c22e91df2df3d46cf8e62a8cb93822ff5635961a4708a1a"
+    },
+    {
+      "file": "inventory/client455-macro-download-reference.json",
+      "sha256": "9c695d9614e29471bffe9084d625b7634373e05192e6070e3295e06375bc6abb"
     },
     {
       "file": "inventory/client455-magic-reference.json",
@@ -893,6 +897,10 @@
       "sha256": "63a3fa2215c8866846d66951416d6bea5e810a691e0a4a238432d7f67a97e6c2"
     },
     {
+      "file": "artifacts/client455-progress/macro178-reference.json",
+      "sha256": "15097eca706813c5f8731410c831bf87d3f3c866b3df6232dd16ad9901fd6842"
+    },
+    {
       "file": "artifacts/client455-progress/mastery-quests176-reference.json",
       "sha256": "2420909e723b19a0936b7dca1008ffc3dcfae7da2434e62e7d3fa9a681806f10"
     },
@@ -1024,7 +1032,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "004fe4f7b119897e1fa18424e7c125e677b4b122e1eca46ce234a0d38c9e108e"
+      "sha256": "c2e31b3e3332e7ed3d04fe1da59d263625286b47c22c78717133ff8467eac575"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2059,6 +2067,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0xb410",
+      "ida_name": "sub_40B410",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xb410",
+          "bytes": 168
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 54
+        }
+      ]
     },
     {
       "rva": "0xb950",
@@ -10975,6 +11002,63 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0xf1af0",
+      "ida_name": "sub_4F1AF0",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xf1af0",
+          "bytes": 72
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 30
+        }
+      ]
+    },
+    {
+      "rva": "0xf1d00",
+      "ida_name": "sub_4F1D00",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xf1d00",
+          "bytes": 465
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 157
+        }
+      ]
+    },
+    {
+      "rva": "0xf2120",
+      "ida_name": "sub_4F2120",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xf2120",
+          "bytes": 81
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
       "rva": "0xf3240",
       "ida_name": "sub_4F3240",
       "reports": [
@@ -12509,6 +12593,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x111a90",
+      "ida_name": "sub_511A90",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x111a90",
+          "bytes": 40
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 20
+        }
+      ]
     },
     {
       "rva": "0x111b90",
@@ -15868,6 +15971,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x18abd0",
+      "ida_name": "sub_58ABD0",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x18abd0",
+          "bytes": 79
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
       "rva": "0x18bb90",
       "ida_name": "sub_58BB90",
       "reports": [
@@ -16111,6 +16233,25 @@
         {
           "file": "artifacts/client455-progress/service-windows172-reference.json",
           "instructions": 55
+        }
+      ]
+    },
+    {
+      "rva": "0x1b5f70",
+      "ida_name": "sub_5B5F70",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1b5f70",
+          "bytes": 346
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 115
         }
       ]
     },
@@ -30367,6 +30508,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x363090",
+      "ida_name": "sub_763090",
+      "reports": [
+        "inventory/client455-macro-download-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x363090",
+          "bytes": 50
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/macro178-reference.json",
+          "instructions": 20
+        }
+      ]
+    },
+    {
       "rva": "0x384330",
       "ida_name": "sub_784330",
       "reports": [
@@ -44506,7 +44666,7 @@
   ],
   "last_recorded_delta": {
     "unique_functions_with_pinned_code": 8,
-    "unique_functions_with_complete_assembly_cfg": 9
+    "unique_functions_with_complete_assembly_cfg": 8
   },
   "M6": "OPEN",
   "M9": "OPEN",

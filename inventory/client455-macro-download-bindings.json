@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "35e531e1a072485da755eb4927fa84e2ad8ca81856d5a650569c3ed1f14dce97",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a70",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x166b10",
+      "symbol": "CNetworkMgr::InitMsg_MacroDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "528942077871e48dd4a19bb29e053bb98ed6e0fc3214297c9d0d70f8a93eed36"
+      },
+      "ordinary_symbol_rvas": [
+        "0x536f0"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x18abd0",
+      "symbol": "CNetworkMgr::InitMsg_PatriarchShoutResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "528942077871e48dd4a19bb29e053bb98ed6e0fc3214297c9d0d70f8a93eed36"
+      },
+      "ordinary_symbol_rvas": [
+        "0x53a60"
+      ],
+      "complete_equivalence": false
+    }
+  ]
+}

@@ -28,7 +28,8 @@ def port_initial_download(raw, relative, section, native):
         return raw, True
     if relative == 'network/cnetworkmgr.h':
         member = b'DWORD\t\tm_dwItemIndexForFirstItemSetting;'
-        raw = replace(raw, member, b'RF455DownloadStep m_initialDownload455 = RF455DownloadStep::Idle;\n\t' + member)
+        raw = replace(raw, member, b'RF455DownloadStep m_initialDownload455 = RF455DownloadStep::Idle;\n\t'
+                      b'RF455MacroDownload m_macros455{};\n\tRF455PatriarchShoutDownload m_patriarchShout455{};\n\t' + member)
         for name, _, _ in RESULTS:
             method = b'InitMsg_' + name + b'DownloadResult_zocl'
             raw = replace(raw, b'void\t' + method + b'( char * pi_pMsg );',
@@ -37,7 +38,9 @@ def port_initial_download(raw, relative, section, native):
         raw = replace(raw, anchor, anchor + b'\n\tbool InitMsg_QuestDownloadResult455(const char* packet, std::size_t bytes);'
                       b'\n\tbool InitMsg_SpecialDownloadResult455(BYTE subtype, const char* packet, std::size_t bytes);'
                       b'\n\tbool InitMsg_MinerDownloadResult455(const char* packet, std::size_t bytes);'
-                      b'\n\tbool InitMsg_LinkerDownloadResult455(const char* packet, std::size_t bytes);')
+                      b'\n\tbool InitMsg_LinkerDownloadResult455(const char* packet, std::size_t bytes);'
+                      b'\n\tbool InitMsg_MacroDownloadResult455(const char* packet, std::size_t bytes);'
+                      b'\n\tbool InitMsg_PatriarchShoutResult455(const char* packet, std::size_t bytes);')
         return b'#include "client455_initial_download.h"\n' + raw, True
     if relative == 'network/cnetworkmgr.cpp':
         for name, key, _ in RESULTS:
@@ -51,6 +54,8 @@ def port_initial_download(raw, relative, section, native):
                     return InitMsg_QuestDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
                 case 45:
                     return InitMsg_LinkerDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+                case 50:
+                    return InitMsg_MacroDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
                 case 55:
                     return InitMsg_MinerDownloadResult455(pi_pMsg, pMsgHeader->m_wSize - 4);''')
         anchor = b'case init_msg :\n\t\t\tswitch( pMsgHeader->m_byType[1] )'
@@ -60,10 +65,18 @@ def port_initial_download(raw, relative, section, native):
                 (pMsgHeader->m_byType[1] == 14 || pMsgHeader->m_byType[1] == 15))
                 return InitMsg_SpecialDownloadResult455(pMsgHeader->m_byType[1], pi_pMsg, pMsgHeader->m_wSize - 4);
 \t\t\tswitch( pMsgHeader->m_byType[1] )''')
+        anchor = b'CNetworkMgr::AnalysisServerPacket( _MSG_HEADER * pMsgHeader, char* pi_pMsg )\n{'
+        raw = replace(raw, anchor, anchor + b'''
+    if (pMsgHeader && pMsgHeader->m_wSize >= 4 && pMsgHeader->m_byType[0] == 13 && pMsgHeader->m_byType[1] == 105) {
+        RF455_ObserveProtocol("rx", 13, 105, pMsgHeader->m_wSize - 4);
+        return InitMsg_PatriarchShoutResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+    }
+''')
         return raw, True
     if relative == 'network/cnetworkmgr_systemmsg.cpp':
         raw = patch_method(raw, section, OWNER, b'InitMsg_BaseDownloadRequest_clzo', lambda body: replace(
-            body, b'return l_nResult;', b'if (l_nResult) m_initialDownload455 = RF455DownloadStep::Base;\n\treturn l_nResult;'))
+            body, b'return l_nResult;', b'if (l_nResult) {\n\t\tm_macros455 = {};\n\t\tm_patriarchShout455 = {};'
+            b'\n\t\tm_initialDownload455 = RF455DownloadStep::Base;\n\t}\n\treturn l_nResult;'))
         raw = remove_methods(raw, section, OWNER, [(b'InitMsg_' + name + b'DownloadResult_zocl', b'void')
                                                    for name, _, _ in RESULTS])
         return raw + b'\n' + (native / 'client455_initial_download.inc').read_bytes(), True

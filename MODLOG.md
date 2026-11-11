@@ -1,3 +1,8 @@
+2026-11-11 — Initial download 178, PARTIAL_WAITING_FOR_GUILD_AND_WORLD_INITIALIZATION.
+Decoded character macro and announcement data and received guild list `27/112`.
+Located the MainGame gate before the target start-position request.
+[Evidence and remaining work](research/client455-macro-download.md)
+
 2026-11-11 — Initial download 177, PARTIAL_WAITING_FOR_MACRO_AND_LINKER_OWNERS.
 Applied Linker bank settings. Two saved references remain unresolved.
 Received macro `3/50` and patriarch shout `13/105` in the ordinary client.

@@ -172,7 +172,7 @@
       "estimate_high": 25,
       "completed_full_domain": false,
       "done": [
-        "После выбора применены базовые поля, показатели развития и настройки Linker, получены ответы макросов и объявлений патриарха"
+        "После выбора применены базовые поля, показатели развития и настройки Linker, разобраны макросы и объявления, получен ответ гильдии"
       ],
       "remaining": [
         "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
@@ -187,7 +187,8 @@
         "client455-target-windows-checkpoint",
         "client455-initial-download-checkpoint",
         "client455-mastery-quests-checkpoint",
-        "client455-linker-download-checkpoint"
+        "client455-linker-download-checkpoint",
+        "client455-macro-download-checkpoint"
       ]
     },
     {
@@ -198,7 +199,7 @@
       "estimate_high": 10,
       "completed_full_domain": false,
       "done": [
-        "Обычный Login и анимированный выбор показаны, после принятого выбора получены макросы3/50 и объявления13/105"
+        "Обычный Login и анимированный выбор показаны, после принятого выбора достигнут ответ гильдии27/112"
       ],
       "remaining": [
         "Полный Title/Login/character selection/auth→world поток455 не пройден"
@@ -290,7 +291,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "6ac79ceb02ce66d3d8945ad5e2d4d60d01a436fdc8ba294be47748a3ba284d7c",
+      "sha256": "0521fdd4ae7815c11717ba6106a3ce69b5acaae4619a524ef19014fb2f984b92",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -749,6 +750,14 @@
       "sha256": "c1b95063aa138dcaf7bd90020e811835be1fb1168cf4e3709b281b033ebb498a",
       "status": "PARTIAL_WAITING_FOR_MACRO_AND_LINKER_OWNERS",
       "scope": "The ordinary client applies Linker bank settings and receives the macro and patriarch shout replies. Two references were present and neither resolved to an available Linker owner.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-macro-download-checkpoint": {
+      "file": "inventory/client455-macro-download-checkpoint.json",
+      "sha256": "922cd30b49e7dd438fbad1ec389844164f68bbe1f50386d460ea5d96bbea65cf",
+      "status": "PARTIAL_WAITING_FOR_GUILD_AND_WORLD_INITIALIZATION",
+      "scope": "The ordinary client decodes and retains character-scoped macro and patriarch shout data and receives guild reply 27/112. The live account had no populated macros or announcement text.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -816,11 +825,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "168d141424b8e024395019976d17dace3bbb03b51b3d564ff1d8a47e059f144a",
-      "bytes": 2376192,
+      "sha256": "35e531e1a072485da755eb4927fa84e2ad8ca81856d5a650569c3ed1f14dce97",
+      "bytes": 2377216,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x1855a0",
+      "entry_rva": "0x185a70",
       "sections": [
         ".text",
         ".rdata",
@@ -845,22 +854,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "1208622fedbc49d5e8ada431d8c05a126d68ca2b66bed8d3d23b2a72c3d6392f",
+      "sha256": "deddd52de3e1b26e7eecf1a186a445056e2c247de8df39e33eb11d434dd2645c",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-linker-download-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-macro-download-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "6ac79ceb02ce66d3d8945ad5e2d4d60d01a436fdc8ba294be47748a3ba284d7c",
+      "link_sha256": "0521fdd4ae7815c11717ba6106a3ce69b5acaae4619a524ef19014fb2f984b92",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "168d141424b8e024395019976d17dace3bbb03b51b3d564ff1d8a47e059f144a",
-        "bytes": 2376192,
+        "sha256": "35e531e1a072485da755eb4927fa84e2ad8ca81856d5a650569c3ed1f14dce97",
+        "bytes": 2377216,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1855a0",
+        "entry_rva": "0x185a70",
         "sections": [
           ".text",
           ".rdata",
@@ -870,7 +879,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "1208622fedbc49d5e8ada431d8c05a126d68ca2b66bed8d3d23b2a72c3d6392f"
+      "build_sha256": "deddd52de3e1b26e7eecf1a186a445056e2c247de8df39e33eb11d434dd2645c"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -878,7 +887,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "1208622fedbc49d5e8ada431d8c05a126d68ca2b66bed8d3d23b2a72c3d6392f"
+        "sha256": "deddd52de3e1b26e7eecf1a186a445056e2c247de8df39e33eb11d434dd2645c"
       },
       "build_exit": 0,
       "errors": [],
@@ -888,11 +897,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "168d141424b8e024395019976d17dace3bbb03b51b3d564ff1d8a47e059f144a",
-        "bytes": 2376192,
+        "sha256": "35e531e1a072485da755eb4927fa84e2ad8ca81856d5a650569c3ed1f14dce97",
+        "bytes": 2377216,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1855a0",
+        "entry_rva": "0x185a70",
         "sections": [
           ".text",
           ".rdata",
@@ -905,28 +914,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "1208622fedbc49d5e8ada431d8c05a126d68ca2b66bed8d3d23b2a72c3d6392f"
+        "sha256": "deddd52de3e1b26e7eecf1a186a445056e2c247de8df39e33eb11d434dd2645c"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "The ordinary client applies Linker bank settings and receives the macro and patriarch shout replies. Two references were present and neither resolved to an available Linker owner.",
+    "current_work": "The ordinary client decodes and retains character-scoped macro and patriarch shout data and receives guild reply 27/112. The live account had no populated macros or announcement text.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "66a8d57a425d39da41e3d7a551fdad53137ed1cdc5ccf7e98f90f7577c70d264",
+      "sha256": "7ba289a5f51a8de79040b48e4bc1c392bd8d13a47aab3f7adc3d946cf8a01e32",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/168d1414/selection-live-taiwan001/login-frame.png",
-        "sha256": "c8241d6437a435b09206e1fa91300181f5125485a430dbdfdb3185ccc3172c39"
+        "file": "work/m9/35e531e1/selection-live-taiwan001/login-frame.png",
+        "sha256": "d20e9d0dffe204d6c181b4c78b134c572736220a6f1f88250d1bf62011de1f15"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 121,
-        "elapsed_ms": 8032,
+        "frame_index": 124,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -942,11 +951,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "b9613e03741b570a1104591996513529fba370f6514c2749701a21fb99719a45",
-    "entries": 183,
+    "sha256": "f163764cca472151d672afc2448d54c9b49db190884db025b3b38c5a30a83cb6",
+    "entries": 184,
     "statuses": {
       "partial_component": 13,
-      "partial": 140,
+      "partial": 141,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -956,7 +965,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-LINKER-DOWNLOAD-177"
+      "CLIENT455-MACRO-DOWNLOAD-178"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1026,7 +1035,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;183 overlapping historical records",
+        "measured": "12 domain planning map;184 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1174,7 +1183,7 @@
       "Changed estimate and its basis"
     ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "The client applies Linker bank settings and reaches the macro and patriarch shout replies. Linker owners, macros, the quest journal, map transition and gameplay remain open."
+    "unchanged_range_reason": "The client decodes macros and announcements and reaches the guild reply. Guild handling, item owners, the quest journal, map transition and gameplay remain open."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1188,7 +1197,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "69a1bbd2c9b3f76b3cc385978c96ea01bef216114f8445713de9e3dfb3bbb461"
+    "sha256": "b97d47d718ae74edcab41ca7b878f606646a79204373ed3458cd1f1806524bfb"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

@@ -8900,7 +8900,7 @@
       "id": "CLIENT455-LINKER-DOWNLOAD-177",
       "area": "network",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-linker-download-checkpoint.json",
         "inventory/client455-linker-download-reference.json",
@@ -8911,6 +8911,23 @@
         "Live nonempty Linker slots and configured banks; gesture and macro owners; auxiliary window and menu settings",
         "Macro and patriarch shout reply consumers and the subsequent initialization phases",
         "Inventory, Force, quests, map creation and ordinary playable world"
+      ]
+    },
+    {
+      "id": "CLIENT455-MACRO-DOWNLOAD-178",
+      "area": "network",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-macro-download-checkpoint.json",
+        "inventory/client455-macro-download-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "The ordinary client decodes and retains character-scoped macro and patriarch shout data and receives guild reply 27/112. The live account had no populated macros or announcement text.",
+      "gaps": [
+        "Macro actions, chat command interpretation, slot presentation and keyboard execution",
+        "Patriarch shout board and window; existing character-scoped state only retains the bounded text",
+        "Guild member data application, Linker references, item owners, quest journal and entry into the playable world"
       ]
     }
   ],

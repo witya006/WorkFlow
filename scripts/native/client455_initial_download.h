@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <cstring>
 
-enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery, Quest, Special, Miner, Linker, Macro };
+enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery, Quest, Special, Miner, Linker, Macro, Guild };
 
 // Fixed-width x86 wire records from the 455 initial-download handlers.
 #pragma pack(push, 1)
@@ -134,6 +134,23 @@ struct RF455LinkerDownload {
     std::uint32_t menu;
     std::uint32_t menuEntries[5];
 };
+
+struct RF455MacroReference {
+    std::uint8_t board, pack, socket, reserved;
+
+    bool empty() const { return board == 0xff && pack == 0xff && socket == 0xff && reserved == 0xff; }
+};
+
+struct RF455MacroDownload {
+    RF455MacroReference automatic[3];
+    std::uint32_t automaticSettings[3];
+    RF455MacroReference actions[30];
+    char text[2][5][81];
+};
+
+struct RF455PatriarchShoutDownload {
+    char text[10][65];
+};
 #pragma pack(pop)
 
 static_assert(sizeof(RF455EquipmentEntry) == 21 && sizeof(RF455AccessoryEntry) == 20);
@@ -153,11 +170,31 @@ static_assert(sizeof(RF455AnimusDownloadEntry) == 18 && offsetof(RF455AnimusDown
 static_assert(sizeof(RF455MinerDownloadEntry) == 5);
 static_assert(sizeof(RF455LinkerDownload) == 157 && offsetof(RF455LinkerDownload, bankFlags) == 100 &&
               offsetof(RF455LinkerDownload, windows) == 101 && offsetof(RF455LinkerDownload, menuEntries) == 137);
+static_assert(sizeof(RF455MacroDownload) == 954 && offsetof(RF455MacroDownload, automaticSettings) == 12 &&
+              offsetof(RF455MacroDownload, actions) == 24 && offsetof(RF455MacroDownload, text) == 144);
+static_assert(sizeof(RF455PatriarchShoutDownload) == 650);
 
 inline bool RF455_ReadLinkerDownload(const void* data, std::size_t size, RF455LinkerDownload& out)
 {
     if (!data || size != sizeof out) return false;
     std::memcpy(&out, data, sizeof out);
+    return true;
+}
+
+inline bool RF455_ReadMacroDownload(const void* data, std::size_t size, RF455MacroDownload& out)
+{
+    if (!data || size != sizeof out) return false;
+    std::memcpy(&out, data, sizeof out);
+    for (auto& bank : out.text)
+        for (auto& line : bank) line[sizeof line - 1] = '\0';
+    return true;
+}
+
+inline bool RF455_ReadPatriarchShoutDownload(const void* data, std::size_t size, RF455PatriarchShoutDownload& out)
+{
+    if (!data || size != sizeof out) return false;
+    std::memcpy(&out, data, sizeof out);
+    for (auto& line : out.text) line[sizeof line - 1] = '\0';
     return true;
 }
 

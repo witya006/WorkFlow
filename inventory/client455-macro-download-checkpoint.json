@@ -1,0 +1,150 @@
+{
+  "status": "PARTIAL_WAITING_FOR_GUILD_AND_WORLD_INITIALIZATION",
+  "scope": "The ordinary client decodes and retains character-scoped macro and patriarch shout data and receives guild reply 27/112. The live account had no populated macros or announcement text.",
+  "script": {
+    "file": "scripts/checkpoint_client455_macro_download.py",
+    "sha256": "90a708f9eec1032bfa086f04a7855cca5a629e26aabfb7b2c43c81a19211a1c0"
+  },
+  "normal_link_sha256": "0521fdd4ae7815c11717ba6106a3ce69b5acaae4619a524ef19014fb2f984b92",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "35e531e1a072485da755eb4927fa84e2ad8ca81856d5a650569c3ed1f14dce97",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a70",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "7ba289a5f51a8de79040b48e4bc1c392bd8d13a47aab3f7adc3d946cf8a01e32"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "0521fdd4ae7815c11717ba6106a3ce69b5acaae4619a524ef19014fb2f984b92"
+    },
+    "macro-download-reference": {
+      "file": "inventory/client455-macro-download-reference.json",
+      "sha256": "9c695d9614e29471bffe9084d625b7634373e05192e6070e3295e06375bc6abb"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "f4e02abf98c99c97b43d559eed498b22b2d1b42a7fe0558c325d7eb3213878ac"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "7ba289a5f51a8de79040b48e4bc1c392bd8d13a47aab3f7adc3d946cf8a01e32"
+    },
+    "macro-download-bindings": {
+      "file": "inventory/client455-macro-download-bindings.json",
+      "sha256": "35ede9cf6afc401ffb72d385f457a2abba33926db9649c9d3e4355d88a01e42a"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "1c1ef4511cb0e393774c1de2798a1997674b35db5506b5f05968a8257f94d300"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "deddd52de3e1b26e7eecf1a186a445056e2c247de8df39e33eb11d434dd2645c"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "8f5630defb4b6da9b0b1e098c0a7699ec5999229601a171531393ffa1368a3a2"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "fc3d14f33b941a8fa3c0b9b0b1b9e1e0c8b86bcc6d27c351439ee207d2ccbc7c"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "b93f288794308f81d53883883119aa4bd3acc6de8a6f0d2f527e458589161ed4"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "adc805a3fef860f72c087c7f4101b8435e440e7391fdb40bb728589d9546630f"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "7935c45bf5f5306a720fd69543ed6b5f07f43455c272f5660cfc492a10927c33"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "map_gate_analysis": {
+    "file": "artifacts/client455-progress/macro178-map-gate.json",
+    "sha256": "65c5ba9a0dbd6156834c91e6ae2bebac1b585c3f2b6644ac1d598ddc992b0cc9"
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before178/manifest.json",
+    "sha256": "7ba31720ca73f9e8ad6c7676471dd30eea0f0673fb72787203391199de8438c2"
+  },
+  "observed_sequence": [
+    "tx:1:14:1",
+    "rx:1:15:22",
+    "select-result:0:0:0",
+    "inventory-applied:3:21:0",
+    "force-applied:82:0:0",
+    "rx:3:8:322",
+    "mastery-applied:0:0:0",
+    "tx:3:11:0",
+    "rx:3:12:100",
+    "quest-decoded:0:7:7",
+    "tx:3:13:0",
+    "rx:3:14:1",
+    "special-decoded:14:0:0",
+    "tx:3:54:0",
+    "rx:3:55:2",
+    "miner-decoded:0:0:0",
+    "tx:3:46:0",
+    "rx:3:45:157",
+    "linker-applied:2:0:1",
+    "tx:3:49:1",
+    "tx:13:104:1",
+    "rx:3:50:954",
+    "macro-decoded:0:0:0",
+    "tx:27:111:1",
+    "rx:13:105:650",
+    "patriarch-shout-decoded:10:0:0",
+    "rx:27:112:2"
+  ],
+  "explicit_function_bindings": 2,
+  "macro": {
+    "bytes": 954,
+    "decoded": true,
+    "actions": 0,
+    "texts": 0
+  },
+  "patriarch_shout": {
+    "bytes": 650,
+    "decoded": true,
+    "texts": 0
+  },
+  "guild": {
+    "bytes": 2,
+    "received": true,
+    "decoded": false
+  },
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Macro actions, chat command interpretation, slot presentation and keyboard execution",
+    "Patriarch shout board and window; existing character-scoped state only retains the bounded text",
+    "Guild member data application, Linker references, item owners, quest journal and entry into the playable world"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -422,3 +422,54 @@ bool CNetworkMgr::InitMsg_LinkerDownloadResult455(const char* bytes, std::size_t
     const BOOL shoutSent = SendNetMessage(NST_GAME_SERVER, patriarchShout, &reserved, sizeof reserved);
     return macroSent != FALSE && shoutSent != FALSE;
 }
+
+namespace {
+bool CanResolveMacroAction(const RF455MacroReference& reference)
+{
+    CObjectBoard* board;
+    switch (reference.board) {
+    case 0: board = _GetInventoryBoard(); break;
+    case 1: board = _GetEquipBoard(); break;
+    case 3: board = _GetForceBoard(); break;
+    case 4: board = _GetAnimusBoard(); break;
+    case 7: board = _GetSkillBoard(); break;
+    default: return false;
+    }
+    auto* item = board ? board->GetObject(reference.pack, reference.socket) : nullptr;
+    if (auto* skill = dynamic_cast<CSFItem*>(item)) return !skill->IsEqualState(CSFItem::SFS_DEACTIVE);
+    if (auto* animus = dynamic_cast<CAnimusItem*>(item)) return !animus->IsEqualState(CAnimusItem::AIS_DEACTIVE);
+    return item != nullptr;
+}
+}
+
+bool CNetworkMgr::InitMsg_MacroDownloadResult455(const char* bytes, std::size_t size)
+{
+    if (m_initialDownload455 != RF455DownloadStep::Macro || !RF455_ReadMacroDownload(bytes, size, m_macros455)) return false;
+    unsigned actions = 0, resolved = 0, texts = 0;
+    auto countActions = [&](const auto& references) {
+        for (const auto& reference : references) {
+            if (reference.empty()) continue;
+            ++actions;
+            if (CanResolveMacroAction(reference)) ++resolved;
+        }
+    };
+    countActions(m_macros455.automatic);
+    countActions(m_macros455.actions);
+    for (const auto& bank : m_macros455.text)
+        for (const auto& line : bank) texts += line[0] != '\0';
+    RF455_ObserveProtocol("macro-decoded", actions, resolved, texts);
+    m_initialDownload455 = RF455DownloadStep::Guild;
+    BYTE type[] = {27, 111};
+    BYTE all = 0xff;
+    return SendNetMessage(NST_GAME_SERVER, type, reinterpret_cast<char*>(&all), sizeof all) != FALSE;
+}
+
+bool CNetworkMgr::InitMsg_PatriarchShoutResult455(const char* bytes, std::size_t size)
+{
+    if (m_initialDownload455 < RF455DownloadStep::Macro ||
+        !RF455_ReadPatriarchShoutDownload(bytes, size, m_patriarchShout455)) return false;
+    unsigned populated = 0;
+    for (const auto& line : m_patriarchShout455.text) populated += line[0] != '\0';
+    RF455_ObserveProtocol("patriarch-shout-decoded", 10, populated, 0);
+    return true;
+}
