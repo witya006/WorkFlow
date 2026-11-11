@@ -1,0 +1,321 @@
+{
+  "status": "PARTIAL_KNOWN_FAILURE",
+  "scope": "After accepted character selection, the party window initializer returns. The next failure is selected-mob info window 18. Live party operations and world entry remain open.",
+  "script": {
+    "file": "scripts/checkpoint_client455_party_window.py",
+    "sha256": "2bf92d8c8a925cf945a2e2c83f91010503cc9479aa9b999656f1cf0425078681"
+  },
+  "normal_link_sha256": "e6a0c8f87612f6a27907e5ccb21655ac7f235be33aa1e2392d8d08ec8399079f",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "59122c67dc12b985e8653e74f9414cd1ba8360a61ec961741eb3655e675fb3de",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x184300",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "e929a2696d826bd316710c5280869b34a99a9f7cf1d062b41af521349e77bbdb"
+  },
+  "fresh_evidence": {
+    "party-window-reference": {
+      "file": "inventory/client455-party-window-reference.json",
+      "sha256": "2b3a55ff01bf073ca416c342f981033f44d6c5a0a520eaf1adb3f9b3c3dace9b"
+    },
+    "party-window-native": {
+      "file": "inventory/client455-party-window-native.json",
+      "sha256": "7e0ffbec3441acb6b99ee7e62b36ca59e2fe330c0ad559a42be9f73b8315c400"
+    },
+    "party-window-bindings": {
+      "file": "inventory/client455-party-window-bindings.json",
+      "sha256": "8dec8adf253cf5dc1ec1f57085671a18a985972d9c89e37e96f5669c3f3d6156"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "4c6e9fe67fdfdf2619ef84b45bbc7be8d9a5b95f8d2968dbd0ceb072b4db44fb"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "dd26245fe501358dfdd3c811885b0ef8052f446bc2a3d84d2cc906fd75f74770"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "634d9279d6c9e817d377aa55f426715e8aca44af0d631839f27f2c10ba143c30"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "e6a0c8f87612f6a27907e5ccb21655ac7f235be33aa1e2392d8d08ec8399079f"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "94f6ed59c55502bf1abfb712b6c03f863bfbf2fbe026bdc8017d860eea547336"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "c0b65fb0b5736d26598d9e5215af61677e7426a8ffe54b91e2f70056c218b9e6"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "ffb9243be0974fddb3a467f557cbbc3ab5213adbfd782b4bee4cb19cc1361c8b"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "2760dfa6055154a91badbe5c5f25ad7a5eb3acf5b15289f59429fd6d7c840ec0"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "e929a2696d826bd316710c5280869b34a99a9f7cf1d062b41af521349e77bbdb"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before173/manifest.json",
+    "sha256": "730e1abd2129e8f7dfff38b325ae994d6d43ce492f65a4e911324e96b458f2a1"
+  },
+  "component_frames_visually_inspected": true,
+  "live_party_initializer_returned": true,
+  "explicit_function_bindings": 21,
+  "standalone_symbols": 15,
+  "post_selection_failure": {
+    "normal_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "59122c67dc12b985e8653e74f9414cd1ba8360a61ec961741eb3655e675fb3de",
+      "bytes": 2370048,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x184300",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "exception": {
+      "kind": "exception",
+      "code": "0xc0000005",
+      "first_chance": 0,
+      "address": "0x4b0a9f",
+      "rva": "0x130a9f",
+      "module": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\59122c67\\selection-live-taiwan001\\RF_Online.bin",
+      "parameter0": 0,
+      "parameter1": "0xfffffff6"
+    },
+    "fault_rva_is_own": true,
+    "own_fault": {
+      "rva": "0x130a9f",
+      "symbol": "?GetSpriteOrgYL@CSprite@@QAEGKK@Z",
+      "offset": "0x5f",
+      "is_code": true,
+      "previous_eight_bytes": "088b45fc8b549044"
+    },
+    "candidates": [
+      {
+        "rva": "0x9a087",
+        "symbol": "?SetSpriteV@CGUIObjectEx@@QAEXMM@Z",
+        "offset": "0x37",
+        "is_code": true,
+        "previous_eight_bytes": "ff0000e8b9690900",
+        "stack_offset": 8
+      },
+      {
+        "rva": "0xa8ba3",
+        "symbol": "?SetSprite@CGUISelectedMobInfoWin@@UAEXXZ",
+        "offset": "0x93",
+        "is_code": true,
+        "previous_eight_bytes": "000000e8ad14ffff",
+        "stack_offset": 32
+      },
+      {
+        "rva": "0xa8808",
+        "symbol": "?Init@CGUISelectedMobInfoWin@@UAEXXZ",
+        "offset": "0xb8",
+        "is_code": true,
+        "previous_eight_bytes": "608b068bceff5018",
+        "stack_offset": 68
+      },
+      {
+        "rva": "0x60338",
+        "symbol": "?InitTargetInfoWindow@CTargetMgr@@QAEXKPAVCGUIWindow@@PAVCGUIScreen@@@Z",
+        "offset": "0x18",
+        "is_code": true,
+        "previous_eight_bytes": "0200008bcfff506c",
+        "stack_offset": 92
+      },
+      {
+        "rva": "0x27796",
+        "symbol": "?Create_Board@CGP_MainGame@@IAEXXZ",
+        "offset": "0x666",
+        "is_code": true,
+        "previous_eight_bytes": "566a12e88a8b0300",
+        "stack_offset": 108
+      },
+      {
+        "rva": "0x7c6870",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x358ba0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 120
+      },
+      {
+        "rva": "0x27f08",
+        "symbol": "?Create_UI@CGP_MainGame@@IAEXXZ",
+        "offset": "0x6d8",
+        "is_code": true,
+        "previous_eight_bytes": "860081c10c170000",
+        "stack_offset": 132
+      },
+      {
+        "rva": "0x26c58",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x48",
+        "is_code": true,
+        "previous_eight_bytes": "008bcfe8d8040000",
+        "stack_offset": 160
+      },
+      {
+        "rva": "0x46dcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 164
+      },
+      {
+        "rva": "0x46dcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 176
+      },
+      {
+        "rva": "0x46dcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 184
+      },
+      {
+        "rva": "0xbdf12",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "is_code": true,
+        "previous_eight_bytes": "00752e8b01ff5008",
+        "stack_offset": 204
+      },
+      {
+        "rva": "0xbe560",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "is_code": true,
+        "previous_eight_bytes": "dc8600e830f8ffff",
+        "stack_offset": 212
+      },
+      {
+        "rva": "0x184300",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 216
+      },
+      {
+        "rva": "0x22c150",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "2e000000ffffffff",
+        "stack_offset": 288
+      },
+      {
+        "rva": "0x1a9f05",
+        "symbol": "__ismbblead",
+        "offset": "0x13",
+        "is_code": true,
+        "previous_eight_bytes": "086a00e89dffffff",
+        "stack_offset": 304
+      },
+      {
+        "rva": "0x184250",
+        "symbol": "?__scrt_common_main_seh@@YAHXZ",
+        "offset": "0x140",
+        "is_code": true,
+        "previous_eight_bytes": "004000e8d0a0f3ff",
+        "stack_offset": 328
+      },
+      {
+        "rva": "0x0",
+        "symbol": "___ImageBase",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 332
+      },
+      {
+        "rva": "0x184300",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 352
+      },
+      {
+        "rva": "0x184300",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 356
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true,
+    "ordinary_calls": {
+      "party_window": 19,
+      "party_return_rva": "0x2774d",
+      "party_call": "6a13ff5008",
+      "party_vtable_rva": "0x1ef178",
+      "party_vtable_slot": 8,
+      "party_init_rva": "0x55500",
+      "target_window": 18,
+      "target_return_candidate_rva": "0x27796",
+      "target_call": "e88a8b0300",
+      "target_init_rva": "0x60320",
+      "sequential_source": {
+        "file": "work/client455-port/normal/source/gameprogress/cgp_maingame.cpp",
+        "sha256": "bd9713d8e7129b8f88adc7c37930e4b19af333d18e0ddea7f162902cab9f8ae7"
+      }
+    },
+    "kind": "TARGET_INFO_AFTER_PARTY"
+  },
+  "base_download_request_sent": false,
+  "full_factory": false,
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Full live party roster data and class portrait provider, status tooltips, locks, loot policy and related packet paths",
+    "Remaining 455 window interactions and complete party creation, join, invite and leave scenarios",
+    "Base download result, follow-up player inventory and map data, world entry and M9 acceptance"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "59122c67dc12b985e8653e74f9414cd1ba8360a61ec961741eb3655e675fb3de",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x184300",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial party window and corrected base request opcode.",
+  "functions": [
+    {
+      "rva": "0x2eb000",
+      "symbol": "CGUIPartyMemberInfo::Init",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2eb740",
+      "symbol": "CGUIPartyMemberInfo::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9fde0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2eb890",
+      "symbol": "CGUIPartyMemberInfo::ClearMemberInfo",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9e910"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2eb920",
+      "symbol": "CGUIPartyMemberInfo::SetCharName",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/group/guipartywindow.cpp",
+        "sha256": "e46ad923e211b8e73fe54a88614120c5f5a6a05eeb649b882c6c50c988d490a5"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2eb9a0",
+      "symbol": "CGUIPartyMemberInfo::SetLevel",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ebac0",
+      "symbol": "CGUIPartyMemberInfo::SetGauge455",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9fa50"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ebfb0",
+      "symbol": "CGUIPartyMemberInfo::MouseEvent",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/group/guipartywindow.cpp",
+        "sha256": "e46ad923e211b8e73fe54a88614120c5f5a6a05eeb649b882c6c50c988d490a5"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f470"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ec1e0",
+      "symbol": "CGUIPartyMemberInfo::Layout455",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9ed80"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ed090",
+      "symbol": "CGUIPartyWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9eb20"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ed400",
+      "symbol": "CGUIPartyWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0080"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ed4e0",
+      "symbol": "CGUIPartyWindow::SetWindowType",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa0260"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2edb50",
+      "symbol": "CGUIPartyWindow::AddMember",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9e610"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ee220",
+      "symbol": "CGUIPartyWindow::RemoveMember",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f750"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ee680",
+      "symbol": "CGUIPartyWindow::RemoveAllMember",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f640"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ef2d0",
+      "symbol": "CGUIPartyWindow::EnableLockNLeaveButton",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ef320",
+      "symbol": "CGUIPartyWindow::SetDistribution455",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ef480",
+      "symbol": "CGUIPartyWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f4e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ef6b0",
+      "symbol": "CGUIPartyWindow::SetTotalMemberNum",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [],
+      "standalone_symbol_retained": false,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ef840",
+      "symbol": "CGUIPartyWindow::Layout455",
+      "source": {
+        "file": "scripts/native/client455_party_window.inc",
+        "sha256": "6b97149e5de2bef17af99c74ee72bb7f643c01f6d6a13a9256feaed068d81fe3"
+      },
+      "ordinary_symbol_rvas": [
+        "0x9f0c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0xa32a0",
+      "symbol": "CPartyBoard::InitWindow",
+      "source": {
+        "file": "work/client455-port/normal/source/gameobject/board/general/cpartyboard.cpp",
+        "sha256": "339685cbf630baed1d115938d8a0c2dfd33cfc953009750c05fe43023ce0a1d6"
+      },
+      "ordinary_symbol_rvas": [
+        "0x55500"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x16be40",
+      "symbol": "CNetworkMgr::InitMsg_BaseDownloadRequest_clzo",
+      "source": {
+        "file": "work/client455-port/normal/source/network/cnetworkmgr_systemmsg.cpp",
+        "sha256": "4fc2334192185e7ce2f5423c540c956ce0e972471d746b42a2c56569c3c64ffb"
+      },
+      "ordinary_symbol_rvas": [
+        "0x51c80"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}

@@ -1,3 +1,14 @@
+2026-11-11 — Party window 173, PARTIAL_KNOWN_FAILURE.
+The ordinary party initializer returns after accepted character selection.
+The next fault is selected-mob info window 18 at own RVA 130A9F.
+Two Taiwan frames and five messages pass on controlled data, with 11
+remote members and eight status slots per side. Base request opcode is
+corrected to 3/3, its live send and the 3/4 decoder remain open.
+Build 59122c67… x86. Both pins agree on 25 bodies and 4,354 instructions.
+Address coverage 2,630, full listings 827, partial bindings 276.
+Live party operations and world entry remain open.
+[Evidence and remaining work](research/client455-party-window.md)
+
 2026-11-11 — Currency exchange, mining, promotion and Linker 172, PARTIAL_KNOWN_FAILURE.
 Ordinary selection passes windows 13, 11 and 36 and attaches the single
 Linker. The next fault occurs in party window 19 at own RVA 13088F. Three

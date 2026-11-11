@@ -8812,7 +8812,7 @@
       "id": "CLIENT455-SERVICE-WINDOWS-172",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-service-windows-checkpoint.json",
         "inventory/client455-service-windows-reference.json",
@@ -8824,6 +8824,23 @@
         "Full mining conditions, mining packets, timings, tool and resource result behavior",
         "Ordinary promotion choices and skill owner data, promotion requests and results, related class-reset windows",
         "Full Linker layout, key and action dispatch, all remaining MainGame owners, world entry and M9 acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-PARTY-WINDOW-173",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-party-window-checkpoint.json",
+        "inventory/client455-party-window-reference.json",
+        "inventory/client455-party-window-native.json"
+      ],
+      "description": "After accepted character selection, the party window initializer returns. The next failure is selected-mob info window 18. Live party operations and world entry remain open.",
+      "gaps": [
+        "Full live party roster data and class portrait provider, status tooltips, locks, loot policy and related packet paths",
+        "Remaining 455 window interactions and complete party creation, join, invite and leave scenarios",
+        "Base download result, follow-up player inventory and map data, world entry and M9 acceptance"
       ]
     }
   ],

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T01:25:33.401942+00:00",
+  "measured_at_utc": "2026-11-11T01:49:45.684354+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2605,
-    "unique_functions_with_complete_assembly_cfg": 802,
-    "unique_pinned_code_bytes": 734338,
-    "reports": 174,
-    "code_range_occurrences": 4193,
+    "unique_functions_with_pinned_code": 2630,
+    "unique_functions_with_complete_assembly_cfg": 827,
+    "unique_pinned_code_bytes": 749490,
+    "reports": 175,
+    "code_range_occurrences": 4219,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -463,6 +463,10 @@
       "sha256": "fe66eac277d667e8815440230271a64d623731f8745cae74ce0196a483014d9a"
     },
     {
+      "file": "inventory/client455-party-window-reference.json",
+      "sha256": "2b3a55ff01bf073ca416c342f981033f44d6c5a0a520eaf1adb3f9b3c3dace9b"
+    },
+    {
       "file": "inventory/client455-player-equipment-reference.json",
       "sha256": "b35c7983d764b691eae1df0f1ced84d6f101ae96dbaa153e9943bfe473b20ed6"
     },
@@ -889,6 +893,10 @@
       "sha256": "75d53f91b0a17ea9466a6785fa6b7f5577ace394b3a1b2935af9e9851708aee5"
     },
     {
+      "file": "artifacts/client455-progress/party-window173-reference.json",
+      "sha256": "2548d8b56f8af391def4f4c7b8a4caf7ef213f0fb3d27661a11f8ec5d8d6fa4d"
+    },
+    {
       "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
       "sha256": "84f016bfea95efc3e531174072eeca509494063cb2dc1dc1823bbe4ca2acb9c9"
     },
@@ -984,7 +992,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "6ecf9c48e25c4e8305a00cd59c604ba631bafd839d7170439b5a4b77dd8ceb60"
+      "sha256": "e7cfa45ee6aba37e11b8a8c8ee86d936b2a676251d4a83a428d7d594ae2e9602"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -10249,6 +10257,44 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0xa32a0",
+      "ida_name": "sub_4A32A0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xa32a0",
+          "bytes": 76
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0xa4c00",
+      "ida_name": "sub_4A4C00",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xa4c00",
+          "bytes": 65
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 26
+        }
+      ]
+    },
+    {
       "rva": "0xa5ae0",
       "ida_name": "sub_4A5AE0",
       "reports": [
@@ -15165,6 +15211,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x16be40",
+      "ida_name": "sub_56BE40",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16be40",
+          "bytes": 95
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 38
+        }
+      ]
     },
     {
       "rva": "0x17ea30",
@@ -26617,6 +26682,428 @@
         {
           "file": "artifacts/client455-progress/skill-force168-reference.json",
           "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x2eb000",
+      "ida_name": "sub_6EB000",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2eb000",
+          "bytes": 1852
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 523
+        }
+      ]
+    },
+    {
+      "rva": "0x2eb740",
+      "ida_name": "sub_6EB740",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2eb740",
+          "bytes": 327
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 96
+        }
+      ]
+    },
+    {
+      "rva": "0x2eb890",
+      "ida_name": "sub_6EB890",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2eb890",
+          "bytes": 91
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 36
+        }
+      ]
+    },
+    {
+      "rva": "0x2eb920",
+      "ida_name": "sub_6EB920",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2eb920",
+          "bytes": 115
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x2eb9a0",
+      "ida_name": "sub_6EB9A0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2eb9a0",
+          "bytes": 80
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 31
+        }
+      ]
+    },
+    {
+      "rva": "0x2ebac0",
+      "ida_name": "sub_6EBAC0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ebac0",
+          "bytes": 156
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 49
+        }
+      ]
+    },
+    {
+      "rva": "0x2ebfb0",
+      "ida_name": "sub_6EBFB0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ebfb0",
+          "bytes": 390
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 125
+        }
+      ]
+    },
+    {
+      "rva": "0x2ec140",
+      "ida_name": "sub_6EC140",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ec140",
+          "bytes": 145
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x2ec1e0",
+      "ida_name": "sub_6EC1E0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ec1e0",
+          "bytes": 2061
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 617
+        }
+      ]
+    },
+    {
+      "rva": "0x2ecd60",
+      "ida_name": "sub_6ECD60",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ecd60",
+          "bytes": 427
+        },
+        {
+          "rva": "0x644000",
+          "bytes": 160
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 141
+        }
+      ]
+    },
+    {
+      "rva": "0x2ed090",
+      "ida_name": "sub_6ED090",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ed090",
+          "bytes": 873
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 251
+        }
+      ]
+    },
+    {
+      "rva": "0x2ed400",
+      "ida_name": "sub_6ED400",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ed400",
+          "bytes": 218
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 68
+        }
+      ]
+    },
+    {
+      "rva": "0x2ed4e0",
+      "ida_name": "sub_6ED4E0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ed4e0",
+          "bytes": 1607
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 439
+        }
+      ]
+    },
+    {
+      "rva": "0x2edb50",
+      "ida_name": "sub_6EDB50",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2edb50",
+          "bytes": 1736
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 476
+        }
+      ]
+    },
+    {
+      "rva": "0x2ee220",
+      "ida_name": "sub_6EE220",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ee220",
+          "bytes": 1106
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 305
+        }
+      ]
+    },
+    {
+      "rva": "0x2ee680",
+      "ida_name": "sub_6EE680",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ee680",
+          "bytes": 552
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 166
+        }
+      ]
+    },
+    {
+      "rva": "0x2ef2d0",
+      "ida_name": "sub_6EF2D0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ef2d0",
+          "bytes": 75
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
+      "rva": "0x2ef320",
+      "ida_name": "sub_6EF320",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ef320",
+          "bytes": 70
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 26
+        }
+      ]
+    },
+    {
+      "rva": "0x2ef480",
+      "ida_name": "sub_6EF480",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ef480",
+          "bytes": 550
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 158
+        }
+      ]
+    },
+    {
+      "rva": "0x2ef6b0",
+      "ida_name": "sub_6EF6B0",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ef6b0",
+          "bytes": 269
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 86
+        }
+      ]
+    },
+    {
+      "rva": "0x2ef840",
+      "ida_name": "sub_6EF840",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ef840",
+          "bytes": 977
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 263
+        }
+      ]
+    },
+    {
+      "rva": "0x2efc20",
+      "ida_name": "sub_6EFC20",
+      "reports": [
+        "inventory/client455-party-window-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2efc20",
+          "bytes": 1079
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/party-window173-reference.json",
+          "instructions": 286
         }
       ]
     },
@@ -43086,8 +43573,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 0,
-    "unique_functions_with_complete_assembly_cfg": 0
+    "unique_functions_with_pinned_code": 25,
+    "unique_functions_with_complete_assembly_cfg": 25
   },
   "M6": "OPEN",
   "M9": "OPEN",
