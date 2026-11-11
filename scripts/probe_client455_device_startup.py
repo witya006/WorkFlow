@@ -38,7 +38,17 @@ def stage_world_map(client, run, index):
     if minimap.is_absolute() or '..' in minimap.parts or minimap.suffix.lower() != '.spr':
         raise ValueError('Unsupported minimap path from table')
     extensions = {'.bsp', '.cam', '.dds', '.ebp', '.r3m', '.r3t', '.r3x', '.rvp', '.spt'}
-    paths = [p for p in (client / bsp.parent).iterdir() if p.is_file() and p.suffix.lower() in extensions]
+    map_dir = client / bsp.parent
+    paths = [p for p in map_dir.iterdir() if p.is_file() and p.suffix.lower() in extensions]
+    # CLevel selects sky2 by entity-file existence, otherwise it tries sky.
+    # Stage only the selected entity and its same-stem material/texture archives.
+    for variant in ('sky2', 'sky'):
+        entity = map_dir / variant / f'{bsp.stem}{variant}.r3e'
+        if entity.is_file():
+            paths.append(entity)
+            paths.extend(archive for suffix in ('.r3m', '.r3t')
+                         if (archive := entity.with_suffix(suffix)).is_file())
+            break
     paths.extend((client/'Map/Entity').glob('*.rpk'))
     paths.append(client/'System/Shader/LitGrass1.vso')
     if (client/minimap).is_file():

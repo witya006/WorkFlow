@@ -1,3 +1,7 @@
+2026-11-11 — NeutralB 182, PASS_LIVE_TERRAIN_VISIBLE_WITH_PINNED_SKY_ASSETS.
+The same client renders textured terrain after staging the selected sky assets.
+[Evidence and remaining work](research/client455-neutralb-sky.md)
+
 2026-11-11 — World observation 181, PASS_PASSIVE_OBSERVATION.
 Captured NeutralB after the accepted position response and again after
 three seconds. The avatar is visible. Terrain and sky remain visually open.
