@@ -1,0 +1,149 @@
+{
+  "status": "PARTIAL_LIVE_MONSTER_STAND_FRAMES",
+  "scope": "Visible Youngflem standing animation on NeutralB after one bounded camera drag.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "a779670eeb21a2510eb74e56bfdb81bf03caabc9f05113a6ed087d672c724cbd",
+    "bytes": 2384896,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x187410",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "cae40ed7d41d150c8b24f9dbd4bc4f26585e865e346bf085f2c29e1cf8199cbf",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "cae40ed7d41d150c8b24f9dbd4bc4f26585e865e346bf085f2c29e1cf8199cbf"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "6d17216becc5520d3db89b88bfe4ab5ac538d23ba50c49560965581923a65d05"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "d3dc73872d922da7535f6cd45f32d79dcc3c98e0efdc26de9e533818a9799241"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "d6d64f9917b71fca7666a9e5c506d0497b36d377573946436dde0a184150fedc"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "df0d092190f289fcb1adcdb9cb3da15a0fd6cc22e97ff4f95a3b48f32b44385d"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "bb2dac4a49befdd2a50d8e53b4cec9d7bfe965d212f7c77386a5e57c2f1c1698"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "dec25be5188e43064a216485813ba4e434973c89b5f0fbfff097ac5fe6812f6c"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "6569042ec93942ae52c0586a5531071adc653788b46361ea01e856c1508ccf03"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "monster-animation-reference": {
+      "file": "inventory/client455-monster-animation-reference.json",
+      "sha256": "c72e5732ebae3221b16f0dc86285829bea4e1401aac97a235c20034f5d9afe9e"
+    },
+    "monster-view-live": {
+      "file": "artifacts/client455-progress/monster190/live.json",
+      "sha256": "42f494705b0dc48ef1242ed8b0378d82a0a0102694b2d35b47fbd6fb965410fe"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/monster190/live.json",
+    "sha256": "42f494705b0dc48ef1242ed8b0378d82a0a0102694b2d35b47fbd6fb965410fe"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_view.py",
+    "sha256": "a4ae28215ff33d87b05853f1b2aef67f08123545b291a8a5fb38a2737c8eb8ff"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "d395c738394a9e1acec6ac56e50236975613e2ea39ebb67dbb131147d2b7b04d"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "b6bcf558cf69c41668b0d56e48cd34c5b292379f6308d492517c311ffb69baca"
+    },
+    {
+      "file": "scripts/client455_camera_input_port.py",
+      "sha256": "6ce8a34fccf949608ae58f1c065b14818b90f7a69d5bc8d49468793f4cb261ac"
+    },
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "ed221ccb7e7ac347047cbb89c30875d4f5193b817091077e6eb3194f5659e1c3"
+    },
+    {
+      "file": "scripts/checkpoint_client455_monster_animation.py",
+      "sha256": "847e91a4cc51edffe189df920e3fb672aed3516cf13a6d057b43fbc0bfc64b96"
+    }
+  ],
+  "camera_elevation": [
+    40.0,
+    22.5
+  ],
+  "frames": [
+    {
+      "file": "work/m9/a779670e/world-monster-live-taiwan001/world-monster-0.png",
+      "sha256": "95a03d0524c00f274dc94bf5c7ce3914ed663da5ce51e5d796c387ee04be61ac",
+      "elapsed_ms": 1219,
+      "actor": 1032066,
+      "mesh": 0,
+      "animation": 0,
+      "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+      "bone_frame": 1556,
+      "screen_clip": [
+        -0.668967,
+        0.331208
+      ]
+    },
+    {
+      "file": "work/m9/a779670e/world-monster-live-taiwan001/world-monster-1.png",
+      "sha256": "3d574ecb86b8b25fe7bca8f1c5f2dc3281f648509a952682d9cd3d6c58ef3326",
+      "elapsed_ms": 1406,
+      "actor": 1032066,
+      "mesh": 0,
+      "animation": 0,
+      "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+      "bone_frame": 2480,
+      "screen_clip": [
+        -0.684562,
+        0.309442
+      ]
+    },
+    {
+      "file": "work/m9/a779670e/world-monster-live-taiwan001/world-monster-2.png",
+      "sha256": "dd8bf3e0bd486828f66926edc04fb1005ebb3b20a881c20006afd5d6f3a444a1",
+      "elapsed_ms": 1609,
+      "actor": 1032066,
+      "mesh": 0,
+      "animation": 0,
+      "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+      "bone_frame": 3484,
+      "screen_clip": [
+        -0.702434,
+        0.286591
+      ]
+    }
+  ],
+  "wing_stand_lookups": 17,
+  "wing_walk_lookups": 14,
+  "full_455_animation_match": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

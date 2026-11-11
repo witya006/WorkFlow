@@ -9067,7 +9067,7 @@
       "id": "CLIENT455-MONSTER-ANIMATION-189",
       "area": "character",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-animation-checkpoint.json",
         "inventory/client455-monster-animation-reference.json"
@@ -9076,6 +9076,20 @@
       "gaps": [
         "Visual comparison of pose, tempo, turning and trajectory",
         "Complete Force animation selection, targeting and removal"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-STAND-190",
+      "area": "character",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-view-checkpoint.json"
+      ],
+      "description": "A Youngflem is fully visible across three ordinary-client NeutralB frames while its standing clip advances.",
+      "gaps": [
+        "Compare pose and tempo with 455",
+        "Observe walk, turning and movement of the same actor"
       ]
     }
   ],

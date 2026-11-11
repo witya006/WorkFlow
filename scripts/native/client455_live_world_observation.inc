@@ -32,7 +32,7 @@ static RF455WorldCaptureResult RF455_SaveWorldFrame(const char* filename) {
 static void RF455_SampleMonsterFrame(RF455WorldObservation& state, ULONGLONG elapsed) {
     const auto draw = state.monsterDraw;
     state.monsterDraw = {};
-    if (!draw.present || elapsed < state.nextMonsterCaptureAt) return;
+    if (!draw.present || elapsed < 1200 || elapsed < state.nextMonsterCaptureAt) return;
 
     const unsigned index = state.monsterCaptures++;
     state.sampledMonster = draw.serial;

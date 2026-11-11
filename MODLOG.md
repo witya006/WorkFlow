@@ -1,3 +1,9 @@
+2026-11-11 — NeutralB 190, PARTIAL_LIVE_MONSTER_STAND_FRAMES.
+
+One short right drag exposes a Youngflem in three ordinary-client frames.
+The frames record advancing ticks of the same standing clip.
+[Evidence](research/client455-monster-view.md)
+
 2026-11-11 — NeutralB 189, PARTIAL_LIVE_MONSTER_ANIMATION.
 
 The ordinary client resolves Wing stand and walk keys on NeutralB.
