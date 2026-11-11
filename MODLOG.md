@@ -1,3 +1,9 @@
+2026-11-11 — Monster health 194, PARTIAL_COMPONENT_MONSTER_HEALTH_FRACTION.
+
+The ordinary item dispatcher applies 13/27 and 13/29 monster fractions.
+Component coverage includes staged Force impact, healing and short input.
+[Evidence](research/client455-monster-health.md)
+
 2026-11-11 — Monster Force damage 193, PARTIAL_COMPONENT_MONSTER_FORCE_DAMAGE.
 
 The ordinary combat dispatcher creates the victim and attacker records.

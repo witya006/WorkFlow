@@ -3,8 +3,10 @@
 #include "gameobject/manager/ccharactermgr.h"
 #include "gameobject/board/common/cboardmanager.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
+#include "network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h"
 
 #include <array>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <memory>
@@ -16,11 +18,33 @@ void require(bool condition, const char* message) {
     std::exit(1);
 }
 
-void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary) {
+bool sendHealth(CNetMsgProcessor_ItemArrangement& processor, DWORD serial, BYTE opcode, WORD fraction,
+                bool truncated = false) {
+    std::array<char, 16> payload{};
+    const bool targetInfo = opcode == 27;
+    const std::size_t type = targetInfo ? 2 : 1;
+    payload[type] = CTI_MONSTER;
+    std::memcpy(payload.data() + type + 1, &serial, sizeof serial);
+    std::memcpy(payload.data() + type + 5, &fraction, sizeof fraction);
+    _MSG_HEADER header{WORD(4 + (targetInfo ? 16 : 8) - (truncated ? 1 : 0)), {13, opcode}};
+    return processor.AnalysisServerPacket(&header, payload.data());
+}
+
+void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth) {
     constexpr std::array<std::int32_t, 6> amounts{70000, 4500, 321, 1, -1, -2};
     std::array<CMonster*, amounts.size()> targets{};
     targets[0] = &primary;
     CNetMsgProcessor_Combat processor;
+    CNetMsgProcessor_ItemArrangement itemProcessor;
+    CCharacter& healthOwner = primary;
+    const auto expectRate = [&healthOwner](float expected) {
+        require(std::fabs(healthOwner.GetHPRate() - expected) < 0.000001f, "Health from the ordinary actor getter");
+    };
+    if (checkHealth) {
+        expectRate(1.0f);
+        require(sendHealth(itemProcessor, primary.GetIndex(), 29, 8000), "Immediate health without attackers");
+        expectRate(0.8f);
+    }
     std::array<char, 15 + 14 * amounts.size()> payload{};
     const DWORD serial = wing.GetIndex();
     payload[0] = CTI_MONSTER;
@@ -62,6 +86,10 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary) {
 
     auto* incoming = primary.GetAttackerInfo(&wing);
     const auto hp = primary.GetHP();
+    if (checkHealth) {
+        require(sendHealth(itemProcessor, primary.GetIndex(), 29, 5000), "Queue received health before impact");
+        expectRate(0.8f);
+    }
     constexpr DWORD original = 70000;
     std::srand(613);
     const bool add = (std::rand() % 2) != 0;
@@ -73,15 +101,27 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary) {
     primary.GetCombatState()->ProcessDamage();
     require(incoming->GetCurDamagePoint() == first && incoming->GetTotalDamagePoint() == original - first &&
             incoming->GetEffectFrameNum() == 1, "First impact uses the 455 jitter and pending damage");
+    if (checkHealth) expectRate(0.8f - (0.8f - 0.5f) * float(double(first) / original));
     incoming->SetDamaged(TRUE);
     primary.GetCombatState()->ProcessDamage();
     require(incoming->GetCurDamagePoint() == original - first && !incoming->GetTotalDamagePoint() &&
             !incoming->GetEffectFrameNum() && primary.GetHP() == hp, "Final impact uses the remaining damage");
+    if (checkHealth) {
+        expectRate(0.5f);
+        require(sendHealth(itemProcessor, primary.GetIndex(), 29, 9000), "Recovery applies with a queued attacker");
+        expectRate(0.9f);
+        require(sendHealth(itemProcessor, primary.GetIndex(), 27, 9500), "Successful target info updates health");
+        expectRate(0.95f);
+        require(!sendHealth(itemProcessor, primary.GetIndex(), 29, 1000, true), "Short update is rejected");
+        expectRate(0.95f);
+        require(targets[1]->GetHPRate() == 1.0f, "Health belongs to the addressed monster");
+    }
 }
 }
 
 int main(int argc, char** argv) {
-    require(argc == 5 || (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
+    const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
+    require(argc == 5 || checkHealth || (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
     ChInterface renderer;
@@ -110,13 +150,18 @@ int main(int argc, char** argv) {
     require(wing->GetMeshID() == 1, "Actor owns the registered mesh identity");
 
     if (argc == 6) {
-        checkDamage(*manager, *wing, *target);
+        checkDamage(*manager, *wing, *target, checkHealth);
         manager->Clear();
         manager.reset();
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
-        std::puts("{\"status\":\"PASS\",\"target_rows\":6,\"resolved_targets\":5,"
-                  "\"largest_damage\":70000,\"verified_impact_frames\":2}");
+        if (checkHealth)
+            std::puts("{\"status\":\"PASS\",\"health_routes\":[27,29],\"initial_fraction\":1,"
+                      "\"before_impact\":0.8,\"after_final_impact\":0.5,\"after_recovery\":0.95,"
+                      "\"verified_impact_frames\":2,\"short_update_rejected\":true}");
+        else
+            std::puts("{\"status\":\"PASS\",\"target_rows\":6,\"resolved_targets\":5,"
+                      "\"largest_damage\":70000,\"verified_impact_frames\":2}");
         return 0;
     }
 

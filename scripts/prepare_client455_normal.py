@@ -61,6 +61,7 @@ from client455_initial_download_port import port_initial_download
 from client455_camera_input_port import port_camera_input
 from client455_world_update_port import port_world_updates
 from client455_monster_force_port import port_monster_force
+from client455_monster_health_port import port_monster_health
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -844,6 +845,8 @@ def main():
             raw,world_updates_changed=port_world_updates(raw,relative,native,section)
             raw,monster_force_changed=port_monster_force(raw,relative,native)
             if monster_force_changed:changes.append('455 combat 5/9 monster Force owner and ordinary action')
+            raw,monster_health_changed=port_monster_health(raw,relative,native)
+            if monster_health_changed:changes.append('455 monster health fraction and 13/27, 13/29 consumers')
             if world_updates_changed:changes.append('455 world updates and ordinary town attack check')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical

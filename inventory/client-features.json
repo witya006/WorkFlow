@@ -9126,7 +9126,7 @@
       "id": "CLIENT455-MONSTER-FORCE-DAMAGE-193",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-force-damage-checkpoint.json",
         "inventory/client455-monster-force-damage-reference.json"
@@ -9135,6 +9135,22 @@
       "gaps": [
         "Actual impact events and live Force",
         "Health fraction, special hit reaction and per-target Force effects"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-HEALTH-194",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-health-checkpoint.json",
+        "inventory/client455-monster-health-reference.json"
+      ],
+      "description": "Ordinary 13/27 and 13/29 apply monster health fractions with queued decreases timed to Force impacts and immediate healing. The same build walks on NeutralB.",
+      "gaps": [
+        "Live HP and Force events and the visible target bar",
+        "Full target information, UI notification and requests",
+        "Special hit reaction, effects, death and other actor types"
       ]
     }
   ],
