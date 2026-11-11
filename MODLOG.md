@@ -1,3 +1,9 @@
+2026-11-11 — Monster Force damage 193, PARTIAL_COMPONENT_MONSTER_FORCE_DAMAGE.
+
+The ordinary combat dispatcher creates the victim and attacker records.
+The impact consumer distributes 70,000 damage across two fixture frames.
+[Evidence](research/client455-monster-force-damage.md)
+
 2026-11-11 — Monster Force result 192, PARTIAL_COMPONENT_MONSTER_FORCE_RESULT.
 
 The normal Combat dispatcher assigns Force from 5/9 and selects both

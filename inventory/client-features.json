@@ -9111,7 +9111,7 @@
       "id": "CLIENT455-MONSTER-FORCE-RESULT-192",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-force-result-checkpoint.json",
         "inventory/client455-monster-force-result-reference.json"
@@ -9120,6 +9120,21 @@
       "gaps": [
         "All victims, damage, Force effects and other attacker types",
         "Live result, playback and matching turn rate"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-FORCE-DAMAGE-193",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-force-damage-checkpoint.json",
+        "inventory/client455-monster-force-damage-reference.json"
+      ],
+      "description": "Ordinary 5/9 queues known victims, preserves 32-bit damage and accounts for damage at the selected impact frames.",
+      "gaps": [
+        "Actual impact events and live Force",
+        "Health fraction, special hit reaction and per-target Force effects"
       ]
     }
   ],

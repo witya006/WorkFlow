@@ -15,10 +15,74 @@ void require(bool condition, const char* message) {
     std::fprintf(stderr, "%s\n", message);
     std::exit(1);
 }
+
+void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary) {
+    constexpr std::array<std::int32_t, 6> amounts{70000, 4500, 321, 1, -1, -2};
+    std::array<CMonster*, amounts.size()> targets{};
+    targets[0] = &primary;
+    CNetMsgProcessor_Combat processor;
+    std::array<char, 15 + 14 * amounts.size()> payload{};
+    const DWORD serial = wing.GetIndex();
+    payload[0] = CTI_MONSTER;
+    std::memcpy(payload.data() + 1, &serial, sizeof serial);
+    payload[5] = 24;
+    payload[6] = 1;
+    payload[12] = 1;
+    payload[14] = static_cast<char>(amounts.size());
+    for (std::size_t i = 0; i < amounts.size(); ++i) {
+        const DWORD targetSerial = primary.GetIndex() + static_cast<DWORD>(i);
+        if (i != 0 && i != 2) {
+            targets[i] = manager.AddMonster(targetSerial);
+            require(targets[i], "Create an ordinary victim");
+            targets[i]->SetIndex(targetSerial);
+        }
+        const std::size_t offset = 15 + 14 * i;
+        payload[offset] = CTI_MONSTER;
+        std::memcpy(payload.data() + offset + 1, &targetSerial, sizeof targetSerial);
+        std::memcpy(payload.data() + offset + 5, &amounts[i], sizeof amounts[i]);
+    }
+    _MSG_HEADER header{WORD(4 + payload.size()), {5, 9}};
+    require(processor.AnalysisServerPacket(&header, payload.data()), "Normal dispatcher receives multi-target Force");
+    require(wing.GetCombatState()->GetTotalEnemyNum(ET_VICTIM) == 5 && wing.GetAnimationID() == 0x10c0,
+            "All known targets enter the attack");
+    for (std::size_t i = 0; i < amounts.size(); ++i) {
+        auto* target = targets[i];
+        if (!target) continue;
+        auto* outgoing = wing.GetVictimInfo(target);
+        auto* incoming = target->GetAttackerInfo(&wing);
+        const DWORD attackPoint = i == 5 ? static_cast<DWORD>(-2) : i < 2 ? amounts[i] : 0;
+        const DWORD damage = i < 2 ? amounts[i] : 0;
+        require(outgoing && incoming && outgoing->GetAttacked() && outgoing->GetAttackPoint() == attackPoint &&
+                incoming->GetTotalDamagePoint() == damage && incoming->GetCurDamagePoint() == 0 &&
+                incoming->GetDamageType_CT() == 1 && incoming->GetDamageType_AT() == CAT_FORCE &&
+                incoming->GetDamageType_Dist() == ADT_NEAR && incoming->GetSFItem()->HasForceRow455() &&
+                incoming->GetSFItem()->GetDTIndex() == 24,
+                "Per-victim Force record retains damage, type, and critical state");
+    }
+
+    auto* incoming = primary.GetAttackerInfo(&wing);
+    const auto hp = primary.GetHP();
+    constexpr DWORD original = 70000;
+    std::srand(613);
+    const bool add = (std::rand() % 2) != 0;
+    const DWORD jitter = std::rand() % 7001;
+    const DWORD first = add ? 35000 + jitter : 35000 - jitter;
+    std::srand(613);
+    incoming->SetEffectFrameNum(2);
+    incoming->SetDamaged(TRUE);
+    primary.GetCombatState()->ProcessDamage();
+    require(incoming->GetCurDamagePoint() == first && incoming->GetTotalDamagePoint() == original - first &&
+            incoming->GetEffectFrameNum() == 1, "First impact uses the 455 jitter and pending damage");
+    incoming->SetDamaged(TRUE);
+    primary.GetCombatState()->ProcessDamage();
+    require(incoming->GetCurDamagePoint() == original - first && !incoming->GetTotalDamagePoint() &&
+            !incoming->GetEffectFrameNum() && primary.GetHP() == hp, "Final impact uses the remaining damage");
+}
 }
 
 int main(int argc, char** argv) {
-    require(argc == 5, "Expected actual 455 Force and Wing inputs");
+    require(argc == 5 || (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
+            "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
     ChInterface renderer;
     g_ifCharIF = &renderer;
@@ -44,6 +108,17 @@ int main(int argc, char** argv) {
     wing->SetMesh(1);
     target->SetIndex(targetSerial);
     require(wing->GetMeshID() == 1, "Actor owns the registered mesh identity");
+
+    if (argc == 6) {
+        checkDamage(*manager, *wing, *target);
+        manager->Clear();
+        manager.reset();
+        require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
+        g_ifCharIF = nullptr;
+        std::puts("{\"status\":\"PASS\",\"target_rows\":6,\"resolved_targets\":5,"
+                  "\"largest_damage\":70000,\"verified_impact_frames\":2}");
+        return 0;
+    }
 
     CNetMsgProcessor_Combat processor;
     std::array<char, 29> payload{};

@@ -48,8 +48,8 @@ def verify_reference():
         force_action='0x30000002', monster_force_permitted_by_reference=True))
 
 
-def verify_live(link):
-    report = json.loads(LIVE.read_text())
+def verify_live(link, live_path=LIVE):
+    report = json.loads(live_path.read_text())
     require(report['normal_link_sha256'] == sha(path('normal-link')) and report['executable'] == link['executable']
             and sha(WS / report['staged_executable']) == link['executable']['sha256'], 'Exact live PE')
     check(report['events'])

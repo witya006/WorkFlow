@@ -61,22 +61,34 @@ bool RF455SkillForceData::loadFiles(const char* base,const char* localized){
 RF455ItemDataSpan RF455SkillForceData::get(std::uint8_t subtype,std::uint32_t index)const{
     const int number=tableNumber(subtype);return number<0?RF455ItemDataSpan{}:tables[number].get(index);
 }
-bool RF455SkillForceData::usesMonsterAttackClip(std::uint8_t subtype, std::uint32_t index,
-                                              std::uint8_t level) const {
-    constexpr unsigned firstEffect = 144;
+namespace {
+constexpr unsigned firstEffect = 144;
+
+bool hasAttackCategory(RF455ItemDataSpan row) {
     constexpr unsigned effectStride = 40;
     constexpr unsigned effectCount = 7;
-    const auto row = get(subtype, index);
     if (row.size <= firstEffect + (effectCount - 1) * effectStride) return false;
 
     const auto* effects = row.data + firstEffect;
-    const auto effectiveLevel = subtype == 2 ? 1 : level > 7 ? 7 : level;
-    if (effects[0] != 0xff && effects[effectiveLevel] == 4) return false;
     for (unsigned i = 0; i < effectCount; ++i) {
         const auto category = effects[i * effectStride];
         if (category == 0 || category == 4) return true;
     }
     return false;
+}
+}
+
+bool RF455SkillForceData::hasAttackEffect(std::uint8_t subtype, std::uint32_t index) const {
+    return hasAttackCategory(get(subtype, index));
+}
+
+bool RF455SkillForceData::usesMonsterAttackClip(std::uint8_t subtype, std::uint32_t index,
+                                              std::uint8_t level) const {
+    const auto row = get(subtype, index);
+    if (!hasAttackCategory(row)) return false;
+    const auto* effects = row.data + firstEffect;
+    const auto effectiveLevel = subtype == 2 ? 1 : level > 7 ? 7 : level;
+    return effects[0] == 0xff || effects[effectiveLevel] != 4;
 }
 RF455SkillForceItem::RF455SkillForceItem(){
     // An owner token,never a callable address from the input binary.
