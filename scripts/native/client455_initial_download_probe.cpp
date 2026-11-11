@@ -34,6 +34,8 @@ void base()
     write(bytes, 3, std::uint32_t{431250});
     write(bytes, 7, std::uint16_t{11});
     write(bytes, 13, std::uint32_t{70000});
+    write(bytes, 54, std::uint8_t{0x9a});
+    write(bytes, 55, std::uint16_t{0x7654});
     write(bytes, 65, std::uint32_t{81000});
     write(bytes, 69, std::uint16_t{19});
     write(bytes, 71, -22.25f);
@@ -46,7 +48,8 @@ void base()
     RF455BaseDownload decoded{};
     check(RF455_ReadBaseDownload(bytes.data(), bytes.size(), decoded), "431 byte base");
     check(decoded.zoneIndex == 421 && decoded.experienceMillionths == 431250 && decoded.classes[0] == 11 &&
-          decoded.hp == 70000 && decoded.maxFP == 81000 && decoded.mapIndex == 19 &&
+          decoded.hp == 70000 && decoded.positionDelta == 0x9a && decoded.positionMask == 0x7654 &&
+          decoded.maxFP == 81000 && decoded.mapIndex == 19 &&
           decoded.startPosition[0] == -22.25f && decoded.startPosition[2] == 333.5f, "base core fields");
     check(decoded.equipment[7].table == 7 && decoded.equipment[7].index == 901 &&
           decoded.accessories[6].slot == -1 && decoded.specialEquipment.table == 37 &&

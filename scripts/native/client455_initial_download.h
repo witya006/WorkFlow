@@ -39,8 +39,8 @@ struct RF455BaseDownload {
     std::uint32_t hp, sp, fp;
     double rankingValues[3];
     std::uint32_t featureState;
-    std::uint8_t featureMode, entryMode;
-    std::uint16_t entryIndex;
+    std::uint8_t featureMode, positionDelta;
+    std::uint16_t positionMask;
     std::uint32_t maxHP, maxSP, maxFP;
     std::uint16_t mapIndex;
     float startPosition[3];
@@ -165,6 +165,7 @@ struct RF455StoreDownload {
 
 static_assert(sizeof(RF455EquipmentEntry) == 21 && sizeof(RF455AccessoryEntry) == 20);
 static_assert(sizeof(RF455BaseDownload) == 431 && offsetof(RF455BaseDownload, mapIndex) == 69 &&
+              offsetof(RF455BaseDownload, positionDelta) == 54 && offsetof(RF455BaseDownload, positionMask) == 55 &&
               offsetof(RF455BaseDownload, equipment) == 83 && offsetof(RF455BaseDownload, accessories) == 251 &&
               offsetof(RF455BaseDownload, specialEquipment) == 391 && offsetof(RF455BaseDownload, maxSecondaryGauge) == 421);
 static_assert(sizeof(RF455InventoryEntry) == 30 && offsetof(RF455InventoryEntry, slot) == 11 &&

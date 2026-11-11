@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T13:45:12.438153+00:00",
+  "measured_at_utc": "2026-11-11T14:21:08.628154+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2914,
-    "unique_functions_with_complete_assembly_cfg": 1138,
-    "unique_pinned_code_bytes": 817908,
-    "reports": 209,
-    "code_range_occurrences": 4602,
+    "unique_functions_with_pinned_code": 2921,
+    "unique_functions_with_complete_assembly_cfg": 1146,
+    "unique_pinned_code_bytes": 821142,
+    "reports": 210,
+    "code_range_occurrences": 4613,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -89,6 +89,10 @@
     {
       "file": "inventory/client455-avatar-health-reference.json",
       "sha256": "95676de0f3a2a8ecef296b0508da93f591c51ff033ff183c58d1f8494302046f"
+    },
+    {
+      "file": "inventory/client455-avatar-movement-reference.json",
+      "sha256": "5649d4faf0778189c700e8d0965aa19d88ee1e06385db194694355adac518bae"
     },
     {
       "file": "inventory/client455-avatar-stage-reference.json",
@@ -901,6 +905,10 @@
       "sha256": "5db540c1b7b83f11b3aee2fba8f4b977733bf7a3d4d3b024a1ade546b90ce237"
     },
     {
+      "file": "artifacts/client455-progress/movement213/reference.json",
+      "sha256": "406da407eaa00a2109ecdb36a177a45ff2f5a3eff3ed42fac35d09dc90c46437"
+    },
+    {
       "file": "artifacts/client455-progress/avatar180-reference.json",
       "sha256": "1a48dda9f4e4523952e2e8df8f3d2034e2d3e4bb8a0c282a2a6864e35cf30218"
     },
@@ -1268,7 +1276,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "cd389ec129a250399a3a3da8324fbee0be308828b0b146059223366a16ef8998"
+      "sha256": "d2474aa545e9cada28c02cf82ff0f94b2bef1ea5eaf53e34651065c90a247eb6"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -6171,6 +6179,25 @@
         {
           "file": "artifacts/client455-progress/avatar180-reference.json",
           "instructions": 29
+        }
+      ]
+    },
+    {
+      "rva": "0x3d370",
+      "ida_name": "sub_43D370",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d370",
+          "bytes": 130
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 45
         }
       ]
     },
@@ -18029,6 +18056,7 @@
       "rva": "0x162b70",
       "ida_name": "sub_562B70",
       "reports": [
+        "inventory/client455-avatar-movement-reference.json",
         "inventory/client455-move-correction-reference.json"
       ],
       "ranges": [
@@ -18038,6 +18066,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 17
+        },
         {
           "file": "artifacts/client455-progress/move-correction210/reference.json",
           "instructions": 17
@@ -18059,6 +18091,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x162e00",
+      "ida_name": "sub_562E00",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x162e00",
+          "bytes": 116
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 44
+        }
+      ]
     },
     {
       "rva": "0x162e80",
@@ -18378,6 +18429,7 @@
       "ida_name": "sub_569D30",
       "reports": [
         "inventory/client455-account-reference.json",
+        "inventory/client455-avatar-movement-reference.json",
         "inventory/client455-network-codec-reference.json"
       ],
       "ranges": [
@@ -18386,7 +18438,12 @@
           "bytes": 73
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 27
+        }
+      ]
     },
     {
       "rva": "0x169d80",
@@ -18607,6 +18664,7 @@
       "rva": "0x16a960",
       "ida_name": "sub_56A960",
       "reports": [
+        "inventory/client455-avatar-movement-reference.json",
         "inventory/client455-world-entry-reference.json"
       ],
       "ranges": [
@@ -18616,6 +18674,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 107
+        },
         {
           "file": "artifacts/client455-progress/world-entry139-reference/session.json",
           "instructions": 107
@@ -20471,6 +20533,48 @@
       ]
     },
     {
+      "rva": "0x1c1830",
+      "ida_name": "sub_5C1830",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c1830",
+          "bytes": 1965
+        },
+        {
+          "rva": "0x62f0d0",
+          "bytes": 54
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 543
+        }
+      ]
+    },
+    {
+      "rva": "0x1c2ad0",
+      "ida_name": "sub_5C2AD0",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c2ad0",
+          "bytes": 288
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 97
+        }
+      ]
+    },
+    {
       "rva": "0x1c2bf0",
       "ida_name": "sub_5C2BF0",
       "reports": [
@@ -20490,6 +20594,25 @@
       ]
     },
     {
+      "rva": "0x1c2ca0",
+      "ida_name": "sub_5C2CA0",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c2ca0",
+          "bytes": 35
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
       "rva": "0x1c2cd0",
       "ida_name": "sub_5C2CD0",
       "reports": [
@@ -20505,6 +20628,44 @@
         {
           "file": "artifacts/client455-progress/position185-reference.json",
           "instructions": 19
+        }
+      ]
+    },
+    {
+      "rva": "0x1c3a50",
+      "ida_name": "sub_5C3A50",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c3a50",
+          "bytes": 423
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 133
+        }
+      ]
+    },
+    {
+      "rva": "0x1c3c00",
+      "ida_name": "sub_5C3C00",
+      "reports": [
+        "inventory/client455-avatar-movement-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c3c00",
+          "bytes": 223
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/movement213/reference.json",
+          "instructions": 78
         }
       ]
     },
@@ -49742,8 +49903,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 4,
-    "unique_functions_with_complete_assembly_cfg": 4
+    "unique_functions_with_pinned_code": 7,
+    "unique_functions_with_complete_assembly_cfg": 8
   },
   "M6": "OPEN",
   "M9": "OPEN",

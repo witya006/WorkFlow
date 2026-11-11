@@ -27,6 +27,8 @@ struct RF455WorldObservation {
     unsigned remaining = 0;
     ULONGLONG acceptedAt = 0;
     bool walk = false;
+    unsigned walkDurationMs = 1000;
+    bool zeroPositionReported = false;
     bool walkKeyObserved = false;
     bool walkKeyReleased = false;
     bool camera = false;
@@ -103,6 +105,8 @@ inline void RF455_ArmWorldObservation(BYTE mode) {
         const bool walk = GetEnvironmentVariableA("RF455_OBSERVE_WALK", enabled, sizeof(enabled)) == 1 &&
                           enabled[0] == '1';
         state = {walk ? 6u : 3u, GetTickCount64(), walk};
+        if (walk && GetEnvironmentVariableA("RF455_OBSERVE_MOVEMENT", enabled, sizeof(enabled)) == 1 &&
+            enabled[0] == '1') state.walkDurationMs = 8000;
         state.camera = !walk && GetEnvironmentVariableA("RF455_OBSERVE_CAMERA", enabled, sizeof(enabled)) == 1 &&
                        enabled[0] == '1';
         state.captureMonsters = walk && GetEnvironmentVariableA("RF455_CAPTURE_MONSTERS", enabled, sizeof(enabled)) == 1 &&

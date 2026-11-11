@@ -179,7 +179,8 @@
       "estimate_high": 25,
       "completed_full_domain": false,
       "done": [
-        "После выбора загружена NeutralB, принят ответ стартовой позиции3/2,применены обновления движения и отметок объектов"
+        "После выбора загружена NeutralB, принят ответ стартовой позиции3/2,применены обновления движения и отметок объектов",
+        "На NeutralB сервер подтвердил ходьбу и остановку после применения позиционных параметров из 3/4"
       ],
       "remaining": [
         "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers",
@@ -202,7 +203,8 @@
         "client455-world-updates-checkpoint",
         "client455-monster-data-checkpoint",
         "client455-world-refresh-checkpoint",
-        "client455-move-correction-checkpoint"
+        "client455-move-correction-checkpoint",
+        "client455-avatar-movement-checkpoint"
       ]
     },
     {
@@ -342,7 +344,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "43739e29293883b6b2b226c808e5b70b07b6a165213446d340bfd7f762290f7d",
+      "sha256": "4ae06f4f65cdcd3e0c81d3b932af46f1a84c4a6caa12d534e598910d75f58652",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -884,6 +886,14 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-avatar-movement-checkpoint": {
+      "file": "inventory/client455-avatar-movement-checkpoint.json",
+      "sha256": "3adfdf7f878df05db388d933ae2f86fb8a8586288d6f71b6f2a24d1723e53fff",
+      "status": "PARTIAL_LIVE_AVATAR_MOVEMENT",
+      "scope": "455 outbound movement, periodic position and stop; bounded movement and stop receive routes.",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
       "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
@@ -1073,7 +1083,7 @@
       "sha256": "ac6f203ebe064eb39d55b1cfe23616b48d76e4607afedeb1787c660816dac6c2",
       "status": "PARTIAL_LIVE_BASE_PORTAL",
       "scope": "Ordinary inventory slot, send ring, response dispatcher and scheduled map transition.",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-chat-checkpoint": {
@@ -1170,7 +1180,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "d80f2d911610c2289e8002e7cae675b48237dee82351510fa39cd432b0dd8c42"
+        "sha256": "7388d03d49c6615af6762d0245a082db75d9d54a140700b5f232168085146de0"
       },
       "build_exit": 0,
       "errors": [],
@@ -1180,11 +1190,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "1440912430386e7eb866b4f5185a42caf954d067a953e43f60db05c1f63549ac",
-        "bytes": 2409472,
+        "sha256": "e418869ce0756789b7f418d24aa4e6c474196d1883a85b80f9a430af0d0b1e75",
+        "bytes": 2411520,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18c0f0",
+        "entry_rva": "0x18c980",
         "sections": [
           ".text",
           ".rdata",
@@ -1197,7 +1207,7 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "d80f2d911610c2289e8002e7cae675b48237dee82351510fa39cd432b0dd8c42"
+        "sha256": "7388d03d49c6615af6762d0245a082db75d9d54a140700b5f232168085146de0"
       },
       "runtime_verified": false,
       "superseded_by_later_source_build": false
@@ -1234,11 +1244,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "c3d1c05ca29aaaad722fe04a3e25efc40ab1340c2cb35190b5eb266c1a15e43b",
-    "entries": 215,
+    "sha256": "2906a5ac64d54980f9ce6397f43c72041cfb3348a2689ba22a9c650e6df2a63e",
+    "entries": 216,
     "statuses": {
       "partial_component": 23,
-      "partial": 162,
+      "partial": 163,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1249,7 +1259,8 @@
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
       "CLIENT455-AVATAR-HEALTH-208",
-      "CLIENT455-BASE-PORTAL-212"
+      "CLIENT455-BASE-PORTAL-212",
+      "CLIENT455-AVATAR-MOVEMENT-213"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1319,7 +1330,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;215 overlapping historical records",
+        "measured": "12 domain planning map;216 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1481,7 +1492,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "c24d037acde087275c64b34549104a44e3cd9af89dfe6a98ff3084a2a5694c7b"
+    "sha256": "26e57997bebffa36f2dd2fff97dc2c4f9e7b77aecb8e074961bca08ad8d97c63"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

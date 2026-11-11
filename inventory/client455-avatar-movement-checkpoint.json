@@ -1,0 +1,340 @@
+{
+  "status": "PARTIAL_LIVE_AVATAR_MOVEMENT",
+  "scope": "455 outbound movement, periodic position and stop; bounded movement and stop receive routes.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e418869ce0756789b7f418d24aa4e6c474196d1883a85b80f9a430af0d0b1e75",
+    "bytes": 2411520,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18c980",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "4ae06f4f65cdcd3e0c81d3b932af46f1a84c4a6caa12d534e598910d75f58652",
+  "component": {
+    "status": "PASS",
+    "move_bytes": 26,
+    "position_bytes": 16,
+    "stop_bytes": 16,
+    "stop_result_bytes": 10,
+    "move_result_bytes": 17,
+    "exact_transport_bytes": true,
+    "pending_correction": true,
+    "local_stop_threshold": 10
+  },
+  "component_executable": {
+    "file": "work/client455-port/avatar-movement-probe/avatar-movement-probe.exe",
+    "sha256": "f0a1278eef198141d8e76b443a733e2f72e506caa63216a2132e6f9f9b42c7de"
+  },
+  "component_console": {
+    "file": "work/client455-port/avatar-movement-probe/avatar-movement.txt",
+    "sha256": "e8714dbaa095a31214236882c01b3a45bb0d92f675cd0fbae7fcfd0a6e82884f"
+  },
+  "live": {
+    "report": {
+      "file": "artifacts/client455-progress/client455-world-movement-live-taiwan-native.json",
+      "sha256": "ac0cc9d0738c0b78a803d5b1a95d0b838597d4148a143a37bb145603a7f646f9"
+    },
+    "events": {
+      "file": "work/m9/e418869c/world-movement-live-taiwan001/debug-events.jsonl",
+      "sha256": "2e6649317accdaf29ff031639e5faa26e56074bb98268e49bfc1fd4168272d1a"
+    },
+    "held_ms": 8000,
+    "displacement": 152.43009692642738,
+    "sent": {
+      "move": 18,
+      "report": 50,
+      "stop": 1
+    },
+    "received": {
+      "correction": 0,
+      "movement": 18,
+      "stop": 1
+    },
+    "samples": [
+      {
+        "index": 0,
+        "elapsed_ms": 31,
+        "avatar_action": 268435456,
+        "input_enabled": true,
+        "avatar_position": [
+          -6863.66,
+          631.439,
+          6218.9
+        ],
+        "camera_anchor": [
+          -6863.66,
+          631.439,
+          6218.9
+        ],
+        "yaw_pitch_distance": [
+          40.0,
+          180.0,
+          60.0
+        ]
+      },
+      {
+        "index": 1,
+        "elapsed_ms": 1000,
+        "avatar_action": 268435457,
+        "input_enabled": true,
+        "avatar_position": [
+          -6863.66,
+          630.396,
+          6210.46
+        ],
+        "camera_anchor": [
+          -6863.66,
+          630.396,
+          6210.46
+        ],
+        "yaw_pitch_distance": [
+          40.0,
+          180.0,
+          60.0
+        ]
+      },
+      {
+        "index": 2,
+        "elapsed_ms": 3000,
+        "avatar_action": 268435457,
+        "input_enabled": true,
+        "avatar_position": [
+          -6876.33,
+          626.062,
+          6184.26
+        ],
+        "camera_anchor": [
+          -6876.33,
+          626.062,
+          6184.26
+        ],
+        "yaw_pitch_distance": [
+          23.875,
+          140.352,
+          60.0
+        ]
+      },
+      {
+        "index": 3,
+        "elapsed_ms": 6500,
+        "avatar_action": 268435457,
+        "input_enabled": true,
+        "avatar_position": [
+          -6907.96,
+          622.496,
+          6147.23
+        ],
+        "camera_anchor": [
+          -6907.96,
+          622.496,
+          6147.23
+        ],
+        "yaw_pitch_distance": [
+          12.625,
+          320.352,
+          60.0
+        ]
+      },
+      {
+        "index": 4,
+        "elapsed_ms": 14000,
+        "avatar_action": 268435456,
+        "input_enabled": true,
+        "avatar_position": [
+          -6951.52,
+          622.496,
+          6094.66
+        ],
+        "camera_anchor": [
+          -6951.52,
+          622.496,
+          6094.66
+        ],
+        "yaw_pitch_distance": [
+          11.0,
+          504.648,
+          75.0
+        ]
+      },
+      {
+        "index": 5,
+        "elapsed_ms": 17000,
+        "avatar_action": 268435456,
+        "input_enabled": true,
+        "avatar_position": [
+          -6951.52,
+          622.496,
+          6094.66
+        ],
+        "camera_anchor": [
+          -6951.52,
+          622.496,
+          6094.66
+        ],
+        "yaw_pitch_distance": [
+          11.0,
+          504.648,
+          75.0
+        ]
+      }
+    ],
+    "zero_position_observed": false,
+    "first_attempt": {
+      "file": "work/m9/be020c26/world-movement-live-taiwan001/debug-events.jsonl",
+      "sha256": "ccf9e436be338a91990c9a4a070bef6aadea882fdb604561d6d487a5177f4cee"
+    },
+    "old_wire_run": {
+      "file": "artifacts/client455-progress/movement213/first-success.json",
+      "sha256": "4f64b52ee36ef4bd567f07548234949902de36c7abb7ca818715a2428fe85e91"
+    },
+    "old_wire_reentry": {
+      "file": "artifacts/client455-progress/movement213/failed-reentry.json",
+      "sha256": "c5afff5a97b81a112cca39f435fa6984c3e492ccca01868da53e16d3b07dfe3b"
+    },
+    "server_rejections": {
+      "file": "artifacts/client455-progress/movement213/server-rejections.json",
+      "sha256": "2d61d4b2b02931ad283dfa8376f00b118ed6ffdb3649dd55aad81be85300e132"
+    },
+    "reentry": {
+      "report": {
+        "file": "artifacts/client455-progress/client455-world-observation-live-taiwan-native.json",
+        "sha256": "51521c69b1050979690fb696d37933b1449ec18f7b27ab82a7e933c1b8aa5777"
+      },
+      "events": {
+        "file": "work/m9/e418869c/world-observation-live-taiwan001/debug-events.jsonl",
+        "sha256": "45e51bd071516a4136931432279552dcacc1842a2beefab082908c840839af06"
+      },
+      "position": [
+        -7063.18,
+        622.496,
+        6083.94
+      ],
+      "distance_from_start": 240.8784589787974,
+      "distance_from_stop_sample": 112.17341039658183,
+      "exact_stop_sample_match": false,
+      "accepted_moves_after_last_sample": 4
+    }
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_avatar_movement.py",
+    "sha256": "d080de7527aabf345def9d21c1b154540aa2b31504e040bbaf45c5d54596ef89"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_avatar_movement_port.py",
+      "sha256": "937e9a08506e3b1d74026faf4c841715179ae2702112ff8b08b442eacc2ee880"
+    },
+    {
+      "file": "scripts/native/client455_avatar_movement.h",
+      "sha256": "1b50600ddb0423b98f6fa0f76190bac052f3517ca6534e9ca0b7658dd19dc859"
+    },
+    {
+      "file": "scripts/native/client455_avatar_movement.inc",
+      "sha256": "fc1170b38f672567eda0b82af7b37d3daec468fab5873d23149c09892ead1434"
+    },
+    {
+      "file": "scripts/native/client455_avatar_movement_probe.cpp",
+      "sha256": "3d53d05d4fd8db1f4703ef655348ebdd328c879754fc8d733f524d8fbbeea2e8"
+    },
+    {
+      "file": "scripts/native/client455_world_entry.inc",
+      "sha256": "77aae4f977b029d6bc863d1e41ec5df83d7b2c3506e4f06af434195f542bc4fc"
+    },
+    {
+      "file": "scripts/native/client455_world_position.inc",
+      "sha256": "d635e51f0a7ed21193091942df294379a6f1c6d2dde9675a18ee626782347429"
+    },
+    {
+      "file": "scripts/native/client455_initial_download.inc",
+      "sha256": "58fda5d7bcf672cbc4d3b540d8873237d4e6fe5b0c991105e7c0925fcd4e167c"
+    },
+    {
+      "file": "scripts/native/client455_initial_download.h",
+      "sha256": "6424f9e2ae31873153c111ab342a042defe24410ff5f46964a08e222e8e0cdbf"
+    },
+    {
+      "file": "scripts/native/client455_initial_download_probe.cpp",
+      "sha256": "e9203a11491d5e8ef0a8cef71b128e3c4a2ce5cf5db79263af07ac8d3c61f390"
+    },
+    {
+      "file": "scripts/probe_client455_initial_download.py",
+      "sha256": "8eb409f369ecc6b24393658cb2335c299711929c60094444b47d37abf63a3135"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "71ca78b8ecebceefbe39d6d5e27b2fff0d3f3470ee6b576b397d60effe995c33"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "c19721010cd5f9e6f9118cd32a7e083de8c94cffd3ad85a5e45e38aab5856c76"
+    },
+    {
+      "file": "scripts/native/client455_walk_observation.inc",
+      "sha256": "d10319111665b40c8eb232223498535bce0fdf51fd854444b60b62e09e58389b"
+    },
+    {
+      "file": "scripts/native/own_client_startup_debugger.cpp",
+      "sha256": "addb80e9d3d5159c3482dd36256a78a9df6026fd991343da0548cdbb6e2e0b0e"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "1550a146ddd61d54f1fbb4b215d81e60421868bd6e406a284527859ccf753284"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "4ac8f76cc30fb0eee47040e917270bc0f38da77590dc2b91195bac695341d99e"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "4ae06f4f65cdcd3e0c81d3b932af46f1a84c4a6caa12d534e598910d75f58652"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "de489e9839a4b1c6d3f01cfca0a5f69b345f1f0b4bb49ce095e4a33c61c50391"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "7388d03d49c6615af6762d0245a082db75d9d54a140700b5f232168085146de0"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "e67106235998877dbe17537ab74a58ef3a9fdce69b32e8a010ae20a607c2fd4e"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "f16257b7a1f980a2153a36ab814868295a660600f17f6219bad24feef8b1c1a7"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "e5b6513ef27e68ba4e4b084d6fb0cffbcb141b0b796bdf8211e68909ea960c71"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "027a74b2fdacf8cbc24085eec5d2a0dd0d9ba9351bade851739bc8a4cda557e6"
+    },
+    "avatar-movement-reference": {
+      "file": "inventory/client455-avatar-movement-reference.json",
+      "sha256": "5649d4faf0778189c700e8d0965aa19d88ee1e06385db194694355adac518bae"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "cb3ee5ce9b42c9892809154f64fa186da1054362e5417cd7aae3f581e60a186c"
+    }
+  },
+  "gaps": [
+    "The exact reported intermittent reset has not been reproduced.",
+    "Mouse and special-mode movement, remote actor speed and full tutorial routing remain open."
+  ],
+  "own_live_run": true,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

@@ -16,6 +16,7 @@ void CNetworkMgr::SystemMsg_EnterWorldResult_zone( char* packet )
     const BYTE kind=decoded.kind;decoded.kind=m_worldEntry455.kind;
     m_worldEntry455=decoded;
     m_byResultOfEnterTheWorldServer=decoded.result;m_byAvatarGrade=decoded.grade;
+    m_movement455.predictLocally = true;
     ReceiveResponseMsg();
     m_worldEntry455.kind=kind; // Target stores kind after the response/dialog callback.
 }

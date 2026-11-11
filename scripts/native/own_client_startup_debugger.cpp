@@ -68,6 +68,10 @@ int wmain(int argc,wchar_t** argv){
     const bool observePortal = live && selectionMode &&
         GetEnvironmentVariableA("RF455_OBSERVE_BASE_PORTAL",portalObservation,sizeof(portalObservation))==1 &&
         portalObservation[0]=='1';
+    char movementObservation[2]{};
+    const bool observeMovement = live && selectionMode &&
+        GetEnvironmentVariableA("RF455_OBSERVE_MOVEMENT",movementObservation,sizeof(movementObservation))==1 &&
+        movementObservation[0]=='1';
     const bool observeTitle = captureLoginFrame && GetEnvironmentVariableA("RF455_SKIP_TITLE_STAGE",skipTitle,sizeof(skipTitle))==1 &&
                               (skipTitle[0]=='1' || skipTitle[0]=='2');
     const std::string titleStart = std::string("RF455 Protocol:title-movie-start:") + skipTitle[0] + ":0:0";
@@ -78,7 +82,7 @@ int wmain(int argc,wchar_t** argv){
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
-    unsigned long selectionMs = combat ? 38000 : observePortal ? 25000 : 15000;
+    unsigned long selectionMs = combat ? 38000 : observeMovement ? 50000 : observePortal ? 25000 : 15000;
     if (approachLength && approachLength < sizeof(approach)) {
         char* approachEnd = nullptr;
         const auto approachMs = std::strtoul(approach, &approachEnd, 10);
@@ -201,7 +205,7 @@ int wmain(int argc,wchar_t** argv){
                     DWORD childPID = 0;
                     GetWindowThreadProcessId(titleWindow, &childPID);
                     const bool valid = IsWindow(titleWindow) && childPID == process.dwProcessId;
-                    if (valid && observePortal) PostMessageW(titleWindow, WM_ACTIVATEAPP, TRUE, 0);
+                    if (valid && (observePortal || observeMovement)) PostMessageW(titleWindow, WM_ACTIVATEAPP, TRUE, 0);
                     titleEscapeSent = valid && PostMessageW(titleWindow, WM_KEYDOWN, VK_ESCAPE, 1) &&
                                       PostMessageW(titleWindow, WM_KEYUP, VK_ESCAPE, 0xc0000001);
                     std::fprintf(output, "{\"kind\":\"title_escape_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",

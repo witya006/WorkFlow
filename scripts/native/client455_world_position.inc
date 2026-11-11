@@ -4,6 +4,7 @@ bool CNetworkMgr::PositionMsg_MoveCorrection455(const char* bytes, std::size_t s
     if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;
     const auto x = packet.position[0], y = packet.position[1], z = packet.position[2];
     if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z)) return false;
+    m_movement455.clearPending();
     auto* avatar = _GetAvatar();
     if (avatar) avatar->ApplyMoveCorrection455(packet.reason, x, y, z);
     RF455_ObserveProtocol("move-correction", packet.reason, avatar != nullptr, sizeof(packet));

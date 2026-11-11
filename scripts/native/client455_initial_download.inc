@@ -68,6 +68,10 @@ bool CNetworkMgr::InitMsg_BaseDownloadResult_zocl(const char* bytes, std::size_t
         return false;
     }
 
+    // The game zone supplies the current position-message parameters in the
+    // base download. The account endpoint's initial values expire on entry.
+    m_account455.delta = packet.positionDelta;
+    m_account455.mask = packet.positionMask;
     land->SetMapIndex(static_cast<BYTE>(packet.mapIndex));
     avatar->SetServerIndex(packet.zoneIndex);
     std::memcpy(m_vecAvatarStartPos, packet.startPosition, sizeof packet.startPosition);

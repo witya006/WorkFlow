@@ -8,7 +8,7 @@ public:
             forwardKey != VK_UP || state.walkKeyReleased) return;
         const auto elapsed = GetTickCount64() - state.acceptedAt;
         if (elapsed < 450) return;
-        const auto end = state.combat ? 450 + state.combatApproachMs : 1450;
+        const auto end = 450 + (state.combat ? state.combatApproachMs : state.walkDurationMs);
         if (elapsed >= end) {
             state.walkKeyReleased = true;
             RF455_ObserveProtocol("walk-key-up", forwardKey, static_cast<unsigned>(elapsed),

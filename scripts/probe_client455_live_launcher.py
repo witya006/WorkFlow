@@ -75,6 +75,7 @@ def main():
     observations.add_argument('--observe-monster',action='store_true')
     observations.add_argument('--observe-combat',action='store_true')
     observations.add_argument('--observe-base-portal',action='store_true')
+    observations.add_argument('--observe-movement',action='store_true')
     parser.add_argument('--combat-monster-record',type=int)
     parser.add_argument('--combat-approach-ms',type=int,default=0)
     args=parser.parse_args()
@@ -84,7 +85,7 @@ def main():
         parser.error('--combat-approach-ms requires --observe-combat and a duration from 0 to 30000')
     if args.select_character and not args.own_login:raise ValueError('Selection test requires own live Login')
     if args.world_map_index is not None and not args.select_character:raise ValueError('Map staging requires selection')
-    observe_walk=args.observe_walk or args.observe_monster or args.observe_combat
+    observe_walk=args.observe_walk or args.observe_monster or args.observe_combat or args.observe_movement
     observe_world=args.observe_world or observe_walk or args.observe_camera or args.observe_base_portal
     if args.observe_base_portal and args.world_map_index != 0:
         parser.error('--observe-base-portal requires --world-map-index 0 and uses one item from the first slot')
@@ -128,7 +129,8 @@ def main():
             report_file='inventory/client455-character-selection-live-taiwan-native.json' if args.select_character else 'inventory/client455-login-frame-live-taiwan-native.json'
             if observe_world:
                 observation=probe_client455_device_startup.world_observation_name(
-                    observe_walk, args.observe_camera, args.observe_monster, args.observe_combat, args.observe_base_portal)
+                    observe_walk, args.observe_camera, args.observe_monster, args.observe_combat,
+                    args.observe_base_portal, args.observe_movement)
                 report_file=f'artifacts/client455-progress/client455-{observation}-live-taiwan-native.json'
             try:
                 game = probe_client455_device_startup.main(
@@ -136,7 +138,8 @@ def main():
                     world_map_index=args.world_map_index, observe_world=observe_world, observe_walk=observe_walk,
                     observe_camera=args.observe_camera, observe_monster=args.observe_monster,
                     observe_combat=args.observe_combat, combat_monster_record=args.combat_monster_record,
-                    combat_approach_ms=args.combat_approach_ms, observe_base_portal=args.observe_base_portal)
+                    combat_approach_ms=args.combat_approach_ms, observe_base_portal=args.observe_base_portal,
+                    observe_movement=args.observe_movement)
             except SystemExit:
                 game=json.loads((WS/report_file).read_text())
             report['own_live_run']={'report':report_file,'reached_Login':game['reached_first_login'],'private_handoff_removed':game['live_server']['private_handoff_removed']}

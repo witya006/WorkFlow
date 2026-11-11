@@ -54,7 +54,13 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
     const unsigned sample = (state.walk ? 6 : 3) - state.remaining;
     constexpr ULONGLONG delays[] = {0, 1000, 3000, 4500, 6500, 8500};
     constexpr ULONGLONG cameraDelays[] = {0, 1800, 3400};
+    constexpr ULONGLONG longWalkDelays[] = {0, 1000, 3000, 6500, 14000, 17000};
     const auto elapsed = GetTickCount64() - state.acceptedAt;
+    const bool longWalk = state.walkDurationMs > 1000;
+    if (longWalk && !state.zeroPositionReported && avatar[0] == 0.f && avatar[2] == 0.f) {
+        state.zeroPositionReported = true;
+        RF455_ObserveProtocol("movement-zero-position", static_cast<unsigned>(elapsed), action, inputEnabled);
+    }
     if (state.captureMonsters) RF455_SampleMonsterFrame(state, elapsed);
     if (state.combatImpactPending) {
         state.combatImpactPending = false;
@@ -66,7 +72,8 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
                              static_cast<unsigned>(capture.result));
     }
     const auto delay = state.combat && sample == 5 ? 36000 + state.combatApproachMs
-                     : state.camera ? cameraDelays[sample] : delays[sample];
+                     : state.camera ? cameraDelays[sample]
+                     : longWalk ? longWalkDelays[sample] : delays[sample];
     if (elapsed < delay) return;
     --state.remaining;
 

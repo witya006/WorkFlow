@@ -54,6 +54,7 @@ from client455_skill_force_window_port import port_skill_force_window
 from client455_shop_window_port import port_shop_window
 from client455_trade_ore_port import port_trade_ore
 from client455_base_portal_port import port_base_portal
+from client455_avatar_movement_port import port_avatar_movement
 from client455_item_work_port import port_item_work
 from client455_service_windows_port import port_service_windows
 from client455_party_window_port import port_party_window
@@ -853,6 +854,8 @@ def main():
             raw,world_updates_changed=port_world_updates(raw,relative,native,section)
             raw,base_portal_changed=port_base_portal(raw,relative,native,section)
             if base_portal_changed:changes.append('455 inventory Return item and bounded position group 4 base portal')
+            raw,avatar_movement_changed=port_avatar_movement(raw,relative,native,section)
+            if avatar_movement_changed:changes.append('455 movement, position sample, stop and bounded avatar position responses')
             raw,monster_force_changed=port_monster_force(raw,relative,native)
             if monster_force_changed:changes.append('455 combat 5/9 monster Force owner and ordinary action')
             raw,monster_health_changed=port_monster_health(raw,relative,native)
@@ -1020,6 +1023,9 @@ def main():
     report['nuclear_registry_port_sha256']=sha((WS/'scripts/client455_nuclear_registry_port.py').read_bytes())
     report['nuclear_receiver_port_sha256']=sha((WS/'scripts/client455_nuclear_receiver_port.py').read_bytes())
     report['base_portal_port_sha256']=sha((WS/'scripts/client455_base_portal_port.py').read_bytes())
+    report['avatar_movement_port_sha256']=sha((WS/'scripts/client455_avatar_movement_port.py').read_bytes())
+    for name in ['client455_avatar_movement.h','client455_avatar_movement.inc']:
+        report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_base_portal_inventory.inc','client455_base_portal_position.inc']:
         report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_world_entry.h','client455_world_entry.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())

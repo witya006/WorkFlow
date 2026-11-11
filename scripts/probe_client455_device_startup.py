@@ -65,9 +65,11 @@ def stage_world_map(client, run, index):
     return records
 
 
-def world_observation_name(walk, camera, monster, combat, base_portal=False):
+def world_observation_name(walk, camera, monster, combat, base_portal=False, movement=False):
     if base_portal:
         return 'world-base-portal'
+    if movement:
+        return 'world-movement'
     if combat:
         return 'world-combat'
     if monster:
@@ -79,7 +81,8 @@ def world_observation_name(walk, camera, monster, combat, base_portal=False):
 
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
-         combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False):
+         combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False,
+         observe_movement=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
     parser.add_argument('--skip-title', choices=('logo', 'prologue'))
     args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
@@ -109,7 +112,8 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         raise ValueError('World map inputs require a live selection observation')
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
-        prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat, observe_base_portal)
+        prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat,
+                                      observe_base_portal, observe_movement)
         observation_name=prefix
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
@@ -215,6 +219,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_COMBAT_APPROACH_MS',None)
     environment.pop('RF455_SKIP_TITLE_STAGE',None)
     environment.pop('RF455_OBSERVE_BASE_PORTAL',None)
+    environment.pop('RF455_OBSERVE_MOVEMENT',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
@@ -225,6 +230,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if observe_base_portal:
         environment['RF455_OBSERVE_BASE_PORTAL']='1'
+        environment['RF455_SKIP_TITLE_STAGE']='1'
+    if observe_movement:
+        environment['RF455_OBSERVE_MOVEMENT']='1'
         environment['RF455_SKIP_TITLE_STAGE']='1'
     if args.skip_title:
         environment['RF455_OBSERVE_PROTOCOL']='1'
