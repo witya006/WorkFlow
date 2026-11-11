@@ -63,6 +63,12 @@ int wmain(int argc,wchar_t** argv){
     }
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
+    char skipTitle[2]{};
+    const bool observeTitle = captureLoginFrame && GetEnvironmentVariableA("RF455_SKIP_TITLE_STAGE",skipTitle,sizeof(skipTitle))==1 &&
+                              (skipTitle[0]=='1' || skipTitle[0]=='2');
+    const std::string titleStart = std::string("RF455 Protocol:title-movie-start:") + skipTitle[0] + ":0:0";
+    HWND titleWindow = nullptr;
+    bool titleEscapeSent = false;
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
@@ -114,6 +120,7 @@ int wmain(int argc,wchar_t** argv){
                     if(deviceMode&&found==points+2){
                         d3dReached=true;DWORD values[4]={};SIZE_T read=0;bool ok=true;for(unsigned i=0;i<4;++i)ok=ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[2]+plan[3+i]),values+i,4,&read)&&read==4&&ok;
                         std::fprintf(output,"{\"kind\":\"device_state\",\"read\":%s,\"ready\":%lu,\"window\":\"0x%lx\",\"device\":\"0x%lx\",\"windowed\":%lu}\n",ok?"true":"false",values[0],values[1],values[2],values[3]);
+                        if (ok) titleWindow = reinterpret_cast<HWND>(values[1]);
                     }
                     const bool loginEntry=captureLoginFrame&&found==points+3;
                     const bool selectionInput=selectionMode&&found==points+4&&!selectionDeadline;
@@ -173,6 +180,15 @@ int wmain(int argc,wchar_t** argv){
             }
         }else if(event.dwDebugEventCode==OUTPUT_DEBUG_STRING_EVENT){
             const auto& item=event.u.DebugString;if(!item.fUnicode&&item.nDebugStringLength&&item.nDebugStringLength<1024){char text[1024]={};SIZE_T read=0;if(ReadProcessMemory(process.hProcess,item.lpDebugStringData,text,item.nDebugStringLength,&read)&&read==item.nDebugStringLength){text[1023]=0;std::wstring value;for(unsigned char*c=reinterpret_cast<unsigned char*>(text);*c;++c)value.push_back(*c);std::fputs("{\"kind\":\"debug_string\",\"value\":",output);quoted(output,value);std::fputs("}\n",output);
+                if (observeTitle && !titleEscapeSent && text == titleStart) {
+                    DWORD childPID = 0;
+                    GetWindowThreadProcessId(titleWindow, &childPID);
+                    const bool valid = IsWindow(titleWindow) && childPID == process.dwProcessId;
+                    titleEscapeSent = valid && PostMessageW(titleWindow, WM_KEYDOWN, VK_ESCAPE, 1) &&
+                                      PostMessageW(titleWindow, WM_KEYUP, VK_ESCAPE, 0xc0000001);
+                    std::fprintf(output, "{\"kind\":\"title_escape_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",
+                                 valid ? "true" : "false", titleEscapeSent ? "true" : "false");
+                }
                 if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
             }}
         }else if(event.dwDebugEventCode==EXIT_PROCESS_DEBUG_EVENT){std::fprintf(output,"{\"kind\":\"exit\",\"code\":\"0x%08lx\"}\n",event.u.ExitProcess.dwExitCode);exited=true;}

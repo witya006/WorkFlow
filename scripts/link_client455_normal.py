@@ -22,7 +22,7 @@ def main():
     # These old autolink hints must not select reference libraries. All actual
     # dependencies are explicit here; missing symbols still fail normally.
     suppressed=['CharacterR.lib','CharacterMD.lib','R3EngineMT.lib','R3EngineDMT.lib','ziplibm.lib','ZipArchive_STL_M.lib','libci.lib','JpegLibMT.lib']
-    system=['d3d9.lib','dinput8.lib','dxguid.lib','winmm.lib','ws2_32.lib','vfw32.lib','advapi32.lib','gdi32.lib','user32.lib','imm32.lib','comdlg32.lib','delayimp.lib','dsound.lib','wininet.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib']
+    system=['d3d9.lib','dinput8.lib','dxguid.lib','winmm.lib','ws2_32.lib','vfw32.lib','advapi32.lib','gdi32.lib','user32.lib','imm32.lib','comdlg32.lib','delayimp.lib','dsound.lib','wininet.lib','shell32.lib','ole32.lib','oleaut32.lib','uuid.lib','strmiids.lib']
     args=['/NOLOGO','/MACHINE:X86','/SUBSYSTEM:WINDOWS','/OPT:REF','/OUT:'+str(exe),'/MAP:'+str(exe.with_suffix('.map'))]
     args+=['/NODEFAULTLIB:'+name for name in suppressed]+['/LIBPATH:'+str(p) for p in [engine,WS/'work/client-build/recovered-imports',WS/'work/client455-port/source/RF_Client',WS/'work/client455-port/source/RF_Client/lib',WS/'work/client455-port/dependencies']]
     args+=['/DELAYLOAD:'+name for name in ['mss32.dll','ABuse.dll','Adv.dll','PDLL.dll']]

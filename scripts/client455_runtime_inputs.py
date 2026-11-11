@@ -1,10 +1,34 @@
 """Copy verified Character shader inputs needed by real renderer owners."""
+import configparser
 import hashlib
 import json
 import shutil
 from pathlib import Path
 from compare_client_binaries import WS
 from client455_asset_staging import stage_asset
+
+
+def copy_title_movies(client, run, locale):
+    profile = Path('DataTable') / locale / 'CcrLogo.dat'
+    config = configparser.ConfigParser(interpolation=None)
+    config.read(client / profile, encoding='cp1252')
+    logo = config.get('PlayAvi', 'Logo', fallback='./Snd/Bgm/ccrinc.avi')
+    count = config.getint('PlayAvi', 'PlayedNum', fallback=0)
+    openings = [config.get('PlayAvi', f'Play{i}', fallback='./Snd/Bgm/Prologue.avi')
+                for i in range(max(1, count))]
+    paths = [profile, *(Path(value.replace('\\', '/')) for value in [logo, *openings] if value)]
+    records = []
+    seen = set()
+    for relative in paths:
+        source = (client / relative).resolve()
+        if not source.is_relative_to(client.resolve()) or not source.is_file() or source in seen:
+            continue
+        seen.add(source)
+        target = run / source.relative_to(client.resolve())
+        stage_asset(source, target)
+        records.append(dict(file=target.relative_to(WS).as_posix(),
+                            sha256=hashlib.sha256(target.read_bytes()).hexdigest(), original=str(source)))
+    return records
 
 def copy_grade_overlay_inputs(run,mutable_materials=False):
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']);records=[]

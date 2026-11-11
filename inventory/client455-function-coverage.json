@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T12:54:00.936727+00:00",
+  "measured_at_utc": "2026-11-11T13:18:21.754708+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2901,
-    "unique_functions_with_complete_assembly_cfg": 1123,
-    "unique_pinned_code_bytes": 814066,
-    "reports": 207,
-    "code_range_occurrences": 4585,
+    "unique_functions_with_pinned_code": 2904,
+    "unique_functions_with_complete_assembly_cfg": 1126,
+    "unique_pinned_code_bytes": 815637,
+    "reports": 208,
+    "code_range_occurrences": 4590,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -795,6 +795,10 @@
       "sha256": "20903a53663838f9b04531b819934076084b2b0979eb2812202964391a2efb20"
     },
     {
+      "file": "inventory/client455-title-movies-reference.json",
+      "sha256": "7cac021ac637b4269bc370c8ddd083386c189a1ae45b0954da59ec1d1cc64fc5"
+    },
+    {
       "file": "inventory/client455-town-state-reference.json",
       "sha256": "128a4fd53413bec5cdab0a2587cb3eb6e802d133216210081a0e60c6850cda32"
     },
@@ -1213,6 +1217,10 @@
       "sha256": "da3a3c76ccf6a17efca5a727f89f7973600028a20c2f38f45ab59d96e200694f"
     },
     {
+      "file": "artifacts/client455-progress/title-movies211/reference.json",
+      "sha256": "faee8a8c3a93f5359d841c8764fc7c2cacd57980aabf7f8aa4eb9583b66a4efe"
+    },
+    {
       "file": "artifacts/client455-progress/town188/reference.json",
       "sha256": "48c82b2ae619b522c58eb12ae5f44c3bc7d4035367ae9a660e3a1caa471575fc"
     },
@@ -1248,7 +1256,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "9b5495941e32ddf6657ef485c602c85aa36998c6fa693848bf65193c4f913126"
+      "sha256": "32304c5da97b88c4a53e316f706b606f63cdf52df6efeef331c9ea405850d38f"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -17211,6 +17219,29 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x157ce0",
+      "ida_name": "sub_557CE0",
+      "reports": [
+        "inventory/client455-title-movies-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x157ce0",
+          "bytes": 456
+        },
+        {
+          "rva": "0x62c1d0",
+          "bytes": 54
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/title-movies211/reference.json",
+          "instructions": 138
+        }
+      ]
+    },
+    {
       "rva": "0x157f60",
       "ida_name": "sub_557F60",
       "reports": [
@@ -17223,6 +17254,48 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x157f80",
+      "ida_name": "sub_557F80",
+      "reports": [
+        "inventory/client455-title-movies-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x157f80",
+          "bytes": 798
+        },
+        {
+          "rva": "0x62c210",
+          "bytes": 54
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/title-movies211/reference.json",
+          "instructions": 223
+        }
+      ]
+    },
+    {
+      "rva": "0x1582a0",
+      "ida_name": "sub_5582A0",
+      "reports": [
+        "inventory/client455-title-movies-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1582a0",
+          "bytes": 209
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/title-movies211/reference.json",
+          "instructions": 81
+        }
+      ]
     },
     {
       "rva": "0x1584d0",
@@ -49455,8 +49528,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 4,
-    "unique_functions_with_complete_assembly_cfg": 4
+    "unique_functions_with_pinned_code": 3,
+    "unique_functions_with_complete_assembly_cfg": 3
   },
   "M6": "OPEN",
   "M9": "OPEN",

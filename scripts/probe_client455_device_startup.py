@@ -8,7 +8,7 @@ from client455_normal_link_evidence import validate_normal_link
 from audit_client455_own_entry import validated_entry
 from client455_launcher_fixture import stage_launcher
 from client455_tcp_fixture import TcpAcceptanceFixture
-from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources,copy_grade_overlay_inputs
+from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources,copy_grade_overlay_inputs,copy_title_movies
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def symbol(mapping,name):
@@ -78,7 +78,11 @@ def world_observation_name(walk, camera, monster, combat):
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
          combat_monster_record=None,combat_approach_ms=0):
-    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
+    parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
+    parser.add_argument('--skip-title', choices=('logo', 'prologue'))
+    args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
+    if args.skip_title and (not args.login_frame or live_port is not None):
+        parser.error('--skip-title requires the offline Login frame probe')
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
     countries=json.loads((WS/'inventory/client455-nation-paths-reference.json').read_text())['references'][0]['rows'];country=next((row for row in countries if row['setting']==args.nation),None)
@@ -93,6 +97,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     prefix='ui-startup' if args.after_create else 'create-startup' if args.create else 'device-startup'
     if loginProbe:prefix='login-create' if args.login_create else 'login-render'
     if args.login_frame:prefix='login-frame'
+    if args.skip_title:prefix=f'title-escape-{args.skip_title}'
     if select_character:
         if handoff is None or not args.login_frame:raise ValueError('Selection observation needs actual live Login')
         prefix='selection'
@@ -121,6 +126,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         for name in ['SpriteImage/Common/mouse.spr',f'SpriteImage/{country["folder"]}/common.spr']:
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if loginProbe:
+        inputs += copy_title_movies(client, run, country['folder'])
         for name in ['Effect/EffectEntityList.spt','Effect/MagicSptList.spt']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
         for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
@@ -203,6 +209,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_OBSERVE_COMBAT',None)
     environment.pop('RF455_COMBAT_RECORD',None)
     environment.pop('RF455_COMBAT_APPROACH_MS',None)
+    environment.pop('RF455_SKIP_TITLE_STAGE',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
@@ -211,6 +218,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if combat_monster_record is not None:environment['RF455_COMBAT_RECORD']=str(combat_monster_record)
     if combat_approach_ms:environment['RF455_COMBAT_APPROACH_MS']=str(combat_approach_ms)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
+    if args.skip_title:
+        environment['RF455_OBSERVE_PROTOCOL']='1'
+        environment['RF455_SKIP_TITLE_STAGE']='1' if args.skip_title == 'logo' else '2'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
     with (contextlib.nullcontext(None) if handoff is not None else TcpAcceptanceFixture()) as transport:
@@ -283,7 +293,10 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
                                             for frame in sorted(run.glob('world-impact-*.png'))]
     if live_port is not None:name=name.replace('-native','-live-native')
     if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
-    report_dir='artifacts/client455-progress' if observe_world else 'inventory'
+    if args.skip_title:
+        report['title_escape']=[e for e in events if e['kind']=='title_escape_posted']
+        name=f'client455-title-escape-{args.skip_title}-{args.nation.lower()}-native'
+    report_dir='artifacts/client455-progress' if observe_world or args.skip_title else 'inventory'
     (WS/report_dir/f'{name}.json').write_text(json.dumps(report,indent=2)+'\n')
     display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}
     if loginProbe:display.update(stage_state=report['stage_state'],reached_first_login=report['reached_first_login'],exceptions=[e for e in exceptions if not e.get('first_chance')])

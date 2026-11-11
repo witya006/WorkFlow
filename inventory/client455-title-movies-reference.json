@@ -1,0 +1,124 @@
+{
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x157ce0",
+          "instructions": 138,
+          "positive_cfg_blocks": 17,
+          "regions": [
+            {
+              "rva": "0x157ce0",
+              "bytes": 456,
+              "sha256": "347f19770d24023c5f147ba56120014b10510aab822a346a8f4a5d801a207f8f"
+            },
+            {
+              "rva": "0x62c1d0",
+              "bytes": 54,
+              "sha256": "42d5b96e806857915966500d782b5524377158fc5a33b4a9170d1470174949ae"
+            }
+          ]
+        },
+        {
+          "rva": "0x157f80",
+          "instructions": 223,
+          "positive_cfg_blocks": 36,
+          "regions": [
+            {
+              "rva": "0x157f80",
+              "bytes": 798,
+              "sha256": "0f883c30bc36ba51bc8ad8ccd175c47a4c066001476ac3a2f91eccf98a6b7c26"
+            },
+            {
+              "rva": "0x62c210",
+              "bytes": 54,
+              "sha256": "91c076c3eb3cb7adfc72caa3e63cc2693b7432b7772f319341cfa70227613fc5"
+            }
+          ]
+        },
+        {
+          "rva": "0x1582a0",
+          "instructions": 81,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x1582a0",
+              "bytes": 209,
+              "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x157ce0",
+          "instructions": 138,
+          "positive_cfg_blocks": 17,
+          "regions": [
+            {
+              "rva": "0x157ce0",
+              "bytes": 456,
+              "sha256": "347f19770d24023c5f147ba56120014b10510aab822a346a8f4a5d801a207f8f"
+            },
+            {
+              "rva": "0x62c1d0",
+              "bytes": 54,
+              "sha256": "42d5b96e806857915966500d782b5524377158fc5a33b4a9170d1470174949ae"
+            }
+          ]
+        },
+        {
+          "rva": "0x157f80",
+          "instructions": 223,
+          "positive_cfg_blocks": 36,
+          "regions": [
+            {
+              "rva": "0x157f80",
+              "bytes": 798,
+              "sha256": "0f883c30bc36ba51bc8ad8ccd175c47a4c066001476ac3a2f91eccf98a6b7c26"
+            },
+            {
+              "rva": "0x62c210",
+              "bytes": 54,
+              "sha256": "91c076c3eb3cb7adfc72caa3e63cc2693b7432b7772f319341cfa70227613fc5"
+            }
+          ]
+        },
+        {
+          "rva": "0x1582a0",
+          "instructions": 81,
+          "positive_cfg_blocks": 3,
+          "regions": [
+            {
+              "rva": "0x1582a0",
+              "bytes": 209,
+              "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 3,
+  "full_instructions": 442,
+  "positive_cfg_blocks": 56,
+  "raw": {
+    "file": "artifacts/client455-progress/title-movies211/reference.json",
+    "sha256": "faee8a8c3a93f5359d841c8764fc7c2cacd57980aabf7f8aa4eb9583b66a4efe"
+  },
+  "bypass_rva": "0x157fbd",
+  "profile": "CcrLogo.dat",
+  "logo": "PlayAvi/Logo",
+  "prologue": "PlayAvi/Play<timeGetTime modulo PlayedNum>",
+  "restored_on_explicit_request": true
+}

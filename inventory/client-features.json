@@ -9382,6 +9382,22 @@
         "Full 455 outgoing move and pending acknowledgement lifecycle",
         "Nonzero player profile producers"
       ]
+    },
+    {
+      "id": "CLIENT455-TITLE-MOVIES-211",
+      "area": "login",
+      "status": "partial",
+      "runtime_gate_current": false,
+      "evidence": [
+        "inventory/client455-title-movies-checkpoint.json",
+        "inventory/client455-title-movies-reference.json"
+      ],
+      "description": "The ordinary windowed Taiwan client renders Login after Escape during either of the two configured title movies.",
+      "gaps": [
+        "Full-screen playback and the other regional asset sets",
+        "FireGuard and the Enter, Credits and Exit menu",
+        "New-character tutorial through ordinary character creation"
+      ]
     }
   ],
   "remaining_areas": "M5 first helper-data slice is complete; all other acceptance areas, M6/M6F/M7/M9 remain open. Successful lab is not complete455equivalence."

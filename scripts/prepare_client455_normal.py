@@ -63,6 +63,7 @@ from client455_world_update_port import port_world_updates
 from client455_monster_force_port import port_monster_force
 from client455_monster_health_port import port_monster_health
 from client455_avatar_health_port import port_avatar_health
+from client455_title_movies_port import port_title_movies
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
 from client455_armed_attack_port import port_armed_attack
@@ -536,7 +537,9 @@ def main():
                 method=b'CGP_Title::CGP_Title()';first,last=section(raw,method,method);body=raw[first:last]
                 if body.count(b'Init();')!=1:raise ValueError('Title nextstage boundary changed')
                 body=body.replace(b'Init();',b'Init();\r\n\tSetNextStage455(1);');raw=raw[:first]+body+raw[last:]
-                changes.append('455Title constructor sets explicitnext1;fullTitle lifecycle notyetported')
+                changes.append('455Title constructor sets explicitnext1')
+            raw,title_movies_changed=port_title_movies(raw,relative,native)
+            if title_movies_changed:changes.append('455 configured Title logo and prologue playback with Esc')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='userinterface/spritemgr.cpp':
                 start,end=section(raw,b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )',b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )')
                 body=raw[start:end];anchor=b'\tif( pi_wSpriteID >= SP_ID_MINIMAP )'
