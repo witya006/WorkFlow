@@ -10,3 +10,22 @@ inline void RF455_ObserveProtocol(const char* event,unsigned category,unsigned k
     std::sprintf(text,"RF455 Protocol:%s:%u:%u:%u",event,category,kind,bytes);
     OutputDebugStringA(text);
 }
+
+struct RF455WorldObservation {
+    unsigned remaining = 0;
+    ULONGLONG acceptedAt = 0;
+};
+
+inline RF455WorldObservation& RF455_WorldObservation() {
+    static RF455WorldObservation state;
+    return state;
+}
+
+inline void RF455_ArmWorldObservation(BYTE mode) {
+    char enabled[2] = {};
+    if (mode == 0xff ||
+        GetEnvironmentVariableA("RF455_CAPTURE_WORLD", enabled, sizeof(enabled)) != 1 ||
+        enabled[0] != '1') return;
+    auto& state = RF455_WorldObservation();
+    if (!state.acceptedAt) state = {3, GetTickCount64()};
+}

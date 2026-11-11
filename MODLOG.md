@@ -1,3 +1,8 @@
+2026-11-11 — World observation 181, PASS_PASSIVE_OBSERVATION.
+Captured NeutralB after the accepted position response and again after
+three seconds. The avatar is visible. Terrain and sky remain visually open.
+[Evidence and remaining work](research/client455-world-observation.md)
+
 2026-11-11 — World startup 180, PARTIAL_LIVE_WORLD_STARTED_MOVEMENT_OPEN.
 Created the avatar, completed the first NeutralB scene, and processed `3/2`.
 The live session continued without a fatal exception. Movement remains open.

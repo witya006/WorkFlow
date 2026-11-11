@@ -1,0 +1,184 @@
+{
+  "status": "PASS_PASSIVE_OBSERVATION",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c24a41d08a0f66a865c9e15ebc1fe655630a0449d988d23b8cba2ff3d42bd23d",
+    "bytes": 2379264,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185f90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "7f6602d2787709c37f6ad646ba76a87b7b203e1770946500aa8c78368b38afc0",
+  "source_report": {
+    "file": "artifacts/client455-progress/client455-world-observation-live-taiwan-native.json",
+    "sha256": "c5158d7ce8f712bed459fe16adced7785d8a62fac828bb457e7e22bb8bea600a"
+  },
+  "own_symbols": {
+    "?Render@CGP_MainGame@@MAEJXZ": "0x29a20",
+    "?InputProcess_Mouse@CGP_MainGame@@QAEHXZ": "0x2b5f0",
+    "?InputProcess_Keyboard@CInputProcessMgr@@QAEHXZ": "0x2ed30",
+    "?DrawMapRender@CLevel@@QAEXXZ": "0x11b770"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "7f6602d2787709c37f6ad646ba76a87b7b203e1770946500aa8c78368b38afc0"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "00027e6956cb0f770e5108a37402eb1f6654837fbe804f101bdddc520930d93c"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "bcf579d89902167641d8781832b4bf02f7521ce95fa5141135fa9c26d1798b4c"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "a28890c71c2c5c6d148d3723f74ac6b0fbc4f5cec26673773024ac8895723ec5"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "046af5c5f7e451275f90f28c20fdbc47ce18c383db058807005ce40649003a36"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "9a8712df6ba4fb78d90e9c1d4037606bace6c05ebb8e61d1d6a3176a809ce795"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "f21479adc29d953b80a140cbd5a9e071949151d1d4cab7c6ad45ba7ce3ec5ec9"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "68ffa6e34955ad0f178ef3a4077f52c657d8ee8d156cd45180f4d2444df131dd"
+    },
+    "world-observation-native": {
+      "file": "artifacts/client455-progress/client455-world-observation-live-taiwan-native.json",
+      "sha256": "c5158d7ce8f712bed459fe16adced7785d8a62fac828bb457e7e22bb8bea600a"
+    }
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_world_observation.py",
+    "sha256": "fca5eece166fde7f2a39f8ad6275195a0c060c8e85e8213f930759efb6e30498"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "65dbdae3389a2e9dd251b9fec4ff5bafc1ae9bd3d4631b2047bcb9ddeb0332a2"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "cf89dbc0105acbc6bef7ac4426de906d1ae79ecceed16c06c8f6cb422751593c"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "b42c63d316a72cdca6ade6c6c0240390a5dd9b3baa97ae9c757666c7055cc7a4"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "ffb768a21351605d0b68ddfcade6e5adf929d8997258cf4f62baf9c639859e48"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "2d574a3ab50fc138665b2cd656ae5a3c77d62b5d70b07d63f32b52cc7e794037"
+    }
+  ],
+  "start_mode": 0,
+  "map": "NeutralB",
+  "subsequent_packets": 266,
+  "received_3_16": 17,
+  "samples": [
+    {
+      "index": 0,
+      "elapsed_ms": 16,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 1,
+      "elapsed_ms": 1032,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 2,
+      "elapsed_ms": 3032,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "file": "work/m9/c24a41d0/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "ca99cd0757061a96da3c954ec0a72b1ee7230d2c8d93aa80c3b51bcf36aaee2b",
+      "sample_index": 0,
+      "width": 640,
+      "height": 500
+    },
+    {
+      "file": "work/m9/c24a41d0/world-observation-live-taiwan001/world-post-position-settled.png",
+      "sha256": "fe9f529a57a691686f77f7f68d69a2a791780250621c2e59755cc195c90bd826",
+      "sample_index": 2,
+      "width": 640,
+      "height": 500
+    }
+  ],
+  "movement_input_sent": false,
+  "movement_verified": false,
+  "camera_input_verified": false,
+  "world_visual_acceptance": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

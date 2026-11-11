@@ -77,7 +77,8 @@ def port_initial_download(raw, relative, section, native):
         raw = replace(raw, b'case new_pos_start_result_zocl :\n\t\t\t\t\tInitMsg_NewPosStartResult_zocl( pi_pMsg );',
                       b'case new_pos_start_result_zocl :\n\t\t\t\t\tif (!pi_pMsg || pMsgHeader->m_wSize != 5) return false;'
                       b'\n\t\t\t\t\tInitMsg_NewPosStartResult_zocl( pi_pMsg );'
-                      b'\n\t\t\t\t\tRF455_ObserveProtocol("position-mode", static_cast<BYTE>(pi_pMsg[0]), 0, 0);')
+                      b'\n\t\t\t\t\tRF455_ObserveProtocol("position-mode", static_cast<BYTE>(pi_pMsg[0]), 0, 0);'
+                      b'\n\t\t\t\t\tRF455_ArmWorldObservation(static_cast<BYTE>(pi_pMsg[0]));')
         return raw, True
     if relative == 'network/cnetworkmgr_systemmsg.cpp':
         raw = patch_method(raw, section, OWNER, b'InitMsg_BaseDownloadRequest_clzo', lambda body: replace(
@@ -106,7 +107,7 @@ def port_initial_download(raw, relative, section, native):
                        b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;'), True
     if relative == 'gameprogress/cgp_maingame.cpp':
         raw = patch_method(raw, section, b'CGP_MainGame', b'Init', lambda body: replace(
-            body, b'm_bIsCompleteDataDownload\t=', b'm_reportedWorldFrame455 = false;\n\tm_bIsCompleteDataDownload\t='))
+            body, b'm_bIsCompleteDataDownload\t=', b'RF455_WorldObservation() = {};\n\tm_reportedWorldFrame455 = false;\n\tm_bIsCompleteDataDownload\t='))
         raw = patch_method(raw, section, b'CGP_MainGame', b'Create', lambda body: replace(
             body, b'\tLoadData();', b'\tif (!LoadData()) return FALSE;'))
         raw = patch_method(raw, section, b'CGP_MainGame', b'Create_Avatar', lambda body: replace(
@@ -117,6 +118,15 @@ def port_initial_download(raw, relative, section, native):
     if (drewFrame && !m_reportedWorldFrame455) {
         m_reportedWorldFrame455 = true;
         RF455_ObserveProtocol("world-frame", _GetLand()->GetMapIndex(), 0, 0);
+    }
+    if (drewFrame && m_bIsCreated_Avatar && RF455_WorldObservation().remaining) {
+        const auto* avatarPosition = _GetAvatar()->GetPosition();
+        float cameraPosition[3];
+        auto* camera = _GetCamera();
+        camera->GetPosition(cameraPosition);
+        RF455_ObserveWorldFrame(avatarPosition, cameraPosition, camera->GetYaw(),
+                                camera->GetPitch(), camera->GetDistance(),
+                                _GetAvatar()->GetAction(), IsEnableInput());
     }''')
         raw = patch_method(raw, section, b'CGP_MainGame', b'Render', observe_render)
         raw = patch_method(raw, section, b'CGP_MainGame', b'LoadData', lambda body: replace(
@@ -124,7 +134,8 @@ def port_initial_download(raw, relative, section, native):
     const bool mapLoaded = land->LoadLevel() && land->GetLevel() && land->GetLevel()->IsLoadedBsp();
     RF455_ObserveProtocol("map-bsp", land->GetMapIndex(), mapLoaded, 0);
     if (!mapLoaded) return FALSE;'''))
-        return OBSERVATION + raw, True
+        return (OBSERVATION + (native / 'client455_live_world_observation.inc').read_bytes()
+                + b'\n' + raw), True
     if relative == 'gameobject/board/skillforceboard/csfboard.cpp':
         raw = patch_method(raw, section, b'CSFBoard', b'SetSuccessCountOfMastery', lambda body: replace(
             body, b'\tif( !m_bIsUsableMastery[pi_byMasteryType+1]',

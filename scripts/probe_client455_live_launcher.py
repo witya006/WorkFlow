@@ -67,9 +67,11 @@ def selfcheck():
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--authenticate',action='store_true');parser.add_argument('--interactive',action='store_true');parser.add_argument('--own-login',action='store_true');parser.add_argument('--select-character',action='store_true');parser.add_argument('--world-map-index',type=int);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--authenticate',action='store_true');parser.add_argument('--interactive',action='store_true');parser.add_argument('--own-login',action='store_true');parser.add_argument('--select-character',action='store_true');parser.add_argument('--world-map-index',type=int);parser.add_argument('--observe-world',action='store_true');args=parser.parse_args()
     if args.select_character and not args.own_login:raise ValueError('Selection test requires own live Login')
     if args.world_map_index is not None and not args.select_character:raise ValueError('Map staging requires selection')
+    if args.observe_world and (not args.authenticate or args.world_map_index is None):
+        raise ValueError('World observation requires authentication and map staging')
     selfcheck()
     if not args.authenticate:
         print('PASS:small valid/malformed launcher-wire examples');return
@@ -106,7 +108,8 @@ def main():
         try:
             sys.argv=['probe_client455_device_startup.py','--login-frame','--settle-ms','8000','--with-lobby','--nation','Taiwan']
             report_file='inventory/client455-character-selection-live-taiwan-native.json' if args.select_character else 'inventory/client455-login-frame-live-taiwan-native.json'
-            try:game=probe_client455_device_startup.main(handoff=handoff,live_port=27830,select_character=args.select_character,world_map_index=args.world_map_index)
+            if args.observe_world:report_file='artifacts/client455-progress/client455-world-observation-live-taiwan-native.json'
+            try:game=probe_client455_device_startup.main(handoff=handoff,live_port=27830,select_character=args.select_character,world_map_index=args.world_map_index,observe_world=args.observe_world)
             except SystemExit:
                 game=json.loads((WS/report_file).read_text())
             report['own_live_run']={'report':report_file,'reached_Login':game['reached_first_login'],'private_handoff_removed':game['live_server']['private_handoff_removed']}
