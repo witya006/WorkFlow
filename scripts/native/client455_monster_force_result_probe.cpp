@@ -7,6 +7,8 @@
 #include "addcodebyjang/foreffect.h"
 #include "addcodebyjang/effectutil.h"
 #include "addcodebyjang/effectutilfont.h"
+#include "addcodebyjang/cmagicscript.h"
+#include "addcodebyjang/effectcore.h"
 #include "cland.h"
 #include "ccamera.h"
 #include "datafile.h"
@@ -71,7 +73,7 @@ void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType, bool r
     if (!retain) effects->Clear();
 }
 
-void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage) {
+void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage, bool retain = false) {
     auto* effects = _GetEffectInfoList();
     require(effects->size() == 1, "One Force effect per positive damage frame");
     const auto& effect = **effects->begin();
@@ -80,7 +82,7 @@ void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage) {
             effect.unknown48_455 == 0 && effect.dwMyself[0] == CTI_MONSTER &&
             effect.dwMyself[1] == target.GetIndex() && effect.dwTarget[0] == CTI_MONSTER &&
             effect.dwTarget[1] == wing.GetIndex(), "455 Force key, range, amount and actor identities");
-    effects->Clear();
+    if (!retain) effects->Clear();
 }
 
 void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth, bool checkReaction,
@@ -165,12 +167,18 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
     require(incoming->GetCurDamagePoint() == first && incoming->GetTotalDamagePoint() == original - first &&
             incoming->GetEffectFrameNum() == 1, "First impact uses the 455 jitter and pending damage");
     if (checkHealth) expectRate(0.8f - (0.8f - 0.5f) * float(double(first) / original));
-    if (checkImpactEffect) checkForceImpactEffect(primary, wing, first);
+    if (checkImpactEffect) {
+        checkForceImpactEffect(primary, wing, first, display != nullptr);
+        if (display) display->verifyDamage(primary, first, 0);
+    }
     incoming->SetDamaged(TRUE);
     primary.GetCombatState()->ProcessDamage();
     require(incoming->GetCurDamagePoint() == original - first && !incoming->GetTotalDamagePoint() &&
             !incoming->GetEffectFrameNum() && primary.GetHP() == hp, "Final impact uses the remaining damage");
-    if (checkImpactEffect) checkForceImpactEffect(primary, wing, original - first);
+    if (checkImpactEffect) {
+        checkForceImpactEffect(primary, wing, original - first, display != nullptr);
+        if (display) display->verifyDamage(primary, original - first, 1);
+    }
     if (checkHealth) {
         expectRate(0.5f);
         require(sendHealth(itemProcessor, primary.GetIndex(), 29, 9000), "Recovery applies with a queued attacker");
@@ -197,13 +205,15 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
 int main(int argc, char** argv) {
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
     const bool checkBlockRender = argc == 6 && std::strcmp(argv[5], "--block-render") == 0;
+    const bool checkDamageRender = argc == 6 && std::strcmp(argv[5], "--damage-render") == 0;
     const bool checkReaction = checkBlockRender || (argc == 6 && std::strcmp(argv[5], "--reaction") == 0);
-    const bool checkImpactEffect = argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0;
+    const bool checkImpactEffect = checkDamageRender || (argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0);
     require(argc == 5 || checkHealth || checkReaction || checkImpactEffect ||
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
-    auto display = checkBlockRender ? std::make_unique<CombatResultDisplay>() : nullptr;
+    auto display = checkBlockRender || checkDamageRender
+        ? std::make_unique<CombatResultDisplay>(checkDamageRender) : nullptr;
     ChInterface renderer;
     g_ifCharIF = &renderer;
     require(_CreateMeshMgr() && _CreateAnimationMgr(), "Initialize normal asset managers");

@@ -2,7 +2,9 @@ class CombatResultDisplay {
     static constexpr unsigned width = 640, height = 480;
     static constexpr DWORD clearColor = 0xff102030;
     LPDIRECT3DDEVICE9 device = nullptr;
+    bool forceResources = false;
     unsigned blockPixels = 0, missPixels = 0;
+    std::array<unsigned, 2> damagePixels{}, damageAmounts{}, effectTracks{};
 
     unsigned draw(float step, const char* capture = nullptr) {
         R3SetLoopTime(step);
@@ -39,7 +41,7 @@ class CombatResultDisplay {
     }
 
 public:
-    CombatResultDisplay() {
+    explicit CombatResultDisplay(bool withForce) : forceResources(withForce) {
         SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
         InitR3Engine();
         auto* state = GetR3State();
@@ -62,9 +64,17 @@ public:
         SetGlobalWavVolume(0);
         state->mSoundOn = TRUE;
         require(g_MainApp.TaggedAudio455().Open(".\\Snd\\WaveList.spt", state->SoundPath), "Open tagged sounds");
+        if (forceResources) {
+            CreateEffectsList(".\\Effect\\EffectEntityList.spt");
+            CreateMagicSptList(".\\Effect\\MagicSptList.spt");
+        }
     }
 
     ~CombatResultDisplay() {
+        if (forceResources) {
+            DestroyEffectsList();
+            DestroyMagicSptList();
+        }
         g_MainApp.TaggedAudio455().Close();
         ReleaseR3SoundSystem();
         EFUtilFontInvalidateDeviceObjects();
@@ -100,7 +110,41 @@ public:
         monster.Disable(ROSF_CLIPPED);
     }
 
+    void verifyDamage(CMonster& monster, DWORD amount, unsigned frame) {
+        monster.SetPosition(10, 20, 0);
+        require(!draw(0.0f), "No number before Force dispatch");
+        const auto masters = GetMagicListCnt();
+        R3SetTime(10.0 + frame);
+        DispatchQueuedEffects();
+        require(_GetEffectInfoList()->empty() && GetMagicListCnt() == masters + 1,
+                "The ordinary queue creates the real Force impact script");
+        const auto& master = GetMagicList()[masters];
+        const auto* script = static_cast<const CProcessMagic*>(master.mMagicPtr);
+        require(master.mMagicID == 0x4f22000e && script && script->mCreateType == 2 &&
+                master.mMat[3][0] == 10 && master.mMat[3][1] == 20 && master.mMat[3][2] == 0,
+                "Actual Prism Beam script and monster damage anchor fallback");
+        const auto wave = g_MainApp.TaggedAudio455().Inspect(9324);
+        require(wave.sample && AIL_3D_sample_status(static_cast<H3DSAMPLE>(wave.sample)) == SMP_PLAYING,
+                "Actual Prism Beam impact sample");
+        const auto children = GetEffectListCnt();
+        R3SetLoopTime(0.01f);
+        FrameMoveAllEffectsList();
+        require(GetEffectListCnt() == children + 3, "Actual Prism Beam script activates all three tracks");
+        effectTracks[frame] = GetEffectListCnt() - children;
+        damageAmounts[frame] = amount;
+        damagePixels[frame] = draw(0.2f, frame == 0 ? "damage-first.bgra" : "damage-final.bgra");
+        require(damagePixels[frame] > 100 && draw(0.6f) > 50 && !draw(0.11f),
+                "Damage number remains visible until its fade ends");
+    }
+
     void report() const {
+        if (forceResources) {
+            std::printf("{\"status\":\"PASS\",\"damage\":[%u,%u],\"pixels\":[%u,%u],"
+                        "\"tracks\":[%u,%u],\"magic_id\":\"0x4f22000e\",\"sound_id\":9324,\"expired_pixels\":0}\n",
+                        damageAmounts[0], damageAmounts[1], damagePixels[0], damagePixels[1],
+                        effectTracks[0], effectTracks[1]);
+            return;
+        }
         std::printf("{\"status\":\"PASS\",\"block_pixels\":%u,\"miss_pixels\":%u,"
                     "\"real_block_sample\":true,\"expired_pixels\":0,\"clipped_pixels\":0}\n",
                     blockPixels, missPixels);

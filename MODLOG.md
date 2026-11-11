@@ -1,3 +1,9 @@
+2026-11-11 — Force damage rendering 198, PARTIAL_COMPONENT_FORCE_DAMAGE_RENDER.
+
+The normal impact renderer shows the two Force numbers with the 455 atlas,
+starts the three stock Prism Beam tracks and plays its spatial sound.
+[Evidence](research/client455-force-damage-render.md)
+
 2026-11-11 — Monster combat result 197, PARTIAL_COMPONENT_COMBAT_RESULT_RENDER.
 
 The ordinary queue renders BLOCK and MISS with the pinned atlas.

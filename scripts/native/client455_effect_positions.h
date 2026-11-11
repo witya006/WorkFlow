@@ -84,8 +84,8 @@ inline RF455EffectPositionResult RF455_EffectWeaponPosition(float* out,const RF4
     if(matrix){RF455_EffectMatrixPosition(out,actor,*matrix);return {true,true};}
     return {false,RF455_EffectBounds(out,actor,double(0.66f))};
 }
-inline bool RF455_EffectDamagePosition(float* out,const RF455EffectPositionView& view){
-    auto& actor=*view.actor;const BYTE index=actor.GetDummyIndex(8);
+inline bool RF455_EffectDamagePosition(float* out,const RF455EffectPositionView& view,unsigned damageDummy=8){
+    auto& actor=*view.actor;const BYTE index=actor.GetDummyIndex(damageDummy);
     //7DCA10 zero-extends the byte then compares it with-1;255 is not excluded
     //before GetResultMat here,unlike7DCCF0/7DD140.
     if(auto* matrix=actor.GetResultMat(0,index)){RF455_EffectMatrixPosition(out,actor,*matrix);return true;}

@@ -9187,7 +9187,7 @@
       "id": "CLIENT455-COMBAT-RESULT-RENDER-197",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-combat-result-effect-checkpoint.json",
         "inventory/client455-combat-result-effect-reference.json"
@@ -9196,6 +9196,21 @@
       "gaps": [
         "Real combat trigger and local-avatar visibility exception",
         "Critical, support and exact positive damage display"
+      ]
+    },
+    {
+      "id": "CLIENT455-FORCE-DAMAGE-RENDER-198",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-force-damage-render-checkpoint.json",
+        "inventory/client455-force-damage-render-reference.json"
+      ],
+      "description": "The normal renderer shows two Force damage numbers using the 455 atlas, activates three stock Prism Beam tracks and plays the spatial sound in a muted test. The same build walks on NeutralB.",
+      "gaps": [
+        "Live combat, visible particles and bone-bound position",
+        "Critical and support Force effects"
       ]
     }
   ],
