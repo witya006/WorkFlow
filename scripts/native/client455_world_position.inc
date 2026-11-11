@@ -1,3 +1,15 @@
+bool CNetworkMgr::PositionMsg_MoveCorrection455(const char* bytes, std::size_t size)
+{
+    RF455MoveCorrection packet{};
+    if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;
+    const auto x = packet.position[0], y = packet.position[1], z = packet.position[2];
+    if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z)) return false;
+    auto* avatar = _GetAvatar();
+    if (avatar) avatar->ApplyMoveCorrection455(packet.reason, x, y, z);
+    RF455_ObserveProtocol("move-correction", packet.reason, avatar != nullptr, sizeof(packet));
+    return true;
+}
+
 bool CNetworkMgr::PositionMsg_MonsterMove455(const char* bytes, std::size_t size) {
     RF455MonsterMove packet{};
     if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;

@@ -20,6 +20,11 @@ struct RF455MonsterMove {
     std::int16_t targetXZ[2];
 };
 
+struct RF455MoveCorrection {
+    std::uint8_t reason;
+    float position[3];
+};
+
 struct RF455MonsterDeath {
     std::uint16_t zoneIndex;
     std::uint32_t serial;
@@ -40,6 +45,7 @@ struct RF455ObjectRefresh {
 
 static_assert(sizeof(RF455MonsterSpawn) == 17 && offsetof(RF455MonsterSpawn, flags) == 15);
 static_assert(sizeof(RF455MonsterMove) == 14 && offsetof(RF455MonsterMove, targetXZ) == 10);
+static_assert(sizeof(RF455MoveCorrection) == 13 && offsetof(RF455MoveCorrection, position) == 1);
 static_assert(sizeof(RF455MonsterDeath) == 7 && offsetof(RF455MonsterDeath, reason) == 6);
 static_assert(sizeof(RF455PlayerStatusUpdate) == 12 && offsetof(RF455PlayerStatusUpdate, flags) == 4);
 static_assert(sizeof(RF455ObjectRefresh) == 8 && offsetof(RF455ObjectRefresh, serial) == 4);

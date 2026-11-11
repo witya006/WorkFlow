@@ -1,0 +1,105 @@
+{
+  "status": "PARTIAL_COMPONENT_MOVE_CORRECTION",
+  "scope": "Ordinary 455 world dispatcher applies a correction to standing or moving avatar coordinates.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "74c414e9621536f87225c2b4bd1a50a837e220e194ae94fe381c0de0b5a07e7c",
+    "bytes": 2402304,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18abe0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "f09e84dc899febaa75f82b36018d5843b9c430bb0ec69db2a40cc72a47c83194",
+  "component": {
+    "status": "PASS",
+    "position_bytes": 13,
+    "invalid_cases": 6,
+    "standing_updates": true,
+    "moving_updates": true,
+    "previous_position_updated": true,
+    "stop_profile": 1,
+    "stop_reasons": [
+      6,
+      12
+    ]
+  },
+  "component_executable": {
+    "file": "work/client455-port/move-correction-probe/move-correction-probe.exe",
+    "sha256": "0f58196e3a222b8726eb5adb6068e16990e0b7ce69f26c1993901296290d5f95"
+  },
+  "component_console": {
+    "file": "work/client455-port/move-correction-probe/move-correction.txt",
+    "sha256": "03ee0ba1929a6ba5930980f940af637e1f6fae3318fa1f7aeb2124dce735ed42"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_move_correction.py",
+    "sha256": "f5cd440860b4c54f84af8017ba7eb0bbc1876f79465ec31ed24736140b801949"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "4e7f5dca882958f43b296efc2fc6de0ac942d19b3dfd509506c26e2a452dbd79"
+    },
+    {
+      "file": "scripts/native/client455_world_position.inc",
+      "sha256": "02f93756967b10e54c6c5b22bfaa47707b7d10e8d774592b7113842df6c3884c"
+    },
+    {
+      "file": "scripts/native/client455_world_updates.h",
+      "sha256": "75ce0341eecd300e3f13c90a76eb2455f75be4a073fe6acd7faa7fd5d5fee5c8"
+    },
+    {
+      "file": "scripts/native/client455_move_correction_probe.cpp",
+      "sha256": "84f208b134784a461b44b1dee299c2b914f0601d9853cfeb860d79402309de33"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "f09e84dc899febaa75f82b36018d5843b9c430bb0ec69db2a40cc72a47c83194"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "eec6d77540e5dbd56ef51ca6d9981c883a85b8dff826a2709bda38ecb5fe61ef"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "ba44f14ba245f6087a1b8ebb6db927e38308b2706f46dc5870b6fa48b5c8f34d"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "0f19b5e1ddcbc87a8e02f9d9b9cd5bbede91e121cf0c35e337b9b23b20ed7a71"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "37c91aa68e3c5679d936749114f7363ccf5e058429e1193d22bc2ad346a8bed2"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "1178effec33d0666feb51f67138714426d2c1903181d11d65a2528f653f5eebf"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "114aa0540f010d8ab8f325e2fe58b9807d2e713821694c752103ccca0d366fad"
+    },
+    "move-correction-reference": {
+      "file": "inventory/client455-move-correction-reference.json",
+      "sha256": "fc7a200a6401009b40410877e36484bf2c09ecd5c2a03ca69c97f2c0a2764695"
+    }
+  },
+  "gaps": [
+    "The 455 pending-move state belongs to the 26-byte outgoing move route and remains open.",
+    "The live nonzero profile producers and an observed 4/3 are open.",
+    "Malformed and nonfinite coordinates are rejected before state mutation."
+  ],
+  "own_live_run": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

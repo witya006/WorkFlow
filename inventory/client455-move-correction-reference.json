@@ -1,0 +1,172 @@
+{
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x1c2bf0",
+          "instructions": 58,
+          "positive_cfg_blocks": 5,
+          "regions": [
+            {
+              "rva": "0x1c2bf0",
+              "bytes": 171,
+              "sha256": "50f6f18b8859aaff7359dde0d4b54ee95e74b9462aa12f100766aeae502d867f"
+            }
+          ]
+        },
+        {
+          "rva": "0x162b70",
+          "instructions": 17,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x162b70",
+              "bytes": 45,
+              "sha256": "bcbb52c8d367457669433acc256ac6e1e49b0cd41c094d54ee512cf42e959650"
+            }
+          ]
+        },
+        {
+          "rva": "0x7380",
+          "instructions": 19,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x7380",
+              "bytes": 39,
+              "sha256": "bb05cb4fb04dad395514f9fad9b70999ac1c2555a6ca5fc6c0634f621ad21225"
+            }
+          ]
+        },
+        {
+          "rva": "0x162b40",
+          "instructions": 18,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x162b40",
+              "bytes": 47,
+              "sha256": "ac8abc5e7a8e4f9ffffdb87f6a99699e212b3cf12916236f398b847fa8ac9900"
+            }
+          ]
+        },
+        {
+          "rva": "0x4c3d0",
+          "instructions": 16,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x4c3d0",
+              "bytes": 33,
+              "sha256": "4613443f5ce278e49417b987b5b880474bc6fe20d06cef65a05ce1f804aede08"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x1c2bf0",
+          "instructions": 58,
+          "positive_cfg_blocks": 5,
+          "regions": [
+            {
+              "rva": "0x1c2bf0",
+              "bytes": 171,
+              "sha256": "50f6f18b8859aaff7359dde0d4b54ee95e74b9462aa12f100766aeae502d867f"
+            }
+          ]
+        },
+        {
+          "rva": "0x162b70",
+          "instructions": 17,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x162b70",
+              "bytes": 45,
+              "sha256": "bcbb52c8d367457669433acc256ac6e1e49b0cd41c094d54ee512cf42e959650"
+            }
+          ]
+        },
+        {
+          "rva": "0x7380",
+          "instructions": 19,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x7380",
+              "bytes": 39,
+              "sha256": "bb05cb4fb04dad395514f9fad9b70999ac1c2555a6ca5fc6c0634f621ad21225"
+            }
+          ]
+        },
+        {
+          "rva": "0x162b40",
+          "instructions": 18,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x162b40",
+              "bytes": 47,
+              "sha256": "ac8abc5e7a8e4f9ffffdb87f6a99699e212b3cf12916236f398b847fa8ac9900"
+            }
+          ]
+        },
+        {
+          "rva": "0x4c3d0",
+          "instructions": 16,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x4c3d0",
+              "bytes": 33,
+              "sha256": "4613443f5ce278e49417b987b5b880474bc6fe20d06cef65a05ce1f804aede08"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 5,
+  "full_instructions": 128,
+  "positive_cfg_blocks": 9,
+  "raw": {
+    "file": "artifacts/client455-progress/move-correction210/reference.json",
+    "sha256": "273c0c9ee7d067cd8150b0cdad295e2c3246be7a42b7e94796a3f192080b6a68"
+  },
+  "group": 4,
+  "opcode": 3,
+  "payload_bytes": 13,
+  "reason_offset": 0,
+  "position_offsets": [
+    1,
+    5,
+    9
+  ],
+  "stop_reasons": [
+    6,
+    12
+  ],
+  "stop_profile": 1,
+  "avatar_profile_offset": 17796,
+  "pending_move_offsets": [
+    435996,
+    436000
+  ],
+  "original_calls": {
+    "0x1c1437": "0x1c2bf0",
+    "0x1c2c08": "0x162b70",
+    "0x1c2c18": "0x4a680",
+    "0x1c2c57": "0x7380"
+  }
+}

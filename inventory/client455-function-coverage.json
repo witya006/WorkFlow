@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T12:34:17.907036+00:00",
+  "measured_at_utc": "2026-11-11T12:54:00.936727+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2897,
-    "unique_functions_with_complete_assembly_cfg": 1119,
-    "unique_pinned_code_bytes": 813770,
-    "reports": 206,
-    "code_range_occurrences": 4580,
+    "unique_functions_with_pinned_code": 2901,
+    "unique_functions_with_complete_assembly_cfg": 1123,
+    "unique_pinned_code_bytes": 814066,
+    "reports": 207,
+    "code_range_occurrences": 4585,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -501,6 +501,10 @@
     {
       "file": "inventory/client455-monster-target-reference.json",
       "sha256": "0a7085df8b0eff65622d1cee61583dc230fe863e549c399b5e111aabc2a50cb0"
+    },
+    {
+      "file": "inventory/client455-move-correction-reference.json",
+      "sha256": "fc7a200a6401009b40410877e36484bf2c09ecd5c2a03ca69c97f2c0a2764695"
     },
     {
       "file": "inventory/client455-movie-state-reference.json",
@@ -1101,6 +1105,10 @@
       "sha256": "acdf8ec5e83996f20bc5775595e3b17819899452208efe0fbb3ddbbc67943ec9"
     },
     {
+      "file": "artifacts/client455-progress/move-correction210/reference.json",
+      "sha256": "273c0c9ee7d067cd8150b0cdad295e2c3246be7a42b7e94796a3f192080b6a68"
+    },
+    {
       "file": "artifacts/client455-progress/option164-reference/option.json",
       "sha256": "9691830dffe58b7cd471f5284b230f2c8f5433ad19a398a8db9a12e8316127ee"
     },
@@ -1240,7 +1248,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "d78be94479e5168e1f8dfdbfe89fe6977969f378bb3ac91092681df906499686"
+      "sha256": "9b5495941e32ddf6657ef485c602c85aa36998c6fa693848bf65193c4f913126"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -1980,6 +1988,7 @@
       "ida_name": "sub_407380",
       "reports": [
         "inventory/client455-equipment-conditions-reference.json",
+        "inventory/client455-move-correction-reference.json",
         "inventory/client455-player-owner-reference.json"
       ],
       "ranges": [
@@ -1991,6 +2000,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/equipment-conditions146-reference/session.json",
+          "instructions": 19
+        },
+        {
+          "file": "artifacts/client455-progress/move-correction210/reference.json",
           "instructions": 19
         },
         {
@@ -7424,6 +7437,25 @@
         {
           "file": "artifacts/client455-progress/combat-transition156-reference/session.json",
           "instructions": 89
+        }
+      ]
+    },
+    {
+      "rva": "0x4c3d0",
+      "ida_name": "sub_44C3D0",
+      "reports": [
+        "inventory/client455-move-correction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4c3d0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/move-correction210/reference.json",
+          "instructions": 16
         }
       ]
     },
@@ -17764,6 +17796,44 @@
       ]
     },
     {
+      "rva": "0x162b40",
+      "ida_name": "sub_562B40",
+      "reports": [
+        "inventory/client455-move-correction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x162b40",
+          "bytes": 47
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/move-correction210/reference.json",
+          "instructions": 18
+        }
+      ]
+    },
+    {
+      "rva": "0x162b70",
+      "ida_name": "sub_562B70",
+      "reports": [
+        "inventory/client455-move-correction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x162b70",
+          "bytes": 45
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/move-correction210/reference.json",
+          "instructions": 17
+        }
+      ]
+    },
+    {
       "rva": "0x162be0",
       "ida_name": "sub_562BE0",
       "reports": [
@@ -20186,6 +20256,25 @@
         {
           "file": "artifacts/client455-progress/position185-reference.json",
           "instructions": 232
+        }
+      ]
+    },
+    {
+      "rva": "0x1c2bf0",
+      "ida_name": "sub_5C2BF0",
+      "reports": [
+        "inventory/client455-move-correction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c2bf0",
+          "bytes": 171
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/move-correction210/reference.json",
+          "instructions": 58
         }
       ]
     },
@@ -49366,7 +49455,7 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 2,
+    "unique_functions_with_pinned_code": 4,
     "unique_functions_with_complete_assembly_cfg": 4
   },
   "M6": "OPEN",

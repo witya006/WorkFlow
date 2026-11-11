@@ -32,7 +32,8 @@ def port_world_updates(raw, relative, native, section):
         anchor = b'\t\t\tRESULT\t\tNormalAttack( CCharacter * pi_pTarget );'
         raw = replace(raw, anchor, anchor + b'''
     void SetTownState455(BYTE state) { m_townState455 = state; }
-    BYTE GetTownState455() const { return m_townState455; }''')
+    BYTE GetTownState455() const { return m_townState455; }
+    void ApplyMoveCorrection455(BYTE reason, float x, float y, float z);''')
         anchor = b'\t\t\tRESULT\t\tCheckTargetConditionForAttack( CCharacter * pi_pTarget );'
         return replace(raw, anchor, b'\t\t\tbool CheckTownAttack455(CCharacter& target);\n' + anchor), True
     if relative == 'character/avatar/cavatar_combat.cpp':
@@ -51,9 +52,22 @@ bool CAvatar::CheckTownAttack455(CCharacter& target)
     return false;
 }
 ''', True
+    if relative == 'character/avatar/cavatar_behavior.cpp':
+        return raw + b'''
+
+void CAvatar::ApplyMoveCorrection455(BYTE reason, float x, float y, float z)
+{
+    SetReceiveNetMsg("Move Error");
+    SetPosition(x, y, z, TRUE, TRUE);
+    if (m_profile17796_455 == 1 && (reason == 6 || reason == 12))
+        SetAction(CAI_MOVE_STOP, TRUE);
+}
+''', True
     if relative == 'network/cnetworkmgr.h':
         raw = replace(raw, b'void\tPositionMsg_ObjectRealFixpositon_zocl( char * pi_pMsg );',
                       b'bool PositionMsg_ObjectRefresh455(const char* bytes, std::size_t size);')
+        raw = replace(raw, b'void\tPositionMsg_MoveErrorResult_zocl( char * pi_pMsg );',
+                      b'bool PositionMsg_MoveCorrection455(const char* bytes, std::size_t size);')
         anchor = b'void\tInitMsg_MonsterCreate_zocl( char * pi_pMsg );'
         return replace(raw, anchor, anchor + b'''
     bool InitMsg_MonsterSpawn455(const char* bytes, std::size_t size);
@@ -62,6 +76,8 @@ bool CAvatar::CheckTownAttack455(CCharacter& target)
     bool PositionMsg_PlayerStatus455(const char* bytes, std::size_t size);
     bool PositionMsg_TownState455(const char* bytes, std::size_t size);'''), True
     if relative == 'network/cnetworkmgr.cpp':
+        raw = replace(raw, b'case move_error_result_zocl :\n\t\t\t\t\tPositionMsg_MoveErrorResult_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
+                      b'case 3:\n\t\t\t\t\treturn PositionMsg_MoveCorrection455(pi_pMsg, pMsgHeader->m_wSize - 4);')
         raw = replace(raw, b'case correct_position_zocl :\n\t\t\t\t\tbreak;',
                       b'case 10:\n\t\t\t\t\treturn PositionMsg_ObjectRefresh455(pi_pMsg, pMsgHeader->m_wSize - 4);')
         raw = replace(raw, b'\t\t\t\tcase object_real_fixpositon_zocl :\n\t\t\t\t\tPositionMsg_ObjectRealFixpositon_zocl( pi_pMsg );\n\t\t\t\t\tbreak;\n\n', b'')
@@ -89,10 +105,13 @@ bool CAvatar::CheckTownAttack455(CCharacter& target)
         old = b'void\nCNetworkMgr::PositionMsg_ObjectRealFixpositon_zocl( char * pi_pMsg )'
         start, end = section(raw, old, old)
         raw = raw[:start] + raw[end:]
+        old = b'void\nCNetworkMgr::PositionMsg_MoveErrorResult_zocl( char * pi_pMsg )'
+        start, end = section(raw, old, old)
+        raw = raw[:start] + raw[end:]
         raw = replace(raw, b'Vector3f pi_vecTar, BYTE pi_byMoveFlag )',
                       b'Vector3f pi_vecTar, BYTE pi_byMoveFlag, bool resetSpeedOnSnap = true )')
         snap = b'pi_pChar->SetPosition( pi_vecCur );\n\t\tpi_pChar->SetMagnificationOfSpeed( 1.0f );'
         raw = replace(raw, snap, snap.replace(b'pi_pChar->SetMagnificationOfSpeed',
                                              b'if (resetSpeedOnSnap) pi_pChar->SetMagnificationOfSpeed'))
-        return includes + raw + b'\n' + (native / 'client455_world_position.inc').read_bytes(), True
+        return b'#include <cmath>\n' + includes + raw + b'\n' + (native / 'client455_world_position.inc').read_bytes(), True
     return raw, False

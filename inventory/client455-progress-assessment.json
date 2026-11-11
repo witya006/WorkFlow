@@ -182,7 +182,8 @@
         "После выбора загружена NeutralB, принят ответ стартовой позиции3/2,применены обновления движения и отметок объектов"
       ],
       "remaining": [
-        "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
+        "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers",
+        "Живое подтверждение 4/3 и диагностика сброса координат при движении"
       ],
       "evidence": [
         "client455-network-codec-checkpoint",
@@ -200,7 +201,8 @@
         "client455-avatar-world-checkpoint",
         "client455-world-updates-checkpoint",
         "client455-monster-data-checkpoint",
-        "client455-world-refresh-checkpoint"
+        "client455-world-refresh-checkpoint",
+        "client455-move-correction-checkpoint"
       ]
     },
     {
@@ -335,7 +337,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "ca9df2aabbc1337b4997a7441b3688fb23b8be78bd41554ac4ab6e726557a2be",
+      "sha256": "f09e84dc899febaa75f82b36018d5843b9c430bb0ec69db2a40cc72a47c83194",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -869,6 +871,14 @@
       "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
+    "client455-move-correction-checkpoint": {
+      "file": "inventory/client455-move-correction-checkpoint.json",
+      "sha256": "c95e4a36d13d977a497d4ac917758918af146c28d6262fff7a269e26f8c6460d",
+      "status": "PARTIAL_COMPONENT_MOVE_CORRECTION",
+      "scope": "Ordinary 455 world dispatcher applies a correction to standing or moving avatar coordinates.",
+      "fresh_for_current_PE": true,
+      "historical_selected_evidence_may_be_used": true
+    },
     "client455-login-checkpoint": {
       "file": "inventory/client455-login-checkpoint.json",
       "sha256": "2d2bd8272cf7f605ef4f5e69e3a11da00ea29d77764242b43124a3c12f642f7c",
@@ -1026,7 +1036,7 @@
       "sha256": "d70ca62aee208b02b85705c964062cc77dd767fe5ab098b21bdaab6891920251",
       "status": "PARTIAL_COMPONENT_AVATAR_HEALTH",
       "scope": "Authoritative current player HP, mounted display owner and normal combat regression.",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "historical_selected_evidence_may_be_used": true
     },
     "client455-item-object-checkpoint": {
@@ -1076,7 +1086,7 @@
     "canonical_kernel_objects": 20,
     "unresolved_symbols": 0,
     "own_executable": {
-      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "file": "artifacts/client455-progress/before209/work/client455-port/normal/build/RF_Online.bin",
       "sha256": "27bd3c5cc25e4e5d50449e5b28e2c222c88964ec13e7d51aeeff890ee843a539",
       "bytes": 2402304,
       "architecture": "x86",
@@ -1105,18 +1115,18 @@
     ],
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
-      "file": "inventory/client455-normal-build.json",
+      "file": "artifacts/client455-progress/before209/inventory/client455-normal-build.json",
       "sha256": "5117ccbaaa4da2c0283a9775dfb2f68f8cde6efb7a7b4850662397676c3c817d",
       "matches_link_record": true
     },
-    "newer_build_is_not_the_accepted_runtime": false,
+    "newer_build_is_not_the_accepted_runtime": true,
     "last_completed_checkpoint": "inventory/client455-avatar-health-checkpoint.json",
-    "last_completed_checkpoint_is_historical_for_current_PE": false,
+    "last_completed_checkpoint_is_historical_for_current_PE": true,
     "runtime_baseline": {
-      "link_file": "inventory/client455-normal-link.json",
+      "link_file": "artifacts/client455-progress/before209/inventory/client455-normal-link.json",
       "link_sha256": "ca9df2aabbc1337b4997a7441b3688fb23b8be78bd41554ac4ab6e726557a2be",
       "executable": {
-        "file": "work/client455-port/normal/build/RF_Online.bin",
+        "file": "artifacts/client455-progress/before209/work/client455-port/normal/build/RF_Online.bin",
         "sha256": "27bd3c5cc25e4e5d50449e5b28e2c222c88964ec13e7d51aeeff890ee843a539",
         "bytes": 2402304,
         "architecture": "x86",
@@ -1130,30 +1140,30 @@
           ".reloc"
         ]
       },
-      "build_file": "inventory/client455-normal-build.json",
+      "build_file": "artifacts/client455-progress/before209/inventory/client455-normal-build.json",
       "build_sha256": "5117ccbaaa4da2c0283a9775dfb2f68f8cde6efb7a7b4850662397676c3c817d"
     },
-    "candidate_runtime_status": "CHECKED_PARTIAL",
+    "candidate_runtime_status": "NOT_YET_RUNTIME_VALIDATED",
     "post_selection_failure": null,
     "current_working_source": {
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "5117ccbaaa4da2c0283a9775dfb2f68f8cde6efb7a7b4850662397676c3c817d"
+        "sha256": "ba44f14ba245f6087a1b8ebb6db927e38308b2706f46dc5870b6fa48b5c8f34d"
       },
       "build_exit": 0,
       "errors": [],
-      "included_in_readiness_estimate": true,
+      "included_in_readiness_estimate": false,
       "issue": null
     },
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "27bd3c5cc25e4e5d50449e5b28e2c222c88964ec13e7d51aeeff890ee843a539",
+        "sha256": "74c414e9621536f87225c2b4bd1a50a837e220e194ae94fe381c0de0b5a07e7c",
         "bytes": 2402304,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18ab00",
+        "entry_rva": "0x18abe0",
         "sections": [
           ".text",
           ".rdata",
@@ -1166,16 +1176,16 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "5117ccbaaa4da2c0283a9775dfb2f68f8cde6efb7a7b4850662397676c3c817d"
+        "sha256": "ba44f14ba245f6087a1b8ebb6db927e38308b2706f46dc5870b6fa48b5c8f34d"
       },
-      "runtime_verified": true,
+      "runtime_verified": false,
       "superseded_by_later_source_build": false
     },
     "current_work": "Authoritative current player HP, mounted display owner and normal combat regression.",
     "ordinary_login_observation": {
       "file": "artifacts/client455-progress/avatar-health208/live.json",
       "sha256": "96bdf16b5425e02f542a287eef07eb75ef4b99fb5e52f27a7211febf4925c744",
-      "fresh_for_current_PE": true,
+      "fresh_for_current_PE": false,
       "fresh_for_runtime_baseline": true,
       "frame": {
         "file": "work/m9/27bd3c5c/world-combat-live-taiwan001/login-frame.png",
@@ -1196,17 +1206,17 @@
       "known_next_failure": null,
       "return_checkpoint": "Return after the pre-Enter diagnostic capture;not successful world transition"
     },
-    "existing_Create_proved_on_current_PE": true,
+    "existing_Create_proved_on_current_PE": false,
     "existing_Create_proof_scope": "Existing own WinMain reaches Login after its required successful Create;not full455Create acceptance",
     "full_Login_character_selection_world_flow_proved": false,
     "normal_movement_combat_inventory_flow_proved": false
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "eaa71d59d15bf0c57201a5ce4da4dd20de9edb9280774c193a7b23a1d601913b",
-    "entries": 212,
+    "sha256": "55099fdf0e140782296f7cc46ecd9aa1d5f7147ca4aa1dda559871c22a068147",
+    "entries": 213,
     "statuses": {
-      "partial_component": 22,
+      "partial_component": 23,
       "partial": 160,
       "audit_open": 1,
       "open": 2,
@@ -1287,7 +1297,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;212 overlapping historical records",
+        "measured": "12 domain planning map;213 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1449,7 +1459,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "10789914ea995829ba7711c03945cdcca4443936a095755b424f5fe791c6882e"
+    "sha256": "4a529fc7f34c612ad9f49f7889f81c4d97f0066ee4d07bfd8a956db41db1dcfb"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
