@@ -1,0 +1,334 @@
+{
+  "status": "REFERENCE_ONLY",
+  "reference": [
+    {
+      "role": "behavior_reference",
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": {
+        "menu_construct_layout_and_labels": {
+          "rva": "0x3a67e0",
+          "size": 1509,
+          "sha256": "99747b609b81d3f1fcb19fe691976b4fb1b5fe91c0a9624595c0ef7ca15c3d30",
+          "matches_secondary": false,
+          "different_byte_rvas": [
+            "0x3a6c17"
+          ]
+        },
+        "menu_panel_sprite": {
+          "rva": "0x3a6dd0",
+          "size": 126,
+          "sha256": "b20edcf73e8ce0ad2c9be104e7faa9431a2c637609325d26247bb319edb88208",
+          "matches_secondary": true
+        },
+        "menu_click_dispatch": {
+          "rva": "0x3a6e50",
+          "size": 109,
+          "sha256": "48848fd20a1859ad005af69c3c5b808cf01ddede280ca192a2038c14412ea23e",
+          "matches_secondary": true
+        },
+        "shared_three_state_button_sprite": {
+          "rva": "0x3b5aa0",
+          "size": 100,
+          "sha256": "f0b2113382fd353e152650289ef37d0963bf9ae1ece19b28e9accfc982454b5a",
+          "matches_secondary": true
+        },
+        "start_or_empty_list": {
+          "rva": "0x3bae90",
+          "size": 68,
+          "sha256": "1d23a5f7d65e8f28d13afe1c6d63440a612948f440bf989c90667314c16f5d32",
+          "matches_secondary": true
+        },
+        "start_character_selection": {
+          "rva": "0x3baf10",
+          "size": 92,
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a",
+          "matches_secondary": true
+        },
+        "open_credits": {
+          "rva": "0x3baf70",
+          "size": 228,
+          "sha256": "c59c751107f315a6011ca155752bce9230690057d85292dd8eaa9fcca62cc9bd",
+          "matches_secondary": true
+        },
+        "request_exit": {
+          "rva": "0x3bb0a0",
+          "size": 33,
+          "sha256": "05f4aa94cffdf27ea9c1499119b0774ce2f90b3f2a74c69a03f14d2ad2b3f56e",
+          "matches_secondary": true
+        },
+        "read_staff_text": {
+          "rva": "0x13c3d0",
+          "size": 687,
+          "sha256": "27d34a7850787c1156d7afd0357ff74f33e061239a2a98cb8913a14030b456a0",
+          "matches_secondary": true
+        },
+        "draw_staff_text": {
+          "rva": "0x13c700",
+          "size": 914,
+          "sha256": "5e1eee4079036cb83c1c61c0f0c62596efdc79e9b276d754a6dc0c8ac7792048",
+          "matches_secondary": true
+        },
+        "login_render_and_credits_cancel": {
+          "rva": "0x13cb40",
+          "size": 1230,
+          "sha256": "0edb47caee5329bce59630b8fde8fc7bdc69ad197ce3e580d7c3cfbc59eeb2e1",
+          "matches_secondary": true
+        },
+        "login_frame_update_and_show_menu": {
+          "rva": "0x13bc90",
+          "size": 871,
+          "sha256": "e17357b77afae73ce4ded49b938ba5725942e48361b16424b44f50a786a70100",
+          "matches_secondary": true
+        },
+        "login_poll_and_show_menu": {
+          "rva": "0x13f100",
+          "size": 1418,
+          "sha256": "283a6d58e50d954e481ab94558d7d617bfc60af73154f4ba00bc8317afbab96f",
+          "matches_secondary": true
+        },
+        "load_login_and_register_menu": {
+          "rva": "0x13f7a0",
+          "size": 2409,
+          "sha256": "0b90653f0591f678ecd9179d7e6b3b7a9f606f3cc855e53948d84ab4048a13bf",
+          "matches_secondary": true
+        }
+      }
+    },
+    {
+      "role": "secondary_reference",
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "bodies": {
+        "menu_construct_layout_and_labels": {
+          "rva": "0x3a67e0",
+          "size": 1509,
+          "sha256": "ff953cd58ea3e0abe7fc4ef4705df4df05fe200ed4ea18f9a5543f6761b3f768"
+        },
+        "menu_panel_sprite": {
+          "rva": "0x3a6dd0",
+          "size": 126,
+          "sha256": "b20edcf73e8ce0ad2c9be104e7faa9431a2c637609325d26247bb319edb88208"
+        },
+        "menu_click_dispatch": {
+          "rva": "0x3a6e50",
+          "size": 109,
+          "sha256": "48848fd20a1859ad005af69c3c5b808cf01ddede280ca192a2038c14412ea23e"
+        },
+        "shared_three_state_button_sprite": {
+          "rva": "0x3b5aa0",
+          "size": 100,
+          "sha256": "f0b2113382fd353e152650289ef37d0963bf9ae1ece19b28e9accfc982454b5a"
+        },
+        "start_or_empty_list": {
+          "rva": "0x3bae90",
+          "size": 68,
+          "sha256": "1d23a5f7d65e8f28d13afe1c6d63440a612948f440bf989c90667314c16f5d32"
+        },
+        "start_character_selection": {
+          "rva": "0x3baf10",
+          "size": 92,
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a"
+        },
+        "open_credits": {
+          "rva": "0x3baf70",
+          "size": 228,
+          "sha256": "c59c751107f315a6011ca155752bce9230690057d85292dd8eaa9fcca62cc9bd"
+        },
+        "request_exit": {
+          "rva": "0x3bb0a0",
+          "size": 33,
+          "sha256": "05f4aa94cffdf27ea9c1499119b0774ce2f90b3f2a74c69a03f14d2ad2b3f56e"
+        },
+        "read_staff_text": {
+          "rva": "0x13c3d0",
+          "size": 687,
+          "sha256": "27d34a7850787c1156d7afd0357ff74f33e061239a2a98cb8913a14030b456a0"
+        },
+        "draw_staff_text": {
+          "rva": "0x13c700",
+          "size": 914,
+          "sha256": "5e1eee4079036cb83c1c61c0f0c62596efdc79e9b276d754a6dc0c8ac7792048"
+        },
+        "login_render_and_credits_cancel": {
+          "rva": "0x13cb40",
+          "size": 1230,
+          "sha256": "0edb47caee5329bce59630b8fde8fc7bdc69ad197ce3e580d7c3cfbc59eeb2e1"
+        },
+        "login_frame_update_and_show_menu": {
+          "rva": "0x13bc90",
+          "size": 871,
+          "sha256": "e17357b77afae73ce4ded49b938ba5725942e48361b16424b44f50a786a70100"
+        },
+        "login_poll_and_show_menu": {
+          "rva": "0x13f100",
+          "size": 1418,
+          "sha256": "283a6d58e50d954e481ab94558d7d617bfc60af73154f4ba00bc8317afbab96f"
+        },
+        "load_login_and_register_menu": {
+          "rva": "0x13f7a0",
+          "size": 2409,
+          "sha256": "0b90653f0591f678ecd9179d7e6b3b7a9f606f3cc855e53948d84ab4048a13bf"
+        }
+      }
+    }
+  ],
+  "raw_ida": {
+    "file": "work/startup455-m6/ida-lobby.json",
+    "sha256": "9c3b49fe737daabe5c609df56cc2e294d944df4a38a50044a5dcf98817f8c748"
+  },
+  "menu": {
+    "label_ids": [
+      "0x4ae",
+      "0x4af",
+      "0x4b0"
+    ],
+    "labels": [
+      {
+        "locale": "ru-ru",
+        "decoded_sha256": "31ded65762661a0d8eed7f0d84389ab47ffe05bed7aca113a2f6d004e1170627",
+        "texts": [
+          "Начать игру",
+          "Создатели игры",
+          "Выйти из игры"
+        ]
+      },
+      {
+        "locale": "zh-tw",
+        "decoded_sha256": "41dd826c241cfe4ea0b32ee963b7da0918f6f9e9ef7ee9320a4e4b47f4a8f686",
+        "texts": [
+          "遊戲開始",
+          "製作群",
+          "結束遊戲"
+        ]
+      }
+    ],
+    "assets": [
+      {
+        "file": "SpriteImage/ru-ru/login.spr",
+        "sha256": "c3789b378059b92de449bd92ad6171b66d2ecf76d07e8029e96ea009394affcb",
+        "frames": [
+          {
+            "action": 6,
+            "frame": 0,
+            "format": "0x31545844",
+            "width": 218,
+            "height": 128,
+            "texture_width": 256,
+            "texture_height": 128,
+            "payload_sha256": "0dc43e01fcb4a57f77651938c6e4fc31310ba5316e49c3ea2c6dbacd30fff724"
+          }
+        ]
+      },
+      {
+        "file": "SpriteImage/ru-ru/common.spr",
+        "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736",
+        "frames": [
+          {
+            "action": 0,
+            "frame": 6,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "e7d5c0fdfbde3916c706be1602a8f6f84ccfaba58a4a39c52d5202418f8282bf"
+          },
+          {
+            "action": 0,
+            "frame": 7,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "d9e3c388aa619041f4d7e45982805244a4c40f8a9842137e4b8db8aeadb65250"
+          },
+          {
+            "action": 0,
+            "frame": 8,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "7315f1afa97654a74a92e1021d12f6cff21722f1ae4e9b9738b7e094674f708d"
+          }
+        ]
+      },
+      {
+        "file": "SpriteImage/zh-tw/login.spr",
+        "sha256": "c3789b378059b92de449bd92ad6171b66d2ecf76d07e8029e96ea009394affcb",
+        "frames": [
+          {
+            "action": 6,
+            "frame": 0,
+            "format": "0x31545844",
+            "width": 218,
+            "height": 128,
+            "texture_width": 256,
+            "texture_height": 128,
+            "payload_sha256": "0dc43e01fcb4a57f77651938c6e4fc31310ba5316e49c3ea2c6dbacd30fff724"
+          }
+        ]
+      },
+      {
+        "file": "SpriteImage/zh-tw/common.spr",
+        "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736",
+        "frames": [
+          {
+            "action": 0,
+            "frame": 6,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "e7d5c0fdfbde3916c706be1602a8f6f84ccfaba58a4a39c52d5202418f8282bf"
+          },
+          {
+            "action": 0,
+            "frame": 7,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "d9e3c388aa619041f4d7e45982805244a4c40f8a9842137e4b8db8aeadb65250"
+          },
+          {
+            "action": 0,
+            "frame": 8,
+            "format": "0x31545844",
+            "width": 210,
+            "height": 21,
+            "texture_width": 256,
+            "texture_height": 32,
+            "payload_sha256": "7315f1afa97654a74a92e1021d12f6cff21722f1ae4e9b9738b7e094674f708d"
+          }
+        ]
+      }
+    ],
+    "states": {
+      "menu": 9,
+      "credits": 10,
+      "character_selection": 12,
+      "empty_character_list": 19
+    }
+  },
+  "staff_file": {
+    "file": "System/staff.txt",
+    "size": 62,
+    "sha256": "e3d81222bdea0647b117abac49fa00452dac61cf09dd7cb242aeab21a6a5945b",
+    "directives": [
+      "#3",
+      "#",
+      "#3",
+      "#"
+    ]
+  }
+}
