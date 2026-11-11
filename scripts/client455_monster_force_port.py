@@ -27,9 +27,11 @@ def port_monster_force(raw, relative, native):
         return (b'#include "client455_client_items.h"\n' + raw + b'\n' +
                 (native / 'client455_monster_force_result.inc').read_bytes()), True
     if relative == 'character/character/ccharacter_relationinfo2.h':
-        raw = replace(raw, b'\tDWORD\t\t\tm_dwCurDamagePoint;', b'\tDWORD m_forceOriginalDamage455;\n\tDWORD\t\t\tm_dwCurDamagePoint;')
+        raw = replace(raw, b'\tDWORD\t\t\tm_dwCurDamagePoint;',
+                      b'\tDWORD m_forceOriginalDamage455;\n\tbool m_forceSpecialHit455;\n\tDWORD\t\t\tm_dwCurDamagePoint;')
         raw = replace(raw, b'\tCAttackerInfo();', b'\tCAttackerInfo();\n'
-                      b'\tvoid SetForceDamage455(LONG damage);\n\tvoid AdvanceForceDamage455();')
+                      b'\tvoid SetForceDamage455(LONG damage);\n\tvoid AdvanceForceDamage455();\n'
+                      b'\tbool IsForceSpecialHit455() const { return m_forceSpecialHit455; }')
         return raw, True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
         anchor = b'\t\t\tl_pAttackerInfo->SetProcessedDamage( TRUE );'

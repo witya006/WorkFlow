@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T07:42:44.650864+00:00",
+  "measured_at_utc": "2026-11-11T07:55:31.879514+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2781,
-    "unique_functions_with_complete_assembly_cfg": 989,
-    "unique_pinned_code_bytes": 791101,
-    "reports": 192,
-    "code_range_occurrences": 4405,
+    "unique_functions_with_pinned_code": 2792,
+    "unique_functions_with_complete_assembly_cfg": 1001,
+    "unique_pinned_code_bytes": 792351,
+    "reports": 193,
+    "code_range_occurrences": 4423,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -441,6 +441,10 @@
     {
       "file": "inventory/client455-monster-force-damage-reference.json",
       "sha256": "09f6f072d19435130fab91c42e1793efbd7e5ec2a5b8e40e4bec9372b89c48b1"
+    },
+    {
+      "file": "inventory/client455-monster-force-reaction-reference.json",
+      "sha256": "7e00ef2edf47a3e0975c6e9ce2e81976e0173f419e8d0274b5137c04848ce3ed"
     },
     {
       "file": "inventory/client455-monster-force-reference.json",
@@ -985,6 +989,10 @@
       "sha256": "d67d89ac11b934c0d350c38dedd4de38b8cb893b61a95d7f74e0bd947b39a9f1"
     },
     {
+      "file": "artifacts/client455-progress/hit195/reference.json",
+      "sha256": "3fc29eade3a60fff492d4140a7a6a3585c097922bd9d97ef56afa9984d21e730"
+    },
+    {
       "file": "artifacts/client455-progress/monster191/reference.json",
       "sha256": "d5a15ad566498fd02ed22481e7eda2b98dce9c24acd00f575941be8690758d7c"
     },
@@ -1128,7 +1136,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "fa96a26cacfa4e1f8c0296f0a975f51130c06f2967bd24889cf53e1769325ab8"
+      "sha256": "222b001e80a7d699967cce74d101ddd3adb1da609f1ffcc68dd11df14318290b"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -5413,6 +5421,63 @@
       ]
     },
     {
+      "rva": "0x3c610",
+      "ida_name": "sub_43C610",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3c610",
+          "bytes": 111
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 46
+        }
+      ]
+    },
+    {
+      "rva": "0x3c680",
+      "ida_name": "sub_43C680",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3c680",
+          "bytes": 330
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 104
+        }
+      ]
+    },
+    {
+      "rva": "0x3ca70",
+      "ida_name": "sub_43CA70",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ca70",
+          "bytes": 65
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 27
+        }
+      ]
+    },
+    {
       "rva": "0x3cde0",
       "ida_name": "sub_43CDE0",
       "reports": [
@@ -6304,7 +6369,8 @@
       "rva": "0x47210",
       "ida_name": "sub_447210",
       "reports": [
-        "inventory/client455-monster-force-damage-reference.json"
+        "inventory/client455-monster-force-damage-reference.json",
+        "inventory/client455-monster-force-reaction-reference.json"
       ],
       "ranges": [
         {
@@ -6316,6 +6382,48 @@
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 128
+        },
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 128
+        }
+      ]
+    },
+    {
+      "rva": "0x47390",
+      "ida_name": "sub_447390",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x47390",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x473b0",
+      "ida_name": "sub_4473B0",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x473b0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 15
         }
       ]
     },
@@ -6323,7 +6431,8 @@
       "rva": "0x473d0",
       "ida_name": "sub_4473D0",
       "reports": [
-        "inventory/client455-monster-force-damage-reference.json"
+        "inventory/client455-monster-force-damage-reference.json",
+        "inventory/client455-monster-force-reaction-reference.json"
       ],
       "ranges": [
         {
@@ -6334,6 +6443,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
+          "instructions": 15
+        },
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
           "instructions": 15
         }
       ]
@@ -7447,6 +7560,63 @@
       ]
     },
     {
+      "rva": "0x57b50",
+      "ida_name": "sub_457B50",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x57b50",
+          "bytes": 218
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 81
+        }
+      ]
+    },
+    {
+      "rva": "0x57f00",
+      "ida_name": "sub_457F00",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x57f00",
+          "bytes": 135
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 49
+        }
+      ]
+    },
+    {
+      "rva": "0x57fe0",
+      "ida_name": "sub_457FE0",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x57fe0",
+          "bytes": 88
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
       "rva": "0x58240",
       "ida_name": "sub_458240",
       "reports": [
@@ -7576,6 +7746,25 @@
         {
           "file": "artifacts/client455-progress/monster189/reference.json",
           "instructions": 17
+        }
+      ]
+    },
+    {
+      "rva": "0x5a040",
+      "ida_name": "sub_45A040",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x5a040",
+          "bytes": 181
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 56
         }
       ]
     },
@@ -8462,6 +8651,7 @@
       "rva": "0x638f0",
       "ida_name": "sub_4638F0",
       "reports": [
+        "inventory/client455-monster-force-reaction-reference.json",
         "inventory/client455-monster-force-reference.json",
         "inventory/client455-town-state-reference.json"
       ],
@@ -8472,6 +8662,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 27
+        },
         {
           "file": "artifacts/client455-progress/monster191/reference.json",
           "instructions": 27
@@ -8486,6 +8680,7 @@
       "rva": "0x63960",
       "ida_name": "sub_463960",
       "reports": [
+        "inventory/client455-monster-force-reaction-reference.json",
         "inventory/client455-monster-force-reference.json",
         "inventory/client455-town-state-reference.json"
       ],
@@ -8496,6 +8691,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 37
+        },
         {
           "file": "artifacts/client455-progress/monster191/reference.json",
           "instructions": 37
@@ -17807,7 +18006,8 @@
       "rva": "0x1a3bd0",
       "ida_name": "sub_5A3BD0",
       "reports": [
-        "inventory/client455-monster-force-damage-reference.json"
+        "inventory/client455-monster-force-damage-reference.json",
+        "inventory/client455-monster-force-reaction-reference.json"
       ],
       "ranges": [
         {
@@ -17823,6 +18023,48 @@
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 205
+        },
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 205
+        }
+      ]
+    },
+    {
+      "rva": "0x1a3f00",
+      "ida_name": "sub_5A3F00",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a3f00",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x1a3f30",
+      "ida_name": "sub_5A3F30",
+      "reports": [
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a3f30",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 16
         }
       ]
     },
@@ -18711,7 +18953,8 @@
       "rva": "0x1e3690",
       "ida_name": "sub_5E3690",
       "reports": [
-        "inventory/client455-magic-reference.json"
+        "inventory/client455-magic-reference.json",
+        "inventory/client455-monster-force-reaction-reference.json"
       ],
       "ranges": [
         {
@@ -18719,7 +18962,12 @@
           "bytes": 77
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/hit195/reference.json",
+          "instructions": 28
+        }
+      ]
     },
     {
       "rva": "0x1e47a0",
@@ -46752,8 +47000,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 13,
-    "unique_functions_with_complete_assembly_cfg": 13
+    "unique_functions_with_pinned_code": 11,
+    "unique_functions_with_complete_assembly_cfg": 12
   },
   "M6": "OPEN",
   "M9": "OPEN",

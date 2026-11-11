@@ -1,5 +1,6 @@
 void CAttackerInfo::SetForceDamage455(LONG damage)
 {
+    m_forceSpecialHit455 = damage == -2;
     m_forceOriginalDamage455 = damage > 0 ? static_cast<DWORD>(damage) : 0;
     SetTotalDamagePoint(m_forceOriginalDamage455);
 }

@@ -1,4 +1,4 @@
-"""Connect the 455 monster's received and displayed health fractions."""
+"""Apply 455 health updates and zero-damage Force reactions to monsters."""
 
 from client455_trade_ore_port import replace
 
@@ -13,24 +13,35 @@ def port_monster_health(raw, relative, native):
                        b'\tvoid ReceiveHealth455(WORD tenThousandths);\n'
                        b'\tvoid ApplyForceHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames);'), True
     if relative == 'character/npc/cmonster.cpp':
+        anchor = b'\t\tcase CAI_DAMAGED_MISS\t\t: return MET_DAMAGE_MISS;'
+        raw = replace(raw, anchor, anchor + b'\n\t\tcase CAI_DAMAGED_MISS455\t: return MET_DAMAGE_MISS;\n'
+                      b'\t\tcase CAI_DAMAGED_SPECIAL_HIT455: return 13;')
         raw = replace(raw, b'\tSetScale( m_pMonsterData->m_fScale );',
                       b'\tif (m_targetHealth455 == -1.0f) m_displayedHealth455 = 1.0f;\n'
                       b'\tSetScale( m_pMonsterData->m_fScale );')
         return raw + b'\n' + (native / 'client455_monster_health.inc').read_bytes(), True
     if relative == 'character/character/ccharacter_relationinfo2.h':
+        raw = replace(raw, b'class CAttackerInfo :',
+                      b'constexpr DWORD CAI_DAMAGED_MISS455 = 0x60000005;\n'
+                      b'constexpr DWORD CAI_DAMAGED_SPECIAL_HIT455 = 0x60000006;\n\n'
+                      b'class CAttackerInfo :')
         return replace(raw, b'\tvoid AdvanceForceDamage455();',
                        b'\tvoid AdvanceForceDamage455();\n'
                        b'\tDWORD GetOriginalForceDamage455() const { return m_forceOriginalDamage455; }'), True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
         return replace(raw, b'''                if (force->IsAttackable() && l_pAttackerInfo->GetTotalDamagePoint())
                     l_pAttackerInfo->AdvanceForceDamage455();''',
-                       b'''                if (force->IsAttackable() && l_pAttackerInfo->GetTotalDamagePoint()) {
+                       b'''                if (!force->IsAttackable()) continue;
+                if (l_pAttackerInfo->GetTotalDamagePoint()) {
                     const BYTE frames = l_pAttackerInfo->GetEffectFrameNum();
                     l_pAttackerInfo->AdvanceForceDamage455();
                     if (m_pOwner->IsEqualCharType(CTI_MONSTER))
                         static_cast<CMonster*>(m_pOwner)->ApplyForceHealthImpact455(
                             l_pAttackerInfo->GetCurDamagePoint(),
                             l_pAttackerInfo->GetOriginalForceDamage455(), frames);
+                } else if (m_pOwner->IsEqualCharType(CTI_MONSTER)) {
+                    m_pOwner->SetEffectInfo(l_pAttackerInfo->IsForceSpecialHit455()
+                        ? CAI_DAMAGED_SPECIAL_HIT455 : CAI_DAMAGED_MISS455);
                 }'''), True
     if relative == 'network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h':
         anchor = b'\t\t\t\tbool\tAnalysisServerPacket( _MSG_HEADER * pMsgHeader, char* pi_pMsg );'

@@ -9141,7 +9141,7 @@
       "id": "CLIENT455-MONSTER-HEALTH-194",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-health-checkpoint.json",
         "inventory/client455-monster-health-reference.json"
@@ -9151,6 +9151,21 @@
         "Live HP and Force events and the visible target bar",
         "Full target information, UI notification and requests",
         "Special hit reaction, effects, death and other actor types"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-FORCE-REACTION-195",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-force-reaction-checkpoint.json",
+        "inventory/client455-monster-force-reaction-reference.json"
+      ],
+      "description": "The normal monster effect queue receives distinct keys for a -2 Force hit and a regular miss at impact. Both have zero damage. The same build walks on NeutralB.",
+      "gaps": [
+        "Live Force impact and visible effects",
+        "Reaction on other actor types, support Force, auxiliary result data and positive damage effects"
       ]
     }
   ],

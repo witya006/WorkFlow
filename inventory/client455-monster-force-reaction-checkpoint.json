@@ -1,0 +1,171 @@
+{
+  "native": {
+    "status": "PASS",
+    "reaction_types": [
+      13,
+      4
+    ],
+    "checked_impacts": 2,
+    "numeric_damage": 0,
+    "duplicated_reaction": false
+  },
+  "console": {
+    "file": "work/client455-port/monster-force-reaction-probe/force-reaction.txt",
+    "sha256": "8944513a5370cf52ad43e812580ce2a4f4fc760c713992cf3e4ff3d7ac08c982"
+  },
+  "real_clips": [
+    {
+      "file": "work/client455-port/monster-force-reaction-probe/WING_WARFORCEATTACK_01_00.ANI",
+      "sha256": "ff9a4c0fa6132b3d2bd5fe936ed070e83b541b9bcfd487814181f6c9ce8b85b9",
+      "key": 4288,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    },
+    {
+      "file": "work/client455-port/monster-force-reaction-probe/WING_WARFORCESUPPORT_01_00.ANI",
+      "sha256": "807d3f83371a62ccf909c42cd2677c88daaca7c4b31fffb814d6bc2ed597cbbb",
+      "key": 4304,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    }
+  ],
+  "regressions": {
+    "health": {
+      "status": "PASS",
+      "health_routes": [
+        27,
+        29
+      ],
+      "initial_fraction": 1,
+      "before_impact": 0.8,
+      "after_final_impact": 0.5,
+      "after_recovery": 0.95,
+      "verified_impact_frames": 2,
+      "short_update_rejected": true
+    },
+    "console": {
+      "file": "work/client455-port/monster-force-reaction-probe/monster-health.txt",
+      "sha256": "8035343d4ac28a159eb8cf6e050ef58a42a3b9eb27dfe2dd32308f328eed9177"
+    }
+  },
+  "probe_executable": {
+    "file": "work/client455-port/monster-force-reaction-probe/monster-force-reaction-probe.exe",
+    "sha256": "88de871d675b72ca3bbb9a0bb6f3f4c1070ae38d2bb88eb89cceff0152722c26",
+    "architecture": "x86"
+  },
+  "status": "PARTIAL_COMPONENT_MONSTER_FORCE_REACTION",
+  "scope": "Zero-damage 5/9 reaction queued on a monster impact. No rendered effect equivalence claim.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "de40a4a1fa50e8e124c3e8e43567616028a7ca0de10d15cc50215c78d226cc59",
+    "bytes": 2388992,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1880d0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "ae1bb9c7ddc70c8cb94be815d34789ae2e0d9bde31ab92a1e3258f3c0967874c",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "ae1bb9c7ddc70c8cb94be815d34789ae2e0d9bde31ab92a1e3258f3c0967874c"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "4618314ef21078d9fd948ffba5e0ea42cb1f9751b53989a1e289672975ce1d05"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "03e8e03eb0b4d4e9c1d27b514a027a89421710f88ca65e6a9e4ce857469383e9"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "2b2556c415a4e49fedb7ca90ff9b92971cdf59e74b1b02e3ca643a242fa32a16"
+    },
+    "monster-force-reaction-reference": {
+      "file": "inventory/client455-monster-force-reaction-reference.json",
+      "sha256": "7e00ef2edf47a3e0975c6e9ce2e81976e0173f419e8d0274b5137c04848ce3ed"
+    },
+    "skill-force-items-reference": {
+      "file": "inventory/client455-skill-force-items-reference.json",
+      "sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "cdafb5a8a33471f5459aacffe338fe2df933c408ccd2f2aa2d318e789cbb0339"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "6cdb1259f5a33d4ce403e04e23fe8dbed259c8bf8830df94cc881eacbaed9e97"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "44eba649a8a4c5547537f66ab16d817ef1ec0c1d4bebfcbfc1b14d9f201fb426"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "e3c0950f309a36391877e73e7179f02bb42514fffbf2a1c4837a937a88e0da73"
+    },
+    "monster-force-reaction-live": {
+      "file": "artifacts/client455-progress/hit195/live.json",
+      "sha256": "a7ad26275fd8bb9fc56d4b78ce3b5b983702f033394326ee8ece58a5828403a8"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/hit195/live.json",
+    "sha256": "a7ad26275fd8bb9fc56d4b78ce3b5b983702f033394326ee8ece58a5828403a8"
+  },
+  "live_smoke": {
+    "world_frames": [
+      {
+        "file": "work/m9/de40a4a1/world-walk-live-taiwan001/world-post-position.png",
+        "sha256": "e4da936a3fc2158d450d4d613e76402b191b4b55a6ae6a388b76af72d374513c"
+      },
+      {
+        "file": "work/m9/de40a4a1/world-walk-live-taiwan001/world-post-position-settled.png",
+        "sha256": "c5e52e4fbb4c7deb03af9671e6f3c32f466edcc4099465496e888d3615d95637"
+      }
+    ],
+    "displacement": 77.99279261572806,
+    "observed_force_events": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_force_reaction.py",
+    "sha256": "71308301961b4210a1d3221e41860f76fff37db706f2b7fbeb3116f3ad8d818d"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_monster_force_port.py",
+      "sha256": "de841d2fe4796662f0a9153e5339ae6ee8fa364b101a90bee155a1d728fe8288"
+    },
+    {
+      "file": "scripts/client455_monster_health_port.py",
+      "sha256": "2d8080b9a4d6cfe9e0bf9bdd91da8bce37f9dd71a8986118e37a1c1189aa263a"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_damage.inc",
+      "sha256": "fb8a901fcd40a4b48acea5fdaa05bea6181ea53058fe27a2b45f9969e565b6f4"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result_probe.cpp",
+      "sha256": "97b656f6d3e786b6f868de270c42e46e7b5e13b0478a01dd0fd7eb4a6f8c410f"
+    }
+  ],
+  "own_symbols": {
+    "?SetEffectInfo@CBaseNpc@@UAEHK@Z": "0x10dc0",
+    "?ProcessDamage@CCombatState@@QAEXXZ": "0x1add0",
+    "?SetForceDamage455@CAttackerInfo@@QAEXJ@Z": "0x1b640",
+    "?GetEffectTypeID@CMonster@@MAEKK@Z": "0x41650"
+  },
+  "live_force_received": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

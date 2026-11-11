@@ -1,3 +1,9 @@
+2026-11-11 — Monster Force reaction 195, PARTIAL_COMPONENT_MONSTER_FORCE_REACTION.
+
+The ordinary monster impact path queues distinct effects for -2 and a miss.
+The component run checks keys, zero damage and single processing per impact.
+[Evidence](research/client455-monster-force-reaction.md)
+
 2026-11-11 — Monster health 194, PARTIAL_COMPONENT_MONSTER_HEALTH_FRACTION.
 
 The ordinary item dispatcher applies 13/27 and 13/29 monster fractions.

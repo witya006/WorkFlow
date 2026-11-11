@@ -30,7 +30,30 @@ bool sendHealth(CNetMsgProcessor_ItemArrangement& processor, DWORD serial, BYTE 
     return processor.AnalysisServerPacket(&header, payload.data());
 }
 
-void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth) {
+void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType) {
+    target.SetMesh(1);
+    auto* incoming = target.GetAttackerInfo(&wing);
+    auto* effects = _GetEffectInfoList();
+    effects->Clear();
+    const DWORD expected = (target.GetMeshID() << 8) | (effectType << 4) | (target.GetAnimationID() & 0xf);
+    const float health = target.GetHPRate();
+    target.GetCombatState()->ProcessDamage();
+    require(effects->empty(), "Reaction waits for the impact flag");
+    incoming->SetDamaged(TRUE);
+    target.GetCombatState()->ProcessDamage();
+    require(effects->size() == 1, "One reaction entered the normal effect queue");
+    const auto& effect = **effects->begin();
+    require(effect.dwID == expected && effect.dwType == ETI_MONSTER && effect.dwValue == 0 &&
+            effect.dwMyself[0] == CTI_MONSTER && effect.dwMyself[1] == target.GetIndex() &&
+            effect.dwTarget[0] == CTI_MONSTER && effect.dwTarget[1] == wing.GetIndex() &&
+            target.GetHPRate() == health && !incoming->GetTotalDamagePoint(),
+            "Queued effect key, actors and zero damage match the impact");
+    target.GetCombatState()->ProcessDamage();
+    require(effects->size() == 1, "A consumed impact does not repeat");
+    effects->Clear();
+}
+
+void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth, bool checkReaction) {
     constexpr std::array<std::int32_t, 6> amounts{70000, 4500, 321, 1, -1, -2};
     std::array<CMonster*, amounts.size()> targets{};
     targets[0] = &primary;
@@ -116,12 +139,17 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
         expectRate(0.95f);
         require(targets[1]->GetHPRate() == 1.0f, "Health belongs to the addressed monster");
     }
+    if (checkReaction) {
+        checkHitReaction(*targets[5], wing, 13);
+        checkHitReaction(*targets[4], wing, 4);
+    }
 }
 }
 
 int main(int argc, char** argv) {
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
-    require(argc == 5 || checkHealth || (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
+    const bool checkReaction = argc == 6 && std::strcmp(argv[5], "--reaction") == 0;
+    require(argc == 5 || checkHealth || checkReaction || (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
     ChInterface renderer;
@@ -150,12 +178,15 @@ int main(int argc, char** argv) {
     require(wing->GetMeshID() == 1, "Actor owns the registered mesh identity");
 
     if (argc == 6) {
-        checkDamage(*manager, *wing, *target, checkHealth);
+        checkDamage(*manager, *wing, *target, checkHealth, checkReaction);
         manager->Clear();
         manager.reset();
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
-        if (checkHealth)
+        if (checkReaction)
+            std::puts("{\"status\":\"PASS\",\"reaction_types\":[13,4],\"checked_impacts\":2,"
+                      "\"numeric_damage\":0,\"duplicated_reaction\":false}");
+        else if (checkHealth)
             std::puts("{\"status\":\"PASS\",\"health_routes\":[27,29],\"initial_fraction\":1,"
                       "\"before_impact\":0.8,\"after_final_impact\":0.5,\"after_recovery\":0.95,"
                       "\"verified_impact_frames\":2,\"short_update_rejected\":true}");
