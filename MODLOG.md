@@ -1,3 +1,8 @@
+2026-11-11 — NeutralB 184, PASS_LIVE_RIGHT_DRAG_ELEVATION.
+Restored the 455 ordinary right-drag vertical clamp and captured the
+sky in the live client. The avatar partially obstructs the extreme view.
+[Evidence and remaining work](research/client455-world-camera.md)
+
 2026-11-11 — NeutralB 183, PASS_LIVE_FORWARD_MOVEMENT_AND_SETTLING.
 Restored the localized default keymap path. The avatar moved and
 settled after scoped forward input, with move and stop messages queued.

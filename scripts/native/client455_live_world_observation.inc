@@ -9,8 +9,9 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
     auto& state = RF455_WorldObservation();
     const unsigned sample = (state.walk ? 6 : 3) - state.remaining;
     constexpr ULONGLONG delays[] = {0, 1000, 3000, 4500, 6500, 8500};
+    constexpr ULONGLONG cameraDelays[] = {0, 1800, 3400};
     const auto elapsed = GetTickCount64() - state.acceptedAt;
-    if (elapsed < delays[sample]) return;
+    if (elapsed < (state.camera ? cameraDelays[sample] : delays[sample])) return;
     --state.remaining;
 
     char message[384];

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T04:11:14.687472+00:00",
+  "measured_at_utc": "2026-11-11T04:57:29.299607+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2696,
-    "unique_functions_with_complete_assembly_cfg": 896,
-    "unique_pinned_code_bytes": 772678,
-    "reports": 182,
-    "code_range_occurrences": 4301,
+    "unique_functions_with_pinned_code": 2699,
+    "unique_functions_with_complete_assembly_cfg": 901,
+    "unique_pinned_code_bytes": 776096,
+    "reports": 183,
+    "code_range_occurrences": 4306,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -755,6 +755,10 @@
       "sha256": "99fc936191d4df35e70e932f40cd71c8e703a2022a8a3344d867049b8ece3a4c"
     },
     {
+      "file": "inventory/client455-world-camera-reference.json",
+      "sha256": "114da20f780b35f10a08e8f2eb744c5d54365c2e5c18e28551efcefca6cc77c2"
+    },
+    {
       "file": "inventory/client455-world-entry-reference.json",
       "sha256": "81fb9be0a49f7f285ea785b286823ff249b458645f31abf8197257fbdc0b3e77"
     },
@@ -1041,6 +1045,10 @@
       "sha256": "04778287e84153a8d968ae018d7f235e0484b6f6f1ba94ff6c982ed1df0ca199"
     },
     {
+      "file": "artifacts/client455-progress/camera184-reference.json",
+      "sha256": "1c2985ed69d67399bc701d15ff55dac1e8df3ac8c1c0c26af8174c84f96b9dc6"
+    },
+    {
       "file": "artifacts/client455-progress/world-entry139-reference/session.json",
       "sha256": "c00bfab732d4ba5148c1fd862db795cb27e579a7f7b0375b5f41f451f6cd3539"
     }
@@ -1048,7 +1056,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "e152fe7b1b400affd2faf36ea9dcacb5f13deef77e00a153de08a5d551d0312e"
+      "sha256": "1da9152a54e4a389f4e5f1bf2b7154f48397d255536555f41125fff219b92c28"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -3790,7 +3798,8 @@
       "rva": "0x27e10",
       "ida_name": "sub_427E10",
       "reports": [
-        "inventory/client455-tutorial-spatial-reference.json"
+        "inventory/client455-tutorial-spatial-reference.json",
+        "inventory/client455-world-camera-reference.json"
       ],
       "ranges": [
         {
@@ -3798,13 +3807,19 @@
           "bytes": 33
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/camera184-reference.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x27e40",
       "ida_name": "sub_427E40",
       "reports": [
-        "inventory/client455-tutorial-spatial-reference.json"
+        "inventory/client455-tutorial-spatial-reference.json",
+        "inventory/client455-world-camera-reference.json"
       ],
       "ranges": [
         {
@@ -3812,7 +3827,12 @@
           "bytes": 33
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/camera184-reference.json",
+          "instructions": 16
+        }
+      ]
     },
     {
       "rva": "0x27e70",
@@ -14313,6 +14333,63 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x154af0",
+      "ida_name": "sub_554AF0",
+      "reports": [
+        "inventory/client455-world-camera-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x154af0",
+          "bytes": 128
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/camera184-reference.json",
+          "instructions": 44
+        }
+      ]
+    },
+    {
+      "rva": "0x154b70",
+      "ida_name": "sub_554B70",
+      "reports": [
+        "inventory/client455-world-camera-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x154b70",
+          "bytes": 3262
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/camera184-reference.json",
+          "instructions": 797
+        }
+      ]
+    },
+    {
+      "rva": "0x155870",
+      "ida_name": "sub_555870",
+      "reports": [
+        "inventory/client455-world-camera-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x155870",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/camera184-reference.json",
+          "instructions": 15
+        }
+      ]
     },
     {
       "rva": "0x1558e0",
@@ -44958,8 +45035,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 6,
-    "unique_functions_with_complete_assembly_cfg": 7
+    "unique_functions_with_pinned_code": 3,
+    "unique_functions_with_complete_assembly_cfg": 5
   },
   "M6": "OPEN",
   "M9": "OPEN",

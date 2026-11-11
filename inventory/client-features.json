@@ -8969,7 +8969,7 @@
       "id": "CLIENT455-NEUTRALB-WALK-183",
       "area": "world",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-world-walk-checkpoint.json",
         "inventory/client455-neutralb-sky-checkpoint.json"
@@ -8979,6 +8979,23 @@
         "Physical keyboard, mouse and camera rotation, alternate NKM layout and complete key bindings",
         "Target release timing and matched server response for movement",
         "World update dispatch, actor and item owners, combat, inventory and remaining M9 scenarios"
+      ]
+    },
+    {
+      "id": "CLIENT455-NEUTRALB-CAMERA-184",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-world-camera-checkpoint.json",
+        "inventory/client455-world-camera-reference.json",
+        "inventory/client455-world-walk-checkpoint.json"
+      ],
+      "description": "Three scoped right drags reach the confirmed 455 vertical clamp on NeutralB. The world renders the sky at the resulting angle.",
+      "gaps": [
+        "Physical mouse, horizontal rotation, sensitivity, UI exceptions and complete camera modes",
+        "The avatar partially obstructs the view at the vertical limit. Original camera positioning and collision at that angle still require comparison.",
+        "Movement response matching, world dispatch and remaining client scenarios"
       ]
     }
   ],

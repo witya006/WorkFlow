@@ -1,0 +1,247 @@
+{
+  "status": "PASS_LIVE_RIGHT_DRAG_ELEVATION",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
+    "bytes": 2380800,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x186630",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8",
+  "scope": "Ordinary NeutralB right drags lower the camera elevation parameter to the 455 clamp and change the rendered scene.",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "c17c72361f7c008fdd258e2d5a704b2fc586d9531e789f95b9e3270da9813c80"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "0fc33f163703ea42df644bc2da21043eed571c8de40197b00c6de851b237bf10"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "44313248eecd565c1b9de6e3e58d5cece52a34e0d276fd25edc8f6b108e11ba4"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "7aa125c8c01225593846d7c8af35c00af0d709a265fc1e87455fbead2a4bda51"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "76f935e6d531204168464f9262878f82197d9bb47f45caa5c21cc63945a36282"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "ed6cb4b1557257cb23aeb584e37f83f4d1cc2d506bdf60a86857ad57d4b84a55"
+    },
+    "world-camera-reference": {
+      "file": "inventory/client455-world-camera-reference.json",
+      "sha256": "114da20f780b35f10a08e8f2eb744c5d54365c2e5c18e28551efcefca6cc77c2"
+    },
+    "world-camera-native": {
+      "file": "artifacts/client455-progress/client455-world-camera-live-taiwan-native.json",
+      "sha256": "964394dd00ba6c21ee89f12155fb776130fba1ac026b318d51910f644e1d4bf7"
+    },
+    "world-camera-reference-raw": {
+      "file": "artifacts/client455-progress/camera184-reference.json",
+      "sha256": "1c2985ed69d67399bc701d15ff55dac1e8df3ac8c1c0c26af8174c84f96b9dc6"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/client455-world-camera-live-taiwan-native.json",
+    "sha256": "964394dd00ba6c21ee89f12155fb776130fba1ac026b318d51910f644e1d4bf7"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_world_camera.py",
+    "sha256": "d9fad3ba466a90b4220114499374160c0c4b9f5a0f7c819c711751e87e5949c6"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_camera_input_port.py",
+      "sha256": "6ce8a34fccf949608ae58f1c065b14818b90f7a69d5bc8d49468793f4cb261ac"
+    },
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "5e3725e1711f5d9b776e41828bd0e3c1b6468a94e233f32de2ca570211f32990"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "4830c3ab777630353341382df5855f7ce86ca9866bd2e5b9f0e4fa93d0753bbf"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "f412431d2f49fb67b2dfa3924a6591d9f661400bfe3fd91fd7cb7eee915a1cd0"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "e52ef02ebf861d59f90f74e0d08666dbf52d36d7fc4b747a28943a2e0525dbcb"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "aca72289c4011a4a56405c70fbd7867b146fac678096d24f818b56575295716e"
+    }
+  ],
+  "own_symbols": {
+    "?Render@CCamera@@QAEHXZ": "0x15990",
+    "?InputProcess_Mouse@CGP_MainGame@@QAEHXZ": "0x2ba30"
+  },
+  "samples": [
+    {
+      "index": 0,
+      "elapsed_ms": 0,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 1,
+      "elapsed_ms": 1828,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        -46.5,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 2,
+      "elapsed_ms": 3422,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        -89.0,
+        180.0,
+        60.0
+      ]
+    }
+  ],
+  "right_drag_phases": [
+    [
+      1,
+      420,
+      0
+    ],
+    [
+      2,
+      420,
+      4
+    ],
+    [
+      3,
+      74,
+      4
+    ],
+    [
+      4,
+      74,
+      32
+    ],
+    [
+      5,
+      420,
+      0
+    ],
+    [
+      6,
+      420,
+      4
+    ],
+    [
+      7,
+      74,
+      4
+    ],
+    [
+      8,
+      74,
+      32
+    ],
+    [
+      9,
+      420,
+      0
+    ],
+    [
+      10,
+      420,
+      4
+    ],
+    [
+      11,
+      74,
+      4
+    ],
+    [
+      12,
+      74,
+      32
+    ]
+  ],
+  "frames": [
+    {
+      "file": "work/m9/dad137eb/world-camera-live-taiwan001/world-post-position.png",
+      "sha256": "119d7b12b849ef2145b3cfbd8bd3ed5f80372e666d82e30fcb0e2ac94e8c3a54"
+    },
+    {
+      "file": "work/m9/dad137eb/world-camera-live-taiwan001/world-post-position-settled.png",
+      "sha256": "aa417892fd7913446377f262e653edf84834ba07e94f28da64ed59e5b1339fd2"
+    }
+  ],
+  "changed_region_pixels": 42800,
+  "physical_mouse_verified": false,
+  "horizontal_rotation_verified": false,
+  "full_camera_behavior_verified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

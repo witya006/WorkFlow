@@ -296,7 +296,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "6e9f655246ddf0b7e90fa834c0ce5b4ef1d6e57954522c995ad5e8ba9d19b03a",
+      "sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -846,11 +846,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "253767b6ea669b26bbfbaebd3609d426cdcf52d5df9b9bbd1806a81e90446f1c",
-      "bytes": 2380288,
+      "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
+      "bytes": 2380800,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x186210",
+      "entry_rva": "0x186630",
       "sections": [
         ".text",
         ".rdata",
@@ -875,22 +875,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "cd723f0c9637b3e14f7b1cc8ffeb6dd79c4d041009d148692388c97d26149ca6",
+      "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-world-walk-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-world-camera-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "6e9f655246ddf0b7e90fa834c0ce5b4ef1d6e57954522c995ad5e8ba9d19b03a",
+      "link_sha256": "74c5641ebe752c2922cb46538988725d9415113667473692081350aac01375f8",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "253767b6ea669b26bbfbaebd3609d426cdcf52d5df9b9bbd1806a81e90446f1c",
-        "bytes": 2380288,
+        "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
+        "bytes": 2380800,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x186210",
+        "entry_rva": "0x186630",
         "sections": [
           ".text",
           ".rdata",
@@ -900,7 +900,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "cd723f0c9637b3e14f7b1cc8ffeb6dd79c4d041009d148692388c97d26149ca6"
+      "build_sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -908,7 +908,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "cd723f0c9637b3e14f7b1cc8ffeb6dd79c4d041009d148692388c97d26149ca6"
+        "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
       },
       "build_exit": 0,
       "errors": [],
@@ -918,11 +918,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "253767b6ea669b26bbfbaebd3609d426cdcf52d5df9b9bbd1806a81e90446f1c",
-        "bytes": 2380288,
+        "sha256": "dad137eb30cc405239912a49bec5b8dc1298c2cbd18caabfcd529445339bc744",
+        "bytes": 2380800,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x186210",
+        "entry_rva": "0x186630",
         "sections": [
           ".text",
           ".rdata",
@@ -935,28 +935,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "cd723f0c9637b3e14f7b1cc8ffeb6dd79c4d041009d148692388c97d26149ca6"
+        "sha256": "1c489f3f148eb04645903ed8ce0105ee70654ec140b00d2a4ba0470b46a362e6"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary NeutralB avatar advances after scoped Win32 forward input, queues move and stop messages, then reaches a stable position while the camera anchor follows.",
+    "current_work": "Ordinary NeutralB right drags lower the camera elevation parameter to the 455 clamp and change the rendered scene.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/client455-world-walk-live-taiwan-native.json",
-      "sha256": "5418f9111b57166edbc5bbb9030dc84ddee9cdfcefad4cc047644272098a2f9a",
+      "file": "artifacts/client455-progress/client455-world-camera-live-taiwan-native.json",
+      "sha256": "964394dd00ba6c21ee89f12155fb776130fba1ac026b318d51910f644e1d4bf7",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/253767b6/world-walk-live-taiwan001/login-frame.png",
-        "sha256": "b5559aa42b935004fd5b13e25bb188557e0bbcc7cba937f545ad7c83f7845cff"
+        "file": "work/m9/dad137eb/world-camera-live-taiwan001/login-frame.png",
+        "sha256": "895a185f6c5b47043fa0d3bf06cc0112c2a1e9776d00ccd8fbcfabd6cb428c7e"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 124,
-        "elapsed_ms": 8031,
+        "frame_index": 122,
+        "elapsed_ms": 8016,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -972,11 +972,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "53c7289efa51a49a49f3f02606a61afa91f3fca1bfb7f114ff3bc64301931db6",
-    "entries": 187,
+    "sha256": "1c8b82d8773d7013db46ccdfdb6af53e89c5a86603a3c809603c0c57a28e5188",
+    "entries": 188,
     "statuses": {
       "partial_component": 13,
-      "partial": 144,
+      "partial": 145,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -986,7 +986,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-NEUTRALB-WALK-183"
+      "CLIENT455-NEUTRALB-CAMERA-184"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1056,7 +1056,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;187 overlapping historical records",
+        "measured": "12 domain planning map;188 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1218,7 +1218,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "29d6462359fe9d042240bbfbc342c3e4451c175232741504fdbd2f4e96ae65a3"
+    "sha256": "6fc330d973c0d59846c0579bcfe393ccb540ff64b5c9285791c7c366c9e42bfd"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
