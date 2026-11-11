@@ -9017,7 +9017,7 @@
       "id": "CLIENT455-MONSTER-DATA-186",
       "area": "world",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-data-checkpoint.json",
         "inventory/client455-monster-data-reference.json",
@@ -9028,6 +9028,23 @@
         "Visible monster draw and animation comparison in a matching scene",
         "Health fraction, level, effects, movement trajectory and the complete monster lifecycle",
         "Remaining 455 world, gameplay and acceptance scenarios"
+      ]
+    },
+    {
+      "id": "CLIENT455-WORLD-REFRESH-187",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-world-refresh-checkpoint.json",
+        "inventory/client455-world-refresh-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "Ordinary NeutralB applied 92 object refresh updates to existing monsters and players. Parked units and ground items passed the native owner probe.",
+      "gaps": [
+        "Full object type mapping and expiration behavior",
+        "Missing monster recovery request and full movement and rendering parity",
+        "Town restriction consumers and local movement correction"
       ]
     }
   ],

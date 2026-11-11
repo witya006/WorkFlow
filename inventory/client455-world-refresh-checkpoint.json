@@ -1,0 +1,124 @@
+{
+  "status": "PARTIAL_LIVE_WORLD_REFRESH",
+  "scope": "Ordinary NeutralB refreshes existing objects without changing coordinates.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f16919a8ba5baf5a721903fd26628355401992bd0f42391751f3cd56ae8130a6",
+    "bytes": 2382848,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x186d40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "736d02f1a548f6d1c6937fec90aac0e04f99c09b9e57d9dc8752628e3956a84b",
+  "own_symbols": {
+    "?PositionMsg_ObjectRefresh455@CNetworkMgr@@IAE_NPBDI@Z": "0x520e0"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "736d02f1a548f6d1c6937fec90aac0e04f99c09b9e57d9dc8752628e3956a84b"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "54bab1065fc31f810b78974d68c2018b0519d635070c5bf341cd03d4407e38f9"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "9542bbb62d2975e4d82dad0c317c35aed34182d2e8d383ff2c894e9d9b6a02d7"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "90702927f95f31a5d7cd19ec7891e97fc116502f7a0149065ca63faf4c8c3df4"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "6e4da383adbdb13f755959dc85edb26a1a55a2ae93dab26c65d6830816d59b77"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "d1e67f7b505db6d9f17e9b79bec7fc8171f4da1de5c965dfafa10a418f866364"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "89d3ef17c40a0d231b092d8db904c279b93be584a1bff60458a08a3954e1bb35"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "eef4b3343d66cfa8041abaef5549c898c41e4006361ac317d5235db13fa852f5"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "d55ee2c820bae2683d8c2c1607d93b7f88b80ff1097e2efb2c27aec42be28c76"
+    },
+    "world-refresh-reference": {
+      "file": "inventory/client455-world-refresh-reference.json",
+      "sha256": "4d94ee48183a21446dc81ddcae895a192096a2ed042d89e6d1ef7fe602ee0f2a"
+    },
+    "world-refresh-live": {
+      "file": "artifacts/client455-progress/position187/live.json",
+      "sha256": "87c952ef3272cb4d5664b7807321803ef7b1f52ad3ca9b1b7999893a6074e481"
+    },
+    "world-refresh-raw": {
+      "file": "artifacts/client455-progress/position187/reference.json",
+      "sha256": "003d93b0b8a2ee5800fe57781763864723b32ca25cec6274ff7bac0cc20a6459"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/position187/live.json",
+    "sha256": "87c952ef3272cb4d5664b7807321803ef7b1f52ad3ca9b1b7999893a6074e481"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_world_refresh.py",
+    "sha256": "f694ee61ecf41332026e2098b422a774b6d0d0d30f3f6f341d5649493c6d3a58"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "b591b72bf3df2aa6d7a06f28574ef61ac15028e6bfe5af18b7f2b9d6557b795f"
+    },
+    {
+      "file": "scripts/native/client455_world_updates.h",
+      "sha256": "d35c460c5f2e111096ed671a72c7bc9532ab6748ce916335e60d4d2b2d282f4e"
+    },
+    {
+      "file": "scripts/native/client455_world_position.inc",
+      "sha256": "1cfe5223081ef7269e26ffdf40adfed994ba37083d7e25fe1e7c2b14b824f79a"
+    },
+    {
+      "file": "scripts/native/client455_initial_download_probe.cpp",
+      "sha256": "1f2b6a6ff9e1a9beeb059878824f11f2685f83b6f0b1173fc31b8239f88c716c"
+    }
+  ],
+  "refresh_records": 92,
+  "monster_refreshes_applied": 70,
+  "refresh_results": [
+    {
+      "kind": 0,
+      "type": 0,
+      "applied": true,
+      "count": 22
+    },
+    {
+      "kind": 0,
+      "type": 1,
+      "applied": true,
+      "count": 70
+    }
+  ],
+  "monster_spawn_applied": 17,
+  "monster_move_applied": 60,
+  "town_state_packets": 1,
+  "own_walk_verified": true,
+  "town_state_consumers_ported": false,
+  "full_monster_motion_accepted": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

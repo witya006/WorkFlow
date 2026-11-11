@@ -1,3 +1,9 @@
+2026-11-11 — NeutralB 187, PARTIAL_LIVE_WORLD_REFRESH.
+
+The ordinary client applied 92 refresh updates to live objects.
+The fixture covered monster, parked-unit and ground-item lookups.
+[Evidence](research/client455-world-refresh.md)
+
 2026-11-11 — NeutralB 186, PARTIAL_LIVE_MONSTER_DATA.
 
 The normal character manager supplies monster records by table order.

@@ -48,9 +48,9 @@ def main():
          ['Все sound events/3D/music/settings и полный lifecycle'],
          ['client455-tagged-audio-checkpoint','client455-rvp-audio-checkpoint']),
         ('network','Клиентская сеть',12,10,25,
-         ['После выбора загружена NeutralB, принят ответ стартовой позиции3/2,созданы монстры и применены обновления движения'],
+         ['После выбора загружена NeutralB, принят ответ стартовой позиции3/2,применены обновления движения и отметок объектов'],
          ['Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers'],
-         ['client455-network-codec-checkpoint','client455-nuclear-receiver-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-premium-state-checkpoint','client455-live-login-checkpoint','client455-target-windows-checkpoint','client455-initial-download-checkpoint','client455-mastery-quests-checkpoint','client455-linker-download-checkpoint','client455-macro-download-checkpoint','client455-store-download-checkpoint','client455-avatar-world-checkpoint','client455-world-updates-checkpoint','client455-monster-data-checkpoint']),
+         ['client455-network-codec-checkpoint','client455-nuclear-receiver-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-premium-state-checkpoint','client455-live-login-checkpoint','client455-target-windows-checkpoint','client455-initial-download-checkpoint','client455-mastery-quests-checkpoint','client455-linker-download-checkpoint','client455-macro-download-checkpoint','client455-store-download-checkpoint','client455-avatar-world-checkpoint','client455-world-updates-checkpoint','client455-monster-data-checkpoint','client455-world-refresh-checkpoint']),
         ('login','Вход и выбор персонажа',10,0,10,
          ['Обычный Login и выбор привели к созданию аватара, первому кадру NeutralB и принятой стартовой позиции'],
          ['Управление после входа, ошибки, полные варианты персонажей, регионов и переходов455'],
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-world-refresh-checkpoint',
         'client455-monster-data-checkpoint',
         'client455-world-camera-checkpoint',
         'client455-world-walk-checkpoint',

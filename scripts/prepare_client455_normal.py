@@ -840,7 +840,7 @@ def main():
             if initial_download_changed:changes.append('455 bounded base, inventory and Force download handlers and opcodes')
             raw,camera_input_changed=port_camera_input(raw,relative,section,native)
             if camera_input_changed:changes.append('455 ordinary right-drag camera pitch bounds and scoped live mouse observation')
-            raw,world_updates_changed=port_world_updates(raw,relative,native)
+            raw,world_updates_changed=port_world_updates(raw,relative,native,section)
             if world_updates_changed:changes.append('455 monster spawn, monster position, player status and acknowledged position no-op routes')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical

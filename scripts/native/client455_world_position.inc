@@ -8,12 +8,45 @@ bool CNetworkMgr::PositionMsg_MonsterMove455(const char* bytes, std::size_t size
         Vector3f current = {float(packet.current[0]), float(packet.current[1]), float(packet.current[2])};
         Vector3f target = {float(packet.targetXZ[0]), current[1], float(packet.targetXZ[1])};
         if (current[0] == target[0] && current[2] == target[2]) monster->SetAction(CAI_MOVE_STOP);
-        SetClientCurrentPosition(monster, current, target, CPF_MOVE);
+        SetClientCurrentPosition(monster, current, target, CPF_MOVE, false);
         monster->SetFirstMoving(TRUE);
         monster->SetAction(CAI_MOVE_MOVING);
         monster->SetReceiveNetMsg("Move");
     }
     RF455_ObserveProtocol("monster-move", applied, 0, sizeof(packet));
+    return true;
+}
+
+bool CNetworkMgr::PositionMsg_ObjectRefresh455(const char* bytes, std::size_t size) {
+    RF455ObjectRefresh packet{};
+    if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;
+
+    bool applied = false;
+    if (packet.objectKind == obj_kind_char) {
+        CCharacter* actor = nullptr;
+        if (packet.objectType == 8) {
+            // Type 8 is the target's parked unit actor, stored as CTI_UNIT here.
+            actor = _GetCharMgr()->GetUnit(packet.serial);
+        } else if (packet.objectType <= CTI_GUARD_TOWER || packet.objectType == CTI_AVATAR) {
+            actor = _GetCharMgr()->GetCharacter(packet.objectType, packet.serial);
+        }
+        if (actor) {
+            actor->SetReceiveNetMsg("Real Fix");
+            applied = actor->IsReceiveFixPositionMsg() != FALSE;
+        }
+    } else if (packet.objectKind == obj_kind_item) {
+        CResObject* object = nullptr;
+        if (packet.objectType == obj_id_parkingunit) {
+            object = _GetCharMgr()->GetUnit(packet.serial);
+        } else {
+            object = _GetGroundItemMgr()->GetItem(packet.groundIndex);
+        }
+        if (object) {
+            object->SetReceiveFixPositionMsg(TRUE);
+            applied = object->IsReceiveFixPositionMsg() != FALSE;
+        }
+    }
+    RF455_ObserveProtocol("position-refresh", packet.objectKind, packet.objectType, applied);
     return true;
 }
 

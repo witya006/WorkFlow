@@ -1,10 +1,15 @@
 #include "client455_initial_download.h"
 #include "client455_world_updates.h"
+#include "gameobject/manager/ccharactermgr.h"
+#include "gameobject/manager/cgrounditemmanager.h"
+#include "network/cnetworkmgr.h"
 
+#include <algorithm>
 #include <array>
 #include <cstdio>
 #include <cstdlib>
 #include <limits>
+#include <memory>
 
 namespace {
 void check(bool condition, const char* name)
@@ -267,6 +272,72 @@ void worldUpdates() {
     const auto player = readWorldFixture<RF455PlayerStatusUpdate>(status);
     check(player.serial == 0x87654321 && player.flags == 0x8000000000004000,
           "64-bit player status layout");
+
+    std::array<char, 8> refresh{};
+    write(refresh, 0, std::uint8_t{1});
+    write(refresh, 1, std::uint8_t{2});
+    write(refresh, 2, std::uint16_t{0x89ab});
+    write(refresh, 4, std::uint32_t{0xcdef1234});
+    const auto object = readWorldFixture<RF455ObjectRefresh>(refresh);
+    check(object.objectKind == 1 && object.objectType == 2 &&
+          object.groundIndex == 0x89ab && object.serial == 0xcdef1234, "object refresh layout");
+}
+
+class PositionProbeNetwork : public CNetworkMgr {
+public:
+    using CNetworkMgr::PositionMsg_ObjectRefresh455;
+};
+
+void refreshOwners() {
+    auto* previousManager = g_pCharacterMgr;
+    auto* previousAvatar = g_pAvatar;
+    auto manager = std::make_unique<CCharacterMgr>();
+    manager->CreateAvatar();
+    auto network = std::make_unique<PositionProbeNetwork>();
+
+    constexpr DWORD monsterSerial = 0x12345678;
+    constexpr DWORD parkedSerial = 0x89abcdef;
+    constexpr WORD groundIndex = 4321;
+    auto* monster = manager->AddMonster(monsterSerial);
+    auto* parked = manager->AddUnit(parkedSerial);
+    auto* ground = _GetGroundItemMgr()->AddItem();
+    monster->SetIndex(monsterSerial);
+    parked->SetCharTypeID(CTI_UNIT);
+    parked->SetIndex(parkedSerial);
+    ground->SetObjectTypeID(OTI_ITEM);
+    ground->SetIndex(groundIndex);
+
+    const RF455ObjectRefresh monsterUpdate{0, 1, groundIndex, monsterSerial};
+    const auto* bytes = reinterpret_cast<const char*>(&monsterUpdate);
+    check(!network->PositionMsg_ObjectRefresh455(bytes, sizeof monsterUpdate - 1) &&
+          !monster->IsReceiveFixPositionMsg(), "malformed refresh leaves the monster untouched");
+    const RF455ObjectRefresh missing{0, 1, groundIndex, 1};
+    check(network->PositionMsg_ObjectRefresh455(reinterpret_cast<const char*>(&missing), sizeof missing) &&
+          !monster->IsReceiveFixPositionMsg(), "unknown monster does not refresh a different owner");
+
+    const auto apply = [&](const RF455ObjectRefresh& packet, CResObject& owner) {
+        owner.SetReceiveFixPositionMsg(FALSE);
+        const auto* position = owner.GetPosition();
+        const std::array<float, 3> beforePosition{position[0], position[1], position[2]};
+        const DWORD beforeTime = timeGetTime();
+        check(network->PositionMsg_ObjectRefresh455(reinterpret_cast<const char*>(&packet), sizeof packet),
+              "owner refresh is accepted");
+        check(owner.IsReceiveFixPositionMsg() &&
+              owner.GetReceiveFixPositionMsgTime() - beforeTime <= timeGetTime() - beforeTime,
+              "owner refresh writes the current tick");
+        check(std::equal(beforePosition.begin(), beforePosition.end(), owner.GetPosition()),
+              "owner refresh leaves coordinates unchanged");
+    };
+    apply(monsterUpdate, *monster);
+    apply({0, 8, groundIndex, parkedSerial}, *parked);
+    apply({1, 2, groundIndex, parkedSerial}, *parked);
+    apply({1, 0, groundIndex, monsterSerial}, *ground);
+
+    _GetGroundItemMgr()->Clear();
+    network.reset();
+    manager.reset();
+    g_pAvatar = previousAvatar;
+    g_pCharacterMgr = previousManager;
 }
 }
 
@@ -282,9 +353,10 @@ int main()
     macroAndShout();
     store();
     worldUpdates();
+    refreshOwners();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
               "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,\"store_stride\":16,"
-              "\"world_spawn_bytes\":17,\"world_move_bytes\":14,\"world_status_bytes\":12,"
-              "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
+              "\"world_spawn_bytes\":17,\"world_move_bytes\":14,\"world_status_bytes\":12,\"world_refresh_bytes\":8,"
+              "\"refresh_owner_routes\":4,\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }
