@@ -73,10 +73,19 @@ void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType, bool r
     if (!retain) effects->Clear();
 }
 
-void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage, bool retain = false) {
+void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage, bool retain = false,
+                            bool expectCritical = true) {
     auto* effects = _GetEffectInfoList();
-    require(effects->size() == 1, "One Force effect per positive damage frame");
-    const auto& effect = **effects->begin();
+    require(effects->size() == (expectCritical ? 2 : 1), "One Force effect and the expected critical effect");
+    auto current = effects->begin();
+    if (expectCritical) {
+        const auto& critical = **current++;
+        require(critical.dwType == ETI_MONSTER && ((critical.dwID >> 4) & 0xf) == MET_DAMAGE_CRITICAL &&
+                critical.dwValue == damage && critical.dwMyself[0] == CTI_MONSTER &&
+                critical.dwMyself[1] == target.GetIndex() && critical.dwTarget[0] == CTI_MONSTER &&
+                critical.dwTarget[1] == wing.GetIndex(), "Critical precedes Force and keeps the impact actors");
+    }
+    const auto& effect = **current;
     require(effect.dwType == ETI_FORCE && effect.dwID == 0x92000e &&
             effect.dwValue == damage && effect.byRangeType_For_Effect == 0 &&
             effect.unknown48_455 == 0 && effect.dwMyself[0] == CTI_MONSTER &&
@@ -85,8 +94,50 @@ void checkForceImpactEffect(CMonster& target, CMonster& wing, DWORD damage, bool
     if (!retain) effects->Clear();
 }
 
+template<class Tag, typename Tag::Type Member>
+struct MemberAccess {
+    friend typename Tag::Type access(Tag) { return Member; }
+};
+struct CombatBoundsMember {
+    using Type = BBOX* CResObject::*;
+    friend Type access(CombatBoundsMember);
+};
+template struct MemberAccess<CombatBoundsMember, &CResObject::m_pBBox>;
+
+void checkCriticalReaction(CMonster& target, CMonster& wing, DWORD damage, CAniData& peace, CAniData& combat) {
+    require(target.GetAction() == CAI_DAMAGED_CRITICAL && target.GetAnimationID() == 0x10e0 &&
+            target.GetAnimation()->GetAniData() == &peace && peace.m_Load && peace.imported,
+            "A critical impact selects the real Wing peace animation");
+    checkForceImpactEffect(target, wing, damage, true);
+    target.SetPosition(2, 10, 8);
+    target.SetScale(1.0f);
+    target.SetDamageTimeForShake(0.0f);
+    BBOX bounds{};
+    bounds.pMax[1] = 40.0f;
+    auto& boundSlot = target.*access(CombatBoundsMember{});
+    auto* previousBounds = boundSlot;
+    boundSlot = &bounds;
+    auto* effects = _GetEffectInfoList();
+    auto force = effects->begin();
+    ++force;
+    effects->erase(force);
+    DispatchQueuedEffects();
+    boundSlot = previousBounds;
+    Vector3f position{};
+    target.Get2ndLightPos(position);
+    require(effects->empty() && target.GetDamageTimeForShake() == 0.27f &&
+            std::fabs(target.Get2ndLightRadius() - 12.0f) < 0.00001f && target.Get2ndDensity() == 1.0f &&
+            position[0] == 2 && std::fabs(position[1] - 38.8f) < 0.00001f && position[2] == 8,
+            "Normal queue applies the 455 critical shock using the target bounds");
+    target.SetCombatMode(CSI_COMBAT);
+    require(target.GetAction() == CAI_DAMAGED_CRITICAL && target.GetAnimationID() == 0x10f0 &&
+            target.GetAnimation()->GetAniData() == &combat && combat.m_Load && combat.imported,
+            "Combat mode reselects the real Wing combat animation for the same action");
+}
+
 void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool checkHealth, bool checkReaction,
-                 bool checkImpactEffect, CombatResultDisplay* display) {
+                 bool checkImpactEffect, CombatResultDisplay* display,
+                 CAniData* criticalPeace, CAniData* criticalCombat) {
     constexpr std::array<std::int32_t, 6> amounts{70000, 4500, 321, 1, -1, -2};
     std::array<CMonster*, amounts.size()> targets{};
     targets[0] = &primary;
@@ -153,7 +204,7 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
     const DWORD first = add ? 35000 + jitter : 35000 - jitter;
     std::srand(613);
     incoming->SetEffectFrameNum(2);
-    if (checkImpactEffect) {
+    if (checkImpactEffect || criticalPeace) {
         CSFItem secondRow;
         require(secondRow.CreateForce455(25, 1) && secondRow.GetDTCode() == 0x9201 &&
                 secondRow.GetRangeTypeForEffect() == 1, "Second real Force row preserves code and nonzero range");
@@ -171,6 +222,10 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
         checkForceImpactEffect(primary, wing, first, display != nullptr);
         if (display) display->verifyDamage(primary, first, 0);
     }
+    if (criticalPeace) {
+        checkCriticalReaction(primary, wing, first, *criticalPeace, *criticalCombat);
+        primary.EnableCharacterFlags455(2);
+    }
     incoming->SetDamaged(TRUE);
     primary.GetCombatState()->ProcessDamage();
     require(incoming->GetCurDamagePoint() == original - first && !incoming->GetTotalDamagePoint() &&
@@ -178,6 +233,11 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
     if (checkImpactEffect) {
         checkForceImpactEffect(primary, wing, original - first, display != nullptr);
         if (display) display->verifyDamage(primary, original - first, 1);
+    }
+    if (criticalPeace) {
+        checkForceImpactEffect(primary, wing, original - first, false, false);
+        require(primary.GetAnimationID() == 0x10f0, "The control flag suppresses the critical reaction");
+        primary.DisableCharacterFlags455(2);
     }
     if (checkHealth) {
         expectRate(0.5f);
@@ -203,12 +263,13 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
 }
 
 int main(int argc, char** argv) {
+    const bool checkCritical = argc == 8 && std::strcmp(argv[5], "--critical") == 0;
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
     const bool checkBlockRender = argc == 6 && std::strcmp(argv[5], "--block-render") == 0;
     const bool checkDamageRender = argc == 6 && std::strcmp(argv[5], "--damage-render") == 0;
     const bool checkReaction = checkBlockRender || (argc == 6 && std::strcmp(argv[5], "--reaction") == 0);
     const bool checkImpactEffect = checkDamageRender || (argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0);
-    require(argc == 5 || checkHealth || checkReaction || checkImpactEffect ||
+    require(argc == 5 || checkHealth || checkReaction || checkImpactEffect || checkCritical ||
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
@@ -228,6 +289,18 @@ int main(int argc, char** argv) {
     require(attack && support, "Register both actual Wing clips");
     attack->m_Ident = 0x10c0;
     support->m_Ident = 0x10d0;
+    CAniData* criticalPeace = nullptr;
+    CAniData* criticalCombat = nullptr;
+    std::array<ANI_EXT_INFO, 2> criticalExtras{};
+    if (checkCritical) {
+        criticalPeace = _GetAniMgr()->AddAni(RLI_MONSTER, argv[6]);
+        criticalCombat = _GetAniMgr()->AddAni(RLI_MONSTER, argv[7]);
+        require(criticalPeace && criticalCombat, "Register actual Wing critical clips");
+        criticalPeace->m_Ident = 0x10e0;
+        criticalCombat->m_Ident = 0x10f0;
+        criticalPeace->m_pExtra = &criticalExtras[0];
+        criticalCombat->m_pExtra = &criticalExtras[1];
+    }
 
     auto manager = std::make_unique<CCharacterMgr>();
     constexpr DWORD serial = 1032066, targetSerial = 1032067;
@@ -239,14 +312,24 @@ int main(int argc, char** argv) {
     target->SetIndex(targetSerial);
     require(wing->GetMeshID() == 1, "Actor owns the registered mesh identity");
 
-    if (argc == 6) {
-        checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get());
+    if (argc >= 6) {
+        target->SetMesh(1);
+        checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get(),
+                    criticalPeace, criticalCombat);
         manager->Clear();
         manager.reset();
+        if (checkCritical) {
+            criticalPeace->m_pExtra = nullptr;
+            criticalCombat->m_pExtra = nullptr;
+        }
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
         if (display)
             display->report();
+        else if (checkCritical)
+            std::puts("{\"status\":\"PASS\",\"clips\":[4320,4336],\"critical_before_force\":true,"
+                      "\"control_flag_suppresses_critical\":true,\"shake_seconds\":0.27,"
+                      "\"light_radius\":12,\"light_density\":1,\"light_position\":[2,38.8,8]}");
         else if (checkImpactEffect)
             std::puts("{\"status\":\"PASS\",\"effect_id\":\"0x92000e\",\"range\":0,"
                       "\"checked_impacts\":2,\"total_damage\":70000,\"second_range\":1}");

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T08:44:00.273182+00:00",
+  "measured_at_utc": "2026-11-11T09:04:50.039705+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2819,
-    "unique_functions_with_complete_assembly_cfg": 1030,
-    "unique_pinned_code_bytes": 805322,
-    "reports": 196,
-    "code_range_occurrences": 4464,
+    "unique_functions_with_pinned_code": 2829,
+    "unique_functions_with_complete_assembly_cfg": 1043,
+    "unique_pinned_code_bytes": 806216,
+    "reports": 197,
+    "code_range_occurrences": 4482,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -441,6 +441,10 @@
     {
       "file": "inventory/client455-monster-animation-reference.json",
       "sha256": "c72e5732ebae3221b16f0dc86285829bea4e1401aac97a235c20034f5d9afe9e"
+    },
+    {
+      "file": "inventory/client455-monster-critical-reference.json",
+      "sha256": "54e6bf602cd58b24f9f90293bf7b9952d0a5840b4ddaaaa8b848eb4ba17b785d"
     },
     {
       "file": "inventory/client455-monster-data-reference.json",
@@ -1001,6 +1005,10 @@
       "sha256": "942ba57356192ef9e02fc78faac85ccaf69b6111c00550726541ca70d3a7a7d3"
     },
     {
+      "file": "artifacts/client455-progress/critical199/reference.json",
+      "sha256": "684bc55dbb36518f4a5cf420b873a8c888e6ffe96039917bed29f397eaaac2db"
+    },
+    {
       "file": "artifacts/client455-progress/monster-data186/reference.json",
       "sha256": "dfbdd09b3dd1e56b865bc800de36daf02c846374fc9fe1adf8570a3b201520ed"
     },
@@ -1160,7 +1168,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "b3b920b547b5faa8357ead69d138b5b5351777bc5c3f593d86d9e7ef2e4f3054"
+      "sha256": "cb311e0e38dde7e125e4951f28ae6c3e1ca569dc6dae8a1ebf927ed96d700522"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -1779,6 +1787,7 @@
       "rva": "0x6290",
       "ida_name": "sub_406290",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-nuclear-protocol-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
@@ -1788,7 +1797,12 @@
           "bytes": 41
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 19
+        }
+      ]
     },
     {
       "rva": "0x6a40",
@@ -5800,6 +5814,7 @@
       "rva": "0x3da10",
       "ida_name": "sub_43DA10",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-nuclear-protocol-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
@@ -5809,7 +5824,12 @@
           "bytes": 43
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 20
+        }
+      ]
     },
     {
       "rva": "0x3da40",
@@ -5843,6 +5863,7 @@
       "rva": "0x3db60",
       "ida_name": "sub_43DB60",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-nuclear-protocol-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
@@ -5852,7 +5873,12 @@
           "bytes": 66
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 27
+        }
+      ]
     },
     {
       "rva": "0x3e310",
@@ -5884,6 +5910,44 @@
         {
           "file": "artifacts/client455-progress/health194/reference.json",
           "instructions": 17
+        }
+      ]
+    },
+    {
+      "rva": "0x3e400",
+      "ida_name": "sub_43E400",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e400",
+          "bytes": 48
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 19
+        }
+      ]
+    },
+    {
+      "rva": "0x3e430",
+      "ida_name": "sub_43E430",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e430",
+          "bytes": 90
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 32
         }
       ]
     },
@@ -6743,6 +6807,7 @@
       "rva": "0x47b20",
       "ida_name": "sub_447B20",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-monster-force-impact-reference.json"
       ],
       "ranges": [
@@ -6753,6 +6818,10 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 127
+        },
+        {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 127
         }
@@ -6762,6 +6831,7 @@
       "rva": "0x47ca0",
       "ida_name": "sub_447CA0",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-monster-force-impact-reference.json"
       ],
       "ranges": [
@@ -6771,6 +6841,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 15
+        },
         {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 15
@@ -7139,6 +7213,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x4ffe0",
+      "ida_name": "sub_44FFE0",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4ffe0",
+          "bytes": 90
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 35
+        }
+      ]
+    },
+    {
       "rva": "0x501b0",
       "ida_name": "sub_4501B0",
       "reports": [
@@ -7322,6 +7415,25 @@
         {
           "file": "artifacts/client455-progress/player-visual150-reference/complete-session.json",
           "instructions": 85
+        }
+      ]
+    },
+    {
+      "rva": "0x51270",
+      "ida_name": "sub_451270",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x51270",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 16
         }
       ]
     },
@@ -7903,6 +8015,7 @@
       "rva": "0x58240",
       "ida_name": "sub_458240",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-monster-force-result-reference.json"
       ],
       "ranges": [
@@ -7913,8 +8026,31 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 78
+        },
+        {
           "file": "artifacts/client455-progress/combat192/reference.json",
           "instructions": 78
+        }
+      ]
+    },
+    {
+      "rva": "0x58320",
+      "ida_name": "sub_458320",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x58320",
+          "bytes": 120
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 45
         }
       ]
     },
@@ -8036,6 +8172,7 @@
       "rva": "0x5a040",
       "ida_name": "sub_45A040",
       "reports": [
+        "inventory/client455-monster-critical-reference.json",
         "inventory/client455-monster-force-reaction-reference.json"
       ],
       "ranges": [
@@ -8046,6 +8183,10 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 56
+        },
+        {
           "file": "artifacts/client455-progress/hit195/reference.json",
           "instructions": 56
         }
@@ -8055,7 +8196,8 @@
       "rva": "0x5a1e0",
       "ida_name": "sub_45A1E0",
       "reports": [
-        "inventory/client455-monster-animation-reference.json"
+        "inventory/client455-monster-animation-reference.json",
+        "inventory/client455-monster-critical-reference.json"
       ],
       "ranges": [
         {
@@ -8066,6 +8208,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/monster189/reference.json",
+          "instructions": 87
+        },
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
           "instructions": 87
         }
       ]
@@ -35454,6 +35600,82 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x3d2c20",
+      "ida_name": "sub_7D2C20",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d2c20",
+          "bytes": 128
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 49
+        }
+      ]
+    },
+    {
+      "rva": "0x3d2ca0",
+      "ida_name": "sub_7D2CA0",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d2ca0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x3d2cd0",
+      "ida_name": "sub_7D2CD0",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d2cd0",
+          "bytes": 65
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
+      "rva": "0x3d2d20",
+      "ida_name": "sub_7D2D20",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3d2d20",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
       "rva": "0x3d35b0",
       "ida_name": "sub_7D35B0",
       "reports": [
@@ -36628,6 +36850,25 @@
         {
           "file": "artifacts/client455-progress/grade-overlay148-reference/session.json",
           "instructions": 19
+        }
+      ]
+    },
+    {
+      "rva": "0x3ec6e0",
+      "ida_name": "sub_7EC6E0",
+      "reports": [
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ec6e0",
+          "bytes": 254
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/critical199/reference.json",
+          "instructions": 87
         }
       ]
     },
@@ -47608,8 +47849,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 3,
-    "unique_functions_with_complete_assembly_cfg": 3
+    "unique_functions_with_pinned_code": 10,
+    "unique_functions_with_complete_assembly_cfg": 13
   },
   "M6": "OPEN",
   "M9": "OPEN",

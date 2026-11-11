@@ -62,9 +62,10 @@ def main():
           'Компонентно проверены разные эффекты для результата −2 и промаха на кадре попадания по монстру',
           'Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах',
           'Штатный рендер вывел BLOCK и MISS из атласа 455, компонентно проверены отсечение и звук блока',
-          'Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно'],
+          'Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно',
+          'Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint']),
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Реальные таблицы/payload/owners/icons и выбранный inventory handoff'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -102,6 +103,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-monster-critical-checkpoint',
         'client455-force-damage-render-checkpoint',
         'client455-combat-result-effect-checkpoint',
         'client455-monster-force-impact-checkpoint',

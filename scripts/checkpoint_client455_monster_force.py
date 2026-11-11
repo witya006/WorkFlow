@@ -37,7 +37,7 @@ def verify_reference():
         effect_stride=40, attack_categories=[0, 4], first_effect_support_type=4))
 
 
-def resource_inputs(run):
+def resource_inputs(run, *, animation_keys=(0x10c0, 0x10d0)):
     data = read('skill-force-items-reference')['inputs']
     edf = [next(item for item in data if Path(item['file']).name == name)
            for name in ('base.edf', 'zh-tw.edf')]
@@ -57,7 +57,7 @@ def resource_inputs(run):
 
     staging = read('live-resource-inputs')
     rows = [next(row for row in staging['selected_monster_animations'] if row['key'] == key)
-            for key in (0x10c0, 0x10d0)]
+            for key in animation_keys]
     files = [WS / item['file'] for item in edf]
     extracted = []
     for row in rows:

@@ -9202,7 +9202,7 @@
       "id": "CLIENT455-FORCE-DAMAGE-RENDER-198",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-force-damage-render-checkpoint.json",
         "inventory/client455-force-damage-render-reference.json"
@@ -9211,6 +9211,21 @@
       "gaps": [
         "Live combat, visible particles and bone-bound position",
         "Critical and support Force effects"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-CRITICAL-199",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-critical-checkpoint.json",
+        "inventory/client455-monster-critical-reference.json"
+      ],
+      "description": "The ordinary client selects both actual Wing critical clips and applies the critical reaction before Force. A control flag suppresses the critical reaction. The same build walks on NeutralB.",
+      "gaps": [
+        "Live critical impact, skeletal anchor and visible shock",
+        "Player stun, weapon-specific effects and support Force"
       ]
     }
   ],

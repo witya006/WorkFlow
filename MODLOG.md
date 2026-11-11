@@ -1,3 +1,9 @@
+2026-11-11 — Monster critical hit 199, PARTIAL_COMPONENT_MONSTER_CRITICAL.
+
+The ordinary client objects select both Wing critical clips, queue the
+critical effect ahead of Force and apply the reference shock parameters.
+[Evidence](research/client455-monster-critical.md)
+
 2026-11-11 — Force damage rendering 198, PARTIAL_COMPONENT_FORCE_DAMAGE_RENDER.
 
 The normal impact renderer shows the two Force numbers with the 455 atlas,

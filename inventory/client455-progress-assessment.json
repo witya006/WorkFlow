@@ -238,7 +238,8 @@
         "Компонентно проверены разные эффекты для результата −2 и промаха на кадре попадания по монстру",
         "Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах",
         "Штатный рендер вывел BLOCK и MISS из атласа 455, компонентно проверены отсечение и звук блока",
-        "Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно"
+        "Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно",
+        "Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно"
       ],
       "remaining": [
         "Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455"
@@ -253,7 +254,8 @@
         "client455-monster-force-reaction-checkpoint",
         "client455-monster-force-impact-checkpoint",
         "client455-combat-result-effect-checkpoint",
-        "client455-force-damage-render-checkpoint"
+        "client455-force-damage-render-checkpoint",
+        "client455-monster-critical-checkpoint"
       ]
     },
     {
@@ -318,7 +320,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "b3ff2ab526aa5d1c82f53495681b4a76d3af2a5dbeee659bbb13813a494dd966",
+      "sha256": "ea2c2fb88619a4c6e73cc70a9230da4592770fccf1e74c3f006f1f8869255d52",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -929,6 +931,14 @@
       "sha256": "8f8461b2414abfa38758b91fddb7bc5098532fe7eb2ef676d4bec728d8814c99",
       "status": "PARTIAL_COMPONENT_FORCE_DAMAGE_RENDER",
       "scope": "Ordinary Force hit renders damage numbers and activates stock Prism Beam tracks and audio.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-monster-critical-checkpoint": {
+      "file": "inventory/client455-monster-critical-checkpoint.json",
+      "sha256": "52c9c436d9a9914acbd57c95f51cd33cf9da2f3bebb324a52195359ff5015b5b",
+      "status": "PARTIAL_COMPONENT_MONSTER_CRITICAL",
+      "scope": "Force critical reaction on the monster target with actual 455 Wing clips and shock.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -980,11 +990,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "8e3035b75fef000742ddea7619d0b79990acf47a8bb4d1e29b3751263761c8be",
+      "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
       "bytes": 2390528,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x1885e0",
+      "entry_rva": "0x188650",
       "sections": [
         ".text",
         ".rdata",
@@ -1009,22 +1019,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "8c3e9ffa6987d6086a46e50808c5cfffba2662fdf7b1ce69a9c4f70422ed3cbd",
+      "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-force-damage-render-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-monster-critical-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "b3ff2ab526aa5d1c82f53495681b4a76d3af2a5dbeee659bbb13813a494dd966",
+      "link_sha256": "ea2c2fb88619a4c6e73cc70a9230da4592770fccf1e74c3f006f1f8869255d52",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "8e3035b75fef000742ddea7619d0b79990acf47a8bb4d1e29b3751263761c8be",
+        "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
         "bytes": 2390528,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1885e0",
+        "entry_rva": "0x188650",
         "sections": [
           ".text",
           ".rdata",
@@ -1034,7 +1044,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "8c3e9ffa6987d6086a46e50808c5cfffba2662fdf7b1ce69a9c4f70422ed3cbd"
+      "build_sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -1042,7 +1052,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "8c3e9ffa6987d6086a46e50808c5cfffba2662fdf7b1ce69a9c4f70422ed3cbd"
+        "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
       },
       "build_exit": 0,
       "errors": [],
@@ -1052,11 +1062,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "8e3035b75fef000742ddea7619d0b79990acf47a8bb4d1e29b3751263761c8be",
+        "sha256": "765fafe1f12bd6ce83c3ec0e7ebec24311eedb7ad92e7f40195141cc100a6d42",
         "bytes": 2390528,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x1885e0",
+        "entry_rva": "0x188650",
         "sections": [
           ".text",
           ".rdata",
@@ -1069,20 +1079,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "8c3e9ffa6987d6086a46e50808c5cfffba2662fdf7b1ce69a9c4f70422ed3cbd"
+        "sha256": "4a77f4fb0f1e54eab7571f4a49628e4e6193eae16d3dc23825b16d0c4c33705a"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary Force hit renders damage numbers and activates stock Prism Beam tracks and audio.",
+    "current_work": "Force critical reaction on the monster target with actual 455 Wing clips and shock.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/damage198/live.json",
-      "sha256": "fde71cf3b77d74451cc96e121a77074d4bbeb3b9dc0083ed6a4fc73c4f7660b9",
+      "file": "artifacts/client455-progress/critical199/live.json",
+      "sha256": "40082c70c6f3c8fa911cc79de7557df9a43ded65a75061e53ea6dc3f3e9509af",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/8e3035b7/world-walk-live-taiwan001/login-frame.png",
-        "sha256": "2cf38189579f5dab338201d141a82532378af613ae80489da164db90befc69fd"
+        "file": "work/m9/765fafe1/world-walk-live-taiwan001/login-frame.png",
+        "sha256": "9026afb52a2d840cba758089f7ca653b6fd31839b1b4151c4d48b4c91d6f62e8"
       },
       "capture": {
         "result": 0,
@@ -1090,7 +1100,7 @@
         "height": 500,
         "format": 22,
         "frame_index": 121,
-        "elapsed_ms": 8000,
+        "elapsed_ms": 8031,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1106,10 +1116,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "81f34fd2449915a58cfc7ef11cfbe472c99416f8e144ff822760a6c3c8b10338",
-    "entries": 202,
+    "sha256": "cb8156650c34e7ad9acf52bb2f58d08fd133e868f6c5557ee54bd27850dedfae",
+    "entries": 203,
     "statuses": {
-      "partial_component": 21,
+      "partial_component": 22,
       "partial": 151,
       "audit_open": 1,
       "open": 2,
@@ -1120,7 +1130,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-FORCE-DAMAGE-RENDER-198"
+      "CLIENT455-MONSTER-CRITICAL-199"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1190,7 +1200,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;202 overlapping historical records",
+        "measured": "12 domain planning map;203 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1352,7 +1362,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "369124a69994719ab9b71f27ef3f806566667f9afbdbcf7a75807e101e081d44"
+    "sha256": "16dc36eeff8ce7e04c3cd95a6ec1a2041861fde0c2259170873ab296a47f8995"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
