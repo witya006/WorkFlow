@@ -64,15 +64,21 @@ int wmain(int argc,wchar_t** argv){
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
     char skipTitle[2]{};
+    char portalObservation[2]{};
+    const bool observePortal = live && selectionMode &&
+        GetEnvironmentVariableA("RF455_OBSERVE_BASE_PORTAL",portalObservation,sizeof(portalObservation))==1 &&
+        portalObservation[0]=='1';
     const bool observeTitle = captureLoginFrame && GetEnvironmentVariableA("RF455_SKIP_TITLE_STAGE",skipTitle,sizeof(skipTitle))==1 &&
                               (skipTitle[0]=='1' || skipTitle[0]=='2');
     const std::string titleStart = std::string("RF455 Protocol:title-movie-start:") + skipTitle[0] + ":0:0";
     HWND titleWindow = nullptr;
     bool titleEscapeSent = false;
+    bool portalAttempted = false;
+    ULONGLONG portalSendAt = 0;
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
-    unsigned long selectionMs = combat ? 38000 : 15000;
+    unsigned long selectionMs = combat ? 38000 : observePortal ? 25000 : 15000;
     if (approachLength && approachLength < sizeof(approach)) {
         char* approachEnd = nullptr;
         const auto approachMs = std::strtoul(approach, &approachEnd, 10);
@@ -80,6 +86,17 @@ int wmain(int argc,wchar_t** argv){
     }
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?180000:20000);
     while(!exited){
+        if (portalSendAt && GetTickCount64() >= portalSendAt && !terminating) {
+            DWORD childPID = 0;
+            GetWindowThreadProcessId(selectionWindow, &childPID);
+            const bool valid = IsWindow(selectionWindow) && childPID == process.dwProcessId;
+            // The ordinary inventory pack posts this message for bag 1, slot 1.
+            const bool sent = valid && PostMessageW(selectionWindow, WM_USER + 0x0107, 0, 0);
+            std::fprintf(output, "{\"kind\":\"base_portal_inventory_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",
+                         valid ? "true" : "false", sent ? "true" : "false");
+            std::fflush(output);
+            portalSendAt = 0;
+        }
         if(selectionSendAt&&GetTickCount64()>=selectionSendAt&&!terminating){
             DWORD childPID=0;GetWindowThreadProcessId(selectionWindow,&childPID);
             const bool valid=IsWindow(selectionWindow)&&childPID==process.dwProcessId;
@@ -184,10 +201,15 @@ int wmain(int argc,wchar_t** argv){
                     DWORD childPID = 0;
                     GetWindowThreadProcessId(titleWindow, &childPID);
                     const bool valid = IsWindow(titleWindow) && childPID == process.dwProcessId;
+                    if (valid && observePortal) PostMessageW(titleWindow, WM_ACTIVATEAPP, TRUE, 0);
                     titleEscapeSent = valid && PostMessageW(titleWindow, WM_KEYDOWN, VK_ESCAPE, 1) &&
                                       PostMessageW(titleWindow, WM_KEYUP, VK_ESCAPE, 0xc0000001);
                     std::fprintf(output, "{\"kind\":\"title_escape_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",
                                  valid ? "true" : "false", titleEscapeSent ? "true" : "false");
+                }
+                if (observePortal && !portalAttempted && std::string(text) == "RF455 Protocol:position-mode:0:0:0") {
+                    portalAttempted = true;
+                    portalSendAt = GetTickCount64() + 1000;
                 }
                 if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
             }}

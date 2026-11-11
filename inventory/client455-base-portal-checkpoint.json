@@ -1,0 +1,173 @@
+{
+  "status": "PARTIAL_LIVE_BASE_PORTAL",
+  "scope": "Ordinary inventory slot, send ring, response dispatcher and scheduled map transition.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1440912430386e7eb866b4f5185a42caf954d067a953e43f60db05c1f63549ac",
+    "bytes": 2409472,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18c0f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "43739e29293883b6b2b226c808e5b70b07b6a165213446d340bfd7f762290f7d",
+  "component": {
+    "status": "PASS",
+    "request": [
+      4,
+      26
+    ],
+    "reply": [
+      4,
+      27
+    ],
+    "success_codes": [
+      0,
+      10
+    ],
+    "quantity": [
+      10,
+      9
+    ],
+    "bad_map_cases": 2,
+    "refusal": true,
+    "malformed": true,
+    "send_failure": true,
+    "cancel": true,
+    "same_map_no_loading_overlay": true
+  },
+  "component_executable": {
+    "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
+    "sha256": "8776d1a20696035e0529c8218e68e396a45d4888e2befaf422296c8d1a5481de"
+  },
+  "component_console": {
+    "file": "work/client455-port/base-portal-probe/base-portal.txt",
+    "sha256": "f2e03c88cee19266ea11eb03e04156122a2612757b588e0abb763da2b2548703"
+  },
+  "item": {
+    "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf",
+    "original_sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+    "file": "work/client-reference/item-payloads455/item.edf",
+    "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_base_portal.py",
+    "sha256": "e6f480ca05e37c2101eda5aae95b469c7e035adf9696bbda10b7884913617df5"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_base_portal_port.py",
+      "sha256": "bad8ebcbdd12f84b89cb06bb9425d51c55cd75df3eef80367cf717f8fdb01825"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_inventory.inc",
+      "sha256": "61484be1a69d2a9d9c3fae42b4ede6a0fb18372122e6ae7ed4091b556f460aee"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_position.inc",
+      "sha256": "ead8b2cf0e70085b4d1b30f3f552747c9ff2418d980b1033d7e2229425c2335d"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_probe.cpp",
+      "sha256": "47e7b92a2c17e1e8103f7410b8e45766c6787bf1db4ce5f8bce1decae7623e84"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "43739e29293883b6b2b226c808e5b70b07b6a165213446d340bfd7f762290f7d"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "991e89e348bf9455332739def6f2b7889190ab43d6ba24c2c95abfde1c88bea5"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "d80f2d911610c2289e8002e7cae675b48237dee82351510fa39cd432b0dd8c42"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "09826a241bb8556846826a3e161ff23ffb0a695569f399e0d9681cec6fc90a23"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "647dab526e7f911c7a197c5cde2b0ed70f6d603797de8a461aad46b8d2c0243a"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "084bf680805e2fc94969d122e7c569369641f1c03c48aeabcff617f49fdcc15d"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "534d73dafa219022d500b26e23bf9ff28434dc639ce01ce8a0bc2f0be6947459"
+    },
+    "base-portal-reference": {
+      "file": "inventory/client455-base-portal-reference.json",
+      "sha256": "26a38e6130763c6e09952db53c33797beb1eaa99ca1623c5f14b17ee08edd143"
+    }
+  },
+  "gaps": [
+    "Physical mouse use, travel from farther away and movement after arrival remain to be checked.",
+    "Special Return map/area checks and cross-map resources remain open.",
+    "The current map remains bound during the request for legacy world consumers."
+  ],
+  "own_live_run": true,
+  "live": {
+    "report": {
+      "file": "artifacts/client455-progress/client455-world-base-portal-live-taiwan-native.json",
+      "sha256": "2c499a10375b62910dedfaed3571d7c95d688e32b2deeb23cd9c10c76e4e4d18"
+    },
+    "events": {
+      "file": "work/m9/14409124/world-base-portal-live-taiwan001/debug-events.jsonl",
+      "sha256": "713a2013910397fed53f6f59d3aafb43249f108656a3d2a56f06d4ac0544b0a6"
+    },
+    "ordered": [
+      {
+        "event": "rx:3:2:1",
+        "index": 63
+      },
+      {
+        "event": "tx:4:26:2",
+        "index": 216
+      },
+      {
+        "event": "rx:4:27:8",
+        "index": 219
+      },
+      {
+        "event": "base-portal-result:4:0:8",
+        "index": 220
+      },
+      {
+        "event": "tx:3:1:1",
+        "index": 229
+      },
+      {
+        "event": "rx:3:2:1",
+        "index": 230
+      },
+      {
+        "event": "position-mode:3:0:0",
+        "index": 231
+      }
+    ],
+    "samples": [
+      "RF455 WorldSample:0:31:268435456:1:-6819.21,637.193,6359.64:-6819.21,637.193,6359.64:40,180,60",
+      "RF455 WorldSample:1:1000:268435456:1:-6819.21,637.193,6359.64:-6819.21,637.193,6359.64:40,180,60",
+      "RF455 WorldSample:2:3000:268435456:1:-6819,637.195,6359:-6819,637.195,6359:23.375,240.742,60"
+    ],
+    "first_attempt": {
+      "file": "work/m9/f9d3bd6b/world-base-portal-live-taiwan001/debug-events.jsonl",
+      "sha256": "199bb092731ad33bf2ee5e703d89550834170c263ee3be68425b016e12aee88f"
+    },
+    "first_attempt_draw_rva": "0x13893a"
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

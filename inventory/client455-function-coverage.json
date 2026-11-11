@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T13:18:21.754708+00:00",
+  "measured_at_utc": "2026-11-11T13:45:12.438153+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2904,
-    "unique_functions_with_complete_assembly_cfg": 1126,
-    "unique_pinned_code_bytes": 815637,
-    "reports": 208,
-    "code_range_occurrences": 4590,
+    "unique_functions_with_pinned_code": 2914,
+    "unique_functions_with_complete_assembly_cfg": 1138,
+    "unique_pinned_code_bytes": 817908,
+    "reports": 209,
+    "code_range_occurrences": 4602,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -97,6 +97,10 @@
     {
       "file": "inventory/client455-avatar-world-reference.json",
       "sha256": "72c88bb2ea102ae0941dc5157e06da0809d0845e6a19e18261b7f419e820ae76"
+    },
+    {
+      "file": "inventory/client455-base-portal-reference.json",
+      "sha256": "26a38e6130763c6e09952db53c33797beb1eaa99ca1623c5f14b17ee08edd143"
     },
     {
       "file": "inventory/client455-board-hover-reference.json",
@@ -901,6 +905,14 @@
       "sha256": "1a48dda9f4e4523952e2e8df8f3d2034e2d3e4bb8a0c282a2a6864e35cf30218"
     },
     {
+      "file": "artifacts/client455-progress/base-portal212/reference.json",
+      "sha256": "8c4861f8b6c196d1606d4089f59e9e9d139c69e2468c12685829966baf0c1744"
+    },
+    {
+      "file": "artifacts/client455-progress/base-portal212/transition-reference.json",
+      "sha256": "b6b29bd0e73e304ba8a17fc3969f351c517b949f4faabaecc09250af01f3cb68"
+    },
+    {
       "file": "artifacts/client455-progress/board166-reference.json",
       "sha256": "4de988a8e015f1322eb2d45f7ce7cf1908e8fee39c938467f7b59b03a1ba7753"
     },
@@ -1256,7 +1268,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "32304c5da97b88c4a53e316f706b606f63cdf52df6efeef331c9ea405850d38f"
+      "sha256": "cd389ec129a250399a3a3da8324fbee0be308828b0b146059223366a16ef8998"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2474,6 +2486,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0xc880",
+      "ida_name": "sub_40C880",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0xc880",
+          "bytes": 36
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/transition-reference.json",
+          "instructions": 19
+        }
+      ]
     },
     {
       "rva": "0xf9a0",
@@ -5558,6 +5589,44 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x2d4f0",
+      "ida_name": "sub_42D4F0",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2d4f0",
+          "bytes": 146
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/transition-reference.json",
+          "instructions": 47
+        }
+      ]
+    },
+    {
+      "rva": "0x2d5b0",
+      "ida_name": "sub_42D5B0",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2d5b0",
+          "bytes": 468
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/transition-reference.json",
+          "instructions": 139
+        }
+      ]
+    },
+    {
       "rva": "0x2d790",
       "ida_name": "sub_42D790",
       "reports": [
@@ -5570,6 +5639,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x2d820",
+      "ida_name": "sub_42D820",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2d820",
+          "bytes": 499
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/transition-reference.json",
+          "instructions": 145
+        }
+      ]
     },
     {
       "rva": "0x2db10",
@@ -12139,6 +12227,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x75050",
+      "ida_name": "sub_475050",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x75050",
+          "bytes": 98
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 37
+        }
+      ]
+    },
+    {
       "rva": "0x757d0",
       "ida_name": "sub_4757D0",
       "reports": [
@@ -12156,6 +12263,7 @@
       "rva": "0x75a90",
       "ida_name": "sub_475A90",
       "reports": [
+        "inventory/client455-base-portal-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
       "ranges": [
@@ -12164,7 +12272,12 @@
           "bytes": 786
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 236
+        }
+      ]
     },
     {
       "rva": "0x75e10",
@@ -13973,6 +14086,7 @@
       "rva": "0xfad00",
       "ida_name": "sub_4FAD00",
       "reports": [
+        "inventory/client455-base-portal-reference.json",
         "inventory/client455-character-flags-reference.json",
         "inventory/client455-nuclear-receiver-reference.json"
       ],
@@ -13982,7 +14096,12 @@
           "bytes": 64
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 26
+        }
+      ]
     },
     {
       "rva": "0xfae40",
@@ -16188,6 +16307,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x12dde0",
+      "ida_name": "sub_52DDE0",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x12dde0",
+          "bytes": 321
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 98
+        }
+      ]
     },
     {
       "rva": "0x12e180",
@@ -20386,6 +20524,44 @@
         {
           "file": "artifacts/client455-progress/position185-reference.json",
           "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x1c42d0",
+      "ida_name": "sub_5C42D0",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c42d0",
+          "bytes": 192
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 62
+        }
+      ]
+    },
+    {
+      "rva": "0x1c4390",
+      "ida_name": "sub_5C4390",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1c4390",
+          "bytes": 385
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 114
         }
       ]
     },
@@ -36476,6 +36652,44 @@
       ]
     },
     {
+      "rva": "0x3ca530",
+      "ida_name": "sub_7CA530",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ca530",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
+      "rva": "0x3ca570",
+      "ida_name": "sub_7CA570",
+      "reports": [
+        "inventory/client455-base-portal-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3ca570",
+          "bytes": 63
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/base-portal212/reference.json",
+          "instructions": 25
+        }
+      ]
+    },
+    {
       "rva": "0x3caae0",
       "ida_name": "sub_7CAAE0",
       "reports": [
@@ -49528,8 +49742,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 3,
-    "unique_functions_with_complete_assembly_cfg": 3
+    "unique_functions_with_pinned_code": 4,
+    "unique_functions_with_complete_assembly_cfg": 4
   },
   "M6": "OPEN",
   "M9": "OPEN",

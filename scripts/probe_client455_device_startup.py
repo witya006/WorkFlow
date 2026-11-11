@@ -65,7 +65,9 @@ def stage_world_map(client, run, index):
     return records
 
 
-def world_observation_name(walk, camera, monster, combat):
+def world_observation_name(walk, camera, monster, combat, base_portal=False):
+    if base_portal:
+        return 'world-base-portal'
     if combat:
         return 'world-combat'
     if monster:
@@ -77,12 +79,14 @@ def world_observation_name(walk, camera, monster, combat):
 
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
-         combat_monster_record=None,combat_approach_ms=0):
+         combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
     parser.add_argument('--skip-title', choices=('logo', 'prologue'))
     args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if args.skip_title and (not args.login_frame or live_port is not None):
         parser.error('--skip-title requires the offline Login frame probe')
+    if observe_base_portal and (live_port is None or not select_character or world_map_index != 0):
+        raise ValueError('Base portal observation requires the live NeutralB inventory scenario')
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
     countries=json.loads((WS/'inventory/client455-nation-paths-reference.json').read_text())['references'][0]['rows'];country=next((row for row in countries if row['setting']==args.nation),None)
@@ -105,7 +109,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         raise ValueError('World map inputs require a live selection observation')
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
-        prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat)
+        prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat, observe_base_portal)
         observation_name=prefix
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
@@ -143,7 +147,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         # MainGame loads these panels before asking for base data. Stage their
         # exact localized and Common sprites from the owned shared pool.
         for folder in ['Common',country['folder']]:
-            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr','unit.spr','skillwindow.spr','forcewindow.spr','shop.spr','trade.spr','oreproc.spr','itemmake.spr','itemupgrade.spr','exchange.spr','mining.spr','class.spr','renewal.spr','dungeon.spr']:
+            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr','unit.spr','skillwindow.spr','forcewindow.spr','shop.spr','trade.spr','oreproc.spr','itemmake.spr','itemupgrade.spr','exchange.spr','mining.spr','class.spr','renewal.spr','dungeon.spr','maploading.spr']:
                 original=client/'SpriteImage'/folder/filename
                 if not original.is_file():continue
                 copy=run/original.relative_to(client)
@@ -210,6 +214,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_COMBAT_RECORD',None)
     environment.pop('RF455_COMBAT_APPROACH_MS',None)
     environment.pop('RF455_SKIP_TITLE_STAGE',None)
+    environment.pop('RF455_OBSERVE_BASE_PORTAL',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
@@ -218,6 +223,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if combat_monster_record is not None:environment['RF455_COMBAT_RECORD']=str(combat_monster_record)
     if combat_approach_ms:environment['RF455_COMBAT_APPROACH_MS']=str(combat_approach_ms)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
+    if observe_base_portal:
+        environment['RF455_OBSERVE_BASE_PORTAL']='1'
+        environment['RF455_SKIP_TITLE_STAGE']='1'
     if args.skip_title:
         environment['RF455_OBSERVE_PROTOCOL']='1'
         environment['RF455_SKIP_TITLE_STAGE']='1' if args.skip_title == 'logo' else '2'
@@ -280,6 +288,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
                          if observe_camera else 'Ordinary own-client world render and passive state after accepted position mode')
         report['world_observations']=[e['value'] for e in events if e['kind']=='debug_string'
                                       and e['value'].startswith(('RF455 WorldSample:', 'RF455 WorldCapture:'))]
+        if observe_base_portal:
+            report['scope']='Ordinary own-client NeutralB with one addressed inventory use event for bag 1, slot 1'
+            report['base_portal_input']=[e for e in events if e['kind']=='base_portal_inventory_posted']
         frames=[run/filename for filename in ('world-post-position.png', 'world-post-position-settled.png')]
         report['world_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
                                 for frame in frames if frame.is_file()]
