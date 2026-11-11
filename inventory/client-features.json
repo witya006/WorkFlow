@@ -8847,7 +8847,7 @@
       "id": "CLIENT455-TARGET-WINDOWS-174",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-target-windows-checkpoint.json",
         "inventory/client455-target-windows-reference.json",
@@ -8859,6 +8859,23 @@
         "Full target lifecycle and dynamic menu entries, sanction permissions and dispatch",
         "455 mission state window and complete dungeon counter lifecycle",
         "Base download and inventory data, world entry and M9 acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-INITIAL-DOWNLOAD-175",
+      "area": "network",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-initial-download-checkpoint.json",
+        "inventory/client455-initial-download-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "The ordinary client applies the supported base fields and reaches the 322-byte 3/8 mastery reply. The live inventory and Force records pass wire decoding, while the legacy item providers resolve none.",
+      "gaps": [
+        "Additional 455 item kinds, alternate accessory and special equipment slots, item modifiers and timers",
+        "Additional base fields including ranking, secondary gauge, appearance and flags; full error UI",
+        "Mastery and quest handlers, subsequent initial download phases, ordinary map and avatar creation"
       ]
     }
   ],

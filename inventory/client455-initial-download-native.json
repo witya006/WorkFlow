@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "native": {
+    "status": "PASS",
+    "base_bytes": 431,
+    "inventory_stride": 30,
+    "force_stride": 11,
+    "empty_and_error_results": true,
+    "bad_sizes_rejected": true
+  },
+  "source": {
+    "file": "scripts/native/client455_initial_download_probe.cpp",
+    "sha256": "8b7805fad0339f7f0a7ecf8b52a45bdf688c830cc220562229cb6e1c406072a3"
+  },
+  "script": {
+    "file": "scripts/probe_client455_initial_download.py",
+    "sha256": "2389f5cc2ebb0acb295e8300d264e80dcdd27e35d05164131f8e505ecaa96653"
+  },
+  "header": {
+    "file": "scripts/native/client455_initial_download.h",
+    "sha256": "ddebfdadccb9311e0cf3131c34a0fd900049578b421170d55cd0260d756baa48"
+  },
+  "executable": {
+    "file": "work/client455-port/initial-download-probe/initial-download-probe.exe",
+    "sha256": "5ff5b3e9aa23081e345872cc853307a7b53a0ce8a9f4a1dfb45f3761c63a7f77"
+  },
+  "console": {
+    "file": "work/client455-port/initial-download-probe/probe-console.txt",
+    "sha256": "b1b58fd682dc30470fcc57ba214fb1b4f24771d56d0e800978e271205ddc2bfa"
+  },
+  "normal_link_sha256": "083242e94aa44a39042935b29ba00860792bbe83008a64b600b882ae4070c8fd"
+}

@@ -48,11 +48,11 @@ def main():
          ['Все sound events/3D/music/settings и полный lifecycle'],
          ['client455-tagged-audio-checkpoint','client455-rvp-audio-checkpoint']),
         ('network','Клиентская сеть',12,10,25,
-         ['Codec/AES/transport/rings;сервер принимает выбор1/14→1/15/result0;после фабрики отправлен3/3 и получен3/4 размером431'],
+         ['Codec/AES/transport/rings;после выбора применены базовые поля3/4;приняты форматы инвентаря3/6 и Силы3/10;достигнут ответ3/8'],
          ['Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers'],
-         ['client455-network-codec-checkpoint','client455-nuclear-receiver-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-premium-state-checkpoint','client455-live-login-checkpoint','client455-target-windows-checkpoint']),
+         ['client455-network-codec-checkpoint','client455-nuclear-receiver-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-premium-state-checkpoint','client455-live-login-checkpoint','client455-target-windows-checkpoint','client455-initial-download-checkpoint']),
         ('login','Вход и выбор персонажа',10,0,10,
-         ['Обычный Login/анимированный выбор показаны;сервер принял выбор;MainGame дошёл до обмена базовыми данными,мир не достигнут'],
+         ['Обычный Login/анимированный выбор показаны;сервер принял выбор;MainGame дошёл до ответа с показателями развития,мир не достигнут'],
          ['Полный Title/Login/character selection/auth→world поток455 не пройден'],
          ['client455-login-checkpoint','client455-world-entry-checkpoint','client455-registered-characters-checkpoint','client455-live-login-checkpoint']),
         ('gameplay','Игровые действия',15,0,15,
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-initial-download-checkpoint',
         'client455-target-windows-checkpoint',
         'client455-party-window-checkpoint',
         'client455-service-windows-checkpoint',
@@ -246,7 +247,7 @@ def main():
             unfinished_or_failed_builds_are_not_completed_progress=True,
             next_report_fields=['Observable ordinary-client result','Integrated versus standalone evidence','Remaining prerequisites to next anchor','Current source build health','Changed estimate and its basis'],
             recalculate_after='First complete ordinary Login/selection/map scenario,or a material scope discovery',
-            unchanged_range_reason='After accepted selection, the client sends 3/3 and receives the 431-byte 3/4 reply. The base decoder, map transition and live gameplay remain unproved.'),
+            unchanged_range_reason='The client applies supported base fields and decodes inventory and Force records, then receives mastery 3/8. Item owners, mastery, map transition and gameplay remain open.'),
         forecast=dict(remaining_to_completed_functional_scope_ratio_approx=[2,4],ratio_is_functional_scope_not_effort_or_time=True,calendar_deadline=None,remaining_hours=None,
             reason='No defensible throughput sample for a complete integration scenario. Functional percentages do not imply the same ratio of time. Re-estimate after first complete Login/character/map scenario.'),
         script=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=sha(__file__)),M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')

@@ -1,3 +1,11 @@
+2026-11-11 — Initial download 175, PARTIAL_WAITING_FOR_MASTERY_AND_ITEM_OWNERS.
+The ordinary client applies supported base fields for map 0, parses 21
+inventory records and 82 Force records, and receives the 322-byte mastery reply.
+The legacy item providers apply zero of those records. Build 0280bf77… x86.
+Both pins agree on eight full functions and 2,162 instructions. Address coverage
+2,658, full listings 855, partial bindings 299. World entry remains open.
+[Evidence and remaining work](research/client455-initial-download.md)
+
 2026-11-11 — Target windows and dungeon counter 174, PARTIAL_WAITING_FOR_BASE_DECODER.
 The ordinary client sends 3/3 after accepted selection and receives the
 431-byte 3/4 reply. Four Taiwan frames pass with the 455 target skins.
