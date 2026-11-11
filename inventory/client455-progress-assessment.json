@@ -92,7 +92,8 @@
       "completed_full_domain": false,
       "done": [
         "Исходные MESH/BN/ANI загрузчики, менеджеры и выбранные маршруты позы и отрисовки",
-        "На NeutralB найдены штатные клипы Wing и сняты три кадра стояния Youngflem"
+        "На NeutralB сняты три кадра стояния Youngflem",
+        "Оба штатных клипа Силы Wing выбраны компонентно"
       ],
       "remaining": [
         "Полный actor lifecycle,видимость,здоровье и анимация монстров,игровой выбор/экипировка и все consumers"
@@ -114,7 +115,8 @@
         "client455-player-visual-checkpoint",
         "client455-equipment-frame-checkpoint",
         "client455-monster-animation-checkpoint",
-        "client455-monster-view-checkpoint"
+        "client455-monster-view-checkpoint",
+        "client455-monster-force-checkpoint"
       ]
     },
     {
@@ -303,7 +305,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "cae40ed7d41d150c8b24f9dbd4bc4f26585e865e346bf085f2c29e1cf8199cbf",
+      "sha256": "c50d71720cb6ac3313c5be9c8200e7a42a179d287cce843eead851fb040e04e5",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -570,6 +572,14 @@
       "sha256": "34b86b9f60e68e79b9148479c02e1b308c81985b246e9e76ef6afec8de726dfe",
       "status": "PARTIAL_LIVE_MONSTER_STAND_FRAMES",
       "scope": "Visible Youngflem standing animation on NeutralB after one bounded camera drag.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-monster-force-checkpoint": {
+      "file": "inventory/client455-monster-force-checkpoint.json",
+      "sha256": "15535e042eada4cd2478b47bd55815d33b6e88fbaca04a94bf525746b447d039",
+      "status": "PARTIAL_COMPONENT_MONSTER_FORCE_CLIPS",
+      "scope": "Ordinary actor selector with real Force data and Wing ANI.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -901,11 +911,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "a779670eeb21a2510eb74e56bfdb81bf03caabc9f05113a6ed087d672c724cbd",
-      "bytes": 2384896,
+      "sha256": "53eaff4457e5f67cacb2635dca40a2d6f57925c6fec799cf5127b59615b971ad",
+      "bytes": 2385408,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x187410",
+      "entry_rva": "0x187520",
       "sections": [
         ".text",
         ".rdata",
@@ -930,22 +940,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "d3dc73872d922da7535f6cd45f32d79dcc3c98e0efdc26de9e533818a9799241",
+      "sha256": "dd333e94cb2119424bb62d9e4e8e2d40481841f9e6471e24f0f607ef430d0294",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-monster-view-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-monster-force-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "cae40ed7d41d150c8b24f9dbd4bc4f26585e865e346bf085f2c29e1cf8199cbf",
+      "link_sha256": "c50d71720cb6ac3313c5be9c8200e7a42a179d287cce843eead851fb040e04e5",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "a779670eeb21a2510eb74e56bfdb81bf03caabc9f05113a6ed087d672c724cbd",
-        "bytes": 2384896,
+        "sha256": "53eaff4457e5f67cacb2635dca40a2d6f57925c6fec799cf5127b59615b971ad",
+        "bytes": 2385408,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x187410",
+        "entry_rva": "0x187520",
         "sections": [
           ".text",
           ".rdata",
@@ -955,7 +965,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "d3dc73872d922da7535f6cd45f32d79dcc3c98e0efdc26de9e533818a9799241"
+      "build_sha256": "dd333e94cb2119424bb62d9e4e8e2d40481841f9e6471e24f0f607ef430d0294"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -963,7 +973,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "d3dc73872d922da7535f6cd45f32d79dcc3c98e0efdc26de9e533818a9799241"
+        "sha256": "dd333e94cb2119424bb62d9e4e8e2d40481841f9e6471e24f0f607ef430d0294"
       },
       "build_exit": 0,
       "errors": [],
@@ -973,11 +983,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "a779670eeb21a2510eb74e56bfdb81bf03caabc9f05113a6ed087d672c724cbd",
-        "bytes": 2384896,
+        "sha256": "53eaff4457e5f67cacb2635dca40a2d6f57925c6fec799cf5127b59615b971ad",
+        "bytes": 2385408,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x187410",
+        "entry_rva": "0x187520",
         "sections": [
           ".text",
           ".rdata",
@@ -990,28 +1000,28 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "d3dc73872d922da7535f6cd45f32d79dcc3c98e0efdc26de9e533818a9799241"
+        "sha256": "dd333e94cb2119424bb62d9e4e8e2d40481841f9e6471e24f0f607ef430d0294"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Visible Youngflem standing animation on NeutralB after one bounded camera drag.",
+    "current_work": "Ordinary actor selector with real Force data and Wing ANI.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/monster190/live.json",
-      "sha256": "42f494705b0dc48ef1242ed8b0378d82a0a0102694b2d35b47fbd6fb965410fe",
+      "file": "artifacts/client455-progress/monster191/live.json",
+      "sha256": "f725322364ac040cf9fbe45a3a740d553a3c894c8950f78cc6cb7be90339cd9f",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/a779670e/world-monster-live-taiwan001/login-frame.png",
-        "sha256": "bd79795e5f7d31f05c7b65fde93230535f4b12b3aa1bd90db2d7a765d36a4e51"
+        "file": "work/m9/53eaff44/world-observation-live-taiwan001/login-frame.png",
+        "sha256": "428a165579d898378ddf86061e4ce7a9dfdd131039e7a2a644b95f23c5f80e7b"
       },
       "capture": {
         "result": 0,
         "width": 640,
         "height": 500,
         "format": 22,
-        "frame_index": 121,
-        "elapsed_ms": 8016,
+        "frame_index": 122,
+        "elapsed_ms": 8000,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1027,10 +1037,10 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "ef7537182026108a03412f4698a012128fd5b19193106acba3115042682280e6",
-    "entries": 194,
+    "sha256": "abb8a3b2858661b3f41caf569427b737413b1bea0188a9d999e44d053bc8c8a6",
+    "entries": 195,
     "statuses": {
-      "partial_component": 13,
+      "partial_component": 14,
       "partial": 151,
       "audit_open": 1,
       "open": 2,
@@ -1041,7 +1051,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-MONSTER-STAND-190"
+      "CLIENT455-MONSTER-FORCE-191"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1111,7 +1121,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;194 overlapping historical records",
+        "measured": "12 domain planning map;195 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1273,7 +1283,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "042fed6ec5fe551ab0c32f21f729956221e332b7f1d12f81b541cb601195db80"
+    "sha256": "a1cdb0f3c33b8e809d61a534005ee7c5b55d92bdcfa15497294d3d1691dd262f"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

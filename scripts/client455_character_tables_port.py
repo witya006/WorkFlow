@@ -41,11 +41,15 @@ def port_character_tables(raw,relative,section):
 {
     if (pi_dwAniTypeID == ID_INVALID) return nullptr;
 
-    const DWORD animationId = (GetMeshID() << 12) | (pi_dwAniTypeID << 4);
+    const bool attackClip = RF455_GameItems().skillForce.usesMonsterAttackClip(
+        m_clSFItem.GetSFType(), m_clSFItem.GetDTIndex(), m_clSFItem.GetLevel());
+    const DWORD type = attackClip ? MAI_FORCE_ATTACK : MAI_FORCE_SUPPORT;
+    const DWORD animationId = (GetMeshID() << 12) | (type << 4);
     m_Animation.SetAnimationID(animationId);
     return _GetAniMgr()->GetAni(RLI_MONSTER, animationId);
 }'''
-        return b'#include "client455_protocol_observation.h"\n'+raw[:first]+body+raw[last:],True
+        return (b'#include "client455_protocol_observation.h"\n#include "client455_client_items.h"\n'
+                +raw[:first]+body+raw[last:]),True
     if relative!='datatable/ccharacterdatamgr.cpp':return raw,False
     anchor=b'#include "CCharacterDataMgr.h"'
     if raw.count(anchor)!=1:raise ValueError('Character includes changed')

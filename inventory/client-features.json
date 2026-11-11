@@ -9082,7 +9082,7 @@
       "id": "CLIENT455-MONSTER-STAND-190",
       "area": "character",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-view-checkpoint.json"
       ],
@@ -9090,6 +9090,21 @@
       "gaps": [
         "Compare pose and tempo with 455",
         "Observe walk, turning and movement of the same actor"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-FORCE-191",
+      "area": "character",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-force-checkpoint.json",
+        "inventory/client455-monster-force-reference.json"
+      ],
+      "description": "The ordinary monster selector loads attack and support Wing clips using 455 effect rows. The same build enters NeutralB.",
+      "gaps": [
+        "Combat result to active monster Force assignment",
+        "Live selection and playback of the Force clip"
       ]
     }
   ],

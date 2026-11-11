@@ -1,0 +1,206 @@
+{
+  "status": "PARTIAL_COMPONENT_MONSTER_FORCE_CLIPS",
+  "scope": "Ordinary actor selector with real Force data and Wing ANI.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "53eaff4457e5f67cacb2635dca40a2d6f57925c6fec799cf5127b59615b971ad",
+    "bytes": 2385408,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x187520",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "c50d71720cb6ac3313c5be9c8200e7a42a179d287cce843eead851fb040e04e5",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "c50d71720cb6ac3313c5be9c8200e7a42a179d287cce843eead851fb040e04e5"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "e21b2f3a082270b8a57b6d2a188aca371fd29ab14d080f801e1b699de8e6c589"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "dd333e94cb2119424bb62d9e4e8e2d40481841f9e6471e24f0f607ef430d0294"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "9cb8a336978ad07edf9614da795a6c273f35efd1cb4933b35edb8843c212080a"
+    },
+    "monster-force-reference": {
+      "file": "inventory/client455-monster-force-reference.json",
+      "sha256": "876a97c1bf299acb1bd46a850f09ac5ff75ebc226cb50f84ee84a7935d3cf784"
+    },
+    "skill-force-items-reference": {
+      "file": "inventory/client455-skill-force-items-reference.json",
+      "sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "f6f95f5271350b3068ef9c5f8f840552dc73763ed886ea230e31bfd3f92d01a4"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "0d1a55f560e7d009eb739ee78c69c8218b1092331592704b89305ce511e9ecad"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "f3fdfd09173ad65ee1de43c599de870099d36e86e70ad36d085ede95e35b1895"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "80e082491693d6fcd64743695998d29b953b59e30d8abdb5a10af2c7a4c7c81d"
+    },
+    "monster-force-live": {
+      "file": "artifacts/client455-progress/monster191/live.json",
+      "sha256": "f725322364ac040cf9fbe45a3a740d553a3c894c8950f78cc6cb7be90339cd9f"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/monster191/live.json",
+    "sha256": "f725322364ac040cf9fbe45a3a740d553a3c894c8950f78cc6cb7be90339cd9f"
+  },
+  "neutralb_startup_frames": [
+    {
+      "file": "work/m9/53eaff44/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "cbc27d0448ff401e1bae48194f9b0abe41bc52ebeed683b99d6da6e2cbd06571"
+    },
+    {
+      "file": "work/m9/53eaff44/world-observation-live-taiwan001/world-post-position-settled.png",
+      "sha256": "039811b87f2936880744f0f9bca3ef3c7c043045d14b27259d7cafaacf358df5"
+    }
+  ],
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_force.py",
+    "sha256": "03e83e67c20adaf36b220a863569c38d98a9a20bd3caf3f9c5a8c7ba4a795a18"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_character_tables_port.py",
+      "sha256": "a8809aa6af5af6df815e62e674a0f7ee26bdeb810f19e2c95d5e965b9f11f534"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.h",
+      "sha256": "7eb5bf64bd13dcccb7de26e09e1fbff803aa75866a08fd2af37fb6e6a6a4fcbf"
+    },
+    {
+      "file": "scripts/native/client455_skill_force_items.cpp",
+      "sha256": "2a77b98d15fd15265b854fbd78c754c97b8a24d0fa0fc9d52da40674b20e7d81"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_probe.cpp",
+      "sha256": "b78f56cc3585c2176c8437582dbea358f764b5997c5a938b903663b57aeb5339"
+    }
+  ],
+  "probe_executable": {
+    "file": "work/client455-port/monster-force-probe/monster-force-probe.exe",
+    "sha256": "04d306c090393fd3f7be91986bb86ffd0a1d934e76dad6696df4bedcffc6ff6b",
+    "architecture": "x86"
+  },
+  "console": {
+    "file": "work/client455-port/monster-force-probe/probe-console.txt",
+    "sha256": "34ac90cb52aa516b2c9c89d5881233fc75f6567282ac0e16797f1dfc78726bde"
+  },
+  "real_clips": [
+    {
+      "file": "work/client455-port/monster-force-probe/WING_WARFORCEATTACK_01_00.ANI",
+      "sha256": "ff9a4c0fa6132b3d2bd5fe936ed070e83b541b9bcfd487814181f6c9ce8b85b9",
+      "key": 4288,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    },
+    {
+      "file": "work/client455-port/monster-force-probe/WING_WARFORCESUPPORT_01_00.ANI",
+      "sha256": "807d3f83371a62ccf909c42cd2677c88daaca7c4b31fffb814d6bc2ed597cbbb",
+      "key": 4304,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    }
+  ],
+  "cases": [
+    {
+      "index": 0,
+      "level": 7,
+      "first_effect": 9,
+      "categories": [
+        3,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "attack": false
+    },
+    {
+      "index": 24,
+      "level": 1,
+      "first_effect": 0,
+      "categories": [
+        0,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "attack": true
+    },
+    {
+      "index": 25,
+      "level": 1,
+      "first_effect": 4,
+      "categories": [
+        0,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "attack": false
+    },
+    {
+      "index": 25,
+      "level": 0,
+      "first_effect": 0,
+      "categories": [
+        0,
+        255,
+        255,
+        255,
+        255,
+        255,
+        255
+      ],
+      "attack": true
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "selected_cases": 5,
+    "invalid_type_cases": 1,
+    "actual_ani_imported": 2,
+    "attack_key": 4288,
+    "support_key": 4304
+  },
+  "own_symbols": {
+    "?GetAnimationData_Force@CMonster@@MAEPAURF455AnimationStorage@@K@Z": "0x40f20",
+    "?usesMonsterAttackClip@RF455SkillForceData@@QBE_NEIE@Z": "0xdfb70"
+  },
+  "live_force_activation": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

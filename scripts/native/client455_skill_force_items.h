@@ -24,6 +24,7 @@ public:
     bool localizeEdf(const void*,std::size_t);
     bool loadFiles(const char* base,const char* localized);
     RF455ItemDataSpan get(std::uint8_t subtype,std::uint32_t index)const;
+    bool usesMonsterAttackClip(std::uint8_t subtype, std::uint32_t index, std::uint8_t level) const;
     const std::array<RF455SkillForceTable,5>& records()const{return tables;}
 };
 

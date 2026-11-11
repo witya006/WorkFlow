@@ -1,3 +1,9 @@
+2026-11-11 — Monster Force 191, PARTIAL_COMPONENT_MONSTER_FORCE_CLIPS.
+
+The normal monster method selects and loads both real Wing Force clips
+using 455 effect rows. The linked client also entered NeutralB.
+[Evidence](research/client455-monster-force.md)
+
 2026-11-11 — NeutralB 190, PARTIAL_LIVE_MONSTER_STAND_FRAMES.
 
 One short right drag exposes a Youngflem in three ordinary-client frames.
