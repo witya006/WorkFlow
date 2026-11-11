@@ -1,0 +1,84 @@
+{
+  "status": "PASS_LIVE_TAIWAN_LOBBY_MENU",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "2b81d964eee1f557dff867ca3e0ef663d1d3e0e19d6fafb583573e198602ef59",
+    "bytes": 2428928,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x190040",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference": {
+    "file": "inventory/client455-lobby-menu-reference.json",
+    "sha256": "672f89403783b526aaf01941a47bba26227dcf61fa3a4c87da6bd348af89f9dc"
+  },
+  "build": {
+    "file": "inventory/client455-normal-build.json",
+    "sha256": "0eea0de8e92433e3b9da132c36ffd19f20c817b1cd17c9b8f1ecb9a178154ab3"
+  },
+  "link": {
+    "file": "inventory/client455-normal-link.json",
+    "sha256": "7ae12324e089a3d775d655b0a95369d62aff9c611264c49e6fbe4c99e4fdb25c"
+  },
+  "mouse_credits_and_exit": {
+    "events": {
+      "file": "work/startup455-m6/menu-live/events-1794438488.jsonl",
+      "sha256": "d05dc0eac934492d2c2d937fa3e3c5f7307eaf0e8155f6c6b36c049388bd0df3"
+    },
+    "menu_frame": {
+      "file": "work/startup455-m6/menu-live/verified-menu.png",
+      "sha256": "9581f6cf0ec5ff14a27a603e9102b2dd40e92500f73520f811b650eeca20e033"
+    },
+    "credits_frame": {
+      "file": "work/startup455-m6/menu-live/verified-credits.png",
+      "sha256": "26e636ec7d11c424673dc194b15e2882846f3fd7cebb7545091d4e886213646a"
+    },
+    "credits_return_keys": [
+      "Space",
+      "Escape"
+    ],
+    "ordinary_exit_code": 0
+  },
+  "keyboard_start_and_world": {
+    "events": {
+      "file": "work/m9/2b81d964/world-observation-live-taiwan001/debug-events.jsonl",
+      "sha256": "6b6d179113210d6e3854073a4ef4ba1fe9f545643446c4ca33a03a78b728b82c"
+    },
+    "report": {
+      "file": "artifacts/client455-progress/client455-world-observation-live-taiwan-native.json",
+      "sha256": "e2b0dbc511c4544e7ac18819ef9277e4c901d5d3beeba01e535684aea13e20b3"
+    },
+    "frame": {
+      "file": "work/m9/2b81d964/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "84ccb6eb4e931ac1d4df11bf147089356aa2f1f29d89bc0a0d373fee0e40a9d1"
+    },
+    "map": "NeutralB"
+  },
+  "earlier_mouse_start": {
+    "executable": {
+      "file": "work/startup455-m6/menu-initial-client.bin",
+      "sha256": "27f1b62d8d43137df7484192f47c9f6d3055a23a940016e2e1c6e99e3c6a623f"
+    },
+    "events": {
+      "file": "work/startup455-m6/menu-live/events-1794438031.jsonl",
+      "sha256": "c22eebf8e28cf65c9f25a64216efb96aaebc42cde61ba07d13ffde422e6a4bdc"
+    },
+    "selection_frame": {
+      "file": "work/startup455-m6/menu-live/observed-selection.png",
+      "sha256": "847e130a9aaa63f58ace3d2c8eab70c18f9d196dcc00b57844a9c09dbfdc48e7"
+    }
+  },
+  "open": [
+    "Empty character list and complete character creation",
+    "Tutorial in the ordinary client",
+    "Runtime presentation in other locales and fullscreen",
+    "FireGuard compatibility on applicable accounts"
+  ]
+}

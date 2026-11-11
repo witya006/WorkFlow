@@ -79,6 +79,8 @@ int wmain(int argc,wchar_t** argv){
     bool titleEscapeSent = false;
     bool portalAttempted = false;
     ULONGLONG portalSendAt = 0;
+    bool lobbyMenuOpened = false;
+    bool lobbyStartKeySent = false;
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
@@ -105,7 +107,12 @@ int wmain(int argc,wchar_t** argv){
             DWORD childPID=0;GetWindowThreadProcessId(selectionWindow,&childPID);
             const bool valid=IsWindow(selectionWindow)&&childPID==process.dwProcessId;
             const bool sent=valid&&PostMessageW(selectionWindow,WM_KEYDOWN,VK_RETURN,1)&&PostMessageW(selectionWindow,WM_KEYUP,VK_RETURN,0xc0000001);
-            std::fprintf(output,"{\"kind\":\"selection_key_posted\",\"own_child_validated\":%s,\"sent\":%s}\n",valid?"true":"false",sent?"true":"false");std::fflush(output);selectionSendAt=0;
+            const bool startsLobby = lobbyMenuOpened && !lobbyStartKeySent;
+            if (startsLobby && sent) lobbyStartKeySent = true;
+            std::fprintf(output,"{\"kind\":\"%s\",\"own_child_validated\":%s,\"sent\":%s}\n",
+                         startsLobby ? "lobby_start_key_posted" : "selection_key_posted",
+                         valid ? "true" : "false", sent ? "true" : "false");
+            std::fflush(output);selectionSendAt=0;
         }
         if(selectionDeadline&&GetTickCount64()>selectionDeadline&&!terminating){
             timeoutLocation(output,process,imageBase,modules);std::fputs("{\"kind\":\"selection_observation_end\"}\n",output);TerminateProcess(process.hProcess,0xe0434200);terminating=true;
@@ -215,6 +222,12 @@ int wmain(int argc,wchar_t** argv){
                     portalAttempted = true;
                     portalSendAt = GetTickCount64() + 1000;
                 }
+                if (selectionMode && std::string(text) == "RF455 Protocol:lobby-menu-open:0:0:0") {
+                    lobbyMenuOpened = true;
+                    if (selectionWindow && !lobbyStartKeySent) selectionSendAt = GetTickCount64() + 350;
+                }
+                if (selectionWindow && lobbyStartKeySent && std::string(text) == "RF455 Protocol:lobby-start:0:0:0")
+                    selectionSendAt = GetTickCount64() + 1500;
                 if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
             }}
         }else if(event.dwDebugEventCode==EXIT_PROCESS_DEBUG_EVENT){std::fprintf(output,"{\"kind\":\"exit\",\"code\":\"0x%08lx\"}\n",event.u.ExitProcess.dwExitCode);exited=true;}

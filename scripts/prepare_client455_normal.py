@@ -66,6 +66,7 @@ from client455_monster_force_port import port_monster_force
 from client455_monster_health_port import port_monster_health
 from client455_avatar_health_port import port_avatar_health
 from client455_title_movies_port import port_title_movies
+from client455_lobby_menu_port import port_lobby_menu
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
 from client455_armed_attack_port import port_armed_attack
@@ -805,6 +806,8 @@ def main():
             raw,message_changed=port_message_dispatch(raw,relative)
             if message_changed:changes.append('455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen')
             raw,flags_changed=port_character_flags(raw,relative,section)
+            raw,lobby_menu_changed=port_lobby_menu(raw,relative,native)
+            if lobby_menu_changed:changes.append('455 lobby menu, staff roll and routes to character selection, creation and exit')
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')
             raw,palette_changed=port_character_palette(raw,relative,section)
             if palette_changed:changes.append('455ordinary Character20parts/30matrixpalettes/13dummyindices;fullactor/equipment lifecycle remainsopen')

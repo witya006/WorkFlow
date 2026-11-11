@@ -135,6 +135,11 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
             original=client/name;copy=run/name;copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     if loginProbe:
         inputs += copy_title_movies(client, run, country['folder'])
+        staff = json.loads((WS/'inventory/client455-lobby-menu-reference.json').read_text(encoding='utf-8'))['staff_file']
+        staff_source = client/staff['file']
+        staff_copy = run/staff['file']
+        stage_asset(staff_source, staff_copy, staff['sha256'])
+        inputs.append({'file':staff_copy.relative_to(WS).as_posix(),'sha256':staff['sha256'],'original':str(staff_source)})
         for name in ['Effect/EffectEntityList.spt','Effect/MagicSptList.spt']:
             original=client/name;copy=run/name;stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
         for name in [f'SpriteImage/{country["folder"]}/login.spr',f'SpriteImage/{country["folder"]}/loading.spr','SpriteImage/Common/main.spr']:
@@ -287,7 +292,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
     if select_character:
         name='client455-character-selection-native';report['scope']='Actual own Login then addressed Enter key in own child window;records real selection protocol andfirst following failure,not world acceptance'
-        report['selection_input']=[e for e in events if e['kind'] in ['selection_key_posted','selection_observation_end']]
+        report['selection_input']=[e for e in events if e['kind'] in ['lobby_start_key_posted','selection_key_posted','selection_observation_end']]
     if observe_world:
         name=f'client455-{observation_name}-native'
         report['scope']=('Ordinary own-client world render, scoped camera drags, monster pick and mapped attack key'
