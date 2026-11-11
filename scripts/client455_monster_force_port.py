@@ -11,6 +11,12 @@ def port_monster_force(raw, relative, native):
         raw = replace(raw, b'if( m_pData ) return m_pData->dwDTIndex; else return ID_INVALID;',
                       b'if( m_pData ) return m_pData->dwDTIndex; '
                       b'else return HasForceRow455() ? m_forceRow455 : ID_INVALID;')
+        raw = replace(raw, b'inline\tDWORD\t\t\tGetDTCode( void )\t\t\t\t\t'
+                      b'{ if( m_pData ) return m_pData->dwDTCode; else return ID_INVALID; }',
+                      b'DWORD\t\t\t\tGetDTCode( void );')
+        raw = replace(raw, b'inline\tBYTE\t\t\tGetRangeTypeForEffect( void )\t\t'
+                      b'{ if( m_pData ) return m_pData->byRangeType_For_Effect; else return 0xFF; }',
+                      b'BYTE\t\t\t\tGetRangeTypeForEffect( void );')
         raw = replace(raw, b'virtual\tBOOL\t\t\tCreate( BYTE pi_bySFType, DWORD pi_dwDTIndex );',
                       b'virtual\tBOOL\t\t\tCreate( BYTE pi_bySFType, DWORD pi_dwDTIndex );\n'
                       b'\tBOOL CreateForce455(DWORD index, BYTE level);\n'

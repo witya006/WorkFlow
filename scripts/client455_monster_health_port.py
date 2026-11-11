@@ -39,6 +39,7 @@ def port_monster_health(raw, relative, native):
                         static_cast<CMonster*>(m_pOwner)->ApplyForceHealthImpact455(
                             l_pAttackerInfo->GetCurDamagePoint(),
                             l_pAttackerInfo->GetOriginalForceDamage455(), frames);
+                    m_pOwner->SetEffectInfo(CAI_DAMAGED_BY_FORCE);
                 } else if (m_pOwner->IsEqualCharType(CTI_MONSTER)) {
                     m_pOwner->SetEffectInfo(l_pAttackerInfo->IsForceSpecialHit455()
                         ? CAI_DAMAGED_SPECIAL_HIT455 : CAI_DAMAGED_MISS455);

@@ -59,9 +59,10 @@ def main():
          ['Selected Character flags/Nuclear aiming и компонентное ограничение обычной атаки по 4/34',
           'Обработчик 5/9 назначает Силу, ставит цели в очередь и распределяет урон по тестовым кадрам',
           'Обычный диспетчер принимает долю HP монстра, компонентно проверены два кадра попадания и лечение',
-          'Компонентно проверены разные эффекты для результата −2 и промаха на кадре попадания по монстру'],
+          'Компонентно проверены разные эффекты для результата −2 и промаха на кадре попадания по монстру',
+          'Штатная очередь эффектов принимает ключ, режим и число урона Силы на двух тестовых кадрах'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint']),
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Реальные таблицы/payload/owners/icons и выбранный inventory handoff'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -99,6 +100,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-monster-force-impact-checkpoint',
         'client455-monster-force-reaction-checkpoint',
         'client455-monster-health-checkpoint',
         'client455-monster-force-damage-checkpoint',

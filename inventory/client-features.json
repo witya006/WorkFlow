@@ -9157,7 +9157,7 @@
       "id": "CLIENT455-MONSTER-FORCE-REACTION-195",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-force-reaction-checkpoint.json",
         "inventory/client455-monster-force-reaction-reference.json"
@@ -9166,6 +9166,21 @@
       "gaps": [
         "Live Force impact and visible effects",
         "Reaction on other actor types, support Force, auxiliary result data and positive damage effects"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-FORCE-IMPACT-196",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-force-impact-checkpoint.json",
+        "inventory/client455-monster-force-impact-reference.json"
+      ],
+      "description": "The normal impact queue receives the Force table key, range, actors and per-frame damage. Two fixture frames total 70000. The same build walks on NeutralB.",
+      "gaps": [
+        "Live effects and damage text styling",
+        "Critical and support effects, block consumer and auxiliary state"
       ]
     }
   ],

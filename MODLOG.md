@@ -1,3 +1,9 @@
+2026-11-11 — Monster Force impact 196, PARTIAL_COMPONENT_MONSTER_FORCE_IMPACT.
+
+The normal impact consumer queues the Force key, range and per-frame damage.
+Two fixture impacts total 70,000 using the pinned Force row.
+[Evidence](research/client455-monster-force-impact.md)
+
 2026-11-11 — Monster Force reaction 195, PARTIAL_COMPONENT_MONSTER_FORCE_REACTION.
 
 The ordinary monster impact path queues distinct effects for -2 and a miss.
