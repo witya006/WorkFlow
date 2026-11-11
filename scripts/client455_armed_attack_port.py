@@ -5,7 +5,7 @@ import re
 from client455_trade_ore_port import patch_method, replace
 
 
-def port_armed_attack(raw, relative, section):
+def port_armed_attack(raw, relative, section, native):
     def edit(owner, method, transform):
         nonlocal raw
         raw = patch_method(raw, section, owner, method, transform)
@@ -62,23 +62,48 @@ def port_armed_attack(raw, relative, section):
         def bullet_condition(body):
             at = body.index(b'{') + 1
             return body[:at] + b'''
-    const RF455ConditionItem weapon(GetNormalItem455(IEPT_WEAPON));
-    if (!weapon.requiresAmmunition()) return TRUE;
     auto* board = _GetEquipBoard();
+    auto* wornWeapon = board->GetObject(0, UIPT_WEAPON);
+    const RF455ConditionItem weapon(wornWeapon ? wornWeapon->GetItem455() : nullptr);
+    if (!weapon.valid) return TRUE;
+    const auto& items = RF455_GameItems();
+    const auto classType = [&items](DWORD index) {
+        const auto row = items.data.classByIndex(index);
+        return row.data ? row.data[0] : BYTE(0);
+    };
+    if (!weapon.allowsAttackClass(classType(GetInitialClassIndex455())) &&
+        !weapon.allowsAttackClass(classType(GetClassDTIndex(0)))) return FALSE;
+    if (!weapon.requiresAmmunition()) return TRUE;
+
+    constexpr DWORD SpecialWeaponID = 0x00a11107;
+    constexpr DWORD SpecialProjectileIndex = 20;
+    const bool specialWeapon = weapon.field<DWORD>(72) == SpecialWeaponID;
     for (BYTE socket = UIPT_BULLET_LEFT; socket <= UIPT_BULLET_RIGHT; ++socket) {
         auto* entry = board->GetObject(0, socket);
-        const RF455ConditionItem ammunition(entry ? entry->GetItem455() : nullptr);
-        if (ammunition.kind() != IEPT_BULLET ||
-            ammunition.field<BYTE>(232) != weapon.field<BYTE>(268)) continue;
+        auto* payload = entry ? entry->GetItem455() : nullptr;
+        const RF455ConditionItem ammunition(payload);
+        if (ammunition.kind() != IEPT_BULLET) continue;
+        const bool specialProjectile =
+            items.skillForce.projectileEffectIndex(ammunition.field<DWORD>(216)) == SpecialProjectileIndex;
+        if (specialWeapon != specialProjectile) {
+            if (specialWeapon && socket == UIPT_BULLET_RIGHT)
+                _SetSystemMsg("%s", RF455_GetNormalLanguagePack()->get(0xc00));
+            continue;
+        }
+        if (payload->header().flag21 || !weapon.matchesPrimaryAmmunition(ammunition)) continue;
         SetBulletDTIndex(ammunition.field<DWORD>(0));
         board->SetUsingBulletSocketNo(socket);
+        RF455_ObserveProtocol("combat-ammunition", socket, ammunition.field<DWORD>(0), payload->header().serial);
         return TRUE;
     }
-''' + body[body.index(b'\t\t_SetSystemMsg(', at):body.index(b'\n\t}', body.index(b'\t\t_SetSystemMsg(', at))].replace(
-                b'\t\t', b'    ') + b'\n}\n'
+    _SetSystemMsg("%s", RF455_GetNormalLanguagePack()->get(0x97));
+    return FALSE;
+}
+'''
 
         edit(owner, b'CheckCorrespondenceOfWeaponWithBullet_WhenDismount', bullet_condition)
-        return b'#include "client455_protocol_observation.h"\n' + raw, True
+        return (b'#include "client455_protocol_observation.h"\n#include "client455_client_items.h"\n'
+                b'#include "client455_language.h"\n' + raw), True
 
     if relative == 'character/player/cbaseplayer.cpp':
         def attack_range(body):
@@ -118,13 +143,25 @@ def port_armed_attack(raw, relative, section):
                 m_byUsingBulletSocketNo > UIPT_BULLET_RIGHT) return ID_INVALID;
             auto* entry = GetObject(0, m_byUsingBulletSocketNo);
             auto* item = entry ? entry->GetItem455() : nullptr;
-            const RF455ConditionItem ammunition(item);
-            return ammunition.kind() == IEPT_BULLET &&
-                   ammunition.field<BYTE>(232) == weapon.field<BYTE>(268)
-                   ? item->header().serial : ID_INVALID;
+            return item ? item->header().serial : ID_INVALID;
         }
     }
 \tCBoardItem * pWeaponItem = GetItem( UIPT_WEAPON );'''))
+        return raw, True
+
+    if relative == 'network/netmsgprocessor/combat/cnetmsgprocessor_combat.h':
+        anchor = b'\tbool MonsterForceResult455(const char* bytes, std::size_t size);'
+        return replace(raw, anchor, anchor +
+                       b'\n\tbool NormalAttackResult455(const char* bytes, std::size_t size);'), True
+
+    if relative == 'character/character/ccharacter_relationinfo2.cpp':
+        edit(b'CCombatState', b'ProcessDamage', lambda body: replace(
+            body, b'm_pOwner->SetEffectInfo( CAI_DAMAGED_MISS );',
+            b'''if (l_pAttackerInfo->GetDamageType_AT() == CAT_NORMAL)
+                    m_pOwner->SetEffectInfo(l_pAttackerInfo->IsSpecialHit455()
+                        ? CAI_DAMAGED_SPECIAL_HIT455 : CAI_DAMAGED_MISS455);
+                else
+                    m_pOwner->SetEffectInfo(CAI_DAMAGED_MISS);'''))
         return raw, True
 
     if relative == 'network/netmsgprocessor/combat/cnetmsgprocessor_combat.cpp':
@@ -155,6 +192,19 @@ def port_armed_attack(raw, relative, section):
 '''
 
         edit(b'CNetMsgProcessor_Combat', b'AttackGenRequest_clzo', request)
+        anchor = b'\t\tcase attack_gen_result_zocl\t:'
+        raw = replace(raw, anchor, b'''        case 6:
+            _GetGGI()->SetRequestProcessState(FALSE);
+            return true;
+        case 7:
+            return pMsgHeader->m_wSize >= 4 &&
+                   NormalAttackResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+
+''' + anchor)
+        anchor = b'#include "client455_monster_force_result.h"'
+        raw = replace(raw, anchor, anchor + b'\n#include "client455_normal_attack_result.h"')
+        anchor = b'#include "client455_protocol_observation.h"'
+        raw = replace(raw, anchor, anchor + b'\n\n' + (native / 'client455_normal_attack_dispatch.inc').read_bytes())
         return raw, True
 
     if relative == 'addcodebyjang/playerspecialeffect.cpp':

@@ -41,7 +41,7 @@ def port_monster_health(raw, relative, native):
                             l_pAttackerInfo->GetOriginalForceDamage455(), frames);
                     m_pOwner->SetEffectInfo(CAI_DAMAGED_BY_FORCE);
                 } else if (m_pOwner->IsEqualCharType(CTI_MONSTER)) {
-                    m_pOwner->SetEffectInfo(l_pAttackerInfo->IsForceSpecialHit455()
+                    m_pOwner->SetEffectInfo(l_pAttackerInfo->IsSpecialHit455()
                         ? CAI_DAMAGED_SPECIAL_HIT455 : CAI_DAMAGED_MISS455);
                 }'''), True
     if relative == 'network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.h':

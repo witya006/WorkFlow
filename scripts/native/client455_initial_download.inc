@@ -1,6 +1,7 @@
 // 455 base, inventory and Force handlers at RVA 16BEA0, 16D080 and 16DF30.
 #include "client455_initial_download.h"
 #include "client455_client_items.h"
+#include "client455_equipment_conditions.h"
 #include "client455_protocol_observation.h"
 #include "network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h"
 
@@ -35,7 +36,14 @@ bool PutDownloadedAccessory(CEquipBoard& board, CBoardObject& item, BYTE kind, i
     switch (kind) {
     case IEPT_RING: first = UIPT_RING_LEFT; break;
     case IEPT_AMULET: first = UIPT_AMULET_LEFT; break;
-    case IEPT_BULLET: first = UIPT_BULLET_LEFT; break;
+    case IEPT_BULLET: {
+        const RF455ConditionItem ammunition(item.GetItem455());
+        // RVA 0x16c799: tagged ammunition occupies its own slot.
+        if (ammunition.field<BYTE>(232))
+            return board.Add(0, UIPT_BULLET_RIGHT + 1, &item) != FALSE;
+        first = UIPT_BULLET_LEFT;
+        break;
+    }
     default: return false;
     }
     const BYTE preferred = first + (wireSlot % 2 != 0);

@@ -57,6 +57,22 @@ struct RF455ConditionItem {
         const auto category = weaponCategory();
         return category == 5 || category == 6 || category == 7 || category == 11;
     }
+    bool allowsAttackClass(std::uint8_t type) const {
+        return kind() != 6 || (type < 4 && field<std::uint8_t>(224 + type) != 0);
+    }
+    bool matchesPrimaryAmmunition(const RF455ConditionItem& ammunition) const {
+        if (kind() != 6 || ammunition.kind() != 11) return false;
+        // RVA 0x60e70 compares the two lists in the EDF records.
+        const auto weaponCount = field<std::uint32_t>(256);
+        if (weaponCount > 7) throw std::out_of_range("455 weapon ammunition type count");
+        const auto ammunitionCount = ammunition.field<std::uint8_t>(164);
+        for (std::uint32_t i = 0; i < weaponCount; ++i) {
+            const auto type = field<std::uint8_t>(249 + i);
+            for (unsigned j = 0; j < ammunitionCount; ++j)
+                if (type == ammunition.field<std::uint8_t>(165 + j)) return true;
+        }
+        return false;
+    }
     float attackRange() const {
         if (!valid) return 0;
         float distance = 0;

@@ -17,9 +17,10 @@ def port_world_updates(raw, relative, native, section):
         }
         D3DXVECTOR4 clip;
         D3DXVec3Transform(&clip, &center, &GetR3State()->mMatViewProj);
+        const float upper = RF455_WorldObservation().combat ? 0.85f : 0.55f;
         if (clip.w > 0 && clip.z >= 0 && clip.z <= clip.w &&
             clip.x > -0.8f * clip.w && clip.x < 0.8f * clip.w &&
-            clip.y > -0.38f * clip.w && clip.y < 0.55f * clip.w) {
+            clip.y > -0.38f * clip.w && clip.y < upper * clip.w) {
             RF455_RecordMonsterDraw(GetIndex(), GetMeshID(), m_Animation.GetAniData()->m_Ident,
                                     GetBoneFrame(), clip.x / clip.w, clip.y / clip.w, clip.w);
         }

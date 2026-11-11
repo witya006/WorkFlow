@@ -57,7 +57,8 @@ inline void RF455_RecordMonsterDraw(unsigned serial, unsigned mesh, unsigned ani
     if (!state.monsterDraw.present && state.monsterCaptures < 3 &&
         (!state.monsterCaptures || serial == state.sampledMonster)) state.monsterDraw = draw;
     const bool clearOfMinimap = screenX < 0.5f || screenY < 0.35f;
-    if (state.combat && clearOfMinimap && !state.combatTarget &&
+    const bool clearOfStatus = screenX > -0.35f || screenY < 0.65f;
+    if (state.combat && clearOfMinimap && clearOfStatus && !state.combatTarget &&
         (!state.combatDraw.present || depth < state.combatDraw.depth)) state.combatDraw = draw;
 }
 

@@ -37,7 +37,8 @@ def port_monster_force(raw, relative, native):
                       b'\tDWORD m_forceOriginalDamage455;\n\tbool m_forceSpecialHit455;\n\tDWORD\t\t\tm_dwCurDamagePoint;')
         raw = replace(raw, b'\tCAttackerInfo();', b'\tCAttackerInfo();\n'
                       b'\tvoid SetForceDamage455(LONG damage);\n\tvoid AdvanceForceDamage455();\n'
-                      b'\tbool IsForceSpecialHit455() const { return m_forceSpecialHit455; }')
+                      b'\tvoid SetSpecialHit455(bool value) { m_forceSpecialHit455 = value; }\n'
+                      b'\tbool IsSpecialHit455() const { return m_forceSpecialHit455; }')
         return raw, True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
         anchor = b'\t\t\tl_pAttackerInfo->SetProcessedDamage( TRUE );'

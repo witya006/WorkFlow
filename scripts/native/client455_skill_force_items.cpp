@@ -61,6 +61,18 @@ bool RF455SkillForceData::loadFiles(const char* base,const char* localized){
 RF455ItemDataSpan RF455SkillForceData::get(std::uint8_t subtype,std::uint32_t index)const{
     const int number=tableNumber(subtype);return number<0?RF455ItemDataSpan{}:tables[number].get(index);
 }
+
+std::uint32_t RF455SkillForceData::projectileEffectIndex(std::uint32_t code) const
+{
+    // RVA 0x1fae60: first matching code in the fourth SkillForce.edf table.
+    const auto& projectiles = tables[3];
+    for (std::uint32_t i = 0; i < projectiles.count; ++i) {
+        const auto row = projectiles.get(i);
+        if (u32(row.data + 4) == code) return u32(row.data);
+    }
+    return 0xffffffff;
+}
+
 namespace {
 constexpr unsigned firstEffect = 144;
 

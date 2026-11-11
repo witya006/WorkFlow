@@ -9263,7 +9263,7 @@
       "id": "CLIENT455-DOWNLOADED-ITEMS-202",
       "area": "items",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-downloaded-items-checkpoint.json",
         "inventory/client455-downloaded-items-reference.json"
@@ -9272,6 +9272,21 @@
       "gaps": [
         "Primary ammunition selection and live attack result",
         "Special equipment slot, Talik effects and item interactions"
+      ]
+    },
+    {
+      "id": "CLIENT455-LIVE-ORDINARY-ATTACK-203",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-primary-ammunition-checkpoint.json",
+        "inventory/client455-primary-ammunition-reference.json"
+      ],
+      "description": "An ordinary bow attack selects equipped arrows on NeutralB, sends the eight-byte 5/1 and queues 22 damage from the server's 5/7 result.",
+      "gaps": [
+        "Visible projectile and hit, health bar and repeated attacks",
+        "5/21 remaining ammunition, auxiliary activation and supporting impact"
       ]
     }
   ],

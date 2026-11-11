@@ -853,7 +853,7 @@ def main():
             raw,combat_result_changed=port_combat_result_effect(raw,relative)
             if combat_result_changed:changes.append('455 combat result word, block sound and visibility')
             raw,critical_changed=port_monster_critical(raw,relative)
-            raw,armed_attack_changed=port_armed_attack(raw,relative,section)
+            raw,armed_attack_changed=port_armed_attack(raw,relative,section,native)
             if armed_attack_changed:changes.append('455 typed armed attack range, ammunition and equipment consumers')
             if critical_changed:changes.append('455 critical impact action, effect and light')
             if world_updates_changed:changes.append('455 world updates and ordinary town attack check')
