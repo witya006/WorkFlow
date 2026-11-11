@@ -2,6 +2,7 @@
 #include "client455_initial_download.h"
 #include "client455_client_items.h"
 #include "client455_protocol_observation.h"
+#include "network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h"
 
 namespace {
 constexpr unsigned SupportedItemTables = 26;
@@ -418,9 +419,11 @@ bool CNetworkMgr::InitMsg_LinkerDownloadResult455(const char* bytes, std::size_t
     char reserved = 0;
     BYTE macro[] = {init_msg, 49};
     BYTE patriarchShout[] = {13, 104};
+    auto* trade = static_cast<CNetMsgProcessor_ItemTrade*>(GetNetMsgProcessor(NMP_ITEM_TRADE));
+    const BOOL storesSent = trade && trade->StoreListRequest_clzo();
     const BOOL macroSent = SendNetMessage(NST_GAME_SERVER, macro, &reserved, sizeof reserved);
     const BOOL shoutSent = SendNetMessage(NST_GAME_SERVER, patriarchShout, &reserved, sizeof reserved);
-    return macroSent != FALSE && shoutSent != FALSE;
+    return storesSent != FALSE && macroSent != FALSE && shoutSent != FALSE;
 }
 
 namespace {

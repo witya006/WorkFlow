@@ -151,6 +151,16 @@ struct RF455MacroDownload {
 struct RF455PatriarchShoutDownload {
     char text[10][65];
 };
+
+struct RF455StoreNpc {
+    std::uint32_t index;
+    float position[3];
+};
+
+struct RF455StoreDownload {
+    std::uint8_t count;
+    RF455StoreNpc entries[255];
+};
 #pragma pack(pop)
 
 static_assert(sizeof(RF455EquipmentEntry) == 21 && sizeof(RF455AccessoryEntry) == 20);
@@ -173,6 +183,7 @@ static_assert(sizeof(RF455LinkerDownload) == 157 && offsetof(RF455LinkerDownload
 static_assert(sizeof(RF455MacroDownload) == 954 && offsetof(RF455MacroDownload, automaticSettings) == 12 &&
               offsetof(RF455MacroDownload, actions) == 24 && offsetof(RF455MacroDownload, text) == 144);
 static_assert(sizeof(RF455PatriarchShoutDownload) == 650);
+static_assert(sizeof(RF455StoreNpc) == 16 && offsetof(RF455StoreDownload, entries) == 1);
 
 inline bool RF455_ReadLinkerDownload(const void* data, std::size_t size, RF455LinkerDownload& out)
 {
@@ -204,6 +215,18 @@ inline bool RF455_MatchDownloadList(const char* bytes, std::size_t size, std::si
     if (!bytes || !prefix || size < prefix) return false;
     const auto count = static_cast<std::uint8_t>(bytes[prefix - 1]);
     return size == prefix + count * sizeof(Entry);
+}
+
+inline bool RF455_ReadStoreDownload(const char* data, std::size_t size, RF455StoreDownload& out)
+{
+    if (!RF455_MatchDownloadList<RF455StoreNpc>(data, size, 1)) return false;
+    RF455StoreDownload next{};
+    std::memcpy(&next, data, size);
+    for (unsigned i = 0; i < next.count; ++i)
+        for (const float coordinate : next.entries[i].position)
+            if (!std::isfinite(coordinate)) return false;
+    out = next;
+    return true;
 }
 
 inline bool RF455_ReadBaseDownload(const void* data, std::size_t size, RF455BaseDownload& out)

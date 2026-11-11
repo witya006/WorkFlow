@@ -1,0 +1,334 @@
+{
+  "status": "PARTIAL_MAP_LOADED_AVATAR_EQUIPMENT_FAILURE",
+  "scope": "The ordinary client accepts the 60-entry merchant list and loads the actual NeutralB BSP. Avatar creation then stops in a legacy weapon consumer before the start-position request.",
+  "script": {
+    "file": "scripts/checkpoint_client455_store_download.py",
+    "sha256": "8697a2646180e4acf6f9eca033bfd8566042bcb0025603ec2b5f38779a211097"
+  },
+  "normal_link_sha256": "64bdb627239df4cd40ede01bd8213c8c2ae4820d574a570715ca7592bf1f2c10",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "16b78443c9925f7e466f2a7c7944dffc6ebb695ef2c1de6ef0df63aef3cf6ac0",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "2419199ff6a47d2e82679ec7b31c5ad645bd80bd2ed263ad866c5010d5e99373"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "64bdb627239df4cd40ede01bd8213c8c2ae4820d574a570715ca7592bf1f2c10"
+    },
+    "store-download-reference": {
+      "file": "inventory/client455-store-download-reference.json",
+      "sha256": "ca911a13942bfd831eb115ae0d0d4e43e3c0ab521450b35bde533de3b95757df"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "953fcf84a9e44f61c21442f0a01d579b696a2f0a180effbfc7171005b9ac8966"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "2419199ff6a47d2e82679ec7b31c5ad645bd80bd2ed263ad866c5010d5e99373"
+    },
+    "store-download-bindings": {
+      "file": "inventory/client455-store-download-bindings.json",
+      "sha256": "bfb16ff0e7466e2ba9c210c4b8528782daae449215ffd281b9f1989cad712223"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "0ea1600df178b388217b49d802c4f9c9c56952f09024db20f08296b9bfaa9c25"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "23edea8be4c6435d9d94fd6b29c2b6f5902d7ce92d6d166418e85ef9bcee3970"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "3229d4a5f84339eab9aac87b3dd403f7ab8562dea5313c837121961616da0e71"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "2d1d603ca0f1db11e85fa276baf5130263f48cc4e5d874e219013bfcabcead06"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "f033b53d72080287f2eda260ee540a22e7a6bb7cef6d5c5e7e8bfebc4848cf44"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "1cf9065e018c04b93c3fc8216ba0df218ae2edb19bbcb0fa29f81fa5b4f59bf5"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "08342cd883b825c1daef98d30046e18c30d564df13ff04fbf371baa44dd0e37b"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before179/manifest.json",
+    "sha256": "d3818108203a9be05b8f6692c4d0db77396c0cd8821a1f35d491ddf004c300d0"
+  },
+  "observed_sequence": [
+    "select-result:0:0:0",
+    "rx:3:45:157",
+    "linker-applied:2:0:1",
+    "tx:12:8:0",
+    "rx:12:9:961",
+    "store-applied:60:0:1",
+    "map-bsp:0:1:0"
+  ],
+  "explicit_function_bindings": 2,
+  "store": {
+    "bytes": 961,
+    "records": 60,
+    "applied": 0,
+    "gate_set": true
+  },
+  "map": {
+    "index": 0,
+    "bsp": {
+      "file": "work/m9/16b78443/selection-live-taiwan003/map/NeutralB/neutralB.bsp",
+      "sha256": "5e31da1df3ed3131def4866a6b95c604662596e514debe13ced958a4da72389f",
+      "original": "E:\\RFOnlineTrash\\RFOnline\\map\\NeutralB\\neutralB.bsp"
+    },
+    "loaded": true
+  },
+  "avatar_failure": {
+    "normal_executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "16b78443c9925f7e466f2a7c7944dffc6ebb695ef2c1de6ef0df63aef3cf6ac0",
+      "bytes": 2377216,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x185a60",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "exception": {
+      "kind": "exception",
+      "code": "0xe06d7363",
+      "first_chance": 0,
+      "address": "0x76f80b82",
+      "rva": "0x140b82",
+      "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
+      "parameter0": 429065504,
+      "parameter1": "0x73f850"
+    },
+    "fault_rva_is_own": false,
+    "own_fault": null,
+    "candidates": [
+      {
+        "rva": "0x21cbe0",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050524000",
+        "stack_offset": 28
+      },
+      {
+        "rva": "0x1a38ab",
+        "symbol": "__malloc_base",
+        "offset": "0x3b",
+        "is_code": true,
+        "previous_eight_bytes": "3001ff1550715e00",
+        "stack_offset": 68
+      },
+      {
+        "rva": "0x18642d",
+        "symbol": "__CxxThrowException@8",
+        "offset": "0x6d",
+        "is_code": true,
+        "previous_eight_bytes": "7dfcff15b4715e00",
+        "stack_offset": 92
+      },
+      {
+        "rva": "0x21cbe0",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050524000",
+        "stack_offset": 132
+      },
+      {
+        "rva": "0x11633",
+        "symbol": "?GetNormalItem@CPlayerProc@@UAEPAVCNormalItem@@E@Z",
+        "offset": "0x33",
+        "is_code": true,
+        "previous_eight_bytes": "45f450e88d4d1700",
+        "stack_offset": 140,
+        "verified_call": {
+          "rva": "0x1162e",
+          "target_rva": "0x1863c0",
+          "target_symbol": "__CxxThrowException@8"
+        }
+      },
+      {
+        "rva": "0x21cbe0",
+        "symbol": "__TI2?AVlogic_error@std@@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "0c00000050524000",
+        "stack_offset": 148
+      },
+      {
+        "rva": "0x1e80a8",
+        "symbol": "??_7logic_error@std@@6B@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "ffffffffec6e6100",
+        "stack_offset": 152
+      },
+      {
+        "rva": "0xab4f",
+        "symbol": "?SetCombatMode@CAvatar@@UAEXE@Z",
+        "offset": "0x4f",
+        "is_code": true,
+        "previous_eight_bytes": "068bcee801d70400",
+        "stack_offset": 168,
+        "verified_call": {
+          "rva": "0xab4a",
+          "target_rva": "0x58250",
+          "target_symbol": "?GetNormalItem@CPlayer@@QAEPAVCNormalItem@@E@Z"
+        }
+      },
+      {
+        "rva": "0x11760",
+        "symbol": "?LoadAnimaitonData@CPlayerProc@@UAEXXZ",
+        "offset": "0x10",
+        "is_code": true,
+        "previous_eight_bytes": "8b01ff90a0000000",
+        "stack_offset": 192
+      },
+      {
+        "rva": "0x1e8704",
+        "symbol": "??_7CAvatar@@6B@",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "e07c4500886f6100",
+        "stack_offset": 200
+      },
+      {
+        "rva": "0x27022",
+        "symbol": "?Create_Avatar@CGP_MainGame@@IAEXXZ",
+        "offset": "0x1b2",
+        "is_code": true,
+        "previous_eight_bytes": "978600e89e130300",
+        "stack_offset": 204,
+        "verified_call": {
+          "rva": "0x2701d",
+          "target_rva": "0x583c0",
+          "target_symbol": "?LoadAnimaitonData@CPlayer@@QAEXXZ"
+        }
+      },
+      {
+        "rva": "0x26c7a",
+        "symbol": "?Create@CGP_MainGame@@UAEHXZ",
+        "offset": "0x6a",
+        "is_code": true,
+        "previous_eight_bytes": "568bcfe8f6010000",
+        "stack_offset": 220
+      },
+      {
+        "rva": "0x46fcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 232
+      },
+      {
+        "rva": "0x46fcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 244
+      },
+      {
+        "rva": "0x46fcd0",
+        "symbol": "?g_MainApp@@3VCMainApp@@A",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": null,
+        "stack_offset": 252
+      },
+      {
+        "rva": "0xbf272",
+        "symbol": "?GameMainLoop@CMainApp@@QAEHXZ",
+        "offset": "0x182",
+        "is_code": true,
+        "previous_eight_bytes": "00752e8b01ff5008",
+        "stack_offset": 272
+      },
+      {
+        "rva": "0xbf8c0",
+        "symbol": "_WinMain@16",
+        "offset": "0x240",
+        "is_code": true,
+        "previous_eight_bytes": "fc8600e830f8ffff",
+        "stack_offset": 280
+      },
+      {
+        "rva": "0x185a60",
+        "symbol": "_WinMainCRTStartup",
+        "offset": "0x0",
+        "is_code": true,
+        "previous_eight_bytes": "cccccccccccccccc",
+        "stack_offset": 284
+      },
+      {
+        "rva": "0x16313a",
+        "symbol": "?DrawMapEntitiesRender@CBsp@@QAEXXZ",
+        "offset": "0x18a",
+        "is_code": true,
+        "previous_eight_bytes": "e1006b55dc368b45",
+        "stack_offset": 344
+      },
+      {
+        "rva": "0x22e150",
+        "symbol": "___acrt_initial_locale_data",
+        "offset": "0x0",
+        "is_code": false,
+        "previous_eight_bytes": "2e000000ffffffff",
+        "stack_offset": 356
+      }
+    ],
+    "stack_is_candidate_scan_not_unwind": true
+  },
+  "position_request_sent": false,
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Stock NPCs received in the store list need typed merchant data and character owners",
+    "Avatar animation initialization still calls a legacy normal-item consumer for typed weapon equipment",
+    "Start-position exchange, playable world, item owners, guild consumer and full acceptance",
+    "The legacy repair request conflicted with the 455 store request and is disabled pending migration"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

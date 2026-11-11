@@ -15,7 +15,46 @@ def symbol(mapping,name):
     match=re.search(re.escape(name)+r'\s+([0-9a-fA-F]{8})',mapping)
     if not match:raise ValueError('Missing own symbol:'+name)
     return int(match[1],16)
-def main(handoff=None,live_port=None,select_character=False):
+
+
+def stage_world_map(client, run, index):
+    from map_data455 import parse
+
+    evidence = json.loads((WS/'inventory/client455-map-data-reference.json').read_text())
+    fixtures = []
+    for row in evidence['decoded_fixtures']:
+        path = WS/row['file']
+        if sha(path) != row['sha256']:
+            raise ValueError('Changed decoded map table fixture')
+        fixtures.append(path.read_bytes())
+    maps = parse(*fixtures)['rows']
+    if not 0 <= index < len(maps):
+        raise ValueError('Map index outside the 455 table')
+    row = maps[index]['record']
+    bsp = Path(row[100:228].split(b'\0', 1)[0].decode('ascii'))
+    minimap = Path(row[228:356].split(b'\0', 1)[0].decode('ascii'))
+    if bsp.is_absolute() or len(bsp.parts) != 3 or bsp.parts[0].lower() != 'map' or bsp.suffix.lower() != '.bsp' or '..' in bsp.parts:
+        raise ValueError('Unsupported BSP map path from table')
+    if minimap.is_absolute() or '..' in minimap.parts or minimap.suffix.lower() != '.spr':
+        raise ValueError('Unsupported minimap path from table')
+    extensions = {'.bsp', '.cam', '.dds', '.ebp', '.r3m', '.r3t', '.r3x', '.rvp', '.spt'}
+    paths = [p for p in (client / bsp.parent).iterdir() if p.is_file() and p.suffix.lower() in extensions]
+    paths.extend((client/'Map/Entity').glob('*.rpk'))
+    if (client/minimap).is_file():
+        paths.append(client/minimap)
+    if not (client/bsp).is_file():
+        raise ValueError('Pinned map table BSP is unavailable')
+    records = []
+    for original in sorted(paths):
+        relative = original.relative_to(client)
+        copy = run/relative
+        owned = WS/'work/world455-inputs'/relative
+        stage_asset(original, copy, owned_immutable=owned if owned.is_file() else None)
+        records.append({'file': copy.relative_to(WS).as_posix(), 'sha256': sha(copy), 'original': str(original)})
+    return records
+
+
+def main(handoff=None,live_port=None,select_character=False,world_map_index=None):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
@@ -34,6 +73,8 @@ def main(handoff=None,live_port=None,select_character=False):
     if select_character:
         if handoff is None or not args.login_frame:raise ValueError('Selection observation needs actual live Login')
         prefix='selection'
+    elif world_map_index is not None:
+        raise ValueError('World map inputs require a live selection observation')
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
     while (parent/f'{prefix}{index:03d}').exists():index+=1
@@ -75,6 +116,8 @@ def main(handoff=None,live_port=None,select_character=False):
                 copy=run/original.relative_to(client)
                 if any(row['file']==copy.relative_to(WS).as_posix() for row in inputs):continue
                 stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+    if world_map_index is not None:
+        inputs += stage_world_map(client, run, world_map_index)
     if args.with_lobby:
         world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
         for row in case['archives']:

@@ -8917,7 +8917,7 @@
       "id": "CLIENT455-MACRO-DOWNLOAD-178",
       "area": "network",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-macro-download-checkpoint.json",
         "inventory/client455-macro-download-reference.json",
@@ -8928,6 +8928,24 @@
         "Macro actions, chat command interpretation, slot presentation and keyboard execution",
         "Patriarch shout board and window; existing character-scoped state only retains the bounded text",
         "Guild member data application, Linker references, item owners, quest journal and entry into the playable world"
+      ]
+    },
+    {
+      "id": "CLIENT455-STORE-DOWNLOAD-179",
+      "area": "network",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-store-download-checkpoint.json",
+        "inventory/client455-store-download-reference.json",
+        "inventory/client455-initial-download-native.json"
+      ],
+      "description": "The ordinary client accepts the 60-entry merchant list and loads the actual NeutralB BSP. Avatar creation then stops in a legacy weapon consumer before the start-position request.",
+      "gaps": [
+        "Stock NPCs received in the store list need typed merchant data and character owners",
+        "Avatar animation initialization still calls a legacy normal-item consumer for typed weapon equipment",
+        "Start-position exchange, playable world, item owners, guild consumer and full acceptance",
+        "The legacy repair request conflicted with the 455 store request and is disabled pending migration"
       ]
     }
   ],

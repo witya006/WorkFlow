@@ -13,8 +13,8 @@ void check(bool condition, const char* name)
     std::exit(1);
 }
 
-template <class T, std::size_t Size>
-void write(std::array<std::uint8_t, Size>& bytes, std::size_t offset, T value)
+template <class T, class Byte, std::size_t Size>
+void write(std::array<Byte, Size>& bytes, std::size_t offset, T value)
 {
     check(offset + sizeof value <= bytes.size(), "fixture write extent");
     std::memcpy(bytes.data() + offset, &value, sizeof value);
@@ -209,6 +209,24 @@ void macroAndShout()
     check(!RF455_ReadPatriarchShoutDownload(bytes.data(), 651, shout) && shout.text[9][0] == 'S',
           "oversized shout keeps previous value");
 }
+
+void store()
+{
+    std::array<char, 33> bytes{};
+    RF455StoreDownload packet{};
+    check(RF455_ReadStoreDownload(bytes.data(), 1, packet) && packet.count == 0, "empty store list");
+    bytes[0] = 2;
+    write(bytes, 17, std::uint32_t{0x12345678});
+    write(bytes, 21, -20.5f);
+    write(bytes, 29, 231.0f);
+    check(RF455_ReadStoreDownload(bytes.data(), bytes.size(), packet) && packet.count == 2 &&
+          packet.entries[1].index == 0x12345678 && packet.entries[1].position[0] == -20.5f &&
+          packet.entries[1].position[2] == 231.0f, "store list layout");
+    check(!RF455_ReadStoreDownload(bytes.data(), 32, packet), "truncated store list");
+    write(bytes, 25, std::numeric_limits<float>::infinity());
+    check(!RF455_ReadStoreDownload(bytes.data(), 33, packet) && packet.entries[1].position[1] == 0,
+          "nonfinite store coordinates preserve previous state");
+}
 }
 
 int main()
@@ -221,8 +239,9 @@ int main()
     specialAndMiner();
     linker();
     macroAndShout();
+    store();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
               "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
-              "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,"
+              "\"linker_bytes\":157,\"macro_bytes\":954,\"shout_bytes\":650,\"store_stride\":16,"
               "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }

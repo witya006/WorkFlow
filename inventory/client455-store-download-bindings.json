@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "16b78443c9925f7e466f2a7c7944dffc6ebb695ef2c1de6ef0df63aef3cf6ac0",
+    "bytes": 2377216,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185a60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "functions": [
+    {
+      "rva": "0x1980c0",
+      "symbol": "CNetMsgProcessor_ItemTrade::StoreListRequest_clzo",
+      "source": {
+        "file": "work/client455-port/normal/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+        "sha256": "51633e5dd1923d497ce8a625bbcd303d8f5d0d202e74fde6bbbe0a765f92bfae"
+      },
+      "ordinary_symbol_rvas": [
+        "0x44280"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x1980f0",
+      "symbol": "CNetMsgProcessor_ItemTrade::StoreListResult_clzo",
+      "source": {
+        "file": "work/client455-port/normal/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp",
+        "sha256": "51633e5dd1923d497ce8a625bbcd303d8f5d0d202e74fde6bbbe0a765f92bfae"
+      },
+      "ordinary_symbol_rvas": [
+        "0x44290"
+      ],
+      "complete_equivalence": false
+    }
+  ]
+}

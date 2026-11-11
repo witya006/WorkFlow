@@ -5,6 +5,8 @@ from client455_trade_ore_port import patch_method, remove_methods, replace
 
 
 OWNER = b'CNetworkMgr'
+TRADE_OWNER = b'CNetMsgProcessor_ItemTrade'
+OBSERVATION = b'#include "client455_protocol_observation.h"\n'
 RESULTS = (
     (b'Base', b'base', 4),
     (b'Inven', b'inven', 6),
@@ -80,9 +82,62 @@ def port_initial_download(raw, relative, section, native):
         raw = remove_methods(raw, section, OWNER, [(b'InitMsg_' + name + b'DownloadResult_zocl', b'void')
                                                    for name, _, _ in RESULTS])
         return raw + b'\n' + (native / 'client455_initial_download.inc').read_bytes(), True
+    if relative == 'network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h':
+        return b'#include <cstddef>\n' + replace(raw, b'NMP_VIRTUAL\tvoid\tStoreListResult_clzo( char * pi_pMsg );',
+                       b'NMP_VIRTUAL\tbool\tStoreListResult_clzo(const char* bytes, std::size_t size);'), True
+    if relative == 'network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp':
+        raw = replace(raw, b'case store_list_result_zocl\t\t:\n\t\t\tStoreListResult_clzo( pi_pMsg );\n\t\t\tbreak;', b'')
+        raw = replace(raw, b'case repair_result_zocl\t\t\t:\n\t\t\tRepairResult_zocl( pi_pMsg );\n\t\t\tbreak;',
+                      b'case 9:\n\t\t\treturn pMsgHeader->m_wSize >= 4 && StoreListResult_clzo(pi_pMsg, pMsgHeader->m_wSize - 4);')
+        raw = patch_method(raw, section, TRADE_OWNER, b'StoreListRequest_clzo', lambda body: replace(
+            body, b'SendNetMessage( store_list_request_clzo,', b'SendNetMessage( 8,'))
+        raw = patch_method(raw, section, TRADE_OWNER, b'RepairRequest_clzo', lambda body: body[:body.index(b'{') + 1] +
+                           b'\n\t// The legacy repair opcode is the 455 store-list request.\n\treturn FALSE;\n}')
+        raw = replace(raw, b'void\nCNetMsgProcessor_ItemTrade::StoreListResult_clzo( char * pi_pMsg )',
+                      b'bool\nCNetMsgProcessor_ItemTrade::StoreListResult_clzo(const char* bytes, std::size_t size)')
+        raw = patch_method(raw, section, TRADE_OWNER, b'StoreListResult_clzo', port_store_list)
+        return b'#include "client455_initial_download.h"\n' + OBSERVATION + raw, True
+    if relative == 'gameprogress/cgp_maingame.cpp':
+        raw = patch_method(raw, section, b'CGP_MainGame', b'Create', lambda body: replace(
+            body, b'\tLoadData();', b'\tif (!LoadData()) return FALSE;'))
+        raw = patch_method(raw, section, b'CGP_MainGame', b'LoadData', lambda body: replace(
+            body, b'\t_GetLand()->LoadLevel();', b'''\tauto* land = _GetLand();
+    const bool mapLoaded = land->LoadLevel() && land->GetLevel() && land->GetLevel()->IsLoadedBsp();
+    RF455_ObserveProtocol("map-bsp", land->GetMapIndex(), mapLoaded, 0);
+    if (!mapLoaded) return FALSE;'''))
+        return OBSERVATION + raw, True
     if relative == 'gameobject/board/skillforceboard/csfboard.cpp':
         raw = patch_method(raw, section, b'CSFBoard', b'SetSuccessCountOfMastery', lambda body: replace(
             body, b'\tif( !m_bIsUsableMastery[pi_byMasteryType+1]',
             b'\tif( pi_byMasteryType + 1 >= m_byTotalMasteryNum ) return;\n\n\tif( !m_bIsUsableMastery[pi_byMasteryType+1]'))
         return raw, True
     return raw, False
+
+
+def port_store_list(body):
+    start = body.index(b'\n', body.index(b'{'))
+    end = body.index(b'\n\tfor( int i = 0;')
+    body = body[:start] + b'''
+    RF455StoreDownload packet{};
+    if (!_GetMainGame() || !RF455_ReadStoreDownload(bytes, size, packet)) return false;
+    unsigned applied = 0;
+''' + body[end:]
+    body = replace(body, b'for( int i = 0; i < pRecvMsg->byStoreNum; ++i )',
+                   b'for (unsigned i = 0; i < packet.count; ++i)')
+    body = body.replace(b'pRecvMsg->StorePos[i].wStoreIndex', b'packet.entries[i].index')
+    body = replace(body, b'pRecvMsg->StorePos[i].fPos', b'packet.entries[i].position')
+    body = replace(body, b'l_pNpc = _GetCharMgr()->AddNpc( packet.entries[i].index );', b'''const auto index = packet.entries[i].index;
+        auto* l_pNpcInfo = static_cast<DT_CNMInfo*>(_GetCharDataMgr()->GetCharacter(CTI_NPC, index));
+        if (!l_pNpcInfo) continue;
+        auto* l_pNpc = _GetCharMgr()->AddNpc(index);''')
+    start = body.index(b'\t\t\tl_pNpcInfo =')
+    end = body.index(b'\t\t\tl_pNpc->SetData', start)
+    body = body[:start] + body[end:]
+    body = replace(body, b'\t\t\tl_pItemList = l_pNpc->GetShopItemList();',
+                   b'\t\t\t++applied;\n\t\t\tauto* l_pItemList = l_pNpc->GetShopItemList();')
+    body = replace(body, b'l_pItem = l_pItemList->AddItem( j );', b'auto* l_pItem = l_pItemList->AddItem( j );')
+    start = body.index(b'\t_GetMainGame()->SetCompleteDataDownload')
+    return body[:start] + b'''    _GetMainGame()->SetCompleteDataDownload(TRUE);
+    RF455_ObserveProtocol("store-applied", packet.count, applied, 1);
+    return true;
+}'''

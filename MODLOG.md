@@ -1,3 +1,8 @@
+2026-11-11 — Initial download 179, PARTIAL_MAP_LOADED_AVATAR_EQUIPMENT_FAILURE.
+Restored the store list map gate. Decoded 60 records and loaded the real
+NeutralB BSP. Avatar creation hit a legacy weapon consumer before `3/1`.
+[Evidence and remaining work](research/client455-store-download.md)
+
 2026-11-11 — Initial download 178, PARTIAL_WAITING_FOR_GUILD_AND_WORLD_INITIALIZATION.
 Decoded character macro and announcement data and received guild list `27/112`.
 Located the MainGame gate before the target start-position request.
