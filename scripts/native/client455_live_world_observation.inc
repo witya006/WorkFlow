@@ -7,8 +7,8 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
                                     float yaw, float pitch, float distance,
                                     unsigned action, BOOL inputEnabled) {
     auto& state = RF455_WorldObservation();
-    const unsigned sample = 3 - state.remaining;
-    constexpr ULONGLONG delays[] = {0, 1000, 3000};
+    const unsigned sample = (state.walk ? 6 : 3) - state.remaining;
+    constexpr ULONGLONG delays[] = {0, 1000, 3000, 4500, 6500, 8500};
     const auto elapsed = GetTickCount64() - state.acceptedAt;
     if (elapsed < delays[sample]) return;
     --state.remaining;
@@ -21,7 +21,7 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
                   yaw, pitch, distance);
     OutputDebugStringA(message);
 
-    if (sample == 1) return;
+    if (sample != 0 && sample != 2) return;
     const char* filename = sample == 0 ? "world-post-position.png" : "world-post-position-settled.png";
     IDirect3DSurface9* target = nullptr;
     IDirect3DSurface9* memory = nullptr;

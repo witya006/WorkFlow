@@ -1,0 +1,304 @@
+{
+  "status": "PASS_LIVE_FORWARD_MOVEMENT_AND_SETTLING",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "253767b6ea669b26bbfbaebd3609d426cdcf52d5df9b9bbd1806a81e90446f1c",
+    "bytes": 2380288,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x186210",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Ordinary NeutralB avatar advances after scoped Win32 forward input, queues move and stop messages, then reaches a stable position while the camera anchor follows.",
+  "normal_link_sha256": "6e9f655246ddf0b7e90fa834c0ce5b4ef1d6e57954522c995ad5e8ba9d19b03a",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "6e9f655246ddf0b7e90fa834c0ce5b4ef1d6e57954522c995ad5e8ba9d19b03a"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "7c7e95378e7f8c3386f38c032f73fc4dad3886456a19bdaef31bda30ed477abd"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "cd723f0c9637b3e14f7b1cc8ffeb6dd79c4d041009d148692388c97d26149ca6"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "ef86ae66d010bda8d979a310db925485435571568ca08d200fd6a615044ce89a"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "c4c8db65bb8c49f8520519ccb72de63273db8048991251bd23d604e57bed8ba4"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "9a5939ebc7dd37ebbd152f6fec4ab7221367618b8057c7f27e40fc795ab39bfa"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "3c90f2a6b8748953da0b6c53947fb7bdb103583475fd1e38829c7c6549225232"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "a264e0d0ea33e2aa06128998fdb76650d8311fb779a19ccbaefa04ca08fdcf69"
+    },
+    "world-walk-native": {
+      "file": "artifacts/client455-progress/client455-world-walk-live-taiwan-native.json",
+      "sha256": "5418f9111b57166edbc5bbb9030dc84ddee9cdfcefad4cc047644272098a2f9a"
+    },
+    "keymap-reference-raw": {
+      "file": "artifacts/client455-progress/walk183-keymap-reference.json",
+      "sha256": "adc602ba989c29b508d2676a9e61b946349ce3d481d451c16435ff6a42d5a211"
+    }
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_world_walk.py",
+    "sha256": "d3bc9b3b72608e124543da5be305b76a4ae5424621a61f78972ffc47cce4c3e1"
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/client455-world-walk-live-taiwan-native.json",
+    "sha256": "5418f9111b57166edbc5bbb9030dc84ddee9cdfcefad4cc047644272098a2f9a"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "c07610242072eaa88961850279c148fb6787a3dd230293941b1dbd7d93645024"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "da0e646e4263bfd2f17d7e033cf7fe4ce4a81339ab013f86a8d15daab125f074"
+    },
+    {
+      "file": "scripts/native/client455_walk_observation.inc",
+      "sha256": "40cc616976d843cccb4435da9f7376ff3cf20c5eae3f3dae4b139efb7b022262"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "9312ed386c413c3dfad80d6358f526a626fe02cc122cc53789f67fb46b5855c5"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "a01fbfe26134f855b5d30fc28ecfe15f91cd1605ae7636df9c40aec75a3d6829"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "0ac909a0e279fd6093aa142568e618f135ea71ee2ab0b6290a0aa21c7175d7fb"
+    }
+  ],
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000"
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000"
+    }
+  ],
+  "reference_regions": [
+    {
+      "rva": "0x159e20",
+      "bytes": 410,
+      "instructions": 125,
+      "sha256": "93274dd2d9eb044f540efaab9a7a46204a9c9355977ad997fdeec7a5a9ebbe79"
+    },
+    {
+      "rva": "0x15a320",
+      "bytes": 58,
+      "instructions": 22,
+      "sha256": "a39e5a05a8eaf582dd78e4598f891652b5a09eec65f6c4c842c27185437bc3ce"
+    },
+    {
+      "rva": "0x1e5b50",
+      "bytes": 27,
+      "instructions": 14,
+      "sha256": "132dfd44366eed08e1e298c1a5406e35adf508c4827f9b71f05a9406fc98af42"
+    },
+    {
+      "rva": "0x1e5b70",
+      "bytes": 27,
+      "instructions": 15,
+      "sha256": "5821cd249c7fb2f2f0307f46582bdf5a5e162981327e9a4777e59d99bbbdf8d5"
+    },
+    {
+      "rva": "0xf9c0",
+      "bytes": 46,
+      "instructions": 22,
+      "sha256": "abb385d76e62864557f2821eac185976653259b8e118d5f391b65094762bda7f"
+    }
+  ],
+  "keymap": {
+    "file": "work/m9/253767b6/world-walk-live-taiwan001/DataTable/zh-tw/KeyMap.dat",
+    "sha256": "2cea6065939aacb9f20d6971b2bc2e8cdcf2336f1d064e78e03c72a5d307699b",
+    "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\KeyMap.dat"
+  },
+  "own_symbols": {
+    "?RequestMoveByKeyboard@CAvatar@@QAEXK@Z": "0x7d30",
+    "?InputProcess_Keyboard@CInputProcessMgr@@QAEHXZ": "0x2edd0",
+    "?LoadData@CInputProcessMgr@@QAEHXZ": "0x2fdf0",
+    "?PositionMsg_MoveRequest_clzo@CNetworkMgr@@QAEHPAMHHM@Z": "0x51280"
+  },
+  "samples": [
+    {
+      "index": 0,
+      "elapsed_ms": 16,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.861,
+        4802.05
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 1,
+      "elapsed_ms": 1031,
+      "avatar_action": 268435457,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.48,
+        4793.02
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.48,
+        4793.02
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 2,
+      "elapsed_ms": 3031,
+      "avatar_action": 268435457,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        427.209,
+        4763.02
+      ],
+      "camera_anchor": [
+        -4743.44,
+        427.209,
+        4763.02
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 3,
+      "elapsed_ms": 4500,
+      "avatar_action": 268435457,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        427.574,
+        4740.95
+      ],
+      "camera_anchor": [
+        -4743.44,
+        427.574,
+        4740.95
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 4,
+      "elapsed_ms": 6516,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.051,
+        4728.11
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.051,
+        4728.11
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    },
+    {
+      "index": 5,
+      "elapsed_ms": 8516,
+      "avatar_action": 268435456,
+      "input_enabled": true,
+      "avatar_position": [
+        -4743.44,
+        428.051,
+        4728.11
+      ],
+      "camera_anchor": [
+        -4743.44,
+        428.051,
+        4728.11
+      ],
+      "yaw_pitch_distance": [
+        40.0,
+        180.0,
+        60.0
+      ]
+    }
+  ],
+  "forward_key": "VK_UP",
+  "input_source": "own game thread Win32 keyboard table",
+  "displacement": 73.94443657233501,
+  "key_down": "RF455 Protocol:walk-key-down:38:469:1",
+  "key_up": "RF455 Protocol:walk-key-up:38:1453:0",
+  "frames": [
+    {
+      "file": "work/m9/253767b6/world-walk-live-taiwan001/world-post-position.png",
+      "sha256": "07a532a5ea8a1697efa3b78bd3966a776d3521bdd1ecd94e9f5d8ba49470f1bb"
+    },
+    {
+      "file": "work/m9/253767b6/world-walk-live-taiwan001/world-post-position-settled.png",
+      "sha256": "378f55ca768a62e927267bde997e769de111b263ba450e65e95cf5be4d155972"
+    }
+  ],
+  "movement_enqueued": 2,
+  "stop_enqueued": 1,
+  "matched_server_ack": false,
+  "physical_keyboard_verified": false,
+  "camera_rotation_verified": false,
+  "alternate_keymap_mode_verified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

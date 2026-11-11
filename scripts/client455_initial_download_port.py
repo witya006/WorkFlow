@@ -79,6 +79,10 @@ def port_initial_download(raw, relative, section, native):
                       b'\n\t\t\t\t\tInitMsg_NewPosStartResult_zocl( pi_pMsg );'
                       b'\n\t\t\t\t\tRF455_ObserveProtocol("position-mode", static_cast<BYTE>(pi_pMsg[0]), 0, 0);'
                       b'\n\t\t\t\t\tRF455_ArmWorldObservation(static_cast<BYTE>(pi_pMsg[0]));')
+        raw = patch_method(raw, section, OWNER, b'SendNetMessage', lambda body: replace(
+            body, b'\treturn l_bResult;', b'''    if (l_bResult && pi_pType[0] == 4 && RF455_WorldObservation().walk)
+        RF455_ObserveProtocol("move-queued", pi_pType[0], pi_pType[1], pi_nSize);
+    return l_bResult;'''))
         return raw, True
     if relative == 'network/cnetworkmgr_systemmsg.cpp':
         raw = patch_method(raw, section, OWNER, b'InitMsg_BaseDownloadRequest_clzo', lambda body: replace(
@@ -102,6 +106,20 @@ def port_initial_download(raw, relative, section, native):
                       b'bool\nCNetMsgProcessor_ItemTrade::StoreListResult_clzo(const char* bytes, std::size_t size)')
         raw = patch_method(raw, section, TRADE_OWNER, b'StoreListResult_clzo', port_store_list)
         return b'#include "client455_initial_download.h"\n' + OBSERVATION + raw, True
+    if relative == 'gameprogress/cinputprocessmgr.cpp':
+        def use_localized_keys(body):
+            body = replace(body, b'static\tconst\tchar\tFILE_NAME[128] = { "./DataTable/KeyMap.dat" };',
+                           b'const std::string keyMap = std::string(RF455_GetClientDataRoot()) + "\\\\KeyMap.dat";')
+            body = replace(body, b'32, FILE_NAME );', b'32, keyMap.c_str() );')
+            return replace(body, b'\treturn TRUE;', b'''    RF455_ObserveProtocol("keymap", m_dwTotalKeyNum, m_listKey[KM_MOVE_UP][1], 0);
+    return TRUE;''')
+
+        raw = patch_method(raw, section, b'CInputProcessMgr', b'LoadData', use_localized_keys)
+        raw = patch_method(raw, section, b'CInputProcessMgr', b'InputProcess_Keyboard', lambda body: replace(
+            body, b'\tif( IsPressedMoveKey() )', b'''    const RF455WalkKeyObservation walkKey(m_listKey[KM_MOVE_UP][1]);
+\tif( IsPressedMoveKey() )'''))
+        return (OBSERVATION + b'#include "client455_nation_paths.h"\n#include <cstring>\n#include <string>\n'
+                + (native / 'client455_walk_observation.inc').read_bytes() + b'\n' + raw), True
     if relative == 'gameprogress/cgp_maingame.h':
         return replace(raw, b'BOOL\tm_bIsCompleteDataDownload;',
                        b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;'), True

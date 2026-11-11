@@ -65,7 +65,7 @@ def stage_world_map(client, run, index):
     return records
 
 
-def main(handoff=None,live_port=None,select_character=False,world_map_index=None,observe_world=False):
+def main(handoff=None,live_port=None,select_character=False,world_map_index=None,observe_world=False,observe_walk=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
@@ -88,7 +88,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         raise ValueError('World map inputs require a live selection observation')
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
-        prefix='world-observation'
+        prefix='world-walk' if observe_walk else 'world-observation'
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
     while (parent/f'{prefix}{index:03d}').exists():index+=1
@@ -177,7 +177,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if loginProbe:command+=['selection' if select_character else 'login_create' if args.login_create else 'login_frame' if args.login_frame else 'login_render']
     environment=os.environ.copy();environment.pop('RF455_CAPTURE_LOGIN',None);environment.pop('RF455_OBSERVE_PROTOCOL',None)
     environment.pop('RF455_CAPTURE_WORLD',None)
+    environment.pop('RF455_OBSERVE_WALK',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
+    if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
@@ -231,8 +233,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         name='client455-character-selection-native';report['scope']='Actual own Login then addressed Enter key in own child window;records real selection protocol andfirst following failure,not world acceptance'
         report['selection_input']=[e for e in events if e['kind'] in ['selection_key_posted','selection_observation_end']]
     if observe_world:
-        name='client455-world-observation-native'
-        report['scope']='Ordinary own-client world render and passive state after accepted position mode;no movement input sent'
+        name='client455-world-walk-native' if observe_walk else 'client455-world-observation-native'
+        report['scope']=('Ordinary own-client world render and scoped Win32 keyboard state at the move poll'
+                         if observe_walk else 'Ordinary own-client world render and passive state after accepted position mode')
         report['world_observations']=[e['value'] for e in events if e['kind']=='debug_string'
                                       and e['value'].startswith(('RF455 WorldSample:', 'RF455 WorldCapture:'))]
         frames=[run/filename for filename in ('world-post-position.png', 'world-post-position-settled.png')]

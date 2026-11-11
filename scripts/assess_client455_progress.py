@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-world-walk-checkpoint',
         'client455-avatar-world-checkpoint',
         'client455-store-download-checkpoint',
         'client455-macro-download-checkpoint',

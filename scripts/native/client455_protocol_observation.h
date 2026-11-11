@@ -14,6 +14,9 @@ inline void RF455_ObserveProtocol(const char* event,unsigned category,unsigned k
 struct RF455WorldObservation {
     unsigned remaining = 0;
     ULONGLONG acceptedAt = 0;
+    bool walk = false;
+    bool walkKeyObserved = false;
+    bool walkKeyReleased = false;
 };
 
 inline RF455WorldObservation& RF455_WorldObservation() {
@@ -27,5 +30,9 @@ inline void RF455_ArmWorldObservation(BYTE mode) {
         GetEnvironmentVariableA("RF455_CAPTURE_WORLD", enabled, sizeof(enabled)) != 1 ||
         enabled[0] != '1') return;
     auto& state = RF455_WorldObservation();
-    if (!state.acceptedAt) state = {3, GetTickCount64()};
+    if (!state.acceptedAt) {
+        const bool walk = GetEnvironmentVariableA("RF455_OBSERVE_WALK", enabled, sizeof(enabled)) == 1 &&
+                          enabled[0] == '1';
+        state = {walk ? 6u : 3u, GetTickCount64(), walk};
+    }
 }

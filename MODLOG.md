@@ -1,3 +1,8 @@
+2026-11-11 — NeutralB 183, PASS_LIVE_FORWARD_MOVEMENT_AND_SETTLING.
+Restored the localized default keymap path. The avatar moved and
+settled after scoped forward input, with move and stop messages queued.
+[Evidence and remaining work](research/client455-world-walk.md)
+
 2026-11-11 — NeutralB 182, PASS_LIVE_TERRAIN_VISIBLE_WITH_PINNED_SKY_ASSETS.
 The same client renders textured terrain after staging the selected sky assets.
 [Evidence and remaining work](research/client455-neutralb-sky.md)

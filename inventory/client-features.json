@@ -8952,7 +8952,7 @@
       "id": "CLIENT455-AVATAR-WORLD-180",
       "area": "world",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-avatar-world-checkpoint.json",
         "inventory/client455-avatar-world-reference.json",
@@ -8963,6 +8963,22 @@
         "Camera and movement input, observed avatar displacement and a post-spawn frame capture",
         "Complete spawn response side effects and world update dispatch",
         "NPCs, inventory, Force, Linker owners, quest journal, guild and complete chat behavior"
+      ]
+    },
+    {
+      "id": "CLIENT455-NEUTRALB-WALK-183",
+      "area": "world",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-world-walk-checkpoint.json",
+        "inventory/client455-neutralb-sky-checkpoint.json"
+      ],
+      "description": "Taiwan uses the localized default keymap. Scoped forward input moves the live NeutralB avatar, enqueues movement and stop messages, and settles while the camera anchor follows.",
+      "gaps": [
+        "Physical keyboard, mouse and camera rotation, alternate NKM layout and complete key bindings",
+        "Target release timing and matched server response for movement",
+        "World update dispatch, actor and item owners, combat, inventory and remaining M9 scenarios"
       ]
     }
   ],
