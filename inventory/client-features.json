@@ -8776,7 +8776,7 @@
       "id": "CLIENT455-TRADE-ORE-170",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-trade-ore-checkpoint.json",
         "inventory/client455-trade-ore-reference.json",
@@ -8788,6 +8788,24 @@
         "64-bit player money entry, validation and packet ownership; legacy trade packets remain",
         "Complete trade drag quantity, focus, locale and device reload behavior",
         "Complete mining and item work owners, remaining startup registrations and game world"
+      ]
+    },
+    {
+      "id": "CLIENT455-ITEM-WORK-171",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-item-work-checkpoint.json",
+        "inventory/client455-item-work-reference.json",
+        "inventory/client455-item-work-native.json"
+      ],
+      "description": "After accepted character selection, ordinary crafting and upgrade initializers return. The next failure is the item exchange window skin. Recipe data, transactions and world entry remain open.",
+      "gaps": [
+        "Ordinary 455 recipe table owners, skill and eligibility checks, and material lookups",
+        "Full crafting and upgrade requests, authoritative server results and managed item movement",
+        "Remaining 455 error paths, locale/device reload behavior and all remaining MainGame startup owners",
+        "World entry and M9 acceptance"
       ]
     }
   ],

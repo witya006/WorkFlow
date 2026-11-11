@@ -1,3 +1,13 @@
+2026-11-11 — Crafting and upgrade windows 171, PARTIAL_KNOWN_FAILURE.
+Window 15 uses three recipe groups, 9/5/2 tabs and 20 visible cells.
+Window 16 uses six upgrade slots. Four Taiwan frames, 14 window messages
+and merchant paging regression pass. Live selection returns from both
+initializers and reaches the exchange window skin fault at own RVA 130FFF.
+Build c9aeaf27… x86. Both pins checked for 24 bodies and 2,897 instructions.
+Address coverage 2,562, complete listings 758, partial bindings 217.
+Recipe data, transactions and world entry remain open.
+[Evidence and remaining work](research/client455-item-work.md)
+
 2026-11-11 — Player exchange and ore processing 170, PARTIAL_KNOWN_FAILURE.
 Trade uses window 23 and 15 slots per side. Ore uses window 12, a 40-slot
 package and 20 visible results. Controlled offers, three messages, ore

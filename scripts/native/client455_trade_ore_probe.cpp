@@ -81,15 +81,15 @@ void capture(CGUIWindow& window, const char* path)
     check(visible > 40000, "visible window");
 }
 
-void expectMouse(CGUITradeWindow& window, CGUIObject& object, WORD type, HWND sink, UINT msg, LPARAM arg)
+void expectMouse(CGUIWindow& window, CGUIObject& object, WORD type, HWND sink, UINT msg, LPARAM arg)
 {
     _mouse_event event = {};
     event.source = &object;
     event.id = type;
     window.MouseEvent(event);
     MSG posted = {};
-    check(PeekMessageA(&posted, sink, msg, msg, PM_REMOVE) && posted.wParam == 23 && posted.lParam == arg,
-          "ordinary trade observer message");
+    check(PeekMessageA(&posted, sink, msg, msg, PM_REMOVE) && posted.wParam == window.GetID() && posted.lParam == arg,
+          "ordinary observer message");
 }
 
 void probeTrade(HWND sink)
@@ -182,7 +182,7 @@ void probeOre()
 }
 }
 
-int main()
+static int runWindowProbe(const char* name, void (*exercise)(HWND), const char* result)
 {
     try {
         SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
@@ -208,12 +208,11 @@ int main()
         g_pUiScreen->SetSize(800, 600);
         g_pUiSpriteMgr = &gSpriteMgr;
         _SetUIAvatarRace(0);
-        HWND sink = CreateWindowExA(0, "STATIC", "TradeOre455", 0, 0, 0, 0, 0, HWND_MESSAGE, nullptr,
+        HWND sink = CreateWindowExA(0, "STATIC", name, 0, 0, 0, 0, 0, HWND_MESSAGE, nullptr,
                                     GetModuleHandleA(nullptr), nullptr);
         check(sink != nullptr, "message-only sink");
         g_pUiScreen->SetHWND(sink);
-        probeTrade(sink);
-        probeOre();
+        exercise(sink);
         g_pUiScreen->SetHWND(nullptr);
         DestroyWindow(sink);
         device->SetTexture(0, nullptr);
@@ -228,12 +227,18 @@ int main()
         ReleaseR3Engine();
         FILE* out = std::fopen("result.json", "wb");
         check(out != nullptr, "result output");
-        std::fputs("{\"status\":\"PASS\",\"trade_slots_per_side\":15,\"ore_rows\":21,\"ore_capacity\":40,"
-                   "\"trade_messages\":3,\"GPU_frames\":3,\"trade_completed\":false,\"ore_processed\":false}\n", out);
+        std::fputs(result, out);
         std::fclose(out);
         return 0;
     } catch (const std::exception& error) {
-        std::fprintf(stderr, "TradeOre455: %s\n", error.what());
+        std::fprintf(stderr, "%s: %s\n", name, error.what());
         return 1;
     }
+}
+
+int main()
+{
+    return runWindowProbe("TradeOre455", [](HWND sink) { probeTrade(sink); probeOre(); },
+                          "{\"status\":\"PASS\",\"trade_slots_per_side\":15,\"ore_rows\":21,\"ore_capacity\":40,"
+                          "\"trade_messages\":3,\"GPU_frames\":3,\"trade_completed\":false,\"ore_processed\":false}\n");
 }

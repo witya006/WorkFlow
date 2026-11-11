@@ -1,4 +1,5 @@
 """Exercise the ordinary merchant window on the stock Taiwan skins."""
+import argparse
 import ctypes
 import json
 import shutil
@@ -16,6 +17,9 @@ from compare_client_binaries import WS
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--pager-regression', action='store_true')
+    args = parser.parse_args()
     source = WS / 'scripts/native/client455_shop_window_probe.cpp'
     executable = build_full_object_probe('shop-window', source)
     parent = WS / 'work/m9' / sha(executable)[:8]
@@ -69,7 +73,8 @@ def main():
                   input_exe_executed=False, server_modified=False)
     encoded = json.dumps(report, indent=2) + '\n'
     (run / 'probe-report.json').write_text(encoded)
-    (WS / 'inventory/client455-shop-window-native.json').write_text(encoded)
+    if not args.pager_regression:
+        (WS / 'inventory/client455-shop-window-native.json').write_text(encoded)
     print(json.dumps(dict(exit=result.returncode, run=run.relative_to(WS).as_posix(), native=native,
                           console=console.read_text(errors='replace')[-1200:])))
     require(passed, 'Merchant window native checks')

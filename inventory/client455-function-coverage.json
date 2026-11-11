@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T00:20:57.485298+00:00",
+  "measured_at_utc": "2026-11-11T00:49:33.668614+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2538,
-    "unique_functions_with_complete_assembly_cfg": 734,
-    "unique_pinned_code_bytes": 711898,
-    "reports": 172,
-    "code_range_occurrences": 4122,
+    "unique_functions_with_pinned_code": 2562,
+    "unique_functions_with_complete_assembly_cfg": 758,
+    "unique_pinned_code_bytes": 721506,
+    "reports": 173,
+    "code_range_occurrences": 4147,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -289,6 +289,10 @@
     {
       "file": "inventory/client455-item-payloads-reference.json",
       "sha256": "f311033adf7e35a2fb965ca0654fa1574b2dfc251acb3599d937d0ab1c3aba5f"
+    },
+    {
+      "file": "inventory/client455-item-work-reference.json",
+      "sha256": "0905595de99b38d91d14874e1cbe0b822d603c0f77b0b084cbc5c3f8e527dc89"
     },
     {
       "file": "inventory/client455-language-reference.json",
@@ -837,6 +841,10 @@
       "sha256": "694dde4d9cd78a620e3b60c0e9dc183d6a3d3f93c798ac27f2aa88786b544d47"
     },
     {
+      "file": "artifacts/client455-progress/item-work171-reference.json",
+      "sha256": "fd578a8ddd93b245c03bc94bbcfb96bb6103eaa7adfdd583aa69a3b6592aeeec"
+    },
+    {
       "file": "artifacts/client455-progress/light-direction131-reference.json",
       "sha256": "55199bafd81c3490757eff23c2623902c6b37969acbe3e7bf751a6eb28c785eb"
     },
@@ -968,7 +976,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "11216875b8059151e426adfdbb8b11f9766a0a617dda1828a9acbe80f07afb13"
+      "sha256": "c9a21380f3372b190a0498d44089c1e2da75199a71c4ccad25b342def8a930d6"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -9582,6 +9590,44 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x7fd90",
+      "ida_name": "sub_47FD90",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x7fd90",
+          "bytes": 116
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 45
+        }
+      ]
+    },
+    {
+      "rva": "0x80ee0",
+      "ida_name": "sub_480EE0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x80ee0",
+          "bytes": 168
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 61
+        }
+      ]
+    },
+    {
       "rva": "0x80ff0",
       "ida_name": "sub_480FF0",
       "reports": [
@@ -9594,6 +9640,44 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x811d0",
+      "ida_name": "sub_4811D0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x811d0",
+          "bytes": 200
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 69
+        }
+      ]
+    },
+    {
+      "rva": "0x82520",
+      "ida_name": "sub_482520",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x82520",
+          "bytes": 206
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 70
+        }
+      ]
     },
     {
       "rva": "0x82690",
@@ -24921,6 +25005,390 @@
         {
           "file": "artifacts/client455-progress/recall162-reference/recall.json",
           "instructions": 25
+        }
+      ]
+    },
+    {
+      "rva": "0x2b8910",
+      "ida_name": "sub_6B8910",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b8910",
+          "bytes": 613
+        },
+        {
+          "rva": "0x63f1f0",
+          "bytes": 49
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 199
+        }
+      ]
+    },
+    {
+      "rva": "0x2b8c80",
+      "ida_name": "sub_6B8C80",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b8c80",
+          "bytes": 966
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 298
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9050",
+      "ida_name": "sub_6B9050",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9050",
+          "bytes": 264
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 83
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9160",
+      "ida_name": "sub_6B9160",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9160",
+          "bytes": 413
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 120
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9300",
+      "ida_name": "sub_6B9300",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9300",
+          "bytes": 320
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 94
+        }
+      ]
+    },
+    {
+      "rva": "0x2b94d0",
+      "ida_name": "sub_6B94D0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b94d0",
+          "bytes": 362
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 104
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9640",
+      "ida_name": "sub_6B9640",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9640",
+          "bytes": 239
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 69
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9730",
+      "ida_name": "sub_6B9730",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9730",
+          "bytes": 171
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 53
+        }
+      ]
+    },
+    {
+      "rva": "0x2b97e0",
+      "ida_name": "sub_6B97E0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b97e0",
+          "bytes": 76
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9830",
+      "ida_name": "sub_6B9830",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9830",
+          "bytes": 681
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 195
+        }
+      ]
+    },
+    {
+      "rva": "0x2b9dc0",
+      "ida_name": "sub_6B9DC0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2b9dc0",
+          "bytes": 815
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 235
+        }
+      ]
+    },
+    {
+      "rva": "0x2ba0f0",
+      "ida_name": "sub_6BA0F0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ba0f0",
+          "bytes": 207
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 68
+        }
+      ]
+    },
+    {
+      "rva": "0x2ba1c0",
+      "ida_name": "sub_6BA1C0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ba1c0",
+          "bytes": 514
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 138
+        }
+      ]
+    },
+    {
+      "rva": "0x2ba570",
+      "ida_name": "sub_6BA570",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2ba570",
+          "bytes": 486
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 140
+        }
+      ]
+    },
+    {
+      "rva": "0x2becc0",
+      "ida_name": "sub_6BECC0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2becc0",
+          "bytes": 1517
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 448
+        }
+      ]
+    },
+    {
+      "rva": "0x2bf2b0",
+      "ida_name": "sub_6BF2B0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bf2b0",
+          "bytes": 157
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 56
+        }
+      ]
+    },
+    {
+      "rva": "0x2bf350",
+      "ida_name": "sub_6BF350",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bf350",
+          "bytes": 113
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 36
+        }
+      ]
+    },
+    {
+      "rva": "0x2bf420",
+      "ida_name": "sub_6BF420",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bf420",
+          "bytes": 175
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 50
+        }
+      ]
+    },
+    {
+      "rva": "0x2bf4d0",
+      "ida_name": "sub_6BF4D0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bf4d0",
+          "bytes": 99
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
+      "rva": "0x2bf5b0",
+      "ida_name": "sub_6BF5B0",
+      "reports": [
+        "inventory/client455-item-work-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x2bf5b0",
+          "bytes": 681
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/item-work171-reference.json",
+          "instructions": 205
         }
       ]
     },
@@ -41778,8 +42246,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 21,
-    "unique_functions_with_complete_assembly_cfg": 21
+    "unique_functions_with_pinned_code": 24,
+    "unique_functions_with_complete_assembly_cfg": 24
   },
   "M6": "OPEN",
   "M9": "OPEN",

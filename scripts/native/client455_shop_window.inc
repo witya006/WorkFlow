@@ -40,9 +40,7 @@ void CGUIShopWindow::SetSprite()
     Button(m_uiOKButton, 1, 1, 0, true, true);
     Button(m_uiCloseButton, 1, 0, 0, true, false);
     Button(m_uiHelpButton, 1, 0, 3, true, false);
-    Button(m_uiPageUp, 1, 6, 1, false, true);
-    Button(m_uiPageDown, 1, 6, 4, false, true);
-    Bind(m_uiPageBack455, 1, 6, 0);
+    m_uiPageBoard.SetSprite();
 }
 
 void CGUIShopWindow::Init()
@@ -64,19 +62,7 @@ void CGUIShopWindow::Init()
     HeaderPosition(*this, m_uiAniTitleBar, m_uiTitle, m_uiCloseButton);
     m_uiHelpButton.SetPos(m_uiAniTitleBar.GetPosX() + 4, m_uiAniTitleBar.GetPosY() + 4);
 
-    m_uiPageUp.SetLabel(Text(0x3c4));
-    m_uiPageDown.SetLabel(Text(0x3c5));
-    m_uiPageBoard.SetPos(x + 20, y + 223);
-    m_uiPageBoard.SetSize(m_uiPageUp.GetSizeX() + m_uiPageBack455.GetSizeX() + m_uiPageDown.GetSizeX(),
-                          m_uiPageBack455.GetSizeY());
-    m_uiPageUp.SetPos(m_uiPageBoard.GetPosX(), m_uiPageBoard.GetPosY());
-    m_uiPageBack455.SetPos(m_uiPageUp.GetPosX() + m_uiPageUp.GetSizeX(), m_uiPageBoard.GetPosY());
-    m_uiPageDown.SetPos(m_uiPageBack455.GetPosX() + m_uiPageBack455.GetSizeX(), m_uiPageBoard.GetPosY());
-    m_uiPageBoard.Add(&m_uiPageUp);
-    m_uiPageBoard.Add(&m_uiPageDown);
-    m_uiPageBoard.Add(&m_uiPageBack455);
-    m_uiPageBoard.Add(&m_uiCurPageStr);
-    m_uiCurPageStr.GetFont()->dwColor = 0xffe8e8e8;
+    m_uiPageBoard.Initialize(x + 20, y + 223, this);
 
     CGUIText* labels[] = {&m_uiDalant, &m_uiGold, &m_uiPvpLabel455, &m_uiPointLabel455};
     const LONG labelY[] = {295, 324, 353, 382};
@@ -107,7 +93,6 @@ void CGUIShopWindow::Init()
     Add(&m_uiGold);
     Add(&m_uiCloseButton);
     Add(&m_uiHelpButton);
-    for (auto* control : {&m_uiPageUp, &m_uiPageDown}) control->AddMouseEventHandler(this);
     m_uiCloseButton.AddMouseEventHandler(this);
     m_uiHelpButton.AddMouseEventHandler(this);
     for (auto& tab : m_uiTradeTab) {
@@ -244,22 +229,14 @@ void CGUIShopWindow::UpdateShopBoard()
     if (m_eCurTradeMode == None_Mode) return;
     const auto count = m_eCurTradeMode == Buy_Mode ? m_listBuyItem.size() : m_listTradeItem.size();
     m_byTotalPageNo = BYTE((count + TOTAL_SHOP_ITEM_SOCKET - 1) / TOTAL_SHOP_ITEM_SOCKET);
+    m_uiPageBoard.SetCount(m_byTotalPageNo);
     SetCurrentShopBoard(m_byCurPageNo);
 }
 
 void CGUIShopWindow::SetCurrentShopBoard(BYTE requested)
 {
-    m_byCurPageNo = m_byTotalPageNo ? (std::min)(requested, BYTE(m_byTotalPageNo - 1)) : 0;
-    char label[16] = {};
-    std::snprintf(label, sizeof(label), "%u / %u", unsigned(m_byTotalPageNo ? m_byCurPageNo + 1 : 0),
-                  unsigned(m_byTotalPageNo));
-    m_uiCurPageStr.SetString(label);
-    CenterShopText(m_uiCurPageStr, m_uiPageBack455.GetPosX(), m_uiPageBack455.GetPosY(),
-                   m_uiPageBack455.GetSizeX(), m_uiPageBack455.GetSizeY());
-    if (m_byCurPageNo) m_uiPageUp.Enable();
-    else m_uiPageUp.Disable();
-    if (m_byTotalPageNo && m_byCurPageNo + 1 < m_byTotalPageNo) m_uiPageDown.Enable();
-    else m_uiPageDown.Disable();
+    m_uiPageBoard.SetPage(requested);
+    m_byCurPageNo = BYTE(m_uiPageBoard.Current());
 
     ClearShopBoard();
     if (!m_byTotalPageNo) return;

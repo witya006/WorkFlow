@@ -14,9 +14,10 @@ def replace(raw, before, after):
 def shop_header(raw):
     for before, after in (
         (b'CGUIObjectAni\t\t\tm_uiAniTitleBar;', b'RF455GuiAnimatedImage m_uiAniTitleBar;'),
-        (b'CGUIObject\t\t\t\tm_uiPageBoard;', b'CGUIContainer m_uiPageBoard;\n\tCGUIObject m_uiPageBack455;'),
-        (b'CGUIButton\t\t\t\tm_uiPageUp;', b'CGUIButtonEx m_uiPageUp;'),
-        (b'CGUIButton\t\t\t\tm_uiPageDown;', b'CGUIButtonEx m_uiPageDown;'),
+        (b'CGUIObject\t\t\t\tm_uiPageBoard;', b'RF455GuiPageBoard m_uiPageBoard;'),
+        (b'CGUIButton\t\t\t\tm_uiPageUp;', b''),
+        (b'CGUIButton\t\t\t\tm_uiPageDown;', b''),
+        (b'CGUIText\t\t\t\tm_uiCurPageStr;', b''),
         (b'm_uiGold;', b'm_uiGold;\n\tCGUIText m_uiPvpLabel455, m_uiPointLabel455, m_uiPvpValue455, m_uiPointValue455;'),
         (b'BOOL\t\t\t\t\tm_bIsCreated;', b''),
         (b'SetDalant( DWORD pi_dwDalant );', b'SetDalant(__int64 value);'),
@@ -25,7 +26,8 @@ def shop_header(raw):
     ):
         raw = replace(raw, before, after)
     return replace(raw, b'#include "../../UIGlobal.h"',
-                   b'#include "../../UIGlobal.h"\n#include "client455_briefing_controls.h"')
+                   b'#include "../../UIGlobal.h"\n#include "client455_briefing_controls.h"\n'
+                   b'#include "client455_gui_page_board.h"')
 
 
 def shop_source(raw, section, native):
@@ -45,6 +47,8 @@ def shop_source(raw, section, native):
         raw = raw[:declaration.start()] + raw[end:]
     raw = replace(raw, b'm_bIsCreated\t\t= FALSE;',
                   b'm_byTotalPageNo = 0;\n\tm_eSelectedTradeMode = None_Mode;\n\tm_bySelectedSocketNo = 0;')
+    raw = replace(raw, b'&m_uiPageUp', b'&m_uiPageBoard.Previous()')
+    raw = replace(raw, b'&m_uiPageDown', b'&m_uiPageBoard.Next()')
     return raw + b'\n' + (native / 'client455_shop_window.inc').read_bytes()
 
 

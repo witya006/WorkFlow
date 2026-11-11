@@ -1,0 +1,284 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c9aeaf27f2b7702658e333e5072e6537a0792d5a75f79c7ec25b7affc1f3f8be",
+    "bytes": 2372608,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1844e0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial crafting and upgrade views with controlled inputs.",
+  "functions": [
+    {
+      "rva": "0x2b9dc0",
+      "symbol": "CGUIItemMakeWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8e840"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ba0f0",
+      "symbol": "CGUIItemMakeWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f460"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ba1c0",
+      "symbol": "CGUIItemMakeWindow::SetMakeGroup",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8ef40"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2ba570",
+      "symbol": "CGUIItemMakeWindow::SetMaterialStr",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f030"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b8910",
+      "symbol": "CGUIItemListWindow::Create",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8dda0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b8c80",
+      "symbol": "CGUIItemListWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8e6a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9050",
+      "symbol": "CGUIItemListWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f2a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9160",
+      "symbol": "CGUIItemListWindow::TakeInItem",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f8b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9300",
+      "symbol": "CGUIItemListWindow::TakeOutItem",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f980"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b94d0",
+      "symbol": "CGUIItemListWindow::SetTab",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f7e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9640",
+      "symbol": "CGUIItemListWindow::SetPage",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8f0c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9730",
+      "symbol": "CGUIItemListWindow::SelectItem",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8ee40"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b97e0",
+      "symbol": "CGUIItemListWindow::DeselectItem",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8e0d0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2b9830",
+      "symbol": "CGUIItemListWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_item_make.inc",
+        "sha256": "583cc38d8891627da4818cf0cc612cc77874347d199a595e13c1fb22b6c1e7b2"
+      },
+      "ordinary_symbol_rvas": [
+        "0x8ec60"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2becc0",
+      "symbol": "CGUIItemUpgradeWindow::Init",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x90060"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bf2b0",
+      "symbol": "CGUIItemUpgradeWindow::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x90570"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bf350",
+      "symbol": "CGUIItemUpgradeWindow::UpdateReturnButton455",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x90840"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bf420",
+      "symbol": "CGUIItemUpgradeWindow::TakeInItem",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x90770"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bf4d0",
+      "symbol": "CGUIItemUpgradeWindow::TakeOutItem",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x907f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x2bf5b0",
+      "symbol": "CGUIItemUpgradeWindow::MouseEvent",
+      "source": {
+        "file": "scripts/native/client455_item_upgrade.inc",
+        "sha256": "ac1f5dbfec71966d13a3a6df9dd9adfba7f405ed437c5d4882960427c90abff7"
+      },
+      "ordinary_symbol_rvas": [
+        "0x90390"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}
