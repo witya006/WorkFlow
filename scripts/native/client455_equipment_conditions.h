@@ -53,6 +53,33 @@ struct RF455ConditionItem {
     }
     std::uint32_t defence()const{return armor()?field<std::uint32_t>(216):0;}
     std::uint32_t weaponCategory()const{return kind()==6?field<std::uint32_t>(216):0xffffffffu;}
+    bool requiresAmmunition() const {
+        const auto category = weaponCategory();
+        return category == 5 || category == 6 || category == 7 || category == 11;
+    }
+    float attackRange() const {
+        if (!valid) return 0;
+        float distance = 0;
+        switch (kind()) {
+        case 6: {
+            float bonus = 0;
+            const auto count = field<std::uint8_t>(184);
+            if (count > 7) throw std::out_of_range("455 weapon range modifier count");
+            for (unsigned i = 0; i < count; ++i)
+                if (field<std::uint8_t>(185 + i) == 20) bonus += field<float>(192 + i * 4);
+            distance = field<float>(228) + bonus;
+            break;
+        }
+        case 27:
+            distance = field<float>(224);
+            break;
+        case 40:
+        case 41:
+            distance = field<float>(220);
+            break;
+        }
+        return distance + record.data[156];
+    }
     std::uint32_t delay()const{
         const auto k=kind();return equipment()?field<std::uint32_t>(180):(k==40||k==41)?field<std::uint32_t>(224):k==27?field<std::uint32_t>(232):0;
     }

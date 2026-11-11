@@ -64,6 +64,7 @@ from client455_monster_force_port import port_monster_force
 from client455_monster_health_port import port_monster_health
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
+from client455_armed_attack_port import port_armed_attack
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -852,6 +853,8 @@ def main():
             raw,combat_result_changed=port_combat_result_effect(raw,relative)
             if combat_result_changed:changes.append('455 combat result word, block sound and visibility')
             raw,critical_changed=port_monster_critical(raw,relative)
+            raw,armed_attack_changed=port_armed_attack(raw,relative,section)
+            if armed_attack_changed:changes.append('455 typed armed attack range, ammunition and equipment consumers')
             if critical_changed:changes.append('455 critical impact action, effect and light')
             if world_updates_changed:changes.append('455 world updates and ordinary town attack check')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')

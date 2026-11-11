@@ -252,7 +252,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         report['selection_input']=[e for e in events if e['kind'] in ['selection_key_posted','selection_observation_end']]
     if observe_world:
         name=f'client455-{observation_name}-native'
-        report['scope']=('Ordinary own-client world render, scoped camera drags and bounded clicks on a rendered monster'
+        report['scope']=('Ordinary own-client world render, scoped camera drags, monster pick and mapped attack key'
                          if observe_combat else 'Ordinary own-client world render and scoped Win32 keyboard state at the move poll'
                          if observe_walk else 'Ordinary own-client world render and scoped right mouse drags'
                          if observe_camera else 'Ordinary own-client world render and passive state after accepted position mode')

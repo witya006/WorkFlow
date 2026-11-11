@@ -37,3 +37,26 @@ private:
     BYTE previous[256];
     bool restore = false;
 };
+
+class RF455CombatModifierObservation {
+public:
+    bool apply(DWORD modifier) {
+        if (modifier == DWORD(-1)) return true;
+        if (modifier != VK_CONTROL && modifier != VK_SHIFT) return false;
+        if (!GetKeyboardState(previous)) return false;
+        BYTE staged[256];
+        std::memcpy(staged, previous, sizeof staged);
+        staged[modifier] |= 0x80;
+        restore = SetKeyboardState(staged) != FALSE;
+        return restore;
+    }
+
+    ~RF455CombatModifierObservation() {
+        if (restore && !SetKeyboardState(previous))
+            RF455_ObserveProtocol("combat-key-restore-failed", 0, 0, 0);
+    }
+
+private:
+    BYTE previous[256];
+    bool restore = false;
+};

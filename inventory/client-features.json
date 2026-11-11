@@ -9217,7 +9217,7 @@
       "id": "CLIENT455-MONSTER-CRITICAL-199",
       "area": "gameplay",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-critical-checkpoint.json",
         "inventory/client455-monster-critical-reference.json"
@@ -9241,6 +9241,22 @@
       "gaps": [
         "Typed equipment consumers in the armed attack path",
         "Eight-byte ordinary request, authoritative result and visible combat"
+      ]
+    },
+    {
+      "id": "CLIENT455-ARMED-ATTACK-201",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-armed-attack-checkpoint.json",
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "description": "The ordinary live attack reaches typed bow and ammunition checks without the former exception.",
+      "gaps": [
+        "Initial base equipment and inventory population",
+        "Live range, eight-byte request, authoritative result and visible hit",
+        "Secondary ammunition, selected weak zone and mounted variants"
       ]
     }
   ],

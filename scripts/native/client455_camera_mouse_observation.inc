@@ -54,7 +54,7 @@ private:
             state.combatButtonDown = false;
             return;
         }
-        if (elapsed < state.nextCombatClickAt || elapsed >= 7800 || state.combatClicks >= 4)
+        if (elapsed < state.nextCombatClickAt || elapsed >= 12000 || state.combatTarget)
             return;
         if (!draw.present) {
             if (!state.combatTarget) scanCombatView(state, elapsed);
@@ -71,7 +71,7 @@ private:
         gMouse.LDBClick = FALSE;
         gMouse.RDBClick = FALSE;
         state.combatTarget = draw.serial;
-        state.nextCombatClickAt = elapsed + 900;
+        state.nextCombatClickAt = elapsed + 700;
         state.combatButtonDown = true;
         RF455_ObserveProtocol("combat-click", ++state.combatClicks, draw.serial,
                               static_cast<unsigned>(elapsed));

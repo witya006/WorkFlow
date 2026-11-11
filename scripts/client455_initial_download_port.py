@@ -117,6 +117,22 @@ def port_initial_download(raw, relative, section, native):
         raw = patch_method(raw, section, b'CInputProcessMgr', b'LoadData', use_localized_keys)
         raw = patch_method(raw, section, b'CInputProcessMgr', b'InputProcess_Keyboard', lambda body: replace(
             body, b'\tif( IsPressedMoveKey() )', b'''    const RF455WalkKeyObservation walkKey(m_listKey[KM_MOVE_UP][1]);
+    RF455CombatModifierObservation combatModifier;
+    auto& observation = RF455_WorldObservation();
+    if (observation.combat && observation.combatTarget && observation.combatAttackKeys < 3) {
+        const auto elapsed = GetTickCount64() - observation.acceptedAt;
+        const DWORD key = m_listKey[KM_COMBAT_ATTACK][1];
+        auto* target = _GetTargetMgr()->GetTarget();
+        if (elapsed >= observation.nextCombatClickAt && elapsed < 12000 &&
+            key < 256 && target && target->IsEqualCharType(CTI_MONSTER) &&
+            target->GetIndex() == observation.combatTarget && combatModifier.apply(m_listKey[KM_COMBAT_ATTACK][0])) {
+            gScan[key] = TRUE;
+            m_bIsPressedKey = TRUE;
+            ++observation.combatAttackKeys;
+            observation.nextCombatClickAt = elapsed + (observation.combatAttackKeys == 1 ? 2600 : 900);
+            RF455_ObserveProtocol("combat-key", observation.combatAttackKeys, key, static_cast<unsigned>(elapsed));
+        }
+    }
 \tif( IsPressedMoveKey() )'''))
         return (OBSERVATION + b'#include "client455_nation_paths.h"\n#include <cstring>\n#include <string>\n'
                 + (native / 'client455_walk_observation.inc').read_bytes() + b'\n' + raw), True

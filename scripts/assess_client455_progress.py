@@ -64,10 +64,11 @@ def main():
           'Штатный рендер вывел BLOCK и MISS из атласа 455, компонентно проверены отсечение и звук блока',
           'Два числа урона, дорожки Prism Beam и звук прошли через обычные потребители компонентно',
           'Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно',
-          'На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы'],
+          'На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы',
+          'Штатная атака распознаёт лук в живом клиенте и проходит прежнее исключение экипировки'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455',
-          'Обычная атака останавливается при чтении экипировки до отправки запроса'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint']),
+          'Проверка боеприпасов останавливает атаку. Начальный обработчик разместил 0 из 21 предмета'],
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint','client455-armed-attack-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Реальные таблицы/payload/owners/icons и выбранный inventory handoff'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -105,6 +106,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-armed-attack-checkpoint',
         'client455-monster-critical-checkpoint',
         'client455-force-damage-render-checkpoint',
         'client455-combat-result-effect-checkpoint',

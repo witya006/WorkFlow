@@ -56,7 +56,8 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
     constexpr ULONGLONG cameraDelays[] = {0, 1800, 3400};
     const auto elapsed = GetTickCount64() - state.acceptedAt;
     if (state.captureMonsters) RF455_SampleMonsterFrame(state, elapsed);
-    if (elapsed < (state.camera ? cameraDelays[sample] : delays[sample])) return;
+    const auto delay = state.combat && sample == 5 ? 12000 : state.camera ? cameraDelays[sample] : delays[sample];
+    if (elapsed < delay) return;
     --state.remaining;
 
     char message[384];

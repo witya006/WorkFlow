@@ -1,3 +1,9 @@
+2026-11-11 — Armed attack 201, PARTIAL_LIVE_AMMUNITION_UNAVAILABLE.
+
+The ordinary attack reads typed equipment and recognizes the live bow.
+Initial item download placed none of its 21 inventory records.
+[Evidence](research/client455-armed-attack.md)
+
 2026-11-11 — Live combat observation 200, PARTIAL_LIVE_ATTACK_BLOCKED.
 
 Normal mouse picking selects Youngflem on NeutralB and shows its target

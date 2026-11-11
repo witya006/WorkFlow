@@ -2,11 +2,11 @@
   "scope": "Decoded instruction checkpoints in the exact own linked PE;not reference behavior acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "c3c6df6b5fdaec0894ddb2c682f8a6b49b0b3744b16d95f812d8d32d0df38cad",
-    "bytes": 2391552,
+    "sha256": "f3a101bf271cedd141b8cb50b86f2909666cafd7703c41cc082af77a3f3d7ffb",
+    "bytes": 2393600,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x188ad0",
+    "entry_rva": "0x1890f0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "68f7cc89801348b81f81e24ce920a95dbeef69da9eba577e437743e3cde42168",
+  "normal_link_sha256": "affccb6e13be5fc622f32d50325c2ec1615811df4460ad91159f8578259a6146",
   "script_sha256": "0addad4a9079ee705ad6f784ef6691f95b313805ecf93d3ee81289f2a0ad999a",
   "tool": {
     "file": "C:\\Program Files\\Microsoft Visual Studio\\18\\Professional\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x86\\dumpbin.exe",
@@ -24,92 +24,92 @@
   "symbols": {
     "main": {
       "name": "_WinMain@16",
-      "rva": "0xc2cf0"
+      "rva": "0xc34c0"
     },
     "sound": {
       "name": "?InitR3SoundSystem@@YAHPAD@Z",
-      "rva": "0x10caa0"
+      "rva": "0x10d130"
     },
     "d3d": {
       "name": "?InitR3D3D@R3D3dWrapper@@QAEJPAUHINSTANCE__@@K@Z",
-      "rva": "0x1735a0"
+      "rva": "0x173be0"
     },
     "create": {
       "name": "?Create@CMainApp@@QAEHXZ",
-      "rva": "0xc2430"
+      "rva": "0xc2bf0"
     },
     "char_data": {
       "name": "?_CreateCharDataMgr@@YAHXZ",
-      "rva": "0x77290"
+      "rva": "0x77a90"
     },
     "connect": {
       "name": "?ConnectNetwork455@CMainApp@@QAEHXZ",
-      "rva": "0xc2250"
+      "rva": "0xc2a10"
     },
     "engine": {
       "name": "?InitR3Engine@@YAXH@Z",
-      "rva": "0x16ea30"
+      "rva": "0x16f090"
     }
   },
   "points": {
     "before_connect": {
-      "rva": "0xc2e1f",
-      "call_rva": "0xc2e1f",
-      "target_rva": "0xc2250",
+      "rva": "0xc35ef",
+      "call_rva": "0xc35ef",
+      "target_rva": "0xc2a10",
       "bytes": 5,
-      "sha256": "1b9417478658b23844528de8835ed5c35956a622976ede8d95940ec67a516eba"
+      "sha256": "6436469fedfc11d5a7d7cadeec323ba8f139ff467f430c4f76c86f1bd1f7caa2"
     },
     "after_connect": {
-      "rva": "0xc2e24",
-      "call_rva": "0xc2e1f",
-      "target_rva": "0xc2250",
+      "rva": "0xc35f4",
+      "call_rva": "0xc35ef",
+      "target_rva": "0xc2a10",
       "bytes": 2,
       "sha256": "043b5c16f0c4129abe8ea534766c2117090a2f144dcc6fe6f25719f50ea562e1"
     },
     "before_engine": {
-      "rva": "0xc2e2e",
-      "call_rva": "0xc2e2e",
-      "target_rva": "0x16ea30",
+      "rva": "0xc35fe",
+      "call_rva": "0xc35fe",
+      "target_rva": "0x16f090",
       "bytes": 5,
-      "sha256": "afcb81c7ff9a7fe770078a1a58bcf83f184ced47cfc2b3e987de0aa8596262a5"
+      "sha256": "99d40ff6723448a390b0eba61959ced012909e4873965da05629e7619996faec"
     },
     "after_sound": {
-      "rva": "0xc2e4c",
-      "call_rva": "0xc2e47",
-      "target_rva": "0x10caa0",
+      "rva": "0xc361c",
+      "call_rva": "0xc3617",
+      "target_rva": "0x10d130",
       "bytes": 3,
       "sha256": "2fd40b052ecdb09c0b4b6c5745e92654c7f03e8bf0bf726ef470fa45fe5b20d0"
     },
     "after_d3d": {
-      "rva": "0xc2e5c",
-      "call_rva": "0xc2e57",
-      "target_rva": "0x1735a0",
+      "rva": "0xc362c",
+      "call_rva": "0xc3627",
+      "target_rva": "0x173be0",
       "bytes": 2,
       "sha256": "043b5c16f0c4129abe8ea534766c2117090a2f144dcc6fe6f25719f50ea562e1"
     },
     "before_char_data": {
-      "rva": "0xc249e",
-      "call_rva": "0xc249e",
-      "target_rva": "0x77290",
+      "rva": "0xc2c5e",
+      "call_rva": "0xc2c5e",
+      "target_rva": "0x77a90",
       "bytes": 5,
-      "sha256": "7a1184cba17ce4aa5548f2aa70b37adfa5b8ffd3ba9e42c97933f0527a0176de"
+      "sha256": "7119096d1647f956e1c98ef79773da613e5a56d9df1583ee649b378b2a536a1d"
     },
     "after_create": {
-      "rva": "0xc2e6e",
-      "call_rva": "0xc2e69",
-      "target_rva": "0xc2430",
+      "rva": "0xc363e",
+      "call_rva": "0xc3639",
+      "target_rva": "0xc2bf0",
       "bytes": 5,
-      "sha256": "221314a82a3f7c7e8480a87ba82c0b1388b2a671261442711bd416e7979f7a64"
+      "sha256": "69d46e3b77a9284526e1adce8d329f02adddb166d26958e9d0862f5c9555b2b0"
     }
   },
   "disassembly": [
     {
       "file": "artifacts/client455-startup/own-main-disassembly.txt",
-      "sha256": "4b278d33faaa22e5a430e7e013a2803931a54dd78fa49a4ba7a32c61fb877c13"
+      "sha256": "e3d7e60e2e866a2ee4e96782e96c0a57eb7e43c2edc3796c7073c71b972ab489"
     },
     {
       "file": "artifacts/client455-startup/own-create-disassembly.txt",
-      "sha256": "62ee0999d1306aa25a4c9a8410dfab0e6384cf196c6686415479977ef328d888"
+      "sha256": "4e2754c9b6038b1c7113c2cfabf50078df3c5597b5c8ef95e013cc4fcf128ce3"
     }
   ]
 }

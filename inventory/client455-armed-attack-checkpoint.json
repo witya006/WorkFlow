@@ -1,0 +1,116 @@
+{
+  "status": "PARTIAL_LIVE_AMMUNITION_UNAVAILABLE",
+  "scope": "The ordinary armed attack reaches typed bow and ammunition validation on NeutralB.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f3a101bf271cedd141b8cb50b86f2909666cafd7703c41cc082af77a3f3d7ffb",
+    "bytes": 2393600,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1890f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "affccb6e13be5fc622f32d50325c2ec1615811df4460ad91159f8578259a6146",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/armed201/live.json",
+    "sha256": "b8a31cde447131899e584b0890a1184ba2fd6fa8805f38e175634f1d4a5b3db7"
+  },
+  "observations": {
+    "target": 1032065,
+    "localized_attack_keys": 2,
+    "bow_checks": 3,
+    "weapon_category": 5,
+    "ammunition_check_passed": false,
+    "base_items_created": 0,
+    "inventory_rows": 21,
+    "inventory_placed": 0,
+    "ordinary_attack_sent": false,
+    "unhandled_exceptions": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_armed_attack.py",
+    "sha256": "1cb577f677a359bdabc259b28f49be6d14c7831b41955ab39c4f57c75556a6f7"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_armed_attack_port.py",
+      "sha256": "e96eea6e45f59ad645c6d865dfb03f4b1f042185e2308f268767695468396c56"
+    },
+    {
+      "file": "scripts/native/client455_equipment_conditions.h",
+      "sha256": "57b27965e51c7d31429d98ea31cbbe1c4e7c1d7afa97b36fcd847d11f5c7e1a6"
+    },
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "edfece832ce1dadcfece6210f1a01e508bea73e389720856d68e820829eb4486"
+    },
+    {
+      "file": "scripts/native/client455_walk_observation.inc",
+      "sha256": "c6f2037b12e27012f6c23aade66140bb139609cbf27aa2378b4e2af7f82ffdbf"
+    },
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "ba6c02bfe9915f5dec266c8f685a22c70f60ca9522b6f9a72d3843c8e0af78bd"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "affccb6e13be5fc622f32d50325c2ec1615811df4460ad91159f8578259a6146"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "f51fdb0d022c22055e729a038dd1ae105856e59b43243367623ccbfe8f1b1878"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "88f4587c8ce3c497e4c0e6e547998e08dcb5c0d18e407676e294423027eda647"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "995709bc78721d3bfc0da4bdf3edeb0201ada28073f2a134d3db36526e8ec223"
+    },
+    "armed-attack-reference": {
+      "file": "inventory/client455-armed-attack-reference.json",
+      "sha256": "e0d008ed758ccb66bf1aa135f6c5fcba8a454ddc214a6e2f57067a246ba32b8a"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "1783ccd5ae8e620e54b8fd381834a8182cc0f9f5c0b18bd79f6452e662004af0"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "8db682e669a1a5acf6cd74b63abc5c519fe24c10f1b699dc76eac81211ac4930"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "ffebf6e618367362cb85174fd0e1f026ca0e280d1e46f8318768c120ba569132"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "591265dc6f7a7b6672c4d3da8191020085d5d4581bb7228b85d99a36021dd1aa"
+    }
+  },
+  "previous_attempts": [
+    {
+      "file": "artifacts/client455-progress/armed201/first-live.json",
+      "sha256": "6b1885b6a156d9ef8c247d39ced004879545248b31ba26bab37aa7b31109e341"
+    },
+    {
+      "file": "artifacts/client455-progress/armed201/second-live.json",
+      "sha256": "8a76965677fe2de530681a3a332faf1aa2b763ee859960d63bce4e1f6667ea4f"
+    },
+    {
+      "file": "artifacts/client455-progress/armed201/third-live.json",
+      "sha256": "a4d5e0633c575732dd9cf27185eda977c5da49ab6b79135f4a4c50b8c74ebd41"
+    }
+  ],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

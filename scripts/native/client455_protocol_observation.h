@@ -39,6 +39,7 @@ struct RF455WorldObservation {
     RF455MonsterDraw combatDraw;
     unsigned combatTarget = 0;
     unsigned combatClicks = 0;
+    unsigned combatAttackKeys = 0;
     ULONGLONG nextCombatClickAt = 1280;
     bool combatButtonDown = false;
 };
@@ -55,9 +56,8 @@ inline void RF455_RecordMonsterDraw(unsigned serial, unsigned mesh, unsigned ani
     const RF455MonsterDraw draw{true, serial, mesh, animation, boneFrame, screenX, screenY, depth};
     if (!state.monsterDraw.present && state.monsterCaptures < 3 &&
         (!state.monsterCaptures || serial == state.sampledMonster)) state.monsterDraw = draw;
-    const bool clearOfMinimap = screenX < 0.49f || screenY < 0.35f;
-    if (state.combat && clearOfMinimap && state.combatClicks < 4 &&
-        (!state.combatTarget || serial == state.combatTarget) &&
+    const bool clearOfMinimap = screenX < 0.5f || screenY < 0.35f;
+    if (state.combat && clearOfMinimap && !state.combatTarget &&
         (!state.combatDraw.present || depth < state.combatDraw.depth)) state.combatDraw = draw;
 }
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T09:22:22.318966+00:00",
+  "measured_at_utc": "2026-11-11T09:42:09.365964+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2845,
-    "unique_functions_with_complete_assembly_cfg": 1059,
-    "unique_pinned_code_bytes": 807908,
-    "reports": 198,
-    "code_range_occurrences": 4502,
+    "unique_functions_with_pinned_code": 2858,
+    "unique_functions_with_complete_assembly_cfg": 1072,
+    "unique_pinned_code_bytes": 809450,
+    "reports": 199,
+    "code_range_occurrences": 4518,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -73,6 +73,10 @@
     {
       "file": "inventory/client455-animation-timing-reference.json",
       "sha256": "b74591a509412fb5e74bdcf2e947f2fbd1b86efe3a9905c195454dbbe03466c1"
+    },
+    {
+      "file": "inventory/client455-armed-attack-reference.json",
+      "sha256": "e0d008ed758ccb66bf1aa135f6c5fcba8a454ddc214a6e2f57067a246ba32b8a"
     },
     {
       "file": "inventory/client455-avatar-classes-reference.json",
@@ -841,6 +845,10 @@
       "sha256": "3011a440541bf5b5ee0dca8230ec59e9450f70ea29e31ecaf64571ccbb1c6d13"
     },
     {
+      "file": "artifacts/client455-progress/armed201/reference.json",
+      "sha256": "15b3635929710e9ed276c7367da4aa12568efc139bed31621bed3117e20df216"
+    },
+    {
       "file": "artifacts/client455-progress/avatar-classes144-reference/session.json",
       "sha256": "132fbf96f8865791cfca9b87701a7cc9a2a964dd4d5ee6b224a50ab13484be7f"
     },
@@ -1176,7 +1184,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "e2659f88edd182bd910c0e5745971b9d2fd5b55a7a390839cb5a3517a3618287"
+      "sha256": "c8baa89cd9212ab2c04b6e239daef74ea77b6a5854bd5e2147b98c337663dbf1"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -2782,6 +2790,7 @@
       "rva": "0x12e40",
       "ida_name": "sub_412E40",
       "reports": [
+        "inventory/client455-armed-attack-reference.json",
         "inventory/client455-town-state-reference.json"
       ],
       "ranges": [
@@ -2791,6 +2800,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 73
+        },
         {
           "file": "artifacts/client455-progress/town188/reference.json",
           "instructions": 73
@@ -2852,6 +2865,25 @@
         {
           "file": "artifacts/client455-progress/equipment-providers146-reference/session.json",
           "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x13440",
+      "ida_name": "sub_413440",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x13440",
+          "bytes": 206
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 70
         }
       ]
     },
@@ -2997,6 +3029,44 @@
         {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 58
+        }
+      ]
+    },
+    {
+      "rva": "0x16ba0",
+      "ida_name": "sub_416BA0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16ba0",
+          "bytes": 29
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x16bc0",
+      "ida_name": "sub_416BC0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16bc0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 15
         }
       ]
     },
@@ -3971,6 +4041,25 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/equipment-conditions146-reference/session.json",
+          "instructions": 15
+        }
+      ]
+    },
+    {
+      "rva": "0x26f10",
+      "ida_name": "sub_426F10",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x26f10",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
           "instructions": 15
         }
       ]
@@ -7208,6 +7297,25 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x4d4e0",
+      "ida_name": "sub_44D4E0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x4d4e0",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
       "rva": "0x4dee0",
       "ida_name": "sub_44DEE0",
       "reports": [
@@ -7805,6 +7913,7 @@
       "rva": "0x53730",
       "ida_name": "sub_453730",
       "reports": [
+        "inventory/client455-armed-attack-reference.json",
         "inventory/client455-player-equipment-reference.json"
       ],
       "ranges": [
@@ -7814,6 +7923,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 23
+        },
         {
           "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
           "instructions": 23
@@ -7912,6 +8025,25 @@
         {
           "file": "artifacts/client455-progress/player-equipment146-reference/session.json",
           "instructions": 103
+        }
+      ]
+    },
+    {
+      "rva": "0x53d90",
+      "ida_name": "sub_453D90",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x53d90",
+          "bytes": 352
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 113
         }
       ]
     },
@@ -8716,6 +8848,25 @@
       ]
     },
     {
+      "rva": "0x60bf0",
+      "ida_name": "sub_460BF0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x60bf0",
+          "bytes": 215
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 75
+        }
+      ]
+    },
+    {
       "rva": "0x60d10",
       "ida_name": "sub_460D10",
       "reports": [
@@ -8739,6 +8890,7 @@
       "rva": "0x60d90",
       "ida_name": "sub_460D90",
       "reports": [
+        "inventory/client455-armed-attack-reference.json",
         "inventory/client455-equipment-conditions-reference.json",
         "inventory/client455-player-owner-reference.json"
       ],
@@ -8750,8 +8902,31 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 24
+        },
+        {
           "file": "artifacts/client455-progress/equipment-conditions146-reference/session.json",
           "instructions": 24
+        }
+      ]
+    },
+    {
+      "rva": "0x60dd0",
+      "ida_name": "sub_460DD0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x60dd0",
+          "bytes": 89
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 36
         }
       ]
     },
@@ -8913,6 +9088,25 @@
         {
           "file": "artifacts/client455-progress/equipment-conditions146-reference/session.json",
           "instructions": 24
+        }
+      ]
+    },
+    {
+      "rva": "0x62070",
+      "ida_name": "sub_462070",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x62070",
+          "bytes": 49
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 21
         }
       ]
     },
@@ -11184,6 +11378,44 @@
       ]
     },
     {
+      "rva": "0x70dc0",
+      "ida_name": "sub_470DC0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x70dc0",
+          "bytes": 76
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 32
+        }
+      ]
+    },
+    {
+      "rva": "0x70e10",
+      "ida_name": "sub_470E10",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x70e10",
+          "bytes": 156
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 58
+        }
+      ]
+    },
+    {
       "rva": "0x71190",
       "ida_name": "sub_471190",
       "reports": [
@@ -11213,6 +11445,25 @@
         {
           "file": "artifacts/client455-progress/mob-control163-reference/dependencies.json",
           "instructions": 71
+        }
+      ]
+    },
+    {
+      "rva": "0x718b0",
+      "ida_name": "sub_4718B0",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x718b0",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 15
         }
       ]
     },
@@ -16582,6 +16833,25 @@
         }
       ],
       "complete_assembly_evidence": []
+    },
+    {
+      "rva": "0x15be50",
+      "ida_name": "sub_55BE50",
+      "reports": [
+        "inventory/client455-armed-attack-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x15be50",
+          "bytes": 253
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/armed201/reference.json",
+          "instructions": 75
+        }
+      ]
     },
     {
       "rva": "0x15bf50",
@@ -48181,8 +48451,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 16,
-    "unique_functions_with_complete_assembly_cfg": 16
+    "unique_functions_with_pinned_code": 13,
+    "unique_functions_with_complete_assembly_cfg": 13
   },
   "M6": "OPEN",
   "M9": "OPEN",
