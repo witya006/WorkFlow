@@ -56,6 +56,7 @@ from client455_trade_ore_port import port_trade_ore
 from client455_item_work_port import port_item_work
 from client455_service_windows_port import port_service_windows
 from client455_party_window_port import port_party_window
+from client455_target_windows_port import port_target_windows
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -830,6 +831,8 @@ def main():
             if service_windows_changed:changes.append('455 currency exchange, mining and class promotion views and message contracts')
             raw,party_window_changed=port_party_window(raw,relative,section,native)
             if party_window_changed:changes.append('455 party member views, compact mode, and base download request')
+            raw,target_windows_changed=port_target_windows(raw,relative,section,native)
+            if target_windows_changed:changes.append('455 overhead bar, target details and localized target menu')
             if option_changed:changes.append('455Option real9sliders/controls/country branches andUI message IDs;legacy backend/grade popup/logout predicate remainopen')
             # Production modularization, not a test-only copy: the identical
             # methods are removed from their original TU and compiled once here.

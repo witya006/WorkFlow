@@ -66,10 +66,10 @@ def main(handoff=None,live_port=None,select_character=False):
         original=client/row['runtime_relative'];copy=run/row['runtime_relative']
         stage_asset(original,copy,row['sha256'],owned_immutable=WS/row['file'])
         inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
-        #Only restored HUD/CharInfo skins;share owned pool copies,never clone
-        #the entire client. Preserve target localized-before-Common selection.
+        # MainGame loads these panels before asking for base data. Stage their
+        # exact localized and Common sprites from the owned shared pool.
         for folder in ['Common',country['folder']]:
-            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr','unit.spr','skillwindow.spr','forcewindow.spr','shop.spr','trade.spr','oreproc.spr','itemmake.spr','itemupgrade.spr','exchange.spr','mining.spr','class.spr']:
+            for filename in ['main.spr','EtcUI.spr','charinfo.spr','summon.spr','item.spr','inventory.spr','ItemLock.spr','SocketState.spr','system.spr','unit.spr','skillwindow.spr','forcewindow.spr','shop.spr','trade.spr','oreproc.spr','itemmake.spr','itemupgrade.spr','exchange.spr','mining.spr','class.spr','renewal.spr','dungeon.spr']:
                 original=client/'SpriteImage'/folder/filename
                 if not original.is_file():continue
                 copy=run/original.relative_to(client)

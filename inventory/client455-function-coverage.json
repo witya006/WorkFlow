@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T01:49:45.684354+00:00",
+  "measured_at_utc": "2026-11-11T02:18:25.649573+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2630,
-    "unique_functions_with_complete_assembly_cfg": 827,
-    "unique_pinned_code_bytes": 749490,
-    "reports": 175,
-    "code_range_occurrences": 4219,
+    "unique_functions_with_pinned_code": 2650,
+    "unique_functions_with_complete_assembly_cfg": 847,
+    "unique_pinned_code_bytes": 754496,
+    "reports": 176,
+    "code_range_occurrences": 4239,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -655,6 +655,10 @@
       "sha256": "6ec740dbe93296a0228bf1287cd2b34fd940ad76bdfddf7a46bf2d09f26f4405"
     },
     {
+      "file": "inventory/client455-target-windows-reference.json",
+      "sha256": "da4b308bef825107544c91a26b5707385241f60450d015d46dcddeb16ec1d817"
+    },
+    {
       "file": "inventory/client455-text-board-reference.json",
       "sha256": "9c4cfb3fb5e188eb3a9748911ff3f8740006b9815998195bede8828fe79a32ac"
     },
@@ -973,6 +977,10 @@
       "sha256": "cfe053868ac7aa47c073f8d2ba8ccfdd8c746e09ce11fe5df38c1fe5b0601253"
     },
     {
+      "file": "artifacts/client455-progress/target-windows174-reference.json",
+      "sha256": "da3a3c76ccf6a17efca5a727f89f7973600028a20c2f38f45ab59d96e200694f"
+    },
+    {
       "file": "artifacts/client455-progress/trade-ore170-reference.json",
       "sha256": "ff23c2e316ab3ea9a8615fb9ef2c404f1f0dd97afdfbe044fb829eac75bbb462"
     },
@@ -992,7 +1000,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "e7cfa45ee6aba37e11b8a8c8ee86d936b2a676251d4a83a428d7d594ae2e9602"
+      "sha256": "8317e4054b794dcdd446e3ce1f1c596c7ded375e6284eeb76993e8182bbad76c"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -23978,6 +23986,310 @@
       ]
     },
     {
+      "rva": "0x278920",
+      "ida_name": "sub_678920",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x278920",
+          "bytes": 513
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 152
+        }
+      ]
+    },
+    {
+      "rva": "0x278b30",
+      "ida_name": "sub_678B30",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x278b30",
+          "bytes": 212
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 60
+        }
+      ]
+    },
+    {
+      "rva": "0x278c10",
+      "ida_name": "sub_678C10",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x278c10",
+          "bytes": 780
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 211
+        }
+      ]
+    },
+    {
+      "rva": "0x279270",
+      "ida_name": "sub_679270",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279270",
+          "bytes": 179
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 64
+        }
+      ]
+    },
+    {
+      "rva": "0x279440",
+      "ida_name": "sub_679440",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279440",
+          "bytes": 195
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 59
+        }
+      ]
+    },
+    {
+      "rva": "0x279b50",
+      "ida_name": "sub_679B50",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279b50",
+          "bytes": 327
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 107
+        }
+      ]
+    },
+    {
+      "rva": "0x279ca0",
+      "ida_name": "sub_679CA0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279ca0",
+          "bytes": 155
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 50
+        }
+      ]
+    },
+    {
+      "rva": "0x279d40",
+      "ida_name": "sub_679D40",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279d40",
+          "bytes": 101
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 38
+        }
+      ]
+    },
+    {
+      "rva": "0x279de0",
+      "ida_name": "sub_679DE0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279de0",
+          "bytes": 91
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 27
+        }
+      ]
+    },
+    {
+      "rva": "0x279e40",
+      "ida_name": "sub_679E40",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279e40",
+          "bytes": 91
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 27
+        }
+      ]
+    },
+    {
+      "rva": "0x279ea0",
+      "ida_name": "sub_679EA0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x279ea0",
+          "bytes": 48
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 22
+        }
+      ]
+    },
+    {
+      "rva": "0x27a620",
+      "ida_name": "sub_67A620",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27a620",
+          "bytes": 941
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 289
+        }
+      ]
+    },
+    {
+      "rva": "0x27a9d0",
+      "ida_name": "sub_67A9D0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27a9d0",
+          "bytes": 174
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 57
+        }
+      ]
+    },
+    {
+      "rva": "0x27b4f0",
+      "ida_name": "sub_67B4F0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27b4f0",
+          "bytes": 146
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 51
+        }
+      ]
+    },
+    {
+      "rva": "0x27b600",
+      "ida_name": "sub_67B600",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27b600",
+          "bytes": 202
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 66
+        }
+      ]
+    },
+    {
+      "rva": "0x27b6f0",
+      "ida_name": "sub_67B6F0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x27b6f0",
+          "bytes": 82
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 33
+        }
+      ]
+    },
+    {
       "rva": "0x27fe80",
       "ida_name": "sub_67FE80",
       "reports": [
@@ -28408,6 +28720,82 @@
         {
           "file": "artifacts/client455-progress/trade-ore170-reference.json",
           "instructions": 227
+        }
+      ]
+    },
+    {
+      "rva": "0x321ea0",
+      "ida_name": "sub_721EA0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321ea0",
+          "bytes": 78
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 31
+        }
+      ]
+    },
+    {
+      "rva": "0x321ef0",
+      "ida_name": "sub_721EF0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x321ef0",
+          "bytes": 249
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 76
+        }
+      ]
+    },
+    {
+      "rva": "0x323060",
+      "ida_name": "sub_723060",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x323060",
+          "bytes": 354
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 106
+        }
+      ]
+    },
+    {
+      "rva": "0x3231d0",
+      "ida_name": "sub_7231D0",
+      "reports": [
+        "inventory/client455-target-windows-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3231d0",
+          "bytes": 88
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/target-windows174-reference.json",
+          "instructions": 37
         }
       ]
     },
@@ -43573,8 +43961,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 25,
-    "unique_functions_with_complete_assembly_cfg": 25
+    "unique_functions_with_pinned_code": 4,
+    "unique_functions_with_complete_assembly_cfg": 4
   },
   "M6": "OPEN",
   "M9": "OPEN",

@@ -1,3 +1,11 @@
+2026-11-11 — Target windows and dungeon counter 174, PARTIAL_WAITING_FOR_BASE_DECODER.
+The ordinary client sends 3/3 after accepted selection and receives the
+431-byte 3/4 reply. Four Taiwan frames pass with the 455 target skins.
+Build c85bd40d… x86. Both pins agree on 20 bodies and 1,563 instructions.
+Address coverage 2,650, full listings 847, partial bindings 293.
+Base decoding, inventory request and world entry remain open.
+[Evidence and remaining work](research/client455-target-windows.md)
+
 2026-11-11 — Party window 173, PARTIAL_KNOWN_FAILURE.
 The ordinary party initializer returns after accepted character selection.
 The next fault is selected-mob info window 18 at own RVA 130A9F.

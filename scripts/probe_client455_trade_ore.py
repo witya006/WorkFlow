@@ -22,8 +22,12 @@ def main():
     panel.add_argument('--item-work', action='store_true')
     panel.add_argument('--service-windows', action='store_true')
     panel.add_argument('--party', action='store_true')
+    panel.add_argument('--targets', action='store_true')
     args = parser.parse_args()
-    if args.party:
+    if args.targets:
+        name = 'target-windows'
+        skins = ('main.spr', 'renewal.spr', 'dungeon.spr')
+    elif args.party:
         name = 'party-window'
         skins = ('main.spr', 'class.spr', 'EtcUI.spr')
     elif args.service_windows:
@@ -86,7 +90,7 @@ def main():
                   source=record(source), script=record(Path(__file__)), console=record(console),
                   output=record(output) if output.exists() else None, shared_staging=staging_stats(),
                   input_exe_executed=False, server_modified=False)
-    if args.item_work or args.service_windows or args.party:
+    if args.item_work or args.service_windows or args.party or args.targets:
         report['harness'] = record(source.with_name('client455_trade_ore_probe.cpp'))
     encoded = json.dumps(report, indent=2) + '\n'
     (run / 'probe-report.json').write_text(encoded)

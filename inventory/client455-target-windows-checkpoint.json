@@ -1,0 +1,129 @@
+{
+  "status": "PARTIAL_WAITING_FOR_BASE_DECODER",
+  "scope": "The ordinary client reaches its base request after accepted character selection. The local server returns the 431-byte 3/4 payload. Its 455 decoder and world entry remain open.",
+  "script": {
+    "file": "scripts/checkpoint_client455_target_windows.py",
+    "sha256": "dbb2cc74e75579f3b3904c43a807642448032ca9b168975e65cabfab3c168cfa"
+  },
+  "normal_link_sha256": "39b3afa7b9b3642af87b687c61352ca04b87547aa6c5db929de29f6706c3cc19",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c85bd40d5277477d4930578f0f98d0e409cda5a2fc2e1bbe72aa7e238ff945b3",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x184160",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "e1fccb576eb98fcc0a4de1369f636bfb8a36d207c3ad47272a01233b9e43c99f"
+  },
+  "fresh_evidence": {
+    "target-windows-reference": {
+      "file": "inventory/client455-target-windows-reference.json",
+      "sha256": "da4b308bef825107544c91a26b5707385241f60450d015d46dcddeb16ec1d817"
+    },
+    "target-windows-native": {
+      "file": "inventory/client455-target-windows-native.json",
+      "sha256": "5b400303565fc0b6a2b627b341bbb369c7b20b4554278a248fb07d8633c53781"
+    },
+    "target-windows-bindings": {
+      "file": "inventory/client455-target-windows-bindings.json",
+      "sha256": "0765eff9b58119c5e35df58972ff50bc2a1427dd7239a14908806d0cfdcf5797"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "150f85662851d2a296e3fc9d62e5915426953b19129e18e3c2902ab4b50bd6eb"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "97f4b32135a61872629ed23514ae498eee6bbf326119e64722e74e1240c5fb15"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "9f80e6e05104ed06c17848ce532e669c77ebf6e43c5054bc0620fce802511c3c"
+    },
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "39b3afa7b9b3642af87b687c61352ca04b87547aa6c5db929de29f6706c3cc19"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "d44931fdd20ba111002ad8223c9ae742ff3264fc91069853599059ff0f665e81"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "1a87b153d45930664cb0ae021e1ac52c2619745c88fe159cc5ed821b75ffd22d"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "406ee7ad97afe9d1ff3e3993ad5d916df0b0a3faa349988c02cf005d42069397"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "642ebc87b0c42ad89f9ca43a1ed09b2c111fd15ffe5baf9d6c8d5d341bc69214"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "e1fccb576eb98fcc0a4de1369f636bfb8a36d207c3ad47272a01233b9e43c99f"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before174/manifest.json",
+    "sha256": "b59140f5425227f6a861c34b1953765bbd5a49ce3193937b0cb28f173a172ff7"
+  },
+  "base_decoder_analysis": {
+    "file": "artifacts/client455-progress/base-download174-idalib.json",
+    "sha256": "829d79c69a6a89b2434cf94052e5be019b5c8949e7302e132172a2d41d5e00aa"
+  },
+  "intermediate_failures": [
+    {
+      "file": "artifacts/client455-progress/target-windows174-initial-failure.json",
+      "sha256": "f45e726e26ecdd2f6f2bbfb1c6c59f5a92097e2dc20158ddb4dd06a1e31bf56f"
+    },
+    {
+      "file": "artifacts/client455-progress/target-windows174-post-stage-failure.json",
+      "sha256": "927c1b9c61d08556f9abceab9ed2743a2f724f9299db40a91abf0e66052039b7"
+    }
+  ],
+  "component_frames_visually_inspected": true,
+  "explicit_function_bindings": 17,
+  "standalone_symbols": 17,
+  "observed_sequence": [
+    "tx:1:14:1",
+    "rx:1:15:22",
+    "select-result:0:0:0",
+    "tx:3:3:0",
+    "rx:3:4:431"
+  ],
+  "base_request_sent": true,
+  "base_response_received": true,
+  "base_response_decoded": false,
+  "full_factory": false,
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Selected actor portrait, species, type-specific badges, status effects and player details",
+    "Full target lifecycle and dynamic menu entries, sanction permissions and dispatch",
+    "455 mission state window and complete dungeon counter lifecycle",
+    "Base download and inventory data, world entry and M9 acceptance"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

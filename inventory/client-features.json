@@ -8830,7 +8830,7 @@
       "id": "CLIENT455-PARTY-WINDOW-173",
       "area": "ui",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-party-window-checkpoint.json",
         "inventory/client455-party-window-reference.json",
@@ -8841,6 +8841,24 @@
         "Full live party roster data and class portrait provider, status tooltips, locks, loot policy and related packet paths",
         "Remaining 455 window interactions and complete party creation, join, invite and leave scenarios",
         "Base download result, follow-up player inventory and map data, world entry and M9 acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-TARGET-WINDOWS-174",
+      "area": "ui",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-target-windows-checkpoint.json",
+        "inventory/client455-target-windows-reference.json",
+        "inventory/client455-target-windows-native.json"
+      ],
+      "description": "The ordinary client reaches its base request after accepted character selection. The local server returns the 431-byte 3/4 payload. Its 455 decoder and world entry remain open.",
+      "gaps": [
+        "Selected actor portrait, species, type-specific badges, status effects and player details",
+        "Full target lifecycle and dynamic menu entries, sanction permissions and dispatch",
+        "455 mission state window and complete dungeon counter lifecycle",
+        "Base download and inventory data, world entry and M9 acceptance"
       ]
     }
   ],

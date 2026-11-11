@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "c85bd40d5277477d4930578f0f98d0e409cda5a2fc2e1bbe72aa7e238ff945b3",
+    "bytes": 2370048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x184160",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Partial target panels, target menu and dungeon counter skin.",
+  "functions": [
+    {
+      "rva": "0x279b50",
+      "symbol": "CGUISelectedCharWin::Init",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa84b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279ca0",
+      "symbol": "CGUISelectedCharWin::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa88e0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279d40",
+      "symbol": "CGUISelectedCharWin::SetCharName",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/guiselectedcharwin.cpp",
+        "sha256": "8ab3e61bfae8e53710e043358f9d03cff9ef8833f799bab4ebd1a67688d5b5fb"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa86a0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279de0",
+      "symbol": "CGUISelectedCharWin::SetAttackState",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa8670"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279e40",
+      "symbol": "CGUISelectedCharWin::SetSelectState",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa88b0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279ea0",
+      "symbol": "CGUISelectedCharWin::SetHPRate",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa8770"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27a620",
+      "symbol": "CGUISelectedMobInfoWin::Init",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa8580"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27a9d0",
+      "symbol": "CGUISelectedMobInfoWin::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa89c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27b4f0",
+      "symbol": "CGUISelectedMobInfoWin::SetMobName",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa8870"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27b600",
+      "symbol": "CGUISelectedMobInfoWin::SetLevel455",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa87f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x27b6f0",
+      "symbol": "CGUISelectedMobInfoWin::SetHP",
+      "source": {
+        "file": "scripts/native/client455_target_windows.inc",
+        "sha256": "dde0bc5f1ea629268247dca42b559084e76850432e02cdb0e9a0a5b4bce11b50"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa86f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x278920",
+      "symbol": "CGUISelectedCharMenu::Init",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/guiselectedcharmenu.cpp",
+        "sha256": "4b3a9d490166a6c00a15a6a543c99567624a9806f837be980468e9b45eb13298"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa7b70"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x278b30",
+      "symbol": "CGUISelectedCharMenu::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_target_menu.inc",
+        "sha256": "631f5e8753273727552fa84cee463fdba73c30c0600e17fe54c3da5f286ba43d"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa80c0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x278c10",
+      "symbol": "CGUISelectedCharMenu::SetMenuType",
+      "source": {
+        "file": "scripts/native/client455_target_menu.inc",
+        "sha256": "631f5e8753273727552fa84cee463fdba73c30c0600e17fe54c3da5f286ba43d"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa7e00"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x279440",
+      "symbol": "CGUISelectedCharMenu::SetPartyMenu",
+      "source": {
+        "file": "scripts/native/client455_target_menu.inc",
+        "sha256": "631f5e8753273727552fa84cee463fdba73c30c0600e17fe54c3da5f286ba43d"
+      },
+      "ordinary_symbol_rvas": [
+        "0xa7ff0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321ea0",
+      "symbol": "CGUIKillingCounter::Init",
+      "source": {
+        "file": "work/client455-port/normal/source/userinterface/gamewindow/dungeon/guidungeon.cpp",
+        "sha256": "d76acaa368826c2ce2683c299105b493036c4aac340ab62a4a9ff87f6f49f15c"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7eb80"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x321ef0",
+      "symbol": "CGUIKillingCounter::SetSprite",
+      "source": {
+        "file": "scripts/native/client455_dungeon_counter.inc",
+        "sha256": "b25efb6a4c0d6c672dd4a444ad5021c560d815a7d5d41e1fe43dc1c7904db2b0"
+      },
+      "ordinary_symbol_rvas": [
+        "0x7f3f0"
+      ],
+      "standalone_symbol_retained": true,
+      "complete_equivalence": false
+    }
+  ]
+}
