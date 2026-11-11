@@ -74,7 +74,7 @@ def main():
     fresh['monster-force-damage-live'] = record(LIVE)
     symbols = {name: hex(rva) for rva, name in own_symbols(link)
                if name.startswith(('?MonsterForceResult455@CNetMsgProcessor_Combat@@',
-                                   '?SetForceDamage455@CAttackerInfo@@', '?ProcessDamage@CCombatState@@'))}
+                                   '?SetDamage455@CAttackerInfo@@', '?ProcessDamage@CCombatState@@'))}
     require(len(symbols) == 3, 'Normal dispatcher and impact owners linked')
     sources = ('scripts/client455_monster_force_port.py', 'scripts/native/client455_monster_force_result.h',
                'scripts/native/client455_monster_force_dispatch.inc', 'scripts/native/client455_monster_force_damage.inc',

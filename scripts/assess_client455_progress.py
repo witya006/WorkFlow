@@ -66,10 +66,11 @@ def main():
           'Критическое попадание по монстру выбирает два клипа Wing и запускает эффект удара компонентно',
           'На NeutralB обычный клик выбирает Youngflem. Видны окно цели и клип ходьбы',
           'Штатная атака распознаёт лук в живом клиенте и проходит прежнее исключение экипировки',
-          'На NeutralB подтверждены запрос HP цели, боевой режим, попадание, расход стрел и гибель монстра'],
+          'На NeutralB подтверждены запрос HP цели, боевой режим, попадание, расход стрел и гибель монстра',
+          'Общий расчёт кадров обычной атаки и Силы применяет HP, компонентно проверены два удара по выжившей цели'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455',
-          'Проверить обычную атаку по выжившей цели, остальные режимы боя и многокадровое изменение HP'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint','client455-armed-attack-checkpoint','client455-downloaded-items-checkpoint','client455-primary-ammunition-checkpoint','client455-ammunition-impact-checkpoint','client455-monster-target-checkpoint']),
+          'Подтвердить повтор по выжившей цели и многокадровое изменение HP на живой анимации'],
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint','client455-armed-attack-checkpoint','client455-downloaded-items-checkpoint','client455-primary-ammunition-checkpoint','client455-ammunition-impact-checkpoint','client455-monster-target-checkpoint','client455-ordinary-health-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Таблицы, фабрика и значки размещают 8 предметов экипировки и 21 запись инвентаря при обычном входе'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -107,6 +108,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-ordinary-health-checkpoint',
         'client455-monster-target-checkpoint',
         'client455-ammunition-impact-checkpoint',
         'client455-primary-ammunition-checkpoint',

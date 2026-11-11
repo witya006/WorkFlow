@@ -12,7 +12,7 @@ def port_monster_health(raw, relative, native):
                        b'\tCMonster();\n\tfloat GetHPRate() override { return m_displayedHealth455; }\n'
                        b'\tvoid ReceiveHealth455(WORD tenThousandths);\n'
                        b'\tvoid ApplyFinalHealthImpact455();\n'
-                       b'\tvoid ApplyForceHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames);'), True
+                       b'\tvoid ApplyHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames);'), True
     if relative == 'character/npc/cmonster.cpp':
         anchor = b'\t\tcase CAI_DAMAGED_MISS\t\t: return MET_DAMAGE_MISS;'
         raw = replace(raw, anchor, anchor + b'\n\t\tcase CAI_DAMAGED_MISS455\t: return MET_DAMAGE_MISS;\n'
@@ -31,25 +31,27 @@ def port_monster_health(raw, relative, native):
                       b'constexpr DWORD CAI_DAMAGED_MISS455 = 0x60000005;\n'
                       b'constexpr DWORD CAI_DAMAGED_SPECIAL_HIT455 = 0x60000006;\n\n'
                       b'class CAttackerInfo :')
-        return replace(raw, b'\tvoid AdvanceForceDamage455();',
-                       b'\tvoid AdvanceForceDamage455();\n'
-                       b'\tDWORD GetOriginalForceDamage455() const { return m_forceOriginalDamage455; }'), True
+        anchor = b'\t\t\tvoid\tProcessDamage_SetDamage( CAttackerInfo * pi_pAttackerInfo );'
+        return replace(raw, anchor, anchor + b'\n\tvoid AdvanceImpact455(CAttackerInfo& attack);'), True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
-        raw = replace(raw, b'\t\t\t\tProcessDamage_SetHP( l_pAttackerInfo );',
-                      b'''                if (m_pOwner->IsEqualCharType(CTI_MONSTER) && !l_pAttackerInfo->GetEffectFrameNum())
-                    static_cast<CMonster*>(m_pOwner)->ApplyFinalHealthImpact455();
-                else
-                    ProcessDamage_SetHP( l_pAttackerInfo );''')
+        raw = replace(raw, b'''\t\t\t\tProcessDamage_SetDamage( l_pAttackerInfo );
+\t\t\t\tProcessDamage_SetHP( l_pAttackerInfo );''',
+                      b'''                const bool monster = m_pOwner->IsEqualCharType(CTI_MONSTER);
+                if (l_pAttackerInfo->GetDamageType_AT() == CAT_NORMAL && l_pAttackerInfo->GetOriginalDamage455()) {
+                    AdvanceImpact455(*l_pAttackerInfo);
+                    if (!monster) ProcessDamage_SetHP(l_pAttackerInfo);
+                } else {
+                    ProcessDamage_SetDamage(l_pAttackerInfo);
+                    if (monster && !l_pAttackerInfo->GetEffectFrameNum())
+                        static_cast<CMonster*>(m_pOwner)->ApplyFinalHealthImpact455();
+                    else
+                        ProcessDamage_SetHP(l_pAttackerInfo);
+                }''')
         return replace(raw, b'''                if (force->IsAttackable() && l_pAttackerInfo->GetTotalDamagePoint())
-                    l_pAttackerInfo->AdvanceForceDamage455();''',
+                    l_pAttackerInfo->AdvanceDamage455();''',
                        b'''                if (!force->IsAttackable()) continue;
                 if (l_pAttackerInfo->GetTotalDamagePoint()) {
-                    const BYTE frames = l_pAttackerInfo->GetEffectFrameNum();
-                    l_pAttackerInfo->AdvanceForceDamage455();
-                    if (m_pOwner->IsEqualCharType(CTI_MONSTER))
-                        static_cast<CMonster*>(m_pOwner)->ApplyForceHealthImpact455(
-                            l_pAttackerInfo->GetCurDamagePoint(),
-                            l_pAttackerInfo->GetOriginalForceDamage455(), frames);
+                    AdvanceImpact455(*l_pAttackerInfo);
                     m_pOwner->SetEffectInfo(CAI_DAMAGED_BY_FORCE);
                 } else if (m_pOwner->IsEqualCharType(CTI_MONSTER)) {
                     m_pOwner->SetEffectInfo(l_pAttackerInfo->IsSpecialHit455()

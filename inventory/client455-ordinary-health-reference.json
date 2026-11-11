@@ -1,0 +1,175 @@
+{
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x46350",
+          "instructions": 103,
+          "positive_cfg_blocks": 18,
+          "regions": [
+            {
+              "rva": "0x46350",
+              "bytes": 284,
+              "sha256": "e867b588f237a0e4f35775603dea70bdd174046cd1b2671d170b2951f9cc8662"
+            },
+            {
+              "rva": "0x620780",
+              "bytes": 49,
+              "sha256": "17cb176f53c9b46b924ba65e353ba3bf0b4d61847ede6883f2e369e224a908d2"
+            }
+          ]
+        },
+        {
+          "rva": "0x47af0",
+          "instructions": 18,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x47af0",
+              "bytes": 40,
+              "sha256": "07a417a336cd6c5f3f36978215e1fccc61e8fcc3c05a6e8e5034af1fb4dd5410"
+            }
+          ]
+        },
+        {
+          "rva": "0x47a90",
+          "instructions": 16,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x47a90",
+              "bytes": 33,
+              "sha256": "928ee821e32fa737004be15bf1db0da0b0f952e009695aea238fa6bd45f06280"
+            }
+          ]
+        },
+        {
+          "rva": "0x46f60",
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x46f60",
+              "bytes": 28,
+              "sha256": "daabe4dfeb5ec583b03c9124b1ff59814251ed589ca28902062815f2bfd91c43"
+            }
+          ]
+        },
+        {
+          "rva": "0x3e210",
+          "instructions": 21,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x3e210",
+              "bytes": 45,
+              "sha256": "38ea7f9507ef5c0737c13cc4c285dae37188abcbd04802861cbcf9a8be5e8065"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "functions": [
+        {
+          "rva": "0x46350",
+          "instructions": 103,
+          "positive_cfg_blocks": 18,
+          "regions": [
+            {
+              "rva": "0x46350",
+              "bytes": 284,
+              "sha256": "e867b588f237a0e4f35775603dea70bdd174046cd1b2671d170b2951f9cc8662"
+            },
+            {
+              "rva": "0x620780",
+              "bytes": 49,
+              "sha256": "17cb176f53c9b46b924ba65e353ba3bf0b4d61847ede6883f2e369e224a908d2"
+            }
+          ]
+        },
+        {
+          "rva": "0x47af0",
+          "instructions": 18,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x47af0",
+              "bytes": 40,
+              "sha256": "07a417a336cd6c5f3f36978215e1fccc61e8fcc3c05a6e8e5034af1fb4dd5410"
+            }
+          ]
+        },
+        {
+          "rva": "0x47a90",
+          "instructions": 16,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x47a90",
+              "bytes": 33,
+              "sha256": "928ee821e32fa737004be15bf1db0da0b0f952e009695aea238fa6bd45f06280"
+            }
+          ]
+        },
+        {
+          "rva": "0x46f60",
+          "instructions": 15,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x46f60",
+              "bytes": 28,
+              "sha256": "daabe4dfeb5ec583b03c9124b1ff59814251ed589ca28902062815f2bfd91c43"
+            }
+          ]
+        },
+        {
+          "rva": "0x3e210",
+          "instructions": 21,
+          "positive_cfg_blocks": 1,
+          "regions": [
+            {
+              "rva": "0x3e210",
+              "bytes": 45,
+              "sha256": "38ea7f9507ef5c0737c13cc4c285dae37188abcbd04802861cbcf9a8be5e8065"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "full_functions": 5,
+  "full_instructions": 173,
+  "positive_cfg_blocks": 22,
+  "raw": {
+    "file": "artifacts/client455-progress/ordinary206/reference.json",
+    "sha256": "c7ede1a53fd8c965d3c7c757a25aea2abe3cd050f0edcc3a42e954b2806c5cf1"
+  },
+  "scope": "Ordinary 5/7 shares the 455 attacker record and impact accounting.",
+  "call_rvas": {
+    "0x1a4aad": "0x1a34c0",
+    "0x1a3543": "0x1a3bd0",
+    "0x1a3ce1": "0x3e210",
+    "0x3e22f": "0x46350",
+    "0x1a3d4c": "0x47a90",
+    "0x1a3d5d": "0x47ac0",
+    "0x472c7": "0x47790",
+    "0x472d3": "0x47900",
+    "0x472df": "0x47a20",
+    "0x47a82": "0x47af0"
+  },
+  "original_damage_offset": 352,
+  "pending_damage_offset": 360,
+  "frame_count_offset": 364,
+  "intermediate_damage_jitter_percent": 10,
+  "health_application_rva": "0x47900"
+}

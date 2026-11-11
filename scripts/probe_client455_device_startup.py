@@ -76,7 +76,8 @@ def world_observation_name(walk, camera, monster, combat):
 
 
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
-         observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False):
+         observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
+         combat_monster_record=None,combat_approach_ms=0):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
@@ -200,11 +201,15 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_OBSERVE_CAMERA',None)
     environment.pop('RF455_CAPTURE_MONSTERS',None)
     environment.pop('RF455_OBSERVE_COMBAT',None)
+    environment.pop('RF455_COMBAT_RECORD',None)
+    environment.pop('RF455_COMBAT_APPROACH_MS',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
     if observe_monster or observe_combat:environment['RF455_CAPTURE_MONSTERS']='1'
     if observe_combat:environment['RF455_OBSERVE_COMBAT']='1'
+    if combat_monster_record is not None:environment['RF455_COMBAT_RECORD']=str(combat_monster_record)
+    if combat_approach_ms:environment['RF455_COMBAT_APPROACH_MS']=str(combat_approach_ms)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
@@ -272,6 +277,8 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
             report['monster_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
                                       for frame in sorted(run.glob('world-monster-*.png'))]
         if observe_combat:
+            report['combat_monster_record'] = combat_monster_record
+            report['combat_approach_ms'] = combat_approach_ms
             report['combat_impact_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
                                             for frame in sorted(run.glob('world-impact-*.png'))]
     if live_port is not None:name=name.replace('-native','-live-native')

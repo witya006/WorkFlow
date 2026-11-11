@@ -9308,7 +9308,7 @@
       "id": "CLIENT455-MONSTER-TARGET-205",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-target-checkpoint.json",
         "inventory/client455-monster-target-reference.json"
@@ -9317,6 +9317,22 @@
       "gaps": [
         "Live hits against a surviving target and ordinary multi-frame health changes",
         "Target details for other character types, all death reasons and mode/pose branches"
+      ]
+    },
+    {
+      "id": "CLIENT455-ORDINARY-HEALTH-206",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-ordinary-health-checkpoint.json",
+        "inventory/client455-ordinary-health-reference.json"
+      ],
+      "description": "The ordinary 5/7 dispatcher shares 455 impact accounting with Force. A component scenario exercises two attacks against the same surviving monster.",
+      "gaps": [
+        "Live repeat hit against the same surviving target. Wing died from the first shot.",
+        "Live ordinary multi-frame attack, combat variants and non-monster health owners",
+        "Full target lifecycle and character class coverage"
       ]
     }
   ],

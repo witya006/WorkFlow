@@ -34,11 +34,11 @@ def port_monster_force(raw, relative, native):
                 (native / 'client455_monster_force_result.inc').read_bytes()), True
     if relative == 'character/character/ccharacter_relationinfo2.h':
         raw = replace(raw, b'\tDWORD\t\t\tm_dwCurDamagePoint;',
-                      b'\tDWORD m_forceOriginalDamage455;\n\tbool m_forceSpecialHit455;\n\tDWORD\t\t\tm_dwCurDamagePoint;')
+                      b'\tDWORD m_originalDamage455;\n\tbool m_specialHit455;\n\tDWORD\t\t\tm_dwCurDamagePoint;')
         raw = replace(raw, b'\tCAttackerInfo();', b'\tCAttackerInfo();\n'
-                      b'\tvoid SetForceDamage455(LONG damage);\n\tvoid AdvanceForceDamage455();\n'
-                      b'\tvoid SetSpecialHit455(bool value) { m_forceSpecialHit455 = value; }\n'
-                      b'\tbool IsSpecialHit455() const { return m_forceSpecialHit455; }')
+                      b'\tvoid SetDamage455(LONG damage);\n\tvoid AdvanceDamage455();\n'
+                      b'\tDWORD GetOriginalDamage455() const { return m_originalDamage455; }\n'
+                      b'\tbool IsSpecialHit455() const { return m_specialHit455; }')
         return raw, True
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
         anchor = b'\t\t\tl_pAttackerInfo->SetProcessedDamage( TRUE );'
@@ -46,7 +46,7 @@ def port_monster_force(raw, relative, native):
             auto* force = l_pAttackerInfo->GetSFItem();
             if (!force->IsEmpty() && force->HasForceRow455()) {
                 if (force->IsAttackable() && l_pAttackerInfo->GetTotalDamagePoint())
-                    l_pAttackerInfo->AdvanceForceDamage455();
+                    l_pAttackerInfo->AdvanceDamage455();
                 continue;
             }
 ''')

@@ -72,7 +72,7 @@ def main():
              'startup-taiwan-native', 'live-launcher-native')
     fresh = {name: record(path(name)) for name in names}
     fresh['monster-force-reaction-live'] = record(LIVE)
-    owners = ('?ProcessDamage@CCombatState@@', '?SetForceDamage455@CAttackerInfo@@',
+    owners = ('?ProcessDamage@CCombatState@@', '?SetDamage455@CAttackerInfo@@',
               '?GetEffectTypeID@CMonster@@', '?SetEffectInfo@CBaseNpc@@')
     symbols = {name: hex(rva) for rva, name in own_symbols(link) if name.startswith(owners)}
     require(len(symbols) == len(owners), 'Normal impact and effect owners linked')

@@ -184,16 +184,18 @@ def port_initial_download(raw, relative, section, native):
         const auto elapsed = GetTickCount64() - observation.acceptedAt;
         const DWORD key = m_listKey[KM_COMBAT_ATTACK][1];
         auto* target = _GetTargetMgr()->GetTarget();
-        if (observation.combatImpactFrames && (!target || target->IsDeath())) {
+        const bool selected = target && target->GetIndex() == observation.combatTarget;
+        if ((observation.combatImpactFrames && (!target || target->IsDeath())) ||
+            (!selected && elapsed >= observation.nextCombatClickAt)) {
             observation.combatPreviousTarget = observation.combatTarget;
             observation.combatTarget = 0;
             observation.nextCombatClickAt = elapsed + 250;
             RF455_ObserveProtocol("combat-target-ended", observation.combatPreviousTarget,
                                  target != nullptr, observation.combatAmmunitionUpdates);
         }
-        if (elapsed >= observation.nextCombatClickAt && elapsed < 33000 &&
-            key < 256 && target && target->IsEqualCharType(CTI_MONSTER) &&
-            target->GetIndex() == observation.combatTarget && combatModifier.apply(m_listKey[KM_COMBAT_ATTACK][0])) {
+        if (elapsed >= observation.nextCombatClickAt && elapsed < 33000 + observation.combatApproachMs &&
+            key < 256 && selected &&
+            target->IsEqualCharType(CTI_MONSTER) && combatModifier.apply(m_listKey[KM_COMBAT_ATTACK][0])) {
             gScan[key] = TRUE;
             m_bIsPressedKey = TRUE;
             ++observation.combatAttackKeys;

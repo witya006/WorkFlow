@@ -50,6 +50,70 @@ bool sendHealth(CNetMsgProcessor_ItemArrangement& processor, DWORD serial, BYTE 
     return processor.AnalysisServerPacket(&header, payload.data());
 }
 
+void checkOrdinaryHealth(CCharacterMgr& manager, CMonster& target)
+{
+    manager.CreateAvatar();
+    auto* avatar = _GetAvatar();
+    constexpr DWORD avatarSerial = 30214;
+    avatar->SetCharTypeID(CTI_AVATAR);
+    avatar->SetIndex(avatarSerial);
+
+    CNetMsgProcessor_Combat combat;
+    CNetMsgProcessor_ItemArrangement health;
+    const DWORD serial = target.GetIndex();
+    const auto shot = [&](LONG damage, BYTE frames) {
+        std::array<char, 25> packet{};
+        packet[0] = CTI_AVATAR;
+        std::memcpy(packet.data() + 1, &avatarSerial, sizeof avatarSerial);
+        packet[6] = packet[7] = static_cast<char>(0xff);
+        packet[10] = 1;
+        packet[11] = CTI_MONSTER;
+        std::memcpy(packet.data() + 12, &serial, sizeof serial);
+        std::memcpy(packet.data() + 16, &damage, sizeof damage);
+        _MSG_HEADER header{WORD(4 + packet.size()), {5, 7}};
+        require(combat.AnalysisServerPacket(&header, packet.data()), "Ordinary 5/7 reached the combat dispatcher");
+        auto* incoming = target.GetAttackerInfo(avatar);
+        require(incoming && incoming->GetDamageType_AT() == CAT_NORMAL &&
+                incoming->GetOriginalDamage455() == static_cast<DWORD>(damage), "Ordinary result retains the original damage");
+        incoming->SetEffectFrameNum(frames);
+        return incoming;
+    };
+    const auto impact = [&target](CAttackerInfo* incoming, DWORD expectedDamage, float expectedRate) {
+        incoming->SetDamaged(TRUE);
+        target.GetCombatState()->ProcessDamage();
+        require(incoming->GetCurDamagePoint() == expectedDamage &&
+                std::fabs(target.GetHPRate() - expectedRate) < 0.000001f && !target.IsDeath(),
+                "Ordinary impact applies the damage and HP to the surviving actor");
+    };
+
+    require(sendHealth(health, serial, 27, 10000), "Receive initial target info");
+    auto* incoming = shot(100, 2);
+    require(sendHealth(health, serial, 29, 6500) && target.GetHPRate() == 1.0f,
+            "Lower health waits for the impact");
+    std::srand(455);
+    const bool add = std::rand() % 2 != 0;
+    const DWORD adjustment = std::rand() % 11;
+    const DWORD first = add ? 50 + adjustment : 50 - adjustment;
+    std::srand(455);
+    impact(incoming, first, 1.0f - (1.0f - 0.65f) * float(double(first) / 100));
+    require(incoming->GetTotalDamagePoint() == 100 - first && incoming->GetEffectFrameNum() == 1,
+            "Only the first frame's damage is consumed");
+    impact(incoming, 100 - first, 0.65f);
+    require(!incoming->GetOriginalDamage455() && !incoming->GetTotalDamagePoint(), "The final frame clears both counters");
+    target.GetCombatState()->ProcessInitDamage();
+    require(!target.GetAttackerInfo(avatar), "The spent attack record is released");
+
+    incoming = shot(40, 1);
+    require(sendHealth(health, serial, 29, 4200) && std::fabs(target.GetHPRate() - 0.65f) < 0.000001f,
+            "The same actor receives the next update without changing the display early");
+    impact(incoming, 40, 0.42f);
+    target.GetCombatState()->ProcessInitDamage();
+    require(!target.GetAttackerInfo(avatar), "The second shot releases its own record");
+    _GetEffectInfoList()->Clear();
+    std::printf("{\"status\":\"PASS\",\"same_target_attacks\":2,\"damage_frames\":[%lu,%lu,40],"
+                "\"health_basis_points\":[10000,6500,4200]}\n", first, 100 - first);
+}
+
 void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType, bool retain = false) {
     target.SetMesh(1);
     auto* incoming = target.GetAttackerInfo(&wing);
@@ -265,11 +329,12 @@ void checkDamage(CCharacterMgr& manager, CMonster& wing, CMonster& primary, bool
 int main(int argc, char** argv) {
     const bool checkCritical = argc == 8 && std::strcmp(argv[5], "--critical") == 0;
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
+    const bool checkOrdinary = argc == 6 && std::strcmp(argv[5], "--ordinary-health") == 0;
     const bool checkBlockRender = argc == 6 && std::strcmp(argv[5], "--block-render") == 0;
     const bool checkDamageRender = argc == 6 && std::strcmp(argv[5], "--damage-render") == 0;
     const bool checkReaction = checkBlockRender || (argc == 6 && std::strcmp(argv[5], "--reaction") == 0);
     const bool checkImpactEffect = checkDamageRender || (argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0);
-    require(argc == 5 || checkHealth || checkReaction || checkImpactEffect || checkCritical ||
+    require(argc == 5 || checkHealth || checkOrdinary || checkReaction || checkImpactEffect || checkCritical ||
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
@@ -314,8 +379,11 @@ int main(int argc, char** argv) {
 
     if (argc >= 6) {
         target->SetMesh(1);
-        checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get(),
-                    criticalPeace, criticalCombat);
+        if (checkOrdinary)
+            checkOrdinaryHealth(*manager, *target);
+        else
+            checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get(),
+                        criticalPeace, criticalCombat);
         manager->Clear();
         manager.reset();
         if (checkCritical) {
@@ -324,6 +392,7 @@ int main(int argc, char** argv) {
         }
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
+        if (checkOrdinary) return 0;
         if (display)
             display->report();
         else if (checkCritical)

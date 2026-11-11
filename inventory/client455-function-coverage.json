@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T11:30:37.171368+00:00",
+  "measured_at_utc": "2026-11-11T11:49:12.395532+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2890,
-    "unique_functions_with_complete_assembly_cfg": 1110,
-    "unique_pinned_code_bytes": 813448,
-    "reports": 203,
-    "code_range_occurrences": 4563,
+    "unique_functions_with_pinned_code": 2894,
+    "unique_functions_with_complete_assembly_cfg": 1114,
+    "unique_pinned_code_bytes": 813594,
+    "reports": 204,
+    "code_range_occurrences": 4569,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -545,6 +545,10 @@
     {
       "file": "inventory/client455-option-reference.json",
       "sha256": "fe66eac277d667e8815440230271a64d623731f8745cae74ce0196a483014d9a"
+    },
+    {
+      "file": "inventory/client455-ordinary-health-reference.json",
+      "sha256": "8859cf416e465decd09ccd7a9220f192638ef334514ce725daadae4b47f7787c"
     },
     {
       "file": "inventory/client455-party-window-reference.json",
@@ -1089,6 +1093,10 @@
       "sha256": "75d53f91b0a17ea9466a6785fa6b7f5577ace394b3a1b2935af9e9851708aee5"
     },
     {
+      "file": "artifacts/client455-progress/ordinary206/reference.json",
+      "sha256": "c7ede1a53fd8c965d3c7c757a25aea2abe3cd050f0edcc3a42e954b2806c5cf1"
+    },
+    {
       "file": "artifacts/client455-progress/party-window173-reference.json",
       "sha256": "2548d8b56f8af391def4f4c7b8a4caf7ef213f0fb3d27661a11f8ec5d8d6fa4d"
     },
@@ -1216,7 +1224,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "5d58b5f6ca4983d6f885ff6d49ef63927f72743676eaf927c81ec2c7c68229bb"
+      "sha256": "2e7874e34cc8b1452ad40cc8979abe0f398751b282745e3b7cac00e86c189ca5"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -6189,6 +6197,25 @@
       ]
     },
     {
+      "rva": "0x3e210",
+      "ida_name": "sub_43E210",
+      "reports": [
+        "inventory/client455-ordinary-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x3e210",
+          "bytes": 45
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ordinary206/reference.json",
+          "instructions": 21
+        }
+      ]
+    },
+    {
       "rva": "0x3e310",
       "ida_name": "sub_43E310",
       "reports": [
@@ -6849,7 +6876,8 @@
       "rva": "0x46350",
       "ida_name": "sub_446350",
       "reports": [
-        "inventory/client455-monster-force-damage-reference.json"
+        "inventory/client455-monster-force-damage-reference.json",
+        "inventory/client455-ordinary-health-reference.json"
       ],
       "ranges": [
         {
@@ -6864,6 +6892,10 @@
       "complete_assembly_evidence": [
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
+          "instructions": 103
+        },
+        {
+          "file": "artifacts/client455-progress/ordinary206/reference.json",
           "instructions": 103
         }
       ]
@@ -6922,6 +6954,25 @@
         {
           "file": "artifacts/client455-progress/impact196/reference.json",
           "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x46f60",
+      "ida_name": "sub_446F60",
+      "reports": [
+        "inventory/client455-ordinary-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x46f60",
+          "bytes": 28
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ordinary206/reference.json",
+          "instructions": 15
         }
       ]
     },
@@ -7113,6 +7164,44 @@
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 41
+        }
+      ]
+    },
+    {
+      "rva": "0x47a90",
+      "ida_name": "sub_447A90",
+      "reports": [
+        "inventory/client455-ordinary-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x47a90",
+          "bytes": 33
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ordinary206/reference.json",
+          "instructions": 16
+        }
+      ]
+    },
+    {
+      "rva": "0x47af0",
+      "ida_name": "sub_447AF0",
+      "reports": [
+        "inventory/client455-ordinary-health-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x47af0",
+          "bytes": 40
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/ordinary206/reference.json",
+          "instructions": 18
         }
       ]
     },

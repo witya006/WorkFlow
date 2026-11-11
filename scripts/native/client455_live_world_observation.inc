@@ -65,7 +65,8 @@ static void RF455_ObserveWorldFrame(const float* avatar, const float* camera,
         RF455_ObserveProtocol("combat-impact-frame", index, state.combatImpactDamage,
                              static_cast<unsigned>(capture.result));
     }
-    const auto delay = state.combat && sample == 5 ? 36000 : state.camera ? cameraDelays[sample] : delays[sample];
+    const auto delay = state.combat && sample == 5 ? 36000 + state.combatApproachMs
+                     : state.camera ? cameraDelays[sample] : delays[sample];
     if (elapsed < delay) return;
     --state.remaining;
 

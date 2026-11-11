@@ -11,7 +11,7 @@ void CMonster::ApplyFinalHealthImpact455()
     if (m_targetHealth455 >= 0.0f) m_displayedHealth455 = m_targetHealth455;
 }
 
-void CMonster::ApplyForceHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames)
+void CMonster::ApplyHealthImpact455(DWORD currentDamage, DWORD originalDamage, BYTE frames)
 {
     if (m_targetHealth455 < 0.0f) return;
     if (frames <= 1) {

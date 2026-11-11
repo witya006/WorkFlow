@@ -79,7 +79,7 @@ def main():
     fresh = {name: record(path(name)) for name in names}
     fresh['monster-health-live'] = record(LIVE)
     owners = ('?AnalysisServerPacket@CNetMsgProcessor_ItemArrangement@@', '?ReceiveHealth455@CMonster@@',
-              '?ApplyForceHealthImpact455@CMonster@@', '?ProcessDamage@CCombatState@@')
+              '?ApplyHealthImpact455@CMonster@@', '?ProcessDamage@CCombatState@@')
     symbols = {name: hex(rva) for rva, name in own_symbols(link) if name.startswith(owners)}
     require(len(symbols) == len(owners), 'Both dispatcher and actual monster health owners linked')
     sources = ('scripts/client455_monster_health_port.py', 'scripts/native/client455_monster_health.inc',

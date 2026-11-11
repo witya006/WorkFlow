@@ -52,8 +52,7 @@ bool CNetMsgProcessor_Combat::NormalAttackResult455(const char* bytes, std::size
         auto* incoming = target->AddAttackerInfo(actor, TRUE);
         if (!incoming) continue;
         const auto damage = packet.targets[i].damage;
-        incoming->SetSpecialHit455(damage == -2);
-        if (damage > 0) incoming->SetTotalDamagePoint(incoming->GetTotalDamagePoint() + static_cast<DWORD>(damage));
+        incoming->SetDamage455(damage);
         incoming->SetDamageType_Dist(actor->GetAttackDistanceType(CAT_NORMAL));
         incoming->SetDamageType_AT(CAT_NORMAL);
         incoming->SetDamageType_CT(packet.critical && (i == 0 || packet.targets[0].type != CTI_PLAYER));

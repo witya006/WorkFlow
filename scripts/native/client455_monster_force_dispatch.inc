@@ -44,7 +44,7 @@ bool CNetMsgProcessor_Combat::MonsterForceResult455(const char* bytes, std::size
         target->SetReceiveNetMsg("Damaged");
         auto* incoming = target->AddAttackerInfo(actor, TRUE);
         const auto damage = packet.targets[i].damage;
-        incoming->SetForceDamage455(damage);
+        incoming->SetDamage455(damage);
         incoming->SetDamageType_Dist(ADT_NEAR);
         incoming->SetDamageType_AT(CAT_FORCE);
         incoming->SetDamageType_CT(i == 0 ? packet.critical : packet.critical && packet.targets[0].type != CTI_PLAYER);

@@ -21,7 +21,7 @@ def port_world_updates(raw, relative, native, section):
         if (clip.w > 0 && clip.z >= 0 && clip.z <= clip.w &&
             clip.x > -0.8f * clip.w && clip.x < 0.8f * clip.w &&
             clip.y > -0.38f * clip.w && clip.y < upper * clip.w) {
-            RF455_RecordMonsterDraw(GetIndex(), GetMeshID(), m_Animation.GetAniData()->m_Ident,
+            RF455_RecordMonsterDraw(GetIndex(), GetDTIndex(), GetMeshID(), m_Animation.GetAniData()->m_Ident,
                                     GetBoneFrame(), clip.x / clip.w, clip.y / clip.w, clip.w);
         }
     }''')

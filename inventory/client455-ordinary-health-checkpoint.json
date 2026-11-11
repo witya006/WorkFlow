@@ -1,0 +1,204 @@
+{
+  "status": "PARTIAL_COMPONENT_ORDINARY_HEALTH",
+  "scope": "Ordinary 5/7 damage and server-authoritative monster HP on the actual combat owners.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "44eac749bfbc28985d569d552aa3bd9810f02e68ef5399490937171b53d40ba6",
+    "bytes": 2401792,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18a980",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "6d883097b600c9ca3c51b968c263aabf55aad054b4cb2e7cc5ced9b3706eb150",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/ordinary206/live.json",
+    "sha256": "bccf63daa5819279b42c67ada330f237c2c5e4815f6bb4c37480c2d8f83bf6af"
+  },
+  "observations": {
+    "record": 4,
+    "approach_ms": 28000,
+    "shots": 1,
+    "impacts": [
+      [
+        1000008,
+        31,
+        0
+      ]
+    ],
+    "target_health": [
+      [
+        1000008,
+        27,
+        10000
+      ],
+      [
+        1000008,
+        29,
+        0
+      ]
+    ],
+    "target_picks": [
+      [
+        1,
+        1000008,
+        43375
+      ]
+    ],
+    "deaths": [
+      [
+        1000008,
+        0,
+        1
+      ]
+    ],
+    "ammunition": [
+      [
+        7,
+        308,
+        307
+      ]
+    ],
+    "repeated_surviving_target": [],
+    "frames": [
+      {
+        "file": "work/m9/44eac749/world-combat-live-taiwan001/world-impact-0.png",
+        "sha256": "40e80e14121d1eda3912504467a7faade6aa355777801ecf8bf9dfdafe114477"
+      }
+    ]
+  },
+  "component": {
+    "file": "artifacts/client455-progress/ordinary206/component.json",
+    "sha256": "b9825f59fb9481854fe0c70fa801ab009f6e541242573aee5c181c2d239bde44"
+  },
+  "earlier_runs": [
+    {
+      "file": "artifacts/client455-progress/ordinary206/first-live.json",
+      "sha256": "96c3a06514781c1c1f534eccb5537c02895eed1d8959f06d9cdf0031b16f6dbf"
+    },
+    {
+      "file": "artifacts/client455-progress/ordinary206/second-live.json",
+      "sha256": "6e3a0a076f796c38844d45bcc9fcaf051596853c075f939829742f2f4d9d409d"
+    },
+    {
+      "file": "artifacts/client455-progress/ordinary206/short-approach-live.json",
+      "sha256": "391bef832a673f14dbfa3f81dce14c9b9c0c0bf81196774cbd82a630966537cb"
+    }
+  ],
+  "script": {
+    "file": "scripts/checkpoint_client455_ordinary_health.py",
+    "sha256": "f577ec2098b37090e6ebd1704dfd13e79131ba7ae166abed9cde2e374d67a2df"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_monster_force_port.py",
+      "sha256": "103410bd20e62ea5a4bdce5133b7516c453a44bbc156d3715bf3b43adc113652"
+    },
+    {
+      "file": "scripts/client455_monster_health_port.py",
+      "sha256": "dfd5f4e6914aff0dfae83fb7c29914dce0a881f70c67ff27f7336ada9a830aac"
+    },
+    {
+      "file": "scripts/client455_initial_download_port.py",
+      "sha256": "53c236ddca28edb6a76d93a68914669cc9aae72beeaf3b671edc8167dc772f36"
+    },
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "e055c32c72709e8a6abcab1d68834e23fc39cdb801070bc60de137652d0a7c2e"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "b8a3e884a81472ed010a351bb84912735241ae592f5f6aeb5378e6b6705d1cab"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "11a4aa570fb9cc3b5862054b0d509b1c9f07a510ae3d7c8e0ba25b8b16385a59"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_damage.inc",
+      "sha256": "44511e6ef23cf72a78d1c85f3a4768789d561a572e5f068f89d1c1f132046f52"
+    },
+    {
+      "file": "scripts/native/client455_monster_health.inc",
+      "sha256": "95a767d9d59d7eaba831e7bf89a5186431e5578a82f9044449e4a74d2a45755f"
+    },
+    {
+      "file": "scripts/native/client455_normal_attack_dispatch.inc",
+      "sha256": "0b6aa384e835d9222196c995ea02de79d3a845ee47d680729a29d0623a7399b4"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_dispatch.inc",
+      "sha256": "bd3e645bf8d5149d362d7a98353c253e65f6b86088458e9b7453a21d923f99b9"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result_probe.cpp",
+      "sha256": "5c33967b2ec1bbcda3cf7ffe2e1ba8edfefeb786790a7765217c62b5fc072584"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "18e43c6923501a37718117ee391fedf5db8b71270a571f4d40cc09b902468028"
+    },
+    {
+      "file": "scripts/native/client455_camera_mouse_observation.inc",
+      "sha256": "5c27db4ab698cf7fb7ee4ac98dd223a6abb37d91f59c1a4a6d8bbd9c65b0eedc"
+    },
+    {
+      "file": "scripts/native/client455_walk_observation.inc",
+      "sha256": "d2f2358a6992224ee23a897b1fd1cd14ecac3c916d7c98227309851f458f0882"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "9ed8cc7613966115b56acaa5ff59df1099c14a73dc64fb210fe4664d272b4bcb"
+    },
+    {
+      "file": "scripts/native/own_client_startup_debugger.cpp",
+      "sha256": "852a0a3c266514997e7607cab6ded506c0da9f211a7c49a87fcb1e0d5e19c90a"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "6d883097b600c9ca3c51b968c263aabf55aad054b4cb2e7cc5ced9b3706eb150"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "640888f2fc0dfb6c365982e4a67d28aee18ecb8eac309daf7a3094bba51e3d22"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "6e2e9c805c5ce76b9938b162cab849bbf4a6ad6f6bc5619a21e5a3fff8b163bb"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "6605ed93ab3b3b24980037fb1d9b701b039c7c461b79aa1a697f9bc29772b83e"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "142bf04ab212fcf310cd7c7ed45b492563a214e1af5f67c5ec9abbbeca8ad626"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "de6216c531342203c05d4101174997f608f431cef9ae9886b37a77c68d18ea54"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "3c507ab36fa97678bc69ad6a3a3f5d99473f7ec3b32cf64b2d7e562575dfcc85"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "4dba10c1c0cd7ac97f67e4d6cc0e3cdf2a427f47c4b293c95dc2289925e72cdf"
+    },
+    "ordinary-health-reference": {
+      "file": "inventory/client455-ordinary-health-reference.json",
+      "sha256": "8859cf416e465decd09ccd7a9220f192638ef334514ce725daadae4b47f7787c"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

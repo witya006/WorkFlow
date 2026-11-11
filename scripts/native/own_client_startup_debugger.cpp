@@ -3,6 +3,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <cstdio>
+#include <cstdlib>
 #include <string>
 #include <vector>
 #include <cstdint>
@@ -63,6 +64,14 @@ int wmain(int argc,wchar_t** argv){
     std::vector<Module> modules;Breakpoint points[]={{mainRva,"WinMain",0,false},{deviceMode?plan[7]:stopRva,firstLabel.c_str(),0,false},{deviceMode?plan[8]:0,"after_d3d_before_create",0,false},{deviceMode&&stopRva!=plan[8]?stopRva:0,finalLabel.c_str(),0,false},{0,"after_login_render_following_capture",0,false}};
     char liveObservation[2]={};const bool live=GetEnvironmentVariableA("RF455_OBSERVE_PROTOCOL",liveObservation,sizeof(liveObservation))==1&&liveObservation[0]=='1';
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
+    char approach[6]{};
+    const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
+    unsigned long selectionMs = combat ? 38000 : 15000;
+    if (approachLength && approachLength < sizeof(approach)) {
+        char* approachEnd = nullptr;
+        const auto approachMs = std::strtoul(approach, &approachEnd, 10);
+        if (*approachEnd == '\0' && approachMs <= 30000) selectionMs += approachMs;
+    }
     std::uintptr_t imageBase=0;bool initialBreak=false,terminating=false,exited=false,mainReached=false,stopReached=false,d3dReached=false;const auto deadline=GetTickCount64()+(live?180000:20000);
     while(!exited){
         if(selectionSendAt&&GetTickCount64()>=selectionSendAt&&!terminating){
@@ -120,7 +129,7 @@ int wmain(int argc,wchar_t** argv){
                             const bool activated=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_ACTIVATEAPP,TRUE,0);
                             std::fprintf(output,"{\"kind\":\"selection_background_update_requested\",\"own_child_validated\":%s,\"sent\":%s,\"OS_focus_changed\":false}\n",valid&&childPID==process.dwProcessId?"true":"false",activated?"true":"false");
                             if(activated){selectionWindow=reinterpret_cast<HWND>(window);selectionSendAt=GetTickCount64()+1500;}
-                            stopReached=true;selectionDeadline=GetTickCount64()+(combat?38000:15000);
+                            stopReached=true;selectionDeadline=GetTickCount64()+selectionMs;
                         }
                         if(found==points)mainReached=true;
                         if(deviceMode&&found==points+1){DWORD full=0,bits=0;SIZE_T read=0;ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[0]),&full,4,&read);ReadProcessMemory(process.hProcess,reinterpret_cast<void*>(imageBase+plan[1]),&bits,4,&read);std::fprintf(output,"{\"kind\":\"render_configuration\",\"fullscreen\":%lu,\"render_bits\":%lu}\n",full,bits);}
