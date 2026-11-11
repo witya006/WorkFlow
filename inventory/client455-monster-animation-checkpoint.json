@@ -1,0 +1,200 @@
+{
+  "status": "PARTIAL_LIVE_MONSTER_ANIMATION",
+  "scope": "Production 455 monster keys on NeutralB and advancing animation in the baseline run.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f6816c3f21f94a414b475eaff92808357b0069061ed86237a77874a00e435b5a",
+    "bytes": 2384384,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x187340",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "0f3477dbf77b8f6696181436a028520e938b86d75b4f2e05b3efa6de5d06a7dd",
+  "own_symbols": {
+    "?GetAnimationData_Force@CMonster@@MAEPAURF455AnimationStorage@@K@Z": "0x40eb0",
+    "?GetAnimationData_Normal@CMonster@@MAEPAURF455AnimationStorage@@K@Z": "0x40ef0"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "0f3477dbf77b8f6696181436a028520e938b86d75b4f2e05b3efa6de5d06a7dd"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "d6a07b35818abe7fb784c070585198849a3944e879529148b3335d423453cab1"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "b1d76934cc8da9c620b11522e4516833b9ce323d75c596584995cf60ddc505c3"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "91e206237118e5a8eaf67fc0cea83337be82661388cdc67c82f8f4630a283596"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "bf71761883c839b04206de188e895a4598f633e917bb9389e46e84e325739136"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "3d993541de5a8790ef0c0bfc4608154acce51aa99d20f27c0978d02f83bc3539"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "ad5d45a723aeb5476b2d817954e60301906d6a5693bf0cd05de89d0e7221c88e"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "589b06c750b525e1f3bf2c1264cc03feb9d6260653445612b7aea9e6b838f02d"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "monster-animation-reference": {
+      "file": "inventory/client455-monster-animation-reference.json",
+      "sha256": "c72e5732ebae3221b16f0dc86285829bea4e1401aac97a235c20034f5d9afe9e"
+    },
+    "monster-animation-live": {
+      "file": "artifacts/client455-progress/monster189/live.json",
+      "sha256": "3312e073c70fa4c77e1516f43af893076706967fee31e7e53fd6db2249ca1e69"
+    },
+    "monster-animation-raw": {
+      "file": "artifacts/client455-progress/monster189/reference.json",
+      "sha256": "942ba57356192ef9e02fc78faac85ccaf69b6111c00550726541ca70d3a7a7d3"
+    },
+    "baseline-monster-animation-live": {
+      "file": "artifacts/client455-progress/monster189/first-live.json",
+      "sha256": "2177acb7b54bf1722f9623429122c470081f04465223e32a1ac6a509f93a8088"
+    },
+    "baseline-link": {
+      "file": "artifacts/client455-progress/monster189/first-link.json",
+      "sha256": "c4833727b6ee64fd75b3fd9d53097f1c2535400edb3bdfad5ff9e80166c97487"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/monster189/live.json",
+    "sha256": "3312e073c70fa4c77e1516f43af893076706967fee31e7e53fd6db2249ca1e69"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_animation.py",
+    "sha256": "847e91a4cc51edffe189df920e3fb672aed3516cf13a6d057b43fbc0bfc64b96"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_character_tables_port.py",
+      "sha256": "f75ba05196cc2b1267949cf98346d625c4638f0655e5e37bf7c506c2502f8590"
+    },
+    {
+      "file": "scripts/client455_world_update_port.py",
+      "sha256": "ed221ccb7e7ac347047cbb89c30875d4f5193b817091077e6eb3194f5659e1c3"
+    },
+    {
+      "file": "scripts/native/client455_protocol_observation.h",
+      "sha256": "76d097da97f2eb8b791ed50c61410de14026cb2ec80591e2d30f75b367d5733d"
+    },
+    {
+      "file": "scripts/native/client455_live_world_observation.inc",
+      "sha256": "dc3bdd9c14ae756b871605bca893e12dda45161e2c08d33ee5d3b253f740fe9e"
+    },
+    {
+      "file": "scripts/probe_client455_device_startup.py",
+      "sha256": "9b846f17d790eff32036576e3d8335fb23751c959e5ffd3e27259b4c0a8e755c"
+    },
+    {
+      "file": "scripts/probe_client455_live_launcher.py",
+      "sha256": "70628a74f152190cd338d2d10131ae6a61a3e5cb11a0693860cfa318067feb4f"
+    },
+    {
+      "file": "scripts/prepare_client455_live_resources.py",
+      "sha256": "585e4a614dac8e3fedd2f4ea70e091c133c35f5d1d4a29509cbe782731ed36c4"
+    }
+  ],
+  "baseline_capture": {
+    "executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "84864f7133cc6f390a28dcb02607e776c5c6563f722e08c9dc2b1200a14c00ce",
+      "bytes": 2384384,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x187190",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "frames": [
+      {
+        "file": "work/m9/84864f71/world-monster-live-taiwan001/world-monster-0.png",
+        "sha256": "3ad64d42fc343fb15be84c80b978b56628890328d1df2152a8bbb205efe5e153",
+        "elapsed_ms": 1062,
+        "actor": 1032066,
+        "mesh": 0,
+        "animation": 0,
+        "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+        "bone_frame": 927,
+        "screen_clip": []
+      },
+      {
+        "file": "work/m9/84864f71/world-monster-live-taiwan001/world-monster-1.png",
+        "sha256": "8594b9980f734d936246b80e57b7b00c707985825bf3ab73604a26bd3504e1bf",
+        "elapsed_ms": 1250,
+        "actor": 1032066,
+        "mesh": 0,
+        "animation": 0,
+        "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+        "bone_frame": 1861,
+        "screen_clip": []
+      },
+      {
+        "file": "work/m9/84864f71/world-monster-live-taiwan001/world-monster-2.png",
+        "sha256": "117aec266f669e48e013ea47ff5e062a74b4de2ba43a77ec35f19a4697bc7582",
+        "elapsed_ms": 1422,
+        "actor": 1032066,
+        "mesh": 0,
+        "animation": 0,
+        "animation_file": "YOUNGFLEM_PEACESTAND_01_00.ANI",
+        "bone_frame": 2710,
+        "screen_clip": []
+      }
+    ],
+    "advancing_animation": true,
+    "wing_stand_lookups": 24,
+    "wing_walk_lookups": 20
+  },
+  "current_capture": {
+    "executable": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "f6816c3f21f94a414b475eaff92808357b0069061ed86237a77874a00e435b5a",
+      "bytes": 2384384,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x187340",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "frames": [],
+    "advancing_animation": false,
+    "wing_stand_lookups": 18,
+    "wing_walk_lookups": 16
+  },
+  "full_455_animation_match": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

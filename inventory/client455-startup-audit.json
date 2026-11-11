@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "c8151a0327d042a877545a0364bf161623898bb929c20fb3bbd033fa0c9f4049",
-    "bytes": 2382848,
+    "sha256": "f6816c3f21f94a414b475eaff92808357b0069061ed86237a77874a00e435b5a",
+    "bytes": 2384384,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x186e20",
+    "entry_rva": "0x187340",
     "sections": [
       ".text",
       ".rdata",
@@ -15,14 +15,14 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "a1dc5389b60911ef68c9efa829afc2f592ffe313509da618aea1c841851da197",
+  "normal_link_sha256": "0f3477dbf77b8f6696181436a028520e938b86d75b4f2e05b3efa6de5d06a7dd",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
       "delayed": false,
       "imports": [
         {
-          "name": "D3DXMatrixInverse",
+          "name": "D3DXMatrixMultiply",
           "iat_rva": "0x1e83f0"
         },
         {
@@ -126,11 +126,11 @@
           "iat_rva": "0x1e8454"
         },
         {
-          "name": "D3DXVec3Transform",
+          "name": "D3DXMatrixInverse",
           "iat_rva": "0x1e8458"
         },
         {
-          "name": "D3DXMatrixMultiply",
+          "name": "D3DXVec3Transform",
           "iat_rva": "0x1e845c"
         }
       ],

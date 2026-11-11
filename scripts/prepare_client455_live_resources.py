@@ -9,7 +9,10 @@ from mesh08 import decode as mesh08
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--events',required=True);args=parser.parse_args()
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--events',required=True)
+    parser.add_argument('--monster-animation-mesh',action='append',type=int,default=[])
+    args=parser.parse_args()
     events=(WS/args.events).resolve()
     if not events.is_relative_to((WS/'work/m9').resolve()) or events.name!='debug-events.jsonl':raise ValueError('Expected owned live-run events')
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']).resolve()
@@ -72,7 +75,19 @@ def main():
         if len(data)!=size:raise ValueError('Short RFS member data')
         members.append(dict(relative=relative,archive=archive.relative_to(client).as_posix(),offset=offset,bytes=size));return data
     resource=client/'DataTable/Resource.edf';add(resource);mesh_rows={}
-    for tables in catalog(decode(resource.read_bytes())):
+    groups=catalog(decode(resource.read_bytes()))
+    animation_rows=[]
+    table=groups[1][2]
+    for i in range(table['count']):
+        start=i*table['stride']
+        row=table['raw'][start:start+table['stride']]
+        key=struct.unpack_from('<I',row)[0]
+        if key>>12 not in args.monster_animation_mesh:
+            continue
+        name=(cstring(row,8,128)+cstring(row,136,64)).replace('\\','/').removeprefix('./')
+        animation_rows.append(dict(mesh=key>>12,key=key,relative=name))
+        requested.add(name)
+    for tables in groups:
         table=tables[1]
         for i in range(table['count']):
             row=table['raw'][i*328:(i+1)*328]
@@ -99,6 +114,7 @@ def main():
         script=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=sha(Path(__file__))),
         observation=observation,observations=observations,requested=sorted(requested),
         inputs=sorted(inputs.values(),key=lambda row:row['relative'].casefold()),members=members,missing=sorted(set(missing)),
+        selected_monster_animations=animation_rows,
         input_exe_executed=False,server_modified=False)
     (WS/'inventory/client455-live-resource-inputs.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(requested=len(requested),input_files=len(inputs),input_bytes=sum(row['bytes'] for row in inputs.values()),missing=len(report['missing']))))

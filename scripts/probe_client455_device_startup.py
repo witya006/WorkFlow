@@ -66,7 +66,7 @@ def stage_world_map(client, run, index):
 
 
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
-         observe_world=False,observe_walk=False,observe_camera=False):
+         observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea');args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
     if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
@@ -89,7 +89,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         raise ValueError('World map inputs require a live selection observation')
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
-        prefix='world-camera' if observe_camera else 'world-walk' if observe_walk else 'world-observation'
+        prefix='world-monster' if observe_monster else 'world-camera' if observe_camera else 'world-walk' if observe_walk else 'world-observation'
         observation_name=prefix
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
@@ -181,9 +181,11 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_CAPTURE_WORLD',None)
     environment.pop('RF455_OBSERVE_WALK',None)
     environment.pop('RF455_OBSERVE_CAMERA',None)
+    environment.pop('RF455_CAPTURE_MONSTERS',None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
+    if observe_monster:environment['RF455_CAPTURE_MONSTERS']='1'
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
     if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
     secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
@@ -246,6 +248,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         frames=[run/filename for filename in ('world-post-position.png', 'world-post-position-settled.png')]
         report['world_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
                                 for frame in frames if frame.is_file()]
+        if observe_monster:
+            report['monster_frames']=[{'file':frame.relative_to(WS).as_posix(),'sha256':sha(frame)}
+                                      for frame in sorted(run.glob('world-monster-*.png'))]
     if live_port is not None:name=name.replace('-native','-live-native')
     if args.nation!='Korea':name=name.replace('-native','-'+args.nation.lower()+'-native')
     report_dir='artifacts/client455-progress' if observe_world else 'inventory'

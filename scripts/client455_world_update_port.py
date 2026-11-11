@@ -3,6 +3,28 @@ from client455_trade_ore_port import replace
 
 
 def port_world_updates(raw, relative, native, section):
+    if relative == 'character/npc/cbasenpc.cpp':
+        anchor = b'_GetCharIF()->DrawCharacter( m_pMesh, m_vecPos, m_vecRot[1], m_fScale,scroll );'
+        raw = replace(raw, anchor, anchor + b'''
+    if (RF455_WorldObservation().captureMonsters && IsEqualCharType(CTI_MONSTER) &&
+        !m_Animation.IsEmpty() && m_Animation.GetAniData()->m_Load) {
+        BBOX bounds;
+        D3DXVECTOR3 center(m_vecPos[0], m_vecPos[1], m_vecPos[2]);
+        if (GetBoundBox(bounds)) {
+            center.x = (bounds.pMin[0] + bounds.pMax[0]) * 0.5f;
+            center.y = (bounds.pMin[1] + bounds.pMax[1]) * 0.5f;
+            center.z = (bounds.pMin[2] + bounds.pMax[2]) * 0.5f;
+        }
+        D3DXVECTOR4 clip;
+        D3DXVec3Transform(&clip, &center, &GetR3State()->mMatViewProj);
+        if (clip.w > 0 && clip.z >= 0 && clip.z <= clip.w &&
+            clip.x > -0.8f * clip.w && clip.x < 0.8f * clip.w &&
+            clip.y > -0.38f * clip.w && clip.y < 0.55f * clip.w) {
+            RF455_RecordMonsterDraw(GetIndex(), GetMeshID(), m_Animation.GetAniData()->m_Ident,
+                                    GetBoneFrame(), clip.x / clip.w, clip.y / clip.w);
+        }
+    }''')
+        return b'#include "client455_protocol_observation.h"\n' + raw, True
     if relative == 'character/avatar/cavatar.h':
         anchor = b'\tBYTE\t\t\tm_byAttackMode;'
         raw = replace(raw, anchor, b'\tBYTE m_townState455 = 0xff;\n' + anchor)

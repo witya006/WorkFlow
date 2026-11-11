@@ -9051,7 +9051,7 @@
       "id": "CLIENT455-TOWN-STATE-188",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-town-state-checkpoint.json",
         "inventory/client455-town-state-reference.json",
@@ -9061,6 +9061,21 @@
       "gaps": [
         "A live attack denial in a town and full typed skill and Force activation checks",
         "Monster animation and trajectory comparison and complete gameplay acceptance"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-ANIMATION-189",
+      "area": "character",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-animation-checkpoint.json",
+        "inventory/client455-monster-animation-reference.json"
+      ],
+      "description": "The ordinary client resolves the 455 Wing stand and walk clips on NeutralB. An earlier build recorded Youngflem's standing clip advancing.",
+      "gaps": [
+        "Visual comparison of pose, tempo, turning and trajectory",
+        "Complete Force animation selection, targeting and removal"
       ]
     }
   ],

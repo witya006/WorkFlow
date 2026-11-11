@@ -2,11 +2,11 @@
   "scope": "Resource dependencies requested by owned live runs;not complete client assets or455equivalence",
   "script": {
     "file": "scripts/prepare_client455_live_resources.py",
-    "sha256": "abccac20759e70bde11292e1d51d3e788e484a91ad4c5f3ed62f6d31e7b0c8c2"
+    "sha256": "585e4a614dac8e3fedd2f4ea70e091c133c35f5d1d4a29509cbe782731ed36c4"
   },
   "observation": {
-    "file": "work/m9/22421c33/world-walk-live-taiwan003/debug-events.jsonl",
-    "sha256": "d1f00b9aa7fc6aee394f31c3247fd02086255b76cf03e3173afcd59b110d3d2c"
+    "file": "work/m9/c8151a03/world-walk-live-taiwan001/debug-events.jsonl",
+    "sha256": "dddfb1ea7cf9e790fd60f9fc2989b39f4ae16d2c0857665e3456250caa1e3cfb"
   },
   "observations": [
     {
@@ -20,9 +20,40 @@
     {
       "file": "work/m9/22421c33/world-walk-live-taiwan003/debug-events.jsonl",
       "sha256": "d1f00b9aa7fc6aee394f31c3247fd02086255b76cf03e3173afcd59b110d3d2c"
+    },
+    {
+      "file": "work/m9/c8151a03/world-walk-live-taiwan001/debug-events.jsonl",
+      "sha256": "dddfb1ea7cf9e790fd60f9fc2989b39f4ae16d2c0857665e3456250caa1e3cfb"
     }
   ],
   "requested": [
+    "CHARACTER/MONSTER/ANI/WING_PEACECRITICAL_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_PEACEIDLE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_PEACESTAND_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_PEACEWALK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARATTACK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARCORPSE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARCRITICAL_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARDIE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARFORCEATTACK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARFORCESUPPORT_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARIDLE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARPOWERUP_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARSTAND_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/WING_WARWALK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACECRITICAL_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_01.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACESTAND_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEWALK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARATTACK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCORPSE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCRITICAL_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARDIE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARFORCEATTACK_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARIDLE_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARSTAND_01_00.ANI",
+    "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARWALK_01_00.ANI",
     "CHARACTER/MONSTER/BONE/ANGRYYONGFLEM.BN",
     "CHARACTER/MONSTER/BONE/ARESFERDRED.BN",
     "CHARACTER/MONSTER/BONE/BACURODEM.BN",
@@ -100,8 +131,6 @@
     "CHARACTER/MONSTER/BONE/ZAKAN.BN",
     "CHARACTER/MONSTER/BONE/ZELNAKAN.BN",
     "CHARACTER/MONSTER/BONE/ZELNAKANVAFERNIPPER.BN",
-    "CHARACTER/MONSTER/MESH/WING.MSH",
-    "CHARACTER/MONSTER/MESH/YOUNGFLEM.MSH",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_000.BN",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_001.BN",
     "CHARACTER/NPC/BONE/CORA2_CHANNEL_002.BN",
@@ -509,12 +538,7 @@
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_003.BN",
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_004.BN",
     "CHARACTER/UNIT/BONE/BALLISTA.BN",
-    "CHARACTER/UNIT/BONE/TITAN.BN",
-    "character/monster/ani/youngflem_peacestand_01_00.ani",
-    "character/monster/ani/youngflem_peacewalk_01_00.ani",
-    "character/monster/ani/youngflem_warattack_01_00.ani",
-    "character/monster/ani/youngflem_warcorpse_01_00.ani",
-    "character/monster/ani/youngflem_wardie_01_00.ani"
+    "CHARACTER/UNIT/BONE/TITAN.BN"
   ],
   "inputs": [
     {
@@ -522,6 +546,12 @@
       "relative": "Character/Monster/Ani/RFSInfo.dat",
       "sha256": "668ab61544c9f51f695e3e51c3caf1c925662fee83461a61e2260928e438692c",
       "bytes": 1043
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Ani\\WXMONA.RFS",
+      "relative": "Character/Monster/Ani/WXMONA.RFS",
+      "sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148",
+      "bytes": 567314
     },
     {
       "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Monster\\Ani\\YZMONA.RFS",
@@ -968,6 +998,168 @@
       "archive": "Character/Monster/Ani/YZMONA.RFS",
       "offset": 263496,
       "bytes": 43026
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACECRITICAL_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 501818,
+      "bytes": 2822
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACEIDLE_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 504640,
+      "bytes": 12482
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACESTAND_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 517122,
+      "bytes": 5590
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACEWALK_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 522712,
+      "bytes": 4594
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARATTACK_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 527306,
+      "bytes": 3110
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARCORPSE_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 530416,
+      "bytes": 1398
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARCRITICAL_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 531814,
+      "bytes": 4486
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARDIE_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 536300,
+      "bytes": 5830
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARFORCEATTACK_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 542130,
+      "bytes": 3110
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARFORCESUPPORT_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 545240,
+      "bytes": 4350
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARIDLE_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 549590,
+      "bytes": 6566
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARPOWERUP_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 556156,
+      "bytes": 4350
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARSTAND_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 560506,
+      "bytes": 3366
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARWALK_01_00.ANI",
+      "archive": "Character/Monster/Ani/WXMONA.RFS",
+      "offset": 563872,
+      "bytes": 3442
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACECRITICAL_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 836,
+      "bytes": 17330
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 18166,
+      "bytes": 31946
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_01.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 50112,
+      "bytes": 131210
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACESTAND_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 181322,
+      "bytes": 14590
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEWALK_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 195912,
+      "bytes": 13470
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARATTACK_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 209382,
+      "bytes": 27358
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCORPSE_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 236740,
+      "bytes": 9910
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCRITICAL_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 246650,
+      "bytes": 16846
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARDIE_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 263496,
+      "bytes": 43026
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARFORCEATTACK_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 306522,
+      "bytes": 27358
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARIDLE_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 333880,
+      "bytes": 27302
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARSTAND_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 361182,
+      "bytes": 13622
+    },
+    {
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARWALK_01_00.ANI",
+      "archive": "Character/Monster/Ani/YZMONA.RFS",
+      "offset": 374804,
+      "bytes": 13550
     }
   ],
   "missing": [
@@ -1456,6 +1648,143 @@
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_004.BN",
     "CHARACTER/UNIT/BONE/BALLISTA.BN",
     "CHARACTER/UNIT/BONE/TITAN.BN"
+  ],
+  "selected_monster_animations": [
+    {
+      "mesh": 1,
+      "key": 4320,
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACECRITICAL_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4128,
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACEIDLE_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4096,
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACESTAND_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4112,
+      "relative": "CHARACTER/MONSTER/ANI/WING_PEACEWALK_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4240,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARATTACK_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4272,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARCORPSE_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4336,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARCRITICAL_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4256,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARDIE_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4288,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARFORCEATTACK_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4304,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARFORCESUPPORT_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4192,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARIDLE_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4224,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARPOWERUP_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4160,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARSTAND_01_00.ANI"
+    },
+    {
+      "mesh": 1,
+      "key": 4176,
+      "relative": "CHARACTER/MONSTER/ANI/WING_WARWALK_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 224,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACECRITICAL_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 32,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 33,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEIDLE_02_01.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 0,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACESTAND_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 16,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_PEACEWALK_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 144,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARATTACK_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 176,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCORPSE_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 240,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARCRITICAL_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 160,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARDIE_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 192,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARFORCEATTACK_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 96,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARIDLE_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 64,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARSTAND_01_00.ANI"
+    },
+    {
+      "mesh": 0,
+      "key": 80,
+      "relative": "CHARACTER/MONSTER/ANI/YOUNGFLEM_WARWALK_01_00.ANI"
+    }
   ],
   "input_exe_executed": false,
   "server_modified": false

@@ -72,10 +72,12 @@ def main():
     observations.add_argument('--observe-world',action='store_true')
     observations.add_argument('--observe-walk',action='store_true')
     observations.add_argument('--observe-camera',action='store_true')
+    observations.add_argument('--observe-monster',action='store_true')
     args=parser.parse_args()
     if args.select_character and not args.own_login:raise ValueError('Selection test requires own live Login')
     if args.world_map_index is not None and not args.select_character:raise ValueError('Map staging requires selection')
-    observe_world=args.observe_world or args.observe_walk or args.observe_camera
+    observe_walk=args.observe_walk or args.observe_monster
+    observe_world=args.observe_world or observe_walk or args.observe_camera
     if observe_world and (not args.authenticate or args.world_map_index is None):
         raise ValueError('World observation requires authentication and map staging')
     selfcheck()
@@ -115,9 +117,9 @@ def main():
             sys.argv=['probe_client455_device_startup.py','--login-frame','--settle-ms','8000','--with-lobby','--nation','Taiwan']
             report_file='inventory/client455-character-selection-live-taiwan-native.json' if args.select_character else 'inventory/client455-login-frame-live-taiwan-native.json'
             if observe_world:
-                observation='world-camera' if args.observe_camera else 'world-walk' if args.observe_walk else 'world-observation'
+                observation='world-monster' if args.observe_monster else 'world-camera' if args.observe_camera else 'world-walk' if observe_walk else 'world-observation'
                 report_file=f'artifacts/client455-progress/client455-{observation}-live-taiwan-native.json'
-            try:game=probe_client455_device_startup.main(handoff=handoff,live_port=27830,select_character=args.select_character,world_map_index=args.world_map_index,observe_world=observe_world,observe_walk=args.observe_walk,observe_camera=args.observe_camera)
+            try:game=probe_client455_device_startup.main(handoff=handoff,live_port=27830,select_character=args.select_character,world_map_index=args.world_map_index,observe_world=observe_world,observe_walk=observe_walk,observe_camera=args.observe_camera,observe_monster=args.observe_monster)
             except SystemExit:
                 game=json.loads((WS/report_file).read_text())
             report['own_live_run']={'report':report_file,'reached_Login':game['reached_first_login'],'private_handoff_removed':game['live_server']['private_handoff_removed']}

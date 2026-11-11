@@ -36,9 +36,9 @@ def main():
          ['Камера и движение в обычном клиенте, полные visibility/collision,ILevel/Empty/INS,refraction/FX/device reset'],
          ['client455-world-checkpoint','client455-world-frame-checkpoint','client455-material-shaders-checkpoint','client455-shader-text-checkpoint','client455-fullscreen-effect-native','client455-grade-overlay-checkpoint','client455-equipment-draw-checkpoint','client455-store-download-checkpoint','client455-avatar-world-checkpoint']),
         ('character','Персонажи и анимация',10,30,45,
-         ['Исходные MESH/BN/ANI загрузчики,менеджеры,pose/skinning и выбранные normal draw маршруты;список455 применяет имена/уровни/64-битные деньги/обучение к3реальным Avatar'],
+         ['Исходные MESH/BN/ANI загрузчики, менеджеры и выбранные маршруты позы и отрисовки', 'На NeutralB найдены штатные клипы Wing, в пробном прогоне продвигался клип Youngflem'],
          ['Полный actor lifecycle,видимость,здоровье и анимация монстров,игровой выбор/экипировка и все consumers'],
-         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint','client455-equipment-effects-checkpoint','client455-equipment-attachment-checkpoint','client455-equipment-conditions-checkpoint','client455-character-palette-checkpoint','client455-equipment-draw-checkpoint','client455-player-visual-checkpoint','client455-equipment-frame-checkpoint']),
+         ['client455-normal-renderer-checkpoint','client455-normal-accounting-checkpoint','client455-animation-checkpoint','client455-registered-characters-checkpoint','client455-avatar-classes-checkpoint','client455-equipment-checkpoint','client455-player-equipment-checkpoint','client455-equipment-providers-checkpoint','client455-equipment-effects-checkpoint','client455-equipment-attachment-checkpoint','client455-equipment-conditions-checkpoint','client455-character-palette-checkpoint','client455-equipment-draw-checkpoint','client455-player-visual-checkpoint','client455-equipment-frame-checkpoint','client455-monster-animation-checkpoint']),
         ('ui','Ввод и интерфейс',10,20,35,
          ['GDI/Unicode текст,спрайты/атласы,часть окон/таймеров/input/hover;обычный путь прошёл окна цели и счётчик подземелья до запроса базовых данных'],
          ['Полные455 окна/layout/focus/IME/input,общий UI bootstrap и игровые связи'],
@@ -96,6 +96,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-monster-animation-checkpoint',
         'client455-town-state-checkpoint',
         'client455-world-refresh-checkpoint',
         'client455-monster-data-checkpoint',

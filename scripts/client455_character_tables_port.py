@@ -25,7 +25,27 @@ def port_character_tables(raw,relative,section):
         # loaded from the record. The legacy integer health owner needs its own port.
         first=raw.index(b'\tSetMaxHP( m_pMonsterData->m_dwMaxHP );')
         last=raw.index(b'\tSetScale( m_pMonsterData->m_fScale );',first)
-        return raw[:first]+raw[last:],True
+        raw=raw[:first]+raw[last:]
+        raw=replace(raw,b'return MAI_CREATE_CREATE;',b'return 16; // 455 monster creation animation')
+        normal=b'CMonster::GetAnimationData_Normal( DWORD pi_dwAniTypeID )'
+        first,last=section(raw,normal,normal)
+        body=replace(raw[first:last],b'GetMeshID() << 8',b'GetMeshID() << 12')
+        body=replace(body,b'return GetAnimationDataByRandom( RLI_MONSTER, dwAniID );',b'''auto* animation = GetAnimationDataByRandom(RLI_MONSTER, dwAniID);
+    RF455_ObserveProtocol("monster-animation-key", GetMeshID(), pi_dwAniTypeID,
+                          animation ? m_Animation.GetAnimationID() : ID_INVALID);
+    return animation;''')
+        raw=raw[:first]+body+raw[last:]
+        force=b'CMonster::GetAnimationData_Force( DWORD pi_dwAniTypeID )'
+        first,last=section(raw,force,force)
+        body=force+b'''
+{
+    if (pi_dwAniTypeID == ID_INVALID) return nullptr;
+
+    const DWORD animationId = (GetMeshID() << 12) | (pi_dwAniTypeID << 4);
+    m_Animation.SetAnimationID(animationId);
+    return _GetAniMgr()->GetAni(RLI_MONSTER, animationId);
+}'''
+        return b'#include "client455_protocol_observation.h"\n'+raw[:first]+body+raw[last:],True
     if relative!='datatable/ccharacterdatamgr.cpp':return raw,False
     anchor=b'#include "CCharacterDataMgr.h"'
     if raw.count(anchor)!=1:raise ValueError('Character includes changed')

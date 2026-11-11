@@ -1,3 +1,9 @@
+2026-11-11 — NeutralB 189, PARTIAL_LIVE_MONSTER_ANIMATION.
+
+The ordinary client resolves Wing stand and walk keys on NeutralB.
+An earlier run recorded Youngflem's standing animation advancing.
+[Evidence and remaining work](research/client455-monster-animation.md)
+
 2026-11-11 — NeutralB 188, PARTIAL_LIVE_TOWN_STATE.
 
 The avatar consumes 4/34 and checks the ordinary attack restriction.
