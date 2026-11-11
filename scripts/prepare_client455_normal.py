@@ -11,6 +11,7 @@ from audit_client455_normal_character_api import code_only
 from client455_resource_object_port import port_resource_object
 from client455_actor_lighting_port import port_actor_lighting
 from client455_selection_port import port_selection
+from client455_character_create_port import port_character_create
 from client455_hud_port import port_hud
 from client455_item_object_port import port_item_object
 from client455_item_icon_port import port_item_icon
@@ -142,7 +143,8 @@ def main():
         save(root/'include'/source.name,raw,source,changes)
     save(root/'include/Character.h',(native/'Character455.h').read_bytes(),native/'Character455.h')
     split_units=[]
-    for name in ['client455_grade_overlay.inc','client455_equipment_draw.inc','client455_equipment_frame.inc']:
+    for name in ['client455_grade_overlay.inc','client455_equipment_draw.inc','client455_equipment_frame.inc',
+                 'client455_character_create.inc','client455_starter_attributes.inc']:
         source=native/name
         save(root/'include'/source.name,source.read_bytes(),source)
     for source in sorted((port/'source/RF_Client').rglob('*')):
@@ -169,6 +171,8 @@ def main():
             if actor_light_changed:changes.append('455actor BSP color/afterimage/blink material and negated directional light;unloaded-BSP undefined color and legacy one-argument blink callers remain unaccepted')
             raw,selection_changed=port_selection(raw,relative,native,section)
             if selection_changed:changes.append('4551/14 selection andbounded1/15 reply22:WORD result,serial32 andmoney64 toactual avatar/dummy;fullselection callback/state handoff remainsopen')
+            raw,creation_changed=port_character_create(raw,relative,native,section)
+            if creation_changed:changes.append('455 character creation message pair and typed appearance preview and roster copy')
             raw,hud_changed=port_hud(raw,relative,native,section)
             if hud_changed:changes.append('455upper HUD main/common/EtcUI sprites,4gauges/image numbers/level;fullMainGame root/EXP/unit consumers open')
             raw,item_changed=port_item_object(raw,relative,native,section)

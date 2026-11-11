@@ -1,0 +1,69 @@
+{
+  "status": "PASS_LIVE_CREATE_AND_RELOGIN_TAIWAN",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "name_submit": "0x3bb790",
+      "appearance_part": "0x16b570",
+      "create_request": "0x16b5d0",
+      "create_result": "0x16b740",
+      "dispatch": "0x162f50",
+      "class_attributes": "0x13ab10",
+      "create_success": "0x13da7d"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-character-create.json",
+      "sha256": "891253bc1172c9f67fc538ee2730f4c14bdb5a58e223162aa18366d8aadc454d"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "88e4b90cfc78e0ad4fef1a2c112b27ab58af942ed7ebb0fabf572c55f63404ec",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18f740",
+    "create_request_rva": "0x5a500",
+    "create_result_rva": "0x5a670",
+    "bytes": 2426880,
+    "unresolved_symbols": 0
+  },
+  "fixed_crash": {
+    "file": "work/startup455-m6/pre-class-fix-68b64af3.bin",
+    "sha256": "68b64af32106a17cb8f3fdedd78794fd83e03c2d4fc29f1e2b858bfb25ff3567",
+    "architecture": "x86",
+    "exception": "0xc0000005",
+    "rva": "0x1d866",
+    "observed_at": "Accept Bellato race",
+    "cause": "Null legacy class-table object in CPlayerClass::GetHP"
+  },
+  "run": {
+    "nation": "Taiwan",
+    "window": [640, 500],
+    "input": "Windows mouse and keyboard",
+    "logs": [
+      "work/startup455-m6/menu-live/events-1794439671.jsonl",
+      "work/startup455-m6/menu-live/events-1794439805.jsonl"
+    ],
+    "request": {"group": 1, "opcode": 10, "payload_bytes": 28},
+    "response": {"group": 1, "opcode": 11, "payload_bytes": 2, "result": 0, "slot": 1},
+    "registered_reply_bytes_before": 178,
+    "registered_reply_bytes_after_relogin": 342,
+    "level_after_relogin": 1,
+    "creation_run_exit": 0,
+    "frames": [
+      {"file": "work/startup455-m6/menu-live/create-class-passed.png", "sha256": "425a35ee725f45752e8cf2ede8f5f97f2bb627c2e8cd3bcefeff07be0c3a8bb8"},
+      {"file": "work/startup455-m6/menu-live/create-form-passed.png", "sha256": "010bad1e0994bf891c752d4f50442ea5889d88c53e45e28e060f15b8ab438421"},
+      {"file": "work/startup455-m6/menu-live/create-result-live.png", "sha256": "4cf36de0513d5b5558da8fee8578f9226c42988187a5626e8f1c30bcfb512658"},
+      {"file": "work/startup455-m6/menu-live/create-roster-relogin.png", "sha256": "887e07ab54c305d1f227a82976b99e69e8e048190aa782fcb02a36bf50a2bec5"}
+    ]
+  },
+  "open": [
+    "Empty account roster and creation refusals",
+    "Live creation for the other races and appearance variants",
+    "Creation preview camera, model, force-mastery bonus to FP and UI localization",
+    "Tutorial and its transition into the world"
+  ]
+}
