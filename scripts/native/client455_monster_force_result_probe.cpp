@@ -114,6 +114,57 @@ void checkOrdinaryHealth(CCharacterMgr& manager, CMonster& target)
                 "\"health_basis_points\":[10000,6500,4200]}\n", first, 100 - first);
 }
 
+void checkCreatureAttacks(CCharacterMgr& manager, CMonster& wing, CAniData& attackClip)
+{
+    manager.CreateAvatar();
+    auto* avatar = _GetAvatar();
+    constexpr DWORD avatarSerial = 30214;
+    avatar->SetCharTypeID(CTI_AVATAR);
+    avatar->SetIndex(avatarSerial);
+    CCharacter* actors[] = {&wing, manager.AddAnimus(30215), manager.AddGuardTower(30216)};
+    require(actors[1] && actors[2], "Create the original actor types");
+    actors[1]->SetIndex(30215);
+    actors[2]->SetIndex(30216);
+
+    CNetMsgProcessor_Combat combat;
+    const LONG damages[] = {70000, -2, -1};
+    for (unsigned i = 0; i < 3; ++i) {
+        auto* actor = actors[i];
+        const DWORD serial = actor->GetIndex();
+        const BYTE opcode = static_cast<BYTE>(13 + i);
+        std::array<char, 16> packet{};
+        std::memcpy(packet.data(), &serial, sizeof serial);
+        packet[4] = 2;
+        packet[5] = i == 0;
+        packet[6] = CTI_PLAYER;
+        std::memcpy(packet.data() + 7, &avatarSerial, sizeof avatarSerial);
+        std::memcpy(packet.data() + 11, &damages[i], sizeof damages[i]);
+
+        _GetGGI()->SetRequestProcessState(TRUE);
+        _MSG_HEADER header{18, {5, opcode}};
+        require(!combat.AnalysisServerPacket(&header, packet.data()), "Reject a truncated creature attack");
+        header.m_wSize = 20;
+        require(!combat.AnalysisServerPacket(&header, packet.data()) && !avatar->GetAttackerInfo(actor),
+                "Reject trailing bytes without queuing damage");
+        header.m_wSize = 19;
+        require(combat.AnalysisServerPacket(&header, packet.data()) && _GetGGI()->IsRequestProcess(),
+                "A creature attack preserves the pending local request");
+        auto* victim = actor->GetVictimInfo(avatar);
+        auto* incoming = avatar->GetAttackerInfo(actor);
+        require(victim && victim->GetAttacked() && incoming &&
+                incoming->GetDamageType_AT() == CAT_NORMAL &&
+                incoming->GetOriginalDamage455() == (i == 0 ? 70000u : 0u) &&
+                incoming->IsSpecialHit455() == (i == 1) && incoming->GetDamageType_CT() == (i == 0),
+                "The addressed actor receives the expected normal damage and reaction flags");
+        require(actor->GetCombatMode() == CSI_COMBAT && actor->GetAction() == CAI_COMBAT_ATTACK,
+                "The sender enters its ordinary attack action");
+    }
+    require(wing.GetAnimationID() == 0x1090 && attackClip.m_Load && attackClip.imported,
+            "The monster selects and loads the original normal Wing animation");
+    std::puts("{\"status\":\"PASS\",\"routes\":[13,14,15],\"malformed_lengths\":6,"
+              "\"wing_animation\":4240,\"damage\":70000,\"local_request_preserved\":true}");
+}
+
 void checkHitReaction(CMonster& target, CMonster& wing, DWORD effectType, bool retain = false) {
     target.SetMesh(1);
     auto* incoming = target.GetAttackerInfo(&wing);
@@ -330,11 +381,12 @@ int main(int argc, char** argv) {
     const bool checkCritical = argc == 8 && std::strcmp(argv[5], "--critical") == 0;
     const bool checkHealth = argc == 6 && std::strcmp(argv[5], "--health") == 0;
     const bool checkOrdinary = argc == 6 && std::strcmp(argv[5], "--ordinary-health") == 0;
+    const bool checkCreature = argc == 6 && std::strcmp(argv[5], "--creature-attacks") == 0;
     const bool checkBlockRender = argc == 6 && std::strcmp(argv[5], "--block-render") == 0;
     const bool checkDamageRender = argc == 6 && std::strcmp(argv[5], "--damage-render") == 0;
     const bool checkReaction = checkBlockRender || (argc == 6 && std::strcmp(argv[5], "--reaction") == 0);
     const bool checkImpactEffect = checkDamageRender || (argc == 6 && std::strcmp(argv[5], "--impact-effect") == 0);
-    require(argc == 5 || checkHealth || checkOrdinary || checkReaction || checkImpactEffect || checkCritical ||
+    require(argc == 5 || checkHealth || checkOrdinary || checkCreature || checkReaction || checkImpactEffect || checkCritical ||
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
@@ -352,8 +404,13 @@ int main(int argc, char** argv) {
     auto* attack = _GetAniMgr()->AddAni(RLI_MONSTER, argv[3]);
     auto* support = _GetAniMgr()->AddAni(RLI_MONSTER, argv[4]);
     require(attack && support, "Register both actual Wing clips");
-    attack->m_Ident = 0x10c0;
+    attack->m_Ident = checkCreature ? 0x1090 : 0x10c0;
     support->m_Ident = 0x10d0;
+    ANI_EXT_INFO ordinaryExtra{};
+    if (checkCreature) {
+        ordinaryExtra.nAniNumOfSameAction = 1;
+        attack->m_pExtra = &ordinaryExtra;
+    }
     CAniData* criticalPeace = nullptr;
     CAniData* criticalCombat = nullptr;
     std::array<ANI_EXT_INFO, 2> criticalExtras{};
@@ -379,20 +436,23 @@ int main(int argc, char** argv) {
 
     if (argc >= 6) {
         target->SetMesh(1);
-        if (checkOrdinary)
+        if (checkCreature)
+            checkCreatureAttacks(*manager, *wing, *attack);
+        else if (checkOrdinary)
             checkOrdinaryHealth(*manager, *target);
         else
             checkDamage(*manager, *wing, *target, checkHealth, checkReaction, checkImpactEffect, display.get(),
                         criticalPeace, criticalCombat);
         manager->Clear();
         manager.reset();
+        if (checkCreature) attack->m_pExtra = nullptr;
         if (checkCritical) {
             criticalPeace->m_pExtra = nullptr;
             criticalCombat->m_pExtra = nullptr;
         }
         require(_DestroyAnimationMgr() && _DestroyMeshMgr(), "Release normal asset managers");
         g_ifCharIF = nullptr;
-        if (checkOrdinary) return 0;
+        if (checkOrdinary || checkCreature) return 0;
         if (display)
             display->report();
         else if (checkCritical)

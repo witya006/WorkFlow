@@ -1,8 +1,13 @@
-bool CNetMsgProcessor_Combat::NormalAttackResult455(const char* bytes, std::size_t size)
+bool CNetMsgProcessor_Combat::NormalAttackResult455(BYTE opcode, const char* bytes, std::size_t size)
 {
     RF455NormalAttackResult packet{};
-    if (!RF455_ReadNormalAttackResult(bytes, size, packet)) return false;
-    _GetGGI()->SetRequestProcessState(FALSE);
+    if (opcode == 7) {
+        if (!RF455_ReadNormalAttackResult(bytes, size, packet)) return false;
+        _GetGGI()->SetRequestProcessState(FALSE);
+    } else {
+        const BYTE type = opcode == 13 ? CTI_MONSTER : opcode == 14 ? CTI_ANIMUS : CTI_GUARD_TOWER;
+        if (!RF455_ReadCreatureAttack(bytes, size, type, packet)) return false;
+    }
 
     auto* manager = _GetCharMgr();
     if (!manager || !_GetAvatar()) return true;
@@ -59,8 +64,9 @@ bool CNetMsgProcessor_Combat::NormalAttackResult455(const char* bytes, std::size
         incoming->SetEffectFrameNum(actor->GetMaxEffectFrameNum());
         incoming->SetSFItem(nullptr);
     }
-    RF455_ObserveProtocol("normal-attack-result", packet.targetCount, resolved,
-                         packet.targetCount ? static_cast<unsigned>(packet.targets[0].damage) : 0);
+    const auto damage = packet.targetCount ? static_cast<unsigned>(packet.targets[0].damage) : 0;
+    if (opcode == 7) RF455_ObserveProtocol("normal-attack-result", packet.targetCount, resolved, damage);
+    else RF455_ObserveProtocol("creature-attack-result", opcode, resolved, damage);
     return true;
 }
 

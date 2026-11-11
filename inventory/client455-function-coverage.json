@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T11:49:12.395532+00:00",
+  "measured_at_utc": "2026-11-11T12:15:41.636412+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2894,
-    "unique_functions_with_complete_assembly_cfg": 1114,
-    "unique_pinned_code_bytes": 813594,
-    "reports": 204,
-    "code_range_occurrences": 4569,
+    "unique_functions_with_pinned_code": 2895,
+    "unique_functions_with_complete_assembly_cfg": 1115,
+    "unique_pinned_code_bytes": 813666,
+    "reports": 205,
+    "code_range_occurrences": 4575,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -173,6 +173,10 @@
     {
       "file": "inventory/client455-connection-reference.json",
       "sha256": "f73889e4811410868343fc17c3e9fd7a6dd7880f0e38d55c628d2ade9d206153"
+    },
+    {
+      "file": "inventory/client455-creature-attacks-reference.json",
+      "sha256": "257dc650353813a8bd3fd9488a97e7ac2499cc5bad7d89b0b15d8c476585a64b"
     },
     {
       "file": "inventory/client455-downloaded-items-reference.json",
@@ -921,6 +925,10 @@
       "sha256": "4d3ad9e98db87697030246dfeb244196752b8ea7aa0f3caf7a44539d002aec58"
     },
     {
+      "file": "artifacts/client455-progress/creatures207/reference.json",
+      "sha256": "d1fd9bf3cdc2b2aa2ba2d6bcd0d8c0a581dfd7637b14585ba79f32ab43f9bb53"
+    },
+    {
       "file": "artifacts/client455-progress/download202/reference.json",
       "sha256": "3dfdce1dd5e376fbe9d9e0cc7880f6725fa6c19384f30b67c4e969246edab2f6"
     },
@@ -1224,7 +1232,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "2e7874e34cc8b1452ad40cc8979abe0f398751b282745e3b7cac00e86c189ca5"
+      "sha256": "0446a2e1783e3cd5300d51223a5d96c5fa69e34fcb9618edc291297288a101f5"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -19430,6 +19438,25 @@
       ]
     },
     {
+      "rva": "0x1a3470",
+      "ida_name": "sub_5A3470",
+      "reports": [
+        "inventory/client455-creature-attacks-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x1a3470",
+          "bytes": 72
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 28
+        }
+      ]
+    },
+    {
       "rva": "0x1a34c0",
       "ida_name": "sub_5A34C0",
       "reports": [
@@ -19452,6 +19479,7 @@
       "rva": "0x1a3560",
       "ida_name": "sub_5A3560",
       "reports": [
+        "inventory/client455-creature-attacks-reference.json",
         "inventory/client455-monster-force-damage-reference.json"
       ],
       "ranges": [
@@ -19461,6 +19489,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 41
+        },
         {
           "file": "artifacts/client455-progress/victims193/reference.json",
           "instructions": 41
@@ -19636,6 +19668,7 @@
       "rva": "0x1a41f0",
       "ida_name": "sub_5A41F0",
       "reports": [
+        "inventory/client455-creature-attacks-reference.json",
         "inventory/client455-live-combat-reference.json",
         "inventory/client455-monster-force-damage-reference.json"
       ],
@@ -19646,6 +19679,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 48
+        },
         {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 48
@@ -19865,6 +19902,7 @@
       "rva": "0x1a5510",
       "ida_name": "sub_5A5510",
       "reports": [
+        "inventory/client455-creature-attacks-reference.json",
         "inventory/client455-live-combat-reference.json"
       ],
       "ranges": [
@@ -19875,6 +19913,10 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 43
+        },
+        {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 43
         }
@@ -19884,6 +19926,7 @@
       "rva": "0x1a55a0",
       "ida_name": "sub_5A55A0",
       "reports": [
+        "inventory/client455-creature-attacks-reference.json",
         "inventory/client455-live-combat-reference.json"
       ],
       "ranges": [
@@ -19894,6 +19937,10 @@
       ],
       "complete_assembly_evidence": [
         {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 43
+        },
+        {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 43
         }
@@ -19903,6 +19950,7 @@
       "rva": "0x1a5630",
       "ida_name": "sub_5A5630",
       "reports": [
+        "inventory/client455-creature-attacks-reference.json",
         "inventory/client455-live-combat-reference.json"
       ],
       "ranges": [
@@ -19912,6 +19960,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/creatures207/reference.json",
+          "instructions": 43
+        },
         {
           "file": "artifacts/client455-progress/combat200/reference.json",
           "instructions": 43
@@ -49251,8 +49303,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 4,
-    "unique_functions_with_complete_assembly_cfg": 4
+    "unique_functions_with_pinned_code": 1,
+    "unique_functions_with_complete_assembly_cfg": 1
   },
   "M6": "OPEN",
   "M9": "OPEN",

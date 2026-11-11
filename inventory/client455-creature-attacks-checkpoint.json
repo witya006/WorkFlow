@@ -1,0 +1,164 @@
+{
+  "status": "PARTIAL_COMPONENT_CREATURE_ATTACKS",
+  "scope": "Incoming ordinary attacks from monsters, animus and guard towers.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "120d435a09e5e9aedcb8b079358aaf30e6623fc0df0402df77b0fc94d08bf661",
+    "bytes": 2401792,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18a9f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "57f13728df8731a64bf717411aee70ede812723b3dbf6b5e45775860d0ddabbf",
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/creatures207/live.json",
+    "sha256": "17e26ef62ab6aa79bab9e10ed381925fd97d2016652ad091d380d8c8ac95d124"
+  },
+  "observations": [
+    {
+      "report": {
+        "file": "artifacts/client455-progress/creatures207/initial-live.json",
+        "sha256": "68c17279df0436627e83e21512e079dab371eb40cd7bf03eb44eb13688732a61"
+      },
+      "ordinary": {
+        "record": null,
+        "approach_ms": 0,
+        "shots": 0,
+        "impacts": [],
+        "target_health": [
+          [
+            1032093,
+            27,
+            10000
+          ]
+        ],
+        "target_picks": [
+          [
+            1,
+            1032093,
+            3578
+          ]
+        ],
+        "deaths": [],
+        "ammunition": [],
+        "repeated_surviving_target": [],
+        "frames": [],
+        "ordinary_attack_verified": false
+      },
+      "world_frames": [
+        {
+          "file": "work/m9/120d435a/world-combat-live-taiwan001/world-post-position.png",
+          "sha256": "b114c5ec4e4b51d7a8592a1623ef6c88b7c9569a0ffa5a56df30aa726197ca3f"
+        },
+        {
+          "file": "work/m9/120d435a/world-combat-live-taiwan001/world-post-position-settled.png",
+          "sha256": "e423051c186e228a7d8802c45c30aad46b735537967daffabd5cf34178eb8725"
+        }
+      ],
+      "incoming_resolved": []
+    },
+    {
+      "report": {
+        "file": "artifacts/client455-progress/creatures207/live.json",
+        "sha256": "17e26ef62ab6aa79bab9e10ed381925fd97d2016652ad091d380d8c8ac95d124"
+      },
+      "ordinary": {
+        "record": 4,
+        "approach_ms": 28000,
+        "shots": 0,
+        "impacts": [],
+        "target_health": [],
+        "target_picks": [],
+        "deaths": [],
+        "ammunition": [],
+        "repeated_surviving_target": [],
+        "frames": [],
+        "ordinary_attack_verified": false
+      },
+      "world_frames": [
+        {
+          "file": "work/m9/120d435a/world-combat-live-taiwan002/world-post-position.png",
+          "sha256": "b114c5ec4e4b51d7a8592a1623ef6c88b7c9569a0ffa5a56df30aa726197ca3f"
+        },
+        {
+          "file": "work/m9/120d435a/world-combat-live-taiwan002/world-post-position-settled.png",
+          "sha256": "5b2b9655a4d7ee3b15d68bc9d79cc972a11fd0f0784a0e685494d073c91cab26"
+        }
+      ],
+      "incoming_resolved": []
+    }
+  ],
+  "component": {
+    "file": "artifacts/client455-progress/creatures207/component.json",
+    "sha256": "9975c1a00b9266801208036fbc2048d6ad9d76f0fc36701c67ed36f7be43e99d"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_creature_attacks.py",
+    "sha256": "4598a283178bfe040e6b8f1b6408e8c087b1ce9f474ebf8ba07f1c514e18fff0"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_armed_attack_port.py",
+      "sha256": "05ef4e1e280963fb48ed97db5af98c9458f14e12ae903764c153f14bd8a41005"
+    },
+    {
+      "file": "scripts/native/client455_normal_attack_dispatch.inc",
+      "sha256": "f62d4320e2bdcb009a72d3ff8621017451e73ceb24c78c80013759d193f67d1b"
+    },
+    {
+      "file": "scripts/native/client455_normal_attack_result.h",
+      "sha256": "6f67b3c37bd15a4bfd8162bc2b80cd4345312d136b086bd0287ee7289240b1c9"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result_probe.cpp",
+      "sha256": "3fb2e0f2a63abe58d97256223197ba0ab4f4bb29e3fea0e13734262d542c58ae"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "57f13728df8731a64bf717411aee70ede812723b3dbf6b5e45775860d0ddabbf"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "88d42b6c3e62094ee3c2ef4021f36ab9624a21462bfade92e9f39b026102111d"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "84caa866adacdbae55013eaaffc622dca118e9d1bc06be4c09b743b383916c2d"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "6fcb807806e62816eabc9c5fac8b9d0430b08a523a90fe20b494c10107479c8e"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "efc7bd0e09f745243f020df2d7e3ea4de0313e7f8063ac3484b15abf56a47076"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "c58821a46aabb2e8cf543489aa04a2909da6911cf12f6ee0ec2e4ebbcf3bd004"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "339ccb8ae64c611987a74391a57df73cf3f40fbcae9c341693c9fe074a014efe"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "571750fd739e092d4bc81b6b704207e98de3d205e1543c200c706c0f44a0471a"
+    },
+    "creature-attacks-reference": {
+      "file": "inventory/client455-creature-attacks-reference.json",
+      "sha256": "257dc650353813a8bd3fd9488a97e7ac2499cc5bad7d89b0b15d8c476585a64b"
+    }
+  },
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

@@ -64,8 +64,8 @@ def check_component(link):
     print(json.dumps(ordinary))
 
 
-def observe_live(link):
-    live = json.loads(LIVE.read_text())
+def observe_live(link, report_file=LIVE, *, require_ordinary_attack=True):
+    live = json.loads(report_file.read_text())
     require(live['normal_link_sha256'] == sha(path('normal-link')) and live['executable'] == link['executable'],
             'Exact own combat build')
     check(dict(file=live['staged_executable'], sha256=link['executable']['sha256']))
@@ -113,14 +113,17 @@ def observe_live(link):
                 any(row[1] == damage for row in impacts), 'Captured post-impact framebuffer')
     shots = messages.count('tx:5:1:8')
     ammunition = events('combat-ammunition-left')
-    require(shots and matching_impacts and any(before == after + 1 for _, before, after in ammunition),
+    ordinary_attack_verified = bool(shots and matching_impacts and
+                                    any(before == after + 1 for _, before, after in ammunition))
+    require(not require_ordinary_attack or ordinary_attack_verified,
             'Live ordinary impact agrees with server HP and arrow consumption')
     require(not repeated or (shots >= 2 and len(ammunition) >= 2 and len(frames) == 2),
             'Repeated live hits have two captured frames and ammunition replies')
     return dict(record=live.get('combat_monster_record'), approach_ms=live.get('combat_approach_ms', 0),
                 shots=shots, impacts=impacts, target_health=health,
                 target_picks=events('combat-click'), deaths=events('monster-death'),
-                ammunition=ammunition, repeated_surviving_target=repeated, frames=frames)
+                ammunition=ammunition, repeated_surviving_target=repeated, frames=frames,
+                ordinary_attack_verified=ordinary_attack_verified)
 
 
 def main():

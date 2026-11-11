@@ -163,7 +163,7 @@ def port_armed_attack(raw, relative, section, native):
     if relative == 'network/netmsgprocessor/combat/cnetmsgprocessor_combat.h':
         anchor = b'\tbool MonsterForceResult455(const char* bytes, std::size_t size);'
         return replace(raw, anchor, anchor +
-                       b'\n\tbool NormalAttackResult455(const char* bytes, std::size_t size);'
+                       b'\n\tbool NormalAttackResult455(BYTE opcode, const char* bytes, std::size_t size);'
                        b'\n\tbool AmmunitionRemaining455(const char* bytes, std::size_t size);'), True
 
     if relative == 'character/character/ccharacter_relationinfo2.cpp':
@@ -222,12 +222,17 @@ def port_armed_attack(raw, relative, section, native):
 }
 ''')
         anchor = b'\t\tcase attack_gen_result_zocl\t:'
+        raw = replace(raw, b'\t\tcase mode_change_result_zocl\t:\n\t\t\tModeChangeResult_zocl( pi_pMsg );\n\t\t\tbreak;\n\n', b'')
+        raw = replace(raw, b'\t\tcase monster_chase_change_zocl\t:\n\t\t\tMonsterChaseChange_zocl( pi_pMsg );\n\t\t\tbreak;\n\n', b'')
         raw = replace(raw, anchor, b'''        case 6:
             _GetGGI()->SetRequestProcessState(FALSE);
             return true;
         case 7:
+        case 13:
+        case 14:
+        case 15:
             return pMsgHeader->m_wSize >= 4 &&
-                   NormalAttackResult455(pi_pMsg, pMsgHeader->m_wSize - 4);
+                   NormalAttackResult455(pMsgHeader->m_byType[1], pi_pMsg, pMsgHeader->m_wSize - 4);
         case 21:
             return pMsgHeader->m_wSize >= 4 &&
                    AmmunitionRemaining455(pi_pMsg, pMsgHeader->m_wSize - 4);

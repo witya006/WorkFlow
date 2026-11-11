@@ -47,3 +47,24 @@ inline bool RF455_ReadNormalAttackResult(const char* bytes, std::size_t size, RF
     out = packet;
     return true;
 }
+
+// 455 5/13, 5/14 and 5/15 carry one target without a projectile field.
+inline bool RF455_ReadCreatureAttack(const char* bytes, std::size_t size, std::uint8_t attackerType,
+                                    RF455NormalAttackResult& out)
+{
+    if (!bytes || size != 15) return false;
+    const auto* data = reinterpret_cast<const std::uint8_t*>(bytes);
+    RF455NormalAttackResult packet{};
+    packet.attackerType = attackerType;
+    packet.projectile = 0xffff;
+    packet.targetCount = 1;
+    std::memcpy(&packet.attackerSerial, data, sizeof packet.attackerSerial);
+    packet.attackPart = data[4];
+    packet.critical = data[5];
+    auto& target = packet.targets.front();
+    target.type = data[6];
+    std::memcpy(&target.serial, data + 7, sizeof target.serial);
+    std::memcpy(&target.damage, data + 11, sizeof target.damage);
+    out = packet;
+    return true;
+}

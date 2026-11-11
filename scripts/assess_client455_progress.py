@@ -70,7 +70,7 @@ def main():
           'Общий расчёт кадров обычной атаки и Силы применяет HP, компонентно проверены два удара по выжившей цели'],
          ['Обычные movement/collision/targeting/attack/skills/results в одном игровом цикле455',
           'Подтвердить повтор по выжившей цели и многокадровое изменение HP на живой анимации'],
-         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint','client455-armed-attack-checkpoint','client455-downloaded-items-checkpoint','client455-primary-ammunition-checkpoint','client455-ammunition-impact-checkpoint','client455-monster-target-checkpoint','client455-ordinary-health-checkpoint']),
+         ['client455-character-flags-checkpoint','client455-nuclear-receiver-checkpoint','client455-town-state-checkpoint','client455-monster-force-result-checkpoint','client455-monster-force-damage-checkpoint','client455-monster-health-checkpoint','client455-monster-force-reaction-checkpoint','client455-monster-force-impact-checkpoint','client455-combat-result-effect-checkpoint','client455-force-damage-render-checkpoint','client455-monster-critical-checkpoint','client455-live-combat-checkpoint','client455-armed-attack-checkpoint','client455-downloaded-items-checkpoint','client455-primary-ammunition-checkpoint','client455-ammunition-impact-checkpoint','client455-monster-target-checkpoint','client455-ordinary-health-checkpoint','client455-creature-attacks-checkpoint']),
         ('items','Предметы,NPC,квесты',10,15,30,
          ['Таблицы, фабрика и значки размещают 8 предметов экипировки и 21 запись инвентаря при обычном входе'],
          ['Полный inventory/equipment/use/cooldowns/trade/storage/NPC/quests и все классы предметов'],
@@ -108,6 +108,7 @@ def main():
     #is awaiting its first runtime check. Resolve exact archived evidence rather
     #than falsely calling an older screenshot fresh for the new executable.
     checkpoint_names=[
+        'client455-creature-attacks-checkpoint',
         'client455-ordinary-health-checkpoint',
         'client455-monster-target-checkpoint',
         'client455-ammunition-impact-checkpoint',
@@ -257,7 +258,7 @@ def main():
                 dict(area='Binary reference for reverse engineering',state='READY',measured='2 pinned x86 binaries,hashes checked',limit='Not all behavior has been mapped or compared'),
                 dict(area='Runtime assets and tables',state='PARTIAL',measured='Resource9groups/30623rows andItem47tables/76049rows;1120 checked unresolved resource references',limit='No complete required-asset denominator;some locale/selector tables disagree'),
                 dict(area='Behavioral specification',state='INCOMPLETE',measured=f'12 domain planning map;{len(registry["features"])} overlapping historical records',limit='Full feature/packet/state inventory still missing'),
-                dict(area='Acceptance scenarios',state='INCOMPLETE',measured='0/12 full domains accepted;ordinary Login lobby/waiting observed',limit='No complete ordinary login/selection/world/gameplay chain')]),
+                dict(area='Acceptance scenarios',state='INCOMPLETE',measured='0/12 full domains accepted;ordinary login, character selection, NeutralB entry and selected gameplay observed',limit='Surviving-target combat, incoming creature attacks and other full acceptance scenarios are open')]),
         character_tables143=dict(id='143',status='PARTIAL_NATIVE_VERIFIED' if character_native_current else 'PARTIAL_NATIVE_VERIFIED_ON_PRESERVED143',
             reference_report=dict(file=wip_file.relative_to(WS).as_posix(),sha256=sha(wip_file)) if wip else None,
             static_functions=wip['full_functions'] if wip else None,
@@ -285,10 +286,10 @@ def main():
             test_or_function_counts_are_not_completion_percent=True,
             unfinished_or_failed_builds_are_not_completed_progress=True,
             next_report_fields=['Observable ordinary-client result','Integrated versus standalone evidence','Remaining prerequisites to next anchor','Current source build health','Changed estimate and its basis'],
-            recalculate_after='First complete ordinary Login/selection/map scenario,or a material scope discovery',
-            unchanged_range_reason='A live character enters the first NeutralB scene and receives the start-position reply. Movement, full world dispatch, merchant and item owners and complete functional domains remain open.'),
+            recalculate_after='A material change in remaining scope or the first fully accepted domain',
+            unchanged_range_reason='NeutralB entry, movement, target selection and selected outgoing attacks are evidenced across builds. Incoming creature attacks passed at component level. Full combat, other world interactions and all complete domains remain open.'),
         forecast=dict(remaining_to_completed_functional_scope_ratio_approx=[2,4],ratio_is_functional_scope_not_effort_or_time=True,calendar_deadline=None,remaining_hours=None,
-            reason='No defensible throughput sample for a complete integration scenario. Functional percentages do not imply the same ratio of time. Re-estimate after first complete Login/character/map scenario.'),
+            reason='No defensible throughput sample for a fully accepted domain. Functional percentages do not imply the same ratio of time.'),
         script=dict(file=Path(__file__).relative_to(WS).as_posix(),sha256=sha(__file__)),M6='OPEN',M6F='OPEN',M7='OPEN',M9='OPEN')
     output=WS/'inventory/client455-progress-assessment.json';output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(dict(estimate_percent=25,range=[20,35],weighted=[low,high],remaining_percent=75,domains=12,accepted_domains=0,registry=dict(status),client_units=182,engine_units=67,unresolved=0,report=output.relative_to(WS).as_posix()),ensure_ascii=False))

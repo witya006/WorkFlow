@@ -9323,7 +9323,7 @@
       "id": "CLIENT455-ORDINARY-HEALTH-206",
       "area": "gameplay",
       "status": "partial",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-ordinary-health-checkpoint.json",
         "inventory/client455-ordinary-health-reference.json"
@@ -9333,6 +9333,22 @@
         "Live repeat hit against the same surviving target. Wing died from the first shot.",
         "Live ordinary multi-frame attack, combat variants and non-monster health owners",
         "Full target lifecycle and character class coverage"
+      ]
+    },
+    {
+      "id": "CLIENT455-CREATURE-ATTACKS-207",
+      "area": "gameplay",
+      "status": "partial",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-creature-attacks-checkpoint.json",
+        "inventory/client455-creature-attacks-reference.json"
+      ],
+      "description": "Ordinary 5/13, 5/14 and 5/15 attacks reach the normal combat owners in the component run. The exact build enters and renders NeutralB in two live sessions.",
+      "gaps": [
+        "Live creature attack and its effects on the player",
+        "Live hits against a surviving target",
+        "Attack part, effect timing and actor-specific reaction parity"
       ]
     }
   ],

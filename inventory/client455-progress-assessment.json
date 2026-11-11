@@ -267,7 +267,8 @@
         "client455-primary-ammunition-checkpoint",
         "client455-ammunition-impact-checkpoint",
         "client455-monster-target-checkpoint",
-        "client455-ordinary-health-checkpoint"
+        "client455-ordinary-health-checkpoint",
+        "client455-creature-attacks-checkpoint"
       ]
     },
     {
@@ -333,7 +334,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "6d883097b600c9ca3c51b968c263aabf55aad054b4cb2e7cc5ced9b3706eb150",
+      "sha256": "57f13728df8731a64bf717411aee70ede812723b3dbf6b5e45775860d0ddabbf",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -1008,6 +1009,14 @@
       "sha256": "5e7b6d71821161439e22c244d7386e2932096dacd7a4695a22ad0689204627bb",
       "status": "PARTIAL_COMPONENT_ORDINARY_HEALTH",
       "scope": "Ordinary 5/7 damage and server-authoritative monster HP on the actual combat owners.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-creature-attacks-checkpoint": {
+      "file": "inventory/client455-creature-attacks-checkpoint.json",
+      "sha256": "2786e19446a71cc1525054011bb0a4152316e14e59d0f6449fa6e235821646d3",
+      "status": "PARTIAL_COMPONENT_CREATURE_ATTACKS",
+      "scope": "Incoming ordinary attacks from monsters, animus and guard towers.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -1059,11 +1068,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "44eac749bfbc28985d569d552aa3bd9810f02e68ef5399490937171b53d40ba6",
+      "sha256": "120d435a09e5e9aedcb8b079358aaf30e6623fc0df0402df77b0fc94d08bf661",
       "bytes": 2401792,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x18a980",
+      "entry_rva": "0x18a9f0",
       "sections": [
         ".text",
         ".rdata",
@@ -1088,22 +1097,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "6e2e9c805c5ce76b9938b162cab849bbf4a6ad6f6bc5619a21e5a3fff8b163bb",
+      "sha256": "84caa866adacdbae55013eaaffc622dca118e9d1bc06be4c09b743b383916c2d",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-ordinary-health-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-creature-attacks-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "6d883097b600c9ca3c51b968c263aabf55aad054b4cb2e7cc5ced9b3706eb150",
+      "link_sha256": "57f13728df8731a64bf717411aee70ede812723b3dbf6b5e45775860d0ddabbf",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "44eac749bfbc28985d569d552aa3bd9810f02e68ef5399490937171b53d40ba6",
+        "sha256": "120d435a09e5e9aedcb8b079358aaf30e6623fc0df0402df77b0fc94d08bf661",
         "bytes": 2401792,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18a980",
+        "entry_rva": "0x18a9f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1113,7 +1122,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "6e2e9c805c5ce76b9938b162cab849bbf4a6ad6f6bc5619a21e5a3fff8b163bb"
+      "build_sha256": "84caa866adacdbae55013eaaffc622dca118e9d1bc06be4c09b743b383916c2d"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -1121,7 +1130,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "6e2e9c805c5ce76b9938b162cab849bbf4a6ad6f6bc5619a21e5a3fff8b163bb"
+        "sha256": "84caa866adacdbae55013eaaffc622dca118e9d1bc06be4c09b743b383916c2d"
       },
       "build_exit": 0,
       "errors": [],
@@ -1131,11 +1140,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "44eac749bfbc28985d569d552aa3bd9810f02e68ef5399490937171b53d40ba6",
+        "sha256": "120d435a09e5e9aedcb8b079358aaf30e6623fc0df0402df77b0fc94d08bf661",
         "bytes": 2401792,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x18a980",
+        "entry_rva": "0x18a9f0",
         "sections": [
           ".text",
           ".rdata",
@@ -1148,20 +1157,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "6e2e9c805c5ce76b9938b162cab849bbf4a6ad6f6bc5619a21e5a3fff8b163bb"
+        "sha256": "84caa866adacdbae55013eaaffc622dca118e9d1bc06be4c09b743b383916c2d"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "Ordinary 5/7 damage and server-authoritative monster HP on the actual combat owners.",
+    "current_work": "Incoming ordinary attacks from monsters, animus and guard towers.",
     "ordinary_login_observation": {
-      "file": "artifacts/client455-progress/ordinary206/live.json",
-      "sha256": "bccf63daa5819279b42c67ada330f237c2c5e4815f6bb4c37480c2d8f83bf6af",
+      "file": "artifacts/client455-progress/creatures207/live.json",
+      "sha256": "17e26ef62ab6aa79bab9e10ed381925fd97d2016652ad091d380d8c8ac95d124",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/44eac749/world-combat-live-taiwan001/login-frame.png",
-        "sha256": "8bf5014423593887674866aa92593eab25e17501003b1370068b3b20241f100a"
+        "file": "work/m9/120d435a/world-combat-live-taiwan002/login-frame.png",
+        "sha256": "008db117321c8363f55f8ff963ea603a95c950b394d7a032172804fb5fdc9cd9"
       },
       "capture": {
         "result": 0,
@@ -1169,7 +1178,7 @@
         "height": 500,
         "format": 22,
         "frame_index": 123,
-        "elapsed_ms": 8016,
+        "elapsed_ms": 8032,
         "requested_delay_ms": 8000
       },
       "stage_state": {},
@@ -1185,11 +1194,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "927ee397f29538e35a63b1e39956369355019b6201b6afa1914be553d84144db",
-    "entries": 210,
+    "sha256": "b139eb0a224120ca7f1abd1526a8166b8b8efa58cdc121bf66d16cbc34e390d8",
+    "entries": 211,
     "statuses": {
       "partial_component": 22,
-      "partial": 158,
+      "partial": 159,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -1199,7 +1208,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-ORDINARY-HEALTH-206"
+      "CLIENT455-CREATURE-ATTACKS-207"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1269,14 +1278,14 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;210 overlapping historical records",
+        "measured": "12 domain planning map;211 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
         "area": "Acceptance scenarios",
         "state": "INCOMPLETE",
-        "measured": "0/12 full domains accepted;ordinary Login lobby/waiting observed",
-        "limit": "No complete ordinary login/selection/world/gameplay chain"
+        "measured": "0/12 full domains accepted;ordinary login, character selection, NeutralB entry and selected gameplay observed",
+        "limit": "Surviving-target combat, incoming creature attacks and other full acceptance scenarios are open"
       }
     ]
   },
@@ -1416,8 +1425,8 @@
       "Current source build health",
       "Changed estimate and its basis"
     ],
-    "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "A live character enters the first NeutralB scene and receives the start-position reply. Movement, full world dispatch, merchant and item owners and complete functional domains remain open."
+    "recalculate_after": "A material change in remaining scope or the first fully accepted domain",
+    "unchanged_range_reason": "NeutralB entry, movement, target selection and selected outgoing attacks are evidenced across builds. Incoming creature attacks passed at component level. Full combat, other world interactions and all complete domains remain open."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1427,11 +1436,11 @@
     "ratio_is_functional_scope_not_effort_or_time": true,
     "calendar_deadline": null,
     "remaining_hours": null,
-    "reason": "No defensible throughput sample for a complete integration scenario. Functional percentages do not imply the same ratio of time. Re-estimate after first complete Login/character/map scenario."
+    "reason": "No defensible throughput sample for a fully accepted domain. Functional percentages do not imply the same ratio of time."
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "4cd1ac64a71890fcec067c3fac44239737f2d54a7e0d9a2fa75919a68386c18b"
+    "sha256": "969f391fbd85b7aadb94b64f18d98150049f8386884b496c9891229829c8aac0"
   },
   "M6": "OPEN",
   "M6F": "OPEN",
