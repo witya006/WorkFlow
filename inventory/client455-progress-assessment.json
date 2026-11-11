@@ -172,7 +172,7 @@
       "estimate_high": 25,
       "completed_full_domain": false,
       "done": [
-        "Codec/AES/transport/rings;после выбора применены базовые поля3/4;приняты форматы инвентаря3/6 и Силы3/10;достигнут ответ3/8"
+        "Codec/AES/transport/rings;после выбора применены базовые поля и показатели развития, сверены семь записей заданий, получен Linker3/45"
       ],
       "remaining": [
         "Полный35-handler dispatch,все реальные потребители,Close/errors/threads/timers"
@@ -185,7 +185,8 @@
         "client455-premium-state-checkpoint",
         "client455-live-login-checkpoint",
         "client455-target-windows-checkpoint",
-        "client455-initial-download-checkpoint"
+        "client455-initial-download-checkpoint",
+        "client455-mastery-quests-checkpoint"
       ]
     },
     {
@@ -196,7 +197,7 @@
       "estimate_high": 10,
       "completed_full_domain": false,
       "done": [
-        "Обычный Login/анимированный выбор показаны;сервер принял выбор;MainGame дошёл до ответа с показателями развития,мир не достигнут"
+        "Обычный Login и анимированный выбор показаны, сервер принял выбор, MainGame дошёл до ответа Linker3/45"
       ],
       "remaining": [
         "Полный Title/Login/character selection/auth→world поток455 не пройден"
@@ -288,7 +289,7 @@
   "evidence": {
     "client455-normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "083242e94aa44a39042935b29ba00860792bbe83008a64b600b882ae4070c8fd",
+      "sha256": "eb18196f5fc9d50b4951e172a125558a66f247ae690face2747ec017c4aa43c0",
       "status": null,
       "scope": "Real normal455RF_Online link diagnostic,not runtime/acceptance",
       "fresh_for_current_PE": false,
@@ -731,6 +732,14 @@
       "sha256": "a7db39151d375588bfc6a0ec1e2e3bff0bad7c92bddcb721c7e74a03bfd55ee3",
       "status": "PARTIAL_WAITING_FOR_MASTERY_AND_ITEM_OWNERS",
       "scope": "The ordinary client applies the supported base fields and reaches the 322-byte 3/8 mastery reply. The live inventory and Force records pass wire decoding, while the legacy item providers resolve none.",
+      "fresh_for_current_PE": false,
+      "historical_selected_evidence_may_be_used": true
+    },
+    "client455-mastery-quests-checkpoint": {
+      "file": "inventory/client455-mastery-quests-checkpoint.json",
+      "sha256": "07c23e9a47aeefa6862b214014b05d1e9deb2d60b21c7d85db43723f41b816e3",
+      "status": "PARTIAL_WAITING_FOR_LINKER_AND_ITEM_OWNERS",
+      "scope": "The ordinary client applies supported mastery fields, resolves seven quest catalog records, handles empty unit and miner lists and receives the 3/45 Linker reply.",
       "fresh_for_current_PE": true,
       "historical_selected_evidence_may_be_used": true
     },
@@ -798,11 +807,11 @@
     "unresolved_symbols": 0,
     "own_executable": {
       "file": "work/client455-port/normal/build/RF_Online.bin",
-      "sha256": "0280bf774893ada49186b8265b20dd7ce604557d88ec61b0ec8fa9a034250383",
-      "bytes": 2369536,
+      "sha256": "cd3f1c0da9de66adacd5bf088cd7a23cd6252ce0336dd4048128f3c63c62234a",
+      "bytes": 2375168,
       "architecture": "x86",
       "image_base": "0x400000",
-      "entry_rva": "0x183f90",
+      "entry_rva": "0x185100",
       "sections": [
         ".text",
         ".rdata",
@@ -827,22 +836,22 @@
     "compilation_and_link_facts_apply_to": "Last completed partial runtime baseline,not unfinished working sources",
     "exact_linked_build_evidence": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "6d674ddeda7a91175c9263a3837167057ffecbea027dadf90e0a4fb2abf37242",
+      "sha256": "54c3dac5770621b14a9c627ea7b7670674e076dcca9eed78917b8707d9fd81f3",
       "matches_link_record": true
     },
     "newer_build_is_not_the_accepted_runtime": false,
-    "last_completed_checkpoint": "inventory/client455-initial-download-checkpoint.json",
+    "last_completed_checkpoint": "inventory/client455-mastery-quests-checkpoint.json",
     "last_completed_checkpoint_is_historical_for_current_PE": false,
     "runtime_baseline": {
       "link_file": "inventory/client455-normal-link.json",
-      "link_sha256": "083242e94aa44a39042935b29ba00860792bbe83008a64b600b882ae4070c8fd",
+      "link_sha256": "eb18196f5fc9d50b4951e172a125558a66f247ae690face2747ec017c4aa43c0",
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "0280bf774893ada49186b8265b20dd7ce604557d88ec61b0ec8fa9a034250383",
-        "bytes": 2369536,
+        "sha256": "cd3f1c0da9de66adacd5bf088cd7a23cd6252ce0336dd4048128f3c63c62234a",
+        "bytes": 2375168,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183f90",
+        "entry_rva": "0x185100",
         "sections": [
           ".text",
           ".rdata",
@@ -852,7 +861,7 @@
         ]
       },
       "build_file": "inventory/client455-normal-build.json",
-      "build_sha256": "6d674ddeda7a91175c9263a3837167057ffecbea027dadf90e0a4fb2abf37242"
+      "build_sha256": "54c3dac5770621b14a9c627ea7b7670674e076dcca9eed78917b8707d9fd81f3"
     },
     "candidate_runtime_status": "CHECKED_PARTIAL",
     "post_selection_failure": null,
@@ -860,7 +869,7 @@
       "status": "BUILD_SUCCEEDED_RUNTIME_NOT_IMPLIED",
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "6d674ddeda7a91175c9263a3837167057ffecbea027dadf90e0a4fb2abf37242"
+        "sha256": "54c3dac5770621b14a9c627ea7b7670674e076dcca9eed78917b8707d9fd81f3"
       },
       "build_exit": 0,
       "errors": [],
@@ -870,11 +879,11 @@
     "intermediate_candidate": {
       "executable": {
         "file": "work/client455-port/normal/build/RF_Online.bin",
-        "sha256": "0280bf774893ada49186b8265b20dd7ce604557d88ec61b0ec8fa9a034250383",
-        "bytes": 2369536,
+        "sha256": "cd3f1c0da9de66adacd5bf088cd7a23cd6252ce0336dd4048128f3c63c62234a",
+        "bytes": 2375168,
         "architecture": "x86",
         "image_base": "0x400000",
-        "entry_rva": "0x183f90",
+        "entry_rva": "0x185100",
         "sections": [
           ".text",
           ".rdata",
@@ -887,20 +896,20 @@
       "linked_build_evidence_available": true,
       "build_report": {
         "file": "inventory/client455-normal-build.json",
-        "sha256": "6d674ddeda7a91175c9263a3837167057ffecbea027dadf90e0a4fb2abf37242"
+        "sha256": "54c3dac5770621b14a9c627ea7b7670674e076dcca9eed78917b8707d9fd81f3"
       },
       "runtime_verified": true,
       "superseded_by_later_source_build": false
     },
-    "current_work": "The ordinary client applies the supported base fields and reaches the 322-byte 3/8 mastery reply. The live inventory and Force records pass wire decoding, while the legacy item providers resolve none.",
+    "current_work": "The ordinary client applies supported mastery fields, resolves seven quest catalog records, handles empty unit and miner lists and receives the 3/45 Linker reply.",
     "ordinary_login_observation": {
       "file": "inventory/client455-character-selection-live-taiwan-native.json",
-      "sha256": "d1bfc6403ae42f354836c35977ffeb5f78dcd637d090100f70a38799fbdf319a",
+      "sha256": "5884fd71dab930cd610b15b47b9dd3b7044950244044970d6d5559fe926f8fa0",
       "fresh_for_current_PE": true,
       "fresh_for_runtime_baseline": true,
       "frame": {
-        "file": "work/m9/0280bf77/selection-live-taiwan001/login-frame.png",
-        "sha256": "4c611c8a0f616be7e741365caf5f15086dc67a824f12d3174c63bd667b3e8bcf"
+        "file": "work/m9/cd3f1c0d/selection-live-taiwan001/login-frame.png",
+        "sha256": "f5ab3c116342d08f4882a464335aa781a1b9015eede770f96ffd82bd07310965"
       },
       "capture": {
         "result": 0,
@@ -924,11 +933,11 @@
   },
   "registry": {
     "file": "inventory/client-features.json",
-    "sha256": "2f10cbd1d0b738947e260ac1ee315446c31d51f1c0a5813af11a754dc9b635ce",
-    "entries": 181,
+    "sha256": "ccda2be70a76485034e613f81443794d19e7b9d307a42f9e00d049f0c6a8d296",
+    "entries": 182,
     "statuses": {
       "partial_component": 13,
-      "partial": 138,
+      "partial": 139,
       "audit_open": 1,
       "open": 2,
       "implemented": 23,
@@ -938,7 +947,7 @@
     "complete_denominator": false,
     "contains_historical_and_overlapping_records": true,
     "marked_current": [
-      "CLIENT455-INITIAL-DOWNLOAD-175"
+      "CLIENT455-MASTERY-QUESTS-176"
     ],
     "note": "Historical overlapping local records are not a complete functional inventory;do not use entry count as project percent."
   },
@@ -1008,7 +1017,7 @@
       {
         "area": "Behavioral specification",
         "state": "INCOMPLETE",
-        "measured": "12 domain planning map;181 overlapping historical records",
+        "measured": "12 domain planning map;182 overlapping historical records",
         "limit": "Full feature/packet/state inventory still missing"
       },
       {
@@ -1156,7 +1165,7 @@
       "Changed estimate and its basis"
     ],
     "recalculate_after": "First complete ordinary Login/selection/map scenario,or a material scope discovery",
-    "unchanged_range_reason": "The client applies supported base fields and decodes inventory and Force records, then receives mastery 3/8. Item owners, mastery, map transition and gameplay remain open."
+    "unchanged_range_reason": "The client applies supported mastery fields and reaches the Linker reply after resolving quest catalog records. Item owners, the quest journal, map transition and gameplay remain open."
   },
   "forecast": {
     "remaining_to_completed_functional_scope_ratio_approx": [
@@ -1170,7 +1179,7 @@
   },
   "script": {
     "file": "scripts/assess_client455_progress.py",
-    "sha256": "4e3377c6c552eab4d61d496f8b33f6bf7a91dca192dd048a7e2e2e8e9f546008"
+    "sha256": "43987f7866dff92a6eaa6200efdf2a359813cf0e4f69684ebd931115555aa303"
   },
   "M6": "OPEN",
   "M6F": "OPEN",

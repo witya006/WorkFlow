@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <cstring>
 
-enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery };
+enum class RF455DownloadStep : std::uint8_t { Idle, Base, Inventory, Force, Mastery, Quest, Special, Miner, Linker };
 
 // Fixed-width x86 wire records from the 455 initial-download handlers.
 #pragma pack(push, 1)
@@ -79,6 +79,53 @@ struct RF455ForceDownload {
     std::uint8_t result, count;
     RF455ForceEntry items[255];
 };
+
+struct RF455MasteryDownload {
+    std::uint8_t result;
+    std::uint32_t weapon[2], defence, shield;
+    std::uint32_t skill[48], force[24], crafting[3], racial;
+    std::uint8_t oreCount;
+    std::uint16_t oreIndex[20];
+    std::uint8_t oreQuantity[20];
+};
+
+struct RF455QuestDownloadEntry {
+    std::uint8_t slot, type;
+    std::uint16_t index;
+    std::uint16_t progress[3];
+    std::uint32_t elapsedSeconds;
+};
+
+struct RF455QuestDownload {
+    std::uint8_t result, count;
+    RF455QuestDownloadEntry quests[255];
+};
+
+struct RF455UnitBullet {
+    std::uint16_t index, remaining;
+};
+
+struct RF455UnitDownloadEntry {
+    std::uint8_t slot, unitFlags, frame;
+    std::uint32_t durability;
+    std::uint8_t parts[6];
+    RF455UnitBullet ammunition[2], spare[8];
+    std::int32_t tractionDebt;
+    std::uint8_t tail[10];
+};
+
+struct RF455AnimusDownloadEntry {
+    std::uint8_t index;
+    std::uint64_t experience;
+    std::uint32_t hp;
+    std::uint8_t tail[5];
+};
+
+struct RF455MinerDownloadEntry {
+    std::uint8_t slot, table;
+    std::uint16_t index;
+    std::uint8_t quantity;
+};
 #pragma pack(pop)
 
 static_assert(sizeof(RF455EquipmentEntry) == 21 && sizeof(RF455AccessoryEntry) == 20);
@@ -88,6 +135,22 @@ static_assert(sizeof(RF455BaseDownload) == 431 && offsetof(RF455BaseDownload, ma
 static_assert(sizeof(RF455InventoryEntry) == 30 && offsetof(RF455InventoryEntry, slot) == 11 &&
               offsetof(RF455InventoryEntry, modifiers) == 16 && offsetof(RF455InventoryDownload, items) == 3);
 static_assert(sizeof(RF455ForceEntry) == 11 && offsetof(RF455ForceDownload, items) == 2);
+static_assert(sizeof(RF455MasteryDownload) == 382 && offsetof(RF455MasteryDownload, skill) == 17 &&
+              offsetof(RF455MasteryDownload, force) == 209 && offsetof(RF455MasteryDownload, oreCount) == 321 &&
+              offsetof(RF455MasteryDownload, oreIndex) == 322 && offsetof(RF455MasteryDownload, oreQuantity) == 362);
+static_assert(sizeof(RF455QuestDownloadEntry) == 14 && offsetof(RF455QuestDownload, quests) == 2);
+static_assert(sizeof(RF455UnitDownloadEntry) == 67 && offsetof(RF455UnitDownloadEntry, spare) == 21 &&
+              offsetof(RF455UnitDownloadEntry, tractionDebt) == 53);
+static_assert(sizeof(RF455AnimusDownloadEntry) == 18 && offsetof(RF455AnimusDownloadEntry, hp) == 9);
+static_assert(sizeof(RF455MinerDownloadEntry) == 5);
+
+template <class Entry>
+inline bool RF455_MatchDownloadList(const char* bytes, std::size_t size, std::size_t prefix)
+{
+    if (!bytes || !prefix || size < prefix) return false;
+    const auto count = static_cast<std::uint8_t>(bytes[prefix - 1]);
+    return size == prefix + count * sizeof(Entry);
+}
 
 inline bool RF455_ReadBaseDownload(const void* data, std::size_t size, RF455BaseDownload& out)
 {
@@ -124,6 +187,34 @@ inline bool RF455_ReadForceDownload(const void* data, std::size_t size, RF455For
     if (!data || size == 0) return false;
     const auto* bytes = static_cast<const std::uint8_t*>(data);
     if (bytes[0] ? size != 1 : size < 2 || size != 2 + sizeof(RF455ForceEntry) * bytes[1]) return false;
+    out = {};
+    std::memcpy(&out, data, size);
+    return true;
+}
+
+inline bool RF455_ReadMasteryDownload(const void* data, std::size_t size, RF455MasteryDownload& out)
+{
+    if (!data || size == 0) return false;
+    const auto* bytes = static_cast<const std::uint8_t*>(data);
+    constexpr std::size_t countOffset = offsetof(RF455MasteryDownload, oreCount);
+    constexpr std::size_t quantityOffset = offsetof(RF455MasteryDownload, oreQuantity);
+    if (bytes[0]) {
+        if (size != 1) return false;
+    } else {
+        if (size <= countOffset || size > sizeof out) return false;
+        const unsigned ores = bytes[countOffset];
+        if (ores > 20 || (ores && size < quantityOffset + ores)) return false;
+    }
+    out = {};
+    std::memcpy(&out, data, size);
+    return true;
+}
+
+inline bool RF455_ReadQuestDownload(const void* data, std::size_t size, RF455QuestDownload& out)
+{
+    if (!data || size == 0) return false;
+    const auto* bytes = static_cast<const std::uint8_t*>(data);
+    if (bytes[0] ? size != 1 : size < 2 || size != 2 + sizeof(RF455QuestDownloadEntry) * bytes[1]) return false;
     out = {};
     std::memcpy(&out, data, size);
     return true;

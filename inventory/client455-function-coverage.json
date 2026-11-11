@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "measured_at_utc": "2026-11-11T02:41:03.646781+00:00",
+  "measured_at_utc": "2026-11-11T03:08:10.523339+00:00",
   "status": "EVIDENCE_BASELINE_NOT_READINESS",
   "generator": {
     "file": "scripts/audit_client455_function_coverage.py",
@@ -20,11 +20,11 @@
     "total_segments": 4
   },
   "summary": {
-    "unique_functions_with_pinned_code": 2658,
-    "unique_functions_with_complete_assembly_cfg": 855,
-    "unique_pinned_code_bytes": 762614,
-    "reports": 177,
-    "code_range_occurrences": 4250,
+    "unique_functions_with_pinned_code": 2667,
+    "unique_functions_with_complete_assembly_cfg": 865,
+    "unique_pinned_code_bytes": 766675,
+    "reports": 178,
+    "code_range_occurrences": 4264,
     "unresolved_queries": 5,
     "implementation_count": null,
     "ordinary_runtime_equivalence_count": null
@@ -365,6 +365,10 @@
     {
       "file": "inventory/client455-map-resources.json",
       "sha256": "40f191d43b649592098d0f02cb4d458e6593d3eead27dfbaa715010a529a32b9"
+    },
+    {
+      "file": "inventory/client455-mastery-quests-reference.json",
+      "sha256": "b0084b0a71bd9aa1def5ec795dbdb348bfd0e8779747c3d25ab4ed2e7546f07d"
     },
     {
       "file": "inventory/client455-material-layout-reference.json",
@@ -881,6 +885,10 @@
       "sha256": "63a3fa2215c8866846d66951416d6bea5e810a691e0a4a238432d7f67a97e6c2"
     },
     {
+      "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+      "sha256": "2420909e723b19a0936b7dca1008ffc3dcfae7da2434e62e7d3fa9a681806f10"
+    },
+    {
       "file": "artifacts/client455-progress/material-layout133-reference.json",
       "sha256": "17088376dd9287517a4f31a7a5c76f5048f1773a9baa3c5e2379343aa08e2bdc"
     },
@@ -1008,7 +1016,7 @@
   "private_index": [
     {
       "file": "artifacts/client455-progress/function-coverage/ida-lookups.json",
-      "sha256": "91b9eee09b244070ad528a232edb9f8e8491a784e4f9d98a75f0c4a9e841786a"
+      "sha256": "6d85f4660b99597cb26271ae6a23356e62693a2b77e920a83f67beb8fc088127"
     },
     {
       "file": "artifacts/client455-progress/function-coverage/ida-survey.json",
@@ -1935,6 +1943,7 @@
       "rva": "0xa6b0",
       "ida_name": "sub_40A6B0",
       "reports": [
+        "inventory/client455-mastery-quests-reference.json",
         "inventory/client455-player-owner-reference.json"
       ],
       "ranges": [
@@ -1944,6 +1953,10 @@
         }
       ],
       "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 18
+        },
         {
           "file": "artifacts/client455-progress/player-owner154-reference/session.json",
           "instructions": 18
@@ -3021,6 +3034,7 @@
       "rva": "0x1caa0",
       "ida_name": "sub_41CAA0",
       "reports": [
+        "inventory/client455-mastery-quests-reference.json",
         "inventory/client455-tutorial-integration.json"
       ],
       "ranges": [
@@ -3029,7 +3043,12 @@
           "bytes": 3180
         }
       ],
-      "complete_assembly_evidence": []
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 730
+        }
+      ]
     },
     {
       "rva": "0x1db70",
@@ -14781,6 +14800,48 @@
       "complete_assembly_evidence": []
     },
     {
+      "rva": "0x168e30",
+      "ida_name": "sub_568E30",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x168e30",
+          "bytes": 82
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 35
+        }
+      ]
+    },
+    {
+      "rva": "0x168e90",
+      "ida_name": "sub_568E90",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x168e90",
+          "bytes": 464
+        },
+        {
+          "rva": "0x62cb90",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 140
+        }
+      ]
+    },
+    {
       "rva": "0x169cd0",
       "ida_name": "sub_569CD0",
       "reports": [
@@ -15389,6 +15450,147 @@
         {
           "file": "artifacts/client455-progress/initial-download175-reference.json",
           "instructions": 102
+        }
+      ]
+    },
+    {
+      "rva": "0x16e080",
+      "ida_name": "sub_56E080",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16e080",
+          "bytes": 95
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 38
+        }
+      ]
+    },
+    {
+      "rva": "0x16e0e0",
+      "ida_name": "sub_56E0E0",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16e0e0",
+          "bytes": 651
+        },
+        {
+          "rva": "0x62cdf0",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 185
+        }
+      ]
+    },
+    {
+      "rva": "0x16e410",
+      "ida_name": "sub_56E410",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16e410",
+          "bytes": 95
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 38
+        }
+      ]
+    },
+    {
+      "rva": "0x16e470",
+      "ida_name": "sub_56E470",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16e470",
+          "bytes": 977
+        },
+        {
+          "rva": "0x62ce30",
+          "bytes": 51
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 279
+        }
+      ]
+    },
+    {
+      "rva": "0x16e880",
+      "ida_name": "sub_56E880",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16e880",
+          "bytes": 420
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 140
+        }
+      ]
+    },
+    {
+      "rva": "0x16ea30",
+      "ida_name": "sub_56EA30",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16ea30",
+          "bytes": 147
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 51
+        }
+      ]
+    },
+    {
+      "rva": "0x16ead0",
+      "ida_name": "sub_56EAD0",
+      "reports": [
+        "inventory/client455-mastery-quests-reference.json"
+      ],
+      "ranges": [
+        {
+          "rva": "0x16ead0",
+          "bytes": 977
+        }
+      ],
+      "complete_assembly_evidence": [
+        {
+          "file": "artifacts/client455-progress/mastery-quests176-reference.json",
+          "instructions": 288
         }
       ]
     },
@@ -44133,8 +44335,8 @@
     }
   ],
   "last_recorded_delta": {
-    "unique_functions_with_pinned_code": 8,
-    "unique_functions_with_complete_assembly_cfg": 8
+    "unique_functions_with_pinned_code": 9,
+    "unique_functions_with_complete_assembly_cfg": 10
   },
   "M6": "OPEN",
   "M9": "OPEN",

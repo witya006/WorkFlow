@@ -22,6 +22,7 @@ public:
     bool loadItemEdf(const void*,std::size_t,bool segmented);
     bool localizeItemEdf(const void*,std::size_t);
     bool loadQuestEdf(const void*,std::size_t);
+    bool hasQuestData() const { return questLoaded; }
     bool loadCharacterEdf(const void*,std::size_t);
     bool localizeCharacterEdf(const void*,std::size_t,unsigned codepage);
     RF455ItemDataSpan classByCode(const char*)const;

@@ -14,6 +14,7 @@ struct RF455ClientItems {
     bool loadCashFiles(std::int32_t selector);
     bool loadSetEffectFile();
     bool loadItemFiles();
+    bool loadQuestFile();
     bool loadFiles(const char* item,const char* names,const char* quest,const char* character,
                    const char* sf,const char* sfNames);
     RF455ManagedItem* create(unsigned char selector,unsigned char type,unsigned index){

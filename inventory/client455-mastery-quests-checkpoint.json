@@ -1,0 +1,154 @@
+{
+  "status": "PARTIAL_WAITING_FOR_LINKER_AND_ITEM_OWNERS",
+  "scope": "The ordinary client applies supported mastery fields, resolves seven quest catalog records, handles empty unit and miner lists and receives the 3/45 Linker reply.",
+  "script": {
+    "file": "scripts/checkpoint_client455_mastery_quests.py",
+    "sha256": "781593030ccdacebb0af27487e966510eb1f3c24c414555ffd736399414b8d6c"
+  },
+  "normal_link_sha256": "eb18196f5fc9d50b4951e172a125558a66f247ae690face2747ec017c4aa43c0",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cd3f1c0da9de66adacd5bf088cd7a23cd6252ce0336dd4048128f3c63c62234a",
+    "bytes": 2375168,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185100",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_login_report": {
+    "file": "inventory/client455-character-selection-live-taiwan-native.json",
+    "sha256": "5884fd71dab930cd610b15b47b9dd3b7044950244044970d6d5559fe926f8fa0"
+  },
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "eb18196f5fc9d50b4951e172a125558a66f247ae690face2747ec017c4aa43c0"
+    },
+    "mastery-quests-reference": {
+      "file": "inventory/client455-mastery-quests-reference.json",
+      "sha256": "b0084b0a71bd9aa1def5ec795dbdb348bfd0e8779747c3d25ab4ed2e7546f07d"
+    },
+    "initial-download-native": {
+      "file": "inventory/client455-initial-download-native.json",
+      "sha256": "732583bb814577022d710027a8a63bdd59bdf1ffe0ac7364ae6ec97b50ea844b"
+    },
+    "character-selection-live-taiwan-native": {
+      "file": "inventory/client455-character-selection-live-taiwan-native.json",
+      "sha256": "5884fd71dab930cd610b15b47b9dd3b7044950244044970d6d5559fe926f8fa0"
+    },
+    "mastery-quests-bindings": {
+      "file": "inventory/client455-mastery-quests-bindings.json",
+      "sha256": "eefbfac83f3d1d8394097677ebb64ae43837a397be149f7c79ce1ea48b539343"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "63e04cfcc6110a50ec25cf57c768a190aa55524477acb80056b3570ca64e21fb"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "54c3dac5770621b14a9c627ea7b7670674e076dcca9eed78917b8707d9fd81f3"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "98f5856965f3939c3d8b972aa91f3484b30e381f0a0cd3220e3276951246fe9d"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "fa8baf5d071cae31f5e742c1bb02829ba8f371feacb700df6d69bb9093925db1"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "7080ae8e5bac6c3003e2c024805fe0099dc739614c9454e3f64ebc85c34df935"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "33abf0ae09fd1c9c3fe42f4b5228ad3350107d37192c1ffed49ca8d0f3018243"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "11fa74f2c206388850a6674a3794ae5e4275085d1cb8af6dbd3c2b2cd5f607b8"
+    },
+    "live-server": {
+      "file": "inventory/client455-live-server.json",
+      "sha256": "d96664a7ec6ee60ff99db61423ab320bbe22cd393fa9139a65457bf15baa05a7"
+    }
+  },
+  "prior_runtime": {
+    "file": "artifacts/client455-progress/before176/manifest.json",
+    "sha256": "e0d5259ebcc134b21a88154458c6592ba984083ba194befba37074289d3ea2a3"
+  },
+  "explicit_function_bindings": 5,
+  "observed_sequence": [
+    "tx:1:14:1",
+    "rx:1:15:22",
+    "select-result:0:0:0",
+    "inventory-applied:3:21:0",
+    "force-applied:82:0:0",
+    "rx:3:8:322",
+    "mastery-applied:0:0:0",
+    "tx:3:11:0",
+    "rx:3:12:100",
+    "quest-decoded:0:7:7",
+    "tx:3:13:0",
+    "rx:3:14:1",
+    "special-decoded:14:0:0",
+    "tx:3:54:0",
+    "rx:3:55:2",
+    "miner-decoded:0:0:0",
+    "tx:3:46:0",
+    "rx:3:45:157"
+  ],
+  "inventory": {
+    "records": 21,
+    "items_placed": 0
+  },
+  "force": {
+    "records": 82,
+    "items_applied": 0
+  },
+  "mastery": {
+    "bytes": 322,
+    "decoded": true,
+    "skill_owners_applied": 0,
+    "ores_applied": 0
+  },
+  "quests": {
+    "decoded": 7,
+    "catalog_resolved": 7,
+    "journal_restored": false
+  },
+  "units": {
+    "records": 0,
+    "applied": 0
+  },
+  "miner": {
+    "records": 0,
+    "applied": 0
+  },
+  "linker": {
+    "bytes": 157,
+    "received": true,
+    "decoded": false
+  },
+  "world_entered": false,
+  "full_client": false,
+  "private_handoff_removed": true,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "gaps": [
+    "Inventory, Force, and ore records still require compatible item owners and data providers",
+    "Quest catalog resolution does not restore the active journal, goals, progress, timers or text",
+    "Populated unit, Animus and miner paths need data owners and live verification; miner items are not placed",
+    "Linker slots and configuration, subsequent client startup, and entry into the playable world"
+  ],
+  "M6": "OPEN",
+  "M6F": "OPEN",
+  "M7": "OPEN",
+  "M9": "OPEN"
+}

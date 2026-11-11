@@ -28,6 +28,13 @@ bool read(const char* name,std::vector<unsigned char>& out){FILE* f=std::fopen(n
     std::rewind(f);out.resize(static_cast<std::size_t>(n));const bool okay=std::fread(out.data(),1,out.size(),f)==out.size();std::fclose(f);return okay;}
 }
 #include "client455_item_bootstrap.inc"
+bool RF455ClientItems::loadQuestFile()
+{
+    if (data.hasQuestData()) return true;
+    std::vector<unsigned char> raw;
+    return read("DataTable/Quest.edf", raw) && data.loadQuestEdf(raw.data(), raw.size());
+}
+
 bool RF455ClientItems::loadFiles(const char* item,const char* names,const char* quest,const char* character,const char* sf,const char* sfNames){
     std::vector<unsigned char> raw;
     if(!read(item,raw)||!data.loadItemEdf(raw.data(),raw.size(),true))return false;

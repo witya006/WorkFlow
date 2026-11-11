@@ -1,5 +1,6 @@
 // 455 base, inventory and Force handlers at RVA 16BEA0, 16D080 and 16DF30.
 #include "client455_initial_download.h"
+#include "client455_client_items.h"
 #include "client455_protocol_observation.h"
 
 namespace {
@@ -183,4 +184,163 @@ bool CNetworkMgr::InitMsg_ForceDownloadResult_zocl(const char* bytes, std::size_
     RF455_ObserveProtocol("force-applied", packet.count, applied, 0);
     m_initialDownload455 = RF455DownloadStep::Mastery;
     return InitMsg_CumDownloadRequest_clzo() != FALSE;
+}
+
+bool CNetworkMgr::InitMsg_CumDownloadResult_zocl(const char* bytes, std::size_t size)
+{
+    RF455MasteryDownload packet{};
+    if (m_initialDownload455 != RF455DownloadStep::Mastery || !RF455_ReadMasteryDownload(bytes, size, packet)) return false;
+    if (packet.result) {
+        RF455_ObserveProtocol("mastery-rejected", packet.result, 0, 0);
+        return true;
+    }
+    auto* avatar = _GetAvatar();
+    auto* skills = _GetSkillBoard();
+    auto* force = _GetForceBoard();
+    if (!avatar || !skills || !force || !_GetLinkBoard() || !_GetOreProcBoard()) return false;
+
+    avatar->SetExpertness(EVT_NEAR, packet.weapon[0]);
+    avatar->SetExpertness(EVT_FAR, packet.weapon[1]);
+    avatar->SetExpertness(EVT_RACE_SKILL, packet.racial);
+    avatar->SetExpertness(EVT_SHIELD, packet.shield);
+    avatar->SetExpertness(EVT_DEFENCE, packet.defence);
+    for (BYTE i = 0; i < 3; ++i) avatar->SetExpertness(EVT_MAKE_WEAPON + i, packet.crafting[i]);
+
+    unsigned skillsApplied = 0;
+    for (unsigned i = 0; i < 48; ++i) {
+        auto* skill = skills->GetSFByDTIndex(i);
+        if (!skill || !skill->GetData()) continue;
+        skill->SetHave(TRUE);
+        if (!avatar->IsUsableItem(skill)) skill->SetState(CSFItem::SFS_DEACTIVE);
+        else if (_GetLinkBoard()->IsExistObject(skill)) skill->SetState(CSFItem::SFS_LINK);
+        else skill->SetState(CSFItem::SFS_ACTIVE);
+        avatar->SetSFSuccessCount(CAT_SKILL, skill->GetIndex(), packet.skill[i]);
+        ++skillsApplied;
+    }
+    for (DWORD index : {48u, 83u}) {
+        if (auto* skill = skills->GetSFByDTIndex(index))
+            avatar->SetSFSuccessCount(CAT_SKILL, skill->GetIndex(), 1);
+    }
+    for (BYTE i = 0; i < 24; ++i)
+        force->SetSuccessCountOfMastery(i, i % 4, packet.force[i], FALSE);
+
+    unsigned oresApplied = 0;
+    for (BYTE i = 0; i < packet.oreCount; ++i) {
+        CBoardItem item;
+        if (!item.Create(IEPT_INGOT, packet.oreIndex[i])) continue;
+        item.SetIndex(i);
+        item.SetServerIndex(i);
+        item.SetDurability(1);
+        item.SetQuantity(packet.oreQuantity[i]);
+        if (_GetOreProcBoard()->Add(0, i, &item)) ++oresApplied;
+    }
+    RF455_ObserveProtocol("mastery-applied", skillsApplied, packet.oreCount, oresApplied);
+    m_initialDownload455 = RF455DownloadStep::Quest;
+    BYTE type[] = {init_msg, 11};
+    return SendNetMessage(NST_GAME_SERVER, type, nullptr, 0) != FALSE;
+}
+
+bool CNetworkMgr::InitMsg_QuestDownloadResult455(const char* bytes, std::size_t size)
+{
+    RF455QuestDownload packet{};
+    if (m_initialDownload455 != RF455DownloadStep::Quest || !RF455_ReadQuestDownload(bytes, size, packet)) return false;
+    auto* avatar = _GetAvatar();
+    if (!avatar) return false;
+    unsigned resolved = 0;
+    auto& items = RF455_GameItems();
+    if (packet.count && items.loadQuestFile()) {
+        for (unsigned i = 0; i < packet.count; ++i)
+            if (items.data.getQuest(packet.quests[i].index).data) ++resolved;
+    }
+    RF455_ObserveProtocol("quest-decoded", packet.result, packet.count, resolved);
+
+    // The target continues even if a quest record cannot be attached.
+    if (avatar->IsAccretia()) {
+        m_initialDownload455 = RF455DownloadStep::Miner;
+        BYTE type[] = {init_msg, 54};
+        return SendNetMessage(NST_GAME_SERVER, type, nullptr, 0) != FALSE;
+    }
+    m_initialDownload455 = RF455DownloadStep::Special;
+    return InitMsg_SpecialDownloadRequest_clzo() != FALSE;
+}
+
+bool CNetworkMgr::InitMsg_SpecialDownloadResult455(BYTE subtype, const char* bytes, std::size_t size)
+{
+    if (m_initialDownload455 != RF455DownloadStep::Special) return false;
+    unsigned applied = 0;
+    if (subtype == 14) {
+        if (!RF455_MatchDownloadList<RF455UnitDownloadEntry>(bytes, size, 1)) return false;
+        auto* board = _GetUnitStorehouseBoard();
+        if (!board) return false;
+        for (unsigned i = 0; i < static_cast<BYTE>(bytes[0]); ++i) {
+            RF455UnitDownloadEntry record;
+            std::memcpy(&record, bytes + 1 + i * sizeof record, sizeof record);
+            if (record.frame == 0xff || record.slot >= unit_storage_num) continue;
+            auto* original = board->GetUnit(record.slot);
+            if (!original) continue;
+            CUnitItem unit;
+            if (!unit.AddFrame(record.frame)) continue;
+            unit.SetIndex(original->GetIndex());
+            unit.SetDurability(record.durability);
+            unit.SetHave(TRUE);
+            for (BYTE j = 0; j < 6; ++j) {
+                if (record.parts[j] == 0xff) continue;
+                if (auto* part = unit.AddParts(IEPT_UNIT_HELMET + j, record.parts[j])) part->SetHave(TRUE);
+            }
+            for (BYTE j = 0; j < 2; ++j) {
+                if (record.ammunition[j].index == 0xffff) continue;
+                if (auto* part = unit.AddBullet(IEPT_UNIT_ARMS + j, record.ammunition[j].index)) {
+                    part->SetDurability(record.ammunition[j].remaining);
+                    part->SetHave(TRUE);
+                }
+            }
+            for (BYTE j = 0; j < 8 && j < MAX_BACKPACK_BULLET_NUM; ++j) {
+                if (record.spare[j].index == 0xffff) continue;
+                if (auto* part = unit.AddBackpackBullet(j, record.spare[j].index)) {
+                    part->SetDurability(record.spare[j].remaining);
+                    part->SetHave(TRUE);
+                }
+            }
+            unit.SetTractionDebt(record.tractionDebt);
+            if (board->ReplaceUnit(record.slot, &unit)) ++applied;
+        }
+    } else if (subtype == 15) {
+        if (!RF455_MatchDownloadList<RF455AnimusDownloadEntry>(bytes, size, 1)) return false;
+        auto* board = _GetAnimusBoard();
+        if (!board || !_GetLinkBoard()) return false;
+        for (unsigned i = 0; i < static_cast<BYTE>(bytes[0]); ++i) {
+            RF455AnimusDownloadEntry record;
+            std::memcpy(&record, bytes + 1 + i * sizeof record, sizeof record);
+            if (record.index == 0xff || record.experience > 0xffffffffu) continue;
+            auto* item = board->GetAnimusByDTIndex(record.index);
+            auto* data = static_cast<ANIMUS_DATA*>(_GetItemDataMgr()->GetData(IEPT_ANIMUS, record.index));
+            if (!item || !data) continue;
+            const auto exp = static_cast<DWORD>(record.experience);
+            auto* actor = _GetCharDataMgr()->GetAnimusByExp(record.index, exp);
+            if (!actor) continue;
+            item->SetData(data);
+            item->SetCharData(actor);
+            item->SetIndex(m_dwItemIndexForFirstItemSetting++);
+            item->SetExp(exp);
+            item->SetHP(record.hp);
+            item->SetState(_GetLinkBoard()->IsExistObject(item) ? CAnimusItem::AIS_LINK : CAnimusItem::AIS_ACTIVE);
+            ++applied;
+        }
+    } else {
+        return false;
+    }
+    RF455_ObserveProtocol("special-decoded", subtype, static_cast<BYTE>(bytes[0]), applied);
+    m_initialDownload455 = RF455DownloadStep::Miner;
+    BYTE type[] = {init_msg, 54};
+    return SendNetMessage(NST_GAME_SERVER, type, nullptr, 0) != FALSE;
+}
+
+bool CNetworkMgr::InitMsg_MinerDownloadResult455(const char* bytes, std::size_t size)
+{
+    if (m_initialDownload455 != RF455DownloadStep::Miner ||
+        !RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes, size, 2)) return false;
+    RF455_ObserveProtocol("miner-decoded", static_cast<BYTE>(bytes[0]), static_cast<BYTE>(bytes[1]), 0);
+    m_initialDownload455 = RF455DownloadStep::Linker;
+    BYTE type[] = {init_msg, 46};
+    return SendNetMessage(NST_GAME_SERVER, type, nullptr, 0) != FALSE;
 }

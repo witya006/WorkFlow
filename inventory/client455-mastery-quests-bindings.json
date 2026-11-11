@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "reference_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cd3f1c0da9de66adacd5bf088cd7a23cd6252ce0336dd4048128f3c63c62234a",
+    "bytes": 2375168,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x185100",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Selected mastery, quest, unit, Animus and miner initial download handlers.",
+  "functions": [
+    {
+      "rva": "0x16d960",
+      "symbol": "CNetworkMgr::InitMsg_CumDownloadResult_zocl",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "63c174a4ee858389fc8338c1fc73ffac0fdee43a53c8b24e1465a0c6243b779b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x523e0"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x16e0e0",
+      "symbol": "CNetworkMgr::InitMsg_QuestDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "63c174a4ee858389fc8338c1fc73ffac0fdee43a53c8b24e1465a0c6243b779b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x53200"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x16e470",
+      "symbol": "CNetworkMgr::InitMsg_SpecialDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "63c174a4ee858389fc8338c1fc73ffac0fdee43a53c8b24e1465a0c6243b779b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x53400"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x16e880",
+      "symbol": "CNetworkMgr::InitMsg_SpecialDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "63c174a4ee858389fc8338c1fc73ffac0fdee43a53c8b24e1465a0c6243b779b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x53400"
+      ],
+      "complete_equivalence": false
+    },
+    {
+      "rva": "0x168e90",
+      "symbol": "CNetworkMgr::InitMsg_MinerDownloadResult455",
+      "source": {
+        "file": "scripts/native/client455_initial_download.inc",
+        "sha256": "63c174a4ee858389fc8338c1fc73ffac0fdee43a53c8b24e1465a0c6243b779b"
+      },
+      "ordinary_symbol_rvas": [
+        "0x530b0"
+      ],
+      "complete_equivalence": false
+    }
+  ]
+}

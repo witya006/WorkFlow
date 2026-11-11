@@ -1,3 +1,9 @@
+2026-11-11 — Initial download 176, PARTIAL_WAITING_FOR_LINKER_AND_ITEM_OWNERS.
+Applied supported mastery fields and resolved seven quest catalog records.
+The live client handled empty unit and miner lists and received `3/45`.
+Linker application, the quest journal, item owners and world entry remain open.
+[Evidence and remaining work](research/client455-mastery-quests.md)
+
 2026-11-11 — Initial download 175, PARTIAL_WAITING_FOR_MASTERY_AND_ITEM_OWNERS.
 The ordinary client applies supported base fields for map 0, parses 21
 inventory records and 82 Force records, and receives the 322-byte mastery reply.

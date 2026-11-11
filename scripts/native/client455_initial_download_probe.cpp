@@ -101,6 +101,69 @@ void force()
     bytes[0] = 9;
     check(RF455_ReadForceDownload(bytes.data(), 1, decoded) && decoded.result == 9, "Force failure result");
 }
+
+void mastery()
+{
+    std::array<std::uint8_t, 382> bytes{};
+    write(bytes, 1, std::uint32_t{101});
+    write(bytes, 9, std::uint32_t{202});
+    write(bytes, 13, std::uint32_t{303});
+    write(bytes, 17 + 47 * 4, std::uint32_t{404});
+    write(bytes, 209 + 23 * 4, std::uint32_t{505});
+    write(bytes, 313, std::uint32_t{606});
+    write(bytes, 317, std::uint32_t{707});
+    RF455MasteryDownload decoded{};
+    check(RF455_ReadMasteryDownload(bytes.data(), 322, decoded) && decoded.oreCount == 0 &&
+          decoded.weapon[0] == 101 && decoded.defence == 202 && decoded.shield == 303 &&
+          decoded.skill[47] == 404 && decoded.force[23] == 505 && decoded.crafting[2] == 606 &&
+          decoded.racial == 707, "mastery fields and empty ore tail");
+    bytes[321] = 20;
+    write(bytes, 360, std::uint16_t{0x0123});
+    bytes[381] = 8;
+    check(RF455_ReadMasteryDownload(bytes.data(), bytes.size(), decoded) && decoded.oreIndex[19] == 0x0123 &&
+          decoded.oreQuantity[19] == 8, "split ore arrays");
+    check(!RF455_ReadMasteryDownload(bytes.data(), 381, decoded) && decoded.oreCount == 20,
+          "truncated ore quantity preserves output");
+    bytes[321] = 21;
+    check(!RF455_ReadMasteryDownload(bytes.data(), bytes.size(), decoded), "ore count limit");
+    bytes[0] = 8;
+    check(RF455_ReadMasteryDownload(bytes.data(), 1, decoded) && decoded.result == 8, "mastery failure result");
+}
+
+void quests()
+{
+    std::array<std::uint8_t, 30> bytes{};
+    bytes[1] = 2;
+    bytes[16] = 7;
+    bytes[17] = 1;
+    write(bytes, 18, std::uint16_t{271});
+    write(bytes, 24, std::uint16_t{91});
+    write(bytes, 26, std::uint32_t{832});
+    RF455QuestDownload decoded{};
+    check(RF455_ReadQuestDownload(bytes.data(), bytes.size(), decoded) && decoded.count == 2 &&
+          decoded.quests[1].slot == 7 && decoded.quests[1].type == 1 && decoded.quests[1].index == 271 &&
+          decoded.quests[1].progress[2] == 91 && decoded.quests[1].elapsedSeconds == 832, "14-byte quest record");
+    check(!RF455_ReadQuestDownload(bytes.data(), 29, decoded) && decoded.count == 2, "truncated quest record");
+    bytes[1] = 0;
+    check(RF455_ReadQuestDownload(bytes.data(), 2, decoded) && !decoded.count, "empty quest list");
+    bytes[0] = 9;
+    check(RF455_ReadQuestDownload(bytes.data(), 1, decoded) && decoded.result == 9, "quest failure result");
+}
+
+void specialAndMiner()
+{
+    std::array<char, 68> bytes{};
+    check(RF455_MatchDownloadList<RF455UnitDownloadEntry>(bytes.data(), 1, 1), "empty unit list");
+    bytes[0] = 1;
+    check(RF455_MatchDownloadList<RF455UnitDownloadEntry>(bytes.data(), 68, 1) &&
+          !RF455_MatchDownloadList<RF455UnitDownloadEntry>(bytes.data(), 67, 1), "unit stride and truncation");
+    check(RF455_MatchDownloadList<RF455AnimusDownloadEntry>(bytes.data(), 19, 1) &&
+          !RF455_MatchDownloadList<RF455AnimusDownloadEntry>(bytes.data(), 20, 1), "Animus stride and extra bytes");
+    bytes[1] = 1;
+    check(RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes.data(), 7, 2) &&
+          !RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes.data(), 1, 2) &&
+          !RF455_MatchDownloadList<RF455MinerDownloadEntry>(bytes.data(), 7, 0), "miner prefix and stride");
+}
 }
 
 int main()
@@ -108,6 +171,10 @@ int main()
     base();
     inventory();
     force();
+    mastery();
+    quests();
+    specialAndMiner();
     std::puts("{\"status\":\"PASS\",\"base_bytes\":431,\"inventory_stride\":30,\"force_stride\":11,"
+              "\"mastery_minimum\":322,\"quest_stride\":14,\"unit_stride\":67,\"animus_stride\":18,\"miner_stride\":5,"
               "\"empty_and_error_results\":true,\"bad_sizes_rejected\":true}");
 }
