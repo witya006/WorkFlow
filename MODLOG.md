@@ -1,3 +1,9 @@
+2026-11-11 — Monster Force result 192, PARTIAL_COMPONENT_MONSTER_FORCE_RESULT.
+
+The normal Combat dispatcher assigns Force from 5/9 and selects both
+Wing clips in a component run. The same build walks on NeutralB.
+[Evidence](research/client455-monster-force-result.md)
+
 2026-11-11 — Monster Force 191, PARTIAL_COMPONENT_MONSTER_FORCE_CLIPS.
 
 The normal monster method selects and loads both real Wing Force clips

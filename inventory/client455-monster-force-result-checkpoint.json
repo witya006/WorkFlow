@@ -1,0 +1,152 @@
+{
+  "status": "PARTIAL_COMPONENT_MONSTER_FORCE_RESULT",
+  "scope": "Combat processor 5/9 to the active Force and normal monster action with real animation files.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "2672e567781119c10139d18a637937e96dc4838b00c5b5f2497e674577869df8",
+    "bytes": 2386944,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x187860",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "64582ad750669051eaf9804fc691bb7f4e9d67c06ffe07ff6abc96778e47bba8",
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "64582ad750669051eaf9804fc691bb7f4e9d67c06ffe07ff6abc96778e47bba8"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "73340f4a58e9c5eaf0f3208db72fb70abefc9a50e9dd13f18a4c2064f24a7dfd"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "90bdea3c0c6cec7993b444dd25cee9d6f4744cbe448799e390b35d94d1570bf8"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "3a5718d9b3357368d6ff37e588621f1c0c63c0f76549d0800881965a39697433"
+    },
+    "monster-force-result-reference": {
+      "file": "inventory/client455-monster-force-result-reference.json",
+      "sha256": "1a580b3e35fad9bc8c719b691425284597404353c66fc0edf1f25c28f4fd39d1"
+    },
+    "skill-force-items-reference": {
+      "file": "inventory/client455-skill-force-items-reference.json",
+      "sha256": "39b95d3d2119da7a7c51b3cc58a8077992684f4310dabbbd26d0d148ae7ad216"
+    },
+    "live-resource-inputs": {
+      "file": "inventory/client455-live-resource-inputs.json",
+      "sha256": "4b996fc7538cb559ed9a051eecad367dfd56600e7516c98e26fd9b410cdfd4d8"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "06cc29c7b48bb4446edcb8ad49b7cadc6783504c8a3984b878894d0e79fa792c"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "09c73b77114dfad696e635ae7df1076c1fd16a328cfc4bca672eddf794e618f7"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "9e4b166f23c0bc33306190b0f652cfcc1c179c91df8a89c1c7f8ae85f2d82522"
+    },
+    "live-launcher-native": {
+      "file": "inventory/client455-live-launcher-native.json",
+      "sha256": "a175156a3df018d4d4056c777be2b149b9626df8d185096e2fdc058370f4fd5a"
+    },
+    "monster-force-result-live": {
+      "file": "artifacts/client455-progress/combat192/live.json",
+      "sha256": "4d9b0d434f31c0dda943d8117a92a970890d7b76f6d6f720413a5f50c0f81f8a"
+    }
+  },
+  "runtime_login_report": {
+    "file": "artifacts/client455-progress/combat192/live.json",
+    "sha256": "4d9b0d434f31c0dda943d8117a92a970890d7b76f6d6f720413a5f50c0f81f8a"
+  },
+  "live_smoke": {
+    "world_frames": [
+      {
+        "file": "work/m9/2672e567/world-walk-live-taiwan001/world-post-position.png",
+        "sha256": "961993dc5d6e822fc839cf3222c0276f7e1347c735255d0c9044197d8ddc410c"
+      },
+      {
+        "file": "work/m9/2672e567/world-walk-live-taiwan001/world-post-position-settled.png",
+        "sha256": "61a7039bc3af0335b4e6fe14f91a127c983196f576d5e2f8ed0c5933129a9b36"
+      }
+    ],
+    "displacement": 77.39299620120705,
+    "observed_force_events": 0
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_monster_force_result.py",
+    "sha256": "53e192eaa3eef189bf2c81b2e17df13a94b5cc75086671d3b9065f69ed9745d5"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_monster_force_port.py",
+      "sha256": "08c45cc7a4aca190f1082ce434c23a298ffea877edc7afdab72e76de40bb5df4"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result.h",
+      "sha256": "abc3e8026bc3562f21ca3b72c632c02da893645f85ab9cdb51e79695227e77ba"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_dispatch.inc",
+      "sha256": "a6c54bd8652cbfcc63ff5f1a8faa321aaf31ed02f0959bd3a8f982bf87bf501e"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result.inc",
+      "sha256": "82b3cf97a63df8f567e06cfa4c7ce2c876e41e409d1da2b911200c19437a4903"
+    },
+    {
+      "file": "scripts/native/client455_monster_force_result_probe.cpp",
+      "sha256": "277638dce33e8e0c02bf46ed8ca7d550e94a4d69647feaa84cae24135ded18f3"
+    }
+  ],
+  "probe_executable": {
+    "file": "work/client455-port/monster-force-result-probe/monster-force-result-probe.exe",
+    "sha256": "bf2cbc5565daa933dc2f602a38da71b1c8892385b4b1adb020d096106e91d726",
+    "architecture": "x86"
+  },
+  "console": {
+    "file": "work/client455-port/monster-force-result-probe/probe-console.txt",
+    "sha256": "6846ed0395e0c557c93f12e99b14a63bdf40982bb32edbceb8ca111998cf0982"
+  },
+  "real_clips": [
+    {
+      "file": "work/client455-port/monster-force-result-probe/WING_WARFORCEATTACK_01_00.ANI",
+      "sha256": "ff9a4c0fa6132b3d2bd5fe936ed070e83b541b9bcfd487814181f6c9ce8b85b9",
+      "key": 4288,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    },
+    {
+      "file": "work/client455-port/monster-force-result-probe/WING_WARFORCESUPPORT_01_00.ANI",
+      "sha256": "807d3f83371a62ccf909c42cd2677c88daaca7c4b31fffb814d6bc2ed597cbbb",
+      "key": 4304,
+      "archive_sha256": "3212edc9cfee21bea934256ef2dcfbcea49c22e90e82e6eb31b78b1365117148"
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "selected_routes": 2,
+    "rejected_cases": 3,
+    "missing_row_retained": true,
+    "real_animations": 2
+  },
+  "own_symbols": {
+    "?CreateForce455@CSFItem@@QAEHKE@Z": "0x36520",
+    "?MonsterForceResult455@CNetMsgProcessor_Combat@@AAE_NPBDI@Z": "0x42570"
+  },
+  "live_force_activation": false,
+  "victim_effects_restored": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

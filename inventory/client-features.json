@@ -9096,7 +9096,7 @@
       "id": "CLIENT455-MONSTER-FORCE-191",
       "area": "character",
       "status": "partial_component",
-      "runtime_gate_current": true,
+      "runtime_gate_current": false,
       "evidence": [
         "inventory/client455-monster-force-checkpoint.json",
         "inventory/client455-monster-force-reference.json"
@@ -9105,6 +9105,21 @@
       "gaps": [
         "Combat result to active monster Force assignment",
         "Live selection and playback of the Force clip"
+      ]
+    },
+    {
+      "id": "CLIENT455-MONSTER-FORCE-RESULT-192",
+      "area": "gameplay",
+      "status": "partial_component",
+      "runtime_gate_current": true,
+      "evidence": [
+        "inventory/client455-monster-force-result-checkpoint.json",
+        "inventory/client455-monster-force-result-reference.json"
+      ],
+      "description": "Combat 5/9 assigns Force from the real table and reaches the normal monster action and both Wing clips in a component run.",
+      "gaps": [
+        "All victims, damage, Force effects and other attacker types",
+        "Live result, playback and matching turn rate"
       ]
     }
   ],
