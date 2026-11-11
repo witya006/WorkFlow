@@ -1,0 +1,81 @@
+{
+  "status": "PASS_SAME_MAP_BELLATO_RETURN_WITH_WINDOWS_INPUT",
+  "checkpoint": 213,
+  "map": "NeutralB",
+  "executable": {
+    "file": "work/m6-control-213/portal-1794414783/RF_Online.bin",
+    "sha256": "e418869ce0756789b7f418d24aa4e6c474196d1883a85b80f9a430af0d0b1e75",
+    "architecture": "x86",
+    "entry_rva": "0x18c980"
+  },
+  "input": {
+    "inventory_key": "Ctrl+I",
+    "use": "Windows right mouse press/release",
+    "bag": 1,
+    "slot": 1,
+    "mouse_client_xy": [
+      446,
+      437
+    ],
+    "move_after_arrival": "Windows Up key"
+  },
+  "arrival": {
+    "result": 0,
+    "position_mode": 3,
+    "before": [
+      -7061.74414,
+      622.496094,
+      5978.02197
+    ],
+    "after": [
+      -6819,
+      637.195312,
+      6359
+    ],
+    "horizontal_displacement": 451.7399438250071
+  },
+  "inventory": {
+    "quantity_before": 6,
+    "quantity_after": 5,
+    "evidence": "Visual inspection of the two render-target frames",
+    "before_frame": {
+      "file": "work/m6-control-213/portal-1794414783/portal-inventory-before.png",
+      "sha256": "4f71c0286a98d8ba62241b3311317f192071f2afba611395ef2d49a8d8ec9b45"
+    },
+    "after_frame": {
+      "file": "work/m6-control-213/portal-1794414783/portal-inventory-after.png",
+      "sha256": "f87b372c1cca972da1650a8c9739fdefeed0ba8f1883277e406efbc7df224336"
+    }
+  },
+  "post_arrival_movement": {
+    "received_move_acks": 5,
+    "received_stop_acks": 1,
+    "position_at_stop": [
+      -6819,
+      637.191406,
+      6299.71436
+    ],
+    "stable_ms": 63375,
+    "horizontal_displacement": 59.28564000000006
+  },
+  "unhandled_exceptions": 0,
+  "observer_timed_exit": true,
+  "evidence": {
+    "events": {
+      "file": "work/m6-control-213/portal-1794414783/debug-events-1794436896.jsonl",
+      "sha256": "1d47b9834e20ff70958ee53ccd51dcfb7303afc26de90531703fedb7bbd9365c"
+    },
+    "observer_source": {
+      "file": "work/m6-control-213/portal-observer.cpp",
+      "sha256": "874142ba835bffba11e4889a28322f5f42aa8e45e69c508885a0cb28ed699d60"
+    },
+    "observer": {
+      "file": "work/m6-control-213/portal-observer.exe",
+      "sha256": "8decdc6cb99b35b89db76c02f665a86f1b3452b43018948c4ea411d4cc1692ec"
+    }
+  },
+  "open": [
+    "Cross-map Return with original loading assets",
+    "Special map and area restrictions"
+  ]
+}

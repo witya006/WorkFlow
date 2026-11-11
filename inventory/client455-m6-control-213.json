@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "source_commit": "593ea14b5dda6fb0b3174f2ccbc0b04145fc249d",
+  "existing_build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e418869ce0756789b7f418d24aa4e6c474196d1883a85b80f9a430af0d0b1e75",
+    "bytes": 2411520,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x18c980",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "original_checkpoint_copy": "artifacts/client455-progress/before214/work/client455-port/normal/build/RF_Online.bin",
+  "isolated_rebuild": {
+    "file": "work/m6-control-213/RF_Online.bin",
+    "sha256": "ab5b4a438cf3862160c33af98047d2f7381c113594c305cb183d1c66b7067f8b",
+    "architecture": "x86",
+    "entry_rva": "0x18c980",
+    "client_objects": 182,
+    "engine_objects": 67,
+    "kernel_objects": 20,
+    "binary_comparison": {
+      "same_file_size": true,
+      "differing_bytes": 4,
+      "coff_timestamp_file_offset": "0x138",
+      "debug_directory_timestamp_file_offset": "0x21ca64",
+      "identical_after_masking_both_timestamp_fields": true
+    },
+    "pe_raw_section_hashes_match": {
+      ".text": true,
+      ".rdata": false,
+      ".data": true,
+      ".fptable": true,
+      ".reloc": true
+    },
+    "runtime_retested": false
+  },
+  "build_inputs_archive": {
+    "file": "work/m6-control-213/build-inputs-213.zip",
+    "sha256": "43e41b9d96264afbbf6ff4259002dd99be62378ce669e7c0895c52e53ae4ade8",
+    "bytes": 2171097,
+    "inputs": 801,
+    "archived_input_hashes_verified": true,
+    "source_relocation_tested": false,
+    "prebuilt_libraries": [
+      "work/recovered/client455/x87-math/RFClient455X87Math.lib",
+      "work/client-dependencies/jpeg6b/build/lib/Release/JpegLibMT.lib",
+      "work/client455-port/dependencies/d3dx9_36.lib",
+      "work/client455-port/source/R3Engine/mss32.lib",
+      "work/recovered/client455/effect-log/RFClient455EffectLog.lib",
+      "work/client-build/recovered-imports/ABuse.lib",
+      "work/client-build/recovered-imports/Adv.lib",
+      "work/client-build/recovered-imports/PDLL.lib"
+    ]
+  },
+  "prior_runtime_evidence": "inventory/client455-avatar-movement-checkpoint.json"
+}
