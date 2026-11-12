@@ -1,0 +1,87 @@
+{
+  "status": "PASS_TAIWAN_BELLATO_WARRIOR_NATURAL_TUTORIAL_COMPLETION",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "message_type_3": "0xa62a0",
+      "board_input": "0xa5d40",
+      "terminal_quest_step": "0x2af60",
+      "board_finish": "0xa6080"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ea1d3bfd2d40e6695731c834961dfe1d8764a4252efc124d6f51b20ae139b6e8",
+    "bytes": 2490880,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19be30",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "script": {
+    "file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp",
+    "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+  },
+  "corpus": {
+    "file": "inventory/client455-tutorial-profiles.json",
+    "sha256": "be916bf23c7a2a0a5b583b7723713e48e88bd875637395cac2cdfdc7b24f24ae"
+  },
+  "live": {
+    "profile": "zh-tw",
+    "character": "Bellato Warrior",
+    "window_size": [
+      640,
+      500
+    ],
+    "precondition": "Tutorial selection enabled in own test-process memory",
+    "ordered_events": [
+      "tutorial-settings-complete:2:0:0",
+      "tutorial-move-complete:3:0:0",
+      "tutorial-camera-complete:4:0:0",
+      "tutorial-equipment-complete:5:0:0",
+      "tutorial-mission-dialog:5:0:0",
+      "tutorial-mission-acknowledged:5:1:0",
+      "tutorial-complete:6:0:0",
+      "tutorial-leaving:2:1:0",
+      "map-bsp:0:1:0",
+      "avatar-ready:0:0:0",
+      "world-frame:0:0:0"
+    ],
+    "mission_wait_before_enter": true,
+    "finish_input": "Enter",
+    "zone_map": "NeutralB",
+    "exit_code": 0,
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794447504.jsonl",
+      "sha256": "499a7d84d44e6fa1c1b9f7faeb1ae2d7c4c2dd15f94e8145d9964073a1e5f0a6"
+    },
+    "driver": {
+      "file": "work/startup455-m6/test-tutorial-mission.ps1",
+      "sha256": "b4610cda262148ed3c7951900b6cc21ce0762c8f2d94ea884e8cfdcec636d3da"
+    },
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-mission-dialog.png",
+        "sha256": "54785f30aef87abd9ed1f9ee48e48075bdfac22267db72892e157ea4805ff121"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-mission-world.png",
+        "sha256": "1147d0ec9668bcbf3cc7c79a2ec69890d89aa340609970c025939fb8677cd52b"
+      }
+    ]
+  },
+  "open": [
+    "Other race, class, locale and window profiles",
+    "Skill, Force, Hunting and Looting lessons in longer scripts",
+    "Tutorial completion persistence across sessions and timed progress report"
+  ]
+}

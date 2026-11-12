@@ -32,6 +32,7 @@ constexpr DWORD settingsQuest = 1;
 constexpr DWORD movementQuest = 2;
 constexpr DWORD cameraQuest = 3;
 constexpr DWORD equipmentQuest = 4;
+constexpr DWORD missionQuest = equipmentQuest + 1;
 
 class TutorialSettingsCommand;
 
@@ -39,7 +40,7 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
                               private RF455TutorialBoardHost, private RF455TutorialDistanceHost,
                               private RF455TutorialOrbitHost {
     friend class TutorialSettingsCommand;
-    enum class Phase { Intro, Welcome, Briefing, LessonBoundary, Leaving, Selecting, Zone, Failed };
+    enum class Phase { Intro, Welcome, Briefing, Mission, LessonBoundary, Leaving, Selecting, Zone, Failed };
     RF455TutorialIntro intro;
     RF455TutorialBoardShared boardState;
     RF455TutorialRuntime runtime;
@@ -52,7 +53,8 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     bool inputBlocked = false;
     bool uiInstalled = false;
     bool optionsInstalled = false;
-    bool welcomeAccepted = false;
+    bool modalAcknowledged = false;
+    bool hasMissionEnding = false;
     bool cursorDispatch = false;
     struct {
         bool active = false;
@@ -123,6 +125,7 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void moveFromMouse();
     void advanceAvatar();
     void advanceLesson();
+    void leaveTutorial(bool completed);
     void fail(const char* message);
     void openOptions();
     bool applyOption(UINT message, WPARAM value);
@@ -179,7 +182,7 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
     if (command.selector != command.dataType) return nullptr;
     const auto& data = command.fixed;
     switch (command.selector) {
-    case 0: case 1: case 2: case 4:
+    case 0: case 1: case 2: case 3: case 4:
         return basic.create(command);
     case 5:
         if (data.size() == 12 && (data[6] == 1 ||
@@ -401,8 +404,11 @@ void CGP_Tutorial455::startBoardScript()
         fail("Tutorial equipment lesson could not be identified.");
         return;
     }
-    // Each later quest is attached once its live providers have been verified.
-    script.quests.resize(equipmentQuest + 1);
+    // Some profiles end with TutorialMission immediately after equipment.
+    // The remaining profiles still require the intervening lessons.
+    hasMissionEnding = script.quests.size() == missionQuest + 1 &&
+        !std::memcmp(script.quests[missionQuest].name.data(), "TutorialMission", sizeof("TutorialMission"));
+    if (!hasMissionEnding) script.quests.resize(equipmentQuest + 1);
     TutorialStageFactory factory(*this, *this, *this, inventory);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
@@ -426,11 +432,19 @@ void CGP_Tutorial455::message(std::uint8_t type, const RF455TutorialMessage* con
         const auto* quest = runtime.get();
         RF455_ObserveProtocol("tutorial-briefing", runtime.currentQuest,
                               quest ? static_cast<DWORD>(quest->next) : 0, type == 0 ? 1 : 0);
+    } else if (type == 3) {
+        phase = Phase::Mission;
+        RF455_ObserveProtocol("tutorial-mission-dialog", runtime.currentQuest, 0, 0);
     }
 }
 
 void CGP_Tutorial455::scriptCompleted()
 {
+    if (hasMissionEnding) {
+        RF455_ObserveProtocol("tutorial-complete", runtime.currentQuest, 0, 0);
+        leaveTutorial(true);
+        return;
+    }
     phase = Phase::LessonBoundary;
     inputBlocked = false;
     RF455_ObserveProtocol("tutorial-equipment-complete", runtime.currentQuest, 0, 0);
@@ -598,13 +612,14 @@ void CGP_Tutorial455::advanceLesson()
 {
     board.FrameMove();
     advanceCursor();
-    if (welcomeAccepted) runtime.context.input = 0;
+    if (modalAcknowledged) runtime.context.input = 0;
     const DWORD questIndex = runtime.currentQuest;
     const auto* quest = runtime.get();
     const auto* previous = quest ? quest->current : nullptr;
     const auto step = runtime.step(*this);
+    if (step == RF455TutorialStep::Completed) return; // Natural completion releases the quest list.
     if (step == RF455TutorialStep::QuestAdvanced) {
-        welcomeAccepted = false;
+        modalAcknowledged = false;
         if (questIndex == settingsQuest)
             RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
         if (questIndex == movementQuest)
@@ -613,6 +628,8 @@ void CGP_Tutorial455::advanceLesson()
             inventory.initialize();
             RF455_ObserveProtocol("tutorial-camera-complete", runtime.currentQuest, 0, 0);
         }
+        if (questIndex == equipmentQuest)
+            RF455_ObserveProtocol("tutorial-equipment-complete", runtime.currentQuest, 0, 0);
     }
     const auto* current = quest ? quest->current : nullptr;
     if (current && current != previous && current->type == 7)
@@ -777,7 +794,7 @@ HRESULT CGP_Tutorial455::FrameMove()
         _GetLand()->GetLevel()->FrameMove();
         if (!intro.active()) advanceAvatar();
     }
-    if (phase == Phase::Welcome || phase == Phase::Briefing) {
+    if (phase == Phase::Welcome || phase == Phase::Briefing || phase == Phase::Mission) {
         try { advanceLesson(); }
         catch (const std::exception& error) { fail(error.what()); }
     }
@@ -838,20 +855,30 @@ BOOL CGP_Tutorial455::InputProcess()
     return TRUE;
 }
 
+void CGP_Tutorial455::leaveTutorial(bool completed)
+{
+    cancelCursor();
+    _GetCamera()->SetState(CAM_STOP);
+    inventory.show(false);
+    _GetAvatar()->SetAction(CAI_MOVE_STOP);
+    if (optionsInstalled) options.Close();
+    board.requestFinish(!completed);
+    fadeOut(0, 2, 1);
+    RF455_ObserveProtocol("tutorial-leaving", RF455_SelectedCharacterSlot(), completed, 0);
+}
+
 void CGP_Tutorial455::Dialog(WORD id, DWORD result)
 {
     if (!m_bIsCreated) return;
     if ((phase == Phase::Welcome && id == welcomeDialog && result == MSG_CANCEL) ||
         ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && id == leaveDialog && result == MSG_OK)) {
-        cancelCursor();
-        _GetCamera()->SetState(CAM_STOP);
-        inventory.show(false);
-        _GetAvatar()->SetAction(CAI_MOVE_STOP);
-        if (optionsInstalled) options.Close();
-        board.requestFinish(true);
-        fadeOut(0, 2, 1);
-        RF455_ObserveProtocol("tutorial-leaving", RF455_SelectedCharacterSlot(), 0, 0);
-    } else if (phase == Phase::Welcome && id == welcomeDialog && result == MSG_OK) welcomeAccepted = true;
+        leaveTutorial(false);
+    } else if (phase == Phase::Welcome && id == welcomeDialog && result == MSG_OK) {
+        modalAcknowledged = true;
+    } else if (phase == Phase::Mission && id == CTutorialBoard::MissionDialog) {
+        modalAcknowledged = true;
+        RF455_ObserveProtocol("tutorial-mission-acknowledged", runtime.currentQuest, result, 0);
+    }
 }
 
 HRESULT CGP_Tutorial455::RestoreDeviceObjects()

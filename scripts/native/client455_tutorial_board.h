@@ -53,6 +53,7 @@ struct RF455TutorialBoardShared {
 
 class CTutorialBoard final : public CBaseBoard {
 public:
+    static constexpr WORD MissionDialog = 0x6002;
     CTutorialBoard(RF455TutorialRuntime&, RF455TutorialBoardHost&, RF455TutorialBoardShared&,
                   RF455TutorialBriefingView* = nullptr);
     void InitWindow(DWORD id, int x, int y) override;

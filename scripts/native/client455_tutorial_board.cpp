@@ -107,7 +107,7 @@ bool CTutorialBoard::message(std::uint8_t type, const RF455TutorialMessage* cont
         if (!content) return false;
         std::array<unsigned char, 1024> text;
         if (!RF455_JoinTutorialModalText(*content, text)) return false;
-        openModal(reinterpret_cast<const char*>(text.data()), type == 2 ? 0x6000 : 0x6002,
+        openModal(reinterpret_cast<const char*>(text.data()), type == 2 ? 0x6000 : MissionDialog,
                   type == 2 ? 3 : 4);
         return true;
     }
