@@ -1,7 +1,7 @@
 """Replace the actual Linker window member with its banked455 implementation."""
 import re
 
-def port_linker_window(raw,relative,section):
+def port_linker_window(raw,relative,section,native):
     def once(old,new):
         nonlocal raw
         if raw.count(old)!=1:raise ValueError('Linker window anchor:'+relative+':'+repr(old))
@@ -9,7 +9,7 @@ def port_linker_window(raw,relative,section):
     if relative=='gameobject/board/common/clinkboard.h':
         raw=b'#include "client455_linker_window.h"\r\n'+raw
         once(b'CGUIForceBeltWindow\t\tm_uiLinkWindow;',b'CGUILinkWindow455\t\tm_uiLinkWindow;')
-        once(b'\tCLinkBoard();',b'\tCLinkBoard();\r\n\tCGUILinkWindow455& LinkerWindow455(){return m_uiLinkWindow;}')
+        once(b'\tCLinkBoard();',b'\tCLinkBoard();\r\n\tCGUILinkWindow455& LinkerWindow455(){return m_uiLinkWindow;}\r\n\tBOOL UseShortcut455(BYTE bank, BYTE slot);')
         return raw,True
     if relative=='gameobject/board/common/clinkboard.cpp':
         once(b'CLinkBoard::CLinkBoard(){ResetHotbarUpload455();}',b'CLinkBoard::CLinkBoard(){m_uiLinkWindow.BindBoard455(this);ResetHotbarUpload455();}')
@@ -26,5 +26,13 @@ def port_linker_window(raw,relative,section):
         raw=raw[:begin]+body+raw[end:]
         begin,end=section(raw,b'CLinkBoard::MsgProc(',b'CLinkBoard::MsgProc(');body=raw[begin:end];at=body.index(b'{')+1
         raw=raw[:begin]+body[:at]+b'\r\n\tif(uMsg==0x50c&&static_cast<LONG>(lParam)<m_byMaxPackNum)m_byActivePackNo=static_cast<BYTE>(lParam);'+body[at:]+raw[end:]
-        return raw,True
+        once(b'case WM_BOARD_USE_OBJECT\t:\n\t\t\t{\n',
+             b'case WM_BOARD_USE_OBJECT\t:\n\t\t\t{\n'
+             b'                auto* shortcut = GetObject(stRecvMsg.m_byPackNo, stRecvMsg.m_bySocketNo);\n'
+             b'                if (!shortcut) break;\n'
+             b'                if (shortcut->GetItem455()) {\n'
+             b'                    UseShortcut455(stRecvMsg.m_byPackNo, stRecvMsg.m_bySocketNo);\n'
+             b'                    break;\n'
+             b'                }\n')
+        return raw+b'\n'+(native/'client455_linker_use.inc').read_bytes(),True
     return raw,False

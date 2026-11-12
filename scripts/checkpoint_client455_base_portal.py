@@ -5,6 +5,7 @@ import json
 import struct
 from pathlib import Path
 
+from audit_client455_tutorial_integration import rtti, u32
 from build_client455_x87_math import read_va
 from checkpoint_client455_monster_force_damage import run_fixture
 from checkpoint_client455_party_window import path, read, save
@@ -29,6 +30,23 @@ CALLS = {
     0x475cf8: 0x4fa290,
     0x42d5d4: 0x40c880,
 }
+
+
+def verify_linker_reference():
+    binary = WS / 'work/client-reference/current/RF_Online.bin'
+    fingerprint = sha(binary)
+    require(fingerprint == 'b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b',
+            'Pinned x86 455 Linker reference')
+    raw = binary.read_bytes()
+    table = 0xaae914
+    identity = rtti(raw, table)
+    require(identity['class_name'] == 'CLinkBoard' and u32(raw, table + 132) == 0x500f80,
+            'Linker primary vtable use method')
+    for site in (0x5010dd, 0x501122):
+        require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', 0x4faa70 - site - 5),
+                'Linker delegates physical use to the selected board')
+    return dict(sha256=fingerprint, architecture='x86', use_rva='0x100f80',
+                physical_source_ids=[1, 0], **identity)
 
 
 def verify_reference():
@@ -93,6 +111,7 @@ def main():
     parser.add_argument('--with-live', action='store_true')
     args = parser.parse_args()
     verify_reference()
+    linker_reference = verify_linker_reference()
     link = read('normal-link')
     require(validate_normal_link(link) == 'PASS', 'Exact current client build')
     link_sha = sha(path('normal-link'))
@@ -108,18 +127,22 @@ def main():
     native, console = run_fixture(exe, [WS / item['file']], [], 'base-portal')
     require(native == dict(status='PASS', request=[4, 26], reply=[4, 27], success_codes=[0, 10],
                            quantity=[10, 9], bad_map_cases=2, refusal=True, malformed=True,
-                           send_failure=True, cancel=True, same_map_no_loading_overlay=True),
+                           send_failure=True, cancel=True, same_map_no_loading_overlay=True,
+                           linker_mouse=[4, 9], stale_shortcut=True),
             'Base portal native fixture')
     names = ('normal-link', 'normal-preparation', 'normal-build', 'normal-consumers',
              'own-entry', 'startup-audit', 'startup-taiwan-native', 'base-portal-reference')
     sources = ('client455_base_portal_port.py', 'native/client455_base_portal_inventory.inc',
-               'native/client455_base_portal_position.inc', 'native/client455_base_portal_probe.cpp')
+               'native/client455_base_portal_position.inc', 'native/client455_base_portal_probe.cpp',
+               'client455_linker_window_port.py', 'native/client455_linker_use.inc',
+               'native/client455_linker_window.cpp')
     live = verify_live(link_sha) if args.with_live else None
-    save('base-portal-checkpoint', dict(
+    save('base-portal-checkpoint' if live else 'linker-use-checkpoint', dict(
         status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_BASE_PORTAL',
-        scope='Ordinary inventory slot, send ring, response dispatcher and scheduled map transition.',
+        scope='Inventory and fifth-bank Linker click, send ring, response dispatcher and map transition.',
         normal_executable=link['executable'], normal_link_sha256=link_sha,
         component=native, component_executable=record(exe), component_console=console, item=item,
+        linker_reference=linker_reference,
         script=record(Path(__file__)), sources=[record(WS / 'scripts' / name) for name in sources],
         fresh_evidence={name: record(path(name)) for name in names},
         gaps=['Physical mouse use, travel from farther away and movement after arrival remain to be checked.' if live

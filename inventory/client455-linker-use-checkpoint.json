@@ -1,0 +1,155 @@
+{
+  "status": "PARTIAL_COMPONENT_BASE_PORTAL",
+  "scope": "Inventory and fifth-bank Linker click, send ring, response dispatcher and map transition.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e2ea2163771fb9dd0f0c6ff29a4a6db42e3241d9714e57a241c53381821137ca",
+    "bytes": 2518528,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a1970",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "6becb1a872ed5e792e35d44df37be819cf0e1305388a1e40c47eb7179e92265e",
+  "component": {
+    "status": "PASS",
+    "request": [
+      4,
+      26
+    ],
+    "reply": [
+      4,
+      27
+    ],
+    "success_codes": [
+      0,
+      10
+    ],
+    "quantity": [
+      10,
+      9
+    ],
+    "bad_map_cases": 2,
+    "refusal": true,
+    "malformed": true,
+    "send_failure": true,
+    "cancel": true,
+    "same_map_no_loading_overlay": true,
+    "linker_mouse": [
+      4,
+      9
+    ],
+    "stale_shortcut": true
+  },
+  "component_executable": {
+    "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
+    "sha256": "86b7747df4f75abb93be805345842e8c92d41c6fffdd0cf5d62a63c6918c09a3"
+  },
+  "component_console": {
+    "file": "work/client455-port/base-portal-probe/base-portal.txt",
+    "sha256": "8322da4748ad6cc7b2596c580d53542de1610ececfdda590c69946dc420239b9"
+  },
+  "item": {
+    "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf",
+    "original_sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+    "file": "work/client-reference/item-payloads455/item.edf",
+    "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+  },
+  "linker_reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "use_rva": "0x100f80",
+    "physical_source_ids": [
+      1,
+      0
+    ],
+    "class_name": "CLinkBoard",
+    "vtable_rva": "0x6ae914",
+    "locator_rva": "0x77d654",
+    "descriptor_rva": "0x7cf648",
+    "decorated_type": ".?AVCLinkBoard@@"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_base_portal.py",
+    "sha256": "0971e6fca635031d47df1d9765cdeebb6aacf094be697654960fb147b5123912"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_base_portal_port.py",
+      "sha256": "bad8ebcbdd12f84b89cb06bb9425d51c55cd75df3eef80367cf717f8fdb01825"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_inventory.inc",
+      "sha256": "61484be1a69d2a9d9c3fae42b4ede6a0fb18372122e6ae7ed4091b556f460aee"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_position.inc",
+      "sha256": "ead8b2cf0e70085b4d1b30f3f552747c9ff2418d980b1033d7e2229425c2335d"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_probe.cpp",
+      "sha256": "d0fe6d240c670593c3b3cb75c198526dc2756b8befb624ddaaad14a6cb03939f"
+    },
+    {
+      "file": "scripts/client455_linker_window_port.py",
+      "sha256": "53770f4a5491a6f5577cca368ac69812bc4283d4ce891207696cf39244bbe829"
+    },
+    {
+      "file": "scripts/native/client455_linker_use.inc",
+      "sha256": "6f0b3a18346eace219906427aedb46190eeac6d45ff3d2130099ecbb505857ec"
+    },
+    {
+      "file": "scripts/native/client455_linker_window.cpp",
+      "sha256": "e13b85192a35c6c3064b9b8f001937dbf4125206693899e3babe1c1e87ff73d5"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "6becb1a872ed5e792e35d44df37be819cf0e1305388a1e40c47eb7179e92265e"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "2314abc89b2321659405aa27f7efe60e9a3e6988c3e450b0d1d3eadc02926955"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "21a9ec362fc3ea8bd08770afd7d252941e29536ef1d4bbd2b27219f85d2493a2"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "b0155144f5b4cf31491682a43297336722a193147df651464b5489b33ccc3f60"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "ce7cb53d61c61ec80a0f756f746faf2bff79e0368098f9fbb9af23dada95f67a"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "1cb6128a6c4de7c31105d1779229f218675fbb93c1a0bc2e0e8a90c5604222f9"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "01d987a717345379c441b15c71578979e2003806f22a2f7bad4a0024c40fe62b"
+    },
+    "base-portal-reference": {
+      "file": "inventory/client455-base-portal-reference.json",
+      "sha256": "26a38e6130763c6e09952db53c33797beb1eaa99ca1623c5f14b17ee08edd143"
+    }
+  },
+  "gaps": [
+    "Server reply and post-transition movement still need a live Bellato HQ run.",
+    "Special Return map/area checks and cross-map resources remain open.",
+    "The current map remains bound during the request for legacy world consumers."
+  ],
+  "own_live_run": false,
+  "live": null,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

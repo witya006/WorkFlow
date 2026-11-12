@@ -142,6 +142,14 @@ int run(const char* itemFile)
     auto* object = new CBoardObject;
     object->SetItem455(item);
     require((inventory->*access(Packs{}))[0].Add(0, object), "typed first socket");
+
+    CLinkBoard linker;
+    linker.CObjectBoard::Create(IBT_LINK, 5, 10);
+    require(linker.CObjectBoard::AddPack(4), "fifth Linker bank");
+    auto shortcut = std::unique_ptr<CBoardObject>(object->Clone());
+    auto& bank = (linker.*access(Packs{}))[4];
+    require(shortcut && bank.Add(9, shortcut.get()), "linked Return in fifth bank, tenth slot");
+
     SendRing ring(network);
     const auto use = [&] { return inventory->UI_UseRequest(0, 0) != FALSE; };
     const auto quantity = [&] { return RF455_ReadBasicIconMetadata(*item).quantity; };
@@ -161,6 +169,12 @@ int run(const char* itemFile)
                 land.GetMapIndex() == 0 && land.GetPortalIndex() == 3 &&
                 move->m_byEnterMapIndex == 0 && quantity() == 10, "normal inventory use starts request");
         ring.ExpectRequest();
+    };
+
+    const auto useShortcut = [&](BYTE slot, BOOL dragging = FALSE) {
+        auto& window = linker.LinkerWindow455();
+        _mouse_event event{window.GetItem(4, slot), LMOUSE_STROKED, 0, 0};
+        window.DispatchMouse455(event, dragging, FALSE, FALSE, FALSE);
     };
 
     std::fputs("send failure\n", stderr);
@@ -200,6 +214,27 @@ int run(const char* itemFile)
         item->SetDownloadValue455(10, 0);
     }
 
+    useShortcut(8);
+    useShortcut(9, TRUE);
+    require(ready() && !linker.UseShortcut455(5, 9), "empty, dragged or out-of-range shortcut stays idle");
+    useShortcut(9);
+    require(boards->IsRequestProcess() && boards->GetOrgObject() == object &&
+            boards->GetOrgBoardType() == IBT_INVENTORY && boards->GetOrgSocketNo() == 0,
+            "fifth-bank mouse dispatch activates the actual inventory slot");
+    ring.ExpectRequest();
+    require(dispatch(0, 0) && quantity() == 9 && !boards->IsRequestProcess() &&
+            move->m_vecPosition[0] == -1234, "ordinary response consumes the original item");
+    move->m_bIsMoved = FALSE;
+    move->m_byMoveStep = MOVEMAP_INFO::MMS_NONE;
+    land.SetPortalIndex(3);
+    item->SetDownloadValue455(10, 0);
+    auto& inventoryPack = (inventory->*access(Packs{}))[0];
+    require(inventoryPack.Empty(0), "unlink source without destroying shortcut fixture");
+    require(!linker.UseShortcut455(4, 9) && ready(), "stale shortcut does not send a request");
+    require(inventoryPack.Add(0, object), "return inventory ownership for cleanup");
+    require(bank.Empty(9), "release borrowed Linker fixture slot");
+    shortcut.reset();
+
     std::fputs("cleanup\n", stderr);
     (boards->*access(Boards{}))[IBT_INVENTORY] = nullptr;
     delete inventory;
@@ -213,7 +248,7 @@ int run(const char* itemFile)
     std::puts("{\"status\":\"PASS\",\"request\":[4,26],\"reply\":[4,27],"
               "\"success_codes\":[0,10],\"quantity\":[10,9],\"bad_map_cases\":2,"
               "\"refusal\":true,\"malformed\":true,\"send_failure\":true,\"cancel\":true,"
-              "\"same_map_no_loading_overlay\":true}");
+              "\"same_map_no_loading_overlay\":true,\"linker_mouse\":[4,9],\"stale_shortcut\":true}");
     return 0;
 }
 }
