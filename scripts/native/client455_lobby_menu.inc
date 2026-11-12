@@ -5,9 +5,36 @@
 
 #include "client455_font.h"
 #include "client455_language.h"
+#include "client455_nation_paths.h"
 #include "client455_protocol_observation.h"
 
 namespace {
+
+void LoadLobbyLogo455(IDirect3DDevice9* device, IDirect3DTexture9*& logo)
+{
+    const bool china = RF455_GetNormalNationPaths()->nation == RF455_MapNation("China");
+    const char* dds = china ? ".\\System\\titlelogocn.dds" : ".\\System\\titlelogo.dds";
+    const char* tga = china ? ".\\System\\titlelogocn.tga" : ".\\System\\titlelogo.tga";
+    if (FAILED(D3DXCreateTextureFromFileA(device, dds, &logo)) &&
+        FAILED(D3DXCreateTextureFromFileA(device, tga, &logo)))
+        logo = nullptr;
+}
+
+void DrawLobbyLogo455(IDirect3DTexture9* logo)
+{
+    D3DSURFACE_DESC image{};
+    if (!logo || FAILED(logo->GetLevelDesc(0, &image)) || !image.Width || !image.Height) return;
+
+    const auto* screen = GetR3State();
+    const auto scaleAt = (std::min)(image.Width, 1600u);
+    const int width = screen->mScreenXsize < scaleAt
+        ? static_cast<int>(double(image.Width) * screen->mScreenXsize / scaleAt)
+        : static_cast<int>(image.Width);
+    const int height = static_cast<int>(image.Height) * width / static_cast<int>(image.Width);
+    const int x = static_cast<int>((screen->mScreenXsize - double(width)) / 2.0);
+    const int y = static_cast<int>(screen->mScreenYsize * 0.43 - height / 2);
+    Draw2DTexture(x, y, x + width, y + height, 0xfeffffff, logo);
+}
 
 class LobbyMenu455 final : public CGUIWindow {
 public:

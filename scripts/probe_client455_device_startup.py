@@ -220,7 +220,13 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         for row in case['archives']:
             if not row['path'].lower().startswith('map/lobby/'):continue
             original=client/row['path'];copy=run/row['path'];owned=WS/'work/world455-inputs'/row['path'];stage_asset(original,copy,row['sha256'],owned_immutable=owned if owned.is_file() else None);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
-        original=client/'System/titlelogo.tga';copy=run/'System/titlelogo.tga';stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+        logo = 'titlelogocn' if country['id'] == 2 else 'titlelogo'
+        for extension in ('.dds', '.tga'):
+            relative = Path('System') / (logo + extension)
+            original, copy = client / relative, run / relative
+            if original.is_file():
+                stage_asset(original, copy)
+                inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
     if partialCreate:
         inputs+=copy_tagged_sound_providers(run)
         shaders=json.loads((WS/'inventory/client455-shaders-reference.json').read_text())

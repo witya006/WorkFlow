@@ -1,5 +1,7 @@
 """Install the 455 lobby menu in the ordinary login stage."""
 
+import re
+
 from client455_trade_ore_port import replace
 
 
@@ -19,6 +21,14 @@ def port_lobby_menu(raw, relative, native):
                   b'\tm_bIsLoadedData = TRUE;')
     raw = replace(raw, b'\tm_AniCamera.ReleaseAniCamera();',
                   b'\tlobbyMenu455.Uninstall(*_GetUIScreen());\n\tm_AniCamera.ReleaseAniCamera();')
+    legacy_logo_load = rb'if \( FAILED\(D3DXCreateTextureFromFile\( GetD3dDevice\(\),"\.\\\\system\\\\titlelogo\.tga", &g_LogoTexture \)\)\)\s*\{\s*int a= 0;\s*\}'
+    raw, count = re.subn(legacy_logo_load, b'LoadLobbyLogo455(GetD3dDevice(), g_LogoTexture);', raw)
+    if count != 1:
+        raise ValueError('Lobby title texture load boundary changed')
+    legacy_logo_draw = rb'if \(g_LoginState==LGS_IDANDPASSWORD\)\s*\{[^{}]*Draw2DTexture\(x,y,x \+ width ,height \+ y,0xfeffffff,g_LogoTexture\);\s*\}'
+    raw, count = re.subn(legacy_logo_draw, b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)\n\t\t\tDrawLobbyLogo455(g_LogoTexture);', raw)
+    if count != 1:
+        raise ValueError('Lobby title texture draw boundary changed')
     raw = replace(raw, b'\tm_messages455.Draw();',
                   b'\tlobbyMenu455.DrawCredits();\n\tm_messages455.Draw();')
     raw = replace(raw, b'sprintf( l_pBuf, "Closed Beta v %.3f", _GetMainApp()->GetVersion() );',

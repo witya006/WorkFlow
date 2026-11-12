@@ -1,0 +1,145 @@
+{
+  "status": "PARTIAL_REAL_FOCUS_AND_LOBBY_LOGO",
+  "own_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "099fbef798c004bd68116749478ab482d0964cd583abf48af0b12808dc302738",
+    "bytes": 2528256,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3bf0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "runtime_executable": {
+    "file": "work/m9/099fbef7/world-observation-live-taiwan001/RF_Online.bin",
+    "sha256": "099fbef798c004bd68116749478ab482d0964cd583abf48af0b12808dc302738"
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "map": "NeutralB",
+  "presentation_status": {
+    "logo": "00000000",
+    "prologue": "00000000",
+    "lobby": "00000000",
+    "world": "00000000"
+  },
+  "actual_window_focus": {
+    "logo": {
+      "inactive_ms": 1313
+    },
+    "prologue": {
+      "inactive_ms": 1500
+    },
+    "world": {
+      "inactive_ms": 3750,
+      "rendered_while_inactive": true,
+      "packets_while_inactive": 54,
+      "packet_types": {
+        "4:10": 30,
+        "4:5": 24
+      }
+    }
+  },
+  "lobby_texture": {
+    "file": "work/m9/099fbef7/world-observation-live-taiwan001/System/titlelogo.tga",
+    "sha256": "1993b6d7417daec2aed2aa1babdbc02586f1bf757f6aa7580dd3785296d0b2f1",
+    "source_dimensions": [
+      1600,
+      850
+    ]
+  },
+  "lobby_frame": {
+    "file": "work/m9/099fbef7/world-observation-live-taiwan001/login-frame.png",
+    "sha256": "7c314962d023bf838d97f9fd75d16c0e7e30e5abb1bb115470ffd655d10261c1"
+  },
+  "live_receipt": {
+    "file": "artifacts/client455-progress/foreground-world-099fbef7.json",
+    "sha256": "f91a690c2be6c5781012893af4803bbb5fb138fa593ba50878b2aae4e4f2c722"
+  },
+  "events": {
+    "file": "work/m9/099fbef7/world-observation-live-taiwan001/debug-events.jsonl",
+    "sha256": "40d884a8add6cf43875a79e94d2a3e0c5d4fb648a1baefa40f19fc0f255ee7a5"
+  },
+  "focus_observer_sources": [
+    {
+      "file": "work/live-foreground455.py",
+      "sha256": "79f86d741f4bd13a6551a7f8baad1f6e2762c435afef69fcb58d7e6017116452"
+    },
+    {
+      "file": "work/live-foreground455/capture.inc",
+      "sha256": "a386fb1f3b93a0eb05ea30ceb2354004effbd77f79a0beaf87d97a669735babf"
+    },
+    {
+      "file": "work/live-foreground455/observer.inc",
+      "sha256": "17bec7d359265dd4dcb90cd9d6b503b6ef616f5d95fac5b1eb8d41e757c16a53"
+    },
+    {
+      "file": "work/live-foreground455/observer.cpp",
+      "sha256": "c86454e9adfba5b8a8bcd7de167a838206e9f8e09f70c061dd7fa25455a7c78c"
+    }
+  ],
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 305,
+          "sha256": "f38291f7e3f9e4eb3bec8b82a0943c5a5f2edf5397aec2643cf7d3ec3d7d9931"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 305,
+          "sha256": "f38291f7e3f9e4eb3bec8b82a0943c5a5f2edf5397aec2643cf7d3ec3d7d9931"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        }
+      ]
+    }
+  ],
+  "reference_logo_ranges_identical": true,
+  "window_capture": {
+    "samples": {
+      "logo/game": 14,
+      "logo/helper": 44,
+      "prologue/game": 54,
+      "prologue/helper": 9,
+      "lobby/game": 65,
+      "world/game": 35,
+      "world/helper": 34
+    },
+    "all_samples_uniform_white": true,
+    "supports_flicker_conclusion": false
+  },
+  "private_handoff_removed": true,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}
