@@ -1,0 +1,42 @@
+{
+  "status": "PARTIAL_MAP_TRANSITION",
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f4f22ad342f9904270915cbfec59dd93627dbaba75ac9d11615bff0ac35dcdcd",
+    "architecture": "x86",
+    "entry_rva": "0x1a1e30"
+  },
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "land_load_rva": "0x3c8600",
+    "move_transition_rvas": ["0x2d4f0", "0x2d5b0", "0x2d820"]
+  },
+  "catalog": {
+    "file": "DataTable/Map.edf",
+    "sha256": "801c2724eff2a4a4b519d207ad26a6e98845444b464707d86c745b2af6b9c309",
+    "bsp_paths": 110
+  },
+  "world_probe": {
+    "command": "scripts/Invoke-Python.ps1 scripts/probe_client455_world.py --transition",
+    "report": {
+      "file": "work/m9/8c2b9237/world-bellato-001/probe-report.json",
+      "sha256": "6701fd6255861d4e18358c272034ad002d399ce1b2a5b40907b4762514f0e31e"
+    },
+    "source": "Bellato",
+    "destination": "NeutralB",
+    "rejected_paths": ["missing BSP", "unsupported INS", "BSP header with truncated body"],
+    "source_preserved": true,
+    "rendered_destination": true,
+    "allocator_before_after": [623360, 623360],
+    "known_missing_entity": "Map/Entity/e_neutrala/trade_bel/trade_bel.r3e",
+    "new_pool_bytes": 0
+  },
+  "same_map_regression": {
+    "file": "inventory/client455-linker-use-checkpoint.json",
+    "sha256": "31610d2ff80a872896e01a7b4872cfcb6dd1f15c064d1abb695da21b2c13b730"
+  },
+  "open": ["Live accepted cross-map result and movement after arrival", "Zone server handoff", "Failures in auxiliary map resources"],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

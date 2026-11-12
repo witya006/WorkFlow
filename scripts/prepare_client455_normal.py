@@ -571,16 +571,31 @@ def main():
                 if declaration<0 or raw[declaration:first].strip()!=b'HRESULT':raise ValueError('Login render return declaration changed')
                 raw=raw[:declaration]+(native/'client455_login_capture.inc').read_bytes()+b'\n'+raw[declaration:first]+body+raw[last:]
                 changes.append('opt-in actual Login backbuffer capture after EndScene;no diagnostic sideeffects without RF455_CAPTURE_LOGIN=1')
+            if relative=='cland.h':
+                anchor=b'\tvoid\tUI_SetMinimap('
+                if raw.count(anchor)!=1:raise ValueError('Land declaration boundary changed')
+                raw=raw.replace(anchor,b'\tBOOL LoadBspLevel455(char* name);\r\n'+anchor)
+                anchor=b'\tBOOL\tLoadData( void );'
+                if raw.count(anchor)!=1:raise ValueError('Land data declaration changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tbool CanLoadMap455(BYTE index) const;')
             if source.name.lower()=='cland.cpp':
                 raw=b'#include <cstring>\r\n'+raw
+                raw+=b'\n'+(native/'client455_land_preflight.inc').read_bytes()
                 first,last=section(raw,b'CLand::LoadLevel( char * pi_pLevelName )',b'CLand::LoadLevel( char * pi_pLevelName )')
                 body=(native/'client455_land_load.inc').read_bytes().replace(b'BOOL CLand::',b'CLand::',1)
-                raw=raw[:first]+body+raw[last:]
+                declaration=raw.rfind(b'BOOL',0,first)
+                if declaration<0 or raw[declaration:first].strip()!=b'BOOL':raise ValueError('Land load return declaration changed')
+                raw=raw[:declaration]+b'namespace { bool CanReadLevel455(const char* name); }\r\n'+raw[declaration:first]+body+raw[last:]
                 first,last=section(raw,b'CLand::LoadLevel( BYTE pi_byMapIndex )',b'CLand::LoadLevel( BYTE pi_byMapIndex )')
                 body=raw[first:last];anchor=b'm_pLevel->LoadLevel( m_pMapInfo[pi_byMapIndex].pFileName );'
                 if body.count(anchor)!=1:raise ValueError('Indexed land load boundary changed')
-                body=body.replace(anchor,b'if(!LoadLevel(m_pMapInfo[pi_byMapIndex].pFileName))return FALSE;');raw=raw[:first]+body+raw[last:]
-                changes.append('455BSP level ownership recreated per load and camera rebound;INS provider explicitly missing;fullILevel/Empty/INS stillopen')
+                body=body.replace(anchor,b'if (!LoadBspLevel455(m_maps455.maps[pi_byMapIndex].pFileName)) return FALSE;')
+                anchor=b'\t_GetCamera()->SetSpecialCameraMode(0);'
+                if body.count(anchor)!=1:raise ValueError('Indexed land load preflight boundary changed')
+                body=body.replace(anchor,b'\tif (!CanLoadMap455(pi_byMapIndex)) return FALSE;\r\n'+anchor)
+                body=body.replace(b'\tassert( m_pLevel != NULL );',b'')
+                raw=raw[:first]+body+raw[last:]
+                changes.append('455 level loading checks the destination BSP before replacing the active level and rebinding the camera')
                 start,end=section(raw,b'CLand::UnloadLevel( void )',b'CLand::UnloadLevel( void )')
                 body=raw[start:end];anchor=b'\tassert( m_pLevel != NULL );'
                 if body.count(anchor)!=1:raise ValueError('Land unload entry changed')
@@ -1010,6 +1025,7 @@ def main():
     for name in ['client455_briefing_window.h','client455_briefing_window.cpp','client455_screen_message.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_avatar_stage.h','client455_avatar_stage.cpp','client455_avatar_stage.inc','client455_tutorial_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_land_load.inc']=sha((native/'client455_land_load.inc').read_bytes())
+    report['record_inputs']['client455_land_preflight.inc']=sha((native/'client455_land_preflight.inc').read_bytes())
     for name in ['client455_tutorial_intro.h','client455_tutorial_intro.cpp','client455_tutorial_intro_camera.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp.h','client455_rvp.cpp','client455_rvp_runtime.h','client455_rvp_runtime.cpp','client455_rvp_actor.h','client455_rvp_actor.cpp','client455_normal_rvp.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp_effects.h','client455_rvp_effects.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

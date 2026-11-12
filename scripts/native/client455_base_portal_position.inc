@@ -15,15 +15,7 @@ bool CanEnterBasePortalMap455(CLand& land, BYTE map)
 {
     const auto& data = land.MapData455();
     if (!data.maps || map >= data.count || !land.GetLevel()) return false;
-    if (map == land.GetMapIndex()) return true;
-
-    // The ordinary level loader opens the map file directly and has no
-    // instance-map provider yet. Keep the current scene if it cannot open it.
-    const char* path = data.maps[map].pFileName;
-    const auto length = std::strlen(path);
-    if (length < 4 || _stricmp(path + length - 4, ".ins") == 0) return false;
-    const auto attributes = GetFileAttributesA(path);
-    return attributes != INVALID_FILE_ATTRIBUTES && !(attributes & FILE_ATTRIBUTE_DIRECTORY);
+    return map == land.GetMapIndex() || land.CanLoadMap455(map);
 }
 }
 

@@ -3,11 +3,11 @@
   "scope": "Inventory, fifth-bank Linker mouse/F1\u2013F10, send ring and ordinary map transition.",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "c70cc76b88635ce13bd14b793ba6e87f4d6a6822c936f9550f5ecd75db371786",
-    "bytes": 2519040,
+    "sha256": "f4f22ad342f9904270915cbfec59dd93627dbaba75ac9d11615bff0ac35dcdcd",
+    "bytes": 2520064,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a19f0",
+    "entry_rva": "0x1a1e30",
     "sections": [
       ".text",
       ".rdata",
@@ -16,7 +16,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "65cf9ef4cf92760c7b32fa87c25ddd359f758d203a7b004d33cbdfab87e2bcda",
+  "normal_link_sha256": "4cc5a8fbae77444c68af4a311a1a14db99a2c2d71ee97619acd119901742bff6",
   "component": {
     "status": "PASS",
     "request": [
@@ -56,7 +56,7 @@
   },
   "component_executable": {
     "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
-    "sha256": "895d16b0a1d2603f583e4a5d457db5b3ca01d4d55fe750e0e3de9e14fdbb6462"
+    "sha256": "b403cfcf3e5c33704e24846e818220af55c1e20303acdd8b248c207a47e40cdf"
   },
   "component_console": {
     "file": "work/client455-port/base-portal-probe/base-portal.txt",
@@ -96,7 +96,7 @@
   "sources": [
     {
       "file": "scripts/client455_base_portal_port.py",
-      "sha256": "bad8ebcbdd12f84b89cb06bb9425d51c55cd75df3eef80367cf717f8fdb01825"
+      "sha256": "1b39269e06e424a5399dd97eb5b42ff2d4909f1279a7210f8f95664bcedf43fa"
     },
     {
       "file": "scripts/native/client455_base_portal_inventory.inc",
@@ -104,7 +104,7 @@
     },
     {
       "file": "scripts/native/client455_base_portal_position.inc",
-      "sha256": "ead8b2cf0e70085b4d1b30f3f552747c9ff2418d980b1033d7e2229425c2335d"
+      "sha256": "f9644807353f2eeef34fd17d461b04091dd34f1ecb10fbaccbce745c90dd225a"
     },
     {
       "file": "scripts/native/client455_base_portal_probe.cpp",
@@ -134,31 +134,31 @@
   "fresh_evidence": {
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "65cf9ef4cf92760c7b32fa87c25ddd359f758d203a7b004d33cbdfab87e2bcda"
+      "sha256": "4cc5a8fbae77444c68af4a311a1a14db99a2c2d71ee97619acd119901742bff6"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "5796fe44aed086f3d6d494f5c36f8fe93daf5c8c712eaf7a4a5eb7821897830b"
+      "sha256": "6c3fa827656ffd349ea7154b1ad286864a34f9dd424576ff4014bcb1260e6546"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "31cca4001dfa87b3606542522d0e2ee65468b87cee6b578dbc9dc9bcac2381ce"
+      "sha256": "235e37c1a984786369e272808eff714aaa8cf3a85aecad391a96e7e259d25b2e"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "c7ec4bf57ed9a255853fc431c711ad28b342a0b90e6f10d56f6f32da6bbc2d84"
+      "sha256": "6847ca5b34d4c13450a18ecd4457911a40a978ce2ea1c7ec108214f5b02b409d"
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "5cfa9b594c701190339fcef5843957098c2657233cf1af766ed5164c38f2da09"
+      "sha256": "7b9342d2eaf4f63efd4691f80485ba096dfa4e015a81d56e151fa6a3eead3526"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "5e641516f8c839b8956a06c6ba3fdd55603236431f5e7723e38a43866e6291e5"
+      "sha256": "0aa6039b87baf1a676808c17d540fddd437680f64d7a2ed520e2ef5e5a3308da"
     },
     "startup-taiwan-native": {
       "file": "inventory/client455-startup-taiwan-native.json",
-      "sha256": "beac1c2fe12cc7a04d1d5227aa6bfe9323eaadec0e43efb6d599618db39c0a32"
+      "sha256": "ee7010570a07dd7b5a5486a2748960d0c24449bd3fcaf9d67d7314d1c53001f9"
     },
     "base-portal-reference": {
       "file": "inventory/client455-base-portal-reference.json",

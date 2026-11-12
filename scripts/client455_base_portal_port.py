@@ -94,10 +94,33 @@ def port_base_portal(raw, relative, native, section):
                            b'if (!sameMapReturn) _GetMapLoadingWindow()->Open();')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_PrevLoadData', before_loading)
         def after_loading(body):
+            anchor = b'if( m_byEnterMapIndex != m_byExitMapIndex )\n\t{'
+            body = replace(body, anchor, anchor + b'''
+        auto* land = _GetLand();
+        const auto fail = [&] {
+            if (_GetMapLoadingWindow()->IsShow()) _GetMapLoadingWindow()->Close();
+            m_byMoveStep = MMS_NONE;
+            m_pEnterPortalInfo = m_pExitPortalInfo = nullptr;
+            RF455_ObserveProtocol("map-load-failed", m_byEnterMapIndex, m_byExitMapIndex, m_byMoveType);
+            // An accepted transition cannot continue on the previous server position.
+            EP_DisconnectedFromServer();
+        };
+        if (!land->CanLoadMap455(m_byExitMapIndex)) {
+            fail();
+            return;
+        }
+''')
+            body = replace(body, b'_GetLand()->UnloadLevel();\n\t\t_GetLand()->LoadLevel( m_byExitMapIndex );',
+                           b'''land->UnloadLevel();
+        if (!land->LoadLevel(m_byExitMapIndex)) {
+            fail();
+            return;
+        }''')
             return replace(body, b'm_dwMoveDelay\t\t\t= DEFAULT_MOVEMAP_DELAY;',
                            b'm_dwMoveDelay = m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex\n'
                            b'        ? 1300 : DEFAULT_MOVEMAP_DELAY;')
-        return patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_LoadData', after_loading), True
+        raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_LoadData', after_loading)
+        return b'#include "client455_protocol_observation.h"\nvoid EP_DisconnectedFromServer();\n' + raw, True
     if relative == 'userinterface/gamewindow/etcwin/guimaploadingwindow.cpp':
         def bind_loading_sprite(body):
             return b'''CGUIMapLoadingWindow::SetSprite( void )
