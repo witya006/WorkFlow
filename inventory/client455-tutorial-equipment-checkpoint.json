@@ -1,0 +1,147 @@
+{
+  "status": "PASS_BELLATO_TUTORIAL_EQUIPMENT_AND_CONFIRMED_EXIT",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "rvas": {
+      "board_open_close": "0x28640",
+      "board_open_wait": "0x28a10",
+      "equip_candidate": "0x28cb0",
+      "unequip": "0x28e10",
+      "give_item": "0x29660",
+      "find_item_code": "0x200030",
+      "cursor_first_free": "0x27020",
+      "cursor_item_or_equipment": "0x272b0",
+      "combat_switch": "0x11320"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-tutorial-equipment.json",
+      "sha256": "9401c0a94e0f68babc3dbe597c7995c64bfaba12f916addfa9167acd382445c9"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "a6bfc65891da7c029d4b0d57e3c22650b6cfbc2cf95da4dabcc5ba60b23e4adb",
+    "bytes": 2490368,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19bc90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ],
+    "objects": 182,
+    "unresolved_symbols": 0
+  },
+  "data": {
+    "corpus": {
+      "file": "inventory/client455-tutorial-equipment-corpus.json",
+      "sha256": "b1b44a914b54e779cf98cb0620f2a4613d260880aee57087c6d086eec47412b2"
+    },
+    "script": {
+      "file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp",
+      "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+    },
+    "item_edf": {
+      "file": "work/startup455-m6/menu-live/DataTable/Item.edf",
+      "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+    },
+    "script_instructions": 67
+  },
+  "live": {
+    "profile": "zh-tw",
+    "window_size": [
+      640,
+      500
+    ],
+    "character": "Bellato Warrior",
+    "precondition": "own client memory fixture selects the tutorial for the test avatar",
+    "input": [
+      "Ctrl+I",
+      "Ctrl+left click in the bag",
+      "Ctrl+left click on equipment"
+    ],
+    "script_waits_checked": [
+      4,
+      35,
+      60
+    ],
+    "event_log": {
+      "file": "work/startup455-m6/menu-live/events-1794447010.jsonl",
+      "sha256": "699389c66c8bb3f6c8a42259bc74ee3cbe33fb9c1945e1f199e4c777378540a6"
+    },
+    "test_driver": {
+      "file": "work/startup455-m6/test-tutorial-equipment.ps1",
+      "sha256": "e9a5928ba4fe5920f91dbd2eb9e44db5aa115f18a932a217c490bf9ba8caada4"
+    },
+    "ordered_events": [
+      "tutorial-camera-complete:4:0:0",
+      "tutorial-briefing:4:0:0",
+      "tutorial-inventory-practice:4:20:0",
+      "tutorial-inventory-open:0:0:0",
+      "tutorial-briefing:4:6:0",
+      "tutorial-item-granted:6:1076:0",
+      "tutorial-cursor-arrived:219:42:0",
+      "tutorial-inventory-input:1284:91:0",
+      "tutorial-cursor-arrived:456:137:0",
+      "tutorial-inventory-input:1282:90:3",
+      "tutorial-item-equipped:3:0:0",
+      "tutorial-briefing:4:30:0",
+      "tutorial-item-unequipped:3:0:0",
+      "tutorial-inventory-practice:35:24:0",
+      "tutorial-inventory-input:1296:91:0",
+      "tutorial-item-equipped:3:0:0",
+      "tutorial-inventory-close:0:0:0",
+      "tutorial-briefing:4:40:0",
+      "tutorial-inventory-input:1283:90:3",
+      "tutorial-cursor-arrived:219:42:0",
+      "tutorial-inventory-input:1282:91:0",
+      "tutorial-item-unequipped:3:0:0",
+      "tutorial-item-equipped:3:0:0",
+      "tutorial-inventory-practice:60:26:0",
+      "tutorial-inventory-input:1296:90:3",
+      "tutorial-item-unequipped:3:0:0",
+      "tutorial-briefing:4:65:0",
+      "tutorial-equipment-complete:5:0:0",
+      "tutorial-leaving:2:0:0",
+      "map-bsp:0:1:0",
+      "avatar-ready:0:0:0",
+      "world-frame:0:0:0"
+    ],
+    "world_map": "NeutralB",
+    "exit_code": 0,
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-equipment-open.png",
+        "sha256": "6efaddf57d9843d5825fb13c6c4cb411981861b49db27c37731db24892a1e5a6"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-equipment-demonstration.png",
+        "sha256": "a45373c9b43edcd54ff312543ef216cc0341b4691f294bc77757455db4d27d22"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-equipment-equip-practice.png",
+        "sha256": "c50e74047664bd4acabad2c8e1abdddc7df2eb1537831470f7aec347173e718f"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-equipment-unequip-practice.png",
+        "sha256": "7d65d1db6cfe60bbd51fd3f898f7c43758426020acdc6b88d0823efe7f08dd2f"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-equipment-world.png",
+        "sha256": "273a7e529efe0c0d4a390d77e3bc861f6a1409251b56d73906bea5513146becf"
+      }
+    ]
+  },
+  "open": [
+    "Other races, classes, locales and window sizes",
+    "Ammunition and malformed Specialist demo operands in a live run",
+    "Manual drag interaction and combat-specific tutorial panel",
+    "Later lessons and natural completion"
+  ]
+}

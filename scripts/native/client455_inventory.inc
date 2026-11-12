@@ -102,7 +102,10 @@ void CGUIInventoryBoard::Init(BYTE index){
     if(length<0||length>=sizeof(label))throw std::logic_error("455 pack title exceeds target16byte domain");
     m_uiTitle.SetString(label);m_uiTitle.GetFont()->dwColor=0xffc3c1be;m_uiTitle.DisableFocus();RemoveAll();Add(&m_uiTitle);SetSprite();SetSize(228,176);
     for(BYTE i=0;i<TOTAL_INVENTORY;++i){m_uiItem[i].SetSize(32,32);m_uiItem[i].SetPos(39*(i%5)+19,36*(i/5)+26);m_uiUselessItemMark[i].SetPos(m_uiItem[i].GetPosX()-1,m_uiItem[i].GetPosY()-1);m_uiUselessItemMark[i].SetSize(34,34);m_uiUselessSocketMark[i].SetPos(m_uiUselessItemMark[i].m_ptPos);m_uiUselessSocketMark[i].SetSize(34,34);m_uiTradeItemMark[i].SetPos(m_uiUselessItemMark[i].m_ptPos);m_uiTradeItemMark[i].SetSize(34,34);Add(&m_uiItem[i]);Add(&m_uiUselessItemMark[i]);Add(&m_uiUselessSocketMark[i]);m_uiTradeItemMark[i].AddMouseEventHandler(this);Add(&m_uiTradeItemMark[i]);SetUselessItem(i,FALSE);SetUselessSocket(i,FALSE);}
-    m_uiTitle.SetPos(m_ptPos.x+(m_ptSize.x-m_uiTitle.GetSizeX())/2,m_ptPos.y+(22-m_uiTitle.GetSizeY())/2);m_uiCloseButton.SetPos(m_ptPos.x+209,m_ptPos.y+3);m_uiCloseButton.AddMouseEventHandler(this);Add(&m_uiCloseButton);m_uiSelectedSocket.DisableFocus();Add(&m_uiSelectedSocket);SetMoveObject(this);SetMovable(TRUE);DisableFocus();SetARGB((GetARGB()&0x00ffffff)|0xd8000000);SetName("invenBoard");m_bCreated=TRUE;
+    m_uiTitle.SetPos(m_ptPos.x+(m_ptSize.x-m_uiTitle.GetSizeX())/2,m_ptPos.y+(22-m_uiTitle.GetSizeY())/2);m_uiCloseButton.SetPos(m_ptPos.x+209,m_ptPos.y+3);m_uiCloseButton.AddMouseEventHandler(this);Add(&m_uiCloseButton);
+    m_uiSelectedSocket.DisableFocus();
+    m_uiSelectedSocket.SetMouseInput455(FALSE);
+    Add(&m_uiSelectedSocket);SetMoveObject(this);SetMovable(TRUE);DisableFocus();SetARGB((GetARGB()&0x00ffffff)|0xd8000000);SetName("invenBoard");m_bCreated=TRUE;
 }
 void CGUIInventoryBoard::SetTradeItem(BYTE index,BOOL enabled){if(index<TOTAL_INVENTORY)m_uiTradeItemMark[index].GetSpriteInfo()->pSprite=enabled?IV455Sprite(44,0,0):nullptr;}
 void CGUIInventoryBoard::SetUselessSocket(BYTE index,BOOL enabled){if(index<TOTAL_INVENTORY)IV455Overlay(m_uiUselessSocketMark[index],2,32,enabled,enabled?0x90:0xff);}
@@ -115,13 +118,37 @@ void CGUIEquipWindow::SetSprite(){
 void CGUIEquipWindow::Init(){
     SetSprite();SetSize(228,287);RemoveAll();const LONG pos[16][2]={{82,7},{82,77},{82,147},{12,77},{82,217},{152,147},{152,77},{12,147},{44,217},{152,217},{150,39},{185,39},{11,39},{46,39},{46,4},{150,4}};
     for(BYTE i=0;i<TOTAL_EQUIP_ITEM;++i){auto& item=m_uiEquipItem[i];item.SetSize(m_uiEmptyEquipMark[i].m_ptSize);item.SetPos(m_ptPos.x+pos[i][0],m_ptPos.y+pos[i][1]);m_uiEmptyEquipMark[i].SetPos(item.m_ptPos);m_uiTradeItemMark[i].SetSize(item.GetSizeX()+2,item.GetSizeY()+2);m_uiTradeItemMark[i].SetPos(item.GetPosX()-1,item.GetPosY()-1);m_uiUselessSocketMark[i].SetPos(item.GetPosX()-1,item.GetPosY()-1);Add(&m_uiEmptyEquipMark[i]);Add(&item);Add(&m_uiUselessSocketMark[i]);m_uiTradeItemMark[i].AddMouseEventHandler(this);Add(&m_uiTradeItemMark[i]);SetEmpty(i);SetUselessSocket(0,i,FALSE);}
-    m_uiEquipAbleSocket.DisableFocus();m_uiEquipAbleSocketEx.DisableFocus();m_uiDisableEquipShield.DisableFocus();Add(&m_uiEquipAbleSocket);Add(&m_uiEquipAbleSocketEx);Add(&m_uiDisableEquipShield);m_bIsCreated=TRUE;
+    for(auto* socket : {&m_uiEquipAbleSocket, &m_uiEquipAbleSocketEx}) {
+        socket->DisableFocus();
+        socket->AddMouseEventHandler(this);
+    }
+    m_uiDisableEquipShield.DisableFocus();
+    m_uiDisableEquipShield.SetMouseInput455(FALSE);
+    Add(&m_uiEquipAbleSocket);Add(&m_uiEquipAbleSocketEx);Add(&m_uiDisableEquipShield);m_bIsCreated=TRUE;
 }
 void CGUIEquipWindow::SetEmpty(BYTE index){if(index<TOTAL_EQUIP_ITEM){m_uiEquipItem[index].SetEmpty();m_uiEmptyEquipMark[index].GetSpriteInfo()->pSprite=IV455Sprite(6,1,m_uiEmptyEquipMark[index].GetSpriteInfo()->wFrameNo);m_uiEmptyEquipMark[index].SetARGB((m_uiEmptyEquipMark[index].GetARGB()&0x00ffffff)|0x70000000);SetTradeItem(0,index,FALSE);}}
 void CGUIEquipWindow::SetTradeItem(BYTE,BYTE index,BOOL enabled){if(index<TOTAL_EQUIP_ITEM)m_uiTradeItemMark[index].GetSpriteInfo()->pSprite=enabled?IV455Sprite(44,0,index<8?4:0):nullptr;}
 void CGUIEquipWindow::SetUselessSocket(BYTE,BYTE index,BOOL enabled){if(index<TOTAL_EQUIP_ITEM)IV455Overlay(m_uiUselessSocketMark[index],2,index<8?64:32,enabled,enabled?0x90:0xff);}
 void CGUIEquipWindow::Open(){CGUIWindow::Open();if(m_pInventoryWin)m_pInventoryWin->Open();}
 void CGUIEquipWindow::Close(){CGUIWindow::Close();}
+
+bool CGUIInventoryBoard::SlotCenter455(BYTE slot, POINT& point) const {
+    if (slot >= TOTAL_INVENTORY) return false;
+    const auto& item = m_uiItem[slot];
+    point = {item.m_ptPos.x + item.m_ptSize.x / 2, item.m_ptPos.y + item.m_ptSize.y / 2};
+    return true;
+}
+
+bool CGUIEquipWindow::SlotCenter455(BYTE slot, POINT& point) const {
+    if (slot >= TOTAL_EQUIP_ITEM) return false;
+    const auto& item = m_uiEquipItem[slot];
+    point = {item.m_ptPos.x + item.m_ptSize.x / 2, item.m_ptPos.y + item.m_ptSize.y / 2};
+    return true;
+}
+void CGUIEquipWindow::HighlightEquipSlot455(BYTE slot) {
+    if (slot < TOTAL_EQUIP_ITEM) SetEquipAbleSocket(slot);
+    else UnsetEquipAbleSocket();
+}
 // Both455vtables inherit65EA40:normal window draw always returns1 even hidden.
 // The selected/ready objects already belong to the actual child list.
 BOOL CGUIInventoryBoard::Draw(){return CGUIWindow::Draw();}

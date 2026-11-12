@@ -164,6 +164,20 @@ RF455ItemDataSpan RF455ItemDataStore::classByIndex(std::uint32_t index)const{
     return {};
 }
 RF455ItemDataSpan RF455ItemDataStore::getItem(std::uint32_t kind,std::uint32_t index)const{return kind<47?items[kind].get(index):RF455ItemDataSpan{};}
+bool RF455ItemDataStore::findItemByCode(std::uint8_t kind, std::uint32_t code, std::uint32_t& index) const {
+    if (kind >= items.size()) return false;
+    const auto& table = items[kind];
+    for (std::uint32_t rowIndex = 0; rowIndex < table.count; ++rowIndex) {
+        const auto row = table.get(rowIndex);
+        if (row.size >= 8 && u32(row.data + 4) == code) {
+            const auto candidate = u32(row.data);
+            if (candidate >= table.count) return false;
+            index = candidate;
+            return true;
+        }
+    }
+    return false;
+}
 RF455ItemDataSpan RF455ItemDataStore::getItemExtent(std::uint32_t kind,std::uint32_t index)const{
     auto row=getItem(kind,index);if(!row.data)return {};
     return {row.data,items[kind].bytes.size()-std::size_t(index)*items[kind].stride};
@@ -209,6 +223,8 @@ void RF455BasicItem::SetDownloadValue455(std::uint32_t value, std::uint32_t anim
         SetDurability455(value);
     }
 }
+
+bool RF455BasicItem::IsStackable455() const { return split(metadata); }
 
 std::uint32_t RF455BasicItem::durability455() const
 {

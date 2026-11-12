@@ -28,6 +28,7 @@ public:
     RF455ItemDataSpan classByCode(const char*)const;
     RF455ItemDataSpan classByIndex(std::uint32_t)const;
     RF455ItemDataSpan getItem(std::uint32_t,std::uint32_t)const;
+    bool findItemByCode(std::uint8_t kind, std::uint32_t code, std::uint32_t& index) const;
     // Metadata helpers use unchecked offsets in the target. Preserve reads
     // crossing a declared row only while they remain in its actual table owner.
     RF455ItemDataSpan getItemExtent(std::uint32_t,std::uint32_t)const;
@@ -64,6 +65,7 @@ public:
     RF455ItemDataSpan recordBytes()const{return {state.get(),stateSize};}
     void SetUpgradeLevel455(std::uint8_t);
     void SetDownloadValue455(std::uint32_t value, std::uint32_t animusHigh);
+    bool IsStackable455() const;
     std::uint32_t durability455() const;
     void SetDurability455(std::uint32_t value);
     void SetDownloadModifiers455(std::uint32_t upgrade, std::uint8_t kind, std::uint32_t value,

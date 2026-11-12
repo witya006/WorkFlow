@@ -17,10 +17,12 @@
 #include "client455_option_window.h"
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_intro.h"
+#include "client455_tutorial_inventory.h"
 #include "client455_tutorial_spatial.h"
 #include "client455_tutorial_stage.h"
 #include <cmath>
 #include <cstring>
+#include <exception>
 #include <string>
 
 namespace {
@@ -29,6 +31,7 @@ constexpr WORD leaveDialog = 0x6001;
 constexpr DWORD settingsQuest = 1;
 constexpr DWORD movementQuest = 2;
 constexpr DWORD cameraQuest = 3;
+constexpr DWORD equipmentQuest = 4;
 
 class TutorialSettingsCommand;
 
@@ -43,6 +46,7 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     RF455TutorialBriefingWindow briefing;
     CTutorialBoard board{runtime, *this, boardState, &briefing};
     CGUIOptionWindow options;
+    RF455TutorialInventory inventory;
     Phase phase = Phase::Intro;
     bool skipIntro = false;
     bool inputBlocked = false;
@@ -127,6 +131,7 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void advanceCursor();
     void cancelCursor();
     void sendCursor(UINT message, WPARAM flags, POINT position);
+    void clickInventoryDemo();
 public:
     ~CGP_Tutorial455() override { Destroy(); }
     BOOL Create() override;
@@ -161,9 +166,11 @@ class TutorialStageFactory final : public RF455TutorialFactory {
     CGP_Tutorial455& stage;
     RF455TutorialDistanceHost& movement;
     RF455TutorialOrbitHost& camera;
+    RF455TutorialInventory& inventory;
 public:
-    TutorialStageFactory(CGP_Tutorial455& stage, RF455TutorialDistanceHost& movement, RF455TutorialOrbitHost& camera)
-        : stage(stage), movement(movement), camera(camera) {}
+    TutorialStageFactory(CGP_Tutorial455& stage, RF455TutorialDistanceHost& movement,
+                         RF455TutorialOrbitHost& camera, RF455TutorialInventory& inventory)
+        : stage(stage), movement(movement), camera(camera), inventory(inventory) {}
     std::unique_ptr<RF455TutorialProcessor> create(const RF455TutorialInstruction& command) override;
 };
 
@@ -195,7 +202,9 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
         break;
     case 19: case 21:
         if (data.size() == 8 && data[6] == 27) return std::make_unique<TutorialSettingsCommand>(stage, command);
-        break;
+        return RF455_CreateTutorialInventoryCommand(command, movement, inventory);
+    case 20: case 23: case 24: case 25: case 26: case 35: case 40:
+        return RF455_CreateTutorialInventoryCommand(command, movement, inventory);
     case 27:
         if (data.size() == 20 && data[14] == 1 && commandField<DWORD>(command, 16) == 0xffffffff &&
             commandField<SHORT>(command, 6) == -1 && commandField<SHORT>(command, 8) == -1)
@@ -206,11 +215,13 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
             return std::make_unique<TutorialSettingsCommand>(stage, command);
         break;
     case 32:
-        if (data.size() == 20 && data[14] == 0 && data[15] == 27) {
+        if (data.size() == 20 && data[14] == 0) {
             const DWORD reference = commandField<DWORD>(command, 16);
-            if (reference == 0xffffffff || (LOWORD(reference) == 0 && HIWORD(reference) < 3) ||
+            if (data[15] == 0 || (data[15] == UII_EQUIP_WINDOW && reference < MAX_EQUIP_WINDOW_SLOT))
+                return std::make_unique<TutorialSettingsCommand>(stage, command);
+            if (data[15] == 27 && (reference == 0xffffffff || (LOWORD(reference) == 0 && HIWORD(reference) < 3) ||
                 (LOWORD(reference) == 1 && HIWORD(reference) < 6) ||
-                (LOWORD(reference) == 2 && HIWORD(reference) < 6))
+                (LOWORD(reference) == 2 && HIWORD(reference) < 6)))
                 return std::make_unique<TutorialSettingsCommand>(stage, command);
         }
         break;
@@ -227,9 +238,24 @@ bool TutorialSettingsCommand::start(RF455TutorialHost&, RF455TutorialContext&)
         stage.options.Close();
         RF455_ObserveProtocol("tutorial-options-closed", 27, 0, 0);
         break;
-    case 27: stage.startCursor({-1, -1}, 1); break;
+    case 27:
+        if (stage.runtime.currentQuest == equipmentQuest) stage.clickInventoryDemo();
+        else stage.startCursor({-1, -1}, 1);
+        break;
     case 29: stage.inputBlocked = commandField<DWORD>(command, 16) == 0; break;
-    case 32: stage.startCursor(stage.settingsPoint(commandField<DWORD>(command, 16)), 0); return true;
+    case 32: {
+        const DWORD reference = commandField<DWORD>(command, 16);
+        const BYTE window = command.fixed[15];
+        POINT point{};
+        if (window == 27) point = stage.settingsPoint(reference);
+        else if (!(window == 0 ? stage.inventory.inventoryPoint(reference, point)
+                              : stage.inventory.equipmentPoint(static_cast<BYTE>(reference), point))) {
+            stage.fail("Tutorial cursor target is unavailable.");
+            return false;
+        }
+        stage.startCursor(point, 0);
+        return true;
+    }
     }
     flags |= 4;
     return true;
@@ -310,6 +336,7 @@ BOOL CGP_Tutorial455::Destroy()
     if (uiInstalled) {
         cancelCursor();
         releaseUiCapture();
+        inventory.shutdown();
         _CloseDialogBox(nullptr, welcomeDialog);
         _CloseDialogBox(nullptr, leaveDialog);
         _GetUIScreen()->Remove(&briefing.window());
@@ -360,7 +387,7 @@ void CGP_Tutorial455::startBoardScript()
     const char file[] = {"bca"[race], char(type + 'a' - 'A'), '.', 's', 'c', 'p', 0};
     const auto path = std::string(RF455_GetClientDataRoot()) + "\\" + file;
     RF455TutorialScript script;
-    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() <= cameraQuest ||
+    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() <= equipmentQuest ||
         std::memcmp(script.quests[0].name.data(), "TutorialStart", sizeof("TutorialStart")) ||
         std::memcmp(script.quests[settingsQuest].name.data(), "TutorialBegin", sizeof("TutorialBegin")) ||
         std::memcmp(script.quests[movementQuest].name.data(), "TutorialMove", sizeof("TutorialMove")) ||
@@ -368,9 +395,15 @@ void CGP_Tutorial455::startBoardScript()
         fail("Tutorial script could not be loaded.");
         return;
     }
+    const auto& equipmentName = script.quests[equipmentQuest].name;
+    if (std::memcmp(equipmentName.data(), "TutorialEquipment", sizeof("TutorialEquipment")) &&
+        std::memcmp(equipmentName.data(), "iTutorialEquipment", sizeof("iTutorialEquipment"))) {
+        fail("Tutorial equipment lesson could not be identified.");
+        return;
+    }
     // Each later quest is attached once its live providers have been verified.
-    script.quests.resize(cameraQuest + 1);
-    TutorialStageFactory factory(*this, *this, *this);
+    script.quests.resize(equipmentQuest + 1);
+    TutorialStageFactory factory(*this, *this, *this, inventory);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
         RF455_ObserveProtocol("tutorial-unsupported", static_cast<DWORD>(unsupported.quest),
@@ -400,7 +433,7 @@ void CGP_Tutorial455::scriptCompleted()
 {
     phase = Phase::LessonBoundary;
     inputBlocked = false;
-    RF455_ObserveProtocol("tutorial-camera-complete", runtime.currentQuest, 0, 0);
+    RF455_ObserveProtocol("tutorial-equipment-complete", runtime.currentQuest, 0, 0);
 }
 
 RF455TutorialVector CGP_Tutorial455::cameraOrbit() const
@@ -576,6 +609,10 @@ void CGP_Tutorial455::advanceLesson()
             RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
         if (questIndex == movementQuest)
             RF455_ObserveProtocol("tutorial-move-complete", runtime.currentQuest, 0, 0);
+        if (questIndex == cameraQuest) {
+            inventory.initialize();
+            RF455_ObserveProtocol("tutorial-camera-complete", runtime.currentQuest, 0, 0);
+        }
     }
     const auto* current = quest ? quest->current : nullptr;
     if (current && current != previous && current->type == 7)
@@ -584,6 +621,8 @@ void CGP_Tutorial455::advanceLesson()
         previousOrbit = cameraOrbit();
         RF455_ObserveProtocol("tutorial-camera-command", current->id, current->type, 0);
     }
+    if (current && current != previous && (current->type == 20 || current->type == 24 || current->type == 26))
+        RF455_ObserveProtocol("tutorial-inventory-practice", current->id, current->type, 0);
 }
 
 void CGP_Tutorial455::openOptions()
@@ -654,6 +693,22 @@ void CGP_Tutorial455::sendCursor(UINT message, WPARAM flags, POINT position)
     cursorDispatch = false;
 }
 
+void CGP_Tutorial455::clickInventoryDemo()
+{
+    auto* screen = _GetUIScreen();
+    auto* cursorImage = screen->GetMouse();
+    const auto input = gMouse;
+    gMouse.x = cursorImage->GetPosX();
+    gMouse.y = cursorImage->GetPosY();
+    gMouse.z = 0;
+    for (const DWORD button : {DWORD{0}, DWORD{_LEFT_BUTTON_DOWN}, DWORD{0}}) {
+        gMouse.button = button;
+        _GetUIMouseDev()->Update();
+        screen->InputProc();
+    }
+    gMouse = input;
+}
+
 void CGP_Tutorial455::startCursor(POINT target, BYTE button)
 {
     auto* mouse = _GetUIScreen()->GetMouse();
@@ -722,7 +777,10 @@ HRESULT CGP_Tutorial455::FrameMove()
         _GetLand()->GetLevel()->FrameMove();
         if (!intro.active()) advanceAvatar();
     }
-    if (phase == Phase::Welcome || phase == Phase::Briefing) advanceLesson();
+    if (phase == Phase::Welcome || phase == Phase::Briefing) {
+        try { advanceLesson(); }
+        catch (const std::exception& error) { fail(error.what()); }
+    }
     _GetUIScreen()->Update();
     return S_OK;
 }
@@ -787,6 +845,7 @@ void CGP_Tutorial455::Dialog(WORD id, DWORD result)
         ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && id == leaveDialog && result == MSG_OK)) {
         cancelCursor();
         _GetCamera()->SetState(CAM_STOP);
+        inventory.show(false);
         _GetAvatar()->SetAction(CAI_MOVE_STOP);
         if (optionsInstalled) options.Close();
         board.requestFinish(true);
@@ -819,6 +878,13 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
         return 0xffffffff;
     }
     if (optionsInstalled && phase == Phase::Briefing && applyOption(message, key)) return 0xffffffff;
+    if (phase == Phase::Briefing && runtime.currentQuest == equipmentQuest && !boardBusy()) {
+        if (!inputBlocked && message == WM_KEYDOWN && key == 'I' && !(data & (1L << 30)) && GetKeyState(VK_CONTROL) < 0) {
+            inventory.show(!inventory.isOpen());
+            return 0xffffffff;
+        }
+        if (inventory.handleMessage(message, key, data)) return 0xffffffff;
+    }
     if (movementInputEnabled() && message == WM_KEYDOWN && key == 'W' && !(data & (1L << 30))) {
         avatarToggle(_GetAvatar()->GetWalkMode() != CMM_MOVE_RUN, false);
         return 0xffffffff;

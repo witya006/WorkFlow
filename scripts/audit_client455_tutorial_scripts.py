@@ -32,7 +32,7 @@ def fixed_size(selector):
     raise ValueError(f'Unknown SCP selector {selector}')
 
 
-def inspect(raw):
+def inspect(raw, visit=None):
     at = 0
 
     def take(size):
@@ -59,7 +59,7 @@ def inspect(raw):
     canonical = bytearray(struct.pack('<I', count))
     quests = []
     messages = strings = string_bytes = mismatches = 0
-    for _ in range(count):
+    for quest_index in range(count):
         quest_id = u32()
         name = take(64)
         total = u16()
@@ -69,12 +69,15 @@ def inspect(raw):
             selector = u8()
             size = fixed_size(selector)
             if size is None:
+                data_start = at
                 data_type = u8()
                 identifier = u16()  # QBI identifier, not its ordinal in the sequence.
                 hint_id = u32()
                 limits = take(3)  # Minimum level, maximum level, map.
                 action, duration, display = u32(), u32(), u32()
                 lines = u8()
+                if visit is not None:
+                    visit(quest_index, name.split(b'\0', 1)[0], selector, raw[data_start:at])
                 canonical += struct.pack('<BBHI', selector, data_type, identifier, hint_id)
                 canonical += limits + struct.pack('<IIIB', action, duration, display, lines)
                 for _ in range(lines):
@@ -87,6 +90,8 @@ def inspect(raw):
                 strings += lines
             else:
                 data = take(size)
+                if visit is not None:
+                    visit(quest_index, name.split(b'\0', 1)[0], selector, data)
                 data_type = data[0]
                 identifier = struct.unpack_from('<H', data, 2)[0]
                 canonical += struct.pack('<BBH', selector, data_type, identifier) + data[1:2] + data[4:]

@@ -10,8 +10,37 @@ def port_inventory(raw,relative,section,native):
         old=b'CGUIObjectAni\t\t\tm_uiAniTitleBar;'
         if raw.count(old)!=1:raise ValueError('Inventory common header owner')
         raw=raw.replace(old,b'RF455GuiAnimatedImage\tm_uiAniTitleBar;')
+        for anchor,method in (
+            (b'CGUIItem *\tGetItem( WORD pi_wSocketIndex );',
+             b'bool SlotCenter455(BYTE slot, POINT& point) const;'),
+            (b'CGUIItem *\tGetItem( BYTE pi_byPackIndex, BYTE pi_bySocketIndex );',
+             b'bool SlotCenter455(BYTE slot, POINT& point) const;\r\n\tvoid HighlightEquipSlot455(BYTE slot);'),
+        ):
+            if raw.count(anchor) not in (1,2):raise ValueError('Inventory slot geometry anchors')
+            raw=raw.replace(anchor,anchor+b'\r\n\t'+method,1)
         return raw,True
     if relative!=root+'.cpp':return raw,False
+    equip_match=b'CGUIEquipWindow::IsEquipableItem( EquipItemBoard pi_eItemBoard, DWORD pi_dwItemID )'
+    start=raw.index(b'{',raw.index(equip_match))+1
+    raw=raw[:start]+b'\n\tif (static_cast<unsigned>(pi_eItemBoard) >= 14) return FALSE;'+raw[start:]
+    bag_mouse=b'CGUIInventoryBoard::MouseEvent( _mouse_event & event )'
+    first,last=section(raw,bag_mouse,bag_mouse)
+    mouse=raw[first:last]
+    source=b'\t\tif( m_bySelectedSocketIndex == NONE_SOCKET_INDEX )'
+    pos=mouse.index(source)
+    after=mouse.index(b'\t\t// add',pos)
+    mouse=mouse[:pos]+b'''\t\tBYTE slot = 0;
+\t\twhile (slot < TOTAL_INVENTORY && event.source != &m_uiTradeItemMark[slot]) ++slot;
+\t\tif (slot == TOTAL_INVENTORY) return;
+\t\tm_bySelectedSocketIndex = slot;
+
+'''+mouse[after:]
+    pos=mouse.index(b'\t\t\tfor( int i = 0; i < TOTAL_INVENTORY; ++i )')
+    after=mouse.index(b'\t\t\tif( IsEmpty(',pos)
+    mouse=mouse[:pos]+mouse[after:]
+    mouse=mouse.replace(b'\t\t\tif( event.source != &m_uiTradeItemMark[m_bySelectedSocketIndex] )\r\n\t\t\t\treturn;\r\n',b'')
+    mouse=mouse.replace(b' || event.source != &m_uiTradeItemMark[m_bySelectedSocketIndex]',b'')
+    raw=raw[:first]+mouse+raw[last:]
     methods={
         'CGUIInventoryWindow':['Init','SetSprite','SetEquipWindow','SetOpenOnlyOnePack','SetPackState','SetOwnDalant','SetOwnGold','MouseEvent','PickingObjectEvent','Open','Close','OpenDockingPack'],
         'CGUIInventoryBoard':['Init','SetSprite','SetTradeItem','SetUselessSocket','SetUselessItem'],
