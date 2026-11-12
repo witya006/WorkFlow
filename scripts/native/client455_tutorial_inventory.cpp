@@ -150,22 +150,38 @@ bool RF455TutorialInventory::equipmentPoint(BYTE slot, POINT& point)
 
 void RF455TutorialInventory::grant(BYTE table, DWORD code)
 {
-    if (!inventory) throw std::runtime_error("Tutorial inventory is unavailable");
-    auto& items = RF455_GameItems();
     std::uint32_t index;
+    if (!RF455_GameItems().data.findItemByCode(table, code, index))
+        throw std::runtime_error("Tutorial item could not be resolved");
+    const BYTE slot = addItem(table, index, 200);
+    if (slot == 255) throw std::runtime_error("Tutorial item could not be placed");
+    RF455_ObserveProtocol("tutorial-item-granted", table, index, slot);
+}
+
+bool RF455TutorialInventory::collect(BYTE table, DWORD index, WORD groundSerial, BYTE quantity)
+{
+    const BYTE slot = addItem(table, index, quantity);
+    if (slot == 255) return false;
+    RF455_ObserveProtocol("tutorial-loot-collected", groundSerial, index, slot);
+    return true;
+}
+
+BYTE RF455TutorialInventory::addItem(BYTE table, DWORD index, BYTE quantity)
+{
+    if (!inventory) return 255;
     const BYTE slot = inventory->FindEmptySocket(bagIndex);
-    if (slot == 255 || !items.data.findItemByCode(table, code, index))
-        throw std::runtime_error("Tutorial item could not be resolved or placed");
-    auto* item = static_cast<RF455BasicItem*>(items.create(0, table, index));
-    if (!item) throw std::runtime_error("Tutorial item allocation failed");
-    if (item->IsStackable455()) item->SetDownloadValue455(200, 0);
-    const auto serial = RF455_GetTutorialCreationIds().item++;
+    if (slot == 255) return slot;
+    auto* item = static_cast<RF455BasicItem*>(RF455_GameItems().create(0, table, index));
+    if (!item) return 255;
+    if (item->IsStackable455()) item->SetDownloadValue455(quantity, 0);
+    auto& serial = RF455_GetTutorialCreationIds().item;
     item->header().serial = serial;
     item->header().field8 = serial;
     CBoardObject object;
     object.SetItem455(item);
-    if (!inventory->Add(bagIndex, slot, &object)) throw std::runtime_error("Tutorial bag rejected item");
-    RF455_ObserveProtocol("tutorial-item-granted", table, index, slot);
+    if (!inventory->Add(bagIndex, slot, &object)) return 255;
+    ++serial;
+    return slot;
 }
 
 bool RF455TutorialInventory::equipped(BYTE slot)

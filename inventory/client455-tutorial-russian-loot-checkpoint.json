@@ -1,0 +1,127 @@
+{
+  "status": "PARTIAL_RUSSIAN_TUTORIAL_LOOTING_KEYBOARD_PASSED",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "creation_rva": "0x27f90",
+    "spawn_rva": "0x165a90",
+    "placement_rva": "0x1688f0",
+    "wait_rva": "0x28200",
+    "pickup_rva": "0x164ec0",
+    "ida": {
+      "file": "artifacts/client455-tutorial/live-looting-reference.json",
+      "sha256": "47596e2413c36a8e35046e1d273b5c5a66be30ab0c984ec6c53db73acc628845"
+    }
+  },
+  "tutorial_precondition": "New-player state set only in the owned test process",
+  "input_driver": {
+    "file": "work/startup455-m6/finish-russian-tutorial-loot.ps1",
+    "sha256": "256b2306facef71379705bd8c6f15cddcd3123a5c32466b57c7eef1d1efdacba"
+  },
+  "scope": "Stock ru-ru/bw.scp through TutorialLooting, followed by explicit exit to NeutralB",
+  "space_run": {
+    "input": "Windows Space key while QBI11 was waiting",
+    "binary": {
+      "file": "work/startup455-m6/pre-loot-mesh-flag-6bd52d80.bin",
+      "sha256": "6bd52d805480f6eab894ed75471fb54d431cb1cacf356ea1d82a94e2f77503b3"
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794454054.jsonl",
+      "sha256": "f698f6441ae9f3965a581822bbc2622b8db027ab858254b7195c00ac5aea5fc1"
+    },
+    "ordered_events": [
+      "RF455 NDLanguage:1251:4321",
+      "tutorial-skill-complete:6:0:0",
+      "tutorial-attack-practice:10:38:0",
+      "tutorial-monster-selected:65537:281:0",
+      "tutorial-attack-result:0:337:65537",
+      "tutorial-loot-spawn:3524657205:336:3841",
+      "tutorial-briefing:6:14:0",
+      "tutorial-loot-wait:22:11:0",
+      "tutorial-loot-collected:3841:336:0",
+      "tutorial-loot-wait-done:22:0:0",
+      "tutorial-loot-complete:7:0:0",
+      "tutorial-leaving:2:0:0",
+      "select-result:512:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-ground-space.png",
+        "sha256": "e48f9b493480bb28212111c63c87ed2e67376253106a03cddde2cf969bcb3d7e"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-inventory-space.png",
+        "sha256": "8dd2f255cdf83d9ba836225686c337839f8e030cc0cb64d99eaf1799e4156dba"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-world-space.png",
+        "sha256": "580e16106e35def1c6f0db2a5c29333dc66100d5c054e03e8b7e3bd6d341297c"
+      }
+    ],
+    "exit_code": 0
+  },
+  "candidate_spawn_and_mouse_observation": {
+    "binary": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "aef46ca17fc6fac86238a7b823cd0b2dbf34df5a6f7ba163a9194714e320cac1",
+      "bytes": 2509312,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x19fac0",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794454429.jsonl",
+      "sha256": "e7610486b6a7b5d4a66b1a33330b6e4c6013450c9fa3839eee20bb696a72b18c"
+    },
+    "exit_code": 0,
+    "spawn_and_briefing_confirmed": true,
+    "mouse_pickup_confirmed": false,
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-ground.png",
+        "sha256": "5b03054457fcbce726d2226a9b5a7fcc051fbde991bff027db837292e404533c"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-oriented.png",
+        "sha256": "ab864555d137b06f44940abc2994210fa57418db52207c321b5a52c9d6c82830"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-zoom.png",
+        "sha256": "e61994832f592ea9647e8e0a89d77bb6a8522c93cc335243cc32bc4b8e6250cc"
+      }
+    ]
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bw.scp",
+      "sha256": "0cb09477e8eb2af9fdce87b623159f17f0ff163970c2bdac88774568258d031b"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Mesh/COM_WEAPON_TSWORD_255.msh",
+      "sha256": "8584e5d8276383b06d01430f4c9ed8a290ae4607fb927fea19d3083edab80b59"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Mesh/COM_WEAPON_TSWORD_255.BBX",
+      "sha256": "7e27de69c96897f569f27554256da0c3d23306d3082a7d281d28b84fd3062aff"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Tex/COM_WEAPON_TSWORD_255.RFT",
+      "sha256": "a40efc75366a2736f48317b3521011849f754c748d005ab9de4847ee998cbc0e"
+    }
+  ],
+  "open": [
+    "Visible model and mouse pickup with stock briefing layout",
+    "Full bag and QBI11 timeout with live input",
+    "TutorialMission and other profiles"
+  ]
+}

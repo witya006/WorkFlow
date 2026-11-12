@@ -19,6 +19,7 @@ public:
     bool inventoryPoint(DWORD code, POINT&);
     bool equipmentPoint(BYTE slot, POINT&);
     void grant(BYTE table, DWORD code);
+    bool collect(BYTE table, DWORD index, WORD groundSerial, BYTE quantity);
     void equipCandidate(BYTE slot);
     void unequip(BYTE slot);
     bool equipped(BYTE slot);
@@ -37,6 +38,7 @@ private:
     void cancelPick();
     bool transfer(Location source, BYTE from, BYTE to);
     void quickTransfer(Location source, BYTE slot);
+    BYTE addItem(BYTE table, DWORD index, BYTE quantity);
 };
 
 std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialInventoryCommand(

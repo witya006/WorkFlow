@@ -15,6 +15,7 @@
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_targets.h"
 #include "client455_world_updates.h"
+#include <algorithm>
 #include <cstdlib>
 #include <cstring>
 
@@ -154,6 +155,11 @@ void RF455TutorialTargets::update()
         monster->FrameMove();
         monster->Animation();
     }
+    monsters.erase(std::remove_if(monsters.begin(), monsters.end(), [&](const auto& monster) {
+        if (!monster->IsEnable(ROSF_DESTROY)) return false;
+        if (selected == monster.get()) clearSelection();
+        return true;
+    }), monsters.end());
     auto* avatar = _GetAvatar();
     if ((avatar->IsEqualAction(CAI_COMBAT_ATTACK) || avatar->IsEqualAction(CAI_SKILL_INVOKE)) &&
         !avatar->GetAnimation()->IsAnimating()) {
