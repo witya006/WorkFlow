@@ -50,6 +50,9 @@ static_assert(sizeof(RF455MonsterDeath) == 7 && offsetof(RF455MonsterDeath, reas
 static_assert(sizeof(RF455PlayerStatusUpdate) == 12 && offsetof(RF455PlayerStatusUpdate, flags) == 4);
 static_assert(sizeof(RF455ObjectRefresh) == 8 && offsetof(RF455ObjectRefresh, serial) == 4);
 
+class CMonster;
+void RF455_PlaceMonster(CMonster&, const RF455MonsterSpawn&);
+
 template<class Record>
 bool RF455_ReadWorldRecord(const char* bytes, std::size_t size, Record& record) {
     if (!bytes || size != sizeof(record)) return false;

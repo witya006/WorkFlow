@@ -1,3 +1,15 @@
+void RF455_PlaceMonster(CMonster& monster, const RF455MonsterSpawn& packet)
+{
+    monster.SetCreationType(CCT_NORMAL);
+    monster.SetEffectInfo(CAI_CREATE_CREATE);
+    monster.SetCombatMode((packet.flags & 0x40) ? CSI_COMBAT : CSI_PEACE);
+    monster.SetWalkMode((packet.flags & 3) == 1 ? CMM_MOVE_RUN : CMM_MOVE_WALK);
+    monster.SetPosition(packet.position[0], packet.position[1], packet.position[2], TRUE, TRUE);
+    monster.CheckYPos();
+    monster.CreatePath(monster.GetPosition());
+    monster.SetRotY(packet.direction * 1.4117647409439087f + 180.0f, FALSE);
+}
+
 bool CNetworkMgr::InitMsg_MonsterSpawn455(const char* bytes, std::size_t size) {
     RF455MonsterSpawn packet{};
     if (!RF455_ReadWorldRecord(bytes, size, packet)) return false;
@@ -8,14 +20,7 @@ bool CNetworkMgr::InitMsg_MonsterSpawn455(const char* bytes, std::size_t size) {
     info.dwRecIndex = packet.record;
     auto* monster = CreateMonster(&info);
     if (monster) {
-        monster->SetCreationType(CCT_NORMAL);
-        monster->SetEffectInfo(CAI_CREATE_CREATE);
-        monster->SetCombatMode((packet.flags & 0x40) ? CSI_COMBAT : CSI_PEACE);
-        monster->SetWalkMode((packet.flags & 3) == 1 ? CMM_MOVE_RUN : CMM_MOVE_WALK);
-        monster->SetPosition(packet.position[0], packet.position[1], packet.position[2], TRUE, TRUE);
-        monster->CheckYPos();
-        monster->CreatePath(monster->GetPosition());
-        monster->SetRotY(packet.direction * 1.4117647409439087f + 180.0f, FALSE);
+        RF455_PlaceMonster(*monster, packet);
         RF455_ObserveProtocol("monster-mesh", packet.record, monster->GetMeshID(), monster->GetWidth());
     }
     RF455_ObserveProtocol("monster-spawn", packet.record, monster != nullptr, sizeof(packet));

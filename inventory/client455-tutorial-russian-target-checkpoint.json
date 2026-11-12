@@ -1,0 +1,123 @@
+{
+  "status": "PASS_RUSSIAN_TUTORIAL_TARGET_AND_WORLD_RETURN",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "creation_rva": "0x27f90",
+    "placement_rva": "0x165410",
+    "lock_condition_rva": "0x29440",
+    "combat_rva": "0x1647d0",
+    "ida_raw": {
+      "file": "artifacts/client455-tutorial/live-target-reference.json",
+      "sha256": "45d29ff4b1fd66a60f9c3dbd856983aa0ca21e007a38be3e05e6eafbfa3c870e"
+    },
+    "ida_session": "5d5bff9d",
+    "ida_saved_and_closed": true
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "636a17a95ad1f4de4fb8de2add3327309be43166259b1f00f0cb572b6e33a361",
+    "bytes": 2502656,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19e470",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "earlier_failed_attempt": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794451051.jsonl",
+      "sha256": "13c64f07ac0ca54b7d3360f939560640ca54a46f48033a2e9c200ae5684d3f0f"
+    },
+    "binary": {
+      "file": "work/startup455-m6/pre-local-target-46bcaf89.bin",
+      "sha256": "46bcaf89d4fd1dd8a198c3e81bc5f7675683ef5d0048751648cb2e36c42993ca"
+    },
+    "linker_map": {
+      "file": "work/startup455-m6/pre-local-target-46bcaf89.map",
+      "sha256": "20c2a32573ce6c0777765d1650423850c5fc678c36e9b4066cd3d30cee277289"
+    },
+    "crash_rva": "0x6df9c"
+  },
+  "before_camera_fix": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794451500.jsonl",
+      "sha256": "c63dd4d93dfaa424edefaa8c9be5d291577b6bd62d73ae684ad26c8a52382b61"
+    },
+    "binary": {
+      "file": "work/startup455-m6/pre-target-camera-604dbf54.bin",
+      "sha256": "604dbf543ad0fd3f0bed81702f0d3965ab16fef776f1215f71b4986deb59fdb5"
+    },
+    "frame": {
+      "file": "work/startup455-m6/menu-live/tutorial-russian-target-limited-camera.png",
+      "sha256": "48aa56cfdf4af675eafcc66c2a1ecb270fc682d7d28e26f2642ebdf43ac24845"
+    }
+  },
+  "live": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794451805.jsonl",
+      "sha256": "012076dfbd13e0ad13d7bc8394e992a44941d42b9c37515b1d3005299bbaafdd"
+    },
+    "events": [
+      "RF455 NDLanguage:1251:4321",
+      "tutorial-skill-practice:25:44:0",
+      "tutorial-shortcut-linked:0:1:655362",
+      "tutorial-monster-spawn:17409:281:65535",
+      "tutorial-target-practice:46:36:0",
+      "tutorial-monster-selected:65535:281:0",
+      "tutorial-target-lesson-complete:6:0:0",
+      "tutorial-leaving:2:0:0",
+      "select-result:512:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "exit_code": 0,
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-target-before.png",
+        "sha256": "8f7f72a16033e52bc78c20e9868b40ec25e3428890f4bc2cd6096f43df7a6375"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-target-camera.png",
+        "sha256": "55ece7b4ad57a4c6d16379e507eda9e0ab999e0281977ae986af795b71d59d66"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-target-selected.png",
+        "sha256": "a662fd6f24dae4ee717fd7fe23f392a17541fb2a7bf793e72e6d696cd4707ccb"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-target-world.png",
+        "sha256": "118c318980e260c6d0447ae476689a9454b5599989bc8b1fbf54b70a31ba8ba1"
+      }
+    ],
+    "input_driver": {
+      "file": "work/startup455-m6/finish-russian-tutorial-target.ps1",
+      "sha256": "cf607ee209ffbb19eb51821ebdab5fb02a239bcaafa8e7e6d3e644e0c3b0b6b5"
+    },
+    "attack_feedback_reference": {
+      "file": "artifacts/client455-tutorial/live-attack-feedback.json",
+      "sha256": "438612e7fee2f107a4e17343422626e6fa5d61523058c13f1edfca5de2d2f7bc"
+    },
+    "tutorial_precondition": "New-player state set only in the owned test process"
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bw.scp",
+      "sha256": "0cb09477e8eb2af9fdce87b623159f17f0ff163970c2bdac88774568258d031b"
+    },
+    {
+      "file": "work/startup455-m6/russian-target-assets.json",
+      "sha256": "990d63839d88edf0c5d70f2dc6f636806b46180a8b9a371b7e0407c70f5f5108"
+    }
+  ],
+  "open": [
+    "Normal attack and skill use in the exercise",
+    "Complete longer lessons and other profiles"
+  ]
+}
