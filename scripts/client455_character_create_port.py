@@ -16,6 +16,33 @@ def port_character_create(raw, relative, native, section):
         raw = replace(raw, b'\t\t\t\tcase add_char_result_zone :\n',
                       b'\t\t\t\tcase add_char_result_zone :\n'
                       b'\t\t\t\t\tif (!pi_pMsg || pMsgHeader->m_wSize < 4 + sizeof(_add_char_result_zone)) return false;\n')
+    elif relative == 'userinterface/loginwindow/guiselectrace.cpp':
+        # 455 RVA 0x3ac610 uses the localized labels and fits the 740x482 card
+        # between the race buttons and the confirmation panel.
+        raw = b'#include "client455_language.h"\n#include <algorithm>\n' + raw
+        first = raw.index(b'\tm_cRaceSelectButton[0].SetLabel(')
+        last = raw.index(b'\n', raw.index(b'\tm_cCancelButton.SetLabel(', first))
+        raw = raw[:first] + b'''    const auto* language = RF455_GetNormalLanguagePack();
+    m_cRaceSelectButton[0].SetLabel(const_cast<char*>(language->get(0x4c0)));
+    m_cRaceSelectButton[1].SetLabel(const_cast<char*>(language->get(0x4c1)));
+    m_cRaceSelectButton[2].SetLabel(const_cast<char*>(language->get(2)));
+    m_cCreateButton.SetLabel(const_cast<char*>(language->get(0x4c2)));
+    m_cCancelButton.SetLabel(const_cast<char*>(language->get(0x4c3)));''' + raw[last:]
+        raw = replace(raw, b'\tm_cRaceProfile.SetSize( 486, 309 );\n', b'')
+        first = raw.index(b'\tm_cRaceProfile.SetPos(')
+        last = raw.index(b');', first) + 2
+        raw = raw[:first] + raw[last:]
+        anchor = b'\tm_cCancelButton.SetLabelPos( 110, 12 );'
+        raw = replace(raw, anchor, anchor + b'''
+
+    constexpr int nativeWidth = 740;
+    constexpr int nativeHeight = 482;
+    const auto& firstButton = m_cRaceSelectButton[0];
+    const int available = m_cLowerBoard.m_ptPos.y - firstButton.m_ptPos.y - firstButton.m_ptSize.y - 70;
+    const int height = (std::max)(1, (std::min)(available, nativeHeight));
+    const int width = height * nativeWidth / nativeHeight;
+    m_cRaceProfile.SetSize(width, height);
+    m_cRaceProfile.SetPos((m_ptSize.x - width) / 2, (m_ptSize.y - height) / 2);''')
     elif relative == 'gameprogress/cgp_login.cpp':
         signature = b'void LoadAttribute(CGUISelectAttribute * attb)'
         first, last = section(raw, signature, signature)

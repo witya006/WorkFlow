@@ -1,0 +1,81 @@
+{
+  "status": "PASS_RACE_PICKER_CREATE_REFUSAL_AND_CORA_RELOGIN",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "race_picker_vtable": "0x6ec074",
+      "race_picker_init": "0x3ac610",
+      "race_picker_set_sprite": "0x3ace70",
+      "race_picker_select_race": "0x3ad050"
+    },
+    "language_ids": [1216, 1217, 2, 1218, 1219],
+    "native_card": [740, 482],
+    "ida_evidence": {
+      "file": "artifacts/client455-startup/race-picker-455-reference.json",
+      "sha256": "f274dc36ee994a47ba40a980e12dd3fab54f163867b91c0a3ba546dcaec0911f"
+    }
+  },
+  "before": {
+    "executable": "work/startup455-m6/verified-617c3efc.bin",
+    "sha256": "617c3efc5cb70a1b24691d1ba8e2b8a371b807afac698c577e9342ccfcfcfa6b",
+    "result": "The race card covered the race tabs and a click on the Cora tab left Bellato selected.",
+    "journal": "work/startup455-m6/menu-live/events-1794460175.jsonl",
+    "journal_sha256": "f5680512abcaa2f029eade89679e00aa6e92341410b63e5211af6c21ee9358f0",
+    "frame": {
+      "file": "work/startup455-m6/menu-live/tutorial-cora-race-selected.png",
+      "sha256": "357900aa6a10216c6b4a353e5e2e372d9de59b3e844bad2137d42d164d9fdef4"
+    }
+  },
+  "build": {
+    "executable": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ab972c9c4694e0525d2218b2d42603629381600ad4df6d9c66184825aee95676",
+    "architecture": "x86",
+    "configuration": "Release Win32",
+    "entry_rva": "0x1a1740",
+    "unresolved_symbols": 0
+  },
+  "live_run": {
+    "locale": "ru-ru",
+    "window": [640, 500],
+    "input": "Windows mouse and keyboard",
+    "journal": "work/startup455-m6/menu-live/events-1794460485.jsonl",
+    "journal_sha256": "73ea014a38d57fbb62d2be7ffefff8f293ace80c8200c0286b2f56123e131ece",
+    "end": "Observer timed out after creation and before character selection.",
+    "race_click": [319, 117],
+    "race_result": "Cora selected, three race captions and both confirmation captions visible in Russian.",
+    "create_request": {"group": 1, "opcode": 10, "payload_bytes": 28},
+    "duplicate_name_reply": {"group": 1, "opcode": 11, "payload_bytes": 2, "result": 25},
+    "success_reply": {"group": 1, "opcode": 11, "payload_bytes": 2, "result": 0, "slot": 1},
+    "frames": [
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-race-fixed.png", "sha256": "1bca1fe9a0718b2e6cd9be07e70d32211892fbcac64c2265b10c463698f6c465"},
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-after-create.png", "sha256": "a3a94ce07900e9d28042e9097986eceb0bdc1d3d0ce58554286814720ed5e3b0"}
+    ]
+  },
+  "cold_relogin": {
+    "journal": "work/startup455-m6/menu-live/events-1794461141.jsonl",
+    "journal_sha256": "b1f3cce303f87c6c4f3e750689fdb67124de968c6541d173a767101f3aa1eb12",
+    "roster_payload_bytes": 342,
+    "select_request": {"group": 1, "opcode": 14, "payload_bytes": 1},
+    "select_reply": {"group": 1, "opcode": 15, "payload_bytes": 22, "raw_result": 256, "client_result": 0},
+    "tutorial_seen": false,
+    "map_index": 1,
+    "map": "NeutralC",
+    "bsp_sha256": "32eff359d12b7fc14561048c9fe0bc73084e3f4f0d55ab7aac3077cfa840dbd6",
+    "staged_map_inputs": 23,
+    "world_frame": true,
+    "exit_code": 0,
+    "frames": [
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-clean-roster.png", "sha256": "1017dd85f60afdbf68c183bedd814d143e5ad9678c3171485492df8922a46b64"},
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-clean-world.png", "sha256": "90cf765aec9708990dc8f1e2470df4ea02ac3e2bf3fba4be00edabf69dea0a55"}
+    ]
+  },
+  "open": [
+    "Other creation refusal codes and appearance variants",
+    "Cora tutorial in the creation session through the world transition",
+    "Interrupted tutorial and first relogin",
+    "Class, name, and roster labels and Cora idle animation in roster and world"
+  ]
+}
