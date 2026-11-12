@@ -5,7 +5,7 @@
 #include "gameobject/board/etcboard/cclasschangeboard.h"
 #include "gameobject/board/general/cboard_etc.h"
 #include "network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h"
-#include "userinterface/gamewindow/guiforcebeltwindow.h"
+#include "client455_linker_window.h"
 #include "userinterface/gamewindow/guihotkeyboard.h"
 #include "userinterface/gamewindow/guiinventorywindow.h"
 
@@ -150,17 +150,20 @@ void verifyPromotion(HWND sink)
 
 void verifyLinkerAttachment()
 {
+    const POINT viewport = g_pUiScreen->m_ptSize;
+    g_pUiScreen->SetSize(800, viewport.y);
     CGUIHotKeyBoard keys;
-    keys.SetSize(800, 41);
+    keys.Init();
     keys.SetPos(7, 500);
-    CGUIForceBeltWindow link;
+    CGUILinkWindow455 link;
     link.SetSize(300, 32);
     g_pUiScreen->Add(&link);
     keys.SetLinkWindow455(&link);
     check(keys.IsAddedObject(&link) && !g_pUiScreen->IsAddedObject(&link), "Linker attached once to hotkey bar");
-    position(link, 219, 498, 300, 32);
+    position(link, 219, 506, 300, 32);
     keys.SetLinkWindow455(nullptr);
     check(!keys.IsAddedObject(&link), "Linker detaches on owner release");
+    g_pUiScreen->SetSize(viewport.x, viewport.y);
 }
 }
 

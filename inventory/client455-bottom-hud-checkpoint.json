@@ -1,0 +1,51 @@
+{
+  "status": "PASS_BOTTOM_HUD_RENDER_AND_LINKER_ATTACHMENT",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "sprites": "0x26bb10",
+      "layout": "0x26bde0",
+      "linker_attachment": "0x26cb20",
+      "mode_sprite": "0x26ce80",
+      "control_clicks": "0x26cf90",
+      "shortcut_input": "0x15b9f0",
+      "keymap_lookup": "0x15bfd0",
+      "next_bank": "0x15e3a0",
+      "active_bank": "0x100550"
+    },
+    "evidence": {"file": "artifacts/client455-startup/hotkey-hud-455-reference.json", "sha256": "70a383835eab84aa61bdaee137ef7e2e00bb4d14ef949bb03f096af7b6d71263"}
+  },
+  "atlas": {
+    "file": "SpriteImage/ru-ru/main.spr",
+    "sha256": "68a147fc1f45baa394587653ef73c26904cf92254071a974f5b64bb1ab374fd1",
+    "id": 4,
+    "frame": {"action": 11, "frame": 0, "native_size": [1024, 63]},
+    "mode_action": 12,
+    "menu_action": 13
+  },
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "912e6134625acb51b79a872be001509b42bee92b56e85a35da728624018a10c5",
+    "architecture": "x86",
+    "configuration": "Release Win32",
+    "entry_rva": "0x1a1740",
+    "unresolved_symbols": 0
+  },
+  "test": {
+    "command": "scripts/Invoke-Python.ps1 scripts/probe_client455_hud.py --bottom-hud",
+    "report": {"file": "work/m9/8ba064df/hud-001/probe-report.json", "sha256": "fa0ea7d0689a444f00e542ca66355398c844a9a7c3bf11837bf6e06f28db913d"},
+    "attachment_regression": {"file": "work/m9/8c32e13c/service-windows-001/probe-report.json", "sha256": "9a6959f8d81c173232889762185cd044a6cf652dd9eb1329c40fd127c1134615"},
+    "layout": [
+      {"viewport": [640, 480], "frame_position": [0, 441], "frame_size": [640, 39], "linker_position": [170, 443]},
+      {"viewport": [1280, 720], "frame_position": [128, 657], "frame_size": [1024, 63], "linker_position": [400, 661]}
+    ],
+    "frames": [
+      {"file": "work/m9/8ba064df/hud-001/bottom-collapsed.png", "sha256": "8f1726ea179d30a5ddd4d67e4a71ac56a303c12f49dad9de708483be97bac23a"},
+      {"file": "work/m9/8ba064df/hud-001/bottom-bank4.png", "sha256": "f915763e473709e0f4881edcd288de911112c1b9a880ccad617f421a46419506"},
+      {"file": "work/m9/8ba064df/hud-001/bottom-expanded.png", "sha256": "660cfd935aa5a1316b8f9ccead0c9fa2c0671e102dcae71afe51280f901ac403"}
+    ]
+  },
+  "open": ["Live world frame and active bank after input", "Item use from the active bank and the associated server result", "Keyboard layouts and chat focus", "EXP bar, popup, unit modes and wide-screen side panels"]
+}

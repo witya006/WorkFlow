@@ -5,6 +5,8 @@
 #include "userinterface/gamewindow/guigaugeexpwindow.h"
 #include "userinterface/gamewindow/guicharinfowindow.h"
 #include "userinterface/gamewindow/etcwin/guiradarwindow.h"
+#include "userinterface/gamewindow/guihotkeyboard.h"
+#include "client455_linker_window.h"
 #include "gameobject/manager/ccharactermgr.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
 #include "network/netmsgprocessor/event/cnetmsgprocessor_event.h"
@@ -47,6 +49,51 @@ static unsigned checkRadar()
     radar.SetAvatarRotate(90.0f);
     check(compass->GetRotate() == 45.0f && arrow->GetRotate() == 135.0f, "avatar turns its own radar layer");
     capture(draw, "radar-avatar-turned.bgra");
+    return pixels;
+}
+
+static unsigned checkBottomHud()
+{
+    const POINT previous = gScreen.m_ptSize;
+    unsigned pixels = 0;
+    for (const auto viewport : {POINT{640, 480}, POINT{1280, 720}}) {
+        const bool scaled = viewport.x == 640;
+        gScreen.SetSize(viewport.x, viewport.y);
+        CGUIHotKeyBoard hud;
+        CGUILinkWindow455 link;
+        hud.Init();
+        link.Init();
+        hud.SetPos(0, viewport.y - hud.GetSizeY());
+        gScreen.Add(&link);
+        hud.SetLinkWindow455(&link);
+        hud.Show(TRUE);
+
+        auto* frame = hud.GetAddedObject(0);
+        const auto* info = frame->GetSpriteInfo();
+        check(info->pSprite == gSpriteMgr.GetTargetSprite455(4) && info->wActionNo == 11 && info->wFrameNo == 0,
+              "actual bottom HUD frame");
+        check(frame->GetPosX() == (scaled ? 0 : 128) && frame->GetPosY() == (scaled ? 441 : 657) &&
+              frame->GetSizeX() == (scaled ? 640 : 1024) && frame->GetSizeY() == (scaled ? 39 : 63),
+              "viewport-specific bottom HUD geometry");
+        check(hud.IsAddedObject(&link) && !gScreen.IsAddedObject(&link), "one owner for Linker");
+        check(link.GetPosX() == (scaled ? 170 : 400) && link.GetPosY() == (scaled ? 443 : 661),
+              "Linker follows the centered background");
+        check(link.HotbarState455().active == 0 && link.GetItem(4, 9), "five banks of ten");
+
+        if (scaled) {
+            const auto draw = [&]() { check(hud.Draw() != 0, "ordinary bottom HUD draw"); };
+            pixels = capture(draw, "bottom-collapsed.bgra");
+            link.SelectBank455(3);
+            check(link.HotbarState455().active == 3, "select bank four");
+            capture(draw, "bottom-bank4.bgra");
+            link.SetExpanded455(TRUE);
+            check(link.GetSizeY() == 5 * 28, "five expanded rows");
+            capture(draw, "bottom-expanded.bgra");
+        }
+        hud.SetLinkWindow455(nullptr);
+        check(!hud.IsAddedObject(&link) && !gScreen.IsAddedObject(&link), "Linker detaches cleanly");
+    }
+    gScreen.SetSize(previous.x, previous.y);
     return pixels;
 }
 
@@ -131,7 +178,7 @@ static void checkAvatarHealth(CGUIGaugeExpWindow& panel, CGUICharInfoWindow& inf
           "zero current HP reaches the gauge");
 }
 
-static int hud159(bool avatarHealth, bool radarOnly){
+static int hud159(bool avatarHealth, bool radarOnly, bool bottomOnly){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     check(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData(),"language");
     InitR3Engine();GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();
@@ -139,6 +186,8 @@ static int hud159(bool avatarHealth, bool radarOnly){
     const auto baseline=GetDmallocSize();unsigned pixels=0;
     if (radarOnly) {
         pixels = checkRadar();
+    } else if (bottomOnly) {
+        pixels = checkBottomHud();
     } else {
         CGUICharInfoWindow info;auto* previous=g_pUiCharInfoWindow;g_pUiCharInfoWindow=&info;
         struct Reset{CGUICharInfoWindow* prior;~Reset(){g_pUiCharInfoWindow=prior;}} reset{previous};
@@ -185,6 +234,11 @@ static int hud159(bool avatarHealth, bool radarOnly){
         std::fclose(f);
         return 0;
     }
+    if (bottomOnly) {
+        std::fprintf(f,"{\"status\":\"PASS\",\"layouts\":[[640,480],[1280,720]],\"banks\":5,\"slots_per_bank\":10,\"single_owner\":true,\"GPU_frames\":3,\"initial_pixels\":%u}\n",pixels);
+        std::fclose(f);
+        return 0;
+    }
     std::fprintf(f,"{\"status\":\"PASS\",\"actual_HUD_children\":17,\"actual_target_skins\":3,\"fourth_threshold_cases\":7,\"char_info_value_indices\":[3,9,10,11,12],\"sprite_reload\":true,\"GPU_frames\":%d,\"initial_pixels\":%u,\"sprite_allocator_balanced\":true,\"full_MainGame\":false,\"full_client\":false",avatarHealth ? 4 : 3,pixels);
     if (avatarHealth)
         std::fputs(",\"avatar_health\":{\"hp\":[160000,90000,70000,0],\"impact_damage\":70000,\"hp_after_impact\":160000,\"invalid_lengths\":2,\"mounted_player_hp_retained\":true}", f);
@@ -192,4 +246,4 @@ static int hud159(bool avatarHealth, bool radarOnly){
     std::fclose(f);
     return 0;
 }
-int main(int argc, char** argv){try{return hud159(argc == 2 && !std::strcmp(argv[1], "--avatar-health"), argc == 2 && !std::strcmp(argv[1], "--radar"));}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}
+int main(int argc, char** argv){try{return hud159(argc == 2 && !std::strcmp(argv[1], "--avatar-health"), argc == 2 && !std::strcmp(argv[1], "--radar"), argc == 2 && !std::strcmp(argv[1], "--bottom-hud"));}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}
