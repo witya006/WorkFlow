@@ -7,6 +7,7 @@
 #include "userinterface/gamewindow/etcwin/guiradarwindow.h"
 #include "userinterface/gamewindow/guihotkeyboard.h"
 #include "client455_linker_window.h"
+#include "client455_gui_input.h"
 #include "gameprogress/cinputprocessmgr.h"
 #include "gameobject/manager/ccharactermgr.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
@@ -21,6 +22,12 @@ struct HudBoards {
 template<class Tag, typename Tag::Type Member>
 struct HudMember { friend typename Tag::Type access(Tag) { return Member; } };
 template struct HudMember<HudBoards, &CBoardManager::m_listBoard>;
+struct HudQueueCreate { using Type = void(*)(WORD); friend Type access(HudQueueCreate); };
+struct HudQueueDrain { using Type = void(*)(); friend Type access(HudQueueDrain); };
+struct HudMouseClear { using Type = void(*)(); friend Type access(HudMouseClear); };
+template struct HudMember<HudQueueCreate, &CGUIObject::CreateEventQueue>;
+template struct HudMember<HudQueueDrain, &CGUIObject::EventProcess>;
+template struct HudMember<HudMouseClear, &CGUIObject::ClearMouseEventBuffer>;
 struct HudLinkerInput : CInputProcessMgr {
     using CInputProcessMgr::ProcessLinkerKeys455;
 };
@@ -31,10 +38,12 @@ static unsigned checkRadar()
     radar.Init();
     radar.SetPos(640 - radar.GetSizeX(), 0);
     radar.Show(TRUE);
-    check(radar.GetAddedObjectNum() == 3, "radar composition");
+    check(radar.GetAddedObjectNum() == 5, "radar composition");
     auto* compass = static_cast<CGUIObjectEx*>(radar.GetAddedObject(0));
     auto* arrow = static_cast<CGUIObjectEx*>(radar.GetAddedObject(1));
     auto* markers = static_cast<CGUIContainer*>(radar.GetAddedObject(2));
+    auto* zoomIn = static_cast<CGUIButton*>(radar.GetAddedObject(3));
+    auto* zoomOut = static_cast<CGUIButton*>(radar.GetAddedObject(4));
     auto* atlas = gSpriteMgr.GetTargetSprite455(4);
     CGUIObject* const layers[] = {&radar, compass, arrow};
     for (WORD frame = 0; frame < _countof(layers); ++frame) {
@@ -64,6 +73,66 @@ static unsigned checkRadar()
 
     radar.SetCameraRotate(0.0f);
     radar.SetAvatarRotate(0.0f);
+    check(zoomIn->GetPosX() == 500 && zoomIn->GetPosY() == 84 &&
+          zoomOut->GetPosX() == 507 && zoomOut->GetPosY() == 104, "zoom button placement");
+    radar.Active();
+    access(HudQueueCreate{})(64);
+    const auto oldClock = RF455_SetGuiInputClock([]() -> DWORD {
+        static DWORD now = 0;
+        return now += 350;
+    });
+    struct RestoreClock {
+        decltype(oldClock) prior;
+        ~RestoreClock() { RF455_SetGuiInputClock(prior); }
+    } restoreClock{oldClock};
+    const auto input = [&](LONG x, LONG y, DWORD buttons) {
+        gMouse.x = x;
+        gMouse.y = y;
+        gMouse.z = 0;
+        gMouse.button = buttons;
+        gMouseDev.Update();
+        access(HudMouseClear{})();
+        radar.InputProc();
+        access(HudQueueDrain{})();
+    };
+    const auto click = [&](CGUIButton& button, WORD normalFrame) {
+        const LONG x = button.GetPosX() + button.GetSizeX() / 2;
+        const LONG y = button.GetPosY() + button.GetSizeY() / 2;
+        button.SoundOn(FALSE);
+        input(x, y, 0);
+        check(button.GetSpriteInfo()->pSprite == atlas && button.GetSpriteInfo()->wActionNo == 3 &&
+              button.GetSpriteInfo()->wFrameNo == normalFrame + 1, "hovered zoom sprite");
+        input(x, y, _LEFT_BUTTON_DOWN);
+        check(CGUIObject::GetPressedObject() == &button &&
+              button.GetSpriteInfo()->wFrameNo == normalFrame + 2, "pressed zoom sprite");
+        input(x, y, 0);
+        input(radar.GetPosX() + 1, radar.GetPosY() + 1, 0);
+        check(button.GetSpriteInfo()->wFrameNo == normalFrame, "normal zoom sprite after release");
+    };
+    radar.AddCharacter(0, 10, CGUIRadarWindow::Mob, 140.0f, 0.0f, 0.0f);
+    auto* zoomMarker = markers->GetAddedObject(0);
+    check(zoomMarker && zoomMarker->GetPosX() == 591, "default zoom span 680");
+    click(*zoomIn, 19);
+    check(zoomMarker->GetPosX() == 598, "zoom span 510");
+    click(*zoomIn, 19);
+    check(zoomMarker->GetPosX() == 611, "zoom span 340");
+    click(*zoomIn, 19);
+    check(zoomMarker->GetPosX() == 611, "zoom in lower bound");
+    capture(draw, "radar-zoom-near.bgra");
+    for (LONG expected : {598L, 591L, 585L, 581L, 581L}) {
+        click(*zoomOut, 22);
+        check(zoomMarker->GetPosX() == expected, "zoom out steps and upper bound");
+    }
+    capture(draw, "radar-zoom-far.bgra");
+    {
+        CLand land;
+        g_pUiRadarWindow = &radar;
+        land.UI_SetRadar();
+        g_pUiRadarWindow = nullptr;
+    }
+    radar.SetAvatarPosition(0.0f, 0.0f, 0.0f);
+    check(zoomMarker->GetPosX() == 581, "map binding preserves the zoom level");
+    radar.RemoveAllCharacter();
     radar.SetMapSize({97, 97});  // One screen pixel per world unit in this fixture.
     radar.SetYAxisViewRange(20.0f);
     radar.SetAvatarPosition(0.0f, 0.0f, 0.0f);
@@ -80,9 +149,9 @@ static unsigned checkRadar()
     capture(draw, "radar-marker-clipped.bgra");
     radar.AddCharacter(0, 12, CGUIRadarWindow::PartyLeader, 70.0f, 0.0f, 0.0f, TRUE);
     radar.AddCharacter(0, 13, CGUIRadarWindow::PartyMember, 0.0f, 0.0f, 70.0f, TRUE);
-    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 0, "out of range party directions");
+    check(radar.GetAddedObjectNum() == 7 && markers->GetAddedObjectNum() == 0, "out of range party directions");
     for (WORD i = 0; i < 2; ++i) {
-        auto* direction = static_cast<CGUIObjectEx*>(radar.GetAddedObject(3 + i));
+        auto* direction = static_cast<CGUIObjectEx*>(radar.GetAddedObject(5 + i));
         const auto* info = direction->GetSpriteInfo();
         check(info->pSprite == atlas && info->wActionNo == 3 && info->wFrameNo == 3 + i &&
               direction->GetSizeX() == 93 && direction->GetSizeY() == 93 &&
@@ -91,11 +160,11 @@ static unsigned checkRadar()
     }
     capture(draw, "radar-party-directions.bgra");
     radar.UpdateCharacterPos(0, 12, 0.0f, 0.0f, 0.0f);
-    check(radar.GetAddedObjectNum() == 4 && markers->GetAddedObjectNum() == 1, "direction replaced by marker on approach");
+    check(radar.GetAddedObjectNum() == 6 && markers->GetAddedObjectNum() == 1, "direction replaced by marker on approach");
     radar.AddCharacter(0, 13, CGUIRadarWindow::Mob, 0.0f, 0.0f, 70.0f, FALSE);
-    check(radar.GetAddedObjectNum() == 3 && markers->GetAddedObjectNum() == 1, "reclassification clears direction");
+    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 1, "reclassification clears direction");
     radar.RemoveAllCharacter();
-    check(radar.GetAddedObjectNum() == 3 && markers->GetAddedObjectNum() == 0, "map change clears markers and directions");
+    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 0, "map change clears markers and directions");
     capture(draw, "radar-marker-cleared.bgra");
     return pixels;
 }
@@ -299,7 +368,8 @@ static int hud159(bool avatarHealth, bool radarOnly, bool bottomOnly){
     if (radarOnly) {
         std::fprintf(f,"{\"status\":\"PASS\",\"frame\":[146,163],\"layers\":[93,93],\"board\":[97,97],"
                        "\"marker\":[3,3],\"radius\":46,\"party_direction_frames\":[3,4],"
-                       "\"GPU_frames\":7,\"initial_pixels\":%u}\n",pixels);
+                       "\"zoom_spans\":[340,510,680,1020,1360],\"zoom_persists_on_map_bind\":true,"
+                       "\"GPU_frames\":9,\"initial_pixels\":%u}\n",pixels);
         std::fclose(f);
         return 0;
     }

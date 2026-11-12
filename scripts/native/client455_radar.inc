@@ -1,3 +1,22 @@
+namespace {
+constexpr LONG radarWorldSpan455[] = {340, 510, 680, 1020, 1360};
+constexpr WORD radarSpriteAction455 = 3;
+constexpr WORD zoomInFrame455 = 19;
+constexpr WORD zoomOutFrame455 = 22;
+
+void BindRadarButton455(CGUIButton& button, CSprite& atlas, WORD frame)
+{
+    SPRITE_INFO info{&atlas, radarSpriteAction455, frame};
+    button.SetSpriteInfoEx(&info);
+    ++info.wFrameNo;
+    button.SetSpriteInfoEx(HOVERED, &info);
+    ++info.wFrameNo;
+    button.SetSpriteInfoEx(PRESSED, &info);
+    button.SetSize(atlas.GetSpriteOrgXL(radarSpriteAction455, frame),
+                   atlas.GetSpriteOrgYL(radarSpriteAction455, frame));
+}
+}
+
 // The 455 radar initialization (RVA 0x317790) centers the two 93x93
 // rotating layers in the marker board, inset from the frame's origin.
 void CGUIRadarWindow::Init()
@@ -5,7 +24,8 @@ void CGUIRadarWindow::Init()
     SetSprite();
     const auto compassSize = m_uiCompassBase.m_ptSize;
     m_uiRadarBoard.SetSize(compassSize.x + 4, compassSize.y + 4);
-    SetMapSize({680, 680});
+    const auto span = radarWorldSpan455[m_zoomLevel455];
+    SetMapSize({span, span});
     SetCameraRotate(0.0f);
     m_uiRadarBoard.SetPos(m_ptPos.x + 31, m_ptPos.y + 32);
     const auto boardOrigin = m_uiRadarBoard.m_ptPos;
@@ -15,6 +35,12 @@ void CGUIRadarWindow::Init()
     Add(&m_uiCompassBase);
     Add(&m_uiAvatarObject);
     Add(&m_uiRadarBoard);
+    m_zoomIn455.SetPos(m_ptPos.x + 6, m_ptPos.y + 84);
+    m_zoomOut455.SetPos(m_ptPos.x + 13, m_ptPos.y + 104);
+    for (auto* button : {&m_zoomIn455, &m_zoomOut455}) {
+        button->AddMouseEventHandler(this);
+        Add(button);
+    }
 
     m_uiCompassBase.SetARGB(0xc0ffffff);
     m_uiAvatarObject.SetARGB(0x88ffffff);
@@ -28,9 +54,9 @@ void CGUIRadarWindow::Init()
 // The base, compass, and avatar layers use main.spr action 3 (RVA 0x317ec0).
 void CGUIRadarWindow::SetSprite()
 {
-    constexpr WORD action = 3;
+    constexpr WORD action = radarSpriteAction455;
     auto* sprite = gSpriteMgr.GetTargetSprite455(4);
-    if (!sprite || sprite->GetMaxActions() <= action || sprite->GetMaxFrames(action) < 5)
+    if (!sprite || sprite->GetMaxActions() <= action || sprite->GetMaxFrames(action) <= zoomOutFrame455 + 2)
         throw std::runtime_error("455 radar sprite frames missing");
 
     CGUIObject* const layers[] = {this, &m_uiCompassBase, &m_uiAvatarObject};
@@ -43,11 +69,30 @@ void CGUIRadarWindow::SetSprite()
     m_uiCompassBase.SetSpriteV(0, 1.0f);
     m_uiAvatarObject.SetSpriteU(0, 1.0f);
     m_uiAvatarObject.SetSpriteV(0, 1.0f);
+    BindRadarButton455(m_zoomIn455, *sprite, zoomInFrame455);
+    BindRadarButton455(m_zoomOut455, *sprite, zoomOutFrame455);
 
     if (m_bCreated) {
         for (auto* character : m_listChar)
             SetSprite_CharDir(static_cast<CharType>(character->byType), &character->uiCharDir);
     }
+}
+
+void CGUIRadarWindow::MouseEvent(_mouse_event& event)
+{
+    CGUIWindow::MouseEvent(event);
+    if (event.id != MOUSE_STROKED || gScreen.ExistObject()) return;
+
+    if (event.source == &m_zoomIn455 && m_zoomLevel455 > 0) {
+        --m_zoomLevel455;
+    } else if (event.source == &m_zoomOut455 && m_zoomLevel455 + 1 < _countof(radarWorldSpan455)) {
+        ++m_zoomLevel455;
+    } else {
+        return;
+    }
+    const auto span = radarWorldSpan455[m_zoomLevel455];
+    SetMapSize({span, span});
+    for (auto* character : m_listChar) UpdateCharPosition(character);
 }
 
 void CGUIRadarWindow::SetSprite_CharObj(CharType type, CGUIObject* marker)

@@ -54,7 +54,7 @@ def main():
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     if args.radar:
-        require(report['status']=='PASS' and len(frames)==7,'Actual radar failed')
+        require(report['status']=='PASS' and len(frames)==9,'Actual radar failed')
         area=(494,0,640,163)
         images=[]
         for name in ('radar-north','radar-camera-turned','radar-avatar-turned'):
@@ -74,6 +74,9 @@ def main():
         require(marker!=clipped and directions!=clipped and clipped==cleared,
                 'Radar marker and party arrows must appear and clear in the frame')
         report['visible_marker_clipping_and_party_directions']=True
+        require((run/'radar-zoom-near.bgra').read_bytes()!=(run/'radar-zoom-far.bgra').read_bytes(),
+                'Radar zoom did not change the drawn marker position')
+        report['visible_zoom']=True
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text)

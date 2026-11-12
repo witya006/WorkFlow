@@ -178,7 +178,7 @@ def main():
             if creation_changed:changes.append('455 character creation message pair and typed appearance preview and roster copy')
             raw,hud_changed=port_hud(raw,relative,native,section)
             if hud_changed:
-                changes.append('455 radar frame, compass and avatar sprites' if relative.endswith('/guiradarwindow.cpp')
+                changes.append('455 radar sprites, markers and zoom controls' if relative=='cland.cpp' or '/guiradarwindow.' in relative
                                else '455 upper HUD main/common/EtcUI sprites, gauges and image numbers')
             raw,item_changed=port_item_object(raw,relative,native,section)
             if item_changed:changes.append('455typed item resource owner592/boardwrapper620/actual game-global manager;legacy payload/UI callers remain unported')
