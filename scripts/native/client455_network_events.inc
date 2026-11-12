@@ -18,18 +18,29 @@ void CNetProcess::NetEventThread(void* context)
 
         const DWORD eventIndex = wait - WSA_WAIT_EVENT_0;
         const DWORD socketIndex = first + eventIndex;
-        const SOCKET socket = process.m_NetSocket.GetSocket(socketIndex)->m_Socket;
+        ReceiveLock455 lock(process.m_csRecv[socketIndex]);
+        auto* socket = process.m_NetSocket.GetSocket(socketIndex);
         WSANETWORKEVENTS pending{};
         // Winsock clears the event and its recorded notifications together.
-        if (WSAEnumNetworkEvents(socket, events[eventIndex], &pending) == SOCKET_ERROR) {
-            Sleep(1);
+        if (socket->m_Socket == INVALID_SOCKET) {
+            WSAResetEvent(events[eventIndex]);
+            continue;
+        }
+        if (WSAEnumNetworkEvents(socket->m_Socket, events[eventIndex], &pending) == SOCKET_ERROR) {
+            if (WSAGetLastError() == WSAENOTSOCK) WSAResetEvent(events[eventIndex]);
+            else Sleep(1);
             continue;
         }
         if ((pending.lNetworkEvents & FD_CONNECT) && !pending.iErrorCode[FD_CONNECT_BIT])
             process.m_listAcceptEvent.PushNode_Back(socketIndex);
-        if ((pending.lNetworkEvents & FD_READ) && !pending.iErrorCode[FD_READ_BIT])
+        if (pending.lNetworkEvents & FD_CLOSE) {
+            if (pending.iErrorCode[FD_CLOSE_BIT]) {
+                process.m_listCloseEvent.PushNode_Back(socketIndex);
+                continue;
+            }
+            socket->m_peerFin455 = true;
+        }
+        if (socket->m_peerFin455 || ((pending.lNetworkEvents & FD_READ) && !pending.iErrorCode[FD_READ_BIT]))
             process.m_listRecvEvent.PushNode_Back(socketIndex);
-        if (pending.lNetworkEvents & FD_CLOSE)
-            process.m_listCloseEvent.PushNode_Back(socketIndex);
     }
 }

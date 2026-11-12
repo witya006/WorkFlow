@@ -26,8 +26,9 @@ def main():
         output=run/'result.json';runs.append({'mode':mode,'exit':result.returncode,'native':json.loads(output.read_text()),'tcp_fixture':transport.report(),'exe':{'file':target.relative_to(WS).as_posix(),'sha256':sha(target)},'output':{'file':output.relative_to(WS).as_posix(),'sha256':sha(output)},'language':{'file':pack.relative_to(WS).as_posix(),'sha256':sha(pack)}})
     report={'scope':'Real client wait/events/TCP and own-thread error dialogs;not authentication/login/gameplay','architecture':'x86','entry_rva':hex(pe(exe.read_bytes())['entry_rva']),'source':source.relative_to(WS).as_posix(),'source_sha256':sha(source),'script_sha256':sha(Path(__file__)),'builder_sha256':sha(WS/'scripts/client455_own_probe.py'),'tcp_fixture_sha256':sha(WS/'scripts/client455_tcp_fixture.py'),'sources':{n:sha(WS/'scripts/native'/n) for n in ['client455_connection.h','client455_connection.cpp','client455_connection_bridge.inc','client455_network_receipt.inc']},'normal_link_sha256':sha(WS/'inventory/client455-normal-link.json'),'runs':runs,'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     if args.disconnect:
-        report['scope']='Loopback TCP loss before and after connection publication, endpoint cleanup and transport reconnect.'
-        report['sources']['client455_network_events.inc']=sha(WS/'scripts/native/client455_network_events.inc')
+        report['scope']='Loopback TCP close, ordered final frame delivery in the game loop, and transport reconnect.'
+        for name in ('client455_network_events.inc','client455_network_receive.inc','client455_network_transport.inc'):
+            report['sources'][name]=sha(WS/'scripts/native'/name)
     filename='client455-disconnect-native.json' if args.disconnect else 'client455-connection-native.json'
     (WS/'inventory'/filename).write_text(json.dumps(report,indent=2)+'\n');print(json.dumps([r['native'] for r in runs]))
 if __name__=='__main__':main()

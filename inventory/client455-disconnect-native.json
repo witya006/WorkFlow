@@ -1,32 +1,38 @@
 {
-  "scope": "Loopback TCP loss before and after connection publication, endpoint cleanup and transport reconnect.",
+  "scope": "Loopback TCP close, ordered final frame delivery in the game loop, and transport reconnect.",
   "architecture": "x86",
-  "entry_rva": "0x10fd00",
+  "entry_rva": "0x111eb0",
   "source": "scripts/native/client455_connection_probe.cpp",
-  "source_sha256": "701ac1a18df4283e51a9a9e79d5f23e109d81995b9e0b14f958afc3c9899e561",
-  "script_sha256": "61aa3e5d19c82dfab3fd0eb0b2d9a2d0e843fe048e89604ee24635c78c3d19e0",
+  "source_sha256": "289577515a2bde6f81d8011c2878f0f4a76c9a2e1702481a3a73e0cefa16bb9d",
+  "script_sha256": "0a9d2d3f388f35ba4a1b03170d27e8768555192451d6584bbd443f2804d7baa0",
   "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
   "tcp_fixture_sha256": "a65f6665ac87b4e1498461bc21a9db1228542fe4d4639f4da10598a0cd5a998f",
   "sources": {
     "client455_connection.h": "e32fe02e7fcc86a61c143d7b137c79b37347f52f3dabe7adff5ca5bfa56f5423",
     "client455_connection.cpp": "98070398e5b7dcba9530854fe82e86b6a252524816dbf33c5eb7c40474b1ad35",
     "client455_connection_bridge.inc": "57c7b6c3c7abb73ea90802e26de6f244a3ac2592e7abb9fbef988654d63070f4",
-    "client455_network_receipt.inc": "f7afbc06e8e503131032f3a836d2153316586944547eff3202440deee26c1f78",
-    "client455_network_events.inc": "940c0215d973f69b59b4a620acdd77abe9f58855a316c19e641080341d8cbbf9"
+    "client455_network_receipt.inc": "18ed794c90cee8fb479b3dd3c6d71d3633e7802e7bbed3cfc46c90aaa939fed7",
+    "client455_network_events.inc": "daf0ca92e7172b39229a656aeb372f183f5992953102c15ca01e2053ddf166c3",
+    "client455_network_receive.inc": "063f3886af47c9fed54565c14780a7d71c29af8e231cf97df58aaf28082f8d42",
+    "client455_network_transport.inc": "4fec3b0efe84b27f5775dc3d2caea199a6cca9f8c928b5806222a04743f8fb7e"
   },
-  "normal_link_sha256": "9a511a8846e0a8fce090e10e1dba63a6d0156d6a514aefae79e967695d5ce6be",
+  "normal_link_sha256": "315e927c7e958844627aadf40ae19786c4d44e30e0b5ad35be0f4ee5b6d81ff8",
   "runs": [
     {
       "mode": "disconnect",
       "exit": 0,
       "native": {
         "status": "PASS",
-        "loopback_connections": 3,
+        "loopback_connections": 5,
         "early_fin_clears_pending_accept": true,
         "rst_clears_active_connection": true,
         "fin_clears_active_connection": true,
         "reconnect_after_rst": true,
         "unmapped_close_preserves_game_connection": true,
+        "preaccept_bytes_retained": true,
+        "fragmented_encrypted_frames_before_fin": 2,
+        "close_callback_after_frames": true,
+        "startup_pump_dispatches_no_frames": true,
         "authentication_performed": false
       },
       "tcp_fixture": {
@@ -40,15 +46,15 @@
         "thread_stopped": true
       },
       "exe": {
-        "file": "work/m9/9d4c8a82/connection-disconnect-001/connection-probe.exe",
-        "sha256": "9d4c8a822e4ffe01dd06c69cba0b575cd506d63639cf5dc36d7876eaab3b86ac"
+        "file": "work/m9/b3b98f0d/connection-disconnect-001/connection-probe.exe",
+        "sha256": "b3b98f0d5370d4a06eb5f1aedfc0a7b6276bc4748c848c153796591428cbf37a"
       },
       "output": {
-        "file": "work/m9/9d4c8a82/connection-disconnect-001/result.json",
-        "sha256": "7edc6fc4df1da537ef1a417a32c61b31a3e4e4cec56f27c4db4bbb6bfc7151ce"
+        "file": "work/m9/b3b98f0d/connection-disconnect-001/result.json",
+        "sha256": "713c12863f8e33a2f8388a9d7980575ba9dc3dde18670db8cf6ef294ab8e34d0"
       },
       "language": {
-        "file": "work/m9/9d4c8a82/connection-disconnect-001/DataTable/ko-kr/NDLanguage.edf",
+        "file": "work/m9/b3b98f0d/connection-disconnect-001/DataTable/ko-kr/NDLanguage.edf",
         "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
       }
     }

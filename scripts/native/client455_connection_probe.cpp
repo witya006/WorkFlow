@@ -27,6 +27,7 @@ struct Owner{using Type=CNetWorking* CNetProcess::*;friend Type access(Owner);};
 struct AcceptList{using Type=CNetIndexList CNetProcess::*;friend Type access(AcceptList);};
 struct CloseList{using Type=CNetIndexList CNetProcess::*;friend Type access(CloseList);};
 struct ReadyList{using Type=CNetIndexList CNetProcess::*;friend Type access(ReadyList);};
+struct GracefulList{using Type=CNetIndexList CNetProcess::*;friend Type access(GracefulList);};
 template struct MemberAccess<NetworkMember,&CMainApp::m_cNetworkMgr>;
 template struct MemberAccess<SendBuffer,&CNetProcess::m_pSendBuffer>;
 template struct MemberAccess<ReceiveBuffer,&CNetProcess::m_pRecvBuffer>;
@@ -34,6 +35,7 @@ template struct MemberAccess<Owner,&CNetProcess::m_pNetwork>;
 template struct MemberAccess<AcceptList,&CNetProcess::m_listAcceptEvent>;
 template struct MemberAccess<CloseList,&CNetProcess::m_listCloseEvent>;
 template struct MemberAccess<ReadyList,&CNetProcess::m_listAcceptReady>;
+template struct MemberAccess<GracefulList,&CNetProcess::m_listGracefulClose455>;
 #define REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Connection failure line%d: %s\n",__LINE__,#x);return 1;}}while(0)
 struct ClockFixture{std::vector<std::uint32_t> ticks;unsigned at=0,pumps=0,sleeps=0,connectedAfter=0;bool badSleep=false;};
 static RF455ConnectionWait clockApi(ClockFixture& f){return RF455ConnectionWait{&f,
@@ -50,12 +52,86 @@ static LRESULT CALLBACK ownDialogHook(int code,WPARAM value,LPARAM param){
     return CallNextHookEx(nullptr,code,value,param);
 }
 
+struct ProbeSocket {
+    SOCKET handle;
+    ~ProbeSocket() { if (handle != INVALID_SOCKET) closesocket(handle); }
+};
+
+static int checkFinalFrames(SOCKET listener, const sockaddr_in& address)
+{
+    struct FrameCapture : CNetWorking {
+        unsigned accepts = 0;
+        std::vector<char> order;
+        void AcceptClientCheck(DWORD, DWORD, DWORD) override { ++accepts; }
+        void CloseClientCheck(DWORD, DWORD, DWORD) override { order.push_back('C'); }
+        bool DataAnalysis(DWORD process, DWORD index, _MSG_HEADER* header, char* payload) override {
+            if (process != 0 || index != 0 || header->m_wSize != 5 ||
+                header->m_byType[0] != 3 || header->m_byType[1] != 7) return false;
+            order.push_back(*payload);
+            return true;
+        }
+    };
+    auto capture = std::make_unique<FrameCapture>();
+    _NET_TYPE_PARAM type;
+    type.m_byRecvThreadNum = 1;
+    type.m_dwSocketRecycleTerm = 0;
+    REQUIRE(capture->SetNetSystem(1, &type, "RF_CLIENT_FIN"));
+    auto& process = capture->m_Process[0];
+    process.m_codec455.initializeDefault(true);
+    auto peerCodec = process.m_codec455;
+    peerCodec.sendKey = peerCodec.receiveKey;
+    char first[32]{}, second[32]{};
+    std::size_t firstBytes = 0, secondBytes = 0;
+    REQUIRE(peerCodec.encode(0x0703, "A", 1, first, sizeof first, firstBytes));
+    REQUIRE(peerCodec.encode(0x0703, "B", 1, second, sizeof second, secondBytes));
+    auto& graceful = process.*access(GracefulList{});
+    auto& receive = *(process.*access(ReceiveBuffer{}));
+
+    const auto waitFor = [](const auto& ready) {
+        const DWORD start = timeGetTime();
+        do {
+            if (ready()) return true;
+            Sleep(4);
+        } while (timeGetTime() - start < 5000);
+        return false;
+    };
+    for (bool worldLoop : {true, false}) {
+        capture->order.clear();
+        const unsigned acceptCount = capture->accepts;
+        REQUIRE(capture->ConnectRaw455(0, 0, address.sin_addr.s_addr, ntohs(address.sin_port)) == 0);
+        ProbeSocket peer{accept(listener, nullptr, nullptr)};
+        REQUIRE(peer.handle != INVALID_SOCKET);
+        REQUIRE(send(peer.handle, first, static_cast<int>(firstBytes), 0) == static_cast<int>(firstBytes));
+        REQUIRE(waitFor([&] {
+            capture->PumpEvents455();
+            return capture->accepts == acceptCount + 1;
+        }));
+        if (worldLoop) {
+            constexpr int prefix = 2;
+            REQUIRE(send(peer.handle, second, prefix, 0) == prefix);
+            REQUIRE(waitFor([&] { return receive.GetTotalPush() == firstBytes + prefix; }));
+            const int remainder = static_cast<int>(secondBytes) - prefix;
+            REQUIRE(send(peer.handle, second + prefix, remainder, 0) == remainder);
+        }
+        REQUIRE(shutdown(peer.handle, SD_SEND) == 0);
+        DWORD index = 0;
+        REQUIRE(waitFor([&] { return graceful.CopyFront(&index); }));
+        REQUIRE(index == 0 && capture->order.empty() &&
+                receive.GetTotalPush() == firstBytes + (worldLoop ? secondBytes : 0));
+        if (worldLoop) capture->OnLoop();
+        else capture->PumpEvents455();
+        const auto expected = worldLoop ? std::vector<char>{'A', 'B', 'C'} : std::vector<char>{'C'};
+        REQUIRE(capture->order == expected && !process.m_NetSocket.GetSocket(0)->m_bAccept);
+        REQUIRE(receive.GetTotalPush() == 0 && receive.GetTotalPop() == 0);
+        capture->OnLoop();
+        REQUIRE(capture->order == expected);
+    }
+    return 0;
+}
+
 static int checkDisconnect(CNetworkMgr& network)
 {
-    struct Socket {
-        SOCKET handle;
-        ~Socket() { if (handle != INVALID_SOCKET) closesocket(handle); }
-    } listener{socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)};
+    ProbeSocket listener{socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)};
     REQUIRE(listener.handle != INVALID_SOCKET);
     sockaddr_in address{};
     address.sin_family = AF_INET;
@@ -84,7 +160,7 @@ static int checkDisconnect(CNetworkMgr& network)
     enum class End { BeforePublication, Reset, Graceful };
     for (const auto end : {End::BeforePublication, End::Reset, End::Graceful}) {
         REQUIRE(network.ConnectToServer455(GST_WORLD, NST_GAME_SERVER) == 0);
-        Socket peer{accept(listener.handle, nullptr, nullptr)};
+        ProbeSocket peer{accept(listener.handle, nullptr, nullptr)};
         REQUIRE(peer.handle != INVALID_SOCKET);
         if (end == End::BeforePublication) {
             DWORD waiting = 0;
@@ -115,12 +191,15 @@ static int checkDisconnect(CNetworkMgr& network)
         REQUIRE(!transport->m_bAccept && !pendingAccept.CopyFront(&stale));
         REQUIRE(!network.IsConnectedToServer(GST_WORLD) && network.GetActiveServerID() == GST_NONE);
     }
+    REQUIRE(checkFinalFrames(listener.handle, address) == 0);
 
     FILE* result = std::fopen("result.json", "wb");
     REQUIRE(result);
-    std::fputs("{\"status\":\"PASS\",\"loopback_connections\":3,\"early_fin_clears_pending_accept\":true,"
+    std::fputs("{\"status\":\"PASS\",\"loopback_connections\":5,\"early_fin_clears_pending_accept\":true,"
                "\"rst_clears_active_connection\":true,\"fin_clears_active_connection\":true,"
                "\"reconnect_after_rst\":true,\"unmapped_close_preserves_game_connection\":true,"
+               "\"preaccept_bytes_retained\":true,\"fragmented_encrypted_frames_before_fin\":2,"
+               "\"close_callback_after_frames\":true,\"startup_pump_dispatches_no_frames\":true,"
                "\"authentication_performed\":false}\n", result);
     std::fclose(result);
     return 0;

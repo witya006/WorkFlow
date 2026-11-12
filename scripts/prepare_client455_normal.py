@@ -754,6 +754,13 @@ def main():
                 if body.count(anchor)!=1:raise ValueError('Transport process initialization changed')
                 body=body.replace(anchor,b'if(!m_Process[i].SetProcess(i, &pType[i], this))return false;')
                 body=body[:-1]+b'\r\n\treturn true;\r\n}';raw=raw[:start]+body+raw[end:]
+            if relative=='network/networklib/netsocket.h':
+                anchor=b'bool\t\tm_bSendable;'
+                if raw.count(anchor)!=1:raise ValueError('Socket peer close state boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tbool m_peerFin455;')
+                anchor=b'm_bSendable = false;'
+                if raw.count(anchor)!=1:raise ValueError('Socket reset boundary changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\t\tm_peerFin455 = false;')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/netprocess.h':
                 raw=b'#include "client455_network_codec.h"\r\n#include <vector>\r\n#include <new>\r\n'+raw
                 start,end=section(raw,b'struct _NET_BUFFER',b'struct _NET_BUFFER');raw=raw[:start]+(native/'client455_network_buffer.inc').read_bytes()+raw[end+1:] if raw[end:end+1]==b';' else raw[:start]+(native/'client455_network_buffer.inc').read_bytes()+raw[end:]
@@ -762,7 +769,13 @@ def main():
                 if count!=1:raise ValueError('NetProcess socket member changed')
                 anchor=b'void OnLoop();'
                 if raw.count(anchor)!=1:raise ValueError('Process event pump declaration changed')
-                raw=raw.replace(anchor,anchor+b'\r\n\tvoid PumpEvents455(){_Receipt();}')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid PumpEvents455(){_Receipt();}\r\n\tint ConnectSocket455(DWORD index, sockaddr_in& address);')
+                anchor=b'void _Receipt();'
+                if raw.count(anchor)!=1:raise ValueError('Process receipt declaration changed')
+                raw=raw.replace(anchor,b'void _Receipt(bool dispatchFinalFrames = false);')
+                anchor=b'CNetIndexList\t\tm_listCloseEvent;'
+                if raw.count(anchor)!=1:raise ValueError('Process close queue declaration changed')
+                raw=raw.replace(anchor,anchor+b'\r\n\tCNetIndexList m_listGracefulClose455;')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='network/networklib/netprocess.cpp':
                 raw=b'#include "client455_connection.h"\r\n'+raw
                 signature=b'CNetProcess::_Receipt(';start,end=section(raw,signature,signature)
@@ -771,22 +784,21 @@ def main():
                 anchor=b'm_NetSocket.SetSocket(&m_Type);'
                 if body.count(anchor)!=1:raise ValueError('Socket initialization changed')
                 body=body.replace(anchor,b'if(!m_NetSocket.SetSocket(&m_Type))return false;')
+                anchor=b'm_listCloseEvent.SetList(m_Type.m_wSocketMaxNum);'
+                if body.count(anchor)!=1:raise ValueError('Process close queue initialization changed')
+                body=body.replace(anchor,anchor+b'\r\n\tm_listGracefulClose455.SetList(m_Type.m_wSocketMaxNum);')
                 pattern=rb'(m_pSendBuffer\s*=\s*new _NET_BUFFER\s*\[m_Type.m_wSocketMaxNum\];)'
                 addition=b'\r\n\tm_receiveScratch455.resize(20000);m_sendScratch455.resize(1000000);\r\n\tfor(unsigned i=0;i<m_Type.m_wSocketMaxNum;++i){\r\n\t\tif(!m_pRecvBuffer[i].Configure(20000,20000,m_receiveScratch455.data()) || !m_pSendBuffer[i].Configure(1000000,1000000,m_sendScratch455.data()))return false;\r\n\t}'
                 body,count=re.subn(pattern,lambda match:match[0]+addition,body)
                 if count!=1:raise ValueError('Process buffer allocation changed')
                 raw=raw[:start]+body+raw[end:]
-                signature=b'CNetProcess::RecvThread(';start,end=section(raw,signature,signature);body=raw[start:end]
-                body=body.replace(b'MAX_NET_BUFFER',b'pNB->m_capacity').replace(b'MAX_EXTRA_BUFFER',b'pNB->m_extra')
-                anchor=b'pNB->AddPushPos(nRecvSize);'
-                if body.count(anchor)!=1:raise ValueError('Receive worker ring advance changed')
-                body=body.replace(anchor,b'''if (nRecvSize == 0) {
-                pProcess->m_csRecv[dwSocketIndex].Unlock();
-                pProcess->PushCloseNode(dwSocketIndex);
-                continue;
-            }
-            '''+anchor)
-                raw=raw[:start]+body+raw[end:]
+                anchor=b'\t_Receipt();'
+                if raw.count(anchor)!=1:raise ValueError('Game loop receipt boundary changed')
+                raw=raw.replace(anchor,b'\t_Receipt(true);')
+                for signature in (b'void CNetProcess::RecvThread(', b'bool CNetProcess::wt_CloseClient('):
+                    start,end=section(raw,signature,signature);raw=raw[:start]+raw[end:]
+                signature=b'bool CNetProcess::wt_AcceptClient(';start,end=section(raw,signature,signature)
+                raw=raw[:start]+(native/'client455_network_receive.inc').read_bytes()+raw[end:]
                 signature=b'void CNetProcess::NetEventThread(';start,end=section(raw,signature,signature)
                 raw=raw[:start]+(native/'client455_network_events.inc').read_bytes()+raw[end:]
                 signature=b'CNetProcess::LoadSendMsg(DWORD dwClientIndex, BYTE* pbyType';start,end=section(raw,signature,signature)
@@ -1055,6 +1067,7 @@ def main():
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_connection.cpp','client455_connection.h','client455_connection_bridge.inc','client455_network_receipt.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_network_events.inc']=sha((native/'client455_network_events.inc').read_bytes())
+    report['record_inputs']['client455_network_receive.inc']=sha((native/'client455_network_receive.inc').read_bytes())
     for name in ['client455_account.cpp','client455_account.h','client455_account_bridge.inc','client455_account_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_progress_loop.inc']=sha((native/'client455_progress_loop.inc').read_bytes())
     for name in ['client455_camera.h','client455_camera.cpp','client455_camera_load.inc','client455_camera_play.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
