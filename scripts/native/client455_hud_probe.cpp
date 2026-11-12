@@ -7,11 +7,23 @@
 #include "userinterface/gamewindow/etcwin/guiradarwindow.h"
 #include "userinterface/gamewindow/guihotkeyboard.h"
 #include "client455_linker_window.h"
+#include "gameprogress/cinputprocessmgr.h"
 #include "gameobject/manager/ccharactermgr.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
 #include "network/netmsgprocessor/event/cnetmsgprocessor_event.h"
 #include <array>
 extern CGUICharInfoWindow* g_pUiCharInfoWindow;
+
+struct HudBoards {
+    using Type = CBaseBoard*(CBoardManager::*)[MAX_BOARD_TYPE];
+    friend Type access(HudBoards);
+};
+template<class Tag, typename Tag::Type Member>
+struct HudMember { friend typename Tag::Type access(Tag) { return Member; } };
+template struct HudMember<HudBoards, &CBoardManager::m_listBoard>;
+struct HudLinkerInput : CInputProcessMgr {
+    using CInputProcessMgr::ProcessLinkerKeys455;
+};
 
 static unsigned checkRadar()
 {
@@ -60,7 +72,9 @@ static unsigned checkBottomHud()
         const bool scaled = viewport.x == 640;
         gScreen.SetSize(viewport.x, viewport.y);
         CGUIHotKeyBoard hud;
-        CGUILinkWindow455 link;
+        CLinkBoard linker;
+        linker.CObjectBoard::Create(IBT_LINK, 5, 10);
+        auto& link = linker.LinkerWindow455();
         hud.Init();
         link.Init();
         hud.SetPos(0, viewport.y - hud.GetSizeY());
@@ -83,9 +97,26 @@ static unsigned checkBottomHud()
         if (scaled) {
             const auto draw = [&]() { check(hud.Draw() != 0, "ordinary bottom HUD draw"); };
             pixels = capture(draw, "bottom-collapsed.bgra");
-            link.SelectBank455(3);
-            check(link.HotbarState455().active == 3, "select bank four");
+            auto& registered = (_GetGBM()->*access(HudBoards{}))[IBT_LINK];
+            check(!registered, "empty Linker registry slot");
+            registered = &linker;
+            struct ReleaseRegistration {
+                CBaseBoard*& slot;
+                ~ReleaseRegistration() { slot = nullptr; }
+            } release{registered};
+            HudLinkerInput keys;
+            link.SetBankFlag455(1, 0);
+            link.SetBankFlag455(2, 0);
+            gScan[VK_OEM_3] = 1;
+            keys.ProcessLinkerKeys455(1000, TRUE);
+            check(link.HotbarState455().active == 0 && !gScan[VK_OEM_3], "chat suppresses bank cycling");
+            gScan[VK_OEM_3] = 1;
+            keys.ProcessLinkerKeys455(1001, FALSE);
+            check(link.HotbarState455().active == 3, "keyboard selects next pinned bank");
+            keys.ProcessLinkerKeys455(1002, FALSE);
+            check(link.HotbarState455().active == 3, "one bank change per key event");
             capture(draw, "bottom-bank4.bgra");
+            link.ResetBankFlags455();
             link.SetExpanded455(TRUE);
             check(link.GetSizeY() == 5 * 28, "five expanded rows");
             capture(draw, "bottom-expanded.bgra");
@@ -235,7 +266,7 @@ static int hud159(bool avatarHealth, bool radarOnly, bool bottomOnly){
         return 0;
     }
     if (bottomOnly) {
-        std::fprintf(f,"{\"status\":\"PASS\",\"layouts\":[[640,480],[1280,720]],\"banks\":5,\"slots_per_bank\":10,\"single_owner\":true,\"GPU_frames\":3,\"initial_pixels\":%u}\n",pixels);
+        std::fprintf(f,"{\"status\":\"PASS\",\"layouts\":[[640,480],[1280,720]],\"banks\":5,\"slots_per_bank\":10,\"single_owner\":true,\"keyboard_next_bank\":[0,3],\"GPU_frames\":3,\"initial_pixels\":%u}\n",pixels);
         std::fclose(f);
         return 0;
     }

@@ -43,12 +43,13 @@ def main():
         png=file.with_suffix('.png');Image.frombytes('RGBA',(640,480),file.read_bytes(),'raw','BGRA').convert('RGB').save(png);frames.append(dict(**record(file),preview=record(png)))
     source_names=['client455_radar.inc'] if args.radar else ['client455_hud.inc','client455_hud_members.inc','client455_image_text.h','client455_image_text.cpp']
     if args.bottom_hud:
-        source_names=['client455_hotkey_hud.inc','client455_linker_window.cpp']
+        source_names=['client455_hotkey_hud.inc','client455_linker_window.cpp','client455_linker_input.inc']
     report=dict(status='PASS' if result.returncode==0 and native else 'FAIL',normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),script=record(Path(__file__)),sources=[record(source)]+[record(WS/'scripts/native'/p) for p in source_names],inputs=inputs,console=record(console),output=record(out) if out.exists() else None,natural_exit=result.returncode,native=native,frames=frames,shared_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
     print(json.dumps(dict(exit=result.returncode,run=run.relative_to(WS).as_posix(),native=native,console=console.read_text(errors='replace')[-1200:])))
     expected_frames=4 if args.avatar_health else 3
     if args.bottom_hud:
         require(report['status']=='PASS' and len(frames)==3 and native['initial_pixels']>500,'Actual bottom HUD failed')
+        require(native['keyboard_next_bank']==[0,3],'Keyboard bank cycle did not skip unpinned banks')
         require(len({frame['sha256'] for frame in frames})==3,'Selected bank or expanded rows did not render')
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return

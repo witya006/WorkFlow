@@ -6,10 +6,12 @@
 #include "datatable/cresourcedatamgr.h"
 #include "input/imeedit.h"
 #include "gameprogress/cgameprogress.h"
+#include "gameprogress/cinputprocessmgr.h"
 #include "userinterface/spritemgr.h"
 #include "client455_client_items.h"
 #include "client455_item_icon_metadata.h"
 #include "client455_nuclear_registry.h"
+#include "client455_nation_paths.h"
 #include "mainapp.h"
 #include "userinterface/gamewindow/etcwin/guimaploadingwindow.h"
 
@@ -19,6 +21,7 @@
 #include <iterator>
 #include <memory>
 #include <stdexcept>
+#include <string>
 #include <vector>
 
 extern CMainApp g_MainApp;
@@ -36,17 +39,22 @@ struct Packs { using Type = CObjectPack* CObjectBoard::*; friend Type access(Pac
 struct SendBuffer { using Type = _NET_BUFFER* CNetProcess::*; friend Type access(SendBuffer); };
 struct Owner { using Type = CNetWorking* CNetProcess::*; friend Type access(Owner); };
 struct Active { using Type = BYTE(CNetworkMgr::*)[6]; friend Type access(Active); };
+struct ControlKey { using Type = BOOL CInputProcessMgr::*; friend Type access(ControlKey); };
 template struct MemberAccess<Boards, &CBoardManager::m_listBoard>;
 template struct MemberAccess<Packs, &CObjectBoard::m_listItemPack>;
 template struct MemberAccess<SendBuffer, &CNetProcess::m_pSendBuffer>;
 template struct MemberAccess<Owner, &CNetProcess::m_pNetwork>;
 template struct MemberAccess<Active, &CNetworkMgr::m_activeServer455>;
+template struct MemberAccess<ControlKey, &CInputProcessMgr::m_bControlKeyDown>;
 
 struct Network : CNetworkMgr {
     using CNetworkMgr::AnalysisServerPacket;
 };
 struct Avatar : CAvatar {
     Avatar() { m_pMoveMapInfo = new MOVEMAP_INFO; }
+};
+struct LinkerInput : CInputProcessMgr {
+    using CInputProcessMgr::ProcessLinkerKeys455;
 };
 
 struct SendRing {
@@ -77,6 +85,8 @@ struct SendRing {
 
     void SetConnected(bool connected) { process.m_NetSocket.GetSocket(0)->m_bAccept = connected; }
 
+    bool Empty() { return buffer.GetTotalPush() == buffer.GetTotalPop(); }
+
     void ExpectRequest()
     {
         int size = 0;
@@ -92,7 +102,7 @@ struct SendRing {
     }
 };
 
-int run(const char* itemFile)
+int run(const char* itemFile, const char* keyMapFile)
 {
     InitR3Engine();
     g_pMainApp = &g_MainApp;
@@ -145,6 +155,13 @@ int run(const char* itemFile)
 
     CLinkBoard linker;
     linker.CObjectBoard::Create(IBT_LINK, 5, 10);
+    auto& registeredLinker = (boards->*access(Boards{}))[IBT_LINK];
+    require(!registeredLinker, "empty Linker registry slot");
+    registeredLinker = &linker;
+    struct ReleaseRegistration {
+        CBaseBoard*& slot;
+        ~ReleaseRegistration() { slot = nullptr; }
+    } release{registeredLinker};
     require(linker.CObjectBoard::AddPack(4), "fifth Linker bank");
     auto shortcut = std::unique_ptr<CBoardObject>(object->Clone());
     auto& bank = (linker.*access(Packs{}))[4];
@@ -175,6 +192,12 @@ int run(const char* itemFile)
         auto& window = linker.LinkerWindow455();
         _mouse_event event{window.GetItem(4, slot), LMOUSE_STROKED, 0, 0};
         window.DispatchMouse455(event, dragging, FALSE, FALSE, FALSE);
+    };
+    const auto resetMove = [&] {
+        move->m_bIsMoved = FALSE;
+        move->m_byMoveStep = MOVEMAP_INFO::MMS_NONE;
+        land.SetPortalIndex(3);
+        item->SetDownloadValue455(10, 0);
     };
 
     std::fputs("send failure\n", stderr);
@@ -208,10 +231,7 @@ int run(const char* itemFile)
         move->FrameMove();
         require(move->m_byMoveStep == MOVEMAP_INFO::MMS_LOAD_DATA && !loading.IsShow(),
                 "same-map return skips the loading overlay after the 455 delay");
-        move->m_bIsMoved = FALSE;
-        move->m_byMoveStep = MOVEMAP_INFO::MMS_NONE;
-        land.SetPortalIndex(3);
-        item->SetDownloadValue455(10, 0);
+        resetMove();
     }
 
     useShortcut(8);
@@ -224,10 +244,56 @@ int run(const char* itemFile)
     ring.ExpectRequest();
     require(dispatch(0, 0) && quantity() == 9 && !boards->IsRequestProcess() &&
             move->m_vecPosition[0] == -1234, "ordinary response consumes the original item");
-    move->m_bIsMoved = FALSE;
-    move->m_byMoveStep = MOVEMAP_INFO::MMS_NONE;
-    land.SetPortalIndex(3);
-    item->SetDownloadValue455(10, 0);
+    resetMove();
+
+    LinkerInput inputKeys;
+    const std::string path(keyMapFile);
+    const auto endOfRoot = path.find_last_of("\\/");
+    auto* nation = RF455_GetNormalNationPaths();
+    require(endOfRoot != std::string::npos && endOfRoot < sizeof nation->dataRoot, "key map directory");
+    const auto keyRoot = path.substr(0, endOfRoot);
+    std::strcpy(nation->dataRoot, keyRoot.c_str());
+    require(inputKeys.LoadData(), "production input loader");
+    const auto pressF10 = [&](DWORD now, BOOL focused = FALSE, LPARAM flags = 0) {
+        inputKeys.MsgProc(nullptr, WM_SYSKEYDOWN, VK_F10, flags);
+        inputKeys.ProcessLinkerKeys455(now, focused);
+    };
+    auto& activeBank = linker.LinkerWindow455().HotbarState455().active;
+    activeBank = 0;
+    pressF10(1000);
+    require(ready() && ring.Empty(), "keyboard respects the empty active bank");
+    activeBank = 4;
+    pressF10(1600, TRUE);
+    inputKeys.ProcessLinkerKeys455(1601, FALSE);
+    require(ready() && ring.Empty(), "focused chat suppresses the key and leaves no deferred use");
+    pressF10(1700, FALSE, 1L << 29);
+    inputKeys.*access(ControlKey{}) = TRUE;
+    pressF10(1701);
+    inputKeys.*access(ControlKey{}) = FALSE;
+    require(ready() && ring.Empty(), "modifiers suppress the normal slot path");
+    pressF10(2000);
+    require(boards->IsRequestProcess() && boards->GetOrgObject() == object, "F10 uses fifth bank");
+    ring.ExpectRequest();
+    require(dispatch(5, 0, 1) && ready(), "keyboard request refusal leaves the item available");
+    pressF10(2500);
+    require(ready() && ring.Empty(), "same slot does not repeat within 500 milliseconds");
+    pressF10(2501);
+    require(boards->IsRequestProcess(), "slot can be used after the repeat interval");
+    ring.ExpectRequest();
+    require(dispatch(0, 0) && quantity() == 9 && !boards->IsRequestProcess(),
+            "F10 and mouse share the item owner and result dispatcher");
+    resetMove();
+    for (BYTE slot = 0; slot < 9; ++slot) {
+        require(bank.Add(slot, shortcut.get()), "borrow a shortcut in the selected bank");
+        gScan[VK_F1 + slot] = 1;
+        inputKeys.ProcessLinkerKeys455(3002, FALSE);
+        require(boards->IsRequestProcess() && boards->GetOrgObject() == object,
+                "each F-key uses its matching slot in the selected bank");
+        ring.ExpectRequest();
+        require(dispatch(5, 0, 1) && ready(), "slot use leaves no pending request after refusal");
+        require(bank.Empty(slot), "release slot from keyboard fixture");
+    }
+
     auto& inventoryPack = (inventory->*access(Packs{}))[0];
     require(inventoryPack.Empty(0), "unlink source without destroying shortcut fixture");
     require(!linker.UseShortcut455(4, 9) && ready(), "stale shortcut does not send a request");
@@ -248,7 +314,9 @@ int run(const char* itemFile)
     std::puts("{\"status\":\"PASS\",\"request\":[4,26],\"reply\":[4,27],"
               "\"success_codes\":[0,10],\"quantity\":[10,9],\"bad_map_cases\":2,"
               "\"refusal\":true,\"malformed\":true,\"send_failure\":true,\"cancel\":true,"
-              "\"same_map_no_loading_overlay\":true,\"linker_mouse\":[4,9],\"stale_shortcut\":true}");
+              "\"same_map_no_loading_overlay\":true,\"linker_mouse\":[4,9],\"stale_shortcut\":true,"
+              "\"linker_f10\":[4,9],\"keyboard_slots\":10,"
+              "\"chat_focus_suppressed\":true,\"repeat_interval_ms\":500}");
     return 0;
 }
 }
@@ -257,8 +325,8 @@ int main(int argc, char** argv)
 {
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
     try {
-        require(argc == 2, "pinned Item.edf argument");
-        return run(argv[1]);
+        require(argc == 3, "pinned Item.edf and KeyMap.dat arguments");
+        return run(argv[1], argv[2]);
     } catch (const std::exception& error) {
         std::fprintf(stderr, "%s\n", error.what());
         return 1;

@@ -42,11 +42,16 @@ def verify_linker_reference():
     identity = rtti(raw, table)
     require(identity['class_name'] == 'CLinkBoard' and u32(raw, table + 132) == 0x500f80,
             'Linker primary vtable use method')
-    for site in (0x5010dd, 0x501122):
-        require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', 0x4faa70 - site - 5),
-                'Linker delegates physical use to the selected board')
+    for site, target in {0x5010dd: 0x4faa70, 0x501122: 0x4faa70,
+                         0x55b0e2: 0x55b9f0, 0x55b588: 0x55b9f0,
+                         0x55e3d1: 0x6692e0}.items():
+        require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', target - site - 5),
+                f'Linker reference call at {site:#x}')
+    require(read_va(raw, 0x55e3ac, 7) == bytes.fromhex('c745f8c0000000'),
+            'Reference bank-switch virtual key is VK_OEM_3')
     return dict(sha256=fingerprint, architecture='x86', use_rva='0x100f80',
-                physical_source_ids=[1, 0], **identity)
+                physical_source_ids=[1, 0], slot_keys_rva='0x15b9f0',
+                next_bank_rva='0x15e3a0', next_bank_vk=0xc0, **identity)
 
 
 def verify_reference():
@@ -122,27 +127,32 @@ def main():
     item = next(row for row in read('item-payloads-reference')['inputs']
                 if Path(row['file']).name == 'item.edf')
     check(item)
+    client = Path(json.loads((WS / 'config/paths.json').read_text())['client_455'])
+    key_map = client / 'DataTable/ru-ru/KeyMap.dat'
     source = WS / 'scripts/native/client455_base_portal_probe.cpp'
     exe = build_full_object_probe('base-portal', source)
-    native, console = run_fixture(exe, [WS / item['file']], [], 'base-portal')
+    native, console = run_fixture(exe, [WS / item['file'], key_map], [], 'base-portal')
     require(native == dict(status='PASS', request=[4, 26], reply=[4, 27], success_codes=[0, 10],
                            quantity=[10, 9], bad_map_cases=2, refusal=True, malformed=True,
                            send_failure=True, cancel=True, same_map_no_loading_overlay=True,
-                           linker_mouse=[4, 9], stale_shortcut=True),
+                           linker_mouse=[4, 9], stale_shortcut=True, linker_f10=[4, 9],
+                           keyboard_slots=10, chat_focus_suppressed=True, repeat_interval_ms=500),
             'Base portal native fixture')
     names = ('normal-link', 'normal-preparation', 'normal-build', 'normal-consumers',
              'own-entry', 'startup-audit', 'startup-taiwan-native', 'base-portal-reference')
     sources = ('client455_base_portal_port.py', 'native/client455_base_portal_inventory.inc',
                'native/client455_base_portal_position.inc', 'native/client455_base_portal_probe.cpp',
                'client455_linker_window_port.py', 'native/client455_linker_use.inc',
-               'native/client455_linker_window.cpp')
+               'native/client455_linker_window.cpp', 'client455_linker_input_port.py',
+               'native/client455_linker_input.inc')
     live = verify_live(link_sha) if args.with_live else None
     save('base-portal-checkpoint' if live else 'linker-use-checkpoint', dict(
         status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_BASE_PORTAL',
-        scope='Inventory and fifth-bank Linker click, send ring, response dispatcher and map transition.',
+        scope='Inventory, fifth-bank Linker mouse/F1–F10, send ring and ordinary map transition.',
         normal_executable=link['executable'], normal_link_sha256=link_sha,
         component=native, component_executable=record(exe), component_console=console, item=item,
         linker_reference=linker_reference,
+        key_map=dict(relative=key_map.relative_to(client).as_posix(), sha256=sha(key_map)),
         script=record(Path(__file__)), sources=[record(WS / 'scripts' / name) for name in sources],
         fresh_evidence={name: record(path(name)) for name in names},
         gaps=['Physical mouse use, travel from farther away and movement after arrival remain to be checked.' if live

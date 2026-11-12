@@ -1,13 +1,13 @@
 {
   "status": "PARTIAL_COMPONENT_BASE_PORTAL",
-  "scope": "Inventory and fifth-bank Linker click, send ring, response dispatcher and map transition.",
+  "scope": "Inventory, fifth-bank Linker mouse/F1\u2013F10, send ring and ordinary map transition.",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "e2ea2163771fb9dd0f0c6ff29a4a6db42e3241d9714e57a241c53381821137ca",
-    "bytes": 2518528,
+    "sha256": "c70cc76b88635ce13bd14b793ba6e87f4d6a6822c936f9550f5ecd75db371786",
+    "bytes": 2519040,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a1970",
+    "entry_rva": "0x1a19f0",
     "sections": [
       ".text",
       ".rdata",
@@ -16,7 +16,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "6becb1a872ed5e792e35d44df37be819cf0e1305388a1e40c47eb7179e92265e",
+  "normal_link_sha256": "65cf9ef4cf92760c7b32fa87c25ddd359f758d203a7b004d33cbdfab87e2bcda",
   "component": {
     "status": "PASS",
     "request": [
@@ -45,15 +45,22 @@
       4,
       9
     ],
-    "stale_shortcut": true
+    "stale_shortcut": true,
+    "linker_f10": [
+      4,
+      9
+    ],
+    "keyboard_slots": 10,
+    "chat_focus_suppressed": true,
+    "repeat_interval_ms": 500
   },
   "component_executable": {
     "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
-    "sha256": "86b7747df4f75abb93be805345842e8c92d41c6fffdd0cf5d62a63c6918c09a3"
+    "sha256": "895d16b0a1d2603f583e4a5d457db5b3ca01d4d55fe750e0e3de9e14fdbb6462"
   },
   "component_console": {
     "file": "work/client455-port/base-portal-probe/base-portal.txt",
-    "sha256": "8322da4748ad6cc7b2596c580d53542de1610ececfdda590c69946dc420239b9"
+    "sha256": "5aea8f7c91c9df34089076efdd6a350953bc7c9dd2cd96a7116e2869e57672ae"
   },
   "item": {
     "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf",
@@ -69,15 +76,22 @@
       1,
       0
     ],
+    "slot_keys_rva": "0x15b9f0",
+    "next_bank_rva": "0x15e3a0",
+    "next_bank_vk": 192,
     "class_name": "CLinkBoard",
     "vtable_rva": "0x6ae914",
     "locator_rva": "0x77d654",
     "descriptor_rva": "0x7cf648",
     "decorated_type": ".?AVCLinkBoard@@"
   },
+  "key_map": {
+    "relative": "DataTable/ru-ru/KeyMap.dat",
+    "sha256": "0f01fd446cb2afdafae4ba655f44b99a6669cdf31dc65e79ee0e6f8ed1fe66a5"
+  },
   "script": {
     "file": "scripts/checkpoint_client455_base_portal.py",
-    "sha256": "0971e6fca635031d47df1d9765cdeebb6aacf094be697654960fb147b5123912"
+    "sha256": "e4a02522033be71ef629df4c177546714b98f1fb080828fdd2d33f8b98a9ed81"
   },
   "sources": [
     {
@@ -94,7 +108,7 @@
     },
     {
       "file": "scripts/native/client455_base_portal_probe.cpp",
-      "sha256": "d0fe6d240c670593c3b3cb75c198526dc2756b8befb624ddaaad14a6cb03939f"
+      "sha256": "1de9de567d165015a90bf672c64f7fb869cc75eb6464678801d2234c5b9d73f7"
     },
     {
       "file": "scripts/client455_linker_window_port.py",
@@ -107,36 +121,44 @@
     {
       "file": "scripts/native/client455_linker_window.cpp",
       "sha256": "e13b85192a35c6c3064b9b8f001937dbf4125206693899e3babe1c1e87ff73d5"
+    },
+    {
+      "file": "scripts/client455_linker_input_port.py",
+      "sha256": "37e8a353e2e797ff10a6e5d642451548c720b36027f087f3ad524bbfca048b80"
+    },
+    {
+      "file": "scripts/native/client455_linker_input.inc",
+      "sha256": "6328cd9d66b641f4b2623757c3ddbca5bed2e43db84fb7bc21cac50ccc086812"
     }
   ],
   "fresh_evidence": {
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "6becb1a872ed5e792e35d44df37be819cf0e1305388a1e40c47eb7179e92265e"
+      "sha256": "65cf9ef4cf92760c7b32fa87c25ddd359f758d203a7b004d33cbdfab87e2bcda"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "2314abc89b2321659405aa27f7efe60e9a3e6988c3e450b0d1d3eadc02926955"
+      "sha256": "5796fe44aed086f3d6d494f5c36f8fe93daf5c8c712eaf7a4a5eb7821897830b"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "21a9ec362fc3ea8bd08770afd7d252941e29536ef1d4bbd2b27219f85d2493a2"
+      "sha256": "31cca4001dfa87b3606542522d0e2ee65468b87cee6b578dbc9dc9bcac2381ce"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "b0155144f5b4cf31491682a43297336722a193147df651464b5489b33ccc3f60"
+      "sha256": "c7ec4bf57ed9a255853fc431c711ad28b342a0b90e6f10d56f6f32da6bbc2d84"
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "ce7cb53d61c61ec80a0f756f746faf2bff79e0368098f9fbb9af23dada95f67a"
+      "sha256": "5cfa9b594c701190339fcef5843957098c2657233cf1af766ed5164c38f2da09"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "1cb6128a6c4de7c31105d1779229f218675fbb93c1a0bc2e0e8a90c5604222f9"
+      "sha256": "5e641516f8c839b8956a06c6ba3fdd55603236431f5e7723e38a43866e6291e5"
     },
     "startup-taiwan-native": {
       "file": "inventory/client455-startup-taiwan-native.json",
-      "sha256": "01d987a717345379c441b15c71578979e2003806f22a2f7bad4a0024c40fe62b"
+      "sha256": "beac1c2fe12cc7a04d1d5227aa6bfe9323eaadec0e43efb6d599618db39c0a32"
     },
     "base-portal-reference": {
       "file": "inventory/client455-base-portal-reference.json",

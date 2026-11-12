@@ -19,6 +19,7 @@ from client455_item_metadata_port import port_item_metadata
 from client455_icon_links_port import port_icon_links
 from client455_linker_owners_port import port_linker_owners
 from client455_linker_window_port import port_linker_window
+from client455_linker_input_port import port_linker_input
 from client455_gui_timer_port import port_gui_timer
 from client455_linker_cooldown_port import port_linker_cooldown
 from client455_board_hover_port import port_board_hover
@@ -861,6 +862,8 @@ def main():
             if target_windows_changed:changes.append('455 overhead bar, target details and localized target menu')
             raw,initial_download_changed=port_initial_download(raw,relative,section,native)
             if initial_download_changed:changes.append('455 bounded base, inventory and Force download handlers and opcodes')
+            raw,linker_input_changed=port_linker_input(raw,relative,section,native)
+            if linker_input_changed:changes.append('455 world keyboard actions for the active Linker bank')
             raw,camera_input_changed=port_camera_input(raw,relative,section,native)
             if camera_input_changed:changes.append('455 ordinary right-drag camera pitch bounds and scoped live mouse observation')
             raw,world_updates_changed=port_world_updates(raw,relative,native,section)
@@ -1083,6 +1086,7 @@ def main():
     for name in ['client455_board_hover.h','client455_board_hover.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_linker_window.h','client455_linker_window.cpp','client455_image_text.h','client455_image_text.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_linker_use.inc']=sha((native/'client455_linker_use.inc').read_bytes())
+    report['record_inputs']['client455_linker_input.inc']=sha((native/'client455_linker_input.inc').read_bytes())
     for name in ['client455_linker_owners.h','client455_linker_owners.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_icon_links.h','client455_icon_links.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_item_icon_metadata.h','client455_item_icon_metadata.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
