@@ -1,0 +1,43 @@
+{
+  "status": "PASS_COMPONENT_RENDER_WORLD_OPEN",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "init_rva": "0x317790",
+    "set_sprite_rva": "0x317ec0",
+    "evidence": {"file": "artifacts/client455-startup/radar455-reference.json", "sha256": "f4394b482e733b9e4212eea507652911cded9143d647fd6cae5c7a6ecd3b9701"}
+  },
+  "atlas": {
+    "file": "SpriteImage/ru-ru/main.spr",
+    "sha256": "68a147fc1f45baa394587653ef73c26904cf92254071a974f5b64bb1ab374fd1",
+    "id": 4,
+    "action": 3,
+    "frames": [{"index": 0, "size": [146, 163]}, {"index": 1, "size": [93, 93]}, {"index": 2, "size": [93, 93]}]
+  },
+  "baseline": {
+    "build_sha256": "617c3efc5cb70a1b24691d1ba8e2b8a371b807afac698c577e9342ccfcfcfa6b",
+    "world_frame": {"file": "work/startup455-m6/menu-live/tutorial-fresh-relogin-world.png", "sha256": "e033c975a017d6191c3c6d94dec5a3edd516cea844775ce1db21d32d1096ea08"}
+  },
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e90c98cc0b7c066fa74efba6fdd9053ee7d8f17bc33cdb8d919b230eb043a448",
+    "architecture": "x86",
+    "configuration": "Release Win32",
+    "entry_rva": "0x1a1670",
+    "unresolved_symbols": 0
+  },
+  "test": {
+    "command": "scripts/Invoke-Python.ps1 scripts/probe_client455_hud.py --radar",
+    "report": {"file": "work/m9/d5242adf/hud-001/probe-report.json", "sha256": "96bf54325d364f43534be21648793320f8e5075e28b8ccecd652fafe886b4b22"},
+    "viewport": [640, 480],
+    "radar_marker_board": [97, 97],
+    "visible_camera_and_avatar_rotation": true,
+    "frames": [
+      {"file": "work/m9/d5242adf/hud-001/radar-north.png", "sha256": "3e6485674cb28c2f229f0edb95b1a5454c1773efb496708a6e26c2d6b7ac0eff"},
+      {"file": "work/m9/d5242adf/hud-001/radar-camera-turned.png", "sha256": "ead6f24e00784c65657ca8128531a3c325faef7ee8a56d24a162fb70de08ba36"},
+      {"file": "work/m9/d5242adf/hud-001/radar-avatar-turned.png", "sha256": "c01b795ac4296bc93ed22c475c8efad9b983b996833356ed44cfe40ef9774eeb"}
+    ]
+  },
+  "open": ["Live radar on NeutralB and marker placement", "455 radar buttons, other markers and hotkeys", "Full map window"]
+}

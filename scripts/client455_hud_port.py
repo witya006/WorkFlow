@@ -1,5 +1,12 @@
-"""Restore455upper gauge panel;full MainGame UI remains open."""
+"""Restore the upper gauge panel and radar artwork used by the 455 HUD."""
 def port_hud(raw,relative,native,section):
+    if relative=='userinterface/gamewindow/etcwin/guiradarwindow.cpp':
+        for sig in [b'CGUIRadarWindow::Init(',b'CGUIRadarWindow::SetSprite(']:
+            first,last=section(raw,sig,sig)
+            start=raw.rfind(b'void',0,first)
+            if raw[start:first].strip()!=b'void':raise ValueError('Radar return-type anchor')
+            raw=raw[:start]+raw[last:]
+        return b'#include <stdexcept>\n'+raw+b'\n'+(native/'client455_radar.inc').read_bytes(),True
     if relative=='userinterface/gamewindow/guigaugeexpwindow.h':
         raw=b'#include "client455_image_text.h"\n'+raw
         for old,new in [(b'MAX_GAUGE_NO\t3',b'MAX_GAUGE_NO\t4'),(b'\t\tSTAMINA_BAR',b'\t\tSTAMINA_BAR,\n\t\tFOURTH_BAR455')]:

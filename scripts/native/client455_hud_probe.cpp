@@ -4,11 +4,51 @@
 #undef main
 #include "userinterface/gamewindow/guigaugeexpwindow.h"
 #include "userinterface/gamewindow/guicharinfowindow.h"
+#include "userinterface/gamewindow/etcwin/guiradarwindow.h"
 #include "gameobject/manager/ccharactermgr.h"
 #include "network/netmsgprocessor/combat/cnetmsgprocessor_combat.h"
 #include "network/netmsgprocessor/event/cnetmsgprocessor_event.h"
 #include <array>
 extern CGUICharInfoWindow* g_pUiCharInfoWindow;
+
+static unsigned checkRadar()
+{
+    CGUIRadarWindow radar;
+    radar.Init();
+    radar.SetPos(640 - radar.GetSizeX(), 0);
+    radar.Show(TRUE);
+    check(radar.GetAddedObjectNum() == 3, "radar composition");
+    auto* compass = static_cast<CGUIObjectEx*>(radar.GetAddedObject(0));
+    auto* arrow = static_cast<CGUIObjectEx*>(radar.GetAddedObject(1));
+    auto* markers = radar.GetAddedObject(2);
+    auto* atlas = gSpriteMgr.GetTargetSprite455(4);
+    CGUIObject* const layers[] = {&radar, compass, arrow};
+    for (WORD frame = 0; frame < _countof(layers); ++frame) {
+        const auto* info = layers[frame]->GetSpriteInfo();
+        check(info->pSprite == atlas && info->wActionNo == 3 && info->wFrameNo == frame,
+              "actual radar layer frames");
+    }
+    check(radar.GetSizeX() == 146 && radar.GetSizeY() == 163 && radar.GetPosX() == 494,
+          "right aligned frame dimensions");
+    check(markers->GetPosX() == 525 && markers->GetPosY() == 32 &&
+          markers->GetSizeX() == 97 && markers->GetSizeY() == 97, "radar marker board geometry");
+    for (auto* layer : {compass, arrow})
+        check(layer->GetPosX() == 527 && layer->GetPosY() == 34 &&
+              layer->GetSizeX() == 93 && layer->GetSizeY() == 93, "radar layer geometry");
+
+    const auto draw = [&]() { check(radar.Draw() != 0, "ordinary radar draw"); };
+    radar.SetCameraRotate(0.0f);
+    radar.SetAvatarRotate(0.0f);
+    const auto pixels = capture(draw, "radar-north.bgra");
+    radar.SetCameraRotate(45.0f);
+    radar.SetAvatarRotate(0.0f);
+    check(compass->GetRotate() == 45.0f && arrow->GetRotate() == 45.0f, "camera turns both radar layers");
+    capture(draw, "radar-camera-turned.bgra");
+    radar.SetAvatarRotate(90.0f);
+    check(compass->GetRotate() == 45.0f && arrow->GetRotate() == 135.0f, "avatar turns its own radar layer");
+    capture(draw, "radar-avatar-turned.bgra");
+    return pixels;
+}
 
 static void checkAvatarHealth(CGUIGaugeExpWindow& panel, CGUICharInfoWindow& info)
 {
@@ -91,13 +131,15 @@ static void checkAvatarHealth(CGUIGaugeExpWindow& panel, CGUICharInfoWindow& inf
           "zero current HP reaches the gauge");
 }
 
-static int hud159(bool avatarHealth){
+static int hud159(bool avatarHealth, bool radarOnly){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     check(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData(),"language");
     InitR3Engine();GetR3State()->mScreenXsize=640;GetR3State()->mScreenYsize=480;GetR3State()->mbFullScreen=FALSE;ForceFullScreen();
     check(SUCCEEDED(g_MainApp.InitR3D3D(GetModuleHandleA(nullptr),0)),"device");
     const auto baseline=GetDmallocSize();unsigned pixels=0;
-    {
+    if (radarOnly) {
+        pixels = checkRadar();
+    } else {
         CGUICharInfoWindow info;auto* previous=g_pUiCharInfoWindow;g_pUiCharInfoWindow=&info;
         struct Reset{CGUICharInfoWindow* prior;~Reset(){g_pUiCharInfoWindow=prior;}} reset{previous};
         CGUIGaugeExpWindow panel;panel.SetPos(20,30);panel.Show(TRUE);panel.Init();
@@ -138,6 +180,11 @@ static int hud159(bool avatarHealth){
     GetD3dDevice()->SetTexture(0,nullptr);gSpriteMgr.UnloadTargetSprites455();check(GetDmallocSize()==baseline,"sprite allocator balance");
     R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* f=std::fopen("result.json","wb");check(f!=nullptr,"report");
+    if (radarOnly) {
+        std::fprintf(f,"{\"status\":\"PASS\",\"frame\":[146,163],\"layers\":[93,93],\"board\":[97,97],\"GPU_frames\":3,\"initial_pixels\":%u}\n",pixels);
+        std::fclose(f);
+        return 0;
+    }
     std::fprintf(f,"{\"status\":\"PASS\",\"actual_HUD_children\":17,\"actual_target_skins\":3,\"fourth_threshold_cases\":7,\"char_info_value_indices\":[3,9,10,11,12],\"sprite_reload\":true,\"GPU_frames\":%d,\"initial_pixels\":%u,\"sprite_allocator_balanced\":true,\"full_MainGame\":false,\"full_client\":false",avatarHealth ? 4 : 3,pixels);
     if (avatarHealth)
         std::fputs(",\"avatar_health\":{\"hp\":[160000,90000,70000,0],\"impact_damage\":70000,\"hp_after_impact\":160000,\"invalid_lengths\":2,\"mounted_player_hp_retained\":true}", f);
@@ -145,4 +192,4 @@ static int hud159(bool avatarHealth){
     std::fclose(f);
     return 0;
 }
-int main(int argc, char** argv){try{return hud159(argc == 2 && !std::strcmp(argv[1], "--avatar-health"));}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}
+int main(int argc, char** argv){try{return hud159(argc == 2 && !std::strcmp(argv[1], "--avatar-health"), argc == 2 && !std::strcmp(argv[1], "--radar"));}catch(const std::exception& e){std::fprintf(stderr,"HUD159: %s\n",e.what());return 1;}}
