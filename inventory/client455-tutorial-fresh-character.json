@@ -1,0 +1,124 @@
+{
+  "status": "PASS_LIVE_FRESH_FORCE_CHARACTER_AND_RELOGIN",
+  "client": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "617c3efc5cb70a1b24691d1ba8e2b8a371b807afac698c577e9342ccfcfcfa6b",
+    "bytes": 2517504,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a1720",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference": {
+    "file": "artifacts/client455-tutorial/entry-persistence-reference.json",
+    "sha256": "435aa689f76be06456e183b25d3fabb42029b2c43910fc729bcb36122645382d",
+    "binary_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "creation_reply": "0x16b740",
+      "roster_level": "0x16ae40",
+      "board_finish": "0xa6080",
+      "stage_finish": "0x159850",
+      "keepalive": "0x16bae0"
+    }
+  },
+  "profile": {
+    "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bf.scp",
+    "sha256": "aef56ffbb8922fbe4a40b919667599929a5c42658ed0e385e50c6163bf40c20b"
+  },
+  "scope": "Russian Bellato Force character, new local test account, same live server, stock SCP from creation to NeutralB and a separate login",
+  "ordinary_windows_input": true,
+  "class_or_novice_state_fixture": false,
+  "first_session": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794459530.jsonl",
+      "sha256": "8274e04ccd96513225bc1cf0489d7d3417ccb2466c67f4599062653d2d09eb2d"
+    },
+    "events_in_order": [
+      "rx:1:9:14",
+      "tx:1:10:28",
+      "rx:1:11:2",
+      "create-result:0:0:0",
+      "tutorial-intro:0:9:0",
+      "tutorial-welcome:0:70:0",
+      "tutorial-settings-complete:2:0:0",
+      "tutorial-move-complete:3:0:0",
+      "tutorial-camera-complete:4:0:0",
+      "tutorial-equipment-complete:5:0:0",
+      "tutorial-force-complete:6:0:0",
+      "tutorial-force-used:26:37378:1",
+      "tutorial-hunting-complete:7:0:0",
+      "tutorial-force-used:24:37376:1",
+      "tutorial-loot-collected:3844:336:0",
+      "tutorial-loot-complete:8:0:0",
+      "tutorial-mission-objective-met:13:4:0",
+      "tutorial-mission-acknowledged:8:1:0",
+      "tutorial-complete:9:0:0",
+      "tutorial-leaving:0:1:0",
+      "select-result:0:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "mission_kills": [
+      "tutorial-mission-kill:1:65538:0",
+      "tutorial-mission-kill:2:65540:0",
+      "tutorial-mission-kill:3:65541:0",
+      "tutorial-mission-kill:4:65539:0"
+    ],
+    "keepalive_messages": 4,
+    "natural_exit": 0
+  },
+  "relogin": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794459974.jsonl",
+      "sha256": "9dbb59e31c60ceaead93156f8c8833f8d4be7fb41ffab74f02f516d057d64db1"
+    },
+    "events_in_order": [
+      "rx:1:9:178",
+      "tx:1:14:1",
+      "select-result:0:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "tutorial_started": false,
+    "natural_exit": 0
+  },
+  "frames": [
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-force-class.png",
+      "sha256": "d686ce4035bb096b551bee96d035c075ed0885a7447fdc528d36d8713c4626f8"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-force-welcome.png",
+      "sha256": "72da040e1238cb153e3e1ddaa303254f05c264098c89180feddd507046518502"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-bind-wait.png",
+      "sha256": "6851729c498bcfc8de3b1bb1df0459e4baa6e6c29d26931adba84c6835252abc"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-mission-dialog.png",
+      "sha256": "d8a05645e88d607dd16fe504ff8620508ff776e0018469f3bed0eb964988030c"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-mission-world.png",
+      "sha256": "85559febf4cbda314c201dda909ca803862a05097871ffeb076292afc99ad5b8"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-fresh-relogin-world.png",
+      "sha256": "e033c975a017d6191c3c6d94dec5a3edd516cea844775ce1db21d32d1096ea08"
+    }
+  ],
+  "open": [
+    "Restart after creation but before the first world entry",
+    "Cora and other class profiles",
+    "Russian creation screen localization"
+  ]
+}
