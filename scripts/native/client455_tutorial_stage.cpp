@@ -304,7 +304,7 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
             return std::make_unique<TutorialUiCommand>(stage, command);
         break;
     case 37: case 38:
-        if (data.size() == 20 && (command.selector == 37 ? data[6] <= 1 : data[6] == 0 || data[6] == 4))
+        if (data.size() == 20 && (command.selector == 37 ? data[6] <= 1 : data[6] <= 1 || data[6] == 4))
             return std::make_unique<TutorialUiCommand>(stage, command);
         break;
     case 39:
@@ -398,7 +398,7 @@ bool TutorialUiCommand::update(RF455TutorialHost&, RF455TutorialContext& context
 bool TutorialUiCommand::acceptsAttack(RF455SkillForceItem* skill) const
 {
     if (type == 39) return true;
-    if (command.fixed[6] != (skill ? 0 : 4)) return false;
+    if (command.fixed[6] != (skill ? skill->record().subtype : 4)) return false;
     const DWORD expected = commandField<DWORD>(command, 8);
     if (!skill || expected == ID_INVALID) return true;
     const auto row = skill->rawData();

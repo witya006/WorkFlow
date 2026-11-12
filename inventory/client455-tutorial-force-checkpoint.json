@@ -1,0 +1,116 @@
+{
+  "scope": "Static Force lesson contract and client build. Live Force tutorial pending.",
+  "original": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "reference_path": "artifacts/client455-tutorial/force-lesson-reference.json",
+    "reference_sha256": "4be17d3168341c333ee1032112ae1789a5c895b19ce01cf940caa89c9fc918c5",
+    "ranges": [
+      "0x272b0",
+      "0x29660",
+      "0x8f270",
+      "0x29c60",
+      "0xfdbe0",
+      "0x13700",
+      "0x1647d0"
+    ]
+  },
+  "item_edf_sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+  "skill_force_edf_sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582",
+  "profiles": 16,
+  "locales": [
+    "en-gb",
+    "en-id",
+    "en-ph",
+    "ja-jp",
+    "ko-kr",
+    "pt-br",
+    "ru-ru",
+    "zh-cn"
+  ],
+  "ru_bf": {
+    "path": "ru-ru/bf.scp",
+    "sha256": "aef56ffbb8922fbe4a40b919667599929a5c42658ed0e385e50c6163bf40c20b",
+    "chapters": [
+      [
+        "TutorialForce",
+        56
+      ],
+      [
+        "TutorialHunting",
+        49
+      ],
+      [
+        "TutorialLooting",
+        30
+      ],
+      [
+        "TutorialMission",
+        21
+      ]
+    ],
+    "combat_waits": [
+      {
+        "chapter": "TutorialHunting",
+        "id": 26,
+        "attack_type": 4,
+        "code": "0xffffffff"
+      },
+      {
+        "chapter": "TutorialHunting",
+        "id": 45,
+        "attack_type": 1,
+        "code": "0xffffffff"
+      },
+      {
+        "chapter": "TutorialLooting",
+        "id": 9,
+        "attack_type": 1,
+        "code": "0xffffffff"
+      }
+    ]
+  },
+  "shared_equipment_beacons": [
+    "0xc50b0003"
+  ],
+  "beacons": {
+    "0xc00b0001": {
+      "index": 44,
+      "force_code": "0x9300"
+    },
+    "0xc50b0001": {
+      "index": 28,
+      "force_code": "0x9200"
+    },
+    "0xc50b0003": {
+      "index": 30,
+      "force_code": "0x9202"
+    }
+  },
+  "forces": {
+    "0x9200": 24,
+    "0x9202": 26,
+    "0x9300": 40
+  },
+  "compiled_client": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f0d857e457b4dc9e134649fd9b9fbbc64bcd57c3f25c8e75f3d29aca0d1b9986",
+    "bytes": 2512896,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a0740",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ],
+    "unresolved_symbols": 0
+  },
+  "focused_component_checks": [
+    "tutorial action recording host",
+    "shared Force payload and animation"
+  ]
+}

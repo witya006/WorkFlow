@@ -81,7 +81,8 @@ bool RF455TutorialTargets::inAttackRange(RF455SkillForceItem* skill) const
     if (!selectedPosition(target)) return false;
     auto* avatar = _GetAvatar();
     const auto* position = avatar->GetPosition();
-    const float range = avatar->GetAttackRange(skill ? CAT_SKILL : CAT_NORMAL, FALSE) + selected->GetWidth() * 0.5f;
+    const BYTE category = skill ? skill->record().subtype : CAT_NORMAL;
+    const float range = avatar->GetAttackRange(category, FALSE) + selected->GetWidth() * 0.5f;
     return RF455_TutorialDistanceXZ({{position[0], position[1], position[2]}}, target) <= range;
 }
 
@@ -90,10 +91,24 @@ bool RF455TutorialTargets::attack(RF455SkillForceItem* skill, RF455TutorialConte
     if (!hasSelection()) return false;
     auto* avatar = _GetAvatar();
     const DWORD index = skill ? skill->tableIndex() : ID_INVALID;
+    BYTE category = CAT_NORMAL;
+    DWORD action = CAI_COMBAT_ATTACK;
+    DWORD damageBase = 200, damageSpan = 10;
     CSFItem activeSkill;
     if (skill) {
         const BYTE level = skill->EffectiveLevel455();
-        if (!activeSkill.CreateSkill455(index, level ? level : 1) || !activeSkill.IsAttackable()) return false;
+        category = skill->record().subtype;
+        if (category == CAT_FORCE) {
+            if (!activeSkill.CreateForce455(index, level ? level : 1)) return false;
+            action = CAI_FORCE_INVOKE;
+            damageBase = 320;
+        } else if (category == CAT_SKILL) {
+            if (!activeSkill.CreateSkill455(index, level ? level : 1)) return false;
+            action = CAI_SKILL_INVOKE;
+            damageBase = 300;
+        } else return false;
+        if (!activeSkill.IsAttackable()) return false;
+        damageSpan = 50;
     }
 
     auto* target = selected;
@@ -102,13 +117,14 @@ bool RF455TutorialTargets::attack(RF455SkillForceItem* skill, RF455TutorialConte
     avatar->CCharacter::SetCombatMode(CSI_COMBAT);
     avatar->SetRotY(avatar->GetPosition(), target->GetPosition(), TRUE);
     avatar->SetSFItem(skill ? &activeSkill : nullptr);
-    avatar->CPlayer::SetAction(skill ? CAI_SKILL_INVOKE : CAI_COMBAT_ATTACK, FALSE);
+    avatar->CPlayer::SetAction(action, FALSE);
 
     // Local Tutorial results have their own scripted damage intervals (RVA 0x1647d0).
-    const DWORD damage = skill ? 300 + std::rand() % 50 : 200 + std::rand() % 10;
+    const DWORD damage = damageBase + std::rand() % damageSpan;
     hit->SetDamage455(damage);
-    hit->SetDamageType_AT(skill ? CAT_SKILL : CAT_NORMAL);
+    hit->SetDamageType_AT(category);
     hit->SetDamageType_Dist(ADT_NEAR);
+    if (category == CAT_FORCE) hit->SetSFItem(&activeSkill);
     hit->SetEffectFrameNum(1);
     target->ReceiveHealth455(0);
     hit->AdvanceDamage455();
@@ -117,13 +133,14 @@ bool RF455TutorialTargets::attack(RF455SkillForceItem* skill, RF455TutorialConte
     target->SetDeath(mon_destroy_code_die);
     target->SetReceiveNetMsg("Death");
 
-    context.attackType = skill ? 0 : 4;
+    context.attackType = skill ? category : 4;
     context.skillIndex = index;
     context.target[0] = CTI_MONSTER;
     context.target[1] = target->GetIndex();
     ++context.state52;
     clearSelection();
-    if (skill) RF455_ObserveProtocol("tutorial-skill-used", index, activeSkill.GetDTCode(), activeSkill.GetLevel());
+    if (skill) RF455_ObserveProtocol(category == CAT_FORCE ? "tutorial-force-used" : "tutorial-skill-used",
+                                    index, activeSkill.GetDTCode(), activeSkill.GetLevel());
     RF455_ObserveProtocol("tutorial-attack-animation", avatar->GetAction(), avatar->GetAnimationID(), context.attackType);
     RF455_ObserveProtocol("tutorial-attack-result", context.attackType, damage, context.target[1]);
     return true;
