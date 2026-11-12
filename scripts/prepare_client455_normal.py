@@ -569,7 +569,14 @@ def main():
                 if body.count(anchor)!=1:raise ValueError('Login render diagnostic boundary changed')
                 body=body.replace(anchor,anchor+b'\n\tRF455_CaptureLoginFrameIfRequested();\n'
                                   b'\tif (g_LoginState == LGS_EXIT && !m_bRequestConnect)\n'
-                                  b'\t\tRF455_CaptureSelectionFadeIfRequested(timeGetTime() - m_MP3ElapseTime, IsFadeOut() != FALSE);')
+                                  b'\t\tRF455_CaptureSelectionFadeIfRequested(timeGetTime() - m_MP3ElapseTime, IsFadeOut() != FALSE);\n'
+                                  b'\tif (g_LoginState == LGS_CHARACTERLOBBY) {\n'
+                                  b'\t\tif (lobbyMenu455.IsShow()) RF455_CaptureLobbyCameraIfRequested(0);\n'
+                                  b'\t\telse if (lobbyMenu455.Started()) {\n'
+                                  b'\t\t\tif (m_CameraAni && m_AniCamera.GetNowFrame() >= 0.25f) RF455_CaptureLobbyCameraIfRequested(1);\n'
+                                  b'\t\t\telse if (m_uiSelectCharacter.IsShow() &&\n'
+                                  b'\t\t\t\tg_cMoveObjectMgr.IsFinishedMove(m_uiSelectCharacter.GetLowerBoard())) RF455_CaptureLobbyCameraIfRequested(2);\n'
+                                  b'\t\t}\n\t}')
                 declaration=raw.rfind(b'HRESULT',0,first)
                 if declaration<0 or raw[declaration:first].strip()!=b'HRESULT':raise ValueError('Login render return declaration changed')
                 raw=raw[:declaration]+(native/'client455_login_capture.inc').read_bytes()+b'\n'+raw[declaration:first]+body+raw[last:]
@@ -865,7 +872,7 @@ def main():
             if message_changed:changes.append('455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen')
             raw,flags_changed=port_character_flags(raw,relative,section)
             raw,lobby_menu_changed=port_lobby_menu(raw,relative,native)
-            if lobby_menu_changed:changes.append('455 lobby loading reveal, menu after avatar loading, staff roll and routes to character selection, creation and exit')
+            if lobby_menu_changed:changes.append('455 lobby loading reveal, menu and camera transition to character selection, staff roll, creation and exit')
             raw,tutorial_stage_changed=port_tutorial_stage(raw,relative)
             if tutorial_stage_changed:changes.append('455 explicit client stages, new character tutorial route and dialog delivery')
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')

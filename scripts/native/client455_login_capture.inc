@@ -63,3 +63,21 @@ static void RF455_CaptureLoadingRevealIfRequested(DWORD elapsedMs, bool complete
                   static_cast<unsigned long>(result), desc.Width, desc.Height);
     OutputDebugStringA(event);
 }
+
+static void RF455_CaptureLobbyCameraIfRequested(unsigned phase) {
+    static const bool enabled = [] {
+        char value[2]{};
+        return GetEnvironmentVariableA("RF455_CAPTURE_LOBBY_CAMERA", value, sizeof(value)) == 1 && value[0] == '1';
+    }();
+    if (!enabled) return;
+    static bool attempted[3]{};
+    static const char* const filenames[] = {"lobby-camera-menu.png", "lobby-camera-flight.png", "lobby-camera-selection.png"};
+    if (attempted[phase]) return;
+    attempted[phase] = true;
+    D3DSURFACE_DESC desc{};
+    const HRESULT result = RF455_SaveLoginBackbuffer(filenames[phase], desc);
+    char event[96];
+    std::snprintf(event, sizeof(event), "RF455 LobbyCamera:%u:%08lX:%ux%u", phase,
+                  static_cast<unsigned long>(result), desc.Width, desc.Height);
+    OutputDebugStringA(event);
+}

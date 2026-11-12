@@ -1,0 +1,240 @@
+{
+  "status": "VERIFIED_LOBBY_CAMERA_TO_SELECTION_AND_LIVE_WORLD",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "99f5ff7a76f1b42ee616e5d101e5fc7f97e67805408afdab98cb9f3562d6fd5d",
+    "bytes": 2531328,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4670",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13ff08",
+          "bytes": 109,
+          "role": "Start looping c_ex01/c_ex02 lobby camera",
+          "sha256": "be62e29c20ff7b83e8f1e3557d2ad8cdd241aca62b59e4fc189f4873981986bb"
+        },
+        {
+          "rva": "0x3baf10",
+          "bytes": 92,
+          "role": "Start selected camera on the menu action",
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a"
+        },
+        {
+          "rva": "0x13b210",
+          "bytes": 173,
+          "role": "Select camera table record by slot and menu variant",
+          "sha256": "f5a6224ec0f844421062fa8b934a8d838f37e551a011c728af8383b6c03fd80a"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 72,
+          "role": "Open and animate selection panels only after camera stops",
+          "sha256": "74114fc8b523d900806112d44da2a763681639c322127863ebebcd6af44241a3"
+        },
+        {
+          "rva": "0x7d12b8",
+          "bytes": 48,
+          "role": "C_01_01 to C_01_03 camera records",
+          "sha256": "aad0161784014efb8b283a67440d60c203bbf32a83a9a0fd02383f6cb9b4690e"
+        },
+        {
+          "rva": "0x7d1428",
+          "bytes": 48,
+          "role": "C_05_01 to C_05_03 camera records",
+          "sha256": "15b5d2949aa85ec8f25d54bc8d15da6e729c1ba6e33a91da3b6bcf9cfeda6f4b"
+        }
+      ],
+      "camera_table": [
+        {
+          "id": 2,
+          "name": "C_01_01",
+          "first_frame": 0,
+          "last_frame": 45
+        },
+        {
+          "id": 3,
+          "name": "C_01_02",
+          "first_frame": 0,
+          "last_frame": 40
+        },
+        {
+          "id": 4,
+          "name": "C_01_03",
+          "first_frame": 0,
+          "last_frame": 66
+        },
+        {
+          "id": 20,
+          "name": "C_05_01",
+          "first_frame": 0,
+          "last_frame": 70
+        },
+        {
+          "id": 21,
+          "name": "C_05_02",
+          "first_frame": 0,
+          "last_frame": 70
+        },
+        {
+          "id": 22,
+          "name": "C_05_03",
+          "first_frame": 0,
+          "last_frame": 70
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13ff08",
+          "bytes": 109,
+          "role": "Start looping c_ex01/c_ex02 lobby camera",
+          "sha256": "be62e29c20ff7b83e8f1e3557d2ad8cdd241aca62b59e4fc189f4873981986bb"
+        },
+        {
+          "rva": "0x3baf10",
+          "bytes": 92,
+          "role": "Start selected camera on the menu action",
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a"
+        },
+        {
+          "rva": "0x13b210",
+          "bytes": 173,
+          "role": "Select camera table record by slot and menu variant",
+          "sha256": "f5a6224ec0f844421062fa8b934a8d838f37e551a011c728af8383b6c03fd80a"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 72,
+          "role": "Open and animate selection panels only after camera stops",
+          "sha256": "74114fc8b523d900806112d44da2a763681639c322127863ebebcd6af44241a3"
+        },
+        {
+          "rva": "0x7d12b8",
+          "bytes": 48,
+          "role": "C_01_01 to C_01_03 camera records",
+          "sha256": "aad0161784014efb8b283a67440d60c203bbf32a83a9a0fd02383f6cb9b4690e"
+        },
+        {
+          "rva": "0x7d1428",
+          "bytes": 48,
+          "role": "C_05_01 to C_05_03 camera records",
+          "sha256": "15b5d2949aa85ec8f25d54bc8d15da6e729c1ba6e33a91da3b6bcf9cfeda6f4b"
+        }
+      ],
+      "camera_table": [
+        {
+          "id": 2,
+          "name": "C_01_01",
+          "first_frame": 0,
+          "last_frame": 45
+        },
+        {
+          "id": 3,
+          "name": "C_01_02",
+          "first_frame": 0,
+          "last_frame": 40
+        },
+        {
+          "id": 4,
+          "name": "C_01_03",
+          "first_frame": 0,
+          "last_frame": 66
+        },
+        {
+          "id": 20,
+          "name": "C_05_01",
+          "first_frame": 0,
+          "last_frame": 70
+        },
+        {
+          "id": 21,
+          "name": "C_05_02",
+          "first_frame": 0,
+          "last_frame": 70
+        },
+        {
+          "id": 22,
+          "name": "C_05_03",
+          "first_frame": 0,
+          "last_frame": 70
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "camera_file": {
+    "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/Map/lobby/lobby.cam",
+    "sha256": "756c1d914c895931cb3e4826f71048f16646cd15e32d0fd7491ced7708b4bef0"
+  },
+  "lobby_variant": 1,
+  "selected_slot": 0,
+  "live_camera": {
+    "id": 20,
+    "name": "C_05_01",
+    "first_frame": 0,
+    "last_frame": 70
+  },
+  "live_world": "NeutralB",
+  "input_enabled": true,
+  "frames": {
+    "menu": {
+      "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/lobby-camera-menu.png",
+      "sha256": "4280ad67abaa9ec5e11c6dcf35dabafb04a6b0c640a60e64984c0b08811fd2b3"
+    },
+    "flight": {
+      "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/lobby-camera-flight.png",
+      "sha256": "74da1113e8e7a971073fef0da396958c02c0be4e7e18a532dbd7f368f42d8220"
+    },
+    "selection": {
+      "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/lobby-camera-selection.png",
+      "sha256": "af7686452b8e241c6beb355fe85e6dcd22b10d4cf962d0494cada16d17d275fa"
+    },
+    "world": {
+      "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "e5f49ba5d472b7a89fc0f1b50ca16409e5815eb0df4ae191f8b799a6492846ba"
+    }
+  },
+  "events": {
+    "file": "work/m9/99f5ff7a/world-observation-live-taiwan001/debug-events.jsonl",
+    "sha256": "d741f3d1b618d5a331138e40a2e14086e67a849a7850be1244fdc72690ae474a"
+  },
+  "ordered": [
+    "RF455 Protocol:lobby-idle-camera:1:0:0",
+    "RF455 Protocol:lobby-menu-open:0:0:0",
+    "RF455 LobbyCamera:0:00000000:1920x1080",
+    "RF455 Protocol:lobby-selection-camera:0:20:70",
+    "RF455 Protocol:lobby-start:0:0:0",
+    "RF455 LobbyCamera:1:00000000:1920x1080",
+    "RF455 Protocol:lobby-selection-open:0:0:0",
+    "RF455 LobbyCamera:2:00000000:1920x1080",
+    "RF455 Protocol:select-result:0:0:0",
+    "RF455 Protocol:selection-world-handoff:1065:0:0",
+    "RF455 WorldCapture:0:0:1920x1080"
+  ],
+  "live_scope": "Existing character, Enter on Start and selection, prologue skipped with Esc",
+  "desktop_flicker_verified": false
+}

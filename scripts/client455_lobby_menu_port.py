@@ -20,7 +20,7 @@ def open_lobby_after_avatar_loading(raw):
 #endif ''', b'''            if (g_LoginState == LGS_ENTER_WORLDSERVER ||
                 g_LoginState == LGS_MOVEIN_WORLDSERVER ||
                 g_LoginState == LGS_IDANDPASSWORD) {
-                PlayCamera(CAM_TOP_TO_LOGINA, m_Course);
+                if (lobbyMenu455.Started()) PlayCamera(CAM_TOP_TO_LOGINA, m_Course, true);
                 g_LoginState = LGS_CHARACTERLOBBY;
                 RF455_ObserveProtocol("lobby-avatars-ready", 0, 0, 0);
             }''')
@@ -68,6 +68,35 @@ def port_lobby_menu(raw, relative, native):
 
     raw = replace(raw, b'#include "../MainApp.h"', b'#include "../MainApp.h"\n' +
                   (native / 'client455_lobby_menu.inc').read_bytes())
+    raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 4, 0, 40 },', b'{ CAM_TOP_TO_LOGINC, 4, 0, 66 },')
+    raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 22, 0, 55 },', b'{ CAM_TOP_TO_LOGINC, 22, 0, 70 },')
+    raw = replace(raw, b'void PlayCamera(CameraAni\tani,DWORD\tcourse = 0)', b'''void PlayLobbyIdleCamera455()
+{
+    const DWORD camera = m_AniCamera.GetCameraIndex(m_RandomStart ? "c_ex01" : "c_ex02");
+    if (camera != ID_INVALID) {
+        m_AniCamera.SetPrePlayCamera(camera, 0, ID_INVALID, 0);
+        RF455_ObserveProtocol("lobby-idle-camera", m_RandomStart, 0, 0);
+    }
+}
+
+void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
+    raw = replace(raw, b'if ( m_RandomStart && g_LoginState==LGS_ENTER_WORLDSERVER)',
+                  b'if (m_RandomStart && (fromLobby || g_LoginState == LGS_ENTER_WORLDSERVER))')
+    raw = replace(raw, b'cam =m_AniCamera.GetCameraIndex(CamName[m_AniCamKeyFrame[a][1]]);',
+                  b'''cam = m_AniCamera.GetCameraIndex(CamName[m_AniCamKeyFrame[a][1]]);
+    if (fromLobby) {
+        RF455_ObserveProtocol("lobby-selection-camera", course, m_AniCamKeyFrame[a][1], m_AniCamKeyFrame[a][3]);
+    }''')
+    raw = replace(raw, b'''DWORD\tcam = 0;
+\tif ( m_RandomStart )
+\t{
+\t\tcam =m_AniCamera.GetCameraIndex("C_05");
+\t}
+\telse
+\t{
+\t\tcam =m_AniCamera.GetCameraIndex("C_01");
+\t}
+\tm_AniCamera.SetPrePlayCamera(cam,0,0,_CAM_FLAG_FINAL_STOP);''', b'PlayLobbyIdleCamera455();')
     raw = open_lobby_after_avatar_loading(raw)
     raw = reveal_lobby_loading(raw)
     raw = replace(raw, b'\tm_bIsLoadedData = TRUE;',
@@ -95,13 +124,15 @@ def port_lobby_menu(raw, relative, native):
         if (!m_HaveCharacter[0] && !m_HaveCharacter[1] && !m_HaveCharacter[2]) {
             m_Course = A_COURSE;
             EventCreateCharacter();
+        } else {
+            m_CameraAni = true;
+            PlayCamera(CAM_TOP_TO_LOGINA, m_Course, true);
         }
         RF455_ObserveProtocol("lobby-start", 0, 0, 0);
         return TRUE;
     case LobbyMenu455::Action::Credits:
         if (lobbyMenu455.OpenCredits()) {
-            const DWORD camera = m_AniCamera.GetCameraIndex(m_RandomStart ? "c_ex01" : "c_ex02");
-            if (camera != ID_INVALID) m_AniCamera.SetPrePlayCamera(camera, 0, ID_INVALID, 0);
+            PlayLobbyIdleCamera455();
             RF455_ObserveProtocol("lobby-credits-open", 0, 0, 0);
         } else {
             _GUIMessageBox(nullptr, "System/staff.txt", MSGBOXALPHA);
@@ -117,6 +148,8 @@ def port_lobby_menu(raw, relative, native):
 
     raw = replace(raw, b'if (!m_CameraAni&&g_LoginState == LGS_CHARACTERLOBBY\t)',
                   b'if (g_LoginState == LGS_CHARACTERLOBBY)')
+    raw = replace(raw, b'if (m_CameraAni)\n\t{\n\t\tif (endwav)',
+                  b'if (m_CameraAni && lobbyMenu455.Started())\n\t{\n\t\tif (endwav)')
     raw = replace(raw, b'if( !m_uiSelectCharacter.IsShow() )\n\t\t{\n\t\t\tm_uiSelectCharacter.Open();',
                   b'''if (!lobbyMenu455.Started()) {
             if (!lobbyMenu455.IsShow() && !lobbyMenu455.ShowingCredits()) {
@@ -127,6 +160,9 @@ def port_lobby_menu(raw, relative, native):
         } else if( !m_CameraAni && !m_LoadDefaultStart && !m_uiSelectCharacter.IsShow() )
         {
             m_uiSelectCharacter.Open();''')
+    raw = replace(raw, b'\t\t\tUI_SetMoveWindow( SELECT_CHAR_WIN, TRUE );',
+                  b'\t\t\tUI_SetMoveWindow( SELECT_CHAR_WIN, TRUE );\n'
+                  b'\t\t\tRF455_ObserveProtocol("lobby-selection-open", 0, 0, 0);')
     raw = replace(raw, b'CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{',
                   b'''CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
@@ -134,7 +170,7 @@ def port_lobby_menu(raw, relative, native):
     if (uMsg == WM_KEYDOWN && !(lParam & (1L << 30))) {
         const bool credits = lobbyMenu455.ShowingCredits();
         if (lobbyMenu455.KeyDown(wParam)) {
-            if (credits) PlayCamera(CAM_TOP_TO_LOGINA, m_Course);
+            if (credits) PlayLobbyIdleCamera455();
             return 0xffffffff;
         }
     }''')

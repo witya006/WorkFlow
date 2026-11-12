@@ -86,6 +86,7 @@ int wmain(int argc,wchar_t** argv){
     ULONGLONG portalSendAt = 0;
     bool lobbyMenuOpened = false;
     bool lobbyStartKeySent = false;
+    bool lobbySelectionOpened = false;
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
@@ -168,7 +169,11 @@ int wmain(int argc,wchar_t** argv){
                             //through its own activation-message handler first.
                             const bool activated=valid&&childPID==process.dwProcessId&&PostMessageW(reinterpret_cast<HWND>(window),WM_ACTIVATEAPP,TRUE,0);
                             std::fprintf(output,"{\"kind\":\"selection_background_update_requested\",\"own_child_validated\":%s,\"sent\":%s,\"OS_focus_changed\":false}\n",valid&&childPID==process.dwProcessId?"true":"false",activated?"true":"false");
-                            if(activated){selectionWindow=reinterpret_cast<HWND>(window);selectionSendAt=GetTickCount64()+1500;}
+                            if (activated) {
+                                selectionWindow = reinterpret_cast<HWND>(window);
+                                if (lobbySelectionOpened) selectionSendAt = GetTickCount64() + 650;
+                                else if (lobbyMenuOpened) selectionSendAt = GetTickCount64() + 350;
+                            }
                             stopReached=true;selectionDeadline=GetTickCount64()+selectionMs;
                         }
                         if(found==points)mainReached=true;
@@ -246,8 +251,10 @@ int wmain(int argc,wchar_t** argv){
                     lobbyMenuOpened = true;
                     if (selectionWindow && !lobbyStartKeySent) selectionSendAt = GetTickCount64() + 350;
                 }
-                if (selectionWindow && lobbyStartKeySent && std::string(text) == "RF455 Protocol:lobby-start:0:0:0")
-                    selectionSendAt = GetTickCount64() + 1500;
+                if (selectionMode && std::string(text) == "RF455 Protocol:lobby-selection-open:0:0:0") {
+                    lobbySelectionOpened = true;
+                    if (selectionWindow) selectionSendAt = GetTickCount64() + 650;
+                }
                 if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
             }}
         }else if(event.dwDebugEventCode==EXIT_PROCESS_DEBUG_EVENT){std::fprintf(output,"{\"kind\":\"exit\",\"code\":\"0x%08lx\"}\n",event.u.ExitProcess.dwExitCode);exited=true;}
