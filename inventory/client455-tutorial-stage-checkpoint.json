@@ -1,0 +1,76 @@
+{
+  "status": "PASS_BELLATO_INTRO_BRIEFING_AND_OPTIONAL_EXIT_TO_WORLD",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "select_avatar": "0x3bb470",
+      "login_transition": "0x13f100",
+      "tutorial_create": "0x1586d0",
+      "tutorial_intro_load": "0x1594d0",
+      "tutorial_map_load": "0x159670",
+      "tutorial_exit": "0x1598c0"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-tutorial-stage.json",
+      "sha256": "fde110ae3baf416ab63a507e44b06b171f54d6a13470cb092b356e67d92e4f2a"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1a3cb514e2245a38535255ecd252d0d3e266dab858da462ba8920f12ebbe8bde",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x196520",
+    "tutorial_factory_rva": "0x101b30",
+    "board_cleanup_rva": "0x154a0",
+    "unresolved_symbols": 0
+  },
+  "created_in_same_login": {
+    "executable_sha256": "fac5bc0e47b13c1b71c51854633fccdb28f9dc0817cfc75fb3990567980f2e40",
+    "log": "work/startup455-m6/menu-live/events-1794441071.jsonl",
+    "slot": 2,
+    "selected_after_creation": true,
+    "tutorial_intro_observed": true,
+    "selection_request_sent_before_intro": false,
+    "fault": {"module": "d3d9.dll", "rva": "0x5fa2c", "exception": "0xc0000005"}
+  },
+  "final_replay": {
+    "log": "work/startup455-m6/menu-live/events-1794441784.jsonl",
+    "runner": "work/startup455-m6/run-tutorial-fixture.py",
+    "runner_sha256": "41c6dce37e8f5b358fa537a006786c681720ba973df12cf3ec5db7c1b9b56716",
+    "fixture": "Restore only the previously observed skip flag in the own child process after the server reports the persisted character at level one.",
+    "nation": "Taiwan",
+    "window": [640, 500],
+    "camera_count": 9,
+    "selection_request_payload_bytes": 1,
+    "selection_reply_payload_bytes": 22,
+    "selection_reply_result_word": 512,
+    "world_map_index": 0,
+    "exit_after_world": 0,
+    "inputs": [
+      {"file": "work/startup455-m6/menu-live/Map/bellato/bellato.bsp", "sha256": "e33a1f57fda8f8fcf39f458a852ffaaec8f77a33d3e9300dcfa253dce935ce16"},
+      {"file": "work/startup455-m6/menu-live/Map/bellato/bellato.cam", "sha256": "53c5721c43d6c4c9849ca89d0407be66c4cedaf2f6ed208372cda4868cd4dd9b"},
+      {"file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp", "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"}
+    ],
+    "frames": [
+      {"file": "work/startup455-m6/menu-live/tutorial-intro-verified.png", "sha256": "c19b035036ee50b488ce73f647d65aa9ba2ad56be9e6decf32557d7eaa1990ab"},
+      {"file": "work/startup455-m6/menu-live/tutorial-welcome-verified.png", "sha256": "567af37e8d7825eac165b705bcac4d4aeab5dc3a85352d4b868270f8520e2e4a"},
+      {"file": "work/startup455-m6/menu-live/tutorial-briefing-verified.png", "sha256": "0509cb2fc858c77b31d06194a15661373eedafb197277c995b586c05cbd55b1b"},
+      {"file": "work/startup455-m6/menu-live/tutorial-leave-verified.png", "sha256": "5718f9882bd996584edcb5b100385b45a21eb3892d3a45b965b67a2df3eb3145"},
+      {"file": "work/startup455-m6/menu-live/tutorial-world-verified.png", "sha256": "83cce894cc1f2b82fdb436b1781bac6f8578fe5d38f4fb7b78ab222d00ce310c"}
+    ]
+  },
+  "window_close_from_tutorial": {
+    "log": "work/startup455-m6/menu-live/events-1794441905.jsonl",
+    "phase": "Welcome",
+    "exit": 0
+  },
+  "open": [
+    "Full lesson runtime, action and input providers, camera framing and natural completion",
+    "Fresh character on the final executable without a local replay fixture",
+    "Other races, locales and device reset"
+  ]
+}

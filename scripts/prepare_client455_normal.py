@@ -68,6 +68,7 @@ from client455_monster_health_port import port_monster_health
 from client455_avatar_health_port import port_avatar_health
 from client455_title_movies_port import port_title_movies
 from client455_lobby_menu_port import port_lobby_menu
+from client455_tutorial_stage_port import port_tutorial_stage
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
 from client455_armed_attack_port import port_armed_attack
@@ -812,6 +813,8 @@ def main():
             raw,flags_changed=port_character_flags(raw,relative,section)
             raw,lobby_menu_changed=port_lobby_menu(raw,relative,native)
             if lobby_menu_changed:changes.append('455 lobby menu, staff roll and routes to character selection, creation and exit')
+            raw,tutorial_stage_changed=port_tutorial_stage(raw,relative)
+            if tutorial_stage_changed:changes.append('455 explicit client stages, new character tutorial route and dialog delivery')
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')
             raw,palette_changed=port_character_palette(raw,relative,section)
             if palette_changed:changes.append('455ordinary Character20parts/30matrixpalettes/13dummyindices;fullactor/equipment lifecycle remainsopen')
@@ -937,6 +940,13 @@ def main():
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_player_owner.cpp','client455_equipment_object.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    for name in ['client455_tutorial_stage.cpp','client455_tutorial_board.cpp','client455_tutorial_script.cpp','client455_tutorial_runtime.cpp']:
+        source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source)
+        cmake+='target_sources(RFClient455Facade PRIVATE "'+facade.as_posix()+'")\n'
+        if name in ['client455_tutorial_stage.cpp','client455_tutorial_board.cpp']:
+            cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
+        elif name == 'client455_tutorial_script.cpp':
+            cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS NOMINMAX)\n'
     for name in ['client455_gui_tab_board.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source)
         cmake+='target_sources(RFClient455Facade PRIVATE "'+facade.as_posix()+'")\nset_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
