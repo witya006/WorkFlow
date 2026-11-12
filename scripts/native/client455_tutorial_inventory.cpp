@@ -148,7 +148,7 @@ bool RF455TutorialInventory::equipmentPoint(BYTE slot, POINT& point)
     return equipment && equipmentWindow(*equipment).SlotCenter455(slot, point);
 }
 
-void RF455TutorialInventory::grant(BYTE table, DWORD code)
+BYTE RF455TutorialInventory::grant(BYTE table, DWORD code)
 {
     std::uint32_t index;
     if (!RF455_GameItems().data.findItemByCode(table, code, index))
@@ -156,6 +156,43 @@ void RF455TutorialInventory::grant(BYTE table, DWORD code)
     const BYTE slot = addItem(table, index, 200);
     if (slot == 255) throw std::runtime_error("Tutorial item could not be placed");
     RF455_ObserveProtocol("tutorial-item-granted", table, index, slot);
+    return slot;
+}
+
+DWORD RF455TutorialInventory::beaconForceCode(BYTE slot) const
+{
+    if (!inventory || slot >= inventory->GetMaxSocketNum455(bagIndex)) return ID_INVALID;
+    auto* object = inventory->GetObject(bagIndex, slot);
+    if (itemKind(object) != IEPT_FORCE) return ID_INVALID;
+    auto* beacon = dynamic_cast<RF455BasicItem*>(object->GetItem455());
+    if (!beacon) return ID_INVALID;
+    const auto row = beacon->rawData();
+    constexpr std::size_t forceCodeOffset = 152;
+    DWORD code = ID_INVALID;
+    if (row.size >= forceCodeOffset + sizeof(code)) std::memcpy(&code, row.data + forceCodeOffset, sizeof(code));
+    return code;
+}
+
+BYTE RF455TutorialInventory::heldBeaconSlot() const
+{
+    return held == Location::Bag && beaconForceCode(heldSlot) != ID_INVALID ? heldSlot : 255;
+}
+
+std::unique_ptr<CBoardObject> RF455TutorialInventory::takeBeacon(BYTE slot)
+{
+    if (beaconForceCode(slot) == ID_INVALID) return {};
+    std::unique_ptr<CBoardObject> beacon(inventory->GetObject(bagIndex, slot)->Clone());
+    if (!beacon || !inventory->Remove(bagIndex, slot)) return {};
+    if (held == Location::Bag && heldSlot == slot) cancelPick();
+    return beacon;
+}
+
+bool RF455TutorialInventory::returnBeacon(CBoardObject& beacon, BYTE slot)
+{
+    if (!inventory || itemKind(&beacon) != IEPT_FORCE) return false;
+    if (slot == 255) slot = inventory->FindEmptySocket(bagIndex);
+    if (slot >= inventory->GetMaxSocketNum455(bagIndex) || inventory->GetObject(bagIndex, slot)) return false;
+    return inventory->Add(bagIndex, slot, &beacon) != FALSE;
 }
 
 bool RF455TutorialInventory::collect(BYTE table, DWORD index, WORD groundSerial, BYTE quantity)

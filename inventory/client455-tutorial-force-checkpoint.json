@@ -112,5 +112,45 @@
   "focused_component_checks": [
     "tutorial action recording host",
     "shared Force payload and animation"
-  ]
+  ],
+  "window_integration": {
+    "client": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "d19147433c9e38d211990c2f2b1bd22ae73c8dc62d87aa8352abe532315f458c",
+      "bytes": 2517504,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x1a1650",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "probe": {
+      "file": "work/m9/f5f51c52/skill-force-window-001/skill-force-window-probe.exe",
+      "sha256": "f5f51c52cbe0ea90ba21282f735154954b0bad9d3a2be1d3f6246b9e7de0048f"
+    },
+    "run_report": {
+      "file": "work/m9/f5f51c52/skill-force-window-001/probe-report.json",
+      "sha256": "d0dcfd5a583fc236110bff89582f9d135f38fcb76c5e4815e9643b388f27530f"
+    },
+    "result": "PASS",
+    "actual_windows_and_assets": true,
+    "tutorial_force_transfer_races": [
+      "Bellato",
+      "Cora"
+    ],
+    "verified": [
+      "real beacon-to-Force rows",
+      "bag-to-Force message path",
+      "Force-to-bag message path",
+      "duplicate and occupied slot rejection",
+      "exact Force code and hotbar slot predicate"
+    ],
+    "whole_lesson_run": false,
+    "hunt_and_mission_run": false
+  }
 }

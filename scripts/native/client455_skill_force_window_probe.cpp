@@ -5,7 +5,11 @@
 #include "gameobject/board/skillforceboard/cskillboard.h"
 #include "gameobject/board/skillforceboard/cforceboard.h"
 #include "client455_client_items.h"
+#include "client455_tutorial_inventory.h"
+#include "client455_tutorial_skills.h"
 #include "userinterface/uiglobal.h"
+#include <fstream>
+#include <iterator>
 
 extern CSpriteMgr* g_pUiSpriteMgr;
 
@@ -79,7 +83,56 @@ static _skill_force_info rowInfo(BYTE type, DWORD ordinal)
     return info;
 }
 
-static int runSkillForce()
+static void checkTutorialForceTransfers()
+{
+    std::ifstream input("DataTable/Item.edf", std::ios::binary);
+    const std::vector<unsigned char> bytes{std::istreambuf_iterator<char>(input), {}};
+    check(RF455_GameItems().data.loadItemEdf(bytes.data(), bytes.size(), true), "stock Item.edf");
+    auto* oldScreen = g_pUiScreen;
+    g_pUiScreen = CGUIScreen::GetSingletonPtr();
+    g_pUiScreen->SetSize(1024, 768);
+    for (BYTE race : {BYTE(0), BYTE(2)}) {
+        _GetAvatar()->SetRace(race);
+        RF455TutorialInventory bag;
+        RF455TutorialSkills force;
+        bag.initialize();
+        force.initialize(true);
+        force.show(true);
+        bag.show(true);
+        POINT point{};
+        check(force.isOpen() && force.skillPoint(0x9202, point), "real Force row in panel");
+        check(!force.hasBeacon(0x9300), "Force wait needs installed beacon");
+        const BYTE demo = bag.grant(18, 0xc50b0003);
+        const BYTE practice = bag.grant(18, 0xc00b0001);
+        check(bag.beaconForceCode(demo) == 0x9202 && bag.beaconForceCode(practice) == 0x9300, "actual beacon rows");
+        bag.handleMessage(WM_BOARD_CHECK_REMOVE_OBJECT, UII_INVENTORY_PACK, UI_MOUSE_MSG(0, demo, 0, 0).m_dwData);
+        check(force.handleMessage(WM_BOARD_ADD_OBJECT, UII_FORCE_WINDOW, 0, bag) &&
+              force.hasBeacon(0x9202) && bag.beaconForceCode(demo) == ID_INVALID, "GUI transfer installs demo beacon");
+        check(force.installBeacon(bag, practice) && force.hasBeacon(0x9300), "QBI42 predicate after installing beacon");
+        const BYTE duplicate = bag.grant(18, 0xc00b0001);
+        check(!force.installBeacon(bag, duplicate) && bag.beaconForceCode(duplicate) == 0x9300, "duplicate stays in bag");
+        force.handleMessage(WM_BOARD_REMOVE_OBJECT, UII_FORCE_WINDOW, 0xf0000028, bag);
+        force.handleMessage(WM_BOARD_ADD_OBJECT, UII_INVENTORY_PACK, UI_MOUSE_MSG(0, duplicate, 0, 0).m_dwData, bag);
+        check(force.hasBeacon(0x9300), "occupied bag slot rejects drop");
+        force.handleMessage(WM_BOARD_ADD_OBJECT, UII_INVENTORY_PACK, UI_MOUSE_MSG(0, practice, 0, 0).m_dwData, bag);
+        check(!force.hasBeacon(0x9300) && bag.beaconForceCode(practice) == 0x9300, "GUI return restores the beacon");
+        const BYTE grant = bag.grant(18, 0xc50b0001);
+        check(force.installBeacon(bag, grant) && force.readyForce(0xf0000018), "QBI41 installs the real Force row");
+        force.handleMessage(WM_BOARD_REMOVE_OBJECT, UII_FORCE_WINDOW, 0xf0000018, bag);
+        force.handleMessage(WM_BOARD_ADD_OBJECT, 3, UI_MOUSE_MSG(0, 0, 0, 0).m_dwData, bag);
+        check(force.matchesShortcut(1, 0x9200) && !force.matchesShortcut(2, 0x9200), "QBI46 rejects wrong slot");
+        force.handleMessage(WM_BOARD_REMOVE_OBJECT, UII_FORCE_WINDOW, 0xf0000018, bag);
+        force.handleMessage(WM_BOARD_ADD_OBJECT, 3, UI_MOUSE_MSG(0, 1, 0, 0).m_dwData, bag);
+        const auto* cast = force.shortcutSkill(0, 1);
+        check(cast && cast->tableIndex() == 24 && force.matchesShortcut(2, 0x9200) &&
+              !force.matchesShortcut(2, 0x9202), "QBI46 predicate requires row and slot");
+        force.shutdown();
+        bag.shutdown();
+    }
+    g_pUiScreen = oldScreen;
+}
+
+static int runSkillForce(bool tutorialTransfers)
 {
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
     check(RF455_InitializeNationPaths() && RF455_InitializeLanguageData(), "actual Taiwan language");
@@ -177,6 +230,7 @@ static int runSkillForce()
             screen->Remove(&force);
         }
         screen->Remove(&skill);
+        if (tutorialTransfers) checkTutorialForceTransfers();
         g_pCharDataMgr = oldData;
         g_pAvatar = oldAvatar;
     }
@@ -197,14 +251,15 @@ static int runSkillForce()
     check(report != nullptr, "result output");
     std::fprintf(report, "{\"status\":\"PASS\",\"GPU_frames\":3,\"skill_packs\":7,\"force_packs\":6,"
                          "\"slots_per_pack\":20,\"skill_tabs\":5,\"force_tabs\":5,\"force_races\":3,"
-                         "\"real_edf_view_rows\":4,\"production_population_complete\":false}\n");
+                         "\"real_edf_view_rows\":4,\"production_population_complete\":false%s}\n",
+                 tutorialTransfers ? ",\"tutorial_force_transfer_races\":2" : "");
     std::fclose(report);
     return 0;
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    try { return runSkillForce(); }
+    try { return runSkillForce(argc == 2 && !std::strcmp(argv[1], "--tutorial-transfers")); }
     catch (const std::exception& error) {
         std::fprintf(stderr, "SkillForce455: %s\n", error.what());
         return 1;

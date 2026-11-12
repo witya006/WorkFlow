@@ -40,9 +40,9 @@ constexpr DWORD cameraQuest = 3;
 constexpr DWORD equipmentQuest = 4;
 constexpr DWORD missionQuest = equipmentQuest + 1;
 constexpr DWORD skillQuest = equipmentQuest + 1;
-constexpr DWORD lootQuest = skillQuest + 1;
-constexpr DWORD combatMissionQuest = lootQuest + 1;
 constexpr BYTE shortcutWindowId = 3;
+
+bool abilityWindow(BYTE id) { return id == UII_SKILL_WINDOW || id == UII_FORCE_WINDOW; }
 
 class TutorialUiCommand;
 
@@ -69,6 +69,7 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     bool modalAcknowledged = false;
     bool hasMissionEnding = false;
     bool hasSkillLesson = false;
+    bool forceLesson = false;
     bool skillCombatPending = false;
     bool hasTargetLesson = false;
     bool hasSkillCombat = false;
@@ -152,8 +153,11 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void moveFromMouse();
     void advanceAvatar();
     void advanceLesson();
-    bool lootLesson() const { return hasLootLesson && runtime.currentQuest == lootQuest; }
-    bool combatMission() const { return hasCombatMission && runtime.currentQuest == combatMissionQuest; }
+    DWORD huntingQuest() const { return skillQuest + (forceLesson ? 1 : 0); }
+    DWORD lootQuest() const { return huntingQuest() + 1; }
+    DWORD combatMissionQuest() const { return lootQuest() + 1; }
+    bool lootLesson() const { return hasLootLesson && runtime.currentQuest == lootQuest(); }
+    bool combatMission() const { return hasCombatMission && runtime.currentQuest == combatMissionQuest(); }
     void placeLootGuide();
     bool attackExercise() const;
     void applyTutorialAttack(RF455SkillForceItem* skill);
@@ -266,11 +270,11 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
             return RF455_CreateTutorialOrbitCommand(command, movement, camera);
         break;
     case 19: case 21:
-        if (data.size() == 8 && (data[6] == 27 || data[6] == UII_SKILL_WINDOW))
+        if (data.size() == 8 && (data[6] == 27 || abilityWindow(data[6])))
             return std::make_unique<TutorialUiCommand>(stage, command);
         return RF455_CreateTutorialInventoryCommand(command, movement, inventory);
     case 20:
-        if (data.size() == 8 && data[6] == UII_SKILL_WINDOW)
+        if (data.size() == 8 && abilityWindow(data[6]))
             return std::make_unique<TutorialUiCommand>(stage, command);
         return RF455_CreateTutorialInventoryCommand(command, movement, inventory);
     case 23: case 24: case 25: case 26: case 35: case 40:
@@ -287,7 +291,7 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
     case 32:
         if (data.size() == 20 && data[14] == 0) {
             const DWORD reference = commandField<DWORD>(command, 16);
-            if (data[15] == UII_SKILL_WINDOW ||
+            if (abilityWindow(data[15]) ||
                 (data[15] == shortcutWindowId && reference >= 1 && reference <= 10))
                 return std::make_unique<TutorialUiCommand>(stage, command);
             if (data[15] == 0 || (data[15] == UII_EQUIP_WINDOW && reference < MAX_EQUIP_WINDOW_SLOT))
@@ -311,7 +315,11 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
         if (data.size() == 20 && data[6] == 255 && commandField<DWORD>(command, 12) > 0)
             return std::make_unique<TutorialUiCommand>(stage, command);
         break;
-    case 44:
+    case 41: case 42:
+        if (data.size() == 12 && data[6] == 255)
+            return std::make_unique<TutorialUiCommand>(stage, command);
+        break;
+    case 44: case 46:
         if (data.size() == 12 && (data[6] == 255 || (data[6] >= 1 && data[6] <= 10)))
             return std::make_unique<TutorialUiCommand>(stage, command);
         break;
@@ -344,12 +352,12 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
     }
     case 13: _GetAvatar()->SetRotY(commandField<float>(command, 12), TRUE); break;
     case 19:
-        if (command.fixed[6] == UII_SKILL_WINDOW) stage.skills.show(true);
+        if (abilityWindow(command.fixed[6])) stage.skills.show(true);
         else stage.openOptions();
         break;
-    case 20: case 36: case 38: case 39: case 44: return true;
+    case 20: case 36: case 38: case 39: case 42: case 44: case 46: return true;
     case 21:
-        if (command.fixed[6] == UII_SKILL_WINDOW) stage.skills.show(false);
+        if (abilityWindow(command.fixed[6])) stage.skills.show(false);
         else {
             stage.options.Close();
             RF455_ObserveProtocol("tutorial-options-closed", 27, 0, 0);
@@ -370,7 +378,7 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
         if (window == 27) point = stage.settingsPoint(reference);
         else if (window == 0) found = stage.inventory.inventoryPoint(reference, point);
         else if (window == UII_EQUIP_WINDOW) found = stage.inventory.equipmentPoint(static_cast<BYTE>(reference), point);
-        else if (window == UII_SKILL_WINDOW) found = stage.skills.skillPoint(reference, point);
+        else if (abilityWindow(window)) found = stage.skills.skillPoint(reference, point);
         else found = stage.skills.shortcutPoint(reference, point);
         if (!found) {
             stage.fail("Tutorial cursor target is unavailable.");
@@ -378,6 +386,16 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
         }
         stage.startCursor(point, 0);
         return true;
+    }
+    case 41: {
+        const auto slot = stage.inventory.grant(IEPT_FORCE, commandField<DWORD>(command, 8));
+        const auto code = stage.inventory.beaconForceCode(slot);
+        // The Portuguese Cora hunt grants the same beacon again. The equipped row stays active.
+        if (!stage.skills.hasBeacon(code) && !stage.skills.installBeacon(stage.inventory, slot)) {
+            stage.fail("Tutorial Force beacon could not be installed.");
+            return false;
+        }
+        break;
     }
     }
     flags |= 4;
@@ -391,7 +409,9 @@ bool TutorialUiCommand::update(RF455TutorialHost&, RF455TutorialContext& context
     if (type == 36) return stage.targets.hasSelection();
     if (type == 38) return context.attackType == command.fixed[6];
     if (type == 39) return context.state52 >= commandField<DWORD>(command, 12);
-    if (type == 44) return stage.skills.matchesShortcut(command.fixed[6], commandField<DWORD>(command, 8));
+    if (type == 42) return stage.skills.hasBeacon(commandField<DWORD>(command, 8));
+    if (type == 44 || type == 46)
+        return stage.skills.matchesShortcut(command.fixed[6], commandField<DWORD>(command, 8));
     return !stage.cursor.active;
 }
 
@@ -566,10 +586,25 @@ void CGP_Tutorial455::startBoardScript()
     // The remaining profiles still require the intervening lessons.
     hasMissionEnding = script.quests.size() == missionQuest + 1 &&
         !std::memcmp(script.quests[missionQuest].name.data(), "TutorialMission", sizeof("TutorialMission"));
-    hasSkillLesson = script.quests.size() > skillQuest &&
-        !std::memcmp(script.quests[skillQuest].name.data(), "TutorialSkill", sizeof("TutorialSkill"));
     TutorialStageFactory factory(*this, *this, *this, inventory);
-    if (hasSkillLesson) {
+    const auto named = [&](DWORD index, const char* name) {
+        if (index >= script.quests.size()) return false;
+        const auto& field = script.quests[index].name;
+        const auto size = std::strlen(name) + 1;
+        return size <= field.size() && !std::memcmp(field.data(), name, size);
+    };
+    const auto supported = [&](const auto& op) { return static_cast<bool>(factory.create(op)); };
+    const auto supportedQuest = [&](DWORD index, const char* name) {
+        if (!named(index, name)) return false;
+        const auto& ops = script.quests[index].instructions;
+        return !ops.empty() && std::all_of(ops.begin(), ops.end(), supported);
+    };
+    forceLesson = supportedQuest(skillQuest, "TutorialForce");
+    hasSkillLesson = forceLesson || named(skillQuest, "TutorialSkill");
+    if (forceLesson) {
+        hasSkillCombat = supportedQuest(huntingQuest(), "TutorialHunting");
+        hasTargetLesson = hasSkillCombat;
+    } else if (hasSkillLesson) {
         auto& commands = script.quests[skillQuest].instructions;
         const auto combat = std::find_if(commands.begin(), commands.end(), [](const auto& op) {
             return op.selector == 12 || op.selector == 14;
@@ -579,28 +614,23 @@ void CGP_Tutorial455::startBoardScript()
             return op.selector == 37 || op.selector == 38;
         });
         const auto lock = std::find_if(combat, attack, [](const auto& op) { return op.selector == 36; });
-        hasTargetLesson = lock != attack && std::all_of(combat, attack, [&](const auto& op) {
-            return static_cast<bool>(factory.create(op));
-        });
+        hasTargetLesson = lock != attack && std::all_of(combat, attack, supported);
         hasSkillCombat = hasTargetLesson && attack != commands.end() &&
-            std::all_of(attack, commands.end(), [&](const auto& op) { return static_cast<bool>(factory.create(op)); });
+            std::all_of(attack, commands.end(), supported);
         if (!hasSkillCombat) commands.erase(hasTargetLesson ? attack : combat, commands.end());
-        if (hasSkillCombat && script.quests.size() > lootQuest &&
-            !std::memcmp(script.quests[lootQuest].name.data(), "TutorialLooting", sizeof("TutorialLooting"))) {
-            const auto& lootCommands = script.quests[lootQuest].instructions;
-            hasLootLesson = std::all_of(lootCommands.begin(), lootCommands.end(), [&](const auto& op) {
-                return static_cast<bool>(factory.create(op));
-            });
-        }
-        if (hasLootLesson && script.quests.size() == combatMissionQuest + 1 &&
-            !std::memcmp(script.quests[combatMissionQuest].name.data(), "TutorialMission", sizeof("TutorialMission"))) {
-            const auto& mission = script.quests[combatMissionQuest].instructions;
-            hasCombatMission = std::all_of(mission.begin(), mission.end(), [&](const auto& op) {
-                return static_cast<bool>(factory.create(op));
-            }) && std::any_of(mission.begin(), mission.end(), [](const auto& op) { return op.selector == 39; });
+    }
+    if (hasSkillLesson) {
+        hasLootLesson = hasSkillCombat && supportedQuest(lootQuest(), "TutorialLooting");
+        if (hasLootLesson && script.quests.size() == combatMissionQuest() + 1 &&
+            supportedQuest(combatMissionQuest(), "TutorialMission")) {
+            const auto& mission = script.quests[combatMissionQuest()].instructions;
+            hasCombatMission = std::any_of(mission.begin(), mission.end(), [](const auto& op) { return op.selector == 39; });
         }
         hasMissionEnding = hasCombatMission;
-        if (!hasCombatMission) script.quests.resize(hasLootLesson ? lootQuest + 1 : skillQuest + 1);
+        if (!hasCombatMission) {
+            const DWORD lastQuest = hasLootLesson ? lootQuest() : hasSkillCombat ? huntingQuest() : skillQuest;
+            script.quests.resize(lastQuest + 1);
+        }
     } else if (!hasMissionEnding) script.quests.resize(equipmentQuest + 1);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
@@ -668,6 +698,7 @@ void CGP_Tutorial455::scriptCompleted()
     phase = Phase::LessonBoundary;
     inputBlocked = false;
     const char* event = hasLootLesson ? "tutorial-loot-complete"
+        : forceLesson ? (hasSkillCombat ? "tutorial-hunting-complete" : "tutorial-force-complete")
         : hasSkillCombat ? "tutorial-skill-complete"
         : hasTargetLesson ? "tutorial-target-lesson-complete"
         : hasSkillLesson ? (skillCombatPending ? "tutorial-skill-combat-pending" : "tutorial-skill-complete")
@@ -699,7 +730,7 @@ void CGP_Tutorial455::animateCameraOrbit(const RF455TutorialVector& relative)
 void CGP_Tutorial455::cameraFromMouse()
 {
     if (phase != Phase::Briefing || (runtime.currentQuest != cameraQuest &&
-        !(hasTargetLesson && runtime.currentQuest == skillQuest) && !lootLesson() && !combatMission())) return;
+        !(hasTargetLesson && runtime.currentQuest == huntingQuest()) && !lootLesson() && !combatMission())) return;
     auto* mouse = _GetUIMouseDev();
     const LONG wheel = mouse->GetZ();
     gMouse.z = 0;
@@ -858,12 +889,14 @@ void CGP_Tutorial455::advanceLesson()
             RF455_ObserveProtocol("tutorial-camera-complete", runtime.currentQuest, 0, 0);
         }
         if (questIndex == equipmentQuest) {
-            if (hasSkillLesson) skills.initialize();
+            if (hasSkillLesson) skills.initialize(forceLesson);
             RF455_ObserveProtocol("tutorial-equipment-complete", runtime.currentQuest, 0, 0);
         }
-        if (questIndex == skillQuest && lootLesson())
-            RF455_ObserveProtocol("tutorial-skill-complete", runtime.currentQuest, 0, 0);
-        if (questIndex == lootQuest && combatMission()) {
+        if (forceLesson && questIndex == skillQuest)
+            RF455_ObserveProtocol("tutorial-force-complete", runtime.currentQuest, 0, 0);
+        if (questIndex == huntingQuest() && lootLesson())
+            RF455_ObserveProtocol(forceLesson ? "tutorial-hunting-complete" : "tutorial-skill-complete", runtime.currentQuest, 0, 0);
+        if (questIndex == lootQuest() && combatMission()) {
             loot.clear();
             placeLootGuide();
             RF455_ObserveProtocol("tutorial-loot-complete", runtime.currentQuest, 0, 0);
@@ -876,8 +909,9 @@ void CGP_Tutorial455::advanceLesson()
         previousOrbit = cameraOrbit();
         RF455_ObserveProtocol("tutorial-camera-command", current->id, current->type, 0);
     }
-    if (current && current != previous && questIndex == skillQuest && (current->type == 20 || current->type == 44))
-        RF455_ObserveProtocol("tutorial-skill-practice", current->id, current->type, 0);
+    if (current && current != previous && questIndex == skillQuest &&
+        (current->type == 20 || current->type == 42 || current->type == 44 || current->type == 46))
+        RF455_ObserveProtocol(forceLesson ? "tutorial-force-practice" : "tutorial-skill-practice", current->id, current->type, 0);
     if (current && current != previous && current->type == 36)
         RF455_ObserveProtocol("tutorial-target-practice", current->id, current->type, 0);
     if (current && current != previous && current->type == 38)
@@ -1234,7 +1268,8 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
     }
     if (optionsInstalled && phase == Phase::Briefing && applyOption(message, key)) return 0xffffffff;
     if (phase == Phase::Briefing && hasSkillLesson &&
-        (runtime.currentQuest == skillQuest || lootLesson() || combatMission()) && !boardBusy()) {
+        (runtime.currentQuest == skillQuest || runtime.currentQuest == huntingQuest() || lootLesson() || combatMission()) &&
+        !boardBusy()) {
         if (message == WM_BOARD_USE_OBJECT && key == shortcutWindowId) {
             const UI_MOUSE_MSG event(static_cast<DWORD>(data));
             if (auto* skill = skills.shortcutSkill(event.m_byPackNo, event.m_bySocketNo)) applyTutorialAttack(skill);
@@ -1254,13 +1289,19 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
             loot.pickNearest(inventory);
             return 0xffffffff;
         }
-        if (!inputBlocked && message == WM_KEYDOWN && key == 'S' && !(data & (1L << 30)) && GetKeyState(VK_CONTROL) < 0) {
+        if (!inputBlocked && message == WM_KEYDOWN && key == (forceLesson ? 'F' : 'S') &&
+            !(data & (1L << 30)) && GetKeyState(VK_CONTROL) < 0) {
             skills.show(!skills.isOpen());
             return 0xffffffff;
         }
-        if (skills.handleMessage(message, key, data)) return 0xffffffff;
+        if (skills.handleMessage(message, key, data, inventory)) return 0xffffffff;
+        if (forceLesson && message == WM_BOARD_USE_OBJECT && key == UII_FORCE_WINDOW) {
+            if (auto* force = skills.readyForce(static_cast<DWORD>(data))) applyTutorialAttack(force);
+            return 0xffffffff;
+        }
     }
-    if (phase == Phase::Briefing && (runtime.currentQuest == equipmentQuest || lootLesson()) && !boardBusy()) {
+    if (phase == Phase::Briefing && (runtime.currentQuest == equipmentQuest || lootLesson() ||
+        (forceLesson && runtime.currentQuest == skillQuest)) && !boardBusy()) {
         if (!inputBlocked && message == WM_KEYDOWN && key == 'I' && !(data & (1L << 30)) && GetKeyState(VK_CONTROL) < 0) {
             inventory.show(!inventory.isOpen());
             return 0xffffffff;

@@ -3,6 +3,7 @@ import ctypes
 import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 from PIL import Image
@@ -16,6 +17,9 @@ from compare_client_binaries import WS
 
 
 def main():
+    tutorial_transfers = sys.argv[1:] == ['--tutorial-transfers']
+    if sys.argv[1:] and not tutorial_transfers:
+        raise ValueError('Expected --tutorial-transfers or no arguments')
     source = WS / 'scripts/native/client455_skill_force_window_probe.cpp'
     executable = build_full_object_probe('skill-force-window', source)
     parent = WS / 'work/m9' / sha(executable)[:8]
@@ -32,6 +36,10 @@ def main():
              'DataTable/SkillForce.edf', 'DataTable/zh-tw/NDSkillForce.edf']
     names += [f'SpriteImage/{locale}/{name}' for locale in ('Common', 'zh-tw')
               for name in ('common.spr', 'skillwindow.spr', 'forcewindow.spr', 'item.spr', 'ItemLock.spr', 'inventory.spr')]
+    if tutorial_transfers:
+        names += ['DataTable/Item.edf']
+        names += [f'SpriteImage/{locale}/{name}' for locale in ('Common', 'zh-tw')
+                  for name in ('SocketState.spr', 'main.spr', 'renewal.spr')]
     inputs = []
     for name in names:
         if (client / name).is_file():
@@ -46,7 +54,8 @@ def main():
     startup.dwFlags = subprocess.STARTF_USESHOWWINDOW
     startup.wShowWindow = 0
     try:
-        result = subprocess.run([str(target)], cwd=run, capture_output=True, timeout=60,
+        args = [str(target)] + sys.argv[1:]
+        result = subprocess.run(args, cwd=run, capture_output=True, timeout=60,
                                 creationflags=subprocess.CREATE_NO_WINDOW, startupinfo=startup)
     finally:
         remove_font = ctypes.WinDLL('gdi32.dll').RemoveFontResourceW
@@ -62,6 +71,8 @@ def main():
         Image.frombytes('RGBA', (640, 480), file.read_bytes(), 'raw', 'BGRA').convert('RGB').save(preview)
         frames.append(dict(**record(file), preview=record(preview)))
     passed = result.returncode == 0 and native and native.get('status') == 'PASS' and len(frames) == 3
+    if tutorial_transfers:
+        passed = passed and native.get('tutorial_force_transfer_races') == 2
     report = dict(status='PASS' if passed else 'FAIL', nation='Taiwan', native=native,
                   natural_exit=result.returncode, normal_link_sha256=sha(WS / 'inventory/client455-normal-link.json'),
                   inputs=inputs, frames=frames, exe=record(target), map=record(executable.with_suffix('.map')),
@@ -70,7 +81,8 @@ def main():
                   input_exe_executed=False, server_modified=False)
     encoded = json.dumps(report, indent=2) + '\n'
     (run / 'probe-report.json').write_text(encoded)
-    (WS / 'inventory/client455-skill-force-window-native.json').write_text(encoded)
+    if not tutorial_transfers:
+        (WS / 'inventory/client455-skill-force-window-native.json').write_text(encoded)
     print(json.dumps(dict(exit=result.returncode, run=run.relative_to(WS).as_posix(), native=native,
                           console=console.read_text(errors='replace')[-1200:])))
     require(passed, 'Skill/Force window native checks')

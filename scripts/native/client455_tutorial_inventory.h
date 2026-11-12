@@ -18,7 +18,11 @@ public:
     bool handleMessage(UINT, WPARAM, LPARAM);
     bool inventoryPoint(DWORD code, POINT&);
     bool equipmentPoint(BYTE slot, POINT&);
-    void grant(BYTE table, DWORD code);
+    BYTE grant(BYTE table, DWORD code);
+    DWORD beaconForceCode(BYTE slot) const;
+    BYTE heldBeaconSlot() const;
+    std::unique_ptr<CBoardObject> takeBeacon(BYTE slot);
+    bool returnBeacon(CBoardObject&, BYTE slot = 255);
     bool collect(BYTE table, DWORD index, WORD groundSerial, BYTE quantity);
     void equipCandidate(BYTE slot);
     void unequip(BYTE slot);
