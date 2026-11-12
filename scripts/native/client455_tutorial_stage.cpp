@@ -17,6 +17,7 @@
 #include "client455_option_window.h"
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_intro.h"
+#include "client455_tutorial_spatial.h"
 #include "client455_tutorial_stage.h"
 #include <cmath>
 #include <cstring>
@@ -25,11 +26,13 @@
 namespace {
 constexpr WORD welcomeDialog = 0x6000;
 constexpr WORD leaveDialog = 0x6001;
+constexpr DWORD settingsQuest = 1;
+constexpr DWORD movementQuest = 2;
 
 class TutorialSettingsCommand;
 
 class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCameraHost,
-                              private RF455TutorialBoardHost, private RF455TutorialHost {
+                              private RF455TutorialBoardHost, private RF455TutorialDistanceHost {
     friend class TutorialSettingsCommand;
     enum class Phase { Intro, Welcome, Briefing, LessonBoundary, Leaving, Selecting, Zone, Failed };
     RF455TutorialIntro intro;
@@ -54,6 +57,10 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     } cursor;
     DWORD selectStarted = 0;
     DWORD savedCameraFlags = 0;
+    DWORD lastGaitChange = 0;
+    bool gaitChanged = false;
+    bool pathReady = false;
+    bool practiceClick = false;
     float savedCameraHeight = 0;
     bool savedScreenVisible = true;
     bool savedMouseVisible = true;
@@ -84,7 +91,19 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void questRefreshed() override { board.questRefreshed(); }
     void scriptCompleted() override;
     void message(std::uint8_t, const RF455TutorialMessage*, std::uint16_t) override;
-    RF455TutorialWaitState waitState(std::uint32_t) override { return {}; }
+    RF455TutorialWaitState waitState(std::uint32_t) override;
+    float avatarX() override { return _GetAvatar()->GetPosX(); }
+    float avatarY() override { return _GetAvatar()->GetPosY(); }
+    float avatarZ() override { return _GetAvatar()->GetPosZ(); }
+    float avatarYaw() override { return _GetAvatar()->GetRotY(); }
+    void createAvatarPath(const RF455TutorialVector&) override;
+    void turnAvatarToward(RF455TutorialVector&, bool interpolate, float) override;
+    void avatarState(std::uint32_t action, bool checkDuplicate) override;
+    void avatarToggle(bool run, bool force) override;
+    bool movementInputEnabled();
+    void moveFromMouse();
+    void advanceAvatar();
+    void advanceLesson();
     void fail(const char* message);
     void openOptions();
     bool applyOption(UINT message, WPARAM value);
@@ -122,25 +141,32 @@ public:
         : RF455TutorialProcessor(command.dataType, command.id), stage(stage), command(command) {}
 };
 
-class TutorialSettingsFactory final : public RF455TutorialFactory {
+class TutorialStageFactory final : public RF455TutorialFactory {
     RF455TutorialBasicFactory basic;
     CGP_Tutorial455& stage;
+    RF455TutorialDistanceHost& movement;
 public:
-    explicit TutorialSettingsFactory(CGP_Tutorial455& stage) : stage(stage) {}
+    TutorialStageFactory(CGP_Tutorial455& stage, RF455TutorialDistanceHost& movement)
+        : stage(stage), movement(movement) {}
     std::unique_ptr<RF455TutorialProcessor> create(const RF455TutorialInstruction& command) override;
 };
 
-std::unique_ptr<RF455TutorialProcessor> TutorialSettingsFactory::create(const RF455TutorialInstruction& command)
+std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455TutorialInstruction& command)
 {
     if (command.selector != command.dataType) return nullptr;
     const auto& data = command.fixed;
     switch (command.selector) {
-    case 1: case 2:
+    case 0: case 1: case 2: case 4:
         return basic.create(command);
     case 5:
         if (data.size() == 12 && (data[6] == 1 ||
-            (data[6] == 0 && (commandField<DWORD>(command, 8) == 0 || commandField<DWORD>(command, 8) == 3))))
+            (data[6] == 0 && (commandField<DWORD>(command, 8) == 0 || commandField<DWORD>(command, 8) == 3)) ||
+            (data[6] == 2 && commandField<DWORD>(command, 8) == 5)))
             return basic.create(command);
+        break;
+    case 6: case 7: case 8:
+        if (data.size() == 20 && (command.selector != 8 || data[6] <= 1))
+            return RF455_CreateTutorialDistanceCommand(command, movement);
         break;
     case 13:
         if (data.size() == 20 && std::isfinite(commandField<float>(command, 12)))
@@ -235,11 +261,19 @@ BOOL CGP_Tutorial455::Create()
         return FALSE;
     }
     static constexpr float spawn[][3] = {{2466, 277, -1129}, {2491, 491, -3978}, {-4295, -296, 165}};
-    const auto& start = spawn[_GetAvatar()->GetRace() / 2];
-    _GetAvatar()->SetPosition(start[0], start[1], start[2], TRUE, TRUE);
-    _GetAvatar()->SetLightColor(ID_INVALID);
-    _GetAvatar()->Disable(ROSF_RENDER_ALPHA);
-    _GetAvatar()->SetAction(CAI_MOVE_STOP, TRUE);
+    auto* avatar = _GetAvatar();
+    RF455PlayerMoveRates rates;
+    if (!_GetCharDataMgr()->Tables455().playerMoveRates(avatar->GetDTIndex(), rates)) {
+        fail("Tutorial player movement data could not be loaded.");
+        return FALSE;
+    }
+    const auto& start = spawn[avatar->GetRace() / 2];
+    avatar->SetPosition(start[0], start[1], start[2], TRUE, TRUE);
+    avatar->SetSpeed(CMM_MOVE_WALK, CHAR_SPEED_DEFAULT * rates.walk);
+    avatar->SetSpeed(CMM_MOVE_RUN, CHAR_SPEED_DEFAULT * rates.run);
+    avatar->SetLightColor(ID_INVALID);
+    avatar->Disable(ROSF_RENDER_ALPHA);
+    avatar->SetAction(CAI_MOVE_STOP, TRUE);
     _GetCamera()->SetPosition(start[0], start[1], start[2]);
     _GetUISpriteMgr()->LoadSprite(SP_ID_COMMON);
     _GetUISpriteMgr()->LoadSprite(SP_ID_MOUSE);
@@ -310,21 +344,21 @@ void CGP_Tutorial455::startBoardScript()
     const char file[] = {"bca"[race], char(type + 'a' - 'A'), '.', 's', 'c', 'p', 0};
     const auto path = std::string(RF455_GetClientDataRoot()) + "\\" + file;
     RF455TutorialScript script;
-    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() < 2 ||
+    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() <= movementQuest ||
         std::memcmp(script.quests[0].name.data(), "TutorialStart", sizeof("TutorialStart")) ||
-        std::memcmp(script.quests[1].name.data(), "TutorialBegin", sizeof("TutorialBegin"))) {
+        std::memcmp(script.quests[settingsQuest].name.data(), "TutorialBegin", sizeof("TutorialBegin")) ||
+        std::memcmp(script.quests[movementQuest].name.data(), "TutorialMove", sizeof("TutorialMove"))) {
         fail("Tutorial script could not be loaded.");
         return;
     }
-    // The current live host can execute these two quests. Subsequent lessons
-    // require their own gameplay providers and are not passed to the scheduler.
-    script.quests.resize(2);
-    TutorialSettingsFactory factory(*this);
+    // Each later quest is attached once its live providers have been verified.
+    script.quests.resize(movementQuest + 1);
+    TutorialStageFactory factory(*this, *this);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
         RF455_ObserveProtocol("tutorial-unsupported", static_cast<DWORD>(unsupported.quest),
                               static_cast<DWORD>(unsupported.instruction), unsupported.selector);
-        fail("Tutorial settings lesson could not be loaded.");
+        fail("Tutorial lessons could not be loaded.");
         return;
     }
     phase = Phase::Welcome;
@@ -337,11 +371,11 @@ void CGP_Tutorial455::message(std::uint8_t type, const RF455TutorialMessage* con
         fail("Tutorial briefing could not be opened.");
         return;
     }
-    if (type == 1) {
+    if (type <= 1) {
         phase = Phase::Briefing;
         const auto* quest = runtime.get();
         RF455_ObserveProtocol("tutorial-briefing", runtime.currentQuest,
-                              quest ? static_cast<DWORD>(quest->next) : 0, 0);
+                              quest ? static_cast<DWORD>(quest->next) : 0, type == 0 ? 1 : 0);
     }
 }
 
@@ -349,7 +383,110 @@ void CGP_Tutorial455::scriptCompleted()
 {
     phase = Phase::LessonBoundary;
     inputBlocked = false;
-    RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
+    RF455_ObserveProtocol("tutorial-move-complete", runtime.currentQuest, 0, 0);
+}
+
+RF455TutorialWaitState CGP_Tutorial455::waitState(std::uint32_t)
+{
+    RF455TutorialWaitState result;
+    result.avatarByte614 = _GetAvatar()->GetWalkMode();
+    return result;
+}
+
+void CGP_Tutorial455::createAvatarPath(const RF455TutorialVector& target)
+{
+    Vector3f position = {target[0], target[1], target[2]};
+    auto* avatar = _GetAvatar();
+    avatar->CreatePath(position);
+    pathReady = avatar->GetTotalPathNo() > 0;
+}
+
+void CGP_Tutorial455::turnAvatarToward(RF455TutorialVector& target, bool interpolate, float)
+{
+    if (pathReady) _GetAvatar()->SetRotY(_GetAvatar()->GetPosition(), target.data(), interpolate);
+}
+
+void CGP_Tutorial455::avatarState(std::uint32_t action, bool checkDuplicate)
+{
+    if (!pathReady) {
+        _GetAvatar()->SetAction(CAI_MOVE_STOP);
+        RF455_ObserveProtocol("tutorial-path-rejected", practiceClick, 0, 0);
+        return;
+    }
+    auto* avatar = _GetAvatar();
+    avatar->SetAction(action, checkDuplicate);
+    RF455_ObserveProtocol(practiceClick ? "tutorial-click-path" : "tutorial-demo-path",
+                          avatar->GetWalkMode(), avatar->GetTotalPathNo(), 0);
+}
+
+void CGP_Tutorial455::avatarToggle(bool run, bool force)
+{
+    auto* avatar = _GetAvatar();
+    const auto now = milliseconds();
+    if (!force && gaitChanged && now - lastGaitChange < 1000) return;
+    gaitChanged = true;
+    lastGaitChange = now;
+    // Tutorial speeds are initialized from the 455 table at stage entry.
+    // The legacy player override reads an unrelated 0.7 record pointer.
+    avatar->CCharacter::SetWalkMode(run ? CMM_MOVE_RUN : CMM_MOVE_WALK);
+    RF455_ObserveProtocol("tutorial-move-gait", avatar->GetWalkMode(), 0, 0);
+}
+
+bool CGP_Tutorial455::movementInputEnabled()
+{
+    return phase == Phase::Briefing && runtime.currentQuest == movementQuest && !inputBlocked && !boardBusy();
+}
+
+void CGP_Tutorial455::moveFromMouse()
+{
+    auto* mouse = _GetUIMouseDev();
+    if (!movementInputEnabled() || cursorDispatch || g_dwGUIInputID != NONE_INPUT_ID || !mouse->IsStroked(L_BUTTON)) return;
+    const auto* quest = runtime.get();
+    if (!runtime.context.operationActive || !quest || !quest->current || quest->current->type != 7) return;
+    Vector3f point{};
+    if (!_GetLevel()->GetPointFromScreenRay(mouse->GetX(), mouse->GetY(), &point)) return;
+    RF455TutorialVector target{{point[0], point[1], point[2]}};
+    practiceClick = true;
+    createAvatarPath(target);
+    turnAvatarToward(target, true, 12.0f);
+    avatarState(CAI_MOVE_MOVING, true);
+    practiceClick = false;
+}
+
+void CGP_Tutorial455::advanceAvatar()
+{
+    auto* avatar = _GetAvatar();
+    const RF455TutorialVector before{{avatarX(), avatarY(), avatarZ()}};
+    avatar->AdvanceLocalMovement455();
+    const auto* quest = runtime.get();
+    const auto* command = quest ? quest->current : nullptr;
+    if (runtime.context.operationActive && command && (command->type == 6 || command->type == 7)) {
+        const float moved = RF455_TutorialDistanceXZ(before, {{avatarX(), avatarY(), avatarZ()}});
+        const float previous = runtime.context.remainingDistance;
+        runtime.context.remainingDistance -= moved;
+        if (previous > 1.0f && runtime.context.remainingDistance <= 1.0f)
+            RF455_ObserveProtocol("tutorial-move-distance", command->id, command->type, avatar->GetWalkMode());
+    }
+    avatar->Animation();
+}
+
+void CGP_Tutorial455::advanceLesson()
+{
+    board.FrameMove();
+    advanceCursor();
+    if (welcomeAccepted) runtime.context.input = 0;
+    const DWORD questIndex = runtime.currentQuest;
+    const auto* quest = runtime.get();
+    const auto* previous = quest ? quest->current : nullptr;
+    const auto step = runtime.step(*this);
+    if (step == RF455TutorialStep::QuestAdvanced) {
+        welcomeAccepted = false;
+        if (questIndex == settingsQuest)
+            RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
+    }
+    const auto* current = quest ? quest->current : nullptr;
+    if (current && current != previous && current->type == 7)
+        RF455_ObserveProtocol("tutorial-move-practice", current->id, _GetAvatar()->GetWalkMode(), 0);
 }
 
 void CGP_Tutorial455::openOptions()
@@ -485,17 +622,9 @@ HRESULT CGP_Tutorial455::FrameMove()
         intro.frame(*this, skipIntro);
         if (intro.active()) std::memcpy(cameraPosition, position(), sizeof(cameraPosition));
         _GetLand()->GetLevel()->FrameMove();
-        if (!intro.active()) {
-            _GetAvatar()->FrameMove();
-            _GetAvatar()->Animation();
-        }
+        if (!intro.active()) advanceAvatar();
     }
-    if (phase == Phase::Welcome || phase == Phase::Briefing) {
-        board.FrameMove();
-        advanceCursor();
-        if (welcomeAccepted) runtime.context.input = 0;
-        if (runtime.step(*this) == RF455TutorialStep::QuestAdvanced) welcomeAccepted = false;
-    }
+    if (phase == Phase::Welcome || phase == Phase::Briefing) advanceLesson();
     _GetUIScreen()->Update();
     return S_OK;
 }
@@ -522,6 +651,7 @@ BOOL CGP_Tutorial455::InputProcess()
 {
     _GetUIMouseDev()->Update();
     _GetUIScreen()->InputProc();
+    moveFromMouse();
     auto* network = _GetNetworkMgr();
     if (phase == Phase::Leaving && IsFadeOut()) {
         if (!network->SystemMsg_SelCharRequest_zone(BYTE(RF455_SelectedCharacterSlot()))) {
@@ -557,6 +687,7 @@ void CGP_Tutorial455::Dialog(WORD id, DWORD result)
     if ((phase == Phase::Welcome && id == welcomeDialog && result == MSG_CANCEL) ||
         ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && id == leaveDialog && result == MSG_OK)) {
         cancelCursor();
+        _GetAvatar()->SetAction(CAI_MOVE_STOP);
         if (optionsInstalled) options.Close();
         board.requestFinish(true);
         fadeOut(0, 2, 1);
@@ -588,6 +719,10 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
         return 0xffffffff;
     }
     if (optionsInstalled && phase == Phase::Briefing && applyOption(message, key)) return 0xffffffff;
+    if (movementInputEnabled() && message == WM_KEYDOWN && key == 'W' && !(data & (1L << 30))) {
+        avatarToggle(_GetAvatar()->GetWalkMode() != CMM_MOVE_RUN, false);
+        return 0xffffffff;
+    }
     if (!inputBlocked || cursorDispatch || boardBusy()) _GetUIScreen()->MsgProc(window, message, key, data);
     return 0;
 }

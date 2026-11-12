@@ -1,4 +1,4 @@
-"""Bind the ordinary client stages and route the initial Tutorial dialog."""
+"""Bind client stages, Tutorial dialogs and the shared local path follower."""
 
 from client455_trade_ore_port import replace
 
@@ -100,6 +100,42 @@ CBoardManager::~CBoardManager()
     _GetGBM()->ClearBoards455();
     m_bIsCreated_Board = FALSE;
 }''')
+    elif relative == 'character/character/ccharacter.h':
+        anchor = b'\t\t\tvoid\t\t\tFrameMove_EveryFrame( void );'
+        raw = replace(raw, anchor, anchor + b'\n\t\t\tvoid StepMovementPath455(bool local);')
+        anchor = b'\t\t\tvoid\t\t\tCreatePath( Vector3f pi_vecTargetPos );'
+        raw = replace(raw, anchor, anchor + b'\n\t\t\tvoid AdvanceLocalMovement455();')
+    elif relative == 'character/character/ccharacter.cpp':
+        begin = raw.index(b'CCharacter::FrameMove_Move_Moving( void )\n{')
+        end = raw.index(b'\nvoid\nCCharacter::FrameMove_Move_Idle', begin)
+        movement = raw[begin:end]
+        movement = replace(movement, b'CCharacter::FrameMove_Move_Moving( void )\n{', b'''CCharacter::FrameMove_Move_Moving( void )
+{
+    StepMovementPath455(false);
+}
+
+void CCharacter::AdvanceLocalMovement455()
+{
+    Vector3fCopy(m_vecPos, m_vecPrevPos);
+    CResObject::FrameMove();
+    if (IsEqualAction(CAI_MOVE_MOVING)) StepMovementPath455(true);
+}
+
+void CCharacter::StepMovementPath455(bool local)
+{
+    if (!m_cPathStack.GetCurPath(m_vecNextPath) && local) {
+        SetAction(CAI_MOVE_STOP);
+        return;
+    }''')
+        begin_path = movement.index(b'\n\tGetCurPath( m_vecNextPath );')
+        end_path = movement.index(b'\n', begin_path + 1)
+        movement = movement[:begin_path] + movement[end_path:]
+        movement = replace(movement, b'if( PositionMove( m_vecNextPath ) == -1 )',
+                           b'''const float moved = local ? CCharacter::PositionMove(m_vecNextPath) : PositionMove(m_vecNextPath);
+    if (moved == -1)''')
+        movement = replace(movement, b'if( IsEqualCharType( CTI_AVATAR ) )',
+                           b'if (!local && IsEqualCharType(CTI_AVATAR))')
+        raw = raw[:begin] + movement + raw[end:]
     else:
         return raw, False
     return raw, True

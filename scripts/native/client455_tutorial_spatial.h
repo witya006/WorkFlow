@@ -9,7 +9,24 @@ struct RF455TutorialCreationIds {
 };
 RF455TutorialCreationIds& RF455_GetTutorialCreationIds();
 
-class RF455TutorialSpatialHost : public RF455TutorialHost {
+class RF455TutorialDistanceHost : public RF455TutorialHost {
+public:
+    virtual float avatarX() = 0;
+    virtual float avatarY() = 0;
+    virtual float avatarZ() = 0;
+    virtual float avatarYaw() = 0;
+    virtual void createAvatarPath(const RF455TutorialVector&) = 0;
+    virtual void turnAvatarToward(RF455TutorialVector& target, bool, float speed) = 0;
+    virtual void avatarState(std::uint32_t, bool) = 0;
+    virtual void avatarToggle(bool, bool) = 0;
+};
+
+// Relative movement and gait changes require an avatar but no world markers,
+// item factories, camera or network transport.
+std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialDistanceCommand(
+    const RF455TutorialInstruction&, RF455TutorialDistanceHost&);
+
+class RF455TutorialSpatialHost : public RF455TutorialDistanceHost {
 public:
     virtual void setAvatarPosition(const RF455TutorialVector&, bool, bool) = 0;
     virtual void setAvatarYaw(float, bool, float speed) = 0;
@@ -18,14 +35,6 @@ public:
     // Reference camera float276; its final gameplay name/provider is not yet certified.
     virtual void setCameraParameter276(float) = 0;
     virtual RF455TutorialVector avatarPosition() = 0;
-    virtual float avatarX() = 0;
-    virtual float avatarY() = 0;
-    virtual float avatarZ() = 0;
-    virtual float avatarYaw() = 0;
-    virtual void createAvatarPath(const RF455TutorialVector&) = 0; //43EEF0 -> path5EE790
-    virtual void turnAvatarToward(RF455TutorialVector& target, bool, float speed) = 0; //vt84 ->7CE550
-    virtual void avatarState(std::uint32_t, bool) = 0;
-    virtual void avatarToggle(bool, bool) = 0; //4115B0, QBI type8
     virtual std::uint32_t placeMarker(const RF455TutorialVector&, float, std::uint32_t, int, int) = 0;
     virtual void releaseMarker(std::uint32_t, float) = 0;
     virtual bool resolveMonster(std::uint32_t index, std::uint32_t& localIndex) = 0;

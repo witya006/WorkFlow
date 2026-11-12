@@ -1,0 +1,164 @@
+{
+  "status": "PASS_BELLATO_TUTORIAL_MOVE_AND_CONFIRMED_EXIT",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "move_begin": "0x28290",
+      "move_update": "0x28570",
+      "move_finish": "0x28620",
+      "wait_condition": "0x27a40",
+      "walk_mode": "0x7600",
+      "gait_change": "0x115b0",
+      "gait_setter": "0x3d170",
+      "send_or_dispatch": "0x162be0",
+      "local_position": "0x164640",
+      "player_table_load": "0x1fb4f0"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-tutorial-move.json",
+      "sha256": "97abd2fa2bdf00cee3f78a4aa1ea495e2eb69e7922d8a203c923d15bcad85818"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "a15952335830e133751287b64f43317539a0213a47b74dbe9648c0df74dbf21e",
+    "bytes": 2479616,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x199ac0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ],
+    "objects": 182,
+    "unresolved_symbols": 0
+  },
+  "rejected_build": {
+    "sha256": "710b8a1f47da96d9a3ac15929d2b23403206a981d453ea9f7ab1935bfefe9729",
+    "failure": "0xc0000005 in legacy CPlayer::SetWalkMode",
+    "rva": "0x65281",
+    "log": {
+      "file": "work/startup455-m6/menu-live/events-1794443893.jsonl",
+      "sha256": "cd03f18a1d73f36244031a075729776441f8f8335ce082c3ba1697a35b952518"
+    }
+  },
+  "data": {
+    "checked_files": 90,
+    "move_instructions_per_file": 63,
+    "next_quest": "TutorialCamera",
+    "script": {
+      "file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp",
+      "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+    },
+    "key_sprites": {
+      "file": "work/startup455-m6/menu-live/SpriteImage/Common/tutorial.spr",
+      "sha256": "092461b4ea653dc950e5644c17fd940ddaceee83675cb030d797b49968e6974b"
+    },
+    "player_table": {
+      "file": "work/startup455-m6/menu-live/DataTable/PlayerCharacter.edf",
+      "sha256": "4a493a71925af925174dd4fef352780e44a4a275ada04215cac697df06576b39"
+    },
+    "player_table_shape": [
+      5,
+      72
+    ],
+    "gait_rate_offsets": [
+      44,
+      48
+    ],
+    "static_audit": {
+      "file": "work/startup455-m6/audit-tutorial-move.py",
+      "sha256": "469904e393dac9ea5f81304f2aa900029ce700c4e302ef8787f04103648b85a4"
+    }
+  },
+  "component_check": {
+    "file": "work/startup455-m6/tutorial-move-spatial-probe.json",
+    "sha256": "ce0523b970c1048c81e69b37dada6ea9db9d9ecb0d3b968c0e116037e4a68370"
+  },
+  "live": {
+    "log": {
+      "file": "work/startup455-m6/menu-live/events-1794444276.jsonl",
+      "sha256": "f95fd296b60c1048e4037e24e9008c64b135ee6c597d75201b560499124a84f8"
+    },
+    "input_script": {
+      "file": "work/startup455-m6/test-tutorial-move.ps1",
+      "sha256": "acd8de69ba3814f5cd2e3df04e49ceea4b5932a11575bc534a422f33f77a8e0e"
+    },
+    "viewport": [
+      640,
+      500
+    ],
+    "fixture": "Restore the original new-character skip flag only inside the own child process.",
+    "demonstration_commands_reached_distance": [
+      [
+        14,
+        1
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        38,
+        0
+      ],
+      [
+        42,
+        0
+      ],
+      [
+        46,
+        0
+      ]
+    ],
+    "practice_commands_reached_distance": [
+      [
+        28,
+        1
+      ],
+      [
+        59,
+        0
+      ]
+    ],
+    "walk_key_observed": true,
+    "position_group_sent_before_leaving": 0,
+    "select_reply_result": 512,
+    "world_map": "NeutralB",
+    "exit_code": 0,
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-move-run-practice.png",
+        "sha256": "4d77998cf5924aa6d1bcfcccace3f683f06674bca80d6db4770482b31ef8cf0e"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-move-gait-practice.png",
+        "sha256": "5671f81f30c142df5ee250a365daef06e68fef5bdf1e0c93714100f92829eed4"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-move-completed.png",
+        "sha256": "93376932687f541f91d6d792cc70861a7ed7de80541cc0fff2baf39a274bcdbe"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-move-world.png",
+        "sha256": "41e0a2cd9d4e437b781dc29e63ba806496715d32297d4cce0194f1455381f386"
+      }
+    ]
+  },
+  "open": [
+    "TutorialCamera and subsequent lessons",
+    "Natural completion without leaving",
+    "Runtime verification for other races and locales",
+    "Quantitative gait comparison against original 455"
+  ]
+}

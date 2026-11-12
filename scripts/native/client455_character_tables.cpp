@@ -1,6 +1,7 @@
 #include "client455_character_tables.h"
 #include "client455_language.h"
 #include "client455_nation_paths.h"
+#include <cmath>
 #include <cstdio>
 #include <cstring>
 #include <stdexcept>
@@ -27,6 +28,17 @@ bool RF455CharacterTables::loadPlayerFile(){
     if(next.count&&next.stride){if(next.count>(plain.size()-c.at)/next.stride)return false;
         const auto bytes=std::size_t(next.count)*next.stride;next.bytes.assign(plain.data()+c.at,plain.data()+c.at+bytes);}
     players=std::move(next);playerLoaded=true;return players.count&&players.stride;
+}
+bool RF455CharacterTables::playerMoveRates(std::uint32_t index, RF455PlayerMoveRates& result) const {
+    const auto row = players.get(index);
+    if (!row.data || row.size < 52) return false;
+    RF455PlayerMoveRates rates;
+    std::memcpy(&rates.walk, row.data + 44, sizeof(rates.walk));
+    std::memcpy(&rates.run, row.data + 48, sizeof(rates.run));
+    if (!std::isfinite(rates.walk) || !std::isfinite(rates.run) || rates.walk <= 0 || rates.run <= 0)
+        return false;
+    result = rates;
+    return true;
 }
 bool RF455CharacterTables::loadStoreFiles(std::int32_t selector,bool wide){
     if(storeNamesLoaded)throw std::logic_error("455 Store relocalization lifetime remains unported");

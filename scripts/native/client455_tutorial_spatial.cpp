@@ -125,11 +125,11 @@ private:
 class Move final : public Spatial {
 public:
     Move(const RF455TutorialInstruction& instruction, RF455TutorialSpatialHost& world)
-        : Spatial(instruction, world), mode(instruction.fixed[6]), amount(dword(instruction.fixed, 8)),
+        : Spatial(instruction, world), mode(instruction.fixed[6]),
           target(vector(instruction.fixed, 8)) {}
 private:
     std::uint8_t mode;
-    std::uint32_t amount, marker = 0xffffffff;
+    std::uint32_t marker = 0xffffffff;
     RF455TutorialVector target;
     bool start(RF455TutorialHost& host, RF455TutorialContext& context) override {
         if (!bound(host)) return false;
@@ -137,23 +137,7 @@ private:
             if (mode == 0) {
                 marker = world.placeMarker(target, 0.0f, 1358954291U, 0, 0);
                 if (type == 6) requestMove();
-            } else if (mode == 1) {
-                context.remainingDistance = unsignedFloat(amount);
-                if (type == 6) {
-                    const float x = world.avatarX();
-                    const float sine = static_cast<float>(std::sin(radians(world.avatarYaw())));
-                    const float tx = offset(x, sine, std::uint32_t(amount + 2));
-                    const float ty = world.avatarY();
-                    const float z = world.avatarZ();
-                    const float cosine = static_cast<float>(std::cos(radians(world.avatarYaw())));
-                    RF455TutorialVector point = {{tx, ty, offset(z, cosine, std::uint32_t(amount + 2))}};
-                    world.createAvatarPath(point);
-                    world.turnAvatarToward(point, true, 12.0f);
-                    world.avatarState(0x10000001, true);
-                }
             } else if (mode == 2) flags |= 4;
-        } else if (type == 8) {
-            world.avatarToggle(mode == 1, false); flags |= 4;
         }
         context.operationActive = 1;
         return true;
@@ -169,13 +153,49 @@ private:
             if (RF455_TutorialDistanceXZ(world.avatarPosition(), target) <= 15.0f) {
                 world.releaseMarker(marker, 1.0f); return true;
             }
-        } else if (mode == 1) {
-            if (context.remainingDistance <= 1.0f) return true;
-            return std::uint32_t(host.milliseconds() - context.startTime) >= 20000;
         }
         return false;
     }
     void finish(RF455TutorialHost&, RF455TutorialContext& context) override {context.operationActive = 0;}
+};
+
+class DistanceMove final : public RF455TutorialProcessor {
+public:
+    DistanceMove(const RF455TutorialInstruction& instruction, RF455TutorialDistanceHost& avatar)
+        : RF455TutorialProcessor(instruction.dataType, instruction.id, instruction.fixed[4]),
+          avatar(avatar), amount(dword(instruction.fixed, 8)), mode(instruction.fixed[6]) {}
+private:
+    RF455TutorialDistanceHost& avatar;
+    const std::uint32_t amount;
+    const std::uint8_t mode;
+    bool start(RF455TutorialHost& host, RF455TutorialContext& context) override {
+        if (&host != &avatar) return false;
+        if (type == 8) {
+            avatar.avatarToggle(mode == 1, false);
+            flags |= 4;
+        } else {
+            context.remainingDistance = unsignedFloat(amount);
+            if (type == 6) {
+                const float x = avatar.avatarX();
+                const float sine = static_cast<float>(std::sin(radians(avatar.avatarYaw())));
+                const float tx = offset(x, sine, std::uint32_t(amount + 2));
+                const float ty = avatar.avatarY();
+                const float z = avatar.avatarZ();
+                const float cosine = static_cast<float>(std::cos(radians(avatar.avatarYaw())));
+                RF455TutorialVector point = {{tx, ty, offset(z, cosine, std::uint32_t(amount + 2))}};
+                avatar.createAvatarPath(point);
+                avatar.turnAvatarToward(point, true, 12.0f);
+                avatar.avatarState(0x10000001, true);
+            }
+        }
+        context.operationActive = 1;
+        return true;
+    }
+    bool update(RF455TutorialHost& host, RF455TutorialContext& context) override {
+        return &host == &avatar && (context.remainingDistance <= 1.0f ||
+            std::uint32_t(host.milliseconds() - context.startTime) >= 20000);
+    }
+    void finish(RF455TutorialHost&, RF455TutorialContext& context) override { context.operationActive = 0; }
 };
 
 class Creation final : public Spatial {
@@ -231,9 +251,19 @@ private:
 };
 }
 
+std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialDistanceCommand(
+    const RF455TutorialInstruction& instruction, RF455TutorialDistanceHost& avatar) {
+    if (instruction.selector < 6 || instruction.selector > 8 || instruction.fixed.size() != 20) return nullptr;
+    if (instruction.dataType == 8 || ((instruction.dataType == 6 || instruction.dataType == 7) &&
+        instruction.fixed[6] == 1))
+        return std::make_unique<DistanceMove>(instruction, avatar);
+    return nullptr;
+}
+
 std::unique_ptr<RF455TutorialProcessor> RF455TutorialSpatialFactory::create(const RF455TutorialInstruction& instruction) {
     if (instruction.selector < 6) return basic.create(instruction);
     const auto size = instruction.fixed.size();
+    if (auto movement = RF455_CreateTutorialDistanceCommand(instruction, host)) return movement;
     if (instruction.selector <= 8 && size == 20)
         return std::unique_ptr<RF455TutorialProcessor>(new Move(instruction, host));
     if (instruction.selector >= 9 && instruction.selector <= 11 && size == 24)
