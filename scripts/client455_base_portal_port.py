@@ -91,10 +91,9 @@ def port_base_portal(raw, relative, native, section):
             return replace(body, anchor, b'\t_GetNetworkMgr()->ResetAvatarMovement455();\n' + anchor)
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result', begin_transition)
         def before_loading(body):
-            body = replace(body, b'if( timeGetTime() - m_dwMoveStepStartTime >= m_dwMoveDelay )', b'''const bool sameMapPortal = m_byEnterMapIndex == m_byExitMapIndex &&
-        (m_byMoveType == GST_PORTAL || m_byMoveType == GST_BASE_PORTAL);
-    const bool ordinaryWorldPortal = m_byMoveType == GST_PORTAL && !_GetDungeonInfo()->IsInDungeon();
-    const DWORD delay = sameMapPortal ? 700 : ordinaryWorldPortal ? 1300 : m_dwMoveDelay;
+            body = replace(body, b'if( timeGetTime() - m_dwMoveStepStartTime >= m_dwMoveDelay )', b'''const bool worldPortal = m_byMoveType == GST_PORTAL || m_byMoveType == GST_BASE_PORTAL;
+    const bool sameMapPortal = worldPortal && m_byEnterMapIndex == m_byExitMapIndex;
+    const DWORD delay = sameMapPortal ? 700 : worldPortal && !_GetDungeonInfo()->IsInDungeon() ? 1300 : m_dwMoveDelay;
     if (timeGetTime() - m_dwMoveStepStartTime >= delay)''')
             return replace(body, b'_GetMapLoadingWindow()->Open();',
                            b'if (!sameMapPortal) _GetMapLoadingWindow()->Open();')
@@ -122,9 +121,12 @@ def port_base_portal(raw, relative, native, section):
             fail();
             return;
         }''')
+            body = replace(body, b'_GetLand()->SetPortalIndex( m_pExitPortalInfo->byIndex );',
+                           b'_GetLand()->SetPortalIndex( m_pExitPortalInfo->byIndex );\n'
+                           b'\telse if (m_byMoveType == GST_BASE_PORTAL)\n'
+                           b'\t\t_GetLand()->SetPortalIndex(0xff);')
             return replace(body, b'm_dwMoveDelay\t\t\t= DEFAULT_MOVEMAP_DELAY;',
-                           b'm_dwMoveDelay = m_byMoveType == GST_PORTAL ||\n'
-                           b'        (m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex)\n'
+                           b'm_dwMoveDelay = m_byMoveType == GST_PORTAL || m_byMoveType == GST_BASE_PORTAL\n'
                            b'        ? 1300 : DEFAULT_MOVEMAP_DELAY;')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_LoadData', after_loading)
         def finish_transition(body):

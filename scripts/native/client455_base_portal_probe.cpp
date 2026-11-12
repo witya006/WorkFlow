@@ -499,7 +499,8 @@ int main(int argc, char** argv)
 {
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
     try {
-        if (argc == 2 && !std::strcmp(argv[1], "--arrival")) return guardedPortalArrival();
+        if (argc == 2 && !std::strcmp(argv[1], "--arrival")) return guardedPortalArrival(false);
+        if (argc == 2 && !std::strcmp(argv[1], "--forced-arrival")) return guardedPortalArrival(true);
         require(argc == 3, "pinned Item.edf and KeyMap.dat arguments");
         return run(argv[1], argv[2]);
     } catch (const std::exception& error) {

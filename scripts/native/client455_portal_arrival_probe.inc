@@ -9,7 +9,7 @@ void arrivalWarning(char* message)
     std::fprintf(stderr, "engine warning: %s\n", message);
 }
 
-int runPortalArrival()
+int runPortalArrival(bool assigned)
 {
     InitR3Engine();
     SetErrorMessageProc(arrivalError);
@@ -80,48 +80,81 @@ int runPortalArrival()
         };
         Vector3f oldPosition{midpoint(*gate, 0), midpoint(*gate, 1), midpoint(*gate, 2)};
         avatar.SetPosition(oldPosition, TRUE, FALSE);
+        auto& move = *avatar.GetMoveMapInfo();
+        const auto deliverPortal = [&](BYTE map, const Vector3f& position, BYTE zone, WORD size = 15) {
+            std::array<char, 15> result{};
+            result[1] = map;
+            std::memcpy(result.data() + 2, position, sizeof position);
+            result[14] = zone;
+            _MSG_HEADER header{WORD(4 + size), {8, 2}};
+            return network.AnalysisServerPacket(&header, result.data());
+        };
+        if (assigned) {
+            require(move.MoveToPortal_Request(0), "start a local portal request before server reassignment");
+            ring.ExpectRequest({11, 0, 8, 1, 0, 255, 255, 255, 255, 255, 255});
+            Vector3f sameMapPosition{oldPosition[0] - 1.25f, oldPosition[1], oldPosition[2] + 2.5f};
+            require(!deliverPortal(0, sameMapPosition, 2, 14) && _GetGBM()->IsRequestProcess(),
+                    "truncated result preserves the pending request");
+            require(deliverPortal(0, sameMapPosition, 2) && !_GetGBM()->IsRequestProcess() &&
+                    move.m_byMoveType == GST_BASE_PORTAL && move.m_bIsMoved &&
+                    !move.m_pEnterPortalInfo && !move.m_pExitPortalInfo &&
+                    deliverPortal(0, oldPosition, 0) && move.m_vecPosition[0] == sameMapPosition[0] &&
+                    move.m_vecPosition[2] == sameMapPosition[2],
+                    "server destination supersedes the local request and its late result");
+            move.m_dwMoveStepStartTime = timeGetTime() - 701;
+            move.FrameMove();
+            require(move.m_byMoveStep == MOVEMAP_INFO::MMS_LOAD_DATA && !loading.IsShow() && ring.Empty(),
+                    "same-map reassignment skips the loading window");
+            move.Init();
+            avatar.Enable(ROSF_MOVABLE);
+        }
         Vector3f oldTarget{oldPosition[0] + 24, oldPosition[1], oldPosition[2]};
         require(network.SendAvatarMove455(oldTarget), "leave an old-map movement awaiting its reply");
         auto packet = ring.ReadRequest();
         require(packet.size() == 30 && packet[2] == 4 && packet[3] == 1, "old-map movement wire");
 
-        auto& move = *avatar.GetMoveMapInfo();
-        require(move.MoveToPortal_Request(2), "ordinary cross-map portal input");
-        ring.ExpectRequest({11, 0, 8, 1, 2, 255, 255, 255, 255, 255, 255});
-        std::array<char, 15> result{};
-        result[1] = 2;
+        if (!assigned) {
+            require(move.MoveToPortal_Request(2), "ordinary cross-map portal input");
+            ring.ExpectRequest({11, 0, 8, 1, 2, 255, 255, 255, 255, 255, 255});
+        }
+        const BYTE arrivalMode = assigned ? GST_BASE_PORTAL : GST_PORTAL;
+        const BYTE destinationPortal = assigned ? 0xff : 13;
         Vector3f destination{midpoint(*exit, 0), midpoint(*exit, 1), midpoint(*exit, 2)};
-        std::memcpy(result.data() + 2, destination, sizeof destination);
-        _MSG_HEADER portalHeader{19, {8, 2}};
-        require(network.AnalysisServerPacket(&portalHeader, result.data()), "normal portal result");
-        require(move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA && avatar.IsDisable(ROSF_MOVABLE) &&
+        require(deliverPortal(2, destination, assigned ? 2 : 0), "cross-map result");
+        require(move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA && move.m_byMoveType == arrivalMode &&
+                land.GetMapIndex() == 0 && land.GetPortalIndex() == 3 && avatar.IsDisable(ROSF_MOVABLE) &&
                 !network.PositionMsg_MoveRequest_clzo(oldTarget, FALSE) && ring.Empty(),
-                "map result enters loading with input disabled");
+                "map result starts transition without changing the current map or sending another request");
         RF455StopResult lateStop{avatar.GetIndex(), {-5800, 575, 5650}};
         _MSG_HEADER stopHeader{WORD(4 + sizeof lateStop), {4, 20}};
         require(network.AnalysisServerPacket(&stopHeader, reinterpret_cast<char*>(&lateStop)) &&
                 nextAction.IsEmpty(), "old stop result cannot queue a return to NeutralB");
 
         std::fputs("load Resources\n", stderr);
+        move.m_dwMoveStepStartTime = timeGetTime() - 900;
+        move.FrameMove();
+        require(!loading.IsShow() && move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA,
+                "cross-map overlay waits for the transition delay");
         move.m_dwMoveStepStartTime = timeGetTime() - 1301;
         move.FrameMove();
         require(loading.IsShow() && move.m_byMoveStep == MOVEMAP_INFO::MMS_LOAD_DATA, "open cross-map overlay");
         move.FrameMove();
         require(!loading.IsShow() && move.m_byMoveStep == MOVEMAP_INFO::MMS_AFTER_LOAD_DATA &&
-                land.GetMapIndex() == 2 && land.GetPortalIndex() == 13 &&
+                land.GetMapIndex() == 2 && land.GetPortalIndex() == destinationPortal &&
                 land.GetLevel()->IsLoadedBsp() && !_stricmp(land.GetLevel()->GetMapName(), "Resources") &&
                 avatar.GetPosX() == destination[0] && avatar.GetPosZ() == destination[2],
                 "loaded terrain and authoritative destination publish together");
         ring.ExpectRequest({4, 0, 12, 8});
         require(ring.Empty(), "arrival is not reported during loading");
 
+        require(move.m_dwMoveDelay == 1300, "arrival delay applies to both portal modes");
         move.m_dwMoveStepStartTime = timeGetTime() - 1301;
         move.FrameMove();
         move.FrameMove();
-        ring.ExpectRequest({5, 0, 3, 1, GST_PORTAL});
+        ring.ExpectRequest({5, 0, 3, 1, arrivalMode});
         require(move.m_byMoveStep == MOVEMAP_INFO::MMS_NONE && !avatar.IsDisable(ROSF_MOVABLE),
-                "ordinary arrival sends once and releases input");
-        char mode = GST_PORTAL;
+                "arrival sends once and releases input");
+        char mode = arrivalMode;
         _MSG_HEADER arrivalHeader{5, {3, 2}};
         require(network.AnalysisServerPacket(&arrivalHeader, &mode), "normal arrival acknowledgment");
         require(!network.PositionMsg_PlayerStop_clzo(FALSE) && ring.Empty(),
@@ -163,10 +196,10 @@ int runPortalArrival()
     g_ifCharIF = nullptr;
     g_MainApp.ReleaseR3D3D();
     ReleaseR3Engine();
-    std::printf("{\"status\":\"PASS\",\"map\":2,\"portal\":13,\"arrival\":[3,1,3,2],"
-                "\"movement\":[4,1,4,4],\"late_stop_ignored\":true,\"movement_sequence\":2,"
-                "\"first_frame_advanced\":true,\"first_step_distance\":%.6f}\n",
-                firstStepDistance);
+    std::printf("{\"status\":\"PASS\",\"map\":2,\"portal\":%d,\"arrival\":[3,1,3,2],"
+                "\"arrival_mode\":%d,\"movement\":[4,1,4,4],\"late_stop_ignored\":true,"
+                "\"movement_sequence\":2,\"first_frame_advanced\":true,\"first_step_distance\":%.6f}\n",
+                assigned ? 0xff : 13, assigned ? GST_BASE_PORTAL : GST_PORTAL, firstStepDistance);
     return 0;
 }
 
@@ -180,8 +213,8 @@ LONG reportArrivalFault(EXCEPTION_POINTERS* fault)
     return EXCEPTION_EXECUTE_HANDLER;
 }
 
-int guardedPortalArrival()
+int guardedPortalArrival(bool assigned)
 {
-    __try { return runPortalArrival(); }
+    __try { return runPortalArrival(assigned); }
     __except(reportArrivalFault(GetExceptionInformation())) { return 99; }
 }

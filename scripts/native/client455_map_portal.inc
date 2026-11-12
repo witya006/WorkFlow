@@ -4,6 +4,7 @@
 #include "client455_message_dispatch.h"
 #include "client455_protocol_observation.h"
 #include "client455_world_updates.h"
+#include "userinterface/gamewindow/etcwin/guimaploadingwindow.h"
 #include <cstring>
 
 void EP_DisconnectedFromServer();
@@ -158,10 +159,12 @@ bool CNetMsgProcessor_Map::ReceivePortalResult455(const char* bytes, std::size_t
     PortalResult455 reply{};
     if (!result && (!RF455_ReadWorldRecord(bytes, size, reply) || !RF455_FinitePosition(reply.position)))
         return false;
-    if (!m_portalPending455) return true;
+    constexpr BYTE assignedByServer = 2;
+    const bool assigned = !result && reply.zone == assignedByServer;
+    if (!assigned && !m_portalPending455) return true;
     auto* avatar = _GetAvatar();
-    if (avatar) avatar->SetAction(CAI_MOVE_STOP);
     if (result) {
+        if (avatar) avatar->SetAction(CAI_MOVE_STOP);
         CancelPortalRequest455();
         ShowPortalRefusal455(result);
         return true;
@@ -169,20 +172,38 @@ bool CNetMsgProcessor_Map::ReceivePortalResult455(const char* bytes, std::size_t
 
     auto* move = avatar ? avatar->GetMoveMapInfo() : nullptr;
     auto* land = _GetLand();
-    if (!move || !land || !_GetMapLoadingWindow() || !move->m_pExitPortalInfo ||
-        land->GetMapIndex() != move->m_byEnterMapIndex ||
-        reply.zone != 0 || reply.map != move->m_byExitMapIndex ||
-        (reply.map != move->m_byEnterMapIndex && !land->CanLoadMap455(reply.map))) {
-        CancelPortalRequest455();
+    auto* loading = _GetMapLoadingWindow();
+    const BYTE source = land ? land->GetMapIndex() : 0xff;
+    if (assigned && (!move || !land || !land->GetLevel() || !FindPortalMap455(*land, source)))
+        return true;
+
+    if (avatar) avatar->SetAction(CAI_MOVE_STOP);
+    if (!move || !land || !loading || !FindPortalMap455(*land, reply.map) ||
+        (!assigned && (!move->m_pExitPortalInfo || source != move->m_byEnterMapIndex ||
+                      reply.zone != 0 || reply.map != move->m_byExitMapIndex)) ||
+        (reply.map != source && !land->CanLoadMap455(reply.map))) {
+        _GetNetworkMgr()->CancelPendingMapRequests455();
         RF455_ObserveProtocol("portal-result-unavailable", reply.map, reply.zone, 0);
         EP_DisconnectedFromServer();
         return true;
     }
 
+    if (assigned) {
+        _GetNetworkMgr()->CancelPendingMapRequests455();
+        if (loading->IsShow()) loading->Close();
+        if (_GetDungeonInfo()->IsInDungeon()) {
+            _GetDungeonInfo()->SetDungeonExitType(DET_PORTAL);
+            _GetDungeonInfo()->ExitDungeon();
+        }
+        move->m_bIsMoved = TRUE;
+        move->m_pEnterPortalInfo = move->m_pExitPortalInfo = nullptr;
+        move->m_byEnterMapIndex = source;
+        move->m_byExitMapIndex = reply.map;
+    }
     m_portalPending455 = false;
     _GetGBM()->SetRequestProcessState(FALSE);
     std::memcpy(move->m_vecPosition, reply.position, sizeof reply.position);
-    move->MoveToPortal_Result(GST_PORTAL);
+    move->MoveToPortal_Result(assigned ? GST_BASE_PORTAL : GST_PORTAL);
     return true;
 }
 

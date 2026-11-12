@@ -3,11 +3,11 @@
   "scope": "Return item, ordinary and keyed portal request and transition scheduling.",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "ed84c39596bccbae4f3b7333ea4f23e1fc44c90ef64b74a3ce3d138478dfe428",
-    "bytes": 2522624,
+    "sha256": "ec2e76e871369e37464ecff5238aec5bb5b6de853024ca2d3986a98a59e18d2f",
+    "bytes": 2522112,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a2520",
+    "entry_rva": "0x1a2650",
     "sections": [
       ".text",
       ".rdata",
@@ -16,7 +16,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "ec6d9130faaef12351cf0f928d3f432c8c3d09bdcbc942d0b59e7b2c8211110e",
+  "normal_link_sha256": "1948fafaaa93b8910885b5a4316fd351af1d0888b5b210c3f7e3fb913f2375de",
   "component": {
     "status": "PASS",
     "request": [
@@ -98,7 +98,7 @@
   },
   "component_executable": {
     "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
-    "sha256": "4bbfeafe1a61e8af1153f2c71b513ac843b1f0bdeba616a17ed2a55b1db64e32"
+    "sha256": "8e2345d7c4ea4bddabda38fcda36daa1308034d27fd72059bb3312d8a0a427f7"
   },
   "component_console": {
     "file": "work/client455-port/base-portal-probe/base-portal.txt",
@@ -173,7 +173,7 @@
   "sources": [
     {
       "file": "scripts/client455_base_portal_port.py",
-      "sha256": "aed7dcdb5a2a6c31cd5209ef042d0e72694955bd1867dce69936b3534bf0c950"
+      "sha256": "58d3623d41a7610483418d5b4642f48b67c94f108bbc81d3e8d8f1cc6a1a4f8f"
     },
     {
       "file": "scripts/native/client455_base_portal_inventory.inc",
@@ -185,7 +185,7 @@
     },
     {
       "file": "scripts/native/client455_base_portal_probe.cpp",
-      "sha256": "df3b0a343df90f3ca6fa09995205c1a071a80f0bf07ffef1678bf46e4a5064ba"
+      "sha256": "c4c51604aa1320c0c6e1988dbd23def9105b9230adfa9ab2883d4834c51eeeba"
     },
     {
       "file": "scripts/client455_linker_window_port.py",
@@ -213,7 +213,7 @@
     },
     {
       "file": "scripts/native/client455_map_portal.inc",
-      "sha256": "a06c6607ef82109ffc918afd4cbb86513aaf82793b47cf9cf20b63a6708949da"
+      "sha256": "68e9f1056c33b6879d2c06de77b5b41fb525cd6f158130af1060f8de34cb624b"
     },
     {
       "file": "scripts/native/client455_map_data.h",
@@ -231,31 +231,31 @@
   "fresh_evidence": {
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "ec6d9130faaef12351cf0f928d3f432c8c3d09bdcbc942d0b59e7b2c8211110e"
+      "sha256": "1948fafaaa93b8910885b5a4316fd351af1d0888b5b210c3f7e3fb913f2375de"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "f2c793bb72d3c24b6021fbdab693bb7ced2baaf1af9710beeb4f4e0bdce0fa55"
+      "sha256": "0098c8d1d404903d26edc4123d9c2799f20c2c143da140433017309ab515dff7"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "e987d6992f3812e1915fe05111eb85ceadb8c2b273d259b4e3329c737636375a"
+      "sha256": "be36c1e6e7a596c94801dc40f256a56fa97e7d974ce3310847039fdb43c0b323"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "30db0611a13b5a04e2e3f5e6d68b7b67f6540b80ce3bbc44a561bc14975bfab4"
+      "sha256": "a3d375bd487ffd629d87dd7428163112616338f5b22cf27846c897baf7fad1c3"
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "76b1a3170446b476bc820dfdf5f5f90ef14c9599b7b4baa4ea0a2a956fc6f874"
+      "sha256": "4535ab6086ad8b798ee09303fd7120468669541c6ce83bfd4a9c6ede1d60fa5d"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "6ff02691bc0773714333ec00ad7bdaf0074ee2f98c283589096ff575872a860f"
+      "sha256": "2977846fe3984cebeb4549a795a3a7ffea7f7d36b4833cb25eeebd2844569e1c"
     },
     "startup-taiwan-native": {
       "file": "inventory/client455-startup-taiwan-native.json",
-      "sha256": "4c4e81060d3384d82b349846217bb07bf9f1c16947b659a92773017ed079febe"
+      "sha256": "9f2b07ed8b1fb9e96f2c91a8ed7538cd442c187f6404537634cf440a6993da88"
     },
     "base-portal-reference": {
       "file": "inventory/client455-base-portal-reference.json",
