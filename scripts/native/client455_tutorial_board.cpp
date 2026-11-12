@@ -150,6 +150,7 @@ void CTutorialBoard::FrameMove() {
     if (m_shared.quitCooldown > 0) --m_shared.quitCooldown;
     if (m_host.skipTutorial()) return;
     if (!m_uiWindow) throw std::logic_error("455 Tutorial frame needs its briefing window");
+    updateProgressReport();
     if (!m_uiWindow->IsShow()) m_runtime.context.input = 3;
     if (!m_shared.quitCooldown && m_shared.quitRequested && !m_busy && m_runtime.currentQuest) {
         openLanguageDialog(441, 0x6003);
@@ -159,8 +160,8 @@ void CTutorialBoard::FrameMove() {
     }
 }
 
-LRESULT CTutorialBoard::MsgProc(HWND window, UINT message, WPARAM source, LPARAM value) {
-    if (source != 38) return 0;
+void CTutorialBoard::updateProgressReport()
+{
     if (!m_shared.reportClockInitialized) {
         m_shared.reportClockInitialized = true;
         m_shared.reportTime = m_host.milliseconds();
@@ -170,6 +171,11 @@ LRESULT CTutorialBoard::MsgProc(HWND window, UINT message, WPARAM source, LPARAM
         m_host.reportProgressRequested();
         m_shared.reportTime = now;
     }
+}
+
+LRESULT CTutorialBoard::MsgProc(HWND window, UINT message, WPARAM source, LPARAM value) {
+    if (source != 38) return 0;
+    updateProgressReport();
     if (message == 0x1400 || message == 0x1402) m_runtime.context.input = 0;
     else if (message == 0x1401) requestFinish(false);
     else if (message == 0x1403) {

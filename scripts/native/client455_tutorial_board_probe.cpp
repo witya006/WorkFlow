@@ -145,6 +145,14 @@ static int run(){
     board.MsgProc(nullptr,0,38,0);check(host.clocks==2,"first event reads two clocks");
     host.now=std::uint32_t(0xfffffff0U+60000);board.MsgProc(nullptr,0,38,0);check(host.reports==0,"strict 60000 report boundary");
     ++host.now;board.MsgProc(nullptr,0,38,0);check(host.reports==1&&shared.reportTime==host.now,"unsigned report wrap");
+    host.skip = false;
+    host.now += 60000;
+    board.FrameMove();
+    check(host.reports == 1, "idle frame preserves the strict report boundary");
+    ++host.now;
+    board.FrameMove();
+    board.MsgProc(nullptr, 0, 38, 0);
+    check(host.reports == 2 && shared.reportTime == host.now, "idle frame reports once across both entry points");
     RF455TutorialRecordingActionsHost runtimeHost;RF455TutorialActionsFactory factory(runtimeHost);host.skip=false;
     unsigned prepared=0;
     for(const auto pair:std::vector<std::pair<BYTE,BYTE>>{{0,0},{3,1},{5,3}}){

@@ -1,0 +1,198 @@
+{
+  "status": "PASS_RUSSIAN_BELLATO_WARRIOR_TUTORIAL",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "combat_predicate_rva": "0x29440",
+    "counter_context_rva": "0x27880",
+    "local_attack_result_rva": "0x1647d0",
+    "complete_rva": "0x2af60",
+    "ida": {
+      "file": "artifacts/client455-tutorial/live-looting-reference.json",
+      "sha256": "47596e2413c36a8e35046e1d273b5c5a66be30ab0c984ec6c53db73acc628845"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "2f9921b03f7b121a63ee3575f0551bc066afeaaec2e9bd3ce62e88f19fb80de7",
+    "bytes": 2512896,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a0650",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Stock ru-ru/bw.scp Bellato Warrior. Tutorial pickup and natural world entry.",
+  "failed_connection_run": {
+    "binary": {
+      "file": "work/startup455-m6/pre-tutorial-report-0f772d89.bin",
+      "sha256": "0f772d899ba7f0796cc0c2b8bd1aa348277e24253fdd1b4ed71eb0b243696d43"
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794455225.jsonl",
+      "sha256": "db1db4497ff1bedbf52872731b193b538efdfcce8d8d9be151eaeaa65856306b"
+    },
+    "server_idle_seconds": 300
+  },
+  "connection": {
+    "test_session": 157,
+    "elapsed_since_character_list_seconds": 312.0,
+    "server_reports_received": 4,
+    "client_reports_queued": 4,
+    "report_payload_bytes": 1,
+    "report_payload_initialized_zero": true
+  },
+  "mouse_pickup": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794456201.jsonl",
+      "sha256": "e3cd27b7a241efe9287558573d59f80a5e264be3bb94d605f2eb351bd5cf4808"
+    },
+    "ordered_events": [
+      "tutorial-loot-spawn:3524657205:336:3841",
+      "tutorial-loot-draw:3841:0:1",
+      "tutorial-loot-click-input:630:70:4294967295",
+      "tutorial-loot-click-hit:0:0:0",
+      "tutorial-loot-click-hit:3841:0:0",
+      "tutorial-loot-collected:3841:336:0",
+      "tutorial-loot-wait-done:22:0:0",
+      "tutorial-loot-complete:7:0:0",
+      "tutorial-leaving:2:0:0",
+      "world-frame:0:0:0"
+    ],
+    "exit_code": 0,
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-click-visible.png",
+        "sha256": "1838087a4a35a916c27e7e48295037180cbbf97e0b25f8aeb22c74bf5769c98f"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-click-inventory.png",
+        "sha256": "ebcf5004348ddd17cd83d1c5092c99f2c473ee41973ee9a55f38d54ecb9d5ffb"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-loot-click-world.png",
+        "sha256": "658ec5ed6168e81afc403c0122cfd56e3d28c1ceb384d51facf3a8dc5f4d588f"
+      }
+    ]
+  },
+  "before_mouse_capture_fix": {
+    "draw_and_input": [
+      "tutorial-loot-click-hit:0:0:0",
+      "tutorial-loot-draw:3841:0:1",
+      "tutorial-loot-click-input:630:70:38",
+      "tutorial-loot-click-input:396:427:38",
+      "tutorial-loot-click-input:398:427:38",
+      "tutorial-loot-click-input:396:429:38",
+      "tutorial-loot-click-input:394:427:38",
+      "tutorial-loot-click-input:396:425:38"
+    ]
+  },
+  "board_component": {
+    "file": "work/startup455-m6/tutorial-report-board-native.json",
+    "sha256": "9433245c8f389953ffd7cf2796dd96618b54a32d8665ddadb987cca5a18f6110"
+  },
+  "live": {
+    "binary": {
+      "file": "work/startup455-m6/pre-loot-capture-release-22f3ab08.bin",
+      "sha256": "22f3ab08ebd5ff2ded24aec8ee6c92fd0c1c8b8226336ebecf2b06419d722eae"
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794455834.jsonl",
+      "sha256": "6fbfa698d23ec8597bae984cd2eb82c01c501d8c26e3787ea7fbddf66871d0f3"
+    },
+    "ordered_events": [
+      "RF455 NDLanguage:1251:4321",
+      "tutorial-skill-complete:6:0:0",
+      "tutorial-loot-spawn:3524657205:336:3841",
+      "tutorial-loot-screen:396:427:20",
+      "tutorial-briefing:6:14:0",
+      "tutorial-loot-collected:3841:336:0",
+      "tutorial-loot-wait-done:22:0:0",
+      "tutorial-loot-complete:7:0:0",
+      "tutorial-mission-practice:24:39:0",
+      "tutorial-mission-kill:1:65538:0",
+      "tutorial-mission-kill:2:65543:0",
+      "tutorial-mission-kill:3:65544:0",
+      "tutorial-mission-kill:4:65539:0",
+      "tutorial-mission-kill:5:65545:0",
+      "tutorial-mission-kill:6:65540:0",
+      "tutorial-mission-kill:7:65541:0",
+      "tutorial-mission-kill:8:65546:0",
+      "tutorial-mission-kill:9:65547:0",
+      "tutorial-mission-kill:10:65542:0",
+      "tutorial-mission-objective-met:24:10:0",
+      "tutorial-mission-dialog:7:0:0",
+      "tutorial-mission-acknowledged:7:1:0",
+      "tutorial-complete:8:0:0",
+      "tutorial-leaving:2:1:0",
+      "select-result:512:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "exit_code": 0,
+    "tutorial_precondition": "New-player state set only in the owned test process",
+    "drivers": [
+      {
+        "file": "work/startup455-m6/start-russian-tutorial-mission.ps1",
+        "sha256": "9106b090c0be4f4d94f2cd7c11086f8e2e712ee7087e58c623fe125256b4a960"
+      },
+      {
+        "file": "work/startup455-m6/finish-russian-tutorial-mission.ps1",
+        "sha256": "2cd38d190b34609247186b64f1c14476f0b4a8c816109f56d7fd88409806d04f"
+      }
+    ],
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-mission-start.png",
+        "sha256": "74b0d26191fa0abeb56b1ae1581fde09624925865df2ff40e586f677f6222443"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-mission-after-1.png",
+        "sha256": "f9ba93fa44449d29b77428b841b75c363646336b828ba5e1a4f4c96bf137c808"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-mission-after-9.png",
+        "sha256": "6afa5f0b073982da53e23abb638d86388bf9f54568c0ac3e8781c51bfb1e6a43"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-mission-dialog.png",
+        "sha256": "9633e01dda4c820271c5d2eb9de04a39078eddccc6815a9f6d6667f0cb35bf1a"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-mission-world.png",
+        "sha256": "81089eb588153224901be1a16c91564360b9c5d95879a7315a3e15d4d12f7c5a"
+      }
+    ]
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bw.scp",
+      "sha256": "0cb09477e8eb2af9fdce87b623159f17f0ff163970c2bdac88774568258d031b"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Mesh/COM_WEAPON_TSWORD_255.msh",
+      "sha256": "8584e5d8276383b06d01430f4c9ed8a290ae4607fb927fea19d3083edab80b59"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Mesh/COM_WEAPON_TSWORD_255.BBX",
+      "sha256": "7e27de69c96897f569f27554256da0c3d23306d3082a7d281d28b84fd3062aff"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/Item/ModelItem/Tex/COM_WEAPON_TSWORD_255.RFT",
+      "sha256": "a40efc75366a2736f48317b3521011849f754c748d005ab9de4847ee998cbc0e"
+    }
+  ],
+  "open": [
+    "Ground model readability",
+    "Full bag and QBI11 timeout with live input",
+    "Other profiles including TutorialForce and TutorialHunting",
+    "Persist tutorial completion across sessions",
+    "Visual and effect parity beyond exercised scenario"
+  ]
+}

@@ -11,6 +11,7 @@
 #include "userinterface/gamewindow/guiselectedcharwin.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "r3util.h"
 #include "client455_client_items.h"
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_targets.h"
@@ -65,6 +66,23 @@ bool RF455TutorialTargets::hasSelection() const
 std::uint32_t RF455TutorialTargets::selectedId() const
 {
     return hasSelection() ? selected->GetIndex() : ID_INVALID;
+}
+
+bool RF455TutorialTargets::selectedPosition(RF455TutorialVector& position) const
+{
+    if (!hasSelection()) return false;
+    std::copy_n(selected->GetPosition(), position.size(), position.begin());
+    return true;
+}
+
+bool RF455TutorialTargets::inAttackRange(RF455SkillForceItem* skill) const
+{
+    RF455TutorialVector target{};
+    if (!selectedPosition(target)) return false;
+    auto* avatar = _GetAvatar();
+    const auto* position = avatar->GetPosition();
+    const float range = avatar->GetAttackRange(skill ? CAT_SKILL : CAT_NORMAL, FALSE) + selected->GetWidth() * 0.5f;
+    return RF455_TutorialDistanceXZ({{position[0], position[1], position[2]}}, target) <= range;
 }
 
 bool RF455TutorialTargets::attack(RF455SkillForceItem* skill, RF455TutorialContext& context)
@@ -171,6 +189,23 @@ void RF455TutorialTargets::update()
 void RF455TutorialTargets::render()
 {
     for (const auto& monster : monsters) monster->Render();
+}
+
+void RF455TutorialTargets::observeVisibleTargets()
+{
+    auto* screen = _GetUIScreen();
+    for (const auto& monster : monsters) {
+        BBOX bounds{};
+        if (monster->IsDeath() || !monster->GetBoundBox(bounds)) continue;
+        Vector3f point{};
+        for (unsigned i = 0; i < 3; ++i) point[i] = (bounds.pMin[i] + bounds.pMax[i]) * 0.5f;
+        Vector4f projected{};
+        if (GetTransformVertex(&projected, point) && projected[0] >= 0 && projected[0] < screen->GetSizeX() &&
+            projected[1] >= 0 && projected[1] < screen->GetSizeY()) {
+            RF455_ObserveProtocol("tutorial-mission-target", monster->GetIndex(),
+                                  static_cast<unsigned>(projected[0]), static_cast<unsigned>(projected[1]));
+        }
+    }
 }
 
 void RF455TutorialTargets::shutdown()

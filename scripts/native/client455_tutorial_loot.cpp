@@ -8,11 +8,13 @@
 #include "gameprogress/cgameprogress.h"
 #include "userinterface/spritemgr.h"
 #include "mainapp.h"
+#include "r3util.h"
 #include "client455_client_items.h"
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_inventory.h"
 #include "client455_tutorial_loot.h"
 #include <algorithm>
+#include <cmath>
 #include <cstring>
 #include <limits>
 
@@ -30,6 +32,7 @@ struct RF455TutorialLoot::Drop {
     CGroundItem object;
     std::uint8_t table = 0;
     std::uint32_t index = 0;
+    bool drawObserved = false;
 };
 
 RF455TutorialLoot::RF455TutorialLoot() = default;
@@ -72,6 +75,23 @@ bool RF455TutorialLoot::spawn(std::uint8_t table, std::uint32_t code, const RF45
     return true;
 }
 
+bool RF455TutorialLoot::projectedPoint(long& x, long& y) const
+{
+    if (drops.empty()) return false;
+    BBOX bounds{};
+    if (!drops.front()->object.GetBoundBox(bounds)) return false;
+    Vector3f center{};
+    for (unsigned i = 0; i < 3; ++i) center[i] = (bounds.pMin[i] + bounds.pMax[i]) * 0.5f;
+    Vector4f projected{};
+    if (!GetTransformVertex(&projected, center)) return false;
+    auto* screen = _GetUIScreen();
+    if (!(projected[0] >= 0 && projected[0] < screen->GetSizeX() &&
+          projected[1] >= 0 && projected[1] < screen->GetSizeY())) return false;
+    x = std::lround(projected[0]);
+    y = std::lround(projected[1]);
+    return true;
+}
+
 void RF455TutorialLoot::pointAt(long x, long y, const RF455TutorialVector& camera)
 {
     clearHover();
@@ -89,6 +109,7 @@ void RF455TutorialLoot::pointAt(long x, long y, const RF455TutorialVector& camer
 
 bool RF455TutorialLoot::pickHovered(RF455TutorialInventory& inventory)
 {
+    RF455_ObserveProtocol("tutorial-loot-click-hit", hovered ? hovered->object.GetIndex() : 0, 0, 0);
     return collect(hovered, inventory);
 }
 
@@ -127,8 +148,13 @@ void RF455TutorialLoot::render()
 {
     for (const auto& drop : drops) {
         auto& object = drop->object;
-        if (object.ProcessClipping()) continue;
-        object.Render();
+        const bool clipped = object.ProcessClipping() != FALSE;
+        const bool drawn = !clipped && object.Render() != FALSE;
+        if (!drop->drawObserved) {
+            RF455_ObserveProtocol("tutorial-loot-draw", object.GetIndex(), clipped, drawn);
+            drop->drawObserved = true;
+        }
+        if (!drawn) continue;
         if (drop.get() == hovered) {
             object.Enable(ROSF_RENDER_NAME);
             object.RenderName();

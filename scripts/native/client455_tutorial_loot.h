@@ -10,6 +10,7 @@ public:
     ~RF455TutorialLoot();
     bool spawn(std::uint8_t table, std::uint32_t code, const RF455TutorialVector& position);
     bool empty() const { return drops.empty(); }
+    bool projectedPoint(long& x, long& y) const;
     void pointAt(long x, long y, const RF455TutorialVector& camera);
     void clearHover() { hovered = nullptr; }
     bool pickHovered(RF455TutorialInventory&);

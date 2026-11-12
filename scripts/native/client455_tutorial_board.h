@@ -72,6 +72,7 @@ public:
     // inherited legacy message-box rendering/input remains an explicit M6 gap.
     void openLanguageDialog(std::uint32_t languageIndex, std::uint16_t id);
 private:
+    void updateProgressReport();
     void openModal(const char*, std::uint16_t id, std::uint16_t style);
     RF455TutorialRuntime& m_runtime;
     RF455TutorialBoardHost& m_host;

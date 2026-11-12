@@ -14,10 +14,13 @@ public:
     bool select(long x, long y, const RF455TutorialVector& camera);
     bool hasSelection() const;
     std::uint32_t selectedId() const;
+    bool selectedPosition(RF455TutorialVector&) const;
+    bool inAttackRange(RF455SkillForceItem*) const;
     bool attack(RF455SkillForceItem* skill, RF455TutorialContext&);
     void clearSelection();
     void update();
     void render();
+    void observeVisibleTargets();
     void shutdown();
 
 private:
