@@ -1,0 +1,120 @@
+{
+  "status": "PASS_KOREAN_NEUTRALB_WITH_BASE_MAP_CATALOG",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "map_loader_rva": "0x3caae0"
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "214d61e38c4afb7b33d212ceebf0ff680c99492b8ae58fb6925652e17e7ef561",
+    "bytes": 2498048,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19d7f0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "base_count": 110,
+  "localized_counts": {
+    "en-gb": 31,
+    "en-id": 31,
+    "en-ph": 31,
+    "ja-jp": 31,
+    "ko-kr": 100,
+    "pt-br": 31,
+    "ru-ru": 31,
+    "zh-cn": 31,
+    "zh-tw": 110
+  },
+  "native": {
+    "file": "inventory/client455-map-locale-native.json",
+    "sha256": "0d44061eb95a4843a630bd1ba11e3afa0c149c01b8cbc5e2d4adc049921995ed"
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/Map.edf",
+      "sha256": "801c2724eff2a4a4b519d207ad26a6e98845444b464707d86c745b2af6b9c309"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/NDMap.edf",
+      "sha256": "836511334d57369ac72e479825045ee2e123d53addd4f41ebdc0c5bff53042e8"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/Cska.txt",
+      "sha256": "004759a2a14fee6532d28f2288283c482a3000597fece9e761fc8f59e3cf96d9"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/bw.scp",
+      "sha256": "6b9dc2da906b716e01afa0687e8eae329abc9e221e240d02c957e955a8d321dc"
+    }
+  ],
+  "live": {
+    "profile": "ko-kr",
+    "from_character_select": {
+      "journal": {
+        "file": "work/startup455-m6/menu-live/events-1794449399.jsonl",
+        "sha256": "d7f7afb6423f6c1c34f87e768ac2ebfc82ba9365362c8e8e3e8f86b933135fd1"
+      },
+      "frame": {
+        "file": "work/startup455-m6/menu-live/map-locale-korea-world.png",
+        "sha256": "03b3df51151676098d82aec7e3691b45b1cb0d138e4bec46b074d63303964d53"
+      },
+      "map": "NeutralB",
+      "exit_code": 0,
+      "events": [
+        "map-catalog:110:100:3",
+        "select-result:512:0:0",
+        "map-bsp:0:1:0",
+        "avatar-ready:0:0:0",
+        "world-frame:0:0:0"
+      ]
+    },
+    "from_tutorial": {
+      "journal": {
+        "file": "work/startup455-m6/menu-live/events-1794449501.jsonl",
+        "sha256": "115f047e83cb3eb16d620045ecfbca343ec9504b9f959a9d93686accc2f59001"
+      },
+      "frame": {
+        "file": "work/startup455-m6/menu-live/map-locale-korea-tutorial-world.png",
+        "sha256": "9402d270b2a0b9b42d009cab6b6b50e7b55d5221b36cd3d7490d27559f734bf7"
+      },
+      "map": "NeutralB",
+      "exit_code": 0,
+      "events": [
+        "map-catalog:110:100:3",
+        "tutorial-skill-practice:25:44:0",
+        "tutorial-shortcut-linked:0:1:655362",
+        "tutorial-skill-complete:6:0:0",
+        "tutorial-leaving:2:0:0",
+        "select-result:512:0:0",
+        "map-bsp:0:1:0",
+        "avatar-ready:0:0:0",
+        "world-frame:0:0:0"
+      ]
+    },
+    "tutorial_precondition": "New-player tutorial state set only in the owned test process",
+    "drivers": [
+      {
+        "file": "work/startup455-m6/test-korea-world-after-assets.ps1",
+        "sha256": "2312ab84990b434fdaaa374629d774500686fe576c71d1393fa52b1ecd6be7bd"
+      },
+      {
+        "file": "work/startup455-m6/test-korea-tutorial-world-after-map-fix.ps1",
+        "sha256": "5522ec059bbb0bc9dc9b43924b2a2d7568a2a767a2ee81f5719e42aa3a5367fb"
+      }
+    ]
+  },
+  "open": [
+    "Russian and other localized live startup profiles",
+    "Cross-version map label mapping",
+    "Remaining tutorial quests and final acceptance"
+  ]
+}

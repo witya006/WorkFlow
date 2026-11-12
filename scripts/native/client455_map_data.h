@@ -50,15 +50,17 @@ struct RF455MapLayer {
     std::vector<unsigned char> name,image;
     std::vector<RF455MapLabel> labels;
 };
+enum class RF455MapLoad {Complete,MissingInput,MainCount,LocalizedCount,Malformed,BaseOnly};
 struct RF455MapData {
     std::unique_ptr<RF455MapInfo[]> maps;
     std::uint32_t count=0,localizedCount=0;
     std::array<std::vector<RF455MapLayer>,2> layers;
     std::array<std::uint32_t,2> localizedLayerCounts={};
     std::size_t mainConsumed=0,localizedConsumed=0;
+    RF455MapLoad localizationStatus=RF455MapLoad::MissingInput;
 };
-enum class RF455MapLoad {Complete,MissingInput,MainCount,LocalizedCount,Malformed};
 RF455MapLoad RF455_ParseMapData(RF455MapData&,const void*,std::size_t,const void*,std::size_t);
+// A valid catalog remains usable when the optional localized overlay fails.
 RF455MapLoad RF455_LoadMapData(RF455MapData&,const char* mainFile,const char* localizedFile);
 
 #if defined(_M_IX86)

@@ -17,14 +17,17 @@ def port_map_data(raw,relative,section):
         once(b'\tBOOL\tLoadData( void );',b'\tBOOL\tLoadData( void );\r\n\tbool ApplyMiniMapGeometry455(BYTE index);\r\n\tconst RF455MapData& MapData455()const{return m_maps455;}\r\n\tRF455MapLoad MapLoadStatus455()const{return m_mapLoad455;}\r\nprivate:\r\n\tRF455MapLoad m_mapLoad455=RF455MapLoad::MissingInput;\r\npublic:')
         return raw,True
     if relative=='cland.cpp':
-        raw=b'#include "client455_nation_paths.h"\r\n'+raw
+        raw=b'#include "client455_nation_paths.h"\r\n#include "client455_protocol_observation.h"\r\n'+raw
         once(b'\tZeroMemory( &m_pMapInfo, sizeof( MAP_INFO ) * MAX_MAP );',b'\tm_maps455=RF455MapData{};m_pMapInfo=nullptr;')
         begin,end=section(raw,b'CLand::LoadData(',b'CLand::LoadData(')
         raw=raw[:begin]+b'''CLand::LoadData(void){
     char localized[260];std::sprintf(localized,"%s/NDMap.edf",RF455_GetClientDataRoot());
     m_mapLoad455=RF455_LoadMapData(m_maps455,"./DataTable/Map.edf",localized);
-    if(m_mapLoad455!=RF455MapLoad::Complete)return FALSE;
-    m_pMapInfo=m_maps455.maps.get();m_byMaxMapNum=m_maps455.count;return TRUE;
+    if(m_mapLoad455!=RF455MapLoad::Complete && m_mapLoad455!=RF455MapLoad::BaseOnly)return FALSE;
+    m_pMapInfo=m_maps455.maps.get();m_byMaxMapNum=m_maps455.count;
+    RF455_ObserveProtocol("map-catalog",m_maps455.count,m_maps455.localizedCount,
+                          static_cast<unsigned>(m_maps455.localizationStatus));
+    return TRUE;
 }'''+raw[end:]
         # Public real-provider path used by ordinary UI_SetMinimap and focused lab.
         # Existing UI reset/sprite/object creation remains a separate open port.
