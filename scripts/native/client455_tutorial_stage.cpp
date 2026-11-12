@@ -28,11 +28,13 @@ constexpr WORD welcomeDialog = 0x6000;
 constexpr WORD leaveDialog = 0x6001;
 constexpr DWORD settingsQuest = 1;
 constexpr DWORD movementQuest = 2;
+constexpr DWORD cameraQuest = 3;
 
 class TutorialSettingsCommand;
 
 class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCameraHost,
-                              private RF455TutorialBoardHost, private RF455TutorialDistanceHost {
+                              private RF455TutorialBoardHost, private RF455TutorialDistanceHost,
+                              private RF455TutorialOrbitHost {
     friend class TutorialSettingsCommand;
     enum class Phase { Intro, Welcome, Briefing, LessonBoundary, Leaving, Selecting, Zone, Failed };
     RF455TutorialIntro intro;
@@ -62,9 +64,17 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     bool pathReady = false;
     bool practiceClick = false;
     float savedCameraHeight = 0;
+    BOOL savedCameraInterpolation = TRUE;
+    BOOL savedCameraKeyboardRotation = FALSE;
     bool savedScreenVisible = true;
     bool savedMouseVisible = true;
     Vector3f cameraPosition{};
+    RF455TutorialVector previousOrbit{};
+    struct {
+        bool active = false;
+        LONG x = 0, y = 0;
+        float elevation = 0, azimuth = 0;
+    } cameraDrag;
 
     BOOL LoadData() override;
     BOOL UnloadData() override;
@@ -100,6 +110,11 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void turnAvatarToward(RF455TutorialVector&, bool interpolate, float) override;
     void avatarState(std::uint32_t action, bool checkDuplicate) override;
     void avatarToggle(bool run, bool force) override;
+    void setCameraOrbit(const RF455TutorialVector&, bool dirty) override;
+    void animateCameraOrbit(const RF455TutorialVector& relative) override;
+    RF455TutorialVector cameraOrbit() const;
+    void cameraFromMouse();
+    void advanceCamera();
     bool movementInputEnabled();
     void moveFromMouse();
     void advanceAvatar();
@@ -145,9 +160,10 @@ class TutorialStageFactory final : public RF455TutorialFactory {
     RF455TutorialBasicFactory basic;
     CGP_Tutorial455& stage;
     RF455TutorialDistanceHost& movement;
+    RF455TutorialOrbitHost& camera;
 public:
-    TutorialStageFactory(CGP_Tutorial455& stage, RF455TutorialDistanceHost& movement)
-        : stage(stage), movement(movement) {}
+    TutorialStageFactory(CGP_Tutorial455& stage, RF455TutorialDistanceHost& movement, RF455TutorialOrbitHost& camera)
+        : stage(stage), movement(movement), camera(camera) {}
     std::unique_ptr<RF455TutorialProcessor> create(const RF455TutorialInstruction& command) override;
 };
 
@@ -172,10 +188,10 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
         if (data.size() == 20 && std::isfinite(commandField<float>(command, 12)))
             return std::make_unique<TutorialSettingsCommand>(stage, command);
         break;
-    case 14:
+    case 14: case 15: case 16:
         if (data.size() == 20 && std::isfinite(commandField<float>(command, 8)) &&
             std::isfinite(commandField<float>(command, 12)) && std::isfinite(commandField<float>(command, 16)))
-            return std::make_unique<TutorialSettingsCommand>(stage, command);
+            return RF455_CreateTutorialOrbitCommand(command, movement, camera);
         break;
     case 19: case 21:
         if (data.size() == 8 && data[6] == 27) return std::make_unique<TutorialSettingsCommand>(stage, command);
@@ -206,11 +222,6 @@ bool TutorialSettingsCommand::start(RF455TutorialHost&, RF455TutorialContext&)
 {
     switch (type) {
     case 13: _GetAvatar()->SetRotY(commandField<float>(command, 12), TRUE); break;
-    case 14:
-        _GetCamera()->SetYaw(commandField<float>(command, 8));
-        _GetCamera()->SetPitch(commandField<float>(command, 12));
-        _GetCamera()->SetDistance(commandField<float>(command, 16));
-        break;
     case 19: stage.openOptions(); break;
     case 21:
         stage.options.Close();
@@ -252,6 +263,8 @@ BOOL CGP_Tutorial455::Create()
     savedMouseVisible = screen->GetMouse()->IsShow() != FALSE;
     savedCameraFlags = cameraControlFlags();
     savedCameraHeight = _GetCamera()->GetAddY();
+    savedCameraInterpolation = _GetCamera()->IsCameraInterpolation();
+    savedCameraKeyboardRotation = _GetCamera()->IsRotatedByKeyboard();
     // Login releases its sprite set before this stage is created. Its child
     // windows must be detached before drawing the new scene and dialogs.
     screen->SetCapture455(nullptr);
@@ -305,6 +318,9 @@ BOOL CGP_Tutorial455::Destroy()
             optionsInstalled = false;
         }
         _GetCamera()->SetAddY(savedCameraHeight);
+        _GetCamera()->SetState(CAM_STOP);
+        _GetCamera()->SetCameraInterpolation(savedCameraInterpolation);
+        _GetCamera()->SetRotatedByKeyboard(savedCameraKeyboardRotation);
         showScreen(savedScreenVisible);
         showMouse(savedMouseVisible);
         if (GetD3dDevice()) {
@@ -344,16 +360,17 @@ void CGP_Tutorial455::startBoardScript()
     const char file[] = {"bca"[race], char(type + 'a' - 'A'), '.', 's', 'c', 'p', 0};
     const auto path = std::string(RF455_GetClientDataRoot()) + "\\" + file;
     RF455TutorialScript script;
-    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() <= movementQuest ||
+    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() <= cameraQuest ||
         std::memcmp(script.quests[0].name.data(), "TutorialStart", sizeof("TutorialStart")) ||
         std::memcmp(script.quests[settingsQuest].name.data(), "TutorialBegin", sizeof("TutorialBegin")) ||
-        std::memcmp(script.quests[movementQuest].name.data(), "TutorialMove", sizeof("TutorialMove"))) {
+        std::memcmp(script.quests[movementQuest].name.data(), "TutorialMove", sizeof("TutorialMove")) ||
+        std::memcmp(script.quests[cameraQuest].name.data(), "TutorialCamera", sizeof("TutorialCamera"))) {
         fail("Tutorial script could not be loaded.");
         return;
     }
     // Each later quest is attached once its live providers have been verified.
-    script.quests.resize(movementQuest + 1);
-    TutorialStageFactory factory(*this, *this);
+    script.quests.resize(cameraQuest + 1);
+    TutorialStageFactory factory(*this, *this, *this);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
         RF455_ObserveProtocol("tutorial-unsupported", static_cast<DWORD>(unsupported.quest),
@@ -383,7 +400,81 @@ void CGP_Tutorial455::scriptCompleted()
 {
     phase = Phase::LessonBoundary;
     inputBlocked = false;
-    RF455_ObserveProtocol("tutorial-move-complete", runtime.currentQuest, 0, 0);
+    RF455_ObserveProtocol("tutorial-camera-complete", runtime.currentQuest, 0, 0);
+}
+
+RF455TutorialVector CGP_Tutorial455::cameraOrbit() const
+{
+    auto* camera = _GetCamera();
+    return {{camera->GetYaw(), camera->GetPitch(), camera->GetDistance()}};
+}
+
+void CGP_Tutorial455::setCameraOrbit(const RF455TutorialVector& orbit, bool dirty)
+{
+    auto* camera = _GetCamera();
+    camera->SetYaw(orbit[0]);
+    camera->SetPitch(orbit[1]);
+    camera->SetDistance(orbit[2]);
+    if (dirty) cameraDrag.active = false;
+}
+
+void CGP_Tutorial455::animateCameraOrbit(const RF455TutorialVector& relative)
+{
+    Vector3f change = {relative[0], relative[1], relative[2]};
+    _GetCamera()->SetRotate(change);
+}
+
+void CGP_Tutorial455::cameraFromMouse()
+{
+    if (runtime.currentQuest != cameraQuest || phase != Phase::Briefing) return;
+    auto* mouse = _GetUIMouseDev();
+    const LONG wheel = mouse->GetZ();
+    gMouse.z = 0;
+    const bool allowed = !inputBlocked && !boardBusy() && g_dwGUIInputID == NONE_INPUT_ID &&
+        GetForegroundWindow() == _GetUIScreen()->GetHWND();
+    auto* camera = _GetCamera();
+    if (allowed && mouse->IsPressed(R_BUTTON)) {
+        const LONG x = mouse->GetX(), y = mouse->GetY();
+        auto* screen = _GetUIScreen();
+        if (!cameraDrag.active) {
+            cameraDrag = {true, x, y, camera->GetYaw(), camera->GetPitch()};
+        } else if (x != cameraDrag.x || y != cameraDrag.y) {
+            const float elevation = cameraDrag.elevation + (y - cameraDrag.y) *
+                (static_cast<float>(screen->GetSizeX()) / 1024.0f) * 0.2f;
+            camera->SetYaw(std::fmax(-89.0f, std::fmin(89.0f, elevation)));
+            if (x <= 40 || x >= screen->GetSizeX() - 40) {
+                cameraDrag.x = x;
+                cameraDrag.azimuth = camera->GetPitch();
+                camera->SetPitch(cameraDrag.azimuth + (x <= 40 ? 3.0f : -3.0f));
+            } else {
+                camera->SetPitch(cameraDrag.azimuth + (cameraDrag.x - x) *
+                    (static_cast<float>(screen->GetSizeY()) / 768.0f) * 0.15f);
+            }
+        }
+    } else cameraDrag.active = false;
+    if (allowed && wheel) {
+        static constexpr float maximum[] = {250, 250, 275, 275, 290};
+        const auto race = _GetAvatar()->GetRace();
+        if (race < _countof(maximum))
+            camera->SetDistance(std::fmax(10.0f, std::fmin(maximum[race], camera->GetDistance() - wheel * 0.07f)));
+    }
+}
+
+void CGP_Tutorial455::advanceCamera()
+{
+    _GetCamera()->Rotate();
+    const auto* quest = runtime.get();
+    const auto* command = quest ? quest->current : nullptr;
+    if (!command || (command->type != 15 && command->type != 16) || (command->flags & 2)) return;
+    const auto orbit = cameraOrbit();
+    auto& remaining = runtime.context.cameraRemaining;
+    const auto reached = [&] { return remaining[0] <= 1 && remaining[1] <= 1 && remaining[2] <= 1; };
+    const bool previouslyReached = reached();
+    for (unsigned i = 0; i < orbit.size(); ++i)
+        if (remaining[i] > 0) remaining[i] -= std::fabs(orbit[i] - previousOrbit[i]);
+    previousOrbit = orbit;
+    if (!previouslyReached && reached())
+        RF455_ObserveProtocol("tutorial-camera-reached", command->id, command->type, 0);
 }
 
 RF455TutorialWaitState CGP_Tutorial455::waitState(std::uint32_t)
@@ -483,10 +574,16 @@ void CGP_Tutorial455::advanceLesson()
         welcomeAccepted = false;
         if (questIndex == settingsQuest)
             RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
+        if (questIndex == movementQuest)
+            RF455_ObserveProtocol("tutorial-move-complete", runtime.currentQuest, 0, 0);
     }
     const auto* current = quest ? quest->current : nullptr;
     if (current && current != previous && current->type == 7)
         RF455_ObserveProtocol("tutorial-move-practice", current->id, _GetAvatar()->GetWalkMode(), 0);
+    if (current && current != previous && (current->type == 15 || current->type == 16)) {
+        previousOrbit = cameraOrbit();
+        RF455_ObserveProtocol("tutorial-camera-command", current->id, current->type, 0);
+    }
 }
 
 void CGP_Tutorial455::openOptions()
@@ -619,6 +716,7 @@ void CGP_Tutorial455::followAvatarCamera()
 HRESULT CGP_Tutorial455::FrameMove()
 {
     if (phase != Phase::Failed) {
+        if (runtime.currentQuest == cameraQuest) advanceCamera();
         intro.frame(*this, skipIntro);
         if (intro.active()) std::memcpy(cameraPosition, position(), sizeof(cameraPosition));
         _GetLand()->GetLevel()->FrameMove();
@@ -652,6 +750,7 @@ BOOL CGP_Tutorial455::InputProcess()
     _GetUIMouseDev()->Update();
     _GetUIScreen()->InputProc();
     moveFromMouse();
+    cameraFromMouse();
     auto* network = _GetNetworkMgr();
     if (phase == Phase::Leaving && IsFadeOut()) {
         if (!network->SystemMsg_SelCharRequest_zone(BYTE(RF455_SelectedCharacterSlot()))) {
@@ -687,6 +786,7 @@ void CGP_Tutorial455::Dialog(WORD id, DWORD result)
     if ((phase == Phase::Welcome && id == welcomeDialog && result == MSG_CANCEL) ||
         ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && id == leaveDialog && result == MSG_OK)) {
         cancelCursor();
+        _GetCamera()->SetState(CAM_STOP);
         _GetAvatar()->SetAction(CAI_MOVE_STOP);
         if (optionsInstalled) options.Close();
         board.requestFinish(true);

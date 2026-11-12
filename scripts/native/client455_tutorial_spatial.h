@@ -26,12 +26,20 @@ public:
 std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialDistanceCommand(
     const RF455TutorialInstruction&, RF455TutorialDistanceHost&);
 
-class RF455TutorialSpatialHost : public RF455TutorialDistanceHost {
+class RF455TutorialOrbitHost {
+public:
+    virtual ~RF455TutorialOrbitHost() = default;
+    virtual void setCameraOrbit(const RF455TutorialVector&, bool dirty) = 0;
+    virtual void animateCameraOrbit(const RF455TutorialVector& relative) = 0;
+};
+
+std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialOrbitCommand(
+    const RF455TutorialInstruction&, RF455TutorialHost&, RF455TutorialOrbitHost&);
+
+class RF455TutorialSpatialHost : public RF455TutorialDistanceHost, public RF455TutorialOrbitHost {
 public:
     virtual void setAvatarPosition(const RF455TutorialVector&, bool, bool) = 0;
     virtual void setAvatarYaw(float, bool, float speed) = 0;
-    virtual void setCameraOrbit(const RF455TutorialVector&, bool dirty) = 0;
-    virtual void animateCameraOrbit(const RF455TutorialVector& relative) = 0;
     // Reference camera float276; its final gameplay name/provider is not yet certified.
     virtual void setCameraParameter276(float) = 0;
     virtual RF455TutorialVector avatarPosition() = 0;

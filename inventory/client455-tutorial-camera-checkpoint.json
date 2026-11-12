@@ -1,0 +1,278 @@
+{
+  "status": "PASS_BELLATO_TUTORIAL_CAMERA_AND_CONFIRMED_EXIT",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "position_start": "0x27c10",
+      "position_update": "0x27f00",
+      "orbit_deltas": "0x158b80",
+      "abs_delta_call": "0x158eff",
+      "rotate_start": "0x3c7750",
+      "rotate_step": "0x3c75e0",
+      "mouse_orbit": "0x154b70",
+      "wheel_zoom": "0x155940",
+      "camera_defaults": "0x3c7050"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-tutorial-camera.json",
+      "sha256": "f87d2fa2a91fa8f8e83fb747d8d9d8855fa199e9a6b4cd476dcf8e4a1c4bd439"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "8be1825c044585642df3ecfc1732178490c92e6f7e0f4ede1d4fdbd5c2d708da",
+    "bytes": 2482176,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19a340",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ],
+    "objects": 182,
+    "unresolved_symbols": 0
+  },
+  "data": {
+    "checked_files": 90,
+    "camera_instructions_per_file": 69,
+    "behavioral_command_shapes": 1,
+    "next_quest": {
+      "TutorialEquipment": 89,
+      "iTutorialEquipment": 1
+    },
+    "next_quest_variant": "pt-br/bw.scp",
+    "script": {
+      "file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp",
+      "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+    },
+    "key_sprites": {
+      "file": "work/startup455-m6/menu-live/SpriteImage/Common/tutorial.spr",
+      "sha256": "092461b4ea653dc950e5644c17fd940ddaceee83675cb030d797b49968e6974b"
+    },
+    "static_audit": {
+      "file": "work/startup455-m6/audit-tutorial-camera.py",
+      "sha256": "cfe09b56acc0bb766aa2e7d76a93ffd17360727708354b2b8c719bcec87a5e46"
+    }
+  },
+  "component_check": {
+    "file": "work/startup455-m6/tutorial-camera-spatial-probe.json",
+    "sha256": "79d3a2f65b7923bce5fa7a695e682a1442fc5cd481b282b3cf4f85cc75dc092a"
+  },
+  "live": {
+    "log": {
+      "file": "work/startup455-m6/menu-live/events-1794444957.jsonl",
+      "sha256": "9634156d380d2955f42c98cdc65f5b486042f0107ec266aabb6efaf466921c26"
+    },
+    "input_script": {
+      "file": "work/startup455-m6/test-tutorial-camera.ps1",
+      "sha256": "4246d029fde74119367745d2998e34d6001b2b3ebb6039535c4b9ce4eada6eda"
+    },
+    "viewport": [
+      640,
+      500
+    ],
+    "fixture": "Restore the original new-character skip flag only inside the own child process.",
+    "commands_reached": [
+      {
+        "id": 15,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          60.0,
+          0.0
+        ]
+      },
+      {
+        "id": 16,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          -120.0,
+          0.0
+        ]
+      },
+      {
+        "id": 17,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          360.0,
+          0.0
+        ]
+      },
+      {
+        "id": 24,
+        "selector": 16,
+        "requested_delta": [
+          0.0,
+          100.0,
+          0.0
+        ]
+      },
+      {
+        "id": 25,
+        "selector": 16,
+        "requested_delta": [
+          0.0,
+          -200.0,
+          0.0
+        ]
+      },
+      {
+        "id": 36,
+        "selector": 15,
+        "requested_delta": [
+          30.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 37,
+        "selector": 15,
+        "requested_delta": [
+          -60.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 38,
+        "selector": 15,
+        "requested_delta": [
+          60.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 39,
+        "selector": 15,
+        "requested_delta": [
+          -30.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 44,
+        "selector": 16,
+        "requested_delta": [
+          30.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 45,
+        "selector": 16,
+        "requested_delta": [
+          -60.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "id": 56,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          0.0,
+          30.0
+        ]
+      },
+      {
+        "id": 57,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          0.0,
+          -60.0
+        ]
+      },
+      {
+        "id": 58,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          0.0,
+          60.0
+        ]
+      },
+      {
+        "id": 59,
+        "selector": 15,
+        "requested_delta": [
+          0.0,
+          0.0,
+          -30.0
+        ]
+      },
+      {
+        "id": 64,
+        "selector": 16,
+        "requested_delta": [
+          0.0,
+          0.0,
+          30.0
+        ]
+      },
+      {
+        "id": 65,
+        "selector": 16,
+        "requested_delta": [
+          0.0,
+          0.0,
+          -60.0
+        ]
+      }
+    ],
+    "ordinary_input": [
+      "right drag horizontally",
+      "right drag vertically",
+      "wheel away",
+      "wheel toward"
+    ],
+    "select_reply_result": 512,
+    "world_map": "NeutralB",
+    "exit_code": 0,
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-orbit-demo.png",
+        "sha256": "7217f16735dde415783151b381349427c4e763e469eb3d299a1d5435e2a3d408"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-azimuth-practice.png",
+        "sha256": "d562439683b3c8c6de126677d3348309f0265dc984560857d3b4a1348cd639d1"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-elevation-practice.png",
+        "sha256": "c8c3875624ddc9727975da81c7d9d48b779fc384c2be20155998ea1155d64828"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-zoom-practice.png",
+        "sha256": "c911fbbafadf4016a1fb52ffb480d47b0f2ed19532d2c1eaa61fafcd7a1c24be"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-completed.png",
+        "sha256": "56965fb4e499d42957b19a83f391498bf9534cd5f11a1c0ed9ef165e02c78cae"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-camera-world.png",
+        "sha256": "762e955941e20fe2dd8e7e75626d62e5bc6beab35e70ef6fe9261111b0c9f31f"
+      }
+    ]
+  },
+  "open": [
+    "TutorialEquipment and subsequent lessons",
+    "Natural completion without opting out",
+    "Live checks for other races, locales and viewport sizes",
+    "Frame-by-frame comparison of orbit demonstrations"
+  ]
+}

@@ -99,22 +99,41 @@ public:
         : Spatial(instruction, world), value(vector(instruction.fixed, 8)) {}
 private:
     RF455TutorialVector value;
-    bool start(RF455TutorialHost& host, RF455TutorialContext& context) override {
+    bool start(RF455TutorialHost& host, RF455TutorialContext&) override {
         if (!bound(host)) return false;
         switch (type) {
         case 12: world.setAvatarPosition(value, true, false); flags |= 4; break;
         case 13: world.setAvatarYaw(value[1], true, 12.0f); flags |= 4; break;
-        case 14: world.setCameraOrbit(value, true); flags |= 4; break;
-        case 15: case 16:
-            for (unsigned i = 0; i != 3; ++i) context.cameraRemaining[i] = std::fabs(value[i]);
-            if (type == 15) world.animateCameraOrbit(value);
-            break;
         case 18: world.setCameraParameter276(value[0] <= 0 ? 75.0f : value[0]); flags |= 4; break;
         }
         return true;
     }
+    bool update(RF455TutorialHost&, RF455TutorialContext&) override { return false; }
+    void finish(RF455TutorialHost&, RF455TutorialContext&) override {}
+};
+
+class Orbit final : public RF455TutorialProcessor {
+public:
+    Orbit(const RF455TutorialInstruction& instruction, RF455TutorialHost& host, RF455TutorialOrbitHost& camera)
+        : RF455TutorialProcessor(instruction.dataType, instruction.id, instruction.fixed[4]),
+          owner(host), camera(camera), value(vector(instruction.fixed, 8)) {}
+private:
+    RF455TutorialHost& owner;
+    RF455TutorialOrbitHost& camera;
+    const RF455TutorialVector value;
+    bool start(RF455TutorialHost& host, RF455TutorialContext& context) override {
+        if (&host != &owner) return false;
+        if (type == 14) {
+            camera.setCameraOrbit(value, true);
+            flags |= 4;
+        } else {
+            for (unsigned i = 0; i != 3; ++i) context.cameraRemaining[i] = std::fabs(value[i]);
+            if (type == 15) camera.animateCameraOrbit(value);
+        }
+        return true;
+    }
     bool update(RF455TutorialHost& host, RF455TutorialContext& context) override {
-        if (!bound(host) || (type != 15 && type != 16)) return false;
+        if (&host != &owner || type == 14) return false;
         if (context.cameraRemaining[0] <= 1.0f && context.cameraRemaining[1] <= 1.0f &&
             context.cameraRemaining[2] <= 1.0f) return true;
         return std::uint32_t(host.milliseconds() - context.startTime) >= 20000;
@@ -260,10 +279,18 @@ std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialDistanceCommand(
     return nullptr;
 }
 
+std::unique_ptr<RF455TutorialProcessor> RF455_CreateTutorialOrbitCommand(
+    const RF455TutorialInstruction& instruction, RF455TutorialHost& host, RF455TutorialOrbitHost& camera) {
+    if (instruction.selector < 12 || instruction.selector > 18 || instruction.fixed.size() != 20 ||
+        instruction.dataType < 14 || instruction.dataType > 16) return nullptr;
+    return std::make_unique<Orbit>(instruction, host, camera);
+}
+
 std::unique_ptr<RF455TutorialProcessor> RF455TutorialSpatialFactory::create(const RF455TutorialInstruction& instruction) {
     if (instruction.selector < 6) return basic.create(instruction);
     const auto size = instruction.fixed.size();
     if (auto movement = RF455_CreateTutorialDistanceCommand(instruction, host)) return movement;
+    if (auto orbit = RF455_CreateTutorialOrbitCommand(instruction, host, host)) return orbit;
     if (instruction.selector <= 8 && size == 20)
         return std::unique_ptr<RF455TutorialProcessor>(new Move(instruction, host));
     if (instruction.selector >= 9 && instruction.selector <= 11 && size == 24)
