@@ -7,6 +7,7 @@ def port_monster_force(raw, relative, native):
     if relative == 'item/citemdata.h':
         position = raw.index(b'class CSFItem :')
         prefix, raw = raw[:position], raw[position:]
+        prefix += b'BYTE RF455WeaponHoldType(DWORD meshID);\n'
         raw = replace(raw, b'\tSF_DATA *\t\tm_pData;', b'\tDWORD m_typedSFRow455 = ID_INVALID;\n\tBOOL CreateTyped455(BYTE type, DWORD index, BYTE level);\n\tSF_DATA *\t\tm_pData;')
         raw = replace(raw, b'if( m_pData ) return m_pData->dwDTIndex; else return ID_INVALID;',
                       b'if( m_pData ) return m_pData->dwDTIndex; '
@@ -24,6 +25,14 @@ def port_monster_force(raw, relative, native):
                       b'\tbool HasForceRow455() const { return m_bySFType == CAT_FORCE && m_typedSFRow455 != ID_INVALID; }')
         return prefix + raw, True
     if relative == 'item/citemdata.cpp':
+        hold_start = raw.index(b'BYTE\nCBaseItem::GetHoldType( void )')
+        switch_start = raw.index(b'\t\tswitch( dwWeaponKind )\n', hold_start)
+        switch_end = raw.index(b'\n\t\t}\n\t}\n\telse if', switch_start) + len(b'\n\t\t}')
+        weapon_cases = raw[switch_start:switch_end].replace(b'dwWeaponKind', b'(meshID & 0x0000ff00) >> 8')
+        weapon_cases = b'\n'.join(line[1:] if line.startswith(b'\t') else line for line in weapon_cases.split(b'\n'))
+        raw = (raw[:hold_start] + b'BYTE RF455WeaponHoldType(DWORD meshID)\n{\n' + weapon_cases + b'\n}\n\n' +
+               raw[hold_start:switch_start].split(b'\n\t\tDWORD dwWeaponKind')[0] +
+               b'\n\t\treturn RF455WeaponHoldType(GetMeshID());' + raw[switch_end:])
         raw = replace(raw, b'CSFItem::Init( void )\n{', b'CSFItem::Init( void )\n{\n\tm_typedSFRow455 = ID_INVALID;')
         raw = replace(raw, b'CSFItem::SetData( SF_DATA * pi_pData )\n{',
                       b'CSFItem::SetData( SF_DATA * pi_pData )\n{\n\tm_typedSFRow455 = ID_INVALID;')
@@ -33,14 +42,18 @@ def port_monster_force(raw, relative, native):
                       b'\t\treturn RF455_GameItems().skillForce.hasAttackEffect(m_bySFType, m_typedSFRow455);')
         raw = replace(raw, b'CSFItem::GetRangeType( void )\n{', b'''CSFItem::GetRangeType( void )
 {
-    if (m_bySFType == CAT_SKILL && m_typedSFRow455 != ID_INVALID) {
-        const auto row = RF455_GameItems().skillForce.get(CAT_SKILL, m_typedSFRow455);
+    if (m_typedSFRow455 != ID_INVALID) {
+        const auto row = RF455_GameItems().skillForce.get(m_bySFType, m_typedSFRow455);
         const unsigned effect = 144u + m_byLevel;
-        return IsAttackable() && row.size > effect ? row.data[effect] : 0;
+        return m_byLevel >= 1 && m_byLevel <= 7 && IsAttackable() && row.size > effect ? row.data[effect] : 0;
     }''')
         return (b'#include "client455_client_items.h"\n' + raw + b'\n' +
                 (native / 'client455_monster_force_result.inc').read_bytes()), True
     if relative == 'character/player/cbaseplayer.cpp':
+        raw = replace(raw,
+                      b'CNormalItem *\tpWeapon\t\t= GetNormalItem( IEPT_WEAPON );\n\t\tif( pWeapon )\n\t\t\tbyHoldType = pWeapon->GetHoldType();',
+                      b'const auto* weapon = GetEquipItem455(IEPT_WEAPON);\n\t\tif (weapon)\n'
+                      b'\t\t\tbyHoldType = RF455WeaponHoldType(weapon->GetPlan455().meshID);')
         raw = replace(raw, b'\tDWORD dwAniTypeID;\n\n\tswitch( pi_dwActionID )',
                       b'\tDWORD dwAniTypeID = ID_INVALID;\n\n\tswitch( pi_dwActionID )')
         begin = raw.index(b'CPlayerProc::GetAnimationData_Skill(')

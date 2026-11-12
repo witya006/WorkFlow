@@ -1,0 +1,136 @@
+{
+  "scope": "Russian Bellato Force tutorial and natural transition to map 0, NeutralB, in two local live runs",
+  "restored_stock_profile": {
+    "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bf.scp",
+    "sha256": "aef56ffbb8922fbe4a40b919667599929a5c42658ed0e385e50c6163bf40c20b"
+  },
+  "fixture": {
+    "selection": "Slot 2 local avatar only, novice flag and class index 30 for bf.scp",
+    "first_run_scp": "unmodified",
+    "retry_scp": "only settings, movement, camera, equipment shortened in local copy",
+    "retry_stock_chapters": [
+      "TutorialForce",
+      "TutorialHunting",
+      "TutorialLooting",
+      "TutorialMission"
+    ],
+    "input": "ordinary Windows keyboard and mouse after selection",
+    "server_character_class_modified": false
+  },
+  "initial_run": {
+    "client": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "d19147433c9e38d211990c2f2b1bd22ae73c8dc62d87aa8352abe532315f458c",
+      "bytes": 2517504,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x1a1650",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794458263.jsonl",
+      "sha256": "a54a9e3ae4a3404084e49589908260a9a1432b82c7ffc36bf2952b1b9ee498f5"
+    },
+    "results": [
+      "tutorial-force-open:0:0:0",
+      "tutorial-force-open:0:0:0",
+      "tutorial-beacon-installed:37378:1:0",
+      "tutorial-beacon-installed:37632:1:0",
+      "tutorial-force-open:0:0:0",
+      "tutorial-beacon-returned:37632:1:0",
+      "tutorial-force-open:0:0:0",
+      "tutorial-shortcut-linked:0:0:37378",
+      "tutorial-beacon-installed:37376:2:0",
+      "tutorial-shortcut-linked:0:1:37376",
+      "tutorial-force-complete:6:0:0",
+      "tutorial-attack-result:4:205:65535"
+    ],
+    "cast_exception": {
+      "code": "0xc0000005",
+      "rva": "0x406e4",
+      "symbol": "CSFItem::GetRangeType"
+    }
+  },
+  "retry": {
+    "client": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "617c3efc5cb70a1b24691d1ba8e2b8a371b807afac698c577e9342ccfcfcfa6b",
+      "bytes": 2517504,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x1a1720",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794458848.jsonl",
+      "sha256": "60a71da1489c48aabfebb66198f00b859a87bcd53c4c4f3df8fba244f2ffa15e"
+    },
+    "results": [
+      "tutorial-attack-result:4:209:65535",
+      "tutorial-force-used:26:37378:1",
+      "tutorial-attack-result:1:335:65536",
+      "tutorial-hunting-complete:7:0:0",
+      "tutorial-force-used:24:37376:1",
+      "tutorial-attack-result:1:350:65537",
+      "tutorial-loot-collected:3844:336:0",
+      "tutorial-loot-complete:8:0:0",
+      "tutorial-attack-result:4:204:65538",
+      "tutorial-attack-result:4:207:65540",
+      "tutorial-attack-result:4:205:65541",
+      "tutorial-attack-result:4:203:65539",
+      "tutorial-mission-objective-met:13:4:0",
+      "tutorial-mission-acknowledged:8:1:0",
+      "tutorial-complete:9:0:0",
+      "select-result:512:0:0",
+      "map-bsp:0:1:0",
+      "avatar-ready:0:0:0",
+      "world-frame:0:0:0"
+    ],
+    "mission": [
+      "tutorial-mission-kill:1:65538:0",
+      "tutorial-mission-kill:2:65540:0",
+      "tutorial-mission-kill:3:65541:0",
+      "tutorial-mission-kill:4:65539:0"
+    ],
+    "natural_exit": 0,
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-force-russian-bind-wait.png",
+        "sha256": "18cf1c3b960c25626796a4c9bf6db4d596724cf337813b4fc92e34f8ab2d99b7"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-force-russian-retry-hit.png",
+        "sha256": "6c307ba751a349a81d21e6010320d472bcc87fafe70004f4ee2208a037fe92d2"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-force-russian-drop.png",
+        "sha256": "e6fcfdbe5a0fd5f5cd84e235d04f60b0630f5f7a1a707ee0ac0a48eb3aa257be"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-force-russian-mission-dialog.png",
+        "sha256": "a6446e53aa1ccb43528d871d342a85d8e8e6bfd008a65be381477b6ef0d37deb"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-force-russian-mission-world.png",
+        "sha256": "1a7aaead2ba3b0b8f20370566afb81d9f103af2f4dbb701e2f4a4db684688216"
+      }
+    ]
+  },
+  "open": [
+    "Persistent tutorial completion on next login",
+    "Cora and other class profiles",
+    "Remaining M6 scenarios"
+  ]
+}

@@ -390,6 +390,15 @@ int main(int argc, char** argv) {
             (argc == 6 && std::strcmp(argv[5], "--damage") == 0),
             "Expected actual 455 Force and Wing inputs");
     require(RF455_GameItems().skillForce.loadFiles(argv[1], argv[2]), "Load Force tables");
+    CSFItem prismaticRay, fireball;
+    require(prismaticRay.CreateForce455(24, 1) && prismaticRay.GetRangeType() == 0 &&
+            fireball.CreateForce455(26, 1) && fireball.GetRangeType() == 5,
+            "Read cast range types from typed Force rows without legacy data pointers");
+    require(RF455WeaponHoldType(DWORD(IWT_STAFF_B) << 8) == IHT_BOTH_HAND &&
+            RF455WeaponHoldType(DWORD(IWT_STAFF_R) << 8) == IHT_RIGHT_HAND &&
+            RF455WeaponHoldType(DWORD(IWT_KNIFE_LT) << 8) == IHT_LEFT_HAND &&
+            RF455WeaponHoldType(DWORD(IWT_GUN_D) << 8) == IHT_DUAL_HAND,
+            "Use the same hold type rules for typed and legacy weapon meshes");
     auto display = checkBlockRender || checkDamageRender
         ? std::make_unique<CombatResultDisplay>(checkDamageRender) : nullptr;
     ChInterface renderer;
