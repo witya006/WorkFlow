@@ -10,6 +10,7 @@ from build_client455_x87_math import read_va
 from checkpoint_client455_monster_force_damage import run_fixture
 from checkpoint_client455_party_window import path, read, save
 from checkpoint_client455_rvp_effects import check, require, sha
+from client455_asset_staging import stage_asset
 from client455_normal_link_evidence import validate_normal_link
 from client455_own_probe import build_full_object_probe
 from client455_reference_regions import verify_regions
@@ -52,6 +53,22 @@ def verify_linker_reference():
     return dict(sha256=fingerprint, architecture='x86', use_rva='0x100f80',
                 physical_source_ids=[1, 0], slot_keys_rva='0x15b9f0',
                 next_bank_rva='0x15e3a0', next_bank_vk=0xc0, **identity)
+
+
+def verify_ordinary_portal_reference():
+    binary = WS / 'work/client-reference/current/RF_Online.bin'
+    fingerprint = sha(binary)
+    require(fingerprint == 'b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b',
+            'Pinned x86 455 ordinary portal reference')
+    raw = binary.read_bytes()
+    require(read_va(raw, 0x580411, 2) == b'\x6a\x07', '455 portal request pushes seven-byte length')
+    for site, target in {0x58041c: 0x580180, 0x5801f9: 0x580480, 0x58057a: 0x42d4f0}.items():
+        require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', target - site - 5),
+                f'455 ordinary portal call at {site:#x}')
+    return dict(sha256=fingerprint, architecture='x86', input_rva='0x2d0c0',
+                request_rva='0x1802c0', result_rva='0x180480', map_group=8,
+                success_fields=dict(result=0, map=1, float_xyz=2, zone=14),
+                unused_item_serials=[65535, 65535, 65535])
 
 
 def verify_reference():
@@ -117,6 +134,7 @@ def main():
     args = parser.parse_args()
     verify_reference()
     linker_reference = verify_linker_reference()
+    ordinary_portal_reference = verify_ordinary_portal_reference()
     link = read('normal-link')
     require(validate_normal_link(link) == 'PASS', 'Exact current client build')
     link_sha = sha(path('normal-link'))
@@ -131,12 +149,19 @@ def main():
     key_map = client / 'DataTable/ru-ru/KeyMap.dat'
     source = WS / 'scripts/native/client455_base_portal_probe.cpp'
     exe = build_full_object_probe('base-portal', source)
+    map_inputs = ('DataTable/Map.edf', 'Map/Resources/resources.bsp')
+    for relative in map_inputs:
+        stage_asset(client / relative, exe.parent / relative)
     native, console = run_fixture(exe, [WS / item['file'], key_map], [], 'base-portal')
     require(native == dict(status='PASS', request=[4, 26], reply=[4, 27], success_codes=[0, 10],
                            quantity=[10, 9], bad_map_cases=2, refusal=True, malformed=True,
                            send_failure=True, cancel=True, same_map_no_loading_overlay=True,
                            linker_mouse=[4, 9], stale_shortcut=True, linker_f10=[4, 9],
-                           keyboard_slots=10, chat_focus_suppressed=True, repeat_interval_ms=500),
+                           keyboard_slots=10, chat_focus_suppressed=True, repeat_interval_ms=500,
+                           ordinary_portal=dict(request=[8, 1, 7], reply=[8, 2, 15],
+                                                same_map=[0, 0, 11], cross_map=[0, 2, 13],
+                                                rejected_before_send=3, refusal_and_cancel=True,
+                                                loading_overlay_only_cross_map=True)),
             'Base portal native fixture')
     names = ('normal-link', 'normal-preparation', 'normal-build', 'normal-consumers',
              'own-entry', 'startup-audit', 'startup-taiwan-native', 'base-portal-reference')
@@ -144,14 +169,17 @@ def main():
                'native/client455_base_portal_position.inc', 'native/client455_base_portal_probe.cpp',
                'client455_linker_window_port.py', 'native/client455_linker_use.inc',
                'native/client455_linker_window.cpp', 'client455_linker_input_port.py',
-               'native/client455_linker_input.inc')
+               'native/client455_linker_input.inc', 'client455_map_portal_port.py',
+               'native/client455_map_portal.inc')
     live = verify_live(link_sha) if args.with_live else None
-    save('base-portal-checkpoint' if live else 'linker-use-checkpoint', dict(
-        status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_BASE_PORTAL',
-        scope='Inventory, fifth-bank Linker mouse/F1–F10, send ring and ordinary map transition.',
+    save('base-portal-checkpoint' if live else 'ordinary-map-portal-checkpoint', dict(
+        status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_MAP_PORTALS',
+        scope='Inventory and Linker Return item, ordinary portal request and transition scheduling.',
         normal_executable=link['executable'], normal_link_sha256=link_sha,
         component=native, component_executable=record(exe), component_console=console, item=item,
         linker_reference=linker_reference,
+        ordinary_portal_reference=ordinary_portal_reference,
+        ordinary_portal_inputs=[record(exe.parent / relative) for relative in map_inputs],
         key_map=dict(relative=key_map.relative_to(client).as_posix(), sha256=sha(key_map)),
         script=record(Path(__file__)), sources=[record(WS / 'scripts' / name) for name in sources],
         fresh_evidence={name: record(path(name)) for name in names},

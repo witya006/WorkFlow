@@ -1,5 +1,7 @@
 #include "gameobject/manager/ccharactermgr.h"
+#include "gameobject/manager/ctargetmgr.h"
 #include "gameobject/board/common/cboardmanager.h"
+#include "network/netmsgprocessor/map/cnetmsgprocessor_map.h"
 #include "cland.h"
 #include "ccamera.h"
 #include "datafile.h"
@@ -18,6 +20,7 @@
 #include <array>
 #include <cstdio>
 #include <fstream>
+#include <initializer_list>
 #include <iterator>
 #include <memory>
 #include <stdexcept>
@@ -39,12 +42,17 @@ struct Packs { using Type = CObjectPack* CObjectBoard::*; friend Type access(Pac
 struct SendBuffer { using Type = _NET_BUFFER* CNetProcess::*; friend Type access(SendBuffer); };
 struct Owner { using Type = CNetWorking* CNetProcess::*; friend Type access(Owner); };
 struct Active { using Type = BYTE(CNetworkMgr::*)[6]; friend Type access(Active); };
+struct Processors {
+    using Type = CNetMsgProcessor_Base*(CNetworkMgr::*)[MAX_NET_MSG_PROCESSOR];
+    friend Type access(Processors);
+};
 struct ControlKey { using Type = BOOL CInputProcessMgr::*; friend Type access(ControlKey); };
 template struct MemberAccess<Boards, &CBoardManager::m_listBoard>;
 template struct MemberAccess<Packs, &CObjectBoard::m_listItemPack>;
 template struct MemberAccess<SendBuffer, &CNetProcess::m_pSendBuffer>;
 template struct MemberAccess<Owner, &CNetProcess::m_pNetwork>;
 template struct MemberAccess<Active, &CNetworkMgr::m_activeServer455>;
+template struct MemberAccess<Processors, &CNetworkMgr::m_pNetMsgProcessor>;
 template struct MemberAccess<ControlKey, &CInputProcessMgr::m_bControlKeyDown>;
 
 struct Network : CNetworkMgr {
@@ -87,20 +95,98 @@ struct SendRing {
 
     bool Empty() { return buffer.GetTotalPush() == buffer.GetTotalPop(); }
 
-    void ExpectRequest()
+    void ExpectRequest(std::initializer_list<BYTE> expected = {6, 0, 4, 26, 0xcd, 0xab})
     {
         int size = 0;
         bool empty = false;
         const auto* wire = buffer.GetSendPoint(&size, &empty);
         std::array<BYTE, 32> payload{};
         std::size_t produced = 0;
-        const std::array<BYTE, 6> expected{{6, 0, 4, 26, 0xcd, 0xab}};
         require(wire && !empty && peer.decode(wire, size, payload.data(), payload.size(), produced) &&
                 produced == expected.size() && std::equal(expected.begin(), expected.end(), payload.begin()),
-                "ordinary send ring contains 4/26 with the item's low WORD serial");
+                "ordinary send ring contains the expected message and serial fields");
         buffer.AddPopPos(size);
     }
 };
+
+void checkMapPortal(Network& network, Avatar& avatar, CLand& land,
+                    CGUIMapLoadingWindow& loading, SendRing& ring)
+{
+    std::fputs("ordinary map portals\n", stderr);
+    std::strcpy(GetR3State()->MapPath, ".\\Map\\");
+    require(land.LoadData(), "real Map.edf portal catalog");
+    auto& move = *avatar.GetMoveMapInfo();
+    land.SetMapIndex(0);
+    land.SetPortalIndex(3);
+    auto* boards = _GetGBM();
+    auto& processor = (network.*access(Processors{}))[NMP_MAP];
+    require(!processor, "empty map processor slot");
+    processor = new CNetMsgProcessor_Map;
+    CNextActionMgr nextAction;
+    g_pNextActionMgr = &nextAction;
+    struct ClearNextAction {
+        ~ClearNextAction() { g_pNextActionMgr = nullptr; }
+    } cleanup;
+    avatar.Enable(ROSF_MOVABLE);
+
+    const auto stable = [&] {
+        return land.GetMapIndex() == 0 && land.GetPortalIndex() == 3;
+    };
+    const auto ready = [&] {
+        return stable() && !boards->IsRequestProcess() && !move.m_bIsMoved &&
+            !move.m_pEnterPortalInfo && !move.m_pExitPortalInfo && move.m_byMoveStep == MOVEMAP_INFO::MMS_NONE;
+    };
+    const auto reply = [&](BYTE code, BYTE map, WORD size = 15) {
+        std::array<char, 15> body{};
+        body[0] = static_cast<char>(code);
+        body[1] = static_cast<char>(map);
+        const float position[]{-128.25f, 35.5f, 803.75f};
+        std::memcpy(body.data() + 2, position, sizeof position);
+        _MSG_HEADER header{WORD(size + 4), {8, 2}};
+        return network.AnalysisServerPacket(&header, body.data());
+    };
+    const auto start = [&](BYTE portal, BYTE map, DWORD exitPortal) {
+        require(move.MoveToPortal_Request(portal) && boards->IsRequestProcess() && stable() &&
+                move.m_bIsMoved && move.m_byExitMapIndex == map &&
+                move.m_pExitPortalInfo && move.m_pExitPortalInfo->byIndex == exitPortal,
+                "ordinary request keeps the source map and resolves the link");
+        ring.ExpectRequest({11, 0, 8, 1, portal, 255, 255, 255, 255, 255, 255});
+    };
+    require(ready(), "fresh ordinary portal state");
+    ring.SetConnected(false);
+    require(!move.MoveToPortal_Request(0) && ready() && ring.Empty(),
+            "send failure leaves the source map and lock unchanged");
+    ring.SetConnected(true);
+    require(!move.MoveToPortal_Request(255) && !move.MoveToPortal_Request(8) &&
+            !move.MoveToPortal_Request(3) && ready() && ring.Empty(),
+            "invalid index, exit-only gate and absent destination reject before sending");
+    start(0, 0, 11);
+    require(!move.MoveToPortal_Request(0) && !reply(0, 0, 1) &&
+            boards->IsRequestProcess() && ring.Empty(), "duplicate and short success preserve pending request");
+    require(reply(2, 0, 1) && ready(), "distance refusal releases movement and board state");
+    start(0, 0, 11);
+    network.CancelPendingMapRequests455();
+    require(reply(0, 0) && ready(), "cancellation discards a late response");
+
+    for (const auto portal : {BYTE(0), BYTE(2)}) {
+        const BYTE destination = portal == 0 ? 0 : 2;
+        start(portal, destination, portal == 0 ? 11 : 13);
+        require(reply(0, destination) && !boards->IsRequestProcess() && stable() &&
+                move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA &&
+                move.m_byMoveType == GST_PORTAL && move.m_vecPosition[0] == -128.25f &&
+                move.m_vecPosition[1] == 35.5f && move.m_vecPosition[2] == 803.75f,
+                "ordinary result schedules the linked map and full float coordinates");
+        require(reply(2, destination, 1) && move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA,
+                "duplicate reply does not cancel an accepted transition");
+        move.m_dwMoveStepStartTime = timeGetTime() - (portal == 0 ? 700 : 1300);
+        move.FrameMove();
+        require(move.m_byMoveStep == MOVEMAP_INFO::MMS_LOAD_DATA &&
+                !!loading.IsShow() == (portal != 0), "only the cross-map portal opens the loading window");
+        if (loading.IsShow()) loading.Close();
+        move.Init();
+        avatar.Enable(ROSF_MOVABLE);
+    }
+}
 
 int run(const char* itemFile, const char* keyMapFile)
 {
@@ -300,6 +386,7 @@ int run(const char* itemFile, const char* keyMapFile)
     require(inventoryPack.Add(0, object), "return inventory ownership for cleanup");
     require(bank.Empty(9), "release borrowed Linker fixture slot");
     shortcut.reset();
+    checkMapPortal(network, avatar, land, loading, ring);
 
     std::fputs("cleanup\n", stderr);
     (boards->*access(Boards{}))[IBT_INVENTORY] = nullptr;
@@ -316,7 +403,10 @@ int run(const char* itemFile, const char* keyMapFile)
               "\"refusal\":true,\"malformed\":true,\"send_failure\":true,\"cancel\":true,"
               "\"same_map_no_loading_overlay\":true,\"linker_mouse\":[4,9],\"stale_shortcut\":true,"
               "\"linker_f10\":[4,9],\"keyboard_slots\":10,"
-              "\"chat_focus_suppressed\":true,\"repeat_interval_ms\":500}");
+              "\"chat_focus_suppressed\":true,\"repeat_interval_ms\":500,"
+              "\"ordinary_portal\":{\"request\":[8,1,7],\"reply\":[8,2,15],"
+              "\"same_map\":[0,0,11],\"cross_map\":[0,2,13],\"rejected_before_send\":3,"
+              "\"refusal_and_cancel\":true,\"loading_overlay_only_cross_map\":true}}");
     return 0;
 }
 }

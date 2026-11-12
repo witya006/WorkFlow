@@ -29,7 +29,7 @@ def port_base_portal(raw, relative, native, section):
 ''')
         anchor = b'_GetNetworkMgr()->PositionMsg_GotoBaseportalRequest_clzo( pOrgItem->GetIndex() );'
         raw = replace(raw, anchor,
-                      b'if (!_GetNetworkMgr()->PositionMsg_GotoBaseportalRequest_clzo(pOrgItem->GetIndex()))\n'
+                           b'if (!_GetNetworkMgr()->PositionMsg_GotoBaseportalRequest_clzo(pOrgItem->GetIndex()))\n'
                       b'                    return FALSE;')
         return (b'#include "client455_item_payloads.h"\n'
                 b'#include "client455_language.h"\n'
@@ -87,11 +87,13 @@ def port_base_portal(raw, relative, native, section):
         return replace(raw, b'\t_GetUISpriteMgr()->LoadSprite( SP_ID_MAPLOADING );\n', b''), True
     if relative == 'character/avatar/cavatar_relationinfo.cpp':
         def before_loading(body):
-            body = replace(body, b'if( timeGetTime() - m_dwMoveStepStartTime >= m_dwMoveDelay )', b'''const bool sameMapReturn = m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex;
-    const DWORD delay = sameMapReturn ? 700 : m_dwMoveDelay;
+            body = replace(body, b'if( timeGetTime() - m_dwMoveStepStartTime >= m_dwMoveDelay )', b'''const bool sameMapPortal = m_byEnterMapIndex == m_byExitMapIndex &&
+        (m_byMoveType == GST_PORTAL || m_byMoveType == GST_BASE_PORTAL);
+    const bool ordinaryWorldPortal = m_byMoveType == GST_PORTAL && !_GetDungeonInfo()->IsInDungeon();
+    const DWORD delay = sameMapPortal ? 700 : ordinaryWorldPortal ? 1300 : m_dwMoveDelay;
     if (timeGetTime() - m_dwMoveStepStartTime >= delay)''')
             return replace(body, b'_GetMapLoadingWindow()->Open();',
-                           b'if (!sameMapReturn) _GetMapLoadingWindow()->Open();')
+                           b'if (!sameMapPortal) _GetMapLoadingWindow()->Open();')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_PrevLoadData', before_loading)
         def after_loading(body):
             anchor = b'if( m_byEnterMapIndex != m_byExitMapIndex )\n\t{'
@@ -117,7 +119,8 @@ def port_base_portal(raw, relative, native, section):
             return;
         }''')
             return replace(body, b'm_dwMoveDelay\t\t\t= DEFAULT_MOVEMAP_DELAY;',
-                           b'm_dwMoveDelay = m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex\n'
+                           b'm_dwMoveDelay = m_byMoveType == GST_PORTAL ||\n'
+                           b'        (m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex)\n'
                            b'        ? 1300 : DEFAULT_MOVEMAP_DELAY;')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_LoadData', after_loading)
         return b'#include "client455_protocol_observation.h"\nvoid EP_DisconnectedFromServer();\n' + raw, True

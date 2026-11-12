@@ -56,6 +56,7 @@ from client455_skill_force_window_port import port_skill_force_window
 from client455_shop_window_port import port_shop_window
 from client455_trade_ore_port import port_trade_ore
 from client455_base_portal_port import port_base_portal
+from client455_map_portal_port import port_map_portal
 from client455_avatar_movement_port import port_avatar_movement
 from client455_item_work_port import port_item_work
 from client455_service_windows_port import port_service_windows
@@ -886,6 +887,8 @@ def main():
             if base_portal_changed:changes.append('455 inventory Return item and bounded position group 4 base portal')
             raw,avatar_movement_changed=port_avatar_movement(raw,relative,native,section)
             if avatar_movement_changed:changes.append('455 movement, position sample, stop and bounded avatar position responses')
+            raw,map_portal_changed=port_map_portal(raw,relative,native,section)
+            if map_portal_changed:changes.append('455 ordinary map portal group 8 request and result')
             raw,monster_force_changed=port_monster_force(raw,relative,native)
             if monster_force_changed:changes.append('455 combat 5/9 monster Force owner and ordinary action')
             raw,monster_health_changed=port_monster_health(raw,relative,native)
@@ -1026,6 +1029,7 @@ def main():
     for name in ['client455_avatar_stage.h','client455_avatar_stage.cpp','client455_avatar_stage.inc','client455_tutorial_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_land_load.inc']=sha((native/'client455_land_load.inc').read_bytes())
     report['record_inputs']['client455_land_preflight.inc']=sha((native/'client455_land_preflight.inc').read_bytes())
+    report['record_inputs']['client455_map_portal.inc']=sha((native/'client455_map_portal.inc').read_bytes())
     for name in ['client455_tutorial_intro.h','client455_tutorial_intro.cpp','client455_tutorial_intro_camera.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp.h','client455_rvp.cpp','client455_rvp_runtime.h','client455_rvp_runtime.cpp','client455_rvp_actor.h','client455_rvp_actor.cpp','client455_normal_rvp.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_rvp_effects.h','client455_rvp_effects.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
