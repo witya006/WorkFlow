@@ -5,8 +5,8 @@
     "sha256": "b9e3bb55188b7b65b2c9c1bb98e00f98e58685f99783f152ec16e93a8302eb17"
   },
   "observation": {
-    "file": "work/m9/083a7892/world-combat-live-taiwan001/debug-events.jsonl",
-    "sha256": "bbd9bb7bbd41fe7fe08741c87d829414ed149b8d2bf840314dc8e989c42b71cc"
+    "file": "work/m9/cora-interrupted-relogin/debug-events.jsonl",
+    "sha256": "74a2159f6bd150465acbc1b11f000cb382f811ddf769dd672bf52348b9af7d49"
   },
   "observations": [
     {
@@ -28,6 +28,10 @@
     {
       "file": "work/m9/083a7892/world-combat-live-taiwan001/debug-events.jsonl",
       "sha256": "bbd9bb7bbd41fe7fe08741c87d829414ed149b8d2bf840314dc8e989c42b71cc"
+    },
+    {
+      "file": "work/m9/cora-interrupted-relogin/debug-events.jsonl",
+      "sha256": "74a2159f6bd150465acbc1b11f000cb382f811ddf769dd672bf52348b9af7d49"
     }
   ],
   "requested": [
@@ -543,7 +547,15 @@
     "CHARACTER/NPC/BONE/WOUNDED_SPECIAL_004.BN",
     "CHARACTER/UNIT/BONE/BALLISTA.BN",
     "CHARACTER/UNIT/BONE/TITAN.BN",
-    "character/player/ani/belfemale_combat_attack_tbow_middle_02_00.ani"
+    "character/player/ani/belfemale_combat_attack_tbow_middle_02_00.ani",
+    "character/player/ani/cormale_combat_run_none_none_01_00.ani",
+    "character/player/ani/cormale_combat_stand_none_none_01_00.ani",
+    "character/player/ani/cormale_combat_walk_none_none_01_00.ani",
+    "character/player/ani/cormale_common_corpse_none_none_01_00.ani",
+    "character/player/ani/cormale_common_dead1_none_none_01_00.ani",
+    "character/player/ani/cormale_peace_run_none_none_01_00.ani",
+    "character/player/ani/cormale_peace_stand_none_none_01_00.ani",
+    "character/player/ani/cormale_peace_walk_none_none_01_00.ani"
   ],
   "inputs": [
     {
@@ -623,6 +635,18 @@
       "relative": "Character/Player/Ani/BMETA.RFS",
       "sha256": "00310d49a26907cabd8d6864886769f075164fd2fd75fd1d274e09721614e8c6",
       "bytes": 927466
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\CMCOA.RFS",
+      "relative": "Character/Player/Ani/CMCOA.RFS",
+      "sha256": "547b321a63495ce2b3851573a24ee2a9770192a438ef9c6648539e9cc6929d02",
+      "bytes": 1790118
+    },
+    {
+      "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\CMETA.RFS",
+      "relative": "Character/Player/Ani/CMETA.RFS",
+      "sha256": "5301b85deaf1f5ffd8d5e3d53751972ccbae75a347fb8b3e7a035146bd3599fe",
+      "bytes": 989464
     },
     {
       "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Player\\Ani\\RFSInfo.dat",
@@ -1177,6 +1201,54 @@
       "archive": "Character/Player/Ani/BFATA.RFS",
       "offset": 1586946,
       "bytes": 31342
+    },
+    {
+      "relative": "character/player/ani/cormale_combat_run_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMCOA.RFS",
+      "offset": 128864,
+      "bytes": 16778
+    },
+    {
+      "relative": "character/player/ani/cormale_combat_stand_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMCOA.RFS",
+      "offset": 594956,
+      "bytes": 25938
+    },
+    {
+      "relative": "character/player/ani/cormale_combat_walk_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMCOA.RFS",
+      "offset": 1331916,
+      "bytes": 23898
+    },
+    {
+      "relative": "character/player/ani/cormale_common_corpse_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMETA.RFS",
+      "offset": 434220,
+      "bytes": 6086
+    },
+    {
+      "relative": "character/player/ani/cormale_common_dead1_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMETA.RFS",
+      "offset": 440306,
+      "bytes": 120134
+    },
+    {
+      "relative": "character/player/ani/cormale_peace_run_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMETA.RFS",
+      "offset": 905922,
+      "bytes": 21894
+    },
+    {
+      "relative": "character/player/ani/cormale_peace_stand_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMETA.RFS",
+      "offset": 927816,
+      "bytes": 33510
+    },
+    {
+      "relative": "character/player/ani/cormale_peace_walk_none_none_01_00.ani",
+      "archive": "Character/Player/Ani/CMETA.RFS",
+      "offset": 961326,
+      "bytes": 28138
     }
   ],
   "missing": [

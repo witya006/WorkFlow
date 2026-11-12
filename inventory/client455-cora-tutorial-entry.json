@@ -1,0 +1,66 @@
+{
+  "status": "PASS_CORA_TUTORIAL_ENTRY_INTERRUPTED_RELOGIN_AND_IDLE_ASSETS",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "roster_tutorial_flag": "0x16ae40",
+      "create_tutorial_flag": "0x16b740",
+      "tutorial_finish": "0xa6080",
+      "select_reply": "0x16b9d0",
+      "read_raw_ani": "0x53acd0"
+    }
+  },
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ab972c9c4694e0525d2218b2d42603629381600ad4df6d9c66184825aee95676",
+    "architecture": "x86",
+    "configuration": "Release Win32",
+    "entry_rva": "0x1a1740"
+  },
+  "conditions": {"locale": "ru-ru", "window": [640, 500], "input": "Windows mouse and keyboard"},
+  "tutorial_script": {
+    "file": "work/startup455-m6/menu-live/DataTable/ru-ru/cf.scp",
+    "sha256": "c1b9987f0150ff3767d37f24fa398ee906fbfe70c1c1b1d037fae6dc772b2c95"
+  },
+  "creation_and_interruption": {
+    "journal": "work/startup455-m6/menu-live/events-1794461345.jsonl",
+    "journal_sha256": "facc7755936ef1b9ff5563b1aab7f0899ff9811f13a41afabd351512ad0a77c6",
+    "milestones": ["create-result:0:2:0", "tutorial-intro:2:9:0", "tutorial-welcome:1:70:0", "tutorial-briefing:1:2:0"],
+    "exit": "Window closed during the first briefing with exit code 0",
+    "absent": ["tx:1:14", "tutorial-leaving", "tutorial-complete"],
+    "frame": {"file": "work/startup455-m6/menu-live/tutorial-cora-interrupt-briefing.png", "sha256": "4572001a88116268d8570778143d2b4df6eac8a638d439a476fab181c7fde6fc"}
+  },
+  "interrupted_relogin": {
+    "journal": "work/startup455-m6/menu-live/events-1794461534.jsonl",
+    "journal_sha256": "74a2159f6bd150465acbc1b11f000cb382f811ddf769dd672bf52348b9af7d49",
+    "roster_payload_bytes": 506,
+    "slot": 2,
+    "select_reply_raw_result": 512,
+    "select_reply_client_result": 0,
+    "map": "NeutralC",
+    "map_index": 1,
+    "world_frame": true,
+    "tutorial_resumed": false,
+    "exit_code": 0,
+    "frame": {"file": "work/startup455-m6/menu-live/tutorial-cora-interrupt-relogin-world.png", "sha256": "bbd4d4e3dfb9d87b4e34c30d26579b79771496ced9c30ef9c08ee02a2a151187"}
+  },
+  "animation_retest": {
+    "journal": "work/startup455-m6/menu-live/events-1794461709.jsonl",
+    "journal_sha256": "17486e44b8c5d87c85d212cf36653864838bdf5246b391b66e67f116cf706dbe",
+    "asset_manifest": "inventory/client455-live-resource-inputs.json",
+    "archives_added": ["Character/Player/Ani/CMCOA.RFS", "Character/Player/Ani/CMETA.RFS"],
+    "new_pool_bytes": 2779582,
+    "resolved_ani_members": 8,
+    "cormale_ani_missing_diagnostics": 0,
+    "result": "The same avatar animated in the roster and stood in its normal pose in NeutralC.",
+    "exit_code": 0,
+    "frames": [
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-animation-roster-first.png", "sha256": "79735920ec57c6671067468ef1d8ba423bc991a3bb80c1314917d245aa89b6ff"},
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-animation-roster-next.png", "sha256": "689aed7fe7ba93f5a74775935b3dc21e00a25e702e4cde7d27a262ffaa7e0003"},
+      {"file": "work/startup455-m6/menu-live/tutorial-cora-animation-world.png", "sha256": "22227ea69af1d44fa8ff075acfb8b363342c1c6a91d0958582d57a7595b8ec13"}
+    ]
+  },
+  "open": ["Uninterrupted cf.scp through the final mission and world", "Other Cora classes, appearance variants, and locomotion"]
+}
