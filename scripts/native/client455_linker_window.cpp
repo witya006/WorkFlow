@@ -91,7 +91,11 @@ void CGUILinkWindow455::CycleBank455(BOOL next){int candidate=int(state.active)+
 void CGUILinkWindow455::SetBankFlag455(BYTE bank,int value){if(bank>=5)return;state.bankFlags[bank]=value;BankVisual455(bank);Reflow455();}
 void CGUILinkWindow455::ResetBankFlags455(){state.bankFlags.fill(1);Reflow455();}
 BOOL CGUILinkWindow455::FindIcon455(CGUIObject* object,BYTE& bank,BYTE& slot){for(BYTE i=0;i<5;++i)for(BYTE j=0;j<10;++j)if(object==icons.get(i,j)){bank=i;slot=j;return TRUE;}return FALSE;}
-BOOL CGUILinkWindow455::UseItem455(BYTE bank,BYTE slot){if(!owner)throw std::logic_error("455 Linker input requires its real board owner");return owner->UI_UseRequest(bank,slot);}
+BOOL CGUILinkWindow455::UseItem455(BYTE bank,BYTE slot){
+    if(postUseRequest){UI_MOUSE_MSG data(bank,slot,0,0);return PostUIMessage(WM_BOARD_USE_OBJECT,data);}
+    if(!owner)throw std::logic_error("455 Linker input requires its real board owner");
+    return owner->UI_UseRequest(bank,slot);
+}
 void CGUILinkWindow455::MouseEvent(_mouse_event& event){CGUIWindow::MouseEvent(event);DispatchMouse455(event,gScreen.ExistObject(),(GetKeyState(VK_CONTROL)&0xf000)!=0,(GetKeyState(VK_SHIFT)&0xf000)!=0,(GetKeyState(VK_MENU)&0xf000)!=0);}
 void CGUILinkWindow455::DispatchMouse455(_mouse_event& event,BOOL drag,BOOL control,BOOL shift,BOOL alt){
     BYTE bank=0,slot=0;const bool found=FindIcon455(event.source,bank,slot)!=FALSE;

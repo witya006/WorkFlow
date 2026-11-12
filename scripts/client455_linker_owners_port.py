@@ -8,7 +8,8 @@ def port_linker_owners(raw,relative,section):
         raw=raw.replace(old,new)
     if relative=='gameobject/board/common/clinkboard.h':
         once(b'\tDWORD m_hotbarUploadTime455=0;',b'\tDWORD m_hotbarUploadTime455=0;\r\n\tbool m_linkerOwned455[50]={};')
-        once(b'\tCLinkBoard();',b'\tCLinkBoard();\r\n\tBOOL AddTypedObject455(BYTE,BYTE,CBoardObject*);\r\n\tBOOL RemoveTypedObject455(BYTE,BYTE);\r\n\tvoid ClearTypedLinker455();\r\n\tCGUIItem* LinkerIcon455(BYTE,BYTE);')
+        once(b'class CLinkBoard :',b'class CGUISkFcUnit;\r\n\r\nclass CLinkBoard :')
+        once(b'\tCLinkBoard();',b'\tCLinkBoard();\r\n\tBOOL AddTypedObject455(BYTE,BYTE,CBoardObject*,CGUISkFcUnit* = nullptr);\r\n\tBOOL RemoveTypedObject455(BYTE,BYTE);\r\n\tvoid ClearTypedLinker455();\r\n\tCGUIItem* LinkerIcon455(BYTE,BYTE);')
         changed=True
     elif relative=='gameobject/board/common/clinkboard.cpp':
         for signature,hook in [

@@ -192,6 +192,23 @@ void CGUISFWindow::SetCurBoardTab(BYTE index)
     Add(&m_uiSelectedTab455);
 }
 
+CGUIItem* CGUISFWindow::RevealSkill455(BYTE bank, DWORD index)
+{
+    auto* row = GetIconBoard(bank, index);
+    if (!row) return nullptr;
+    SetCurBoardTab(bank);
+    auto& list = m_pSFBoardList[bank];
+    list.SetOpened455(row->GetStep(), TRUE);
+    auto& scroll = list.Scrollbar455();
+    const LONG top = list.GetPosY();
+    const LONG bottom = top + list.GetSizeY();
+    if (row->GetPosY() < top) scroll.SetCurrentAmount(scroll.GetCurrentAmount() + row->GetPosY() - top);
+    else if (row->GetPosY() + row->GetSizeY() > bottom)
+        scroll.SetCurrentAmount(scroll.GetCurrentAmount() + row->GetPosY() + row->GetSizeY() - bottom);
+    list.RepositionScroll455();
+    return row->GetItem();
+}
+
 void CGUISkillWindow::Init()
 {
     BYTE groups[] = {4, 4, 1, 3, 1};

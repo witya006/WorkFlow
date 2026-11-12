@@ -35,6 +35,8 @@ def skill_header(raw):
 
 ''' + raw[row_end:]
     raw = replace(raw, b'\tCGUISkFcUnit();', b'\tCGUISkFcUnit();\n\tvoid SetKind455(BYTE);')
+    raw = replace(raw, b'void\t\t\tSetCurBoardTab( BYTE pi_byBoardTab );',
+                  b'void\t\t\tSetCurBoardTab( BYTE pi_byBoardTab );\n\tCGUIItem* RevealSkill455(BYTE bank, DWORD index);')
     raw = replace(raw, b'class CGUISkillForceBoard : public CGUIContainerEx,',
                   b'class CGUISkillForceBoard : public CGUITabBoard455')
     raw, count = re.subn(rb'\r?\n[ \t]+public IScrollObserver,\r?\n[ \t]+public IMouseObserver', b'', raw)
@@ -113,6 +115,23 @@ def skill_source(raw, section, native):
 
 
 def port_skill_force_window(raw, relative, section, native):
+    if relative == 'gameobject/board/skillforceboard/csfboard.h':
+        raw = replace(raw, b'class CNetMsgProcessor_ItemArrangement;', b'class CNetMsgProcessor_ItemArrangement;\nclass CBoardObject;')
+        raw = replace(raw, b'\tCSFBoard();', b'\tCSFBoard();\n\tBOOL AddTypedSF455(BYTE bank, BYTE slot, CBoardObject& source);')
+        return raw, True
+    if relative == 'gameobject/board/skillforceboard/csfboard.cpp':
+        signature = b'CSFBoard::Remove_ProcessRemoveObject('
+        start, end = section(raw, signature, signature)
+        insertion = raw.index(b'{', start, end) + 1
+        raw = raw[:insertion] + b'''\n    if (auto* skill = dynamic_cast<RF455SkillForceItem*>(pi_pOrgObject->GetItem455()))
+        skill->SetIconBoard455(nullptr);
+''' + raw[insertion:]
+        end = raw.rfind(b'#endif')
+        if end < insertion:
+            raise ValueError('Skill board compilation boundary changed')
+        raw = raw[:end] + (native / 'client455_skill_force_board.inc').read_bytes() + b'\n' + raw[end:]
+        anchor = b'#include "../../Manager/CCharacterMgr.h"'
+        return replace(raw, anchor, anchor + b'\n#include "client455_skill_force_items.h"\n#include <cstring>'), True
     if relative == UI_ROOT + 'guiskillwindow.h':
         return skill_header(raw), True
     if relative == UI_ROOT + 'guiskillwindow.cpp':

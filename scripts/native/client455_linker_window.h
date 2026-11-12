@@ -18,6 +18,7 @@ class CGUILinkWindow455:public CGUIItemWindow {
     CGUIImageText455 number;
     CLinkBoard* owner=nullptr;
     BOOL expanded=FALSE,initialized=FALSE;
+    bool postUseRequest=false;
     float scale=1;
     void SetButton455(CGUIButton&,BYTE,WORD,WORD,WORD);
     void BankVisual455(BYTE);
@@ -26,6 +27,7 @@ class CGUILinkWindow455:public CGUIItemWindow {
 public:
     CGUILinkWindow455();
     void BindBoard455(CLinkBoard* board){owner=board;}
+    void PostUseRequests455(bool value){postUseRequest=value;}
     RF455LinkerIconSlots& LinkerIcons455(){return icons;}
     RF455HotbarWindowState& HotbarState455(){return state;}
     void Init()override;

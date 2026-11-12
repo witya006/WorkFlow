@@ -1,0 +1,140 @@
+{
+  "status": "PASS_KOREAN_BELLATO_WARRIOR_SKILL_SHORTCUT_LESSON",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "skill_filter": "0x90460",
+      "race_admission": "0x640d0",
+      "skill_view_add": "0x8e3b0",
+      "cursor_point": "0x272b0",
+      "shortcut_add": "0x100590",
+      "wait_for_link": "0x29c60"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "4d0295aa451de54342ada02617e5b3d8b902235ce1c48844514ef09a263af43e",
+    "bytes": 2497024,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19d350",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "corpus": {
+    "file": "inventory/client455-tutorial-skills-corpus.json",
+    "sha256": "c63fe2f9d9900e8093a9a503b3fea5c321686b7e5f9ae2464f358b070523612e"
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/SkillForce.edf",
+      "sha256": "8d7dbb2a5e97cfacd15362102c7f8f13197f836f9910bc3a4090fe5624383582"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/NDSkillForce.edf",
+      "sha256": "f1a2e92f42a28291d94c872a4e8045f6067a6105278d1c049a9447b04368e210"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/bw.scp",
+      "sha256": "6b9dc2da906b716e01afa0687e8eae329abc9e221e240d02c957e955a8d321dc"
+    }
+  ],
+  "live": {
+    "profile": "ko-kr",
+    "character": "Bellato Warrior",
+    "window_size": [
+      640,
+      500
+    ],
+    "script_commands": 30,
+    "precondition": "New-player tutorial state set in own test-process memory",
+    "waited_before_ctrl_s": true,
+    "wrong_skill_waited": true,
+    "wrong_slot_waited": true,
+    "exit": "Confirmed early exit after completing TutorialSkill; server accepted character selection",
+    "post_selection_failure": "Test stage lacked the Korean chat profile Cska.txt",
+    "ordered_events": [
+      "tutorial-skill-rows:27:0:0",
+      "tutorial-equipment-complete:5:0:0",
+      "tutorial-skill-practice:8:20:0",
+      "tutorial-skills-open:0:0:0",
+      "tutorial-briefing:5:10:0",
+      "tutorial-shortcut-linked:0:0:655360",
+      "tutorial-skill-practice:25:44:0",
+      "tutorial-shortcut-linked:0:1:655360",
+      "tutorial-shortcut-linked:0:0:655362",
+      "tutorial-shortcut-linked:0:1:655362",
+      "tutorial-briefing:5:27:0",
+      "tutorial-skill-complete:6:0:0",
+      "tutorial-leaving:2:0:0",
+      "select-result:512:0:0"
+    ],
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794448444.jsonl",
+      "sha256": "ac1a190effa30f02b03ce4dfebe40dfd846ff7811e15830bd17297b662b23bf9"
+    },
+    "drivers": [
+      {
+        "file": "work/startup455-m6/test-tutorial-skills.ps1",
+        "sha256": "f5ebb963a0be750aedf5b85df1c1019d786838a430f6b77d80e409b8e0444906"
+      },
+      {
+        "file": "work/startup455-m6/resume-tutorial-skills-from-welcome.ps1",
+        "sha256": "06b34f38889307873506f50845b01b043bb2b16a35af95690228ca9c1ae6905d"
+      },
+      {
+        "file": "work/startup455-m6/finish-tutorial-skills.ps1",
+        "sha256": "c0d0110db78bfee898f54604f625e2c62b6b0fe841da9471d642cb671fd4a5ed"
+      }
+    ],
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-skill-demonstration.png",
+        "sha256": "a14ba7300a1e559ce626d78b7acc73f9ee8c6220898179a64cb9a779344f877e"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-skill-practice.png",
+        "sha256": "6d323a734b88efe6c99c164778ab38f4be9e8d31c363530de55d0266af8c818d"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-skill-linked.png",
+        "sha256": "f98d298ccae64876181886bf07e1840fc7ffe31f946e4d1a8495e5832c6e2a69"
+      }
+    ]
+  },
+  "separate_world_check": {
+    "added_resource": {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/Cska.txt",
+      "sha256": "004759a2a14fee6532d28f2288283c482a3000597fece9e761fc8f59e3cf96d9"
+    },
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794448844.jsonl",
+      "sha256": "a2a485258c1eb247026495b05cc4e6bfb1bb197038a89ebfbf825b74f327df04"
+    },
+    "status": "BLOCKED_MAP_CATALOG",
+    "catalog": {
+      "file": "work/startup455-m6/menu-live/DataTable/Map.edf",
+      "sha256": "801c2724eff2a4a4b519d207ad26a6e98845444b464707d86c745b2af6b9c309"
+    },
+    "localization": {
+      "file": "work/startup455-m6/menu-live/DataTable/ko-kr/NDMap.edf",
+      "sha256": "836511334d57369ac72e479825045ee2e123d53addd4f41ebdc0c5bff53042e8"
+    },
+    "base_map_count": 110,
+    "localized_map_count": 100
+  },
+  "open": [
+    "Single uninterrupted run through tutorial exit to the Korean world",
+    "Live checks for long and other localized variants",
+    "Tutorial combat and actual skill activation, Force, Hunting and Looting",
+    "Russian and other mismatched skill-name tables"
+  ]
+}

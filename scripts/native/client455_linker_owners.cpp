@@ -36,9 +36,12 @@ RF455ItemDataSpan data(RF455ManagedItem& item){
     if(auto* sf=dynamic_cast<RF455SkillForceItem*>(&item))return sf->rawData();
     throw std::logic_error("455 Linker payload data provider is not restored");
 }
-void requireLinkerProviders(RF455ManagedItem& item){
+void requireLinkerProviders(RF455ManagedItem& item, CGUIItem* icon, CGUISkFcUnit* skillRow){
     if(auto* sf=dynamic_cast<RF455SkillForceItem*>(&item)){
-        if(sf->record().iconBoard)throw std::logic_error("455 live SF source-board state callback is not restored");
+        if(sf->record().iconBoard && (!skillRow || sf->record().iconBoard != skillRow || skillRow->GetItem() != icon))
+            throw std::logic_error("455 Linker requires the owning skill row for a live skill icon");
+        if(skillRow && sf->record().iconBoard != skillRow)
+            throw std::logic_error("455 Linker skill row is not attached to the payload");
     }else if(item.isKind(2)){
         auto* basic=dynamic_cast<RF455BasicItem*>(&item);if(!basic)throw std::logic_error("455 Animus source-board owner missing");
         const auto state=basic->recordBytes();std::uint32_t owner=0;
@@ -47,15 +50,15 @@ void requireLinkerProviders(RF455ManagedItem& item){
     }
     const auto table=data(item);
     if(table.data){if(table.size<=88)throw std::out_of_range("455 Linker classification outside data owner");
-        if(table.data[88]==11)throw std::logic_error("455 Linker potion cooldown cache provider is not restored");}
+        if(item.isKind(0) && table.data[88]==11)throw std::logic_error("455 Linker potion cooldown cache provider is not restored");}
 }
 }
 CGUIItem* CLinkBoard::LinkerIcon455(BYTE bank,BYTE slot){return m_uiLinkWindow.LinkerIcons455().get(bank,slot);}
-BOOL CLinkBoard::AddTypedObject455(BYTE bank,BYTE slot,CBoardObject* original){
+BOOL CLinkBoard::AddTypedObject455(BYTE bank,BYTE slot,CBoardObject* original,CGUISkFcUnit* skillRow){
     if(bank>=5||slot>=10||bank>=m_byMaxPackNum||!original||!original->GetItem455())return FALSE;
     auto* source=original->GetIcon();
     if(!source||!source->UsesTypedIcon455())throw std::logic_error("455 Linker requires the real typed original icon");
-    requireLinkerProviders(*original->GetItem455());
+    requireLinkerProviders(*original->GetItem455(),source,skillRow);
     // 46B720(0), then virtual Clone. Do not register a borrowed original.
     source->SetRefItem(nullptr);std::unique_ptr<CBoardObject> copy(original->Clone());
     if(!copy)return FALSE;
@@ -66,6 +69,7 @@ BOOL CLinkBoard::AddTypedObject455(BYTE bank,BYTE slot,CBoardObject* original){
     icon->SetOwnerContext455(2);
     owned->RefreshLock455();
     icon->SetGrade455(owned->GetItem455()->isKind(0)?RF455_ReadBasicIconMetadata(*owned->GetItem455()).grade:0);
+    if (skillRow) skillRow->SetUnitState(CGUISkFcUnit::Linked);
     return TRUE;
 }
 BOOL CLinkBoard::RemoveTypedObject455(BYTE bank,BYTE slot){
