@@ -1,0 +1,152 @@
+{
+  "status": "PASS_RUSSIAN_LAUNCHER_HANDOFF_TO_NEUTRALB",
+  "reference": {
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "launcher_russia_rva": "0x436cb0",
+    "initial_connect_rva": "0x3d1150",
+    "sprite_path_rva": "0x3b0110"
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f347e61ea899f8e88cc14c4f658d27b8225f0eaf14154fb0db5b70cf3ff5c301",
+    "bytes": 2499072,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19d970",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "native": {
+    "file": "inventory/client455-launcher-regional-native.json",
+    "sha256": "8a042c605d25f8e824bba6c5f3600170575a492cb5aab7318194b9ce63a56a50"
+  },
+  "atlases": [
+    {
+      "file": "E:/RFOnlineTrash/RFOnline/SpriteImage/Common/system.spr",
+      "sha256": "92fbf5c0f34babf3306cf0a6be342b1118f73abf86cc7cef96cd764d10ab8866",
+      "frame_counts": [
+        20,
+        10
+      ],
+      "requested": {}
+    },
+    {
+      "file": "E:/RFOnlineTrash/RFOnline/SpriteImage/ko-kr/system.spr",
+      "sha256": "75d171995f64ed16d5d4715d1b681b54bfdce328409fd91352389526412f8d36",
+      "frame_counts": [
+        34,
+        18,
+        6
+      ],
+      "requested": {
+        "0:20": {
+          "width": 440,
+          "height": 555,
+          "texture_width": 512,
+          "texture_height": 1024,
+          "format": 894720068
+        }
+      }
+    },
+    {
+      "file": "E:/RFOnlineTrash/RFOnline/SpriteImage/zh-tw/system.spr",
+      "sha256": "75d171995f64ed16d5d4715d1b681b54bfdce328409fd91352389526412f8d36",
+      "frame_counts": [
+        34,
+        18,
+        6
+      ],
+      "requested": {
+        "0:20": {
+          "width": 440,
+          "height": 555,
+          "texture_width": 512,
+          "texture_height": 1024,
+          "format": 894720068
+        }
+      }
+    }
+  ],
+  "before_atlas_fix": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794450086.jsonl",
+      "sha256": "8ef1cb951eb2635d10fb251014ee536f4a7ceef8e6c639904ec3c734ca9268cb"
+    },
+    "events": [
+      ".\\DataTable\\ru-ru",
+      "RF455 Launcher:ccr:1",
+      "RF455 NDLanguage:1251:4321",
+      "RF455 Connect:connected",
+      "RF455 Protocol:world-result:0:0:0",
+      "RF455 Protocol:map-catalog:110:31:3",
+      "RF455 Protocol:lobby-start:0:0:0",
+      "RF455 Protocol:select-result:512:0:0"
+    ],
+    "exit": "0xe0434205",
+    "frame": {
+      "file": "work/startup455-m6/menu-live/launcher-russian-login.png",
+      "sha256": "39cd448e6b65df0a7dad660826fdb6bce08e5360fcd857ae7691f6dbd06defcc"
+    },
+    "executable": {
+      "file": "work/startup455-m6/pre-russian-options-c8c41899.bin",
+      "sha256": "c8c4189941c8abb0fd3f79716acb4efb3ddd10238671eec1d9525de04d2d6d6c"
+    },
+    "linker_map": {
+      "file": "work/startup455-m6/pre-russian-options-c8c41899.map",
+      "sha256": "7062b0391cebc87964580b4563124f221aedfcf58cdf2696f051ea3943b7db67"
+    },
+    "stack_rvas": {
+      "option_bind_return": "0xaad7a",
+      "option_set_sprite_return": "0xab342",
+      "main_game_ui_creation_return": "0x2f139"
+    }
+  },
+  "after_atlas_fix": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794450324.jsonl",
+      "sha256": "8ee53ba77f8032d234fe779d5693a11c735525fca25f1a8ab2afe0faa42e9b56"
+    },
+    "events": [
+      ".\\DataTable\\ru-ru",
+      "RF455 Launcher:ccr:1",
+      "RF455 NDLanguage:1251:4321",
+      "RF455 Connect:connected",
+      "RF455 Protocol:world-result:0:0:0",
+      "RF455 Protocol:map-catalog:110:31:3",
+      "RF455 Protocol:lobby-start:0:0:0",
+      "RF455 Protocol:select-result:512:0:0",
+      "RF455 Sprite:system-compatible-fallback",
+      "RF455 Protocol:map-bsp:0:1:0",
+      "RF455 Protocol:avatar-ready:0:0:0",
+      "RF455 Protocol:world-frame:0:0:0"
+    ],
+    "exit": "0x00000000",
+    "frame": {
+      "file": "work/startup455-m6/menu-live/launcher-russian-world.png",
+      "sha256": "8240c584558443f9a9af10f4c40927be464a60ad38763293069180728af565e5"
+    },
+    "map": "NeutralB"
+  },
+  "runner": {
+    "file": "work/startup455-m6/run-russian-lobby.py",
+    "sha256": "dc176bf7e4dfc4c34a7ff757481b14adb18620d32a5c351a22dab2ec2dad1f74"
+  },
+  "input_driver": {
+    "file": "work/startup455-m6/test-russian-world.ps1",
+    "sha256": "9f12ea7c2df7ed4e57b816fb0082a9204a1775d48e8be59ad524c937b740ce39"
+  },
+  "method": "Local test account authenticated on the live server, using the current launcher file format and normal client game login and character selection",
+  "live_limitations": [
+    "Launcher wire probe used as producer",
+    "Titles skipped by the test observer setting",
+    "One Russian character and map",
+    "Europe and legacy argv validated offline only"
+  ]
+}

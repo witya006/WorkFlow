@@ -22,7 +22,7 @@ struct NetworkMember{using Type=CNetworkMgr CMainApp::*;friend Type access(Netwo
 template struct MemberAccess<NetworkMember,&CMainApp::m_cNetworkMgr>;
 #define REQUIRE(x) do{if(!(x)){std::fprintf(stderr,"Launcher failure line%d\n",__LINE__);return 1;}}while(0)
 static unsigned checks=0;
-int main(){
+int main(int argc, char**){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     REQUIRE(RF455_InitializeNationPaths());RF455LauncherConnection value;
     for(unsigned nation: {0u,1u,2u,4u,5u,6u,8u,9u,10u}){
@@ -44,10 +44,21 @@ int main(){
     const std::string longId(80,'i'),longPassword(80,'p');args[3]=longId.c_str();args[4]=longPassword.c_str();REQUIRE(RF455_LoadArgumentLauncher(5,args,value)&&std::strlen(value.identifier)==50&&std::strlen(value.password)==32);
     char preserved[5]="keep";RF455_CopyLauncherText(preserved,nullptr,5);REQUIRE(!std::strcmp(preserved,"keep"));RF455_CopyLauncherText(preserved,"longer",5);REQUIRE(!std::strcmp(preserved,"long"));
     auto&network=g_MainApp.*access(NetworkMember{});network.SetPassword(const_cast<char*>("retained"));
-    REQUIRE(g_MainApp.GetDataFromLauncher());const auto&normal=*RF455_GetLauncherConnection();
-    REQUIRE(network.GetServerIP(normal.endpoint)==normal.address&&network.GetServerPort(normal.endpoint)==normal.port&&!std::strcmp(network.GetID(),normal.identifier));
-    if(normal.hasAccountFields){REQUIRE(network.GetAccountIndex()==17&&!std::strcmp(network.GetPassword(),"retained"));for(unsigned i=0;i<4;++i)REQUIRE(network.GetWorldServerKey(i)==0x10203040+i);}
-    else REQUIRE(!std::strcmp(network.GetPassword(),"fixture-value"));
+    const bool reject = GetFileAttributesA("reject-handoff") != INVALID_FILE_ATTRIBUTES;
+    const bool accepted = g_MainApp.GetDataFromLauncher() != FALSE;
+    REQUIRE(accepted == !reject);
+    const auto& normal = *RF455_GetLauncherConnection();
+    if (accepted) {
+        const bool argvLaunch = argc == 5;
+        REQUIRE(normal.accepted && normal.endpoint == (argvLaunch ? 0u : 1u));
+        REQUIRE(normal.kind == (argvLaunch ? RF455LauncherKind::ArgumentVector : RF455LauncherKind::CcrFile));
+        REQUIRE(network.GetServerIP(normal.endpoint)==normal.address&&network.GetServerPort(normal.endpoint)==normal.port&&!std::strcmp(network.GetID(),normal.identifier));
+        if(normal.hasAccountFields){REQUIRE(network.GetAccountIndex()==17&&!std::strcmp(network.GetPassword(),"retained"));for(unsigned i=0;i<4;++i)REQUIRE(network.GetWorldServerKey(i)==0x10203040+i);}
+        else REQUIRE(!std::strcmp(network.GetPassword(),"fixture-value"));
+    } else {
+        REQUIRE(!normal.accepted && !network.GetServerPort(0) && !network.GetServerPort(1));
+        REQUIRE(!network.GetServerIP(0) && !network.GetServerIP(1) && !std::strcmp(network.GetPassword(), "retained"));
+    }
     network.SetID(const_cast<char*>(longId.c_str()));network.SetPassword(const_cast<char*>(longPassword.c_str()));REQUIRE(std::strlen(network.GetID())==50&&std::strlen(network.GetPassword())==32);
-    FILE*out=std::fopen("result.json","wb");REQUIRE(out);std::fprintf(out,"{\"status\":\"PASS\",\"ccr_country_profiles\":9,\"truncation_cases\":19,\"file_sharing_missing_extra\":true,\"argument_count_numeric_bounds\":true,\"normal_network_fields\":true,\"identifier50_password32\":true,\"network_created\":false,\"connection_attempted\":false}\n");std::fclose(out);return 0;
+    FILE*out=std::fopen("result.json","wb");REQUIRE(out);std::fprintf(out,"{\"status\":\"PASS\",\"ccr_country_profiles\":9,\"truncation_cases\":19,\"file_sharing_missing_extra\":true,\"argument_count_numeric_bounds\":true,\"normal_network_fields\":true,\"identifier50_password32\":true,\"network_created\":false,\"connection_attempted\":false,\"handoff\":\"%s\"}\n",accepted?(normal.endpoint==1?"ccr":"argv"):"rejected");std::fclose(out);return 0;
 }
