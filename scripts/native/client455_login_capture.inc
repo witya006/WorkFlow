@@ -4,7 +4,7 @@
 static HRESULT RF455_SaveLoginBackbuffer(const char* name, D3DSURFACE_DESC& desc) {
     IDirect3DSurface9 *target = nullptr, *memory = nullptr;
     auto* device = GetD3dDevice();
-    HRESULT result = device ? device->GetRenderTarget(0, &target) : E_FAIL;
+    HRESULT result = device ? device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &target) : E_FAIL;
     if (SUCCEEDED(result)) result = target->GetDesc(&desc);
     if (SUCCEEDED(result)) result = device->CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format, D3DPOOL_SYSTEMMEM, &memory, nullptr);
     if (SUCCEEDED(result)) result = device->GetRenderTargetData(target, memory);
@@ -41,6 +41,25 @@ static void RF455_CaptureSelectionFadeIfRequested(DWORD elapsedMs, bool complete
     const HRESULT result = RF455_SaveLoginBackbuffer(filenames[phase], desc);
     char event[128];
     std::snprintf(event, sizeof(event), "RF455 SelectionFade:%u:%lu:%08lX:%ux%u", phase, elapsedMs,
+                  static_cast<unsigned long>(result), desc.Width, desc.Height);
+    OutputDebugStringA(event);
+}
+
+static void RF455_CaptureLoadingRevealIfRequested(DWORD elapsedMs, bool complete) {
+    static const bool enabled = [] {
+        char value[2]{};
+        return GetEnvironmentVariableA("RF455_CAPTURE_LOADING_REVEAL", value, sizeof(value)) == 1 && value[0] == '1';
+    }();
+    if (!enabled) return;
+    static bool attempted[3]{};
+    static const char* const filenames[] = {"loading-reveal-start.png", "loading-reveal-mid.png", "loading-reveal-end.png"};
+    const unsigned phase = complete ? 2 : elapsedMs >= 380 ? 1 : 0;
+    if (attempted[phase]) return;
+    attempted[phase] = true;
+    D3DSURFACE_DESC desc{};
+    const HRESULT result = RF455_SaveLoginBackbuffer(filenames[phase], desc);
+    char event[128];
+    std::snprintf(event, sizeof(event), "RF455 LoadingReveal:%u:%lu:%08lX:%ux%u", phase, elapsedMs,
                   static_cast<unsigned long>(result), desc.Width, desc.Height);
     OutputDebugStringA(event);
 }

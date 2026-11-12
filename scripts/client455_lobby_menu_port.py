@@ -26,6 +26,37 @@ def open_lobby_after_avatar_loading(raw):
             }''')
 
 
+def reveal_lobby_loading(raw):
+    start = raw.index(b'\tm_uiLoadingWindow.Open();')
+    stop = raw.index(b'\tGetD3dDevice()->Present( NULL, NULL, NULL, NULL );', start)
+    end = raw.index(b'\n', stop)
+    if raw[start:end].count(b'_GetUIScreen()->Draw();') != 1:
+        raise ValueError('Legacy loading screen draw boundary changed')
+    raw = raw[:start] + b'''    m_uiLoadingWindow.Open();
+    // 455 reveals the loading sprite before the synchronous lobby load.
+    constexpr DWORD revealMs = 800;
+    const DWORD revealStart = timeGetTime();
+    DWORD elapsed;
+    do {
+        elapsed = timeGetTime() - revealStart;
+        const bool complete = elapsed >= revealMs;
+        if (R3BeginScene()) {
+            R3ClearFrameBuffer();
+            _GetUIScreen()->Draw();
+            if (!complete) SetFadeFactor(0, 1.0f - float(elapsed) / revealMs, nullptr);
+            R3EndScene();
+            RF455_CaptureLoadingRevealIfRequested(elapsed, complete);
+            const HRESULT result = GetD3dDevice()->Present(nullptr, nullptr, nullptr, nullptr);
+            if (complete) RF455_ObserveProtocol("lobby-loading-reveal", elapsed, unsigned(result), 0);
+        }
+        if (!complete) Sleep(1);
+    } while (elapsed < revealMs);''' + raw[end:]
+    raw = replace(raw, b'\tR3ClearFrameBuffer();\n\tGetD3dDevice()->Present( NULL, NULL, NULL, NULL );\n\t//\n\tm_uiLoadingWindow.Disable();',
+                  b'\tm_uiLoadingWindow.Disable();')
+    return replace(raw, b'\tSetFadeOut(0x00,0,1.0f);\n\tSetFadeIn(0x00,3.0,1.0f);',
+                   b'\tSetFadeIn(0, 0, 1.0f);')
+
+
 def port_lobby_menu(raw, relative, native):
     if relative == 'mainapp.cpp':
         # Land unload releases effect resources. Do it before the engine and
@@ -38,6 +69,7 @@ def port_lobby_menu(raw, relative, native):
     raw = replace(raw, b'#include "../MainApp.h"', b'#include "../MainApp.h"\n' +
                   (native / 'client455_lobby_menu.inc').read_bytes())
     raw = open_lobby_after_avatar_loading(raw)
+    raw = reveal_lobby_loading(raw)
     raw = replace(raw, b'\tm_bIsLoadedData = TRUE;',
                   b'\tlobbyMenu455.Install(*_GetUIScreen(), _GetMainApp()->IsRequestLogout() != FALSE);\n'
                   b'\tm_bIsLoadedData = TRUE;')

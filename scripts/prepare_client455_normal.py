@@ -865,7 +865,7 @@ def main():
             if message_changed:changes.append('455ordinary formatted-message dispatch/actual Login member andvisible sink;C1A/CE7 source handlers;fullTutorial/UI/auth remainopen')
             raw,flags_changed=port_character_flags(raw,relative,section)
             raw,lobby_menu_changed=port_lobby_menu(raw,relative,native)
-            if lobby_menu_changed:changes.append('455 lobby menu after avatar loading, staff roll and routes to character selection, creation and exit')
+            if lobby_menu_changed:changes.append('455 lobby loading reveal, menu after avatar loading, staff roll and routes to character selection, creation and exit')
             raw,tutorial_stage_changed=port_tutorial_stage(raw,relative)
             if tutorial_stage_changed:changes.append('455 explicit client stages, new character tutorial route and dialog delivery')
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')

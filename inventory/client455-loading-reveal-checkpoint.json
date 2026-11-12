@@ -1,0 +1,139 @@
+{
+  "status": "VERIFIED_LOBBY_LOADING_REVEAL_AND_LIVE_WORLD_ENTRY",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "8e3596c439434963ef88ca46cb4a3199318ef43fcf04aaea4e43ee303008b009",
+    "bytes": 2530304,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4150",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13fbc6",
+          "bytes": 315,
+          "role": "Open loading screen, reveal with black opacity 1-elapsed/800, present before lobby load",
+          "sha256": "26d4f58ffa645a65f6de1f6e51e5d1cb17530e52aae22c7d7c0956912bfca2b6"
+        },
+        {
+          "rva": "0x3a469f",
+          "bytes": 50,
+          "role": "Loading image sprite id 2, action 0, frame 0",
+          "sha256": "8c24621bf8e8efc31a14986dbd911fb6d140f53d73e3a9b7885567822259e7ae"
+        },
+        {
+          "rva": "0x14bce0",
+          "bytes": 126,
+          "role": "MainGame loads map and data through its existing loader",
+          "sha256": "c66fb7ab24878639b8dff51b20ab3b9d2e8aadca9121321043f9cad0196594fa"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13fbc6",
+          "bytes": 315,
+          "role": "Open loading screen, reveal with black opacity 1-elapsed/800, present before lobby load",
+          "sha256": "26d4f58ffa645a65f6de1f6e51e5d1cb17530e52aae22c7d7c0956912bfca2b6"
+        },
+        {
+          "rva": "0x3a469f",
+          "bytes": 50,
+          "role": "Loading image sprite id 2, action 0, frame 0",
+          "sha256": "8c24621bf8e8efc31a14986dbd911fb6d140f53d73e3a9b7885567822259e7ae"
+        },
+        {
+          "rva": "0x14bce0",
+          "bytes": 126,
+          "role": "MainGame loads map and data through its existing loader",
+          "sha256": "c66fb7ab24878639b8dff51b20ab3b9d2e8aadca9121321043f9cad0196594fa"
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "source_sprite": {
+    "file": "work/m9/8e3596c4/world-observation-live-taiwan001/SpriteImage/zh-tw/loading.spr",
+    "sha256": "053edc2b6fae29a3d3c1b830afc165e90f9d583054eca46a632b3f54ef56f2e3"
+  },
+  "reference_duration_ms": 800,
+  "timing": {
+    "events": {
+      "file": "work/m9/8e3596c4/login-frame-live-taiwan001/debug-events.jsonl",
+      "sha256": "6c3337f5c1bbbd0546d892d161f0a2903206926e63845b0a5b5c182b36518cff"
+    },
+    "elapsed_ms": 837,
+    "present_result": "S_OK",
+    "captured_loading_frames": false
+  },
+  "live_world": {
+    "map": "NeutralB",
+    "input_enabled": true,
+    "events": {
+      "file": "work/m9/8e3596c4/world-observation-live-taiwan001/debug-events.jsonl",
+      "sha256": "32fd67a34314aa40492a17439e0b12f332b57b3bf0f57b4eff7cf30aab61d800"
+    },
+    "ordered": [
+      "RF455 Protocol:title-movie-skip:2:27:0",
+      "RF455 LoadingReveal:0:0:00000000:1920x1080",
+      "RF455 LoadingReveal:1:425:00000000:1920x1080",
+      "RF455 LoadingReveal:2:1254:00000000:1920x1080",
+      "RF455 Protocol:lobby-loading-reveal:1254:0:0",
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 Protocol:select-result:0:0:0",
+      "RF455 Protocol:selection-world-handoff:1063:0:0",
+      "RF455 WorldCapture:0:0:1920x1080"
+    ],
+    "frames": [
+      {
+        "file": "work/m9/8e3596c4/world-observation-live-taiwan001/loading-reveal-start.png",
+        "sha256": "c1161e09bb43363d2777bdb410b3e59e98b33eae3b374322b5e86079ab089a12",
+        "phase": "start",
+        "elapsed_ms": 0,
+        "central_luma": 0.0
+      },
+      {
+        "file": "work/m9/8e3596c4/world-observation-live-taiwan001/loading-reveal-mid.png",
+        "sha256": "fd52d214922eca800df5ccdaac8a38da40b4b14a52531eb18d04a954515afeb9",
+        "phase": "mid",
+        "elapsed_ms": 425,
+        "central_luma": 40.813
+      },
+      {
+        "file": "work/m9/8e3596c4/world-observation-live-taiwan001/loading-reveal-end.png",
+        "sha256": "e4d54b0c9016f1362aaba6f41f1a2086fabb7975fe616d477fb160dc08f3fd24",
+        "phase": "end",
+        "elapsed_ms": 1254,
+        "central_luma": 76.542
+      }
+    ],
+    "world_frame": {
+      "file": "work/m9/8e3596c4/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "bfd67d19263822ead4ad5561360704b722715ad3b0851b077178efcc3d159df9"
+    }
+  },
+  "visual_scope": "Direct3D swap-chain backbuffer",
+  "desktop_flicker_verified": false
+}
