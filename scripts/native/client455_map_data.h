@@ -11,13 +11,22 @@ struct RF455MineInfo {
     std::uint32_t byMapIndex=0,byIndex=0;
     float vecMin[3]={},vecMax[3]={},transform[16]={};
 };
+struct RF455PortalAccess {
+    std::uint32_t minimumLevel=0xffffffff, field248=0;
+    std::uint8_t itemCount=0, itemTables[3]={};
+    std::uint32_t itemCodes[3]={};
+    std::uint8_t itemQuantities[3]={}, field271=0;
+};
+static_assert(sizeof(RF455PortalAccess)==28 && offsetof(RF455PortalAccess,itemCodes)==12 &&
+              offsetof(RF455PortalAccess,itemQuantities)==24);
+
 struct PORTAL_INFO:RF455MineInfo {
     std::uint32_t byPortalType=0,bIsMovable=0;
     std::uint8_t byUsableRace[5]={};
     char pName[64]={},pDesc[64]={};
     std::uint8_t byLinkedPortalNum=0,padding238[2]={};
     std::uint32_t (*byLinkedPortal)[2]=nullptr;
-    std::uint8_t fields244[28]={};
+    RF455PortalAccess access;
     std::uint32_t bIsUsable=0;
     std::uint8_t fields276[12]={};
     ~PORTAL_INFO(){delete[] byLinkedPortal;}

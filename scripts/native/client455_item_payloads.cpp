@@ -283,6 +283,7 @@ bool RF455BasicItem::create(const RF455ItemDataStore& source,std::uint8_t type,s
     return true;
 }
 std::uint32_t RF455BasicItem::tableIndex()const{return data.data?field(data,0):0xffffffff;}
+std::uint8_t RF455BasicItem::quantity455() const { return payloadKind == 0 ? state[92] : 1; }
 const char* RF455BasicItem::name()const{
     if(!data.data)return nullptr;
     if(payloadKind==5)throw std::logic_error("455 Quest sentence expansion is not restored");

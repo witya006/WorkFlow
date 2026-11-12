@@ -1,4 +1,5 @@
 #include "client455_avatar_movement.h"
+#include "client455_client_items.h"
 #include "client455_language.h"
 #include "client455_message_dispatch.h"
 #include "client455_protocol_observation.h"
@@ -27,6 +28,57 @@ const RF455MapInfo* FindPortalMap455(const CLand& land, DWORD map)
 {
     const auto& catalog = land.MapData455();
     return catalog.maps && map < catalog.count ? &catalog.maps[map] : nullptr;
+}
+
+WORD FindPortalItemInPack455(CInventoryBoard& inventory, BYTE pack, BYTE category,
+                            DWORD index, BYTE quantity)
+{
+    for (BYTE slot = 0; slot < inventory.GetMaxSocketNum455(pack); ++slot) {
+        auto* object = inventory.GetObject(pack, slot);
+        auto* item = object ? dynamic_cast<RF455BasicItem*>(object->GetItem455()) : nullptr;
+        if (!item || item->header().kind != 0 || item->tableIndex() != index ||
+            item->quantity455() < quantity)
+            continue;
+        const auto data = item->rawMetadata();
+        const auto serial = static_cast<WORD>(item->header().serial);
+        if (data.size > 88 && data.data[88] == category && serial != 0xffff) return serial;
+    }
+    return 0xffff;
+}
+
+bool ResolvePortalItems455(const RF455PortalAccess& access, PortalRequest455& request)
+{
+    if (!access.itemCount) return true;
+    auto* inventory = _GetInventoryBoard();
+    if (!inventory || access.itemCount > _countof(request.itemSerials)) return false;
+    const auto& items = RF455_GameItems().data;
+    auto* language = RF455_GetNormalLanguagePack();
+    for (BYTE i = 0; i < access.itemCount; ++i) {
+        const auto table = access.itemTables[i];
+        std::uint32_t index = 0;
+        if (!items.findItemByCode(table, access.itemCodes[i], index)) {
+            RF455_ShowSystemMessage("%s", language->get(0x866));
+            return false;
+        }
+        const auto row = items.getItem(table, index);
+        if (row.size <= 88) return false;
+        const auto category = row.data[88];
+        const auto active = inventory->GetActivePackNo();
+        const auto required = access.itemQuantities[i];
+        auto serial = FindPortalItemInPack455(*inventory, active, category, index, required);
+        for (BYTE pack = 0; serial == 0xffff && pack < inventory->GetMaxPackNum(); ++pack) {
+            if (pack != active)
+                serial = FindPortalItemInPack455(*inventory, pack, category, index, required);
+        }
+        if (serial == 0xffff) {
+            char name[65]{};
+            std::memcpy(name, row.data + 8, sizeof name - 1);
+            RF455_ShowSystemMessage(language->get(0xc20), name);
+            return false;
+        }
+        request.itemSerials[i] = serial;
+    }
+    return true;
 }
 
 void ShowPortalRefusal455(BYTE code)
@@ -65,17 +117,15 @@ BOOL CNetMsgProcessor_Map::MovePotalRequest_clzo(BYTE portal)
         (link[0] != sourceIndex && !land->CanLoadMap455(static_cast<BYTE>(link[0]))))
         return FALSE;
 
-    DWORD level;
-    std::memcpy(&level, entry.fields244, sizeof level);
+    const auto level = entry.access.minimumLevel;
     if (level != 0xffffffff && level > avatar->GetLevel()) {
         char portalName[sizeof entry.pName + 1]{};
         std::memcpy(portalName, entry.pName, sizeof entry.pName);
         RF455_ShowSystemMessage(RF455_GetNormalLanguagePack()->get(0xc41), portalName, level);
         return FALSE;
     }
-    // Gates that consume items require the three item serials from the inventory.
-    if (entry.fields244[8]) return FALSE;
     PortalRequest455 request{portal, {0xffff, 0xffff, 0xffff}};
+    if (level != 0xffffffff && !ResolvePortalItems455(entry.access, request)) return FALSE;
     if (!SendNetMessage(move_potal_request_clzo, &request, sizeof request)) return FALSE;
 
     m_portalPending455 = true;

@@ -101,7 +101,7 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
                 src.read(&portal.byLinkedPortalNum, 1);
                 src.read(portal.padding238, 2);
                 src.u32(); // Serialized pointer slot is replaced by owned links.
-                src.read(portal.fields244, 28);
+                src.read(&portal.access, sizeof portal.access);
                 src.read(&portal.bIsUsable, 4);
                 src.read(portal.fields276, 12);
             }

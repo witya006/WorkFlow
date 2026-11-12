@@ -65,6 +65,7 @@ public:
     RF455ItemDataSpan recordBytes()const{return {state.get(),stateSize};}
     void SetUpgradeLevel455(std::uint8_t);
     void SetDownloadValue455(std::uint32_t value, std::uint32_t animusHigh);
+    std::uint8_t quantity455() const;
     bool IsStackable455() const;
     std::uint32_t durability455() const;
     void SetDurability455(std::uint32_t value);

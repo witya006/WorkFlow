@@ -1,0 +1,274 @@
+{
+  "status": "PARTIAL_COMPONENT_KEYED_MAP_PORTAL",
+  "scope": "Return item, ordinary and keyed portal request and transition scheduling.",
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ed84c39596bccbae4f3b7333ea4f23e1fc44c90ef64b74a3ce3d138478dfe428",
+    "bytes": 2522624,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a2520",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "normal_link_sha256": "ec6d9130faaef12351cf0f928d3f432c8c3d09bdcbc942d0b59e7b2c8211110e",
+  "component": {
+    "status": "PASS",
+    "request": [
+      4,
+      26
+    ],
+    "reply": [
+      4,
+      27
+    ],
+    "success_codes": [
+      0,
+      10
+    ],
+    "quantity": [
+      10,
+      9
+    ],
+    "bad_map_cases": 2,
+    "refusal": true,
+    "malformed": true,
+    "send_failure": true,
+    "cancel": true,
+    "same_map_no_loading_overlay": true,
+    "linker_mouse": [
+      4,
+      9
+    ],
+    "stale_shortcut": true,
+    "linker_f10": [
+      4,
+      9
+    ],
+    "keyboard_slots": 10,
+    "chat_focus_suppressed": true,
+    "repeat_interval_ms": 500,
+    "ordinary_portal": {
+      "request": [
+        8,
+        1,
+        7
+      ],
+      "reply": [
+        8,
+        2,
+        15
+      ],
+      "same_map": [
+        0,
+        0,
+        11
+      ],
+      "cross_map": [
+        0,
+        2,
+        13
+      ],
+      "rejected_before_send": 3,
+      "refusal_and_cancel": true,
+      "loading_overlay_only_cross_map": true
+    },
+    "keyed_portal": {
+      "route": [
+        11,
+        3,
+        12,
+        3
+      ],
+      "level": 40,
+      "quantity": 1,
+      "denials": 3,
+      "selected_serials": [
+        22136,
+        43981
+      ],
+      "catalog_keys_resolved": 53,
+      "server_inventory_authority": true
+    }
+  },
+  "component_executable": {
+    "file": "work/client455-port/base-portal-probe/base-portal-probe.exe",
+    "sha256": "4bbfeafe1a61e8af1153f2c71b513ac843b1f0bdeba616a17ed2a55b1db64e32"
+  },
+  "component_console": {
+    "file": "work/client455-port/base-portal-probe/base-portal.txt",
+    "sha256": "02a718e5686fb20e8811f3469b5b04dbf5566cdcf38f242e9fbe5a2372b87f2e"
+  },
+  "item": {
+    "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\Item.edf",
+    "original_sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9",
+    "file": "work/client-reference/item-payloads455/item.edf",
+    "sha256": "5e396c584b148ddead7a3cc713db14f781e4e6ef655cc7dfefb50ec3eddea0f9"
+  },
+  "linker_reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "use_rva": "0x100f80",
+    "physical_source_ids": [
+      1,
+      0
+    ],
+    "slot_keys_rva": "0x15b9f0",
+    "next_bank_rva": "0x15e3a0",
+    "next_bank_vk": 192,
+    "class_name": "CLinkBoard",
+    "vtable_rva": "0x6ae914",
+    "locator_rva": "0x77d654",
+    "descriptor_rva": "0x7cf648",
+    "decorated_type": ".?AVCLinkBoard@@"
+  },
+  "ordinary_portal_reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "input_rva": "0x2d0c0",
+    "request_rva": "0x1802c0",
+    "result_rva": "0x180480",
+    "map_group": 8,
+    "success_fields": {
+      "result": 0,
+      "map": 1,
+      "float_xyz": 2,
+      "zone": 14
+    },
+    "key_lookup_rva": "0x7cd50",
+    "key_match_rva": "0x604a0",
+    "unused_item_serials": [
+      65535,
+      65535,
+      65535
+    ]
+  },
+  "ordinary_portal_inputs": [
+    {
+      "file": "work/client455-port/base-portal-probe/DataTable/Map.edf",
+      "sha256": "801c2724eff2a4a4b519d207ad26a6e98845444b464707d86c745b2af6b9c309"
+    },
+    {
+      "file": "work/client455-port/base-portal-probe/Map/Resources/resources.bsp",
+      "sha256": "82659a4b8e0f6df448fcef8981851d58b6d4c106f3480ff710bc2ce4e444593e"
+    },
+    {
+      "file": "work/client455-port/base-portal-probe/Map/Cauldron01/Cauldron01.bsp",
+      "sha256": "66ae61e65bb127467c3469b9a90d13200b49ee343b3f73cbf5ed0509e5f7b01e"
+    }
+  ],
+  "key_map": {
+    "relative": "DataTable/ru-ru/KeyMap.dat",
+    "sha256": "0f01fd446cb2afdafae4ba655f44b99a6669cdf31dc65e79ee0e6f8ed1fe66a5"
+  },
+  "script": {
+    "file": "scripts/checkpoint_client455_base_portal.py",
+    "sha256": "d7806f5bb7d5f65b83ac09d4449b0664a6dc5683ea7f8a8ee0919f2e5a1c880a"
+  },
+  "sources": [
+    {
+      "file": "scripts/client455_base_portal_port.py",
+      "sha256": "aed7dcdb5a2a6c31cd5209ef042d0e72694955bd1867dce69936b3534bf0c950"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_inventory.inc",
+      "sha256": "61484be1a69d2a9d9c3fae42b4ede6a0fb18372122e6ae7ed4091b556f460aee"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_position.inc",
+      "sha256": "f9644807353f2eeef34fd17d461b04091dd34f1ecb10fbaccbce745c90dd225a"
+    },
+    {
+      "file": "scripts/native/client455_base_portal_probe.cpp",
+      "sha256": "df3b0a343df90f3ca6fa09995205c1a071a80f0bf07ffef1678bf46e4a5064ba"
+    },
+    {
+      "file": "scripts/client455_linker_window_port.py",
+      "sha256": "53770f4a5491a6f5577cca368ac69812bc4283d4ce891207696cf39244bbe829"
+    },
+    {
+      "file": "scripts/native/client455_linker_use.inc",
+      "sha256": "6f0b3a18346eace219906427aedb46190eeac6d45ff3d2130099ecbb505857ec"
+    },
+    {
+      "file": "scripts/native/client455_linker_window.cpp",
+      "sha256": "e13b85192a35c6c3064b9b8f001937dbf4125206693899e3babe1c1e87ff73d5"
+    },
+    {
+      "file": "scripts/client455_linker_input_port.py",
+      "sha256": "37e8a353e2e797ff10a6e5d642451548c720b36027f087f3ad524bbfca048b80"
+    },
+    {
+      "file": "scripts/native/client455_linker_input.inc",
+      "sha256": "6328cd9d66b641f4b2623757c3ddbca5bed2e43db84fb7bc21cac50ccc086812"
+    },
+    {
+      "file": "scripts/client455_map_portal_port.py",
+      "sha256": "91db11e6dbc55cf28911d71f6a53e5aad1d76ad1fedb92c06a7fa338fe7f1d37"
+    },
+    {
+      "file": "scripts/native/client455_map_portal.inc",
+      "sha256": "a06c6607ef82109ffc918afd4cbb86513aaf82793b47cf9cf20b63a6708949da"
+    },
+    {
+      "file": "scripts/native/client455_map_data.h",
+      "sha256": "d5e6677ea9d0594b31462e57d08d29e7ab4773ca5489fe6e689d01508eeba0ee"
+    },
+    {
+      "file": "scripts/native/client455_map_data.cpp",
+      "sha256": "86d933c546954ac7cf3d34774ffb75d4d33b220e0f9b6e98bbef86ddac81e4d3"
+    },
+    {
+      "file": "scripts/native/client455_item_payloads.cpp",
+      "sha256": "69218c30f80e8745a7e2ef5357cd9143d206ef40dc8b967d2ba2f7e32367d76f"
+    }
+  ],
+  "fresh_evidence": {
+    "normal-link": {
+      "file": "inventory/client455-normal-link.json",
+      "sha256": "ec6d9130faaef12351cf0f928d3f432c8c3d09bdcbc942d0b59e7b2c8211110e"
+    },
+    "normal-preparation": {
+      "file": "inventory/client455-normal-preparation.json",
+      "sha256": "f2c793bb72d3c24b6021fbdab693bb7ced2baaf1af9710beeb4f4e0bdce0fa55"
+    },
+    "normal-build": {
+      "file": "inventory/client455-normal-build.json",
+      "sha256": "e987d6992f3812e1915fe05111eb85ceadb8c2b273d259b4e3329c737636375a"
+    },
+    "normal-consumers": {
+      "file": "inventory/client455-normal-consumers.json",
+      "sha256": "30db0611a13b5a04e2e3f5e6d68b7b67f6540b80ce3bbc44a561bc14975bfab4"
+    },
+    "own-entry": {
+      "file": "inventory/client455-own-entry.json",
+      "sha256": "76b1a3170446b476bc820dfdf5f5f90ef14c9599b7b4baa4ea0a2a956fc6f874"
+    },
+    "startup-audit": {
+      "file": "inventory/client455-startup-audit.json",
+      "sha256": "6ff02691bc0773714333ec00ad7bdaf0074ee2f98c283589096ff575872a860f"
+    },
+    "startup-taiwan-native": {
+      "file": "inventory/client455-startup-taiwan-native.json",
+      "sha256": "4c4e81060d3384d82b349846217bb07bf9f1c16947b659a92773017ed079febe"
+    },
+    "base-portal-reference": {
+      "file": "inventory/client455-base-portal-reference.json",
+      "sha256": "26a38e6130763c6e09952db53c33797beb1eaa99ca1623c5f14b17ee08edd143"
+    }
+  },
+  "gaps": [
+    "Server reply and post-transition movement still need a live Bellato HQ run.",
+    "Special Return map/area checks and cross-map resources remain open.",
+    "The current map remains bound during the request for legacy world consumers."
+  ],
+  "own_live_run": false,
+  "live": null,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

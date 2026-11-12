@@ -65,9 +65,13 @@ def verify_ordinary_portal_reference():
     for site, target in {0x58041c: 0x580180, 0x5801f9: 0x580480, 0x58057a: 0x42d4f0}.items():
         require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', target - site - 5),
                 f'455 ordinary portal call at {site:#x}')
+    for site, target in {0x580384: 0x47cd50, 0x47d031: 0x4604a0, 0x47d066: 0x40b200}.items():
+        require(read_va(raw, site, 5) == b'\xe8' + struct.pack('<i', target - site - 5),
+                f'455 portal key call at {site:#x}')
     return dict(sha256=fingerprint, architecture='x86', input_rva='0x2d0c0',
                 request_rva='0x1802c0', result_rva='0x180480', map_group=8,
                 success_fields=dict(result=0, map=1, float_xyz=2, zone=14),
+                key_lookup_rva='0x7cd50', key_match_rva='0x604a0',
                 unused_item_serials=[65535, 65535, 65535])
 
 
@@ -149,7 +153,7 @@ def main():
     key_map = client / 'DataTable/ru-ru/KeyMap.dat'
     source = WS / 'scripts/native/client455_base_portal_probe.cpp'
     exe = build_full_object_probe('base-portal', source)
-    map_inputs = ('DataTable/Map.edf', 'Map/Resources/resources.bsp')
+    map_inputs = ('DataTable/Map.edf', 'Map/Resources/resources.bsp', 'Map/Cauldron01/Cauldron01.bsp')
     for relative in map_inputs:
         stage_asset(client / relative, exe.parent / relative)
     native, console = run_fixture(exe, [WS / item['file'], key_map], [], 'base-portal')
@@ -161,7 +165,10 @@ def main():
                            ordinary_portal=dict(request=[8, 1, 7], reply=[8, 2, 15],
                                                 same_map=[0, 0, 11], cross_map=[0, 2, 13],
                                                 rejected_before_send=3, refusal_and_cancel=True,
-                                                loading_overlay_only_cross_map=True)),
+                                                loading_overlay_only_cross_map=True),
+                           keyed_portal=dict(route=[11, 3, 12, 3], level=40, quantity=1, denials=3,
+                                             selected_serials=[22136, 43981], catalog_keys_resolved=53,
+                                             server_inventory_authority=True)),
             'Base portal native fixture')
     names = ('normal-link', 'normal-preparation', 'normal-build', 'normal-consumers',
              'own-entry', 'startup-audit', 'startup-taiwan-native', 'base-portal-reference')
@@ -170,11 +177,12 @@ def main():
                'client455_linker_window_port.py', 'native/client455_linker_use.inc',
                'native/client455_linker_window.cpp', 'client455_linker_input_port.py',
                'native/client455_linker_input.inc', 'client455_map_portal_port.py',
-               'native/client455_map_portal.inc')
+               'native/client455_map_portal.inc', 'native/client455_map_data.h',
+               'native/client455_map_data.cpp', 'native/client455_item_payloads.cpp')
     live = verify_live(link_sha) if args.with_live else None
-    save('base-portal-checkpoint' if live else 'ordinary-map-portal-checkpoint', dict(
-        status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_MAP_PORTALS',
-        scope='Inventory and Linker Return item, ordinary portal request and transition scheduling.',
+    save('base-portal-checkpoint' if live else 'keyed-map-portal-checkpoint', dict(
+        status='PARTIAL_LIVE_BASE_PORTAL' if live else 'PARTIAL_COMPONENT_KEYED_MAP_PORTAL',
+        scope='Return item, ordinary and keyed portal request and transition scheduling.',
         normal_executable=link['executable'], normal_link_sha256=link_sha,
         component=native, component_executable=record(exe), component_console=console, item=item,
         linker_reference=linker_reference,

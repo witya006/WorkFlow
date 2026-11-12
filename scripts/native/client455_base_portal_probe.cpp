@@ -123,7 +123,7 @@ struct SendRing {
 };
 
 void checkMapPortal(Network& network, Avatar& avatar, CLand& land,
-                    CGUIMapLoadingWindow& loading, SendRing& ring)
+                    CGUIMapLoadingWindow& loading, SendRing& ring, CInventoryBoard& inventory)
 {
     std::fputs("ordinary map portals\n", stderr);
     std::strcpy(GetR3State()->MapPath, ".\\Map\\");
@@ -199,6 +199,73 @@ void checkMapPortal(Network& network, Avatar& avatar, CLand& land,
         move.Init();
         avatar.Enable(ROSF_MOVABLE);
     }
+
+    std::fputs("keyed map portals\n", stderr);
+    land.SetMapIndex(11);
+    land.SetPortalIndex(6);
+    const auto& gate = *land.GetPortalInfo(11, 3);
+    require(gate.access.minimumLevel == 40 && gate.access.itemCount == 1 &&
+            gate.access.itemTables[0] == 17 && gate.access.itemQuantities[0] == 1 &&
+            gate.byLinkedPortal[0][0] == 12 && gate.byLinkedPortal[0][1] == 3,
+            "pinned Sette to Cauldron01 portal and item requirement");
+    const auto denied = [&] {
+        return !move.MoveToPortal_Request(3) && !move.m_bIsMoved &&
+            !boards->IsRequestProcess() && land.GetMapIndex() == 11 && ring.Empty();
+    };
+    avatar.SetLevel(40);
+    require(denied(), "missing portal key prevents sending");
+    auto& items = RF455_GameItems();
+    unsigned catalogKeys = 0;
+    const auto& catalog = land.MapData455();
+    for (DWORD map = 0; map < catalog.count; ++map) {
+        const auto& info = catalog.maps[map];
+        for (DWORD portal = 0; portal < info.byPortalNum; ++portal) {
+            const auto& access = info.pPortalInfo[portal].access;
+            for (BYTE item = 0; item < access.itemCount; ++item) {
+                std::uint32_t row = 0;
+                require(item < 3 && items.data.findItemByCode(access.itemTables[item], access.itemCodes[item], row),
+                        "catalog key resolves to an Item.edf record");
+                ++catalogKeys;
+            }
+        }
+    }
+    require(catalogKeys == 53, "pinned catalog key coverage");
+    std::uint32_t index = 0;
+    require(items.data.findItemByCode(17, gate.access.itemCodes[0], index), "actual Item.edf portal key row");
+    const auto makeKey = [&](DWORD serial, DWORD quantity) {
+        auto object = std::make_unique<CBoardObject>();
+        auto* item = dynamic_cast<RF455BasicItem*>(items.create(0, 17, index));
+        require(item && item->IsStackable455(), "typed portal key");
+        item->header().serial = serial;
+        item->SetDownloadValue455(quantity, 0);
+        object->SetItem455(item);
+        return object;
+    };
+    const auto firstKey = makeKey(0x1234abcd, 0);
+    const auto secondKey = makeKey(0x23455678, 1);
+    auto* activeItem = static_cast<RF455BasicItem*>(firstKey->GetItem455());
+    auto* fallbackItem = static_cast<RF455BasicItem*>(secondKey->GetItem455());
+    auto* packs = inventory.*access(Packs{});
+    require(packs[0].Add(1, firstKey.get()) && inventory.GetActivePackNo() == 0,
+            "insufficient quantity in active bag");
+    require(denied(), "insufficient quantity prevents sending");
+    require(packs[1].Add(0, secondKey.get()), "valid quantity in another bag");
+    avatar.SetLevel(39);
+    require(denied(), "insufficient level prevents sending even with a key");
+    avatar.SetLevel(40);
+    require(move.MoveToPortal_Request(3) && move.m_byExitMapIndex == 12, "other-bag key authorizes request");
+    ring.ExpectRequest({11, 0, 8, 1, 3, 0x78, 0x56, 255, 255, 255, 255});
+    require(reply(2, 12, 1) && !boards->IsRequestProcess() && fallbackItem->quantity455() == 1,
+            "refusal leaves the key available");
+    activeItem->SetDownloadValue455(2, 0);
+    require(move.MoveToPortal_Request(3), "active-bag key takes priority");
+    ring.ExpectRequest({11, 0, 8, 1, 3, 0xcd, 0xab, 255, 255, 255, 255});
+    require(reply(0, 12) && move.m_byMoveStep == MOVEMAP_INFO::MMS_PREV_LOAD_DATA &&
+            activeItem->quantity455() == 2 && fallbackItem->quantity455() == 1,
+            "portal result schedules travel and leaves inventory consumption to server updates");
+    move.Init();
+    avatar.Enable(ROSF_MOVABLE);
+    require(packs[0].Empty(1) && packs[1].Empty(0), "release borrowed key slots");
 }
 
 int run(const char* itemFile, const char* keyMapFile)
@@ -246,8 +313,8 @@ int run(const char* itemFile, const char* keyMapFile)
     auto* boards = _GetGBM();
     auto* inventory = new CInventoryBoard;
     (boards->*access(Boards{}))[IBT_INVENTORY] = inventory;
-    inventory->CObjectBoard::Create(IBT_INVENTORY, 1, 1);
-    require(inventory->CObjectBoard::AddPack(0), "inventory pack");
+    inventory->CObjectBoard::Create(IBT_INVENTORY, 2, 2);
+    require(inventory->CObjectBoard::AddPack(0) && inventory->CObjectBoard::AddPack(1), "inventory packs");
     auto* object = new CBoardObject;
     object->SetItem455(item);
     require((inventory->*access(Packs{}))[0].Add(0, object), "typed first socket");
@@ -399,7 +466,7 @@ int run(const char* itemFile, const char* keyMapFile)
     require(inventoryPack.Add(0, object), "return inventory ownership for cleanup");
     require(bank.Empty(9), "release borrowed Linker fixture slot");
     shortcut.reset();
-    checkMapPortal(network, avatar, land, loading, ring);
+    checkMapPortal(network, avatar, land, loading, ring, *inventory);
 
     std::fputs("cleanup\n", stderr);
     (boards->*access(Boards{}))[IBT_INVENTORY] = nullptr;
@@ -419,7 +486,10 @@ int run(const char* itemFile, const char* keyMapFile)
               "\"chat_focus_suppressed\":true,\"repeat_interval_ms\":500,"
               "\"ordinary_portal\":{\"request\":[8,1,7],\"reply\":[8,2,15],"
               "\"same_map\":[0,0,11],\"cross_map\":[0,2,13],\"rejected_before_send\":3,"
-              "\"refusal_and_cancel\":true,\"loading_overlay_only_cross_map\":true}}");
+              "\"refusal_and_cancel\":true,\"loading_overlay_only_cross_map\":true},"
+              "\"keyed_portal\":{\"route\":[11,3,12,3],\"level\":40,\"quantity\":1,"
+              "\"denials\":3,\"selected_serials\":[22136,43981],\"catalog_keys_resolved\":53,"
+              "\"server_inventory_authority\":true}}");
     return 0;
 }
 #include "client455_portal_arrival_probe.inc"
