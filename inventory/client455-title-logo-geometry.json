@@ -1,0 +1,174 @@
+{
+  "status": "VERIFIED_TITLE_BACKBUFFER_GEOMETRY_AND_ESCAPE",
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Draw movie across client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x133130",
+          "bytes": 122,
+          "role": "Texture coordinates of the decoded extent",
+          "sha256": "08b2bfbaab0145e85b866916fa512239cbf243df075b3e02e1704518e719cb0f"
+        },
+        {
+          "rva": "0x1f1640",
+          "bytes": 349,
+          "role": "Allocate padded movie texture",
+          "sha256": "46b8eb300c5de5acf198c4a9499b02b0e1d781706b28b9fdefcb6baeb7e5a76c"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Draw movie across client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x133130",
+          "bytes": 122,
+          "role": "Texture coordinates of the decoded extent",
+          "sha256": "08b2bfbaab0145e85b866916fa512239cbf243df075b3e02e1704518e719cb0f"
+        },
+        {
+          "rva": "0x1f1640",
+          "bytes": 349,
+          "role": "Allocate padded movie texture",
+          "sha256": "46b8eb300c5de5acf198c4a9499b02b0e1d781706b28b9fdefcb6baeb7e5a76c"
+        }
+      ]
+    }
+  ],
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "30a113043266a6d299874dc247cbeb3b6043f5c8cc2383fe651bad91fd49df16",
+    "bytes": 2529280,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3ff0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "locale": "Taiwan",
+  "movie": {
+    "file": "work/m9/30a11304/title-escape-prologue-taiwan001/Snd/BGM/ccrinc.AVI",
+    "sha256": "847623ed5d66ea68a1cfd15825f7ade330b80191f3dd43d186dc261d1377a66c"
+  },
+  "video_texture_size": [
+    1024,
+    1024
+  ],
+  "uv_max": [
+    0.703125,
+    0.52734375
+  ],
+  "comparison": {
+    "decoded_image": {
+      "file": "work/m9/30a11304/title-escape-prologue-taiwan001/title-logo-source.png",
+      "sha256": "27da5b2bee2356edb9d63f47714e807f1844182fda5cdb21933d3da1a81bd6db",
+      "size": [
+        720,
+        540
+      ]
+    },
+    "backbuffer": {
+      "file": "work/m9/30a11304/title-escape-prologue-taiwan001/title-logo.png",
+      "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "wordmark_box_decoded": [
+      174,
+      241,
+      545,
+      296
+    ],
+    "wordmark_box_backbuffer": [
+      464,
+      483,
+      1453,
+      592
+    ],
+    "average_abs_rgb_error_vs_stretched_source": 0.0874
+  },
+  "runs": {
+    "logo": {
+      "events": {
+        "file": "work/m9/30a11304/title-escape-logo-taiwan002/debug-events.jsonl",
+        "sha256": "02b376f18e79fd2b33042499b648222532ca2dcf272db0d9f6669c370126a92c"
+      },
+      "title_events": [
+        "RF455 Protocol:title-movie-start:1:0:0",
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-capture:1:0:0",
+        "RF455 Protocol:title-movie-skip:1:27:0"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/30a11304/title-escape-logo-taiwan002/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        }
+      ],
+      "login_frame": {
+        "file": "work/m9/30a11304/title-escape-logo-taiwan002/login-frame.png",
+        "sha256": "e8d7966cad1d5905b83be48a0ebef6e22b615d3e6b73167c6a77475e2f2725a0"
+      },
+      "login_rendered_after_escape": true
+    },
+    "prologue": {
+      "events": {
+        "file": "work/m9/30a11304/title-escape-prologue-taiwan001/debug-events.jsonl",
+        "sha256": "85e6d380aa9c87348edf19ff16fcfb6a8027c653926380dc50081e9b9490a4a1"
+      },
+      "title_events": [
+        "RF455 Protocol:title-movie-start:1:0:0",
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-capture:1:0:0",
+        "RF455 Protocol:title-movie-end:1:1:0",
+        "RF455 Protocol:title-movie-start:2:0:0",
+        "RF455 Protocol:title-movie-draw:2:1920:1080",
+        "RF455 Protocol:title-movie-capture:2:0:0",
+        "RF455 Protocol:title-movie-skip:2:27:0"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/30a11304/title-escape-prologue-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/30a11304/title-escape-prologue-taiwan001/title-prologue.png",
+          "sha256": "4e5918778297452e32e37a9f13ed10ff35ddf2a0ce33afdd96e6be2371ed151a"
+        }
+      ],
+      "login_frame": {
+        "file": "work/m9/30a11304/title-escape-prologue-taiwan001/login-frame.png",
+        "sha256": "7aadf1617f0dd6320e394520c3414249df81eef5f4a9ce5a51acc88fa7461dbb"
+      },
+      "login_rendered_after_escape": true
+    }
+  },
+  "desktop_flicker_verified": false,
+  "reference_executable_run": false
+}

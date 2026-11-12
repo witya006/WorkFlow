@@ -75,7 +75,10 @@ public:
         device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff000000, 1.f, 0);
         if (R3BeginScene()) {
             if (textureReady_) {
-                Draw2DSprite(0, 0, float(bounds.right), float(bounds.bottom), texture_.Get(), 0xffffffff);
+                // Title 455 stretches the decoded image to the client rect and excludes texture padding.
+                float u[] = {0.f, float(width_) / float(textureWidth_)};
+                float v[] = {0.f, float(height_) / float(textureHeight_)};
+                Draw2DSprite(0, 0, float(bounds.right), float(bounds.bottom), u, v, texture_.Get(), 0xffffffff);
                 if (!renderReported_) {
                     renderReported_ = true;
                     RF455_ObserveProtocol("title-movie-draw", stage_, unsigned(bounds.right), unsigned(bounds.bottom));
@@ -83,7 +86,8 @@ public:
             }
             R3EndScene();
         }
-        if (captureRequested_ && renderReported_ && !captureDone_ && GetTickCount64() - startedAt_ >= 650 && VisibleFrame()) {
+        const ULONGLONG captureDelay = stage_ == 1 ? 3300 : 650;
+        if (captureRequested_ && renderReported_ && !captureDone_ && GetTickCount64() - startedAt_ >= captureDelay && VisibleFrame()) {
             captureDone_ = true;
             Capture(*device);
         }
@@ -112,7 +116,21 @@ private:
             const char* file = stage_ == 1 ? "title-logo.png" : "title-prologue.png";
             result = D3DXSaveSurfaceToFileA(file, D3DXIFF_PNG, image.Get(), nullptr, nullptr);
         }
+        if (SUCCEEDED(result) && stage_ == 1) {
+            ComPtr<IDirect3DSurface9> source;
+            result = texture_->GetSurfaceLevel(0, &source);
+            if (SUCCEEDED(result)) {
+                const RECT video{0, 0, LONG(width_), LONG(height_)};
+                result = D3DXSaveSurfaceToFileA("title-logo-source.png", D3DXIFF_PNG, source.Get(), nullptr, &video);
+            }
+        }
         RF455_ObserveProtocol("title-movie-capture", stage_, unsigned(result), 0);
+    }
+
+    static unsigned TextureExtent(unsigned pixels) {
+        unsigned extent = 1;
+        while (extent < pixels) extent *= 2;
+        return extent;
     }
 
     HRESULT ConnectVideo(const wchar_t* path) {
@@ -155,6 +173,8 @@ private:
                     width_ = bitmap.biWidth;
                     bottomUp_ = bitmap.biHeight > 0;
                     height_ = bottomUp_ ? bitmap.biHeight : -bitmap.biHeight;
+                    textureWidth_ = TextureExtent(width_);
+                    textureHeight_ = TextureExtent(height_);
                     rowPitch_ = (width_ * 3 + 3) & ~3u;
                     frame_.resize(size_t(rowPitch_) * height_ / sizeof(long));
                     result = S_OK;
@@ -172,7 +192,7 @@ private:
         const auto frameBytes = long(frame_.size() * sizeof(long));
         long received = frameBytes;
         if (FAILED(grabber_->GetCurrentBuffer(&received, frame_.data())) || received != frameBytes) return;
-        if (!texture_ && FAILED(device.CreateTexture(width_, height_, 1, 0, D3DFMT_X8R8G8B8,
+        if (!texture_ && FAILED(device.CreateTexture(textureWidth_, textureHeight_, 1, 0, D3DFMT_A8R8G8B8,
                                                        D3DPOOL_MANAGED, texture_.ReleaseAndGetAddressOf(), nullptr))) return;
         D3DLOCKED_RECT locked{};
         if (FAILED(texture_->LockRect(0, &locked, nullptr, 0))) return;
@@ -256,6 +276,7 @@ private:
     bool prologuePending_ = true;
     unsigned stage_ = 0;
     unsigned width_ = 0, height_ = 0, rowPitch_ = 0;
+    unsigned textureWidth_ = 0, textureHeight_ = 0;
     ULONGLONG startedAt_ = 0;
     bool bottomUp_ = true, textureReady_ = false, renderReported_ = false;
     bool captureRequested_ = false, captureDone_ = false;
