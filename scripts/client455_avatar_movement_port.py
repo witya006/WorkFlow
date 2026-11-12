@@ -14,6 +14,8 @@ def port_avatar_movement(raw, relative, native, section):
     BOOL SendAvatarMove455(const float* target);
     BOOL SendAvatarPosition455(BYTE opcode);
     RF455MovementState m_movement455;''')
+        anchor = b'BOOL\tInitMsg_NewPosStartRequest_clzo( BYTE pi_byStartMode );'
+        raw = replace(raw, anchor, anchor + b'\n\t\t\tvoid ResetAvatarMovement455();')
         return b'#include "client455_avatar_movement.h"\n' + raw, True
     if relative == 'network/cnetworkmgr.cpp':
         raw = replace(raw, b'case player_move_zocl :\n\t\t\t\t\tPositionMsg_PlayerMove_zocl( pi_pMsg );\n\t\t\t\t\tbreak;',
@@ -29,8 +31,7 @@ def port_avatar_movement(raw, relative, native, section):
         CancelBasePortalRequest455();
         // Login's world-to-zone handoff closes the previous connection.
         // Keep the prediction mode selected by the world-entry reply.
-        m_movement455.clearPending();
-        m_movement455.stopArmed = false;
+        ResetAvatarMovement455();
     }''')
         return raw, True
     if relative != 'network/cnetworkmgr_positionmsg.cpp':

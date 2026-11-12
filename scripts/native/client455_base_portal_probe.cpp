@@ -2,6 +2,8 @@
 #include "gameobject/manager/ctargetmgr.h"
 #include "gameobject/board/common/cboardmanager.h"
 #include "network/netmsgprocessor/map/cnetmsgprocessor_map.h"
+#include "network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.h"
+#include "gameobject/board/general/cpartyboard.h"
 #include "cland.h"
 #include "ccamera.h"
 #include "datafile.h"
@@ -16,6 +18,9 @@
 #include "client455_nation_paths.h"
 #include "mainapp.h"
 #include "userinterface/gamewindow/etcwin/guimaploadingwindow.h"
+#include "userinterface/gamewindow/etcwin/guiradarwindow.h"
+#include "userinterface/gamewindow/etcwin/guiminimapwindow.h"
+#include "jerror.h"
 
 #include <array>
 #include <cstdio>
@@ -57,6 +62,7 @@ template struct MemberAccess<ControlKey, &CInputProcessMgr::m_bControlKeyDown>;
 
 struct Network : CNetworkMgr {
     using CNetworkMgr::AnalysisServerPacket;
+    using CNetworkMgr::SendAvatarMove455;
 };
 struct Avatar : CAvatar {
     Avatar() { m_pMoveMapInfo = new MOVEMAP_INFO; }
@@ -95,17 +101,24 @@ struct SendRing {
 
     bool Empty() { return buffer.GetTotalPush() == buffer.GetTotalPop(); }
 
-    void ExpectRequest(std::initializer_list<BYTE> expected = {6, 0, 4, 26, 0xcd, 0xab})
+    std::vector<BYTE> ReadRequest()
     {
         int size = 0;
         bool empty = false;
         const auto* wire = buffer.GetSendPoint(&size, &empty);
         std::array<BYTE, 32> payload{};
         std::size_t produced = 0;
-        require(wire && !empty && peer.decode(wire, size, payload.data(), payload.size(), produced) &&
-                produced == expected.size() && std::equal(expected.begin(), expected.end(), payload.begin()),
-                "ordinary send ring contains the expected message and serial fields");
+        require(wire && !empty && peer.decode(wire, size, payload.data(), payload.size(), produced),
+                "decode ordinary send ring");
         buffer.AddPopPos(size);
+        return {payload.begin(), payload.begin() + produced};
+    }
+
+    void ExpectRequest(std::initializer_list<BYTE> expected = {6, 0, 4, 26, 0xcd, 0xab})
+    {
+        const auto packet = ReadRequest();
+        require(packet.size() == expected.size() && std::equal(expected.begin(), expected.end(), packet.begin()),
+                "ordinary send ring contains the expected message and serial fields");
     }
 };
 
@@ -409,12 +422,14 @@ int run(const char* itemFile, const char* keyMapFile)
               "\"refusal_and_cancel\":true,\"loading_overlay_only_cross_map\":true}}");
     return 0;
 }
+#include "client455_portal_arrival_probe.inc"
 }
 
 int main(int argc, char** argv)
 {
     SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
     try {
+        if (argc == 2 && !std::strcmp(argv[1], "--arrival")) return guardedPortalArrival();
         require(argc == 3, "pinned Item.edf and KeyMap.dat arguments");
         return run(argv[1], argv[2]);
     } catch (const std::exception& error) {

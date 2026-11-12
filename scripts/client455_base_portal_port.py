@@ -86,6 +86,10 @@ def port_base_portal(raw, relative, native, section):
     if relative == 'gameprogress/cgp_maingame.cpp':
         return replace(raw, b'\t_GetUISpriteMgr()->LoadSprite( SP_ID_MAPLOADING );\n', b''), True
     if relative == 'character/avatar/cavatar_relationinfo.cpp':
+        def begin_transition(body):
+            anchor = b'\t_GetAvatar()->Disable( ROSF_MOVABLE );'
+            return replace(body, anchor, b'\t_GetNetworkMgr()->ResetAvatarMovement455();\n' + anchor)
+        raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result', begin_transition)
         def before_loading(body):
             body = replace(body, b'if( timeGetTime() - m_dwMoveStepStartTime >= m_dwMoveDelay )', b'''const bool sameMapPortal = m_byEnterMapIndex == m_byExitMapIndex &&
         (m_byMoveType == GST_PORTAL || m_byMoveType == GST_BASE_PORTAL);
@@ -123,6 +127,18 @@ def port_base_portal(raw, relative, native, section):
                            b'        (m_byMoveType == GST_BASE_PORTAL && m_byEnterMapIndex == m_byExitMapIndex)\n'
                            b'        ? 1300 : DEFAULT_MOVEMAP_DELAY;')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_LoadData', after_loading)
+        def finish_transition(body):
+            return replace(body, b'\t_GetAvatar()->Enable( ROSF_MOVABLE );\n'
+                           b'\t_GetNetworkMgr()->InitMsg_NewPosStartRequest_clzo( m_byMoveType );',
+                           b'''    if (!_GetNetworkMgr()->InitMsg_NewPosStartRequest_clzo(m_byMoveType)) {
+        m_byMoveStep = MMS_NONE;
+        m_pEnterPortalInfo = m_pExitPortalInfo = nullptr;
+        RF455_ObserveProtocol("map-arrival-send-failed", m_byExitMapIndex, m_byMoveType, 0);
+        EP_DisconnectedFromServer();
+        return;
+    }
+    _GetAvatar()->Enable(ROSF_MOVABLE);''')
+        raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_BeginNewMap', finish_transition)
         return b'#include "client455_protocol_observation.h"\nvoid EP_DisconnectedFromServer();\n' + raw, True
     if relative == 'userinterface/gamewindow/etcwin/guimaploadingwindow.cpp':
         def bind_loading_sprite(body):

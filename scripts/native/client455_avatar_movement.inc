@@ -1,5 +1,11 @@
 #include "client455_avatar_stage.h"
 
+void CNetworkMgr::ResetAvatarMovement455()
+{
+    m_movement455.clearPending();
+    m_movement455.stopArmed = false;
+}
+
 BOOL CNetworkMgr::SendAvatarMove455(const float* target)
 {
     auto* avatar = _GetAvatar();
@@ -80,6 +86,9 @@ bool CNetworkMgr::PositionMsg_PlayerMove455(const char* bytes, std::size_t size)
     auto* avatar = _GetAvatar();
     if (!avatar) return true;
     const bool local = avatar->GetIndex() == packet.serial;
+    if (local && avatar->GetMoveMapInfo() &&
+        avatar->GetMoveMapInfo()->m_byMoveStep != MOVEMAP_INFO::MMS_NONE)
+        return true;
     auto* player = local ? avatar : (_GetCharMgr() ? _GetCharMgr()->GetPlayer(packet.serial) : nullptr);
     if (!player) return true;
     if (local) m_movement455.clearPending();
@@ -108,6 +117,8 @@ bool CNetworkMgr::PositionMsg_PlayerStop455(const char* bytes, std::size_t size)
     Vector3f target = {float(packet.position[0]), float(packet.position[1]), float(packet.position[2])};
     const bool local = avatar->GetIndex() == packet.serial;
     if (local) {
+        if (avatar->GetMoveMapInfo() && avatar->GetMoveMapInfo()->m_byMoveStep != MOVEMAP_INFO::MMS_NONE)
+            return true;
         auto* next = _GetNextActionMgr();
         if (next && GetDist(avatar->GetPosition(), target) > 10.f) {
             next->SetNextAction(CAI_MOVE_MOVING);
