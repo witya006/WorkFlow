@@ -567,7 +567,9 @@ def main():
                 first,last=section(raw,b'CGP_LogIn::Render( void )',b'CGP_LogIn::Render( void )');body=raw[first:last]
                 anchor=b'\tR3EndScene();'
                 if body.count(anchor)!=1:raise ValueError('Login render diagnostic boundary changed')
-                body=body.replace(anchor,anchor+b'\n\tRF455_CaptureLoginFrameIfRequested();')
+                body=body.replace(anchor,anchor+b'\n\tRF455_CaptureLoginFrameIfRequested();\n'
+                                  b'\tif (g_LoginState == LGS_EXIT && !m_bRequestConnect)\n'
+                                  b'\t\tRF455_CaptureSelectionFadeIfRequested(timeGetTime() - m_MP3ElapseTime, IsFadeOut() != FALSE);')
                 declaration=raw.rfind(b'HRESULT',0,first)
                 if declaration<0 or raw[declaration:first].strip()!=b'HRESULT':raise ValueError('Login render return declaration changed')
                 raw=raw[:declaration]+(native/'client455_login_capture.inc').read_bytes()+b'\n'+raw[declaration:first]+body+raw[last:]

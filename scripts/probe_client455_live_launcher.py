@@ -77,6 +77,7 @@ def main():
     observations.add_argument('--observe-base-portal',action='store_true')
     observations.add_argument('--observe-movement',action='store_true')
     observations.add_argument('--observe-focus', action='store_true')
+    observations.add_argument('--observe-entry', action='store_true')
     from probe_client455_device_startup import GAMEPLAY_RESOLUTIONS
     parser.add_argument('--resolution', choices=GAMEPLAY_RESOLUTIONS, default=GAMEPLAY_RESOLUTIONS[0])
     parser.add_argument('--combat-monster-record',type=int)
@@ -89,7 +90,7 @@ def main():
     if args.select_character and not args.own_login:raise ValueError('Selection test requires own live Login')
     if args.world_map_index is not None and not args.select_character:raise ValueError('Map staging requires selection')
     observe_walk=args.observe_walk or args.observe_monster or args.observe_combat or args.observe_movement
-    observe_world=args.observe_world or observe_walk or args.observe_camera or args.observe_base_portal or args.observe_focus
+    observe_world=args.observe_world or observe_walk or args.observe_camera or args.observe_base_portal or args.observe_focus or args.observe_entry
     if args.observe_base_portal and args.world_map_index != 0:
         parser.error('--observe-base-portal requires --world-map-index 0 and uses one item from the first slot')
     if observe_world and (not args.authenticate or args.world_map_index is None):
@@ -133,7 +134,7 @@ def main():
             if observe_world:
                 observation=probe_client455_device_startup.world_observation_name(
                     observe_walk, args.observe_camera, args.observe_monster, args.observe_combat,
-                    args.observe_base_portal, args.observe_movement, args.observe_focus)
+                    args.observe_base_portal, args.observe_movement, args.observe_focus, args.observe_entry)
                 report_file=f'artifacts/client455-progress/client455-{observation}-live-taiwan-native.json'
             try:
                 game = probe_client455_device_startup.main(
@@ -142,7 +143,7 @@ def main():
                     observe_camera=args.observe_camera, observe_monster=args.observe_monster,
                     observe_combat=args.observe_combat, combat_monster_record=args.combat_monster_record,
                     combat_approach_ms=args.combat_approach_ms, observe_base_portal=args.observe_base_portal,
-                    observe_movement=args.observe_movement, observe_focus=args.observe_focus)
+                    observe_movement=args.observe_movement, observe_focus=args.observe_focus, observe_entry=args.observe_entry)
                 game_probe_passed = True
             except SystemExit as error:
                 if error.code != 1:

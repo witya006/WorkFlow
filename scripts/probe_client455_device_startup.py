@@ -82,7 +82,9 @@ def stage_world_map(client, run, index):
     return records
 
 
-def world_observation_name(walk, camera, monster, combat, base_portal=False, movement=False, focus=False):
+def world_observation_name(walk, camera, monster, combat, base_portal=False, movement=False, focus=False, entry=False):
+    if entry:
+        return 'world-entry'
     if focus:
         return 'world-focus'
     if base_portal:
@@ -119,10 +121,30 @@ def focus_result(events, resolution):
             'packets_while_inactive': packet_count, 'passed': frame_captured and packet_count > 0}
 
 
+def entry_result(events, resolution):
+    prefixes = (
+        'RF455 Protocol:select-result:0:', 'RF455 Protocol:selection-fade-start:',
+        'RF455 SelectionFade:0:', 'RF455 SelectionFade:1:', 'RF455 SelectionFade:2:',
+        'RF455 Protocol:selection-zone-connect:', 'RF455 Protocol:selection-world-handoff:',
+        'RF455 Protocol:position-mode:0:', f'RF455 WorldCapture:0:0:{resolution}',
+    )
+    ordered = []
+    for event in events:
+        if len(ordered) == len(prefixes):
+            break
+        if event['kind'] == 'debug_string' and event['value'].startswith(prefixes[len(ordered)]):
+            ordered.append(event['value'])
+    matched = len(ordered) == len(prefixes)
+    capture = re.compile(r'RF455 SelectionFade:[012]:(\d+):00000000:' + re.escape(resolution))
+    fade = [int(match[1]) for value in ordered[2:5] if (match := capture.fullmatch(value))]
+    return {'passed': matched and len(fade) == 3 and fade[0] < fade[1] < fade[2],
+            'ordered': ordered, 'fade_ms': fade}
+
+
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
          combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False,
-         observe_movement=False, observe_focus=False):
+         observe_movement=False, observe_focus=False, observe_entry=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
     parser.add_argument('--skip-title', choices=('logo', 'prologue'))
     parser.add_argument('--resolution', choices=GAMEPLAY_RESOLUTIONS, default=GAMEPLAY_RESOLUTIONS[0])
@@ -154,7 +176,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
         prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat,
-                                      observe_base_portal, observe_movement, observe_focus)
+                                      observe_base_portal, observe_movement, observe_focus, observe_entry)
         observation_name=prefix
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
@@ -277,12 +299,16 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_OBSERVE_MOVEMENT',None)
     environment.pop('RF455_OBSERVE_FOCUS', None)
     environment.pop('RF455_CAPTURE_TITLE', None)
+    environment.pop('RF455_CAPTURE_SELECTION_FADE', None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
     if observe_monster or observe_combat:environment['RF455_CAPTURE_MONSTERS']='1'
     if observe_combat:environment['RF455_OBSERVE_COMBAT']='1'
     if observe_focus:environment['RF455_OBSERVE_FOCUS']='1'
+    if observe_entry:
+        environment['RF455_CAPTURE_SELECTION_FADE'] = '1'
+        environment['RF455_SKIP_TITLE_STAGE'] = '2'
     if combat_monster_record is not None:environment['RF455_COMBAT_RECORD']=str(combat_monster_record)
     if combat_approach_ms:environment['RF455_COMBAT_APPROACH_MS']=str(combat_approach_ms)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
@@ -369,6 +395,14 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         if observe_focus:
             report['scope'] = 'Ordinary own-client world and network after addressed Win32 activation messages'
             report['world_activation'] = focus_result(events, args.resolution)
+        if observe_entry:
+            report['scope'] = 'Ordinary own-client accepted selection through fade and first controllable world frame'
+            frames = [run / f'selection-fade-{phase}.png' for phase in ('start', 'mid', 'end')]
+            report['selection_fade_frames'] = [{'file': frame.relative_to(WS).as_posix(), 'sha256': sha(frame)}
+                                               for frame in frames if frame.is_file()]
+            report['selection_fade_observations'] = [e['value'] for e in events if e['kind'] == 'debug_string'
+                                                     and e['value'].startswith('RF455 SelectionFade:')]
+            report['entry_transition'] = entry_result(events, args.resolution)
         if observe_base_portal:
             report['scope']='Ordinary own-client NeutralB with one addressed inventory use event for bag 1, slot 1'
             report['base_portal_input']=[e for e in events if e['kind']=='base_portal_inventory_posted']
@@ -406,6 +440,8 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if observe_world and set(report['world_rendered_resolutions']) != {args.resolution}:
         raise SystemExit(1)
     if observe_focus and not report['world_activation']['passed']:
+        raise SystemExit(1)
+    if observe_entry and (len(report['selection_fade_frames']) != 3 or not report['entry_transition']['passed']):
         raise SystemExit(1)
     return report
 if __name__=='__main__':main()

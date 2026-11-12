@@ -1,0 +1,196 @@
+{
+  "status": "PARTIAL_LIVE_SELECTION_FADE_TO_WORLD",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "556f72ab8a2f35dbc662de65142db1064d4b4a1b410de930d849a446da950d36",
+    "bytes": 2528768,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3e40",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "map": "NeutralB",
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13e69c",
+          "bytes": 121,
+          "role": "Accepted selection starts the camera, black fade, and panel motion",
+          "sha256": "da308f64e26e8048ceb51ad4b41d444b5fed0d7f1ceb29514eaf1edac018cf50"
+        },
+        {
+          "rva": "0x13f58d",
+          "bytes": 242,
+          "role": "Fade completion gate and explicit MainGame handoff",
+          "sha256": "6bf1a41dd05f95d68a48f0ad4513de3b6b2479ed4ff02e0e52264b2505b7a2aa"
+        },
+        {
+          "rva": "0x3c8c78",
+          "bytes": 26,
+          "role": "Map loading clears the inherited black overlay",
+          "sha256": "9857e753cad1e89b30b0dfd0bc40f7ad6f3ae77004d452f26c4ce653cf8eb772"
+        },
+        {
+          "rva": "0x7d13f8",
+          "bytes": 48,
+          "role": "Three slot-specific camera records",
+          "sha256": "f95614f8ac1b1f7b23ee817e9720b303f1eabfc3da7a11656abf5500bd476056"
+        }
+      ],
+      "camera_clips": [
+        {
+          "name": "C_02_01_IN",
+          "frames": [
+            0,
+            20
+          ]
+        },
+        {
+          "name": "C_02_02_IN",
+          "frames": [
+            0,
+            20
+          ]
+        },
+        {
+          "name": "C_02_03_IN",
+          "frames": [
+            0,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13e69c",
+          "bytes": 121,
+          "role": "Accepted selection starts the camera, black fade, and panel motion",
+          "sha256": "da308f64e26e8048ceb51ad4b41d444b5fed0d7f1ceb29514eaf1edac018cf50"
+        },
+        {
+          "rva": "0x13f58d",
+          "bytes": 242,
+          "role": "Fade completion gate and explicit MainGame handoff",
+          "sha256": "6bf1a41dd05f95d68a48f0ad4513de3b6b2479ed4ff02e0e52264b2505b7a2aa"
+        },
+        {
+          "rva": "0x3c8c78",
+          "bytes": 26,
+          "role": "Map loading clears the inherited black overlay",
+          "sha256": "9857e753cad1e89b30b0dfd0bc40f7ad6f3ae77004d452f26c4ce653cf8eb772"
+        },
+        {
+          "rva": "0x7d13f8",
+          "bytes": 48,
+          "role": "Three slot-specific camera records",
+          "sha256": "f95614f8ac1b1f7b23ee817e9720b303f1eabfc3da7a11656abf5500bd476056"
+        }
+      ],
+      "camera_clips": [
+        {
+          "name": "C_02_01_IN",
+          "frames": [
+            0,
+            20
+          ]
+        },
+        {
+          "name": "C_02_02_IN",
+          "frames": [
+            0,
+            20
+          ]
+        },
+        {
+          "name": "C_02_03_IN",
+          "frames": [
+            0,
+            20
+          ]
+        }
+      ]
+    }
+  ],
+  "matching_reference_regions": [
+    "0x13e69c",
+    "0x13f58d",
+    "0x3c8c78",
+    "0x7d13f8"
+  ],
+  "visual_run": {
+    "report": {
+      "file": "artifacts/client455-progress/entry-transition-fade-556f72ab.json",
+      "sha256": "90c2bf35fb2d8ec773251e244f088dc9c10920d38a9e57380ff321d91ae10a2f"
+    },
+    "zone_connect_ms": 1538,
+    "world_handoff_ms": 1539,
+    "controllable_world_frame": {
+      "file": "work/m9/556f72ab/world-entry-live-taiwan001/world-post-position.png",
+      "sha256": "1d492646aadcf82419c94bf0f4f6b5fbbdf457068004af3574082a1f1cee1521"
+    },
+    "fade_frames": [
+      {
+        "file": "work/m9/556f72ab/world-entry-live-taiwan001/selection-fade-start.png",
+        "sha256": "fc05cc3daf52944e840311575613045d0c0edbf14b1239d84d57bdc3896f29fd",
+        "elapsed_ms": 4,
+        "central_luma": 86.826
+      },
+      {
+        "file": "work/m9/556f72ab/world-entry-live-taiwan001/selection-fade-mid.png",
+        "sha256": "adf788c3098fab12954772e544da51edd111e710c379ecb9d4f6133071549103",
+        "elapsed_ms": 669,
+        "central_luma": 25.926
+      },
+      {
+        "file": "work/m9/556f72ab/world-entry-live-taiwan001/selection-fade-end.png",
+        "sha256": "92d6941dafbb368d31aca708c15934c56278a73f02f5c7ebc9c77f20635038b4",
+        "elapsed_ms": 1400,
+        "central_luma": 0.0
+      }
+    ]
+  },
+  "timing_run": {
+    "report": {
+      "file": "artifacts/client455-progress/entry-transition-timing-556f72ab.json",
+      "sha256": "f36c0ac07614ff4c2fdc89187a5b03a713c195c8ae9fd811f66906eb8729dd8b"
+    },
+    "zone_connect_ms": 1066,
+    "world_handoff_ms": 1066,
+    "controllable_world_frame": {
+      "file": "work/m9/556f72ab/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "bfd67d19263822ead4ad5561360704b722715ad3b0851b077178efcc3d159df9"
+    }
+  },
+  "prologue_skipped_after_render": true,
+  "server_modified": false,
+  "private_handoff_removed": true,
+  "remaining": [
+    "Launcher UI and applicable FireGuard flow",
+    "Temporal flicker in presented video",
+    "Other startup transition effects"
+  ],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

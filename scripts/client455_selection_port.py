@@ -1,4 +1,6 @@
-"""Restore selected-character wire consumer;full UI/state handoff is separate."""
+"""Restore selected-character wire handling and the ordinary zone handoff."""
+
+from client455_trade_ore_port import patch_method, replace
 
 
 def port_selection(raw,relative,native,section):
@@ -47,7 +49,23 @@ def port_selection(raw,relative,native,section):
         old=b'_GetAvatar()->PutOnEquipment( _GetAvatarDummy(m_Course)->GetEquipItem( i ) );'
         if fragment.count(old)!=1:raise ValueError('Selection typed worn copy anchor')
         fragment=fragment.replace(old,b'_GetAvatar()->PutOnEquipment455(_GetAvatarDummy(m_Course)->GetEquipItem455(BYTE(i)),true);')
+        fragment=replace(fragment, b'UI_SetMoveWindow( SELECT_CHAR_WIN, FALSE );',
+                         b'UI_SetMoveWindow( SELECT_CHAR_WIN, FALSE );\n'
+                         b'\t\t\t\tRF455_ObserveProtocol("selection-fade-start", 0, 0, 0);')
         body=body[:begin]+fragment+body[end:];raw=raw[:first]+body+raw[last:]
+        def finish_after_fade(body):
+            body = replace(body, b'\t\t\t_GetNetworkMgr()->Connect( GST_ZONE );',
+                           b'\t\t\tRF455_ObserveProtocol("selection-zone-connect", timeGetTime() - m_MP3ElapseTime, 0, 0);\n'
+                           b'\t\t\t_GetNetworkMgr()->Connect( GST_ZONE );')
+            body = replace(body, b'if( ( _GetNetworkMgr()->IsConnectedToServer( GST_ZONE ) ) )',
+                           b'if (g_LoginState == LGS_EXIT && m_bRequestConnect &&\n'
+                           b'        _GetNetworkMgr()->IsConnectedToServer(GST_ZONE))')
+            return replace(body, b'\t\tm_dwInputFocus = GPL_INPUT_END;\n\t\tm_bExit = TRUE;',
+                           b'\t\tm_dwInputFocus = GPL_INPUT_END;\n\t\tSetNextStage455(GPI_MAIN_GAME);\n'
+                           b'\t\tRequestStageExit455();\n'
+                           b'\t\tRF455_ObserveProtocol("selection-world-handoff", timeGetTime() - m_MP3ElapseTime, 0, 0);')
+
+        raw = patch_method(raw, section, b'CGP_LogIn', b'InputProcess', finish_after_fade)
         raw+=b'\nunsigned RF455_SelectedCharacterSlot(){return static_cast<unsigned>(m_Course);}\n'
         return raw,True
     if relative=='character/avatar/cavatar.h':
