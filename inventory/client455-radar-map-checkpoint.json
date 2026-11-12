@@ -1,0 +1,114 @@
+{
+  "status": "PARTIAL_RADAR_CURRENT_MAP",
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "cd1e698af4859053138caeb8efb54ee815114ad735cb8c5e658e6358c495ebc4",
+    "bytes": 2521600,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a2970",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "mouse_handler_rva": "0x319dc0",
+    "window_message": "0x51e",
+    "window_handler_rva": "0x15e770",
+    "keyboard_handler_rva": "0x15c7e0",
+    "toggle_rva": "0x15c820",
+    "map_geometry_rva": "0x3c9240",
+    "sprite_binding_rva": "0x317ec0",
+    "layout_rva": "0x317790",
+    "button_frames": [
+      6,
+      7,
+      8
+    ],
+    "evidence": {
+      "file": "artifacts/client455-startup/radar455-map-reference.json",
+      "sha256": "032d1da561f8db5877f7cef056aaf82ac7e9589690bd3c78bef7e01cf72e6318"
+    }
+  },
+  "probe": {
+    "command": "scripts/Invoke-Python.ps1 scripts/probe_client455_hud.py --radar",
+    "native": {
+      "status": "PASS",
+      "frame": [
+        146,
+        163
+      ],
+      "layers": [
+        93,
+        93
+      ],
+      "board": [
+        97,
+        97
+      ],
+      "marker": [
+        3,
+        3
+      ],
+      "radius": 46,
+      "party_direction_frames": [
+        3,
+        4
+      ],
+      "zoom_spans": [
+        340,
+        510,
+        680,
+        1020,
+        1360
+      ],
+      "zoom_persists_on_map_bind": true,
+      "map_button_and_key": true,
+      "map_terrain": [
+        400,
+        400
+      ],
+      "map_restrictions": true,
+      "map_binding_order": [
+        0,
+        2
+      ],
+      "GPU_frames": 12,
+      "initial_pixels": 23550
+    },
+    "original_sprites": [
+      "Bel_Field.spr",
+      "Resource_Field.spr"
+    ],
+    "actual_bsp_node_bounds": true,
+    "keyboard_fixture_binding": "M",
+    "cached_map_reopen": true,
+    "missing_sprite_preserves_cache": true,
+    "terrain_opacity_visible": true,
+    "report": {
+      "file": "work/m9/ca671325/hud-001/probe-report.json",
+      "sha256": "43019386450e40039deff57140aebfa7b81c64cb1c1d317ddf6e812ab2fb012e"
+    }
+  },
+  "early_startup": {
+    "file": "inventory/client455-startup-taiwan-native.json",
+    "sha256": "9a51045ddf3bb0ddb26e36f281ee791e264ff4b6199daea897352c40ac27cffe"
+  },
+  "open": [
+    "Live world and current avatar position",
+    "Transport01 transit map",
+    "Additional radar controls and special markers"
+  ],
+  "live_server_used": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

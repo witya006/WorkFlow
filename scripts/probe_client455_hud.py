@@ -7,6 +7,7 @@ from client455_own_probe import build_full_object_probe
 from client455_asset_staging import stage_asset,staging_stats
 from client455_runtime_inputs import copy_character_shaders
 from checkpoint_client455_rvp_effects import sha,require
+from map455 import MapFile
 
 def record(path):return dict(file=path.relative_to(WS).as_posix(),sha256=sha(path))
 def main():
@@ -29,6 +30,18 @@ def main():
                 dest=run/'SpriteImage'/folder/name;stage_asset(path,dest);inputs.append(dict(**record(dest),original=str(path)))
     for name in ['mss32.dll','System/010.TTF','System/console.jpg','System/shader/Grass1.vsh','System/shader/grass1.vso',f'DataTable/{locale}/NDLanguage.edf']:
         stage_asset(client/name,run/name);inputs.append(dict(**record(run/name),original=str(client/name)))
+    if args.radar:
+        for name in ('DataTable/Map.edf', f'DataTable/{locale}/NDMap.edf',
+                     'SpriteImage/Common/Map/Bel_Field.spr', 'SpriteImage/Common/Map/Resource_Field.spr'):
+            stage_asset(client/name,run/name);inputs.append(dict(**record(run/name),original=str(client/name)))
+        bounds=bytearray()
+        for name in ('neutralB','Resources'):
+            original=client/'Map'/name/(name+'.bsp')
+            raw=original.read_bytes();nodes=MapFile(raw,'bsp').read('Node')[:48]
+            require(len(nodes)==48,'Original BSP root node data for '+name)
+            bounds.extend(nodes)
+            inputs.append(dict(original=str(original),sha256=sha(original),used_node_bytes=48))
+        fixture=run/'radar-map-nodes.bin';fixture.write_bytes(bounds);inputs.append(record(fixture))
     inputs+=copy_character_shaders(run)
     language='Russia' if locale=='ru-ru' else 'Korea'
     (run/'R3Engine.ini').write_text(f'[Setup]\nLanguage={language}\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n')
@@ -41,7 +54,7 @@ def main():
     frames=[]
     for file in sorted(run.glob('*.bgra')):
         png=file.with_suffix('.png');Image.frombytes('RGBA',(640,480),file.read_bytes(),'raw','BGRA').convert('RGB').save(png);frames.append(dict(**record(file),preview=record(png)))
-    source_names=['client455_radar.inc'] if args.radar else ['client455_hud.inc','client455_hud_members.inc','client455_image_text.h','client455_image_text.cpp']
+    source_names=['client455_radar.inc','client455_minimap_opacity_owner.inc'] if args.radar else ['client455_hud.inc','client455_hud_members.inc','client455_image_text.h','client455_image_text.cpp']
     if args.bottom_hud:
         source_names=['client455_hotkey_hud.inc','client455_linker_window.cpp','client455_linker_input.inc']
     report=dict(status='PASS' if result.returncode==0 and native else 'FAIL',normal_link_sha256=sha(WS/'inventory/client455-normal-link.json'),exe=record(target),script=record(Path(__file__)),sources=[record(source)]+[record(WS/'scripts/native'/p) for p in source_names],inputs=inputs,console=record(console),output=record(out) if out.exists() else None,natural_exit=result.returncode,native=native,frames=frames,shared_staging=staging_stats(),input_exe_executed=False,server_modified=False,M6='OPEN',M9='OPEN')
@@ -54,7 +67,7 @@ def main():
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     if args.radar:
-        require(report['status']=='PASS' and len(frames)==9,'Actual radar failed')
+        require(report['status']=='PASS' and len(frames)==12,'Actual radar failed')
         area=(494,0,640,163)
         images=[]
         for name in ('radar-north','radar-camera-turned','radar-avatar-turned'):
@@ -77,6 +90,16 @@ def main():
         require((run/'radar-zoom-near.bgra').read_bytes()!=(run/'radar-zoom-far.bgra').read_bytes(),
                 'Radar zoom did not change the drawn marker position')
         report['visible_zoom']=True
+        maps=[]
+        for name in ('neutralb','neutralb-translucent','resources'):
+            with Image.open(run/f'radar-map-{name}.png') as frame:
+                terrain=frame.crop((150,70,490,410))
+                require(terrain.getcolors(200) is None,'Actual map terrain must be visible')
+                maps.append(terrain)
+        require(all(340*340-ImageChops.difference(maps[0],candidate).convert('L').histogram()[0]>50000
+                    for candidate in maps[1:]),
+                'Terrain opacity and active map replacement must affect the drawn area')
+        report['visible_current_map_terrain']=True
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text)

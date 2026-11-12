@@ -7,7 +7,8 @@ def port_hud(raw,relative,native,section):
         raw = replace(raw, b'\tvoid\tSetSprite( void );', b'''\tvoid\tSetSprite( void );
     void MouseEvent(_mouse_event& event) override;''')
         anchor = b'\tRADAR_CHAR_INFO\t* GetCharInfo( DWORD pi_dwID );'
-        return replace(raw, anchor, b'''    CGUIButton m_zoomIn455;
+        return replace(raw, anchor, b'''    CGUIButton m_openMap455;
+    CGUIButton m_zoomIn455;
     CGUIButton m_zoomOut455;
     unsigned m_zoomLevel455 = 2;
 

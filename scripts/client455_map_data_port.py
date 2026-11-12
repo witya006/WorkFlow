@@ -1,5 +1,6 @@
 """Replace obsolete bounded map records/reader and supply real minimap geometry."""
 import re
+from client455_trade_ore_port import patch_method
 
 
 def port_map_data(raw,relative,section):
@@ -14,10 +15,10 @@ def port_map_data(raw,relative,section):
         once(b'\tMAP_INFO\tm_pMapInfo[MAX_MAP];',b'\tRF455MapData m_maps455;\r\n\tMAP_INFO* m_pMapInfo=nullptr;')
         raw,n=re.subn(rb'BYTE(\s+m_byMaxMapNum;)',rb'DWORD\1',raw)
         if n!=1:raise ValueError('Map count member')
-        once(b'\tBOOL\tLoadData( void );',b'\tBOOL\tLoadData( void );\r\n\tbool ApplyMiniMapGeometry455(BYTE index);\r\n\tconst RF455MapData& MapData455()const{return m_maps455;}\r\n\tRF455MapLoad MapLoadStatus455()const{return m_mapLoad455;}\r\nprivate:\r\n\tRF455MapLoad m_mapLoad455=RF455MapLoad::MissingInput;\r\npublic:')
+        once(b'\tBOOL\tLoadData( void );',b'\tBOOL\tLoadData( void );\r\n\tvoid ToggleCurrentMinimap455();\r\n\tbool ApplyMiniMapGeometry455(BYTE index);\r\n\tconst RF455MapData& MapData455()const{return m_maps455;}\r\n\tRF455MapLoad MapLoadStatus455()const{return m_mapLoad455;}\r\nprivate:\r\n\tRF455MapLoad m_mapLoad455=RF455MapLoad::MissingInput;\r\npublic:')
         return raw,True
     if relative=='cland.cpp':
-        raw=b'#include "client455_nation_paths.h"\r\n#include "client455_protocol_observation.h"\r\n'+raw
+        raw=b'#include "client455_nation_paths.h"\r\n#include "client455_protocol_observation.h"\r\n#include <io.h>\r\n'+raw
         once(b'\tZeroMemory( &m_pMapInfo, sizeof( MAP_INFO ) * MAX_MAP );',b'\tm_maps455=RF455MapData{};m_pMapInfo=nullptr;')
         begin,end=section(raw,b'CLand::LoadData(',b'CLand::LoadData(')
         raw=raw[:begin]+b'''CLand::LoadData(void){
@@ -40,12 +41,42 @@ bool CLand::ApplyMiniMapGeometry455(BYTE index){
     window->SetMapBound(bounds);const auto& row=m_pMapInfo[index];
     window->SetNuclearMapGeometry455(row.miniMapWidth,row.miniMapHeight,row.miniMapX,row.miniMapY);return true;
 }
+
+void CLand::ToggleCurrentMinimap455()
+{
+    auto* window = _GetMinimapWindow();
+    if (!window) return;
+    if (window->IsShow()) {
+        window->Close();
+        return;
+    }
+    // Transport01 uses a separate transit map. The three dungeon maps have no map window.
+    if (m_byMapIndex == 14 || m_byMapIndex == 15 || m_byMapIndex == 16 || m_byMapIndex == 23)
+        return;
+    if (!window->IsCurrentMapBound455(m_byMapIndex)) UI_SetMinimap(m_byMapIndex);
+    if (window->IsCurrentMapBound455(m_byMapIndex)) window->Open();
+}
 '''
         # Keep one production provider for this exact pair of confirmed calls.
         start=raw.index(b'CLand::UI_SetMinimap(')
         b=raw.index(b'\tRECT l_rectMap;',start);e=raw.index(b'\t_GetMinimapWindow()->SetMapIndex(',b)
         raw=raw[:b]+b'\tif(!ApplyMiniMapGeometry455(pi_byMapIndex))return;\r\n'+raw[e:]
+        once(b'\t_GetUISpriteMgr()->UnloadSprite( SP_ID_MINIMAP );', b'''    const auto* level = GetLevel();
+    if (!m_pMapInfo || pi_byMapIndex >= m_byMaxMapNum || !level || !level->mBsp ||
+        !level->mBsp->mNode || !GetD3dDevice() || !_GetUISpriteMgr()) return;
+    const auto& map = m_pMapInfo[pi_byMapIndex];
+    if (map.miniMapWidth <= 0 || map.miniMapHeight <= 0 || _access(map.pMinimapFileName, 0) != 0) return;
+    _GetUISpriteMgr()->UnloadSprite( SP_ID_MINIMAP );''')
+        once(b'\t\t\t_GetMinimapWindow()->Open();', b'''            if (_GetMinimapWindow()->GetMiniMapIndex() == m_pMapInfo[i].byIndex)
+                _GetMinimapWindow()->Open();''')
         return raw,True
+    if relative=='gameprogress/cinputprocessmgr.cpp':
+        return patch_method(raw, section, b'CInputProcessMgr', b'InputProcess_Keyboard_OpenMinimapWindow', lambda _: b'''CInputProcessMgr::InputProcess_Keyboard_OpenMinimapWindow(void)
+{
+    if (!IsPressedKey(KM_WINDOW_MINIMAP)) return FALSE;
+    if (auto* land = _GetLand()) land->ToggleCurrentMinimap455();
+    return TRUE;
+}'''), True
     if relative=='userinterface/gamewindow/etcwin/guiminimapwindow.cpp':
         begin,end=section(raw,b'CGUIMiniMapWindow::SetMapIndex(',b'CGUIMiniMapWindow::SetMapIndex(');body=raw[begin:end]
         a=body.index(b'\tif( m_byMapIndex > 7 )');b=body.index(b'\tif( m_byMapIndex == m_byMiniMapIndex )',a)

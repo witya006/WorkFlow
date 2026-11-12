@@ -5,6 +5,7 @@
 #include "userinterface/gamewindow/guigaugeexpwindow.h"
 #include "userinterface/gamewindow/guicharinfowindow.h"
 #include "userinterface/gamewindow/etcwin/guiradarwindow.h"
+#include "userinterface/gamewindow/etcwin/guiminimapwindow.h"
 #include "userinterface/gamewindow/guihotkeyboard.h"
 #include "client455_linker_window.h"
 #include "client455_gui_input.h"
@@ -28,8 +29,14 @@ struct HudMouseClear { using Type = void(*)(); friend Type access(HudMouseClear)
 template struct HudMember<HudQueueCreate, &CGUIObject::CreateEventQueue>;
 template struct HudMember<HudQueueDrain, &CGUIObject::EventProcess>;
 template struct HudMember<HudMouseClear, &CGUIObject::ClearMouseEventBuffer>;
+struct HudKeyMap {
+    using Type = DWORD(CInputProcessMgr::*)[MAX_KEY_MAP][2];
+    friend Type access(HudKeyMap);
+};
+template struct HudMember<HudKeyMap, &CInputProcessMgr::m_listKey>;
 struct HudLinkerInput : CInputProcessMgr {
     using CInputProcessMgr::ProcessLinkerKeys455;
+    using CInputProcessMgr::InputProcess_Keyboard_OpenMinimapWindow;
 };
 
 static unsigned checkRadar()
@@ -38,12 +45,14 @@ static unsigned checkRadar()
     radar.Init();
     radar.SetPos(640 - radar.GetSizeX(), 0);
     radar.Show(TRUE);
-    check(radar.GetAddedObjectNum() == 5, "radar composition");
+    constexpr WORD baseChildren = 6;
+    check(radar.GetAddedObjectNum() == baseChildren, "radar composition");
     auto* compass = static_cast<CGUIObjectEx*>(radar.GetAddedObject(0));
     auto* arrow = static_cast<CGUIObjectEx*>(radar.GetAddedObject(1));
     auto* markers = static_cast<CGUIContainer*>(radar.GetAddedObject(2));
     auto* zoomIn = static_cast<CGUIButton*>(radar.GetAddedObject(3));
     auto* zoomOut = static_cast<CGUIButton*>(radar.GetAddedObject(4));
+    auto* mapButton = static_cast<CGUIButton*>(radar.GetAddedObject(5));
     auto* atlas = gSpriteMgr.GetTargetSprite455(4);
     CGUIObject* const layers[] = {&radar, compass, arrow};
     for (WORD frame = 0; frame < _countof(layers); ++frame) {
@@ -101,13 +110,13 @@ static unsigned checkRadar()
         button.SoundOn(FALSE);
         input(x, y, 0);
         check(button.GetSpriteInfo()->pSprite == atlas && button.GetSpriteInfo()->wActionNo == 3 &&
-              button.GetSpriteInfo()->wFrameNo == normalFrame + 1, "hovered zoom sprite");
+              button.GetSpriteInfo()->wFrameNo == normalFrame + 1, "hovered radar button sprite");
         input(x, y, _LEFT_BUTTON_DOWN);
         check(CGUIObject::GetPressedObject() == &button &&
-              button.GetSpriteInfo()->wFrameNo == normalFrame + 2, "pressed zoom sprite");
+              button.GetSpriteInfo()->wFrameNo == normalFrame + 2, "pressed radar button sprite");
         input(x, y, 0);
         input(radar.GetPosX() + 1, radar.GetPosY() + 1, 0);
-        check(button.GetSpriteInfo()->wFrameNo == normalFrame, "normal zoom sprite after release");
+        check(button.GetSpriteInfo()->wFrameNo == normalFrame, "normal radar button sprite after release");
     };
     radar.AddCharacter(0, 10, CGUIRadarWindow::Mob, 140.0f, 0.0f, 0.0f);
     auto* zoomMarker = markers->GetAddedObject(0);
@@ -149,9 +158,10 @@ static unsigned checkRadar()
     capture(draw, "radar-marker-clipped.bgra");
     radar.AddCharacter(0, 12, CGUIRadarWindow::PartyLeader, 70.0f, 0.0f, 0.0f, TRUE);
     radar.AddCharacter(0, 13, CGUIRadarWindow::PartyMember, 0.0f, 0.0f, 70.0f, TRUE);
-    check(radar.GetAddedObjectNum() == 7 && markers->GetAddedObjectNum() == 0, "out of range party directions");
+    check(radar.GetAddedObjectNum() == baseChildren + 2 && markers->GetAddedObjectNum() == 0,
+          "out of range party directions");
     for (WORD i = 0; i < 2; ++i) {
-        auto* direction = static_cast<CGUIObjectEx*>(radar.GetAddedObject(5 + i));
+        auto* direction = static_cast<CGUIObjectEx*>(radar.GetAddedObject(baseChildren + i));
         const auto* info = direction->GetSpriteInfo();
         check(info->pSprite == atlas && info->wActionNo == 3 && info->wFrameNo == 3 + i &&
               direction->GetSizeX() == 93 && direction->GetSizeY() == 93 &&
@@ -159,12 +169,86 @@ static unsigned checkRadar()
               direction->GetRotate() == (i == 0 ? 90.0f : 0.0f), "party direction sprite, pivot and heading");
     }
     capture(draw, "radar-party-directions.bgra");
+    {
+        std::array<_BSP_NODE, 4> nodes{};
+        FILE* fixture = std::fopen("radar-map-nodes.bin", "rb");
+        check(fixture != nullptr, "NeutralB and Resources BSP nodes");
+        const auto loaded = std::fread(nodes.data(), sizeof nodes[0], nodes.size(), fixture);
+        std::fclose(fixture);
+        check(loaded == nodes.size(), "complete map BSP bounds");
+        CLand land;
+        CGUIMiniMapWindow map;
+        check(land.Create() && land.LoadData(), "ordinary NeutralB map catalog");
+        auto* bsp = land.GetLevel()->mBsp;
+        bsp->mNode = nodes.data();
+        struct ReleaseMap {
+            CLand& land;
+            CGUIMiniMapWindow& map;
+            ~ReleaseMap() {
+                if (map.IsShow()) map.Close();
+                gScreen.Remove(&map);
+                g_pUiMinimapWindow = nullptr;
+                g_pUiSpriteMgr = nullptr;
+                land.GetLevel()->mBsp->mNode = nullptr;
+                gSpriteMgr.UnloadSprite(SP_ID_MINIMAP);
+            }
+        } releaseMap{land, map};
+        g_pUiSpriteMgr = &gSpriteMgr;
+        g_pUiMinimapWindow = &map;
+        gScreen.Add(&map);
+        map.SetPos(120, 24);
+        map.Show(FALSE);
+        land.SetMapIndex(0);
+        check(mapButton->GetPosX() == 612 && mapButton->GetPosY() == 109 &&
+              !_stricmp(land.GetCurMapInfo()->pName, "NeutralB"), "map control and actual active map");
+        map.SetAvatarPosition((nodes[1].bb_min[0] + nodes[1].bb_max[0]) / 2,
+                              (nodes[1].bb_min[2] + nodes[1].bb_max[2]) / 2);
+        click(*mapButton, 6);
+        check(map.IsShow() && map.IsCurrentMapBound455(0), "radar opens NeutralB directly");
+        auto* terrain = gSpriteMgr.GetSprite(SP_ID_MINIMAP);
+        check(terrain && terrain->GetSpriteOrgXL(0, 0) == 400 && terrain->GetSpriteOrgYL(0, 0) == 400,
+              "original NeutralB terrain sprite dimensions");
+        capture([&]() { check(map.Draw(), "ordinary map draw"); }, "radar-map-neutralb.bgra");
+        map.SetAlpha455(127);
+        capture([&]() { check(map.Draw(), "ordinary translucent map draw"); }, "radar-map-neutralb-translucent.bgra");
+        map.SetAlpha455(255);
+        click(*mapButton, 6);
+        check(!map.IsShow(), "radar closes the active map");
+        HudLinkerInput keys;
+        constexpr unsigned minimapAction = 5;  // KM_WINDOW_MINIMAP in the client input table.
+        auto& bindings = keys.*access(HudKeyMap{});
+        bindings[minimapAction][0] = ID_INVALID;
+        bindings[minimapAction][1] = 'M';
+        gScan['M'] = TRUE;
+        check(keys.InputProcess_Keyboard_OpenMinimapWindow() && map.IsShow() &&
+              gSpriteMgr.GetSprite(SP_ID_MINIMAP) == terrain, "configured key opens the same cached map");
+        gScan['M'] = TRUE;
+        check(keys.InputProcess_Keyboard_OpenMinimapWindow() && !map.IsShow(), "configured key closes the map");
+        land.SetMapIndex(14);
+        click(*mapButton, 6);
+        check(!map.IsShow(), "dungeon does not open an ordinary map");
+        land.SetMapIndex(2);
+        bsp->mNode = nodes.data() + 2;
+        map.RemoveAllMiniMapObject();
+        map.RemoveAllTooltipObject();
+        click(*mapButton, 6);
+        check(map.IsShow() && map.IsCurrentMapBound455(2) && !map.IsCurrentMapBound455(0),
+              "changed map index rebinds the real Resources image and bounds");
+        capture([&]() { check(map.Draw(), "ordinary Resources map draw"); }, "radar-map-resources.bgra");
+        click(*mapButton, 6);
+        terrain = gSpriteMgr.GetSprite(SP_ID_MINIMAP);
+        land.SetMapIndex(1);
+        click(*mapButton, 6);
+        check(!map.IsShow() && gSpriteMgr.GetSprite(SP_ID_MINIMAP) == terrain,
+              "missing map image preserves the previous cache and does not open it");
+    }
     radar.UpdateCharacterPos(0, 12, 0.0f, 0.0f, 0.0f);
-    check(radar.GetAddedObjectNum() == 6 && markers->GetAddedObjectNum() == 1, "direction replaced by marker on approach");
+    check(radar.GetAddedObjectNum() == baseChildren + 1 && markers->GetAddedObjectNum() == 1,
+          "direction replaced by marker on approach");
     radar.AddCharacter(0, 13, CGUIRadarWindow::Mob, 0.0f, 0.0f, 70.0f, FALSE);
-    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 1, "reclassification clears direction");
+    check(radar.GetAddedObjectNum() == baseChildren && markers->GetAddedObjectNum() == 1, "reclassification clears direction");
     radar.RemoveAllCharacter();
-    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 0, "map change clears markers and directions");
+    check(radar.GetAddedObjectNum() == baseChildren && markers->GetAddedObjectNum() == 0, "map change clears markers and directions");
     capture(draw, "radar-marker-cleared.bgra");
     return pixels;
 }
@@ -369,7 +453,8 @@ static int hud159(bool avatarHealth, bool radarOnly, bool bottomOnly){
         std::fprintf(f,"{\"status\":\"PASS\",\"frame\":[146,163],\"layers\":[93,93],\"board\":[97,97],"
                        "\"marker\":[3,3],\"radius\":46,\"party_direction_frames\":[3,4],"
                        "\"zoom_spans\":[340,510,680,1020,1360],\"zoom_persists_on_map_bind\":true,"
-                       "\"GPU_frames\":9,\"initial_pixels\":%u}\n",pixels);
+                       "\"map_button_and_key\":true,\"map_terrain\":[400,400],\"map_restrictions\":true,"
+                       "\"map_binding_order\":[0,2],\"GPU_frames\":12,\"initial_pixels\":%u}\n",pixels);
         std::fclose(f);
         return 0;
     }

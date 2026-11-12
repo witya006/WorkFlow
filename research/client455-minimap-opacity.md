@@ -1,5 +1,9 @@
 # Client455 minimap opacity — участок067
 
+13.11.2026. В текущей сборке слой местности подключён к окну карты.
+Прозрачность проверена с реальным изображением NeutralB.
+[Результаты](client455-radar.md#карта-текущей-локации).
+
 2026-11-06. Actual CGUIMiniMapWindow source integration of EX opacity control.
 Full455minimap/world and target parent input remain OPEN. No reference EXE
 executed,no server source modified.

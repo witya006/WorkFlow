@@ -308,10 +308,10 @@ def main():
                 if count!=1:raise ValueError('Minimap map container storage changed')
                 anchor=b'BOOL\t\t\t\tm_bCreated;'
                 if raw.count(anchor)!=1:raise ValueError('Minimap member boundary changed')
-                raw=raw.replace(anchor,anchor+b'\r\n\tCGUIScrollbarEX m_opacityScrollbar455;\r\n\tCGUIObject m_mapBackground455;\r\n\tCSprite m_frameSkin455;\r\n\tBYTE m_alpha455=255;\r\n\tBOOL m_zoomEligible455=FALSE,m_suppressZoom455=FALSE,m_clearZoomSuppression455=FALSE;\r\n\tvoid InitOpacity455();')
+                raw=raw.replace(anchor,anchor+b'\r\n\tCGUIScrollbarEX m_opacityScrollbar455;\r\n\tCGUIObject m_mapBackground455;\r\n\tCGUIObject m_mapTerrain455;\r\n\tCSprite m_frameSkin455;\r\n\tBYTE m_alpha455=255;\r\n\tBOOL m_zoomEligible455=FALSE,m_suppressZoom455=FALSE,m_clearZoomSuppression455=FALSE;\r\n\tvoid InitOpacity455();')
                 anchor=b'void\tMouseEvent( _mouse_event & event );'
                 if raw.count(anchor)!=1:raise ValueError('Minimap event API changed')
-                raw=raw.replace(anchor,anchor+b'\r\n\tvoid ScrollEvent(_scroll_event& event);\r\n\tvoid SetAlpha455(BYTE alpha);\r\n\tBYTE GetAlpha455()const{return m_alpha455;}\r\n\tBOOL TakeCameraZoomGate455();\r\n\tCGUIScrollbarEX& GetOpacityScrollbar455(){return m_opacityScrollbar455;}\r\n\tCGUIObject& GetMapBackground455(){return m_mapBackground455;}')
+                raw=raw.replace(anchor,anchor+b'\r\n\tvoid ScrollEvent(_scroll_event& event);\r\n\tvoid SetAlpha455(BYTE alpha);\r\n\tBYTE GetAlpha455()const{return m_alpha455;}\r\n\tbool IsCurrentMapBound455(BYTE map);\r\n\tBOOL TakeCameraZoomGate455();\r\n\tCGUIScrollbarEX& GetOpacityScrollbar455(){return m_opacityScrollbar455;}\r\n\tCGUIObject& GetMapBackground455(){return m_mapBackground455;}')
                 changes.append('455minimap opacity owner and mapped frame/map containers;other455controls/world remain open')
             if relative=='userinterface/gamewindow/etcwin/guiminimapwindow.cpp':
                 raw=b'#include "client455_minimap_opacity.h"\r\n#include "client455_modal.h"\r\n#include "client455_sprites.h"\r\n#include <io.h>\r\n#include <stdexcept>\r\n'+raw

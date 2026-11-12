@@ -1,6 +1,11 @@
+#include "cland.h"
+
+extern CLand* g_pLand;
+
 namespace {
 constexpr LONG radarWorldSpan455[] = {340, 510, 680, 1020, 1360};
 constexpr WORD radarSpriteAction455 = 3;
+constexpr WORD openMapFrame455 = 6;
 constexpr WORD zoomInFrame455 = 19;
 constexpr WORD zoomOutFrame455 = 22;
 
@@ -37,7 +42,8 @@ void CGUIRadarWindow::Init()
     Add(&m_uiRadarBoard);
     m_zoomIn455.SetPos(m_ptPos.x + 6, m_ptPos.y + 84);
     m_zoomOut455.SetPos(m_ptPos.x + 13, m_ptPos.y + 104);
-    for (auto* button : {&m_zoomIn455, &m_zoomOut455}) {
+    m_openMap455.SetPos(m_ptPos.x + 118, m_ptPos.y + 109);
+    for (auto* button : {&m_zoomIn455, &m_zoomOut455, &m_openMap455}) {
         button->AddMouseEventHandler(this);
         Add(button);
     }
@@ -71,6 +77,7 @@ void CGUIRadarWindow::SetSprite()
     m_uiAvatarObject.SetSpriteV(0, 1.0f);
     BindRadarButton455(m_zoomIn455, *sprite, zoomInFrame455);
     BindRadarButton455(m_zoomOut455, *sprite, zoomOutFrame455);
+    BindRadarButton455(m_openMap455, *sprite, openMapFrame455);
 
     if (m_bCreated) {
         for (auto* character : m_listChar)
@@ -81,7 +88,12 @@ void CGUIRadarWindow::SetSprite()
 void CGUIRadarWindow::MouseEvent(_mouse_event& event)
 {
     CGUIWindow::MouseEvent(event);
-    if (event.id != MOUSE_STROKED || gScreen.ExistObject()) return;
+    if (gScreen.ExistObject()) return;
+    if (event.source == &m_openMap455 && event.id == MOUSE_CLICKED) {
+        if (g_pLand) g_pLand->ToggleCurrentMinimap455();
+        return;
+    }
+    if (event.id != MOUSE_STROKED) return;
 
     if (event.source == &m_zoomIn455 && m_zoomLevel455 > 0) {
         --m_zoomLevel455;
@@ -118,6 +130,7 @@ void CGUIRadarWindow::SetSprite_CharDir(CharType type, CGUIObjectEx* direction)
     SPRITE_INFO info{m_uiCompassBase.GetSpriteInfo()->pSprite, 3, frame};
     direction->SetSpriteInfo(&info);
     direction->SetSize(m_uiCompassBase.m_ptSize);
+    direction->SetMouseInput455(FALSE);
     direction->SetSpriteU(0, 1.0f);
     direction->SetSpriteV(0, 1.0f);
 }
