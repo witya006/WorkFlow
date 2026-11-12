@@ -1,0 +1,118 @@
+{
+  "status": "PASS_FRESH_CORA_FORCE_TUTORIAL_TO_NEUTRALC",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "finish_rva": "0xa6080",
+    "entry_rva": "0x159850"
+  },
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ab972c9c4694e0525d2218b2d42603629381600ad4df6d9c66184825aee95676",
+    "architecture": "x86",
+    "configuration": "Release Win32",
+    "entry_rva": "0x1a1740"
+  },
+  "profile": {
+    "file": "work/startup455-m6/menu-live/DataTable/ru-ru/cf.scp",
+    "sha256": "c1b9987f0150ff3767d37f24fa398ee906fbfe70c1c1b1d037fae6dc772b2c95"
+  },
+  "journal": {
+    "file": "work/startup455-m6/menu-live/events-1794462196.jsonl",
+    "sha256": "43685c0d8e26c52f86f373cf9d119e6a72756bc067153aefc9157053bfc9b9bf"
+  },
+  "frames": [
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-cora-full-welcome.png",
+      "sha256": "33eb5c6963aeee8146cc80c247d89bf126a27dd4f92049c94b38116e7de47854"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-cora-full-loot-before.png",
+      "sha256": "1ed8d132848f07405f2023b84be4d44f876aa3f0df842a4209127feedb3f3d2a"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-cora-full-mission-dialog.png",
+      "sha256": "70edadecb9cba565a76506a9336688e8789b967bcf32b54682bcca0c107665f1"
+    },
+    {
+      "file": "work/startup455-m6/menu-live/tutorial-cora-full-mission-world.png",
+      "sha256": "1733eb8ddbddd45e08594c8f9ff4fd8ae8c9fd1dd28a6ba573d2bd7ff8d4787e"
+    }
+  ],
+  "scenario": {
+    "locale": "ru-ru",
+    "input": "Ordinary Windows keyboard and mouse",
+    "window": [
+      640,
+      500
+    ],
+    "starting_roster_empty": true,
+    "profile_fixture": false,
+    "state_fixture": false,
+    "ordered_events": [
+      "rx:1:9:14",
+      "tx:1:10:28",
+      "rx:1:11:2",
+      "create-result:0:0:0",
+      "tutorial-intro:2:9:0",
+      "tutorial-welcome:1:70:0",
+      "tutorial-settings-complete:2:0:0",
+      "tutorial-move-complete:3:0:0",
+      "tutorial-camera-complete:4:0:0",
+      "tutorial-item-granted:6:896:0",
+      "tutorial-equipment-complete:5:0:0",
+      "tutorial-force-complete:6:0:0",
+      "tutorial-force-used:26:37378:1",
+      "tutorial-hunting-complete:7:0:0",
+      "tutorial-force-used:24:37376:1",
+      "tutorial-loot-collected:3844:336:0",
+      "tutorial-loot-complete:8:0:0",
+      "tutorial-mission-objective-met:15:5:0",
+      "tutorial-mission-acknowledged:8:1:0",
+      "tutorial-complete:9:0:0",
+      "tutorial-leaving:0:1:0",
+      "tx:1:14:1",
+      "select-result:0:0:0",
+      "map-bsp:1:1:0",
+      "world-frame:1:0:0"
+    ],
+    "keepalive_count": 5,
+    "mission_kills": [
+      "tutorial-mission-kill:1:65541:0",
+      "tutorial-mission-kill:2:65538:0",
+      "tutorial-mission-kill:3:65542:0",
+      "tutorial-mission-kill:4:65539:0",
+      "tutorial-mission-kill:5:65540:0"
+    ],
+    "loot_input": "Space",
+    "map": "NeutralC",
+    "exit_code": 0
+  },
+  "staff_assets_added_after_run": {
+    "archive": "Character/Player/Ani/CMATA.RFS",
+    "sha256": "689efa9a431f22d2cb2fd659c838888f3757ab936bb3685d46d4238c438a14ab",
+    "clips": [
+      {
+        "file": "character/player/ani/cormale_combat_attack_tstaff_middle_02_00.ani",
+        "tracks": 26,
+        "maximum": 8480
+      },
+      {
+        "file": "character/player/ani/cormale_combat_attack_tstaff_middle_02_01.ani",
+        "tracks": 26,
+        "maximum": 8480
+      }
+    ],
+    "assets": 1,
+    "linked_bytes": 2696268,
+    "new_pool_bytes": 2696268,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "limits": [
+    "The scripted pickup view did not project the item for the mouse; Space completed pickup.",
+    "Both staff clips were decoded after staging and need visual combat confirmation.",
+    "A relogin after completion was not part of this run."
+  ]
+}
