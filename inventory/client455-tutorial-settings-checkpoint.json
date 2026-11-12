@@ -1,0 +1,126 @@
+{
+  "status": "PASS_BELLATO_TUTORIAL_SETTINGS_SEQUENCE_AND_CONFIRMED_EXIT",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "rvas": {
+      "cursor_default_point": "0x27020",
+      "cursor_element_point": "0x272b0",
+      "option_window_commands": "0x28640",
+      "cursor_commands": "0x28f10",
+      "cursor_begin": "0x1578f0",
+      "cursor_frame": "0x1598c0",
+      "follow_camera": "0x1590b0",
+      "camera_heights": "0x7d1a1c",
+      "sound_control": "0x3140f0",
+      "graphic_control": "0x314130",
+      "etc_control": "0x314170"
+    },
+    "ida_evidence": {
+      "file": "work/startup455-m6/ida-tutorial-settings.json",
+      "sha256": "0bcb4db4062da9c683d4670ad6ec8b9917ee364b7357e96810187590202baf55"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "f9b339011334caaabf717fe98fbccc688a34d5a84eb59801a0b51b9e18ece945",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x198d20",
+    "objects": 182,
+    "unresolved_symbols": 0
+  },
+  "data": {
+    "profile": "zh-tw",
+    "script": {
+      "file": "work/startup455-m6/menu-live/DataTable/zh-tw/bw.scp",
+      "sha256": "b3c66b524e35167a8e6d7270ddb3ecbf61c2f9db8cd0a1e92aaf689d7afe1689"
+    },
+    "checked_script_count": 90,
+    "quest_shapes": [
+      {
+        "TutorialStart": 2,
+        "TutorialBegin": 56,
+        "files": 80
+      },
+      {
+        "TutorialStart": 2,
+        "TutorialBegin": 57,
+        "files": 10
+      }
+    ],
+    "unsupported_selectors_or_parameters": 0,
+    "next_quest": "TutorialMove",
+    "static_check": "work/startup455-m6/audit-tutorial-settings-prefix.py"
+  },
+  "live": {
+    "log": {
+      "file": "work/startup455-m6/menu-live/events-1794442969.jsonl",
+      "sha256": "23ae3246f6c3149332d2cb62da848ed4834dafbb2cb3a0df3eb36fcbb7cd280c"
+    },
+    "window": [
+      640,
+      500
+    ],
+    "option_window_size": [
+      440,
+      555
+    ],
+    "fixture": "Restored the original new-character skip flag only in the own client process. Passed lesson and exit by ordinary UI input.",
+    "briefings": [
+      2,
+      4,
+      6,
+      14,
+      21,
+      28,
+      35,
+      42,
+      50,
+      54
+    ],
+    "cursor_arrivals": 12,
+    "option_adjustments_verified": 0,
+    "settings_complete_log_line": 1439,
+    "select_request_after_leave": true,
+    "select_request": "1/14/1",
+    "select_reply": "1/15/22",
+    "select_reply_result": 512,
+    "world_map_index": 0,
+    "exit_code": 0,
+    "frames": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-first-briefing-final.png",
+        "sha256": "504468c4d76255d1f0e47f6d388264d67fa6014fb8cac4ff94a2750581d18848"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-open-final.png",
+        "sha256": "8a4d8d0f734c5db4ce16b2d585f3fe873a8334d6acee04907a6a957465cd264d"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-sound-final.png",
+        "sha256": "a71a14f7a1e2684540cec5e19d02fff25fa6b51a3c3031523e6efaad4f35b386"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-completed-final.png",
+        "sha256": "90f137d16f1d22dfd2941746f43e3b66bd5b98564422c01592139d6fce79b9f8"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-leave-final.png",
+        "sha256": "06c41ec2054819313ec426c145b9c7a4173697e8f3c8e5ddafad4c47cdd9a232"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-settings-world-final.png",
+        "sha256": "f69a78307e05d3457eb69d51186a8be36c48bcff0101db3d181b56b9e1cf3e68"
+      }
+    ]
+  },
+  "open": [
+    "TutorialMove and subsequent lessons",
+    "Natural completion without opting out",
+    "Effects of option changes, demonstration click and other viewport sizes",
+    "Live runs with other races and locales"
+  ]
+}

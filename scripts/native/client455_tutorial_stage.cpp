@@ -14,9 +14,11 @@
 #include "client455_briefing_window.h"
 #include "client455_fullscreen_effect.h"
 #include "client455_nation_paths.h"
+#include "client455_option_window.h"
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_intro.h"
 #include "client455_tutorial_stage.h"
+#include <cmath>
 #include <cstring>
 #include <string>
 
@@ -24,21 +26,35 @@ namespace {
 constexpr WORD welcomeDialog = 0x6000;
 constexpr WORD leaveDialog = 0x6001;
 
+class TutorialSettingsCommand;
+
 class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCameraHost,
-                              private RF455TutorialBoardHost {
-    enum class Phase { Intro, Welcome, Briefing, Leaving, Selecting, Zone, Failed };
+                              private RF455TutorialBoardHost, private RF455TutorialHost {
+    friend class TutorialSettingsCommand;
+    enum class Phase { Intro, Welcome, Briefing, LessonBoundary, Leaving, Selecting, Zone, Failed };
     RF455TutorialIntro intro;
     RF455TutorialBoardShared boardState;
     RF455TutorialRuntime runtime;
     RF455TutorialBriefingWindow briefing;
     CTutorialBoard board{runtime, *this, boardState, &briefing};
-    RF455TutorialScript script;
+    CGUIOptionWindow options;
     Phase phase = Phase::Intro;
     bool skipIntro = false;
     bool inputBlocked = false;
     bool uiInstalled = false;
+    bool optionsInstalled = false;
+    bool welcomeAccepted = false;
+    bool cursorDispatch = false;
+    struct {
+        bool active = false;
+        bool pressed = false;
+        float x = 0, y = 0;
+        POINT target{};
+        BYTE button = 0;
+    } cursor;
     DWORD selectStarted = 0;
     DWORD savedCameraFlags = 0;
+    float savedCameraHeight = 0;
     bool savedScreenVisible = true;
     bool savedMouseVisible = true;
     Vector3f cameraPosition{};
@@ -63,8 +79,20 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void reportProgressRequested() override {
         RF455_ObserveProtocol("tutorial-progress-report-pending", 0, 0, 0);
     }
+    bool boardBusy() override { return board.busy() || _IsOpenedDialogBox(nullptr, leaveDialog); }
+    void resetCursorButton() override {}
+    void questRefreshed() override { board.questRefreshed(); }
+    void scriptCompleted() override;
+    void message(std::uint8_t, const RF455TutorialMessage*, std::uint16_t) override;
+    RF455TutorialWaitState waitState(std::uint32_t) override { return {}; }
     void fail(const char* message);
-    bool openFirstBriefing();
+    void openOptions();
+    bool applyOption(UINT message, WPARAM value);
+    POINT settingsPoint(DWORD reference);
+    void startCursor(POINT target, BYTE button);
+    void advanceCursor();
+    void cancelCursor();
+    void sendCursor(UINT message, WPARAM flags, POINT position);
 public:
     ~CGP_Tutorial455() override { Destroy(); }
     BOOL Create() override;
@@ -74,6 +102,101 @@ public:
     LRESULT MsgProc(HWND, UINT, WPARAM, LPARAM) override;
     void Dialog(WORD id, DWORD result);
 };
+
+template<class Value>
+Value commandField(const RF455TutorialInstruction& instruction, std::size_t offset)
+{
+    Value value;
+    std::memcpy(&value, instruction.fixed.data() + offset, sizeof(value));
+    return value;
+}
+
+class TutorialSettingsCommand final : public RF455TutorialProcessor {
+    CGP_Tutorial455& stage;
+    const RF455TutorialInstruction command;
+    bool start(RF455TutorialHost&, RF455TutorialContext&) override;
+    bool update(RF455TutorialHost&, RF455TutorialContext&) override { return !stage.cursor.active; }
+    void finish(RF455TutorialHost&, RF455TutorialContext&) override {}
+public:
+    TutorialSettingsCommand(CGP_Tutorial455& stage, const RF455TutorialInstruction& command)
+        : RF455TutorialProcessor(command.dataType, command.id), stage(stage), command(command) {}
+};
+
+class TutorialSettingsFactory final : public RF455TutorialFactory {
+    RF455TutorialBasicFactory basic;
+    CGP_Tutorial455& stage;
+public:
+    explicit TutorialSettingsFactory(CGP_Tutorial455& stage) : stage(stage) {}
+    std::unique_ptr<RF455TutorialProcessor> create(const RF455TutorialInstruction& command) override;
+};
+
+std::unique_ptr<RF455TutorialProcessor> TutorialSettingsFactory::create(const RF455TutorialInstruction& command)
+{
+    if (command.selector != command.dataType) return nullptr;
+    const auto& data = command.fixed;
+    switch (command.selector) {
+    case 1: case 2:
+        return basic.create(command);
+    case 5:
+        if (data.size() == 12 && (data[6] == 1 ||
+            (data[6] == 0 && (commandField<DWORD>(command, 8) == 0 || commandField<DWORD>(command, 8) == 3))))
+            return basic.create(command);
+        break;
+    case 13:
+        if (data.size() == 20 && std::isfinite(commandField<float>(command, 12)))
+            return std::make_unique<TutorialSettingsCommand>(stage, command);
+        break;
+    case 14:
+        if (data.size() == 20 && std::isfinite(commandField<float>(command, 8)) &&
+            std::isfinite(commandField<float>(command, 12)) && std::isfinite(commandField<float>(command, 16)))
+            return std::make_unique<TutorialSettingsCommand>(stage, command);
+        break;
+    case 19: case 21:
+        if (data.size() == 8 && data[6] == 27) return std::make_unique<TutorialSettingsCommand>(stage, command);
+        break;
+    case 27:
+        if (data.size() == 20 && data[14] == 1 && commandField<DWORD>(command, 16) == 0xffffffff &&
+            commandField<SHORT>(command, 6) == -1 && commandField<SHORT>(command, 8) == -1)
+            return std::make_unique<TutorialSettingsCommand>(stage, command);
+        break;
+    case 29:
+        if (data.size() == 20 && commandField<DWORD>(command, 16) <= 1)
+            return std::make_unique<TutorialSettingsCommand>(stage, command);
+        break;
+    case 32:
+        if (data.size() == 20 && data[14] == 0 && data[15] == 27) {
+            const DWORD reference = commandField<DWORD>(command, 16);
+            if (reference == 0xffffffff || (LOWORD(reference) == 0 && HIWORD(reference) < 3) ||
+                (LOWORD(reference) == 1 && HIWORD(reference) < 6) ||
+                (LOWORD(reference) == 2 && HIWORD(reference) < 6))
+                return std::make_unique<TutorialSettingsCommand>(stage, command);
+        }
+        break;
+    }
+    return nullptr;
+}
+
+bool TutorialSettingsCommand::start(RF455TutorialHost&, RF455TutorialContext&)
+{
+    switch (type) {
+    case 13: _GetAvatar()->SetRotY(commandField<float>(command, 12), TRUE); break;
+    case 14:
+        _GetCamera()->SetYaw(commandField<float>(command, 8));
+        _GetCamera()->SetPitch(commandField<float>(command, 12));
+        _GetCamera()->SetDistance(commandField<float>(command, 16));
+        break;
+    case 19: stage.openOptions(); break;
+    case 21:
+        stage.options.Close();
+        RF455_ObserveProtocol("tutorial-options-closed", 27, 0, 0);
+        break;
+    case 27: stage.startCursor({-1, -1}, 1); break;
+    case 29: stage.inputBlocked = commandField<DWORD>(command, 16) == 0; break;
+    case 32: stage.startCursor(stage.settingsPoint(commandField<DWORD>(command, 16)), 0); return true;
+    }
+    flags |= 4;
+    return true;
+}
 
 BOOL CGP_Tutorial455::LoadData()
 {
@@ -102,6 +225,7 @@ BOOL CGP_Tutorial455::Create()
     savedScreenVisible = screen->IsShow() != FALSE;
     savedMouseVisible = screen->GetMouse()->IsShow() != FALSE;
     savedCameraFlags = cameraControlFlags();
+    savedCameraHeight = _GetCamera()->GetAddY();
     // Login releases its sprite set before this stage is created. Its child
     // windows must be detached before drawing the new scene and dialogs.
     screen->SetCapture455(nullptr);
@@ -137,10 +261,16 @@ BOOL CGP_Tutorial455::Destroy()
 {
     m_bIsCreated = FALSE;
     if (uiInstalled) {
+        cancelCursor();
         releaseUiCapture();
         _CloseDialogBox(nullptr, welcomeDialog);
         _CloseDialogBox(nullptr, leaveDialog);
         _GetUIScreen()->Remove(&briefing.window());
+        if (optionsInstalled) {
+            _GetUIScreen()->Remove(&options);
+            optionsInstalled = false;
+        }
+        _GetCamera()->SetAddY(savedCameraHeight);
         showScreen(savedScreenVisible);
         showMouse(savedMouseVisible);
         if (GetD3dDevice()) {
@@ -179,31 +309,159 @@ void CGP_Tutorial455::startBoardScript()
     }
     const char file[] = {"bca"[race], char(type + 'a' - 'A'), '.', 's', 'c', 'p', 0};
     const auto path = std::string(RF455_GetClientDataRoot()) + "\\" + file;
-    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.empty() ||
-        script.quests[0].instructions.empty() || script.quests[0].instructions[0].dataType != 2 ||
-        !board.message(2, &script.quests[0].instructions[0].message, 0)) {
+    RF455TutorialScript script;
+    if (!RF455_LoadTutorialScript(path.c_str(), script) || script.quests.size() < 2 ||
+        std::memcmp(script.quests[0].name.data(), "TutorialStart", sizeof("TutorialStart")) ||
+        std::memcmp(script.quests[1].name.data(), "TutorialBegin", sizeof("TutorialBegin"))) {
         fail("Tutorial script could not be loaded.");
+        return;
+    }
+    // The current live host can execute these two quests. Subsequent lessons
+    // require their own gameplay providers and are not passed to the scheduler.
+    script.quests.resize(2);
+    TutorialSettingsFactory factory(*this);
+    RF455TutorialUnsupported unsupported;
+    if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
+        RF455_ObserveProtocol("tutorial-unsupported", static_cast<DWORD>(unsupported.quest),
+                              static_cast<DWORD>(unsupported.instruction), unsupported.selector);
+        fail("Tutorial settings lesson could not be loaded.");
         return;
     }
     phase = Phase::Welcome;
     RF455_ObserveProtocol("tutorial-welcome", race, static_cast<unsigned>(type), 0);
 }
 
-bool CGP_Tutorial455::openFirstBriefing()
+void CGP_Tutorial455::message(std::uint8_t type, const RF455TutorialMessage* content, std::uint16_t reference)
 {
-    if (script.quests.size() < 2) return false;
-    const auto& commands = script.quests[1].instructions;
-    if (commands.size() < 3 || commands[0].selector != 13 || commands[1].selector != 14 ||
-        commands[2].dataType != 1) return false;
-    Vector3f orbit{};
-    std::memcpy(orbit, commands[1].fixed.data() + 8, sizeof(orbit));
-    float yaw = 0;
-    std::memcpy(&yaw, commands[0].fixed.data() + 12, sizeof(yaw));
-    _GetAvatar()->SetRotY(yaw, FALSE);
-    _GetCamera()->SetYaw(orbit[0]);
-    _GetCamera()->SetPitch(orbit[1]);
-    _GetCamera()->SetDistance(orbit[2]);
-    return board.message(1, &commands[2].message, 0);
+    if (!board.message(type, content, reference)) {
+        fail("Tutorial briefing could not be opened.");
+        return;
+    }
+    if (type == 1) {
+        phase = Phase::Briefing;
+        const auto* quest = runtime.get();
+        RF455_ObserveProtocol("tutorial-briefing", runtime.currentQuest,
+                              quest ? static_cast<DWORD>(quest->next) : 0, 0);
+    }
+}
+
+void CGP_Tutorial455::scriptCompleted()
+{
+    phase = Phase::LessonBoundary;
+    inputBlocked = false;
+    RF455_ObserveProtocol("tutorial-settings-complete", runtime.currentQuest, 0, 0);
+}
+
+void CGP_Tutorial455::openOptions()
+{
+    auto* screen = _GetUIScreen();
+    if (!optionsInstalled) {
+        options.Init();
+        options.SetID(UII_OPTION_WINDOW);
+        options.SetActions455({});
+        options.SetLogoutRestricted455(TRUE);
+        options.SetPos((screen->GetSizeX() - options.GetSizeX()) / 2, 0);
+        options.SetSoundOption(CGUIOptionWindow::Effect_Snd, GetGlobalWavVolume());
+        options.SetSoundOption(CGUIOptionWindow::BGM, GetGlobalMusicVolume());
+        options.SetGraphicOption(CGUIOptionWindow::Gamma, GetR3State()->mGamma);
+        options.SetGraphicOption(CGUIOptionWindow::SeeDist, _GetCharMgr()->GetVisualFieldAdjustmentLevel());
+        const int lighting = GetR3State()->mDynamicLight;
+        options.SetGraphicOption(CGUIOptionWindow::DynamicLighting, lighting >= 10 ? 3 : lighting / 3);
+        const int shadow = GetR3State()->mShadowDetail;
+        options.SetGraphicOption(CGUIOptionWindow::Shadow, shadow == -1 ? 3 : shadow == 10 ? 2 : shadow);
+        screen->Add(&options);
+        optionsInstalled = true;
+    }
+    options.Open();
+    RF455_ObserveProtocol("tutorial-options-open", options.GetSizeX(), options.GetSizeY(), 0);
+}
+
+bool CGP_Tutorial455::applyOption(UINT message, WPARAM value)
+{
+    switch (message) {
+    case WM_OPTION_ADJUST_EFFECT_SOUND: SetGlobalWavVolume(options.GetSoundOption(CGUIOptionWindow::Effect_Snd)); break;
+    case WM_OPTION_ADJUST_BGM_SOUND: SetGlobalMusicVolume(options.GetSoundOption(CGUIOptionWindow::BGM)); break;
+    case WM_OPTION_ADJUST_GAMMA: SetGamma(0.8f + static_cast<float>(value) / 10); break;
+    case WM_OPTION_ADJUST_DYNAMIC_LIGHTING: {
+        static constexpr int levels[] = {0, 3, 6, 10};
+        if (value < _countof(levels)) GetR3State()->mDynamicLight = levels[value];
+        break;
+    }
+    case WM_OPTION_ADJUST_SHADOW: {
+        static constexpr int levels[] = {0, 1, 10, -1};
+        if (value < _countof(levels)) GetR3State()->mShadowDetail = levels[value];
+        break;
+    }
+    default: return false;
+    }
+    RF455_ObserveProtocol("tutorial-option-adjusted", message, static_cast<DWORD>(value), 0);
+    return true;
+}
+
+POINT CGP_Tutorial455::settingsPoint(DWORD reference)
+{
+    CGUIObject* object = &options;
+    if (reference != 0xffffffff) {
+        const unsigned index = HIWORD(reference);
+        switch (LOWORD(reference)) {
+        case 0: object = &options.Sound455(index); break;
+        case 1: object = &options.Graphic455(index); break;
+        case 2: object = &options.Etc455(index); break;
+        }
+    }
+    return {object->GetPosX() + object->GetSizeX() / 2, object->GetPosY() + object->GetSizeY() / 2};
+}
+
+void CGP_Tutorial455::sendCursor(UINT message, WPARAM flags, POINT position)
+{
+    const HWND window = _GetUIScreen()->GetHWND();
+    cursorDispatch = true;
+    SendMessage(window, message, flags, MAKELPARAM(position.x, position.y));
+    cursorDispatch = false;
+}
+
+void CGP_Tutorial455::startCursor(POINT target, BYTE button)
+{
+    auto* mouse = _GetUIScreen()->GetMouse();
+    const POINT origin{mouse->GetPosX(), mouse->GetPosY()};
+    const bool pressed = button == 1 && GetForegroundWindow() == _GetUIScreen()->GetHWND();
+    cursor = {true, pressed, static_cast<float>(origin.x), static_cast<float>(origin.y), target, button};
+    if (pressed) sendCursor(WM_LBUTTONDOWN, MK_LBUTTON, origin);
+}
+
+void CGP_Tutorial455::advanceCursor()
+{
+    if (!cursor.active || boardBusy()) return;
+    const float dx = cursor.target.x - cursor.x;
+    const float dy = cursor.target.y - cursor.y;
+    const float distance = std::sqrt(dx * dx + dy * dy);
+    const auto width = _GetUIScreen()->GetSizeX();
+    const float step = R3GetLoopTime() * (width <= 800 ? 300.0f : width <= 1024 ? 350.0f : 400.0f);
+    const bool validPoint = cursor.target.x >= 0 && cursor.target.y >= 0;
+    const bool reached = !validPoint || distance <= step || distance == 0;
+    if (validPoint) {
+        cursor.x = reached ? static_cast<float>(cursor.target.x) : cursor.x + dx * step / distance;
+        cursor.y = reached ? static_cast<float>(cursor.target.y) : cursor.y + dy * step / distance;
+        const POINT point{static_cast<LONG>(cursor.x), static_cast<LONG>(cursor.y)};
+        POINT screenPoint = point;
+        const HWND window = _GetUIScreen()->GetHWND();
+        if (GetForegroundWindow() == window && ClientToScreen(window, &screenPoint)) {
+            SetCursorPos(screenPoint.x, screenPoint.y);
+            sendCursor(WM_MOUSEMOVE, cursor.button == 1 ? MK_LBUTTON : 0, point);
+        }
+        _GetUIScreen()->GetMouse()->SetPos(point.x, point.y);
+    }
+    if (reached) {
+        if (validPoint) RF455_ObserveProtocol("tutorial-cursor-arrived", cursor.target.x, cursor.target.y, cursor.button);
+        cancelCursor();
+    }
+}
+
+void CGP_Tutorial455::cancelCursor()
+{
+    if (cursor.active && cursor.pressed)
+        sendCursor(WM_LBUTTONUP, 0, {static_cast<LONG>(cursor.x), static_cast<LONG>(cursor.y)});
+    cursor.active = false;
 }
 
 void CGP_Tutorial455::followAvatarCamera()
@@ -212,6 +470,11 @@ void CGP_Tutorial455::followAvatarCamera()
     Vector3f target{};
     std::memcpy(target, avatar->GetPosition(), sizeof(target));
     _GetCamera()->SetPosition(target);
+    static constexpr float height[] = {11, 11, 13, 13, 16.5f};
+    static constexpr float firstPersonHeight[] = {15.5f, 15.5f, 17, 17, 18};
+    const auto race = avatar->GetRace();
+    if (race < _countof(height))
+        _GetCamera()->SetAddY(_GetCamera()->GetCameraMode() == 2 ? firstPersonHeight[race] : height[race]);
     _GetCamera()->Render();
     _GetCamera()->GetR3Camera()->GetPos(cameraPosition);
 }
@@ -226,6 +489,12 @@ HRESULT CGP_Tutorial455::FrameMove()
             _GetAvatar()->FrameMove();
             _GetAvatar()->Animation();
         }
+    }
+    if (phase == Phase::Welcome || phase == Phase::Briefing) {
+        board.FrameMove();
+        advanceCursor();
+        if (welcomeAccepted) runtime.context.input = 0;
+        if (runtime.step(*this) == RF455TutorialStep::QuestAdvanced) welcomeAccepted = false;
     }
     _GetUIScreen()->Update();
     return S_OK;
@@ -286,18 +555,13 @@ void CGP_Tutorial455::Dialog(WORD id, DWORD result)
 {
     if (!m_bIsCreated) return;
     if ((phase == Phase::Welcome && id == welcomeDialog && result == MSG_CANCEL) ||
-        (phase == Phase::Briefing && id == leaveDialog && result == MSG_OK)) {
+        ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && id == leaveDialog && result == MSG_OK)) {
+        cancelCursor();
+        if (optionsInstalled) options.Close();
         board.requestFinish(true);
         fadeOut(0, 2, 1);
         RF455_ObserveProtocol("tutorial-leaving", RF455_SelectedCharacterSlot(), 0, 0);
-    } else if (phase == Phase::Welcome && id == welcomeDialog && result == MSG_OK) {
-        if (!openFirstBriefing()) {
-            fail("Tutorial briefing could not be opened.");
-            return;
-        }
-        phase = Phase::Briefing;
-        RF455_ObserveProtocol("tutorial-briefing", 1, 0, 0);
-    }
+    } else if (phase == Phase::Welcome && id == welcomeDialog && result == MSG_OK) welcomeAccepted = true;
 }
 
 HRESULT CGP_Tutorial455::RestoreDeviceObjects()
@@ -314,12 +578,17 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
     }
     // The modal handles WM_CHAR Escape as Close. Open on release so the
     // character event from the same press cannot close the new dialog.
-    if (phase == Phase::Briefing && message == WM_KEYUP && key == VK_ESCAPE &&
+    if ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && message == WM_KEYUP && key == VK_ESCAPE &&
         !_IsOpenedDialogBox(nullptr, leaveDialog)) {
         board.openLanguageDialog(444, leaveDialog);
         return 0xffffffff;
     }
-    if (!inputBlocked) _GetUIScreen()->MsgProc(window, message, key, data);
+    if (phase == Phase::Briefing && message == 0x1201 && key == 38) {
+        board.MsgProc(window, message, key, data);
+        return 0xffffffff;
+    }
+    if (optionsInstalled && phase == Phase::Briefing && applyOption(message, key)) return 0xffffffff;
+    if (!inputBlocked || cursorDispatch || boardBusy()) _GetUIScreen()->MsgProc(window, message, key, data);
     return 0;
 }
 }
