@@ -1,0 +1,86 @@
+{
+  "status": "PARTIAL_RADAR_MARKERS",
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "afa614e7c2f708efc10895427fc083e222a13add2ab8b4268fd865d273d5d94e",
+    "bytes": 2520064,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a2550",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "add_rva": "0x3188f0",
+    "project_rva": "0x3191c0",
+    "clip_rva": "0x3192d0",
+    "colors_rva": "0x7d8a38",
+    "direction_sprite_rva": "0x319830",
+    "default_zoom_index": 2,
+    "default_zoom_world_units": 680,
+    "evidence": {
+      "file": "artifacts/client455-startup/radar455-markers-reference.json",
+      "sha256": "01568a54f8c2975745c3404c69974ee0846f31da8caf9847652ce8945e35f08f"
+    }
+  },
+  "probe": {
+    "command": "scripts/Invoke-Python.ps1 scripts/probe_client455_hud.py --radar",
+    "native": {
+      "status": "PASS",
+      "frame": [
+        146,
+        163
+      ],
+      "layers": [
+        93,
+        93
+      ],
+      "board": [
+        97,
+        97
+      ],
+      "marker": [
+        3,
+        3
+      ],
+      "radius": 46,
+      "party_direction_frames": [
+        3,
+        4
+      ],
+      "GPU_frames": 7,
+      "initial_pixels": 23550
+    },
+    "inclusive_radius_and_height": true,
+    "radius_47_and_height_excluded": true,
+    "direction_replaced_by_marker": true,
+    "reclassification_and_map_cleanup": true,
+    "visible_marker_clipping_and_party_directions": true,
+    "report": {
+      "file": "work/m9/db8a8508/hud-001/probe-report.json",
+      "sha256": "22b4280f90b1cd8a29d72ee684301ec490e7a8933b1a430deb90c460f17e8641"
+    }
+  },
+  "early_startup": {
+    "file": "inventory/client455-startup-taiwan-native.json",
+    "sha256": "e11f4a44a1ecb429cceefdf852061065f6e265dd119b08fd31d49c71372b784c"
+  },
+  "open": [
+    "Live world and party integration",
+    "Zoom and radar controls",
+    "Special radar marker types"
+  ],
+  "live_server_used": false,
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

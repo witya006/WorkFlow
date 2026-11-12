@@ -34,7 +34,7 @@ static unsigned checkRadar()
     check(radar.GetAddedObjectNum() == 3, "radar composition");
     auto* compass = static_cast<CGUIObjectEx*>(radar.GetAddedObject(0));
     auto* arrow = static_cast<CGUIObjectEx*>(radar.GetAddedObject(1));
-    auto* markers = radar.GetAddedObject(2);
+    auto* markers = static_cast<CGUIContainer*>(radar.GetAddedObject(2));
     auto* atlas = gSpriteMgr.GetTargetSprite455(4);
     CGUIObject* const layers[] = {&radar, compass, arrow};
     for (WORD frame = 0; frame < _countof(layers); ++frame) {
@@ -61,6 +61,42 @@ static unsigned checkRadar()
     radar.SetAvatarRotate(90.0f);
     check(compass->GetRotate() == 45.0f && arrow->GetRotate() == 135.0f, "avatar turns its own radar layer");
     capture(draw, "radar-avatar-turned.bgra");
+
+    radar.SetCameraRotate(0.0f);
+    radar.SetAvatarRotate(0.0f);
+    radar.SetMapSize({97, 97});  // One screen pixel per world unit in this fixture.
+    radar.SetYAxisViewRange(20.0f);
+    radar.SetAvatarPosition(0.0f, 0.0f, 0.0f);
+    radar.AddCharacter(0, 11, CGUIRadarWindow::Other_Bel, 46.0f, 20.0f, 0.0f);
+    check(markers->GetAddedObjectNum() == 1, "marker at both inclusive limits");
+    auto* marker = markers->GetAddedObject(0);
+    check(marker->GetSizeX() == 3 && marker->GetSizeY() == 3 && marker->GetARGB() == 0xfff090b0 &&
+          marker->GetPosX() == 618 && marker->GetPosY() == 79, "455 marker geometry and Bellato color");
+    capture(draw, "radar-marker-in-range.bgra");
+    radar.UpdateCharacterPos(0, 11, 47.0f, 20.0f, 0.0f);
+    check(markers->GetAddedObjectNum() == 0, "clip at radius 47");
+    radar.UpdateCharacterPos(0, 11, 0.0f, 21.0f, 0.0f);
+    check(markers->GetAddedObjectNum() == 0, "clip on height");
+    capture(draw, "radar-marker-clipped.bgra");
+    radar.AddCharacter(0, 12, CGUIRadarWindow::PartyLeader, 70.0f, 0.0f, 0.0f, TRUE);
+    radar.AddCharacter(0, 13, CGUIRadarWindow::PartyMember, 0.0f, 0.0f, 70.0f, TRUE);
+    check(radar.GetAddedObjectNum() == 5 && markers->GetAddedObjectNum() == 0, "out of range party directions");
+    for (WORD i = 0; i < 2; ++i) {
+        auto* direction = static_cast<CGUIObjectEx*>(radar.GetAddedObject(3 + i));
+        const auto* info = direction->GetSpriteInfo();
+        check(info->pSprite == atlas && info->wActionNo == 3 && info->wFrameNo == 3 + i &&
+              direction->GetSizeX() == 93 && direction->GetSizeY() == 93 &&
+              direction->GetPosX() == 527 && direction->GetPosY() == 34 &&
+              direction->GetRotate() == (i == 0 ? 90.0f : 0.0f), "party direction sprite, pivot and heading");
+    }
+    capture(draw, "radar-party-directions.bgra");
+    radar.UpdateCharacterPos(0, 12, 0.0f, 0.0f, 0.0f);
+    check(radar.GetAddedObjectNum() == 4 && markers->GetAddedObjectNum() == 1, "direction replaced by marker on approach");
+    radar.AddCharacter(0, 13, CGUIRadarWindow::Mob, 0.0f, 0.0f, 70.0f, FALSE);
+    check(radar.GetAddedObjectNum() == 3 && markers->GetAddedObjectNum() == 1, "reclassification clears direction");
+    radar.RemoveAllCharacter();
+    check(radar.GetAddedObjectNum() == 3 && markers->GetAddedObjectNum() == 0, "map change clears markers and directions");
+    capture(draw, "radar-marker-cleared.bgra");
     return pixels;
 }
 
@@ -261,7 +297,9 @@ static int hud159(bool avatarHealth, bool radarOnly, bool bottomOnly){
     R3ReleaseTextTexture();g_MainApp.ReleaseR3D3D();ReleaseR3Engine();
     FILE* f=std::fopen("result.json","wb");check(f!=nullptr,"report");
     if (radarOnly) {
-        std::fprintf(f,"{\"status\":\"PASS\",\"frame\":[146,163],\"layers\":[93,93],\"board\":[97,97],\"GPU_frames\":3,\"initial_pixels\":%u}\n",pixels);
+        std::fprintf(f,"{\"status\":\"PASS\",\"frame\":[146,163],\"layers\":[93,93],\"board\":[97,97],"
+                       "\"marker\":[3,3],\"radius\":46,\"party_direction_frames\":[3,4],"
+                       "\"GPU_frames\":7,\"initial_pixels\":%u}\n",pixels);
         std::fclose(f);
         return 0;
     }

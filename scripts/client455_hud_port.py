@@ -1,12 +1,17 @@
 """Restore the upper gauge panel and radar artwork used by the 455 HUD."""
+from client455_trade_ore_port import patch_method, remove_methods, replace
+
+
 def port_hud(raw,relative,native,section):
     if relative=='userinterface/gamewindow/etcwin/guiradarwindow.cpp':
-        for sig in [b'CGUIRadarWindow::Init(',b'CGUIRadarWindow::SetSprite(']:
-            first,last=section(raw,sig,sig)
-            start=raw.rfind(b'void',0,first)
-            if raw[start:first].strip()!=b'void':raise ValueError('Radar return-type anchor')
-            raw=raw[:start]+raw[last:]
-        return b'#include <stdexcept>\n'+raw+b'\n'+(native/'client455_radar.inc').read_bytes(),True
+        owner = b'CGUIRadarWindow'
+        raw = remove_methods(raw, section, owner, tuple((name, b'void') for name in (
+            b'Init', b'SetSprite', b'UpdateCharPosition', b'SetViewedCharInRadarBoard',
+            b'SetSprite_CharObj', b'SetSprite_CharDir',
+        )))
+        raw = patch_method(raw, section, owner, b'AddCharacter', lambda body: replace(
+            body, b'\t\tl_pCharInfo->uiCharDir.SetSize( 11, 14 );\n', b''))
+        return b'#include <cmath>\n#include <stdexcept>\n'+raw+b'\n'+(native/'client455_radar.inc').read_bytes(),True
     if relative=='userinterface/gamewindow/guigaugeexpwindow.h':
         raw=b'#include "client455_image_text.h"\n'+raw
         for old,new in [(b'MAX_GAUGE_NO\t3',b'MAX_GAUGE_NO\t4'),(b'\t\tSTAMINA_BAR',b'\t\tSTAMINA_BAR,\n\t\tFOURTH_BAR455')]:

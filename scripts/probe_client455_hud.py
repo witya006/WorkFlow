@@ -54,7 +54,7 @@ def main():
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     if args.radar:
-        require(report['status']=='PASS' and len(frames)==expected_frames,'Actual radar failed')
+        require(report['status']=='PASS' and len(frames)==7,'Actual radar failed')
         area=(494,0,640,163)
         images=[]
         for name in ('radar-north','radar-camera-turned','radar-avatar-turned'):
@@ -67,6 +67,13 @@ def main():
             red=sum(r>128 and r>=2*g and r>=2*b for r,g,b in zip(pixels[0::3],pixels[1::3],pixels[2::3]))
             require(red<frame.width*frame.height//12,'Unexpected red radar panel')
         report['visible_rotation_and_no_red_panel']=True
+        marker=(run/'radar-marker-in-range.bgra').read_bytes()
+        clipped=(run/'radar-marker-clipped.bgra').read_bytes()
+        directions=(run/'radar-party-directions.bgra').read_bytes()
+        cleared=(run/'radar-marker-cleared.bgra').read_bytes()
+        require(marker!=clipped and directions!=clipped and clipped==cleared,
+                'Radar marker and party arrows must appear and clear in the frame')
+        report['visible_marker_clipping_and_party_directions']=True
         (run/'probe-report.json').write_text(json.dumps(report,indent=2)+'\n')
         return
     text=json.dumps(report,indent=2)+'\n';(run/'probe-report.json').write_text(text)
