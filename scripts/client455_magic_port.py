@@ -87,6 +87,9 @@ def port_magic(raw,relative,native,section):
         raw,count=re.subn(rb'(void ReleaseEffectEntityList\(\)\r?\n\{)',
                           rb'\1\r\n\teffectResources455.Release();',raw)
         if count!=1:raise ValueError('Effect group release entry')
+        raw,count=re.subn(rb'((?:CEntity \*GetEntityFromEffectEntityList|CParticle \*GetParticleFromEffectEntityList)\([^\r\n]+\)[^\r\n]*\r?\n\{)',
+                          rb'\1\r\n\tif (!stEffectEntityList || real_id >= stEntityNum) return nullptr;',raw)
+        if count!=2:raise ValueError('Effect table lookup boundaries')
         once(b'\t\tif( stEffectEntityList[real_id].Entity->LoadEntity(',
              b'\t\tRF455_SetResourceGroup(&effectResources455);\r\n\t\tif( stEffectEntityList[real_id].Entity->LoadEntity(')
         once(b'\t\tif(!particle->LoadParticleSPT(',

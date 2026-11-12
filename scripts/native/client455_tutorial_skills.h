@@ -5,6 +5,7 @@
 class CLinkBoard;
 class CSkillBoard;
 class CBoardObject;
+class RF455SkillForceItem;
 
 class RF455TutorialSkills {
 public:
@@ -17,6 +18,8 @@ public:
     bool skillPoint(DWORD code, POINT&);
     bool shortcutPoint(DWORD number, POINT&);
     bool matchesShortcut(BYTE number, DWORD code);
+    void activateShortcut(BYTE slot);
+    RF455SkillForceItem* shortcutSkill(BYTE bank, BYTE slot);
     bool handleMessage(UINT message, WPARAM owner, LPARAM data);
 
 private:

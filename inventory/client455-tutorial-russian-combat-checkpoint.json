@@ -1,0 +1,161 @@
+{
+  "status": "PASS_RUSSIAN_TUTORIAL_SKILL_CHAPTER",
+  "reference": {
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "local_attack_rva": "0x1647d0",
+    "normal_result_rva": "0x1a4a10",
+    "skill_result_rva": "0x1a4c50",
+    "feedback_rva": "0x1a4010",
+    "tutorial_store_rva": "0x2b230",
+    "ida": {
+      "file": "artifacts/client455-tutorial/live-attack-feedback.json",
+      "sha256": "438612e7fee2f107a4e17343422626e6fa5d61523058c13f1edfca5de2d2f7bc"
+    }
+  },
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "2d4c54f814c68165f92771a97e28f0121917299279a7eeaaf3cf95263c46d611",
+    "bytes": 2504704,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x19ec70",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "recovered_render_failure": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794452883.jsonl",
+      "sha256": "ae8413918029d0a7571b8d7989ae809427bf72e85208df9405e585ac6aece613"
+    },
+    "rva": "0x74a8d",
+    "symbol": "GetEntityFromEffectEntityList",
+    "binary": {
+      "file": "work/startup455-m6/pre-tutorial-effect-fe4361fd.bin",
+      "sha256": "fe4361fdd88d5dd71de3bf636f7ab51edf64e032b90ba7fcc93bea4c7387f594"
+    },
+    "map": {
+      "file": "work/startup455-m6/pre-tutorial-effect-fe4361fd.map",
+      "sha256": "4961e394f1a14cabbf04273fd7352ef7e551fa3f3a0efd9b6278479f58cd6928"
+    }
+  },
+  "live": {
+    "journal": {
+      "file": "work/startup455-m6/menu-live/events-1794453253.jsonl",
+      "sha256": "b1eff2d216bad4f768476bd564512fb2e8bd1d9ef710bff7eebb04a3e8943152"
+    },
+    "earlier_run_with_missing_clips": {
+      "file": "work/startup455-m6/menu-live/events-1794452590.jsonl",
+      "sha256": "b4c567c05778b9ca40b275e2b0cdcdb1dcf731370e0283beab1357947585bbf1"
+    },
+    "tutorial_precondition": "New-player state set only in the owned test process",
+    "ordered_events": [
+      "RF455 NDLanguage:1251:4321",
+      "tutorial-shortcut-linked:0:1:655362",
+      "tutorial-monster-selected:65535:281:0",
+      "tutorial-attack-practice:56:38:0",
+      "tutorial-attack-animation:536870913:17108497:4",
+      "tutorial-attack-result:4:204:65535",
+      "tutorial-briefing:5:58:0",
+      "tutorial-monster-selected:65536:281:0",
+      "tutorial-attack-practice:75:38:0",
+      "tutorial-skill-used:2:655362:1",
+      "tutorial-attack-animation:1073741826:17174256:0",
+      "tutorial-attack-result:0:331:65536",
+      "tutorial-briefing:5:77:0",
+      "tutorial-skill-complete:6:0:0",
+      "tutorial-leaving:2:0:0",
+      "select-result:512:0:0",
+      "map-bsp:0:1:0",
+      "world-frame:0:0:0"
+    ],
+    "attack_results": [
+      "tutorial-attack-result:4:204:65535",
+      "tutorial-attack-result:0:331:65536"
+    ],
+    "exit_code": 0,
+    "driver": {
+      "file": "work/startup455-m6/finish-russian-tutorial-combat.ps1",
+      "sha256": "8baf83ee3437a44d83c67746ee079b41efd2ed1cf10d97c1a065a5f31a4c77c1"
+    },
+    "missing_combat_assets": [],
+    "screenshots": [
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-normal-action.png",
+        "sha256": "16985c46cd42cae14a15bfd03e6fa9df31f6eeace1a9ac2753f72aaa621ff0ab"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-normal-attack.png",
+        "sha256": "2a9ae5d7148b69bbc52011761eb1c52dab00ffbd1a9572d288be3385ed963cb5"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-combat-second-target.png",
+        "sha256": "8a7b1a4546a66e82975da2f3d9b8cc57819f5cdc2716c24e9c424767f9cc5a16"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-skill-action.png",
+        "sha256": "a29efeaf741d5f7878c1856e37052aa62db513c9e4bbc65c3d7bd48d9a261df7"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-skill-attack.png",
+        "sha256": "503db3b8c925aa91b5f2742d567a88eeb9b2a98d58585b28ce36edeb6bef475f"
+      },
+      {
+        "file": "work/startup455-m6/menu-live/tutorial-russian-combat-world.png",
+        "sha256": "8885dceea14257b9917e56cf40b8d851bb4e508ad845bfa6ed2d6ad0c9cdad4f"
+      }
+    ]
+  },
+  "force_component": {
+    "result": {
+      "status": "PASS",
+      "selected_routes": 2,
+      "rejected_cases": 3,
+      "missing_row_retained": true,
+      "real_animations": 2
+    },
+    "console": {
+      "file": "work/client455-port/tutorial-combat-force-regression-probe/probe-console.txt",
+      "sha256": "6846ed0395e0c557c93f12e99b14a63bdf40982bb32edbceb8ca111998cf0982"
+    },
+    "exe": {
+      "file": "work/client455-port/tutorial-combat-force-regression-probe/tutorial-combat-force-regression-probe.exe",
+      "sha256": "8547bdb4d9eebdf550f6d07071b2c148e668b7763e4849e4a25e9d47f4d87302"
+    }
+  },
+  "effects_component": {
+    "console": {
+      "file": "work/client455-port/tutorial-effect-table-probe/probe-console.txt",
+      "sha256": "0155fd0662b1c9bd39e9496f79bbea13d80af59314ed281ead5595f22318a826"
+    },
+    "exe": {
+      "file": "work/client455-port/tutorial-effect-table-probe/tutorial-effect-table-probe.exe",
+      "sha256": "7dcd2c7bb937871ce487a2631499401e9ffb1de94bd79a5c4c860940249db9c0"
+    }
+  },
+  "resources": [
+    {
+      "file": "work/startup455-m6/menu-live/DataTable/ru-ru/bw.scp",
+      "sha256": "0cb09477e8eb2af9fdce87b623159f17f0ff163970c2bdac88774568258d031b"
+    },
+    {
+      "file": "work/startup455-m6/russian-combat-assets.json",
+      "sha256": "cf76c905a41419b0ee88a82b845aa3f7862013c9dded9df851f67ef058de602d"
+    },
+    {
+      "file": "work/startup455-m6/russian-combat-effects.json",
+      "sha256": "a2265630dd9ea01d61a6c45dd732661a86a9385952042ec90b017f19701769a8"
+    }
+  ],
+  "open": [
+    "Damage number, skill effects and FP behavior",
+    "Alternative combat input",
+    "Long tutorial profiles and final completion"
+  ]
+}

@@ -15,6 +15,7 @@
 #include "client455_protocol_observation.h"
 #include "client455_tutorial_targets.h"
 #include "client455_world_updates.h"
+#include <cstdlib>
 #include <cstring>
 
 RF455TutorialTargets::RF455TutorialTargets() = default;
@@ -60,6 +61,55 @@ bool RF455TutorialTargets::hasSelection() const
     return selected && !selected->IsDeath();
 }
 
+std::uint32_t RF455TutorialTargets::selectedId() const
+{
+    return hasSelection() ? selected->GetIndex() : ID_INVALID;
+}
+
+bool RF455TutorialTargets::attack(RF455SkillForceItem* skill, RF455TutorialContext& context)
+{
+    if (!hasSelection()) return false;
+    auto* avatar = _GetAvatar();
+    const DWORD index = skill ? skill->tableIndex() : ID_INVALID;
+    CSFItem activeSkill;
+    if (skill) {
+        const BYTE level = skill->EffectiveLevel455();
+        if (!activeSkill.CreateSkill455(index, level ? level : 1) || !activeSkill.IsAttackable()) return false;
+    }
+
+    auto* target = selected;
+    auto* hit = target->AddAttackerInfo(avatar, TRUE);
+    if (!hit) return false;
+    avatar->CCharacter::SetCombatMode(CSI_COMBAT);
+    avatar->SetRotY(avatar->GetPosition(), target->GetPosition(), TRUE);
+    avatar->SetSFItem(skill ? &activeSkill : nullptr);
+    avatar->CPlayer::SetAction(skill ? CAI_SKILL_INVOKE : CAI_COMBAT_ATTACK, FALSE);
+
+    // Local Tutorial results have their own scripted damage intervals (RVA 0x1647d0).
+    const DWORD damage = skill ? 300 + std::rand() % 50 : 200 + std::rand() % 10;
+    hit->SetDamage455(damage);
+    hit->SetDamageType_AT(skill ? CAT_SKILL : CAT_NORMAL);
+    hit->SetDamageType_Dist(ADT_NEAR);
+    hit->SetEffectFrameNum(1);
+    target->ReceiveHealth455(0);
+    hit->AdvanceDamage455();
+    target->ApplyHealthImpact455(hit->GetCurDamagePoint(), damage, 1);
+    hit->SetProcessedDamage(TRUE);
+    target->SetDeath(mon_destroy_code_die);
+    target->SetReceiveNetMsg("Death");
+
+    context.attackType = skill ? 0 : 4;
+    context.skillIndex = index;
+    context.target[0] = CTI_MONSTER;
+    context.target[1] = target->GetIndex();
+    ++context.state52;
+    clearSelection();
+    if (skill) RF455_ObserveProtocol("tutorial-skill-used", index, activeSkill.GetDTCode(), activeSkill.GetLevel());
+    RF455_ObserveProtocol("tutorial-attack-animation", avatar->GetAction(), avatar->GetAnimationID(), context.attackType);
+    RF455_ObserveProtocol("tutorial-attack-result", context.attackType, damage, context.target[1]);
+    return true;
+}
+
 bool RF455TutorialTargets::select(long x, long y, const RF455TutorialVector& camera)
 {
     CMonster* target = nullptr;
@@ -103,6 +153,12 @@ void RF455TutorialTargets::update()
     for (const auto& monster : monsters) {
         monster->FrameMove();
         monster->Animation();
+    }
+    auto* avatar = _GetAvatar();
+    if ((avatar->IsEqualAction(CAI_COMBAT_ATTACK) || avatar->IsEqualAction(CAI_SKILL_INVOKE)) &&
+        !avatar->GetAnimation()->IsAnimating()) {
+        avatar->SetSFItem(nullptr);
+        avatar->SetAction(CAI_MOVE_STOP);
     }
 }
 

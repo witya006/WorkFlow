@@ -153,6 +153,20 @@ bool RF455TutorialSkills::matchesShortcut(BYTE number, DWORD code)
     return false;
 }
 
+void RF455TutorialSkills::activateShortcut(BYTE slot)
+{
+    if (!shortcuts || slot >= 10 || held) return;
+    auto& window = shortcuts->LinkerWindow455();
+    window.UseItem455(window.HotbarState455().active, slot);
+}
+
+RF455SkillForceItem* RF455TutorialSkills::shortcutSkill(BYTE bank, BYTE slot)
+{
+    if (!shortcuts || held || bank >= shortcuts->GetMaxPackNum() ||
+        slot >= shortcuts->GetMaxSocketNum455(bank)) return nullptr;
+    return payload(shortcuts->GetObject(bank, slot));
+}
+
 void RF455TutorialSkills::pick(CBoardObject* source)
 {
     if (held || !source || !source->GetIcon()) return;

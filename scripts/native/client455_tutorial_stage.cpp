@@ -1,5 +1,6 @@
 #include "gameobject/manager/ccharactermgr.h"
 #include "gameobject/board/common/cboardmanager.h"
+#include "addcodebyjang/foreffect.h"
 #include "cland.h"
 #include "ccamera.h"
 #include "datafile.h"
@@ -16,6 +17,7 @@
 #include "client455_nation_paths.h"
 #include "client455_option_window.h"
 #include "client455_protocol_observation.h"
+#include "client455_skill_force_items.h"
 #include "client455_tutorial_intro.h"
 #include "client455_tutorial_inventory.h"
 #include "client455_tutorial_skills.h"
@@ -65,6 +67,8 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     bool hasSkillLesson = false;
     bool skillCombatPending = false;
     bool hasTargetLesson = false;
+    bool hasSkillCombat = false;
+    bool lockAttackEnabled = false;
     bool cursorDispatch = false;
     struct {
         bool active = false;
@@ -135,6 +139,8 @@ class CGP_Tutorial455 final : public CGameProgress, private RF455TutorialIntroCa
     void moveFromMouse();
     void advanceAvatar();
     void advanceLesson();
+    bool attackExercise() const;
+    void applyTutorialAttack(RF455SkillForceItem* skill);
     void leaveTutorial(bool completed);
     void fail(const char* message);
     void openOptions();
@@ -180,10 +186,11 @@ class TutorialUiCommand final : public RF455TutorialProcessor {
     const RF455TutorialInstruction command;
     bool start(RF455TutorialHost&, RF455TutorialContext&) override;
     bool update(RF455TutorialHost&, RF455TutorialContext&) override;
-    void finish(RF455TutorialHost&, RF455TutorialContext&) override {}
+    void finish(RF455TutorialHost&, RF455TutorialContext&) override;
 public:
     TutorialUiCommand(CGP_Tutorial455& stage, const RF455TutorialInstruction& command)
         : RF455TutorialProcessor(command.dataType, command.id), stage(stage), command(command) {}
+    bool acceptsAttack(RF455SkillForceItem* skill) const;
 };
 
 class TutorialStageFactory final : public RF455TutorialFactory {
@@ -271,6 +278,10 @@ std::unique_ptr<RF455TutorialProcessor> TutorialStageFactory::create(const RF455
             commandField<DWORD>(command, 16) == ID_INVALID)
             return std::make_unique<TutorialUiCommand>(stage, command);
         break;
+    case 37: case 38:
+        if (data.size() == 20 && (command.selector == 37 ? data[6] <= 1 : data[6] == 0 || data[6] == 4))
+            return std::make_unique<TutorialUiCommand>(stage, command);
+        break;
     case 44:
         if (data.size() == 12 && (data[6] == 255 || (data[6] >= 1 && data[6] <= 10)))
             return std::make_unique<TutorialUiCommand>(stage, command);
@@ -300,7 +311,7 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
         if (command.fixed[6] == UII_SKILL_WINDOW) stage.skills.show(true);
         else stage.openOptions();
         break;
-    case 20: case 36: case 44: return true;
+    case 20: case 36: case 38: case 44: return true;
     case 21:
         if (command.fixed[6] == UII_SKILL_WINDOW) stage.skills.show(false);
         else {
@@ -314,6 +325,7 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
         else stage.startCursor({-1, -1}, 1);
         break;
     case 29: stage.inputBlocked = commandField<DWORD>(command, 16) == 0; break;
+    case 37: stage.lockAttackEnabled = command.fixed[6] != 0; break;
     case 32: {
         const DWORD reference = commandField<DWORD>(command, 16);
         const BYTE window = command.fixed[15];
@@ -336,12 +348,32 @@ bool TutorialUiCommand::start(RF455TutorialHost&, RF455TutorialContext&)
     return true;
 }
 
-bool TutorialUiCommand::update(RF455TutorialHost&, RF455TutorialContext&)
+bool TutorialUiCommand::update(RF455TutorialHost&, RF455TutorialContext& context)
 {
     if (type == 20) return stage.skills.isOpen();
     if (type == 36) return stage.targets.hasSelection();
+    if (type == 38) return context.attackType == command.fixed[6];
     if (type == 44) return stage.skills.matchesShortcut(command.fixed[6], commandField<DWORD>(command, 8));
     return !stage.cursor.active;
+}
+
+bool TutorialUiCommand::acceptsAttack(RF455SkillForceItem* skill) const
+{
+    if (command.fixed[6] != (skill ? 0 : 4)) return false;
+    const DWORD expected = commandField<DWORD>(command, 8);
+    if (!skill || expected == ID_INVALID) return true;
+    const auto row = skill->rawData();
+    DWORD code;
+    if (row.size < 8) return false;
+    std::memcpy(&code, row.data + 4, sizeof(code));
+    return code == expected;
+}
+
+void TutorialUiCommand::finish(RF455TutorialHost&, RF455TutorialContext& context)
+{
+    if (type != 38) return;
+    context.attackType = 255;
+    context.skillIndex = context.target[0] = context.target[1] = ID_INVALID;
 }
 
 BOOL CGP_Tutorial455::LoadData()
@@ -352,6 +384,8 @@ BOOL CGP_Tutorial455::LoadData()
     const std::string map = maps[race];
     std::string path = ".\\Map\\" + map + "\\" + map + ".bsp";
     if (!_GetLand()->LoadLevel(&path[0]) || !_GetLand()->GetLevel()->IsLoadedBsp()) return FALSE;
+    // The path overload loads geometry. UnloadLevel releases the scene effects.
+    CreateEffect();
     m_bIsLoadedData = TRUE;
     return TRUE;
 }
@@ -507,7 +541,9 @@ void CGP_Tutorial455::startBoardScript()
         hasTargetLesson = lock != attack && std::all_of(combat, attack, [&](const auto& op) {
             return static_cast<bool>(factory.create(op));
         });
-        commands.erase(hasTargetLesson ? attack : combat, commands.end());
+        hasSkillCombat = hasTargetLesson && attack != commands.end() &&
+            std::all_of(attack, commands.end(), [&](const auto& op) { return static_cast<bool>(factory.create(op)); });
+        if (!hasSkillCombat) commands.erase(hasTargetLesson ? attack : combat, commands.end());
     } else if (!hasMissionEnding) script.quests.resize(equipmentQuest + 1);
     RF455TutorialUnsupported unsupported;
     if (!runtime.prepare(script, factory, &unsupported) || !runtime.refresh(*this)) {
@@ -546,7 +582,8 @@ void CGP_Tutorial455::scriptCompleted()
     }
     phase = Phase::LessonBoundary;
     inputBlocked = false;
-    const char* event = hasTargetLesson ? "tutorial-target-lesson-complete"
+    const char* event = hasSkillCombat ? "tutorial-skill-complete"
+        : hasTargetLesson ? "tutorial-target-lesson-complete"
         : hasSkillLesson ? (skillCombatPending ? "tutorial-skill-combat-pending" : "tutorial-skill-complete")
         : "tutorial-equipment-complete";
     RF455_ObserveProtocol(event, runtime.currentQuest, 0, 0);
@@ -747,6 +784,8 @@ void CGP_Tutorial455::advanceLesson()
         RF455_ObserveProtocol("tutorial-skill-practice", current->id, current->type, 0);
     if (current && current != previous && current->type == 36)
         RF455_ObserveProtocol("tutorial-target-practice", current->id, current->type, 0);
+    if (current && current != previous && current->type == 38)
+        RF455_ObserveProtocol("tutorial-attack-practice", current->id, current->type, 0);
     if (current && current != previous && questIndex == equipmentQuest &&
         (current->type == 20 || current->type == 24 || current->type == 26))
         RF455_ObserveProtocol("tutorial-inventory-practice", current->id, current->type, 0);
@@ -942,8 +981,11 @@ BOOL CGP_Tutorial455::InputProcess()
     auto* mouse = _GetUIMouseDev();
     if (phase == Phase::Briefing && !inputBlocked && !boardBusy() && !cursorDispatch &&
         g_dwGUIInputID == NONE_INPUT_ID && mouse->IsStroked(L_BUTTON) &&
-        quest && quest->current && quest->current->type == 36)
-        targets.select(mouse->GetX(), mouse->GetY(), {{cameraPosition[0], cameraPosition[1], cameraPosition[2]}});
+        quest && quest->current && (quest->current->type == 36 || attackExercise())) {
+        const auto previous = targets.selectedId();
+        if (targets.select(mouse->GetX(), mouse->GetY(), {{cameraPosition[0], cameraPosition[1], cameraPosition[2]}}) &&
+            previous == targets.selectedId()) applyTutorialAttack(nullptr);
+    }
     moveFromMouse();
     cameraFromMouse();
     auto* network = _GetNetworkMgr();
@@ -975,6 +1017,20 @@ BOOL CGP_Tutorial455::InputProcess()
     return TRUE;
 }
 
+bool CGP_Tutorial455::attackExercise() const
+{
+    const auto* quest = runtime.currentQuest < runtime.quests.size() ? &runtime.quests[runtime.currentQuest] : nullptr;
+    return lockAttackEnabled && quest && quest->current && quest->current->type == 38 &&
+        !(quest->current->flags & 2);
+}
+
+void CGP_Tutorial455::applyTutorialAttack(RF455SkillForceItem* skill)
+{
+    if (!attackExercise() || phase != Phase::Briefing || inputBlocked || boardBusy()) return;
+    const auto* command = static_cast<const TutorialUiCommand*>(runtime.get()->current);
+    if (command->acceptsAttack(skill)) targets.attack(skill, runtime.context);
+}
+
 void CGP_Tutorial455::leaveTutorial(bool completed)
 {
     cancelCursor();
@@ -982,6 +1038,7 @@ void CGP_Tutorial455::leaveTutorial(bool completed)
     inventory.show(false);
     skills.show(false);
     targets.clearSelection();
+    _GetAvatar()->SetSFItem(nullptr);
     _GetAvatar()->SetAction(CAI_MOVE_STOP);
     if (optionsInstalled) options.Close();
     board.requestFinish(!completed);
@@ -1019,6 +1076,10 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
     // character event from the same press cannot close the new dialog.
     if ((phase == Phase::Briefing || phase == Phase::LessonBoundary) && message == WM_KEYUP && key == VK_ESCAPE &&
         !_IsOpenedDialogBox(nullptr, leaveDialog)) {
+        if (phase == Phase::Briefing && hasSkillCombat && targets.hasSelection()) {
+            targets.clearSelection();
+            return 0xffffffff;
+        }
         board.openLanguageDialog(444, leaveDialog);
         return 0xffffffff;
     }
@@ -1028,6 +1089,21 @@ LRESULT CGP_Tutorial455::MsgProc(HWND window, UINT message, WPARAM key, LPARAM d
     }
     if (optionsInstalled && phase == Phase::Briefing && applyOption(message, key)) return 0xffffffff;
     if (phase == Phase::Briefing && hasSkillLesson && runtime.currentQuest == skillQuest && !boardBusy()) {
+        if (message == WM_BOARD_USE_OBJECT && key == shortcutWindowId) {
+            const UI_MOUSE_MSG event(static_cast<DWORD>(data));
+            if (auto* skill = skills.shortcutSkill(event.m_byPackNo, event.m_bySocketNo)) applyTutorialAttack(skill);
+            return 0xffffffff;
+        }
+        if (!inputBlocked && message == WM_KEYDOWN && !(data & (1L << 30)) && attackExercise()) {
+            if (key == VK_SPACE) {
+                applyTutorialAttack(nullptr);
+                return 0xffffffff;
+            }
+            if (key >= VK_F1 && key <= VK_F10) {
+                skills.activateShortcut(static_cast<BYTE>(key - VK_F1));
+                return 0xffffffff;
+            }
+        }
         if (!inputBlocked && message == WM_KEYDOWN && key == 'S' && !(data & (1L << 30)) && GetKeyState(VK_CONTROL) < 0) {
             skills.show(!skills.isOpen());
             return 0xffffffff;
