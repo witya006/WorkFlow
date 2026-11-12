@@ -5,6 +5,27 @@ import re
 from client455_trade_ore_port import replace
 
 
+def open_lobby_after_avatar_loading(raw):
+    start = raw.rindex(b'#ifndef _DEVELOPER_', 0, raw.index(b'LOGODELAY = 3000;'))
+    end = raw.index(b'#endif', start) + len(b'#endif')
+    old_splash = raw[start:end]
+    if old_splash.count(b'Draw2DTexture(') != 1 or b'PlayCamera(CAM_TOP_TO_LOGINA,m_Course);' not in old_splash:
+        raise ValueError('Legacy login splash boundary changed')
+    raw = raw[:start] + raw[end:].lstrip(b'\r\n')
+    raw = replace(raw, b'BOOL\t\tm_LoadEquip\t= false;\n', b'')
+    raw = replace(raw, b'\t\t\tm_LoadEquip\t\t\t= true;\n', b'')
+    return replace(raw, b'''#ifdef _DEVELOPER_
+\t\t\tPlayCamera(CAM_TOP_TO_LOGINA,m_Course);
+\t\t\tg_LoginState\t=\tLGS_CHARACTERLOBBY;
+#endif ''', b'''            if (g_LoginState == LGS_ENTER_WORLDSERVER ||
+                g_LoginState == LGS_MOVEIN_WORLDSERVER ||
+                g_LoginState == LGS_IDANDPASSWORD) {
+                PlayCamera(CAM_TOP_TO_LOGINA, m_Course);
+                g_LoginState = LGS_CHARACTERLOBBY;
+                RF455_ObserveProtocol("lobby-avatars-ready", 0, 0, 0);
+            }''')
+
+
 def port_lobby_menu(raw, relative, native):
     if relative == 'mainapp.cpp':
         # Land unload releases effect resources. Do it before the engine and
@@ -16,6 +37,7 @@ def port_lobby_menu(raw, relative, native):
 
     raw = replace(raw, b'#include "../MainApp.h"', b'#include "../MainApp.h"\n' +
                   (native / 'client455_lobby_menu.inc').read_bytes())
+    raw = open_lobby_after_avatar_loading(raw)
     raw = replace(raw, b'\tm_bIsLoadedData = TRUE;',
                   b'\tlobbyMenu455.Install(*_GetUIScreen(), _GetMainApp()->IsRequestLogout() != FALSE);\n'
                   b'\tm_bIsLoadedData = TRUE;')
@@ -61,6 +83,8 @@ def port_lobby_menu(raw, relative, native):
         break;
     }''')
 
+    raw = replace(raw, b'if (!m_CameraAni&&g_LoginState == LGS_CHARACTERLOBBY\t)',
+                  b'if (g_LoginState == LGS_CHARACTERLOBBY)')
     raw = replace(raw, b'if( !m_uiSelectCharacter.IsShow() )\n\t\t{\n\t\t\tm_uiSelectCharacter.Open();',
                   b'''if (!lobbyMenu455.Started()) {
             if (!lobbyMenu455.IsShow() && !lobbyMenu455.ShowingCredits()) {
@@ -68,7 +92,7 @@ def port_lobby_menu(raw, relative, native):
                 lobbyMenu455.Open();
                 RF455_ObserveProtocol("lobby-menu-open", 0, 0, 0);
             }
-        } else if( !m_LoadDefaultStart && !m_uiSelectCharacter.IsShow() )
+        } else if( !m_CameraAni && !m_LoadDefaultStart && !m_uiSelectCharacter.IsShow() )
         {
             m_uiSelectCharacter.Open();''')
     raw = replace(raw, b'CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{',

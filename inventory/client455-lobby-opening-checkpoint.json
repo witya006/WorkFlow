@@ -1,0 +1,130 @@
+{
+  "status": "VERIFIED_LEGACY_CORNER_LOGO_REMOVAL_AND_LIVE_ENTRY",
+  "locale": "Taiwan",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13ccc8",
+          "bytes": 370,
+          "role": "Resource-ready state 6/7 to state 9 and centered menu logo",
+          "sha256": "d0838a23f510f7079141c191bdfd88f4a9c13a6403769c1d1c2f87b913f42740"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 72,
+          "role": "Open lobby in state 9 independently of selection camera gate",
+          "sha256": "74114fc8b523d900806112d44da2a763681639c322127863ebebcd6af44241a3"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13ccc8",
+          "bytes": 370,
+          "role": "Resource-ready state 6/7 to state 9 and centered menu logo",
+          "sha256": "d0838a23f510f7079141c191bdfd88f4a9c13a6403769c1d1c2f87b913f42740"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 72,
+          "role": "Open lobby in state 9 independently of selection camera gate",
+          "sha256": "74114fc8b523d900806112d44da2a763681639c322127863ebebcd6af44241a3"
+        }
+      ]
+    }
+  ],
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "3cffd9c6975c8811191437513bf2b10f64b86a472473ef3308a7dd527be248b8",
+    "bytes": 2529280,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3e90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "before": {
+    "executable": {
+      "file": "work/m9/8bd845ae/login-frame-live-taiwan002/RF_Online.bin",
+      "sha256": "8bd845ae42beafc3a4f9a023b34f20f7f00212af1b440230e17d9cc385691de8"
+    },
+    "frame": {
+      "file": "work/m9/8bd845ae/login-frame-live-taiwan002/login-frame.png",
+      "sha256": "9ec89f1fbbfbd3cb46d64c634e2d651556420691572cad208d45246bdff00344"
+    },
+    "events": {
+      "file": "work/m9/8bd845ae/login-frame-live-taiwan002/debug-events.jsonl",
+      "sha256": "f3f25e9f28ce881b774b276a3ecbd2e5e8da80f4ae835ee5053a4bd384ae8a2b"
+    },
+    "ordered": [
+      "RF455 Protocol:rx:1:9:506",
+      "RF455 LoginFrame:00000000:1920x1080"
+    ],
+    "login_elapsed_ms": 3828,
+    "observation": "Legacy 256x256 draw at lower left; three-button menu still closed"
+  },
+  "after": {
+    "executable": {
+      "file": "work/m9/3cffd9c6/login-frame-live-taiwan001/RF_Online.bin",
+      "sha256": "3cffd9c6975c8811191437513bf2b10f64b86a472473ef3308a7dd527be248b8"
+    },
+    "frame": {
+      "file": "work/m9/3cffd9c6/login-frame-live-taiwan001/login-frame.png",
+      "sha256": "6df9fb4e448b1734a1a9226494327f2b73b2b97cdb7e756455d6cfc085b3564e"
+    },
+    "events": {
+      "file": "work/m9/3cffd9c6/login-frame-live-taiwan001/debug-events.jsonl",
+      "sha256": "dfd49b78d40f0d741df0cf1bbc19a8cc32ca37881028731266be05aff8426582"
+    },
+    "ordered": [
+      "RF455 Protocol:rx:1:9:506",
+      "RF455 Protocol:lobby-avatars-ready:0:0:0",
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 LoginFrame:00000000:1920x1080"
+    ],
+    "login_elapsed_ms": 3844,
+    "observation": "Original centered logo and open three-button menu"
+  },
+  "live_world": {
+    "map": "NeutralB",
+    "events": {
+      "file": "work/m9/3cffd9c6/world-observation-live-taiwan001/debug-events.jsonl",
+      "sha256": "ad818c16bfdfb55b431e82acf7a0d68de8e391a2f23bc4c22fea4aabbc54852f"
+    },
+    "frame": {
+      "file": "work/m9/3cffd9c6/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "1d492646aadcf82419c94bf0f4f6b5fbbdf457068004af3574082a1f1cee1521"
+    },
+    "ordered": [
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 Protocol:lobby-start:0:0:0",
+      "RF455 Protocol:select-result:0:0:0",
+      "RF455 Protocol:selection-fade-start:0:0:0",
+      "RF455 Protocol:selection-zone-connect:1084:0:0",
+      "RF455 Protocol:selection-world-handoff:1085:0:0",
+      "RF455 Protocol:position-mode:0:0:0",
+      "RF455 WorldCapture:0:0:1920x1080"
+    ],
+    "input_enabled": true
+  },
+  "desktop_flicker_verified": false
+}
