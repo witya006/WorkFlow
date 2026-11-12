@@ -1,0 +1,60 @@
+{
+  "scope": "Loopback TCP loss before and after connection publication, endpoint cleanup and transport reconnect.",
+  "architecture": "x86",
+  "entry_rva": "0x10fd00",
+  "source": "scripts/native/client455_connection_probe.cpp",
+  "source_sha256": "701ac1a18df4283e51a9a9e79d5f23e109d81995b9e0b14f958afc3c9899e561",
+  "script_sha256": "61aa3e5d19c82dfab3fd0eb0b2d9a2d0e843fe048e89604ee24635c78c3d19e0",
+  "builder_sha256": "f4cfba0355224d7ced9f7498fae1c2c157c56389e221e73edc3db5382a5c50b9",
+  "tcp_fixture_sha256": "a65f6665ac87b4e1498461bc21a9db1228542fe4d4639f4da10598a0cd5a998f",
+  "sources": {
+    "client455_connection.h": "e32fe02e7fcc86a61c143d7b137c79b37347f52f3dabe7adff5ca5bfa56f5423",
+    "client455_connection.cpp": "98070398e5b7dcba9530854fe82e86b6a252524816dbf33c5eb7c40474b1ad35",
+    "client455_connection_bridge.inc": "57c7b6c3c7abb73ea90802e26de6f244a3ac2592e7abb9fbef988654d63070f4",
+    "client455_network_receipt.inc": "f7afbc06e8e503131032f3a836d2153316586944547eff3202440deee26c1f78",
+    "client455_network_events.inc": "940c0215d973f69b59b4a620acdd77abe9f58855a316c19e641080341d8cbbf9"
+  },
+  "normal_link_sha256": "9a511a8846e0a8fce090e10e1dba63a6d0156d6a514aefae79e967695d5ce6be",
+  "runs": [
+    {
+      "mode": "disconnect",
+      "exit": 0,
+      "native": {
+        "status": "PASS",
+        "loopback_connections": 3,
+        "early_fin_clears_pending_accept": true,
+        "rst_clears_active_connection": true,
+        "fin_clears_active_connection": true,
+        "reconnect_after_rst": true,
+        "unmapped_close_preserves_game_connection": true,
+        "authentication_performed": false
+      },
+      "tcp_fixture": {
+        "enabled": false,
+        "loopback_port": 1,
+        "accepted_connections": 0,
+        "bytes_received": 0,
+        "bytes_sent": 0,
+        "rf_protocol_responses": false,
+        "authentication_performed": false,
+        "thread_stopped": true
+      },
+      "exe": {
+        "file": "work/m9/9d4c8a82/connection-disconnect-001/connection-probe.exe",
+        "sha256": "9d4c8a822e4ffe01dd06c69cba0b575cd506d63639cf5dc36d7876eaab3b86ac"
+      },
+      "output": {
+        "file": "work/m9/9d4c8a82/connection-disconnect-001/result.json",
+        "sha256": "7edc6fc4df1da537ef1a417a32c61b31a3e4e4cec56f27c4db4bbb6bfc7151ce"
+      },
+      "language": {
+        "file": "work/m9/9d4c8a82/connection-disconnect-001/DataTable/ko-kr/NDLanguage.edf",
+        "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
+      }
+    }
+  ],
+  "input_exe_executed": false,
+  "server_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

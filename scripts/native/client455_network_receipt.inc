@@ -10,6 +10,7 @@ CNetProcess::_Receipt()
     }
     for(unsigned count=0;count<102 && m_listCloseEvent.PopNode_Front(&index);++count){
         if(wt_CloseClient(index)){
+            m_listAcceptReady.FindNode(index);
             auto* socket=m_NetSocket.GetSocket(index);m_pNetwork->CloseClientCheck(m_nIndex,index,socket->m_dwSerial);
         }
     }

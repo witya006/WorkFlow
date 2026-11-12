@@ -49,6 +49,83 @@ static LRESULT CALLBACK ownDialogHook(int code,WPARAM value,LPARAM param){
     if(code==HCBT_ACTIVATE){HWND window=reinterpret_cast<HWND>(value);char type[64];GetClassNameA(window,type,sizeof(type));if(!std::strcmp(type,"#32770"))SetTimer(window,0x455,25,closeOwnDialog);}
     return CallNextHookEx(nullptr,code,value,param);
 }
+
+static int checkDisconnect(CNetworkMgr& network)
+{
+    struct Socket {
+        SOCKET handle;
+        ~Socket() { if (handle != INVALID_SOCKET) closesocket(handle); }
+    } listener{socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)};
+    REQUIRE(listener.handle != INVALID_SOCKET);
+    sockaddr_in address{};
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = inet_addr("127.0.0.1");
+    REQUIRE(bind(listener.handle, reinterpret_cast<sockaddr*>(&address), sizeof address) == 0);
+    REQUIRE(listen(listener.handle, 1) == 0);
+    int addressSize = sizeof address;
+    REQUIRE(getsockname(listener.handle, reinterpret_cast<sockaddr*>(&address), &addressSize) == 0);
+    network.SetServerIP(GST_WORLD, address.sin_addr.s_addr);
+    network.SetServerPort(GST_WORLD, ntohs(address.sin_port));
+
+    const auto pumpUntil = [&](const auto& ready) {
+        const DWORD start = timeGetTime();
+        do {
+            network.PumpEvents455();
+            if (ready()) return true;
+            Sleep(4);
+        } while (timeGetTime() - start < 5000);
+        return false;
+    };
+    auto& process = network.m_Process[NST_GAME_SERVER];
+    const auto* transport = process.m_NetSocket.GetSocket(0);
+    auto& pendingAccept = process.*access(ReadyList{});
+    network.Close(GST_WORLD);
+    REQUIRE(transport->m_Socket == INVALID_SOCKET && !network.IsConnectedToServer(GST_WORLD));
+    enum class End { BeforePublication, Reset, Graceful };
+    for (const auto end : {End::BeforePublication, End::Reset, End::Graceful}) {
+        REQUIRE(network.ConnectToServer455(GST_WORLD, NST_GAME_SERVER) == 0);
+        Socket peer{accept(listener.handle, nullptr, nullptr)};
+        REQUIRE(peer.handle != INVALID_SOCKET);
+        if (end == End::BeforePublication) {
+            DWORD waiting = 0;
+            network.PumpEvents455();
+            const DWORD start = timeGetTime();
+            while (!pendingAccept.CopyFront(&waiting) && timeGetTime() - start < 300) {
+                Sleep(1);
+                network.PumpEvents455();
+            }
+            REQUIRE(pendingAccept.CopyFront(&waiting) && !network.IsConnectedToServer(GST_WORLD));
+        } else {
+            REQUIRE(pumpUntil([&] { return network.IsConnectedToServer(GST_WORLD) != FALSE; }));
+            static_cast<CNetWorking&>(network).CloseClientCheck(NST_LOCAL_CHAT, 0, 0);
+            REQUIRE(network.IsConnectedToServer(GST_WORLD) && network.GetActiveServerID() == GST_WORLD);
+        }
+
+        if (end == End::Reset) {
+            const linger settings{1, 0};
+            REQUIRE(setsockopt(peer.handle, SOL_SOCKET, SO_LINGER,
+                               reinterpret_cast<const char*>(&settings), sizeof settings) == 0);
+            REQUIRE(closesocket(peer.handle) == 0);
+            peer.handle = INVALID_SOCKET;
+        } else {
+            REQUIRE(shutdown(peer.handle, SD_SEND) == 0);
+        }
+        REQUIRE(pumpUntil([&] { return transport->m_Socket == INVALID_SOCKET; }));
+        DWORD stale = 0;
+        REQUIRE(!transport->m_bAccept && !pendingAccept.CopyFront(&stale));
+        REQUIRE(!network.IsConnectedToServer(GST_WORLD) && network.GetActiveServerID() == GST_NONE);
+    }
+
+    FILE* result = std::fopen("result.json", "wb");
+    REQUIRE(result);
+    std::fputs("{\"status\":\"PASS\",\"loopback_connections\":3,\"early_fin_clears_pending_accept\":true,"
+               "\"rst_clears_active_connection\":true,\"fin_clears_active_connection\":true,"
+               "\"reconnect_after_rst\":true,\"unmapped_close_preserves_game_connection\":true,"
+               "\"authentication_performed\":false}\n", result);
+    std::fclose(result);
+    return 0;
+}
+
 int main(){
     std::fprintf(stderr,"connection:begin\n");
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
@@ -65,6 +142,7 @@ int main(){
     struct Profile{const char* value;std::uint32_t ms;};for(const auto& profile:{Profile{"0",0},Profile{"1",1000},Profile{"-1",0xfffffc18},Profile{"4294968",704},Profile{"invalid",0}}){REQUIRE(WritePrivateProfileStringA("Network","ConnectTime",profile.value,"./DataTable/ClientSystem.ini"));REQUIRE(RF455_ReadConnectTimeout()==profile.ms);}
     char mode[32]={};FILE* file=std::fopen("mode.txt","rb");REQUIRE(file);std::fread(mode,1,sizeof(mode)-1,file);std::fclose(file);const bool positive=!std::strcmp(mode,"positive"),russia=!std::strcmp(mode,"russia");
     REQUIRE(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData());REQUIRE(g_MainApp.CreateNetworkMgr455());g_MainApp.SetRequestLogout(FALSE);auto& network=g_MainApp.*access(NetworkMember{});
+    if (!std::strcmp(mode, "disconnect")) return checkDisconnect(network);
     SOCKET reserved=INVALID_SOCKET;unsigned port=0;file=std::fopen("port.txt","r");if(file){std::fscanf(file,"%u",&port);std::fclose(file);}
     if(russia){REQUIRE(g_MainApp.GetDataFromLauncher());REQUIRE(network.GetServerIP(0)==inet_addr("127.0.0.1")&&network.GetServerIP(1)==0&&network.GetServerPort(1)==0);}
     else{

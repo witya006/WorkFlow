@@ -777,7 +777,18 @@ def main():
                 if count!=1:raise ValueError('Process buffer allocation changed')
                 raw=raw[:start]+body+raw[end:]
                 signature=b'CNetProcess::RecvThread(';start,end=section(raw,signature,signature);body=raw[start:end]
-                body=body.replace(b'MAX_NET_BUFFER',b'pNB->m_capacity').replace(b'MAX_EXTRA_BUFFER',b'pNB->m_extra');raw=raw[:start]+body+raw[end:]
+                body=body.replace(b'MAX_NET_BUFFER',b'pNB->m_capacity').replace(b'MAX_EXTRA_BUFFER',b'pNB->m_extra')
+                anchor=b'pNB->AddPushPos(nRecvSize);'
+                if body.count(anchor)!=1:raise ValueError('Receive worker ring advance changed')
+                body=body.replace(anchor,b'''if (nRecvSize == 0) {
+                pProcess->m_csRecv[dwSocketIndex].Unlock();
+                pProcess->PushCloseNode(dwSocketIndex);
+                continue;
+            }
+            '''+anchor)
+                raw=raw[:start]+body+raw[end:]
+                signature=b'void CNetProcess::NetEventThread(';start,end=section(raw,signature,signature)
+                raw=raw[:start]+(native/'client455_network_events.inc').read_bytes()+raw[end:]
                 signature=b'CNetProcess::LoadSendMsg(DWORD dwClientIndex, BYTE* pbyType';start,end=section(raw,signature,signature)
                 raw=raw[:start]+(native/'client455_network_send.inc').read_bytes()+raw[end:]
                 signature=b'CNetProcess::_PopRecvMsg(';start,end=section(raw,signature,signature);body=raw[start:end]
@@ -889,6 +900,32 @@ def main():
             if avatar_movement_changed:changes.append('455 movement, position sample, stop and bounded avatar position responses')
             raw,map_portal_changed=port_map_portal(raw,relative,native,section)
             if map_portal_changed:changes.append('455 ordinary map portal group 8 request and result')
+            if relative=='network/cnetworkmgr.cpp':
+                start,end=section(raw,b'CNetworkMgr::Close( BYTE pi_byServerType )',b'CNetworkMgr::Close( BYTE pi_byServerType )');body=raw[start:end]
+                guard=b'if( m_nActiveServerID != ID_INVALID && !m_bIsConnectedToServer[m_nActiveServerID] )'
+                if body.count(guard)!=1:raise ValueError('Network close request boundary changed')
+                body=body.replace(guard,b'''const BYTE endpoint = m_activeServer455[NST_GAME_SERVER];
+    if (endpoint >= MAX_GAME_SERVER || !m_bIsConnectedToServer[endpoint])''')
+                raw=raw[:start]+body+raw[end:]
+                start,end=section(raw,b'CNetworkMgr::CloseClientCheck(',b'CNetworkMgr::CloseClientCheck(');body=raw[start:end]
+                at=body.index(b'{')+1
+                body=body[:at]+b'''
+    if (dwProID >= _countof(m_activeServer455)) return;
+    const BYTE endpoint = m_activeServer455[dwProID];
+    if (endpoint >= MAX_GAME_SERVER) return;
+    const bool wasConnected = m_bIsConnectedToServer[endpoint] != FALSE;
+    m_activeServer455[dwProID] = 0xff;
+    m_bIsConnectedToServer[endpoint] = FALSE;
+    if (m_nActiveServerID == endpoint) m_nActiveServerID = GST_NONE;
+'''+body[at:]
+                guard=b'if( !m_bIsRequestClose )'
+                if body.count(guard)!=1:raise ValueError('Network close dialog boundary changed')
+                body=body.replace(guard,b'if (wasConnected && !m_bIsRequestClose && _GetUIScreen())')
+                tail=rb'\s*m_bIsConnectedToServer\[m_nActiveServerID\] = FALSE;\s*m_nActiveServerID = GST_NONE;\s*if\(dwProID<6\)m_activeServer455\[dwProID\]=255;'
+                body,count=re.subn(tail,b'',body)
+                if count!=1:raise ValueError('Network endpoint reset boundary changed')
+                raw=raw[:start]+body+raw[end:]
+                changes.append('Close callback clears only the connection assigned to its process')
             raw,monster_force_changed=port_monster_force(raw,relative,native)
             if monster_force_changed:changes.append('455 combat 5/9 monster Force owner and ordinary action')
             raw,monster_health_changed=port_monster_health(raw,relative,native)
@@ -1017,6 +1054,7 @@ def main():
     for name in ['client455_bootstrap.cpp','client455_bootstrap.h','client455_bootstrap_bridge.inc','client455_network_state.cpp','client455_network_state.h','client455_network_bridge.inc','client455_network_transport.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_network_codec.cpp','client455_network_codec.h','client455_network_config.inc','client455_network_buffer.inc','client455_network_send.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_connection.cpp','client455_connection.h','client455_connection_bridge.inc','client455_network_receipt.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_network_events.inc']=sha((native/'client455_network_events.inc').read_bytes())
     for name in ['client455_account.cpp','client455_account.h','client455_account_bridge.inc','client455_account_dispatch.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_progress_loop.inc']=sha((native/'client455_progress_loop.inc').read_bytes())
     for name in ['client455_camera.h','client455_camera.cpp','client455_camera_load.inc','client455_camera_play.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
