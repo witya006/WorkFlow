@@ -1,0 +1,116 @@
+{
+  "status": "SWAP_CHAIN_TITLE_VERIFIED_DESKTOP_CAPTURE_UNRESOLVED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "8bd845ae42beafc3a4f9a023b34f20f7f00212af1b440230e17d9cc385691de8",
+    "bytes": 2529280,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3ff0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "verified": {
+    "capture_target": "IDirect3DDevice9::GetBackBuffer, swap chain 0",
+    "title_events": [
+      "RF455 Protocol:title-movie-start:1:0:0",
+      "RF455 Protocol:title-movie-draw:1:1920:1080",
+      "RF455 Protocol:title-movie-capture:1:0:0",
+      "RF455 Protocol:title-movie-end:1:1:0",
+      "RF455 Protocol:title-movie-start:2:0:0",
+      "RF455 Protocol:title-movie-draw:2:1920:1080",
+      "RF455 Protocol:title-movie-capture:2:0:0",
+      "RF455 Protocol:title-movie-skip:2:27:0"
+    ],
+    "frames": {
+      "title-logo-source": {
+        "file": "work/m9/8bd845ae/title-escape-prologue-taiwan001/title-logo-source.png",
+        "sha256": "27da5b2bee2356edb9d63f47714e807f1844182fda5cdb21933d3da1a81bd6db",
+        "size": [
+          720,
+          540
+        ]
+      },
+      "title-logo": {
+        "file": "work/m9/8bd845ae/title-escape-prologue-taiwan001/title-logo.png",
+        "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "title-prologue": {
+        "file": "work/m9/8bd845ae/title-escape-prologue-taiwan001/title-prologue.png",
+        "sha256": "4e5918778297452e32e37a9f13ed10ff35ddf2a0ce33afdd96e6be2371ed151a",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    },
+    "ccr_mean_abs_rgb_error": 0.0874,
+    "events": {
+      "file": "work/m9/8bd845ae/title-escape-prologue-taiwan001/debug-events.jsonl",
+      "sha256": "3f5b452dfdf1fc75f619cb871759cb09344ad7e5b585a3ef3d47ddbb5951bdb3"
+    },
+    "first_login_frame_after_escape": {
+      "file": "work/m9/8bd845ae/title-escape-prologue-taiwan001/login-frame.png",
+      "sha256": "6ecffd738152e67c7227b28a20580ea84d274e0cffe626cc306a4b17692f30bf"
+    },
+    "ordinary_offline_fixture": true
+  },
+  "desktop_attempts_executable_sha256": "30a113043266a6d299874dc247cbeb3b6043f5c8cc2383fe651bad91fd49df16",
+  "desktop_attempts": [
+    {
+      "file": "work/m9/30a11304/login-frame-taiwan003/desktop-observation.json",
+      "sha256": "47d2eac6c524f8d2903cebc95599f24954a53a0dfe72bab5b33105efe1b58e27",
+      "backend": "desktop-gdi",
+      "focus_switch": false,
+      "auxiliary_window_moved_for_positive_control": false,
+      "samples": 132,
+      "uniform_white_samples": 130,
+      "nonwhite_samples_after_1s": 0
+    },
+    {
+      "file": "work/m9/30a11304/login-frame-taiwan004/desktop-observation.json",
+      "sha256": "79a822d98bf210478a0d13087d842c910b90fee96c70c1c29729298ae9542613",
+      "backend": "desktop-duplication",
+      "focus_switch": false,
+      "auxiliary_window_moved_for_positive_control": false,
+      "samples": 0,
+      "uniform_white_samples": 0,
+      "nonwhite_samples_after_1s": 0
+    },
+    {
+      "file": "work/m9/30a11304/login-frame-taiwan005/desktop-observation.json",
+      "sha256": "7432cce52a873638573de1b886da9eb6e897fa693c896153dbe156bb45939100",
+      "backend": "desktop-duplication",
+      "focus_switch": false,
+      "auxiliary_window_moved_for_positive_control": true,
+      "samples": 0,
+      "uniform_white_samples": 0,
+      "nonwhite_samples_after_1s": 0
+    },
+    {
+      "file": "work/m9/30a11304/login-frame-taiwan006/desktop-observation.json",
+      "sha256": "4410394f5a4274cbf6338de3d0cd8ff98aead5c560604e58ad5a8efdab0bf1f6",
+      "backend": "desktop-gdi",
+      "focus_switch": false,
+      "auxiliary_window_moved_for_positive_control": false,
+      "samples": 486,
+      "uniform_white_samples": 484,
+      "nonwhite_samples_after_1s": 0
+    }
+  ],
+  "desktop_flicker_verified": false
+}

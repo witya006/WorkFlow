@@ -107,7 +107,8 @@ private:
         using Microsoft::WRL::ComPtr;
         ComPtr<IDirect3DSurface9> target, image;
         D3DSURFACE_DESC desc{};
-        HRESULT result = device.GetRenderTarget(0, &target);
+        // Verify the swap-chain image queued for Present, even if another render target is active.
+        HRESULT result = device.GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &target);
         if (SUCCEEDED(result)) result = target->GetDesc(&desc);
         if (SUCCEEDED(result)) result = device.CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format,
                                                                            D3DPOOL_SYSTEMMEM, &image, nullptr);
