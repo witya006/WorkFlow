@@ -90,7 +90,7 @@ def main():
     header=header.replace(firstInclude,firstInclude+('#include "'+materialHeader.as_posix()+'"\r\n').encode(),1)
     if ownedHeader.exists() and ownedHeader.read_bytes()!=header and sha(ownedHeader)!=previous.get('camera_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed owned camera declaration')
     if not ownedHeader.exists() or ownedHeader.read_bytes()!=header:ownedHeader.write_bytes(header)
-    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp','renderparticle.cpp']:
+    for filename in ['jerror.cpp','r3enginekernel.cpp','r3d3dwrapper.cpp','r3d3dapp.cpp','r3text.cpp','r3d3dtex.cpp','anicamera.cpp','level.cpp','r3d3d8.cpp','rtmovie.cpp','r3util.cpp','r3particle.cpp','entity.cpp','r3sound.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp','renderparticle.cpp']:
         folder='common' if filename=='jerror.cpp' else ('1stclass' if filename in ['r3d3dtex.cpp','r3d3d8.cpp','r3particle.cpp','entity.cpp','bsp.cpp','core.cpp','skybox.cpp','r3vertexbuffer.cpp','r3material.cpp','r3render.cpp','renderentity.cpp','r3vertexshader.cpp','renderparticle.cpp'] else ('extension' if filename=='rtmovie.cpp' else '2ndclass'))
         source=base/'source/R3Engine'/folder/filename;raw=source.read_bytes()
         if filename=='jerror.cpp':
@@ -109,6 +109,14 @@ def main():
             anchor=b'\tCreate(hInstance);'
             if raw.count(anchor)!=1:raise ValueError('Legacy Create wrapper changed')
             raw=raw.replace(anchor,b'\tif(Create(hInstance)!=S_OK) exit(0); // 455:8EDB72..7A;any nonzero result')
+        elif filename=='r3d3dapp.cpp':
+            from client455_d3d9_edits import replace
+
+            menu = b'LoadMenu( hInstance, MAKEINTRESOURCE(IDR_MENU) )'
+            raw = replace(raw, menu, b'menu')
+            raw = replace(raw, b'AdjustWindowRect( &rc, m_dwWindowStyle, TRUE );',
+                          b'const HMENU menu = ' + menu + b';\r\n'
+                          b'        AdjustWindowRect( &rc, m_dwWindowStyle, menu != NULL );')
         elif filename=='r3text.cpp':
             anchor=b'static CR3Font stCR3Font;'
             if raw.count(anchor)!=1:raise ValueError('Legacy active text boundary changed')

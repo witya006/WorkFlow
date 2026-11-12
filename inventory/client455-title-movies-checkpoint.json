@@ -3,11 +3,11 @@
   "scope": "Ordinary Title plays its configured logo and prologue and honors Escape.",
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "48f0599a10e8dbd03e670e852ac5bed3babd1ca17032cc958f4e85b6f531bc6b",
-    "bytes": 2407936,
+    "sha256": "efc8f1fa70728252b6b9134097de53d372244dedc67c52fd5de854b1490e24e1",
+    "bytes": 2528256,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x18bb10",
+    "entry_rva": "0x1a3ae0",
     "sections": [
       ".text",
       ".rdata",
@@ -16,99 +16,49 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "be1398589c64a3c91adb2c515b29ce93e80fa5a39a281357029b79ff9e6338ff",
-  "component": [
-    {
-      "status": "PASS",
-      "skipped": "logo",
-      "login_stage": 1,
-      "video_window_closed": true
-    },
-    {
-      "status": "PASS",
-      "skipped": "prologue",
-      "login_stage": 1,
-      "video_window_closed": true
-    }
-  ],
-  "component_executable": {
-    "file": "work/client455-port/title-movies-probe/title-movies-probe.exe",
-    "sha256": "881ec7bee9c6ffd828f2cd4ba67c5e18ca8d1fa36fbb6a837fc68bc64426437a"
-  },
-  "consoles": [
-    {
-      "file": "work/client455-port/title-movies-probe/skip-logo.txt",
-      "sha256": "e10ba501df26ebe953d82b06b963ab4bd140b213ccb67af2b6b2a9499d468b99"
-    },
-    {
-      "file": "work/client455-port/title-movies-probe/skip-prologue.txt",
-      "sha256": "c9d84f94a9eafc47947027e487b49cf4a63731066b75715e987b5ef960cd2b8f"
-    }
-  ],
-  "inputs": [
-    {
-      "file": "work/client455-port/title-movies-probe/DataTable/zh-tw/CcrLogo.dat",
-      "sha256": "401fbf9eb13b805eb72c8e1df15e7b19e019ce98ed2472ce12b5a6e70ca14a7e",
-      "original": "E:\\RFOnlineTrash\\RFOnline\\DataTable\\zh-tw\\CcrLogo.dat"
-    },
-    {
-      "file": "work/client455-port/title-movies-probe/Snd/BGM/ccrinc.AVI",
-      "sha256": "847623ed5d66ea68a1cfd15825f7ade330b80191f3dd43d186dc261d1377a66c",
-      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\BGM\\ccrinc.AVI"
-    },
-    {
-      "file": "work/client455-port/title-movies-probe/Snd/BGM/RF_EP1_New.wmv",
-      "sha256": "966e1671d1c6b7f1d2d2f983e96906b081fbe3fb455ecf51fe0f2a51fa6f0c36",
-      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\BGM\\RF_EP1_New.wmv"
-    },
-    {
-      "file": "work/client455-port/title-movies-probe/Snd/BGM/RF_EP2_New.wmv",
-      "sha256": "ed80f0ff1b0eafa8a7a62d81cc30055a41f00b64bdbcd79f1591c12f1681ff82",
-      "original": "E:\\RFOnlineTrash\\RFOnline\\Snd\\BGM\\RF_EP2_New.wmv"
-    },
-    {
-      "file": "work/client455-port/title-movies-probe/R3Engine.ini",
-      "sha256": "01cadb8fdd54ea7cdb6cd80fd590dcdae2dbd0fcf842842ff69751e8d33e9278"
-    }
-  ],
+  "normal_link_sha256": "e1c488bcffad6dbeaccb239c1344d5401b65f9fa4e95edeb25803d2a4600d2fb",
   "ordinary": {
     "logo": {
       "report": {
         "file": "artifacts/client455-progress/client455-title-escape-logo-taiwan-native.json",
-        "sha256": "f2894b34b894e6bac850885671133c8dc6a5f4bbced7253eddce995cee252df6"
+        "sha256": "883a35a0dccf9bbed6bf47db03695c0f42af5b14a693626dac23e2270fd71046"
+      },
+      "movie_frame": {
+        "file": "work/m9/efc8f1fa/title-escape-logo-taiwan001/title-logo.png",
+        "sha256": "5a230b35169821901af2ee03d76b11c4721c453ebd58502c6cf215a111d82d9f"
       },
       "login_frame": {
-        "file": "work/m9/48f0599a/title-escape-logo-taiwan001/login-frame.png",
-        "sha256": "f89ff96d8d172e2c445988632be56219825c7e9951b5b87b98e5b580359a7d45"
+        "file": "work/m9/efc8f1fa/title-escape-logo-taiwan001/login-frame.png",
+        "sha256": "6a1895c78b1133be5350efce5ce3580143e6f6b8a11c9ed0e7a00925cf298ac6"
       }
     },
     "prologue": {
       "report": {
         "file": "artifacts/client455-progress/client455-title-escape-prologue-taiwan-native.json",
-        "sha256": "9d9bf4eb284ada5718891555d2c4e26ef733166baa516b725a3e1a7e63a50b27"
+        "sha256": "1f22d51d413e90207bac84ca1350150f5b413672f5fae41f45e557b41a6e669c"
+      },
+      "movie_frame": {
+        "file": "work/m9/efc8f1fa/title-escape-prologue-taiwan001/title-prologue.png",
+        "sha256": "3567187fde601e3b30af0494fec217f78c006280c0e8d1b2cf7d249c0b6bbb5f"
       },
       "login_frame": {
-        "file": "work/m9/48f0599a/title-escape-prologue-taiwan001/login-frame.png",
-        "sha256": "9ecda8e56caa88fe173980c869ada367550bd3fbf93f46c0ebdde5263f5bc387"
+        "file": "work/m9/efc8f1fa/title-escape-prologue-taiwan001/login-frame.png",
+        "sha256": "610292c1de2cbc532a9a011e19f9db8af5e7c30aae0fe2d438c1f4346cba9bf1"
       }
     }
   },
   "script": {
     "file": "scripts/checkpoint_client455_title_movies.py",
-    "sha256": "d67c31ac3849f760eed4496169346c6b0ed99ae6131968c726384cf5faa2bc45"
+    "sha256": "eda192b72f86af211da66ee44fb780441efede3d8c290a540ae281326159f5b1"
   },
   "sources": [
     {
       "file": "scripts/client455_title_movies_port.py",
-      "sha256": "8f44d341fe1f4dcdeabbc41d12433b52b4e0feedc15ff663b68dcf8899b3cb91"
+      "sha256": "85c881a7662071599d921d6119e24a6f6727f5add49d461f9940cc402847fce7"
     },
     {
       "file": "scripts/native/client455_title_movies.inc",
-      "sha256": "858c28ef99b90a7a095e50e87ef09244a73024a649cd7a3535cf82a4124ae3ac"
-    },
-    {
-      "file": "scripts/native/client455_title_movies_probe.cpp",
-      "sha256": "185cb0541e9fb3cbcea2bbdb1eca417234f9d02435136ca63a7e2e07f66f5bb4"
+      "sha256": "31e429dcd0e89e5a20a1515c52d3b1025e0c21cca7ea9c53e1d2ab3f06835f79"
     },
     {
       "file": "scripts/client455_runtime_inputs.py",
@@ -116,7 +66,7 @@
     },
     {
       "file": "scripts/prepare_client455_normal.py",
-      "sha256": "da660e0be02e8a504b46e09c890ecd528cf899546ae71df16ff189be26e3566f"
+      "sha256": "653730d0423654766a0a4e31f381cdaea07efaee3249967adfb1dc9ebc615823"
     },
     {
       "file": "scripts/link_client455_normal.py",
@@ -124,41 +74,41 @@
     },
     {
       "file": "scripts/probe_client455_device_startup.py",
-      "sha256": "fadf729b179d0fdd6b42ac284fa27c18de4d6f50e1eacaf6948059954e677042"
+      "sha256": "2da27a126f5dd9da95c8e0f519d1900320c8b71a05bd27c1979370900b76688f"
     },
     {
       "file": "scripts/native/own_client_startup_debugger.cpp",
-      "sha256": "089acc145eea85c1eec8d48eda975eefa4da219a0c075a71723dc034bc79bff6"
+      "sha256": "63c3c410c1d71eb0dd09a33298f25956a2182f11091dd60e7669af705d6d928c"
     }
   ],
   "fresh_evidence": {
     "normal-link": {
       "file": "inventory/client455-normal-link.json",
-      "sha256": "be1398589c64a3c91adb2c515b29ce93e80fa5a39a281357029b79ff9e6338ff"
+      "sha256": "e1c488bcffad6dbeaccb239c1344d5401b65f9fa4e95edeb25803d2a4600d2fb"
     },
     "normal-preparation": {
       "file": "inventory/client455-normal-preparation.json",
-      "sha256": "a9561e4f33cecb69583edfab9cc5415f8afb5ad28c79a0da642a81d16b8a31f6"
+      "sha256": "62102ae4a0a57c3bd56ef0b11b72614dc478c204f1afb185fa6359884f69a413"
     },
     "normal-build": {
       "file": "inventory/client455-normal-build.json",
-      "sha256": "02eb09018a07b0d683b75916c198cac91da9c86519db747267213c74cd86a302"
+      "sha256": "292e9c6836af5bea9478ccadae065350de98f773d5c23ecf79e5079a12f74d91"
     },
     "normal-consumers": {
       "file": "inventory/client455-normal-consumers.json",
-      "sha256": "302202385cb0e6953087c624e1795f38c9b0554941050b795d96966bc4e24fe1"
+      "sha256": "adca7f450dcb4e539b1d3b5a475f1927b69bac3f41d64cca3488b09e45fc5e6f"
     },
     "own-entry": {
       "file": "inventory/client455-own-entry.json",
-      "sha256": "cb7ffabe1d4875b10044cf8638af925aedfde8d289e5f4775a048d5863f43c88"
+      "sha256": "7a6df7a284a05df958ba256887ae90a798489f63969291a4b27afea18ae98b41"
     },
     "startup-audit": {
       "file": "inventory/client455-startup-audit.json",
-      "sha256": "1f8e6d6017a8066a6f6841ea3239055e90fbcc7512afc9f258c9abdd2cf27ba2"
+      "sha256": "ed628cd3711fc3098dbbf3c78b6133d5bd7c1a8a5a0e6fc380b8c1a7da3f63d4"
     },
     "startup-taiwan-native": {
       "file": "inventory/client455-startup-taiwan-native.json",
-      "sha256": "f7e7a7cf4115feec3d36dedd885c1b588c470b20a456ae8323910f60161dddef"
+      "sha256": "243494ec33fa313f5bba5d005430e8d00e8b9372fb31299844bce9862b5b245b"
     },
     "title-movies-reference": {
       "file": "inventory/client455-title-movies-reference.json",
@@ -166,7 +116,7 @@
     }
   },
   "gaps": [
-    "Full-screen playback, other regions, full start menu, FireGuard and new-character tutorial."
+    "Fullscreen playback, other locales, focus presentation, and launch-to-world parity."
   ],
   "own_live_run": false,
   "M6": "OPEN",

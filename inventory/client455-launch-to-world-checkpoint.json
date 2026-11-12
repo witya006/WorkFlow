@@ -1,0 +1,122 @@
+{
+  "status": "PARTIAL_LIVE_LAUNCH_AND_WORLD_FOCUS",
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "regions": [
+      {
+        "rva": "0x4f0330",
+        "bytes": 538,
+        "contract": "Window creation and menu-aware client dimensions",
+        "sha256": "232aa942879b7a5f44b255284817393d4bf89678c6647e1bba3135b7d1a1bfab"
+      },
+      {
+        "rva": "0x1582a0",
+        "bytes": 209,
+        "contract": "Title draws one video texture across the client rectangle",
+        "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+      },
+      {
+        "rva": "0x3d0ad5",
+        "bytes": 291,
+        "contract": "WinMain polls the queue regardless of window activation",
+        "sha256": "4c58b70d0ac341cb152c0f74bc81b34e53586e36486d8810d92c990436984d52"
+      },
+      {
+        "rva": "0x3d1370",
+        "bytes": 250,
+        "contract": "Window activation gates input before stage update",
+        "sha256": "1f063f0880320382417a558abea91a6f609b8770b396cd9da3a38b6e0d24bcf9"
+      }
+    ]
+  },
+  "own_executable": {
+    "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/RF_Online.bin",
+    "sha256": "efc8f1fa70728252b6b9134097de53d372244dedc67c52fd5de854b1490e24e1",
+    "bytes": 2528256,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a3ae0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "map": "NeutralB",
+  "live_launcher_handoff": true,
+  "launcher_endpoint": {
+    "host": "127.0.0.1",
+    "port": 27831
+  },
+  "game_endpoint": {
+    "host": "127.0.0.1",
+    "port": 27830
+  },
+  "confirmed": [
+    "Both source movies finish naturally before the lobby",
+    "Lobby Start and selection reach NeutralB with an existing character",
+    "The inactive game continues rendering and receiving packets"
+  ],
+  "window_activation": {
+    "activation_messages": [
+      {
+        "kind": "world_activation_posted",
+        "active": false,
+        "sent": true
+      },
+      {
+        "kind": "world_activation_posted",
+        "active": true,
+        "sent": true
+      }
+    ],
+    "rendered_while_inactive": true,
+    "packets_while_inactive": 41,
+    "passed": true
+  },
+  "frames": [
+    {
+      "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/title-logo.png",
+      "sha256": "5a230b35169821901af2ee03d76b11c4721c453ebd58502c6cf215a111d82d9f"
+    },
+    {
+      "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/title-prologue.png",
+      "sha256": "0f37d0a71c753c21beb2b886366ca76b5a54b128f5620f0b9814702ba98c1db7"
+    },
+    {
+      "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/login-frame.png",
+      "sha256": "31997a8f4c0268b4f6be2e53e5bc480b9dcf160d4b46bb235c22fd46f7301058"
+    },
+    {
+      "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/world-post-position.png",
+      "sha256": "bfd67d19263822ead4ad5561360704b722715ad3b0851b077178efcc3d159df9"
+    },
+    {
+      "file": "work/m9/efc8f1fa/world-focus-live-taiwan001/world-post-position-settled.png",
+      "sha256": "2c98c22530aa1dc2a73cc432bfc6710c9bae41c5e4715f2fdad890e0aface519"
+    }
+  ],
+  "live_receipt": {
+    "file": "artifacts/client455-progress/launch-to-world-focus-efc8f1fa.json",
+    "sha256": "52e5bd9f513d30c60fe0e4f43791d9eaa99a8d6a861ea839d9850f44b44cb1fe"
+  },
+  "private_handoff_removed": true,
+  "server_modified": false,
+  "open": [
+    "Real foreground-window switching and visual flicker comparison",
+    "Launcher GUI and applicable secondary-password route",
+    "Reference startup transition effect timing and presentation"
+  ],
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

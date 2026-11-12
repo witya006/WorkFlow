@@ -52,6 +52,8 @@
 
 ## Validation
 
+- Run playable client checks at 1920×1080 by default. When a Full HD run
+  is unavailable, use at least 1280×720 and record the actual render size.
 - Use targeted checks appropriate to changes. For parsers, keep small reproducible
   examples and verify real inputs, boundaries and malformed data.
 - Keep legacy build reproduction separate from compiler migration and renderer work.

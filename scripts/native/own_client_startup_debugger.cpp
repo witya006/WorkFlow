@@ -72,9 +72,14 @@ int wmain(int argc,wchar_t** argv){
     const bool observeMovement = live && selectionMode &&
         GetEnvironmentVariableA("RF455_OBSERVE_MOVEMENT",movementObservation,sizeof(movementObservation))==1 &&
         movementObservation[0]=='1';
+    char focusObservation[2]{};
+    const bool observeFocus = live && selectionMode &&
+        GetEnvironmentVariableA("RF455_OBSERVE_FOCUS", focusObservation, sizeof(focusObservation)) == 1 &&
+        focusObservation[0] == '1';
+    unsigned focusPhase = 0;
     const bool observeTitle = captureLoginFrame && GetEnvironmentVariableA("RF455_SKIP_TITLE_STAGE",skipTitle,sizeof(skipTitle))==1 &&
                               (skipTitle[0]=='1' || skipTitle[0]=='2');
-    const std::string titleStart = std::string("RF455 Protocol:title-movie-start:") + skipTitle[0] + ":0:0";
+    const std::string titleFrame = std::string("RF455 Protocol:title-movie-capture:") + skipTitle[0] + ":0:0";
     HWND titleWindow = nullptr;
     bool titleEscapeSent = false;
     bool portalAttempted = false;
@@ -84,7 +89,7 @@ int wmain(int argc,wchar_t** argv){
     char combatObservation[2]={};const bool combat=GetEnvironmentVariableA("RF455_OBSERVE_COMBAT",combatObservation,sizeof(combatObservation))==1&&combatObservation[0]=='1';
     char approach[6]{};
     const auto approachLength = combat ? GetEnvironmentVariableA("RF455_COMBAT_APPROACH_MS", approach, sizeof(approach)) : 0;
-    unsigned long selectionMs = combat ? 38000 : observeMovement ? 50000 : observePortal ? 25000 : 15000;
+    unsigned long selectionMs = combat ? 38000 : observeMovement ? 50000 : (observePortal || observeFocus) ? 25000 : 15000;
     if (approachLength && approachLength < sizeof(approach)) {
         char* approachEnd = nullptr;
         const auto approachMs = std::strtoul(approach, &approachEnd, 10);
@@ -208,7 +213,11 @@ int wmain(int argc,wchar_t** argv){
             }
         }else if(event.dwDebugEventCode==OUTPUT_DEBUG_STRING_EVENT){
             const auto& item=event.u.DebugString;if(!item.fUnicode&&item.nDebugStringLength&&item.nDebugStringLength<1024){char text[1024]={};SIZE_T read=0;if(ReadProcessMemory(process.hProcess,item.lpDebugStringData,text,item.nDebugStringLength,&read)&&read==item.nDebugStringLength){text[1023]=0;std::wstring value;for(unsigned char*c=reinterpret_cast<unsigned char*>(text);*c;++c)value.push_back(*c);std::fputs("{\"kind\":\"debug_string\",\"value\":",output);quoted(output,value);std::fputs("}\n",output);
-                if (observeTitle && !titleEscapeSent && text == titleStart) {
+                const std::string receivedTitleEvent = text;
+                const bool skipAtFrame = !observePortal && !observeMovement && receivedTitleEvent == titleFrame;
+                const bool skipAtStart = (observePortal || observeMovement) && receivedTitleEvent ==
+                    std::string("RF455 Protocol:title-movie-start:") + skipTitle[0] + ":0:0";
+                if (observeTitle && !titleEscapeSent && (skipAtFrame || skipAtStart)) {
                     DWORD childPID = 0;
                     GetWindowThreadProcessId(titleWindow, &childPID);
                     const bool valid = IsWindow(titleWindow) && childPID == process.dwProcessId;
@@ -221,6 +230,17 @@ int wmain(int argc,wchar_t** argv){
                 if (observePortal && !portalAttempted && std::string(text) == "RF455 Protocol:position-mode:0:0:0") {
                     portalAttempted = true;
                     portalSendAt = GetTickCount64() + 1000;
+                }
+                if (observeFocus && ((focusPhase == 0 && std::string(text).rfind("RF455 WorldCapture:0:0:", 0) == 0) ||
+                                     (focusPhase == 1 && std::string(text).rfind("RF455 WorldCapture:2:0:", 0) == 0))) {
+                    DWORD owner = 0;
+                    GetWindowThreadProcessId(selectionWindow, &owner);
+                    const bool valid = IsWindow(selectionWindow) && owner == process.dwProcessId;
+                    const bool activate = focusPhase == 1;
+                    const bool sent = valid && PostMessageW(selectionWindow, WM_ACTIVATEAPP, activate, 0);
+                    std::fprintf(output, "{\"kind\":\"world_activation_posted\",\"active\":%s,\"sent\":%s}\n",
+                                 activate ? "true" : "false", sent ? "true" : "false");
+                    ++focusPhase;
                 }
                 if (selectionMode && std::string(text) == "RF455 Protocol:lobby-menu-open:0:0:0") {
                     lobbyMenuOpened = true;

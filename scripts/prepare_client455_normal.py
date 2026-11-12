@@ -615,6 +615,15 @@ def main():
                 if count!=1:raise ValueError('MainApp stage Create boundary changed')
                 raw=raw[:first]+body+raw[last:]
                 raw=b'#include "client455_avatar_stage.h"\r\n'+raw
+                # WinMain RVA 0x3d0ad5 polls the queue regardless of activation.
+                # The activation flag still gates foreground input in GameMainLoop.
+                focus_wait=rb'if\( g_MainApp\.IsActive\(\) \)\s+l_bGotMsg = PeekMessage\( &l_sMsg, NULL, 0U, 0U, PM_REMOVE \);\s+else\s+l_bGotMsg = GetMessage\( &l_sMsg, NULL, 0U, 0U \);'
+                raw,count=re.subn(focus_wait,b'l_bGotMsg = PeekMessage( &l_sMsg, NULL, 0U, 0U, PM_REMOVE );',raw)
+                if count!=1:raise ValueError('WinMain inactive message wait changed')
+                focus_assign=b'm_bIsActive = wParam;'
+                if raw.count(focus_assign)!=1:raise ValueError('WinMain activation observation boundary changed')
+                raw=b'#include "client455_protocol_observation.h"\r\n'+raw.replace(
+                    focus_assign,focus_assign+b'\r\n\t\t\tRF455_ObserveProtocol("window-focus", wParam != 0, 0, 0);')
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'

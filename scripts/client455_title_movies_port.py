@@ -27,6 +27,8 @@ def port_title_movies(raw, relative, native):
     return S_OK;''')
     raw = replace(raw, b'CGP_Title::InputProcess( void )\n{\n\tm_bExit = TRUE;\n\n\treturn TRUE;',
                   b'CGP_Title::InputProcess( void )\n{\n\treturn TRUE;')
+    raw = replace(raw, b'CGP_Title::Render( void )\n{\n\treturn S_OK;',
+                  b'CGP_Title::Render( void )\n{\n    if (m_openingMovies455) m_openingMovies455->Render();\n    return S_OK;')
     raw = replace(raw, b'CGP_Title::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{\n\treturn 0;',
                   b'''CGP_Title::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
@@ -36,6 +38,5 @@ def port_title_movies(raw, relative, native):
         RequestStageExit455();
         return 0xffffffff;
     }
-    if (uMsg == WM_SIZE) m_openingMovies455->Resize();
     return 0;''')
     return raw, True

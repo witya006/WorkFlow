@@ -11,6 +11,23 @@ from client455_tcp_fixture import TcpAcceptanceFixture
 from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources,copy_grade_overlay_inputs,copy_title_movies
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+GAMEPLAY_RESOLUTIONS = ('1920x1080', '1280x720')
+
+
+def stage_render_resolution(path, resolution):
+    if resolution not in GAMEPLAY_RESOLUTIONS:
+        raise ValueError('Unsupported gameplay resolution: ' + resolution)
+    width, height = resolution.split('x')
+    config = path.read_bytes()
+    for key, value in ((b'ScreenXSize', width), (b'ScreenYSize', height)):
+        config, count = re.subn(rb'(?m)^' + key + rb'=\d+(?=\r?$)', key + b'=' + value.encode('ascii'), config)
+        if count != 1:
+            raise ValueError('Missing or repeated render size setting: ' + key.decode('ascii'))
+    path.write_bytes(config)
+
+
 def symbol(mapping,name):
     match=re.search(re.escape(name)+r'\s+([0-9a-fA-F]{8})',mapping)
     if not match:raise ValueError('Missing own symbol:'+name)
@@ -65,7 +82,9 @@ def stage_world_map(client, run, index):
     return records
 
 
-def world_observation_name(walk, camera, monster, combat, base_portal=False, movement=False):
+def world_observation_name(walk, camera, monster, combat, base_portal=False, movement=False, focus=False):
+    if focus:
+        return 'world-focus'
     if base_portal:
         return 'world-base-portal'
     if movement:
@@ -79,12 +98,34 @@ def world_observation_name(walk, camera, monster, combat, base_portal=False, mov
     return 'world-walk' if walk else 'world-observation'
 
 
+def focus_result(events, resolution):
+    activation = [event for event in events if event['kind'] == 'world_activation_posted']
+    debug = [event['value'] for event in events if event['kind'] == 'debug_string']
+    packet_count = 0
+    frame_captured = False
+    if [(event['active'], event['sent']) for event in activation] == [(False, True), (True, True)]:
+        initial = f'RF455 WorldCapture:0:0:{resolution}'
+        inactive = 'RF455 Protocol:window-focus:0:0:0'
+        active = 'RF455 Protocol:window-focus:1:0:0'
+        if initial in debug:
+            after_first = debug[debug.index(initial) + 1:]
+            if inactive in after_first:
+                while_inactive = after_first[after_first.index(inactive) + 1:]
+                if active in while_inactive:
+                    while_inactive = while_inactive[:while_inactive.index(active)]
+                    frame_captured = f'RF455 WorldCapture:2:0:{resolution}' in while_inactive
+                    packet_count = sum(event.startswith('RF455 Protocol:rx:') for event in while_inactive)
+    return {'activation_messages': activation, 'rendered_while_inactive': frame_captured,
+            'packets_while_inactive': packet_count, 'passed': frame_captured and packet_count > 0}
+
+
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
          combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False,
-         observe_movement=False):
+         observe_movement=False, observe_focus=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
     parser.add_argument('--skip-title', choices=('logo', 'prologue'))
+    parser.add_argument('--resolution', choices=GAMEPLAY_RESOLUTIONS, default=GAMEPLAY_RESOLUTIONS[0])
     args=parser.parse_args();loginProbe=args.login_create or args.login_render or args.login_frame;partialCreate=args.create or args.after_create or loginProbe
     if args.skip_title and (not args.login_frame or live_port is not None):
         parser.error('--skip-title requires the offline Login frame probe')
@@ -113,7 +154,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if observe_world:
         if world_map_index is None:raise ValueError('World observation needs explicitly staged live map inputs')
         prefix=world_observation_name(observe_walk, observe_camera, observe_monster, observe_combat,
-                                      observe_base_portal, observe_movement)
+                                      observe_base_portal, observe_movement, observe_focus)
         observation_name=prefix
     if handoff is not None:prefix+='-live'
     if args.nation!='Korea':prefix+='-'+args.nation.lower()
@@ -122,7 +163,10 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     for item in early['lab_inputs']:
         original=WS/item['file'];relative=original.relative_to(oldRoot);copy=run/relative
         if sha(original)!=item['sha256']:raise ValueError('Changed private startup input')
-        copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy,item['sha256'],owned_immutable=original);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
+        copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy,item['sha256'],owned_immutable=original)
+        if relative == Path('R3Engine.ini'):
+            stage_render_resolution(copy, args.resolution)
+        inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy)})
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])
     for name in ['System/shader/Grass1.vsh','System/shader/grass1.vso','System/console.jpg']:
         original=client/name;copy=run/name
@@ -225,11 +269,14 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_SKIP_TITLE_STAGE',None)
     environment.pop('RF455_OBSERVE_BASE_PORTAL',None)
     environment.pop('RF455_OBSERVE_MOVEMENT',None)
+    environment.pop('RF455_OBSERVE_FOCUS', None)
+    environment.pop('RF455_CAPTURE_TITLE', None)
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
     if observe_monster or observe_combat:environment['RF455_CAPTURE_MONSTERS']='1'
     if observe_combat:environment['RF455_OBSERVE_COMBAT']='1'
+    if observe_focus:environment['RF455_OBSERVE_FOCUS']='1'
     if combat_monster_record is not None:environment['RF455_COMBAT_RECORD']=str(combat_monster_record)
     if combat_approach_ms:environment['RF455_COMBAT_APPROACH_MS']=str(combat_approach_ms)
     if live_port is not None:environment['RF455_OBSERVE_PROTOCOL']='1'
@@ -242,7 +289,10 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if args.skip_title:
         environment['RF455_OBSERVE_PROTOCOL']='1'
         environment['RF455_SKIP_TITLE_STAGE']='1' if args.skip_title == 'logo' else '2'
-    if args.login_frame:environment['RF455_CAPTURE_LOGIN']='1';environment['RF455_CAPTURE_LOGIN_DELAY_MS']=str(args.settle_ms)
+    if args.login_frame:
+        environment['RF455_CAPTURE_TITLE'] = '1'
+        environment['RF455_CAPTURE_LOGIN'] = '1'
+        environment['RF455_CAPTURE_LOGIN_DELAY_MS'] = str(args.settle_ms)
     secretFile=run/'System/DefaultSet.tmp';private_handoff_removed=False
     with (contextlib.nullcontext(None) if handoff is not None else TcpAcceptanceFixture()) as transport:
         if handoff is None:
@@ -265,6 +315,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     report['own_entry_sha256']=sha(WS/'inventory/client455-own-entry.json');report['partial_client_create']=partialCreate;report['tcp_fixture']=transport.report() if transport is not None else {'enabled':False};report['tcp_fixture_sha256']=sha(WS/'scripts/client455_tcp_fixture.py')
     if live_port is not None:report['live_server']={'host':'127.0.0.1','port':live_port,'real_launcher_handoff':True,'private_handoff_removed':private_handoff_removed,'full_game_authentication_verified':False}
     report['nation']=args.nation;report['early_startup_file']=earlyFile.relative_to(WS).as_posix();report['early_startup_sha256']=sha(earlyFile)
+    report['requested_resolution'] = args.resolution
     report['lab_font_registration_removed']=fontRegistrationRemoved
     report['shared_asset_staging']=staging_stats();report['asset_staging_script_sha256']=sha(WS/'scripts/client455_asset_staging.py')
     report['character_owner']=next((e for e in events if e['kind']=='character_owner'),{})
@@ -286,10 +337,14 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         report['captured_frame']={'file':png.relative_to(WS).as_posix(),'sha256':sha(png)} if png.exists() else None
         report['capture_result']=json.loads(meta.read_text()) if meta.exists() else None
         report['capture_metadata']={'file':meta.relative_to(WS).as_posix(),'sha256':sha(meta)} if meta.exists() else None
+        capture = report['capture_result']
+        report['rendered_resolution'] = f"{capture['width']}x{capture['height']}" if capture else None
         report['first_login_frame_captured']=bool(report['first_login_frame_completed'] and report['captured_frame'] and report['capture_result'] and report['capture_result']['result']>=0)
         report['login_frame_captured']=report['first_login_frame_captured']
         report['legacy_first_frame_field_names_are_aliases']=True
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
+        report['title_frames'] = [{'file': frame.relative_to(WS).as_posix(), 'sha256': sha(frame)}
+                                  for frame in (run / 'title-logo.png', run / 'title-prologue.png') if frame.is_file()]
     if select_character:
         name='client455-character-selection-native';report['scope']='Actual own Login then addressed Enter key in own child window;records real selection protocol andfirst following failure,not world acceptance'
         report['selection_input']=[e for e in events if e['kind'] in ['lobby_start_key_posted','selection_key_posted','selection_observation_end']]
@@ -301,6 +356,13 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
                          if observe_camera else 'Ordinary own-client world render and passive state after accepted position mode')
         report['world_observations']=[e['value'] for e in events if e['kind']=='debug_string'
                                       and e['value'].startswith(('RF455 WorldSample:', 'RF455 WorldCapture:'))]
+        report['world_rendered_resolutions'] = [
+            match[1] for event in report['world_observations']
+            if (match := re.fullmatch(r'RF455 WorldCapture:\d+:0:(\d+x\d+)', event))
+        ]
+        if observe_focus:
+            report['scope'] = 'Ordinary own-client world and network after addressed Win32 activation messages'
+            report['world_activation'] = focus_result(events, args.resolution)
         if observe_base_portal:
             report['scope']='Ordinary own-client NeutralB with one addressed inventory use event for bag 1, slot 1'
             report['base_portal_input']=[e for e in events if e['kind']=='base_portal_inventory_posted']
@@ -324,7 +386,20 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     (WS/report_dir/f'{name}.json').write_text(json.dumps(report,indent=2)+'\n')
     display={'summary':summary,'config':config,'device':device,'character_owner':report['character_owner'],'exceptions':exceptions,'lab':run.relative_to(WS).as_posix()}
     if loginProbe:display.update(stage_state=report['stage_state'],reached_first_login=report['reached_first_login'],exceptions=[e for e in exceptions if not e.get('first_chance')])
+    if args.login_frame:
+        display.update(requested_resolution=args.resolution, rendered_resolution=report['rendered_resolution'])
+    if observe_world:
+        display['world_rendered_resolutions'] = report['world_rendered_resolutions']
+    if observe_focus:
+        display['world_activation'] = report['world_activation']
     print(json.dumps(display))
-    if loginProbe and (not report['reached_first_login'] or (args.login_frame and not report['first_login_frame_captured'])):raise SystemExit(1)
+    if loginProbe and not report['reached_first_login']:
+        raise SystemExit(1)
+    if args.login_frame and (not report['first_login_frame_captured'] or report['rendered_resolution'] != args.resolution):
+        raise SystemExit(1)
+    if observe_world and set(report['world_rendered_resolutions']) != {args.resolution}:
+        raise SystemExit(1)
+    if observe_focus and not report['world_activation']['passed']:
+        raise SystemExit(1)
     return report
 if __name__=='__main__':main()
