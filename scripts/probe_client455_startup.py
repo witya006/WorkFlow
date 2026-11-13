@@ -24,8 +24,13 @@ def main():
     if mainVa-base!=int(entry['symbols']['main']['rva'],16):raise ValueError('Own WinMain differs from decoded audit')
     toolroot=WS/'work/tools/own-client-startup';toolroot.mkdir(parents=True,exist_ok=True);cpp=WS/'scripts/native/own_client_startup_debugger.cpp';debugger=toolroot/'own-startup-debugger.exe';batch=toolroot/'build.cmd';log=toolroot/'build.txt';dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat'
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > "{toolroot/"environment.txt"}" 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /EHsc /std:c++14 /W3 "{cpp}" /Fe"{debugger}" /Fo"{toolroot/"debugger.obj"}" /link /SUBSYSTEM:CONSOLE > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
-    previous=WS/'inventory/client455-startup-native.json';cached=json.loads(previous.read_text()).get('debugger',{}) if previous.exists() else {}
-    if not(debugger.is_file() and cached.get('source_sha256')==sha(cpp) and cached.get('sha256')==sha(debugger)):
+    source_hash = sha(cpp)
+    current_hash = sha(debugger) if debugger.is_file() else None
+    reports = (WS/'inventory').glob('client455-startup*-native.json')
+    reusable = any(cached.get('file') == debugger.relative_to(WS).as_posix()
+                   and cached.get('source_sha256') == source_hash and cached.get('sha256') == current_hash
+                   for report in reports if (cached := json.loads(report.read_text()).get('debugger')))
+    if not reusable:
         result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=toolroot,creationflags=subprocess.CREATE_NO_WINDOW)
         if result.returncode:raise ValueError('Own debugger build:'+str(log))
     parent=WS/'work/m9'/sha(source)[:8];parent.mkdir(parents=True,exist_ok=True);index=1

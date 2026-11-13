@@ -14,6 +14,7 @@ def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
 GAMEPLAY_RESOLUTIONS = ('1920x1080', '1280x720')
+LIVE_LAUNCHER_NATIONS = {'Taiwan': 8, 'Russia': 7}
 
 
 def stage_render_resolution(path, resolution):
@@ -144,7 +145,7 @@ def entry_result(events, resolution):
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,
          observe_world=False,observe_walk=False,observe_camera=False,observe_monster=False,observe_combat=False,
          combat_monster_record=None,combat_approach_ms=0,observe_base_portal=False,
-         observe_movement=False, observe_focus=False, observe_entry=False):
+         observe_movement=False, observe_focus=False, observe_entry=False, capture_lobby=False):
     parser=argparse.ArgumentParser();group=parser.add_mutually_exclusive_group();group.add_argument('--create',action='store_true');group.add_argument('--after-create',action='store_true');group.add_argument('--login-create',action='store_true');group.add_argument('--login-render',action='store_true');group.add_argument('--login-frame',action='store_true');parser.add_argument('--settle-ms',type=int,default=0);parser.add_argument('--with-lobby',action='store_true');parser.add_argument('--nation',default='Korea')
     parser.add_argument('--skip-title', choices=('logo', 'prologue'))
     parser.add_argument('--resolution', choices=GAMEPLAY_RESOLUTIONS, default=GAMEPLAY_RESOLUTIONS[0])
@@ -154,7 +155,12 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if observe_base_portal and (live_port is None or not select_character or world_map_index != 0):
         raise ValueError('Base portal observation requires the live NeutralB inventory scenario')
     if not 0<=args.settle_ms<=8000 or (args.settle_ms and not args.login_frame) or (args.with_lobby and not loginProbe):raise ValueError('Invalid Login observation options')
-    if (handoff is None)!=(live_port is None) or (handoff is not None and (len(handoff)!=93 or live_port!=27830 or args.nation!='Taiwan')):raise ValueError('Invalid live handoff observation')
+    if (handoff is None) != (live_port is None):
+        raise ValueError('Live launcher observation requires a handoff and port')
+    if handoff is not None:
+        nation_id = LIVE_LAUNCHER_NATIONS.get(args.nation)
+        if len(handoff) != 93 or live_port != 27830 or nation_id is None or int.from_bytes(handoff[91:93], 'little') != (nation_id ^ 0x32d7):
+            raise ValueError('Invalid live handoff observation')
     countries=json.loads((WS/'inventory/client455-nation-paths-reference.json').read_text())['references'][0]['rows'];country=next((row for row in countries if row['setting']==args.nation),None)
     if country is None:raise ValueError('Unknown exact country setting:'+args.nation)
     earlyFile=WS/'inventory'/('client455-startup-native.json' if args.nation=='Korea' else f'client455-startup-{args.nation.lower()}-native.json')
@@ -184,6 +190,10 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     run=parent/f'{prefix}{index:03d}';run.mkdir();oldRoot=(WS/early['staged_executable']).parent;inputs=[]
     for item in early['lab_inputs']:
         original=WS/item['file'];relative=original.relative_to(oldRoot);copy=run/relative
+        if relative == Path('checkpoint-label.txt'):
+            continue
+        if handoff is not None and relative in (Path('launcher-commandline.txt'), Path('System/DefaultSet.tmp')):
+            continue
         if sha(original)!=item['sha256']:raise ValueError('Changed private startup input')
         copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy,item['sha256'],owned_immutable=original)
         if relative == Path('R3Engine.ini'):
@@ -228,6 +238,13 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
                 copy=run/original.relative_to(client)
                 if any(row['file']==copy.relative_to(WS).as_posix() for row in inputs):continue
                 stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+        if args.nation == 'Russia':
+            # The installed Russian pack has no system.spr. Stage the fallback
+            # in its original folder so the client's normal lookup is exercised.
+            relative = Path('SpriteImage/ko-kr/system.spr')
+            original, copy = client / relative, run / relative
+            stage_asset(original, copy)
+            inputs.append({'file': relative.as_posix(), 'sha256': sha(copy), 'original': str(original)})
     if observe_combat:
         # Stock arrows for the NeutralB bow scenario and the damage atlas.
         for name in ('Effect/EffectEntity6.rpk', 'Effect/effectfont.dds'):
@@ -300,6 +317,8 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     environment.pop('RF455_OBSERVE_FOCUS', None)
     environment.pop('RF455_CAPTURE_TITLE', None)
     environment.pop('RF455_CAPTURE_SELECTION_FADE', None)
+    if capture_lobby:
+        environment['RF455_CAPTURE_LOBBY_CAMERA'] = '1'
     if observe_world:environment['RF455_CAPTURE_WORLD']='1'
     if observe_walk:environment['RF455_OBSERVE_WALK']='1'
     if observe_camera:environment['RF455_OBSERVE_CAMERA']='1'
@@ -377,6 +396,9 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
         report['observation_delay_ms']=args.settle_ms;report['lobby_inputs_staged']=args.with_lobby
         report['title_frames'] = [{'file': frame.relative_to(WS).as_posix(), 'sha256': sha(frame)}
                                   for frame in (run / 'title-logo.png', run / 'title-prologue.png') if frame.is_file()]
+        if capture_lobby:
+            report['lobby_frames'] = [{'file': frame.relative_to(WS).as_posix(), 'sha256': sha(frame)}
+                                      for frame in sorted(run.glob('lobby-camera-*.png'))]
     if select_character:
         name='client455-character-selection-native';report['scope']='Actual own Login then addressed Enter key in own child window;records real selection protocol andfirst following failure,not world acceptance'
         report['selection_input']=[e for e in events if e['kind'] in ['lobby_start_key_posted','selection_key_posted','selection_observation_end']]

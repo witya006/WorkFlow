@@ -42,7 +42,7 @@ def receive(peer,size):
     return bytes(out)
 
 
-def marshal_v4x(account,identifier,key):
+def marshal_v4x(account,identifier,key,nation=8):
     if len(key)!=16:raise ValueError('Missing live world key')
     raw=bytearray(93);address=struct.unpack('<I',socket.inet_aton('127.0.0.1'))[0]
     struct.pack_into('<I',raw,0,address^0xcb9c4b3a);struct.pack_into('<H',raw,4,27830^0x4fb6)
@@ -51,7 +51,7 @@ def marshal_v4x(account,identifier,key):
     masks=[0xcfcf22e6,0x5bbcde6f,0xacdf5eda,0xbccd1b37]
     for i,mask in enumerate(masks):struct.pack_into('<I',raw,61+4*i,struct.unpack_from('<I',key,4*i)[0]^mask)
     struct.pack_into('<H',raw,77,0^0x4b3a);struct.pack_into('<I',raw,79,account^0xc89c183a)
-    struct.pack_into('<I',raw,83,0xc89c183a);struct.pack_into('<H',raw,91,8^0x32d7)
+    struct.pack_into('<I',raw,83,0xc89c183a);struct.pack_into('<H',raw,91,nation^0x32d7)
     return bytes(raw)
 
 
@@ -60,6 +60,12 @@ def selfcheck():
     sample=b'\1'+struct.pack('<I',7)+string('abc')+string('')+string('rf1:'+bytes(range(16)).hex())
     result=auth_reply(sample)
     assert result[:4]==(True,7,'abc','') and result[4]==bytes(range(16))
+    default_handoff = marshal_v4x(7, 'abc', result[4])
+    russian_handoff = marshal_v4x(7, 'abc', result[4], 7)
+    assert len(default_handoff) == len(russian_handoff) == 93
+    assert default_handoff[:91] == russian_handoff[:91]
+    assert struct.unpack_from('<H', default_handoff, 91)[0] == (8 ^ 0x32d7)
+    assert struct.unpack_from('<H', russian_handoff, 91)[0] == (7 ^ 0x32d7)
     for malformed in [b'',sample[:4],sample[:6],sample[:-1],sample+b'\0']:
         try:auth_reply(malformed)
         except ValueError:pass
@@ -78,7 +84,9 @@ def main():
     observations.add_argument('--observe-movement',action='store_true')
     observations.add_argument('--observe-focus', action='store_true')
     observations.add_argument('--observe-entry', action='store_true')
-    from probe_client455_device_startup import GAMEPLAY_RESOLUTIONS
+    from probe_client455_device_startup import GAMEPLAY_RESOLUTIONS, LIVE_LAUNCHER_NATIONS
+    parser.add_argument('--nation', choices=LIVE_LAUNCHER_NATIONS, default='Taiwan')
+    parser.add_argument('--capture-lobby', action='store_true')
     parser.add_argument('--resolution', choices=GAMEPLAY_RESOLUTIONS, default=GAMEPLAY_RESOLUTIONS[0])
     parser.add_argument('--combat-monster-record',type=int)
     parser.add_argument('--combat-approach-ms',type=int,default=0)
@@ -125,17 +133,19 @@ def main():
         script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),credentials_persisted=False,raw_packets_persisted=False,
         game_executable_started=False,server_files_modified=False,full_RF_protocol_verified=False,M6='OPEN',M9='OPEN')
     if args.own_login and accepted and complete:
-        handoff=marshal_v4x(account,identifier,key);del data,account,identifier,message,key
+        handoff=marshal_v4x(account,identifier,key,LIVE_LAUNCHER_NATIONS[args.nation]);del data,account,identifier,message,key
         import probe_client455_device_startup
         old_arguments=sys.argv
         try:
-            sys.argv=['probe_client455_device_startup.py','--login-frame','--settle-ms','8000','--with-lobby','--nation','Taiwan','--resolution',args.resolution]
-            report_file='inventory/client455-character-selection-live-taiwan-native.json' if args.select_character else 'inventory/client455-login-frame-live-taiwan-native.json'
+            sys.argv=['probe_client455_device_startup.py','--login-frame','--settle-ms','8000','--with-lobby','--nation',args.nation,'--resolution',args.resolution]
+            locale=args.nation.lower()
+            report_name='character-selection' if args.select_character else 'login-frame'
+            report_file=f'inventory/client455-{report_name}-live-{locale}-native.json'
             if observe_world:
                 observation=probe_client455_device_startup.world_observation_name(
                     observe_walk, args.observe_camera, args.observe_monster, args.observe_combat,
                     args.observe_base_portal, args.observe_movement, args.observe_focus, args.observe_entry)
-                report_file=f'artifacts/client455-progress/client455-{observation}-live-taiwan-native.json'
+                report_file=f'artifacts/client455-progress/client455-{observation}-live-{locale}-native.json'
             try:
                 game = probe_client455_device_startup.main(
                     handoff=handoff, live_port=27830, select_character=args.select_character,
@@ -143,7 +153,8 @@ def main():
                     observe_camera=args.observe_camera, observe_monster=args.observe_monster,
                     observe_combat=args.observe_combat, combat_monster_record=args.combat_monster_record,
                     combat_approach_ms=args.combat_approach_ms, observe_base_portal=args.observe_base_portal,
-                    observe_movement=args.observe_movement, observe_focus=args.observe_focus, observe_entry=args.observe_entry)
+                    observe_movement=args.observe_movement, observe_focus=args.observe_focus, observe_entry=args.observe_entry,
+                    capture_lobby=args.capture_lobby)
                 game_probe_passed = True
             except SystemExit as error:
                 if error.code != 1:

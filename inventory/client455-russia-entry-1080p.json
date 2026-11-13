@@ -1,0 +1,228 @@
+{
+  "status": "VERIFIED_RUSSIAN_ENTRY_AND_CURRENT_LOGO_GEOMETRY",
+  "executable": {
+    "file": "work/m9/52632903/world-entry-live-russia002/RF_Online.bin",
+    "sha256": "52632903c4da9fae97afe54ea592e148ad04ba3d9839a1c5547522c2bec818d2",
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4990"
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x48264f",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 304,
+          "role": "Menu logo layout and draw",
+          "sha256": "0839c3f9597518c77d7f2a787ee07075cd4e17fb8ad9174d2ac6ff0083976d88"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "role": "Menu logo DDS then TGA fallback",
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 203,
+          "role": "Title video draws to the client rectangle",
+          "sha256": "a987797aaa2cad11eb1737bb14952ace1ab831e11a82c4738dd9022195bce7f1"
+        },
+        {
+          "rva": "0x3a93d1",
+          "bytes": 38,
+          "role": "Selection panel dimensions",
+          "sha256": "8f75dd7e5447e2a4e55c0feac62839b194b44691bbdbfc88c0016d98570cb8a1"
+        },
+        {
+          "rva": "0x3a9716",
+          "bytes": 48,
+          "role": "Selection panel label placement",
+          "sha256": "607165729c8df8a9fa58b55bf91a00a0c7f224e43088f395f9923148157ee80c"
+        },
+        {
+          "rva": "0x3aaa80",
+          "bytes": 224,
+          "role": "Localized currency and 64-bit formatting",
+          "sha256": "9dde702cc9a6c84bb0460c32d9ca68882e53e98bbe54d0fa8fc7f1531eaea530"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x48264f",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 304,
+          "role": "Menu logo layout and draw",
+          "sha256": "0839c3f9597518c77d7f2a787ee07075cd4e17fb8ad9174d2ac6ff0083976d88"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "role": "Menu logo DDS then TGA fallback",
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 203,
+          "role": "Title video draws to the client rectangle",
+          "sha256": "a987797aaa2cad11eb1737bb14952ace1ab831e11a82c4738dd9022195bce7f1"
+        },
+        {
+          "rva": "0x3a93d1",
+          "bytes": 38,
+          "role": "Selection panel dimensions",
+          "sha256": "8f75dd7e5447e2a4e55c0feac62839b194b44691bbdbfc88c0016d98570cb8a1"
+        },
+        {
+          "rva": "0x3a9716",
+          "bytes": 48,
+          "role": "Selection panel label placement",
+          "sha256": "607165729c8df8a9fa58b55bf91a00a0c7f224e43088f395f9923148157ee80c"
+        },
+        {
+          "rva": "0x3aaa80",
+          "bytes": 224,
+          "role": "Localized currency and 64-bit formatting",
+          "sha256": "9dde702cc9a6c84bb0460c32d9ca68882e53e98bbe54d0fa8fc7f1531eaea530"
+        }
+      ]
+    }
+  ],
+  "locale": "Russia",
+  "windowed": true,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "logo": {
+    "legacy_corner_reproduction": {
+      "executable": {
+        "file": "work/m9/8bd845ae/login-frame-live-taiwan002/RF_Online.bin",
+        "sha256": "8bd845ae42beafc3a4f9a023b34f20f7f00212af1b440230e17d9cc385691de8",
+        "architecture": "x86",
+        "image_base": "0x400000",
+        "entry_rva": "0x1a3ff0"
+      },
+      "frame": {
+        "file": "work/m9/8bd845ae/login-frame-live-taiwan002/login-frame.png",
+        "sha256": "9ec89f1fbbfbd3cb46d64c634e2d651556420691572cad208d45246bdff00344",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "draw_size": [
+        256,
+        256
+      ],
+      "location": "lower left",
+      "removed_by_commit": "57c41d6"
+    },
+    "menu_source": {
+      "file": "work/m9/52632903/world-entry-live-russia002/System/titlelogo.tga",
+      "sha256": "1993b6d7417daec2aed2aa1babdbc02586f1bf757f6aa7580dd3785296d0b2f1",
+      "size": [
+        1600,
+        850
+      ]
+    },
+    "reference_rules": [
+      "DDS first and TGA fallback",
+      "read texture level zero dimensions",
+      "scale down only below min(texture width, 1600)",
+      "center horizontally with texture center at 43% of screen height"
+    ],
+    "reporting_run_identified": false,
+    "physical_display_observed": false
+  },
+  "character_selection": {
+    "before_executable": {
+      "file": "work/m9/aef55aca/world-entry-live-russia002/RF_Online.bin",
+      "sha256": "aef55acaf5d59ccede6ae680d4ac571cb6a1ab9fe722bab5d4f71fb751819452",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x1a4810"
+    },
+    "before_frame": {
+      "file": "work/m9/aef55aca/world-entry-live-russia002/lobby-camera-selection.png",
+      "sha256": "45988dd6aab823a608e9a89ae394c47af4da76d35229675365cdc0d790695967",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "observed": "Long Russian balance overflowed the right panel before the change.",
+    "own_client_adaptation": "Fit only overflowing currency labels to the 135px text area; retain the 161px panel and full 64-bit value.",
+    "reference_scaling_confirmed": false
+  },
+  "frames": {
+    "ccr": {
+      "file": "work/m9/52632903/world-entry-live-russia002/title-logo.png",
+      "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "menu": {
+      "file": "work/m9/52632903/world-entry-live-russia002/lobby-camera-menu.png",
+      "sha256": "a46d105b24a07f4d5b3e5d1e8ef0cc2eca7796ab80d80ff03d566f10dd3c285a",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "character_selection": {
+      "file": "work/m9/52632903/world-entry-live-russia002/lobby-camera-selection.png",
+      "sha256": "a44ef8abd682e423f32abd6f1d9ac10249b2b1744f28450c072647c1828ec0ad",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "world": {
+      "file": "work/m9/52632903/world-entry-live-russia002/world-post-position.png",
+      "sha256": "e5f49ba5d472b7a89fc0f1b50ca16409e5815eb0df4ae191f8b799a6492846ba",
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "world": {
+    "map": "NeutralB",
+    "first_controllable_frame": true
+  },
+  "verification": {
+    "auth_receipt": {
+      "file": "artifacts/client455-progress/russia-launch-1080p/52632903-launcher.json",
+      "sha256": "b7429051cf73ebb87ceb353e00e28421c5048c6091a4811e5a8acb26d747b81e"
+    },
+    "world_receipt": {
+      "file": "artifacts/client455-progress/russia-launch-1080p/52632903-world-entry.json",
+      "sha256": "49b6c54661cb8b330dab1f85d7b543fb63189e47bd7d036c3545896b3f418dfe"
+    },
+    "ordered_events": [
+      "RF455 Protocol:title-movie-draw:1:1920:1080",
+      "RF455 Protocol:title-movie-end:1:1:0",
+      "RF455 Protocol:title-movie-draw:2:1920:1080",
+      "RF455 Protocol:title-movie-skip:2:27:0",
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 Protocol:selection-world-handoff:1540:0:0"
+    ],
+    "original_launcher_executed": false,
+    "reference_binary_executed": false,
+    "server_files_modified": false
+  }
+}

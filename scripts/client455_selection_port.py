@@ -7,12 +7,27 @@ from client455_trade_ore_port import patch_method, replace
 
 def port_selection(raw,relative,native,section):
     if relative == 'userinterface/loginwindow/guiselectcharacter.h':
-        return replace(raw, b'SetCharInfo_Money( DWORD pi_dwDalant, DWORD pi_dwGold, BYTE pi_byRaceType )',
-                       b'SetCharInfo_Money(__int64 dalant, __int64 gold, BYTE race)'), True
+        raw = replace(raw, b'SetCharInfo_Money( DWORD pi_dwDalant, DWORD pi_dwGold, BYTE pi_byRaceType )',
+                      b'SetCharInfo_Money(__int64 dalant, __int64 gold, BYTE race)')
+        raw = replace(raw, b'\tCGUIText\t\tm_cDalantStr;\n\tCGUIText\t\tm_cGoldStr;', b'''    class CurrencyLabel : public CGUIText {
+    public:
+        void SetMaximumWidth(LONG width) { maximumWidth_ = width; }
+        BOOL Draw() override;
+
+    private:
+        LONG maximumWidth_ = 0;
+    };
+    CurrencyLabel m_cDalantStr;
+    CurrencyLabel m_cGoldStr;''')
+        return raw, True
     if relative == 'userinterface/loginwindow/guiselectcharacter.cpp':
         raw = b'#include "client455_language.h"\n#include "client455_selection.h"\n' + raw
         raw = replace(raw, b'else if( event.source == &m_cDeleteButton )',
                       b'else if (event.source == &m_cDeleteButton && RF455_SelectedCharacterSlotOccupied())')
+        raw = replace(raw, b'\tm_cRCharInfoBoard.SetSize( 161, 93 );',
+                      b'\tm_cRCharInfoBoard.SetSize( 161, 93 );\n'
+                      b'\tm_cDalantStr.SetMaximumWidth(m_cRCharInfoBoard.m_ptSize.x - 2 * 13);\n'
+                      b'\tm_cGoldStr.SetMaximumWidth(m_cRCharInfoBoard.m_ptSize.x - 2 * 13);')
         raw = re.sub(rb'(m_c(?:Prev|Next|Create|Delete|Exit)Button)\.SetLabel\( "[^"\n]*" \);',
                      lambda match: match[1] + b'.SetLabel(const_cast<char*>(RF455_GetNormalLanguagePack()->get(' + {
                          b'm_cPrevButton': b'0x4b1', b'm_cNextButton': b'0x4b2', b'm_cCreateButton': b'0x48f',
