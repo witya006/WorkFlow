@@ -1,4 +1,5 @@
 #include "client455_nation_paths.h"
+#include "client455_multisampling.h"
 #include "client455_protocol_observation.h"
 #include "R3Sound.h"
 #include "r3d3d8.h"
@@ -127,7 +128,7 @@ private:
         if (SUCCEEDED(result)) result = target->GetDesc(&desc);
         if (SUCCEEDED(result)) result = device.CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format,
                                                                            D3DPOOL_SYSTEMMEM, &image, nullptr);
-        if (SUCCEEDED(result)) result = device.GetRenderTargetData(target.Get(), image.Get());
+        if (SUCCEEDED(result)) result = RF455_ReadRenderTarget(device, *target.Get(), *image.Get());
         if (SUCCEEDED(result)) {
             const char* file = stage_ == 1 ? "title-logo.png" : "title-prologue.png";
             result = D3DXSaveSurfaceToFileA(file, D3DXIFF_PNG, image.Get(), nullptr, nullptr);

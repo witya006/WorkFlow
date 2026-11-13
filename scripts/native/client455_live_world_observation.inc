@@ -1,5 +1,6 @@
 // Own-client samples after the accepted starting-position response.
 #include <d3dx9.h>
+#include "client455_multisampling.h"
 
 LPDIRECT3DDEVICE9 GetD3dDevice();
 
@@ -20,7 +21,7 @@ static RF455WorldCaptureResult RF455_SaveWorldFrame(const char* filename) {
         result = device->CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format,
                                                      D3DPOOL_SYSTEMMEM, &memory, nullptr);
     }
-    if (SUCCEEDED(result)) result = device->GetRenderTargetData(target, memory);
+    if (SUCCEEDED(result)) result = RF455_ReadRenderTarget(*device, *target, *memory);
     if (SUCCEEDED(result)) {
         result = D3DXSaveSurfaceToFileA(filename, D3DXIFF_PNG, memory, nullptr, nullptr);
     }

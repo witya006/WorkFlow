@@ -1,0 +1,100 @@
+{
+  "status": "MSAA_RENDERING_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "8bc138af99be84e5f9ebf0280152e55021a34d3e2824fb3611d15464d9174457",
+    "bytes": 2535424,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a5350",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "configuration": "RenderState/MSAA",
+  "policy": "4x by default; use 2x when required; use 0x when unsupported or disabled",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "windowed": true,
+  "hardware_geometry_and_reset": {
+    "results": {
+      "file": "work/msaa455/results.txt",
+      "sha256": "89284d39f08850c511a94e7d35d996b85addfaa8655a5e2eb01e6992a8697fca"
+    },
+    "cases": [
+      {
+        "requested": 0,
+        "color_samples": 0,
+        "depth_samples": 0,
+        "partial_coverage_pixels": 0
+      },
+      {
+        "requested": 2,
+        "color_samples": 2,
+        "depth_samples": 2,
+        "partial_coverage_pixels": 485
+      },
+      {
+        "requested": 4,
+        "color_samples": 4,
+        "depth_samples": 4,
+        "partial_coverage_pixels": 655
+      },
+      {
+        "requested": 0,
+        "color_samples": 0,
+        "depth_samples": 0,
+        "partial_coverage_pixels": 0
+      }
+    ],
+    "comparison": {
+      "file": "work/msaa455/msaa-comparison.png",
+      "sha256": "ba683010fb3333854244adb2fa659b975634fa31abf623fd505846c5b061a722"
+    }
+  },
+  "live_russia": {
+    "receipt": {
+      "file": "artifacts/client455-progress/client455-world-entry-live-russia-native.json",
+      "sha256": "3c9e4ffe1217ea49406b2b68ff1ead6434ad91bce46ff98b9f3598c7a3c5799a"
+    },
+    "events": {
+      "file": "work/m9/8bc138af/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "274648952d6016ac1f5654b2ced531feb9cdc6e031a507c88aa29d344b8b4929"
+    },
+    "map": "NeutralB",
+    "input_enabled": true,
+    "ccr_average_error_vs_full_client_stretch": 0.0874,
+    "frames": {
+      "title-logo.png": {
+        "file": "work/m9/8bc138af/world-entry-live-russia001/title-logo.png",
+        "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+      },
+      "title-prologue.png": {
+        "file": "work/m9/8bc138af/world-entry-live-russia001/title-prologue.png",
+        "sha256": "024c81ae01e2fefd65d3d065cfdd7b93b93420bce05be929a7ddf57c6f54038a"
+      },
+      "lobby-camera-menu.png": {
+        "file": "work/m9/8bc138af/world-entry-live-russia001/lobby-camera-menu.png",
+        "sha256": "a91cfffc0aeec433ee89e78abfc7a281aaddfb6935ca5ca622222e0e29b6d363"
+      },
+      "lobby-camera-selection.png": {
+        "file": "work/m9/8bc138af/world-entry-live-russia001/lobby-camera-selection.png",
+        "sha256": "70fd65e99ab159e3a9627846a1662dc1127936dd0a618e11c73c9070fd9b73a2"
+      },
+      "world-post-position-settled.png": {
+        "file": "work/m9/8bc138af/world-entry-live-russia001/world-post-position-settled.png",
+        "sha256": "6af0df5208e7a720edcad51587b245ba449b1ecdf6cdc0b112d089a58e1d1744"
+      }
+    }
+  },
+  "unsupported_device_physical_test": false,
+  "exclusive_fullscreen_test": false,
+  "alpha_texture_edge_parity_claimed": false,
+  "visible_window_flicker_verified": false
+}

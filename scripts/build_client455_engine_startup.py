@@ -112,6 +112,7 @@ def main():
         elif filename=='r3d3dapp.cpp':
             from client455_d3d9_edits import replace
 
+            raw = b'#include "client455_multisampling.h"\r\n' + raw
             # 455's ordinary window has a caption and minimize button, with a fixed client size.
             raw = replace(raw, b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_THICKFRAME|',
                           b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|')
@@ -120,6 +121,27 @@ def main():
             raw = replace(raw, b'AdjustWindowRect( &rc, m_dwWindowStyle, TRUE );',
                           b'const HMENU menu = ' + menu + b';\r\n'
                           b'        AdjustWindowRect( &rc, m_dwWindowStyle, menu != NULL );')
+            raw = replace(raw, b'    // Create the device\n    hr = m_pD3D->CreateDevice(',
+                          b'''    m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
+                                                        pDeviceInfo->DeviceType, m_d3dpp);
+    // Create the device
+    hr = m_pD3D->CreateDevice(''')
+            raw = replace(raw, b'&m_pd3dDevice );\n    if( SUCCEEDED(hr) )', b'''&m_pd3dDevice );
+    if (FAILED(hr) && m_d3dpp.MultiSampleType != D3DMULTISAMPLE_NONE) {
+        m_d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
+        hr = m_pD3D->CreateDevice(m_dwAdapter, pDeviceInfo->DeviceType,
+                                 m_hWndFocus, pModeInfo->dwBehavior, &m_d3dpp, &m_pd3dDevice);
+    }
+    if( SUCCEEDED(hr) )''')
+            raw = replace(raw, b'    if( FAILED( hr = m_pd3dDevice->Reset( &m_d3dpp ) ) )\n        return hr;', b'''    const auto& adapter = m_Adapters[m_dwAdapter];
+    m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
+        adapter.devices[adapter.dwCurrentDevice].DeviceType, m_d3dpp);
+    hr = m_pd3dDevice->Reset(&m_d3dpp);
+    if (FAILED(hr) && hr != D3DERR_DEVICELOST && m_d3dpp.MultiSampleType != D3DMULTISAMPLE_NONE) {
+        m_d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
+        hr = m_pd3dDevice->Reset(&m_d3dpp);
+    }
+    if (FAILED(hr)) return hr;''')
         elif filename=='r3text.cpp':
             anchor=b'static CR3Font stCR3Font;'
             if raw.count(anchor)!=1:raise ValueError('Legacy active text boundary changed')
@@ -365,6 +387,7 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     report['camera']={name:sha(WS/'scripts/native'/name) for name in ['client455_camera.h','client455_camera_load.inc','client455_camera_play.inc']}
     report['fullscreen_effect']={name:sha(WS/'scripts/native'/name) for name in ['client455_fullscreen_effect.h','client455_fullscreen_motion.inc']}
     report['scene_capture']={name:sha(WS/'scripts/native'/name) for name in ['client455_scene_capture.h','client455_scene_capture.inc']}
+    report['multisampling']=sha(WS/'scripts/native/client455_multisampling.h')
     report['movie_state']={name:sha(WS/'scripts/native'/name) for name in ['client455_movie_state.h','client455_movie_state.inc','client455_clear_frame.inc']}
     report['rvp_runtime']={name:sha(WS/'scripts/native'/name) for name in ['client455_rvp_runtime.h','client455_rvp_engine.inc']}
     report['camera_header_overlay']={'file':ownedHeader.relative_to(WS).as_posix(),'sha256':sha(ownedHeader),'original':cameraHeader.relative_to(WS).as_posix(),'original_sha256':sha(cameraHeader)}

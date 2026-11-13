@@ -267,9 +267,18 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if args.with_lobby:
         inputs += copy_lobby_audio(client, run)
         world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
+        # The two particle scripts referenced by lobby.ebp and their model share this archive.
+        lobby_particles = 'map/entity/mapentity1.rpk'
+        staged = {item['file'].lower() for item in inputs}
         for row in case['archives']:
-            if not row['path'].lower().startswith('map/lobby/'):continue
-            original=client/row['path'];copy=run/row['path'];owned=WS/'work/world455-inputs'/row['path'];stage_asset(original,copy,row['sha256'],owned_immutable=owned if owned.is_file() else None);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'original':str(original)})
+            path = row['path']
+            if not path.lower().startswith('map/lobby/') and path.lower() != lobby_particles:
+                continue
+            original, copy, owned = client / path, run / path, WS / 'work/world455-inputs' / path
+            relative = copy.relative_to(WS).as_posix()
+            if relative.lower() not in staged:
+                stage_asset(original, copy, row['sha256'], owned_immutable=owned if owned.is_file() else None)
+                inputs.append({'file': relative, 'sha256': row['sha256'], 'original': str(original)})
         logo = 'titlelogocn' if country['id'] == 2 else 'titlelogo'
         for extension in ('.dds', '.tga'):
             relative = Path('System') / (logo + extension)

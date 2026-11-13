@@ -1,0 +1,120 @@
+{
+  "status": "STOCK_TAIWAN_LOBBY_PARTICLES_RENDERED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7691aeb7e62ec6160be47ac6e8804d3e3f690f40c34a152486d02a4b75e21b27",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "user_reference_frame": {
+    "file": "artifacts/client455-progress/lobby-particles-7691aeb7/reference-user-taiwan.png",
+    "sha256": "6a357d4a6ee5a95c394dd941cf928b15db7d74f2b38bd4922e3b98ad9a827c9b",
+    "size": [
+      1922,
+      1108
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "rva": "0x4f95ff",
+      "bytes": 98,
+      "range_sha256": "c56fedad24268ec37b77c171a126462788d1748c3895786e3c736d5e011d0bdb"
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "rva": "0x4f95ff",
+      "bytes": 98,
+      "range_sha256": "c56fedad24268ec37b77c171a126462788d1748c3895786e3c736d5e011d0bdb"
+    }
+  ],
+  "map_placement": {
+    "file": "work/m9/7691aeb7/login-frame-live-taiwan001/Map/Lobby/lobby.ebp",
+    "sha256": "7050f4d8acdfbf76a449ea6d7fc324e0d2d0ed799d0b473c0ca89f034f54bc33"
+  },
+  "archive": {
+    "file": "work/m9/7691aeb7/login-frame-live-taiwan001/Map/Entity/MapEntity1.rpk",
+    "sha256": "e95591250e8fb269698f48197812afcb8e95bba89b0ee9b1a32f92f3f46ef9d7",
+    "bytes": 89921
+  },
+  "particle_inputs": [
+    {
+      "script": "e_lobby\\cir_fire02.spt",
+      "model_inputs": [
+        "e_lobby\\cir_light02\\cir_light02.r3e",
+        "e_lobby\\cir_light02\\cir_light02.r3m",
+        "e_lobby\\cir_light02\\cir_light02.r3t"
+      ],
+      "placements": 4
+    },
+    {
+      "script": "e_lobby\\cir_fire03.spt",
+      "model_inputs": [
+        "e_lobby\\cir_light02\\cir_light02.r3e",
+        "e_lobby\\cir_light02\\cir_light02.r3m",
+        "e_lobby\\cir_light02\\cir_light02.r3t"
+      ],
+      "placements": 4
+    }
+  ],
+  "runtime_receipt": {
+    "file": "artifacts/client455-progress/lobby-particles-7691aeb7/client455-login-frame-live-taiwan-native.json",
+    "sha256": "b3c1c50f59c7b832f4f6b8b5032e569348d8cb7be2a6bf265ebb7e274e10f5b5"
+  },
+  "runtime_events": {
+    "file": "work/m9/7691aeb7/login-frame-live-taiwan001/debug-events.jsonl",
+    "sha256": "3605421ab006d9356069eff642b5b010df865040f8307a71d8e54314221b3e22"
+  },
+  "previous_taiwan": {
+    "missing_archive": true,
+    "missing_scripts_in_log": true,
+    "frame": {
+      "file": "work/m9/0bf2385e/login-frame-live-taiwan001/lobby-camera-menu.png",
+      "sha256": "acc1d032bf72282a40ac768a324c4ac71b2810a42fc02cb5fc72957349d71d95",
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "current_taiwan": {
+    "launch": "local server",
+    "unchanged_executable_from_e660759": true,
+    "effect_error_log_created": false,
+    "missing_scripts_in_log": false,
+    "first_menu_frame": {
+      "file": "work/m9/7691aeb7/login-frame-live-taiwan001/lobby-camera-menu.png",
+      "sha256": "55f3e2a41c4ad1990a05967072942b0032528a22411b645e9ef49ae2af82600a",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "animated_menu_with_particle_glows": {
+      "file": "work/m9/7691aeb7/login-frame-live-taiwan001/login-frame.png",
+      "sha256": "6e34769d54a62480a6a8e8b68a7e2e3df09bfc31c0f939d99d92e0719b92f808",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "delay_ms": 8000
+  },
+  "pixel_parity_verified": false,
+  "in_video_flicker_verified": false,
+  "reference_executable_run": false,
+  "server_files_modified": false
+}

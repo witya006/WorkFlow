@@ -878,7 +878,9 @@ def main():
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='addcodebyyun/particlelist.cpp':
                 old=b'pd3dDevice->CopyRects(backbuf,&r,1,psurface[count],&pt)'
                 if raw.count(old)!=1:raise ValueError('Screenshot readback call changed')
-                raw=raw.replace(old,b'pd3dDevice->GetRenderTargetData(backbuf,psurface[count])')
+                raw=b'#include "client455_multisampling.h"\r\n'+raw.replace(old,b'RF455_ReadRenderTarget(*pd3dDevice, *backbuf, *psurface[count])')
+                raw=replace(raw,b'DWORD result = RF455_ReadRenderTarget(*pd3dDevice, *backbuf, *psurface[count]);\n\tg_SurfaceUse[count] = 1;\n\tbackbuf->Release();',
+                            b'HRESULT result = RF455_ReadRenderTarget(*pd3dDevice, *backbuf, *psurface[count]);\n\tbackbuf->Release();\n\tif (FAILED(result)) return;\n\tg_SurfaceUse[count] = 1;')
                 old=b'Desc.Format, D3DPOOL_SCRATCH, &psurface[i], NULL'
                 if raw.count(old)!=1:raise ValueError('Screenshot readback surface changed')
                 raw=raw.replace(old,b'Desc.Format, D3DPOOL_SYSTEMMEM, &psurface[i], NULL')

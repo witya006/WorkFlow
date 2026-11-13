@@ -1,13 +1,14 @@
 // Own diagnostic only. The ordinary Login render calls this after EndScene.
 // No extra drawing or altered game state;enabled only by the own staged runner.
 #include <cstdio>
+#include "client455_multisampling.h"
 static HRESULT RF455_SaveLoginBackbuffer(const char* name, D3DSURFACE_DESC& desc) {
     IDirect3DSurface9 *target = nullptr, *memory = nullptr;
     auto* device = GetD3dDevice();
     HRESULT result = device ? device->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &target) : E_FAIL;
     if (SUCCEEDED(result)) result = target->GetDesc(&desc);
     if (SUCCEEDED(result)) result = device->CreateOffscreenPlainSurface(desc.Width, desc.Height, desc.Format, D3DPOOL_SYSTEMMEM, &memory, nullptr);
-    if (SUCCEEDED(result)) result = device->GetRenderTargetData(target, memory);
+    if (SUCCEEDED(result)) result = RF455_ReadRenderTarget(*device, *target, *memory);
     if (SUCCEEDED(result)) result = D3DXSaveSurfaceToFileA(name, D3DXIFF_PNG, memory, nullptr, nullptr);
     if (memory) memory->Release();
     if (target) target->Release();
