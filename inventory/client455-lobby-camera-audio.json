@@ -164,5 +164,96 @@
     }
   ],
   "audible_output_verified": false,
-  "reference_executable_run": false
+  "reference_executable_run": false,
+  "music_reference": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "rva": "0x13f7df",
+      "bytes": 24,
+      "region_sha256": "215a0534f33d8ef66068ea5bbacb6de7f9eed1f75c360f6ef63ce80350f21d42"
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "rva": "0x13f7df",
+      "bytes": 24,
+      "region_sha256": "215a0534f33d8ef66068ea5bbacb6de7f9eed1f75c360f6ef63ce80350f21d42"
+    }
+  ],
+  "component_audio_output": {
+    "file": "work/client455-port/lobby-audio-output-probe/runtime/result.json",
+    "sha256": "aa37e6711269d0478e2033dcd9d31f631c38cc5100ea1a854fd7ea8c543e6c81",
+    "probe": "work/client455-port/lobby-audio-output-probe/runtime/lobby-audio-output-probe.exe",
+    "probe_sha256": "e7b867008a054a118d803c3c54c9770799a61448e77fadf1d2a7557810fca711",
+    "architecture": "x86",
+    "entry_rva": "0x10ca70",
+    "source_client_sha256": "a9e2d8b5096ab768253474646b14f9053ee0bdc0dbce2008a87cc6d07b1d0d79",
+    "scope": "Original menu MP3 and both camera WAVs through normal Miles objects, with one isolated process audio stream",
+    "pcm_16_bit": {
+      "silence": {
+        "peak": 1,
+        "rms": 0.489,
+        "active_miles_samples": 0,
+        "packets": 6
+      },
+      "music": {
+        "peak": 119,
+        "rms": 40.365,
+        "active_miles_samples": 1,
+        "packets": 24
+      },
+      "start": {
+        "peak": 4943,
+        "rms": 2328.719,
+        "active_miles_samples": 1,
+        "packets": 24
+      },
+      "end": {
+        "peak": 5417,
+        "rms": 2614.485,
+        "active_miles_samples": 1,
+        "packets": 13
+      }
+    },
+    "full_client_audio_verified": false,
+    "wasapi_reference": "https://learn.microsoft.com/en-us/samples/microsoft/windows-classic-samples/applicationloopbackaudio-sample/"
+  },
+  "live_audio_output": {
+    "receipt": {
+      "file": "work/m9/a9e2d8b5/manual-1080p-audio/manual-launch.json",
+      "sha256": "9590af0a92d6ef724a66274dbbf1b231ad41d5bcf91133bd5f2c0691b65ff047"
+    },
+    "measurements": {
+      "file": "work/m9/a9e2d8b5/manual-1080p-audio/measurements.csv",
+      "sha256": "0d1e2f5b47fccb8d2dda21dc0262a84ea451adb3851112bd8861940cf936d3e1"
+    },
+    "scope": "Russian client and live local server, process-only mixed stream, through character selection",
+    "levels_16_bit": {
+      "menu": {
+        "measurements": 19,
+        "max_rms": 810.429,
+        "max_peak": 3142
+      },
+      "flight_start": {
+        "measurements": 9,
+        "max_rms": 2021.028,
+        "max_peak": 5545
+      },
+      "flight_later": {
+        "measurements": 17,
+        "max_rms": 2179.779,
+        "max_peak": 5956
+      },
+      "selection": {
+        "measurements": 16,
+        "max_rms": 950.277,
+        "max_peak": 3149
+      }
+    },
+    "physical_output_verified": false,
+    "capture_method": "WASAPI process loopback, amplitude only"
+  }
 }

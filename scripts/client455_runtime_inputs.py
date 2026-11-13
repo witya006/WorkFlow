@@ -5,7 +5,7 @@ import json
 import shutil
 from pathlib import Path
 from compare_client_binaries import WS
-from client455_asset_staging import stage_asset
+from client455_asset_staging import sha, stage_asset
 
 
 def copy_title_movies(client, run, locale):
@@ -29,6 +29,19 @@ def copy_title_movies(client, run, locale):
         records.append(dict(file=target.relative_to(WS).as_posix(),
                             sha256=hashlib.sha256(target.read_bytes()).hexdigest(), original=str(source)))
     return records
+
+
+def copy_lobby_audio(client, run):
+    sounds = ('Snd/BGM/Title.mp3', 'Snd/Login/Start.wav', 'Snd/Login/Middle.wav',
+              'Snd/Login/End.wav', 'Snd/Login/Stage01.wav')
+    records = []
+    for name in sounds:
+        source, target = client / name, run / name
+        stage_asset(source, target)
+        records.append({'file': target.relative_to(WS).as_posix(), 'sha256': sha(target),
+                        'original': str(source)})
+    return records
+
 
 def copy_grade_overlay_inputs(run,mutable_materials=False):
     client=Path(json.loads((WS/'config/paths.json').read_text())['client_455']);records=[]

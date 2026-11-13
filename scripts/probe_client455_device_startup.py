@@ -8,7 +8,7 @@ from client455_normal_link_evidence import validate_normal_link
 from audit_client455_own_entry import validated_entry
 from client455_launcher_fixture import stage_launcher
 from client455_tcp_fixture import TcpAcceptanceFixture
-from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources,copy_grade_overlay_inputs,copy_title_movies
+from client455_runtime_inputs import copy_tagged_sound_providers,copy_sky_resources,copy_grade_overlay_inputs,copy_title_movies,copy_lobby_audio
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -265,6 +265,7 @@ def main(handoff=None,live_port=None,select_character=False,world_map_index=None
     if world_map_index is not None:
         inputs += stage_world_map(client, run, world_map_index)
     if args.with_lobby:
+        inputs += copy_lobby_audio(client, run)
         world=json.loads((WS/'inventory/client455-graphics-runtime.json').read_text());case=next(x for x in world['cases'] if x['case']=='level-lobby')
         for row in case['archives']:
             if not row['path'].lower().startswith('map/lobby/'):continue
