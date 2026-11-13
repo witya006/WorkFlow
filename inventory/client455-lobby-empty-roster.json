@@ -1,0 +1,151 @@
+{
+  "status": "EMPTY_AND_OCCUPIED_LOBBY_ROUTES_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "6e38f92c496e5806a5fd2d400ae64c5e8caa7ccb7946dfdeb9faeb0e7c55e60b",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3baf10",
+          "bytes": 92,
+          "role": "Start always selects the lobby camera; no character-count branch",
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 68,
+          "role": "Open selection after camera completion",
+          "sha256": "cd79e90179e1e7d1513919d0a76b9d9add1358e45bb3fe373cfd296b659774b6"
+        },
+        {
+          "rva": "0x13a470",
+          "bytes": 85,
+          "role": "Set up selection slide animation",
+          "sha256": "4dcce96e219902b207c0319db114ef2f93123abc5e75b33f077c721bc5609133"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3baf10",
+          "bytes": 92,
+          "role": "Start always selects the lobby camera; no character-count branch",
+          "sha256": "f13977ed84020abb71262e6cf5c0aa8ee7bc5df3db3bfc627d65adfba74d077a"
+        },
+        {
+          "rva": "0x13f33c",
+          "bytes": 68,
+          "role": "Open selection after camera completion",
+          "sha256": "cd79e90179e1e7d1513919d0a76b9d9add1358e45bb3fe373cfd296b659774b6"
+        },
+        {
+          "rva": "0x13a470",
+          "bytes": 85,
+          "role": "Set up selection slide animation",
+          "sha256": "4dcce96e219902b207c0319db114ef2f93123abc5e75b33f077c721bc5609133"
+        }
+      ]
+    }
+  ],
+  "runs": {
+    "occupied": {
+      "report": {
+        "file": "artifacts/client455-progress/lobby-empty-roster-6e38f92c/client455-world-entry-live-russia-native.json",
+        "sha256": "d9cbae15d931d180c185e911bf69608fa8e78d091d305fc625165f84356d093b"
+      },
+      "events": {
+        "file": "work/m9/6e38f92c/world-entry-live-russia001/debug-events.jsonl",
+        "sha256": "520b02d3715cf38538814df6e924d88cad8d07935d9a425c8cb58fb3258b7141"
+      },
+      "sequence": [
+        "RF455 Protocol:lobby-menu-open:0:0:0",
+        "RF455 Protocol:lobby-selection-camera:0:2:45",
+        "RF455 Protocol:lobby-start:0:0:0",
+        "RF455 LobbyCamera:1:00000000:1920x1080",
+        "RF455 Protocol:lobby-selection-open:0:0:0",
+        "RF455 Protocol:lobby-selection-slot:0:1:0",
+        "RF455 LobbyCamera:2:00000000:1920x1080",
+        "RF455 WorldCapture:0:0:1920x1080"
+      ],
+      "frames": {
+        "menu": {
+          "file": "work/m9/6e38f92c/world-entry-live-russia001/lobby-camera-menu.png",
+          "sha256": "a394a70ee1a6a4bff84f8b7f7bd2fa146168516a6d0570e0bd652085a411c9fc"
+        },
+        "flight": {
+          "file": "work/m9/6e38f92c/world-entry-live-russia001/lobby-camera-flight.png",
+          "sha256": "f85c88f5951e9310572a2857691b7a712e062ca1e01bfb80183ef0295eb0090c"
+        },
+        "selection": {
+          "file": "work/m9/6e38f92c/world-entry-live-russia001/lobby-camera-selection.png",
+          "sha256": "a10f97bff0ebc91b5f21bdfa051122c7d554cacd83ba55efbc12a62da6600a7f"
+        }
+      },
+      "client_memory_fixture": false,
+      "world": "NeutralB"
+    },
+    "empty": {
+      "report": {
+        "file": "artifacts/client455-progress/lobby-empty-roster-6e38f92c/client455-character-selection-live-russia-native.json",
+        "sha256": "17d9d5304ee16732bb550ff609b59d66e5ba8d7867435d4b27c200b1995dc737"
+      },
+      "events": {
+        "file": "work/m9/6e38f92c/selection-live-russia001/debug-events.jsonl",
+        "sha256": "afde192299a561747d121cf56deb227acec21537e366c8fae8100e49de1063ae"
+      },
+      "sequence": [
+        "RF455 Protocol:lobby-menu-open:0:0:0",
+        "RF455 Protocol:lobby-selection-camera:0:20:70",
+        "RF455 Protocol:lobby-start:0:0:0",
+        "RF455 LobbyCamera:1:00000000:1920x1080",
+        "RF455 Protocol:lobby-selection-open:0:0:0",
+        "RF455 Protocol:lobby-selection-slot:0:0:0",
+        "RF455 LobbyCamera:2:00000000:1920x1080"
+      ],
+      "frames": {
+        "menu": {
+          "file": "work/m9/6e38f92c/selection-live-russia001/lobby-camera-menu.png",
+          "sha256": "9601bb1a950bf28d3a209f2f109b2b8e6aff66df201628305198d2454743a435"
+        },
+        "flight": {
+          "file": "work/m9/6e38f92c/selection-live-russia001/lobby-camera-flight.png",
+          "sha256": "89de9da61be523a525fbdfbe658bf433f714dac54675b94b8c43e78b60199b54"
+        },
+        "selection": {
+          "file": "work/m9/6e38f92c/selection-live-russia001/lobby-camera-selection.png",
+          "sha256": "f271a26cf385e869c4de627518dd2f2d18340a1fb2796c03976c92f1bad0bb53"
+        }
+      },
+      "client_memory_fixture": true,
+      "world": null
+    }
+  },
+  "server_account_changed": false,
+  "reference_executable_run": false
+}

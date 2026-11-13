@@ -177,13 +177,8 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     switch (lobbyMenu455.TakeAction()) {
     case LobbyMenu455::Action::Start:
         lobbyMenu455.Start();
-        if (!m_HaveCharacter[0] && !m_HaveCharacter[1] && !m_HaveCharacter[2]) {
-            m_Course = A_COURSE;
-            EventCreateCharacter();
-        } else {
-            m_CameraAni = true;
-            PlayCamera(CAM_TOP_TO_LOGINA, m_Course, true);
-        }
+        m_CameraAni = true;
+        PlayCamera(CAM_TOP_TO_LOGINA, m_Course, true);
         RF455_ObserveProtocol("lobby-start", 0, 0, 0);
         return TRUE;
     case LobbyMenu455::Action::Credits:
