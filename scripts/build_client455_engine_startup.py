@@ -112,6 +112,9 @@ def main():
         elif filename=='r3d3dapp.cpp':
             from client455_d3d9_edits import replace
 
+            # 455's ordinary window has a caption and minimize button, with a fixed client size.
+            raw = replace(raw, b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_THICKFRAME|',
+                          b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|')
             menu = b'LoadMenu( hInstance, MAKEINTRESOURCE(IDR_MENU) )'
             raw = replace(raw, menu, b'menu')
             raw = replace(raw, b'AdjustWindowRect( &rc, m_dwWindowStyle, TRUE );',

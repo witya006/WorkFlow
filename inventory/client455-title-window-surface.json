@@ -1,0 +1,231 @@
+{
+  "status": "REFERENCE_WINDOW_STYLE_VERIFIED_CAPTURE_UNSUITABLE_FOR_FLICKER",
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "window_style_region": {
+        "rva": "0x4f0401",
+        "bytes": 34,
+        "sha256": "4e96fc78c112a6de30f7c4fd5243f152dfa91fc694e37ec633a97f909b5035ba"
+      }
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "window_style_region": {
+        "rva": "0x4f0401",
+        "bytes": 34,
+        "sha256": "4e96fc78c112a6de30f7c4fd5243f152dfa91fc694e37ec633a97f909b5035ba"
+      }
+    }
+  ],
+  "new_build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "e1172a8a35e815f2b1d8f38b1ea125ec811a356ad95c89f21878d241fed8a5d0",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4e60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "new_window": {
+    "file": "work/m9/e1172a8a/window-style-verification.json",
+    "sha256": "e1172a8a35e815f2b1d8f38b1ea125ec811a356ad95c89f21878d241fed8a5d0",
+    "executable": "work/m9/e1172a8a/login-frame-taiwan002/RF_Online.bin",
+    "style": "0x14ca0000",
+    "client_size": [
+      1920,
+      1080
+    ],
+    "outer_size": [
+      1936,
+      1119
+    ]
+  },
+  "captured_build": {
+    "file": "work/m9/7cb8a0cb/login-frame-taiwan004/RF_Online.bin",
+    "sha256": "7cb8a0cbb56a788f0a76479790f5368ad34c035eb92fcff3081536d149d1f54a"
+  },
+  "windows_graphics_capture": {
+    "report": {
+      "file": "work/m9/7cb8a0cb/login-frame-taiwan004/window-observation.json",
+      "sha256": "ad502748daed25f3d995633193d027eae076ff15286129f4af9b8821cd5aac69"
+    },
+    "frames_by_actual_focus": {
+      "game": 139,
+      "helper": 63,
+      "other": 1
+    },
+    "uniform_white": true,
+    "example": {
+      "file": "work/m9/7cb8a0cb/login-frame-taiwan004/window-03.png",
+      "sha256": "11ba6bcf4a13df227f0b88ffd6686dd3177fc29fe57788ec13b36a112ab7c26c",
+      "size": [
+        1920,
+        1080
+      ],
+      "center_rgb": [
+        255,
+        255,
+        255
+      ]
+    },
+    "focus_requests": [
+      {
+        "time": 2.401,
+        "target": "helper",
+        "active": true
+      },
+      {
+        "time": 4.405,
+        "target": "game",
+        "active": false
+      },
+      {
+        "time": 8.505,
+        "target": "helper",
+        "active": true
+      },
+      {
+        "time": 10.502,
+        "target": "game",
+        "active": false
+      }
+    ]
+  },
+  "in_game_backbuffers": {
+    "ccr": {
+      "file": "work/m9/7cb8a0cb/login-frame-taiwan004/title-logo.png",
+      "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+      "size": [
+        1920,
+        1080
+      ],
+      "center_rgb": [
+        250,
+        250,
+        250
+      ]
+    },
+    "prologue": {
+      "file": "work/m9/7cb8a0cb/login-frame-taiwan004/title-prologue.png",
+      "sha256": "8941bca11a1d803d3dfc497cbf343b20efc31f9bac0d7666788e8397533dedf0",
+      "size": [
+        1920,
+        1080
+      ],
+      "center_rgb": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "controls": {
+    "gdi": {
+      "report": {
+        "file": "work/live-foreground455/capture-control.json",
+        "sha256": "118ed3d89eaa13f3713e8786ad092af2b0bca17b6b4d247c13a736d053ef998d"
+      },
+      "image": {
+        "file": "work/live-foreground455/capture-control.png",
+        "sha256": "f93d73023f5bfec3764e4474f0db2cc62d269813b0c02a559aa488da64590384",
+        "size": [
+          1920,
+          1080
+        ],
+        "center_rgb": [
+          255,
+          0,
+          255
+        ]
+      },
+      "frames": 6,
+      "center_colors": [
+        [
+          255,
+          0,
+          255
+        ]
+      ],
+      "expected_rgb": [
+        255,
+        0,
+        255
+      ]
+    },
+    "d3d9": {
+      "report": {
+        "file": "work/live-foreground455/capture-control-d3d9.json",
+        "sha256": "794b21cd58a7fd910e7aec366b48c7a458605ecc1d034d566fe9eaac4e09329b"
+      },
+      "image": {
+        "file": "work/live-foreground455/capture-control-d3d9.png",
+        "sha256": "11ba6bcf4a13df227f0b88ffd6686dd3177fc29fe57788ec13b36a112ab7c26c",
+        "size": [
+          1920,
+          1080
+        ],
+        "center_rgb": [
+          255,
+          255,
+          255
+        ]
+      },
+      "frames": 45,
+      "center_colors": [
+        [
+          255,
+          255,
+          255
+        ]
+      ],
+      "expected_rgb": [
+        [
+          255,
+          0,
+          255
+        ],
+        [
+          0,
+          255,
+          0
+        ]
+      ],
+      "renderer": [
+        "Front pixel ffffff",
+        "Front pixel ffffff",
+        "Present result 00000000, frames 53"
+      ]
+    }
+  },
+  "live_regression": {
+    "report": {
+      "file": "artifacts/client455-progress/title-window-surface-e1172a8a/client455-world-entry-live-russia-native.json",
+      "sha256": "481b1079760cd47bec7db5af20ac5890225a5f767b2edaa66446924bf4f5d28d"
+    },
+    "events": {
+      "file": "work/m9/e1172a8a/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "e544ce59dc5ed6caa269fb06ca7aa62551651bf0a5cfde1e86e97e6daf01b118"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "map": "NeutralB",
+    "input_enabled": true
+  },
+  "actual_display_flicker_verified": false,
+  "reference_executable_run": false
+}
