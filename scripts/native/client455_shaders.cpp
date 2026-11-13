@@ -1,4 +1,5 @@
 #include "client455_shaders.h"
+#include "client455_enhanced_lighting.h"
 #include "client455_shader_key.h"
 #include <cstdio>
 #include <cstdlib>
@@ -42,6 +43,7 @@ const D3DVERTEXELEMENT9 elements36[]={
 }
 extern "C" void RF455_ConstructShaderManager(RF455ShaderManager* manager){std::memset(manager,0,sizeof(*manager));}
 extern "C" void RF455_ReleaseShaderManager(RF455ShaderManager* manager){
+    RF455_ReleaseEnhancedActorLighting(manager);
     for(unsigned i=0;i<manager->count;++i){auto& p=manager->programs[i];release(p.vertex);release(p.pixel);release(p.vertexConstants);release(p.pixelConstants);}
     for(unsigned i=0;i<manager->declarationCount;++i)release(manager->declarations[i]);
     std::free(manager->programs);manager->programs=nullptr;manager->capacity=manager->count=0;
@@ -102,3 +104,5 @@ extern "C" int RF455_InitializeCharacterShaders(RF455ShaderManager* manager,cons
     const char* names[]={"sh_basic","sh_normal","sh_norm_spec","sh_shadow","sh_basic_Bump","sh_basic_BumpEffect","sh_basic_Scroll","sh_basic_DScroll","sh_basic_EnvScroll","sh_basic_GradeEffect","sh_basic_GradeEnvEffect","sh_basic_alpha"};
     int last=-1;for(const auto* name:names){const std::string path=std::string(".\\System\\shader\\")+name+".shr";last=RF455_LoadShaderProgram(manager,api,path.c_str(),nullptr,nullptr);}return last;
 }
+
+#include "client455_enhanced_lighting.inc"

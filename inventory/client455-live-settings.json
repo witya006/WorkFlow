@@ -1,0 +1,70 @@
+{
+  "status": "PASS",
+  "scope": "Live own-client graphics tab, apply and restore lighting/character visibility; not exhaustive settings or visual parity acceptance",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "102a244393c7e5fdcb684326f07e8b39b3e16ca783ff401bfd57f7e82d315344",
+    "bytes": 2552832,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a77c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "live_entry": {
+    "file": "artifacts/client455-progress/client455-world-entry-live-russia-native.json",
+    "sha256": "9ad380c215eaebad9d97ca3d52a01c1dac7d5b87d236660e8d585e089304e1bb"
+  },
+  "script": {
+    "file": "scripts/probe_client455_live_settings.py",
+    "sha256": "9bd3160c6367e3ac59dc6c4f2370478eb57c902aaf5cd983822472b8bd28bd51"
+  },
+  "observer": {
+    "file": "scripts/native/client455_live_settings_observation.inc",
+    "sha256": "9355a1a84e72819f8c201f2678424aed21aac8ac5a6b01c6df7c57ba2a627e13"
+  },
+  "phases": [
+    "RF455 Protocol:settings-live:0:1:0",
+    "RF455 Protocol:settings-live:1:1:1",
+    "RF455 Protocol:settings-live:2:1:1",
+    "RF455 Protocol:settings-live:3:1:0",
+    "RF455 Protocol:settings-live:4:1:0",
+    "RF455 Protocol:settings-live:5:1:0"
+  ],
+  "frames": [
+    {
+      "file": "work/m9/102a2443/world-entry-live-russia001/settings-world-before.png",
+      "sha256": "b0cc7915979fcd911b5537d81f245fb67d1334857177f1bf180839e443559b9b"
+    },
+    {
+      "file": "work/m9/102a2443/world-entry-live-russia001/settings-world-menu.png",
+      "sha256": "2eef3197992877b18d59478766a2128022a0cdc09e642531898d5fbdcbc84f90"
+    },
+    {
+      "file": "work/m9/102a2443/world-entry-live-russia001/settings-world-menu-applied.png",
+      "sha256": "51e25c57107030fe7adcb9d57096ef17c7ea365dba92469a839a50a509bf834c"
+    },
+    {
+      "file": "work/m9/102a2443/world-entry-live-russia001/settings-world-enhanced.png",
+      "sha256": "341e689f0707404a4be4f5bcb842bdd915116037604f11f4797bd075ea0aedf0"
+    },
+    {
+      "file": "work/m9/102a2443/world-entry-live-russia001/settings-world-restored.png",
+      "sha256": "9cf0534695bd52048d0c96655fd34b5f6545a8d6a2c35b9fffcf7782a4923744"
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "server_files_modified": false,
+  "credentials_persisted": false,
+  "physical_mouse_keyboard_tested": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

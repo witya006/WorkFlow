@@ -228,6 +228,8 @@ def port_initial_download(raw, relative, section, native):
         m_reportedWorldFrame455 = true;
         RF455_ObserveProtocol("world-frame", _GetLand()->GetMapIndex(), 0, 0);
     }
+    if (drewFrame && m_bIsCreated_Avatar)
+        RF455_ObserveLiveSettings(*_GetOptionWindow(), *_GetCharMgr());
     if (drewFrame && m_bIsCreated_Avatar && RF455_WorldObservation().remaining) {
         const auto* avatarPosition = _GetAvatar()->GetPosition();
         float cameraPosition[3];
@@ -244,6 +246,7 @@ def port_initial_download(raw, relative, section, native):
     RF455_ObserveProtocol("map-bsp", land->GetMapIndex(), mapLoaded, 0);
     if (!mapLoaded) return FALSE;'''))
         return (OBSERVATION + (native / 'client455_live_world_observation.inc').read_bytes()
+                + b'\n' + (native / 'client455_live_settings_observation.inc').read_bytes()
                 + b'\n' + raw), True
     if relative == 'gameobject/board/skillforceboard/csfboard.cpp':
         raw = patch_method(raw, section, b'CSFBoard', b'SetSuccessCountOfMastery', lambda body: replace(

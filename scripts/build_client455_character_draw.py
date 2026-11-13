@@ -6,7 +6,7 @@ from verify_client_coff import directives
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--compile-only',action='store_true');args=parser.parse_args();root=WS/'work/recovered/client455/character-draw';root.mkdir(parents=True,exist_ok=True);art=WS/'artifacts/character-draw455';art.mkdir(parents=True,exist_ok=True);log=art/'build.txt'
-    draw=json.loads((WS/'inventory/client455-draw-build.json').read_text(encoding='utf-8'));names=[n for n in draw['source_sha256'] if n.endswith('.h')]+['client455_character_draw.h','client455_character_draw_internal.h','client455_character_draw.cpp','client455_character_draw_core.cpp']
+    draw=json.loads((WS/'inventory/client455-draw-build.json').read_text(encoding='utf-8'));names=[n for n in draw['source_sha256'] if n.endswith('.h')]+['client455_character_draw.h','client455_character_draw_internal.h','client455_character_draw.cpp','client455_character_draw_core.cpp','client455_enhanced_lighting.h']
     if not args.compile_only:names+=['test_client455_draw.cpp','test_client455_character_draw.cpp']
     hashes={}
     for name in names:source=WS/'scripts/native'/name;shutil.copyfile(source,root/name);hashes[name]=sha(source)

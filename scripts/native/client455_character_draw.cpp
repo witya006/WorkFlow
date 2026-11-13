@@ -1,7 +1,16 @@
 #include "client455_character_draw_internal.h"
+#include "client455_enhanced_lighting.h"
 
 namespace rf455draw {
 namespace {
+struct EnhancedPixelConstants {
+    IDirect3DDevice9* device;
+    float previous[20];
+    bool captured;
+    explicit EnhancedPixelConstants(IDirect3DDevice9* value):device(value),
+        captured(SUCCEEDED(value->GetPixelShaderConstantF(0,previous,5))){}
+    ~EnhancedPixelConstants(){if(captured)device->SetPixelShaderConstantF(0,previous,5);}
+};
 struct BatchRecord {float depth;void* next;float palette[30][16];RF455MeshStorage* mesh;float material[17];};
 static_assert(sizeof(BatchRecord)==2000,"455 deferred fixed-function record");
 void alphaWave(RF455CharacterDrawContext* c,RF455MeshStorage* mesh){const auto* effect=get<const unsigned char*>(mesh,5455);const float frequency=get<float>(effect,288),a=angle(frequency,c->globals->phase);float sine;c->math.sineFloat(&sine,&a);float value=absolute(sine);if(less(value,.1f))value=.1f;if(!equal(frequency,0))put(mesh,5131,value);}
@@ -50,6 +59,36 @@ extern "C" RF455CharacterDrawStatus RF455_DrawCharacter455(RF455CharacterDrawCon
         if(get<unsigned>(effect,160) || (!second && (!equal(frequency,0) || !equal(alpha,1)))){const auto status=enqueue(c,mesh,model,part,world,translation,false);if(status!=RF_CHARACTER_DRAW_OK)return status;continue;}
         const auto texture0=get<IDirect3DBaseTexture9*>(mesh,5107),texture1=get<IDirect3DBaseTexture9*>(mesh,5115),texture2=get<IDirect3DBaseTexture9*>(mesh,5119);
         const auto bump=get<IDirect3DBaseTexture9*>(mesh,5791),specular=get<IDirect3DBaseTexture9*>(mesh,5795),grade=get<IDirect3DBaseTexture9*>(mesh,5799);
+        // Modern lighting is a separate opaque pass. Effect/transparent/batch and
+        // CPU-skinned routes retain their original programs and state handling.
+        if (RF455_EnhancedActorLightingEnabled() && c->state.vertexMode == 4 && !c->useFvf && !c->batchEnabled && !c->orthographic &&
+            !get<void*>(mesh,4506) && get<unsigned>(mesh,5086) && get<unsigned>(mesh,522) <= 30 &&
+            texture0 && !texture1 && !texture2 && !grade && !second &&
+            !get<unsigned>(effect,160) && get<unsigned>(effect,196) &&
+            // MESH08 initializes type 1 even when there is no secondary map.
+            // In that case the original primary branch is still plain slot 0.
+            // Type 4 is different: it swaps primary bindings, so stays excluded.
+            get<unsigned>(effect,200) <= 1 && !get<unsigned>(effect,204) &&
+            equal(frequency,0) && equal(alpha,1) && (!specular || bump)) {
+            float enhancedMaterial[17];
+            std::memcpy(enhancedMaterial,reinterpret_cast<const unsigned char*>(model)+720,sizeof(enhancedMaterial));
+            EnhancedPixelConstants savedConstants(d);
+            if (savedConstants.captured && equal(enhancedMaterial[3],1) && RF455_BindEnhancedActorLighting(c->shaders,
+                enhancedMaterial,c->view,c->state.light104+16,bump!=nullptr,specular!=nullptr,&c->selected)) {
+                // The legacy loop carries this scratch into later bump parts.
+                // Advancing the basic pass must retain that side effect even
+                // though the new shader reads the source material directly.
+                if (!bump && !specular) material(mat,model,mesh);
+                projectionConstants(c);
+                RF455_UploadCharacterPalette(d,mesh,world,translation,&c->math.matrix);
+                d->SetRenderState(D3DRS_CULLMODE,get<unsigned>(mesh,5143)?D3DCULL_NONE:D3DCULL_CW);
+                d->SetTexture(0,texture0);d->SetTexture(1,nullptr);d->SetTexture(2,nullptr);
+                d->SetTexture(3,bump);d->SetTexture(4,specular);d->SetTexture(5,nullptr);
+                const auto status=submit(c,mesh,world,nullptr);clearShaders(c);
+                if(status!=RF_CHARACTER_DRAW_OK)return status;
+                continue;
+            }
+        }
         if(!bump && !specular){
             material(mat,model,mesh);
             put<unsigned>(mesh,5763,0);d->SetRenderState(D3DRS_LIGHTING,get<unsigned>(effect,196));d->SetRenderState(D3DRS_CULLMODE,get<unsigned>(mesh,5143)?D3DCULL_NONE:D3DCULL_CW);d->SetRenderState(D3DRS_TEXTUREFACTOR,get<unsigned>(mesh,5147));

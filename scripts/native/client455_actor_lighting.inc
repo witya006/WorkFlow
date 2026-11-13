@@ -1,3 +1,4 @@
+#include "client455_enhanced_lighting.h"
 void CResObject::SetLightColorFromMap(){
     //7CE7A0:map color first;after-image takes priority over explicit blink color.
     ZeroMemory(&m_d3dLight,sizeof(m_d3dLight));
@@ -25,6 +26,7 @@ void CResObject::SetLightColorFromMap(){
     m_d3dMaterial.Specular.b=m_d3dMaterial.Diffuse.b*.3f;
     m_d3dMaterial.Specular.a=1.0f;m_d3dMaterial.Power=10.0f;
     _GetCharIF()->SetLight(m_d3dLight);
+    RF455_SetEnhancedActorLightingProtected(IsEnable(ROSF_AFTER_IMAGE_OF_OBJECT) || m_bIsBlink);
 }
 
 void CResObject::SetBlink455(BOOL enabled,DWORD color){

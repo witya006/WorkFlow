@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "source": {
+    "file": "scripts/native/client455_settings_probe.cpp",
+    "sha256": "34d78952f9c0333ecf40ee99ee7a6448280b05f269764910377a571fb9503504"
+  },
+  "executable": {
+    "file": "work/client455-port/settings-probe/settings-probe.exe",
+    "sha256": "23612e25a14d01f1e08235e8d39939e6313e02663f0f85c6c50a0cee8e788b47"
+  },
+  "native": {
+    "status": "PASS",
+    "tabs": 5,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "native_widgets": true,
+    "inactive_pages_detached": true,
+    "cancel": true,
+    "apply_persist_reopen": true,
+    "see_distance_levels1to4": true,
+    "manager_boundary_clamp": true,
+    "auto_distance_finite_clamp": true,
+    "stage_messages": 8,
+    "live_backend": false
+  },
+  "result": {
+    "file": "work/settings455/23612e25/result.json",
+    "sha256": "74129f9f9e96997ccdc7eead950842b3d0856f4d8d01f43630f46bba52d73ce8"
+  },
+  "frames": [
+    {
+      "file": "work/settings455/23612e25/settings-0.png",
+      "sha256": "88e1ec67ca9f689bc7b883cbfd9ac83e2c4b588abab7df35389a492299653932"
+    },
+    {
+      "file": "work/settings455/23612e25/settings-1.png",
+      "sha256": "4b47dac89d2bf94c6ae5ae31d0d81db668a27d499e75235ba9d34bf17be16844"
+    },
+    {
+      "file": "work/settings455/23612e25/settings-2.png",
+      "sha256": "37cc4742c6a9913e1957bae8a5d5b44aaff30825197cbafec4f72e03d835f2ca"
+    },
+    {
+      "file": "work/settings455/23612e25/settings-3.png",
+      "sha256": "9a74d9bf1437628346ecb75cf4229dd8b858d0fa77b1cfe6528215f5edab7a1f"
+    },
+    {
+      "file": "work/settings455/23612e25/settings-4.png",
+      "sha256": "a0b9880f7a5f17fd489c298d49a9695458751c52634f77b922e8aab66b4dd66d"
+    }
+  ],
+  "runner": {
+    "file": "scripts/probe_client455_settings.py",
+    "sha256": "02b200dbd2fbb0978104e946951c261758a1866967bae7e94e1fd473a0c31734"
+  },
+  "console": {
+    "file": "work/settings455/23612e25/console.txt",
+    "sha256": "817917e2915d8a61c9871c7de9d9df40f4f26ff629ab2cdf3ee5b66277925665"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "51bed8269051373a1d80684b02f45c349b20396ed50ec755ed110aae643c1993",
+    "bytes": 2552832,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a77c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "scope": "Real native widgets and persistence with controlled HWND; gameplay backend requires live verification",
+  "server_modified": false,
+  "authentication_performed": false
+}

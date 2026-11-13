@@ -14,9 +14,12 @@ def port_actor_lighting(raw,relative,native,section):
         first,last=section(raw,b'CResObject::SetLightColorFromMap(',b'CResObject::SetLightColorFromMap(')
         #section begins after the separately-written return type.
         replacement=(native/'client455_actor_lighting.inc').read_bytes()
+        include=b'#include "client455_enhanced_lighting.h"\n'
+        replacement=replacement.replace(b'\r\n',b'\n')
+        if replacement.startswith(include):replacement=replacement[len(include):]
         if not replacement.startswith(b'void '):raise ValueError('Actor light return type')
         raw=raw[:first]+replacement[5:]+raw[last:]
         raw=raw.replace(b'm_bIsHide',b'm_dwBlinkColor455')
-        raw=b'#include <stdexcept>\n'+raw
+        raw=b'#include <stdexcept>\n'+include+raw
         return raw,True
     return raw,False

@@ -18,6 +18,7 @@ public:
     enum GraphicOption{Gamma,DynamicLighting,Shadow,SeeDist,Bloom,EnvironmentDetail,GRAPHIC_OPTION_NUM};
     enum EtcOption{Whisper=0,Hint=1,Trade=2,Party=3,AutoSeeDist=4,RemoveEnvironment=5,DisableStartupBoard=6,RememberPage=7,ETC_OPTION_NUM=8,
         Guild=8,DetailTexture=9}; // Explicit unrepresented legacy source adapters.
+    enum SettingsPage {SoundPage, ImagePage, GraphicsPage, GamePage, HUDPage, PageCount};
 private:
     CGUIText m_title,m_soundTitle,m_soundLabels[5],m_graphicTitle,m_graphicLabels[6],m_etcTitle,m_etcLabels[8],m_cameraTitle,m_targetTitle;
     RF455GuiAnimatedImage m_header;
@@ -31,6 +32,27 @@ private:
     unsigned m_etcCount=8;
     bool m_ratingVisible=false;
     RF455OptionActions m_actions;
+    struct SettingsSnapshot {
+        LONG sound[3]={160,160,160},graphics[6]={2,3,2,4,0,0};
+        BOOL flags[8]={FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE};
+        BYTE camera=1;
+        unsigned msaa=4,width=1920,height=1080;
+        bool enhanced=false;
+    };
+    CGUIContainer m_pages[PageCount];
+    CGUIButtonEx m_tabs[PageCount],m_apply,m_cancel,m_resolution[2],m_msaa[3],m_lighting[2];
+    CGUIText m_resolutionTitle,m_msaaTitle,m_lightingTitle,m_notice,m_status,m_closeLabel,m_pageNote[PageCount];
+    CGUIObject m_modernHeader,m_divider;
+    SettingsSnapshot m_applied;
+    SettingsPage m_page=SoundPage;
+    unsigned m_requestedMsaa=4,m_requestedWidth=1920,m_requestedHeight=1080;
+    bool m_enhanced=false,m_editing=false,m_initialized=false;
+    SettingsSnapshot Capture455();
+    void Restore455(const SettingsSnapshot&);
+    void RememberExternal455();
+    bool Persist455(const SettingsSnapshot&);
+    void Layout455();
+    void SetStatus455(const wchar_t*,const char*);
     void Send455(UINT,WPARAM=0);
 public:
     CGUIOptionWindow();
@@ -38,6 +60,20 @@ public:
     void Init() override;
     void SetSprite() override;
     void Update() override;
+    void Open() override;
+    void Close() override;
+    void SetPage455(SettingsPage);
+    bool Apply455();
+    void Cancel455();
+    CGUIButtonEx& Tab455(unsigned i){return m_tabs[i];}
+    CGUIContainer& Page455(unsigned i){return m_pages[i];}
+    CGUIButtonEx& ApplyButton455(){return m_apply;}
+    CGUIButtonEx& CancelButton455(){return m_cancel;}
+    CGUIButtonEx& Resolution455(unsigned i){return m_resolution[i];}
+    CGUIButtonEx& Multisampling455(unsigned i){return m_msaa[i];}
+    CGUIButtonEx& Lighting455(unsigned i){return m_lighting[i];}
+    unsigned RequestedMultisampling455()const{return m_requestedMsaa;}
+    SettingsPage SelectedPage455()const{return m_page;}
     void SetSoundOption(SoundOption,float);
     float GetSoundOption(SoundOption);
     void SetGraphicOption(GraphicOption,float);
@@ -45,7 +81,7 @@ public:
     void SwitchOn(EtcOption,BOOL);
     BOOL IsSwitchOn(EtcOption);
     void SelectCamera(BYTE);
-    BYTE GetSelectedCamera(){return m_camera;}
+    BYTE GetSelectedCamera(){return m_editing?m_applied.camera:m_camera;}
     void SelectEax455(BYTE);
     void SelectSpecial455(BYTE);
     void SetTargetingMode455(int);

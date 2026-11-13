@@ -2,6 +2,7 @@
 #include "client455_normal_renderer_math.h"
 #include "client455_normal_accounting.h"
 #include "client455_secondary.h"
+#include "client455_enhanced_lighting.h"
 #include <cstring>
 #include <cwchar>
 #include <stdexcept>
@@ -108,6 +109,7 @@ void ChInterface::InitCharacter(IDirect3DDevice9* device){
     if(!device)throw std::invalid_argument("455 Character device");auto& process=hub();
     const int result=RF455_SetCharacterRendererDevice(&native,&process.shared,device,&process.shader,nullptr);
     if(result<0)throw std::runtime_error("455 Character shader initialization");
+    RF455_InitializeEnhancedActorLighting(&process.shared.shaders,&process.shader);
     runtime->load.legacy.rendererMode=native.vertexMode;
     RF455_BindRendererDrawContext(&native,&process.shared,&runtime->draw);
 }
@@ -127,7 +129,7 @@ CHARACTEROBJECT* ChInterface::LoadMeshData(CObjectManager* manager,char* name,bo
 void ChInterface::SetAlpha(CHARACTEROBJECT* record,float alpha){for(unsigned i=0;i<record->m_MaxObj;++i)record->m_pMesh[i].m_Alpha=alpha;record->m_Alpha=alpha;}
 float ChInterface::GetAlpha(CHARACTEROBJECT* record){return record->m_Alpha;}
 void ChInterface::SetMaterial(CHARACTEROBJECT* record,D3DMATERIAL9& material){if(record)std::memcpy(&record->m_Material,&material,68);}
-void CRender::SetLight(D3DLIGHT9 light){std::memcpy(&native.light,&light,104);if(native.device)native.device->SetVertexShaderConstantF(10,reinterpret_cast<const float*>(&native.light.Direction),1);}
+void CRender::SetLight(D3DLIGHT9 light){RF455_SetEnhancedActorLightingProtected(false);std::memcpy(&native.light,&light,104);if(native.device)native.device->SetVertexShaderConstantF(10,reinterpret_cast<const float*>(&native.light.Direction),1);}
 void CRender::SetState(){RF455_BindRendererDrawContext(&native,&hub().shared,&runtime->draw);RF455_SetCharacterDrawState(&runtime->draw.state);}
 void CRender::UnSetState(){RF455_BindRendererDrawContext(&native,&hub().shared,&runtime->draw);RF455_UnsetNormalCharacterState(&runtime->draw.state);}
 void CRender::FrameMove(CHARACTEROBJECT* record){

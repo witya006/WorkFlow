@@ -5,7 +5,7 @@ from compare_client_binaries import WS,pe
 from verify_client_coff import directives
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
-    root=WS/'work/recovered/client455/shaders';root.mkdir(parents=True,exist_ok=True);art=WS/'artifacts/shaders455';art.mkdir(parents=True,exist_ok=True);log=art/'build.txt';names=['client455_shaders.h','client455_shaders.cpp','client455_shader_key.h','test_client455_shaders.cpp'];hashes={}
+    root=WS/'work/recovered/client455/shaders';root.mkdir(parents=True,exist_ok=True);art=WS/'artifacts/shaders455';art.mkdir(parents=True,exist_ok=True);log=art/'build.txt';names=['client455_shaders.h','client455_shaders.cpp','client455_shader_key.h','test_client455_shaders.cpp','client455_enhanced_lighting.h','client455_enhanced_lighting.inc','client455_enhanced_lighting_shader.h'];hashes={}
     for name in names:source=WS/'scripts/native'/name;shutil.copyfile(source,root/name);hashes[name]=sha(source)
     ref=json.loads((WS/'inventory/client455-shaders-reference.json').read_text(encoding='utf-8'))
     if hashes['client455_shader_key.h']!=ref['key_header_sha256']:raise ValueError('Changed shader key')

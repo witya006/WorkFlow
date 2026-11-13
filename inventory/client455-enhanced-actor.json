@@ -1,0 +1,389 @@
+{
+  "status": "PASS",
+  "scope": "Real model + original textures/ANI through production loading/pose/draw in controlled perspective scene; no live world",
+  "source": {
+    "file": "scripts/native/client455_enhanced_actor_probe.cpp",
+    "sha256": "2ad7b917a1758475b8ce94d781d98f1071744354f2e449c1a692ac1b628196b0"
+  },
+  "included_source": {
+    "file": "scripts/native/test_client455_draw.cpp",
+    "sha256": "fa2ff9de4b56d149fa40fe910bdedd626ff102e1bc63cbdfc768b64d42601deb"
+  },
+  "runner": {
+    "file": "scripts/probe_client455_enhanced_actor.py",
+    "sha256": "0c586c79527f78b97c20854b43d63f66d20f1b290b3ecd60552ce45ee7b78479"
+  },
+  "executable": {
+    "file": "work/enhanced-actor455/71a342678b6e/enhanced-actor-probe.exe",
+    "sha256": "71a342678b6e0e909664e81ff4cb27e7cc0774e0e503029170c5328313cd0a28"
+  },
+  "fixture": {
+    "file": "work/enhanced-actor455/71a342678b6e/model.txt",
+    "sha256": "3197c7dce17c6f26a7895a3152ef84ee994778a3cc851f746abf66d037d51c51"
+  },
+  "reference": {
+    "file": "inventory/client455-draw-reference.json",
+    "sha256": "7a43927b7cfb72df79b2e4b2842e3b7bc6d71ddc57b26d461aef42ef39b0dbe6"
+  },
+  "inputs": [
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic.sho",
+      "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_normal.sho",
+      "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_norm_spec.sho",
+      "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_shadow.sho",
+      "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_Bump.sho",
+      "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_BumpEffect.sho",
+      "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_Scroll.sho",
+      "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_DScroll.sho",
+      "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_EnvScroll.sho",
+      "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_GradeEffect.sho",
+      "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_GradeEnvEffect.sho",
+      "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/System/shader/sh_basic_alpha.sho",
+      "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/model/sample_010.msh",
+      "sha256": "a85c20bc0bfa84f01f6a4328a8977d2ccddcc8d7a841d96a8a5e5ea1abd65cce"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/model/real_09.bn",
+      "sha256": "beb1777973e6fc574d966f421358f6da22ba8adee6cbd1ba3abb7f6df80466fd"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/model/sample_016.ani",
+      "sha256": "b39236d6d009340f5382a50d2c62cef370d1adebce5001f5859dbf26bd90101c"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/tex/25_A_Xmas_02.dds",
+      "sha256": "bcda0ec855c1e19a670b6f652fa88d025dbeb356a9441d5053ced6545199a208"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/tex/25_BELPHE.dds",
+      "sha256": "fe8ccac33314b1e10351e3f22c99ec8ecb7af1611a21b2d8501112490e4bbd46"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/tex/25_BELPHE_weap.dds",
+      "sha256": "fe7626d9ca618ff3fb4828d2baa0420a248d89de94ba10aec25efa974b5477af"
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "resolution": [
+      1920,
+      1080
+    ],
+    "geometry_parts": 46,
+    "same_pose_frame": 160,
+    "animated_frame": 2160,
+    "classic_pixels": 203339,
+    "enhanced_pixels": 203339,
+    "changed_pixels": 168788,
+    "animation_changed_pixels": 281939,
+    "classic_restored_exactly": true,
+    "observations": {
+      "classic": {
+        "draws": 46,
+        "enhanced": 0,
+        "bound_programs_match": true,
+        "programs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "enhanced": {
+        "draws": 46,
+        "enhanced": 46,
+        "bound_programs_match": true,
+        "programs": [
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ]
+      },
+      "restored": {
+        "draws": 46,
+        "enhanced": 0,
+        "bound_programs_match": true,
+        "programs": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "animated": {
+        "draws": 46,
+        "enhanced": 46,
+        "bound_programs_match": true,
+        "programs": [
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ]
+      }
+    },
+    "scope": "real model, original textures and ANI through production loading/pose/draw in a controlled perspective scene; not live world"
+  },
+  "output": {
+    "file": "work/enhanced-actor455/71a342678b6e/result.json",
+    "sha256": "4c9348cfbc0b72b35598cabdebb3db2e2cfce08fdc5a84eb4ca8fedbf484c15f"
+  },
+  "parts": {
+    "file": "work/enhanced-actor455/71a342678b6e/parts.json",
+    "sha256": "7b8925d6f41e06029b04354348ef5de028b9ae000271b225031b97cd1b8fd678"
+  },
+  "frames": [
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/actor-classic-restored.png",
+      "sha256": "2c0df8c5dd4062cd25f1ef0c4ef53421144b7172599f5c8f2a44fe394ba4d5d3"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/actor-classic.png",
+      "sha256": "2c0df8c5dd4062cd25f1ef0c4ef53421144b7172599f5c8f2a44fe394ba4d5d3"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/actor-enhanced-animated.png",
+      "sha256": "2d64c0ebbb1dc265afe7c6f7cab3009dbea1ccc1b572fbfd589a1cb5c55bb11a"
+    },
+    {
+      "file": "work/enhanced-actor455/71a342678b6e/actor-enhanced.png",
+      "sha256": "888b8faf23d04863b27bc72eaf9fe640a0cf158ab3e63d61cf05f146f383a183"
+    }
+  ],
+  "console": {
+    "file": "work/enhanced-actor455/71a342678b6e/console.txt",
+    "sha256": "0b7d2591501f37e016af114cc1e35c8de8c5966e523f365b2749ceba7a0f6021"
+  },
+  "exit": 0,
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "102a244393c7e5fdcb684326f07e8b39b3e16ca783ff401bfd57f7e82d315344",
+    "bytes": 2552832,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a77c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "shared_staging": {
+    "assets": 18,
+    "linked_bytes": 3905519,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "server_modified": false,
+  "authentication_performed": false,
+  "user_session_touched": false,
+  "live_world_verified": false
+}

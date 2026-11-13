@@ -48,7 +48,7 @@ def main():
         original=client/relative;copy=run/relative
         if not original.is_file():raise ValueError('Required startup input missing:'+relative)
         copy.parent.mkdir(parents=True,exist_ok=True);stage_asset(original,copy);inputs.append({'file':copy.relative_to(WS).as_posix(),'sha256':sha(copy),'kind':'reference input'})
-    config=run/'R3Engine.ini';config.write_text(f'[Setup]\nLanguage={args.nation}\n[RenderState]\nScreenXSize=640\nScreenYSize=480\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');inputs.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config),'kind':'own lab config'})
+    config=run/'R3Engine.ini';config.write_text(f'[Setup]\nLanguage={args.nation}\n[RenderState]\nScreenXSize=1920\nScreenYSize=1080\nbFullScreen=FALSE\nTextureDetail=3\n[Sound]\nSound=FALSE\nMusic=FALSE\n',encoding='ascii');inputs.append({'file':config.relative_to(WS).as_posix(),'sha256':sha(config),'kind':'own lab config'})
     connectionConfig=run/'DataTable/ClientSystem.ini';connectionConfig.parent.mkdir(parents=True,exist_ok=True);connectionConfig.write_text('[Network]\nConnectTime=5\n',encoding='ascii');inputs.append({'file':connectionConfig.relative_to(WS).as_posix(),'sha256':sha(connectionConfig),'kind':'own transport timeout'})
     if beforeConnect:
         label=run/'checkpoint-label.txt';label.write_text('before_client_connect',encoding='ascii');inputs.append({'file':label.relative_to(WS).as_posix(),'sha256':sha(label),'kind':'owned decoded checkpoint label'})

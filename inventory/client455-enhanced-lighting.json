@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "scope": "shader and production shared-mesh route component; not live actor or full scene",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "executable": {
+    "file": "work/enhanced-lighting455/4c2615e054ba/enhanced-lighting-probe.exe",
+    "sha256": "4c2615e054baf5ded0b6b5f438f6d957aa16f38fcbd5bda90f4142d52b01680c"
+  },
+  "source": {
+    "file": "scripts/native/client455_enhanced_lighting_probe.cpp",
+    "sha256": "f129ddd15229d200d3ae122f3838532d98e93fc5547d8e44d05366251039fa82"
+  },
+  "runner": {
+    "file": "scripts/probe_client455_enhanced_lighting.py",
+    "sha256": "a847c8cab4d952750f3926c4d56d057988cdb1a0b3c87092c30f4bca269f030f"
+  },
+  "sources": [
+    {
+      "file": "scripts/native/client455_enhanced_lighting.h",
+      "sha256": "a249bc01593706e9618e912baba0ef45fad7bd10b7dd92559d06165eb0c867d2"
+    },
+    {
+      "file": "scripts/native/client455_enhanced_lighting.inc",
+      "sha256": "3fca39c5e9deb671b7463330deb72adf23cd33ad7f27b76fe9dd9e114a1b3525"
+    },
+    {
+      "file": "scripts/native/client455_enhanced_lighting_shader.h",
+      "sha256": "14a3f7ae7d3eff2194718f65ac69b75f86dbd6e81a10e659769e5a6c7252502c"
+    },
+    {
+      "file": "scripts/native/client455_character_draw.cpp",
+      "sha256": "e415092d35847df9a75c0e29c10dc9bf2244fa795842ae4e02d8c722fd6ded1a"
+    }
+  ],
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1f416de8b80ddb87e8f1b420f66c81194ce8829d252498ff7286a664081e9f83",
+    "bytes": 2551296,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a7250",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "shader_reference": {
+    "file": "inventory/client455-shaders-reference.json",
+    "sha256": "734c215a09c033d8497019e22e87daae67a3e1c1f8e2aa406d07950c3135c814"
+  },
+  "shader_build": {
+    "file": "inventory/client455-shaders-build.json",
+    "sha256": "e2bc9aa212f96262914af85eaeaa66f4c07b860b72434433aa564842587b2179"
+  },
+  "compiler_sha256": "c12f0ab0338eb5031d3d04beaf7208ac848f7e037d21ff963d2af90221cbe935",
+  "inputs": [
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic.sho",
+      "sha256": "0369f909c90c2f38ccfda5d3dedcfa86971dcbf6c8f8913747cef6d0c27da607"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_normal.sho",
+      "sha256": "16e3c91510c071f5f7cd67b28a22a937f01ebd0d4dd6d25ffd67d646d72cb58e"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_norm_spec.sho",
+      "sha256": "8e2756f59cf940418b05434c2b7e078db93ec3cf9e4239c69a2423830046114f"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_shadow.sho",
+      "sha256": "8c2f5ac8a8116778332dd23f42ca1137483348fa796f8a6d060e40cf2b5aeea6"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_Bump.sho",
+      "sha256": "3f7eee8b8f04f04cb4ed7eb9ad34aec309593a37041a50c4e207ab5e53249c32"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_BumpEffect.sho",
+      "sha256": "9c2b3ab82e60f89539235dfbe7b12128db82350b5d0d8fc8a2cbd7e6ef223123"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_Scroll.sho",
+      "sha256": "e32a0188487b221d4cc238ca354377acdb3f2dee3d9169398c86c52de9c89c3c"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_DScroll.sho",
+      "sha256": "a11f75734ed0d77b4f90792a973b227efbf23ad17d3d5f2fa75fc8ed059bdbff"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_EnvScroll.sho",
+      "sha256": "99f74309e51b993904750591c538eeee6035e8e1ce9c935062246983185f1f1c"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_GradeEffect.sho",
+      "sha256": "0b7a9fec08828087dd383dc6e76089f10d77e80685e0c50cdce504506c5d42bf"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_GradeEnvEffect.sho",
+      "sha256": "f7a6cd5c3d9c7235df4a4227a0f61ef24bb8ecdd79917e44a0d4d7125d41f604"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/System/shader/sh_basic_alpha.sho",
+      "sha256": "226c40e9ef6f5482fcb4ddc902784a79d4878e2e8f0f95f2184d7b7d557a8802"
+    }
+  ],
+  "frames": [
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/classic.png",
+      "sha256": "09104e6c5162f2a6f8563ef2974711a2d5798f739a1d0a833289676c5f83106c"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/enhanced-basic.png",
+      "sha256": "09104e6c5162f2a6f8563ef2974711a2d5798f739a1d0a833289676c5f83106c"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/enhanced-masked-specular.png",
+      "sha256": "4eb3d1965c03323a36b67ad9164be0b801422b20d4eb1993bf1cbe22166c61d9"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/route-classic.png",
+      "sha256": "3582d7a17dde485602ce30b85b1b93e3ebdd569686924d3d1aef6770b02d88fe"
+    },
+    {
+      "file": "work/enhanced-lighting455/4c2615e054ba/route-enhanced.png",
+      "sha256": "3f060dbed18a22dc8eabb73c23c9bbb1db8bb06e328a64ccabb7cf62a02b0799"
+    }
+  ],
+  "result": {
+    "file": "work/enhanced-lighting455/4c2615e054ba/result.json",
+    "sha256": "7d9cea685646e03d6ec7ce22acc62a668dfdf75fb175373fec9575585f0bdc88"
+  },
+  "native": {
+    "status": "PASS",
+    "resolution": [
+      1920,
+      1080
+    ],
+    "classic_restored": true,
+    "specular_mask": true,
+    "camera_uniform": true,
+    "finite_normal_boundary": true,
+    "protected_effect_bind": true,
+    "compile_failures": 3,
+    "actual_shared_mesh_routes": 9,
+    "pixel_constants_restored": true,
+    "scope": "shader and production shared-mesh route component; not live actor or full scene"
+  },
+  "console": {
+    "file": "work/enhanced-lighting455/4c2615e054ba/console.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "shared_staging": {
+    "assets": 12,
+    "linked_bytes": 38546,
+    "new_pool_bytes": 0,
+    "adopted_bytes": 0,
+    "private_files": 0
+  },
+  "user_session_touched": false,
+  "authentication_performed": false,
+  "server_modified": false,
+  "live_actor_verified": false,
+  "visible_scene_verified": false
+}

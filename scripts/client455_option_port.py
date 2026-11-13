@@ -3,6 +3,58 @@ import re
 
 def port_option(raw,relative,native):
     root='userinterface/gamewindow/etcwin/guioptionwindow'
+    if relative == 'gameobject/manager/ccharactermgr.cpp':
+        raw, count = re.subn(
+            rb'(CCharacterMgr::SetVisualFieldAdjustmentLevel\( BYTE pi_byLevel \)\s*\{)',
+            rb'\1\n\tif (pi_byLevel < 1) pi_byLevel = 1;\n\telse if (pi_byLevel > MAX_VISUALFIELD_ADJUSTMENT_LEVEL) pi_byLevel = MAX_VISUALFIELD_ADJUSTMENT_LEVEL;',
+            raw)
+        if count != 1:
+            raise ValueError('Manual visual field level anchor changed')
+        start = raw.index(b'CCharacterMgr::EnableAutoVisualFieldAdjustment(')
+        end = raw.index(b'CCharacterMgr::SetVisualFieldAdjustmentLevel(', start)
+        body = raw[start:end]
+        anchor = b'm_bIsEnableAutoVisualFieldAdjustment = pi_bFlag;'
+        if body.count(anchor) != 1:
+            raise ValueError('Automatic visual field state anchor changed')
+        body = body.replace(anchor, anchor + b'''
+    if (pi_bFlag) {
+        // The constructor starts at MAX; recover invalid state explicitly before clamping.
+        if (!std::isfinite(m_fVisualField)) m_fVisualField = MAX_VISUAL_FIELD;
+        else if (m_fVisualField < MIN_VISUAL_FIELD) m_fVisualField = MIN_VISUAL_FIELD;
+        else if (m_fVisualField > MAX_VISUAL_FIELD) m_fVisualField = MAX_VISUAL_FIELD;
+    }''')
+        return b'#include <cmath>\n' + raw[:start] + body + raw[end:], True
+    if relative == 'gameprogress/cgp_maingame.cpp':
+        # The old stage initialized backend owners but left these widgets at defaults.
+        # Keep the settings transaction's initial snapshot aligned with those owners.
+        start = raw.index(b'CGP_MainGame::LoadGameSetting(')
+        end = raw.index(b'CGP_MainGame::SaveGameSetting(', start)
+        body = raw[start:end]
+        old_default = b'"VisualFieldAdjustmentLevel", 5, l_pFileName'
+        if body.count(old_default) != 1:
+            raise ValueError('Manual visual field default anchor changed')
+        body = body.replace(old_default, b'"VisualFieldAdjustmentLevel", 4, l_pFileName')
+        changes = [
+            (b'_GetCharMgr()->EnableAutoVisualFieldAdjustment( l_nIntValue );',
+             b'\n\t_GetOptionWindow()->SwitchOn(CGUIOptionWindow::AutoSeeDist, l_nIntValue);'),
+            (b'_GetCharMgr()->SetVisualFieldAdjustmentLevel( l_nIntValue );',
+             b'\n\t_GetOptionWindow()->SetGraphicOption(CGUIOptionWindow::SeeDist, float(_GetCharMgr()->GetVisualFieldAdjustmentLevel()));'),
+            (b'_GetCamera()->SetCameraMode( l_nIntValue );',
+             b'\n\t_GetOptionWindow()->SelectCamera(BYTE(_GetCamera()->GetCameraMode()));'),
+            (b'm_pHintMgr->EnableRenderHint( l_nIntValue );',
+             b'\n\t_GetOptionWindow()->SwitchOn(CGUIOptionWindow::Hint, m_pHintMgr->IsRenderHint());'),
+        ]
+        for old, addition in changes:
+            if body.count(old) != 1:
+                raise ValueError('Settings initial state anchor changed: ' + old.decode())
+            body = body.replace(old, old + addition)
+        raw = raw[:start] + body + raw[end:]
+        for getter in (b'GetGlobalMusicVolume()', b'GetGlobalWavVolume()'):
+            old = b'sprintf( l_pBuf, "%.1f", ' + getter + b' );'
+            if raw.count(old) != 1:
+                raise ValueError('Saved sound volume precision anchor changed')
+            raw = raw.replace(old, b'sprintf( l_pBuf, "%.4f", ' + getter + b' );')
+        return raw, True
     if relative==root+'.h':return b'#pragma once\n#include "client455_option_window.h"\n',True
     if relative==root+'.cpp':return b'''#include "GUIOptionWindow.h"
 #include "../../SpriteMgr.h"
