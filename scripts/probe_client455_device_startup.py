@@ -127,7 +127,10 @@ def entry_result(events, resolution):
         'RF455 Protocol:select-result:0:', 'RF455 Protocol:selection-fade-start:',
         'RF455 SelectionFade:0:', 'RF455 SelectionFade:1:', 'RF455 SelectionFade:2:',
         'RF455 Protocol:selection-zone-connect:', 'RF455 Protocol:selection-world-handoff:',
-        'RF455 Protocol:position-mode:0:', f'RF455 WorldCapture:0:0:{resolution}',
+        'RF455 Protocol:selection-present-deferred:', 'RF455 Protocol:map-bsp:',
+        'RF455 Protocol:avatar-ready:', 'RF455 Protocol:world-frame:', 'RF455 Protocol:selection-world-present:',
+        'RF455 Protocol:position-mode:0:', 'RF455 WorldSample:0:',
+        f'RF455 WorldCapture:0:0:{resolution}',
     )
     ordered = []
     for event in events:
@@ -138,8 +141,15 @@ def entry_result(events, resolution):
     matched = len(ordered) == len(prefixes)
     capture = re.compile(r'RF455 SelectionFade:[012]:(\d+):00000000:' + re.escape(resolution))
     fade = [int(match[1]) for value in ordered[2:5] if (match := capture.fullmatch(value))]
-    return {'passed': matched and len(fade) == 3 and fade[0] < fade[1] < fade[2],
-            'ordered': ordered, 'fade_ms': fade}
+    map_load = next((re.fullmatch(r'RF455 Protocol:map-bsp:(\d+):1:0', value) for value in ordered
+                     if value.startswith('RF455 Protocol:map-bsp:')), None)
+    map_index = int(map_load[1]) if map_load else None
+    input_enabled = any(re.match(r'RF455 WorldSample:0:\d+:\d+:1:', value) for value in ordered)
+    first_world_frame = f'RF455 Protocol:world-frame:{map_index}:0:0' in ordered
+    return {'passed': matched and len(fade) == 3 and fade[0] < fade[1] < fade[2] and
+                      first_world_frame and input_enabled,
+            'ordered': ordered, 'fade_ms': fade, 'map_index': map_index,
+            'first_world_frame': first_world_frame, 'input_enabled': input_enabled}
 
 
 def main(handoff=None,live_port=None,select_character=False,world_map_index=None,

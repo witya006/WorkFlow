@@ -209,8 +209,11 @@ def port_initial_download(raw, relative, section, native):
         return (OBSERVATION + b'#include "client455_nation_paths.h"\n#include <cstring>\n#include <string>\n'
                 + (native / 'client455_walk_observation.inc').read_bytes() + b'\n' + raw), True
     if relative == 'gameprogress/cgp_maingame.h':
-        return replace(raw, b'BOOL\tm_bIsCompleteDataDownload;',
-                       b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;'), True
+        raw = replace(raw, b'BOOL\tm_bIsCompleteDataDownload;',
+                      b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;')
+        return replace(raw, b'inline\tBOOL\tIsEnableInput( void )',
+                       b'bool HasRenderedWorldFrame455() const { return m_reportedWorldFrame455; }\n'
+                       b'\tinline\tBOOL\tIsEnableInput( void )'), True
     if relative == 'gameprogress/cgp_maingame.cpp':
         raw = patch_method(raw, section, b'CGP_MainGame', b'Init', lambda body: replace(
             body, b'm_bIsCompleteDataDownload\t=', b'RF455_WorldObservation() = {};\n\tm_reportedWorldFrame455 = false;\n\tm_bIsCompleteDataDownload\t='))

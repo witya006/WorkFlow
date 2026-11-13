@@ -1,0 +1,202 @@
+{
+  "status": "WORLD_PRESENTATION_ORDER_VERIFIED",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Russia",
+  "map": "NeutralB",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "b4a998401a394dcdd4ad2dc346bc26f7c1a1123b0913893d9d3d43c8e2543227",
+    "bytes": 2533888,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4c90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x138ff0",
+          "bytes": 80,
+          "role": "Stage exits before FrameMove and Render",
+          "sha256": "a5e2664a89edea1658e0bef66f9a6b33e66a7dfb9b2a0638e9c9201502f53a3b"
+        },
+        {
+          "rva": "0x13f58d",
+          "bytes": 242,
+          "role": "Login fade completion and MainGame handoff",
+          "sha256": "6bf1a41dd05f95d68a48f0ad4513de3b6b2479ed4ff02e0e52264b2505b7a2aa"
+        },
+        {
+          "rva": "0x14bcc0",
+          "bytes": 22,
+          "role": "Getter used by the MainGame presentation-side condition",
+          "sha256": "25356f9024ff0041672fc307baad030ac8460676a66509b0cb13bb262eda1392"
+        },
+        {
+          "rva": "0x14bce0",
+          "bytes": 132,
+          "role": "Initial MainGame map and data load",
+          "sha256": "9ed98972c19a2bb866b448c59cd3b9c5db30e750e8d614408df8525445436ace"
+        },
+        {
+          "rva": "0x3c8c78",
+          "bytes": 26,
+          "role": "Map load clears black overlay",
+          "sha256": "9857e753cad1e89b30b0dfd0bc40f7ad6f3ae77004d452f26c4ce653cf8eb772"
+        },
+        {
+          "rva": "0x3d0be4",
+          "bytes": 50,
+          "role": "WinMain loop tail and MainGame condition",
+          "sha256": "9472cb4193ad0096417d9b0b25aeb74af62dc9e8f090ab27892aece7d56fb979"
+        },
+        {
+          "rva": "0x4eeb90",
+          "bytes": 302,
+          "role": "EndLoop calls D3D Present",
+          "sha256": "4dda4aaea775382d36d39b1b0e20fa58ec7203e5cef6dc4cb208685624e8d35f"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x138ff0",
+          "bytes": 80,
+          "role": "Stage exits before FrameMove and Render",
+          "sha256": "a5e2664a89edea1658e0bef66f9a6b33e66a7dfb9b2a0638e9c9201502f53a3b"
+        },
+        {
+          "rva": "0x13f58d",
+          "bytes": 242,
+          "role": "Login fade completion and MainGame handoff",
+          "sha256": "6bf1a41dd05f95d68a48f0ad4513de3b6b2479ed4ff02e0e52264b2505b7a2aa"
+        },
+        {
+          "rva": "0x14bcc0",
+          "bytes": 22,
+          "role": "Getter used by the MainGame presentation-side condition",
+          "sha256": "25356f9024ff0041672fc307baad030ac8460676a66509b0cb13bb262eda1392"
+        },
+        {
+          "rva": "0x14bce0",
+          "bytes": 132,
+          "role": "Initial MainGame map and data load",
+          "sha256": "9ed98972c19a2bb866b448c59cd3b9c5db30e750e8d614408df8525445436ace"
+        },
+        {
+          "rva": "0x3c8c78",
+          "bytes": 26,
+          "role": "Map load clears black overlay",
+          "sha256": "9857e753cad1e89b30b0dfd0bc40f7ad6f3ae77004d452f26c4ce653cf8eb772"
+        },
+        {
+          "rva": "0x3d0be4",
+          "bytes": 50,
+          "role": "WinMain loop tail and MainGame condition",
+          "sha256": "9472cb4193ad0096417d9b0b25aeb74af62dc9e8f090ab27892aece7d56fb979"
+        },
+        {
+          "rva": "0x4eeb90",
+          "bytes": 302,
+          "role": "EndLoop calls D3D Present",
+          "sha256": "4dda4aaea775382d36d39b1b0e20fa58ec7203e5cef6dc4cb208685624e8d35f"
+        }
+      ]
+    }
+  ],
+  "entry_transition": {
+    "passed": true,
+    "ordered": [
+      "RF455 Protocol:select-result:0:0:0",
+      "RF455 Protocol:selection-fade-start:0:0:0",
+      "RF455 SelectionFade:0:4:00000000:1920x1080",
+      "RF455 SelectionFade:1:688:00000000:1920x1080",
+      "RF455 SelectionFade:2:1403:00000000:1920x1080",
+      "RF455 Protocol:selection-zone-connect:1527:0:0",
+      "RF455 Protocol:selection-world-handoff:1527:0:0",
+      "RF455 Protocol:selection-present-deferred:0:0:0",
+      "RF455 Protocol:map-bsp:0:1:0",
+      "RF455 Protocol:avatar-ready:0:0:0",
+      "RF455 Protocol:world-frame:0:0:0",
+      "RF455 Protocol:selection-world-present:0:0:0",
+      "RF455 Protocol:position-mode:0:0:0",
+      "RF455 WorldSample:0:47:268435456:1:-4783.94,436.492,4869.04:-4783.94,436.492,4869.04:40,180,60",
+      "RF455 WorldCapture:0:0:1920x1080"
+    ],
+    "fade_ms": [
+      4,
+      688,
+      1403
+    ],
+    "map_index": 0,
+    "first_world_frame": true,
+    "input_enabled": true
+  },
+  "events": {
+    "file": "work/m9/b4a99840/world-entry-live-russia001/debug-events.jsonl",
+    "sha256": "2bcda5a8a59de024f756b3b483cfd050d2f68a3d4107b38461659305d45a7b44"
+  },
+  "receipts": [
+    {
+      "file": "artifacts/client455-progress/world-presentation-b4a99840/client455-world-entry-live-russia-native.json",
+      "sha256": "1fbfeef1d9906f3e046fabe732fa05bc08b2ac5374ff7a3c5df8638dc90a1770"
+    },
+    {
+      "file": "artifacts/client455-progress/world-presentation-b4a99840/client455-live-launcher-native.json",
+      "sha256": "34703ca1896450102629548fea43fa80b087273af00b3ff41237ded613fca045"
+    }
+  ],
+  "frames": [
+    {
+      "file": "work/m9/b4a99840/world-entry-live-russia001/selection-fade-start.png",
+      "sha256": "739e1420aced6bfe7868148d097eaa522b282e4fa0556d82edecf868d74d2b50",
+      "central_luma": 88.654
+    },
+    {
+      "file": "work/m9/b4a99840/world-entry-live-russia001/selection-fade-mid.png",
+      "sha256": "5859450ad3cad6e85a7df3a52b53df000814d2d59fff91e7f303ed2e3cd757a8",
+      "central_luma": 25.948
+    },
+    {
+      "file": "work/m9/b4a99840/world-entry-live-russia001/selection-fade-end.png",
+      "sha256": "e844b46ca4a160a1343c3df9228177997d36e4b3b8f1561c6471ad0d27185a23",
+      "central_luma": 0.0
+    },
+    {
+      "file": "work/m9/b4a99840/world-entry-live-russia001/world-post-position.png",
+      "sha256": "1b4e4b75f6ae61416589bce0eb963a22618d9f81b1240d872c55098db505b996",
+      "central_luma": 152.098
+    },
+    {
+      "file": "work/m9/b4a99840/world-entry-live-russia001/world-post-position-settled.png",
+      "sha256": "c48160d2a6ca8c4e498691b5078055db849da25ee87f77c0974ac2e167b62288",
+      "central_luma": 152.088
+    }
+  ],
+  "own_change": "Keep the previous image until the MainGame Render pass completes after Login.",
+  "evidence_limit": "Diagnostic trace reports the ordinary Present call. PNG images come from game surfaces. Compositor output was not observed.",
+  "server_files_modified": false,
+  "reference_binary_executed": false,
+  "private_handoff_removed": true,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}

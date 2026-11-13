@@ -634,14 +634,25 @@ def main():
                 if raw.count(focus_assign)!=1:raise ValueError('WinMain activation observation boundary changed')
                 raw=b'#include "client455_protocol_observation.h"\r\n'+raw.replace(
                     focus_assign,focus_assign+b'\r\n\t\t\tRF455_ObserveProtocol("window-focus", wParam != 0, 0, 0);')
-                raw=replace(raw,b'\t\t\t\t\tg_MainApp.GameMainLoop();\n\n\t\t\t\t\tg_MainApp.EndLoop();',b'''                    const bool showingOpening = g_MainApp.GetGameProgressID() == GPI_TITLE;
+                raw=replace(raw,b'\twhile( WM_QUIT != l_sMsg.message )',b'''    bool awaitingWorldFrame = false;
+	while( WM_QUIT != l_sMsg.message )''')
+                raw=replace(raw,b'\t\t\t\t\tg_MainApp.GameMainLoop();\n\n\t\t\t\t\tg_MainApp.EndLoop();',b'''                    const BYTE previousStage = g_MainApp.GetGameProgressID();
                     g_MainApp.GameMainLoop();
-                    // Esc can leave Title before it draws. Keep the last presented frame
-                    // until Login submits its loading screen.
-                    if (showingOpening && g_MainApp.GetGameProgressID() != GPI_TITLE)
+                    const BYTE currentStage = g_MainApp.GetGameProgressID();
+                    // An exiting stage returns before Render. The next stage
+                    // will draw on its first loop; keep the last presented frame meanwhile.
+                    if (previousStage == GPI_TITLE && currentStage != GPI_TITLE)
                         RF455_ObserveProtocol("title-present-deferred", 0, 0, 0);
-                    else
-                        g_MainApp.EndLoop();''')
+                    else if (previousStage == GPI_LOGIN && currentStage == GPI_MAIN_GAME) {
+                        awaitingWorldFrame = true;
+                        RF455_ObserveProtocol("selection-present-deferred", 0, 0, 0);
+                    } else if (!awaitingWorldFrame || currentStage != GPI_MAIN_GAME ||
+                               (_GetMainGame() && _GetMainGame()->HasRenderedWorldFrame455())) {
+                        g_MainApp.EndLoop();
+                        if (awaitingWorldFrame && currentStage == GPI_MAIN_GAME)
+                            RF455_ObserveProtocol("selection-world-present", 0, 0, 0);
+                        awaitingWorldFrame = false;
+                    }''')
                 message_handler=b'CMainApp::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{'
                 raw=replace(raw,message_handler,message_handler+b'''
     // The ready Title stage paints its entire client area through Direct3D.
@@ -649,7 +660,7 @@ def main():
         RF455_ObserveProtocol("title-background-erase-suppressed", 0, 0, 0);
         return TRUE;
     }''')
-                changes.append('455 Title keeps the last presented frame at Login handoff and owns its client-area background')
+                changes.append('Keep the last presented frame across Title-to-Login and Login-to-MainGame handoffs; Title owns its client-area background')
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'
