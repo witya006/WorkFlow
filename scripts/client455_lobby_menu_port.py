@@ -108,12 +108,13 @@ bool CGUILoadingWindow::SelectLoadingFrame455(WORD frame)
                   (native / 'client455_lobby_menu.inc').read_bytes())
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 4, 0, 40 },', b'{ CAM_TOP_TO_LOGINC, 4, 0, 66 },')
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 22, 0, 55 },', b'{ CAM_TOP_TO_LOGINC, 22, 0, 70 },')
-    raw = replace(raw, b'void PlayCamera(CameraAni\tani,DWORD\tcourse = 0)', b'''void PlayLobbyIdleCamera455()
+    raw = replace(raw, b'void PlayCamera(CameraAni\tani,DWORD\tcourse = 0)', b'''void PlayLobbyIdleCamera455(bool returningFromCredits = false)
 {
     const DWORD camera = m_AniCamera.GetCameraIndex(m_RandomStart ? "c_ex01" : "c_ex02");
     if (camera != ID_INVALID) {
-        m_AniCamera.SetPrePlayCamera(camera, 0, ID_INVALID, 0);
-        RF455_ObserveProtocol("lobby-idle-camera", m_RandomStart, 0, 0);
+        m_AniCamera.SetPrePlayCamera(camera, 0, returningFromCredits ? 0 : ID_INVALID,
+                                     returningFromCredits ? _CAM_FLAG_FINAL_STOP : 0);
+        RF455_ObserveProtocol("lobby-idle-camera", m_RandomStart, returningFromCredits, 0);
     }
 }
 
@@ -150,8 +151,14 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     raw, count = re.subn(legacy_logo_draw, b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)\n\t\t\tDrawLobbyLogo455(g_LogoTexture);', raw)
     if count != 1:
         raise ValueError('Lobby title texture draw boundary changed')
-    raw = replace(raw, b'\tm_messages455.Draw();',
-                  b'\tlobbyMenu455.DrawCredits();\n\tm_messages455.Draw();')
+    raw = replace(raw, b'\t\t_GetUIScreen()->Draw();\n\n\t\t// User Interface',
+                  b'        if (lobbyMenu455.ShowingCredits()) FullScreenEffect();\n'
+                  b'\t\t_GetUIScreen()->Draw();\n\n\t\t// User Interface')
+    raw = replace(raw, b'\t\tDrawFadeScreen();', b'        lobbyMenu455.DrawCredits();\n\t\tDrawFadeScreen();')
+    raw = replace(raw, b'\tRF455_CaptureLoginFrameIfRequested();',
+                  b'\tRF455_CaptureLoginFrameIfRequested();\n'
+                  b'    if (lobbyMenu455.ShowingCredits() && lobbyMenu455.CreditsScrolled())\n'
+                  b'        RF455_CaptureLobbyCameraIfRequested(3);')
     raw = replace(raw, b'sprintf( l_pBuf, "Closed Beta v %.3f", _GetMainApp()->GetVersion() );',
                   b'strcpy( l_pBuf, "RF Online 4.55" );')
 
@@ -209,7 +216,7 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     if (uMsg == WM_KEYDOWN && !(lParam & (1L << 30))) {
         const bool credits = lobbyMenu455.ShowingCredits();
         if (lobbyMenu455.KeyDown(wParam)) {
-            if (credits) PlayLobbyIdleCamera455();
+            if (credits) PlayLobbyIdleCamera455(true);
             return 0xffffffff;
         }
     }''')

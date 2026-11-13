@@ -1,0 +1,238 @@
+{
+  "status": "CONFIRMED_BACKBUFFER_LAYOUT_AND_LOBBY_ACTIONS",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7cb8a0cbb56a788f0a76479790f5368ad34c035eb92fcff3081536d149d1f54a",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4e60",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "staged_executable": {
+    "file": "work/m9/7cb8a0cb/selection-live-russia001/RF_Online.bin",
+    "sha256": "7cb8a0cbb56a788f0a76479790f5368ad34c035eb92fcff3081536d149d1f54a"
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 304,
+          "role": "Menu logo geometry",
+          "sha256": "0839c3f9597518c77d7f2a787ee07075cd4e17fb8ad9174d2ac6ff0083976d88"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "role": "Menu logo resource selection",
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 203,
+          "role": "Video geometry",
+          "sha256": "a987797aaa2cad11eb1737bb14952ace1ab831e11a82c4738dd9022195bce7f1"
+        },
+        {
+          "rva": "0x3baf70",
+          "bytes": 228,
+          "role": "Credits button",
+          "sha256": "c59c751107f315a6011ca155752bce9230690057d85292dd8eaa9fcca62cc9bd"
+        },
+        {
+          "rva": "0x13cf06",
+          "bytes": 249,
+          "role": "Credits exit and menu fade",
+          "sha256": "bf72907fe4eb8c79caa5b66b04e35da478280fdf44b4f41810d4e4bacbb4838c"
+        },
+        {
+          "rva": "0x3bb0a0",
+          "bytes": 33,
+          "role": "Exit button",
+          "sha256": "05f4aa94cffdf27ea9c1499119b0774ce2f90b3f2a74c69a03f14d2ad2b3f56e"
+        },
+        {
+          "rva": "0x4b4b10",
+          "bytes": 144,
+          "role": "Render wide movie bars before fade",
+          "sha256": "0c7d5eb5613379ca4f783b971a303b052538787cc58e0acf44dd6f505510e8e7"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13cd0a",
+          "bytes": 304,
+          "role": "Menu logo geometry",
+          "sha256": "0839c3f9597518c77d7f2a787ee07075cd4e17fb8ad9174d2ac6ff0083976d88"
+        },
+        {
+          "rva": "0x13fe49",
+          "bytes": 185,
+          "role": "Menu logo resource selection",
+          "sha256": "0e7146ae2a8cf31a8b7568655378534844a03ee27aa8bb5e4295771d0bdbdb55"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 203,
+          "role": "Video geometry",
+          "sha256": "a987797aaa2cad11eb1737bb14952ace1ab831e11a82c4738dd9022195bce7f1"
+        },
+        {
+          "rva": "0x3baf70",
+          "bytes": 228,
+          "role": "Credits button",
+          "sha256": "c59c751107f315a6011ca155752bce9230690057d85292dd8eaa9fcca62cc9bd"
+        },
+        {
+          "rva": "0x13cf06",
+          "bytes": 249,
+          "role": "Credits exit and menu fade",
+          "sha256": "bf72907fe4eb8c79caa5b66b04e35da478280fdf44b4f41810d4e4bacbb4838c"
+        },
+        {
+          "rva": "0x3bb0a0",
+          "bytes": 33,
+          "role": "Exit button",
+          "sha256": "05f4aa94cffdf27ea9c1499119b0774ce2f90b3f2a74c69a03f14d2ad2b3f56e"
+        },
+        {
+          "rva": "0x4b4b10",
+          "bytes": 144,
+          "role": "Render wide movie bars before fade",
+          "sha256": "0c7d5eb5613379ca4f783b971a303b052538787cc58e0acf44dd6f505510e8e7"
+        }
+      ]
+    }
+  ],
+  "locale": "Russia",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "events": {
+    "file": "work/m9/7cb8a0cb/selection-live-russia001/debug-events.jsonl",
+    "sha256": "5f73ff9c83d36d22b6f1e0b36efd3d81695b3274b4a174bc1ce7348ba8c698c5"
+  },
+  "known_legacy_corner_logo": {
+    "file": "work/m9/8bd845ae/login-frame-live-taiwan002/login-frame.png",
+    "sha256": "9ec89f1fbbfbd3cb46d64c634e2d651556420691572cad208d45246bdff00344",
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "ccr": {
+    "decoded_frame": {
+      "file": "work/m9/7cb8a0cb/selection-live-russia001/title-logo-source.png",
+      "sha256": "27da5b2bee2356edb9d63f47714e807f1844182fda5cdb21933d3da1a81bd6db",
+      "size": [
+        720,
+        540
+      ]
+    },
+    "present_buffer": {
+      "file": "work/m9/7cb8a0cb/selection-live-russia001/title-logo.png",
+      "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "mean_absolute_rgb_error_vs_stretched_source": 0.0874
+  },
+  "menu_frame": {
+    "file": "work/m9/7cb8a0cb/selection-live-russia001/lobby-camera-menu.png",
+    "sha256": "4d2ed4579f66e857d45aa2f616884b370082b17728e6264a014092881d5dd098",
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "credits": {
+    "frame": {
+      "file": "work/m9/7cb8a0cb/selection-live-russia001/lobby-camera-credits.png",
+      "sha256": "9dfb7de9fd1b3d9e92e2911e419058b0e06b79946f1664a77a9f1e3337951816",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "black_bands_px": [
+      12,
+      12
+    ],
+    "actions": [
+      "RF455 Protocol:lobby-credits-open:0:0:0",
+      "RF455 Protocol:lobby-credits-close:27:0:0",
+      "RF455 Protocol:lobby-idle-camera:1:1:0",
+      "RF455 Protocol:lobby-credits-open:0:0:0",
+      "RF455 Protocol:lobby-credits-close:32:0:0",
+      "RF455 Protocol:lobby-idle-camera:1:1:0",
+      "RF455 Protocol:lobby-exit:0:0:0"
+    ],
+    "exit_code": 0
+  },
+  "world_entry": {
+    "map": "NeutralB",
+    "events": {
+      "file": "work/m9/7cb8a0cb/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "97e452c2ee604c1606b9d38e0f42d0f3949db2c4b637ce1981dd4adbf806a168"
+    },
+    "transition": {
+      "passed": true,
+      "ordered": [
+        "RF455 Protocol:select-result:0:0:0",
+        "RF455 Protocol:selection-fade-start:0:0:0",
+        "RF455 SelectionFade:0:3:00000000:1920x1080",
+        "RF455 SelectionFade:1:685:00000000:1920x1080",
+        "RF455 SelectionFade:2:1404:00000000:1920x1080",
+        "RF455 Protocol:selection-zone-connect:1527:0:0",
+        "RF455 Protocol:selection-world-handoff:1527:0:0",
+        "RF455 Protocol:selection-present-deferred:0:0:0",
+        "RF455 Protocol:map-bsp:0:1:0",
+        "RF455 Protocol:avatar-ready:0:0:0",
+        "RF455 Protocol:world-frame:0:0:0",
+        "RF455 Protocol:selection-world-present:0:0:0",
+        "RF455 Protocol:position-mode:0:0:0",
+        "RF455 WorldSample:0:46:268435456:1:-4783.94,436.492,4869.04:-4783.94,436.492,4869.04:40,180,60",
+        "RF455 WorldCapture:0:0:1920x1080"
+      ],
+      "fade_ms": [
+        3,
+        685,
+        1404
+      ],
+      "map_index": 0,
+      "first_world_frame": true,
+      "input_enabled": true
+    },
+    "frame": {
+      "file": "work/m9/7cb8a0cb/world-entry-live-russia001/world-post-position.png",
+      "sha256": "64ef953a72f734fea8b5618bc990e26283f25ef50bbaeba547d82fadb2d5ba2f",
+      "size": [
+        1920,
+        1080
+      ]
+    }
+  },
+  "latest_manual_issue_identified": false,
+  "physical_display_verified": false,
+  "reference_executable_run": false
+}

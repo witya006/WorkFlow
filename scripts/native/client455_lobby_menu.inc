@@ -4,7 +4,9 @@
 #include <vector>
 
 #include "client455_font.h"
+#include "client455_fullscreen_effect.h"
 #include "client455_language.h"
+#include "client455_movie_state.h"
 #include "client455_nation_paths.h"
 #include "client455_protocol_observation.h"
 
@@ -61,7 +63,7 @@ public:
     {
         if (IsShow()) Close();
         screen.Remove(this);
-        credits_.clear();
+        ClearCredits();
         action_ = Action::None;
     }
 
@@ -125,7 +127,9 @@ public:
             return true;
         }
         if (!credits_.empty() && (key == VK_ESCAPE || key == VK_SPACE)) {
-            credits_.clear();
+            ClearCredits();
+            SetFadeOut(0, 0, 1.0f);
+            SetFadeIn(0, 1.0f, 1.0f);
             Open();
             RF455_ObserveProtocol("lobby-credits-close", static_cast<unsigned>(key), 0, 0);
             return true;
@@ -206,8 +210,13 @@ public:
         credits_ = std::move(lines);
         MeasureCredits();
         creditsStart_ = R3GetTime();
+        SetStateFullScreenEffect(0x80000000u);
+        RF455_SetFullScreenEffectDensity(0.15f);
+        RF455_SetMovieState(RF455_GetMovieState() | RF455_MOVIE_WIDE);
         return true;
     }
+
+    bool CreditsScrolled() const { return R3GetTime() - creditsStart_ >= 3.0f; }
 
     void DrawCredits()
     {
@@ -235,6 +244,15 @@ public:
 
 private:
     struct CreditLine { int style; std::wstring text; LONG width = 0; };
+
+    void ClearCredits()
+    {
+        if (credits_.empty()) return;
+        credits_.clear();
+        SetStateFullScreenEffect(0);
+        RF455_SetFullScreenEffectDensity(0.25f);
+        RF455_SetMovieState(RF455_GetMovieState() & ~RF455_MOVIE_WIDE);
+    }
 
     static DWORD CreditFlags(int style) { return R3_HAN_OUTLINE | (style >= 2 ? 0x80000000 : 0); }
 

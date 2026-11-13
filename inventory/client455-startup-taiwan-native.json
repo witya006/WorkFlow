@@ -2,11 +2,11 @@
   "scope": "Exact own WinMain with genuine initialTCP then engine/Miles;stopped before D3D/window;not authentication/fullnetwork or455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "12f1bdbe784134727918c03cc484ccca852752f1b18ea90efdb7d5cf77c2ddec",
+    "sha256": "7cb8a0cbb56a788f0a76479790f5368ad34c035eb92fcff3081536d149d1f54a",
     "bytes": 2534400,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a4d20",
+    "entry_rva": "0x1a4e60",
     "sections": [
       ".text",
       ".rdata",
@@ -15,9 +15,9 @@
       ".reloc"
     ]
   },
-  "staged_executable": "work\\m9\\12f1bdbe\\startup-taiwan001\\RF_Online.bin",
-  "normal_link_sha256": "73460ad7364e80febe44b4bf9d5ee694b5296f127ecb2e3ae1e06addd3799c41",
-  "audit_sha256": "4b10b724585167cca4168ecac1f226069bb2ab340a310126a48a69447f9ef338",
+  "staged_executable": "work\\m9\\7cb8a0cb\\startup-taiwan001\\RF_Online.bin",
+  "normal_link_sha256": "6fa5537411b3e8471c0c43037a0d0dba5adeb6cd871ae19a40a9110a5aef1968",
+  "audit_sha256": "fc9a800a0761e499fcb1f4aa0a793657e1d78c31a708e0b7f76c21fd025f30fd",
   "debugger": {
     "file": "work/tools/own-client-startup/own-startup-debugger.exe",
     "sha256": "3daf53301108eb64c87c3007d0cd88ef8f5602c66eb501c9b091e5eb4ed7b3b0",
@@ -26,69 +26,69 @@
   },
   "lab_inputs": [
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/RF_Online.bin",
-      "sha256": "12f1bdbe784134727918c03cc484ccca852752f1b18ea90efdb7d5cf77c2ddec",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/RF_Online.bin",
+      "sha256": "7cb8a0cbb56a788f0a76479790f5368ad34c035eb92fcff3081536d149d1f54a",
       "kind": "own executable"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/mss32.dll",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/mss32.dll",
       "sha256": "441b290e7dc6334eb5023cd9b7937739298fdd66c104d4c96e5edcf642ae912d",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/abuse.dll",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/abuse.dll",
       "sha256": "e26cce1d971642563a56acd1146297e773a8a8a9aeab9038984ab88c40c889c6",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/adv.dll",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/adv.dll",
       "sha256": "0cc38858e8575a93f360baaac7ac6da8f9ac4ae5fa5a4e15d13ba42cd72c3f36",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/pdll.dll",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/pdll.dll",
       "sha256": "d9639b727ebdd6cb0780bf6be8f705d9ed9fbb36f422e4177cbb442adc879bde",
       "kind": "reference runtime DLL"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/Snd/WaveList.spt",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/Snd/WaveList.spt",
       "sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/mssmp3.asi",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/mssmp3.asi",
       "sha256": "121be91fd21c80396cb5cc46c245d9b3f67a26f8cec4d0ebd03f17cd13508b0d",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/System/010.TTF",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/System/010.TTF",
       "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/DataTable/zh-tw/NDLanguage.edf",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/DataTable/zh-tw/NDLanguage.edf",
       "sha256": "b133d807300d05bb8657382d2523f4c4758c98b6a473f35e0fdc6067fdc209b4",
       "kind": "reference input"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/R3Engine.ini",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/R3Engine.ini",
       "sha256": "35a01d9558cb23e6fa5193e50c7aadf6f941d21cbdae308e5c81617cc3c13649",
       "kind": "own lab config"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/DataTable/ClientSystem.ini",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/DataTable/ClientSystem.ini",
       "sha256": "b8a1bfbc4a4490b0237f97258922d2259fbb2803b6af020442a3e9611d7efb6b",
       "kind": "own transport timeout"
     },
     {
-      "file": "work/m9/12f1bdbe/startup-taiwan001/System/DefaultSet.tmp",
-      "sha256": "48c14d7f8e4595a85259e8358217bc75f2f2e291540dbbe98fb4c4395eccb76e",
+      "file": "work/m9/7cb8a0cb/startup-taiwan001/System/DefaultSet.tmp",
+      "sha256": "8ea68b9a5e7fa71fb61f187d99432ed66db56791a9568dd43ea4907b16491a42",
       "kind": "synthetic offline launcher fixture;not authentication"
     }
   ],
   "events": {
-    "file": "work/m9/12f1bdbe/startup-taiwan001/debug-events.jsonl",
-    "sha256": "a8aafb41e2756a4f634a4ba6112dc87a69a70f2e68b298d9911318eae3a2707a"
+    "file": "work/m9/7cb8a0cb/startup-taiwan001/debug-events.jsonl",
+    "sha256": "8f3e6e87e4a0312595db92d8a7b7fc98f1278954c2e7515d8bfffd58cd7b8f76"
   },
   "debugger_exit": 0,
   "summary": {
@@ -101,13 +101,13 @@
     {
       "kind": "checkpoint",
       "name": "WinMain",
-      "rva": "0xcff50",
-      "eax": 33845667
+      "rva": "0xd00c0",
+      "eax": 21328291
     },
     {
       "kind": "checkpoint",
       "name": "after_sound_before_d3d",
-      "rva": "0xd00b1",
+      "rva": "0xd0221",
       "eax": 1
     }
   ],
@@ -131,7 +131,7 @@
       "rva": "0x140b82",
       "module": "\\\\?\\C:\\Windows\\SysWOW64\\KernelBase.dll",
       "parameter0": 429065504,
-      "parameter1": "0x1d3e338"
+      "parameter1": "0x138e520"
     },
     {
       "kind": "exception",
@@ -147,9 +147,9 @@
   "loaded_modules": [
     {
       "kind": "module",
-      "base": "0xd00000",
+      "base": "0xc0000",
       "bytes": 15990784,
-      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\12f1bdbe\\startup-taiwan001\\RF_Online.bin"
+      "path": "\\\\?\\E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\m9\\7cb8a0cb\\startup-taiwan001\\RF_Online.bin"
     },
     {
       "kind": "module",
@@ -266,11 +266,11 @@
       "matches_audited_provider": true
     }
   ],
-  "loaded_module_count": 71,
-  "own_entry_sha256": "04db3071e9cda6d58dd4133b4ebecc742e217f088d559958567492e2c7014db2",
+  "loaded_module_count": 68,
+  "own_entry_sha256": "350f924e7318ed9fd28f7c40162551591caacb9ca1f70add3ca0ce17bea6d3e9",
   "tcp_fixture": {
     "enabled": true,
-    "loopback_port": 58756,
+    "loopback_port": 61827,
     "accepted_connections": 1,
     "bytes_received": 0,
     "bytes_sent": 0,
@@ -294,13 +294,13 @@
   "own_checkpoints": [
     {
       "name": "WinMain",
-      "rva": "0xcff50",
+      "rva": "0xd00c0",
       "bytes": 1,
       "sha256": "a25513c7e0f6eaa80a3337ee18081b9e2ed09e00af8531c8f7bb2542764027e7"
     },
     {
       "name": "after_sound_before_d3d",
-      "rva": "0xd00b1",
+      "rva": "0xd0221",
       "bytes": 3,
       "sha256": "2fd40b052ecdb09c0b4b6c5745e92654c7f03e8bf0bf726ef470fa45fe5b20d0"
     }

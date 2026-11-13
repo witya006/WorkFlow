@@ -86,8 +86,9 @@ static void RF455_CaptureLobbyCameraIfRequested(unsigned phase) {
         return GetEnvironmentVariableA("RF455_CAPTURE_LOBBY_CAMERA", value, sizeof(value)) == 1 && value[0] == '1';
     }();
     if (!enabled) return;
-    static bool attempted[3]{};
-    static const char* const filenames[] = {"lobby-camera-menu.png", "lobby-camera-flight.png", "lobby-camera-selection.png"};
+    static bool attempted[4]{};
+    static const char* const filenames[] = {"lobby-camera-menu.png", "lobby-camera-flight.png",
+                                             "lobby-camera-selection.png", "lobby-camera-credits.png"};
     if (attempted[phase]) return;
     attempted[phase] = true;
     D3DSURFACE_DESC desc{};
