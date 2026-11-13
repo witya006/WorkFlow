@@ -32,10 +32,10 @@ def reveal_lobby_loading(raw):
     end = raw.index(b'\n', stop)
     if raw[start:end].count(b'_GetUIScreen()->Draw();') != 1:
         raise ValueError('Legacy loading screen draw boundary changed')
-    raw = raw[:start] + b'''    m_uiLoadingWindow.Open();
-    // The Korean 455 profile displays the game rating before the loading art.
-    if (RF455_GetNormalNationPaths()->nation == RF455_MapNation("Korea") &&
-        m_uiLoadingWindow.SelectLoadingFrame455(1)) {
+    raw = raw[:start] + b'''    const bool koreanLoading = RF455_GetNormalNationPaths()->nation == RF455_MapNation("Korea");
+    // The standalone Korean rating uses the background alone.
+    if (koreanLoading && m_uiLoadingWindow.SelectLoadingFrame455(1)) {
+        m_uiLoadingWindow.Open();
         constexpr DWORD ratingMs = 3000;
         const DWORD ratingStart = timeGetTime();
         for (DWORD elapsed = 0; elapsed < ratingMs; elapsed = timeGetTime() - ratingStart) {
@@ -49,8 +49,12 @@ def reveal_lobby_loading(raw):
             Sleep(1);
         }
         RF455_ObserveProtocol("lobby-rating-end", timeGetTime() - ratingStart, 0, 0);
-        m_uiLoadingWindow.SetSprite();
+        m_uiLoadingWindow.Close();
     }
+    const auto* loadingNetwork = _GetNetworkMgr();
+    m_uiLoadingWindow.PrepareLoading455(koreanLoading, loadingNetwork->PremiumState455() != 0,
+                                        loadingNetwork->m_worldEntry455.kind);
+    m_uiLoadingWindow.Open();
     // 455 reveals the loading sprite before the synchronous lobby load.
     constexpr DWORD revealMs = 800;
     const DWORD revealStart = timeGetTime();
@@ -70,32 +74,23 @@ def reveal_lobby_loading(raw):
         if (!complete) Sleep(1);
     } while (elapsed < revealMs);''' + raw[end:]
     raw = replace(raw, b'\tR3ClearFrameBuffer();\n\tGetD3dDevice()->Present( NULL, NULL, NULL, NULL );\n\t//\n\tm_uiLoadingWindow.Disable();',
-                  b'\tm_uiLoadingWindow.Disable();')
+                  b'\tm_uiLoadingWindow.Close();')
     return replace(raw, b'\tSetFadeOut(0x00,0,1.0f);\n\tSetFadeIn(0x00,3.0,1.0f);',
                    b'\tSetFadeIn(0, 0, 1.0f);')
 
 
 def port_lobby_menu(raw, relative, native):
     if relative == 'userinterface/loginwindow/guiloadingwindow.h':
+        raw = replace(raw, b'\tCGUIObject\t\tm_cLoading;',
+                      b'\tCGUIObject\t\tm_cLoading;\n'
+                      b'\tCGUIObject m_loadingBadges455[5];\n\tWORD m_loadingFrame455 = 0;')
         return replace(raw, b'\tvoid\tSetSprite( void );',
-                       b'\tvoid\tSetSprite( void );\n\tbool SelectLoadingFrame455(WORD frame);'), True
+                       b'\tvoid SetSprite() override;\n'
+                       b'\tbool SelectLoadingFrame455(WORD frame);\n'
+                       b'\tvoid PrepareLoading455(bool korean, bool premium, BYTE ageKind);'), True
     if relative == 'userinterface/loginwindow/guiloadingwindow.cpp':
-        return replace(raw, b'''\tSPRITE_INFO\t\tl_spriteInfo;
-\tl_spriteInfo.pSprite = gSpriteMgr.GetSprite( SP_ID_LOADING );
-\tl_spriteInfo.wActionNo = 0;
-\tl_spriteInfo.wFrameNo = 0;
-\tm_cLoading.SetSpriteInfo( &l_spriteInfo );
-}''', b'''    if (!SelectLoadingFrame455(0)) m_cLoading.SetSpriteInfo(nullptr);
-}
-
-bool CGUILoadingWindow::SelectLoadingFrame455(WORD frame)
-{
-    auto* sprite = gSpriteMgr.GetSprite(SP_ID_LOADING);
-    if (!sprite || !sprite->GetMaxActions() || frame >= sprite->GetMaxFrames(0)) return false;
-    SPRITE_INFO info = {sprite, 0, frame};
-    m_cLoading.SetSpriteInfo(&info);
-    return true;
-}'''), True
+        start = raw.index(b'void\nCGUILoadingWindow::Init( void )')
+        return raw[:start] + (native / 'client455_loading_window.inc').read_bytes(), True
     if relative == 'mainapp.cpp':
         # Land unload releases effect resources. Do it before the engine and
         # function-local effect owners are destroyed, while they are still alive.

@@ -1,0 +1,426 @@
+{
+  "status": "LOBBY_LOADING_BADGES_VERIFIED",
+  "build": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "4b7315cd25129bdf6389a3fa89ce8b71b0fb0b80deac739ce2a6c91ad9b7c02e",
+    "bytes": 2535424,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a51a0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3a4550",
+          "bytes": 300,
+          "role": "Initialize loading window and default Korean badges",
+          "sha256": "b8a4f9aaf45abf562901fb39e11101660d5ef0c391281e4cefee27d4ae800ad8"
+        },
+        {
+          "rva": "0x3a4690",
+          "bytes": 428,
+          "role": "Bind common frames and scale Korean badges",
+          "sha256": "ebac572a630c974a91ec1c85e852c5402b6533a0ae04830116a964d578f1b887"
+        },
+        {
+          "rva": "0x3a4880",
+          "bytes": 315,
+          "role": "Right-align attached badges",
+          "sha256": "750ef928c724ce26780dab0ca8cc17ef127ba5faebbaef31a154d85fd1253557"
+        },
+        {
+          "rva": "0x3a49c0",
+          "bytes": 162,
+          "role": "Attach a badge and remove badges on close",
+          "sha256": "77ffa2a97483a67910de9bdc16dd766ab33ff27f077b0690bff68c753fbdc267"
+        },
+        {
+          "rva": "0x439090",
+          "bytes": 218,
+          "role": "Select Premium and Korean age variant",
+          "sha256": "16a23ebb8fef27b1aa4f7cc206670d4f6426eac3542e2b1e1b595d3d32585e2f"
+        },
+        {
+          "rva": "0x207b0",
+          "bytes": 24,
+          "role": "Read age category from client network state",
+          "sha256": "16df8a623d6df929b24779a4186fad25e82df07f3a407f8ce9e9e9f2ca039b24"
+        },
+        {
+          "rva": "0x42440",
+          "bytes": 27,
+          "role": "Read Premium flag from client network state",
+          "sha256": "88a56151ff4ae214dc5037c8070f73e29428fa2328714f0762143020be263016"
+        },
+        {
+          "rva": "0x160e36",
+          "bytes": 35,
+          "role": "Initialize age category and Premium state",
+          "sha256": "4ddd9e07e8a291f6657aa767c088a71af602374b490468eb6bf42724c72ea8f5"
+        }
+      ],
+      "country_slots": [
+        {
+          "nation": 0,
+          "vtable_rva": "0x6f94ec",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x432ff0",
+          "scale_rva": "0x433010",
+          "age_rva": "0x433030"
+        },
+        {
+          "nation": 1,
+          "vtable_rva": "0x6f82b4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x437b80",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 2,
+          "vtable_rva": "0x6f6c54",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x436090",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 3,
+          "vtable_rva": "0x6f918c",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x43b4d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 4,
+          "vtable_rva": "0x6f70e4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x437520",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 5,
+          "vtable_rva": "0x6f76d4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4346e0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 6,
+          "vtable_rva": "0x6f73dc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4370d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 7,
+          "vtable_rva": "0x6f79cc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x436c90",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 8,
+          "vtable_rva": "0x6f7cc4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4358d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 9,
+          "vtable_rva": "0x6f7fbc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4336b0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 10,
+          "vtable_rva": "0x6f88a4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x43aa90",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3a4550",
+          "bytes": 300,
+          "role": "Initialize loading window and default Korean badges",
+          "sha256": "b8a4f9aaf45abf562901fb39e11101660d5ef0c391281e4cefee27d4ae800ad8"
+        },
+        {
+          "rva": "0x3a4690",
+          "bytes": 428,
+          "role": "Bind common frames and scale Korean badges",
+          "sha256": "ebac572a630c974a91ec1c85e852c5402b6533a0ae04830116a964d578f1b887"
+        },
+        {
+          "rva": "0x3a4880",
+          "bytes": 315,
+          "role": "Right-align attached badges",
+          "sha256": "750ef928c724ce26780dab0ca8cc17ef127ba5faebbaef31a154d85fd1253557"
+        },
+        {
+          "rva": "0x3a49c0",
+          "bytes": 162,
+          "role": "Attach a badge and remove badges on close",
+          "sha256": "77ffa2a97483a67910de9bdc16dd766ab33ff27f077b0690bff68c753fbdc267"
+        },
+        {
+          "rva": "0x439090",
+          "bytes": 218,
+          "role": "Select Premium and Korean age variant",
+          "sha256": "16a23ebb8fef27b1aa4f7cc206670d4f6426eac3542e2b1e1b595d3d32585e2f"
+        },
+        {
+          "rva": "0x207b0",
+          "bytes": 24,
+          "role": "Read age category from client network state",
+          "sha256": "16df8a623d6df929b24779a4186fad25e82df07f3a407f8ce9e9e9f2ca039b24"
+        },
+        {
+          "rva": "0x42440",
+          "bytes": 27,
+          "role": "Read Premium flag from client network state",
+          "sha256": "88a56151ff4ae214dc5037c8070f73e29428fa2328714f0762143020be263016"
+        },
+        {
+          "rva": "0x160e36",
+          "bytes": 35,
+          "role": "Initialize age category and Premium state",
+          "sha256": "4ddd9e07e8a291f6657aa767c088a71af602374b490468eb6bf42724c72ea8f5"
+        }
+      ],
+      "country_slots": [
+        {
+          "nation": 0,
+          "vtable_rva": "0x6f94ec",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x432ff0",
+          "scale_rva": "0x433010",
+          "age_rva": "0x433030"
+        },
+        {
+          "nation": 1,
+          "vtable_rva": "0x6f82b4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x437b80",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 2,
+          "vtable_rva": "0x6f6c54",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x436090",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 3,
+          "vtable_rva": "0x6f918c",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x43b4d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 4,
+          "vtable_rva": "0x6f70e4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x437520",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 5,
+          "vtable_rva": "0x6f76d4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4346e0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 6,
+          "vtable_rva": "0x6f73dc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4370d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 7,
+          "vtable_rva": "0x6f79cc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x436c90",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 8,
+          "vtable_rva": "0x6f7cc4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4358d0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 9,
+          "vtable_rva": "0x6f7fbc",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x4336b0",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        },
+        {
+          "nation": 10,
+          "vtable_rva": "0x6f88a4",
+          "init_rva": "0x439090",
+          "close_rva": "0x439170",
+          "layout_rva": "0x43aa90",
+          "scale_rva": "0x42c870",
+          "age_rva": "0x42c8b0"
+        }
+      ]
+    }
+  ],
+  "runs": {
+    "Korea": {
+      "report": {
+        "file": "artifacts/client455-progress/loading-badges-4b7315cd/client455-title-escape-prologue-korea-native.json",
+        "sha256": "21f5dbda92e1d8451b73cb0e98ebbd527f1bd0e0c707aa3edf3523649a8d7f28"
+      },
+      "events": {
+        "file": "work/m9/4b7315cd/title-escape-prologue001/debug-events.jsonl",
+        "sha256": "7eeabf8501a70cab606357337b04cc0b38e1b36fb13c2da1eec65eb7d5257730"
+      },
+      "loading_phases": [
+        "RF455 LoadingReveal:0:0:00000000:1920x1080",
+        "RF455 LoadingReveal:1:417:00000000:1920x1080",
+        "RF455 LoadingReveal:2:1170:00000000:1920x1080"
+      ],
+      "loading": {
+        "file": "work/m9/4b7315cd/title-escape-prologue001/loading-reveal-end.png",
+        "sha256": "8e13a4182d21830896a42d397864be5ccbd818e40d13a1a9275347037201bceb",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "rating": {
+        "file": "work/m9/4b7315cd/title-escape-prologue001/lobby-game-rating.png",
+        "sha256": "e6d8b160193c4a174f83bf70e8611fc557690f4db27ff1fb624b599803c1ebf5",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    },
+    "Russia": {
+      "report": {
+        "file": "artifacts/client455-progress/loading-badges-4b7315cd/client455-world-entry-live-russia-native.json",
+        "sha256": "5c34d44e6e59ebb72878ea4ac7e80ca4f6cc4ddbd4a6321b0f33907406b88b88"
+      },
+      "events": {
+        "file": "work/m9/4b7315cd/world-entry-live-russia001/debug-events.jsonl",
+        "sha256": "af7166875449310069c629dbbc9b2397721d085d6fa007e7fbf7435fc4422252"
+      },
+      "loading_phases": [
+        "RF455 LoadingReveal:0:0:00000000:1920x1080",
+        "RF455 LoadingReveal:1:414:00000000:1920x1080",
+        "RF455 LoadingReveal:2:862:00000000:1920x1080"
+      ],
+      "loading": {
+        "file": "work/m9/4b7315cd/world-entry-live-russia001/loading-reveal-end.png",
+        "sha256": "dddb2c1e5b8b14a2b860d5d55920ebfe18df0a86978439e0d1ca3ba808709b38",
+        "size": [
+          1920,
+          1080
+        ]
+      },
+      "world_frame": {
+        "file": "work/m9/4b7315cd/world-entry-live-russia001/world-post-position.png",
+        "sha256": "b72aab0c242c59679b557e1e7bc36393a19ecc7d5e6d07dce8359cb349a51a10",
+        "size": [
+          1920,
+          1080
+        ]
+      }
+    }
+  },
+  "previous_korean_loading": {
+    "file": "work/m9/05e8e4ef/title-escape-prologue001/loading-reveal-end.png",
+    "sha256": "ae1e5c70e12d11c3b0b38942b8bca04d02a7494634caa68008164b77d2226b1d",
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "badge_change_bounds": [
+    1006,
+    17,
+    1901,
+    265
+  ],
+  "component": {
+    "file": "work/m9/4b7315cd/loading-badge-component/result.json",
+    "sha256": "dbfc6bd504525de65a7eaa0974ebb6a15b56676ef078557969cc66ddb268b911",
+    "cases": "PASS: 1920x1080; standalone rating, Korean age categories, Premium, non-Korean, reinit",
+    "binary_sha256": "739141ee3b3b8c29c258786717a1f0545c46096608f85062b3fab25217aefc99"
+  },
+  "launcher_receipt": {
+    "file": "artifacts/client455-progress/loading-badges-4b7315cd/client455-live-launcher-native.json",
+    "sha256": "74c8c351f0ba954e1809bcce7ddaa9bf7968d541d11fea3a495bf0454aba22ba"
+  },
+  "server_files_modified": false,
+  "reference_executable_run": false,
+  "physical_display_verified": false,
+  "premium_account_live_tested": false
+}
