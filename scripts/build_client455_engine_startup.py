@@ -198,6 +198,11 @@ def main():
             raw,count=re.subn(rb'(?m)^(\s*)mIsLoadedBsp=TRUE;\r?\n(\s*)ClearDynamicLight',rb'\1RF455_StopCameraSway();\n\1mIsLoadedBsp=TRUE;\n\2ClearDynamicLight',raw)
             if count!=1:raise ValueError('455 successful map-load sway reset boundary')
         elif filename=='core.cpp':
+            from client455_d3d9_edits import replace
+            raw = replace(raw, b'\tstState.mViewYL=(LONG)stState.mScreenYsize;',
+                          b'\tstState.mViewYL=(LONG)stState.mScreenYsize;\n'
+                          b'    if (stState.mScreenXsize > 0 && stState.mScreenYsize > 0)\n'
+                          b'        stState.mAsfectRatio = stState.mScreenXsize / stState.mScreenYsize;')
             raw=b'#include "client455_sky_lighting.h"\n'+raw
             anchor=b'memset(&stState,0,sizeof(_R3ENGINE_STATE));'
             if raw.count(anchor)!=1:raise ValueError('Core initialization boundary')
@@ -234,6 +239,12 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
 '''
         elif filename=='r3d3d8.cpp':
             from prepare_client455_normal import section
+            from client455_d3d9_edits import replace
+            raw = replace(raw, b'void SetViewPortArea(LONG sx,LONG sy,LONG xl,LONG yl)\n{',
+                          b'void SetViewPortArea(LONG sx,LONG sy,LONG xl,LONG yl)\n{\n'
+                          b'    if (xl <= 0 || yl <= 0) return;')
+            raw = replace(raw, b'//\tstate->mAsfectRatio = (float)xl/(float)yl;',
+                          b'    state->mAsfectRatio = float(xl) / float(yl);')
             raw=b'#include "client455_special_shaders.h"\n'+raw
             raw+=b'\n'+(WS/'scripts/native/client455_special_shaders.inc').read_bytes()
             first,last=section(raw,b'HRESULT D3D_R3RestoreDevice()',b'HRESULT D3D_R3RestoreDevice()');body=raw[first:last];anchor=b'\tInitFullScreenEffect();'

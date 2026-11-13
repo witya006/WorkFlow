@@ -658,6 +658,12 @@ def main():
                     }''')
                 message_handler=b'CMainApp::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{'
                 raw=replace(raw,message_handler,message_handler+b'''
+    // The game draws its own cursor. Let Windows own the title bar and borders.
+    if (uMsg == WM_SETCURSOR && LOWORD(lParam) == HTCLIENT &&
+        m_bLoadedAllData && m_byGameProgressID != GPI_TITLE) {
+        ::SetCursor(nullptr);
+        return TRUE;
+    }
     // The visible window can receive paint messages before the device exists.
     // After creation, only the Title render loop may paint the client area.
     if (m_byGameProgressID == GPI_TITLE && uMsg == WM_ERASEBKGND) {

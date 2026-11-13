@@ -19,6 +19,14 @@ def port_camera_input(raw, relative, section, native):
 
     owner = b'CGP_MainGame'
     raw = patch_method(raw, section, owner, b'InputProcess_Mouse', right_drag_pitch)
+    def wheel_distance(body):
+        first = body.index(b'l_fPointDist-=gMouse.z * 0.07f;')
+        last = body.index(b'gMouse.z=0;', first)
+        return (body[:first] +
+                b'l_fPointDist = RF455_CameraWheelDistance(l_fPointDist, gMouse.z, _GetCamera()->GetCameraMode());\n\t\t\t' +
+                body[last:])
+    raw = patch_method(raw, section, owner, b'InputProcess_Mouse', wheel_distance)
+    raw = b'#include "client455_camera_zoom.h"\n' + raw
     raw = patch_method(raw, section, owner, b'InputProcess', lambda body: replace(
         body, b'\t_GetUIMouseDev()->Update();',
         b'\tconst RF455CameraMouseObservation cameraInput;\n\t_GetUIMouseDev()->Update();'))

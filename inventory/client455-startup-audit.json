@@ -2,11 +2,11 @@
   "scope": "Static own-client startup import/name/provider audit;not DLL ABI/runtime or complete455acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "7e17fef8c163ec699d1a0f4e40560d1a4a81a175a3400c31d8d83def70a6ec97",
-    "bytes": 2535424,
+    "sha256": "bade4e5cdd832d394fc5607a28c883130f0dd47739adee3f7713a9100e786cae",
+    "bytes": 2535936,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a53b0",
+    "entry_rva": "0x1a5430",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "8083a400b2eaeaf5a1da09436ca345b6d23928530b9428917955eb2a936ecbee",
+  "normal_link_sha256": "cc0ef31bf69ead43c113cbcdc680c7bcf610785943e2595526201bc8e6f697a8",
   "modules": [
     {
       "dll": "d3dx9_36.dll",
@@ -469,127 +469,127 @@
           "iat_rva": "0x2082cc"
         },
         {
-          "name": "SetCursor",
+          "name": "AdjustWindowRect",
           "iat_rva": "0x2082d0"
         },
         {
-          "name": "AdjustWindowRect",
+          "name": "TrackPopupMenuEx",
           "iat_rva": "0x2082d4"
         },
         {
-          "name": "TrackPopupMenuEx",
+          "name": "GetSubMenu",
           "iat_rva": "0x2082d8"
         },
         {
-          "name": "GetSubMenu",
+          "name": "DestroyMenu",
           "iat_rva": "0x2082dc"
         },
         {
-          "name": "DestroyMenu",
+          "name": "SetMenu",
           "iat_rva": "0x2082e0"
         },
         {
-          "name": "SetMenu",
+          "name": "GetMenu",
           "iat_rva": "0x2082e4"
         },
         {
-          "name": "GetMenu",
+          "name": "LoadMenuA",
           "iat_rva": "0x2082e8"
         },
         {
-          "name": "LoadMenuA",
+          "name": "TranslateAcceleratorA",
           "iat_rva": "0x2082ec"
         },
         {
-          "name": "TranslateAcceleratorA",
+          "name": "LoadAcceleratorsA",
           "iat_rva": "0x2082f0"
         },
         {
-          "name": "LoadAcceleratorsA",
+          "name": "EnableWindow",
           "iat_rva": "0x2082f4"
         },
         {
-          "name": "EnableWindow",
+          "name": "GetDlgItem",
           "iat_rva": "0x2082f8"
         },
         {
-          "name": "GetDlgItem",
+          "name": "EndDialog",
           "iat_rva": "0x2082fc"
         },
         {
-          "name": "EndDialog",
+          "name": "DialogBoxParamA",
           "iat_rva": "0x208300"
         },
         {
-          "name": "DialogBoxParamA",
+          "name": "SetWindowPos",
           "iat_rva": "0x208304"
         },
         {
-          "name": "SetWindowPos",
+          "name": "DestroyWindow",
           "iat_rva": "0x208308"
         },
         {
-          "name": "DestroyWindow",
+          "name": "CreateWindowExA",
           "iat_rva": "0x20830c"
         },
         {
-          "name": "CreateWindowExA",
+          "name": "RegisterClassA",
           "iat_rva": "0x208310"
         },
         {
-          "name": "RegisterClassA",
+          "name": "GetMessageA",
           "iat_rva": "0x208314"
         },
         {
-          "name": "GetMessageA",
+          "name": "GetIconInfo",
           "iat_rva": "0x208318"
         },
         {
-          "name": "GetIconInfo",
+          "name": "ScreenToClient",
           "iat_rva": "0x20831c"
         },
         {
-          "name": "ScreenToClient",
+          "name": "GetCursorPos",
           "iat_rva": "0x208320"
         },
         {
-          "name": "GetCursorPos",
+          "name": "ReleaseCapture",
           "iat_rva": "0x208324"
         },
         {
-          "name": "ReleaseCapture",
+          "name": "SetCapture",
           "iat_rva": "0x208328"
         },
         {
-          "name": "SetCapture",
+          "name": "ReleaseDC",
           "iat_rva": "0x20832c"
         },
         {
-          "name": "ReleaseDC",
+          "name": "GetDC",
           "iat_rva": "0x208330"
         },
         {
-          "name": "GetDC",
+          "name": "GetSystemMetrics",
           "iat_rva": "0x208334"
         },
         {
-          "name": "GetSystemMetrics",
+          "name": "ClientToScreen",
           "iat_rva": "0x208338"
         },
         {
-          "name": "ClientToScreen",
+          "name": "GetForegroundWindow",
           "iat_rva": "0x20833c"
         },
         {
-          "name": "GetForegroundWindow",
+          "name": "PostQuitMessage",
           "iat_rva": "0x208340"
         },
         {
-          "name": "PostQuitMessage",
+          "name": "FillRect",
           "iat_rva": "0x208344"
         },
         {
-          "name": "FillRect",
+          "name": "SetCursor",
           "iat_rva": "0x208348"
         },
         {
@@ -1624,7 +1624,7 @@
   "source_inputs": [
     {
       "file": "work/client455-port/normal/source/mainapp.cpp",
-      "sha256": "8cf3d27be65fe73e8c414eb4590eb45c1371a5213a3b6b4d62be2116484fdc32"
+      "sha256": "25360679ca756c6e59b62fe8191d29ed636fe2b92141825b01699f24b7ab3fe2"
     },
     {
       "file": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
@@ -1668,7 +1668,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "9189a09673ba69486fa383faeba2b0f0d4e7d6f38ab546988dc32e185b61409c"
+      "sha256": "7c71638215ba66644b057bf640627a961e8f89b009c1c76f9f1dacd50d8faf83"
     },
     {
       "file": "work/client455-port/startup-engine/source/rtmovie.cpp",
@@ -1696,7 +1696,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/core.cpp",
-      "sha256": "cb1beca1fc74e209f62a6e58bc307c3c562d7dc3164c879b542a07bfd5f74d52"
+      "sha256": "f86e098783be9eef83c74dff1e5182672d8c47512745ad1b392599146035e217"
     },
     {
       "file": "work/client455-port/startup-engine/source/skybox.cpp",
@@ -1733,5 +1733,5 @@
   "M6": "OPEN",
   "M9": "OPEN",
   "script_sha256": "9f54985664b53b6308ffc458f7dbe22739741ffb9774050878bffd431855c6e1",
-  "startup_engine_build_sha256": "9a1d9cbd1d648210a3ac92a0cd35139289d78d00e871f9e90bbbe0a4f41ef886"
+  "startup_engine_build_sha256": "a4ecbcfbdb1c0ad557025a74dde2b4038beebdda87fbe6e05b6c44e3bdad476c"
 }

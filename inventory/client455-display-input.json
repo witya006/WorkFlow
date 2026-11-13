@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "scope": "Actual engine projection and window handler; wheel-distance helper",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "source": {
+    "file": "scripts/native/client455_display_input_probe.cpp",
+    "sha256": "ad945366204f39c5d4e697159ec334915c5a0411b0c5475fe906b6d1eca70c9f"
+  },
+  "executable": {
+    "file": "work/client455-port/display-input-probe/display-input-probe.exe",
+    "sha256": "3aca9eba00cdf9e6adbf13f6fb235fc3b2bce5b9b9fe01f2cd7ff3890b62e017"
+  },
+  "output": {
+    "file": "work/display-input455/result.txt",
+    "sha256": "26bd0d2799b6725d8dc3ad25acbeabf636b09b156aa766ae1e6f955b6517740c"
+  },
+  "normal_executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "bade4e5cdd832d394fc5607a28c883130f0dd47739adee3f7713a9100e786cae",
+    "bytes": 2535936,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a5430",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "visible_lobby_verified": false,
+  "live_world_wheel_verified": false,
+  "user_session_touched": false,
+  "server_modified": false
+}
