@@ -44,7 +44,7 @@ public:
     }
 
     bool Start() {
-        return Open(ReadPath("Logo", "./Snd/Bgm/ccrinc.avi"), 1) || StartPrologue();
+        return Open(ReadPath("Logo", "./Snd/Bgm/ccrinc.avi"), 1);
     }
 
     bool Tick() {
@@ -55,15 +55,15 @@ public:
             events_->FreeEventParams(event, first, second);
             if (event != EC_COMPLETE && event != EC_USERABORT && event != EC_ERRORABORT) continue;
             RF455_ObserveProtocol("title-movie-end", stage_, unsigned(event), 0);
+            const bool finishedLogo = stage_ == 1 && event == EC_COMPLETE;
             Close();
-            return StartPrologue();
+            return finishedLogo && StartPrologue();
         }
         return true;
     }
 
     void Skip() {
         RF455_ObserveProtocol("title-movie-skip", stage_, VK_ESCAPE, 0);
-        prologuePending_ = false;
         Close();
     }
 
@@ -231,8 +231,6 @@ private:
     }
 
     bool StartPrologue() {
-        if (!prologuePending_) return false;
-        prologuePending_ = false;
         const auto count = profile_.empty() ? 0u : GetPrivateProfileIntA("PlayAvi", "PlayedNum", 0, profile_.c_str());
         const auto index = count ? timeGetTime() % count : 0u;
         char key[24];
@@ -290,7 +288,6 @@ private:
     HWND owner_;
     HRESULT com_;
     std::string profile_;
-    bool prologuePending_ = true;
     unsigned stage_ = 0;
     unsigned width_ = 0, height_ = 0, rowPitch_ = 0;
     unsigned textureWidth_ = 0, textureHeight_ = 0;

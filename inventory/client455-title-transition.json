@@ -1,0 +1,153 @@
+{
+  "status": "TITLE_TRANSITION_VERIFIED",
+  "references": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "regions": {
+        "0x157dc8": {
+          "bytes": 150,
+          "sha256": "f8778227c8e386cd18a8e3a28a41b0409a680277290af22c0861bd8b471fd4b0"
+        },
+        "0x157fbd": {
+          "bytes": 5,
+          "sha256": "a4b463f420ec34f8055ed9c58072595888a3880600b4fd68b22a05ccc5f36305"
+        },
+        "0x15809b": {
+          "bytes": 37,
+          "sha256": "b0933ef383bc35e64506f9d2685c245afdee200ad7593a57a5d93489316c6aa4"
+        },
+        "0x1f2080": {
+          "bytes": 159,
+          "sha256": "37ae967f48d84e9ad371b0658f71be36e99ab0c6d489484ad6ea7fc0337d96a7"
+        }
+      }
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "regions": {
+        "0x157dc8": {
+          "bytes": 150,
+          "sha256": "f8778227c8e386cd18a8e3a28a41b0409a680277290af22c0861bd8b471fd4b0"
+        },
+        "0x157fbd": {
+          "bytes": 5,
+          "sha256": "a4b463f420ec34f8055ed9c58072595888a3880600b4fd68b22a05ccc5f36305"
+        },
+        "0x15809b": {
+          "bytes": 37,
+          "sha256": "b0933ef383bc35e64506f9d2685c245afdee200ad7593a57a5d93489316c6aa4"
+        },
+        "0x1f2080": {
+          "bytes": 159,
+          "sha256": "37ae967f48d84e9ad371b0658f71be36e99ab0c6d489484ad6ea7fc0337d96a7"
+        }
+      }
+    }
+  ],
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7691aeb7e62ec6160be47ac6e8804d3e3f690f40c34a152486d02a4b75e21b27",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_behavior": {
+    "logo_open_failure_exits_title": true,
+    "retained_movie_end_flag_is_set_by_ec_complete": true,
+    "retained_playback_update_bypassed_by_pinned_frame_move": true
+  },
+  "own_behavior": {
+    "opens_prologue_only_after_ccr_ec_complete": true,
+    "escape_still_exits_title": true,
+    "runtime_abort_injection_tested": false
+  },
+  "missing_ccr": {
+    "receipt": {
+      "file": "work/m9/7691aeb7/login-frame-russia003/missing-logo-check.json",
+      "sha256": "d669fe527525834cebb8af312edec3b89b56873cfcfc36ce3b21f9bfed1cacfe"
+    },
+    "events": {
+      "file": "work/m9/7691aeb7/login-frame-russia003/debug-events.jsonl",
+      "sha256": "57b89e78b70b62fee20f7ebea0db0bda7f99903e671c9333f8e8a780c0b4963e"
+    },
+    "other_movies_available": [
+      {
+        "file": "work/m9/7691aeb7/login-frame-russia003/Snd/Bgm/RF_EP1_New.wmv",
+        "sha256": "966e1671d1c6b7f1d2d2f983e96906b081fbe3fb455ecf51fe0f2a51fa6f0c36"
+      },
+      {
+        "file": "work/m9/7691aeb7/login-frame-russia003/Snd/Bgm/RF_EP2_New.wmv",
+        "sha256": "ed80f0ff1b0eafa8a7a62d81cc30055a41f00b64bdbcd79f1591c12f1681ff82"
+      }
+    ],
+    "title_frames": [],
+    "login_frame": {
+      "file": "work/m9/7691aeb7/login-frame-russia003/login-frame.png",
+      "sha256": "6dc10a8693d5196a5463036dccd1b8047eec5b2f321f3a465b0ce7a7c2e1a50b"
+    }
+  },
+  "normal_then_escape": {
+    "receipt": {
+      "file": "artifacts/client455-progress/client455-title-escape-prologue-russia-native.json",
+      "sha256": "c054bde8cf338ffd8d7be0ecb629a1e065c8ab3bd55e01ec84f5cd38fd2643e7"
+    },
+    "events": {
+      "file": "work/m9/7691aeb7/title-escape-prologue-russia001/debug-events.jsonl",
+      "sha256": "14f074a2646fea7eebc3b101bdb0aaee8d792a783fa56579dd760671f50e0380"
+    },
+    "ordered_events": [
+      "RF455 Protocol:title-movie-start:1:0:0",
+      "RF455 Protocol:title-movie-draw:1:1920:1080",
+      "RF455 Protocol:title-movie-end:1:1:0",
+      "RF455 Protocol:title-movie-start:2:0:0",
+      "RF455 Protocol:title-movie-draw:2:1920:1080",
+      "RF455 Protocol:title-movie-skip:2:27:0",
+      "RF455 LoginFrame:00000000:1920x1080"
+    ],
+    "title_frames": [
+      {
+        "file": "work/m9/7691aeb7/title-escape-prologue-russia001/title-logo.png",
+        "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+      },
+      {
+        "file": "work/m9/7691aeb7/title-escape-prologue-russia001/title-prologue.png",
+        "sha256": "9069bcb1c73e0b0af4759da9ec8a6b5de583d75241731ee272763153a616f785"
+      }
+    ],
+    "login_frame": {
+      "file": "work/m9/7691aeb7/title-escape-prologue-russia001/login-frame.png",
+      "sha256": "6fcce49d271dab3495e9d32a49e9ead406ae8be1debb1d52947a13757e91dae4"
+    }
+  },
+  "live_russia": {
+    "receipt": {
+      "file": "artifacts/client455-progress/client455-world-entry-live-russia-native.json",
+      "sha256": "47fa38a302fb59e5478e306dd98f89cc70d8bab7b8b83a6484bc6633fe82514b"
+    },
+    "events": {
+      "file": "work/m9/7691aeb7/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "a1c14644f66335f10bd58dbc17f7252a15562f379c77192a0e1b9b8f0fa8a19e"
+    },
+    "map": "NeutralB",
+    "input_enabled": true,
+    "resolution": [
+      1920,
+      1080
+    ]
+  },
+  "visible_window_defect_closed": false,
+  "reference_executable_run": false,
+  "server_files_modified": false
+}
