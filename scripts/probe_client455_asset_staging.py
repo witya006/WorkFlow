@@ -12,6 +12,13 @@ def main():
     stage_asset(original,a,digest,pool_root=pool);stage_asset(original,b,digest,pool_root=pool)
     assert os.path.samefile(a,b) and not os.path.samefile(original,a)
     assert os.stat(original).st_nlink==1 and sha(original)==digest
+    for extension in ('.avi', '.wmv', '.mp3'):
+        media = original.with_suffix(extension)
+        media.write_bytes(b'RF455 immutable media fixture ' + extension.encode('ascii'))
+        first, second = root / 'a' / media.name, root / 'b' / media.name
+        stage_asset(media, first, pool_root=pool)
+        stage_asset(media, second, pool_root=pool)
+        assert os.path.samefile(first, second) and not os.path.samefile(media, first)
     owner=root/'owned/source.spr';owner.parent.mkdir();owner.write_bytes(b'RF455 adopted immutable fixture\0')
     original.write_bytes(owner.read_bytes());other=root/'c/source.spr';stage_asset(original,other,sha(original),owned_immutable=owner,pool_root=pool)
     assert os.path.samefile(owner,other) and not os.path.samefile(original,other)

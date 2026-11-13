@@ -7,7 +7,7 @@ import hashlib,json,os,shutil
 from pathlib import Path
 from compare_client_binaries import WS
 
-ASSET_SUFFIXES={'.rpk','.rfs','.r3t','.bsp','.spr','.edf','.dds','.sho','.shr','.vsh','.vso','.ttf','.wav','.jpg','.png','.m3d','.asi','.dll','.spt','.r3o','.r3s','.bn','.bbx','.ani','.msh'}
+ASSET_SUFFIXES={'.rpk','.rfs','.r3t','.bsp','.spr','.edf','.dds','.sho','.shr','.vsh','.vso','.ttf','.wav','.mp3','.avi','.wmv','.jpg','.png','.m3d','.asi','.dll','.spt','.r3o','.r3s','.bn','.bbx','.ani','.msh'}
 #NTFS permits1024links perfile. Identical small assets can reach that limit
 #across many paths,evenwithin one run. Keep bounded owned pool replicas.
 MAX_POOL_LINKS=900

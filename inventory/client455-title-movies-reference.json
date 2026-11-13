@@ -120,5 +120,72 @@
   "profile": "CcrLogo.dat",
   "logo": "PlayAvi/Logo",
   "prologue": "PlayAvi/Play<timeGetTime modulo PlayedNum>",
-  "restored_on_explicit_request": true
+  "restored_on_explicit_request": true,
+  "title_audio": {
+    "reference": [
+      {
+        "file": "work/client-reference/current/RF_Online.bin",
+        "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "architecture": "x86",
+        "region_sha256s_by_rva": {
+          "0x157e24": "ed5dc0200ce9ca856f659cb0202814978d7ce007d03d27baf5c22c327030ad53",
+          "0x15823c": "28a8e9d87504ce79d7dbea93b98e9f7444f4c49b1338bd10fd07958ab2e512f3",
+          "0x1f2220": "c2c1930f4dd5fadbda38199208109f63e2aad8162fbc7ca726953246a94d7582",
+          "0x4bc2e0": "6ad8ee835ba374aa17493600549dbf0960a6640d475a317f0fcae1ff437af1b7",
+          "0x4c3c40": "41e4b4e9a69b19e232503a83a12d622f277ecfd878e053d51099708202dd2806"
+        }
+      },
+      {
+        "file": "work/client-reference/reference-backup/RF_Online.bin",
+        "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+        "architecture": "x86",
+        "region_sha256s_by_rva": {
+          "0x157e24": "ed5dc0200ce9ca856f659cb0202814978d7ce007d03d27baf5c22c327030ad53",
+          "0x15823c": "28a8e9d87504ce79d7dbea93b98e9f7444f4c49b1338bd10fd07958ab2e512f3",
+          "0x1f2220": "c2c1930f4dd5fadbda38199208109f63e2aad8162fbc7ca726953246a94d7582",
+          "0x4bc2e0": "6ad8ee835ba374aa17493600549dbf0960a6640d475a317f0fcae1ff437af1b7",
+          "0x4c3c40": "41e4b4e9a69b19e232503a83a12d622f277ecfd878e053d51099708202dd2806"
+        }
+      }
+    ],
+    "measurement_file": "work/m9/a9e2d8b5/title-volume-001/volume.json",
+    "measurement_sha256": "150cb691b372d9aab72c1955a0d969080449e94916528baa78ade6cfbb54c152",
+    "current_client": {
+      "file": "work/client455-port/normal/build/RF_Online.bin",
+      "sha256": "a9e2d8b5096ab768253474646b14f9053ee0bdc0dbce2008a87cc6d07b1d0d79",
+      "bytes": 2534400,
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "entry_rva": "0x1a4ed0",
+      "sections": [
+        ".text",
+        ".rdata",
+        ".data",
+        ".fptable",
+        ".reloc"
+      ]
+    },
+    "expected_at_music_volume_045_db": -55,
+    "observed_ep2_045_relative_to_full_db": -55.32,
+    "writable_configs_independent": true,
+    "media_assets": {
+      "Snd/Bgm/CCRINC.avi": {
+        "sha256": "847623ed5d66ea68a1cfd15825f7ade330b80191f3dd43d186dc261d1377a66c",
+        "bytes": 878592,
+        "staged_shares_owned_pool": true
+      },
+      "Snd/Bgm/RF_EP1_New.wmv": {
+        "sha256": "966e1671d1c6b7f1d2d2f983e96906b081fbe3fb455ecf51fe0f2a51fa6f0c36",
+        "bytes": 88502976,
+        "staged_shares_owned_pool": true
+      },
+      "Snd/Bgm/RF_EP2_New.wmv": {
+        "sha256": "ed80f0ff1b0eafa8a7a62d81cc30055a41f00b64bdbcd79f1591c12f1681ff82",
+        "bytes": 38582651,
+        "staged_shares_owned_pool": true
+      }
+    },
+    "windows_audio_output_only": true,
+    "method": "Process-only PCM amplitude, source clips selected per run"
+  }
 }
