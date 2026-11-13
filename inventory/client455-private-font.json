@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "scope": "Windows Add/RemoveFontResourceExA FR_PRIVATE lifecycle API only; no client integration or visual check",
+  "source": {
+    "file": "E:\\RFOnlineTrash\\RFOnline\\System\\010.TTF",
+    "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
+  },
+  "script_sha256": "5dacf60b44a6f110ec57530adc5f844e4e62a46e6308174917ba33275d8cbba4",
+  "helper_sha256": "fc0e20c7634655365007cb5854a92e2764cb4e4fab74719965eaf993b138f01c",
+  "production_font_sha256": "8f824994f3a6c53509f0108d576bdb63e116c99f38f937b686e47d6c3c2ce621",
+  "flags": "FR_PRIVATE (0x10)",
+  "temporary_directory": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\font-private-check",
+  "cases": [
+    {
+      "mode": "matched_remove_and_exit",
+      "load": {
+        "added": 2,
+        "error": 0
+      },
+      "delete_access_while_loaded": {
+        "available": true,
+        "error": 0
+      },
+      "remove": {
+        "removed": true,
+        "error": 0
+      },
+      "exit_code": 0,
+      "delete_access_after_exit": {
+        "available": true,
+        "error": 0
+      }
+    },
+    {
+      "mode": "TerminateProcess",
+      "load": {
+        "added": 2,
+        "error": 0
+      },
+      "delete_access_while_loaded": {
+        "available": true,
+        "error": 0
+      },
+      "exit_code": 1,
+      "delete_access_after_exit": {
+        "available": true,
+        "error": 0
+      }
+    }
+  ],
+  "cleanup": {
+    "temporary_directory_removed": true,
+    "owned_helper_deleted": true,
+    "actual_ttf_delete_succeeded": true,
+    "native_powershell": true,
+    "scope": "Two explicitly named files; no recursive deletion"
+  }
+}

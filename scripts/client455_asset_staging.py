@@ -42,6 +42,8 @@ def _owned_copies():
     return _owned
 
 def stage_asset(source,target,expected=None,owned_immutable=None,pool_root=None):
+    from workspace_guard import require_budget
+    require_budget()
     source,target=Path(source),Path(target)
     if not _inside_work(target):raise ValueError('Asset staging destination must remain under work/')
     target.parent.mkdir(parents=True,exist_ok=True)

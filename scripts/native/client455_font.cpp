@@ -149,7 +149,7 @@ HRESULT RF455_LoadTextResources(IDirect3DDevice9*d,unsigned memory){
     if(loaded)return S_OK;loaded=true;const auto&settings=RF455_GetFontSettings();
     const unsigned w=memory>100000000?1024:512,h=memory>160000000?1024:512;
     HRESULT hr=fonts[0].initialize(d,settings.name,settings.charset,w,h,settings.points);
-    registered=AddFontResourceA(".\\system\\010.TTF")>0;
+    registered=AddFontResourceExA(".\\system\\010.TTF",FR_PRIVATE,nullptr)>0;
     const char*aux=std::strcmp(settings.name,"Tahoma")==0?settings.name:"A010";
     const auto medium=fonts[1].initialize(d,aux,settings.charset,1024,128,16);
     const auto large=fonts[2].initialize(d,aux,settings.charset,1024,512,24);
@@ -157,7 +157,7 @@ HRESULT RF455_LoadTextResources(IDirect3DDevice9*d,unsigned memory){
     char log[96];std::sprintf(log,"RF455 Font:GDI:%d:%ld",settings.charset,hr);OutputDebugStringA(log);
     if(SUCCEEDED(hr)&&textReadyCallback)textReadyCallback();return hr;
 }
-void RF455_ReleaseTextResources(){if(!loaded)return;loaded=false;for(auto&font:fonts)font.release();if(registered){RemoveFontResourceA(".\\system\\010.TTF");registered=false;}}
+void RF455_ReleaseTextResources(){if(!loaded)return;loaded=false;for(auto&font:fonts)font.release();if(registered){RemoveFontResourceExA(".\\system\\010.TTF",FR_PRIVATE,nullptr);registered=false;}}
 HRESULT RF455_DrawText(float position[4],const wchar_t*text,DWORD color,DWORD flags,float scale,const float*clip){return fonts[(flags&0x40000000)?2:((flags&0x80000000)?1:0)].draw(position,text,color,flags,scale,clip);}
 HRESULT RF455_DrawLegacyText(float position[4],const char*text,DWORD color,DWORD flags,const float*clip){
     const unsigned cp=RF455_GetFontSettings().codepage;const int count=MultiByteToWideChar(cp,0,text,-1,nullptr,0);if(!count)return E_FAIL;

@@ -34,6 +34,21 @@
 
 ## Workflow
 
+- Current process: docs/engineering-workflow.md; queue: config/task-board.json.
+  Continue existing M6. Do not treat historical checkpoint logs as a task queue.
+  The previous long-running goal is not active; cleanup/planning does not resume it.
+- Visual target is Clair Obscur: Expedition 33 while preserving RF identity.
+  Establish the visual result first; deep optimization follows. Record frame time
+  and memory as diagnostics. No UE5 port or wholesale rewrite.
+- One active package, one build/game-session owner. A package specifies outcome,
+  changed files, acceptance, focused check and next action. After 30 minutes with
+  no new fact or two failed attempts of one approach, revise that approach.
+- Run scripts/workspace.py status through Invoke-Python before/after a package.
+  Limits are in config/workspace-policy.json. Reuse immutable assets and one current
+  runtime/one rollback. No unbounded hash/run directories or full-client copy per test.
+- Do not delete unique source/evidence or bypass a storage failure to continue.
+  Work under work/ is ignored, not disposable by default. Historical evidence from
+  cleanup is indexed in artifacts/workspace-cleanup-20261113/unique-evidence.zip.
 - Keep scripts, documentation and small manifests in this local Git repository.
 - Keep raw assets, working source copies, IDA databases and large traces in the
   ignored work/ or artifacts/ directories. Ignoring a file is not backing it up.

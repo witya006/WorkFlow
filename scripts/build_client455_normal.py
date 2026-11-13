@@ -4,6 +4,8 @@ from pathlib import Path
 from compare_client_binaries import WS
 
 def main():
+    from workspace_guard import require_budget
+    require_budget()
     root=WS/'work/client455-port/normal';art=WS/'artifacts/client455-normal';info=json.loads((WS/'inventory/msvc-verification.json').read_text());cmake=Path(info['installation_path'])/'Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe'
     config=subprocess.run([str(cmake),'-S',str(root),'-B',str(root/'build'),'-G','Visual Studio 18 2026','-A','Win32','-T','v145','-DCMAKE_SYSTEM_VERSION=10.0.26100.0'],capture_output=True,creationflags=subprocess.CREATE_NO_WINDOW)
     (art/'configure.txt').write_bytes(config.stdout+config.stderr)
