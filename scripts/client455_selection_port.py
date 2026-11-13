@@ -10,7 +10,9 @@ def port_selection(raw,relative,native,section):
         return replace(raw, b'SetCharInfo_Money( DWORD pi_dwDalant, DWORD pi_dwGold, BYTE pi_byRaceType )',
                        b'SetCharInfo_Money(__int64 dalant, __int64 gold, BYTE race)'), True
     if relative == 'userinterface/loginwindow/guiselectcharacter.cpp':
-        raw = b'#include "client455_language.h"\n' + raw
+        raw = b'#include "client455_language.h"\n#include "client455_selection.h"\n' + raw
+        raw = replace(raw, b'else if( event.source == &m_cDeleteButton )',
+                      b'else if (event.source == &m_cDeleteButton && RF455_SelectedCharacterSlotOccupied())')
         raw = re.sub(rb'(m_c(?:Prev|Next|Create|Delete|Exit)Button)\.SetLabel\( "[^"\n]*" \);',
                      lambda match: match[1] + b'.SetLabel(const_cast<char*>(RF455_GetNormalLanguagePack()->get(' + {
                          b'm_cPrevButton': b'0x4b1', b'm_cNextButton': b'0x4b2', b'm_cCreateButton': b'0x48f',
@@ -63,6 +65,11 @@ def port_selection(raw,relative,native,section):
                                   index + b')), MSGBOXALPHA);', raw[first:last], count=1)
             if count != 1:
                 raise ValueError('Selection slot message changed')
+            if callback == b'EventCreateCharacter()':
+                body, count = re.subn(rb'(m_LoadDefaultStart = true;\s*)_GUIMessageBox\( NULL, "[^"\n]*",MSGBOXALPHA\);',
+                                      rb'\g<1>_GUIMessageBox(nullptr, const_cast<char*>(RF455_GetNormalLanguagePack()->get(0x557)), MSGBOXALPHA);', body)
+                if count != 1:
+                    raise ValueError('Character creation wait message changed')
             raw = raw[:first] + body + raw[last:]
         signature=b'NetworkInput(';first,last=section(raw,signature,signature);body=raw[first:last]
         begin=body.index(b'case MOVEOUT_FROM_SERVER_SUCCESS:');end=body.index(b'\n\t\t\tbreak;',begin)
@@ -99,7 +106,10 @@ def port_selection(raw,relative,native,section):
                            b'\t\tRF455_ObserveProtocol("selection-world-handoff", timeGetTime() - m_MP3ElapseTime, 0, 0);')
 
         raw = patch_method(raw, section, b'CGP_LogIn', b'InputProcess', finish_after_fade)
-        raw+=b'\nunsigned RF455_SelectedCharacterSlot(){return static_cast<unsigned>(m_Course);}\n'
+        raw += b'''
+unsigned RF455_SelectedCharacterSlot(){return static_cast<unsigned>(m_Course);}
+bool RF455_SelectedCharacterSlotOccupied(){return m_HaveCharacter[m_Course] != FALSE;}
+'''
         return raw,True
     if relative=='character/avatar/cavatar.h':
         old=b'BOOL\t\tSetDefaultItem( BYTE pi_byPartType, DWORD pi_dwIndex );'

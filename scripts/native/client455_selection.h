@@ -18,3 +18,4 @@ inline bool RF455_ReadCharacterSelection(const void* data,std::size_t bytes,RF45
     std::memcpy(&next.dalant,p+6,8);std::memcpy(&next.gold,p+14,8);out=next;return true;
 }
 unsigned RF455_SelectedCharacterSlot();
+bool RF455_SelectedCharacterSlotOccupied();

@@ -1,0 +1,170 @@
+{
+  "status": "VERIFIED_EMPTY_SLOT_USING_LOCAL_ROSTER_OMISSION",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "aef55acaf5d59ccede6ae680d4ac571cb6a1ab9fe722bab5d4f71fb751819452",
+    "bytes": 2531840,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4810",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3aa360",
+          "bytes": 385,
+          "role": "Mouse dispatch with occupied-slot gate before delete dialog",
+          "sha256": "cc3325479df95f31cb6d35f3013e7de2610da6bf40ee8450a62d6a6f34c815d2"
+        },
+        {
+          "rva": "0x13b760",
+          "bytes": 22,
+          "role": "Read current slot occupancy",
+          "sha256": "a5427fba13c5d493badb8c21676aca35f16a86dd88b2c61135acdd038db10938"
+        },
+        {
+          "rva": "0x3aa5a0",
+          "bytes": 321,
+          "role": "Selection keyboard dispatch",
+          "sha256": "57163ee4d6785d4f2907c3898699801acb26de50c417ed27d0e1a43590717cd4"
+        },
+        {
+          "rva": "0x3bb300",
+          "bytes": 128,
+          "role": "Create prompt and pending flag",
+          "sha256": "f6087e6d9053c13c9f29ad59a41e7305a3fe108a007359d06f5e791b4ad704e9"
+        },
+        {
+          "rva": "0x3bb470",
+          "bytes": 80,
+          "role": "Enter on an empty slot",
+          "sha256": "82b6c73e5859c0202f6fa75b5a798a3eb981e74ea5c38e5c0f2cff7bc466a93f"
+        },
+        {
+          "rva": "0x13bd86",
+          "bytes": 103,
+          "role": "Creation resource step and race camera",
+          "sha256": "4ce6e7f4a730d763aac1921dcc4021968cce6002bf5692a88efd660bcfa353e1"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3aa360",
+          "bytes": 385,
+          "role": "Mouse dispatch with occupied-slot gate before delete dialog",
+          "sha256": "cc3325479df95f31cb6d35f3013e7de2610da6bf40ee8450a62d6a6f34c815d2"
+        },
+        {
+          "rva": "0x13b760",
+          "bytes": 22,
+          "role": "Read current slot occupancy",
+          "sha256": "a5427fba13c5d493badb8c21676aca35f16a86dd88b2c61135acdd038db10938"
+        },
+        {
+          "rva": "0x3aa5a0",
+          "bytes": 321,
+          "role": "Selection keyboard dispatch",
+          "sha256": "57163ee4d6785d4f2907c3898699801acb26de50c417ed27d0e1a43590717cd4"
+        },
+        {
+          "rva": "0x3bb300",
+          "bytes": 128,
+          "role": "Create prompt and pending flag",
+          "sha256": "f6087e6d9053c13c9f29ad59a41e7305a3fe108a007359d06f5e791b4ad704e9"
+        },
+        {
+          "rva": "0x3bb470",
+          "bytes": 80,
+          "role": "Enter on an empty slot",
+          "sha256": "82b6c73e5859c0202f6fa75b5a798a3eb981e74ea5c38e5c0f2cff7bc466a93f"
+        },
+        {
+          "rva": "0x13bd86",
+          "bytes": 103,
+          "role": "Creation resource step and race camera",
+          "sha256": "4ce6e7f4a730d763aac1921dcc4021968cce6002bf5692a88efd660bcfa353e1"
+        }
+      ]
+    }
+  ],
+  "locale": "Taiwan",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "events": {
+    "file": "work/m9/aef55aca/selection-live-taiwan001/debug-events.jsonl",
+    "sha256": "7f937e5e4aae3b8331393de2c3cbf675cbb6fc657ee38bfca698a2dc07a52a3b"
+  },
+  "selection_events": [
+    "RF455 Protocol:rx:1:9:506",
+    "RF455 Protocol:lobby-selection-slot:0:1:0",
+    "RF455 Protocol:lobby-selection-slot:2:0:0"
+  ],
+  "dialog_strings": [
+    {
+      "language_id": "0x558",
+      "Taiwan": "請創造角色。",
+      "Russia_resource": "Пожалуйста, создайте своего персонажа",
+      "style": 4
+    },
+    {
+      "language_id": "0x557",
+      "Taiwan": "請稍後。",
+      "Russia_resource": "Пожалуйста, подождите.",
+      "style": 4
+    }
+  ],
+  "launcher_handoff_removed": true,
+  "roster_fixture": {
+    "slot": 2,
+    "scope": "Own process only before roster decode"
+  },
+  "race_screen_reached": true,
+  "creation_deletion_or_selection_requests_sent": false,
+  "frames": [
+    {
+      "file": "work/m9/aef55aca/selection-live-taiwan001/empty-slot.png",
+      "sha256": "014198f5f350c8bb113ea882f315c26c177e68acfc0c624589253b1d3e636e34"
+    },
+    {
+      "file": "work/m9/aef55aca/selection-live-taiwan001/empty-after-delete.png",
+      "sha256": "caf02a57664f64490cdd1bba4c50955a01b860dd4f745862d30888db57c9c7c8"
+    },
+    {
+      "file": "work/m9/aef55aca/selection-live-taiwan001/empty-enter.png",
+      "sha256": "6b9f8ab556d60ce905da4ea9cda55b8e7fcd525ca7da7c34ab4673b29cfc4f76"
+    },
+    {
+      "file": "work/m9/aef55aca/selection-live-taiwan001/empty-race.png",
+      "sha256": "405ca1a93e48ff74166fe879c095db031843150ea3ebe6f34b8385208e37084c"
+    }
+  ],
+  "observer_script": {
+    "file": "work/observe-empty-slot455.py",
+    "sha256": "5bf7604181e76c879b1007f2142e2ccb06472ac5260da852feb7aa0c57193fc9"
+  },
+  "observer_binary": {
+    "file": "work/empty-slot455/observer.exe",
+    "sha256": "fde03b3a252e023bfe5b58479bd3ddb317fb480aa04889600f8d37cae6567745"
+  },
+  "race_card_pack_matches_ru_ru": true
+}
