@@ -87,6 +87,27 @@ def port_selection(raw,relative,native,section):
                     raise ValueError('Character creation wait message changed')
             raw = raw[:first] + body + raw[last:]
         signature=b'NetworkInput(';first,last=section(raw,signature,signature);body=raw[first:last]
+        select_start = body.index(b'\tswitch (res = _GetNetworkMgr()->GetResultOfCharacterSelect())')
+        select_end = body.index(b'\tswitch (res = _GetNetworkMgr()->GetResultOfCharacterDelete())', select_start)
+        selection = body[select_start:select_end]
+        selection, count = re.subn(
+            rb'\t\tdefault:\s*_GUIMessageBox\( NULL, "[^"\n]*",MSGBOXALPHA\);\s*break;',
+            b'''        default: {
+            // 455 rejection returns to the occupied-slot screen for another attempt.
+            unsigned message = 521;
+            switch (res) {
+            case 72: message = 2779; break;
+            case 74: message = 3732; break;
+            case 76: message = 3816; break;
+            }
+            _GUIMessageBox(nullptr, const_cast<char*>(RF455_GetNormalLanguagePack()->get(message)),
+                           MSGBOXALPHA, 0, DLG_STYLE_OK);
+            g_LoginState = LGS_CHARACTERLOBBY;
+            break;
+        }''', selection)
+        if count != 1:
+            raise ValueError('Selected-character rejection branch changed')
+        body = body[:select_start] + selection + body[select_end:]
         begin=body.index(b'case MOVEOUT_FROM_SERVER_SUCCESS:');end=body.index(b'\n\t\t\tbreak;',begin)
         fragment=body[begin:end]
         old=b'_GetAvatar()->SetDTIndex( _GetAvatarDummy(m_Course)->GetDTIndex() );'

@@ -48,7 +48,9 @@
   analysis call, and close owned sessions with idb_close. Never execute input EXEs.
 - Do not assume a current native MCP tool registration from a config file alone.
 - Do not add remote repositories, publish assets or push commits unless requested.
-- Delegate to subagents only when the user explicitly requests delegation.
+- User authorized subagents on 13.11.2026 when they accelerate the work without
+  harming it. Delegate bounded independent tasks with explicit file ownership;
+  keep integration, builds and live game sessions under one owner.
 
 ## Validation
 
