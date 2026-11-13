@@ -1,0 +1,168 @@
+{
+  "status": "LIVE_BOTH_VARIANTS_CUE_DISPATCH_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "a9e2d8b5096ab768253474646b14f9053ee0bdc0dbce2008a87cc6d07b1d0d79",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13b210",
+          "bytes": 173,
+          "role": "Start cue and variant-dependent camera clip",
+          "sha256": "f5a6224ec0f844421062fa8b934a8d838f37e551a011c728af8383b6c03fd80a"
+        },
+        {
+          "rva": "0x13f18a",
+          "bytes": 429,
+          "role": "Timing and single end cue",
+          "sha256": "52696f2ffc86f8a8e7cd9836a02c347b8e85585034f291d51ecd5d34328ab6cf"
+        },
+        {
+          "rva": "0x13f690",
+          "bytes": 27,
+          "role": "Animated camera time getter",
+          "sha256": "7faec0d19d9ec949f49f2b43965d9b977bcfb4c4aea753988470d527401ef3fe"
+        },
+        {
+          "rva": "0x4bee90",
+          "bytes": 36,
+          "role": "Play the selected camera wave",
+          "sha256": "2db00463b25e33967b130034c4430935ed5ecd8f1a9105bca0ba40c735424f06"
+        },
+        {
+          "rva": "0x4bd590",
+          "bytes": 86,
+          "role": "Stop the middle wave",
+          "sha256": "a3694679e15be42230395da349eda9cc025b69d44a9925ad68b2bbd20fed5a30"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13b210",
+          "bytes": 173,
+          "role": "Start cue and variant-dependent camera clip",
+          "sha256": "f5a6224ec0f844421062fa8b934a8d838f37e551a011c728af8383b6c03fd80a"
+        },
+        {
+          "rva": "0x13f18a",
+          "bytes": 429,
+          "role": "Timing and single end cue",
+          "sha256": "52696f2ffc86f8a8e7cd9836a02c347b8e85585034f291d51ecd5d34328ab6cf"
+        },
+        {
+          "rva": "0x13f690",
+          "bytes": 27,
+          "role": "Animated camera time getter",
+          "sha256": "7faec0d19d9ec949f49f2b43965d9b977bcfb4c4aea753988470d527401ef3fe"
+        },
+        {
+          "rva": "0x4bee90",
+          "bytes": 36,
+          "role": "Play the selected camera wave",
+          "sha256": "2db00463b25e33967b130034c4430935ed5ecd8f1a9105bca0ba40c735424f06"
+        },
+        {
+          "rva": "0x4bd590",
+          "bytes": 86,
+          "role": "Stop the middle wave",
+          "sha256": "a3694679e15be42230395da349eda9cc025b69d44a9925ad68b2bbd20fed5a30"
+        }
+      ]
+    }
+  ],
+  "wave_list_sha256": "ecc7c9baac15fba51e4338c9d45a48394126741de4b95472a0b11e787e629f8a",
+  "assets": [
+    {
+      "id": 32001,
+      "file": "Snd/Login/Start.wav",
+      "sha256": "aa0384ee18ac762a4c9c3ed36d80c084b53ed7bfe56024b2e4338180caf185ee"
+    },
+    {
+      "id": 32002,
+      "file": "Snd/Login/Middle.wav",
+      "sha256": "05a998d8ab3567aaff50b8b6fba34aa48dc69b8abf86aa56d9fd9137d8133365"
+    },
+    {
+      "id": 32003,
+      "file": "Snd/Login/End.wav",
+      "sha256": "1cff4d96e6fb54ac7e6e3b563deedf4a358d2ed819ecc06cd09baa95767c5878"
+    }
+  ],
+  "runs": [
+    {
+      "variant": 0,
+      "camera": 2,
+      "authored_end_frame": 45,
+      "cue_upper_ms": 1440,
+      "end_sound_camera_ms": 1371,
+      "entry": {
+        "file": "artifacts/client455-progress/lobby-camera-audio-a9e2d8b5/variant0-entry.json",
+        "sha256": "851a4602b5442cdf318aecb52ad629549b61a0dde7e3b5f17ca7269f621ad4f0"
+      },
+      "events": {
+        "file": "work/m9/a9e2d8b5/world-entry-live-russia002/debug-events.jsonl",
+        "sha256": "da36df52aac61359de2cc25380bb8839ffa13397f6cf96d6b76d13372bbd504d"
+      },
+      "ordered": [
+        "RF455 Protocol:lobby-idle-camera:0:0:0",
+        "RF455 Protocol:lobby-camera-sound-start:32001:2:45",
+        "RF455 Protocol:lobby-camera-sound-end:32003:45:1371",
+        "RF455 Protocol:lobby-selection-open:0:0:0"
+      ],
+      "world": "NeutralB",
+      "input_enabled": true
+    },
+    {
+      "variant": 1,
+      "camera": 20,
+      "authored_end_frame": 70,
+      "cue_upper_ms": 2240,
+      "end_sound_camera_ms": 2177,
+      "entry": {
+        "file": "artifacts/client455-progress/lobby-camera-audio-a9e2d8b5/variant1-entry.json",
+        "sha256": "545aeb767379c1aa0fc895d9ec73691461cc8f6ba6aa6f82ab08c06e9a128582"
+      },
+      "events": {
+        "file": "work/m9/a9e2d8b5/world-entry-live-russia001/debug-events.jsonl",
+        "sha256": "fba08ed1194bb317422010263e253e6b5cbc913a77b96cb2a838a2b2b29699e4"
+      },
+      "ordered": [
+        "RF455 Protocol:lobby-idle-camera:1:0:0",
+        "RF455 Protocol:lobby-camera-sound-start:32001:20:70",
+        "RF455 Protocol:lobby-camera-sound-end:32003:70:2177",
+        "RF455 Protocol:lobby-selection-open:0:0:0"
+      ],
+      "world": "NeutralB",
+      "input_enabled": true
+    }
+  ],
+  "audible_output_verified": false,
+  "reference_executable_run": false
+}

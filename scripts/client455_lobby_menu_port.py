@@ -103,8 +103,16 @@ def port_lobby_menu(raw, relative, native):
                   (native / 'client455_lobby_menu.inc').read_bytes())
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 4, 0, 40 },', b'{ CAM_TOP_TO_LOGINC, 4, 0, 66 },')
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 22, 0, 55 },', b'{ CAM_TOP_TO_LOGINC, 22, 0, 70 },')
+    raw = replace(raw, b'int\t\tm_CurAniKey = 0;', b'''constexpr DWORD CameraStartWave455 = 32001;
+constexpr DWORD CameraMiddleWave455 = 32002;
+constexpr DWORD CameraEndWave455 = 32003;
+static bool cameraEndSoundPending455;
+static DWORD cameraSoundStartFrame455;
+static DWORD cameraSoundEndFrame455;''')
     raw = replace(raw, b'void PlayCamera(CameraAni\tani,DWORD\tcourse = 0)', b'''void PlayLobbyIdleCamera455(bool returningFromCredits = false)
 {
+    cameraEndSoundPending455 = false;
+    StopWave(CameraMiddleWave455);
     const DWORD camera = m_AniCamera.GetCameraIndex(m_RandomStart ? "c_ex01" : "c_ex02");
     if (camera != ID_INVALID) {
         m_AniCamera.SetPrePlayCamera(camera, 0, returningFromCredits ? 0 : ID_INVALID,
@@ -114,13 +122,21 @@ def port_lobby_menu(raw, relative, native):
 }
 
 void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
-    raw = replace(raw, b'if ( m_RandomStart && g_LoginState==LGS_ENTER_WORLDSERVER)',
-                  b'if (m_RandomStart && (fromLobby || g_LoginState == LGS_ENTER_WORLDSERVER))')
-    raw = replace(raw, b'cam =m_AniCamera.GetCameraIndex(CamName[m_AniCamKeyFrame[a][1]]);',
-                  b'''cam = m_AniCamera.GetCameraIndex(CamName[m_AniCamKeyFrame[a][1]]);
+    start = raw.index(b'#define\t\tCAM_START_WAV')
+    end = raw.index(b'\n}', start)
+    raw = raw[:start] + b'''    DWORD clip = ani + course;
+    if (m_RandomStart && (fromLobby || g_LoginState == LGS_ENTER_WORLDSERVER)) clip += 23;
+    const auto& clipFrames = m_AniCamKeyFrame[clip];
+    const DWORD camera = m_AniCamera.GetCameraIndex(CamName[clipFrames[1]]);
+    PlayWave(CameraStartWave455, 0, 1.0f, 0.0f);
+    cameraSoundStartFrame455 = clipFrames[2];
+    cameraSoundEndFrame455 = clipFrames[3];
+    cameraEndSoundPending455 = camera != ID_INVALID;
+    RF455_ObserveProtocol("lobby-camera-sound-start", CameraStartWave455, clipFrames[1], clipFrames[3]);
     if (fromLobby) {
-        RF455_ObserveProtocol("lobby-selection-camera", course, m_AniCamKeyFrame[a][1], m_AniCamKeyFrame[a][3]);
-    }''')
+        RF455_ObserveProtocol("lobby-selection-camera", course, clipFrames[1], clipFrames[3]);
+    }
+    m_AniCamera.SetPrePlayCamera(camera, clipFrames[2], clipFrames[3], _CAM_FLAG_FINAL_STOP);''' + raw[end:]
     raw = replace(raw, b'''DWORD\tcam = 0;
 \tif ( m_RandomStart )
 \t{
@@ -188,8 +204,30 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
 
     raw = replace(raw, b'if (!m_CameraAni&&g_LoginState == LGS_CHARACTERLOBBY\t)',
                   b'if (g_LoginState == LGS_CHARACTERLOBBY)')
-    raw = replace(raw, b'if (m_CameraAni)\n\t{\n\t\tif (endwav)',
-                  b'if (m_CameraAni && lobbyMenu455.Started())\n\t{\n\t\tif (endwav)')
+    start = raw.index(b'\tstatic float endframe = 0;')
+    end = raw.index(b'\tif (g_LoginState == LGS_CHARACTERLOBBY)', start)
+    if raw[start:end].count(b'PlayWave( CAM_END_WAV') != 2:
+        raise ValueError('Legacy camera sound boundary changed')
+    raw = raw[:start] + b'''    if (!lobbyMenu455.ShowingCredits()) {
+        if (!m_CameraAni || !lobbyMenu455.Started()) {
+            cameraEndSoundPending455 = false;
+            StopWave(CameraMiddleWave455);
+        } else if (cameraEndSoundPending455) {
+            const float position = m_AniCamera.GetNowFrame();
+            // 455 uses 32 ms per authored frame for the audio cue.
+            const float cue = static_cast<float>(cameraSoundEndFrame455 * 0.032);
+            const bool reachedCue = cameraSoundStartFrame455 > cameraSoundEndFrame455
+                ? position < cue + 0.1f
+                : position > cue - 0.1f && position <= cue;
+            if (reachedCue && position > 0.0f) {
+                cameraEndSoundPending455 = false;
+                PlayWave(CameraEndWave455, 0, 1.0f, 0.0f);
+                RF455_ObserveProtocol("lobby-camera-sound-end", CameraEndWave455, cameraSoundEndFrame455,
+                                      static_cast<unsigned>(position * 1000.0f));
+            }
+        }
+    }
+''' + raw[end:]
     raw = replace(raw, b'if( !m_uiSelectCharacter.IsShow() )\n\t\t{\n\t\t\tm_uiSelectCharacter.Open();',
                   b'''if (!lobbyMenu455.Started()) {
             if (!lobbyMenu455.IsShow() && !lobbyMenu455.ShowingCredits()) {
