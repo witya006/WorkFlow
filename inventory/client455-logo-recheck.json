@@ -1,0 +1,47 @@
+{
+  "status": "CORNER_LOGO_NOT_REPRODUCED_ON_CURRENT_BUILD",
+  "executable": {
+    "file": "work/m9/0bf2385e/login-frame-live-taiwan001/RF_Online.bin",
+    "sha256": "0bf2385ed6b984c1df9b087dc04f7192a926905ecf4bdee793e015e3112d6d13",
+    "architecture": "x86",
+    "entry_rva": "0x1a4740",
+    "commit": "0904a60"
+  },
+  "reference": {
+    "file": "work/client-reference/current/RF_Online.bin",
+    "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "lobby_resource_rva": "0x13fe49",
+    "lobby_draw_rva": "0x13cd0a",
+    "movie_draw_rva": "0x1582a0"
+  },
+  "windowed": true,
+  "locale": "Taiwan",
+  "resolution": [1920, 1080],
+  "events": {
+    "file": "work/m9/0bf2385e/login-frame-live-taiwan001/debug-events.jsonl",
+    "sha256": "1ff14f6c1182c9829f44dd0161a2dd9e79e2d43fccbbf86578f1deac4659db07",
+    "ordered": [
+      "RF455 Protocol:title-movie-draw:1:1920:1080",
+      "RF455 Protocol:title-movie-end:1:1:0",
+      "RF455 Protocol:title-movie-draw:2:1920:1080",
+      "RF455 Protocol:title-movie-skip:2:27:0",
+      "RF455 Protocol:lobby-avatars-ready:0:0:0",
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 LoginFrame:00000000:1920x1080"
+    ]
+  },
+  "ccr_frame": {
+    "file": "work/m9/0bf2385e/login-frame-live-taiwan001/title-logo.png",
+    "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+  },
+  "lobby_frame": {
+    "file": "work/m9/0bf2385e/login-frame-live-taiwan001/login-frame.png",
+    "sha256": "8b91b7690a921e064330d6ceee516c508b437267878a6c0848f66fd20cb5874f",
+    "login_elapsed_ms": 3812
+  },
+  "previous_corner_logo_fix": "57c41d6",
+  "previous_corner_logo_evidence": "inventory/client455-lobby-opening-checkpoint.json",
+  "reported_executable_identified": false,
+  "desktop_flicker_verified": false
+}
