@@ -1,0 +1,86 @@
+{
+  "status": "EARLY_SELECTION_INPUT_IGNORED_AND_SETTLED_INPUT_ACCEPTED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7bdda8ca4d55e2bae62a801b349bc28f47c906551f254184b1a561185e682ac6",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4ed0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "regions": [
+        {
+          "rva": "0x13f6f0",
+          "bytes": 138,
+          "role": "System F10 and move-state input gate",
+          "sha256": "efae99efa99298da41e645934ca71723816123eb6d1eb19f34f430aae4c563fb"
+        },
+        {
+          "rva": "0x13a9c0",
+          "bytes": 105,
+          "role": "Selection lower panel completion releases the input gate",
+          "sha256": "04a9fcac4578a142f8133114dbbb71d403372b9c8c900d2a0b4791626d01bec1"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "regions": [
+        {
+          "rva": "0x13f6f0",
+          "bytes": 138,
+          "role": "System F10 and move-state input gate",
+          "sha256": "efae99efa99298da41e645934ca71723816123eb6d1eb19f34f430aae4c563fb"
+        },
+        {
+          "rva": "0x13a9c0",
+          "bytes": 105,
+          "role": "Selection lower panel completion releases the input gate",
+          "sha256": "04a9fcac4578a142f8133114dbbb71d403372b9c8c900d2a0b4791626d01bec1"
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "live": {
+    "file": "artifacts/client455-progress/selection-input-7bdda8ca/client455-world-entry-live-russia-native.json",
+    "sha256": "c0056cf5258c1c0d648d936d32031256990e627cf6e2e447058e87cd1073735b",
+    "trace": {
+      "file": "work/m9/7bdda8ca/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "3ed16890f0c3b55b565ab74db78fc282bf05fa9e3f759eb46381df915984fa8e"
+    },
+    "ordered": [
+      "RF455 Protocol:lobby-start:0:0:0",
+      "flight",
+      "RF455 Protocol:lobby-selection-open:0:0:0",
+      "slide",
+      "RF455 Protocol:lobby-selection-slot:0:1:0",
+      "RF455 Protocol:lobby-selection-input-ready:0:0:0",
+      "selection_key_posted",
+      "RF455 Protocol:tx:1:14:1",
+      "RF455 Protocol:select-result:0:0:0",
+      "RF455 WorldCapture:0:0:1920x1080"
+    ],
+    "map": "NeutralB",
+    "input_enabled": true
+  },
+  "f10_scope": "System F10 posted to own window amid transition, ordinary keyboard selection and world entry continue",
+  "test_only_observer_source": "work/observe-selection-input455.py"
+}

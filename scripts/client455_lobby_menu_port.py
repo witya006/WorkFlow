@@ -237,9 +237,20 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
                   b'\t\t\tUI_SetMoveWindow( SELECT_CHAR_WIN, TRUE );\n'
                   b'\t\t\tRF455_ObserveProtocol("lobby-selection-open", 0, 0, 0);\n'
                   b'\t\t\tRF455_ObserveProtocol("lobby-selection-slot", m_Course, m_HaveCharacter[m_Course] != FALSE, 0);')
+    raw = replace(raw, b'''if( g_bClosingWindow )
+\t\t\t{
+\t\t\t\tm_uiSelectCharacter.Close();
+\t\t\t\tg_bClosingWindow = FALSE;
+\t\t\t}''', b'''if (g_bClosingWindow) {
+                m_uiSelectCharacter.Close();
+                g_bClosingWindow = FALSE;
+            } else {
+                RF455_ObserveProtocol("lobby-selection-input-ready", RF455_SelectedCharacterSlot(), 0, 0);
+            }''')
     raw = replace(raw, b'CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{',
                   b'''CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
+    if (uMsg == WM_SYSKEYDOWN && wParam == VK_F10) return 0xffffffff;
     if (uMsg == WM_SIZE && lobbyMenu455.IsShow()) lobbyMenu455.Layout();
     if (uMsg == WM_KEYDOWN && !(lParam & (1L << 30))) {
         const bool credits = lobbyMenu455.ShowingCredits();

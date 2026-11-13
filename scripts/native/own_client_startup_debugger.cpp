@@ -171,7 +171,7 @@ int wmain(int argc,wchar_t** argv){
                             std::fprintf(output,"{\"kind\":\"selection_background_update_requested\",\"own_child_validated\":%s,\"sent\":%s,\"OS_focus_changed\":false}\n",valid&&childPID==process.dwProcessId?"true":"false",activated?"true":"false");
                             if (activated) {
                                 selectionWindow = reinterpret_cast<HWND>(window);
-                                if (lobbySelectionOpened) selectionSendAt = GetTickCount64() + 650;
+                                if (lobbySelectionOpened) selectionSendAt = GetTickCount64() + 1;
                                 else if (lobbyMenuOpened) selectionSendAt = GetTickCount64() + 350;
                             }
                             stopReached=true;selectionDeadline=GetTickCount64()+selectionMs;
@@ -251,9 +251,9 @@ int wmain(int argc,wchar_t** argv){
                     lobbyMenuOpened = true;
                     if (selectionWindow && !lobbyStartKeySent) selectionSendAt = GetTickCount64() + 350;
                 }
-                if (selectionMode && std::string(text) == "RF455 Protocol:lobby-selection-open:0:0:0") {
+                if (selectionMode && receivedTitleEvent.rfind("RF455 Protocol:lobby-selection-input-ready:", 0) == 0) {
                     lobbySelectionOpened = true;
-                    if (selectionWindow) selectionSendAt = GetTickCount64() + 650;
+                    if (selectionWindow) selectionSendAt = GetTickCount64() + 1;
                 }
                 if(captureLoginFrame&&std::string(text).rfind("RF455 LoginFrame:",0)==0){captureSeen=true;auto& entry=points[3];if(!entry.active&&!points[4].active){if(writeByte(process.hProcess,imageBase+entry.rva,0xcc))entry.active=true;else{std::fputs("{\"kind\":\"login_capture_rearm_error\"}\n",output);TerminateProcess(process.hProcess,0xe0434209);terminating=true;}}}
             }}
