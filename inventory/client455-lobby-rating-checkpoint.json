@@ -1,0 +1,378 @@
+{
+  "status": "KOREAN_GAME_RATING_VERIFIED_RUSSIAN_LIVE_ENTRY_RECHECKED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "05e8e4ef436df32cb671d4d1dd9c9a563e6e6458978d1fb6804e549f1bd0e472",
+    "bytes": 2533376,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4b20",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13fb1e",
+          "bytes": 168,
+          "role": "Country predicate, game-rating window, and 3000 ms hold",
+          "sha256": "be48005b0711bd214db648d54731409c53a9c19e77b451d9c2ac9b080e91baea"
+        },
+        {
+          "rva": "0x13fbc6",
+          "bytes": 320,
+          "role": "Loading reveal and completed frame presentation",
+          "sha256": "74979c965293b5ea6837859533d04bfad18a395975acf4d82a001b269c025b9f"
+        },
+        {
+          "rva": "0x3a4230",
+          "bytes": 172,
+          "role": "Game-rating window uses the screen size and starts at the origin",
+          "sha256": "34ee45162430f9ba45bbbbb017c5ef7282bbb1fe85ef01c15ac9d695dc2b7bfd"
+        },
+        {
+          "rva": "0x3a42f0",
+          "bytes": 67,
+          "role": "Game-rating sprite 2, action 0, frame 1",
+          "sha256": "317f8f737c9bfdee770e89d38e7b6b556927ddb7ac261cd273978049054af48b"
+        },
+        {
+          "rva": "0x3a469f",
+          "bytes": 50,
+          "role": "Loading sprite 2, action 0, frame 0",
+          "sha256": "8c24621bf8e8efc31a14986dbd911fb6d140f53d73e3a9b7885567822259e7ae"
+        },
+        {
+          "rva": "0x433070",
+          "bytes": 21,
+          "role": "Korean predicate returns true",
+          "sha256": "8b5b09677eda272cad58efc796ff0af246c44bba4f443043d4eed4b3db2c6189"
+        },
+        {
+          "rva": "0x42c650",
+          "bytes": 19,
+          "role": "Other countries share a false predicate",
+          "sha256": "2979d04ef5464811d7899adaaf1e7afa8b0a73826248882fe88264966cea118a"
+        }
+      ],
+      "country_slots": [
+        {
+          "nation": 0,
+          "slot_rva": "0x6f95d8",
+          "predicate_rva": "0x433070"
+        },
+        {
+          "nation": 1,
+          "slot_rva": "0x6f83a0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 2,
+          "slot_rva": "0x6f6d40",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 3,
+          "slot_rva": "0x6f9278",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 4,
+          "slot_rva": "0x6f71d0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 5,
+          "slot_rva": "0x6f77c0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 6,
+          "slot_rva": "0x6f74c8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 7,
+          "slot_rva": "0x6f7ab8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 8,
+          "slot_rva": "0x6f7db0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 9,
+          "slot_rva": "0x6f80a8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 10,
+          "slot_rva": "0x6f8990",
+          "predicate_rva": "0x42c650"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x13fb1e",
+          "bytes": 168,
+          "role": "Country predicate, game-rating window, and 3000 ms hold",
+          "sha256": "be48005b0711bd214db648d54731409c53a9c19e77b451d9c2ac9b080e91baea"
+        },
+        {
+          "rva": "0x13fbc6",
+          "bytes": 320,
+          "role": "Loading reveal and completed frame presentation",
+          "sha256": "74979c965293b5ea6837859533d04bfad18a395975acf4d82a001b269c025b9f"
+        },
+        {
+          "rva": "0x3a4230",
+          "bytes": 172,
+          "role": "Game-rating window uses the screen size and starts at the origin",
+          "sha256": "34ee45162430f9ba45bbbbb017c5ef7282bbb1fe85ef01c15ac9d695dc2b7bfd"
+        },
+        {
+          "rva": "0x3a42f0",
+          "bytes": 67,
+          "role": "Game-rating sprite 2, action 0, frame 1",
+          "sha256": "317f8f737c9bfdee770e89d38e7b6b556927ddb7ac261cd273978049054af48b"
+        },
+        {
+          "rva": "0x3a469f",
+          "bytes": 50,
+          "role": "Loading sprite 2, action 0, frame 0",
+          "sha256": "8c24621bf8e8efc31a14986dbd911fb6d140f53d73e3a9b7885567822259e7ae"
+        },
+        {
+          "rva": "0x433070",
+          "bytes": 21,
+          "role": "Korean predicate returns true",
+          "sha256": "8b5b09677eda272cad58efc796ff0af246c44bba4f443043d4eed4b3db2c6189"
+        },
+        {
+          "rva": "0x42c650",
+          "bytes": 19,
+          "role": "Other countries share a false predicate",
+          "sha256": "2979d04ef5464811d7899adaaf1e7afa8b0a73826248882fe88264966cea118a"
+        }
+      ],
+      "country_slots": [
+        {
+          "nation": 0,
+          "slot_rva": "0x6f95d8",
+          "predicate_rva": "0x433070"
+        },
+        {
+          "nation": 1,
+          "slot_rva": "0x6f83a0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 2,
+          "slot_rva": "0x6f6d40",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 3,
+          "slot_rva": "0x6f9278",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 4,
+          "slot_rva": "0x6f71d0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 5,
+          "slot_rva": "0x6f77c0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 6,
+          "slot_rva": "0x6f74c8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 7,
+          "slot_rva": "0x6f7ab8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 8,
+          "slot_rva": "0x6f7db0",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 9,
+          "slot_rva": "0x6f80a8",
+          "predicate_rva": "0x42c650"
+        },
+        {
+          "nation": 10,
+          "slot_rva": "0x6f8990",
+          "predicate_rva": "0x42c650"
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "reference_rating_hold_ms": 3000,
+  "offline_runs": [
+    {
+      "profile": "Korea",
+      "report": {
+        "file": "artifacts/client455-progress/lobby-rating-05e8e4ef/client455-title-escape-prologue-korea-native.json",
+        "sha256": "f5fe198faf06f8ea37e32f6b578d8d2ac60ef673fa1d62cf339349290facdf15"
+      },
+      "events": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue001/debug-events.jsonl",
+        "sha256": "370c3803c7e6951d3ba89033ab0d05c40c0196b9d201a44de604361ef7f9e9de"
+      },
+      "loading_reveal": [
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue001/loading-reveal-start.png",
+          "sha256": "c1161e09bb43363d2777bdb410b3e59e98b33eae3b374322b5e86079ab089a12",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 0
+        },
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue001/loading-reveal-mid.png",
+          "sha256": "a8b8a091a2728621298f662fe832ae00657d68ac0e2734c061be3e21bd8c2153",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 389
+        },
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue001/loading-reveal-end.png",
+          "sha256": "ae1e5c70e12d11c3b0b38942b8bca04d02a7494634caa68008164b77d2226b1d",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 1155
+        }
+      ],
+      "login": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue001/login-frame.png",
+        "sha256": "852ce1cff1204a42f0ea441da355a7f6b28ca2e2bcdb4620d1e0af7aab6e71d2",
+        "resolution": [
+          1920,
+          1080
+        ]
+      },
+      "sprite": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue001/SpriteImage/ko-kr/loading.spr",
+        "sha256": "4188984d2c466351deea25e5eb49a3d643792e864c82f4462a23a6a17cc1bf37"
+      },
+      "game_rating": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue001/lobby-game-rating.png",
+        "sha256": "e6d8b160193c4a174f83bf70e8611fc557690f4db27ff1fb624b599803c1ebf5",
+        "resolution": [
+          1920,
+          1080
+        ],
+        "elapsed_ms": 3029
+      }
+    },
+    {
+      "profile": "Taiwan",
+      "report": {
+        "file": "artifacts/client455-progress/lobby-rating-05e8e4ef/client455-title-escape-prologue-taiwan-native.json",
+        "sha256": "44fc989e399d609336aeed0584fd45a69587e41393fc060502ae3716a5a31864"
+      },
+      "events": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/debug-events.jsonl",
+        "sha256": "1ab987e2111ca73cbe9c1b3d954401bff5a9298537ef2bcfd17160d6112d06c3"
+      },
+      "loading_reveal": [
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/loading-reveal-start.png",
+          "sha256": "c1161e09bb43363d2777bdb410b3e59e98b33eae3b374322b5e86079ab089a12",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 0
+        },
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/loading-reveal-mid.png",
+          "sha256": "ae7049d3e37326990fc53f444539fad80cf7e4ca226ef77307934c3721583c31",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 421
+        },
+        {
+          "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/loading-reveal-end.png",
+          "sha256": "e4d54b0c9016f1362aaba6f41f1a2086fabb7975fe616d477fb160dc08f3fd24",
+          "resolution": [
+            1920,
+            1080
+          ],
+          "elapsed_ms": 1257
+        }
+      ],
+      "login": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/login-frame.png",
+        "sha256": "9d32e9d584aefeda0924dc6a7db19a067d36b3a42a60f6af102a17803c7894a0",
+        "resolution": [
+          1920,
+          1080
+        ]
+      },
+      "sprite": {
+        "file": "work/m9/05e8e4ef/title-escape-prologue-taiwan001/SpriteImage/zh-tw/loading.spr",
+        "sha256": "053edc2b6fae29a3d3c1b830afc165e90f9d583054eca46a632b3f54ef56f2e3"
+      }
+    }
+  ],
+  "live_russia": {
+    "report": {
+      "file": "artifacts/client455-progress/lobby-rating-05e8e4ef/client455-world-entry-live-russia-native.json",
+      "sha256": "94a353fd515384f50aa6353b68694a19bdd51310f6ef1c06e580c6f92c955f0a"
+    },
+    "authentication": {
+      "file": "artifacts/client455-progress/lobby-rating-05e8e4ef/client455-live-launcher-native.json",
+      "sha256": "6634d6ffdac903e41dd9ab3c40a0be9ba9be62307a8fc101d91681c533ae79cb"
+    },
+    "events": {
+      "file": "work/m9/05e8e4ef/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "5f3508b3ea92ef1ab0ee784f1f5db9b4bf56dc2171afb8f57f2196e80ad2584f"
+    },
+    "map": "NeutralB",
+    "controllable_frame": {
+      "file": "work/m9/05e8e4ef/world-entry-live-russia001/world-post-position.png",
+      "sha256": "e5f49ba5d472b7a89fc0f1b50ca16409e5815eb0df4ae191f8b799a6492846ba"
+    },
+    "rating_displayed": false,
+    "private_handoff_removed": true
+  },
+  "reference_binary_executed": false,
+  "server_files_modified": false,
+  "scope": "Game rating and loading order, game backbuffer captures, and Russian live entry. No display flicker claim."
+}

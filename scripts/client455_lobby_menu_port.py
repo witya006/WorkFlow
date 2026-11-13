@@ -33,6 +33,24 @@ def reveal_lobby_loading(raw):
     if raw[start:end].count(b'_GetUIScreen()->Draw();') != 1:
         raise ValueError('Legacy loading screen draw boundary changed')
     raw = raw[:start] + b'''    m_uiLoadingWindow.Open();
+    // The Korean 455 profile displays the game rating before the loading art.
+    if (RF455_GetNormalNationPaths()->nation == RF455_MapNation("Korea") &&
+        m_uiLoadingWindow.SelectLoadingFrame455(1)) {
+        constexpr DWORD ratingMs = 3000;
+        const DWORD ratingStart = timeGetTime();
+        for (DWORD elapsed = 0; elapsed < ratingMs; elapsed = timeGetTime() - ratingStart) {
+            if (R3BeginScene()) {
+                R3ClearFrameBuffer();
+                _GetUIScreen()->Draw();
+                R3EndScene();
+                RF455_CaptureGameRatingIfRequested(elapsed);
+                GetD3dDevice()->Present(nullptr, nullptr, nullptr, nullptr);
+            }
+            Sleep(1);
+        }
+        RF455_ObserveProtocol("lobby-rating-end", timeGetTime() - ratingStart, 0, 0);
+        m_uiLoadingWindow.SetSprite();
+    }
     // 455 reveals the loading sprite before the synchronous lobby load.
     constexpr DWORD revealMs = 800;
     const DWORD revealStart = timeGetTime();
@@ -58,6 +76,26 @@ def reveal_lobby_loading(raw):
 
 
 def port_lobby_menu(raw, relative, native):
+    if relative == 'userinterface/loginwindow/guiloadingwindow.h':
+        return replace(raw, b'\tvoid\tSetSprite( void );',
+                       b'\tvoid\tSetSprite( void );\n\tbool SelectLoadingFrame455(WORD frame);'), True
+    if relative == 'userinterface/loginwindow/guiloadingwindow.cpp':
+        return replace(raw, b'''\tSPRITE_INFO\t\tl_spriteInfo;
+\tl_spriteInfo.pSprite = gSpriteMgr.GetSprite( SP_ID_LOADING );
+\tl_spriteInfo.wActionNo = 0;
+\tl_spriteInfo.wFrameNo = 0;
+\tm_cLoading.SetSpriteInfo( &l_spriteInfo );
+}''', b'''    if (!SelectLoadingFrame455(0)) m_cLoading.SetSpriteInfo(nullptr);
+}
+
+bool CGUILoadingWindow::SelectLoadingFrame455(WORD frame)
+{
+    auto* sprite = gSpriteMgr.GetSprite(SP_ID_LOADING);
+    if (!sprite || !sprite->GetMaxActions() || frame >= sprite->GetMaxFrames(0)) return false;
+    SPRITE_INFO info = {sprite, 0, frame};
+    m_cLoading.SetSpriteInfo(&info);
+    return true;
+}'''), True
     if relative == 'mainapp.cpp':
         # Land unload releases effect resources. Do it before the engine and
         # function-local effect owners are destroyed, while they are still alive.

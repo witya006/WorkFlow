@@ -45,12 +45,28 @@ static void RF455_CaptureSelectionFadeIfRequested(DWORD elapsedMs, bool complete
     OutputDebugStringA(event);
 }
 
-static void RF455_CaptureLoadingRevealIfRequested(DWORD elapsedMs, bool complete) {
+static bool RF455_IsLoadingCaptureRequested() {
     static const bool enabled = [] {
         char value[2]{};
         return GetEnvironmentVariableA("RF455_CAPTURE_LOADING_REVEAL", value, sizeof(value)) == 1 && value[0] == '1';
     }();
-    if (!enabled) return;
+    return enabled;
+}
+
+static void RF455_CaptureGameRatingIfRequested(DWORD elapsedMs) {
+    static bool attempted = false;
+    if (attempted || !RF455_IsLoadingCaptureRequested()) return;
+    attempted = true;
+    D3DSURFACE_DESC desc{};
+    const HRESULT result = RF455_SaveLoginBackbuffer("lobby-game-rating.png", desc);
+    char event[128];
+    std::snprintf(event, sizeof(event), "RF455 GameRating:%lu:%08lX:%ux%u", elapsedMs,
+                  static_cast<unsigned long>(result), desc.Width, desc.Height);
+    OutputDebugStringA(event);
+}
+
+static void RF455_CaptureLoadingRevealIfRequested(DWORD elapsedMs, bool complete) {
+    if (!RF455_IsLoadingCaptureRequested()) return;
     static bool attempted[3]{};
     static const char* const filenames[] = {"loading-reveal-start.png", "loading-reveal-mid.png", "loading-reveal-end.png"};
     const unsigned phase = complete ? 2 : elapsedMs >= 380 ? 1 : 0;
