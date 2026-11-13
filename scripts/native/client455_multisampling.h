@@ -20,6 +20,24 @@ inline D3DMULTISAMPLE_TYPE RF455_SelectMultisampling(IDirect3D9& api, UINT adapt
     return D3DMULTISAMPLE_NONE;
 }
 
+// Reset may overwrite its input even on failure. Keep the selected mode separate
+// so another reset (or the no-MSAA retry) retains the requested size and format.
+template<class Device>
+inline HRESULT RF455_ResetPresentation(Device& device, D3DPRESENT_PARAMETERS& mode) {
+    auto requested = mode;
+    auto attempt = requested;
+    HRESULT result = device.Reset(&attempt);
+    if (FAILED(result) && result != D3DERR_DEVICELOST &&
+        requested.MultiSampleType != D3DMULTISAMPLE_NONE) {
+        requested.MultiSampleType = D3DMULTISAMPLE_NONE;
+        requested.MultiSampleQuality = 0;
+        attempt = requested;
+        result = device.Reset(&attempt);
+    }
+    if (SUCCEEDED(result)) mode = requested;
+    return result;
+}
+
 inline HRESULT RF455_ReadRenderTarget(IDirect3DDevice9& device, IDirect3DSurface9& source,
                                       IDirect3DSurface9& memory) {
     D3DSURFACE_DESC desc{};

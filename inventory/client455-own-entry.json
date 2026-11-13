@@ -2,11 +2,11 @@
   "scope": "Decoded instruction checkpoints in the exact own linked PE;not reference behavior acceptance",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "8bc138af99be84e5f9ebf0280152e55021a34d3e2824fb3611d15464d9174457",
+    "sha256": "7e17fef8c163ec699d1a0f4e40560d1a4a81a175a3400c31d8d83def70a6ec97",
     "bytes": 2535424,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a5350",
+    "entry_rva": "0x1a53b0",
     "sections": [
       ".text",
       ".rdata",
@@ -15,7 +15,7 @@
       ".reloc"
     ]
   },
-  "normal_link_sha256": "870a7c576da38ebb7317ff05fe1f3843f573fd46bfcc620adc751584cdeb065c",
+  "normal_link_sha256": "8083a400b2eaeaf5a1da09436ca345b6d23928530b9428917955eb2a936ecbee",
   "script_sha256": "0addad4a9079ee705ad6f784ef6691f95b313805ecf93d3ee81289f2a0ad999a",
   "tool": {
     "file": "C:\\Program Files\\Microsoft Visual Studio\\18\\Professional\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x86\\dumpbin.exe",
@@ -32,7 +32,7 @@
     },
     "d3d": {
       "name": "?InitR3D3D@R3D3dWrapper@@QAEJPAUHINSTANCE__@@K@Z",
-      "rva": "0x1901d0"
+      "rva": "0x190210"
     },
     "create": {
       "name": "?Create@CMainApp@@QAEHXZ",
@@ -83,7 +83,7 @@
     "after_d3d": {
       "rva": "0xd04e1",
       "call_rva": "0xd04dc",
-      "target_rva": "0x1901d0",
+      "target_rva": "0x190210",
       "bytes": 2,
       "sha256": "043b5c16f0c4129abe8ea534766c2117090a2f144dcc6fe6f25719f50ea562e1"
     },
@@ -105,11 +105,11 @@
   "disassembly": [
     {
       "file": "artifacts/client455-startup/own-main-disassembly.txt",
-      "sha256": "9ec7f3ae98939c4099d4889343a019ed59e0f9e8c628bbb5a9585fc7c3a21328"
+      "sha256": "63a6a4c178e16c096be53fa7f0c96f1f3ca31ba2a7f5db45635f64b74a17a6cc"
     },
     {
       "file": "artifacts/client455-startup/own-create-disassembly.txt",
-      "sha256": "31822d90760572f3443c914385b879ab598dfa6e465e0af9589dcd1fd19ffd35"
+      "sha256": "c50ecf3e27bdf05ed78746def658d1fd7f985572b6053fc20bf73907eff4fd83"
     }
   ]
 }

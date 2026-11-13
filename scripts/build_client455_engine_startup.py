@@ -136,11 +136,7 @@ def main():
             raw = replace(raw, b'    if( FAILED( hr = m_pd3dDevice->Reset( &m_d3dpp ) ) )\n        return hr;', b'''    const auto& adapter = m_Adapters[m_dwAdapter];
     m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
         adapter.devices[adapter.dwCurrentDevice].DeviceType, m_d3dpp);
-    hr = m_pd3dDevice->Reset(&m_d3dpp);
-    if (FAILED(hr) && hr != D3DERR_DEVICELOST && m_d3dpp.MultiSampleType != D3DMULTISAMPLE_NONE) {
-        m_d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
-        hr = m_pd3dDevice->Reset(&m_d3dpp);
-    }
+    hr = RF455_ResetPresentation(*m_pd3dDevice, m_d3dpp);
     if (FAILED(hr)) return hr;''')
         elif filename=='r3text.cpp':
             anchor=b'static CR3Font stCR3Font;'

@@ -1,0 +1,50 @@
+{
+  "status": "RESET_FIXED_STARTUP_SCENE_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "7e17fef8c163ec699d1a0f4e40560d1a4a81a175a3400c31d8d83def70a6ec97",
+    "bytes": 2535424,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a53b0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reset_probe": "inventory/client455-presentation-reset.json",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "run": "work/m9/7e17fef8/title-escape-prologue-taiwan001",
+  "verified": [
+    "CCR natural completion",
+    "prologue rendered",
+    "Escape to Login scene"
+  ],
+  "full_login_verified": false,
+  "visible_flicker_verified": false,
+  "evidence": [
+    {
+      "file": "work/m9/7e17fef8/title-escape-prologue-taiwan001/debug-events.jsonl",
+      "sha256": "27abf91d41d54fe708fe4a57da5322b2b34811ef0cd89d6d98cf411f0b94ba4c"
+    },
+    {
+      "file": "work/m9/7e17fef8/title-escape-prologue-taiwan001/title-logo.png",
+      "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+    },
+    {
+      "file": "work/m9/7e17fef8/title-escape-prologue-taiwan001/title-prologue.png",
+      "sha256": "8941bca11a1d803d3dfc497cbf343b20efc31f9bac0d7666788e8397533dedf0"
+    },
+    {
+      "file": "work/m9/7e17fef8/title-escape-prologue-taiwan001/login-frame.png",
+      "sha256": "90112b4f7689e35c3c3a646a0cc6ddac5e050a08445260bc451047a314291e46"
+    }
+  ]
+}

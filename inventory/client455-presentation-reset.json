@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "D3D9 reset helper, not full-client display acceptance",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "hardware_resets": 3,
+  "deterministic_driver_cases": [
+    "fallback",
+    "both_attempts_failed",
+    "device_lost",
+    "MSAA_disabled"
+  ],
+  "source": {
+    "file": "scripts/native/client455_presentation_reset_probe.cpp",
+    "sha256": "e01e1744ac523f377a8921e5f3985ace5a4c34333ab1c2f698a5220b2435eda8"
+  },
+  "helper": {
+    "file": "scripts/native/client455_multisampling.h",
+    "sha256": "a4a3343ee0e38824d082f74d837ad2bae62dd978059218fa21db0daa72b392ce"
+  },
+  "executable": {
+    "file": "work/presentation-reset455/presentation-reset.exe",
+    "sha256": "7ddb90cac475030a523e06c1ff6a67b421d049fa9a0e562d58d387c43cd9d3d4"
+  },
+  "output": {
+    "file": "work/presentation-reset455/result.txt",
+    "sha256": "ea22799838c58cbe2d4dad3911cf4f42c024b49c3c7b1adf8571f84011ce9be0"
+  },
+  "original_executable_executed": false,
+  "server_modified": false,
+  "visible_window_flicker_verified": false
+}
