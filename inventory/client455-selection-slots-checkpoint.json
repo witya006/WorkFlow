@@ -1,0 +1,212 @@
+{
+  "status": "VERIFIED_LOCALIZED_SELECTION_AND_LIVE_SLOT_CYCLING",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "0bf2385ed6b984c1df9b087dc04f7192a926905ecf4bdee793e015e3112d6d13",
+    "bytes": 2531840,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4740",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3bb0d0",
+          "bytes": 145,
+          "role": "Previous slot and wrap",
+          "sha256": "6ca9944e73d2ed0962c420c60f282fa25bff2ef8a5570e92affdd2c070a84325"
+        },
+        {
+          "rva": "0x3bb170",
+          "bytes": 145,
+          "role": "Next slot and wrap",
+          "sha256": "2c75a1904dbe2c86aefb33ead7b54a6b2572d2db950b9a00e0d9f7466e9a14e2"
+        },
+        {
+          "rva": "0x3a94e5",
+          "bytes": 128,
+          "role": "Selection button text IDs",
+          "sha256": "7704b48009cf7491932b00c3c9beab6f5eccf0468e74233536d3b33ff95ba57f"
+        },
+        {
+          "rva": "0x3aa920",
+          "bytes": 80,
+          "role": "Name format",
+          "sha256": "bbb17627285d3f14177e7e2d8af070f5668af42ab91b4ba7635647b065b3f58e"
+        },
+        {
+          "rva": "0x3aa980",
+          "bytes": 80,
+          "role": "Level format",
+          "sha256": "7657056f3d977ea209c3828ec47925781a5f2125916259d2004925a14220cbd1"
+        },
+        {
+          "rva": "0x3aaa80",
+          "bytes": 346,
+          "role": "Localized currency labels and signed 64-bit formatting",
+          "sha256": "89743a7040be441d420d2723151f76dc675de4681cedcdb099f50eb44cb9634e"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x3bb0d0",
+          "bytes": 145,
+          "role": "Previous slot and wrap",
+          "sha256": "6ca9944e73d2ed0962c420c60f282fa25bff2ef8a5570e92affdd2c070a84325"
+        },
+        {
+          "rva": "0x3bb170",
+          "bytes": 145,
+          "role": "Next slot and wrap",
+          "sha256": "2c75a1904dbe2c86aefb33ead7b54a6b2572d2db950b9a00e0d9f7466e9a14e2"
+        },
+        {
+          "rva": "0x3a94e5",
+          "bytes": 128,
+          "role": "Selection button text IDs",
+          "sha256": "7704b48009cf7491932b00c3c9beab6f5eccf0468e74233536d3b33ff95ba57f"
+        },
+        {
+          "rva": "0x3aa920",
+          "bytes": 80,
+          "role": "Name format",
+          "sha256": "bbb17627285d3f14177e7e2d8af070f5668af42ab91b4ba7635647b065b3f58e"
+        },
+        {
+          "rva": "0x3aa980",
+          "bytes": 80,
+          "role": "Level format",
+          "sha256": "7657056f3d977ea209c3828ec47925781a5f2125916259d2004925a14220cbd1"
+        },
+        {
+          "rva": "0x3aaa80",
+          "bytes": 346,
+          "role": "Localized currency labels and signed 64-bit formatting",
+          "sha256": "89743a7040be441d420d2723151f76dc675de4681cedcdb099f50eb44cb9634e"
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "live_locale": "Taiwan",
+  "reference_locales": {
+    "Taiwan": {
+      "decoded_sha256": "41dd826c241cfe4ea0b32ee963b7da0918f6f9e9ef7ee9320a4e4b47f4a8f686",
+      "ids": {
+        "0xa": "丹藍德",
+        "0xb": "笛仙那",
+        "0x48f": "創造角色",
+        "0x4b1": "前一個角色",
+        "0x4b2": "下一個角色",
+        "0x4b3": "角色刪除",
+        "0x4b4": "結束遊戲",
+        "0x4b5": "請問您要刪除角色嗎？",
+        "0x4b6": "請問您要結束遊戲嗎？",
+        "0x4b7": "名字：%s",
+        "0x4b8": "等級：%s",
+        "0x4be": "黃 金：%s",
+        "0x4bf": "黃  金：%s",
+        "0x505": "C  P：%s",
+        "0x556": "已有創造完的角色。",
+        "0x558": "請創造角色。"
+      }
+    },
+    "Russia": {
+      "decoded_sha256": "31ded65762661a0d8eed7f0d84389ab47ffe05bed7aca113a2f6d004e1170627",
+      "ids": {
+        "0xa": "Далант",
+        "0xb": "Дизена",
+        "0x48f": "Создать",
+        "0x4b1": "Предыдущий",
+        "0x4b2": "Следующий",
+        "0x4b3": "Удалить",
+        "0x4b4": "Выйти",
+        "0x4b5": "Вы уверены, что хотите удалить этого персонажа?",
+        "0x4b6": "Вы уверены, что хотите выйти из игры?",
+        "0x4b7": "Имя: %s",
+        "0x4b8": "Уровень: %s",
+        "0x4be": "Платина: %s",
+        "0x4bf": "Платина: %s",
+        "0x505": "C  P : %s",
+        "0x556": "Данное место персонажа занято",
+        "0x558": "Пожалуйста, создайте своего персонажа"
+      }
+    }
+  },
+  "keys": [
+    39,
+    39,
+    39,
+    37,
+    37,
+    37
+  ],
+  "slots": [
+    {
+      "index": 0,
+      "occupied": true
+    },
+    {
+      "index": 1,
+      "occupied": true
+    },
+    {
+      "index": 2,
+      "occupied": true
+    },
+    {
+      "index": 0,
+      "occupied": true
+    },
+    {
+      "index": 2,
+      "occupied": true
+    },
+    {
+      "index": 1,
+      "occupied": true
+    },
+    {
+      "index": 0,
+      "occupied": true
+    }
+  ],
+  "live_world": "NeutralB",
+  "input_enabled": true,
+  "frames": {
+    "selection": {
+      "file": "work/m9/0bf2385e/world-observation-live-taiwan001/lobby-camera-selection.png",
+      "sha256": "d3836a209924efc959fff021b418bbd0aa804d47cd854f730036e7eadd88a7ab"
+    },
+    "world": {
+      "file": "work/m9/0bf2385e/world-observation-live-taiwan001/world-post-position.png",
+      "sha256": "bfd67d19263822ead4ad5561360704b722715ad3b0851b077178efcc3d159df9"
+    }
+  },
+  "events": {
+    "file": "work/m9/0bf2385e/world-observation-live-taiwan001/debug-events.jsonl",
+    "sha256": "2f86d4d78d9d6d4750e820c06703d4cebf8a3ae3cf1b9a6e18ec0852042c1014"
+  },
+  "desktop_flicker_verified": false
+}

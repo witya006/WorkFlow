@@ -1,9 +1,34 @@
 """Restore selected-character wire handling and the ordinary zone handoff."""
 
+import re
+
 from client455_trade_ore_port import patch_method, replace
 
 
 def port_selection(raw,relative,native,section):
+    if relative == 'userinterface/loginwindow/guiselectcharacter.h':
+        return replace(raw, b'SetCharInfo_Money( DWORD pi_dwDalant, DWORD pi_dwGold, BYTE pi_byRaceType )',
+                       b'SetCharInfo_Money(__int64 dalant, __int64 gold, BYTE race)'), True
+    if relative == 'userinterface/loginwindow/guiselectcharacter.cpp':
+        raw = b'#include "client455_language.h"\n' + raw
+        raw = re.sub(rb'(m_c(?:Prev|Next|Create|Delete|Exit)Button)\.SetLabel\( "[^"\n]*" \);',
+                     lambda match: match[1] + b'.SetLabel(const_cast<char*>(RF455_GetNormalLanguagePack()->get(' + {
+                         b'm_cPrevButton': b'0x4b1', b'm_cNextButton': b'0x4b2', b'm_cCreateButton': b'0x48f',
+                         b'm_cDeleteButton': b'0x4b3', b'm_cExitButton': b'0x4b4',
+                     }[match[1]] + b')));', raw)
+        if raw.count(b'.SetLabel(const_cast<char*>(RF455_GetNormalLanguagePack()->get(') != 5:
+            raise ValueError('Selection button labels changed')
+        for marker, index, count in [(b'0, DLG_STYLE_OK_CANCEL', b'0x4b6', 2),
+                                     (b'DELETE_CHAR_BOX_ID, DLG_STYLE_OK_CANCEL', b'0x4b5', 2)]:
+            pattern = rb'(_GUIMessageBox\( this, )"[^"\n]*",\s*0xb0ffffff,\s*' + marker
+            raw, actual = re.subn(pattern, rb'\g<1>const_cast<char*>(RF455_GetNormalLanguagePack()->get(' +
+                                  index + b')), 0xb0ffffff, ' + marker, raw)
+            if actual != count:
+                raise ValueError('Selection confirmation text changed')
+        first, _ = section(raw, b'CGUISelectCharacter::SetCharInfo_Name(', b'CGUISelectCharacter::SetCharInfo_Name(')
+        _, last = section(raw, b'CGUISelectCharacter::SetCharInfo_Money(', b'CGUISelectCharacter::SetCharInfo_Money(')
+        begin = raw.rfind(b'\nvoid', 0, first) + 1
+        return raw[:begin] + (native / 'client455_selection_text.inc').read_bytes() + raw[last:], True
     if relative=='network/cnetworkmgr.h':
         old=b'void\tSystemMsg_SelCharResult_zone( char * pi_pMsg );'
         if raw.count(old)!=1:raise ValueError('Selection receiver API anchor')
@@ -31,6 +56,14 @@ def port_selection(raw,relative,native,section):
 };'''+raw[last:]
         return raw,True
     if relative=='gameprogress/cgp_login.cpp':
+        for callback, index in [(b'EventCreateCharacter()', b'0x556'), (b'EventJoinGameFunc()', b'0x558')]:
+            first, last = section(raw, b'void '+callback, b'void '+callback)
+            body, count = re.subn(rb'_GUIMessageBox\( NULL, "[^"\n]*",MSGBOXALPHA\);',
+                                  b'_GUIMessageBox(nullptr, const_cast<char*>(RF455_GetNormalLanguagePack()->get(' +
+                                  index + b')), MSGBOXALPHA);', raw[first:last], count=1)
+            if count != 1:
+                raise ValueError('Selection slot message changed')
+            raw = raw[:first] + body + raw[last:]
         signature=b'NetworkInput(';first,last=section(raw,signature,signature);body=raw[first:last]
         begin=body.index(b'case MOVEOUT_FROM_SERVER_SUCCESS:');end=body.index(b'\n\t\t\tbreak;',begin)
         fragment=body[begin:end]

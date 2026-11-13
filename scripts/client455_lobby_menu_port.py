@@ -162,7 +162,8 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
             m_uiSelectCharacter.Open();''')
     raw = replace(raw, b'\t\t\tUI_SetMoveWindow( SELECT_CHAR_WIN, TRUE );',
                   b'\t\t\tUI_SetMoveWindow( SELECT_CHAR_WIN, TRUE );\n'
-                  b'\t\t\tRF455_ObserveProtocol("lobby-selection-open", 0, 0, 0);')
+                  b'\t\t\tRF455_ObserveProtocol("lobby-selection-open", 0, 0, 0);\n'
+                  b'\t\t\tRF455_ObserveProtocol("lobby-selection-slot", m_Course, m_HaveCharacter[m_Course] != FALSE, 0);')
     raw = replace(raw, b'CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{',
                   b'''CGP_LogIn::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {

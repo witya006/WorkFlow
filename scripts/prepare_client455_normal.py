@@ -173,7 +173,7 @@ def main():
             raw,actor_light_changed=port_actor_lighting(raw,relative,native,section)
             if actor_light_changed:changes.append('455actor BSP color/afterimage/blink material and negated directional light;unloaded-BSP undefined color and legacy one-argument blink callers remain unaccepted')
             raw,selection_changed=port_selection(raw,relative,native,section)
-            if selection_changed:changes.append('4551/14 selection andbounded1/15 reply22:WORD result,serial32 andmoney64 toactual avatar/dummy;fullselection callback/state handoff remainsopen')
+            if selection_changed:changes.append('455 character selection protocol, localized selection UI and signed64 currency')
             raw,creation_changed=port_character_create(raw,relative,native,section)
             if creation_changed:changes.append('455 character creation message pair and typed appearance preview and roster copy')
             raw,hud_changed=port_hud(raw,relative,native,section)
