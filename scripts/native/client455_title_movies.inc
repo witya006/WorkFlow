@@ -67,34 +67,49 @@ public:
         Close();
     }
 
-    void Render() {
-        RECT bounds{};
-        auto* device = GetD3dDevice();
-        if (!device || !GetClientRect(owner_, &bounds) || bounds.right <= 0 || bounds.bottom <= 0) return;
-        UploadFrame(*device);
-        device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff000000, 1.f, 0);
-        if (R3BeginScene()) {
-            if (textureReady_) {
-                // Title 455 stretches the decoded image to the client rect and excludes texture padding.
-                float u[] = {0.f, float(width_) / float(textureWidth_)};
-                float v[] = {0.f, float(height_) / float(textureHeight_)};
-                Draw2DSprite(0, 0, float(bounds.right), float(bounds.bottom), u, v, texture_.Get(), 0xffffffff);
-                if (!renderReported_) {
-                    renderReported_ = true;
-                    RF455_ObserveProtocol("title-movie-draw", stage_, unsigned(bounds.right), unsigned(bounds.bottom));
-                }
-            }
-            R3EndScene();
-        }
-        const ULONGLONG captureDelay = stage_ == 1 ? 3300 : 650;
-        if (captureRequested_ && renderReported_ && !captureDone_ && GetTickCount64() - startedAt_ >= captureDelay && VisibleFrame()) {
-            captureDone_ = true;
-            Capture(*device);
+    bool Render() {
+        const bool drawn = DrawFrame();
+        if (!drawn && !waitingForFrame_) {
+            waitingForFrame_ = true;
+            RF455_ObserveProtocol("title-movie-await-frame", stage_, 0, 0);
         }
         Sleep(25);
+        return drawn;
     }
 
 private:
+    bool DrawFrame() {
+        RECT bounds{};
+        auto* device = GetD3dDevice();
+        if (!device || !GetClientRect(owner_, &bounds) || bounds.right <= 0 || bounds.bottom <= 0) return false;
+        UploadFrame(*device);
+        if (!textureReady_ || !R3BeginScene()) return false;
+        const HRESULT clear = device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff000000, 1.f, 0);
+        if (SUCCEEDED(clear)) {
+            // Title 455 stretches the decoded image to the client rect and excludes texture padding.
+            float u[] = {0.f, float(width_) / float(textureWidth_)};
+            float v[] = {0.f, float(height_) / float(textureHeight_)};
+            Draw2DSprite(0, 0, float(bounds.right), float(bounds.bottom), u, v, texture_.Get(), 0xffffffff);
+        }
+        R3EndScene();
+        if (FAILED(clear)) return false;
+        ReportFrame(*device, bounds);
+        return true;
+    }
+
+    void ReportFrame(IDirect3DDevice9& device, const RECT& bounds) {
+        waitingForFrame_ = false;
+        if (!renderReported_) {
+            renderReported_ = true;
+            RF455_ObserveProtocol("title-movie-draw", stage_, unsigned(bounds.right), unsigned(bounds.bottom));
+        }
+        const ULONGLONG captureDelay = stage_ == 1 ? 3300 : 650;
+        if (captureRequested_ && !captureDone_ && GetTickCount64() - startedAt_ >= captureDelay && VisibleFrame()) {
+            captureDone_ = true;
+            Capture(device);
+        }
+    }
+
     bool VisibleFrame() const {
         const auto* pixels = reinterpret_cast<const BYTE*>(frame_.data());
         const auto size = frame_.size() * sizeof(long);
@@ -263,6 +278,7 @@ private:
         texture_.Reset();
         textureReady_ = false;
         renderReported_ = false;
+        waitingForFrame_ = false;
         captureDone_ = false;
         frame_.clear();
         grabber_.Reset();
@@ -279,7 +295,7 @@ private:
     unsigned width_ = 0, height_ = 0, rowPitch_ = 0;
     unsigned textureWidth_ = 0, textureHeight_ = 0;
     ULONGLONG startedAt_ = 0;
-    bool bottomUp_ = true, textureReady_ = false, renderReported_ = false;
+    bool bottomUp_ = true, textureReady_ = false, renderReported_ = false, waitingForFrame_ = false;
     bool captureRequested_ = false, captureDone_ = false;
     std::vector<long> frame_;
     Microsoft::WRL::ComPtr<IGraphBuilder> graph_;

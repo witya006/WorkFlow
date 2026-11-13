@@ -646,6 +646,9 @@ def main():
                     else if (previousStage == GPI_LOGIN && currentStage == GPI_MAIN_GAME) {
                         awaitingWorldFrame = true;
                         RF455_ObserveProtocol("selection-present-deferred", 0, 0, 0);
+                    } else if (currentStage == GPI_TITLE) {
+                        const auto* title = static_cast<const CGP_Title*>(g_MainApp.GetGameProgress455());
+                        if (title && title->HasVideoFrame455()) g_MainApp.EndLoop();
                     } else if (!awaitingWorldFrame || currentStage != GPI_MAIN_GAME ||
                                (_GetMainGame() && _GetMainGame()->HasRenderedWorldFrame455())) {
                         g_MainApp.EndLoop();
@@ -655,10 +658,20 @@ def main():
                     }''')
                 message_handler=b'CMainApp::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{'
                 raw=replace(raw,message_handler,message_handler+b'''
-    // The ready Title stage paints its entire client area through Direct3D.
-    if (uMsg == WM_ERASEBKGND && m_byGameProgressID == GPI_TITLE && m_pd3dDevice && IsReady()) {
-        RF455_ObserveProtocol("title-background-erase-suppressed", 0, 0, 0);
-        return TRUE;
+    // Only the Title render loop paints video. The paused engine's WM_PAINT
+    // fallback can otherwise present its discarded buffer without rendering.
+    if (m_byGameProgressID == GPI_TITLE && m_pd3dDevice) {
+        if (uMsg == WM_ERASEBKGND) {
+            RF455_ObserveProtocol("title-background-erase-suppressed", 0, 0, 0);
+            return TRUE;
+        }
+        if (uMsg == WM_PAINT) {
+            PAINTSTRUCT paint{};
+            BeginPaint(hWnd, &paint);
+            EndPaint(hWnd, &paint);
+            RF455_ObserveProtocol("title-paint-validated", IsReady() != FALSE, 0, 0);
+            return 0;
+        }
     }''')
                 changes.append('Keep the last presented frame across Title-to-Login and Login-to-MainGame handoffs; Title owns its client-area background')
                 anchor=b'\tInitR3Engine();'

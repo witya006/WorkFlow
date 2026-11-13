@@ -1,0 +1,249 @@
+{
+  "status": "TITLE_VIDEO_FRAME_GATE_AND_PAUSED_PAINT_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "12f1bdbe784134727918c03cc484ccca852752f1b18ea90efdb7d5cf77c2ddec",
+    "bytes": 2534400,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4d20",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "scenario": "title-escape-logo-taiwan-native",
+      "receipt": {
+        "file": "artifacts/client455-progress/title-frame-gate-12f1bdbe/client455-title-escape-logo-taiwan-native.json",
+        "sha256": "85c861749c9081e9630825ed0e9afcc18b886bc41c979f11e5a5bf8668dc96dc"
+      },
+      "events": {
+        "file": "work/m9/12f1bdbe/title-escape-logo-taiwan001/debug-events.jsonl",
+        "sha256": "812448ae3918ae42eeb38f5ab961d8a05f5189c79506278691d8193b7b6c1a71"
+      },
+      "ordered": [
+        "RF455 Protocol:title-paint-validated:1:0:0",
+        "RF455 Protocol:title-movie-await-frame:1:0:0",
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-skip:1:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 LoginFrame:00000000:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/12f1bdbe/title-escape-logo-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/12f1bdbe/title-escape-logo-taiwan001/login-frame.png",
+          "sha256": "dd81c28087270d2702fd891a46c9bd0499e85ed49be8e1217e6f9d9e94da4677"
+        }
+      ]
+    },
+    {
+      "scenario": "title-escape-prologue-taiwan-native",
+      "receipt": {
+        "file": "artifacts/client455-progress/title-frame-gate-12f1bdbe/client455-title-escape-prologue-taiwan-native.json",
+        "sha256": "a9f5fc80f28cb4813e81c38ff9e54b836eaab26d66311e19e90e808f3840f5a0"
+      },
+      "events": {
+        "file": "work/m9/12f1bdbe/title-escape-prologue-taiwan001/debug-events.jsonl",
+        "sha256": "658362e3c62f1b7f5136389d463781e8572f5d2e954592fe3b02cb77b2f80b03"
+      },
+      "ordered": [
+        "RF455 Protocol:title-paint-validated:1:0:0",
+        "RF455 Protocol:title-movie-await-frame:1:0:0",
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-end:1:1:0",
+        "RF455 Protocol:title-movie-await-frame:2:0:0",
+        "RF455 Protocol:title-movie-draw:2:1920:1080",
+        "RF455 Protocol:title-movie-skip:2:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 LoginFrame:00000000:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/12f1bdbe/title-escape-prologue-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/12f1bdbe/title-escape-prologue-taiwan001/title-prologue.png",
+          "sha256": "8941bca11a1d803d3dfc497cbf343b20efc31f9bac0d7666788e8397533dedf0"
+        },
+        {
+          "file": "work/m9/12f1bdbe/title-escape-prologue-taiwan001/login-frame.png",
+          "sha256": "e0adf0ea2ab365332d58c11bf034f974dc168d0c198e7f5e84e81a12b2f421bc"
+        }
+      ]
+    },
+    {
+      "scenario": "world-entry-live-taiwan-native",
+      "receipt": {
+        "file": "artifacts/client455-progress/title-frame-gate-12f1bdbe/client455-world-entry-live-taiwan-native.json",
+        "sha256": "645e1a968dacb2f49a63e9508cc5468eb922339eecbf041259960fef143f801e"
+      },
+      "events": {
+        "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/debug-events.jsonl",
+        "sha256": "6b625d02c82241df57a9ac3b25ff2128d410ca7cdb753c04908b76920359688d"
+      },
+      "ordered": [
+        "RF455 Protocol:title-paint-validated:1:0:0",
+        "RF455 Protocol:title-movie-await-frame:1:0:0",
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-end:1:1:0",
+        "RF455 Protocol:title-movie-await-frame:2:0:0",
+        "RF455 Protocol:title-movie-draw:2:1920:1080",
+        "RF455 Protocol:title-movie-skip:2:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 Protocol:selection-present-deferred:0:0:0",
+        "RF455 Protocol:selection-world-present:0:0:0",
+        "RF455 WorldCapture:0:0:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/title-prologue.png",
+          "sha256": "024c81ae01e2fefd65d3d065cfdd7b93b93420bce05be929a7ddf57c6f54038a"
+        },
+        {
+          "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/login-frame.png",
+          "sha256": "2b792a5f12488497e6a6ffbcbbca9d38cf2078f2210461b3f2a20dbcd20068fb"
+        },
+        {
+          "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/world-post-position.png",
+          "sha256": "28bce9e6155c825b82a1b3b053423f2ccf90d30639816a2863a36bba1f68ba80"
+        },
+        {
+          "file": "work/m9/12f1bdbe/world-entry-live-taiwan001/world-post-position-settled.png",
+          "sha256": "f790e377f31d4f8293cc77cb4cff4c7fe939802bb29b88029c5fddc0d2dd6193"
+        }
+      ]
+    }
+  ],
+  "component": {
+    "result": {
+      "file": "work/m9/12f1bdbe/title-paint-component/result.json",
+      "sha256": "b7082377508d64dab62d26f6308fc8fb7ec60d9c6945b7381e59faabab0d1b6c"
+    },
+    "source": {
+      "file": "work/probe-title-paint455.cpp",
+      "sha256": "6d98bbb8b9f761a1f97575a87dde7954b57c33434e536af864b680e01d23236e"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "title_erase_handled": 1,
+    "title_pixel": 7884840,
+    "login_erase_handled": 1,
+    "login_pixel": 16777215,
+    "sentinel": 7884840,
+    "paused": 1,
+    "paused_erase_handled": 1,
+    "paused_pixel": 7884840,
+    "paint_pending": 1,
+    "paint_validated": 1,
+    "resumed": 1,
+    "component_executable_sha256": "031b407c1beeae2e2bcc5c69aa2a8178f530de7111ba89cfc7016bcc4ce9ddaa",
+    "linked_client_sha256": "12f1bdbe784134727918c03cc484ccca852752f1b18ea90efdb7d5cf77c2ddec"
+  },
+  "authentication_receipt": {
+    "file": "artifacts/client455-progress/title-frame-gate-12f1bdbe/client455-live-launcher-native.json",
+    "sha256": "1c67215a665e94396ae8db75cfeaf25829baf2d1fa7b4459d2ecab788dd65aa0"
+  },
+  "physical_display_flicker_verified": false,
+  "reference_executed": false,
+  "server_files_modified": false,
+  "M6": "OPEN",
+  "M9": "OPEN"
+}
