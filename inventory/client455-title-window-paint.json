@@ -1,0 +1,229 @@
+{
+  "status": "TITLE_ERASE_AND_ESCAPE_HANDOFF_VERIFIED_DISPLAY_FLICKER_OPEN",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "1b9a1fbf62a0429f02d19f704e8217616752a583a7efea47671644b2409f81c4",
+    "bytes": 2531840,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a47b0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    }
+  ],
+  "resolution": [
+    1920,
+    1080
+  ],
+  "locale": "Taiwan",
+  "window_erase_component": {
+    "result": {
+      "file": "work/m9/1b9a1fbf/title-paint-component/result.json",
+      "sha256": "e446271a968285dd03b289e07fe6bdbe8008060b75fe9ed3c79c5a28172e3c23"
+    },
+    "test_source": {
+      "file": "work/probe-title-paint455.cpp",
+      "sha256": "66494453087f2fdff3cc56c4f944d64b5551480dede5b009fb0d1ce5d1bc85ab"
+    },
+    "runner": {
+      "file": "work/probe-title-paint455.py",
+      "sha256": "8f7bda88dfbc1482ee55be65a8f5bc4576d7fb4023c27afdae2fd6384f51102e"
+    },
+    "resolution": [
+      1920,
+      1080
+    ],
+    "title_erase_handled": 1,
+    "title_pixel": 7884840,
+    "login_erase_handled": 1,
+    "login_pixel": 16777215,
+    "sentinel": 7884840,
+    "component_executable_sha256": "b83ea3442154155c33eb2981e23264783183a3a5da5afc922042362caa9e7543",
+    "linked_client_sha256": "1b9a1fbf62a0429f02d19f704e8217616752a583a7efea47671644b2409f81c4"
+  },
+  "runs": {
+    "logo": {
+      "receipt": {
+        "file": "artifacts/client455-progress/title-paint-1b9a1fbf/client455-title-escape-logo-taiwan-native.json",
+        "sha256": "09f1b1ce86c4edbe0470207f373c7636a3b1f52b49854db97c54b4416409c325"
+      },
+      "events": {
+        "file": "work/m9/1b9a1fbf/title-escape-logo-taiwan001/debug-events.jsonl",
+        "sha256": "b84afe471e7e163bf34a193d98cdf4e9efd7dcbc69412aba9c6c5533bd7a067b"
+      },
+      "ordered": [
+        "RF455 Protocol:title-movie-draw:1:1920:1080",
+        "RF455 Protocol:title-movie-skip:1:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 LoginFrame:00000000:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/1b9a1fbf/title-escape-logo-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/1b9a1fbf/title-escape-logo-taiwan001/login-frame.png",
+          "sha256": "06acab3ceaf3f599ada5e1f764ffb59d2ea38d5f6a7a7a4f17907e9ad9c3621b"
+        }
+      ]
+    },
+    "prologue": {
+      "receipt": {
+        "file": "artifacts/client455-progress/title-paint-1b9a1fbf/client455-title-escape-prologue-taiwan-native.json",
+        "sha256": "2237fa9b2c18413ef9b103cbe8eec34b40fa979e8b5dff9621f3f5626c2dbcb2"
+      },
+      "events": {
+        "file": "work/m9/1b9a1fbf/title-escape-prologue-taiwan001/debug-events.jsonl",
+        "sha256": "49ab08357e9b29020bb80cbf1822f224cbb2df355688d29c713401343cfbddc8"
+      },
+      "ordered": [
+        "RF455 Protocol:title-movie-draw:2:1920:1080",
+        "RF455 Protocol:title-movie-skip:2:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 LoginFrame:00000000:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/1b9a1fbf/title-escape-prologue-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/1b9a1fbf/title-escape-prologue-taiwan001/title-prologue.png",
+          "sha256": "024c81ae01e2fefd65d3d065cfdd7b93b93420bce05be929a7ddf57c6f54038a"
+        },
+        {
+          "file": "work/m9/1b9a1fbf/title-escape-prologue-taiwan001/login-frame.png",
+          "sha256": "c2d554553c8818adb553005d0f6adfce83fdd50310dc12cbdfb708090ccafdfe"
+        }
+      ]
+    },
+    "world-entry": {
+      "receipt": {
+        "file": "artifacts/client455-progress/title-paint-1b9a1fbf/client455-world-entry-live-taiwan-native.json",
+        "sha256": "538437db1b18a0debc09d504523edc99d5a08825ab983bdf089b8ba6d4678a5c"
+      },
+      "events": {
+        "file": "work/m9/1b9a1fbf/world-entry-live-taiwan001/debug-events.jsonl",
+        "sha256": "0b17cc34a07105d3d3acc70922e0e35940af47578ed98e73c3397448a4834c74"
+      },
+      "ordered": [
+        "RF455 Protocol:title-movie-draw:2:1920:1080",
+        "RF455 Protocol:title-movie-skip:2:27:0",
+        "RF455 Protocol:title-present-deferred:0:0:0",
+        "RF455 LoginFrame:00000000:1920x1080",
+        "RF455 Protocol:position-mode:0:0:0",
+        "RF455 WorldCapture:0:0:1920x1080"
+      ],
+      "frames": [
+        {
+          "file": "work/m9/1b9a1fbf/world-entry-live-taiwan001/title-logo.png",
+          "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b"
+        },
+        {
+          "file": "work/m9/1b9a1fbf/world-entry-live-taiwan001/title-prologue.png",
+          "sha256": "4e5918778297452e32e37a9f13ed10ff35ddf2a0ce33afdd96e6be2371ed151a"
+        },
+        {
+          "file": "work/m9/1b9a1fbf/world-entry-live-taiwan001/login-frame.png",
+          "sha256": "348274d0ec55a0f91e8043e6ef4909a08401b13c17e9b4a39955ac9597a6b0d9"
+        }
+      ]
+    }
+  },
+  "foreground_attempt": {
+    "events": {
+      "file": "work/m9/1b9a1fbf/world-observation-live-taiwan001/debug-events.jsonl",
+      "sha256": "bf3080aa63db17e8f0ca476f08603a553e1a64f865314889e7f83a8a8da5a258"
+    },
+    "uniform_white_samples": 60,
+    "present_s_ok": [
+      "logo",
+      "prologue"
+    ],
+    "observation_timed_out": true
+  },
+  "desktop_flicker_verified": false
+}

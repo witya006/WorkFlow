@@ -7,6 +7,7 @@ import hashlib,json,re,xml.etree.ElementTree as ET
 from pathlib import Path
 from compare_client_binaries import WS
 from client455_d3d9_port import ENGINE_DEFINITIONS
+from client455_d3d9_edits import replace
 from audit_client455_normal_character_api import code_only
 from client455_resource_object_port import port_resource_object
 from client455_actor_lighting_port import port_actor_lighting
@@ -633,6 +634,22 @@ def main():
                 if raw.count(focus_assign)!=1:raise ValueError('WinMain activation observation boundary changed')
                 raw=b'#include "client455_protocol_observation.h"\r\n'+raw.replace(
                     focus_assign,focus_assign+b'\r\n\t\t\tRF455_ObserveProtocol("window-focus", wParam != 0, 0, 0);')
+                raw=replace(raw,b'\t\t\t\t\tg_MainApp.GameMainLoop();\n\n\t\t\t\t\tg_MainApp.EndLoop();',b'''                    const bool showingOpening = g_MainApp.GetGameProgressID() == GPI_TITLE;
+                    g_MainApp.GameMainLoop();
+                    // Esc can leave Title before it draws. Keep the last presented frame
+                    // until Login submits its loading screen.
+                    if (showingOpening && g_MainApp.GetGameProgressID() != GPI_TITLE)
+                        RF455_ObserveProtocol("title-present-deferred", 0, 0, 0);
+                    else
+                        g_MainApp.EndLoop();''')
+                message_handler=b'CMainApp::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{'
+                raw=replace(raw,message_handler,message_handler+b'''
+    // The ready Title stage paints its entire client area through Direct3D.
+    if (uMsg == WM_ERASEBKGND && m_byGameProgressID == GPI_TITLE && m_pd3dDevice && IsReady()) {
+        RF455_ObserveProtocol("title-background-erase-suppressed", 0, 0, 0);
+        return TRUE;
+    }''')
+                changes.append('455 Title keeps the last presented frame at Login handoff and owns its client-area background')
                 anchor=b'\tInitR3Engine();'
                 if raw.count(anchor)!=1:raise ValueError('Normal WinMain engine boundary changed')
                 nl=b'\r\n' if b'\r\n' in raw else b'\n'
