@@ -658,20 +658,27 @@ def main():
                     }''')
                 message_handler=b'CMainApp::MsgProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )\n{'
                 raw=replace(raw,message_handler,message_handler+b'''
-    // Only the Title render loop paints video. The paused engine's WM_PAINT
-    // fallback can otherwise present its discarded buffer without rendering.
-    if (m_byGameProgressID == GPI_TITLE && m_pd3dDevice) {
-        if (uMsg == WM_ERASEBKGND) {
+    // The visible window can receive paint messages before the device exists.
+    // After creation, only the Title render loop may paint the client area.
+    if (m_byGameProgressID == GPI_TITLE && uMsg == WM_ERASEBKGND) {
+        if (!m_pd3dDevice) {
+            RECT bounds{};
+            if (GetClientRect(hWnd, &bounds))
+                FillRect(reinterpret_cast<HDC>(wParam), &bounds, static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH)));
+            RF455_ObserveProtocol("title-background-black", 0, 0, 0);
+        } else {
             RF455_ObserveProtocol("title-background-erase-suppressed", 0, 0, 0);
-            return TRUE;
         }
-        if (uMsg == WM_PAINT) {
-            PAINTSTRUCT paint{};
-            BeginPaint(hWnd, &paint);
-            EndPaint(hWnd, &paint);
-            RF455_ObserveProtocol("title-paint-validated", IsReady() != FALSE, 0, 0);
-            return 0;
-        }
+        return TRUE;
+    }
+    if (m_byGameProgressID == GPI_TITLE && uMsg == WM_PAINT) {
+        PAINTSTRUCT paint{};
+        const HDC dc = BeginPaint(hWnd, &paint);
+        if (dc && !m_pd3dDevice)
+            FillRect(dc, &paint.rcPaint, static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH)));
+        EndPaint(hWnd, &paint);
+        RF455_ObserveProtocol("title-paint-validated", IsReady() != FALSE, 0, 0);
+        return 0;
     }''')
                 changes.append('Keep the last presented frame across Title-to-Login and Login-to-MainGame handoffs; Title owns its client-area background')
                 anchor=b'\tInitR3Engine();'

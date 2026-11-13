@@ -1,0 +1,135 @@
+{
+  "status": "BLACK_PRE_DEVICE_BACKGROUND_AND_LIVE_ENTRY_VERIFIED",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "223a284b8c0ce75b8d25e3470a902ef8261413f727f29f94f0b0f64c264f71e2",
+    "bytes": 2534912,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1a4f90",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "reference_pins": [
+    {
+      "file": "work/client-reference/current/RF_Online.bin",
+      "sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    },
+    {
+      "file": "work/client-reference/reference-backup/RF_Online.bin",
+      "sha256": "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558",
+      "architecture": "x86",
+      "image_base": "0x400000",
+      "regions": [
+        {
+          "rva": "0x4f03b5",
+          "bytes": 70,
+          "role": "D3D window class uses WHITE_BRUSH",
+          "sha256": "f85e825bdffcc38512ce527fdda6e91d87bff186ddc1dab794c2a60033811d80"
+        },
+        {
+          "rva": "0x4f0950",
+          "bytes": 1226,
+          "role": "D3D window message handler and default paint fallback",
+          "sha256": "d371ef91cf273d00fe24958ef2365b1ae8acb80c9a860a6934235cd9d3f49019"
+        },
+        {
+          "rva": "0x157fb1",
+          "bytes": 17,
+          "role": "Early Title exit in pinned build",
+          "sha256": "19f7dc7e615198969b917b8e785acff832c6b258538fdad213ecc0869eb0f32a"
+        },
+        {
+          "rva": "0x1582a0",
+          "bytes": 209,
+          "role": "Title draws movie to client rectangle",
+          "sha256": "ccbadf5f6e11e7366cd7fd14a95e0c5849b93c92fe070b8f3a0c0583444f66a8"
+        },
+        {
+          "rva": "0x4eec94",
+          "bytes": 30,
+          "role": "Ordinary presentation with no rectangles",
+          "sha256": "9a5b4e8ba8be8f1833fcad2c12ba5b5e1f0934c6e48f8e3aa3fd82cf7ebffcc0"
+        }
+      ]
+    }
+  ],
+  "client_resolution": [
+    1920,
+    1080
+  ],
+  "component": {
+    "result": {
+      "file": "work/m9/223a284b/title-paint-component/result.json",
+      "sha256": "f48a99e6feb606647a7042402018a3a8cf6fb8b53ea92d1fe799705ac89a8ae8"
+    },
+    "executable": {
+      "file": "work/m9/223a284b/title-paint-component/title-paint-probe.exe",
+      "sha256": "c8b271b20bd25e57674c9e10e64f749031aaffd797fc3b8a79062c1f4607c2b1"
+    },
+    "architecture": "x86",
+    "entry_rva": "0x10cdc0"
+  },
+  "live": {
+    "report": {
+      "file": "artifacts/client455-progress/title-predevice-223a284b/client455-world-entry-live-russia-native.json",
+      "sha256": "f813a0898586795261f7563fd43cc0b7ee690052e03052a7d2e420269ca128a1"
+    },
+    "events": {
+      "file": "work/m9/223a284b/world-entry-live-russia001/debug-events.jsonl",
+      "sha256": "f018b249e55568a8857325009c71f5be13c86b1d2aba246f2834f31704597a8d"
+    },
+    "ordered": [
+      "RF455 Protocol:title-movie-draw:1:1920:1080",
+      "RF455 Protocol:title-movie-draw:2:1920:1080",
+      "RF455 Protocol:title-movie-skip:2:27:0",
+      "RF455 Protocol:lobby-menu-open:0:0:0",
+      "RF455 Protocol:position-mode:0:0:0",
+      "RF455 WorldCapture:0:0:1920x1080"
+    ],
+    "map": "NeutralB",
+    "first_erase_after_device": true,
+    "pre_device_erase_observed_in_live_run": false
+  },
+  "visible_window_capture": "Timed out twice on the prior running playtest window",
+  "physical_display_flicker_verified": false
+}
