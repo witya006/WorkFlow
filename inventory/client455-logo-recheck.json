@@ -1,5 +1,5 @@
 {
-  "status": "CORNER_LOGO_NOT_REPRODUCED_ON_CURRENT_BUILD",
+  "status": "BACKBUFFER_GEOMETRY_VERIFIED_REPORTED_WINDOW_DEFECT_OPEN",
   "executable": {
     "file": "work/m9/0bf2385e/login-frame-live-taiwan001/RF_Online.bin",
     "sha256": "0bf2385ed6b984c1df9b087dc04f7192a926905ecf4bdee793e015e3112d6d13",
@@ -91,6 +91,47 @@
     "client_area": [1920, 1080],
     "process_remained_open_after_launcher_exit": true,
     "private_handoff_removed": true
+  },
+  "latest_investigation": {
+    "open_manual_process": {
+      "pid": 3396,
+      "file": "work/m9/a9e2d8b5/manual-1080p-001/RF_Online.bin",
+      "sha256": "a9e2d8b5096ab768253474646b14f9053ee0bdc0dbce2008a87cc6d07b1d0d79",
+      "observed_window_capture": "timeout",
+      "linked_to_reported_frame": false,
+      "previous_menu_frame": {
+        "file": "work/m9/a9e2d8b5/manual-1080p-001/lobby-camera-menu.png",
+        "sha256": "61bb202f0cc345843f214e9909a97fef75e91d43e3ebf9f4d10ffed4ac5b0a27"
+      }
+    },
+    "current_preview_build": {
+      "file": "work/m9/7bdda8ca/world-entry-live-russia001/RF_Online.bin",
+      "sha256": "7bdda8ca4d55e2bae62a801b349bc28f47c906551f254184b1a561185e682ac6",
+      "architecture": "x86",
+      "entry_rva": "0x1a4ed0",
+      "backbuffer_size": [1920, 1080],
+      "ccr_frame": {
+        "file": "work/m9/7bdda8ca/world-entry-live-russia001/title-logo.png",
+        "sha256": "e059a0759cdebdb3aec10a5f64b98ef89ff7cf1c95ffb0bbe856c29e64a7368b",
+        "average_abs_rgb_error_vs_stretched_source": 0.0874
+      },
+      "lobby_frame": {
+        "file": "work/m9/7bdda8ca/world-entry-live-russia001/lobby-camera-menu.png",
+        "sha256": "db16c76dd2f527169ea8aecd7da0d6f5cca487c02bd8ecaadf16c47607b2bf49"
+      }
+    },
+    "lobby_geometry_reference": {
+      "architecture": "x86",
+      "reference_sha256": [
+        "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+        "46528aac20499e3b3928d58658d7e0cefe26feba7cd193796d5cfbf7a2bbc558"
+      ],
+      "rva": "0x13cd0a",
+      "bytes": 304,
+      "sha256": "0839c3f9597518c77d7f2a787ee07075cd4e17fb8ad9174d2ac6ff0083976d88",
+      "texture_size": [1600, 850],
+      "destination_at_1080p": [160, 39, 1760, 889]
+    }
   },
   "reported_executable_identified": false,
   "desktop_flicker_verified": false
