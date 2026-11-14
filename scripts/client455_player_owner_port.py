@@ -23,6 +23,7 @@ def port_player_owner(raw,relative,section):
     void WeaponAndShield455(BYTE);void SetItemAnimation455(BYTE,DWORD);
     void SetItemAnimation455(RF455PlayerEquipmentObject&,DWORD);
     void RenderEquipment455();void AnimateEquipment455();void ShadowEquipment455();void RematchEquipment455(BYTE);
+    bool CollectLobbyShadowEquipment455();
     void FlagsEquipment455(DWORD,bool);void LightEquipment455(DWORD,BYTE);void MaterialEquipment455();void AlphaEquipment455(float);
     void ApplyTypedItemEffect455(RF455ManagedItem*,bool);void RefreshEquipmentConditions455();''')
         return raw,True
@@ -34,6 +35,7 @@ def port_player_owner(raw,relative,section):
     RF455EquipmentConditions& EquipmentConditions455();
     BOOL PutOnEquipment455(CItemObject*,bool alreadyEquipped=false);
     void RefreshEquipmentConditions455(){m_clsPlayerProc.RefreshEquipmentConditions455();}
+    bool CollectLobbyShadowEquipment455(){return m_clsPlayerProc.CollectLobbyShadowEquipment455();}
     virtual void EquipmentSkillLevel455(BYTE);''')
         return raw,True
     if relative=='character/avatar/cavatar.h':

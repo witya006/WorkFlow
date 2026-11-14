@@ -162,13 +162,13 @@ protected:
         if(static_cast<unsigned>(m_Course)>=3)m_Course=static_cast<COURSE>(slot);
         g_LoginState=LGS_CHARACTERLOBBY;
         if(static_cast<unsigned>(m_Course)==slot)SetCharacterBottom();
-        '''+messages[0]+b'''
+        _GUIMessageBox(nullptr,const_cast<char*>(RF455_GetNormalLanguagePack()->get(0x20a)));
         break;
     }
     default:
         if(static_cast<unsigned>(m_Course)>=3)m_Course=static_cast<COURSE>(0);
         g_LoginState=LGS_CHARACTERLOBBY;
-        '''+messages[1]+b'''
+        _GUIMessageBox(nullptr,const_cast<char*>(RF455_GetNormalLanguagePack()->get(0x20b)),MSGBOXALPHA);
         break;
     }
 '''

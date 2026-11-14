@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from client455_asset_staging import ASSET_SUFFIXES, MAX_POOL_LINKS, sha
 from client455_runtime_inputs import copy_lobby_audio
+from client455_orbit_assets import stage_orbit_assets
 from probe_client455_live_launcher import auth_request, auth_reply, marshal_v4x, receive
 
 RECEIPTS = (
@@ -170,6 +171,7 @@ def main():
     parser.add_argument('--audio', action='store_true', help='Enable sound and music in the test copy')
     parser.add_argument('--flight', action='store_true', help='Verify the flight to character selection')
     parser.add_argument('--all-slots', action='store_true', help='Capture all three real selection cameras; no character mutation')
+    parser.add_argument('--measure-seconds',type=int,default=0,help='Keep main menu open for 0..30 seconds before the verified flight; collect GPU/FPS samples')
     parser.add_argument('--natural', action='store_true', help='Let the intro finish before checking for the menu')
     parser.add_argument('--credentials-base64', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--current-build', action='store_true', help='Use current own binary with verified Russian resource inputs for manual testing')
@@ -181,6 +183,7 @@ def main():
     if args.flight and not (args.audio and args.verify and not args.natural):
         parser.error('--flight requires --audio --verify without --natural')
     if args.all_slots and not args.flight:parser.error('--all-slots requires --flight')
+    if not 0<=args.measure_seconds<=30 or (args.measure_seconds and not args.flight):parser.error('--measure-seconds requires --flight and 0..30')
     parent, source, active, inputs = stage(args.current_build)
     if args.check_inputs:
         print(json.dumps({'status': 'PASS', 'scope': 'Launch inputs only; no server login or game run',
@@ -192,6 +195,7 @@ def main():
         if receipt.is_file() and game_window(json.loads(receipt.read_text(encoding='utf-8'))['pid']):
             raise RuntimeError('The preceding test client is still open')
     evidence = populate(run, source, active, inputs, audio=args.audio)
+    evidence['orbit_assets'] = stage_orbit_assets(run)
     if args.enhanced_graphics:
         config_file = run / 'R3Engine.ini'
         lines = config_file.read_text(encoding='ascii').splitlines()
@@ -209,6 +213,7 @@ def main():
     if args.verify:
         env.update(RF455_CAPTURE_TITLE='1', RF455_CAPTURE_LOBBY_CAMERA='1')
     if args.all_slots:env.update(RF455_LOBBY_INSPECT_SLOTS='1',RF455_LOBBY_DIAGNOSTICS='1')
+    if args.measure_seconds:env['RF455_LOBBY_DIAGNOSTICS']='1'
     captures = ['title-logo.png', 'title-prologue.png', 'lobby-camera-menu.png']
     if args.flight:
         captures += ['lobby-camera-flight.png', 'lobby-camera-selection.png']
@@ -222,10 +227,12 @@ def main():
             if existing.is_file() and not archive.exists():
                 shutil.copyfile(existing, archive)
     if args.verify:
-        for frame in [*captures, 'title-logo-source.png']:
+        for frame in [*captures, 'title-logo-source.png','lobby-diagnostics.json','lobby-visual.json']:
             (run / frame).unlink(missing_ok=True)
     user32 = ctypes.WinDLL('user32', use_last_error=True)
     user32.PostMessageW.argtypes = (wintypes.HWND, wintypes.UINT, wintypes.WPARAM, wintypes.LPARAM)
+    user32.GetForegroundWindow.restype = wintypes.HWND
+    user32.SetForegroundWindow.argtypes = (wintypes.HWND,)
     tick_ms = ctypes.windll.kernel32.GetTickCount64
     tick_ms.restype = ctypes.c_uint64
     game = None
@@ -244,11 +251,12 @@ def main():
                 audio_meter = subprocess.Popen([str(ROOT / 'work/startup-audio-meter.exe'), str(game.pid), '25000'],
                                                cwd=run, stdout=measurements, creationflags=subprocess.CREATE_NO_WINDOW)
         started = time.monotonic()
-        deadline = started + (360 if args.natural else 120 if args.all_slots else 45)
+        deadline = started + (360 if args.natural else 120 if args.all_slots else 45 + args.measure_seconds)
         evidence['captures'] = {}
         evidence['capture_seconds'] = {}
         evidence['started_tick_ms'] = tick_ms()
         evidence['natural_mode'] = args.natural
+        evidence['performance_samples']=[];last_measurement=0
         while time.monotonic() < deadline:
             if game.poll() is not None:
                 raise RuntimeError(f'Test client exited during startup ({game.returncode})')
@@ -274,17 +282,28 @@ def main():
                         evidence['capture_seconds'][frame] = round(time.monotonic() - started, 2)
                         if frame == 'lobby-camera-menu.png':
                             evidence['menu_tick_ms'] = tick_ms()
+                            if args.measure_seconds:
+                                evidence['foreground_requested'] = bool(user32.SetForegroundWindow(hwnd))
                         if frame == 'lobby-camera-selection.png':
                             evidence['selection_tick_ms'] = tick_ms()
                         print(f'{frame} at {evidence["capture_seconds"][frame]} s', flush=True)
                     except OSError:
                         continue
                 if args.flight and evidence.get('menu_tick_ms') and not evidence.get('start_tick_ms'):
-                    if tick_ms() - evidence['menu_tick_ms'] >= 2200:
+                    if tick_ms() - evidence['menu_tick_ms'] >= max(2200,args.measure_seconds*1000):
                         if not user32.PostMessageW(hwnd, 0x0100, 0x0d, 1):
                             raise RuntimeError('Could not start the flight from menu')
                         user32.PostMessageW(hwnd, 0x0101, 0x0d, 0xc0000001)
                         evidence['start_tick_ms'] = tick_ms()
+                if args.measure_seconds and time.monotonic()-last_measurement>=1:
+                    last_measurement=time.monotonic()
+                    try:
+                        sample=json.loads((run/'lobby-diagnostics.json').read_text())
+                        sample['elapsed_seconds']=round(time.monotonic()-started,2)
+                        sample['foreground'] = user32.GetForegroundWindow() == hwnd
+                        sample['stage']='selection' if evidence.get('selection_tick_ms') else 'flight' if evidence.get('start_tick_ms') else 'menu' if evidence.get('menu_tick_ms') else 'startup'
+                        evidence['performance_samples'].append(sample)
+                    except (OSError,ValueError):pass
                 if len(evidence['captures']) == len(captures):
                     if audio_meter:
                         time.sleep(2.0)
@@ -315,7 +334,9 @@ def main():
                 previous.write_bytes(prior.read_bytes())
         else:
             previous.write_text(json.dumps(evidence, indent=2) + '\n', encoding='utf-8')
-    print(json.dumps(evidence, indent=2), flush=True)
+    summary=dict(evidence);summary.pop('performance_samples',None)
+    summary['performance_sample_count']=len(evidence.get('performance_samples',[]))
+    print(json.dumps(summary, indent=2), flush=True)
 
 
 if __name__ == '__main__':

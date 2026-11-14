@@ -10,6 +10,7 @@ void RF455_RenderLobbyShadows(CBsp* bsp){
     auto* groups=bsp->GetMatGroup();const unsigned count=bsp->GetMatGroupNum();
     if(!groups||!count||count>65535||bsp->mObjectNum>65535||
        (bsp->mObjectNum&&!bsp->mObject)||!bsp->mCVertex||!bsp->mCVertexId){abandon();return;}
+    RF455_SetLobbyShadowScene(bsp,bsp->mCVertex,bsp->mVertexNum);
     float low[3]={1e20f,1e20f,1e20f},high[3]={-1e20f,-1e20f,-1e20f};
     auto opaque=[](const _BSP_MAT_GROUP& g){
         if(g.MtlId<0||(g.Type&~3u)||!g.TriNum)return false;

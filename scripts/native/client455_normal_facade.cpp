@@ -138,6 +138,15 @@ void CRender::FrameMove(CHARACTEROBJECT* record){
     const auto status=RF455_UpdateCharacterPose(record,&runtime->pose);if(status!=RF_POSE_OK)throw std::runtime_error("455 Character pose failure");
 }
 void CRender::DrawCharacter(CHARACTEROBJECT* record,float* pos,float yaw){DrawCharacter(record,pos,yaw,1,0,false);}
+bool CRender::CollectShadowGeometry455(const CHARACTEROBJECT* record,const float* pos,float yaw,float scale,float opacity,
+    RF455CharacterShadowSink sink,void* owner){
+    if(!record||!pos||!runtime||!record->m_Load||record->opaque268)return false;
+    // Deliberately no LoadRealData, camera(), ticks, FrameMove or effect setup.
+    // Context/palette work is CPU-only; D3D world/VB/constants remain untouched.
+    RF455_BindRendererDrawContext(&native,&hub().shared,&runtime->draw);
+    float world[16];RF455_BuildNormalCharacterWorld(world,nullptr,pos,yaw,scale,&hub().transforms);
+    return RF455_CollectCharacterShadow455(&runtime->draw,record,world,opacity,sink,owner)==RF_CHARACTER_DRAW_OK;
+}
 void CRender::DrawCharacter(CHARACTEROBJECT* record,float* pos,float yaw,float scale){DrawCharacter(record,pos,yaw,scale,0,false);}
 void CRender::DrawCharacter(CHARACTEROBJECT* record,float* pos,float yaw,float scale,float unused){DrawCharacter(record,pos,yaw,scale,unused,false);}
 void CRender::DrawCharacter(CHARACTEROBJECT* record,float* pos,float yaw,float scale,float,bool unscaled){

@@ -135,6 +135,13 @@ static int run(){
             char file[32];std::sprintf(file,"settings-%u.png",page);capture(window,file);
         }
         const auto before=GetPrivateProfileIntA("RenderState","MSAA",99,".\\R3Engine.ini");
+        window.SetPage455(CGUIOptionWindow::HUDPage);click(window,window.Diagnostics455(0));
+        check(GetPrivateProfileIntA("HUD","LobbyDiagnostics",1,".\\R3Engine.ini")==1,"diagnostics draft not persisted");
+        click(window,window.CancelButton455());window.Open();
+        check(window.Apply455()&&GetPrivateProfileIntA("HUD","LobbyDiagnostics",0,".\\R3Engine.ini")==1,"diagnostics cancel restores enabled");
+        window.SetPage455(CGUIOptionWindow::HUDPage);click(window,window.Diagnostics455(0));
+        check(window.Apply455()&&GetPrivateProfileIntA("HUD","LobbyDiagnostics",1,".\\R3Engine.ini")==0,"diagnostics apply persists hidden");
+        click(window,window.Diagnostics455(1));check(window.Apply455(),"restore diagnostic HUD");
         window.SetPage455(CGUIOptionWindow::GraphicsPage);click(window,window.Multisampling455(0));
         check(window.RequestedMultisampling455()==0&&GetPrivateProfileIntA("RenderState","MSAA",99,".\\R3Engine.ini")==before,"draft not persisted");
         click(window,window.CancelButton455());window.Open();check(window.RequestedMultisampling455()==before,"cancel restores saved draft");

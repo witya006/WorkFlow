@@ -85,6 +85,7 @@ void CGUIOptionWindow::SetSprite(){
     for(auto& button:m_msaa)OP455ModernButton(button,100);
     for(auto& button:m_lighting)OP455ModernButton(button,154);
     for(auto& button:m_lobbyQuality)OP455ModernButton(button,154);
+    for(auto& button:m_diagnostics)OP455ModernButton(button,154);
     if(m_initialized){Restore455(saved);Layout455();}
 }
 void CGUIOptionWindow::Init(){
@@ -140,6 +141,11 @@ void CGUIOptionWindow::Init(){
     OP455Label(m_etcLabels[Hint],L"\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438","Show hints");m_etc[Hint].AddMouseEventHandler(this);
     m_etcLabels[Hint].SetMouseInput455(TRUE);m_etcLabels[Hint].AddMouseEventHandler(this);
     m_pages[HUDPage].Add(&m_etc[Hint]);m_pages[HUDPage].Add(&m_etcLabels[Hint]);
+    OP455Label(m_diagnosticsTitle,L"FPS \u0438 \u0434\u0438\u0430\u0433\u043d\u043e\u0441\u0442\u0438\u043a\u0430 \u043b\u043e\u0431\u0431\u0438","Lobby FPS and diagnostics");
+    m_pages[HUDPage].Add(&m_diagnosticsTitle);
+    OP455ButtonText(m_diagnostics[0],L"\u0421\u043a\u0440\u044b\u0442\u044c","Hide");
+    OP455ButtonText(m_diagnostics[1],L"\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c","Show");
+    for(auto& button:m_diagnostics){button.AddMouseEventHandler(this);m_pages[HUDPage].Add(&button);}
     OP455Label(m_pageNote[SoundPage],L"\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0432\u0441\u0442\u0443\u043f\u0430\u044e\u0442 \u0432 \u0441\u0438\u043b\u0443 \u043f\u043e\u0441\u043b\u0435 \u00ab\u041f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u044c\u00bb.","Changes take effect when you select Apply.");
     OP455Label(m_pageNote[GamePage],L"\u041a\u0430\u043c\u0435\u0440\u0430 \u043c\u0435\u043d\u044f\u0435\u0442\u0441\u044f \u043f\u043e\u0441\u043b\u0435 \u00ab\u041f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u044c\u00bb.","Camera mode changes when you select Apply.");
     OP455Label(m_pageNote[HUDPage],L"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0438\u0433\u0440\u043e\u0432\u043e\u0433\u043e \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441\u0430.","Game interface settings.");
@@ -152,6 +158,7 @@ void CGUIOptionWindow::Init(){
     if(m_requestedWidth!=1280||m_requestedHeight!=720){m_requestedWidth=1920;m_requestedHeight=1080;}
     m_enhanced=RF455_EnhancedActorLightingEnabled();
     m_lobbyPost=RF455_LobbyPostEnabled();
+    m_showDiagnostics=GetPrivateProfileIntA("HUD","LobbyDiagnostics",1,".\\R3Engine.ini")!=0;
     const UINT camera=GetPrivateProfileIntA("Camera","Mode",1,".\\DataTable\\GameSetting.ini");
     SelectCamera(BYTE(camera<5?camera:1));
     SwitchOn(Hint,GetPrivateProfileIntA("UI","ShowHint",TRUE,".\\DataTable\\GameSetting.ini")!=0);
@@ -177,6 +184,7 @@ void CGUIOptionWindow::Layout455(){
     m_cameraTitle.SetPos(x+40,y+160);for(unsigned i=0;i<5;++i)m_cameras[i].SetPos(x+338+48*i,y+160);
     for(unsigned i=0;i<2;++i)m_actionsButtons[i].SetPos(x+40+208*i,y+246);
     m_etc[Hint].SetPos(x+40,y+160);m_etcLabels[Hint].SetPos(x+64,y+160);
+    m_diagnosticsTitle.SetPos(x+40,y+222);for(unsigned i=0;i<2;++i)m_diagnostics[i].SetPos(x+338+164*i,y+214);
     for(auto& note:m_pageNote)note.SetPos(x+40,y+460);
     m_status.SetPos(x+24,y+492);m_apply.SetPos(x+376,y+516);m_cancel.SetPos(x+548,y+516);
 }
@@ -187,6 +195,7 @@ CGUIOptionWindow::SettingsSnapshot CGUIOptionWindow::Capture455(){
     for(unsigned i=0;i<8;++i)value.flags[i]=IsSwitchOn(EtcOption(i));
     value.camera=m_camera;value.msaa=m_requestedMsaa;value.width=m_requestedWidth;value.height=m_requestedHeight;value.enhanced=m_enhanced;
     value.lobbyPost=m_lobbyPost;
+    value.lobbyDiagnostics=m_showDiagnostics;
     return value;
 }
 void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
@@ -198,6 +207,7 @@ void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
     for(unsigned i=0;i<5;++i)m_cameras[i].GetSpriteInfo()->wFrameNo=WORD((i==m_camera?9:4)+i);
     m_requestedMsaa=value.msaa;m_requestedWidth=value.width;m_requestedHeight=value.height;m_enhanced=value.enhanced;
     m_lobbyPost=value.lobbyPost;
+    m_showDiagnostics=value.lobbyDiagnostics;
 }
 void CGUIOptionWindow::RememberExternal455(){if(m_initialized&&!m_editing)m_applied=Capture455();}
 void CGUIOptionWindow::SetStatus455(const wchar_t* ru,const char* en){OP455Label(m_status,ru,en);}
@@ -218,6 +228,7 @@ bool CGUIOptionWindow::Persist455(const SettingsSnapshot& value){
     bool ok=true;
     ok=OP455Write(engine,"RenderState","MSAA",value.msaa)&&ok;
     ok=OP455Write(engine,"RenderState","LobbyPost",value.lobbyPost)&&ok;
+    ok=OP455Write(engine,"HUD","LobbyDiagnostics",value.lobbyDiagnostics)&&ok;
     ok=OP455Write(engine,"RenderState","ScreenXSize",value.width)&&ok;
     ok=OP455Write(engine,"RenderState","ScreenYSize",value.height)&&ok;
     ok=OP455Write(engine,"RenderState","DynamicLight",value.graphics[DynamicLighting])&&ok;
@@ -284,6 +295,7 @@ void CGUIOptionWindow::Update(){
     if(RF455_EnhancedActorLightingAvailable())m_lighting[1].Enable();else m_lighting[1].Disable();
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_lighting[i],bool(i)==m_enhanced);
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_lobbyQuality[i],bool(i)==m_lobbyPost);
+    for(unsigned i=0;i<2;++i)OP455ButtonColor(m_diagnostics[i],bool(i)==m_showDiagnostics);
     OP455ButtonColor(m_apply);OP455ButtonColor(m_cancel);
 }
 void CGUIOptionWindow::MouseEvent(_mouse_event& event){
@@ -294,6 +306,7 @@ void CGUIOptionWindow::MouseEvent(_mouse_event& event){
         if(event.source==&m_cancel||event.source==&m_close){Close();return;}
         for(unsigned i=0;i<2;++i){
             if(event.source==&m_lobbyQuality[i]){m_lobbyPost=i!=0;Update();return;}
+            if(event.source==&m_diagnostics[i]){m_showDiagnostics=i!=0;Update();return;}
             if(event.source==&m_resolution[i]){m_requestedWidth=i?1920:1280;m_requestedHeight=i?1080:720;Update();return;}
             if(event.source==&m_lighting[i]){if(!i||RF455_EnhancedActorLightingAvailable())m_enhanced=i!=0;Update();return;}
             if(event.source==&m_actionsButtons[i]){if(m_actions.blocked&&m_actions.blocked())return;const auto action=i?m_actions.quit:m_actions.logout;if(action)action();return;}

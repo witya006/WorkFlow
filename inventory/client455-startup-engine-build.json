@@ -2,9 +2,9 @@
   "scope": "Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open",
   "architecture": "x86",
   "build_exit": 0,
-  "objects": 70,
+  "objects": 71,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "cacfd85985bb6b50cd332d80c0792461b957466e165af47002333d9aadb86667",
+  "library_sha256": "a9462973ef497958278033b1be3c9249ce23f4e91113ab32ebd41382eceebac6",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -366,7 +366,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/bsp.cpp",
-      "sha256": "9efec78fd08d987069569b30b6f9b6748af5e297dfb6a173856e90ae6411e3f0",
+      "sha256": "a91079f77e437bf7b1aa080a5e6e0cf1b16eb2d52d9f3f6243b790bcb28d62df",
       "original": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
       "original_sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
     },
@@ -396,7 +396,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3render.cpp",
-      "sha256": "71885781e46fb9372be9ab9123a5954ed3662bcadf240f9cc15ba7d9cac7ba34",
+      "sha256": "1e701ae7a5240b27eac6f66daf7acc7d1c8adedc13614c529ac6b95baa27f1cd",
       "original": "work/client455-port/source/R3Engine/1stclass/r3render.cpp",
       "original_sha256": "26015b5c628c7b5384a2cec25f3ffa518cef44893a21c43833eee5a8d662da92"
     },
@@ -425,13 +425,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "3bf80949af48e88add8517b4afca4a8d6bfe7e4a3b97e6045d772af6f21e6cbc"
+    "sha256": "8a61e08c5a7c9bf5f2b8cb0cfe56674af9c838c0765d7814d52ecbfe35a486bc"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
     "sha256": "add5980d395e2ba7c012c4d50a6f55e0be6598974d998167988d97bff4a95217"
   },
-  "script_sha256": "06920eb04d70c33753874a68f8705b75b41849cf0048d07b14aef01d2e233c86",
+  "script_sha256": "1effce1dc044f798e6787a544f877a3d3595ae1000bfcfd9b7d9d62cb5a58978",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -440,18 +440,22 @@
     "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
     "client455_font.h": "5ccbd3ecc3362d6b4e16c990fe9ab5dd3cea993be6f0ba984523ab97e0065cef"
   },
-  "expected_objects": 70,
+  "expected_objects": 71,
   "lobby_post_source": {
     "file": "scripts/native/client455_lobby_post.cpp",
-    "sha256": "730201fb60a2679e6fb0302a4f6f845297b0c81727ab5fdfbd0b5befe21c2dee"
+    "sha256": "23ef5b50467804a9ad7abad9ac56f12fa44752115107c1e102be30d774a47017"
   },
   "lobby_sky_source": {
     "file": "scripts/native/client455_lobby_sky.cpp",
-    "sha256": "187dba97c7c2093d5c16b99dd95f58b1553e7542efc65eb8115cd02188541b7b"
+    "sha256": "f752545f8cfdc24307a4fb485c399d86d627d9361700ab9adc9b038a7002da04"
   },
   "lobby_shadow_source": {
     "file": "scripts/native/client455_lobby_shadow.cpp",
-    "sha256": "0299824362ff57910df502fcf857740b83a0f0594a17cf40e35e39182f36a736"
+    "sha256": "12b8a0654e86752483ddb8e73e7288148efbb5ab0a1e9458812e5d8196f812c5"
+  },
+  "render_diagnostics_source": {
+    "file": "scripts/native/client455_render_diagnostics.cpp",
+    "sha256": "26e84aec021f45de0f15fd41182d092c4372b29b374c398f4ef769066353a028"
   },
   "sprite_texture": {
     "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"

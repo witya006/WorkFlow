@@ -2,10 +2,12 @@
 #include "client455_lobby_material.h"
 #include "client455_lobby_sky.h"
 #include "client455_lobby_shadow.h"
+#include "client455_render_diagnostics.h"
 #include "userinterface/gamewindow/etcwin/guioptionwindow.h"
 #include <cstdio>
 #include <cstdlib>
 #include <memory>
+#include <string>
 static HRESULT RF455_SaveLoginBackbuffer(const char*,D3DSURFACE_DESC&);
 void RF455_ObserveLobbySlots();
 
@@ -49,14 +51,40 @@ void RF455_OpenLobbySettings() {
 struct RF455LobbyFrameSample {
     LARGE_INTEGER started{},frequency{};
     double total=0,intervalTotal=0;unsigned frames=0,intervals=0;
-    void begin(){LARGE_INTEGER now;QueryPerformanceFrequency(&frequency);QueryPerformanceCounter(&now);if(started.QuadPart){intervalTotal+=double(now.QuadPart-started.QuadPart)*1000/double(frequency.QuadPart);++intervals;}started=now;}
-    void end(){LARGE_INTEGER ended;QueryPerformanceCounter(&ended);total+=double(ended.QuadPart-started.QuadPart)*1000/double(frequency.QuadPart);++frames;}
+    void begin(){RF455_DiagnosticsBeginFrame(GetD3dDevice());LARGE_INTEGER now;QueryPerformanceFrequency(&frequency);QueryPerformanceCounter(&now);if(started.QuadPart){intervalTotal+=double(now.QuadPart-started.QuadPart)*1000/double(frequency.QuadPart);++intervals;}started=now;}
+    void end(){RF455_DiagnosticsCpuEnd();LARGE_INTEGER ended;QueryPerformanceCounter(&ended);total+=double(ended.QuadPart-started.QuadPart)*1000/double(frequency.QuadPart);++frames;}
 } lobbyFrameSample455;
+void RF455_DrawLobbyDiagnostics(){
+    const auto info=RF455_GetRenderDiagnostics();const auto shadow=RF455_GetLobbyShadowTelemetry();
+    const auto post=RF455_GetLobbyPostTelemetry();
+    // User-requested debug HUD, default visible. No session/account information.
+    static DWORD checked=0;static bool visible=true;const DWORD now=GetTickCount();
+    if(now-checked>1000){visible=GetPrivateProfileIntA("HUD","LobbyDiagnostics",1,".\\R3Engine.ini")!=0;checked=now;}
+    if(!visible||RF455_LobbyReferenceMode())return;
+    wchar_t adapter[512]{};MultiByteToWideChar(CP_ACP,0,info.adapter,-1,adapter,512);
+    wchar_t lines[7][640]{};
+    swprintf_s(lines[0],L"FPS: %.1f   Frame: %.2f ms",info.fps,info.frameMs);
+    swprintf_s(lines[1],L"%ls  [%ls]",adapter,info.hardware?L"Hardware":L"Software");
+    swprintf_s(lines[2],L"%u x %u   MSAA %ux   CPU submit: %.2f ms",info.width,info.height,post.multisampleCount,info.cpuSubmissionMs);
+    if(info.samples)swprintf_s(lines[3],L"GPU: %.2f ms   Space: %.2f   Shadows: %.2f   Post: %.2f",info.gpuMs[0],info.gpuMs[1],info.gpuMs[2],info.gpuMs[3]);
+    else swprintf_s(lines[3],L"GPU timing: %ls",info.gpuTimingSupported?L"warming up":L"unavailable");
+    swprintf_s(lines[4],L"Shadow %u: BSP %u / actor %u   Pose age: %u frames",shadow.resolution,shadow.bspDraws,shadow.actorDraws,shadow.actorPoseAgeFramesMax);
+    swprintf_s(lines[5],L"Shadow fit changes: %llu   GPU query errors: %llu",shadow.lightMatrixChanges,info.queryErrors);
+    const DWORD outline=RF455_GetTextOutline();RF455_SetTextOutline(0xff091422);
+    for(unsigned i=0;i<6;++i){float position[4]={18.f,float(info.height)*.5f-68.f+i*23.f,0,1};RF455_DrawText(position,lines[i],i?0xffc9dfed:0xff80e7ff,0x10,1.1f);}
+    RF455_SetTextOutline(outline);
+}
 void RF455_SaveLobbyVisualMetadata() {
     static const bool diagnostics=[] {char text[8]{};return GetEnvironmentVariableA("RF455_LOBBY_DIAGNOSTICS",text,sizeof(text))&&text[0]=='1';}();
     if(!RF455_LobbyReferenceMode()&&!diagnostics)return;
     // One fixed receipt per preview; updated at most once per second.
     static DWORD previous=0;const DWORD now=GetTickCount();if(now-previous<1000)return;previous=now;
+    const auto diag=RF455_GetRenderDiagnostics();const auto shadows=RF455_GetLobbyShadowTelemetry();
+    if(FILE* file=std::fopen("lobby-diagnostics.json","wb")){
+        // Driver descriptions normally contain ASCII letters; escape JSON delimiters.
+        std::string adapter;for(const char*c=diag.adapter;*c;++c){if(*c=='"'||*c=='\\')adapter+='\\';if(static_cast<unsigned char>(*c)>=32)adapter+=*c;}
+        std::fprintf(file,"{\"adapter\":\"%s\",\"vendor\":%u,\"device\":%u,\"hardware\":%s,\"width\":%u,\"height\":%u,\"fps\":%.3f,\"frame_ms\":%.4f,\"cpu_submit_ms\":%.4f,\"gpu_ms\":[%.4f,%.4f,%.4f,%.4f],\"gpu_samples\":%llu,\"query_errors\":%llu,\"shadow_matrix_changes\":%llu,\"shadow_fit_expansions\":%llu,\"actor_pose_age_frames\":%u,\"actor_pose_age_ms\":%u}\n",adapter.c_str(),diag.vendorId,diag.deviceId,diag.hardware?"true":"false",diag.width,diag.height,diag.fps,diag.frameMs,diag.cpuSubmissionMs,diag.gpuMs[0],diag.gpuMs[1],diag.gpuMs[2],diag.gpuMs[3],diag.samples,diag.queryErrors,shadows.lightMatrixChanges,shadows.fitExpansions,shadows.actorPoseAgeFramesMax,shadows.actorPoseAgeMsMax);std::fclose(file);
+    }
     const auto post=RF455_GetLobbyPostTelemetry();const auto material=RF455_GetLobbyMaterialTelemetry();const auto sky=RF455_GetLobbySkyTelemetry();const auto shadow=RF455_GetLobbyShadowTelemetry();
     if(FILE* file=std::fopen("lobby-visual.json","wb")) {
         std::fprintf(file,"{\"post_enabled\":%s,\"post_available\":%s,\"post_frames\":%llu,\"passes\":%u,\"format\":%u,\"msaa\":%u,\"estimated_post_vram_bytes\":%llu,\"post_error\":%ld,\"post_stage\":\"%s\",\"material_binds\":%llu,\"material_skips\":%llu,\"material_errors\":%llu,\"cpu_render_submission_ms_mean\":%.4f,\"camera_seconds\":%.3f,\"camera_view\":[",

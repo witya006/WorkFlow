@@ -3,14 +3,14 @@
   "original_sources": 180,
   "sources": 182,
   "manifest": "artifacts/client455-normal/sources.json",
-  "manifest_sha256": "49a9272451ea90686f7c21d91b2921a125cfd5e91f4294cd7077709d76966602",
+  "manifest_sha256": "1af26178fbfd849c0a657bc1363598d903f7331dbe5556597e44b92b4b2f5a6e",
   "script_sha256": "a11042e807f93925bdceab59527df8d0204e0c4ea1aae5dca6b7d16d06436c30",
   "record_inputs": {
-    "Character455.h": "5e749c87728cdc152be7f74962d999eacfa52a7b9c66543f6ac5113a37aaf718",
+    "Character455.h": "269d530ed7d58272b2589333feb5eb8eb8fa872b28c57fc39da6120445358fad",
     "client455_normal_model.inc": "abb57ec76679336aa536bbddd27679321e5ecbc978a36199c129b0bfc2a3cb34",
     "client455_normal_mesh.inc": "ec61b937eca12bd2a70327f7c0276dc970375a2df8399f62ca97a767c1daceea",
     "client455_normal_animation.inc": "ea951ad733eb26e4a1bbc8d75bd657fb74f7059cc898a2b4839f2691b344fbce",
-    "client455_normal_facade.cpp": "871445b4c54d8fe7dbd43965d7dc8633e1f0567c58122ccb2034665c014f1c31",
+    "client455_normal_facade.cpp": "a35e98e329c0493c775b5fd12b178c13e25a0d3f8e74bff3c9a9d774739cb09f",
     "client455_normal_renderer_math.cpp": "06af50155273a09dec6241191746736179608295a3e1ce2f3e46e6566d481b79",
     "client455_normal_renderer_math.h": "fd8176f414e4270d9f02f9dbdda15222923b4e9dc6d22dcc1430ee44e3e4ca2b",
     "client455_normal_renderer_constants.h": "11a0aa411f4ad7418394f3144ee3f6d99770e5ad3c0589428e6237612bc281eb",
@@ -53,8 +53,8 @@
     "client455_mob_control.h": "8ac4a29cf8647b36d1ef783f9bfe7f8dac4b3e6613ede4489ececf0daea23d1d",
     "client455_mob_control.inc": "292d514887fbead5110f8b5944017cd692941e16cab71b8b8e41a90d90f167a7",
     "client455_gui_move.inc": "573ec434a37d34ba74412b999b38fe739bdab2b47d820aacfdd872c2e66ace45",
-    "client455_option_window.h": "51764c4c19989a29a3e37a81f8151554ae8e7291f49fd63c374c4e665ac81b19",
-    "client455_option_window.inc": "d315374acaf4ef0fd8f78069de19f78fd3e98863f7efc5f463da4e270edbf99c",
+    "client455_option_window.h": "faa5882fa745974ff8488a7fda0bbcf8d76e236ccbf4ed065c9e2fcc2ab86518",
+    "client455_option_window.inc": "d58c7e563b87d4e93e1294ab9016925a506c5ebb886fe2dfabccbed2915245ef",
     "client455_inventory.inc": "502203448d78894f7d789582f7da35a2ad91b8fa1d3813b9b661b06b7f0a4e18",
     "client455_unit_view_skin.h": "3155675ca35f0f699673e1c29a492632809c62ed5b7d71822b03be610b28105a",
     "client455_unit_tuning.inc": "be706966f9445e9a794c68964ef5f454b9f4ab561b803d3abd2def1d67af62a5",
@@ -184,7 +184,7 @@
     "client455_equipment_draw_lifecycle.h": "a72c05e7d3b53d29d7d8fb546660d0cbd50629064a49bc99ff80f436c323a0f9",
     "client455_player_equipment.h": "fd989dff81e313cead923b39eafd3250d0bc52043fde5534b8c57515629047c4",
     "client455_equipment_object.cpp": "09ecd1464e054bc807d40086228d14b88e418490568a1d56d6ed9905ce522e69",
-    "client455_player_owner.cpp": "16f24378521804434e07c886b4d880867f286ae99ec23d04e62bcc1a2b2ee4ce",
+    "client455_player_owner.cpp": "f9f3af1795aa7fd5aa71ee92879c0a4317d245032bd35767c496d25ed5b94136",
     "client455_skill_force_items.h": "5f9c2c11ef09b76ced2a3f944ffdbf51826f6924157eac60b65ac0fe4622502d",
     "client455_skill_force_items.cpp": "5d485ddf669700fb7f755122f4a581d90c76f366648df1d19a5d4fd8c38c4791",
     "client455_tagged_audio.cpp": "0b3aa51a52e5bc36e4e7068a30621de166798a56231073bfb78610bfeaad5f69",
@@ -296,7 +296,7 @@
     },
     {
       "report": "inventory/client455-character-draw-build.json",
-      "sha256": "9a050c8016279c22ea8a8bb7fde8b33e029b39d8c57e0b5571f7273e2433ffed"
+      "sha256": "b9c2bcff6ef19ff524a35939cbe0bed7daf0867b4d5e392052c3e6b7dd3bece0"
     },
     {
       "report": "inventory/client455-character-manager-build.json",
@@ -336,7 +336,7 @@
     },
     {
       "report": "inventory/client455-renderer-owner-build.json",
-      "sha256": "33dd0b3ca006061a869133a2f46458392952b6f3868e310325b06fd068ea3ecb"
+      "sha256": "a68e7934f58a24170ad09da36a2079e0673c1fc7f4f0acb79e26f872cdb0200a"
     },
     {
       "report": "inventory/client455-shaders-build.json",
@@ -385,7 +385,7 @@
   "character_tables_port_sha256": "a8809aa6af5af6df815e62e674a0f7ee26bdeb810f19e2c95d5e965b9f11f534",
   "avatar_classes_port_sha256": "46c1f6afe91ce188fca8197ee709c29070f618a3707f3d69016880eadb8c8f0c",
   "equipment_port_sha256": "9528f6592ad91cdd4acbc863c528071d9460f96ba1874d2030559a3d1f7d63e3",
-  "player_owner_port_sha256": "744f083770b89240b43628f122d938b6ce4fbef7604de54427346ee74f5deddf",
+  "player_owner_port_sha256": "cb8e3c0b9c49732474f43fd22c39e1b3dcc84ab12702974919d22ca09e1fc260",
   "premium_state_port_sha256": "632936ba385e0c03bd416f482d4723959308adc4024be8ded7d3858658d640be",
   "char_info_values_port_sha256": "67fdb397378bb8ac2431ec1117f8db8e86e8a6308febe38bc0fc884f2e187aae",
   "character_palette_port_sha256": "8a2b617b7d85bd3fdda1e10af3bb004fd8c1fc9e81ab258d9e2daf6d5c33e671",

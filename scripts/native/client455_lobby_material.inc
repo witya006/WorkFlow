@@ -2,6 +2,7 @@
 #include "client455_lobby_material.h"
 #include "client455_lobby_post.h"
 #include "client455_lobby_shadow.h"
+#include "client455_lobby_sky.h"
 #include "client455_lobby_lighting_shader.h"
 #include <d3dx9.h>
 #include <cstring>
@@ -44,6 +45,7 @@ Out VS(In i) {
 sampler2D albedoMap:register(s0);
 sampler2D lightMap:register(s1);
 sampler2D shadowMap:register(s2);
+sampler2D environmentMap:register(s3);
 float4 eye:register(c0);
 // x: light source (0 texture,1 vertex,2 lightmap); y: linear output;
 // z: fog mode; w: range fog.
@@ -63,6 +65,13 @@ float4 PS(Out i):COLOR0 {
     // Legacy baked lighting is indirect visibility, not albedo. Multiplying
     // it into albedo before another light pass was double-darkening platforms.
     float3 base=decodeRGB(a.rgb);
+    // Station palette: titanium panels / graphite recesses, with the original
+    // wear and panel boundaries retained. Only the old yellow pigment moves;
+    // existing blue glass and emissive machinery keep their identity.
+    float yellow=smoothstep(.06,.24,a.r-a.b)*smoothstep(.025,.19,a.g-a.b);
+    float value=dot(a.rgb,float3(.2126,.7152,.0722));
+    float3 titanium=decodeRGB(float3(.47,.53,.59))*pow(max(value,.03)/.55,1.65);
+    base=lerp(base,titanium,yellow*.98);
     float3 n=i.normal*rsqrt(max(dot(i.normal,i.normal),1e-8));
     // Small inferred surface relief from the existing panel texture. Bounded
     // world-space gradient; this is not claimed to be an authored normal map.
@@ -86,10 +95,14 @@ float4 PS(Out i):COLOR0 {
     float3 spec=LobbySpecular(n,v,l,f0,roughness);
     float3 reflected=reflect(-v,n);
     float3 environment=lerp(float3(.13,.14,.17),float3(.40,.55,.76),saturate(reflected.y*.5+.5));
+    float2 environmentUV=float2(atan2(reflected.z,reflected.x)*.15915494+.67,acos(clamp(reflected.y,-1,1))*.31830989);
+    environment+=decodeRGB(tex2Dlod(environmentMap,float4(environmentUV,0,roughness*7)).rgb)*1.8;
     float3 fresnel=f0+(1-f0)*pow(1-nv,5);
     float3 litLinear=base*(1-metallic*.70)*(LobbyFill(n)*indirect+.86*key*nl*visibility);
-    litLinear+=key*spec*visibility+environment*fresnel*(1-roughness)*.40;
+    litLinear+=key*spec*visibility+environment*fresnel*(1-roughness)*.72;
     litLinear+=key*LobbySpecular(n,v,l,.04,.24)*surface.w*visibility;
+    float blueAccent=saturate((a.b-a.r)*4)*smoothstep(.45,.85,max(a.g,a.b));
+    litLinear+=float3(.015,.36,.65)*blueAccent;
     float3 rgb=encodeRGB(litLinear);
     float z=lerp(i.distance.x,i.distance.y,settings.w), f=1;
     if(settings.z>.5 && settings.z<1.5) f=exp(-fogValues.z*z);
@@ -195,6 +208,10 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(8,shadowValues,1);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(9,finish,1);
     if(SUCCEEDED(hr))hr=d->SetTexture(2,shadow);
+    if(SUCCEEDED(hr))hr=d->SetTexture(3,RF455_LobbyEnvironmentTexture());
+    d->SetSamplerState(3,D3DSAMP_MINFILTER,D3DTEXF_LINEAR);d->SetSamplerState(3,D3DSAMP_MAGFILTER,D3DTEXF_LINEAR);
+    d->SetSamplerState(3,D3DSAMP_MIPFILTER,D3DTEXF_LINEAR);d->SetSamplerState(3,D3DSAMP_SRGBTEXTURE,FALSE);
+    d->SetSamplerState(3,D3DSAMP_ADDRESSU,D3DTADDRESS_WRAP);d->SetSamplerState(3,D3DSAMP_ADDRESSV,D3DTADDRESS_CLAMP);
     d->SetSamplerState(2,D3DSAMP_MINFILTER,D3DTEXF_POINT);d->SetSamplerState(2,D3DSAMP_MAGFILTER,D3DTEXF_POINT);
     d->SetSamplerState(2,D3DSAMP_MIPFILTER,D3DTEXF_NONE);d->SetSamplerState(2,D3DSAMP_SRGBTEXTURE,FALSE);
     d->SetSamplerState(2,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);d->SetSamplerState(2,D3DSAMP_ADDRESSV,D3DTADDRESS_CLAMP);

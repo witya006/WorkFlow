@@ -49,6 +49,8 @@ public:
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float);
     void DrawCharacter(CHARACTEROBJECT*,float*,float,float,float,bool);
     void DrawCharacterMat(CHARACTEROBJECT*,D3DXMATRIX*,float);
+    bool CollectShadowGeometry455(const CHARACTEROBJECT*,const float* position,float yaw,float scale,float opacity,
+        RF455CharacterShadowSink,void* owner);
     void SetOverlayTextureMatrix455(const D3DXMATRIX&,bool environment);
     void DrawCharacterOverlay455(CHARACTEROBJECT*,float*,float yaw,float scale,float scroll,bool unscaled);
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float);

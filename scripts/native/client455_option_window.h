@@ -37,16 +37,17 @@ private:
         BOOL flags[8]={FALSE,TRUE,FALSE,FALSE,TRUE,FALSE,FALSE,FALSE};
         BYTE camera=1;
         unsigned msaa=4,width=1920,height=1080;
-        bool enhanced=false,lobbyPost=false;
+        bool enhanced=false,lobbyPost=false,lobbyDiagnostics=true;
     };
     CGUIContainer m_pages[PageCount];
     CGUIButtonEx m_tabs[PageCount],m_apply,m_cancel,m_resolution[2],m_msaa[3],m_lighting[2],m_lobbyQuality[2];
     CGUIText m_resolutionTitle,m_msaaTitle,m_lightingTitle,m_lobbyQualityTitle,m_notice,m_status,m_closeLabel,m_pageNote[PageCount];
     CGUIObject m_modernHeader,m_divider;
+    CGUIButtonEx m_diagnostics[2];CGUIText m_diagnosticsTitle;
     SettingsSnapshot m_applied;
     SettingsPage m_page=SoundPage;
     unsigned m_requestedMsaa=4,m_requestedWidth=1920,m_requestedHeight=1080;
-    bool m_enhanced=false,m_lobbyPost=false,m_editing=false,m_initialized=false;
+    bool m_enhanced=false,m_lobbyPost=false,m_editing=false,m_initialized=false,m_showDiagnostics=true;
     SettingsSnapshot Capture455();
     void Restore455(const SettingsSnapshot&);
     void RememberExternal455();
@@ -73,6 +74,7 @@ public:
     CGUIButtonEx& Multisampling455(unsigned i){return m_msaa[i];}
     CGUIButtonEx& Lighting455(unsigned i){return m_lighting[i];}
     CGUIButtonEx& LobbyQuality455(unsigned i){return m_lobbyQuality[i];}
+    CGUIButtonEx& Diagnostics455(unsigned i){return m_diagnostics[i];}
     unsigned RequestedMultisampling455()const{return m_requestedMsaa;}
     SettingsPage SelectedPage455()const{return m_page;}
     void SetSoundOption(SoundOption,float);

@@ -1,6 +1,7 @@
 #include "client455_character_draw_internal.h"
 #include "client455_enhanced_lighting.h"
 #include "client455_draw_observer.h"
+#include <cmath>
 
 namespace rf455draw {
 namespace {
@@ -46,6 +47,47 @@ RF455CharacterDrawStatus enqueue(RF455CharacterDrawContext* c,RF455MeshStorage* 
     p.primary=get<IDirect3DBaseTexture9*>(mesh,5107);p.secondary=get<IDirect3DBaseTexture9*>(mesh,second?5119:5115);p.buffer=get<IDirect3DVertexBuffer9*>(mesh,4486);p.alpha=get<float>(mesh,5131);p.vertexCount=get<unsigned>(mesh,5086);p.frequency=get<float>(effect,288);std::memcpy(p.material,reinterpret_cast<const unsigned char*>(model)+720,68);p.special=get<unsigned>(effect,160);p.textureFactor=get<unsigned>(mesh,5147);p.secondPass=get<unsigned>(effect,188);p.inverted=second?!get<unsigned>(effect,192):get<unsigned>(effect,192);p.effect=get<unsigned>(effect,second?204:200);p.scroll=get<float>(mesh,5135);p.mesh=mesh;p.part=part;
     RF455_QueueCharacterTransparency(c->transparent,&p,&c->math.matrix);return RF_CHARACTER_DRAW_OK;
 }
+}
+
+extern "C" RF455CharacterDrawStatus RF455_CollectCharacterShadow455(const RF455CharacterDrawContext* c,
+    const RF455CharacterStorage* model,const void* world,float opacity,RF455CharacterShadowSink sink,void* owner){
+    using namespace rf455draw;
+    if(!c||!model||!world||!sink||!c->math.matrix.multiply||!c->vertices64||!c->indices||!c->state.declaration64)
+        return RF_CHARACTER_DRAW_ARGUMENT;
+    if(c->state.vertexMode!=4||c->useFvf||c->orthographic||c->batchEnabled)return RF_CHARACTER_DRAW_LIMIT;
+    if(!std::isfinite(opacity))return RF_CHARACTER_DRAW_ARGUMENT;
+    if(!equal(opacity,1))return RF_CHARACTER_DRAW_OK; // Same opaque-caster contract as the draw observer.
+    const auto* meshes=get<const RF455MeshStorage*>(model,536);const unsigned count=get<unsigned>(model,532);
+    if(count>4096||(count&&!meshes))return RF_CHARACTER_DRAW_ARGUMENT;
+    for(unsigned part=0;part<count;++part){const auto* mesh=meshes+part;if(get<unsigned>(mesh,5567))continue;
+        // Shared effect records are assigned during Render and can still belong
+        // to another actor here. Capture the opaque physical base geometry,
+        // never the separately submitted effect/grade/afterimage overlays.
+        if(get<void*>(mesh,4506)||!get<unsigned>(mesh,5086)||!get<void*>(mesh,5107))continue;
+        const unsigned bones=get<unsigned>(mesh,522);if(bones>30)return RF_CHARACTER_DRAW_LIMIT;
+        const unsigned vertex=get<unsigned>(mesh,4494),index=get<unsigned>(mesh,4502),vertices=get<unsigned>(mesh,5086);
+        if(vertex==0xffffffffu||vertex/RF455_VERTEX_BLOCK_BYTES>=RF455_BUFFER_SLOTS)return RF_CHARACTER_DRAW_ARGUMENT;
+        const unsigned slot=vertex/RF455_VERTEX_BLOCK_BYTES,offset=vertex%RF455_VERTEX_BLOCK_BYTES;
+        if(offset%64||offset>c->vertices64->used[slot]||vertices>(c->vertices64->used[slot]-offset)/64)return RF_CHARACTER_DRAW_ARGUMENT;
+        RF455CharacterShadowGeometry packet={};packet.vertices=c->vertices64->buffers[slot];
+        packet.declaration=c->state.declaration64;packet.start=offset/64;packet.vertexCount=vertices;
+        packet.indexed=index!=0xffffffffu;packet.triangleCount=vertices/3;
+        if(packet.indexed){
+            const unsigned indexSlot=index/RF455_INDEX_BLOCK_BYTES,indexOffset=index%RF455_INDEX_BLOCK_BYTES;
+            const unsigned indexCount=get<unsigned>(mesh,5090);
+            if(indexSlot>=RF455_BUFFER_SLOTS||indexOffset%2||indexOffset>c->indices->used[indexSlot]||
+               indexCount>(c->indices->used[indexSlot]-indexOffset)/2||indexCount%3)return RF_CHARACTER_DRAW_ARGUMENT;
+            packet.indices=c->indices->buffers[indexSlot];packet.firstIndex=indexOffset/2;packet.triangleCount=indexCount/3;
+        }
+        if(!packet.vertices||(packet.indexed&&!packet.indices))return RF_CHARACTER_DRAW_ARGUMENT;
+        if(!packet.triangleCount)continue;
+        capturePalette(packet.palette,mesh,world,nullptr,&c->math.matrix);
+        // The original uploader repeats an unblended matrix into four slots.
+        if(!bones)for(unsigned i=1;i<4;++i)std::memcpy(packet.palette+i*16,packet.palette,64);
+        for(float value:packet.palette)if(!std::isfinite(value))return RF_CHARACTER_DRAW_ARGUMENT;
+        if(!sink(owner,packet))return RF_CHARACTER_DRAW_MEMORY;
+    }
+    return RF_CHARACTER_DRAW_OK;
 }
 
 extern "C" RF455CharacterDrawStatus RF455_DrawCharacter455(RF455CharacterDrawContext* c,RF455CharacterStorage* model,const void* world,const void* translation){

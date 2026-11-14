@@ -1,0 +1,161 @@
+{
+  "date": "2026-11-14",
+  "status": "IMPLEMENTED_AND_TARGETED_CHECKS_PASS_VISUAL_ACCEPTANCE_OPEN",
+  "phase": "M6/VIS-01",
+  "client_only": true,
+  "server_modified": false,
+  "build": {
+    "sha256": "f710636464305e11b323d7181001200ac1f2a3307acfa9d9e2c49bc11e23506f",
+    "architecture": "x86",
+    "entry_rva": "0x1b8520"
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "live_full_client": true,
+  "slots": [
+    {
+      "slot": 0,
+      "occupied": true,
+      "width": 1920,
+      "height": 1080,
+      "shadow_bsp_draws": 89,
+      "shadow_actor_draws": 20,
+      "shadow_errors": 0,
+      "full_client": true,
+      "shadow_matrix_changes": 1,
+      "shadow_fit_expansions": 0,
+      "actor_pose_age_frames": 0,
+      "actor_capture_frames": 445,
+      "actor_capture_failures": 0,
+      "actor_capture_state_checks": 445
+    },
+    {
+      "slot": 1,
+      "occupied": false,
+      "width": 1920,
+      "height": 1080,
+      "shadow_bsp_draws": 89,
+      "shadow_actor_draws": 20,
+      "shadow_errors": 0,
+      "full_client": true,
+      "shadow_matrix_changes": 1,
+      "shadow_fit_expansions": 0,
+      "actor_pose_age_frames": 0,
+      "actor_capture_frames": 484,
+      "actor_capture_failures": 0,
+      "actor_capture_state_checks": 484
+    },
+    {
+      "slot": 2,
+      "occupied": false,
+      "width": 1920,
+      "height": 1080,
+      "shadow_bsp_draws": 89,
+      "shadow_actor_draws": 20,
+      "shadow_errors": 0,
+      "full_client": true,
+      "shadow_matrix_changes": 1,
+      "shadow_fit_expansions": 0,
+      "actor_pose_age_frames": 0,
+      "actor_capture_frames": 523,
+      "actor_capture_failures": 0,
+      "actor_capture_state_checks": 523
+    }
+  ],
+  "settings_reset": {
+    "completed_phases": 6,
+    "passed": true,
+    "last_phase_passed": true,
+    "initial_enhanced": true
+  },
+  "localization": "Russia/Korea real callbacks and GUI PASS; live characters not deleted",
+  "gpu": {
+    "adapter": "NVIDIA GeForce RTX 2080 Ti",
+    "vendor": 4318,
+    "device": 7687,
+    "hardware": true
+  },
+  "steady_menu": {
+    "sample_count": 11,
+    "foreground_samples": 11,
+    "fps_mean": 21.307272727272725,
+    "fps_min": 20.88,
+    "fps_max": 21.573,
+    "frame_ms_mean": 46.940272727272735,
+    "excludes": "First three seconds after menu capture; flight/selection capture stalls"
+  },
+  "remaining": [
+    "Visual approval and reference-level material/surface detail and lighting",
+    "Low menu FPS remains; HUD on/off and integrated GPU hypotheses excluded, Present/remaining pass timing not localized",
+    "No world-map rollout; no live destructive deletion test"
+  ],
+  "evidence": [
+    {
+      "file": "artifacts/lobby-orbit/menu.png",
+      "sha256": "29eaa4c47ec24cbbe8936d476fd7a7162ac3913dd43289fb2d7b2fe677ae639e",
+      "bytes": 1890194
+    },
+    {
+      "file": "artifacts/lobby-orbit/current-run.json",
+      "sha256": "486434a2f91f0a1137091861a8640693367b3916526351dd74eebba54525e7fc",
+      "bytes": 23594
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-0.png",
+      "sha256": "c01ef11f1bfd65513dd591814c4cc7adbadf115beefe0cf71afccfb2803b1775",
+      "bytes": 2503261
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-1.png",
+      "sha256": "462796655a54a144deb2aac9ecf65865cdd96be89083cc228032dc69bf225523",
+      "bytes": 2409588
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-2.png",
+      "sha256": "5ede21bfd062d9933211554475eea74bc34d93c82ee1bbf258f63c0ce0066d4e",
+      "bytes": 2450404
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-0.json",
+      "sha256": "d40dc38223f9fdecaf67df7a1f8056b3c7387aa831f3c754eaac103cdacb9217",
+      "bytes": 302
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-1.json",
+      "sha256": "ad7bfa873dee76f39ca1ae4cb9b34fea97d77cb3a9e35903be185ec120dd12f8",
+      "bytes": 303
+    },
+    {
+      "file": "artifacts/lobby-orbit/lobby-slot-2.json",
+      "sha256": "16ea5ec60771d3ac685781b866974978b7086d28e566e786ea29186c4ca4f749",
+      "bytes": 303
+    },
+    {
+      "file": "artifacts/lobby-orbit/settings-reset.json",
+      "sha256": "84391d4e403797218aa00f7fb751e0103f985fd781980ffa5824ea264851eb88",
+      "bytes": 3374
+    },
+    {
+      "file": "artifacts/lobby-orbit/deletion-success-ru.png",
+      "sha256": "0332b0847201bd0d85038a2848cce88d775414334b3e68e5b063114c346b50eb",
+      "bytes": 11003
+    },
+    {
+      "file": "artifacts/lobby-orbit/hud-settings.png",
+      "sha256": "f3b6dd6ca2a61317e03b9546178c4aca57f0198a9f642951a2a5befd56d541ea",
+      "bytes": 19378
+    },
+    {
+      "file": "artifacts/lobby-orbit/live-run.json",
+      "sha256": "779d145841244749196aad66ec185bcf96d8e9cd4129254085aa4316bf53dad4",
+      "bytes": 20228
+    },
+    {
+      "file": "artifacts/lobby-orbit/hud-off-run.json",
+      "sha256": "56e05e84d42422bea359c7c491dcd520ebcaa8914750fd0900168fbe79dbee51",
+      "bytes": 21022
+    }
+  ]
+}

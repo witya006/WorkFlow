@@ -1,4 +1,5 @@
 #include "client455_lobby_post.h"
+#include "client455_render_diagnostics.h"
 #include <d3dx9.h>
 #include <algorithm>
 #include <cstdio>
@@ -354,6 +355,7 @@ bool RF455_BeginLobbyPost(IDirect3DDevice9* d) {
 
 void RF455_EndLobbyPost(IDirect3DDevice9* d) {
     if(!state.info.active)return;
+    RF455GpuSection timing(3);
     if(d!=state.device||!d){
         if(state.device)restoreAll(state.device);
         savedRelease();state.info.active=false;state.failed=true;
@@ -396,6 +398,7 @@ void RF455_EndLobbyPost(IDirect3DDevice9* d) {
 }
 
 void RF455_ReleaseLobbyPost() {
+    RF455_ReleaseRenderDiagnostics();
     if(state.info.active&&state.device)restoreAll(state.device);
     savedRelease();resourcesRelease();state.device=nullptr;state.failed=false;state.info.active=false;
     state.info.uiSceneReady=true;state.info.passCount=0;state.info.fallbackDrawn=false;

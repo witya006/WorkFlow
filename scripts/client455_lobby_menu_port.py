@@ -99,6 +99,7 @@ def port_lobby_menu(raw, relative, native):
     if relative != 'gameprogress/cgp_login.cpp':
         return raw, False
 
+    raw = b'#include "client455_render_diagnostics.h"\n' + raw
     raw = replace(raw, b'#include "../MainApp.h"', b'#include "../MainApp.h"\n' +
                   (native / 'client455_lobby_menu.inc').read_bytes())
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 4, 0, 40 },', b'{ CAM_TOP_TO_LOGINC, 4, 0, 66 },')
@@ -113,6 +114,9 @@ static DWORD cameraSoundEndFrame455;''')
 {
     cameraEndSoundPending455 = false;
     StopWave(CameraMiddleWave455);
+    // The enhanced menu uses the authored view from above the orbital station.
+    // Keep the matching transition branch for the subsequent selection flight.
+    if(RF455_LobbyPostEnabled())m_RandomStart=false;
     const DWORD camera = m_AniCamera.GetCameraIndex(!RF455_LobbyReferenceMode() && m_RandomStart ? "c_ex01" : "c_ex02");
     if (camera != ID_INVALID) {
         m_AniCamera.SetPrePlayCamera(camera, 0, returningFromCredits ? 0 : ID_INVALID,
@@ -266,17 +270,64 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     start=raw.index(b'CGP_LogIn::Render(')
     stop=raw.index(b'\nBOOL',start) if b'\nBOOL' in raw[start:] else len(raw)
     body=raw[start:stop]
+    # Evaluate lobby placement/alpha exactly once, before collecting casters.
+    # Animation was already evaluated by FrameMove. Render remains single-pass.
+    draw_start=body.index(b'\t\t_GetCharIF()->SetState();',body.index(b'if( R3BeginScene() )'))
+    weapon_start=body.index(b'auto* pWeapon=',draw_start)
+    weapon_end=body.index(b'\t\t\t\tD3DXMATRIX',weapon_start)
+    weapon_setup=body[weapon_start:weapon_end]
+    body=body[:weapon_start]+body[weapon_end:]
+    position_start=body.index(b'\t\t\t\tmemcpy(&m_vecPos,CharacterTopPos[i]',draw_start)
+    position_end=body.index(b'\t\t\t\t_GetAvatarDummy(i)->Render();',position_start)
+    position_setup=body[position_start:position_end]
+    body=body[:position_start]+body[position_end:]
+    avatar_start=body.index(b'\t\tCharacterAlphaProcess();',draw_start)
+    avatar_end=body.index(b'\t\t_GetAvatar()->Render();',avatar_start)
+    avatar_setup=body[avatar_start:avatar_end]
+    body=body[:avatar_start]+body[avatar_end:]
+    # Moving placement before the caster pass must not leave the preview with
+    # the last dummy's legacy light. Restore only the light, not animation/pose.
+    body=replace(body,b'\t\t_GetAvatar()->Render();',b'''        {
+            D3DXMATRIX lightRotation;D3DXVECTOR3 lightForward(0,0,1);D3DXVECTOR4 lightDirection;
+            D3DXMatrixRotationY(&lightRotation,D3DXToRadian(30));
+            D3DXVec3Transform(&lightDirection,&lightForward,&lightRotation);
+            SetMainLight((D3DXVECTOR3)lightDirection);
+        }
+\t\t_GetAvatar()->Render();''')
+    pose_setup=(b'\n#ifdef CHARACTERDRAW\n        for(int i=0;i<3;++i){if(_GetAvatarDummy(i)->GetIndex()!=ID_INVALID){\n'+
+        weapon_setup+position_setup+b'\n        }}\n'+avatar_setup+b'\n#endif\n')
     body=replace(body,b'\tif( R3BeginScene() )',b'    lobbyFrameSample455.begin();\n\tif( R3BeginScene() )')
-    body=replace(body,b'\t\tR3ClearFrameBuffer();',b'        const bool modernLobby = !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect() && RF455_BeginLobbyPost(GetD3dDevice());\n        RF455_InvalidateLobbyShadows(!modernLobby || !_GetLand()->GetLevel());\n        if(modernLobby && _GetLand()->GetLevel())RF455_RenderLobbyShadows(_GetLand()->GetLevel()->mBsp);\n\t\tR3ClearFrameBuffer();')
+    body=replace(body,b'\t\tR3ClearFrameBuffer();',pose_setup+b'''        const bool modernLobby = !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect() && RF455_BeginLobbyPost(GetD3dDevice());
+        RF455_InvalidateLobbyShadows(!modernLobby || !_GetLand()->GetLevel());
+        if(modernLobby && _GetLand()->GetLevel()){
+            RF455_GpuSectionBegin(2);
+            if(RF455_BeginLobbyActorCapture(GetD3dDevice())){
+                bool captured=true;
+                try {
+#ifdef CHARACTERDRAW
+                    for(int i=0;i<3;++i)if(_GetAvatarDummy(i)->GetIndex()!=ID_INVALID)
+                        captured=_GetAvatarDummy(i)->CollectLobbyShadowEquipment455() && captured;
+                    captured=_GetAvatar()->CollectLobbyShadowEquipment455() && captured;
+#endif
+                } catch(...) {RF455_EndLobbyActorCapture(false);RF455_GpuSectionEnd(2);throw;}
+                if(RF455_EndLobbyActorCapture(captured))RF455_RenderLobbyShadows(_GetLand()->GetLevel()->mBsp);
+            }
+            RF455_GpuSectionEnd(2);
+        }
+\t\tR3ClearFrameBuffer();''')
     body=replace(body,b'        if (lobbyMenu455.ShowingCredits()) FullScreenEffect();',b'''        if(modernLobby){
             RF455_EndLobbyPost(GetD3dDevice());
-            if(!RF455_GetLobbyPostTelemetry().uiSceneReady)return S_OK;
+            if(!RF455_GetLobbyPostTelemetry().uiSceneReady){RF455_DiagnosticsEndFrame();return S_OK;}
         }
         if (lobbyMenu455.ShowingCredits()) FullScreenEffect();''')
     body=replace(body,b'\t\t_GetUIScreen()->Draw();',b'        if(!RF455_LobbyReferenceMode())_GetUIScreen()->Draw();\n        else if(RF455_LobbyOptions() && RF455_LobbyOptions()->IsShow()){RF455_LobbyOptions()->Draw();_GetUIScreen()->GetMouse()->Draw();}')
     body=replace(body,b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)',b'if (!RF455_LobbyReferenceMode() && (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD))')
+    body=replace(body,b'\t}\n\t\n\t\n\tm_messages455.Draw();',b'        RF455_DrawLobbyDiagnostics();\n        RF455_DiagnosticsEndFrame();\n\t}\n    else RF455_DiagnosticsEndFrame();\n\t\n\t\n\tm_messages455.Draw();')
     body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();\n    RF455_ObserveLobbySlots();')
     raw=raw[:start]+body+raw[stop:]
-    raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());\n\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);')
+    raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'''    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());
+    else if(RF455_LobbyPostEnabled() && lobbyMenu455.IsShow() && !lobbyMenu455.ShowingCredits())
+        m_AniCamera.SetNowFrame(3.2f + .10f*sinf(R3GetTime()*.13f));
+\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);''')
     raw+=b'\n'+(native/'client455_lobby_slot_observation.inc').read_bytes()
     return raw, True

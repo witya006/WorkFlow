@@ -51,7 +51,20 @@ struct RF455CharacterDrawContext {
     void* observer=nullptr;void (__cdecl *beforeDraw)(void*,const RF455MeshStorage*,unsigned)=nullptr;
 };
 enum RF455CharacterDrawStatus {RF_CHARACTER_DRAW_OK=0,RF_CHARACTER_DRAW_ARGUMENT=1,RF_CHARACTER_DRAW_LIMIT=2,RF_CHARACTER_DRAW_MEMORY=3};
+// Borrowed geometry plus an owned CPU palette for a presentation-only caster.
+// Collection never submits a draw, advances effects, or changes device state.
+struct RF455CharacterShadowGeometry {
+    IDirect3DVertexBuffer9* vertices;
+    IDirect3DIndexBuffer9* indices;
+    IDirect3DVertexDeclaration9* declaration;
+    unsigned start,vertexCount,firstIndex,triangleCount;
+    bool indexed;
+    float palette[120*4];
+};
+using RF455CharacterShadowSink=bool(*)(void*,const RF455CharacterShadowGeometry&);
 extern "C" {
+RF455CharacterDrawStatus RF455_CollectCharacterShadow455(const RF455CharacterDrawContext*,const RF455CharacterStorage*,
+    const void* world,float opacity,RF455CharacterShadowSink,void* owner);
 void RF455_ResetCharacterTransparency(RF455CharacterTransparency*);
 int RF455_QueueCharacterTransparency(RF455CharacterTransparency*,const RF455TransparentPacket*,const RF455MeshMatrixOps*);
 void RF455_SetCharacterEffectStage(RF455CharacterDrawContext*,unsigned stage,unsigned effect,DWORD textureFactor,float scroll);

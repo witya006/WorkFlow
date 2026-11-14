@@ -248,8 +248,24 @@ static int runSelectionRejection() {
         check(!network.IsSendRequestMsg()&&network.GetResultOfCharacterDelete()==result,
               "455 delete response dispatcher");
     };
+    unsigned expectedDeletionMessage=0x20a;
     auto dismissResult=[&](){
-        auto* box=g_pUiScreen->GetLastDialogBox();check(box!=nullptr,"delete result dialog");
+        auto* box=dynamic_cast<CGUIMessagebox*>(g_pUiScreen->GetLastDialogBox());check(box!=nullptr,"delete result dialog");
+        const auto* expected=RF455_GetNormalLanguagePack()->get(expectedDeletionMessage);
+        check(expected&&*expected,"localized deletion record exists");
+        auto& board=box->*access(MessageBoard{});std::string displayed;
+        for(unsigned i=0;i<board.GetFragmentCount455();++i)displayed+=board.GetFragment455(i)->GetText();
+        check(displayed==expected,"delete result uses active language pack");
+        if(expectedDeletionMessage==0x20a){
+            check(SUCCEEDED(device->Clear(0,nullptr,D3DCLEAR_TARGET,0xff152335,1,0)),"delete dialog clear");
+            check(SUCCEEDED(device->BeginScene()),"delete dialog begin");box->Draw();
+            check(SUCCEEDED(device->EndScene()),"delete dialog end");
+            ComPtr<IDirect3DSurface9> surface;check(SUCCEEDED(device->GetRenderTarget(0,&surface)),"delete dialog target");
+            using Save=HRESULT(WINAPI*)(const char*,D3DXIMAGE_FILEFORMAT,IDirect3DSurface9*,const PALETTEENTRY*,const RECT*);
+            auto library=GetModuleHandleA("d3dx9_36.dll");
+            auto save=library?reinterpret_cast<Save>(GetProcAddress(library,"D3DXSaveSurfaceToFileA")):nullptr;
+            check(save&&SUCCEEDED(save("deletion-success.png",D3DXIFF_PNG,surface.Get(),nullptr,nullptr)),"delete dialog PNG");
+        }
         CGUIObject::RemoveEvent(box);box->Close();box->RemoveOwnerWindow();
     };
     // User changes selection while the deletion reply is in flight.
@@ -262,11 +278,11 @@ static int runSelectionRejection() {
     check(network.DispatchDeletedCharacter455(duplicate,2),"duplicate reply ignored");NetworkInput();
     check(!g_pUiScreen->GetLastDialogBox()&&m_HaveCharacter[1],"duplicate does not retire another slot");
     EventDeleteCharacter();check(outgoing()==std::vector<BYTE>({5,0,1,12,1}),"second slot deletion request");
-    deletionReply(CHAR_DELETE_DB_ERROR,1);NetworkInput();
+    expectedDeletionMessage=0x20b;deletionReply(CHAR_DELETE_DB_ERROR,1);NetworkInput();
     check(m_HaveCharacter[1]&&dummy[1].GetIndex()==101&&g_LoginState==LGS_CHARACTERLOBBY,
           "delete rejection preserves character and restores slots");dismissResult();
     EventDeleteCharacter();check(outgoing()==std::vector<BYTE>({5,0,1,12,1}),"retry after delete rejection");
-    m_Course=static_cast<COURSE>(255);deletionReply(0,1);NetworkInput();
+    expectedDeletionMessage=0x20a;m_Course=static_cast<COURSE>(255);deletionReply(0,1);NetworkInput();
     check(m_Course==B_COURSE&&!m_HaveCharacter[1]&&m_HaveCharacter[2],"invalid current selection normalized on reply");
     dismissResult();m_Course=static_cast<COURSE>(255);
     check(!RF455_SelectedCharacterSlotOccupied(),"invalid selection is not occupied");

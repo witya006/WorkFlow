@@ -16,6 +16,9 @@
 #include "client455_normal_item_copy.h"
 #include <new>
 #include <stdexcept>
+#include <vector>
+#include <array>
+#include "client455_lobby_shadow.h"
 extern CMainApp g_MainApp;
 
 namespace {
@@ -159,6 +162,42 @@ void CPlayerProc::RenderEquipment455(){
         if(i==9)throw std::logic_error("455 Siege draw branch still requires its live actor flags/provider");
         object.SetPosition(actor.GetPosition());object.SetRotY(actor.GetRotY(),FALSE);object.SetScale(actor.GetScale());object.Render();
     }
+}
+bool CPlayerProc::CollectLobbyShadowEquipment455(){
+    if(!m_owner455)return false;
+    auto& state=*m_owner455;auto& actor=state.actor();
+    // Visibility is meaningful; camera frustum clipping is not a shadow-caster filter.
+    if(actor.IsDisable(ROSF_RENDER_MESH))return true;
+    for(unsigned part=0;part<RF455PlayerEquipment::PhysicalSlots;++part){
+        if(!state.equipment.canRender(BYTE(part),actor.GetRace()))continue;
+        auto& object=state.equipment.physical455(BYTE(part));auto* model=object.GetMesh455();
+        if(part==9||!model||model->m_MaxObj>4096||(model->m_MaxObj&&!model->m_pMesh))return false;
+        const float opacity=object.IsEnable(4)?object.GetAlphaDensity():1.f;
+        if(opacity!=1.f)continue;
+        // PSetVertexBlending copies this actor's already evaluated pose into a
+        // shared model. Restore every changed matrix, including partial failure.
+        struct PoseRestore {
+            CHARACTEROBJECT* model;
+            std::vector<std::array<D3DXMATRIX,30>> matrices;
+            unsigned saved=0;
+            explicit PoseRestore(CHARACTEROBJECT* m):model(m),matrices(m->m_MaxObj){}
+            ~PoseRestore(){for(unsigned i=0;i<saved;++i){auto& node=model->m_pMesh[i];
+                const unsigned count=node.m_BlendNum?node.m_BlendNum:1;
+                for(unsigned j=0;j<count;++j)std::memcpy(node.m_BlendNum?static_cast<void*>(&node.m_pMatBlend[j]):static_cast<void*>(&node.m_MatResult),&matrices[i][j],64);}}
+        } restore(model);
+        for(unsigned i=0;i<model->m_MaxObj;++i){const auto& node=model->m_pMesh[i];
+            if(node.m_BlendNum>30)return false;
+            const unsigned count=node.m_BlendNum?node.m_BlendNum:1;
+            for(unsigned j=0;j<count;++j)std::memcpy(&restore.matrices[i][j],node.m_BlendNum?static_cast<const void*>(&node.m_pMatBlend[j]):static_cast<const void*>(&node.m_MatResult),64);
+            ++restore.saved;
+        }
+        if(!actor.PSetVertexBlending(part,model,FALSE))return false;
+        const auto sink=[](void*,const RF455CharacterShadowGeometry& g)->bool{
+            return RF455_QueueLobbyActorShadow(g.vertices,g.indices,g.declaration,g.start,g.vertexCount,g.firstIndex,g.triangleCount,g.indexed,g.palette);
+        };
+        if(!_GetCharIF()->CollectShadowGeometry455(model,actor.GetPosition(),actor.GetRotY(),actor.GetScale(),opacity,sink,nullptr))return false;
+    }
+    return true;
 }
 void CPlayerProc::AnimateEquipment455(){
     auto& state=*m_owner455;auto& actor=state.actor();state.refreshView();

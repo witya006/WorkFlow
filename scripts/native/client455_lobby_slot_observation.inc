@@ -12,8 +12,9 @@ void RF455_ObserveLobbySlots(){
     std::snprintf(filename,sizeof(filename),"lobby-slot-%u.json",slot);
     const auto shadow=RF455_GetLobbyShadowTelemetry();
     if(FILE* file=std::fopen(filename,"wb")){
-        std::fprintf(file,"{\"slot\":%u,\"occupied\":%s,\"width\":%u,\"height\":%u,\"shadow_bsp_draws\":%u,\"shadow_actor_draws\":%u,\"shadow_errors\":%llu,\"full_client\":true}\n",
-            slot,m_HaveCharacter[slot]?"true":"false",description.Width,description.Height,shadow.bspDraws,shadow.actorDraws,shadow.errors);
+        std::fprintf(file,"{\"slot\":%u,\"occupied\":%s,\"width\":%u,\"height\":%u,\"shadow_bsp_draws\":%u,\"shadow_actor_draws\":%u,\"shadow_errors\":%llu,\"full_client\":true,\"shadow_matrix_changes\":%llu,\"shadow_fit_expansions\":%llu,\"actor_pose_age_frames\":%u,\"actor_capture_frames\":%llu,\"actor_capture_failures\":%llu,\"actor_capture_state_checks\":%llu}\n",
+            slot,m_HaveCharacter[slot]?"true":"false",description.Width,description.Height,shadow.bspDraws,shadow.actorDraws,shadow.errors,
+            shadow.lightMatrixChanges,shadow.fitExpansions,shadow.actorPoseAgeFramesMax,shadow.actorCaptureFrames,shadow.actorCaptureFailures,shadow.actorCaptureStateChecks);
         std::fclose(file);
     }
     ++completed;settled=0;if(completed<3)EventNextButton();

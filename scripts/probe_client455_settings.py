@@ -14,7 +14,7 @@ def main():
     generated = root / 'probe.cpp'
     generated.write_bytes(source.read_bytes())
     exe = build_full_object_probe('settings', generated)
-    run = root / sha(exe)[:8]
+    run = root / 'runtime'
     run.mkdir(exist_ok=True)
     client = Path(json.loads((WS / 'config/paths.json').read_text())['client_455'])
     for name in ['System/010.TTF', 'SpriteImage/Common/common.spr',

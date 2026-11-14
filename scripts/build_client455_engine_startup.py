@@ -355,7 +355,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     post_source=WS/'scripts/native/client455_lobby_post.cpp'
     sky_source=WS/'scripts/native/client455_lobby_sky.cpp'
     shadow_source=WS/'scripts/native/client455_lobby_shadow.cpp'
-    for modern_source in [post_source,sky_source,shadow_source]:
+    diagnostics_source=WS/'scripts/native/client455_render_diagnostics.cpp'
+    for modern_source in [post_source,sky_source,shadow_source,diagnostics_source]:
         cmakeText+='\ntarget_sources(R3Engine455Startup PRIVATE "'+modern_source.as_posix()+'")\n'
     #Weather allocates CParticle/CEntity and must see their expanded declarations.
     #Other helper kernels stay free of legacy camera/global declarations.
@@ -373,10 +374,10 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     result=subprocess.run([str(cmake),'--build',str(build),'--config','Release','--target','R3Engine455Startup','--parallel','4'],capture_output=True,timeout=300,creationflags=subprocess.CREATE_NO_WINDOW);log=art/'build.txt';log.write_bytes(result.stdout+result.stderr)
     if result.returncode:raise ValueError('Derived engine build:'+str(log))
     library=build/'Release/R3Engine455Startup.lib';objects=list((build/'R3Engine455Startup.dir/Release').glob('*.obj'))
-    if len(objects)!=70 or sha(oldLibrary)!=oldHash or any(sha(WS/row['file'])!=row['sha256'] for row in sources):raise ValueError('Engine source/object/baseline drift')
+    if len(objects)!=71 or sha(oldLibrary)!=oldHash or any(sha(WS/row['file'])!=row['sha256'] for row in sources):raise ValueError('Engine source/object/baseline drift')
     report={'scope':'Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open','architecture':'x86','build_exit':0,'objects':67,'library':library.relative_to(WS).as_posix(),'library_sha256':sha(library),'base_cmake':{'file':template.relative_to(WS).as_posix(),'sha256':sha(template)},'base_sources':sources,'derived_sources':derived,'baseline_library':{'file':oldLibrary.relative_to(WS).as_posix(),'sha256':oldHash},'cmake':{'file':(root/'CMakeLists.txt').relative_to(WS).as_posix(),'sha256':sha(root/'CMakeLists.txt')},'log':{'file':log.relative_to(WS).as_posix(),'sha256':sha(log)},'script_sha256':sha(WS/'scripts/build_client455_engine_startup.py'),'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
-    report.update(objects=len(objects),expected_objects=70,lobby_post_source={'file':post_source.relative_to(WS).as_posix(),'sha256':sha(post_source)},lobby_sky_source={'file':sky_source.relative_to(WS).as_posix(),'sha256':sha(sky_source)},lobby_shadow_source={'file':shadow_source.relative_to(WS).as_posix(),'sha256':sha(shadow_source)})
+    report.update(objects=len(objects),expected_objects=71,lobby_post_source={'file':post_source.relative_to(WS).as_posix(),'sha256':sha(post_source)},lobby_sky_source={'file':sky_source.relative_to(WS).as_posix(),'sha256':sha(sky_source)},lobby_shadow_source={'file':shadow_source.relative_to(WS).as_posix(),'sha256':sha(shadow_source)},render_diagnostics_source={'file':diagnostics_source.relative_to(WS).as_posix(),'sha256':sha(diagnostics_source)})
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
     report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}
