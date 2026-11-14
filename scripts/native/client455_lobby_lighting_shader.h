@@ -5,7 +5,12 @@ static const char RF455LobbyLightingShader[]=R"HLSL(
 float3 LobbySun(){return normalize(float3(-.35,.8,-.45));}
 float3 LobbyDecode(float3 c){c=max(c,0);return lerp(c/12.92,pow((c+.055)/1.055,2.4),step(.04045,c));}
 float3 LobbyEncode(float3 c){c=max(c,0);return lerp(c*12.92,1.055*pow(c,1.0/2.4)-.055,step(.0031308,c));}
-float3 LobbyFill(float3 n){return lerp(float3(.30,.30,.32),float3(.58,.66,.80),saturate(n.y*.5+.5));}
+float3 LobbyFill(float3 n){
+    // A readable floor for every actor slot, without a bright overhead dome
+    // competing with the sun. The planet below contributes a cool broad bounce.
+    float planet=saturate(-n.y),upper=saturate(n.y);
+    return float3(.30,.32,.36)+float3(.025,.075,.12)*planet+float3(.04,.05,.06)*upper;
+}
 float LobbyShadow(sampler2D depthMap,float4 clip,float4 settings,float nl){
     if(settings.x<.5)return 1;
     float3 p=clip.xyz/clip.w;

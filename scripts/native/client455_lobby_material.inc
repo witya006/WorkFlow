@@ -85,19 +85,25 @@ float4 PS(Out i):COLOR0 {
     float3 dx=ddx(i.wp),dy=ddy(i.wp),rx=cross(dy,n),ry=cross(n,dx);
     float determinant=dot(dx,rx);
     float3 gradient=(rx*ddx(height)+ry*ddy(height))*sign(determinant)/max(abs(determinant),.0001);
-    gradient*=min(surface.z,.22/max(length(gradient),.001));
+    gradient*=min(surface.z,.14/max(length(gradient),.001));
     n=normalize(n-gradient);
     float3 v=eye.xyz-i.wp; v*=rsqrt(max(dot(v,v),1e-8));
     float3 l=LobbySun();
     float3 h=v+l; h*=rsqrt(max(dot(h,h),1e-8));
     float nl=saturate(dot(n,l)), nv=max(saturate(dot(n,v)),.001);
     float nh=saturate(dot(n,h)), vh=saturate(dot(v,h));
-    float3 key=float3(1.05,.95,.82);
+    // Station lighting has a stronger directional key than the soft actor fill.
+    // Keep titanium neutral in shadow; warm colour comes from incident sunlight.
+    float3 key=float3(1.65,1.43,1.15);
     float indirect=.68+.32*saturate(dot(baked,float3(.2126,.7152,.0722)));
     float visibility=LobbyShadow(shadowMap,mul(float4(i.wp,1),lightMatrix),shadowSettings,nl);
     // Worn raised panels are smoother than dark seams. This variation is
     // inferred from the existing diffuse map, not an authored roughness map.
     float roughness=clamp(surface.x+(.5-height)*.22,.26,.80);
+    // Filter specular response where texture-derived normals vary within a
+    // pixel. This suppresses tiny unstable highlights, not the panel detail.
+    float3 normalDx=ddx(n),normalDy=ddy(n);
+    roughness=sqrt(roughness*roughness+min(.065,.25*(dot(normalDx,normalDx)+dot(normalDy,normalDy))));
     float metallic=surface.y*(.70+.30*smoothstep(.12,.68,height))*(1-.75*blueAccent);
     // Saturated markings stay painted; do not turn red/green/cyan panels into
     // neutral conductors when they share the station's material group.
@@ -106,14 +112,17 @@ float4 PS(Out i):COLOR0 {
     float3 f0=lerp(.04,metalTint,metallic);
     float3 spec=LobbySpecular(n,v,l,f0,roughness);
     float3 reflected=reflect(-v,n);
-    float3 environment=lerp(float3(.06,.075,.10),float3(.26,.36,.51),saturate(reflected.y*.5+.5));
+    // A dark celestial hemisphere and a cool planet below produce distinct
+    // reflected planes. This is broad illumination, not fabricated local SSR.
+    float planetReflection=smoothstep(-.18,.62,-reflected.y);
+    float3 environment=lerp(float3(.025,.04,.07),float3(.30,.46,.68),planetReflection);
     float2 environmentUV=float2(atan2(reflected.z,reflected.x)*.15915494+.67,acos(clamp(reflected.y,-1,1))*.31830989);
-    environment+=decodeRGB(tex2Dlod(environmentMap,float4(environmentUV,0,roughness*7)).rgb)*1.55;
+    environment+=decodeRGB(tex2Dlod(environmentMap,float4(environmentUV,0,roughness*7)).rgb)*.85;
     float3 fresnel=f0+(1-f0)*pow(1-nv,5);
     // Share energy between reflection and diffuse instead of adding a metal
     // highlight over almost the entire old chalk-like diffuse response.
     float3 diffuseWeight=(1-fresnel)*(1-metallic);
-    float3 litLinear=base*diffuseWeight*(LobbyFill(n)*indirect+.86*key*nl*visibility);
+    float3 litLinear=base*diffuseWeight*(LobbyFill(n)*indirect+key*nl*visibility);
     // Rough metal still reflects the environment; roughness broadens the mip
     // rather than extinguishing reflection. Baked visibility affects indirect
     // response only, so the real directional shadow remains unchanged.

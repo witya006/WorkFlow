@@ -60,14 +60,25 @@ float3 surfaceColor(float3 origin,float3 ray,float distance,float3 center,float 
     float border=max(abs(regionUV.x-.5),abs(regionUV.y-.5));
     float regionWeight=(1-smoothstep(.35,.49,border))*smoothstep(.3,.5,facing);
     albedo=lerp(albedo,decode(tex2D(regionMap,saturate(regionUV)).rgb),regionWeight);
+    // Texture detail was buried under a bright blue veil. Keep the surface
+    // contrast and apply the atmospheric contribution only near the limb.
+    // This bounded gradient is inferred cloud relief, not volumetric weather.
+    float cloud=smoothstep(.09,.65,min(albedo.r,min(albedo.g,albedo.b)));
+    float3 dx=ddx(p),dy=ddy(p),rx=cross(dy,n),ry=cross(n,dx);
+    float det=dot(dx,rx);
+    float3 relief=(rx*ddx(cloud)+ry*ddy(cloud))*sign(det)/max(abs(det),.000001);
+    relief*=min(.012,.18/max(length(relief),.001));
+    float3 cloudNormal=normalize(n-relief);
     float nl=dot(n,sun),light=saturate(nl);
-    float sea=1-smoothstep(.06,.23,albedo.r);
+    float sea=(1-smoothstep(.035,.15,albedo.r))*(1-cloud);
     float3 reflected=reflect(ray,n);
     float glint=pow(saturate(dot(reflected,sun)),120)*sea;
-    float3 lit=albedo*(float3(.055,.095,.17)+float3(1.35,1.19,.99)*light);
-    lit+=float3(1.0,.78,.48)*glint*.65;
-    float edge=pow(1-saturate(dot(n,-ray)),3.3);
-    lit=lerp(lit,float3(.13,.36,.70)*( .35+1.1*light),edge*.72);
+    float cloudLight=saturate(dot(cloudNormal,sun));
+    float3 key=float3(1.65,1.38,1.07);
+    float3 lit=albedo*(float3(.018,.031,.053)+key*lerp(light,cloudLight,cloud*.60));
+    lit+=float3(1.0,.73,.42)*glint*.80;
+    float edge=pow(1-saturate(dot(n,-ray)),4.5);
+    lit=lerp(lit,float3(.10,.25,.47)*(.20+light),edge*.40);
     return lit;
 }
 float4 PS(Vertex i):COLOR0{
@@ -77,12 +88,11 @@ float4 PS(Vertex i):COLOR0{
     float3 sun=normalize(float3(-.35,.8,-.45));
     float2 uv=uvSphere(ray);uv.x+=.17;
     // Fixed celestial directions; camera translation never drags the galaxy.
-    // The 1774x887 panorama supplies nebula structure, not magnified star discs.
-    // Suppress isolated bright map texels while retaining dark dust filaments.
-    float3 nebula=decode(tex2Dlod(spaceMap,float4(uv,0,3)).rgb);
-    float3 detail=decode(tex2Dlod(spaceMap,float4(uv,0,1.5)).rgb);
-    detail=min(detail,nebula*1.12+.008);
-    float3 sky=lerp(nebula,detail,.40)*1.25+float3(.0025,.004,.008);
+    // Read authored starless dust filaments at their actual footprint.
+    // Forcing mip 3 used to magnify a 222x111 image across the entire sky;
+    // stars are now a separate filtered catalogue, not magnified map dots.
+    float3 nebula=decode(tex2D(spaceMap,uv).rgb);
+    float3 sky=nebula*1.05+float3(.0007,.0011,.0025);
     float footprint=max(length(ddx(ray)),length(ddy(ray)));
     sky+=stars(ray,uv,footprint,512,17);
     sky+=stars(ray,uv+float2(.317,0),footprint,768,83)*.55;
@@ -120,8 +130,8 @@ float4 PS(Vertex i):COLOR0{
         }
         float density=1-exp(-optical*lengthInside*.65);
         float forward=pow(saturate(dot(ray,sun)),12);
-        float3 air=lerp(float3(.10,.30,.68),float3(1.0,.44,.14),forward*.8)*(light*.85+.12);
-        sky=lerp(sky,air,density*.78);
+        float3 air=lerp(float3(.075,.23,.52),float3(1.0,.44,.14),forward*.8)*(light*.85+.08);
+        sky=lerp(sky,air,density*.64);
     }
     return float4(eyeCloud.w>.5?sky:encode(sky),1);
 }

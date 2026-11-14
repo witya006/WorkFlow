@@ -5,7 +5,7 @@
   "client_only": true,
   "server_modified": false,
   "build": {
-    "sha256": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
+    "sha256": "e390146dfee499477d3e80854a568b9acbe18ff0aded0d3578c238ceb33cb948",
     "architecture": "x86",
     "entry_rva": "0x1b9040"
   },
@@ -27,9 +27,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 1457,
+      "actor_capture_frames": 1067,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 1457
+      "actor_capture_state_checks": 1067
     },
     {
       "slot": 1,
@@ -43,9 +43,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 1570,
+      "actor_capture_frames": 1179,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 1570
+      "actor_capture_state_checks": 1179
     },
     {
       "slot": 2,
@@ -59,16 +59,17 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 1683,
+      "actor_capture_frames": 1291,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 1683
+      "actor_capture_state_checks": 1291
     }
   ],
   "settings_reset": {
     "completed_phases": 6,
     "passed": true,
     "last_phase_passed": true,
-    "initial_enhanced": true
+    "initial_enhanced": true,
+    "scope": "Earlier six-phase resource check; not repeated for this color/texture-only package"
   },
   "localization": "Russia/Korea real callbacks and GUI PASS; live characters not deleted",
   "gpu": {
@@ -78,17 +79,17 @@
     "hardware": true
   },
   "steady_menu": {
-    "sample_count": 15,
-    "foreground_samples": 15,
-    "fps_mean": 64.60633333333334,
-    "fps_min": 64.334,
-    "fps_max": 65.015,
-    "frame_ms_mean": 15.47852,
+    "sample_count": 9,
+    "foreground_samples": 9,
+    "fps_mean": 64.48200000000001,
+    "fps_min": 63.804,
+    "fps_max": 64.997,
+    "frame_ms_mean": 15.508666666666663,
     "excludes": "First three seconds after menu capture; flight/selection capture stalls"
   },
   "remaining": [
-    "Visual approval; reference-level surface detail and cinematic lighting remain open",
-    "Other maps are outside this lobby-only package; no live character deletion performed"
+    "User visual approval remains open; authored station material detail and higher-angular-resolution environment required",
+    "Other maps outside lobby-only package; no live character deletion performed"
   ],
   "evidence": [
     {
@@ -230,6 +231,61 @@
       "file": "artifacts/lobby-orbit/gpu-immediate-sample.csv",
       "sha256": "94abd2d838b9c37ba797322ae28cd022151015a7d26e5c9c0b8f06141e99a2ab",
       "bytes": 3346
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-menu.png",
+      "sha256": "c3dd2a3e103e51ecc43458b972854227ee6da81384c2e551062645d5ad2b70d2",
+      "bytes": 2890004
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-run.json",
+      "sha256": "b1dbd21d6aa6d079400be856b43190f6c00dabc03ff331cf90b42de746d4dc3f",
+      "bytes": 43605
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-renderer.json",
+      "sha256": "5df3919a6bcbc2635cf809616637414b99f9465f12a69ab9dfe6b1207d34e1e6",
+      "bytes": 766
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-stars-before.png",
+      "sha256": "c734f755f0ba06ab9f57dbfc83b5f25886654a9ff99eab37ce9c1be9933c17f0",
+      "bytes": 2840854
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-first-run.json",
+      "sha256": "613586d7e5231b77e41f89a16e12ce238415bf3a15aa8cad96413ba6b206d226",
+      "bytes": 43654
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-0.png",
+      "sha256": "bf2a40e40c539463998da8179cf47ba84e499b7bddcbd3d814523bb55a1af87a",
+      "bytes": 2612120
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-0.json",
+      "sha256": "6e7c97f033642d173933cf5eb67f055a187e21b6558f01963fbcb9aa8e81a982",
+      "bytes": 304
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-1.png",
+      "sha256": "9fdac433c00dbb9aa961c964e01e4bc277ed704a52abfd5de141aa84b14f3950",
+      "bytes": 2510421
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-1.json",
+      "sha256": "fda89a3e243adb8a6f5a25fc285873cf50a78626ce822c403d917997c770dce0",
+      "bytes": 305
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-2.png",
+      "sha256": "85d148f8a99d876a47f776dcab1185e7a27c1c8d99f4df0cc180e18f474d8c22",
+      "bytes": 2560125
+    },
+    {
+      "file": "artifacts/lobby-orbit/lighting-slot-2.json",
+      "sha256": "120a51c09ea6668bde247c5278bd16b9345fe0fd95bf95ad48edc69d81bc5588",
+      "bytes": 305
     }
   ],
   "presentation_comparison": [
@@ -288,6 +344,27 @@
     "manager_boundary_clamp": true,
     "auto_distance_finite_clamp": true,
     "stage_messages": 8,
-    "live_backend": false
+    "live_backend": false,
+    "checked_build": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9"
+  },
+  "lighting_pass": {
+    "build": "e390146dfee499477d3e80854a568b9acbe18ff0aded0d3578c238ceb33cb948",
+    "full_client": true,
+    "source_geometry_preserved": true,
+    "key_fill_rebalanced": true,
+    "separate_starless_panorama": true,
+    "inferred_cloud_relief": true,
+    "authored_normal_maps": false,
+    "volume_clouds": false,
+    "new_texture_bytes": 2425133,
+    "sky_gpu_bytes": 25157496,
+    "current_menu": "artifacts/lobby-orbit/lighting-menu.png",
+    "run": "artifacts/lobby-orbit/lighting-run.json",
+    "artistic_acceptance": "OPEN",
+    "limits": [
+      "Legacy station textures retain low-resolution details",
+      "Panorama and planetary regional imagery still visibly magnified; requires authored detail inputs",
+      "No claim of reference-level quality or full-game acceptance"
+    ]
   }
 }

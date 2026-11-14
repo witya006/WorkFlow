@@ -31,7 +31,7 @@ const char skyShader455[]=
 ;
 bool initOrbitTextures455(IDirect3DDevice9* d){
     auto& s=sky455;
-    const char* files[]={"System/modern-lobby/space-panorama-v1.png","System/modern-lobby/novus-surface-v1.png","System/modern-lobby/novus-region-v1.png"};
+    const char* files[]={"System/modern-lobby/space-panorama-v2.png","System/modern-lobby/novus-surface-v1.png","System/modern-lobby/novus-region-v1.png"};
     IDirect3DTexture9** textures[]={&s.space,&s.planet,&s.region};
     s.info.volumeTextureBytes=0;
     for(unsigned index=0;index<3;++index){
