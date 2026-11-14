@@ -1,7 +1,7 @@
 {
   "scope": "Generated source art for the orbital lobby; no copied third-party game art",
   "created": "2026-11-14",
-  "mapping": "2:1 global equirectangular maps plus a square regional spherical cap, world-space lookup, linear lighting from sRGB albedo",
+  "mapping": "Global 2:1 equirectangular maps, wide regional spherical cap, smaller 3x regional detail, and a fixed 70-degree celestial sector; world-space lookup",
   "assets": [
     {
       "file": "work/client-art/lobby-orbit/space-panorama-v2.png",
@@ -20,6 +20,18 @@
       "runtime": "System/modern-lobby/novus-region-v1.png",
       "sha256": "c60bccf1c1534dcc2257c3012b2c04f515b793c2788a7f38747d226b62df167f",
       "bytes": 3453972
+    },
+    {
+      "file": "work/client-art/lobby-orbit/space-sector-v1.png",
+      "runtime": "System/modern-lobby/space-sector-v1.png",
+      "sha256": "86e7207941d57b26836b3986db119ebd94ccdcadaeb6aea8d45f476da9a4a148",
+      "bytes": 2016652
+    },
+    {
+      "file": "work/client-art/lobby-orbit/novus-region-detail-v1.png",
+      "runtime": "System/modern-lobby/novus-region-detail-v1.png",
+      "sha256": "8aebb4f518856418babd2e77d502becaddf712b4cdce8b82440add6cd96d7bbc",
+      "bytes": 3297591
     }
   ]
 }

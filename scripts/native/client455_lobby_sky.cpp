@@ -13,6 +13,7 @@ struct Sky455 {
     IDirect3DVertexDeclaration9* decl=nullptr;
     IDirect3DStateBlock9* saved=nullptr;
     IDirect3DTexture9 *space=nullptr,*planet=nullptr,*region=nullptr;
+    IDirect3DTexture9 *spaceDetail=nullptr,*regionDetail=nullptr;
     RF455LobbySkyTelemetry info={};
     bool failed=false, cameraOverride=false;
     D3DXMATRIX view,projection;
@@ -31,15 +32,20 @@ const char skyShader455[]=
 ;
 bool initOrbitTextures455(IDirect3DDevice9* d){
     auto& s=sky455;
-    const char* files[]={"System/modern-lobby/space-panorama-v2.png","System/modern-lobby/novus-surface-v1.png","System/modern-lobby/novus-region-v1.png"};
-    IDirect3DTexture9** textures[]={&s.space,&s.planet,&s.region};
+    const char* files[]={"System/modern-lobby/space-panorama-v2.png","System/modern-lobby/novus-surface-v1.png","System/modern-lobby/novus-region-v1.png",
+        "System/modern-lobby/space-sector-v1.png","System/modern-lobby/novus-region-detail-v1.png"};
+    IDirect3DTexture9** textures[]={&s.space,&s.planet,&s.region,&s.spaceDetail,&s.regionDetail};
     s.info.volumeTextureBytes=0;
-    for(unsigned index=0;index<3;++index){
+    s.info.detailTextureBytes=0;
+    for(unsigned index=0;index<5;++index){
         const HRESULT hr=D3DXCreateTextureFromFileExA(d,files[index],D3DX_DEFAULT_NONPOW2,D3DX_DEFAULT_NONPOW2,
             D3DX_DEFAULT,0,D3DFMT_A8R8G8B8,D3DPOOL_MANAGED,D3DX_FILTER_LINEAR,D3DX_FILTER_BOX,0,nullptr,nullptr,textures[index]);
-        if(FAILED(hr)){skyError455(hr,index==2?"region-texture":index?"planet-texture":"space-texture");return false;}
+        if(FAILED(hr)){skyError455(hr,files[index]);return false;}
         for(UINT level=0;level<(*textures[index])->GetLevelCount();++level){D3DSURFACE_DESC desc{};
-            if(SUCCEEDED((*textures[index])->GetLevelDesc(level,&desc)))s.info.volumeTextureBytes+=std::uint64_t(desc.Width)*desc.Height*4;}
+            if(SUCCEEDED((*textures[index])->GetLevelDesc(level,&desc))){
+                const auto bytes=std::uint64_t(desc.Width)*desc.Height*4;
+                s.info.volumeTextureBytes+=bytes;if(index>=3)s.info.detailTextureBytes+=bytes;
+            }}
     }return true;
 }
 bool initSky455(IDirect3DDevice9* d){
@@ -99,14 +105,18 @@ bool RF455_RenderLobbySky(IDirect3DDevice9* d){
     if(SUCCEEDED(hr))hr=d->SetTexture(0,s.space);
     if(SUCCEEDED(hr))hr=d->SetTexture(1,s.planet);
     if(SUCCEEDED(hr))hr=d->SetTexture(2,s.region);
+    if(SUCCEEDED(hr))hr=d->SetTexture(3,s.spaceDetail);
+    if(SUCCEEDED(hr))hr=d->SetTexture(4,s.regionDetail);
     const D3DSAMPLERSTATETYPE samplerNames[]={D3DSAMP_ADDRESSU,D3DSAMP_ADDRESSV,D3DSAMP_ADDRESSW,
         D3DSAMP_MINFILTER,D3DSAMP_MAGFILTER,D3DSAMP_MIPFILTER,D3DSAMP_SRGBTEXTURE,D3DSAMP_MAXMIPLEVEL,D3DSAMP_MIPMAPLODBIAS};
     const DWORD samplerValues[]={D3DTADDRESS_WRAP,D3DTADDRESS_CLAMP,D3DTADDRESS_WRAP,
         D3DTEXF_LINEAR,D3DTEXF_LINEAR,D3DTEXF_LINEAR,FALSE,0,0};
-    for(unsigned slot=0;slot<3&&SUCCEEDED(hr);++slot)
+    for(unsigned slot=0;slot<5&&SUCCEEDED(hr);++slot)
     for(unsigned n=0;n<sizeof(samplerNames)/sizeof(samplerNames[0])&&SUCCEEDED(hr);++n)
         hr=d->SetSamplerState(slot,samplerNames[n],samplerValues[n]);
     if(SUCCEEDED(hr))hr=d->SetSamplerState(2,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);
+    if(SUCCEEDED(hr))hr=d->SetSamplerState(3,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);
+    if(SUCCEEDED(hr))hr=d->SetSamplerState(4,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);
     const D3DRENDERSTATETYPE names[]={D3DRS_ZENABLE,D3DRS_ZWRITEENABLE,D3DRS_ZFUNC,D3DRS_ALPHABLENDENABLE,D3DRS_ALPHATESTENABLE,D3DRS_FOGENABLE,D3DRS_CULLMODE,D3DRS_SRGBWRITEENABLE,D3DRS_COLORWRITEENABLE,D3DRS_STENCILENABLE,D3DRS_SCISSORTESTENABLE,D3DRS_CLIPPLANEENABLE,D3DRS_FILLMODE,D3DRS_DEPTHBIAS,D3DRS_SLOPESCALEDEPTHBIAS};
     const DWORD values[]={D3DZB_TRUE,FALSE,D3DCMP_LESSEQUAL,FALSE,FALSE,FALSE,D3DCULL_NONE,FALSE,15,FALSE,FALSE,0,D3DFILL_SOLID,0,0};
     for(unsigned n=0;n<sizeof(names)/sizeof(names[0])&&SUCCEEDED(hr);++n)hr=d->SetRenderState(names[n],values[n]);
@@ -119,6 +129,7 @@ bool RF455_RenderLobbySky(IDirect3DDevice9* d){
 void RF455_ReleaseLobbySky(){
     auto& s=sky455;dropSky455(s.saved);dropSky455(s.decl);dropSky455(s.ps);dropSky455(s.vs);
     dropSky455(s.space);dropSky455(s.planet);dropSky455(s.region);s.info.volumeTextureBytes=0;
+    dropSky455(s.spaceDetail);dropSky455(s.regionDetail);s.info.detailTextureBytes=0;
     s.info.ready=false;s.failed=false;s.cameraOverride=false;
 }
 RF455LobbySkyTelemetry RF455_GetLobbySkyTelemetry(){return sky455.info;}

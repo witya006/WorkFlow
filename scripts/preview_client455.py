@@ -311,6 +311,8 @@ def main():
                         sample=json.loads((run/'lobby-diagnostics.json').read_text())
                         sample['elapsed_seconds']=round(time.monotonic()-started,2)
                         sample['foreground'] = user32.GetForegroundWindow() == hwnd
+                        visual=json.loads((run/'lobby-visual.json').read_text())
+                        sample['camera_view']=visual.get('camera_view',[])
                         sample['stage']='selection' if evidence.get('selection_tick_ms') else 'flight' if evidence.get('start_tick_ms') else 'menu' if evidence.get('menu_tick_ms') else 'startup'
                         evidence['performance_samples'].append(sample)
                     except (OSError,ValueError):pass

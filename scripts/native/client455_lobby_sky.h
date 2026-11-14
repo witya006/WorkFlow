@@ -8,6 +8,7 @@ struct RF455LobbySkyTelemetry {
     HRESULT error;
     char stage[64], compilerError[384];
     std::uint64_t volumeTextureBytes; // Legacy field name; now orbital textures + mip levels.
+    std::uint64_t detailTextureBytes; // Subset: fixed celestial sector and smaller Novus region.
 };
 // Inside BeginScene, before BSP. Returns true only when the replacement drew.
 // The caller owns the enhanced-lobby-only gate; authored assets are manifest-pinned.

@@ -340,8 +340,6 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();\n    RF455_ObserveLobbySlots();')
     raw=raw[:start]+body+raw[stop:]
     raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'''    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());
-    else if(RF455_LobbyPostEnabled() && lobbyMenu455.IsShow() && !lobbyMenu455.ShowingCredits())
-        m_AniCamera.SetNowFrame(3.2f + .10f*sinf(R3GetTime()*.13f));
 \tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);''')
     raw+=b'\n'+(native/'client455_lobby_slot_observation.inc').read_bytes()
     frame=raw.index(b'CGP_LogIn::FrameMove(');at=raw.index(b'{',frame)+1

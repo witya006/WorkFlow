@@ -5,6 +5,8 @@ float4 eyeCloud:register(c8);
 sampler2D spaceMap:register(s0);
 sampler2D planetMap:register(s1);
 sampler2D regionMap:register(s2);
+sampler2D spaceDetailMap:register(s3);
+sampler2D regionDetailMap:register(s4);
 struct Vertex {float4 position:POSITION0;float2 uv:TEXCOORD0;};
 Vertex VS(Vertex v){return v;}
 float3 decode(float3 c){return lerp(c/12.92,pow(max((c+.055)/1.055,0),2.4),step(.04045,c));}
@@ -60,22 +62,24 @@ float3 surfaceColor(float3 origin,float3 ray,float distance,float3 center,float 
     float border=max(abs(regionUV.x-.5),abs(regionUV.y-.5));
     float regionWeight=(1-smoothstep(.35,.49,border))*smoothstep(.3,.5,facing);
     albedo=lerp(albedo,decode(tex2D(regionMap,saturate(regionUV)).rgb),regionWeight);
+    // The authored detail depicts a third of the wide region, centred at
+    // (.50,.40). Keep both levels fixed on Novus; no camera-following decal.
+    float2 detailUV=.5+(regionUV-float2(.50,.40))*3;
+    float detailBorder=max(abs(detailUV.x-.5),abs(detailUV.y-.5));
+    float detailWeight=(1-smoothstep(.32,.49,detailBorder))*regionWeight;
+    albedo=lerp(albedo,decode(tex2D(regionDetailMap,saturate(detailUV)).rgb),detailWeight);
     // Texture detail was buried under a bright blue veil. Keep the surface
     // contrast and apply the atmospheric contribution only near the limb.
-    // This bounded gradient is inferred cloud relief, not volumetric weather.
+    // Cloud colour contains authored shading, not measured elevation. Turning
+    // its luminance into normals produced dark rings around bright cloud rims.
+    // Preserve image detail; the sphere and atmosphere supply large-scale form.
     float cloud=smoothstep(.09,.65,min(albedo.r,min(albedo.g,albedo.b)));
-    float3 dx=ddx(p),dy=ddy(p),rx=cross(dy,n),ry=cross(n,dx);
-    float det=dot(dx,rx);
-    float3 relief=(rx*ddx(cloud)+ry*ddy(cloud))*sign(det)/max(abs(det),.000001);
-    relief*=min(.012,.18/max(length(relief),.001));
-    float3 cloudNormal=normalize(n-relief);
     float nl=dot(n,sun),light=saturate(nl);
     float sea=(1-smoothstep(.035,.15,albedo.r))*(1-cloud);
     float3 reflected=reflect(ray,n);
     float glint=pow(saturate(dot(reflected,sun)),120)*sea;
-    float cloudLight=saturate(dot(cloudNormal,sun));
     float3 key=float3(1.65,1.38,1.07);
-    float3 lit=albedo*(float3(.018,.031,.053)+key*lerp(light,cloudLight,cloud*.60));
+    float3 lit=albedo*(float3(.018,.031,.053)+key*light);
     lit+=float3(1.0,.73,.42)*glint*.80;
     float edge=pow(1-saturate(dot(n,-ray)),4.5);
     lit=lerp(lit,float3(.10,.25,.47)*(.20+light),edge*.40);
@@ -92,6 +96,17 @@ float4 PS(Vertex i):COLOR0{
     // Forcing mip 3 used to magnify a 222x111 image across the entire sky;
     // stars are now a separate filtered catalogue, not magnified map dots.
     float3 nebula=decode(tex2D(spaceMap,uv).rgb);
+    // A detailed 70-degree celestial sector supplements the 360-degree map.
+    // These orthonormal axes are fixed in world space, aligned with the visible
+    // menu sector. Longitude-wrap and all other directions retain the panorama.
+    const float3 sectorFront=float3(-.8930622,-.0719141,.4441489);
+    const float3 sectorRight=float3(.445302,0,.895380);
+    const float3 sectorUp=float3(-.064389,.997411,.032022);
+    float sectorFacing=dot(ray,sectorFront);
+    float2 sectorUV=.5+float2(dot(ray,sectorRight),-dot(ray,sectorUp))*.714074/max(sectorFacing,.05);
+    float sectorBorder=max(abs(sectorUV.x-.5),abs(sectorUV.y-.5));
+    float sectorWeight=(1-smoothstep(.34,.49,sectorBorder))*smoothstep(.65,.80,sectorFacing);
+    nebula=lerp(nebula,decode(tex2D(spaceDetailMap,saturate(sectorUV)).rgb),sectorWeight);
     float3 sky=nebula*1.05+float3(.0007,.0011,.0025);
     float footprint=max(length(ddx(ray)),length(ddy(ray)));
     sky+=stars(ray,uv,footprint,512,17);
