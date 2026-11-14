@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from client455_asset_staging import ASSET_SUFFIXES, MAX_POOL_LINKS, sha
 from client455_runtime_inputs import copy_lobby_audio
-from client455_orbit_assets import stage_orbit_assets
+from client455_orbit_assets import stage_orbit_assets,stage_material_assets
 from probe_client455_live_launcher import auth_request, auth_reply, marshal_v4x, receive
 
 RECEIPTS = (
@@ -198,6 +198,7 @@ def main():
             raise RuntimeError('The preceding test client is still open')
     evidence = populate(run, source, active, inputs, audio=args.audio)
     evidence['orbit_assets'] = stage_orbit_assets(run)
+    evidence['material_assets'] = stage_material_assets(run)
     if args.driver_name_check:
         alternate=run/'RF_Online.exe'
         if alternate.exists():raise ValueError('Driver-name diagnostic target already exists; inspect before replacing it')

@@ -9,7 +9,7 @@ from client455_launcher_fixture import stage_launcher
 from client455_tcp_fixture import TcpAcceptanceFixture
 from client455_normal_link_evidence import validate_normal_link
 from workspace_guard import require_budget
-from client455_orbit_assets import stage_orbit_assets
+from client455_orbit_assets import stage_orbit_assets,stage_material_assets
 
 INPUT_RECEIPT=ROOT/'artifacts/baseline-20261114/lobby-probe.json'
 OMITTED={Path('RF_Online.bin'),Path('RF_Online.map'),Path('device.plan'),
@@ -118,6 +118,7 @@ def main():
         raise RuntimeError('Previous preview is open; preserve the user session')
     evidence=stage_taiwan(run,active)
     evidence['orbit_assets']=stage_orbit_assets(run)
+    evidence['material_assets']=stage_material_assets(run)
     config=run/'R3Engine.ini'
     config.write_text('[Setup]\nLanguage=Taiwan\n[RenderState]\nScreenXSize=1920\nScreenYSize=1080\nbFullScreen=FALSE\nTextureDetail=3\nMSAA=4\nDynamicLight=1\nShadowDetail=1\n'
                       f'LobbyPost={int(args.mode=="enhanced")}\nEnhancedActorLighting={int(args.mode=="enhanced")}\n'

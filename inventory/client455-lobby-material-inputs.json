@@ -1,0 +1,516 @@
+{
+  "inputs": {
+    "r3m": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.r3m",
+      "size": 20066,
+      "sha256": "351d6312a210dacdef30ec36f2e7c50da1d95a16e9aca8d661a09633a43e6f0f"
+    },
+    "r3t": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.r3t",
+      "size": 3689572,
+      "sha256": "d5f5dcdda28104fe71a52cdf3253d7c0d54b317e62915888a60b7181178cbfa2"
+    },
+    "bsp": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.bsp",
+      "size": 1980345,
+      "sha256": "2ae548405f52d2bf697bbd2483faaf76a45584f04a013f84f59df581546cc5a8"
+    }
+  },
+  "material_count": 100,
+  "texture_count": 29,
+  "bsp_group_count": 109,
+  "dds_mask": {
+    "pe_sha256": "b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b",
+    "architecture": "x86",
+    "rva": "0x7f7f00",
+    "sha256": "ab9397fdafc4f574dc5ae5ced0a8676232e13a118d41dd2837542316ab6246e4"
+  },
+  "mapping": "R3M surface is one-based: loader adds texture-start minus 1 before R3T registration.",
+  "decode": "Exact top-mip DDS decompression to RGBA PNG. No crop, resize, retouch, gamma conversion or UV change.",
+  "limits": "BSP face/group counts are usage evidence, not screen coverage. No live material-ID capture; no authored normal/roughness data inferred.",
+  "exports": [
+    {
+      "texture_index": 1,
+      "texture_name": ".\\lobby\\tex\\T_Wa04.dds",
+      "png": "001-T_Wa04.png",
+      "size": [
+        512,
+        512
+      ],
+      "dds_sha256": "7f61cf83fa17e507b7cc01586fffeaa210f81658bbfaef0315224ffeeb64a61c",
+      "png_sha256": "2d3800396c19eb35229005db7a37ab44d15a66d954dca38c6cf5ca5a67c9674f",
+      "rgba_sha256": "534db81986781f802bcfe7d9d9c335487cd35ceb3ce789db945f59d9d9a84818",
+      "dds_offset": 353408,
+      "dds_size": 174904,
+      "fourcc": "DXT1",
+      "mipmaps": 10,
+      "materials": [
+        {
+          "index": 2,
+          "name": "wall_2",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 2,
+          "bsp_faces": 302
+        },
+        {
+          "index": 6,
+          "name": "wall_6",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 195
+        },
+        {
+          "index": 10,
+          "name": "wall_10",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 114
+        },
+        {
+          "index": 30,
+          "name": "wall_30",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 2446
+        },
+        {
+          "index": 37,
+          "name": "tani_fire01_37",
+          "flags": "0x0",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            },
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 3,
+              "argb": "0xffffffff",
+              "flags": "0x400",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": false,
+          "bsp_groups": 1,
+          "bsp_faces": 48
+        },
+        {
+          "index": 44,
+          "name": "T_Wa04_44",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 156
+        },
+        {
+          "index": 54,
+          "name": "wall_54",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 94
+        },
+        {
+          "index": 72,
+          "name": "T_Wa04_72",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 48
+        },
+        {
+          "index": 86,
+          "name": "wall_86",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 417
+        },
+        {
+          "index": 93,
+          "name": "T_Wa04_93",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 2,
+              "texture_index": 1,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\T_Wa04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 509
+        }
+      ]
+    },
+    {
+      "texture_index": 3,
+      "texture_name": ".\\lobby\\tex\\test10.dds",
+      "png": "003-test10.png",
+      "size": [
+        256,
+        512
+      ],
+      "dds_sha256": "ced7b8558fb1ad355fe2490e983dbe46ea7c188cd4ecffdc4b13a64e8c3b83c5",
+      "png_sha256": "2be929124c27f53ab9eae2addf6975bed7c168bddbe7d2d517071d4a43d49fb9",
+      "rgba_sha256": "55e61ca179e3d1b37a5a7af81ca76cc62d8b3c1f836df6c396a01bac7e7d9a51",
+      "dds_offset": 703224,
+      "dds_size": 87528,
+      "fourcc": "DXT1",
+      "mipmaps": 10,
+      "materials": [
+        {
+          "index": 4,
+          "name": "lobby_n_p_4",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 285
+        },
+        {
+          "index": 13,
+          "name": "lobby_n_p_13",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 368
+        },
+        {
+          "index": 51,
+          "name": "test10_51",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 8
+        },
+        {
+          "index": 56,
+          "name": "lobby_n_p_56",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 539
+        },
+        {
+          "index": 74,
+          "name": "test10_74",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 52
+        },
+        {
+          "index": 77,
+          "name": "lobby_n_p_77",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 296
+        },
+        {
+          "index": 80,
+          "name": "lobby_n_p_80",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 4,
+              "texture_index": 3,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\test10.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 192
+        }
+      ]
+    },
+    {
+      "texture_index": 14,
+      "texture_name": ".\\lobby\\tex\\AC_en_pipe04.dds",
+      "png": "014-AC_en_pipe04.png",
+      "size": [
+        512,
+        512
+      ],
+      "dds_sha256": "f06a383bdb93bc6483ec109d327f2d06bc2e0dca4de319506652b9d29f7cf13b",
+      "png_sha256": "43d3cd0650afc31f3a74c1c95f6cd7ff7693c092c07cbcbad52721fbb0a9bd6f",
+      "rgba_sha256": "397682fc29c4bd26e9b963a02c4cb6682a32410b07be78dfde454ad3b4c66b13",
+      "dds_offset": 1568396,
+      "dds_size": 174904,
+      "fourcc": "DXT1",
+      "mipmaps": 10,
+      "materials": [
+        {
+          "index": 18,
+          "name": "lobby_02_18",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 15,
+              "texture_index": 14,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\AC_en_pipe04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 93
+        },
+        {
+          "index": 59,
+          "name": "lobby_02_59",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 15,
+              "texture_index": 14,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\AC_en_pipe04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 644
+        },
+        {
+          "index": 69,
+          "name": "lobby_02_69",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 15,
+              "texture_index": 14,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\AC_en_pipe04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 555
+        },
+        {
+          "index": 73,
+          "name": "AC_en_pipe04_73",
+          "flags": "0x1",
+          "detail_surface": -1,
+          "layers": [
+            {
+              "surface": 15,
+              "texture_index": 14,
+              "alpha": 0,
+              "argb": "0xffffffff",
+              "flags": "0x0",
+              "tile_frames": 0,
+              "texture_name": ".\\lobby\\tex\\AC_en_pipe04.dds"
+            }
+          ],
+          "basic_opaque": true,
+          "bsp_groups": 1,
+          "bsp_faces": 184
+        }
+      ]
+    }
+  ]
+}

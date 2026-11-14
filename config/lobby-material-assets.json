@@ -1,0 +1,90 @@
+{
+  "scope": "Two lobby-only UV atlases; source geometry and original resource pack unchanged",
+  "created": "2026-11-14",
+  "source": {
+    "r3m": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.r3m",
+      "size": 20066,
+      "sha256": "351d6312a210dacdef30ec36f2e7c50da1d95a16e9aca8d661a09633a43e6f0f"
+    },
+    "r3t": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.r3t",
+      "size": 3689572,
+      "sha256": "d5f5dcdda28104fe71a52cdf3253d7c0d54b317e62915888a60b7181178cbfa2"
+    },
+    "bsp": {
+      "path": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.bsp",
+      "size": 1980345,
+      "sha256": "2ae548405f52d2bf697bbd2483faaf76a45584f04a013f84f59df581546cc5a8"
+    }
+  },
+  "excluded": "tani_fire01_37: non-opaque path",
+  "assets": [
+    {
+      "file": "work/client-art/lobby-materials/titanium-wall-albedo-v1.png",
+      "runtime": "System/modern-lobby/titanium-wall-albedo-v1.png",
+      "sha256": "aa0f866418bc00de6ef8ede67218406b334d336553e957bf05df14ef2177200f",
+      "bytes": 2794173,
+      "data_kind": "albedo",
+      "color_space": "sRGB"
+    },
+    {
+      "file": "work/client-art/lobby-materials/titanium-wall-height-v1.png",
+      "runtime": "System/modern-lobby/titanium-wall-height-v1.png",
+      "sha256": "f3c9c882e6c5007a8538d5d26b9b8ca8aaa05cfc779d4decc62c39a1bc9dd740",
+      "bytes": 1269193,
+      "data_kind": "height",
+      "color_space": "linear height in R channel"
+    },
+    {
+      "file": "work/client-art/lobby-materials/titanium-panel-albedo-v1.png",
+      "runtime": "System/modern-lobby/titanium-panel-albedo-v1.png",
+      "sha256": "e34a555b4d1d38b160dc9ec3db870e7650d90871c482c098556f6ef00fe69019",
+      "bytes": 2056464,
+      "data_kind": "albedo",
+      "color_space": "sRGB"
+    },
+    {
+      "file": "work/client-art/lobby-materials/titanium-panel-height-v1.png",
+      "runtime": "System/modern-lobby/titanium-panel-height-v1.png",
+      "sha256": "daa276a3458116469ffc4b905d73a22a84bb196fa35262f63965c0b905da1a92",
+      "bytes": 1509878,
+      "data_kind": "height",
+      "color_space": "linear height in R channel"
+    }
+  ],
+  "limitations": "Generated base color and separate height; roughness/metalness remain shader estimates, no displacement geometry or full PBR set",
+  "surface_sets": [
+    {
+      "source_texture": ".\\lobby\\tex\\T_Wa04.dds",
+      "materials": [
+        "wall_2",
+        "wall_6",
+        "wall_10",
+        "wall_30",
+        "T_Wa04_44",
+        "wall_54",
+        "T_Wa04_72",
+        "wall_86",
+        "T_Wa04_93"
+      ],
+      "files": [
+        "titanium-wall-albedo-v1.png",
+        "titanium-wall-height-v1.png"
+      ]
+    },
+    {
+      "source_texture": ".\\lobby\\tex\\AC_en_pipe04.dds",
+      "materials": [
+        "lobby_02_18",
+        "lobby_02_59",
+        "lobby_02_69",
+        "AC_en_pipe04_73"
+      ],
+      "files": [
+        "titanium-panel-albedo-v1.png",
+        "titanium-panel-height-v1.png"
+      ]
+    }
+  ]
+}

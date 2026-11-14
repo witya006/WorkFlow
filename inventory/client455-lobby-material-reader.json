@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "scope": "R3M reader only; no PNG extraction or game run",
+  "source": "E:\\RFOnlineTrash\\Source\\WorkFlow\\work\\client455-preview\\runtime\\Map\\lobby\\lobby.r3m",
+  "bytes": 20066,
+  "sha256": "351d6312a210dacdef30ec36f2e7c50da1d95a16e9aca8d661a09633a43e6f0f",
+  "materials": 100,
+  "checks": 13,
+  "cases": [
+    {
+      "name": "real_pinned_100_materials_and_3_mappings",
+      "passed": true
+    },
+    {
+      "name": "valid_0_layers",
+      "passed": true
+    },
+    {
+      "name": "valid_1_layers",
+      "passed": true
+    },
+    {
+      "name": "valid_7_layers",
+      "passed": true
+    },
+    {
+      "name": "empty_header",
+      "passed": true,
+      "rejection": "Short R3M header"
+    },
+    {
+      "name": "short_header",
+      "passed": true,
+      "rejection": "Short R3M header"
+    },
+    {
+      "name": "wrong_version",
+      "passed": true,
+      "rejection": "Unsupported R3M version/count"
+    },
+    {
+      "name": "count_zero",
+      "passed": true,
+      "rejection": "Unsupported R3M version/count"
+    },
+    {
+      "name": "count_2049",
+      "passed": true,
+      "rejection": "Unsupported R3M version/count"
+    },
+    {
+      "name": "truncated_material",
+      "passed": true,
+      "rejection": "Truncated material header"
+    },
+    {
+      "name": "truncated_layer",
+      "passed": true,
+      "rejection": "Invalid material layers"
+    },
+    {
+      "name": "eight_layers",
+      "passed": true,
+      "rejection": "Invalid material layers"
+    },
+    {
+      "name": "trailing_byte",
+      "passed": true,
+      "rejection": "R3M trailing bytes"
+    }
+  ]
+}

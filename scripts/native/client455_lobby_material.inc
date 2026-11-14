@@ -9,11 +9,17 @@
 #include <string>
 #include <algorithm>
 namespace {
+struct AuthoredLobbySurface455 {
+    IDirect3DTexture9* texture[2] = {};
+    float texel[2] = {};
+    bool tried = false, ready = false;
+};
 struct LobbyMaterial455 {
     IDirect3DVertexShader9* vs = nullptr;
     IDirect3DPixelShader9* ps = nullptr;
     IDirect3DVertexDeclaration9* decl = nullptr;
     IDirect3DStateBlock9* saved = nullptr;
+    AuthoredLobbySurface455 authored[2];
     RF455LobbyMaterialTelemetry info = {};
     bool failed = false, bound = false;
 } lobbyMaterial455;
@@ -28,6 +34,43 @@ void lobbyMaterialCompilerError455(ID3DXBuffer* errors) {
     size_t count=errors->GetBufferSize();
     if(count>=sizeof(info.compilerError))count=sizeof(info.compilerError)-1;
     std::memcpy(info.compilerError,errors->GetBufferPointer(),count);info.compilerError[count]=0;
+}
+int authoredSurface455(const char* name) {
+    // Verified R3M/R3T mapping to T_Wa04. Excludes tani_fire01_37 even
+    // though it shares the atlas: its alpha/effect contract remains legacy.
+    const char* names[]={"wall_2","wall_6","wall_10","wall_30","T_Wa04_44",
+        "wall_54","T_Wa04_72","wall_86","T_Wa04_93"};
+    for(const char* candidate:names)if(!std::strcmp(name,candidate))return 0;
+    const char* panels[]={"lobby_02_18","lobby_02_59","lobby_02_69","AC_en_pipe04_73"};
+    for(const char* candidate:panels)if(!std::strcmp(name,candidate))return 1;
+    return -1;
+}
+bool initAuthoredSurface455(IDirect3DDevice9* d,unsigned index) {
+    auto& s=lobbyMaterial455;auto& surface=s.authored[index];
+    if(surface.tried)return surface.ready;
+    surface.tried=true;std::uint64_t bytes=0;
+    const char* paths[2][2]={
+        {"System/modern-lobby/titanium-wall-albedo-v1.png","System/modern-lobby/titanium-wall-height-v1.png"},
+        {"System/modern-lobby/titanium-panel-albedo-v1.png","System/modern-lobby/titanium-panel-height-v1.png"}};
+    D3DSURFACE_DESC first{};
+    for(unsigned i=0;i<2;++i){
+        HRESULT hr=D3DXCreateTextureFromFileExA(d,paths[index][i],D3DX_DEFAULT_NONPOW2,D3DX_DEFAULT_NONPOW2,
+            D3DX_DEFAULT,0,D3DFMT_A8R8G8B8,D3DPOOL_MANAGED,D3DX_FILTER_LINEAR,D3DX_FILTER_BOX,0,nullptr,nullptr,&surface.texture[i]);
+        D3DSURFACE_DESC desc{};
+        if(SUCCEEDED(hr))hr=surface.texture[i]->GetLevelDesc(0,&desc);
+        if(SUCCEEDED(hr)&&i&&(desc.Width!=first.Width||desc.Height!=first.Height))hr=D3DERR_INVALIDCALL;
+        if(FAILED(hr)){
+            for(auto*& texture:surface.texture)releaseLobbyMaterial455(texture);
+            lobbyMaterialError455(hr,paths[index][i]);return false;
+        }
+        first=desc;
+        for(UINT level=0;level<surface.texture[i]->GetLevelCount();++level){
+            if(SUCCEEDED(surface.texture[i]->GetLevelDesc(level,&desc)))bytes+=std::uint64_t(desc.Width)*desc.Height*4;
+        }
+    }
+    surface.texel[0]=1.f/first.Width;surface.texel[1]=1.f/first.Height;surface.ready=true;
+    s.info.authoredReady=s.authored[0].ready&&s.authored[1].ready;
+    s.info.authoredTextureBytes+=bytes;return true;
 }
 const char* lobbyMaterialShader455=R"HLSL(
 row_major float4x4 world : register(c0);
@@ -46,6 +89,7 @@ sampler2D albedoMap:register(s0);
 sampler2D lightMap:register(s1);
 sampler2D shadowMap:register(s2);
 sampler2D environmentMap:register(s3);
+sampler2D heightMap:register(s4);
 float4 eye:register(c0);
 // x: light source (0 texture,1 vertex,2 lightmap); y: linear output;
 // z: fog mode; w: range fog.
@@ -55,6 +99,7 @@ float4 fogColor:register(c3);
 row_major float4x4 lightMatrix:register(c4);
 float4 shadowSettings:register(c8);
 float4 surface:register(c9); // roughness,metal coverage,microrelief,coat
+float4 authored:register(c10); // enabled,world-space relief depth,1/width,1/height
 float3 decodeRGB(float3 c) { return lerp(c/12.92,pow(max((c+.055)/1.055,0),2.4),step(.04045,c)); }
 float3 encodeRGB(float3 c) { c=max(c,0); return lerp(c*12.92,1.055*pow(c,1.0/2.4)-.055,step(.0031308,c)); }
 float4 PS(Out i):COLOR0 {
@@ -73,19 +118,40 @@ float4 PS(Out i):COLOR0 {
     // A bounded pigment response: bright legacy paint is not an HDR light.
     // Keep the texture's seams/wear, without lifting its pale areas above white.
     float3 titanium=decodeRGB(float3(.44,.49,.54))*(.15+1.15*pow(max(value,.015),1.25));
-    base=lerp(base,titanium,yellow*.98);
+    base=lerp(base,titanium,yellow*.98*(1-authored.x));
     float chroma=max(a.r,max(a.g,a.b))-min(a.r,min(a.g,a.b));
     float neutral=1-smoothstep(.08,.25,chroma);
-    base*=1-.25*neutral*saturate(surface.y*1.4);
+    base*=1-.25*neutral*saturate(surface.y*1.4)*(1-authored.x);
     float blueAccent=saturate((a.b-a.r)*4)*smoothstep(.45,.85,max(a.g,a.b));
     float3 n=i.normal*rsqrt(max(dot(i.normal,i.normal),1e-8));
     // Small inferred surface relief from the existing panel texture. Bounded
     // world-space gradient; this is not claimed to be an authored normal map.
     float height=dot(a.rgb,float3(.2126,.7152,.0722));
+    float dhdx=ddx(height),dhdy=ddy(height);
+    float2 uvdx=ddx(i.uv),uvdy=ddy(i.uv);
+    // Derive authored relief at the pixel footprint, not from a shared 2x2
+    // screen quad difference. The latter produced checkerboard specular edges.
+    // Explicit gradients also keep mip choice identical across offset samples.
+    if(authored.x>.5){
+        height=tex2Dgrad(heightMap,i.uv,uvdx,uvdy).r;
+        float2 delta=max(authored.zw,abs(uvdx)+abs(uvdy));
+        float hu=tex2Dgrad(heightMap,i.uv+float2(delta.x,0),uvdx,uvdy).r-
+                 tex2Dgrad(heightMap,i.uv-float2(delta.x,0),uvdx,uvdy).r;
+        float hv=tex2Dgrad(heightMap,i.uv+float2(0,delta.y),uvdx,uvdy).r-
+                 tex2Dgrad(heightMap,i.uv-float2(0,delta.y),uvdx,uvdy).r;
+        // Generated 8-bit flat plates contain +/-1-level quantization noise.
+        // Measured flat-panel differences are <=2/255: do not turn those into
+        // geometric facets. Subtract the deadband continuously; real seam and
+        // bevel contrasts remain, without a discontinuous normal threshold.
+        float2 difference=float2(hu,hv);
+        difference=sign(difference)*max(abs(difference)-(2.0/255.0),0);
+        float2 gradientUV=difference/(2*delta);
+        dhdx=dot(gradientUV,uvdx);dhdy=dot(gradientUV,uvdy);
+    }
     float3 dx=ddx(i.wp),dy=ddy(i.wp),rx=cross(dy,n),ry=cross(n,dx);
     float determinant=dot(dx,rx);
-    float3 gradient=(rx*ddx(height)+ry*ddy(height))*sign(determinant)/max(abs(determinant),.0001);
-    gradient*=min(surface.z,.14/max(length(gradient),.001));
+    float3 gradient=(rx*dhdx+ry*dhdy)*sign(determinant)/max(abs(determinant),.0001);
+    gradient*=min(lerp(surface.z,authored.y,authored.x),lerp(.14,.30,authored.x)/max(length(gradient),.001));
     n=normalize(n-gradient);
     float3 v=eye.xyz-i.wp; v*=rsqrt(max(dot(v,v),1e-8));
     float3 l=LobbySun();
@@ -97,8 +163,8 @@ float4 PS(Out i):COLOR0 {
     float3 key=float3(1.65,1.43,1.15);
     float indirect=.68+.32*saturate(dot(baked,float3(.2126,.7152,.0722)));
     float visibility=LobbyShadow(shadowMap,mul(float4(i.wp,1),lightMatrix),shadowSettings,nl);
-    // Worn raised panels are smoother than dark seams. This variation is
-    // inferred from the existing diffuse map, not an authored roughness map.
+    // Roughness remains a bounded material estimate (height on the authored
+    // wall, diffuse on old surfaces), not a separately authored roughness map.
     float roughness=clamp(surface.x+(.5-height)*.22,.26,.80);
     // Filter specular response where texture-derived normals vary within a
     // pixel. This suppresses tiny unstable highlights, not the panel detail.
@@ -206,6 +272,9 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     }
     D3DXMatrixTranspose(&normal,&ni);
     if(!initLobbyMaterial455(d)) {++s.info.skips;return false;}
+    const int surfaceIndex=authoredSurface455(mat->m_name);
+    const bool hasAuthored=surfaceIndex>=0&&initAuthoredSurface455(d,unsigned(surfaceIndex));
+    const auto* authoredSurface=hasAuthored?&s.authored[surfaceIndex]:nullptr;
     hr=s.saved->Capture();if(FAILED(hr)) {lobbyMaterialError455(hr,"capture");return false;}
     DWORD fog=0,mode=0,range=0,start=0,end=0,density=0,color=0;
     d->GetRenderState(D3DRS_FOGENABLE,&fog);d->GetRenderState(D3DRS_FOGTABLEMODE,&mode);
@@ -232,9 +301,16 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     if(std::strstr(mat->m_name,"wall")){finish[0]=.58f;finish[1]=.18f;finish[2]=.025f;finish[3]=.04f;}
     if(std::strstr(mat->m_name,"pipe")){finish[0]=.30f;finish[1]=.82f;finish[2]=.015f;finish[3]=0;}
     if(std::strstr(mat->m_name,"lobby_n_p")){finish[0]=.38f;finish[1]=.62f;finish[2]=.04f;}
+    if(hasAuthored){finish[0]=.42f;finish[1]=.65f;finish[2]=0;finish[3]=.04f;}
+    if(hasAuthored&&surfaceIndex==1){finish[0]=.53f;finish[1]=.48f;}
+    const float authoredValues[4]={hasAuthored?1.f:0.f,.55f,
+        authoredSurface?authoredSurface->texel[0]:0,authoredSurface?authoredSurface->texel[1]:0};
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(4,light,4);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(8,shadowValues,1);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(9,finish,1);
+    if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(10,authoredValues,1);
+    if(SUCCEEDED(hr)&&hasAuthored)hr=d->SetTexture(0,authoredSurface->texture[0]);
+    if(SUCCEEDED(hr))hr=d->SetTexture(4,hasAuthored?authoredSurface->texture[1]:nullptr);
     if(SUCCEEDED(hr))hr=d->SetTexture(2,shadow);
     if(SUCCEEDED(hr))hr=d->SetTexture(3,RF455_LobbyEnvironmentTexture());
     d->SetSamplerState(3,D3DSAMP_MINFILTER,D3DTEXF_LINEAR);d->SetSamplerState(3,D3DSAMP_MAGFILTER,D3DTEXF_LINEAR);
@@ -243,16 +319,33 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     d->SetSamplerState(2,D3DSAMP_MINFILTER,D3DTEXF_POINT);d->SetSamplerState(2,D3DSAMP_MAGFILTER,D3DTEXF_POINT);
     d->SetSamplerState(2,D3DSAMP_MIPFILTER,D3DTEXF_NONE);d->SetSamplerState(2,D3DSAMP_SRGBTEXTURE,FALSE);
     d->SetSamplerState(2,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);d->SetSamplerState(2,D3DSAMP_ADDRESSV,D3DTADDRESS_CLAMP);
+    // Match the original atlas addressing, including mirrored/tiled UVs. Data
+    // height is always linear; state block restores every sampler after draw.
+    for(D3DSAMPLERSTATETYPE type:{D3DSAMP_ADDRESSU,D3DSAMP_ADDRESSV,D3DSAMP_BORDERCOLOR}){
+        DWORD value=0;if(SUCCEEDED(d->GetSamplerState(0,type,&value)))d->SetSamplerState(4,type,value);
+    }
+    // Do not inherit legacy point/mip-disabled settings for authored data.
+    // Gradient-aware sampling still needs a continuous reconstruction filter.
+    for(D3DSAMPLERSTATETYPE type:{D3DSAMP_MINFILTER,D3DSAMP_MAGFILTER,D3DSAMP_MIPFILTER}){
+        d->SetSamplerState(4,type,D3DTEXF_LINEAR);
+        if(hasAuthored)d->SetSamplerState(0,type,D3DTEXF_LINEAR);
+    }
+    d->SetSamplerState(4,D3DSAMP_SRGBTEXTURE,FALSE);
+    d->SetSamplerState(4,D3DSAMP_MAXMIPLEVEL,0);d->SetSamplerState(4,D3DSAMP_MIPMAPLODBIAS,0);
     D3DCAPS9 caps{};if(SUCCEEDED(d->GetDeviceCaps(&caps))&&caps.MaxAnisotropy>1){
         d->SetSamplerState(0,D3DSAMP_MAXANISOTROPY,(std::min)(16u,unsigned(caps.MaxAnisotropy)));
         d->SetSamplerState(0,D3DSAMP_MINFILTER,D3DTEXF_ANISOTROPIC);
+        d->SetSamplerState(4,D3DSAMP_MAXANISOTROPY,(std::min)(16u,unsigned(caps.MaxAnisotropy)));
+        d->SetSamplerState(4,D3DSAMP_MINFILTER,D3DTEXF_ANISOTROPIC);
     }
     if(SUCCEEDED(hr))hr=d->SetSamplerState(0,D3DSAMP_SRGBTEXTURE,FALSE);
     if(SUCCEEDED(hr))hr=d->SetSamplerState(1,D3DSAMP_SRGBTEXTURE,FALSE);
     if(SUCCEEDED(hr))hr=d->SetRenderState(D3DRS_SRGBWRITEENABLE,FALSE);
     if(SUCCEEDED(hr))hr=d->SetRenderState(D3DRS_FOGENABLE,FALSE);
     if(FAILED(hr)) {lobbyMaterialError455(hr,"bind");s.saved->Apply();return false;}
-    s.bound=true;++s.info.binds;return true;
+    s.bound=true;++s.info.binds;
+    if(hasAuthored){++s.info.authoredBinds;++s.info.authoredSetBinds[surfaceIndex];}
+    return true;
 }
 void endLobbyMaterial455() {
     auto& s=lobbyMaterial455;if(!s.bound)return;
@@ -264,9 +357,16 @@ void RF455_ReleaseLobbyMaterial() {
     auto& s=lobbyMaterial455;endLobbyMaterial455();
     releaseLobbyMaterial455(s.saved);releaseLobbyMaterial455(s.decl);
     releaseLobbyMaterial455(s.ps);releaseLobbyMaterial455(s.vs);
+    for(auto& surface:s.authored){
+        for(auto*& texture:surface.texture)releaseLobbyMaterial455(texture);
+        surface={};
+    }
+    s.info.authoredReady=false;s.info.authoredTextureBytes=0;
     s.failed=false;s.info.ready=false;
 }
 RF455LobbyMaterialTelemetry RF455_GetLobbyMaterialTelemetry() {return lobbyMaterial455.info;}
 void RF455_ResetLobbyMaterialTelemetry() {
-    const bool ready=lobbyMaterial455.info.ready;lobbyMaterial455.info={};lobbyMaterial455.info.ready=ready;
+    auto& s=lobbyMaterial455;const bool ready=s.info.ready,authored=s.info.authoredReady;
+    const auto bytes=s.info.authoredTextureBytes;s.info={};s.info.ready=ready;
+    s.info.authoredReady=authored;s.info.authoredTextureBytes=bytes;
 }

@@ -1,0 +1,137 @@
+{
+  "date": "2026-11-14",
+  "scope": "Two authored lobby atlases in full beta client; visual target remains open",
+  "build": {
+    "entry_rva": "0x1b9bc0",
+    "architecture": "x86",
+    "sha256": "c5996b6db101bcbcdce21754a635f1bedfce4d04312ebf625faa700127eee20d",
+    "bytes": 2663936
+  },
+  "resolution": [
+    1920,
+    1080
+  ],
+  "full_client_lobby": true,
+  "slots": {
+    "empty": 2,
+    "cameras": 3,
+    "occupied": 1
+  },
+  "material_mapping": "inventory/client455-lobby-material-inputs.json",
+  "asset_manifest": "config/lobby-material-assets.json",
+  "texture_bytes": 7629708.0,
+  "renderer": {
+    "authored_material_ready": true,
+    "authored_material_binds": 14126,
+    "authored_material_bytes": 33536288,
+    "authored_wall_binds": 10282,
+    "authored_panel_binds": 3844,
+    "post_enabled": true,
+    "post_available": true,
+    "post_frames": 1423,
+    "passes": 11,
+    "format": 113,
+    "msaa": 4,
+    "estimated_post_vram_bytes": 143596800,
+    "post_error": 0,
+    "post_stage": "",
+    "material_binds": 70803,
+    "material_skips": 33947,
+    "material_errors": 0,
+    "cpu_render_submission_ms_mean": 7.2755,
+    "camera_seconds": 3.2,
+    "camera_view": [
+      -0.46279398,
+      -0.0037217741,
+      0.88629144,
+      0,
+      -0.0018710219,
+      0.9999302,
+      0.0033304871,
+      0,
+      -0.88637948,
+      5.1517634E-07,
+      -0.46279311,
+      0,
+      1.1404105,
+      -237.07108,
+      125.46165,
+      1
+    ],
+    "frame_interval_ms_mean": 23.2184,
+    "material_error": 0,
+    "material_stage": "",
+    "sky_ready": true,
+    "sky_draws": 1423,
+    "sky_errors": 0,
+    "sky_error": 0,
+    "sky_stage": "",
+    "sky_volume_bytes": 25157496,
+    "shadow_ready": true,
+    "shadow_resolution": 4096,
+    "shadow_bsp_draws": 89,
+    "shadow_actor_draws": 20,
+    "shadow_errors": 0,
+    "shadow_stage": ""
+  },
+  "steady_menu": {
+    "fps_max": 65.013,
+    "adapter": "NVIDIA GeForce RTX 2080 Ti",
+    "hardware": true,
+    "condition": "Foreground menu; discard first 3 seconds after menu capture",
+    "samples": 9,
+    "fps_min": 64.192,
+    "fps_mean": 64.65677777777778
+  },
+  "resources": {
+    "check": {
+      "completed_phases": 6,
+      "passed": true,
+      "last_phase_passed": true,
+      "initial_enhanced": true
+    },
+    "post_release_wall_binds": 9,
+    "build_sha256": "b84a36a67204e5e0b3e34052c727f4ce5ec5fe72677d777dad419c996f262ddf",
+    "offline_memory": {
+      "working_set_bytes": 226967552,
+      "private_bytes": 225165312,
+      "peak_working_set_bytes": 226971648
+    },
+    "authored_bytes": 33536288,
+    "post_release_panel_binds": 3,
+    "note": "Lifecycle checked on b84a36a6; final c5996b6d changes shader noise deadband only"
+  },
+  "reader": "inventory/client455-lobby-material-reader.json",
+  "evidence": {
+    "slot-2.png": "5581894a245028e17688c1a608422277fdd8428bc2e812830412670f82aa8151",
+    "menu.png": "8a73c4301fce54368be0c2b247a72b1292365d29b54050225c4f41468d4b4a1e",
+    "live-run.json": "83a6023fc04626cddc3f52cde76d7cc3786300087ec657003378da0d32d03eb2",
+    "slot-1.png": "b86670e897ea364c2ea1d24cae52d0106413767ab9844d351c76c19079147c25",
+    "slot-0.png": "e9f81a9aad73f0920db7e313d99c3d1ee7f3d2e6b7c1b17f939c78a31494995d",
+    "flight.png": "0575baf4ed25713c01c1c3117bfb54fb2620a8cde7a06dbc01a90cb1805bff09",
+    "relief-panel-before.png": "85d958af011ccb5f1c10d78a7e11a0dd55598fee6163a1dd5b5fcc470f83bff3",
+    "renderer.json": "e785f883a87be3a6d7799c027f99f0a57979b3864c65bf83260ec0e3f559af29",
+    "resources.json": "75cf47546edd8e6ea716c24664d00692b5a90c9cd3a525a05ea3c784015cc2fb"
+  },
+  "limits": [
+    "Authored color and height only; estimated roughness/metalness, no geometry displacement",
+    "Only 13 named opaque material records; not all station surfaces or other maps",
+    "Generated height quantization suppressed at measured 2/255 difference; not measured physical surface data",
+    "Outer pale panels, fine mechanical highlights, environment angular detail and artistic approval remain open",
+    "HUD FPS in first selection capture includes capture pause; menu performance is separately sampled"
+  ],
+  "workspace_sample": {
+    "before": {
+      "logical_bytes": 13996848409,
+      "files": 55312
+    },
+    "after": {
+      "hash_dirs": 10,
+      "run_files": 2257,
+      "files": 55358,
+      "passed": true,
+      "logical_bytes": 14056743671
+    },
+    "note": "After-package status sampled before final small documentation edits; no new runtime clone"
+  }
+}
