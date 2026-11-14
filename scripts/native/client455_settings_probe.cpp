@@ -75,6 +75,36 @@ static void checkSeeDistance(CGUIOptionWindow& window){
     manager->SetVisualField(originalDistance);g_pUiOptionWindow=previousOptions;
     window.Close();window.Open();
 }
+static void checkVSync(CGUIOptionWindow& window){
+    using Microsoft::WRL::ComPtr;
+    ComPtr<IDirect3DSwapChain9> chain;
+    check(SUCCEEDED(GetD3dDevice()->GetSwapChain(0,&chain)),"VSync current swap chain");
+    D3DPRESENT_PARAMETERS before={},after={};
+    check(SUCCEEDED(chain->GetPresentParameters(&before)),"VSync initial present parameters");
+    check(!window.RequestedVSync455(),"absent VSync key defaults off");
+    window.SetPage455(CGUIOptionWindow::ImagePage);
+    check(window.VSync455(0).GetPosY()>=window.Resolution455(0).GetPosY()+window.Resolution455(0).GetSizeY(),
+          "VSync controls do not overlap resolution controls");
+    click(window,window.VSync455(1));
+    check(window.RequestedVSync455()&&GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")==0,
+          "VSync enabled draft does not persist");
+    click(window,window.CancelButton455());window.Open();
+    check(!window.RequestedVSync455()&&GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")==0,
+          "VSync cancel restores off");
+    click(window,window.VSync455(1));check(window.Apply455(),"apply VSync on");
+    check(GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")==1,"VSync on persisted");
+    window.Close();window.Open();check(window.RequestedVSync455(),"VSync on survives reopen");
+    {CGUIOptionWindow reloaded;reloaded.Init();check(reloaded.RequestedVSync455(),"new settings owner reads persisted VSync on");}
+    click(window,window.VSync455(0));click(window,window.CancelButton455());window.Open();
+    check(window.RequestedVSync455()&&GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")==1,
+          "VSync cancel after apply restores on");
+    click(window,window.VSync455(0));check(window.Apply455(),"apply VSync off");
+    check(GetPrivateProfileIntA("RenderState","VSync",1,".\\R3Engine.ini")==0,"VSync off persisted");
+    {CGUIOptionWindow reloaded;reloaded.Init();check(!reloaded.RequestedVSync455(),"new settings owner reads persisted VSync off");}
+    check(SUCCEEDED(chain->GetPresentParameters(&after))&&after.PresentationInterval==before.PresentationInterval&&
+          after.BackBufferWidth==before.BackBufferWidth&&after.BackBufferHeight==before.BackBufferHeight,
+          "VSync apply preserves live presentation until restart");
+}
 static void capture(CGUIOptionWindow& window,const char* file){
     auto* device=GetD3dDevice();check(SUCCEEDED(device->Clear(0,nullptr,D3DCLEAR_TARGET,0xff101720,1,0)),"clear");
     check(SUCCEEDED(device->BeginScene()),"begin scene");check(window.Draw()!=FALSE,"draw settings");
@@ -113,10 +143,13 @@ static int run(){
     }
     auto* screen=CGUIScreen::GetSingletonPtr();check(screen!=nullptr,"screen");g_pUiScreen=screen;
     g_pUiInputMgr=&(g_MainApp.*member(InputTag{}));screen->SetHWND(hwnd);screen->SetSize(1920,1080);
+    // This executable runs in its own staged fixture, never the installed game.
+    check(WritePrivateProfileStringA("RenderState","VSync",nullptr,".\\R3Engine.ini")!=FALSE,"clear fixture VSync key");
     {
         CGUIOptionWindow window;window.Init();window.SetPos(600,220);screen->Add(&window);window.Open();
         check(window.GetSizeX()==720&&window.GetSizeY()==560,"settings layout");
         checkSeeDistance(window);
+        checkVSync(window);
         for(unsigned page=0;page<CGUIOptionWindow::PageCount;++page){
             click(window,window.Tab455(page));
             check(window.SelectedPage455()==page,"tab click");
@@ -163,6 +196,6 @@ static int run(){
     }
     gSpriteMgr.UnloadSpriteAll();RF455_ReleaseTextResources();D3D_R3DeleteDevice();device.Reset();DestroyWindow(hwnd);ReleaseR3Engine();
     FILE* result=std::fopen("result.json","wb");check(result!=nullptr,"result");
-    std::fprintf(result,"{\"status\":\"PASS\",\"tabs\":5,\"resolution\":[1920,1080],\"native_widgets\":true,\"inactive_pages_detached\":true,\"cancel\":true,\"apply_persist_reopen\":true,\"see_distance_levels1to4\":true,\"manager_boundary_clamp\":true,\"auto_distance_finite_clamp\":true,\"stage_messages\":8,\"live_backend\":false}\n");std::fclose(result);return 0;
+    std::fprintf(result,"{\"status\":\"PASS\",\"tabs\":5,\"resolution\":[1920,1080],\"native_widgets\":true,\"inactive_pages_detached\":true,\"cancel\":true,\"apply_persist_reopen\":true,\"vsync_default_off\":true,\"vsync_draft_cancel_apply_reload\":true,\"vsync_restart_only\":true,\"see_distance_levels1to4\":true,\"manager_boundary_clamp\":true,\"auto_distance_finite_clamp\":true,\"stage_messages\":8,\"live_backend\":false}\n");std::fclose(result);return 0;
 }
 int main(){try{return run();}catch(const std::exception& error){std::fprintf(stderr,"Settings: %s\n",error.what());return 1;}}

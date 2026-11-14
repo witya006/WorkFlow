@@ -5,9 +5,9 @@
   "client_only": true,
   "server_modified": false,
   "build": {
-    "sha256": "b06aceb53ef6c41dfe696c19d7282f790681f732a9b67f7b545668afce2595e6",
+    "sha256": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
     "architecture": "x86",
-    "entry_rva": "0x1b85a0"
+    "entry_rva": "0x1b9040"
   },
   "resolution": [
     1920,
@@ -27,9 +27,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 315,
+      "actor_capture_frames": 1457,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 315
+      "actor_capture_state_checks": 1457
     },
     {
       "slot": 1,
@@ -43,9 +43,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 353,
+      "actor_capture_frames": 1570,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 353
+      "actor_capture_state_checks": 1570
     },
     {
       "slot": 2,
@@ -59,9 +59,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 392,
+      "actor_capture_frames": 1683,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 392
+      "actor_capture_state_checks": 1683
     }
   ],
   "settings_reset": {
@@ -78,59 +78,58 @@
     "hardware": true
   },
   "steady_menu": {
-    "sample_count": 7,
-    "foreground_samples": 7,
-    "fps_mean": 21.38828571428571,
-    "fps_min": 20.943,
-    "fps_max": 21.639,
-    "frame_ms_mean": 46.762928571428574,
+    "sample_count": 15,
+    "foreground_samples": 15,
+    "fps_mean": 64.60633333333334,
+    "fps_min": 64.334,
+    "fps_max": 65.015,
+    "frame_ms_mean": 15.47852,
     "excludes": "First three seconds after menu capture; flight/selection capture stalls"
   },
   "remaining": [
-    "Visual approval and reference-level material/surface detail and lighting",
-    "Low menu FPS remains; HUD on/off and integrated GPU hypotheses excluded, Present/remaining pass timing not localized",
-    "No world-map rollout; no live destructive deletion test"
+    "Visual approval; reference-level surface detail and cinematic lighting remain open",
+    "Other maps are outside this lobby-only package; no live character deletion performed"
   ],
   "evidence": [
     {
       "file": "artifacts/lobby-orbit/menu.png",
-      "sha256": "d638d70bbbecd882ee65fee213f77099944b34d7753ed4b9c67a6411e74d689f",
-      "bytes": 2888803
+      "sha256": "825c71313dea721ae83ac7c8c71d642e34ab01c7434788fb36bad5e226d9a2a3",
+      "bytes": 2700887
     },
     {
       "file": "artifacts/lobby-orbit/current-run.json",
-      "sha256": "5719858e57a8535b45f53346c351951121aa5c762ea9dfe3502c0cfcb0eb22f8",
-      "bytes": 19814
+      "sha256": "d4d6e14ae54b2c6fb9ff8e2f97e5c9955092f71dc07b05e54a6bea8b90e70d56",
+      "bytes": 51919
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-0.png",
-      "sha256": "15888ba3fe5dcd47c9bf6a2395cd104ec815f42444b8d35fdf4adf0a176dfbba",
-      "bytes": 2481901
+      "sha256": "c99da8885492a9830b5369492d8a6d6865b809b87e0275f9dec2f21b07234e64",
+      "bytes": 2456615
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-1.png",
-      "sha256": "69c3b7fad48014867043679939445a962b23ee555294541ee2f3f196beb2058d",
-      "bytes": 2403673
+      "sha256": "572d36d283f09727d2e85c237a87475c8fc724998774e73feeec1dee42e9cd71",
+      "bytes": 2348254
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-2.png",
-      "sha256": "b042918ef459492bc0b9f8fcf6a8de7ab9234b0f0e85f4d6b10b139337ed97bd",
-      "bytes": 2444171
+      "sha256": "c00e1010eb9a433f41dd5d058669fb2625b03d226bf81e46760445095db870f7",
+      "bytes": 2396877
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-0.json",
-      "sha256": "e24ae56bb063788f4ac9603d06745a178face95ef3a1ba3d668f1d8392cd79ad",
-      "bytes": 302
+      "sha256": "91c6139a84e4e89f33ee10c0fe693dc0947c821d35d2e49ded540d7fa6ecaf31",
+      "bytes": 304
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-1.json",
-      "sha256": "eadb7fc59bc37b4eb0ffb96120890a867de4c0c12949f79bfb78d4ca8486d84c",
-      "bytes": 303
+      "sha256": "883bbef498dce82846d6f7b8dffbd085f785773f9ab9d98c879176a1bbc8769e",
+      "bytes": 305
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-2.json",
-      "sha256": "0f69e7a0bf2bbe0d2c119fb1f1da959019631bd641082f9fe16e244419ab9d4e",
-      "bytes": 303
+      "sha256": "397a90aeba3a5b8aff5ea072a3835bc7d79c5bed565e9fd17452d4bb23f561fd",
+      "bytes": 305
     },
     {
       "file": "artifacts/lobby-orbit/settings-reset.json",
@@ -166,6 +165,129 @@
       "file": "artifacts/lobby-orbit/camera-order-before.png",
       "sha256": "29eaa4c47ec24cbbe8936d476fd7a7162ac3913dd43289fb2d7b2fe677ae639e",
       "bytes": 1890194
+    },
+    {
+      "file": "artifacts/lobby-orbit/material-before.png",
+      "sha256": "d638d70bbbecd882ee65fee213f77099944b34d7753ed4b9c67a6411e74d689f",
+      "bytes": 2888803
+    },
+    {
+      "file": "artifacts/lobby-orbit/material-before-run.json",
+      "sha256": "5719858e57a8535b45f53346c351951121aa5c762ea9dfe3502c0cfcb0eb22f8",
+      "bytes": 19814
+    },
+    {
+      "file": "artifacts/lobby-orbit/material-menu.png",
+      "sha256": "825c71313dea721ae83ac7c8c71d642e34ab01c7434788fb36bad5e226d9a2a3",
+      "bytes": 2700887
+    },
+    {
+      "file": "artifacts/lobby-orbit/material-renderer.json",
+      "sha256": "a6526a67e6de30ccfd23b9001bdbad88d596afbf5732500668d28165fbe22f77",
+      "bytes": 766
+    },
+    {
+      "file": "artifacts/lobby-orbit/detailed-before.json",
+      "sha256": "6e9cad1c4ac7846ef33fc368296e0fc9754b5d118f85587f884c0731b4879825",
+      "bytes": 50619
+    },
+    {
+      "file": "artifacts/lobby-orbit/driver-name-run.json",
+      "sha256": "946fb2cd2a4919c27570093f8373aff1352738062f7799f5bd591dcab233e00b",
+      "bytes": 48786
+    },
+    {
+      "file": "artifacts/lobby-orbit/present-before.json",
+      "sha256": "99b2f2f576546728ee2979c825440f5c95f2fd32eb35154892f80207d4ccc86a",
+      "bytes": 38859
+    },
+    {
+      "file": "artifacts/lobby-orbit/present-immediate.json",
+      "sha256": "d4d6e14ae54b2c6fb9ff8e2f97e5c9955092f71dc07b05e54a6bea8b90e70d56",
+      "bytes": 51919
+    },
+    {
+      "file": "artifacts/lobby-orbit/present-vsync.json",
+      "sha256": "23aa9c001337eed9b47916a6e5ac76b309a42146bb88dcc4ddf489307734c76c",
+      "bytes": 33352
+    },
+    {
+      "file": "artifacts/lobby-orbit/vsync-settings.png",
+      "sha256": "f7301862623e23beb689561a7050a7633cc8aadc7759609a279c8f2b95fee84e",
+      "bytes": 21042
+    },
+    {
+      "file": "artifacts/lobby-orbit/gpu-clock-sample.csv",
+      "sha256": "e25bf3bc2401445b59fcaf262979290a44d8dcf33c7c77006485471031116332",
+      "bytes": 3819
+    },
+    {
+      "file": "artifacts/lobby-orbit/gpu-exe-sample.csv",
+      "sha256": "145d9cab514a00ec8b70049a19b9f511ad365f60461f8e377f5b5d9289f2c5af",
+      "bytes": 3808
+    },
+    {
+      "file": "artifacts/lobby-orbit/gpu-immediate-sample.csv",
+      "sha256": "94abd2d838b9c37ba797322ae28cd022151015a7d26e5c9c0b8f06141e99a2ab",
+      "bytes": 3346
     }
-  ]
+  ],
+  "presentation_comparison": [
+    {
+      "receipt": "artifacts/lobby-orbit/present-before.json",
+      "build": "7fa8ca1123d2098f63fd2aa438ad7d48cfbfd2618c94427e82a0b917318cfcdb",
+      "samples": 11,
+      "foreground_samples": 11,
+      "fps_min": 20.977,
+      "fps_max": 21.653,
+      "fps_mean": 21.510181818181817,
+      "frame_ms_mean": 46.49296363636363,
+      "present_cpu_ms": 31.363563636363633,
+      "present_interval": 0
+    },
+    {
+      "receipt": "artifacts/lobby-orbit/present-immediate.json",
+      "build": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
+      "samples": 15,
+      "foreground_samples": 15,
+      "fps_min": 64.334,
+      "fps_max": 65.015,
+      "fps_mean": 64.60633333333334,
+      "frame_ms_mean": 15.47852,
+      "present_cpu_ms": 0.30455333333333334,
+      "present_interval": 2147483648
+    },
+    {
+      "receipt": "artifacts/lobby-orbit/present-vsync.json",
+      "build": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
+      "samples": 7,
+      "foreground_samples": 7,
+      "fps_min": 26.234,
+      "fps_max": 26.792,
+      "fps_mean": 26.536285714285718,
+      "frame_ms_mean": 37.68632857142857,
+      "present_cpu_ms": 30.87682857142857,
+      "present_interval": 1
+    }
+  ],
+  "vsync_settings": {
+    "status": "PASS",
+    "tabs": 5,
+    "resolution": [
+      1920,
+      1080
+    ],
+    "native_widgets": true,
+    "inactive_pages_detached": true,
+    "cancel": true,
+    "apply_persist_reopen": true,
+    "vsync_default_off": true,
+    "vsync_draft_cancel_apply_reload": true,
+    "vsync_restart_only": true,
+    "see_distance_levels1to4": true,
+    "manager_boundary_clamp": true,
+    "auto_distance_finite_clamp": true,
+    "stage_messages": 8,
+    "live_backend": false
+  }
 }

@@ -2,6 +2,13 @@
 
 #include <d3d9.h>
 
+// Explicit per-client choice instead of an unspecified D3D9 default.
+// Windowed presentation still participates in the desktop compositor.
+inline UINT RF455_PresentationInterval() {
+    return GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")
+        ? D3DPRESENT_INTERVAL_ONE : D3DPRESENT_INTERVAL_IMMEDIATE;
+}
+
 inline D3DMULTISAMPLE_TYPE RF455_SelectMultisampling(IDirect3D9& api, UINT adapter,
                                                      D3DDEVTYPE deviceType,
                                                      const D3DPRESENT_PARAMETERS& mode) {

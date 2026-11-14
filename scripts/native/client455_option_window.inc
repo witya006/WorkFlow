@@ -82,6 +82,7 @@ void CGUIOptionWindow::SetSprite(){
     for(auto& button:m_actionsButtons)OP455ModernButton(button,188);
     OP455ModernButton(m_apply,148);OP455ModernButton(m_cancel,148);
     for(auto& button:m_resolution)OP455ModernButton(button,154);
+    for(auto& button:m_vsync)OP455ModernButton(button,154);
     for(auto& button:m_msaa)OP455ModernButton(button,100);
     for(auto& button:m_lighting)OP455ModernButton(button,154);
     for(auto& button:m_lobbyQuality)OP455ModernButton(button,154);
@@ -111,6 +112,10 @@ void CGUIOptionWindow::Init(){
     OP455ButtonText(m_resolution[0],L"1280 x 720","1280 x 720");
     OP455ButtonText(m_resolution[1],L"1920 x 1080","1920 x 1080");
     for(auto& button:m_resolution){button.AddMouseEventHandler(this);m_pages[ImagePage].Add(&button);}
+    OP455Label(m_vsyncTitle,L"\u0412\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u044f","Vertical synchronization");
+    m_pages[ImagePage].Add(&m_vsyncTitle);
+    OP455ButtonText(m_vsync[0],L"\u0412\u044b\u043a\u043b.","Off");OP455ButtonText(m_vsync[1],L"\u0412\u043a\u043b.","On");
+    for(auto& button:m_vsync){button.AddMouseEventHandler(this);m_pages[ImagePage].Add(&button);}
     OP455Label(m_pageNote[ImagePage],L"\u041f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u0441\u044f \u043f\u043e\u0441\u043b\u0435 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043a\u043b\u0438\u0435\u043d\u0442\u0430.","Takes effect after restarting the client.");
     OP455Label(m_msaaTitle,L"\u0421\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435","Anti-aliasing");
     OP455Label(m_lightingTitle,L"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0435\u0439","Character lighting");
@@ -153,6 +158,7 @@ void CGUIOptionWindow::Init(){
     Restore455(m_applied);
     m_requestedMsaa=GetPrivateProfileIntA("RenderState","MSAA",4,".\\R3Engine.ini");
     m_requestedMsaa=m_requestedMsaa>=4?4:m_requestedMsaa>=2?2:0;
+    m_requestedVsync=GetPrivateProfileIntA("RenderState","VSync",0,".\\R3Engine.ini")!=0;
     m_requestedWidth=GetPrivateProfileIntA("RenderState","ScreenXSize",1920,".\\R3Engine.ini");
     m_requestedHeight=GetPrivateProfileIntA("RenderState","ScreenYSize",1080,".\\R3Engine.ini");
     if(m_requestedWidth!=1280||m_requestedHeight!=720){m_requestedWidth=1920;m_requestedHeight=1080;}
@@ -176,6 +182,7 @@ void CGUIOptionWindow::Layout455(){
     m_soundLabels[BGM].SetPos(x+40,y+222);m_sound[BGM].SetPos(x+338,y+222);
     m_resolutionTitle.SetPos(x+40,y+160);
     for(unsigned i=0;i<2;++i)m_resolution[i].SetPos(x+338+164*i,y+152);
+    m_vsyncTitle.SetPos(x+40,y+222);for(unsigned i=0;i<2;++i)m_vsync[i].SetPos(x+338+164*i,y+214);
     m_lobbyQualityTitle.SetPos(x+40,y+160);for(unsigned i=0;i<2;++i)m_lobbyQuality[i].SetPos(x+338+164*i,y+152);
     m_lightingTitle.SetPos(x+40,y+205);for(unsigned i=0;i<2;++i)m_lighting[i].SetPos(x+338+164*i,y+197);
     m_msaaTitle.SetPos(x+40,y+250);for(unsigned i=0;i<3;++i)m_msaa[i].SetPos(x+338+109*i,y+242);
@@ -196,6 +203,7 @@ CGUIOptionWindow::SettingsSnapshot CGUIOptionWindow::Capture455(){
     value.camera=m_camera;value.msaa=m_requestedMsaa;value.width=m_requestedWidth;value.height=m_requestedHeight;value.enhanced=m_enhanced;
     value.lobbyPost=m_lobbyPost;
     value.lobbyDiagnostics=m_showDiagnostics;
+    value.vsync=m_requestedVsync;
     return value;
 }
 void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
@@ -208,6 +216,7 @@ void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
     m_requestedMsaa=value.msaa;m_requestedWidth=value.width;m_requestedHeight=value.height;m_enhanced=value.enhanced;
     m_lobbyPost=value.lobbyPost;
     m_showDiagnostics=value.lobbyDiagnostics;
+    m_requestedVsync=value.vsync;
 }
 void CGUIOptionWindow::RememberExternal455(){if(m_initialized&&!m_editing)m_applied=Capture455();}
 void CGUIOptionWindow::SetStatus455(const wchar_t* ru,const char* en){OP455Label(m_status,ru,en);}
@@ -227,6 +236,7 @@ bool CGUIOptionWindow::Persist455(const SettingsSnapshot& value){
     const char* engine=".\\R3Engine.ini";const char* game=".\\DataTable\\GameSetting.ini";
     bool ok=true;
     ok=OP455Write(engine,"RenderState","MSAA",value.msaa)&&ok;
+    ok=OP455Write(engine,"RenderState","VSync",value.vsync)&&ok;
     ok=OP455Write(engine,"RenderState","LobbyPost",value.lobbyPost)&&ok;
     ok=OP455Write(engine,"HUD","LobbyDiagnostics",value.lobbyDiagnostics)&&ok;
     ok=OP455Write(engine,"RenderState","ScreenXSize",value.width)&&ok;
@@ -260,10 +270,10 @@ bool CGUIOptionWindow::Apply455(){
         SendMessage(window,WM_OPTION_TOGGLE_AUTO_VF_ADJUST,edited.flags[AutoSeeDist],0);
         SendMessage(window,WM_OPTION_CHANGE_CAMERA_MODE,edited.camera,0);SendMessage(window,WM_OPTION_TOGGLE_HINT,edited.flags[Hint],0);
     }
-    const bool restart=edited.msaa!=m_applied.msaa||edited.width!=m_applied.width||edited.height!=m_applied.height;
+    const bool restart=edited.msaa!=m_applied.msaa||edited.width!=m_applied.width||edited.height!=m_applied.height||edited.vsync!=m_applied.vsync;
     m_applied=edited;
-    SetStatus455(restart?L"\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e. \u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u0438 MSAA: \u043f\u043e\u0441\u043b\u0435 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0443\u0441\u043a\u0430.":L"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u044b.",
-                 restart?"Saved. Resolution and MSAA take effect after restart.":"Settings applied.");
+    SetStatus455(restart?L"\u0421\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u043e. \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0432\u044b\u0432\u043e\u0434\u0430: \u043f\u043e\u0441\u043b\u0435 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0443\u0441\u043a\u0430.":L"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u044b.",
+                 restart?"Saved. Display changes take effect after restart.":"Settings applied.");
     return true;
 }
 void CGUIOptionWindow::Send455(UINT message,WPARAM value){auto* screen=CGUIScreen::GetSingletonPtr();if(screen)PostMessage(screen->GetHWND(),message,value,0);}
@@ -291,6 +301,7 @@ void CGUIOptionWindow::Update(){
     for(unsigned i=0;i<2;++i){if(m_logoutRestricted)m_actionsButtons[i].Disable();else m_actionsButtons[i].Enable();OP455ButtonColor(m_actionsButtons[i]);}
     for(unsigned i=0;i<PageCount;++i)OP455ButtonColor(m_tabs[i],i==m_page);
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_resolution[i],i==(m_requestedWidth==1280?0u:1u));
+    for(unsigned i=0;i<2;++i)OP455ButtonColor(m_vsync[i],bool(i)==m_requestedVsync);
     const unsigned samples[]={0,2,4};for(unsigned i=0;i<3;++i)OP455ButtonColor(m_msaa[i],samples[i]==m_requestedMsaa);
     if(RF455_EnhancedActorLightingAvailable())m_lighting[1].Enable();else m_lighting[1].Disable();
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_lighting[i],bool(i)==m_enhanced);
@@ -305,6 +316,7 @@ void CGUIOptionWindow::MouseEvent(_mouse_event& event){
         if(event.source==&m_apply){Apply455();return;}
         if(event.source==&m_cancel||event.source==&m_close){Close();return;}
         for(unsigned i=0;i<2;++i){
+            if(event.source==&m_vsync[i]){m_requestedVsync=i!=0;Update();return;}
             if(event.source==&m_lobbyQuality[i]){m_lobbyPost=i!=0;Update();return;}
             if(event.source==&m_diagnostics[i]){m_showDiagnostics=i!=0;Update();return;}
             if(event.source==&m_resolution[i]){m_requestedWidth=i?1920:1280;m_requestedHeight=i?1080:720;Update();return;}

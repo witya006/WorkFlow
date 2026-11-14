@@ -2,11 +2,11 @@
   "status": "PASS",
   "source": {
     "file": "scripts/native/client455_settings_probe.cpp",
-    "sha256": "998b3c6d6efe7a849b3d306f3dc47bf663639da79a14536bfb0a55787c33b39b"
+    "sha256": "229effdb66e99db22daab0a5ccb4cd841f68ec4adf66f8fd2c2f91505af8a1a7"
   },
   "executable": {
     "file": "work/client455-port/settings-probe/settings-probe.exe",
-    "sha256": "2caa3831830962e9c900bcde1e755fd700cefba17d7832c06eca676b2c8afc24"
+    "sha256": "7833f835e5e3092368a0d0252cab7b455522b05e3f008d83dccc5ddcb53ac8eb"
   },
   "native": {
     "status": "PASS",
@@ -19,6 +19,9 @@
     "inactive_pages_detached": true,
     "cancel": true,
     "apply_persist_reopen": true,
+    "vsync_default_off": true,
+    "vsync_draft_cancel_apply_reload": true,
+    "vsync_restart_only": true,
     "see_distance_levels1to4": true,
     "manager_boundary_clamp": true,
     "auto_distance_finite_clamp": true,
@@ -27,7 +30,7 @@
   },
   "result": {
     "file": "work/settings455/runtime/result.json",
-    "sha256": "74129f9f9e96997ccdc7eead950842b3d0856f4d8d01f43630f46bba52d73ce8"
+    "sha256": "6a2b8b26e8e0fccb50ba39d04e4762092083008d2cbc84bd68cf14364212fdc2"
   },
   "frames": [
     {
@@ -36,11 +39,11 @@
     },
     {
       "file": "work/settings455/runtime/settings-1.png",
-      "sha256": "4b47dac89d2bf94c6ae5ae31d0d81db668a27d499e75235ba9d34bf17be16844"
+      "sha256": "f7301862623e23beb689561a7050a7633cc8aadc7759609a279c8f2b95fee84e"
     },
     {
       "file": "work/settings455/runtime/settings-2.png",
-      "sha256": "2c94eabbd8d54ae33d280c7a2008ab629d18a02394ff5677a0a7362eb3890ad0"
+      "sha256": "14c0ca8544f2f27727d2a816a7b7f25df7c47a7c35397bfa393b6075401c9de7"
     },
     {
       "file": "work/settings455/runtime/settings-3.png",
@@ -61,11 +64,11 @@
   },
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "20ebf822477a68142e1ec80709f85676bc6bfd9d20ceb914faa67380a5f51a93",
-    "bytes": 2647552,
+    "sha256": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
+    "bytes": 2657280,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1b8340",
+    "entry_rva": "0x1b9040",
     "sections": [
       ".text",
       ".rdata",

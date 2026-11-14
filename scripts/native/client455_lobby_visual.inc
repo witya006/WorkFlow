@@ -83,7 +83,16 @@ void RF455_SaveLobbyVisualMetadata() {
     if(FILE* file=std::fopen("lobby-diagnostics.json","wb")){
         // Driver descriptions normally contain ASCII letters; escape JSON delimiters.
         std::string adapter;for(const char*c=diag.adapter;*c;++c){if(*c=='"'||*c=='\\')adapter+='\\';if(static_cast<unsigned char>(*c)>=32)adapter+=*c;}
-        std::fprintf(file,"{\"adapter\":\"%s\",\"vendor\":%u,\"device\":%u,\"hardware\":%s,\"width\":%u,\"height\":%u,\"fps\":%.3f,\"frame_ms\":%.4f,\"cpu_submit_ms\":%.4f,\"gpu_ms\":[%.4f,%.4f,%.4f,%.4f],\"gpu_samples\":%llu,\"query_errors\":%llu,\"shadow_matrix_changes\":%llu,\"shadow_fit_expansions\":%llu,\"actor_pose_age_frames\":%u,\"actor_pose_age_ms\":%u}\n",adapter.c_str(),diag.vendorId,diag.deviceId,diag.hardware?"true":"false",diag.width,diag.height,diag.fps,diag.frameMs,diag.cpuSubmissionMs,diag.gpuMs[0],diag.gpuMs[1],diag.gpuMs[2],diag.gpuMs[3],diag.samples,diag.queryErrors,shadows.lightMatrixChanges,shadows.fitExpansions,shadows.actorPoseAgeFramesMax,shadows.actorPoseAgeMsMax);std::fclose(file);
+        std::fprintf(file,"{\"adapter\":\"%s\",\"vendor\":%u,\"device\":%u,\"hardware\":%s,\"width\":%u,\"height\":%u,\"fps\":%.3f,\"frame_ms\":%.4f,\"cpu_submit_ms\":%.4f,",
+            adapter.c_str(),diag.vendorId,diag.deviceId,diag.hardware?"true":"false",diag.width,diag.height,diag.fps,diag.frameMs,diag.cpuSubmissionMs);
+        std::fprintf(file,"\"section_names\":[\"frame\",\"sky\",\"shadow\",\"post\",\"land_including_sky\",\"land_alpha\",\"actors_effects\",\"ui\"],\"gpu_ms\":[");
+        for(unsigned i=0;i<8;++i)std::fprintf(file,"%s%.4f",i?",":"",diag.gpuMs[i]);
+        std::fprintf(file,"],\"cpu_ms\":[");for(unsigned i=0;i<8;++i)std::fprintf(file,"%s%.4f",i?",":"",diag.cpuMs[i]);
+        std::fprintf(file,"],\"game_loop_ms\":%.4f,\"present_cpu_ms\":%.4f,\"lobby_update_ms\":%.4f,",diag.outsideMs[0],diag.outsideMs[1],diag.outsideMs[2]);
+        std::fprintf(file,"\"present\":{\"result\":%ld,\"interval\":%u,\"windowed\":%s,\"swap_effect\":%u,\"back_buffers\":%u,\"refresh_hz\":%u},",
+            diag.presentParametersResult,diag.presentInterval,diag.windowed?"true":"false",diag.swapEffect,diag.backBuffers,diag.refreshHz);
+        std::fprintf(file,"\"gpu_samples\":%llu,\"query_errors\":%llu,\"discarded_frames\":%llu,\"shadow_matrix_changes\":%llu,\"shadow_fit_expansions\":%llu,\"actor_pose_age_frames\":%u,\"actor_pose_age_ms\":%u}\n",
+            diag.samples,diag.queryErrors,diag.discardedFrames,shadows.lightMatrixChanges,shadows.fitExpansions,shadows.actorPoseAgeFramesMax,shadows.actorPoseAgeMsMax);std::fclose(file);
     }
     const auto post=RF455_GetLobbyPostTelemetry();const auto material=RF455_GetLobbyMaterialTelemetry();const auto sky=RF455_GetLobbySkyTelemetry();const auto shadow=RF455_GetLobbyShadowTelemetry();
     if(FILE* file=std::fopen("lobby-visual.json","wb")) {

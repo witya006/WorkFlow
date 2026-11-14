@@ -95,6 +95,8 @@ def port_lobby_menu(raw, relative, native):
         # Land unload releases effect resources. Do it before the engine and
         # function-local effect owners are destroyed, while they are still alive.
         raw = replace(raw, b'\tm_cCamera.Destroy();', b'\tm_cLand.Destroy();\n\tm_cCamera.Destroy();')
+        raw=b'#include "client455_render_diagnostics.h"\n'+raw
+        raw=replace(raw,b'g_MainApp.GameMainLoop();',b'{RF455CpuSection loopTiming(0);g_MainApp.GameMainLoop();}')
         return raw, True
     if relative != 'gameprogress/cgp_login.cpp':
         return raw, False
@@ -318,14 +320,23 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
             RF455_GpuSectionEnd(2);
         }
 \t\tR3ClearFrameBuffer();''')
+    body=replace(body,b'\t\t_GetLand()->Render( l_vecCamPos );',
+        b'        {RF455GpuSection section(4);_GetLand()->Render(l_vecCamPos);}')
+    body=replace(body,b'\t\t_GetLand()->RenderAlpha( l_vecCamPos );',
+        b'        {RF455GpuSection section(5);_GetLand()->RenderAlpha(l_vecCamPos);}')
+    body=replace(body,b'\t\t_GetCharIF()->SetState();\n\t\t_GetItemEffectRenderer()->Clear();',
+        b'        RF455_GpuSectionBegin(6);\n\t\t_GetCharIF()->SetState();\n\t\t_GetItemEffectRenderer()->Clear();')
+    body=replace(body,b'\t\tg_AMeshManager.DrawAlpahMesh();\n\t\t_GetCharIF()->UnSetState();',
+        b'\t\tg_AMeshManager.DrawAlpahMesh();\n\t\t_GetCharIF()->UnSetState();\n        RF455_GpuSectionEnd(6);')
     body=replace(body,b'        if (lobbyMenu455.ShowingCredits()) FullScreenEffect();',b'''        if(modernLobby){
             RF455_EndLobbyPost(GetD3dDevice());
             if(!RF455_GetLobbyPostTelemetry().uiSceneReady){RF455_DiagnosticsEndFrame();return S_OK;}
         }
+        RF455_GpuSectionBegin(7);
         if (lobbyMenu455.ShowingCredits()) FullScreenEffect();''')
     body=replace(body,b'\t\t_GetUIScreen()->Draw();',b'        if(!RF455_LobbyReferenceMode())_GetUIScreen()->Draw();\n        else if(RF455_LobbyOptions() && RF455_LobbyOptions()->IsShow()){RF455_LobbyOptions()->Draw();_GetUIScreen()->GetMouse()->Draw();}')
     body=replace(body,b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)',b'if (!RF455_LobbyReferenceMode() && (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD))')
-    body=replace(body,b'\t}\n\t\n\t\n\tm_messages455.Draw();',b'        RF455_DrawLobbyDiagnostics();\n        RF455_DiagnosticsEndFrame();\n\t}\n    else RF455_DiagnosticsEndFrame();\n\t\n\t\n\tm_messages455.Draw();')
+    body=replace(body,b'\t}\n\t\n\t\n\tm_messages455.Draw();',b'        RF455_DrawLobbyDiagnostics();\n        RF455_GpuSectionEnd(7);\n        RF455_DiagnosticsEndFrame();\n\t}\n    else RF455_DiagnosticsEndFrame();\n\t\n\t\n\tm_messages455.Draw();')
     body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();\n    RF455_ObserveLobbySlots();')
     raw=raw[:start]+body+raw[stop:]
     raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'''    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());
@@ -333,4 +344,6 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
         m_AniCamera.SetNowFrame(3.2f + .10f*sinf(R3GetTime()*.13f));
 \tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);''')
     raw+=b'\n'+(native/'client455_lobby_slot_observation.inc').read_bytes()
+    frame=raw.index(b'CGP_LogIn::FrameMove(');at=raw.index(b'{',frame)+1
+    raw=raw[:at]+b'\n    RF455CpuSection updateTiming(2);\n'+raw[at:]
     return raw, True

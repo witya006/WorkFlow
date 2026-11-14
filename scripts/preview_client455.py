@@ -172,6 +172,7 @@ def main():
     parser.add_argument('--flight', action='store_true', help='Verify the flight to character selection')
     parser.add_argument('--all-slots', action='store_true', help='Capture all three real selection cameras; no character mutation')
     parser.add_argument('--measure-seconds',type=int,default=0,help='Keep main menu open for 0..30 seconds before the verified flight; collect GPU/FPS samples')
+    parser.add_argument('--driver-name-check',action='store_true',help='Diagnostic A/B: run the identical binary as RF_Online.exe in the same runtime')
     parser.add_argument('--natural', action='store_true', help='Let the intro finish before checking for the menu')
     parser.add_argument('--credentials-base64', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--current-build', action='store_true', help='Use current own binary with verified Russian resource inputs for manual testing')
@@ -184,6 +185,7 @@ def main():
         parser.error('--flight requires --audio --verify without --natural')
     if args.all_slots and not args.flight:parser.error('--all-slots requires --flight')
     if not 0<=args.measure_seconds<=30 or (args.measure_seconds and not args.flight):parser.error('--measure-seconds requires --flight and 0..30')
+    if args.driver_name_check and not (args.current_build and args.verify and args.measure_seconds):parser.error('--driver-name-check requires current build and measured verification')
     parent, source, active, inputs = stage(args.current_build)
     if args.check_inputs:
         print(json.dumps({'status': 'PASS', 'scope': 'Launch inputs only; no server login or game run',
@@ -196,6 +198,13 @@ def main():
             raise RuntimeError('The preceding test client is still open')
     evidence = populate(run, source, active, inputs, audio=args.audio)
     evidence['orbit_assets'] = stage_orbit_assets(run)
+    if args.driver_name_check:
+        alternate=run/'RF_Online.exe'
+        if alternate.exists():raise ValueError('Driver-name diagnostic target already exists; inspect before replacing it')
+        shutil.copyfile(ROOT/evidence['staged_executable'],alternate)
+        if sha(alternate)!=evidence['sha256']:raise ValueError('Driver-name A/B binary mismatch')
+        evidence['staged_executable']=alternate.relative_to(ROOT).as_posix()
+        evidence['driver_name_check']=True
     if args.enhanced_graphics:
         config_file = run / 'R3Engine.ini'
         lines = config_file.read_text(encoding='ascii').splitlines()
@@ -319,6 +328,8 @@ def main():
         if game and (args.verify or not complete) and game.poll() is None:
             game.terminate()
             game.wait(timeout=10)
+        if args.driver_name_check and alternate.is_file() and sha(alternate)==evidence['sha256']:
+            alternate.unlink()
         if audio_meter and audio_meter.poll() is None:
             audio_meter.terminate()
             audio_meter.wait(timeout=5)

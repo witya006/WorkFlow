@@ -113,8 +113,12 @@ def main():
             raw=raw.replace(anchor,b'\tif(Create(hInstance)!=S_OK) exit(0); // 455:8EDB72..7A;any nonzero result')
         elif filename=='r3d3dapp.cpp':
             from client455_d3d9_edits import replace
+            from prepare_client455_normal import section
 
-            raw = b'#include "client455_multisampling.h"\r\n' + raw
+            raw = b'#include "client455_multisampling.h"\r\n#include "client455_render_diagnostics.h"\r\n' + raw
+            first,last=section(raw,b'HRESULT CD3DApplication::EndLoop()',b'HRESULT CD3DApplication::EndLoop()')
+            body=raw[first:last];at=body.index(b'{')+1
+            raw=raw[:first]+body[:at]+b'\n    RF455CpuSection presentTiming(1);\n'+body[at:]+raw[last:]
             # 455's ordinary window has a caption and minimize button, with a fixed client size.
             raw = replace(raw, b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|WS_THICKFRAME|',
                           b'WS_OVERLAPPED|WS_CAPTION|WS_SYSMENU|')
@@ -124,7 +128,8 @@ def main():
                           b'const HMENU menu = ' + menu + b';\r\n'
                           b'        AdjustWindowRect( &rc, m_dwWindowStyle, menu != NULL );')
             raw = replace(raw, b'    // Create the device\n    hr = m_pD3D->CreateDevice(',
-                          b'''    m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
+                          b'''    m_d3dpp.PresentationInterval = RF455_PresentationInterval();
+    m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
                                                         pDeviceInfo->DeviceType, m_d3dpp);
     // Create the device
     hr = m_pD3D->CreateDevice(''')
@@ -136,6 +141,7 @@ def main():
     }
     if( SUCCEEDED(hr) )''')
             raw = replace(raw, b'    if( FAILED( hr = m_pd3dDevice->Reset( &m_d3dpp ) ) )\n        return hr;', b'''    const auto& adapter = m_Adapters[m_dwAdapter];
+    m_d3dpp.PresentationInterval = RF455_PresentationInterval();
     m_d3dpp.MultiSampleType = RF455_SelectMultisampling(*m_pD3D, m_dwAdapter,
         adapter.devices[adapter.dwCurrentDevice].DeviceType, m_d3dpp);
     hr = RF455_ResetPresentation(*m_pd3dDevice, m_d3dpp);

@@ -70,8 +70,14 @@ float4 PS(Out i):COLOR0 {
     // existing blue glass and emissive machinery keep their identity.
     float yellow=smoothstep(.06,.24,a.r-a.b)*smoothstep(.025,.19,a.g-a.b);
     float value=dot(a.rgb,float3(.2126,.7152,.0722));
-    float3 titanium=decodeRGB(float3(.47,.53,.59))*pow(max(value,.03)/.55,1.65);
+    // A bounded pigment response: bright legacy paint is not an HDR light.
+    // Keep the texture's seams/wear, without lifting its pale areas above white.
+    float3 titanium=decodeRGB(float3(.44,.49,.54))*(.15+1.15*pow(max(value,.015),1.25));
     base=lerp(base,titanium,yellow*.98);
+    float chroma=max(a.r,max(a.g,a.b))-min(a.r,min(a.g,a.b));
+    float neutral=1-smoothstep(.08,.25,chroma);
+    base*=1-.25*neutral*saturate(surface.y*1.4);
+    float blueAccent=saturate((a.b-a.r)*4)*smoothstep(.45,.85,max(a.g,a.b));
     float3 n=i.normal*rsqrt(max(dot(i.normal,i.normal),1e-8));
     // Small inferred surface relief from the existing panel texture. Bounded
     // world-space gradient; this is not claimed to be an authored normal map.
@@ -87,21 +93,32 @@ float4 PS(Out i):COLOR0 {
     float nl=saturate(dot(n,l)), nv=max(saturate(dot(n,v)),.001);
     float nh=saturate(dot(n,h)), vh=saturate(dot(v,h));
     float3 key=float3(1.05,.95,.82);
-    float indirect=.78+.22*saturate(dot(baked,float3(.2126,.7152,.0722)));
+    float indirect=.68+.32*saturate(dot(baked,float3(.2126,.7152,.0722)));
     float visibility=LobbyShadow(shadowMap,mul(float4(i.wp,1),lightMatrix),shadowSettings,nl);
-    float roughness=clamp(surface.x+(height-.5)*.14,.24,.85);
-    float metallic=surface.y;
-    float3 f0=lerp(.04,base,metallic);
+    // Worn raised panels are smoother than dark seams. This variation is
+    // inferred from the existing diffuse map, not an authored roughness map.
+    float roughness=clamp(surface.x+(.5-height)*.22,.26,.80);
+    float metallic=surface.y*(.70+.30*smoothstep(.12,.68,height))*(1-.75*blueAccent);
+    // Saturated markings stay painted; do not turn red/green/cyan panels into
+    // neutral conductors when they share the station's material group.
+    metallic*=1-.80*saturate(1-neutral-yellow);
+    float3 metalTint=lerp(float3(.39,.43,.48),float3(.55,.59,.64),saturate(height));
+    float3 f0=lerp(.04,metalTint,metallic);
     float3 spec=LobbySpecular(n,v,l,f0,roughness);
     float3 reflected=reflect(-v,n);
-    float3 environment=lerp(float3(.13,.14,.17),float3(.40,.55,.76),saturate(reflected.y*.5+.5));
+    float3 environment=lerp(float3(.06,.075,.10),float3(.26,.36,.51),saturate(reflected.y*.5+.5));
     float2 environmentUV=float2(atan2(reflected.z,reflected.x)*.15915494+.67,acos(clamp(reflected.y,-1,1))*.31830989);
-    environment+=decodeRGB(tex2Dlod(environmentMap,float4(environmentUV,0,roughness*7)).rgb)*1.8;
+    environment+=decodeRGB(tex2Dlod(environmentMap,float4(environmentUV,0,roughness*7)).rgb)*1.55;
     float3 fresnel=f0+(1-f0)*pow(1-nv,5);
-    float3 litLinear=base*(1-metallic*.70)*(LobbyFill(n)*indirect+.86*key*nl*visibility);
-    litLinear+=key*spec*visibility+environment*fresnel*(1-roughness)*.72;
+    // Share energy between reflection and diffuse instead of adding a metal
+    // highlight over almost the entire old chalk-like diffuse response.
+    float3 diffuseWeight=(1-fresnel)*(1-metallic);
+    float3 litLinear=base*diffuseWeight*(LobbyFill(n)*indirect+.86*key*nl*visibility);
+    // Rough metal still reflects the environment; roughness broadens the mip
+    // rather than extinguishing reflection. Baked visibility affects indirect
+    // response only, so the real directional shadow remains unchanged.
+    litLinear+=key*spec*visibility+environment*fresnel*(1-.38*roughness)*indirect;
     litLinear+=key*LobbySpecular(n,v,l,.04,.24)*surface.w*visibility;
-    float blueAccent=saturate((a.b-a.r)*4)*smoothstep(.45,.85,max(a.g,a.b));
     litLinear+=float3(.015,.36,.65)*blueAccent;
     float3 rgb=encodeRGB(litLinear);
     float z=lerp(i.distance.x,i.distance.y,settings.w), f=1;
@@ -200,10 +217,12 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     if(SUCCEEDED(hr))hr=d->SetVertexShaderConstantF(12,reinterpret_cast<const float*>(&normal),4);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(0,constants,4);
     float light[16],shadowValues[4];auto* shadow=RF455_LobbyShadowTexture(light,shadowValues);
-    float finish[4]={.48f,.08f,.13f,.12f};
-    if(std::strstr(mat->m_name,"wall")){finish[0]=.66f;finish[1]=.02f;finish[2]=.08f;finish[3]=.04f;}
-    if(std::strstr(mat->m_name,"pipe")){finish[0]=.32f;finish[1]=.72f;finish[2]=.04f;finish[3]=0;}
-    if(std::strstr(mat->m_name,"lobby_n_p")){finish[0]=.42f;finish[1]=.25f;finish[2]=.12f;}
+    // The old albedo contains pixel-scale baked highlights. A restrained
+    // inferred normal avoids amplifying them into glitter on broad metal plates.
+    float finish[4]={.44f,.40f,.045f,.06f};
+    if(std::strstr(mat->m_name,"wall")){finish[0]=.58f;finish[1]=.18f;finish[2]=.025f;finish[3]=.04f;}
+    if(std::strstr(mat->m_name,"pipe")){finish[0]=.30f;finish[1]=.82f;finish[2]=.015f;finish[3]=0;}
+    if(std::strstr(mat->m_name,"lobby_n_p")){finish[0]=.38f;finish[1]=.62f;finish[2]=.04f;}
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(4,light,4);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(8,shadowValues,1);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(9,finish,1);

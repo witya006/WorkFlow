@@ -2,16 +2,18 @@
 #include <cstring>
 #include <algorithm>
 namespace {
-constexpr unsigned RingCount=6,Sections=4;
+constexpr unsigned RingCount=6,Sections=8;
 struct Sample {
     IDirect3DQuery9* stamp[Sections][2]{};
     IDirect3DQuery9 *frequency=nullptr,*disjoint=nullptr;
-    bool pending=false;unsigned started=0,ended=0;
+    bool pending=false,discard=false;unsigned started=0,ended=0;
+    std::uint64_t beginFrame=0;
 };
 struct Diagnostics {
     IDirect3DDevice9* device=nullptr;Sample ring[RingCount];int active=-1;
     bool tried=false;RF455RenderDiagnostics info{};
     LARGE_INTEGER cpuFrequency{},start{},previous{};
+    LARGE_INTEGER sectionStart[Sections]{};
     double intervalSum=0,cpuSum=0;unsigned intervalCount=0,cpuCount=0;
     DWORD published=0;
 } diagnostics;
@@ -26,6 +28,15 @@ bool initialize(IDirect3DDevice9*d){
         }
         s.info.adapterOrdinal=creation.AdapterOrdinal;s.info.hardware=creation.DeviceType==D3DDEVTYPE_HAL;
     }release(api);
+    IDirect3DSwapChain9* chain=nullptr;D3DPRESENT_PARAMETERS pp{};D3DDISPLAYMODE mode{};
+    HRESULT present=d->GetSwapChain(0,&chain);
+    if(SUCCEEDED(present))present=chain->GetPresentParameters(&pp);
+    s.info.presentParametersResult=present;
+    if(SUCCEEDED(present)){
+        s.info.windowed=pp.Windowed!=FALSE;s.info.presentInterval=pp.PresentationInterval;
+        s.info.swapEffect=pp.SwapEffect;s.info.backBuffers=pp.BackBufferCount;
+        if(SUCCEEDED(chain->GetDisplayMode(&mode)))s.info.refreshHz=mode.RefreshRate;
+    }release(chain);
     for(auto&sample:s.ring){
         HRESULT hr=d->CreateQuery(D3DQUERYTYPE_TIMESTAMPFREQ,&sample.frequency);
         if(SUCCEEDED(hr))hr=d->CreateQuery(D3DQUERYTYPE_TIMESTAMPDISJOINT,&sample.disjoint);
@@ -43,7 +54,7 @@ void poll(){
             for(unsigned i=0;i<2&&hr==S_OK;++i)hr=sample.stamp[section][i]->GetData(&ticks[section][i],sizeof(UINT64),0);
         if(hr==S_FALSE)continue;sample.pending=false;
         if(FAILED(hr)){++s.info.queryErrors;s.info.gpuTimingSupported=false;releaseQueries();return;}
-        if(disjoint||!frequency)continue;
+        if(disjoint||!frequency||sample.discard)continue;
         for(unsigned section=0;section<Sections;++section)if((sample.ended&(1u<<section))&&ticks[section][1]>=ticks[section][0]){
             const double ms=double(ticks[section][1]-ticks[section][0])*1000/double(frequency);
             s.info.gpuMs[section]=s.info.samples?s.info.gpuMs[section]*.85+ms*.15:ms;
@@ -70,26 +81,40 @@ void RF455_DiagnosticsBeginFrame(IDirect3DDevice9*d){
     RF455_DiagnosticsEndFrame();poll();
     if(s.info.frames%4)return;
     for(unsigned i=0;i<RingCount;++i)if(!s.ring[i].pending){
-        auto&sample=s.ring[i];sample.started=sample.ended=0;
+        auto&sample=s.ring[i];sample.started=sample.ended=0;sample.discard=false;sample.beginFrame=s.info.frames;
         if(FAILED(sample.disjoint->Issue(D3DISSUE_BEGIN))){++s.info.queryErrors;break;}
         s.active=int(i);RF455_GpuSectionBegin(0);break;
     }
 }
 void RF455_GpuSectionBegin(unsigned section){
-    auto&s=diagnostics;if(s.active<0||section>=Sections)return;auto&q=s.ring[s.active];
+    auto&s=diagnostics;if(section>=Sections)return;
+    QueryPerformanceCounter(&s.sectionStart[section]);
+    if(s.active<0)return;auto&q=s.ring[s.active];
     if(q.started&(1u<<section))return;
     if(SUCCEEDED(q.stamp[section][0]->Issue(D3DISSUE_END)))q.started|=1u<<section;else ++s.info.queryErrors;
 }
 void RF455_GpuSectionEnd(unsigned section){
-    auto&s=diagnostics;if(s.active<0||section>=Sections)return;auto&q=s.ring[s.active];
+    auto&s=diagnostics;if(section>=Sections)return;
+    if(s.sectionStart[section].QuadPart&&s.cpuFrequency.QuadPart){LARGE_INTEGER now;QueryPerformanceCounter(&now);
+        double ms=double(now.QuadPart-s.sectionStart[section].QuadPart)*1000/s.cpuFrequency.QuadPart;
+        s.info.cpuMs[section]=s.info.cpuMs[section]*.85+ms*.15;s.sectionStart[section]={};}
+    if(s.active<0)return;auto&q=s.ring[s.active];
     if(!(q.started&(1u<<section))||(q.ended&(1u<<section)))return;
     if(SUCCEEDED(q.stamp[section][1]->Issue(D3DISSUE_END)))q.ended|=1u<<section;else ++s.info.queryErrors;
 }
 void RF455_DiagnosticsEndFrame(){
     auto&s=diagnostics;if(s.active<0)return;RF455_GpuSectionEnd(0);auto&q=s.ring[s.active];
+    if(q.beginFrame!=s.info.frames){q.discard=true;++s.info.discardedFrames;}
     const HRESULT a=q.frequency->Issue(D3DISSUE_END),b=q.disjoint->Issue(D3DISSUE_END);
     q.pending=SUCCEEDED(a)&&SUCCEEDED(b);if(!q.pending)++s.info.queryErrors;s.active=-1;
 }
 void RF455_DiagnosticsCpuEnd(){auto&s=diagnostics;if(!s.start.QuadPart)return;LARGE_INTEGER now;QueryPerformanceCounter(&now);s.cpuSum+=double(now.QuadPart-s.start.QuadPart)*1000/s.cpuFrequency.QuadPart;++s.cpuCount;}
 RF455RenderDiagnostics RF455_GetRenderDiagnostics(){return diagnostics.info;}
 void RF455_ReleaseRenderDiagnostics(){releaseQueries();diagnostics={};}
+RF455CpuSection::RF455CpuSection(unsigned value):section(value){QueryPerformanceCounter(&started);}
+RF455CpuSection::~RF455CpuSection(){
+    if(section>=3)return;auto&s=diagnostics;LARGE_INTEGER now,frequency;
+    QueryPerformanceCounter(&now);QueryPerformanceFrequency(&frequency);
+    const double ms=double(now.QuadPart-started.QuadPart)*1000/frequency.QuadPart;
+    s.info.outsideMs[section]=s.info.outsideMs[section]*.85+ms*.15;
+}
