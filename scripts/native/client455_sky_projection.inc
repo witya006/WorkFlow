@@ -1,5 +1,11 @@
+#include "client455_lobby_post.h"
+#include "client455_lobby_sky.h"
 void CLevel::DrawSkyBoxRender(){
     auto* state=GetR3State();auto* device=GetD3dDevice();
+    if(RF455_GetLobbyPostTelemetry().active){
+        RF455_SetLobbySkyCamera(&mMatView,&state->mMatProj);
+        if(RF455_RenderLobbySky(device))return;
+    }
     D3DXMatrixPerspectiveFovLH(&state->mMatProj,state->mFov,state->mAsfectRatio,2.0f,state->mFar);
     device->SetTransform(D3DTS_PROJECTION,&state->mMatProj);
     if(mSkyBox->IsLoaded455())mSkyBox->DrawSkyBox(&mMatView);

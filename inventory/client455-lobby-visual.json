@@ -1,0 +1,151 @@
+{
+  "status": "PASS",
+  "date": "2026-11-14",
+  "phase": "M6",
+  "package": "VIS-01 first lobby renderer",
+  "scope": "Own client, real D3D9 lobby, offline launcher fixture; not live login/world acceptance",
+  "architecture": "x86",
+  "image_base": "0x400000",
+  "entry_rva": "0x1ad680",
+  "executable_sha256": "9956aa6336e2097b6a090901c88b1c72fc3021b24cbe1b643d87fdc517ccf5e6",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "camera_seconds": 3.2,
+  "same_camera": true,
+  "camera_max_matrix_difference": 0.0,
+  "camera_tolerance": 0.001,
+  "original_assets": true,
+  "modes": {
+    "classic": {
+      "frame": "artifacts/lobby-visual/classic.png",
+      "frame_sha256": "d2e9af3972d3da8275d68fc424f7b80e4d2eb77132d287ebf69d8aa532329c15",
+      "memory": {
+        "working_set_bytes": 156635136,
+        "private_bytes": 155664384,
+        "peak_working_set_bytes": 165318656
+      },
+      "renderer": {
+        "post_enabled": false,
+        "post_available": false,
+        "post_frames": 0,
+        "passes": 0,
+        "format": 0,
+        "msaa": 0,
+        "estimated_post_vram_bytes": 0,
+        "post_error": 0,
+        "post_stage": "",
+        "material_binds": 0,
+        "material_skips": 0,
+        "material_errors": 0,
+        "cpu_render_submission_ms_mean": 1.092,
+        "camera_seconds": 3.2,
+        "camera_view": [
+          0.74460143,
+          -0.1731101,
+          -0.64458239,
+          0,
+          -0.12590875,
+          0.91204923,
+          -0.39032683,
+          0,
+          0.65547431,
+          0.37178504,
+          0.65739316,
+          0,
+          263.1669,
+          109.51587,
+          554.45807,
+          1
+        ],
+        "frame_interval_ms_mean": 74.4391,
+        "material_error": 0,
+        "material_stage": "",
+        "sky_ready": false,
+        "sky_draws": 0,
+        "sky_errors": 0,
+        "sky_error": 0,
+        "sky_stage": "",
+        "sky_volume_bytes": 0
+      },
+      "exit_code": 0
+    },
+    "enhanced": {
+      "frame": "artifacts/lobby-visual/enhanced.png",
+      "frame_sha256": "a3b93a34aa4095004a748b8eed81c37b1454ad2073301d5c7068f9828b283ebf",
+      "memory": {
+        "working_set_bytes": 155467776,
+        "private_bytes": 156577792,
+        "peak_working_set_bytes": 215023616
+      },
+      "renderer": {
+        "post_enabled": true,
+        "post_available": true,
+        "post_frames": 32,
+        "passes": 11,
+        "format": 113,
+        "msaa": 4,
+        "estimated_post_vram_bytes": 143596800,
+        "post_error": 0,
+        "post_stage": "",
+        "material_binds": 1922,
+        "material_skips": 990,
+        "material_errors": 0,
+        "cpu_render_submission_ms_mean": 46.6625,
+        "camera_seconds": 3.2,
+        "camera_view": [
+          0.74460143,
+          -0.1731101,
+          -0.64458239,
+          0,
+          -0.12590875,
+          0.91204923,
+          -0.39032683,
+          0,
+          0.65547431,
+          0.37178504,
+          0.65739316,
+          0,
+          263.1669,
+          109.51587,
+          554.45807,
+          1
+        ],
+        "frame_interval_ms_mean": 113.3928,
+        "material_error": 0,
+        "material_stage": "",
+        "sky_ready": true,
+        "sky_draws": 32,
+        "sky_errors": 0,
+        "sky_error": 0,
+        "sky_stage": "",
+        "sky_volume_bytes": 1048576
+      },
+      "settings_check": {
+        "completed_phases": 6,
+        "passed": true,
+        "last_phase_passed": true,
+        "initial_enhanced": true
+      },
+      "exit_code": 0
+    }
+  },
+  "limits": [
+    "CPU submission and frame interval are not GPU timestamps or benchmark FPS",
+    "VRAM is a render-target allocation estimate, not total driver residency",
+    "No new shadow maps, depth AO, PBR texture set or rebuilt environment art",
+    "No claim of Expedition 33 parity or the ceiling of Direct3D9",
+    "UI test uses real callbacks and F10 window message; no full live-server regression",
+    "Resource release/recreation checked; full device-loss/reset not covered"
+  ],
+  "workspace_after": {
+    "files": 52882,
+    "logical_bytes": 12834437387,
+    "run_files": 2257,
+    "run_hash_directories": 9,
+    "errors": [],
+    "exceeded": [],
+    "passed": true
+  }
+}

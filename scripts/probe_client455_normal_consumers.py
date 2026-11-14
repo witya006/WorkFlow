@@ -13,7 +13,7 @@ def main():
     for name in ['client455-x87-math','jpeg6b-build']:
         report=json.loads((WS/f'inventory/{name}.json').read_text());libraries.append(WS/report['library'])
     startup=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
-    if startup['build_exit'] or startup['objects']!=67 or sha(WS/startup['library'])!=startup['library_sha256']:raise ValueError('Current455startup engine build required')
+    if startup['build_exit'] or startup['objects']!=startup.get('expected_objects',67) or sha(WS/startup['library'])!=startup['library_sha256']:raise ValueError('Current455startup engine build required')
     libraries+=[WS/startup['library'],WS/'work/client455-port/dependencies/d3dx9_36.lib',engine/'mss32.lib']
     objects=[root/f'build/RFClient455Consumers.dir/Release/{name}.obj' for name in ['unity_managers','animation_control']]
     for path in libraries+objects:
@@ -25,9 +25,9 @@ def main():
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-probe.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} /FI"{WS/"work/client455-port/port_std.hpp"}" "{entry}" '+ ' '.join('"'+str(p)+'"' for p in objects+libraries)+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')
     result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=entry.parent,creationflags=subprocess.CREATE_NO_WINDOW)
     if result.returncode:raise ValueError('Normal consumers probe build failed:'+str(log))
-    run=WS/'work/m9'/sha(exe)[:8];run.mkdir(parents=True,exist_ok=True);index=1
-    while (run/f'normal{index:03d}').exists():index+=1
-    run=run/f'normal{index:03d}';run.mkdir();shutil.copyfile(exe,run/exe.name)
+    # One owned probe runtime. Hashes belong in the receipt, not a new directory per build.
+    run=root/'consumer-probe-runtime';run.mkdir(parents=True,exist_ok=True)
+    shutil.copyfile(exe,run/exe.name)
     fixture=WS/'work/client-reference/character-animation455/sample_001.ani';shutil.copyfile(fixture,run/'sample.ani');output=run/'result.json'
     bbx=Path(json.loads((WS/'config/paths.json').read_text())['client_455'])/'Character/Unit/Bone/GOLIATH.BBX';shutil.copyfile(bbx,run/'real.bbx')
     result=subprocess.run([str(run/exe.name),'.\\sample.ani',str(output)],cwd=run,capture_output=True,timeout=60,creationflags=subprocess.CREATE_NO_WINDOW);(run/'console.txt').write_bytes(result.stdout+result.stderr)

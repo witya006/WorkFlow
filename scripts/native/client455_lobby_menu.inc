@@ -9,6 +9,7 @@
 #include "client455_movie_state.h"
 #include "client455_nation_paths.h"
 #include "client455_protocol_observation.h"
+#include "client455_lobby_visual.inc"
 
 namespace {
 
@@ -56,6 +57,7 @@ public:
         action_ = Action::None;
         started_ = returningToCharacters;
         screen.Add(this);
+        RF455_InstallLobbyVisual(screen);
         RestoreSprite();
     }
 
@@ -63,6 +65,7 @@ public:
     {
         if (IsShow()) Close();
         screen.Remove(this);
+        RF455_RemoveLobbyVisual(screen);
         ClearCredits();
         action_ = Action::None;
     }
@@ -122,6 +125,11 @@ public:
 
     bool KeyDown(WPARAM key)
     {
+        if(key==VK_F10){RF455_OpenLobbySettings();return true;}
+        if(RF455_LobbyOptions() && RF455_LobbyOptions()->IsShow()){
+            if(key==VK_ESCAPE)RF455_LobbyOptions()->Close();
+            return true;
+        }
         if (IsShow() && key == VK_RETURN) {
             action_ = Action::Start;
             return true;

@@ -7,6 +7,8 @@ from client455_normal_link_evidence import validate_normal_link
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('action',choices=['status','verify','build'])
+    parser.add_argument('--rebuild',action='store_true',help='Clean and rebuild client objects; preserve pinned third-party/engine dependencies')
+    parser.add_argument('--engine',action='store_true',help='Regenerate and incrementally build the owned R3Engine before the client')
     args=parser.parse_args()
     if args.action=='status':
         result=inspect();print(json.dumps(result,indent=2));return 0 if result['passed'] else 1
@@ -14,9 +16,12 @@ def main():
     if args.action=='build':
         # Existing dependency validators stop if a changed native dependency needs rebuilding.
         # Do not silently rebuild every historical probe or regenerate all asset inventories.
+        if args.engine:
+            subprocess.run([sys.executable,str(ROOT/'scripts/build_client455_engine_startup.py')],cwd=ROOT,check=True)
         for name in ['prepare_client455_normal.py','build_client455_normal.py',
                      'probe_client455_normal_consumers.py','link_client455_normal.py']:
-            subprocess.run([sys.executable,str(ROOT/'scripts'/name)],cwd=ROOT,check=True)
+            extra=['--clean-first'] if args.rebuild and name=='build_client455_normal.py' else []
+            subprocess.run([sys.executable,str(ROOT/'scripts'/name),*extra],cwd=ROOT,check=True)
     link=json.loads((ROOT/'inventory/client455-normal-link.json').read_text())
     state=validate_normal_link(link)
     if state!='PASS':raise RuntimeError('Current build is incomplete')

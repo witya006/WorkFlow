@@ -26,7 +26,7 @@ RECEIPTS = (
 )
 # Settings are changed by the live menu. Historical receipts stay immutable;
 # each manual run takes a fresh snapshot of these two settings files only.
-MUTABLE_SETTINGS = {Path('R3Engine.ini'), Path('System/GameSetting.ini')}
+MUTABLE_SETTINGS = {Path('R3Engine.ini'), Path('DataTable/GameSetting.ini')}
 
 
 def stage(current_build=False):
@@ -84,6 +84,8 @@ def populate(run, source, active, inputs, audio=False):
         path, target = source / relative, run / relative
         target.parent.mkdir(exist_ok=True, parents=True)
         if target.exists():
+            if relative in MUTABLE_SETTINGS:
+                continue  # Preserve settings already edited in this owned run.
             if not os.path.samefile(path, target) and sha(target) != digest:
                 raise ValueError(f'Changed manual input: {relative}')
             continue

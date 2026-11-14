@@ -1,5 +1,6 @@
 // Source-owned tabbed settings. Legacy public accessors remain for stage adapters.
 #include "client455_enhanced_lighting.h"
+#include "client455_lobby_post.h"
 #include <string>
 #undef min
 #undef max
@@ -83,6 +84,7 @@ void CGUIOptionWindow::SetSprite(){
     for(auto& button:m_resolution)OP455ModernButton(button,154);
     for(auto& button:m_msaa)OP455ModernButton(button,100);
     for(auto& button:m_lighting)OP455ModernButton(button,154);
+    for(auto& button:m_lobbyQuality)OP455ModernButton(button,154);
     if(m_initialized){Restore455(saved);Layout455();}
 }
 void CGUIOptionWindow::Init(){
@@ -112,6 +114,11 @@ void CGUIOptionWindow::Init(){
     OP455Label(m_msaaTitle,L"\u0421\u0433\u043b\u0430\u0436\u0438\u0432\u0430\u043d\u0438\u0435","Anti-aliasing");
     OP455Label(m_lightingTitle,L"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0435\u0439","Character lighting");
     m_pages[GraphicsPage].Add(&m_msaaTitle);m_pages[GraphicsPage].Add(&m_lightingTitle);
+    OP455Label(m_lobbyQualityTitle,L"\u041a\u0430\u0447\u0435\u0441\u0442\u0432\u043e \u0441\u0446\u0435\u043d\u044b \u0432\u0445\u043e\u0434\u0430","Lobby scene quality");
+    m_pages[GraphicsPage].Add(&m_lobbyQualityTitle);
+    OP455ButtonText(m_lobbyQuality[0],L"\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u043e\u0435","Classic");
+    OP455ButtonText(m_lobbyQuality[1],L"\u0423\u043b\u0443\u0447\u0448\u0435\u043d\u043d\u043e\u0435","Enhanced");
+    for(auto& button:m_lobbyQuality){button.AddMouseEventHandler(this);m_pages[GraphicsPage].Add(&button);}
     OP455ButtonText(m_msaa[0],L"\u0412\u044b\u043a\u043b.","Off");OP455ButtonText(m_msaa[1],L"2x MSAA","2x MSAA");OP455ButtonText(m_msaa[2],L"4x MSAA","4x MSAA");
     OP455ButtonText(m_lighting[0],L"\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u043e\u0435","Classic");OP455ButtonText(m_lighting[1],L"\u0423\u043b\u0443\u0447\u0448\u0435\u043d\u043d\u043e\u0435","Enhanced");
     for(auto& button:m_msaa){button.AddMouseEventHandler(this);m_pages[GraphicsPage].Add(&button);}
@@ -144,6 +151,7 @@ void CGUIOptionWindow::Init(){
     m_requestedHeight=GetPrivateProfileIntA("RenderState","ScreenYSize",1080,".\\R3Engine.ini");
     if(m_requestedWidth!=1280||m_requestedHeight!=720){m_requestedWidth=1920;m_requestedHeight=1080;}
     m_enhanced=RF455_EnhancedActorLightingEnabled();
+    m_lobbyPost=RF455_LobbyPostEnabled();
     const UINT camera=GetPrivateProfileIntA("Camera","Mode",1,".\\DataTable\\GameSetting.ini");
     SelectCamera(BYTE(camera<5?camera:1));
     SwitchOn(Hint,GetPrivateProfileIntA("UI","ShowHint",TRUE,".\\DataTable\\GameSetting.ini")!=0);
@@ -161,10 +169,11 @@ void CGUIOptionWindow::Layout455(){
     m_soundLabels[BGM].SetPos(x+40,y+222);m_sound[BGM].SetPos(x+338,y+222);
     m_resolutionTitle.SetPos(x+40,y+160);
     for(unsigned i=0;i<2;++i)m_resolution[i].SetPos(x+338+164*i,y+152);
-    m_lightingTitle.SetPos(x+40,y+160);for(unsigned i=0;i<2;++i)m_lighting[i].SetPos(x+338+164*i,y+152);
-    m_msaaTitle.SetPos(x+40,y+216);for(unsigned i=0;i<3;++i)m_msaa[i].SetPos(x+338+109*i,y+208);
-    for(unsigned i=1;i<=3;++i){m_graphicLabels[i].SetPos(x+40,y+232+48*i);m_graphic[i].SetPos(x+338,y+232+48*i);}
-    m_etc[AutoSeeDist].SetPos(x+40,y+420);m_etcLabels[AutoSeeDist].SetPos(x+62,y+420);
+    m_lobbyQualityTitle.SetPos(x+40,y+160);for(unsigned i=0;i<2;++i)m_lobbyQuality[i].SetPos(x+338+164*i,y+152);
+    m_lightingTitle.SetPos(x+40,y+205);for(unsigned i=0;i<2;++i)m_lighting[i].SetPos(x+338+164*i,y+197);
+    m_msaaTitle.SetPos(x+40,y+250);for(unsigned i=0;i<3;++i)m_msaa[i].SetPos(x+338+109*i,y+242);
+    for(unsigned i=1;i<=3;++i){m_graphicLabels[i].SetPos(x+40,y+258+42*i);m_graphic[i].SetPos(x+338,y+258+42*i);}
+    m_etc[AutoSeeDist].SetPos(x+40,y+424);m_etcLabels[AutoSeeDist].SetPos(x+62,y+424);
     m_cameraTitle.SetPos(x+40,y+160);for(unsigned i=0;i<5;++i)m_cameras[i].SetPos(x+338+48*i,y+160);
     for(unsigned i=0;i<2;++i)m_actionsButtons[i].SetPos(x+40+208*i,y+246);
     m_etc[Hint].SetPos(x+40,y+160);m_etcLabels[Hint].SetPos(x+64,y+160);
@@ -177,6 +186,7 @@ CGUIOptionWindow::SettingsSnapshot CGUIOptionWindow::Capture455(){
     for(unsigned i=0;i<6;++i)value.graphics[i]=LONG(GetGraphicOption(GraphicOption(i)));
     for(unsigned i=0;i<8;++i)value.flags[i]=IsSwitchOn(EtcOption(i));
     value.camera=m_camera;value.msaa=m_requestedMsaa;value.width=m_requestedWidth;value.height=m_requestedHeight;value.enhanced=m_enhanced;
+    value.lobbyPost=m_lobbyPost;
     return value;
 }
 void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
@@ -187,6 +197,7 @@ void CGUIOptionWindow::Restore455(const SettingsSnapshot& value){
     m_camera=value.camera<5?value.camera:1;
     for(unsigned i=0;i<5;++i)m_cameras[i].GetSpriteInfo()->wFrameNo=WORD((i==m_camera?9:4)+i);
     m_requestedMsaa=value.msaa;m_requestedWidth=value.width;m_requestedHeight=value.height;m_enhanced=value.enhanced;
+    m_lobbyPost=value.lobbyPost;
 }
 void CGUIOptionWindow::RememberExternal455(){if(m_initialized&&!m_editing)m_applied=Capture455();}
 void CGUIOptionWindow::SetStatus455(const wchar_t* ru,const char* en){OP455Label(m_status,ru,en);}
@@ -206,6 +217,7 @@ bool CGUIOptionWindow::Persist455(const SettingsSnapshot& value){
     const char* engine=".\\R3Engine.ini";const char* game=".\\DataTable\\GameSetting.ini";
     bool ok=true;
     ok=OP455Write(engine,"RenderState","MSAA",value.msaa)&&ok;
+    ok=OP455Write(engine,"RenderState","LobbyPost",value.lobbyPost)&&ok;
     ok=OP455Write(engine,"RenderState","ScreenXSize",value.width)&&ok;
     ok=OP455Write(engine,"RenderState","ScreenYSize",value.height)&&ok;
     ok=OP455Write(engine,"RenderState","DynamicLight",value.graphics[DynamicLighting])&&ok;
@@ -227,6 +239,7 @@ bool CGUIOptionWindow::Apply455(){
     if(edited.enhanced!=RF455_EnhancedActorLightingEnabled()&&!RF455_SetEnhancedActorLightingEnabled(edited.enhanced)){
         Persist455(m_applied);SetStatus455(L"\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435.","Could not apply lighting.");return false;
     }
+    RF455_SetLobbyPostEnabled(edited.lobbyPost);
     if(window){
         // Existing real stage handlers read volume widgets and apply other values from wParam.
         SendMessage(window,WM_OPTION_ADJUST_EFFECT_SOUND,0,0);SendMessage(window,WM_OPTION_ADJUST_BGM_SOUND,0,0);
@@ -270,6 +283,7 @@ void CGUIOptionWindow::Update(){
     const unsigned samples[]={0,2,4};for(unsigned i=0;i<3;++i)OP455ButtonColor(m_msaa[i],samples[i]==m_requestedMsaa);
     if(RF455_EnhancedActorLightingAvailable())m_lighting[1].Enable();else m_lighting[1].Disable();
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_lighting[i],bool(i)==m_enhanced);
+    for(unsigned i=0;i<2;++i)OP455ButtonColor(m_lobbyQuality[i],bool(i)==m_lobbyPost);
     OP455ButtonColor(m_apply);OP455ButtonColor(m_cancel);
 }
 void CGUIOptionWindow::MouseEvent(_mouse_event& event){
@@ -279,6 +293,7 @@ void CGUIOptionWindow::MouseEvent(_mouse_event& event){
         if(event.source==&m_apply){Apply455();return;}
         if(event.source==&m_cancel||event.source==&m_close){Close();return;}
         for(unsigned i=0;i<2;++i){
+            if(event.source==&m_lobbyQuality[i]){m_lobbyPost=i!=0;Update();return;}
             if(event.source==&m_resolution[i]){m_requestedWidth=i?1920:1280;m_requestedHeight=i?1080:720;Update();return;}
             if(event.source==&m_lighting[i]){if(!i||RF455_EnhancedActorLightingAvailable())m_enhanced=i!=0;Update();return;}
             if(event.source==&m_actionsButtons[i]){if(m_actions.blocked&&m_actions.blocked())return;const auto action=i?m_actions.quit:m_actions.logout;if(action)action();return;}

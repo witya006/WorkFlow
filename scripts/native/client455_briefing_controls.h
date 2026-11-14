@@ -1,4 +1,6 @@
 #pragma once
+#ifndef RF455_BRIEFING_CONTROLS_H
+#define RF455_BRIEFING_CONTROLS_H
 #include "userinterface/guicontroller/guicontainer.h"
 #include "userinterface/guicontroller/guitext.h"
 #include <array>
@@ -73,3 +75,4 @@ public:
     CGUIObject& GetPlus455(unsigned row){return m_rows[row].plus;}
     CGUIText& GetOr455(){return m_or;}
 };
+#endif

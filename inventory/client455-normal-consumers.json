@@ -1,9 +1,9 @@
 {
   "scope": "Actual production split CUnity/CAnimation modules from global.cpp/CResObject.cpp withsource455ANI integration;not normal WinMain/game acceptance",
   "architecture": "x86",
-  "exe": "work/m9/7e1e3ab1/normal001/normal-consumers-probe.exe",
-  "exe_sha256": "7e1e3ab16475580954f6bad0305ae1e4ed8e1aa7aca1d6097660bd5545a1a2e6",
-  "entry_rva": "0x8f4a0",
+  "exe": "work/client455-port/normal/consumer-probe-runtime/normal-consumers-probe.exe",
+  "exe_sha256": "fa2911ae16b04f62d1987c8202ad70037dce07bd68f297342283aa59d8ba5a0b",
+  "entry_rva": "0x94460",
   "native": {
     "status": "PASS",
     "normal_client_modules": 2,
@@ -19,18 +19,18 @@
     "real_bbx_loaded": true,
     "game_dlls_loaded": false
   },
-  "output": "work/m9/7e1e3ab1/normal001/result.json",
+  "output": "work/client455-port/normal/consumer-probe-runtime/result.json",
   "output_sha256": "420b0102f7b3a307d5116a41f72f58b5bd8fc9ed7f561230c5d33dac4c9a524f",
   "fixture": "work/client-reference/character-animation455/sample_001.ani",
   "fixture_sha256": "a694c7df7b89e76d15ff1b76e798676530530845cfda2b634771c21be943526c",
   "libraries": [
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "29be43604840ff44cc9f8766966572200815abb880fe9e4b3383755bcad32a74"
+      "sha256": "9bd26350fb06f32f751eaa55e8b42b393a7eb1c8cd7b8e9825ec5c22c57a035e"
     },
     {
       "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "10de6e9a5a9760fe707ba7413f3260f067cf1bb54a5ba78d3deb37aaafc6f975"
+      "sha256": "81b4b31640927dd816a4a26d242038280e517a3a36bf4ebe9c1b280d767117b2"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
@@ -42,7 +42,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "c38d91641bdc0135f44c7e363b0361b82ef23a3052ffbe313bfadd8a5629ba73"
+      "sha256": "b6b46f6cc40139899f5c9972d5d5e51223ee4e24d81e82533d1e0f96f332b025"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -56,17 +56,17 @@
   "objects": [
     {
       "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/unity_managers.obj",
-      "sha256": "a159b004ba5fdd3c8ee4f95dfedd81db9fe922369db6166c4fa0984831d1132e"
+      "sha256": "9f3d5e7ba1b55fc52e9dae1f926663fd28f6f6cc0ac6632d6993457e80232e1c"
     },
     {
       "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/animation_control.obj",
-      "sha256": "2c41ac54c6b828a9b85e53e18a8d530529ef572974c4174481c52f231651cd9e"
+      "sha256": "df4ec52435bd8951de2b4cd7647ce941f0b027f34e4e17d71a5353b30c6c403a"
     }
   ],
   "source_sha256": "d77031762fead98d759bfbdd4026436dbc504a58316f19f8d37e5d2dabbd660f",
-  "normal_build_sha256": "2f9eff7fc6d5bfb1e4b6fbc609c257240758ed3c43e1aa10cb395ce18ce794b2",
+  "normal_build_sha256": "688340a107da5dd41cf15cf7d4241c9f6d7c92fa05f5b8c59872259945bae40b",
   "map": "work/client455-port/normal/build/normal-consumers-probe.map",
-  "map_sha256": "f561379bdd05396afd9ea29a2aade13471302046be04f2e57b1deb4bbac5ddce",
+  "map_sha256": "7f473e8c0e6cae238bb3ea892e72017253bc8cc4f73020bdd5ed6f2c2e2f3795",
   "legacy_character_linked": false,
   "input_exe_executed": false,
   "server_modified": false,
@@ -95,7 +95,7 @@
   ],
   "bbx_fixture": {
     "original": "E:\\RFOnlineTrash\\RFOnline\\Character\\Unit\\Bone\\GOLIATH.BBX",
-    "copy": "work/m9/7e1e3ab1/normal001/real.bbx",
+    "copy": "work/client455-port/normal/consumer-probe-runtime/real.bbx",
     "sha256": "5fe52ad27e93cfeabf2f7f55776c324bcfbdfb7febdc5014b51dbbdd39f580ab"
   },
   "contracts_reference_sha256": "f3947604473b4024e2b8a02dad964bd67e4d2ad2c0cdbcbe431bf60795b39a9f"

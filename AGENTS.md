@@ -36,7 +36,8 @@
 
 - Current process: docs/engineering-workflow.md; queue: config/task-board.json.
   Continue existing M6. Do not treat historical checkpoint logs as a task queue.
-  The previous long-running goal is not active; cleanup/planning does not resume it.
+  User resumed development on 14.11.2026: stabilize build, then a high-quality
+  lobby reference scene at 1920x1080 on Direct3D9. Deep optimization follows.
 - Visual target is Clair Obscur: Expedition 33 while preserving RF identity.
   Establish the visual result first; deep optimization follows. Record frame time
   and memory as diagnostics. No UE5 port or wholesale rewrite.
