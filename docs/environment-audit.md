@@ -1,6 +1,10 @@
 # Окружение и сохранённая база
 
 Обновлено 14.11.2026. Это сводка текущей основы, не повторная проверка всех инструментов.
+Последняя сборка4f07a63d (entryRVA0x1b9e60), полный клиент/три камерыFullHD
+и настройки проверены; разработка приостановлена пользователем.
+Новая оценка12областей: inventory/client455-status-20261114.json.
+Исторические строки ниже относятся к предыдущим пакетам, если не указано иное.
 Исторические подробности сохранены в Git и inventory/.
 
 | Компонент | Последнее подтверждение |
@@ -8,9 +12,9 @@
 | VS 2026 Professional | 18.11.3, MSVC 14.51.36231, Win32, SDK 10.0.26100.0; inventory/msvc-verification.json |
 | Аудитный Python | config/paths.json, запуск через scripts/Invoke-Python.ps1 |
 | IDA | Professional 9.2; порядок в ida-mcp.md; заново MCP в этом пакете не проверялся |
-| GoMMO | config/paths.json; справка, серверные инструменты не требуются для клиентского пакета |
+| GoMMO | 14.11: живой stdio MCP, Studio 2.0.1, 663 tools; lobby из текущего runtime открыта, материалы/объекты/снимок получены. Native tool registration в этой сессии отсутствует; scripts/probe_gommo.py работает через MCP bridge. См. research/gommo-client-inspection.md |
 | Исходный 455 | config/client-target.json, SHA b1b5febf0d0394712e2322350e19dafe60742e8642697b93cfb89135bac1fd8b |
-| Собственная сборка | SHA c596e0cdaf7923fccc8d19abfaa23bf448076e7f0ebe041616dd991796eef3a9, x86, entry RVA 0x1b9cf0; резервная живая база 102a2443 сохранена |
+| Собственная сборка | SHA 4f07a63db21c8a2fbbdbc2ad7956134739cb8bd0424fab71e6325cc2cc18f177, x86, entry RVA 0x1b9e60; резервная живая база 102a2443 сохранена |
 | Рендер | D3D9/HAL, фактически RTX 2080 Ti; орбитальная lobby, тени 4096², материалы, FP16/bloom; полный клиент, три камеры (1 занятой слот) 1920×1080/MSAA4; меню 64–65 FPS с VSync off вместо ~21; художественная приёмка открыта |
 | Новые текстуры | Два color/height атласа, 13 точных записей непрозрачных материалов; 7,63 MB PNG / 33,54 MB GPU с mip. Живой c5996b6d и восстановление ресурсов b84a36a6 проверены; inventory/client455-lobby-materials.json |
 

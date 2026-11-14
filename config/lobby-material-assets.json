@@ -1,5 +1,5 @@
 {
-  "scope": "Two lobby-only UV atlases; source geometry and original resource pack unchanged",
+  "scope": "Three lobby-only UV atlases; original geometry and packs unchanged",
   "created": "2026-11-14",
   "source": {
     "r3m": {
@@ -51,6 +51,22 @@
       "bytes": 1509878,
       "data_kind": "height",
       "color_space": "linear height in R channel"
+    },
+    {
+      "file": "work/client-art/lobby-materials/titanium-hull-albedo-v1.png",
+      "runtime": "System/modern-lobby/titanium-hull-albedo-v1.png",
+      "sha256": "c913cc6d809cd354b19e8a1bb6d085b66a0969a1705c54a34d61198b830868b8",
+      "bytes": 2863242,
+      "data_kind": "albedo",
+      "color_space": "sRGB"
+    },
+    {
+      "file": "work/client-art/lobby-materials/titanium-hull-height-v1.png",
+      "runtime": "System/modern-lobby/titanium-hull-height-v1.png",
+      "sha256": "0e13b27742f608214ea4de24e0d32ea32be27d37cb915cf354afc4543ecf1472",
+      "bytes": 1531024,
+      "data_kind": "height",
+      "color_space": "linear height in R channel"
     }
   ],
   "limitations": "Generated base color and separate height; roughness/metalness remain shader estimates, no displacement geometry or full PBR set",
@@ -84,6 +100,21 @@
       "files": [
         "titanium-panel-albedo-v1.png",
         "titanium-panel-height-v1.png"
+      ]
+    },
+    {
+      "source_texture": ".\\lobby\\tex\\2.dds",
+      "materials": [
+        "36_8",
+        "36_23",
+        "36_31",
+        "2_43",
+        "36_87",
+        "2_92"
+      ],
+      "files": [
+        "titanium-hull-albedo-v1.png",
+        "titanium-hull-height-v1.png"
       ]
     }
   ]

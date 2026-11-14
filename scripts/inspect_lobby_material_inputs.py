@@ -129,7 +129,15 @@ def main():
                   decode='Exact top-mip DDS decompression to RGBA PNG. No crop, resize, retouch, gamma conversion or UV change.',
                   limits='BSP face/group counts are usage evidence, not screen coverage. No live material-ID capture; no authored normal/roughness data inferred.',
                   exports=exports)
-    (output/'inputs.json').write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    receipt = output/'inputs.json'
+    if receipt.exists():
+        prior = json.loads(receipt.read_text(encoding='utf-8'))
+        if prior['inputs'] != report['inputs']:
+            raise ValueError('Input set changed; preserve prior evidence before extracting')
+        by_index = {item['texture_index']: item for item in prior['exports']}
+        by_index.update({item['texture_index']: item for item in exports})
+        report['exports'] = [by_index[index] for index in sorted(by_index)]
+    receipt.write_text(json.dumps(report, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
     print(json.dumps(dict(output=str(output), pngs=[e['png'] for e in exports]), ensure_ascii=True))
 
 

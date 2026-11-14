@@ -142,7 +142,7 @@ void CGUIOptionWindow::Init(){
     OP455Label(m_cameraTitle,L"\u0420\u0435\u0436\u0438\u043c \u043a\u0430\u043c\u0435\u0440\u044b","Camera mode");m_pages[GamePage].Add(&m_cameraTitle);
     for(auto& camera:m_cameras){camera.AddMouseEventHandler(this);m_pages[GamePage].Add(&camera);}
     OP455ButtonText(m_actionsButtons[0],L"\u0412\u044b\u0431\u043e\u0440 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0430","Character selection");OP455ButtonText(m_actionsButtons[1],L"\u0412\u044b\u0439\u0442\u0438 \u0438\u0437 \u0438\u0433\u0440\u044b","Exit game");
-    for(unsigned i=0;i<2;++i){m_actionsButtons[i].AddMouseEventHandler(this);m_pages[GamePage].Add(&m_actionsButtons[i]);}
+    for(unsigned i=0;i<2;++i){m_actionsButtons[i].AddMouseEventHandler(this);Add(&m_actionsButtons[i]);}
     OP455Label(m_etcLabels[Hint],L"\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438","Show hints");m_etc[Hint].AddMouseEventHandler(this);
     m_etcLabels[Hint].SetMouseInput455(TRUE);m_etcLabels[Hint].AddMouseEventHandler(this);
     m_pages[HUDPage].Add(&m_etc[Hint]);m_pages[HUDPage].Add(&m_etcLabels[Hint]);
@@ -174,7 +174,9 @@ void CGUIOptionWindow::Init(){
 }
 void CGUIOptionWindow::Layout455(){
     const LONG x=GetPosX(),y=GetPosY();
-    m_modernHeader.SetPos(x,y);m_title.SetPos(x+24,y+17);m_close.SetPos(x+668,y+10);m_closeLabel.SetPos(x+678,y+17);
+    m_modernHeader.SetPos(x,y);m_title.SetPos(x+24,y+17);
+    m_actionsButtons[0].SetPos(x+274,y+10);m_actionsButtons[1].SetPos(x+470,y+10);
+    m_close.SetPos(x+668,y+10);m_closeLabel.SetPos(x+678,y+17);
     for(unsigned i=0;i<PageCount;++i)m_tabs[i].SetPos(x+24+136*i,y+72);
     m_divider.SetPos(x+24,y+116);
     for(auto& page:m_pages)page.SetPos(x+24,y+136);
@@ -189,7 +191,6 @@ void CGUIOptionWindow::Layout455(){
     for(unsigned i=1;i<=3;++i){m_graphicLabels[i].SetPos(x+40,y+258+42*i);m_graphic[i].SetPos(x+338,y+258+42*i);}
     m_etc[AutoSeeDist].SetPos(x+40,y+424);m_etcLabels[AutoSeeDist].SetPos(x+62,y+424);
     m_cameraTitle.SetPos(x+40,y+160);for(unsigned i=0;i<5;++i)m_cameras[i].SetPos(x+338+48*i,y+160);
-    for(unsigned i=0;i<2;++i)m_actionsButtons[i].SetPos(x+40+208*i,y+246);
     m_etc[Hint].SetPos(x+40,y+160);m_etcLabels[Hint].SetPos(x+64,y+160);
     m_diagnosticsTitle.SetPos(x+40,y+222);for(unsigned i=0;i<2;++i)m_diagnostics[i].SetPos(x+338+164*i,y+214);
     for(auto& note:m_pageNote)note.SetPos(x+40,y+460);
@@ -298,7 +299,11 @@ void CGUIOptionWindow::SetTargetingFilter455(int index,WPARAM value){if(unsigned
 void CGUIOptionWindow::SetTargetingFilters455(BYTE mask){for(unsigned i=0;i<5;++i)SetTargetingFilter455(i,(1u<<i)&mask);}
 void CGUIOptionWindow::Update(){
     CGUIWindow::Update();
-    for(unsigned i=0;i<2;++i){if(m_logoutRestricted)m_actionsButtons[i].Disable();else m_actionsButtons[i].Enable();OP455ButtonColor(m_actionsButtons[i]);}
+    for(unsigned i=0;i<2;++i){
+        if(m_logoutRestricted||!(i?m_actions.quit:m_actions.logout))m_actionsButtons[i].Disable();
+        else m_actionsButtons[i].Enable();
+        OP455ButtonColor(m_actionsButtons[i]);
+    }
     for(unsigned i=0;i<PageCount;++i)OP455ButtonColor(m_tabs[i],i==m_page);
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_resolution[i],i==(m_requestedWidth==1280?0u:1u));
     for(unsigned i=0;i<2;++i)OP455ButtonColor(m_vsync[i],bool(i)==m_requestedVsync);
@@ -321,7 +326,11 @@ void CGUIOptionWindow::MouseEvent(_mouse_event& event){
             if(event.source==&m_diagnostics[i]){m_showDiagnostics=i!=0;Update();return;}
             if(event.source==&m_resolution[i]){m_requestedWidth=i?1920:1280;m_requestedHeight=i?1080:720;Update();return;}
             if(event.source==&m_lighting[i]){if(!i||RF455_EnhancedActorLightingAvailable())m_enhanced=i!=0;Update();return;}
-            if(event.source==&m_actionsButtons[i]){if(m_actions.blocked&&m_actions.blocked())return;const auto action=i?m_actions.quit:m_actions.logout;if(action)action();return;}
+            if(event.source==&m_actionsButtons[i]){
+                const auto action=i?m_actions.quit:m_actions.logout;
+                if(m_logoutRestricted||!action||(m_actions.blocked&&m_actions.blocked()))return;
+                action();return;
+            }
         }
         for(unsigned i=0;i<3;++i)if(event.source==&m_msaa[i]){const unsigned samples[]={0,2,4};m_requestedMsaa=samples[i];Update();return;}
     }

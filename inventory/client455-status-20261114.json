@@ -1,0 +1,215 @@
+{
+  "assessment_date": "2026-11-14",
+  "current_build": "4f07a63db21c8a2fbbdbc2ad7956134739cb8bd0424fab71e6325cc2cc18f177",
+  "phase": "M6",
+  "goal_state": "paused_by_user",
+  "fully_accepted_domains": 0,
+  "total_domains": 12,
+  "method": "Planning judgement from current source, latest per-scenario evidence and open acceptance requirements. Not measured coverage; no exhaustive denominator. Confirmed behavior column is estimated functional scope supported by checks, not pass rate or fidelity of completed functions. Evidence spans stated historical builds; no full current regression.",
+  "confidence": "moderately low",
+  "functional_scope": "455 game behavior, excludes deliberate modern visual differences",
+  "weight_origin": "Preserved functional weights from inventory/client455-progress-assessment.json (2026-11-11); old assessment retained as historical",
+  "rounded_implementation_range": [
+    40,
+    60
+  ],
+  "rounded_behavior_evidence_range": [
+    25,
+    40
+  ],
+  "raw_weighted_implementation_range": [
+    38.65,
+    58
+  ],
+  "raw_weighted_behavior_range": [
+    24.55,
+    40.6
+  ],
+  "domains": [
+    {
+      "id": "startup",
+      "title": "Запуск и конфигурация",
+      "weight": 3,
+      "implementation_estimate": [
+        75,
+        90
+      ],
+      "behavior_evidence_estimate": [
+        55,
+        75
+      ],
+      "accepted": false
+    },
+    {
+      "id": "data",
+      "title": "Файлы и данные",
+      "weight": 7,
+      "implementation_estimate": [
+        60,
+        80
+      ],
+      "behavior_evidence_estimate": [
+        45,
+        65
+      ],
+      "accepted": false
+    },
+    {
+      "id": "world",
+      "title": "Рендер и мир",
+      "weight": 12,
+      "implementation_estimate": [
+        45,
+        65
+      ],
+      "behavior_evidence_estimate": [
+        30,
+        45
+      ],
+      "accepted": false
+    },
+    {
+      "id": "character",
+      "title": "Персонажи и анимация",
+      "weight": 10,
+      "implementation_estimate": [
+        40,
+        60
+      ],
+      "behavior_evidence_estimate": [
+        25,
+        40
+      ],
+      "accepted": false
+    },
+    {
+      "id": "ui",
+      "title": "Ввод и интерфейс",
+      "weight": 10,
+      "implementation_estimate": [
+        35,
+        50
+      ],
+      "behavior_evidence_estimate": [
+        20,
+        35
+      ],
+      "accepted": false
+    },
+    {
+      "id": "audio",
+      "title": "Звук",
+      "weight": 2,
+      "implementation_estimate": [
+        35,
+        55
+      ],
+      "behavior_evidence_estimate": [
+        15,
+        30
+      ],
+      "accepted": false
+    },
+    {
+      "id": "network",
+      "title": "Клиентская сеть",
+      "weight": 12,
+      "implementation_estimate": [
+        35,
+        55
+      ],
+      "behavior_evidence_estimate": [
+        20,
+        35
+      ],
+      "accepted": false
+    },
+    {
+      "id": "login",
+      "title": "Вход и выбор персонажа",
+      "weight": 10,
+      "implementation_estimate": [
+        65,
+        85
+      ],
+      "behavior_evidence_estimate": [
+        50,
+        70
+      ],
+      "accepted": false
+    },
+    {
+      "id": "gameplay",
+      "title": "Игровые действия",
+      "weight": 15,
+      "implementation_estimate": [
+        20,
+        40
+      ],
+      "behavior_evidence_estimate": [
+        10,
+        25
+      ],
+      "accepted": false
+    },
+    {
+      "id": "items",
+      "title": "Предметы, NPC и квесты",
+      "weight": 10,
+      "implementation_estimate": [
+        30,
+        50
+      ],
+      "behavior_evidence_estimate": [
+        15,
+        30
+      ],
+      "accepted": false
+    },
+    {
+      "id": "social",
+      "title": "Социальные функции",
+      "weight": 4,
+      "implementation_estimate": [
+        10,
+        30
+      ],
+      "behavior_evidence_estimate": [
+        5,
+        15
+      ],
+      "accepted": false
+    },
+    {
+      "id": "lifecycle",
+      "title": "Жизненный цикл",
+      "weight": 5,
+      "implementation_estimate": [
+        30,
+        50
+      ],
+      "behavior_evidence_estimate": [
+        15,
+        35
+      ],
+      "accepted": false
+    }
+  ],
+  "sources": [
+    "docs/client-acceptance.md",
+    "docs/roadmap.md",
+    "docs/project-memory.md",
+    "inventory/client455-settings.json",
+    "research/client455-lobby-hull.md",
+    "research/client455-avatar-movement.md",
+    "research/client455-monster-target.md",
+    "research/client455-downloaded-items.md",
+    "research/client455-base-portal.md",
+    "research/client455-skill-force-window.md",
+    "research/client455-char-info.md",
+    "research/client455-chat.md",
+    "research/client455-selection.md"
+  ],
+  "usage_limits": "No account billing/quota attribution available. Goal token count is not weekly subscription usage.",
+  "function_index": "2026-11-11 historical report:37871 IDA functions,2921 pinned code,1146 complete asm/CFG. implementation_count and ordinary_runtime_equivalence_count are null; not a readiness percentage."
+}

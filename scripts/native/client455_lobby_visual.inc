@@ -98,8 +98,8 @@ void RF455_SaveLobbyVisualMetadata() {
     if(FILE* file=std::fopen("lobby-visual.json","wb")) {
         std::fprintf(file,"{\"authored_material_ready\":%s,\"authored_material_binds\":%llu,\"authored_material_bytes\":%llu,",
             material.authoredReady?"true":"false",material.authoredBinds,material.authoredTextureBytes);
-        std::fprintf(file,"\"authored_wall_binds\":%llu,\"authored_panel_binds\":%llu,",
-            material.authoredSetBinds[0],material.authoredSetBinds[1]);
+        std::fprintf(file,"\"authored_wall_binds\":%llu,\"authored_panel_binds\":%llu,\"authored_hull_binds\":%llu,",
+            material.authoredSetBinds[0],material.authoredSetBinds[1],material.authoredSetBinds[2]);
         std::fprintf(file,"\"sky_detail_bytes\":%llu,",sky.detailTextureBytes);
         std::fprintf(file,"\"post_enabled\":%s,\"post_available\":%s,\"post_frames\":%llu,\"passes\":%u,\"format\":%u,\"msaa\":%u,\"estimated_post_vram_bytes\":%llu,\"post_error\":%ld,\"post_stage\":\"%s\",\"material_binds\":%llu,\"material_skips\":%llu,\"material_errors\":%llu,\"cpu_render_submission_ms_mean\":%.4f,\"camera_seconds\":%.3f,\"camera_view\":[",
             post.enabled?"true":"false",post.available?"true":"false",post.completedFrames,post.passCount,unsigned(post.colorFormat),post.multisampleCount,
@@ -157,7 +157,7 @@ void RF455_ObserveLobbySettings(){
         const auto material=RF455_GetLobbyMaterialTelemetry();
         ok=!initial||(post.available&&post.error==S_OK&&post.passCount==11&&sky.ready&&sky.detailTextureBytes>0&&sky.errors==0&&
             material.authoredReady&&material.authoredTextureBytes>0&&
-            material.authoredSetBinds[0]>0&&material.authoredSetBinds[1]>0&&material.errors==0);}
+            material.authoredSetBinds[0]>0&&material.authoredSetBinds[1]>0&&material.authoredSetBinds[2]>0&&material.errors==0);}
         break;
     case 5:
         ok=!options.IsShow();break;

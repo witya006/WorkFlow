@@ -38,6 +38,54 @@ static LRESULT CALLBACK probeWindow(HWND hwnd,UINT message,WPARAM value,LPARAM o
 }
 static void check(bool condition,const char* message){if(!condition)throw std::runtime_error(message);}
 static void click(CGUIOptionWindow& window,CGUIObject& object){_mouse_event event={};event.source=&object;event.id=MOUSE_CLICKED;window.MouseEvent(event);}
+static unsigned actionCalls[2]={};
+static bool actionsBlocked=false;
+static void logoutAction(){++actionCalls[0];}
+static void quitAction(){++actionCalls[1];}
+static bool blockActions(){return actionsBlocked;}
+static void actionMouseFrame(CGUIScreen& screen,LONG x,LONG y,DWORD buttons){
+    gMouse.x=x;gMouse.y=y;gMouse.z=0;gMouse.button=buttons;
+    gMouseDev.Update();screen.InputProc();
+}
+static void checkActionButtons(CGUIOptionWindow& window,CGUIScreen& screen){
+    RF455OptionActions actions;actions.logout=logoutAction;actions.quit=quitAction;actions.blocked=blockActions;
+    window.SetActions455(actions);window.Update();
+    auto& logout=window.Action455(0);auto& quit=window.Action455(1);auto& close=window.Close455();
+    check(window.IsAddedObject(&logout)&&window.IsAddedObject(&quit)&&
+          !window.Page455(CGUIOptionWindow::GamePage).IsAddedObject(&logout),"actions belong to settings header");
+    check(logout.GetPosY()==quit.GetPosY()&&quit.GetPosY()==close.GetPosY()&&
+          logout.GetPosX()+logout.GetSizeX()<quit.GetPosX()&&
+          quit.GetPosX()+quit.GetSizeX()<close.GetPosX(),"header actions are adjacent and distinct");
+    for(unsigned page=0;page<CGUIOptionWindow::PageCount;++page){
+        click(window,window.Tab455(page));
+        for(unsigned index=0;index<2;++index){
+            auto& button=window.Action455(index);
+            const LONG x=button.GetPosX()+button.GetSizeX()/2,y=button.GetPosY()+button.GetSizeY()/2;
+            actionMouseFrame(screen,x,y,0);
+            check(window.SelectedPage455()==page&&button.IsShow()&&
+                  CGUIObject::GetMouseDetectedObject()==&button,"header action hit target on every tab");
+        }
+    }
+    for(unsigned index=0;index<2;++index){
+        auto& button=window.Action455(index);
+        const LONG x=button.GetPosX()+button.GetSizeX()/2,y=button.GetPosY()+button.GetSizeY()/2;
+        actionMouseFrame(screen,x,y,0);actionMouseFrame(screen,x,y,_LEFT_BUTTON_DOWN);actionMouseFrame(screen,x,y,0);
+        check(actionCalls[index]==1&&actionCalls[1-index]==(index?1u:0u),"one callback per real mouse click");
+    }
+    actionsBlocked=true;
+    click(window,logout);click(window,quit);
+    check(actionCalls[0]==1&&actionCalls[1]==1,"blocked actions do not dispatch");
+    actionsBlocked=false;window.SetLogoutRestricted455(TRUE);window.Update();
+    check((logout.GetState()&DISABLED)&&(quit.GetState()&DISABLED),"restricted actions disabled");
+    click(window,logout);click(window,quit);
+    check(actionCalls[0]==1&&actionCalls[1]==1,"restricted actions do not dispatch");
+    window.SetLogoutRestricted455(FALSE);window.SetActions455({});window.Update();
+    check((logout.GetState()&DISABLED)&&(quit.GetState()&DISABLED),"missing callbacks disabled");
+    click(window,logout);click(window,quit);
+    check(actionCalls[0]==1&&actionCalls[1]==1,"missing callbacks do not dispatch");
+    window.SetActions455(actions);window.Update();
+    check(!(logout.GetState()&DISABLED)&&!(quit.GetState()&DISABLED),"world actions restored");
+}
 static void checkSeeDistance(CGUIOptionWindow& window){
     auto* manager=g_pCharacterMgr;check(manager!=nullptr,"existing character manager");
     auto* previousOptions=g_pUiOptionWindow;g_pUiOptionWindow=&window;
@@ -150,6 +198,7 @@ static int run(){
         check(window.GetSizeX()==720&&window.GetSizeY()==560,"settings layout");
         checkSeeDistance(window);
         checkVSync(window);
+        checkActionButtons(window,*screen);
         for(unsigned page=0;page<CGUIOptionWindow::PageCount;++page){
             click(window,window.Tab455(page));
             check(window.SelectedPage455()==page,"tab click");
@@ -196,6 +245,6 @@ static int run(){
     }
     gSpriteMgr.UnloadSpriteAll();RF455_ReleaseTextResources();D3D_R3DeleteDevice();device.Reset();DestroyWindow(hwnd);ReleaseR3Engine();
     FILE* result=std::fopen("result.json","wb");check(result!=nullptr,"result");
-    std::fprintf(result,"{\"status\":\"PASS\",\"tabs\":5,\"resolution\":[1920,1080],\"native_widgets\":true,\"inactive_pages_detached\":true,\"cancel\":true,\"apply_persist_reopen\":true,\"vsync_default_off\":true,\"vsync_draft_cancel_apply_reload\":true,\"vsync_restart_only\":true,\"see_distance_levels1to4\":true,\"manager_boundary_clamp\":true,\"auto_distance_finite_clamp\":true,\"stage_messages\":8,\"live_backend\":false}\n");std::fclose(result);return 0;
+    std::fprintf(result,"{\"status\":\"PASS\",\"tabs\":5,\"resolution\":[1920,1080],\"native_widgets\":true,\"action_hit_targets_all_tabs\":true,\"action_blocked_missing_single_dispatch\":true,\"inactive_pages_detached\":true,\"cancel\":true,\"apply_persist_reopen\":true,\"vsync_default_off\":true,\"vsync_draft_cancel_apply_reload\":true,\"vsync_restart_only\":true,\"see_distance_levels1to4\":true,\"manager_boundary_clamp\":true,\"auto_distance_finite_clamp\":true,\"stage_messages\":8,\"live_backend\":false}\n");std::fclose(result);return 0;
 }
 int main(){try{return run();}catch(const std::exception& error){std::fprintf(stderr,"Settings: %s\n",error.what());return 1;}}

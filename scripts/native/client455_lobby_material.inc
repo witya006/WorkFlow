@@ -19,7 +19,7 @@ struct LobbyMaterial455 {
     IDirect3DPixelShader9* ps = nullptr;
     IDirect3DVertexDeclaration9* decl = nullptr;
     IDirect3DStateBlock9* saved = nullptr;
-    AuthoredLobbySurface455 authored[2];
+    AuthoredLobbySurface455 authored[3];
     RF455LobbyMaterialTelemetry info = {};
     bool failed = false, bound = false;
 } lobbyMaterial455;
@@ -43,15 +43,18 @@ int authoredSurface455(const char* name) {
     for(const char* candidate:names)if(!std::strcmp(name,candidate))return 0;
     const char* panels[]={"lobby_02_18","lobby_02_59","lobby_02_69","AC_en_pipe04_73"};
     for(const char* candidate:panels)if(!std::strcmp(name,candidate))return 1;
+    const char* hull[]={"36_8","36_23","36_31","2_43","36_87","2_92"};
+    for(const char* candidate:hull)if(!std::strcmp(name,candidate))return 2;
     return -1;
 }
 bool initAuthoredSurface455(IDirect3DDevice9* d,unsigned index) {
     auto& s=lobbyMaterial455;auto& surface=s.authored[index];
     if(surface.tried)return surface.ready;
     surface.tried=true;std::uint64_t bytes=0;
-    const char* paths[2][2]={
+    const char* paths[3][2]={
         {"System/modern-lobby/titanium-wall-albedo-v1.png","System/modern-lobby/titanium-wall-height-v1.png"},
-        {"System/modern-lobby/titanium-panel-albedo-v1.png","System/modern-lobby/titanium-panel-height-v1.png"}};
+        {"System/modern-lobby/titanium-panel-albedo-v1.png","System/modern-lobby/titanium-panel-height-v1.png"},
+        {"System/modern-lobby/titanium-hull-albedo-v1.png","System/modern-lobby/titanium-hull-height-v1.png"}};
     D3DSURFACE_DESC first{};
     for(unsigned i=0;i<2;++i){
         HRESULT hr=D3DXCreateTextureFromFileExA(d,paths[index][i],D3DX_DEFAULT_NONPOW2,D3DX_DEFAULT_NONPOW2,
@@ -69,7 +72,7 @@ bool initAuthoredSurface455(IDirect3DDevice9* d,unsigned index) {
         }
     }
     surface.texel[0]=1.f/first.Width;surface.texel[1]=1.f/first.Height;surface.ready=true;
-    s.info.authoredReady=s.authored[0].ready&&s.authored[1].ready;
+    s.info.authoredReady=s.authored[0].ready&&s.authored[1].ready&&s.authored[2].ready;
     s.info.authoredTextureBytes+=bytes;return true;
 }
 const char* lobbyMaterialShader455=R"HLSL(
@@ -303,6 +306,9 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     if(std::strstr(mat->m_name,"lobby_n_p")){finish[0]=.38f;finish[1]=.62f;finish[2]=.04f;}
     if(hasAuthored){finish[0]=.42f;finish[1]=.65f;finish[2]=0;finish[3]=.04f;}
     if(hasAuthored&&surfaceIndex==1){finish[0]=.53f;finish[1]=.48f;}
+    // Broad exterior plates have a satin coating: retain panel form without
+    // turning the orbital backdrop into a sharp mirror over every surface.
+    if(hasAuthored&&surfaceIndex==2){finish[0]=.62f;finish[1]=.32f;finish[3]=.025f;}
     const float authoredValues[4]={hasAuthored?1.f:0.f,.55f,
         authoredSurface?authoredSurface->texel[0]:0,authoredSurface?authoredSurface->texel[1]:0};
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(4,light,4);

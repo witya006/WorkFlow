@@ -2,11 +2,11 @@
   "status": "PASS",
   "source": {
     "file": "scripts/native/client455_settings_probe.cpp",
-    "sha256": "229effdb66e99db22daab0a5ccb4cd841f68ec4adf66f8fd2c2f91505af8a1a7"
+    "sha256": "bda4e4b2850d7e087c73e601370546dd47b137b24ade7c8b2b0361023b0869e3"
   },
   "executable": {
     "file": "work/client455-port/settings-probe/settings-probe.exe",
-    "sha256": "7833f835e5e3092368a0d0252cab7b455522b05e3f008d83dccc5ddcb53ac8eb"
+    "sha256": "df547b2ad466459c354c762e0702fdc2326a9fc4b1928e604c96db72216d3873"
   },
   "native": {
     "status": "PASS",
@@ -16,6 +16,8 @@
       1080
     ],
     "native_widgets": true,
+    "action_hit_targets_all_tabs": true,
+    "action_blocked_missing_single_dispatch": true,
     "inactive_pages_detached": true,
     "cancel": true,
     "apply_persist_reopen": true,
@@ -30,28 +32,28 @@
   },
   "result": {
     "file": "work/settings455/runtime/result.json",
-    "sha256": "6a2b8b26e8e0fccb50ba39d04e4762092083008d2cbc84bd68cf14364212fdc2"
+    "sha256": "13df67952704d09138cb100ef8b8d35a29b7312c2c1019e746949b35ea5cd3fa"
   },
   "frames": [
     {
       "file": "work/settings455/runtime/settings-0.png",
-      "sha256": "88e1ec67ca9f689bc7b883cbfd9ac83e2c4b588abab7df35389a492299653932"
+      "sha256": "503c38f72e38570b94281fdae42778e094d0a0061836bf5b2b985654aba69d79"
     },
     {
       "file": "work/settings455/runtime/settings-1.png",
-      "sha256": "f7301862623e23beb689561a7050a7633cc8aadc7759609a279c8f2b95fee84e"
+      "sha256": "0acfe1ebd98cf6b208d2149231ab15cb272e25fd83ec6ed4e71db8d84a184962"
     },
     {
       "file": "work/settings455/runtime/settings-2.png",
-      "sha256": "14c0ca8544f2f27727d2a816a7b7f25df7c47a7c35397bfa393b6075401c9de7"
+      "sha256": "6225e84c16de20132d769a0ba1fcbc838683ea3630b5ca50e96f6a8b6139ae5e"
     },
     {
       "file": "work/settings455/runtime/settings-3.png",
-      "sha256": "9a74d9bf1437628346ecb75cf4229dd8b858d0fa77b1cfe6528215f5edab7a1f"
+      "sha256": "efa2d819a54ec3cd2bbead3dee79ceb70a509be473ccf2f991da90c56faada07"
     },
     {
       "file": "work/settings455/runtime/settings-4.png",
-      "sha256": "f3b6dd6ca2a61317e03b9546178c4aca57f0198a9f642951a2a5befd56d541ea"
+      "sha256": "06d5dfcc73928937091a4cd1ccc7e7f5efb0f0e15959de4ea036b58f43f424a7"
     }
   ],
   "runner": {
@@ -64,11 +66,11 @@
   },
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "2e2a4afb1cd1dedc0c602082a29f2f0847411d8aa902f115ccf3666ab8a87ee9",
-    "bytes": 2657280,
+    "sha256": "4f07a63db21c8a2fbbdbc2ad7956134739cb8bd0424fab71e6325cc2cc18f177",
+    "bytes": 2666496,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1b9040",
+    "entry_rva": "0x1b9e60",
     "sections": [
       ".text",
       ".rdata",
