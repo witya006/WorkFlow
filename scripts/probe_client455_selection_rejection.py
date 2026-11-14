@@ -23,7 +23,7 @@ def main():
     client = Path(json.loads((WS / 'config/paths.json').read_text())['client_455'])
     runs = []
     for nation, folder in [('Russia', 'ru-ru'), ('Korea', 'ko-kr')]:
-        run = root / sha(exe)[:8] / folder
+        run = root / 'runtime' / folder
         run.mkdir(parents=True, exist_ok=True)
         inputs = []
         def record(path):

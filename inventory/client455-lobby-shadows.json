@@ -1,0 +1,233 @@
+{
+  "date": "2026-11-14",
+  "phase": "M6",
+  "package": "VIS-01 lobby shadows, materials and detailed sky",
+  "status": "targeted checks passed; artistic acceptance open",
+  "executable": {
+    "file": "work/client455-port/normal/build/RF_Online.bin",
+    "sha256": "ea6bf62950e2694f2cef550caf3bc7d6e92c0b55a50918ddce2b66ca9bb381c5",
+    "bytes": 2627584,
+    "architecture": "x86",
+    "image_base": "0x400000",
+    "entry_rva": "0x1b47c0",
+    "sections": [
+      ".text",
+      ".rdata",
+      ".data",
+      ".fptable",
+      ".reloc"
+    ]
+  },
+  "full_client": true,
+  "live_server": true,
+  "server_modified": false,
+  "real_characters_deleted": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "slots": [
+    {
+      "file": "artifacts/lobby-shadows/lobby-slot-0.png",
+      "sha256": "ffbf641488360fcba230815c37aeedd973d4e94a31c42681027454a313a06b4e",
+      "observation": {
+        "slot": 0,
+        "occupied": true,
+        "width": 1920,
+        "height": 1080,
+        "shadow_bsp_draws": 89,
+        "shadow_actor_draws": 58,
+        "shadow_errors": 0,
+        "full_client": true
+      }
+    },
+    {
+      "file": "artifacts/lobby-shadows/lobby-slot-1.png",
+      "sha256": "f911d95273af3efa912f4f654a326291548db6ccb75a548bb31d841b8a119867",
+      "observation": {
+        "slot": 1,
+        "occupied": true,
+        "width": 1920,
+        "height": 1080,
+        "shadow_bsp_draws": 89,
+        "shadow_actor_draws": 58,
+        "shadow_errors": 0,
+        "full_client": true
+      }
+    },
+    {
+      "file": "artifacts/lobby-shadows/lobby-slot-2.png",
+      "sha256": "b77ec0e5d46eb83eb745440a39236325b56de2f5578b625182a6ade34e10b36f",
+      "observation": {
+        "slot": 2,
+        "occupied": true,
+        "width": 1920,
+        "height": 1080,
+        "shadow_bsp_draws": 89,
+        "shadow_actor_draws": 58,
+        "shadow_errors": 0,
+        "full_client": true
+      }
+    }
+  ],
+  "renderer": {
+    "post_enabled": true,
+    "post_available": true,
+    "post_frames": 345,
+    "passes": 11,
+    "format": 113,
+    "msaa": 4,
+    "estimated_post_vram_bytes": 143596800,
+    "post_error": 0,
+    "post_stage": "",
+    "material_binds": 9748,
+    "material_skips": 5113,
+    "material_errors": 0,
+    "cpu_render_submission_ms_mean": 12.2786,
+    "camera_seconds": 3.2,
+    "camera_view": [
+      -0.46279398,
+      -0.0037217741,
+      0.88629144,
+      0,
+      -0.0018710219,
+      0.9999302,
+      0.0033304871,
+      0,
+      -0.88637948,
+      5.1517634E-07,
+      -0.46279311,
+      0,
+      1.1404105,
+      -237.07108,
+      125.46165,
+      1
+    ],
+    "frame_interval_ms_mean": 54.6486,
+    "material_error": 0,
+    "material_stage": "",
+    "sky_ready": true,
+    "sky_draws": 345,
+    "sky_errors": 0,
+    "sky_error": 0,
+    "sky_stage": "",
+    "sky_volume_bytes": 1048576,
+    "shadow_ready": true,
+    "shadow_resolution": 4096,
+    "shadow_bsp_draws": 89,
+    "shadow_actor_draws": 58,
+    "shadow_errors": 0,
+    "shadow_stage": ""
+  },
+  "settings": {
+    "completed_phases": 6,
+    "passed": true,
+    "last_phase_passed": true,
+    "initial_enhanced": true
+  },
+  "reference": {
+    "sha256": "ea6bf62950e2694f2cef550caf3bc7d6e92c0b55a50918ddce2b66ca9bb381c5",
+    "entry_rva": "0x1b47c0",
+    "architecture": "x86",
+    "staged_executable": "work/lobby-visual/runtime/RF_Online.bin",
+    "nation": "Taiwan",
+    "input_receipt": "artifacts/baseline-20261114/lobby-probe.json",
+    "input_receipt_sha256": "401f7ed855198f82fd4ab3bbd1cb52cf2ddb99e9e76f3318a58f4f3394000cd7",
+    "asset_source": "work/m9/df2911d8/title-escape-prologue-taiwan001",
+    "staged_input_count": 70,
+    "settings_atlas": {
+      "file": "SpriteImage/zh-tw/system.spr",
+      "sha256": "75d171995f64ed16d5d4715d1b681b54bfdce328409fd91352389526412f8d36"
+    },
+    "asset_staging": {
+      "assets": 0,
+      "linked_bytes": 0,
+      "new_pool_bytes": 0,
+      "adopted_bytes": 0,
+      "private_files": 0
+    },
+    "movies_omitted": true,
+    "mode": "enhanced",
+    "offline": true,
+    "real_authentication": false,
+    "server_modified": false,
+    "launcher_fixture": {
+      "file": "work/lobby-visual/runtime/System/DefaultSet.tmp",
+      "sha256": "f478b1159051f196db58d71e309e92181b92f3949c9200a71a17814e0f1a44fa",
+      "kind": "synthetic offline launcher fixture;not authentication"
+    },
+    "pid": 22452,
+    "frame": "artifacts/lobby-shadows/sky-reference.png",
+    "frame_sha256": "d5c71e596c33eed4292fd4ef773d0daa419a59218661973bca766e14f46f92b9",
+    "resolution": [
+      1920,
+      1080
+    ],
+    "capture_seconds": 7.75,
+    "memory": {
+      "working_set_bytes": 159617024,
+      "private_bytes": 160374784,
+      "peak_working_set_bytes": 241086464
+    },
+    "renderer": {
+      "post_enabled": true,
+      "post_available": true,
+      "post_frames": 2,
+      "passes": 11,
+      "format": 113,
+      "msaa": 4,
+      "estimated_post_vram_bytes": 143596800,
+      "post_error": 0,
+      "post_stage": "",
+      "material_binds": 62,
+      "material_skips": 120,
+      "material_errors": 0,
+      "cpu_render_submission_ms_mean": 1383.0752,
+      "camera_seconds": 3.2,
+      "camera_view": [
+        0.74460143,
+        -0.1731101,
+        -0.64458239,
+        0,
+        -0.12590875,
+        0.91204923,
+        -0.39032683,
+        0,
+        0.65547431,
+        0.37178504,
+        0.65739316,
+        0,
+        263.1669,
+        109.51587,
+        554.45807,
+        1
+      ],
+      "frame_interval_ms_mean": 963.8756,
+      "material_error": 0,
+      "material_stage": "",
+      "sky_ready": true,
+      "sky_draws": 2,
+      "sky_errors": 0,
+      "sky_error": 0,
+      "sky_stage": "",
+      "sky_volume_bytes": 1048576,
+      "shadow_ready": true,
+      "shadow_resolution": 4096,
+      "shadow_bsp_draws": 89,
+      "shadow_actor_draws": 0,
+      "shadow_errors": 0,
+      "shadow_stage": ""
+    },
+    "exit_code": 0
+  },
+  "deletion_probe": "inventory/client455-selection-rejection.json",
+  "deletion_probe_build": "e888fa07b0f1bbf80ac0a33d23160e14042e14e5a6d3db168c494c0b0623c12c",
+  "after_deletion_probe": "Only sky ray sampling changed",
+  "limitations": [
+    "Previous-frame opaque actor shadow geometry; no alpha-cutout or CEntity coverage",
+    "No live deletion of equipped character; original crash has no dump",
+    "No full device-loss/reset or world regression",
+    "Materials use original textures and heuristic profiles; Expedition 33 target remains open",
+    "Timing includes shader startup and captures; not benchmark FPS"
+  ]
+}

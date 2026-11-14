@@ -44,9 +44,11 @@ def main():
     bspInput=base/'source/R3Engine/1stclass/r3bsp.h';bspHeader=root/'include/r3bsp455.h'
     bspRaw=bspInput.read_bytes();bspAnchor=b'\tvoid SaveExtBsp('
     if bspRaw.count(bspAnchor)!=1:raise ValueError('CBsp owned matrix declaration boundary')
-    bspRaw=bspRaw.replace(bspAnchor,(WS/'scripts/native/client455_bsp_fields.inc').read_bytes()+b'\n'+bspAnchor)
-    if bspHeader.exists() and bspHeader.read_bytes()!=bspRaw and sha(bspHeader)!=previous.get('bsp_header_overlay',{}).get('sha256'):raise ValueError('Preserving changed own BSP declaration')
+    bspRaw=bspRaw.replace(bspAnchor,b'\tfriend void RF455_RenderLobbyShadows(CBsp*);\n'+(WS/'scripts/native/client455_bsp_fields.inc').read_bytes()+b'\n'+bspAnchor)
+    bspKey=bspHeader.relative_to(WS).as_posix()
+    if bspHeader.exists() and bspHeader.read_bytes()!=bspRaw and sha(bspHeader) not in {previous.get('bsp_header_overlay',{}).get('sha256'),generated.get(bspKey)}:raise ValueError('Preserving changed own BSP declaration')
     if not bspHeader.exists() or bspHeader.read_bytes()!=bspRaw:bspHeader.write_bytes(bspRaw)
+    generated[bspKey]=sha(bspHeader);generationFile.write_text(json.dumps(generated,indent=2)+'\n')
     # One declaration is forced into every engine/client consumer through the
     # existing shared camera overlay. Add only an own inline texture accessor;
     # CSprite layout and virtual dispatch remain unchanged.
@@ -148,6 +150,7 @@ def main():
             start,end=section(raw,b'void *GetDDSTexFromBuffer(',b'void *GetDDSTexFromBuffer(')
             raw=raw[:start]+(WS/'scripts/native/client455_sprite_texture.inc').read_bytes()+raw[end:]
         elif filename=='bsp.cpp':
+            raw+=b'\n'+(WS/'scripts/native/client455_lobby_shadow_bsp.inc').read_bytes()
             entityOwnerAnchor=b'\t\t\tmEntity[i].RestoreTexMem();'
             if raw.count(entityOwnerAnchor)!=1:raise ValueError('Successful map entity light owner boundary')
             raw=raw.replace(entityOwnerAnchor,(WS/'scripts/native/client455_map_entity_owner.inc').read_bytes()+b'\n'+entityOwnerAnchor)
@@ -252,9 +255,9 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
             raw=raw[:first]+body.replace(anchor,anchor+b'\n    RF455_ReleaseSpecialShaders();\n    RF455_LoadSpecialShaderBinary();')+raw[last:]
             first,last=section(raw,b'HRESULT D3D_R3InvalidateDevice()',b'HRESULT D3D_R3InvalidateDevice()');body=raw[first:last];at=body.index(b'{')+1
             raw=raw[:first]+body[:at]+b'\n    RF455_ReleaseSpecialShaders();'+body[at:]+raw[last:]
-            raw=b'#include "client455_entity_lighting.h"\n#include "client455_lobby_post.h"\n#include "client455_lobby_material.h"\n#include "client455_lobby_sky.h"\n'+raw
+            raw=b'#include "client455_entity_lighting.h"\n#include "client455_lobby_post.h"\n#include "client455_lobby_material.h"\n#include "client455_lobby_sky.h"\n#include "client455_lobby_shadow.h"\n'+raw
             first,last=section(raw,b'HRESULT D3D_R3InvalidateDevice()',b'HRESULT D3D_R3InvalidateDevice()');body=raw[first:last];at=body.index(b'{')+1
-            raw=raw[:first]+body[:at]+b'\n    RF455_ReleaseLobbySky();\n    RF455_ReleaseLobbyMaterial();\n    RF455_ReleaseLobbyPost();'+body[at:]+raw[last:]
+            raw=raw[:first]+body[:at]+b'\n    RF455_ReleaseLobbyShadows();\n    RF455_ReleaseLobbySky();\n    RF455_ReleaseLobbyMaterial();\n    RF455_ReleaseLobbyPost();'+body[at:]+raw[last:]
             raw=raw.replace(b'pd3dDevice->GetDeviceCaps(&caps);',b'pd3dDevice->GetDeviceCaps(&caps);\n    RF455_SetLightingCaps(&caps);')
             raw=b'#include "client455_sky_atmosphere.h"\n'+raw
             first,last=section(raw,b'HRESULT D3D_R3RestoreDevice()',b'HRESULT D3D_R3RestoreDevice()');body=raw[first:last];anchor=b'\tInitFullScreenEffect();'
@@ -351,7 +354,8 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     cmakeText=cmakeText.replace('R3Engine455','R3Engine455Startup')
     post_source=WS/'scripts/native/client455_lobby_post.cpp'
     sky_source=WS/'scripts/native/client455_lobby_sky.cpp'
-    for modern_source in [post_source,sky_source]:
+    shadow_source=WS/'scripts/native/client455_lobby_shadow.cpp'
+    for modern_source in [post_source,sky_source,shadow_source]:
         cmakeText+='\ntarget_sources(R3Engine455Startup PRIVATE "'+modern_source.as_posix()+'")\n'
     #Weather allocates CParticle/CEntity and must see their expanded declarations.
     #Other helper kernels stay free of legacy camera/global declarations.
@@ -369,10 +373,10 @@ void RF455_SetVPIPTex1KeepingShader(void* vb,void* ib,IDirect3DVertexDeclaration
     result=subprocess.run([str(cmake),'--build',str(build),'--config','Release','--target','R3Engine455Startup','--parallel','4'],capture_output=True,timeout=300,creationflags=subprocess.CREATE_NO_WINDOW);log=art/'build.txt';log.write_bytes(result.stdout+result.stderr)
     if result.returncode:raise ValueError('Derived engine build:'+str(log))
     library=build/'Release/R3Engine455Startup.lib';objects=list((build/'R3Engine455Startup.dir/Release').glob('*.obj'))
-    if len(objects)!=69 or sha(oldLibrary)!=oldHash or any(sha(WS/row['file'])!=row['sha256'] for row in sources):raise ValueError('Engine source/object/baseline drift')
+    if len(objects)!=70 or sha(oldLibrary)!=oldHash or any(sha(WS/row['file'])!=row['sha256'] for row in sources):raise ValueError('Engine source/object/baseline drift')
     report={'scope':'Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open','architecture':'x86','build_exit':0,'objects':67,'library':library.relative_to(WS).as_posix(),'library_sha256':sha(library),'base_cmake':{'file':template.relative_to(WS).as_posix(),'sha256':sha(template)},'base_sources':sources,'derived_sources':derived,'baseline_library':{'file':oldLibrary.relative_to(WS).as_posix(),'sha256':oldHash},'cmake':{'file':(root/'CMakeLists.txt').relative_to(WS).as_posix(),'sha256':sha(root/'CMakeLists.txt')},'log':{'file':log.relative_to(WS).as_posix(),'sha256':sha(log)},'script_sha256':sha(WS/'scripts/build_client455_engine_startup.py'),'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M9':'OPEN'}
     report['text_bridge']={name:sha(WS/'scripts/native'/name) for name in ['client455_text_bridge.inc','client455_font.h']}
-    report.update(objects=len(objects),expected_objects=69,lobby_post_source={'file':post_source.relative_to(WS).as_posix(),'sha256':sha(post_source)},lobby_sky_source={'file':sky_source.relative_to(WS).as_posix(),'sha256':sha(sky_source)})
+    report.update(objects=len(objects),expected_objects=70,lobby_post_source={'file':post_source.relative_to(WS).as_posix(),'sha256':sha(post_source)},lobby_sky_source={'file':sky_source.relative_to(WS).as_posix(),'sha256':sha(sky_source)},lobby_shadow_source={'file':shadow_source.relative_to(WS).as_posix(),'sha256':sha(shadow_source)})
     report['sprite_texture']={'client455_sprite_texture.inc':sha(WS/'scripts/native/client455_sprite_texture.inc')}
     report['warning']={'client455_warning.inc':sha(WS/'scripts/native/client455_warning.inc')}
     report['quake']={name:sha(WS/'scripts/native'/name) for name in ['client455_quake.h','client455_quake.inc','client455_quake_density.inc','client455_level_view.inc']}

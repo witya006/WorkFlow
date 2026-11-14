@@ -1,5 +1,5 @@
 {
-  "scope": "Source state/palette/material/program/shared draw primitives,not full Character/normal integration",
+  "scope": "Source state/palette/material/program/shared draw primitives; runtime verification belongs to the full client",
   "architecture": "x86",
   "runtime": "/MT",
   "source_sha256": {
@@ -19,16 +19,14 @@
     "client455_secondary.h": "a3ec052f03d8e456bf21ab04998bc1d5f72ab73dc30afd56865add5b1d54b2a5",
     "client455_shaders.h": "77afe106add5cdf2011cc9a553769a719e5bed5bec593edf2d4548d1ba7eca74",
     "client455_draw.h": "dd357df5281ca008ea52cf2f5535ee5591e4d0d10bc438114d176d253b76ef7c",
-    "client455_draw.cpp": "e16a877331e1cb158a5903c5b79e6780ab930524d59861f62ab41ac414ccb277",
+    "client455_draw_observer.h": "3f435d7ed7543e5af5140c0075a4712e3a168c89e85de8aa35a3dba0145d1d19",
+    "client455_draw.cpp": "31835a7cd577ca2277a899b96d3ce48505cb158597a4c823c4f820beae87b14e",
     "test_client455_draw.cpp": "fa2ff9de4b56d149fa40fe910bdedd626ff102e1bc63cbdfc768b64d42601deb"
   },
   "object": "work/recovered/client455/draw/draw.obj",
-  "object_sha256": "bbbeed1764021ce4a9972a76d298cb1bb89bb87b99bc21bfbe6f67e93de97da5",
+  "object_sha256": "8b9e607ac6a3cf04cddf6d1c77e3fa5a3a739f204648235aa86d7b154bd35b4c",
   "library": "work/recovered/client455/draw/RFClient455Draw.lib",
-  "library_sha256": "68c3214cbff7d099af761b3b58f5ee24db47eda5a778e089dbda4f6352d3dc55",
-  "exe": "work/recovered/client455/draw/draw-probe.exe",
-  "exe_sha256": "3d1a78052e8ec541203902754fd2b8a770a61265e0bdd74c18ca27814d1bf57a",
-  "entry_rva": "0x12f30",
+  "library_sha256": "e53718acda6a2a980c9776a4c1c6d6806cbccfdc17cb8df2c7de70cf378c5c78",
   "dependencies": [
     {
       "file": "work/recovered/client455/pose/RFClient455Pose.lib",
@@ -78,5 +76,6 @@
       "file": "work/recovered/client455/shaders/RFClient455Shaders.lib",
       "sha256": "afd6f1056b1150995095949cc24dc6a6300670b520c151542492d0a04afc5e72"
     }
-  ]
+  ],
+  "compile_only": true
 }

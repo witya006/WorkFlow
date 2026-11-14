@@ -1,4 +1,6 @@
 #include "client455_enhanced_lighting_shader.h"
+#include "client455_lobby_post.h"
+#include "client455_lobby_shadow.h"
 #include <cmath>
 #include <algorithm>
 
@@ -113,11 +115,21 @@ bool RF455_BindEnhancedActorLighting(RF455ShaderManager* manager, const float* m
     float specular[4] = {(std::max)(0.f, material[8]), (std::max)(0.f, material[9]),
                          (std::max)(0.f, material[10]), (std::max)(1.f, (std::min)(128.f, material[16]))};
     auto* device = manager->device;
+    const auto lobby=RF455_GetLobbyPostTelemetry();
+    float lobbyParameters[4]={lobby.active?1.f:0.f,lobby.inputLinear?1.f:0.f,0,0};
+    float lightMatrix[16],shadowParameters[4];auto* shadowMap=RF455_LobbyShadowTexture(lightMatrix,shadowParameters);
     if (FAILED(device->SetPixelShaderConstantF(0, material, 1)) ||
         FAILED(device->SetPixelShaderConstantF(1, material+4, 1)) ||
         FAILED(device->SetPixelShaderConstantF(2, direction, 1)) ||
         FAILED(device->SetPixelShaderConstantF(3, camera, 1)) ||
-        FAILED(device->SetPixelShaderConstantF(4, specular, 1))) return false;
+        FAILED(device->SetPixelShaderConstantF(4, specular, 1)) ||
+        FAILED(device->SetPixelShaderConstantF(5, lobbyParameters, 1)) ||
+        FAILED(device->SetPixelShaderConstantF(6, lightMatrix, 4)) ||
+        FAILED(device->SetPixelShaderConstantF(10, shadowParameters, 1))) return false;
+    device->SetTexture(6,shadowMap);
+    device->SetSamplerState(6,D3DSAMP_MINFILTER,D3DTEXF_POINT);device->SetSamplerState(6,D3DSAMP_MAGFILTER,D3DTEXF_POINT);
+    device->SetSamplerState(6,D3DSAMP_MIPFILTER,D3DTEXF_NONE);device->SetSamplerState(6,D3DSAMP_SRGBTEXTURE,FALSE);
+    device->SetSamplerState(6,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);device->SetSamplerState(6,D3DSAMP_ADDRESSV,D3DTADDRESS_CLAMP);
     if (FAILED(device->SetVertexShader(manager->programs[index].vertex)) ||
         FAILED(device->SetPixelShader(manager->programs[index].pixel))) {
         device->SetVertexShader(nullptr); device->SetPixelShader(nullptr); return false;

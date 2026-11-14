@@ -267,7 +267,7 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     stop=raw.index(b'\nBOOL',start) if b'\nBOOL' in raw[start:] else len(raw)
     body=raw[start:stop]
     body=replace(body,b'\tif( R3BeginScene() )',b'    lobbyFrameSample455.begin();\n\tif( R3BeginScene() )')
-    body=replace(body,b'\t\tR3ClearFrameBuffer();',b'        const bool modernLobby = !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect() && RF455_BeginLobbyPost(GetD3dDevice());\n\t\tR3ClearFrameBuffer();')
+    body=replace(body,b'\t\tR3ClearFrameBuffer();',b'        const bool modernLobby = !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect() && RF455_BeginLobbyPost(GetD3dDevice());\n        RF455_InvalidateLobbyShadows(!modernLobby || !_GetLand()->GetLevel());\n        if(modernLobby && _GetLand()->GetLevel())RF455_RenderLobbyShadows(_GetLand()->GetLevel()->mBsp);\n\t\tR3ClearFrameBuffer();')
     body=replace(body,b'        if (lobbyMenu455.ShowingCredits()) FullScreenEffect();',b'''        if(modernLobby){
             RF455_EndLobbyPost(GetD3dDevice());
             if(!RF455_GetLobbyPostTelemetry().uiSceneReady)return S_OK;
@@ -275,7 +275,8 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
         if (lobbyMenu455.ShowingCredits()) FullScreenEffect();''')
     body=replace(body,b'\t\t_GetUIScreen()->Draw();',b'        if(!RF455_LobbyReferenceMode())_GetUIScreen()->Draw();\n        else if(RF455_LobbyOptions() && RF455_LobbyOptions()->IsShow()){RF455_LobbyOptions()->Draw();_GetUIScreen()->GetMouse()->Draw();}')
     body=replace(body,b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)',b'if (!RF455_LobbyReferenceMode() && (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD))')
-    body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();')
+    body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();\n    RF455_ObserveLobbySlots();')
     raw=raw[:start]+body+raw[stop:]
     raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());\n\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);')
+    raw+=b'\n'+(native/'client455_lobby_slot_observation.inc').read_bytes()
     return raw, True

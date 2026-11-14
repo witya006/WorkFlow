@@ -9,25 +9,25 @@
       "nation": "Russia",
       "inputs": [
         {
-          "file": "work/selection-rejection455/39f0a00a/ru-ru/System/010.TTF",
+          "file": "work/selection-rejection455/runtime/ru-ru/System/010.TTF",
           "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ru-ru/SpriteImage/Common/mouse.spr",
+          "file": "work/selection-rejection455/runtime/ru-ru/SpriteImage/Common/mouse.spr",
           "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ru-ru/SpriteImage/ru-ru/common.spr",
+          "file": "work/selection-rejection455/runtime/ru-ru/SpriteImage/ru-ru/common.spr",
           "sha256": "7e9c214a47f7b7f84035718c23df6d07735374f842b89901436c6b79dfe30736"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ru-ru/DataTable/ru-ru/NDLanguage.edf",
+          "file": "work/selection-rejection455/runtime/ru-ru/DataTable/ru-ru/NDLanguage.edf",
           "sha256": "0cdb285d835f67da6acf95e63ab7947b403e18adea5405cc0a7eca97878a2154"
         }
       ],
       "result": {
-        "file": "work/selection-rejection455/39f0a00a/ru-ru/result.json",
-        "sha256": "57392c1617cd736e0af4f533b87bacfd55040e7b1b0e2b2c1587d5dd02ff51b3"
+        "file": "work/selection-rejection455/runtime/ru-ru/result.json",
+        "sha256": "ccedf7c49da3ceb03b33f63b11a08df1881fec9ff9963a44679be38f7e5e5c79"
       },
       "native": {
         "status": "PASS",
@@ -37,10 +37,13 @@
         "actual_modal_and_localization": true,
         "retry_callback": true,
         "success_moveout": true,
+        "delete_wire_and_roster": true,
+        "delete_confirmation_cancel": true,
+        "delete_malformed_and_stale": true,
         "live_server": false
       },
       "console": {
-        "file": "work/selection-rejection455/39f0a00a/ru-ru/console.txt",
+        "file": "work/selection-rejection455/runtime/ru-ru/console.txt",
         "sha256": "7ce75f6c9a808dcb30b1c840189fa39312eaf360e193b6d6184d33c868b807cc"
       }
     },
@@ -48,25 +51,25 @@
       "nation": "Korea",
       "inputs": [
         {
-          "file": "work/selection-rejection455/39f0a00a/ko-kr/System/010.TTF",
+          "file": "work/selection-rejection455/runtime/ko-kr/System/010.TTF",
           "sha256": "4f4adcdaa09074f1b944b9fe46c94e67425d9d9f10a2836dc5599d0fceae61b6"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ko-kr/SpriteImage/Common/mouse.spr",
+          "file": "work/selection-rejection455/runtime/ko-kr/SpriteImage/Common/mouse.spr",
           "sha256": "2739a79b0018bfd558135264869018468968bda9b5245e7c051cfc8d4a32f6bf"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ko-kr/SpriteImage/ko-kr/common.spr",
+          "file": "work/selection-rejection455/runtime/ko-kr/SpriteImage/ko-kr/common.spr",
           "sha256": "7aa12ddbf53ff29bfdb7db7b5646ef20411e4fa3118f26b599c877f98673a523"
         },
         {
-          "file": "work/selection-rejection455/39f0a00a/ko-kr/DataTable/ko-kr/NDLanguage.edf",
+          "file": "work/selection-rejection455/runtime/ko-kr/DataTable/ko-kr/NDLanguage.edf",
           "sha256": "e1aa6f0afae750605f2364d9216c138bc9179dc0ec315119d0320a9e8ec6a232"
         }
       ],
       "result": {
-        "file": "work/selection-rejection455/39f0a00a/ko-kr/result.json",
-        "sha256": "57392c1617cd736e0af4f533b87bacfd55040e7b1b0e2b2c1587d5dd02ff51b3"
+        "file": "work/selection-rejection455/runtime/ko-kr/result.json",
+        "sha256": "ccedf7c49da3ceb03b33f63b11a08df1881fec9ff9963a44679be38f7e5e5c79"
       },
       "native": {
         "status": "PASS",
@@ -76,41 +79,44 @@
         "actual_modal_and_localization": true,
         "retry_callback": true,
         "success_moveout": true,
+        "delete_wire_and_roster": true,
+        "delete_confirmation_cancel": true,
+        "delete_malformed_and_stale": true,
         "live_server": false
       },
       "console": {
-        "file": "work/selection-rejection455/39f0a00a/ko-kr/console.txt",
+        "file": "work/selection-rejection455/runtime/ko-kr/console.txt",
         "sha256": "7ce75f6c9a808dcb30b1c840189fa39312eaf360e193b6d6184d33c868b807cc"
       }
     }
   ],
   "executable": {
     "file": "work/client455-port/selection-rejection-probe/selection-rejection-probe.exe",
-    "sha256": "39f0a00a1f00e2628e5f08cc92618c18b1c3ef5c8aedb744ac63c2dd612ed73c"
+    "sha256": "451d4556e497b363970f2408437b62b3da7065e8d9558d488c9c469bc4c2f8d2"
   },
   "source": {
     "file": "scripts/native/client455_selection_rejection_probe.cpp",
-    "sha256": "624fde5ee18a86daffe575000c6dc500a35d5a78c38551f3b664f6225fa62313"
+    "sha256": "3bdd5795041b652f4c52a26f51ea6d474ec4f64890938bb2188b7cbd27b18ddd"
   },
   "generated": {
     "file": "work/selection-rejection455/probe.cpp",
-    "sha256": "ba3b877d2063289635f0f18621d61b4e3c76cb93a15418703256cd7bcf80e691"
+    "sha256": "1f5fc0d524795301d516c1ffd85e8824ac9cb9077b225c73629c4c1606aac478"
   },
   "login_source": {
     "file": "work/client455-port/normal/source/gameprogress/cgp_login.cpp",
-    "sha256": "fa1a31f0b9bf4484ce5c7e43d7855881e140ef6e9d44b78a8e6f44aa8a1a5795"
+    "sha256": "1302f858948439f5c957639700fbf0514339c403cfc4c1fdefc6288340d35dc6"
   },
   "runner": {
     "file": "scripts/probe_client455_selection_rejection.py",
-    "sha256": "d769f6c627962490e99f26342bcd1435b0ac63864b9dd6835a8d9e4685db144d"
+    "sha256": "44f074c011b24beb77aedf7b9c860c65f4f6e346a4ba6ad660b48ce776435f47"
   },
   "normal_executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "d0a3edbf5b532ce85c4fc0cb76056e139add6287ee83a2ee13604204be3fcec7",
-    "bytes": 2535424,
+    "sha256": "e888fa07b0f1bbf80ac0a33d23160e14042e14e5a6d3db168c494c0b0623c12c",
+    "bytes": 2627072,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1a5430",
+    "entry_rva": "0x1b47c0",
     "sections": [
       ".text",
       ".rdata",

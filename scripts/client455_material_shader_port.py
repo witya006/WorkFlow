@@ -8,6 +8,11 @@ def once(raw,old,new):
 
 def render(raw):
     token=b'void DrawOneMatGroup(CVertexBuffer *vbuffer,_BSP_MAT_GROUP *m_group)';start,end=section(raw,token,token);body=raw[start:end]
+    body=once(body,b'\tD3DXMATRIX tex_mat;',b'''\tD3DXMATRIX tex_mat;
+    if(RF455_LobbyShadowPass()){
+        RF455_DrawLobbyShadowGroup(pd3dDevice,m_group->VBMinIndex,m_group->VCnt,m_group->IBMinIndex,m_group->TriNum);
+        return;
+    }''')
     first=body.index(b'\tPreRenderSetting(0,vbuffer,m_group);');last=body.index(b'\n\n\tpd3dDevice->DrawIndexedPrimitive',first)
     body=body[:first]+b'''    const bool special455=(mat->m_dwFlag&0x01000000u)!=0;
     if(special455)prepareMaterialShader455(mat,m_group);

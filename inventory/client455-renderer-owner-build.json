@@ -1,5 +1,5 @@
 {
-  "scope": "Recovered455renderer owner withtypedsource load/draw adapters;normalmigration remainsopen",
+  "scope": "Recovered455renderer owner with typed source load/draw adapters; runtime acceptance remains separate",
   "architecture": "x86",
   "runtime": "/MT",
   "source_sha256": {
@@ -19,6 +19,7 @@
     "client455_secondary.h": "a3ec052f03d8e456bf21ab04998bc1d5f72ab73dc30afd56865add5b1d54b2a5",
     "client455_shaders.h": "77afe106add5cdf2011cc9a553769a719e5bed5bec593edf2d4548d1ba7eca74",
     "client455_draw.h": "dd357df5281ca008ea52cf2f5535ee5591e4d0d10bc438114d176d253b76ef7c",
+    "client455_draw_observer.h": "3f435d7ed7543e5af5140c0075a4712e3a168c89e85de8aa35a3dba0145d1d19",
     "client455_character_draw.h": "bc1bbaa81e24a1a42112b86af46ab76a41ba8435eed665d54dcfbd2dcb649532",
     "client455_character_draw_internal.h": "6ef6084581a32f9b9043c2efb591168bb7baddb1a919ef72c58eb80701b29781",
     "client455_enhanced_lighting.h": "a249bc01593706e9618e912baba0ef45fad7bd10b7dd92559d06165eb0c867d2",
@@ -28,20 +29,17 @@
     "test_client455_renderer_owner.cpp": "65c0334c3e707a6a6d939e7df2c181b9ec2601928301cf43b99486bf5e706f68"
   },
   "object": "work/recovered/client455/renderer-owner/owner.obj",
-  "object_sha256": "4cce6a8d7488f0a0d1746b940725e83b11e177b8043023d28b13ce2285f2fa44",
+  "object_sha256": "91d82cdcd6c0c12f15e018c598e2d91c12b3ff0e0956a0086929ae5de11e13fe",
   "library": "work/recovered/client455/renderer-owner/RFClient455RendererOwner.lib",
-  "library_sha256": "cc9dda605705165c58e4a30ff61ecc1aea2a385f9c9e110cda497fd87d54f053",
-  "exe": "work/recovered/client455/renderer-owner/renderer-owner-probe.exe",
-  "exe_sha256": "6a8dc7f18dcce38c8c67387a13bb7163322137fbb01bb1041948f3254b1de580",
-  "entry_rva": "0x169c0",
+  "library_sha256": "344478b6334538093bc8fc8fa8c927b34081fafed7e2ebab2b4d57e3a889c1c0",
   "dependencies": [
     {
       "file": "work/recovered/client455/character-draw/RFClient455CharacterDraw.lib",
-      "sha256": "02e505fe34ddfc33f821cfba9cba93939f9dd8dd9bd2bd9d49a0574c2e9339d1"
+      "sha256": "77be62ddafd98960ac312c4852ab336158e5a129e790de441169a0475991950c"
     },
     {
       "file": "work/recovered/client455/draw/RFClient455Draw.lib",
-      "sha256": "68c3214cbff7d099af761b3b58f5ee24db47eda5a778e089dbda4f6352d3dc55"
+      "sha256": "e53718acda6a2a980c9776a4c1c6d6806cbccfdc17cb8df2c7de70cf378c5c78"
     },
     {
       "file": "work/recovered/client455/pose/RFClient455Pose.lib",
@@ -91,5 +89,6 @@
       "file": "work/recovered/client455/shaders/RFClient455Shaders.lib",
       "sha256": "afd6f1056b1150995095949cc24dc6a6300670b520c151542492d0a04afc5e72"
     }
-  ]
+  ],
+  "compile_only": true
 }

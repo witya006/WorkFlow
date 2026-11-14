@@ -19,3 +19,13 @@ inline bool RF455_ReadCharacterSelection(const void* data,std::size_t bytes,RF45
 }
 unsigned RF455_SelectedCharacterSlot();
 bool RF455_SelectedCharacterSlotOccupied();
+
+// Pinned 455 b1b5febf..., x86: RVA16B810 sends 1/12 + slot;
+// RVA1630B0 dispatches 1/13 to RVA16B8B0 (two bytes: result, slot).
+struct RF455CharacterDeletion { std::uint8_t result=255,slot=255; };
+inline bool RF455_ReadCharacterDeletion(const void* data,std::size_t bytes,RF455CharacterDeletion& out){
+    if(!data||bytes<2)return false;
+    const auto* p=static_cast<const std::uint8_t*>(data);
+    if(p[1]>=3)return false;
+    out.result=p[0];out.slot=p[1];return true;
+}

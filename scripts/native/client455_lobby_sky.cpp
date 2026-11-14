@@ -42,26 +42,30 @@ float4 noiseChannels(float3 p){
 float noise3(float3 p){return noiseChannels(p).r;}
 float coverageAt(float3 p){
     // Broad separated cloud banks; the negative space is real empty volume.
-    return smoothstep(.28,.65,noise3(float3(p.x*.85+17,5.7,p.z*.85-11)));
+    return smoothstep(.28,.65,noise3(float3(p.x*1.05+17,5.7,p.z*1.05-11)));
 }
 float cloudDensity(float3 p){
     float height=(p.y+1.6)/.95;
-    float3 q=p*2.2;
-    float n=noise3(q)*.57+noise3(q*2.03+float3(11.3,4.7,8.1))*.29+noise3(q*4.11+float3(3.1,17.2,1.7))*.14;
-    float threshold=lerp(.68,.38,coverageAt(p))+height*height*.18;
+    float3 q=p*3.1;
+    float distanceToEye=length(p-eyeCloud.xyz);
+    float detailWeight=1-smoothstep(4,14,distanceToEye);
+    // Mid-size lobes carry more of the shape than the old dominant low octave.
+    // Far fine octaves converge to their mean, retaining coverage/density while
+    // removing subpixel variation instead of turning it into screen grain.
+    float n=noise3(q)*.38+noise3(q*2.03+float3(11.3,4.7,8.1))*.27
+        +noise3(q*4.11+float3(3.1,17.2,1.7))*.18;
+    float4 detailNoise=noiseChannels(q*8.17+float3(7.1,3.8,12.4));
+    float fine=detailNoise.g*.11
+        +noiseChannels(q*16.31+float3(19.3,11.7,2.6)).b*.06;
+    n+=lerp(.085,fine,detailWeight);
+    float threshold=lerp(.68,.37,coverageAt(p))+height*height*.20;
     // Fine erosion changes the 3D boundary rather than colouring a flat cap.
     // Fade high frequency with distance to avoid replacing jitter with aliasing.
-    float distanceToEye=length(p-eyeCloud.xyz);
-    float detailWeight=1-smoothstep(3,12,distanceToEye);
-    float erosion=noiseChannels(q*6.7+float3(7.2,2.1,9.4)).g*.65+noiseChannels(q*12.9+float3(13.4,6.8,1.3)).b*.35;
-    float shape=saturate((n-threshold-(erosion-.30)*.10*detailWeight)*7);
-    return shape*smoothstep(0,.14,height)*(1-smoothstep(.82,1,height));
-}
-float shadowDensity(float3 p){
-    float height=(p.y+1.6)/.95;
-    float threshold=lerp(.68,.38,coverageAt(p))+height*height*.18;
-    float shape=saturate((noise3(p*2.2)-threshold)*6);
-    return shape*smoothstep(0,.14,height)*(1-smoothstep(.82,1,height));
+    // Independent channel at the same high-frequency sample supplies erosion
+    // without another volume lookup or a correlated cancellation of the lobe.
+    float erosion=detailNoise.r;
+    float shape=saturate((n-threshold-(erosion-.35)*.14*detailWeight)*10);
+    return shape*smoothstep(0,.10,height)*(1-smoothstep(.90,1,height));
 }
 float3 encodeSky(float3 c){c=max(c,0);return lerp(c*12.92,1.055*pow(c,1.0/2.4)-.055,step(.0031308,c));}
 float4 PS(Vertex i):COLOR0{
@@ -81,16 +85,22 @@ float4 PS(Vertex i):COLOR0{
     float nearT=(-1.6-origin.y)/dy,farT=(-.65-origin.y)/dy;
     float entry=max(0,min(nearT,farT)),exitT=min(24,max(nearT,farT));
     if(exitT>entry){
-        float stepLength=(exitT-entry)/128;
+        float stepLength=(exitT-entry)/512;
         // Deterministic midpoint quadrature, no screen grain/temporal jitter.
         float distance=entry+stepLength*.5,transmission=1;
         float3 accumulated=0;
+        // SM3 rep/loop counters are limited to 255. Four bounded blocks retain
+        // the whole ray; a single 512 loop silently truncates in legacy D3DX.
+        [loop] for(int block=0;block<4;++block){
         [loop] for(int stepIndex=0;stepIndex<128;++stepIndex){
             float3 p=origin+ray*distance;
             float density=cloudDensity(p);
             if(density>.003){
-                float optical=shadowDensity(p+sun*.10)*.18+shadowDensity(p+sun*.28)*.32+shadowDensity(p+sun*.62)*.50;
-                float sunlight=exp(-optical*6.0);
+                // Both light-ray samples use the identical detailed field.
+                // The close probe resolves small lobes; the farther probe
+                // accounts for the bank behind them. No coarse shadow field.
+                float optical=cloudDensity(p+sun*.06)*.18+cloudDensity(p+sun*.32)*.72;
+                float sunlight=exp(-optical*7.0);
                 float height=saturate((p.y+1.6)/.95);
                 float forward=pow(saturate(dot(ray,sun)),8)*.25;
                 float3 ambient=lerp(float3(.035,.055,.10),float3(.10,.15,.23),height);
@@ -103,6 +113,8 @@ float4 PS(Vertex i):COLOR0{
                 if(transmission<.012)break;
             }
             distance+=stepLength;
+        }
+        if(transmission<.012)break;
         }
         sky=accumulated+transmission*sky;
     }
@@ -154,7 +166,9 @@ bool initSky455(IDirect3DDevice9* d){
     if(FAILED(hr))compilerError455(errors);dropSky455(errors);
     if(SUCCEEDED(hr))hr=d->CreateVertexShader(static_cast<const DWORD*>(code->GetBufferPointer()),&s.vs);dropSky455(code);
     if(FAILED(hr)){s.failed=true;skyError455(hr,"vertex-shader");return false;}
-    hr=D3DXCompileShader(skyShader455,UINT(std::strlen(skyShader455)),nullptr,nullptr,"PS","ps_3_0",D3DXSHADER_OPTIMIZATION_LEVEL3,&code,&errors,nullptr);
+    // O1 keeps all 512 view samples and detailed light-ray density evaluations
+    // while avoiding aggressive legacy D3DX optimization of the raymarch.
+    hr=D3DXCompileShader(skyShader455,UINT(std::strlen(skyShader455)),nullptr,nullptr,"PS","ps_3_0",D3DXSHADER_OPTIMIZATION_LEVEL1,&code,&errors,nullptr);
     if(FAILED(hr))compilerError455(errors);dropSky455(errors);
     if(SUCCEEDED(hr))hr=d->CreatePixelShader(static_cast<const DWORD*>(code->GetBufferPointer()),&s.ps);dropSky455(code);
     if(FAILED(hr)){s.failed=true;skyError455(hr,"pixel-shader");return false;}

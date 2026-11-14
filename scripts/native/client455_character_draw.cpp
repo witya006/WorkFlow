@@ -1,15 +1,25 @@
 #include "client455_character_draw_internal.h"
 #include "client455_enhanced_lighting.h"
+#include "client455_draw_observer.h"
 
 namespace rf455draw {
 namespace {
 struct EnhancedPixelConstants {
     IDirect3DDevice9* device;
-    float previous[20];
+    float previous[44];
+    IDirect3DBaseTexture9* previousShadow=nullptr;
+    const D3DSAMPLERSTATETYPE states[6]={D3DSAMP_MINFILTER,D3DSAMP_MAGFILTER,D3DSAMP_MIPFILTER,D3DSAMP_SRGBTEXTURE,D3DSAMP_ADDRESSU,D3DSAMP_ADDRESSV};
+    DWORD previousSampler[6]{};
     bool captured;
     explicit EnhancedPixelConstants(IDirect3DDevice9* value):device(value),
-        captured(SUCCEEDED(value->GetPixelShaderConstantF(0,previous,5))){}
-    ~EnhancedPixelConstants(){if(captured)device->SetPixelShaderConstantF(0,previous,5);}
+        captured(SUCCEEDED(value->GetPixelShaderConstantF(0,previous,11))){
+        value->GetTexture(6,&previousShadow);for(unsigned i=0;i<6;++i)value->GetSamplerState(6,states[i],&previousSampler[i]);
+    }
+    ~EnhancedPixelConstants(){
+        if(captured)device->SetPixelShaderConstantF(0,previous,11);
+        device->SetTexture(6,previousShadow);if(previousShadow)previousShadow->Release();
+        for(unsigned i=0;i<6;++i)device->SetSamplerState(6,states[i],previousSampler[i]);
+    }
 };
 struct BatchRecord {float depth;void* next;float palette[30][16];RF455MeshStorage* mesh;float material[17];};
 static_assert(sizeof(BatchRecord)==2000,"455 deferred fixed-function record");
@@ -84,6 +94,7 @@ extern "C" RF455CharacterDrawStatus RF455_DrawCharacter455(RF455CharacterDrawCon
                 d->SetRenderState(D3DRS_CULLMODE,get<unsigned>(mesh,5143)?D3DCULL_NONE:D3DCULL_CW);
                 d->SetTexture(0,texture0);d->SetTexture(1,nullptr);d->SetTexture(2,nullptr);
                 d->SetTexture(3,bump);d->SetTexture(4,specular);d->SetTexture(5,nullptr);
+                RF455OpaqueGeometryObservation observe;
                 const auto status=submit(c,mesh,world,nullptr);clearShaders(c);
                 if(status!=RF_CHARACTER_DRAW_OK)return status;
                 continue;

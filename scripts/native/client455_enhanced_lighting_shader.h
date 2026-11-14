@@ -1,4 +1,6 @@
 #pragma once
+#include "client455_lobby_lighting_shader.h"
+#include <string>
 
 // Authored extension shaders. Skinning and clip position keep the original matrix
 // registers; all lighting vectors below use world space consistently.
@@ -46,15 +48,19 @@ Output main(Input input) {
 }
 )HLSL";
 
-static const char RF455EnhancedActorPixel[] = R"HLSL(
+static const std::string RF455EnhancedActorPixelSource = std::string(RF455LobbyLightingShader)+R"HLSL(
 sampler2D albedoMap : register(s0);
 sampler2D normalMap : register(s3);
 sampler2D specularMap : register(s4);
+sampler2D lobbyShadowMap : register(s6);
 float4 materialDiffuse : register(c0);
 float4 materialAmbient : register(c1);
 float4 lightDirection : register(c2);
 float4 cameraPosition : register(c3);
 float4 materialSpecular : register(c4); // RGB tint, w exponent.
+float4 lobbySettings : register(c5);
+row_major float4x4 lobbyLightMatrix : register(c6);
+float4 lobbyShadowSettings : register(c10);
 struct Input {
     float2 uv : TEXCOORD0;
     float3 worldPosition : TEXCOORD1;
@@ -88,6 +94,23 @@ float4 main(Input input) : COLOR {
     float3 mask = saturate(tex2D(specularMap, input.uv).rgb);
     colour += materialSpecular.rgb * mask * highlight;
 #endif
+    if(lobbySettings.x>.5){
+        // Slot-independent world lighting. Legacy GetLightFromPoint values are
+        // baked illumination, not a second albedo multiplier in the modern pass.
+        float3 base=LobbyDecode(albedo.rgb);
+        float3 sun=LobbySun(),v=safeUnit(cameraPosition.xyz-input.worldPosition);
+        float nl=saturate(dot(normal,sun));
+        float visibility=LobbyShadow(lobbyShadowMap,mul(float4(input.worldPosition,1),lobbyLightMatrix),lobbyShadowSettings,nl);
+        float3 key=float3(1.05,.95,.82);
+        float3 lit=base*(LobbyFill(normal)+.86*key*nl*visibility);
+#if RF455_SPECULAR_MAP
+        float3 mask=saturate(tex2D(specularMap,input.uv).rgb);
+        float roughness=lerp(.65,.30,dot(mask,float3(.2126,.7152,.0722)));
+        lit+=key*LobbySpecular(normal,v,sun,.04,roughness)*mask*visibility;
+#endif
+        return float4(lobbySettings.y>.5?lit:LobbyEncode(lit),albedo.a*materialDiffuse.a);
+    }
     return float4(colour, albedo.a * materialDiffuse.a);
 }
 )HLSL";
+static const char* const RF455EnhancedActorPixel=RF455EnhancedActorPixelSource.c_str();

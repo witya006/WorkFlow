@@ -19,6 +19,9 @@
 #include <cstdio>
 #include <client455_language.h>
 #include <client455_nation_paths.h>
+#include <client455_selection.h>
+#include "userinterface/loginwindow/guiselectcharacter.h"
+#include "client455_equipment_object.h"
 
 template<class Tag, typename Tag::Type Member> struct MemberAccess {
     friend typename Tag::Type access(Tag) { return Member; }
@@ -45,6 +48,10 @@ extern CMainApp g_MainApp;
 extern BOOL m_HaveCharacter[3];
 extern void NetworkInput();
 extern void EventJoinGameFunc();
+extern void EventDeleteCharacter();
+enum COURSE { A_COURSE, B_COURSE, C_COURSE };
+extern COURSE m_Course;
+FIELD(DeleteButton, CGUIButtonEx, CGUISelectCharacter, m_cDeleteButton)
 FIELD(ActiveServer, char, CNetworkMgr, m_nActiveServerID)
 FIELD(MessageBoard, CGUITextBoard, CGUIMessagebox, m_uiMsgBoard)
 
@@ -206,6 +213,71 @@ static int runSelectionRejection() {
     NetworkInput();
     check(take(send).empty(), "success consumed once");
 
+    // Deletion uses the real callback, transport/dispatcher and roster update.
+    // This fixture never connects to a server or deletes a real character.
+    network.ReceiveResponseMsg();
+    g_LoginState=LGS_CHARACTERLOBBY;m_Course=A_COURSE;
+    for(unsigned slot=0;slot<3;++slot){m_HaveCharacter[slot]=TRUE;dummy[slot].SetIndex(100+slot);}
+    CGUISelectCharacter selection;
+    _mouse_event deletionClick={};deletionClick.id=MOUSE_CLICKED;
+    deletionClick.source=&(selection.*access(DeleteButton{}));
+    selection.MouseEvent(deletionClick);
+    auto* confirmation=selection.GetLastDialogBox();
+    check(confirmation&&confirmation->GetStyleID()==DLG_STYLE_OK_CANCEL,"delete confirmation");
+    confirmation->SetResultMsg(MSG_CANCEL);selection.ClosingDialogBox(confirmation);
+    check(!selection.GetLastDialogBox()&&take(send).empty(),"cancel keeps roster and sends nothing");
+    selection.MouseEvent(deletionClick);confirmation=selection.GetLastDialogBox();
+    check(confirmation!=nullptr,"delete confirmation reopened");
+    confirmation->SetResultMsg(MSG_OK);selection.ClosingDialogBox(confirmation);
+    check(!selection.GetLastDialogBox(),"confirmation detached before request");
+    check(outgoing()==std::vector<BYTE>({5,0,1,12,0}),"455 delete opcode and selected slot");
+    EventDeleteCharacter();check(take(send).empty(),"duplicate delete request blocked");
+    char malformed[2]={0,char(255)};
+    check(!network.DispatchDeletedCharacter455(malformed,1)&&
+          !network.DispatchDeletedCharacter455(malformed,2)&&network.IsSendRequestMsg(),
+          "truncated/invalid slot cannot complete delete");
+    char unrelated[2]={0,2};
+    check(network.DispatchDeletedCharacter455(unrelated,2)&&network.IsSendRequestMsg(),
+          "another slot response does not complete delete");
+    auto deletionReply=[&](BYTE result,BYTE slot){
+        BYTE payload[2]={result,slot},wire[128]{};std::size_t count=0;
+        check(peer.encode(0x0d01,payload,2,wire,sizeof(wire),count),"encode delete reply");
+        push(receive,wire,2);(process.*access(Pop{}))(0);
+        check(network.IsSendRequestMsg(),"partial delete frame leaves request pending");
+        push(receive,wire+2,count-2);(process.*access(Pop{}))(0);
+        check(!network.IsSendRequestMsg()&&network.GetResultOfCharacterDelete()==result,
+              "455 delete response dispatcher");
+    };
+    auto dismissResult=[&](){
+        auto* box=g_pUiScreen->GetLastDialogBox();check(box!=nullptr,"delete result dialog");
+        CGUIObject::RemoveEvent(box);box->Close();box->RemoveOwnerWindow();
+    };
+    // User changes selection while the deletion reply is in flight.
+    m_Course=B_COURSE;deletionReply(0,0);NetworkInput();
+    check(!m_HaveCharacter[0]&&m_HaveCharacter[1]&&dummy[0].GetIndex()==ID_INVALID&&
+          dummy[1].GetIndex()==101&&m_Course==B_COURSE&&g_LoginState==LGS_CHARACTERLOBBY,
+          "only requested roster slot retired; other selected character survives");
+    for(unsigned part=0;part<12;++part)check(dummy[0].GetEquipItem455(BYTE(part))==nullptr,"deleted equipment cleared");
+    dismissResult();char duplicate[2]={0,0};
+    check(network.DispatchDeletedCharacter455(duplicate,2),"duplicate reply ignored");NetworkInput();
+    check(!g_pUiScreen->GetLastDialogBox()&&m_HaveCharacter[1],"duplicate does not retire another slot");
+    EventDeleteCharacter();check(outgoing()==std::vector<BYTE>({5,0,1,12,1}),"second slot deletion request");
+    deletionReply(CHAR_DELETE_DB_ERROR,1);NetworkInput();
+    check(m_HaveCharacter[1]&&dummy[1].GetIndex()==101&&g_LoginState==LGS_CHARACTERLOBBY,
+          "delete rejection preserves character and restores slots");dismissResult();
+    EventDeleteCharacter();check(outgoing()==std::vector<BYTE>({5,0,1,12,1}),"retry after delete rejection");
+    m_Course=static_cast<COURSE>(255);deletionReply(0,1);NetworkInput();
+    check(m_Course==B_COURSE&&!m_HaveCharacter[1]&&m_HaveCharacter[2],"invalid current selection normalized on reply");
+    dismissResult();m_Course=static_cast<COURSE>(255);
+    check(!RF455_SelectedCharacterSlotOccupied(),"invalid selection is not occupied");
+    EventDeleteCharacter();check(take(send).empty(),"invalid selection cannot send");
+    m_Course=C_COURSE;EventDeleteCharacter();
+    check(outgoing()==std::vector<BYTE>({5,0,1,12,2}),"last slot deletion request");
+    deletionReply(0,2);NetworkInput();dismissResult();
+    check(!m_HaveCharacter[0]&&!m_HaveCharacter[1]&&!m_HaveCharacter[2]&&m_Course==C_COURSE,
+          "last deletion keeps a valid empty slot");
+    EventDeleteCharacter();check(take(send).empty(),"empty slot cannot send");
+
     process.*access(SendBuffer{}) = nullptr; process.*access(ReceiveBuffer{}) = nullptr;
     process.*access(Owner{}) = nullptr; g_pAvatar = nullptr; g_pAvatarDummy = nullptr;
     (g_MainApp.*access(Unload{}))(); RF455_ReleaseTextResources();
@@ -213,7 +285,8 @@ static int runSelectionRejection() {
     FILE* output = std::fopen("result.json", "wb"); check(output != nullptr, "result file");
     std::fprintf(output, "{\"status\":\"PASS\",\"rejection_cases\":%u,\"actual_network_input\":true,"
         "\"actual_fragmented_dispatch\":true,\"actual_modal_and_localization\":true,"
-        "\"retry_callback\":true,\"success_moveout\":true,\"live_server\":false}\n", cases);
+        "\"retry_callback\":true,\"success_moveout\":true,\"delete_wire_and_roster\":true,"
+        "\"delete_confirmation_cancel\":true,\"delete_malformed_and_stale\":true,\"live_server\":false}\n", cases);
     std::fclose(output);
     return 0;
 }

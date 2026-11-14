@@ -1,9 +1,14 @@
 #include "client455_draw.h"
+#include "client455_draw_observer.h"
 #include <cstring>
 
 namespace {
+RF455GeometryObserver geometryObserver=nullptr;
+bool geometryObservationEnabled=false;
 template<class T> T get(const unsigned char* p,unsigned at){T value;std::memcpy(&value,p+at,sizeof(value));return value;}
 }
+void RF455_SetGeometryObserver(RF455GeometryObserver observer){geometryObserver=observer;}
+bool RF455_SetGeometryObservationEnabled(bool enabled){const bool previous=geometryObservationEnabled;geometryObservationEnabled=enabled;return previous;}
 extern "C" void RF455_SetCharacterDrawState(const RF455CharacterDrawState* state){
     auto* d=state->device;
     d->SetRenderState(D3DRS_AMBIENT,0xffffffffu);
@@ -88,8 +93,9 @@ extern "C" HRESULT RF455_SubmitSharedCharacterGeometry(IDirect3DDevice9* device,
     unsigned start=0xffffffffu;
     if(mode==2){RF455_BindVertices36(vertices36,vertex);start=(vertex%RF455_VERTEX_BLOCK_BYTES)/36;}
     else if(mode==4){RF455_BindVertices64(vertices64,vertex);start=(vertex%RF455_VERTEX_BLOCK_BYTES)>>6;}
-    if(index==0xffffffffu)return device->DrawPrimitive(D3DPT_TRIANGLELIST,start,count/3);
+    if(index==0xffffffffu){if(geometryObserver&&geometryObservationEnabled)geometryObserver(device,mode,start,count,0,count/3,false);return device->DrawPrimitive(D3DPT_TRIANGLELIST,start,count/3);}
     RF455_BindIndices(indices,index);
+    if(geometryObserver&&geometryObservationEnabled)geometryObserver(device,mode,start,count,(index%RF455_INDEX_BLOCK_BYTES)>>1,get<unsigned>(mesh->bytes,5090)/3,true);
     return device->DrawIndexedPrimitive(D3DPT_TRIANGLELIST,0,start,count,
         (index%RF455_INDEX_BLOCK_BYTES)>>1,get<unsigned>(mesh->bytes,5090)/3);
 }

@@ -1,8 +1,12 @@
 // Included once before DrawOneMatGroup. No changes to non-lobby submissions.
 #include "client455_lobby_material.h"
 #include "client455_lobby_post.h"
+#include "client455_lobby_shadow.h"
+#include "client455_lobby_lighting_shader.h"
 #include <d3dx9.h>
 #include <cstring>
+#include <string>
+#include <algorithm>
 namespace {
 struct LobbyMaterial455 {
     IDirect3DVertexShader9* vs = nullptr;
@@ -39,12 +43,16 @@ Out VS(In i) {
 }
 sampler2D albedoMap:register(s0);
 sampler2D lightMap:register(s1);
+sampler2D shadowMap:register(s2);
 float4 eye:register(c0);
 // x: light source (0 texture,1 vertex,2 lightmap); y: linear output;
 // z: fog mode; w: range fog.
 float4 settings:register(c1);
 float4 fogValues:register(c2); // start,end,density,unused
 float4 fogColor:register(c3);
+row_major float4x4 lightMatrix:register(c4);
+float4 shadowSettings:register(c8);
+float4 surface:register(c9); // roughness,metal coverage,microrelief,coat
 float3 decodeRGB(float3 c) { return lerp(c/12.92,pow(max((c+.055)/1.055,0),2.4),step(.04045,c)); }
 float3 encodeRGB(float3 c) { c=max(c,0); return lerp(c*12.92,1.055*pow(c,1.0/2.4)-.055,step(.0031308,c)); }
 float4 PS(Out i):COLOR0 {
@@ -52,29 +60,36 @@ float4 PS(Out i):COLOR0 {
     float3 baked=1;
     if(settings.x>1.5) baked=2*tex2D(lightMap,i.lm).rgb*i.color.rgb;
     else if(settings.x>.5) baked=2*i.color.rgb;
-    // Preserve the authored lightmap's multiplication in its original domain.
-    // No fabricated normal maps, metallic maps, occlusion or shadow textures.
-    float3 base=decodeRGB(max(a.rgb*baked,0));
+    // Legacy baked lighting is indirect visibility, not albedo. Multiplying
+    // it into albedo before another light pass was double-darkening platforms.
+    float3 base=decodeRGB(a.rgb);
     float3 n=i.normal*rsqrt(max(dot(i.normal,i.normal),1e-8));
+    // Small inferred surface relief from the existing panel texture. Bounded
+    // world-space gradient; this is not claimed to be an authored normal map.
+    float height=dot(a.rgb,float3(.2126,.7152,.0722));
+    float3 dx=ddx(i.wp),dy=ddy(i.wp),rx=cross(dy,n),ry=cross(n,dx);
+    float determinant=dot(dx,rx);
+    float3 gradient=(rx*ddx(height)+ry*ddy(height))*sign(determinant)/max(abs(determinant),.0001);
+    gradient*=min(surface.z,.22/max(length(gradient),.001));
+    n=normalize(n-gradient);
     float3 v=eye.xyz-i.wp; v*=rsqrt(max(dot(v,v),1e-8));
-    float3 l=normalize(float3(-.35,.8,-.45));
+    float3 l=LobbySun();
     float3 h=v+l; h*=rsqrt(max(dot(h,h),1e-8));
     float nl=saturate(dot(n,l)), nv=max(saturate(dot(n,v)),.001);
     float nh=saturate(dot(n,h)), vh=saturate(dot(v,h));
-    float hemi=saturate(n.y*.5+.5);
-    float3 fill=lerp(float3(.25,.22,.20),float3(.52,.60,.72),hemi);
-    float3 key=float3(1.05,.93,.78);
-    // Rough dielectric GGX, F0=.04 and roughness=.68 for every eligible BSP.
-    // This is deliberately not a shiny metal/material classification.
-    float alpha=.68*.68, a2=alpha*alpha;
-    float den=nh*nh*(a2-1)+1;
-    float D=a2/(3.14159265*den*den);
-    float k=(.68+1)*(.68+1)/8;
-    float G=(nl/(nl*(1-k)+k))*(nv/(nv*(1-k)+k));
-    float F=.04+.96*pow(1-vh,5);
-    float spec=D*G*F/max(4*nl*nv,.001)*nl;
-    float visibility=saturate(dot(baked,float3(.2126,.7152,.0722)));
-    float3 litLinear=base*(fill+.78*key*nl)+key*spec*visibility;
+    float3 key=float3(1.05,.95,.82);
+    float indirect=.78+.22*saturate(dot(baked,float3(.2126,.7152,.0722)));
+    float visibility=LobbyShadow(shadowMap,mul(float4(i.wp,1),lightMatrix),shadowSettings,nl);
+    float roughness=clamp(surface.x+(height-.5)*.14,.24,.85);
+    float metallic=surface.y;
+    float3 f0=lerp(.04,base,metallic);
+    float3 spec=LobbySpecular(n,v,l,f0,roughness);
+    float3 reflected=reflect(-v,n);
+    float3 environment=lerp(float3(.13,.14,.17),float3(.40,.55,.76),saturate(reflected.y*.5+.5));
+    float3 fresnel=f0+(1-f0)*pow(1-nv,5);
+    float3 litLinear=base*(1-metallic*.70)*(LobbyFill(n)*indirect+.86*key*nl*visibility);
+    litLinear+=key*spec*visibility+environment*fresnel*(1-roughness)*.40;
+    litLinear+=key*LobbySpecular(n,v,l,.04,.24)*surface.w*visibility;
     float3 rgb=encodeRGB(litLinear);
     float z=lerp(i.distance.x,i.distance.y,settings.w), f=1;
     if(settings.z>.5 && settings.z<1.5) f=exp(-fogValues.z*z);
@@ -94,13 +109,14 @@ bool initLobbyMaterial455(IDirect3DDevice9* d) {
         s.failed=true; lobbyMaterialError455(FAILED(hr)?hr:D3DERR_NOTAVAILABLE,"shader-model-3"); return false;
     }
     ID3DXBuffer *code=nullptr,*errors=nullptr;
-    hr=D3DXCompileShader(lobbyMaterialShader455,UINT(std::strlen(lobbyMaterialShader455)),nullptr,nullptr,"VS","vs_3_0",D3DXSHADER_OPTIMIZATION_LEVEL3,&code,&errors,nullptr);
+    const std::string shader=std::string(RF455LobbyLightingShader)+lobbyMaterialShader455;
+    hr=D3DXCompileShader(shader.c_str(),UINT(shader.size()),nullptr,nullptr,"VS","vs_3_0",D3DXSHADER_OPTIMIZATION_LEVEL3,&code,&errors,nullptr);
     if(FAILED(hr))lobbyMaterialCompilerError455(errors);
     releaseLobbyMaterial455(errors);
     if(SUCCEEDED(hr)) hr=d->CreateVertexShader(static_cast<const DWORD*>(code->GetBufferPointer()),&s.vs);
     releaseLobbyMaterial455(code);
     if(FAILED(hr)) {s.failed=true;lobbyMaterialError455(hr,"vertex-shader");return false;}
-    hr=D3DXCompileShader(lobbyMaterialShader455,UINT(std::strlen(lobbyMaterialShader455)),nullptr,nullptr,"PS","ps_3_0",D3DXSHADER_OPTIMIZATION_LEVEL3,&code,&errors,nullptr);
+    hr=D3DXCompileShader(shader.c_str(),UINT(shader.size()),nullptr,nullptr,"PS","ps_3_0",D3DXSHADER_OPTIMIZATION_LEVEL3,&code,&errors,nullptr);
     if(FAILED(hr))lobbyMaterialCompilerError455(errors);
     releaseLobbyMaterial455(errors);
     if(SUCCEEDED(hr)) hr=d->CreatePixelShader(static_cast<const DWORD*>(code->GetBufferPointer()),&s.ps);
@@ -170,6 +186,22 @@ bool beginLobbyMaterial455(IDirect3DDevice9* d,const _R3MATERIAL* mat,const _BSP
     if(SUCCEEDED(hr))hr=d->SetVertexShaderConstantF(8,reinterpret_cast<const float*>(&p),4);
     if(SUCCEEDED(hr))hr=d->SetVertexShaderConstantF(12,reinterpret_cast<const float*>(&normal),4);
     if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(0,constants,4);
+    float light[16],shadowValues[4];auto* shadow=RF455_LobbyShadowTexture(light,shadowValues);
+    float finish[4]={.48f,.08f,.13f,.12f};
+    if(std::strstr(mat->m_name,"wall")){finish[0]=.66f;finish[1]=.02f;finish[2]=.08f;finish[3]=.04f;}
+    if(std::strstr(mat->m_name,"pipe")){finish[0]=.32f;finish[1]=.72f;finish[2]=.04f;finish[3]=0;}
+    if(std::strstr(mat->m_name,"lobby_n_p")){finish[0]=.42f;finish[1]=.25f;finish[2]=.12f;}
+    if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(4,light,4);
+    if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(8,shadowValues,1);
+    if(SUCCEEDED(hr))hr=d->SetPixelShaderConstantF(9,finish,1);
+    if(SUCCEEDED(hr))hr=d->SetTexture(2,shadow);
+    d->SetSamplerState(2,D3DSAMP_MINFILTER,D3DTEXF_POINT);d->SetSamplerState(2,D3DSAMP_MAGFILTER,D3DTEXF_POINT);
+    d->SetSamplerState(2,D3DSAMP_MIPFILTER,D3DTEXF_NONE);d->SetSamplerState(2,D3DSAMP_SRGBTEXTURE,FALSE);
+    d->SetSamplerState(2,D3DSAMP_ADDRESSU,D3DTADDRESS_CLAMP);d->SetSamplerState(2,D3DSAMP_ADDRESSV,D3DTADDRESS_CLAMP);
+    D3DCAPS9 caps{};if(SUCCEEDED(d->GetDeviceCaps(&caps))&&caps.MaxAnisotropy>1){
+        d->SetSamplerState(0,D3DSAMP_MAXANISOTROPY,(std::min)(16u,unsigned(caps.MaxAnisotropy)));
+        d->SetSamplerState(0,D3DSAMP_MINFILTER,D3DTEXF_ANISOTROPIC);
+    }
     if(SUCCEEDED(hr))hr=d->SetSamplerState(0,D3DSAMP_SRGBTEXTURE,FALSE);
     if(SUCCEEDED(hr))hr=d->SetSamplerState(1,D3DSAMP_SRGBTEXTURE,FALSE);
     if(SUCCEEDED(hr))hr=d->SetRenderState(D3DRS_SRGBWRITEENABLE,FALSE);

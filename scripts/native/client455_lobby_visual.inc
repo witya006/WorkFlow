@@ -1,11 +1,13 @@
 #include "client455_lobby_post.h"
 #include "client455_lobby_material.h"
 #include "client455_lobby_sky.h"
+#include "client455_lobby_shadow.h"
 #include "userinterface/gamewindow/etcwin/guioptionwindow.h"
 #include <cstdio>
 #include <cstdlib>
 #include <memory>
 static HRESULT RF455_SaveLoginBackbuffer(const char*,D3DSURFACE_DESC&);
+void RF455_ObserveLobbySlots();
 
 namespace {
 std::unique_ptr<CGUIOptionWindow> lobbyOptions455;
@@ -28,6 +30,7 @@ void RF455_InstallLobbyVisual(CGUIScreen& screen) {
     screen.Add(lobbyOptions455.get());
 }
 void RF455_RemoveLobbyVisual(CGUIScreen& screen) {
+    RF455_InvalidateLobbyShadows(true);
     if(!lobbyOptions455)return;
     if(lobbyOptions455->IsShow())lobbyOptions455->Close();
     if(screen.GetCapture455()==lobbyOptions455.get())screen.SetCapture455(nullptr);
@@ -50,19 +53,21 @@ struct RF455LobbyFrameSample {
     void end(){LARGE_INTEGER ended;QueryPerformanceCounter(&ended);total+=double(ended.QuadPart-started.QuadPart)*1000/double(frequency.QuadPart);++frames;}
 } lobbyFrameSample455;
 void RF455_SaveLobbyVisualMetadata() {
-    if(!RF455_LobbyReferenceMode())return;
+    static const bool diagnostics=[] {char text[8]{};return GetEnvironmentVariableA("RF455_LOBBY_DIAGNOSTICS",text,sizeof(text))&&text[0]=='1';}();
+    if(!RF455_LobbyReferenceMode()&&!diagnostics)return;
     // One fixed receipt per preview; updated at most once per second.
     static DWORD previous=0;const DWORD now=GetTickCount();if(now-previous<1000)return;previous=now;
-    const auto post=RF455_GetLobbyPostTelemetry();const auto material=RF455_GetLobbyMaterialTelemetry();const auto sky=RF455_GetLobbySkyTelemetry();
+    const auto post=RF455_GetLobbyPostTelemetry();const auto material=RF455_GetLobbyMaterialTelemetry();const auto sky=RF455_GetLobbySkyTelemetry();const auto shadow=RF455_GetLobbyShadowTelemetry();
     if(FILE* file=std::fopen("lobby-visual.json","wb")) {
         std::fprintf(file,"{\"post_enabled\":%s,\"post_available\":%s,\"post_frames\":%llu,\"passes\":%u,\"format\":%u,\"msaa\":%u,\"estimated_post_vram_bytes\":%llu,\"post_error\":%ld,\"post_stage\":\"%s\",\"material_binds\":%llu,\"material_skips\":%llu,\"material_errors\":%llu,\"cpu_render_submission_ms_mean\":%.4f,\"camera_seconds\":%.3f,\"camera_view\":[",
             post.enabled?"true":"false",post.available?"true":"false",post.completedFrames,post.passCount,unsigned(post.colorFormat),post.multisampleCount,
             post.estimatedVideoBytes,long(post.error),post.errorStage,material.binds,material.skips,material.errors,
             lobbyFrameSample455.frames?lobbyFrameSample455.total/lobbyFrameSample455.frames:0,RF455_LobbyReferenceSeconds());
         const float* matrix=&GetR3State()->mMatView._11;for(unsigned i=0;i<16;++i)std::fprintf(file,"%s%.8g",i?",":"",matrix[i]);
-        std::fprintf(file,"],\"frame_interval_ms_mean\":%.4f,\"material_error\":%ld,\"material_stage\":\"%s\",\"sky_ready\":%s,\"sky_draws\":%llu,\"sky_errors\":%llu,\"sky_error\":%ld,\"sky_stage\":\"%s\",\"sky_volume_bytes\":%llu}\n",
+        std::fprintf(file,"],\"frame_interval_ms_mean\":%.4f,\"material_error\":%ld,\"material_stage\":\"%s\",\"sky_ready\":%s,\"sky_draws\":%llu,\"sky_errors\":%llu,\"sky_error\":%ld,\"sky_stage\":\"%s\",\"sky_volume_bytes\":%llu,\"shadow_ready\":%s,\"shadow_resolution\":%u,\"shadow_bsp_draws\":%u,\"shadow_actor_draws\":%u,\"shadow_errors\":%llu,\"shadow_stage\":\"%s\"}\n",
             lobbyFrameSample455.intervals?lobbyFrameSample455.intervalTotal/lobbyFrameSample455.intervals:0,long(material.error),material.errorStage,
-            sky.ready?"true":"false",sky.draws,sky.errors,long(sky.error),sky.stage,sky.volumeTextureBytes);std::fclose(file);
+            sky.ready?"true":"false",sky.draws,sky.errors,long(sky.error),sky.stage,sky.volumeTextureBytes,
+            shadow.ready?"true":"false",shadow.resolution,shadow.bspDraws,shadow.actorDraws,shadow.errors,shadow.stage);std::fclose(file);
     }
 }
 void RF455_ObserveLobbySettings(){
@@ -101,7 +106,7 @@ void RF455_ObserveLobbySettings(){
     case 3:
         ok=capture("lobby-restored.png")&&RF455_LobbyPostEnabled()==initial&&
             bool(GetPrivateProfileIntA("RenderState","LobbyPost",-1,".\\R3Engine.ini"))==initial;
-        RF455_ReleaseLobbySky();RF455_ReleaseLobbyMaterial();RF455_ReleaseLobbyPost();
+        RF455_ReleaseLobbyShadows();RF455_ReleaseLobbySky();RF455_ReleaseLobbyMaterial();RF455_ReleaseLobbyPost();
         break;
     case 4:
         {const auto post=RF455_GetLobbyPostTelemetry();const auto sky=RF455_GetLobbySkyTelemetry();ok=!initial||(post.available&&post.error==S_OK&&post.passCount==11&&sky.ready&&sky.errors==0);}

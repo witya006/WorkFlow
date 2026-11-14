@@ -169,6 +169,7 @@ def main():
     parser.add_argument('--verify', action='store_true', help='Wait for startup screenshots, then close this run')
     parser.add_argument('--audio', action='store_true', help='Enable sound and music in the test copy')
     parser.add_argument('--flight', action='store_true', help='Verify the flight to character selection')
+    parser.add_argument('--all-slots', action='store_true', help='Capture all three real selection cameras; no character mutation')
     parser.add_argument('--natural', action='store_true', help='Let the intro finish before checking for the menu')
     parser.add_argument('--credentials-base64', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--current-build', action='store_true', help='Use current own binary with verified Russian resource inputs for manual testing')
@@ -179,6 +180,7 @@ def main():
         parser.error('--natural requires --verify')
     if args.flight and not (args.audio and args.verify and not args.natural):
         parser.error('--flight requires --audio --verify without --natural')
+    if args.all_slots and not args.flight:parser.error('--all-slots requires --flight')
     parent, source, active, inputs = stage(args.current_build)
     if args.check_inputs:
         print(json.dumps({'status': 'PASS', 'scope': 'Launch inputs only; no server login or game run',
@@ -206,9 +208,11 @@ def main():
     env = {key: value for key, value in os.environ.items() if not key.upper().startswith('RF455_')}
     if args.verify:
         env.update(RF455_CAPTURE_TITLE='1', RF455_CAPTURE_LOBBY_CAMERA='1')
+    if args.all_slots:env.update(RF455_LOBBY_INSPECT_SLOTS='1',RF455_LOBBY_DIAGNOSTICS='1')
     captures = ['title-logo.png', 'title-prologue.png', 'lobby-camera-menu.png']
     if args.flight:
         captures += ['lobby-camera-flight.png', 'lobby-camera-selection.png']
+    if args.all_slots:captures += [f'lobby-slot-{i}.png' for i in range(3)]
     preserved = run / 'natural-startup'
     if args.natural:
         preserved.mkdir(exist_ok=True)
@@ -240,7 +244,7 @@ def main():
                 audio_meter = subprocess.Popen([str(ROOT / 'work/startup-audio-meter.exe'), str(game.pid), '25000'],
                                                cwd=run, stdout=measurements, creationflags=subprocess.CREATE_NO_WINDOW)
         started = time.monotonic()
-        deadline = started + (360 if args.natural else 45)
+        deadline = started + (360 if args.natural else 120 if args.all_slots else 45)
         evidence['captures'] = {}
         evidence['capture_seconds'] = {}
         evidence['started_tick_ms'] = tick_ms()

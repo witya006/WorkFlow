@@ -2,9 +2,9 @@
   "scope": "Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open",
   "architecture": "x86",
   "build_exit": 0,
-  "objects": 69,
+  "objects": 70,
   "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "b6b46f6cc40139899f5c9972d5d5e51223ee4e24d81e82533d1e0f96f332b025",
+  "library_sha256": "cacfd85985bb6b50cd332d80c0792461b957466e165af47002333d9aadb86667",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -330,7 +330,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "5a086ddca2cf4a7386951ea24e16f04c3f79ff5678eba710f21ca1cad4506b12",
+      "sha256": "1effb84d009c8dc0986ea6e25366520b8e2ac988fa4e8d87f9086940fe8be25f",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
       "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
     },
@@ -366,7 +366,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/bsp.cpp",
-      "sha256": "d9f56049a897f2d7bae72a4c2984e9e4bda28045a6136dcd9d8295008de4419c",
+      "sha256": "9efec78fd08d987069569b30b6f9b6748af5e297dfb6a173856e90ae6411e3f0",
       "original": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
       "original_sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
     },
@@ -396,7 +396,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3render.cpp",
-      "sha256": "b06730dbea9b51b86fde57a5065ba0fe3c30d085a52d9a632fd74601658de7b8",
+      "sha256": "71885781e46fb9372be9ab9123a5954ed3662bcadf240f9cc15ba7d9cac7ba34",
       "original": "work/client455-port/source/R3Engine/1stclass/r3render.cpp",
       "original_sha256": "26015b5c628c7b5384a2cec25f3ffa518cef44893a21c43833eee5a8d662da92"
     },
@@ -425,13 +425,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "e168e2c75ae75c48ee4d82cdd26279f2335163aaf406aff00848196673a5e19b"
+    "sha256": "3bf80949af48e88add8517b4afca4a8d6bfe7e4a3b97e6045d772af6f21e6cbc"
   },
   "log": {
     "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "e92c2e0ba9b4a25839c8220ef533ed05fb0c68344f04dfbbdfbf47287205eb2c"
+    "sha256": "add5980d395e2ba7c012c4d50a6f55e0be6598974d998167988d97bff4a95217"
   },
-  "script_sha256": "a5722c5b6ac28b4558f93984057e573fa94b1a4f7a26dcea0581fb7c26f39132",
+  "script_sha256": "06920eb04d70c33753874a68f8705b75b41849cf0048d07b14aef01d2e233c86",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -440,14 +440,18 @@
     "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
     "client455_font.h": "5ccbd3ecc3362d6b4e16c990fe9ab5dd3cea993be6f0ba984523ab97e0065cef"
   },
-  "expected_objects": 69,
+  "expected_objects": 70,
   "lobby_post_source": {
     "file": "scripts/native/client455_lobby_post.cpp",
     "sha256": "730201fb60a2679e6fb0302a4f6f845297b0c81727ab5fdfbd0b5befe21c2dee"
   },
   "lobby_sky_source": {
     "file": "scripts/native/client455_lobby_sky.cpp",
-    "sha256": "32f920b0a8e6f1d64f873f225e23442c78bb1ad53afd83bd0dbc9958a27273b9"
+    "sha256": "187dba97c7c2093d5c16b99dd95f58b1553e7542efc65eb8115cd02188541b7b"
+  },
+  "lobby_shadow_source": {
+    "file": "scripts/native/client455_lobby_shadow.cpp",
+    "sha256": "0299824362ff57910df502fcf857740b83a0f0594a17cf40e35e39182f36a736"
   },
   "sprite_texture": {
     "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"
@@ -551,7 +555,7 @@
   },
   "material_shader_port_script": {
     "file": "scripts/client455_material_shader_port.py",
-    "sha256": "ea5b5bb0135a46b398083067be1fb66501df89fb007dcb97428586eae54aa51c"
+    "sha256": "9d6a37c51990bf0b0da5c80f410eae9e6cd2194c78de2b902c936d44607172a6"
   },
   "core_header_overlay": {
     "file": "work/client455-port/startup-engine/include/core455.h",
@@ -567,7 +571,7 @@
   },
   "bsp_header_overlay": {
     "file": "work/client455-port/startup-engine/include/r3bsp455.h",
-    "sha256": "93e07fdf42856c75d119f761ce8e58714b6061ae7f4ebcd2bdc1d62b2a810b5e",
+    "sha256": "5b51e5d7f289faf2f700b59544ceadc84ec8fa62bbc503da98d0bf988ffdb1b1",
     "original": "work/client455-port/source/R3Engine/1stclass/r3bsp.h",
     "original_sha256": "b78dc256012be5a0e529e1d38e406281a5691ae46a3cc850c65027f891ba7e6f"
   },
