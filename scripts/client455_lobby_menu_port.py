@@ -116,7 +116,10 @@ static DWORD cameraSoundEndFrame455;''')
     StopWave(CameraMiddleWave455);
     // The enhanced menu uses the authored view from above the orbital station.
     // Keep the matching transition branch for the subsequent selection flight.
-    if(RF455_LobbyPostEnabled())m_RandomStart=false;
+    // This runs before lobbyMenu.Install initializes the post renderer. Read
+    // the persisted preference here, otherwise its default false leaves a
+    // random legacy underside camera selected on half the fresh launches.
+    if(GetPrivateProfileIntA("RenderState","LobbyPost",1,".\\\\R3Engine.ini")!=0)m_RandomStart=false;
     const DWORD camera = m_AniCamera.GetCameraIndex(!RF455_LobbyReferenceMode() && m_RandomStart ? "c_ex01" : "c_ex02");
     if (camera != ID_INVALID) {
         m_AniCamera.SetPrePlayCamera(camera, 0, returningFromCredits ? 0 : ID_INVALID,

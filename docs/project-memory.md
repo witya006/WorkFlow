@@ -35,8 +35,8 @@
 ## Что подтверждено
 
 Текущая сборка: work/client455-port/normal/build/RF_Online.bin,
-SHA-256 f710636464305e11b323d7181001200ac1f2a3307acfa9d9e2c49bc11e23506f,
-x86, base 0x400000, entry RVA 0x1b8520. 71 engine object / 182 client / 20 kernels,
+SHA-256 b06aceb53ef6c41dfe696c19d7282f790681f732a9b67f7b545668afce2595e6,
+x86, base 0x400000, entry RVA 0x1b85a0. 71 engine object / 182 client / 20 kernels,
 линковка без ошибок. Полный клиент: вход, меню, полёт и три камеры выбора,
 1920×1080/MSAA4. Сейчас один занятый слот и два пустых; не писать «три персонажа».
 [Орбитальный пакет и ограничения](../research/client455-lobby-orbit.md).

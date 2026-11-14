@@ -5,9 +5,9 @@
   "client_only": true,
   "server_modified": false,
   "build": {
-    "sha256": "f710636464305e11b323d7181001200ac1f2a3307acfa9d9e2c49bc11e23506f",
+    "sha256": "b06aceb53ef6c41dfe696c19d7282f790681f732a9b67f7b545668afce2595e6",
     "architecture": "x86",
-    "entry_rva": "0x1b8520"
+    "entry_rva": "0x1b85a0"
   },
   "resolution": [
     1920,
@@ -27,9 +27,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 445,
+      "actor_capture_frames": 315,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 445
+      "actor_capture_state_checks": 315
     },
     {
       "slot": 1,
@@ -43,9 +43,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 484,
+      "actor_capture_frames": 353,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 484
+      "actor_capture_state_checks": 353
     },
     {
       "slot": 2,
@@ -59,9 +59,9 @@
       "shadow_matrix_changes": 1,
       "shadow_fit_expansions": 0,
       "actor_pose_age_frames": 0,
-      "actor_capture_frames": 523,
+      "actor_capture_frames": 392,
       "actor_capture_failures": 0,
-      "actor_capture_state_checks": 523
+      "actor_capture_state_checks": 392
     }
   ],
   "settings_reset": {
@@ -78,12 +78,12 @@
     "hardware": true
   },
   "steady_menu": {
-    "sample_count": 11,
-    "foreground_samples": 11,
-    "fps_mean": 21.307272727272725,
-    "fps_min": 20.88,
-    "fps_max": 21.573,
-    "frame_ms_mean": 46.940272727272735,
+    "sample_count": 7,
+    "foreground_samples": 7,
+    "fps_mean": 21.38828571428571,
+    "fps_min": 20.943,
+    "fps_max": 21.639,
+    "frame_ms_mean": 46.762928571428574,
     "excludes": "First three seconds after menu capture; flight/selection capture stalls"
   },
   "remaining": [
@@ -94,42 +94,42 @@
   "evidence": [
     {
       "file": "artifacts/lobby-orbit/menu.png",
-      "sha256": "29eaa4c47ec24cbbe8936d476fd7a7162ac3913dd43289fb2d7b2fe677ae639e",
-      "bytes": 1890194
+      "sha256": "d638d70bbbecd882ee65fee213f77099944b34d7753ed4b9c67a6411e74d689f",
+      "bytes": 2888803
     },
     {
       "file": "artifacts/lobby-orbit/current-run.json",
-      "sha256": "486434a2f91f0a1137091861a8640693367b3916526351dd74eebba54525e7fc",
-      "bytes": 23594
+      "sha256": "5719858e57a8535b45f53346c351951121aa5c762ea9dfe3502c0cfcb0eb22f8",
+      "bytes": 19814
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-0.png",
-      "sha256": "c01ef11f1bfd65513dd591814c4cc7adbadf115beefe0cf71afccfb2803b1775",
-      "bytes": 2503261
+      "sha256": "15888ba3fe5dcd47c9bf6a2395cd104ec815f42444b8d35fdf4adf0a176dfbba",
+      "bytes": 2481901
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-1.png",
-      "sha256": "462796655a54a144deb2aac9ecf65865cdd96be89083cc228032dc69bf225523",
-      "bytes": 2409588
+      "sha256": "69c3b7fad48014867043679939445a962b23ee555294541ee2f3f196beb2058d",
+      "bytes": 2403673
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-2.png",
-      "sha256": "5ede21bfd062d9933211554475eea74bc34d93c82ee1bbf258f63c0ce0066d4e",
-      "bytes": 2450404
+      "sha256": "b042918ef459492bc0b9f8fcf6a8de7ab9234b0f0e85f4d6b10b139337ed97bd",
+      "bytes": 2444171
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-0.json",
-      "sha256": "d40dc38223f9fdecaf67df7a1f8056b3c7387aa831f3c754eaac103cdacb9217",
+      "sha256": "e24ae56bb063788f4ac9603d06745a178face95ef3a1ba3d668f1d8392cd79ad",
       "bytes": 302
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-1.json",
-      "sha256": "ad7bfa873dee76f39ca1ae4cb9b34fea97d77cb3a9e35903be185ec120dd12f8",
+      "sha256": "eadb7fc59bc37b4eb0ffb96120890a867de4c0c12949f79bfb78d4ca8486d84c",
       "bytes": 303
     },
     {
       "file": "artifacts/lobby-orbit/lobby-slot-2.json",
-      "sha256": "16ea5ec60771d3ac685781b866974978b7086d28e566e786ea29186c4ca4f749",
+      "sha256": "0f69e7a0bf2bbe0d2c119fb1f1da959019631bd641082f9fe16e244419ab9d4e",
       "bytes": 303
     },
     {
@@ -156,6 +156,16 @@
       "file": "artifacts/lobby-orbit/hud-off-run.json",
       "sha256": "56e05e84d42422bea359c7c491dcd520ebcaa8914750fd0900168fbe79dbee51",
       "bytes": 21022
+    },
+    {
+      "file": "artifacts/lobby-orbit/focus-run.json",
+      "sha256": "486434a2f91f0a1137091861a8640693367b3916526351dd74eebba54525e7fc",
+      "bytes": 23594
+    },
+    {
+      "file": "artifacts/lobby-orbit/camera-order-before.png",
+      "sha256": "29eaa4c47ec24cbbe8936d476fd7a7162ac3913dd43289fb2d7b2fe677ae639e",
+      "bytes": 1890194
     }
   ]
 }
