@@ -87,7 +87,7 @@ void RF455_InitializeEnhancedActorLighting(RF455ShaderManager* manager, const RF
         next.programs[kind] = static_cast<unsigned>(program);
     }
     next.available = true;
-    next.enabled = GetPrivateProfileIntA("RenderState", "EnhancedActorLighting", 0, ".\\R3Engine.ini") == 1;
+    next.enabled = GetPrivateProfileIntA("RenderState", "EnhancedActorLighting", 1, ".\\R3Engine.ini") == 1;
     enhancedActorLighting = next;
 }
 

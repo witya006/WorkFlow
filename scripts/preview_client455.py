@@ -33,7 +33,6 @@ def stage(current_build=False):
     from workspace_guard import require_budget
     require_budget()
     active = json.loads((ROOT / 'inventory/client455-normal-link.json').read_text(encoding='utf-8'))['executable']
-    digest = active['sha256']
     for receipt in RECEIPTS:
         if receipt.is_file():
             report = json.loads(receipt.read_text(encoding='utf-8'))
@@ -45,8 +44,8 @@ def stage(current_build=False):
     own = (ROOT / 'work/m9').resolve()
     if not source.is_relative_to(own) or sha(source) != report['executable']['sha256']:
         raise ValueError('The verified launch inputs belong to a different build')
-    run = own / digest[:8] / 'manual-1080p'
-    run.parent.mkdir(exist_ok=True)
+    run = ROOT / 'work/client455-preview/runtime'
+    run.parent.mkdir(exist_ok=True, parents=True)
     seen = {}
     for item in report['inputs']:
         listed = Path(item['file'])
@@ -104,11 +103,14 @@ def populate(run, source, active, inputs, audio=False):
         shutil.copyfile(current_exe, target_exe)
         copied += current_exe.stat().st_size
     if audio:
-        original = (source / config_file.name).read_text(encoding='ascii')
+        existing_settings = config_file.exists()
+        original = (config_file if config_file.exists() else source / config_file.name).read_text(encoding='ascii')
         client = Path(json.loads((ROOT / 'config/paths.json').read_text())['client_455'])
         copy_lobby_audio(client, run)
-        config_file.write_text(original.replace('Sound=FALSE', 'Sound=TRUE').replace('Music=FALSE', 'Music=TRUE')
-                               + 'SoundVol=0.65\nMusicVol=0.45\n', encoding='ascii')
+        original = original.replace('Sound=FALSE', 'Sound=TRUE').replace('Music=FALSE', 'Music=TRUE')
+        if not existing_settings:
+            original += 'SoundVol=0.65\nMusicVol=0.45\n'
+        config_file.write_text(original, encoding='ascii')
     config = config_file.read_text(encoding='ascii').splitlines()
     if not {'ScreenXSize=1920', 'ScreenYSize=1080', 'bFullScreen=FALSE'}.issubset(config):
         raise ValueError('Expected a 1920×1080 windowed configuration')
@@ -170,6 +172,7 @@ def main():
     parser.add_argument('--natural', action='store_true', help='Let the intro finish before checking for the menu')
     parser.add_argument('--credentials-base64', action='store_true', help=argparse.SUPPRESS)
     parser.add_argument('--current-build', action='store_true', help='Use current own binary with verified Russian resource inputs for manual testing')
+    parser.add_argument('--enhanced-graphics', '--enhanced-lobby', dest='enhanced_graphics', action='store_true', help='Enable integrated lobby and actor lighting in the full playable client')
     parser.add_argument('--check-inputs', action='store_true', help='Validate launch inputs without logging in or launching the game')
     args = parser.parse_args()
     if args.natural and not args.verify:
@@ -181,12 +184,23 @@ def main():
         print(json.dumps({'status': 'PASS', 'scope': 'Launch inputs only; no server login or game run',
                           'inputs': len(inputs), 'build': active['sha256']}))
         return
-    run = parent.with_name(f'{parent.name}-audio' if args.audio else f'{parent.name}-001')
+    run = parent
     previous = run / ('manual-launch.json' if args.verify else 'interactive-launch.json')
     for receipt in (run / 'manual-launch.json', run / 'interactive-launch.json'):
         if receipt.is_file() and game_window(json.loads(receipt.read_text(encoding='utf-8'))['pid']):
             raise RuntimeError('The preceding test client is still open')
     evidence = populate(run, source, active, inputs, audio=args.audio)
+    if args.enhanced_graphics:
+        config_file = run / 'R3Engine.ini'
+        lines = config_file.read_text(encoding='ascii').splitlines()
+        lines = [line for line in lines if not line.partition('=')[0].strip().lower() in ('lobbypost', 'enhancedactorlighting')]
+        section = next((i for i, line in enumerate(lines) if line.strip().lower() == '[renderstate]'), None)
+        if section is None:
+            raise ValueError('RenderState section is required for enhanced lobby')
+        lines.insert(section + 1, 'LobbyPost=1')
+        lines.insert(section + 2, 'EnhancedActorLighting=1')
+        config_file.write_text('\n'.join(lines) + '\n', encoding='ascii')
+        evidence['enhanced_graphics'] = True
     handoff = run / 'System/DefaultSet.tmp'
     payload = test_session(args.credentials_base64)
     env = {key: value for key, value in os.environ.items() if not key.upper().startswith('RF455_')}

@@ -20,7 +20,7 @@ float RF455_LobbyReferenceSeconds() {
     return value>=0&&value<=30?value:3.2f;
 }
 void RF455_InstallLobbyVisual(CGUIScreen& screen) {
-    RF455_SetLobbyPostEnabled(GetPrivateProfileIntA("RenderState","LobbyPost",0,".\\R3Engine.ini")!=0);
+    RF455_SetLobbyPostEnabled(GetPrivateProfileIntA("RenderState","LobbyPost",1,".\\R3Engine.ini")!=0);
     lobbyOptions455=std::make_unique<CGUIOptionWindow>();
     lobbyOptions455->SetActions455({});
     lobbyOptions455->Init();

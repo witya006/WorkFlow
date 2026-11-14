@@ -6,7 +6,7 @@ Clair Obscur: Expedition 33 при сохранении узнаваемой и�
 картинку, затем занимаемся глубокой оптимизацией. Перенос на UE5 не планируется.
 
 **14.11: сборка закреплена, первый улучшенный вариант lobby в Full HD готов к оценке.**
-Текущий графический пакет 9956aa63; резервная сборка 102a2443 сохранена. Полностью принятых игровых областей
+Текущая сборка 373c4cdb включает улучшенную графику по умолчанию; резервная сборка 102a2443 сохранена. Полностью принятых игровых областей
 0 из 12; это не нулевой прогресс, а незакрытая полнота каждой области.
 
 ## Навигация
@@ -30,6 +30,7 @@ Clair Obscur: Expedition 33 при сохранении узнаваемой и�
 | work/client-reference/, work/recovered/, work/client-dependencies/ | Эталоны и необходимые зависимости |
 | work/m9/102a2443/ | Проверенный комплект запуска и точка отката |
 | work/lobby-visual/runtime/ | Один повторно используемый offline просмотр lobby |
+| work/client455-preview/runtime/ | Полный текущий игровой клиент для ручной проверки |
 | work/shared-runtime-inputs/ | Общие неизменяемые копии ресурсов |
 | local/ | Локальные зависимости инструментов |
 | artifacts/ | Логи сборки, доказательства, компактный архив очистки |
@@ -46,7 +47,7 @@ Clair Obscur: Expedition 33 при сохранении узнаваемой и�
 ```powershell
 ./scripts/Invoke-Python.ps1 scripts/workspace.py status
 ./scripts/Invoke-Python.ps1 scripts/workspace.py verify
-./scripts/Invoke-Python.ps1 scripts/preview_client455.py --check-inputs
+./scripts/Invoke-Python.ps1 scripts/preview_client455.py --current-build --check-inputs
 ```
 
 Проверено: бюджет хранения, целостность текущего bin/линковки и 2016 входов запуска.
@@ -58,5 +59,10 @@ BASE-02: чистая клиентская компиляция и запуск 
 полная переустановка SDK/third-party не проводилась.
 Просмотр: scripts/Invoke-Python.ps1 scripts/preview_lobby455.py --mode enhanced --seconds 40 --interactive.
 F10 → Graphics → Lobby scene quality. Сценарий не требует аккаунта или сервера.
+
+Полный клиент: scripts/Invoke-Python.ps1 scripts/preview_client455.py --current-build.
+Требуется работающий локальный сервер; тестовые данные вводятся при запуске.
+Улучшения lobby и света персонажей включены по умолчанию, явный выбор классики
+сохраняется. --enhanced-graphics включает улучшения и для ранее сохранённых настроек.
 scripts/Preview-RF455-1080p.cmd — ручной запуск проверенной собственной сборки;
 нужен поднятый сервер и ввод тестового аккаунта. Пароли в файлах не сохранять.
