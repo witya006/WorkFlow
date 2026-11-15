@@ -1,12 +1,11 @@
 #include "client455_chat_profile.h"
+#include "client455_character_rfs.h"
 #include "client455_chat_reference_tables.h"
 #include "client455_language.h"
 #include <algorithm>
 #include <cerrno>
 #include <cstdlib>
 #include <cstring>
-#include <fstream>
-#include <iterator>
 #include <limits>
 #include <mbstring.h>
 #include <stdexcept>
@@ -92,22 +91,42 @@ void RF455ChatProfile::fallback(unsigned index,unsigned nation){
 bool RF455ChatProfile::Load(unsigned nation,const char* explicitPath){
     if(ready)return true; // existing process provider is retained in the target
     if(nation>=11)throw std::logic_error("455 chat country domain");
-    std::ifstream file(explicitPath?explicitPath:RF455_CHAT_PATHS[nation],std::ios::binary);if(!file)return false;
-    std::string input((std::istreambuf_iterator<char>(file)),std::istreambuf_iterator<char>());
-    if(input.size()>4*1024*1024)throw std::logic_error("455 chat script size domain");
-    const auto tokens=tokenize(input);if(tokens.empty())return false;
-    Release();
-    for(unsigned index=0;index<36;++index){
-        const auto found=std::find(tokens.begin(),tokens.end(),RF455_CHAT_TAGS[index]);bool parsed=false;
-        if(found!=tokens.end()){
-            const auto at=static_cast<std::size_t>(found-tokens.begin());int channels[4];
-            if(at+5<tokens.size()&&number(tokens[at+1],channels[0])&&number(tokens[at+2],channels[1])&&number(tokens[at+3],channels[2])&&number(tokens[at+4],channels[3])){
-                for(auto& channel:channels)channel=std::max(0,std::min(255,channel));
-                const DWORD color=DWORD(channels[2])|(DWORD(channels[1])<<8)|(DWORD(channels[0])<<16)|(DWORD(channels[3])<<24);
-                setFont(header[index],color);setFont(body[index],color);prefix(index,tokens[at+5].c_str());parsed=true;
-            }
+    constexpr std::size_t maxBytes = 4u * 1024u * 1024u;
+    const char* path = explicitPath ? explicitPath : RF455_CHAT_PATHS[nation];
+    auto* cache = RF455_GetCharacterRfsCache();
+    const auto source = cache->ReadLooseBytes(path, maxBytes);
+    if (source.declaredSize > maxBytes) {
+        cache->RemoveLooseBytes(path);
+        throw std::logic_error("455 chat script size domain");
+    }
+    if (source.status != RF455ResourceReadStatus::Ready || !source.bytes) return false;
+    if (source.bytes->empty()) {
+        cache->RemoveLooseBytes(path);
+        return false;
+    }
+    try {
+        const std::string input(reinterpret_cast<const char*>(source.bytes->data()), source.bytes->size());
+        const auto tokens = tokenize(input);
+        if (tokens.empty()) {
+            cache->RemoveLooseBytes(path);
+            return false;
         }
-        if(parsed)++scriptRecords;else{fallback(index,nation);++fallbackRecords;}
+        Release();
+        for(unsigned index=0;index<36;++index){
+            const auto found=std::find(tokens.begin(),tokens.end(),RF455_CHAT_TAGS[index]);bool parsed=false;
+            if(found!=tokens.end()){
+                const auto at=static_cast<std::size_t>(found-tokens.begin());int channels[4];
+                if(at+5<tokens.size()&&number(tokens[at+1],channels[0])&&number(tokens[at+2],channels[1])&&number(tokens[at+3],channels[2])&&number(tokens[at+4],channels[3])){
+                    for(auto& channel:channels)channel=std::max(0,std::min(255,channel));
+                    const DWORD color=DWORD(channels[2])|(DWORD(channels[1])<<8)|(DWORD(channels[0])<<16)|(DWORD(channels[3])<<24);
+                    setFont(header[index],color);setFont(body[index],color);prefix(index,tokens[at+5].c_str());parsed=true;
+                }
+            }
+            if(parsed)++scriptRecords;else{fallback(index,nation);++fallbackRecords;}
+        }
+    } catch (const std::logic_error&) {
+        cache->RemoveLooseBytes(path);
+        throw;
     }
     ready=true;return true;
 }

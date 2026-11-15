@@ -101,7 +101,8 @@ PNG `8ed172376020b2512ffec06a09ff174a07809d5fad9e43ac10b5aa9108bfe289`
 Character/boards→Quest→EventShip→NDMsgMonster→ItemTimer→country slot296→
 NDMsgEvent→EventSound→SpecialStore→ItemCollection→Map→5default effects→
 Avatar finalization→registered-character request.
-Роль country slot296 пока неизвестна. ItemTimer и SpecialStore не подменять
+Вызов country slot296 загружает ItemPremium через RVA `0x204530`.
+ItemTimer и SpecialStore не подменять
 догадками об Exp/Combine. Варианты cash/NPC/quest должны использовать selectors139.
 Затем нужны настоящие таблицы, классы/внешний вид и обычный экран выбора.
 

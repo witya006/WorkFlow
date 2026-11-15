@@ -57,6 +57,7 @@ public:
     void DrawCharacterShadow(CHARACTEROBJECT*,float*,float,float,float);
     bool LoadRealData(CHARACTEROBJECT*,TextureManager*);
     bool LoadRealData(CHARACTEROBJECT*,TextureManager*,bool);
+    RF455PoseStatus UpdatePose455(CHARACTEROBJECT*);
     void FrameMove(CHARACTEROBJECT*);void InitEffect(CHARACTEROBJECT*);
     int BeginShadow(unsigned long);void EndShadow();
     void SetLight(D3DLIGHT9);void SetState();void UnSetState();

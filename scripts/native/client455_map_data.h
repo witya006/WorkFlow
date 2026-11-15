@@ -41,7 +41,8 @@ struct RF455MapInfo {
     std::uint32_t byIndex=0;
     char pName[32]={},pName_UI[64]={},pFileName[128]={},pMinimapFileName[128]={};
     std::uint16_t wMinimapAngle=0;
-    std::uint8_t fields358[128]={},padding486[2]={};
+    char pBspFileName[128]={};
+    std::uint8_t padding486[2]={};
     std::uint32_t byPortalNum=0;
     RF455PortalInfo* pPortalInfo=nullptr;
     std::uint32_t byMineNum=0;
@@ -72,7 +73,46 @@ RF455MapLoad RF455_ParseMapData(RF455MapData&,const void*,std::size_t,const void
 // A valid catalog remains usable when the optional localized overlay fails.
 RF455MapLoad RF455_LoadMapData(RF455MapData&,const char* mainFile,const char* localizedFile);
 
+const RF455MapInfo* RF455_FindMapByCode(const RF455MapData&, std::uint32_t code);
+const RF455MapInfo* RF455_FindMapByName(const RF455MapData&, const char* name);
+
+enum class RF455MapLayerSection { Minimap, World };
+const RF455MapLayer* RF455_FindMapLayer(const RF455MapData&, RF455MapLayerSection, const char* name);
+int RF455_FindMapLayerLabel(const RF455MapLayer&, const char* text);
+const char* RF455_FindLocalMapLabel(const RF455MapData&, std::uint32_t mapIndex, std::uint16_t ordinal);
+const RF455MapLayer* RF455_FindWorldMapParent(const RF455MapData&, const char* label, int* ordinal = nullptr);
+bool RF455_WorldMapSpritePath(const RF455MapLayer&, char* output, std::size_t capacity);
+
+class RF455MapHitMask {
+public:
+    // The selected layer is immutable. Clear the mask before replacing its catalog.
+    bool load(const RF455MapLayer&);
+    int hit(std::uint32_t x, std::uint32_t y) const;
+    void clear();
+
+private:
+    const RF455MapLayer* layer_ = nullptr;
+    std::uint32_t width_ = 0, height_ = 0;
+    std::size_t labelCount_ = 0;
+    std::vector<unsigned char> pixels_;
+};
+
+class RF455LocalMapLayer {
+public:
+    // Clear before replacing the catalog. Label pointers borrow its storage.
+    bool select(const RF455MapData&, std::uint32_t mapIndex);
+    const char* labelAt(float x, float y) const;
+    const char* labelAt(std::size_t index) const;
+    const RF455MapLayer* layer() const { return layer_; }
+    void clear();
+
+private:
+    const RF455MapLayer* layer_ = nullptr;
+    RF455MapHitMask mask_;
+};
+
 #if defined(_M_IX86)
 static_assert(sizeof(RF455MineInfo)==96&&sizeof(RF455PortalInfo)==288&&sizeof(RF455MapAreaInfo)==84&&sizeof(RF455MapInfo)==588,"455 map records");
+static_assert(offsetof(RF455MapInfo,pFileName)==100&&offsetof(RF455MapInfo,pBspFileName)==358,"455 map paths");
 static_assert(offsetof(RF455MapInfo,pPortalInfo)==492&&offsetof(RF455MapInfo,miniMapWidth)==552&&offsetof(RF455MapInfo,miniMapX)==560,"455 map lanes");
 #endif

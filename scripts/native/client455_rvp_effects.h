@@ -2,6 +2,7 @@
 #include <cstdint>
 class ChInterface;
 struct RF455CharacterStorage;
+struct RF455EffectStore;
 struct D3DXMATRIX;
 class RF455RvpEffects {
 public:
@@ -19,3 +20,5 @@ struct RF455RvpEffectsView {
 RF455RvpEffects& RF455_AcquireRvpEffects();
 void RF455_ReleaseRvpEffects();
 RF455RvpEffectsView RF455_RvpEffectsState();
+// After scene teardown, release any retained GPU cache from a previously used movie.
+RF455EffectStore* RF455_ReleaseInactiveRvpDeviceResources455();

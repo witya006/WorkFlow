@@ -29,7 +29,7 @@ std::vector<DWORD> pixelsGrade(IDirect3DDevice9* device,const char* filename){
     using Save=HRESULT(WINAPI*)(LPCSTR,D3DXIMAGE_FILEFORMAT,LPDIRECT3DSURFACE9,const PALETTEENTRY*,const RECT*);
     auto save=reinterpret_cast<Save>(GetProcAddress(GetModuleHandleW(L"d3dx9_36.dll"),"D3DXSaveSurfaceToFileA"));require(save&&SUCCEEDED(save(filename,D3DXIFF_PNG,surface,nullptr,nullptr)),"Actual model frame capture");surface->Release();return pixels;
 }
-void writeGrade(const std::string& value){FILE* f=std::fopen("Chef/GradeEffect/Bgrade.mst","wb");require(f,"Private grade fixture");require(std::fwrite(value.data(),1,value.size(),f)==value.size(),"Private fixture write");std::fclose(f);}
+void writeGrade(const std::string& value){FILE* f=std::fopen("Chef/GradeEffect/Bgrade.mst","wb");require(f,"Private grade fixture");require(std::fwrite(value.data(),1,value.size(),f)==value.size(),"Private fixture write");std::fclose(f);RF455_GetCharacterRfsCache()->RemoveLooseBytes("Chef/GradeEffect/Bgrade.mst");}
 int runGrade(){
     SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX|SEM_NOOPENFILEERRORBOX);
     require(RF455_InitializeNationPaths()&&RF455_InitializeLanguageData(),"Nation/language");InitR3Engine();

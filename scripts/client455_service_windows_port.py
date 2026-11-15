@@ -175,6 +175,8 @@ def port_service_windows(raw, relative, section, native):
     if relative == TRADE_NET + '.cpp':
         return exchange_packet_source(raw, section), True
     if relative == 'character/avatar/cavatar_etc.cpp':
-        return replace(raw, b'_GetExchangeWindow()->SetExchangeRate( m_dwExchangeRate );',
-                       b'if (_GetExchangeWindow()) _GetExchangeWindow()->SetExchangeRate(m_dwExchangeRate);'), True
+        raw = replace(raw, b'_GetExchangeWindow()->SetExchangeRate( m_dwExchangeRate );',
+                      b'if (_GetExchangeWindow()) _GetExchangeWindow()->SetExchangeRate(m_dwExchangeRate);')
+        return replace(raw, b'_GetExchangeWindow()->SetTaxRate( m_fTexRate * 100.0f );',
+                       b'if (_GetExchangeWindow()) _GetExchangeWindow()->SetTaxRate(m_fTexRate * 100.0f);'), True
     return raw, False

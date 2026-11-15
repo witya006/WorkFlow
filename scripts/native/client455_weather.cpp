@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "client455_weather_format.h"
+#include "client455_resource_text.h"
 #include "client455_weather_parameters.inc"
 #include "r3math.h"
 #include "core.h"
@@ -13,28 +14,72 @@
 #include "r3util.h"
 #include "commonutil.h"
 
-bool RF455_ReadExtMaterial(FILE* file,RF455_ExtMaterial* material) {
-    memset(material,0,sizeof(*material));
-    // Preserve the unchecked reference header read. Inputs shorter than four
-    // bytes leave an indeterminate float and are outside verified scenarios.
+bool RF455_ParseExtMaterial(const void* bytes,size_t size,RF455_ExtMaterial* material)
+{
+    constexpr size_t versionSize = sizeof(float);
+    constexpr size_t legacyPayloadSize = 1024;
+    static_assert(versionSize == 4, "R3X version layout");
+    if (!bytes || !material || size < versionSize + legacyPayloadSize) return false;
+    const auto* input = static_cast<const unsigned char*>(bytes);
     float version;
-    fread(&version,4,1,file);
-    if (version!=1.1f) return false;
-    fread(material,sizeof(*material),1,file);
+    memcpy(&version,input,versionSize);
+    if (version != 1.1f) return false;
+
+    RF455_ExtMaterial candidate = {};
+    size_t bodySize = size - versionSize;
+    if (bodySize != legacyPayloadSize) {
+        if (bodySize < sizeof(candidate)) return false;
+        bodySize = sizeof(candidate);
+    }
+    memcpy(&candidate,input + versionSize,bodySize);
+    constexpr unsigned int lensFlare = 0x10;
+    constexpr unsigned int environment = 0x20;
+    if ((candidate.mFlag & lensFlare) &&
+        !memchr(candidate.mLensTexName,0,sizeof(candidate.mLensTexName))) return false;
+    if ((candidate.mFlag & environment) &&
+        (!memchr(candidate.mEnvEntityName,0,sizeof(candidate.mEnvEntityName)) ||
+         !memchr(candidate.mEnvEntityName2,0,sizeof(candidate.mEnvEntityName2)))) return false;
+    *material = candidate;
+    return true;
+}
+
+bool RF455_ReadExtMaterial(FILE* file,RF455_ExtMaterial* material)
+{
+    if (!file || !material) return false;
+    unsigned char bytes[sizeof(float) + sizeof(RF455_ExtMaterial)];
+    float version;
+    if (fread(&version,sizeof(version),1,file) != 1 || version != 1.1f) return false;
+    memcpy(bytes,&version,sizeof(version));
+    const size_t bodySize = fread(bytes + sizeof(version),1,sizeof(RF455_ExtMaterial),file);
+    return !ferror(file) && RF455_ParseExtMaterial(bytes,sizeof(version) + bodySize,material);
+}
+
+template<class Read> static bool readWeatherTokens455(Read read,char* token) {
+    _R3ENGINE_STATE* state=GetR3State();
+    if (!strcmp(token,"*ENVIRONMENT")) {
+        if (!read() || strlen(token) >= sizeof(state->mEnvEntityNames[0])) return false;
+        strcpy(state->mEnvEntityNames[0],token);
+    }
+    if (!strcmp(token,"*ENVIRONMENT_ID")) { if (!read()) return false; state->mEnvIDs[0]=(DWORD)atoi(token); }
+    if (!strcmp(token,"*ENVIRONMENT2")) {
+        if (!read() || strlen(token) >= sizeof(state->mEnvEntityNames[1])) return false;
+        strcpy(state->mEnvEntityNames[1],token);
+    }
+    if (!strcmp(token,"*ENVIRONMENT_ID2")) { if (!read()) return false; state->mEnvIDs[1]=(DWORD)atoi(token); }
+    _strlwr(token); //90ACEC:case folding happens after the uppercase sections.
+    if (!readWeatherParameters455(read,token)) return false;
+    if (!strcmp(token,"*no_sun")) state->mEnvironmentSceneFlags|=1;
+    if (!strcmp(token,"*no_sky_color")) state->mEnvironmentSceneFlags|=4;
+    if (!strcmp(token,"*use_fog_fog2")) state->mEnvironmentSceneFlags|=2;
     return true;
 }
 
 void RF455_ReadWeatherTokens(FILE* file,char* token) {
-    _R3ENGINE_STATE* state=GetR3State();
-    if (!strcmp(token,"*ENVIRONMENT")) { fscanf(file,"%s",token); strcpy(state->mEnvEntityNames[0],token); }
-    if (!strcmp(token,"*ENVIRONMENT_ID")) { fscanf(file,"%s",token); state->mEnvIDs[0]=(DWORD)atoi(token); }
-    if (!strcmp(token,"*ENVIRONMENT2")) { fscanf(file,"%s",token); strcpy(state->mEnvEntityNames[1],token); }
-    if (!strcmp(token,"*ENVIRONMENT_ID2")) { fscanf(file,"%s",token); state->mEnvIDs[1]=(DWORD)atoi(token); }
-    _strlwr(token); //90ACEC:case folding happens after the uppercase sections.
-    RF455_ReadWeatherParameters(file,token);
-    if (!strcmp(token,"*no_sun")) state->mEnvironmentSceneFlags|=1;
-    if (!strcmp(token,"*no_sky_color")) state->mEnvironmentSceneFlags|=4;
-    if (!strcmp(token,"*use_fog_fog2")) state->mEnvironmentSceneFlags|=2;
+    readWeatherTokens455([&]{return file&&fscanf(file,"%255s",token)==1;},token);
+}
+
+bool RF455_ReadWeatherTokens(RF455ResourceText& input,char (&token)[256]) {
+    return readWeatherTokens455([&]{return input.read(token);},token);
 }
 
 #if !defined(RF_CLIENT_455_CLOCK)

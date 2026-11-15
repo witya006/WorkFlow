@@ -70,14 +70,14 @@ struct TXContext {
     ~TXContext(){if(device)device->Release();if(api)api->Release();if(window)DestroyWindow(window);if(d3d)FreeLibrary(d3d);if(dx)FreeLibrary(dx);}
 };
 static RF455CharacterTextureApi realApi;
-static std::vector<IDirect3DCubeTexture9*> orphaned;
+static std::vector<IDirect3DCubeTexture9*> observedCubes;
 static unsigned fileCalls,memoryCalls;
 static HRESULT WINAPI txMemory(IDirect3DDevice9* d,LPCVOID b,UINT size,UINT w,UINT h,UINT levels,DWORD usage,D3DFORMAT fmt,D3DPOOL pool,DWORD filter,DWORD mipfilter,D3DCOLOR color,void* info,PALETTEENTRY* palette,IDirect3DTexture9** out){
     ++memoryCalls;return realApi.memory2D(d,b,size,w,h,levels,usage,fmt,pool,filter,mipfilter,color,info,palette,out);
 }
 static HRESULT WINAPI txCube(IDirect3DDevice9* d,LPCVOID b,UINT size,UINT w,UINT levels,DWORD usage,D3DFORMAT fmt,D3DPOOL pool,DWORD filter,DWORD mipfilter,D3DCOLOR color,void* info,PALETTEENTRY* palette,IDirect3DCubeTexture9** out){
     const auto hr=realApi.memoryCube(d,b,size,w,levels,usage,fmt,pool,filter,mipfilter,color,info,palette,out);
-    if(SUCCEEDED(hr) && *out)orphaned.push_back(*out);return hr;
+    if(SUCCEEDED(hr) && *out){(*out)->AddRef();observedCubes.push_back(*out);}return hr;
 }
 static HRESULT WINAPI txDisk(IDirect3DDevice9* d,LPCSTR path,IDirect3DTexture9** out){++fileCalls;return realApi.file2D(d,path,out);}
 struct TXManager {
@@ -154,7 +154,8 @@ static int txGpu(const std::vector<TXAsset>& assets,const char* dll,const char* 
         if(actual.p){TX_CHECK(txCompareTextures(expected.p,actual.p)==0);std::vector<unsigned char> a,b;TX_CHECK(txRender(c.device,expected.p,a)==0 && txRender(c.device,actual.p,b)==0);TX_CHECK(a==b);++realGpuCases;}
     }
     std::fprintf(stderr,"GPU cube\n");std::fflush(stderr);
-    std::uint32_t cube=777;TX_CHECK(!RF455_LoadCharacterTextureFile(c.device,".\\tex\\CUBE.DDS",0,false,2048,2048,&cube) && cube==1);TX_CHECK(orphaned.size()==1);TX_CHECK(orphaned[0]->Release()==0);orphaned.clear();++orphanCases;
+    std::uint32_t cube=777;TX_CHECK(!RF455_LoadCharacterTextureFile(c.device,".\\tex\\CUBE.DDS",0,false,2048,2048,&cube) && cube==1);TX_CHECK(observedCubes.size()==1);
+    const auto refs=observedCubes.back()->Release();observedCubes.clear();TX_CHECK(refs==0);++orphanCases;
     cube=777;TX_CHECK(!RF455_LoadCharacterTextureFile(c.device,".\\tex\\ABSENT.DDS",0,false,2048,2048,&cube) && cube==777);
     TX_CHECK(txWrite("tex/EMPTY.DDS","",0));TX_CHECK(!RF455_LoadCharacterTextureFile(c.device,".\\tex\\EMPTY.DDS",0,false,2048,2048,&cube) && cube==777);
     {
@@ -166,7 +167,8 @@ static int txGpu(const std::vector<TXAsset>& assets,const char* dll,const char* 
     {
         TXManager owned(c.device);auto& m=owned.value;const auto account=RF455_GetTextureAccounting();
         std::fprintf(stderr,"GPU manager\n");std::fflush(stderr);
-        TX_CHECK(RF455_AddTexture(&m,".\\tex","CHECKER.BMP"));TX_CHECK(fileCalls>0);TX_CHECK(m.nextId==2 && m.estimatedBytes==16 && m.end-m.begin==1);
+        const auto priorFileCalls=fileCalls,priorMemoryCalls=memoryCalls;
+        TX_CHECK(RF455_AddTexture(&m,".\\tex","CHECKER.BMP"));TX_CHECK(fileCalls==priorFileCalls && memoryCalls==priorMemoryCalls+1);TX_CHECK(m.nextId==2 && m.estimatedBytes==16 && m.end-m.begin==1);
         TXCom<IDirect3DTexture9> direct;TX_CHECK(SUCCEEDED(realApi.file2D(c.device,".\\tex\\CHECKER.BMP",direct.out())));TX_CHECK(txCompareTextures(direct.p,RF455_GetTextureById(&m,1))==0);
         std::vector<unsigned char> image;TX_CHECK(txRender(c.device,RF455_GetTextureById(&m,1),image)==0);
         const unsigned positions[]={16*64+16,16*64+48,48*64+16,48*64+48};const unsigned char colors[4][3]={{255,0,0},{0,255,0},{0,0,255},{255,255,255}};
@@ -202,10 +204,10 @@ static int txGpu(const std::vector<TXAsset>& assets,const char* dll,const char* 
         TX_CHECK(materialParts==97 && materialHits>0 && owned.value.end>owned.value.begin);
     }
     TX_CHECK(SUCCEEDED(c.device->SetTexture(0,nullptr)));TX_CHECK(c.device->Release()==0);c.device=nullptr;TX_CHECK(c.api->Release()==0);c.api=nullptr;
-    std::vector<IDirect3DCubeTexture9*>().swap(orphaned);RF455_SetCharacterTextureApi(old);return 0;
+    std::vector<IDirect3DCubeTexture9*>().swap(observedCubes);RF455_SetCharacterTextureApi(old);return 0;
 }
 extern "C" int RF455_RunCharacterTextureChecks(const char* dll,const char* output,const char* frame,int gpu){
-    textureChecks=profileCases=realGpuCases=renderCases=materialParts=materialHits=orphanCases=fileCalls=memoryCalls=0;orphaned.clear();
+    textureChecks=profileCases=realGpuCases=renderCases=materialParts=materialHits=orphanCases=fileCalls=memoryCalls=0;observedCubes.clear();
     RF455CharacterRfsCache cache;auto* previous=RF455_SetCharacterRfsCache(&cache);std::vector<TXAsset> assets;int status=txCpu(assets,cache);if(!status && gpu)status=txGpu(assets,dll,frame);RF455_SetCharacterRfsCache(previous);
     FILE* report=std::fopen(output,"wb");if(!report)return 1;
     std::fprintf(report,"{\"status\":\"%s\",\"checks\":%u,\"dds_profiles\":%u,\"gpu_texture_pairs\":%u,\"render_cases\":%u,\"material_parts\":%u,\"material_texture_bindings\":%u,\"cube_orphans_observed_and_released\":%u,\"memory_calls\":%u,\"file_calls\":%u}\n",status?"FAIL":"PASS",textureChecks,profileCases,realGpuCases,renderCases,materialParts,materialHits,orphanCases,memoryCalls,fileCalls);std::fclose(report);return status;

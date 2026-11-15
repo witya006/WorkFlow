@@ -1,4 +1,6 @@
 #include "Character.h"
+#include "client455_character_rfs.h"
+#include <algorithm>
 #include <cstdio>
 #include <cstring>
 #include <new>
@@ -67,7 +69,20 @@ void ChInterface::SetTexPath(CHARACTEROBJECT* model,char* source){
 // output bytes. This API describes the reference reader, not a validating parser.
 int ChInterface::ImportBoundBox(char* path,float* first,float* second){
     if(!path)return 0;
+    constexpr std::size_t nameSize = 256;
+    constexpr std::size_t vectorSize = 12;
+    constexpr std::size_t firstOffset = nameSize + vectorSize;
+    const auto source = RF455_GetCharacterRfsCache()->ReadLooseBytes(path, firstOffset + vectorSize);
+    if (source.status == RF455ResourceReadStatus::Ready && source.bytes) {
+        const auto& bytes = *source.bytes;
+        if (bytes.size() > nameSize)
+            std::memcpy(second, bytes.data() + nameSize, (std::min)(bytes.size() - nameSize, vectorSize));
+        if (bytes.size() > firstOffset)
+            std::memcpy(first, bytes.data() + firstOffset, bytes.size() - firstOffset);
+        return 1;
+    }
+
     std::FILE* file=std::fopen(path,"rb");if(!file)return 0;
-    char name[256];std::fread(name,1,sizeof(name),file);
-    std::fread(second,1,12,file);std::fread(first,1,12,file);std::fclose(file);return 1;
+    char name[nameSize];std::fread(name,1,sizeof(name),file);
+    std::fread(second,1,vectorSize,file);std::fread(first,1,vectorSize,file);std::fclose(file);return 1;
 }

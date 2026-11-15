@@ -14,6 +14,9 @@ struct RF455LanguagePack {
     void release(); // Original clears the record pointer,retains count/codepage.
 };
 bool RF455_DecodeEdf(const void*,std::size_t,std::vector<unsigned char>&);
+// Destination storage must not overlap input and must fit the full payload.
+// An empty payload permits a null destination.
+bool RF455_DecodeEdf(const void*,std::size_t,void* output,std::size_t outputCapacity);
 bool RF455_ParseLanguagePayload(RF455LanguagePack&,const void*,std::size_t,unsigned codepage);
 bool RF455_LoadLanguagePack(RF455LanguagePack&,const char* filename,unsigned codepage);
 unsigned RF455_CountryCodePage(unsigned nation);

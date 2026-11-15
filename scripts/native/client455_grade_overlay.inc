@@ -2,8 +2,10 @@
 #include "r3d3dtex.h"
 #include "r3render.h"
 #include "client455_resource_io.h"
+#include "client455_resource_text.h"
 #include <array>
 #include <cstdlib>
+#include <cstring>
 
 struct RF455GradeOverlayResources::State {
     std::array<_R3MATERIAL,4> materials{};
@@ -11,21 +13,18 @@ struct RF455GradeOverlayResources::State {
     bool attempted=false;
 };
 namespace {
-bool gradeToken455(FILE* file,char (&value)[256]) {
-    return std::fscanf(file,"%255s",value)==1;
-}
 SHORT gradeFixed455(const char* value,float scale) {
     return static_cast<SHORT>(static_cast<int>(double(static_cast<float>(std::atof(value)))*scale));
 }
-bool gradeLayer455(FILE* file,_R3MATERIAL& material,unsigned index,IDirect3DTexture9*& texture) {
+bool gradeLayer455(RF455ResourceText& input,_R3MATERIAL& material,unsigned index,IDirect3DTexture9*& texture) {
     auto& layer=material.m_Layer[index];layer.m_ARGB=0xffffffff;
     char token[256];
-    while(gradeToken455(file,token)) {
+    while(input.read(token)) {
         if(!std::strcmp(token,"}")) {
             if(!layer.m_sANIAlphaFlickerAni)layer.m_sANIAlphaFlickerAni=255;
             return true;
         }
-        const auto read=[&](){return gradeToken455(file,token);};
+        const auto read=[&](){return input.read(token);};
         // Independent comparisons preserve the original parser's token reuse.
         if(!std::strcmp(token,"map_name")) {
             if(!read())return false;
@@ -90,15 +89,18 @@ bool gradeLayer455(FILE* file,_R3MATERIAL& material,unsigned index,IDirect3DText
     return false; //Target loops at EOF inside a layer;malformed-input fidelity remains open.
 }
 bool gradeMaterial455(const char* name,_R3MATERIAL& material,IDirect3DTexture9*& texture) {
-    std::memset(&material,0,sizeof material);FILE* file=std::fopen(name,"rt");if(!file)return false;
+    std::memset(&material,0,sizeof material);
+    RF455ResourceText input;
+    if (!input.open(name)) return false;
     char token[256];bool okay=true;
-    while(gradeToken455(file,token)&&std::strcmp(token,"end")&&std::strcmp(token,"}")) {
+    while(input.read(token)&&std::strcmp(token,"end")&&std::strcmp(token,"}")) {
         if(std::strcmp(token,"layer"))continue;
-        if(!gradeToken455(file,token)){okay=false;break;}
+        if(!input.read(token)){okay=false;break;}
         const long index=std::atol(token);
-        if(index<0||index>=7||!gradeLayer455(file,material,unsigned(index),texture)){okay=false;break;}
+        if(index<0||index>=7||!gradeLayer455(input,material,unsigned(index),texture)){okay=false;break;}
     }
-    std::fclose(file);return okay;
+    if (!okay && input.hasCachedInput()) RF455_GetCharacterRfsCache()->RemoveLooseBytes(name);
+    return okay;
 }
 }
 RF455GradeOverlayResources::RF455GradeOverlayResources():state(new State){}

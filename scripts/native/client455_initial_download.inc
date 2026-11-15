@@ -26,7 +26,8 @@ RF455BasicItem* CreateDownloadedItem(CBoardObject& item, BYTE table, WORD index,
 
 void SetDownloadedModifiers(RF455BasicItem& item, DWORD upgrade, const RF455ItemModifiers& modifiers)
 {
-    item.SetDownloadModifiers455(upgrade, modifiers.kind, modifiers.value, modifiers.timed != 0,
+    item.ApplyTalics455(RF455_GameItems().data, upgrade);
+    item.SetDownloadModifiers455(modifiers.kind, modifiers.value, modifiers.timed != 0,
                                  modifiers.secondsRemaining);
 }
 
@@ -282,7 +283,7 @@ bool CNetworkMgr::InitMsg_QuestDownloadResult455(const char* bytes, std::size_t 
     if (!avatar) return false;
     unsigned resolved = 0;
     auto& items = RF455_GameItems();
-    if (packet.count && items.loadQuestFile()) {
+    if (packet.count && items.data.hasQuestData()) {
         for (unsigned i = 0; i < packet.count; ++i)
             if (items.data.getQuest(packet.quests[i].index).data) ++resolved;
     }

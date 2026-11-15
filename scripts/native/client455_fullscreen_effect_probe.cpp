@@ -12,6 +12,7 @@
 #include "mainapp.h"
 #include "client455_fullscreen_effect.h"
 #include "client455_scene_capture.h"
+#include "client455_character_rfs.h"
 #include "jerror.h"
 #include <cstdio>
 #include <cstdlib>
@@ -56,10 +57,14 @@ static std::vector<DWORD> surfacePixels137(IDirect3DSurface9* surface){
 static std::vector<DWORD> texturePixels137(IDirect3DTexture9* texture){
     IDirect3DSurface9* surface=nullptr;check(SUCCEEDED(texture->GetSurfaceLevel(0,&surface)),"capture surface137");const auto result=surfacePixels137(surface);surface->Release();return result;
 }
-static void releaseRetainedCapture137(IDirect3DTexture9* texture){
-    //The target helper retains one GetSurfaceLevel reference. Only this lab
-    //compensates it after observation,so teardown can verify the other owners.
-    IDirect3DSurface9* surface=nullptr;texture->GetSurfaceLevel(0,&surface);surface->Release();surface->Release();
+static ULONG captureSurfaceRefs137(IDirect3DTexture9* texture)
+{
+    IDirect3DSurface9* surface = nullptr;
+    check(texture && SUCCEEDED(texture->GetSurfaceLevel(0, &surface)) && surface, "capture owner surface137");
+    const ULONG refs = surface->AddRef();
+    surface->Release();
+    surface->Release();
+    return refs;
 }
 static std::vector<DWORD> readback(const char* path){
     auto* device=GetD3dDevice();IDirect3DSurface9 *target=nullptr,*memory=nullptr;check(SUCCEEDED(device->GetRenderTarget(0,&target)),"readback target");D3DSURFACE_DESC desc={};target->GetDesc(&desc);check(SUCCEEDED(device->CreateOffscreenPlainSurface(desc.Width,desc.Height,desc.Format,D3DPOOL_SYSTEMMEM,&memory,nullptr)),"readback surface");check(SUCCEEDED(device->GetRenderTargetData(target,memory)),"readback");D3DLOCKED_RECT lock={};check(SUCCEEDED(memory->LockRect(&lock,nullptr,D3DLOCK_READONLY)),"readback lock");D3DVIEWPORT9 viewport={};device->GetViewport(&viewport);check(viewport.X==0&&viewport.Y==0&&viewport.Width==640&&viewport.Height==480,"restored screen viewport");
@@ -81,20 +86,33 @@ static int run(){
     for(const auto& size:{std::pair<unsigned,unsigned>{320,240},{800,600},{640,480}}){ReleaseFullScreenEffect();released137();state->mScreenXsize=float(size.first);state->mScreenYsize=float(size.second);InitFullScreenEffect();resources137check(size.first,size.second,false);}
     IDirect3DTexture9* fixture=nullptr;check(SUCCEEDED(D3DXCreateTexture(device,32,16,1,0,D3DFMT_A8R8G8B8,D3DPOOL_MANAGED,&fixture)),"perturbation fixture137");check(SUCCEEDED(D3DXSaveTextureToFileA("System/PerbMap.dds",D3DXIFF_DDS,fixture,nullptr)),"perturbation fixture file137");fixture->Release();
     for(unsigned i=0;i<2;++i){ReleaseFullScreenEffect();released137();InitFullScreenEffect();resources137check(640,480,true);D3DSURFACE_DESC desc={};RF455_GetPerturbationTexture()->GetLevelDesc(0,&desc);check(desc.Width==32&&desc.Height==16,"actual perturbation file loaded137");}
-    ReleaseFullScreenEffect();released137();check(DeleteFileA("System/PerbMap.dds")!=FALSE,"remove own perturbation fixture137");InitFullScreenEffect();resources137check(640,480,false);
+    ReleaseFullScreenEffect();released137();check(DeleteFileA("System/PerbMap.dds")!=FALSE,"remove own perturbation fixture137");
+    RF455_GetCharacterRfsCache()->ClearPayloads(); // The probe deliberately removed an immutable input.
+    InitFullScreenEffect();resources137check(640,480,false);
     //The existing wrapper allocates its backbuffer before RestoreDevice changes
     //the viewport dimensions. Use the actual full surface for an exact copy;
     //wrapper/viewport equivalence itself remains a separate open contract.
     ReleaseFullScreenEffect();state->mScreenXsize=float(backbuffer137.Width);state->mScreenYsize=float(backbuffer137.Height);InitFullScreenEffect();resources137check(backbuffer137.Width,backbuffer137.Height,false);state->mScreenXsize=640;state->mScreenYsize=480;
     SetStateFullScreenEffect(0);check(R3BeginScene()!=FALSE,"capture begin137");R3ClearFrameBuffer();Draw2DRectangle(0,0,640,480,0xff0040a0);Draw2DRectangle(64,96,320,240,0xffe03010);R3EndScene();
-    const auto before137=surfacePixels137(target);auto* captured=RF455_CaptureCurrentScene();check(captured==RF455_GetSceneCaptureTarget()->GetD3DTexture()&&texturePixels137(captured)==before137&&surfacePixels137(target)==before137,"actual framebuffer copied without changing it137");releaseRetainedCapture137(captured);++captures137;
-    SetStateFullScreenEffect(0x80000000u);check(R3BeginScene()!=FALSE,"active capture begin137");R3ClearFrameBuffer();Draw2DRectangle(0,0,512,512,0xff508020);R3EndScene();captured=RF455_CaptureCurrentScene();check(captured==stRToTMain.GetD3DTexture(),"active capture selects main137");const auto activePixels137=texturePixels137(captured);check((activePixels137[256*512+256]&0xffffff)==0x508020,"active target pixels137");releaseRetainedCapture137(captured);++captures137;SetStateFullScreenEffect(0);check(R3BeginScene()!=FALSE,"restore direct frame137");R3EndScene();
+    const auto before137=surfacePixels137(target);
+    auto* captureTexture=RF455_GetSceneCaptureTarget()->GetD3DTexture();
+    const auto destinationRefs=captureSurfaceRefs137(captureTexture);
+    auto* captured=RF455_CaptureCurrentScene();
+    check(captured==captureTexture&&texturePixels137(captured)==before137&&surfacePixels137(target)==before137,"actual framebuffer copied without changing it137");
+    check(captureSurfaceRefs137(captureTexture)==destinationRefs,"scene capture surface references balanced137");++captures137;
+    SetStateFullScreenEffect(0x80000000u);check(R3BeginScene()!=FALSE,"active capture begin137");R3ClearFrameBuffer();Draw2DRectangle(0,0,512,512,0xff508020);R3EndScene();
+    auto* activeTexture=stRToTMain.GetD3DTexture();
+    const auto activeRefs=captureSurfaceRefs137(activeTexture);
+    captured=RF455_CaptureCurrentScene();check(captured==activeTexture,"active capture selects main137");
+    const auto activePixels137=texturePixels137(captured);check((activePixels137[256*512+256]&0xffffff)==0x508020,"active target pixels137");
+    check(captureSurfaceRefs137(activeTexture)==activeRefs,"active capture surface references balanced137");++captures137;
+    SetStateFullScreenEffect(0);check(R3BeginScene()!=FALSE,"restore direct frame137");R3EndScene();
     for(float density:{0.0f,0.15f,0.25f,1.0f}){unsigned color=0;for(DWORD rgb:{0xff0000u,0x0000ffu,0x00ff00u}){char image[80];const char* output=nullptr;if(density==0.15f){std::sprintf(image,"primary-%u.bgra",color);output=image;}render(0x80000000u,density,rgb,output,target,depth);++color;++frames;}}
     render(0,0.25f,0x00ffffu,"disabled.bgra",target,depth);++frames;render(0x80000005u,0.15f,0xff00ffu,"combined-mode.bgra",target,depth);++frames;render(0,0.25f,0xffff00u,nullptr,target,depth);++frames;
     const auto oldLevel=state->mThisVidMemLevel;
     for(unsigned level:{0u,2u}){ReleaseFullScreenEffect();state->mThisVidMemLevel=level;InitFullScreenEffect();check(stRToTMain.GetXSize()==512&&stRToTMain.GetYSize()==512&&stRToTBlur.GetXSize()==512&&stRToTBlur.GetYSize()==512,"fixed512 even legacy low-video-memory mode");render(0x80000000u,0.15f,0xff0000u,nullptr,target,depth);++frames;}
     SetStateFullScreenEffect(0);ReleaseFullScreenEffect();SetStateFullScreenEffect(0x80000000u);check(!R3BeginScene(),"unloaded effect resource must fail BeginScene");SetStateFullScreenEffect(0);state->mThisVidMemLevel=oldLevel;InitFullScreenEffect();render(0x80000000u,0.25f,0x0000ffu,nullptr,target,depth);++frames;
-    SetStateFullScreenEffect(0);target->Release();depth->Release();g_MainApp.ReleaseR3D3D();released137();ReleaseR3Engine();check(!warnings,"no engine warnings");FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");std::fprintf(out,"{\"status\":\"PASS\",\"GPU_frames\":%u,\"saved_frames\":5,\"densities\":[0,0.15,0.25,1],\"warnings\":%u,\"actual_R3Begin_FullScreenEffect_End\":true,\"current_scene_opaque_final\":true,\"framebuffer_depth_viewport_UI_restored\":true,\"texture512_low_video_memory\":true,\"failed_BeginScene_reported\":true,\"resource_configurations\":%u,\"capture_cases\":%u,\"targets\":5,\"resize_cases\":3,\"perturbation_load_release\":true,\"missing_perturbation_supported\":true,\"framebuffer_copy_exact\":true,\"active_target_selection\":true,\"retained_capture_reference_compensated_by_lab\":true,\"complete_water_bloom_lifecycle\":false}\n",frames,warnings,resources137,captures137);std::fclose(out);return 0;
+    SetStateFullScreenEffect(0);target->Release();depth->Release();g_MainApp.ReleaseR3D3D();released137();ReleaseR3Engine();check(!warnings,"no engine warnings");FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result");std::fprintf(out,"{\"status\":\"PASS\",\"GPU_frames\":%u,\"saved_frames\":5,\"densities\":[0,0.15,0.25,1],\"warnings\":%u,\"actual_R3Begin_FullScreenEffect_End\":true,\"current_scene_opaque_final\":true,\"framebuffer_depth_viewport_UI_restored\":true,\"texture512_low_video_memory\":true,\"failed_BeginScene_reported\":true,\"resource_configurations\":%u,\"capture_cases\":%u,\"targets\":5,\"resize_cases\":3,\"perturbation_load_release\":true,\"missing_perturbation_supported\":true,\"framebuffer_copy_exact\":true,\"active_target_selection\":true,\"capture_surface_references_balanced\":true,\"complete_water_bloom_lifecycle\":false}\n",frames,warnings,resources137,captures137);std::fclose(out);return 0;
 }
 static LONG filter(EXCEPTION_POINTERS* info){if(info->ExceptionRecord->ExceptionCode==0xe06d7363)return EXCEPTION_CONTINUE_SEARCH;std::fprintf(stderr,"exception:%08lX RVA:%08lX\n",info->ExceptionRecord->ExceptionCode,reinterpret_cast<DWORD>(info->ExceptionRecord->ExceptionAddress)-reinterpret_cast<DWORD>(GetModuleHandleA(nullptr)));return EXCEPTION_EXECUTE_HANDLER;}
 static int guarded(){__try{return run();}__except(filter(GetExceptionInformation())){return 99;}}

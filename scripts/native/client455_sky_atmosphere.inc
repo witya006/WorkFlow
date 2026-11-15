@@ -247,7 +247,11 @@ void RF455_CreateSkyResources(){
     vertexVersion=float(D3DSHADER_VERSION_MAJOR(caps.VertexShaderVersion))+float(D3DSHADER_VERSION_MINOR(caps.VertexShaderVersion))/10;
     device->CreateVertexDeclaration(sunElements,&sunDeclaration);
     char shaderName[]=".\\System\\shader\\Scatter.vso";
+#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+    if(vertexVersion>=1.1f)LoadCreateShader(shaderName,skyDeclaration,&skyShader);
+#else
     if(vertexVersion>=1.1f&&IsExistFile(shaderName))LoadCreateShader(shaderName,skyDeclaration,&skyShader);
+#endif
     if(vertexVersion>=1.0f){
         if(SUCCEEDED(device->CreateVertexBuffer(20*4225,D3DUSAGE_WRITEONLY,258,D3DPOOL_MANAGED,&skyVB,nullptr))&&
            SUCCEEDED(device->CreateIndexBuffer(6*8192,D3DUSAGE_WRITEONLY,D3DFMT_INDEX16,D3DPOOL_MANAGED,&skyIB,nullptr))){

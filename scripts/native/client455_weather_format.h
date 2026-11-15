@@ -30,7 +30,10 @@ static_assert(offsetof(RF455_ExtMaterial,mEnvEntityName2)==392,"environment 1 na
 static_assert(offsetof(RF455_ExtMaterial,mEnvID2)==520,"environment 1 id");
 static_assert(offsetof(RF455_ExtMaterial,mSceneFlags)==524,"scene flags");
 
-// The format has version 1.1 for both 1024- and 1032-byte bodies. Short bodies
-// copy their available bytes into zeroed storage, as the reference's fread does.
+// Both stock R3X body sizes (1024 and 1032) use version 1.1. The old body
+// leaves its eight trailing runtime bytes zeroed. Invalid input leaves output intact.
+bool RF455_ParseExtMaterial(const void*,size_t,RF455_ExtMaterial*);
 bool RF455_ReadExtMaterial(FILE*,RF455_ExtMaterial*);
+class RF455ResourceText;
 void RF455_ReadWeatherTokens(FILE*,char* mutableToken);
+bool RF455_ReadWeatherTokens(RF455ResourceText&,char (&mutableToken)[256]);

@@ -5,6 +5,8 @@
 #include <malloc.h>
 #include <vector>
 #include <initializer_list>
+#include <limits>
+#include <memory>
 
 namespace {
 template<class T>T get(const void* p,unsigned at){T v;std::memcpy(&v,static_cast<const unsigned char*>(p)+at,sizeof(v));return v;}
@@ -27,9 +29,10 @@ struct Cursor {
         const auto* p=bytes+at;at+=size;return p;
     }
 };
-void* readStream(FILE* file,unsigned size,const RF455MeshMemoryOps& memory,bool& complete){
-    void* p=memory.allocate(memory.context,size);complete=false;
-    if(p)complete=!size || std::fread(p,1,size,file)==size;
+void* copyResource(const RF455ResourceRead& input,const RF455MeshMemoryOps& memory){
+    if(input.status!=RF455ResourceReadStatus::Ready)return nullptr;
+    const auto size=input.bytes->size();void* p=memory.allocate(memory.context,size);
+    if(p && size)std::memcpy(p,input.bytes->data(),size);
     return p;
 }
 }
@@ -63,13 +66,18 @@ extern "C" RF455AnimationStatus RF455_DecodeAni(const void* bytes,std::size_t le
 }
 extern "C" RF455AnimationStatus RF455_ReadAnimationFile(const char* name,const RF455AnimationContext* context,RF455AnimationBuffer* output){
     if(!name || !valid(context) || !output)return RF_ANIMATION_ARGUMENT;
-    const auto& memory=context->memory.memory;unsigned size=0;FILE* file=RF455_GetCharacterRfsCache()->Open(name,&size);void* p=nullptr;bool complete=false;
-    if(file){p=readStream(file,size,memory,complete);std::fclose(file);if(complete){const auto allocated=static_cast<unsigned>(context->memory.extent(memory.context,p));*context->importedBytes+=allocated;*output={p,size,allocated,true};return RF_ANIMATION_OK;}if(p)memory.release(memory.context,p);}
-    file=std::fopen(name,"rb");
-    if(!file){const int error=errno;char text[1024];std::snprintf(text,sizeof(text),"Ani Not Found : FileName = %s [%d]%s",name,error,std::strerror(error));context->diagnostics.write(context->diagnostics.context,text);return RF_ANIMATION_IO;}
-    std::fseek(file,0,SEEK_END);const long length=std::ftell(file);std::fseek(file,0,SEEK_SET);if(length<0){std::fclose(file);return RF_ANIMATION_IO;}size=static_cast<unsigned>(length);p=readStream(file,size,memory,complete);std::fclose(file);*context->importedBytes+=size;
+    const auto& memory=context->memory.memory;auto* resources=RF455_GetCharacterRfsCache();
+    const auto archived=resources->ReadArchiveBytes(name);void* p=copyResource(archived,memory);
+    if(p){const auto size=static_cast<unsigned>(archived.bytes->size());const auto allocated=static_cast<unsigned>(context->memory.extent(memory.context,p));*context->importedBytes+=allocated;*output={p,size,allocated,true};return RF_ANIMATION_OK;}
+    // Original 93ACD0 retries a loose file after failed RFS read/allocation.
+    // The animation record owns a fresh allocation, never the cache's storage.
+    const auto loose=resources->ReadLooseBytes(name);
+    if(loose.status==RF455ResourceReadStatus::Unavailable){const int error=errno;char text[1024];std::snprintf(text,sizeof(text),"Ani Not Found : FileName = %s [%d]%s",name,error,std::strerror(error));context->diagnostics.write(context->diagnostics.context,text);return RF_ANIMATION_IO;}
+    if(loose.declaredSize>(std::numeric_limits<unsigned>::max)())return RF_ANIMATION_IO;
+    const auto size=static_cast<unsigned>(loose.declaredSize);
+    if(loose.status==RF455ResourceReadStatus::ReadError){*context->importedBytes+=size;return RF_ANIMATION_IO;}
+    p=copyResource(loose,memory);*context->importedBytes+=size;
     if(!p){importNull(&context->diagnostics,name);return RF_ANIMATION_MEMORY;}
-    if(!complete){memory.release(memory.context,p);return RF_ANIMATION_IO;}
     *output={p,size,size,false};return RF_ANIMATION_OK;
 }
 extern "C" RF455AnimationStatus RF455_ImportCharacterResource(const char* name,int synchronous,
@@ -148,15 +156,19 @@ extern "C" int RF455_LoadCharacter(RF455CharacterStorage* record,int synchronous
     if(parent){
         if(!get<unsigned>(parent->bytes,260))return 0;
         b[264]=1;RF455RawModelBuffer raw={};RF455_ReadMshFile(reinterpret_cast<const char*>(b+4),&memory,&raw);
+        // The file reader allocates a private copy through these operations.
+        // Both model paths finish consuming it before returning.
+        const auto release = [&memory](void* bytes) { memory.release(memory.context, bytes); };
+        const std::unique_ptr<void, decltype(release)> input(raw.bytes, release);
         if(!raw.bytes || (raw.length>=6 && !std::memcmp(raw.bytes,"MESH08",6))){
             if(!raw.bytes){char text[1024];std::snprintf(text,sizeof(text),"ImportMeshData( %s ) :NULL",reinterpret_cast<const char*>(b+4));diagnostic.write(diagnostic.context,text);}
-            RF455ModelLoadStats stats={};if(RF455_LoadMesh08Model(raw.bytes,raw.length,&record->prefix,&legacy.base,&stats)!=RF_MODEL_OK){--b[264];return 0;} // Early return retainsraw asreference.
+            RF455ModelLoadStats stats={};if(RF455_LoadMesh08Model(input.get(),raw.length,&record->prefix,&legacy.base,&stats)!=RF_MODEL_OK){--b[264];return 0;}
         }else{
-            RF455LegacyModel* imported=nullptr;std::size_t consumed=0;if(RF455_ReadLegacyModel(raw.bytes,raw.length,&memory,&imported,&consumed)!=RF_LEGACY_OK)return 0;
-            if(!RF455_ValidateLegacyModel(imported,&diagnostic)){--b[264];RF455_DeleteLegacyModel(imported,&memory);return 0;} // raw leak isobservable reference behavior.
+            RF455LegacyModel* imported=nullptr;std::size_t consumed=0;if(RF455_ReadLegacyModel(input.get(),raw.length,&memory,&imported,&consumed)!=RF_LEGACY_OK)return 0;
+            if(!RF455_ValidateLegacyModel(imported,&diagnostic)){--b[264];RF455_DeleteLegacyModel(imported,&memory);return 0;}
             RF455LegacyLoadStats stats={};const auto status=RF455_LoadLegacyModel(imported,parent,&record->prefix,&legacy,&stats);RF455_DeleteLegacyModel(imported,&memory);if(status!=RF_LEGACY_RUNTIME_OK)return 0; // Own bounded converter failure domain.
         }
-        RF455_RefreshModelTextures(&record->prefix,legacy.base.textures);put<unsigned>(b,260,1);if(raw.bytes)memory.release(memory.context,raw.bytes);return 1;
+        RF455_RefreshModelTextures(&record->prefix,legacy.base.textures);put<unsigned>(b,260,1);return 1;
     }
     b[264]=1;RF455ImportedResource imported={};if(RF455_ImportCharacterResource(reinterpret_cast<const char*>(b+4),synchronous,&context->animation,&imported)!=RF_ANIMATION_OK)return 0;
     if(imported.kind!=RF_IMPORTED_LEGACY){RF455_ReleaseImportedResource(&imported,&context->animation.memory.memory);return 0;} // ANI-as-ObjectData28 isundefined reference domain;own typedreject.

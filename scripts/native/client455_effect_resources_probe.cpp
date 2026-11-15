@@ -77,7 +77,7 @@ static int run(){
     check(SetDisapearTimeMagicEffect(instance,0),"ordinary disappear");ResetEffectManager();
     RF455_SetResourceGroup(own);DestroyEffectsList();DestroyMagicSptList();
     check(!own->count&&!own->archives&&GetLoadedEffectEntityNum()==0,"release clears indexes and templates");
-    check(RF455_GetResourceGroup()==own,"active pointer remains valid static empty group");
+    check(!RF455_GetResourceGroup()&&!RF455_GetResourceArchiveEnabled(),"released group is no longer selected");
     ReleaseEffectEntityList();check(!own->count&&!own->archives,"empty release remains valid");
     const auto retained=GetDmallocSize()-baseline;
     std::fprintf(stderr,"global_texture_cache:%d records=%d surfaces=%d\n",retained,GetNowR3TexCnt(),GetNowR3D3DTexCnt());

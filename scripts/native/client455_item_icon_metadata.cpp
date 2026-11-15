@@ -25,8 +25,10 @@ std::uint32_t metadataWord(RF455ItemDataSpan data,std::size_t offset){
 RF455BasicIconMetadata RF455_ReadBasicIconMetadata(RF455ManagedItem& item){
     auto* basic=dynamic_cast<RF455BasicItem*>(&item);
     if(!basic||item.header().kind==5)throw std::logic_error("455 dedicated SF/Quest icon owners are not restored");
-    const auto data=basic->rawMetadata();
-    RF455BasicIconMetadata result={0xffffffff,0xffffffff,basic->quantity455(),0,0};
+    return RF455_ReadBasicIconMetadata(basic->rawMetadata(), basic->quantity455());
+}
+RF455BasicIconMetadata RF455_ReadBasicIconMetadata(RF455ItemDataSpan data, std::uint8_t quantity){
+    RF455BasicIconMetadata result={0xffffffff,0xffffffff,quantity,0,0};
     if(!data.data)return result;
     result.itemID=metadataWord(data,72);result.spriteID=metadataWord(data,76);
     const auto kind=metadataByte(data,88);const bool equipment=kind>=1&&kind<=10;

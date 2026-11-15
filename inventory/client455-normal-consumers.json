@@ -2,8 +2,8 @@
   "scope": "Actual production split CUnity/CAnimation modules from global.cpp/CResObject.cpp withsource455ANI integration;not normal WinMain/game acceptance",
   "architecture": "x86",
   "exe": "work/client455-port/normal/consumer-probe-runtime/normal-consumers-probe.exe",
-  "exe_sha256": "7454c00d1b910efde4ea1685bbd7bd9b8858dd3ed1ed02468ac79d2da5ce283b",
-  "entry_rva": "0x9e720",
+  "exe_sha256": "6a24618ace0f23130c3c53ed73bb0cd481f47877b5415dc556a36f68ba7a2006",
+  "entry_rva": "0xcc3c0",
   "native": {
     "status": "PASS",
     "normal_client_modules": 2,
@@ -25,12 +25,12 @@
   "fixture_sha256": "a694c7df7b89e76d15ff1b76e798676530530845cfda2b634771c21be943526c",
   "libraries": [
     {
-      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "2eda1eb08e5ed54a9c02a24108e69003b82c9c0830f64176b71b2a5f85c38c5d"
+      "file": "work/client455-port/normal/ninja-build/RFClient455Facade.lib",
+      "sha256": "9907008bed049fa3ac3425f43ee12ac8683eb44793d41c8739fc0cc47bd3ebde"
     },
     {
-      "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "f86878f840eeefcde0642e989e59e8d2fa2fa7a614d28ab607b5a9a539027c1d"
+      "file": "work/client455-port/normal/ninja-build/RFClient455Kernels.lib",
+      "sha256": "d88a5db0062ca6efb729773eba2799298c9728ef86d13044f720a888d3175941"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
@@ -41,8 +41,8 @@
       "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
     },
     {
-      "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "73048191e534efe9a73ad843a4d80311f9ef407c16a63f582423f6579365b1c8"
+      "file": "work/client455-port/startup-engine/ninja-build/R3Engine455Startup.lib",
+      "sha256": "9c425b14d87450198a736131b71f0ee95a826bd03525c5133a0d1f31f22c8cc9"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -55,18 +55,18 @@
   ],
   "objects": [
     {
-      "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/unity_managers.obj",
-      "sha256": "8f200605ce406acf6b7ecf29856441e540e1f93643be71dc921deb4d07e17f87"
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/generated/unity_managers.cpp.obj",
+      "sha256": "f0b7168a1631b5cab59da8be126b0b1bea7b92339a685d50536e321985e68ba9"
     },
     {
-      "file": "work/client455-port/normal/build/RFClient455Consumers.dir/Release/animation_control.obj",
-      "sha256": "50740423cf4338332534ef606fd567e38dd6350e549b84cbbdf3db8966b56855"
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/generated/animation_control.cpp.obj",
+      "sha256": "49043c71672655e61dd5989fb5fb844df048b600cffccf4b727fcbc1501ed064"
     }
   ],
   "source_sha256": "d77031762fead98d759bfbdd4026436dbc504a58316f19f8d37e5d2dabbd660f",
-  "normal_build_sha256": "f8e9d05a0d803d8bc251acc78fa6d887124220000c4861a9d2773b3b0a516237",
+  "normal_build_sha256": "51e60709e9d87c2e722e5fb34cbdb3a7e56ba85deaefa5e1f5feb2a6945d1697",
   "map": "work/client455-port/normal/build/normal-consumers-probe.map",
-  "map_sha256": "c7ecfb15e1da13ecb6d2674d8b691b08cde99953bff0e125e0c2e12594d34447",
+  "map_sha256": "5f535fc0d912921d4e2cb373aef15a034a86606006e0de3b584b984469e13fc9",
   "legacy_character_linked": false,
   "input_exe_executed": false,
   "server_modified": false,

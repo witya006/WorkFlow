@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-static unsigned checks,decodedFiles,decodedTracks,realMatches,modelParts,physicalParts,strandedBlocks;
+static unsigned checks,decodedFiles,decodedTracks,realMatches,modelParts,physicalParts,releasedRejectedInputs;
 #define AN_CHECK(x) do{++checks;if(!(x)){std::fprintf(stderr,"animation check%u line%d\n",checks,__LINE__);return 1;}}while(0)
 template<class T>static T anGet(const void* p,unsigned at){T v;std::memcpy(&v,static_cast<const unsigned char*>(p)+at,sizeof(v));return v;}
 template<class T>static void anPut(void* p,unsigned at,T v){std::memcpy(static_cast<unsigned char*>(p)+at,&v,sizeof(v));}
@@ -119,7 +119,12 @@ int dispatchEdges(RF455MeshMatrixOps matrices,Environment& env){
     Memory memory;auto ops=memory.ops();Diagnostics diagnostic;auto log=diagnostic.ops();unsigned counter=0;auto context=env.context(ops,matrices,log,&counter);RF455CharacterStorage parent,model;RF455_ConstructCharacter(&parent);RF455_ConstructCharacter(&model);anPut<unsigned>(parent.prefix.bytes,260,1);anPut(model.prefix.bytes,272,&parent.prefix);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"missing.msh");AN_CHECK(!RF455_LoadCharacter(&model,0,&context) && !model.prefix.bytes[264] && !anGet<unsigned>(model.prefix.bytes,260));
     RF455_ConstructCharacter(&model);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"missing.bn");AN_CHECK(!RF455_LoadCharacter(&model,1,&context) && model.prefix.bytes[264]);const auto calls=memory.calls;AN_CHECK(RF455_LoadCharacter(&model,0,&context) && memory.calls==calls && !anGet<unsigned>(model.prefix.bytes,260));
     RF455_ConstructCharacter(&model);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"oversize.msh");AN_CHECK(!RF455_LoadCharacter(&model,0,&context) && model.prefix.bytes[264] && memory.live.empty());
-    RF455_ConstructCharacter(&model);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"oversize.msh");anPut(model.prefix.bytes,272,&parent.prefix);AN_CHECK(!RF455_LoadCharacter(&model,1,&context) && !model.prefix.bytes[264] && memory.live.size()==1);const auto stranded=*memory.live.begin();AN_CHECK(stranded.second.requested==2+693+88*21334);++strandedBlocks;Memory::release(&memory,stranded.first); // Harness cleanup AFTERobservingthe reference raw leak.
+    RF455_ConstructCharacter(&model);
+    std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"oversize.msh");
+    anPut(model.prefix.bytes,272,&parent.prefix);
+    AN_CHECK(!RF455_LoadCharacter(&model,1,&context) && !model.prefix.bytes[264]);
+    AN_CHECK(memory.live.empty());
+    ++releasedRejectedInputs;
     RF455_ConstructCharacter(&model);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"empty.bn");RF455AnimationStorage animation;RF455_ConstructAnimation(&animation);std::strcpy(reinterpret_cast<char*>(animation.bytes+5),"missing.ani");anPut<unsigned>(model.prefix.bytes,672,55);AN_CHECK(!RF455_MatchAnimation(&animation,&model,&context) && anGet<unsigned>(model.prefix.bytes,672)==55);AN_CHECK(RF455_MatchAnimation(&animation,&model,&context) && anGet<unsigned>(model.prefix.bytes,672)==160 && !anGet<unsigned>(animation.bytes,0) && !anGet<void*>(animation.bytes,268));RF455_ReleaseModelMeshArray(&model.prefix,&ops.memory);
     RF455_ConstructCharacter(&model);std::strcpy(reinterpret_cast<char*>(model.prefix.bytes+4),"XANI");AN_CHECK(!RF455_LoadCharacter(&model,0,&context) && model.prefix.bytes[264] && !anGet<unsigned>(model.prefix.bytes,260));RF455_ConstructAnimation(&animation);std::strcpy(reinterpret_cast<char*>(animation.bytes+5),"empty.bn");AN_CHECK(!RF455_LoadAnimation(&animation,0,&context.animation) && animation.bytes[4]);AN_CHECK(memory.live.empty() && !memory.bad);return 0;
 }
@@ -133,7 +138,7 @@ int run(const char* workspace,const char* golden,const char* pairs,const char* d
 }
 }
 extern "C" int RF455_RunAnimationChecks(const char* workspace,const char* golden,const char* pairs,const char* dll,const char* output,int physical){
-    checks=decodedFiles=decodedTracks=realMatches=modelParts=physicalParts=strandedBlocks=0;const int result=run(workspace,golden,pairs,dll,physical!=0);FILE* f=std::fopen(output,"wb");if(!f)return 1;std::fprintf(f,"{\"status\":\"%s\",\"checks\":%u,\"ani_files\":%u,\"tracks\":%u,\"real_ani_matches\":%u,\"model_parts\":%u,\"physical_parts\":%u,\"stranded_raw_blocks_observed_and_harness_freed\":%u}\n",result?"FAIL":"PASS",checks,decodedFiles,decodedTracks,realMatches,modelParts,physicalParts,strandedBlocks);std::fclose(f);return result;
+    checks=decodedFiles=decodedTracks=realMatches=modelParts=physicalParts=releasedRejectedInputs=0;const int result=run(workspace,golden,pairs,dll,physical!=0);FILE* f=std::fopen(output,"wb");if(!f)return 1;std::fprintf(f,"{\"status\":\"%s\",\"checks\":%u,\"ani_files\":%u,\"tracks\":%u,\"real_ani_matches\":%u,\"model_parts\":%u,\"physical_parts\":%u,\"rejected_msh_raw_buffers_released\":%u}\n",result?"FAIL":"PASS",checks,decodedFiles,decodedTracks,realMatches,modelParts,physicalParts,releasedRejectedInputs);std::fclose(f);return result;
 }
 #ifndef RF455_ANIMATION_EMBEDDED
 int main(int argc,char** argv){if(argc!=7 || (std::strcmp(argv[1],"--cpu") && std::strcmp(argv[1],"--gpu")))return 2;return RF455_RunAnimationChecks(argv[2],argv[3],argv[4],argv[5],argv[6],!std::strcmp(argv[1],"--gpu"));}

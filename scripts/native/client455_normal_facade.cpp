@@ -8,6 +8,9 @@
 #include <stdexcept>
 #include <cmath>
 #include <algorithm>
+#include <memory>
+#include <new>
+#include <utility>
 #include <vector>
 #include <mmsystem.h>
 
@@ -60,13 +63,42 @@ struct Hub {
         RF455_ConstructShaderManager(&shared.shaders);oldTexture=RF455_SetCharacterTextureApi(&texture);
         RF455_ResetCharacterTransparency(&transparent);
     }
-    ~Hub(){RF455_ReleaseShaderManager(&shared.shaders);RF455_ReleaseCharacterDeclarations(&shared.declaration64,&shared.declaration36);RF455_SetCharacterTextureApi(oldTexture);if(module)FreeLibrary(module);}
+    void clearTransparency()
+    {
+        RF455_ResetCharacterTransparency(&transparent);
+        for (auto& packet : transparent.entries) {
+            packet.primary = nullptr;
+            packet.secondary = nullptr;
+            packet.buffer = nullptr;
+        }
+    }
+    void releaseSharedDeviceResources()
+    {
+        RF455_ReleaseShaderManager(&shared.shaders);
+        RF455_ReleaseCharacterDeclarations(&shared.declaration64, &shared.declaration36);
+        shared.shaders.device = nullptr;
+        clearTransparency();
+    }
+    ~Hub()
+    {
+        releaseSharedDeviceResources();
+        RF455_SetCharacterTextureApi(oldTexture);
+        if (module) FreeLibrary(module);
+    }
 };
 Hub& hub(){static Hub value;return value;}
 CRender*& activeRenderer(){static CRender* value=nullptr;return value;}
+
+struct CharacterDeviceReplacement {
+    RF455CharacterBufferSnapshot buffers;
+    RF455CharacterTextureReferences textures;
+    bool hadSprite = false;
+};
 }
 struct CRender::Runtime {
     CRender* previousRenderer=nullptr;
+    bool spriteDeviceLost = false;
+    std::unique_ptr<CharacterDeviceReplacement> replacement;
     RF455AnimationMemoryOps animationMemory=RF455_CrtAnimationMemoryOps();
     RF455LegacyScratch scratch;RF455CharacterLoadContext load;
     RF455PoseScratch poseScratch={};RF455PoseContext pose={};
@@ -82,6 +114,223 @@ struct CRender::Runtime {
     }
     void camera(){GetViewMatrix(&view);GetProjectMatrix(&projection);std::memcpy(draw.transparent->sortView,&view,64);}
 };
+
+namespace {
+HRESULT notifyCharacterSprites(IDirect3DDevice9* device, bool deviceLost)
+{
+    if (!device) return S_OK;
+
+    HRESULT firstFailure = S_OK;
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer) {
+        auto& owner = renderer->native;
+        auto& runtime = *renderer->runtime;
+        if (owner.device != device || !owner.sprite || runtime.spriteDeviceLost == deviceLost) continue;
+
+        // RVA 0x51FD40 creates this owned sprite through D3DXCreateSprite.
+        auto* sprite = static_cast<ID3DXSprite*>(owner.sprite);
+        const HRESULT result = deviceLost ? sprite->OnLostDevice() : sprite->OnResetDevice();
+        if (SUCCEEDED(result)) runtime.spriteDeviceLost = deviceLost;
+        else if (SUCCEEDED(firstFailure)) firstFailure = result;
+    }
+    return firstFailure;
+}
+
+void unbindCharacterDevice(IDirect3DDevice9* device)
+{
+    device->SetStreamSource(0, nullptr, 0, 0);
+    device->SetIndices(nullptr);
+    for (DWORD stage = 0; stage <= 6; ++stage) device->SetTexture(stage, nullptr);
+    device->SetVertexShader(nullptr);
+    device->SetPixelShader(nullptr);
+    device->SetVertexDeclaration(nullptr);
+}
+
+void releaseCharacterShadowTargets(RF455RendererEffects& effects)
+{
+    // World shadow targets and the projection quad are recreated by BeginShadow.
+    for (auto*& target : effects.resources) {
+        if (target) target->Release();
+        target = nullptr;
+    }
+    if (effects.extra) effects.extra->Release();
+    effects.extra = nullptr;
+    // After EndShadow these saved surfaces are already released.
+    std::memset(effects.opaque208, 0, sizeof(effects.opaque208));
+}
+
+void detachCharacterDevice(CRender& renderer)
+{
+    auto& owner = renderer.native;
+    auto& runtime = *renderer.runtime;
+    owner.device = nullptr;
+    runtime.draw.state = {};
+    runtime.draw.shaders = nullptr;
+    runtime.draw.selected = 0xffffffffu;
+    runtime.draw.capturedModels.clear();
+    runtime.spriteDeviceLost = false;
+    releaseCharacterShadowTargets(owner.effects);
+    if (owner.sprite) {
+        owner.sprite->Release();
+        owner.sprite = nullptr;
+    }
+    RF455_DetachCharacterTextures(owner.textures);
+    RF455_DestroyIndexPool(&owner.indices);
+    RF455_DestroyVertexPool(&owner.vertices36);
+    RF455_DestroyVertexPool(&owner.vertices64);
+    const auto indexOpaque = owner.indices.opaque8192;
+    const auto vertex36Opaque = owner.vertices36.opaque8192;
+    const auto vertex64Opaque = owner.vertices64.opaque8192;
+    RF455_ConstructIndexPool(&owner.indices);
+    RF455_ConstructVertexPool(&owner.vertices36);
+    RF455_ConstructVertexPool(&owner.vertices64);
+    owner.indices.opaque8192 = indexOpaque;
+    owner.vertices36.opaque8192 = vertex36Opaque;
+    owner.vertices64.opaque8192 = vertex64Opaque;
+}
+
+HRESULT restorePendingCharacterDevice(IDirect3DDevice9* device, const D3DCAPS9& caps)
+{
+    auto& process = hub();
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer) {
+        const auto* plan = renderer->runtime->replacement.get();
+        if (!plan) continue;
+        auto& owner = renderer->native;
+        HRESULT result = RF455_RecreateCharacterBuffers(plan->buffers, device,
+            owner.vertices36, owner.vertices64, owner.indices);
+        if (SUCCEEDED(result)) result = RF455_RecreateCharacterTextures(owner.textures, device);
+        if (FAILED(result)) return result;
+        if (plan->hadSprite) {
+            result = process.shader.sprite(device, &owner.sprite);
+            if (FAILED(result)) return result;
+            if (!owner.sprite) return E_FAIL;
+        }
+    }
+
+    process.shared.shaders.device = device;
+    const auto result = RF455_InitializeReplacementCharacterShaders(&process.shared.shaders, &process.shader,
+        &process.shared.declaration64, &process.shared.declaration36);
+    if (FAILED(result)) return result;
+    if (process.shared.shaders.count != 12 || !process.shared.declaration64 || !process.shared.declaration36)
+        return E_FAIL;
+    RF455_InitializeEnhancedActorLighting(&process.shared.shaders, &process.shader);
+
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer) {
+        auto& runtime = *renderer->runtime;
+        if (!runtime.replacement) continue;
+        auto& owner = renderer->native;
+        owner.device = device;
+        owner.caps = caps;
+        owner.indexedBlend = caps.MaxVertexBlendMatrixIndex != 0;
+        owner.specular = (caps.ShadeCaps >> 9) & 1;
+        runtime.load.legacy.rendererMode = owner.vertexMode;
+        RF455_BindRendererDrawContext(&owner, &process.shared, &runtime.draw);
+        RF455_RestoreCharacterTextureReferences(runtime.replacement->textures);
+    }
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer)
+        renderer->runtime->replacement.reset();
+    return S_OK;
+}
+}
+
+HRESULT RF455_InvalidateCharacterSprite455(IDirect3DDevice9* device)
+{
+    return notifyCharacterSprites(device, true);
+}
+
+HRESULT RF455_RestoreCharacterSprite455(IDirect3DDevice9* device)
+{
+    return notifyCharacterSprites(device, false);
+}
+
+HRESULT RF455_PrepareCharacterDeviceReplacement455(IDirect3DDevice9* device,
+    const std::vector<RF455CharacterManager*>& extraModels, RF455EffectStore* rvpEffects)
+{
+    if (!device) return S_OK;
+
+    bool hasMatchingOwner = false;
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer)
+        if (renderer->native.device == device) hasMatchingOwner = true;
+    if (!hasMatchingOwner) return S_OK;
+
+    auto& process = hub();
+    if (process.shared.shaders.device && process.shared.shaders.device != device) return E_INVALIDARG;
+    struct PreparedOwner {
+        CRender* renderer;
+        std::unique_ptr<CharacterDeviceReplacement> plan;
+    };
+    std::vector<PreparedOwner> staged;
+    try {
+        auto models = extraModels;
+        std::vector<RF455EffectStore*> effects{&RF455_NormalEffects()};
+        if (rvpEffects) effects.push_back(rvpEffects);
+        for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer) {
+            auto& owner = renderer->native;
+            if (renderer->runtime->replacement || (owner.device && owner.device != device)) return E_INVALIDARG;
+
+            models.push_back(&owner.bones);
+            models.push_back(&owner.meshes);
+            for (auto at = owner.effects.begin; at != owner.effects.end; ++at) models.push_back(*at);
+            if (owner.device != device) continue;
+            staged.push_back({renderer, std::make_unique<CharacterDeviceReplacement>()});
+            staged.back().plan->hadSprite = owner.sprite != nullptr;
+        }
+        for (auto& entry : staged) {
+            const auto& owner = entry.renderer->native;
+            HRESULT result = RF455_CaptureCharacterBuffers(owner.vertices36, owner.vertices64,
+                owner.indices, entry.plan->buffers);
+            if (SUCCEEDED(result)) result = RF455_CaptureCharacterTextureReferences(owner.textures,
+                models, effects, entry.plan->textures);
+            if (FAILED(result)) return result;
+        }
+    } catch (const std::bad_alloc&) {
+        return E_OUTOFMEMORY;
+    } catch (const std::length_error&) {
+        return E_OUTOFMEMORY;
+    }
+
+    unbindCharacterDevice(device);
+    for (const auto& entry : staged)
+        RF455_ClearCharacterTextureReferences(entry.plan->textures);
+    process.releaseSharedDeviceResources();
+    for (auto& entry : staged) {
+        detachCharacterDevice(*entry.renderer);
+        entry.renderer->runtime->replacement = std::move(entry.plan);
+    }
+    return S_OK;
+}
+
+HRESULT RF455_RestoreCharacterDeviceReplacement455(IDirect3DDevice9* device)
+{
+    bool hasPendingOwner = false;
+    bool needsFourMatrices = false;
+    for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer) {
+        if (!renderer->runtime->replacement) continue;
+        hasPendingOwner = true;
+        if (renderer->native.vertexMode == 4) needsFourMatrices = true;
+    }
+    if (!hasPendingOwner) return S_OK;
+    if (!device || hub().shared.shaders.device) return E_INVALIDARG;
+
+    D3DCAPS9 caps{};
+    HRESULT result = device->GetDeviceCaps(&caps);
+    if (FAILED(result)) return result;
+    if (needsFourMatrices && caps.MaxVertexBlendMatrices < 4) return D3DERR_NOTAVAILABLE;
+
+    try {
+        result = restorePendingCharacterDevice(device, caps);
+    } catch (const std::bad_alloc&) {
+        result = E_OUTOFMEMORY;
+    } catch (const std::length_error&) {
+        result = E_OUTOFMEMORY;
+    }
+    if (FAILED(result)) {
+        for (auto* renderer = activeRenderer(); renderer; renderer = renderer->runtime->previousRenderer)
+            if (renderer->runtime->replacement) detachCharacterDevice(*renderer);
+        hub().releaseSharedDeviceResources();
+    }
+    return result;
+}
+
 CObjectManager::CObjectManager(){RF455_ConstructCharacterManager(&native);}
 CObjectManager::~CObjectManager(){const auto ops=memory();RF455_DestroyCharacterManager(&native,&ops);}
 void CObjectManager::AddCharacter(CHARACTEROBJECT* value){const auto ops=memory();if(!RF455_AddCharacter(&native,value,&ops))throw std::bad_alloc();}
@@ -102,7 +351,16 @@ ChAnimation* AnimationManager::GetAnimationDataByNoPath(char* name){return RF455
 unsigned long AnimationManager::GetAnimationID(char* name){return RF455_FindAnimationIdByName(&native,name);}
 int AnimationManager::Init(){RF455_ResetAnimationCounters(&native);return 0;}
 CRender::CRender():m_TM(native.textures),runtime(nullptr){RF455_ConstructCharacterRenderer(&native);auto* previous=activeRenderer();runtime=new Runtime(native);runtime->previousRenderer=previous;activeRenderer()=this;}
-CRender::~CRender(){const auto ops=memory();RF455_DestroyCharacterRenderer(&native,&ops);auto* previous=runtime->previousRenderer;delete runtime;if(activeRenderer()==this)activeRenderer()=previous;}
+CRender::~CRender()
+{
+    const auto ops = memory();
+    RF455_DestroyCharacterRenderer(&native, &ops);
+    auto** owner = &activeRenderer();
+    while (*owner != this) owner = &(*owner)->runtime->previousRenderer;
+    *owner = runtime->previousRenderer;
+    delete runtime;
+    if (!activeRenderer()) hub().releaseSharedDeviceResources();
+}
 CRender& CRender::GetRender(){if(!activeRenderer())throw std::runtime_error("455 Character renderer unavailable");return *activeRenderer();}
 ChInterface::ChInterface():CRender(){}
 void ChInterface::InitCharacter(IDirect3DDevice9* device){
@@ -132,10 +390,19 @@ void ChInterface::SetMaterial(CHARACTEROBJECT* record,D3DMATERIAL9& material){if
 void CRender::SetLight(D3DLIGHT9 light){RF455_SetEnhancedActorLightingProtected(false);std::memcpy(&native.light,&light,104);if(native.device)native.device->SetVertexShaderConstantF(10,reinterpret_cast<const float*>(&native.light.Direction),1);}
 void CRender::SetState(){RF455_BindRendererDrawContext(&native,&hub().shared,&runtime->draw);RF455_SetCharacterDrawState(&runtime->draw.state);}
 void CRender::UnSetState(){RF455_BindRendererDrawContext(&native,&hub().shared,&runtime->draw);RF455_UnsetNormalCharacterState(&runtime->draw.state);}
-void CRender::FrameMove(CHARACTEROBJECT* record){
+RF455PoseStatus CRender::UpdatePose455(CHARACTEROBJECT* record){
     runtime->pose.blendDuration=0;
     if(record && record->m_pMesh)for(unsigned i=0;i<record->m_MaxObj;++i){void* previous;std::memcpy(&previous,record->m_pMesh[i].bytes+5099,4);if(previous){std::memcpy(&runtime->pose.blendDuration,&native.blendDuration,4);break;}}
-    const auto status=RF455_UpdateCharacterPose(record,&runtime->pose);if(status!=RF_POSE_OK)throw std::runtime_error("455 Character pose failure");
+    const auto status=RF455_UpdateCharacterPose(record,&runtime->pose);
+    // The loader can return success on a second call after a failed attempt.
+    // The completed-load bit is at +260, exposed here as ownsMeshes.
+    if(status==RF_POSE_OK && record && !record->ownsMeshes)return RF_POSE_LOAD;
+    return status;
+}
+void CRender::FrameMove(CHARACTEROBJECT* record){
+    const auto status=UpdatePose455(record);
+    // Pinned 455 RVA 0x523A6C clears the load-failure state and returns.
+    if(status!=RF_POSE_OK && status!=RF_POSE_LOAD)throw std::runtime_error("455 Character pose failure");
 }
 void CRender::DrawCharacter(CHARACTEROBJECT* record,float* pos,float yaw){DrawCharacter(record,pos,yaw,1,0,false);}
 bool CRender::CollectShadowGeometry455(const CHARACTEROBJECT* record,const float* pos,float yaw,float scale,float opacity,
@@ -189,7 +456,7 @@ AlphaMeshManager g_AMeshManager;
 void AlphaMeshManager::DrawAlpahMesh(){CRender::GetRender().FlushTransparency();}
 extern "C" void RF455_ReleaseNormalCharacterSharedResources(){
     if(activeRenderer())throw std::runtime_error("455 shared resources still have a renderer owner");
-    auto& process=hub();RF455_ReleaseShaderManager(&process.shared.shaders);RF455_ReleaseCharacterDeclarations(&process.shared.declaration64,&process.shared.declaration36);process.shared.shaders.device=nullptr;
+    hub().releaseSharedDeviceResources();
 }
 // Remaining facade methods are intentionally undefined until their455wrappers
 // are verified. They are recorded as link blockers, not successful no-ops.

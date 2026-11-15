@@ -63,7 +63,7 @@ def main():
     require(engine['weather_parameters']=={Path(x['file']).name:x['sha256'] for x in sources},'Current source-owned weather implementation')
     for name in ['level_header_overlay','camera_header_overlay']:check(engine[name])
     level=(WS/'work/client455-port/startup-engine/source/level.cpp').read_bytes()
-    require(b'SetWeatherColor455(RF455_GetMaterialWeather());\n\tResetTexMemSize();' in level and level.index(b'SetWeatherColor455(RF455_GetMaterialWeather());')<level.index(b'mBsp->LoadBsp(real_bsp_name);'),'Actual map load calls owner before reset/BSP')
+    require(b'SetWeatherColor455(RF455_GetMaterialWeather());\n\tResetTexMemSize();' in level and level.index(b'SetWeatherColor455(RF455_GetMaterialWeather());')<level.index(b'mBsp->LoadBsp(real_bsp_name'),'Actual map load calls owner before reset/BSP')
     material=(WS/'work/client455-port/startup-engine/source/r3material.cpp').read_bytes()
     start=material.index(b'static _R3MATERIAL* LoadIndependenceMaterial(');end=material.index(b'void LoadR3X(',start);body=material[start:end]
     require(body.index(b'strupr(hole);')<body.index(b'RF455_ReadSkyFogToken(fp,hole);')<body.index(b'RF455_ReadWeatherTokens(fp,hole);'),'Ordinary script restores original tag-fold order')

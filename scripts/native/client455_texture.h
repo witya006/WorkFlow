@@ -60,3 +60,8 @@ void RF455_DeleteTextureById(RF455TextureManager* manager,std::uint32_t id);
 RF455TextureAccounting RF455_GetTextureAccounting();
 }
 RF455MeshMaterialOps RF455_TextureMaterialOps(RF455TextureManager* manager);
+
+// Keep manager-owned IDs and their load descriptors across device replacement.
+// The caller must detach and restore any borrowed texture pointers separately.
+void RF455_DetachCharacterTextures(RF455TextureManager&) noexcept;
+HRESULT RF455_RecreateCharacterTextures(RF455TextureManager&, IDirect3DDevice9*);

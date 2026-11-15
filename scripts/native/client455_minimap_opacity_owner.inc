@@ -10,6 +10,16 @@ void CGUIMiniMapWindow::SetSprite(){
         if(main&&main->GetMaxActions()>5&&frame<main->GetMaxFrames(5))object.SetSize(main->GetSpriteOrgXL(5,frame),main->GetSpriteOrgYL(5,frame));
     };
     assign(m_uiTitleBoard,0);assign(m_uiAvatarObject,1);assign(m_mapBackground455,32);
+    if (main && main->HasFrame455(5, 30)) {
+        SPRITE_INFO icon{main, 5, 28};
+        m_worldMapButton455.SetSpriteInfoEx(&icon);
+        icon.wFrameNo = 29;
+        m_worldMapButton455.SetSpriteInfoEx(HOVERED, &icon);
+        icon.wFrameNo = 30;
+        m_worldMapButton455.SetSpriteInfoEx(PRESSED, &icon);
+        m_worldMapButton455.SetSize(main->GetSpriteOrgXL(5, 28), main->GetSpriteOrgYL(5, 28));
+    }
+    if (IsWorldMap455()) BindWorldMapSprite455();
     auto* terrain = gSpriteMgr.GetSprite(SP_ID_MINIMAP);
     if (terrain && terrain->GetMaxActions() && terrain->GetMaxFrames(0)) {
         SPRITE_INFO image{terrain, 0, 0};
@@ -24,9 +34,21 @@ void CGUIMiniMapWindow::SetSprite(){
 }
 void CGUIMiniMapWindow::InitOpacity455(){
     m_uiCloseButton.SetPos(m_uiTitleBoard.GetPosX()+m_uiTitleBoard.GetSizeX()-m_uiCloseButton.GetSizeX()-2,m_uiTitleBoard.GetPosY()+2);
+    if (m_frameSkin455.HasFrame455(5, 30)) {
+        m_worldMapButton455.SetPos(m_uiCloseButton.GetPosX() - m_worldMapButton455.GetSizeX() - 3,
+                                  m_uiCloseButton.GetPosY());
+        m_worldMapButton455.AddMouseEventHandler(this);
+        m_uiTitleBoard.Add(&m_worldMapButton455);
+    }
     m_uiMiniMap.SetPos(m_ptPos.x+1,m_ptPos.y+m_uiTitleBoard.GetSizeY());
+    m_uiMiniMap.AddMouseEventHandler(this);
+    m_uiMiniMap.AddMouseMotionEventHandler(this);
+    // Preserve child marker input while leaving the bare terrain to the canvas.
+    m_uiObjectBoard.SetMouseInput455(FALSE);
+    m_uiTooltipObjBoard.SetMouseInput455(FALSE);
     m_mapBackground455.SetPos(m_uiMiniMap.GetPosX(),m_uiMiniMap.GetPosY());
     m_mapBackground455.SetSize(400,400);m_mapBackground455.DisableFocus();
+    m_mapBackground455.SetMouseInput455(FALSE);
     m_uiMiniMap.Add(&m_mapBackground455);
     m_mapTerrain455.SetPos(m_uiMiniMap.m_ptPos);
     m_mapTerrain455.SetSize(m_uiMiniMap.m_ptSize);
@@ -65,6 +87,14 @@ void CGUIMiniMapWindow::ScrollEvent(_scroll_event& event){
     if(TakeCameraZoomGate455())throw std::domain_error("455minimap camera zoom requires restored Avatar/world consumer555940");
 }
 BOOL CGUIMiniMapWindow::Draw(){
+    if (IsWorldMap455()) {
+        if (!IsShow()) return FALSE;
+        m_worldMapSurface455.Draw();
+        DrawWorldMapLabels455();
+        DrawDialogBox();
+        return TRUE;
+    }
     if(!CGUIContainer::Draw())return FALSE;
+    DrawLocalMapLabels455();
     DrawDialogBox();return TRUE;
 }

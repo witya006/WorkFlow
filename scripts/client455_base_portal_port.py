@@ -84,7 +84,17 @@ def port_base_portal(raw, relative, native, section):
         ))
         return raw + b'\n' + (native / 'client455_base_portal_position.inc').read_bytes(), True
     if relative == 'gameprogress/cgp_maingame.cpp':
-        return replace(raw, b'\t_GetUISpriteMgr()->LoadSprite( SP_ID_MAPLOADING );\n', b''), True
+        raw = replace(raw, b'\t_GetUISpriteMgr()->LoadSprite( SP_ID_MAPLOADING );\n', b'')
+        raw = replace(raw, b'CGP_MainGame::Destroy_UI( void )\n{',
+                      b'CGP_MainGame::Destroy_UI( void )\n{\n\tm_uiMapLoadingWindow.ReleaseTransition455();')
+        raw = replace(raw, b'm_centerMessages455.FrameMove();',
+                      b'm_centerMessages455.FrameMove();\n\tm_uiMapLoadingWindow.FrameTransition455(R3GetLoopTime());')
+        raw = replace(raw, b'm_centerMessages455.Draw();',
+                      b'm_centerMessages455.Draw();\n\t\tm_uiMapLoadingWindow.DrawTransition455();')
+        raw = replace(raw, b'\t\t\t_GetCharMgr()->RenderText();',
+                      b'\t\t\t_GetCharMgr()->RenderText();\n\n'
+                      b'\t\tif (!RF455_CompositeWorldBloom(m_uiOptionWindow.AppliedBloom455())) return S_OK;')
+        return b'#include "client455_scene_capture.h"\n' + raw, True
     if relative == 'character/avatar/cavatar_relationinfo.cpp':
         def begin_transition(body):
             anchor = b'\t_GetAvatar()->Disable( ROSF_MOVABLE );'
@@ -101,6 +111,9 @@ def port_base_portal(raw, relative, native, section):
         def after_loading(body):
             anchor = b'if( m_byEnterMapIndex != m_byExitMapIndex )\n\t{'
             body = replace(body, anchor, anchor + b'''
+        if (const auto* loading = _GetMapLoadingWindow()) {
+            if (!loading->IsTransitionCovered455()) return;
+        }
         auto* land = _GetLand();
         const auto fail = [&] {
             if (_GetMapLoadingWindow()->IsShow()) _GetMapLoadingWindow()->Close();
@@ -110,19 +123,24 @@ def port_base_portal(raw, relative, native, section):
             // An accepted transition cannot continue on the previous server position.
             EP_DisconnectedFromServer();
         };
-        if (!land->CanLoadMap455(m_byExitMapIndex)) {
-            fail();
-            return;
-        }
 ''')
-            body = replace(body, b'_GetLand()->UnloadLevel();\n\t\t_GetLand()->LoadLevel( m_byExitMapIndex );',
-                           b'''land->UnloadLevel();
-        if (!land->LoadLevel(m_byExitMapIndex)) {
+            first = body.index(b'\t\t_GetRadarWindow()->RemoveAllCharacter();')
+            last = body.index(b'\t\t_GetLand()->LoadLevel( m_byExitMapIndex );', first)
+            last += len(b'\t\t_GetLand()->LoadLevel( m_byExitMapIndex );')
+            body = body[:first] + b'''        const auto clearPreviousScene = [] {
+            _GetRadarWindow()->RemoveAllCharacter();
+            _GetMinimapWindow()->RemoveAllMiniMapObject();
+            _GetMinimapWindow()->RemoveAllTooltipObject();
+            _GetCharMgr()->ClearCharacter(CTI_PLAYER);
+            _GetCharMgr()->ClearCharacter(CTI_NPC);
+            _GetCharMgr()->ClearCharacter(CTI_MONSTER);
+        };
+        if (!land->LoadTransitionLevel455(m_byExitMapIndex, clearPreviousScene)) {
             fail();
             return;
-        }''')
+        }''' + body[last:]
             body = replace(body, b'_GetLand()->SetPortalIndex( m_pExitPortalInfo->byIndex );',
-                           b'_GetLand()->SetPortalIndex( m_pExitPortalInfo->byIndex );\n'
+                           b'_GetLand()->SetPortalIndex(m_pExitPortalInfo ? m_pExitPortalInfo->byIndex : 0xff);\n'
                            b'\telse if (m_byMoveType == GST_BASE_PORTAL)\n'
                            b'\t\t_GetLand()->SetPortalIndex(0xff);')
             return replace(body, b'm_dwMoveDelay\t\t\t= DEFAULT_MOVEMAP_DELAY;',
@@ -142,6 +160,23 @@ def port_base_portal(raw, relative, native, section):
     _GetAvatar()->Enable(ROSF_MOVABLE);''')
         raw = patch_method(raw, section, b'MOVEMENT_BETWEEN_MAP_INFO', b'MoveToPortal_Result_BeginNewMap', finish_transition)
         return b'#include "client455_protocol_observation.h"\nvoid EP_DisconnectedFromServer();\n' + raw, True
+    if relative == 'userinterface/gamewindow/etcwin/guimaploadingwindow.h':
+        anchor = b'\tBOOL\t\t\tm_bCreated;'
+        raw = replace(raw, anchor, anchor + b'''
+    unsigned m_transitionMap455 = 0xff;
+    IDirect3DTexture9* m_transitionImage455 = nullptr;
+    IDirect3DTexture9* m_transitionMask455 = nullptr;
+    float m_transitionOpacity455 = 0.0f;
+    bool m_transitionOpening455 = false;
+    void PrepareTransition455();
+''')
+        anchor = b'\tvoid\tUpdate( void );'
+        return replace(raw, anchor, anchor + b'''
+    void FrameTransition455(float elapsed);
+    void DrawTransition455();
+    bool IsTransitionCovered455() const;
+    void ReleaseTransition455();
+'''), True
     if relative == 'userinterface/gamewindow/etcwin/guimaploadingwindow.cpp':
         def bind_loading_sprite(body):
             return b'''CGUIMapLoadingWindow::SetSprite( void )
@@ -152,5 +187,17 @@ def port_base_portal(raw, relative, native, section):
     SPRITE_INFO info{sprite, 0, 0};
     SetSpriteInfo(&info);
 }'''
-        return patch_method(raw, section, b'CGUIMapLoadingWindow', b'SetSprite', bind_loading_sprite), True
+        raw = patch_method(raw, section, b'CGUIMapLoadingWindow', b'SetSprite', bind_loading_sprite)
+        raw = replace(raw, b'CGUIMapLoadingWindow::~CGUIMapLoadingWindow()\n{',
+                      b'CGUIMapLoadingWindow::~CGUIMapLoadingWindow()\n{\n\tReleaseTransition455();')
+        raw = replace(raw, b'CGUIMapLoadingWindow::Init( void )\n{',
+                      b'CGUIMapLoadingWindow::Init( void )\n{\n\tReleaseTransition455();')
+        raw = replace(raw, b'\tCGUIWindow::Open();',
+                      b'\tif (IsShow()) return;\n\tPrepareTransition455();\n\tCGUIWindow::Open();')
+        raw = replace(raw, b'\tCGUIWindow::Close();',
+                      b'\tm_transitionOpening455 = false;\n\tCGUIWindow::Close();')
+        raw = replace(raw, b'CGUIMapLoadingWindow::SetMapMove( BYTE pi_bySrcMapID, BYTE pi_byDestMapID )\n{',
+                      b'CGUIMapLoadingWindow::SetMapMove( BYTE pi_bySrcMapID, BYTE pi_byDestMapID )\n{\n'
+                      b'\tm_transitionMap455 = pi_bySrcMapID != pi_byDestMapID ? pi_byDestMapID : 0xff;')
+        return raw + b'\n' + (native / 'client455_map_loading_transition.inc').read_bytes(), True
     return raw, False

@@ -1,5 +1,6 @@
 #include "client455_lobby_sky.h"
 #include "client455_lobby_post.h"
+#include "client455_lobby_texture.h"
 #include "client455_render_diagnostics.h"
 #include <d3dx9.h>
 #include <cstring>
@@ -35,18 +36,30 @@ bool initOrbitTextures455(IDirect3DDevice9* d){
     const char* files[]={"System/modern-lobby/space-panorama-v2.png","System/modern-lobby/novus-surface-v1.png","System/modern-lobby/novus-region-v1.png",
         "System/modern-lobby/space-sector-v1.png","System/modern-lobby/novus-region-detail-v1.png"};
     IDirect3DTexture9** textures[]={&s.space,&s.planet,&s.region,&s.spaceDetail,&s.regionDetail};
-    s.info.volumeTextureBytes=0;
-    s.info.detailTextureBytes=0;
-    for(unsigned index=0;index<5;++index){
-        const HRESULT hr=D3DXCreateTextureFromFileExA(d,files[index],D3DX_DEFAULT_NONPOW2,D3DX_DEFAULT_NONPOW2,
-            D3DX_DEFAULT,0,D3DFMT_A8R8G8B8,D3DPOOL_MANAGED,D3DX_FILTER_LINEAR,D3DX_FILTER_BOX,0,nullptr,nullptr,textures[index]);
-        if(FAILED(hr)){skyError455(hr,files[index]);return false;}
-        for(UINT level=0;level<(*textures[index])->GetLevelCount();++level){D3DSURFACE_DESC desc{};
-            if(SUCCEEDED((*textures[index])->GetLevelDesc(level,&desc))){
-                const auto bytes=std::uint64_t(desc.Width)*desc.Height*4;
-                s.info.volumeTextureBytes+=bytes;if(index>=3)s.info.detailTextureBytes+=bytes;
-            }}
-    }return true;
+    constexpr auto textureCount = sizeof(textures) / sizeof(textures[0]);
+    static_assert(sizeof(files) / sizeof(files[0]) == textureCount, "Lobby sky texture order");
+    IDirect3DTexture9* pending[textureCount] = {};
+    std::uint64_t volumeBytes = 0, detailBytes = 0;
+    for (std::size_t index = 0; index < textureCount; ++index) {
+        const HRESULT hr = RF455_LoadLobbyTexture(d, files[index], &pending[index]);
+        if (FAILED(hr)) {
+            for (auto*& texture : pending) dropSky455(texture);
+            skyError455(hr, files[index]);
+            return false;
+        }
+        for (UINT level = 0; level < pending[index]->GetLevelCount(); ++level) {
+            D3DSURFACE_DESC desc{};
+            if (SUCCEEDED(pending[index]->GetLevelDesc(level, &desc))) {
+                const auto bytes = std::uint64_t(desc.Width) * desc.Height * 4;
+                volumeBytes += bytes;
+                if (index >= 3) detailBytes += bytes;
+            }
+        }
+    }
+    for (std::size_t index = 0; index < textureCount; ++index) *textures[index] = pending[index];
+    s.info.volumeTextureBytes = volumeBytes;
+    s.info.detailTextureBytes = detailBytes;
+    return true;
 }
 bool initSky455(IDirect3DDevice9* d){
     auto& s=sky455;if(s.info.ready)return true;if(s.failed)return false;

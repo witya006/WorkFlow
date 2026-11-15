@@ -83,6 +83,7 @@ public:
     float GetSoundOption(SoundOption);
     void SetGraphicOption(GraphicOption,float);
     float GetGraphicOption(GraphicOption);
+    unsigned AppliedBloom455() const { return static_cast<unsigned>(m_applied.graphics[Bloom]); }
     void SwitchOn(EtcOption,BOOL);
     BOOL IsSwitchOn(EtcOption);
     void SelectCamera(BYTE);

@@ -26,6 +26,10 @@ from client455_linker_cooldown_port import port_linker_cooldown
 from client455_board_hover_port import port_board_hover
 from client455_player_status_port import port_player_status
 from client455_tagged_audio_port import port_tagged_audio
+from client455_world_messages_port import port_world_messages
+from client455_trunk_extension_port import port_trunk_extension
+from client455_item_combine_port import port_item_combine
+from client455_reward_port import port_reward_window
 from client455_magic_port import port_magic
 from client455_effect_runtime_port import port_effect_runtime
 from client455_nuclear_aiming_port import port_nuclear_aiming
@@ -48,6 +52,7 @@ from client455_premium_state_port import port_premium_state
 from client455_char_info_values_port import port_char_info_values
 from client455_char_info_port import port_char_info
 from client455_recall_port import port_recall
+from client455_particle_registry_port import particle_registry_header, particle_registry_source
 from client455_mob_control_port import port_mob_control
 from client455_option_port import port_option
 from client455_inventory_port import port_inventory
@@ -57,7 +62,9 @@ from client455_skill_force_window_port import port_skill_force_window
 from client455_shop_window_port import port_shop_window
 from client455_trade_ore_port import port_trade_ore
 from client455_base_portal_port import port_base_portal
+from client455_scene_device_port import port_scene_device, port_mainapp_device_results
 from client455_map_portal_port import port_map_portal
+from client455_battle_dungeon_map_port import port_battle_dungeon_map
 from client455_avatar_movement_port import port_avatar_movement
 from client455_item_work_port import port_item_work
 from client455_service_windows_port import port_service_windows
@@ -75,6 +82,8 @@ from client455_tutorial_stage_port import port_tutorial_stage
 from client455_combat_result_effect_port import port_combat_result_effect
 from client455_monster_critical_port import port_monster_critical
 from client455_armed_attack_port import port_armed_attack
+from client455_edf_file_port import port_edf_file
+from client455_ui_help_port import port_ui_help
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def write_owned(path,raw,previous):
@@ -90,12 +99,78 @@ def section(raw,first,last):
         depth+=(masked[end]==ord('{'))-(masked[end]==ord('}'));end+=1
     return start,end
 
+def port_sprite_path_cache(raw):
+    method=b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID, char * pi_pFilePathName )'
+    start,end=section(raw,method,method)
+    body=raw[start:end]
+    anchor=b'if ((*i)->m_wID == pi_wSpriteID )'
+    at=body.index(anchor)+len(anchor)
+    ret=body.index(b'return;',at)
+    if body[at:ret].strip():raise ValueError('Sprite path cache boundary changed')
+    body=body[:at]+b''' {
+            auto* sprite=(*i)->m_pSprite;
+            if (!pi_pFilePathName || !*pi_pFilePathName) return;
+            if (!sprite->IsLoaded455() || _stricmp(sprite->GetFileName(),pi_pFilePathName)!=0)
+                sprite->LoadSprite(pi_pFilePathName);
+            return;
+        }'''+body[ret+len(b'return;'):]
+    return raw[:start]+body+raw[end:]
+
+
 def kernel_sources(native):
     owner=json.loads((WS/'inventory/client455-renderer-owner-build.json').read_text())
     animation=json.loads((WS/'inventory/client455-animation-manager-build.json').read_text())
     wanted={owner['library']:owner['library_sha256'],animation['library']:animation['library_sha256']}
     wanted.update({r['file']:r['sha256'] for r in owner['dependencies']})
     found=set();sources={};evidence=[]
+    # These canonical units are recompiled by the normal build. Their historical
+    # module receipts remain baseline evidence, not a reason to rebuild every
+    # old standalone library after this focused, independently tested change.
+    resource_units={
+        'client455_animation.cpp','client455_character_manager.cpp',
+        'client455_character_rfs.cpp','client455_legacy_runtime.cpp',
+        'client455_texture.cpp','client455_shared_buffers.cpp'}
+    resource_receipt=WS/'artifacts/resource-cache/component-check.json'
+    shader_receipt=WS/'artifacts/resource-cache/character-shader-cache-check.json'
+    resource_report=None;resource_changes={};shader_revision=None
+    def checked_resource_revision(name,current):
+        nonlocal resource_report, shader_revision
+        if name == 'client455_shaders.cpp':
+            if shader_revision is None:
+                proof = json.loads(shader_receipt.read_text(encoding='utf-8'))
+                if (proof.get('passed') is not True or proof.get('architecture') != 'x86'
+                    or proof.get('full_client_build') is not False or proof.get('game_launched') is not False
+                    or proof.get('source_sha256', {}).get(name) != current
+                    or proof['source_sha256'].get('client455_shaders.h') != sha((native/'client455_shaders.h').read_bytes())
+                    or proof['source_sha256'].get('client455_character_rfs.h') != sha((native/'client455_character_rfs.h').read_bytes())
+                    or proof['source_sha256'].get('client455_character_rfs.cpp') != sha((native/'client455_character_rfs.cpp').read_bytes())):
+                    raise ValueError('Stale Character shader cache component receipt')
+                shader_revision = {'report': shader_receipt.relative_to(WS).as_posix(),
+                    'sha256': sha(shader_receipt.read_bytes()), 'source_sha256': {name: current}}
+            return
+        if name not in resource_units:raise ValueError('Changed kernel algorithm:'+name)
+        if resource_report is None:
+            if not resource_receipt.is_file():raise ValueError('Missing resource-cache component receipt:'+str(resource_receipt))
+            resource_report=json.loads(resource_receipt.read_text(encoding='utf-8'))
+            if (type(resource_report.get('build_exit')) is not int or resource_report['build_exit']!=0
+                or type(resource_report.get('test_exit')) is not int or resource_report['test_exit']!=0
+                or resource_report.get('full_client_build') is not False
+                or resource_report.get('game_launched') is not False
+                or resource_report.get('architecture')!='x86'):
+                raise ValueError('Resource-cache receipt must describe successful x86 standalone build/tests without game or full-client build')
+            tested=resource_report.get('source_sha256')
+            if not isinstance(tested,dict):raise ValueError('Resource-cache receipt has no source_sha256 map')
+            # Header, decoder and test changes also invalidate this receipt.
+            # No unrelated kernel producer receives this new prerequisite.
+            required=resource_units|{'client455_character_rfs.h','client455_shared_buffers.h','client455_texture.h',
+                'client455_legacy_model.cpp','test_client455_resource_cache.cpp'}
+            for unit in sorted(required):
+                source=native/unit
+                if not source.is_file() or tested.get(unit)!=sha(source.read_bytes()):
+                    raise ValueError('Stale resource-cache component receipt:'+unit)
+        if resource_report['source_sha256'].get(name)!=current:
+            raise ValueError('Untested resource-cache kernel revision:'+name)
+        resource_changes[name]=current
     for path in sorted((WS/'inventory').glob('client455*.json')):
         report=json.loads(path.read_text(encoding='utf-8'));library=report.get('library')
         # Component reports may describe their library as a structured file
@@ -105,10 +180,74 @@ def kernel_sources(native):
         for name,digest in report['source_sha256'].items():
             if not name.startswith('client455_') or not name.endswith('.cpp'):continue
             source=native/name
-            if sha(source.read_bytes())!=digest:raise ValueError('Changed kernel algorithm:'+name)
+            current=sha(source.read_bytes())
+            if current!=digest:checked_resource_revision(name,current)
             sources[name]=source
     if found!=set(wanted):raise ValueError('Missing kernel production source reports:'+str(set(wanted)-found))
+    if resource_changes:
+        evidence.append({'report':resource_receipt.relative_to(WS).as_posix(),
+            'sha256':sha(resource_receipt.read_bytes()),'role':'tested canonical resource source revisions; normal client not built',
+            'source_sha256':dict(sorted(resource_changes.items()))})
+    if shader_revision:
+        evidence.append(shader_revision)
     return sorted(sources.values()),evidence
+
+def port_land_scene_header(raw):
+    anchor = b'\tvoid\tUI_SetMinimap('
+    if raw.count(anchor) != 1:
+        raise ValueError('Land declaration boundary changed')
+    raw = raw.replace(anchor, b'''    char* IndexedMapName455(BYTE index);
+    bool PreparedMapMatches455(BYTE index, const char* name) const;
+    std::unique_ptr<RF455SceneInput455> TakePreparedMap455(BYTE index);
+    BOOL LoadIndexedLevel455(BYTE index, const RF455SceneInput455& prepared);
+    BOOL LoadBspLevel455(char* name, const RF455SceneInput455& prepared);
+
+    std::unique_ptr<RF455SceneInput455> m_preparedMap455;
+    BYTE m_preparedMapIndex455 = 0xff;
+    char m_preparedMapName455[128] = {};
+    char m_preparedMapRoot455[128] = {};
+''' + anchor)
+    anchor = b'\tBOOL\tLoadData( void );'
+    if raw.count(anchor) != 1:
+        raise ValueError('Land data declaration changed')
+    raw = raw.replace(anchor, anchor + b'''
+    bool CanLoadMap455(BYTE index);
+    void DiscardPreparedMap455();
+    BOOL LoadTransitionLevel455(BYTE index, void (*beforeUnload)() = nullptr);''')
+    return b'#include <memory>\r\nclass RF455SceneInput455;\r\n' + raw
+
+
+def port_land_scene_load(raw, native):
+    raw = b'#include <cstring>\r\n#include <memory>\r\n#include "client455_scene_input.h"\r\n' + raw
+    signature = b'CLand::LoadLevel( char * pi_pLevelName )'
+    first, last = section(raw, signature, signature)
+    declaration = raw.rfind(b'BOOL', 0, first)
+    if declaration < 0 or raw[declaration:first].strip() != b'BOOL':
+        raise ValueError('Land load return declaration changed')
+    preflight = (native / 'client455_land_preflight.inc').read_bytes()
+    load = (native / 'client455_land_load.inc').read_bytes()
+    raw = raw[:declaration] + preflight + b'\n' + load + raw[last:]
+
+    signature = b'CLand::LoadLevel( BYTE pi_byMapIndex )'
+    first, last = section(raw, signature, signature)
+    body = raw[first:last]
+    start = b'\t_GetCamera()->SetSpecialCameraMode(0);'
+    load = b'm_pLevel->LoadLevel( m_pMapInfo[pi_byMapIndex].pFileName );'
+    if body.count(start) != 1 or body.count(load) != 1:
+        raise ValueError('Indexed land load boundary changed')
+    body = b'''CLand::LoadIndexedLevel455(BYTE pi_byMapIndex, const RF455SceneInput455& prepared)
+{
+    auto* name = IndexedMapName455(pi_byMapIndex);
+    if (!name) return FALSE;
+''' + body[body.index(start):].replace(load, b'if (!LoadBspLevel455(name, prepared)) return FALSE;')
+    raw = raw[:first] + body + raw[last:]
+
+    init = b'CLand::Init( void )'
+    first, last = section(raw, init, init)
+    body = raw[first:last]
+    insert = body.index(b'{') + 1
+    return raw[:first] + body[:insert] + b'\n    DiscardPreparedMap455();' + body[insert:] + raw[last:]
+
 
 def main():
     port=WS/'work/client455-port';root=port/'normal';native=WS/'scripts/native';art=WS/'artifacts/client455-normal';art.mkdir(parents=True,exist_ok=True)
@@ -157,6 +296,10 @@ def main():
         raw=source.read_bytes();changes=[]
         if source.suffix.lower() in ['.cpp','.h']:
             relative=source.relative_to(port/'source/RF_Client').as_posix().lower()
+            raw,edf_file_changed=port_edf_file(raw,relative,section)
+            if edf_file_changed:changes.append('455 EDF envelope via shared decoder; complete reads, transactional replacement, NUL and bounded cursor; table schemas unchanged')
+            raw,ui_help_changed=port_ui_help(raw,relative,section,native)
+            if ui_help_changed:changes.append('455 localized UIHelp grouped and first-group readers with bounded records')
             raw,catalog_changed=port_resource_catalog(raw,relative,section)
             if catalog_changed:changes.append('455Resource.edf nine groups/260-328-244 records;player bone missing/shape checks and84-byte ANI events;bounded preflight and own list accessor')
             raw,item_bootstrap_changed=port_item_bootstrap(raw,relative,section)
@@ -553,7 +696,11 @@ def main():
                 changes.append('455Title constructor sets explicitnext1')
             raw,title_movies_changed=port_title_movies(raw,relative,native)
             if title_movies_changed:changes.append('455 configured Title logo and prologue playback with Esc')
-            if source.relative_to(port/'source/RF_Client').as_posix().lower()=='userinterface/spritemgr.cpp':
+            if relative=='userinterface/spritemgr.h':
+                raw=replace(raw,b'UnloadSpriteAll( void );',b'UnloadSpriteAll(BOOL keepWorld = FALSE);')
+                raw=replace(raw,b'UnloadTargetSprites455();',b'UnloadTargetSprites455(BOOL keepWorld = FALSE);')
+                changes.append('optional handoff preservation of world HUD texture atlases')
+            if relative=='userinterface/spritemgr.cpp':
                 start,end=section(raw,b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )',b'CSpriteMgr::LoadSprite( WORD pi_wSpriteID )')
                 body=raw[start:end];anchor=b'\tif( pi_wSpriteID >= SP_ID_MINIMAP )'
                 if body.count(anchor)!=1:raise ValueError('Normal sprite entry changed')
@@ -562,8 +709,34 @@ def main():
                     b'\tunsigned target455=55;'+nl+
                     b'\tswitch(pi_wSpriteID){case SP_ID_MOUSE:target455=0;break;case SP_ID_COMMON:target455=1;break;case SP_ID_LOADING:target455=2;break;case SP_ID_LOGIN:target455=3;break;case SP_ID_BELT:target455=4;break;}'+nl+
                     b'\tif(target455<55){char path[260];if(RF455_SelectSpritePath(target455,path,sizeof(path)))LoadSprite(pi_wSpriteID,path);return;}'+nl)
-                body=body.replace(anchor,bridge+anchor);raw=b'#include "client455_sprites.h"'+nl+raw[:start]+body+raw[end:]
+                body=body.replace(anchor,bridge+anchor)
+                raw=b'#include "client455_sprites.h"'+nl+b'#include "client455_protocol_observation.h"'+nl+raw[:start]+body+raw[end:]
+                raw=port_sprite_path_cache(raw)
+                method=b'CSpriteMgr::UnloadSpriteAll( void )'
+                start,end=section(raw,method,method)
+                body=replace(raw[start:end],method,b'CSpriteMgr::UnloadSpriteAll(BOOL keepWorld)')
+                body=replace(body,b'UnloadTargetSprites455();',b'UnloadTargetSprites455(keepWorld);')
+                raw=raw[:start]+body+raw[end:]
+                method=b'CSpriteMgr::UnloadTargetSprites455('
+                start,end=section(raw,method,method)
+                raw=raw[:start]+b'''CSpriteMgr::UnloadTargetSprites455(BOOL keepWorld)
+{
+    constexpr unsigned mainAtlas = 4;
+    constexpr unsigned inventoryAtlas = 6;
+    for (unsigned id = 0; id < _countof(m_targetSprites455); ++id) {
+        auto*& sprite = m_targetSprites455[id];
+        if (!sprite) continue;
+        if (keepWorld && (id == mainAtlas || id == inventoryAtlas)) {
+            RF455_ObserveProtocol("world-hud-retained", id, 0, 0);
+            continue;
+        }
+        sprite->ReleaseSprite();
+        delete sprite;
+        sprite = nullptr;
+    }
+}'''+raw[end:]
                 changes.append('455localized/Common mouse/common/loading/login/main paths,with explicit legacy->target ID bridge;remaining mixed UI migration open')
+                changes.append('retain target main/inventory atlases only on explicit world handoff')
             if relative=='gameprogress/cgp_login.cpp':
                 first,last=section(raw,b'CGP_LogIn::Render( void )',b'CGP_LogIn::Render( void )');body=raw[first:last]
                 anchor=b'\tR3EndScene();'
@@ -583,38 +756,27 @@ def main():
                 raw=raw[:declaration]+(native/'client455_login_capture.inc').read_bytes()+b'\n'+raw[declaration:first]+body+raw[last:]
                 changes.append('opt-in actual Login backbuffer capture after EndScene;no diagnostic sideeffects without RF455_CAPTURE_LOGIN=1')
             if relative=='cland.h':
-                anchor=b'\tvoid\tUI_SetMinimap('
-                if raw.count(anchor)!=1:raise ValueError('Land declaration boundary changed')
-                raw=raw.replace(anchor,b'\tBOOL LoadBspLevel455(char* name);\r\n'+anchor)
-                anchor=b'\tBOOL\tLoadData( void );'
-                if raw.count(anchor)!=1:raise ValueError('Land data declaration changed')
-                raw=raw.replace(anchor,anchor+b'\r\n\tbool CanLoadMap455(BYTE index) const;')
+                raw=port_land_scene_header(raw)
             if source.name.lower()=='cland.cpp':
-                raw=b'#include <cstring>\r\n'+raw
-                raw+=b'\n'+(native/'client455_land_preflight.inc').read_bytes()
-                first,last=section(raw,b'CLand::LoadLevel( char * pi_pLevelName )',b'CLand::LoadLevel( char * pi_pLevelName )')
-                body=(native/'client455_land_load.inc').read_bytes().replace(b'BOOL CLand::',b'CLand::',1)
-                declaration=raw.rfind(b'BOOL',0,first)
-                if declaration<0 or raw[declaration:first].strip()!=b'BOOL':raise ValueError('Land load return declaration changed')
-                raw=raw[:declaration]+b'namespace { bool CanReadLevel455(const char* name); }\r\n'+raw[declaration:first]+body+raw[last:]
-                first,last=section(raw,b'CLand::LoadLevel( BYTE pi_byMapIndex )',b'CLand::LoadLevel( BYTE pi_byMapIndex )')
-                body=raw[first:last];anchor=b'm_pLevel->LoadLevel( m_pMapInfo[pi_byMapIndex].pFileName );'
-                if body.count(anchor)!=1:raise ValueError('Indexed land load boundary changed')
-                body=body.replace(anchor,b'if (!LoadBspLevel455(m_maps455.maps[pi_byMapIndex].pFileName)) return FALSE;')
-                anchor=b'\t_GetCamera()->SetSpecialCameraMode(0);'
-                if body.count(anchor)!=1:raise ValueError('Indexed land load preflight boundary changed')
-                body=body.replace(anchor,b'\tif (!CanLoadMap455(pi_byMapIndex)) return FALSE;\r\n'+anchor)
-                body=body.replace(b'\tassert( m_pLevel != NULL );',b'')
-                raw=raw[:first]+body+raw[last:]
-                changes.append('455 level loading checks the destination BSP before replacing the active level and rebinding the camera')
+                raw=port_land_scene_load(raw,native)
+                changes.append('455 indexed map transition consumes one bounded prepared BSP lease before unload and rebinds the camera')
                 start,end=section(raw,b'CLand::UnloadLevel( void )',b'CLand::UnloadLevel( void )')
                 body=raw[start:end];anchor=b'\tassert( m_pLevel != NULL );'
                 if body.count(anchor)!=1:raise ValueError('Land unload entry changed')
                 nl=b'\r\n' if b'\r\n' in body else b'\n'
-                body=body.replace(anchor,b'\t// 455 RVA 3C8F30: an uncreated level returns FALSE before cleanup.'+nl+b'\tif( m_pLevel == NULL ) return FALSE;')
+                body=body.replace(anchor,b'    DiscardPreparedMap455();'+nl+b'\t// 455 RVA 3C8F30: an uncreated level returns FALSE before cleanup.'+nl+b'\tif( m_pLevel == NULL ) return FALSE;')
                 raw=raw[:start]+body+raw[end:]
                 changes.append('confirmed455 unload early return before level creation;full ILevel ownership port remains open')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='mainapp.cpp':
+                first,last=section(raw,b'CMainApp::Destroy(',b'CMainApp::Destroy(');body=raw[first:last]
+                teardown=[b'_DestroyAnimationMgr();',b'_DestroyMeshMgr();',b'_DestroyBoneMgr();',b'_DestroyCharIF();']
+                if any(body.count(call)!=1 for call in teardown):raise ValueError('MainApp resource-cache teardown boundary changed')
+                positions=[body.index(call) for call in teardown]
+                if positions!=sorted(positions):raise ValueError('MainApp resource owners teardown order changed')
+                nl=b'\r\n' if b'\r\n' in body else b'\n'
+                body=body.replace(teardown[-1],teardown[-1]+nl+b'\tRF455_GetCharacterRfsCache()->Clear();'+nl+b'\tRF455_ClearSceneResourceCache();')
+                raw=b'#include "client455_character_rfs.h"'+nl+b'#include "client455_resource_io.h"'+nl+raw[:first]+body+raw[last:]
+                changes.append('RFS bytes and scene RPK indexes released after application resource owners')
                 first,last=section(raw,b'CMainApp::LoadData(',b'CMainApp::LoadData(');body=raw[first:last];anchor=b'\tm_bLoadedAllData = TRUE;'
                 if body.count(anchor)!=1:raise ValueError('MainApp default FOV boundary changed')
                 body=body.replace(anchor,anchor+b'\r\n\tRF455_SetDefaultCameraFov(0.6f);SetDefaultFov(); //4557D1BCB/D1');raw=raw[:first]+body+raw[last:]
@@ -881,6 +1043,16 @@ def main():
                 if body.count(anchor)!=1:raise ValueError('Receive packet publication changed')
                 body=body.replace(anchor,b'WORD wireSize;memcpy(&wireSize,pMsg,2);std::size_t decodedSize=0;\r\n\t\tif(!m_codec455.decode(pMsg,wireSize,m_decoded455,sizeof(m_decoded455),decodedSize)){PushCloseNode(wSocketIndex);return;}\r\n\t\t_MSG_HEADER* pHeader=(_MSG_HEADER*)m_decoded455;\r\n\t\tpMsg=(char*)m_decoded455;')
                 body=body.replace(b'pNB->AddPopPos(pHeader->m_wSize)',b'pNB->AddPopPos(wireSize)');raw=raw[:start]+body+raw[end:]
+            if relative=='addcodebyyun/particlelist.h':
+                raw=particle_registry_header(raw,section)
+                changes.append('455 sparse persistent ordinary particle and entity registries')
+                raw=replace(raw,b'#define\t\tANI_MAX_LEV\t50',b'#define\t\tANI_MAX_LEV\t82')
+                signature=b'void SetEffect(CHARACTEROBJECT *cobj,DWORD id,DWORD lv)'
+                first,last=section(raw,signature,signature)
+                body=raw[first:last]
+                at=body.index(b'{')+1
+                raw=raw[:first]+body[:at]+b'\r\n\t\tif (id >= ANI_MAX_ID || lv >= ANI_MAX_LEV) return;'+body[at:]+raw[last:]
+                changes.append('455 recall effect owner supports eight ids and 82 level slots')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='addcodebyyun/particlelist.cpp':
                 old=b'pd3dDevice->CopyRects(backbuf,&r,1,psurface[count],&pt)'
                 if raw.count(old)!=1:raise ValueError('Screenshot readback call changed')
@@ -905,6 +1077,12 @@ def main():
                 at=matches[0].end();nl=b'\r\n' if b'\r\n' in raw else b'\n'
                 raw=raw[:at]+nl+b'\t\tif(!pMesh[i].particleSlots())continue; // 455 null effect guard'+raw[at:]
                 changes.append('455 current-effect null guard before particle/entity slots')
+                raw=particle_registry_source(raw,section)
+                changes.append('455 ordinary effect definitions and six independent live particle instances')
+                signature=b'void CAnimusEffect::LoadAEffectList('
+                first,last=section(raw,signature,signature)
+                raw=raw[:first]+(native/'client455_recall_list.inc').read_bytes()+raw[last:]
+                changes.append('455 recall effect rows from bounded cached loose bytes')
             if source.relative_to(port/'source/RF_Client').as_posix().lower()=='addcodebyjang/foreffect.cpp':
                 anchor=b'#define GetMega(a)'
                 if raw.count(b'g_ChMemoryInfo')!=8 or raw.count(anchor)!=1 or b'characterMemoryInfo' in raw:raise ValueError('Memory diagnostic consumer changed')
@@ -913,11 +1091,11 @@ def main():
                 raw=raw.replace(b'g_ChMemoryInfo',b'characterMemoryInfo')
                 changes.append('read confirmed process counters via source-owned memory snapshot')
             raw,tagged_changed=port_tagged_audio(raw,relative,section)
-            if tagged_changed:changes.append('455tagged3D audio owner/provider lifecycle in ordinaryCreate/Destroy;legacy2D/fullnuclear consumers remainopen')
+            if tagged_changed:changes.append('455 tagged audio lifecycle and event music catalog loading in startup and Login')
             raw,magic_changed=port_magic(raw,relative,native,section)
             if magic_changed:changes.append('455client magic64/layout3004/track46/parserend/resource/axis/control andselector;fullworldeffect runtime stillopen')
             raw,effect_runtime_changed=port_effect_runtime(raw,relative,native,section)
-            if effect_runtime_changed:changes.append('455effect512/schedule-quality-owner/disappear/eviction andtwo renderpasses;fullworldpipeline/blur/device lifecycle remainopen')
+            if effect_runtime_changed:changes.append('455 effect scheduling, 512-entry script cache and active lifetimes, and two render passes; full world pipeline, blur and device lifecycle remain open')
             raw,nuclear_changed=port_nuclear_aiming(raw,relative,native,section)
             if nuclear_changed:changes.append('455aiming core20/ordinaryframe/taggedsound andtrackoffset movement;C1A/commandproducers/fullnuclear remainopen')
             raw,center_changed=port_center_messages(raw,relative)
@@ -930,6 +1108,14 @@ def main():
             raw,lobby_menu_changed=port_lobby_menu(raw,relative,native)
             if lobby_menu_changed:changes.append('455 lobby loading reveal, menu and camera transition to character selection, staff roll, creation and exit')
             raw,tutorial_stage_changed=port_tutorial_stage(raw,relative)
+            raw,world_messages_changed=port_world_messages(raw,relative)
+            if world_messages_changed:changes.append('455 ordinary Login loads Quest, EventShip, NDMsgMonster, ItemPremium, MsgEvent, SpecialStore and ItemCollection through the shared EDF cache')
+            raw,trunk_extension_changed=port_trunk_extension(raw,relative)
+            if trunk_extension_changed:changes.append('455 MainGame board startup loads the common TrunkExted table into its client catalog')
+            raw,item_combine_changed=port_item_combine(raw,relative)
+            if item_combine_changed:changes.append('455 MainGame board startup loads ItemCombine recipes and ingredient groups into one client-owned payload')
+            raw,reward_changed=port_reward_window(raw,relative,section,native)
+            if reward_changed:changes.append('455 PC Room reward window consumes ItemPremium via Event 11/32 and 11/33')
             if tutorial_stage_changed:changes.append('455 explicit client stages, new character tutorial route and dialog delivery')
             if flags_changed:changes.append('455CharacterDWORD640 flags/any-none/death predicate andselected64bit server control writers;fullmovement/action/flagsideeffects remainopen')
             raw,palette_changed=port_character_palette(raw,relative,section)
@@ -940,7 +1126,11 @@ def main():
             if nuclear_registry_changed:changes.append('455actual nuclear record32/map+aiming owner andlate countdown/cursor frame;ordinary receiver/worldgeometry stillopen')
             raw,nuclear_receive_changed=port_nuclear_receiver(raw,relative,section)
             raw,map_data_changed=port_map_data(raw,relative,section)
-            if map_data_changed:changes.append('455 dynamic map588 records,strict Map/NDMap counts and real minimap geometry provider')
+            if relative=='cland.cpp':
+                anchor=b'CLand::LoadData(void){'
+                if raw.count(anchor)!=1:raise ValueError('Land catalog reload boundary changed')
+                raw=raw.replace(anchor,anchor+b'\n    DiscardPreparedMap455();')
+            if map_data_changed:changes.append('455 map catalog, minimap geometry and world map SPR/region resources')
             if nuclear_receive_changed:changes.append('455actual Nuclear group60 processor/all9handlers,MainGame owner andselected inventory-use completion;full stage/gameplay remainopen')
             raw,premium_state_changed=port_premium_state(raw,relative,native)
             if premium_state_changed:changes.append('455ordinary network premium flag andAvatar benefit owners;57/12 state fields connected;full cash/premium UI andcondition refresh remain open')
@@ -981,10 +1171,15 @@ def main():
             if camera_input_changed:changes.append('455 ordinary right-drag camera pitch bounds and scoped live mouse observation')
             raw,world_updates_changed=port_world_updates(raw,relative,native,section)
             raw,base_portal_changed=port_base_portal(raw,relative,native,section)
+            raw=port_scene_device(raw,relative,section)
+            if relative == 'mainapp.cpp':
+                raw=port_mainapp_device_results(raw, section)
             if base_portal_changed:changes.append('455 inventory Return item and bounded position group 4 base portal')
             raw,avatar_movement_changed=port_avatar_movement(raw,relative,native,section)
             if avatar_movement_changed:changes.append('455 movement, position sample, stop and bounded avatar position responses')
             raw,map_portal_changed=port_map_portal(raw,relative,native,section)
+            raw,battle_dungeon_map_changed=port_battle_dungeon_map(raw,relative,native,section)
+            if battle_dungeon_map_changed:changes.append('455 BattleDungeon inventory use, portal selection and map transitions')
             if map_portal_changed:changes.append('455 ordinary map portal group 8 request and result')
             if relative=='network/cnetworkmgr.cpp':
                 start,end=section(raw,b'CNetworkMgr::Close( BYTE pi_byServerType )',b'CNetworkMgr::Close( BYTE pi_byServerType )');body=raw[start:end]
@@ -1007,6 +1202,12 @@ def main():
                 guard=b'if( !m_bIsRequestClose )'
                 if body.count(guard)!=1:raise ValueError('Network close dialog boundary changed')
                 body=body.replace(guard,b'if (wasConnected && !m_bIsRequestClose && _GetUIScreen())')
+                message='"서버와의 연결이 끊어졌습니다. 프로그램을 종료합니다."'.encode('cp949')
+                if body.count(message)!=1:raise ValueError('Network close text boundary changed')
+                body=body.replace(message,b'const_cast<char*>(RF455_GetNormalLanguagePack()->get(0x304))')
+                body=body.replace(b'\t\t_GUIMessageBox( NULL,',
+                                  b'        RF455_ObserveProtocol("unexpected-disconnect", dwProID, endpoint, 0);\n'
+                                  b'\t\t_GUIMessageBox( NULL,',1)
                 tail=rb'\s*m_bIsConnectedToServer\[m_nActiveServerID\] = FALSE;\s*m_nActiveServerID = GST_NONE;\s*if\(dwProID<6\)m_activeServer455\[dwProID\]=255;'
                 body,count=re.subn(tail,b'',body)
                 if count!=1:raise ValueError('Network endpoint reset boundary changed')
@@ -1086,6 +1287,11 @@ def main():
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source);facade_units.append(facade)
         if name in ['client455_player_owner.cpp','client455_equipment_object.cpp','client455_item_object.cpp','client455_item_icon.cpp','client455_item_atlas.cpp','client455_item_icon_metadata.cpp','client455_icon_links.cpp','client455_linker_owners.cpp','client455_linker_window.cpp','client455_image_text.cpp','client455_gui_timer.cpp','client455_gui_animation.cpp','client455_board_hover.cpp']:cmake+='set_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     cmake+='add_library(RFClient455Facade STATIC '+''.join(' "'+p.as_posix()+'"' for p in facade_units)+')\ntarget_include_directories(RFClient455Facade PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_options(RFClient455Facade PRIVATE /W3 /O2 /Gy /EHsc)\nset_target_properties(RFClient455Facade PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    reward_source=native/'client455_reward_window.cpp'
+    reward_facade=root/'generated'/reward_source.name
+    save(reward_facade,reward_source.read_bytes(),reward_source)
+    cmake+='target_sources(RFClient455Facade PRIVATE "'+reward_facade.as_posix()+'")\n'
+    cmake+='set_source_files_properties("'+reward_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
     for name in ['client455_tutorial_stage.cpp','client455_tutorial_board.cpp','client455_tutorial_script.cpp','client455_tutorial_runtime.cpp','client455_tutorial_spatial.cpp','client455_tutorial_inventory.cpp','client455_tutorial_skills.cpp','client455_tutorial_targets.cpp','client455_tutorial_loot.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source)
         cmake+='target_sources(RFClient455Facade PRIVATE "'+facade.as_posix()+'")\n'
@@ -1096,6 +1302,13 @@ def main():
     for name in ['client455_gui_tab_board.cpp']:
         source=native/name;facade=root/'generated'/name;save(facade,source.read_bytes(),source)
         cmake+='target_sources(RFClient455Facade PRIVATE "'+facade.as_posix()+'")\nset_source_files_properties("'+facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
+    event_music_source=native/'client455_event_music.cpp';event_music_facade=root/'generated'/event_music_source.name
+    save(event_music_facade,event_music_source.read_bytes(),event_music_source)
+    cmake+='target_sources(RFClient455Facade PRIVATE "'+event_music_facade.as_posix()+'")\n'
+    event_player_source=native/'client455_event_music_play.cpp';event_player_facade=root/'generated'/event_player_source.name
+    save(event_player_facade,event_player_source.read_bytes(),event_player_source)
+    cmake+='target_sources(RFClient455Facade PRIVATE "'+event_player_facade.as_posix()+'")\n'
+    cmake+='set_source_files_properties("'+event_player_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS)+'")\n'
     cooldown_source=native/'client455_linker_cooldown.cpp';cooldown_facade=root/'generated'/cooldown_source.name
     save(cooldown_facade,cooldown_source.read_bytes(),cooldown_source)
     cmake+='target_sources(RFClient455Facade PRIVATE "'+cooldown_facade.as_posix()+'")\nset_source_files_properties("'+cooldown_facade.as_posix()+'" PROPERTIES COMPILE_DEFINITIONS "'+';'.join(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_FRUSTUM'])+'" COMPILE_OPTIONS "/Zc:forScope-")\n'
@@ -1107,6 +1320,7 @@ def main():
     for source in sources:
         target=root/'generated/kernels'/source.name;save(target,source.read_bytes(),source);kernel_units.append(target)
     cmake+='add_library(RFClient455Kernels STATIC '+''.join(' "'+p.as_posix()+'"' for p in kernel_units)+')\ntarget_include_directories(RFClient455Kernels PRIVATE\n'+''.join(' "'+p.as_posix()+'"\n' for p in directories)+')\ntarget_compile_definitions(RFClient455Kernels PRIVATE _CRT_SECURE_NO_WARNINGS)\ntarget_compile_options(RFClient455Kernels PRIVATE /W3 /O2 /Gy /EHsc /MP4)\nset_target_properties(RFClient455Kernels PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED YES MSVC_RUNTIME_LIBRARY MultiThreaded)\n'
+    cmake+='set_property(SOURCE "'+(root/'generated/kernels/client455_shaders.cpp').as_posix()+'" APPEND PROPERTY COMPILE_DEFINITIONS RF_CLIENT_455_CACHED_CHARACTER_SHADER)\n'
     save(root/'CMakeLists.txt',cmake.encode());manifest.write_text(json.dumps(records,indent=2)+'\n')
     report={'scope':'Actual180original client sources plus2production TU splits against455records/D3D9;open methods remain undefined','original_sources':180,'sources':len(units),'manifest':manifest.relative_to(WS).as_posix(),'manifest_sha256':sha(manifest.read_bytes()),'script_sha256':sha(Path(__file__).read_bytes()),'record_inputs':{name:sha((native/name).read_bytes()) for name in ['Character455.h','client455_normal_model.inc','client455_normal_mesh.inc','client455_normal_animation.inc','client455_normal_facade.cpp','client455_normal_renderer_math.cpp','client455_normal_renderer_math.h','client455_normal_renderer_constants.h']},'legacy_character_linked':False,'baseline_modified':False,'engine033_modified':False}
     report['canonical_kernel_sources']=[p.relative_to(WS).as_posix() for p in kernel_units];report['kernel_source_reports']=kernel_evidence
@@ -1117,20 +1331,22 @@ def main():
     for name in ['client455_character_clock.cpp','client455_character_clock.h','client455_normal_clock.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_normal_accounting.cpp','client455_normal_accounting.h','client455_normal_facade.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nation_paths.cpp','client455_nation_paths.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_language.cpp','client455_language.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_language.cpp','client455_language.h','client455_edf_input.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_font_settings.cpp','client455_font_settings.h','client455_font.cpp','client455_font.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_sprites.cpp','client455_sprites.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_hud.inc','client455_hud_members.inc','client455_radar.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_hotkey_hud.inc']=sha((native/'client455_hotkey_hud.inc').read_bytes())
     for name in ['client455_gui_tab_board.cpp','client455_gui_tab_board.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_char_info.h','client455_char_info.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_recall_window.h','client455_recall_window.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_recall_window.h','client455_recall_window.inc','client455_recall_list.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_particle_registry.h.inc','client455_particle_registry.cpp.inc','client455_effect_ini.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_mob_control.h','client455_mob_control.inc','client455_gui_move.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_option_window.h','client455_option_window.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['record_inputs']['client455_inventory.inc']=sha((native/'client455_inventory.inc').read_bytes())
     for name in ['client455_unit_view_skin.h','client455_unit_tuning.inc','client455_unit_storehouse.inc',
                  'client455_skill_force_window.inc','client455_force_window.inc','client455_skill_force_row.inc',
-                 'client455_shop_window.inc','client455_player_trade_window.inc','client455_ore_window.inc',
+                 'client455_shop_window.inc','client455_shop_reply.inc','client455_shop_transactions.h',
+                 'client455_shop_transactions.inc','client455_player_trade_window.inc','client455_ore_window.inc',
                  'client455_gui_page_board.h','client455_item_make.inc','client455_item_upgrade.inc',
                  'client455_exchange_window.inc','client455_exchange_board.inc','client455_mining_window.inc',
                  'client455_class_change_window.inc','client455_party_window.inc']:
@@ -1165,7 +1381,8 @@ def main():
     for name in ['client455_object_copy.inc','client455_resource_object_ctor.inc','client455_resource_object_copy.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['resource_object_port_sha256']=sha((WS/'scripts/client455_resource_object_port.py').read_bytes())
     report['map_data_port_sha256']=sha((WS/'scripts/client455_map_data_port.py').read_bytes())
-    for name in ['client455_map_data.h','client455_map_data.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_map_data.h','client455_map_data.cpp','client455_world_map_owner.inc',
+                 'client455_area_notice.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['item_object_port_sha256']=sha((WS/'scripts/client455_item_object_port.py').read_bytes())
     report['item_icon_port_sha256']=sha((WS/'scripts/client455_item_icon_port.py').read_bytes())
     report['item_metadata_port_sha256']=sha((WS/'scripts/client455_item_metadata_port.py').read_bytes())
@@ -1180,8 +1397,12 @@ def main():
     report['board_hover_port_sha256']=sha((WS/'scripts/client455_board_hover_port.py').read_bytes())
     report['player_status_port_sha256']=sha((WS/'scripts/client455_player_status_port.py').read_bytes())
     report['tagged_audio_port_sha256']=sha((WS/'scripts/client455_tagged_audio_port.py').read_bytes())
+    report['world_messages_port_sha256']=sha((WS/'scripts/client455_world_messages_port.py').read_bytes())
     report['magic_port_sha256']=sha((WS/'scripts/client455_magic_port.py').read_bytes())
+    report['magic_reader_sha256']={name:sha((native/name).read_bytes()) for name in
+        ['client455_magic_reader.inc','client455_magic_parser_extra.inc']}
     report['effect_runtime_port_sha256']=sha((WS/'scripts/client455_effect_runtime_port.py').read_bytes())
+    report['effect_cache_sha256']=sha((native/'client455_effect_cache.inc').read_bytes())
     report['nuclear_aiming_port_sha256']=sha((WS/'scripts/client455_nuclear_aiming_port.py').read_bytes())
     report['center_messages_port_sha256']=sha((WS/'scripts/client455_center_messages_port.py').read_bytes())
     report['chat_port_sha256']=sha((WS/'scripts/client455_chat_port.py').read_bytes())
@@ -1194,14 +1415,15 @@ def main():
     report['avatar_movement_port_sha256']=sha((WS/'scripts/client455_avatar_movement_port.py').read_bytes())
     for name in ['client455_avatar_movement.h','client455_avatar_movement.inc']:
         report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_base_portal_inventory.inc','client455_base_portal_position.inc']:
+    for name in ['client455_base_portal_inventory.inc','client455_base_portal_position.inc',
+                 'client455_map_loading_transition.inc','client455_screen_transition.h']:
         report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_world_entry.h','client455_world_entry.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_registered_characters.h','client455_registered_characters.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['resource_catalog_port_sha256']=sha((WS/'scripts/client455_resource_catalog_port.py').read_bytes())
     report['record_inputs']['client455_resource_catalog.h']=sha((native/'client455_resource_catalog.h').read_bytes())
     report['item_bootstrap_port_sha256']=sha((WS/'scripts/client455_item_bootstrap_port.py').read_bytes())
-    for name in ['client455_item_bootstrap.h','client455_item_bootstrap.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_item_bootstrap.h','client455_item_bootstrap.inc','client455_edf_input.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
     report['character_tables_port_sha256']=sha((WS/'scripts/client455_character_tables_port.py').read_bytes())
     report['avatar_classes_port_sha256']=sha((WS/'scripts/client455_avatar_classes_port.py').read_bytes())
     report['equipment_port_sha256']=sha((WS/'scripts/client455_equipment_port.py').read_bytes())
@@ -1225,8 +1447,17 @@ def main():
     for name in ['client455_center_messages.h','client455_center_messages.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_nuclear_aiming.h','client455_nuclear_aiming.cpp','client455_magic_move.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_effect_disappear.inc','client455_effect_schedule.inc','client455_effect_passes.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_magic_control.h','client455_magic_control.cpp','client455_magic_parser_extra.inc']:report['record_inputs'][name]=sha((native/name).read_bytes())
-    for name in ['client455_tagged_audio.h','client455_tagged_audio.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_magic_control.h','client455_magic_control.cpp','client455_magic_parser_extra.inc',
+                 'client455_effect_manifest.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_tagged_audio.h','client455_tagged_audio.cpp','client455_resource_text.h','client455_event_music.h','client455_event_music.cpp','client455_event_music_play.h','client455_event_music_play.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_world_messages.h']=sha((native/'client455_world_messages.h').read_bytes())
+    for name in ['client455_reward_state.h','client455_reward_window.h','client455_reward_window.cpp','client455_reward_wire.h','client455_reward_dispatch.inc','client455_item_text.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    for name in ['client455_battle_dungeon_map.h','client455_battle_dungeon_map.inc','client455_battle_dungeon_inventory.inc','client455_battle_dungeon_panel.h']:report['record_inputs'][name]=sha((native/name).read_bytes())
+    report['record_inputs']['client455_event_ship.h']=sha((native/'client455_event_ship.h').read_bytes())
+    report['record_inputs']['client455_shop_collection.h']=sha((native/'client455_shop_collection.h').read_bytes())
+    report['record_inputs']['client455_edf_rows.h']=sha((native/'client455_edf_rows.h').read_bytes())
+    report['record_inputs']['client455_trunk_extension.h']=sha((native/'client455_trunk_extension.h').read_bytes())
+    report['record_inputs']['client455_item_combine.h']=sha((native/'client455_item_combine.h').read_bytes())
     report['record_inputs']['client455_player_status.h']=sha((native/'client455_player_status.h').read_bytes())
     for name in ['client455_board_hover.h','client455_board_hover.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())
     for name in ['client455_linker_window.h','client455_linker_window.cpp','client455_image_text.h','client455_image_text.cpp']:report['record_inputs'][name]=sha((native/name).read_bytes())

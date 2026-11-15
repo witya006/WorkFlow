@@ -120,14 +120,18 @@ BOOL CNetMsgProcessor_Map::MovePotalRequest_clzo(BYTE portal)
 
     const auto level = entry.access.minimumLevel;
     if (level != 0xffffffff && level > avatar->GetLevel()) {
+        land->DiscardPreparedMap455();
         char portalName[sizeof entry.pName + 1]{};
         std::memcpy(portalName, entry.pName, sizeof entry.pName);
         RF455_ShowSystemMessage(RF455_GetNormalLanguagePack()->get(0xc41), portalName, level);
         return FALSE;
     }
     PortalRequest455 request{portal, {0xffff, 0xffff, 0xffff}};
-    if (level != 0xffffffff && !ResolvePortalItems455(entry.access, request)) return FALSE;
-    if (!SendNetMessage(move_potal_request_clzo, &request, sizeof request)) return FALSE;
+    if ((level != 0xffffffff && !ResolvePortalItems455(entry.access, request)) ||
+        !SendNetMessage(move_potal_request_clzo, &request, sizeof request)) {
+        land->DiscardPreparedMap455();
+        return FALSE;
+    }
 
     m_portalPending455 = true;
     move->m_bIsMoved = TRUE;
@@ -143,6 +147,7 @@ void CNetMsgProcessor_Map::CancelPortalRequest455()
 {
     if (!m_portalPending455) return;
     m_portalPending455 = false;
+    if (auto* land = _GetLand()) land->DiscardPreparedMap455();
     _GetGBM()->SetRequestProcessState(FALSE);
     if (auto* avatar = _GetAvatar()) {
         if (auto* move = avatar->GetMoveMapInfo()) {
@@ -178,18 +183,19 @@ bool CNetMsgProcessor_Map::ReceivePortalResult455(const char* bytes, std::size_t
         return true;
 
     if (avatar) avatar->SetAction(CAI_MOVE_STOP);
+    if (assigned) _GetNetworkMgr()->CancelPendingMapRequests455();
     if (!move || !land || !loading || !FindPortalMap455(*land, reply.map) ||
         (!assigned && (!move->m_pExitPortalInfo || source != move->m_byEnterMapIndex ||
                       reply.zone != 0 || reply.map != move->m_byExitMapIndex)) ||
         (reply.map != source && !land->CanLoadMap455(reply.map))) {
-        _GetNetworkMgr()->CancelPendingMapRequests455();
+        if (!assigned) _GetNetworkMgr()->CancelPendingMapRequests455();
+        else if (land) land->DiscardPreparedMap455();
         RF455_ObserveProtocol("portal-result-unavailable", reply.map, reply.zone, 0);
         EP_DisconnectedFromServer();
         return true;
     }
 
     if (assigned) {
-        _GetNetworkMgr()->CancelPendingMapRequests455();
         if (loading->IsShow()) loading->Close();
         if (_GetDungeonInfo()->IsInDungeon()) {
             _GetDungeonInfo()->SetDungeonExitType(DET_PORTAL);
@@ -212,4 +218,5 @@ void CNetworkMgr::CancelPendingMapRequests455()
     CancelBasePortalRequest455();
     if (auto* processor = static_cast<CNetMsgProcessor_Map*>(GetNetMsgProcessor(NMP_MAP)))
         processor->CancelPortalRequest455();
+    if (auto* land = _GetLand()) land->DiscardPreparedMap455();
 }

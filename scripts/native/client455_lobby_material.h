@@ -15,3 +15,6 @@ struct RF455LobbyMaterialTelemetry {
 void RF455_ReleaseLobbyMaterial();
 RF455LobbyMaterialTelemetry RF455_GetLobbyMaterialTelemetry();
 void RF455_ResetLobbyMaterialTelemetry();
+// Startup-only preparation on the device thread. Reuses the render owner's
+// textures and cached failure state; no separate preload copies are created.
+bool RF455_PrepareLobbyMaterials(IDirect3DDevice9*);

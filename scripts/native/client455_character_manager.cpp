@@ -14,12 +14,20 @@ void cache(RF455CharacterManager* manager,std::uint32_t id,RF455CharacterStorage
 }
 void release(RF455CharacterStorage* character,const RF455MeshMemoryOps* memory){RF455_ReleaseModelMeshArray(&character->prefix,memory);memory->release(memory->context,character);}
 void erase(RF455CharacterManager* manager,RF455CharacterStorage** at,const RF455MeshMemoryOps* memory){
-    release(*at,memory);const auto tail=manager->end-at-1;if(tail>0)std::memmove(at,at+1,4*tail);--manager->end;
-    // Reference delete/clear do not invalidate ID cache entries.
+    auto* character = *at;
+    // A cached pointer may appear in several slots after the record ID changes.
+    for (auto*& entry : manager->cache)
+        if (entry == character) entry = nullptr;
+    const auto tail = manager->end - at - 1;
+    if (tail > 0) std::memmove(at, at + 1, sizeof(*at) * tail);
+    --manager->end;
+    release(character, memory);
 }
-bool readStream(FILE* stream,std::uint32_t size,const RF455MeshMemoryOps* memory,RF455RawModelBuffer* output){
+bool copyResource(const RF455ResourceRead& input,const RF455MeshMemoryOps* memory,RF455RawModelBuffer* output){
+    if(input.status!=RF455ResourceReadStatus::Ready)return false;
+    const auto size=static_cast<std::uint32_t>(input.bytes->size());
     void* bytes=memory->allocate(memory->context,size);if(!bytes)return false;
-    if(size && std::fread(bytes,1,size,stream)!=size){memory->release(memory->context,bytes);return false;}
+    if(size)std::memcpy(bytes,input.bytes->data(),size);
     *output={bytes,size};return true;
 }
 }
@@ -57,7 +65,12 @@ extern "C" RF455CharacterStorage* RF455_FindCharacterId(RF455CharacterManager* m
 }
 extern "C" void RF455_DeleteCharacterName(RF455CharacterManager* manager,const char* name,const RF455MeshMemoryOps* memory){for(auto** i=manager->begin;i!=manager->end;)if(!std::strcmp(reinterpret_cast<const char*>((*i)->prefix.bytes+4),name))erase(manager,i,memory);else ++i;}
 extern "C" void RF455_DeleteCharacterId(RF455CharacterManager* manager,std::uint32_t id,const RF455MeshMemoryOps* memory){for(auto** i=manager->begin;i!=manager->end;)if(get<std::uint32_t>((*i)->prefix.bytes,0)==id)erase(manager,i,memory);else ++i;}
-extern "C" void RF455_ClearCharacters(RF455CharacterManager* manager,const RF455MeshMemoryOps* memory){for(auto** i=manager->begin;i!=manager->end;++i)if(*i)release(*i,memory);manager->end=manager->begin;}
+extern "C" void RF455_ClearCharacters(RF455CharacterManager* manager,const RF455MeshMemoryOps* memory){
+    std::memset(manager->cache, 0, sizeof(manager->cache));
+    for (auto** i = manager->begin; i != manager->end; ++i)
+        if (*i) release(*i, memory);
+    manager->end = manager->begin;
+}
 extern "C" void RF455_DestroyCharacterManager(RF455CharacterManager* manager,const RF455MeshMemoryOps* memory){RF455_ClearCharacters(manager,memory);if(manager->begin)memory->release(memory->context,manager->begin);manager->begin=manager->end=manager->capacity=nullptr;}
 extern "C" void RF455_RefreshModelTextures(RF455KnownModelPrefix* model,RF455TextureManager* textures){
     auto* meshes=get<RF455MeshStorage*>(model->bytes,536);const auto count=get<std::uint32_t>(model->bytes,532);
@@ -67,10 +80,11 @@ extern "C" void RF455_RefreshModelTextures(RF455KnownModelPrefix* model,RF455Tex
     }
 }
 extern "C" int RF455_ReadMshFile(const char* name,const RF455MeshMemoryOps* memory,RF455RawModelBuffer* output){
-    if(!name || !*name || !output)return 0;std::size_t i=std::strlen(name);while(i && name[i]!='.')--i;const char* extension=name+i+1;
+    if(!name || !*name || !output || !memory || !memory->allocate || !memory->release)return 0;std::size_t i=std::strlen(name);while(i && name[i]!='.')--i;const char* extension=name+i+1;
     if(std::strlen(extension)>3 || _stricmp(extension,"MSH"))return 0;
-    std::uint32_t size=0;FILE* stream=RF455_GetCharacterRfsCache()->Open(name,&size);
-    if(stream){const bool ok=readStream(stream,size,memory,output);std::fclose(stream);if(ok)return 1;}
-    stream=std::fopen(name,"rb");if(!stream)return 0;
-    std::fseek(stream,0,SEEK_END);const long length=std::ftell(stream);std::fseek(stream,0,SEEK_SET);bool ok=false;if(length>=0)ok=readStream(stream,static_cast<std::uint32_t>(length),memory,output);std::fclose(stream);return ok?1:0;
+    auto* resources=RF455_GetCharacterRfsCache();
+    // Model parsers mutate their input: cached source bytes never become the
+    // caller-owned buffer. Original 91F1B0 falls back after any failed RFS blob.
+    if(copyResource(resources->ReadArchiveBytes(name),memory,output))return 1;
+    return copyResource(resources->ReadLooseBytes(name),memory,output)?1:0;
 }

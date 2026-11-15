@@ -1,19 +1,12 @@
 #include "client455_skill_force_items.h"
+#include "client455_edf_input.h"
 #include "client455_language.h"
-#include <cstdio>
 #include <cstring>
 #include <stdexcept>
 
 namespace {
 std::uint32_t u32(const unsigned char* p){std::uint32_t v;std::memcpy(&v,p,4);return v;}
 int tableNumber(std::uint8_t subtype){switch(subtype){case 1:return 0;case 0:return 1;case 2:return 2;case 3:return 3;case 5:return 4;default:return -1;}}
-bool read(const char* name,std::vector<unsigned char>& out){
-    FILE* file=std::fopen(name,"rb");if(!file)return false;
-    bool ok=std::fseek(file,0,SEEK_END)==0;long length=ok?std::ftell(file):-1;
-    ok=ok&&length>=0&&std::fseek(file,0,SEEK_SET)==0;
-    if(ok){out.resize(static_cast<std::size_t>(length));ok=out.empty()||std::fread(out.data(),1,out.size(),file)==out.size();}
-    std::fclose(file);return ok;
-}
 }
 RF455ItemDataSpan RF455SkillForceTable::get(std::uint32_t index)const{
     if(index>=count)return {};
@@ -54,9 +47,26 @@ bool RF455SkillForceData::localizeEdf(const void* raw,std::size_t size){
     return true;
 }
 bool RF455SkillForceData::loadFiles(const char* base,const char* localized){
-    std::vector<unsigned char> body,names;
-    if(!read(base,body)||!loadBaseEdf(body.data(),body.size()))return false;
-    return read(localized,names)&&localizeEdf(names.data(),names.size());
+    if(!base||!localized)return false;
+    if(loaded&&basePath!=base)return false;
+    if(!namesPath.empty()&&namesPath!=localized)return false;
+    if(fileLocalizationLoaded)return true;
+
+    if(!loaded){
+        std::string path=base;
+        if (!RF455_ReadEdfInput(base, [&](const unsigned char* raw, std::size_t size) {
+            return loadBaseEdf(raw, size);
+        })) return false;
+        basePath.swap(path);
+    }
+    std::string path=localized;
+    fileLocalizationLoaded = RF455_ReadEdfInput(localized, [&](const unsigned char* raw, std::size_t size) {
+        // A mismatched locale can update a prefix of the table. Keep this owner
+        // bound to that path while live item metadata points into its storage.
+        namesPath.swap(path);
+        return localizeEdf(raw, size);
+    });
+    return fileLocalizationLoaded;
 }
 RF455ItemDataSpan RF455SkillForceData::get(std::uint8_t subtype,std::uint32_t index)const{
     const int number=tableNumber(subtype);return number<0?RF455ItemDataSpan{}:tables[number].get(index);

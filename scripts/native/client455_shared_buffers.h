@@ -3,6 +3,7 @@
 #include <d3d9.h>
 #include <cstddef>
 #include <cstdint>
+#include <vector>
 #include "client455_mesh_runtime.h"
 
 constexpr std::uint32_t RF455_VERTEX_BLOCK_BYTES=2300000;
@@ -46,3 +47,21 @@ void RF455_RebaseMesh08Indices(void* indices,std::uint16_t count,std::uint32_t v
 void RF455_UploadMesh08Gpu(RF455VertexBufferPool* vertices,RF455IndexBufferPool* indices,
     RF455BufferAccounting* accounting,RF455MeshStorage* mesh,const RF455Mesh08Part* part);
 }
+
+struct RF455CharacterBufferSlot {
+    unsigned slot;
+    std::vector<unsigned char> bytes;
+};
+struct RF455CharacterBufferSnapshot {
+    // An entry with empty bytes represents an allocated, unused block.
+    std::vector<RF455CharacterBufferSlot> vertices36, vertices64, indices;
+};
+
+HRESULT RF455_CaptureCharacterBuffers(const RF455VertexBufferPool& vertices36,
+    const RF455VertexBufferPool& vertices64, const RF455IndexBufferPool& indices,
+    RF455CharacterBufferSnapshot& output);
+// Recreate into empty, detached pools. On failure, all destinations stay intact.
+// The caller owns device replacement and buffer accounting.
+HRESULT RF455_RecreateCharacterBuffers(const RF455CharacterBufferSnapshot& snapshot,
+    IDirect3DDevice9* device, RF455VertexBufferPool& vertices36,
+    RF455VertexBufferPool& vertices64, RF455IndexBufferPool& indices);

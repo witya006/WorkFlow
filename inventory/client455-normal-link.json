@@ -7,15 +7,15 @@
   "other_errors": [],
   "log": "artifacts/client455-normal/normal-link.txt",
   "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "normal_build_sha256": "f8e9d05a0d803d8bc251acc78fa6d887124220000c4861a9d2773b3b0a516237",
+  "normal_build_sha256": "51e60709e9d87c2e722e5fb34cbdb3a7e56ba85deaefa5e1f5feb2a6945d1697",
   "libraries": [
     {
-      "file": "work/client455-port/normal/build/Release/RFClient455Facade.lib",
-      "sha256": "2eda1eb08e5ed54a9c02a24108e69003b82c9c0830f64176b71b2a5f85c38c5d"
+      "file": "work/client455-port/normal/ninja-build/RFClient455Facade.lib",
+      "sha256": "9907008bed049fa3ac3425f43ee12ac8683eb44793d41c8739fc0cc47bd3ebde"
     },
     {
-      "file": "work/client455-port/normal/build/Release/RFClient455Kernels.lib",
-      "sha256": "f86878f840eeefcde0642e989e59e8d2fa2fa7a614d28ab607b5a9a539027c1d"
+      "file": "work/client455-port/normal/ninja-build/RFClient455Kernels.lib",
+      "sha256": "d88a5db0062ca6efb729773eba2799298c9728ef86d13044f720a888d3175941"
     },
     {
       "file": "work/recovered/client455/x87-math/RFClient455X87Math.lib",
@@ -26,8 +26,8 @@
       "sha256": "ad1b0630494999a3c59e351872ba51d135a538d48daac72ada4259a268afc69b"
     },
     {
-      "file": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-      "sha256": "73048191e534efe9a73ad843a4d80311f9ef407c16a63f582423f6579365b1c8"
+      "file": "work/client455-port/startup-engine/ninja-build/R3Engine455Startup.lib",
+      "sha256": "9c425b14d87450198a736131b71f0ee95a826bd03525c5133a0d1f31f22c8cc9"
     },
     {
       "file": "work/client455-port/dependencies/d3dx9_36.lib",
@@ -62,11 +62,11 @@
   "M9": "OPEN",
   "executable": {
     "file": "work/client455-port/normal/build/RF_Online.bin",
-    "sha256": "4f07a63db21c8a2fbbdbc2ad7956134739cb8bd0424fab71e6325cc2cc18f177",
-    "bytes": 2666496,
+    "sha256": "2f7473e85c3b005893ea4c2abd11e7da668f9f7f7fdd2d745ba3201858aa7265",
+    "bytes": 3016704,
     "architecture": "x86",
     "image_base": "0x400000",
-    "entry_rva": "0x1b9e60",
+    "entry_rva": "0x2072d0",
     "sections": [
       ".text",
       ".rdata",
@@ -77,10 +77,10 @@
   },
   "map": {
     "file": "work/client455-port/normal/build/RF_Online.map",
-    "sha256": "906cac24243002956dcf06441dcf88a9aee8f98e9cbe0979c9a6a5df612a6535"
+    "sha256": "11c53daaca7715b7092577f480845c5c4cd63af2c70b580434a578e86cd3e4d3"
   },
   "link_response": {
     "file": "work/client455-port/normal/generated/normal-link.rsp",
-    "sha256": "70b46220faaa8893fc266ae2c7af313a0bc2b4b49ce1ee6e0ee0fc4e351da7a1"
+    "sha256": "e9b20afe4fc01025a9d893ba137f8819641ad6fb38e23629e8f7f64807449a31"
   }
 }

@@ -26,8 +26,9 @@ def main():
     root.mkdir(parents=True, exist_ok=True)
     native = WS / 'scripts/native'
     source, header = native / 'client455_rvp.cpp', native / 'client455_rvp.h'
+    cache, cache_header = native / 'client455_character_rfs.cpp', native / 'client455_character_rfs.h'
     probe = native / 'client455_rvp_probe.cpp'
-    obj, probe_obj = root / 'rvp.obj', root / 'probe.obj'
+    obj, probe_obj, cache_obj = root / 'rvp.obj', root / 'probe.obj', root / 'character-rfs.obj'
     library, exe = root / 'RF455Rvp.lib', root / 'rvp-probe.exe'
     log, mapping = root / 'build.txt', exe.with_suffix('.map')
     info = json.loads((WS / 'inventory/msvc-verification.json').read_text())
@@ -37,7 +38,9 @@ def main():
              'if errorlevel 1 exit /b 1',
              f'cl /c /nologo /MT /O2 /fp:strict /Gy /EHsc /std:c++14 /W4 /I"{native}" "{source}" /Fo"{obj}" > "{log}" 2>&1',
              'if errorlevel 1 exit /b 1',
-             f'lib /nologo /OUT:"{library}" "{obj}" >> "{log}" 2>&1',
+             f'cl /c /nologo /MT /O2 /fp:strict /Gy /EHsc /std:c++14 /W4 /I"{native}" "{cache}" /Fo"{cache_obj}" >> "{log}" 2>&1',
+             'if errorlevel 1 exit /b 1',
+             f'lib /nologo /OUT:"{library}" "{obj}" "{cache_obj}" >> "{log}" 2>&1',
              'if errorlevel 1 exit /b 1',
              f'cl /c /nologo /MT /O2 /fp:strict /Gy /EHsc /std:c++14 /W4 /I"{native}" "{probe}" /Fo"{probe_obj}" >> "{log}" 2>&1',
              'if errorlevel 1 exit /b 1',
@@ -121,6 +124,7 @@ wav *Dummy Sound.wav 5000.0f throw 42 *Dummy throw 42 *first Bip01
                   script_sha256=sha(Path(__file__)), reference_sha256=sha(ref_path),
                   source=record(source), header=record(header), probe=record(probe),
                   camera_header=record(native / 'client455_camera.h'),
+                  resource_cache_source=record(cache), resource_cache_header=record(cache_header),
                   library=library.relative_to(WS).as_posix(), library_sha256=sha(library),
                   executable=record(own), map=record(own.with_suffix('.map')), build_log=record(log),
                   inputs=[record(path) for path in inputs], outputs=outputs,

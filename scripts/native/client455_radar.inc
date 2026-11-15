@@ -40,6 +40,9 @@ void CGUIRadarWindow::Init()
     Add(&m_uiCompassBase);
     Add(&m_uiAvatarObject);
     Add(&m_uiRadarBoard);
+    m_areaLabel455.SetMouseInput455(FALSE);
+    Add(&m_areaLabel455);
+    if (g_pLand) SetAreaLabel455(g_pLand->AreaLabel455());
     m_zoomIn455.SetPos(m_ptPos.x + 6, m_ptPos.y + 84);
     m_zoomOut455.SetPos(m_ptPos.x + 13, m_ptPos.y + 104);
     m_openMap455.SetPos(m_ptPos.x + 118, m_ptPos.y + 109);
@@ -83,6 +86,14 @@ void CGUIRadarWindow::SetSprite()
         for (auto* character : m_listChar)
             SetSprite_CharDir(static_cast<CharType>(character->byType), &character->uiCharDir);
     }
+}
+
+void CGUIRadarWindow::SetAreaLabel455(const char* label)
+{
+    // 455 RVA 0x3186C0 centers the text in the outer radar area's 114x20 lane.
+    m_areaLabel455.SetString(const_cast<char*>(label));
+    m_areaLabel455.SetPos(m_ptPos.x + 31 + (114 - m_areaLabel455.GetSizeX()) / 2,
+                         m_ptPos.y + (20 - m_areaLabel455.GetSizeY()) / 2);
 }
 
 void CGUIRadarWindow::MouseEvent(_mouse_event& event)

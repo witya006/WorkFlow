@@ -2,9 +2,9 @@
   "scope": "Derived source engine with455color32 call and strict Create exit policy;remaining wrapper/camera/console/whole startup semantics open",
   "architecture": "x86",
   "build_exit": 0,
-  "objects": 71,
-  "library": "work/client455-port/startup-engine/build/Release/R3Engine455Startup.lib",
-  "library_sha256": "73048191e534efe9a73ad843a4d80311f9ef407c16a63f582423f6579365b1c8",
+  "objects": 72,
+  "library": "work/client455-port/startup-engine/ninja-build/R3Engine455Startup.lib",
+  "library_sha256": "9c425b14d87450198a736131b71f0ee95a826bd03525c5133a0d1f31f22c8cc9",
   "base_cmake": {
     "file": "work/client455-port/CMakeLists.txt",
     "sha256": "26f0382b737eafb0561f9cef21af61d2c2ae6634b5b3b164f178508b580ca044"
@@ -272,11 +272,11 @@
     },
     {
       "file": "scripts/native/client455_resource_io.cpp",
-      "sha256": "712eb6845a20c21a1cc849e42ac9c1ed7462b087734b2ca4c77bdeb2b0c1bf82"
+      "sha256": "fe06c0c7473a021892a96cfd218852bf0f4000c76cf00f03d66b7538516dba08"
     },
     {
       "file": "scripts/native/client455_weather.cpp",
-      "sha256": "23f67cd8c8dbcde75166ae8510817e683b9176e896817019e6c8bdc4aee3f8ee"
+      "sha256": "e7e45d2aa12b51fab60bab34570b3fb5b94d3aa83e8e30129cd43bf2e50030f8"
     }
   ],
   "derived_sources": [
@@ -287,6 +287,18 @@
       "original_sha256": "97d78148deb50c7ca40e2afbb198087b78d580ed065b54f7856493b44aa969ba"
     },
     {
+      "file": "work/client455-port/startup-engine/source/jmalloc.cpp",
+      "sha256": "0b61087904fb48f537c4fb75e90ce6fabb94f51ce2f31e28f9f93f21fbfef4ab",
+      "original": "work/client455-port/source/R3Engine/common/jmalloc.cpp",
+      "original_sha256": "20c7f0e202e1e4e4e0ad84427fdf46395a2c48bc9fa6288cb4238d09e3e0027b"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/cjcache.cpp",
+      "sha256": "d8323911d818ed09c24a03debeff14911b76bb9bf8527dc4ff3fdbdac7032f47",
+      "original": "work/client455-port/source/R3Engine/common/cjcache.cpp",
+      "original_sha256": "7e03bfb038e0ee7ebc9150aaf933aa5639c941e569d32d479cee334465e3e918"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3enginekernel.cpp",
       "sha256": "3df7011bad29411b3f112507a33e79ba00f4fdbadca133db2acb4779652f9171",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3enginekernel.cpp",
@@ -294,13 +306,13 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3dwrapper.cpp",
-      "sha256": "77740cd49125401ff3fd75ffe087fba1bc9d908eec41db91c974c42c56ff9394",
+      "sha256": "1aa62040955a00283ca160642e9cfdecd38033fe0530afe624f3b30f2657e064",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3d3dwrapper.cpp",
       "original_sha256": "cb828c7d9fc30728d30ff7918d0ec233ac1c9b8afbcb3a8f900fa09d90fb47fb"
     },
     {
       "file": "work/client455-port/startup-engine/source/r3d3dapp.cpp",
-      "sha256": "ea1cbdd0875a3c3fa5fb7f278b74faefd8c4fb8331c8bee7f0bebb810a168f3a",
+      "sha256": "23e8e017b6badab74069061e50b336d07cf2fdf65be6c79eed8f27e66a80cb56",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3d3dapp.cpp",
       "original_sha256": "5b1eec67f0b51ab8f8528f348009cdf5cbad6202800fb280e9155fd8c77ea7e0"
     },
@@ -311,10 +323,22 @@
       "original_sha256": "72993c33a9d2910395849203d0f0b64cc70b44dba1efcb1ab99a32606954d413"
     },
     {
+      "file": "work/client455-port/startup-engine/source/2dsprite.cpp",
+      "sha256": "0da481dea865db91d3ef0dbefbc735f398aa06ac105df844c63b9065f0b49463",
+      "original": "work/client455-port/source/R3Engine/2ndclass/2dsprite.cpp",
+      "original_sha256": "68985ff8d033b14aae3a39c3f636981efb1df2134bd4536c484b1ea925a43492"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3d3dtex.cpp",
-      "sha256": "3f84eb01516cec35c8322d9926cd2517c321ff6860ea0e0fe58a4e5f675bae61",
+      "sha256": "0dede45d349b1848d0ecf0d66be5ec29ac3513d504c79471966e111e6af0e1ab",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3dtex.cpp",
       "original_sha256": "7aad342e1952ae32641ae413ba654f2867847871aada1e4b978309205bbf90dd"
+    },
+    {
+      "file": "work/client455-port/startup-engine/source/r3lightmap.cpp",
+      "sha256": "27296daf967f7795b914859b20783a46bb960a0c2f043bc0bf27e3ccc9b69f67",
+      "original": "work/client455-port/source/R3Engine/1stclass/r3lightmap.cpp",
+      "original_sha256": "2f4c7dc3fde667815cea4582a39fbeecf56ef30ceef7e0fc5e1f064767967fa4"
     },
     {
       "file": "work/client455-port/startup-engine/source/anicamera.cpp",
@@ -324,13 +348,19 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/level.cpp",
-      "sha256": "fdc81f1f3b2490c9d02c5cafd55e2c90b9df20a595d1b9feadfea44733ccd59e",
+      "sha256": "f816dae5ca7d0d5c2bf250a7f75c030539c138a96f532de263c7def56fbe3b03",
       "original": "work/client455-port/source/R3Engine/2ndclass/level.cpp",
       "original_sha256": "595a1d68505a018c22c2836a6dc3a3f3606cfb46bdb8f31f83c0bdd66d288d84"
     },
     {
+      "file": "work/client455-port/startup-engine/source/extdummy.cpp",
+      "sha256": "75d3b897d3bf9bd17f16f9281cdc61eb42553d3cfbb2527fad0c19e8405ebeed",
+      "original": "work/client455-port/source/R3Engine/2ndclass/extdummy.cpp",
+      "original_sha256": "a3d4222529a2e64a96be3b513256217e474b98c932245774b47003ebde543653"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3d3d8.cpp",
-      "sha256": "1effb84d009c8dc0986ea6e25366520b8e2ac988fa4e8d87f9086940fe8be25f",
+      "sha256": "537dd393cf8951be2364b408c17e0b8cbf1d2a66dab532123cf8b758e0fed536",
       "original": "work/client455-port/source/R3Engine/1stclass/r3d3d8.cpp",
       "original_sha256": "0139d8c26c981c41e86f113a9f43a330b206b98ddea1e135471493aa6ac1bd0d"
     },
@@ -348,25 +378,31 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3particle.cpp",
-      "sha256": "80916506f1f9561e51f20be598439c9384307f7fb1ae9bd9130821b1911fb8b8",
+      "sha256": "677633fdd5cfa4e34c5cf2ef443e3c682cc3de241e31e8435a7ced68cb49ab10",
       "original": "work/client455-port/source/R3Engine/1stclass/r3particle.cpp",
       "original_sha256": "cfa904dbf5e142938ff5c364f871ff7386d9c1294d4a9398a52270d3ab0ddb16"
     },
     {
       "file": "work/client455-port/startup-engine/source/entity.cpp",
-      "sha256": "432e7b8925e675b7371bd54a4543e801544af8480b6b2288e9ca62b890eddf5f",
+      "sha256": "c51d5fca79fa4ca5f2530a1f8b3aecc0d7deffd2f7b246521e20e58342a4194e",
       "original": "work/client455-port/source/R3Engine/1stclass/entity.cpp",
       "original_sha256": "8e93ec7ea4c249a4a255ec40ac72b6ab3b5890927f350a0c1c38fba1881cd645"
     },
     {
+      "file": "work/client455-port/startup-engine/source/effectentitylist.cpp",
+      "sha256": "2114da60bcb3c76eb9ae15290659522b0d47df9cab35812dba4cc5f6e9092a18",
+      "original": "work/client455-port/source/R3Engine/extension/effectentitylist.cpp",
+      "original_sha256": "dcfefe69fc13add750584960b33cfba4491edb58a954afb4508dbf8921ca0810"
+    },
+    {
       "file": "work/client455-port/startup-engine/source/r3sound.cpp",
-      "sha256": "d6795a6fc86f66bc4d77b34c104e3f369f8004802afe353b83b045d30e326d29",
+      "sha256": "d9d16c0c6cb960c91cbd2b4f10c6460820dad55b6eca2a83000dfa75ae71183a",
       "original": "work/client455-port/source/R3Engine/2ndclass/r3sound.cpp",
       "original_sha256": "3afa6d4a90e7d28b9ab3d5e4e5f9bc7b605d190a573fb1db0eff9888ae6db48d"
     },
     {
       "file": "work/client455-port/startup-engine/source/bsp.cpp",
-      "sha256": "a91079f77e437bf7b1aa080a5e6e0cf1b16eb2d52d9f3f6243b790bcb28d62df",
+      "sha256": "1e748f81d8cc318b01caeebf3cd37f94c71c77a22102c2d8ee3b40018fe5c579",
       "original": "work/client455-port/source/R3Engine/1stclass/bsp.cpp",
       "original_sha256": "88258b96dd044accd6d0e3008296741c6b9c7f7ed36660cfd2859686334dfa58"
     },
@@ -384,19 +420,19 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3vertexbuffer.cpp",
-      "sha256": "29677019aabda55539df964644fac2b6e7e158f2fa07a086d1eaf4a8e32d5129",
+      "sha256": "d75378510d3f2cd75131526c4539312800738aba7be864aed06747f12b9032df",
       "original": "work/client455-port/source/R3Engine/1stclass/r3vertexbuffer.cpp",
       "original_sha256": "34524e9cfe9908db5b93c47251dee5a7f868eaf9fd0d174e6ba685f29bc4d85e"
     },
     {
       "file": "work/client455-port/startup-engine/source/r3material.cpp",
-      "sha256": "34502c3dc567342cab64f87777038ae184a0ce421ad76ce14f2b2a84ba401f8c",
+      "sha256": "ec1010788a8739dc6c8ca5862873c545dd91a865a0ba28b82896c40d49aea978",
       "original": "work/client455-port/source/R3Engine/1stclass/r3material.cpp",
       "original_sha256": "1a5a6ea5df2c5324affe7de6fe2036846dfbb98babcbfcb0f7fb9f948796ac9a"
     },
     {
       "file": "work/client455-port/startup-engine/source/r3render.cpp",
-      "sha256": "18c14a7935d44d521d22d2538f89a5d5beb6f4be72d2ab4cadf4907203bf2d29",
+      "sha256": "68c77bdded80a89612c5f2656ea613804ac80b14e5afa24badf2fb36278d4527",
       "original": "work/client455-port/source/R3Engine/1stclass/r3render.cpp",
       "original_sha256": "26015b5c628c7b5384a2cec25f3ffa518cef44893a21c43833eee5a8d662da92"
     },
@@ -408,7 +444,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/source/r3vertexshader.cpp",
-      "sha256": "9478374b54d4158def0a1d4b9438e6db9fd7db266c1b9ae1220001bccfc578be",
+      "sha256": "39da55c4001ead95dc84c758141ca8c6e28477a0112a1b7568d21424b5de0c3a",
       "original": "work/client455-port/source/R3Engine/1stclass/r3vertexshader.cpp",
       "original_sha256": "acb1adca40e26a6c0b70e19a929d76c51a801ebf7ecd64a638a2292911a6d85b"
     },
@@ -425,13 +461,13 @@
   },
   "cmake": {
     "file": "work/client455-port/startup-engine/CMakeLists.txt",
-    "sha256": "8a61e08c5a7c9bf5f2b8cb0cfe56674af9c838c0765d7814d52ecbfe35a486bc"
+    "sha256": "ef24c617964d7e2ddfdb898e8e0c98c19231c3933f8295f521d6c7ed9c04d4f8"
   },
   "log": {
-    "file": "artifacts/client455-startup-engine/build.txt",
-    "sha256": "b74c2a6175a770bf4099ee792221ac6acc38fb286c976ba8a59de9453c535be0"
+    "file": "artifacts/client455-startup-engine/ninja-build.txt",
+    "sha256": "e91821a7c5d82ccbd57606f1c8ada64058b0fceb17a057657ef6fad4a4ff8efd"
   },
-  "script_sha256": "fd8f95b0a95bce7cf7abd5198ed2e30d8269fe39628149bcbaf050bb71cfcd19",
+  "script_sha256": "a0aef5c2b7fff8d391a34b559b064fdd3eff046c0b1b63646b245c52efdc2dd8",
   "input_exe_executed": false,
   "server_modified": false,
   "M6": "OPEN",
@@ -440,14 +476,21 @@
     "client455_text_bridge.inc": "b72d22af173b73200983e217f8d44b6bae2b15d7ed6152dc59cbc1b195b5bd30",
     "client455_font.h": "5ccbd3ecc3362d6b4e16c990fe9ab5dd3cea993be6f0ba984523ab97e0065cef"
   },
-  "expected_objects": 71,
+  "generator": "Ninja",
+  "clean_first": false,
+  "ninja_dependencies": {
+    "prefix_hex": "8fe0a8aca5e7a0ada8a53a20a2aaabeee7a5ada8a520e4a0a9aba03a2020",
+    "object": "CMakeFiles/R3Engine455Startup.dir/source/bsp.cpp.obj",
+    "header": "client455_scene_input.h"
+  },
+  "expected_objects": 72,
   "lobby_post_source": {
     "file": "scripts/native/client455_lobby_post.cpp",
     "sha256": "23ef5b50467804a9ad7abad9ac56f12fa44752115107c1e102be30d774a47017"
   },
   "lobby_sky_source": {
     "file": "scripts/native/client455_lobby_sky.cpp",
-    "sha256": "864735cb0e5e00e5b0bd4dddb247e05ac1c3d36335125c253d8bf03ef8615737"
+    "sha256": "3a4bea8146bc458b76d2e1b4073e1a0e9f6db73292351c32da8fdc013dc9735d"
   },
   "lobby_shadow_source": {
     "file": "scripts/native/client455_lobby_shadow.cpp",
@@ -457,8 +500,30 @@
     "file": "scripts/native/client455_render_diagnostics.cpp",
     "sha256": "c18f650ca7711c05b44a1aca08deccb33f2b8096fe14ae79a2f3f469594c4513"
   },
+  "lobby_texture": {
+    "client455_lobby_texture.h": "72d5abda03ceb23c6d63c846254c2d54336003715d3bf61667c71379de670864",
+    "client455_lobby_material.inc": "a31eca0c9165c0da93b2705fb22c340100e0a1a108b4335938752276a2eb6b03"
+  },
   "sprite_texture": {
-    "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b"
+    "client455_sprite_texture.inc": "c7d7d1a636238e760dc304afb183dc23ea7c524b1ab72752378dc9ad4e22322b",
+    "client455_sprite_load.inc": "b623bf9e4547e294eda63dfc8634d28a40c39b1c1d2195786121f25778c079f7"
+  },
+  "r3t_resources": {
+    "client455_r3t_load.inc": "63523ee7fad7bcfbf73f5ba6be4f856f5bc4b65c86d69bcc805bcb64cbeee74e",
+    "client455_dds_stream.inc": "10990a2f8ecaf6f48eef63db4ed5b0e3c69871078d4de009253015c436ee89e6",
+    "client455_dds_load.inc": "296b2f4c09a390b8cdde8392b2fbee24f34d8356472303318826c446c39b8ccd",
+    "client455_dds_d3dx.inc": "8b93fefc1e8a74501004f881851b8874fa6c1f92a2fc9fbe827bdc153b2a6fc4",
+    "client455_lightmap_stream.inc": "aa8fc64d14a41f074e56c9f48a5d71de76568219497ba6df018cd465f2855f78",
+    "client455_lightmap_owner.inc": "0d874333aacb398d45e6d0e97344c654ace56d7dc6755ae48779f6d674590a23"
+  },
+  "resource_allocator": {
+    "client455_dmalloc.inc": "a1aa80e36fe2f2a95e607b527e8bd7b374c6f594db9970828ba699bbead6e545",
+    "client455_mst_texture_registry.inc": "825cc47d64c339571a3dc60ee756a485346b4c20e3211414d22188392512f8f6"
+  },
+  "scene_input_sha256": "9cbc95a24570b2a5d99775fa52901c9b47918fafeba204377852a08190560228",
+  "entity_input": {
+    "client455_entity_input.h": "ecc764af43db3990528028ad2b9336c10db3a84204c38c057fdd70ea9006eeff",
+    "client455_resource_bytes.cpp": "07cdea779ad6e42aa9baa9c525c707b8ce2abe9b28c5b999cb5a40f16a73d46d"
   },
   "warning": {
     "client455_warning.inc": "fcd1246218d83494d77cb02d152c7d6eb11d8cefc5cec8929acff3d615c87d6e"
@@ -471,12 +536,21 @@
   },
   "bsp_light": {
     "client455_bsp_light.h": "62a9413cc70cd80da111f17ecedcb148c8ea64e03c72de7bbc2c0efda2c3ac85",
-    "client455_bsp_fields.inc": "fdc93c063224563aed51812d2cbc4764774d410c952659f41ec454ab9a0b9bf1",
+    "client455_bsp_fields.inc": "3903a238d03590c8df55976fff2d47bce264c23f9661f1254f6e14c0c5b65d72",
     "client455_bsp_light.inc": "bf780e950b6d0af158dc3cbafa042248f4772f678046de7962466148c8bb97cd"
+  },
+  "map_shader_lights": {
+    "client455_map_shader_lights.h": "776b755bdd7f881528bb42be67366724f4b28ff7214070e65d8d1c260f854f79",
+    "client455_shader_lights.h": "9f11d457e5941c16c5d2a3671025cf781cf55bba2e5def89523196def8499614"
   },
   "bsp_leaf": {
     "client455_bsp_leaf.inc": "e1b3d91c8fe439f1df7c5627b9c8bc2a6f899f0e0b87cd2e9b90ee4a300588ff"
   },
+  "scene_input": {
+    "client455_scene_input.h": "9cbc95a24570b2a5d99775fa52901c9b47918fafeba204377852a08190560228",
+    "client455_bsp_positions.h": "e0e68eafccda8438ad77eae1a9829bff323e5cd76df1dea6f3b055f58ea8e6e4"
+  },
+  "buffer_binding_sha256": "fb1c03b3c5ddfc221ad3df645fb79c5226e57a8fca16491e8b08e1520217bd62",
   "sky_projection": {
     "client455_sky_projection.inc": "7b0782219911b3b98189759ca1e4ebbb81ee469f30e7edf0a02a73ed37e91eca"
   },
@@ -492,22 +566,22 @@
   },
   "sky_atmosphere": {
     "client455_sky_atmosphere.h": "be1af94b986d3f68f461042196932148514724006d740ee770064e15f7b1885e",
-    "client455_sky_atmosphere.inc": "d20951b93419b9dadeb6437793299470af4e2ce5fd74e00cc8fc002fc210c20e"
+    "client455_sky_atmosphere.inc": "a6675d4113fdf834b03d66e4ead8aee48897746daae2170ce088494235a12426"
   },
   "sky_lighting": {
-    "client455_sky_lighting.h": "0b6e2ff3fd85254e1a436731c6243cf692bfd7393c03ba0aabaa2239ceeb1d0c",
-    "client455_sky_lighting.inc": "2af67147d69a6d778658d75a6904dc3e6e64304c84e96f43198634c4fdd2f985",
+    "client455_sky_lighting.h": "4953c1f76bd06bde4e385d958bd24132a4fc57d8946e9d8a54684519f5a9ab34",
+    "client455_sky_lighting.inc": "a23c396c5b051be992c835b78461561688f83b9ad0a87e08a117bd8df0b868a1",
     "client455_sky_lighting_math.h": "9fca9525ca517f12524e77eec8e47f790eb3f73b019f235bd2f296b823a1cd8c"
   },
   "weather_parameters": {
     "client455_weather_parameters.h": "e3e0d4b8eefb57a7a1a8273e9d4f430d3fe74805a9fbc65d23aa0ec5141727af",
-    "client455_weather_parameters.inc": "f5ce854d7c3bd256df832e9948a69577dd8974bb2ab1164d7d2db4ce8ba9cb4c",
+    "client455_weather_parameters.inc": "17050a1731ea7a71d66bce4bbbbfbdb7a56bbdb7f4a4229cea2c2ddcc88c3328",
     "client455_level_weather.inc": "46bbd045cce8ada35f4a42ca573d579f75f4149835c7ab953b6b9355ee4686b1",
-    "client455_weather.cpp": "23f67cd8c8dbcde75166ae8510817e683b9176e896817019e6c8bdc4aee3f8ee"
+    "client455_weather.cpp": "e7e45d2aa12b51fab60bab34570b3fb5b94d3aa83e8e30129cd43bf2e50030f8"
   },
   "level_header_overlay": {
     "file": "work/client455-port/startup-engine/include/level455.h",
-    "sha256": "44b61607b1aece1873a00e6e1e98cf9bc0eee15373611675623eff848a104de8",
+    "sha256": "c998023fd122f90be021e0cb08a24831a153c6b7fe6ea1c75681d8a5520dd9f6",
     "original": "work/client455-port/source/R3Engine/2ndclass/level.h",
     "original_sha256": "e9b8bc126e790d81d3edb71fe726975f2d8cd0b42fc6c428eecefe6b12fd075d"
   },
@@ -525,7 +599,14 @@
   },
   "lighting_port_script": {
     "file": "scripts/client455_lighting_port.py",
-    "sha256": "2f2179b47b28e447f5735d9299238f8ae39f618d62b8c50ed0bbccda645be4ee"
+    "sha256": "18510f69ea4dc10f4e1bf9a0667c27afccb0cd8217dba46c4e48df31feb79346"
+  },
+  "compiled_vertex_shader": {
+    "client455_r3_shader_load.inc": "a07d4c09c3d8a0c6f8b444b8c4c99e1f364d010d972f69cdaadb31a836cc9ac6",
+    "client455_screen_transition.h": "5e46558e69165d30983c503412df0f16a0de213d24d2d63b5217ddb5fae2791f",
+    "client455_screen_transition_draw.inc": "2e5c2ee26986a019d4088816750156b6406f005b9327fb1fb5ec33dce974134d",
+    "client455_filter_blit.h": "e3d417c2c53b3f2ff965bc75018372777d475a0221b56075b87d95c7c5df4fe3",
+    "client455_filter_blit_draw.inc": "e5b06364a19d8c490bf9c2f3cabc91adef7d5bee1cf2302b072d1f688ce0ece8"
   },
   "light_direction": {
     "client455_light_direction.h": "ca20b4437c0475ff16b4d28046798540cf0078fa94ca855037f601db6f93953a",
@@ -543,19 +624,32 @@
   },
   "material_port_script": {
     "file": "scripts/client455_material_port.py",
-    "sha256": "4f95489eee977cb9fd0bc8b252f427b417c488d3ac7da746ed87dbc8dddb3f9a"
+    "sha256": "7465377ff6a739cf970cbb12c9bffd1b2c9b34d68e4fff6df75c8bf82dd0cb9c"
+  },
+  "binary_material_inputs": {
+    "client455_r3m_stream.inc": "8d730a1503e47c0e29af7149421762be4e3eb63b5e8d2594d2a272ed9e0020a0",
+    "client455_weather_format.h": "be77a1db2b3dac4e51286d4d3231d75d4b4b2105aae129d95d291418f918440d"
+  },
+  "text_material_inputs": {
+    "client455_resource_text.h": "93eab76a3d2c228d85abc3fc0be77cff2096c389e750f358ead710c177e619e2",
+    "client455_resource_io.h": "5b443c066519320c9a6cb5f44bb1f647c6052f40db32ad079438a195bc26bcbb",
+    "client455_resource_bytes.cpp": "07cdea779ad6e42aa9baa9c525c707b8ce2abe9b28c5b999cb5a40f16a73d46d"
+  },
+  "mst_texture_registry": {
+    "scripts/client455_mst_texture_port.py": "ecfb0f5939467697bf1830ec31377f499930c1a5b14ac358aea2b2ebf3b2bcb0",
+    "scripts/native/client455_mst_texture_registry.inc": "825cc47d64c339571a3dc60ee756a485346b4c20e3211414d22188392512f8f6"
   },
   "special_shader_owner": {
     "client455_special_shaders.h": "7818ec14de686dd2ebf9a1f329c018e8277169c7ba84d4220cbac9689d095698",
-    "client455_special_shaders.inc": "59da13dacdea5caa0dc2382b427845ca66ec98f99797b9bb4a7d5271996b80d8",
-    "client455_special_shader_text.inc": "f85e710bda6fe3b530649c2dacc02bdeec2bb4bd8df7d7c1af446de4e43669ba",
+    "client455_special_shaders.inc": "6f1c7cd0013c395c25d5136fbe068691a3f2779bc1679276742b5c58b3c23428",
+    "client455_special_shader_text.inc": "ce6d5d537269adbe6584b449768eed5bc8e2d1d41ea588ce3f3ae0248b5e7c65",
     "client455_shader_key.h": "09d4e6ddca6bee868aae3e0857899fe64bf6b94024a590de3271e824dfe26866"
   },
   "material_shader_draw": {
     "client455_material_shaders.h": "ca65724598ca82a7c0a3b39ea62ecc994e9fab5b59458e7cbb1ecc0094818e8c",
-    "client455_material_shaders.inc": "09bd15e8cbe9fb782ee0305077210495686b2477397d7644014e665de62ad575",
-    "client455_shader_lights.h": "ddf1d216b6dc28cf638187d065eb44d331495f4b11236533a8a283cc8ccdd315",
-    "client455_shader_lights.inc": "16f5ada6d334bfe98bb5cc8e28591efaad5530345846c8d1489daf13ca383262"
+    "client455_material_shaders.inc": "18cd2984d703eb6e1466654afe9ecd04e08e924b9679ea6a72547ce8d9bf0ca2",
+    "client455_shader_lights.h": "9f11d457e5941c16c5d2a3671025cf781cf55bba2e5def89523196def8499614",
+    "client455_shader_lights.inc": "9df30a702288a72e3c2b9f1d5b830e3fb34b72f122e59c5ca4569b1710a36549"
   },
   "material_shader_port_script": {
     "file": "scripts/client455_material_shader_port.py",
@@ -575,7 +669,7 @@
   },
   "bsp_header_overlay": {
     "file": "work/client455-port/startup-engine/include/r3bsp455.h",
-    "sha256": "5b51e5d7f289faf2f700b59544ceadc84ec8fa62bbc503da98d0bf988ffdb1b1",
+    "sha256": "1778201d3718b969841e923ffe01080efdfa8a4b7bb2f93d3a78611b7ca42a8b",
     "original": "work/client455-port/source/R3Engine/1stclass/r3bsp.h",
     "original_sha256": "b78dc256012be5a0e529e1d38e406281a5691ae46a3cc850c65027f891ba7e6f"
   },
@@ -589,8 +683,9 @@
     "client455_fullscreen_motion.inc": "a27d6331f011baf6aa626a19054544e3f7cae9356a5c1de0ab4bc6874601c857"
   },
   "scene_capture": {
-    "client455_scene_capture.h": "c38dfe2a0b8142745f77280217ad781f2a7f39ec9ba10ddf07d3190efdc8ec7f",
-    "client455_scene_capture.inc": "646b6250a6acb49ec63cc68f459adb0af51048fc7cb7af8e8088c2878c97a175"
+    "client455_scene_capture.h": "41552ff3d3ed98a497df2139bfd1658c38adebfefc23ca376d252776981608e3",
+    "client455_scene_capture.inc": "3e614a20e8d62824902cdf360ab0ccec9d838f6710dc8aea117babccbbd1ad63",
+    "client455_render_texture_lifetime.inc": "ae399efda36b6822414416fd3581ad5e17942c45a7e35f27bc5da1b83cb0fd35"
   },
   "multisampling": "fcd2773a63c99021e14215c9db470c0457f3d8852848d83d07728baa528c94dc",
   "movie_state": {
@@ -610,7 +705,7 @@
   },
   "sprite_header_overlay": {
     "file": "work/client455-port/startup-engine/include/2dsprite455.h",
-    "sha256": "daf9ca8ab2dc63e4ec570b6de1f11e79b5abdc666f500205980383990bffb8d2",
+    "sha256": "09dd9e9002731c5fc44f422c5fadf93c8cdf65a6ec634eb6aeacd669e3afa00b",
     "original": "work/client455-port/source/R3Engine/2ndclass/2dsprite.h",
     "original_sha256": "af68326b2808c90284aa2fe453814dea70d1c2e16d885f4e4b9398505f44dcdb"
   },
@@ -623,7 +718,7 @@
     },
     {
       "file": "work/client455-port/startup-engine/include/r3particle455.h",
-      "sha256": "e19adca19022b73071c3364766c32987eb24b24588c668fdad73a50394165540",
+      "sha256": "56beb6c70068e8e4beeae4ec34c661cc90b939eeea60ae3c9cabc5ef91245704",
       "original": "work/client455-port/source/R3Engine/1stclass/r3particle.h",
       "original_sha256": "c0ccf0e66f5a025b0d57179aa72a7176b73063f8321b32635e2b1721d347570f"
     }
@@ -636,11 +731,28 @@
   "particle_port": {
     "script": {
       "file": "scripts/client455_particle_port.py",
-      "sha256": "381883447d7bcea3c15654756d8160fa852f6c9af15de8c2d05c8f14a48220cc"
+      "sha256": "21945cca01e80c3f36993a5caf430ce7f950721232ade6558ad6d5de4123a318"
+    },
+    "inputs": {
+      "client455_particle_fields.inc": "c0f9e38b770c0aa8f6c27ba0a327e24d088b2e955b81e15a90bdad3a02be63a8",
+      "client455_shader_lights.h": "9f11d457e5941c16c5d2a3671025cf781cf55bba2e5def89523196def8499614",
+      "client455_shader_lights.inc": "9df30a702288a72e3c2b9f1d5b830e3fb34b72f122e59c5ca4569b1710a36549"
     }
   },
   "immediate_sound": {
     "client455_sound_im.h": "08914689430454ee74ba0a9f7731891389072207e59990a159f305e7a760190e",
-    "client455_sound_im.inc": "6abe65db406fa8e51502318c91d0bcbc2c2b93b000132b2075b35355a403ed78"
+    "client455_sound_im.inc": "2592bcf72bd74efb0b607bbba5c1fa74a0f2e83fdb0dd3b7548477c08b8a10ae"
+  },
+  "wave_manifest": {
+    "client455_resource_text.h": "93eab76a3d2c228d85abc3fc0be77cff2096c389e750f358ead710c177e619e2",
+    "client455_wave_manifest.inc": "c566781d43c6a26c57ce0ad3228e9f168bc4f5e3c707db9f0c5bf720eb7fa007"
+  },
+  "wave_cache_port": {
+    "file": "scripts/client455_wave_cache_port.py",
+    "sha256": "171642ef9ea23babe11e15961d352476e97be1a723953695b5e57c0e1790feee"
+  },
+  "ext_dummy_input": {
+    "client455_ext_dummy_load.inc": "5cccb1f0a90c7181dfa26c3c1fe9768b9f64657d2388246719677a02595c3504",
+    "client455_resource_text.h": "93eab76a3d2c228d85abc3fc0be77cff2096c389e750f358ead710c177e619e2"
   }
 }

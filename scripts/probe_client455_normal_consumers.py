@@ -1,25 +1,27 @@
 """Run actual normal CUnity/CAnimation code with source455 manager/ANI facade."""
 import hashlib,json,shutil,subprocess
 from pathlib import Path
+from build_client455_normal import EXPECTED_CONSUMERS,normal_build_libraries,normal_consumer_objects
 from compare_client_binaries import WS,pe
 from client455_d3d9_port import ENGINE_DEFINITIONS
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     root=WS/'work/client455-port/normal';art=WS/'artifacts/client455-normal';build=json.loads((WS/'inventory/client455-normal-build.json').read_text())
-    if build['build_exit'] or build['objects']!=182:raise ValueError('Actual180originalsources+2production splits required')
+    if build['build_exit'] or build['objects']!=EXPECTED_CONSUMERS:raise ValueError('Actual180originalsources+2production splits required')
     info=json.loads((WS/'inventory/msvc-verification.json').read_text());dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat';sdk=json.loads((WS/'inventory/d3dx9-headers.json').read_text());owner=json.loads((WS/'inventory/client455-renderer-owner-build.json').read_text());engine=WS/'work/client455-port/source/R3Engine'
-    libraries=[root/'build/Release/RFClient455Facade.lib',root/'build/Release/RFClient455Kernels.lib']
+    libraries=normal_build_libraries(root,build)
     for name in ['client455-x87-math','jpeg6b-build']:
         report=json.loads((WS/f'inventory/{name}.json').read_text());libraries.append(WS/report['library'])
     startup=json.loads((WS/'inventory/client455-startup-engine-build.json').read_text())
     if startup['build_exit'] or startup['objects']!=startup.get('expected_objects',67) or sha(WS/startup['library'])!=startup['library_sha256']:raise ValueError('Current455startup engine build required')
     libraries+=[WS/startup['library'],WS/'work/client455-port/dependencies/d3dx9_36.lib',engine/'mss32.lib']
-    objects=[root/f'build/RFClient455Consumers.dir/Release/{name}.obj' for name in ['unity_managers','animation_control']]
+    objects=normal_consumer_objects(root,build,('unity_managers','animation_control'))
     for path in libraries+objects:
         if not path.is_file():raise ValueError('Missing normal probe dependency:'+str(path))
     includes=[root/'include',root/'source',engine,engine/'1stclass',engine/'2ndclass',engine/'common',engine/'extension',engine/'d3d/include',WS/sdk['include']]
     source=WS/'scripts/native/client455_normal_consumers_probe.cpp';entry=root/'generated'/source.name;entry.write_bytes(source.read_bytes());exe=root/'build/normal-consumers-probe.exe';log=art/'consumer-probe-build.txt';batch=root/'generated/build-consumers-probe.cmd'
+    exe.parent.mkdir(parents=True,exist_ok=True)
     definitions=sorted(set(ENGINE_DEFINITIONS+['_NEW_UI_','_WINDOWS','RF_CLIENT_455_FRUSTUM','RF_CLIENT_455_DRAW_ARGUMENTS','RF_CLIENT_455_EFFECT_LOG','RF_CLIENT_455_LOBBY_TRANSITION']))
     flags='/Zc:forScope- '+' '.join('/D'+name for name in definitions)+' '+' '.join('/I"'+str(p)+'"' for p in includes)+' /FI"'+str(WS/startup['camera_header_overlay']['file'])+'"'
     batch.write_text(f'@echo off\ncall "{dev}" -no_logo -arch=x86 -host_arch=x64 > env-probe.txt 2>&1\nif errorlevel 1 exit /b 1\ncl /nologo /MT /O2 /Gy /EHsc /std:c++14 /W3 {flags} /FI"{WS/"work/client455-port/port_std.hpp"}" "{entry}" '+ ' '.join('"'+str(p)+'"' for p in objects+libraries)+f' d3d9.lib dinput8.lib dxguid.lib winmm.lib ws2_32.lib vfw32.lib advapi32.lib gdi32.lib user32.lib imm32.lib comdlg32.lib delayimp.lib /Fe"{exe}" /link /SUBSYSTEM:CONSOLE /OPT:REF /DELAYLOAD:mss32.dll /MAP:"{exe.with_suffix(".map")}" > "{log}" 2>&1\nexit /b %errorlevel%\n',encoding='ascii')

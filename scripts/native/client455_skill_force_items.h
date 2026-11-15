@@ -3,6 +3,7 @@
 #include <array>
 #include <list>
 #include <memory>
+#include <string>
 #include <vector>
 class CGUISkFcUnit;
 
@@ -15,6 +16,8 @@ struct RF455SkillForceTable {
 class RF455SkillForceData {
     std::array<RF455SkillForceTable,5> tables;
     bool loaded=false;
+    bool fileLocalizationLoaded=false;
+    std::string basePath,namesPath;
 public:
     // Root SkillForce.edf contains five tables at manager offsets48..96.
     // The earlier four manager tables come from other inputs,not this file.

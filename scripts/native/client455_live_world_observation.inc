@@ -30,6 +30,21 @@ static RF455WorldCaptureResult RF455_SaveWorldFrame(const char* filename) {
     return {result, desc.Width, desc.Height};
 }
 
+static void RF455_CaptureRequestedWorldFrame() {
+    static const bool enabled = [] {
+        char option[2] = {};
+        return GetEnvironmentVariableA("RF455_CAPTURE_FRAME_REQUEST", option, sizeof(option)) == 1 &&
+               option[0] == '1';
+    }();
+    if (!enabled) return;
+
+    static ULONGLONG nextCheck = 0;
+    const auto now = GetTickCount64();
+    if (now < nextCheck) return;
+    nextCheck = now + 250;
+    if (DeleteFileW(L"world-frame.request")) RF455_SaveWorldFrame("world-frame.png");
+}
+
 static void RF455_SampleMonsterFrame(RF455WorldObservation& state, ULONGLONG elapsed) {
     const auto draw = state.monsterDraw;
     state.monsterDraw = {};

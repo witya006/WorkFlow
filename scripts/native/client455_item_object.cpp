@@ -15,6 +15,7 @@
 #include "client455_nation_paths.h"
 #include <cstdio>
 #include <cstring>
+#include <memory>
 #include <new>
 #include <stdexcept>
 #include <typeinfo>
@@ -22,25 +23,46 @@
 
 extern CMainApp g_MainApp;
 RF455ClientItems& RF455_GameItems(){return g_MainApp.Items455();}
-namespace {
-bool read(const char* name,std::vector<unsigned char>& out){FILE* f=std::fopen(name,"rb");if(!f)return false;
-    if(std::fseek(f,0,SEEK_END)){std::fclose(f);return false;}const auto n=std::ftell(f);if(n<0){std::fclose(f);return false;}
-    std::rewind(f);out.resize(static_cast<std::size_t>(n));const bool okay=std::fread(out.data(),1,out.size(),f)==out.size();std::fclose(f);return okay;}
-}
 #include "client455_item_bootstrap.inc"
-bool RF455ClientItems::loadQuestFile()
+
+bool RF455_CurrentShopUnitPrice(const RF455StorePreview& preview, std::uint64_t& price)
 {
-    if (data.hasQuestData()) return true;
-    std::vector<unsigned char> raw;
-    return read("DataTable/Quest.edf", raw) && data.loadQuestEdf(raw.data(), raw.size());
+    auto* avatar = _GetAvatar();
+    if (!avatar) return false;
+
+    RF455StoreBuyDiscount discount;
+    if (preview.currency == 0) {
+        const auto* network = _GetNetworkMgr();
+        auto* inventory = _GetInventoryBoard();
+        if (!network || !inventory) return false;
+        std::vector<RF455StoreIngot> ingots;
+        for (BYTE bag = 0; bag < inventory->GetMaxPackNum(); ++bag) {
+            for (BYTE slot = 0; slot < inventory->GetMaxSocketNum455(bag); ++slot) {
+                auto* object = inventory->GetObject(bag, slot);
+                auto* item = object ? dynamic_cast<RF455BasicItem*>(object->GetItem455()) : nullptr;
+                const auto row = item ? item->rawData() : RF455ItemDataSpan{};
+                if (row.data && row.size > 88 && row.data[88] == 17)
+                    ingots.push_back({row, item->quantity455()});
+            }
+        }
+        discount = RF455_StoreBuyDiscount(ingots.data(), ingots.size(), network->PremiumState455() != 0);
+    }
+    return RF455_StoreBuyUnitPrice(preview, avatar->GetOrgTexRate(), discount, price);
 }
 
 bool RF455ClientItems::loadFiles(const char* item,const char* names,const char* quest,const char* character,const char* sf,const char* sfNames){
-    std::vector<unsigned char> raw;
-    if(!read(item,raw)||!data.loadItemEdf(raw.data(),raw.size(),true))return false;
-    if(!read(names,raw)||!data.localizeItemEdf(raw.data(),raw.size()))return false;
-    if(!read(quest,raw)||!data.loadQuestEdf(raw.data(),raw.size()))return false;
-    if(!read(character,raw)||!data.loadCharacterEdf(raw.data(),raw.size()))return false;
+    if (!RF455_ReadEdfInput(item, [&](const unsigned char* raw, std::size_t size) {
+        return data.loadItemEdf(raw, size, true);
+    })) return false;
+    if (!RF455_ReadEdfInput(names, [&](const unsigned char* raw, std::size_t size) {
+        return data.localizeItemEdf(raw, size);
+    })) return false;
+    if (!RF455_ReadEdfInput(quest, [&](const unsigned char* raw, std::size_t size) {
+        return data.loadQuestEdf(raw, size);
+    })) return false;
+    if (!RF455_ReadEdfInput(character, [&](const unsigned char* raw, std::size_t size) {
+        return data.loadCharacterEdf(raw, size);
+    })) return false;
     return skillForce.loadFiles(sf,sfNames);
 }
 CItemObject::CItemObject():m_pSharedItem455(nullptr),m_dwItemField588455(0){}

@@ -1,6 +1,8 @@
 #include "client455_character_manager.h"
+#include <algorithm>
 #include <cstdio>
 #include <cstring>
+#include <iterator>
 #include <map>
 #include <string>
 #include <vector>
@@ -13,9 +15,18 @@ template<class T>static void cmPut(void* p,unsigned at,T v){std::memcpy(static_c
 namespace {
 struct Memory {
     RF455MeshMemoryOps real=RF455_CrtMeshMemoryOps();std::map<void*,std::size_t> live;unsigned calls=0,fail=0;bool bad=false;
+    const RF455CharacterManager* cacheOwner=nullptr;
     ~Memory(){for(const auto& p:live)real.release(real.context,p.first);}
     static void* __cdecl allocate(void* raw,std::size_t n){auto& m=*static_cast<Memory*>(raw);if(++m.calls==m.fail)return nullptr;void* p=m.real.allocate(m.real.context,n);if(p)m.live[p]=n;return p;}
-    static void __cdecl release(void* raw,void* p){auto& m=*static_cast<Memory*>(raw);if(p && !m.live.erase(p)){m.bad=true;return;}m.real.release(m.real.context,p);}
+    static void __cdecl release(void* raw,void* p){
+        auto& m=*static_cast<Memory*>(raw);
+        if (p && m.cacheOwner) {
+            for (const auto* entry : m.cacheOwner->cache)
+                if (entry==p) m.bad=true;
+        }
+        if(p && !m.live.erase(p)){m.bad=true;return;}
+        m.real.release(m.real.context,p);
+    }
     RF455MeshMemoryOps ops(){return {this,allocate,release};}
 };
 bool read(const std::string& path,std::vector<unsigned char>& b){FILE* f=std::fopen(path.c_str(),"rb");if(!f)return false;std::fseek(f,0,SEEK_END);const long n=std::ftell(f);if(n<0){std::fclose(f);return false;}std::fseek(f,0,SEEK_SET);b.resize(n);const bool ok=!n || std::fread(b.data(),1,n,f)==static_cast<std::size_t>(n);return !std::fclose(f) && ok;}
@@ -37,6 +48,7 @@ int constructor(const char* file){
 }
 int managerChecks(){
     Memory memory;auto ops=memory.ops();RF455CharacterManager m;std::memset(&m,0xa5,sizeof(m));RF455_ConstructCharacterManager(&m);
+    memory.cacheOwner=&m;
     CM_CHECK(!RF455_FindCharacterName(&m,"missing") && !RF455_FindCharacterId(&m,1) && RF455_CharacterId(&m,"missing")==0);
     std::vector<RF455CharacterStorage*> records;unsigned capacity=0;
     for(unsigned i=0;i<50;++i){const auto name=i<3?"same":("Name"+std::to_string(i));auto* p=RF455_CreateCharacter(&m,name.c_str(),nullptr,&ops);CM_CHECK(p && cmGet<unsigned>(p,0)==i && cmGet<void*>(p,272)==nullptr);records.push_back(p);
@@ -44,13 +56,44 @@ int managerChecks(){
     }
     CM_CHECK(RF455_FindCharacterName(&m,"same")==records[0] && RF455_CharacterId(&m,"same")==0 && !RF455_FindCharacterName(&m,"Same"));
     for(unsigned i=0;i<50;++i)CM_CHECK(RF455_FindCharacterId(&m,i)==records[i] && RF455_FindCharacterId(&m,i)==records[i]);
-    auto* vector=m.begin;auto* endCapacity=m.capacity;const auto next=m.nextId;RF455CharacterStorage* cache[1000];std::memcpy(cache,m.cache,sizeof(cache));
-    RF455_DeleteCharacterName(&m,"same",&ops);CM_CHECK(m.end-m.begin==47 && m.begin==vector && m.capacity==endCapacity && m.nextId==next && !std::memcmp(cache,m.cache,sizeof(cache)));
-    for(unsigned i=0;i<47;++i)CM_CHECK(m.begin[i]==records[i+3]); // no stale cache dereference after deletion
-    cmPut<unsigned>(m.begin[0],0,77);cmPut<unsigned>(m.begin[2],0,77);RF455_DeleteCharacterId(&m,77,&ops);CM_CHECK(m.end-m.begin==45 && m.begin[0]==records[4] && m.begin[1]==records[6]);
-    RF455_ClearCharacters(&m,&ops);CM_CHECK(m.end==m.begin && m.capacity==endCapacity && m.nextId==next && !std::memcmp(cache,m.cache,sizeof(cache)) && memory.live.size()==1);
-    RF455_DestroyCharacterManager(&m,&ops);CM_CHECK(!m.begin && !m.end && !m.capacity && m.nextId==next && !std::memcmp(cache,m.cache,sizeof(cache)) && m.opaque0==0xa5a5a5a5 && static_cast<unsigned char>(m.name[0])==0xa5 && memory.live.empty() && !memory.bad);
-    // Explicit new constructor, rather than an invented automatic cache reset.
+    auto* vector=m.begin;auto* endCapacity=m.capacity;const auto next=m.nextId;
+    RF455CharacterStorage* cache[1000];
+    std::memcpy(cache,m.cache,sizeof(cache));
+    for (auto*& entry : cache)
+        if (entry==records[0] || entry==records[1] || entry==records[2]) entry=nullptr;
+    RF455_DeleteCharacterName(&m,"same",&ops);
+    CM_CHECK(m.end-m.begin==47 && m.begin==vector && m.capacity==endCapacity && m.nextId==next &&
+             !std::memcmp(cache,m.cache,sizeof(cache)) && !RF455_FindCharacterName(&m,"same") &&
+             !RF455_FindCharacterId(&m,0) && !RF455_FindCharacterId(&m,1) && !RF455_FindCharacterId(&m,2));
+    for (unsigned i=0;i<47;++i)
+        CM_CHECK(m.begin[i]==records[i+3] && RF455_FindCharacterId(&m,i+3)==records[i+3]);
+
+    // Looking up a new ID also caches the pointer at the new probe location.
+    cmPut<unsigned>(m.begin[0],0,77);
+    const bool cachedNewId=RF455_FindCharacterId(&m,77)==records[3];
+    cmPut<unsigned>(m.begin[2],0,77);
+    std::memcpy(cache,m.cache,sizeof(cache));
+    const bool hasAlias=std::count(std::begin(cache),std::end(cache),records[3])>1;
+    for (auto*& entry : cache)
+        if (entry==records[3] || entry==records[5]) entry=nullptr;
+    RF455_DeleteCharacterId(&m,77,&ops);
+    CM_CHECK(cachedNewId && hasAlias && m.end-m.begin==45 && m.begin[0]==records[4] &&
+             m.begin[1]==records[6] && !std::memcmp(cache,m.cache,sizeof(cache)) &&
+             !RF455_FindCharacterId(&m,3) && !RF455_FindCharacterId(&m,5) && !RF455_FindCharacterId(&m,77) &&
+             RF455_FindCharacterId(&m,4)==records[4] && RF455_FindCharacterId(&m,6)==records[6]);
+
+    std::memset(cache,0,sizeof(cache));
+    RF455_ClearCharacters(&m,&ops);
+    CM_CHECK(m.end==m.begin && m.capacity==endCapacity && m.nextId==next &&
+             !std::memcmp(cache,m.cache,sizeof(cache)) && !RF455_FindCharacterId(&m,4) && memory.live.size()==1);
+    auto* reloaded=RF455_CreateCharacter(&m,"reload",nullptr,&ops);
+    const bool reloadFound=reloaded && m.begin==vector && m.capacity==endCapacity &&
+        cmGet<unsigned>(reloaded,0)==next && RF455_FindCharacterId(&m,next)==reloaded;
+    RF455_DestroyCharacterManager(&m,&ops);
+    CM_CHECK(reloadFound && !m.begin && !m.end && !m.capacity && m.nextId==next+1 &&
+             !std::memcmp(cache,m.cache,sizeof(cache)) && !RF455_FindCharacterId(&m,next) &&
+             m.opaque0==0xa5a5a5a5 && static_cast<unsigned char>(m.name[0])==0xa5 && memory.live.empty() && !memory.bad);
+
     RF455_ConstructCharacterManager(&m);const unsigned ids[]={1,256,65536,16777216};records.clear();
     for(unsigned id:ids){auto* p=static_cast<RF455CharacterStorage*>(Memory::allocate(&memory,1188));CM_CHECK(p);RF455_ConstructCharacter(p);CM_CHECK(RF455_AddCharacter(&m,p,&ops));cmPut(p,0,id);records.push_back(p);CM_CHECK(RF455_FindCharacterId(&m,id)==p);}
     CM_CHECK(m.cache[65]==records[3] && m.cache[86]==records[1] && m.cache[107]==records[2]);CM_CHECK(RF455_FindCharacterId(&m,1)==records[0] && m.cache[65]==records[0]);

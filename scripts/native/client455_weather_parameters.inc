@@ -14,19 +14,26 @@ static DWORD weatherInteger455(double value){
         fldcw saved}
     return DWORD(result);
 }
-void RF455_ReadWeatherParameters(FILE* file,char* token){
+template<class Read> static bool readWeatherParameters455(Read read,char* token){
     // Caller folds case once,after environment/fog tags. Consumed argument is
     // not folded again. Preserve unchecked atof/truncation and overlapping bits.
     if(!strcmp(token,"*weather")){
-        fscanf(file,"%s",token);const DWORD value=weatherInteger455(atof(token));
+        if(!read())return false;
+        const DWORD value=weatherInteger455(atof(token));
         RF455_MaterialWeather=(RF455_MaterialWeather&0xffffff00u)|value;
     }
     if(!strcmp(token,"*haze")){
-        fscanf(file,"%s",token);const DWORD value=weatherInteger455(atof(token));
+        if(!read())return false;
+        const DWORD value=weatherInteger455(atof(token));
         RF455_MaterialWeather=(RF455_MaterialWeather&0xffff00ffu)|(value<<8);
     }
     if(!strcmp(token,"*special_weather")){
-        fscanf(file,"%s",token);const DWORD value=weatherInteger455(atof(token));
+        if(!read())return false;
+        const DWORD value=weatherInteger455(atof(token));
         RF455_MaterialWeather=(RF455_MaterialWeather&0xff00ffffu)|(value<<16);
     }
+    return true;
+}
+void RF455_ReadWeatherParameters(FILE* file,char* token){
+    readWeatherParameters455([&]{return file&&fscanf(file,"%255s",token)==1;},token);
 }

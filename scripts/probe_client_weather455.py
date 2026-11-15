@@ -62,9 +62,14 @@ def main():
         if len(result)!=1328 or result[:8]!=b'RFWEA455': raise ValueError('Bad native weather output')
         version,parsed,did_apply,native_checks,failed,id0,id1,scene=struct.unpack_from('<8I',result,8)
         if version!=1 or failed: raise ValueError('Native weather output failed')
-        valid=len(raw)>=4 and struct.unpack_from('<f',raw)[0]==struct.unpack('<f',struct.pack('<f',1.1))[0]
-        if parsed!=valid: raise ValueError('Weather version check changed')
-        body=(raw[4:1036]+bytes(1032))[:1032] if valid else bytes(1032)
+        candidate=(raw[4:1036]+bytes(1032))[:1032]
+        candidate_flags=struct.unpack_from('<I',candidate)[0]
+        valid=len(raw)>=1028 and (len(raw)==1028 or len(raw)>=1036) and raw[:4]==struct.pack('<f',1.1)
+        for flag,offset in ((0x10,116),(0x20,256),(0x20,392)):
+            if candidate_flags&flag and b'\0' not in candidate[offset:offset+128]:
+                valid=False
+        if parsed!=valid: raise ValueError('Weather payload acceptance differs')
+        body=candidate if valid else bytes(1032)
         if result[296:]!=body: raise ValueError('Weather shared-reader bytes differ')
         flags=struct.unpack_from('<I',body)[0]
         expected_apply=valid and not flags&0x10

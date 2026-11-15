@@ -2,6 +2,7 @@
 #include "client455_world_probe.cpp"
 #undef main
 #include "client455_special_shaders.h"
+#include "client455_character_rfs.h"
 #include <d3dx9.h>
 #include <vector>
 #include <array>
@@ -49,10 +50,13 @@ static int run134(){
     FILE* input=std::fopen("System/shader/init.original.r3o","rb");check(input!=nullptr,"original binary134");std::vector<BYTE> bytes(1424);check(std::fread(bytes.data(),1,bytes.size(),input)==bytes.size(),"actual list bytes134");std::fclose(input);bytes.resize(bytes.size()-4);const DWORD objects=2;const auto* count=reinterpret_cast<const BYTE*>(&objects);bytes.insert(bytes.end(),count,count+4);
     auto add=[&](DWORD value){const auto* p=reinterpret_cast<const BYTE*>(&value);bytes.insert(bytes.end(),p,p+4);};add(0xabcd0001);add(0x43210001);add(1);for(unsigned i=0;i<196;++i)bytes.push_back(BYTE(i));add(0x12340000);add(0x56780000);add(0);
     FILE* fixture=std::fopen("System/shader/init.r3o","wb");check(fixture!=nullptr&&std::fwrite(bytes.data(),1,bytes.size(),fixture)==bytes.size(),"fixture binary134");std::fclose(fixture);
+    RF455_GetCharacterRfsCache()->ClearPayloads(); // The probe deliberately rewrote an immutable input.
     check(RF455_LoadSpecialShaderBinary()==0,"real loader fixture134");const auto* obj=RF455_GetSpecialShaderObject(0);check(obj->vertex==1&&obj->pixel==1,"DWORD overlap retains two WORD program IDs134");for(unsigned i=0;i<196;++i)check(obj->parameters[i]==BYTE(i),"parameter bytes134");
     const auto* second=RF455_GetSpecialShaderObject(1);check(second->vertex==0&&second->pixel==0&&second->parameters[0]==0x78&&second->parameters[1]==0x56,"second overlapping read persists into parameter0 when count0");
     check(tables.objectCount==0&&RF455_GetSpecialVertexShader(0)==tables.vertices[1].program&&RF455_GetSpecialPixelShader(0)==tables.pixels[1].program,"unpublished count and double-indirection contract134");
-    check(std::rename("System/shader/init.r3o","fixture.r3o")==0&&std::rename("System/shader/init.original.r3o","System/shader/init.r3o")==0,"restore staged pinned list134");check(RF455_LoadSpecialShaderBinary()==0,"reload pinned original134");
+    check(std::rename("System/shader/init.r3o","fixture.r3o")==0&&std::rename("System/shader/init.original.r3o","System/shader/init.r3o")==0,"restore staged pinned list134");
+    RF455_GetCharacterRfsCache()->ClearPayloads();
+    check(RF455_LoadSpecialShaderBinary()==0,"reload pinned original134");
     g_MainApp.ReleaseR3D3D();check(!tables.objects&&!tables.vertices&&!tables.pixels,"actual final device teardown releases registry134");ReleaseR3Engine();
     FILE* output=std::fopen("result.json","wb");check(output!=nullptr,"result134");std::fprintf(output,"{\"status\":\"PASS\",\"actual_programs\":4,\"restore_cycles\":3,\"retained_COM_checks\":%u,\"overlap_objects\":2,\"overlap_parameter_bytes\":196,\"published_count_remains_zero\":true,\"memory_before\":%u,\"handles_before\":%u,\"handles_after\":%u,\"warnings\":%u,\"full_special_draw\":false}\n",releases,before,handlesBefore,handlesAfter,warnings);std::fclose(output);return 0;
 }

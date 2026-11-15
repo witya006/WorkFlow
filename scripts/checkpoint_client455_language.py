@@ -19,20 +19,23 @@ def main():
             if hashlib.sha256(read_va(raw,0x400000+int(row['rva'],16),row['bytes'])).hexdigest()!=row['sha256']:raise ValueError('Changed language function')
         for row in record['codepages']:
             if struct.unpack('<I',read_va(raw,0x400000+int(row['vtable_rva'],16)+row['slot_offset'],4))[0]!=0x400000+int(row['method_rva'],16):raise ValueError('Changed virtual codepage method')
+    targets = {'ru-ru', 'zh-tw'}
+    target_rows = [row for row in ref['files'] if row['folder'] in targets]
+    if {row['folder'] for row in target_rows} != targets:raise ValueError('Missing target language fixtures')
     total=0
-    for row in ref['files']:
+    for row in target_rows:
         raw=(WS/row['copy']).read_bytes();plain=(WS/row['decoded']).read_bytes();items,end=records(plain)
         if sha(WS/row['copy'])!=row['sha256'] or sha(WS/row['decoded'])!=row['decoded_sha256'] or decode(raw)!=plain or encode_with_envelope(raw,plain)!=raw or len(items)!=row['records'] or end!=row['consumed']:raise ValueError('Changed real language fixture/roundtrip')
         total+=len(items)
     for name,digest in cpu['source_sha256'].items():
         if sha(WS/'scripts/native'/name)!=digest:raise ValueError('Changed tested source')
-    for name in ['client455_language.cpp','client455_language.h','client455_nation_paths.cpp']:
+    for name in ['client455_language.cpp','client455_language.h','client455_nation_paths.cpp','client455_edf_input.h']:
         if sha(WS/'scripts/native'/name)!=prep['record_inputs'][name]:raise ValueError('Normal client used different language source')
     if sha(WS/cpu['exe'])!=cpu['exe_sha256'] or sha(WS/cpu['output'])!=cpu['output_sha256']:raise ValueError('Changed native evidence')
     n=cpu['native']
-    if n['status']!='PASS' or n['files']!=len(ref['files']) or n['records']!=total or n['country_locales']!=11 or not all(n[k] for k in ['byte_roundtrip','indexed_lookup','dbcs_boundaries','release','bounded_malformed_inputs']):raise ValueError('Incomplete language cases')
+    if n['status']!='PASS' or n['files']!=len(target_rows) or n['records']!=total or n['country_locales']!=len(targets) or not all(n[k] for k in ['byte_roundtrip','indexed_lookup','dbcs_boundaries','release','bounded_malformed_inputs','initialize_reuse_and_failed_switch','profile_cache_hit','refresh_after_release_and_explicit_load']):raise ValueError('Incomplete language cases')
     executions=[]
-    for name,nation,cp in [('client455-create-startup-native','ko-kr',949),('client455-startup-russia-native','ru-ru',1251)]:
+    for name,nation,cp in [('client455-startup-taiwan-native','zh-tw',950),('client455-startup-russia-native','ru-ru',1251)]:
         run=load(name);events_path=WS/run['events']['file'];helper=run['debugger'];expected=next(row for row in ref['files'] if row['folder']==nation)
         if run['normal_link_sha256']!=sha(WS/'inventory/client455-normal-link.json') or run['own_entry_sha256']!=sha(WS/'inventory/client455-own-entry.json') or sha(events_path)!=run['events']['sha256'] or sha(WS/run['staged_executable'])!=link['executable']['sha256']:raise ValueError('Stale actual language startup')
         if sha(WS/helper['file'])!=helper['sha256'] or sha(WS/helper['source'])!=helper['source_sha256'] or run['debugger_exit']:raise ValueError('Changed/failed owned debugger')
@@ -45,7 +48,7 @@ def main():
         executions.append({'folder':nation,'codepage':cp,'records':expected['records'],'source':name,'checkpoint':'before_connect' if run.get('before_connect') else 'before_character_data','status':'PASS'})
     mapping=(WS/link['map']['file']).read_text()
     if not re.search(r'\?RF455_InitializeLanguageData@@[^\r\n]+RFClient455Facade:client455_language\.obj',mapping):raise ValueError('Wrong normal language provider')
-    names=['client455-language-reference','client455-language-native','client455-create-startup-native','client455-startup-russia-native','client455-normal-link']
-    report={'status':'PARTIAL','edf_decode_real_byte_roundtrip':'PASS','real_ndlanguage_indexed_lookup':'PASS','stored_codepage_dbcs_boundaries':'PASS','country_crt_codepage_agreement':'PASS','actual_own_winmain_languages':executions,'files':len(ref['files']),'records':total,'executable':link['executable'],'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},'gaps':ref['gaps']+['Normal text/UI consumers and actual font/text rendering not yet ported/accepted','Modern CRT agreement on this machine is not complete old-CRT behavior certification','Own bounded parser/reload resource cleanup does not certify unsafe original domains','Existing whole client feature registry and M6/M6F/M7/M9 acceptance remain open'],'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
-    (WS/'inventory/client455-language-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL:realEDF/NDLanguage/DBCS/CRT and exact own Korean/Russian startup PASS;font/UI/full455 OPEN')
+    names=['client455-language-reference','client455-language-native','client455-startup-taiwan-native','client455-startup-russia-native','client455-normal-link']
+    report={'status':'PARTIAL','edf_decode_real_byte_roundtrip':'PASS','real_ndlanguage_indexed_lookup':'PASS','stored_codepage_dbcs_boundaries':'PASS','country_crt_codepage_agreement':'PASS','actual_own_winmain_languages':executions,'files':len(target_rows),'records':total,'executable':link['executable'],'evidence_sha256':{name:sha(WS/f'inventory/{name}.json') for name in names},'gaps':ref['gaps']+['Normal text/UI consumers and actual font/text rendering not yet ported/accepted','Modern CRT agreement on this machine is not complete old-CRT behavior certification','Own bounded parser/reload resource cleanup does not certify unsafe original domains','Existing whole client feature registry and M6/M6F/M7/M9 acceptance remain open'],'input_exe_executed':False,'server_modified':False,'M6':'OPEN','M6F':'OPEN','M7':'OPEN','M9':'OPEN'}
+    (WS/'inventory/client455-language-checkpoint.json').write_text(json.dumps(report,indent=2)+'\n');print('PARTIAL: real EDF/NDLanguage/DBCS/CRT and source-client Taiwanese/Russian startup PASS; font/UI/full 455 OPEN')
 if __name__=='__main__':main()

@@ -1,5 +1,6 @@
 //Pinned455 immediate-wave table. RVP uses this process-wide owner, not PlayWave's cache.
 #include "client455_sound_im.h"
+#include <climits>
 #include <cstring>
 struct RF455ImmediateWave {
     DWORD flag;
@@ -18,29 +19,64 @@ static RF455ImmediateWave* immediate(unsigned id){
 }
 static BOOL loadImmediateMP3(char* name,DWORD loop,HSAMPLE* handle,U32** memory){
     if(!stIsInit||!GetR3State()->mMusicOn)return TRUE;
-    *memory=static_cast<U32*>(AIL_file_read(name,FILE_READ_WITH_SIZE));
-    if(!*memory){Warning(name,"<- File not found\n");return FALSE;}
-    *handle=AIL_allocate_sample_handle(stDigital);
-    if(*handle){AIL_init_sample(*handle);if(AIL_set_named_sample_file(*handle,name,*memory+1,**memory,-1)){
-        //The target passes the raw load flag as the actual Miles loop count.
-        AIL_set_sample_loop_count(*handle,loop);return TRUE;
-    }}
-    AIL_mem_free_lock(*memory);*memory=nullptr;Warning(AIL_last_error(),"");return FALSE;
-}
-DWORD IM_LoadWave(char* name,DWORD flag){
-    if(!stIsInit)return 0;
-    if(!stIM_MaxWaveNum){stIM_MaxWaveNum=128;stIM_WaveList=static_cast<RF455ImmediateWave*>(Dmalloc(20*stIM_MaxWaveNum));std::memset(stIM_WaveList,0,20*stIM_MaxWaveNum);}
-    if(!IsExistFile(name))return 0;
-    int slot=0;while(slot<stIM_WaveNum&&stIM_WaveList[slot].used)++slot;
-    auto& wave=stIM_WaveList[slot];wave.loopCount=flag!=1;
-    const char* dot=std::strrchr(name,'.');const char* extension=dot?dot+1:name+1;
-    if(!_stricmp(extension,"MP3")){loadImmediateMP3(name,flag,&wave.handle,&wave.memory);wave.sample2D=1;}
-    else wave.sample2D=0; //The measured non-MP3 branch does not load a handle.
-    wave.used=1;
-    if(slot==stIM_WaveNum&&++stIM_WaveNum>=stIM_MaxWaveNum){
-        stIM_WaveList=static_cast<RF455ImmediateWave*>(ReAlloc(stIM_WaveList,20*stIM_MaxWaveNum,20*(stIM_MaxWaveNum+32)));
-        std::memset(stIM_WaveList+stIM_MaxWaveNum,0,20*32);stIM_MaxWaveNum+=32;
+    auto* input=static_cast<U32*>(AIL_file_read(name,FILE_READ_WITH_SIZE));
+    if(!input){Warning(name,"<- File not found\n");return FALSE;}
+    HSAMPLE sample=nullptr;
+    if (*input && *input<=0x7fffffffu) sample=AIL_allocate_sample_handle(stDigital);
+    if(sample){
+        AIL_init_sample(sample);
+        if(AIL_set_named_sample_file(sample,name,input+1,static_cast<S32>(*input),-1)){
+            // The target passes the raw load flag as the actual Miles loop count.
+            AIL_set_sample_loop_count(sample,loop);
+            *memory=input;
+            *handle=sample;
+            return TRUE;
+        }
+        AIL_release_sample_handle(sample);
     }
+    AIL_mem_free_lock(input);
+    Warning(AIL_last_error(),"");
+    return FALSE;
+}
+
+static bool ReserveImmediateWaves455(int capacity)
+{
+    constexpr int maxCapacity = (INT_MAX - 4) / sizeof(RF455ImmediateWave);
+    if (capacity <= stIM_MaxWaveNum || capacity > maxCapacity)
+        return false;
+    const auto oldBytes = static_cast<int>(stIM_MaxWaveNum * sizeof(RF455ImmediateWave));
+    const auto newBytes = static_cast<int>(capacity * sizeof(RF455ImmediateWave));
+    auto* replacement = static_cast<RF455ImmediateWave*>(stIM_WaveList ?
+        ReAlloc(stIM_WaveList, oldBytes, newBytes) : Dmalloc(newBytes));
+    if (!replacement)
+        return false;
+    std::memset(replacement + stIM_MaxWaveNum, 0, newBytes - oldBytes);
+    stIM_WaveList = replacement;
+    stIM_MaxWaveNum = capacity;
+    return true;
+}
+
+DWORD IM_LoadWave(char* name,DWORD flag){
+    if(!stIsInit||!name||!*name)return 0;
+    if (!stIM_WaveList && !ReserveImmediateWaves455(128)) return 0;
+    if(!IsExistFile(name))return 0;
+    int slot = 0;
+    while (slot < stIM_WaveNum && stIM_WaveList[slot].used) ++slot;
+    const bool append = slot == stIM_WaveNum;
+    if (append && stIM_WaveNum >= stIM_MaxWaveNum - 1 &&
+        !ReserveImmediateWaves455(stIM_MaxWaveNum + 32)) return 0;
+
+    RF455ImmediateWave wave = {};
+    wave.loopCount = flag != 1;
+    const char* dot=std::strrchr(name,'.');
+    if(dot&&!_stricmp(dot+1,"MP3")){
+        if (!loadImmediateMP3(name,flag,&wave.handle,&wave.memory)) return 0;
+        wave.sample2D=1;
+    }
+    else wave.sample2D=0; //The measured non-MP3 branch does not load a handle.
+    wave.used = 1;
+    stIM_WaveList[slot] = wave;
+    if (append) ++stIM_WaveNum;
     return slot+1;
 }
 void IM_ReleaseWave(DWORD id){
@@ -50,8 +86,13 @@ void IM_ReleaseWave(DWORD id){
     //used remains set: a released record is not recycled by the original search.
 }
 void IM_ReleaseAllWaves(){
-    if(!stIsInit)return;for(int i=0;i<stIM_WaveNum;++i)IM_ReleaseWave(i+1);stIM_WaveNum=0;
-    if(stIM_WaveList){Dfree(stIM_WaveList);stIM_WaveList=nullptr;stIM_MaxWaveNum=0;}
+    if (stIsInit) {
+        for (int i = 0; i < stIM_WaveNum; ++i) IM_ReleaseWave(i + 1);
+    }
+    if (stIM_WaveList) Dfree(stIM_WaveList);
+    stIM_WaveList = nullptr;
+    stIM_WaveNum = 0;
+    stIM_MaxWaveNum = 0;
 }
 void IM_SetWaveVolumeAndPan(DWORD id,float volume,float pan){
     (void)pan;if(!stIsInit)return;auto* wave=immediate(id);if(!wave||!wave->handle)return;

@@ -43,8 +43,10 @@ pixel equivalence. Capture helper ещё не подключён к ordinary gam
 wrapper/real device Reset/lost-device/failure domains остаются открытыми.
 
 8CE020 игнорирует HRESULTs и удерживает GetSurfaceLevel reference. Поведение
-сохранено;толькоlab компенсирует эту ссылку после наблюдения. Не заявляется
-balanced production capture lifetime. Loose PerbMap.dds в455отсутствует;
+воспроизведено в историческом прогоне. В текущем коде форка обе временные
+ссылки освобождаются. Изменение подтверждено на x86 с подставными COM-объектами
+и описано в [RES-01](client455-resource-cache.md).
+Loose PerbMap.dds в455отсутствует;
 positive test использует явную synthetic fixture,не подмену455asset.
 8CE2A0 — Fraction,неPlazma. У8CE0A0 остаются unowned stack lanes;defaults не
 выдуманы. Все прежние fullstage/Character/protocol/gameplay/M9gaps сохраняются.

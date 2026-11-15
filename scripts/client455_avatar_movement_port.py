@@ -62,12 +62,44 @@ def port_avatar_movement(raw, relative, native, section):
                        b'position_msg, 28')
 
     def goto_avatar_result(body):
-        return replace(body, b'if( l_sRecv.byRet == 0 )\n\t{',
-                       b'''if (l_sRecv.byRet == 0)
+        start = body.index(b'if( l_sRecv.byRet == 0 )\n\t{')
+        end = body.index(b'\n\telse\n\t{\n\t\tswitch( l_sRecv.byRet )', start)
+        return body[:start] + b'''if (l_sRecv.byRet == 0)
     {
+        if (!RF455_FinitePosition(l_sRecv.fStartPos)) return;
+        auto* avatar = _GetAvatar();
         auto* land = _GetLand();
-        if (!land || !land->MapData455().maps || l_sRecv.byMapCode >= land->MapData455().count ||
-            !RF455_FinitePosition(l_sRecv.fStartPos)) return;''')
+        const BYTE source = land ? land->GetMapIndex() : 0xff;
+        const BYTE destination = l_sRecv.byMapCode;
+        const BYTE mode = static_cast<BYTE>(pi_pMsg[14]);
+        const auto* maps = land ? &land->MapData455() : nullptr;
+        const bool validSource = maps && maps->maps && source != 0xff && source < maps->count;
+        if (avatar && validSource && source == destination) {
+            avatar->SetPosition(l_sRecv.fStartPos[0], l_sRecv.fStartPos[1], l_sRecv.fStartPos[2]);
+            avatar->SetAction(CAI_MOVE_STOP);
+            InitMsg_NewPosStartRequest_clzo(mode);
+            return;
+        }
+
+        auto* move = avatar ? avatar->GetMoveMapInfo() : nullptr;
+        auto* loading = _GetMapLoadingWindow();
+        CancelPendingMapRequests455();
+        if (!validSource || !move || !loading || !land->GetLevel() || destination == 0xff ||
+            destination >= maps->count || !land->CanLoadMap455(destination)) {
+            if (loading && loading->IsShow()) loading->Close();
+            RF455_ObserveProtocol("goto-avatar-map-unavailable", source, destination, mode);
+            EP_DisconnectedFromServer();
+            return;
+        }
+
+        avatar->SetAction(CAI_MOVE_STOP);
+        move->m_byEnterMapIndex = source;
+        move->m_byExitMapIndex = destination;
+        std::memcpy(move->m_vecPosition, l_sRecv.fStartPos, sizeof(l_sRecv.fStartPos));
+        move->m_pEnterPortalInfo = move->m_pExitPortalInfo = nullptr;
+        move->m_bIsMoved = TRUE;
+        move->MoveToPortal_Result(mode);
+    }'''+body[end:]
 
     raw = patch_method(raw, section, NETWORK, b'PositionMsg_MoveRequest_clzo', move_request)
     raw = patch_method(raw, section, NETWORK, b'PositionMsg_GotoAvatorRequest_clzo', goto_avatar_request)
@@ -78,4 +110,6 @@ def port_avatar_movement(raw, relative, native, section):
         (b'PositionMsg_PlayerStop_clzo', b'BOOL'),
         (b'PositionMsg_PlayerMove_zocl', b'void'),
     ))
-    return raw + b'\n' + (native / 'client455_avatar_movement.inc').read_bytes(), True
+    return (b'#include "userinterface/gamewindow/etcwin/guimaploadingwindow.h"\n'
+            b'#include <cstring>\nvoid EP_DisconnectedFromServer();\n' + raw + b'\n'
+            + (native / 'client455_avatar_movement.inc').read_bytes()), True

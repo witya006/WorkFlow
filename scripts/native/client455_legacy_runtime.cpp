@@ -62,12 +62,6 @@ bool namesValid(RF455MeshStorage* meshes,int count){
     return true;
 }
 void grow(std::vector<unsigned char>& bytes,unsigned count){if(bytes.size()<64u*count)bytes.resize(64u*count,0);}
-bool readBlob(FILE* file,unsigned size,const RF455MeshMemoryOps* memory,Block& result){
-    result.pointer=memory->allocate(memory->context,size);
-    if(!result.pointer)return false;
-    if(size && std::fread(result.pointer,1,size,file)!=size){memory->release(memory->context,result.pointer);result.pointer=nullptr;return false;}
-    return true;
-}
 }
 
 extern "C" void RF455_ConvertLegacyVertex64(void* target,const void* source){
@@ -189,13 +183,19 @@ extern "C" RF455LegacyRuntimeStatus RF455_IndexLegacyVertices(const void* expand
 extern "C" RF455LegacyRuntimeStatus RF455_ImportLegacyFile(const char* filename,
     const RF455MeshMemoryOps* memory,const RF455LegacyDiagnostics* diagnostics,RF455LegacyModel** output){
     if(!filename || !memory || !memory->allocate || !memory->release || !valid(diagnostics) || !output)return RF_LEGACY_RUNTIME_ARGUMENT;
-    Block raw={memory};unsigned size=0;Stream input;input.file=RF455_GetCharacterRfsCache()->Open(filename,&size);
-    if(input.file){readBlob(input.file,size,memory,raw);std::fclose(input.file);input.file=nullptr;}
-    if(!raw.pointer){input.file=std::fopen(filename,"rb");if(!input.file){const int error=errno;message(diagnostics,"Mesh or Bone Not Found : FileName = %s [%d]%s",filename,error,std::strerror(error));return RF_LEGACY_RUNTIME_IO;}
-        std::fseek(input.file,0,SEEK_END);const long length=std::ftell(input.file);std::fseek(input.file,0,SEEK_SET);if(length<0)return RF_LEGACY_RUNTIME_IO;size=static_cast<unsigned>(length);if(!readBlob(input.file,size,memory,raw))return RF_LEGACY_RUNTIME_IO;std::fclose(input.file);input.file=nullptr;
+    auto* resources=RF455_GetCharacterRfsCache();auto input=resources->ReadArchiveBytes(filename);
+    if(input.status!=RF455ResourceReadStatus::Ready){
+        input=resources->ReadLooseBytes(filename);
+        if(input.status==RF455ResourceReadStatus::Unavailable){const int error=errno;message(diagnostics,"Mesh or Bone Not Found : FileName = %s [%d]%s",filename,error,std::strerror(error));return RF_LEGACY_RUNTIME_IO;}
     }
-    RF455LegacyModel* result=nullptr;std::size_t consumed=0;const auto status=RF455_ReadLegacyModel(raw.pointer,size,memory,&result,&consumed);
-    memory->release(memory->context,raw.pointer);raw.pointer=nullptr;message(diagnostics,"ImportMeshorBoneData( %s ) :NULL",filename);
+    if(input.status==RF455ResourceReadStatus::MemoryError)return RF_LEGACY_RUNTIME_MEMORY;
+    if(input.status!=RF455ResourceReadStatus::Ready)return RF_LEGACY_RUNTIME_IO;
+    // The owned decoder copies headers and every variable-size payload into its
+    // own allocations. No input pointers escape, so the original temporary raw
+    // allocation/copy is unnecessary. Keep this const lease alive through parse.
+    // Parse failure is final: unlike a failed archive read, it never selects loose.
+    RF455LegacyModel* result=nullptr;std::size_t consumed=0;const auto status=RF455_ReadLegacyModel(input.bytes->data(),input.bytes->size(),memory,&result,&consumed);
+    message(diagnostics,"ImportMeshorBoneData( %s ) :NULL",filename);
     if(status!=RF_LEGACY_OK)return status==RF_LEGACY_MEMORY?RF_LEGACY_RUNTIME_MEMORY:RF_LEGACY_RUNTIME_FORMAT;*output=result;return RF_LEGACY_RUNTIME_OK;
 }
 extern "C" RF455LegacyRuntimeStatus RF455_LoadLegacyModel(RF455LegacyModel* imported,
@@ -205,7 +205,36 @@ extern "C" RF455LegacyRuntimeStatus RF455_LoadLegacyModel(RF455LegacyModel* impo
     if(!std::memchr(model->bytes+4,0,256) || !std::memchr(model->bytes+276,0,256))return RF_LEGACY_RUNTIME_NAMES;
     const unsigned count=get<std::uint16_t>(imported->bytes,2);auto* parts=get<RF455LegacyPart*>(imported->bytes,4);if(count && !parts)return RF_LEGACY_RUNTIME_FORMAT;
     const auto& memory=context->base.memory;Pending pending={&memory};pending.meshes=RF455_AllocateMeshArray(count,context->base.meshAccounting,&memory);if(!pending.meshes)return RF_LEGACY_RUNTIME_MEMORY;
-    std::string sidecar(reinterpret_cast<const char*>(model->bytes+4));const auto dot=sidecar.rfind('.');if(dot!=std::string::npos)sidecar.resize(dot);sidecar+=".mtg";Stream mtg;mtg.file=std::fopen(sidecar.c_str(),"rb");
+    std::string sidecar(reinterpret_cast<const char*>(model->bytes+4));const auto dot=sidecar.rfind('.');if(dot!=std::string::npos)sidecar.resize(dot);sidecar+=".mtg";
+    Stream mtg;
+    RF455ResourceBytes mtgBytes;
+    std::size_t mtgOffset = 0;
+    // RVA 0x53CD60 reads this optional sidecar from the loose filesystem.
+    // Larger files continue to stream one part at a time.
+    constexpr std::size_t mtgCacheLimit = 8u * 1024u * 1024u;
+    auto* resources = RF455_GetCharacterRfsCache();
+    const auto budget = resources ? resources->ByteBudget() : 0;
+    const auto limit = budget < mtgCacheLimit ? budget : mtgCacheLimit;
+    if (!limit) {
+        mtg.file = std::fopen(sidecar.c_str(), "rb");
+    } else {
+        const auto sidecarInput = resources->ReadLooseBytes(sidecar.c_str(), limit);
+        switch (sidecarInput.status) {
+        case RF455ResourceReadStatus::Ready:
+            if (!sidecarInput.bytes) return RF_LEGACY_RUNTIME_IO;
+            mtgBytes = sidecarInput.bytes;
+            break;
+        case RF455ResourceReadStatus::Unavailable:
+            break;
+        case RF455ResourceReadStatus::ReadError:
+            if (sidecarInput.declaredSize <= limit) return RF_LEGACY_RUNTIME_IO;
+            mtg.file = std::fopen(sidecar.c_str(), "rb");
+            if (!mtg.file) return RF_LEGACY_RUNTIME_IO;
+            break;
+        case RF455ResourceReadStatus::MemoryError:
+            return RF_LEGACY_RUNTIME_MEMORY;
+        }
+    }
     const auto materials=RF455_TextureMaterialOps(context->base.textures);RF455LegacyLoadStats result={};
     for(unsigned n=0;n<count;++n){auto* part=parts[n].bytes;auto* mesh=pending.meshes+n;const auto vertices=get<std::uint16_t>(part,392),faces=get<std::uint16_t>(part,394),physiques=get<std::uint16_t>(part,396);const unsigned expandedCount=3u*faces;
         if(expandedCount>64000 || vertices>64000){message(&context->diagnostics,"InitVertex : %s : %d",reinterpret_cast<const char*>(part),expandedCount);return RF_LEGACY_RUNTIME_LIMIT;}
@@ -215,10 +244,23 @@ extern "C" RF455LegacyRuntimeStatus RF455_LoadLegacyModel(RF455LegacyModel* impo
         auto& scratch=context->scratch->vertices;grow(scratch,vertices);const auto* exports=get<const unsigned char*>(part,696);if(vertices && !exports)return RF_LEGACY_RUNTIME_FORMAT;
         for(unsigned i=0;i<vertices;++i){auto* v=scratch.data()+64*i;RF455_ConvertLegacyVertex64(v,exports+28*i);put<unsigned>(v,12,0x3f800000);std::memset(v+16,0,16);}
         const auto* physique=get<const unsigned char*>(part,704);if(physique){const auto decoded=RF455_DecodeLegacyWeights(scratch.data(),vertices,physique,physiques,&context->diagnostics);if(decoded!=RF_LEGACY_RUNTIME_OK)return decoded;}
-        Block tangents={&memory};if(mtg.file){tangents.pointer=memory.allocate(memory.context,84u*faces);if(!tangents.pointer)return RF_LEGACY_RUNTIME_MEMORY;if(faces && std::fread(tangents.pointer,84u*faces,1,mtg.file)!=1)return RF_LEGACY_RUNTIME_IO;}
+        Block tangents={&memory};
+        const std::size_t tangentSize = 84u * faces;
+        const unsigned char* tangentData = nullptr;
+        if (mtgBytes) {
+            if (tangentSize > mtgBytes->size() - mtgOffset) return RF_LEGACY_RUNTIME_IO;
+            if (tangentSize) tangentData = mtgBytes->data() + mtgOffset;
+            mtgOffset += tangentSize;
+        } else if (mtg.file) {
+            tangents.pointer = memory.allocate(memory.context, tangentSize);
+            if (!tangents.pointer) return RF_LEGACY_RUNTIME_MEMORY;
+            if (tangentSize && std::fread(tangents.pointer, tangentSize, 1, mtg.file) != 1)
+                return RF_LEGACY_RUNTIME_IO;
+            tangentData = static_cast<const unsigned char*>(tangents.pointer);
+        }
         const auto* triangles=get<const unsigned char*>(part,700);if(faces && !triangles)return RF_LEGACY_RUNTIME_FORMAT;
         for(unsigned f=0;f<faces;++f)for(unsigned corner=0;corner<3;++corner){const auto index=get<unsigned>(triangles+88*f,4*corner);if(index>=vertices)return RF_LEGACY_RUNTIME_FORMAT;auto* to=static_cast<unsigned char*>(expanded.pointer)+64*(3*f+corner);std::memcpy(to,scratch.data()+64*index,64);
-            if(mtg.file)for(unsigned j=0;j<3;++j)copyFloat(to+52+4*j,static_cast<const unsigned char*>(tangents.pointer)+84*f+28*corner+4*j);
+            if(tangentData)for(unsigned j=0;j<3;++j)copyFloat(to+52+4*j,tangentData+84*f+28*corner+4*j);
             RF455_ConvertLegacyUv64(to,triangles+88*f+48+12*corner);
         }
         if(tangents.pointer){memory.release(memory.context,tangents.pointer);tangents.pointer=nullptr;}

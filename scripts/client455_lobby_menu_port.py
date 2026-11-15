@@ -101,7 +101,7 @@ def port_lobby_menu(raw, relative, native):
     if relative != 'gameprogress/cgp_login.cpp':
         return raw, False
 
-    raw = b'#include "client455_render_diagnostics.h"\n' + raw
+    raw = b'#include "client455_render_diagnostics.h"\n#include "client455_scene_capture.h"\n' + raw
     raw = replace(raw, b'#include "../MainApp.h"', b'#include "../MainApp.h"\n' +
                   (native / 'client455_lobby_menu.inc').read_bytes())
     raw = replace(raw, b'{ CAM_TOP_TO_LOGINC, 4, 0, 40 },', b'{ CAM_TOP_TO_LOGINC, 4, 0, 66 },')
@@ -160,6 +160,10 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
     raw = reveal_lobby_loading(raw)
     raw = replace(raw, b'\tm_bIsLoadedData = TRUE;',
                   b'\tlobbyMenu455.Install(*_GetUIScreen(), _GetMainApp()->IsRequestLogout() != FALSE);\n'
+                  b'\tlobbyPresentation455 = LobbyPresentation455::Waiting;\n'
+                  b'\tlobbyCoverReported455 = false;\n'
+                  b'\tworldHudPreload455 = 0;\n'
+                  b'\tlobbyTargetPending455 = false;\n'
                   b'\tm_bIsLoadedData = TRUE;')
     raw = replace(raw, b'\tm_AniCamera.ReleaseAniCamera();',
                   b'\tlobbyMenu455.Uninstall(*_GetUIScreen());\n\tm_AniCamera.ReleaseAniCamera();')
@@ -183,7 +187,8 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
                   b'strcpy( l_pBuf, "RF Online 4.55" );')
 
     raw = replace(raw, b'\tNetworkInput();', b'''    NetworkInput();
-    switch (lobbyMenu455.TakeAction()) {
+    switch (lobbyPresentation455 == LobbyPresentation455::Visible
+                ? lobbyMenu455.TakeAction() : LobbyMenu455::Action::None) {
     case LobbyMenu455::Action::Start:
         lobbyMenu455.Start();
         m_CameraAni = true;
@@ -301,8 +306,42 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
 \t\t_GetAvatar()->Render();''')
     pose_setup=(b'\n#ifdef CHARACTERDRAW\n        for(int i=0;i<3;++i){if(_GetAvatarDummy(i)->GetIndex()!=ID_INVALID){\n'+
         weapon_setup+position_setup+b'\n        }}\n'+avatar_setup+b'\n#endif\n')
-    body=replace(body,b'\tif( R3BeginScene() )',b'    lobbyFrameSample455.begin();\n\tif( R3BeginScene() )')
+    body=replace(body,b'\t_R3ENGINE_STATE *state = GetR3State();',b'''    auto* device = GetD3dDevice();
+    const bool menuReady = g_LoginState == LGS_CHARACTERLOBBY && !m_LoadEquipStart &&
+                           (lobbyMenu455.IsShow() || m_uiSelectCharacter.IsShow());
+    const bool sceneReady = m_bIsLoadedData && _GetLevel() && _GetLevel()->IsLoadedBsp() &&
+                            m_AniCamera.GetCameraNum() != 0;
+    if (lobbyPresentation455 != LobbyPresentation455::Visible && m_bIsLoadedData) {
+        if (!sceneReady) FailLobbyPresentation455(1);
+        else if (!LobbyInterfaceReady455(g_LogoTexture)) FailLobbyPresentation455(2);
+    }
+    const bool targetPending455 = lobbyPresentation455 != LobbyPresentation455::Visible &&
+        AwaitLobbyBackbufferTarget455(GetStateFullScreenEffect());
+    if (lobbyPresentation455 == LobbyPresentation455::Failed || targetPending455 ||
+        (lobbyPresentation455 != LobbyPresentation455::Visible && (!menuReady || !sceneReady))) {
+        CoverLobbyBackbuffer455(device);
+        if (device && R3BeginScene()) {
+            const auto cleared = device->Clear(0, nullptr, D3DCLEAR_TARGET, 0xff000000, 1.f, 0);
+            _GetUIScreen()->Draw();
+            m_messages455.Draw();
+            R3EndScene();
+            if (SUCCEEDED(cleared) && !lobbyCoverReported455) {
+                lobbyCoverReported455 = true;
+                RF455_ObserveProtocol("lobby-cover-black", 0, 0, 0);
+            }
+        }
+        return S_OK;
+    }
+    _R3ENGINE_STATE *state = GetR3State();''')
+    body=replace(body,b'\tif( R3BeginScene() )',b'''    lobbyFrameSample455.begin();
+    bool startupFrameReady455 = true;
+    const bool preparingLobby455 = lobbyPresentation455 != LobbyPresentation455::Visible;
+    const auto skyDrawsBefore455 = RF455_GetLobbySkyTelemetry().draws;
+    const bool drewScene = R3BeginScene() != FALSE;
+    if (drewScene)''')
     body=replace(body,b'\t\tR3ClearFrameBuffer();',pose_setup+b'''        const bool modernLobby = !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect() && RF455_BeginLobbyPost(GetD3dDevice());
+        if (preparingLobby455 && modernLobby)
+            startupFrameReady455 = RF455_PrepareLobbyMaterials(device);
         RF455_InvalidateLobbyShadows(!modernLobby || !_GetLand()->GetLevel());
         if(modernLobby && _GetLand()->GetLevel()){
             RF455_GpuSectionBegin(2);
@@ -330,18 +369,94 @@ void PlayCamera(CameraAni ani, DWORD course = 0, bool fromLobby = false)''')
         b'\t\tg_AMeshManager.DrawAlpahMesh();\n\t\t_GetCharIF()->UnSetState();\n        RF455_GpuSectionEnd(6);')
     body=replace(body,b'        if (lobbyMenu455.ShowingCredits()) FullScreenEffect();',b'''        if(modernLobby){
             RF455_EndLobbyPost(GetD3dDevice());
-            if(!RF455_GetLobbyPostTelemetry().uiSceneReady){RF455_DiagnosticsEndFrame();return S_OK;}
+            const auto post = RF455_GetLobbyPostTelemetry();
+            if(!post.uiSceneReady){
+                RF455_DiagnosticsEndFrame();
+                lobbyFrameSample455.end();
+                CoverLobbyBackbuffer455(device);
+                if (preparingLobby455 && post.error != D3DERR_DEVICELOST && post.error != D3DERR_DEVICENOTRESET)
+                    FailLobbyPresentation455(5, post.error);
+                return S_OK;
+            }
+            if (preparingLobby455) {
+                const auto sky = RF455_GetLobbySkyTelemetry();
+                startupFrameReady455 = startupFrameReady455 && sky.ready &&
+                    sky.draws > skyDrawsBefore455 &&
+                    post.status == RF455LobbyPostStatus::Complete;
+            }
+        }
+        else if (!RF455_LobbyPostEnabled() && !lobbyMenu455.ShowingCredits()) {
+            const auto* options = RF455_LobbyOptions();
+            if (options && !RF455_CompositeClassicLobbyBloom(options->AppliedBloom455())) {
+                RF455_DiagnosticsEndFrame();
+                lobbyFrameSample455.end();
+                CoverLobbyBackbuffer455(device);
+                if (preparingLobby455) FailLobbyPresentation455(6);
+                return S_OK;
+            }
+        }
+        if (preparingLobby455 && RF455_LobbyPostEnabled() && !modernLobby &&
+            !lobbyMenu455.ShowingCredits() && !GetStateFullScreenEffect()) {
+            const auto post = RF455_GetLobbyPostTelemetry();
+            // Preserve the existing capability fallback. A file/resource error
+            // is not silently accepted as a fully prepared enhanced scene.
+            startupFrameReady455 = post.status == RF455LobbyPostStatus::Unsupported;
+            if (startupFrameReady455 && lobbyPresentation455 == LobbyPresentation455::Waiting)
+                RF455_ObserveProtocol("lobby-render-fallback", static_cast<unsigned>(post.error), 0, 0);
         }
         RF455_GpuSectionBegin(7);
         if (lobbyMenu455.ShowingCredits()) FullScreenEffect();''')
     body=replace(body,b'\t\t_GetUIScreen()->Draw();',b'        if(!RF455_LobbyReferenceMode())_GetUIScreen()->Draw();\n        else if(RF455_LobbyOptions() && RF455_LobbyOptions()->IsShow()){RF455_LobbyOptions()->Draw();_GetUIScreen()->GetMouse()->Draw();}')
     body=replace(body,b'if (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD)',b'if (!RF455_LobbyReferenceMode() && (lobbyMenu455.IsShow() || g_LoginState == LGS_IDANDPASSWORD))')
     body=replace(body,b'\t}\n\t\n\t\n\tm_messages455.Draw();',b'        RF455_DrawLobbyDiagnostics();\n        RF455_GpuSectionEnd(7);\n        RF455_DiagnosticsEndFrame();\n\t}\n    else RF455_DiagnosticsEndFrame();\n\t\n\t\n\tm_messages455.Draw();')
-    body=replace(body,b'\tR3EndScene();',b'\tR3EndScene();\n    lobbyFrameSample455.end();\n    RF455_SaveLobbyVisualMetadata();\n    RF455_ObserveLobbySettings();\n    RF455_ObserveLobbySlots();')
+    # Message dispatch inserts CRLF here even into an otherwise LF body.
+    # Keep independent, uniquely checked anchors instead of joining the lines.
+    body=replace(body,b'\tm_messages455.Draw();',b'\tif (drewScene) m_messages455.Draw();')
+    body=replace(body,b'\tR3EndScene();',b'''    if (drewScene) R3EndScene();
+    lobbyFrameSample455.end();
+    if (preparingLobby455 && !drewScene) {
+        CoverLobbyBackbuffer455(device);
+        return S_OK;
+    }
+    if (preparingLobby455 && drewScene && !startupFrameReady455) {
+        CoverLobbyBackbuffer455(device);
+        FailLobbyPresentation455(3);
+        return S_OK;
+    }
+    if (lobbyPresentation455 == LobbyPresentation455::Waiting && drewScene) {
+        // Exercise the actual camera, materials and post pass once behind the
+        // existing black transition. No timer or polling delay gates the menu.
+        if (CoverLobbyBackbuffer455(device)) {
+            lobbyPresentation455 = LobbyPresentation455::Warmed;
+            RF455_ObserveProtocol("lobby-frame-prepared", 0, 0, 0);
+        }
+        return S_OK;
+    }
+    if (lobbyPresentation455 == LobbyPresentation455::Warmed && drewScene) {
+        lobbyPresentation455 = LobbyPresentation455::Visible;
+        RF455_ObserveProtocol("lobby-content-ready", 0, 0, 0);
+    }
+    RF455_SaveLobbyVisualMetadata();
+    RF455_ObserveLobbySettings();
+    RF455_ObserveLobbySlots();''')
     raw=raw[:start]+body+raw[stop:]
     raw=replace(raw,b'\tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);',b'''    if(RF455_LobbyReferenceMode())m_AniCamera.SetNowFrame(RF455_LobbyReferenceSeconds());
 \tm_CameraAni = m_AniCamera.PlayAniCamera(get_mat,1.0f);''')
     raw+=b'\n'+(native/'client455_lobby_slot_observation.inc').read_bytes()
     frame=raw.index(b'CGP_LogIn::FrameMove(');at=raw.index(b'{',frame)+1
-    raw=raw[:at]+b'\n    RF455CpuSection updateTiming(2);\n'+raw[at:]
+    raw=raw[:at]+b'''
+    RF455CpuSection updateTiming(2);
+    // Load only UI textures shared by every entry map. Keep each GPU upload
+    // on the normal device thread, one atlas per frame after the reveal.
+    constexpr unsigned worldHudSprites[] = {4, 6};
+    if (lobbyPresentation455 == LobbyPresentation455::Visible &&
+        g_LoginState == LGS_CHARACTERLOBBY && worldHudPreload455 < _countof(worldHudSprites)) {
+        const unsigned id = worldHudSprites[worldHudPreload455++];
+        const bool loaded = _GetUISpriteMgr()->GetTargetSprite455(id) != nullptr;
+        RF455_ObserveProtocol("lobby-world-hud-preload", id, loaded, 0);
+    }
+'''+raw[at:]
+    raw = replace(raw, b'\t_DestroyAvatarDummy();\n\n\tUI_UnloadSprite();',
+                  b'\t_DestroyAvatarDummy();\n\n'
+                  b'\t_GetUISpriteMgr()->UnloadSpriteAll(GetNextStage455() == GPI_MAIN_GAME);')
     return raw, True

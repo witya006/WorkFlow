@@ -17,11 +17,7 @@ void prepareMaterialShader455(_R3MATERIAL* mat,_BSP_MAT_GROUP* group){
     d->SetVertexShaderConstantF(15,&state->mInvMatView._41,1);d->SetPixelShaderConstantF(15,&state->mInvMatView._41,1);
     if(RF455_GetShaderLightCount()){
         auto* light=RF455_GetShaderLight(0);
-        if(light){
-            //Target reads a fourth float past the32-byte record forPS6. Its
-            //unowned lane is not synthesized;equivalence for that lane is open.
-            d->SetPixelShaderConstantF(6,light->color,1);d->SetVertexShaderConstantF(18,light->position,1);
-        }
+        if(light) RF455_SetShaderLightConstants(d, *light);
     }else d->SetVertexShaderConstantF(18,&state->mInvMatView._41,1);
     for(unsigned i=0;i<mat->m_dwLayerNum;++i)d->SetTexture(i,R3GetSurface(mat->m_Layer[i].m_iSurface));
     const auto& layer=mat->m_Layer[0];float values[4]={};
@@ -31,9 +27,9 @@ void prepareMaterialShader455(_R3MATERIAL* mat,_BSP_MAT_GROUP* group){
     if(layer.m_dwFlag&0x800002)values[3]=layer.m_fSpecularFlickeringSpeed;
     d->SetPixelShaderConstantF(18,values,1);GetBumpFactor(values);values[3]=R3GetTime();d->SetPixelShaderConstantF(17,values,1);
     const auto* object=RF455_GetSpecialShaderObject(materialShader455.objectIndex);
-    d->SetVertexShader(RF455_GetSpecialVertexShader(object->vertex));
+    d->SetVertexShader(object ? RF455_GetSpecialVertexShader(object->vertex) : nullptr);
     object=RF455_GetSpecialShaderObject(materialShader455.objectIndex);
-    d->SetPixelShader(RF455_GetSpecialPixelShader(object->pixel)); //Deliberate second object indirection.
+    d->SetPixelShader(object ? RF455_GetSpecialPixelShader(object->pixel) : nullptr); //Deliberate second object indirection.
 }
 void finishMaterialShader455(_R3MATERIAL* mat){
     auto* d=GetD3dDevice();for(unsigned i=0;i<mat->m_dwLayerNum;++i)d->SetTexture(i,nullptr);

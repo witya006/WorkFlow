@@ -13,7 +13,7 @@ def main():
         for name,key in [('client455-animation-build','build_report_sha256'),('client455-animation-reference','reference_report_sha256'),('character-mesh08-bone-pairs','pair_report_sha256'),('character-texture-inputs','texture_report_sha256')]:
             if report[key]!=sha(WS/f'inventory/{name}.json'):raise ValueError('Stale ANI proof')
         if report['native']['status']!='PASS' or sha(WS/report['exe'])!=report['exe_sha256'] or sha(WS/report['output'])!=report['output_sha256']:raise ValueError('Changed native evidence')
-    if cpu['native']['checks']!=14513 or gpu['native']['checks']!=15181 or gpu['native']['physical_parts']!=660 or gpu['native']['stranded_raw_blocks_observed_and_harness_freed']!=1 or gpu['native']!=client['native'] or len(link['lab']['functions'])!=13 or link['normal']['functions']:raise ValueError('ANI scope/source selection mismatch')
+    if cpu['native']['checks']!=14513 or gpu['native']['checks']!=15181 or gpu['native']['physical_parts']!=660 or gpu['native']['rejected_msh_raw_buffers_released']!=1 or gpu['native']!=client['native'] or len(link['lab']['functions'])!=13 or link['normal']['functions']:raise ValueError('ANI scope/source selection mismatch')
     if client['component_gpu_report_sha256']!=sha(WS/'inventory/client455-animation-gpu.json') or client['dmalloc_balance'] or client['game_dlls_loaded'] or sha(WS/client['output'])!=client['output_sha256']:raise ValueError('Full-client ANI evidence mismatch')
     regressions=[client,load('client455-legacy-runtime-client'),load('client455-character-manager-client'),graphics]
     for report in regressions:

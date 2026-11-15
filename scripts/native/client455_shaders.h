@@ -50,3 +50,7 @@ int RF455_LoadShaderProgram(RF455ShaderManager*,const RF455ShaderApi*,const char
 int RF455_InitializeCharacterShaders(RF455ShaderManager*,const RF455ShaderApi*,IUnknown** sprite,IDirect3DVertexDeclaration9** declaration64,IDirect3DVertexDeclaration9** declaration36);
 void RF455_ReleaseCharacterDeclarations(IDirect3DVertexDeclaration9**,IDirect3DVertexDeclaration9**);
 }
+// The manager starts empty with a borrowed device. Publish all twelve programs
+// and both declarations together, releasing temporary COM resources on failure.
+HRESULT RF455_InitializeReplacementCharacterShaders(RF455ShaderManager*, const RF455ShaderApi*,
+    IDirect3DVertexDeclaration9**, IDirect3DVertexDeclaration9**);

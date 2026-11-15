@@ -5,18 +5,23 @@ from client455_trade_ore_port import patch_method, remove_methods, replace
 def port_hud(raw,relative,native,section):
     if relative == 'userinterface/gamewindow/etcwin/guiradarwindow.h':
         raw = replace(raw, b'\tvoid\tSetSprite( void );', b'''\tvoid\tSetSprite( void );
+    void SetAreaLabel455(const char* label);
     void MouseEvent(_mouse_event& event) override;''')
         anchor = b'\tRADAR_CHAR_INFO\t* GetCharInfo( DWORD pi_dwID );'
         return replace(raw, anchor, b'''    CGUIButton m_openMap455;
     CGUIButton m_zoomIn455;
     CGUIButton m_zoomOut455;
+    CGUIText m_areaLabel455;
     unsigned m_zoomLevel455 = 2;
 
 ''' + anchor), True
     if relative == 'cland.cpp':
         return patch_method(raw, section, b'CLand', b'UI_SetRadar', lambda _: b'''CLand::UI_SetRadar(void)
 {
-    if (auto* radar = _GetRadarWindow()) radar->SetMapRotate(0.0f);
+    if (auto* radar = _GetRadarWindow()) {
+        radar->SetMapRotate(0.0f);
+        radar->SetAreaLabel455(m_areaLabel455);
+    }
 }'''), True
     if relative=='userinterface/gamewindow/etcwin/guiradarwindow.cpp':
         owner = b'CGUIRadarWindow'

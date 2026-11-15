@@ -3,6 +3,7 @@
 #include "client455_lobby_post.h"
 #include "client455_lobby_shadow.h"
 #include "client455_lobby_sky.h"
+#include "client455_lobby_texture.h"
 #include "client455_lobby_lighting_shader.h"
 #include <d3dx9.h>
 #include <cstring>
@@ -57,11 +58,11 @@ bool initAuthoredSurface455(IDirect3DDevice9* d,unsigned index) {
         {"System/modern-lobby/titanium-hull-albedo-v1.png","System/modern-lobby/titanium-hull-height-v1.png"}};
     D3DSURFACE_DESC first{};
     for(unsigned i=0;i<2;++i){
-        HRESULT hr=D3DXCreateTextureFromFileExA(d,paths[index][i],D3DX_DEFAULT_NONPOW2,D3DX_DEFAULT_NONPOW2,
-            D3DX_DEFAULT,0,D3DFMT_A8R8G8B8,D3DPOOL_MANAGED,D3DX_FILTER_LINEAR,D3DX_FILTER_BOX,0,nullptr,nullptr,&surface.texture[i]);
+        HRESULT hr=RF455_LoadLobbyTexture(d,paths[index][i],&surface.texture[i]);
         D3DSURFACE_DESC desc{};
         if(SUCCEEDED(hr))hr=surface.texture[i]->GetLevelDesc(0,&desc);
-        if(SUCCEEDED(hr)&&i&&(desc.Width!=first.Width||desc.Height!=first.Height))hr=D3DERR_INVALIDCALL;
+        if (SUCCEEDED(hr) && (!desc.Width || !desc.Height ||
+            (i && (desc.Width != first.Width || desc.Height != first.Height)))) hr = D3DERR_INVALIDCALL;
         if(FAILED(hr)){
             for(auto*& texture:surface.texture)releaseLobbyMaterial455(texture);
             lobbyMaterialError455(hr,paths[index][i]);return false;
@@ -371,6 +372,12 @@ void RF455_ReleaseLobbyMaterial() {
     s.failed=false;s.info.ready=false;
 }
 RF455LobbyMaterialTelemetry RF455_GetLobbyMaterialTelemetry() {return lobbyMaterial455.info;}
+bool RF455_PrepareLobbyMaterials(IDirect3DDevice9* device) {
+    if (!device || !initLobbyMaterial455(device)) return false;
+    for (unsigned i = 0; i < 3; ++i)
+        if (!initAuthoredSurface455(device, i)) return false;
+    return lobbyMaterial455.info.authoredReady;
+}
 void RF455_ResetLobbyMaterialTelemetry() {
     auto& s=lobbyMaterial455;const bool ready=s.info.ready,authored=s.info.authoredReady;
     const auto bytes=s.info.authoredTextureBytes;s.info={};s.info.ready=ready;

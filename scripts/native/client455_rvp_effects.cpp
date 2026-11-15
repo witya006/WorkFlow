@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "client455_effect_ini.h"
 #include "client455_rvp_effects.h"
 #include "client455_resource_io.h"
 #include "r3particle.h"
@@ -14,6 +15,7 @@
 #include <string>
 
 namespace {
+constexpr UINT maxRvpEffectDefinitions455 = 65535;
 const D3DXMATRIX yzmat(1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1); //455BF8148
 template<class T>T get(const void* base,unsigned offset){T value;std::memcpy(&value,static_cast<const unsigned char*>(base)+offset,sizeof(value));return value;}
 struct ParticleSlot {
@@ -32,9 +34,21 @@ struct Shared {
     float scroll=0;DWORD previous=0;
 };
 Shared& shared(){static Shared value;return value;}
-void profile(const char* file,const char* section,const char* key,const char* fallback,char* out){GetPrivateProfileStringA(section,key,fallback,out,256,file);}
-void number(const char* file,const char* section,const char* key,const char* fallback,float* out){char text[256];profile(file,section,key,fallback,text);std::sscanf(text,"%f",out);}
-void axis(const char* file,const char* section,unsigned* out){float value;std::memcpy(&value,out,4);number(file,section,"ABSAXIS","1",&value);std::memcpy(out,&value,4);} //target scans%f into DWORD
+void number(const RF455EffectIni& profile, const char* section, const char* key,
+            const char* fallback, float* out)
+{
+    char text[256];
+    profile.readString(section, key, fallback, text, sizeof(text));
+    std::sscanf(text, "%f", out);
+}
+
+void axis(const RF455EffectIni& profile, const char* section, unsigned* out)
+{
+    float value;
+    std::memcpy(&value, out, 4);
+    number(profile, section, "ABSAXIS", "1", &value);
+    std::memcpy(out, &value, 4); // The original scans %f into a DWORD.
+}
 }
 struct RF455RvpEffects::Runtime {
     std::array<std::unique_ptr<ParticleSlot>,2000> particles;
@@ -56,24 +70,28 @@ struct RF455RvpEffects::Runtime {
         for(auto& slot:particles)slot.reset();for(auto& slot:entities)slot.reset();chef.Release();
     }
     void readParticles(const char* file){
-        const auto count=GetPrivateProfileIntA("PARTICLE_INFO","MAXPARTICLE",0,file);
+        const RF455EffectIni profile(file);
+        const auto count=profile.readInt("PARTICLE_INFO","MAXPARTICLE",0);
+        if (count > maxRvpEffectDefinitions455) return;
         for(unsigned i=1;i<=count;++i){char section[32],text[256],name[256];std::sprintf(section,"PARTICLE%u",i);int index=0;
-            profile(file,section,"INDEX","0",text);std::sscanf(text,"%d",&index);profile(file,section,"PARTICLE","NULL",name);
+            profile.readString(section,"INDEX","0",text,sizeof(text));std::sscanf(text,"%d",&index);profile.readString(section,"PARTICLE","NULL",name,sizeof(name));
             if(static_cast<unsigned>(index)>=2000)continue;
             if(!particles[index])particles[index].reset(new ParticleSlot);
             auto& slot=*particles[index];slot.name=name;slot.registered=1;
-            number(file,section,"SCALEX","1.0",&slot.scale[0]);number(file,section,"SCALEY","1.0",&slot.scale[1]);number(file,section,"SCALEZ","1.0",&slot.scale[2]);axis(file,section,&slot.axis);++particleDefinitions;
+            number(profile,section,"SCALEX","1.0",&slot.scale[0]);number(profile,section,"SCALEY","1.0",&slot.scale[1]);number(profile,section,"SCALEZ","1.0",&slot.scale[2]);axis(profile,section,&slot.axis);++particleDefinitions;
         }
     }
     void readEntities(const char* file){
-        const auto count=GetPrivateProfileIntA("ENTITY_INFO","MAXENTITY",0,file);
+        const RF455EffectIni profile(file);
+        const auto count=profile.readInt("ENTITY_INFO","MAXENTITY",0);
+        if (count > maxRvpEffectDefinitions455) return;
         for(unsigned i=1;i<=count;++i){char section[32],text[256],name[256];std::sprintf(section,"ENTITY%u",i);int index=0;
-            profile(file,section,"INDEX","0",text);std::sscanf(text,"%d",&index);profile(file,section,"ENTITY","NULL",name);
+            profile.readString(section,"INDEX","0",text,sizeof(text));std::sscanf(text,"%d",&index);profile.readString(section,"ENTITY","NULL",name,sizeof(name));
             if(static_cast<unsigned>(index)>=2000)continue;
             if(!entities[index])entities[index].reset(new EntitySlot);
             auto& slot=*entities[index];if(slot.registered)continue;slot.name=name;slot.registered=1;
-            number(file,section,"SCALEX","1.0",&slot.scale[0]);number(file,section,"SCALEY","1.0",&slot.scale[1]);number(file,section,"SCALEZ","1.0",&slot.scale[2]);axis(file,section,&slot.axis);
-            number(file,section,"ROTX","0.0",&slot.rotation[0]);number(file,section,"ROTY","0.0",&slot.rotation[1]);number(file,section,"ROTZ","0.0",&slot.rotation[2]);++entityDefinitions;
+            number(profile,section,"SCALEX","1.0",&slot.scale[0]);number(profile,section,"SCALEY","1.0",&slot.scale[1]);number(profile,section,"SCALEZ","1.0",&slot.scale[2]);axis(profile,section,&slot.axis);
+            number(profile,section,"ROTX","0.0",&slot.rotation[0]);number(profile,section,"ROTY","0.0",&slot.rotation[1]);number(profile,section,"ROTZ","0.0",&slot.rotation[2]);++entityDefinitions;
         }
     }
     CParticle* particle(unsigned id){
@@ -81,9 +99,21 @@ struct RF455RvpEffects::Runtime {
         if(!particles[id])particles[id].reset(new ParticleSlot);auto& slot=*particles[id];
         if(!slot.loaded){
             if(slot.attempted)return nullptr;slot.attempted=1;RF455_SetResourceGroup(&chef);
-            if(!slot.particles[0].LoadParticleSPT(const_cast<char*>(slot.name.c_str()),8))return nullptr;
-            const float zero[3]={};slot.particles[0].InitParticle();slot.particles[0].SetParticleState(1);slot.particles[0].SetCreatePos(const_cast<float*>(zero));
-            for(unsigned i=1;i<6;++i){std::memcpy(&slot.particles[i],&slot.particles[0],sizeof(CParticle));slot.particles[i].InitParticle();slot.particles[i].SetParticleState(1);slot.particles[i].SetCreatePos(const_cast<float*>(zero));}
+            auto& source = slot.particles[0];
+            if (slot.name.empty() || !source.LoadParticleSPT(&slot.name[0],8)) return nullptr;
+            for (unsigned i = 1; i < 6; ++i) {
+                if (!slot.particles[i].CopyTemplate455(source)) {
+                    for (auto& instance : slot.particles) instance.ReleaseParticle();
+                    source.ReleaseEntity();
+                    return nullptr;
+                }
+            }
+            float zero[3]={};
+            for (auto& instance : slot.particles) {
+                instance.InitParticle();
+                instance.SetParticleState(1);
+                instance.SetCreatePos(zero);
+            }
             slot.loaded=1;++loadedParticles;
         }
         const unsigned index=slot.cycle++%6;++particleSelections;return &slot.particles[index];
@@ -122,4 +152,9 @@ void RF455RvpEffects::Draw(RF455CharacterStorage* model,D3DXMATRIX* world,unsign
 }
 RF455RvpEffects& RF455_AcquireRvpEffects(){auto& value=shared();if(!value.effects)value.effects.reset(new RF455RvpEffects);++value.references;return *value.effects;}
 void RF455_ReleaseRvpEffects(){auto& value=shared();if(!value.effects)return;if(value.references){--value.references;return;}value.effects.reset();} //The first release1->0 retains the cache.
+RF455EffectStore* RF455_ReleaseInactiveRvpDeviceResources455(){
+    auto& value=shared();
+    if(!value.references)value.effects.reset();
+    return value.effects ? &value.effects->runtime->store : nullptr;
+}
 RF455RvpEffectsView RF455_RvpEffectsState(){const auto& value=shared();if(!value.effects)return {false,value.references,0,0,0,0,0,0,0,value.scroll};const auto& r=*value.effects->runtime;return {true,value.references,r.particleDefinitions,r.entityDefinitions,r.loadedParticles,r.loadedEntities,r.particleSelections,r.particleDraws,r.entityDraws,value.scroll};}

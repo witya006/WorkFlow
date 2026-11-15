@@ -54,8 +54,8 @@ RF455AnimationStatus RF455_ApplyAniTrack(const RF455AniTrackView* track,RF455Kno
 RF455AnimationStatus RF455_AttachAnimation(const void* bytes,std::size_t extent,
     RF455KnownModelPrefix* model,const RF455MeshMemoryOps* memory,int* lastIndex);
 int RF455_ValidateLegacyModel(const RF455LegacyModel* imported,const RF455LegacyDiagnostics* diagnostics);
-// Actual parent/no-parent route selection. Doesnot automaticallyfix sticky flags
-// orraw leaks onreference early returns. Own bounds/type/error domains differ
+// Actual parent/no-parent route selection. Preserves the reference attempt flags.
+// Private MSH input is released on every exit. Bounds/type/error domains differ
 // from unchecked AV/OOM;ANI istyped foranimation,notlegacy ObjectData28.
 int RF455_LoadCharacter(RF455CharacterStorage* record,int synchronous,const RF455CharacterLoadContext* context);
 int RF455_MatchAnimation(RF455AnimationStorage* animation,RF455CharacterStorage* model,const RF455CharacterLoadContext* context);

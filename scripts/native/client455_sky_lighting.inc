@@ -2,6 +2,7 @@
 #include "client455_sky_lighting.h"
 #include "client455_sky_lighting_math.h"
 #include "client455_weather_format.h"
+#include "client455_resource_text.h"
 #include <cstdlib>
 #include <cstdio>
 
@@ -74,11 +75,15 @@ float skyGridHeight(float value){
         fstp out}
     return out;
 }
-DWORD readSkyColor(FILE* file,char* token){
-    std::fscanf(file,"%s",token);const DWORD r=DWORD(std::atol(token));
-    std::fscanf(file,"%s",token);const DWORD g=DWORD(std::atol(token));
-    std::fscanf(file,"%s",token);const DWORD b=DWORD(std::atol(token));
-    return b|((g|((r|0xffffff00u)<<8))<<8);
+template<class Read> bool readSkyColor(Read read,char* token,DWORD& color){
+    if(!read())return false;
+    const DWORD r=DWORD(std::atol(token));
+    if(!read())return false;
+    const DWORD g=DWORD(std::atol(token));
+    if(!read())return false;
+    const DWORD b=DWORD(std::atol(token));
+    color=b|((g|((r|0xffffff00u)<<8))<<8);
+    return true;
 }
 void updatePreviousSunPosition(){
     auto* state=GetR3State();float world[4][4],temp[4][4];
@@ -116,28 +121,39 @@ void RF455_LoadSkyFogEndpoints(const RF455_ExtMaterial& mat){
     if(mat.mFlag&4)skyDayFog={mat.mFogStart,mat.mFogEnd,mat.mFogColor};
     if(mat.mFlag&8)skyNightFog={mat.mFogStart2,mat.mFogEnd2,mat.mFogColor2};
 }
-void RF455_ReadSkyFogToken(FILE* file,char* token){
+template<class Read> static bool readSkyFogToken455(Read read,char* token){
     auto* state=GetR3State();
     if(!std::strcmp(token,"*FOG_START")){
-        state->mIsFog=TRUE;std::fscanf(file,"%s",token);
+        if(!read())return false;
+        state->mIsFog=TRUE;
         state->mMainFogStart=float(std::atof(token));state->mFogStart=float(std::atof(token));
         skyDayFog.start=state->mFogStart;
     }
     if(!std::strcmp(token,"*FOG_END")){
-        state->mIsFog=TRUE;std::fscanf(file,"%s",token);
+        if(!read())return false;
+        state->mIsFog=TRUE;
         state->mMainFogEnd=float(std::atof(token));state->mFogEnd=float(std::atof(token));
         skyDayFog.end=state->mFogEnd;state->mFar=state->mFogEnd;
     }
     if(!std::strcmp(token,"*FOG_COLOR")){
+        DWORD color;
+        if(!readSkyColor(read,token,color))return false;
         state->mIsFog=TRUE;
         if(state->mFogEnd==0)state->mFogEnd=state->mMainFogEnd=5000;
         if(state->mFogStart==0)state->mFogStart=state->mMainFogStart=5;
-        state->mFogColor=state->mMainFogColor=skyDayFog.color=readSkyColor(file,token);
+        state->mFogColor=state->mMainFogColor=skyDayFog.color=color;
         // Target auto-filled current/main distances do NOT fill day endpoints.
     }
-    if(!std::strcmp(token,"*FOG_COLOR2"))skyNightFog.color=readSkyColor(file,token);
-    if(!std::strcmp(token,"*FOG_START2")){std::fscanf(file,"%s",token);skyNightFog.start=float(std::atof(token));}
-    if(!std::strcmp(token,"*FOG_END2")){std::fscanf(file,"%s",token);skyNightFog.end=float(std::atof(token));}
+    if(!std::strcmp(token,"*FOG_COLOR2") && !readSkyColor(read,token,skyNightFog.color))return false;
+    if(!std::strcmp(token,"*FOG_START2")){if(!read())return false;skyNightFog.start=float(std::atof(token));}
+    if(!std::strcmp(token,"*FOG_END2")){if(!read())return false;skyNightFog.end=float(std::atof(token));}
+    return true;
+}
+void RF455_ReadSkyFogToken(FILE* file,char* token){
+    readSkyFogToken455([&]{return file&&std::fscanf(file,"%255s",token)==1;},token);
+}
+bool RF455_ReadSkyFogToken(RF455ResourceText& input,char (&token)[256]){
+    return readSkyFogToken455([&]{return input.read(token);},token);
 }
 DWORD RF455_GetSkyTintColor(){return skyTint;}
 DWORD RF455_GetSkyDirectColor(){return skyDirect;}

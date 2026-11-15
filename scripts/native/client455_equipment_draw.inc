@@ -36,7 +36,7 @@ void equipmentParticles455(CMesh* model,float* position,float yaw,DWORD color,co
     scroll=static_cast<float>(double(delta)*30.0+scroll);
     const D3DXMATRIX swap(1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1);
     for(unsigned i=0;i<model->m_MaxObj;++i){auto& mesh=model->m_pMesh[i];auto* slots=mesh.particleSlots();if(!slots)continue;
-        for(unsigned j=0;j<3;++j){if(!slots[j].m_ID)continue;if(slots[j].m_ID>=MAXLOADPARTICLE)throw std::out_of_range("455 equipment particle registry needs2000-slot migration");auto* particle=g_Particle.GetParticle(slots[j].m_ID);if(!particle)continue;
+        for(unsigned j=0;j<3;++j){if(!slots[j].m_ID)continue;auto* particle=g_Particle.GetParticle(slots[j].m_ID);if(!particle)continue;
             auto* definition=g_Particle.GetCHParticle(slots[j].m_ID);
             std::memcpy(particle->mSpecialARGV,trace,2*sizeof(Vector3f));
             D3DXMATRIX world,rotation;D3DXMatrixIdentity(&world);
@@ -52,7 +52,7 @@ void equipmentParticles455(CMesh* model,float* position,float yaw,DWORD color,co
             if(!particle->Loop())return;std::memcpy(particle->mRotMat,&rotation,64);particle->SetCreatePos(&world._41);
             DrawCParticle(particle,particle->mEntity,world.m,color);
         }
-        const auto& slot=mesh.entitySlot();if(!slot.m_ID)continue;if(slot.m_ID>=MAXLOADPARTICLE)throw std::out_of_range("455 equipment entity registry needs2000-slot migration");auto* entity=g_Particle.GetEntity(slot.m_ID);if(!entity)continue;
+        const auto& slot=mesh.entitySlot();if(!slot.m_ID)continue;auto* entity=g_Particle.GetEntity(slot.m_ID);if(!entity)continue;
         auto* definition=g_Particle.GetCHEntity(slot.m_ID);D3DXMATRIX world,rotation;D3DXMatrixIdentity(&world);
         if(definition->m_bAbsAxis){
             D3DXMatrixRotationY(&rotation,D3DXToRadian(-(180-yaw)));D3DXMatrixMultiply(&world,&rotation,&world);

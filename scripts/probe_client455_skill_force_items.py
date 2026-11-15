@@ -23,12 +23,12 @@ def main():
     dev=Path(info['installation_path'])/'Common7/Tools/VsDevCmd.bat'
     library=root/'RF455SkillForceItems.lib';exe=root/'skill-force-items-probe.exe';log=root/'build.txt';batch=root/'build.cmd'
     lines=['@echo off',f'call "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1','if errorlevel 1 exit /b 1'];objects=[]
-    for index,name in enumerate(names+[probe.name]):
+    for index,name in enumerate(names+['client455_character_rfs.cpp',probe.name]):
         obj=root/(Path(name).stem+'.obj');objects.append(obj)
         lines+=[f'cl /c /nologo /MT /O2 /Gy /EHsc /std:c++14 /W4 /D_CRT_SECURE_NO_WARNINGS /I"{native}" "{native/name}" /Fo"{obj}" {">" if index==0 else ">>"} "{log}" 2>&1',
                 'if errorlevel 1 exit /b 1']
     lines+=[f'lib /nologo /OUT:"{library}" '+' '.join(f'"{p}"' for p in objects[:2])+f' >> "{log}" 2>&1','if errorlevel 1 exit /b 1',
-            f'link /nologo /OPT:REF /SUBSYSTEM:CONSOLE /MACHINE:X86 /OUT:"{exe}" /MAP:"{exe.with_suffix(".map")}" "{objects[-1]}" "{library}" "{WS/facade["file"]}" kernel32.lib user32.lib >> "{log}" 2>&1',
+            f'link /nologo /OPT:REF /SUBSYSTEM:CONSOLE /MACHINE:X86 /OUT:"{exe}" /MAP:"{exe.with_suffix(".map")}" "{objects[-1]}" "{objects[-2]}" "{library}" "{WS/facade["file"]}" kernel32.lib user32.lib >> "{log}" 2>&1',
             'exit /b %errorlevel%']
     batch.write_text('\n'.join(lines)+'\n',encoding='ascii')
     result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=root,timeout=90,creationflags=subprocess.CREATE_NO_WINDOW)

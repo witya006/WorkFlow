@@ -1,6 +1,6 @@
 #include "client455_camera.h"
+#include "client455_character_rfs.h"
 #include <cmath>
-#include <cstdio>
 #include <cstring>
 #include <limits>
 #include <new>
@@ -46,14 +46,13 @@ bool RF455_ParseCamera(const void* data,std::size_t size,RF455CameraDocument& ou
         doc.trailer.assign(r.p,r.p+r.left);output=std::move(doc);return true;
     }catch(const std::bad_alloc&){return false;}catch(const std::length_error&){return false;}
 }
-bool RF455_LoadCameraFile(const char* path,RF455CameraDocument& doc){
-    if(!path)return false;FILE* file=std::fopen(path,"rb");if(!file)return false;
-    if(std::fseek(file,0,SEEK_END)){std::fclose(file);return false;}const long bytes=std::ftell(file);
-    if(bytes<0||std::fseek(file,0,SEEK_SET)){std::fclose(file);return false;}
-    std::vector<std::uint8_t> data;
-    try{data.resize(static_cast<std::size_t>(bytes));}catch(const std::bad_alloc&){std::fclose(file);return false;}
-    const bool read=std::fread(data.data(),1,data.size(),file)==data.size();std::fclose(file);
-    return read&&RF455_ParseCamera(data.data(),data.size(),doc);
+bool RF455_LoadCameraFile(const char* path,RF455CameraDocument& doc)
+{
+    // Client 455 x86 RVA 0x4D2070 opens CAM directly as a loose file.
+    constexpr std::uint64_t maxBytes = 64u * 1024u * 1024u;
+    const auto source = RF455_GetCharacterRfsCache()->ReadLooseBytes(path, maxBytes);
+    return source.status == RF455ResourceReadStatus::Ready && source.bytes &&
+        RF455_ParseCamera(source.bytes->data(), source.bytes->size(), doc);
 }
 void RF455_StoreCameraDocument(const void* owner,RF455CameraDocument&& doc){documents()[owner]=std::move(doc);}
 const RF455CameraDocument* RF455_GetCameraDocument(const void* owner){auto& all=documents();const auto found=all.find(owner);return found==all.end()?nullptr:&found->second;}

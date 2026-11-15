@@ -1,6 +1,7 @@
 #define RF455_LIGHTING_CONSUMERS_NO_MAIN
 #include "client455_lighting_consumers_probe.cpp"
 #include "client455_special_shaders.h"
+#include "client455_character_rfs.h"
 #include "client455_material_shaders.h"
 #include "client455_shader_lights.h"
 #include "r3lightmap.h"
@@ -59,8 +60,12 @@ static int run135(){
         for(DWORD splatFlag:{0x01000041u,0x40u}){material.m_dwFlag=splatFlag;material.m_dwLayerNum=3;stageCount135=3;draws135.clear();check(SUCCEEDED(d->BeginScene()),"splat begin135");{Hook135 hook(d);(bsp.*access(Render135{}))(WORD(selected));}check(SUCCEEDED(d->EndScene())&&draws135.size()==3&&draws135[0].vertex==bool(splatFlag&0x01000000)&&!draws135[1].vertex&&!draws135[2].vertex,"base/special draw followed by fixed pair/lightmap splat passes135");splat+=unsigned(draws135.size());if(splatFlag&0x01000000){check(RF455_GetMaterialShaderSelection().objectIndex==64,"whole DWORD shader index includes splat bit135");pixels[2]=capture("material-splat.bgra");}}
         //Select the other supplied source pair through a staged binary-list
         //variant;original installed resources stay immutable.
-        check(std::rename("System/shader/init.r3o","System/shader/init.original.r3o")==0,"save staged binary list135");FILE* f=std::fopen("System/shader/init.original.r3o","rb");check(f!=nullptr,"read shader list135");std::vector<BYTE> list(1424);check(std::fread(list.data(),1,list.size(),f)==list.size(),"shader list length135");std::fclose(f);for(unsigned at:{264u,844u})for(unsigned n=0;n<288;++n)std::swap(list[at+n],list[at+288+n]);f=std::fopen("System/shader/init.r3o","wb");std::fwrite(list.data(),1,list.size(),f);std::fclose(f);check(!RF455_LoadSpecialShaderBinary(),"actual Plazma list variant135");pixels[3]=render(0x800033,2,2,"material-plasma.bgra");
-        check(std::rename("System/shader/init.r3o","plasma.r3o")==0&&std::rename("System/shader/init.original.r3o","System/shader/init.r3o")==0&&!RF455_LoadSpecialShaderBinary(),"restore actual original list135");material=original;RF455_ClearShaderLights();land.Destroy();g_pCamera=nullptr;
+        check(std::rename("System/shader/init.r3o","System/shader/init.original.r3o")==0,"save staged binary list135");FILE* f=std::fopen("System/shader/init.original.r3o","rb");check(f!=nullptr,"read shader list135");std::vector<BYTE> list(1424);check(std::fread(list.data(),1,list.size(),f)==list.size(),"shader list length135");std::fclose(f);for(unsigned at:{264u,844u})for(unsigned n=0;n<288;++n)std::swap(list[at+n],list[at+288+n]);f=std::fopen("System/shader/init.r3o","wb");std::fwrite(list.data(),1,list.size(),f);std::fclose(f);
+        RF455_GetCharacterRfsCache()->ClearPayloads(); // The probe deliberately rewrote an immutable input.
+        check(!RF455_LoadSpecialShaderBinary(),"actual Plazma list variant135");pixels[3]=render(0x800033,2,2,"material-plasma.bgra");
+        check(std::rename("System/shader/init.r3o","plasma.r3o")==0&&std::rename("System/shader/init.original.r3o","System/shader/init.r3o")==0,"restore actual original list135");
+        RF455_GetCharacterRfsCache()->ClearPayloads();
+        check(!RF455_LoadSpecialShaderBinary(),"reload actual original list135");material=original;RF455_ClearShaderLights();land.Destroy();g_pCamera=nullptr;
     }
     std::fclose(trace);g_MainApp.ReleaseR3D3D();ReleaseR3Engine();FILE* out=std::fopen("result.json","wb");check(out!=nullptr,"result135");std::fprintf(out,"{\"status\":\"PASS\",\"draw_cases\":%u,\"splat_draws\":%u,\"actual_particle_lights\":2,\"GPU_frames\":4,\"pixels\":[%u,%u,%u,%u],\"unowned_PS6w_certified\":false,\"full_client\":false,\"warnings\":%u}\n",cases,splat,pixels[0],pixels[1],pixels[2],pixels[3],warnings);std::fclose(out);return 0;
 }

@@ -1,5 +1,6 @@
 #include "client455_tagged_audio.h"
 #include "client455_equipment_effects.h"
+#include "client455_resource_text.h"
 #include "r3enginekernel.h"
 #include "r3sound.h"
 #include "mss.h"
@@ -9,11 +10,12 @@
 #include <cstring>
 #include <cstdlib>
 #include <list>
+#include <new>
 #include <string>
 #include <vector>
 #include <stdexcept>
 extern HDIGDRIVER stDigital;
-void RF455_PrepareTaggedAudio(const char* redist){AIL_set_redist_directory(redist);RF455_OpenEquipmentSounds455();}
+void RF455_PrepareTaggedAudio(const char* redist){if(redist)AIL_set_redist_directory(redist);RF455_OpenEquipmentSounds455();}
 namespace {
 struct Definition {std::uint32_t id;std::string file;unsigned char loop=0;};
 struct Wave {
@@ -22,23 +24,28 @@ struct Wave {
     float relative[3]={},tail[3]={};
 };
 static_assert(sizeof(Wave)==280,"Selected 455 cache record");
-struct Entry {bool used=false;std::uint32_t key=0;Wave wave;};
+struct Entry {bool used=false;std::uint32_t key=0;Wave wave;void* allocationBase=nullptr;};
+struct LockedFree {void operator()(void* pointer)const{if(pointer)AIL_mem_free_lock(pointer);}};
+using LockedMemory=std::unique_ptr<void,LockedFree>;
 bool definitions(const char* path,std::vector<Definition>& out){
-    FILE* f=std::fopen(path,"rt");if(!f)return false;
-    struct Close{FILE* f;~Close(){std::fclose(f);}} close{f};
+    RF455ResourceText input;
+    if(!input.open(path))return false;
+    const auto reject = [&] {
+        if (input.hasCachedInput()) RF455_GetCharacterRfsCache()->RemoveLooseBytes(path);
+        return false;
+    };
     char text[256];bool section=false;
-    while(std::fscanf(f,"%255s",text)==1){if(!std::strcmp(text,"[WaveList]")){section=true;break;}}
-    if(!section)return true;
-    while(std::fscanf(f,"%255s",text)==1){
+    while(input.read(text)){if(!std::strcmp(text,"[WaveList]")){section=true;break;}}
+    if(!section)return !input.failed();
+    while(input.read(text)){
         if(!_stricmp(text,"loop")){if(!out.empty())out.back().loop=1;continue;}
         long value=std::atol(text);
         if(!value&&text[0]=='0'&&(text[1]=='x'||text[1]=='X'))value=std::strtoul(text+2,nullptr,16);
         if(!value)continue;
-        if(std::fscanf(f,"%255s",text)!=1)return false;
-        if(std::strlen(text)>58)throw std::logic_error("455 tagged wave filename outside bounded manifest domain");
+        if(!input.read(text)||std::strlen(text)>58)return reject();
         _strlwr(text);Definition row;row.id=std::uint32_t(value);row.file=text;out.push_back(row);
     }
-    return true;
+    return !input.failed();
 }
 }
 struct RF455TaggedAudio::State {
@@ -48,30 +55,44 @@ struct RF455TaggedAudio::State {
     Definition* find(std::uint32_t id){for(auto& row:files)if(row.id==id)return &row;return nullptr;}
     const Entry* lookup(std::uint32_t id)const{for(unsigned slot:order)if(entries[slot].key==id)return &entries[slot];return nullptr;}
     Entry* lookup(std::uint32_t id){return const_cast<Entry*>(static_cast<const State*>(this)->lookup(id));}
-    void release(Wave& wave){
+    void release(Entry& entry){
+        auto& wave=entry.wave;
         for(auto& handle:wave.samples)if(handle){AIL_end_3D_sample(handle);AIL_release_3D_sample_handle(handle);handle=nullptr;}
-        if(wave.data){AIL_mem_free_lock(wave.data);wave.data=nullptr;}
+        if(entry.allocationBase)AIL_mem_free_lock(entry.allocationBase);
+        entry.allocationBase=nullptr;wave.data=nullptr;
         wave.kind=wave.active=0;
     }
-    Wave& hit(std::uint32_t id,int& result){
+    struct Pending {State& owner;Entry entry;explicit Pending(State& value):owner(value){}~Pending(){owner.release(entry);}};
+    Entry& hit(std::uint32_t id,int& result){
         for(auto it=order.begin();it!=order.end();++it)if(entries[*it].key==id){
-            unsigned slot=*it;order.erase(it);order.push_front(slot);result=-1;return entries[slot].wave;
+            unsigned slot=*it;order.splice(order.begin(),order,it);result=-1;return entries[slot];
         }
         unsigned slot=0;
-        if(order.size()==64){slot=order.back();order.pop_back();result=0;}
-        else {while(entries[slot].used)++slot;entries[slot].wave=Wave{};result=1;}
-        entries[slot].used=true;entries[slot].key=id;order.push_front(slot);return entries[slot].wave;
+        if(order.size()==64){slot=order.back();order.splice(order.begin(),order,--order.end());result=0;}
+        else {while(entries[slot].used)++slot;order.push_front(slot);entries[slot]=Entry{};result=1;}
+        entries[slot].used=true;entries[slot].key=id;return entries[slot];
     }
-    bool load(Definition& file,std::uint32_t loop,Wave& wave){
+    bool load(const Definition& file,std::uint32_t loop,Entry& entry){
+        auto& wave=entry.wave;
+        // Miles returns one owned allocation: DWORD length followed by file bytes.
+        LockedMemory input(AIL_file_read(file.file.c_str(),FILE_READ_WITH_SIZE));
+        if(!input)return false;
+        U32 bytes=0;std::memcpy(&bytes,input.get(),sizeof(bytes));
+        if(bytes<12 || bytes>0x7fffffffu)return false;
+        const void* payload=static_cast<unsigned char*>(input.get())+sizeof(bytes);
+        const S32 type=AIL_file_type(payload,bytes);
+        if(type==1){wave.data=const_cast<void*>(payload);entry.allocationBase=input.release();}
+        else if(type==2 || type==13){
+            void* decoded=nullptr;U32 size=0;S32 success=0;
+            if(type==2){AILSOUNDINFO info={};if(!AIL_WAV_info(payload,&info))return false;success=AIL_decompress_ADPCM(&info,&decoded,&size);}
+            else success=AIL_decompress_ASI(payload,bytes,file.file.c_str(),&decoded,&size,nullptr);
+            LockedMemory output(decoded);
+            if(!success || !output || size<12 || size>0x7fffffffu)return false;
+            wave.data=output.get();entry.allocationBase=output.release();
+        }else return false;
         wave.samples[0]=AIL_allocate_3D_sample_handle(provider);if(!wave.samples[0])return false;
-        S32 bytes=AIL_file_size(file.file.c_str());void* input=AIL_file_read(file.file.c_str(),nullptr);
-        if(!input){AIL_release_3D_sample_handle(wave.samples[0]);wave.samples[0]=nullptr;return false;}
-        S32 type=AIL_file_type(input,bytes);U32 size=0;
-        if(type==1)wave.data=input;
-        else if(type==2){AILSOUNDINFO info={};AIL_WAV_info(input,&info);AIL_decompress_ADPCM(&info,&wave.data,&size);AIL_mem_free_lock(input);}
-        else if(type==13){AIL_decompress_ASI(input,bytes,file.file.c_str(),&wave.data,&size,nullptr);AIL_mem_free_lock(input);}
-        else {AIL_mem_free_lock(input);AIL_release_3D_sample_handle(wave.samples[0]);wave.samples[0]=nullptr;wave.data=nullptr;return false;}
-        AIL_set_3D_sample_file(wave.samples[0],wave.data);AIL_set_3D_sample_distances(wave.samples[0],150,40);
+        if(!AIL_set_3D_sample_file(wave.samples[0],wave.data))return false;
+        AIL_set_3D_sample_distances(wave.samples[0],150,40);
         if(loop==1)AIL_set_3D_sample_loop_count(wave.samples[0],0);
         return true;
     }
@@ -82,19 +103,27 @@ bool RF455TaggedAudio::IsOpen()const{return state->open;}
 const char* RF455TaggedAudio::ProviderName()const{return state->providerName.c_str();}
 bool RF455TaggedAudio::Open(const char* manifest,const char* redist){
     if(IsOpen())return true;
-    if(!stDigital)return false;
-    if(!definitions(manifest,state->files))return false;
+    if(!stDigital||!manifest||!redist)return false;
+    std::vector<Definition> files;
+    try{if(!definitions(manifest,files))return false;}
+    catch(const std::bad_alloc&){return false;}
+    catch(const std::logic_error&){return false;}
     AIL_set_redist_directory(redist);
     HPROENUM cursor=HPROENUM_FIRST;HPROVIDER candidate=0,fast=0,creative=0;char* name=nullptr;
     while(AIL_enumerate_3D_providers(&cursor,&candidate,&name)){
-        if(!_stricmp(name,"Creative Labs EAX 2 (TM)"))creative=candidate;
-        if(!_stricmp(name,"Miles Fast 2D Positional Audio"))fast=candidate;
+        if(name && !_stricmp(name,"Creative Labs EAX 2 (TM)"))creative=candidate;
+        if(name && !_stricmp(name,"Miles Fast 2D Positional Audio"))fast=candidate;
     }
-    if(creative&&AIL_open_3D_provider(creative)==M3D_NOERR){state->provider=creative;state->providerName="Creative Labs EAX 2 (TM)";}
-    else if(fast&&AIL_open_3D_provider(fast)==M3D_NOERR){state->provider=fast;state->providerName="Miles Fast 2D Positional Audio";}
+    HPROVIDER provider=0;const char* selectedName=nullptr;
+    if(creative&&AIL_open_3D_provider(creative)==M3D_NOERR){provider=creative;selectedName="Creative Labs EAX 2 (TM)";}
+    else if(fast&&AIL_open_3D_provider(fast)==M3D_NOERR){provider=fast;selectedName="Miles Fast 2D Positional Audio";}
     else return false;
-    state->listener=AIL_open_3D_listener(state->provider);
-    if(!state->listener){AIL_close_3D_provider(state->provider);state->provider=0;return false;}
+    H3DPOBJECT listener=AIL_open_3D_listener(provider);
+    if(!listener){AIL_close_3D_provider(provider);return false;}
+    std::string providerName;
+    try{providerName=selectedName;}
+    catch(const std::bad_alloc&){AIL_close_3D_listener(listener);AIL_close_3D_provider(provider);return false;}
+    state->files.swap(files);state->providerName.swap(providerName);state->provider=provider;state->listener=listener;
     AIL_set_3D_position(state->listener,0,0,0);AIL_set_3D_orientation(state->listener,0,0,1,0,1,0);
     AIL_set_3D_room_type(state->provider,0);state->open=true;
     char debug[160];std::sprintf(debug,"RF455 TaggedAudio:ready:%u:%s",unsigned(state->files.size()),state->providerName.c_str());OutputDebugStringA(debug);
@@ -102,13 +131,13 @@ bool RF455TaggedAudio::Open(const char* manifest,const char* redist){
 }
 void RF455TaggedAudio::Close(){
     if(state->open){
-        for(unsigned slot:state->order)state->release(state->entries[slot].wave);
+        for(unsigned slot:state->order)state->release(state->entries[slot]);
         AIL_close_3D_listener(state->listener);AIL_close_3D_provider(state->provider);
     }
     state->order.clear();for(auto& entry:state->entries)entry=Entry{};
     state->files.clear();state->provider=0;state->listener=nullptr;state->open=false;state->providerName.clear();
 }
-void RF455TaggedAudio::SetListener(const float* position){std::memcpy(state->position,position,12);}
+void RF455TaggedAudio::SetListener(const float* position){if(position)std::memcpy(state->position,position,12);}
 void RF455TaggedAudio::Collect(){
     if(!state->open)return;
     bool empty=true; // 8BCD60 deliberately does not reset this for each entry.
@@ -118,28 +147,49 @@ void RF455TaggedAudio::Collect(){
             if(AIL_3D_sample_status(handle)==2&&wave.active){AIL_end_3D_sample(handle);AIL_release_3D_sample_handle(handle);handle=nullptr;}
             else if(handle)empty=false;
         }
-        if(wave.data&&empty){AIL_mem_free_lock(wave.data);wave.data=nullptr;wave.kind=wave.active=0;entry.used=false;it=state->order.erase(it);}
+        if(wave.data&&empty){if(entry.allocationBase)AIL_mem_free_lock(entry.allocationBase);entry.allocationBase=nullptr;wave.data=nullptr;wave.kind=wave.active=0;entry.used=false;it=state->order.erase(it);}
         else ++it;
     }
 }
 void RF455TaggedAudio::PlayAtListener(std::uint32_t id,std::uint32_t loop,std::uint32_t tag){Play(id,loop,tag,state->position);}
 void RF455TaggedAudio::Play(std::uint32_t id,std::uint32_t loop,std::uint32_t tag,const float* position){
-    if(!GetR3State()->mSoundOn||!state->open)return;
+    if(!position||!GetR3State()->mSoundOn||!state->open)return;
     auto* file=state->find(id);if(!file)return;
-    Collect();int hit=0;auto& wave=state->hit(id,hit);
-    if(tag)for(auto existing:wave.tags)if(existing==tag)return;
-    wave.active=0;unsigned slot=0;
-    if(hit!=-1){
+    Collect();int hit=0;Entry* entry=state->lookup(id);
+    State::Pending pending(*state);
+    if(!entry){
         if(!IsExistFile(const_cast<char*>(file->file.c_str())))return;
-        if(hit==0)state->release(wave);
-        file->loop=static_cast<unsigned char>(loop);state->load(*file,loop,wave);wave.tags[0]=tag;
+        // Original retags an LRU victim before checking its stale tag. Preserve
+        // this suppressed-play case without requiring one additional handle.
+        if(tag && state->order.size()==64){
+            const auto& victim=state->entries[state->order.back()].wave;
+            for(auto existing:victim.tags)if(existing==tag){state->hit(id,hit);return;}
+        }
+        if(!state->load(*file,loop,pending.entry))return;
+    }
+    try{entry=&state->hit(id,hit);}catch(const std::bad_alloc&){return;}
+    auto& wave=entry->wave;
+    if(tag)for(auto existing:wave.tags)if(existing==tag)return;
+    unsigned slot=0;
+    if(hit!=-1){
+        if(hit==0)state->release(*entry);
+        // Keep stale tags beyond slot0, as in the measured eviction behavior.
+        std::memcpy(pending.entry.wave.tags,wave.tags,sizeof(wave.tags));
+        wave=pending.entry.wave;entry->allocationBase=pending.entry.allocationBase;
+        pending.entry.wave=Wave{};pending.entry.allocationBase=nullptr;
+        file->loop=static_cast<unsigned char>(loop);wave.tags[0]=tag;
     }else{
+        if(!wave.data)return;
         bool found=false;
         for(unsigned n=0;n<30;++n)if(!wave.samples[n]||AIL_3D_sample_status(wave.samples[n])==2){slot=n;found=true;break;}
         if(!found)slot=0;
-        if(wave.samples[slot]){AIL_release_3D_sample_handle(wave.samples[slot]);wave.samples[slot]=nullptr;}
-        wave.samples[slot]=AIL_allocate_3D_sample_handle(state->provider);if(!wave.samples[slot])return;
-        AIL_set_3D_sample_file(wave.samples[slot],wave.data);wave.tags[slot]=tag;
+        const H3DSAMPLE candidate=AIL_allocate_3D_sample_handle(state->provider);if(!candidate)return;
+        if(!AIL_set_3D_sample_file(candidate,wave.data)){
+            AIL_release_3D_sample_handle(candidate);return;
+        }
+        if(wave.samples[slot])AIL_release_3D_sample_handle(wave.samples[slot]);
+        wave.samples[slot]=candidate;
+        wave.tags[slot]=tag;
     }
     auto handle=wave.samples[slot];if(!handle)return;
     wave.id=id;wave.kind=1;
@@ -155,7 +205,7 @@ void RF455TaggedAudio::Play(std::uint32_t id,std::uint32_t loop,std::uint32_t ta
 }
 void RF455TaggedAudio::Stop(std::uint32_t id,std::uint32_t tag){
     if(!state->open)return;auto* entry=state->lookup(id);if(!entry)return;
-    for(unsigned n=0;n<30;++n)if(entry->wave.tags[n]==tag){AIL_end_3D_sample(entry->wave.samples[n]);return;}
+    for(unsigned n=0;n<30;++n)if(entry->wave.tags[n]==tag){if(entry->wave.samples[n])AIL_end_3D_sample(entry->wave.samples[n]);return;}
 }
 RF455TaggedWaveView RF455TaggedAudio::Inspect(std::uint32_t id,unsigned slot)const{
     RF455TaggedWaveView out;out.cacheEntries=unsigned(state->order.size());out.manifestRecords=unsigned(state->files.size());

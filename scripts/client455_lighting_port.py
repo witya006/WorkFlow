@@ -123,10 +123,122 @@ def shader(raw):
     old=b'const D3DVERTEXELEMENT9 stEntityVertexDecl[]={{0,0,2,0,0,0},{0,12,4,0,10,0},{0,16,1,0,5,0},D3DDECL_END()};'
     new=b'const D3DVERTEXELEMENT9 stEntityVertexDecl[]={{0,0,2,0,0,0},{0,12,2,0,3,0},{0,24,4,0,10,0},{0,28,1,0,5,0},D3DDECL_END()};'
     raw=replace(raw,old,new)
-    anchor=b'#include "client455_r3_shader_load.inc"';raw=replace(raw,anchor,anchor+b'\nstatic RF455R3VertexProgram stLitGrass455;')
+    anchor=b'#include "client455_r3_shader_load.inc"'
+    raw=replace(raw,anchor,anchor+b'''
+static RF455R3VertexProgram stLitGrass455;
+#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+static RF455R3VertexProgram stReflection455;
+static RF455R3VertexProgram stFilterBlit455;
+static RF455R3VertexProgram stTransitionVertex455;
+static RF455R3VertexProgram stLampParticleVertex455;
+static IDirect3DPixelShader9* stBlurBlit455;
+static IDirect3DPixelShader9* stTransitionPixel455;
+static IDirect3DPixelShader9* stLampParticlePixel455;
+
+static const D3DVERTEXELEMENT9 stFilterBlitDecl455[] = {
+    {0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    {0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0},
+    D3DDECL_END(),
+};
+static const D3DVERTEXELEMENT9 stTransitionDecl455[] = {
+    {0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    {0, 12, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 0},
+    {0, 20, D3DDECLTYPE_FLOAT2, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_TEXCOORD, 1},
+    D3DDECL_END(),
+};
+static const D3DVERTEXELEMENT9 stLampParticleDecl455[] = {
+    {0, 0, D3DDECLTYPE_FLOAT3, D3DDECLMETHOD_DEFAULT, D3DDECLUSAGE_POSITION, 0},
+    D3DDECL_END(),
+};
+#endif
+''')
+    start,_=section(raw,b'BOOL LoadVertexShaderList()',b'BOOL LoadVertexShaderList()')
+    raw=raw[:start]+br'''#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+void RF455_LoadReflectionShader()
+{
+    // 455 x86 RVA 0x4DA17D loads the optional shader from device startup.
+    D3DCAPS9 caps{};
+    auto* device = GetD3dDevice();
+    if (!device || FAILED(device->GetDeviceCaps(&caps)) || caps.VertexShaderVersion < D3DVS_VERSION(1, 1))
+        return;
+
+    bool unavailable;
+    loadCreateShader455(".\\System\\shader\\Reflection.vso", stDetailTexVertexDecl,
+                        &stReflection455, unavailable);
+}
+#endif
+
+'''+raw[start:]
     start,end=section(raw,b'BOOL LoadVertexShaderList()',b'BOOL LoadVertexShaderList()');body=raw[start:end]
-    body=replace(body,b'\treturn TRUE;',b'\tif(IsExistFile(".\\\\System\\\\shader\\\\LitGrass1.vso"))LoadCreateShader(".\\\\System\\\\shader\\\\LitGrass1.vso",stEntityVertexDecl,&stLitGrass455);\n\treturn TRUE;')
+    opening = body.index(b'{') + 1
+    closing = body.rindex(b'\treturn TRUE;')
+    existing = body[opening:closing]
+    cached = br'''
+#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+    bool unavailable;
+    const auto grass = loadCreateShader455(".\\System\\shader\\Grass1.vso",
+                                           stEntityVertexDecl, &stGrassVertexShader, unavailable);
+    if (unavailable) {
+        if (FAILED(D3DUtil_CreateVertexShader(GetD3dDevice(), ".\\System\\shader\\Grass1.vsh",
+                                              stEntityVertexDecl, &stGrassVertexShader)))
+            return FALSE;
+    } else if (grass != S_OK) {
+        return FALSE;
+    }
+
+    const auto detail = loadCreateShader455(".\\System\\shader\\DetailTex.vso",
+                                            stDetailTexVertexDecl, &stDetailTexVertexShader, unavailable);
+    if (!unavailable && detail != S_OK) return FALSE;
+    char litGrass[] = ".\\System\\shader\\LitGrass1.vso";
+    LoadCreateShader(litGrass, stEntityVertexDecl, &stLitGrass455);
+
+    // Optional compiled programs loaded by the 455 x86 startup, RVA 0x4DA0C0.
+    D3DCAPS9 caps{};
+    auto* device = GetD3dDevice();
+    if (device && SUCCEEDED(device->GetDeviceCaps(&caps))) {
+        const bool vertexShaders = caps.VertexShaderVersion >= D3DVS_VERSION(1, 1);
+        const bool pixelShaders = caps.PixelShaderVersion >= D3DPS_VERSION(1, 1);
+        if (vertexShaders && pixelShaders && caps.MaxSimultaneousTextures >= 4) {
+            const auto filter = loadCreateShader455(".\\System\\shader\\FilterBlit.vso",
+                                                    stFilterBlitDecl455, &stFilterBlit455, unavailable);
+            if (filter == S_OK || unavailable)
+                loadCreatePixelShader455(".\\System\\shader\\BlurBlit.pso", stBlurBlit455);
+        }
+
+        const bool transitionReady = !vertexShaders ||
+            loadCreateShader455(".\\System\\shader\\transition.vso", stTransitionDecl455,
+                                &stTransitionVertex455, unavailable) == S_OK;
+        if (transitionReady && pixelShaders)
+            loadCreatePixelShader455(".\\System\\shader\\transition.pso", stTransitionPixel455);
+
+        if (vertexShaders && pixelShaders) {
+            const auto lamp = loadCreateShader455(".\\System\\shader\\lampparticle.vso",
+                                                  stLampParticleDecl455, &stLampParticleVertex455, unavailable);
+            if (lamp == S_OK || unavailable)
+                loadCreatePixelShader455(".\\System\\shader\\lampparticle.pso", stLampParticlePixel455);
+        }
+    }
+#else
+'''
+    optional = b'\tif(IsExistFile(".\\\\System\\\\shader\\\\LitGrass1.vso"))LoadCreateShader(".\\\\System\\\\shader\\\\LitGrass1.vso",stEntityVertexDecl,&stLitGrass455);\n'
+    body=body[:opening]+cached+existing+optional+b'#endif\n'+body[closing:]
     raw=raw[:start]+body+raw[end:]
     inc=(WS/'scripts/native/client455_lit_grass.inc').read_bytes().replace(b'static RF455R3VertexProgram stLitGrass455;\n',b'')
-    raw=replace(raw,b'void ReleaseVertexShaderList(){',b'void ReleaseVertexShaderList(){RF455_ReleaseR3VertexProgram(stLitGrass455);')
-    return raw+b'\n'+inc
+    raw=replace(raw,b'void ReleaseVertexShaderList(){',b'''void ReleaseVertexShaderList(){
+#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+    RF455_ReleaseR3VertexProgram(stReflection455);
+    RF455_ReleaseR3VertexProgram(stFilterBlit455);
+    releasePixelShader455(stBlurBlit455);
+    RF455_ReleaseR3VertexProgram(stTransitionVertex455);
+    releasePixelShader455(stTransitionPixel455);
+    RF455_ReleaseR3VertexProgram(stLampParticleVertex455);
+    releasePixelShader455(stLampParticlePixel455);
+#endif
+    RF455_ReleaseR3VertexProgram(stLitGrass455);
+''')
+    return raw+b'''
+#if defined(RF_CLIENT_455_CACHED_VERTEX_SHADER)
+#include "client455_screen_transition_draw.inc"
+#include "client455_filter_blit_draw.inc"
+#endif
+'''+inc

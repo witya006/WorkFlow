@@ -1,10 +1,10 @@
 {
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "phase": "M6",
-  "current_scope": "M6: BASE-02 завершён; VIS-01 — первый улучшенный вариант lobby показан, дальнейшее качество и художественная приёмка открыты",
+  "current_scope": "M6: последовательно 12 областей; первая — Файлы и данные, загрузчик и кэш",
   "visual_target": "Clair Obscur: Expedition 33 как ориентир качества при сохранении узнаваемого RF Online, без копирования чужих ресурсов и без UE5",
-  "priority": "Сначала эталонная картинка, затем глубокая оптимизация; время кадра/VRAM/RAM сейчас диагностические, без строгого performance gate",
-  "platform": "Direct3D9/x86; текущий визуальный пакет без смены API",
+  "priority": "Функциональная полнота и совместимые внутренние улучшения; существующая графика сохраняется",
+  "platform": "Direct3D9/x86; LAA/x64 пока не изменены",
   "future_cw_profiles": {
     "participants": [
       500,
@@ -42,6 +42,16 @@
   "stop_rule": "30 минут без нового факта либо две неудачные попытки одного подхода: пересмотреть подход, сохранить факт и препятствие; не снижать цель",
   "tasks": [
     {
+      "id": "RES-01",
+      "owner": "root + resource_cache",
+      "state": "active",
+      "title": "Файлы и данные: загрузчик и бюджетный кэш",
+      "contract": "research/client455-resource-cache.md",
+      "acceptance": "Все FD-01..FD-09 закрываются явно; одиночный кэш не равен области 1/12",
+      "check": "Сверка pinned 455, отдельные CPU-тесты, игровой прогон беты 1920×1080 под отладчиком",
+      "next_action": "FD-09. 2f7473e8 собрана: ожидание готовности лобби за чёрным экраном, предзагрузка и сохранение HUD/inventory. Подтвердить Esc → лобби → мир. Затем бой/покупка/продажа и пересвет NeutralB. Вход и телепорт ранее подтверждены на 6715d696; новая сборка в игре не проверена."
+    },
+    {
       "id": "BASE-01",
       "owner": "root",
       "state": "done",
@@ -74,7 +84,7 @@
     {
       "id": "VIS-01",
       "owner": "root",
-      "state": "active",
+      "state": "deferred",
       "title": "Улучшенная опорная сцена lobby в Direct3D9, 1920×1080",
       "subtasks": [
         "Закрепить запуск и камеру lobby; исходный кадр",
@@ -84,7 +94,7 @@
       "acceptance": "Сравнимые Full HD кадры карты lobby, сохранённые геометрия/эффекты/UI и рабочий возврат режима; измерения записаны, вид принят пользователем. Проверка экипировки/непрозрачного аватара остаётся отдельной частью приёмки мира.",
       "check": "Существующая сборка сначала; новые правки только по выявленному препятствию",
       "budget": "60 минут на первый пакет; время кадра/VRAM/RAM диагностические, строгий лимит эффектов сейчас не вводить",
-      "next_action": "c596e0cd: world-anchored details and natural menu camera restored; full client/3 slots/resources PASS. Improve environment across moving camera, then outer station panels. No production camera pinning; visual approval remains open."
+      "next_action": "Сохранить текущий визуал; функциональные области теперь приоритет."
     },
     {
       "id": "RENDER-01",
@@ -148,6 +158,7 @@
     }
   ],
   "later": "После первых пакетов: постобработка, HUD/UI/эффекты, расширение на остальные сцены, M6F/M7/M9 по docs/roadmap.md. Это не отменённые работы; их пакеты уточняются по доказательствам.",
-  "execution_status": "paused_by_user",
-  "pause_note": "2026-11-14: current hull/settings fixes checked; stop development and deliver audit. Resume only on explicit request."
+  "execution_status": "resource_contract_implementation_active",
+  "pause_note": "Разработка возобновлена запросом пользователя; автоматическая goal не создана. Клиент не запускать; полный bin не собирать до завершения реализации области.",
+  "validation_owner": "Root: статическая сверка и отдельные CPU-тесты компонентов. User: все игровые и визуальные проверки."
 }

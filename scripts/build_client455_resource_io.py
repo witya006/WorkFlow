@@ -1,4 +1,5 @@
 """Compile recovered RPK code; verify actual members, ordering and FILE semantics."""
+import argparse
 import ctypes
 import hashlib
 import json
@@ -36,7 +37,70 @@ def windows_inventory(pattern):
     return rows
 
 
+def check_focused(exe, work, root, archive_record, hashes):
+    folder = work / 'focused'
+    folder.mkdir(exist_ok=True)
+    valid = folder / 'valid.rpk'
+    truncated = folder / 'truncated.rpk'
+    valid.write_bytes(archive())
+    truncated.write_bytes(archive()[:12])
+    malformed = subprocess.run([str(exe), 'malformed', str(valid), str(truncated), '-'],
+                               cwd=folder, check=True, timeout=15, capture_output=True,
+                               creationflags=subprocess.CREATE_NO_WINDOW)
+    scenes = subprocess.run([str(exe), 'scenes', str(valid), str(root), '-'],
+                            cwd=folder, check=True, timeout=15, capture_output=True,
+                            creationflags=subprocess.CREATE_NO_WINDOW)
+    # Reuse the overflow fixture from the original resource probe when present.
+    limit_fixture = work / 'boundaries/limit256'
+    checked_limit = (limit_fixture / 'requests.bin').is_file() and (limit_fixture / 'packs').is_dir()
+    if checked_limit:
+        limit_result = folder / 'limit-result.bin'
+        subprocess.run([str(exe), 'group', 'packs\\', 'requests.bin', str(limit_result)],
+                       cwd=limit_fixture, check=True, timeout=15, creationflags=subprocess.CREATE_NO_WINDOW)
+        if limit_result.read_bytes() != b'RFGOS455' + struct.pack('<4I', 0, 0, 0, 1):
+            raise ValueError('RPK archive limit did not reject the group with a warning')
+
+    real = root / archive_record['path']
+    data = real.read_bytes()
+    if sha(data) != archive_record['sha256']:
+        raise ValueError(f'Pinned RPK changed: {real}')
+    parsed = Rpk(data)
+    key, node = next((key, node) for key, node in parsed.files.items()
+                     if node in parsed.size_mismatches and parsed.extents[node]
+                     and parsed.offsets[node] + parsed.extents[node] < len(parsed.payload))
+    request = folder / 'requests.bin'
+    output = folder / 'result.bin'
+    member = parsed.read(key)
+    request.write_bytes(b'RFPRQ455' + struct.pack('<I', 1) + key.ljust(256, b'\0')
+                        + struct.pack('<I', len(member)))
+    subprocess.run([str(exe), 'members', str(real), str(request), str(output)],
+                   cwd=folder, check=True, timeout=15, creationflags=subprocess.CREATE_NO_WINDOW)
+    result = output.read_bytes()
+    expected = (1, parsed.base + parsed.offsets[node], len(member),
+                hashlib.sha256(member).digest(), parsed.payload[parsed.offsets[node] + len(member)])
+    if result[:12] != b'RFPOS455' + struct.pack('<I', 1) or struct.unpack('<III32si', result[12:]) != expected:
+        raise ValueError(f'RPK stream differs: {key!r}')
+    report = {'passed': True, 'source_sha256': hashes,
+              'malformed_probe': malformed.stdout.decode('ascii', errors='replace').strip(),
+              'scene_probe': scenes.stdout.decode('ascii', errors='replace').strip(),
+              'archive': archive_record['path'], 'archive_sha256': archive_record['sha256'],
+              'member': key.decode('ascii', errors='backslashreplace'),
+              'declared_size': parsed.nodes[node].declared_size, 'extent': len(member),
+              'next_byte': expected[-1], 'limit_fixture_checked': checked_limit,
+              'full_client_build': False, 'game_launched': False}
+    receipt = WS / 'artifacts/resource-cache/rpk-focused.json'
+    receipt.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    print(json.dumps(report, ensure_ascii=False))
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--focused', action='store_true', help='Check malformed indices and one pinned real member')
+    args = parser.parse_args()
+    if args.focused:
+        receipt_dir = WS / 'artifacts/resource-cache'
+        receipt_dir.mkdir(parents=True, exist_ok=True)
+        (receipt_dir / 'rpk-focused.json').write_text('{"passed": false}\n', encoding='utf-8')
     evidence=json.loads((WS/'inventory/client455-map-resources.json').read_text(encoding='utf-8'))
     extra=[];first_bodies=None
     for item in evidence['binary_evidence']:
@@ -54,7 +118,8 @@ def main():
         extra.append({'input':item['input'],'sha256':item['sha256'],'architecture':'x86','image_base':'0x400000','functions':functions})
     root=Path(json.loads((WS/'config/paths.json').read_text(encoding='utf-8'))['client_455'])
     work=WS/'work/recovered/client455/resource-io';work.mkdir(parents=True,exist_ok=True)
-    sources=['client455_resource_io.h','client455_resource_io.cpp','test_client455_resource_io.cpp']
+    sources=['client455_resource_io.h','client455_resource_io.cpp','client455_resource_bytes.cpp','test_client455_resource_io.cpp',
+             'client455_character_rfs.h','client455_character_rfs.cpp']
     hashes={}
     for name in sources:
         source=WS/'scripts/native'/name;shutil.copyfile(source,work/name);hashes[name]=sha(source.read_bytes())
@@ -68,13 +133,17 @@ call "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1
 if errorlevel 1 exit /b 1
 cl /nologo /MT /O2 /EHsc /std:c++14 /W4 /WX /D_CRT_SECURE_NO_WARNINGS /I"{includes}" /c client455_resource_io.cpp /Foresource-io.obj > "{log}" 2>&1
 if errorlevel 1 exit /b 1
-cl /nologo /MT /O2 /EHsc /std:c++14 /W4 /WX /D_CRT_SECURE_NO_WARNINGS test_client455_resource_io.cpp resource-io.obj bcrypt.lib /Feresource-io-probe.exe >> "{log}" 2>&1
+cl /nologo /MT /O2 /EHsc /std:c++14 /W4 /WX /D_CRT_SECURE_NO_WARNINGS test_client455_resource_io.cpp client455_resource_bytes.cpp client455_character_rfs.cpp resource-io.obj bcrypt.lib /Feresource-io-probe.exe >> "{log}" 2>&1
 exit /b %errorlevel%
 ''',encoding='ascii')
     if subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=work).returncode:raise ValueError(f'Resource build failed: {log}')
     exe=work/'resource-io-probe.exe'
     pe(exe.read_bytes())
     if '/DEFAULTLIB:"LIBCMT"' not in directives((work/'resource-io.obj').read_bytes()):raise ValueError('Expected x86 /MT')
+    if args.focused:
+        sample = next(record for record in evidence['archives'] if record['declared_size_mismatches'] >= 2)
+        check_focused(exe, work, root, sample, hashes)
+        return
     cases=[];checks=0
     for no,record in enumerate(evidence['archives']):
         data=(root/record['path']).read_bytes()
@@ -122,8 +191,8 @@ exit /b %errorlevel%
         expected=[first,ord('F'),-2,ord('L'),ord('L'),first][i]
         if value!=expected or exists!=(value!=-2) or name!=(query.lower() if active else query):raise ValueError(f'Group query differs:{query!r} ->{name!r}/{value}')
         checks+=3;values.append({'query':query.decode('ascii'),'active':bool(active),'mutated':name.decode('ascii'),'first_byte':value,'exists':bool(exists)})
-    leaks,warnings=struct.unpack_from('<II',raw,len(raw)-8)
-    if leaks or warnings:raise ValueError('Unexpected group ownership/warnings')
+    unreleased_owner,warnings=struct.unpack_from('<II',raw,len(raw)-8)
+    if unreleased_owner or warnings:raise ValueError('Unexpected group ownership/warnings')
     checks+=2
     boundaries=[]
     for label,expected_count,expected_warnings in [('missing',0,0),('empty',0,0),('wrong-version',1,1),('limit256',0,1)]:
@@ -140,10 +209,10 @@ exit /b %errorlevel%
         result=out_file.read_bytes();actual_count=struct.unpack_from('<I',result,8)[0]
         balance,warning_count=struct.unpack_from('<II',result,len(result)-8)
         if (actual_count,balance,warning_count)!=(expected_count,0,expected_warnings):raise ValueError(f'Group boundary result differs:{label}')
-        checks+=3;boundaries.append({'case':label,'archive_count':actual_count,'allocation_balance':balance,'warnings':warning_count})
+        checks+=3;boundaries.append({'case':label,'archive_count':actual_count,'unreleased_owner':balance,'warnings':warning_count})
     report={'source_sha256':hashes,'exe':exe.relative_to(WS).as_posix(),'exe_sha256':sha(exe.read_bytes()),
             'object_sha256':sha((work/'resource-io.obj').read_bytes()),'architecture':'x86','runtime':'/MT',
-            'binary_evidence':extra,'native_checks':checks,'archives':cases,'group':{'archive_order':names,'independent_windows_enumeration':os_rows,'queries':values,'allocation_balance':leaks},'group_boundaries':boundaries,
+            'binary_evidence':extra,'native_checks':checks,'archives':cases,'group':{'archive_order':names,'independent_windows_enumeration':os_rows,'queries':values,'unreleased_owner':unreleased_owner},'group_boundaries':boundaries,
             'limits':['Own native module execution, no input game EXE/DLL.',
                       'Valid metadata and explicit safe version/missing/count-limit cases; unsafe tables, >256archive overrun, repeated successful load leak/OOM not exercised.',
                       'Group ordering compared with independent Win32 enumeration on the controlled fixture; other filesystems/locales remain unverified.',

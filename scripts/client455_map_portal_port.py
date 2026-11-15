@@ -15,6 +15,28 @@ private:
     bool m_portalPending455 = false;''')
         return b'#include <cstddef>\n' + raw, True
     if relative == PROCESSOR + '.cpp':
+        anchor = b'#include "../../../CLand.h"'
+        raw = replace(raw, anchor, anchor + b'\n#include "../../../Character/Avatar/CAvatar_RelationInfo.h"')
+        raw = replace(raw, b'if( pMsgHeader->m_byType[0] != map_msg )',
+                      b'if (!pMsgHeader || pMsgHeader->m_byType[0] != map_msg)')
+        raw = replace(raw, b'\t\tcase move_potal_result_zocl :', b'''        case 6: {
+            // RVA 0x180B70 reads a little-endian local terrain label ordinal.
+            if (!pi_pMsg || pMsgHeader->m_wSize != sizeof(_MSG_HEADER) + sizeof(WORD))
+                return false;
+            if (auto* land = _GetLand()) {
+                const auto* bytes = reinterpret_cast<const unsigned char*>(pi_pMsg);
+                const auto ordinal = static_cast<WORD>(bytes[0] | (static_cast<unsigned>(bytes[1]) << 8));
+                auto* avatar = _GetAvatar();
+                const auto* move = avatar ? avatar->GetMoveMapInfo() : nullptr;
+                // Accepted transitions have a destination; a pending request still uses the current map.
+                const auto index = move && move->m_byMoveStep != MOVEMAP_INFO::MMS_NONE
+                    ? move->m_byExitMapIndex : land->GetMapIndex();
+                land->ReceiveAreaLabel455(index, ordinal);
+            }
+            return true;
+        }
+
+		case move_potal_result_zocl :''')
         raw = replace(raw, b'\t\t\tMovePotalResult_zocl( pi_pMsg );\n\t\t\tbreak;',
                       b'            return ReceivePortalResult455(pi_pMsg, pMsgHeader->m_wSize - sizeof(_MSG_HEADER));')
         raw = remove_methods(raw, section, b'CNetMsgProcessor_Map', (

@@ -15,7 +15,7 @@ def main():
     for key in ['exe','map','console','output']:check(native[key])
     for row in native['inputs']:check(row)
     n=native['native'];require(n['status']=='PASS' and n['GPU_frames']==18 and n['resource_configurations']==8 and n['capture_cases']==2 and n['targets']==5 and n['resize_cases']==3 and not n['warnings'],'Fiveactual targets/eightconfigurations/twocaptures/eighteen prior effect frames')
-    for key in ['perturbation_load_release','missing_perturbation_supported','framebuffer_copy_exact','active_target_selection','framebuffer_depth_viewport_UI_restored','retained_capture_reference_compensated_by_lab']:require(n[key],key)
+    for key in ['perturbation_load_release','missing_perturbation_supported','framebuffer_copy_exact','active_target_selection','framebuffer_depth_viewport_UI_restored','capture_surface_references_balanced']:require(n.get(key),key)
     review=load('client455-fullscreen-effect-visual');require(review['manually_reviewed'] and review['native_sha256']==sha(WS/'inventory/client455-fullscreen-effect-native.json') and len(native['frames'])==5,'Five fresh GPU views inspected');check(review['sheet'])
     for row in native['frames']:check(row);require(sha(WS/row['preview'])==row['preview_sha256'],'Current GPU PNG')
     early,ui,contracts,audit=load('client455-startup-native'),load('client455-ui-startup-native'),load('client455-startup-contracts-native'),load('client455-startup-audit')

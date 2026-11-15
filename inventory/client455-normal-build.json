@@ -1,18 +1,766 @@
 {
   "scope": "Real normal455consumer compilation,not successful executable link/runtime acceptance",
+  "generator": "Ninja",
+  "build_directory": "work/client455-port/normal/ninja-build",
   "build_exit": 0,
+  "command_exit": 0,
   "original_sources": 180,
   "expected_sources": 182,
   "objects": 182,
   "errors": [],
-  "log": "artifacts/client455-normal/build.txt",
-  "log_sha256": "1f5d1fb76fe766a9a2738c359bcd63aabb40c74983c82eb3b3e4c90c60fd3b40",
-  "source_manifest_sha256": "852092c9ef5dc90224a42c582c99063aedeb31c5111190f2e1663dd1d85ac636",
+  "log": "artifacts/client455-normal/ninja-build.txt",
+  "log_sha256": "f1c879dcc83c2537118fabdebb109323589b1a1de937317a8af95c87eeed242c",
+  "source_manifest_sha256": "982477654445bb96da15e72a6550995464e03e82d9d9cf8caef0589426400647",
   "legacy_character_linked": false,
   "M6": "OPEN",
   "M9": "OPEN",
   "clean_first": false,
-  "build_seconds": 9.39,
+  "build_seconds": 3.16,
   "canonical_kernel_objects": 20,
-  "expected_kernel_sources": 20
+  "expected_kernel_sources": 20,
+  "ninja_dependencies": {
+    "prefix_hex": "8fe0a8aca5e7a0ada8a53a20a2aaabeee7a5ada8a520e4a0a9aba03a2020",
+    "object": "CMakeFiles/RFClient455Consumers.dir/source/cland.cpp.obj",
+    "header": "client455_scene_input.h"
+  },
+  "consumer_object_files": [
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/generated/animation_control.cpp.obj",
+      "sha256": "49043c71672655e61dd5989fb5fb844df048b600cffccf4b727fcbc1501ed064"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/npc/canimus.cpp.obj",
+      "sha256": "052773493fa3cb8d2ebbca888ec1792c41b000cc22899f74f0e488bb4d445aa3"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/skillforceboard/canimusboard.cpp.obj",
+      "sha256": "ecc5cfc775a21e9b0340fc311a60ef91e5b5598d4b9150dd3dc70c162a148f7b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar.cpp.obj",
+      "sha256": "df62772a838991bf7675f9027771abf1976e78d7da41362e41a7e444cd88481b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_behavior.cpp.obj",
+      "sha256": "7cc7b56dae99333e3b6fc6551670a6d4d0a91bdf5228b3319d2f60e78ab269f6"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_combat.cpp.obj",
+      "sha256": "794ab1d8df53994fe88ccf2269d146155c6bbc3fcb5f4d1835fe2402d5030737"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_etc.cpp.obj",
+      "sha256": "b9685fe704f445aa0149c2bc0a7b9cb6e7f9d4fa5d7b90139e30e73da8644bcf"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_etc_ui.cpp.obj",
+      "sha256": "4f36ca3de3a45ef26b05a8179e7613cd40143b8f9896e14c9c20346090863668"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_quest.cpp.obj",
+      "sha256": "fcad0aa68db03fe3e2a3b2de50e3ddd5cb32a2c82559a550199de65f6844ca57"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_relationinfo.cpp.obj",
+      "sha256": "ff5c6fc406e29ff5a88a36e69aa533f7e1741096999b89a44a0ec47d9c9068f8"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_relationinfo2.cpp.obj",
+      "sha256": "00657169b5b5933f6b5063d682f74e059d2611c1d88a4f65efb058820ed628e5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/avatar/cavatar_ui_process.cpp.obj",
+      "sha256": "adc0aecea48b4e3d9048e96d18ca0af5f0b09bbc4d31ddbba3d3e3c8720ec24e"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/npc/cbasenpc.cpp.obj",
+      "sha256": "41a50a3e08136dfc265d669ccd35d2b5e0f82a35d0a59fb3909a2eac086607d0"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/player/cbaseplayer.cpp.obj",
+      "sha256": "c52950ee7bd50f43509c5d3dd011f9ff5347b20704dcd07d52fd81d8fa472928"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/cbeltboard.cpp.obj",
+      "sha256": "01827e252ad2348a1b4fa94e7f2a1bb6181473c8b6dd9ce1d49accd65323aa2f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/common/cboard.cpp.obj",
+      "sha256": "f8b33b36a80b529c49dd0a64e43b1211ee1b92ee514933d9410d293cccf652d7"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/general/cboard_etc.cpp.obj",
+      "sha256": "4e9a7e3aa202415980cce8dc5653df11a352ba473411b7c995968cfd9e0a465a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/common/cboardmanager.cpp.obj",
+      "sha256": "c64fe5e20c98cb2a6de20a662fc4ee4129140a2bbbabdac8442c0c1612d2a556"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/ccamera.cpp.obj",
+      "sha256": "fae680a8c1a407eb2b5c8d259c52e4cd02b9fc015389df8a868f20688f479cae"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/character/ccharacter.cpp.obj",
+      "sha256": "a69e8c60819175c16a07010311b68bced766147b0e8f390b6262788a6faf7b88"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/character/ccharacter_etc.cpp.obj",
+      "sha256": "ebed3f260869514d94b4956150922499a27640ce676ae12d7538f5801a669089"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/character/ccharacter_relationinfo.cpp.obj",
+      "sha256": "eb57628f2a3ecc82a5b06a415c06faad50cdf6941ed12141b360bda93a622b21"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/character/ccharacter_relationinfo2.cpp.obj",
+      "sha256": "d418425b652bbb43bd9b4d13135bb0371b5fbefdd6fcf33d87c97735e5cface6"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/datatable/ccharacterdatamgr.cpp.obj",
+      "sha256": "a6b9158ddaa945da2dcc68ebbca9c7c98617365d410bbc2c8898be7ed7ad173f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/manager/ccharactermgr.cpp.obj",
+      "sha256": "b864448e9ae55ca1ebdaf0652ad5a7971d8f105ec142e0fd5b996553ee63aef9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/etcboard/cclasschangeboard.cpp.obj",
+      "sha256": "25c9dcbd7763979a788aa9e3fdcf83323cac19bd21525423459fbd72ff9e44d8"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/cequipboard.cpp.obj",
+      "sha256": "03e2609ea466630f01d7627017301c5ffc9eb6cb6e7eb4d0e9861b09ffa6b06c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/skillforceboard/cforceboard.cpp.obj",
+      "sha256": "6485c20dcc00608f6449e6b4fb7a82ecf48de108e6826bcc40f6446f3a90bcaa"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/general/cgameeventboard.cpp.obj",
+      "sha256": "961bf7e5fadff547d8fd598832647c639460c57da16bdab5f7c742cdd87e844a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgameprogress.cpp.obj",
+      "sha256": "702e09ed0039f6b5273627a68e0efd98294661648ab7f1e7491a536501deffbb"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_charactercreate.cpp.obj",
+      "sha256": "ba5dd193ce8237ae81938ac439d84159f51b5ec4086c0cc3608d223043eb70ee"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_login.cpp.obj",
+      "sha256": "bae5ab076b0b3ad1122941682cb33403d9c8e6e758a46e68fb6667e368391d94"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_maingame.cpp.obj",
+      "sha256": "570527a350cde4cb0aef770c79a73fe366807d230cbd65db0d82b095bfa4a65a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_maingame_etc.cpp.obj",
+      "sha256": "9c6d106e4e8aa39703821d84a994b5f7850572620f108f2fc1460ad3c7a468bb"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_maingame_processinput.cpp.obj",
+      "sha256": "c1bc7a851f2073e3a933254e4e0f2aec675f0a6f880f8927e599ce7533c833c7"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cgp_title.cpp.obj",
+      "sha256": "a8235cbf6cf3a29fad46dcdef8901ce04815245452fbdeee90212b0eded172d0"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/manager/cgrounditemmanager.cpp.obj",
+      "sha256": "fa25792ee2660ff5808262696777502dbcc97d6259f572ef7c285b01d3dd2b9d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/npc/cguardtower.cpp.obj",
+      "sha256": "802f05d6857fb6d52774bedf4b830886a4aa997296232b29ba633160227a4835"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/general/chelpboard.cpp.obj",
+      "sha256": "db5357a56c036101469cc76edb4a6b1f0e62a45e79ee23c752187e55e4c6f9da"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameprogress/cinputprocessmgr.cpp.obj",
+      "sha256": "a599ab6d07e31fa0c2a823686070254f90f45d35e5a156ddba8e67911558e252"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/cinventoryboard.cpp.obj",
+      "sha256": "5af53cf359981f66d665e5047b2727e090169f995e5fa1ba676f257ea7a71f1a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/item/citem.cpp.obj",
+      "sha256": "32bd704d881c2fe652eda27bb130fdefc77f710684719553f16a4e1443c3326e"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/citemboard.cpp.obj",
+      "sha256": "8ff082198c4696d02c6bb842cec3549ff3c9924b8fb60c9d24b19fb6b45388af"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/item/citemdata.cpp.obj",
+      "sha256": "d2406ace43db426375b7479bc796134c37eeef2f1678bc733339048ba6e0f0e4"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/datatable/citemdatamgr.cpp.obj",
+      "sha256": "143210a6b9cfb7aa4c912166ec7dcd9481f65fe05069bdd87291a13253ff20f8"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/item/citemmgr.cpp.obj",
+      "sha256": "bcd954711edb74767d385bbe05ca7fe066ae056fd152c2c3774061b5c8d52b7d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/citemupgradeboard.cpp.obj",
+      "sha256": "a35232609be2d7c6ec5cf53b42a122efa2a5c2929f05635d4c4e0a79a9b9be28"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/citemworkboard.cpp.obj",
+      "sha256": "dc9b08bc512d5cf62533baedb5060efd4a8aab879965ad5aa87103a6729aef95"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/cland.cpp.obj",
+      "sha256": "af5593403c1e7d90925872b67b9cbf0c27f2df5edd4133f5527e6b4898a40f1f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/common/clinkboard.cpp.obj",
+      "sha256": "f9d1ceecfba5a6bec26181c521fe3ee5d4e6bdc2b35eef8d23b9923cb2c9cddc"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/cmagicscript.cpp.obj",
+      "sha256": "a12b9897b6ba5b5bec499afd45f68b7cfd23e5232dcd1d767e74ed3b06edc229"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/datatable/cmessagemgr.cpp.obj",
+      "sha256": "09cd8380d6890c406a8758cea75ca3fa96378f5699ec3db2d8ff64b7bfbb0ac1"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/npc/cmonster.cpp.obj",
+      "sha256": "ebec7c908e7e6b6cb2b8507fb4e0a3622556c868793061b17bba2684bb59ba01"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/cnetmsgprocessor_base.cpp.obj",
+      "sha256": "823ac76dbe4ed0e08af114f3057fe2ea5c14cbecf2efd2da557640f8b1e22a42"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/combat/cnetmsgprocessor_combat.cpp.obj",
+      "sha256": "92d76cc0dfaa21db60a609edc6266503cb55a561c8aaac9bd2ecaeef7aaa99cc"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/dungeon/cnetmsgprocessor_dungeon.cpp.obj",
+      "sha256": "d57b3cba2c014841b5bff6557ec827a09b2b46da4f7c6a48792a5955a99d1ad5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/event/cnetmsgprocessor_event.cpp.obj",
+      "sha256": "370be9b9348f56e11f140f2b685ac7c08c941293e2b4be995dcc6b06d9d5a2d5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/item/cnetmsgprocessor_item.cpp.obj",
+      "sha256": "cdb503113f128f620353b089a00651b9649976c5707acaa3f632b6c1d32ca36f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/item/cnetmsgprocessor_itemarrangement.cpp.obj",
+      "sha256": "30b1f541213dfedfc0a1a390230f846e350522ca73ac2cfb3996869ac20fa947"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp.obj",
+      "sha256": "49069eb494c21e1fe3b3d2effe55848b5a96082ac2816cfd31ec1c45f2f54e58"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtradeplayer.cpp.obj",
+      "sha256": "d637718b1a82c5729bf05fbb3880178e41b8ba6558c4e7459cf0cdb317bf38bc"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/map/cnetmsgprocessor_map.cpp.obj",
+      "sha256": "9055a0219486243129af31e0eaa10b2e4b98a1c5be365d997d7a753f8033df19"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/party/cnetmsgprocessor_party.cpp.obj",
+      "sha256": "f19cf4ee56b9e4fc6b462eff80fa64786e4fd33cfe47a22cdd384cf9bef3d1b1"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/party/cnetmsgprocessor_party_dev.cpp.obj",
+      "sha256": "b8bb95e348d5a768e15d6bb233b349a5adc4c1821be1a17cb2abac339ced7263"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/resource/cnetmsgprocessor_resource.cpp.obj",
+      "sha256": "74cf7d5379807c0e40490e608eaff0a6920e38d5691d4eaffeaf5c0fc2511cae"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/summon/cnetmsgprocessor_summon.cpp.obj",
+      "sha256": "de9bd8b0f299d202a81ce206fe8c0897924f3b5eef5361d00ae59707edb2240c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/netmsgprocessor/unit/cnetmsgprocessor_unit.cpp.obj",
+      "sha256": "e89fbfa910faf3e328ecfab8219117846c24377ec4d3db35727ada25a24bb353"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr.cpp.obj",
+      "sha256": "f6d5066f43a87f1330ec78ed00d0a2e918366b4e4320fd042ded576584ed4633"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_chatmsg.cpp.obj",
+      "sha256": "54711910520a2e7a33f7435563a445272ddd0b9ea175a153efe0534d2561a52c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_effectmsg.cpp.obj",
+      "sha256": "647d1114681591de8ecf9687be03f0e1f4b76d088da1f808fc4b52432c230817"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_eventmsg.cpp.obj",
+      "sha256": "6920faaa9c44ca34f9956cf7f6006a1ee21520faccdaf48377cee2b7d5f127d5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_fightmsg.cpp.obj",
+      "sha256": "deafcd5898057e0da333bfbda08bff0a5d3360a4dc902b8b2b5e4fac0f51f536"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_initmsg.cpp.obj",
+      "sha256": "7d58c076c965818715aefa454123749d639be83a01dc7a89df2588e997344371"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_masterservermsg.cpp.obj",
+      "sha256": "acd658995f6bdffeee73aa8db9189b3507481185fae80fdc0d19827e85c6c97c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_observermsg.cpp.obj",
+      "sha256": "c371138d9e152a15cfeb89cb3e64211b89e015cb0b2c512e9a0ad5922d5cfcf5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_positionmsg.cpp.obj",
+      "sha256": "6e2645ba2efa73bed939ec82d25c92fe16a969941c8a601879103fc79874584b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/cnetworkmgr_systemmsg.cpp.obj",
+      "sha256": "158e8cb979e317f911e75a2430eb3c9a4bf35368bb2f9f977dc4e28c04977a3f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/npc/cnpc.cpp.obj",
+      "sha256": "c80e261846d3785ea31efd9dba07ee07e8b08ca3056e06a15e99a504be76b858"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/cobject.cpp.obj",
+      "sha256": "2d91631c3e8264764b63c80db21158ec6b3712c6201e9afdfc8ee07e3aab65a8"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/consolewin.cpp.obj",
+      "sha256": "5fd3f54a694926f5f64deeff74b23f1bf8c24b4703ea0602ee8d4f04be712bad"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/itemboard/coreprocboard.cpp.obj",
+      "sha256": "3115bcc250ab158d7f379d4e8eda616189ed4cb54fc155e96472d625ea7328a7"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/general/cpartyboard.cpp.obj",
+      "sha256": "00088208e86f84204110e6ee222a1013d065b87503cfde2a63ceb1dc4dbc9c91"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/cpath.cpp.obj",
+      "sha256": "f19dbf60c1ddc342bb98783a5160ea35d88f0046467fc1ed6d5066d35ea5474d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/player/cplayer.cpp.obj",
+      "sha256": "a89639ef77e8506e5082362ad5da0ff4b98d9411c7972ff46da8b93ca2c8c174"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/player/cplayer_etc.cpp.obj",
+      "sha256": "d81783f0d872820416c918c6695195da6effb3b961ac7609265fb3b871018cd9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/shopboard/cplayertradeboard.cpp.obj",
+      "sha256": "a0fd964536e060360683194e76feab2e6d3d9bcaec31db6ce016d02a6b3b2b4f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/cresobject.cpp.obj",
+      "sha256": "523c933df41d083623286fe7ed496b7288c17ba65ed2c6af72237555651cb4f2"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/datatable/cresourcedatamgr.cpp.obj",
+      "sha256": "8a447ebcdef8ab7f000bdc8e9c3b715cd72156259fe161c8dd634d3c2ab57da1"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/skillforceboard/csfboard.cpp.obj",
+      "sha256": "b7db2fb07f328ab207f46f56637be999d5d751858c49b12327b74bad5748b7e9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/shopboard/cshoptradeboard.cpp.obj",
+      "sha256": "a801d124fe477a0ef4e4d92df1763ba759e176da6405023b6c1f8a82ef5df9cf"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/skillforceboard/cskillboard.cpp.obj",
+      "sha256": "309e6a5fd964ba8b9b5845ba78825fb998c5a25dbd2f9a154b37c9f8c227c663"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/cswordtrace.cpp.obj",
+      "sha256": "d846f75eb7a56f9fec923cee7d17986a5f3fe4d53764655edcf5628343e69723"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/manager/ctargetmgr.cpp.obj",
+      "sha256": "b3c38e1f1bdc3607d2da9ed2fe8b7fd9d890e7d2e4d68c56a865712e9b595a03"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/character/player/cunit.cpp.obj",
+      "sha256": "14284877d163e183a10535ad20265b1cfc5ab33b3f11198a64615799a8bd98ab"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/gameobject/board/shopboard/cunittuningboard.cpp.obj",
+      "sha256": "8379eab8692432baee5d4e31081f1089d7a6e2a1fce0f21f7c361bc53be5d8ea"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/datafile.cpp.obj",
+      "sha256": "6696ea740830058d969c110e311bf4814e7fa605c5fbad203405a0bf06dd0ba3"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/effectcore.cpp.obj",
+      "sha256": "682e86a9972277687989c230d59eb0269317b79df9f2b39827f29d14ef33c862"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/effectentitylist.cpp.obj",
+      "sha256": "d443963262209bc22fb91b9458da3cd049ffdead4b5bd8ba54d23887d4662f3d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/effectutil.cpp.obj",
+      "sha256": "ab41cb67669230c40e18d1a122ced12de18698f18c4f5ff8d2dff8f82780442a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/effectutilfont.cpp.obj",
+      "sha256": "3b12aea0a3ae1e1ddf3cf8b4bc7628b717cb6d4f8e4ca3ecf5cdd15f7c570b9d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/foreffect.cpp.obj",
+      "sha256": "abbb6b8e319a74c74a29b09bcbb350460ac7fdbc58ec4d6af981e001ad067293"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/global.cpp.obj",
+      "sha256": "c03b299783ee7dbdcf32e079c952176b3943c19f6f2a13ee07fae0abaedd5122"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiattackpartwindow.cpp.obj",
+      "sha256": "0513f49f81acf0895b3552ddd85be6754d7e3951b15de13dd56cf1eed205f643"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guibutton.cpp.obj",
+      "sha256": "d8d051f5ecade423534db1fe668602ae5dd5cf41016b55592fc62e2997c8e616"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guicharinfowindow.cpp.obj",
+      "sha256": "eb1302f3f982aac5b02ba9d63ca7aa4bed5217d7911c9bd688499b94d7bbecb5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guichatwindow.cpp.obj",
+      "sha256": "33e126332c106674bf036b1b0729f45152a3b8c045c087926618bacc1a052e8f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/npc/guiclasschangewindow.cpp.obj",
+      "sha256": "b26511c8f56d42582012a968f6c51914d2e2f2d8ef261d0ffbf70851488d5ef9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guicontainer.cpp.obj",
+      "sha256": "1a057b901fca6ace25fbcfd9bcbfefed7b17b0a232783e19d7df6842f94013d9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/loginwindow/guicreatecharacter.cpp.obj",
+      "sha256": "973811c5a66bf43a122c436d0de375c24f96321f63dac0dda877bd4f0b48fc69"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guidebuggingwin.cpp.obj",
+      "sha256": "bd3b47088687facce6294e88bdeb506398095fc1130c9996921dd231cf5a57ce"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guidialogbox.cpp.obj",
+      "sha256": "1e37ffeda303f67df310853d309db50be48281a58cfdc814a328e70bed5530df"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/dungeon/guidungeon.cpp.obj",
+      "sha256": "e10ae2139a957523a4a44768882d570bd8f8ad6c85cbead69dfd3f494c18ac9b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guieventwindow.cpp.obj",
+      "sha256": "94d20a9d579907be3003f5eca562984d1a07fa194a85ee4acbed056b0da9fa40"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/npc/guiexchangewindow.cpp.obj",
+      "sha256": "e55613abbc5440a1ad6a6b5bb8fd73bc370dde2dbfb6e37db8bebcfa66bef9e4"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiforcebeltwindow.cpp.obj",
+      "sha256": "be3bd29c3a4e120cb6a80f8881277c2ea271754ce030e86186a999a87952b6be"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/skillforce/guiforcewindow.cpp.obj",
+      "sha256": "8bee902a2a53d7edb363b6738f1bfc7985434bac96b6905dd60b3600d8538228"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guigaugeexpwindow.cpp.obj",
+      "sha256": "608c0afd7b154ff8974789f80e4c7997f938eae447da17459d0505a5161721dd"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guihelpwindow.cpp.obj",
+      "sha256": "1b378a144d32ab7402dd38b108316e0c84736848ddc9d28be09d75b0a9efefe7"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guihotkeyboard.cpp.obj",
+      "sha256": "02ea86d9e4490a11c207e29dbbad761746b8c40d75c9ee6268c1679267afbb72"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiinput.cpp.obj",
+      "sha256": "76bc051c127879b06127f82c920c7bbec4bd0248e6fef3c2d7ecbb708525df9b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiinventorywindow.cpp.obj",
+      "sha256": "1446bebb54d2458c90c1f153e4d4d55901bfab1baf37412e91a1e9d4a11a6a9a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiitem.cpp.obj",
+      "sha256": "50ffd7a4c654fb606a5fcafbba0cee19d4d67920482d39786f86cbc9de6d1ce2"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiitembeltwindow.cpp.obj",
+      "sha256": "e67c598390e591907847eb1980941c5d1173de7f2ca60eab09a0ef2423eef6bd"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/itemproc/guiitemmakewindow.cpp.obj",
+      "sha256": "8a36ebd3e6bc040ea572ec994297006d94d68cb2dbce5662913e3465ea01b55e"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/itemproc/guiitemupgradewindow.cpp.obj",
+      "sha256": "ac47a37f07351afe5c8b1e76ef9d06f101dfee75db6fb2c79a2e6603c8fc783b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guilistboard.cpp.obj",
+      "sha256": "5f2ba97f9f994548b05e1831b936cff2a0dcf10a58aa0476b915f12a6f60a9d3"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/loginwindow/guiloadingwindow.cpp.obj",
+      "sha256": "57d363f8c2d5668cd2408649b0a094f351692c5247d8c32d34270030cd8d9d34"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/loginwindow/guiloginwindow.cpp.obj",
+      "sha256": "8a52d500c2a32b242b7ebd87031074c17903abf0f57f4b8502431e11588a1438"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guimaploadingwindow.cpp.obj",
+      "sha256": "4cbfbd8c7becc403f1dbd9bffd1c21a72e821e04840a2374ce25a7fb7424645f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guimapmovewindow.cpp.obj",
+      "sha256": "56938a99cd222bca7972e5aa1a642c5e258528c1e7a51203e19f6a9e645901c4"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guimessagebox.cpp.obj",
+      "sha256": "d5ebd673d1d447278b4c585bc5b19df6420e6a54ef87e76001ba7c3136252e9d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guiminimapwindow.cpp.obj",
+      "sha256": "6115dfe20572de0ea494940d380b29c94996acdcc9507ad0be6eaf294573889c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/mining/guiminingwindow.cpp.obj",
+      "sha256": "ec87d146d21da53165054b7c4ddf02818e8dfcaca104c04919902024039d12c5"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/recall/guimobcontrol.cpp.obj",
+      "sha256": "52ece5bc1b952be5c197c6bab3d671fd2e1b50aebf434f989c16d4ffe0cc160d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guimouse.cpp.obj",
+      "sha256": "5801ac0ec9e57ab49432d5ff425e163e3e83283c262c14609d365f43eb6031de"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/npc/guinpcselectwindow.cpp.obj",
+      "sha256": "6ae7ec9523fd78092737d77d97412904d60ac3744462846ef3b736ded43e6b3c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guinuminputdlg.cpp.obj",
+      "sha256": "64dba2fb3f68f8a7d9d5f81f1f1296345e63ca6be20a4a62f71d764ee6497f8e"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiobject.cpp.obj",
+      "sha256": "f8381df3d8e042335d97f4c281c80253db3b0c06ea1e590e646601609cdc4092"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiobjecteventproc.cpp.obj",
+      "sha256": "e31861065ed92b16553e355221bb0bf7fab84b3938ede6fe0a56a39913e796e1"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guioptionwindow.cpp.obj",
+      "sha256": "a7b02d6a052afb2288a6364d377a2d9ad85c6778ff022d8e80c998b44231ef39"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/npc/guioreprocwindow.cpp.obj",
+      "sha256": "975e86cd6b0549d9ded9ef5d7c0ef1495fd8eedd43f50fe51698d9c4b97120b9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/group/guipartywindow.cpp.obj",
+      "sha256": "5e925555069d441b0671c406f3175b041e1c6ea27b663c7a35bb4b19a89f9768"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/etcwin/guiradarwindow.cpp.obj",
+      "sha256": "fdd57982122ce2ad73d7ccc0f0f949d5f49ac054be184633a8ff77144c6da791"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiradiobutton.cpp.obj",
+      "sha256": "15864b5d81700aa1c0cb29c09a2dc0debca3b30570f114179bab822eb090810e"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/recall/guirecallwindow.cpp.obj",
+      "sha256": "8f9f074977a8ca76ad0d0092507427454c54105dcbee788ee541cb7748be9444"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiscreen.cpp.obj",
+      "sha256": "5021a21e2c423f079d93dc2c689a8f6e19c1f73eb1766a7a5339b90aaed9b04d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiscrollbar.cpp.obj",
+      "sha256": "7ec1b6fc049060cc09acd72a9bd733fb279c355406449800632c75e89efb64ac"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/loginwindow/guiselectcharacter.cpp.obj",
+      "sha256": "31fade14ae4d372a7b0c3bbace2bac8ffe3883503975b9b1826bfb2da20babd3"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiselectedcharmenu.cpp.obj",
+      "sha256": "46954a19a48fb168d6d98b74a1f1420abcf027d29a3306b284d1b26030373bce"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/guiselectedcharwin.cpp.obj",
+      "sha256": "e47565087ac7e9044e7cad8ff2093e470b4661f525562cdbee5c23d088be9b4d"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiselectitem.cpp.obj",
+      "sha256": "9a991ace7a837778936c026d81f1b076b47d93e7c31d69bea7d3edf29aafe308"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/loginwindow/guiselectrace.cpp.obj",
+      "sha256": "f96cd3c2a4dfe4026cbcff96803096e4fe739de6c1961be3b600c6d3819fa96f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/npc/guishopwindow.cpp.obj",
+      "sha256": "9e3ec79fccc659978a2ca749931fcb37d78011809a90c34940e000db89bdc7b2"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/skillforce/guiskillforcequeue.cpp.obj",
+      "sha256": "ef3d944321de05207ba8c4e660ba3460cad8d6c5bef521591401740f9cdd16c2"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/skillforce/guiskillwindow.cpp.obj",
+      "sha256": "af384ba3872536e7d28b2db05951a9ccb39d155dc6db8fe1fe79458ea0599e1f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guitext.cpp.obj",
+      "sha256": "89ebb1753c1eb3a7f64d04da58da0dd52ab57d87d4201632014356180f0f500f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guitextboard.cpp.obj",
+      "sha256": "9f9c1c03bc7e5e8681a3c565748b679d65b2f86e6b62b211f37eaf7ff8e7c8cb"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guitooltip.cpp.obj",
+      "sha256": "3464e4bd45ecd6bc58c7fd8d8407db2a3576a1ee434ce1f235abcaeac657b11c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/player/guitradewindow.cpp.obj",
+      "sha256": "43d96fcc8c1cbe9c14cfe0e2f89438a056eefd030183ab6d19368fc7fa2f8e47"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guitree.cpp.obj",
+      "sha256": "5cbda3e047c58a3ed7d884a15cb875fa885a2eb56f8e34d81a8728fc73a358c9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/unit/guiunitstorewindow.cpp.obj",
+      "sha256": "3b69c08bc1c9877b27b851e88a4328228a7dcf08f85c453ad98d053d85c9d773"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/gamewindow/unit/guiunittuningwindow.cpp.obj",
+      "sha256": "218f2029186d817b87b37e429681ecd8e849f24890f1dd47b3bc304257359eda"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/guicontroller/guiwindow.cpp.obj",
+      "sha256": "2805a0ff2ed77a6ab0be277c7e06d7571402c038162fd225f46f0af8e9df62f2"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/input/imeedit.cpp.obj",
+      "sha256": "138b1339be5d769cb79a542146d9388f69372209f71a6ec3733a91282c8d04d4"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/inputmgr.cpp.obj",
+      "sha256": "762eceb99b339f7023782fe5e3d17be0eaf9aa5d0641697536a7c288cb98360a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/itemspecialeffect.cpp.obj",
+      "sha256": "b436ef83b23b74ca24737eb84f4facdb1c8b30893069d6cef7b79fa50df0c792"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/mainapp.cpp.obj",
+      "sha256": "e7367ede68387561b33f72948e894b14147e3234e8efb4e16609e4b7cb84045c"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/monsterspecialeffect.cpp.obj",
+      "sha256": "fabfaac2d3da2c3100884cf74852af8ea4f2391567bf37f288ec93c3cc40174f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/mousedev.cpp.obj",
+      "sha256": "d74b8c07d8cbb582251671a20996966dd832bd55f7a39736d9bbdef4c355365f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/moveeffectmanager.cpp.obj",
+      "sha256": "3c497a24bbcc6de44ec9bd6b3f80d790176f1babc6985bf9291ef446b34e899f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/networklib/netprocess.cpp.obj",
+      "sha256": "c9267784a1aba11cc7abbabd1f73c6adc1f9b50a2f6b8699546e4228bb90062a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/networklib/netsocket.cpp.obj",
+      "sha256": "e464fdf90fa70cf0542c39355c02fd1a52b22ee96aebc86e9899110081490456"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/networklib/netutil.cpp.obj",
+      "sha256": "5418a790a4b23d8965165d9f9d09a84d551a20f333154092556729d1cd94832b"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/network/networklib/networking.cpp.obj",
+      "sha256": "eb2d6dd39facf1ec1092a05e6dbf7c11dc18ec44c051381d449a60864873fbc9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyyun/particlelist.cpp.obj",
+      "sha256": "6f2c906d6cc585da5324e39623fa4c40992c1e7ccd8077cbcb1d2277cfbbad0f"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/playerspecialeffect.cpp.obj",
+      "sha256": "4f53433da4eff046290cc25fb2375c2541720f94776f6ad6ef43404331dfffcb"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyyun/protect.cpp.obj",
+      "sha256": "dabcbb9cba91cb0d2098f8f1fafbfde6424863372842c281876c75d9d4c6b480"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyyun/shadowlist.cpp.obj",
+      "sha256": "ed38c3c09cfea29dfcdb6614587bfba6f0d25e249df6913f007ea7f73940dc32"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/spritemgr.cpp.obj",
+      "sha256": "067f36d0db3ab96d750e576da003752df0baf603a86accf1971c33de5c16a0cb"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/userinterface/uiglobal.cpp.obj",
+      "sha256": "e69818ec367126c6860afaaf09a9a12437a6b4e19e78fc7f25bb20e40e7fdd1a"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/generated/unity_managers.cpp.obj",
+      "sha256": "f0b7168a1631b5cab59da8be126b0b1bea7b92339a685d50536e321985e68ba9"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/CMakeFiles/RFClient455Consumers.dir/source/addcodebyjang/vieweffectcode.cpp.obj",
+      "sha256": "18f3e6ba3fbcfa546a9969525de6d2515c833f0df81d4f3c947f4326f216e30c"
+    }
+  ],
+  "library_files": [
+    {
+      "file": "work/client455-port/normal/ninja-build/RFClient455Facade.lib",
+      "sha256": "9907008bed049fa3ac3425f43ee12ac8683eb44793d41c8739fc0cc47bd3ebde"
+    },
+    {
+      "file": "work/client455-port/normal/ninja-build/RFClient455Kernels.lib",
+      "sha256": "d88a5db0062ca6efb729773eba2799298c9728ef86d13044f720a888d3175941"
+    }
+  ]
 }

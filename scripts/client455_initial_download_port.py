@@ -18,6 +18,22 @@ RESULTS = (
 def port_initial_download(raw, relative, section, native):
     if relative == 'gameobject/board/itemboard/citemboard.cpp':
         owner = b'CItemBoard'
+        raw = patch_method(raw, section, owner, b'MsgProc', lambda body: replace(
+            body, b'CBoardItem * pOrgItem = static_cast< CBoardItem * >( GetObject( stRecvMsg.m_byPackNo, stRecvMsg.m_bySocketNo ) );',
+            b'''auto* object = GetObject(stRecvMsg.m_byPackNo, stRecvMsg.m_bySocketNo);
+                // Typed inventory uses separate item owners. The stock
+                // movement/split dialog still expects the legacy layout.
+                if (object && object->GetItem455()) break;
+                auto* pOrgItem = dynamic_cast<CBoardItem*>(object);'''))
+        raw = patch_method(raw, section, owner, b'UI_CheckBeforeRemove_CheckOriginalObject',
+                           lambda body: body.replace(b'{', b'''{
+    const auto* original = _GetGBM()->GetOrgObject();
+    if (original && original->GetItem455()) return FALSE;
+''', 1))
+        raw = patch_method(raw, section, owner, b'MsgProc', lambda body: replace(
+            body, b'if( pItem->IsSellable() )', b'if (pItem && pItem->IsSellable())'))
+        raw = patch_method(raw, section, owner, b'MsgProc', lambda body: replace(
+            body, b'if( pItem->IsRepairable() )', b'if (pItem && pItem->IsRepairable())'))
         raw = patch_method(raw, section, owner, b'Add_ProcessExistObject', lambda body: body.replace(
             b'{', b'''{
     auto* existing = GetObject(pi_byTarPackNo, pi_byTarSocketNo);
@@ -155,6 +171,18 @@ def port_initial_download(raw, relative, section, native):
         return b'#include <cstddef>\n' + replace(raw, b'NMP_VIRTUAL\tvoid\tStoreListResult_clzo( char * pi_pMsg );',
                        b'NMP_VIRTUAL\tbool\tStoreListResult_clzo(const char* bytes, std::size_t size);'), True
     if relative == 'network/netmsgprocessor/itemtrade/cnetmsgprocessor_itemtrade.cpp':
+        legacy_reply = (
+            b'case buy_store_success_zocl\t\t:\n\t\t\tBuyStoreSuccess_zocl( pi_pMsg );\n\t\t\tbreak;'
+            b'\n\n\t\tcase buy_store_failure_zocl\t\t:\n\t\t\tBuyStoreFailure_zocl( pi_pMsg );\n\t\t\tbreak;'
+            b'\n\n\t\tcase sell_store_result_zocl\t\t:\n\t\t\tSellStoreResult_zocl( pi_pMsg );\n\t\t\tbreak;'
+        )
+        raw = replace(raw, legacy_reply, b'''case 2:
+        case 3:
+        case 5:
+            return pMsgHeader->m_wSize >= 4 &&
+                RF455_ReceiveShopReply(pMsgHeader->m_byType[1], pi_pMsg, pMsgHeader->m_wSize - 4);''')
+        anchor = b'#include "CNetMsgProcessor_ItemTrade.h"'
+        raw = replace(raw, anchor, anchor + b'\n' + (native / 'client455_shop_reply.inc').read_bytes())
         raw = replace(raw, b'case store_list_result_zocl\t\t:\n\t\t\tStoreListResult_clzo( pi_pMsg );\n\t\t\tbreak;', b'')
         raw = replace(raw, b'case repair_result_zocl\t\t\t:\n\t\t\tRepairResult_zocl( pi_pMsg );\n\t\t\tbreak;',
                       b'case 9:\n\t\t\treturn pMsgHeader->m_wSize >= 4 && StoreListResult_clzo(pi_pMsg, pMsgHeader->m_wSize - 4);')
@@ -209,12 +237,19 @@ def port_initial_download(raw, relative, section, native):
         return (OBSERVATION + b'#include "client455_nation_paths.h"\n#include <cstring>\n#include <string>\n'
                 + (native / 'client455_walk_observation.inc').read_bytes() + b'\n' + raw), True
     if relative == 'gameprogress/cgp_maingame.h':
+        raw = replace(raw, b'UI_LoadSprite( void );',
+                      b'UI_LoadSprite(BOOL keepWorldHud455 = FALSE);')
         raw = replace(raw, b'BOOL\tm_bIsCompleteDataDownload;',
                       b'bool m_reportedWorldFrame455 = false;\n\tBOOL\tm_bIsCompleteDataDownload;')
         return replace(raw, b'inline\tBOOL\tIsEnableInput( void )',
                        b'bool HasRenderedWorldFrame455() const { return m_reportedWorldFrame455; }\n'
                        b'\tinline\tBOOL\tIsEnableInput( void )'), True
     if relative == 'gameprogress/cgp_maingame.cpp':
+        raw = patch_method(raw, section, b'CGP_MainGame', b'Create_UI', lambda body: replace(
+            body, b'UI_LoadSprite();', b'UI_LoadSprite(TRUE);'))
+        raw = replace(raw, b'CGP_MainGame::UI_LoadSprite( void )\n{\n\t_GetUISpriteMgr()->UnloadSpriteAll();',
+                      b'CGP_MainGame::UI_LoadSprite(BOOL keepWorldHud455)\n{\n'
+                      b'\t_GetUISpriteMgr()->UnloadSpriteAll(keepWorldHud455);')
         raw = patch_method(raw, section, b'CGP_MainGame', b'Init', lambda body: replace(
             body, b'm_bIsCompleteDataDownload\t=', b'RF455_WorldObservation() = {};\n\tm_reportedWorldFrame455 = false;\n\tm_bIsCompleteDataDownload\t='))
         raw = patch_method(raw, section, b'CGP_MainGame', b'Create', lambda body: replace(
@@ -230,6 +265,7 @@ def port_initial_download(raw, relative, section, native):
     }
     if (drewFrame && m_bIsCreated_Avatar)
         RF455_ObserveLiveSettings(*_GetOptionWindow(), *_GetCharMgr());
+    if (drewFrame) RF455_CaptureRequestedWorldFrame();
     if (drewFrame && m_bIsCreated_Avatar && RF455_WorldObservation().remaining) {
         const auto* avatarPosition = _GetAvatar()->GetPosition();
         float cameraPosition[3];
@@ -240,11 +276,15 @@ def port_initial_download(raw, relative, section, native):
                                 _GetAvatar()->GetAction(), IsEnableInput());
     }''')
         raw = patch_method(raw, section, b'CGP_MainGame', b'Render', observe_render)
-        raw = patch_method(raw, section, b'CGP_MainGame', b'LoadData', lambda body: replace(
-            body, b'\t_GetLand()->LoadLevel();', b'''\tauto* land = _GetLand();
+        def load_world_data(body):
+            body = replace(body, b'\t_GetLand()->LoadLevel();', b'''\tauto* land = _GetLand();
     const bool mapLoaded = land->LoadLevel() && land->GetLevel() && land->GetLevel()->IsLoadedBsp();
     RF455_ObserveProtocol("map-bsp", land->GetMapIndex(), mapLoaded, 0);
-    if (!mapLoaded) return FALSE;'''))
+    if (!mapLoaded) return FALSE;''')
+            # CLand::LoadIndexedLevel455 creates the effects on successful map load.
+            return replace(body, b'\tCreateEffect();', b'')
+
+        raw = patch_method(raw, section, b'CGP_MainGame', b'LoadData', load_world_data)
         return (OBSERVATION + (native / 'client455_live_world_observation.inc').read_bytes()
                 + b'\n' + (native / 'client455_live_settings_observation.inc').read_bytes()
                 + b'\n' + raw), True
@@ -277,6 +317,8 @@ def port_store_list(body):
     body = body[:start] + body[end:]
     body = replace(body, b'\t\t\tl_pItemList = l_pNpc->GetShopItemList();',
                    b'\t\t\t++applied;\n\t\t\tauto* l_pItemList = l_pNpc->GetShopItemList();')
+    body = replace(body, b'l_pNpc->SetRotY( l_pNpcInfo->fYAngle, FALSE );',
+                   b'l_pNpc->SetRotY( l_pNpcInfo->fYAngle, FALSE );\n\t\t\tl_pNpc->SetScale(l_pNpcInfo->fScale455);')
     body = replace(body, b'l_pItem = l_pItemList->AddItem( j );', b'auto* l_pItem = l_pItemList->AddItem( j );')
     start = body.index(b'\t_GetMainGame()->SetCompleteDataDownload')
     return body[:start] + b'''    _GetMainGame()->SetCompleteDataDownload(TRUE);

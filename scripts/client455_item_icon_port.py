@@ -21,7 +21,7 @@ def port_item_icon(raw,relative,native,section):
         raw=raw[:begin]+body+raw[end:];changed=True
     elif relative=='userinterface/spritemgr.h':
         once(b'\tCSpriteUnitList\t\tm_listSpriteUnit;',b'\tCSpriteUnitList\t\tm_listSpriteUnit;\r\n\tCSprite* m_targetSprites455[55]={};')
-        once(b'\tCSpriteMgr();',b'\tCSpriteMgr();\r\n\tCSprite* GetTargetSprite455(unsigned id);\r\n\tvoid UnloadTargetSprites455();\r\n\tBOOL GetTargetSpriteInfo455(BYTE,DWORD,DWORD,int,SPRITE_INFO&);');changed=True
+        once(b'\tCSpriteMgr();',b'\tCSpriteMgr();\r\n\tCSprite* GetTargetSprite455(unsigned id);\r\n\tbool LoadMinimapSprite455(const char* path);\r\n\tvoid UnloadTargetSprites455();\r\n\tBOOL GetTargetSpriteInfo455(BYTE,DWORD,DWORD,int,SPRITE_INFO&);');changed=True
     elif relative=='userinterface/spritemgr.cpp':
         raw=b'#include <io.h>\r\n'+raw
         begin,end=section(raw,b'CSpriteMgr::UnloadSpriteAll(',b'CSpriteMgr::UnloadSpriteAll(');body=raw[begin:end];at=body.index(b'{')+1

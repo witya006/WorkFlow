@@ -44,8 +44,10 @@ static void parser128(FILE* out){
         RF455_ExtMaterial mat={};mat.mFlag=flags;mat.mSceneFlags=2;
         mat.mFogStart=12.5f+index;mat.mFogEnd=1000.5f+index;mat.mFogColor=0xff123456+index;
         mat.mFogStart2=110.f+index;mat.mFogEnd2=6000.25f+index;mat.mFogColor2=0xffba9876+index;
-        FILE* f=std::fopen("lighting-input.r3x","wb");check(f!=nullptr,"own R3X");const float version=1.1f;std::fwrite(&version,4,1,f);std::fwrite(&mat,sizeof(mat),1,f);std::fclose(f);
-        char path[]="lighting-input.r3x";LoadR3X(path);std::fprintf(out,"{\"kind\":\"r3x\",\"id\":%u,\"input_flags\":%u",index++,flags);state128(out);std::fprintf(out,"}\n");
+        char path[32];
+        std::snprintf(path,sizeof(path),"lighting-input-%u.r3x",index);
+        FILE* f=std::fopen(path,"wb");check(f!=nullptr,"own R3X");const float version=1.1f;std::fwrite(&version,4,1,f);std::fwrite(&mat,sizeof(mat),1,f);std::fclose(f);
+        LoadR3X(path);std::fprintf(out,"{\"kind\":\"r3x\",\"id\":%u,\"input_flags\":%u",index++,flags);state128(out);std::fprintf(out,"}\n");
     }
     const auto day=RF455_GetSkyDayFog(),night=RF455_GetSkyNightFog();const DWORD oldFlags=s->mEnvironmentSceneFlags;const float badVersion=.5f;
     FILE* f=std::fopen("lighting-invalid.r3x","wb");check(f!=nullptr,"bad version fixture");std::fwrite(&badVersion,4,1,f);std::fclose(f);char bad[]="lighting-invalid.r3x";LoadR3X(bad);

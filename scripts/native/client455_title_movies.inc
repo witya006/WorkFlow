@@ -85,15 +85,21 @@ private:
         if (!device || !GetClientRect(owner_, &bounds) || bounds.right <= 0 || bounds.bottom <= 0) return false;
         UploadFrame(*device);
         if (!textureReady_ || !R3BeginScene()) return false;
-        const HRESULT clear = device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff000000, 1.f, 0);
-        if (SUCCEEDED(clear)) {
+        Microsoft::WRL::ComPtr<IDirect3DStateBlock9> previousState;
+        HRESULT result = device->CreateStateBlock(D3DSBT_ALL, previousState.GetAddressOf());
+        if (SUCCEEDED(result))
+            result = device->Clear(0, nullptr, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, 0xff000000, 1.f, 0);
+        if (SUCCEEDED(result)) {
             // Title 455 stretches the decoded image to the client rect and excludes texture padding.
             float u[] = {0.f, float(width_) / float(textureWidth_)};
             float v[] = {0.f, float(height_) / float(textureHeight_)};
             Draw2DSprite(0, 0, float(bounds.right), float(bounds.bottom), u, v, texture_.Get(), 0xffffffff);
+            // The sprite changes the vertex format and texture stages. Restore
+            // those states before the next scene, including a skip via Esc.
+            result = previousState->Apply();
         }
         R3EndScene();
-        if (FAILED(clear)) return false;
+        if (FAILED(result)) return false;
         ReportFrame(*device, bounds);
         return true;
     }

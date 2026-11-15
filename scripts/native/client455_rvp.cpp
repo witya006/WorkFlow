@@ -1,8 +1,8 @@
 #include "client455_rvp.h"
 #include "client455_camera.h"
+#include "client455_character_rfs.h"
 #include <algorithm>
 #include <cmath>
-#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <limits>
@@ -186,13 +186,19 @@ bool RF455_ParseRvp(const void* input,std::size_t bytes,RF455RvpDocument& output
 bool RF455_LoadRvp(const char* path,RF455RvpDocument& output,std::string* error,
                    const RF455CameraDocument* camera) {
     if(!path){if(error)*error="null filename";return false;}
-    FILE* file=std::fopen(path,"rb");if(!file){if(error)*error="open RVP";return false;}
-    std::vector<unsigned char> bytes;unsigned char block[4096];bool ok=true;
-    try {while(const auto got=std::fread(block,1,sizeof(block),file))bytes.insert(bytes.end(),block,block+got);}
-    catch(const std::exception&){ok=false;}
-    ok=ok&&!std::ferror(file);std::fclose(file);
-    if(!ok){if(error)*error="read RVP";return false;}
-    return RF455_ParseRvp(bytes.data(),bytes.size(),output,error,camera);
+    // Client 455 x86 RVA 0x4D69E0 opens RVP as a loose text file. The
+    // parser applies its DOS EOF rule to the retained original bytes.
+    constexpr std::uint64_t maxBytes = 64u * 1024u * 1024u;
+    const auto source = RF455_GetCharacterRfsCache()->ReadLooseBytes(path, maxBytes);
+    if (source.status == RF455ResourceReadStatus::Unavailable) {
+        if (error) *error = "open RVP";
+        return false;
+    }
+    if (source.status != RF455ResourceReadStatus::Ready || !source.bytes) {
+        if (error) *error = "read RVP";
+        return false;
+    }
+    return RF455_ParseRvp(source.bytes->data(), source.bytes->size(), output, error, camera);
 }
 
 bool RF455_RvpInterpolate(const RF455RvpDocument& doc,std::size_t cursor,

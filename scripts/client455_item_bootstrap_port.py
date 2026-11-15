@@ -23,6 +23,21 @@ RF455ItemDataSpan CItemDataMgr::GetData455(DWORD kind,DWORD index){return RF455_
         return raw,True
     if relative=='gameprogress/cgp_login.cpp':
         anchor=b'_GetItemDataMgr()->LoadData();'
-        if raw.count(anchor)!=1:raise ValueError('Ordinary Login item bootstrap boundary changed')
-        return raw.replace(anchor,b'_GetItemDataMgr()->LoadBootstrap455();'),True
+        timer_anchor=b'_GetCharDataMgr()->LoadData();'
+        if raw.count(anchor)!=1 or raw.count(timer_anchor)!=1:
+            raise ValueError('Ordinary Login item bootstrap boundary changed')
+        raw=b'#include "client455_client_items.h"\n'+raw
+        raw=raw.replace(anchor,b'_GetItemDataMgr()->LoadBootstrap455();')
+        return raw.replace(timer_anchor,timer_anchor+b'\n                RF455_GameItems().loadItemTimerFile();'),True
+    if relative=='gameobject/board/itemboard/cinventoryboard.cpp':
+        signature=b'CInventoryBoard::UI_PickUpItemRequest( CGroundItem * pi_pGroundItem )'
+        first,last=section(raw,signature,signature)
+        body=raw[first:last]
+        anchor=b'if( pi_pGroundItem->IsSplitable() )'
+        if body.count(anchor)!=1:raise ValueError('455 timer pickup stacking boundary changed')
+        body=body.replace(anchor,b'''RF455ItemTimer timer455{};
+    const bool hasTimer455 = RF455_GameItems().findItemTimer(pi_pGroundItem->GetItemKind(),
+        pi_pGroundItem->GetDTCode(), timer455);
+    if( pi_pGroundItem->IsSplitable() && !hasTimer455 )''')
+        return b'#include "client455_client_items.h"\n'+raw[:first]+body+raw[last:],True
     return raw,False

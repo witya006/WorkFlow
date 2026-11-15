@@ -5,20 +5,23 @@ This command does not launch its output, even if the link eventually succeeds.
 """
 import ctypes,hashlib,json,re,subprocess
 from pathlib import Path
+from build_client455_normal import EXPECTED_CONSUMERS,normal_build_libraries,normal_consumer_objects
 from compare_client_binaries import WS,pe
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     root=WS/'work/client455-port/normal';art=WS/'artifacts/client455-normal';build=json.loads((WS/'inventory/client455-normal-build.json').read_text());proof=json.loads((WS/'inventory/client455-normal-consumers.json').read_text());info=json.loads((WS/'inventory/msvc-verification.json').read_text())
-    if build['build_exit'] or build['objects']!=182 or proof['normal_build_sha256']!=sha(WS/'inventory/client455-normal-build.json'):raise ValueError('Current normal consumers required')
+    if build['build_exit'] or build['objects']!=EXPECTED_CONSUMERS or proof['normal_build_sha256']!=sha(WS/'inventory/client455-normal-build.json'):raise ValueError('Current normal consumers required')
     libraries=[WS/r['file'] for r in proof['libraries']]
+    if libraries[:2]!=normal_build_libraries(root,build):raise ValueError('Consumer probe libraries differ from the normal build')
     for name in ['client455-effect-log']:
         report=json.loads((WS/f'inventory/{name}.json').read_text());libraries.append(WS/report['library'])
     imported=json.loads((WS/'inventory/recovered-import-libraries.json').read_text())['libraries']
     for row in imported:
         if sha(WS/row['library'])!=row['library_sha256']:raise ValueError('Changed import library:'+row['dll'])
         libraries.append(WS/row['library'])
-    objects=sorted((root/'build/RFClient455Consumers.dir/Release').glob('*.obj'));engine=WS/'work/client455-port/source/R3Engine';client=root/'source';exe=root/'build/RF_Online.bin'
+    objects=normal_consumer_objects(root,build);engine=WS/'work/client455-port/source/R3Engine';client=root/'source';exe=root/'build/RF_Online.bin'
+    exe.parent.mkdir(parents=True,exist_ok=True)
     # These old autolink hints must not select reference libraries. All actual
     # dependencies are explicit here; missing symbols still fail normally.
     suppressed=['CharacterR.lib','CharacterMD.lib','R3EngineMT.lib','R3EngineDMT.lib','ziplibm.lib','ZipArchive_STL_M.lib','libci.lib','JpegLibMT.lib']

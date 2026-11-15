@@ -24,14 +24,14 @@ def main():
     dev=Path(load('msvc-verification')['installation_path'])/'Common7/Tools/VsDevCmd.bat'
     library=root/'RF455ItemPayloads.lib';log=root/'build.txt';batch=root/'build.cmd'
     lines=['@echo off',f'call "{dev}" -no_logo -arch=x86 -host_arch=x64 > env.txt 2>&1','if errorlevel 1 exit /b 1'];objects=[]
-    for index,name in enumerate(names+[r[1] for r in probes]):
+    for index,name in enumerate(names+['client455_character_rfs.cpp']+[r[1] for r in probes]):
         obj=root/(Path(name).stem+'.obj');objects.append(obj)
         lines+=[f'cl /c /nologo /MT /O2 /Gy /EHsc /std:c++14 /W4 /D_CRT_SECURE_NO_WARNINGS /I"{native}" "{native/name}" /Fo"{obj}" {">" if index==0 else ">>"} "{log}" 2>&1',
                 'if errorlevel 1 exit /b 1']
     lines+=[f'lib /nologo /OUT:"{library}" '+' '.join(f'"{p}"' for p in objects[:3])+f' >> "{log}" 2>&1','if errorlevel 1 exit /b 1']
     for index,(name,_) in enumerate(probes):
         exe=root/(name+'-probe.exe')
-        lines+=[f'link /nologo /OPT:REF /SUBSYSTEM:CONSOLE /MACHINE:X86 /OUT:"{exe}" /MAP:"{exe.with_suffix(".map")}" "{objects[3+index]}" "{library}" "{WS/facade["file"]}" kernel32.lib user32.lib >> "{log}" 2>&1',
+        lines+=[f'link /nologo /OPT:REF /SUBSYSTEM:CONSOLE /MACHINE:X86 /OUT:"{exe}" /MAP:"{exe.with_suffix(".map")}" "{objects[4+index]}" "{objects[3]}" "{library}" "{WS/facade["file"]}" kernel32.lib user32.lib >> "{log}" 2>&1',
                 'if errorlevel 1 exit /b 1']
     lines+=['exit /b 0'];batch.write_text('\n'.join(lines)+'\n',encoding='ascii')
     result=subprocess.run(['cmd.exe','/d','/c',str(batch)],cwd=root,timeout=90,creationflags=subprocess.CREATE_NO_WINDOW)

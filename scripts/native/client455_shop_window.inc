@@ -1,8 +1,10 @@
 // Ordinary merchant window and pager, target RVA 2987F0..29A99E.
 #include "client455_money.h"
 #include "client455_unit_view_skin.h"
+#include "client455_language.h"
 #include <algorithm>
 #include <cstdio>
+#include <cstring>
 #include <iterator>
 #include <memory>
 
@@ -23,6 +25,7 @@ void SetShopValue(CGUIWindow& window, CGUIText& text, LONG y, __int64 value)
     text.SetPos(window.GetPosX() + 136 - text.GetSizeX(),
                 window.GetPosY() + y + (16 - text.GetSizeY()) / 2);
 }
+
 }
 
 void CGUIShopWindow::SetSprite()
@@ -141,7 +144,8 @@ void CGUIShopWindow::SetTradeMode(TradeMode mode)
     UpdateShopBoard();
 }
 
-BOOL CGUIShopWindow::TakeInBuyItem(UI_SHOP_ITEM* data, BOOL insertAtBegin)
+BOOL CGUIShopWindow::TakeInBuyItem(UI_SHOP_ITEM* data, BOOL insertAtBegin,
+                                   const RF455StorePreview* preview)
 {
     if (!data) return FALSE;
     auto item = std::make_unique<CGUIItem>();
@@ -150,11 +154,21 @@ BOOL CGUIShopWindow::TakeInBuyItem(UI_SHOP_ITEM* data, BOOL insertAtBegin)
     item->SetSpriteID(data->dwIconID);
     item->SetNum(WORD(data->dwQuantity));
     item->SetUsableLevel(data->byUsableLevel);
+    item->SetGrade455(data->grade455);
     item->SetSize(32, 32);
     item->SetSprite();
     item->Show(IsShow());
     item->DrawItemNum(FALSE);
-    m_listBuyItem.insert(insertAtBegin ? m_listBuyItem.begin() : m_listBuyItem.end(), item.get());
+    const auto inserted = m_listBuyItem.insert(
+        insertAtBegin ? m_listBuyItem.begin() : m_listBuyItem.end(), item.get());
+    if (preview) {
+        try {
+            m_buyPreview455.emplace(item.get(), *preview);
+        } catch (...) {
+            m_listBuyItem.erase(inserted);
+            throw;
+        }
+    }
     item.release();
     UpdateShopBoard();
     return TRUE;
@@ -166,6 +180,7 @@ BOOL CGUIShopWindow::TakeOutBuyItem(DWORD index)
     auto at = m_listBuyItem.begin();
     std::advance(at, index);
     std::unique_ptr<CGUIItem> removed(*at);
+    m_buyPreview455.erase(removed.get());
     m_listBuyItem.erase(at);
     UpdateShopBoard();
     return TRUE;
@@ -174,12 +189,79 @@ BOOL CGUIShopWindow::TakeOutBuyItem(DWORD index)
 void CGUIShopWindow::ClearBuyItemList()
 {
     if (m_eCurTradeMode == Buy_Mode) ClearShopBoard();
+    m_buyPreview455.clear();
     for (auto* item : m_listBuyItem) delete item;
     m_listBuyItem.clear();
     if (m_eCurTradeMode == Buy_Mode) {
         ClearTradeItemList();
         UpdateShopBoard();
     }
+}
+
+void CGUIShopWindow::ShowBuyPreview455(WORD index)
+{
+    const auto found = m_buyPreview455.find(GetBuyableItem(index));
+    if (found == m_buyPreview455.end() || found->second.name.empty()) {
+        gScreen.RemoveTooltip();
+        return;
+    }
+
+    const auto& preview = found->second;
+    const auto& language = *RF455_GetNormalLanguagePack();
+    const bool taiwan = language.codepage == 950;
+    const bool localized = taiwan || language.codepage == 1251;
+    char lines[4][TOOLTIP_MAX_STR] = {};
+    const auto capacity = sizeof(lines[0]) - 1;
+    std::size_t length = 0;
+    while (length < preview.name.size() && length < capacity) {
+        const auto byte = static_cast<unsigned char>(preview.name[length]);
+        const std::size_t width = taiwan && IsDBCSLeadByteEx(language.codepage, byte) ? 2 : 1;
+        if (length + width > capacity || length + width > preview.name.size()) break;
+        length += width;
+    }
+    std::memcpy(lines[0], preview.name.data(), length);
+
+    BYTE count = 1;
+    if (localized && preview.currency <= 6) {
+        // NDLanguage indices are selected by 455 RVA 0x24BB00.
+        const unsigned race = BYTE(_GetAvatarRace()) / 2;
+        const unsigned currencyLabel[] = {race < 3 ? 10 + race : 9, 9, 0xcf2, 0xcf2, 0xf75, 0xf76, 0x105e};
+        const auto* unit = language.get(currencyLabel[preview.currency]);
+        std::uint64_t price = preview.basePrice;
+        const bool adjusted = RF455_CurrentShopUnitPrice(preview, price);
+        const auto* label = adjusted
+            ? (taiwan ? "\xbb\xf9\xae\xe6" : "\xd6\xe5\xed\xe0")
+            : (taiwan ? "\xb0\xf2\xc2\xa6\xbb\xf9\xae\xe6" :
+                        "\xc1\xe0\xe7\xee\xe2\xe0\xff \xf6\xe5\xed\xe0");
+        char amount[32] = {};
+        if (price <= 0x7fffffffffffffffULL)
+            RF455_FormatMoney(static_cast<__int64>(price), amount);
+        else
+            std::snprintf(amount, sizeof(amount), "%llu", static_cast<unsigned long long>(price));
+        if (unit && *unit && std::strlen(label) + std::strlen(amount) + std::strlen(unit) + 3 < sizeof(lines[0]))
+            std::snprintf(lines[count], sizeof(lines[count]), "%s: %s %s", label, amount, unit);
+        else
+            std::snprintf(lines[count], sizeof(lines[count]), "%s: %s", label, amount);
+        ++count;
+    }
+    if (localized && preview.sockets) {
+        const auto* sockets = taiwan ? "\xb4\xa1\xbc\xd1" : "\xc3\xed\xb8\xe7\xe4\xe0";
+        const auto* talics = taiwan ? "\xa6\xd0\xa5\xdb" : "\xd2\xe0\xeb\xe8\xea\xe8";
+        std::snprintf(lines[count], sizeof(lines[count]), "%s: %u, %s: %u", sockets,
+                      unsigned(preview.sockets), talics, unsigned(preview.installedTalics));
+        ++count;
+    }
+    if (localized && preview.timed && preview.timer.durationSeconds) {
+        // Big5 and Windows-1251 are the encodings expected by the legacy UI.
+        const auto* format = taiwan
+            ? "\xa6\xb3\xae\xc4\xb4\xc1\xad\xad: %u\xa4\xd1 %02u:%02u:%02u"
+            : "\xd1\xf0\xee\xea \xe4\xe5\xe9\xf1\xf2\xe2\xe8\xff: %u \xe4. %02u:%02u:%02u";
+        const unsigned seconds = preview.timer.durationSeconds;
+        std::snprintf(lines[count], sizeof(lines[count]), format, seconds / 86400,
+                      seconds / 3600 % 24, seconds / 60 % 60, seconds % 60);
+        ++count;
+    }
+    gScreen.SetTooltip(count, lines);
 }
 
 void CGUIShopWindow::TakeInTradeItem(DWORD index, DWORD itemId, DWORD icon, BYTE quantity)
@@ -258,3 +340,11 @@ void CGUIShopWindow::SetDalant(__int64 value) { SetShopValue(*this, m_uiTotalTra
 void CGUIShopWindow::SetGold(__int64 value) { SetShopValue(*this, m_uiTotalTradeGoldStr, 325, value); }
 void CGUIShopWindow::SetPvp455(DWORD value) { SetShopValue(*this, m_uiPvpValue455, 353, value); }
 void CGUIShopWindow::SetPoints455(DWORD value) { SetShopValue(*this, m_uiPointValue455, 382, value); }
+
+void CGUIShopWindow::SetSelection455(const char* name, BOOL enabled)
+{
+    char label[256] = {};
+    if (name) std::snprintf(label, sizeof(label), "%s x1", name);
+    m_uiTitle.SetString(name ? label : RF455UnitView::Text(0x3c6));
+    SetEnableTrade(enabled);
+}

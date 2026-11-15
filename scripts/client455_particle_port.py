@@ -1,5 +1,6 @@
 """Own byte-preserving header/source overlays for the455 particle dependency."""
 import hashlib
+import re
 from compare_client_binaries import WS
 
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -15,6 +16,7 @@ def headers(base,root,previous):
             raw+=b'\r\n#include <cstddef>\r\nstatic_assert(sizeof(CEntity)==212 && offsetof(CEntity,mVertexCount)==168 && offsetof(CEntity,mFrame)==208,"455 entity fields");\r\n'
         else:
             at=raw.index(b'class CParticle{');prefix,body=raw[:at],raw[at:]
+            body=replace_once(body,b'\tCParticle();',b'\tCParticle();\n\tbool CopyTemplate455(const CParticle& source); // Empty destination; owned curve copy.')
             body=replace_once(body,b'\tfloat mLiveTime;',b'\tfloat mElapsedTime; //455+140\r\n\tfloat mLiveTime;')
             extra=b'''\tBYTE mTraceLength,mCurvePad[3]; //455+336
 \tVector3f* mCurvePoints;
@@ -38,7 +40,8 @@ def headers(base,root,previous):
     return records
 
 def particle_source(raw):
-    raw=b'#include "client455_shader_lights.h"\n'+raw
+    raw=(b'#include "client455_shader_lights.h"\n#include "client455_resource_io.h"\n'
+         b'#include "client455_resource_text.h"\n#include <memory>\n'+raw)
     from prepare_client455_normal import section
     for token,new in [
         (b'CParticle::~CParticle()',b'CParticle::~CParticle(){if(mCurvePoints)Dfree(mCurvePoints);if(mElement)Dfree(mElement);mElement=NULL;mCurvePoints=NULL;}'),
@@ -50,26 +53,79 @@ def particle_source(raw):
     body=body[:-1]+b'\r\n\tmLightID=-1;\r\n}';raw=raw[:start]+body+raw[end:]
     token=b'LONG CParticle::Loop()';start,end=section(raw,token,token);body=raw[start:end];at=body.index(b'{')+1
     body=body[:at]+b'\r\n\tmElapsedTime=float(double(mElapsedTime)+R3GetLoopTime());'+body[at:];raw=raw[:start]+body+raw[end:]
+    token=b'BOOL GetRandOrNum(';start,end=section(raw,token,token)
+    helper=b'''BOOL GetRandOrNum(FILE* fp,float* from,float* at) {
+    bool valid=true;
+    const BOOL random=RF455_GetRandOrNum(fp,from,at,valid);
+    if(!valid)Warning("Invalid455 particle random argument", "");
+    return random;
+}
+'''
+    raw=raw[:start]+(WS/'scripts/native/client455_particle_fields.inc').read_bytes()+b'\n'+helper+raw[end:]
     token=b'BOOL CParticle::LoadParticleSPT(';start,end=section(raw,token,token);body=raw[start:end]
+    first=body.index(b'\tFILE *fp;')
+    last=body.index(b'\tchar hole[256];',first)
+    opening=body[first:last]
+    warnings=re.findall(rb'Warning\(name,[^\r\n]+?\);',opening)
+    if len(warnings)!=1 or b'RF455_OpenResource(name,"rt")' not in opening:
+        raise ValueError('Particle resource open boundary changed')
+    body=body[:first]+b'''    float temp_f;
+    RF455ResourceText input;
+    std::uint64_t archiveBytes = 0;
+    auto* stream = RF455_OpenResourceTextStream455(name, archiveBytes);
+    if (!input.openStream(stream, archiveBytes)) {
+        '''+warnings[0]+b'''
+        return FALSE;
+    }
+'''+body[last:]
+    # Preserve EOF as an ordinary terminator; oversized tokens and read errors fail.
+    scan=b'if( fscanf(fp,"%s",hole)==EOF)\t\n\t\t\tbreak;'
+    if body.count(scan)!=2:raise ValueError('Particle outer token boundaries changed')
+    body=body.replace(scan,b'const int tokenResult455=particleRawToken455(input,hole);\n        if(tokenResult455==EOF)break;\n        if(tokenResult455!=1)return failInput455();')
+    end_check=(b'#if defined(RF_CLIENT_455_RESOURCE_IO)\n'
+               b'        if (RF455_ParticleScriptEnd(hole)) break;\n#endif')
+    if body.count(end_check)!=2:raise ValueError('Particle end-token boundaries changed')
+    body=body.replace(end_check,b'        if (RF455_ParticleScriptEnd(hole)) break;')
+    body=body.replace(b'fscanf(fp,"%s",hole);',b'if(!particleToken455(input,hole))return failInput455();')
+    body=replace_once(body,b'strcpy(mEntityName,hole);',b'if(strlen(hole)>=sizeof(mEntityName))return failInput455();\n            strcpy(mEntityName,hole);')
+    track=b'mTimeTrack[mTrackCnt] = (float)atof(hole);'
+    body=replace_once(body,track,b'if(mTrackCnt>=_PATICLE_MAX_TRACK)return failInput455();\n            '+track)
+    body=re.sub(rb'GetRandOrNum\(fp,([^\n;]*?)\)',rb'RF455_GetRandOrNum(input,\1,particleInputOk455)',body)
     body=replace_once(body,b'!strcmp(hole,"sphere")',b'!strcmp(hole,"sphere_xz")')
     body=replace_once(body,b'!strcmp(hole,"sphere_edge")',b'!strcmp(hole,"sphere_xy")')
     body=replace_once(body,b'\t\tif( !strcmp(hole,"z_front"))',b'\t\tif(!strcmp(hole,"entity_ani"))mFlag|=_PARTICLE_ATTR_ENTITY_ANI;\r\n\t\tif( !strcmp(hole,"z_front"))')
     at=body.rindex(b'\t}\n\tfclose(fp);')
-    reject=b'''        //Required455 advanced providers remain explicit,not silently ignored.
-        if(!strcmp(hole,"tracelength")||!strcmp(hole,"control_node")||
-           !strcmp(hole,"distort")||!strcmp(hole,"distort_offset")||
-           !strcmp(hole,"azirang_pos")||!strcmp(hole,"azirang_width")||
-           !strcmp(hole,"azirang_height")||!strcmp(hole,"azirang_amplitude")||
-           !strcmp(hole,"azirang_time")||!strcmp(hole,"azirang_variance")||
-           !strcmp(hole,"use_combine_scale")) {
-            fclose(fp);ReleaseEntity();ReleaseParticle();
-            Warning(name,"<-455 advanced particle provider remains open");return FALSE;
+    advanced=b'''        if(!particleInputOk455)return failInput455();
+        if(!RF455_ReadParticleFields(*this,input,hole)) {
+            ReleaseEntity();ReleaseParticle();
+            Warning(name,"<-Invalid455 advanced particle fields");return FALSE;
+        }
+        if(!strcmp(hole,"[light]")) {
+            std::unique_ptr<RF455ShaderLight> nextLight455(RF455_ReadShaderLight(input));
+            if(!nextLight455) {
+                ReleaseEntity();ReleaseParticle();
+                Warning(name,"<-Invalid455 particle light");return FALSE;
+            }
+            light455.swap(nextLight455); // Last valid block wins; release previous block.
+            mFlag|=0x100000u;
         }
 '''.replace(b'\n',b'\r\n')
-    body=body[:at]+reject+b'        if(!strcmp(hole,"[light]")){light455=RF455_ReadShaderLight(fp);mFlag|=0x100000u;}\n'+body[at:]
-    at=body.index(b'{')+1;body=body[:at]+b'\n    RF455ShaderLight* light455=nullptr;'+body[at:]
+    body=body[:at]+advanced+body[at:]
+    at=body.index(b'{')+1;body=body[:at]+b'\n    std::unique_ptr<RF455ShaderLight> light455;\n    bool particleInputOk455=true;'+body[at:]
+    body=replace_once(body,b'\tchar hole[256];',b'''    const auto failInput455=[&]() -> BOOL {
+        ReleaseEntity();ReleaseParticle();
+        Warning(name,"<-Invalid455 particle input");return FALSE;
+    };
+\tchar hole[256];''')
     end_anchor=b'\tfclose(fp);\n\n\treturn TRUE;'
-    body=replace_once(body,end_anchor,b'    if(light455)mLightID=RF455_AppendShaderLight(light455);\n'+end_anchor)
+    body=replace_once(body,end_anchor,b'''    if(light455) {
+        mLightID=RF455_AppendShaderLight(light455.get());
+        if(mLightID>=0)light455.release();
+        // Full registry preserves legacy successful parse and ID -1/flag.
+    }
+\treturn TRUE;''')
+    body,closes=re.subn(rb'(?m)^[ \t]*fclose\(fp\);\n',b'',body)
+    if closes!=2:raise ValueError('Particle resource close boundaries changed')
     raw=raw[:start]+body+raw[end:]
     return raw+b'\n'+(WS/'scripts/native/client455_shader_lights.inc').read_bytes()
 

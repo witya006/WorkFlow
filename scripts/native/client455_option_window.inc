@@ -96,6 +96,7 @@ void CGUIOptionWindow::Init(){
     const wchar_t* ruTabs[]={L"\u0417\u0432\u0443\u043a",L"\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435",L"\u0413\u0440\u0430\u0444\u0438\u043a\u0430",L"\u0418\u0433\u0440\u0430",L"HUD"};
     const char* enTabs[]={"Sound","Image","Graphics","Game","HUD"};
     for(unsigned i=0;i<PageCount;++i){OP455ButtonText(m_tabs[i],ruTabs[i],enTabs[i]);m_tabs[i].AddMouseEventHandler(this);Add(&m_tabs[i]);m_pages[i].SetSize(672,330);}
+    m_pages[GraphicsPage].SetSize(672,352);
     OP455ButtonText(m_apply,L"\u041f\u0440\u0438\u043c\u0435\u043d\u0438\u0442\u044c","Apply");OP455ButtonText(m_cancel,L"\u041e\u0442\u043c\u0435\u043d\u0430","Cancel");
     m_apply.AddMouseEventHandler(this);m_cancel.AddMouseEventHandler(this);m_close.AddMouseEventHandler(this);
     OP455Label(m_closeLabel,L"X","X");m_close.Add(&m_closeLabel);
@@ -132,7 +133,8 @@ void CGUIOptionWindow::Init(){
     OP455Label(m_graphicLabels[DynamicLighting],L"\u0414\u0438\u043d\u0430\u043c\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435","Dynamic lighting");
     OP455Label(m_graphicLabels[Shadow],L"\u0422\u0435\u043d\u0438","Shadows");
     OP455Label(m_graphicLabels[SeeDist],L"\u0414\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u043e\u0442\u0440\u0438\u0441\u043e\u0432\u043a\u0438 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0435\u0439","Character draw distance");
-    for(unsigned i:{unsigned(DynamicLighting),unsigned(Shadow),unsigned(SeeDist)}){
+    OP455Label(m_graphicLabels[Bloom],L"\u0421\u0432\u0435\u0447\u0435\u043d\u0438\u0435 \u0441\u0446\u0435\u043d\u044b","Scene glow");
+    for(unsigned i:{unsigned(DynamicLighting),unsigned(Shadow),unsigned(SeeDist),unsigned(Bloom)}){
         m_pages[GraphicsPage].Add(&m_graphicLabels[i]);m_pages[GraphicsPage].Add(&m_graphic[i]);
     }
     OP455Label(m_etcLabels[AutoSeeDist],L"\u0410\u0432\u0442\u043e\u043f\u043e\u0434\u0431\u043e\u0440 \u0434\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043e\u0442\u0440\u0438\u0441\u043e\u0432\u043a\u0438","Automatic draw distance");
@@ -170,6 +172,8 @@ void CGUIOptionWindow::Init(){
     SwitchOn(Hint,GetPrivateProfileIntA("UI","ShowHint",TRUE,".\\DataTable\\GameSetting.ini")!=0);
     SwitchOn(AutoSeeDist,GetPrivateProfileIntA("Performance","AutoVisualFieldAdjustment",TRUE,".\\DataTable\\GameSetting.ini")!=0);
     SetGraphicOption(SeeDist,float(GetPrivateProfileIntA("Performance","VisualFieldAdjustmentLevel",4,".\\DataTable\\GameSetting.ini")));
+    SetGraphicOption(Bloom, static_cast<float>((std::min)(2u,
+        GetPrivateProfileIntA("RenderState","BBoShasi",2,".\\R3Engine.ini"))));
     m_initialized=true;m_applied=Capture455();Layout455();SetPage455(SoundPage);
 }
 void CGUIOptionWindow::Layout455(){
@@ -189,11 +193,13 @@ void CGUIOptionWindow::Layout455(){
     m_lightingTitle.SetPos(x+40,y+205);for(unsigned i=0;i<2;++i)m_lighting[i].SetPos(x+338+164*i,y+197);
     m_msaaTitle.SetPos(x+40,y+250);for(unsigned i=0;i<3;++i)m_msaa[i].SetPos(x+338+109*i,y+242);
     for(unsigned i=1;i<=3;++i){m_graphicLabels[i].SetPos(x+40,y+258+42*i);m_graphic[i].SetPos(x+338,y+258+42*i);}
+    m_graphicLabels[Bloom].SetPos(x+40,y+453);m_graphic[Bloom].SetPos(x+338,y+453);
     m_etc[AutoSeeDist].SetPos(x+40,y+424);m_etcLabels[AutoSeeDist].SetPos(x+62,y+424);
     m_cameraTitle.SetPos(x+40,y+160);for(unsigned i=0;i<5;++i)m_cameras[i].SetPos(x+338+48*i,y+160);
     m_etc[Hint].SetPos(x+40,y+160);m_etcLabels[Hint].SetPos(x+64,y+160);
     m_diagnosticsTitle.SetPos(x+40,y+222);for(unsigned i=0;i<2;++i)m_diagnostics[i].SetPos(x+338+164*i,y+214);
     for(auto& note:m_pageNote)note.SetPos(x+40,y+460);
+    m_pageNote[GraphicsPage].SetPos(x+40,y+480);
     m_status.SetPos(x+24,y+492);m_apply.SetPos(x+376,y+516);m_cancel.SetPos(x+548,y+516);
 }
 CGUIOptionWindow::SettingsSnapshot CGUIOptionWindow::Capture455(){
@@ -244,6 +250,7 @@ bool CGUIOptionWindow::Persist455(const SettingsSnapshot& value){
     ok=OP455Write(engine,"RenderState","ScreenYSize",value.height)&&ok;
     ok=OP455Write(engine,"RenderState","DynamicLight",value.graphics[DynamicLighting])&&ok;
     ok=OP455Write(engine,"RenderState","ShadowDetail",value.graphics[Shadow])&&ok;
+    ok=OP455Write(engine,"RenderState","BBoShasi",value.graphics[Bloom])&&ok;
     ok=OP455Volume("SoundVol",value.sound[Effect_Snd])&&ok;ok=OP455Volume("MusicVol",value.sound[BGM])&&ok;
     ok=OP455Write(game,"Performance","VisualFieldAdjustmentLevel",value.graphics[SeeDist])&&ok;
     ok=OP455Write(game,"Performance","AutoVisualFieldAdjustment",value.flags[AutoSeeDist])&&ok;

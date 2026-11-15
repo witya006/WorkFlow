@@ -60,7 +60,7 @@ template<class Ops> int policy(const Ops& ops){
     unsigned offset=0xdeadbeef;RF455BufferAccounting account={0xfffffff0,0xffffffff};const unsigned char source[32]={1,2,3,4,5,6,7,8};
     B_CHECK(!ops.upload(&pool,source,12,&offset,&account) && offset==0xdeadbeef && s.events.empty());pool.device=s.d3d();
     B_CHECK(ops.upload(&pool,source,12,&offset,&account) && offset==0 && pool.used[0]==12);B_CHECK(s.resources.size()==1 && s.events.size()==3);
-    B_CHECK(s.events[0].op=='C' && s.events[0].a==cap && s.events[0].b==8 && s.events[0].c==(type==1?101u:(type==36?278u:282u)) && s.events[0].d==1 && !s.events[0].object);
+    B_CHECK(s.events[0].op=='C' && s.events[0].a==cap && s.events[0].b==0 && s.events[0].c==(type==1?101u:(type==36?278u:282u)) && s.events[0].d==1 && !s.events[0].object);
     B_CHECK(s.events[1].op=='L' && s.events[1].a==0 && s.events[1].b==12 && !s.events[1].c && s.events[2].op=='U');
     B_CHECK(account.created==0 && account.bytes==cap-16 && !std::memcmp(s.resources[0]->bytes.data(),source,12));
     B_CHECK(ops.upload(&pool,source,20,&offset,&account) && offset==12 && pool.used[0]==32 && s.resources.size()==1);
@@ -191,7 +191,7 @@ int gpu(const char* frameBase,const char* workspace){
         else{B_CHECK(ops.upload(&pool.vertex,triangle.data(),static_cast<unsigned>(triangle.size()),&vo,&account));unsigned short legacyIndices[]={5,6,7};B_CHECK(RF455_UploadIndices(&pool.index,legacyIndices,sizeof(legacyIndices),&io,&account));}
         B_CHECK(vo==5*stride && io==8);
         D3DVERTEXBUFFER_DESC vd={};D3DINDEXBUFFER_DESC id={};B_CHECK(SUCCEEDED(pool.vertex.buffers[0]->GetDesc(&vd)) && SUCCEEDED(pool.index.buffers[0]->GetDesc(&id)));
-        B_CHECK(vd.Size==2300000 && vd.Usage==8 && vd.Pool==D3DPOOL_MANAGED && vd.FVF==(stride==36?278u:282u));B_CHECK(id.Size==1000000 && id.Format==D3DFMT_INDEX16 && id.Usage==8 && id.Pool==D3DPOOL_MANAGED);
+        B_CHECK(vd.Size==2300000 && vd.Usage==0 && vd.Pool==D3DPOOL_MANAGED && vd.FVF==(stride==36?278u:282u));B_CHECK(id.Size==1000000 && id.Format==D3DFMT_INDEX16 && id.Usage==0 && id.Pool==D3DPOOL_MANAGED);
         ops.bind(&pool.vertex,vo);RF455_BindIndices(&pool.index,io);std::vector<unsigned char> first,second;B_CHECK(draw(c.device,io/2,5,first)==0);
         const auto* inside=first.data()+3*(16*64+16);const auto* outside=first.data()+3*(56*64+56);B_CHECK(inside[0]==(stride==64?255:0) && inside[1]==(stride==64?0:255) && inside[2]==(stride==64?0:255));B_CHECK(outside[0]==0x13 && outside[1]==0x27 && outside[2]==0x39);
         // Fill block0 to its exact physical boundary,then force both VB/IB to block1.

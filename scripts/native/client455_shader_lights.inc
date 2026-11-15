@@ -2,6 +2,7 @@
 #include "client455_shader_lights.h"
 #include <cstdlib>
 #include <cstring>
+#include <new>
 namespace {
 struct ShaderLights455 {
     int count=0;
@@ -13,26 +14,49 @@ float shaderLightProduct455(float a,float b){float value;__asm{fld a
     fstp value}return value;}
 }
 int RF455_GetShaderLightCount(){return shaderLights455.count;}
-RF455ShaderLight* RF455_GetShaderLight(int index){return index<0?nullptr:shaderLights455.entries[index];}
-int RF455_AppendShaderLight(RF455ShaderLight* light){
-    if(shaderLights455.count<=100){shaderLights455.entries[shaderLights455.count++]=light;return shaderLights455.count-1;}
-    Warning("Shader light table is full","");--shaderLights455.count;return -1; //Preserve original overflow counter behavior.
+RF455ShaderLight* RF455_GetShaderLight(int index) {
+    if (index < 0 || index >= shaderLights455.count) return nullptr;
+    return shaderLights455.entries[index];
 }
-void RF455_ClearShaderLights(){
-    for(int i=0;i<shaderLights455.count;++i)if(shaderLights455.entries[i])std::free(shaderLights455.entries[i]);
-    shaderLights455.count=0; //Reference leaves the old pointer slots intact.
-}
-RF455ShaderLight* RF455_ReadShaderLight(FILE* f){
-    auto* light=new RF455ShaderLight;char token[256];std::fscanf(f,"%s",token);_strlwr(token);
-    while(std::strcmp(token,"[endlight]")){
-        if(!std::strcmp(token,"lightcolor"))std::fscanf(f,"%f%f%f",light->color,light->color+1,light->color+2);
-        if(!std::strcmp(token,"power")||!std::strcmp(token,"radius"))std::fscanf(f,"%f",&light->radius); //Both target tokens write+4.
-        std::fscanf(f,"%s",token);_strlwr(token);
+int RF455_AppendShaderLight(RF455ShaderLight* light) {
+    if (!light) return -1;
+    if (shaderLights455.count == 101) {
+        Warning("Shader light table is full", "");
+        return -1;
     }
-    return light;
+    const int index = shaderLights455.count++;
+    shaderLights455.entries[index] = light;
+    return index;
 }
+void RF455_ClearShaderLights() {
+    for (int i = 0; i < shaderLights455.count; ++i) {
+        delete shaderLights455.entries[i];
+        shaderLights455.entries[i] = nullptr;
+    }
+    shaderLights455.count = 0;
+}
+namespace {
+template<class Input>
+RF455ShaderLight* readShaderLight455(Input& input) {
+    RF455ShaderLight light;
+    char token[256];
+    while (particleToken455(input, token)) {
+        _strlwr(token);
+        if (std::strcmp(token,"[endlight]") == 0) return new (std::nothrow) RF455ShaderLight(light);
+        if (std::strcmp(token,"lightcolor") == 0) {
+            for (auto& channel : light.color)
+                if (!particleFloat455(input, token, channel)) return nullptr;
+        } else if ((std::strcmp(token,"power") == 0 || std::strcmp(token,"radius") == 0) &&
+                   !particleFloat455(input, token, light.radius)) return nullptr;
+    }
+    return nullptr;
+}
+}
+RF455ShaderLight* RF455_ReadShaderLight(FILE* file) { return readShaderLight455(file); }
+RF455ShaderLight* RF455_ReadShaderLight(RF455ResourceText& input) { return readShaderLight455(input); }
+
 void RF455_UpdateParticleShaderLight(int index,const float* position){
-    auto* source=RF455_GetShaderLight(index);if(!source)return;auto* first=RF455_GetShaderLight(0);
+    auto* source=RF455_GetShaderLight(index);if(!source || !position)return;auto* first=RF455_GetShaderLight(0);
     for(unsigned i=0;i<3;++i)first->color[i]=shaderLightProduct455(source->color[i],first->scale);
     std::memcpy(first->position,position,12); //8E6950 always updates destination slot0.
 }

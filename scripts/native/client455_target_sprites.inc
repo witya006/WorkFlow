@@ -1,3 +1,5 @@
+#include <memory>
+
 namespace {
 constexpr unsigned systemSprite = 5;
 constexpr unsigned optionsBackground = 20;
@@ -41,6 +43,28 @@ CSprite* CSpriteMgr::GetTargetSprite455(unsigned id)
     }
     return cached;
 }
+
+bool CSpriteMgr::LoadMinimapSprite455(const char* path)
+{
+    if (auto* terrain = GetSprite(SP_ID_MINIMAP))
+        return terrain->LoadMinimapSprite455(path);
+
+    const auto releaseTerrain = [](CSprite* sprite) {
+        sprite->ReleaseSprite();
+        delete sprite;
+    };
+    std::unique_ptr<CSprite, decltype(releaseTerrain)> terrain(new CSprite, releaseTerrain);
+    if (!terrain->LoadMinimapSprite455(path)) return false;
+
+    std::unique_ptr<CSpriteUnit> unit(new CSpriteUnit);
+    unit->m_pSprite = terrain.release();
+    unit->m_wID = SP_ID_MINIMAP;
+    unit->m_pSearchFunc = DefaultSearchFunc;
+    m_listSpriteUnit.push_back(unit.get());
+    unit.release();
+    return true;
+}
+
 void CSpriteMgr::UnloadTargetSprites455(){
     for(auto*& sprite:m_targetSprites455)if(sprite){sprite->ReleaseSprite();delete sprite;sprite=nullptr;}
 }

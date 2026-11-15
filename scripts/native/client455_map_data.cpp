@@ -1,8 +1,10 @@
 #include "client455_map_data.h"
+#include "client455_character_rfs.h"
 #include "client455_language.h"
-#include <windows.h>
 #include <cstdio>
 #include <cstring>
+#include <mbstring.h>
+#include <new>
 #include <stdexcept>
 #include <utility>
 
@@ -24,6 +26,20 @@ struct Cursor {
         if (n) std::memcpy(out, take(n), n);
     }
 
+    const unsigned char* text(std::size_t n)
+    {
+        const auto* bytes = take(n);
+        if (n && !std::memchr(bytes, 0, n))
+            throw std::runtime_error("Unterminated 455 map text");
+        return bytes;
+    }
+
+    template <std::size_t N>
+    void text(char (&out)[N])
+    {
+        std::memcpy(out, text(N), N);
+    }
+
     std::uint32_t u32()
     {
         std::uint32_t value;
@@ -43,26 +59,6 @@ struct Cursor {
     }
 };
 
-bool file(const char* name, std::vector<unsigned char>& out)
-{
-    if (!name) return false;
-    HANDLE h = CreateFileA(name, GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
-                           FILE_ATTRIBUTE_NORMAL, nullptr);
-    if (h == INVALID_HANDLE_VALUE) return false;
-    LARGE_INTEGER size = {};
-    bool ok = GetFileSizeEx(h, &size) && size.QuadPart >= 0 && size.QuadPart < 0x80000000;
-    try {
-        if (ok) out.resize(static_cast<std::size_t>(size.QuadPart));
-    } catch (...) {
-        CloseHandle(h);
-        throw;
-    }
-    DWORD got = 0;
-    if (ok) ok = ReadFile(h, out.data(), static_cast<DWORD>(out.size()), &got, nullptr) && got == out.size();
-    CloseHandle(h);
-    return ok;
-}
-
 RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t size)
 {
     if (!input) return RF455MapLoad::MissingInput;
@@ -75,9 +71,9 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
         for (std::uint32_t i = 0; i < catalog.count; ++i) {
             auto& row = catalog.maps[i];
             src.read(&row.byIndex, 4);
-            src.read(row.pName, sizeof(row.pName));
+            src.text(row.pName);
             std::memcpy(row.pName_UI, row.pName, sizeof(row.pName));
-            src.read(row.pFileName, sizeof(row.pFileName));
+            src.text(row.pFileName);
 
             char sprite[128];
             src.read(sprite, sizeof(sprite));
@@ -86,7 +82,7 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
                 throw std::runtime_error("455 minimap path overflow domain");
             std::sprintf(row.pMinimapFileName, "./SpriteImage/Common/Map/%s", sprite);
             src.read(&row.wMinimapAngle, 2);
-            src.read(row.fields358, sizeof(row.fields358));
+            src.text(row.pBspFileName);
 
             row.byPortalNum = src.u32();
             src.count(row.byPortalNum, 288);
@@ -96,8 +92,8 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
                 src.read(static_cast<RF455MineInfo*>(&portal), 96);
                 src.read(&portal.byPortalType, 8);
                 src.read(portal.byUsableRace, 5);
-                src.read(portal.pName, 64);
-                src.read(portal.pDesc, 64);
+                src.text(portal.pName);
+                src.text(portal.pDesc);
                 src.read(&portal.byLinkedPortalNum, 1);
                 src.read(portal.padding238, 2);
                 src.u32(); // Serialized pointer slot is replaced by owned links.
@@ -124,7 +120,12 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
             src.count(row.byAreaNum, 84);
             if (row.byAreaNum) {
                 row.pAreaInfo = new RF455MapAreaInfo[row.byAreaNum];
-                src.read(row.pAreaInfo, row.byAreaNum * 84u);
+                for (std::uint32_t j = 0; j < row.byAreaNum; ++j) {
+                    auto& area = row.pAreaInfo[j];
+                    src.read(&area.dwIndex, sizeof(area.dwIndex));
+                    src.read(&area.recArea, sizeof(area.recArea));
+                    src.text(area.pName);
+                }
             }
             src.read(row.fields512, 40);
             src.read(&row.miniMapWidth, 8);
@@ -160,6 +161,10 @@ RF455MapLoad parseCatalog(RF455MapData& catalog, const void* input, std::size_t 
         return RF455MapLoad::Complete;
     } catch (const std::runtime_error&) {
         return RF455MapLoad::Malformed;
+    } catch (const std::bad_alloc&) {
+        return RF455MapLoad::Malformed;
+    } catch (const std::length_error&) {
+        return RF455MapLoad::Malformed;
     }
 }
 
@@ -177,11 +182,11 @@ RF455MapLoad applyLocalization(RF455MapData& catalog, const void* input, std::si
         if (catalog.localizedCount != catalog.count) return RF455MapLoad::LocalizedCount;
         for (std::uint32_t i = 0; i < catalog.count; ++i) {
             auto& row = catalog.maps[i];
-            fixedText.emplace_back(row.pName_UI, nd.take(64));
+            fixedText.emplace_back(row.pName_UI, nd.text(64));
             for (std::uint32_t j = 0; j < row.byPortalNum; ++j)
-                fixedText.emplace_back(row.pPortalInfo[j].pDesc, nd.take(64));
+                fixedText.emplace_back(row.pPortalInfo[j].pDesc, nd.text(64));
             for (std::uint32_t j = 0; j < row.byAreaNum; ++j)
-                fixedText.emplace_back(row.pAreaInfo[j].pName, nd.take(64));
+                fixedText.emplace_back(row.pAreaInfo[j].pName, nd.text(64));
         }
         for (std::size_t i = 0; i < catalog.layers.size(); ++i) {
             layerCounts[i] = nd.u32();
@@ -189,11 +194,16 @@ RF455MapLoad applyLocalization(RF455MapData& catalog, const void* input, std::si
                 for (auto& label : layer.labels) {
                     const auto length = nd.u32();
                     if (length > 64) throw std::runtime_error("455 layer text overflow domain");
-                    layerText.emplace_back(&label, nd.bytes(length));
+                    const auto* bytes = nd.text(length);
+                    layerText.emplace_back(&label, std::vector<unsigned char>(bytes, bytes + length));
                 }
             }
         }
     } catch (const std::runtime_error&) {
+        return RF455MapLoad::Malformed;
+    } catch (const std::bad_alloc&) {
+        return RF455MapLoad::Malformed;
+    } catch (const std::length_error&) {
         return RF455MapLoad::Malformed;
     }
 
@@ -221,20 +231,247 @@ RF455MapLoad RF455_ParseMapData(RF455MapData& out, const void* mainInput, std::s
 
 RF455MapLoad RF455_LoadMapData(RF455MapData& out, const char* mainFile, const char* localizedFile)
 {
-    std::vector<unsigned char> encoded, decoded;
-    if (!file(mainFile, encoded)) return RF455MapLoad::MissingInput;
-    if (!RF455_DecodeEdf(encoded.data(), encoded.size(), decoded)) return RF455MapLoad::Malformed;
+    // Client 455 x86 RVA 0x3CAAE0 reads the map catalog and its localized
+    // overlay from loose EDF files. Each load owns its decoded map data.
+    constexpr std::uint64_t maxBytes = 64u * 1024u * 1024u;
+    auto* cache = RF455_GetCharacterRfsCache();
+    std::vector<unsigned char> decoded;
+    {
+        const auto base = cache->ReadLooseBytes(mainFile, maxBytes);
+        if (base.status != RF455ResourceReadStatus::Ready || !base.bytes)
+            return RF455MapLoad::MissingInput;
+        if (!RF455_DecodeEdf(base.bytes->data(), base.bytes->size(), decoded))
+            return RF455MapLoad::Malformed;
+    }
 
     RF455MapData next;
     const auto base = parseCatalog(next, decoded.data(), decoded.size());
     if (base != RF455MapLoad::Complete) return base;
 
-    if (file(localizedFile, encoded)) {
+    const auto text = cache->ReadLooseBytes(localizedFile, maxBytes);
+    if (text.status == RF455ResourceReadStatus::Ready && text.bytes) {
         decoded.clear();
-        next.localizationStatus = RF455_DecodeEdf(encoded.data(), encoded.size(), decoded)
+        next.localizationStatus = RF455_DecodeEdf(text.bytes->data(), text.bytes->size(), decoded)
             ? applyLocalization(next, decoded.data(), decoded.size()) : RF455MapLoad::Malformed;
     }
     const bool localized = next.localizationStatus == RF455MapLoad::Complete;
     out = std::move(next);
     return localized ? RF455MapLoad::Complete : RF455MapLoad::BaseOnly;
+}
+
+const RF455MapInfo* RF455_FindMapByCode(const RF455MapData& catalog, std::uint32_t code)
+{
+    if (!catalog.maps) return nullptr;
+    // RVA 0x3CA450 matches the stored map code in file order.
+    for (std::uint32_t index = 0; index < catalog.count; ++index) {
+        const auto& map = catalog.maps[index];
+        if (map.byIndex == code) return &map;
+    }
+    return nullptr;
+}
+
+const RF455MapInfo* RF455_FindMapByName(const RF455MapData& catalog, const char* name)
+{
+    if (!catalog.maps || !name || !*name) return nullptr;
+    // RVA 0x3CA360 compares internal names, returning the first match.
+    for (std::uint32_t index = 0; index < catalog.count; ++index) {
+        const auto& map = catalog.maps[index];
+        if (std::memchr(map.pName, 0, sizeof(map.pName)) && _stricmp(map.pName, name) == 0)
+            return &map;
+    }
+    return nullptr;
+}
+
+namespace {
+template<std::size_t N>
+std::size_t mapField(const std::vector<unsigned char>& source, unsigned char (&field)[N])
+{
+    const std::size_t size = source.size() < N - 1 ? source.size() : N - 1;
+    if (size) std::memcpy(field, source.data(), size);
+    field[size] = 0;
+    return std::strlen(reinterpret_cast<const char*>(field));
+}
+
+std::uint32_t mapRunLength(const unsigned char* run)
+{
+    return 1u + run[0] + (static_cast<std::uint32_t>(run[1]) << 8);
+}
+
+const RF455MapLayer* localMapLayer(const RF455MapData& catalog, std::uint32_t index)
+{
+    if (index == 0xff || !catalog.maps || index >= catalog.count) return nullptr;
+    const auto& name = catalog.maps[index].pName;
+    return std::memchr(name, 0, sizeof(name)) ?
+        RF455_FindMapLayer(catalog, RF455MapLayerSection::Minimap, name) : nullptr;
+}
+
+const char* validatedMapLabel(const RF455MapLayer* layer, std::size_t index)
+{
+    if (!layer || index >= layer->labels.size()) return nullptr;
+    const auto& text = layer->labels[index].text;
+    if (text.empty() || text.size() > 64 || !text.front() ||
+        !std::memchr(text.data(), 0, text.size()))
+        return nullptr;
+    return reinterpret_cast<const char*>(text.data());
+}
+}
+
+const RF455MapLayer* RF455_FindMapLayer(const RF455MapData& catalog, RF455MapLayerSection section,
+                                      const char* name)
+{
+    if (!name || !*name) return nullptr;
+    const auto index = static_cast<std::size_t>(section);
+    if (index >= catalog.layers.size()) return nullptr;
+
+    // RVA 0x3B42D0 compares names in file order using the current CRT codepage.
+    for (const auto& layer : catalog.layers[index]) {
+        unsigned char candidate[33];
+        mapField(layer.name, candidate);
+        if (_mbsicmp(candidate, reinterpret_cast<const unsigned char*>(name)) == 0)
+            return &layer;
+    }
+    return nullptr;
+}
+
+int RF455_FindMapLayerLabel(const RF455MapLayer& layer, const char* text)
+{
+    if (!text || !*text) return -1;
+    // RVA 0x3B37D0 compares localized text and returns the zero-based ordinal.
+    for (std::size_t index = 0; index < layer.labels.size(); ++index) {
+        unsigned char candidate[65];
+        mapField(layer.labels[index].text, candidate);
+        if (_mbsicmp(candidate, reinterpret_cast<const unsigned char*>(text)) == 0)
+            return static_cast<int>(index);
+    }
+    return -1;
+}
+
+const char* RF455_FindLocalMapLabel(const RF455MapData& catalog, std::uint32_t mapIndex,
+                                   std::uint16_t ordinal)
+{
+    // RVA 0x3B43D0 / 0x3B3790 indexes the chosen layer's labels directly.
+    return validatedMapLabel(localMapLayer(catalog, mapIndex), ordinal);
+}
+
+const RF455MapLayer* RF455_FindWorldMapParent(const RF455MapData& catalog, const char* label, int* ordinal)
+{
+    if (ordinal) *ordinal = -1;
+    if (!label || !*label) return nullptr;
+    // RVA 0x3B44E0 takes the first world layer containing the localized name.
+    for (const auto& layer : catalog.layers[static_cast<std::size_t>(RF455MapLayerSection::World)]) {
+        const int index = RF455_FindMapLayerLabel(layer, label);
+        if (index >= 0) {
+            if (ordinal) *ordinal = index;
+            return &layer;
+        }
+    }
+    return nullptr;
+}
+
+bool RF455_WorldMapSpritePath(const RF455MapLayer& layer, char* output, std::size_t capacity)
+{
+    constexpr char prefix[] = "./SpriteImage/Common/worldmap/";
+    constexpr char extension[] = ".spr";
+    unsigned char name[33];
+    const std::size_t length = mapField(layer.name, name);
+    const std::size_t pathBytes = sizeof(prefix) - 1 + length + sizeof(extension);
+    if (!output || !length || capacity < pathBytes) return false;
+
+    for (std::size_t i = 0; i < length; ++i) {
+        const unsigned char c = name[i];
+        if (!(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') &&
+            !(c >= '0' && c <= '9') && c != '_' && c != '-') return false;
+    }
+
+    std::memcpy(output, prefix, sizeof(prefix) - 1);
+    std::memcpy(output + sizeof(prefix) - 1, name, length);
+    std::memcpy(output + sizeof(prefix) - 1 + length, extension, sizeof(extension));
+    return true;
+}
+
+bool RF455MapHitMask::load(const RF455MapLayer& layer)
+{
+    if (layer_ == &layer && !pixels_.empty()) return true;
+
+    constexpr std::size_t maxMaskBytes = 16 * 1024 * 1024;
+    if (!layer.width || !layer.height || layer.width > maxMaskBytes / layer.height ||
+        layer.image.empty() || layer.image.size() % 3 != 0) return false;
+    const std::size_t total = static_cast<std::size_t>(layer.width) * layer.height;
+
+    // RVA 0x3B34F0 expands a little-endian WORD plus one copies of the byte.
+    // Validate the entire stream before allocating or changing the active mask.
+    std::size_t written = 0;
+    for (std::size_t at = 0; at < layer.image.size(); at += 3) {
+        const auto count = mapRunLength(layer.image.data() + at);
+        if (count > total - written) return false;
+        written += count;
+    }
+    if (written != total) return false;
+
+    std::vector<unsigned char> next;
+    try {
+        next.resize(total);
+    } catch (const std::bad_alloc&) {
+        return false;
+    }
+    written = 0;
+    for (std::size_t at = 0; at < layer.image.size(); at += 3) {
+        const auto count = mapRunLength(layer.image.data() + at);
+        std::memset(next.data() + written, layer.image[at + 2], count);
+        written += count;
+    }
+    pixels_.swap(next);
+    width_ = layer.width;
+    height_ = layer.height;
+    labelCount_ = layer.labels.size();
+    layer_ = &layer;
+    return true;
+}
+
+int RF455MapHitMask::hit(std::uint32_t x, std::uint32_t y) const
+{
+    if (x >= width_ || y >= height_ || pixels_.empty()) return -1;
+    const auto index = pixels_[static_cast<std::size_t>(y) * width_ + x];
+    // RVA 0x3B3670 sign-extends the byte before checking the label count.
+    return index < 0x80 && index < labelCount_ ? index : -1;
+}
+
+void RF455MapHitMask::clear()
+{
+    layer_ = nullptr;
+    width_ = height_ = 0;
+    labelCount_ = 0;
+    std::vector<unsigned char>().swap(pixels_);
+}
+
+bool RF455LocalMapLayer::select(const RF455MapData& catalog, std::uint32_t mapIndex)
+{
+    // RVA 0x3CA010 reaches the selected map record's internal name (+4).
+    const auto* candidate = localMapLayer(catalog, mapIndex);
+    if (!candidate || !mask_.load(*candidate)) {
+        clear();
+        return false;
+    }
+    layer_ = candidate;
+    return true;
+}
+
+const char* RF455LocalMapLayer::labelAt(float x, float y) const
+{
+    if (!layer_ || !(x >= 0.0f && x < 1.0f && y >= 0.0f && y < 1.0f)) return nullptr;
+    const auto column = static_cast<std::uint32_t>(static_cast<double>(layer_->width) * x);
+    const auto row = static_cast<std::uint32_t>(static_cast<double>(layer_->height) * y);
+    const int index = mask_.hit(column, row);
+    return index < 0 ? nullptr : labelAt(static_cast<std::size_t>(index));
+}
+
+const char* RF455LocalMapLayer::labelAt(std::size_t index) const
+{
+    return validatedMapLabel(layer_, index);
+}
+
+void RF455LocalMapLayer::clear()
+{
+    layer_ = nullptr;
+    mask_.clear();
 }
